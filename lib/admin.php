@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts );
 		}
 
-		protected function &get_form_reference() {	// return reference
+		protected function &get_form_reference() {	// returns a reference
 			return $this->form;
 		}
 

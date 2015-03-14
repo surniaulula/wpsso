@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// hook into wpsso_is_functions to extend the default array of function names
 			if ( $this->p->debug->is_on() ) {
 				$is_functions = array( 
+					'is_ajax',
 					'is_archive',
 					'is_attachment',
 					'is_author',
@@ -47,14 +48,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					'is_home',
 					'is_multisite',
 					'is_page',
-					'is_product',
-					'is_product_category',
-					'is_product_tag',
 					'is_search',
 					'is_single',
 					'is_singular',
+					'is_ssl',
 					'is_tag',
 					'is_tax',
+					// ecommerce functions
+					'is_account_page',
+					'is_cart',
+					'is_checkout',
+					'is_checkout_pay_page',
+					'is_product',
+					'is_product_category',
+					'is_product_tag',
+					'is_shop',
 				);
 				$is_functions = apply_filters( $lca.'_is_functions', $is_functions );
 				foreach ( $is_functions as $function ) 
@@ -146,10 +154,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
+
 			$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
+			$this->p->debug->log( $obj );
 			$this->p->debug->log( 'post_id value set to '.$post_id );
+
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
 			$author_id = false;
 
