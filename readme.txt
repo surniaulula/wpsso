@@ -391,6 +391,11 @@ When minor bugs fixes and/or code improvements are applied, new versions are als
 This release schedule keeps the code stable and reliable, at the cost of more frequent updates.</p>
 </blockquote>
 
+= Repositories =
+
+* GitHub: https://github.com/SurniaUlula/wpsso
+* WordPress.org: https://wordpress.org/plugins/wpsso/developers/
+
 = Version 7.8.3.1 =
 
 * **Bugfixes**
