@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.1.1
-Stable Tag: 2.8.3
+Stable Tag: 2.8.3.1
 
 Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
 
@@ -396,7 +396,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
-= Version 7.8.3.1 =
+= Version 2.8.3.1 =
 
 * **Bugfixes**
 	* Updated the "Google Structured Data Testing Tool" URL.
@@ -404,9 +404,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Integrated the WordPress SEO and WooCommerce modules to use the WordPress SEO meta description for the shop page (Pro version).
 	* Added a filter for the WooCommerce module to report the post ID of the shop page (Pro version).
-	* Changed to Wpsso::get_instance() instead of using the $ngfb global for functions and widgets.
 * **New Features**
-	* *None*
+	* Added a GitHub repository for WPSSO at https://github.com/SurniaUlula/wpsso.
 
 = Version 2.8.3 =
 
@@ -491,6 +490,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a check for a minimum image dimension of 200x200px (the minimum allowed by Facebook) for Open Graph meta tags.
 
 == Upgrade Notice ==
+
+= 2.8.3.1 =
+
+Updated "Google Structured Data Testing Tool" URL, added support for WooCommerce shop page (Pro version), fixed WordPress SEO integration (Pro version).
 
 = 2.8.3 =
 
