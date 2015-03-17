@@ -401,11 +401,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
-<h4>Version 2.8.3.2</h4>
+<h4>Version 2.8.3.2 (2015/03/17)</h4>
 
 * **Bugfixes**
 	* Fixed the user contact field sanitation check by using the defined field names.
 	* Updated the SucomUtil::limit_text_length() method to use the mb_strlen() and mb_substr() multibyte functions.
+	* Added a check for WPSEO_Frontend::get_instance() before using it, and if missing, fallback to global $wpseo_front.
 * **Improvements**
 	* Removed a check for the 'mb_decode_numericentity' function (replaced by a minimum PHP version check instead).
 * **New Features**
@@ -509,7 +510,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 <h4>2.8.3.2</h4>
 
-Fixed a user contact field sanitation check, updated SucomUtil::limit_text_length() to use PHP multibyte functions, addeda minimum PHP version check.
+Fixed user contact field sanitation check, updated SucomUtil::limit_text_length() for PHP multibyte functions, added a minimum PHP version check.
 
 <h4>2.8.3.1</h4>
 
