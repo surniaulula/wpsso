@@ -401,6 +401,16 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+<h4>Version 2.8.3.2</h4>
+
+* **Bugfixes**
+	* Fixed the user contact field sanitation check by using the defined field names.
+	* Updated the SucomUtil::limit_text_length() method to use the mb_strlen() and mb_substr() multibyte functions.
+* **Improvements**
+	* Removed a check for the 'mb_decode_numericentity' function (replaced by a minimum PHP version check instead).
+* **New Features**
+	* *None*
+
 <h4>Version 2.8.3.1</h4>
 
 * **Bugfixes**
@@ -409,8 +419,9 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Integrated the WordPress SEO and WooCommerce modules to use the WordPress SEO meta description for the shop page (Pro version).
 	* Added a filter for the WooCommerce module to report the post ID of the shop page (Pro version).
-* **New Features**
 	* Added a GitHub repository for WPSSO at https://github.com/SurniaUlula/wpsso.
+* **New Features**
+	* *None*
 
 <h4>Version 2.8.3</h4>
 
@@ -495,6 +506,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a check for a minimum image dimension of 200x200px (the minimum allowed by Facebook) for Open Graph meta tags.
 
 <h3>Upgrade Notice</h3>
+
+<h4>2.8.3.2</h4>
+
+Fixed a user contact field sanitation check, updated SucomUtil::limit_text_length() to use PHP multibyte functions, addeda minimum PHP version check.
 
 <h4>2.8.3.1</h4>
 
