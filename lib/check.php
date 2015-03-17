@@ -102,7 +102,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret = array();
 
 			$ret['curl'] = function_exists( 'curl_init' ) ? true : false;
-			$ret['mbdecnum'] = function_exists( 'mb_decode_numericentity' ) ? true : false;
 			$ret['postthumb'] = function_exists( 'has_post_thumbnail' ) ? true : false;
 			$ret['metatags'] = $this->get_avail_check( 'mt' );
 			$ret['aop'] = $this->get_avail_check( 'aop' );
@@ -236,14 +235,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$conflict_err_prefix =  __( 'Plugin conflict detected', WPSSO_TEXTDOM ) . ' - ';
 
 			// PHP
-			if ( empty( $this->p->is_avail['mbdecnum'] ) ) {
-				$this->p->debug->log( 'mb_decode_numericentity() function missing (required to decode UTF8 entities)' );
-				$this->p->notice->err( sprintf( 
-					__( 'The <code><a href="%s" target="_blank">mb_decode_numericentity()</a></code> function (available since PHP v4.0.6) is missing.', WPSSO_TEXTDOM ),
-					__( 'http://php.net/manual/en/function.mb-decode-numericentity.php', WPSSO_TEXTDOM ) ).' '.
-					__( 'This function is required to decode UTF8 entities.', WPSSO_TEXTDOM ).' '.
-					__( 'Please update your PHP installation (install \'php-mbstring\' on most Linux distros).', WPSSO_TEXTDOM ) );
-			}
 			if ( empty( $this->p->is_avail['curl'] ) ) {
 				if ( ! empty( $this->p->options['plugin_file_cache_hrs'] ) ) {
 					$this->p->debug->log( 'file caching is enabled but curl function is missing' );

@@ -406,19 +406,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return mb_decode_numericentity( $entity, $convmap, 'UTF-8' );
 		}
 
-		public function limit_text_length( $text, $textlen = 300, $trailing = '', $cleanup = true ) {
+		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr)
+		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup = true ) {
 			$charset = get_bloginfo( 'charset' );
 			if ( $cleanup === true )
 				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
 			else $text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
-			if ( $textlen > 0 ) {
-				if ( strlen( $trailing ) > $textlen )
-					$trailing = substr( $trailing, 0, $textlen );			// trim the trailing string, if too long
-				if ( strlen( $text ) > $textlen ) {
-					$text = substr( $text, 0, $textlen - strlen( $trailing ) );
+			if ( $maxlen > 0 ) {
+				if ( mb_strlen( $trailing ) > $maxlen )
+					$trailing = mb_substr( $trailing, 0, $maxlen );			// trim the trailing string, if too long
+				if ( mb_strlen( $text ) > $maxlen ) {
+					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
 					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// remove trailing bits of words
 					$text = preg_replace( '/[,\.]*$/', '', $text );			// remove trailing puntuation
-				} else $trailing = '';							// truncate trailing string if text is shorter than limit
+				} else $trailing = '';							// truncate trailing string if text is less than maxlen
 				$text = $text.$trailing;						// trim and add trailing string (if provided)
 			}
 			$text = htmlentities( $text, ENT_QUOTES, $charset, false );			// double_encode = false
@@ -443,6 +444,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/U', 
 							$text, $matches, PREG_PATTERN_ORDER ) ) {
+
 						foreach ( $matches[1] as $alt ) {
 							$alt = 'Image: '.trim( $alt );
 							$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt.' ' : $alt.'. ';

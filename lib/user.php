@@ -209,8 +209,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						// sanitize values only for those enabled contact methods
 						$val = wp_filter_nohtml_kses( $_POST[$name] );
 						if ( ! empty( $val ) ) {
-							// use the social prefix id to decide on actions
-							switch ( $id ) {
+							switch ( $name ) {
 								case $this->p->options['plugin_cm_skype_name']:
 									// no change
 									break;
@@ -230,6 +229,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 				}
 			}
+			return $user_id;
 		}
 
 		// provides backwards compatibility for wp 3.0

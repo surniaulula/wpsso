@@ -77,15 +77,29 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function activate_plugin() {
-			global $wp_version;
 			$lca = $this->p->cf['lca'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
-			if ( version_compare( $wp_version, $this->p->cf['wp']['min_version'], '<' ) ) {
-				require_once( ABSPATH.'wp-admin/includes/plugin.php' );
-				deactivate_plugins( WPSSO_PLUGINBASE );
-				error_log( WPSSO_PLUGINBASE.' requires WordPress '.$this->p->cf['wp']['min_version'].' or higher ('.$wp_version.' reported).' );
-				wp_die( '<p>'. sprintf( __( 'Sorry, the %1$s plugin cannot be activated &mdash; it requires WordPress version %2$s or newer.', WPSSO_TEXTDOM ), 
-					$short, $this->p->cf['wp']['min_version'] ).'</p>' );
+			foreach ( array( 'wp', 'php' ) as $key ) {
+				switch ( $key ) {
+					case 'wp':
+						$label = 'WordPress';
+						global $wp_version;
+						$version = $wp_version;
+						break;
+					case 'php':
+						$label = 'PHP';
+						$version = phpversion();
+						break;
+				}
+				$short = $this->p->cf['plugin'][$lca]['short'];
+				$min_version = $this->p->cf[$key]['min_version'];
+
+				if ( version_compare( $version, $min_version, '<' ) ) {
+					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+					deactivate_plugins( WPSSO_PLUGINBASE );
+					error_log( WPSSO_PLUGINBASE.' requires '.$label.' '.$min_version.' or higher ('.$version.' reported).' );
+					wp_die( '<p>The '.$short.' plugin cannot be activated &mdash; '.
+						$short.' requires '.$label.' version '.$min_version.' or newer.</p>' );
+				}
 			}
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
 			$this->p->set_config();
