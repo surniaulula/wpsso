@@ -206,13 +206,23 @@ if ( ! class_exists( 'SucomUpdate' ) ) {
 				$saved = update_site_option( $info['opt_name'], $option_data );
 				if ( $notice === true || $this->p->debug->is_on() ) {
 					if ( $saved === true ) {
-						$this->p->debug->log( 'update information saved to the '.$info['opt_name'].' option' );
+						$this->p->debug->log( 'update information saved in the '.
+							$info['opt_name'].' site option' );
 						$this->p->notice->inf( 'Plugin update information ('.
 							$info['opt_name'].') has been retrieved and saved.', true );
 					} else {
-						$this->p->debug->log( 'failed saving the update information to the '.$info['opt_name'].' option' );
-						$this->p->notice->err( 'WordPress returned an error saving the plugin update information ('.
-							$info['opt_name'].') to the options table.', true );
+						// update_site_option() can return false if existing option value is identical
+						if ( $option_data === get_site_option( $info['opt_name'] ) ) {
+							$this->p->debug->log( 'update information ignored - the '.
+								$info['opt_name'].' site option is current' );
+							$this->p->notice->inf( 'Plugin update information ('.
+								$info['opt_name'].') in the site option is current.', true );
+						} else {
+							$this->p->debug->log( 'failed saving the update information in the '.
+								$info['opt_name'].' site option' );
+							$this->p->notice->err( 'WordPress returned an error saving the plugin update information ('.
+								$info['opt_name'].') to the site options table.', true );
+						}
 					}
 					$this->p->debug->log( $option_data );
 				}
