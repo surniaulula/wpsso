@@ -446,8 +446,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 							$text, $matches, PREG_PATTERN_ORDER ) ) {
 
 						foreach ( $matches[1] as $alt ) {
-							$alt = 'Image: '.trim( $alt );
-							$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt.' ' : $alt.'. ';
+							$alt = trim( $alt );
+							if ( ! empty( $alt ) ) {
+								$alt = 'Image: '.$alt;
+								// add a period after the image alt text, if necessary
+								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? 
+									$alt.' ' : $alt.'. ';
+							}
 						}
 						$this->p->debug->log( 'img alt text: '.$alt_text );
 					}
