@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',		// lowercase acronym
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
-			'color' => '33cc00',		// menu item color
+			'color' => '339900',		// menu item color
 			'update_check_hours' => 24,
 			'plugin' => array(
 				'wpsso' => array(

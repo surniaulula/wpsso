@@ -155,9 +155,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->p->debug->log( 'curl: fetching cache_data from '.$get_url );
 			$cache_data = curl_exec( $ch );
 			$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+			$ssl_verify = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
 			curl_close( $ch );
 
 			$this->p->debug->log( 'curl: http return code = '.$http_code );
+			$this->p->debug->log( 'curl: ssl verify result = '.$ssl_verify );
+
 			if ( $http_code == 200 ) {
 				if ( empty( $cache_data ) )
 					$this->p->debug->log( 'cache_data returned from "'.$get_url.'" is empty' );

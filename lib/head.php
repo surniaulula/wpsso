@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
-			$this->p->debug->log( $obj );
+			//$this->p->debug->log( $obj );
 			$this->p->debug->log( 'post_id value set to '.$post_id );
 
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
