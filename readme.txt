@@ -396,6 +396,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+= Version 2.8.4 =
+
+* **Bugfixes**
+	* *None*
+* **Improvements**
+	* Added support for low/high resolution banners in the Plugin Details thickbox.
+* **New Features**
+	* *None*
+
 = Version 2.8.3.2 (2015/03/17) =
 
 * **Bugfixes**
