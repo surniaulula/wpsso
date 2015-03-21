@@ -401,7 +401,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Improvements**
-	* Added support for low/high resolution banners in the Plugin Details thickbox.
+	* Added support for low/high resolution banners in the Plugin Details thickbox window.
+	* Added the 'plugin-install' JavaScript to Pro Licenses settings pages to improve thickbox styling.
 * **New Features**
 	* *None*
 
