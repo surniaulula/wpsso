@@ -338,6 +338,7 @@ if ( ! class_exists( 'SucomPluginData' ) ) {
 		public $name;
 		public $slug;
 		public $version;
+		public $banners;
 		public $homepage;
 		public $sections;
 		public $download_url;
@@ -370,36 +371,48 @@ if ( ! class_exists( 'SucomPluginData' ) ) {
 		}
 	
 		public function json_to_wp(){
+
 			$fields = array(
 				'name', 
 				'slug', 
 				'version', 
-				'requires', 
 				'tested', 
-				'rating', 
-				'upgrade_notice',
 				'num_ratings', 
-				'downloaded', 
 				'homepage', 
-				'last_updated',
 				'download_url',
-				'author_homepage');
+				'author_homepage',
+				'requires', 
+				'upgrade_notice',
+				'rating', 
+				'downloaded', 
+				'last_updated',
+			);
 			$data = new StdClass;
+
 			foreach ( $fields as $field ) {
 				if ( isset( $this->$field ) ) {
-					if ($field == 'download_url') {
+					if ( $field == 'download_url' ) {
 						$data->download_link = $this->download_url; }
-					elseif ($field == 'author_homepage') {
-						$data->author = sprintf('<a href="%s">%s</a>', $this->author_homepage, $this->author); }
-					else { $data->$field = $this->$field; }
+					elseif ( $field == 'author_homepage' ) {
+						$data->author = strpos( $this->author, '<a href=' ) === false ?
+							sprintf( '<a href="%s">%s</a>', $this->author_homepage, $this->author ) :
+							$this->author;
+					} else { $data->$field = $this->$field; }
 				} elseif ( $field == 'author_homepage' )
 					$data->author = $this->author;
 			}
+
 			if ( is_array( $this->sections ) ) 
 				$data->sections = $this->sections;
 			elseif ( is_object( $this->sections ) ) 
 				$data->sections = get_object_vars( $this->sections );
 			else $data->sections = array( 'description' => '' );
+
+			if ( is_array( $this->banners ) ) 
+				$data->banners = $this->banners;
+			elseif ( is_object( $this->banners ) ) 
+				$data->banners = get_object_vars( $this->banners );
+
 			return $data;
 		}
 	}

@@ -630,6 +630,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
+		// if post_id 0 then returns values from the plugin settings 
 		public function get_max_nums( $post_id ) {
 			$this->p->debug->args( array( 'post_id' => $post_id ) );
 			$og_max = array();
@@ -757,7 +758,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$use_post = array_key_exists( 'use_post', $atts ) ? $atts['use_post'] : true;
 			$source_id = $src_name.( empty( $atts['css_id'] ) ? 
 				'' : '-'.preg_replace( '/^'.$this->p->cf['lca'].'-/','', $atts['css_id'] ) );
-			if ( $use_post == true && ! empty( $post ) ) 
+			if ( $use_post == true && isset( $post->ID ) ) 
 				$source_id = $source_id.'-post-'.$post->ID;
 			return $source_id;
 		}

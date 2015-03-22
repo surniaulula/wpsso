@@ -49,12 +49,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return $doctype;
 		}
 
-		public function get_array( &$og = array(), $use_post = false ) {
-			$obj = $this->p->util->get_post_object( $use_post );
+		public function get_array( &$og = array(), $use_post = false, $obj = false ) {
+			if ( ! is_object( $obj ) && ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+				$this->p->debug->log( 'exiting early: invalid object type' );
+				return $og;
+			}
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+			$this->p->debug->log( 'use_post/post_id values: '.
+				( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
+
 			$post_type = '';
 			$video_images = 0;
-			$og_max = $this->p->util->get_max_nums( $post_id );
+			$og_max = $this->p->util->get_max_nums( $post_id );	// if post_id 0 then returns plugin settings 
 			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
 
 			if ( ! isset( $og['fb:admins'] ) )

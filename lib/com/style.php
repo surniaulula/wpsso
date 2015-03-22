@@ -18,8 +18,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$this->p =& $plugin;
 			$this->p->debug->mark();
 
-			if ( is_admin() )
+			if ( is_admin() ) {
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ) );
+			}
 		}
 
 		public function admin_enqueue_styles( $hook ) {
@@ -46,7 +47,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					break;
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
-					add_thickbox();		// required to view plugin details
+					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
+					add_thickbox();		// required to view plugin details box
 					// no break
 				case ( preg_match( '/_page_'.$lca.'-/', $hook ) ? true : false ) :
 					wp_enqueue_style( 'jquery-qtip.js' );
@@ -59,6 +61,11 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					break;
 			}
 			$this->admin_inline_styles( $hook );
+		}
+
+		public function add_plugins_body_class( $classes ) {
+			$classes .= ' plugins-php';
+			return $classes;
 		}
 
 		private function thickbox_inline_styles( $hook ) {

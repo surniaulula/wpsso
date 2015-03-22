@@ -54,7 +54,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					'is_ssl',
 					'is_tag',
 					'is_tax',
-					// ecommerce functions
+					//'is_term',	// deprecated since wp 3.0
+					/*
+					 * e-commerce / woocommerce functions
+					 */
 					'is_account_page',
 					'is_cart',
 					'is_checkout',
@@ -102,7 +105,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->show_html( $meta_opts, 'wpsso post meta options for post id '.$post_id );
 					}
 				}
-			}
+			}	// end of debug information
 		}
 
 		public function extract_post_info( &$header_tags, &$post_info = array() ) {
@@ -150,7 +153,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_header_array( $use_post = false, $read_cache = true, &$meta_og = array() ) {
-			$this->p->debug->mark();
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
@@ -158,8 +160,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
-			//$this->p->debug->log( $obj );
-			$this->p->debug->log( 'post_id value set to '.$post_id );
+			$this->p->debug->log( 'use_post/post_id values: '.
+				( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
 
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
 			$author_id = false;
@@ -205,7 +207,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$author_id = $this->p->options['seo_def_author_id'];
 
 			if ( $author_id !== false )
-				$this->p->debug->log( 'author_id value set to '.$author_id );
+				$this->p->debug->log( 'author_id value: '.$author_id );
 
 			/**
 			 * Open Graph, Twitter Card
@@ -213,7 +215,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * The Twitter Card meta tags are added by the 
 			 * WpssoHeadTwittercard class using an 'wpsso_og' filter hook.
 			 */
-			$meta_og = $this->p->og->get_array( $meta_og, $use_post );
+			$meta_og = $this->p->og->get_array( $meta_og, $use_post, $obj );
 
 			/**
 			 * Name / SEO meta tags

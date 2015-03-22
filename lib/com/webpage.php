@@ -295,7 +295,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_title', $title, $use_post, $add_hashtags, $custom, $source_id );
 		}
 
-		public function get_description( $textlen = 156, $trailing = '...', $use_post = false, $use_cache = true, $add_hashtags = true, $encode = true, $custom = 'og_desc', $source_id = '' ) {
+		public function get_description( $textlen = 156, $trailing = '...', $use_post = false, 
+			$use_cache = true, $add_hashtags = true, $encode = true, $custom = 'og_desc', $source_id = '' ) {
+
 			$this->p->debug->args( array( 
 				'textlen' => $textlen, 
 				'trailing' => $trailing, 

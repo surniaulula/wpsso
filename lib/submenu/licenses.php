@@ -43,8 +43,8 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 						'tab' => 'plugin-information',
 						'plugin' => $info['slug'],
 						'TB_iframe' => 'true',
-						'width' => 772,
-						'height' => 622
+						'width' => 600,
+						'height' => 550
 					), get_admin_url( null, 'plugin-install.php' ) );
 					$status = 'View Plugin Details';
 					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {
