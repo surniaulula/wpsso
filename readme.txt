@@ -396,7 +396,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
-= Version 2.8.4 =
+= Version 2.8.4 (2015/03/22) =
 
 * **Bugfixes**
 	* *None*
