@@ -631,11 +631,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					break;
 				case 'pro-feature-msg':
 					if ( $this->p->check->aop( $lca, false ) )
-						$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase '.$short_pro.' licence(s) to modify the following options (and load its Pro modules)</a></p>';
-					else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase the '.$short_pro.' plugin to modify the following options (and get its Pro modules)</a></p>';
+						$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase '.$short_pro.' licence(s) to modify the following options and access Pro modules</a></p>';
+					else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase the '.$short_pro.' plugin to modify the following options and get all Pro modules</a></p>';
 					break;
 				case 'pro-option-msg':
-					$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.$short_pro.' required to enable this option</a></p>';
+					$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.$short_pro.' is required to use this option</a></p>';
 					break;
 				case 'pro-activate-nag':
 					if ( ! is_multisite() ) {
