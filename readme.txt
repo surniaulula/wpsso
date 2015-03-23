@@ -404,6 +404,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added support for low/high resolution banners in the Plugin Details thickbox window.
 	* Added the 'plugin-install' JavaScript to Pro Licenses settings pages to improve thickbox styling.
 	* Added an extra check to require an object / post ID in the WooCommerce module (Pro version).
+	* Refactored the WooCommerce module for custom taxonomies (Pro version)
 * **New Features**
 	* *None*
 
