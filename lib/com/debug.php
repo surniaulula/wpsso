@@ -18,21 +18,45 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $active = false;	// true if at least one subsys is true
 		private $buffer = array();	// accumulate text strings going to html output
 		private $subsys = array();	// associative array to enable various outputs 
+		private $start_time = null;
+		private $begin_time = array();
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
 			$this->p =& $plugin;
+			$this->start_time = microtime( true );
 			$this->display_name = $this->p->cf['lca'];
 			$this->log_prefix = $this->p->cf['uca'];
 			$this->subsys = $subsys;
-			$this->is_on();
+			$this->is_on();		// set $this->active
 			$this->mark();
 		}
 
-		public function mark() { 
+		public function mark( $id = false ) { 
 			if ( $this->active !== true ) 
 				return;
 
-			$this->log( 'mark', 2 ); 
+			$diff_time = false;
+			$current_time = microtime( true );
+			if ( $this->start_time === null )
+				$start_time = $current_time;
+			$total_time = $current_time - $this->start_time;
+			$time_text = sprintf( '%f', $total_time );
+
+			if ( $id !== false ) {
+				$id_prefix = '- - - - - - ';
+				$id_text = $id_prefix.$id;
+				if ( isset( $this->begin_time[$id] ) ) {
+					$diff_time = $current_time - $this->begin_time[$id];
+					$id_text .= ' end +'.sprintf( '%f', $diff_time );
+					unset( $this->begin_time[$id] );
+				} else {
+					$this->begin_time[$id] = $current_time;
+					$id_text .= ' begin';
+				}
+			}
+
+			$this->log( 'mark ('.$time_text.')'.
+				( $id !== false ? "\n\t".$id_text : '' ), 2 );
 		}
 
 		public function args( $args = array() ) { 
@@ -69,7 +93,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function show_html( $data = null, $title = null ) {
-			if ( $this->is_on( 'html' ) !== true ) return;
+			if ( $this->is_on( 'html' ) !== true ) 
+				return;
 			echo $this->get_html( $data, $title, 2 );
 		}
 
@@ -125,8 +150,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function is_on( $name = '' ) {
 			if ( ! empty( $name ) )
 				return array_key_exists( $name, $this->subsys ) ? $this->subsys[$name] : false;
-			else 
-				$this->active = in_array( true, $this->subsys, true ) ? true : false;
+			else $this->active = in_array( true, $this->subsys, true ) ? true : false;
+
 			return $this->active;
 		}
 

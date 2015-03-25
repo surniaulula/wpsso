@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form();				// define form for side boxes and show_form_content()
 			if ( $this->p->debug->is_on() ) {
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
-				$this->p->debug->show_html( print_r( $this->p->check->get_active(), true ), 'active plugins' );
+				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
 				$this->p->debug->show_html( null, 'debug log' );
 			}
 			?>

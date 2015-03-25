@@ -12,8 +12,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
 
-		private static $crawler_name = false;
-		private $urls_found = array();	// array to detect duplicate images, etc.
+		private static $crawler_name = null;
+		private static $plugins_idx = array();	// hash of active site and network plugins
+		private static $site_plugins = array();
+		private static $network_plugins = array();
+
+		private $urls_found = array();		// array to detect duplicate images, etc.
 		private $inline_vars = array(
 			'%%post_id%%',
 			'%%request_url%%',
@@ -62,6 +66,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return str_replace( $this->inline_vars, $this->get_inline_vals( $use_post, $obj ), $str );
 		}
 
+		public static function active_plugins( $idx = false ) {
+			if ( empty( self::$plugins_idx ) ) {
+				$all_plugins = self::$site_plugins = get_option( 'active_plugins', array() );
+				if ( is_multisite() ) {
+					self::$network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+					if ( ! empty( self::$network_plugins ) )
+						$all_plugins = array_merge( self::$site_plugins, self::$network_plugins );
+				}
+				foreach ( $all_plugins as $base )
+					self::$plugins_idx[$base] = true;
+			}
+			if ( $idx !== false ) {
+				if ( isset( self::$plugins_idx ) )
+					return self::$plugins_idx;
+				else return false;
+			} else return self::$plugins_idx;
+		}
+
 		public static function a2aa( $a ) {
 			$aa = array();
 			foreach ( $a as $i )
@@ -70,35 +92,40 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function crawler_name( $id = '' ) {
-			if ( self::$crawler_name === false ) {	// optimize perf - only check once
-				$str = $_SERVER['HTTP_USER_AGENT'];
+			// optimize perf - only check once
+			if ( self::$crawler_name === null ) {
+				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
+					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
 				switch ( true ) {
 					// "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
-					case ( strpos( $str, 'facebookexternalhit/' ) === 0 ):
+					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
 						self::$crawler_name = 'facebook';
 						break;
 	
 					// "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
-					case ( strpos( $str, 'compatible; Googlebot/' ) !== false ):
+					case ( strpos( $ua, 'compatible; googlebot/' ) !== false ):
 						self::$crawler_name = 'google';
 						break;
 	
 					// "Pinterest/0.1 +http://pinterest.com/"
-					case ( strpos( $str, 'Pinterest/' ) === 0 ):
+					case ( strpos( $ua, 'pinterest/' ) === 0 ):
 						self::$crawler_name = 'pinterest';
 						break;
 	
 					// "Twitterbot/1.0"
-					case ( strpos( $str, 'Twitterbot/' ) === 0 ):
+					case ( strpos( $ua, 'twitterbot/' ) === 0 ):
 						self::$crawler_name = 'twitter';
 						break;
 	
 					// "W3C_Validator/1.3 http://validator.w3.org/services"
-					case ( strpos( $str, 'W3C_Validator/' ) === 0 ):
+					case ( strpos( $ua, 'w3c_validator/' ) === 0 ):
 						self::$crawler_name = 'w3c';
 						break;
+					default:
+						self::$crawler_name = 'unknown';
+						break;
 				}
-			}	
+			}
 			if ( ! empty( $id ) )
 				return $id === self::$crawler_name ? true : false;
 			else return self::$crawler_name;
@@ -632,7 +659,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// if post_id 0 then returns values from the plugin settings 
 		public function get_max_nums( $post_id ) {
-			$this->p->debug->args( array( 'post_id' => $post_id ) );
 			$og_max = array();
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
 				$num_meta = false;

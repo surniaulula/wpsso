@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'update_check_hours' => 24,
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '2.8.4',		// plugin version
+					'version' => '2.8.5',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -511,13 +511,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.$version.
 				( defined( 'NONCE_SALT' ) ? NONCE_SALT : '' ) ) );
 
-			/*
-			 * Allow some constants to be pre-defined in wp-config.php
-			 */
-
 			if ( defined( 'WPSSO_DEBUG' ) && 
 				! defined( 'WPSSO_HTML_DEBUG' ) )
 					define( 'WPSSO_HTML_DEBUG', WPSSO_DEBUG );
+
+			if ( ! defined( 'WPSSO_DEBUG_FILE_EXP' ) )
+				define( 'WPSSO_DEBUG_FILE_EXP', 300 );
 
 			if ( ! defined( 'WPSSO_CACHEDIR' ) )
 				define( 'WPSSO_CACHEDIR', WPSSO_PLUGINDIR.'cache/' );
@@ -525,18 +524,42 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! defined( 'WPSSO_CACHEURL' ) )
 				define( 'WPSSO_CACHEURL', WPSSO_URLPATH.'cache/' );
 
+			if ( ! defined( 'WPSSO_TOPICS_LIST' ) )
+				define( 'WPSSO_TOPICS_LIST', WPSSO_PLUGINDIR.'share/topics.txt' );
+
+			/*
+			 * WPSSO option and meta array names
+			 */
 			if ( ! defined( 'WPSSO_OPTIONS_NAME' ) )
-				define( 'WPSSO_OPTIONS_NAME', $cf['lca'].'_options' );
+				define( 'WPSSO_OPTIONS_NAME', 'wpsso_options' );
 
 			if ( ! defined( 'WPSSO_SITE_OPTIONS_NAME' ) )
-				define( 'WPSSO_SITE_OPTIONS_NAME', $cf['lca'].'_site_options' );
+				define( 'WPSSO_SITE_OPTIONS_NAME', 'wpsso_site_options' );
 
 			if ( ! defined( 'WPSSO_META_NAME' ) )
-				define( 'WPSSO_META_NAME', '_'.$cf['lca'].'_meta' );
+				define( 'WPSSO_META_NAME', '_wpsso_meta' );
 
 			if ( ! defined( 'WPSSO_PREF_NAME' ) )
-				define( 'WPSSO_PREF_NAME', '_'.$cf['lca'].'_pref' );
+				define( 'WPSSO_PREF_NAME', '_wpsso_pref' );
 
+			/*
+			 * WPSSO option and meta array alternate / fallback names
+			 */
+			if ( ! defined( 'WPSSO_OPTIONS_NAME_ALT' ) )
+				define( 'WPSSO_OPTIONS_NAME_ALT', 'ngfb_options' );
+
+			if ( ! defined( 'WPSSO_SITE_OPTIONS_NAME_ALT' ) )
+				define( 'WPSSO_SITE_OPTIONS_NAME_ALT', 'ngfb_site_options' );
+
+			if ( ! defined( 'WPSSO_META_NAME_ALT' ) )
+				define( 'WPSSO_META_NAME_ALT', '_ngfb_meta' );
+
+			if ( ! defined( 'WPSSO_PREF_NAME_ALT' ) )
+				define( 'WPSSO_PREF_NAME_ALT', '_ngfb_pref' );
+
+			/*
+			 * WPSSO hook priorities
+			 */
 			if ( ! defined( 'WPSSO_META_SAVE_PRIORITY' ) )
 				define( 'WPSSO_META_SAVE_PRIORITY', 6 );
 
@@ -552,17 +575,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! defined( 'WPSSO_HEAD_PRIORITY' ) )
 				define( 'WPSSO_HEAD_PRIORITY', 10 );
 
-			if ( ! defined( 'WPSSO_DEBUG_FILE_EXP' ) )
-				define( 'WPSSO_DEBUG_FILE_EXP', 300 );
-
+			/*
+			 * WPSSO curl settings
+			 */
 			if ( ! defined( 'WPSSO_CURL_USERAGENT' ) )
 				define( 'WPSSO_CURL_USERAGENT', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36' );
 
 			if ( ! defined( 'WPSSO_CURL_CAINFO' ) )
 				define( 'WPSSO_CURL_CAINFO', WPSSO_PLUGINDIR.'share/curl/cacert.pem' );
-
-			if ( ! defined( 'WPSSO_TOPICS_LIST' ) )
-				define( 'WPSSO_TOPICS_LIST', WPSSO_PLUGINDIR.'share/topics.txt' );
 		}
 
 		public static function require_libs( $plugin_filepath ) {

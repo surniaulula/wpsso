@@ -16,8 +16,12 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging
+			if ( $debug_enabled )
+				$this->p->debug->mark( 'load modules' );
 			$this->modules();
+			if ( $debug_enabled )
+				$this->p->debug->mark( 'load modules' );
 		}
 
 		private function modules() {
@@ -31,8 +35,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					foreach ( $lib as $id => $name ) {
 						if ( $this->p->is_avail[$sub][$id] ) {
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
-							if ( $classname !== false && class_exists( $classname ) )
+							if ( $classname !== false && class_exists( $classname ) ) {
 								$this->p->mods[$sub][$id] = new $classname( $this->p );
+							}
 						}
 					}
 				}

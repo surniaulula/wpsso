@@ -36,11 +36,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// called from several class __construct() methods to hook their filters
 		public function add_plugin_filters( &$class, $filters, $prio = 10, $lca = '' ) {
 			$lca = $lca === '' ? $this->p->cf['lca'] : $lca;
+			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging in loops
 			foreach ( $filters as $name => $num ) {
 				$filter = $lca.'_'.$name;
 				$method = 'filter_'.$name;
 				add_filter( $filter, array( &$class, $method ), $prio, $num );
-				//$this->p->debug->log( 'filter for '.$filter.' added', 2 );
+				if ( $debug_enabled )
+					$this->p->debug->log( 'filter for '.$filter.' added', 2 );
 			}
 		}
 
@@ -71,6 +73,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $filter === true )
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $post_id );
 			$meta_opts = array();
+			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging in loops
 
 			// allow custom post meta to override the image size options
 			// get the post meta if we can determine a post_id
@@ -83,7 +86,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				// on non-singular pages, $post_id may be an object here
 				if ( is_numeric( $post_id ) && $post_id > 0 ) {
-					$this->p->debug->log( 'reading custom meta for post id '.$post_id );
+					if ( $debug_enabled )
+						$this->p->debug->log( 'reading custom meta for post id '.$post_id );
 					$meta_opts = $this->p->mods['util']['postmeta']->get_options( $post_id );
 				} 
 			}
@@ -131,28 +135,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					add_image_size( $this->p->cf['lca'].'-'.$size_info['name'], 
 						$size_info['width'], $size_info['height'], $size_info['crop'] );
 
-					$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_info['name'].' '.
-						$size_info['width'].'x'.$size_info['height'].
-						( empty( $size_info['crop'] ) ? '' : ' crop '.
-							$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
-				}
-			}
-		}
-
-		// deprecated function
-		public function add_img_sizes_from_opts( $sizes ) {
-			foreach( $sizes as $opt_prefix => $size_suffix ) {
-				if ( ! empty( $this->p->options[$opt_prefix.'_width'] ) &&
-					! empty( $this->p->options[$opt_prefix.'_height'] ) ) {
-
-					$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_suffix.
-						' '.$this->p->options[$opt_prefix.'_width'].'x'.$this->p->options[$opt_prefix.'_height'].
-						( empty( $this->p->options[$opt_prefix.'_crop'] ) ? '' : ' cropped' ).' added', 2 );
-
-					add_image_size( $this->p->cf['lca'].'-'.$size_suffix, 
-						$this->p->options[$opt_prefix.'_width'], 
-						$this->p->options[$opt_prefix.'_height'], 
-						( empty( $this->p->options[$opt_prefix.'_crop'] ) ? false : true ) );
+					if ( $debug_enabled )
+						$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_info['name'].' '.
+							$size_info['width'].'x'.$size_info['height'].
+							( empty( $size_info['crop'] ) ? '' : ' crop '.
+								$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
 				}
 			}
 		}
@@ -235,13 +222,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function flush_cache_objects( &$transients = array(), &$objects = array() ) {
 			$deleted = 0;
+			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging in loops
 			foreach ( $transients as $group => $arr ) {
 				foreach ( $arr as $val ) {
 					if ( ! empty( $val ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( delete_transient( $cache_id ) ) {
-							if ( $this->p->debug->is_on() )
+							if ( $debug_enabled )
 								$this->p->debug->log( 'flushed transient cache salt: '. $cache_salt );
 							$deleted++;
 						}
@@ -254,7 +242,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( wp_cache_delete( $cache_id, $group ) ) {
-							if ( $this->p->debug->is_on() )
+							if ( $debug_enabled )
 								$this->p->debug->log( 'flushed object cache salt: '. $cache_salt );
 							$deleted++;
 						}
@@ -287,7 +275,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $cache_id ) ) {
 				set_transient( $cache_id, $topics, $this->p->cache->object_expire );
-				$this->p->debug->log( $cache_type.': topics array saved to transient '.$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
+				$this->p->debug->log( $cache_type.': topics array saved to transient '.
+					$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
 			}
 			return $topics;
 		}
