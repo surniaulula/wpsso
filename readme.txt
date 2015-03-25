@@ -398,6 +398,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+= Version 2.8.5 =
+
+* **Bugfixes**
+	* Added a check for `$_SERVER['HTTP_USER_AGENT']` before using its value in the SucomUtil::crawler_name() method.
+* **Improvements**
+	* The 'Add Hidden Debug Messages' option now disables only the transient cache, instead of both the transient and WP object caches.
+	* The `SucomDebug::mark()` method now adds the microtime to its debug log entries.
+	* Slight performance improvement by checking status of debug system before calling its logging methods (avoiding unnecessary method calls).
+	* Removed the `WpssoUtil::add_img_sizes_from_opts()` deprecated method.
+	* Added a new `SucomUtil::active_plugins()` method to fetch and cache the active plugins list.
+	* Added a check to remove a WordPress SEO false conflict warning.
+	* Added default values for the WPSSO_OPTIONS_NAME_ALT, WPSSO_SITE_OPTIONS_NAME_ALT, WPSSO_META_NAME_ALT, and WPSSO_PREF_NAME_ALT constants.
+* **New Features**
+	* *None*
+
 = Version 2.8.4 (2015/03/22) =
 
 * **Bugfixes**
