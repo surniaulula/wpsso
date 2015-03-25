@@ -398,7 +398,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
-= Version 2.8.5 =
+= Version 2.8.5 (2015/03/26) =
 
 * **Bugfixes**
 	* Added a check for `$_SERVER['HTTP_USER_AGENT']` before using its value in the SucomUtil::crawler_name() method.
@@ -531,6 +531,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a check for a minimum image dimension of 200x200px (the minimum allowed by Facebook) for Open Graph meta tags.
 
 == Upgrade Notice ==
+
+= 2.8.5 =
+
+Small performance improvement in non-debug mode, fixed a user-agent string check error, added feature to remove false conflict warning from WordPress SEO.
 
 = 2.8.4 =
 
