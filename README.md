@@ -415,6 +415,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a new `SucomUtil::active_plugins()` method to fetch and cache the active plugins list.
 	* Added a check to remove a WordPress SEO false conflict warning.
 	* Added default values for the WPSSO_OPTIONS_NAME_ALT, WPSSO_SITE_OPTIONS_NAME_ALT, WPSSO_META_NAME_ALT, and WPSSO_PREF_NAME_ALT constants.
+	* Changed the default Twitter Card image sizes from 200x200 cropped to 300x300 cropped for the Summary Card, and from 300x300 un-cropped to 800x800 un-cropped for the Large Image Summary Card.
 * **New Features**
 	* *None*
 
