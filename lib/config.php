@@ -31,18 +31,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'icon-medium' => 'https://ps.w.org/wpsso/assets/icon-256x256.png?rev=',
 					),
 					'url' => array(
+						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso/',
-						'update' => 'http://surniaulula.com/extend/plugins/wpsso/update/',
-						'purchase' => 'http://surniaulula.com/extend/plugins/wpsso/',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso#postform',
 						'readme' => 'https://plugins.svn.wordpress.org/wpsso/trunk/readme.txt',
 						'setup' => 'https://plugins.svn.wordpress.org/wpsso/trunk/setup.html',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso',
+						// surniaulula
+						'update' => 'http://surniaulula.com/extend/plugins/wpsso/update/',
+						'purchase' => 'http://surniaulula.com/extend/plugins/wpsso/',
 						'changelog' => 'http://surniaulula.com/extend/plugins/wpsso/changelog/',
 						'codex' => 'http://surniaulula.com/codex/plugins/wpsso/',
 						'faq' => 'http://surniaulula.com/codex/plugins/wpsso/faq/',
 						'notes' => 'http://surniaulula.com/codex/plugins/wpsso/notes/',
 						'feed' => 'http://surniaulula.com/category/application/wordpress/wp-plugins/wpsso/feed/',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso',
 						'pro_support' => 'http://support.wpsso.surniaulula.com/',
 						'pro_ticket' => 'http://ticket.wpsso.surniaulula.com/',
 					),

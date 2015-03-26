@@ -76,11 +76,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 						}
 					}
 				}
-
-				if ( version_compare( $opts['options_version'], 296, '<=' ) ) {
-					if ( $opts['plugin_min_shorten'] < 22 ) 
-						$opts['plugin_min_shorten'] = 22;
-				}
 			}
 
 			$opts = $this->sanitize( $opts, $def_opts );	// cleanup excess options and sanitize
