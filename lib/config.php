@@ -232,14 +232,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_site' => '',
 					'tc_desc_len' => 200,
 					// summary card
-					'tc_sum_width' => 200,
-					'tc_sum_height' => 200,
+					'tc_sum_width' => 300,
+					'tc_sum_height' => 300,
 					'tc_sum_crop' => 1,
 					'tc_sum_crop_x' => 'center',
 					'tc_sum_crop_y' => 'center',
 					// large image summary card
-					'tc_lrgimg_width' => 300,
-					'tc_lrgimg_height' => 300,
+					'tc_lrgimg_width' => 800,
+					'tc_lrgimg_height' => 800,
 					'tc_lrgimg_crop' => 0,
 					'tc_lrgimg_crop_x' => 'center',
 					'tc_lrgimg_crop_y' => 'center',
