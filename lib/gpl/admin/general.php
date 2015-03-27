@@ -222,16 +222,13 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$rows[] = $this->p->util->th( 'Enable Twitter Cards', 'highlight', 'tc_enable' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
-			if ( WpssoUser::show_opts( 'all' ) ) {
-
-				$rows[] = $this->p->util->th( 'Maximum Description Length', null, 'tc_desc_len' ).
-				'<td class="blank">'.$this->p->options['tc_desc_len'].' characters or less</td>';
-			}
-
 			$rows[] = $this->p->util->th( 'Website @username to Follow', 'highlight', 'tc_site' ).
 			'<td class="blank">'.$this->p->options['tc_site'].'</td>';
 
 			if ( WpssoUser::show_opts( 'all' ) ) {
+
+				$rows[] = $this->p->util->th( 'Maximum Description Length', null, 'tc_desc_len' ).
+				'<td class="blank">'.$this->p->options['tc_desc_len'].' characters or less</td>';
 
 				$rows[] = $this->p->util->th( '<em>Summary</em> Card Image Dimensions', null, 'tc_sum_dimensions' ).
 				'<td class="blank">'.$form->get_image_dimensions_text( 'tc_sum' ).'</td>';
