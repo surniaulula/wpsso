@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'aop':
 					return ( ! defined( 'WPSSO_PRO_MODULE_DISABLE' ) ||
 					( defined( 'WPSSO_PRO_MODULE_DISABLE' ) && ! WPSSO_PRO_MODULE_DISABLE ) ) &&
-					file_exists( WPSSO_PLUGINDIR.'lib/pro/head/twittercard.php' ) ? true : false;
+					file_exists( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'mt':
 				case 'metatags':

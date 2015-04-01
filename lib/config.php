@@ -628,7 +628,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			
 			$cf = self::get_config();
 
-			require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
+			if ( file_exists( WPSSO_PLUGINDIR.'lib/pro/' ) )
+				require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
+
 			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/notice.php' );
