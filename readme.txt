@@ -403,9 +403,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* Fixed the saving of WPSSO option pages under the WordPress "Settings" menu item.
 * **Improvements**
-	* *None*
+	* Further performance improvements for non-debug mode by centralizing debug mode checks.
+	* Removed the "LinkedIn" tab on the SSO General settings page, and added an "Others" tab (which includes LinkedIn, Instagram, and MySpace business URLs).
+	* Refactored the WPSSO settings tab layout to allow excess tabs to continue onto a second line.
+	* When checking for duplicate meta tags in posts / pages, constants are defined to disable caching plugins for that webpage request.
 * **New Features**
-	* *None*
+	* Added an "SSO" separator to clearly identify WPSSO setting pages in the WordPress Settings list.
+	* Added a new "Image Dimensions" settings page under the WordPress Settings menu item.
+	* Added a new "Website / Business Social Accounts" settings page under the WordPress Settings menu item.
+	* Added MySpace to the list of social contact methods added to user profile pages.
 
 = Version 2.8.5 (2015/03/26) =
 
