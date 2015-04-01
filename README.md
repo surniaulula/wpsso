@@ -541,17 +541,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added the "Schema Website / Business Logo URL", "Add Schema Publisher Social JSON", and "Add Schema Author Social JSON" options under to the Google (G+ and Search) publisher settings tab (Pro version).
 	* Added author (Person) and publisher (Organization) <a href="https://developers.google.com/structured-data/customize/social-profiles">social profiles markup in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
 
-<h4>Version 2.7.6</h4>
-
-* **Bugfixes**
-	* *None*
-* **Improvements**
-	* Renamed the `WpssoAdmin::get_form_ref()` method to `get_form_reference()` (update to WPSSO SSB v1.1.7 required).
-* **New Features**
-	* Added a check for the og:image meta tag, and if missing, issue a warning (Facebook requires at least one og:image meta tag).
-	* Added a check for a minimum image dimension of 200x200px (the minimum allowed by Facebook) for Open Graph meta tags.
-
 <h3>Upgrade Notice</h3>
+
+<h4>2.9</h4>
+
+Fixed saving of WPSSO options under the WordPress "Settings" menu, added new "Image Dimensions" and "Website / Business Social Accounts" settings pages.
 
 <h4>2.8.5</h4>
 
