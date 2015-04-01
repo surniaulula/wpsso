@@ -232,6 +232,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					' and informational messages are being added as hidden HTML comments.' );
 			}
 
+			/*
+			 * The update.php library file is not loaded unless the end-user purchases a Pro upgrade and enters 
+			 * their purchased Authentication ID in the settings, after which the end-user gets Pro version update
+			 * information, and the plugin no longer checks wordpress.org (this is explained thoroughly to
+			 * end-users on the license settings page as well).
+			 */
 			if ( ! empty( $this->options['plugin_wpsso_tid'] ) ) {
 				$this->util->add_plugin_filters( $this, array( 'installed_version' => 1, 'ua_plugin' => 1 ) );
 
