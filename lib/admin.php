@@ -501,9 +501,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'style="background-color:#0f0;"';
 				}
 
-				//$update_info = class_exists( 'SucomUpdate' ) ?
-				//	SucomUpdate::get_option( $lca ) : false;
-	
 				echo '<tr><td colspan="2"><h4>'.$info['short'].
 					( $this->p->check->aop( $lca ) ? ' Pro' : ' Free' ).'</h4></td></tr>';
 				echo '<tr><th class="side">'.__( 'Installed', WPSSO_TEXTDOM ).':</th>

@@ -233,15 +233,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			/*
-			 * The update.php library file is not loaded unless the end-user purchases a Pro upgrade and enters 
-			 * their purchased Authentication ID in the settings, after which the end-user gets Pro version update
-			 * information, and the plugin no longer checks wordpress.org (this is explained thoroughly to
-			 * end-users on the license settings page as well).
+			 * The SucomUpdate class is not created unless the end-user purchases a Pro upgrade and enters 
+			 * their purchased Authentication ID in the settings, after which the end-user gets Pro version
+			 * update information, and the plugin no longer checks wordpress.org (this is explained thoroughly
+			 * to end-users on the license settings page as well).
 			 */
 			if ( ! empty( $this->options['plugin_wpsso_tid'] ) ) {
 				$this->util->add_plugin_filters( $this, array( 'installed_version' => 1, 'ua_plugin' => 1 ) );
-
-				require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
 				$this->update = new SucomUpdate( $this, $this->cf['plugin'], $this->cf['update_check_hours'] );
 
 				if ( is_admin() ) {
