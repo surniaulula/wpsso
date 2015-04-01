@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoGplAdminPostmeta' ) ) {
 			$rows[] = $this->p->util->th( 'Image ID', 'medium', 'postmeta-og_img_id', $post_info ).
 			'<td class="blank">&nbsp;</td>';
 
-			$rows[] = $this->p->util->th( 'Image URL', 'medium', 'postmeta-og_img_url', $post_info ).
+			$rows[] = $this->p->util->th( 'or Image URL', 'medium', 'postmeta-og_img_url', $post_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			if ( WpssoUser::show_opts( 'all' ) ) {
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoGplAdminPostmeta' ) ) {
 				$rows[] = $this->p->util->th( 'Image ID', 'medium', 'postmeta-rp_img_id', $post_info ).
 				'<td class="blank">&nbsp;</td>';
 
-				$rows[] = $this->p->util->th( 'Image URL', 'medium', 'postmeta-rp_img_url', $post_info ).
+				$rows[] = $this->p->util->th( 'or Image URL', 'medium', 'postmeta-rp_img_url', $post_info ).
 				'<td class="blank">&nbsp;</td>';
 			}
 

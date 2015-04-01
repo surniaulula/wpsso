@@ -758,13 +758,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			echo '<script type="text/javascript">jQuery(document).ready(function(){ 
 				sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>
-			<div class="'.$class_metabox_tabs.'">
+			<div class="'.$class_metabox_tabs.'">';
 
-			<ul class="'.$class_metabox_tabs.'">';
+			$li_num = 0;
+			$li_max = 3;
+			$li_last = count( $tabs );
 			foreach ( $tabs as $tab => $title ) {
+				$li_num++;
+				if ( $li_num % $li_max )
+					echo '<ul class="'.$class_metabox_tabs.'">';
+				if ( $li_num == $li_max || $li_num == $li_last ) {
+					$li_num = 0;
+					echo '</ul>';
+				}
 				$href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="'.$href_key.'"><a 
-					class="'.$class_link.'" href="#'.$href_key.'">'.$title.'</a></li>';
+				echo '<li class="'.$href_key.'"><a class="'.$class_link.'" href="#'.$href_key.'">'.$title.'</a></li>';
 			}
 			echo '</ul>';
 

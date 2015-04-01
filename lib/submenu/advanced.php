@@ -23,6 +23,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_plugin', 'Advanced Settings', 
 				array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
+
 			add_meta_box( $this->pagehook.'_contact_fields', 'Profile Contact Fields', 
 				array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
@@ -54,7 +55,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
-
 			echo '<table class="sucom-setting" style="padding-bottom:0"><tr><td>'.
 			$this->p->msgs->get( 'info-'.$metabox ).'</td></tr></table>';
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
@@ -110,38 +110,35 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$this->p->util->th( 'Show', 'left checkbox' ).
 					$this->p->util->th( 'Contact Field Name', 'left medium', 'custom-cm-field-name' ).
 					$this->p->util->th( 'Profile Contact Label', 'left wide' );
+
 					$sorted_opt_pre = $this->p->cf['opt']['pre'];
 					ksort( $sorted_opt_pre );
+
 					foreach ( $sorted_opt_pre as $id => $pre ) {
-						$cm_opt = 'plugin_cm_'.$pre.'_';
+
+						$cm_enabled = 'plugin_cm_'.$pre.'_enabled';
+						$cm_name = 'plugin_cm_'.$pre.'_name';
+						$cm_label = 'plugin_cm_'.$pre.'_label';
 
 						// check for the lib website classname for a nice 'display name'
 						$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
 							ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
 						$name = $name == 'GooglePlus' ? 'Google+' : $name;
 
-						switch ( $id ) {
-							case 'facebook':
-							case 'gplus':
-							case 'twitter':
-							case ( WpssoUser::show_opts( 'all' ) ):
-								// not all social websites have a contact method field
-								if ( array_key_exists( $cm_opt.'enabled', $this->p->options ) ) {
-									if ( $this->p->check->aop() ) {
-										$rows[] = $this->p->util->th( $name, 'medium' ).
-										'<td class="checkbox">'.$this->form->get_checkbox( $cm_opt.'enabled' ).'</td>'.
-										'<td>'.$this->form->get_input( $cm_opt.'name', 'medium' ).'</td>'.
-										'<td>'.$this->form->get_input( $cm_opt.'label' ).'</td>';
-									} else {
-										$rows[] = $this->p->util->th( $name, 'medium' ).
-										'<td class="blank checkbox">'.$this->form->get_no_checkbox( $cm_opt.'enabled' ).'</td>'.
-										'<td class="blank">'.$this->form->get_no_input( $cm_opt.'name', 'medium' ).'</td>'.
-										'<td class="blank">'.$this->form->get_no_input( $cm_opt.'label' ).'</td>';
-									}
-								}
-								break;
+						// not all social websites have a contact method field
+						if ( isset( $this->p->options[$cm_enabled] ) ) {
+							if ( $this->p->check->aop() ) {
+								$rows[] = $this->p->util->th( $name, 'medium' ).
+								'<td class="checkbox">'.$this->form->get_checkbox( $cm_enabled ).'</td>'.
+								'<td>'.$this->form->get_input( $cm_name, 'medium' ).'</td>'.
+								'<td>'.$this->form->get_input( $cm_label ).'</td>';
+							} else {
+								$rows[] = $this->p->util->th( $name, 'medium' ).
+								'<td class="blank checkbox">'.$this->form->get_no_checkbox( $cm_enabled ).'</td>'.
+								'<td class="blank">'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
+								'<td class="blank">'.$this->form->get_no_input( $cm_label ).'</td>';
+							}
 						}
-					
 					}
 					break;
 
@@ -152,22 +149,28 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$this->p->util->th( 'Show', 'left checkbox' ).
 					$this->p->util->th( 'Contact Field Name', 'left medium', 'wp-cm-field-name' ).
 					$this->p->util->th( 'Profile Contact Label', 'left wide' );
-					$sorted_wp_contact = $this->p->cf['wp']['cm'];
-					ksort( $sorted_wp_contact );
-					foreach ( $sorted_wp_contact as $id => $name ) {
-						$cm_opt = 'wp_cm_'.$id.'_';
-						if ( array_key_exists( $cm_opt.'enabled', $this->p->options ) ) {
+
+					$sorted_wp_cm = $this->p->cf['wp']['cm'];
+					ksort( $sorted_wp_cm );
+
+					foreach ( $sorted_wp_cm as $id => $name ) {
+
+						$cm_enabled = 'wp_cm_'.$id.'_enabled';
+						$cm_name = 'wp_cm_'.$id.'_name';
+						$cm_label = 'wp_cm_'.$id.'_label';
+
+						if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
 							if ( $this->p->check->aop() ) {
 								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="checkbox">'.$this->form->get_checkbox( $cm_opt.'enabled' ).'</td>'.
-								'<td>'.$this->form->get_no_input( $cm_opt.'name', 'medium' ).'</td>'.
-								'<td>'.$this->form->get_input( $cm_opt.'label' ).'</td>';
+								'<td class="checkbox">'.$this->form->get_checkbox( $cm_enabled ).'</td>'.
+								'<td>'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
+								'<td>'.$this->form->get_input( $cm_label ).'</td>';
 							} else {
 								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="blank checkbox">'.$this->form->get_hidden( $cm_opt.'enabled' ).
-									$this->form->get_no_checkbox( $cm_opt.'enabled' ).'</td>'.
-								'<td>'.$this->form->get_no_input( $cm_opt.'name', 'medium' ).'</td>'.
-								'<td class="blank">'.$this->form->get_no_input( $cm_opt.'label' ).'</td>';
+								'<td class="blank checkbox">'.$this->form->get_hidden( $cm_enabled ).
+									$this->form->get_no_checkbox( $cm_enabled ).'</td>'.
+								'<td>'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
+								'<td class="blank">'.$this->form->get_no_input( $cm_label ).'</td>';
 							}
 						}
 					}

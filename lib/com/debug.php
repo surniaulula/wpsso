@@ -149,9 +149,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function is_on( $name = '' ) {
 			if ( ! empty( $name ) )
-				return array_key_exists( $name, $this->subsys ) ? $this->subsys[$name] : false;
-			else $this->active = in_array( true, $this->subsys, true ) ? true : false;
-
+				return array_key_exists( $name, $this->subsys ) ? 
+					$this->subsys[$name] : false;
+			else $this->active = in_array( true, $this->subsys, true ) ? 	// strict = true
+				true : false;
 			return $this->active;
 		}
 

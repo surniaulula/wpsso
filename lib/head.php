@@ -34,11 +34,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		// called by wp_head action
 		public function add_header() {
 			$lca = $this->p->cf['lca'];
-			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging
 
 			// add various function test results top-most in the debug log
 			// hook into wpsso_is_functions to extend the default array of function names
-			if ( $debug_enabled ) {
+			if ( $this->p->debug_enabled ) {
 				$is_functions = array( 
 					'is_ajax',
 					'is_archive',
@@ -79,7 +78,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			else echo "\n<!-- ".$lca." meta tags are disabled -->\n";
 
 			// include additional information when debug mode is on
-			if ( $debug_enabled ) {
+			if ( $this->p->debug_enabled ) {
 				$defined_constants = get_defined_constants( true );
 				$defined_constants['user']['WPSSO_NONCE'] = '********';
 				$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants['user'] ), 'wpsso constants' );
@@ -155,7 +154,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function get_header_array( $use_post = false, $read_cache = true, &$meta_og = array() ) {
 			$lca = $this->p->cf['lca'];
-			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
 
@@ -163,7 +161,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
-			if ( $debug_enabled )
+			if ( $this->p->debug_enabled )
 				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' : 
 					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
 
@@ -176,12 +174,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					'lang:'.SucomUtil::get_locale().'_post:'.$post_id.'_url:'.$sharing_url, $use_post ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
 				if ( apply_filters( $lca.'_header_read_cache', $read_cache ) ) {
 					$header_array = get_transient( $cache_id );
 					if ( $header_array !== false ) {
-						if ( $debug_enabled )
+						if ( $this->p->debug_enabled )
 							$this->p->debug->log( $cache_type.': header array retrieved from transient '.$cache_id );
 						return $header_array;
 					}
@@ -212,7 +210,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				! empty( $this->p->options['seo_def_author_id'] ) ) )
 					$author_id = $this->p->options['seo_def_author_id'];
 
-			if ( $debug_enabled && $author_id !== false )
+			if ( $this->p->debug_enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id value: '.$author_id );
 
 			/**
@@ -276,7 +274,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( apply_filters( $lca.'_header_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
 				set_transient( $cache_id, $header_array, $this->p->cache->object_expire );
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $cache_type.': header array saved to transient '.
 						$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
 			}
@@ -287,8 +285,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_tag() for each
 		 */
 		private function get_tag_array( $tag = 'meta', $type = 'property', $tag_array, $use_post = false ) {
-			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging
-			if ( $debug_enabled ) {
+			if ( $this->p->debug_enabled ) {
 				$this->p->debug->log( count( $tag_array ).' '.$tag.' '.$type.' to process' );
 				$this->p->debug->log( $tag_array );
 			}
@@ -313,7 +310,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		private function get_single_tag( $tag = 'meta', $type = 'property', $name, $value = '', $comment = '', $use_post = false ) {
-			$debug_enabled = $this->p->debug->is_on();	// optimize debug logging
 
 			// known exceptions for the 'property' $type
 			if ( $tag === 'meta' && $type === 'property' && 
@@ -325,22 +321,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$log_pre = $tag.' '.$type.' '.$name;
 
 			if ( $value === '' || $value === null ) {	// allow for 0
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $log_pre.' value is empty (skipped)' );
 				return $ret;
 
 			} elseif ( $value === -1 ) {	// -1 is reserved, meaning use the defaults - exclude, just in case
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
 				return $ret;
 
 			} elseif ( is_array( $value ) ) {
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $log_pre.' value is an array (skipped)' );
 				return $ret;
 
 			} elseif ( is_object( $value ) ) {
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $log_pre.' value is an object (skipped)' );
 				return $ret;
 			}
@@ -350,7 +346,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$charset = get_bloginfo( 'charset' );
 			$value = htmlentities( $value, ENT_QUOTES, $charset, false );	// double_encode = false
-			if ( $debug_enabled )
+			if ( $this->p->debug_enabled )
 				$this->p->debug->log( $log_pre.' = "'.$value.'"' );
 			$html_prefix = empty( $comment ) ? '' : '<!-- '.$comment.' -->';
 
@@ -364,7 +360,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$value = preg_replace( '/^https:/', 'http:', $value );
 
 				if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name.':secure_url'] ) ) {
-					if ( $debug_enabled )
+					if ( $this->p->debug_enabled )
 						$this->p->debug->log( $log_pre.':secure_url is disabled (skipped)' );
 				} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.':secure_url" '.$attr.'="'.$secure_url.'" />'."\n";
 
@@ -373,7 +369,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			
 			$html_tag = '';
 			if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name] ) ) {
-				if ( $debug_enabled )
+				if ( $this->p->debug_enabled )
 					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
 			} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'" />'."\n";
 			

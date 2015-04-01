@@ -29,6 +29,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$this->p->cf['opt']['site_defaults'] = apply_filters( $this->p->cf['lca'].'_get_site_defaults', 
 					$this->p->cf['opt']['site_defaults'] );
+
 				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
 				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
 				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
@@ -54,8 +55,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['defaults']['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
 					$this->p->cf['opt']['defaults']['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
 	
-				// add description meta tag if no known SEO plugin was detected
-				$this->p->cf['opt']['defaults']['add_meta_name_description'] = empty( $this->p->is_avail['seo']['*'] ) ? 1 : 0;
+				// disable the description meta tag (by default) if a known SEO plugin is detected
+				if ( ! empty( $this->p->is_avail['seo']['*'] ) )
+					$this->p->cf['opt']['defaults']['add_meta_name_description'] = 0;
 	
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
@@ -68,8 +70,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					}
 				}
+
 				$this->p->cf['opt']['defaults'] = apply_filters( $this->p->cf['lca'].'_get_defaults', 
 					$this->p->cf['opt']['defaults'] );
+
 				$this->p->cf['opt']['defaults']['options_filtered'] = true;
 				$this->p->cf['opt']['defaults']['options_version'] = $this->p->cf['opt']['version'];
 				$this->p->cf['opt']['defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];

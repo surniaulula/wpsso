@@ -61,22 +61,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = $short_pro.' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature.';
 							break;
 						case 'tooltip-side-twitter-cards':
-							$text = 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with content-specific information for image galleries, photographs, eCommerce products, etc. Twitter Cards are displayed differently on Twitter, either online or from mobile Twitter clients, allowing you to highlight your content. The Twitter Cards meta tags can be enabled from the '.$this->p->util->get_admin_url( 'general', 'General settings page' ).'.';
+							$text = 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with content-specific information for image galleries, photographs, eCommerce products, etc. Twitter Cards are displayed differently on Twitter, either online or from mobile Twitter clients, allowing you to highlight your content. The Twitter Cards meta tags can be enabled from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings' ).' page.';
 							break;
 						case 'tooltip-side-author-gravatar':
 							$text = 'Include Gravatar image URLs in the meta tags for author index webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
 							break;
 						case 'tooltip-side-slideshare-api':
-							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings page' ).' is checked, '.$short_pro.' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-vimeo-video-api':
-							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings page' ).' is checked, '.$short_pro.' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-wistia-video-api':
-							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings page' ).' is checked, '.$short_pro.' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-youtube-video-playlist-api':
-							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings page' ).' is checked, '.$short_pro.' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
+							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
 							break;
 						/*
 						 * Other settings
@@ -93,9 +93,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'tooltip-user-' ) !== false ? true : false ):
 					$ptn = empty( $atts['ptn'] ) ? 'Post' : $atts['ptn'];
 					switch ( $idx ) {
-						/*
-						 * 'Header Meta Tags' settings
-						 */
 						 case 'tooltip-user-og_title':
 							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and possibly the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
 						 	break;
@@ -111,9 +108,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 case 'tooltip-user-tc_desc':
 							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
 						 	break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_user', $text, $idx, $atts );
 							break;
@@ -126,11 +120,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'tooltip-postmeta-' ) !== false ? true : false ):
 					$ptn = empty( $atts['ptn'] ) ? 'Post' : $atts['ptn'];
 					switch ( $idx ) {
-						/*
-						 * 'Header Meta Tags' settings
-						 */
 						 case 'tooltip-postmeta-social-preview':
-						 	$text = 'The Open Graph Social Preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on social networks may look significantly different than this <em>example</em>.';
+						 	$text = 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social networks may look significantly different than this <em>example</em> (depending on the viewing platform resolution, orientation, etc.).';
 						 	break;
 						 case 'tooltip-postmeta-og_art_section':
 							$text = 'A custom topic, different from the default Article Topic selected in the General settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
@@ -177,9 +168,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 case 'tooltip-postmeta-rp_img_url':
 							$text = 'A custom image URL (instead of an Image ID) to include first when the Pinterest crawler is detected. <em>This field is disabled if an Image ID has been specified</em>.';
 						 	break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_postmeta', $text, $idx, $atts );
 							break;
@@ -240,13 +228,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
 							break;
 						/*
-						 * 'Title and Description' settings
+						 * 'Title / Description' settings
 						 */
 						case 'tooltip-og_art_section':
 							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
 							break;
 						case 'tooltip-og_site_name':
-							$text = 'The WordPress Site Title is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Site Title value</a>.';
+							$text = 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Site Title value</a>.';
 							break;
 						case 'tooltip-og_site_description':
 							$text = 'The WordPress Tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin description (og:description) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.';
@@ -406,13 +394,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'tooltip-fb_' ) !== false ? true : false ):
 					switch ( $idx ) {
 						case 'tooltip-fb_publisher_url':
-							$text = 'The URL of your website / business Facebook Page (usually a <a href="https://www.facebook.com/business" target="_blank">Facebook Business Page</a>). For example, the Publisher Business Page URL for <a href="http://surniaulula.com/" target="_blank">Surnia Ulula</a> is <a href="https://www.facebook.com/SurniaUlulaCom" target="_blank">https://www.facebook.com/SurniaUlulaCom</a>. The Publisher Business Page URL will be included in Open Graph <em>article</em> type webpages (not index / archive webpages) and schema publisher (Organization) social JSON.';
+							$text = 'If you have a <a href="https://www.facebook.com/business" target="_blank">Facebook Business Page for your website / business</a>, you may enter its URL here. For example, the Facebook Business Page URL for Surnia Ulula is <a href="https://www.facebook.com/SurniaUlulaCom" target="_blank">https://www.facebook.com/SurniaUlulaCom</a>. The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages (not index / archive webpages) and schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
 						case 'tooltip-fb_admins':
-							$text = 'The Facebook Admin(s) user names are used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data. Note that these are <strong><em>user</em> account names, not Facebook <em>Page</em> names</strong>. <p>Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (example: https://www.facebook.com/<strong>user_name</strong>). Enter only the user name(s), not the URL(s).</p> <a href="https://www.facebook.com/settings?tab=account&section=username&view" target="_blank">Update your user name in the Facebook General Account Settings</a>.';
+							$text = 'The Facebook Admin Username(s) are used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data for your website. Note that these are <strong>user account names, and not Facebook age names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (example: https://www.facebook.com/<strong>user_name</strong>). Enter only the user name(s), not the URL(s). <a href="https://www.facebook.com/settings?tab=account&section=username&view" target="_blank">You may update your Facebook user name in the Facebook General Account Settings</a>.';
 							break;
 						case 'tooltip-fb_app_id':
-							$text = 'If you have a <a href="https://developers.facebook.com/apps" target="_blank">Facebook Application</a> ID for your website, enter it here. The Facebook Application ID will appear in your webpage meta tags, and is used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data for <em>accounts associated with that Application ID</em>.';
+							$text = 'If you have a <a href="https://developers.facebook.com/apps" target="_blank">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in your webpage meta tags, and is used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data for accounts associated with that Application ID.';
 							break;
 						case 'tooltip-fb_lang':
 							$text = 'The default language of your website content, used in the Facebook / Open Graph and Pinterest Rich Pin meta tags. The Pro version can also use the WordPress locale to adjust the language value dynamically (useful for websites with multilingual content).';
@@ -432,7 +420,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'tooltip-google_' ) !== false ? true : false ):
 					switch ( $idx ) {
 						case 'tooltip-google_publisher_url':
-							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page</a> for your website / business, you may use its URL as the Publisher Business Page URL. For example, the Publisher Business Page URL for <a href="http://surniaulula.com/" target="_blank">Surnia Ulula</a> is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>. The Publisher Business Page URL will be used in a <em>link relation</em> header tag, and the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here. For example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>. The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
 						case 'tooltip-google_seo_desc_len':
 							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
@@ -474,35 +462,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					break;
 
 				/*
-				 * Publisher 'LinkedIn' settings
-				 */
-				case ( strpos( $idx, 'tooltip-linkedin_' ) !== false ? true : false ):
-					switch ( $idx ) {
-						case 'tooltip-linkedin_publisher_url':
-							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page</a> for your website / business, you may use its URL as the Publisher Company Page URL. For example, the Publisher Company Page URL for <a href="http://surniaulula.com/" target="_blank">Surnia Ulula</a> is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>. The Publisher Company Page URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
-							break;
-						/*
-						 * Other settings
-						 */
-						default:
-							$text = apply_filters( $lca.'_tooltip_google', $text, $idx );
-							break;
-					}
-					break;
-
-				/*
 				 * Publisher 'Twitter Card' settings
 				 */
 				case ( strpos( $idx, 'tooltip-tc_' ) !== false ? true : false ):
 					switch ( $idx ) {
+						case 'tooltip-tc_site':
+							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							break;
 						case 'tooltip-tc_enable':
 							$text = 'Add Twitter Card meta tags to all webpage headers. <strong>Your website must be "authorized" by Twitter for each type of Twitter Card you support</strong>. See the FAQ entry titled <a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/" target="_blank">Why don’t my Twitter Cards show on Twitter?</a> for more information on Twitter\'s authorization process.';
 							break;
 						case 'tooltip-tc_desc_len':
 							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
-							break;
-						case 'tooltip-tc_site':
-							$text = 'The Twitter username for your website and / or company (not your personal Twitter username). As an example, the Twitter username for <a href="http://surniaulula.com/" target="_blank">Surnia Ulula</a> is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The Website @username is also used for the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
 						case 'tooltip-tc_sum_dimensions':
 							$card = 'sum';
@@ -547,8 +518,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				case ( strpos( $idx, 'tooltip-rp_' ) !== false ? true : false ):
 					switch ( $idx ) {
-						case 'tooltip-linkedin_publisher_url':
-							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page</a> for your website / business, you may use its URL as the Publisher Business Page URL. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+						case 'tooltip-rp_publisher_url':
+							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
 						case 'tooltip-rp_img_dimensions':
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (defaults is '.$this->p->opt->get_defaults( 'rp_img_width' ).'x'.$this->p->opt->get_defaults( 'rp_img_height' ).' '.( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'un' : '' ).'cropped). Images in the Facebook / Open Graph meta tags are usually cropped, where-as images on Pinterest often look better in their original aspect ratio (aka uncropped). Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
@@ -561,6 +532,57 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_rp', $text, $idx );
+							break;
+					}
+					break;
+
+				/*
+				 * Publisher 'Instagram' settings
+				 */
+				case ( strpos( $idx, 'tooltip-instgram_' ) !== false ? true : false ):
+					switch ( $idx ) {
+						case 'tooltip-instgram_publisher_url':
+							$text = 'If you have an <a href="http://blog.business.instagram.com/" target="_blank">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							break;
+						/*
+						 * Other settings
+						 */
+						default:
+							$text = apply_filters( $lca.'_tooltip_instgram', $text, $idx );
+							break;
+					}
+					break;
+
+				/*
+				 * Publisher 'LinkedIn' settings
+				 */
+				case ( strpos( $idx, 'tooltip-linkedin_' ) !== false ? true : false ):
+					switch ( $idx ) {
+						case 'tooltip-linkedin_publisher_url':
+							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page for your website / business</a>, you may enter its URL here. For example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>. The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							break;
+						/*
+						 * Other settings
+						 */
+						default:
+							$text = apply_filters( $lca.'_tooltip_linkedin', $text, $idx );
+							break;
+					}
+					break;
+
+				/*
+				 * Publisher 'MySpace' settings
+				 */
+				case ( strpos( $idx, 'tooltip-myspace_' ) !== false ? true : false ):
+					switch ( $idx ) {
+						case 'tooltip-myspace_publisher_url':
+							$text = 'If you have a <a href="http://myspace.com/" target="_blank">MySpace account for your website / business</a>, you may enter its URL here. The MySpace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							break;
+						/*
+						 * Other settings
+						 */
+						default:
+							$text = apply_filters( $lca.'_tooltip_instgram', $text, $idx );
 							break;
 					}
 					break;
@@ -602,15 +624,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							</blockquote>';
 							break;
 						case 'info-pub-pinterest':
-							$text = '<blockquote style="margin-top:0;margin-bottom:10px;"><p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a "<em>User-Agent Exclusion Pattern</em>" option and add "Pinterest/" to that list).</p></blockquote>';
+							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+							<p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a "<em>User-Agent Exclusion Pattern</em>" option and add "Pinterest/" to that list).</p>
+							</blockquote>';
 							break;
 						case 'info-taglist':
-							$text = '<blockquote style="margin-top:0;margin-bottom:0;"><p>'.$short.' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>head</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added (as an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected).</p></blockquote>';
+							$text = '<blockquote style="margin-top:0;margin-bottom:0;">
+							<p>'.$short.' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>head</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added (as an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected).</p>
+							</blockquote>';
 							break;
 						case 'info-cm':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>The following options allow you to customize the contact field names and labels shown on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile page</a>. '.$short.' uses the Facebook, Google+ and Twitter contact field values for Open Graph and Twitter Card meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Twitter social sharing button' ).'. <strong>You should not modify the <em>Contact Field Name</em> unless you have a very good reason to do so.</strong> The <em>Profile Contact Label</em> on the other hand is for <strong>display purposes only</strong>, and its text can be changed as you wish. Although the following contact fields may be shown on user profile pages, your theme is responsible for using and displaying their values appropriately (see <a href="https://codex.wordpress.org/Function_Reference/get_the_author_meta" target="_blank">get_the_author_meta()</a> for examples).</p>
-							<p><center><strong>DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.</strong><br/>Enter your contact information on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile page</a>.</p>
+							<p>The following options allow you to customize the contact field names and labels shown on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page. '.$short.' uses the Facebook, Google+ and Twitter contact field values for Open Graph and Twitter Card meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Twitter social sharing button' ).'. <strong>You should not modify the <em>Contact Field Name</em> unless you have a very good reason to do so.</strong> The <em>Profile Contact Label</em> on the other hand is for <strong>display purposes only</strong>, and its text can be changed as you wish. Although the following contact fields may be shown on user profile pages, your theme is responsible for using and displaying their values appropriately (see <a href="https://codex.wordpress.org/Function_Reference/get_the_author_meta" target="_blank">get_the_author_meta()</a> for examples).</p>
+							<p><center><strong>DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.</strong><br/>Enter your contact information on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page.</center></p>
+							</blockquote>';
+							break;
+						case 'info-image-dimensions':
+							$text = '<blockquote style="margin-top:0;margin-bottom:0;">
+							<p>'.$short.' provides several image dimension options, depending on the intended use for the image (Open Graph meta tags, Twitter Card formats, etc.). The image dimensions should always be chosen for their intended use. For example, Open Graph meta tags are read by Facebook, Google+, LinkedIn, and others. Facebook has published a preference for images measuring 1200x630px, but horizontally cropped images may not show as well on all social sites. A good compromise for your Open Graph image dimensions is 1200x1200px cropped. If you use these dimensions, make sure your original images are at least 1200px in <em>both</em> width and height.</p>
+							</blockquote>';
+							break;
+						case 'info-social-accounts':
+							$text = '<blockquote style="margin-top:0;margin-bottom:0;">
+							<p>The social account values are used for Google / SEO, Schema, Open Graph, and other meta tag standards, including the publisher (Organization) social profiles markup in schema.org JSON-LD format. These social accounts may be displayed by Google in search results for your website / business. See the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', 'Google specific settings' ).' to define a website / business logo, and/or enable / disable the addition of publisher (Organization) and author (Person) JSON-LD markup to your webpage headers.</p>
 							</blockquote>';
 							break;
 						case 'info-sharing-include':

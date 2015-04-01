@@ -21,7 +21,6 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				'og_author_rows' => 2,
 				'pub_facebook_rows' => 2,
 				'pub_google_rows' => 2,
-				'pub_linkedin_rows' => 2,
 				'pub_pinterest_rows' => 2,
 				'pub_twitter_rows' => 2,
 			) );
@@ -189,22 +188,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			return $rows;
 		}
 
-		public function filter_pub_linkedin_rows( $rows, $form ) {
-
-			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-
-			$rows[] = $this->p->util->th( 'Publisher <em>Company Page</em> URL', null, 'linkedin_publisher_url'  ).
-			'<td class="blank">'.$this->p->options['linkedin_publisher_url'].'</td>';
-
-			return $rows;
-		}
-
 		public function filter_pub_pinterest_rows( $rows, $form ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-
-			$rows[] = $this->p->util->th( 'Publisher <em>Company Page</em> URL', null, 'rp_publisher_url'  ).
-			'<td class="blank">'.$this->p->options['rp_publisher_url'].'</td>';
 
 			$rows[] = $this->p->util->th( 'Rich Pin Image Dimensions', 'highlight', 'rp_img_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'rp_img' ).'</td>';
@@ -221,9 +207,6 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 			$rows[] = $this->p->util->th( 'Enable Twitter Cards', 'highlight', 'tc_enable' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
-
-			$rows[] = $this->p->util->th( 'Website @username to Follow', 'highlight', 'tc_site' ).
-			'<td class="blank">'.$this->p->options['tc_site'].'</td>';
 
 			if ( WpssoUser::show_opts( 'all' ) ) {
 

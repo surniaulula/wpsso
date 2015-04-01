@@ -97,11 +97,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox = 'user';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', 
 				array( 
-					'header' => 'Title and Descriptions', 
+					'header' => 'Title / Descriptions', 
 					'media' => 'Priority Media', 
 					'preview' => 'Social Preview',
-					'tags' => 'Header Preview',
-					'tools' => 'Validation Tools'
+					'tags' => 'Head Tags',
+					'validate' => 'Validate'
 				)
 			);
 
@@ -123,8 +123,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$rows = $this->p->mods['util']['postmeta']->get_rows_social_preview( $this->form, $post_info );
 					break;
 
-				case 'user-tools':
-					$rows = $this->p->mods['util']['postmeta']->get_rows_validation_tools( $this->form, $post_info );
+				case 'user-validate':
+					$rows = $this->p->mods['util']['postmeta']->get_rows_validation_links( $this->form, $post_info );
 					break; 
 
 				case 'user-tags':	

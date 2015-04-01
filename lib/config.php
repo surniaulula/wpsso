@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'update_check_hours' => 24,
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '2.8.5',		// plugin version
+					'version' => '2.9',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -50,7 +50,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(			// libraries
 						'setting' => array (
-							'contact-fields' => 'Contact Fields',
+							'wpsso-separator-0' => 'SSO',
+							'image-dimensions' => 'Image Dimensions',
+							'contact-fields' => 'Profile Contact Fields',
+							'social-accounts' => 'Website / Business Social Accounts',
+							'wpsso-separator-1' => '',
 						),
 						'submenu' => array (
 							'general' => 'General',
@@ -69,6 +73,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
+								'image-dimensions' => 'Image Dimensions',
 								'postmeta' => 'Post Social Settings',
 								'user' => 'User Social Settings',
 							),
@@ -81,6 +86,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
+								'image-dimensions' => 'Image Dimensions',
 								'postmeta' => 'Post Social Settings',
 								'user' => 'User Social Settings',
 							),
@@ -165,7 +171,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(				// options
-				'version' => 326,		// increment when changing default options
+				'version' => 328,		// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -184,7 +190,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_admins' => '',
 					'fb_app_id' => '',
 					'fb_lang' => 'en_US',
+					'instgram_publisher_url' => '',
 					'linkedin_publisher_url' => '',
+					'myspace_publisher_url' => '',
 					'og_site_name' => '',
 					'og_site_description' => '',
 					'og_art_section' => 'none',
@@ -320,7 +328,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:label4' => 1,
 					'add_meta_name_generator' => 1,
 					'add_meta_name_author' => 1,
-					'add_meta_name_description' => 0,
+					'add_meta_name_description' => 1,
 					'add_meta_itemprop_description' => 1,
 					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_image' => 1,
@@ -363,21 +371,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_gp_name' => 'gplus', 
 					'plugin_cm_gp_label' => 'Google+ URL', 
 					'plugin_cm_gp_enabled' => 1,
+					'plugin_cm_instgram_name' => 'instagram', 
+					'plugin_cm_instgram_label' => 'Instagram URL', 
+					'plugin_cm_instgram_enabled' => 1,
 					'plugin_cm_linkedin_name' => 'linkedin', 
 					'plugin_cm_linkedin_label' => 'LinkedIn URL', 
-					'plugin_cm_linkedin_enabled' => 0,
+					'plugin_cm_linkedin_enabled' => 1,
+					'plugin_cm_myspace_name' => 'myspace', 
+					'plugin_cm_myspace_label' => 'MySpace URL', 
+					'plugin_cm_myspace_enabled' => 1,
 					'plugin_cm_pin_name' => 'pinterest', 
 					'plugin_cm_pin_label' => 'Pinterest URL', 
-					'plugin_cm_pin_enabled' => 0,
+					'plugin_cm_pin_enabled' => 1,
 					'plugin_cm_tumblr_name' => 'tumblr', 
 					'plugin_cm_tumblr_label' => 'Tumblr URL', 
-					'plugin_cm_tumblr_enabled' => 0,
+					'plugin_cm_tumblr_enabled' => 1,
 					'plugin_cm_twitter_name' => 'twitter', 
 					'plugin_cm_twitter_label' => 'Twitter @username', 
 					'plugin_cm_twitter_enabled' => 1,
 					'plugin_cm_yt_name' => 'youtube', 
 					'plugin_cm_yt_label' => 'YouTube Channel URL', 
-					'plugin_cm_yt_enabled' => 0,
+					'plugin_cm_yt_enabled' => 1,
 					'plugin_cm_skype_name' => 'skype', 
 					'plugin_cm_skype_label' => 'Skype Username', 
 					'plugin_cm_skype_enabled' => 0,
@@ -412,7 +426,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'facebook' => 'fb', 
 					'gplus' => 'gp',
 					'twitter' => 'twitter',
+					'instagram' => 'instgram',
 					'linkedin' => 'linkedin',
+					'myspace' => 'myspace',
 					'pinterest' => 'pin',
 					'buffer' => 'buffer',
 					'reddit' => 'reddit',
@@ -529,6 +545,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! defined( 'WPSSO_TOPICS_LIST' ) )
 				define( 'WPSSO_TOPICS_LIST', WPSSO_PLUGINDIR.'share/topics.txt' );
 
+			if ( ! defined( 'WPSSO_MENU_ORDER' ) )
+				define( 'WPSSO_MENU_ORDER', '99.10' );
+
 			/*
 			 * WPSSO option and meta array names
 			 */
@@ -562,14 +581,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * WPSSO hook priorities
 			 */
+			if ( ! defined( 'WPSSO_ADD_MENU_PRIORITY' ) )
+				define( 'WPSSO_ADD_MENU_PRIORITY', -20 );
+
+			if ( ! defined( 'WPSSO_ADD_SETTINGS_PRIORITY' ) )
+				define( 'WPSSO_ADD_SETTINGS_PRIORITY', -10 );
+
 			if ( ! defined( 'WPSSO_META_SAVE_PRIORITY' ) )
 				define( 'WPSSO_META_SAVE_PRIORITY', 6 );
 
 			if ( ! defined( 'WPSSO_META_CACHE_PRIORITY' ) )
 				define( 'WPSSO_META_CACHE_PRIORITY', 9 );
-
-			if ( ! defined( 'WPSSO_MENU_PRIORITY' ) )
-				define( 'WPSSO_MENU_PRIORITY', '99.10' );
 
 			if ( ! defined( 'WPSSO_INIT_PRIORITY' ) )
 				define( 'WPSSO_INIT_PRIORITY', 12 );
@@ -585,6 +607,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( ! defined( 'WPSSO_CURL_CAINFO' ) )
 				define( 'WPSSO_CURL_CAINFO', WPSSO_PLUGINDIR.'share/curl/cacert.pem' );
+
+			/*
+			 * Disable caching plugins for the duplicate meta tag check feature
+			 */
+			if ( ! empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ) {
+
+				if ( ! defined( 'DONOTCACHEPAGE' ) )
+					define( 'DONOTCACHEPAGE', true );	// wp super cache
+
+				if ( ! defined( 'QUICK_CACHE_ALLOWED' ) )
+					define( 'QUICK_CACHE_ALLOWED', false );	// quick cache
+
+				if ( ! defined( 'ZENCACHE_ALLOWED' ) )
+					define( 'ZENCACHE_ALLOWED', false );	// quick cache
+			}
 		}
 
 		public static function require_libs( $plugin_filepath ) {

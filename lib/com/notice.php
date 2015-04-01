@@ -136,15 +136,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 									break;
 								case 'err':
 									echo '<div class="error"'.$cssid.'>
-									<div style="float:left;margin-right:5px;"><p style="white-space:nowrap;"><b>'.
-										$this->p->cf['menu'].' Warning</b>:</p></div>
+									<div style="float:left;margin-right:2px;">
+										<p style="white-space:nowrap;"><b>'.
+											$this->p->cf['menu'].' Warning</b>:</p></div>
 									<div><p style="text-align:left">'.$msg.'</p></div>
 									</div>';
 									break;
 								case 'inf':
 									echo '<div class="updated fade"'.$cssid.'>
-									<div style="float:left;margin-right:5px;"><p style="white-space:nowrap;"><b>'.
-										$this->p->cf['menu'].' Info</b>:</p></div>
+									<div style="float:left;margin-right:2px;">
+										<p style="white-space:nowrap;"><b>'.
+											$this->p->cf['menu'].' Info</b>:</p></div>
 									<div><p style="text-align:left">'.$msg.'</p></div>
 									</div>';
 									break;

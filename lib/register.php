@@ -107,6 +107,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function deactivate_plugin() {
+			// clear all cached objects and transients
+			$deleted_cache = $this->p->util->delete_expired_file_cache( true );
+			$deleted_transient = $this->p->util->delete_expired_transients( true );
+
+			// disable the cron update check
 			$slug = $this->p->cf['plugin'][$this->p->cf['lca']]['slug'];
 			wp_clear_scheduled_hook( 'plugin_updates-'.$slug );
 		}

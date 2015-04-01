@@ -94,11 +94,11 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 			$metabox = 'meta';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', 
 				array( 
-					'header' => 'Title and Descriptions', 
+					'header' => 'Title / Descriptions', 
 					'media' => 'Priority Media', 
 					'preview' => 'Social Preview',
-					'tags' => 'Header Preview',
-					'tools' => 'Validation Tools'
+					'tags' => 'Head Tags',
+					'validate' => 'Validate'
 				)
 			);
 
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 					if ( get_post_status( $post_info['id'] ) !== 'auto-draft' ) {
 						$rows = $this->get_rows_social_preview( $this->form, $post_info );
 					} else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
-						$post_info['ptn'].' to display the Social Preview.</p></td>';
+						$post_info['ptn'].' to display the open graph social preview.</p></td>';
 					break;
 
 				case 'meta-tags':	
@@ -135,15 +135,15 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 						}
 						sort( $rows );
 					} else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
-						$post_info['ptn'].' to display the Header Preview.</p></td>';
+						$post_info['ptn'].' to display the header preview.</p></td>';
 					break; 
 
-				case 'meta-tools':
+				case 'meta-validate':
 					if ( get_post_status( $post_info['id'] ) === 'publish' ||
 						get_post_type( $post_info['id'] ) === 'attachment' ) {
 
-						$rows = $this->get_rows_validation_tools( $this->form, $post_info );
-					} else $rows[] = '<td><p class="centered">The Validation Tools will be available when the '
+						$rows = $this->get_rows_validation_links( $this->form, $post_info );
+					} else $rows[] = '<td><p class="centered">The validation links will be available when the '
 						.$post_info['ptn'].' is published with public visibility.</p></td>';
 					break; 
 			}
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 			if ( empty( $image_preview_html ) )
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'">'.$msgs['not_found'].'</div>';
 
-			$rows[] = $this->p->util->th( 'Open Graph Social Preview Example', 'medium', 'postmeta-social-preview' ).
+			$rows[] = $this->p->util->th( 'Open Graph Example', 'medium', 'postmeta-social-preview' ).
 			'<td style="background-color:#e9eaed;">
 			<div class="preview_box" style="width:'.( $max_width + 40 ).'px;">
 				<div class="preview_box" style="width:'.$max_width.'px;">
@@ -200,12 +200,12 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 			return $rows;
 		}
 
-		public function get_rows_validation_tools( &$form, &$post_info ) {
+		public function get_rows_validation_links( &$form, &$post_info ) {
 			$rows = array();
 
 			$rows[] = $this->p->util->th( 'Facebook Debugger' ).'<td class="validate"><p>Refresh the Facebook cache and validate the Open Graph / Rich Pin meta tags for this '.$post_info['ptn'].'. Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags. The Facebook Debugger remains the most stable and reliable method to verify Open Graph meta tags.</p>
 			
-			<p><strong>Please note that you may have to click the "Fetch new scrape Information" button several times to refresh Facebook\'s cache</strong>.</p></td>
+			<p><strong>You may have to click the "Fetch new scrape Information" button several times to refresh Facebook\'s cache</strong>.</p></td>
 
 			<td class="validate">'.$form->get_button( 'Validate Open Graph', 'button-secondary', null, 
 			'https://developers.facebook.com/tools/debug/og/object?q='.urlencode( $this->p->util->get_sharing_url( $post_info['id'] ) ), true ).'</td>';

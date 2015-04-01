@@ -204,7 +204,10 @@ if ( ! class_exists( 'SucomUpdate' ) ) {
 				$option_data->checkedVersion = $this->get_installed_version( $lca );
 				$option_data->update = $this->get_update_data( $lca, $use_cache );
 				$saved = update_site_option( $info['opt_name'], $option_data );
-				if ( $notice === true || $this->p->debug->is_on() ) {
+
+				if ( $notice === true || 
+					( isset( $this->p->debug_enabled ) && $this->p->debug_enabled ) ) {
+
 					if ( $saved === true ) {
 						$this->p->debug->log( 'update information saved in the '.
 							$info['opt_name'].' site option' );
@@ -282,17 +285,17 @@ if ( ! class_exists( 'SucomUpdate' ) ) {
 
 			$plugin_data = null;
 			$result = wp_remote_get( $json_url, $options );
-			if ( is_wp_error( $result ) ) {
-				if ( isset( $this->p->notice ) && is_object( $this->p->notice ) &&
-					isset( $this->p->debug ) && is_object( $this->p->debug ) &&
-					$this->p->debug->is_on() === true ) {
 
-					$this->p->debug->log( 'update error: '.$result->get_error_message().'.' );
+			if ( is_wp_error( $result ) ) {
+
+				if ( isset( $this->p->notice ) && is_object( $this->p->notice ) )
 					$this->p->notice->err( 'Update error &ndash; '.$result->get_error_message().'.' );
-				}
-			} elseif ( isset( $result['response']['code'] ) && 
-				( $result['response']['code'] == 200 ) && 
-				! empty( $result['body'] ) ) {
+
+				if ( isset( $this->p->debug ) && is_object( $this->p->debug ) &&
+					isset( $this->p->debug_enabled ) && $this->p->debug_enabled )
+						$this->p->debug->log( 'update error: '.$result->get_error_message().'.' );
+
+			} elseif ( isset( $result['response']['code'] ) && ( $result['response']['code'] == 200 ) && ! empty( $result['body'] ) ) {
 	
 				if ( ! empty( $result['headers']['x-smp-error'] ) ) {
 					self::$c[$lca]['umsg'] = json_decode( $result['body'] );

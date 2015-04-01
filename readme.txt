@@ -398,6 +398,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+= Version 2.9 (2015/04/02) =
+
+* **Bugfixes**
+	* Fixed the saving of WPSSO option pages under the WordPress "Settings" menu item.
+* **Improvements**
+	* *None*
+* **New Features**
+	* *None*
+
 = Version 2.8.5 (2015/03/26) =
 
 * **Bugfixes**

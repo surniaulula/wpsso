@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.1
- * Version: 2.8.5
+ * Version: 2.9
  * 
  * Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -32,7 +32,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $media;			// WpssoMedia (images, videos, etc.)
 		public $msgs;			// WpssoMessages (admin tooltip messages)
 		public $notice;			// SucomNotice
-		public $og;			// WpssoOpengraph (extends SucomOpengraph)
+		public $og;			// WpssoOpengraph
 		public $opt;			// WpssoOptions
 		public $reg;			// WpssoRegister
 		public $script;			// SucomScript (admin jquery tooltips)
@@ -49,6 +49,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
 		public $mods = array();		// pro and gpl modules
+		public $debug_enabled = null;
 
 		protected static $instance = null;
 
@@ -108,18 +109,21 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->set_objects();				// define the class object variables
 
-			if ( $this->debug->is_on() === true )
-				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action )
+			if ( $this->debug_enabled ) {
+				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9999, 9999 ) as $prio ) {
 						add_action( $action, create_function( '', 'echo "<!-- wpsso '.
 							$action.' action hook priority '.$prio.' mark -->\n";' ), $prio );
 						add_action( $action, array( &$this, 'show_debug_html' ), $prio );
 					}
+				}
+			}
 			do_action( 'wpsso_init_plugin' );
 		}
 
 		public function show_debug_html() { 
-			$this->debug->show_html();
+			if ( $this->debug_enabled )
+				$this->debug->show_html();
 		}
 
 		// called by activate_plugin() as well
@@ -140,6 +144,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) !== false )
 					$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 			else $this->debug = new WpssoNoDebug();			// fallback to dummy debug class
+			$this->debug_enabled = $this->debug->is_on();
 
 			$this->notice = new SucomNotice( $this );
 			$this->util = new WpssoUtil( $this );
@@ -174,7 +179,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				! empty( $_GET['action'] ) && $_GET['action'] == 'activate-plugin' &&
 				! empty( $_GET['plugin'] ) && $_GET['plugin'] == WPSSO_PLUGINBASE ) ) {
 
-				$this->debug->log( 'plugin activation detected' );
+				if ( $this->debug_enabled )
+					$this->debug->log( 'plugin activation detected' );
 
 				if ( ! is_array( $this->options ) || empty( $this->options ) ||
 					( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) ) {
@@ -182,13 +188,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->options = $this->opt->get_defaults();
 					delete_option( WPSSO_OPTIONS_NAME );
 					add_option( WPSSO_OPTIONS_NAME, $this->options, null, 'yes' );
-					$this->debug->log( 'default options have been added to the database' );
+					if ( $this->debug_enabled )
+						$this->debug->log( 'default options have been added to the database' );
 
 					if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) 
 						$this->notice->inf( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
 							plugin options have been reset to their default values.', true );
 				}
-				$this->debug->log( 'exiting early: init_plugin() to follow' );
+				if ( $this->debug_enabled )
+					$this->debug->log( 'exiting early: init_plugin() to follow' );
 				return;	// no need to continue, init_plugin() will handle the rest
 			}
 
@@ -218,9 +226,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						! constant( $constant_name ) ) ? true : false;
 				}
 				$cache_status = 'transient cache use '.( $this->is_avail['cache']['transient'] ? 'could not be' : 'is' ).' disabled';
-				$this->debug->log( 'html debug mode is active: '.$cache_status );
+				if ( $this->debug_enabled )
+					$this->debug->log( 'html debug mode is active: '.$cache_status );
 				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.' '.
-					__( 'and informational messages are being added as hidden HTML comments.', WPSSO_TEXTDOM ) );
+					' and informational messages are being added as hidden HTML comments.' );
 			}
 
 			if ( ! empty( $this->options['plugin_wpsso_tid'] ) ) {
