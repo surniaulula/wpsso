@@ -234,7 +234,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( ! empty( $this->options['plugin_wpsso_tid'] ) ) {
 				$this->util->add_plugin_filters( $this, array( 'installed_version' => 1, 'ua_plugin' => 1 ) );
+
+				require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
 				$this->update = new SucomUpdate( $this, $this->cf['plugin'], $this->cf['update_check_hours'] );
+
 				if ( is_admin() ) {
 					if ( $this->is_avail['aop'] === false ) {
 						$shortname = $this->cf['plugin']['wpsso']['short'];
