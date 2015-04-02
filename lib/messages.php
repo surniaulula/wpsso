@@ -604,10 +604,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $idx ) {
 						case 'info-plugin-tid':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to enable Pro version updates. ';
+							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here, to fetch Pro version updates from the SurniaUlula.com Pro update server (instead of the WordPress.org Free plugin repository).</p>';
 							if ( empty( $this->p->is_avail['aop'] ) )
-								$text .= 'The Free version is currently installed &mdash; don\'t forget to update the plugin after entering your Authentication ID. ';
-							$text .= '<strong>'.$short.' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update checks will be made against WordPress.org, and update notices will be for the Free version &mdash; always update a Pro version when '.$short.' (and/or its Pro extensions) are active. If you accidentally re-install a Free version - don\'t worry - your Authentication ID will allow you update back to the Pro version.</p>
+								$text .= '<p>The Free version is currently installed &mdash; don\'t forget to update the plugin after entering your Authentication ID.</p>';
+							$text .= '<p><strong>'.$short.' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$short.' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version.</p>
 							</blockquote>';
 							break;
 						case 'info-plugin-tid-network':
