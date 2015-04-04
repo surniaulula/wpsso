@@ -14,7 +14,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 <h3>Description</h3>
 
-<p align="center"><img src="https://ps.w.org/wpsso/assets/icon-256x256.png?rev=" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p>
 <p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
 <h4>Advanced Social Management</h4>
@@ -116,7 +116,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<p align="center"><img src="https://ps.w.org/wpsso/assets/screenshot-22.png?rev=" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png?rev=" /></p>
 
 <strong>Images and Videos</strong>
 
@@ -160,7 +160,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<p align="center"><img src="https://ps.w.org/wpsso/assets/screenshot-23.png?rev=" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png?rev=" /></p>
 
 <h4>Social Profiles for Google Search</h4>
 

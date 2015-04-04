@@ -12,7 +12,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 == Description ==
 
-<p><img src="https://ps.w.org/wpsso/assets/icon-256x256.png?rev=" style="width:33%;min-width:128px;max-width:256px;float:left;margin:0 40px 20px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;float:left;margin:0 40px 20px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
 = Advanced Social Management =
 
@@ -113,7 +113,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<img src="https://ps.w.org/wpsso/assets/screenshot-22.png?rev=" style="width:50%;min-width:256px;max-width:607px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png?rev=" style="width:50%;min-width:256px;max-width:607px;float:right;margin:0 0 20px 40px;" />
 <strong>Images and Videos</strong>
 
 WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).
@@ -156,7 +156,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<img src="https://ps.w.org/wpsso/assets/screenshot-23.png?rev=" style="width:50%;min-width:256px;max-width:1024px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png?rev=" style="width:50%;min-width:256px;max-width:1024px;float:right;margin:0 0 20px 40px;" />
 <h4>Social Profiles for Google Search</h4>
 
 WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles markup in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
