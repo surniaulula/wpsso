@@ -116,7 +116,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png?rev=" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png" /></p>
 
 <strong>Images and Videos</strong>
 
@@ -160,7 +160,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png?rev=" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png" /></p>
 
 <h4>Social Profiles for Google Search</h4>
 
