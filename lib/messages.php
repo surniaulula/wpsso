@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -22,10 +22,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		public function get( $idx = false, $atts = null, $class = '' ) {
 			$text = is_array( $atts ) || is_object( $atts ) ? '' : $atts;
 			$idx = sanitize_title_with_dashes( $idx );
-			$lca = isset( $atts['lca'] ) ? $atts['lca'] : $this->p->cf['lca'];
+			$lca = isset( $atts['lca'] ) ?
+				$atts['lca'] : $this->p->cf['lca'];
 			$url = $this->p->cf['plugin'][$lca]['url'];
-			$short = isset( $atts['short'] ) ? $atts['short'] : $this->p->cf['plugin'][$lca]['short'];
+
+			$short = isset( $atts['short'] ) ?
+				$atts['short'] :
+				$this->p->cf['plugin'][$lca]['short'];
 			$short_pro = $short.' Pro';
+
+			$name = isset( $atts['name'] ) ?
+				$atts['name'] :
+				$this->p->cf['plugin'][$lca]['name'];
+			$name_pro = $name.' Pro';
 
 			if ( strpos( $idx, 'tooltip-' ) !== false && empty( $class ) )
 				$class = $this->p->cf['form']['tooltip_class'];	// default tooltip class
@@ -46,7 +55,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a compatible eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices, images, and other attributes.';
 							break;
 						case 'tooltip-side-pro-update-check':
-							$text = 'When a Pro version Authentication ID is entered in the '.$this->p->util->get_admin_url( 'licenses', 'Pro Licenses' ).', settings, a check is scheduled every 24 hours to see if an update is available.';
+							$text = 'When a Pro version Authentication ID is entered on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Licenses' ).' settings page, a check is scheduled every 24 hours to see if an update is available.';
 							break;
 						case 'tooltip-side-transient-cache':
 							$text = $short.' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
@@ -612,7 +621,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'info-plugin-tid-network':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to define a value for all sites within the network, or enter the Authentication ID(s) individually on each site\'s Pro Licenses settings page. <strong>Please note that the <em>default</em> site/blog must be licensed in order to update the plugin from the Network admin interface</strong>. ';
+							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to define a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>. ';
 							if ( empty( $this->p->is_avail['aop'] ) )
 								$text .= 'The Free version is currently installed &mdash; don\'t forget to update the plugin after licensing the <em>default</em> site/blog. ';
 							$text .= '</p>
@@ -675,7 +684,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					break;
 				case 'pro-activate-nag':
 					if ( ! is_multisite() ) {
-						$text = '<p><strong>The '.$short.' Authentication ID option value is empty.</strong><br/>To enable Pro version features, and allow the plugin to authenticate itself for updates,<br/><strong>please '.$this->p->util->get_admin_url( 'licenses', 'enter the unique Authentication ID you received by email in the Pro Licenses settings' ).'.</strong></p>';
+						$text = '<p><span style="font-weight:bold;font-size:1.1em;">The '.$name.' Authentication ID option is empty.</span><br/>To enable Pro version features and allow the plugin to authenticate itself for updates,<br/><strong>'.$this->p->util->get_admin_url( 'licenses', 'please enter the unique Authentication ID you received by email<br/>on the <em>Extension Plugins and Licenses</em> settings page' ).'.</strong></p>';
 					}
 					break;
 				case 'side-purchase':

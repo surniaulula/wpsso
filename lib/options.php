@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -20,25 +20,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p->debug->mark();
 			add_filter( $this->p->cf['lca'].'_option_type', array( &$this, 'filter_option_type' ), 10, 2 );
 			do_action( $this->p->cf['lca'].'_init_options' );
-		}
-
-		public function get_site_defaults( $idx = false, $force_filter = false ) {
-			if ( ! isset( $this->p->cf['opt']['site_defaults']['options_filtered'] ) ||
-				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
-				$force_filter === true ) {
-
-				$this->p->cf['opt']['site_defaults'] = apply_filters( $this->p->cf['lca'].'_get_site_defaults', 
-					$this->p->cf['opt']['site_defaults'] );
-
-				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
-				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
-				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
-			}
-			if ( $idx !== false ) {
-				if ( array_key_exists( $idx, $defs ) )
-					return $this->p->cf['opt']['site_defaults'][$idx];
-				else return false;
-			} else return $this->p->cf['opt']['site_defaults'];
 		}
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
@@ -83,6 +64,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return $this->p->cf['opt']['defaults'][$idx];
 				else return false;
 			else return $this->p->cf['opt']['defaults'];
+		}
+
+		public function get_site_defaults( $idx = false, $force_filter = false ) {
+			if ( ! isset( $this->p->cf['opt']['site_defaults']['options_filtered'] ) ||
+				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
+				$force_filter === true ) {
+
+				$this->p->cf['opt']['site_defaults'] = apply_filters( $this->p->cf['lca'].'_get_site_defaults', 
+					$this->p->cf['opt']['site_defaults'] );
+
+				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
+				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
+				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
+			}
+			if ( $idx !== false ) {
+				if ( array_key_exists( $idx, $defs ) )
+					return $this->p->cf['opt']['site_defaults'][$idx];
+				else return false;
+			} else return $this->p->cf['opt']['site_defaults'];
 		}
 
 		public function check_options( $options_name, &$opts = array() ) {
@@ -385,6 +385,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 			return $type;
 		}
+
+		public function get_tid_lcas() {
+			$lcas = array();
+			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca )
+				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
+					$lcas[] = $lca;
+			return $lcas;
+		}
+
 	}
 }
 

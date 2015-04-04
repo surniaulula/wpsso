@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$filter = $lca.'_'.$name;
 				$method = 'filter_'.str_replace( array( '/', '-' ), '_', $name );
 				add_filter( $filter, array( &$class, $method ), $prio, $num );
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'filter for '.$filter.' added', 2 );
 			}
 		}
@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				// on non-singular pages, $post_id may be an object here
 				if ( is_numeric( $post_id ) && $post_id > 0 ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'reading custom meta for post id '.$post_id );
 					$meta_opts = $this->p->mods['util']['postmeta']->get_options( $post_id );
 				} 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					add_image_size( $this->p->cf['lca'].'-'.$size_info['name'], 
 						$size_info['width'], $size_info['height'], $size_info['crop'] );
 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_info['name'].' '.
 							$size_info['width'].'x'.$size_info['height'].
 							( empty( $size_info['crop'] ) ? '' : ' crop '.
@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( delete_transient( $cache_id ) ) {
-							if ( $this->p->debug_enabled )
+							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'flushed transient cache salt: '.$cache_salt );
 							$deleted++;
 						}
@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( wp_cache_delete( $cache_id, $group ) ) {
-							if ( $this->p->debug_enabled )
+							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'flushed object cache salt: '.$cache_salt );
 							$deleted++;
 						}

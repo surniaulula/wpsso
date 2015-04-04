@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -96,9 +96,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				) );
 				$this->trunc( $type );
 				if ( $type === 'err' && class_exists( 'SucomUpdate' ) ) {
-					foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-						if ( ( $umsg = SucomUpdate::get_umsg( $lca ) ) !== false && $umsg !== true )
-							$msg_arr[] = $umsg;
+					foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
+						if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+							$umsg = SucomUpdate::get_umsg( $lca );
+							if ( $umsg !== false && $umsg !== true )
+								$msg_arr[] = $umsg;
+						}
 					}
 				}
 				if ( ! empty( $msg_arr ) ) {

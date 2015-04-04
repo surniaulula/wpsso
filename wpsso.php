@@ -9,9 +9,9 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.1
- * Version: 2.9
+ * Version: 3.0dev1
  * 
- * Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -37,7 +37,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $reg;			// WpssoRegister
 		public $script;			// SucomScript (admin jquery tooltips)
 		public $style;			// SucomStyle (admin styles)
-		public $update;			// SucomUpdate
 		public $util;			// WpssoUtil (extends SucomUtil)
 		public $webpage;		// SucomWebpage (title, desc, etc., plus shortcodes)
 
@@ -49,7 +48,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
 		public $mods = array();		// pro and gpl modules
-		public $debug_enabled = null;
 
 		protected static $instance = null;
 
@@ -109,7 +107,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->set_objects();				// define the class object variables
 
-			if ( $this->debug_enabled ) {
+			if ( $this->debug->enabled ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9999, 9999 ) as $prio ) {
 						add_action( $action, create_function( '', 'echo "<!-- wpsso '.
@@ -122,7 +120,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		public function show_debug_html() { 
-			if ( $this->debug_enabled )
+			if ( $this->debug->enabled )
 				$this->debug->show_html();
 		}
 
@@ -144,7 +142,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) !== false )
 					$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 			else $this->debug = new WpssoNoDebug();			// fallback to dummy debug class
-			$this->debug_enabled = $this->debug->is_on();
 
 			$this->notice = new SucomNotice( $this );
 			$this->util = new WpssoUtil( $this );
@@ -179,7 +176,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				! empty( $_GET['action'] ) && $_GET['action'] == 'activate-plugin' &&
 				! empty( $_GET['plugin'] ) && $_GET['plugin'] == WPSSO_PLUGINBASE ) ) {
 
-				if ( $this->debug_enabled )
+				if ( $this->debug->enabled )
 					$this->debug->log( 'plugin activation detected' );
 
 				if ( ! is_array( $this->options ) || empty( $this->options ) ||
@@ -188,14 +185,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->options = $this->opt->get_defaults();
 					delete_option( WPSSO_OPTIONS_NAME );
 					add_option( WPSSO_OPTIONS_NAME, $this->options, null, 'yes' );
-					if ( $this->debug_enabled )
+					if ( $this->debug->enabled )
 						$this->debug->log( 'default options have been added to the database' );
 
 					if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) 
 						$this->notice->inf( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
 							plugin options have been reset to their default values.', true );
 				}
-				if ( $this->debug_enabled )
+				if ( $this->debug->enabled )
 					$this->debug->log( 'exiting early: init_plugin() to follow' );
 				return;	// no need to continue, init_plugin() will handle the rest
 			}
@@ -212,53 +209,28 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->cache->object_expire = $this->options['plugin_object_cache_exp'];
 			if ( ! empty( $this->options['plugin_file_cache_hrs'] ) && $this->check->aop() ) {
-				if ( $this->debug->is_on( 'wp' ) === true ) 
+				if ( $this->debug->is_enabled( 'wp' ) === true ) 
 					$this->cache->file_expire = WPSSO_DEBUG_FILE_EXP;	// reduce to 300 seconds
 				else $this->cache->file_expire = $this->options['plugin_file_cache_hrs'] * 60 * 60;
 			} else $this->cache->file_expire = 0;	// just in case
 			$this->is_avail['cache']['file'] = $this->cache->file_expire > 0 ? true : false;
 
 			// disable the transient cache ONLY if the html debug mode is on
-			if ( $this->debug->is_on( 'html' ) === true ) {
+			if ( $this->debug->is_enabled( 'html' ) === true ) {
 				foreach ( array( 'transient' ) as $name ) {
 					$constant_name = 'WPSSO_'.strtoupper( $name ).'_CACHE_DISABLE';
 					$this->is_avail['cache'][$name] = ( defined( $constant_name ) && 
 						! constant( $constant_name ) ) ? true : false;
 				}
 				$cache_status = 'transient cache use '.( $this->is_avail['cache']['transient'] ? 'could not be' : 'is' ).' disabled';
-				if ( $this->debug_enabled )
+				if ( $this->debug->enabled )
 					$this->debug->log( 'html debug mode is active: '.$cache_status );
 				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.' '.
 					' and informational messages are being added as hidden HTML comments.' );
 			}
 
-			/*
-			 * The SucomUpdate class is not created unless the end-user purchases a Pro upgrade and enters 
-			 * their purchased Authentication ID in the settings, after which the end-user gets Pro version
-			 * update information, and the plugin no longer checks wordpress.org (this is explained thoroughly
-			 * to end-users on the license settings page as well).
-			 */
-			if ( ! empty( $this->options['plugin_wpsso_tid'] ) ) {
+			if ( ! empty( $this->options['plugin_wpsso_tid'] ) )
 				$this->util->add_plugin_filters( $this, array( 'installed_version' => 1, 'ua_plugin' => 1 ) );
-
-				if ( ! class_exists( 'SucomUpdate' ) )
-					require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
-				$this->update = new SucomUpdate( $this, $this->cf['plugin'], $this->cf['update_check_hours'] );
-
-				if ( is_admin() ) {
-					if ( $this->is_avail['aop'] === false ) {
-						$shortname = $this->cf['plugin']['wpsso']['short'];
-						$this->notice->inf( 'An Authentication ID was entered for '.$shortname.', but the Pro version is not installed yet &ndash; don\'t forget to update the '.$shortname.' plugin to install the Pro version.', true );
-					}
-					foreach ( $this->cf['plugin'] as $lca => $info ) {
-						$last_update = get_option( $lca.'_utime' );
-						if ( empty( $last_update ) || 
-							( ! empty( $this->cf['update_check_hours'] ) && 
-								$last_update + ( $this->cf['update_check_hours'] * 7200 ) < time() ) )
-									$this->update->check_for_updates( $lca );
-					}
-				}
-			}
 		}
 
 		public function filter_installed_version( $version ) {
@@ -348,12 +320,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 if ( ! class_exists( 'WpssoNoDebug' ) ) {
 	class WpssoNoDebug {
+		public $enabled = false;
 		public function mark() { return; }
 		public function args() { return; }
 		public function log() { return; }
 		public function show_html() { return; }
 		public function get_html() { return; }
-		public function is_on() { return false; }
+		public function is_enabled() { return false; }
 	}
 }
 

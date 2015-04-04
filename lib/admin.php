@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -27,6 +27,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->debug->mark();
 			$this->p->check->conflict_warnings();
 			$this->set_objects();
+			$this->aop_notices();
 
 			add_action( 'admin_init', array( &$this, 'register_setting' ) );
 			add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
@@ -63,6 +64,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		private function aop_notices() {
+			$has_tid = false;
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+					$has_tid = true;
+					if ( ! $this->p->check->aop( $lca, false ) )
+						$this->notice->inf( 'An Authentication ID has been entered for '.$info['short'].', but the '.
+							' Pro version is not installed yet &ndash; don\'t forget to update the '.$info['short'].
+							' plugin to install the Pro version.', true );
+				}
+			}
+			$lca = $this->p->cf['lca'];
+			if ( $has_tid === true && 
+				( ! isset( $this->p->cf['plugin'][$lca.'um']['base'] ) || 
+					! WpssoUtil::active_plugins( $this->p->cf['plugin'][$lca.'um']['base'] ) ) )
+						$this->p->notice->err( 'At least one Authentication ID has been entered, but the <a href="'.
+							$this->p->cf['plugin'][$lca.'um']['url']['download'].'" target="_blank">'.
+							$this->p->cf['plugin'][$lca.'um']['name'].'</a> extension is not active.', true );
+		}
+
 		protected function set_form() {
 			$def_opts = $this->p->opt->get_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts );
@@ -77,7 +98,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		} 
 
 		public function set_readme_info( $expire_secs = 86400 ) {
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
 				if ( empty( $this->readme_info[$lca] ) )
 					$this->readme_info[$lca] = $this->p->util->parse_readme( $lca, $expire_secs );
 			}
@@ -183,9 +204,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$urls = $this->p->cf['plugin'][$this->p->cf['lca']]['url'];
 				array_push( $links, '<a href="'.$urls['faq'].'">'.__( 'FAQ', WPSSO_TEXTDOM ).'</a>' );
 				array_push( $links, '<a href="'.$urls['notes'].'">'.__( 'Notes', WPSSO_TEXTDOM ).'</a>' );
-				if ( $this->p->check->aop() ) 
+				if ( $this->p->check->aop() ) {
 					array_push( $links, '<a href="'.$urls['pro_support'].'">'.__( 'Pro Support', WPSSO_TEXTDOM ).'</a>' );
-				else {
+				} else {
 					array_push( $links, '<a href="'.$urls['wp_support'].'">'.__( 'Support Forum', WPSSO_TEXTDOM ).'</a>' );
 					if ( $this->p->is_avail['aop'] ) 
 						array_push( $links, '<a href="'.$urls['purchase'].'">'.__( 'Purchase License', WPSSO_TEXTDOM ).'</a>' );
@@ -369,7 +390,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->set_form();				// define form for side boxes and show_form_content()
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
 				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
 				$this->p->debug->show_html( null, 'debug log' );
@@ -478,8 +499,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_info() {
 			echo '<table class="sucom-setting">';
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
+
+				if ( empty( $info['version'] ) )	// filter out extensions that are not active
 					continue;
+
 				$stable_version = __( 'N/A', WPSSO_TEXTDOM );
 				$latest_version = __( 'N/A', WPSSO_TEXTDOM );
 				$installed_version = $info['version'];
@@ -534,7 +557,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'Debug Messages' => array( 'classname' => 'SucomDebug' ),
 						'Non-Persistant Cache' => array( 'status' => $this->p->is_avail['cache']['object'] ? 'on' : 'rec' ),
 						'Open Graph / Rich Pin' => array( 'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ? 'on' : 'rec' ),
-						'Pro Update Check' => array( 'classname' => 'SucomUpdate' ),
 						'Transient Cache' => array( 'status' => $this->p->is_avail['cache']['transient'] ? 'on' : 'rec' ),
 					);
 				else $features = array();
@@ -634,23 +656,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
 					continue;
-				echo '<p><strong>'.$info['short'].
-					( $this->p->check->aop( $lca ) ? ' Pro' : ' Free' ).' Help</strong></p>';
-				echo '<ul>';
+
+				$help_links = '';
 				if ( ! empty( $info['url']['faq'] ) ) {
-					echo '<li>Review <a href="'.$info['url']['faq'].'" target="_blank">FAQs</a>';
+					$help_links .= '<li>Review <a href="'.$info['url']['faq'].'" target="_blank">FAQs</a>';
 					if ( ! empty( $info['url']['notes'] ) )
-						echo ' and <a href="'.$info['url']['notes'].'" target="_blank">Notes</a>';
-					echo '</li>';
+						$help_links .= ' and <a href="'.$info['url']['notes'].'" target="_blank">Notes</a>';
+					$help_links .= '</li>';
 				}
-				if ( $this->p->check->aop( $lca ) && 
-					! empty( $info['url']['pro_ticket'] ) )
-						echo '<li><a href="'.$info['url']['pro_ticket'].'" 
-							target="_blank">Submit a Support Ticket</a></li>';
+				if ( ! empty( $info['url']['pro_ticket'] ) && $this->p->check->aop( $lca ) )
+					$help_links .= '<li><a href="'.$info['url']['pro_ticket'].'" 
+						target="_blank">Submit a Support Ticket</a></li>';
 				elseif ( ! empty( $info['url']['wp_support'] ) )
-					echo '<li><a href="'.$info['url']['wp_support'].'" 
+					$help_links .= '<li><a href="'.$info['url']['wp_support'].'" 
 						target="_blank">Post in Support Forum</a></li>';
-				echo '</ul>';
+
+				if ( ! empty( $help_links ) ) {
+					echo '<p><strong>'.$info['short'].
+						( $this->p->check->aop( $lca ) ? ' Pro' : ' Free' ).' Help</strong></p>';
+					echo '<ul>'.$help_links.'</ul>';
+				}
 			}
 			echo '</td></tr></table>';
 		}

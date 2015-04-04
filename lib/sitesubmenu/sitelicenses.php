@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_licenses', 'Network Pro Version Licenses', 
+			add_meta_box( $this->pagehook.'_licenses', 'Plugin Extensions and Licenses', 
 				array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes

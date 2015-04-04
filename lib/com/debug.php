@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -12,10 +12,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 	class SucomDebug {
 
+		public $enabled = false;	// true if at least one subsys is true
+
 		private $p;
 		private $display_name = '';
 		private $log_prefix = '';
-		private $active = false;	// true if at least one subsys is true
 		private $buffer = array();	// accumulate text strings going to html output
 		private $subsys = array();	// associative array to enable various outputs 
 		private $start_time = null;
@@ -27,12 +28,12 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->display_name = $this->p->cf['lca'];
 			$this->log_prefix = $this->p->cf['uca'];
 			$this->subsys = $subsys;
-			$this->is_on();		// set $this->active
+			$this->is_enabled();		// set $this->enabled
 			$this->mark();
 		}
 
 		public function mark( $id = false ) { 
-			if ( $this->active !== true ) 
+			if ( $this->enabled !== true ) 
 				return;
 
 			$diff_time = false;
@@ -60,14 +61,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function args( $args = array() ) { 
-			if ( $this->active !== true ) 
+			if ( $this->enabled !== true ) 
 				return;
 
 			$this->log( 'args '.$this->fmt_array( $args ), 2 ); 
 		}
 
 		public function log( $input = '', $backtrace = 1 ) {
-			if ( $this->active !== true ) 
+			if ( $this->enabled !== true ) 
 				return;
 
 			$stack = debug_backtrace();
@@ -93,13 +94,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function show_html( $data = null, $title = null ) {
-			if ( $this->is_on( 'html' ) !== true ) 
+			if ( $this->is_enabled( 'html' ) !== true ) 
 				return;
 			echo $this->get_html( $data, $title, 2 );
 		}
 
 		public function get_html( $data = null, $title = null, $backtrace = 1 ) {
-			if ( $this->is_on( 'html' ) !== true ) 
+			if ( $this->is_enabled( 'html' ) !== true ) 
 				return;
 
 			$from = '';
@@ -144,16 +145,17 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private function switch_to( $name, $state ) {
 			if ( ! empty( $name ) )
 				$this->subsys[$name] = $state;
-			return $this->is_on();
+			return $this->is_enabled();
 		}
 
-		public function is_on( $name = '' ) {
+		public function is_enabled( $name = '' ) {
 			if ( ! empty( $name ) )
-				return array_key_exists( $name, $this->subsys ) ? 
+				return isset( $this->subsys[$name] ) ? 
 					$this->subsys[$name] : false;
-			else $this->active = in_array( true, $this->subsys, true ) ? 	// strict = true
+			// return true if any sybsys is true (use strict checking)
+			else $this->enabled = in_array( true, $this->subsys, true ) ?
 				true : false;
-			return $this->active;
+			return $this->enabled;
 		}
 
 		private function fmt_array( $input ) {

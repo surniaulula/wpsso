@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_object( $obj ) ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $str;
 				}
@@ -68,6 +68,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function active_plugins( $idx = false ) {
+			// create list only once
 			if ( empty( self::$plugins_idx ) ) {
 				$all_plugins = self::$site_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
@@ -79,8 +80,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::$plugins_idx[$base] = true;
 			}
 			if ( $idx !== false ) {
-				if ( isset( self::$plugins_idx ) )
-					return self::$plugins_idx;
+				if ( isset( self::$plugins_idx[$idx] ) )
+					return self::$plugins_idx[$idx];
 				else return false;
 			} else return self::$plugins_idx;
 		}
@@ -236,7 +237,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$url = empty( $_SERVER['HTTPS'] ) ?
 					'http:'.$url : 'https:'.$url;
 
-			if ( $this->p->debug_enabled && 
+			if ( $this->p->debug->enabled && 
 				strpos( $url, '://' ) === false )
 					$this->p->debug->log( 'incomplete url given: '.$url );
 
@@ -244,7 +245,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$this->urls_found[$url] = 1;
 				return true;
 			} else {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'duplicate url rejected: '.$url ); 
 				return false;
 			}
@@ -297,7 +298,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( isset( $this->p->mods['util']['postmeta'] ) )
 						$url = $this->p->mods['util']['postmeta']->get_options( $post_id, 'sharing_url' );
 					if ( ! empty( $url ) ) {
-						if ( $this->p->debug_enabled )
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom postmeta sharing_url = '.$url );
 					} else $url = get_permalink( $post_id );
 
@@ -332,7 +333,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						if ( isset( $this->p->mods['util']['user'] ) )
 							$url = $this->p->mods['util']['user']->get_options( $author->ID, 'sharing_url' );
 						if ( ! empty( $url ) ) {
-							if ( $this->p->debug_enabled )
+							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
 						} else $url = get_author_posts_url( $author->ID );
 					}
@@ -391,7 +392,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function fix_relative_url( $url = '' ) {
 			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url found = '.$url );
 				$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
 				if ( strpos( $url, '//' ) === 0 )
@@ -406,7 +407,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 					$url = trailingslashit( $base, false ).$url;
 				}
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url fixed = '.$url );
 			}
 			return $url;
@@ -489,7 +490,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 									$alt.' ' : $alt.'. ';
 							}
 						}
-						if ( $this->p->debug_enabled )
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'img alt text: '.$alt_text );
 					}
 					$text = $alt_text;
@@ -530,7 +531,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function parse_readme( $lca, $expire_secs = 86400 ) {
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'lca' => $lca,
 					'expire_secs' => $expire_secs,
@@ -538,7 +539,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			$plugin_info = array();
 			if ( ! defined( strtoupper( $lca ).'_PLUGINDIR' ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( strtoupper( $lca ).'_PLUGINDIR is undefined and required for readme.txt path' );
 				return $plugin_info;
 			}
@@ -552,11 +553,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$cache_salt = __METHOD__.'(url:'.$readme_url.'_txt:'.$readme_txt.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
 				$plugin_info = get_transient( $cache_id );
 				if ( is_array( $plugin_info ) ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $cache_type.': plugin_info retrieved from transient '.$cache_id );
 					return $plugin_info;
 				}
@@ -588,7 +589,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			// save the parsed readme (aka $plugin_info) to the transient cache
 			if ( $this->p->is_avail['cache']['transient'] ) {
 				set_transient( $cache_id, $plugin_info, $this->p->cache->object_expire );
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.$cache_id.
 						' ('.$this->p->cache->object_expire.' seconds)');
 			}
@@ -686,7 +687,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$num_meta = $this->p->mods['util']['postmeta']->get_options( $post_id, $max_name );
 				if ( $num_meta !== false ) {
 					$og_max[$max_name] = $num_meta;
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
 				} else $og_max[$max_name] = $this->p->options[$max_name];
 			}
@@ -705,11 +706,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$has = count( $arr );
 			if ( $num > 0 ) {
 				if ( $has == $num ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'max values reached ('.$has.' == '.$num.')' );
 					return true;
 				} elseif ( $has > $num ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'max values reached ('.$has.' > '.$num.') - slicing array' );
 					$arr = array_slice( $arr, 0, $num );
 					return true;

@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -56,12 +56,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function get_array( &$og = array(), $use_post = false, $obj = false ) {
 
 			if ( ! is_object( $obj ) && ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: invalid object type' );
 				return $og;
 			}
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-			if ( $this->p->debug_enabled )
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' :
 					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
 
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// check first, to add video preview images
 			if ( ! isset( $og['og:video'] ) ) {
 				if ( empty( $og_max['og_vid_max'] ) ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
 					$og['og:video'] = $this->get_all_videos( $og_max['og_vid_max'], $post_id );
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								$video_images++;
 						if ( $video_images > 0 ) {
 							$og_max['og_img_max'] -= $video_images;
-							if ( $this->p->debug_enabled )
+							if ( $this->p->debug->enabled )
 								$this->p->debug->log( $video_images.' video preview images found (og_img_max adjusted to '.$og_max['og_img_max'].')' );
 						}
 					}
@@ -204,7 +204,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// get all images
 			if ( ! isset( $og['og:image'] ) ) {
 				if ( empty( $og_max['og_img_max'] ) ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
 					if ( is_admin() ) {
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_all_videos( $num = 0, $post_id, $check_dupes = true, $meta_pre = 'og' ) {
 
-			if ( $this->p->debug_enabled )
+			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array( 
 					'num' => $num,
 					'post_id' => $post_id,
@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {
 
-			if ( $this->p->debug_enabled )
+			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				( ! empty( $this->p->options['og_def_img_on_author'] ) && is_author() ) ||
 				( ! empty( $this->p->options['og_def_img_on_search'] ) && is_search() ) ) {
 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'default image is forced' );
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
 				$og_ret = array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
@@ -373,7 +373,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// if we found images in the query, skip content shortcodes
 				if ( count( $ngg_query_og_ret ) > 0 ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( count( $ngg_query_og_ret ).' image(s) returned - skipping additional shortcode images' );
 					$og_ret = array_merge( $og_ret, $ngg_query_og_ret );
 

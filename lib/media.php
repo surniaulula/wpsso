@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				// check for an attachment page, just in case
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) &&
 					wp_attachment_is_image( $post_id ) ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image id' );
 					$pid = $post_id;
 				} elseif ( $this->p->is_avail['postthumb'] == true && has_post_thumbnail( $post_id ) )
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attach_id, $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
 					'size_name' => $size_name,
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $og_image['og:image'] ) &&
 						$this->p->util->push_max( $og_ret, $og_image, $num ) )
 							return $og_ret;
-				} elseif ( $this->p->debug_enabled )
+				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'attachment id '.$attach_id.' is not an image' );
 			}
 			return $og_ret;
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$attach_ids[] = $attach->ID;
 					}
 					rsort( $attach_ids, SORT_NUMERIC ); 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
 					$attach_ids = apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id );
 					foreach ( $attach_ids as $pid ) {
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'pid' => $pid,
 					'size_name' => $size_name,
@@ -268,12 +268,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				else {
 					if ( is_admin() )
 						$this->p->notice->err( 'The NextGEN Gallery module is not available: image id '.$pid.' ignored.' ); 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' ); 
 					return $ret_empty; 
 				}
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: attachment '.$pid.' is not an image' ); 
 				return $ret_empty; 
 			}
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ( empty( $size_info['crop'] ) && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
 						( ! empty( $size_info['crop'] ) && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
-						if ( $this->p->debug_enabled ) {
+						if ( $this->p->debug->enabled ) {
 							if ( empty( $img_meta['sizes'][$size_name] ) )
 								$this->p->debug->log( $size_name.' size not defined in the image meta' );
 							else $this->p->debug->log( 'image metadata ('.
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$fullsizepath = get_attached_file( $pid );
 						$resized = image_make_intermediate_size( $fullsizepath, 
 							$size_info['width'], $size_info['height'], $size_info['crop'] );
-						if ( $this->p->debug_enabled )
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'image_make_intermediate_size() reported '.
 								( $resized === false ? 'failure' : 'success' ) );
 						if ( $resized !== false ) {
@@ -341,17 +341,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							wp_update_attachment_metadata( $pid, $img_meta );
 						}
 					}
-				} elseif ( $this->p->debug_enabled )
+				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
 			}
 
 			list( $img_url, $img_width, $img_height ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
 				image_downsize( $pid, $size_name ), $pid, $size_name );
-			if ( $this->p->debug_enabled )
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'image_downsize() = '.$img_url.' ('.$img_width.'x'.$img_height.')' );
 
 			if ( empty( $img_url ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: returned image_downsize() url is empty' );
 				return $ret_empty;
 			}
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$rejected_text = 'image id '.$pid.' rejected - full size image ('.
 								$img_meta['width'].'x'.$img_meta['height'].')'.$is_too_small_text;
 					else $rejected_text = 'image id '.$pid.' rejected - '.$img_width.'x'.$img_height.$is_too_small_text;
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
@@ -395,7 +395,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					( $img_width < $this->p->cf['head']['min_img_dim'] ||
 					$img_height < $this->p->cf['head']['min_img_dim'] ) ) {
 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: image id '.$pid.' rejected - '.
 							$img_width.'x'.$img_height.' is smaller than the hard-coded minimum of '.
 							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$rejected_text = 'image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
 						' aspect ratio is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1';
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							'" option.', false, true, 'dim_wp_'.$pid );
 					return $ret_empty;
 
-				} elseif ( $this->p->debug_enabled )
+				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'returned image dimensions ('.$img_width.'x'.$img_height.') are sufficient' );
 			}
 
@@ -434,7 +434,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_author_image( $num = 0, $size_name = 'thumbnail', $author_id, $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $pid > 0 ) {
 				$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'found custom user image id = '.$pid );
 				list(
 					$og_image['og:image'], 
@@ -467,7 +467,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $og_image['og:image'] ) && ! empty( $img_url ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'found custom user image url = "'.$img_url.'"' );
 				list(
 					$og_image['og:image'],
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_default_image( $num = 0, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -502,14 +502,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$url = empty( $this->p->options['og_def_img_url'] ) ? '' : $this->p->options['og_def_img_url'];
 
 			if ( $pid === '' && $url === '' ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				return $og_ret;
 			}
 
 			if ( $pid > 0 ) {
 				$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default img pid = '.$pid );
 				list(
 					$og_image['og:image'],
@@ -521,7 +521,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $og_image['og:image'] ) && ! empty( $url ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default img url = '.$url );
 				$og_image = array();	// clear all array values
 				$og_image['og:image'] = $url;
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $post_id = 0, $check_dupes = true, $content = '' ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
 
 			if ( empty( $content ) ) { 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: empty post content' ); 
 				return $og_ret; 
 			}
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( preg_match_all( '/<('.$this->data_tags_preg.'[^>]*? '.$this->data_attr_preg.'=[\'"]([0-9]+)[\'"]|'.
 				'(img)[^>]*? (data-share-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $match, PREG_SET_ORDER ) ) {
 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( count( $match ).' x matching <'.$this->data_tags_preg.'/> html tag(s) found' );
 
 				foreach ( $match as $img_num => $img_arr ) {
@@ -576,7 +576,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$attr_name = $img_arr[6];	// data-share-src|src
 						$attr_value = $img_arr[7];	// url
 					}
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
 					$og_image = array();
 					switch ( $attr_name ) {
@@ -634,7 +634,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
 
 							} else {
-								if ( $this->p->debug_enabled ) {
+								if ( $this->p->debug->enabled ) {
 									if ( is_admin() )
 										$this->p->notice->err( 'Image '.$og_image['og:image'].' rejected - '.
 											'width / height missing or too small for '.$size_name.'.' );
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 				return $og_ret;
 			}
-			if ( $this->p->debug_enabled )
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'no matching <'.$this->data_tags_preg.'/> html tag(s) found' );
 			return $og_ret;
 		}
@@ -660,7 +660,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		// called by TwitterCard class to build the Gallery Card
 		public function get_gallery_images( $num = 0, $size_name = 'large', $get = 'gallery', $check_dupes = false ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -672,17 +672,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 			if ( $get == 'gallery' ) {
 				if ( empty( $post ) ) { 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: empty post object' ); 
 					return $og_ret;
 				} elseif ( empty( $post->post_content ) ) { 
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: empty post content' ); 
 					return $og_ret;
 				}
 				if ( preg_match( '/\[(gallery)[^\]]*\]/im', $post->post_content, $match ) ) {
 					$shortcode_type = strtolower( $match[1] );
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '['.$shortcode_type.'] shortcode found' );
 					switch ( $shortcode_type ) {
 						case 'gallery' :
@@ -695,7 +695,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								return $og_ret;		// return immediately and ignore any other type of image
 							break;
 					}
-				} elseif ( $this->p->debug_enabled )
+				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( '[gallery] shortcode(s) not found' );
 			}
 			// check for ngg gallery
@@ -710,7 +710,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_default_video( $num = 0, $check_dupes = true ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'check_dupes' => $check_dupes,
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! empty( $url ) && 
 				( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default video url = '.$url );
 				$og_video = $this->get_video_info( $url, 0, 0, $check_dupes );
 				if ( empty( $og_video ) )	// fallback to the original custom video URL
@@ -735,7 +735,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/* Purpose: Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks. */
 		public function get_content_videos( $num = 0, $post_id = 0, $check_dupes = true, $content = '' ) {
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'post_id' => $post_id,
@@ -750,7 +750,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
 
 			if ( empty( $content ) ) { 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: empty post content' ); 
 				return $og_ret; 
 			}
@@ -760,11 +760,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? src=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
 				$content, $match_all, PREG_SET_ORDER ) ) {
 
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( count( $match_all ).' x video <iframe|embed/> html tag(s) found' );
 
 				foreach ( $match_all as $media ) {
-					if ( $this->p->debug_enabled )
+					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '<'.$media[1].'/> html tag found = '.$media[2] );
 					$embed_url = $media[2];
 					if ( ! empty( $embed_url ) &&
@@ -777,17 +777,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								return $og_ret;
 					}
 				}
-			} elseif ( $this->p->debug_enabled )
+			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
 
 			$filter_name = $this->p->cf['lca'].'_content_videos';
 			if ( has_filter( $filter_name ) ) {
-				if ( $this->p->debug_enabled )
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'applying filter '.$filter_name ); 
 				// should return an array of arrays
 				if ( ( $match_all = apply_filters( $filter_name, false, $content ) ) !== false ) {
 					if ( is_array( $match_all ) ) {
-						if ( $this->p->debug_enabled )
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( count( $match_all ).' x videos returned by '.$filter_name.' filter' );
 						foreach ( $match_all as $media ) {
 							if ( ! empty( $media[0] ) && 
@@ -798,7 +798,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										return $og_ret;
 							}
 						}
-					} elseif ( $this->p->debug_enabled )
+					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( $filter_name.' filter did not return false or an array' ); 
 				}
 			}
@@ -820,7 +820,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			);
 			$og_video = apply_filters( $this->p->cf['lca'].'_video_info', $og_video, $embed_url, $embed_width, $embed_height );
 
-			if ( $this->p->debug_enabled ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'video = '.$og_video['og:video'].
 					' ('.$og_video['og:video:width'].'x'.$og_video['og:video:height'].')' );
 				$this->p->debug->log( 'image = '.$og_video['og:image'].

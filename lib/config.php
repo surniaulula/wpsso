@@ -2,7 +2,7 @@
 /*
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2014 - Jean-Sebastien Morisset - http://surniaulula.com/
+Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
 */
 
 if ( ! defined( 'ABSPATH' ) ) 
@@ -20,15 +20,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'update_check_hours' => 24,
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '2.9',		// plugin version
+					'version' => '3.0dev1',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'img' => array(
-						'icon-small' => 'https://ps.w.org/wpsso/assets/icon-128x128.png?rev=',
-						'icon-medium' => 'https://ps.w.org/wpsso/assets/icon-256x256.png?rev=',
+						'icon-small' => 'images/icon-128x128.png',
+						'icon-medium' => 'images/icon-256x256.png',
 					),
 					'url' => array(
 						// wordpress
@@ -59,13 +59,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'submenu' => array (
 							'general' => 'General',
 							'advanced' => 'Advanced',
-							'licenses' => 'Pro Licenses',
+							'licenses' => 'Extension Plugins and Licenses',
 							'readme' => 'Read Me',
 							'setup' => 'Setup Guide',
 						),
 						'sitesubmenu' => array(
 							'siteadvanced' => 'Advanced',
-							'sitelicenses' => 'Pro Licenses',
+							'sitelicenses' => 'Extension Plugins and Licenses',
 							'sitereadme' => 'Read Me',
 							'sitesetup' => 'Setup Guide',
 						),
@@ -135,9 +135,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name' => 'WPSSO App Meta (WPSSO AM)',
 					'desc' => 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
 					'slug' => 'wpsso-am',
+					'base' => 'wpsso-am/wpsso-am.php',
 					'img' => array(
-						'icon-small' => 'https://ps.w.org/wpsso-am/assets/icon-128x128.png?rev=',
-						'icon-medium' => 'https://ps.w.org/wpsso-am/assets/icon-256x256.png?rev=',
+						'icon-small' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
+						'icon-medium' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
 					),
 					'url' => array(
 						'download' => 'https://wordpress.org/plugins/wpsso-am/',
@@ -148,9 +149,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name' => 'WPSSO Place and Location Meta (WPSSO PLM)',
 					'desc' => 'WPSSO extension to provide Facebook / Open Graph "Location" and Pinterest "Place" Rich Pin meta tags.',
 					'slug' => 'wpsso-plm',
+					'base' => 'wpsso-plm/wpsso-plm.php',
 					'img' => array(
-						'icon-small' => 'https://ps.w.org/wpsso-plm/assets/icon-128x128.png?rev=',
-						'icon-medium' => 'https://ps.w.org/wpsso-plm/assets/icon-256x256.png?rev=',
+						'icon-small' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
+						'icon-medium' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
 					),
 					'url' => array(
 						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
@@ -161,12 +163,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name' => 'WPSSO Social Sharing Buttons (WPSSO SSB)',
 					'desc' => 'WPSSO extension to provide fast and accurate Social Sharing Buttons, including support for hashtags, shortening, bbPress, BuddyPress, and WooCommerce.',
 					'slug' => 'wpsso-ssb',
+					'base' => 'wpsso-ssb/wpsso-ssb.php',
 					'img' => array(
-						'icon-small' => 'https://ps.w.org/wpsso-ssb/assets/icon-128x128.png?rev=',
-						'icon-medium' => 'https://ps.w.org/wpsso-ssb/assets/icon-256x256.png?rev=',
+						'icon-small' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-128x128.png',
+						'icon-medium' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-256x256.png',
 					),
 					'url' => array(
 						'download' => 'https://wordpress.org/plugins/wpsso-ssb/',
+					),
+				),
+				'wpssoum' => array(
+					'short' => 'WPSSO UM',		// short plugin name
+					'name' => 'WPSSO Pro Update Manager (WPSSO UM)',
+					'desc' => 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its extensions.',
+					'slug' => 'wpsso-um',
+					'base' => 'wpsso-ssb/wpsso-um.php',
+					'img' => array(
+						'icon-small' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
+						'icon-medium' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
+					),
+					'url' => array(
+						'download' => 'https://surniaulula.com/extend/plugins/wpsso-um/',
 					),
 				),
 			),
@@ -491,6 +508,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_config( $idx = false, $filter = false ) { 
 
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
+
 				if ( $filter === true ) {
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf );
 					self::$cf['config_filtered'] = true;
@@ -505,6 +523,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							self::$cf['*']['version'] .= '-'.$lca.$info['version'];
 					}
 					self::$cf['*']['version'] = trim( self::$cf['*']['version'], '-' );
+				}
+
+				// complete relative paths in the image array
+				foreach ( self::$cf['plugin'] as $lca => $info ) {
+					if ( ! isset( $info['base'] ) || 
+						! isset( $info['img'] ))
+							continue;
+					$base = self::$cf['plugin'][$lca]['base'];
+					foreach ( (array) $info['img'] as $img => $img_url ) {
+						if ( strpos( $img_url, '//' ) === false ) {
+							self::$cf['plugin'][$lca]['img'][$img] = trailingslashit( plugins_url( '', $base ) ).$img_url;
+						}
+					}
 				}
 			}
 
@@ -626,11 +657,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_filepath ) {
 			
-			$cf = self::get_config();
-
-			if ( file_exists( WPSSO_PLUGINDIR.'lib/pro/' ) )
-				require_once( WPSSO_PLUGINDIR.'lib/com/update.php' );
-
 			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/notice.php' );
