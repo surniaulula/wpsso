@@ -59,15 +59,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'submenu' => array (
 							'general' => 'General',
 							'advanced' => 'Advanced',
-							'licenses' => 'Extension Plugins and Licenses',
 							'readme' => 'Read Me',
 							'setup' => 'Setup Guide',
+							'licenses' => 'Extension Plugins and Licenses',
 						),
 						'sitesubmenu' => array(
 							'siteadvanced' => 'Advanced',
-							'sitelicenses' => 'Extension Plugins and Licenses',
 							'sitereadme' => 'Read Me',
 							'sitesetup' => 'Setup Guide',
+							'sitelicenses' => 'Extension Plugins and Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
