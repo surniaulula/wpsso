@@ -69,24 +69,28 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function trunc( $type ) {
-			$user_id = get_current_user_id();	// since wp 3.0
-			$msg_opt = $this->lca.'_notices_'.$type;
-			// delete doesn't always work, so set an empty value first
-			if ( get_option( $msg_opt ) ) {
-				update_option( $msg_opt, array() );
-				delete_option( $msg_opt );
+		public function trunc( $idx = '' ) {
+			$types = empty( $idx ) ?
+				array_keys( $this->log ) : array( $idx );
+			foreach ( $types as $type ) {
+				$user_id = get_current_user_id();	// since wp 3.0
+				$msg_opt = $this->lca.'_notices_'.$type;
+				// delete doesn't always work, so set an empty value first
+				if ( get_option( $msg_opt ) ) {
+					update_option( $msg_opt, array() );
+					delete_option( $msg_opt );
+				}
+				if ( get_user_option( $msg_opt, $user_id ) ) {
+					update_user_option( $user_id, $msg_opt, array() );
+					delete_user_option( $user_id, $msg_opt );
+				}
+				$this->log[$type] = array();
 			}
-			if ( get_user_option( $msg_opt, $user_id ) ) {
-				update_user_option( $user_id, $msg_opt, array() );
-				delete_user_option( $user_id, $msg_opt );
-			}
-			$this->log[$type] = array();
 		}
 
 		public function admin_notices() {
 			$all_nag_msgs = '';
-			foreach ( array( 'nag', 'err', 'inf' ) as $type ) {
+			foreach ( array_keys( $this->log ) as $type ) {
 				$user_id = get_current_user_id();	// since wp 3.0
 				$msg_opt = $this->lca.'_notices_'.$type;
 				$msg_arr = array_unique( array_merge( 
@@ -105,12 +109,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 				}
 				if ( ! empty( $msg_arr ) ) {
-					if ( $type == 'nag' ) 
+					if ( $type == 'nag' ) {
+						$bgcolor = empty( $this->p->cf['bgcolor'] ) ?
+							'none' : '#'.$this->p->cf['bgcolor'];
+						$bgimage = empty( $this->p->cf['plugin'][$this->lca]['img']['background'] ) ?
+							'none' : 'url("'.$this->p->cf['plugin'][$this->lca]['img']['background'].'")';
 						echo '<style type="text/css">
 	.'.$this->lca.'-update-nag {
 		display:block;
 		line-height:1.4em;
-		background-image:url("'.constant( $this->p->cf['uca'].'_URLPATH' ).'images/background.jpg");
+		background-color:'.$bgcolor.';
+		background-image:'.$bgimage.';
 		background-position:top;
 		background-size:cover;
 		border:1px dashed #ccc;
@@ -118,39 +127,47 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		margin-top:0;
 	}
 	.'.$this->lca.'-update-nag p,
-	.'.$this->lca.'-update-nag ul {
+	.'.$this->lca.'-update-nag ul,
+	.'.$this->lca.'-update-nag ol {
+		font-size:1em;
 		clear:both;
-		max-width:900px;
+		max-width:720px;
 		margin:15px auto 15px auto;
 		text-align:center;
 	}
+	.'.$this->lca.'-update-nag ul li {
+		list-style-type:square;
+	}
+	.'.$this->lca.'-update-nag ol li {
+		list-style-type:decimal;
+	}
 	.'.$this->lca.'-update-nag li {
-		list-style:circle outside none;
 		text-align:left;
-		margin:5px 0 5px 20px;
+		margin:5px 0 5px 60px;
 	}
 </style>';
+					}
 					foreach ( $msg_arr as $key => $msg ) {
 						if ( ! empty( $msg ) ) {
 							$cssid = strpos( $key, $type.'_' ) === 0 ? $cssid=' id="'.$key.'"' : '';
+							unset( $class, $label );
 							switch ( $type ) {
 								case 'nag':
 									$all_nag_msgs .= $msg;
 									break;
 								case 'err':
-									echo '<div class="error"'.$cssid.'>
-									<div style="float:left;margin-right:2px;">
-										<p style="white-space:nowrap;"><b>'.
-											$this->p->cf['menu'].' Warning</b>:</p></div>
-									<div><p style="text-align:left">'.$msg.'</p></div>
-									</div>';
-									break;
+									$class = empty( $class ) ? 'error' : $class;
+									$label = empty( $label ) ? $this->p->cf['menu'].' Warning' : $label;
+									// no break
 								case 'inf':
-									echo '<div class="updated fade"'.$cssid.'>
-									<div style="float:left;margin-right:2px;">
-										<p style="white-space:nowrap;"><b>'.
-											$this->p->cf['menu'].' Info</b>:</p></div>
-									<div><p style="text-align:left">'.$msg.'</p></div>
+									$class = empty( $class ) ? 'updated fade' : $class;
+									$label = empty( $label ) ? $this->p->cf['menu'].' Info' : $label;
+									echo '<div class="'.$class.'"'.$cssid.'>
+									<div style="display:table-cell;">
+										<p style="margin:5px 0;white-space:nowrap;">
+											<b>'.$label.'</b>:</p></div>
+									<div style="display:table-cell;">
+										<p style="margin:5px;text-align:left">'.$msg.'</p></div>
 									</div>';
 									break;
 							}

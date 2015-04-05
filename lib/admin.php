@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -65,23 +65,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function aop_notices() {
+			// check that wpsso pro has an authentication id
+			$lca = $this->p->cf['lca'];
+			if ( $this->p->is_avail['aop'] === true && empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
+				( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
+					$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
+						$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-msg' ) );
+			// check all plugins to make sure pro version is installed
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 					$has_tid = true;
 					if ( ! $this->p->check->aop( $lca, false ) )
-						$this->notice->inf( 'An Authentication ID has been entered for '.$info['short'].', but the '.
-							' Pro version is not installed yet &ndash; don\'t forget to update the '.$info['short'].
-							' plugin to install the Pro version.', true );
+						$this->p->notice->inf( $this->p->msgs->get( 'pro-not-installed', array( 'lca' => $lca ) ), true );
 				}
 			}
-			$lca = $this->p->cf['lca'];
-			if ( $has_tid === true && 
-				( ! isset( $this->p->cf['plugin'][$lca.'um']['base'] ) || 
-					! WpssoUtil::active_plugins( $this->p->cf['plugin'][$lca.'um']['base'] ) ) )
-						$this->p->notice->err( 'At least one Authentication ID has been entered, but the <a href="'.
-							$this->p->cf['plugin'][$lca.'um']['url']['download'].'" target="_blank">'.
-							$this->p->cf['plugin'][$lca.'um']['name'].'</a> extension is not active.', true );
+			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] )
+				$this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
 		}
 
 		protected function set_form() {
@@ -157,9 +157,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '' ) {
+			$menu_id = empty( $menu_id ) ?
+				$this->menu_id : $menu_id;
+			$menu_name = empty( $menu_name ) ?
+				$this->menu_name : $menu_name;
 			$short_aop = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
 				( $this->p->check->aop( $this->p->cf['lca'] ) ? ' Pro' : ' Free' );
-
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
 				$menu_title = '<div style="z-index:999;
 					padding:2px 0;
@@ -172,10 +175,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$page_title = '';
 				$function = '';
 			} else {
-				$menu_title = empty( $menu_name ) ? 
-					$this->menu_name : $menu_name;
-				$menu_slug = $this->p->cf['lca'].'-'.
-					( empty( $menu_id ) ? $this->menu_id : $menu_id );
+				// highlight the "extension plugins" part of the menu title
+				if ( strpos( $menu_name, 'Extension Plugins' ) !== false )
+					$menu_title = preg_replace( '/(Extension Plugins)/',
+						'<div style="color:#'.$this->p->cf['color'].';">$1</div>', $menu_name );
+				else $menu_title = $menu_name;
+				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 				$page_title = $short_aop.' : '.$menu_title;
 				$function = array( &$this, 'show_form_page' );
 			}
@@ -230,6 +235,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = array_merge( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME );
+			$this->p->notice->trunc();	// flush all messages first
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Wait %d seconds for cache objects to expire (default) or use the \'Clear All Cache(s)\' button.', WPSSO_TEXTDOM ), $this->p->options['plugin_object_cache_exp'] ), true );
 			return $opts;
 		}
@@ -261,7 +267,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 
-			// store message in user options table
+			$this->p->notice->trunc();	// flush all messages first
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ), true );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
 			exit;	// stop here
@@ -286,9 +292,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				else {
 					switch ( $_GET['action'] ) {
 						case 'check_for_updates': 
-							if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) ) {
+							if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) && 
+								$this->p->is_avail['util']['um'] ) {
 								$this->readme_info = array();
-								$this->p->update->check_for_updates( null, true );
+								$wpssoum = WpssoUm::get_instance();
+								$wpssoum->update->check_for_updates( null, true, false );
 							}
 							break;
 
@@ -706,8 +714,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
-			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) )
-				$action_buttons .= $this->form->get_button( __( 'Check for Pro Update', WPSSO_TEXTDOM ), 
+			// if wpsso is licensed, and the update manager is active, then allow update checks
+			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) && $this->p->is_avail['util']['um'] )
+				$action_buttons .= $this->form->get_button( __( 'Check for Pro Update(s)', WPSSO_TEXTDOM ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), 
 						$this->get_nonce(), WPSSO_NONCE ) );
 

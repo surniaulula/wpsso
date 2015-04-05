@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_licenses', 'Plugin Extensions and Licenses', 
+			add_meta_box( $this->pagehook.'_licenses', 'Plugin Extensions and Pro Licenses', 
 				array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes
@@ -85,8 +85,8 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 					else $links .= ' | <em>Purchase Pro License(s)</em>';
 				}
 
-				if ( ! empty( $info['img']['icon-small'] ) )
-					$img_icon = $info['img']['icon-small'];
+				if ( ! empty( $info['img']['icon_small'] ) )
+					$img_icon = $info['img']['icon_small'];
 				else $img_icon = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 				// logo image

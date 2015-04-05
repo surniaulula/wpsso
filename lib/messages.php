@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a compatible eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices, images, and other attributes.';
 							break;
 						case 'tooltip-side-pro-update-check':
-							$text = 'When a Pro version Authentication ID is entered on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Licenses' ).' settings page, a check is scheduled every 24 hours to see if an update is available.';
+							$text = 'When a Pro version Authentication ID is entered on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Pro Licenses settings page' ).', a check is scheduled every 24 hours to see if an update is available.';
 							break;
 						case 'tooltip-side-transient-cache':
 							$text = $short.' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
@@ -87,9 +87,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-youtube-video-playlist-api':
 							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_side', $text, $idx );
 							break;
@@ -293,9 +290,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_author_gravatar':
 							$text = 'Check this option to include Gravatar image URLs in the meta tags for author index webpages.  If the \'Force Default Image on Author Index\' option is also enabled (on the \'Images\' tab), that option will take precedence over this one.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_og', $text, $idx );
 							break;
@@ -388,9 +382,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_plugin', $text, $idx );
 							break;
@@ -414,9 +405,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-fb_lang':
 							$text = 'The default language of your website content, used in the Facebook / Open Graph and Pinterest Rich Pin meta tags. The Pro version can also use the WordPress locale to adjust the language value dynamically (useful for websites with multilingual content).';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_fb', $text, $idx );
 							break;
@@ -461,9 +449,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_schema_publisher_json':
 							$text = 'Add publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search. The Open Graph "Article Publisher Page URL" and "Publisher Link URL" will be listed in the social profile markup. The Open Graph Default Image ID / URL will be used as the Organization image.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_google', $text, $idx );
 							break;
@@ -513,9 +498,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_prod_defaults':
 							$text = 'The <em>Product</em> Twitter Card needs a <strong>minimum of two product attributes</strong>. The first attribute will be the product price, and if your product has additional attribute fields associated with it (weight, size, color, etc), these will be included in the <em>Product</em> Card as well (maximum of 4 attributes). <strong>If your product does not have additional attributes beyond its price</strong>, then this default second attribute label and value will be used. You may modify both the Label <em>and</em> Value for whatever is most appropriate for your website and/or products. Some examples: Promotion / Free Shipping, Ships from / Hong Kong, Made in / China, etc.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_tc', $text, $idx );
 							break;
@@ -536,9 +518,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-rp_author_name':
 							$text = 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags. An <em>additional</em> \'article:author\' meta tag may be included when the Pinterest crawler is detected. Select an Author Name Format, or \'[none]\' to disable this feature (the default and recommended value is \'Display Name\').';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_rp', $text, $idx );
 							break;
@@ -553,9 +532,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-instgram_publisher_url':
 							$text = 'If you have an <a href="http://blog.business.instagram.com/" target="_blank">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_instgram', $text, $idx );
 							break;
@@ -570,9 +546,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-linkedin_publisher_url':
 							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page for your website / business</a>, you may enter its URL here. For example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>. The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_linkedin', $text, $idx );
 							break;
@@ -587,9 +560,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-myspace_publisher_url':
 							$text = 'If you have a <a href="http://myspace.com/" target="_blank">MySpace account for your website / business</a>, you may enter its URL here. The MySpace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_tooltip_instgram', $text, $idx );
 							break;
@@ -612,16 +582,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'info-' ) !== false ? true : false ):
 					switch ( $idx ) {
 						case 'info-plugin-tid':
+							$um_name = $this->p->cf['plugin'][$um_lca]['name'];
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here, to fetch Pro version updates from the SurniaUlula.com Pro update server (instead of the WordPress.org Free plugin repository).</p>';
-							if ( empty( $this->p->is_avail['aop'] ) )
-								$text .= '<p>The Free version is currently installed &mdash; don\'t forget to update the plugin after entering your Authentication ID.</p>';
-							$text .= '<p><strong>'.$short.' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$short.' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version.</p>
+							<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to check for Pro version updates immediately and every 24 hours thereafter.</p>
+							<p><strong>'.$name.' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$short.' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version. ;-)</p>
 							</blockquote>';
 							break;
 						case 'info-plugin-tid-network':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to define a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>. ';
+							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to define a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>. ';
 							if ( empty( $this->p->is_avail['aop'] ) )
 								$text .= 'The Free version is currently installed &mdash; don\'t forget to update the plugin after licensing the <em>default</em> site/blog. ';
 							$text .= '</p>
@@ -663,29 +632,54 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							<p>The buttons enabled bellow (along with those in the widget) can be included or excluded from specific webpage types. This does <em>not</em> apply to the shortcode and function buttons, which are displayed (or not) based on their own parameter options.</p>
 							</blockquote>';
 							break;
-						/*
-						 * Other settings
-						 */
 						default:
 							$text = apply_filters( $lca.'_messages_info', $text, $idx );
 							break;
 					}
 					break;
+				/*
+				 * Misc informational messages
+				 */
+				case ( strpos( $idx, 'pro-' ) !== false ? true : false ):
+					switch ( $idx ) {
+						case 'pro-feature-msg':
+							if ( $this->p->check->aop( $lca, false ) )
+								$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase '.
+									$short_pro.' licence(s) to modify the following options and access Pro modules</a></p>';
+							else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase the '.
+								$short_pro.' plugin to modify the following options and get all Pro modules</a></p>';
+							break;
+						case 'pro-option-msg':
+							$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+								$short_pro.' is required to use this option</a></p>';
+							break;
+						case 'pro-activate-msg':
+							if ( ! is_multisite() ) {
+								$text = '<p><strong>The '.$name.' Authentication ID option is empty.</strong><br/>To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Pro Licenses settings page' ).'.</p>';
+							}
+							break;
+						case 'pro-not-installed':
+							$text = 'An Authentication ID has been entered for '.$name.', but the Pro version is not yet installed &ndash; don\'t forget to update this plugin to install the latest Pro version.';
+							break;
+						case 'pro-um-extension-required':
+							$um_lca = $lca.'um';
+							$um_name = $this->p->cf['plugin'][$um_lca]['name'];
+							$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
+							$um_latest = $this->p->cf['plugin'][$um_lca]['url']['download'];
+							$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
+							$text = '<p>At least one Authentication ID has been entered, but the <strong>'.$um_name.'</strong> extension plugin is not active. This <strong>free extension</strong> is required to update and enable the '.$name_pro.' plugin and its extensions.</p>
+							<ol>
+							<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin (zip file)</a>.</strong>
+							<li><strong>Then <a href="'.$upload_url.'">upload and activate the plugin on this WordPress admin page</a></strong>.</li>
+							</ol>
+							<p>Once the plugin has been activated, one or more Pro version updates will be available for your licensed plugin(s). You can also <a href="'.$um_dl.'" target="_blank">read more about the '.$um_name.'</a> extension plugin.</p>
+							<ol>';
+							break;
+					}
+					break;
+
 				case 'tooltip-site-use':
 					$text = 'Individual sites/blogs may use this option value as a default (when the plugin is first activated), if the current site/blog value is blank, or force every site/blog to use this value (disabling the option).';
-					break;
-				case 'pro-feature-msg':
-					if ( $this->p->check->aop( $lca, false ) )
-						$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase '.$short_pro.' licence(s) to modify the following options and access Pro modules</a></p>';
-					else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase the '.$short_pro.' plugin to modify the following options and get all Pro modules</a></p>';
-					break;
-				case 'pro-option-msg':
-					$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.$short_pro.' is required to use this option</a></p>';
-					break;
-				case 'pro-activate-nag':
-					if ( ! is_multisite() ) {
-						$text = '<p><span style="font-weight:bold;font-size:1.1em;">The '.$name.' Authentication ID option is empty.</span><br/>To enable Pro version features and allow the plugin to authenticate itself for updates,<br/><strong>'.$this->p->util->get_admin_url( 'licenses', 'please enter the unique Authentication ID you received by email<br/>on the <em>Extension Plugins and Licenses</em> settings page' ).'.</strong></p>';
-					}
 					break;
 				case 'side-purchase':
 					$text = '<p>'.$short_pro.' can be purchased quickly and easily via Paypal &ndash; and '.( $this->p->is_avail['aop'] == true ? 'licensed' : 'installed' ).' immediately following your purchase. Pro version licenses do not expire and there are no recurring or yearly fees for updates and support.';
@@ -693,9 +687,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case 'side-help':
 					$text = '<p>Individual option boxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, and removed / added from the <em>Screen Options</em> tab (top-right). Values in multiple tabs can be edited before clicking the \'Save All Changes\' button.</p>';
 					break;
-				/*
-				 * Other messages
-				 */
 				default:
 					$text = apply_filters( $lca.'_messages', $text, $idx );
 					break;

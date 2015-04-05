@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_licenses', 'Extension Plugins and Licenses', 
+			add_meta_box( $this->pagehook.'_licenses', 'Extension Plugins and Pro Licenses', 
 				array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 		}
 
@@ -73,8 +73,8 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 					else $links .= ' | <em>Purchase Pro License(s)</em>';
 				}
 
-				if ( ! empty( $info['img']['icon-small'] ) )
-					$img_icon = $info['img']['icon-small'];
+				if ( ! empty( $info['img']['icon_small'] ) )
+					$img_icon = $info['img']['icon_small'];
 				else $img_icon = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 				// logo image

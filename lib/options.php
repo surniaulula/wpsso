@@ -155,10 +155,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->inf( 'An eCommerce plugin has been detected. Please update Twitter\'s <em>Product Card Default 2nd Label</em> option values on the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings page' ).' (to something else than \''.$this->p->cf['opt']['defaults']['tc_prod_def_label2'].'\' and \''.$this->p->cf['opt']['defaults']['tc_prod_def_data2'].'\').' );
 					}
 				}
-				if ( $this->p->is_avail['aop'] === true && empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) && 
-					( empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid:is'] ) || 
-						$this->p->options['plugin_'.$this->p->cf['lca'].'_tid:is'] !== 'disabled' ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-nag' ) );
 			}
 			return $opts;
 		}
