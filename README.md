@@ -1,4 +1,4 @@
-<h1>WordPress Social Sharing Optimization</h1><h3>Improves Shared Content on Social Websites</h3>
+=== WordPress Social Sharing Optimization - Improves Shared Content on Social Websites ===
 <blockquote>
 <strong>Contributors</strong>: jsmoriss<br/>
 <strong>Donate Link</strong>: https://surniaulula.com/extend/plugins/wpsso/<br/>
@@ -10,7 +10,11 @@
 <strong>Stable Tag</strong>: 2.9<br/>
 </blockquote>
 
+<p>
+
 Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
+
+</p>
 
 <h3>Description</h3>
 
