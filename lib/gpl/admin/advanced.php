@@ -15,11 +15,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'plugin_settings_rows' => 3,	// supports network options
+				'plugin_settings_rows' => 3,
 				'plugin_content_rows' => 2,
 				'plugin_social_rows' => 2,
-				'plugin_cache_rows' => 3,	// supports network options
-				'taglist_tags_rows' => 3,
+				'plugin_cache_rows' => 3,
+				'cm_custom_rows' => 2,
+				'cm_builtin_rows' => 2,
+				'taglist_tags_rows' => 4,
 			), 20 );
 		}
 
@@ -28,44 +30,43 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			if ( $network === true )
 				return $rows;
 
-			if ( WpssoUser::show_opts( 'all' ) ) {
+			$rows[] = '<tr class="hide_in_basic">'.
+			'<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-				$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Report Cache Purge Count', null, 'plugin_cache_info' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_cache_info' ).'</td>';
 
-				$rows[] = $this->p->util->th( 'Report Cache Purge Count', null, 'plugin_cache_info' ).
-				'<td class="blank">'.$form->get_no_checkbox( 'plugin_cache_info' ).'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Check for Header Tag Conflicts', 'highlight', 'plugin_check_head' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
 
-				$rows[] = $this->p->util->th( 'Check for Header Tag Conflicts', null, 'plugin_check_head' ).
-				'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Use WP Locale for Language', null, 'plugin_filter_lang' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_lang' ).'</td>';
 
-				$rows[] = $this->p->util->th( 'Use WP Locale for Language', null, 'plugin_filter_lang' ).
-				'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_lang' ).'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Auto-Resize Media Images', null, 'plugin_auto_img_resize' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_auto_img_resize' ).'</td>';
 
-				$rows[] =  $this->p->util->th( 'Auto-Resize Media Images', null, 'plugin_auto_img_resize' ).
-				'<td class="blank">'.$form->get_no_checkbox( 'plugin_auto_img_resize' ).'</td>';
-
-				if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
-					$rows[] = $this->p->util->th( 'Enable Shortcode(s)', 'highlight', 'plugin_shortcodes' ).
-					'<td class="blank">'.$form->get_no_checkbox( 'plugin_shortcodes' ).'</td>';
-				}
-
-				if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
-					$rows[] = $this->p->util->th( 'Enable Widget(s)', 'highlight', 'plugin_widgets' ).
-					'<td class="blank">'.$form->get_no_checkbox( 'plugin_widgets' ).'</td>';
-				}
+			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
+				$rows[] = '<tr class="hide_in_basic">'.
+				$this->p->util->th( 'Enable Shortcode(s)', null, 'plugin_shortcodes' ).
+				'<td class="blank">'.$form->get_no_checkbox( 'plugin_shortcodes' ).'</td>';
 			}
+
+			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
+				$rows[] = '<tr class="hide_in_basic">'.
+				$this->p->util->th( 'Enable Widget(s)', null, 'plugin_widgets' ).
+				'<td class="blank">'.$form->get_no_checkbox( 'plugin_widgets' ).'</td>';
+			}
+
 			return $rows;
 		}
 
 		public function filter_plugin_content_rows( $rows, $form ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-
-			if ( WpssoUser::show_opts( 'all' ) ) {
-
-				$rows[] =  $this->p->util->th( 'Ignore Thumbnails in Content', null, 'plugin_ignore_small_img' ).
-				'<td class="blank">'.$form->get_no_checkbox( 'plugin_ignore_small_img' ).'</td>';
-			}
 
 			$rows[] = $this->p->util->th( 'Check for Embedded Media', null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
@@ -75,14 +76,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<p>'.$form->get_no_checkbox( 'plugin_youtube_api' ).' YouTube Videos and Playlists</p>'.
 			'</td>';
 
-			if ( WpssoUser::show_opts( 'all' ) ) {
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Ignore Thumbnails in Content', null, 'plugin_ignore_small_img' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_ignore_small_img' ).'</td>';
 
-				$rows[] = $this->p->util->th( 'Enable Excerpt for Pages', null, 'plugin_page_excerpt' ).
-				'<td>'.$form->get_no_checkbox( 'plugin_page_excerpt' ).'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Enable Excerpt Input for Pages', null, 'plugin_page_excerpt' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_excerpt' ).'</td>';
 
-				$rows[] = $this->p->util->th( 'Enable Tags for Pages', null, 'plugin_page_tags' ).
-				'<td>'.$form->get_no_checkbox( 'plugin_page_tags' ).'</td>';
-			}
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Enable WordPress Tags for Pages', null, 'plugin_page_tags' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_tags' ).'</td>';
 
 			return $rows;
 		}
@@ -97,23 +101,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$checkboxes .= '<p>'.$form->get_no_checkbox( 'plugin_add_to_'.$post_type->name ).' '.
 					$post_type->label.' '.( empty( $post_type->description ) ? '' : '('.$post_type->description.')' ).'</p>';
 
-			$rows[] = $this->p->util->th( 'Show Custom Social Settings on', null, 'plugin_add_to' ).
+			$rows[] = $this->p->util->th( 'Show Social Settings Metabox on', null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
 			
-			if ( WpssoUser::show_opts( 'all' ) ) {
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Image URL Custom Field', null, 'plugin_cf_img_url' ).
+			'<td class="blank">'.$form->get_hidden( 'plugin_cf_img_url' ).
+				$this->p->options['plugin_cf_img_url'].'</td>';
 
-				$rows[] = $this->p->util->th( 'Image URL Custom Field', null, 'plugin_cf_img_url' ).
-				'<td class="blank">'.$form->get_hidden( 'plugin_cf_img_url' ).
-					$this->p->options['plugin_cf_img_url'].'</td>';
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Video URL Custom Field', null, 'plugin_cf_vid_url' ).
+			'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_url' ).
+				$this->p->options['plugin_cf_vid_url'].'</td>';
 
-				$rows[] = $this->p->util->th( 'Video URL Custom Field', null, 'plugin_cf_vid_url' ).
-				'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_url' ).
-					$this->p->options['plugin_cf_vid_url'].'</td>';
-
-				$rows[] = $this->p->util->th( 'Video Embed HTML Custom Field', null, 'plugin_cf_vid_embed' ).
-				'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_embed' ).
-					$this->p->options['plugin_cf_vid_embed'].'</td>';
-			}
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Video Embed HTML Custom Field', null, 'plugin_cf_vid_embed' ).
+			'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_embed' ).
+				$this->p->options['plugin_cf_vid_embed'].'</td>';
 			
 			return $rows;
 		}
@@ -132,19 +136,82 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $rows;
 		}
 
-		public function filter_taglist_tags_rows( $rows, $form, $tag = '[^_]+' ) {
+		public function filter_cm_custom_rows( $rows, $form ) {
 
+			$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			$rows[] = '<td></td>'.
+			$this->p->util->th( 'Show', 'left checkbox' ).
+			$this->p->util->th( 'Contact Field Name', 'left medium', 'custom-cm-field-name' ).
+			$this->p->util->th( 'Profile Contact Label', 'left wide' );
+
+			$sorted_opt_pre = $this->p->cf['opt']['pre'];
+			ksort( $sorted_opt_pre );
+
+			foreach ( $sorted_opt_pre as $id => $pre ) {
+
+				$cm_enabled = 'plugin_cm_'.$pre.'_enabled';
+				$cm_name = 'plugin_cm_'.$pre.'_name';
+				$cm_label = 'plugin_cm_'.$pre.'_label';
+
+				// check for the lib website classname for a nice 'display name'
+				$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
+					ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
+				$name = $name == 'GooglePlus' ? 'Google+' : $name;
+
+				// not all social websites have a contact method field
+				if ( isset( $this->p->options[$cm_enabled] ) ) {
+					$rows[] = $this->p->util->th( $name, 'medium' ).
+					'<td class="blank checkbox">'.$form->get_no_checkbox( $cm_enabled ).'</td>'.
+					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
+					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
+				}
+			}
+
+			return $rows;
+		}
+
+		public function filter_cm_builtin_rows( $rows, $form ) {
+
+			$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			$rows[] = '<td></td>'.
+			$this->p->util->th( 'Show', 'left checkbox' ).
+			$this->p->util->th( 'Contact Field Name', 'left medium', 'custom-cm-field-name' ).
+			$this->p->util->th( 'Profile Contact Label', 'left wide' );
+
+			$sorted_wp_cm = $this->p->cf['wp']['cm'];
+			ksort( $sorted_wp_cm );
+
+			foreach ( $sorted_wp_cm as $id => $name ) {
+
+				$cm_enabled = 'wp_cm_'.$id.'_enabled';
+				$cm_name = 'wp_cm_'.$id.'_name';
+				$cm_label = 'wp_cm_'.$id.'_label';
+
+				if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
+					$rows[] = $this->p->util->th( $name, 'medium' ).
+					'<td class="blank checkbox">'.$form->get_hidden( $cm_enabled ).
+						$form->get_no_checkbox( $cm_enabled ).'</td>'.
+					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
+					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
+				}
+			}
+
+			return $rows;
+		}
+
+		public function filter_taglist_tags_rows( $rows, $form, $network = false, $tag = '[^_]+' ) {
 			$og_cols = 2;
 			$cells = array();
 			foreach ( $this->p->opt->get_defaults() as $opt => $val ) {
 				if ( preg_match( '/^add_('.$tag.')_([^_]+)_(.+)$/', $opt, $match ) && 
 					$opt !== 'add_meta_name_generator' ) {
 					$highlight = $opt === 'add_meta_name_description' ? ' highlight' : '';
-					$cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.
-						'<td class="checkbox blank">'.$form->get_no_checkbox( $opt ).'</td>'.
+					$cells[] = '<td class="checkbox blank">'.$form->get_no_checkbox( $opt ).'</td>'.
 						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
 						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
-						'<th class="taglist'.$highlight.'">'.$match[3].'</th>'."\n";
+						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
 				}
 			}
 
@@ -153,8 +220,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$per_col = ceil( count( $cells ) / $og_cols );
 			foreach ( $cells as $num => $cell ) {
 				if ( empty( $col_rows[ $num % $per_col ] ) )
-					$col_rows[ $num % $per_col ] = '';	// initialize the array
-				$col_rows[ $num % $per_col ] .= $cell;		// create the html for each row
+					$col_rows[ $num % $per_col ] = '<tr class="hide_in_basic">';	// initialize the array
+				$col_rows[ $num % $per_col ] .= $cell;					// create the html for each row
 			}
 
 			return array_merge( $rows, $col_rows );

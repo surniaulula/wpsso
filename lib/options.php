@@ -238,12 +238,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts['og_desc_len'] < $this->p->cf['head']['min_desc_len'] ) 
 					$opts['og_desc_len'] = $this->p->cf['head']['min_desc_len'];
 
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( isset( $opts['plugin_'.$lca.'_tid'] ) ) {
-					if ( empty( $opts['plugin_'.$lca.'_tid'] ) )
+			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
+				$opt_name = 'plugin_'.$lca.'_tid';
+				if ( isset( $opts[$opt_name] ) ) {
+					if ( empty( $opts[$opt_name] ) )
 						delete_option( $lca.'_umsg' );
-					if ( isset( $this->p->options['plugin_'.$lca.'_tid'] ) && 
-						$opts['plugin_'.$lca.'_tid'] !== $this->p->options['plugin_'.$lca.'_tid'] )
+					if ( isset( $this->p->options[$opt_name] ) && 
+						$opts[$opt_name] !== $this->p->options[$opt_name] )
 							delete_option( $lca.'_utime' );
 				}
 			}

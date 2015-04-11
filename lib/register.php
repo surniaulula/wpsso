@@ -142,9 +142,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			// delete update options
-			delete_option( 'external_updates-'.$slug );
-			delete_option( $cf['lca'].'_umsg' );
-			delete_option( $cf['lca'].'_utime' );
+			foreach ( $cf['plugin'] as $lca => $info ) {
+				delete_option( $lca.'_umsg' );
+				delete_option( $lca.'_utime' );
+				delete_option( 'external_updates-'.$info['slug'] );
+			}
 
 			// delete stored notices
 			foreach ( array( 'nag', 'err', 'inf' ) as $type ) {

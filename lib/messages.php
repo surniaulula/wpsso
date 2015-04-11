@@ -54,9 +54,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-open-graph-rich-pin':
 							$text = 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a compatible eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices, images, and other attributes.';
 							break;
-						case 'tooltip-side-pro-update-check':
-							$text = 'When a Pro version Authentication ID is entered on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Pro Licenses settings page' ).', a check is scheduled every 24 hours to see if an update is available.';
-							break;
 						case 'tooltip-side-transient-cache':
 							$text = $short.' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
 							break;
@@ -264,10 +261,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Pinterest Rich Pin description, tweet text, and social captions. Each tag name is converted to lowercase with whitespaces removed.  Select \'0\' to disable the addition of hashtags.';
 							break;
 						case 'tooltip-og_desc_strip':
-							$text = 'For a Page or Post <em>without</em> an excerpt, if this option is checked, the plugin will ignore all text until the first html paragraph tag in the content.  If an excerpt exists, then this option is ignored, and the complete text of that excerpt is used instead.';
+							$text = 'If a Page or Post does <em>not</em> have an excerpt, the plugin will ignore all text until the first html paragraph tag in the content. If an excerpt exists, then this option is ignored and the complete text of the excerpt is used.';
 							break;
 						case 'tooltip-og_desc_alt':
-							$text = 'If the content is empty or comprised entirely of HTML tags &mdash; which must be stripped to create a description &mdash; '.$short.' can extract and use the text from the image <em>alt=""</em> attributes, instead of returning an empty description.';
+							$text = 'If the content is empty or comprised entirely of HTML tags &mdash; which must be stripped to create a description &mdash; '.$short.' can extract and use the text from the image <em>alt=""</em> attributes instead of returning an empty description.';
 							break;
 						/*
 						 * 'Authorship' settings
@@ -374,7 +371,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'File and Object Cache' settings
 						 */
 						case 'tooltip-plugin_object_cache_exp':
-							$text = $short.' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds, and the minimum value is 1 second (such a low value is not recommended).';
+							$text = $short.' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds ('.( $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) / 60 / 60 ).' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).<br/><br/>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.';
 							break;
 						case 'tooltip-plugin_file_cache_hrs':
 							$text = $short_pro.' can save social sharing JavaScript and images to a cache folder, providing URLs to these cached files instead of the originals. A value of 0 hours (the default) disables the file caching feature. If your hosting infrastructure performs reasonably well, this option can improve page load times significantly. All social sharing images and javascripts will be cached, except for the Facebook JavaScript SDK, which does not work correctly when cached.';
@@ -582,7 +579,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				case ( strpos( $idx, 'info-' ) !== false ? true : false ):
 					switch ( $idx ) {
 						case 'info-plugin-tid':
-							$um_name = $this->p->cf['plugin'][$um_lca]['name'];
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
 							<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to check for Pro version updates immediately and every 24 hours thereafter.</p>
 							<p><strong>'.$name.' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$short.' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version. ;-)</p>
@@ -590,10 +586,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'info-plugin-tid-network':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions. Enter the Authentication ID here to define a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>. ';
-							if ( empty( $this->p->is_avail['aop'] ) )
-								$text .= 'The Free version is currently installed &mdash; don\'t forget to update the plugin after licensing the <em>default</em> site/blog. ';
-							$text .= '</p>
+							<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to define default/forced a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>.</p>
 							</blockquote>';
 							break;
 						case 'info-review':
@@ -607,7 +600,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							</blockquote>';
 							break;
 						case 'info-taglist':
-							$text = '<blockquote style="margin-top:0;margin-bottom:0;">
+							$text = '<blockquote style="margin:0;">
 							<p>'.$short.' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>head</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added (as an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected).</p>
 							</blockquote>';
 							break;
@@ -665,7 +658,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_lca = $lca.'um';
 							$um_name = $this->p->cf['plugin'][$um_lca]['name'];
 							$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
-							$um_latest = $this->p->cf['plugin'][$um_lca]['url']['download'];
+							$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
 							$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
 							$text = '<p>At least one Authentication ID has been entered, but the <strong>'.$um_name.'</strong> extension plugin is not active. This <strong>free extension</strong> is required to update and enable the '.$name_pro.' plugin and its extensions.</p>
 							<ol>

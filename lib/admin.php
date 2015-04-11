@@ -156,11 +156,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_form_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '' ) {
-			$menu_id = empty( $menu_id ) ?
-				$this->menu_id : $menu_id;
-			$menu_name = empty( $menu_name ) ?
-				$this->menu_name : $menu_name;
+		protected function add_submenu_page( $parent_slug, $menu_id = false, $menu_name = false ) {
+			$menu_id = $menu_id === false ? $this->menu_id : $menu_id;
+			$menu_name = $menu_name === false ? $this->menu_name : $menu_name;
 			$short_aop = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
 				( $this->p->check->aop( $this->p->cf['lca'] ) ? ' Pro' : ' Free' );
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
@@ -292,11 +290,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				else {
 					switch ( $_GET['action'] ) {
 						case 'check_for_updates': 
-							if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) && 
-								$this->p->is_avail['util']['um'] ) {
+							if ( $this->p->is_avail['util']['um'] ) {
 								$this->readme_info = array();
 								$wpssoum = WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );
+							} else {
+								$um_lca = $this->p->cf['lca'].'um';
+								$um_name = $this->p->cf['plugin'][$um_lca]['name'];
+								$this->p->notice->err( 'The <strong>'.$um_name.'</strong> extension plugin is required to check for plugin and extension updates.' );
 							}
 							break;
 
@@ -378,12 +379,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			</div><!-- .wrap -->
 			<script type="text/javascript">
 				//<![CDATA[
-					jQuery(document).ready( 
-						function($) {
-							$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-							postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
-						}
-					);
+				jQuery(document).ready( 
+					function($) {
+						$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
+						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
+					}
+				);
 				//]]>
 			</script>
 			<?php
@@ -420,14 +421,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			</div><!-- .wrap -->
 			<script type="text/javascript">
 				//<![CDATA[
-					jQuery(document).ready( 
-						function($) {
-							// close postboxes that should be closed
-							$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-							// postboxes setup
-							postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
-						}
-					);
+				jQuery(document).ready( 
+					function($) {
+						// close postboxes that should be closed
+						$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
+						// postboxes setup
+						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
+					}
+				);
 				//]]>
 			</script>
 			<?php
@@ -500,8 +501,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function feed_cache_expire( $seconds = 0 ) {
-			return empty( $this->p->cf['update_check_hours'] ) ? 
-				86400 : $this->p->cf['update_check_hours'] * 3600;
+			return empty( $this->p->cf['feed_cache_expire'] ) ? 
+				86400 : $this->p->cf['feed_cache_expire'] * 3600;
 		}
 
 		public function show_metabox_info() {
@@ -702,7 +703,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_text = __( 'Save All Changes', WPSSO_TEXTDOM );
 
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$show_opts_text = 'Show '.$this->p->cf['form']['show_options'][$show_opts_next];
+			$show_opts_text = 'Prefer '.$this->p->cf['form']['show_options'][$show_opts_next].' View';
 			$show_opts_url = $this->p->util->get_admin_url( '?action=change_show_options&show_opts='.$show_opts_next );
 
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
@@ -714,11 +715,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
-			// if wpsso is licensed, and the update manager is active, then allow update checks
-			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) && $this->p->is_avail['util']['um'] )
-				$action_buttons .= $this->form->get_button( __( 'Check for Pro Update(s)', WPSSO_TEXTDOM ), 
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), 
-						$this->get_nonce(), WPSSO_NONCE ) );
+			$action_buttons .= $this->form->get_button( __( 'Check for Update(s)', WPSSO_TEXTDOM ), 'button-secondary', null,
+				wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), $this->get_nonce(), WPSSO_NONCE ),
+				false, ( $this->p->is_avail['util']['um'] ? false : true )	// disable button if update manager is not available
+			);
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
 				$action_buttons .= $this->form->get_button( __( 'Reset Metabox Layout', WPSSO_TEXTDOM ), 
@@ -742,6 +742,124 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private function is_sitesubmenu( $menu_id ) {
 			return isset( $this->p->cf['*']['lib']['sitesubmenu'][$menu_id] ) ? true : false;
+		}
+
+		public function licenses_metabox( $network = false ) {
+			echo '<table class="sucom-setting licenses-metabox" style="padding-bottom:10px">'."\n";
+			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
+				$this->p->msgs->get( 'info-plugin-tid' ).'</td></tr>'."\n";
+
+			$num = 0;
+			$total = count( $this->p->cf['plugin'] );
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				$num++;
+				$links = '';
+				$img_href = '';
+
+				$view_text = 'View Plugin Details';
+				if ( ! empty( $info['slug'] ) && 
+					( empty( $info['url']['latest_zip'] ) || $is_avail['util']['um'] ) ) {
+
+					$img_href = add_query_arg( array(
+						'tab' => 'plugin-information',
+						'plugin' => $info['slug'],
+						'TB_iframe' => 'true',
+						'width' => 600,
+						'height' => 550
+					), get_admin_url( null, 'plugin-install.php' ) );
+					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {
+						$update_plugins = get_site_transient('update_plugins');
+						if ( isset( $update_plugins->response ) ) {
+							foreach ( (array) $update_plugins->response as $file => $plugin ) {
+								if ( $plugin->slug === $info['slug'] ) {
+									$view_text = '<strong>View Plugin Details and Update</strong>';
+									break;
+								}
+							}
+						}
+					} else $view_text = '<em>View Plugin Details and Install</em>';
+					$links .= ' | <a href="'.$img_href.'" class="thickbox">'.$view_text.'</a>';
+				} else {
+					if ( ! empty( $info['url']['download'] ) ) {
+						$img_href = $info['url']['download'];
+						$links .= ' | <a href="'.$img_href.'" target="_blank">Plugin Description Page</a>';
+					}
+				}
+
+				if ( ! empty( $info['url']['latest_zip'] ) ) {
+					$img_href = $info['url']['latest_zip'];
+					$links .= ' | <a href="'.$img_href.'">Download the Latest Version</a> (zip file)';
+				}
+
+				if ( ! empty( $info['url']['purchase'] ) ) {
+					$img_href = $info['url']['purchase'];
+					if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() )
+						$links .= ' | <a href="'.$img_href.'" target="_blank">Purchase Pro License(s)</a>';
+					else $links .= ' | <em>Purchase Pro License(s)</em>';
+				}
+
+				if ( ! empty( $info['img']['icon_small'] ) )
+					$img_icon = $info['img']['icon_small'];
+				else $img_icon = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+
+				// logo image
+				echo '<tr><td style="width:148px; padding:10px;" rowspan="3" valign="top" align="left">';
+				if ( ! empty( $img_href ) ) 
+					echo '<a href="'.$img_href.'"'.( strpos( $img_href, 'TB_iframe' ) ?
+						' class="thickbox"' : ' target="_blank"' ).'>';
+				echo '<img src="'.$img_icon.'" width="128" height="128">';
+				if ( ! empty( $img_href ) ) 
+					echo '</a>';
+				echo '</td>';
+
+				// plugin name
+				echo '<td colspan="'.( $network ? 4 : 3 ).'" style="padding:10px 0 0 0;">
+					<p><strong>'.$info['name'].'</strong></p>';
+
+				if ( ! empty( $info['desc'] ) )
+					echo '<p>'.$info['desc'].'</p>';
+
+				if ( ! empty( $links ) )
+					echo '<p>'.trim( $links, ' |' ).'</p>';
+
+				echo '</td></tr>'."\n";
+
+				if ( $network ) {
+					if ( ! empty( $info['url']['purchase'] ) || 
+						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="tid">'.
+								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
+								$this->p->util->th( 'Site Use', 'narrow' ).'<td>'.
+								$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
+									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
+						} else {
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="blank">'.
+								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
+								$this->p->msgs->get( 'pro-option-msg' ).'</td>
+									<td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+						}
+					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+				} else {
+					if ( ! empty( $info['url']['purchase'] ) || 
+						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="tid">'.
+								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
+								( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
+						} else {
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="blank">'.
+								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
+								$this->p->msgs->get( 'pro-option-msg' ).'</td></tr>'."\n";
+						}
+					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
+				}
+
+				if ( $num < $total )
+					echo '<tr><td style="border-bottom:1px dotted #ddd;" colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
+				else echo '<tr><td colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
+			}
+			echo '</table>'."\n";
 		}
 	}
 }

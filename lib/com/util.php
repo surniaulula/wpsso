@@ -742,47 +742,119 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				( empty( $tooltip_text ) ? '' : $tooltip_text ).'</p></th>';
 		}
 
-		public function do_tabs( $metabox = '', $tabs = array(), $tab_rows = array(), $args = array() ) {
-			$metabox = empty( $metabox ) ? '' : '_'.$metabox;	// must start with an underscore
+		public function do_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 			$tab_keys = array_keys( $tabs );
-			$default_tab = '_'.reset( $tab_keys );			// must start with an underscore
-
-			$class_metabox_tabs = 'sucom-metabox-tabs'.
-				( empty( $metabox ) ? '' : ' sucom-metabox-tabs'.$metabox );
-			$class_link = 'sucom-tablink'.
-				( empty( $metabox ) ? '' : ' sucom-tablink'.$metabox );
+			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
+			$class_metabox_tabs = 'sucom-metabox-tabs';
+			$class_link = 'sucom-tablink';
 			$class_tabset = 'sucom-tabset';
 
-			extract( array_merge( array(
-				'scroll_to' => '',
-			), $args ) );
+			if ( ! empty( $metabox ) ) {
+				$metabox = '_'.$metabox;		// must start with an underscore
+				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
+				$class_link .= ' '.$class_link.$metabox;
+			}
+
+			extract( array_merge( array( 'scroll_to' => '' ), $args ) );
 
 			echo '<script type="text/javascript">jQuery(document).ready(function(){ 
 				sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>
 			<div class="'.$class_metabox_tabs.'">
-
-			<ul class="'.$class_metabox_tabs.'">';
+			<ul class="'.$class_metabox_tabs.'">'."\n";
 			foreach ( $tabs as $tab => $title ) {
-				$href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="'.$href_key.'"><a 
-					class="'.$class_link.'" href="#'.$href_key.'">'.$title.'</a></li>';
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				echo '<div class="tab_left">&nbsp;</div><li class="'.
+					$class_href_key.'"><a class="'.$class_link.'" href="#'.
+					$class_href_key.'">'.$title.'</a></li>'."\n";
 			}
-			echo '</ul>';
-
+			echo '</ul>'."\n";
 			foreach ( $tabs as $tab => $title ) {
-				$href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-				$show_opts = call_user_func( array(  $this->p->cf['lca'].'user', 'show_opts' ) );
-				echo '<div class="display_'.$show_opts.' '.$class_tabset.
-					( empty( $metabox ) ? '' : ' '.$class_tabset.$metabox ).' '.$href_key.'">';
-				echo '<table class="sucom-setting">';
-				if ( ! empty( $tab_rows[$tab] ) && is_array( $tab_rows[$tab] ) )
-					foreach ( $tab_rows[$tab] as $num => $row ) 
-						echo '<tr class="alt'.( $num % 2 ).'">'.$row.'</tr>';
-				echo '</table>';
-				echo '</div>';
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				$this->do_table_rows( 
+					$table_rows[$tab], 
+					$class_href_key,
+					$class_tabset,
+					( empty( $metabox ) ? '' : $class_tabset.$metabox )
+				);
 			}
-			echo '</div>';
+			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
+		}
+
+		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset = '', $class_tabset_mb = '' ) {
+			// just in case
+			if ( empty( $table_rows ) || ! is_array( $table_rows ) )
+				return;
+
+			$total_rows = count( $table_rows );
+			$count_rows = 0;
+			$hidden_opts = 0;
+			$hidden_rows = 0;
+
+			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
+			$show_opts = call_user_func( array(  $this->p->cf['lca'].'user', 'show_opts' ) );
+
+			foreach ( $table_rows as $key => $row ) {
+				// default row class and id attribute values
+				$tr = array(
+					'class' => 'alt'.( $count_rows % 2 ).
+						( $count_rows === 0 ? ' first_row' : '' ).
+						( $count_rows === ( $total_rows - 1 ) ? ' last_row' : '' ),
+					'id' => ( is_int( $key ) ? '' : 'tr_'.$key )
+				);
+
+				// if we don't already have a table row tag, then add one
+				if ( strpos( $row, '<tr ' ) === false )
+					$row = '<tr class="'.$tr['class'].'"'.( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
+				else {
+					foreach ( $tr as $att => $val ) {
+						if ( empty( $tr[$att] ) )
+							continue;
+
+						// if we're here, then we have a table row tag already
+						// count the number of rows and options that are hidden
+						if ( $att === 'class' && ! empty( $show_opts ) && 
+							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide_in_'.$show_opts.'[" ]/', $row ) > 0 ) ) {
+							$hidden_opts += preg_match_all( '/<th /', $row );
+							$hidden_rows += $matched;
+						}
+
+						// add the attribute value
+						$row = preg_replace( '/(<tr [^>]*'.$att.'=")([^"]*)(")/', '$1$2 '.$tr[$att].'$3', $row, -1, $cnt );
+
+						// if one hasn't been added, then add both the attribute and its value
+						if ( $cnt < 1 )
+							$row = preg_replace( '/(<tr )/', '$1'.$att.'="'.$tr[$att].'" ', $row, -1, $cnt );
+					}
+				}
+
+				// add a closing table row tag if we don't already have one
+				if ( strpos( $row, '</tr>' ) === false )
+					$row .= '</tr>'."\n";
+
+				// update the table row array element with the new value
+				$table_rows[$key] = $row;
+
+				$count_rows++;
+			}
+
+			echo '<div class="'.( empty( $show_opts ) ? '' : 'show_'.$show_opts.' ' ).
+				$class_tabset.' '.$class_tabset_mb.' '.$class_href_key.'">'."\n";
+			echo '<table class="sucom-setting '.$class_href_key.( $hidden_rows == $count_rows ? ' hide_in_'.$show_opts : '' ).'">'."\n";
+			foreach ( $table_rows as $row )
+				echo $row;
+			echo '</table>'."\n";
+			echo '</div>'."\n";
+
+			if ( $hidden_opts > 0 ) {
+				$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
+				echo '<div class="hidden_opts_msg '.
+					$class_tabset.'-msg '.
+					$class_tabset_mb.'-msg '.
+					$class_href_key.'-msg">'.
+					$hidden_opts.' more options not shown in '.
+					$show_opts_label.' view (<a href="javascript:void(0);" onClick="sucomUnhideRows( \''.
+					$class_href_key.'\', \''.$show_opts.'\' );">unhide these options</a>)</div>'."\n";
+			}
 		}
 
 		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter' ) {

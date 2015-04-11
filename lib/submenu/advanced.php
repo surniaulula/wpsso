@@ -27,9 +27,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			add_meta_box( $this->pagehook.'_contact_fields', 'Profile Contact Fields', 
 				array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
-			if ( WpssoUser::show_opts( 'all' ) )
-				add_meta_box( $this->pagehook.'_taglist', 'Header Tags List', 
-					array( &$this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_taglist', 'Header Tags List', 
+				array( &$this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_plugin() {
@@ -37,7 +36,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
 				'settings' => 'Plugin Settings',
 				'content' => 'Content and Filters',
-				'social' => 'Custom Social Settings',
+				'social' => 'Social Settings Metabox',
 				'cache' => 'File and Object Cache' ) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
@@ -55,20 +54,16 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
-			echo '<table class="sucom-setting" style="padding-bottom:0"><tr><td>'.
-			$this->p->msgs->get( 'info-'.$metabox ).'</td></tr></table>';
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ), $metabox.'-metabox-info' );
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
 		public function show_metabox_taglist() {
 			$metabox = 'taglist';
-			echo '<table class="sucom-setting" style="padding-bottom:0;"><tr><td>'.
-			$this->p->msgs->get( 'info-'.$metabox ).
-			'</td></tr></table>';
-			echo '<table class="sucom-setting" style="margin-bottom:10px;">';
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tags_rows', array(), $this->form ) as $num => $row ) 
-				echo '<tr>'.$row.'</tr>';
-			echo '</table>';
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ), $metabox.'-metabox-info' );
+			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tags_rows', array(), $this->form ),
+				$metabox.'-metabox'	// class for the div and table
+			);
 		}
 
 		protected function get_rows( $metabox, $key ) {
@@ -92,88 +87,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$rows[] = $this->p->util->th( 'Use Filtered (SEO) Titles', 'highlight', 'plugin_filter_title' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_filter_title' ).'</td>';
 			
-					if ( WpssoUser::show_opts( 'all' ) ) {
-
-						$rows[] = $this->p->util->th( 'Apply Excerpt Filters', null, 'plugin_filter_excerpt' ).
-						'<td>'.$this->form->get_checkbox( 'plugin_filter_excerpt' ).'</td>';
-					}
-
-					$rows[] = $this->p->util->th( 'Apply Content Filters', null, 'plugin_filter_content' ).
+					$rows[] = $this->p->util->th( 'Apply WordPress Content Filters', null, 'plugin_filter_content' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_filter_content' ).'</td>';
 
-					break;
-					
-				case 'cm-custom' :
-					if ( ! $this->p->check->aop() )
-						$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-					$rows[] = '<td></td>'.
-					$this->p->util->th( 'Show', 'left checkbox' ).
-					$this->p->util->th( 'Contact Field Name', 'left medium', 'custom-cm-field-name' ).
-					$this->p->util->th( 'Profile Contact Label', 'left wide' );
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Apply WordPress Excerpt Filters', null, 'plugin_filter_excerpt' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_filter_excerpt' ).'</td>';
 
-					$sorted_opt_pre = $this->p->cf['opt']['pre'];
-					ksort( $sorted_opt_pre );
-
-					foreach ( $sorted_opt_pre as $id => $pre ) {
-
-						$cm_enabled = 'plugin_cm_'.$pre.'_enabled';
-						$cm_name = 'plugin_cm_'.$pre.'_name';
-						$cm_label = 'plugin_cm_'.$pre.'_label';
-
-						// check for the lib website classname for a nice 'display name'
-						$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
-							ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
-						$name = $name == 'GooglePlus' ? 'Google+' : $name;
-
-						// not all social websites have a contact method field
-						if ( isset( $this->p->options[$cm_enabled] ) ) {
-							if ( $this->p->check->aop() ) {
-								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="checkbox">'.$this->form->get_checkbox( $cm_enabled ).'</td>'.
-								'<td>'.$this->form->get_input( $cm_name, 'medium' ).'</td>'.
-								'<td>'.$this->form->get_input( $cm_label ).'</td>';
-							} else {
-								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="blank checkbox">'.$this->form->get_no_checkbox( $cm_enabled ).'</td>'.
-								'<td class="blank">'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
-								'<td class="blank">'.$this->form->get_no_input( $cm_label ).'</td>';
-							}
-						}
-					}
-					break;
-
-				case 'cm-builtin' :
-					if ( ! $this->p->check->aop() )
-						$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-					$rows[] = '<td></td>'.
-					$this->p->util->th( 'Show', 'left checkbox' ).
-					$this->p->util->th( 'Contact Field Name', 'left medium', 'wp-cm-field-name' ).
-					$this->p->util->th( 'Profile Contact Label', 'left wide' );
-
-					$sorted_wp_cm = $this->p->cf['wp']['cm'];
-					ksort( $sorted_wp_cm );
-
-					foreach ( $sorted_wp_cm as $id => $name ) {
-
-						$cm_enabled = 'wp_cm_'.$id.'_enabled';
-						$cm_name = 'wp_cm_'.$id.'_name';
-						$cm_label = 'wp_cm_'.$id.'_label';
-
-						if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
-							if ( $this->p->check->aop() ) {
-								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="checkbox">'.$this->form->get_checkbox( $cm_enabled ).'</td>'.
-								'<td>'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
-								'<td>'.$this->form->get_input( $cm_label ).'</td>';
-							} else {
-								$rows[] = $this->p->util->th( $name, 'medium' ).
-								'<td class="blank checkbox">'.$this->form->get_hidden( $cm_enabled ).
-									$this->form->get_no_checkbox( $cm_enabled ).'</td>'.
-								'<td>'.$this->form->get_no_input( $cm_name, 'medium' ).'</td>'.
-								'<td class="blank">'.$this->form->get_no_input( $cm_label ).'</td>';
-							}
-						}
-					}
 					break;
 			}
 			return $rows;

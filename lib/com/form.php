@@ -56,9 +56,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( $this->in_options( $name.':is' ) && 
 				$this->options[$name.':is'] === 'disabled' )
 					$disabled = true;
-			$html = $disabled === true ? $this->get_hidden( $name ) : $this->get_hidden( 'is_checkbox_'.$name, 1 );
+			$html = $disabled === true ? 
+				$this->get_hidden( $name ) :
+				$this->get_hidden( 'is_checkbox_'.$name, 1 );
 			$html .= '<input type="checkbox"'.
-				( $disabled === true ? ' disabled="disabled"' : ' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $check[0] ).'"' ).
+				( $disabled === true ?
+					' disabled="disabled"' :
+					' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $check[0] ).'"' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="checkbox_'.$id.'"' ).
 				( $this->in_options( $name ) ? checked( $this->options[$name], $check[0], false ) : '' ).
@@ -78,13 +82,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( $this->in_options( $name.':is' ) && 
 				$this->options[$name.':is'] === 'disabled' )
 					$disabled = true;
-			$html = $disabled === true ? $this->get_hidden( $name ) : '';
+			$html = $disabled === true ?
+				$this->get_hidden( $name ) : '';
 			foreach ( $values as $val => $desc ) {
 				// if the array is NOT associative (so regular numered array), 
 				// then the description is used as the saved value as well
 				if ( $is_assoc == false ) $val = $desc;
 				$html .= '<input type="radio"'.
-					( $disabled === true ? ' disabled="disabled"' : ' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $val ).'"' ).
+					( $disabled === true ?
+						' disabled="disabled"' :
+						' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $val ).'"' ).
 					( empty( $class ) ? '' : ' class="'.$class.'"' ).
 					( empty( $id ) ? '' : ' id="radio_'.$id.'"' ).
 					( $this->in_options( $name ) ? checked( $this->options[$name], $val, false ) : '' ).
@@ -130,7 +137,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 			$html .= '<select name="'.$this->options_name.'['.$name.']"'.
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).' id="'.$select_id.'"'.
-				( $disabled === true ? ' disabled="disabled"' : '' ).'>';
+				( $disabled === true ?
+					' disabled="disabled"' : '' ).'>';
 
 			foreach ( $values as $val => $desc ) {
 				// if the array is NOT associative (so regular numered array), 
@@ -303,14 +311,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false ) {
+		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false ) {
 			$js = $newtab === true ? 
 				'window.open(\''.$url.'\', \'_blank\');' :
 				'location.href=\''.$url.'\';';
 			$html = '<input type="button" '.
+				( $disabled ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="button_'.$id.'"' ).
-				( empty( $url ) ? '' : ' onClick="'.$js.'"' ).
+				( empty( $url ) || $disabled ? '' : ' onClick="'.$js.'"' ).
 				' value="'.esc_attr( $value ).'" />';
 			return $html;
 		}

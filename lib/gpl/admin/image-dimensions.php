@@ -23,9 +23,6 @@ if ( ! class_exists( 'WpssoGplAdminImagedimensions' ) ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Pinterest Rich Pin', null, 'rp_img_dimensions' ).
-			'<td class="blank">'.$form->get_image_dimensions_text( 'rp_img' ).'</td>';
-	
 			$rows[] = $this->p->util->th( 'Twitter <em>Summary</em> Card', null, 'tc_sum_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'tc_sum' ).'</td>';
 	

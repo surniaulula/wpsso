@@ -17,15 +17,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
 			'color' => '3c3',		// menu item color - lime green
-			'update_check_hours' => 24,
+			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.0dev1',		// plugin version
+					'version' => '3.0dev2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
+					'update_auth' => 'tid',
 					'img' => array(
 						'icon_small' => 'images/icon-128x128.png',
 						'icon_medium' => 'images/icon-256x256.png',
@@ -137,6 +138,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc' => 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
 					'slug' => 'wpsso-am',
 					'base' => 'wpsso-am/wpsso-am.php',
+					'update_auth' => 'tid',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
 						'icon_medium' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
@@ -151,6 +153,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc' => 'WPSSO extension to provide Facebook / Open Graph "Location" and Pinterest "Place" Rich Pin meta tags.',
 					'slug' => 'wpsso-plm',
 					'base' => 'wpsso-plm/wpsso-plm.php',
+					'update_auth' => 'tid',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
 						'icon_medium' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
@@ -165,6 +168,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc' => 'WPSSO extension to provide fast and accurate Social Sharing Buttons, including support for hashtags, shortening, bbPress, BuddyPress, and WooCommerce.',
 					'slug' => 'wpsso-ssb',
 					'base' => 'wpsso-ssb/wpsso-ssb.php',
+					'update_auth' => 'tid',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-128x128.png',
 						'icon_medium' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-256x256.png',
@@ -179,6 +183,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc' => 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-ssb/wpsso-um.php',
+					'update_auth' => '',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
 						'icon_medium' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
@@ -215,8 +220,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_site_name' => '',
 					'og_site_description' => '',
 					'og_art_section' => 'none',
-					'og_img_width' => 800,
-					'og_img_height' => 800,
+					'og_img_width' => 600,
+					'og_img_height' => 600,
 					'og_img_crop' => 1,
 					'og_img_crop_x' => 'center',
 					'og_img_crop_y' => 'center',
@@ -250,8 +255,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_alt' => 1,
 					'rp_publisher_url' => '',
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
-					'rp_img_width' => 800,
-					'rp_img_height' => 800,
+					'rp_img_width' => 600,
+					'rp_img_height' => 600,
 					'rp_img_crop' => 0,
 					'rp_img_crop_x' => 'center',
 					'rp_img_crop_y' => 'center',
@@ -265,14 +270,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_crop_x' => 'center',
 					'tc_sum_crop_y' => 'center',
 					// large image summary card
-					'tc_lrgimg_width' => 800,
-					'tc_lrgimg_height' => 800,
+					'tc_lrgimg_width' => 600,
+					'tc_lrgimg_height' => 600,
 					'tc_lrgimg_crop' => 0,
 					'tc_lrgimg_crop_x' => 'center',
 					'tc_lrgimg_crop_y' => 'center',
 					// photo card
-					'tc_photo_width' => 800,
-					'tc_photo_height' => 800,
+					'tc_photo_width' => 600,
+					'tc_photo_height' => 600,
 					'tc_photo_crop' => 0,
 					'tc_photo_crop_x' => 'center',
 					'tc_photo_crop_y' => 'center',
@@ -381,7 +386,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_post' => 1,
 					'plugin_add_to_page' => 1,
 					'plugin_add_to_attachment' => 1,
-					'plugin_object_cache_exp' => 21600,	// 6 hours
+					'plugin_object_cache_exp' => 86400,	// 24 hours
 					'plugin_file_cache_hrs' => 0,
 					'plugin_verify_certs' => 0,
 					'plugin_cm_fb_name' => 'facebook', 

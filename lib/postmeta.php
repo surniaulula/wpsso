@@ -286,8 +286,14 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 				$obj->post_status !== 'publish' )
 					return $post_id;
 
-			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), get_permalink( $post_id ) );
-			if ( ( $metas = $this->p->util->get_head_meta( $permalink_no_meta, '/html/head/link|/html/head/meta', false ) ) !== false ) {
+			$permalink = get_permalink( $post_id );
+			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
+
+			// use the permalink and ask get_head_meta() to remove our meta tags
+			// to avoid issues with caching plugins that ignore query arguments
+			if ( ( $metas = $this->p->util->get_head_meta( $permalink, 
+				'/html/head/link|/html/head/meta', false ) ) !== false ) {
+
 				foreach( array(
 					'link' => array( 'rel' ),
 					'meta' => array( 'name', 'itemprop', 'property' ),
