@@ -555,6 +555,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.0 =
+
+Added 36 options from the Pro version General settings page back into the Free version, new "unhide / show all options" link in metaboxes, replaced the 'Free to Pro version' self-update feature by a new "WPSSO Pro Update Manager (WPSSO UM)" Free extension plugin.
+
 = 2.9 =
 
 Fixed saving of WPSSO options under the WordPress "Settings" menu, added new "Image Dimensions" and "Website / Business Social Accounts" settings pages.
