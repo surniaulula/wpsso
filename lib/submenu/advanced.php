@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -54,15 +54,22 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
-			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ), $metabox.'-metabox-info' );
+			$this->p->util->do_table_rows( 
+				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
+				'metabox-'.$metabox.'-info'
+			);
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
 		public function show_metabox_taglist() {
 			$metabox = 'taglist';
-			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ), $metabox.'-metabox-info' );
-			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tags_rows', array(), $this->form ),
-				$metabox.'-metabox'	// class for the div and table
+			$this->p->util->do_table_rows( 
+				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
+				'metabox-'.$metabox.'-info'
+			);
+			$this->p->util->do_table_rows( apply_filters(
+				$this->p->cf['lca'].'_'.$metabox.'_tags_rows', array(), $this->form ),
+				'metabox-'.$metabox.'-tags'
 			);
 		}
 

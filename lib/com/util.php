@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -782,20 +782,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$class_href_key.'"><a class="'.$class_link.'" href="#'.
 					$class_href_key.'">'.$title.'</a></li>'."\n";
 			}
-			echo '</ul>'."\n";
+			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
+
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
 				$this->do_table_rows( 
 					$table_rows[$tab], 
 					$class_href_key,
-					$class_tabset,
-					( empty( $metabox ) ? '' : $class_tabset.$metabox )
+					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
+					$class_tabset
 				);
 			}
 			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}
 
-		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset = '', $class_tabset_mb = '' ) {
+		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
 			// just in case
 			if ( empty( $table_rows ) || ! is_array( $table_rows ) )
 				return;
@@ -852,11 +853,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$count_rows++;
 			}
 
-			echo '<div class="'.( empty( $show_opts ) ? '' : 'show_'.$show_opts.' ' ).
-				$class_tabset.' '.$class_tabset_mb.' '.$class_href_key.'">'."\n";
-			echo '<table class="sucom-setting '.$class_href_key.( $hidden_rows == $count_rows ? ' hide_in_'.$show_opts : '' ).'">'."\n";
+			echo '<div class="'.
+				( empty( $show_opts ) ? '' : 'show_'.$show_opts ).
+				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
+				( empty( $class_tabset_mb ) ? '' : ' '.$class_tabset_mb ).
+				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
+			'">'."\n";
+
+			echo '<table class="sucom-setting'.
+				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
+				( $hidden_rows === $count_rows ? ' hide_in_'.$show_opts : '' ).
+			'">'."\n";
+
 			foreach ( $table_rows as $row )
 				echo $row;
+
 			echo '</table>'."\n";
 			echo '</div>'."\n";
 
