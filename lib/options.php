@@ -383,12 +383,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $type;
 		}
 
-		public function get_tid_lcas() {
-			$lcas = array();
+		public function get_lcas_with_tid() {
+			$ret = array();
 			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca )
 				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
-					$lcas[] = $lca;
-			return $lcas;
+					$ret[] = $lca;
+			return $ret;
 		}
 
 	}
