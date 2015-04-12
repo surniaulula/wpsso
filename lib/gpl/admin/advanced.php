@@ -191,7 +191,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
 					$rows[] = $this->p->util->th( $name, 'medium' ).
-					'<td class="blank checkbox">'.$form->get_hidden( $cm_enabled ).
+					'<td class="blank checkbox">'.
+						$form->get_hidden( $cm_enabled ).
 						$form->get_no_checkbox( $cm_enabled ).'</td>'.
 					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';

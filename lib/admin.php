@@ -758,7 +758,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$view_text = 'View Plugin Details';
 				if ( ! empty( $info['slug'] ) && 
-					( empty( $info['url']['latest_zip'] ) || $is_avail['util']['um'] ) ) {
+					( empty( $info['url']['latest_zip'] ) ||
+						$this->p->is_avail['util']['um'] ) ) {
 
 					$img_href = add_query_arg( array(
 						'tab' => 'plugin-information',
