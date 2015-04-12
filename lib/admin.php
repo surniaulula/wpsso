@@ -27,11 +27,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->debug->mark();
 			$this->p->check->conflict_warnings();
 			$this->set_objects();
-			$this->aop_notices();
+			$this->req_notices();
 
 			add_action( 'admin_init', array( &$this, 'register_setting' ) );
 			add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 			add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
+			add_action( 'activated_plugin', array( &$this, 'trunc_notices' ) );
+
 			add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 
 			if ( is_multisite() ) {
@@ -64,7 +66,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		private function aop_notices() {
+		private function req_notices() {
 			// check that wpsso pro has an authentication id
 			$lca = $this->p->cf['lca'];
 			if ( $this->p->is_avail['aop'] === true && empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
@@ -80,8 +82,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->notice->inf( $this->p->msgs->get( 'pro-not-installed', array( 'lca' => $lca ) ), true );
 				}
 			}
+			// if we have at least one tid, make sure the update manager is installed
 			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] )
 				$this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
+		}
+
+		public function trunc_notices( $plugin = false ) {
+			$um_lca = $this->p->cf['lca'].'um';
+			$um_base = $this->p->cf['plugin'][$um_lca]['base'];
+			if ( $plugin === $um_base )
+				$this->p->notice->trunc( 'nag' );
 		}
 
 		protected function set_form() {
