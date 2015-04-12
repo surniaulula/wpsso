@@ -421,7 +421,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the 'Pro Licenses' settings page to 'Extension Plugins and Pro Licenses'.
 	* Added the "WPSSO Pro Update Manager (WPSSO UM)" *Free* extension plugin to the 'Extension Plugins and Pro Licenses' settings page.
 	* Changed *default* image widths from 800px to 600px (lowest recommended value for Facebook).
-	* Added a get_og_video(), get_og_image(), and reset_options() method to the WpssoUser class.
+	* Added new `get_og_video()`, `get_og_image()`, and `reset_options()` methods to the WpssoUser class.
 * **Bugfixes**
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
