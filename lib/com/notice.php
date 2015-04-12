@@ -48,7 +48,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_id = get_current_user_id();			// since wp 3.0
 				if ( empty( $user_id ) )				// exclude wp-cron and/or empty user ids
 					$user = false;
-				$msg_opt = $this->lca.'_notices_'.$type;	// the option name
+				$msg_opt = $this->lca.'_notices_'.$type;		// the option name
 				if ( $user == true )					// get the message array from the user table
 					$msg_arr = get_user_option( $msg_opt, $user_id );
 				else $msg_arr = get_option( $msg_opt );			// get the message array from the options table
@@ -73,16 +73,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$types = empty( $idx ) ?
 				array_keys( $this->log ) : array( $idx );
 			foreach ( $types as $type ) {
-				$user_id = get_current_user_id();	// since wp 3.0
 				$msg_opt = $this->lca.'_notices_'.$type;
-				// delete doesn't always work, so set an empty value first
+				$user_id = get_current_user_id();			// since wp 3.0
 				if ( get_option( $msg_opt ) ) {
-					update_option( $msg_opt, array() );
+					update_option( $msg_opt, array() );		// delete doesn't always work, so set empty value first
 					delete_option( $msg_opt );
 				}
-				if ( get_user_option( $msg_opt, $user_id ) ) {
-					update_user_option( $user_id, $msg_opt, array() );
-					delete_user_option( $user_id, $msg_opt );
+				if ( ! empty( $user_id ) ) {				// exclude wp-cron and/or empty user ids
+					if ( get_user_option( $msg_opt, $user_id ) ) {
+						update_user_option( $user_id, $msg_opt, array() );
+						delete_user_option( $user_id, $msg_opt );
+					}
 				}
 				$this->log[$type] = array();
 			}

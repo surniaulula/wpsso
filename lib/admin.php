@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'admin_init', array( &$this, 'register_setting' ) );
 			add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 			add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
-			add_action( 'activated_plugin', array( &$this, 'trunc_notices' ) );
+			add_action( 'activated_plugin', array( &$this, 'trunc_notices' ), 10, 2 );
 
 			add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 
@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
 		}
 
-		public function trunc_notices( $plugin = false ) {
+		public function trunc_notices( $plugin = false, $sitewide = false ) {
 			$um_lca = $this->p->cf['lca'].'um';
 			$um_base = $this->p->cf['plugin'][$um_lca]['base'];
 			if ( $plugin === $um_base )
