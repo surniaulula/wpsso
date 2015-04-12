@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
 							$text = '<p>At least one Authentication ID has been entered, but the <strong>'.$um_name.'</strong> extension plugin is not active. This <strong>free extension</strong> is required to update and enable the '.$name_pro.' plugin and its extensions.</p>
 							<ol>
-							<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin (zip file)</a>.</strong>
+							<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin archive</a> (zip file).</strong>
 							<li><strong>Then <a href="'.$upload_url.'">upload and activate the plugin on this WordPress admin page</a></strong>.</li>
 							</ol>
 							<p>Once the plugin has been activated, one or more Pro version updates will be available for your licensed plugin(s). You can also <a href="'.$um_dl.'" target="_blank">read more about the '.$um_name.'</a> extension plugin.</p>
