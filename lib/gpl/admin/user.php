@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Sharing URL', 'medium', 'postmeta-sharing_url', $post_info ).
-			'<td class="blank">'.$this->p->util->get_sharing_url( false ).'</td>';
+			'<td class="blank">'.$this->p->util->get_sharing_url( false ).'</td>';	// use_post = false
 
 			return $rows;
 		}

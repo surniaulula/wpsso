@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_metaboxes() {
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_usermeta', $add_metabox ) === true )
 				add_meta_box( WPSSO_META_NAME, 'Social Settings', array( &$this, 'show_metabox_usermeta' ), 
 					'user', 'normal', 'high' );
@@ -259,7 +260,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return false;
 
 			$cm = self::get_user_id_contact_methods( $author_id );
-			$og_image = $this->p->media->get_author_image( 1, $size_name, $author_id, false );
+
+			$og_image = $this->p->mods['util']['postmeta']->get_og_image( 1, $size_name, $author_id, false );
 			if ( count( $og_image ) > 0 ) {
 				$image = reset( $og_image );
 				$image_url = $image['og:image'];
@@ -446,19 +448,36 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
+		public function get_og_video( $num = 0, $user_id, $check_dupes = true, $meta_pre = 'og' ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			return array();
+		}
+
+		public function get_og_image( $num = 0, $size_name = 'thumbnail', $user_id, $check_dupes = true, $force_regen = false, $meta_pre = 'og' ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			return array();
+		}
+
+                public function reset_options( $user_id ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+		}
+
 		public function get_options( $user_id = false, $idx = false ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false ) 
 				return false;
 			else return array();
 		}
 
 		public function get_defaults( $idx = false ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false ) 
 				return false;
 			else return array();
 		}
 
 		public function save_options( $user_id = false ) {
+			$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return $user_id;
 		}
 

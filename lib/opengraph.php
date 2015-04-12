@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -55,19 +55,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_array( &$og = array(), $use_post = false, $obj = false ) {
 
-			if ( ! is_object( $obj ) && ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: invalid object type' );
-				return $og;
-			}
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+			if ( ! is_object( $obj ) )
+				$obj = $this->p->util->get_post_object( $use_post );
+
+			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
+				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' :
 					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
 
 			$post_type = '';
 			$video_images = 0;
-			$og_max = $this->p->util->get_max_nums( $post_id );	// if post_id 0 then returns plugin settings 
+			$og_max = $this->p->util->get_max_nums( $post_id );	// if post_id 0 then returns the plugin settings 
 			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
 
 			if ( ! isset( $og['fb:admins'] ) )
@@ -75,6 +75,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			if ( ! isset( $og['fb:app_id'] ) )
 				$og['fb:app_id'] = $this->p->options['fb_app_id'];
+
+			if ( ! isset( $og['og:url'] ) )
+				$og['og:url'] = $this->p->util->get_sharing_url( $use_post, true, 
+					$this->p->util->get_source_id( 'opengraph' ) );
+
+			if ( ! isset( $og['og:title'] ) )
+				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $use_post );
 
 			if ( ! isset( $og['og:locale'] ) ) {
 				// get the current or configured language for og:locale
@@ -94,13 +101,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$og['og:site_name'] = $this->p->options[$key];
 				else $og['og:site_name'] = get_bloginfo( 'name', 'display' );
 			}
-
-			if ( ! isset( $og['og:url'] ) )
-				$og['og:url'] = $this->p->util->get_sharing_url( $use_post, true, 
-					$this->p->util->get_source_id( 'opengraph' ) );
-
-			if ( ! isset( $og['og:title'] ) )
-				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $use_post );
 
 			if ( ! isset( $og['og:description'] ) )
 				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $use_post );
@@ -263,6 +263,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'num' => $num,
 					'post_id' => $post_id,
 					'check_dupes' => $check_dupes,
+					'meta_pre' => $meta_pre,
 				) );
 			$og_ret = array();
 
@@ -277,17 +278,31 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				return $og_ret;	// stop here and return the video array
 			}
 
-			if ( ! empty( $post_id ) ) {	// post id should be > 0 for post meta
+			if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
+				$author_id = $this->p->util->get_author_object( 'id' );
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_video( $num_remains, $post_id, $check_dupes, $meta_pre ) );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
+					$author_id, $check_dupes, $meta_pre ) );
+			}
+
+			// post id should be > 0 to fetch post meta
+			if ( ! empty( $post_id ) ) {
+				$num_remains = $this->p->media->num_remains( $og_ret, $num );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_video( $num_remains, 
+					$post_id, $check_dupes, $meta_pre ) );
 			}
 
 			// if we haven't reached the limit of videos yet, keep going
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_remains, $post_id, $check_dupes ) );
+				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_remains,
+					$post_id, $check_dupes ) );
 			}
+
 			$this->p->util->slice_max( $og_ret, $num );
+
 			return $og_ret;
 		}
 
@@ -340,17 +355,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
 				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-				if ( is_admin() )
-					$author_id = empty( $_GET['user_id'] ) ? get_current_user_id() : $_GET['user_id'];
-				else {
-					$author = get_query_var( 'author_name' ) ? 
-						get_user_by( 'slug', get_query_var( 'author_name' ) ) :
-						get_userdata( get_query_var( 'author' ) );
-					$author_id = $author->ID;
-				}
+
+				$author_id = $this->p->util->get_author_object( 'id' );
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->media->get_author_image( $num_remains, 
-					$size_name, $author_id, $check_dupes ) );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
 			}
 
 			// check for custom meta, featured, or attached image(s)
@@ -374,25 +383,28 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				// if we found images in the query, skip content shortcodes
 				if ( count( $ngg_query_og_ret ) > 0 ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( count( $ngg_query_og_ret ).' image(s) returned - skipping additional shortcode images' );
+						$this->p->debug->log( count( $ngg_query_og_ret ).
+							' image(s) returned - skipping additional shortcode images' );
 					$og_ret = array_merge( $og_ret, $ngg_query_og_ret );
 
 				// if no query images were found, continue with ngg shortcodes in content
 				} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 					$num_remains = $this->p->media->num_remains( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, 
-						$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, $size_name, $check_dupes ) );
+						$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, 
+							$size_name, $check_dupes ) );
 				}
 			} // end of check for ngg shortcodes and query vars
 
 			// if we haven't reached the limit of images yet, keep going and check the content text
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, 
-					$this->p->media->get_content_images( $num_remains, $size_name, $post_id, $check_dupes ) );
+				$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_remains, 
+					$size_name, $post_id, $check_dupes ) );
 			}
 
 			$this->p->util->slice_max( $og_ret, $num );
+
 			return $og_ret;
 		}
 	}

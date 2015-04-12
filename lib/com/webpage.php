@@ -92,20 +92,41 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$caption = false;
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
-			if ( ! empty( $custom ) && $custom !== 'og' &&
-				( is_singular() || $use_post !== false ) ) {
-				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: invalid object type' );
-					return $caption;
-				}
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-				if ( ! empty( $post_id ) && 
-					isset( $this->p->mods['util']['postmeta'] ) ) {
-					$caption = $this->p->mods['util']['postmeta']->get_options( $post_id, $custom );
-					if ( ! empty( $caption ) ) {
+			if ( ! empty( $custom ) ) {
+				
+				if ( is_singular() || $use_post !== false ) {
+
+					if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom postmeta '.$custom.' = "'.$caption.'"' );
+							$this->p->debug->log( 'exiting early: invalid object type' );
+						return $caption;
+					}
+
+					$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+	
+					if ( ! empty( $post_id ) && 
+						isset( $this->p->mods['util']['postmeta'] ) ) {
+	
+						$caption = $this->p->mods['util']['postmeta']->get_options( $post_id, $custom );
+						if ( ! empty( $caption ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'custom postmeta '.$custom.' = "'.$caption.'"' );
+						}
+					}
+				} elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
+					$author = $this->p->util->get_author_object();
+	
+					if ( ! empty( $author->ID ) &&
+						isset( $this->p->mods['util']['user'] ) ) {
+
+						$caption = $this->p->mods['util']['user']->get_options( $author->ID, $custom );
+
+						if ( ! empty( $caption ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'custom user '.$custom.' = "'.$caption.'"' );
+						}
 					}
 				}
 			}
@@ -126,6 +147,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					case 'both':
 						$prefix = $this->get_title( 0, '', $use_post, $use_cache, 
 							false, false, $custom_prefix.'_title', $source_id ).' '.$separator.' ';
+
 						$caption = $prefix.$this->get_description( $length - strlen( $prefix ), '...', $use_post, $use_cache, 
 							$add_hashtags, false, $custom_prefix.'_desc', $source_id );
 						break;
@@ -165,12 +187,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( is_singular() || $use_post !== false ) {
+
 				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $title;
 				}
+
 				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+
 				if ( ! empty( $post_id ) && ! empty( $custom ) && 
 					isset( $this->p->mods['util']['postmeta'] ) ) {
 
@@ -184,16 +209,22 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						}
 					}
 				}
-			} elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && ( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+			} elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
 				$author = $this->p->util->get_author_object();
+
 				if ( ! empty( $author->ID ) ) {
 					if ( ! empty( $custom ) && isset( $this->p->mods['util']['user'] ) ) {
+
 						$title = $this->p->mods['util']['user']->get_options( $author->ID, $custom );
+
 						if ( ! empty( $title ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom user '.$custom.' = "'.$title.'"' );
 						}
 					}
+
 					if ( empty( $title ) && is_admin() )	// re-create default wp title on admin side
 						$title = apply_filters( 'wp_title', $author->display_name.' '.$separator.' ', $separator, 'right' );
 				}
@@ -342,12 +373,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$page = ''; 
 
 			if ( is_singular() || $use_post !== false ) {
+
 				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $desc;
 				}
+
 				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+
 				if ( ! empty( $post_id ) && ! empty( $custom ) && 
 					isset( $this->p->mods['util']['postmeta'] ) ) {
 
@@ -361,16 +395,23 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						}
 					}
 				}
-			} elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && ( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+			} elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
 				$author = $this->p->util->get_author_object();
+
 				if ( ! empty( $author->ID ) ) {
 					if ( isset( $this->p->mods['util']['user'] ) )
 						$desc = $this->p->mods['util']['user']->get_options( $author->ID, $custom );
+
 					if ( ! empty( $desc ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom user '.$custom.' = "'.$desc.'"' );
+
 					} elseif ( is_admin() )	// re-create default description on admin side
-						$desc = empty( $author->description ) ? sprintf( 'Authored by %s', $author->display_name ) : $author->description;
+						$desc = empty( $author->description ) ? 
+							sprintf( 'Authored by %s', $author->display_name ) : 
+							$author->description;
 				}
 			}
 
@@ -424,7 +465,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		
 				} elseif ( is_author() ) { 
 					$author = $this->p->util->get_author_object();
-					$desc = empty( $author->description ) ? sprintf( 'Authored by %s', $author->display_name ) : $author->description;
+					$desc = empty( $author->description ) ?
+						sprintf( 'Authored by %s', $author->display_name ) :
+						$author->description;
 			
 				} elseif ( is_tag() ) {
 					$desc = tag_description();

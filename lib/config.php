@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.0dev2',		// plugin version
+					'version' => '3.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -633,6 +633,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( ! defined( 'WPSSO_INIT_PRIORITY' ) )
 				define( 'WPSSO_INIT_PRIORITY', 12 );
+
+			if ( ! defined( 'WPSSO_DOCTYPE_PRIORITY' ) )
+				define( 'WPSSO_DOCTYPE_PRIORITY', 100 );
 
 			if ( ! defined( 'WPSSO_HEAD_PRIORITY' ) )
 				define( 'WPSSO_HEAD_PRIORITY', 10 );

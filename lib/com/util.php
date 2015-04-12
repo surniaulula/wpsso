@@ -44,8 +44,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $str;
 				}
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-			} else $post_id = $obj->ID;
+			}
+			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 
 			$sharing_url = $this->get_sharing_url( $use_post );
 
@@ -251,15 +251,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function get_author_object() {
+		public function get_author_object( $ret = 'object' ) {
+			$obj = false;
 			if ( is_author() ) {
-				return get_query_var( 'author_name' ) ? 
+				$obj = get_query_var( 'author_name' ) ? 
 					get_userdata( get_query_var( 'author' ) ) : 
 					get_user_by( 'slug', get_query_var( 'author_name' ) );
 			} elseif ( is_admin() ) {
 				$author_id = empty( $_GET['user_id'] ) ? get_current_user_id() : $_GET['user_id'];
-				return get_userdata( $author_id );
-			} else return false;
+				$obj = get_userdata( $author_id );
+			} else return $obj;
+
+			switch ( $ret ) {
+				case 'id':
+				case 'ID':
+					return $obj->ID;
+					break;
+				default:
+					return $obj;
+					break;
+			}
 		}
 
 		// on archives and taxonomies, this will return the first post object
@@ -327,8 +338,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() )
 					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
-				elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && ( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
+				elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+
 					$author = $this->get_author_object();
+
 					if ( ! empty( $author->ID ) ) {
 						if ( isset( $this->p->mods['util']['user'] ) )
 							$url = $this->p->mods['util']['user']->get_options( $author->ID, 'sharing_url' );

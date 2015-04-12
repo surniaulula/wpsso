@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -35,14 +35,18 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 		}
 
 		public function add_metaboxes() {
+
 			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
 				empty( $obj->post_type ) )
 					return;
+
 			$post_id = empty( $obj->ID ) ? 0 : $obj->ID;
 			$post_type = get_post_type_object( $obj->post_type );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
+
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_postmeta', $add_metabox, $post_id ) === true )
-				add_meta_box( WPSSO_META_NAME, 'Social Settings', array( &$this, 'show_metabox_postmeta' ), $post_type->name, 'advanced', 'high' );
+				add_meta_box( WPSSO_META_NAME, 'Social Settings', 
+					array( &$this, 'show_metabox_postmeta' ), $post_type->name, 'advanced', 'high' );
 		}
 
 		// hooked into the admin_head action
@@ -185,7 +189,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'">'.$msgs['not_found'].'</div>';
 
 			$rows[] = $this->p->util->th( 'Open Graph Example', 'medium', 'postmeta-social-preview' ).
-			'<td style="background-color:#e9eaed;">
+			'<td style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 			<div class="preview_box" style="width:'.( $max_width + 40 ).'px;">
 				<div class="preview_box" style="width:'.$max_width.'px;">
 					'.$image_preview_html.'

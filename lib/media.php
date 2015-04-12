@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -432,58 +432,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $ret_empty;
 		}
 
-		public function get_author_image( $num = 0, $size_name = 'thumbnail', $author_id, $check_dupes = true, $force_regen = false ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'author_id' => $author_id,
-					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
-				) );
-			}
-			$og_ret = array();
-			$og_image = array();
-
-			if ( empty( $author_id ) || ! isset( $this->p->mods['util']['user'] ) )
-				return $og_ret;
-
-			$pid = $this->p->mods['util']['user']->get_options( $author_id, 'og_img_id' );
-			$pre = $this->p->mods['util']['user']->get_options( $author_id, 'og_img_id_pre' );
-			$img_url = $this->p->mods['util']['user']->get_options( $author_id, 'og_img_url', array( 'size_name' => $size_name ) );
-
-			if ( $pid > 0 ) {
-				$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'found custom user image id = '.$pid );
-				list(
-					$og_image['og:image'], 
-					$og_image['og:image:width'], 
-					$og_image['og:image:height'], 
-					$og_image['og:image:cropped'], 
-					$og_image['og:image:id']
-				) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
-			}
-
-			if ( empty( $og_image['og:image'] ) && ! empty( $img_url ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'found custom user image url = "'.$img_url.'"' );
-				list(
-					$og_image['og:image'],
-					$og_image['og:image:width'],
-					$og_image['og:image:height'],
-					$og_image['og:image:cropped'], 
-					$og_image['og:image:id']
-				) = array( $img_url, -1, -1, -1, -1 );
-			}
-
-			if ( ! empty( $og_image['og:image'] ) &&
-				$this->p->util->push_max( $og_ret, $og_image, $num ) )
-					return $og_ret;
-			return $og_ret;
-		}
-
 		public function get_default_image( $num = 0, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -690,7 +638,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$content = preg_replace( '/\['.$shortcode_type.'[^\]]*\]/', '', $content );	// prevent loops, just in case
 							// provide content to the method and extract its images
 							// $post_id argument is 0 since we're passing the content
-							$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num, $size_name, 0, $check_dupes, $content ) );
+							$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num, 
+								$size_name, 0, $check_dupes, $content ) );
 							if ( ! empty( $og_ret ) ) 
 								return $og_ret;		// return immediately and ignore any other type of image
 							break;
@@ -746,7 +695,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 
 			// allow custom content to be passed as argument
-			if ( empty( $content ) )
+			if ( empty( $content ) && $post_id > 0 )
 				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
 
 			if ( empty( $content ) ) { 

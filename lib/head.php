@@ -1,9 +1,9 @@
 <?php
 /*
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.txt
-Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
-*/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -99,7 +99,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				// on singular webpages, show the custom social settings
 				if ( is_singular() && ( $obj = $this->p->util->get_post_object() ) !== false ) {
+
 					$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+
 					if ( ! empty( $post_id ) && isset( $this->p->mods['util']['postmeta'] ) ) {
 						$meta_opts = $this->p->mods['util']['postmeta']->get_options( $post_id );
 						$this->p->debug->show_html( $meta_opts, 'wpsso post meta options for post id '.$post_id );
@@ -158,6 +160,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
 
 			$obj = $this->p->util->get_post_object( $use_post );
+
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
@@ -200,8 +203,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				( $screen = get_current_screen() ) && 
 				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
 
-				$author = $this->p->util->get_author_object();
-				$author_id = $author->ID;
+				$author_id = $this->p->util->get_author_object( 'id' );
 
 			} elseif ( ( ! ( is_singular() || $use_post !== false ) && ! is_search() && 
 				! empty( $this->p->options['seo_def_author_on_index'] ) && 
