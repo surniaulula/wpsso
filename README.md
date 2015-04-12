@@ -1,4 +1,5 @@
-=== WordPress Social Sharing Optimization - Improves Shared Content on Social Websites ===
+<h1>WordPress Social Sharing Optimization</h1><h3>Improves Shared Content on Social Websites</h3>
+
 <blockquote>
 <strong>Contributors</strong>: jsmoriss<br/>
 <strong>Donate Link</strong>: https://surniaulula.com/extend/plugins/wpsso/<br/>
