@@ -398,6 +398,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+= Version 3.0.1 (2015/04/13) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed an optional parameter to preg_match_all in SucomUtil for older PHP versions (pre-5.4).
+
 = Version 3.0 (2015/04/12) =
 
 * **New Features**
