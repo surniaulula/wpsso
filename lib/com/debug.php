@@ -19,12 +19,15 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $log_prefix = '';
 		private $buffer = array();	// accumulate text strings going to html output
 		private $subsys = array();	// associative array to enable various outputs 
-		private $start_time = null;
-		private $begin_time = array();
+		private $start_stats = null;
+		private $begin_marks = array();
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
 			$this->p =& $plugin;
-			$this->start_time = microtime( true );
+			$this->start_stats = array(
+				'time' => microtime( true ),
+				'mem' => memory_get_usage( true ),
+			);
 			$this->display_name = $this->p->cf['lca'];
 			$this->log_prefix = $this->p->cf['uca'];
 			$this->subsys = $subsys;
@@ -36,28 +39,44 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( $this->enabled !== true ) 
 				return;
 
-			$diff_time = false;
-			$current_time = microtime( true );
-			if ( $this->start_time === null )
-				$start_time = $current_time;
-			$total_time = $current_time - $this->start_time;
-			$time_text = sprintf( '%f', $total_time );
+			$cur_stats = array(
+				'time' => microtime( true ),
+				'mem' => memory_get_usage( true ),
+			);
+			if ( $this->start_stats === null )
+				$this->start_stats = $cur_stats;
 
 			if ( $id !== false ) {
-				$id_prefix = '- - - - - - ';
-				$id_text = $id_prefix.$id;
-				if ( isset( $this->begin_time[$id] ) ) {
-					$diff_time = $current_time - $this->begin_time[$id];
-					$id_text .= ' end +'.sprintf( '%f', $diff_time );
-					unset( $this->begin_time[$id] );
+				$id_text = '- - - - - - '.$id;
+				if ( isset( $this->begin_marks[$id] ) ) {
+					$id_text .= ' end + ('.
+						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ).' / '.
+						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ).')';
+					unset( $this->begin_marks[$id] );
 				} else {
-					$this->begin_time[$id] = $current_time;
 					$id_text .= ' begin';
+					$this->begin_marks[$id] = array(
+						'time' => $cur_stats['time'],
+						'mem' => $cur_stats['mem'],
+					);
 				}
 			}
-
-			$this->log( 'mark ('.$time_text.')'.
+			$this->log( 'mark ('.
+				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ).' / '.
+				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ).')'.
 				( $id !== false ? "\n\t".$id_text : '' ), 2 );
+		}
+
+		private function get_time_text( $time ) {
+			return sprintf( '%f secs', $time );
+		}
+
+		private function get_mem_text( $mem ) {
+			if ( $mem < 1024 )
+				return $mem.' bytes';
+			elseif ( $mem < 1048576 )
+				return round( $mem / 1024, 2).' kb';
+			else return round( $mem / 1048576, 2).' mb'; 
 		}
 
 		public function args( $args = array() ) { 
@@ -75,7 +94,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$log_msg = '';
 			$log_msg .= sprintf( '%-35s:: ', 
 				( empty( $stack[$backtrace]['class'] ) ? '' : $stack[$backtrace]['class'] ) );
-			$log_msg .= sprintf( '%-25s : ', 
+			$log_msg .= sprintf( '%-28s : ', 
 				( empty( $stack[$backtrace]['function'] ) ? '' : $stack[$backtrace]['function'] ) );
 
 			if ( is_multisite() ) {
