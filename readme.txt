@@ -50,8 +50,9 @@ Make sure social websites present your content correctly, no matter how your web
 * Validates image dimensions to provide accurate media for social websites.
 * Auto-regeneration of inaccurate / missing WordPress image sizes.
 * Fully renders content (including shortcodes) for accurate description texts.
-* Configurable title separator character (hyphen by default).
 * Support of WordPress and/or SEO titles for Posts and Pages.
+* Configurable title separator character (hyphen by default).
+* Configurable title and description lengths for different contexts (Open Graph, Twitter Card, SEO).
 * Includes author and publisher profile URLs for Facebook and Google Search.
 * Includes hashtags from Post and Page WordPress tags.
 * Includes the author's name for Pinterest Rich Pins.
@@ -81,11 +82,10 @@ Make sure social websites present your content correctly, no matter how your web
 	* *App Card* &mdash; Apple Store iPhone / iPad or Google Play App (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension).
 	* *Summary Card* &mdash; All other webpages.
 * Customizable image dimensions for each Twitter Card type.
-* Configurable title and description lengths for different contexts (Open Graph, Twitter Card, SEO).
 * Additional profile contact fields with configurable label and field names.
 * Custom settings and meta tag values for each Post, Page, and custom post type.
 * Options to exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.
-* Support for embedded videos in iframe and object HTML tags.
+* Support for embedded videos in content text (iframe and object HTML tags).
 * **Integrates with 3rd party plugins and services for additional image, video, product, and content information** (see [About Pro Modules](http://surniaulula.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://surniaulula.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 	* Plugins
 		* All in One SEO Pack
