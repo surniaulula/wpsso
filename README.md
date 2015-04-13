@@ -415,7 +415,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed an optional parameter to preg_match_all in SucomUtil for older PHP versions (pre-5.4).
+	* Fixed an optional parameter to preg_match_all in SucomUtil for older (pre 5.4) PHP versions.
 
 <h4>Version 3.0 (2015/04/12)</h4>
 
@@ -573,6 +573,14 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 
 <h3>Upgrade Notice</h3>
+
+<h4>3.0.1</h4>
+
+Fixed an optional parameter to preg_match_all in SucomUtil for older (pre 5.4) PHP versions.
+
+<h4>3.0</h4>
+
+Added 36 options from the Pro version General settings page back into the Free version, new "unhide / show all options" link in metaboxes, replaced the 'Free to Pro version' self-update feature by a new "NextGEN Facebook (NGFB) Pro Update Manager" Free extension plugin.
 
 <h4>3.0</h4>
 
