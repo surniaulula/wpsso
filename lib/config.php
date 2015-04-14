@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name' => 'WPSSO Pro Update Manager (WPSSO UM)',
 					'desc' => 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its extensions.',
 					'slug' => 'wpsso-um',
-					'base' => 'wpsso-ssb/wpsso-um.php',
+					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
