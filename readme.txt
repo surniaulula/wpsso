@@ -398,6 +398,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
+= Version 3.0.2 (2015/04/14) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Improved the duplicate meta tags check by adding extra "comment" meta tags to better detect the WPSSO meta tag block to be removed / ignored.
+* **Bugfixes**
+	* Fixed an unecessary warning to install the Pro version when an extension has an Authentication ID but is deactivated.
+
 = Version 3.0.1 (2015/04/13) =
 
 * **New Features**
@@ -564,13 +573,13 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.0.2 =
+
+Improved the duplicate meta tags check, fixed an unecessary warning when a plugin extension has an Authentication ID but is deactivated.
+
 = 3.0.1 =
 
 Fixed an optional parameter to preg_match_all in SucomUtil for older (pre 5.4) PHP versions.
-
-= 3.0 =
-
-Added 36 options from the Pro version General settings page back into the Free version, new "unhide / show all options" link in metaboxes, replaced the 'Free to Pro version' self-update feature by a new "NextGEN Facebook (NGFB) Pro Update Manager" Free extension plugin.
 
 = 3.0 =
 
