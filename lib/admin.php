@@ -73,10 +73,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
 					$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
 						$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-msg' ) );
-			// check all plugins to make sure pro version is installed
+			// check all *active* plugins / extensions to make sure pro version is installed
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
+					isset( $info['base'] ) && WpssoUtil::active_plugins( $info['base'] ) ) {
 					$has_tid = true;
 					if ( ! $this->p->check->aop( $lca, false ) )
 						$this->p->notice->inf( $this->p->msgs->get( 'pro-not-installed', array( 'lca' => $lca ) ), true );

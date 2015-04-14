@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->is_avail['metatags'] )
 				echo $this->get_header_html( apply_filters( $lca.'_header_use_post', false ) );
-			else echo "\n<!-- ".$lca." meta tags are disabled -->\n";
+			else echo "\n<!-- ".$lca." meta tags disabled -->\n";
 
 			// include additional information when debug mode is on
 			if ( $this->p->debug->enabled ) {
@@ -146,11 +146,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_header_html( $use_post = false, $read_cache = true, &$meta_og = array() ) {
-			$html = "\n\n<!-- ".$this->p->cf['lca']." meta tags begin -->\n";
+			$comment = $this->p->cf['lca'].' meta tags';
+			$html = "\n\n".'<!-- '.$comment.' begin --><meta name="comment" content="'.$comment.' begin" />'."\n";
 			foreach ( $this->get_header_array( $use_post, $read_cache, $meta_og ) as $meta )
 				if ( ! empty( $meta[0] ) )	// first element of the array should be a complete html tag
 					$html .= $meta[0];
-			$html .= "<!-- ".$this->p->cf['lca']." meta tags end -->\n\n";
+			$html .= '<meta name="comment" content="'.$comment.' end" /><!-- '.$comment.' end -->'."\n\n";
 			return $html;
 		}
 
@@ -259,6 +260,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Combine and return all meta tags
 			 */
+			$comment = $this->p->cf['lca'].' meta tags';
 			$header_array = array_merge(
 				$this->get_single_tag( 'meta', 'name', 'generator',
 					$short_aop.' '.$this->p->cf['plugin'][$lca]['version'].

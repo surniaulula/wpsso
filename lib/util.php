@@ -378,12 +378,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_head_meta( $url, $query = '/html/head/meta', $include_self = true ) {
 			if ( empty( $query ) )
 				return false;
+
 			if ( ( $html = $this->p->cache->get( $url, 'raw', 'transient' ) ) === false )
 				return false;
+
 			if ( $include_self !== true &&
-				strpos( $html, '<!-- '.$this->p->cf['lca'].' meta tags begin -->' ) !== false )
-					$html = preg_replace( '/<!-- '.$this->p->cf['lca'].' meta tags begin -->.*<!-- '.
-						$this->p->cf['lca'].' meta tags end -->/ms', '', $html );
+				strpos( $html, $this->p->cf['lca'].' meta tags begin' ) !== false ) {
+
+				$comment = $this->p->cf['lca'].' meta tags';
+				$re_pre = '<(!-- |meta name="comment" content=")';
+				$re_post = '( --|" \/)>';
+				$html = preg_replace( '/'.$re_pre.$comment.' begin'.$re_post.'.*'.
+					$re_pre.$comment.' end'.$re_post.'/ms', '<!-- '.$comment.' removed -->', $html );
+			}
+
 			$doc = new DomDocument();		// since PHP v4.1.0
 			@$doc->loadHTML( $html );		// suppress parsing errors
 			$xpath = new DOMXPath( $doc );
