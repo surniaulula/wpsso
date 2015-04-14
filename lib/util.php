@@ -179,10 +179,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$lang = SucomUtil::get_locale();
 					$cache_type = 'object cache';
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
-					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), get_permalink( $post_id ) );
+					$permalink = get_permalink( $post_id );
+					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 	
 					$transients = array(
 						'SucomCache::get' => array(
+							'url:'.$permalink,
 							'url:'.$permalink_no_meta,
 						),
 						'WpssoHead::get_header_array' => array( 
