@@ -30,16 +30,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			if ( $network === true )
 				return $rows;
 
-			$rows[] = '<tr class="hide_in_basic">'.
-			'<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			$rows[] = $this->p->util->th( 'Check for Header Tag Conflicts', 'highlight', 'plugin_check_head' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Report Cache Purge Count', null, 'plugin_cache_info' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_cache_info' ).'</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Check for Header Tag Conflicts', 'highlight', 'plugin_check_head' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Use WP Locale for Language', null, 'plugin_filter_lang' ).
@@ -66,7 +65,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		public function filter_plugin_content_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = $this->p->util->th( 'Check for Embedded Media', null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
@@ -93,7 +93,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		public function filter_plugin_social_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$checkboxes = '<p>'.$form->get_no_checkbox( 'plugin_add_to_user' ).' User Profile</p>';
 
@@ -138,7 +139,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		public function filter_cm_custom_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="4" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td></td>'.
 			$this->p->util->th( 'Show', 'left checkbox' ).
@@ -173,7 +175,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		public function filter_cm_builtin_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="4" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td></td>'.
 			$this->p->util->th( 'Show', 'left checkbox' ).
