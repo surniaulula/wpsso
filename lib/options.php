@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 				// must be alpha-numeric uppercase (hyphens and periods allowed as well)
 				case ( preg_match( '/_tid$/', $key ) ? true : false ):
-					return 'anu_case';
+					return 'auth_id';
 					break;
 				// text strings that can be blank
 				case 'og_art_section':

@@ -315,14 +315,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL'.' - '.$reset_msg, true );
+							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL'.' - '.
+								$reset_msg, true );
 							$val = $def_val;
 						}
 					}
 					break;
 				case 'numeric':		// must be numeric (blank or zero is ok)
 					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.
+							$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -336,7 +338,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val === '' && $opts_type !== false )	// custom options allowed to have blanks
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.$min_int.' - '.$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.
+							$min_int.' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -344,10 +347,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' )
 						$val = trim( wptexturize( ' '.$val.' ' ) );
 					break;
-				case 'anu_case':	// must be alpha-numeric uppercase (hyphens and periods allowed as well)
+				case 'auth_id':	// must be alpha-numeric uppercase (hyphens are allowed as well)
 					$val = trim( $val );
-					if ( $val !== '' && preg_match( '/[^A-Z0-9\-\.]/', $val ) ) {
-						$this->p->notice->err( '\''.$val.'\' is not an accepted value for option \''.$key.'\''.' - '.$reset_msg, true );
+					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
+						$this->p->notice->err( '\''.$val.'\' is not an accepted value for option \''.
+							$key.'\''.' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -359,7 +363,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'not_blank':	// options that cannot be blank
 				case 'code':
 					if ( $val === '' ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty'.' - '.$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty'.' - '.
+							$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
