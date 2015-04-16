@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* Changed 'sanitize_title' to 'sanitize_title_with_dashes' to sanitize for WordPress tags in order to keep accents. 
+	* Changed 'sanitize_title' to 'sanitize_title_with_dashes' when sanitizing WordPress tags in order to keep accents. 
 * **Bugfixes**
 	* *None*
 
