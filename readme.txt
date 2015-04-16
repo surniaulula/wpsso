@@ -401,11 +401,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.0.3 =
 
 * **New Features**
-	* *None*
+	* Added a new Pinterest "Website Verification ID" option on the SSO General settings page.
 * **Improvements**
 	* Changed 'sanitize_title' to 'sanitize_title_with_dashes' when sanitizing WordPress tags in order to keep accents. 
 * **Bugfixes**
-	* *None*
+	* When the Twitter Card feature is disabled, exclude Twitter Card meta tags from the duplicate meta tag checks.
 
 = Version 3.0.2 (2015/04/14) =
 
