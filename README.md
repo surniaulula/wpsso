@@ -408,7 +408,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * GitHub: https://github.com/SurniaUlula/wpsso
 * WordPress.org: https://wordpress.org/plugins/wpsso/developers/
 
-<h4>Version 3.0.3</h4>
+<h4>Version 3.0.3 (2015/04/16)</h4>
 
 * **New Features**
 	* Added a new Pinterest "Website Verification ID" option on the SSO General settings page.
@@ -591,6 +591,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 
 <h3>Upgrade Notice</h3>
+
+<h4>3.0.3</h4>
+
+When Twitter Cards are disabled, exclude from duplicate meta tag checks. Added new Pinterest "Website Verification ID" option. Changed tag sanitation to keep keep accents. 
 
 <h4>3.0.2</h4>
 
