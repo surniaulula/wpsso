@@ -405,8 +405,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 <h4>Free / Basic Version Repository</h4>
 
-* GitHub: https://github.com/SurniaUlula/wpsso
-* WordPress.org: https://wordpress.org/plugins/wpsso/developers/
+* [GitHub](https://github.com/SurniaUlula/wpsso)
+* [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
 <h4>Version 3.0.3 (2015/04/16)</h4>
 
