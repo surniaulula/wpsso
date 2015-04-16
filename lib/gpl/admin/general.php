@@ -23,7 +23,8 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Enable Twitter Cards', 'highlight', 'tc_enable' ).
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Enable Twitter Card Pro Module', 'highlight', 'tc_enable' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.

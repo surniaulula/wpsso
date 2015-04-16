@@ -15,9 +15,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $p;
 		private $lca;
 		private $log = array(
+			'nag' => array(),
 			'err' => array(),
 			'inf' => array(),
-			'nag' => array(),
 		);
 
 		public function __construct( &$plugin ) {

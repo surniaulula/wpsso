@@ -147,11 +147,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function get_header_html( $use_post = false, $read_cache = true, &$meta_og = array() ) {
 			$comment = $this->p->cf['lca'].' meta tags';
-			$html = "\n\n".'<!-- '.$comment.' begin --><meta name="comment" content="'.$comment.' begin" />'."\n";
+			$html = "\n\n".'<!-- '.$comment.' begin --><meta name="comment" content="'.$comment.' begin"/>'."\n";
 			foreach ( $this->get_header_array( $use_post, $read_cache, $meta_og ) as $meta )
 				if ( ! empty( $meta[0] ) )	// first element of the array should be a complete html tag
 					$html .= $meta[0];
-			$html .= '<meta name="comment" content="'.$comment.' end" /><!-- '.$comment.' end -->'."\n\n";
+			$html .= '<meta name="comment" content="'.$comment.' end"/><!-- '.$comment.' end -->'."\n\n";
 			return $html;
 		}
 
@@ -235,6 +235,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$meta_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
 				'...', $use_post, true, false, true, 'seo_desc' );	// add_hashtags = false
+
+			if ( ! empty( $this->p->options['rp_dom_verify'] ) )
+				$meta_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
 
 			$meta_name = apply_filters( $lca.'_meta_name', $meta_name, $use_post, $obj );
 
@@ -366,7 +369,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name.':secure_url'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.':secure_url is disabled (skipped)' );
-				} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.':secure_url" '.$attr.'="'.$secure_url.'" />'."\n";
+				} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.':secure_url" '.$attr.'="'.$secure_url.'"/>'."\n";
 
 				$ret[] = array( $html_tag, $tag, $type, $name.':secure_url', $attr, $secure_url, $comment );
 			}
@@ -375,7 +378,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
-			} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'" />'."\n";
+			} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'"/>'."\n";
 			
 			$ret[] = array( $html_tag, $tag, $type, $name, $attr, $value, $comment );
 

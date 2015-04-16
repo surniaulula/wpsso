@@ -298,18 +298,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			switch ( $option_type ) {
-				case 'at_name':		// twitter-style usernames (prepend with an at)
-					if ( $val !== '' ) {
-						$val = substr( preg_replace( '/[^a-zA-Z0-9_]/', '', $val ), 0, 15 );
-						if ( ! empty( $val ) ) 
-							$val = '@'.$val;
-					}
-					break;
-				case 'url_base':	// strip leading urls off facebook usernames
-					if ( $val !== '' ) {
-						$val = $this->cleanup_html_tags( $val );
-						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
-					}
+				case 'textured':	// must be texturized 
+					if ( $val !== '' )
+						$val = trim( wptexturize( ' '.$val.' ' ) );
 					break;
 				case 'url':		// must be a url
 					if ( $val !== '' ) {
@@ -321,11 +312,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 					break;
-				case 'numeric':		// must be numeric (blank or zero is ok)
-					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.
-							$reset_msg, true );
-						$val = $def_val;
+				case 'url_base':	// strip leading urls off facebook usernames
+					if ( $val !== '' ) {
+						$val = $this->cleanup_html_tags( $val );
+						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
+					}
+					break;
+				case 'at_name':		// twitter-style usernames (prepend with an at)
+					if ( $val !== '' ) {
+						$val = substr( preg_replace( '/[^a-zA-Z0-9_]/', '', $val ), 0, 15 );
+						if ( ! empty( $val ) ) 
+							$val = '@'.$val;
 					}
 					break;
 				case 'pos_num':		// integer options that must be 1 or more (not zero)
@@ -343,15 +340,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
-				case 'textured':	// must be texturized 
-					if ( $val !== '' )
-						$val = trim( wptexturize( ' '.$val.' ' ) );
+				case 'numeric':		// must be numeric (blank or zero is ok)
+					if ( $val !== '' && ! is_numeric( $val ) ) {
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.
+							$reset_msg, true );
+						$val = $def_val;
+					}
 					break;
-				case 'auth_id':	// must be alpha-numeric uppercase (hyphens are allowed as well)
+				case 'auth_id':		// must be alpha-numeric uppercase (hyphens are allowed as well)
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( '\''.$val.'\' is not an accepted value for option \''.
+						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.
 							$key.'\''.' - '.$reset_msg, true );
+						$val = $def_val;
+					}
+					break;
+				case 'api_key':		// blank or alpha-numeric (upper or lower case), plus underscores
+					$val = trim( $val );
+					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be alpha-numeric - '.
+							$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -363,7 +371,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'not_blank':	// options that cannot be blank
 				case 'code':
 					if ( $val === '' ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty'.' - '.
+						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty - '.
 							$reset_msg, true );
 						$val = $def_val;
 					}
@@ -392,7 +400,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$comment = $this->p->cf['lca'].' meta tags';
 				$re_pre = '<(!-- |meta name="comment" content=")';
-				$re_post = '( --|" \/)>';
+				$re_post = '( --|" *\/)>';
 				$html = preg_replace( '/'.$re_pre.$comment.' begin'.$re_post.'.*'.
 					$re_pre.$comment.' end'.$re_post.'/ms', '<!-- '.$comment.' removed -->', $html );
 			}

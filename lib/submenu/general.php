@@ -225,7 +225,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->th( 'Default Language', null, 'fb_lang' ).
 					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Author Name Format', 'highlight', 'google_author_name' ).
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Author Name Format', 'highlight', 'google_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					break;
@@ -281,8 +282,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->th( 'Rich Pin Image Dimensions', 'highlight', 'rp_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 			
-					$rows[] = $this->p->util->th( 'Author Name Format', null, 'rp_author_name' ).
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Author Name Format', null, 'rp_author_name' ).
 					'<td>'.$this->form->get_select( 'rp_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
+		
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Website Verification ID', null, 'rp_dom_verify' ).
+					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
 		
 					break;
 

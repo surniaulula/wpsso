@@ -61,7 +61,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '' );
 
 			if ( $quote != '' ) {
-				$this->p->debug->log( 'quote seed = "'.$quote.'"' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'quote seed = "'.$quote.'"' );
 			} else {
 				if ( has_excerpt( $post->ID ) ) 
 					$quote = get_the_excerpt( $post->ID );
@@ -666,9 +667,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				isset( $this->p->mods['util']['postmeta'] ) )
 					$section = $this->p->mods['util']['postmeta']->get_options( $post_id, 'og_art_section' );
 
-			if ( ! empty( $section ) ) 
-				$this->p->debug->log( 'found custom meta section = '.$section );
-			else $section = $this->p->options['og_art_section'];
+			if ( ! empty( $section ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'found custom meta section = '.$section );
+			} else $section = $this->p->options['og_art_section'];
 
 			if ( $section == 'none' )
 				$section = '';
@@ -681,13 +683,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				return;
 
 			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id );
-			if ( ! empty( $hashtags ) )
-				$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
-			else {
+			if ( ! empty( $hashtags ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
+			} else {
 				$tags = array_slice( $this->get_tags( $post_id ), 0, $this->p->options['og_desc_hashtags'] );
 				if ( ! empty( $tags ) ) {
-					$hashtags = '#'.trim( implode( ' #', preg_replace( '/[ \[\]#%!\$\?\\\\\/\.\*\+\^\-]/', '', $tags ) ) );
-					$this->p->debug->log( 'hashtags = "'.$hashtags.'"' );
+					// remove special character incompatible with Twitter
+					$hashtags = '#'.trim( implode( ' #', preg_replace( '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '', $tags ) ) );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'hashtags (max '.$this->p->options['og_desc_hashtags'].') = "'.$hashtags.'"' );
 				}
 			}
 			return apply_filters( $this->p->cf['lca'].'_hashtags', $hashtags, $post_id );
@@ -695,11 +700,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 		public function get_tags( $post_id ) {
 			$tags = apply_filters( $this->p->cf['lca'].'_tags_seed', array(), $post_id );
-			if ( ! empty( $tags ) )
-				$this->p->debug->log( 'tags seed = "'.implode( ',', $tags ).'"' );
-			else {
+			if ( ! empty( $tags ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'tags seed = "'.implode( ',', $tags ).'"' );
+			} else {
 				if ( is_singular() || ! empty( $post_id ) ) {
-
 					$tags = $this->get_wp_tags( $post_id );
 
 					if ( isset( $this->p->mods['media']['ngg'] ) && 
@@ -715,8 +720,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				} elseif ( is_search() )
 					$tags = preg_split( '/ *, */', get_search_query( false ) );
 
-				$tags = array_unique( array_map( 'sanitize_title', $tags ) );	// convert tags into slugs
-				$this->p->debug->log( 'tags = "'.implode( ',', $tags ).'"' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'raw tags = "'.implode( ', ', $tags ).'"' );
+
+				$tags = array_unique( array_map( array( &$this, 'sanitize_tag' ), $tags ) );
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'sanitized tags = "'.implode( ', ', $tags ).'"' );
 			}
 			return apply_filters( $this->p->cf['lca'].'_tags', $tags, $post_id );
 		}
@@ -733,13 +743,18 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$post_ids = array_merge( $post_ids, get_post_ancestors( $post_id ) );
 				foreach ( $post_ids as $id ) {
 					if ( $this->p->options['og_page_title_tag'] && is_page( $id ) )
-						$tags[] = get_the_title( $id );
+						$tags[] = $this->sanitize_tag( get_the_title( $id ) );
 					foreach ( wp_get_post_tags( $id, array( 'fields' => 'names') ) as $tag_name )
 						$tags[] = $tag_name;
 				}
-				$tags = array_map( 'sanitize_title', $tags );
 			}
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
+		}
+
+		private function sanitize_tag( $tag ) {
+			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
+			$tag = urldecode( $tag );
+			return $tag;
 		}
 	}
 }

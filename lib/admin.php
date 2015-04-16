@@ -242,9 +242,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$def_opts = $this->p->opt->get_defaults();
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
+			$this->p->notice->trunc();				// flush all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME );
-			$this->p->notice->trunc();	// flush all messages first
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Wait %d seconds for cache objects to expire (default) or use the \'Clear All Cache(s)\' button.', WPSSO_TEXTDOM ), $this->p->options['plugin_object_cache_exp'] ), true );
 			return $opts;
 		}
@@ -271,12 +271,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = empty( $_POST[WPSSO_SITE_OPTIONS_NAME] ) ? $def_opts : 
 				SucomUtil::restore_checkboxes( $_POST[WPSSO_SITE_OPTIONS_NAME] );
 			$opts = array_merge( $this->p->site_options, $opts );
+			$this->p->notice->trunc();				// flush all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts );	// cleanup excess options and sanitize
-
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
-
-			$this->p->notice->trunc();	// flush all messages first
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ), true );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
 			exit;	// stop here
@@ -840,13 +838,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['url']['purchase'] ) || 
 						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="tid">'.
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
-								$this->p->util->th( 'Site Use', 'narrow' ).'<td>'.
+								$this->p->util->th( 'Site Use', 'site_use' ).'<td>'.
 								$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
 									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="blank">'.
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
 								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
 								$this->p->msgs->get( 'pro-option-msg' ).'</td>
 									<td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
@@ -856,11 +854,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['url']['purchase'] ) || 
 						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="tid">'.
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
 								( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium' ).'<td class="blank">'.
+							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
 								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
 								$this->p->msgs->get( 'pro-option-msg' ).'</td></tr>'."\n";
 						}

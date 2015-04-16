@@ -350,7 +350,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_title_sep':
 					return 'textured';
 					break;
-				// must be alpha-numeric uppercase (hyphens and periods allowed as well)
+				// must be alpha-numeric (upper or lower case)
+				case 'rp_dom_verify':
+					return 'api_key';
+					break;
+				// must be alpha-numeric uppercase (hyphens allowed as well)
 				case ( preg_match( '/_tid$/', $key ) ? true : false ):
 					return 'auth_id';
 					break;

@@ -17,6 +17,7 @@ if ( ! class_exists( 'WpssoGplAdminPostmeta' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'meta_header_rows' => 3,
 				'meta_media_rows' => 3,
+				'check_head_options' => 2,
 			) );
 		}
 
@@ -135,6 +136,12 @@ if ( ! class_exists( 'WpssoGplAdminPostmeta' ) ) {
 			'<td class="blank">&nbsp;</td>';
 
 			return $rows;
+		}
+
+		public function filter_check_head_options( $check_opts, $post_id ) {
+			foreach ( SucomUtil::preg_grep_keys( '/^meta_name_twitter:/', $check_opts ) as $key => $val )
+				unset( $check_opts[$key] );
+			return $check_opts;
 		}
 	}
 }

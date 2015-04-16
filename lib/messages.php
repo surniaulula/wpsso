@@ -515,6 +515,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-rp_author_name':
 							$text = 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags. An <em>additional</em> \'article:author\' meta tag may be included when the Pinterest crawler is detected. Select an Author Name Format, or \'[none]\' to disable this feature (the default and recommended value is \'Display Name\').';
 							break;
+						case 'tooltip-rp_dom_verify':
+							$text = 'To <a href="https://help.pinterest.com/en/articles/verify-your-website#meta_tag" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest, click the \'Verify Website\' button, and enter the p:domain_verify meta tag <em>content</em> value here.';
+							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_rp', $text, $idx );
 							break;

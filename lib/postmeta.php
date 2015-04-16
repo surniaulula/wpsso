@@ -292,6 +292,8 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 
 			$permalink = get_permalink( $post_id );
 			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
+			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_options',
+				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 
 			// use the permalink and ask get_head_meta() to remove our meta tags
 			// to avoid issues with caching plugins that ignore query arguments
@@ -306,7 +308,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 						foreach( $metas[$tag] as $m ) {
 							foreach( $types as $t ) {
 								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
-									! empty( $this->p->options['add_'.$tag.'_'.$t.'_'.$m[$t]] ) )
+									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
 										$this->p->notice->err( 'Possible conflict detected - your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
 							}
 						}
