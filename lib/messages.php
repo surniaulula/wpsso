@@ -45,6 +45,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				case ( strpos( $idx, 'tooltip-side-' ) !== false ? true : false ):
 					switch ( $idx ) {
+						case 'tooltip-side-author-json-ld':
+							$text = 'Add author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.';
+							break;
 						case 'tooltip-side-debug-messages':
 							$text = 'Debug code is loaded when the \'Add Hidden Debug HTML Messages\' option is checked, or one of the available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">debugging constants</a> is defined.';
 							break;
@@ -56,6 +59,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-side-transient-cache':
 							$text = $short.' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
+							break;
+						case 'tooltip-side-publisher-json-ld':
+							$text = 'Add publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.';
 							break;
 						case 'tooltip-side-post-social-settings':
 							$text = 'The Post Social Settings feature adds a Social Settings metabox to the Post, Page, and custom post type editing pages.  Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
@@ -70,7 +76,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with content-specific information for image galleries, photographs, eCommerce products, etc. Twitter Cards are displayed differently on Twitter, either online or from mobile Twitter clients, allowing you to highlight your content. The Twitter Cards meta tags can be enabled from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings' ).' page.';
 							break;
 						case 'tooltip-side-author-gravatar':
-							$text = 'Include Gravatar image URLs in the meta tags for author index webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
+							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
 							break;
 						case 'tooltip-side-slideshare-api':
 							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
@@ -285,7 +291,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
 						case 'tooltip-og_author_gravatar':
-							$text = 'Check this option to include Gravatar image URLs in the meta tags for author index webpages.  If the \'Force Default Image on Author Index\' option is also enabled (on the \'Images\' tab), that option will take precedence over this one.';
+							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "Force Default Image on <em>Author</em> Index" option is also checked under the \'Images\' tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_og', $text, $idx );

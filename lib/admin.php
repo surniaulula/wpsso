@@ -572,10 +572,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				if ( $lca === $this->p->cf['lca'] )	// features for this plugin
 					$features = array(
-						'Debug Messages' => array( 'classname' => 'SucomDebug' ),
-						'Non-Persistant Cache' => array( 'status' => $this->p->is_avail['cache']['object'] ? 'on' : 'rec' ),
-						'Open Graph / Rich Pin' => array( 'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ? 'on' : 'rec' ),
-						'Transient Cache' => array( 'status' => $this->p->is_avail['cache']['transient'] ? 'on' : 'rec' ),
+						'Author JSON-LD' => array( 
+							'status' => $this->p->options['schema_author_json'] ? 'on' : 'rec',
+						),
+						'Debug Messages' => array(
+							'classname' => 'SucomDebug',
+						),
+						'Non-Persistant Cache' => array(
+							'status' => $this->p->is_avail['cache']['object'] ? 'on' : 'rec',
+						),
+						'Open Graph / Rich Pin' => array( 
+							'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ? 'on' : 'rec',
+						),
+						'Publisher JSON-LD' => array(
+							'status' => $this->p->options['schema_publisher_json'] ? 'on' : 'rec',
+						),
+						'Transient Cache' => array(
+							'status' => $this->p->is_avail['cache']['transient'] ? 'on' : 'rec',
+						),
 					);
 				else $features = array();
 				$features = apply_filters( $lca.'_'.$metabox.'_gpl_features', $features, $lca, $info );

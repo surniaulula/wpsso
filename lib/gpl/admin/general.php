@@ -15,13 +15,26 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
+				'og_author_rows' => 2,
 				'pub_twitter_rows' => 2,
 			) );
 		}
 
+		public function filter_og_author_rows( $rows, $form ) {
+
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+		
+			$rows[] = $this->p->util->th( 'Use Author Gravatar Image', null, 'og_author_gravatar' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
+
+			return $rows;
+		}
+
 		public function filter_pub_twitter_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Enable Twitter Card Pro Module', 'highlight', 'tc_enable' ).

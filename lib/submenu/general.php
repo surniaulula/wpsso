@@ -190,9 +190,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->th( 'Author Profile URL Field', null, 'og_author_field' ).
 					'<td>'.$this->form->get_select( 'og_author_field', $this->form->author_contact_fields ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Gravatar Images for Authors', null, 'og_author_gravatar' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_gravatar_api' ).'</td>';
-
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->th( 'Fallback to Author Index URL', null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
