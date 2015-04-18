@@ -119,6 +119,29 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
+				case 'og-author':
+
+					$rows[] = $this->p->util->th( 'Author Profile URL Field', null, 'og_author_field' ).
+					'<td>'.$this->form->get_select( 'og_author_field', $this->form->author_contact_fields ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Fallback to Author Index URL', null, 'og_author_fallback' ).
+					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
+	
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Default Author when Missing', null, 'og_def_author_id' ).
+					'<td>'.$this->form->get_select( 'og_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
+	
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Force Default Author on Indexes', null, 'og_def_author_on_index' ).
+					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
+			
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Default Author on Search Results', null, 'og_def_author_on_search' ).
+					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' defines search webpages as articles</td>';
+
+					break;
+
 				case 'og-images':
 
 					$rows[] = $this->p->util->th( 'Max Images to Include', null, 'og_img_max' ).
@@ -155,56 +178,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					break;
 
 				case 'og-videos':
-
-					$rows[] = $this->p->util->th( 'Max Videos to Include', null, 'og_vid_max' ).
-					'<td>'.$this->form->get_select( 'og_vid_max', 
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).'</td>';
-	
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Use HTTPS for Video API Calls', null, 'og_vid_https' ).
-					'<td>'.$this->form->get_checkbox( 'og_vid_https' ).'</td>';
-
-					$rows[] = $this->p->util->th( 'Use the Video Preview Image', null, 'og_vid_prev_img' ).
-					'<td>'.$this->form->get_checkbox( 'og_vid_prev_img' ).'</td>';
-		
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default / Fallback Video URL', null, 'og_def_vid_url' ).
-					'<td>'.$this->form->get_input( 'og_def_vid_url', 'wide' ).'</td>';
-			
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Video on Indexes', null, 'og_def_vid_on_index' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_vid_on_index' ).'</td>';
-			
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Video on Author Index', null, 'og_def_vid_on_author' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_vid_on_author' ).'</td>';
-			
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Video on Search Results', null, 'og_def_vid_on_search' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_vid_on_search' ).'</td>';
-			
-					break;
-
-				case 'og-author':
-
-					$rows[] = $this->p->util->th( 'Author Profile URL Field', null, 'og_author_field' ).
-					'<td>'.$this->form->get_select( 'og_author_field', $this->form->author_contact_fields ).'</td>';
-
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Fallback to Author Index URL', null, 'og_author_fallback' ).
-					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
-	
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author when Missing', null, 'og_def_author_id' ).
-					'<td>'.$this->form->get_select( 'og_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
-	
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Author on Indexes', null, 'og_def_author_on_index' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
-			
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author on Search Results', null, 'og_def_author_on_search' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' defines search webpages as articles</td>';
 
 					break;
 

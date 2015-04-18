@@ -273,25 +273,27 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				( ! empty( $this->p->options['og_def_vid_on_search'] ) && is_search() ) ) {
 
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, 
-					$this->p->media->get_default_video( $num_remains, $check_dupes ) );
+				$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_remains, $check_dupes ) );
 				return $og_ret;	// stop here and return the video array
 			}
 
-			if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
-				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-
-				$author_id = $this->p->util->get_author_object( 'id' );
-				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
-					$author_id, $check_dupes, $meta_pre ) );
-			}
-
-			// post id should be > 0 to fetch post meta
-			if ( ! empty( $post_id ) ) {
-				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_video( $num_remains, 
-					$post_id, $check_dupes, $meta_pre ) );
+			// get_og_video() is only available in the Pro version
+			if ( $this->p->check->aop() ) {
+				if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+	
+					$author_id = $this->p->util->get_author_object( 'id' );
+					$num_remains = $this->p->media->num_remains( $og_ret, $num );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
+						$author_id, $check_dupes, $meta_pre ) );
+				}
+	
+				// post id should be > 0 to fetch post meta
+				if ( ! empty( $post_id ) ) {
+					$num_remains = $this->p->media->num_remains( $og_ret, $num );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_video( $num_remains, 
+						$post_id, $check_dupes, $meta_pre ) );
+				}
 			}
 
 			// if we haven't reached the limit of videos yet, keep going
@@ -353,13 +355,16 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				return $og_ret;	// stop here and return the image array
 			}
 
-			if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
-				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-
-				$author_id = $this->p->util->get_author_object( 'id' );
-				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
-					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
+			// get_og_image() is only available in the Pro version
+			if ( $this->p->check->aop() ) {
+				if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
+					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
+	
+					$author_id = $this->p->util->get_author_object( 'id' );
+					$num_remains = $this->p->media->num_remains( $og_ret, $num );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+						$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
+				}
 			}
 
 			// check for custom meta, featured, or attached image(s)

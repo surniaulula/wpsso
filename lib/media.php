@@ -108,10 +108,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						delete_transient( $force_regen_transient_id );
 				} 
 	
-				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-					$num_remains = $this->num_remains( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_image( $num_remains, 
-						$size_name, $post_id, $check_dupes, $force_regen, $meta_pre ) );
+				// get_og_image() is only available in the Pro version
+				if ( $this->p->check->aop() ) {
+					if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+						$num_remains = $this->num_remains( $og_ret, $num );
+						$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_image( $num_remains, 
+							$size_name, $post_id, $check_dupes, $force_regen, $meta_pre ) );
+					}
 				}
 			}
 	
@@ -705,7 +708,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
-			// the src url must contain /embed|embed_code|swf|video/ in its path to be recognized as an embedded video url
+			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? src=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
 				$content, $match_all, PREG_SET_ORDER ) ) {
 
@@ -718,8 +721,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$embed_url = $media[2];
 					if ( ! empty( $embed_url ) &&
 						( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url ) ) ) {
+
 						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
 						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
+
 						$og_video = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
 						if ( ! empty( $og_video ) && 
 							$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
@@ -729,6 +734,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
 
+			// additional filters / Pro modules may detect other embedded video markup
 			$filter_name = $this->p->cf['lca'].'_content_videos';
 			if ( has_filter( $filter_name ) ) {
 				if ( $this->p->debug->enabled )
@@ -741,6 +747,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						foreach ( $match_all as $media ) {
 							if ( ! empty( $media[0] ) && 
 								( $check_dupes == false || $this->p->util->is_uniq_url( $media[0] ) ) ) {
+
 								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
 								if ( ! empty( $og_video ) && 
 									$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
@@ -758,6 +765,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( empty( $embed_url ) ) 
 				return array();
 
+			$filter_name = $this->p->cf['lca'].'_video_info';
+			if ( ! has_filter( $filter_name ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: no filter(s) for '.$filter_name ); 
+				return array();
+			}
+
 			$og_video = array(
 				'og:video' => '',
 				'og:video:type' => 'application/x-shockwave-flash',
@@ -767,13 +781,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'og:image:width' => -1,
 				'og:image:height' => -1,
 			);
-			$og_video = apply_filters( $this->p->cf['lca'].'_video_info', $og_video, $embed_url, $embed_width, $embed_height );
+
+			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'video = '.$og_video['og:video'].
-					' ('.$og_video['og:video:width'].'x'.$og_video['og:video:height'].')' );
-				$this->p->debug->log( 'image = '.$og_video['og:image'].
-					' ('.$og_video['og:image:width'].'x'.$og_video['og:image:height'].')' );
+				foreach ( array( 'video', 'image' ) as $type )
+					if ( empty( $og_video['og:'.$type] ) )
+						$this->p->debug->log( 'no '.$type.' returned by '.$filter_name.' filters' );
+					else $this->p->debug->log( $type.': '.$og_video['og:'.$type].
+						' ('.$og_video['og:'.$type.':width'].'x'.$og_video['og:'.$type.':height'].')' );
 			}
 
 			// cleanup any extra video meta tags - just in case
@@ -781,6 +797,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:video'] ) ) )
 					unset ( 
 						$og_video['og:video'],
+						$og_video['og:video:secure_url'],
 						$og_video['og:video:type'],
 						$og_video['og:video:width'],
 						$og_video['og:video:height']

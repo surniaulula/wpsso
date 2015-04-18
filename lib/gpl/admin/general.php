@@ -16,6 +16,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
 				'og_author_rows' => 2,
+				'og_videos_rows' => 2,
 				'pub_twitter_rows' => 2,
 			) );
 		}
@@ -27,6 +28,40 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 		
 			$rows[] = $this->p->util->th( 'Use Author Gravatar Image', null, 'og_author_gravatar' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
+
+			return $rows;
+		}
+
+		public function filter_og_videos_rows( $rows, $form ) {
+
+			$rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+		
+			$rows[] = $this->p->util->th( 'Max Videos to Include', null, 'og_vid_max' ).
+			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
+	
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Use HTTPS for Video API Calls', null, 'og_vid_https' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_https' ).'</td>';
+
+			$rows[] = $this->p->util->th( 'Use the Video Preview Image', null, 'og_vid_prev_img' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Default / Fallback Video URL', null, 'og_def_vid_url' ).
+			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
+	
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Force Default Video on Indexes', null, 'og_def_vid_on_index' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_index' ).'</td>';
+	
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Force Default Video on Author Index', null, 'og_def_vid_on_author' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_author' ).'</td>';
+	
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Force Default Video on Search Results', null, 'og_def_vid_on_search' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_search' ).'</td>';
 
 			return $rows;
 		}
