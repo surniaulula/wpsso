@@ -408,6 +408,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+<h4>Version 3.0.4 (2015/04/18)</h4>
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Moved Gravatar and video related options to the Pro version (greyed out in the Free version), since these features (aka modules) are only available in the Pro version package anyway.
+* **Bugfixes**
+	* Fixed variable name returned by the WooCommerce module for exceptions (Pro version).
+
 <h4>Version 3.0.3 (2015/04/16)</h4>
 
 * **New Features**
@@ -591,6 +600,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 
 <h3>Upgrade Notice</h3>
+
+<h4>3.0.4</h4>
+
+Fixed variable name returned by the WooCommerce module for exceptions (Pro version), greyed out some options for features not available in the Free version.
 
 <h4>3.0.3</h4>
 
