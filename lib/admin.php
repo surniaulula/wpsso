@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_info() {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 
 				if ( empty( $info['version'] ) )	// filter out extensions that are not active
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $lca => $info )
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side"
 				style="margin-bottom:10px;">';
 			/*
 			 * GPL version features
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $lca => $info )
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side"
 				style="margin-bottom:10px;">';
 			/*
 			 * Pro version features
@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_purchase() {
 			$purchase_url = $this->p->cf['plugin'][$this->p->cf['lca']]['url']['purchase'];
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"><tr><td>';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( 
@@ -686,7 +686,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_help() {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"><tr><td>';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
 			echo $this->p->msgs->get( 'side-help' );
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
