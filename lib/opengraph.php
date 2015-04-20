@@ -228,7 +228,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					}
 					foreach ( $img_sizes as $meta_pre => $size_name ) {
 						$check_dupes = is_admin() && $meta_pre !== 'og' ? false : true;
-						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], $size_name, $post_id, $check_dupes, $meta_pre );
+						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], 
+							$size_name, $post_id, $check_dupes, $meta_pre );
 
 						// if there's no image, and no video preview image, then add the default image for non-index webpages
 						if ( empty( $og['og:image'] ) && $video_images === 0 &&

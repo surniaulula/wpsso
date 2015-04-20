@@ -254,7 +254,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				key( $this->p->cf['*']['lib']['sitesubmenu'] ) : $_POST['page'];
 
 			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {
-				$this->p->debug->log( 'nonce token validation post field missing' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'nonce token validation post field missing' );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], $this->get_nonce() ) ) {
@@ -515,7 +516,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_info() {
-			echo '<table class="sucom-setting">';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 
 				if ( empty( $info['version'] ) )	// filter out extensions that are not active
@@ -563,7 +564,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $lca => $info )
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting" style="margin-bottom:10px;">';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"
+				style="margin-bottom:10px;">';
 			/*
 			 * GPL version features
 			 */
@@ -608,7 +610,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $lca => $info )
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting" style="margin-bottom:10px;">';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"
+				style="margin-bottom:10px;">';
 			/*
 			 * Pro version features
 			 */
@@ -671,7 +674,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_purchase() {
 			$purchase_url = $this->p->cf['plugin'][$this->p->cf['lca']]['url']['purchase'];
-			echo '<table class="sucom-setting"><tr><td>';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( 
@@ -683,7 +686,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_help() {
-			echo '<table class="sucom-setting"><tr><td>';
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"><tr><td>';
 			echo $this->p->msgs->get( 'side-help' );
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
@@ -768,7 +771,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function licenses_metabox( $network = false ) {
-			echo '<table class="sucom-setting licenses-metabox" style="padding-bottom:10px">'."\n";
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].' licenses-metabox"
+				style="padding-bottom:10px">'."\n";
 			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
 				$this->p->msgs->get( 'info-plugin-tid' ).'</td></tr>'."\n";
 

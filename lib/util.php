@@ -395,14 +395,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ( $html = $this->p->cache->get( $url, 'raw', 'transient' ) ) === false )
 				return false;
 
-			if ( $include_self !== true &&
-				strpos( $html, $this->p->cf['lca'].' meta tags begin' ) !== false ) {
-
-				$comment = $this->p->cf['lca'].' meta tags';
-				$re_pre = '<(!-- |meta name="comment" content=")';
-				$re_post = '( --|" *\/)>';
-				$html = preg_replace( '/'.$re_pre.$comment.' begin'.$re_post.'.*'.
-					$re_pre.$comment.' end'.$re_post.'/ms', '<!-- '.$comment.' removed -->', $html );
+			$cmt = $this->p->cf['lca'].' meta tags ';
+			if ( $include_self !== true && strpos( $html, $cmt.'begin' ) !== false ) {
+				$pre = '<(!-- |meta name="'.$this->p->cf['lca'].':comment" content=")';
+				$post = '( --|" *\/)>';
+				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
+					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
 
 			$doc = new DomDocument();		// since PHP v4.1.0

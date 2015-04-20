@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Add author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.';
 							break;
 						case 'tooltip-side-debug-messages':
-							$text = 'Debug code is loaded when the \'Add Hidden Debug HTML Messages\' option is checked, or one of the available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">debugging constants</a> is defined.';
+							$text = 'Debug code is loaded when the "<strong>Add Hidden Debug Messages</strong>" option is checked, or one of the available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">debugging constants</a> is defined.';
 							break;
 						case 'tooltip-side-non-persistant-cache':
 							$text = $short.' saves filtered / rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>) for re-use within the same page load. You can disable the use of non-persistant cache (not recommended) using one of the available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constants</a>.';
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
 						case 'tooltip-og_author_gravatar':
-							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "Force Default Image on <em>Author</em> Index" option is also checked under the \'Images\' tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
+							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Force Default Image on <em>Author</em> Index</strong>" option is also checked under the \'Images\' tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_og', $text, $idx );
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Apply the standard WordPress \'the_content\' filter to render the content text (default is checked). This renders all shortcodes, and allows '.$short.' to detect images and embedded videos that may be provided by these.';
 							break;
 						case 'tooltip-plugin_ignore_small_img':
-							$text = $short.' will retrieve image URLs from HTML tags in the <strong>content</strong>. The &amp;amp;lt;img/&amp;amp;gt; HTML tags must have a width and height attribute, and their size must be equal to (or larger) than the Image Dimensions you\'ve entered on the General settings page. Uncheck this option to include smaller images from the content. <strong>Unchecking this option is not advised</strong> - images that are too small for some social websites may be included in your meta tags.';
+							$text = $short.' will retrieve image URLs from HTML tags in the <strong>content</strong>. The &amp;amp;lt;img/&amp;amp;gt; HTML tags must have a width and height attribute, and their size must be equal to (or larger) than the Image Dimensions you\'ve entered on the General settings page. Uncheck this option to include smaller images from the content. <em>Unchecking this option is not advised</em> - images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_page_excerpt':
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$short.' can use as a default description value.';
@@ -365,13 +365,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
 							break;
 						case 'tooltip-plugin_cf_img_url':
-							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the Image URL option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
 							break;
 						case 'tooltip-plugin_cf_vid_url':
-							$text = 'If your theme or another plugin provides a custom field for video URLs (not embed HTML code), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the Video URL option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_url' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for video URLs (not embed HTML code), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video URL</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_url' ).'".';
 							break;
 						case 'tooltip-plugin_cf_vid_embed':
-							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the Video Embed HTML option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
 							break;
 						/*
 						 * 'File and Object Cache' settings
@@ -605,7 +605,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'info-pub-pinterest':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a "<em>User-Agent Exclusion Pattern</em>" option and add "Pinterest/" to that list).</p>
+							<p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).</p>
 							</blockquote>';
 							break;
 						case 'info-taglist':
@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							</blockquote>';
 							break;
 						case 'info-cm':
-							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+							$text = '<blockquote style="margin:0;">
 							<p>The following options allow you to customize the contact field names and labels shown on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page. '.$short.' uses the Facebook, Google+ and Twitter contact field values for Open Graph and Twitter Card meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Twitter social sharing button' ).'. <strong>You should not modify the <em>Contact Field Name</em> unless you have a very good reason to do so.</strong> The <em>Profile Contact Label</em> on the other hand is for <strong>display purposes only</strong>, and its text can be changed as you wish. Although the following contact fields may be shown on user profile pages, your theme is responsible for using and displaying their values appropriately (see <a href="https://codex.wordpress.org/Function_Reference/get_the_author_meta" target="_blank">get_the_author_meta()</a> for examples).</p>
 							<p><center><strong>DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.</strong><br/>Enter your contact information on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page.</center></p>
 							</blockquote>';

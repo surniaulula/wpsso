@@ -21,9 +21,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_opengraph', 'All Social Websites (Open Graph)',
+			add_meta_box( $this->pagehook.'_opengraph', 'All Social Websites / Open Graph',
 				array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
-			add_meta_box( $this->pagehook.'_publishers', 'Specific Social Websites and Publishers',
+			add_meta_box( $this->pagehook.'_publishers', 'Specific Websites and Publishers',
 				array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small

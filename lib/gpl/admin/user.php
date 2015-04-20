@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td colspan="2" class="subsection"><h4 
-				style="margin-top:0;">All Social Websites (Open Graph)</h4></td>';
+				style="margin-top:0;">All Social Websites / Open Graph</h4></td>';
 
 			$rows[] = $this->p->util->th( 'Image ID', 'medium', 'postmeta-og_img_id', $post_info ).
 			'<td class="blank">&nbsp;</td>';

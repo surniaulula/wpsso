@@ -29,13 +29,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
 
 			if ( is_admin() ) {
-				add_action( 'admin_head', array( &$this, 'set_header_tags' ) );
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
+				add_action( 'admin_head', array( &$this, 'set_header_tags' ), 100 );
+
 				add_action( 'show_user_profile', array( &$this, 'show_metaboxes' ), 20 );
 				add_action( 'edit_user_profile', array( &$this, 'show_metaboxes' ), 20 );
+
 				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_contact_methods' ), 5 );
 				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_user_profile_update', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
+
 				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
 				add_action( 'personal_options_update', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY ); 
@@ -56,7 +59,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 
 			$screen = get_current_screen();
-			$this->p->debug->log( 'screen id = '.$screen->id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'screen id = '.$screen->id );
 			switch ( $screen->id ) {
 				case 'user-edit':
 				case 'profile':
@@ -72,7 +76,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							empty( $this->post_info['og_image']['og:image'] ) )
 								$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.', true );
 					}
-					$this->p->debug->show_html( null, 'debug log' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->show_html( null, 'debug log' );
 					break;
 			}
 		}
@@ -299,7 +304,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( SucomUtil::crawler_name( 'pinterest' ) === true )
 					$ret[] = $this->get_author_name( $author_id, $this->p->options['rp_author_name'] );
 
-			} else $this->p->debug->log( 'author_id provided is empty' );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'author_id provided is empty' );
 			return $ret;
 		}
 
@@ -353,7 +359,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							$field_id === $this->p->options['og_author_field'] || 
 							$field_id === $this->p->options['seo_author_field'] ) ) {
 
-							$this->p->debug->log( 'fetching the author index page url as fallback' );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'fetching the author index page url as fallback' );
 							$url = get_author_posts_url( $author_id );
 						}
 					}
@@ -449,35 +456,41 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_og_video( $num = 0, $user_id, $check_dupes = true, $meta_pre = 'og' ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return array();
 		}
 
 		public function get_og_image( $num = 0, $size_name = 'thumbnail', $user_id, $check_dupes = true, $force_regen = false, $meta_pre = 'og' ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return array();
 		}
 
                 public function reset_options( $user_id ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 		}
 
 		public function get_options( $user_id = false, $idx = false ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false ) 
 				return false;
 			else return array();
 		}
 
 		public function get_defaults( $idx = false ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false ) 
 				return false;
 			else return array();
 		}
 
 		public function save_options( $user_id = false ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return $user_id;
 		}
 

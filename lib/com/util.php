@@ -801,13 +801,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $table_rows ) || ! is_array( $table_rows ) )
 				return;
 
+			$lca = empty( $this->p->cf['lca'] ) ? 
+				'sucom' : $this->p->cf['lca'];
 			$total_rows = count( $table_rows );
 			$count_rows = 0;
 			$hidden_opts = 0;
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = call_user_func( array(  $this->p->cf['lca'].'user', 'show_opts' ) );
+			$show_opts = class_exists( $lca.'user' ) ?
+				call_user_func( array(  $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 				// default row class and id attribute values
@@ -860,7 +863,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 			'">'."\n";
 
-			echo '<table class="sucom-setting'.
+			echo '<table class="sucom-setting '.$lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 				( $hidden_rows === $count_rows ? ' hide_in_'.$show_opts : '' ).
 			'">'."\n";

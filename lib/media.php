@@ -269,10 +269,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ! empty( $this->p->mods['media']['ngg'] ) )
 					return $this->p->mods['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes );
 				else {
-					if ( is_admin() )
-						$this->p->notice->err( 'The NextGEN Gallery module is not available: image id '.$pid.' ignored.' ); 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' ); 
+					if ( is_admin() )
+						$this->p->notice->err( 'The NextGEN Gallery module is not available: image id '.$pid.' ignored.' ); 
 					return $ret_empty; 
 				}
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
@@ -384,13 +384,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$rejected_text = 'image id '.$pid.' rejected - full size image ('.
 								$img_meta['width'].'x'.$img_meta['height'].')'.$is_too_small_text;
 					else $rejected_text = 'image id '.$pid.' rejected - '.$img_width.'x'.$img_height.$is_too_small_text;
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
-							'. Upload a larger / different image or adjust the "'.
+							'. Upload a larger / different image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
-							'" option.', false, true, 'dim_wp_'.$pid );
+							'</strong>" option.', false, true, 'wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				// if this is an open graph image, make sure it is larger than 200x200
@@ -404,11 +405,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library image id '.$pid.' rejected - the resulting '.
-							$img_width.'x'.$img_height.' image for the "'.
+							$img_width.'x'.$img_height.' image for the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
-							'" option is smaller than the hard-coded minimum of '.
+							'</strong>" option is smaller than the hard-coded minimum of '.
 							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'].
-							' allowed by the Facebook / Open Graph standard.', false, true, 'dim_wp_'.$pid );
+							' allowed by the Facebook / Open Graph standard.',
+								false, true, 'wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
@@ -419,9 +421,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
-							'. Upload a larger / different image or adjust the "'.
+							'. Upload a larger / different image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
-							'" option.', false, true, 'dim_wp_'.$pid );
+							'</strong>" option.', false, true, 'wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				} elseif ( $this->p->debug->enabled )
@@ -586,11 +588,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							} else {
 								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'image rejected: width / height attributes missing'.
+										' or too small for '.$size_name.' size.' );
 									if ( is_admin() )
 										$this->p->notice->err( 'Image '.$og_image['og:image'].' rejected - '.
 											'width / height missing or too small for '.$size_name.'.' );
-									$this->p->debug->log( 'image rejected: width / height attributes missing'.
-										' or too small for '.$size_name.' size.' );
 								}
 								$og_image = array();
 							}

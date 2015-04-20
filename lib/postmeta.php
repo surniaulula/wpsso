@@ -24,11 +24,12 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 		protected function add_actions() {
 			// everything bellow is for the admin interface
 			if ( is_admin() ) {
-				add_action( 'admin_head', array( &$this, 'set_header_tags' ) );
 				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
+				add_action( 'admin_head', array( &$this, 'set_header_tags' ) );
+
 				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'save_post', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
-				add_action( 'save_post', array( &$this, 'check_head' ), 1000 );
+
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
 			}
@@ -51,6 +52,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 
 		// hooked into the admin_head action
 		public function set_header_tags() {
+
 			if ( ! empty( $this->header_tags ) )	// only set header tags once
 				return;
 
@@ -59,7 +61,8 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 					return;
 
 			$screen = get_current_screen();
-			$this->p->debug->log( 'screen id = '.$screen->id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'screen id = '.$screen->id );
 			// check for post/page/media edititing lists
 			if ( strpos( $screen->id, 'edit-' ) !== false ||
 				$screen->id === 'upload' )
@@ -74,15 +77,66 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 
 					$this->p->util->add_plugin_image_sizes( $post_id );
 					do_action( $this->p->cf['lca'].'_admin_postmeta_header', $post_type->name, $post_id );
-					$this->header_tags = $this->p->head->get_header_array( $post_id );
+					// read_cache is false to generate notices etc.
+					$this->header_tags = $this->p->head->get_header_array( $post_id, false );
 					$this->post_info = $this->p->head->extract_post_info( $this->header_tags );
 
 					if ( $obj->post_status == 'publish' &&
 						! empty( $this->p->options['plugin_check_head'] ) &&
 						empty( $this->post_info['og_image']['og:image'] ) )
-							$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.', true );
+							$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.' );
+
+					$this->check_post_header( $post_id, $obj );
 				}
 			}
+		}
+
+		public function check_post_header( $post_id = true, &$obj = false ) {
+
+			if ( empty( $this->p->options['plugin_check_head'] ) )
+				return $post_id;
+
+			if ( ! is_object( $obj ) &&
+				( $obj = $this->p->util->get_post_object( $post_id ) ) === false )
+					return $post_id;
+
+			// only check registered front-end post types (to avoid menu items, product variations, etc.)
+			$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
+			if ( empty( $obj->post_type ) || 
+				! in_array( $obj->post_type, $post_types ) )
+					return $post_id;
+
+			// only check published posts
+			if ( ! isset( $obj->post_status ) || 
+				$obj->post_status !== 'publish' )
+					return $post_id;
+
+			$permalink = get_permalink( $post_id );
+			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
+			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_options',
+				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
+
+			// use the permalink and have get_head_meta() remove our own meta tags
+			// to avoid issues with caching plugins that ignore query arguments
+			if ( ( $metas = $this->p->util->get_head_meta( $permalink, 
+				'/html/head/link|/html/head/meta', false ) ) !== false ) {
+
+				foreach( array(
+					'link' => array( 'rel' ),
+					'meta' => array( 'name', 'itemprop', 'property' ),
+				) as $tag => $types ) {
+					if ( isset( $metas[$tag] ) ) {
+						foreach( $metas[$tag] as $m ) {
+							foreach( $types as $t ) {
+								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
+									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
+										$this->p->notice->err( 'Possible conflict detected - your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
+							}
+						}
+					}
+				}
+			}
+			return $post_id;
 		}
 
 		public function show_metabox_postmeta( $post ) {
@@ -235,86 +289,46 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 		}
 
 		public function get_og_video( $num = 0, $post_id, $check_dupes = true, $meta_pre = 'og' ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return array();
 		}
 
 		public function get_og_image( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false, $meta_pre = 'og' ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return array();
 		}
 
                 public function reset_options( $post_id ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 		}
 
                 public function get_options( $post_id, $idx = false, $attr = array() ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false )
 				return false;
 			else return array();
 		}
 
 		public function get_defaults( $idx = false ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			if ( $idx !== false )
 				return false;
 			else return array();
 		}
 
 		public function save_options( $post_id ) {
-			$this->p->debug->log( __METHOD__.' not implemented in free version' );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( __METHOD__.' not implemented in free version' );
 			return $post_id;
 		}
 
 		public function flush_cache( $post_id ) {
 			$this->p->util->flush_post_cache( $post_id );
-			return $post_id;
-		}
-
-		public function check_head( $post_id ) {
-			if ( empty( $this->p->options['plugin_check_head'] ) )
-				return $post_id;
-
-			if ( ( $obj = $this->p->util->get_post_object( $post_id ) ) === false )
-				return $post_id;
-
-			// only check registered front-end post types (to avoid menu items, product variations, etc.)
-			$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
-			if ( empty( $obj->post_type ) || 
-				! in_array( $obj->post_type, $post_types ) )
-					return $post_id;
-
-			// only check published posts
-			if ( ! isset( $obj->post_status ) || 
-				$obj->post_status !== 'publish' )
-					return $post_id;
-
-			$permalink = get_permalink( $post_id );
-			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
-			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_options',
-				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
-
-			// use the permalink and ask get_head_meta() to remove our meta tags
-			// to avoid issues with caching plugins that ignore query arguments
-			if ( ( $metas = $this->p->util->get_head_meta( $permalink, 
-				'/html/head/link|/html/head/meta', false ) ) !== false ) {
-
-				foreach( array(
-					'link' => array( 'rel' ),
-					'meta' => array( 'name', 'itemprop', 'property' ),
-				) as $tag => $types ) {
-					if ( isset( $metas[$tag] ) ) {
-						foreach( $metas[$tag] as $m ) {
-							foreach( $types as $t ) {
-								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
-									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
-										$this->p->notice->err( 'Possible conflict detected - your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
-							}
-						}
-					}
-				}
-			}
 			return $post_id;
 		}
 

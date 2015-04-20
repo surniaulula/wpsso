@@ -16,11 +16,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',		// lowercase acronym
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
-			'color' => '3c3',		// menu item color - lime green
+			'color' => '47d147',		// menu item color - lime green / shades of 33cc33
 			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.0.4',		// plugin version
+					'version' => '3.0.5',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',

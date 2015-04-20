@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoGplAdminPostmeta' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td colspan="2" class="subsection"><h4 
-				style="margin-top:0;">All Social Websites (Open Graph)</h4></td>';
+				style="margin-top:0;">All Social Websites / Open Graph</h4></td>';
 
 			$rows[] = $this->p->util->th( 'Image Dimensions', 'medium', 'og_img_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'og_img', true ).'</td>';

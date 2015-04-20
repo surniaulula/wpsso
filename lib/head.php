@@ -146,12 +146,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_header_html( $use_post = false, $read_cache = true, &$meta_og = array() ) {
-			$comment = $this->p->cf['lca'].' meta tags';
-			$html = "\n\n".'<!-- '.$comment.' begin --><meta name="comment" content="'.$comment.' begin"/>'."\n";
+			$cmt = $this->p->cf['lca'].' meta tags ';
+			$html = "\n\n".'<!-- '.$cmt.'begin -->'."\n".
+				'<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'begin"/>'."\n";
+
 			foreach ( $this->get_header_array( $use_post, $read_cache, $meta_og ) as $meta )
 				if ( ! empty( $meta[0] ) )	// first element of the array should be a complete html tag
 					$html .= $meta[0];
-			$html .= '<meta name="comment" content="'.$comment.' end"/><!-- '.$comment.' end -->'."\n\n";
+
+			$html .= '<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'end"/>'."\n".
+				'<!-- '.$cmt.'end -->'."\n\n";
+
 			return $html;
 		}
 

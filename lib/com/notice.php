@@ -23,9 +23,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->debug->mark();
-			$this->lca = empty( $this->p->cf['lca'] ) ? 
-				'sucom' : $this->p->cf['lca'];
-
+			$this->lca = empty( $this->p->cf['lca'] ) ? 'sucom' : $this->p->cf['lca'];
 			add_action( 'all_admin_notices', array( &$this, 'admin_notices' ) );
 		}
 
