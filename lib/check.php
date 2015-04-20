@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						define( 'NGFB_META_TAGS_DISABLE', true );
 				}
 			}
-			do_action( $this->p->cf['lca'].'_init_check' );
+			do_action( $this->p->cf['lca'].'_init_check', $this->active_plugins );
 		}
 
 		private function get_avail_check( $key ) {
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$wpseo_notif = json_decode( $wpseo_notif );
 					if ( ! empty( $wpseo_notif ) ) {
 						foreach ( $wpseo_notif as $num => $msgs ) {
-							if ( $msgs->type == 'error' && strpos( $msgs->message, ': '.$plugin_name ) !== false ) {
+							if ( $msgs->type == 'error' && strpos( $msgs->message, $plugin_name ) !== false ) {
 								unset( $wpseo_notif[$num] );
 								set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
 									json_encode( $wpseo_notif ) );
@@ -347,29 +347,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
                                 $this->p->debug->log( $log_pre.'facebook plugin is active' );
                                 $this->p->notice->err( $err_pre.sprintf( __( 'Please <a href="%s">deactivate the Facebook plugin</a> to prevent duplicate Open Graph meta tags in your webpage headers.', WPSSO_TEXTDOM ), get_admin_url( null, 'plugins.php?s=facebook/facebook.php' ) ) );
                         }
-		}
-
-		public function activated_plugin_check( $plugin, $network_activation ) {
-			if ( ! is_admin() ) 
-				return;
-
-			if ( WpssoUtil::active_plugins( 'wordpress-seo/wp-seo.php' ) ) {
-				// remove false error messages from WordPress SEO
-				if ( ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
-					$lca = $this->p->cf['lca'];
-					$plugin_name = $this->p->cf['plugin'][$lca]['name'];
-					$wpseo_notif = json_decode( $wpseo_notif );
-					if ( ! empty( $wpseo_notif ) ) {
-						foreach ( $wpseo_notif as $num => $msgs ) {
-							if ( $msgs->type == 'error' && strpos( $msgs->message, ': '.$plugin_name ) !== false ) {
-								unset( $wpseo_notif[$num] );
-								set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
-									json_encode( $wpseo_notif ) );
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }
