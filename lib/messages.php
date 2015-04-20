@@ -117,6 +117,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 case 'tooltip-user-tc_desc':
 							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
 						 	break;
+						 case 'tooltip-user-sharing_url':
+							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
+						 	break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_user', $text, $idx, $atts );
 							break;
