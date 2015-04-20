@@ -398,6 +398,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.0.5 (2015/04/20) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+
 = Version 3.0.4 (2015/04/18) =
 
 * **New Features**
@@ -451,144 +460,6 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
-= Version 2.9 (2015/04/02) =
-
-* **New Features**
-	* Added an "SSO" separator to clearly identify WPSSO setting pages in the WordPress Settings list.
-	* Added a new "Image Dimensions" settings page under the WordPress Settings menu item.
-	* Added a new "Website / Business Social Accounts" settings page under the WordPress Settings menu item.
-	* Added MySpace to the list of social contact methods added to user profile pages.
-* **Improvements**
-	* Further performance improvements for non-debug mode by centralizing debug mode checks.
-	* Removed the "LinkedIn" tab on the SSO General settings page, and added an "Others" tab (which includes LinkedIn, Instagram, and MySpace business URLs).
-	* Refactored the WPSSO settings tab layout to allow excess tabs to continue onto a second line.
-	* When checking for duplicate meta tags in posts / pages, constants are defined to disable caching plugins for that webpage request.
-* **Bugfixes**
-	* Fixed the saving of WPSSO option pages under the WordPress "Settings" menu item.
-
-= Version 2.8.5 (2015/03/26) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* The 'Add Hidden Debug Messages' option now disables only the transient cache, instead of both the transient and WP object caches.
-	* The `SucomDebug::mark()` method now adds the microtime to its debug log entries.
-	* Slight performance improvement by checking status of debug system before calling its logging methods (avoiding unnecessary method calls).
-	* Removed the `WpssoUtil::add_img_sizes_from_opts()` deprecated method.
-	* Added a new `SucomUtil::active_plugins()` method to fetch and cache the active plugins list.
-	* Added a check to remove a WordPress SEO false conflict warning.
-	* Added default values for the WPSSO_OPTIONS_NAME_ALT, WPSSO_SITE_OPTIONS_NAME_ALT, WPSSO_META_NAME_ALT, and WPSSO_PREF_NAME_ALT constants.
-	* Changed the default Twitter Card image sizes from 200x200 cropped to 300x300 cropped for the Summary Card, and from 300x300 un-cropped to 800x800 un-cropped for the Large Image Summary Card.
-* **Bugfixes**
-	* Added a check for `$_SERVER['HTTP_USER_AGENT']` before using its value in the SucomUtil::crawler_name() method.
-
-= Version 2.8.4 (2015/03/22) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added support for low/high resolution banners in the Plugin Details thickbox window.
-	* Added the 'plugin-install' JavaScript to Pro Licenses settings pages to improve thickbox styling.
-	* Added an extra check to require an object / post ID in the WooCommerce module (Pro version).
-	* Refactored the WooCommerce module for custom taxonomies (Pro version)
-
-* **Bugfixes**
-	* *None*
-= Version 2.8.3.2 (2015/03/17) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Removed a check for the 'mb_decode_numericentity' function (replaced by a minimum PHP version check instead).
-* **Bugfixes**
-	* Fixed the user contact field sanitation check by using the defined field names.
-	* Updated the SucomUtil::limit_text_length() method to use the mb_strlen() and mb_substr() multibyte functions.
-	* Added a check for WPSEO_Frontend::get_instance() before using it, and if missing, fallback to global $wpseo_front.
-
-= Version 2.8.3.1 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Integrated the WordPress SEO and WooCommerce modules to use the WordPress SEO meta description for the shop page (Pro version).
-	* Added a filter for the WooCommerce module to report the post ID of the shop page (Pro version).
-	* Added a GitHub repository for WPSSO at https://github.com/SurniaUlula/wpsso.
-* **Bugfixes**
-	* Updated the "Google Structured Data Testing Tool" URL.
-	* Changed to WPSEO_Frontend::get_instance() instead of using the $wpseo_front global (Pro version).
-
-= Version 2.8.3 =
-
-* **New Features**
-	* Added a new Wpsso::get_instance() method to return the Wpsso class object reference.
-	* Added a new WpssoUser::show_opts() method to return and/or text the users preference for displaying options.
-	* Added a new WpssoUser::save_pref() and WpssoUser::get_pref() method to manage user preferences.
-	* Added a new WPSSO_PREF_NAME constant (default value is "_wpsso_pref") to save user preferences.
-* **Improvements**
-	* Renamed all metabox tab CSS ids to allow better parsing of metabox and tab names.
-	* Replaced the "Show Basic / All Options" setting to one which is individual to each user's preference.
-	* Renamed the jquery-postmeta.min.js script file to jquery-metabox.min.js and refactored code.
-* **Bugfixes**
-	* Fixed the Social Settings jQuery / CSS input counters that were not showing.
-
-= Version 2.8.2.2 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Slight performance improvement by disabled the loading of meta tags for media upload pages.
-* **Bugfixes**
-	* *None*
-
-= Version 2.8.2.1 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Slight performance improvement by preventing default settings from being read (unless necessary) when defining the plugin image sizes.
-	* Moved the "Display Basic Options" and "Display All Options" links to a single button at the bottom of WPSSO settings pages.
-* **Bugfixes**
-	* *None*
-
-= Version 2.8.2 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added a 'View Plugin Details' link on the Pro Licenses settings page and updated its layout.
-* **Bugfixes**
-	* Fixed Rich Pin Image Dimensions setting in Free version by inheriting the Open Graph values.
-	* Added a `WpssoUser::get_user_id_contact_methods()` static method to provide `wp_get_user_contact_methods()` for older WordPress versions.
-
-= Version 2.8.1 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added a new 'wpsso_init_objects' action for WPSSO extension plugins.
-* **Bugfixes**
-	* *None*
-
-= Version 2.8 =
-
-* **New Features**
-	* Added a "Publisher Business Page URL" option to the Pinterest publisher settings tab (Pro version).
-	* Added a LinkedIn tab to the publisher settings with a new "Publisher Company Page URL" option (Pro version).
-	* Moved all schema related code (meta tags, json scripts, doctype itemscope) from WpssoHead to a new WpssoSchema class.
-	* Added the "Schema Website / Business Logo URL", "Add Schema Publisher Social JSON", and "Add Schema Author Social JSON" options under to the Google (G+ and Search) publisher settings tab (Pro version).
-	* Added author (Person) and publisher (Organization) <a href="https://developers.google.com/structured-data/customize/social-profiles">social profiles markup in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
-* **Improvements**
-	* Added a new WPSSO_META_CACHE_PRIORITY contant with a default value of 9.
-	* Changed the WPSSO_META_SAVE_PRIORITY constant default value from 20 to 6.
-	* Changed the update post cache maintenance hook priority from 100 to 9 (using the new WPSSO_META_CACHE_PRIORITY contant).
-	* Moved the update user profile cache maintenance to an action hook (uses the WPSSO_META_CACHE_PRIORITY contant as well).
-	* Added support for Quick Cache in the "Clear All Cache" feature.
-	* Renamed the 'og_publisher_url' settings option to 'fb_publisher_url'.
-	* Renamed the 'link_publisher_url' settings option to 'seo_publisher_url'.
-	* Moved the Open Graph "Article Publisher Page URL" option down to the Facebook publisher settings.
-* **Bugfixes**
-	* *None*
-
 == Upgrade Notice ==
 
 = 3.0.4 =
@@ -610,28 +481,4 @@ Fixed an optional parameter to preg_match_all in SucomUtil for older (pre 5.4) P
 = 3.0 =
 
 Added 36 options from the Pro version General settings page back into the Free version, new "unhide / show all options" link in metaboxes, replaced the 'Free to Pro version' self-update feature by a new "WPSSO Pro Update Manager (WPSSO UM)" Free extension plugin.
-
-= 2.9 =
-
-Fixed saving of WPSSO options under the WordPress "Settings" menu, added new "Image Dimensions" and "Website / Business Social Accounts" settings pages.
-
-= 2.8.5 =
-
-Small performance improvement in non-debug mode, fixed a user-agent string check error, added feature to remove false conflict warning from WordPress SEO.
-
-= 2.8.4 =
-
-Added support for low/high resolution banners in Plugin Details window, added an extra check for object / post ID in WooCommerce module (Pro version).
-
-= 2.8.3.2 =
-
-Fixed user contact field sanitation check, updated SucomUtil::limit_text_length() for PHP multibyte functions, added a minimum PHP version check.
-
-= 2.8.3.1 =
-
-Updated "Google Structured Data Testing Tool" URL, added support for WooCommerce shop page (Pro version), fixed WordPress SEO integration (Pro version).
-
-= 2.8.3 =
-
-Fixed the Social Settings input counters, moved "Show Basic / All Options" setting to an individual user preference.
 
