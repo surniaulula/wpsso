@@ -408,6 +408,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+<h4>Version 3.0.6</h4>
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Refactored (improved) code for the SucomNotice class.
+* **Bugfixes**
+	* *None*
+
 <h4>Version 3.0.5 (2015/04/20)</h4>
 
 * **New Features**
