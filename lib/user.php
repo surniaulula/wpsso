@@ -429,6 +429,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		static function delete_metabox_prefs( $user_id = false ) {
+			$user_id = $user_id === false ? 
+				get_current_user_id() : $user_id;
 			$cf = WpssoConfig::get_config( false, true );
 
 			$parent_slug = 'options-general.php';

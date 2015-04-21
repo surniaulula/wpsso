@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.2
- * Version: 3.0.5
+ * Version: 3.0.6
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -63,14 +63,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function __construct() {
 
 			require_once( dirname( __FILE__ ).'/lib/config.php' );
-			require_once( dirname( __FILE__ ).'/lib/register.php' );
-
-			$this->cf = WpssoConfig::get_config();			// unfiltered - $cf['*'] array is not available
+			$this->cf = WpssoConfig::get_config();			// unfiltered - $cf['*'] array is not available yet
 			WpssoConfig::set_constants( __FILE__ );
-			WpssoConfig::require_libs( __FILE__ );
+			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 
-			$classname = __CLASS__.'Register';
-			$this->reg = new $classname( $this );			// activate, deactivate, uninstall hooks
+			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
 			add_action( 'init', array( &$this, 'set_config' ), -1 );
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );

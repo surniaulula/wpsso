@@ -22,9 +22,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		public function get( $idx = false, $atts = null, $class = '' ) {
 			$text = is_array( $atts ) || is_object( $atts ) ? '' : $atts;
 			$idx = sanitize_title_with_dashes( $idx );
+
 			$lca = isset( $atts['lca'] ) ?
 				$atts['lca'] : $this->p->cf['lca'];
-			$url = $this->p->cf['plugin'][$lca]['url'];
 
 			$short = isset( $atts['short'] ) ?
 				$atts['short'] :
@@ -35,6 +35,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$atts['name'] :
 				$this->p->cf['plugin'][$lca]['name'];
 			$name_pro = $name.' Pro';
+
+			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?
+				$this->p->cf['plugin'][$lca]['url'] : array();
 
 			if ( strpos( $idx, 'tooltip-' ) !== false && empty( $class ) )
 				$class = $this->p->cf['form']['tooltip_class'];	// default tooltip class

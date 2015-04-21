@@ -391,7 +391,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->notice->err( 'Media Library '.$rejected_text.
 							'. Upload a larger / different image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
-							'</strong>" option.', false, true, 'wp_'.$pid.'_'.$size_name );
+							'</strong>" option.', false, true, 'err_wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				// if this is an open graph image, make sure it is larger than 200x200
@@ -410,7 +410,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							'</strong>" option is smaller than the hard-coded minimum of '.
 							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'].
 							' allowed by the Facebook / Open Graph standard.',
-								false, true, 'wp_'.$pid.'_'.$size_name );
+								false, true, 'err_wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->notice->err( 'Media Library '.$rejected_text.
 							'. Upload a larger / different image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
-							'</strong>" option.', false, true, 'wp_'.$pid.'_'.$size_name );
+							'</strong>" option.', false, true, 'err_wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
 
 				} elseif ( $this->p->debug->enabled )

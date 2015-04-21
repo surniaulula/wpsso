@@ -108,12 +108,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 			// clear all cached objects and transients
-			$deleted_cache = $this->p->util->delete_expired_file_cache( true );
-			$deleted_transient = $this->p->util->delete_expired_transients( true );
-
-			// disable the cron update check
-			$slug = $this->p->cf['plugin'][$this->p->cf['lca']]['slug'];
-			wp_clear_scheduled_hook( 'plugin_updates-'.$slug );
+			$this->p->util->delete_expired_file_cache( true );
+			$this->p->util->delete_expired_transients( true );
+			$this->p->notice->trunc();
 		}
 
 		private static function uninstall_plugin() {
@@ -135,25 +132,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( empty( $opts['plugin_preserve'] ) ) {
 				delete_option( WPSSO_OPTIONS_NAME );
 				delete_post_meta_by_key( WPSSO_META_NAME );
-				foreach ( array( WPSSO_META_NAME, WPSSO_PREF_NAME ) as $meta_key )
-					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user )
+				foreach ( array( WPSSO_META_NAME, WPSSO_PREF_NAME ) as $meta_key ) {
+					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
 						delete_user_option( $user->ID, $meta_key );
-				WpssoUser::delete_metabox_prefs();
-			}
-
-			// delete update options
-			foreach ( $cf['plugin'] as $lca => $info ) {
-				delete_option( $lca.'_umsg' );
-				delete_option( $lca.'_utime' );
-				delete_option( 'external_updates-'.$info['slug'] );
-			}
-
-			// delete stored notices
-			foreach ( array( 'nag', 'err', 'inf' ) as $type ) {
-				$msg_opt = $cf['lca'].'_notices_'.$type;
-				delete_option( $msg_opt );
-				foreach ( get_users( array( 'meta_key' => $msg_opt ) ) as $user )
-					delete_user_option( $user->ID, $msg_opt );
+						WpssoUser::delete_metabox_prefs( $user->ID );
+					}
+				}
 			}
 
 			// delete transients

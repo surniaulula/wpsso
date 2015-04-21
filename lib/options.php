@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				} else {
 					$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
-					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgraded and save its settings again. Report the issue to your hosting provider if you see this warning message more than once.', true );
+					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgrade and save its settings again. Report the issue to your hosting provider if you see this warning message more than once.', true );
 					return false;
 				}
 			} else $this->p->debug->log( 'new and old options array is identical' );

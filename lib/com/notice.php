@@ -14,16 +14,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca;
+		private $uca;
+		private $show_label;
 		private $log = array(
 			'nag' => array(),
 			'err' => array(),
 			'inf' => array(),
 		);
 
-		public function __construct( &$plugin ) {
+		public function __construct( &$plugin, $lca = 'sucom', $show_label = true ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
-			$this->lca = empty( $this->p->cf['lca'] ) ? 'sucom' : $this->p->cf['lca'];
+			if ( ! empty( $this->p->debug->enabled ) )
+				$this->p->debug->mark();
+			$this->lca = empty( $this->p->cf['lca'] ) ?
+				$lca : $this->p->cf['lca'];
+			$this->uca = strtoupper( $this->lca );
+			$this->show_label = $show_label;
+
 			add_action( 'all_admin_notices', array( &$this, 'admin_notices' ) );
 		}
 
@@ -98,7 +105,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$this->log[$type] 
 				) );
 				$this->trunc( $type );
-				if ( $type === 'err' && class_exists( 'SucomUpdate' ) ) {
+				if ( $type === 'err' && 
+					isset( $this->p->cf['plugin'] ) &&
+					class_exists( 'SucomUpdate' ) ) {
+
 					foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
 						if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 							$umsg = SucomUpdate::get_umsg( $lca );
@@ -108,66 +118,34 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 				}
 				if ( ! empty( $msg_arr ) ) {
-					if ( $type == 'nag' ) {
-						$bgcolor = empty( $this->p->cf['bgcolor'] ) ?
-							'none' : '#'.$this->p->cf['bgcolor'];
-						$bgimage = empty( $this->p->cf['plugin'][$this->lca]['img']['background'] ) ?
-							'none' : 'url("'.$this->p->cf['plugin'][$this->lca]['img']['background'].'")';
-						echo '<style type="text/css">
-	.'.$this->lca.'-update-nag {
-		display:block;
-		line-height:1.4em;
-		background-color:'.$bgcolor.';
-		background-image:'.$bgimage.';
-		background-position:top;
-		background-size:cover;
-		border:1px dashed #ccc;
-		padding:10px 40px 10px 40px;
-		margin-top:0;
-	}
-	.'.$this->lca.'-update-nag p,
-	.'.$this->lca.'-update-nag ul,
-	.'.$this->lca.'-update-nag ol {
-		font-size:1em;
-		clear:both;
-		max-width:720px;
-		margin:15px auto 15px auto;
-		text-align:center;
-	}
-	.'.$this->lca.'-update-nag ul li {
-		list-style-type:square;
-	}
-	.'.$this->lca.'-update-nag ol li {
-		list-style-type:decimal;
-	}
-	.'.$this->lca.'-update-nag li {
-		text-align:left;
-		margin:5px 0 5px 60px;
-	}
-</style>';
-					}
+					if ( $type == 'nag' )
+						echo $this->get_nag_style( $this->lca );
 					foreach ( $msg_arr as $key => $msg ) {
 						if ( ! empty( $msg ) ) {
-							$cssid = strpos( $key, $type.'_' ) === 0 ? $cssid=' id="'.$key.'"' : '';
+							$cssid_attr = strpos( $key, $type.'_' ) === 0 ?
+								' id="'.$key.'"' : '';
 							unset( $class, $label );
 							switch ( $type ) {
 								case 'nag':
-									$all_nag_msgs .= $msg;
+									$all_nag_msgs .= $msg;	// append to echo later in same div block
 									break;
 								case 'err':
 									$class = empty( $class ) ? 'error' : $class;
-									$label = empty( $label ) ? $this->p->cf['menu'].' Warning' : $label;
+									$label = empty( $label ) ? $this->uca.' Warning' : $label;
 									// no break
 								case 'inf':
+									// allow for variable definitions in previous case blocks
 									$class = empty( $class ) ? 'updated fade' : $class;
-									$label = empty( $label ) ? $this->p->cf['menu'].' Info' : $label;
-									echo '<div class="'.$class.'"'.$cssid.'>
-									<div style="display:table-cell;">
-										<p style="margin:5px 0;white-space:nowrap;">
-											<b>'.$label.'</b>:</p></div>
-									<div style="display:table-cell;">
-										<p style="margin:5px;text-align:left">'.$msg.'</p></div>
-									</div>';
+									$label = empty( $label ) ? $this->uca.' Info' : $label;
+
+									echo '<div class="'.$class.'"'.$cssid_attr.'>';
+									if ( $this->show_label === true )
+										echo '<div style="display:table-cell;">
+											<p style="margin:5px 0;white-space:nowrap;">
+												<b>'.$label.'</b>:</p></div>';
+									echo '<div style="display:table-cell;">
+										<p style="margin:5px;text-align:left">'.$msg.'</p></div>';
+									echo '</div>';
 									break;
 							}
 						}
@@ -176,6 +154,43 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 			if ( ! empty( $all_nag_msgs ) )
 				echo '<div class="update-nag '.$this->lca.'-update-nag">', $all_nag_msgs, '</div>', "\n";
+		}
+
+		private function get_nag_style( $lca ) {
+			return '<style type="text/css">
+.'.$lca.'-update-nag {
+	display:block;
+	line-height:1.4em;
+	background-color:'.( empty( $this->p->cf['bgcolor'] ) ?
+		'none' : '#'.$this->p->cf['bgcolor'] ).';
+	background-image:'.( empty( $this->p->cf['plugin'][$this->lca]['img']['background'] ) ?
+		'none' : 'url("'.$this->p->cf['plugin'][$this->lca]['img']['background'].'")' ).';
+	background-position:top;
+	background-size:cover;
+	border:1px dashed #ccc;
+	padding:10px 40px 10px 40px;
+	margin-top:0;
+}
+.'.$lca.'-update-nag p,
+.'.$lca.'-update-nag ul,
+.'.$lca.'-update-nag ol {
+	font-size:1em;
+	clear:both;
+	max-width:720px;
+	margin:15px auto 15px auto;
+	text-align:center;
+}
+.'.$lca.'-update-nag ul li {
+	list-style-type:square;
+}
+.'.$lca.'-update-nag ol li {
+	list-style-type:decimal;
+}
+.'.$lca.'-update-nag li {
+	text-align:left;
+	margin:5px 0 5px 60px;
+}
+</style>';
 		}
 	}
 }
