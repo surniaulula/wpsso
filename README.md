@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* Refactored (improved) code for the SucomNotice class.
+	* Refactored (improved) the SucomNotice class.
 * **Bugfixes**
 	* *None*
 
