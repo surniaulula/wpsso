@@ -416,6 +416,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Refactored some methods in the SucomNotice class.
 	* Improved the setup guide and some status / help messages.
 	* Moved the cleanup of update options on deactivate to the WPSSO UM plugin.
+	* Added html_entity_decode() on the caption text when SucomWebpage::get_caption() is called with $encode = false.
+	* Added an additional $ext array argument to the SucomUtil::replace_inline_vars() method.
 * **Bugfixes**
 	* *None*
 
