@@ -413,9 +413,9 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* Refactored (improved) the SucomNotice class.
+	* Refactored some methods in the SucomNotice class.
 	* Improved the setup guide and some status / help messages.
-	* Moved the update option table cleanup on deactivate to the WPSSO UM plugin.
+	* Moved the cleanup of update options on deactivate to the WPSSO UM plugin.
 * **Bugfixes**
 	* *None*
 
