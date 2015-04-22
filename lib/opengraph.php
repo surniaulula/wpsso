@@ -320,6 +320,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'meta_pre' => $meta_pre,
 				) );
 			$og_ret = array();
+			$force_regen = false;
 
 			// check for an attachment page
 			// is_attachment() only works on the front-end, so check the post_type as well
