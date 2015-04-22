@@ -202,6 +202,7 @@ WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/ty
 	* product:price:currency
 	* product:availability
 * **Schema Meta Tags**
+	* name
 	* description
 	* image
 	* url
