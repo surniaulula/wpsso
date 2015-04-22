@@ -74,6 +74,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_meta_array( $use_post, &$obj, &$meta_og = array() ) {
 			$meta_schema = array();
 
+			if ( ! empty( $this->p->options['add_meta_itemprop_name'] ) ) {
+				if ( ! empty( $meta_og['og:title'] ) )
+					$meta_schema['name'] = $meta_og['og:title'];
+			}
+
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
 				$meta_schema['description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
