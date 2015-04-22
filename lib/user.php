@@ -61,23 +61,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$screen = get_current_screen();
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id = '.$screen->id );
+
 			switch ( $screen->id ) {
 				case 'user-edit':
 				case 'profile':
+
 					$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+
 					if ( apply_filters( $this->p->cf['lca'].'_add_metabox_usermeta', $add_metabox, $screen->id ) === true ) {
 
 						$this->p->util->add_plugin_image_sizes();
+
 						do_action( $this->p->cf['lca'].'_admin_usermeta_header', $screen->id );
+
+						// read_cache is false to generate notices etc.
 						$this->header_tags = $this->p->head->get_header_array( false );
 						$this->post_info = $this->p->head->extract_post_info( $this->header_tags );
 
-						if ( ! empty( $this->p->options['plugin_check_head'] ) &&
-							empty( $this->post_info['og_image']['og:image'] ) )
-								$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.', true );
+						if ( empty( $this->post_info['og_image']['og:image'] ) )
+							$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.', true );
 					}
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->show_html( null, 'debug log' );
+
 					break;
 			}
 		}

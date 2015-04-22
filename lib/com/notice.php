@@ -13,23 +13,24 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	class SucomNotice {
 
 		private $p;
-		private $lca;
-		private $uca;
-		private $show_label;
+		private $lca = '';
+		private $uca = '';
+		private $label = '';
 		private $log = array(
 			'nag' => array(),
 			'err' => array(),
 			'inf' => array(),
 		);
 
-		public function __construct( &$plugin, $lca = 'sucom', $show_label = true ) {
+		public function __construct( &$plugin, $lca = 'sucom', $label = '' ) {
 			$this->p =& $plugin;
 			if ( ! empty( $this->p->debug->enabled ) )
 				$this->p->debug->mark();
 			$this->lca = empty( $this->p->cf['lca'] ) ?
 				$lca : $this->p->cf['lca'];
 			$this->uca = strtoupper( $this->lca );
-			$this->show_label = $show_label;
+			$this->label = empty( $label ) ? 
+				$this->uca : $label;
 
 			add_action( 'all_admin_notices', array( &$this, 'admin_notices' ) );
 		}
@@ -122,30 +123,37 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						echo $this->get_nag_style( $this->lca );
 					foreach ( $msg_arr as $key => $msg ) {
 						if ( ! empty( $msg ) ) {
-							$cssid_attr = strpos( $key, $type.'_' ) === 0 ?
-								' id="'.$key.'"' : '';
-							unset( $class, $label );
+							$label = '';
+							$class = '';
+							$cssid_attr = strpos( $key, $type.'_' ) === 0 ? ' id="'.$key.'"' : '';
 							switch ( $type ) {
 								case 'nag':
-									$all_nag_msgs .= $msg;	// append to echo later in same div block
+									$all_nag_msgs .= $msg;	// append to echo later in single div block
 									break;
+
 								case 'err':
-									$class = empty( $class ) ? 'error' : $class;
-									$label = empty( $label ) ? $this->uca.' Warning' : $label;
+									if ( empty( $class ) )
+										$class = 'error';
+									if ( empty( $label ) && ! empty( $this->label ) )
+										$label = $this->label.' Warning';
 									// no break
+
 								case 'inf':
 									// allow for variable definitions in previous case blocks
-									$class = empty( $class ) ? 'updated fade' : $class;
-									$label = empty( $label ) ? $this->uca.' Info' : $label;
+									if ( empty( $class ) )
+										$class = 'updated fade';
+									if ( empty( $label ) && ! empty( $this->label ) )
+										$label = $this->label.' Info';
 
 									echo '<div class="'.$class.'"'.$cssid_attr.'>';
-									if ( $this->show_label === true )
+									if ( ! empty( $label ) )
 										echo '<div style="display:table-cell;">
 											<p style="margin:5px 0;white-space:nowrap;">
 												<b>'.$label.'</b>:</p></div>';
 									echo '<div style="display:table-cell;">
 										<p style="margin:5px;text-align:left">'.$msg.'</p></div>';
 									echo '</div>';
+
 									break;
 							}
 						}

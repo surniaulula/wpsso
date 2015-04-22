@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) &&
 					wp_attachment_is_image( $post_id ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image id' );
+						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image ID' );
 					$pid = $post_id;
 				} elseif ( $this->p->is_avail['postthumb'] == true && has_post_thumbnail( $post_id ) )
 					$pid = get_post_thumbnail_id( $post_id );
@@ -270,9 +270,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					return $this->p->mods['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes );
 				else {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' ); 
+						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' ); 
 					if ( is_admin() )
-						$this->p->notice->err( 'The NextGEN Gallery module is not available: image id '.$pid.' ignored.' ); 
+						$this->p->notice->err( 'The NextGEN Gallery module is not available: image ID '.$pid.' ignored.' ); 
 					return $ret_empty; 
 				}
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
@@ -377,19 +377,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					( ! empty( $size_info['crop'] ) && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
 
 					$img_meta = wp_get_attachment_metadata( $pid );
-					$is_too_small_text = ' is too small for '.$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
-						( $img_cropped === 0 ? '' : ' cropped' ).')';
+
+					$is_too_small_text = ' is too small for the '.$size_name.
+						' ('.$size_info['width'].'x'.$size_info['height'].
+							( $img_cropped === 0 ? '' : ' cropped' ).') image size';
+
 					if ( ! empty( $img_meta['width'] ) && ! empty( $img_meta['height'] ) &&
 						$img_meta['width'] < $size_info['width'] && $img_meta['height'] < $size_info['height'] )
-							$rejected_text = 'image id '.$pid.' rejected - full size image ('.
+							$rejected_text = 'image ID '.$pid.' rejected - the full size image ('.
 								$img_meta['width'].'x'.$img_meta['height'].')'.$is_too_small_text;
-					else $rejected_text = 'image id '.$pid.' rejected - '.$img_width.'x'.$img_height.$is_too_small_text;
+					else $rejected_text = 'image ID '.$pid.' rejected - '.$img_width.'x'.$img_height.$is_too_small_text;
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
-							'. Upload a larger / different image or adjust the "<strong>'.
+							'.<br/>Upload a larger image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
 							'</strong>" option.', false, true, 'err_wp_'.$pid.'_'.$size_name );
 					return $ret_empty;
@@ -400,11 +403,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$img_height < $this->p->cf['head']['min_img_dim'] ) ) {
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: image id '.$pid.' rejected - '.
+						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
 							$img_width.'x'.$img_height.' is smaller than the hard-coded minimum of '.
 							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
 					if ( is_admin() )
-						$this->p->notice->err( 'Media Library image id '.$pid.' rejected - the resulting '.
+						$this->p->notice->err( 'Media Library image ID '.$pid.' rejected - the resulting '.
 							$img_width.'x'.$img_height.' image for the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
 							'</strong>" option is smaller than the hard-coded minimum of '.
@@ -415,13 +418,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
 
-					$rejected_text = 'image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
+					$rejected_text = 'image ID '.$pid.' rejected - '.$img_width.'x'.$img_height.
 						' aspect ratio is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1';
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library '.$rejected_text.
-							'. Upload a larger / different image or adjust the "<strong>'.
+							'.<br/>Upload a larger image or adjust the "<strong>'.
 							$this->p->util->get_image_size_label( $size_name ).
 							'</strong>" option.', false, true, 'err_wp_'.$pid.'_'.$size_name );
 					return $ret_empty;

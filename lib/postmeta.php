@@ -52,20 +52,20 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 
 		// hooked into the admin_head action
 		public function set_header_tags() {
-
 			if ( ! empty( $this->header_tags ) )	// only set header tags once
 				return;
-
-			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
-				empty( $obj->post_type ) )
-					return;
 
 			$screen = get_current_screen();
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id = '.$screen->id );
-			// check for post/page/media edititing lists
+
+			// check for post/page/media edititing LISTS
 			if ( strpos( $screen->id, 'edit-' ) !== false ||
 				$screen->id === 'upload' )
+					return;
+
+			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
+				empty( $obj->post_type ) )
 					return;
 
 			$post_id = empty( $obj->ID ) ? 0 : $obj->ID;
@@ -73,20 +73,26 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 
 				$post_type = get_post_type_object( $obj->post_type );
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
+
 				if ( apply_filters( $this->p->cf['lca'].'_add_metabox_postmeta', $add_metabox, $post_id ) === true ) {
 
 					$this->p->util->add_plugin_image_sizes( $post_id );
-					do_action( $this->p->cf['lca'].'_admin_postmeta_header', $post_type->name, $post_id );
+
+					// hook used by woocommerce module to load front-end libraries and start a session
+					do_action( $this->p->cf['lca'].'_admin_postmeta_header', $post_id, $post_type->name );
+
 					// read_cache is false to generate notices etc.
 					$this->header_tags = $this->p->head->get_header_array( $post_id, false );
 					$this->post_info = $this->p->head->extract_post_info( $this->header_tags );
 
-					if ( $obj->post_status == 'publish' &&
-						! empty( $this->p->options['plugin_check_head'] ) &&
-						empty( $this->post_info['og_image']['og:image'] ) )
+					if ( $obj->post_status == 'publish' ) {
+						if ( empty( $this->post_info['og_image']['og:image'] ) )
 							$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.' );
-
-					$this->check_post_header( $post_id, $obj );
+						// only check for duplicates once the post has been published, 
+						// and we have a functioning permalink
+						if ( ! empty( $this->p->options['plugin_check_head'] ) )
+							$this->check_post_header( $post_id, $obj );
+					}
 				}
 			}
 		}
@@ -100,15 +106,15 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 				( $obj = $this->p->util->get_post_object( $post_id ) ) === false )
 					return $post_id;
 
+			// only check published posts, so we have a permalink to check
+			if ( ! isset( $obj->post_status ) || 
+				$obj->post_status !== 'publish' )
+					return $post_id;
+
 			// only check registered front-end post types (to avoid menu items, product variations, etc.)
 			$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
 			if ( empty( $obj->post_type ) || 
 				! in_array( $obj->post_type, $post_types ) )
-					return $post_id;
-
-			// only check published posts
-			if ( ! isset( $obj->post_status ) || 
-				$obj->post_status !== 'publish' )
 					return $post_id;
 
 			$permalink = get_permalink( $post_id );

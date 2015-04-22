@@ -157,6 +157,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			if ( $encode === true )
 				$caption = htmlentities( $caption, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
+			else {	// just in case
+				$charset = get_bloginfo( 'charset' );
+				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), ENT_QUOTES, $charset );
+			}
 
 			return apply_filters( $this->p->cf['lca'].'_caption', $caption, $use_post, $add_hashtags, $custom, $source_id );
 		}

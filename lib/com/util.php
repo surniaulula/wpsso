@@ -63,8 +63,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $this->inline_vals;
 		}
 
-		public function replace_inline_vars( $str, $use_post = false, $obj = false ) {
-			return str_replace( $this->inline_vars, $this->get_inline_vals( $use_post, $obj ), $str );
+		// allow the variables and values array to be extended
+		// $ext must be an associative array with key/value pairs to be replaced
+		public function replace_inline_vars( $str, $use_post = false, $obj = false, $ext = array() ) {
+
+			$vars = $this->inline_vars;
+			$vals = $this->get_inline_vals( $use_post, $obj );
+
+			if ( ! empty( $ext ) && self::is_assoc( $ext ) ) {
+				$vars = array_merge( $vars, array_keys( $ext ) );
+				$vals = array_merge( $vars, array_values( $ext ) );
+			}
+
+			return str_replace( $vars, $vals, $str );
 		}
 
 		public static function active_plugins( $idx = false ) {
@@ -394,11 +405,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function get_cache_url( $url, $url_ext = '' ) {
 
 			// make sure the cache expiration is greater than 0 hours
+			// this also checks to make sure the cache object exists
 			if ( empty( $this->p->cache->file_expire ) ) 
-				return $url;
-
-			// facebook javascript does not work when hosted locally
-			if ( preg_match( '/:\/\/connect.facebook.net/', $url ) ) 
 				return $url;
 
 			return ( apply_filters( $this->p->cf['lca'].'_rewrite_url',
