@@ -476,6 +476,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.1 =
+
+Improved setup guide and some status / help messages, added html_entity_decode() to caption text (when required), added extra argument to SucomUtil::replace_inline_vars(), fixed reliance on deprecated YouTube / Google v2 API (Pro version).
+
 = 3.0.5 =
 
 Minor CSS improvements for settings pages and metaboxes, fixed image dimension notices (when saving posts/pages).
