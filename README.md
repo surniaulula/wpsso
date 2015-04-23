@@ -8,7 +8,7 @@
 <strong>License URI</strong>: http://www.gnu.org/licenses/gpl.txt<br/>
 <strong>Requires At Least</strong>: 3.0<br/>
 <strong>Tested Up To</strong>: 4.2<br/>
-<strong>Stable Tag</strong>: 3.0.5<br/>
+<strong>Stable Tag</strong>: 3.1<br/>
 </blockquote>
 
 <p>
