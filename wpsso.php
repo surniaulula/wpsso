@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.2
- * Version: 3.0.6
+ * Version: 3.1
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -251,6 +251,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( defined( 'WPSSO_OPTIONS_NAME_ALT' ) && WPSSO_OPTIONS_NAME_ALT ) {
 					$this->options = get_option( WPSSO_OPTIONS_NAME_ALT );
 					if ( is_array( $this->options ) ) {
+						// auto-creates options with autoload = yes
 						update_option( WPSSO_OPTIONS_NAME, $this->options );
 						delete_option( WPSSO_OPTIONS_NAME_ALT );
 					}

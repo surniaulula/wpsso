@@ -273,8 +273,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $opts_current !== $opts ) {
 				if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
-					$saved = update_site_option( $options_name, $opts );
-				else $saved = update_option( $options_name, $opts );
+					$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
+				else $saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
 
 				if ( $saved === true ) {
 					// if we're just saving a new plugin version string, don't bother showing the upgrade message
