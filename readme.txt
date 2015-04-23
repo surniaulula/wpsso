@@ -399,7 +399,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.0.6 =
+= Version 3.1 =
 
 * **New Features**
 	* *None*
@@ -410,7 +410,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added html_entity_decode() on the caption text when SucomWebpage::get_caption() is called with $encode = false.
 	* Added an additional $ext array argument to the SucomUtil::replace_inline_vars() method.
 * **Bugfixes**
-	* *None*
+	* Fixed reliance on the deprecated YouTube / Google v2 API for embedded video details (Pro version).
 
 = Version 3.0.5 (2015/04/20) =
 
