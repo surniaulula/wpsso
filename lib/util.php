@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from an url
 			add_action( 'admin_init', array( &$this, 'add_plugin_image_sizes' ), -100 );
 
-			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_transients' ) );
+			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_file_cache' ) );
 		}
 
@@ -167,6 +167,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 			return apply_filters( $this->p->cf['lca'].'_post_types', $post_types, $type, $output );
+		}
+
+		public function clear_all_cache() {
+			wp_cache_flush();					// flush non-database transients as well
+			$del_files = $this->p->util->delete_expired_file_cache( true );
+			$del_transients = $this->p->util->delete_expired_db_transients( true );
+			$this->p->notice->inf( $this->p->cf['uca'].' cached files, transient cache, and the WordPress object cache have all been cleared.' );
+
+			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
+				w3tc_pgcache_flush();
+				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', WPSSO_TEXTDOM ) );
+			}
+			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
+				wp_cache_clear_cache();
+				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', WPSSO_TEXTDOM ) );
+			}
+			if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
+				$GLOBALS['zencache']->wipe_cache();
+				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', WPSSO_TEXTDOM ) );
+			}
 		}
 
 		public function flush_post_cache( $post_id ) {

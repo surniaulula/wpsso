@@ -108,8 +108,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 			// clear all cached objects and transients
+			$this->p->util->delete_expired_db_transients( true );
 			$this->p->util->delete_expired_file_cache( true );
-			$this->p->util->delete_expired_transients( true );
 			$this->p->notice->trunc();
 		}
 

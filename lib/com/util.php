@@ -659,21 +659,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return '<a href="'.$url.'">'.$link_text.'</a>';
 		}
 
-		public function delete_expired_transients( $all = false ) { 
+		public function delete_expired_db_transients( $all = false ) { 
 			global $wpdb, $_wp_using_ext_object_cache;
 			if ( $_wp_using_ext_object_cache && 
 				$all === false ) 
-					return; 
+					return;		// nothing to do
+
 			$deleted = 0;
-			$time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
+			$time = isset ( $_SERVER['REQUEST_TIME'] ) ?
+				(int) $_SERVER['REQUEST_TIME'] : time() ; 
+
 			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_'.$this->p->cf['lca'].'_%\'';
-			$dbquery .= $all === true ? ';' : ' AND option_value < '.$time.';'; 
+			$dbquery .= $all === true ? ';' : ' AND option_value < '.$time.';';
+
 			$expired = $wpdb->get_col( $dbquery ); 
+
 			foreach( $expired as $transient ) { 
-				$key = str_replace('_transient_timeout_', '', $transient);
-				delete_transient( $key );
-				$deleted++;
+				$key = str_replace( '_transient_timeout_', '', $transient );
+				if ( delete_transient( $key ) )
+					$deleted++;
 			}
+
 			return $deleted;
 		}
 

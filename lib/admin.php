@@ -319,23 +319,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_all_cache': 
-							wp_cache_flush();
-							$deleted_cache = $this->p->util->delete_expired_file_cache( true );
-							$deleted_transient = $this->p->util->delete_expired_transients( true );
-							$this->p->notice->inf( __( $this->p->cf['uca'].' cached files, transient cache, and the WordPress object cache have all been cleared.', WPSSO_TEXTDOM ) );
-
-							if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
-								w3tc_pgcache_flush();
-								$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', WPSSO_TEXTDOM ) );
-							}
-							if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
-								wp_cache_clear_cache();
-								$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', WPSSO_TEXTDOM ) );
-							}
-							if ( isset( $GLOBALS['zencache'] ) ) {		// zencache
-								$GLOBALS['zencache']->wipe_cache();
-								$this->p->notice->inf( __( 'ZenCache has been cleared as well.', WPSSO_TEXTDOM ) );
-							}
+							$this->p->util->clear_all_cache();
 							break;
 
 						case 'clear_metabox_prefs': 
