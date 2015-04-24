@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'info-plugin-tid-network':
 							$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-							<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to define default/forced a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Extension Plugins and Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>.</p>
+							<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to define default/forced a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>.</p>
 							</blockquote>';
 							break;
 						case 'info-review':
@@ -663,25 +663,39 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'pro-activate-msg':
 							if ( ! is_multisite() ) {
-								$text = '<p><strong>The '.$name.' Authentication ID option is empty.</strong><br/>To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the '.$this->p->util->get_admin_url( 'licenses', 'Extension Plugins and Pro Licenses settings page' ).'.</p>';
+								$text = '<p><strong>The '.$name.' Authentication ID option is empty.</strong><br/>
+								To enable Pro version features and allow the plugin to authenticate itself for 
+								updates, please enter the unique Authentication ID you received by email on the '.
+								$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).'.</p>';
 							}
 							break;
 						case 'pro-not-installed':
-							$text = 'An Authentication ID has been entered for '.$name.', but the Pro version is not yet installed &ndash; don\'t forget to update this plugin to install the latest Pro version.';
+							$text = 'An Authentication ID has been entered for '.$name.', but the Pro version is not yet 
+							installed &ndash; don\'t forget to update this plugin to install the latest Pro version.';
 							break;
 						case 'pro-um-extension-required':
+						case 'pro-um-activate-extension':
 							$um_lca = $lca.'um';
 							$um_name = $this->p->cf['plugin'][$um_lca]['name'];
 							$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
 							$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
 							$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
-							$text = '<p>At least one Authentication ID has been entered, but the <strong>'.$um_name.'</strong> extension plugin is not active. This <strong>free extension</strong> is required to update and enable the '.$name_pro.' plugin and its extensions.</p>
-							<ol>
-							<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin archive</a> (zip file).</strong>
-							<li><strong>Then <a href="'.$upload_url.'">upload and activate the plugin on this WordPress admin page</a></strong>.</li>
-							</ol>
-							<p>Once the plugin has been activated, one or more Pro version updates will be available for your licensed plugin(s). You can also <a href="'.$um_dl.'" target="_blank">read more about the '.$um_name.'</a> extension plugin.</p>
-							<ol>';
+							$text = '<p>At least one Authentication ID has been entered on the '.
+							$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).
+							', but the <strong>'.$um_name.'</strong> plugin is not active. ';
+							if ( $idx === 'pro-um-extension-required' ) {
+								$text .= 'This <strong>free extension</strong> is required to update 
+								and enable the '.$name_pro.' plugin and its extensions.</p>
+								<ol>
+								<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin archive</a>
+									(zip file).</strong>
+								<li><strong>Then <a href="'.$upload_url.'">upload and activate the plugin</a>
+									on the WordPress plugin upload page</strong>.</li>
+								</ol><p>';
+							}
+							$text .= 'Once this '.$short.' extension has been activated, one or more Pro version updates 
+							may be available for your licensed plugin(s). Read more <a href="'.$um_dl.'" 
+							target="_blank">about the '.$um_name.' extension plugin</a>.</p>';
 							break;
 					}
 					break;

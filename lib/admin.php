@@ -84,8 +84,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			// if we have at least one tid, make sure the update manager is installed
-			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] )
-				$this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
+			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] ) {
+				if ( ! function_exists( 'get_plugins' ) )
+					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+				$installed_plugins = get_plugins();
+				if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
+					is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
+						$this->p->notice->nag( $this->p->msgs->get( 'pro-um-activate-extension' ), true );
+				else $this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
+			}
 		}
 
 		public function trunc_notices( $plugin = false, $sitewide = false ) {
