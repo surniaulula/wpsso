@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 			// use the permalink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
 			if ( ( $metas = $this->p->util->get_head_meta( $permalink, 
-				'/html/head/link|/html/head/meta', false ) ) !== false ) {
+				'/html/head/link|/html/head/meta', true ) ) !== false ) {
 
 				foreach( array(
 					'link' => array( 'rel' ),

@@ -408,7 +408,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// query examples:
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
-		public function get_head_meta( $url, $query = '/html/head/meta', $include_self = true ) {
+		public function get_head_meta( $url, $query = '/html/head/meta', $remove_self = false ) {
 			if ( empty( $query ) )
 				return false;
 
@@ -416,9 +416,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return false;
 
 			$cmt = $this->p->cf['lca'].' meta tags ';
-			if ( $include_self !== true && strpos( $html, $cmt.'begin' ) !== false ) {
+			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
 				$pre = '<(!-- |meta name="'.$this->p->cf['lca'].':comment" content=")';
-				$post = '( --|" *\/)>';
+				$post = '( --|" *\/?)>';
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
