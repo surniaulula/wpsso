@@ -10,12 +10,13 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 class SuextParseReadme {
 
-	private $debug;
+	protected $debug;
 
 	function __construct( &$debug = '' ) {
 
 		// check for logging object with mark() method
-		$this->debug = method_exists( $debug, 'mark' ) ? $debug : $this;
+		$this->debug = is_object( $debug ) && 
+			method_exists( $debug, 'mark' ) ? $debug : $this;
 		$this->debug->mark();
 	}
 

@@ -67,7 +67,8 @@ class SuextMarkdownParser {
 	function __construct( &$debug = '' ) {
 
 		// check for logging object with mark() method
-		$this->debug = method_exists( $debug, 'mark' ) ? $debug : $this;
+		$this->debug = is_object( $debug ) && 
+			method_exists( $debug, 'mark' ) ? $debug : $this;
 		$this->debug->mark();
 
 		$this->_initDetab();
@@ -1487,7 +1488,8 @@ class SuextMarkdownParserExtra extends SuextMarkdownParser {
 	function __construct( &$debug = '' ) {
 
 		// check for logging object with mark() method
-		$this->debug = method_exists( $debug, 'mark' ) ? $debug : $this;
+		$this->debug = is_object( $debug ) && 
+			method_exists( $debug, 'mark' ) ? $debug : $this;
 		$this->debug->mark();
 
 		# Add extra escapable characters before parent constructor 
