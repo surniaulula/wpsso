@@ -15,7 +15,7 @@
 
 <h3>Description</p>
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;float:left;margin:0 40px 20px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
 <h4>Advanced Social Management</h4>
 
@@ -135,7 +135,7 @@
 
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png" style="width:50%;min-width:256px;max-width:607px;float:right;margin:0 0 20px 40px;" />
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png" /></p><p>
 <strong>Images and Videos</strong></p>
 
 <p>WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).</p>
@@ -180,7 +180,7 @@
 
 <div style="clear:both;"></div>
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png" style="width:50%;min-width:256px;max-width:1024px;float:right;margin:0 0 20px 40px;" /></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png" /></p><p></p>
 
 <h4>Social Profiles for Google Search</h4>
 
