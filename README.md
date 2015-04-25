@@ -13,7 +13,7 @@
 
 <p>Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.</p>
 
-<h3>Description</p>
+<h3>Description</h3>
 
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
