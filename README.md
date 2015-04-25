@@ -1,7 +1,7 @@
 <h1>WordPress Social Sharing Optimization</h1><h3>Improves Shared Content on Social Websites</h3>
 
 <table>
-<tr><th>Contributors</th><td>jsmoriss</td></tr>
+<tr><th align="right">Contributors</th><td>jsmoriss</td></tr>
 <tr><th>Donate Link</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
 <tr><th>Tags</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
 <tr><th>License</th><td>GPLv3</td></tr>
@@ -400,73 +400,73 @@
 </ul><h3>Screenshots</h3>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-01.png"/><br/>
-<small>WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.</small></p>
+WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-02.png"/><br/>
-<small>WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.</small></p>
+WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-03.png"/><br/>
-<small>WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.</small></p>
+WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-04.png"/><br/>
-<small>Example Facebook Link Share</small></p>
+Example Facebook Link Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-05.png"/><br/>
-<small>Example Facebook Video Share</small></p>
+Example Facebook Video Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-06.png"/><br/>
-<small>Example Google+ Link Share</small></p>
+Example Google+ Link Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-07.png"/><br/>
-<small>Example Google+ Video Share</small></p>
+Example Google+ Video Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-08.png"/><br/>
-<small>Example Google Search Result showing Author Profile Info</small></p>
+Example Google Search Result showing Author Profile Info</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-09.png"/><br/>
-<small>Example LinkedIn Share</small></p>
+Example LinkedIn Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-10.png"/><br/>
-<small>Example Pinterest Image Pin</small></p>
+Example Pinterest Image Pin</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-11.png"/><br/>
-<small>Example Pinterest Product Pin</small></p>
+Example Pinterest Product Pin</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-12.png"/><br/>
-<small>Example Pinterest Product Pin (Zoomed)</small></p>
+Example Pinterest Product Pin (Zoomed)</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-13.png"/><br/>
-<small>Example StumbleUpon Share</small></p>
+Example StumbleUpon Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-14.png"/><br/>
-<small>Example Tumblr 'Link' Share</small></p>
+Example Tumblr 'Link' Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-15.png"/><br/>
-<small>Example Tumblr 'Photo' Share</small></p>
+Example Tumblr 'Photo' Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-16.png"/><br/>
-<small>Example Tumblr 'Video' Share</small></p>
+Example Tumblr 'Video' Share</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-17.png"/><br/>
-<small>Example Twitter 'Summary' Card</small></p>
+Example Twitter 'Summary' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-18.png"/><br/>
-<small>Example Twitter 'Large Image Summary' Card</small></p>
+Example Twitter 'Large Image Summary' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-19.png"/><br/>
-<small>Example Twitter 'Photo' Card</small></p>
+Example Twitter 'Photo' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-20.png"/><br/>
-<small>Example Twitter 'Gallery' Card</small></p>
+Example Twitter 'Gallery' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-21.png"/><br/>
-<small>Example Twitter 'Product' Card</small></p>
+Example Twitter 'Product' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png"/><br/>
-<small>Example Twitter 'Player' Card</small></p>
+Example Twitter 'Player' Card</p>
 
 <p align="center"><img align="center" src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png"/><br/>
-<small>Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles markup in schema.org JSON-LD format for Google Search and their Knowledge Graph.</small></p>
+Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles markup in schema.org JSON-LD format for Google Search and their Knowledge Graph.</p>
 
 <h3>Changelog</h3>
 
