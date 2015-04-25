@@ -1,14 +1,14 @@
 <h1>WordPress Social Sharing Optimization</h1><h3>Improves Shared Content on Social Websites</h3>
 
 <table>
-<tr><th align="right" valign="top">Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top">Donate Link</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
-<tr><th align="right" valign="top">Tags</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
-<tr><th align="right" valign="top">License</th><td>GPLv3</td></tr>
-<tr><th align="right" valign="top">License URI</th><td><a href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a></td></tr>
-<tr><th align="right" valign="top">Requires At Least</th><td>3.0</td></tr>
-<tr><th align="right" valign="top">Tested Up To</th><td>4.2</td></tr>
-<tr><th align="right" valign="top">Stable Tag</th><td>3.1</td></tr>
+<tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
+<tr><th align="right" valign="top" nowrap>Donate Link</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
+<tr><th align="right" valign="top" nowrap>Tags</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
+<tr><th align="right" valign="top" nowrap>License</th><td>GPLv3</td></tr>
+<tr><th align="right" valign="top" nowrap>License URI</th><td><a href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a></td></tr>
+<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>3.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To</th><td>4.2</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Tag</th><td>3.1</td></tr>
 </table>
 
 <p>Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.</p>
