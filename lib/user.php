@@ -37,11 +37,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_contact_methods' ), 5 );
 				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_user_profile_update', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_user_profile_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
 				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
-				add_action( 'personal_options_update', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY ); 
+				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
 			}
 		}
 
@@ -556,7 +556,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return false;	// just in case
 		}
 
-		public function flush_cache( $user_id ) {
+		public function clear_cache( $user_id ) {
 			$lang = SucomUtil::get_locale();
 			$post_id = 0;
 			$sharing_url = $this->p->util->get_sharing_url( false );
@@ -568,9 +568,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 
 				$transients, $post_id, $lang, $sharing_url );
-			$deleted = $this->p->util->flush_cache_objects( $transients );
+
+			$deleted = $this->p->util->clear_cache_objects( $transients );
+
 			if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', true );
+
 			return $user_id;
 		}
 

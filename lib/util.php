@@ -170,26 +170,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function clear_all_cache() {
-			wp_cache_flush();					// flush non-database transients as well
+
+			wp_cache_flush();					// clear non-database transients as well
+
 			$del_files = $this->p->util->delete_expired_file_cache( true );
 			$del_transients = $this->p->util->delete_expired_db_transients( true );
-			$this->p->notice->inf( $this->p->cf['uca'].' cached files, transient cache, and the WordPress object cache have all been cleared.' );
+
+			$this->p->notice->inf( $this->p->cf['uca'].' cached files, transient cache,'.
+				' and the WordPress object cache have been cleared.', true );
 
 			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 				w3tc_pgcache_flush();
-				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', WPSSO_TEXTDOM ) );
+				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', WPSSO_TEXTDOM ), true );
 			}
 			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 				wp_cache_clear_cache();
-				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', WPSSO_TEXTDOM ) );
+				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', WPSSO_TEXTDOM ), true );
 			}
 			if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
 				$GLOBALS['zencache']->wipe_cache();
-				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', WPSSO_TEXTDOM ) );
+				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', WPSSO_TEXTDOM ), true );
 			}
 		}
 
-		public function flush_post_cache( $post_id ) {
+		public function clear_post_cache( $post_id ) {
 			switch ( get_post_status( $post_id ) ) {
 				case 'draft':
 				case 'pending':
@@ -227,21 +231,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$objects = apply_filters( $this->p->cf['lca'].'_post_cache_objects', 
 						$objects, $post_id, $lang, $sharing_url );
 	
-					$deleted = $this->flush_cache_objects( $transients, $objects );
+					$deleted = $this->clear_cache_objects( $transients, $objects );
 
 					if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', true );
 
 					if ( function_exists( 'w3tc_pgcache_flush_post' ) )	// w3 total cache
 						w3tc_pgcache_flush_post( $post_id );
-					elseif ( function_exists( 'wp_cache_post_change' ) )	// wp super cache
+
+					if ( function_exists( 'wp_cache_post_change' ) )	// wp super cache
 						wp_cache_post_change( $post_id );
 
 					break;
 			}
 		}
 
-		public function flush_cache_objects( &$transients = array(), &$objects = array() ) {
+		public function clear_cache_objects( &$transients = array(), &$objects = array() ) {
 			$deleted = 0;
 			foreach ( $transients as $group => $arr ) {
 				foreach ( $arr as $val ) {
@@ -250,7 +255,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( delete_transient( $cache_id ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'flushed transient cache salt: '.$cache_salt );
+								$this->p->debug->log( 'cleared transient cache salt: '.$cache_salt );
 							$deleted++;
 						}
 					}
@@ -263,7 +268,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 						if ( wp_cache_delete( $cache_id, $group ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'flushed object cache salt: '.$cache_salt );
+								$this->p->debug->log( 'cleared object cache salt: '.$cache_salt );
 							$deleted++;
 						}
 					}
@@ -418,7 +423,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
 				$pre = '<(!-- |meta name="'.$this->p->cf['lca'].':comment" content=")';
-				$post = '( --|" *\/?)>';
+				$post = '( --|" *\/?)>';	// make space and slash optional for html optimizers
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}

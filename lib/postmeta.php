@@ -28,10 +28,10 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 				add_action( 'admin_head', array( &$this, 'set_header_tags' ) );
 
 				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'save_post', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_attachment', array( &$this, 'flush_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 			}
 		}
 
@@ -333,8 +333,8 @@ if ( ! class_exists( 'WpssoPostmeta' ) ) {
 			return $post_id;
 		}
 
-		public function flush_cache( $post_id ) {
-			$this->p->util->flush_post_cache( $post_id );
+		public function clear_cache( $post_id ) {
+			$this->p->util->clear_post_cache( $post_id );
 			return $post_id;
 		}
 

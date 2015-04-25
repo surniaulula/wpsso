@@ -181,7 +181,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					$this->options = $this->opt->get_defaults();
 					delete_option( WPSSO_OPTIONS_NAME );
-					add_option( WPSSO_OPTIONS_NAME, $this->options, null, 'yes' );
+					add_option( WPSSO_OPTIONS_NAME, $this->options, null, 'yes' );	// autoload = yes
+
 					if ( $this->debug->enabled )
 						$this->debug->log( 'default options have been added to the database' );
 
@@ -189,8 +190,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						$this->notice->inf( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
 							plugin options have been reset to their default values.', true );
 				}
+				$this->util->clear_all_cache();
+
 				if ( $this->debug->enabled )
 					$this->debug->log( 'exiting early: init_plugin() to follow' );
+
 				return;	// no need to continue, init_plugin() will handle the rest
 			}
 
