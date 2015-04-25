@@ -10,17 +10,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 class SuextParseReadme {
 
-	protected $debug;
+	function __construct( &$debug = false ) {
 
-	function __construct( &$debug = '' ) {
-
-		// check for logging object with mark() method
-		$this->debug = is_object( $debug ) && 
-			method_exists( $debug, 'mark' ) ? $debug : $this;
-		$this->debug->mark();
+		if ( ! empty( $this->debug->enabled ) )
+			$this->debug->mark();
 	}
-
-	private function mark() { return; }
 
 	function parse_readme( $file ) {
 		$file_contents = @implode('', @file($file));

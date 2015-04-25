@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) )
 	die( 'These aren\'t the droids you\'re looking for...' );
 
 if ( ! function_exists( 'suext_markdown' ) ) {
-	function suext_markdown( $text, &$debug = '' ) {
+	function suext_markdown( $text, &$debug = false ) {
 		static $parser;
 		if ( ! isset( $parser ) )
 			$parser = new SuextMarkdownParserExtra( $debug );
@@ -62,14 +62,10 @@ class SuextMarkdownParser {
 	var $predef_urls = array();
 	var $predef_titles = array();
 
-	protected $debug;
+	function __construct( &$debug = false ) {
 
-	function __construct( &$debug = '' ) {
-
-		// check for logging object with mark() method
-		$this->debug = is_object( $debug ) && 
-			method_exists( $debug, 'mark' ) ? $debug : $this;
-		$this->debug->mark();
+		if ( ! empty( $this->debug->enabled ) )
+			$this->debug->mark();
 
 		$this->_initDetab();
 		$this->prepareItalicsAndBold();
@@ -89,8 +85,6 @@ class SuextMarkdownParser {
 		asort($this->block_gamut);
 		asort($this->span_gamut);
 	}
-
-	protected function mark() { return; }
 
 	# Internal hashes used during transformation.
 	var $urls = array();
@@ -1485,12 +1479,10 @@ class SuextMarkdownParserExtra extends SuextMarkdownParser {
 	# Predefined abbreviations.
 	var $predef_abbr = array();
 
-	function __construct( &$debug = '' ) {
+	function __construct( &$debug = false ) {
 
-		// check for logging object with mark() method
-		$this->debug = is_object( $debug ) && 
-			method_exists( $debug, 'mark' ) ? $debug : $this;
-		$this->debug->mark();
+		if ( ! empty( $this->debug->enabled ) )
+			$this->debug->mark();
 
 		# Add extra escapable characters before parent constructor 
 		# initialize the table.
