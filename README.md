@@ -294,6 +294,7 @@
 <p><strong>We do not require WordPress admin access to support the plugin</strong> &mdash; All support is provided from the front-end using HTML debugging information within the webpage (see the <em>Add Hidden Debug Messages</em> option on the SSO Advanced settings page).</p>
 
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
+
 <h3>Installation</p>
 
 <h4>Install and Uninstall</h4>
@@ -315,6 +316,7 @@
 <ul>
     <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
 </ul>
+
 <h3>Frequently Asked Questions</h3>
 
 <h4>Frequently Asked Questions</h4>
@@ -348,6 +350,7 @@
     <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
     <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or its components misaligned?</a></li>
 </ul>
+
 <h3>Other Notes</h3>
 
 <h3>Other Notes</h3>
