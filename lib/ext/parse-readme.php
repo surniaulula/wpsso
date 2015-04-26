@@ -29,12 +29,49 @@ class SuextParseReadme {
 		if ( 0 === strpos( $file_contents, "\xEF\xBB\xBF" ) )
 			$file_contents = substr( $file_contents, 3 );
 
-		if ( !preg_match('|^===(.*)===|', $file_contents, $_name) )
-			return array(); // require a name
+		if ( ! preg_match('|^===(.*)===|', $file_contents, $_title) )
+			return array(); // require a title
 
-		$name = trim( $_name[1], '=' );
-		$name = $this->sanitize_text( $name );
-		$file_contents = $this->chop_string( $file_contents, $_name[0] );
+		$title = trim( $_title[1], '=' );
+		$title = $this->sanitize_text( $title );
+		$file_contents = $this->chop_string( $file_contents, $_title[0] );
+
+		if ( preg_match( '|Plugin Name:(.*)|i', $file_contents, $_plugin_name ) )
+			$plugin_name = $this->sanitize_text( $_plugin_name[1] );
+		else $plugin_name = null;
+
+		if ( preg_match( '|Plugin Slug:(.*)|i', $file_contents, $_plugin_slug ) )
+			$plugin_slug = $this->sanitize_text( $_plugin_slug[1] );
+		else $plugin_slug = null;
+
+		$contributors = array();
+		if ( preg_match( '|Contributors:(.*)|i', $file_contents, $_contributors ) ) {
+			$all_contributors = preg_split( '|,[\s]*|', trim( $_contributors[1] ) );
+			foreach ( array_keys( $all_contributors ) as $c ) {
+				$c_sanitized = $this->user_sanitize( $all_contributors[$c] );
+				if ( strlen( trim( $c_sanitized ) ) > 0 )
+					$contributors[$c] = $c_sanitized;
+				unset( $c_sanitized );
+			}
+		}
+
+		if ( preg_match( '|Tags:(.*)|i', $file_contents, $_tags ) ) {
+			$tags = preg_split( '|,[\s]*?|', trim( $_tags[1] ) );
+			foreach ( array_keys($tags) as $t )
+				$tags[$t] = $this->sanitize_text( $tags[$t] );
+		} else $tags = array();
+
+		if ( preg_match( '|Donate Link:(.*)|i', $file_contents, $_donate_link ) )
+			$donate_link = esc_url( $_donate_link[1] );
+		else $donate_link = null;
+
+		if ( preg_match( '|License:(.*)|i', $file_contents, $_license ) )
+			$license = $this->sanitize_text( $_license[1] );
+		else $license = null;
+
+		if ( preg_match( '|License URI:(.*)|i', $file_contents, $_license_uri ) )
+			$license_uri = esc_url( $_license_uri[1] );
+		else $license_uri = null;
 
 		if ( preg_match( '|Requires At Least:(.*)|i', $file_contents, $_requires_at_least ) )
 			$requires_at_least = $this->sanitize_text( $_requires_at_least[1] );
@@ -48,49 +85,17 @@ class SuextParseReadme {
 			$stable_tag = $this->sanitize_text( $_stable_tag[1] );
 		else $stable_tag = null;
 
-		if ( preg_match( '|Tags:(.*)|i', $file_contents, $_tags ) ) {
-			$tags = preg_split( '|,[\s]*?|', trim( $_tags[1] ) );
-			foreach ( array_keys($tags) as $t )
-				$tags[$t] = $this->sanitize_text( $tags[$t] );
-		} else $tags = array();
-
-		$contributors = array();
-		if ( preg_match( '|Contributors:(.*)|i', $file_contents, $_contributors ) ) {
-			$all_contributors = preg_split( '|,[\s]*|', trim( $_contributors[1] ) );
-			foreach ( array_keys( $all_contributors ) as $c ) {
-				$c_sanitized = $this->user_sanitize( $all_contributors[$c] );
-				if ( strlen( trim( $c_sanitized ) ) > 0 )
-					$contributors[$c] = $c_sanitized;
-				unset( $c_sanitized );
-			}
-		}
-
-		if ( preg_match( '|Donate link:(.*)|i', $file_contents, $_donate_link ) )
-			$donate_link = esc_url( $_donate_link[1] );
-		else $donate_link = null;
-
-		if ( preg_match( '|License:(.*)|i', $file_contents, $_license ) )
-			$license = $this->sanitize_text( $_license[1] );
-		else $license = null;
-
-		if ( preg_match( '|License URI:(.*)|i', $file_contents, $_license_uri ) )
-			$license_uri = esc_url( $_license_uri[1] );
-		else $license_uri = null;
-
-		if ( preg_match( '|Plugin Slug:(.*)|i', $file_contents, $_plugin_slug ) )
-			$plugin_slug = $this->sanitize_text( $_plugin_slug[1] );
-		else $plugin_slug = null;
-
 		foreach ( array(
-			'tags',
+			'plugin_name',
+			'plugin_slug',
 			'contributors',
-			'requires_at_least',
-			'tested_up_to',
-			'stable_tag',
+			'tags',
 			'donate_link',
 			'license',
 			'license_uri',
-			'plugin_slug'
+			'requires_at_least',
+			'tested_up_to',
+			'stable_tag',
 		) as $chop ) {
 			if ( $$chop ) {
 				$_chop = '_'.$chop;
@@ -103,12 +108,11 @@ class SuextParseReadme {
 		if ( ! preg_match( '/(^(.*?))^[\s]*=+?[\s]*.+?[\s]*=+?/ms', $file_contents, $_short_description ) )
 			$_short_description = array( 1 => &$file_contents, 2 => &$file_contents );
 		$short_desc_filtered = $this->sanitize_text( $_short_description[2] );
-		$short_desc_length = strlen($short_desc_filtered);
-		$short_description = substr($short_desc_filtered, 0, 150);
-		if ( $short_desc_length > strlen($short_description) )
+		$short_desc_length = strlen( $short_desc_filtered );
+		$short_description = substr( $short_desc_filtered, 0, 150 );
+		if ( $short_desc_length > strlen( $short_description ) )
 			$truncated = true;
-		else
-			$truncated = false;
+		else $truncated = false;
 		if ( $_short_description[1] )
 			$file_contents = $this->chop_string( $file_contents, $_short_description[1] );
 
@@ -120,8 +124,9 @@ class SuextParseReadme {
 				$_sections[$i] = preg_replace('/^[\s]*=[\s]+(.+?)[\s]+=/m', '<h4>$1</h4>', $_sections[$i]);
 				$_sections[$i] = $this->filter_text( $_sections[$i], true );
 				$_sections[$i] = preg_replace( '/\[youtube https:\/\/www\.youtube\.com\/watch\?v=([^\]]+)\]/', '<div class="video"><object width="532" height="325"><param name="movie" value="http://www.youtube.com/v/$1?fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="never"></param><embed src="http://www.youtube.com/v/$1?fs=1" type="application/x-shockwave-flash" allowscriptaccess="never" allowfullscreen="true" width="532" height="325"></embed></object></div>', $_sections[$i] );
-				$title = $this->sanitize_text( $_sections[$i-1] );
-				$sections[str_replace(' ', '_', strtolower($title))] = array('title' => $title, 'content' => $_sections[$i]);
+				$section_title = $this->sanitize_text( $_sections[$i-1] );
+				$sections[str_replace( ' ', '_', strtolower( $section_title ) )] = array( 'section_title' => $section_title,
+					'section_content' => $_sections[$i] );
 			}
 		}
 
@@ -133,11 +138,11 @@ class SuextParseReadme {
 			'screenshots',
 			'changelog',
 			'change_log',
-			'upgrade_notice'
+			'upgrade_notice',
 		) as $special_section ) {
-			if ( isset($sections[$special_section]) ) {
-				$final_sections[$special_section] = $sections[$special_section]['content'];
-				unset($sections[$special_section]);
+			if ( isset( $sections[$special_section] ) ) {
+				$final_sections[$special_section] = $sections[$special_section]['section_content'];
+				unset( $sections[$special_section] );
 			}
 		}
 		if ( isset($final_sections['change_log']) && empty($final_sections['changelog']) )
@@ -162,35 +167,35 @@ class SuextParseReadme {
 		} else { $upgrade_notice = ''; }
 
 		$excerpt = false;
-		if ( !isset($final_sections['description']) ) {
-			$final_sections = array_merge(array('description' => $this->filter_text( $_short_description[2], true )), $final_sections);
+		if ( ! isset ( $final_sections['description'] ) ) {
+			$final_sections = array_merge( array( 'description' => $this->filter_text( $_short_description[2], true ) ), $final_sections );
 			$excerpt = true;
 		}
 
 		$remaining_content = '';
-		foreach ( $sections as $s_name => $s_data ) {
-			$remaining_content .= "\n<h3>{$s_data['title']}</h3>\n{$s_data['content']}";
-		}
-		$remaining_content = trim($remaining_content);
+		foreach ( $sections as $s_name => $s_data )
+			$remaining_content .= "\n<h3>{$s_data['section_title']}</h3>\n{$s_data['section_content']}";
+		$remaining_content = trim( $remaining_content );
 
 		$r = array(
-			'name' => $name,
+			'title' => $title,
+			'plugin_name' => $plugin_name,
 			'plugin_slug' => $plugin_slug,
-			'tags' => $tags,
-			'requires_at_least' => $requires_at_least,
-			'tested_up_to' => $tested_up_to,
-			'stable_tag' => $stable_tag,
 			'contributors' => $contributors,
+			'tags' => $tags,
 			'donate_link' => $donate_link,
 			'license' => $license,
 			'license_uri' => $license_uri,
+			'requires_at_least' => $requires_at_least,
+			'tested_up_to' => $tested_up_to,
+			'stable_tag' => $stable_tag,
 			'short_description' => $short_description,
 			'screenshots' => $final_screenshots,
-			'is_excerpt' => $excerpt,
-			'is_truncated' => $truncated,
 			'sections' => $final_sections,
 			'remaining_content' => $remaining_content,
-			'upgrade_notice' => $upgrade_notice
+			'upgrade_notice' => $upgrade_notice,
+			'is_excerpt' => $excerpt,
+			'is_truncated' => $truncated,
 		);
 
 		return $r;
