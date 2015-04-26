@@ -2,18 +2,17 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
+<tr><th align="right" valign="top" nowrap>Description Summary</th><td>Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.1</td></tr>
-<tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top" nowrap>Donate / Purchase</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
-<tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.2</td></tr>
+<tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
+<tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
+<tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
 </table>
 
-<p>Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.</p>
-
-<h3>Description</h3>
+<h2>Description</h2>
 
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
@@ -296,7 +295,7 @@
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
 
 
-<h3>Installation</p>
+<h2>Installation</h2>
 
 <h4>Install and Uninstall</h4>
 
@@ -319,7 +318,7 @@
 </ul>
 
 
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 
 <h4>Frequently Asked Questions</h4>
 
@@ -354,7 +353,7 @@
 </ul>
 
 
-<h3>Other Notes</h3>
+<h2>Other Notes</h2>
 
 <h3>Other Notes</h3>
 <h4>Articles and Tutorials</h4>
