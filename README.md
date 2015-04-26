@@ -2,13 +2,13 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Tag</th><td>3.1</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>Donate / Purchase</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags</th><td>nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>3.0</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To</th><td>4.2</td></tr>
+<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.2</td></tr>
 </table>
 
 <p>Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.</p>
