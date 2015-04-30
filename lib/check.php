@@ -280,7 +280,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				}
 
 				// remove false error messages from WordPress SEO notifications
-				if ( ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
+				if ( class_exists( 'Yoast_Notification_Center' ) &&
+					( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
+
 					$lca = $this->p->cf['lca'];
 					$plugin_name = $this->p->cf['plugin'][$lca]['name'];
 					$wpseo_notif = json_decode( $wpseo_notif );
