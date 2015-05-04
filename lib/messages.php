@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Apply the standard WordPress \'the_content\' filter to render the content text (default is checked). This renders all shortcodes, and allows '.$short.' to detect images and embedded videos that may be provided by these.';
 							break;
 						case 'tooltip-plugin_ignore_small_img':
-							$text = $short.' will retrieve image URLs from HTML tags in the <strong>content</strong>. The &amp;amp;lt;img/&amp;amp;gt; HTML tags must have a width and height attribute, and their size must be equal to (or larger) than the Image Dimensions you\'ve entered on the General settings page. Uncheck this option to include smaller images from the content. <em>Unchecking this option is not advised</em> - images that are too small for some social websites may be included in your meta tags.';
+							$text = $short.' will retrieve image URLs from HTML tags in the <strong>content</strong> text. The &amp;amp;lt;img/&amp;amp;gt; HTML tags must have a width &amp; height or data-wp-pid attribute(s), and their size must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to include smaller images from the content. <em>Unchecking this option is not advised</em> - images that are too small for social websites may be included in your meta tags if you uncheck this option.';
 							break;
 						case 'tooltip-plugin_page_excerpt':
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$short.' can use as a default description value.';
