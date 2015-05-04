@@ -280,12 +280,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			} else $image_url = '';
 
 			$json_script = '<script type="application/ld+json">{
-	"@context" : "http://schema.org",
-	"@type" : "Person",
-	"name" : "'.$this->get_author_name( $author_id, 'fullname' ).'",
-	"url" : "'.$website_url.'",
-	"image" : "'.$image_url.'",
-	"sameAs" : ['."\n";
+	"@context":"http://schema.org",
+	"@type":"Person",
+	"name":"'.$this->get_author_name( $author_id, 'fullname' ).'",
+	"url":"'.$website_url.'",
+	"image":"'.$image_url.'",
+	"sameAs":['."\n";
 			foreach ( $cm as $id => $label ) {
 				$sameAs = trim( get_the_author_meta( $id, $author_id ) );
 				if ( empty( $sameAs ) )

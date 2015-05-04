@@ -94,13 +94,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:locale'] = $lang;
 			}
 
-			if ( ! isset( $og['og:site_name'] ) ) {
-				// pass options array to allow fallback if locale option does not exist
-				$key = SucomUtil::get_locale_key( 'og_site_name', $this->p->options, $post_id );
-				if ( ! empty( $this->p->options[$key] ) )
-					$og['og:site_name'] = $this->p->options[$key];
-				else $og['og:site_name'] = get_bloginfo( 'name', 'display' );
-			}
+			if ( ! isset( $og['og:site_name'] ) )
+				$og['og:site_name'] = $this->get_site_name( $post_id );
 
 			if ( ! isset( $og['og:description'] ) )
 				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $use_post );
@@ -413,6 +408,14 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$this->p->util->slice_max( $og_ret, $num );
 
 			return $og_ret;
+		}
+
+		public function get_site_name( $get = 'current' ) {
+			// provide options array to allow fallback if locale option does not exist
+			$key = SucomUtil::get_locale_key( 'og_site_name', $this->p->options, $get );
+			if ( ! empty( $this->p->options[$key] ) )
+				return $this->p->options[$key];
+			else return get_bloginfo( 'name', 'display' );
 		}
 	}
 }

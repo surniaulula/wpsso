@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_image_dimensions', 'Image Dimensions', 
+			add_meta_box( $this->pagehook.'_image_dimensions', 'Social Image Dimensions', 
 				array( &$this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
 		}
 
@@ -32,10 +32,13 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			$this->p->msgs->get( 'info-'.$metabox ).
 			'</td></tr></table>';
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
-			foreach ( array_merge( $this->get_rows( $metabox, 'general' ), 
-				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows', 
-					array(), $this->form ) ) as $num => $row ) 
-						echo '<tr>'.$row.'</tr>';
+
+			$rows = array_merge( $this->get_rows( $metabox, 'general' ), 
+				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows', array(), $this->form ) );
+			natsort( $rows );
+
+			foreach ( $rows as $num => $row ) 
+				echo '<tr>'.$row.'</tr>'."\n";
 			echo '</table>';
 		}
 

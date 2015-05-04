@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			add_meta_box( $this->pagehook.'_plugin', 'Advanced Settings', 
 				array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_contact_fields', 'Profile Contact Fields', 
+			add_meta_box( $this->pagehook.'_contact_fields', 'Contact Field Names and Labels', 
 				array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_taglist', 'Header Tags List', 

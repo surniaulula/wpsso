@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.1',		// plugin version
+					'version' => '3.2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -53,9 +53,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'lib' => array(			// libraries
 						'setting' => array (
 							'wpsso-separator-0' => 'SSO',
-							'image-dimensions' => 'Image Dimensions',
-							'contact-fields' => 'Profile Contact Fields',
+							'image-dimensions' => 'Social Image Dimensions',
 							'social-accounts' => 'Website / Business Social Accounts',
+							'contact-fields' => 'User Profile Contact Methods',
 							'wpsso-separator-1' => '',
 						),
 						'submenu' => array (
@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
-								'image-dimensions' => 'Image Dimensions',
+								'image-dimensions' => 'Social Image Dimensions',
 								'postmeta' => 'Post Social Settings',
 								'user' => 'User Social Settings',
 							),
@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
-								'image-dimensions' => 'Image Dimensions',
+								'image-dimensions' => 'Social Image Dimensions',
 								'postmeta' => 'Post Social Settings',
 								'user' => 'User Social Settings',
 							),
@@ -195,11 +195,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(				// options
-				'version' => 334,		// increment when changing default options
+				'version' => 335,		// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
 					'schema_desc_len' => 300,		// meta itemprop="description" maximum text length
+					'schema_website_json' => 1,
 					'schema_publisher_json' => 1,
 					'schema_author_json' => 1,
 					'schema_logo_url' => '',

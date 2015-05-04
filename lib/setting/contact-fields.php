@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_contact_fields', 'Profile Contact Fields', 
+			add_meta_box( $this->pagehook.'_contact_fields', 'Contact Field Names and Labels', 
 				array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 		}
 

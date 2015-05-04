@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox = 'pub';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
 				'facebook' => 'Facebook',
-				'google' => 'Google',
+				'google' => 'Google / Schema',
 				'pinterest' => 'Pinterest',
 				'twitter' => 'Twitter',
 				'other' => 'Others',
@@ -233,11 +233,15 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema Publisher Social JSON', null, 'google_schema_publisher_json' ).
+					$this->p->util->th( 'Add Schema WebSite JSON-LD', null, 'google_schema_website_json' ).
+					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
+	
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->th( 'Add Schema Publisher JSON-LD', null, 'google_schema_publisher_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema Author Social JSON', null, 'google_schema_author_json' ).
+					$this->p->util->th( 'Add Schema Author JSON-LD', null, 'google_schema_author_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
 
 					break;
