@@ -401,6 +401,16 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.2 =
+
+* **New Features**
+	* Added a new "Add Schema WebSite JSON-LD" option on the SSO General settings page, under the Google / Schema tab.
+* **Improvements**
+	* Modified the WpssoSchema::get_json_array() arguments, added support for WebSite JSON-LD, moved the Organization JSON-LD code to its own method.
+	* Added a new WpssoOpengraph::get_site_name() method (returns the localized value).
+* **Bugfixes**
+	* *None*
+
 = Version 3.1 (2015/04/24) =
 
 * **New Features**
