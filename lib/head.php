@@ -274,8 +274,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$header_array = array_merge(
 				$this->get_single_tag( 'meta', 'name', 'generator',
 					$short_aop.' '.$this->p->cf['plugin'][$lca]['version'].
-						( $this->p->check->aop() ? 'L' : 
-							( $this->p->is_avail['aop'] ? 'U' : 'G' ) ), '', $use_post ),
+					( $this->p->check->aop() ? 'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
+					( $this->p->is_avail['util']['um'] ? ' UM' : '' ), '', $use_post ),
 				$this->get_tag_array( 'link', 'rel', $link_rel, $use_post ),
 				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),
 				$this->get_tag_array( 'meta', 'property', $meta_og, $use_post ),
