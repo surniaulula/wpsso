@@ -60,7 +60,7 @@
 <li>Includes hashtags from Post and Page WordPress tags.</li>
 <li>Includes the author's name for Pinterest Rich Pins.</li>
 <li>Includes a Google / SEO description meta tag if a known SEO plugin is not detected.</li>
-<li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> markup in schema.org JSON-LD format for Google Search <em>Knowledge Graph</em></a>.</li>
+<li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.</li>
 <li>Provides Facebook, Google+ and Twitter URL user profile contact fields.</li>
 <li>Validation tools and special meta tag preview tabs on admin edit pages.</li>
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
