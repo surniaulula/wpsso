@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema WebSite JSON-LD', null, 'google_schema_website_json' ).
+					$this->p->util->th( 'Add Schema Website JSON-LD', null, 'google_schema_website_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.

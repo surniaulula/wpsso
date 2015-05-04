@@ -453,7 +453,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
 							break;
 						case 'tooltip-google_schema_website_json':
-							$text = 'Add schema WebSite markup to webpage headers for Google Search. The WebSite information includes the site name, URL, and search query URL.';
+							$text = 'Add schema Website markup to webpage headers for Google Search. The Website information includes the site name, URL, and search query URL.';
 							break;
 						case 'tooltip-google_schema_publisher_json':
 							$text = 'Add publisher (Organization) social profiles markup to webpage headers for Google Search. All URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).' will be included. The Open Graph Default Image ID / URL will be used as the Organization image, and the Schema Website / Business Logo URL will be used as the Organization\'s logo.';
