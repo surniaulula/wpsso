@@ -60,7 +60,7 @@
 <li>Includes hashtags from Post and Page WordPress tags.</li>
 <li>Includes the author's name for Pinterest Rich Pins.</li>
 <li>Includes a Google / SEO description meta tag if a known SEO plugin is not detected.</li>
-<li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles markup in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.</li>
+<li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> markup in schema.org JSON-LD format for Google Search <em>Knowledge Graph</em></a>.</li>
 <li>Provides Facebook, Google+ and Twitter URL user profile contact fields.</li>
 <li>Validation tools and special meta tag preview tabs on admin edit pages.</li>
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
@@ -183,7 +183,7 @@
 
 <h4>Social Profiles for Google Search</h4>
 
-<p>WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles markup in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.</p>
+<p>WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> markup in schema.org JSON-LD format for Google Search <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.</p>
 
 <div style="clear:both;"></div>
 
