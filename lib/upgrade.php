@@ -38,10 +38,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		public function options( $options_name, &$opts = array(), $def_opts = array() ) {
 			$opts = SucomUtil::rename_keys( $opts, $this->renamed_keys );
 
+			$opts_version = empty( $opts['options_version'] ) ? 0 :
+				preg_replace( '/[^0-9].*$/', '', $opts['options_version'] );
+
 			// custom value changes for regular options
 			if ( $options_name == constant( $this->p->cf['uca'].'_OPTIONS_NAME' ) ) {
 
-				if ( version_compare( $opts['options_version'], 260, '<=' ) ) {
+				if ( version_compare( $opts_version, 260, '<=' ) ) {
 					if ( $opts['og_img_width'] == 1200 &&
 						$opts['og_img_height'] == 630 &&
 						! empty( $opts['og_img_crop'] ) ) {
@@ -58,7 +61,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( version_compare( $opts['options_version'], 270, '<=' ) ) {
+				if ( version_compare( $opts_version, 270, '<=' ) ) {
 					foreach ( $opts as $key => $val ) {
 						if ( strpos( $key, 'inc_' ) === 0 ) {
 							$new_key = '';
@@ -77,9 +80,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 			}
-
-			$opts = $this->sanitize( $opts, $def_opts );	// cleanup excess options and sanitize
-			return $opts;
+			return $this->sanitize( $opts, $def_opts );	// cleanup options and sanitize
 		}
 	}
 }
