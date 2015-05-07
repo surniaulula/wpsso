@@ -727,7 +727,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'raw tags = "'.implode( ', ', $tags ).'"' );
 
-				$tags = array_unique( array_map( array( &$this, 'sanitize_tag' ), $tags ) );
+				$tags = array_unique( array_map( array( 'SucomUtil', 'sanitize_tag' ), $tags ) );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'sanitized tags = "'.implode( ', ', $tags ).'"' );
@@ -747,18 +747,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$post_ids = array_merge( $post_ids, get_post_ancestors( $post_id ) );
 				foreach ( $post_ids as $id ) {
 					if ( $this->p->options['og_page_title_tag'] && is_page( $id ) )
-						$tags[] = $this->sanitize_tag( get_the_title( $id ) );
+						$tags[] = SucomUtil::sanitize_tag( get_the_title( $id ) );
 					foreach ( wp_get_post_tags( $id, array( 'fields' => 'names') ) as $tag_name )
 						$tags[] = $tag_name;
 				}
 			}
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
-		}
-
-		private function sanitize_tag( $tag ) {
-			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
-			$tag = urldecode( $tag );
-			return $tag;
 		}
 	}
 }

@@ -32,6 +32,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$this->p->debug->mark();
 		}
 
+		public static function sanitize_tag( $tag ) {
+			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
+			$tag = urldecode( $tag );
+			return $tag;
+		}
+
 		public function get_inline_vars() {
 			return $inline_vars;
 		}
