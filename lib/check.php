@@ -45,8 +45,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				if ( function_exists( 'wpseo_init' ) || isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) ) {
 					global $wpseo_og;
 					if ( is_object( $wpseo_og ) && 
-						( $prio = has_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ) ) ) )
+						( $prio = has_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ) ) ) ) {
 							$ret = remove_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ), $prio );
+					}
 					if ( ! empty( $this->p->options['tc_enable'] ) && $this->aop() ) {
 						global $wpseo_twitter;
 						if ( is_object( $wpseo_twitter ) && 
@@ -65,6 +66,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						if ( is_object( $wpseo_front ) && 
 							( $prio = has_action( 'wpseo_head', array( $wpseo_front, 'author' ) ) ) )
 								$ret = remove_action( 'wpseo_head', array( $wpseo_front, 'author' ), $prio );
+					}
+					if ( ! empty( $this->p->options['schema_website_json'] ) ) {
+						add_filter( 'wpseo_json_ld_output', '__return_empty_array', 99 );
 					}
 				}
 

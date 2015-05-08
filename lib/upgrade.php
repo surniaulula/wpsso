@@ -36,13 +36,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		// def_opts accepts output from functions, so don't force reference
 		public function options( $options_name, &$opts = array(), $def_opts = array() ) {
-			$opts = SucomUtil::rename_keys( $opts, $this->renamed_keys );
 
+			// retrieve the first numeric string
 			$opts_version = empty( $opts['options_version'] ) ? 0 :
-				preg_replace( '/[^0-9].*$/', '', $opts['options_version'] );
+				preg_replace( '/^[^0-9]*([0-9]*).*$/', '$1', $opts['options_version'] );
 
-			// custom value changes for regular options
-			if ( $options_name == constant( $this->p->cf['uca'].'_OPTIONS_NAME' ) ) {
+			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
+
+				$opts = SucomUtil::rename_keys( $opts, $this->renamed_keys );
 
 				if ( version_compare( $opts_version, 260, '<=' ) ) {
 					if ( $opts['og_img_width'] == 1200 &&
@@ -79,7 +80,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 						}
 					}
 				}
-			}
+
+			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
+				$opts = SucomUtil::rename_keys( $opts, $this->renamed_site_keys );
+
 			return $this->sanitize( $opts, $def_opts );	// cleanup options and sanitize
 		}
 	}

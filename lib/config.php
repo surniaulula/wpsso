@@ -194,8 +194,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'opt' => array(				// options
-				'version' => 335,		// increment when changing default options
+			'opt' => array(						// options
+				'version' => 'sso335',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
