@@ -381,7 +381,7 @@
         <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/constants/">Constants</a></li>
         <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/">Filters</a>
         <ul>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/">Examples</a>
+            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/">Filter Examples</a>
             <ul>
                 <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/add-availability-to-product-card-for-woocommerce/">Add Availability to Product Card for WooCommerce</a></li>
                 <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
@@ -391,11 +391,16 @@
                 <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/">Modify the Default Topics List</a></li>
                 <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
             </ul></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/head/">Head Filters</a></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/media/">Media Filters</a></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/open-graph/">Open Graph Filters</a></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/twitter-card/">Twitter Card Filters</a></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/webpage/">Webpage Filters</a></li>
+            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/">Filters by Category</a>
+            <ul>
+                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/">Head Filters</a></li>
+                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/media/">Media Filters</a></li>
+                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/open-graph/">Open Graph Filters</a></li>
+                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/twitter-card/">Twitter Card Filters</a></li>
+                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/webpage/">Webpage Filters</a></li>
+            </ul></li>
+            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-name/">Filters by Name</a></li>
+            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/other/">Other Filters</a></li>
         </ul></li>
     </ul></li>
     <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
