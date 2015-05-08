@@ -492,31 +492,3 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Added a new "Add Schema WebSite JSON-LD" option on the SSO General settings page, under the Google / Schema tab.
 
-= 3.1 =
-
-Improved setup guide and some status / help messages, added html_entity_decode() to caption text (when required), added extra argument to SucomUtil::replace_inline_vars(), fixed reliance on deprecated YouTube / Google v2 API (Pro version).
-
-= 3.0.5 =
-
-Minor CSS improvements for settings pages and metaboxes, fixed image dimension notices (when saving posts/pages).
-
-= 3.0.4 =
-
-Fixed variable name returned by the WooCommerce module for exceptions (Pro version), greyed out some options for features not available in the Free version.
-
-= 3.0.3 =
-
-When Twitter Cards are disabled, exclude from duplicate meta tag checks. Added new Pinterest "Website Verification ID" option. Changed tag sanitation to keep accents. 
-
-= 3.0.2 =
-
-Improved the duplicate meta tags check, fixed an unecessary warning when a plugin extension has an Authentication ID but is deactivated.
-
-= 3.0.1 =
-
-Fixed an optional parameter to preg_match_all in SucomUtil for older (pre 5.4) PHP versions.
-
-= 3.0 =
-
-Added 36 options from the Pro version General settings page back into the Free version, new "unhide / show all options" link in metaboxes, replaced the 'Free to Pro version' self-update feature by a new "WPSSO Pro Update Manager (WPSSO UM)" Free extension plugin.
-
