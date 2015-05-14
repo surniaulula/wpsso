@@ -322,6 +322,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false )
 					return $url;
 				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+
 				if ( ! empty( $post_id ) ) {
 					if ( isset( $this->p->mods['util']['postmeta'] ) )
 						$url = $this->p->mods['util']['postmeta']->get_options( $post_id, 'sharing_url' );

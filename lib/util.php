@@ -12,10 +12,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		private $size_labels = array();	// reference array for image size labels
-		private $urls_found = array();	// array to detect duplicate images, etc.
-
 		protected $p;
+		protected $size_labels = array();	// reference array for image size labels
+		protected $urls_found = array();	// array to detect duplicate images, etc.
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
