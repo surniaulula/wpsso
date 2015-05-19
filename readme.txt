@@ -18,17 +18,18 @@ Make sure social websites present your content correctly, no matter how your web
 
 = Why Choose the WPSSO Plugin? =
 
-<p>WordPress Social Sharing Optimization (WPSSO) <strong>gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need</strong>, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; no sharing buttons required!</p>
+<p>WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, <em>improving Google Search ranking, social engagement, and click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
 
-<p><strong>Extend or replace your current SEO solution</strong> &mdash; Google Search reads social meta tags and <em>Knowledge Graph</em> markup, so many users are choosing to extend or even replace their outdated SEO solution with WPSSO.</p>
+<p>Extends or replaces your outdated SEO plugin &mdash; Google Search reads all the social meta tags and <em>knowledge graph</em> markup that WPSSO offers, so many users are choosing to extend or even replace their current SEO solution(s) with WPSSO.</p>
 
-<p><strong>Thourough <a href="http://surniaulula.com/codex/plugins/wpsso/">documentation for users and developers</a>, integrated upgrades using the native WordPress update system, actively developed with new features and prompt bug fixes.</p>
+<p><strong>Thourough <a href="http://surniaulula.com/codex/plugins/wpsso/">documentation for users and developers</a>, integrated Pro version upgrades using the native WordPress update system, professionally supported, actively developed with new features and prompt bug fixes.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons <em>only submit URLs</em> to social websites &mdash; WPSSO includes all the information those <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need to properly share and display your content. <strong>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</strong>.</p>
 
 <p>You can download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
 <p><blockquote>
+
 <h4>Industry Reviews</h4>
 
 <p>"<em>If you want to make every tweet, like, share, pin, and +1 count, then you should definitely start using WPSSO on your WordPress site.</em>" &mdash; <a href="http://www.indexwp.com/wordpress-social-sharing-optimization-pro-review/">indexwp.com</a></p>
@@ -40,6 +41,7 @@ Make sure social websites present your content correctly, no matter how your web
 <p>"<em>If you want to get the most out of the social shares your content receives, ensure your content stands out when it is posted on the various social networks, and listed in the search engines, then this plugin is a great choice that covers all the bases.</em>" &mdash; <a href="http://www.wpmayor.com/wordpress-social-sharing-optimization-pro-plugin-review/">wpmayor.com</a></p>
 
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
+
 </blockquote></p>
 
 = Quick List of Features =
