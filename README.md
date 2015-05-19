@@ -22,7 +22,7 @@
 
 <p>Extends or replaces your outdated SEO plugin &mdash; Google Search reads all the social meta tags and <em>knowledge graph</em> markup that WPSSO offers, so many users are choosing to extend or even replace their current SEO solution(s) with WPSSO.</p>
 
-<p><strong>Thourough <a href="http://surniaulula.com/codex/plugins/wpsso/">documentation for users and developers</a>, integrated Pro version upgrades using the native WordPress update system, professionally supported, actively developed with new features and prompt bug fixes.</p>
+<p>Thourough <a href="http://surniaulula.com/codex/plugins/wpsso/">documentation for users and developers</a>, integrated Pro version upgrades using the native WordPress update system, professionally supported, actively developed with new features and prompt bug fixes.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons <em>only submit URLs</em> to social websites &mdash; WPSSO includes all the information those <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need to properly share and display your content. <strong>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</strong>.</p>
 
