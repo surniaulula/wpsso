@@ -16,13 +16,15 @@
 
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons and extensions, or URLs shared directly in social timeline posts and <em>private messages</em>.</p>
 
-<h4>Advanced Social Management</h4>
+<h4>Why Choose the WPSSO Plugin?</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) <strong>gives you total control over the information social website crawlers need</strong>, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; no sharing buttons required!</p>
+<p>WordPress Social Sharing Optimization (WPSSO) <strong>gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need</strong>, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; no sharing buttons required!</p>
 
-<p><strong>Extend or replace your current SEO solution</strong> &mdash; Google Search reads social meta tags and <em>Knowledge Graph</em> markup, so many users are choosing to extend or even replace their current SEO solution with WPSSO.</p>
+<p><strong>Extend or replace your current SEO solution</strong> &mdash; Google Search reads social meta tags and <em>Knowledge Graph</em> markup, so many users are choosing to extend or even replace their outdated SEO solution with WPSSO.</p>
 
-<p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons <em>only submit URLs</em> to social websites &mdash; WPSSO includes all the information those social website crawlers need to properly share and display your content. <strong>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</strong>.</p>
+<p><strong>Thourough <a href="http://surniaulula.com/codex/plugins/wpsso/">documentation for users and developers</a>, integrated upgrades using the native WordPress update system, actively developed with new features and prompt bug fixes.</p>
+
+<p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons <em>only submit URLs</em> to social websites &mdash; WPSSO includes all the information those <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need to properly share and display your content. <strong>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</strong>.</p>
 
 <p>You can download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
