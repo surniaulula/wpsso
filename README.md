@@ -24,7 +24,7 @@
 
 <p>Thouroughly <a href="http://surniaulula.com/codex/plugins/wpsso/">documented for both users and developers</a>, integrated Pro version upgrades using the native WordPress update system, professionally supported, actively developed with new features and prompt bug fixes.</p>
 
-<p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons <em>only submit URLs</em> to social websites &mdash; WPSSO includes all the information those <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need to properly share and display your content. <strong>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</strong>.</p>
+<p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
 
 <p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
