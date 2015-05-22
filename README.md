@@ -20,7 +20,7 @@
 
 <p>WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, <em>improving Google Search ranking, social engagement, and click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
 
-<p>Google Search reads all the social meta tags and structured data (<em>Knowledge Graph</em>) markup that WPSSO offers, so many website owners are choosing to extend or even replace their traditional SEO solutions with WPSSO.</p>
+<p><strong>Google Search reads all the social meta tags and structured data (<em>Knowledge Graph</em>) markup that WPSSO offers</string>, so many website owners are choosing to extend or even replace their traditional SEO solutions with WPSSO.</p>
 
 <p><a href="http://surniaulula.com/codex/plugins/wpsso/">Documentation for users <em>and</em> developers</a>, seemless Pro version upgrades using the WordPress update system, professionally supported (no admin access required), actively developed with new features and prompt bug fixes.</p>
 
