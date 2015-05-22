@@ -20,13 +20,9 @@
 
 <p>WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, <em>improving Google Search ranking, social engagement, and click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
 
-<p><strong>Google Search reads all the social meta tags and structured data (<em>Knowledge Graph</em>) markup that WPSSO offers</string>, so many website owners are choosing to extend or even replace their traditional SEO solutions with WPSSO.</p>
-
-<p><a href="http://surniaulula.com/codex/plugins/wpsso/">Documentation for users <em>and</em> developers</a>, seemless Pro version upgrades using the WordPress update system, professionally supported (no admin access required), actively developed with new features and prompt bug fixes.</p>
+<p><strong>Google Search reads all the social meta tags and structured data (<em>Knowledge Graph</em>) markup that WPSSO offers</strong>, so many website owners are choosing to extend or even replace their traditional SEO solutions with WPSSO.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
-
-<p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
 <p><blockquote>
 
@@ -43,6 +39,10 @@
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 
 </blockquote></p>
+
+<p><a href="http://surniaulula.com/codex/plugins/wpsso/">Extensive documentation for users <em>and</em> developers</a>, seemless Pro version upgrades using the WordPress update system, professionally supported (no admin access required), actively developed with new features and prompt bug fixes.</p>
+
+<p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
 <h4>Quick List of Features</h4>
 
