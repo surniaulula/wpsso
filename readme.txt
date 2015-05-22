@@ -22,7 +22,7 @@ Make sure social websites present your content correctly, no matter how your web
 
 <p>Google Search reads all the social meta tags and structured data (<em>Knowledge Graph</em>) markup that WPSSO offers, so many website owners are choosing to extend or even replace their traditional SEO solutions with WPSSO.</p>
 
-<p>Thouroughly <a href="http://surniaulula.com/codex/plugins/wpsso/">documented for both users and developers</a>, integrated Pro version upgrades using the native WordPress update system, professionally supported, actively developed with new features and prompt bug fixes.</p>
+<p><a href="http://surniaulula.com/codex/plugins/wpsso/">Documentation for users <em>and</em> developers</a>, seemless Pro version upgrades using the WordPress update system, professionally supported (no admin access required), actively developed with new features and prompt bug fixes.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
 
