@@ -410,6 +410,35 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.3 =
+
+* **New Features**
+	* Added the custom Social Settings metabox to category and tag editing pages.
+* **Improvements**
+	* Added a link to the Social Image Dimensions settings page in all image dimension warning messages. 
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Renamed the 'postmeta' library file, gpl/pro module references, and message index names to 'post'.
+	* Renamed the post meta options filters to improve uniformity with the user and taxonomy filter names.
+		* Renamed the `wpsso_get_meta_defaults` filter to `wpsso_get_post_defaults`
+		* Renamed the `wpsso_get_meta_options` filter to `wpsso_get_post_options`
+		* Renamed the `wpsso_save_meta_options` filter to `wpsso_save_post_options`
+	* Added a new lib/meta.php library file (extended by the various post, user, and taxonomy util classes).
+	* Added five new taxonomy library files:
+		* lib/taxonomy.php
+		* lib/gpl/admin/taxonomy.php
+		* lib/gpl/util/taxonomy.php
+		* lib/pro/admin/taxonomy.php
+		* lib/pro/util/taxonomy.php
+	* Added new SucomUtil methods:
+		* is_author_page()
+		* is_term_page()
+		* is_category_page()
+		* get_author_object()
+		* get_term_object()
+	* Added a new WpssoUtil::get_util_mod_options() method to get custom meta option values from the post, user, and taxonomy modules.
+
 = Version 3.2 (2015/05/04) =
 
 * **New Features**
