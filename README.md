@@ -20,7 +20,7 @@
 
 <p><strong>A good social meta tag plugin is the foundation of any solid social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
 
-<p>WPSSO is professionally supported (<em>admin access is never required</em>), <a href="http://surniaulula.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, and WPSSO is actively being developed with new features and provides prompt bug fixes.</p>
+<p>WPSSO is professionally and securely supported (<em>admin access is never required</em>), <a href="http://surniaulula.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, development is current with the latest social standards, and fixes / updates are available promptly.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
 
