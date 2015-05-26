@@ -7,7 +7,7 @@
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.2.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://surniaulula.com/extend/plugins/wpsso/">https://surniaulula.com/extend/plugins/wpsso/</a></td></tr>
+<tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/">https://wpsso.com/</a></td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>wpsso, nextgen gallery, featured, attached, open graph, meta tags, facebook, google, google+, g+, twitter, linkedin, social, seo, pinterest, rich pins, multilingual, object cache, transient cache, wp_cache, nggalbum, nggallery, singlepic, imagebrowser, gallery, twitter cards, photo card, gallery card, player card, summary card, easy digital downloads, edd, woocommerce, marketpress, e-commerce, multisite, hashtags, bbpress, buddypress, jetpack, photon, slideshare, vimeo, wistia, youtube, polylang, schema, json-ld, knowledge graph</td></tr>
 </table>
@@ -20,7 +20,7 @@
 
 <p><strong>A good social meta tag plugin is the foundation of any solid social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
 
-<p>WPSSO is professionally and securely supported (<em>admin access is never required</em>), <a href="http://surniaulula.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, development is current with the latest social standards, and fixes / updates are available promptly.</p>
+<p>WPSSO is professionally and securely supported (<em>admin access is never required</em>), <a href="http://wpsso.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, development is current with the latest social standards, and fixes / updates are available promptly.</p>
 
 <p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
 
@@ -40,7 +40,7 @@
 
 </blockquote></p>
 
-<p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on wordpress.org</a> and <a href="http://surniaulula.com/extend/plugins/wpsso/">purchase Pro license(s) on surniaulula.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+<p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on WordPress.org</a> and <a href="http://wpsso.com/extend/plugins/wpsso/">purchase Pro license(s) on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
 <h4>Quick List of Features</h4>
 
@@ -66,7 +66,7 @@
 <li>Provides Facebook, Google+ and Twitter URL user profile contact fields.</li>
 <li>Validation tools and special meta tag preview tabs on admin edit pages.</li>
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
-<li>Contextual help for <em>every</em> plugin option and <a href="http://surniaulula.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
+<li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
 <li><strong>Additional free extension plugins for WPSSO</strong>:
 
@@ -99,10 +99,10 @@
 <li>Custom settings and meta tag values for each Post, Page, and custom post type.</li>
 <li>Options to exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.</li>
 <li>Support for embedded videos in content text (iframe and object HTML tags).</li>
-<li><strong>Integrates with 3rd party plugins and services for additional image, video, product, and content information</strong> (see <a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://surniaulula.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
+<li><strong>Integrates with 3rd party plugins and services for additional image, video, product, and content information</strong> (see <a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 
 <ul>
-<li>Plugins
+<li>Supported 3rd Party Plugins
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -118,7 +118,7 @@
 <li>WordPress SEO by Yoast</li>
 <li>WP e-Commerce</li>
 </ul></li>
-<li>Service APIs
+<li>Supported Service APIs
 
 <ul>
 <li>Gravatar Images</li>
@@ -157,7 +157,7 @@
 
 <p><strong>Forums and Social</strong></p>
 
-<p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://surniaulula.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
+<p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
 
 <div style="clear:both;"></div>
 
@@ -191,7 +191,7 @@
 
 <h4>Complete Social Meta Tags</h4>
 
-<p>WPSSO adds Facebook / <a href="http://ogp.me/">Open Graph</a>, <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, <a href="https://dev.twitter.com/docs/cards">Twitter Cards</a>, and <a href="http://en.wikipedia.org/wiki/Search_engine_optimization">Search Engine Optimization</a> meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the <em>existing</em> content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options <em>are</em> available). <a href="http://surniaulula.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.</p>
+<p>WPSSO adds Facebook / <a href="http://ogp.me/">Open Graph</a>, <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, <a href="https://dev.twitter.com/docs/cards">Twitter Cards</a>, and <a href="http://en.wikipedia.org/wiki/Search_engine_optimization">Search Engine Optimization</a> meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the <em>existing</em> content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options <em>are</em> available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.</p>
 
 <p>WPSSO (Pro version) provides the <a href="https://dev.twitter.com/docs/cards/types/summary-card">Summary</a>, <a href="https://dev.twitter.com/docs/cards/large-image-summary-card">Large Image Summary</a>, <a href="https://dev.twitter.com/docs/cards/types/photo-card">Photo</a>, <a href="https://dev.twitter.com/docs/cards/types/gallery-card">Gallery</a>, <a href="https://dev.twitter.com/docs/cards/types/player-card">Player</a> and <a href="https://dev.twitter.com/docs/cards/types/product-card">Product</a> Twitter Cards &mdash; <em>including configurable image sizes for each card type</em>.</p>
 
@@ -290,7 +290,7 @@
 
 <h4>Professional Support</h4>
 
-<p>WPSSO support and development is on-going. You can review the <a href="http://faq.wpsso.surniaulula.com/">FAQ</a> and <a href="http://notes.wpsso.surniaulula.com/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://support.wpsso.surniaulula.com/">Pro version support website</a>.</p>
+<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/codex/plugins/wpsso/faq/">FAQ</a> and <a href="https://wpsso.com/codex/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://support.wpsso.surniaulula.com/">Pro version support website</a>.</p>
 
 <p><strong>We do not require WordPress admin access to support the plugin</strong> &mdash; All support is provided from the front-end using HTML debugging information within the webpage (see the <em>Add Hidden Debug Messages</em> option on the SSO Advanced settings page).</p>
 
@@ -302,21 +302,21 @@
 <h4>Install and Uninstall</h4>
 
 <ul>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special – Buy one, Get one Free</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NGFB to WPSSO</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation-to/install-the-plugin/">Install the Plugin</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special – Buy one, Get one Free</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NGFB to WPSSO</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation-to/install-the-plugin/">Install the Plugin</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a>
     <ul>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
     </ul></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the Plugin</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the Plugin</a></li>
 </ul>
 
 <h4>Plugin Setup</h4>
 
 <ul>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
 </ul>
 
 
@@ -325,33 +325,33 @@
 <h4>Frequently Asked Questions</h4>
 
 <ul>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/can-i-use-the-pro-version-on-multiple-websites/">Can I use the Pro version on multiple websites?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/does-linkedin-read-the-open-graph-meta-tags/">Does LinkedIn read the Open Graph meta tags?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/">Doesn’t an SEO plugin cover that?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/">How can I exclude / ignore certain parts of the content text?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an “HTTP error” when uploading images?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-see-what-facebook-sees/">How can I see what Facebook sees?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-do-i-attach-an-image-without-showing-it-on-the-webpage/">How do I attach an image without showing it on the webpage?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme’s front page pagination?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Pro version?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/how-does-wpsso-find-detect-select-images/">How does WPSSO find / detect / select images?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/w3c-says-there-is-no-attribute-property/">W3C says “there is no attribute ‘property’”</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/what-about-google-search-and-google-plus/">What about Google Search and Google Plus?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/what-features-of-nextgen-gallery-are-supported/">What features of NextGEN Gallery are supported?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NGFB and WPSSO?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/">What is the difference between the Free and Pro versions?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/">Why aren’t Pins from my website posting Rich?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-do-my-facebook-shares-have-small-images/">Why do my Facebook shares have small images?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-does-wpsso-ignore-some-img-html-tags/">Why does WPSSO ignore some &lt;img/&gt; HTML tags?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-doesnt-facebook-show-the-correct-image/">Why doesn’t Facebook show the correct image?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/">Why don’t my Twitter Cards show on Twitter?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or its components misaligned?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/can-i-use-the-pro-version-on-multiple-websites/">Can I use the Pro version on multiple websites?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/does-linkedin-read-the-open-graph-meta-tags/">Does LinkedIn read the Open Graph meta tags?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/">Doesn’t an SEO plugin cover that?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/">How can I exclude / ignore certain parts of the content text?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an “HTTP error” when uploading images?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-facebook-sees/">How can I see what Facebook sees?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-attach-an-image-without-showing-it-on-the-webpage/">How do I attach an image without showing it on the webpage?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme’s front page pagination?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Pro version?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-does-wpsso-find-detect-select-images/">How does WPSSO find / detect / select images?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/w3c-says-there-is-no-attribute-property/">W3C says “there is no attribute ‘property’”</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-about-google-search-and-google-plus/">What about Google Search and Google Plus?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-features-of-nextgen-gallery-are-supported/">What features of NextGEN Gallery are supported?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NGFB and WPSSO?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/">What is the difference between the Free and Pro versions?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/">Why aren’t Pins from my website posting Rich?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-do-my-facebook-shares-have-small-images/">Why do my Facebook shares have small images?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-wpsso-ignore-some-img-html-tags/">Why does WPSSO ignore some &lt;img/&gt; HTML tags?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-doesnt-facebook-show-the-correct-image/">Why doesn’t Facebook show the correct image?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/">Why don’t my Twitter Cards show on Twitter?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or its components misaligned?</a></li>
 </ul>
 
 
@@ -368,46 +368,46 @@
 <h4>Additional Documentation</h4>
 
 <ul>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a>
     <ul>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/author-gravatar/">Author Gravatar</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/easy-digital-downloads/">Easy Digital Downloads</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/headspace2-seo/">HeadSpace2 SEO</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/jetpack-photon/">Jetpack Photon</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/slideshare-vimeo-wistia-youtube-apis/">Slideshare, Vimeo, Wistia, Youtube APIs</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/author-gravatar/">Author Gravatar</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/easy-digital-downloads/">Easy Digital Downloads</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/headspace2-seo/">HeadSpace2 SEO</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/">Jetpack Photon</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/slideshare-vimeo-wistia-youtube-apis/">Slideshare, Vimeo, Wistia, Youtube APIs</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
     </ul></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/">Developer Resources</a>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/">Developer Resources</a>
     <ul>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/constants/">Constants</a></li>
-        <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/">Filters</a>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/constants/">Constants</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/">Filters</a>
         <ul>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/">Filter Examples</a>
+            <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/">Filter Examples</a>
             <ul>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/add-availability-to-product-card-for-woocommerce/">Add Availability to Product Card for WooCommerce</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/">Disable the Social Settings Metabox by Post ID</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/force-wistia-videos-to-autoplay-on-facebook/">Force Wistia Videos to Autoplay on Facebook</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/">Modify the article:tag Keywords / Names</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/">Modify the Default Topics List</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/add-availability-to-product-card-for-woocommerce/">Add Availability to Product Card for WooCommerce</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/">Disable the Social Settings Metabox by Post ID</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/force-wistia-videos-to-autoplay-on-facebook/">Force Wistia Videos to Autoplay on Facebook</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/">Modify the article:tag Keywords / Names</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/">Modify the Default Topics List</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
             </ul></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/">Filters by Category</a>
+            <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/">Filters by Category</a>
             <ul>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/">Head Filters</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/media/">Media Filters</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/open-graph/">Open Graph Filters</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/twitter-card/">Twitter Card Filters</a></li>
-                <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-category/webpage/">Webpage Filters</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/">Head Filters</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/media/">Media Filters</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/open-graph/">Open Graph Filters</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/twitter-card/">Twitter Card Filters</a></li>
+                <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/webpage/">Webpage Filters</a></li>
             </ul></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/by-name/">Filters by Name</a></li>
-            <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/developer/filters/other/">Other Filters</a></li>
+            <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-name/">Filters by Name</a></li>
+            <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/other/">Other Filters</a></li>
         </ul></li>
     </ul></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/multisite-network-support/">Multisite / Network Support</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/performance-tuning/">Performance Tuning</a></li>
-    <li><a href="http://surniaulula.com/codex/plugins/wpsso/notes/working-with-image-attachments/">Working with Image Attachments</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/multisite-network-support/">Multisite / Network Support</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/performance-tuning/">Performance Tuning</a></li>
+    <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/working-with-image-attachments/">Working with Image Attachments</a></li>
 </ul>
 
