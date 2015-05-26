@@ -1,4 +1,4 @@
-<h1>WordPress Social Sharing Optimization</h1><h3>Improves Shared Content on Social Websites</h3>
+<h1>WordPress Social Sharing Optimization</h1><h3>Improve Shared Content on Social Websites</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
@@ -14,7 +14,7 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; <em>from sharing buttons on the webpage, browser add-on and extension buttons, or URLs shared directly on social timelines and private messages (PM)</em> &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-on and extension buttons, or URLs shared directly on social timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
 
 <h4>Why Choose WPSSO?</h4>
 
