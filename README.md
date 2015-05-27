@@ -1,4 +1,4 @@
-<h1>WordPress Social Sharing Optimization</h1><h3>Improve Your Shared Content on Social Websites</h3>
+<h1>WordPress Social Sharing Optimization</h1><h3>Improve Your Shared Content on Social Sites</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
