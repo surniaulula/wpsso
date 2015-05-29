@@ -8,7 +8,7 @@ apply_filters( 'wpsso_description_pre_limit', $desc );
 apply_filters( 'wpsso_description_seed', '', $use_post, $add_hashtags, $custom_idx, $source_id );
 apply_filters( 'wpsso_doctype_schema_type', $item_type, $post_id, $obj );
 apply_filters( 'wpsso_get_avail', $ret );
-apply_filters( 'wpsso_get_config', self::$cf );
+apply_filters( 'wpsso_get_config', $cf );
 apply_filters( 'wpsso_get_defaults', $defaults );
 apply_filters( 'wpsso_get_options', $options );
 apply_filters( 'wpsso_get_post_defaults', $defaults );
@@ -16,14 +16,21 @@ apply_filters( 'wpsso_get_post_object', $obj, $use_post );
 apply_filters( 'wpsso_get_post_options', $options, $post_id, $attr );
 apply_filters( 'wpsso_get_site_defaults', $defaults );
 apply_filters( 'wpsso_get_site_options', $options );
+apply_filters( 'wpsso_get_taxonomy_defaults', $defaults );
+apply_filters( 'wpsso_get_taxonomy_options', $options, $user_id, $attr );
 apply_filters( 'wpsso_get_user_defaults', $defaults );
 apply_filters( 'wpsso_get_user_options', $options, $user_id, $attr );
 apply_filters( 'wpsso_hashtags', $hashtags, $post_id );
 apply_filters( 'wpsso_hashtags_seed', '', $post_id );
 apply_filters( 'wpsso_is_functions', $is_functions );
 apply_filters( 'wpsso_link_rel', $link_rel, $use_post, $obj );
+apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $use_post );		// ex: 'wpsso_link_rel_publisher_content'
 apply_filters( 'wpsso_load_lib', false, "$type/$sub/$id" );
+apply_filters( 'wpsso_'.$metabox.'_tabs', $tabs );				// ex: 'wpsso_og_tabs'
+apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_itemprop_description_content'
 apply_filters( 'wpsso_meta_name', $meta_name, $use_post, $obj );
+apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_name_twitter:description_content'
+apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_property_og:description_content'
 apply_filters( 'wpsso_meta_schema', $meta_schema, $use_post, $obj );
 apply_filters( 'wpsso_ngg_tags', $tags, $pid );
 apply_filters( 'wpsso_og', $og, $use_post, $obj );
@@ -47,6 +54,7 @@ apply_filters( 'wpsso_quote_seed', '' );
 apply_filters( 'wpsso_save_post_options', $opts, $post_id );
 apply_filters( 'wpsso_save_options', $opts, $options_name );
 apply_filters( 'wpsso_save_site_options', $opts );
+apply_filters( 'wpsso_save_taxonomy_options', $opts );
 apply_filters( 'wpsso_save_user_options', $opts, $user_id );
 apply_filters( 'wpsso_section', $section );
 apply_filters( 'wpsso_sharing_url', $url, $use_post, $add_page, $source_id );
