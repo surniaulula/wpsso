@@ -16,11 +16,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
-
-			if ( is_admin() ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+			if ( is_admin() )
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ) );
-			}
 		}
 
 		public function admin_enqueue_styles( $hook ) {
@@ -38,25 +37,34 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
 
 			switch ( $hook ) {
+				case 'edit-tags.php':
 				case 'user-edit.php':
 				case 'profile.php':
 				case 'post.php':
 				case 'post-new.php':
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'calling wp_enqueue_style() for editing page' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					break;
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' licenses page' );
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
 					add_thickbox();		// required to view plugin details box
 					// no break
 				case ( preg_match( '/_page_'.$lca.'-/', $hook ) ? true : false ) :
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-setting-pages' );
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					break;
 				case 'plugin-install.php':	// view plugin details thickbox
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'calling wp_enqueue_style() for plugin install page' );
 					$this->thickbox_inline_styles( $hook );
 					break;
 			}

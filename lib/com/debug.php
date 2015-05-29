@@ -79,23 +79,48 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			else return round( $mem / 1048576, 2).' mb'; 
 		}
 
-		public function args( $args = array() ) { 
+		public function args( $args = array(), $class_idx = 1, $function_idx = false ) { 
 			if ( $this->enabled !== true ) 
 				return;
 
-			$this->log( 'args '.$this->fmt_array( $args ), 2 ); 
+			if ( is_int( $class_idx ) ) {
+				if ( $function_idx === false )
+					$function_idx = $class_idx;
+				$class_idx++;
+			}
+
+			if ( is_int( $function_idx ) )
+				$function_idx++;
+			elseif ( $function_idx === false )
+				$function_idx = 2;
+
+			$this->log( 'args '.$this->fmt_array( $args ),
+				$class_idx, $function_idx ); 
 		}
 
-		public function log( $input = '', $backtrace = 1 ) {
+		public function log( $input = '', $class_idx = 1, $function_idx = false ) {
 			if ( $this->enabled !== true ) 
 				return;
-
-			$stack = debug_backtrace();
 			$log_msg = '';
-			$log_msg .= sprintf( '%-35s:: ', 
-				( empty( $stack[$backtrace]['class'] ) ? '' : $stack[$backtrace]['class'] ) );
-			$log_msg .= sprintf( '%-28s : ', 
-				( empty( $stack[$backtrace]['function'] ) ? '' : $stack[$backtrace]['function'] ) );
+			$stack = debug_backtrace();
+
+			if ( is_int( $class_idx ) ) {
+				if ( $function_idx === false )
+					$function_idx = $class_idx;
+				$log_msg .= sprintf( '%-35s:: ', 
+					( empty( $stack[$class_idx]['class'] ) ? 
+						'' : $stack[$class_idx]['class'] ) );
+			} else {
+				if ( $function_idx === false )
+					$function_idx = 1;
+				$log_msg .= sprintf( '%-35s:: ', $class_idx );
+			}
+
+			if ( is_int( $function_idx ) ) {
+				$log_msg .= sprintf( '%-28s : ', 
+					( empty( $stack[$function_idx]['function'] ) ? 
+						'' : $stack[$function_idx]['function'] ) );
+			} else $log_msg .= sprintf( '%-28s : ', $function_idx );
 
 			if ( is_multisite() ) {
 				global $blog_id; 
@@ -108,6 +133,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( $this->subsys['html'] == true )
 				$this->buffer[] = $log_msg;
+
 			if ( $this->subsys['wp'] == true )
 				error_log( $this->log_prefix.' '.$log_msg );
 		}
@@ -118,17 +144,18 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			echo $this->get_html( $data, $title, 2 );
 		}
 
-		public function get_html( $data = null, $title = null, $backtrace = 1 ) {
+		public function get_html( $data = null, $title = null, $class_idx = 1, $function_idx = false ) {
 			if ( $this->is_enabled( 'html' ) !== true ) 
 				return;
-
+			if ( $function_idx === false )
+				$function_idx = $class_idx;
 			$from = '';
 			$html = '<!-- '.$this->display_name.' debug';
 			$stack = debug_backtrace();
-			if ( ! empty( $stack[$backtrace]['class'] ) ) 
-				$from .= $stack[$backtrace]['class'].'::';
-			if ( ! empty( $stack[$backtrace]['function'] ) )
-				$from .= $stack[$backtrace]['function'];
+			if ( ! empty( $stack[$class_idx]['class'] ) ) 
+				$from .= $stack[$class_idx]['class'].'::';
+			if ( ! empty( $stack[$function_idx]['function'] ) )
+				$from .= $stack[$function_idx]['function'];
 			if ( $data === null ) {
 				//$this->log( 'truncating debug log' );
 				$data = $this->buffer;

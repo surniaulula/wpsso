@@ -79,10 +79,26 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// include additional information when debug mode is on
 			if ( $this->p->debug->enabled ) {
+
+				// show debug log
+				$this->p->debug->show_html( null, 'debug log' );
+
+				// show constants
 				$defined_constants = get_defined_constants( true );
 				$defined_constants['user']['WPSSO_NONCE'] = '********';
-				$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants['user'] ), 'wpsso constants' );
+				if ( is_multisite() )
+					$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 
+						$defined_constants['user'] ), 'multisite constants' );
+				$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/',
+					$defined_constants['user'] ), 'wpsso constants' );
 
+				// show active plugins
+				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
+
+				// show available modules
+				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
+
+				// show all plugin options
 				$opts = $this->p->options;
 				foreach ( $opts as $key => $val ) {
 					switch ( true ) {
@@ -92,41 +108,28 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$opts[$key] = '********';
 					}
 				}
-				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
-				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
-				$this->p->debug->show_html( null, 'debug log' );
 				$this->p->debug->show_html( $opts, 'wpsso settings' );
 
-				// on singular webpages, show the custom social settings
-				if ( is_singular() && ( $obj = $this->p->util->get_post_object() ) !== false ) {
-
-					$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-
-					if ( ! empty( $post_id ) && isset( $this->p->mods['util']['postmeta'] ) ) {
-						$meta_opts = $this->p->mods['util']['postmeta']->get_options( $post_id );
-						$this->p->debug->show_html( $meta_opts, 'wpsso post meta options for post id '.$post_id );
-					}
-				}
 			}	// end of debug information
 		}
 
-		public function extract_post_info( &$header_tags, &$post_info = array() ) {
+		public function extract_head_info( &$head_meta_tags, &$head_info = array() ) {
 			$vid = array();
 			$img = array();
-			foreach ( $header_tags as $tag ) {
+			foreach ( $head_meta_tags as $tag ) {
 				if ( ! isset( $tag[2] ) )
 					continue;
 				switch ( $tag[2] ) {
 					case 'name':
 						if ( isset( $tag[3] ) && 
 							$tag[3] === 'author' )
-								$post_info['author'] = $tag[5];
+								$head_info['author'] = $tag[5];
 						break;
 					case 'property':
 						if ( isset( $tag[3] ) && 
 							strpos( $tag[3], 'og:' ) === 0 &&
 							preg_match( '/^og:(description|title|type)$/', $tag[3], $key ) )
-								$post_info[$key[0]] = $tag[5];
+								$head_info[$key[0]] = $tag[5];
 						elseif ( isset( $tag[6] ) && 
 							$tag[6] === 'og:video:1' &&
 							strpos( $tag[3], 'og:image' ) === 0 )
@@ -139,10 +142,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 			if ( ! empty( $vid ) )	// video meta tags have precedence
-				$post_info['og_image'] = $vid;
-			else $post_info['og_image'] = $img;
+				$head_info['og_image'] = $vid;
+			else $head_info['og_image'] = $img;
 
-			return $post_info;
+			return $head_info;
 		}
 
 		public function get_header_html( $use_post = false, $read_cache = true, &$meta_og = array() ) {
@@ -166,17 +169,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
-
 			$obj = $this->p->util->get_post_object( $use_post );
-
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' : 
 					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
-
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'sharing url: '.$sharing_url );
 			$author_id = false;
 
 			$header_array = array();
@@ -201,16 +202,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Define an author_id, if one is available
 			 */
 			if ( is_singular() || $use_post !== false ) {
-
 				if ( ! empty( $obj->post_author ) )
 					$author_id = $obj->post_author;
 				elseif ( ! empty( $this->p->options['seo_def_author_id'] ) )
 					$author_id = $this->p->options['seo_def_author_id'];
 
-			} elseif ( is_author() || ( is_admin() && 
-				( $screen = get_current_screen() ) && 
-				( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-
+			} elseif ( SucomUtil::is_author_page() ) {
 				$author_id = $this->p->util->get_author_object( 'id' );
 
 			} elseif ( ( ! ( is_singular() || $use_post !== false ) && ! is_search() && 
@@ -235,16 +232,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Name / SEO meta tags
 			 */
 			$meta_name = array();
-			if ( isset( $this->p->options['seo_author_name'] ) && 
-				$this->p->options['seo_author_name'] !== 'none' )
-					$meta_name['author'] = $this->p->mods['util']['user']->get_author_name( $author_id, 
-						$this->p->options['seo_author_name'] );
+			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
+				if ( isset( $this->p->options['seo_author_name'] ) && 
+					$this->p->options['seo_author_name'] !== 'none' )
+						$meta_name['author'] = $this->p->mods['util']['user']->get_author_name( $author_id, 
+							$this->p->options['seo_author_name'] );
+			}
 
-			$meta_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
-				'...', $use_post, true, false, true, 'seo_desc' );	// add_hashtags = false
+			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
+				$meta_name['canonical'] = $sharing_url;
 
-			if ( ! empty( $this->p->options['rp_dom_verify'] ) )
-				$meta_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
+			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
+				$meta_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
+					'...', $use_post, true, false, true, 'seo_desc' );	// add_hashtags = false
+
+			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
+				if ( ! empty( $this->p->options['rp_dom_verify'] ) )
+					$meta_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
+			}
 
 			$meta_name = apply_filters( $lca.'_meta_name', $meta_name, $use_post, $obj );
 
@@ -253,12 +258,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$link_rel = array();
 
-			if ( ! empty( $author_id ) )
-				$link_rel['author'] = $this->p->mods['util']['user']->get_author_website_url( $author_id, 
-					$this->p->options['seo_author_field'] );
+			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
+				if ( ! empty( $author_id ) )
+					$link_rel['author'] = $this->p->mods['util']['user']->get_author_website_url( $author_id, 
+						$this->p->options['seo_author_field'] );
+			}
 
-			if ( ! empty( $this->p->options['seo_publisher_url'] ) )
-				$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
+			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {
+				if ( ! empty( $this->p->options['seo_publisher_url'] ) )
+					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
+			}
 
 			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $obj );
 
@@ -366,7 +375,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$html_prefix = empty( $comment ) ? '' : '<!-- '.$comment.' -->';
 
 			// add an additional secure_url meta tag for open graph images and videos
-			if ( $tag === 'meta' && $type === 'property' && 
+			if ( $tag === 'meta' && 
+				$type === 'property' && 
 				( $name === 'og:image' || $name === 'og:video' ) && 
 				strpos( $value, 'https:' ) === 0 ) {
 
@@ -382,12 +392,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$ret[] = array( $html_tag, $tag, $type, $name.':secure_url', $attr, $secure_url, $comment );
 			}
 			
-			$html_tag = '';
-			if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name] ) ) {
+			$filter_name = $this->p->cf['lca'].'_'.$tag.'_'.$type.'_'.$name.'_'.$attr;
+			$value = apply_filters( $filter_name, $value, $use_post );
+
+			if ( ! empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name] ) ) {
+				$html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'"/>'."\n";
+			} else {
+				$html_tag = '';
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
-			} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'"/>'."\n";
-			
+			}
 			$ret[] = array( $html_tag, $tag, $type, $name, $attr, $value, $comment );
 
 			return $ret;

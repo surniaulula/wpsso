@@ -8,19 +8,19 @@
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
 
-if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
+if ( ! class_exists( 'WpssoGplAdminTaxonomy' ) ) {
 
-	class WpssoGplAdminUser {
+	class WpssoGplAdminTaxonomy {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'user_header_rows' => 3,
-				'user_media_rows' => 3,
+				'taxonomy_header_rows' => 3,
+				'taxonomy_media_rows' => 3,
 			) );
 		}
 
-		public function filter_user_header_rows( $rows, $form, $head_info ) {
+		public function filter_taxonomy_header_rows( $rows, $form, $head_info ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
@@ -47,13 +47,13 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 				false ).'</td>';	// use_post = false
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Sharing URL', 'medium', 'post-sharing_url', $head_info ).
+			$this->p->util->th( 'Sharing URL', 'medium', 'meta-sharing_url', $head_info ).
 			'<td class="blank">'.$this->p->util->get_sharing_url( false ).'</td>';	// use_post = false
 
 			return $rows;
 		}
 
-		public function filter_user_media_rows( $rows, $form, $head_info ) {
+		public function filter_taxonomy_media_rows( $rows, $form, $head_info ) {
 
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';

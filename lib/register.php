@@ -114,7 +114,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private static function uninstall_plugin() {
-			global $wpdb;
 			$cf = WpssoConfig::get_config();
 
 			if ( ! defined( 'WPSSO_OPTIONS_NAME' ) )
@@ -138,9 +137,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						WpssoUser::delete_metabox_prefs( $user->ID );
 					}
 				}
+				foreach ( WpssoTaxonomy::get_public_terms() as $term_id )
+					WpssoTaxonomy::delete_term_meta( $term_id, WPSSO_META_NAME );
 			}
 
 			// delete transients
+			global $wpdb;
 			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_'.$cf['lca'].'_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
 			foreach( $expired as $transient ) { 

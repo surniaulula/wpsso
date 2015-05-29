@@ -40,6 +40,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
 					wp_enqueue_script( 'plugin-install' );	// required to view plugin details box
 					// no break
+				case 'edit-tags.php':
 				case 'user-edit.php':
 				case 'profile.php':
 				case 'post.php':

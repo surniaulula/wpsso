@@ -201,9 +201,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'admin-general':
 						case 'admin-advanced':
 						case 'admin-image-dimensions':
-						case 'admin-postmeta':
+						case 'admin-post':
+						case 'admin-taxonomy':
 						case 'admin-user':
-						case 'util-postmeta':
+						case 'util-post':
+						case 'util-taxonomy':
 						case 'util-user':
 							$ret[$sub]['*'] = $ret[$sub][$id] = true;
 							break;

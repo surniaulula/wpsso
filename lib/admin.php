@@ -112,7 +112,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, array( &$this, 'sanitize_options' ) );
+			register_setting( $this->p->cf['lca'].'_setting', 
+				WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
 		} 
 
 		public function set_readme_info( $expire_secs = 86400 ) {
@@ -239,7 +240,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// this method receives only a partial options array, so re-create a full one
 		// wordpress handles the actual saving of the options
-		public function sanitize_options( $opts ) {
+		public function registered_setting_sanitation( $opts ) {
+			$network = false;
 			if ( ! is_array( $opts ) ) {
 				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>'.$this->p->cf['uca'].' Error</b> : '.
 					__( 'Submitted settings are not an array.', WPSSO_TEXTDOM ), 'error' );
@@ -249,14 +251,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$def_opts = $this->p->opt->get_defaults();
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
-			$this->p->notice->trunc();				// clear all messages before sanitation checks
-			$opts = $this->p->opt->sanitize( $opts, $def_opts );
-			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME );
-			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Wait %d seconds for cache objects to expire (default) or use the \'Clear All Cache(s)\' button.', WPSSO_TEXTDOM ), $this->p->options['plugin_object_cache_exp'] ), true );
+			$this->p->notice->trunc();					// clear all messages before sanitation checks
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
+			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
+			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.
+				sprintf( __( 'Wait %d seconds for cache objects to expire (default) or use the \'Clear All Cache(s)\' button.', WPSSO_TEXTDOM ), $this->p->options['plugin_object_cache_exp'] ), true );
 			return $opts;
 		}
 
 		public function save_site_options() {
+			$network = true;
 			$page = empty( $_POST['page'] ) ? 
 				key( $this->p->cf['*']['lib']['sitesubmenu'] ) : $_POST['page'];
 
@@ -279,9 +283,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = empty( $_POST[WPSSO_SITE_OPTIONS_NAME] ) ? $def_opts : 
 				SucomUtil::restore_checkboxes( $_POST[WPSSO_SITE_OPTIONS_NAME] );
 			$opts = array_merge( $this->p->site_options, $opts );
-			$this->p->notice->trunc();				// clear all messages before sanitation checks
-			$opts = $this->p->opt->sanitize( $opts, $def_opts );	// cleanup excess options and sanitize
-			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts );
+			$this->p->notice->trunc();					// clear all messages before sanitation checks
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
+			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ), true );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
@@ -296,8 +300,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_form_page() {
 			wp_enqueue_script( 'postbox' );
-			$upload_dir = wp_upload_dir();		// returns assoc array with path info
-			$user_opts = $this->p->mods['util']['user']->get_options();
 
 			if ( ! empty( $_GET['action'] ) ) {
 				if ( empty( $_GET[ WPSSO_NONCE ] ) )
@@ -466,6 +468,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->form->get_hidden( 'options_version', $this->p->cf['opt']['version'] );
 			echo $this->form->get_hidden( 'plugin_version', $this->p->cf['plugin'][$this->p->cf['lca']]['version'] );
 
+			// wp_nonce_field( $action, $name, $referer, $echo
+			// $name = the hidden form field to be created (aka $_POST[$name]).
 			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
@@ -690,9 +694,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$help_links .= ' and <a href="'.$info['url']['notes'].'" target="_blank">Notes</a>';
 					$help_links .= '</li>';
 				}
-				if ( ! empty( $info['url']['pro_ticket'] ) && $this->p->check->aop( $lca ) )
-					$help_links .= '<li><a href="'.$info['url']['pro_ticket'].'" 
-						target="_blank">Submit a Support Ticket</a></li>';
+				if ( ! empty( $info['url']['pro_support'] ) && $this->p->check->aop( $lca ) )
+					$help_links .= '<li><a href="'.$info['url']['pro_support'].'" 
+						target="_blank">Open a Support Ticket</a></li>';
 				elseif ( ! empty( $info['url']['wp_support'] ) )
 					$help_links .= '<li><a href="'.$info['url']['wp_support'].'" 
 						target="_blank">Post in Support Forum</a></li>';

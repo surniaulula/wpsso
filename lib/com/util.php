@@ -12,24 +12,36 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
 
-		private static $crawler_name = null;
-		private static $plugins_idx = array();	// hash of active site and network plugins
-		private static $site_plugins = array();
-		private static $network_plugins = array();
-
-		private $urls_found = array();		// array to detect duplicate images, etc.
-		private $inline_vars = array(
+		protected $p;
+		protected $size_labels = array();	// reference array for image size labels
+		protected $urls_found = array();	// array to detect duplicate images, etc.
+		protected $inline_vars = array(
 			'%%post_id%%',
 			'%%request_url%%',
 			'%%sharing_url%%',
 		);
-		private $inline_vals = array();
+		protected $inline_vals = array();
 
-		protected $p;
+		protected static $plugins_idx = array();	// hash of active site and network plugins
+		protected static $site_plugins = array();
+		protected static $network_plugins = array();
+		protected static $crawler_name = null;		// saved crawler name from user-agent
+		protected static $is_author = null;		// saved is_author_page() check
+		protected static $is_term = null;		// saved is_term_page() check
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->debug->mark();
+		}
+
+		// returns false or the admin screen id text string
+		public static function get_screen_id() {
+			if ( is_admin() ) {
+				$screen = get_current_screen();
+				if ( ! empty( $screen->id ) )
+					return $screen->id;
+			}
+			return false;
 		}
 
 		public static function sanitize_tag( $tag ) {
@@ -268,30 +280,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function get_author_object( $ret = 'object' ) {
-			$obj = false;
-			if ( is_author() ) {
-				$obj = get_query_var( 'author_name' ) ? 
-					get_userdata( get_query_var( 'author' ) ) : 
-					get_user_by( 'slug', get_query_var( 'author_name' ) );
-			} elseif ( is_admin() ) {
-				$author_id = empty( $_GET['user_id'] ) ? get_current_user_id() : $_GET['user_id'];
-				$obj = get_userdata( $author_id );
-			} else return $obj;
-
-			switch ( $ret ) {
-				case 'id':
-				case 'ID':
-					return $obj->ID;
-					break;
-				default:
-					return $obj;
-					break;
-			}
-		}
-
 		// on archives and taxonomies, this will return the first post object
-		public function get_post_object( $use_post = false ) {
+		public function get_post_object( $use_post = false, $ret = 'object' ) {
 			$obj = false;
 			if ( $use_post === false ) {
 				$obj = get_queried_object();
@@ -309,9 +299,116 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$obj = apply_filters( $this->p->cf['lca'].'_get_post_object', $obj, $use_post );
 
-			if ( $obj === false || ! is_object( $obj ) )
-				return false;
-			else return $obj;
+			switch ( $ret ) {
+				case 'id':
+				case 'ID':
+					return isset( $obj->ID ) ? 
+						$obj->ID : false;
+					break;
+				default:
+					if ( $obj === false || ! is_object( $obj ) )
+						return false;
+					else return $obj;
+					break;
+			}
+		}
+
+		public static function is_term_page() {
+			if ( self::$is_term !== null )
+				return self::$is_term;
+			elseif ( is_tax() || is_category() || is_tag() )
+				return self::$is_term = true;
+			elseif ( is_admin() ) {
+				if ( SucomUtil::get_req_val( 'taxonomy' ) !== '' && 
+					SucomUtil::get_req_val( 'tag_ID' ) !== '' )
+						return self::$is_term = true;
+			}
+			return self::$is_term = false;
+		}
+
+		public static function is_category_page() {
+			if ( self::is_term_page() ) {
+				if ( is_category() )
+					return true;
+				elseif ( is_admin() ) {
+					if ( SucomUtil::get_req_val( 'taxonomy' ) === 'category' )
+						return true;
+				}
+			}
+			return false;
+		}
+
+		public function get_term_object( $ret = 'object' ) {
+			$obj = false;	// return false by default
+			if ( is_tax() || is_tag() || is_category() ) {
+				$obj = get_queried_object();
+			} elseif ( is_admin() ) {
+				if ( ( $tax_slug = SucomUtil::get_req_val( 'taxonomy' ) ) !== '' &&
+					( $term_id = SucomUtil::get_req_val( 'tag_ID' ) ) !== '' )
+						$obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+			} else return false;
+
+			switch ( $ret ) {
+				case 'term_id':
+				case 'id':
+				case 'ID':
+					return isset( $obj->term_id ) ? 
+						$obj->term_id : false;
+					break;
+				default:
+					return $obj;
+					break;
+			}
+		}
+
+		public static function is_author_page() {
+			if ( self::$is_author !== null )
+				return self::$is_author;
+			elseif ( is_author() || 
+				( is_admin() && ( $screen_id = self::get_screen_id() ) !== false &&
+					( $screen_id === 'user-edit' || $screen_id === 'profile' ) ) )
+						return self::$is_author = true;
+			else return self::$is_author = false;
+		}
+
+		public function get_author_object( $ret = 'object' ) {
+			$obj = false;
+			if ( is_author() ) {
+				$obj = get_query_var( 'author_name' ) ? 
+					get_userdata( get_query_var( 'author' ) ) : 
+					get_user_by( 'slug', get_query_var( 'author_name' ) );
+			} elseif ( is_admin() ) {
+				if ( ( $author_id = SucomUtil::get_req_val( 'user_id' ) ) === '' )
+					$author_id = get_current_user_id();
+				$obj = get_userdata( $author_id );
+			} else return false;
+
+			switch ( $ret ) {
+				case 'id':
+				case 'ID':
+					return isset( $obj->ID ) ? 
+						$obj->ID : false;
+					break;
+				default:
+					return $obj;
+					break;
+			}
+		}
+
+		public static function get_req_val( $key, $method = 'ANY' ) {
+			if ( $method === 'ANY' )
+				$method = $_SERVER['REQUEST_METHOD'];
+			switch( $method ) {
+				case 'POST':
+					if ( isset( $_POST[$key] ) )
+						return sanitize_text_field( $_POST[$key] );
+					break;
+				case 'GET':
+					if ( isset( $_GET[$key] ) )
+						return sanitize_text_field( $_GET[$key] );
+					break;
+			}
+			return '';
 		}
 
 		// "use_post = false" when used for open graph meta tags and buttons in widget,
@@ -321,14 +418,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_singular() || $use_post !== false ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false )
 					return $url;
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-
+				$post_id = empty( $obj->ID ) || 
+					empty( $obj->post_type ) ? 0 : $obj->ID;
 				if ( ! empty( $post_id ) ) {
-					if ( isset( $this->p->mods['util']['postmeta'] ) )
-						$url = $this->p->mods['util']['postmeta']->get_options( $post_id, 'sharing_url' );
+					if ( isset( $this->p->mods['util']['post'] ) )
+						$url = $this->p->mods['util']['post']->get_options( $post_id, 'sharing_url' );
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom postmeta sharing_url = '.$url );
+							$this->p->debug->log( 'custom post sharing_url = '.$url );
 					} else $url = get_permalink( $post_id );
 
 					if ( $add_page && get_query_var( 'page' ) > 1 ) {
@@ -343,25 +440,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page, $source_id );
 			} else {
-				if ( is_search() )
+				if ( is_search() ) {
 					$url = get_search_link();
-				elseif ( is_front_page() )
+
+				} elseif ( is_front_page() ) {
 					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
-				elseif ( $this->is_posts_page() )
+
+				} elseif ( $this->is_posts_page() ) {
 					$url = get_permalink( get_option( 'page_for_posts' ) );
-				elseif ( is_tax() || is_tag() || is_category() ) {
-					$term = get_queried_object();
-					$url = get_term_link( $term, $term->taxonomy );
+
+				} elseif ( self::is_term_page() ) {
+					$term = $this->get_term_object();
+					if ( ! empty( $term->term_id ) ) {
+						if ( isset( $this->p->mods['util']['taxonomy'] ) )
+							$url = $this->p->mods['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
+						if ( ! empty( $url ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'custom taxonomy sharing_url = '.$url );
+						} else $url = get_term_link( $term, $term->taxonomy );
+					} 
 					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
-				}
-				elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() )
-					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
 
-				elseif ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
-					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-
+				} elseif ( self::is_author_page() ) {
 					$author = $this->get_author_object();
-
 					if ( ! empty( $author->ID ) ) {
 						if ( isset( $this->p->mods['util']['user'] ) )
 							$url = $this->p->mods['util']['user']->get_options( $author->ID, 'sharing_url' );
@@ -370,6 +471,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
 						} else $url = get_author_posts_url( $author->ID );
 					}
+					$url = apply_filters( $this->p->cf['lca'].'_author_url', $url, $author );
+
+				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
+					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
+
 				} elseif ( is_archive() ) {
 					if ( is_date() ) {
 						if ( is_day() )
@@ -380,6 +486,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 							$url = get_year_link( get_query_var( 'year' ) );
 					}
 				}
+
 				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
 					global $wp_rewrite;
 					if ( ! $wp_rewrite->using_permalinks() )
@@ -389,7 +496,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
 							$url = home_url( $base );
 						}
-						$url = user_trailingslashit( trailingslashit( $url ).trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
+						$url = user_trailingslashit( trailingslashit( $url ).
+							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
 					}
 				}
 			}
@@ -712,8 +820,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
 				$num_meta = false;
 				if ( ! empty( $post_id ) && 
-					array_key_exists( 'postmeta', $this->p->mods['util'] ) )
-						$num_meta = $this->p->mods['util']['postmeta']->get_options( $post_id, $max_name );
+					isset( $this->p->mods['util']['post'] ) )
+						$num_meta = $this->p->mods['util']['post']->get_options( $post_id, $max_name );
 				if ( $num_meta !== false ) {
 					$og_max[$max_name] = $num_meta;
 					if ( $this->p->debug->enabled )

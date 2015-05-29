@@ -12,19 +12,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		protected $p;
-		protected $size_labels = array();	// reference array for image size labels
-		protected $urls_found = array();	// array to detect duplicate images, etc.
-
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$this->add_actions();
 		}
 
 		protected function add_actions() {
 			// add default image sizes from plugin settings
-			// add_plugin_image_sizes() is also called from WpssoPostmeta::set_header_tags() to set image sizes for the post id
+			// add_plugin_image_sizes() is also called from the WpssoPost::set_head_meta_tags() method
+			// to set custom image dimensions for the post id
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from an url
 			add_action( 'admin_init', array( &$this, 'add_plugin_image_sizes' ), -100 );
 
@@ -50,8 +48,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return $size_name;
 		}
 
-		// called directly (with or without a post ID), or from the 'wp' action ($post_id will be an object)
-		public function add_plugin_image_sizes( $post_id = false, $sizes = array(), $filter = true ) {
+		// called directly (with or without an id) and from the 'wp' action ($id will be an object)
+		public function add_plugin_image_sizes( $id = false, $sizes = array(), $filter = true, $mod = false ) {
 			/*
 			 * allow various plugin extensions to provide their image names, labels, etc.
 			 * the first dimension array key is the option name prefix by default
@@ -69,25 +67,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 *	)
 			 */
 			if ( $filter === true )
-				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $post_id );
+				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $id, $mod );
 			$meta_opts = array();
 
-			// allow custom post meta to override the image size options
-			// get the post meta if we can determine a post_id
-			if ( isset( $this->p->mods['util']['postmeta'] ) ) {
-				// $post_id may be false, or an object
-				if ( ! is_numeric( $post_id ) && is_singular() ) {
-					$obj = $this->get_post_object();
-					$post_id = empty( $obj->ID ) || 
+			if ( is_object( $id ) ) {
+				$obj = $id;
+				$id = false;
+				if ( $mod === 'post' )
+					$id = empty( $obj->ID ) || 
 						empty( $obj->post_type ) ? 0 : $obj->ID;
-				}
-				// on non-singular pages, $post_id may be an object here
-				if ( is_numeric( $post_id ) && $post_id > 0 ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'reading custom meta for post id '.$post_id );
-					$meta_opts = $this->p->mods['util']['postmeta']->get_options( $post_id );
-				} 
+				elseif ( $mod === 'user' )
+					$id = empty( $obj->ID ) ? 0 : $obj->ID;
+				elseif ( $mod === 'taxonomy' )
+					$id = empty( $obj->term_id ) ? 0 : $obj->term_id;
+			} elseif ( $id === false ) {
+				if ( $mod === 'post' )
+					$id = $this->p->util->get_post_object( $id, 'id' );
+				elseif ( $mod === 'user' )
+					$id = $this->p->util->get_author_object( 'id' );
+				elseif ( $mod === 'taxonomy' )
+					$id = $this->p->util->get_term_object( 'id' );
 			}
+
+			if ( ! empty( $mod ) && ! empty( $id ) )
+				$meta_opts = $this->get_mod_options( $mod, $id );
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 				if ( ! is_array( $size_info ) ) {
@@ -108,7 +111,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$def_opts = $this->p->opt->get_defaults();
 						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];		// fallback to default value
 					}
-
 					if ( $key === 'crop' )							// make sure crop is true or false
 						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
 				}
@@ -124,7 +126,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					// allow custom function hooks to make changes
 					if ( $filter === true )
 						$size_info = apply_filters( $this->p->cf['lca'].'_size_info_'.$size_info['name'], 
-							$size_info, $post_id );
+							$size_info, $id, $mod );
 
 					// a lookup array for image size labels, used in image size error messages
 					$this->size_labels[$this->p->cf['lca'].'-'.$size_info['name']] = $size_info['label'];
@@ -201,9 +203,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'publish':
 					$lang = SucomUtil::get_locale();
 					$cache_type = 'object cache';
-					$sharing_url = $this->p->util->get_sharing_url( $post_id );
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
+					$sharing_url = $this->p->util->get_sharing_url( $post_id );
 	
 					$transients = array(
 						'SucomCache::get' => array(
@@ -305,8 +307,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $topics;
 		}
 
-		public function sanitize_option_value( $key, $val, $def_val, $opts_type = false ) {
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $opts_type );
+		// returns a specific option from the custom social settings meta
+		public function get_mod_options( $mod, $id = false, $idx = false, $attr = array() ) {
+			if ( ! empty( $id ) ) {
+				if ( isset( $this->p->mods['util'][$mod] ) ) {
+					// use first matching index key
+					if ( ! is_array( $idx ) )
+						$idx = array( $idx );
+					foreach ( array_unique( $idx ) as $key ) {
+						$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
+						if ( ! empty( $ret ) )
+							break;
+					}
+					if ( ! empty( $ret ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'custom '.$mod.' '.
+								( $key === false ? 'options' : $key ).' = '.
+								( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+						return $ret;
+					}
+				}
+			}
+			return false;
+		}
+
+		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod = false ) {
+			// hooked by the sharing class
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
 			$reset_msg = __( 'resetting the option to its default value.', WPSSO_TEXTDOM );
 
 			// pre-filter most values to remove html
@@ -356,7 +383,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							200 : $this->p->cf['head']['min_img_dim'];
 					else $min_int = 1;
 
-					if ( $val === '' && $opts_type !== false )	// custom options allowed to have blanks
+					if ( $val === '' && $mod !== false )	// custom options allowed to have blanks
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.
@@ -415,10 +442,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_head_meta( $url, $query = '/html/head/meta', $remove_self = false ) {
 			if ( empty( $query ) )
 				return false;
-
 			if ( ( $html = $this->p->cache->get( $url, 'raw', 'transient' ) ) === false )
 				return false;
-
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
 				$pre = '<(!-- |meta name="'.$this->p->cf['lca'].':comment" content=")';
@@ -426,7 +451,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
-
 			$doc = new DomDocument();		// since PHP v4.1.0
 			@$doc->loadHTML( $html );		// suppress parsing errors
 			$xpath = new DOMXPath( $doc );

@@ -23,8 +23,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
-			$sizes['rp_img'] = array( 'name' => 'richpin', 'label' => 'Rich Pin Image Dimensions' );
-			$sizes['og_img'] = array( 'name' => 'opengraph', 'label' => 'Open Graph Image Dimensions' );
+			$sizes['rp_img'] = array( 'name' => 'richpin', 'label' => 'Pinterest Rich Pin' );
+			$sizes['og_img'] = array( 'name' => 'opengraph', 'label' => 'Facebook / Open Graph' );
 			return $sizes;
 		}
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			// get all videos
-			// check first, to add video preview images
+			// check before getting all images, to add any video preview images first
 			if ( ! isset( $og['og:video'] ) ) {
 				if ( empty( $og_max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled )
@@ -190,7 +190,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						if ( $video_images > 0 ) {
 							$og_max['og_img_max'] -= $video_images;
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $video_images.' video preview images found (og_img_max adjusted to '.$og_max['og_img_max'].')' );
+								$this->p->debug->log( $video_images.
+									' video preview images found (og_img_max adjusted to '.$og_max['og_img_max'].')' );
 						}
 					}
 				} 
@@ -275,20 +276,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			// get_og_video() is only available in the Pro version
 			if ( $this->p->check->aop() ) {
-				if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
-					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-	
+				$num_remains = $this->p->media->num_remains( $og_ret, $num );
+				if ( ! empty( $post_id ) ) {
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_video( $num_remains, 
+						$post_id, $check_dupes, $meta_pre ) );
+
+				} elseif ( SucomUtil::is_author_page() ) {
 					$author_id = $this->p->util->get_author_object( 'id' );
-					$num_remains = $this->p->media->num_remains( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
 						$author_id, $check_dupes, $meta_pre ) );
-				}
 	
-				// post id should be > 0 to fetch post meta
-				if ( ! empty( $post_id ) ) {
-					$num_remains = $this->p->media->num_remains( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['postmeta']->get_og_video( $num_remains, 
-						$post_id, $check_dupes, $meta_pre ) );
+				} elseif ( SucomUtil::is_term_page() ) {
+					$term_id = $this->p->util->get_term_object( 'id' );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_video( $num_remains, 
+						$term_id, $check_dupes, $meta_pre ) );
 				}
 			}
 
@@ -352,23 +353,23 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				return $og_ret;	// stop here and return the image array
 			}
 
-			// get_og_image() is only available in the Pro version
-			if ( $this->p->check->aop() ) {
-				if ( is_author() || ( is_admin() && ( $screen = get_current_screen() ) && 
-					( $screen->id === 'user-edit' || $screen->id === 'profile' ) ) ) {
-	
-					$author_id = $this->p->util->get_author_object( 'id' );
-					$num_remains = $this->p->media->num_remains( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
-						$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
-				}
-			}
-
-			// check for custom meta, featured, or attached image(s)
-			// allow for empty post_id in order to execute featured/attached image filters for modules
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
-			$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
-				$size_name, $post_id, $check_dupes, $meta_pre ) );
+			if ( SucomUtil::is_author_page() ) {
+				$author_id = $this->p->util->get_author_object( 'id' );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
+
+			} elseif ( SucomUtil::is_term_page() ) {
+				$term_id = $this->p->util->get_term_object( 'id' );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
+					$size_name, $term_id, $check_dupes, $force_regen, $meta_pre ) );
+
+			} else {
+				// check for custom meta, featured, or attached image(s)
+				// allow for empty post_id in order to execute featured/attached image filters for modules
+				$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
+					$size_name, $post_id, $check_dupes, $meta_pre ) );
+			}
 
 			// check for ngg shortcodes and query vars
 			if ( $this->p->is_avail['media']['ngg'] === true && 

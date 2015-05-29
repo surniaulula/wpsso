@@ -25,7 +25,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		private function modules() {
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				$type = $this->p->is_avail['util']['um'] &&
+				$type = $this->p->is_avail['aop'] &&
+					$this->p->is_avail['util']['um'] &&
 					$this->p->check->aop( $lca ) ? 'pro' : 'gpl';
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;

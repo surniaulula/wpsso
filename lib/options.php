@@ -36,10 +36,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['defaults']['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
 					$this->p->cf['opt']['defaults']['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
 	
-				// disable the description meta tag (by default) if a known SEO plugin is detected
-				if ( ! empty( $this->p->is_avail['seo']['*'] ) )
-					$this->p->cf['opt']['defaults']['add_meta_name_description'] = 0;
-	
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {
@@ -85,7 +81,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			} else return $this->p->cf['opt']['site_defaults'];
 		}
 
-		public function check_options( $options_name, &$opts = array() ) {
+		public function check_options( $options_name, &$opts = array(), $network = false ) {
 			$opts_err_msg = '';
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
@@ -102,23 +98,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
 							$this->upg = new WpssoOptionsUpgrade( $this->p );
 						}
-						$opts = $this->upg->options( $options_name, $opts, $this->get_defaults() );
+						$opts = $this->upg->options( $options_name, $opts, $this->get_defaults(), $network );
 					}
-					if ( $options_name == WPSSO_OPTIONS_NAME ) {
+					if ( $network === false ) {
 						if ( is_admin() && current_user_can( 'manage_options' ) )
-							$this->save_options( $options_name, $opts );
+							$this->save_options( $options_name, $opts, $network );
 						if ( $update_version === true )
 							set_transient( $this->p->cf['lca'].'_update_redirect', true, 60 * 60 );
-					} else $this->save_options( $options_name, $opts );
+					} else $this->save_options( $options_name, $opts, $network );
 				}
 
-				$opts['add_meta_name_generator'] = ( defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
-					WPSSO_META_GENERATOR_DISABLE ) ? 0 : 1;
-
-				if ( ! empty( $this->p->is_avail['seo']['*'] ) &&
-					isset( $opts['add_meta_name_description'] ) ) {
-					$opts['add_meta_name_description'] = 0;
-					$opts['add_meta_name_description:is'] = 'disabled';
+				if ( $network === false ) {
+					if ( ! empty( $this->p->is_avail['seo']['*'] ) ) {
+						foreach ( array( 'canonical', 'description' ) as $name ) {
+							$opts['add_meta_name_'.$name] = 0;
+							$opts['add_meta_name_'.$name.':is'] = 'disabled';
+						}
+					}
+					$opts['add_meta_name_generator'] = defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
+						WPSSO_META_GENERATOR_DISABLE ? 0 : 1;
 				}
 
 				// add any missing 'plugin_add_to' options for current post types
@@ -134,24 +132,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				else $opts_err_msg = 'returned an unknown condition when reading '.$options_name.' from';
 
 				$this->p->debug->log( 'WordPress '.$opts_err_msg.' the options database table.' );
-				if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
-					$opts = $this->get_site_defaults();
-				else $opts = $this->get_defaults();
+				if ( $network === false )
+					$opts = $this->get_defaults();
+				else $opts = $this->get_site_defaults();
 			}
 
 			if ( is_admin() ) {
 				if ( ! empty( $opts_err_msg ) ) {
-					if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
-						$url = $this->p->util->get_admin_url( 'network' );
-					else $url = $this->p->util->get_admin_url( 'general' );
+					if ( $network === false )
+						$url = $this->p->util->get_admin_url( 'general' );
+					else $url = $this->p->util->get_admin_url( 'network' );
 					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. Plugin settings have been returned to their default values. <a href="'.$url.'">Please review and save the new settings</a>.' );
 				}
-				if ( $options_name == WPSSO_OPTIONS_NAME ) {
-					if ( $this->p->check->aop() &&
-						! empty( $this->p->is_avail['ecom']['*'] ) &&
+				if ( $network === false ) {
+					if ( $this->p->check->aop() && ! empty( $this->p->is_avail['ecom']['*'] ) &&
 						$opts['tc_prod_def_label2'] === $this->p->cf['opt']['defaults']['tc_prod_def_label2'] &&
 						$opts['tc_prod_def_data2'] === $this->p->cf['opt']['defaults']['tc_prod_def_data2'] ) {
-	
 						$this->p->notice->inf( 'An eCommerce plugin has been detected. Please update Twitter\'s <em>Product Card Default 2nd Label</em> option values on the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings page' ).' (to something else than \''.$this->p->cf['opt']['defaults']['tc_prod_def_label2'].'\' and \''.$this->p->cf['opt']['defaults']['tc_prod_def_data2'].'\').' );
 					}
 				}
@@ -160,7 +156,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// sanitize and validate options
-		public function sanitize( $opts = array(), $def_opts = array(), $opts_type = false ) {
+		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
 
 			// make sure we have something to work with
 			if ( empty( $def_opts ) || ! is_array( $def_opts ) )
@@ -177,7 +173,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					unset( $opts[$key] );
 				elseif ( ! empty( $key ) ) {
 					$def_val = array_key_exists( $key, $def_opts ) ? $def_opts[$key] : '';
-					$opts[$key] = $this->p->util->sanitize_option_value( $key, $val, $def_val, $opts_type );
+					$opts[$key] = $this->p->util->sanitize_option_value( $key, $val, $def_val, $network, $mod );
 				}
 			}
 
@@ -252,7 +248,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// save both options and site options
-		public function save_options( $options_name, &$opts ) {
+		public function save_options( $options_name, &$opts, $network = false ) {
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
@@ -263,7 +259,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts['options_version'] = $this->p->cf['opt']['version'];
 			$opts['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
 
-			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name );
+			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
 			// update_option() returns false if options are the same or there was an error, 
 			// so check to make sure they need to be updated to avoid throwing a false error
