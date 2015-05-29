@@ -96,8 +96,8 @@
 </ul></li>
 <li>Customizable image dimensions for each Twitter Card type.</li>
 <li>Additional profile contact fields with configurable label and field names.</li>
-<li>Custom settings and meta tag values for each Post, Page, and custom post type.</li>
-<li>Options to exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.</li>
+<li>A custom Social Setings metabox for each Post, Page, custom post type, user profile, and taxonomy (category and tag) pages.</li>
+<li>Options to include / exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.</li>
 <li>Support for embedded videos in content text (iframe and object HTML tags).</li>
 <li><strong>Integrates with 3rd party plugins and services for additional image, video, product, and content information</strong> (see <a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 
