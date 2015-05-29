@@ -417,8 +417,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* **Renamed the 'postmeta' library file, gpl/pro module references, and message index names to 'post'**.
-	* **Renamed the post meta options filters to improve uniformity with the user and taxonomy filter names**.
+	* ***Renamed the 'postmeta' library file, gpl/pro module references, and message index names to 'post'***.
+	* ***Renamed the post meta options filters to improve uniformity with the user and taxonomy filter names***.
 		* Renamed the `wpsso_get_meta_defaults` filter to `wpsso_get_post_defaults`
 		* Renamed the `wpsso_get_meta_options` filter to `wpsso_get_post_options`
 		* Renamed the `wpsso_save_meta_options` filter to `wpsso_save_post_options`
