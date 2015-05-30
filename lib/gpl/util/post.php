@@ -18,6 +18,14 @@ if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			$this->add_actions();
 		}
+
+		public function get_og_image( $num = 0, $size_name = 'thumbnail', $id, $check_dupes = true, $force_regen = false, $meta_prefix = 'og' ) {
+			return $this->not_implemented( __METHOD__, array() );
+		}
+
+		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_prefix = 'og' ) {
+			return $this->not_implemented( __METHOD__, array() );
+		}
 	}
 }
 
