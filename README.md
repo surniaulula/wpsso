@@ -40,7 +40,7 @@
 
 </blockquote></p>
 
-<p>Download the <a href="https://wordpress.org/plugins/wpsso/">Free version of WPSSO on WordPress.org</a> and <a href="http://wpsso.com/extend/plugins/wpsso/">purchase Pro license(s) on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+<p>Download the Free version of WPSSO from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>, and <a href="http://wpsso.com/extend/plugins/wpsso/">purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 
 <h4>Quick List of Features</h4>
 
