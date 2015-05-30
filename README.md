@@ -14,7 +14,7 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-on and extension buttons, or URLs shared directly on social timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons and extension toolbar buttons, or URLs shared directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
 
 <h4>Why Choose WPSSO?</h4>
 
