@@ -11,6 +11,7 @@ Tested Up To: 4.2.2
 Stable Tag: 3.2
 
 Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
+Improves your shared content and social SEO - no matter how webpages are shared - using buttons, browser addons, or paste URLs in timelines &amp; PMs.
 
 == Description ==
 
