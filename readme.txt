@@ -529,6 +529,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.3 =
+
+Added the custom Social Settings metabox to category and tag editing pages, renamed the 'postmeta' filters, and many new filters for developers.
+
 = 3.2 =
 
 Added a new "Add Schema WebSite JSON-LD" option on the SSO General settings page, under the Google / Schema tab.
