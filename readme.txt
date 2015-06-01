@@ -44,12 +44,6 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Free / Basic Version</strong>
 
-<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" width="1200" height="851" />
-&nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" width="1200" height="1691" />
-</div>
-
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
 * Optional fallback to a default image and video for index and search webpages.
@@ -83,12 +77,6 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <div style="clear:both;"></div>
 
 <strong>Pro / Power-User Version</strong>
-
-<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="1200" height="1778" />
-&nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" width="1200" height="1122" />
-</div>
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
@@ -133,6 +121,10 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <h4>3rd Party Integration</h4>
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
+
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" width="1200" height="1122" />
+</div>
 
 <strong>Images and Videos</strong>
 
@@ -197,6 +189,12 @@ WPSSO provides <a href="https://developers.google.com/structured-data/customize/
 = Complete Social Meta Tags =
 
 WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options *are* available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.
+
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png" width="1200" height="798" />
+&nbsp;
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-settings-header-tags.png" width="1200" height="1731" />
+</div>
 
 WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/types/summary-card), [Large Image Summary](https://dev.twitter.com/docs/cards/large-image-summary-card), [Photo](https://dev.twitter.com/docs/cards/types/photo-card), [Gallery](https://dev.twitter.com/docs/cards/types/gallery-card), [Player](https://dev.twitter.com/docs/cards/types/player-card) and [Product](https://dev.twitter.com/docs/cards/types/product-card) Twitter Cards &mdash; *including configurable image sizes for each card type*.
 
