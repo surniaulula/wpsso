@@ -44,7 +44,11 @@
 
 <p><strong>Free / Basic Version</strong></p>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" /></p><p></p>
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" />
+&nbsp;
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" />
+</div>
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -85,7 +89,7 @@
 
 <p><strong>Pro / Power-User Version</strong></p>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" /></p><p></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" /></p><p></p>
 
 <ul>
 <li>Twitter Card meta tags:

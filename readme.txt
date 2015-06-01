@@ -44,7 +44,11 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Free / Basic Version</strong>
 
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" />
+&nbsp;
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" />
+</div>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -80,7 +84,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Pro / Power-User Version</strong>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" style="width:50%;min-width:256px;max-width:810px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
@@ -142,7 +146,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 
 <strong>eCommerce Products</strong>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
 
 WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
@@ -170,7 +174,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
 
 <h4>Social Profiles for Google Search</h4>
 
