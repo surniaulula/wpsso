@@ -85,6 +85,8 @@
 
 <p><strong>Pro / Power-User Version</strong></p>
 
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" /></p><p></p>
+
 <ul>
 <li>Twitter Card meta tags:
 
@@ -143,8 +145,6 @@
 
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" /></p><p></p>
-
 <p><strong>Images and Videos</strong></p>
 
 <p>WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).</p>
@@ -160,6 +160,8 @@
 </blockquote>
 
 <p><strong>eCommerce Products</strong></p>
+
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" /></p><p></p>
 
 <p>WPSSO (Pro version) also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a>, <a href="https://dev.twitter.com/docs/cards/types/product-card">Twitter Product Cards</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
 

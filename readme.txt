@@ -80,6 +80,8 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Pro / Power-User Version</strong>
 
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" style="width:50%;min-width:256px;max-width:810px;float:right;margin:0 0 20px 40px;" />
+
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
 	* *Player Card* &mdash; An embedded video in the Post / Page content.
@@ -124,8 +126,6 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" style="width:50%;min-width:256px;max-width:810px;float:right;margin:0 0 20px 40px;" />
-
 <strong>Images and Videos</strong>
 
 WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).
@@ -141,6 +141,8 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 </blockquote>
 
 <strong>eCommerce Products</strong>
+
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
 
 WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
