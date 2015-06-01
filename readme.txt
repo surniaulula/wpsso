@@ -140,7 +140,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
 <img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" width="1200" height="1096" />
 </div>
 
@@ -172,7 +172,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
 <img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="1200" height="697" />
 </div>
 
