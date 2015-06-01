@@ -154,10 +154,6 @@ WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) a
 
 <div style="clear:both;"></div>
 
-<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
-</div>
-
 <h4>User Profile Social Contacts</h4>
 
 WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:
@@ -193,7 +189,7 @@ WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http:/
 <div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
 <img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png" width="1200" height="798" />
 &nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-settings-header-tags.png" width="1200" height="1731" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png" width="1200" height="3126" />
 </div>
 
 WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/types/summary-card), [Large Image Summary](https://dev.twitter.com/docs/cards/large-image-summary-card), [Photo](https://dev.twitter.com/docs/cards/types/photo-card), [Gallery](https://dev.twitter.com/docs/cards/types/gallery-card), [Player](https://dev.twitter.com/docs/cards/types/player-card) and [Product](https://dev.twitter.com/docs/cards/types/product-card) Twitter Cards &mdash; *including configurable image sizes for each card type*.

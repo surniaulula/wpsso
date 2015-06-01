@@ -174,10 +174,6 @@
 
 <div style="clear:both;"></div>
 
-<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
-</div>
-
 <h4>User Profile Social Contacts</h4>
 
 <p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:</p>
@@ -215,7 +211,7 @@
 <div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
 <img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png" width="1200" height="798" />
 &nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-settings-header-tags.png" width="1200" height="1731" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png" width="1200" height="3126" />
 </div>
 
 <p>WPSSO (Pro version) provides the <a href="https://dev.twitter.com/docs/cards/types/summary-card">Summary</a>, <a href="https://dev.twitter.com/docs/cards/large-image-summary-card">Large Image Summary</a>, <a href="https://dev.twitter.com/docs/cards/types/photo-card">Photo</a>, <a href="https://dev.twitter.com/docs/cards/types/gallery-card">Gallery</a>, <a href="https://dev.twitter.com/docs/cards/types/player-card">Player</a> and <a href="https://dev.twitter.com/docs/cards/types/product-card">Product</a> Twitter Cards &mdash; <em>including configurable image sizes for each card type</em>.</p>
