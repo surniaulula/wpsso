@@ -40,11 +40,11 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 </blockquote></p>
 
-<p>Download the Free version of WPSSO from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>, and <a href="http://wpsso.com/extend/plugins/wpsso/">purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
-
 = Quick List of Features =
 
 <strong>Free / Basic Version</strong>
+
+<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -76,7 +76,8 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Pro / Power-User Version</strong>
 
-* **No Risk 30 Day Refund Policy**
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
 	* *Player Card* &mdash; An embedded video in the Post / Page content.

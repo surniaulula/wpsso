@@ -40,11 +40,11 @@
 
 </blockquote></p>
 
-<p>Download the Free version of WPSSO from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>, and <a href="http://wpsso.com/extend/plugins/wpsso/">purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
-
 <h4>Quick List of Features</h4>
 
 <p><strong>Free / Basic Version</strong></p>
+
+<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -81,8 +81,9 @@
 
 <p><strong>Pro / Power-User Version</strong></p>
 
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+
 <ul>
-<li><strong>No Risk 30 Day Refund Policy</strong></li>
 <li>Twitter Card meta tags:
 
 <ul>
