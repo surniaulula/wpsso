@@ -163,7 +163,7 @@ WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) a
 <div style="clear:both;"></div>
 
 <div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/social/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
 </div>
 
 <h4>User Profile Social Contacts</h4>
