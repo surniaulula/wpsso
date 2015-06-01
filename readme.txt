@@ -38,11 +38,13 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
+<div style="clear:both;"></div>
+
 <h4> Quick List of Features</h4>
 
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
-
 <strong>Free / Basic Version</strong>
+
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -58,7 +60,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 * Includes author and publisher profile URLs for Facebook and Google Search.
 * Includes hashtags from Post and Page WordPress tags.
 * Includes the author's name for Pinterest Rich Pins.
-* Includes a Google / SEO description meta tag if a known SEO plugin is not detected.
+* <div style="clear:both;"></div><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />Includes a Google / SEO description meta tag if a known SEO plugin is not detected.
 * Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
 * Provides Facebook, Google+ and Twitter URL user profile contact fields.
 * Validation tools and special meta tag preview tabs on admin edit pages.

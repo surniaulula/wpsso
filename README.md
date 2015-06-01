@@ -38,11 +38,13 @@
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
+<div style="clear:both;"></div>
+
 <h4> Quick List of Features</h4>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" /></p><p></p>
-
 <p><strong>Free / Basic Version</strong></p>
+
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" /></p><p></p>
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -59,21 +61,22 @@
 <li>Includes author and publisher profile URLs for Facebook and Google Search.</li>
 <li>Includes hashtags from Post and Page WordPress tags.</li>
 <li>Includes the author's name for Pinterest Rich Pins.</li>
-<li>Includes a Google / SEO description meta tag if a known SEO plugin is not detected.</li>
-<li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.</li>
-<li>Provides Facebook, Google+ and Twitter URL user profile contact fields.</li>
-<li>Validation tools and special meta tag preview tabs on admin edit pages.</li>
-<li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
-<li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
-<li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
-<li><strong>Additional free extension plugins for WPSSO</strong>:
-
-<ul>
-<li><a href="https://wordpress.org/plugins/wpsso-am/">App Meta</a> for Apple Store / iTunes and Google Play App meta tags.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">Place and Location Meta</a> for Facebook <em>Location</em> and Pinterest <em>Place</em> Rich Pin meta tags.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-ssb/">Social Sharing Buttons</a> for fast and accurate social sharing buttons.</li>
-</ul></li>
+<li></li>
 </ul>
+
+<div style="clear:both;"></div>
+
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" /></p><p>Includes a Google / SEO description meta tag if a known SEO plugin is not detected.
+* Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
+* Provides Facebook, Google+ and Twitter URL user profile contact fields.
+* Validation tools and special meta tag preview tabs on admin edit pages.
+* Customizable <em>multilingual</em> Site Title and Site Description texts.
+* Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.
+* Uses object and transient caches to provide incredibly fast execution speeds.
+* <strong>Additional free extension plugins for WPSSO</strong>:
+    * <a href="https://wordpress.org/plugins/wpsso-am/">App Meta</a> for Apple Store / iTunes and Google Play App meta tags.
+    * <a href="https://wordpress.org/plugins/wpsso-plm/">Place and Location Meta</a> for Facebook <em>Location</em> and Pinterest <em>Place</em> Rich Pin meta tags.
+    * <a href="https://wordpress.org/plugins/wpsso-ssb/">Social Sharing Buttons</a> for fast and accurate social sharing buttons.</p>
 
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
