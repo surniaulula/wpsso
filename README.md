@@ -82,7 +82,7 @@
 <p><strong>Pro / Power-User Version</strong></p>
 
 <blockquote>
-<a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 </blockquote>
 
 <ul>

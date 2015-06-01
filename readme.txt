@@ -77,7 +77,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <strong>Pro / Power-User Version</strong>
 
 <blockquote>
-<a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
 </blockquote>
 
 * Twitter Card meta tags:
