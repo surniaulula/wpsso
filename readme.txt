@@ -60,7 +60,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 * Includes author and publisher profile URLs for Facebook and Google Search.
 * Includes hashtags from Post and Page WordPress tags.
 * Includes the author's name for Pinterest Rich Pins.
-* <div style="clear:both;"></div><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />Includes a Google / SEO description meta tag if a known SEO plugin is not detected.
+* Includes a Google / SEO description meta tag if a known SEO plugin is not detected.
 * Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
 * Provides Facebook, Google+ and Twitter URL user profile contact fields.
 * Validation tools and special meta tag preview tabs on admin edit pages.
