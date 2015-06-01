@@ -45,9 +45,9 @@
 <p><strong>Free / Basic Version</strong></p>
 
 <div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" width="1200" height="851" />
 &nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" width="1200" height="1691" />
 </div>
 
 <ul>
@@ -89,7 +89,12 @@
 
 <p><strong>Pro / Power-User Version</strong></p>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" /></p><p></p>
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="1200" height="1778" />
+&nbsp;
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" width="1200" height="1122" />
+</div></p>
 
 <ul>
 <li>Twitter Card meta tags:
@@ -163,9 +168,11 @@
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<p><strong>eCommerce Products</strong></p>
+<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" width="1200" height="1096" />
+</div>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" /></p><p></p>
+<p><strong>eCommerce Products</strong></p>
 
 <p>WPSSO (Pro version) also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a>, <a href="https://dev.twitter.com/docs/cards/types/product-card">Twitter Product Cards</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
 
@@ -174,6 +181,10 @@
 <p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
 
 <div style="clear:both;"></div>
+
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
+<img src="https://surniaulula.github.io/wpsso/images/social/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
+</div>
 
 <h4>User Profile Social Contacts</h4>
 
@@ -195,7 +206,9 @@
 
 <div style="clear:both;"></div>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" /></p><p></p>
+<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="1200" height="697" />
+</div>
 
 <h4>Social Profiles for Google Search</h4>
 

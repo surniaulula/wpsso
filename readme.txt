@@ -45,9 +45,9 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <strong>Free / Basic Version</strong>
 
 <div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" width="1200" height="851" />
 &nbsp;
-<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" />
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page.png" width="1200" height="1691" />
 </div>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
@@ -84,7 +84,11 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <strong>Pro / Power-User Version</strong>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="1200" height="1778" />
+&nbsp;
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png" width="1200" height="1122" />
+</div>
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
@@ -144,9 +148,11 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<strong>eCommerce Products</strong>
+<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" width="1200" height="1096" />
+</div>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+<strong>eCommerce Products</strong>
 
 WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
@@ -155,6 +161,10 @@ WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org
 WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) and [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.
 
 <div style="clear:both;"></div>
+
+<div style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;">
+<img src="https://surniaulula.github.io/wpsso/images/social/wpsso-user-profile-contact-methods.png" width="1200" height="949" />
+</div>
 
 <h4>User Profile Social Contacts</h4>
 
@@ -174,7 +184,9 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="width:40%;min-width:256px;max-width:1200px;float:right;margin:0 0 20px 40px;" />
+<div style="width:40%;min-width:256px;max-width:1200px;float:left;margin:0 40px 20px 0;">
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="1200" height="697" />
+</div>
 
 <h4>Social Profiles for Google Search</h4>
 
