@@ -38,13 +38,11 @@
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
-<h4>Quick List of Features</h4>
+<h4> Quick List of Features</h4>
+
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" /></p><p></p>
 
 <p><strong>Free / Basic Version</strong></p>
-
-<blockquote>
-<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
-</blockquote>
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -77,13 +75,13 @@
 </ul></li>
 </ul>
 
+<blockquote>
+<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
+</blockquote>
+
 <div style="clear:both;"></div>
 
 <p><strong>Pro / Power-User Version</strong></p>
-
-<blockquote>
-<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
-</blockquote>
 
 <ul>
 <li>Twitter Card meta tags:
@@ -133,14 +131,19 @@
 </ul></li>
 </ul>
 
+<blockquote>
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a No Risk 30 Day Refund Policy).</p>
+</blockquote>
+
 <div style="clear:both;"></div>
 
 <h4>3rd Party Integration</h4>
 
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png" /></p><p>
-<strong>Images and Videos</strong></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" /></p><p></p>
+
+<p><strong>Images and Videos</strong></p>
 
 <p>WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).</p>
 
@@ -184,7 +187,7 @@
 
 <div style="clear:both;"></div>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png" /></p><p></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" /></p><p></p>
 
 <h4>Social Profiles for Google Search</h4>
 

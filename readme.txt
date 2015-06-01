@@ -38,13 +38,11 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
-= Quick List of Features =
+<h4> Quick List of Features</h4>
+
+<img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-general-settings-page.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
 
 <strong>Free / Basic Version</strong>
-
-<blockquote>
-<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
-</blockquote>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -72,13 +70,13 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 	* [Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) for Facebook *Location* and Pinterest *Place* Rich Pin meta tags.
 	* [Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) for fast and accurate social sharing buttons.
 
+<blockquote>
+<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
+</blockquote>
+
 <div style="clear:both;"></div>
 
 <strong>Pro / Power-User Version</strong>
-
-<blockquote>
-<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <strong>No Risk 30 Day Refund Policy</strong>).</p>
-</blockquote>
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
@@ -114,13 +112,18 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 		* Wistia Videos
 		* YouTube Videos and Playlists
 
+<blockquote>
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a No Risk 30 Day Refund Policy).</p>
+</blockquote>
+
 <div style="clear:both;"></div>
 
 <h4>3rd Party Integration</h4>
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<img src="https://surniaulula.github.io/wpsso/assets/screenshot-22.png" style="width:50%;min-width:256px;max-width:607px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" style="width:50%;min-width:256px;max-width:810px;float:right;margin:0 0 20px 40px;" />
+
 <strong>Images and Videos</strong>
 
 WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).
@@ -139,13 +142,13 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 
 WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
-**Forums and Social**
+<strong>Forums and Social</strong>
 
 WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) and [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.
 
 <div style="clear:both;"></div>
 
-= User Profile Social Contacts =
+<h4>User Profile Social Contacts</h4>
 
 WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:
 
@@ -163,7 +166,8 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<img src="https://surniaulula.github.io/wpsso/assets/screenshot-23.png" style="width:50%;min-width:256px;max-width:1024px;float:right;margin:0 0 20px 40px;" />
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="width:50%;min-width:256px;max-width:1200;float:right;margin:0 0 20px 40px;" />
+
 <h4>Social Profiles for Google Search</h4>
 
 WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
