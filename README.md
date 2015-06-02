@@ -142,7 +142,7 @@
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/></p>
 </div>
 
 <p><strong>Images and Videos</strong></p>
@@ -160,7 +160,7 @@
 </blockquote>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/></p>
 </div>
 
 <p><strong>eCommerce Products</strong></p>
@@ -194,7 +194,7 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
 
 <h4>Social Profiles for Google Search</h4>

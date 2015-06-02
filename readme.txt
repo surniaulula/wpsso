@@ -122,8 +122,8 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/>
+<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/></p>
 </div>
 
 <strong>Images and Videos</strong>
@@ -140,8 +140,8 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/>
+<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/></p>
 </div>
 
 <strong>eCommerce Products</strong>
@@ -172,8 +172,8 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/>
+<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
 
 <h4>Social Profiles for Google Search</h4>
@@ -186,7 +186,7 @@ WPSSO provides <a href="https://developers.google.com/structured-data/customize/
 
 WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options *are* available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.
 
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png"/></p>
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png"/></p>
 </div>
