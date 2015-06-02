@@ -310,9 +310,7 @@
 
 <h4>Professional Support</h4>
 
-<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/codex/plugins/wpsso/faq/">FAQ</a> and <a href="https://wpsso.com/codex/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://support.wpsso.surniaulula.com/">Pro version support website</a>.</p>
-
-<p><strong>We do not require WordPress admin access to support the plugin</strong> &mdash; All support is provided from the front-end using HTML debugging information within the webpage (see the <em>Add Hidden Debug Messages</em> option on the SSO Advanced settings page).</p>
+<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/codex/plugins/wpsso/faq/">FAQ</a> and <a href="https://wpsso.com/codex/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
 
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
 
