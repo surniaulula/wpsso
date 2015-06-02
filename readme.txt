@@ -14,7 +14,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 == Description ==
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:0 40px 20px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons and extension toolbar buttons, or URLs shared directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 80px 60px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons and extension toolbar buttons, or URLs shared directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
 
 = Why Choose WPSSO? =
 
@@ -122,7 +122,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/></p>
 </div>
 
@@ -140,7 +140,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/></p>
 </div>
 
@@ -172,7 +172,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 
-<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
 
@@ -186,7 +186,7 @@ WPSSO provides <a href="https://developers.google.com/structured-data/customize/
 
 WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options *are* available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.
 
-<div style="width:50%;min-width:256px;max-width:1200px;height:auto;float:right;margin:0 0 20px 40px;">
+<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png"/></p>
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png"/></p>
 </div>
