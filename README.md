@@ -247,7 +247,7 @@
 <li>og:title</li>
 <li>og:type</li>
 <li>og:url</li>
-<li>og:video</li>
+<li>og:video:url</li>
 <li>og:video:secure_url</li>
 <li>og:video:width</li>
 <li>og:video:height</li>
