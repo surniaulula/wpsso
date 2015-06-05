@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.2
-Stable Tag: 3.3
+Stable Tag: 3.3.2
 
 Improves shared content and social SEO - no matter how webpages are shared - using buttons, browser addons, or paste URLs in timelines &amp; PMs.
 
@@ -426,7 +426,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.3.2 =
+= Version 3.3.2 (2015/06/05) =
 
 * **New Features**
 	* *None*
@@ -446,7 +446,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 		* `WpssoProEcomWoocommerce::is_product_category()`
 		* `WpssoProEcomWoocommerce::is_product_tag()`
 
-= Version 3.3 (2015/04/31) =
+= Version 3.3 (2015/05/31) =
 
 * **New Features**
 	* Added the custom Social Settings metabox to category and tag editing pages.
