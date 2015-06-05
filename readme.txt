@@ -442,9 +442,9 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Developer Notes**
 	* **Renamed the 'og:video' meta tag to 'og:video:url'**.
 	* Added three new methods in the WooCommerce module to check for product, category, and tag pages (Pro version). Unlike the original functions provided by WooCommerce, these methods work on both the admin *and* front-end sides.
-		* WpssoProEcomWoocommerce::is_product() 
-		* WpssoProEcomWoocommerce::is_product_category() 
-		* WpssoProEcomWoocommerce::is_product_tag() 
+		* `WpssoProEcomWoocommerce::is_product()`
+		* `WpssoProEcomWoocommerce::is_product_category()`
+		* `WpssoProEcomWoocommerce::is_product_tag()`
 
 = Version 3.3 (2015/04/31) =
 
