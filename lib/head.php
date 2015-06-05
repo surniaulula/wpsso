@@ -114,8 +114,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function extract_head_info( &$head_meta_tags, &$head_info = array() ) {
-			$vid = array();
 			$img = array();
+			$video_img = array();
+
 			foreach ( $head_meta_tags as $tag ) {
 				if ( ! isset( $tag[2] ) )
 					continue;
@@ -133,7 +134,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						elseif ( isset( $tag[6] ) && 
 							$tag[6] === 'og:video:1' &&
 							strpos( $tag[3], 'og:image' ) === 0 )
-								$vid[$tag[3]] = $tag[5];
+								$video_img[$tag[3]] = $tag[5];
 						elseif ( isset( $tag[6] ) && 
 							$tag[6] === 'og:image:1' &&
 							strpos( $tag[3], 'og:image' ) === 0 )
@@ -141,8 +142,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						break;
 				}
 			}
-			if ( ! empty( $vid ) )	// video meta tags have precedence
-				$head_info['og_image'] = $vid;
+			if ( ! empty( $video_img ) )	// video meta tags have precedence
+				$head_info['og_image'] = $video_img;
 			else $head_info['og_image'] = $img;
 
 			return $head_info;
@@ -286,9 +287,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					( $this->p->check->aop() ? 'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
 				$this->get_tag_array( 'link', 'rel', $link_rel, $use_post ),
-				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),
 				$this->get_tag_array( 'meta', 'property', $meta_og, $use_post ),
 				$this->get_tag_array( 'meta', 'itemprop', $meta_schema, $use_post ),
+				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),		// seo description is last
 				SucomUtil::a2aa( $this->p->schema->get_json_array( $post_id, $author_id,
 					$this->p->cf['lca'].'-opengraph' ) )
 			);
@@ -320,7 +321,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( is_array( $f_val ) ) {
 					foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
 						if ( SucomUtil::is_assoc( $s_val ) ) {
-							ksort( $s_val );
 							foreach ( $s_val as $t_name => $t_val )		// 3rd-dimension array (associative)
 								$ret = array_merge( $ret, $this->get_single_tag( $tag, $type, 
 									$t_name, $t_val, $f_name.':'.( $s_num + 1 ), $use_post ) );
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// add an additional secure_url meta tag for open graph images and videos
 			if ( $tag === 'meta' && 
 				$type === 'property' && 
-				( $name === 'og:image' || $name === 'og:video' ) && 
+				( $name === 'og:image' || $name === 'og:video:url' ) && 
 				strpos( $value, 'https:' ) === 0 ) {
 
 				$html_tag = '';

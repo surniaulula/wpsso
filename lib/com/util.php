@@ -319,21 +319,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			elseif ( is_tax() || is_category() || is_tag() )
 				return self::$is_term = true;
 			elseif ( is_admin() ) {
-				if ( SucomUtil::get_req_val( 'taxonomy' ) !== '' && 
-					SucomUtil::get_req_val( 'tag_ID' ) !== '' )
+				if ( self::get_req_val( 'taxonomy' ) !== '' && 
+					self::get_req_val( 'tag_ID' ) !== '' )
 						return self::$is_term = true;
 			}
 			return self::$is_term = false;
 		}
 
 		public static function is_category_page() {
-			if ( self::is_term_page() ) {
-				if ( is_category() )
-					return true;
-				elseif ( is_admin() ) {
-					if ( SucomUtil::get_req_val( 'taxonomy' ) === 'category' )
+			if ( is_category() )
+				return true;
+			elseif ( is_admin() ) {
+				if ( self::is_term_page() &&
+					self::get_req_val( 'taxonomy' ) === 'category' )
 						return true;
-				}
 			}
 			return false;
 		}
@@ -343,8 +342,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_tax() || is_tag() || is_category() ) {
 				$obj = get_queried_object();
 			} elseif ( is_admin() ) {
-				if ( ( $tax_slug = SucomUtil::get_req_val( 'taxonomy' ) ) !== '' &&
-					( $term_id = SucomUtil::get_req_val( 'tag_ID' ) ) !== '' )
+				if ( ( $tax_slug = self::get_req_val( 'taxonomy' ) ) !== '' &&
+					( $term_id = self::get_req_val( 'tag_ID' ) ) !== '' )
 						$obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
 			} else return false;
 
@@ -378,7 +377,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					get_userdata( get_query_var( 'author' ) ) : 
 					get_user_by( 'slug', get_query_var( 'author_name' ) );
 			} elseif ( is_admin() ) {
-				if ( ( $author_id = SucomUtil::get_req_val( 'user_id' ) ) === '' )
+				if ( ( $author_id = self::get_req_val( 'user_id' ) ) === '' )
 					$author_id = get_current_user_id();
 				$obj = get_userdata( $author_id );
 			} else return false;
@@ -832,14 +831,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function push_max( &$dst, &$src, $num = 0 ) {
-			if ( ! is_array( $dst ) || ! is_array( $src ) ) return false;
+			if ( ! is_array( $dst ) || 
+				! is_array( $src ) ) 
+					return false;
 			// if the array is not empty, or contains some non-empty values, then push it
-			if ( ! empty( $src ) && array_filter( $src ) ) array_push( $dst, $src );
+			if ( ! empty( $src ) && 
+				array_filter( $src ) ) 
+					array_push( $dst, $src );
 			return $this->slice_max( $dst, $num );	// returns true or false
 		}
 
 		public function slice_max( &$arr, $num = 0 ) {
-			if ( ! is_array( $arr ) ) return false;
+			if ( ! is_array( $arr ) )
+				return false;
 			$has = count( $arr );
 			if ( $num > 0 ) {
 				if ( $has == $num ) {
@@ -857,8 +861,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function is_maxed( &$arr, $num = 0 ) {
-			if ( ! is_array( $arr ) ) return false;
-			if ( $num > 0 && count( $arr ) >= $num ) return true;
+			if ( ! is_array( $arr ) ) 
+				return false;
+			if ( $num > 0 && count( $arr ) >= $num ) 
+				return true;
 			return false;
 		}
 

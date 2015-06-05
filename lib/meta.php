@@ -103,15 +103,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_rows_head_tags( &$head_meta_tags ) {
 			$rows = array();
 			foreach ( $head_meta_tags as $m ) {
-				if ( ! empty( $m[1] ) )
-					$rows[] = '<th class="xshort">'.$m[1].'</th>'.
-					'<th class="xshort">'.$m[2].'</th>'.
-					'<td class="short">'.( isset( $m[6] ) ? '<!-- '.$m[6].' -->' : '' ).$m[3].'</td>'.
-					'<th class="xshort">'.$m[4].'</th>'.
-					'<td class="wide">'.( strpos( $m[5], 'http' ) === 0 ? 
-						'<a href="'.$m[5].'">'.$m[5].'</a>' : $m[5] ).'</td>';
+				if ( empty( $m[1] ) || 
+					empty( $this->p->options['add_'.$m[1].'_'.$m[2].'_'.$m[3]] ) )
+						continue;
+
+				$rows[] = '<th class="xshort">'.$m[1].'</th>'.
+				'<th class="xshort">'.$m[2].'</th>'.
+				'<td class="short">'.( empty( $m[6] ) ? '' : '<!-- '.$m[6].' -->' ).$m[3].'</td>'.
+				'<th class="xshort">'.$m[4].'</th>'.
+				'<td class="wide">'.( strpos( $m[5], 'http' ) === 0 ? 
+					'<a href="'.$m[5].'">'.$m[5].'</a>' : $m[5] ).'</td>';
 			}
-			sort( $rows );
 			return $rows;
 		}
 
@@ -380,7 +382,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							get_class( $this ) );	// log extended class name
 					$og_video = $this->p->media->get_video_info( $url, 0, 0, $check_dupes );
 					if ( empty( $og_video ) )	// fallback to the original custom video URL
-						$og_video['og:video'] = $url;
+						$og_video['og:video:url'] = $url;
 					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) ) 
 						return $og_ret;
 				}

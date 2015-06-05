@@ -159,8 +159,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				else $pid = false;
 
 				if ( ! empty( $pid ) ) {
-					list( $og_image['og:image'], $og_image['og:image:width'], $og_image['og:image:height'], $og_image['og:image:cropped'], 
-						$og_image['og:image:id'] ) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+					list(
+						$og_image['og:image'],
+						$og_image['og:image:width'],
+						$og_image['og:image:height'],
+						$og_image['og:image:cropped'], 
+						$og_image['og:image:id']
+					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 					if ( ! empty( $og_image['og:image'] ) )
 						$this->p->util->push_max( $og_ret, $og_image, $num );
 				}
@@ -200,8 +205,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! empty( $attach_id ) ) {
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0 
 					$og_image = array();
-					list( $og_image['og:image'], $og_image['og:image:width'], $og_image['og:image:height'], $og_image['og:image:cropped'], 
-						$og_image['og:image:id'] ) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
+					list(
+						$og_image['og:image'],
+						$og_image['og:image:width'],
+						$og_image['og:image:height'],
+						$og_image['og:image:cropped'],
+						$og_image['og:image:id']
+					) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
 					if ( ! empty( $og_image['og:image'] ) &&
 						$this->p->util->push_max( $og_ret, $og_image, $num ) )
 							return $og_ret;
@@ -237,8 +247,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$attach_ids = apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id );
 					foreach ( $attach_ids as $pid ) {
 						$og_image = array();
-						list( $og_image['og:image'], $og_image['og:image:width'], $og_image['og:image:height'], $og_image['og:image:cropped'],
-							$og_image['og:image:id'] ) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+						list(
+							$og_image['og:image'],
+							$og_image['og:image:width'],
+							$og_image['og:image:height'],
+							$og_image['og:image:cropped'],
+							$og_image['og:image:id']
+						) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 						if ( ! empty( $og_image['og:image'] ) &&
 							$this->p->util->push_max( $og_ret, $og_image, $num ) )
 								break;	// end foreach and apply filters
@@ -523,14 +538,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$og_image = array();
 					switch ( $attr_name ) {
 						case 'data-wp-pid' :
-							list( $og_image['og:image'], $og_image['og:image:width'], $og_image['og:image:height'], $og_image['og:image:cropped'],
-								$og_image['og:image:id'] ) = $this->get_attachment_image_src( $attr_value, $size_name, false );
+							list(
+								$og_image['og:image'],
+								$og_image['og:image:width'],
+								$og_image['og:image:height'],
+								$og_image['og:image:cropped'],
+								$og_image['og:image:id']
+							) = $this->get_attachment_image_src( $attr_value, $size_name, false );
 							break;
 						// filter hook for 3rd party modules to return image information
 						case ( preg_match( '/^data-[a-z]+-pid$/', $attr_name ) ? true : false ):
 							$filter_name = $this->p->cf['lca'].'_get_content_'.$tag_name.'_'.( preg_replace( '/-/', '_', $attr_name ) );
-							list( $og_image['og:image'], $og_image['og:image:width'], $og_image['og:image:height'], $og_image['og:image:cropped'],
-								$og_image['og:image:id'] ) = apply_filters( $filter_name, array( null, null, null, null ), $attr_value, $size_name, false );
+							list(
+								$og_image['og:image'],
+								$og_image['og:image:width'],
+								$og_image['og:image:height'],
+								$og_image['og:image:cropped'],
+								$og_image['og:image:id']
+							) = apply_filters( $filter_name, array( null, null, null, null ), $attr_value, $size_name, false );
 							break;
 						default :
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
@@ -664,16 +689,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default video url = '.$url );
-				$og_video = $this->get_video_info( $url, 0, 0, $check_dupes );
-				if ( empty( $og_video ) )	// fallback to the original custom video URL
-					$og_video['og:video'] = $url;
-				if ( $this->p->util->push_max( $og_ret, $og_video, $num ) ) 
-					return $og_ret;
+				// fallback to video url if necessary
+				$og_video = $this->get_video_info( $url, 0, 0, $check_dupes, true );
+				if ( ! empty( $og_video ) && 
+					$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
+						return $og_ret;
 			}
 			return $og_ret;
 		}
 
-		/* Purpose: Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks. */
+		/**
+		 * Purpose: Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks.
+		 */
 		public function get_content_videos( $num = 0, $post_id = 0, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -750,8 +777,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( $embed_url, $embed_width = 0, $embed_height = 0, $check_dupes = true ) {
-			if ( empty( $embed_url ) ) 
+		public function get_video_info( $url, $embed_width = 0, $embed_height = 0, $check_dupes = true, $fallback = false ) {
+			if ( empty( $url ) ) 
 				return array();
 
 			$filter_name = $this->p->cf['lca'].'_video_info';
@@ -762,16 +789,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_video = array(
-				'og:video' => '',
-				'og:video:type' => 'application/x-shockwave-flash',
-				'og:video:width' => $embed_width,
-				'og:video:height' => $embed_height,
+				'og:video:url' => '',
+				'og:video:embed_url' => '',
+				'og:video:secure_url' => '',
+				'og:video:type' => 'application/x-shockwave-flash',	// default type, after the url
+				'og:video:width' => $embed_width,			// default width
+				'og:video:height' => $embed_height,			// default height
 				'og:image' => '',
 				'og:image:width' => -1,
 				'og:image:height' => -1,
 			);
 
-			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
+			$og_video = apply_filters( $filter_name, $og_video, $url, $embed_width, $embed_height );
 
 			if ( $this->p->debug->enabled ) {
 				foreach ( array( 'video', 'image' ) as $type )
@@ -782,10 +811,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// cleanup any extra video meta tags - just in case
-			if ( empty( $og_video['og:video'] ) || 
-				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:video'] ) ) )
+			if ( empty( $og_video['og:video:url'] ) || 
+				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:video:url'] ) ) )
 					unset ( 
-						$og_video['og:video'],
+						$og_video['og:video:url'],
+						$og_video['og:video:embed_url'],
 						$og_video['og:video:secure_url'],
 						$og_video['og:video:type'],
 						$og_video['og:video:width'],
@@ -804,7 +834,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$og_video['og:image:height']
 						);
 
-			if ( empty( $og_video['og:video'] ) && 
+			// fallback to the original url
+			if ( empty( $og_video['og:video:url'] ) && $fallback === true ) {
+				if ( ! $check_dupes || $this->p->util->is_uniq_url( $url ) )
+					$og_video['og:video:url'] = $url;
+			}
+
+			if ( empty( $og_video['og:video:url'] ) && 
 				empty( $og_video['og:image'] ) ) 
 					return array();
 			else return $og_video;

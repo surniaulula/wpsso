@@ -25,6 +25,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'tc_prod_def_l2' => 'tc_prod_def_label2',
 			'tc_prod_def_d2' => 'tc_prod_def_data2',
 			'og_publisher_url' => 'fb_publisher_url',
+			'add_meta_property_og:video' => 'add_meta_property_og:video:url',
 		);
 
 		protected $p;

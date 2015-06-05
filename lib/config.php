@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.3',		// plugin version
+					'version' => '3.3.2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -198,11 +198,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso339',				// increment when changing default options
+				'version' => 'sso340',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
-					'schema_desc_len' => 300,		// meta itemprop="description" maximum text length
+					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
 					'schema_website_json' => 1,
 					'schema_publisher_json' => 1,
 					'schema_author_json' => 1,
@@ -317,7 +317,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:image:secure_url' => 1,
 					'add_meta_property_og:image:width' => 1,
 					'add_meta_property_og:image:height' => 1,
-					'add_meta_property_og:video' => 1,
+					'add_meta_property_og:video:url' => 1,
 					'add_meta_property_og:video:secure_url' => 1,
 					'add_meta_property_og:video:width' => 1,
 					'add_meta_property_og:video:height' => 1,

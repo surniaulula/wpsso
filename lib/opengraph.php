@@ -80,31 +80,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:url'] = $this->p->util->get_sharing_url( $use_post, true, 
 					$this->p->util->get_source_id( 'opengraph' ) );
 
-			if ( ! isset( $og['og:title'] ) )
-				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $use_post );
-
-			if ( ! isset( $og['og:locale'] ) ) {
-				// get the current or configured language for og:locale
-				$lang = empty( $this->p->options['fb_lang'] ) ? 
-					SucomUtil::get_locale( $post_id ) : $this->p->options['fb_lang'];
-
-				$lang = apply_filters( $this->p->cf['lca'].'_lang', 
-					$lang, SucomUtil::get_pub_lang( 'facebook' ), $post_id );
-
-				$og['og:locale'] = $lang;
-			}
-
-			if ( ! isset( $og['og:site_name'] ) )
-				$og['og:site_name'] = $this->get_site_name( $post_id );
-
-			if ( ! isset( $og['og:description'] ) )
-				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $use_post );
-
+			// define the type after the url
 			if ( ! isset( $og['og:type'] ) ) {
 
-				/* singular posts / pages are articles by default
-				 * check the post_type for a match with a known open graph type 
-				 */
+				// singular posts / pages are articles by default
+				// check the post_type for a match with a known open graph type
 				if ( is_singular() || $use_post !== false ) {
 					if ( ! empty( $obj->post_type ) )
 						$post_type = $obj->post_type;
@@ -147,6 +127,26 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:type'] = apply_filters( $this->p->cf['lca'].'_og_type', $og['og:type'], $use_post );
 			}
 
+			if ( ! isset( $og['og:locale'] ) ) {
+				// get the current or configured language for og:locale
+				$lang = empty( $this->p->options['fb_lang'] ) ? 
+					SucomUtil::get_locale( $post_id ) : $this->p->options['fb_lang'];
+
+				$lang = apply_filters( $this->p->cf['lca'].'_lang', 
+					$lang, SucomUtil::get_pub_lang( 'facebook' ), $post_id );
+
+				$og['og:locale'] = $lang;
+			}
+
+			if ( ! isset( $og['og:site_name'] ) )
+				$og['og:site_name'] = $this->get_site_name( $post_id );
+
+			if ( ! isset( $og['og:title'] ) )
+				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $use_post );
+
+			if ( ! isset( $og['og:description'] ) )
+				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $use_post );
+
 			// if the page is an article, then define the other article meta tags
 			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			// get all videos
-			// check before getting all images, to add any video preview images first
+			// call before getting all images to add any preview images first
 			if ( ! isset( $og['og:video'] ) ) {
 				if ( empty( $og_max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled )
@@ -302,7 +302,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$this->p->util->slice_max( $og_ret, $num );
 
-			return $og_ret;
+			$og_extend = array();
+			foreach ( $og_ret as $num => $og_video ) {
+				if ( ! empty( $og_video['og:video:embed_url'] ) ) {
+					$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+					$og_embed['og:video:type'] = 'text/html';		// define the type after the url
+					foreach ( array( 'og:video:width', 'og:video:height' ) as $key ) 
+						if ( isset( $og_video[$key] ) )
+							$og_embed[$key] = $og_video[$key];
+					$og_extend[] = $og_embed;
+				}
+				$og_extend[] = $og_video;
+			}
+			return $og_extend;
 		}
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {
