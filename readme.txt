@@ -432,6 +432,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* Added extra Open Graph meta tags for embedded video URLs with an 'og:video:type' of 'text/html'.
+	* Moved the meta description (SEO) HTML tag to the end of the meta tag list.
+	* Removed the meta tag array sort to preserve the original meta tag order.
+	* Changed the maximum schema description length from 300 to 250 characters.
+	* Excluded disabled meta tags from the Head Tags list in the Social Settings metabox.
 * **Bugfixes**
 	* Fixed a CSS class name in the admin stylesheet for the taxonomy Social Settings metabox.
 	* Added support for the custom Social Settings metabox on WooCommerce taxonomy pages (Pro version).
