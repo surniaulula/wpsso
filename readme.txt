@@ -22,8 +22,6 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <p>WPSSO is professionally and securely supported (<em>admin access is never required</em>), <a href="http://wpsso.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, development is always current with the latest social standards, and plugin fixes / updates are available promptly.</p>
 
-<p><strong>Already have social sharing buttons?</strong> No problem! Sharing buttons only submit webpage URLs to social websites &mdash; WPSSO includes all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need in your webpages to properly share and display your content. <em>Use WPSSO by itself or in combination with any of your favorite social sharing buttons</em>.</p>
-
 <blockquote>
 <h4>Industry Reviews</h4>
 
