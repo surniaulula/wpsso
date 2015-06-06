@@ -121,7 +121,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single.png"/></p>
 </div>
 
 <strong>Images and Videos</strong>

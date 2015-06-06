@@ -140,7 +140,7 @@
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single-tweet.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single.png"/></p>
 </div>
 
 <p><strong>Images and Videos</strong></p>
