@@ -391,15 +391,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 03. WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.
 04. Example Facebook Link Share
 05. Example Facebook Video Share
-06. Example Pinterest Product Pin
-07. Example Pinterest Product Pin (Zoomed)
-08. Example Twitter 'Summary' Card
-09. Example Twitter 'Large Image Summary' Card
-10. Example Twitter 'Photo' Card
-11. Example Twitter 'Gallery' Card
-12. Example Twitter 'Product' Card
-13. Example Twitter 'Player' Card
-14. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
+06. Example Pinterest Product Pin (Zoomed)
+07. Example Twitter 'Summary' Card
+08. Example Twitter 'Large Image Summary' Card
+09. Example Twitter 'Photo' Card
+10. Example Twitter 'Gallery' Card
+11. Example Twitter 'Product' Card
+12. Example Twitter 'Player' Card
+13. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
 
 == Changelog ==
 
