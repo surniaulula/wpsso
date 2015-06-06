@@ -14,7 +14,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 == Description ==
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 60px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons and extension toolbar buttons, or URLs shared directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) plugin has you covered.</p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 60px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons / extension, or simply URLs pasted directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) covers all the bases in one light-weight, but featured packed plugin.</p>
 
 = Why Choose WPSSO? =
 
