@@ -392,12 +392,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 04. Example Facebook Link Share
 05. Example Facebook Video Share
 06. Example Pinterest Product Pin (Zoomed)
-07. Example Twitter 'Summary' Card
-08. Example Twitter 'Large Image Summary' Card
-09. Example Twitter 'Photo' Card
-10. Example Twitter 'Gallery' Card
-11. Example Twitter 'Product' Card
-12. Example Twitter 'Player' Card
+07. Example Twitter 'Summary' Card (Single Tweet View)
+08. Example Twitter 'Large Image Summary' Card (Single Tweet View)
+09. Example Twitter 'Photo' Card (Timeline View)
+10. Example Twitter 'Gallery' Card (Timeline View)
+11. Example Twitter 'Product' Card (Single Tweet View)
+12. Example Twitter 'Player' Card (Single Tweet View)
 13. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
 
 == Changelog ==
