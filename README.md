@@ -173,6 +173,8 @@
 
 <p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
 
+<div style="clear:both;"></div>
+
 <h4>User Profile Social Contacts</h4>
 
 <p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:</p>
@@ -200,6 +202,8 @@
 <h4>Social Profiles for Google Search</h4>
 
 <p>WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.</p>
+
+<div style="clear:both;"></div>
 
 <h4>Complete Social Meta Tags</h4>
 
