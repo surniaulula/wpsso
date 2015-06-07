@@ -36,8 +36,6 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
 <h4> Quick List of Features</h4>
 
 <strong>Free / Basic Version</strong>
@@ -72,8 +70,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<div style="clear:both;width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"/></p>
 </div>
 
@@ -117,14 +114,11 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a No Risk 30 Day Refund Policy).</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
 <h4>3rd Party Integration</h4>
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<div style="clear:both;width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png"/></p>
 </div>
 
@@ -142,8 +136,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<div style="clear:both;width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
 </div>
 
@@ -154,8 +147,6 @@ WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org
 <strong>Forums and Social</strong>
 
 WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) and [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.
-
-<div style="clear:both;"></div>
 
 <h4>User Profile Social Contacts</h4>
 
@@ -173,8 +164,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 * Yahoo IM
 * YouTube Channel URL
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<div style="clear:both;width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
 
@@ -182,13 +172,11 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
 
-<div style="clear:both;"></div>
-
 <h4>Complete Social Meta Tags</h4>
 
 WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options *are* available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.
 
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<div style="clear:both;width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png"/></p>
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png"/></p>
 </div>
@@ -257,19 +245,13 @@ WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/ty
 	* twitter:site
 	* twitter:title
 
-<div style="clear:both;"></div>
-
 <h4>Proven Performance</h4>
 
 WPSSO is *fast and coded for performance*, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features.
 
-<div style="clear:both;"></div>
-
 <h4>Clean Uninstall</h4>
 
 Try the WPSSO plugin with complete confidence &mdash; when uninstalled, WPSSO removes *all* traces of itself from the database (options, site options, user and post meta, transients, etc.).
-
-<div style="clear:both;"></div>
 
 <h4>Professional Support</h4>
 

@@ -36,8 +36,6 @@
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
 <h4> Quick List of Features</h4>
 
 <p><strong>Free / Basic Version</strong></p>
@@ -76,8 +74,6 @@
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 </blockquote>
-
-<div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"/></p>
@@ -137,13 +133,9 @@
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a No Risk 30 Day Refund Policy).</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
 <h4>3rd Party Integration</h4>
 
 <p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
-
-<div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png"/></p>
@@ -163,8 +155,6 @@
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
 </div>
@@ -176,8 +166,6 @@
 <p><strong>Forums and Social</strong></p>
 
 <p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
-
-<div style="clear:both;"></div>
 
 <h4>User Profile Social Contacts</h4>
 
@@ -197,8 +185,6 @@
 <li>YouTube Channel URL</li>
 </ul>
 
-<div style="clear:both;"></div>
-
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
@@ -206,8 +192,6 @@
 <h4>Social Profiles for Google Search</h4>
 
 <p>WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.</p>
-
-<div style="clear:both;"></div>
 
 <h4>Complete Social Meta Tags</h4>
 
@@ -299,19 +283,13 @@
 </ul></li>
 </ul>
 
-<div style="clear:both;"></div>
-
 <h4>Proven Performance</h4>
 
 <p>WPSSO is <em>fast and coded for performance</em>, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features.</p>
 
-<div style="clear:both;"></div>
-
 <h4>Clean Uninstall</h4>
 
 <p>Try the WPSSO plugin with complete confidence &mdash; when uninstalled, WPSSO removes <em>all</em> traces of itself from the database (options, site options, user and post meta, transients, etc.).</p>
-
-<div style="clear:both;"></div>
 
 <h4>Professional Support</h4>
 
