@@ -589,6 +589,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
 				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
 			$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
+			$content = preg_replace( '/<p class="wp-caption-text">/', '${0}Caption: ', $content );
 			$content = str_replace( ']]>', ']]&gt;', $content );
 
 			$content_strlen_after = strlen( $content );
