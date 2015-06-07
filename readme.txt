@@ -100,7 +100,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 		* NextGEN Gallery
 		* MarketPress - WordPress eCommerce
 		* Polylang
-		* WooCommerce
+		* WooCommerce v1.x and v2.x
 		* WordPress SEO by Yoast
 		* WP e-Commerce
 	* Supported Service APIs
@@ -121,7 +121,7 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso-single.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card.png"/></p>
 </div>
 
 <strong>Images and Videos</strong>
@@ -139,12 +139,12 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 </blockquote>
 
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
 </div>
 
 <strong>eCommerce Products</strong>
 
-WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
+WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1.x and v2.x](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
 <strong>Forums and Social</strong>
 
