@@ -73,6 +73,9 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 </blockquote>
 
 <div style="clear:both;"></div>
+<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"/></p>
+</div>
 
 <strong>Pro / Power-User Version</strong>
 
@@ -120,8 +123,9 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
+<div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png"/></p>
 </div>
 
 <strong>Images and Videos</strong>
@@ -138,6 +142,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 <p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
+<div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
 </div>
@@ -169,7 +174,6 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 * YouTube Channel URL
 
 <div style="clear:both;"></div>
-
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 60px 80px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
 </div>
