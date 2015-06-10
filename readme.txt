@@ -409,12 +409,23 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.4 =
+
+* **New Features**
+	* Added a "Social Img" column to the post / page editing lists (including custom post types, like WooCommerce products) with a thumbnail of the first Open Graph image.
+* **Improvements**
+	* Refactored the WooCommerce module by removing the Open Graph image meta tag generation, and hooking the 'wpsso_attached_image_ids' filter instead (Pro version).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.3.2 (2015/06/05) =
 
 * **New Features**
 	* *None*
 * **Improvements**
-	* Added extra Open Graph meta tags for embedded video URLs with an 'og:video:type' of 'text/html'.
+	* Added extra Open Graph meta tags for embedded video URLs with an "og:video:type" of "text/html".
 	* Moved the meta description (SEO) HTML tag to the end of the meta tag list.
 	* Removed the meta tag array sort to preserve the original meta tag order.
 	* Changed the maximum schema description length from 300 to 250 characters.
@@ -423,7 +434,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed a CSS class name in the admin stylesheet for the taxonomy Social Settings metabox.
 	* Added support for the custom Social Settings metabox on WooCommerce taxonomy pages (Pro version).
 * **Developer Notes**
-	* **Renamed the 'og:video' meta tag to 'og:video:url'**.
+	* **Renamed the "og:video" meta tag to "og:video:url"**.
 	* Added three new methods in the WooCommerce module to check for product, category, and tag pages (Pro version). Unlike the original functions provided by WooCommerce, these methods work on both the admin *and* front-end sides.
 		* `WpssoProEcomWoocommerce::is_product()`
 		* `WpssoProEcomWoocommerce::is_product_category()`
