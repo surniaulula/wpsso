@@ -265,8 +265,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$og_ret = array();
 
 			// check for index-type webpages with og_def_vid_on_index enabled to force a default video
-			if ( ( ! empty( $this->p->options['og_def_vid_on_index'] ) && ( is_home() || is_archive() ) && ! is_author() ) ||
-				( ! empty( $this->p->options['og_def_vid_on_author'] ) && is_author() ) ||
+			if ( ( ! empty( $this->p->options['og_def_vid_on_index'] ) && ( is_home() || 
+				( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) ) ||
+				( ! empty( $this->p->options['og_def_vid_on_author'] ) && SucomUtil::is_author_page() ) ||
 				( ! empty( $this->p->options['og_def_vid_on_search'] ) && is_search() ) ) {
 
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
@@ -353,8 +354,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			// check for index webpages with og_def_img_on_index or og_def_img_on_search enabled to force a default image
-			if ( ( ! empty( $this->p->options['og_def_img_on_index'] ) && ( is_home() || is_archive() ) && ! is_author() ) ||
-				( ! empty( $this->p->options['og_def_img_on_author'] ) && is_author() ) ||
+			if ( ( ! empty( $this->p->options['og_def_img_on_index'] ) && ( is_home() || 
+				( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) ) ||
+				( ! empty( $this->p->options['og_def_img_on_author'] ) && SucomUtil::is_author_page() ) ||
 				( ! empty( $this->p->options['og_def_img_on_search'] ) && is_search() ) ) {
 
 				if ( $this->p->debug->enabled )

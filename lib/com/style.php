@@ -101,6 +101,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].' !important;
 	}
+	.column-'.$this->p->cf['lca'].'_og_image { width:70px; }
 </style>';
 			}
 		}

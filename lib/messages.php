@@ -618,7 +618,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'info-taglist':
 							$text = '<blockquote style="margin:0;">
-							<p>'.$short.' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>head</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added (as an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected).</p>
+							<p>'.$short.' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added. As an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected. The "meta name canonical" HTML tag is unchecked by default since themes often include it in their <code>header.php</code> template file.</p>
 							</blockquote>';
 							break;
 						case 'info-cm':

@@ -174,6 +174,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		// pre-define the array key order for the list() construct (which assigns elements from right to left)
+		public static function og_image_sorted() {
+			return array(
+				'og:image' => '',
+				'og:image:width' => '',
+				'og:image:height' => '',
+				'og:image:cropped' => '',
+				'og:image:id' => '',
+			);
+		}
+
 		public static function is_assoc( $arr ) {
 			if ( ! is_array( $arr ) ) 
 				return false;

@@ -145,8 +145,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'force_regen' => $force_regen,
 				) );
 			}
+
 			$og_ret = array();
-			$og_image = array();
+			$og_image = SucomUtil::og_image_sorted();
+
 			if ( ! empty( $post_id ) ) {
 				// check for an attachment page, just in case
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) &&
@@ -201,10 +203,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'force_regen' => $force_regen,
 				) );
 			}
+
 			$og_ret = array();
+			$og_image = SucomUtil::og_image_sorted();
+
 			if ( ! empty( $attach_id ) ) {
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0 
-					$og_image = array();
 					list(
 						$og_image['og:image'],
 						$og_image['og:image:width'],
@@ -232,7 +236,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'force_regen' => $force_regen,
 				) );
 			}
+
 			$og_ret = array();
+			$og_image = SucomUtil::og_image_sorted();
+
 			if ( ! empty( $post_id ) ) {
 				$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image') );
 				if ( is_array( $images ) )
@@ -242,11 +249,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$attach_ids[] = $attach->ID;
 					}
 					rsort( $attach_ids, SORT_NUMERIC ); 
+					$attach_ids = array_unique( apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id ) );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
-					$attach_ids = apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id );
 					foreach ( $attach_ids as $pid ) {
-						$og_image = array();
 						list(
 							$og_image['og:image'],
 							$og_image['og:image:width'],
@@ -452,7 +458,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 			$og_ret = array();
-			$og_image = array();
+			$og_image = SucomUtil::og_image_sorted();
 
 			$pid = empty( $this->p->options['og_def_img_id'] ) ? '' : $this->p->options['og_def_img_id'];
 			$pre = empty( $this->p->options['og_def_img_id_pre'] ) ? '' : $this->p->options['og_def_img_id_pre'];
@@ -501,7 +507,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'content' => strlen( $content ).' chars',
 				) );
 			}
+
 			$og_ret = array();
+			$og_image = SucomUtil::og_image_sorted();
 			$size_info = $this->get_size_info( $size_name );
 
 			// allow custom content to be passed as argument
@@ -548,7 +556,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							break;
 						// filter hook for 3rd party modules to return image information
 						case ( preg_match( '/^data-[a-z]+-pid$/', $attr_name ) ? true : false ):
-							$filter_name = $this->p->cf['lca'].'_get_content_'.$tag_name.'_'.( preg_replace( '/-/', '_', $attr_name ) );
+							$filter_name = $this->p->cf['lca'].'_get_content_'.$tag_name.'_'.
+								( preg_replace( '/-/', '_', $attr_name ) );
 							list(
 								$og_image['og:image'],
 								$og_image['og:image:width'],

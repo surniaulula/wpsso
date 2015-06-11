@@ -52,13 +52,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$rows = array();
 			$max_width = 600;
 			$max_height = 315;
-			$og_image = $head_info['og_image'];
 			$div_style = 'width:'.$max_width.'px; height:'.$max_height.'px;';
-			$have_sizes = ( ! empty( $og_image['og:image:width'] ) && 
-				! empty( $og_image['og:image:height'] ) ) ? true : false;
+			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && 
+				! empty( $head_info['og:image:height'] ) ) ? true : false;
 			$is_sufficient = ( $have_sizes === true && 
-				$og_image['og:image:width'] >= $max_width && 
-				$og_image['og:image:height'] >= $max_height ) ? true : false;
+				$head_info['og:image:width'] >= $max_width && 
+				$head_info['og:image:height'] >= $max_height ) ? true : false;
 			$msgs = array(
 				'not_found' => '<p>No Open Graph Image Found</p>',
 				'too_small' => '<p>Image Dimensions Smaller<br/>than Suggested Minimum<br/>of '.$max_width.' x '.$max_height.'px</p>',
@@ -66,14 +65,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			);
 
 			foreach ( array( 'og:image:secure_url', 'og:image' ) as $key ) {
-				if ( ! empty( $og_image[$key] ) ) {
+				if ( ! empty( $head_info[$key] ) ) {
 					if ( $have_sizes === true ) {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-size:'.( $is_sufficient === true ? 'cover' : $og_image['og:image:width'].' '.$og_image['og:image:height'] ).'; 
-						background-image:url('.$og_image[$key].');" />'.( $is_sufficient === true ? '' : $msgs['too_small'] ).'</div>';
+						background-size:'.( $is_sufficient === true ? 
+							'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
+						background-image:url('.$head_info[$key].');" />'.( $is_sufficient === true ? 
+							'' : $msgs['too_small'] ).'</div>';
 					} else {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-image:url('.$og_image[$key].');" />'.$msgs['no_size'].'</div>';
+						background-image:url('.$head_info[$key].');" />'.$msgs['no_size'].'</div>';
 					}
 					break;	// stop after first image
 				}
@@ -301,7 +302,30 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $opts;
 		}
 
+		public function get_og_img_column_html( $og_image ) {
+			$value = '';
+			// try and get a smaller thumbnail version if we can
+			if ( isset( $og_image['og:image:id'] ) && 
+				$og_image['og:image:id'] > 0 )
+					list(
+						$og_image['og:image'],
+						$og_image['og:image:width'],
+						$og_image['og:image:height'],
+						$og_image['og:image:cropped'],
+						$og_image['og:image:id']
+					) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
+
+			if ( ! empty( $og_image['og:image'] ) )
+				$value .= '<img src="'.$og_image['og:image'].'"';
+				foreach ( array( 'width', 'height' ) as $key )
+					if ( isset( $og_image['og:image:'.$key] ) && $og_image['og:image:'.$key] > 0 )
+						$value .= ' '.$key.'="'.$og_image['og:image:'.$key].'"';
+				$value .= ' style="max-width:70px; height:auto" />';
+			return $value;
+		}
+
 		public function get_og_image( $num = 0, $size_name = 'thumbnail', $id, $check_dupes = true, $force_regen = false, $meta_prefix = 'og' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
@@ -312,14 +336,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'meta_prefix' => $meta_prefix,
 				), get_class( $this ) );
 			}
+
 			$og_ret = array();
-			$og_image = array();
+			$og_image = SucomUtil::og_image_sorted();
+
 			if ( empty( $id ) )
 				return $og_ret;
+
 			foreach( array_unique( array( $meta_prefix, 'og' ) ) as $prefix ) {
+
 				$pid = $this->get_options( $id, $prefix.'_img_id' );
 				$pre = $this->get_options( $id, $prefix.'_img_id_pre' );
 				$url = $this->get_options( $id, $prefix.'_img_url' );
+
 				if ( $pid > 0 ) {
 					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
 					if ( $this->p->debug->enabled )
@@ -333,6 +362,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$og_image['og:image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
+
 				if ( empty( $og_image['og:image'] ) && ! empty( $url ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
@@ -345,6 +375,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$og_image['og:image:id']
 					) = array( $url, -1, -1, -1, -1 );
 				}
+
 				if ( ! empty( $og_image['og:image'] ) &&
 					$this->p->util->push_max( $og_ret, $og_image, $num ) )
 						return $og_ret;

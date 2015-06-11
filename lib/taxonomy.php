@@ -93,8 +93,8 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 						$this->head_meta_tags = $this->p->head->get_header_array( false );
 						$this->head_info = $this->p->head->extract_head_info( $this->head_meta_tags );
 
-						if ( empty( $this->head_info['og_image']['og:image'] ) )
-							$this->p->notice->err( 'A Facebook / Open Graph image meta tag for this webpage could not be generated. Facebook and other social websites require at least one image meta tag to render their shared content correctly.', true );
+						if ( empty( $this->head_info['og:image'] ) )
+							$this->p->notice->err( 'An Open Graph image meta tag could not be generated for this webpage. Facebook and other social websites require at least one Open Graph image meta tag to render their shared content correctly.' );
 					}
 					break;
 			}

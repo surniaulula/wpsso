@@ -35,43 +35,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function add_header() {
 			$lca = $this->p->cf['lca'];
 
-			// add various function test results top-most in the debug log
-			// hook into wpsso_is_functions to extend the default array of function names
-			if ( $this->p->debug->enabled ) {
-				$is_functions = array( 
-					'is_ajax',
-					'is_archive',
-					'is_attachment',
-					'is_author',
-					'is_category',
-					'is_front_page',
-					'is_home',
-					'is_multisite',
-					'is_page',
-					'is_search',
-					'is_single',
-					'is_singular',
-					'is_ssl',
-					'is_tag',
-					'is_tax',
-					//'is_term',	// deprecated since wp 3.0
-					/*
-					 * e-commerce / woocommerce functions
-					 */
-					'is_account_page',
-					'is_cart',
-					'is_checkout',
-					'is_checkout_pay_page',
-					'is_product',
-					'is_product_category',
-					'is_product_tag',
-					'is_shop',
-				);
-				$is_functions = apply_filters( $lca.'_is_functions', $is_functions );
-				foreach ( $is_functions as $function ) 
-					if ( function_exists( $function ) && $function() )
-						$this->p->debug->log( $function.'() = true' );
-			}
+			if ( $this->p->debug->enabled )
+				$this->p->util->log_is_functions();
 
 			if ( $this->p->is_avail['metatags'] )
 				echo $this->get_header_html( apply_filters( $lca.'_header_use_post', false ) );
@@ -113,39 +78,42 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}	// end of debug information
 		}
 
+		// extract certain key fields for reference and sanity checks
 		public function extract_head_info( &$head_meta_tags, &$head_info = array() ) {
-			$img = array();
-			$video_img = array();
-
 			foreach ( $head_meta_tags as $tag ) {
-				if ( ! isset( $tag[2] ) )
-					continue;
-				switch ( $tag[2] ) {
-					case 'name':
-						if ( isset( $tag[3] ) && 
-							$tag[3] === 'author' )
-								$head_info['author'] = $tag[5];
+				if ( ! isset( $tag[2] ) || 
+					! isset( $tag[3] ) )
+						continue;
+				// any time we're outside an og:image block, set $first_image to false
+				if ( strpos( $tag[3], 'og:image' ) !== 0 )
+					$first_image = false;
+				switch ( $tag[2].'-'.$tag[3] ) {
+					case 'property-og:image':
+					case 'property-og:image:secure_url':
+						if ( $first_image === false &&
+							( isset( $head_info['og:image'] ) || 
+								isset( $head_info['og:image:secure_url'] ) ) )
+									continue;
+						else {
+							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
+							$first_image = true;
+						}
 						break;
-					case 'property':
-						if ( isset( $tag[3] ) && 
-							strpos( $tag[3], 'og:' ) === 0 &&
-							preg_match( '/^og:(description|title|type)$/', $tag[3], $key ) )
-								$head_info[$key[0]] = $tag[5];
-						elseif ( isset( $tag[6] ) && 
-							$tag[6] === 'og:video:1' &&
-							strpos( $tag[3], 'og:image' ) === 0 )
-								$video_img[$tag[3]] = $tag[5];
-						elseif ( isset( $tag[6] ) && 
-							$tag[6] === 'og:image:1' &&
-							strpos( $tag[3], 'og:image' ) === 0 )
-								$img[$tag[3]] = $tag[5];
+					case 'property-og:image:width':
+					case 'property-og:image:height':
+						error_log( $tag[3] );
+						if ( $first_image === true )
+							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
+						break;
+					case 'name-author':
+					case 'property-og:description':
+					case 'property-og:title':
+					case 'property-og:type':
+						if ( ! isset( $head_info[$tag[3]] ) )
+							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
 						break;
 				}
 			}
-			if ( ! empty( $video_img ) )	// video meta tags have precedence
-				$head_info['og_image'] = $video_img;
-			else $head_info['og_image'] = $img;
-
 			return $head_info;
 		}
 

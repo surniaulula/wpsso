@@ -409,16 +409,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.4 =
+= Version 3.4dev1 =
 
 * **New Features**
 	* Added a "Social Img" column to the post / page editing lists (including custom post types, like WooCommerce products) with a thumbnail of the first Open Graph image.
 * **Improvements**
-	* Refactored the WooCommerce module by removing the Open Graph image meta tag generation, and hooking the 'wpsso_attached_image_ids' filter instead (Pro version).
+	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking the 'wpsso_attached_image_ids' filter instead (Pro version).
 * **Bugfixes**
-	* *None*
+	* Fixed a false warning on admin editing pages for a missing Open Graph image meta tag from video preview images.
 * **Developer Notes**
-	* *None*
+	* Added a new `SucomUtil::og_image_sorted()` method to pre-define a sorted Open Graph image array for the PHP `list()` construct (which assigns array elements from right to left).
+	* Refactored the `WpssoHead::extract_head_info()` method and flattened the returned `$head_info` array.
 
 = Version 3.3.2 (2015/06/05) =
 

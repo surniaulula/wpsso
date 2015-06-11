@@ -93,6 +93,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$meta_opts = $this->get_mod_options( $mod, $id );
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
+
 				if ( ! is_array( $size_info ) ) {
 					$save_name = empty( $size_info ) ? $opt_prefix : $size_info;
 					$size_info = array( 'name' => $save_name, 'label' => $save_name );
@@ -114,7 +115,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $key === 'crop' )							// make sure crop is true or false
 						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
 				}
+
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
+
 					// preserve compatibility with older wordpress versions, use true or false when possible
 					if ( $size_info['crop'] === true && 
 						( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
@@ -123,6 +126,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( ! version_compare( $wp_version, 3.9, '<' ) )
 							$size_info['crop'] = array( $size_info['crop_x'], $size_info['crop_y'] );
 					}
+
 					// allow custom function hooks to make changes
 					if ( $filter === true )
 						$size_info = apply_filters( $this->p->cf['lca'].'_size_info_'.$size_info['name'], 
@@ -202,7 +206,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'private':
 				case 'publish':
 					$lang = SucomUtil::get_locale();
-					$cache_type = 'object cache';
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
@@ -215,6 +218,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'WpssoHead::get_header_array' => array( 
 							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
 							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
+						),
+						'WpssoPost::show_column_content' => array( 
+							'lang:'.$lang.'_post:'.$post_id.'_column:'.$this->p->cf['lca'].'_og_image',
 						),
 					);
 					$transients = apply_filters( $this->p->cf['lca'].'_post_cache_transients', 
@@ -463,6 +469,41 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ret[$m->tagName][] = $attrs;
 			}
 			return $ret;
+		}
+
+		public function log_is_functions() {
+			$is_functions = array( 
+				'is_ajax',
+				'is_archive',
+				'is_attachment',
+				'is_author',
+				'is_category',
+				'is_front_page',
+				'is_home',
+				'is_multisite',
+				'is_page',
+				'is_search',
+				'is_single',
+				'is_singular',
+				'is_ssl',
+				'is_tag',
+				'is_tax',
+				/*
+				 * e-commerce / woocommerce functions
+				 */
+				'is_account_page',
+				'is_cart',
+				'is_checkout',
+				'is_checkout_pay_page',
+				'is_product',
+				'is_product_category',
+				'is_product_tag',
+				'is_shop',
+			);
+			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
+			foreach ( $is_functions as $function ) 
+				if ( function_exists( $function ) && $function() )
+					$this->p->debug->log( $function.'() = true' );
 		}
 	}
 }
