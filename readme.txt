@@ -412,7 +412,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.4dev1 =
 
 * **New Features**
-	* Added a "Social Img" column to the post / page editing lists (including custom post types, like WooCommerce products) with a thumbnail of the first Open Graph image.
+	* Added a "OG Img" column to the post / page editing lists (including custom post types, like WooCommerce products) with a thumbnail of the first Open Graph image.
 * **Improvements**
 	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking the 'wpsso_attached_image_ids' filter instead (Pro version).
 * **Bugfixes**
