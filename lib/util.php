@@ -20,12 +20,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		protected function add_actions() {
-			// add default image sizes from plugin settings
-			// add_plugin_image_sizes() is also called from the WpssoPost::set_head_meta_tags() method
-			// to set custom image dimensions for the post id
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from an url
 			add_action( 'admin_init', array( &$this, 'add_plugin_image_sizes' ), -100 );
-
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_file_cache' ) );
 		}
@@ -70,27 +66,46 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $id, $mod );
 			$meta_opts = array();
 
-			if ( is_object( $id ) ) {
-				$obj = $id;
-				$id = false;
-				if ( $mod === 'post' )
-					$id = empty( $obj->ID ) || 
-						empty( $obj->post_type ) ? 0 : $obj->ID;
-				elseif ( $mod === 'user' )
-					$id = empty( $obj->ID ) ? 0 : $obj->ID;
-				elseif ( $mod === 'taxonomy' )
-					$id = empty( $obj->term_id ) ? 0 : $obj->term_id;
-			} elseif ( $id === false ) {
-				if ( $mod === 'post' )
-					$id = $this->p->util->get_post_object( $id, 'id' );
-				elseif ( $mod === 'user' )
-					$id = $this->p->util->get_author_object( 'id' );
-				elseif ( $mod === 'taxonomy' )
-					$id = $this->p->util->get_term_object( 'id' );
+			if ( $mod === false ) {
+				if ( SucomUtil::is_post_page( false ) )
+					$mod = 'post';
+				elseif ( SucomUtil::is_term_page() )
+					$mod = 'taxonomy';
+				elseif ( SucomUtil::is_author_page() )
+					$mod = 'user';
+				elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'module type could not be determined' );
 			}
 
-			if ( ! empty( $mod ) && ! empty( $id ) )
-				$meta_opts = $this->get_mod_options( $mod, $id );
+			if ( is_object( $id ) ) {
+				$obj = $id;	// could be WP_Object or post/term/user object
+				$id = false;
+				if ( $mod === 'post' )
+					$id = empty( $obj->ID ) || empty( $obj->post_type ) ? 
+						$this->get_post_object( false, 'id' ) : $obj->ID;
+				elseif ( $mod === 'taxonomy' )
+					$id = empty( $obj->term_id ) ?
+						$this->get_term_object( 'id' ) : $obj->term_id;
+				elseif ( $mod === 'user' )
+					$id = empty( $obj->ID ) ?
+						$this->get_author_object( 'id' ): $obj->ID;
+
+			} elseif ( empty( $id ) ) {
+				if ( $mod === 'post' )
+					$id = $this->get_post_object( false, 'id' );
+				elseif ( $mod === 'taxonomy' )
+					$id = $this->get_term_object( 'id' );
+				elseif ( $mod === 'user' )
+					$id = $this->get_author_object( 'id' );
+			}
+
+			if ( empty( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'no module defined' );
+			} elseif ( empty( $id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'no object id defined' );
+			} else $meta_opts = $this->get_mod_options( $mod, $id );
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -205,11 +220,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'future':
 				case 'private':
 				case 'publish':
+					$lca = $this->p->cf['lca'];
 					$lang = SucomUtil::get_locale();
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
-	
 					$transients = array(
 						'SucomCache::get' => array(
 							'url:'.$permalink,
@@ -219,11 +234,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
 							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
-						'WpssoPost::show_column_content' => array( 
-							'lang:'.$lang.'_post:'.$post_id.'_column:'.$this->p->cf['lca'].'_og_image',
+						'WpssoMeta::get_mod_column_content' => array( 
+							'mod:post_lang:'.$lang.'_id:'.$post_id.'_column:'.$lca.'_og_image',
 						),
 					);
-					$transients = apply_filters( $this->p->cf['lca'].'_post_cache_transients', 
+					$transients = apply_filters( $lca.'_post_cache_transients', 
 						$transients, $post_id, $lang, $sharing_url );
 	
 					$objects = array(
@@ -235,7 +250,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'lang:'.$lang.'_post:'.$post_id,
 						),
 					);
-					$objects = apply_filters( $this->p->cf['lca'].'_post_cache_objects', 
+					$objects = apply_filters( $lca.'_post_cache_objects', 
 						$objects, $post_id, $lang, $sharing_url );
 	
 					$deleted = $this->clear_cache_objects( $transients, $objects );
@@ -313,7 +328,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $topics;
 		}
 
-		// returns a specific option from the custom social settings meta
+		/**
+		 * Purpose: returns a specific option from the custom social settings meta
+	 	 *
+		 * If idx is an array, then get the first non-empty option from the idx array --
+		 * this is an easy way to provide a fall-back value for the first array key.
+		 *
+		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
+		 */
 		public function get_mod_options( $mod, $id = false, $idx = false, $attr = array() ) {
 			if ( ! empty( $id ) ) {
 				if ( isset( $this->p->mods['util'][$mod] ) ) {
@@ -504,6 +526,66 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach ( $is_functions as $function ) 
 				if ( function_exists( $function ) && $function() )
 					$this->p->debug->log( $function.'() = true' );
+		}
+
+		public function force_default_author( $use_post = false, $opt_pre = 'og' ) {
+			$ret = null;
+
+			// save some time
+			if ( empty( $this->p->options[$opt_pre.'_def_author_id'] ) )
+				$ret = false;
+			else {
+				// check for singular pages first
+				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
+					$ret = false;
+	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_author_on_index'] ) )
+					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
+						$ret = true;
+	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_author_on_search'] ) )
+					if ( is_search() )
+						$ret = true;
+	
+				if ( $ret === null )
+					$ret = false;
+			}
+			$ret = apply_filters( $this->p->cf['lca'].'_force_default_author', $ret, $use_post, $opt_pre );
+			if ( $ret === true && $this->p->debug->enabled )
+				$this->p->debug->log( 'default author is forced' );
+			return $ret;
+		}
+
+		public function force_default_image( $use_post = false, $opt_pre = 'og' ) {
+			$ret = null;
+
+			// save some time
+			if ( empty( $this->p->options[$opt_pre.'_def_img_id'] ) )
+				$ret = false;
+			else {
+				// check for singular pages first
+				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
+					$ret = false;
+	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_index'] ) )
+					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
+						$ret = true;
+	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_author'] ) )
+					if ( SucomUtil::is_author_page() )
+						$ret = true;
+	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_search'] ) )
+					if ( is_search() )
+						$ret = true;
+	
+				if ( $ret === null )
+					$ret = false;
+			}
+			$ret = apply_filters( $this->p->cf['lca'].'_force_default_image', $ret );
+			if ( $ret === true && $this->p->debug->enabled )
+				$this->p->debug->log( 'default image is forced' );
+			return $ret;
 		}
 	}
 }

@@ -16,8 +16,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 	 */
 	class WpssoPost extends WpssoMeta {
 
-		protected $term_id = false;
-
 		protected function add_actions() {
 			if ( is_admin() ) {
 				/**
@@ -25,8 +23,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * The post or post_ID arguments are always present when we're
 				 * editing a post and/or page.
 				 */
-				if ( ( $this->post_id = SucomUtil::get_req_val( 'post_ID', 'POST' ) ) !== '' ||
-					( $this->post_id = SucomUtil::get_req_val( 'post', 'GET' ) ) !== '' ) {
+				if ( SucomUtil::is_post_page() ) {
 				
 					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 					add_action( 'admin_head', array( &$this, 'set_head_meta_tags' ) );
@@ -34,78 +31,75 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+
 				} else {
+
 					// only check registered front-end post types (to avoid menu items, product variations, etc.)
 					$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
 
 					if ( is_array( $post_types ) ) {
 						foreach ( $post_types as $ptn ) {
 							add_filter( 'manage_'.$ptn.'_posts_columns', array( $this, 'add_column_headings' ), 10, 1 );
-							add_action( 'manage_'.$ptn.'_posts_custom_column', array( $this, 'show_column_content',), 10, 2 );
+							add_action( 'manage_'.$ptn.'_posts_custom_column', array( $this, 'show_post_column_content',), 10, 2 );
 						}
 					}
+
+					$this->p->util->add_plugin_filters( $this, array( 
+						'og_image_post_column_content' => 3,
+					) );
 				}
 			}
 		}
 
-		function add_column_headings( $columns ) { 
-			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => __( 'Social Img', WPSSO_TEXTDOM )
-			) );
+		public function show_post_column_content( $column_name, $id ) {
+			echo $this->get_mod_column_content( '', $column_name, $id, 'post' );
 		}
 
-		function show_column_content( $column_name, $id ) {
-
-			// optimize performance and return immediately if this is not our column
-			if ( strpos( $column_name, $this->p->cf['lca'] ) !== 0 )
-				return;
-
-			$value = '';
-			switch ( $column_name ) {
-				case $this->p->cf['lca'].'_og_image':
-					$use_cache = true;
-					break;
-				default:
-					$use_cache = false;
-					break;
-			}
-
-			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
-				$lang = SucomUtil::get_locale();
-				$cache_salt = __METHOD__.'(lang:'.$lang.'_post:'.$id.'_column:'.$column_name.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				$value = get_transient( $cache_id );
-				if ( $value !== false ) {
-					echo $value;
-					return;
-				}
-			}
+		public function filter_og_image_post_column_content( $value, $column_name, $id ) {
 
 			switch ( $column_name ) {
 
 				case $this->p->cf['lca'].'_og_image':
-
-					// set custom image dimensions for this post id
-					$this->p->util->add_plugin_image_sizes( $id, array(), true, 'post' );
 
 					// use the open graph image dimensions to reject images that are too small
 					$size_name = $this->p->cf['lca'].'-opengraph';
+					$check_dupes = false;	// using first image we find, so dupe checking is useless
+					$force_regen = false;
+					$meta_pre = 'og';
+					$og_image = array();
 
-					$og_image = $this->p->og->get_all_images( 1, $size_name, $id, false, 'og' );
-					if ( empty( $og_image ) )
-						$og_image = $this->p->media->get_default_image( 1, $size_name );
-
-					if ( ! empty( $og_image ) ) {
-						$image = reset( $og_image );
-						$value = $this->get_og_img_column_html( $image );
+					// get video preview images if allowed
+					if ( ! empty( $this->p->options['og_vid_prev_img'] ) ) {
+						// assume the first video will have a preview image
+						$og_video = $this->p->og->get_all_videos( 1, $id, $check_dupes, $meta_pre );
+						if ( ! empty( $og_video ) && is_array( $og_video ) ) {
+							foreach ( $og_video as $video ) {
+								if ( ! empty( $video['og:image'] ) ) {
+									$og_image[] = $video;
+									break;
+								}
+							}
+						}
 					}
+
+					if ( empty( $og_image ) ) {
+						$og_image = $this->p->og->get_all_images( 1, $size_name, $id,
+							$check_dupes, $meta_pre );
+						if ( empty( $og_image ) )
+							$og_image = $this->p->media->get_default_image( 1, $size_name,
+								$check_dupes, $force_regen );
+					}
+
+					if ( ! empty( $og_image ) && is_array( $og_image ) ) {
+						$image = reset( $og_image );
+						if ( ! empty( $image['og:image'] ) )
+							$value = $this->get_og_image_column_html( $image );
+					}
+
 					break;
 			}
 
-			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
-				set_transient( $cache_id, $value, $this->p->cache->object_expire );
-
-			echo $value;
+			return $value;
 		}
 
 		// hooked into the admin_head action
@@ -113,17 +107,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! empty( $this->head_meta_tags ) )	// only set header tags once
 				return;
 
-			$screen = get_current_screen();
-
+			$screen_id = SucomUtil::get_screen_id();
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 				$this->p->util->log_is_functions();
-				$this->p->debug->log( 'screen id = '.$screen->id );
+				$this->p->debug->log( 'screen id = '.$screen_id );
 			}
 
-			// check for post/page/media edititing LISTS
-			if ( strpos( $screen->id, 'edit-' ) !== false ||
-				$screen->id === 'upload' )
+			// check for post/page/media editing lists
+			if ( strpos( $screen_id, 'edit-' ) !== false ||
+				$screen_id === 'upload' )
 					return;
 
 			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
@@ -138,9 +131,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
 				if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', 
 					$add_metabox, $post_id, $post_type->name ) === true ) {
-
-					// set custom image dimensions for this post id
-					$this->p->util->add_plugin_image_sizes( $post_id, array(), true, 'post' );
 
 					// hook used by woocommerce module to load front-end libraries and start a session
 					do_action( $this->p->cf['lca'].'_admin_post_header', $post_id, $post_type->name );
@@ -241,7 +231,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$def_opts = $this->get_defaults();
 			$post_type = get_post_type_object( $post->post_type );	// since 3.0
 			$this->head_info['ptn'] = ucfirst( $post_type->name );
-			$this->head_info['id'] = $post->ID;
+			$this->head_info['post_id'] = $post->ID;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
@@ -263,25 +253,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'post-preview':
-					if ( get_post_status( $head_info['id'] ) !== 'auto-draft' )
+					if ( get_post_status( $head_info['post_id'] ) !== 'auto-draft' )
 						$rows = $this->get_rows_social_preview( $this->form, $head_info );
 					else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
 						$head_info['ptn'].' to display the open graph social preview.</p></td>';
 					break;
 
 				case 'post-tags':	
-					if ( get_post_status( $head_info['id'] ) !== 'auto-draft' ) {
+					if ( get_post_status( $head_info['post_id'] ) !== 'auto-draft' ) {
 						$rows = $this->get_rows_head_tags( $this->head_meta_tags );
 					} else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
 						$head_info['ptn'].' to display the header preview.</p></td>';
 					break; 
 
 				case 'post-validate':
-					if ( get_post_status( $head_info['id'] ) === 'publish' ||
-						get_post_type( $head_info['id'] ) === 'attachment' )
+					if ( get_post_status( $head_info['post_id'] ) === 'publish' ||
+						get_post_type( $head_info['post_id'] ) === 'attachment' )
 							$rows = $this->get_rows_validate( $this->form, $head_info );
-					else $rows[] = '<td><p class="centered">The validation links will be available when the '
-						.$head_info['ptn'].' is published with public visibility.</p></td>';
+					else $rows[] = '<td><p class="centered">The validation links will be available when the '.
+						$head_info['ptn'].' is published with public visibility.</p></td>';
 					break; 
 			}
 			return $rows;

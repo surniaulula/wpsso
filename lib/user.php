@@ -34,7 +34,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'show_user_profile', array( &$this, 'show_metaboxes' ), 20 );	// your profile
 
 				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), 10, 1 );
-				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
+				add_filter( 'manage_users_custom_column', array( $this, 'get_user_column_content',), 10, 3 );
+
+				$this->p->util->add_plugin_filters( $this, array( 
+					'og_image_user_column_content' => 3,
+				) );
 
 				// exit here if not a user page, or showing the profile page
 				$user_id = SucomUtil::get_req_val( 'user_id' );
@@ -52,42 +56,42 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		function add_column_headings( $columns ) { 
-			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => __( 'Social Img', WPSSO_TEXTDOM )
-			) );
+		public function get_user_column_content( $value, $column_name, $id ) {
+			return $this->get_mod_column_content( $value, $column_name, $id, 'user' );
 		}
 
-		function get_column_content( $value, $column_name, $id ) {
-
-			// optimize performance and return immediately if this is not our column
-			if ( strpos( $column_name, $this->p->cf['lca'] ) !== 0 )
-				return $value;
+		public function filter_og_image_user_column_content( $value, $column_name, $id ) {
 
 			switch ( $column_name ) {
 
 				case $this->p->cf['lca'].'_og_image':
 
-					// set custom image dimensions for this post id
-					$this->p->util->add_plugin_image_sizes( $id, array(), true, 'post' );
-
 					// use the open graph image dimensions to reject images that are too small
 					$size_name = $this->p->cf['lca'].'-opengraph';
+					$check_dupes = false;	// using first image we find, so dupe checking is useless
+					$force_regen = false;
+					$meta_pre = 'og';
 
 					if ( ! empty( $this->p->options['og_def_img_on_author'] ) )
-						$og_image = $this->p->media->get_default_image( 1, $size_name );
+						$og_image = $this->p->media->get_default_image( 1, $size_name,
+							$check_dupes, $force_regen );
 					else {
-						$og_image = $this->get_og_image( 1, $size_name, $id, false, false, 'og' );
+						$og_image = $this->get_og_image( 1, $size_name, $id,
+							$check_dupes, $force_regen, $meta_pre );
 						if ( empty( $og_image ) )
-							$og_image = $this->p->media->get_default_image( 1, $size_name );
+							$og_image = $this->p->media->get_default_image( 1, $size_name,
+								$check_dupes, $force_regen );
 					}
 
-					if ( ! empty( $og_image ) ) {
+					if ( ! empty( $og_image ) && is_array( $og_image ) ) {
 						$image = reset( $og_image );
-						$value = $this->get_og_img_column_html( $image );
+						if ( ! empty( $image['og:image'] ) )
+							$value = $this->get_og_image_column_html( $image );
 					}
+
 					break;
 			}
+
 			return $value;
 		}
 
@@ -110,9 +114,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 					if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
 						$add_metabox, $user_id, $screen->id ) === true ) {
-
-						// set custom image dimensions for this user id
-						$this->p->util->add_plugin_image_sizes( $user_id, array(), true, 'user' );
 
 						do_action( $this->p->cf['lca'].'_admin_user_header', $user_id, $screen->id );
 
@@ -152,9 +153,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function show_metabox_user( $user ) {
 			$opts = $this->get_options( $user->ID );
 			$def_opts = $this->get_defaults();
-			$screen = get_current_screen();
-			$this->head_info['ptn'] = ucfirst( $screen->id );
-			$this->head_info['id'] = false;
+			$this->head_info['post_id'] = false;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
@@ -548,17 +547,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
-			$lang = SucomUtil::get_locale();
 			$post_id = 0;
+			$lca = $this->p->cf['lca'];
+			$lang = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
 					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
 					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
+				'WpssoMeta::get_mod_column_content' => array( 
+					'mod:user_lang:'.$lang.'_id:'.$user_id.'_column:'.$lca.'_og_image',
+				),
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 
-				$transients, $post_id, $lang, $sharing_url );
+				$transients, $user_id, $lang, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

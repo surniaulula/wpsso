@@ -101,7 +101,20 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].' !important;
 	}
-	.column-'.$this->p->cf['lca'].'_og_image { width:70px; }
+	.column-'.$this->p->cf['lca'].'_og_image { 
+		width:'.$this->p->cf['form']['img_col_width'].';
+	}
+	.column-'.$this->p->cf['lca'].'_og_image .preview_img { 
+		width:'.$this->p->cf['form']['img_col_width'].';
+		height:'.$this->p->cf['form']['img_col_height'].';
+		background-size:'.$this->p->cf['form']['img_col_width'].' auto;
+		background-position:center center;
+		background-repeat:no-repeat;
+		background-position:center middle;
+		overflow:hidden;
+		margin:0;
+		padding:0;
+	}
 </style>';
 			}
 		}

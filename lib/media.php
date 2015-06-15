@@ -85,7 +85,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $remains;
 		}
 
-		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {
+		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id,
+			$check_dupes = true, $meta_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
@@ -147,7 +148,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::og_image_sorted();
+			$og_image = SucomUtil::meta_image_tags( 'og' );
 
 			if ( ! empty( $post_id ) ) {
 				// check for an attachment page, just in case
@@ -205,7 +206,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::og_image_sorted();
+			$og_image = SucomUtil::meta_image_tags( 'og' );
 
 			if ( ! empty( $attach_id ) ) {
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0 
@@ -238,7 +239,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::og_image_sorted();
+			$og_image = SucomUtil::meta_image_tags( 'og' );
 
 			if ( ! empty( $post_id ) ) {
 				$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image') );
@@ -440,14 +441,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'returned image dimensions ('.$img_width.'x'.$img_height.') are sufficient' );
 			}
 
-			if ( $check_dupes == false || $this->p->util->is_uniq_url( $img_url ) )
+			if ( $check_dupes == false || $this->p->util->is_uniq_url( $img_url, $size_name ) )
 				return array( apply_filters( $this->p->cf['lca'].'_rewrite_url', $img_url ),
 					$img_width, $img_height, $img_cropped, $pid );
 
 			return $ret_empty;
 		}
 
-		public function get_default_image( $num = 0, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
+		public function get_default_image( $num = 1, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
@@ -458,7 +459,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 			$og_ret = array();
-			$og_image = SucomUtil::og_image_sorted();
+			$og_image = SucomUtil::meta_image_tags( 'og' );
 
 			$pid = empty( $this->p->options['og_def_img_id'] ) ? '' : $this->p->options['og_def_img_id'];
 			$pre = empty( $this->p->options['og_def_img_id_pre'] ) ? '' : $this->p->options['og_def_img_id_pre'];
@@ -509,7 +510,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::og_image_sorted();
+			$og_image = SucomUtil::meta_image_tags( 'og' );
 			$size_info = $this->get_size_info( $size_name );
 
 			// allow custom content to be passed as argument
@@ -543,7 +544,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
-					$og_image = array();
 					switch ( $attr_name ) {
 						case 'data-wp-pid' :
 							list(
@@ -554,6 +554,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image:id']
 							) = $this->get_attachment_image_src( $attr_value, $size_name, false );
 							break;
+
 						// filter hook for 3rd party modules to return image information
 						case ( preg_match( '/^data-[a-z]+-pid$/', $attr_name ) ? true : false ):
 							$filter_name = $this->p->cf['lca'].'_get_content_'.$tag_name.'_'.
@@ -566,20 +567,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image:id']
 							) = apply_filters( $filter_name, array( null, null, null, null ), $attr_value, $size_name, false );
 							break;
-						default :
+
+						default:
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
 								! empty( $this->p->mods['media']['ngg'] ) &&
 									( strpos( $tag_value, " class='ngg-" ) !== false || 
 										preg_match( '/^'.$this->p->mods['media']['ngg']->img_src_preg.'$/', $attr_value ) ) )
-											break;
+											break;	// stop here
 	
 							// recognize gravatar images in the content
 							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/', $attr_value, $match) ) {
 								$og_image['og:image'] = $match[0].'?s='.$size_info['width'].'&d=404&r=G';
 								$og_image['og:image:width'] = $size_info['width'];
 								$og_image['og:image:height'] = $size_info['width'];
-								break;
+								break;	// stop here
 							}
 
 							$og_image = array(
@@ -619,8 +621,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 							break;
 					}
-					if ( ! empty( $og_image['og:image'] ) && 
-						( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'] ) ) )
+					if ( ! empty( $og_image['og:image'] ) && ( $check_dupes === false || 
+						$this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) )
 							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) )
 								return $og_ret;
 				}
@@ -642,9 +644,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'check_dupes' => $check_dupes,
 				) );
 			}
+
 			global $post;
 			$og_ret = array();
+
 			if ( $get == 'gallery' ) {
+
 				if ( empty( $post ) ) { 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: empty post object' ); 
@@ -654,32 +659,46 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'exiting early: empty post content' ); 
 					return $og_ret;
 				}
+
 				if ( preg_match( '/\[(gallery)[^\]]*\]/im', $post->post_content, $match ) ) {
+
 					$shortcode_type = strtolower( $match[1] );
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '['.$shortcode_type.'] shortcode found' );
+
 					switch ( $shortcode_type ) {
 						case 'gallery' :
 							$content = do_shortcode( $match[0] );
-							$content = preg_replace( '/\['.$shortcode_type.'[^\]]*\]/', '', $content );	// prevent loops, just in case
+
+							// prevent loops, just in case
+							$content = preg_replace( '/\['.$shortcode_type.'[^\]]*\]/', '', $content );
+
 							// provide content to the method and extract its images
 							// $post_id argument is 0 since we're passing the content
 							$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num, 
 								$size_name, 0, $check_dupes, $content ) );
+
 							if ( ! empty( $og_ret ) ) 
 								return $og_ret;		// return immediately and ignore any other type of image
 							break;
 					}
+
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( '[gallery] shortcode(s) not found' );
 			}
+
 			// check for ngg gallery
 			if ( $this->p->is_avail['media']['ngg'] === true && ! empty( $this->p->mods['media']['ngg'] ) ) {
+
 				$og_ret = $this->p->mods['media']['ngg']->get_gallery_images( $num , $size_name, $get, $check_dupes );
+
 				if ( $this->p->util->is_maxed( $og_ret, $num ) )
 					return $og_ret;
 			}
+
 			$this->p->util->slice_max( $og_ret, $num );
+
 			return $og_ret;
 		}
 
@@ -693,11 +712,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 			$og_ret = array();
 			$url = empty( $this->p->options['og_def_vid_url'] ) ? '' : $this->p->options['og_def_vid_url'];
-			if ( ! empty( $url ) && 
-				( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
+			if ( ! empty( $url ) && ( $check_dupes == false || 
+				$this->p->util->is_uniq_url( $url ) ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default video url = '.$url );
+
 				// fallback to video url if necessary
 				$og_video = $this->get_video_info( $url, 0, 0, $check_dupes, true );
 				if ( ! empty( $og_video ) && 
@@ -744,8 +764,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '<'.$media[1].'/> html tag found = '.$media[2] );
 					$embed_url = $media[2];
-					if ( ! empty( $embed_url ) &&
-						( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url ) ) ) {
+					if ( ! empty( $embed_url ) && ( $check_dupes == false || 
+						$this->p->util->is_uniq_url( $embed_url ) ) ) {
 
 						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
 						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
@@ -770,8 +790,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( count( $match_all ).' x videos returned by '.$filter_name.' filter' );
 						foreach ( $match_all as $media ) {
-							if ( ! empty( $media[0] ) && 
-								( $check_dupes == false || $this->p->util->is_uniq_url( $media[0] ) ) ) {
+							if ( ! empty( $media[0] ) && ( $check_dupes == false || 
+								$this->p->util->is_uniq_url( $media[0] ) ) ) {
 
 								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
 								if ( ! empty( $og_video ) && 
@@ -820,8 +840,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// cleanup any extra video meta tags - just in case
-			if ( empty( $og_video['og:video:url'] ) || 
-				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:video:url'] ) ) )
+			if ( empty( $og_video['og:video:url'] ) || ( $check_dupes &&
+				! $this->p->util->is_uniq_url( $og_video['og:video:url'] ) ) )
 					unset ( 
 						$og_video['og:video:url'],
 						$og_video['og:video:embed_url'],
@@ -834,8 +854,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// cleanup any extra image meta tags, or remove the preview image 
 			// if 'Include Video Preview Image' is not checked
 			if ( empty( $this->p->options['og_vid_prev_img'] ) ||
-				empty( $og_video['og:image'] ) || 
-					( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:image'] ) ) )
+				empty( $og_video['og:image'] ) || ( $check_dupes &&
+					! $this->p->util->is_uniq_url( $og_video['og:image'] ) ) )
 						unset ( 
 							$og_video['og:image'],
 							$og_video['og:image:secure_url'],

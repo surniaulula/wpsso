@@ -101,7 +101,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						break;
 					case 'property-og:image:width':
 					case 'property-og:image:height':
-						error_log( $tag[3] );
 						if ( $first_image === true )
 							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
 						break;
@@ -179,12 +178,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			} elseif ( SucomUtil::is_author_page() ) {
 				$author_id = $this->p->util->get_author_object( 'id' );
 
-			} elseif ( ( ! ( is_singular() || $use_post !== false ) && ! is_search() && 
-				! empty( $this->p->options['seo_def_author_on_index'] ) && 
-				! empty( $this->p->options['seo_def_author_id'] ) ) || ( is_search() && 
-				! empty( $this->p->options['seo_def_author_on_search'] ) && 
-				! empty( $this->p->options['seo_def_author_id'] ) ) )
-					$author_id = $this->p->options['seo_def_author_id'];
+			} elseif ( $this->p->util->force_default_author( $use_post, 'seo' ) )
+				$author_id = $this->p->options['seo_def_author_id'];
 
 			if ( $this->p->debug->enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id value: '.$author_id );

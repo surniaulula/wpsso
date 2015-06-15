@@ -46,12 +46,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$item_type = 'Article';
 						break;
 				}
-			} elseif ( ( ! is_search() && 
-				! empty( $this->p->options['og_def_author_on_index'] ) && 
-				! empty( $this->p->options['og_def_author_id'] ) ) || ( is_search() && 
-				! empty( $this->p->options['og_def_author_on_search'] ) && 
-				! empty( $this->p->options['og_def_author_id'] ) ) )
-					$item_type = 'Article';
+			} elseif ( $this->p->util->force_default_author() )
+				$item_type = 'Article';
 
 			$item_type = apply_filters( $this->p->cf['lca'].'_doctype_schema_type', $item_type, $post_id, $obj );
 
@@ -140,8 +136,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_organization_json_script( $size_name = 'thumbnail') {
 			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
 			$logo_url = $this->p->options['schema_logo_url'];
-			$og_image = $this->p->media->get_default_image( 1, 
-				$this->p->cf['lca'].'-opengraph', false );
+			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph', false );
 			if ( count( $og_image ) > 0 ) {
 				$image = reset( $og_image );
 				$image_url = $image['og:image'];

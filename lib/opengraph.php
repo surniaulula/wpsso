@@ -111,12 +111,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					}
 
 				// check for default author info on indexes and searches
-				} elseif ( ( ! ( is_singular() || $use_post !== false ) && ! is_search() && 
-					! empty( $this->p->options['og_def_author_on_index'] ) && 
-					! empty( $this->p->options['og_def_author_id'] ) ) || ( is_search() && 
-					! empty( $this->p->options['og_def_author_on_search'] ) && 
-					! empty( $this->p->options['og_def_author_id'] ) ) ) {
-	
+				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) ) {
 					$og['og:type'] = 'article';
 					if ( ! isset( $og['article:author'] ) )
 						$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $this->p->options['og_def_author_id'] );
@@ -182,10 +177,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
-					$og['og:video'] = $this->get_all_videos( $og_max['og_vid_max'], $post_id );
+					$og['og:video'] = $this->get_all_videos( $og_max['og_vid_max'], $post_id, true, 'og' );
 					if ( is_array( $og['og:video'] ) ) {
 						foreach ( $og['og:video'] as $val )
-							if ( is_array( $val ) && ! empty( $val['og:image'] ) )
+							if ( ! empty( $val['og:image'] ) )
 								$video_images++;
 						if ( $video_images > 0 ) {
 							$og_max['og_img_max'] -= $video_images;
@@ -211,26 +206,22 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					} else {
 						switch ( SucomUtil::crawler_name() ) {
 							case 'pinterest':
-								$img_sizes = array (
-									'rp' => $this->p->cf['lca'].'-richpin'
-								);
+								$img_sizes = array ( 'rp' => $this->p->cf['lca'].'-richpin' );
 								break;
 							default:
-								$img_sizes = array (
-									'og' => $this->p->cf['lca'].'-opengraph'
-								);
+								$img_sizes = array ( 'og' => $this->p->cf['lca'].'-opengraph' );
 								break;
 						}
 					}
 					foreach ( $img_sizes as $meta_pre => $size_name ) {
-						$check_dupes = is_admin() && $meta_pre !== 'og' ? false : true;
+						$check_dupes = ( is_admin() && $meta_pre !== 'og' ) ? false : true;
 						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], 
 							$size_name, $post_id, $check_dupes, $meta_pre );
-
 						// if there's no image, and no video preview image, then add the default image for non-index webpages
 						if ( empty( $og['og:image'] ) && $video_images === 0 &&
 							( is_singular() || $use_post !== false ) )
-								$og['og:image'] = $this->p->media->get_default_image( $og_max['og_img_max'], $size_name );
+								$og['og:image'] = $this->p->media->get_default_image( $og_max['og_img_max'],
+									$size_name, $check_dupes );
 					}
 				} 
 			}
@@ -282,15 +273,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_video( $num_remains, 
 						$post_id, $check_dupes, $meta_pre ) );
 
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_id = $this->p->util->get_author_object( 'id' );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
-						$author_id, $check_dupes, $meta_pre ) );
-	
 				} elseif ( SucomUtil::is_term_page() ) {
 					$term_id = $this->p->util->get_term_object( 'id' );
 					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_video( $num_remains, 
 						$term_id, $check_dupes, $meta_pre ) );
+
+				} elseif ( SucomUtil::is_author_page() ) {
+					$author_id = $this->p->util->get_author_object( 'id' );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_video( $num_remains, 
+						$author_id, $check_dupes, $meta_pre ) );
 				}
 			}
 
@@ -345,79 +336,78 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					// if an attachment is not an image, then use the default image instead
 					if ( empty( $og_image ) ) {
 						$num_remains = $this->p->media->num_remains( $og_ret, $num );
-						$og_ret = array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
-							$size_name, $check_dupes ) );
+						$og_ret = array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, $size_name ) );
 					} else $og_ret = array_merge( $og_ret, $og_image );
 	
 					return $og_ret;
 				}
 			}
 
-			// check for index webpages with og_def_img_on_index or og_def_img_on_search enabled to force a default image
-			if ( ( ! empty( $this->p->options['og_def_img_on_index'] ) && ( is_home() || 
-				( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) ) ||
-				( ! empty( $this->p->options['og_def_img_on_author'] ) && SucomUtil::is_author_page() ) ||
-				( ! empty( $this->p->options['og_def_img_on_search'] ) && is_search() ) ) {
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'default image is forced' );
+			if ( $this->p->util->force_default_image() ) {
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
-					$size_name, $check_dupes ) );
+				$og_ret = array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, $size_name ) );
 				return $og_ret;	// stop here and return the image array
 			}
 
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
-			if ( SucomUtil::is_author_page() ) {
-				$author_id = $this->p->util->get_author_object( 'id' );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
-					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
-
-			} elseif ( SucomUtil::is_term_page() ) {
+			if ( SucomUtil::is_term_page() ) {
 				$term_id = $this->p->util->get_term_object( 'id' );
 				$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
 					$size_name, $term_id, $check_dupes, $force_regen, $meta_pre ) );
+
+				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+					$num_remains = $this->p->media->num_remains( $og_ret, $num );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_term_images( $num_remains, 
+						$size_name, $term_id, $check_dupes, $force_regen, $meta_pre ) );
+				}
+			} elseif ( SucomUtil::is_author_page() ) {
+				$author_id = $this->p->util->get_author_object( 'id' );
+				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
 
 			} else {
 				// check for custom meta, featured, or attached image(s)
 				// allow for empty post_id in order to execute featured/attached image filters for modules
 				$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
 					$size_name, $post_id, $check_dupes, $meta_pre ) );
-			}
 
-			// check for ngg shortcodes and query vars
-			if ( $this->p->is_avail['media']['ngg'] === true && 
-				! empty( $this->p->mods['media']['ngg'] ) &&
-				! $this->p->util->is_maxed( $og_ret, $num ) ) {
-
-				// ngg pre-v2 used query arguments
-				$ngg_query_og_ret = array();
-				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				if ( version_compare( $this->p->mods['media']['ngg']->ngg_version, '2.0.0', '<' ) )
-					$ngg_query_og_ret = $this->p->mods['media']['ngg']->get_query_images( $num_remains, 
-						$size_name, $check_dupes );
-
-				// if we found images in the query, skip content shortcodes
-				if ( count( $ngg_query_og_ret ) > 0 ) {
+				// check for ngg shortcodes and query vars
+				if ( $this->p->is_avail['media']['ngg'] === true && 
+					! empty( $this->p->mods['media']['ngg'] ) &&
+					! $this->p->util->is_maxed( $og_ret, $num ) ) {
+	
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( count( $ngg_query_og_ret ).
-							' image(s) returned - skipping additional shortcode images' );
-					$og_ret = array_merge( $og_ret, $ngg_query_og_ret );
-
-				// if no query images were found, continue with ngg shortcodes in content
-				} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+						$this->p->debug->log( 'checking for ngg shortcodes and query vars' );
+	
+					// ngg pre-v2 used query arguments
+					$ngg_query_og_ret = array();
 					$num_remains = $this->p->media->num_remains( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, 
-						$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, 
-							$size_name, $check_dupes ) );
-				}
-			} // end of check for ngg shortcodes and query vars
+					if ( version_compare( $this->p->mods['media']['ngg']->ngg_version, '2.0.0', '<' ) )
+						$ngg_query_og_ret = $this->p->mods['media']['ngg']->get_query_images( $num_remains, 
+							$size_name, $check_dupes );
+	
+					// if we found images in the query, skip content shortcodes
+					if ( count( $ngg_query_og_ret ) > 0 ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( count( $ngg_query_og_ret ).
+								' image(s) returned - skipping additional shortcode images' );
+						$og_ret = array_merge( $og_ret, $ngg_query_og_ret );
+	
+					// if no query images were found, continue with ngg shortcodes in content
+					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+						$num_remains = $this->p->media->num_remains( $og_ret, $num );
+						$og_ret = array_merge( $og_ret, 
+							$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, 
+								$size_name, $check_dupes ) );
+					}
+				} // end of check for ngg shortcodes and query vars
 
-			// if we haven't reached the limit of images yet, keep going and check the content text
-			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-				$num_remains = $this->p->media->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_remains, 
-					$size_name, $post_id, $check_dupes ) );
+				// if we haven't reached the limit of images yet, keep going and check the content text
+				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+					$num_remains = $this->p->media->num_remains( $og_ret, $num );
+					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_remains, 
+						$size_name, $post_id, $check_dupes ) );
+				}
 			}
 
 			$this->p->util->slice_max( $og_ret, $num );

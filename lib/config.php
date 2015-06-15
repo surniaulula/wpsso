@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_expire' => 24,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.4dev1',		// plugin version
+					'version' => '3.4',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -495,18 +495,69 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'form' => array(
+				'img_col_width' => '70px',
+				'img_col_height' => '37px',
 				'tooltip_class' => 'sucom_tooltip',
 				'max_desc_hashtags' => 10,
 				'max_media_items' => 20,
-				'yes_no' => array( '1' => 'Yes', '0' => 'No' ),
-				'file_cache_hrs' => array( 0, 1, 3, 6, 9, 12, 24, 36, 48, 72, 168 ),
-				'js_locations' => array( 'none' => '[none]', 'header' => 'Header', 'footer' => 'Footer' ),
-				'caption_types' => array( 'none' => '[none]', 'title' => 'Title Only', 'excerpt' => 'Excerpt Only', 'both' => 'Title and Excerpt' ),
-				'user_name_fields' => array( 'none' => '[none]', 'fullname' => 'First and Last Names', 'display_name' => 'Display Name', 'nickname' => 'Nickname' ),
-				'show_options' => array( 'basic' => 'Basic Options', 'all' => 'All Options' ),
-				'site_option_use' => array( 'default' => 'Default value', 'empty' => 'If value is empty', 'force' => 'Force this value' ),
-				'position_crop_x' => array( 'left' => 'Left', 'center' => 'Center', 'right' => 'Right' ),
-				'position_crop_y' => array( 'top' => 'Top', 'center' => 'Center', 'bottom' => 'Bottom' ),
+				'yes_no' => array(
+					'1' => 'Yes',
+					'0' => 'No',
+				),
+				'file_cache_hrs' => array(
+					0,
+					1,
+					3,
+					6,
+					9,
+					12,
+					24,
+					36,
+					48,
+					72,
+					168,
+				),
+				'js_locations' => array(
+					'none' => '[none]',
+					'header' => 'Header',
+					'footer' => 'Footer',
+				),
+				'caption_types' => array(
+					'none' => '[none]',
+					'title' => 'Title Only',
+					'excerpt' => 'Excerpt Only',
+					'both' => 'Title and Excerpt',
+				),
+				'user_name_fields' => array(
+					'none' => '[none]',
+					'fullname' => 'First and Last Names',
+					'display_name' => 'Display Name',
+					'nickname' => 'Nickname',
+				),
+				'show_options' => array(
+					'basic' => 'Basic Options',
+					'all' => 'All Options',
+				),
+				'site_option_use' => array(
+					'default' => 'Default value',
+					'empty' => 'If value is empty',
+					'force' => 'Force this value',
+				),
+				'position_crop_x' => array(
+					'left' => 'Left',
+					'center' => 'Center',
+					'right' => 'Right',
+				),
+				'position_crop_y' => array(
+					'top' => 'Top',
+					'center' => 'Center',
+					'bottom' => 'Bottom',
+				),
+				'shorteners' => array(
+					'none' => '[none]',
+					'bitly' => 'Bit.ly',
+					'googl' => 'Goo.gl',
+				),
 			),
 			'head' => array(
 				'max_img_ratio' => 3,

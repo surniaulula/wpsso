@@ -13,8 +13,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	class SucomUtil {
 
 		protected $p;
+		protected $uniq_urls = array();		// array to detect duplicate images, etc.
 		protected $size_labels = array();	// reference array for image size labels
-		protected $urls_found = array();	// array to detect duplicate images, etc.
 		protected $inline_vars = array(
 			'%%post_id%%',
 			'%%request_url%%',
@@ -26,8 +26,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $site_plugins = array();
 		protected static $network_plugins = array();
 		protected static $crawler_name = null;		// saved crawler name from user-agent
-		protected static $is_author = null;		// saved is_author_page() check
-		protected static $is_term = null;		// saved is_term_page() check
+		protected static $is_post_ret = null;		// saved is_post_page() check
+		protected static $is_term_ret = null;		// saved is_term_page() check
+		protected static $is_author_ret = null;		// saved is_author_page() check
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -36,7 +37,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns false or the admin screen id text string
 		public static function get_screen_id() {
-			if ( is_admin() ) {
+			if ( is_admin() && function_exists( 'get_current_screen' ) ) {
 				$screen = get_current_screen();
 				if ( ! empty( $screen->id ) )
 					return $screen->id;
@@ -175,13 +176,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// pre-define the array key order for the list() construct (which assigns elements from right to left)
-		public static function og_image_sorted() {
+		public static function meta_image_tags( $tag_prefix = 'og' ) {
 			return array(
-				'og:image' => '',
-				'og:image:width' => '',
-				'og:image:height' => '',
-				'og:image:cropped' => '',
-				'og:image:id' => '',
+				$tag_prefix.':image' => '',
+				$tag_prefix.':image:width' => '',
+				$tag_prefix.':image:height' => '',
+				$tag_prefix.':image:cropped' => '',
+				$tag_prefix.':image:id' => '',
 			);
 		}
 
@@ -259,16 +260,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public function reset_urls_found() {
-			$this->urls_found = array();
-			return;
-		}
+		public function is_uniq_url( $url = '', $context = 'default' ) {
 
-		public function get_urls_found() {
-			return $this->urls_found;
-		}
-
-		public function is_uniq_url( $url = '' ) {
 			if ( empty( $url ) ) 
 				return false;
 
@@ -279,16 +272,34 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $this->p->debug->enabled && 
 				strpos( $url, '://' ) === false )
-					$this->p->debug->log( 'incomplete url given: '.$url );
+					$this->p->debug->log( 'incomplete url given for context ('.$context.'): '.$url );
 
-			if ( empty( $this->urls_found[$url] ) ) {
-				$this->urls_found[$url] = 1;
+			if ( ! isset( $this->uniq_urls[$context][$url] ) ) {
+				$this->uniq_urls[$context][$url] = 1;
 				return true;
 			} else {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'duplicate url rejected: '.$url ); 
+					$this->p->debug->log( 'duplicate url rejected for context ('.$context.'): '.$url ); 
 				return false;
 			}
+		}
+
+		public static function is_post_page( $use_post = false ) {
+			if ( self::$is_post_ret !== null )
+				return self::$is_post_ret;
+			elseif ( is_singular() || $use_post !== false )
+				return self::$is_post_ret = true;
+			elseif ( is_admin() ) {
+				$screen_id = self::get_screen_id();
+				// exclude post/page/media editing lists
+				if ( strpos( $screen_id, 'edit-' ) !== false || 
+					$screen_id === 'upload' )
+						return self::$is_post_ret = false;
+				elseif ( self::get_req_val( 'post_ID', 'POST' ) !== '' ||
+					self::get_req_val( 'post', 'GET' ) !== '' )
+						return self::$is_post_ret = true;
+			}
+			return self::$is_post_ret = false;
 		}
 
 		// on archives and taxonomies, this will return the first post object
@@ -296,16 +307,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$obj = false;
 			if ( $use_post === false ) {
 				$obj = get_queried_object();
-
-				// fallback to $post if object is empty / invalid
-				if ( empty( $obj->ID ) || empty( $obj->post_type ) ) {
-					global $post; 
-					$obj = $post;
+				if ( $obj === null && is_admin() ) {
+					if ( ( $id = self::get_req_val( 'post_ID', 'POST' ) ) !== '' ||
+						( $id = self::get_req_val( 'post', 'GET' ) ) !== '' )
+							$obj = get_post( $id );
 				}
-			} elseif ( $use_post === true ) {
-				global $post; 
-				$obj = $post;
-			} elseif ( is_numeric( $use_post ) ) 
+				// fallback to $post if object is empty / invalid
+				if ( ( empty( $obj->ID ) || empty( $obj->post_type ) ) &&
+					isset( $GLOBALS['post'] ) )
+						$obj = $GLOBALS['post'];
+			} elseif ( $use_post === true && 
+				isset( $GLOBALS['post'] ) )
+					$obj = $GLOBALS['post'];
+			elseif ( is_numeric( $use_post ) ) 
 				$obj = get_post( $use_post );
 
 			$obj = apply_filters( $this->p->cf['lca'].'_get_post_object', $obj, $use_post );
@@ -325,16 +339,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_term_page() {
-			if ( self::$is_term !== null )
-				return self::$is_term;
+			if ( self::$is_term_ret !== null )
+				return self::$is_term_ret;
 			elseif ( is_tax() || is_category() || is_tag() )
-				return self::$is_term = true;
+				return self::$is_term_ret = true;
 			elseif ( is_admin() ) {
 				if ( self::get_req_val( 'taxonomy' ) !== '' && 
 					self::get_req_val( 'tag_ID' ) !== '' )
-						return self::$is_term = true;
+						return self::$is_term_ret = true;
 			}
-			return self::$is_term = false;
+			return self::$is_term_ret = false;
 		}
 
 		public static function is_category_page() {
@@ -372,13 +386,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_author_page() {
-			if ( self::$is_author !== null )
-				return self::$is_author;
-			elseif ( is_author() || 
-				( is_admin() && ( $screen_id = self::get_screen_id() ) !== false &&
-					( $screen_id === 'user-edit' || $screen_id === 'profile' ) ) )
-						return self::$is_author = true;
-			else return self::$is_author = false;
+			if ( self::$is_author_ret !== null )
+				return self::$is_author_ret;
+			elseif ( is_author() )
+				return self::$is_author_ret = true;
+			elseif ( is_admin() ) {
+				if ( ( $screen_id = self::get_screen_id() ) !== false &&
+					( $screen_id === 'user-edit' || $screen_id === 'profile' ) )
+						return self::$is_author_ret = true;
+				elseif ( self::get_req_val( 'user_id' ) !== '' )
+					return self::$is_author_ret = true;
+			} else return self::$is_author_ret = false;
 		}
 
 		public function get_author_object( $ret = 'object' ) {

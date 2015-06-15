@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.2.2
- * Version: 3.4dev1
+ * Version: 3.4
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -216,16 +216,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			} else $this->cache->file_expire = 0;	// just in case
 			$this->is_avail['cache']['file'] = $this->cache->file_expire > 0 ? true : false;
 
-			// disable the transient cache ONLY if the html debug mode is on
+			// disable the transient cache if html debug mode is on
 			if ( $this->debug->is_enabled( 'html' ) === true ) {
-				foreach ( array( 'transient' ) as $name ) {
-					$constant_name = 'WPSSO_'.strtoupper( $name ).'_CACHE_DISABLE';
-					$this->is_avail['cache'][$name] = ( defined( $constant_name ) && 
-						! constant( $constant_name ) ) ? true : false;
-				}
-				$cache_status = 'transient cache use '.( $this->is_avail['cache']['transient'] ? 'could not be' : 'is' ).' disabled';
+
+				$this->is_avail['cache']['transient'] = defined( 'WPSSO_TRANSIENT_CACHE_DISABLE' ) && 
+					! WPSSO_TRANSIENT_CACHE_DISABLE ? true : false;
+
+				$cache_status = 'transient cache use '.
+					( $this->is_avail['cache']['transient'] ?
+						'could not be' : 'is' ).' disabled';
+
 				if ( $this->debug->enabled )
 					$this->debug->log( 'html debug mode is active: '.$cache_status );
+
 				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.' '.
 					' and informational messages are being added as hidden HTML comments.' );
 			}

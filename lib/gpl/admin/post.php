@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 		}
 
 		public function filter_post_header_rows( $rows, $form, $head_info ) {
-			$post_status = get_post_status( $head_info['id'] );
-			$post_type = get_post_type( $head_info['id'] );
+			$post_status = get_post_status( $head_info['post_id'] );
+			$post_type = get_post_type( $head_info['post_id'] );
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 

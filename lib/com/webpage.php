@@ -105,15 +105,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( ! empty( $post_id ) )
 					$caption = $this->p->util->get_mod_options( 'post', $post_id, $custom_idx );
 
-			} elseif ( SucomUtil::is_author_page() ) {
-				$author = $this->p->util->get_author_object();
-				if ( ! empty( $author->ID ) )
-					$caption = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
-
 			} elseif ( SucomUtil::is_term_page() ) {
 				$term = $this->p->util->get_term_object();
 				if ( ! empty( $term->term_id ) )
 					$caption = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $custom_idx );
+
+			} elseif ( SucomUtil::is_author_page() ) {
+				$author = $this->p->util->get_author_object();
+				if ( ! empty( $author->ID ) )
+					$caption = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
 			}
 
 			if ( empty( $caption ) ) {
@@ -186,14 +186,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					// fallback to the og_title value
 					$title = $this->p->util->get_mod_options( 'post', $post_id, array( $custom_idx, 'og_title' ) );
 
-			} elseif ( SucomUtil::is_author_page() ) {
-				$author = $this->p->util->get_author_object();
-				if ( ! empty( $author->ID ) ) {
-					$title = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
-					if ( empty( $title ) && is_admin() )	// re-create default wp title on admin side
-						$title = apply_filters( 'wp_title',
-							$author->display_name.' '.$separator.' ', $separator, 'right' );
-				}
 			} elseif ( SucomUtil::is_term_page() ) {
 				$term = $this->p->util->get_term_object();
 				if ( ! empty( $term->term_id ) ) {
@@ -203,6 +195,14 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( empty( $title ) && is_admin() )		// re-create default wp title on admin side
 						$title = apply_filters( 'wp_title',
 							$term->name.' '.$separator.' ', $separator, 'right' );
+				}
+			} elseif ( SucomUtil::is_author_page() ) {
+				$author = $this->p->util->get_author_object();
+				if ( ! empty( $author->ID ) ) {
+					$title = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
+					if ( empty( $title ) && is_admin() )	// re-create default wp title on admin side
+						$title = apply_filters( 'wp_title',
+							$author->display_name.' '.$separator.' ', $separator, 'right' );
 				}
 			}
 
@@ -344,15 +344,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					// fallback to the og_desc value
 					$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $custom_idx, 'og_desc' ) );
 
-			} elseif ( SucomUtil::is_author_page() ) {
-				$author = $this->p->util->get_author_object();
-				if ( ! empty( $author->ID ) )
-					$desc = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
-
 			} elseif ( SucomUtil::is_term_page() ) {
 				$term = $this->p->util->get_term_object();
 				if ( ! empty( $term->term_id ) )
 					$desc = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $custom_idx );
+
+			} elseif ( SucomUtil::is_author_page() ) {
+				$author = $this->p->util->get_author_object();
+				if ( ! empty( $author->ID ) )
+					$desc = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
 			}
 
 			// get seed if no custom meta description
@@ -405,13 +405,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
 		
-				} elseif ( SucomUtil::is_author_page() ) { 
-					$author = $this->p->util->get_author_object();
-					if ( ! empty( $author->description ) )
-						$desc = $author->description;
-					elseif ( ! empty( $author->display_name ) )
-						$desc = sprintf( 'Authored by %s', $author->display_name );
-			
 				} elseif ( SucomUtil::is_term_page() ) {
 					if ( is_tag() ) {
 						$desc = tag_description();
@@ -428,6 +421,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						elseif ( ! empty( $term->name ) )
 							$desc = $term->name.' Archives';
 					}
+				} elseif ( SucomUtil::is_author_page() ) { 
+					$author = $this->p->util->get_author_object();
+					if ( ! empty( $author->description ) )
+						$desc = $author->description;
+					elseif ( ! empty( $author->display_name ) )
+						$desc = sprintf( 'Authored by %s', $author->display_name );
+			
 				} elseif ( is_day() ) 
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
 				elseif ( is_month() ) 
