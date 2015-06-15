@@ -64,6 +64,7 @@ apply_filters( 'wpsso_sharing_url', $url, $use_post, $add_page, $source_id );
 apply_filters( 'wpsso_shorten_url', $long_url, $service );
 apply_filters( 'wpsso_size_info_'.$size_info['name'], $size_info, $post_id );
 apply_filters( 'wpsso_tags', $tags, $post_id );
+apply_filters( 'wpsso_taxonomy_cache_transients', $transients, $term_id, $lang, $sharing_url );
 apply_filters( 'wpsso_tc', $tc, $use_post, $obj );
 apply_filters( 'wpsso_tc_edd', $tc_ecom, $use_post, $obj );
 apply_filters( 'wpsso_tc_marketpress', $tc_ecom );
@@ -75,5 +76,5 @@ apply_filters( 'wpsso_title', $title, $use_post, $add_hashtags, $custom_idx, $so
 apply_filters( 'wpsso_title_pre_limit', $title );
 apply_filters( 'wpsso_title_seed', '', $use_post, $add_hashtags, $custom_idx, $source_id );
 apply_filters( 'wpsso_topics', $topics );
-apply_filters( 'wpsso_user_cache_transients', $transients, $post_id, $lang, $sharing_url );
+apply_filters( 'wpsso_user_cache_transients', $transients, $user_id, $lang, $sharing_url );
 apply_filters( 'wpsso_wp_tags', $tags, $post_id );
