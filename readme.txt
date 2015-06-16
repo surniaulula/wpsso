@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.2
-Stable Tag: 3.3.2
+Stable Tag: 3.4
 
 Improves shared content and social SEO - no matter how webpages are shared - using buttons, browser addons, or paste URLs in timelines &amp; PMs.
 
@@ -412,11 +412,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.4 =
 
 * **New Features**
-	* Added a "Social Img" column to the post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail of the first Facebook / Open Graph image.
+	* Added a "Social Image" column to the post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail of the first Facebook / Open Graph image.
 * **Improvements**
-	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking into a new 'wpsso_attached_image_ids' filter instead (Pro version).
+	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking into the 'wpsso_attached_image_ids' filter instead (Pro version).
 * **Bugfixes**
 	* Fixed a false warning on admin editing pages for a missing Open Graph image meta tag from video preview images.
+	* Fixed CSS ID name for the admin image dimension warning.
 * **Developer Notes**
 	* Added new `WpssoUtil::force_default_image()` and `WpssoUtil::force_default_author()` methods to check if the default image/author is being forced on index /archive webpages.
 	* Added a new `SucomUtil::is_post_page()` method to complement the existing `SucomUtil::is_term_page()` and `SucomUtil::is_author_page()` methods.
@@ -569,6 +570,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.4 =
+
+Added a "Social Image" column to the post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail of the first Facebook / Open Graph image.
 
 = 3.3.2 =
 
