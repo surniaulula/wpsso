@@ -126,8 +126,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	"name":"'.$site_name.'",
 	"potentialAction":{
 		"@type":"SearchAction",
-		"target":"'.$home_url.'?s={search_term}",
-		"query-input":"required name=search_term"
+		"target":"'.$home_url.'?s={search_term_string}",
+		"query-input":"required name=search_term_string"
 	}
 }</script>';
 			return $json_script;

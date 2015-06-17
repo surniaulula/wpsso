@@ -57,13 +57,14 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			if ( ! is_object( $obj ) )
 				$obj = $this->p->util->get_post_object( $use_post );
-
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' :
-					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'use_post: '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+				$this->p->debug->log( 'post_id: '.$post_id );
+				$this->p->debug->log( 'obj post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
+			}
 
 			$post_type = '';
 			$video_images = 0;

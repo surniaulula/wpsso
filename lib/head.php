@@ -137,16 +137,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
+
 			$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'use_post/post_id values: '.( $use_post === false ? 'false' : 
-					( $use_post === true ? 'true' : $use_post ) ).'/'.$post_id );
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'sharing url: '.$sharing_url );
 			$author_id = false;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'use_post: '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+				$this->p->debug->log( 'post_id: '.$post_id );
+				$this->p->debug->log( 'obj post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
+				$this->p->debug->log( 'sharing url: '.$sharing_url );
+			}
 
 			$header_array = array();
 			if ( $this->p->is_avail['cache']['transient'] ) {
@@ -182,7 +185,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$author_id = $this->p->options['seo_def_author_id'];
 
 			if ( $this->p->debug->enabled && $author_id !== false )
-				$this->p->debug->log( 'author_id value: '.$author_id );
+				$this->p->debug->log( 'author_id: '.$author_id );
 
 			/**
 			 * Open Graph, Twitter Card
