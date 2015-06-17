@@ -384,16 +384,17 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 01. WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.
 02. WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.
 03. WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.
-04. Example Facebook Link Share
-05. Example Facebook Video Share
-06. Example Pinterest Product Pin (Zoomed)
-07. Example Twitter 'Summary' Card (Single Tweet View)
-08. Example Twitter 'Large Image Summary' Card (Single Tweet View)
-09. Example Twitter 'Photo' Card (Timeline View)
-10. Example Twitter 'Gallery' Card (Timeline View)
-11. Example Twitter 'Product' Card (Single Tweet View)
-12. Example Twitter 'Player' Card (Single Tweet View)
-13. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
+04. WPSSO "Social Image" column on an example category editing page (also available on posts, pages, tags, and custom taxonomy editing pages).
+05. Example Pinterest Product Pin (Zoomed)
+06. Example Facebook Link Share
+07. Example Facebook Video Share
+08. Example Twitter 'Summary' Card (Single Tweet View)
+09. Example Twitter 'Large Image Summary' Card (Single Tweet View)
+10. Example Twitter 'Photo' Card (Timeline View)
+11. Example Twitter 'Gallery' Card (Timeline View)
+12. Example Twitter 'Product' Card (Single Tweet View)
+13. Example Twitter 'Player' Card (Single Tweet View)
+14. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
 
 == Changelog ==
 
@@ -412,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.4 =
 
 * **New Features**
-	* Added a "Social Image" column to the post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail of the first Facebook / Open Graph image.
+	* Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
 * **Improvements**
 	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking into the 'wpsso_attached_image_ids' filter instead (Pro version).
 * **Bugfixes**
@@ -573,7 +574,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.4 =
 
-Added a "Social Image" column to the post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail of the first Facebook / Open Graph image.
+Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
 
 = 3.3.2 =
 
