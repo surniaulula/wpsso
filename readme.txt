@@ -583,11 +583,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.4.1 =
+
+Added new 'sucom_is_author_page' and 'sucom_author_object' filters for the BuddyPress module to return user profile information (Pro version). Fixed an array definition in the WooCommerce module (Pro version).
+
 = 3.4 =
 
 Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
-
-= 3.3.2 =
-
-Added support for Social Settings metabox on WooCommerce taxonomy pages (Pro version), added meta tags for embedded videos with an OG type of "text/html", <strong>Renamed the "og:video" meta tag to "og:video:url"</strong>.
 
