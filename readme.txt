@@ -410,6 +410,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.4.1 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added new 'sucom_is_author_page' and 'sucom_author_object' filters for the BuddyPress module to return user profile information (Pro version).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.4 =
 
 * **New Features**
