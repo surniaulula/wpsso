@@ -417,7 +417,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Added new 'sucom_is_author_page' and 'sucom_author_object' filters for the BuddyPress module to return user profile information (Pro version).
 * **Bugfixes**
-	* *None*
+	* Fixed an array definition in the WooCommerce module (Pro version).
 * **Developer Notes**
 	* *None*
 
