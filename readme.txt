@@ -410,7 +410,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.4.1 =
+= Version 3.4.2 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Moved the Free and Pro 'Service Api Keys' Advanced options to the WPSSO core plugin.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
+= Version 3.4.1 (2015/06/18) =
 
 * **New Features**
 	* *None*
@@ -421,7 +432,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Developer Notes**
 	* *None*
 
-= Version 3.4 =
+= Version 3.4 (2015/06/16) =
 
 * **New Features**
 	* Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
