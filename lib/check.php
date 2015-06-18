@@ -292,12 +292,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$lca = $this->p->cf['lca'];
 					$plugin_name = $this->p->cf['plugin'][$lca]['name'];
 					$wpseo_notif = json_decode( $wpseo_notif );
+
 					if ( ! empty( $wpseo_notif ) ) {
 						foreach ( $wpseo_notif as $num => $msgs ) {
-							if ( $msgs->type == 'error' && strpos( $msgs->message, $plugin_name ) !== false ) {
-								unset( $wpseo_notif[$num] );
-								set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
-									json_encode( $wpseo_notif ) );
+							if ( isset( $msgs->options->type ) && $msgs->options->type == 'error' ) {
+								if ( strpos( $msgs->message, $plugin_name ) !== false ) {
+									unset( $wpseo_notif[$num] );
+									set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
+										json_encode( $wpseo_notif ) );
+								}
 							}
 						}
 					}

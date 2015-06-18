@@ -557,34 +557,42 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function force_default_image( $use_post = false, $opt_pre = 'og' ) {
+			return $this->force_default_media( $use_post, $opt_pre, 'img' );
+		}
+
+		public function force_default_video( $use_post = false, $opt_pre = 'og' ) {
+			return $this->force_default_media( $use_post, $opt_pre, 'vid' );
+		}
+
+		public function force_default_media( $use_post = false, $opt_pre = 'og', $media = 'img' ) {
 			$ret = null;
 
 			// save some time
-			if ( empty( $this->p->options[$opt_pre.'_def_img_id'] ) )
+			if ( empty( $this->p->options[$opt_pre.'_def_'.$media.'_id'] ) )
 				$ret = false;
 			else {
 				// check for singular pages first
 				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
 					$ret = false;
 	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_index'] ) )
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_index'] ) )
 					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
 						$ret = true;
 	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_author'] ) )
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_author'] ) )
 					if ( SucomUtil::is_author_page() )
 						$ret = true;
 	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_img_on_search'] ) )
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_search'] ) )
 					if ( is_search() )
 						$ret = true;
 	
 				if ( $ret === null )
 					$ret = false;
 			}
-			$ret = apply_filters( $this->p->cf['lca'].'_force_default_image', $ret );
+			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$media, $ret );
 			if ( $ret === true && $this->p->debug->enabled )
-				$this->p->debug->log( 'default image is forced' );
+				$this->p->debug->log( 'default '.$media.' is forced' );
 			return $ret;
 		}
 	}

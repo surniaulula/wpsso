@@ -60,12 +60,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post: '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
-				$this->p->debug->log( 'post_id: '.$post_id );
-				$this->p->debug->log( 'obj post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
-			}
-
 			$post_type = '';
 			$video_images = 0;
 			$og_max = $this->p->util->get_max_nums( $post_id );	// if post_id 0 then returns the plugin settings 
@@ -215,9 +209,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						}
 					}
 					foreach ( $img_sizes as $meta_pre => $size_name ) {
+						// only check for dupes on last image size
 						$check_dupes = ( is_admin() && $meta_pre !== 'og' ) ? false : true;
+
 						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], 
 							$size_name, $post_id, $check_dupes, $meta_pre );
+
 						// if there's no image, and no video preview image, then add the default image for non-index webpages
 						if ( empty( $og['og:image'] ) && $video_images === 0 &&
 							( is_singular() || $use_post !== false ) )
@@ -256,12 +253,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				) );
 			$og_ret = array();
 
-			// check for index-type webpages with og_def_vid_on_index enabled to force a default video
-			if ( ( ! empty( $this->p->options['og_def_vid_on_index'] ) && ( is_home() || 
-				( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) ) ||
-				( ! empty( $this->p->options['og_def_vid_on_author'] ) && SucomUtil::is_author_page() ) ||
-				( ! empty( $this->p->options['og_def_vid_on_search'] ) && is_search() ) ) {
-
+			if ( $this->p->util->force_default_video() ) {
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
 				$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_remains, $check_dupes ) );
 				return $og_ret;	// stop here and return the video array

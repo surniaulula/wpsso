@@ -388,7 +388,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_author_page() {
 			if ( self::$is_author_ret !== null )
 				return self::$is_author_ret;
-			elseif ( is_author() )
+			elseif ( apply_filters( 'sucom_is_author_page', is_author() ) )
 				return self::$is_author_ret = true;
 			elseif ( is_admin() ) {
 				if ( ( $screen_id = self::get_screen_id() ) !== false &&
@@ -401,10 +401,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function get_author_object( $ret = 'object' ) {
 			$obj = false;
-			if ( is_author() ) {
-				$obj = get_query_var( 'author_name' ) ? 
-					get_userdata( get_query_var( 'author' ) ) : 
-					get_user_by( 'slug', get_query_var( 'author_name' ) );
+			if ( apply_filters( 'sucom_is_author_page', is_author() ) ) {
+				$obj = apply_filters( 'sucom_author_object', ( get_query_var( 'author_name' ) ? 
+					get_user_by( 'slug', get_query_var( 'author_name' ) ) : 
+					get_userdata( get_query_var( 'author' ) ) ) );
 			} elseif ( is_admin() ) {
 				if ( ( $author_id = self::get_req_val( 'user_id' ) ) === '' )
 					$author_id = get_current_user_id();
