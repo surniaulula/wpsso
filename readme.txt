@@ -415,7 +415,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* Moved the Free and Pro 'Service Api Keys' Advanced options to the WPSSO core plugin.
+	* Moved the Free and Pro 'Service Api Keys' Advanced options into the WPSSO core plugin.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
