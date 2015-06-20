@@ -831,14 +831,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_video = apply_filters( $filter_name, $og_video, $url, $embed_width, $embed_height );
 
-			if ( $this->p->debug->enabled ) {
-				foreach ( array( 'video', 'image' ) as $type )
-					if ( empty( $og_video['og:'.$type] ) )
-						$this->p->debug->log( 'no '.$type.' returned by '.$filter_name.' filters' );
-					else $this->p->debug->log( $type.': '.$og_video['og:'.$type].
-						' ('.$og_video['og:'.$type.':width'].'x'.$og_video['og:'.$type.':height'].')' );
-			}
-
 			// cleanup any extra video meta tags - just in case
 			if ( empty( $og_video['og:video:url'] ) || ( $check_dupes &&
 				! $this->p->util->is_uniq_url( $og_video['og:video:url'] ) ) )

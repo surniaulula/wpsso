@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 
-		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_pre = 'og' ) {
+		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_pre = 'og', $tag_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 	}

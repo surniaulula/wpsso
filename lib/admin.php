@@ -254,8 +254,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->trunc();					// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
-			$this->p->notice->inf( __( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.
-				sprintf( __( 'Wait %d seconds for cache objects to expire (default) or use the \'Clear All Cache(s)\' button.', WPSSO_TEXTDOM ), $this->p->options['plugin_object_cache_exp'] ), true );
+			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), $this->get_nonce(), WPSSO_NONCE );
+			$this->p->notice->inf( 
+				__( 'Plugin settings have been updated.', WPSSO_TEXTDOM ).' '.
+				sprintf( __( 'Wait %d seconds for cache objects to expire (default) or %s now.', WPSSO_TEXTDOM ),
+					$this->p->options['plugin_object_cache_exp'],
+					'<a href="'.$clear_cache_link.'">Clear All Cache(s)</a>' ), true );
 			return $opts;
 		}
 

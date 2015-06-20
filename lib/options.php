@@ -148,7 +148,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $this->p->check->aop() && ! empty( $this->p->is_avail['ecom']['*'] ) &&
 						$opts['tc_prod_def_label2'] === $this->p->cf['opt']['defaults']['tc_prod_def_label2'] &&
 						$opts['tc_prod_def_data2'] === $this->p->cf['opt']['defaults']['tc_prod_def_data2'] ) {
-						$this->p->notice->inf( 'An eCommerce plugin has been detected. Please update Twitter\'s <em>Product Card Default 2nd Label</em> option values on the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings page' ).' (to something else than \''.$this->p->cf['opt']['defaults']['tc_prod_def_label2'].'\' and \''.$this->p->cf['opt']['defaults']['tc_prod_def_data2'].'\').' );
+
+						$this->p->notice->inf( 'An eCommerce plugin has been detected. Please update Twitter\'s <em>Product Card Default 2nd Label</em> option values on the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings page' ).' (to something else than \''.$this->p->cf['opt']['defaults']['tc_prod_def_label2'].'\' and \''.$this->p->cf['opt']['defaults']['tc_prod_def_data2'].'\').', true );
 					}
 				}
 			}
@@ -334,6 +335,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 				// integer options that must be 1 or more (not zero)
 				case 'plugin_object_cache_exp':
+				case 'plugin_min_shorten':
 				case ( preg_match( '/_len$/', $key ) ? true : false ):
 					return 'pos_num';
 					break;
@@ -348,6 +350,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 				// must be alpha-numeric (upper or lower case)
 				case 'rp_dom_verify':
+				case ( preg_match( '/_api_key$/', $key ) ? true : false ):
 					return 'api_key';
 					break;
 				// must be alpha-numeric uppercase (hyphens allowed as well)
@@ -366,6 +369,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'tc_desc':
 				case 'plugin_cf_vid_url':
 				case 'plugin_cf_vid_embed':
+				case 'plugin_bitly_login':
 					return 'ok_blank';
 					break;
 				// options that cannot be blank
@@ -375,6 +379,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_author_field':
 				case 'rp_author_name':
 				case 'fb_lang': 
+				case 'tc_prod_def_label2': 
+				case 'tc_prod_def_data2': 
 				case ( preg_match( '/_tid:use$/', $key ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 					return 'not_blank';

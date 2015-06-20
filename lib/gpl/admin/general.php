@@ -47,6 +47,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$rows[] = $this->p->util->th( 'Use the Video Preview Image', null, 'og_vid_prev_img' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
 
+			$rows[] = $this->p->util->th( 'Include Embed text/html Type', null, 'og_vid_html_type' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_html_type' ).'</td>';
+
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Default / Fallback Video URL', null, 'og_def_vid_url' ).
 			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';

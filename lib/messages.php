@@ -235,11 +235,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_vid_max':
 							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select \'0\', then no videos will be listed in the facebook / Open Graph and Pinterest Rich Pin meta tags.';
 							break;
+						case 'tooltip-og_vid_https':
+							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
+							break;
 						case 'tooltip-og_vid_prev_img':
 							$text = 'Include video preview images in the meta tags (default is checked).';
 							break;
-						case 'tooltip-og_vid_https':
-							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
+						case 'tooltip-og_vid_html_type':
+							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
 							break;
 						/*
 						 * 'Title / Description' settings
@@ -389,6 +392,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
+							break;
+						/*
+						 * 'Service API Keys' (URL Shortening) settings
+						 */
+						case 'tooltip-plugin_min_shorten':
+							$text = 'Original URLs shorter than this length will not be shortened (the default suggested by Twitter is '.$this->p->opt->get_defaults( 'plugin_min_shorten' ).' characters).';
+							break;
+						case 'tooltip-plugin_bitly_login':
+							$text = 'The username for your Bit.ly API key (see <a href="https://bitly.com/a/your_api_key" target="_blank">Your Bit.ly API Key</a> for details).';
+							break;
+						case 'tooltip-plugin_bitly_api_key':
+							$text = 'Your Bit.ly API key for this website (see <a href="https://bitly.com/a/your_api_key" target="_blank">Your Bit.ly API Key</a> for details).';
+							break;
+						case 'tooltip-plugin_google_api_key':
+							$text = 'The Google BrowserKey for this website / project. If you don\'t already have one, visit <a href="https://cloud.google.com/console#/project" target="_blank">Google\'s Cloud Console</a> and create a new project for your website. Under the <em>API &amp; auth - Registered apps</em>, register a new \'Web Application\' (name it \'WPSSO\' for example) and enter it\'s BrowserKey here.';
+							break;
+						case 'tooltip-plugin_google_shorten':
+							$text = 'In order to use Google\'s URL Shortener for URLs, you must turn on the URL Shortener API from <a href="https://cloud.google.com/console#/project" target="_blank">Google\'s Cloud Console</a> under the <em>API &amp; auth - APIs</em> menu options. Confirm that you have enabled Google\'s URL Shortener by checking the \'Yes\' option here.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_plugin', $text, $idx );

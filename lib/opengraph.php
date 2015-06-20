@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				return $og_ret;	// stop here and return the video array
 			}
 
-			// get_og_video() is only available in the Pro version
+			// get_og_video() is only partially implemented in the Free version (video modules are not available)
 			if ( $this->p->check->aop() ) {
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
 				if ( ! empty( $post_id ) ) {
@@ -287,19 +287,21 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$this->p->util->slice_max( $og_ret, $num );
 
-			$og_extend = array();
-			foreach ( $og_ret as $num => $og_video ) {
-				if ( ! empty( $og_video['og:video:embed_url'] ) ) {
-					$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
-					$og_embed['og:video:type'] = 'text/html';		// define the type after the url
-					foreach ( array( 'og:video:width', 'og:video:height' ) as $key ) 
-						if ( isset( $og_video[$key] ) )
-							$og_embed[$key] = $og_video[$key];
-					$og_extend[] = $og_embed;
+			if ( ! empty( $this->p->options['og_vid_html_type'] ) ) {
+				$og_extend = array();
+				foreach ( $og_ret as $num => $og_video ) {
+					$og_extend[] = $og_video;
+					if ( ! empty( $og_video['og:video:embed_url'] ) ) {
+						$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+						$og_embed['og:video:type'] = 'text/html';		// define the type after the url
+						foreach ( array( 'og:video:width', 'og:video:height' ) as $key ) 
+							if ( isset( $og_video[$key] ) )
+								$og_embed[$key] = $og_video[$key];
+						$og_extend[] = $og_embed;
+					}
 				}
-				$og_extend[] = $og_video;
-			}
-			return $og_extend;
+				return $og_extend;
+			} else return $og_ret;
 		}
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {

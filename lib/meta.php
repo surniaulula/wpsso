@@ -438,8 +438,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $meta_ret;
 		}
 
-		public function get_og_video( $num = 0, $id, 
-			$check_dupes = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_pre = 'og', $tag_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 

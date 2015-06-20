@@ -37,7 +37,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'settings' => 'Plugin Settings',
 				'content' => 'Content and Filters',
 				'social' => 'Social Settings Metabox',
-				'cache' => 'File and Object Cache' ) );
+				'cache' => 'File and Object Cache',
+				'apikeys' => 'Service API Keys' ) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
