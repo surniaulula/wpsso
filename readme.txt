@@ -410,14 +410,14 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.4.2 =
+= Version 3.4.2 (2015/06/20) =
 
 * **New Features**
-	* *None*
+	* Added a new "Include Embed text/html Type" option to enable/disable the text/html video meta tags.
 * **Improvements**
-	* Moved the Free and Pro 'Service Api Keys' Advanced options into the WPSSO core plugin.
+	* Moved the Free and Pro 'Service Api Keys' Advanced options tab into the WPSSO core plugin.
 * **Bugfixes**
-	* *None*
+	* Fixed a Wistia video issue when posting to Facebook by listing the 'application/x-shockwave-flash' video before the 'text/html' video type.
 * **Developer Notes**
 	* *None*
 
@@ -593,6 +593,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.4.2 =
+
+Fixed a Wistia video issue when posting to Facebook by listing the 'application/x-shockwave-flash' video before the 'text/html' video type.
 
 = 3.4.1 =
 
