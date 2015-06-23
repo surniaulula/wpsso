@@ -966,13 +966,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = class_exists( $lca.'user' ) ?
-				call_user_func( array(  $lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array(  $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 				// default row class and id attribute values
 				$tr = array(
-					'class' => 'alt'.( $count_rows % 2 ).
+					'class' => 'sucom_alt'.( $count_rows % 2 ).
 						( $count_rows === 0 ? ' first_row' : '' ).
 						( $count_rows === ( $total_rows - 1 ) ? ' last_row' : '' ),
 					'id' => ( is_int( $key ) ? '' : 'tr_'.$key )
@@ -980,7 +979,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				// if we don't already have a table row tag, then add one
 				if ( strpos( $row, '<tr ' ) === false )
-					$row = '<tr class="'.$tr['class'].'"'.( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
+					$row = '<tr class="'.$tr['class'].'"'.
+						( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
 				else {
 					foreach ( $tr as $att => $val ) {
 						if ( empty( $tr[$att] ) )
@@ -1014,7 +1014,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			echo '<div class="'.
-				( empty( $show_opts ) ? '' : 'show_'.$show_opts ).
+				( empty( $show_opts ) ? '' : 'sucom-show_'.$show_opts ).
 				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
 				( empty( $class_tabset_mb ) ? '' : ' '.$class_tabset_mb ).
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).

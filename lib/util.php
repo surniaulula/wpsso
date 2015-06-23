@@ -28,13 +28,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// called from several class __construct() methods to hook their filters
 		public function add_plugin_filters( &$class, $filters, $prio = 10, $lca = '' ) {
-			$lca = $lca === '' ? $this->p->cf['lca'] : $lca;
-			foreach ( $filters as $name => $num ) {
-				$filter = $lca.'_'.$name;
-				$method = 'filter_'.str_replace( array( '/', '-' ), '_', $name );
-				add_filter( $filter, array( &$class, $method ), $prio, $num );
+			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $lca );
+		}
+
+		public function add_plugin_actions( &$class, $actions, $prio = 10, $lca = '' ) {
+			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $lca );
+		}
+
+		protected function add_plugin_hooks( $type, &$class, &$hooks, &$prio, &$lca ) {
+			$lca = $lca === '' ?
+				$this->p->cf['lca'] : $lca;
+			foreach ( $hooks as $name => $num ) {
+				$hook = $lca.'_'.$name;
+				$method = $type.'_'.str_replace( array( '/', '-' ), '_', $name );
+				call_user_func( 'add_'.$type, $hook, array( &$class, $method ), $prio, $num );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'filter for '.$filter.' added', 2 );
+					$this->p->debug->log( $type.' for '.$hook.' added', 2 );
 			}
 		}
 

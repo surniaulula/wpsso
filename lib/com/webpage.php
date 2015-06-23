@@ -183,27 +183,17 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 				if ( ! empty( $post_id ) )
-					// fallback to the og_title value
 					$title = $this->p->util->get_mod_options( 'post', $post_id, array( $custom_idx, 'og_title' ) );
 
 			} elseif ( SucomUtil::is_term_page() ) {
 				$term = $this->p->util->get_term_object();
-				if ( ! empty( $term->term_id ) ) {
+				if ( ! empty( $term->term_id ) )
 					$title = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $custom_idx );
-					if ( empty( $title ) && SucomUtil::is_category_page() )
-						$title = $this->get_category_title();	// includes parents in title string
-					if ( empty( $title ) && is_admin() )		// re-create default wp title on admin side
-						$title = apply_filters( 'wp_title',
-							$term->name.' '.$separator.' ', $separator, 'right' );
-				}
+
 			} elseif ( SucomUtil::is_author_page() ) {
 				$author = $this->p->util->get_author_object();
-				if ( ! empty( $author->ID ) ) {
+				if ( ! empty( $author->ID ) )
 					$title = $this->p->util->get_mod_options( 'user', $author->ID, $custom_idx );
-					if ( empty( $title ) && is_admin() )	// re-create default wp title on admin side
-						$title = apply_filters( 'wp_title',
-							$author->display_name.' '.$separator.' ', $separator, 'right' );
-				}
 			}
 
 			// get seed if no custom meta title
@@ -246,9 +236,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
 	
-				// category title, with category parents
-				} elseif ( is_category() ) {
+				} elseif ( is_admin() && SucomUtil::is_term_page() ) {
+					$term = $this->p->util->get_term_object();
+					$title = apply_filters( 'wp_title', $term->name.' '.$separator.' ', $separator, 'right' );
 
+				} elseif ( is_admin() && SucomUtil::is_author_page() ) {
+					$author = $this->p->util->get_author_object();
+					$title = apply_filters( 'wp_title', $author->display_name.' '.$separator.' ', $separator, 'right' );
+
+				// category title, with category parents
+				} elseif ( SucomUtil::is_category_page() ) {
 					$title = $this->get_category_title();	// includes parents in title string
 
 				} else {
@@ -341,7 +338,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 				if ( ! empty( $post_id ) )
-					// fallback to the og_desc value
 					$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $custom_idx, 'og_desc' ) );
 
 			} elseif ( SucomUtil::is_term_page() ) {
