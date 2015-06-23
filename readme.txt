@@ -16,11 +16,9 @@ Improves shared content and social SEO - no matter how webpages are shared - usi
 
 <p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser addons / extension, or simply URLs pasted directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) covers all the bases in one light-weight, but featured packed plugin.</p>
 
-= Why Choose WPSSO? =
+= Advanced Social SEO =
 
 <p><strong>A good social meta tag plugin is the foundation of any solid social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, StumbleUpon, Tumblr and and many more &mdash; and no sharing buttons required!</p>
-
-<p>WPSSO is supported securely and professionally (<em>admin access is never required</em>), <a href="http://wpsso.com/codex/plugins/wpsso/">offers extensive documentation for users <em>and</em> developers</a>, Pro version upgrades are available using the native WordPress update system, development is always current with the latest social standards, and plugin fixes / updates are available promptly.</p>
 
 <blockquote>
 <h4>Industry Reviews</h4>
