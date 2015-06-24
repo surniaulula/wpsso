@@ -10,7 +10,7 @@ Requires At Least: 3.0
 Tested Up To: 4.2.2
 Stable Tag: 3.4.3
 
-Improve your shared content and social SEO - no matter how your content is shared - using buttons, browser addons, URLs in timelines &amp; PMs.
+Improves your shared content and social SEO - no matter how your content is shared - from buttons, browser addons, or URLs in timelines &amp; PMs.
 
 == Description ==
 
