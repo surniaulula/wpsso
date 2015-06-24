@@ -97,9 +97,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				echo '
 <style type="text/css">
-	li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
-	li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
-		color:#'.$this->p->cf['color'].' !important;
+	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
+	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
+		color:#'.$this->p->cf['color'].';
 	}
 	.column-'.$this->p->cf['lca'].'_og_image { 
 		width:'.$this->p->cf['form']['img_col_width'].';
