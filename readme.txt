@@ -1,4 +1,4 @@
-=== WordPress Social Sharing Optimization - Advanced Meta Tags and Social SEO ===
+=== WordPress Social Sharing Optimization - Advanced Meta Tags and Social SEO / SMO ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Contributors: jsmoriss
@@ -10,7 +10,7 @@ Requires At Least: 3.0
 Tested Up To: 4.2.2
 Stable Tag: 3.4.3
 
-Improves your shared content and social SEO - no matter how your content is shared - from buttons, browser addons, or URLs in timelines &amp; PMs.
+Improve your shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser addons, or URLs in timelines &amp; PMs.
 
 == Description ==
 
