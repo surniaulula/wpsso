@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			// JetPack Photon
 			if ( $this->p->is_avail['media']['photon'] === true && ! $this->aop() ) {
 				$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
-				$this->p->notice->err( $err_pre.__( 'JetPack Photon cripples the WordPress image size functions as part of its feature.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please <a href="%s">disable JetPack Photon</a> or disable the %s Free version plugin.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module specifically for JetPack Photon</a>.', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/' ) );
+				$this->p->notice->err( $err_pre.__( '<strong>JetPack\'s Photon module cripples the WordPress image size functions on purpose</strong>.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %s images.', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
 			}
 
 			/*
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			// WooCommerce
 			if ( class_exists( 'Woocommerce' ) && ! $this->aop() && ! empty( $this->p->options['plugin_filter_content'] ) ) {
 				$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
-				$this->p->notice->err( $err_pre.__( 'WooCommerce does not include shortcode support in the admin interface (required by the WordPress content filters).', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please uncheck the \'<em>Apply WordPress Content Filters</em>\' option on the <a href="%s">%s Advanced settings page</a>.', WPSSO_TEXTDOM ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
+				$this->p->notice->err( $err_pre.__( '<strong>WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please uncheck the \'<em>Apply WordPress Content Filters</em>\' option on the <a href="%s">%s Advanced settings page</a>.', WPSSO_TEXTDOM ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
 			}
 
 			// Facebook

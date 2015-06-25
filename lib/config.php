@@ -665,6 +665,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! defined( 'WPSSO_MENU_ORDER' ) )
 				define( 'WPSSO_MENU_ORDER', '99.10' );
 
+			if ( ! defined( 'NGFB_MENU_ICON_HIGHLIGHT' ) )
+				define( 'NGFB_MENU_ICON_HIGHLIGHT', true );
+
 			/*
 			 * WPSSO option and meta array names
 			 */
@@ -740,7 +743,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					define( 'QUICK_CACHE_ALLOWED', false );	// quick cache
 
 				if ( ! defined( 'ZENCACHE_ALLOWED' ) )
-					define( 'ZENCACHE_ALLOWED', false );	// quick cache
+					define( 'ZENCACHE_ALLOWED', false );	// zencache
 			}
 		}
 

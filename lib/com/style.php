@@ -93,18 +93,25 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		private function admin_inline_styles( $hook ) {
 			if ( isset( $this->p->cf['color'] ) ) {
 				$lca = $this->p->cf['lca'];
+				$uca = strtoupper( $lca );
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
-				echo '
-<style type="text/css">
+				$icon_highlight = ( defined( $uca.'_MENU_ICON_HIGHLIGHT' )  &&
+					constant( $uca.'_MENU_ICON_HIGHLIGHT' ) === false ) ?
+						false : true;
+				echo '<style type="text/css">', "\n";
+				if ( $icon_highlight )
+					echo '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].';
 	}
-	.column-'.$this->p->cf['lca'].'_og_image { 
+';
+				echo '
+	.column-'.$lca.'_og_image { 
 		width:'.$this->p->cf['form']['img_col_width'].';
 	}
-	.column-'.$this->p->cf['lca'].'_og_image .preview_img { 
+	.column-'.$lca.'_og_image .preview_img { 
 		width:'.$this->p->cf['form']['img_col_width'].';
 		height:'.$this->p->cf['form']['img_col_height'].';
 		background-size:'.$this->p->cf['form']['img_col_width'].' auto;
@@ -115,7 +122,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
-</style>';
+';
+				echo '</style>', "\n";
 			}
 		}
 	}
