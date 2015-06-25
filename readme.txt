@@ -70,7 +70,7 @@ Improve your shared content and social SEO / SMO - no matter how your content is
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
 </div>
 
 <strong>Pro / Power-User Version</strong>
@@ -119,7 +119,7 @@ Aside from the additional support for Twitter Cards, the main difference between
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="100%" height="100%"/></p>
 </div>
 
 <strong>Images and Videos</strong>
@@ -138,7 +138,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png" width="100%" height="100%"/></p>
 </div>
 
 <strong>eCommerce Products</strong>
@@ -169,7 +169,7 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="100%" height="100%"/></p>
 </div>
 
 <h4>Social Profiles for Google Search</h4>
@@ -184,8 +184,8 @@ WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http:/
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png"/></p>
-<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png" width="100%" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png" width="100%" height="100%"/></p>
 </div>
 
 WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/types/summary-card), [Large Image Summary](https://dev.twitter.com/docs/cards/large-image-summary-card), [Photo](https://dev.twitter.com/docs/cards/types/photo-card), [Gallery](https://dev.twitter.com/docs/cards/types/gallery-card), [Player](https://dev.twitter.com/docs/cards/types/player-card) and [Product](https://dev.twitter.com/docs/cards/types/product-card) Twitter Cards &mdash; *including configurable image sizes for each card type*.

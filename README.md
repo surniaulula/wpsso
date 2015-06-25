@@ -76,7 +76,7 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
 </div>
 
 <p><strong>Pro / Power-User Version</strong></p>
@@ -140,7 +140,7 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="100%" height="100%"/></p>
 </div>
 
 <p><strong>Images and Videos</strong></p>
@@ -160,7 +160,7 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png" width="100%" height="100%"/></p>
 </div>
 
 <p><strong>eCommerce Products</strong></p>
@@ -194,7 +194,7 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="100%" height="100%"/></p>
 </div>
 
 <h4>Social Profiles for Google Search</h4>
@@ -210,8 +210,8 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png"/></p>
-<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-social-image-dimensions.png" width="100%" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png" width="100%" height="100%"/></p>
 </div>
 
 <p>WPSSO (Pro version) provides the <a href="https://dev.twitter.com/docs/cards/types/summary-card">Summary</a>, <a href="https://dev.twitter.com/docs/cards/large-image-summary-card">Large Image Summary</a>, <a href="https://dev.twitter.com/docs/cards/types/photo-card">Photo</a>, <a href="https://dev.twitter.com/docs/cards/types/gallery-card">Gallery</a>, <a href="https://dev.twitter.com/docs/cards/types/player-card">Player</a> and <a href="https://dev.twitter.com/docs/cards/types/product-card">Product</a> Twitter Cards &mdash; <em>including configurable image sizes for each card type</em>.</p>
