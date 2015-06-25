@@ -665,8 +665,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! defined( 'WPSSO_MENU_ORDER' ) )
 				define( 'WPSSO_MENU_ORDER', '99.10' );
 
-			if ( ! defined( 'NGFB_MENU_ICON_HIGHLIGHT' ) )
-				define( 'NGFB_MENU_ICON_HIGHLIGHT', true );
+			if ( ! defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) )
+				define( 'WPSSO_MENU_ICON_HIGHLIGHT', true );
 
 			/*
 			 * WPSSO option and meta array names
