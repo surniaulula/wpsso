@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 01. WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.
 02. WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.
 03. WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.
-04. WPSSO "Social Image" column on an example category editing page (also available on posts, pages, tags, and custom taxonomy editing pages).
+04. WPSSO "Social Img" column on an example category editing page (also available on posts, pages, tags, and custom taxonomy editing pages).
 05. Example Pinterest Product Pin (Zoomed)
 06. Example Facebook Link Share
 07. Example Facebook Video Share
@@ -407,6 +407,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
+
+= Version 3.5 =
+
+* **New Features**
+	* Added a "Social Desc" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with the Facebook / Open Graph description.
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
 
 = Version 3.4.3 (2015/06/23) =
 
@@ -446,7 +457,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.4 (2015/06/16) =
 
 * **New Features**
-	* Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
+	* Added a "Social Img" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
 * **Improvements**
 	* Refactored the WooCommerce module by removing the Open Graph image meta tags and hooking into the 'wpsso_attached_image_ids' filter instead (Pro version).
 * **Bugfixes**
@@ -619,5 +630,5 @@ Added new 'sucom_is_author_page' and 'sucom_author_object' filters for the Buddy
 
 = 3.4 =
 
-Added a "Social Image" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
+Added a "Social Img" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
 
