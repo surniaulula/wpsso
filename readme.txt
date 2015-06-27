@@ -408,16 +408,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.5 =
+= Version 8.5 (2015/06/27) =
 
 * **New Features**
 	* Added a "Social Desc" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with the Facebook / Open Graph description.
 * **Improvements**
-	* *None*
+	* Renamed the "Ignore Thumbnails in Content" option to "Check Image Dimensions".
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* *None*
+	* Renamed the SucomCache 'object_expire' and 'file_expire' attributes to 'default_object_expire' and 'default_file_expire'.
+	* Renamed the 'plugin_file_cache_hrs' option key to 'plugin_file_cache_exp' and changed its value from hours to seconds.
+	* Renamed the NgfbUtil `get_cache_url()` method to `get_cache_file_url()`.
 
 = Version 3.4.3 (2015/06/23) =
 
@@ -615,6 +617,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.5 =
+
+Added a "Social Desc" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with the Facebook / Open Graph description.
 
 = 3.4.3 =
 
