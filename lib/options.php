@@ -206,16 +206,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( ! $this->p->check->aop() ) {
-				// the free version does not provide editing of rich pin image dimensions
 				foreach( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $suffix ) {
 					if ( isset( $opts['og_img_'.$suffix] ) &&
 						isset( $opts['rp_img_'.$suffix] ) ) {
 						$opts['rp_img_'.$suffix] = $opts['og_img_'.$suffix];
 					}
 				}
-				// the free version does not provide file caching services
-				if ( ! empty( $opts['plugin_file_cache_hrs'] ) )
-					$opts['plugin_file_cache_hrs'] = 0;
+				if ( ! empty( $opts['plugin_file_cache_exp'] ) )
+					$opts['plugin_file_cache_exp'] = 0;
 			}
 
 			// if an image id is being used, remove the image url (only one can be defined)
@@ -331,7 +329,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_id':
 				case 'og_def_img_id':
 				case 'og_def_author_id':
-				case 'plugin_file_cache_hrs':
+				case 'plugin_file_cache_exp':
 					return 'numeric';
 					break;
 				// integer options that must be 1 or more (not zero)

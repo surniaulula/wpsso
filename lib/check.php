@@ -259,9 +259,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			// PHP
 			if ( empty( $this->p->is_avail['curl'] ) ) {
-				if ( ! empty( $this->p->options['plugin_file_cache_hrs'] ) ) {
+				if ( ! empty( $this->p->options['plugin_file_cache_exp'] ) ) {
 					$this->p->debug->log( 'file caching is enabled but curl function is missing' );
-					$this->p->notice->err( sprintf( __( 'File caching has been enabled, but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
+					$this->p->notice->err( sprintf( __( 'The file caching feature has been enabled but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
 				}
 			}
 
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			// JetPack Photon
 			if ( $this->p->is_avail['media']['photon'] === true && ! $this->aop() ) {
 				$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
-				$this->p->notice->err( $err_pre.__( '<strong>JetPack\'s Photon module cripples the WordPress image size functions on purpose</strong>.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %s images.', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
+				$this->p->notice->err( $err_pre.__( '<strong>JetPack\'s Photon module cripples the WordPress image size functions on purpose</strong>.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> which includes an <a href="%s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %s images.', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
 			}
 
 			/*

@@ -580,7 +580,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/', $attr_value, $match) ) {
 								$og_image['og:image'] = $match[0].'?s='.$size_info['width'].'&d=404&r=G';
 								$og_image['og:image:width'] = $size_info['width'];
-								$og_image['og:image:height'] = $size_info['width'];
+								$og_image['og:image:height'] = $size_info['width'];	// square image
 								break;	// stop here
 							}
 

@@ -38,6 +38,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'og_image_user_column_content' => 3,
+					'og_desc_user_column_content' => 3,
 				) );
 
 				// exit here if not a user page, or showing the profile page
@@ -61,35 +62,50 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function filter_og_image_user_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
 
-			switch ( $column_name ) {
+			// use the open graph image dimensions to reject images that are too small
+			$size_name = $this->p->cf['lca'].'-opengraph';
+			$check_dupes = false;	// using first image we find, so dupe checking is useless
+			$force_regen = false;
+			$meta_pre = 'og';
 
-				case $this->p->cf['lca'].'_og_image':
+			if ( ! empty( $this->p->options['og_def_img_on_author'] ) )
+				$og_image = $this->p->media->get_default_image( 1, $size_name,
+					$check_dupes, $force_regen );
+			else {
+				$og_image = $this->get_og_image( 1, $size_name, $id,
+					$check_dupes, $force_regen, $meta_pre );
+				if ( empty( $og_image ) )
+					$og_image = $this->p->media->get_default_image( 1, $size_name,
+						$check_dupes, $force_regen );
+			}
 
-					// use the open graph image dimensions to reject images that are too small
-					$size_name = $this->p->cf['lca'].'-opengraph';
-					$check_dupes = false;	// using first image we find, so dupe checking is useless
-					$force_regen = false;
-					$meta_pre = 'og';
+			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
+				$image = reset( $og_image );
+				if ( ! empty( $image['og:image'] ) )
+					$value = $this->get_og_image_column_html( $image );
+			}
 
-					if ( ! empty( $this->p->options['og_def_img_on_author'] ) )
-						$og_image = $this->p->media->get_default_image( 1, $size_name,
-							$check_dupes, $force_regen );
-					else {
-						$og_image = $this->get_og_image( 1, $size_name, $id,
-							$check_dupes, $force_regen, $meta_pre );
-						if ( empty( $og_image ) )
-							$og_image = $this->p->media->get_default_image( 1, $size_name,
-								$check_dupes, $force_regen );
-					}
+			return $value;
+		}
 
-					if ( ! empty( $og_image ) && is_array( $og_image ) ) {
-						$image = reset( $og_image );
-						if ( ! empty( $image['og:image'] ) )
-							$value = $this->get_og_image_column_html( $image );
-					}
+		public function filter_og_desc_user_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
 
-					break;
+			$author = get_userdata( $id );
+			if ( empty( $author->ID ) )
+				return $value;
+
+			$value = $this->p->util->get_mod_options( 'user', $author->ID, 'og_desc' );
+
+			if ( empty( $value ) ) {
+				if ( ! empty( $author->description ) )
+					$value = $author->description;
+				elseif ( ! empty( $author->display_name ) )
+					$value = sprintf( 'Authored by %s', $author->display_name );
 			}
 
 			return $value;
@@ -558,6 +574,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
 					'mod:user_lang:'.$lang.'_id:'.$user_id.'_column:'.$lca.'_og_image',
+					'mod:user_lang:'.$lang.'_id:'.$user_id.'_column:'.$lca.'_og_desc',
 				),
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 

@@ -17,10 +17,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
 			'color' => '47d147',		// menu item color - lime green / shades of 33cc33
-			'feed_cache_expire' => 24,	// 24 hours
+			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.4.3',		// plugin version
+					'version' => '3.5',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso342',				// increment when changing default options
+				'version' => 'sso343',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -398,7 +398,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_user' => 1,
 					'plugin_add_to_attachment' => 1,
 					'plugin_object_cache_exp' => 86400,	// 24 hours
-					'plugin_file_cache_hrs' => 0,
+					'plugin_file_cache_exp' => 0,
 					'plugin_verify_certs' => 0,
 					'plugin_min_shorten' => 22,
 					'plugin_bitly_login' => '',
@@ -457,8 +457,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug:use' => 'default',
 					'plugin_object_cache_exp' => 86400,	// 24 hours
 					'plugin_object_cache_exp:use' => 'default',
-					'plugin_file_cache_hrs' => 0,
-					'plugin_file_cache_hrs:use' => 'default',
+					'plugin_file_cache_exp' => 0,
+					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,
 					'plugin_verify_certs:use' => 'default',
 					'plugin_min_shorten' => 22,
@@ -512,8 +512,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'form' => array(
-				'img_col_width' => '70px',
-				'img_col_height' => '37px',
+				'og_image_col_width' => '70px',
+				'og_image_col_height' => '37px',
 				'tooltip_class' => 'sucom_tooltip',
 				'max_desc_hashtags' => 10,
 				'max_media_items' => 20,
@@ -522,17 +522,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'0' => 'No',
 				),
 				'file_cache_hrs' => array(
-					0,
-					1,
-					3,
-					6,
-					9,
-					12,
-					24,
-					36,
-					48,
-					72,
-					168,
+					0 => 0,
+					3600 => 1,
+					7200 => 3,
+					21600 => 6,
+					32400 => 9,
+					43200 => 12,
+					86400 => 24,
+					129600 => 36,
+					172800 => 48,
+					259200 => 72,
+					604800 => 168,
 				),
 				'js_locations' => array(
 					'none' => '[none]',

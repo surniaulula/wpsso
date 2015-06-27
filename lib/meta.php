@@ -303,7 +303,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_column_headings( $columns ) { 
 			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => __( 'Social Img', WPSSO_TEXTDOM )
+				$this->p->cf['lca'].'_og_image' => __( 'Social Img', WPSSO_TEXTDOM ),
+				$this->p->cf['lca'].'_og_desc' => __( 'Social Desc', WPSSO_TEXTDOM )
 			) );
 		}
 
@@ -321,6 +322,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			switch ( $column_name ) {
 				case $this->p->cf['lca'].'_og_image':
+				case $this->p->cf['lca'].'_og_desc':
 					$use_cache = true;
 					break;
 				default:
@@ -347,7 +349,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$value = apply_filters( $column_name.'_'.$mod.'_column_content', $value, $column_name, $id  );
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
-				set_transient( $cache_id, $value, $this->p->cache->object_expire );
+				set_transient( $cache_id, $value, $this->p->options['plugin_object_cache_exp'] );
 
 			return $value;
 		}

@@ -46,6 +46,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_image_post_column_content' => 3,
+						'og_desc_post_column_content' => 3,
 					) );
 				}
 			}
@@ -56,50 +57,52 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function filter_og_image_post_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
 
-			switch ( $column_name ) {
+			// use the open graph image dimensions to reject images that are too small
+			$size_name = $this->p->cf['lca'].'-opengraph';
+			$check_dupes = false;	// using first image we find, so dupe checking is useless
+			$force_regen = false;
+			$meta_pre = 'og';
+			$og_image = array();
 
-				case $this->p->cf['lca'].'_og_image':
-
-					// use the open graph image dimensions to reject images that are too small
-					$size_name = $this->p->cf['lca'].'-opengraph';
-					$check_dupes = false;	// using first image we find, so dupe checking is useless
-					$force_regen = false;
-					$meta_pre = 'og';
-					$og_image = array();
-
-					// get video preview images if allowed
-					if ( ! empty( $this->p->options['og_vid_prev_img'] ) ) {
-						// assume the first video will have a preview image
-						$og_video = $this->p->og->get_all_videos( 1, $id, $check_dupes, $meta_pre );
-						if ( ! empty( $og_video ) && is_array( $og_video ) ) {
-							foreach ( $og_video as $video ) {
-								if ( ! empty( $video['og:image'] ) ) {
-									$og_image[] = $video;
-									break;
-								}
-							}
+			// get video preview images if allowed
+			if ( ! empty( $this->p->options['og_vid_prev_img'] ) ) {
+				// assume the first video will have a preview image
+				$og_video = $this->p->og->get_all_videos( 1, $id, $check_dupes, $meta_pre );
+				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
+					foreach ( $og_video as $video ) {
+						if ( ! empty( $video['og:image'] ) ) {
+							$og_image[] = $video;
+							break;
 						}
 					}
+				}
+			}
 
-					if ( empty( $og_image ) ) {
-						$og_image = $this->p->og->get_all_images( 1, $size_name, $id,
-							$check_dupes, $meta_pre );
-						if ( empty( $og_image ) )
-							$og_image = $this->p->media->get_default_image( 1, $size_name,
-								$check_dupes, $force_regen );
-					}
+			if ( empty( $og_image ) ) {
+				$og_image = $this->p->og->get_all_images( 1, $size_name, $id,
+					$check_dupes, $meta_pre );
+				if ( empty( $og_image ) )
+					$og_image = $this->p->media->get_default_image( 1, $size_name,
+						$check_dupes, $force_regen );
+			}
 
-					if ( ! empty( $og_image ) && is_array( $og_image ) ) {
-						$image = reset( $og_image );
-						if ( ! empty( $image['og:image'] ) )
-							$value = $this->get_og_image_column_html( $image );
-					}
-
-					break;
+			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
+				$image = reset( $og_image );
+				if ( ! empty( $image['og:image'] ) )
+					$value = $this->get_og_image_column_html( $image );
 			}
 
 			return $value;
+		}
+
+		public function filter_og_desc_post_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
+
+			return $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $id );
 		}
 
 		// hooked into the admin_head action

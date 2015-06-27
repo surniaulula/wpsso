@@ -264,10 +264,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save the header array to the WordPress transient cache
 			 */
 			if ( apply_filters( $lca.'_header_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
-				set_transient( $cache_id, $header_array, $this->p->cache->object_expire );
+				set_transient( $cache_id, $header_array, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': header array saved to transient '.
-						$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
+						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $header_array;
 		}

@@ -17,10 +17,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $base_dir = '';
 		public $base_url = '/cache/';
 		public $verify_certs = false;
-		public $file_expire = 0;
-		public $object_expire = 3600;	// default object expire is 1 hour
-		public $timeout = 10;		// wait 10 seconds for a completed transaction
-		public $connect_timeout = 5;	// wait 5 seconds for a connection
+		public $default_file_expire = 0;	// don't cache to disk by default
+		public $default_object_expire = 3600;	// default object expire is 1 hour
+		public $timeout = 10;			// wait 10 seconds for a completed transaction
+		public $connect_timeout = 5;		// wait 5 seconds for a connection
 
 		private $transient = array(	// saved on wp shutdown action
 			'loaded' => false,
@@ -89,7 +89,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function get( $url, $return = 'url', $cache_name = 'file', $expire_secs = false, $curl_userpwd = false, $url_ext = '' ) {
 
 			$file_expire = $expire_secs === false ?
-				$this->file_expire : $expire_secs;
+				$this->default_file_expire : $expire_secs;
 
 			if ( $this->p->is_avail['curl'] !== true ) {
 				if ( $this->p->debug->enabled )
@@ -238,7 +238,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $return == 'url' ? $url : false;
 		}
 
-		private function get_cache_data( $cache_salt, $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
+		protected function get_cache_data( $cache_salt, $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
+
 			$cache_data = false;
 			switch ( $cache_name ) {
 				case 'wp_cache' :
@@ -269,7 +270,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $cache_type.': filename salt '.$cache_salt );
-					$file_expire = $expire_secs === false ? $this->file_expire : $expire_secs;
+					$file_expire = $expire_secs === false ? 
+						$this->default_file_expire : $expire_secs;
 
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled )
@@ -296,7 +298,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $cache_data;	// return data or empty string
 		}
 
-		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
+		protected function save_cache_data( $cache_salt, &$cache_data = '', $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
 			$ret_status = false;
 			if ( empty( $cache_data ) ) 
 				return $ret_status;
@@ -308,7 +310,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$object_expire = $expire_secs === false ? $this->object_expire : $expire_secs;
+						$object_expire = $expire_secs === false ? 
+							$this->default_object_expire : $expire_secs;
 						wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_expire );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
@@ -322,7 +325,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$object_expire = $expire_secs === false ? $this->object_expire : $expire_secs;
+						$object_expire = $expire_secs === false ? 
+							$this->default_object_expire : $expire_secs;
 						set_transient( $cache_id, $cache_data, $object_expire );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.

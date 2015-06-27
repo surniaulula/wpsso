@@ -44,10 +44,11 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$this->p->util->th( 'Use HTTPS for Video API Calls', null, 'og_vid_https' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_https' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Use the Video Preview Image', null, 'og_vid_prev_img' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
+			$rows[] = $this->p->util->th( 'Include the Video Preview Image', null, 'og_vid_prev_img' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).
+			' video preview images are included first</td>';
 
-			$rows[] = $this->p->util->th( 'Include Embed text/html Type', null, 'og_vid_html_type' ).
+			$rows[] = $this->p->util->th( 'Include the Embed text/html Type', null, 'og_vid_html_type' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_html_type' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.

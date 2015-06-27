@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.2.2
- * Version: 3.4.3
+ * Version: 3.5
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -203,18 +203,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options );
 			if ( is_multisite() )
-				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options );
+				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, 
+					$this->site_options, true );
 
 			/*
 			 * configure class properties based on plugin settings
 			 */
-			$this->cache->object_expire = $this->options['plugin_object_cache_exp'];
-			if ( ! empty( $this->options['plugin_file_cache_hrs'] ) && $this->check->aop() ) {
-				if ( $this->debug->is_enabled( 'wp' ) === true ) 
-					$this->cache->file_expire = WPSSO_DEBUG_FILE_EXP;	// reduce to 300 seconds
-				else $this->cache->file_expire = $this->options['plugin_file_cache_hrs'] * 60 * 60;
-			} else $this->cache->file_expire = 0;	// just in case
-			$this->is_avail['cache']['file'] = $this->cache->file_expire > 0 ? true : false;
+			$this->cache->default_object_expire = $this->options['plugin_object_cache_exp'];
+			$this->cache->default_file_expire = ( $this->check->aop() ? 
+				( $this->debug->is_enabled( 'wp' ) ? 
+					WPSSO_DEBUG_FILE_EXP : $this->options['plugin_file_cache_exp'] ) : 0 );
+			$this->is_avail['cache']['file'] = $this->cache->default_file_expire > 0 ? true : false;
 
 			// disable the transient cache if html debug mode is on
 			if ( $this->debug->is_enabled( 'html' ) === true ) {
@@ -229,7 +228,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->enabled )
 					$this->debug->log( 'html debug mode is active: '.$cache_status );
 
-				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.' '.
+				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.
 					' and informational messages are being added as hidden HTML comments.' );
 			}
 

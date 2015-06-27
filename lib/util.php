@@ -330,9 +330,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
 			if ( ! empty( $cache_id ) ) {
-				set_transient( $cache_id, $topics, $this->p->cache->object_expire );
+				set_transient( $cache_id, $topics, $this->p->options['plugin_object_cache_exp'] );
 				$this->p->debug->log( $cache_type.': topics array saved to transient '.
-					$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
+					$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $topics;
 		}
@@ -603,6 +603,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $ret === true && $this->p->debug->enabled )
 				$this->p->debug->log( 'default '.$media.' is forced' );
 			return $ret;
+		}
+
+		public function get_cache_file_url( $url, $url_ext = '' ) {
+
+			if ( empty( $this->options['plugin_file_cache_exp'] ) ||
+				! isset( $this->p->cache->base_dir ) )	// check for cache attribute, just in case
+					return $url;
+
+			return ( apply_filters( $this->p->cf['lca'].'_rewrite_url',
+				$this->p->cache->get( $url, 'url', 'file', $this->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 	}
 }

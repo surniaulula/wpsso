@@ -599,10 +599,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( $filter_content == true && ! empty( $cache_id ) ) {
 				// only some caching plugins implement this function
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
-				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->cache->object_expire );
+				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': '.$filter_name.' content saved to wp_cache '.
-						$cache_id.' ('.$this->p->cache->object_expire.' seconds)');
+						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $content;
 		}

@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// the plugin information metabox on all settings pages needs this
-			$this->p->admin->set_readme_info( $this->feed_cache_expire() );
+			$this->p->admin->set_readme_info( $this->p->cf['feed_cache_exp'] );
 
 			// add child metaboxes first, since they contain the default reset_metabox_prefs()
 			$this->p->admin->submenu[ $this->menu_id ]->add_meta_boxes();
@@ -493,11 +493,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					break;
 			}
 			echo '</form>', "\n";
-		}
-
-		public function feed_cache_expire( $seconds = 0 ) {
-			return empty( $this->p->cf['feed_cache_expire'] ) ? 
-				86400 : $this->p->cf['feed_cache_expire'] * 3600;
 		}
 
 		public function show_metabox_info() {
@@ -840,7 +835,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $network ) {
 					if ( ! empty( $info['url']['purchase'] ) || 
 						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
+
+						if ( $this->p->cf['lca'] === $lca || 
+							$this->p->check->aop() ) {
+
 							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
 								$this->p->util->th( 'Site Use', 'site_use' ).'<td>'.
@@ -848,22 +846,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
 						} else {
 							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
-								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
-								$this->p->msgs->get( 'pro-option-msg' ).'</td>
+								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
+									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
+								'</td><td>'.$this->p->msgs->get( 'pro-option-msg' ).'</td>
 									<td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 				} else {
 					if ( ! empty( $info['url']['purchase'] ) || 
 						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-						if ( $this->p->cf['lca'] === $lca || $this->p->check->aop() ) {
+
+						if ( $this->p->cf['lca'] === $lca || 
+							$this->p->check->aop() ) {
+
 							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
 								( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
 							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
-								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td>'.
-								$this->p->msgs->get( 'pro-option-msg' ).'</td></tr>'."\n";
+								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
+									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
+								'</td><td>'.$this->p->msgs->get( 'pro-option-msg' ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
 				}

@@ -146,7 +146,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$rows[] = $this->p->util->th( 'Max Images to Include', null, 'og_img_max' ).
 					'<td>'.$this->form->get_select( 'og_img_max', 
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).'</td>';
+						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
+					( empty( $this->form->options['og_vid_prev_img'] ) ? '' : ' '.
+						$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_videos', 
+							'video preview images are enabled' ).' and included first' ).
+					'</td>';
 
 					$rows[] = $this->p->util->th( 'Open Graph Image Dimensions', 'highlight', 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';

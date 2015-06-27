@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Check for Header Tag Conflicts', 'highlight', 'plugin_check_head' ).
+			$rows[] = $this->p->util->th( 'Check Webpage Head for Conflicts', 'highlight', 'plugin_check_head' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
@@ -48,6 +48,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Auto-Resize Media Images', null, 'plugin_auto_img_resize' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_auto_img_resize' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Check Image Dimensions', null, 'plugin_ignore_small_img' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_ignore_small_img' ).'</td>';
 
 			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
 				$rows[] = '<tr class="hide_in_basic">'.
@@ -78,11 +82,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Ignore Thumbnails in Content', null, 'plugin_ignore_small_img' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_ignore_small_img' ).'</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Enable Excerpt Input for Pages', null, 'plugin_page_excerpt' ).
+			$this->p->util->th( 'Enable Excerpt for Pages', null, 'plugin_page_excerpt' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_excerpt' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
@@ -130,9 +130,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="'.( $network === false ? 2 : 4 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Object Cache Expiry', null, 'plugin_object_cache_exp' ).
+			$rows[] = $this->p->util->th( 'Object Cache Expiry', 'highlight', 'plugin_object_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_object_cache_exp'].' seconds</td>'.
 			$this->get_site_use( $form, $network, 'plugin_object_cache_exp' );
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->th( 'Verify SSL Certificates', null, 'plugin_verify_certs' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_verify_certs' ).'</td>'.
+			$this->get_site_use( $form, $network, 'plugin_verify_certs' );
 
 			return $rows;
 		}

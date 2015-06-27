@@ -99,22 +99,21 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$icon_highlight = ( defined( $uca.'_MENU_ICON_HIGHLIGHT' )  &&
 					constant( $uca.'_MENU_ICON_HIGHLIGHT' ) === false ) ?
 						false : true;
-				echo '<style type="text/css">', "\n";
-				if ( $icon_highlight )
-					echo '
+				echo '
+<style type="text/css">'.
+( $icon_highlight ? '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].';
-	}
-';
-				echo '
+	}' : ''
+).'
 	.column-'.$lca.'_og_image { 
-		width:'.$this->p->cf['form']['img_col_width'].';
+		width:'.$this->p->cf['form']['og_image_col_width'].';
 	}
 	.column-'.$lca.'_og_image .preview_img { 
-		width:'.$this->p->cf['form']['img_col_width'].';
-		height:'.$this->p->cf['form']['img_col_height'].';
-		background-size:'.$this->p->cf['form']['img_col_width'].' auto;
+		width:'.$this->p->cf['form']['og_image_col_width'].';
+		height:'.$this->p->cf['form']['og_image_col_height'].';
+		background-size:'.$this->p->cf['form']['og_image_col_width'].' auto;
 		background-position:center center;
 		background-repeat:no-repeat;
 		background-position:center middle;
@@ -122,8 +121,19 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
+	td.column-'.$lca.'_og_desc,
+	.widefat td.column-'.$lca.'_og_desc { 
+		direction:ltr;
+		font-family:Helvetica;
+		font-size:12px;
+		line-height:16px;
+		overflow:hidden;
+		overflow-x:hidden;
+		overflow-y:hidden;
+		text-alignleftword-wrap:break-word;
+	}
+</style>
 ';
-				echo '</style>', "\n";
 			}
 		}
 	}

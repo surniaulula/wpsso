@@ -82,13 +82,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$rows[] = $this->p->util->th( 'Plugin Options to Show by Default', 'highlight', 'plugin_show_opts' ).
 					'<td>'.$this->form->get_select( 'plugin_show_opts', $this->p->cf['form']['show_options'] ).'</td>';
 
+					$rows[] = $this->p->util->th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
+
 					$rows[] = $this->p->util->th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
 					'<td>'.( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ? 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
-
-					$rows[] = $this->p->util->th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
 					break;
 

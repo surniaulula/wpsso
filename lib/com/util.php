@@ -545,17 +545,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ( is_home() && 'page' == get_option( 'show_on_front' ) );
 		}
 
-		public function get_cache_url( $url, $url_ext = '' ) {
-
-			// make sure the cache expiration is greater than 0 hours
-			// this also checks to make sure the cache object exists
-			if ( empty( $this->p->cache->file_expire ) ) 
-				return $url;
-
-			return ( apply_filters( $this->p->cf['lca'].'_rewrite_url',
-				$this->p->cache->get( $url, 'url', 'file', false, false, $url_ext ) ) );
-		}
-
 		public function fix_relative_url( $url = '' ) {
 			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
 				if ( $this->p->debug->enabled )
@@ -691,7 +680,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $this->p->is_avail['cache']['transient'] )
-				set_transient( $cache_id, $content, $this->p->cache->object_expire );
+				set_transient( $cache_id, $content, $this->p->options['plugin_object_cache_exp'] );
 
 			return $content;
 		}
@@ -754,10 +743,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// save the parsed readme (aka $plugin_info) to the transient cache
 			if ( $this->p->is_avail['cache']['transient'] ) {
-				set_transient( $cache_id, $plugin_info, $this->p->cache->object_expire );
+				set_transient( $cache_id, $plugin_info, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.$cache_id.
-						' ('.$this->p->cache->object_expire.' seconds)');
+					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.
+						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $plugin_info;
 		}
@@ -822,8 +811,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function delete_expired_file_cache( $all = false ) {
 			$deleted = 0;
 			$time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
-			$time = empty( $this->p->options['plugin_file_cache_hrs'] ) ? 
-				$time : $time - ( $this->p->options['plugin_file_cache_hrs'] * 60 * 60 );
+			$time = empty( $this->p->options['plugin_file_cache_exp'] ) ? 
+				$time : $time - $this->p->options['plugin_file_cache_exp'];
 			$cachedir = constant( $this->p->cf['uca'].'_CACHEDIR' );
 			if ( ! $dh = @opendir( $cachedir ) )
 				$this->p->notice->err( 'Failed to open directory '.$cachedir.' for reading.', true );

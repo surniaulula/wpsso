@@ -85,6 +85,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
 				$opts = SucomUtil::rename_keys( $opts, $this->renamed_site_keys );
 
+			if ( version_compare( $opts_version, 342, '<=' ) ) {
+				if ( isset( $opts['plugin_file_cache_hrs'] ) ) {
+					$opts['plugin_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * 3600;
+					unset( $opts['plugin_file_cache_hrs'] );
+				}
+			}
+
 			return $this->sanitize( $opts, $def_opts );	// cleanup options and sanitize
 		}
 	}

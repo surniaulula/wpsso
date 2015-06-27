@@ -40,6 +40,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'og_image_taxonomy_column_content' => 3,
+					'og_desc_taxonomy_column_content' => 3,
 				) );
 
 				if ( ( $this->term_id = SucomUtil::get_req_val( 'tag_ID' ) ) === '' )
@@ -118,35 +119,55 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		}
 
 		public function filter_og_image_taxonomy_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
 
-			switch ( $column_name ) {
+			// use the open graph image dimensions to reject images that are too small
+			$size_name = $this->p->cf['lca'].'-opengraph';
+			$check_dupes = false;	// using first image we find, so dupe checking is useless
+			$force_regen = false;
+			$meta_pre = 'og';
 
-				case $this->p->cf['lca'].'_og_image':
+			$og_image = $this->get_og_image( 1, $size_name, $id,
+				$check_dupes, $force_regen, $meta_pre );
 
-					// use the open graph image dimensions to reject images that are too small
-					$size_name = $this->p->cf['lca'].'-opengraph';
-					$check_dupes = false;	// using first image we find, so dupe checking is useless
-					$force_regen = false;
-					$meta_pre = 'og';
+			if ( empty( $og_image ) )
+				$og_image = $this->get_term_images( 1, $size_name, $id,
+					$check_dupes, $force_regen, $meta_pre );
 
-					$og_image = $this->get_og_image( 1, $size_name, $id,
-						$check_dupes, $force_regen, $meta_pre );
+			if ( empty( $og_image ) )
+				$og_image = $this->p->media->get_default_image( 1, $size_name,
+					$check_dupes, $force_regen );
 
-					if ( empty( $og_image ) )
-						$og_image = $this->get_term_images( 1, $size_name, $id,
-							$check_dupes, $force_regen, $meta_pre );
+			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
+				$image = reset( $og_image );
+				if ( ! empty( $image['og:image'] ) )
+					$value = $this->get_og_image_column_html( $image );
+			}
 
-					if ( empty( $og_image ) )
-						$og_image = $this->p->media->get_default_image( 1, $size_name,
-							$check_dupes, $force_regen );
+			return $value;
+		}
 
-					if ( ! empty( $og_image ) && is_array( $og_image ) ) {
-						$image = reset( $og_image );
-						if ( ! empty( $image['og:image'] ) )
-							$value = $this->get_og_image_column_html( $image );
-					}
+		public function filter_og_desc_taxonomy_column_content( $value, $column_name, $id ) {
+			if ( ! empty( $value ) )
+				return $value;
 
-					break;
+			$term = get_term_by( 'id', $id, $this->tax_slug, OBJECT, 'raw' );
+			if ( empty( $term->term_id ) )
+				return $value;
+
+			$value = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, 'og_desc' );
+
+			if ( ! empty( $term->description ) )
+				$value = $term->description;
+
+			if ( empty( $value ) && ! empty( $term->name ) ) {
+				if ( strpos( $term->taxonomy, '_tag' ) !== false )
+					$value = sprintf( 'Tagged with %s', $term->name );
+				elseif ( $term->taxonomy === 'category' ||
+					strpos( $term->taxonomy, '_cat' ) !== false )
+						$value = sprintf( '%s Category', $term->name ); 
+				else $value = $term->name.' Archives';
 			}
 
 			return $value;

@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Apply the standard WordPress \'the_content\' filter to render the content text (default is checked). This renders all shortcodes, and allows '.$short.' to detect images and embedded videos that may be provided by these.';
 							break;
 						case 'tooltip-plugin_ignore_small_img':
-							$text = $short.' will retrieve image URLs from HTML tags in the <strong>content</strong> text. The &amp;amp;lt;img/&amp;amp;gt; HTML tags must have a width &amp; height or data-wp-pid attribute(s), and their size must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to include smaller images from the content. <em>Unchecking this option is not advised</em> - images that are too small for social websites may be included in your meta tags if you uncheck this option.';
+							$text = 'Images that are detected by '.$short.' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; If you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_page_excerpt':
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$short.' can use as a default description value.';
@@ -387,11 +387,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_object_cache_exp':
 							$text = $short.' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds ('.( $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) / 60 / 60 ).' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).<br/><br/>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.';
 							break;
-						case 'tooltip-plugin_file_cache_hrs':
-							$text = $short_pro.' can save social sharing JavaScript and images to a cache folder, providing URLs to these cached files instead of the originals. A value of 0 hours (the default) disables the file caching feature. If your hosting infrastructure performs reasonably well, this option can improve page load times significantly. All social sharing images and javascripts will be cached, except for the Facebook JavaScript SDK, which does not work correctly when cached.';
-							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
+							break;
+						case 'tooltip-plugin_file_cache_exp':
+							$text = $short_pro.' can save most social sharing JavaScript and images to a cache folder, providing URLs to these cached files instead of the originals. A value of 0 hours (the default) disables the file caching feature. If your hosting infrastructure performs reasonably well, this option can improve page load times significantly. All social sharing images and javascripts will be cached, except for the Facebook JavaScript SDK, which does not work correctly when cached.';
 							break;
 						/*
 						 * 'Service API Keys' (URL Shortening) settings
