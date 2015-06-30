@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 01. WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.
 02. WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.
 03. WPSSO Social Settings on Posts and Pages &mdash; The social settings metabox allows you to modify the default title, description, and image values, preview an example social share, preview all meta tags, and validate the current webpage with various online tools.
-04. WPSSO "Social Img" column on an example category editing page (also available on posts, pages, tags, and custom taxonomy editing pages).
+04. WPSSO "Social Image" and "Social Description" preview columns (available on posts, pages, tags, and custom taxonomy editing pages).
 05. Example Pinterest Product Pin (Zoomed)
 06. Example Facebook Link Share
 07. Example Facebook Video Share
