@@ -408,6 +408,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.5.1 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added a new 'ngfb-schema' image size, which inherits the 'ngfb-opengraph' image size values, to avoid any confusion in error messages, etc.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 8.5 (2015/06/27) =
 
 * **New Features**
