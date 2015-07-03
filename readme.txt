@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.2
-Stable Tag: 3.5
+Stable Tag: 3.5.1
 
 Improves shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser add-ons, or URLs in timelines &amp; PMs.
 
