@@ -56,9 +56,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// called directly (with or without an id) and from the 'wp' action ($id will be an object)
 		public function add_plugin_image_sizes( $id = false, $sizes = array(), $filter = true, $mod = false ) {
 			/*
-			 * allow various plugin extensions to provide their image names, labels, etc.
-			 * the first dimension array key is the option name prefix by default
-			 * you can also include the width, height, crop, crop_x, and crop_y values
+			 * Allow various plugin extensions to provide their image names, labels, etc.
+			 * The first dimension array key is the option name prefix by default.
+			 * You can also include the width, height, crop, crop_x, and crop_y values.
 			 *
 			 *	Array (
 			 *		[rp_img] => Array (
@@ -119,8 +119,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
 				if ( ! is_array( $size_info ) ) {
-					$save_name = empty( $size_info ) ? $opt_prefix : $size_info;
-					$size_info = array( 'name' => $save_name, 'label' => $save_name );
+					$save_name = empty( $size_info ) ? 
+						$opt_prefix : $size_info;
+					$size_info = array( 
+						'name' => $save_name,
+						'label' => $save_name
+					);
 				} elseif ( ! empty( $size_info['prefix'] ) )					// allow for alternate option prefix
 					$opt_prefix = $size_info['prefix'];
 

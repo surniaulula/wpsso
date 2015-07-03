@@ -19,12 +19,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			) );
-			add_filter( 'language_attributes', array( &$this, 'add_doctype' ), 100, 1 );
+			add_filter( 'language_attributes', 
+				array( &$this, 'add_doctype' ), 100, 1 );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
-			$sizes['rp_img'] = array( 'name' => 'richpin', 'label' => 'Pinterest Rich Pin' );
-			$sizes['og_img'] = array( 'name' => 'opengraph', 'label' => 'Facebook / Open Graph' );
+			$sizes['rp_img'] = array(
+				'name' => 'richpin',
+				'label' => 'Pinterest Rich Pin'
+			);
+			$sizes['og_img'] = array( 
+				'name' => 'opengraph', 
+				'label' => 'Facebook / Open Graph'
+			);
 			return $sizes;
 		}
 

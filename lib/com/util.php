@@ -979,7 +979,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						// count the number of rows and options that are hidden
 						if ( $att === 'class' && ! empty( $show_opts ) && 
 							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide_in_'.$show_opts.'[" ]/', $row ) > 0 ) ) {
-							$hidden_opts += preg_match_all( '/<th /', $row, $matches );
+							$hidden_opts += preg_match_all( '/<th/', $row, $matches );
 							$hidden_rows += $matched;
 						}
 

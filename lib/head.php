@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_tag_array( 'meta', 'itemprop', $meta_schema, $use_post ),
 				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),		// seo description is last
 				SucomUtil::a2aa( $this->p->schema->get_json_array( $post_id, $author_id,
-					$this->p->cf['lca'].'-opengraph' ) )
+					$this->p->cf['lca'].'-schema' ) )
 			);
 
 			/**

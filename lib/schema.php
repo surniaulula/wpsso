@@ -14,7 +14,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			add_filter( 'language_attributes', array( &$this, 'add_doctype' ), WPSSO_DOCTYPE_PRIORITY, 1 );
+			$this->p->util->add_plugin_filters( $this, array( 
+				'plugin_image_sizes' => 1,
+			) );
+			add_filter( 'language_attributes', 
+				array( &$this, 'add_doctype' ), WPSSO_DOCTYPE_PRIORITY, 1 );
+		}
+
+		public function filter_plugin_image_sizes( $sizes ) {
+			$sizes['schema_img'] = array(
+				'name' => 'schema',
+				'label' => 'Schema JSON-LD (same as Facebook / Open Graph)',
+				'prefix' => 'og_img'	// use opengraph dimensions
+			);
+			return $sizes;
 		}
 
 		public function add_doctype( $doctype ) {
@@ -136,7 +149,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_organization_json_script( $size_name = 'thumbnail') {
 			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
 			$logo_url = $this->p->options['schema_logo_url'];
-			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph', false );
+			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-schema', false );
 			if ( count( $og_image ) > 0 ) {
 				$image = reset( $og_image );
 				$image_url = $image['og:image'];
