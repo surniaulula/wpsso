@@ -408,7 +408,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.5.1 =
+= Version 3.5.1 (2015/07/03) =
 
 * **New Features**
 	* *None*
@@ -419,7 +419,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Developer Notes**
 	* *None*
 
-= Version 8.5 (2015/06/27) =
+= Version 3.5 (2015/06/27) =
 
 * **New Features**
 	* Added a "Social Desc" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with the Facebook / Open Graph description.
