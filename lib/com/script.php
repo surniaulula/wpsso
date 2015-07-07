@@ -24,16 +24,20 @@ if ( ! class_exists( 'SucomScript' ) ) {
 		public function admin_enqueue_scripts( $hook ) {
 			$lca = $this->p->cf['lca'];
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
-			$plugin_version = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
+			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
 			wp_register_script( 'jquery-qtip', 
-				$url_path.'js/ext/jquery-qtip.min.js', array( 'jquery' ), '2.2.1', true );
+				$url_path.'js/ext/jquery-qtip.min.js', 
+					array( 'jquery' ), '2.2.1', true );
 			wp_register_script( 'sucom-tooltips', 
-				$url_path.'js/com/jquery-tooltips.min.js', array( 'jquery' ), $plugin_version, true );
+				$url_path.'js/com/jquery-tooltips.min.js', 
+					array( 'jquery' ), $plugin_version, true );
 			wp_register_script( 'sucom-metabox', 
-				$url_path.'js/com/jquery-metabox.min.js', array( 'jquery' ), $plugin_version, true );
+				$url_path.'js/com/jquery-metabox.min.js', 
+					array( 'jquery' ), $plugin_version, true );
 			wp_register_script( 'sucom-admin-media', 
-				$url_path.'js/com/jquery-admin-media.min.js', array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
+				$url_path.'js/com/jquery-admin-media.min.js', 
+					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
 			// don't load our javascript where we don't need it
 			switch ( $hook ) {

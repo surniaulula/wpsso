@@ -55,7 +55,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $inline_vars;
 		}
 
-		public function get_inline_vals( $use_post = false, $obj = false ) {
+		public function get_inline_vals( $use_post = false, &$obj = false, &$atts = array() ) {
 
 			if ( ! is_object( $obj ) ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
@@ -66,7 +66,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 
-			$sharing_url = $this->get_sharing_url( $use_post );
+			if ( isset( $atts['url'] ) )
+				$sharing_url = $atts['url'];
+			else $sharing_url = $this->get_sharing_url( $use_post, 
+				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ),
+				( isset( $atts['source_id'] ) ? $atts['source_id'] : false ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
@@ -84,10 +88,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// allow the variables and values array to be extended
 		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $str, $use_post = false, $obj = false, $ext = array() ) {
+		public function replace_inline_vars( $str, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
 
 			$vars = $this->inline_vars;
-			$vals = $this->get_inline_vals( $use_post, $obj );
+			$vals = $this->get_inline_vals( $use_post, $obj, $atts );
 
 			if ( ! empty( $ext ) && self::is_assoc( $ext ) ) {
 				$vars = array_merge( $vars, array_keys( $ext ) );
