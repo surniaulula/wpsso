@@ -67,6 +67,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$opts = $this->p->options;
 				foreach ( $opts as $key => $val ) {
 					switch ( true ) {
+						case ( strpos( $key, '_html' ) !== false ):
 						case ( strpos( $key, '_css_' ) !== false ):
 						case ( strpos( $key, '_js_' ) !== false ):
 						case ( preg_match( '/_(key|tid)$/', $key ) ):

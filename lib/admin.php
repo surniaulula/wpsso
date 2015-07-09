@@ -859,6 +859,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						if ( $this->p->cf['lca'] === $lca || 
 							$this->p->check->aop() ) {
+							$qty_used = class_exists( 'SucomUpdate' ) ?
+								SucomUpdate::get_option( $lca, 'qty_used' ) : false;
 
 							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
