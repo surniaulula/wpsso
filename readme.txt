@@ -417,7 +417,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a WPSSO_SEO_FILTERS_PRIORITY constant (with a default value of 100) to make sure SEO integration modules run last (Pro version).
 * **Bugfixes**
 	* Fixed the missing "Licenses Assigned" information text on the Extension Plugins settings page (Pro version).
-	* Fixed a condition where the WooCommerce integration module would return an empty og:description value (Pro version).
+	* Fixed a condition where the WooCommerce integration module could return an empty og:description value (Pro version).
 * **Developer Notes**
 	* Added a new WpssoOpengraph `get_the_media_urls()` method for WPSSO plugin extensions (returns the first image and video URLs).
 
