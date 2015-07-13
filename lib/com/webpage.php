@@ -518,7 +518,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							return $content;
 						}
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'use cache = false' );
+						$this->p->debug->log( 'use_cache = false' );
 				}
 			}
 
