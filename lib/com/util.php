@@ -88,17 +88,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// allow the variables and values array to be extended
 		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $str, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
-
+		public function replace_inline_vars( $text, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
 			$vars = $this->inline_vars;
 			$vals = $this->get_inline_vals( $use_post, $obj, $atts );
-
 			if ( ! empty( $ext ) && self::is_assoc( $ext ) ) {
-				$vars = array_merge( $vars, array_keys( $ext ) );
-				$vals = array_merge( $vars, array_values( $ext ) );
+				foreach ( $ext as $key => $str ) {
+					$vars[] = '%%'.$key.'%%';
+					$vals[] = $str;
+				}
 			}
-
-			return str_replace( $vars, $vals, $str );
+			return str_replace( $vars, $vals, $text );
 		}
 
 		public static function active_plugins( $idx = false ) {
@@ -1037,7 +1036,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter' ) {
-			$service = isset( $this->p->options['twitter_shortener'] ) ? $this->p->options['twitter_shortener'] : '';
+			$service = isset( $this->p->options['plugin_shortener'] ) ? 
+				$this->p->options['plugin_shortener'] : '';
 			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, $service );
 			$len_adj = strpos( $short_url, 'https:' ) === false ? 1 : 2;
 

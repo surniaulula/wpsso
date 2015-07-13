@@ -147,6 +147,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="'.( $network === false ? 2 : 4 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
+			$rows['plugin_shortener'] = $this->p->util->th( 'Preferred URL Shortening Service', null, 'plugin_shortener' ).
+			'<td class="blank">'.$form->get_hidden( 'plugin_shortener' ).
+			$this->p->cf['form']['shorteners'][$this->p->options['plugin_shortener']].'</td>'.
+			$this->get_site_use( $form, $network, 'plugin_shortener' );
+
 			$rows['plugin_min_shorten'] = '<tr class="hide_in_basic">'.
 			$this->p->util->th( 'Minimum URL Length to Shorten', null, 'plugin_min_shorten' ). 
 			'<td nowrap class="blank">'.$this->p->options['plugin_min_shorten'].' characters</td>'.

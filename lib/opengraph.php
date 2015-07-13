@@ -424,6 +424,25 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				return $this->p->options[$key];
 			else return get_bloginfo( 'name', 'display' );
 		}
+
+		public function get_the_media_urls( $size_name = 'thumbnail', $id, $meta_pre = 'og' ) {
+			if ( empty( $id ) )
+				return array();
+			return ( array(
+				$this->get_og_media_url( 'image', $this->get_all_images( 1, $size_name, $id, false, $meta_pre ) ),
+				$this->get_og_media_url( 'video', $this->get_all_videos( 1, $id, false, $meta_pre ) ),
+			) );
+		}
+
+		public function get_og_media_url( $name, $og ) {
+			if ( ! empty( $og ) && is_array( $og ) ) {
+				$media = reset( $og );
+				foreach ( array( 'og:'.$name.':secure_url', 'og:'.$name.':url', 'og:'.$name ) as $key )
+					if ( ! empty( $media[$key] ) )
+						return $media[$key];
+			}
+			return '';
+		}
 	}
 }
 

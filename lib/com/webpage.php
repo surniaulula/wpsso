@@ -78,7 +78,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 		// called from Tumblr, Pinterest, and Twitter classes
 		public function get_caption( $type = 'title', $length = 200, $use_post = true, $use_cache = true,
-			$add_hashtags = true, $encode = true, $custom_idx = 'og', $source_id = '' ) {
+			$add_hashtags = true, $encode = true, $custom_idx = 'og_title', $source_id = '' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array( 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( empty( $caption ) ) {
-				$custom_prefix = preg_replace( '/_(title|desc)$/', '', $custom_idx );
+				$custom_prefix = preg_replace( '/_(title|desc|caption)$/', '', $custom_idx );
 
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( strtolower( $type ) ) {

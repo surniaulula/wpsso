@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso343',				// increment when changing default options
+				'version' => 'sso344',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -400,6 +400,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_object_cache_exp' => 86400,	// 24 hours
 					'plugin_file_cache_exp' => 0,
 					'plugin_verify_certs' => 0,
+					'plugin_shortener' => 'none',
 					'plugin_min_shorten' => 22,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_api_key' => '',
@@ -461,6 +462,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,
 					'plugin_verify_certs:use' => 'default',
+					'plugin_shortener' => 'none',
+					'plugin_shortener:use' => 'default',
 					'plugin_min_shorten' => 22,
 					'plugin_min_shorten:use' => 'default',
 					'plugin_bitly_login' => '',
@@ -481,6 +484,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'linkedin' => 'linkedin',
 					'myspace' => 'myspace',
 					'pinterest' => 'pin',
+					'pocket' => 'pocket',
 					'buffer' => 'buffer',
 					'reddit' => 'reddit',
 					'managewp' => 'managewp',
@@ -488,6 +492,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tumblr' => 'tumblr',
 					'youtube' => 'yt',
 					'skype' => 'skype',
+					'vk' => 'vk',
 				),
 			),
 			'wp' => array(				// wordpress

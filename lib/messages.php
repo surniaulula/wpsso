@@ -93,6 +93,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-youtube-video-playlist-api':
 							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$short_pro.' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
 							break;
+						case 'tooltip-side-url-shortening':
+							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced settings' ).' page, '.$short_pro.' will load an integration module for various '.$short.' plugin filters and/or extensions that may need to shorten URLs.';
+							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_side', $text, $idx );
 							break;
@@ -396,8 +399,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Service API Keys' (URL Shortening) settings
 						 */
+						case 'tooltip-plugin_shortener':
+							$text = 'Your preferred URL shortening service for the various '.$short.' plugin filters and/or extensions that may need to shorten URLs. Don\'t forget to define the Service API Keys for the URL shortening service you select.';
+							break;
 						case 'tooltip-plugin_min_shorten':
-							$text = 'Original URLs shorter than this length will not be shortened (the default suggested by Twitter is '.$this->p->opt->get_defaults( 'plugin_min_shorten' ).' characters).';
+							$text = 'URLs / permalinks shorter than this length will not be shortened (the default suggested by Twitter is '.$this->p->opt->get_defaults( 'plugin_min_shorten' ).' characters).';
 							break;
 						case 'tooltip-plugin_bitly_login':
 							$text = 'The username for your Bit.ly API key (see <a href="https://bitly.com/a/your_api_key" target="_blank">Your Bit.ly API Key</a> for details).';
