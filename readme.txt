@@ -413,11 +413,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
+	* Added a new "Preferred URL Shortening Service" option on the SSO Advanced settings page.
 	* Added a WPSSO_SEO_FILTERS_PRIORITY constant (with a default value of 100) to make sure SEO integration modules run last (Pro version).
 * **Bugfixes**
 	* Fixed the missing "Licenses Assigned" information text on the Extension Plugins settings page (Pro version).
 * **Developer Notes**
-	* *None*
+	* Added a new WpssoOpengraph `get_the_media_urls()` method for WPSSO plugin extensions (returns the first image and video URLs).
 
 = Version 3.5.2 =
 
