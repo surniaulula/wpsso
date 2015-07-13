@@ -408,7 +408,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.5.3 =
+= Version 3.5.3 (2015/07/13) =
 
 * **New Features**
 	* *None*
@@ -653,6 +653,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.5.3 =
+
+Added a new "Preferred URL Shortening Service" option, fixed missing "Licenses Assigned" text, fixed for WooCommerce integration module.
 
 = 3.5.2 =
 
