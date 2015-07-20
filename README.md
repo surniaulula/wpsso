@@ -262,6 +262,8 @@
 
 <ul>
 <li>name</li>
+<li>headline</li>
+<li>datepublished</li>
 <li>description</li>
 <li>image</li>
 <li>url</li>
