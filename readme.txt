@@ -413,10 +413,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.6 (2015/07/21) =
 
 * **New Features**
-	* Added a "Video Preview Image(s)" option in the Social Settings metabox under the Priority Media tab.
 	* Added the Article "headline" and "datepublished" markup for Google's testing tool.
+	* Added a "Video Preview Image(s)" option in the Social Settings metabox under the Priority Media tab.
 * **Improvements**
-	* Changed the "Apply WordPress Content Filters" default option value from checked to unchecked.
+	* *None*
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
