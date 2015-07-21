@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				switch ( $name ) {
 					case 'pid':
 						$search = array(
-							$tag_pre.':'.$name.':id',
+							$tag_pre.':image:id',
 						);
 						break;
 					default:
