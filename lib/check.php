@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 					$this->p->debug->log( 'url shortening is enabled but curl function is missing' );
 					$this->p->notice->err( sprintf( __( 'URL shortening has been enabled, but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
-				elseif ( ! empty( $this->p->options['plugin_file_cache_exp'] ) ) {
+				} elseif ( ! empty( $this->p->options['plugin_file_cache_exp'] ) ) {
 					$this->p->debug->log( 'file caching is enabled but curl function is missing' );
 					$this->p->notice->err( sprintf( __( 'The file caching feature has been enabled but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
 				}
