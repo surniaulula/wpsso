@@ -88,6 +88,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$meta_schema['name'] = $meta_og['og:title'];
 			}
 
+			if ( ! empty( $this->p->options['add_meta_itemprop_headline'] ) ) {
+				if ( ! empty( $meta_og['og:title'] ) )
+					$meta_schema['headline'] = $meta_og['og:title'];
+			}
+
+			if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {
+				if ( ! empty( $meta_og['article:published_time'] ) )
+					$meta_schema['datepublished'] = $meta_og['article:published_time'];
+			}
+
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
 				$meta_schema['description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc

@@ -27,62 +27,62 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Article Topic', 'medium', 'post-og_art_section', $head_info ).
+			$rows[] = $this->p->util->get_th( 'Article Topic', 'medium', 'post-og_art_section', $head_info ).
 			'<td class="blank">'.$this->p->options['og_art_section'].'</td>';
 
 			if ( $post_status == 'auto-draft' )
-				$rows[] = $this->p->util->th( 'Default Title', 'medium', 'post-og_title', $head_info ). 
+				$rows[] = $this->p->util->get_th( 'Default Title', 'medium', 'post-og_title', $head_info ). 
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
-				$rows[] = $this->p->util->th( 'Default Title', 'medium', 'post-og_title', $head_info ). 
+				$rows[] = $this->p->util->get_th( 'Default Title', 'medium', 'post-og_title', $head_info ). 
 				'<td class="blank">'.$this->p->webpage->get_title( $this->p->options['og_title_len'], '...', 
 					true ).'</td>';	// use_post = true
 		
 			if ( $post_status == 'auto-draft' )
-				$rows[] = $this->p->util->th( 'Default (Facebook / Open Graph, LinkedIn, 
+				$rows[] = $this->p->util->get_th( 'Default (Facebook / Open Graph, LinkedIn, 
 					Pinterest Rich Pin) Description', 'medium', 'post-og_desc', $head_info ).
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
-				$rows[] = $this->p->util->th( 'Default (Facebook / Open Graph, LinkedIn, 
+				$rows[] = $this->p->util->get_th( 'Default (Facebook / Open Graph, LinkedIn, 
 					Pinterest Rich Pin) Description', 'medium', 'post-og_desc', $head_info ).
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', true ).'</td>';
 	
 			if ( $post_status == 'auto-draft' )
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->th( 'Google+ / Schema Description', 'medium', 'post-schema_desc', $head_info ).
+				$this->p->util->get_th( 'Google+ / Schema Description', 'medium', 'post-schema_desc', $head_info ).
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->th( 'Google+ / Schema Description', 'medium', 'post-schema_desc', $head_info ).
+				$this->p->util->get_th( 'Google+ / Schema Description', 'medium', 'post-schema_desc', $head_info ).
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'], '...', true ).'</td>';
 	
 			if ( $post_status == 'auto-draft' )
-				$rows[] = $this->p->util->th( 'Google Search / SEO Description', 'medium', 'post-seo_desc', $head_info ).
+				$rows[] = $this->p->util->get_th( 'Google Search / SEO Description', 'medium', 'post-seo_desc', $head_info ).
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
-				$rows[] = $this->p->util->th( 'Google Search / SEO Description', 'medium', 'post-seo_desc', $head_info ).
+				$rows[] = $this->p->util->get_th( 'Google Search / SEO Description', 'medium', 'post-seo_desc', $head_info ).
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['seo_desc_len'], '...',
 					true, true, false ).'</td>';	// no hashtags
 
 			if ( $post_status == 'auto-draft' )
-				$rows[] = $this->p->util->th( 'Twitter Card Description', 'medium', 'post-tc_desc', $head_info ).
+				$rows[] = $this->p->util->get_th( 'Twitter Card Description', 'medium', 'post-tc_desc', $head_info ).
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
-				$rows[] = $this->p->util->th( 'Twitter Card Description', 'medium', 'post-tc_desc', $head_info ).
+				$rows[] = $this->p->util->get_th( 'Twitter Card Description', 'medium', 'post-tc_desc', $head_info ).
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'], '...', true ).'</td>';
 
 			if ( $post_status == 'publish' || $post_type == 'attachment' )
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->th( 'Sharing URL', 'medium', 'post-sharing_url', $head_info ).
+				$this->p->util->get_th( 'Sharing URL', 'medium', 'post-sharing_url', $head_info ).
 				'<td class="blank">'.$this->p->util->get_sharing_url( true ).'</td>';
 			else
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->th( 'Sharing URL', 'medium', 'post-sharing_url', $head_info ).
+				$this->p->util->get_th( 'Sharing URL', 'medium', 'post-sharing_url', $head_info ).
 				'<td class="blank"><em>The Sharing URL permalink will be available when the '.
 					$head_info['ptn'].' is published.</em></td>';
 
@@ -98,42 +98,46 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				style="margin-top:0;">All Social Websites / Open Graph</h4></td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Image Dimensions', 'medium', 'og_img_dimensions' ).
+			$this->p->util->get_th( 'Image Dimensions', 'medium', 'og_img_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'og_img', true ).'</td>';
 
-			$rows[] = $this->p->util->th( 'Image ID', 'medium', 'meta-og_img_id', $head_info ).
+			$rows[] = $this->p->util->get_th( 'Image ID', 'medium', 'meta-og_img_id', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
-			$rows[] = $this->p->util->th( 'or Image URL', 'medium', 'meta-og_img_url', $head_info ).
+			$rows[] = $this->p->util->get_th( 'or Image URL', 'medium', 'meta-og_img_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Maximum Images', 'medium', 'post-og_img_max', $head_info ).
+			$this->p->util->get_th( 'Maximum Images', 'medium', 'post-og_img_max', $head_info ).
 			'<td class="blank">'.$this->p->options['og_img_max'].'</td>';
 
-			$rows[] = $this->p->util->th( 'Video Embed HTML', 'medium', 'meta-og_vid_embed', $head_info ).
+			$rows[] = $this->p->util->get_th( 'Video Embed HTML', 'medium', 'meta-og_vid_embed', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
-			$rows[] = $this->p->util->th( 'or Video URL', 'medium', 'meta-og_vid_url', $head_info ).
+			$rows[] = $this->p->util->get_th( 'or Video URL', 'medium', 'meta-og_vid_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Maximum Videos', 'medium', 'post-og_vid_max', $head_info ).
+			$this->p->util->get_th( 'Maximum Videos', 'medium', 'post-og_vid_max', $head_info ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Video Preview Image(s)', 'medium', 'post-og_vid_prev_img', $head_info ).
+			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			'<td colspan="2" class="subsection"><h4>Pinterest (Rich Pin)</h4></td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Image Dimensions', 'medium', 'rp_img_dimensions' ).
+			$this->p->util->get_th( 'Image Dimensions', 'medium', 'rp_img_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'rp_img', true ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'Image ID', 'medium', 'meta-rp_img_id', $head_info ).
+			$this->p->util->get_th( 'Image ID', 'medium', 'meta-rp_img_id', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->th( 'or Image URL', 'medium', 'meta-rp_img_url', $head_info ).
+			$this->p->util->get_th( 'or Image URL', 'medium', 'meta-rp_img_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			return $rows;

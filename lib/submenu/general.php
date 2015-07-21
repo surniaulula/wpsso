@@ -71,14 +71,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-general':
 
-					$rows[] = $this->p->util->th( 'Default Article Topic', 'highlight', 'og_art_section' ).
+					$rows[] = $this->p->util->get_th( 'Default Article Topic', 'highlight', 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics() ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Site Name', null, 'og_site_name', array( 'is_locale' => true ) ).
+					$rows[] = $this->p->util->get_th( 'Site Name', 
+						null, 'og_site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_locale_key( 'og_site_name' ), 
 						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Site Description', 'highlight', 'og_site_description', array( 'is_locale' => true ) ).
+					$rows[] = $this->p->util->get_th( 'Site Description', 
+						'highlight', 'og_site_description', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_locale_key( 'og_site_description' ), 
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
 
@@ -86,96 +88,95 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-content':
 
-					$rows[] = $this->p->util->th( 'Title Separator', null, 'og_title_sep' ).
+					$rows[] = $this->p->util->get_th( 'Title Separator', null, 'og_title_sep' ).
 					'<td>'.$this->form->get_input( 'og_title_sep', 'short' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Title Length', null, 'og_title_len' ).
+					$this->p->util->get_th( 'Title Length', null, 'og_title_len' ).
 					'<td>'.$this->form->get_input( 'og_title_len', 'short' ).' characters or less</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Description Length', null, 'og_desc_len' ).
+					$this->p->util->get_th( 'Description Length', null, 'og_desc_len' ).
 					'<td>'.$this->form->get_input( 'og_desc_len', 'short' ).' characters or less</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Content Starts at 1st Paragraph', null, 'og_desc_strip' ).
+					$this->p->util->get_th( 'Content Starts at 1st Paragraph', null, 'og_desc_strip' ).
 					'<td>'.$this->form->get_checkbox( 'og_desc_strip' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Use Image Alt if Content is Empty', null, 'og_desc_alt' ).
+					$this->p->util->get_th( 'Use Image Alt if Content is Empty', null, 'og_desc_alt' ).
 					'<td>'.$this->form->get_checkbox( 'og_desc_alt' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Add Hashtags to Descriptions', null, 'og_desc_hashtags' ).
+					$rows[] = $this->p->util->get_th( 'Add Hashtags to Descriptions', null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
 						range( 0, $this->p->cf['form']['max_desc_hashtags'] ), 'short', null, true ).' tag names</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Page Title in Tags', null, 'og_page_title_tag' ).
+					$this->p->util->get_th( 'Add Page Title in Tags', null, 'og_page_title_tag' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Page Ancestor Tags', null, 'og_page_parent_tags' ).
+					$this->p->util->get_th( 'Add Page Ancestor Tags', null, 'og_page_parent_tags' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_parent_tags' ).'</td>';
 
 					break;
 
 				case 'og-author':
 
-					$rows[] = $this->p->util->th( 'Author Profile URL Field', null, 'og_author_field' ).
+					$rows[] = $this->p->util->get_th( 'Author Profile URL Field', null, 'og_author_field' ).
 					'<td>'.$this->form->get_select( 'og_author_field', $this->form->author_contact_fields ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Fallback to Author Index URL', null, 'og_author_fallback' ).
+					$this->p->util->get_th( 'Fallback to Author Index URL', null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author when Missing', null, 'og_def_author_id' ).
+					$this->p->util->get_th( 'Default Author when Missing', null, 'og_def_author_id' ).
 					'<td>'.$this->form->get_select( 'og_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Author on Indexes', null, 'og_def_author_on_index' ).
+					$this->p->util->get_th( 'Force Default Author on Indexes', null, 'og_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author on Search Results', null, 'og_def_author_on_search' ).
+					$this->p->util->get_th( 'Default Author on Search Results', null, 'og_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' defines search webpages as articles</td>';
 
 					break;
 
 				case 'og-images':
 
-					$rows[] = $this->p->util->th( 'Max Images to Include', null, 'og_img_max' ).
+					$rows[] = $this->p->util->get_th( 'Max Images to Include', null, 'og_img_max' ).
 					'<td>'.$this->form->get_select( 'og_img_max', 
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
-					( empty( $this->form->options['og_vid_prev_img'] ) ? '' : ' '.
-						$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_videos', 
-							'video preview images are enabled' ).' and included first' ).
+					( empty( $this->form->options['og_vid_prev_img'] ) ?
+						'' : '&nbsp;&nbsp;<em>video preview images are enabled</em> and (when available) are included first' ).
 					'</td>';
 
-					$rows[] = $this->p->util->th( 'Open Graph Image Dimensions', 'highlight', 'og_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( 'Open Graph Image Dimensions', 'highlight', 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 	
-					$rows[] = $this->p->util->th( 'Default / Fallback Image ID', 'highlight', 'og_def_img_id' ).
+					$rows[] = $this->p->util->get_th( 'Default / Fallback Image ID', 'highlight', 'og_def_img_id' ).
 					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
 	
-					$rows[] = $this->p->util->th( 'or Default / Fallback Image URL', null, 'og_def_img_url' ).
+					$rows[] = $this->p->util->get_th( 'or Default / Fallback Image URL', null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Image on Indexes', null, 'og_def_img_on_index' ).
+					$this->p->util->get_th( 'Force Default Image on Indexes', null, 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Image on Author Index', null, 'og_def_img_on_author' ).
+					$this->p->util->get_th( 'Force Default Image on Author Index', null, 'og_def_img_on_author' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_author' ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Image on Search Results', null, 'og_def_img_on_search' ).
+					$this->p->util->get_th( 'Force Default Image on Search Results', null, 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 		
 					if ( $this->p->is_avail['media']['ngg'] === true ) {
 						$rows[] = '<tr class="hide_in_basic">'.
-						$this->p->util->th( 'Add Tags from NGG Featured Image', null, 'og_ngg_tags' ).
+						$this->p->util->get_th( 'Add Tags from NGG Featured Image', null, 'og_ngg_tags' ).
 						'<td>'.$this->form->get_checkbox( 'og_ngg_tags' ).'</td>';
 					}
 
@@ -187,65 +188,65 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-facebook':
 
-					$rows[] = $this->p->util->th( 'Facebook Business Page URL', 'highlight', 'fb_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Facebook Business Page URL', 'highlight', 'fb_publisher_url' ).
 					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Facebook Admin Username(s)', 'highlight', 'fb_admins' ).
+					$rows[] = $this->p->util->get_th( 'Facebook Admin Username(s)', 'highlight', 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Facebook Application ID', null, 'fb_app_id' ).
+					$rows[] = $this->p->util->get_th( 'Facebook Application ID', null, 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Default Language', null, 'fb_lang' ).
+					$rows[] = $this->p->util->get_th( 'Default Language', null, 'fb_lang' ).
 					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Author Name Format', 'highlight', 'google_author_name' ).
+					$this->p->util->get_th( 'Author Name Format', 'highlight', 'google_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					break;
 
 				case 'pub-google':
 
-					$rows[] = $this->p->util->th( 'Google+ Business Page URL', 'highlight', 'google_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Google+ Business Page URL', 'highlight', 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Schema Website / Business Logo URL', null, 'google_schema_logo_url' ).
+					$rows[] = $this->p->util->get_th( 'Schema Website / Business Logo URL', null, 'google_schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Schema Meta Description Length', null, 'google_schema_desc_len' ).
+					$this->p->util->get_th( 'Schema Meta Description Length', null, 'google_schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' characters or less</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Search / SEO Description Length', null, 'google_seo_desc_len' ).
+					$this->p->util->get_th( 'Search / SEO Description Length', null, 'google_seo_desc_len' ).
 					'<td>'.$this->form->get_input( 'seo_desc_len', 'short' ).' characters or less</td>';
 
-					$rows[] = $this->p->util->th( 'Author Link URL Field', null, 'google_author_field' ).
+					$rows[] = $this->p->util->get_th( 'Author Link URL Field', null, 'google_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $this->form->author_contact_fields ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author when Missing', null, 'google_def_author_id' ).
+					$this->p->util->get_th( 'Default Author when Missing', null, 'google_def_author_id' ).
 					'<td>'.$this->form->get_select( 'seo_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Force Default Author on Indexes', null, 'google_def_author_on_index' ).
+					$this->p->util->get_th( 'Force Default Author on Indexes', null, 'google_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Default Author on Search Results', null, 'google_def_author_on_search' ).
+					$this->p->util->get_th( 'Default Author on Search Results', null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema Website JSON-LD', null, 'google_schema_website_json' ).
+					$this->p->util->get_th( 'Add Schema Website JSON-LD', null, 'google_schema_website_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema Publisher JSON-LD', null, 'google_schema_publisher_json' ).
+					$this->p->util->get_th( 'Add Schema Publisher JSON-LD', null, 'google_schema_publisher_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Add Schema Author JSON-LD', null, 'google_schema_author_json' ).
+					$this->p->util->get_th( 'Add Schema Author JSON-LD', null, 'google_schema_author_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
 
 					break;
@@ -254,38 +255,38 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.$this->p->msgs->get( 'info-pub-pinterest' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Pinterest Company Page URL', null, 'rp_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'Pinterest Company Page URL', null, 'rp_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Rich Pin Image Dimensions', 'highlight', 'rp_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( 'Rich Pin Image Dimensions', 'highlight', 'rp_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Author Name Format', null, 'rp_author_name' ).
+					$this->p->util->get_th( 'Author Name Format', null, 'rp_author_name' ).
 					'<td>'.$this->form->get_select( 'rp_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->th( 'Website Verification ID', null, 'rp_dom_verify' ).
+					$this->p->util->get_th( 'Website Verification ID', null, 'rp_dom_verify' ).
 					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
 		
 					break;
 
 				case 'pub-twitter':
 
-					$rows[] = $this->p->util->th( 'Twitter Business @username', 'highlight', 'tc_site' ).
+					$rows[] = $this->p->util->get_th( 'Twitter Business @username', 'highlight', 'tc_site' ).
 					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
 
 					break;
 
 				case 'pub-other':
 
-					$rows[] = $this->p->util->th( 'Instagram Business URL', null, 'instgram_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Instagram Business URL', null, 'instgram_publisher_url' ).
 					'<td>'.$this->form->get_input( 'instgram_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'LinkedIn Company Page URL', null, 'linkedin_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'LinkedIn Company Page URL', null, 'linkedin_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'linkedin_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'MySpace Business (Brand) URL', null, 'myspace_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'MySpace Business (Brand) URL', null, 'myspace_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'myspace_publisher_url', 'wide' ).'</td>';
 
 					break;

@@ -843,17 +843,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_video['og:video:height']
 					);
 
-			// cleanup any extra image meta tags, or remove the preview image 
-			// if 'Include Video Preview Image' is not checked
-			if ( empty( $this->p->options['og_vid_prev_img'] ) ||
-				empty( $og_video['og:image'] ) || ( $check_dupes &&
-					! $this->p->util->is_uniq_url( $og_video['og:image'] ) ) )
-						unset ( 
-							$og_video['og:image'],
-							$og_video['og:image:secure_url'],
-							$og_video['og:image:width'],
-							$og_video['og:image:height']
-						);
+			// cleanup any extra image meta tags
+			if ( empty( $og_video['og:image'] ) || 
+				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:image'] ) ) )
+					unset ( 
+						$og_video['og:image'],
+						$og_video['og:image:secure_url'],
+						$og_video['og:image:width'],
+						$og_video['og:image:height']
+					);
 
 			// fallback to the original url
 			if ( empty( $og_video['og:video:url'] ) && $fallback === true ) {

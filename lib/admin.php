@@ -839,13 +839,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $this->p->cf['lca'] === $lca || 
 							$this->p->check->aop() ) {
 
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
+							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
-								$this->p->util->th( 'Site Use', 'site_use' ).'<td>'.
+								$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
 								$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
 									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
+							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
 								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
@@ -862,11 +862,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $lca, 'qty_used' ) : false;
 
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
+							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
 								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
 								( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
+							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
 								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).

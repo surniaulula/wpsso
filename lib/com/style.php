@@ -121,16 +121,16 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
-	td.column-'.$lca.'_og_desc,
-	.widefat td.column-'.$lca.'_og_desc { 
+	td.column-'.$lca.'_og_desc {
 		direction:ltr;
 		font-family:Helvetica;
-		font-size:12px;
-		line-height:16px;
-		overflow:hidden;
-		overflow-x:hidden;
-		overflow-y:hidden;
 		text-alignleftword-wrap:break-word;
+	}
+	@media ( max-width:1295px ) {
+		th.column-'.$lca.'_og_desc,
+		td.column-'.$lca.'_og_desc {
+			display:none;
+		}
 	}
 </style>
 ';

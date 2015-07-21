@@ -49,10 +49,10 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$rows[] = $this->p->util->th( 'Facebook / Open Graph', null, 'og_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( 'Facebook / Open Graph', null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Pinterest Rich Pin', null, 'rp_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( 'Pinterest Rich Pin', null, 'rp_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 	
 					break;

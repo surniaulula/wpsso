@@ -182,6 +182,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 case 'tooltip-post-og_vid_max':
 							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags for this '.$ptn.'.';
 						 	break;
+						 case 'tooltip-post-og_vid_prev_img':
+							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
+						 	break;
 						 case 'tooltip-post-sharing_url':
 							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
 						 	break;
@@ -236,13 +239,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum number of images to list in the Facebook / Open Graph and Pinterest Rich Pin meta tags -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the facebook / Open Graph and Pinterest Rich Pin meta tags (<strong>not recommended</strong>). If no images are listed in your meta tags, then social websites may choose an unsuitable image from your webpage (including headers, sidebars, etc.).';
 							break;
 						case 'tooltip-og_vid_max':
-							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select \'0\', then no videos will be listed in the facebook / Open Graph and Pinterest Rich Pin meta tags.';
+							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select \'0\', then no videos will be listed in the Facebook / Open Graph and Pinterest Rich Pin meta tags.';
 							break;
 						case 'tooltip-og_vid_https':
 							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
 							break;
 						case 'tooltip-og_vid_prev_img':
-							$text = 'Include video preview images in the meta tags (default is checked).';
+							$text = 'Include video preview images in the webpage meta tags (default is unchecked). When video preview images are enabled and available, they are included before any custom, featured, attached, etc. images.';
 							break;
 						case 'tooltip-og_vid_html_type':
 							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
@@ -400,7 +403,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Service API Keys' (URL Shortening) settings
 						 */
 						case 'tooltip-plugin_shortener':
-							$text = 'Your preferred URL shortening service for the various '.$short.' plugin filters and/or extensions that may need to shorten URLs. Don\'t forget to define the Service API Keys for the URL shortening service you select.';
+							$text = 'A preferred URL shortening service for various '.$short.' plugin filters and/or extensions that may need to shorten URLs. Don\'t forget to define the Service API Keys for the URL shortening service you select.';
 							break;
 						case 'tooltip-plugin_min_shorten':
 							$text = 'URLs / permalinks shorter than this length will not be shortened (the default suggested by Twitter is '.$this->p->opt->get_defaults( 'plugin_min_shorten' ).' characters).';

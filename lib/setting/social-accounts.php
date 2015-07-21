@@ -46,25 +46,25 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 				case 'social-accounts-general':
 
-					$rows[] = $this->p->util->th( 'Facebook Business Page URL', null, 'fb_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Facebook Business Page URL', null, 'fb_publisher_url' ).
 					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Google+ Business Page URL', null, 'google_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Google+ Business Page URL', null, 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Pinterest Company Page URL', null, 'rp_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'Pinterest Company Page URL', null, 'rp_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Twitter Business @username', null, 'tc_site' ).
+					$rows[] = $this->p->util->get_th( 'Twitter Business @username', null, 'tc_site' ).
 					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'Instagram Business URL', null, 'instgram_publisher_url' ).
+					$rows[] = $this->p->util->get_th( 'Instagram Business URL', null, 'instgram_publisher_url' ).
 					'<td>'.$this->form->get_input( 'instgram_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'LinkedIn Company Page URL', null, 'linkedin_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'LinkedIn Company Page URL', null, 'linkedin_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'linkedin_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->th( 'MySpace Business (Brand) URL', null, 'myspace_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( 'MySpace Business (Brand) URL', null, 'myspace_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'myspace_publisher_url', 'wide' ).'</td>';
 
 					break;

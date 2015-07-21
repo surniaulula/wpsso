@@ -66,7 +66,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="checkbox_'.$id.'"' ).
 				( $this->in_options( $name ) ? checked( $this->options[$name], $check[0], false ) : '' ).
-				' title="default is '.( $this->in_defaults( $name ) && $this->defaults[$name] == $check[0] ? 'checked' : 'unchecked' ).
+				' title="default is '.( $this->in_defaults( $name ) && 
+					$this->defaults[$name] == $check[0] ? 'checked' : 'unchecked' ).
 				( $disabled === true ? ' (option disabled)' : '' ).'" />';
 			return $html;
 		}
