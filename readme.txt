@@ -410,16 +410,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.5.4 =
+= Version 3.6 =
 
 * **New Features**
+	* Added a "Video Preview Image(s)" option in the Social Settings metabox under the Priority Media tab.
 	* Added the Article "headline" and "datepublished" markup for Google's testing tool.
 * **Improvements**
-	* *None*
+	* Changed the "Apply WordPress Content Filters" default option value from checked to unchecked.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* *None*
+	* Renamed the SucomUtil th() method to get_th().
 
 = Version 3.5.3 (2015/07/13) =
 
