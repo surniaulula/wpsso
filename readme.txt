@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.2
-Stable Tag: 3.5.3
+Stable Tag: 3.6
 
 Improves shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser add-ons, or URLs in timelines &amp; PMs.
 
@@ -410,7 +410,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6 =
+= Version 3.6 (2015/07/21) =
 
 * **New Features**
 	* Added a "Video Preview Image(s)" option in the Social Settings metabox under the Priority Media tab.
@@ -667,6 +667,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.6 = 
+
+Added a "Video Preview Image(s)" option in the Social Settings metabox. Added Article "headline" and "datepublished" markup for Google's testing tool.
 
 = 3.5.3 =
 
