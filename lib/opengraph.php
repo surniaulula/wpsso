@@ -456,19 +456,28 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			foreach ( $items as $item ) {
 				switch ( $item ) {
+					case 'pid':
 					case 'image':
 						if ( ! isset( $og_image ) )
 							$og_image = $this->get_all_images( 1, $size_name, $id, false, $meta_pre );
-						$ret[] = $this->get_og_media_url( 'image', $og_image );
 						break;
 					case 'video':
-						if ( ! isset( $og_video ) )
-							$og_video = $this->get_all_videos( 1, $id, false, $meta_pre, true );	// prev_img = true
-						$ret[] = $this->get_og_media_url( 'video', $og_video );
-						break;
 					case 'preview':
 						if ( ! isset( $og_video ) )
 							$og_video = $this->get_all_videos( 1, $id, false, $meta_pre, true );	// prev_img = true
+						break;
+				}
+				switch ( $item ) {
+					case 'pid':
+						$ret[] = $this->get_og_media_url( 'pid', $og_image );
+						break;
+					case 'image':
+						$ret[] = $this->get_og_media_url( 'image', $og_image );
+						break;
+					case 'video':
+						$ret[] = $this->get_og_media_url( 'video', $og_video );
+						break;
+					case 'preview':
 						$ret[] = $this->get_og_media_url( 'image', $og_video );
 						break;
 					default:
@@ -486,7 +495,21 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function get_og_media_url( $name, $og, $tag_pre = 'og' ) {
 			if ( ! empty( $og ) && is_array( $og ) ) {
 				$media = reset( $og );
-				foreach ( array( $tag_pre.':'.$name.':secure_url', $tag_pre.':'.$name.':url', $tag_pre.':'.$name ) as $key )
+				switch ( $name ) {
+					case 'pid':
+						$search = array(
+							$tag_pre.':'.$name.':id',
+						);
+						break;
+					default:
+						$search = array(
+							$tag_pre.':'.$name.':secure_url',
+							$tag_pre.':'.$name.':url',
+							$tag_pre.':'.$name,
+						);
+						break;
+				}
+				foreach ( $search as $key )
 					if ( ! empty( $media[$key] ) )
 						return $media[$key];
 			}
