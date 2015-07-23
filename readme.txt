@@ -689,35 +689,3 @@ Added informational message about the "Apply WordPress Content Filters" option w
 
 Added a "Video Preview Image(s)" option in the Social Settings metabox. Added Article "headline" and "datepublished" markup for Google's testing tool.
 
-= 3.5.3 =
-
-Added a new "Preferred URL Shortening Service" option, fixed missing "Licenses Assigned" text, fixed for WooCommerce integration module.
-
-= 3.5.2 =
-
-Added a check_product_object() method to the WooCommerce module to make sure the global $product variable is an object and not a slug (Pro version).
-
-= 3.5.1 =
-
-Added a new 'ngfb-schema' image size, which inherits the 'ngfb-opengraph' image size values, to avoid any confusion with error messages, etc.
-
-= 3.5 =
-
-Added a "Social Desc" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with the Facebook / Open Graph description.
-
-= 3.4.3 =
-
-Added support for WordPress SEO title and description meta in taxonomy and user admin pages (Pro version).
-
-= 3.4.2 =
-
-Fixed a Wistia video issue when posting to Facebook by listing the 'application/x-shockwave-flash' video before the 'text/html' video type.
-
-= 3.4.1 =
-
-Added new 'sucom_is_author_page' and 'sucom_author_object' filters for the BuddyPress module to return user profile information (Pro version). Fixed an array definition in the WooCommerce module (Pro version).
-
-= 3.4 =
-
-Added a "Social Img" column to post / page, user, category and tag editing lists (including WooCommerce products, categories, and tags) with a thumbnail showing the first Facebook / Open Graph image.
-
