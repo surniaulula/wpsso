@@ -135,7 +135,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 									if ( empty( $class ) )
 										$class = 'error';
 									if ( empty( $label ) && ! empty( $this->label ) )
-										$label = $this->label.' Warning';
+										$label = $this->label.' Notice';	// or 'Warning'
 									// no break
 
 								case 'inf':
@@ -143,7 +143,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 									if ( empty( $class ) )
 										$class = 'updated fade';
 									if ( empty( $label ) && ! empty( $this->label ) )
-										$label = $this->label.' Info';
+										$label = $this->label.' Notice';	// or 'Info'
 
 									echo '<div class="'.$class.'"'.$cssid_attr.'>';
 									if ( ! empty( $label ) )

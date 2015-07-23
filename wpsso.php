@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.2.2
- * Version: 3.6
+ * Version: 3.6.1
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -140,6 +140,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 			else $this->debug = new WpssoNoDebug();			// fallback to dummy debug class
 
+			if ( $this->debug->enabled && $activate === true )
+				$this->debug->log( 'method called for plugin activation' );
+
 			$this->notice = new SucomNotice( $this );
 			$this->util = new WpssoUtil( $this );
 			$this->opt = new WpssoOptions( $this );
@@ -157,45 +160,26 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->admin = new WpssoAdmin( $this );		// admin menus and page loader
 			}
 
-			$this->loader = new WpssoLoader( $this );
+			$this->loader = new WpssoLoader( $this, $activate );
 
-			do_action( 'wpsso_init_objects' );
+			do_action( 'wpsso_init_objects', $activate );
 
 			/*
 			 * check and create the default options array
-			 *
 			 * execute after all objects have been defines, so hooks into 'wpsso_get_defaults' are available
 			 */
 			if ( is_multisite() && ( ! is_array( $this->site_options ) || empty( $this->site_options ) ) )
 				$this->site_options = $this->opt->get_site_defaults();
 
+			/*
+			 * end here when called for plugin activation (the init_plugin() hook handles the rest)
+			 */
 			if ( $activate == true || ( 
 				! empty( $_GET['action'] ) && $_GET['action'] == 'activate-plugin' &&
 				! empty( $_GET['plugin'] ) && $_GET['plugin'] == WPSSO_PLUGINBASE ) ) {
-
 				if ( $this->debug->enabled )
-					$this->debug->log( 'plugin activation detected' );
-
-				if ( ! is_array( $this->options ) || empty( $this->options ) ||
-					( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) ) {
-
-					$this->options = $this->opt->get_defaults();
-					delete_option( WPSSO_OPTIONS_NAME );
-					add_option( WPSSO_OPTIONS_NAME, $this->options, null, 'yes' );	// autoload = yes
-
-					if ( $this->debug->enabled )
-						$this->debug->log( 'default options have been added to the database' );
-
-					if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) 
-						$this->notice->inf( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
-							plugin options have been reset to their default values.', true );
-				}
-				$this->util->clear_all_cache();
-
-				if ( $this->debug->enabled )
-					$this->debug->log( 'exiting early: init_plugin() to follow' );
-
-				return;	// no need to continue, init_plugin() will handle the rest
+					$this->debug->log( 'exiting early: init_plugin() hook will follow' );
+				return;
 			}
 
 			/*

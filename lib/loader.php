@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		private $p;
 
-		public function __construct( &$plugin ) {
+		public function __construct( &$plugin, $activate = false ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'load modules' );

@@ -352,13 +352,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Content and Filters' settings
 						 */
 						case 'tooltip-plugin_filter_title':
-							$text = 'By default, '.$short.' uses the title values provided by WordPress, which may include modifications by themes and/or SEO plugins (appending the blog name to all titles, for example, is fairly common practice). If you wish to use the original title value without these modifications, uncheck this option.';
+							$text = 'By default, '.$short.' uses the title values provided by WordPress, which may include modifications by themes and/or SEO plugins (appending the blog name to all titles, for example, is a fairly common practice). If you wish to use the original title value without these modifications, uncheck this option.';
+							break;
+						case 'tooltip-plugin_filter_content':
+							$text = 'Apply the standard WordPress \'the_content\' filter to render content text (default is unchecked). This renders all shortcodes, and allows '.$short.' to detect images and embedded videos that may be provided by these.';
 							break;
 						case 'tooltip-plugin_filter_excerpt':
 							$text = 'Apply the standard WordPress \'get_the_excerpt\' filter to render the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpt, for example.';
-							break;
-						case 'tooltip-plugin_filter_content':
-							$text = 'Apply the standard WordPress \'the_content\' filter to render content text (default is checked). This renders all shortcodes, and allows '.$short.' to detect images and embedded videos that may be provided by these.';
 							break;
 						case 'tooltip-plugin_ignore_small_img':
 							$text = 'Images that are detected by '.$short.' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; If you uncheck this option, images that are too small for some social websites may be included in your meta tags.';

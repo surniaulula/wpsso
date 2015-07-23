@@ -410,6 +410,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.6.1 (2015/07/23) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Changed the "Apply WordPress Content Filters" default from checked to unchecked.
+	* Added an informational message on activation about enabling the "Apply WordPress Content Filters" if using shortcodes.
+	* Added a check for an empty WooCommerce term description value before setting the Open Graph and Twitter description meta tag (Pro version).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Moved additional plugin activation checks from the Wpsso to the WpssoRegister class.
+
 = Version 3.6 (2015/07/21) =
 
 * **New Features**
