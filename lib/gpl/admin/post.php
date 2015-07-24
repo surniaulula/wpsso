@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$this->p->util->get_th( 'Maximum Videos', 'medium', 'post-og_vid_max', $head_info ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 
-			$rows[] = $this->p->util->get_th( 'Use Preview Image(s)', 'medium', 'post-og_vid_prev_img', $head_info ).
+			$rows[] = $this->p->util->get_th( 'Include Preview Image(s)', 'medium', 'post-og_vid_prev_img', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
