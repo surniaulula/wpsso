@@ -19,6 +19,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'%%post_id%%',
 			'%%request_url%%',
 			'%%sharing_url%%',
+			'%%short_url%%',
 		);
 		protected $inline_vals = array();
 
@@ -77,10 +78,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else $request_url = ( empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://' ).
 				$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
+			$short_url = empty( $atts['short_url'] ) ?
+				apply_filters( $this->p->cf['lca'].'_shorten_url',
+					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
+
 			$this->inline_vals = array(
 				$post_id,		// %%post_id%%
 				$request_url,		// %%request_url%%
 				$sharing_url,		// %%sharing_url%%
+				$short_url,		// %%short_url%%
 			);
 
 			return $this->inline_vals;
@@ -1040,24 +1046,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$show_opts_label.' view (<a href="javascript:void(0);" onClick="sucomUnhideRows( \''.
 					$class_href_key.'\', \''.$show_opts.'\' );">unhide these options</a>)</div>'."\n";
 			}
-		}
-
-		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter' ) {
-			$service = isset( $this->p->options['plugin_shortener'] ) ? 
-				$this->p->options['plugin_shortener'] : '';
-			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, $service );
-			$len_adj = strpos( $short_url, 'https:' ) === false ? 1 : 2;
-
-			if ( $short_url < $this->p->options['plugin_min_shorten'] )
-				$max_len = $this->p->options[$opt_prefix.'_cap_len'] - strlen( $short_url ) - $len_adj;
-			else $max_len = $this->p->options[$opt_prefix.'_cap_len'] - $this->p->options['plugin_min_shorten'] - $len_adj;
-
-			if ( ! empty( $this->p->options['tc_site'] ) && 
-				! empty( $this->p->options[$opt_prefix.'_via'] ) )
-					$max_len = $max_len - strlen( preg_replace( '/^@/', '', 
-						$this->p->options['tc_site'] ) ) - 5;	// 5 for 'via' word and 2 spaces
-
-			return $max_len;
 		}
 
 		public function get_source_id( $src_name, &$atts = array() ) {

@@ -611,12 +611,76 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_cache_file_url( $url, $url_ext = '' ) {
 
-			if ( empty( $this->options['plugin_file_cache_exp'] ) ||
+			if ( empty( $this->p->options['plugin_file_cache_exp'] ) ||
 				! isset( $this->p->cache->base_dir ) )	// check for cache attribute, just in case
 					return $url;
 
 			return ( apply_filters( $this->p->cf['lca'].'_rewrite_url',
-				$this->p->cache->get( $url, 'url', 'file', $this->options['plugin_file_cache_exp'], false, $url_ext ) ) );
+				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
+		}
+
+		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $meta_prefix = 'twitter' ) {
+
+			$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
+			$use_post = isset( $atts['use_post'] ) ?  $atts['use_post'] : true;
+			$source_id = $this->p->util->get_source_id( $opt_prefix, $atts );
+
+			if ( ! isset( $atts['add_page'] ) )
+				$atts['add_page'] = true;	// required by get_sharing_url()
+
+			$long_url = empty( $atts['url'] ) ? 
+				$this->p->util->get_sharing_url( $use_post, $atts['add_page'], $source_id ) : 
+				apply_filters( $this->p->cf['lca'].'_sharing_url',
+					$atts['url'], $use_post, $atts['add_page'], $source_id );
+
+			$short_url = empty( $atts['short_url'] ) ?
+				apply_filters( $this->p->cf['lca'].'_shorten_url',
+					$long_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
+
+			$caption_type = empty( $this->p->options[$opt_prefix.'_caption'] ) ?
+				'title' : $this->p->options[$opt_prefix.'_caption'];
+
+			if ( isset( $atts['tweet'] ) )
+				$tweet_text = $atts['tweet'];
+			else {
+				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
+				$tweet_text = $this->p->webpage->get_caption( 
+					$caption_type,		// title, excerpt, both
+					$caption_len,		// max caption length 
+					$use_post,		// 
+					true,			// use_cache
+					true, 			// add_hashtags
+					true, 			// encode
+					$meta_prefix.'_desc',	// custom meta
+					$source_id		// 
+				);
+			}
+
+			return $tweet_text;
+		}
+
+		// $opt_prefix could be twitter, buffer, etc.
+		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter', $short_url = '', $service = '' ) {
+
+			$service = empty( $service ) &&
+				isset( $this->p->options['plugin_shortener'] ) ? 
+					$this->p->options['plugin_shortener'] : $service;
+
+			$short_url = empty( $short_url ) ? 
+				apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, $service ) : $short_url;
+
+			$len_adjust = strpos( $short_url, 'https:' ) === false ? 1 : 2;
+
+			if ( $short_url < $this->p->options['plugin_min_shorten'] )
+				$max_len = $this->p->options[$opt_prefix.'_cap_len'] - strlen( $short_url ) - $len_adjust;
+			else $max_len = $this->p->options[$opt_prefix.'_cap_len'] - $this->p->options['plugin_min_shorten'] - $len_adjust;
+
+			if ( ! empty( $this->p->options['tc_site'] ) && 
+				! empty( $this->p->options[$opt_prefix.'_via'] ) )
+					$max_len = $max_len - strlen( preg_replace( '/^@/', '', 
+						$this->p->options['tc_site'] ) ) - 5;	// 5 for 'via' word and 2 spaces
+
+			return $max_len;
 		}
 	}
 }
