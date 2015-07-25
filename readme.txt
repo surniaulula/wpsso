@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.3
-Stable Tag: 3.6.1
+Stable Tag: 3.6.2
 
 Improves shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser add-ons, or URLs in timelines &amp; PMs.
 
@@ -410,7 +410,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.2 =
+= Version 3.6.2 (2015/07/25) =
 
 * **New Features**
 	* *None*
@@ -696,9 +696,13 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.6.2 =
+
+Fixed two option variable names in the NgfbUtil get_cache_file_url() method. Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
+
 = 3.6.1 =
 
-Added informational message about the "Apply WordPress Content Filters" option when using shortcodes (default value is now unchecked). Fixed incorrectly named variable for WooCommerce term descriptions (Pro version).
+Added informational message about the "Apply WordPress Content Filters" option when using shortcodes (default value is now unchecked).
 
 = 3.6 = 
 
