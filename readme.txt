@@ -410,6 +410,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 8.6.2 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed two option variable names in the NgfbUtil get_cache_file_url() method.
+	* Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
+* **Developer Notes**
+	* Moved the get_tweet_max_len() method from the SucomUtil class to the NgfbUtil class.
+	* Added a get_tweet_text() method in the NgfbUtil class (for future use by extensions, etc).
+	* Added $short_url and $service arguments to the NgfbUtil get_tweet_max_len() method.
+	* Added support for a %%short_url%% inline variable.
+
 = Version 3.6.1 (2015/07/23) =
 
 * **New Features**
@@ -419,7 +434,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added an informational message on activation about enabling the "Apply WordPress Content Filters" if using shortcodes.
 	* Added a check for an empty WooCommerce term description value before setting the Open Graph and Twitter description meta tag (Pro version).
 * **Bugfixes**
-	* Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
+	* *None*
 * **Developer Notes**
 	* Moved additional plugin activation checks from the Wpsso to the WpssoRegister class.
 
