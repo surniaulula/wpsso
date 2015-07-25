@@ -492,16 +492,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
-			$doc = new DomDocument();		// since PHP v4.1.0
-			@$doc->loadHTML( $html );		// suppress parsing errors
-			$xpath = new DOMXPath( $doc );
-			$metas = $xpath->query( $query );
 			$ret = array();
-			foreach ( $metas as $m ) {
-				$attrs = array();		// put all attributes in a single array
-				foreach ( $m->attributes as $a )
-					$attrs[$a->name] = $a->value;
-				$ret[$m->tagName][] = $attrs;
+			if ( class_exists( 'DOMDocument' ) ) {
+				$doc = new DOMDocument();		// since PHP v4.1.0
+				@$doc->loadHTML( $html );		// suppress parsing errors
+				$xpath = new DOMXPath( $doc );
+				$metas = $xpath->query( $query );
+				foreach ( $metas as $m ) {
+					$attrs = array();		// put all attributes in a single array
+					foreach ( $m->attributes as $a )
+						$attrs[$a->name] = $a->value;
+					$ret[$m->tagName][] = $attrs;
+				}
+			} else {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'DOMDocument PHP class missing' );
+				if ( is_admin() )
+					$this->p->notice->err( 'DOMDocument PHP class missing - unable to read head meta from '.$url.'.', true );
 			}
 			return $ret;
 		}

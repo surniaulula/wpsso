@@ -316,14 +316,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_mod_column_content( $value, $column_name, $id, $mod = '' ) {
 
 			// optimize performance and return immediately if this is not our column
-			if ( strpos( $column_name, $this->p->cf['lca'] ) !== 0 )
+			if ( strpos( $column_name, $this->p->cf['lca'].'_' ) !== 0 )
 				return $value;
 
-			$screen = get_current_screen();
-			$hidden = get_user_option( 'manage'.$screen->id.'columnshidden' );
-			if ( is_array( $hidden ) && 
-				in_array( $column_name, $hidden ) )
-					return 'Reload to View';
+			// when adding a new category, $screen_id may be false
+			$screen_id = SucomUtil::get_screen_id();
+			if ( ! empty( $screen_id ) ) {
+				$hidden = get_user_option( 'manage'.$screen_id.'columnshidden' );
+				if ( is_array( $hidden ) && 
+					in_array( $column_name, $hidden ) )
+						return 'Reload to View';
+			}
 
 			switch ( $column_name ) {
 				case $this->p->cf['lca'].'_og_image':
