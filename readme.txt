@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.3
-Stable Tag: 3.6.2
+Stable Tag: 3.6.2.1
 
 Improves shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser add-ons, or URLs in timelines &amp; PMs.
 
@@ -410,12 +410,13 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.2.1 =
+= Version 3.6.2.1 (2015/07/25) =
 
 * **New Features**
 	* *None*
 * **Improvements**
-	* Added a check for missing DOMDocument PHP class in older PHP versions. 
+	* Added a check for missing DOMDocument PHP class in older PHP versions.
+	* Updated the minimum PHP version requirement to v4.1.
 * **Bugfixes**
 	* Added a check for missing $screen->id attribute when creating new taxonomy terms.
 * **Developer Notes**
@@ -706,6 +707,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed the use of custom images from the user / profile Social Settings metabox.
 
 == Upgrade Notice ==
+
+= 3.6.2.1 =
+
+Added a check for missing $screen->id attribute when creating new taxonomy terms. Updated the minimum PHP version requirement to v4.1.
 
 = 3.6.2 =
 
