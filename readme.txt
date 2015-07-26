@@ -10,7 +10,7 @@ Requires At Least: 3.0
 Tested Up To: 4.2.3
 Stable Tag: 3.6.2.1
 
-Improves shared content and social SEO / SMO - no matter how your content is shared - from buttons, browser add-ons, or URLs in timelines &amp; PMs.
+Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared, including private messaging.
 
 == Description ==
 
