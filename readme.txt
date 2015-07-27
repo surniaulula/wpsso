@@ -410,6 +410,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 8.6.3 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* The "Use Filtered (SEO) Titles" option is now enabled by default.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* The $add_hashtags method argument now supports integer values as well (not just true/false).
+
 = Version 3.6.2.1 (2015/07/25) =
 
 * **New Features**
