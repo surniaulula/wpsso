@@ -410,7 +410,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 8.6.3 =
+= Version 3.6.3 =
 
 * **New Features**
 	* *None*
