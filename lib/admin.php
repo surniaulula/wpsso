@@ -807,7 +807,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['img']['icon_small'] ) )
-					$img_icon = $info['img']['icon_small'];
+					$img_icon = $info['img']['icon_medium'];	// resized as small icon for retina displays
 				else $img_icon = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 				// logo image

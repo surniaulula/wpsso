@@ -45,7 +45,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 		// $title is empty for home page, so don't save/restore empty titles
 		public function wp_title_save( $title, $separator, $location ) {
-			$this->saved_title = $title === '' ? false : $title;
+			$this->saved_title = trim( $title ) === '' ? false : $title;
 			return $title;
 		}
 
@@ -86,7 +86,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'length' => $length, 
 					'use_post' => $use_post, 
 					'use_cache' => $use_cache, 
-					'add_hashtags' => $add_hashtags,
+					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'encode' => $encode,
 					'custom_idx' => $custom_idx,
 					'source_id' => $source_id,
@@ -158,7 +158,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'trailing' => $trailing, 
 					'use_post' => $use_post, 
 					'use_cache' => $use_cache, 
-					'add_hashtags' => $add_hashtags,
+					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'encode' => $encode,
 					'custom_idx' => $custom_idx,
 					'source_id' => $source_id,
@@ -210,8 +210,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$title = $match[1];
 				$hashtags = trim( $match[2] );
 			} elseif ( is_singular() || $use_post !== false ) {
-				if ( $add_hashtags && ! empty( $this->p->options['og_desc_hashtags'] ) )
-					$hashtags = $this->get_hashtags( $post_id );
+				if ( ! empty( $add_hashtags ) && 
+					! empty( $this->p->options['og_desc_hashtags'] ) )
+						$hashtags = $this->get_hashtags( $post_id, $add_hashtags );	// add_hashtags = true/false/numeric
 			}
 
 			// construct a title of our own
@@ -292,16 +293,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$textlen = $textlen - strlen( $paged_suffix ) - 1;
 					}
 				}
-				if ( $add_hashtags === true && ! empty( $hashtags ) ) 
-					$textlen = $textlen - strlen( $hashtags ) - 1;
+				if ( ! empty( $add_hashtags ) && 
+					! empty( $hashtags ) ) 
+						$textlen = $textlen - strlen( $hashtags ) - 1;
+
 				$title = $this->p->util->limit_text_length( $title, $textlen, $trailing, false );	// don't run cleanup_html_tags()
 			}
 
 			if ( ! empty( $paged_suffix ) ) 
 				$title .= ' '.$paged_suffix;
 
-			if ( $add_hashtags === true && ! empty( $hashtags ) ) 
-				$title .= ' '.$hashtags;
+			if ( ! empty( $add_hashtags ) && 
+				! empty( $hashtags ) ) 
+					$title .= ' '.$hashtags;
 
 			if ( $encode === true )
 				$title = htmlentities( $title, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
@@ -319,7 +323,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'trailing' => $trailing, 
 					'use_post' => $use_post, 
 					'use_cache' => $use_cache, 
-					'add_hashtags' => $add_hashtags, 
+					'add_hashtags' => $add_hashtags, 	// true/false/numeric
 					'encode' => $encode,
 					'custom_idx' => $custom_idx,
 					'source_id' => $source_id,
@@ -365,8 +369,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$desc = $match[1];
 				$hashtags = trim( $match[2] );
 			} elseif ( is_singular() || $use_post !== false ) {
-				if ( $add_hashtags && ! empty( $this->p->options['og_desc_hashtags'] ) )
-					$hashtags = $this->get_hashtags( $post_id );
+				if ( ! empty( $add_hashtags ) && 
+					! empty( $this->p->options['og_desc_hashtags'] ) )
+						$hashtags = $this->get_hashtags( $post_id, $add_hashtags );
 			}
 
 			// if there's no custom description, and no pre-seed, 
@@ -456,13 +461,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 			if ( $textlen > 0 ) {
-				if ( $add_hashtags === true && ! empty( $hashtags ) ) 
-					$textlen = $textlen - strlen( $hashtags ) -1;
+				if ( ! empty( $add_hashtags ) && 
+					! empty( $hashtags ) ) 
+						$textlen = $textlen - strlen( $hashtags ) -1;
 				$desc = $this->p->util->limit_text_length( $desc, $textlen, $trailing, false );	// don't run cleanup_html_tags()
 			}
 
-			if ( $add_hashtags === true && ! empty( $hashtags ) ) 
-				$desc .= ' '.$hashtags;
+			if ( ! empty( $add_hashtags ) && 
+				! empty( $hashtags ) ) 
+					$desc .= ' '.$hashtags;
 
 			if ( $encode === true )
 				$desc = htmlentities( $desc, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
@@ -624,24 +631,30 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_section', $section );
 		}
 
-		public function get_hashtags( $post_id ) {
-			if ( empty( $this->p->options['og_desc_hashtags'] ) ) 
+		public function get_hashtags( $post_id, $add_hashtags = true ) {
+			if ( empty( $add_hashtags ) )	// check for false or 0
 				return;
+			elseif ( is_numeric( $add_hashtags ) )
+				$max_hashtags = $add_hashtags;
+			elseif ( ! empty( $this->p->options['og_desc_hashtags'] ) )
+				$max_hashtags = $this->p->options['og_desc_hashtags'];
+			else return;
 
-			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id );
+			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id, $add_hashtags );
 			if ( ! empty( $hashtags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
 			} else {
-				$tags = array_slice( $this->get_tags( $post_id ), 0, $this->p->options['og_desc_hashtags'] );
+				$tags = array_slice( $this->get_tags( $post_id ), 0, $max_hashtags );
 				if ( ! empty( $tags ) ) {
 					// remove special character incompatible with Twitter
 					$hashtags = '#'.trim( implode( ' #', preg_replace( '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '', $tags ) ) );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'hashtags (max '.$this->p->options['og_desc_hashtags'].') = "'.$hashtags.'"' );
+						$this->p->debug->log( 'hashtags (max '.$max_hashtags.') = "'.$hashtags.'"' );
 				}
 			}
-			return apply_filters( $this->p->cf['lca'].'_hashtags', $hashtags, $post_id );
+
+			return apply_filters( $this->p->cf['lca'].'_hashtags', $hashtags, $post_id, $add_hashtags );
 		}
 
 		public function get_tags( $post_id ) {

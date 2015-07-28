@@ -164,6 +164,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'seo_desc' => '',
 					'tc_desc' => '',
 					'pin_desc' => '',
+					'sharing_url' => '',
 					'og_img_width' => '',
 					'og_img_height' => '',
 					'og_img_crop' => ( empty( $this->p->options['og_img_crop'] ) ?
@@ -194,17 +195,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'rp_img_id_pre' => ( empty( $this->p->options['og_def_img_id_pre'] ) ?
 						'' : $this->p->options['og_def_img_id_pre'] ),
 					'rp_img_url' => '',
-					/*
-					 * Used by Social Sharing Buttons
-					 */
-					'twitter_desc' => '',
-					'tumblr_img_desc' => '',
-					'tumblr_vid_desc' => '',
-					'sharing_url' => '',
-					'buttons_disabled' => 0,
 				);
 				if ( $mod !== false )
-					$this->defs = apply_filters( $this->p->cf['lca'].'_get_'.$mod.'_defaults', $this->defs );
+					$this->defs = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs, $mod );
 				$this->defs['options_filtered'] = true;
 			}
 			if ( $idx !== false ) {
@@ -267,7 +260,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// network is false
 
 			if ( $mod !== false )
-				$opts = apply_filters( $this->p->cf['lca'].'_save_'.$mod.'_options', $opts, $id );
+				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod, $id );
 
 			foreach ( $defs as $key => $def_val )
 				if ( array_key_exists( $key, $opts ) )

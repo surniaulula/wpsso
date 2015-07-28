@@ -138,8 +138,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 			$html .= '<select name="'.$this->options_name.'['.$name.']"'.
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).' id="'.$select_id.'"'.
-				( $disabled === true ?
-					' disabled="disabled"' : '' ).'>';
+				( $disabled === true ? ' disabled="disabled"' : '' ).'>';
 
 			foreach ( $values as $val => $desc ) {
 				// if the array is NOT associative (so regular numered array), 
@@ -277,8 +276,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $len ) ? '' : ' maxLength="'.$len.'"' ).
 				( empty( $placeholder ) ? '' : ' placeholder="'.$placeholder.'"'.
 					' onFocus="if ( this.value == \'\' ) this.value = \''.esc_js( $placeholder ).'\';"'.
-					' onBlur="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"' ).
-				' value="'.esc_attr( $value ).'" />'.
+					' onBlur="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"'.
+					' onMouseOut="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"'
+				).' value="'.esc_attr( $value ).'" />'.
 				( empty( $len ) ? '' : ' <div id="text_'.$id.'-lenMsg"></div>' );
 			return $html;
 		}

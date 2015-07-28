@@ -20,10 +20,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.6.2.1',		// plugin version
+					'version' => '3.6.3',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
-					'desc' => 'Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.',
+					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -170,6 +170,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
 						// surniaulula
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-plm/update/',
+					),
+				),
+				'wpssorrssb' => array(
+					'short' => 'WPSSO RRSSB',		// short plugin name
+					'name' => 'WPSSO Ridiculously Responsive Social Sharing Buttons (WPSSO RRSSB)',
+					'desc' => 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.',
+					'slug' => 'wpsso-rrssb',
+					'base' => 'wpsso-rrssb/wpsso-rrssb.php',
+					'update_auth' => 'tid',
+					'img' => array(
+						'icon_small' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
+					),
+					'url' => array(
+						// wordpress
+						'download' => 'https://wordpress.org/plugins/wpsso-rrssb/',
+						// surniaulula
+						'update' => 'http://wpsso.com/extend/plugins/wpsso-rrssb/update/',
 					),
 				),
 				'wpssossb' => array(
@@ -387,7 +405,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug' => 0,
 					'plugin_cache_info' => 0,
 					'plugin_check_head' => 1,
-					'plugin_filter_title' => 0,
+					'plugin_filter_title' => 1,
 					'plugin_filter_content' => 0,
 					'plugin_filter_excerpt' => 0,
 					'plugin_filter_lang' => 1,
@@ -534,7 +552,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_image_col_width' => '70px',
 				'og_image_col_height' => '37px',
 				'tooltip_class' => 'sucom_tooltip',
-				'max_desc_hashtags' => 10,
+				'max_hashtags' => 10,
 				'max_media_items' => 20,
 				'yes_no' => array(
 					'1' => 'Yes',

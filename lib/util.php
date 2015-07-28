@@ -629,7 +629,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $meta_prefix = 'twitter' ) {
 
 			$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
-			$use_post = isset( $atts['use_post'] ) ?  $atts['use_post'] : true;
+			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
+			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
 			$source_id = $this->p->util->get_source_id( $opt_prefix, $atts );
 
 			if ( ! isset( $atts['add_page'] ) )
@@ -654,9 +655,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$tweet_text = $this->p->webpage->get_caption( 
 					$caption_type,		// title, excerpt, both
 					$caption_len,		// max caption length 
-					$use_post,		// 
+					$use_post,		// true/false/post_id
 					true,			// use_cache
-					true, 			// add_hashtags
+					$add_hashtags, 		// add_hashtags
 					true, 			// encode
 					$meta_prefix.'_desc',	// custom meta
 					$source_id		// 

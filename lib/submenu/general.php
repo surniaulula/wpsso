@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$rows[] = $this->p->util->get_th( 'Add Hashtags to Descriptions', null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
-						range( 0, $this->p->cf['form']['max_desc_hashtags'] ), 'short', null, true ).' tag names</td>';
+						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).' tag names</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( 'Add Page Title in Tags', null, 'og_page_title_tag' ).

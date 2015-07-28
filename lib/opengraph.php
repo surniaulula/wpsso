@@ -451,7 +451,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( empty( $id ) )
 				return array();
 
-			$size_info = $this->p->media->get_size_info( $size_name );
 			$ret = array();
 
 			foreach ( $items as $item ) {
@@ -510,8 +509,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						break;
 				}
 				foreach ( $search as $key )
-					if ( ! empty( $media[$key] ) )
-						return $media[$key];
+					if ( isset( $media[$key] ) &&
+						! empty( $media[$key] ) &&
+							$media[$key] !== -1 )
+								return $media[$key];
 			}
 			return '';
 		}
