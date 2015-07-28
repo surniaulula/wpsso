@@ -658,7 +658,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$use_post,		// true/false/post_id
 					true,			// use_cache
 					$add_hashtags, 		// add_hashtags
-					true, 			// encode
+					false, 			// encode
 					$meta_prefix.'_desc',	// custom meta
 					$source_id		// 
 				);
