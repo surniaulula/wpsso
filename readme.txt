@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.3
-Stable Tag: 3.6.2.1
+Stable Tag: 3.6.3
 
 Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!
 
@@ -416,7 +416,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page.
 * **Improvements**
 	* The "Use Filtered (SEO) Titles" option is now enabled by default.
-	* Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled.
+	* Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled (Pro version).
 	* Added an onMouseOut check for Social Settings input fields.
 * **Bugfixes**
 	* *None*
@@ -476,6 +476,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
+
+= 3.6.3 =
+
+Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page. Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled (Pro version).
 
 = 3.6.2.1 =
 
