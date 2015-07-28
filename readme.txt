@@ -62,6 +62,7 @@ Improve WordPress editing and publishing for better content on all social websit
 * **Additional free extension plugins for WPSSO**:
 	* [App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags.
 	* [Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) for Facebook *Location* and Pinterest *Place* Rich Pin meta tags.
+	* [Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) for great looking SVG buttons in any size.
 	* [Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) for fast and accurate social sharing buttons.
 
 <blockquote>

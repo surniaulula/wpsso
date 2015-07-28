@@ -65,6 +65,7 @@
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">App Meta</a> for Apple Store / iTunes and Google Play App meta tags.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">Place and Location Meta</a> for Facebook <em>Location</em> and Pinterest <em>Place</em> Rich Pin meta tags.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">Ridiculously Responsive Social Sharing Buttons</a> for great looking SVG buttons in any size.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">Social Sharing Buttons</a> for fast and accurate social sharing buttons.</li>
 </ul></li>
 </ul>
