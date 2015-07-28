@@ -413,9 +413,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.6.3 =
 
 * **New Features**
-	* *None*
+	* Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page.
 * **Improvements**
 	* The "Use Filtered (SEO) Titles" option is now enabled by default.
+	* Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
