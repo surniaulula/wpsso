@@ -417,6 +417,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* The "Use Filtered (SEO) Titles" option is now enabled by default.
 	* Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled.
+	* Added an onMouseOut check for Social Settings input fields.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
