@@ -27,6 +27,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'og_publisher_url' => 'fb_publisher_url',
 			'add_meta_property_og:video' => 'add_meta_property_og:video:url',
 			'twitter_shortener' => 'plugin_shortener',
+			'stumble_js_loc' => 'stumble_script_loc',	// wpsso ssb
+			'pin_js_loc' => 'pin_script_loc',		// wpsso ssb
+			'tumblr_js_loc' => 'tumblr_script_loc',		// wpsso ssb
+			'gp_js_loc' => 'gp_script_loc',			// wpsso ssb
+			'fb_js_loc' => 'fb_script_loc',			// wpsso ssb
+			'twitter_js_loc' => 'twitter_script_loc',	// wpsso ssb
+			'buffer_js_loc' => 'buffer_script_loc',		// wpsso ssb
+			'linkedin_js_loc' => 'linkedin_script_loc',	// wpsso ssb
 		);
 
 		protected $p;

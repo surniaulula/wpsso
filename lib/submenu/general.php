@@ -200,8 +200,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->get_th( 'Default Language', null, 'fb_lang' ).
 					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Author Name Format', 'highlight', 'google_author_name' ).
+					$rows[] = $this->p->util->get_th( 'Author Name Format', 'highlight', 'google_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					break;

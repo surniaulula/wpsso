@@ -588,8 +588,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$ret = null;
 
 			// save some time
-			if ( empty( $this->p->options[$opt_pre.'_def_'.$media.'_id'] ) )
-				$ret = false;
+			if ( empty( $this->p->options[$opt_pre.'_def_'.$media.'_id'] ) &&
+				empty( $this->p->options[$opt_pre.'_def_'.$media.'_url'] ) )
+					$ret = false;
 			else {
 				// check for singular pages first
 				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
@@ -611,8 +612,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$ret = false;
 			}
 			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$media, $ret );
+
 			if ( $ret === true && $this->p->debug->enabled )
 				$this->p->debug->log( 'default '.$media.' is forced' );
+
 			return $ret;
 		}
 

@@ -18,7 +18,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->debug->mark();
-			add_filter( $this->p->cf['lca'].'_option_type', array( &$this, 'filter_option_type' ), 10, 2 );
+			$this->p->util->add_plugin_filters( $this, array( 
+				'option_type' => 2,	// identify option type for sanitation
+			) );
 			do_action( $this->p->cf['lca'].'_init_options' );
 		}
 
