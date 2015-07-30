@@ -411,6 +411,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.6.3.1  =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Added missing check for a default image URL in the WpssoUtil `force_default_media()` method.
+* **Developer Notes**
+	* *None*
+
 = Version 3.6.3 (2015/07/28) =
 
 * **New Features**
