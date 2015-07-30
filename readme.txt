@@ -411,7 +411,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.3 =
+= Version 3.6.3 (2015/07/28) =
 
 * **New Features**
 	* Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page.
