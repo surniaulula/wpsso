@@ -293,13 +293,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_textarea( $name, $class = '', $id = '', $len = 0, $placeholder = '' ) {
+		public function get_textarea( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false ) {
 			if ( empty( $name ) ) return;	// just in case
+			if ( $this->in_options( $name.':is' ) && 
+				$this->options[$name.':is'] === 'disabled' )
+					$disabled = true;
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			if ( ! empty( $len ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'textarea_'.$id );
 			$html .= '<textarea name="'.$this->options_name.'['.$name.']"'.
+				( $disabled !== false ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? ' id="textarea_'.$name.'"' : ' id="textarea_'.$id.'"' ).
 				( empty( $len ) ? '' : ' maxLength="'.$len.'"' ).
@@ -317,7 +321,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'window.open(\''.$url.'\', \'_blank\');' :
 				'location.href=\''.$url.'\';';
 			$html = '<input type="button" '.
-				( $disabled ? ' disabled="disabled"' : '' ).
+				( $disabled !== false ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="button_'.$id.'"' ).
 				( empty( $url ) || $disabled ? '' : ' onClick="'.$js.'"' ).
