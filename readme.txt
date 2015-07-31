@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.2.3
-Stable Tag: 3.6.3
+Stable Tag: 3.6.3.1
 
 Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!
 
