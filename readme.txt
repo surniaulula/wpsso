@@ -419,7 +419,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Bugfixes**
 	* Added missing check for a default image URL in the WpssoUtil `force_default_media()` method.
-	* Fixed the post cache object variable name in the NgfbProUtilShorten class filter_post_cache_objects() method (Pro version).
+	* Fixed the post cache object variable name in the WpssoProUtilShorten `filter_post_cache_objects()` method (Pro version).
 * **Developer Notes**
 	* *None*
 
