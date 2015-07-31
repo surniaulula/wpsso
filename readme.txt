@@ -411,7 +411,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.3.1  =
+= Version 3.6.3.1 (2015/07/31) =
 
 * **New Features**
 	* *None*
@@ -419,6 +419,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Bugfixes**
 	* Added missing check for a default image URL in the WpssoUtil `force_default_media()` method.
+	* Fixed the post cache object variable name in the NgfbProUtilShorten class filter_post_cache_objects() method (Pro version).
 * **Developer Notes**
 	* *None*
 
@@ -488,6 +489,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
+
+= 3.6.3.1 =
+
+Added missing check for a default image URL in force_default_media(), fixed post cache object variable name in filter_post_cache_objects() (Pro version).
 
 = 3.6.3 =
 
