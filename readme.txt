@@ -411,6 +411,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.6.4 =
+
+* **New Features**
+	* Added new `wpsso_get_sharing_url()` and `wpsso_get_short_url()` functions.
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.6.3.1 (2015/07/31) =
 
 * **New Features**
