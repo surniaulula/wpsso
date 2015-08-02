@@ -501,6 +501,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.6.4 =
+
+Added new wpsso_get_sharing_url() and wpsso_get_short_url() functions.
+
 = 3.6.3.1 =
 
 Added missing check for a default image URL in force_default_media(), fixed post cache object variable name in filter_post_cache_objects() (Pro version).
