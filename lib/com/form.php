@@ -306,13 +306,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( $disabled !== false ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? ' id="textarea_'.$name.'"' : ' id="textarea_'.$id.'"' ).
-				( empty( $len ) ? '' : ' maxLength="'.$len.'"' ).
-				( empty( $len ) && empty( $class ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
-				( empty( $placeholder ) ? '' : ' placeholder="'.$placeholder.'"'.
+				( empty( $len ) || $disabled !== false ? '' : ' maxLength="'.$len.'"' ).
+				( empty( $class ) || empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
+				( empty( $placeholder ) || $disabled !== false ? '' : ' placeholder="'.$placeholder.'"'.
 					' onFocus="if ( this.value == \'\' ) this.value = \''.esc_js( $placeholder ).'\';"'.
-					' onBlur="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"' ).
+					' onBlur="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"'.
+					' onMouseOut="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"' ).
 				'>'.stripslashes( esc_attr( $value ) ).'</textarea>'.
-				( empty( $len ) ? '' : ' <div id="textarea_'.$id.'-lenMsg"></div>' );
+				( empty( $len ) || $disabled !== false ? '' : ' <div id="textarea_'.$id.'-lenMsg"></div>' );
 			return $html;
 		}
 

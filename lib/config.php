@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.6.3.1',		// plugin version
+					'version' => '3.6.4',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -808,6 +808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once( WPSSO_PLUGINDIR.'lib/head.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/opengraph.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/schema.php' );
+			require_once( WPSSO_PLUGINDIR.'lib/functions.php' );
 
 			if ( is_admin() ) {
 				require_once( WPSSO_PLUGINDIR.'lib/messages.php' );
