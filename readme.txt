@@ -411,6 +411,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.6.4.1 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the WooCommerce and WPeCommerce term description code to use the 'ngfb_description_seed' filter for compatibility with SEO integration modules (Pro version).
+* **Developer Notes**
+	* *None*
+
 = Version 3.6.4 (2015/08/02) =
 
 * **New Features**
