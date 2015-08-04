@@ -7,7 +7,7 @@ Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Fa
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
-Tested Up To: 4.2.3
+Tested Up To: 4.2.4
 Stable Tag: 3.6.4
 
 Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!
@@ -411,12 +411,13 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.4.1 =
+= Version 3.6.4.2 (2015/08/04) =
 
 * **New Features**
 	* *None*
 * **Improvements**
-	* *None*
+	* Confirmed WordPress v4.2.4 compatibility.
+	* Added PHP realpath() to the WPSSO_PLUGINDIR constant value to prevent PHP fwrite() issues.
 * **Bugfixes**
 	* Fixed the WooCommerce and WPeCommerce term description code to use the 'ngfb_description_seed' filter for compatibility with SEO integration modules (Pro version).
 * **Developer Notes**
