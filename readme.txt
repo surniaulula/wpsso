@@ -513,6 +513,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.6.4.2 =
+
+Confirmed WordPress v4.2.4 compatibility. Added PHP realpath() to WPSSO_PLUGINDIR constant to prevent PHP fwrite() issues. Fixed the WooCommerce and WPeCommerce filters for compatibility with SEO integration modules (Pro version).
+
 = 3.6.4 =
 
 Added new wpsso_get_sharing_url() and wpsso_get_short_url() functions.
