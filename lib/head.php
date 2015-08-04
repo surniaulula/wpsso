@@ -284,6 +284,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$ret = array();
 			if ( empty( $tag_array ) )
 				return $ret;
+			elseif ( ! is_array( $tag_array ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: tag_array argument is not an array' );
+				return $ret;
+			}
 			foreach ( $tag_array as $f_name => $f_val ) {					// 1st-dimension array (associative)
 				if ( is_array( $f_val ) ) {
 					foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
