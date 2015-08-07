@@ -254,11 +254,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				return;
 
 			$lca = $this->p->cf['lca'];
+			$base = $this->p->cf['plugin'][$lca]['base'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
 			$short_pro = $short.' Pro';
 			$purchase_url = $this->p->cf['plugin'][$lca]['url']['purchase'];
 			$log_pre =  __( 'plugin conflict detected', WPSSO_TEXTDOM ) . ' - ';
 			$err_pre =  __( 'Plugin conflict detected', WPSSO_TEXTDOM ) . ' - ';
+			$user_id = get_current_user_id();
 
 			// PHP
 			if ( empty( $this->p->is_avail['curl'] ) ) {
@@ -293,25 +295,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered in the <a href="%s">WordPress SEO by Yoast: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 
-				// remove false error messages from WordPress SEO notifications
-				if ( class_exists( 'Yoast_Notification_Center' ) &&
-					( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
-
-					$lca = $this->p->cf['lca'];
-					$plugin_name = $this->p->cf['plugin'][$lca]['name'];
-					$wpseo_notif = json_decode( $wpseo_notif );
-
-					if ( ! empty( $wpseo_notif ) ) {
-						foreach ( $wpseo_notif as $num => $msgs ) {
-							if ( isset( $msgs->options->type ) && $msgs->options->type == 'error' ) {
-								if ( strpos( $msgs->message, $plugin_name ) !== false ) {
-									unset( $wpseo_notif[$num] );
-									set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
-										json_encode( $wpseo_notif ) );
-								}
-							}
-						}
-					}
+				// disable incorrect error from WordPress SEO notifications
+				$dismissed = get_user_option( 'wpseo_dismissed_conflicts', $user_id );
+				if ( ! is_array( $dismissed['open_graph'] ) ||
+					! in_array( $base, $dismissed['open_graph'] ) ) {
+					$dismissed['open_graph'][] = $base;
+					update_user_option( $user_id, 'wpseo_dismissed_conflicts', $dismissed );
 				}
 			}
 
