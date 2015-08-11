@@ -535,6 +535,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.6.4.4 =
+
+Fixed the custom post/taxonomy/user settings update process by removing the addition of default values (Pro version).
+
 = 3.6.4.3 =
 
 Improved filtering for incorrect Yoast SEO error message(s).
