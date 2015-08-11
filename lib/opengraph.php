@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$post_type = '';
 			$video_previews = 0;
-			$og_max = $this->p->util->get_max_nums( $post_id );	// if post_id 0 then returns the plugin settings 
+			$og_max = $this->p->util->get_max_nums( $post_id, 'post' );	// post_id 0 returns the plugin settings 
 			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
 
 			if ( ! empty( $og ) && 
