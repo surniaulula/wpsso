@@ -411,6 +411,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.6.4.4 (2015/08/11) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added extra error checking for custom max image/video values from post/taxonomy/user settings.
+* **Bugfixes**
+	* Fixed the custom post/taxonomy/user settings update process by removing the addition of default values.
+* **Developer Notes**
+	* *None*
+
 = Version 3.6.4.3 (2015/08/07) =
 
 * **New Features**
