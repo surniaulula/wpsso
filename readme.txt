@@ -418,7 +418,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Added extra error checking for custom max image/video values from post/taxonomy/user settings.
 * **Bugfixes**
-	* Fixed the custom post/taxonomy/user settings update process by removing the addition of default values.
+	* Fixed the custom post/taxonomy/user settings update process by removing the addition of default values (Pro version).
 * **Developer Notes**
 	* *None*
 
