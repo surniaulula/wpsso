@@ -411,7 +411,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.6.5 =
+= Version 3.6.5 (2015/08/14) =
 
 * **New Features**
 	* *None*
@@ -546,6 +546,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
+
+= 3.6.5 =
+
+Added check for full size image dimensions, using it if requested dimensions match (for better quality image). Added check on activation for lower "Object Cache Expiry" values than default.
 
 = 3.6.4.4 =
 
