@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.6.4.4</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.6.5</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.2.4</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
