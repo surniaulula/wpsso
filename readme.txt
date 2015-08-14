@@ -417,7 +417,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* Added a check for full size image dimensions vs the requested image size dimensions - if identical, the full size image URL will be used instead. This allows the plugin to use a (potentially) better quality image than the re-generated version provided by WordPress. 
-	* Added a check and admin notice for lower "Object Cache Expiry" values than the recommended default (86400 seconds).
+	* Added a check and admin notice on activation for lower "Object Cache Expiry" values than the recommended default (86400 seconds).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
