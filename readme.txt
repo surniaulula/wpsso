@@ -421,7 +421,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* The WPSSO WordPress REST API v2 module extends the returned post (including any custom post types), term, and user JSON with a new 'head' array field consisting of an 'html' string and 'parts' array.
+	* The WPSSO WordPress REST API v2 module extends the returned /posts (including custom post types), /terms, and /users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays.
 
 = Version 3.6.5 (2015/08/14) =
 
