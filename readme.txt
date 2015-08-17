@@ -18,7 +18,7 @@ Improve WordPress editing and publishing for better content on all social websit
 
 <p><strong>A solid social meta tag plugin is the foundation of any good social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).</p>
 
-<p><strong>WPSSO automatically retrieves and uses information from a wide range or sources</strong>, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, JetPack Photon, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, WordPress SEO by Yoast, WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, and many more.</p>
+<p><strong>WPSSO automatically retrieves and uses information from a wide range or sources</strong>, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, JetPack Photon, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, WordPress SEO by Yoast, WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API v2, and much more.</p>
 
 <blockquote>
 <h4>Industry Reviews</h4>
@@ -100,9 +100,10 @@ Improve WordPress editing and publishing for better content on all social websit
 		* NextGEN Gallery
 		* MarketPress - WordPress eCommerce
 		* Polylang
-		* WooCommerce v1.x and v2.x
+		* <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>
 		* WordPress SEO by Yoast
 		* WP e-Commerce
+		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a>
 	* Supported Service APIs
 		* Gravatar Images
 		* Slideshare Presentations
@@ -144,7 +145,7 @@ WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.o
 
 <strong>eCommerce Products</strong>
 
-WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1.x and v2.x](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
+WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce v1 and v2](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/), [Twitter Product Cards](https://dev.twitter.com/docs/cards/types/product-card) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
 <strong>Forums and Social</strong>
 
@@ -420,7 +421,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* The WPSSO WordPress REST API v2 module extends the returned post (including custom post types), term, and user JSON with a new 'head' array consisting of 'html' and 'parts' arrays.
+	* The WPSSO WordPress REST API v2 module extends the returned post (including any custom post types), term, and user JSON with a new 'head' array field consisting of an 'html' string and 'parts' array.
 
 = Version 3.6.5 (2015/08/14) =
 
