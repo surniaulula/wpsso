@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.6.5',		// plugin version
+					'version' => '3.7',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'seo' => array(
 								'aioseop' => 'All in One SEO Pack',
 								'headspace2' => 'HeadSpace2 SEO',
-								'wpseo' => 'WordPress SEO',
+								'wpseo' => 'Yoast SEO',
 							),
 							'social' => array(
 								'buddypress' => 'BuddyPress',
@@ -130,6 +130,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'language' => 'Publisher Language',
 								'shorten' => 'URL Shortening',
 								'post' => 'Post Social Settings',
+								'restapi' => 'WP REST API Extension',
 								'taxonomy' => 'Taxonomy Social Settings',
 								'user' => 'User Social Settings',
 							),

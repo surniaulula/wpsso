@@ -237,11 +237,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
 	
-				} elseif ( is_admin() && SucomUtil::is_term_page() ) {
+				} elseif ( SucomUtil::is_term_page() ) {
 					$term = $this->p->util->get_term_object();
 					$title = apply_filters( 'wp_title', $term->name.' '.$separator.' ', $separator, 'right' );
 
-				} elseif ( is_admin() && SucomUtil::is_author_page() ) {
+				} elseif ( SucomUtil::is_author_page() ) {
 					$author = $this->p->util->get_author_object();
 					$title = apply_filters( 'wp_title', $author->display_name.' '.$separator.' ', $separator, 'right' );
 

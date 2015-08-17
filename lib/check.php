@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 99 );
 				}
 	
-				// disable WordPress SEO opengraph, twitter, publisher, and author meta tags
+				// disable Yoast SEO opengraph, twitter, publisher, and author meta tags
 				if ( function_exists( 'wpseo_init' ) || isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) ) {
 					global $wpseo_og;
 					if ( is_object( $wpseo_og ) && 
@@ -212,6 +212,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'util-language':
 							$chk['optval'] = 'plugin_filter_lang';
 							break;
+						case 'util-restapi':
+							$chk['plugin'] = 'rest-api/plugin.php';
+							break;
 						case 'util-shorten':
 							$chk['optval'] = 'plugin_shortener';
 							break;
@@ -275,27 +278,27 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				}
 			}
 
-			// WordPress SEO by Yoast
+			// Yoast SEO
 			if ( $this->p->is_avail['seo']['wpseo'] === true ) {
 				$opts = get_option( 'wpseo_social' );
 				if ( ! empty( $opts['opengraph'] ) ) {
 					$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Open Graph meta data</em>\' Facebook option in the <a href="%s">WordPress SEO by Yoast: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Open Graph meta data</em>\' Facebook option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
 				}
 				if ( ! empty( $this->p->options['tc_enable'] ) && $this->aop() && ! empty( $opts['twitter'] ) ) {
 					$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Twitter card meta data</em>\' Twitter option in the <a href="%s">WordPress SEO by Yoast: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Twitter card meta data</em>\' Twitter option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
 				}
 				if ( ! empty( $opts['googleplus'] ) ) {
 					$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Google+ specific post meta data</em>\' Google+ option in the <a href="%s">WordPress SEO by Yoast: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Google+ specific post meta data</em>\' Google+ option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 				if ( ! empty( $opts['plus-publisher'] ) ) {
 					$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered in the <a href="%s">WordPress SEO by Yoast: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 
-				// disable incorrect error from WordPress SEO notifications
+				// disable incorrect error from Yoast SEO notifications
 				$dismissed = get_user_option( 'wpseo_dismissed_conflicts', $user_id );
 				if ( ! is_array( $dismissed['open_graph'] ) ||
 					! in_array( $base, $dismissed['open_graph'] ) ) {

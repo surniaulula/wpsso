@@ -296,7 +296,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_post_page( $use_post = false ) {
 			if ( self::$is_post_ret !== null )
 				return self::$is_post_ret;
-			elseif ( is_singular() || $use_post !== false )
+			elseif ( apply_filters( 'sucom_is_post_page', is_singular() ) || $use_post !== false )
 				return self::$is_post_ret = true;
 			elseif ( is_admin() ) {
 				$screen_id = self::get_screen_id();
@@ -350,7 +350,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_term_page() {
 			if ( self::$is_term_ret !== null )
 				return self::$is_term_ret;
-			elseif ( is_tax() || is_category() || is_tag() )
+			elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_category() || is_tag() )
 				return self::$is_term_ret = true;
 			elseif ( is_admin() ) {
 				if ( self::get_req_val( 'taxonomy' ) !== '' && 
@@ -361,7 +361,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_category_page() {
-			if ( is_category() )
+			if ( apply_filters( 'sucom_is_category_page', is_category() ) )
 				return true;
 			elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
@@ -373,8 +373,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function get_term_object( $ret = 'object' ) {
 			$obj = false;	// return false by default
-			if ( is_tax() || is_tag() || is_category() ) {
-				$obj = get_queried_object();
+			if ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
+				$obj = apply_filters( 'sucom_get_term_object', get_queried_object() );
 			} elseif ( is_admin() ) {
 				if ( ( $tax_slug = self::get_req_val( 'taxonomy' ) ) !== '' &&
 					( $term_id = self::get_req_val( 'tag_ID' ) ) !== '' )
@@ -411,7 +411,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function get_author_object( $ret = 'object' ) {
 			$obj = false;
 			if ( apply_filters( 'sucom_is_author_page', is_author() ) ) {
-				$obj = apply_filters( 'sucom_author_object', ( get_query_var( 'author_name' ) ? 
+				$obj = apply_filters( 'sucom_get_author_object', ( get_query_var( 'author_name' ) ? 
 					get_user_by( 'slug', get_query_var( 'author_name' ) ) : 
 					get_userdata( get_query_var( 'author' ) ) ) );
 			} elseif ( is_admin() ) {

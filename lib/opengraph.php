@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_og', $og, $use_post, $obj );
 		}
 
-		public function get_all_videos( $num = 0, $post_id, $check_dupes = true, $meta_pre = 'og', $prev_img = false ) {
+		public function get_all_videos( $num = 0, $post_id, $check_dupes = true, $meta_pre = 'og', $force_img = false ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array( 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'post_id' => $post_id,
 					'check_dupes' => $check_dupes,
 					'meta_pre' => $meta_pre,
-					'prev_img' => $prev_img,
+					'force_img' => $force_img,
 				) );
 			$og_ret = array();
 			$opt_prev_img = $this->p->options['og_vid_prev_img'];	// default value
@@ -304,15 +304,21 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$this->p->util->slice_max( $og_ret, $num );
 
-			// remove preview images if the 'og_vid_prev_img' option is disabled (unless forces by method argument)
-			if ( empty( $opt_prev_img ) && $prev_img === false )
-				foreach ( $og_ret as $num => $og_video )
-					unset ( 
-						$og_ret[$num]['og:image'],
-						$og_ret[$num]['og:image:secure_url'],
-						$og_ret[$num]['og:image:width'],
-						$og_ret[$num]['og:image:height']
-					);
+			// remove preview images if the 'og_vid_prev_img' option is disabled (unless forced by method argument)
+			if ( empty( $opt_prev_img ) ) {
+				if ( $force_img === false ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'og_vid_prev_img is 0 - removing image preview meta tags' );
+					foreach ( $og_ret as $num => $og_video ) {
+						unset ( 
+							$og_ret[$num]['og:image'],
+							$og_ret[$num]['og:image:secure_url'],
+							$og_ret[$num]['og:image:width'],
+							$og_ret[$num]['og:image:height']
+						);
+					}
+				} 
+			}
 
 			if ( ! empty( $this->p->options['og_vid_html_type'] ) ) {
 				$og_extend = array();

@@ -307,7 +307,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? ' id="textarea_'.$name.'"' : ' id="textarea_'.$id.'"' ).
 				( empty( $len ) || $disabled !== false ? '' : ' maxLength="'.$len.'"' ).
-				( empty( $class ) || empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
+				( empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
 				( empty( $placeholder ) || $disabled !== false ? '' : ' placeholder="'.$placeholder.'"'.
 					' onFocus="if ( this.value == \'\' ) this.value = \''.esc_js( $placeholder ).'\';"'.
 					' onBlur="if ( this.value == \''.esc_js( $placeholder ).'\' ) this.value = \'\';"'.

@@ -96,6 +96,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-url-shortening':
 							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced settings' ).' page, '.$short_pro.' will load an integration module for various '.$short.' plugin filters and/or extensions that may need to shorten URLs.';
 							break;
+						case 'tooltip-side-wp-rest-api-routes':
+							$text = $short_pro.' loads a module to extend the WordPress REST API routes.';
+							break;
 						default:
 							$text = apply_filters( $lca.'_tooltip_side', $text, $idx );
 							break;
