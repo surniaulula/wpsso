@@ -393,6 +393,7 @@
         <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/">Jetpack Photon</a></li>
         <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/slideshare-vimeo-wistia-youtube-apis/">Slideshare, Vimeo, Wistia, Youtube APIs</a></li>
         <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
+        <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/">WordPress REST API v2</a></li>
     </ul></li>
     <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
     <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/">Developer Resources</a>

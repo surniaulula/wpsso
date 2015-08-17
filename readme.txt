@@ -346,6 +346,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 		<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/">Jetpack Photon</a></li>
 		<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/slideshare-vimeo-wistia-youtube-apis/">Slideshare, Vimeo, Wistia, Youtube APIs</a></li>
 		<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
+		<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/">WordPress REST API v2</a></li>
 	</ul></li>
 	<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
 	<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/developer/">Developer Resources</a>
@@ -421,7 +422,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* The WPSSO WordPress REST API v2 module extends the returned /posts (including custom post types), /terms, and /users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays.
+	* The WPSSO WordPress REST API v2 module extends the returned /wp-json/wp/v2/posts (including custom post types), terms, and users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays (Pro version).
 
 = Version 3.6.5 (2015/08/14) =
 
