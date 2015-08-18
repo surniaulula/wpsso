@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.7 =
+= Version 3.7 (2015/08/18) =
 
 * **New Features**
 	* Added support for the <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API (Version 2)</a> plugin (Pro version).
@@ -559,6 +559,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
+
+= 3.7 =
+
+Added support for the WordPress REST API (Version 2) plugin (Pro version).
 
 = 3.6.5 =
 
