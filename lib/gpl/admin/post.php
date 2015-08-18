@@ -142,8 +142,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			return $rows;
 		}
 
-		// if twitter cards are not support in the free version, so remove the twitter card meta tags 
-		// from the duplicate meta tag check
+		// twitter cards are not supported in the free version, so remove twitter card meta tags from the duplicate meta tag check
 		public function filter_check_head_meta_options( $check_opts, $post_id ) {
 			foreach ( SucomUtil::preg_grep_keys( '/^meta_name_twitter:/', $check_opts ) as $key => $val )
 				unset( $check_opts[$key] );
