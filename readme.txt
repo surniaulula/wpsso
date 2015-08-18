@@ -7,7 +7,7 @@ Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Fa
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
-Tested Up To: 4.2.4
+Tested Up To: 4.3
 Stable Tag: 3.7
 
 Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!
@@ -18,7 +18,7 @@ Improve WordPress editing and publishing for better content on all social websit
 
 <p><strong>A solid social meta tag plugin is the foundation of any good social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information <a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">social website crawlers</a> need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).</p>
 
-<p><strong>WPSSO automatically retrieves and uses information from a wide range or sources</strong>, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, JetPack Photon, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, WordPress SEO by Yoast, WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API v2, and much more.</p>
+<p><strong>WPSSO automatically retrieves and uses information from a wide range or sources</strong>, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, JetPack Photon, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API v2, and much more.</p>
 
 <blockquote>
 <h4>Industry Reviews</h4>
@@ -101,7 +101,7 @@ Improve WordPress editing and publishing for better content on all social websit
 		* MarketPress - WordPress eCommerce
 		* Polylang
 		* <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>
-		* WordPress SEO by Yoast
+		* Yoast SEO (aka WordPress SEO)
 		* WP e-Commerce
 		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a>
 	* Supported Service APIs
@@ -132,10 +132,10 @@ WPSSO (Pro version) also includes support for [JetPack Photon](http://jetpack.me
 
 <strong>Enhanced SEO</strong>
 
-WPSSO (Pro version) integrates with [WordPress SEO by Yoast](https://wordpress.org/plugins/wordpress-seo/), [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), and [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, and Twitter Card meta tags.
+WPSSO (Pro version) integrates with [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/), [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), and [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, and Twitter Card meta tags.
 
 <blockquote>
-<p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the WordPress SEO by Yoast and WPSSO plugins</a> for social sharing.</p>
+<p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the Yoast SEO (aka WordPress SEO) and WPSSO plugins</a> for social sharing.</p>
 </blockquote>
 
 <div style="clear:both;"></div>
@@ -332,7 +332,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 <ul>
 	<li><a href="http://www.wpsuperstars.net/optimize-content-for-social-networks/">How To Optimize Your Content For Social Networks Using WordPress</a></li>
-	<li><a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">Social SEO: WordPress SEO by Yoast vs WPSSO</a> &mdash; read about the differences between WordPress SEO by Yoast and WPSSO when used for social sharing.</li>
+	<li><a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">Social SEO: Yoast SEO (aka WordPress SEO) vs WPSSO</a> &mdash; read about the differences between Yoast SEO and WPSSO when used for social sharing.</li>
 </ul>
 
 = Additional Documentation =
