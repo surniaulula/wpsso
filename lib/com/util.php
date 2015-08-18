@@ -331,7 +331,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			elseif ( is_numeric( $use_post ) ) 
 				$obj = get_post( $use_post );
 
-			$obj = apply_filters( $this->p->cf['lca'].'_get_post_object', $obj, $use_post );
+			$obj = apply_filters( 'sucom_get_post_object', $obj, $use_post );
 
 			switch ( $ret ) {
 				case 'id':
