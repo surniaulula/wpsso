@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'language' => 'Publisher Language',
 								'shorten' => 'URL Shortening',
 								'post' => 'Post Social Settings',
-								'restapi' => 'WP REST API Extension',
+								'restapi' => 'WP REST API v2',
 								'taxonomy' => 'Taxonomy Social Settings',
 								'user' => 'User Social Settings',
 							),
