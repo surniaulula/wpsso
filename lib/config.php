@@ -632,6 +632,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
 
 				if ( $filter === true ) {
+					self::$cf['opt']['version'] .= is_dir( trailingslashit( dirname( __FILE__ ) ).'pro/' ) ? 'pro' : 'gpl';
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf );
 					self::$cf['config_filtered'] = true;
 					self::$cf['*'] = array(
@@ -640,7 +641,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					);
 					foreach ( self::$cf['plugin'] as $lca => $info ) {
 						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) )
-							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( self::$cf['*']['lib'], $info['lib'] );
+							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( 
+								self::$cf['*']['lib'], 
+									$info['lib']
+							);
 						if ( isset( $info['version'] ) )
 							self::$cf['*']['version'] .= '-'.$lca.$info['version'];
 					}
