@@ -643,7 +643,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) )
 							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( 
 								self::$cf['*']['lib'], 
-									$info['lib']
+								$info['lib']
 							);
 						if ( isset( $info['version'] ) )
 							self::$cf['*']['version'] .= '-'.$lca.$info['version'];
