@@ -10,7 +10,7 @@ Requires At Least: 3.0
 Tested Up To: 4.3
 Stable Tag: 3.7
 
-Improve editing and publishing for better shared content on all social websites - no matter how your content is shared or re-shared!
+Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
 == Description ==
 
