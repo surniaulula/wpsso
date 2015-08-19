@@ -10,7 +10,7 @@ Requires At Least: 3.0
 Tested Up To: 4.3
 Stable Tag: 3.7
 
-Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!
+Improve editing and publishing for better shared content on all social websites - no matter how your content is shared or re-shared!
 
 == Description ==
 
