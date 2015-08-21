@@ -631,7 +631,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$alt_text = '';
 			$text = strip_shortcodes( $text );						// remove any remaining shortcodes
 			$text = html_entity_decode( $text, ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$text = preg_replace( '/[\r\n\t ]+/s', ' ', $text );				// put everything on one line
+			$text = preg_replace( '/[\s\R]+/s', ' ', $text );				// put everything on one line
 			$text = preg_replace( '/<\?.*\?>/i', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*?)<\/script>/i', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*?)<\/style>/i', ' ', $text);		// remove inline stylesheets

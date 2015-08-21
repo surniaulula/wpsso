@@ -487,8 +487,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return false;
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
-				$pre = '<(!-- |meta name="'.$this->p->cf['lca'].':comment" content=")';
-				$post = '( --|" *\/?)>';	// make space and slash optional for html optimizers
+				$pre = '<(!--[\s\R]+|meta[\s\R]+name="'.$this->p->cf['lca'].':comment"[\s\R]+content=")';
+				$post = '([\s\R]+--|"[\s\R]*\/?)>';	// make space and slash optional for html optimizers
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
