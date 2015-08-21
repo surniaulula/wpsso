@@ -413,6 +413,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.7.1 (2015/08/21) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the duplicate meta tag pattern match by allowing for extra newline characters added by W3TC within meta tags.
+* **Developer Notes**
+	* *None*
+
 = Version 3.7 (2015/08/18) =
 
 * **New Features**
@@ -559,6 +570,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
+
+= 3.7.1 =
+
+Fixed the duplicate meta tag pattern match by allowing for extra newline characters added by W3TC within meta tags.
 
 = 3.7 =
 
