@@ -420,7 +420,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed the duplicate meta tag pattern match by allowing for extra newline characters added by W3TC within meta tags.
+	* Fixed / improved duplicate meta tag pattern matching by allowing extra newline characters added by W3TC.
 * **Developer Notes**
 	* *None*
 
@@ -573,7 +573,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.7.1 =
 
-Fixed the duplicate meta tag pattern match by allowing for extra newline characters added by W3TC within meta tags.
+Fixed / improved duplicate meta tag pattern matching by allowing extra newline characters added by W3TC.
 
 = 3.7 =
 
