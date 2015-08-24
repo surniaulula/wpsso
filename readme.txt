@@ -420,11 +420,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed the '\R' regex escape sequence by '\n\r' instead ('\R' does not appear to be supported by all PHP versions).
+	* Fixed a missing "R" issue in titles and descriptions by replacing the '\R' regex escape sequence by '\n\r' (the '\R' escape sequence does not appear to be supported by all PHP versions).
 * **Developer Notes**
 	* Refactored the SucomUtil class is_post_page(), is_term_page(), is_author_page() methods.
-	* Added the SucomUtil is_product_page(), is_product_category, and is_product_tag() methods for the WooCommerce module.
-	* Refactored the WooCommerce module to use the new SucomUtil product related methods (Pro version).
+	* Added is_product_page(), is_product_category, and is_product_tag() methods in the SucomUtil class for the WooCommerce module.
+	* Refactored the WooCommerce module to use the new SucomUtil is_product methods for a slight performance improvement (Pro version).
 
 = Version 3.7.1 (2015/08/21) =
 
@@ -586,7 +586,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.7.2 =
 
-Fixed the '\R' regex escape sequence by '\n\r' instead ('\R' does not appear to be supported by all PHP versions).
+Fixed a missing "R" issue in titles and descriptions by replacing the '\R' regex escape sequence by '\n\r'.
 
 = 3.7.1 =
 
