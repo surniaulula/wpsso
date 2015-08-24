@@ -390,27 +390,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			switch ( $option_type ) {
-				case 'textured':	// must be texturized 
+				// must be empty or texturized 
+				case 'textured':
 					if ( $val !== '' )
 						$val = trim( wptexturize( ' '.$val.' ' ) );
 					break;
-				case 'url':		// must be a url
+				// must be empty or a url
+				case 'url':
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL'.' - '.
-								$reset_msg, true );
+							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL'.' - '.$reset_msg, true );
 							$val = $def_val;
 						}
 					}
 					break;
-				case 'url_base':	// strip leading urls off facebook usernames
+				// strip leading urls off facebook usernames
+				case 'url_base':
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
 					}
 					break;
-				case 'at_name':		// twitter-style usernames (prepend with an at)
+				// twitter-style usernames (prepend with an @ character)
+				case 'at_name':
 					if ( $val !== '' ) {
 						$val = substr( preg_replace( '/[^a-zA-Z0-9_]/', '', $val ), 0, 15 );
 						if ( ! empty( $val ) ) 
@@ -424,51 +427,60 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							200 : $this->p->cf['head']['min_img_dim'];
 					else $min_int = 1;
 
-					if ( $val === '' && $mod !== false )	// custom options allowed to have blanks
+					// custom meta options are allowed to be empty
+					if ( $val === '' && $mod !== false )
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.
-							$min_int.' - '.$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.$min_int.' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
-				case 'numeric':		// must be numeric (blank or zero is ok)
+				// must be numeric (blank or zero is ok)
+				case 'numeric':
 					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.
-							$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
-				case 'auth_id':		// must be alpha-numeric uppercase (hyphens are allowed as well)
+				// must be alpha-numeric uppercase (hyphens are allowed as well)
+				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.
-							$key.'\''.' - '.$reset_msg, true );
+						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.$key.'\''.' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
-				case 'api_key':		// blank or alpha-numeric (upper or lower case), plus underscores
+				// blank or alpha-numeric (upper or lower case), plus underscores
+				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be alpha-numeric - '.
-							$reset_msg, true );
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be alpha-numeric - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
-				case 'ok_blank':	// text strings that can be blank
-				case 'html':
+				// text strings that can be blank
+				case 'ok_blank':
 					if ( $val !== '' )
 						$val = trim( $val );
 					break;
-				case 'not_blank':	// options that cannot be blank
-				case 'code':
-					if ( $val === '' ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty - '.
-							$reset_msg, true );
+				case 'html':
+					if ( $val !== '' )
+						$val = trim( $val );
+					if ( ! preg_match( '/<.*>/', $val ) ) {
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be HTML code - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
-				case 'checkbox':	// everything else is a 1 of 0 checkbox option 
+				// options that cannot be blank
+				case 'not_blank':
+				case 'code':
+					if ( $val === '' ) {
+						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty - '.$reset_msg, true );
+						$val = $def_val;
+					}
+					break;
+				// everything else is a 1 of 0 checkbox option 
+				case 'checkbox':
 				default:
 					if ( $def_val === 0 || $def_val === 1 )	// make sure the default option is also a 1 or 0, just in case
 						$val = empty( $val ) ? 0 : 1;
@@ -487,8 +499,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return false;
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
-				$pre = '<(!--[\s\R]+|meta[\s\R]+name="'.$this->p->cf['lca'].':comment"[\s\R]+content=")';
-				$post = '([\s\R]+--|"[\s\R]*\/?)>';	// make space and slash optional for html optimizers
+				$pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':comment"[\s\n\r]+content=")';
+				$post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}

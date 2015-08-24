@@ -588,7 +588,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 									$this->shortcode[$id]->add();
 			}
 
-			$content = preg_replace( '/[\s\R]+/s', ' ', $content );		// put everything on one line
+			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
 				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
 			$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );

@@ -27,9 +27,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $site_plugins = array();
 		protected static $network_plugins = array();
 		protected static $crawler_name = null;		// saved crawler name from user-agent
-		protected static $is_post_ret = null;		// saved is_post_page() check
-		protected static $is_term_ret = null;		// saved is_term_page() check
-		protected static $is_author_ret = null;		// saved is_author_page() check
+		protected static $is = array();			// saved return values for is_post/term/author_page() checks
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -294,21 +292,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_post_page( $use_post = false ) {
-			if ( self::$is_post_ret !== null )
-				return self::$is_post_ret;
-			elseif ( apply_filters( 'sucom_is_post_page', is_singular() ) || $use_post !== false )
-				return self::$is_post_ret = true;
+			if ( isset( self::$is['post_page'] ) )
+				return self::$is['post_page'];
+
+			$ret = false;
+
+			if ( is_singular() || $use_post !== false )
+				$ret = true;
 			elseif ( is_admin() ) {
 				$screen_id = self::get_screen_id();
+
 				// exclude post/page/media editing lists
 				if ( strpos( $screen_id, 'edit-' ) !== false || 
 					$screen_id === 'upload' )
-						return self::$is_post_ret = false;
+						$ret = false;
 				elseif ( self::get_req_val( 'post_ID', 'POST' ) !== '' ||
 					self::get_req_val( 'post', 'GET' ) !== '' )
-						return self::$is_post_ret = true;
+						$ret = true;
 			}
-			return self::$is_post_ret = false;
+			return self::$is['post_page'] = apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
 		// on archives and taxonomies, this will return the first post object
@@ -348,27 +350,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_term_page() {
-			if ( self::$is_term_ret !== null )
-				return self::$is_term_ret;
-			elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_category() || is_tag() )
-				return self::$is_term_ret = true;
+			if ( isset( self::$is['term_page'] ) )
+				return self::$is['term_page'];
+
+			$ret = false;
+
+			if ( is_tax() || is_category() || is_tag() )
+				$ret = true;
 			elseif ( is_admin() ) {
 				if ( self::get_req_val( 'taxonomy' ) !== '' && 
 					self::get_req_val( 'tag_ID' ) !== '' )
-						return self::$is_term_ret = true;
+						$ret = true;
 			}
-			return self::$is_term_ret = false;
+			return self::$is['term_page'] = apply_filters( 'sucom_is_term_page', $ret );
 		}
 
 		public static function is_category_page() {
-			if ( apply_filters( 'sucom_is_category_page', is_category() ) )
-				return true;
+			if ( isset( self::$is['category_page'] ) )
+				return self::$is['category_page'];
+
+			$ret = false;
+
+			if ( is_category() )
+				$ret = true;
 			elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
 					self::get_req_val( 'taxonomy' ) === 'category' )
-						return true;
+						$ret = true;
 			}
-			return false;
+			return self::$is['category_page'] = apply_filters( 'sucom_is_category_page', $ret );
 		}
 
 		public function get_term_object( $ret = 'object' ) {
@@ -395,17 +405,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_author_page() {
-			if ( self::$is_author_ret !== null )
-				return self::$is_author_ret;
-			elseif ( apply_filters( 'sucom_is_author_page', is_author() ) )
-				return self::$is_author_ret = true;
-			elseif ( is_admin() ) {
+			if ( isset( self::$is['author_page'] ) )
+				return self::$is['author_page'];
+
+			$ret = false;
+
+			if ( is_author() ) {
+				$ret = true;
+			} elseif ( is_admin() ) {
 				if ( ( $screen_id = self::get_screen_id() ) !== false &&
 					( $screen_id === 'user-edit' || $screen_id === 'profile' ) )
-						return self::$is_author_ret = true;
+						$ret = true;
 				elseif ( self::get_req_val( 'user_id' ) !== '' )
-					return self::$is_author_ret = true;
-			} else return self::$is_author_ret = false;
+					$ret = true;
+			}
+			return self::$is['author_page'] = apply_filters( 'sucom_is_author_page', $ret );
 		}
 
 		public function get_author_object( $ret = 'object' ) {
@@ -430,6 +444,60 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return $obj;
 					break;
 			}
+		}
+
+		public static function is_product_page( $use_post = false, $obj = false ) {
+			if ( isset( self::$is['product_page'] ) )
+				return self::$is['product_page'];
+
+			$ret = false;
+
+			if ( function_exists( 'is_product' ) && 
+				is_product() )
+					$ret = true;
+			elseif ( is_object( $obj ) || is_admin() ) {
+				if ( ! is_object( $obj ) && 
+					! empty( $use_post ) )
+						$obj = get_post( $use_post );
+				if ( isset( $obj->post_type ) &&
+					$obj->post_type === 'product' )
+						$ret = true;
+			}
+			return self::$is['product_page'] = apply_filters( 'sucom_is_product_page', $ret, $use_post, $obj );
+		}
+
+		public static function is_product_category() {
+			if ( isset( self::$is['product_category'] ) )
+				return self::$is['product_category'];
+
+			$ret = false;
+
+			if ( function_exists( 'is_product_category' ) && 
+				is_product_category() )
+					$ret = true;
+			elseif ( is_admin() ) {
+				if ( SucomUtil::get_req_val( 'taxonomy' ) === 'product_cat' &&
+					SucomUtil::get_req_val( 'post_type' ) === 'product' )
+						$ret = true;
+			}
+			return self::$is['product_category'] = apply_filters( 'sucom_is_product_category', $ret );
+		}
+
+		public static function is_product_tag() {
+			if ( isset( self::$is['product_tag'] ) )
+				return self::$is['product_tag'];
+
+			$ret = false;
+
+			if ( function_exists( 'is_product_tag' ) && 
+				is_product_tag() )
+					$ret = true;
+			elseif ( is_admin() ) {
+				if ( SucomUtil::get_req_val( 'taxonomy' ) === 'product_tag' &&
+					SucomUtil::get_req_val( 'post_type' ) === 'product' )
+						$ret = true;
+			}
+			return self::$is['product_tag'] = apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
 		public static function get_req_val( $key, $method = 'ANY' ) {
@@ -631,7 +699,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$alt_text = '';
 			$text = strip_shortcodes( $text );						// remove any remaining shortcodes
 			$text = html_entity_decode( $text, ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$text = preg_replace( '/[\s\R]+/s', ' ', $text );				// put everything on one line
+			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
 			$text = preg_replace( '/<\?.*\?>/i', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*?)<\/script>/i', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*?)<\/style>/i', ' ', $text);		// remove inline stylesheets
