@@ -413,6 +413,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.7.3 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Refactored / improved the WpssoCheck->get_avail() method for a slight speed improvement when checking dependencies.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 8.7.2 (2015/08/23) =
 
 * **New Features**
@@ -422,7 +433,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* Fixed a missing "R" issue in titles and descriptions by replacing the '\R' regex escape sequence by '\n\r' (the '\R' escape sequence does not appear to be supported by all PHP versions).
 * **Developer Notes**
-	* Refactored the SucomUtil class is_post_page(), is_term_page(), is_author_page() methods.
+	* Refactored / improved the SucomUtil class is_post_page(), is_term_page(), is_author_page() methods.
 	* Added is_product_page(), is_product_category, and is_product_tag() methods in the SucomUtil class for the WooCommerce module.
 	* Refactored the WooCommerce module to use the new SucomUtil is_product methods for a slight performance improvement (Pro version).
 
