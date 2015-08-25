@@ -464,11 +464,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = trim( $val );
 					break;
 				case 'html':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = trim( $val );
-					if ( ! preg_match( '/<.*>/', $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be HTML code - '.$reset_msg, true );
-						$val = $def_val;
+						if ( ! preg_match( '/<.*>/', $val ) ) {
+							$this->p->notice->err( 'The value of option \''.$key.'\' must be HTML code - '.$reset_msg, true );
+							$val = $def_val;
+						}
 					}
 					break;
 				// options that cannot be blank

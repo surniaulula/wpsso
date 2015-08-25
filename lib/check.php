@@ -223,16 +223,33 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'wpsso-um/wpsso-um.php';
 							break;
 					}
-					if ( ( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) || 
-						( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
-						( ! empty( $chk['plugin'] ) && isset( $this->active_plugins[$chk['plugin']] ) ) ||
-						( ! empty( $chk['optval'] ) && 
-							! empty( $this->p->options[$chk['optval']] ) && 
-							$this->p->options[$chk['optval']] !== 'none' ) )
+					if ( ! empty( $chk ) ) {
+						if ( isset( $chk['plugin'] ) || isset( $chk['class'] ) || isset( $chk['function'] ) ) {
+							if ( ( ! empty( $chk['plugin'] ) && isset( $this->active_plugins[$chk['plugin']] ) ) ||
+								( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
+								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ) {
+
+								// check if an option value is also required
+								if ( isset( $chk['optval'] ) ) {
+									if ( $this->has_optval( $chk['optval'] ) )
+										$ret[$sub]['*'] = $ret[$sub][$id] = true;
+								} else $ret[$sub]['*'] = $ret[$sub][$id] = true;
+							}
+						} if ( isset( $chk['optval'] ) ) {
+							if ( $this->has_optval( $chk['optval'] ) )
 								$ret[$sub]['*'] = $ret[$sub][$id] = true;
+						}
+					}
 				}
 			}
 			return apply_filters( $this->p->cf['lca'].'_get_avail', $ret );
+		}
+
+		private function has_optval( $opt_name ) { 
+			if ( ! empty( $opt_name ) && 
+				! empty( $this->p->options[$opt_name] ) && 
+					$this->p->options[$opt_name] !== 'none' )
+						return true;
 		}
 
 		public function is_aop( $lca = '' ) { 

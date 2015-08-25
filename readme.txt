@@ -420,7 +420,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Refactored / improved the WpssoCheck->get_avail() method for a slight speed improvement when checking dependencies.
 * **Bugfixes**
-	* *None*
+	* Fixed an incorrect warning message for an empty Video Embed option value in the Social Settings metabox.
 * **Developer Notes**
 	* *None*
 
