@@ -227,8 +227,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		public function filter_ua_plugin( $plugin ) {
-			if ( $this->check->aop() ) $plugin .= 'L';
-			elseif ( $this->is_avail['aop'] ) $plugin .= 'U';
+			if ( $this->check->aop( 'wpsso' ) )
+				$plugin .= 'L';
+			elseif ( $this->is_avail['aop'] )
+				$plugin .= 'U';
 			else $plugin .= 'G';
 			return $plugin;
 		}

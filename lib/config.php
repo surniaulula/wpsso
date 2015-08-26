@@ -572,7 +572,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					259200 => 72,
 					604800 => 168,
 				),
-				'js_locations' => array(
+				'script_locations' => array(
 					'none' => '[none]',
 					'header' => 'Header',
 					'footer' => 'Footer',
