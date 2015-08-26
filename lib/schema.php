@@ -89,8 +89,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_headline'] ) ) {
-				if ( ! empty( $meta_og['og:title'] ) )
-					$meta_schema['headline'] = $meta_og['og:title'];
+				if ( ! empty( $meta_og['og:title'] ) &&
+					isset( $meta_og['og:type'] ) &&
+						$meta_og['og:type'] === 'article' )
+							$meta_schema['headline'] = $meta_og['og:title'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {
