@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.3
-Stable Tag: 3.7.2
+Stable Tag: 3.7.3
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
