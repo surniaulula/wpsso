@@ -595,6 +595,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.7.3 =
+
+Fixed incorrect warning message for empty Video Embed option value. Refactored / improved NgfbCheck->get_avail() method for a slight speed improvement.
+
 = 3.7.2 =
 
 Fixed a missing "R" issue in titles and descriptions by replacing the '\R' regex escape sequence by '\n\r'.
