@@ -420,7 +420,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* *None*
+	* Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values by creating multiple 'fb:admins' meta tags with a single value each.
 * **Developer Notes**
 	* Added three new filters (see filters.txt for details).
 		* wpsso_attached_accept_img_size
