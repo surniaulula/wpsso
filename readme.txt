@@ -422,7 +422,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added new 'wpsso_attached_accept_img_size' and 'wpsso_content_accept_img_size' filters (see filters.txt for details).
+	* Added three new filters (see filters.txt for details).
+		* wpsso_attached_accept_img_size
+		* wpsso_content_accept_img_size
+		* wpsso_ngg_accept_img_size
 
 = Version 3.7.3 (2015/08/26) =
 
