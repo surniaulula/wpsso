@@ -413,6 +413,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.7.4 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added new 'wpsso_attached_accept_img_size' and 'wpsso_content_accept_img_size' filters (see filters.txt for details).
+
 = Version 3.7.3 (2015/08/26) =
 
 * **New Features**
