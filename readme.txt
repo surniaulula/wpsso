@@ -426,7 +426,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 		* wpsso_attached_accept_img_size
 		* wpsso_content_accept_img_size
 		* wpsso_ngg_accept_img_size
-	* Moved the Open Graph type list to an array under WpssoConfig::$cf['head']['og_type_ns'] and the Schema itemtype list to an array under WpssoConfig::$cf['head']['schema_type'].
+	* Moved the Open Graph type and Schema itemtype lists to arrays under WpssoConfig::$cf['head'].
 
 = Version 3.7.3 (2015/08/26) =
 
