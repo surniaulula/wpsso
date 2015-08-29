@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.3
-Stable Tag: 3.7.3
+Stable Tag: 3.7.4
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -413,20 +413,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.7.4 =
+= Version 3.7.4 (2015/08/29) =
 
 * **New Features**
 	* *None*
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values by creating multiple 'fb:admins' meta tags with a single value each.
+	* Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values by creating additionl 'fb:admins' meta tags (with a single value each).
 * **Developer Notes**
-	* Added three new filters (see filters.txt for details).
+	* Moved the Open Graph type and Schema itemtype lists to arrays under WpssoConfig::$cf['head'].
+	* Added three new filters to accept under-sized images individually (see filters.txt for details).
 		* wpsso_attached_accept_img_size
 		* wpsso_content_accept_img_size
 		* wpsso_ngg_accept_img_size
-	* Moved the Open Graph type and Schema itemtype lists to arrays under WpssoConfig::$cf['head'].
 
 = Version 3.7.3 (2015/08/26) =
 
@@ -610,6 +610,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.7.4 =
+
+Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values. Added three new filters to accept under-sized images individually.
+
 = 3.7.3 =
 
 Fixed incorrect warning message for empty Video Embed option value. Refactored / improved NgfbCheck->get_avail() method for a slight speed improvement.
@@ -625,48 +629,4 @@ Fixed / improved duplicate meta tag pattern matching by allowing extra newline c
 = 3.7 =
 
 Added support for the WordPress REST API (Version 2) plugin (Pro version).
-
-= 3.6.5 =
-
-Added check for full size image dimensions, using it if requested dimensions match (for better quality image). Added check on activation for lower "Object Cache Expiry" values than default.
-
-= 3.6.4.4 =
-
-Fixed the custom post/taxonomy/user settings update process by removing the addition of default values (Pro version).
-
-= 3.6.4.3 =
-
-Improved filtering for incorrect Yoast SEO error message(s).
-
-= 3.6.4.2 =
-
-Confirmed WordPress v4.2.4 compatibility. Added PHP realpath() to WPSSO_PLUGINDIR constant to prevent PHP fwrite() issues. Fixed the WooCommerce and WPeCommerce filters for compatibility with SEO integration modules (Pro version).
-
-= 3.6.4 =
-
-Added new wpsso_get_sharing_url() and wpsso_get_short_url() functions.
-
-= 3.6.3.1 =
-
-Added missing check for a default image URL in force_default_media(), fixed post cache object variable name in filter_post_cache_objects() (Pro version).
-
-= 3.6.3 =
-
-Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page. Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled (Pro version).
-
-= 3.6.2.1 =
-
-Added a check for missing $screen->id attribute when creating new taxonomy terms. Updated the minimum PHP version requirement to v4.1.
-
-= 3.6.2 =
-
-Fixed two option variable names in the NgfbUtil get_cache_file_url() method. Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
-
-= 3.6.1 =
-
-Added informational message about the "Apply WordPress Content Filters" option when using shortcodes (default value is now unchecked).
-
-= 3.6 = 
-
-Added a "Video Preview Image(s)" option in the Social Settings metabox. Added Article "headline" and "datepublished" markup for Google's testing tool.
 
