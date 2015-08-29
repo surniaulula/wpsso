@@ -34,48 +34,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$obj = $this->p->util->get_post_object( false );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 			$post_type = '';
-			$item_type = 'Blog';	// default value for non-singular webpages
+			$item_type = $this->p->cf['head']['schema_type']['blog'];	// default value for non-singular webpages
 
 			if ( is_singular() ) {
+
 				if ( ! empty( $obj->post_type ) )
 					$post_type = $obj->post_type;
-				switch ( $post_type ) {
-					case 'article':
-					case 'book':
-					case 'blog':
-					case 'event':
-					case 'organization':
-					case 'person':
-					case 'place':
-					case 'product':
-					case 'review':
-					case 'other':
-						$item_type = ucfirst( $post_type );
-						break;
-					case 'local.business':
-						$item_type = 'LocalBusiness';
-						break;
-					default:
-						$item_type = 'Article';
-						break;
-				}
-			} elseif ( $this->p->util->force_default_author() )
-				$item_type = 'Article';
+
+				if ( isset( $this->p->cf['head']['schema_type'][$post_type] ) )
+					$item_type = $this->p->cf['head']['schema_type'][$post_type];
+				else $item_type = $this->p->cf['head']['schema_type']['article'];
+
+			} elseif ( $this->p->util->force_default_author() &&
+				! empty( $this->p->options['og_def_author_id'] ) )
+					$item_type = $this->p->cf['head']['schema_type']['article'];
 
 			$item_type = apply_filters( $this->p->cf['lca'].'_doctype_schema_type', $item_type, $post_id, $obj );
 
 			if ( ! empty( $item_type ) ) {
-				if ( strpos( $doctype, ' itemscope="itemscope" ' ) !== false )
-					$doctype = preg_replace( '/ itemscope="itemscope" /', 
-						' itemscope ', $doctype );
-				elseif ( strpos( $doctype, ' itemscope ' ) === false )
-					$doctype .= ' itemscope ';
 
-				if ( strpos( $doctype, ' itemtype="http://schema.org/' ) !== false )
-					$doctype = preg_replace( '/ itemtype="http:\/\/schema.org\/[^"]+"/',
-						' itemtype="http://schema.org/'.$item_type.'"', $doctype );
-				else $doctype .= ' itemtype="http://schema.org/'.$item_type.'"';
-			}
+				// backwards compatibility
+				if ( strpos( $item_type, '://' ) === false )
+					$item_type = 'http://schema.org/'.$item_type;
+
+				// fix incorrect itemscope values
+				if ( strpos( $doctype, ' itemscope="itemscope"' ) !== false )
+					$doctype = preg_replace( '/ itemscope="itemscope"/', 
+						' itemscope', $doctype );
+				elseif ( strpos( $doctype, ' itemscope' ) === false )
+					$doctype .= ' itemscope';
+
+				// replace existing itemtype values
+				if ( strpos( $doctype, ' itemtype="' ) !== false )
+					$doctype = preg_replace( '/ itemtype="[^"]+"/',
+						' itemtype="'.$item_type.'"', $doctype );
+				else $doctype .= ' itemtype="'.$item_type.'"';
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'schema item_type variable is empty' );
 
 			return $doctype;
 		}

@@ -78,8 +78,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$this->p->debug->log( $og );
 			}
 
-			if ( ! isset( $og['fb:admins'] ) )
-				$og['fb:admins'] = $this->p->options['fb_admins'];
+			if ( ! isset( $og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) )
+				foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin )
+					$og['fb:admins'][] = trim( $fb_admin );
 
 			if ( ! isset( $og['fb:app_id'] ) )
 				$og['fb:app_id'] = $this->p->options['fb_app_id'];
@@ -94,32 +95,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				// singular posts / pages are articles by default
 				// check the post_type for a match with a known open graph type
 				if ( is_singular() || $use_post !== false ) {
+
 					if ( ! empty( $obj->post_type ) )
 						$post_type = $obj->post_type;
-					switch ( $post_type ) {
-						case 'article':
-						case 'book':
-						case 'music.album':
-						case 'music.playlist':
-						case 'music.radio_station':
-						case 'music.song':
-						case 'place':			// supported by Facebook and Pinterest
-						case 'product':
-						case 'profile':
-						case 'video.episode':
-						case 'video.movie':
-						case 'video.other':
-						case 'video.tv_show':
-						case 'website':
-							$og['og:type'] = $post_type;
-							break;
-						default:
-							$og['og:type'] = 'article';
-							break;
-					}
+
+					if ( isset( $this->p->cf['head']['og_type_ns'][$post_type] ) )
+						$og['og:type'] = $post_type;
+					else $og['og:type'] = 'article';
 
 				// check for default author info on indexes and searches
-				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) ) {
+				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) &&
+					! empty( $this->p->options['og_def_author_id'] ) ) {
+
 					$og['og:type'] = 'article';
 					if ( ! isset( $og['article:author'] ) )
 						$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $this->p->options['og_def_author_id'] );

@@ -390,8 +390,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $ret_empty;
 			}
 
+			$accept_img_size = apply_filters( $this->p->cf['lca'].'_attached_accept_img_size', 
+				( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
+				$img_url, $img_width, $img_height, $size_name, $pid );
+
 			// check for resulting image dimensions that may be too small
-			if ( ! empty( $this->p->options['plugin_ignore_small_img'] ) ) {
+			if ( empty( $accept_img_size ) ) {
 
 				$is_sufficient_width = $img_width >= $size_info['width'] ? true : false;
 				$is_sufficient_height = $img_height >= $size_info['height'] ? true : false;
@@ -582,8 +586,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( $this->p->is_avail['media']['ngg'] === true && 
 								! empty( $this->p->mods['media']['ngg'] ) &&
 									( strpos( $tag_value, " class='ngg-" ) !== false || 
-										preg_match( '/^'.$this->p->mods['media']['ngg']->img_src_preg.'$/', $attr_value ) ) )
-											break;	// stop here
+										preg_match( '/^'.$this->p->mods['media']['ngg']->img_src_preg.'$/', 
+											$attr_value ) ) )
+												break;	// stop here
 	
 							// recognize gravatar images in the content
 							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/', $attr_value, $match) ) {
@@ -610,22 +615,32 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$is_sufficient_width = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
 							$is_sufficient_height = $og_image['og:image:height'] >= $size_info['height'] ? true : false;
 
+							$accept_img_size = apply_filters( $this->p->cf['lca'].'_content_accept_img_size', 
+								( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
+								$og_image['og:image'], 
+								$og_image['og:image:width'], 
+								$og_image['og:image:height'], 
+								$size_name, $post_id );
+
 							// make sure the image width and height are large enough
-							if ( $attr_name == 'data-share-src' || 
-								( $attr_name == 'src' && empty( $this->p->options['plugin_ignore_small_img'] ) ) ||
-								( $attr_name == 'src' && $size_info['crop'] === 1 && $is_sufficient_width && $is_sufficient_height ) ||
-								( $attr_name == 'src' && $size_info['crop'] !== 1 && ( $is_sufficient_width || $is_sufficient_height ) ) ) {
+							if ( ( $attr_name == 'src' && $accept_img_size ) ||
+								( $attr_name == 'src' && $size_info['crop'] === 1 && 
+									( $is_sufficient_width && $is_sufficient_height ) ) ||
+								( $attr_name == 'src' && $size_info['crop'] !== 1 && 
+									( $is_sufficient_width || $is_sufficient_height ) ) ||
+								$attr_name == 'data-share-src' ) {
 
 								// data-share-src attribute used and/or image size is acceptable
 								// check for relative urls, just in case
 								$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
 
 							} else {
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'image rejected: width / height attributes missing or too small for '.$size_name );
-									if ( is_admin() )
-										$this->p->notice->err( 'Image '.$og_image['og:image'].' rejected - width / height missing or too small for '.$size_name.'.' );
-								}
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'content image rejected:'.
+										' width / height missing or too small for '.$size_name );
+								if ( is_admin() )
+									$this->p->notice->err( 'Content image '.$og_image['og:image'].' rejected -'.
+										' width / height missing or too small for '.$size_name.'.' );
 								$og_image = array();
 							}
 							break;

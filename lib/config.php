@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.7.3',		// plugin version
+					'version' => '3.7.4',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -618,6 +618,35 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'max_img_ratio' => 3,
 				'min_img_dim' => 200,
 				'min_desc_len' => 156,
+				'og_type_ns' => array(		// from http://ogp.me/#types
+					'article' => 'http://ogp.me/ns/article#',
+					'book' => 'http://ogp.me/ns/book#',
+					'music.album' => 'http://ogp.me/ns/music#',
+					'music.playlist' => 'http://ogp.me/ns/music#',
+					'music.radio_station' => 'http://ogp.me/ns/music#',
+					'music.song' => 'http://ogp.me/ns/music#',
+					'place' => 'http://ogp.me/ns/place#',		// for Facebook and Pinterest
+					'product' => 'http://ogp.me/ns/product#',	// for Facebook and Pinterest
+					'profile' => 'http://ogp.me/ns/profile#',
+					'video.episode' => 'http://ogp.me/ns/video#',
+					'video.movie' => 'http://ogp.me/ns/video#',
+					'video.other' => 'http://ogp.me/ns/video#',
+					'video.tv_show' => 'http://ogp.me/ns/video#',
+					'website' => 'http://ogp.me/ns/website#',
+				),
+				'schema_type' => array(
+					'article' => 'http://schema.org/Article',
+					'book' => 'http://schema.org/Book',
+					'blog' => 'http://schema.org/Blog',
+					'event' => 'http://schema.org/Event',
+					'organization' => 'http://schema.org/Organization',
+					'person' => 'http://schema.org/Person',
+					'place' => 'http://schema.org/Place',
+					'product' => 'http://schema.org/Product',
+					'review' => 'http://schema.org/Review',
+					'other' => 'http://schema.org/Other',
+					'local.business' => 'http://schema.org/LocalBusiness',
+				),
 			),
 			'cache' => array(
 				'file' => true,
