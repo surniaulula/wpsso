@@ -89,10 +89,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$update_version = ( empty( $opts['plugin_version'] ) || 
 					$opts['plugin_version'] !== $this->p->cf['plugin'][$this->p->cf['lca']]['version'] ) ? true : false;
+
 				$update_options = ( empty( $opts['options_version'] ) || 
 					$opts['options_version'] !== $this->p->cf['opt']['version'] ) ? true : false;
 
 				if ( $update_version === true || $update_options === true ) {
+
+					update_option( WPSSO_UPDATE_NAME, time() );
+
 					if ( $update_options === true ) {
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
 							' different than saved v'.$opts['options_version'] );
@@ -275,7 +279,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $saved === true ) {
 					// if we're just saving a new plugin version string, don't bother showing the upgrade message
-					if ( $prev_opts_version != $opts['options_version'] ) {
+					if ( $prev_opts_version !== $opts['options_version'] ) {
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 						$this->p->notice->inf( 'Plugin settings ('.$options_name.') have been upgraded and saved.', true );
 					}

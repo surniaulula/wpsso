@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.3
- * Version: 3.7.4
+ * Version: 3.7.5
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -76,7 +76,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		// runs at init priority -1
 		public function set_config() {
-			$this->cf = WpssoConfig::get_config( null, true );	// apply filters - define the $cf['*'] array
+			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}
 
 		// runs at init priority 1
@@ -215,24 +215,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.
 					' and informational messages are being added as hidden HTML comments.' );
 			}
-
-			if ( ! empty( $this->options['plugin_wpsso_tid'] ) )
-				$this->util->add_plugin_filters( $this, array( 'installed_version' => 1, 'ua_plugin' => 1 ) );
-		}
-
-		public function filter_installed_version( $version ) {
-			if ( ! $this->is_avail['aop'] )
-				$version = '0.'.$version;
-			return $version;
-		}
-
-		public function filter_ua_plugin( $plugin ) {
-			if ( $this->check->aop( 'wpsso' ) )
-				$plugin .= 'L';
-			elseif ( $this->is_avail['aop'] )
-				$plugin .= 'U';
-			else $plugin .= 'G';
-			return $plugin;
 		}
 
 		public function set_options() {

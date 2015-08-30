@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.7.4',		// plugin version
+					'version' => '3.7.5',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso348',				// increment when changing default options
+				'version' => 'sso349',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -649,7 +649,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'cache' => array(
-				'file' => true,
+				'file' => false,
 				'object' => true,
 				'transient' => true,
 			),
@@ -696,7 +696,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				}
 			}
 
-			if ( ! empty( $idx ) ) {
+			if ( $idx !== false ) {
 				if ( array_key_exists( $idx, self::$cf ) )
 					return self::$cf[$idx];
 				else return false;
@@ -704,11 +704,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_constants( $plugin_filepath ) { 
-
 			$cf = self::get_config();
 			$slug = $cf['plugin'][$cf['lca']]['slug'];
 			$version = $cf['plugin'][$cf['lca']]['version'];
 
+			// constants that cannot be pre-defined
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
 			define( 'WPSSO_PLUGINBASE', plugin_basename( $plugin_filepath ) );
@@ -717,108 +717,83 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.$version.
 				( defined( 'NONCE_SALT' ) ? NONCE_SALT : '' ) ) );
 
-			if ( defined( 'WPSSO_DEBUG' ) && 
-				! defined( 'WPSSO_HTML_DEBUG' ) )
-					define( 'WPSSO_HTML_DEBUG', WPSSO_DEBUG );
+			self::set_variable_constants();
+		}
 
-			if ( ! defined( 'WPSSO_DEBUG_FILE_EXP' ) )
-				define( 'WPSSO_DEBUG_FILE_EXP', 300 );
+		public static function set_variable_constants() { 
+			foreach ( self::get_variable_constants() as $name => $value )
+				if ( ! defined( $name ) )
+					define( $name, $value );
+		}
 
-			if ( ! defined( 'WPSSO_CACHEDIR' ) )
-				define( 'WPSSO_CACHEDIR', WPSSO_PLUGINDIR.'cache/' );
+		public static function get_variable_constants() { 
+			$var_const = array();
 
-			if ( ! defined( 'WPSSO_CACHEURL' ) )
-				define( 'WPSSO_CACHEURL', WPSSO_URLPATH.'cache/' );
+			if ( defined( 'WPSSO_DEBUG' ) )				// backwards compatibility
+				$var_const['WPSSO_HTML_DEBUG'] = WPSSO_DEBUG;
 
-			if ( ! defined( 'WPSSO_TOPICS_LIST' ) )
-				define( 'WPSSO_TOPICS_LIST', WPSSO_PLUGINDIR.'share/topics.txt' );
+			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR.'cache/';
+				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR.'share/topics.txt';
+			}
 
-			if ( ! defined( 'WPSSO_MENU_ORDER' ) )
-				define( 'WPSSO_MENU_ORDER', '99.10' );
+			if ( defined( 'WPSSO_URLPATH' ) )
+				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
 
-			if ( ! defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) )
-				define( 'WPSSO_MENU_ICON_HIGHLIGHT', true );
+			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
+			$var_const['WPSSO_MENU_ORDER'] = '99.10';
+			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;
 
 			/*
 			 * WPSSO option and meta array names
 			 */
-			if ( ! defined( 'WPSSO_OPTIONS_NAME' ) )
-				define( 'WPSSO_OPTIONS_NAME', 'wpsso_options' );
-
-			if ( ! defined( 'WPSSO_SITE_OPTIONS_NAME' ) )
-				define( 'WPSSO_SITE_OPTIONS_NAME', 'wpsso_site_options' );
-
-			if ( ! defined( 'WPSSO_META_NAME' ) )
-				define( 'WPSSO_META_NAME', '_wpsso_meta' );
-
-			if ( ! defined( 'WPSSO_PREF_NAME' ) )
-				define( 'WPSSO_PREF_NAME', '_wpsso_pref' );
+			$var_const['WPSSO_INSTALL_NAME'] = 'wpsso_install_ts';
+			$var_const['WPSSO_ACTIVATE_NAME'] = 'wpsso_activate_ts';
+			$var_const['WPSSO_UPDATE_NAME'] = 'wpsso_update_ts';
+			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
+			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
+			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';
+			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';
 
 			/*
 			 * WPSSO option and meta array alternate / fallback names
 			 */
-			if ( ! defined( 'WPSSO_OPTIONS_NAME_ALT' ) )
-				define( 'WPSSO_OPTIONS_NAME_ALT', 'ngfb_options' );
-
-			if ( ! defined( 'WPSSO_SITE_OPTIONS_NAME_ALT' ) )
-				define( 'WPSSO_SITE_OPTIONS_NAME_ALT', 'ngfb_site_options' );
-
-			if ( ! defined( 'WPSSO_META_NAME_ALT' ) )
-				define( 'WPSSO_META_NAME_ALT', '_ngfb_meta' );
-
-			if ( ! defined( 'WPSSO_PREF_NAME_ALT' ) )
-				define( 'WPSSO_PREF_NAME_ALT', '_ngfb_pref' );
+			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';
+			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';
+			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';
+			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';
 
 			/*
 			 * WPSSO hook priorities
 			 */
-			if ( ! defined( 'WPSSO_ADD_MENU_PRIORITY' ) )
-				define( 'WPSSO_ADD_MENU_PRIORITY', -20 );
+			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
+			$var_const['WPSSO_ADD_SETTINGS_PRIORITY'] = -10;
+			$var_const['WPSSO_META_SAVE_PRIORITY'] = 6;
+			$var_const['WPSSO_META_CACHE_PRIORITY'] = 9;
+			$var_const['WPSSO_INIT_PRIORITY'] = 12;
+			$var_const['WPSSO_DOCTYPE_PRIORITY'] = 100;
+			$var_const['WPSSO_HEAD_PRIORITY'] = 10;
+			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
-			if ( ! defined( 'WPSSO_ADD_SETTINGS_PRIORITY' ) )
-				define( 'WPSSO_ADD_SETTINGS_PRIORITY', -10 );
-
-			if ( ! defined( 'WPSSO_META_SAVE_PRIORITY' ) )
-				define( 'WPSSO_META_SAVE_PRIORITY', 6 );
-
-			if ( ! defined( 'WPSSO_META_CACHE_PRIORITY' ) )
-				define( 'WPSSO_META_CACHE_PRIORITY', 9 );
-
-			if ( ! defined( 'WPSSO_INIT_PRIORITY' ) )
-				define( 'WPSSO_INIT_PRIORITY', 12 );
-
-			if ( ! defined( 'WPSSO_DOCTYPE_PRIORITY' ) )
-				define( 'WPSSO_DOCTYPE_PRIORITY', 100 );
-
-			if ( ! defined( 'WPSSO_HEAD_PRIORITY' ) )
-				define( 'WPSSO_HEAD_PRIORITY', 10 );
-
-			if ( ! defined( 'WPSSO_SEO_FILTERS_PRIORITY' ) )
-				define( 'WPSSO_SEO_FILTERS_PRIORITY', 100 );
-			
 			/*
 			 * WPSSO curl settings
 			 */
-			if ( ! defined( 'WPSSO_CURL_USERAGENT' ) )
-				define( 'WPSSO_CURL_USERAGENT', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36' );
+			if ( defined( 'WPSSO_PLUGINDIR' ) )
+				$var_const['WPSSO_CURL_CAINFO'] = WPSSO_PLUGINDIR.'share/curl/cacert.pem';
+			$var_const['WPSSO_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0';
 
-			if ( ! defined( 'WPSSO_CURL_CAINFO' ) )
-				define( 'WPSSO_CURL_CAINFO', WPSSO_PLUGINDIR.'share/curl/cacert.pem' );
-
-			/*
-			 * Disable caching plugins for the duplicate meta tag check feature
-			 */
+			// disable 3rd-party caching for duplicate meta tag checks
 			if ( ! empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ) {
-
-				if ( ! defined( 'DONOTCACHEPAGE' ) )
-					define( 'DONOTCACHEPAGE', true );	// wp super cache
-
-				if ( ! defined( 'QUICK_CACHE_ALLOWED' ) )
-					define( 'QUICK_CACHE_ALLOWED', false );	// quick cache
-
-				if ( ! defined( 'ZENCACHE_ALLOWED' ) )
-					define( 'ZENCACHE_ALLOWED', false );	// zencache
+				$var_const['DONOTCACHEPAGE'] = true;		// wp super cache
+				$var_const['QUICK_CACHE_ALLOWED'] = false;	// quick cache
+				$var_const['ZENCACHE_ALLOWED'] = false;		// zencache
 			}
+
+			foreach ( $var_const as $name => $value )
+				if ( defined( $name ) )
+					$var_const[$name] = constant( $name );	// inherit existing values
+
+			return $var_const;
 		}
 
 		public static function require_libs( $plugin_filepath ) {

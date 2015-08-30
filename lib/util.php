@@ -16,6 +16,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) )
+				$this->add_plugin_filters( $this, array( 
+					'installed_version' => 2, 
+					'ua_plugin' => 2,
+				), 10, 'sucom' );
 			$this->add_actions();
 		}
 
@@ -43,8 +48,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$method = $type.'_'.str_replace( array( '/', '-' ), '_', $name );
 				call_user_func( 'add_'.$type, $hook, array( &$class, $method ), $prio, $num );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $type.' for '.$hook.' added', 2 );
+					$this->p->debug->log( $type.' for '.$hook.' added', 3 );
 			}
+		}
+
+		public function filter_installed_version( $version, $lca ) {
+			if ( ! empty( $this->p->cf['plugin'][$lca]['update_auth'] ) &&
+				! $this->p->check->aop( $lca, false ) )
+					return '0.'.$version;
+			else return $version;
+		}
+
+		public function filter_ua_plugin( $plugin, $lca ) {
+			if ( ! isset( $this->p->cf['plugin'][$lca] ) )
+				return $plugin;
+			elseif ( $this->p->check->aop( $lca ) )
+				return $plugin.'L';
+			elseif ( $this->p->check->aop( $lca, false ) )
+				return $plugin.'U';
+			else return $plugin.'G';
 		}
 
 		public function get_image_size_label( $size_name ) {	// wpsso-opengraph

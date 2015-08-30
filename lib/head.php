@@ -344,38 +344,46 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$value = htmlentities( $value, ENT_QUOTES, $charset, false );	// double_encode = false
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $log_pre.' = "'.$value.'"' );
-			$html_prefix = empty( $comment ) ? '' : '<!-- '.$comment.' -->';
 
 			// add an additional secure_url meta tag for open graph images and videos
-			if ( $tag === 'meta' && 
-				$type === 'property' && 
+			if ( $tag === 'meta' && $type === 'property' && 
 				( $name === 'og:image' || $name === 'og:video:url' ) && 
-				strpos( $value, 'https:' ) === 0 ) {
+					strpos( $value, 'https:' ) === 0 ) {
 
-				$html_tag = '';
 				$secure_url = $value;
 				$value = preg_replace( '/^https:/', 'http:', $value );
-
-				if ( empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name.':secure_url'] ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $log_pre.':secure_url is disabled (skipped)' );
-				} else $html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.':secure_url" '.$attr.'="'.$secure_url.'"/>'."\n";
-
-				$ret[] = array( $html_tag, $tag, $type, $name.':secure_url', $attr, $secure_url, $comment );
+				$ret[] = array( '', $tag, $type, $name.':secure_url', $attr, $secure_url, $comment );
 			}
-			
-			$filter_name = $this->p->cf['lca'].'_'.$tag.'_'.$type.'_'.$name.'_'.$attr;
-			$value = apply_filters( $filter_name, $value, $use_post );
+			$ret[] = array( '', $tag, $type, $name, $attr, $value, $comment );
 
-			if ( ! empty( $this->p->options['add_'.$tag.'_'.$type.'_'.$name] ) ) {
-				$html_tag = $html_prefix.'<'.$tag.' '.$type.'="'.$name.'" '.$attr.'="'.$value.'"/>'."\n";
-			} else {
-				$html_tag = '';
-				if ( $this->p->debug->enabled )
+			// $parts = array( $html, $tag, $type, $name, $attr, $value, $comment );
+			foreach ( $ret as $num => $parts ) {
+				if ( defined( 'WPSSO_FILTER_SINGLE_TAGS' ) && WPSSO_FILTER_SINGLE_TAGS ) {
+					/*
+					 * Example: 'wpsso_link_rel_publisher_content'
+					 * apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $comment, $use_post );
+					 *
+					 * Example: 'wpsso_meta_itemprop_description_content'
+					 * apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $comment, $use_post );
+					 *
+					 * Example: 'wpsso_meta_name_twitter:description_content'
+					 * apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $comment, $use_post );
+					 *
+					 * Example: 'wpsso_meta_property_og:description_content'
+					 * apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $comment, $use_post );
+					 */
+					$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
+					$parts[5] = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
+				}
+
+				if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) )
+					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
+						'<'.$parts[1].' '.$parts[2].'="'.$parts[3].'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
+				elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
-			}
-			$ret[] = array( $html_tag, $tag, $type, $name, $attr, $value, $comment );
 
+				$ret[$num] = $parts;
+			}
 			return $ret;
 		}
 	}

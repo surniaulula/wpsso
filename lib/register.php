@@ -47,20 +47,18 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			self::do_multisite( $sitewide, array( &$this, 'deactivate_plugin' ) );
 		}
 
+		// can be called from network or single site
 		public static function network_uninstall() {
 			$sitewide = true;
-			$cf = WpssoConfig::get_config();
 
 			// uninstall from the individual blogs first
 			self::do_multisite( $sitewide, array( __CLASS__, 'uninstall_plugin' ) );
 
-			if ( ! defined( 'WPSSO_SITE_OPTIONS_NAME' ) )
-				define( 'WPSSO_SITE_OPTIONS_NAME', $cf['lca'].'_site_options' );
-
-			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME );
+			$var_const = WpssoConfig::get_variable_constants();
+			$opts = get_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'] );
 
 			if ( empty( $opts['plugin_preserve'] ) )
-				delete_site_option( WPSSO_SITE_OPTIONS_NAME );
+				delete_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'] );
 		}
 
 		private static function do_multisite( $sitewide, $method, $args = array() ) {
@@ -105,6 +103,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 			}
 
+			if ( ( $ts = get_option( WPSSO_INSTALL_NAME ) ) === false )
+				update_option( WPSSO_INSTALL_NAME, time() );
+
+			update_option( WPSSO_ACTIVATE_NAME, time() );
+
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
 
 			$this->p->set_config();
@@ -144,36 +147,29 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private static function uninstall_plugin() {
-			$cf = WpssoConfig::get_config();
+			$var_const = WpssoConfig::get_variable_constants();
+			$opts = get_option( $var_const['WPSSO_OPTIONS_NAME'] );
 
-			if ( ! defined( 'WPSSO_OPTIONS_NAME' ) )
-				define( 'WPSSO_OPTIONS_NAME', $cf['lca'].'_options' );
-
-			if ( ! defined( 'WPSSO_META_NAME' ) )
-				define( 'WPSSO_META_NAME', '_'.$cf['lca'].'_meta' );
-
-			if ( ! defined( 'WPSSO_PREF_NAME' ) )
-				define( 'WPSSO_PREF_NAME', '_'.$cf['lca'].'_pref' );
-
-			$slug = $cf['plugin'][$cf['lca']]['slug'];
-			$opts = get_option( WPSSO_OPTIONS_NAME );
+			delete_option( $var_const['WPSSO_INSTALL_NAME'] );
+			delete_option( $var_const['WPSSO_ACTIVATE_NAME'] );
+			delete_option( $var_const['WPSSO_UPDATE_NAME'] );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
-				delete_option( WPSSO_OPTIONS_NAME );
-				delete_post_meta_by_key( WPSSO_META_NAME );
-				foreach ( array( WPSSO_META_NAME, WPSSO_PREF_NAME ) as $meta_key ) {
+				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
+				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
+				foreach ( array( $var_const['WPSSO_META_NAME'], $var_const['WPSSO_PREF_NAME'] ) as $meta_key ) {
 					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
 						delete_user_option( $user->ID, $meta_key );
 						WpssoUser::delete_metabox_prefs( $user->ID );
 					}
 				}
 				foreach ( WpssoTaxonomy::get_public_terms() as $term_id )
-					WpssoTaxonomy::delete_term_meta( $term_id, WPSSO_META_NAME );
+					WpssoTaxonomy::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
 			}
 
 			// delete transients
 			global $wpdb;
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_'.$cf['lca'].'_%\';';
+			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_wpsso_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
 			foreach( $expired as $transient ) { 
 				$key = str_replace('_transient_timeout_', '', $transient);
