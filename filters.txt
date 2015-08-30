@@ -31,13 +31,9 @@ apply_filters( 'wpsso_hashtags', $hashtags, $post_id );
 apply_filters( 'wpsso_hashtags_seed', '', $post_id );
 apply_filters( 'wpsso_is_functions', $is_functions );
 apply_filters( 'wpsso_link_rel', $link_rel, $use_post, $obj );
-apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $use_post );		// ex: 'wpsso_link_rel_publisher_content'
 apply_filters( 'wpsso_load_lib', false, "$type/$sub/$id" );
-apply_filters( 'wpsso_'.$metabox.'_tabs', $tabs );				// ex: 'wpsso_og_tabs'
-apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_itemprop_description_content'
+apply_filters( 'wpsso_'.$metabox.'_tabs', $tabs );
 apply_filters( 'wpsso_meta_name', $meta_name, $use_post, $obj );
-apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_name_twitter:description_content'
-apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $use_post );	// ex: 'wpsso_meta_property_og:description_content'
 apply_filters( 'wpsso_meta_schema', $meta_schema, $use_post, $obj );
 apply_filters( 'wpsso_ngg_tags', $tags, $pid );
 apply_filters( 'wpsso_ngg_accept_img_size', $ret, $img_url, $img_width, $img_height, $size_name, $pid );

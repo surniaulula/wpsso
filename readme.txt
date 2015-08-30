@@ -413,6 +413,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.7.5 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Moved the 'installed_version' and 'ua_plugin' filter methods from Wpsso to the WpssoUtil class.
+	* Added three new entries in the options table for installed, activated, and updated timestamps.
+	* Added a new WPSSO_FILTER_SINGLE_TAGS constant to enable filtering of individual meta tags (disabled by default).
+	* Improved the setting of constants with new `set_variable_constants()` and `get_variable_constants()` methods in the WpssoConfig class.
+	* Refactored the `uninstall_plugin()` method in the WpssoRegister class to use the new `get_variable_constants()` method.
+
 = Version 3.7.4 (2015/08/29) =
 
 * **New Features**
@@ -575,12 +590,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed two option variable names in the NgfbUtil get_cache_file_url() method.
+	* Fixed two option variable names in the WpssoUtil get_cache_file_url() method.
 	* Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
 * **Developer Notes**
-	* Moved the get_tweet_max_len() method from the SucomUtil class to the NgfbUtil class.
-	* Added a get_tweet_text() method in the NgfbUtil class (for future use by extensions, etc).
-	* Added $short_url and $service arguments to the NgfbUtil get_tweet_max_len() method.
+	* Moved the get_tweet_max_len() method from the SucomUtil class to the WpssoUtil class.
+	* Added a get_tweet_text() method in the WpssoUtil class (for future use by extensions, etc).
+	* Added $short_url and $service arguments to the WpssoUtil get_tweet_max_len() method.
 	* Added support for a %%short_url%% inline variable.
 
 = Version 3.6.1 (2015/07/23) =
@@ -616,7 +631,7 @@ Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited va
 
 = 3.7.3 =
 
-Fixed incorrect warning message for empty Video Embed option value. Refactored / improved NgfbCheck->get_avail() method for a slight speed improvement.
+Fixed incorrect warning message for empty Video Embed option value. Refactored / improved WpssoCheck->get_avail() method for a slight speed improvement.
 
 = 3.7.2 =
 
