@@ -413,20 +413,26 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.7.5 =
+= Version 3.8 =
 
 * **New Features**
 	* *None*
 * **Improvements**
-	* *None*
+	* The "Pro Authentication ID" option field will is now included on the WPSSO Pro Licenses settings page for all plugins / extensions with a Pro version available (and not only for active plugins / extensions).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
 	* Moved the 'installed_version' and 'ua_plugin' filter methods from Wpsso to the WpssoUtil class.
 	* Added three new entries in the options table for installed, activated, and updated timestamps.
-	* Added a new WPSSO_FILTER_SINGLE_TAGS constant to enable filtering of individual meta tags (disabled by default).
 	* Improved the setting of constants with new `set_variable_constants()` and `get_variable_constants()` methods in the WpssoConfig class.
 	* Refactored the `uninstall_plugin()` method in the WpssoRegister class to use the new `get_variable_constants()` method.
+	* Added a new WPSSO_FILTER_SINGLE_TAGS constant to enable filtering of individual meta tags (disabled by default).
+	* Added new WPSSO_TS_NAME, WPSSO_NOTICE_NAME, and WPSSO_DISMISS_NAME constants.
+	* Added new SucomUtil `add_option_key()` and `update_option_key()` static methods to update values within an option. 
+	* Refactored most of the SucomNotice class code. Notice messages are now saved as array keys (instead of array elements) with a payload array as their value. This allows notice messages to have a number of properties (message ID string, dismissible true/false, etc.). 
+	* Added a new SucomNotice `ajax_dismiss_notice()` method to handle dismissible notices.
+	* Added a new `$dismiss` argument to all SucomNotice logging methods.
+	* Added a new "Reset Hidden Notices" button on the WPSSO settings pages.
 
 = Version 3.7.4 (2015/08/29) =
 
@@ -531,7 +537,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Confirmed WordPress v4.2.4 compatibility.
 	* Added PHP realpath() to the WPSSO_PLUGINDIR constant value to prevent PHP fwrite() issues.
 * **Bugfixes**
-	* Fixed the WooCommerce and WPeCommerce term description code to use the 'ngfb_description_seed' filter for compatibility with SEO integration modules (Pro version).
+	* Fixed the WooCommerce and WPeCommerce term description code to use the 'wpsso_description_seed' filter for compatibility with SEO integration modules (Pro version).
 * **Developer Notes**
 	* *None*
 
