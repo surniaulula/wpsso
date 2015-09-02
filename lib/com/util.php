@@ -123,6 +123,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else return self::$plugins_idx;
 		}
 
+		public static function add_site_option_key( $name, $key, $value ) {
+			return self::update_option_key( $name, $key, $value, true, true );
+		}
+
+		public static function update_site_option_key( $name, $key, $value, $protect = false ) {
+			return self::update_option_key( $name, $key, $value, $protect, true );
+		}
+
+		// only creates new keys - does not update existing keys
+		public static function add_option_key( $name, $key, $value ) {
+			return self::update_option_key( $name, $key, $value, true, false );	// $protect = true
+		}
+
+		public static function update_option_key( $name, $key, $value, $protect = false, $site = false ) {
+			if ( $site === true )
+				$opts = get_site_option( $name, array() );
+			else $opts = get_option( $name, array() );
+			if ( $protect === true && 
+				isset( $opts[$key] ) )
+					return false;
+			$opts[$key] = $value;
+			if ( $site === true )
+				return update_site_option( $name, $opts );
+			else return update_option( $name, $opts );
+		}
+
 		public static function a2aa( $a ) {
 			$aa = array();
 			foreach ( $a as $i )

@@ -39,6 +39,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				$url_path.'js/com/jquery-admin-media.min.js', 
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
+			wp_enqueue_script( 'jquery' );	// required for dismissible notices
+
 			// don't load our javascript where we don't need it
 			switch ( $hook ) {
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
@@ -56,7 +58,6 @@ if ( ! class_exists( 'SucomScript' ) ) {
 						else wp_enqueue_media();
 						wp_enqueue_script( 'sucom-admin-media' );
 					}
-					wp_enqueue_script( 'jquery' );
 					wp_enqueue_script( 'jquery-qtip' );
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );

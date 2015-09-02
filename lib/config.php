@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.7.5',		// plugin version
+					'version' => '3.8',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso/',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso#postform',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso?rate=5#postform',
 						'readme' => 'https://plugins.svn.wordpress.org/wpsso/trunk/readme.txt',
 						'setup' => 'https://plugins.svn.wordpress.org/wpsso/trunk/setup.html',
 						'wp_support' => 'https://wordpress.org/support/plugin/wpsso',
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso349',				// increment when changing default options
+				'version' => 'sso350',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -410,7 +410,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_content' => 0,
 					'plugin_filter_excerpt' => 0,
 					'plugin_filter_lang' => 1,
-					'plugin_shortcodes' => 1,
+					'plugin_shortcodes' => 0,
 					'plugin_widgets' => 1,
 					'plugin_auto_img_resize' => 1,
 					'plugin_ignore_small_img' => 1,
@@ -747,13 +747,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * WPSSO option and meta array names
 			 */
-			$var_const['WPSSO_INSTALL_NAME'] = 'wpsso_install_ts';
-			$var_const['WPSSO_ACTIVATE_NAME'] = 'wpsso_activate_ts';
-			$var_const['WPSSO_UPDATE_NAME'] = 'wpsso_update_ts';
+			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
 			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
 			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';
-			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';
+			$var_const['WPSSO_NOTICE_NAME'] = 'ngfb_notices';	// stored notices
+			$var_const['WPSSO_DISMISS_NAME'] = 'ngfb_dismissed';	// dismissed notices
+			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';		// post meta
+			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';		// user meta
 
 			/*
 			 * WPSSO option and meta array alternate / fallback names

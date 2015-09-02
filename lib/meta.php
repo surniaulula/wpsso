@@ -235,7 +235,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], $this->get_nonce() ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'nonce token validation failed' );
-				$this->p->notice->err( __( 'Nonce token validation for the submitted form has failed (update ignored).', WPSSO_TEXTDOM ), true );
+				if ( is_admin() )
+					$this->p->notice->err( __( 'Nonce token validation for the submitted form has failed (update ignored).', WPSSO_TEXTDOM ), true );
 				return false;
 			} else return true;
 		}

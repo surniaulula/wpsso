@@ -25,22 +25,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->debug->mark();
-			$this->p->check->conflict_warnings();
-			$this->set_objects();
-			$this->req_notices();
 
-			add_action( 'admin_init', array( &$this, 'register_setting' ) );
-			add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-			add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
-			add_action( 'activated_plugin', array( &$this, 'trunc_notices' ), 10, 2 );
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+				// nothing to do
 
-			add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+			} else {
+				$this->p->check->conflict_warnings();
+				$this->set_objects();
+				$this->pro_req_notices();
 
-			if ( is_multisite() ) {
-				add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-				add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
-				add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+				add_action( 'admin_init', array( &$this, 'register_setting' ) );
+				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
+				add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
+				add_action( 'activated_plugin', array( &$this, 'um_activate_trunc_notice' ), 10, 2 );
+	
+				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+	
+				if ( is_multisite() ) {
+					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
+					add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
+					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+				}
 			}
+
 		}
 
 		// load all submenu classes into the $this->submenu array
@@ -66,13 +73,76 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		private function req_notices() {
+		public function timed_notices( $store = false ) {
+			if ( ! current_user_can( 'manage_options' ) )
+				return;
+			global $wp_version;
+			$wp_name = 'WordPress version '.$wp_version;
+			$user_id = get_current_user_id();
+			$dis = empty( $user_id ) ? false : 			// just in case
+				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
+			$ts = get_option( WPSSO_TS_NAME, array() );
+			$t = array(
+				'now' => time(),
+				'hour' => 3600,
+				'day' => 86400,
+				'week' => 604800,
+				'month' => 18144000,
+			);
+			$type = 'inf';
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				$plugin_name = $info['name'].' version '.$info['version'];
+				$msg_id_works = 'ask-'.$lca.'-'.$info['version'].'-plugin-works';	// unique for every version
+				$msg_id_review = 'ask-'.$lca.'-plugin-review';
+
+				if ( empty( $info['version'] ) )		// must be an active plugin
+					continue;
+
+				if ( empty( $info['url']['review'] ) )		// must be hosted on wordpress.org
+					continue;
+
+				$help_links = '<li>Got questions or need some help?';
+				if ( ! empty( $info['url']['pro_support'] ) && $this->p->check->aop( $lca ) )
+					$help_links .= ' <a href="'.$info['url']['pro_support'].'" target="_blank">Open a new ticket on the '.
+						$info['short'].' Pro support website</a>.';
+				elseif ( ! empty( $info['url']['wp_support'] ) )
+					$help_links .= ' <a href="'.$info['url']['wp_support'].'" target="_blank">Open a new thread in the '.
+						$info['short'].' Free version support forum</a>.';
+				$help_links .= '</li>';
+
+				if ( ! isset( $dis[$type.'_'.$msg_id_works] ) && 
+					isset( $ts[$lca.'_update'] ) && 
+					$ts[$lca.'_update'] < $t['now'] - $t['week'] ) {
+
+					$this->p->notice->log( $type, '<b>Excellent!</b> It looks like you\'ve been running <b>'.
+					$plugin_name.'</b> for over a week now &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
+					'<li>Let us know with your vote on wordpress.org &mdash; '.
+					'<a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.
+					'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.
+					'<b>'.$plugin_name.' is compatible with '.$wp_name.'</b></a>.</li>'.
+					$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
+
+				} elseif ( ! isset( $dis[$type.'_'.$msg_id_review] ) && 
+					isset( $ts[$lca.'_install'] ) && 
+					$ts[$lca.'_install'] < $t['now'] - $t['hour'] ) {
+
+					$this->p->notice->log( $type, '<b>Fantastic!</b> It looks like you\'ve been running <b>'.
+					$info['name'].'</b> for over a month now &mdash; How do you like it so far?<ul>'.
+					'<li><a href="'.$info['url']['review'].'" target="_blank">'.
+					'<b>Let us know with a 5-star rating and a wonderful review on wordpress.org!</b></a> ;-)</li>'.
+					$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );
+				}
+			}
+		}
+
+		private function pro_req_notices() {
 			// check that wpsso pro has an authentication id
 			$lca = $this->p->cf['lca'];
-			if ( $this->p->is_avail['aop'] === true && empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
-				( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
-					$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
-						$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-msg' ) );
+			if ( $this->p->is_avail['aop'] === true && 
+				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
+					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
+						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
+							$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-msg' ) );
 			// check all *active* plugins / extensions to make sure pro version is installed
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
@@ -95,7 +165,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function trunc_notices( $plugin = false, $sitewide = false ) {
+		public function um_activate_trunc_notice( $plugin = false, $sitewide = false ) {
 			$um_lca = $this->p->cf['lca'].'um';
 			$um_base = $this->p->cf['plugin'][$um_lca]['base'];
 			if ( $plugin === $um_base )
@@ -298,12 +368,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_single_page() {
 			wp_enqueue_script( 'postbox' );
-
-			$this->p->admin->submenu[ $this->menu_id ]->add_meta_boxes();
+			$this->p->admin->submenu[$this->menu_id]->add_meta_boxes();
 		}
 
 		public function load_form_page() {
 			wp_enqueue_script( 'postbox' );
+			$this->timed_notices();
 
 			if ( ! empty( $_GET['action'] ) ) {
 				if ( empty( $_GET[ WPSSO_NONCE ] ) )
@@ -329,7 +399,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_metabox_prefs': 
-							WpssoUser::delete_metabox_prefs( get_current_user_id() );
+							$user = get_userdata( get_current_user_id() );
+							$user_name = $user->first_name.' '.$user->last_name;
+							WpssoUser::delete_metabox_prefs( $user->ID );
+							$this->p->notice->inf( 'Metabox layout preferences for user "'.$user_name.' '.'" have been reset.' );
+							break;
+
+						case 'clear_hidden_notices': 
+							$user = get_userdata( get_current_user_id() );
+							$user_name = $user->first_name.' '.$user->last_name;
+							delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
+							$this->p->notice->inf( 'Hidden notices for user "'.$user_name.'" have been cleared.' );
 							break;
 
 						case 'change_show_options': 
@@ -574,7 +654,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						),
 					);
 				else $features = array();
+
 				$features = apply_filters( $lca.'_'.$metabox.'_gpl_features', $features, $lca, $info );
+
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
 						echo '<tr><td><h4>'.$this->p->cf['plugin'][$lca]['short'].'</h4></td></tr>';
@@ -612,7 +694,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						);
 					}
 				}
+
 				$features = apply_filters( $lca.'_'.$metabox.'_pro_features', $features, $lca, $info );
+
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
 						echo '<tr><td><h4>'.$this->p->cf['plugin'][$lca]['short'].'</h4></td></tr>';
@@ -706,10 +790,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
 			if ( empty( $submit_text ) ) 
-				$submit_text = __( 'Save All Changes', WPSSO_TEXTDOM );
+				$submit_text = __( 'Save All Plugin Settings', WPSSO_TEXTDOM );
 
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$show_opts_text = 'Prefer '.$this->p->cf['form']['show_options'][$show_opts_next].' View';
+			$show_opts_text = 'View '.$this->p->cf['form']['show_options'][$show_opts_next].' by Default';
 			$show_opts_url = $this->p->util->get_admin_url( '?action=change_show_options&show_opts='.$show_opts_next );
 
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
@@ -731,6 +815,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_metabox_prefs' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
+			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
+				$action_buttons .= $this->form->get_button( __( 'Reset Hidden Notices', WPSSO_TEXTDOM ), 
+					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_hidden_notices' ),
+						$this->get_nonce(), WPSSO_NONCE ) );
+
 			return '<div class="'.$class.'">'.$action_buttons.'</div>';
 		}
 
@@ -750,7 +839,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return isset( $this->p->cf['*']['lib']['sitesubmenu'][$menu_id] ) ? true : false;
 		}
 
-		public function licenses_metabox( $network = false ) {
+		public function licenses_metabox_content( $network = false ) {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
 			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
@@ -775,17 +864,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'width' => 600,
 						'height' => 550
 					), get_admin_url( null, 'plugin-install.php' ) );
+					// check to see if plugin is installed or not
 					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {
 						$update_plugins = get_site_transient('update_plugins');
 						if ( isset( $update_plugins->response ) ) {
 							foreach ( (array) $update_plugins->response as $file => $plugin ) {
 								if ( $plugin->slug === $info['slug'] ) {
-									$view_text = '<strong>View Plugin Details and Update</strong>';
+									$view_text = '<font color="red">View Plugin Details and Update</font>';
 									break;
 								}
 							}
 						}
-					} else $view_text = '<em>View Plugin Details and Install</em>';
+					} else $view_text = 'View Plugin Details and Install Free Version';
 					$links .= ' | <a href="'.$img_href.'" class="thickbox">'.$view_text.'</a>';
 				} else {
 					if ( ! empty( $info['url']['download'] ) ) {
@@ -833,44 +923,39 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '</td></tr>'."\n";
 
 				if ( $network ) {
-					if ( ! empty( $info['url']['purchase'] ) || 
-						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-
-						if ( $this->p->cf['lca'] === $lca || 
-							$this->p->check->aop() ) {
-
-							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
-								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
-								$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
-								$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
+					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+						if ( ! empty( $info['url']['purchase'] ) || $this->p->cf['lca'] === $lca ) {
+							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
+								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
+								$this->p->util->get_th( 'Site Use', 'site_use' ).
+								'<td>'.$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
 									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
-								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
+								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td>'.$this->p->msgs->get( 'pro-option-msg' ).'</td>
+								'</td><td>'.( $this->p->check->aop() ?
+									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td>
 									<td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 				} else {
-					if ( ! empty( $info['url']['purchase'] ) || 
-						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-
-						if ( $this->p->cf['lca'] === $lca || 
-							$this->p->check->aop() ) {
+					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+						if ( ! empty( $info['url']['purchase'] ) || $this->p->cf['lca'] === $lca ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $lca, 'qty_used' ) : false;
-
-							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="tid">'.
-								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td><td><p>'.
-								( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
+							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
+								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).
+								'</td><td><p>'.( empty( $qty_used ) ? 
+									'' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->get_th( 'Authentication ID', 'medium nowrap' ).'<td class="blank">'.
-								( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
+								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td>'.$this->p->msgs->get( 'pro-option-msg' ).'</td></tr>'."\n";
+								'</td><td>'.( $this->p->check->aop() ? 
+									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
 				}

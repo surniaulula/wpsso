@@ -29,6 +29,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['defaults']['options_filtered'] !== true ||
 				$force_filter === true ) {
 
+				$lca = $this->p->cf['lca'];
 				$this->p->cf['opt']['defaults'] = $this->p->util->push_add_to_options( $this->p->cf['opt']['defaults'], 
 					array( 'plugin' => 'backend' ) );
 
@@ -50,12 +51,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				$this->p->cf['opt']['defaults'] = apply_filters( $this->p->cf['lca'].'_get_defaults', 
+				$this->p->cf['opt']['defaults'] = apply_filters( $lca.'_get_defaults', 
 					$this->p->cf['opt']['defaults'] );
 
 				$this->p->cf['opt']['defaults']['options_filtered'] = true;
 				$this->p->cf['opt']['defaults']['options_version'] = $this->p->cf['opt']['version'];
-				$this->p->cf['opt']['defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
+				$this->p->cf['opt']['defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
 			if ( $idx !== false ) 
 				if ( array_key_exists( $idx, $this->p->cf['opt']['defaults'] ) )
@@ -69,12 +70,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
 				$force_filter === true ) {
 
-				$this->p->cf['opt']['site_defaults'] = apply_filters( $this->p->cf['lca'].'_get_site_defaults', 
+				$lca = $this->p->cf['lca'];
+				$this->p->cf['opt']['site_defaults'] = apply_filters( $lca.'_get_site_defaults', 
 					$this->p->cf['opt']['site_defaults'] );
 
 				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
 				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
-				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
+				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
 			if ( $idx !== false ) {
 				if ( array_key_exists( $idx, $defs ) )
@@ -84,18 +86,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
-			$opts_err_msg = '';
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
+				$opts_err_msg = '';
+				$lca = $this->p->cf['lca'];
 				$update_version = ( empty( $opts['plugin_version'] ) || 
-					$opts['plugin_version'] !== $this->p->cf['plugin'][$this->p->cf['lca']]['version'] ) ? true : false;
-
+					$opts['plugin_version'] !== $this->p->cf['plugin'][$lca]['version'] ) ? true : false;
 				$update_options = ( empty( $opts['options_version'] ) || 
 					$opts['options_version'] !== $this->p->cf['opt']['version'] ) ? true : false;
 
 				if ( $update_version === true || $update_options === true ) {
 
-					update_option( WPSSO_UPDATE_NAME, time() );
+					SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_update', time() );
 
 					if ( $update_options === true ) {
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
@@ -110,7 +112,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( is_admin() && current_user_can( 'manage_options' ) )
 							$this->save_options( $options_name, $opts, $network );
 						if ( $update_version === true )
-							set_transient( $this->p->cf['lca'].'_update_redirect', true, 60 * 60 );
+							set_transient( $lca.'_update_redirect', true, 60 * 60 );
 					} else $this->save_options( $options_name, $opts, $network );
 				}
 
@@ -263,12 +265,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$prev_opts_version = $opts['options_version'];
 			$opts['options_version'] = $this->p->cf['opt']['version'];
 			$opts['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
-
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
 			// update_option() returns false if options are the same or there was an error, 
 			// so check to make sure they need to be updated to avoid throwing a false error
-			if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
+			if ( $options_name === WPSSO_SITE_OPTIONS_NAME )
 				$opts_current = get_site_option( $options_name, $opts, false );	// use_cache = false
 			else $opts_current = get_option( $options_name, $opts );
 
@@ -280,15 +281,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $saved === true ) {
 					// if we're just saving a new plugin version string, don't bother showing the upgrade message
 					if ( $prev_opts_version !== $opts['options_version'] ) {
-						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 						$this->p->notice->inf( 'Plugin settings ('.$options_name.') have been upgraded and saved.', true );
 					}
 				} else {
-					$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
 					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgrade and save its settings again. Report the issue to your hosting provider if you see this warning message more than once.', true );
 					return false;
 				}
-			} else $this->p->debug->log( 'new and old options array is identical' );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'new and old options array is identical' );
 
 			return true;
 		}
@@ -393,15 +397,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 			return $type;
 		}
-
-		public function get_lcas_with_tid() {
-			$ret = array();
-			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca )
-				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
-					$ret[] = $lca;
-			return $ret;
-		}
-
 	}
 }
 

@@ -54,6 +54,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
 				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
+
+				$this->p->admin->timed_notices();
 			}
 		}
 

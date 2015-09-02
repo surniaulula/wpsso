@@ -91,22 +91,23 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		}
 
 		private function admin_inline_styles( $hook ) {
+			$lca = $this->p->cf['lca'];
+			echo '<style type="text/css">';
 			if ( isset( $this->p->cf['color'] ) ) {
-				$lca = $this->p->cf['lca'];
 				$uca = strtoupper( $lca );
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				$icon_highlight = ( defined( $uca.'_MENU_ICON_HIGHLIGHT' )  &&
 					constant( $uca.'_MENU_ICON_HIGHLIGHT' ) === false ) ?
 						false : true;
-				echo '
-<style type="text/css">'.
-( $icon_highlight ? '
+				if ( $icon_highlight ) 
+					echo '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].';
-	}' : ''
-).'
+	}';
+			}
+			echo '
 	.column-'.$lca.'_og_image { 
 		width:'.$this->p->cf['form']['og_image_col_width'].';
 	}
@@ -132,9 +133,21 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			display:none;
 		}
 	}
-</style>
-';
-			}
+	.'.$lca.'-notice ul {
+		margin:5px 0 5px 40px;
+		list-style:disc outside none;
+	}
+	.'.$lca.'-notice li {
+	}
+	.'.$lca.'-dismissible .notice-dismiss {
+		position:relative;
+		float:right;
+		margin:4px 0;
+		padding:0;
+		top:0;
+		right:0;
+	}
+</style>';
 		}
 	}
 }

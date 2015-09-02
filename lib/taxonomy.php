@@ -72,6 +72,8 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				add_action( 'edited_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 				add_action( 'delete_'.$this->tax_slug, array( &$this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
 				add_action( 'delete_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+
+				$this->p->admin->timed_notices();
 			}
 		}
 

@@ -32,6 +32,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
+					$this->p->admin->timed_notices();
+
 				} else {
 
 					// only check registered front-end post types (to avoid menu items, product variations, etc.)
