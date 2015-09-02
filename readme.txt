@@ -419,6 +419,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* The "Pro Authentication ID" option field will is now included on the WPSSO Pro Licenses settings page for all plugins / extensions with a Pro version available (and not only for active plugins / extensions).
+	* Refactored the tooltip message lookup for a slight speed improvement.  
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
