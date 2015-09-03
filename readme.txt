@@ -418,8 +418,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* The "Pro Authentication ID" option field will is now included on the WPSSO Pro Licenses settings page for all plugins / extensions with a Pro version available (and not only for active plugins / extensions).
-	* Refactored the tooltip message lookup for a slight speed improvement.  
+	* Added the ability to dismiss image dimension warnings when using WordPress 4.2+.
+	* The "Pro Authentication ID" option is now included on the Pro Licenses settings page for all plugins / extensions with a Pro version available (and not only for active plugins / extensions).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
@@ -434,6 +434,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a new SucomNotice `ajax_dismiss_notice()` method to handle dismissible notices.
 	* Added a new `$dismiss` argument to all SucomNotice logging methods.
 	* Added a new "Reset Hidden Notices" button on the WPSSO settings pages.
+	* Refactored the WpssoMessages->get() method a slight speed improvement. Please note that 'wpsso_tooltip_*' filters have been renamed to 'wpsso_messages_tooltip_*' (adjust your filter hooks accordingly).
 
 = Version 3.7.4 (2015/08/29) =
 
