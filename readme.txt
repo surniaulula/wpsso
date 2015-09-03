@@ -633,6 +633,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
+= 3.8 =
+
+Added ability to dismiss image dimension warnings when using WordPress 4.2+. Lots of code improvements for developers, and small speed improvements.
+
 = 3.7.4 =
 
 Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values. Added three new filters to accept under-sized images individually.
