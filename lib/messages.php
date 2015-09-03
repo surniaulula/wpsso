@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$atts['name'] : $this->p->cf['plugin'][$lca]['name'];
 			$atts['name_pro'] = $atts['name'].' Pro';
 
-			isset( $this->p->cf['plugin'][$lca]['url'] ) ?
+			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?
 				$this->p->cf['plugin'][$lca]['url'] : array();
 			/*
 			 * All tooltips

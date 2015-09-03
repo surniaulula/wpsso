@@ -60,10 +60,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
-					return $str;
+					return array();
 				}
 			}
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+			$post_id = empty( $obj->ID ) || 
+				empty( $obj->post_type ) ? 
+					0 : $obj->ID;
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];

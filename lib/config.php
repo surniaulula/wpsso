@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso/',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso?rate=5#postform',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso?filter=5&rate=5#postform',
 						'readme' => 'https://plugins.svn.wordpress.org/wpsso/trunk/readme.txt',
 						'setup' => 'https://plugins.svn.wordpress.org/wpsso/trunk/setup.html',
 						'wp_support' => 'https://wordpress.org/support/plugin/wpsso',

@@ -434,7 +434,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library image ID '.$pid.' has been ignored &mdash; '.
-							$rejected_text.'. Choose and/or upload a larger image, or adjust the '.
+							$rejected_text.'. Upload and/or choose a larger image, or adjust the '.
 							$this->p->util->get_admin_url( 'image-dimensions', $size_label.
 								' social image dimensions' ).'.', false, true, $msg_id, true );
 					return $ret_empty;
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$rejected_text );
 					if ( is_admin() )
 						$this->p->notice->err( 'Media Library image ID '.$pid.' has been ignored &mdash; the '.
-							$rejected_text.'. Choose and/or upload a different image or adjust the '.
+							$rejected_text.'. Upload and/or choose a different image or adjust the '.
 							$this->p->util->get_admin_url( 'image-dimensions', $size_label.
 								' social image dimensions' ).'.', false, true, $msg_id, true );
 					return $ret_empty;
