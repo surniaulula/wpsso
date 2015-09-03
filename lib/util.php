@@ -348,7 +348,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, 
 				FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				$this->p->notice->err( 'Error reading <u>'.WPSSO_TOPICS_LIST.'</u>.' );
+				$this->p->notice->err( 'Error reading the '.WPSSO_TOPICS_LIST.' topic list file.' );
 				return $topics;
 			}
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );

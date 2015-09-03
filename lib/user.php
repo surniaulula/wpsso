@@ -54,8 +54,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
 				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
-
-				$this->p->admin->timed_notices();
 			}
 		}
 
@@ -141,7 +139,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->head_info = $this->p->head->extract_head_info( $this->head_meta_tags );
 
 						if ( empty( $this->head_info['og:image'] ) )
-							$this->p->notice->err( 'An Open Graph image meta tag could not be generated for this webpage. Facebook and other social websites require at least one Open Graph image meta tag to render their shared content correctly.' );
+							$this->p->notice->err( $this->p->msgs->get( 'info-missing-og-image' ) );
 					}
 					break;
 			}

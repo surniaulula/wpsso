@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $network === false )
 						$url = $this->p->util->get_admin_url( 'general' );
 					else $url = $this->p->util->get_admin_url( 'network' );
-					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. Plugin settings have been returned to their default values. <a href="'.$url.'">Please review and save the new settings</a>.' );
+					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. The plugin settings have been returned to their default values &mdash; <a href="'.$url.'">please review and save these new settings</a>.' );
 				}
 				if ( $network === false ) {
 					if ( $this->p->check->aop() && ! empty( $this->p->is_avail['ecom']['*'] ) &&
@@ -203,9 +203,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
 					if ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
 						$reset_msg = __( 'resetting the option to its default value.', WPSSO_TEXTDOM );
-						$this->p->notice->err( 'The values for \''.$meta_pre.'_img_width\' and  \''.$meta_pre.'_img_height\' 
-							have an aspect ratio that is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1 - 
-							resetting these options to their default values.', true );
+						$this->p->notice->err( 'The values for \''.$meta_pre.'_img_width\' and  \''.$meta_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1 &mdash; resetting these options to their default values.', true );
 						$opts[$meta_pre.'_img_width'] = $def_opts[$meta_pre.'_img_width'];
 						$opts[$meta_pre.'_img_height'] = $def_opts[$meta_pre.'_img_height'];
 						$opts[$meta_pre.'_img_crop'] = $def_opts[$meta_pre.'_img_crop'];
@@ -288,7 +286,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
-					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgrade and save its settings again. Report the issue to your hosting provider if you see this warning message more than once.', true );
+					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgrade and save its settings again &mdash; report the issue to your hosting provider if you see this warning message more than once.', true );
 					return false;
 				}
 			} elseif ( $this->p->debug->enabled )

@@ -48,13 +48,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					break;
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
+				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ):
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' licenses page' );
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
 					add_thickbox();		// required to view plugin details box
 					// no break
-				case ( preg_match( '/_page_'.$lca.'-/', $hook ) ? true : false ) :
+				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
 					wp_enqueue_style( 'jquery-qtip.js' );
@@ -136,8 +136,6 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	.'.$lca.'-notice ul {
 		margin:5px 0 5px 40px;
 		list-style:disc outside none;
-	}
-	.'.$lca.'-notice li {
 	}
 	.'.$lca.'-dismissible .notice-dismiss {
 		position:relative;

@@ -369,12 +369,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
 				$this->p->notice->err( $err_pre.__( '<strong>WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please uncheck the \'<em>Apply WordPress Content Filters</em>\' option on the <a href="%s">%s Advanced settings page</a>.', WPSSO_TEXTDOM ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
 			}
-
-			// Facebook
-  			if ( class_exists( 'Facebook_Loader' ) ) {
-                                $this->p->debug->log( $log_pre.'facebook plugin is active' );
-                                $this->p->notice->err( $err_pre.sprintf( __( 'Please <a href="%s">deactivate the Facebook plugin</a> to prevent duplicate Open Graph meta tags in your webpage headers.', WPSSO_TEXTDOM ), get_admin_url( null, 'plugins.php?s=facebook/facebook.php' ) ) );
-                        }
 		}
 	}
 }

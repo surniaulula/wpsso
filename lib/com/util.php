@@ -35,12 +35,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// returns false or the admin screen id text string
-		public static function get_screen_id() {
-			if ( is_admin() && function_exists( 'get_current_screen' ) ) {
-				$screen = get_current_screen();
-				if ( ! empty( $screen->id ) )
-					return $screen->id;
-			}
+		public static function get_screen_id( $screen = false ) {
+			if ( $screen === false &&
+				function_exists( 'get_current_screen' ) )
+					$screen = get_current_screen();
+			if ( isset( $screen->id ) )
+				return $screen->id;
 			return false;
 		}
 

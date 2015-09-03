@@ -32,8 +32,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-					$this->p->admin->timed_notices();
-
 				} else {
 
 					// only check registered front-end post types (to avoid menu items, product variations, etc.)
@@ -109,6 +107,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		// hooked into the admin_head action
 		public function set_head_meta_tags() {
+
 			if ( ! empty( $this->head_meta_tags ) )	// only set header tags once
 				return;
 
@@ -146,7 +145,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $obj->post_status == 'publish' ) {
 						if ( empty( $this->head_info['og:image'] ) )
-							$this->p->notice->err( 'An Open Graph image meta tag could not be generated for this webpage. Facebook and other social websites require at least one Open Graph image meta tag to render their shared content correctly.' );
+							$this->p->notice->err( $this->p->msgs->get( 'info-missing-og-image' ) );
 						// check for duplicates once the post has been published and we have a functioning permalink
 						if ( ! empty( $this->p->options['plugin_check_head'] ) )
 							$this->check_post_header( $post_id, $obj );
@@ -194,7 +193,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							foreach( $types as $t ) {
 								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
 									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
-										$this->p->notice->err( 'Possible conflict detected - your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
+										$this->p->notice->err( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
 							}
 						}
 					}

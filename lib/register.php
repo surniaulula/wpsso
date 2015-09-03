@@ -104,6 +104,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			SucomUtil::add_option_key( WPSSO_TS_NAME, $lca.'_install', time() );	// does not update an existing key
+			SucomUtil::add_option_key( WPSSO_TS_NAME, $lca.'_update', time() );	// does not update an existing key
 			SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_activate', time() );
 
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );

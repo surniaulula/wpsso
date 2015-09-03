@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Apply the standard WordPress \'get_the_excerpt\' filter to render the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpt, for example.';
 							break;
 						case 'tooltip-plugin_ignore_small_img':
-							$text = 'Images that are detected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; If you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
+							$text = 'Images that are detected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_page_excerpt':
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$atts['short'].' can use as a default description value.';
@@ -619,6 +619,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
+					case 'info-missing-og-image':
+						$text = 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly. You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.';
+						break;
 					case 'info-plugin-tid':
 						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
 						<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to check for Pro version updates immediately and every 24 hours thereafter.</p>

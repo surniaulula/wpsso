@@ -13,20 +13,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	class SucomNotice {
 
 		private $p;
-		private $lca = '';
-		private $opt_name = '';
+		private $lca = 'sucom';
+		private $opt_name = 'sucom_notices';
+		private $dis_name = 'sucom_dismissed';
 		private $log = array(
 			'nag' => array(),
 			'err' => array(),
 			'inf' => array(),
 		);
 
+		public $can_dismiss = false;
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+
 			if ( ! empty( $this->p->debug->enabled ) )
 				$this->p->debug->mark();
-			$this->lca = empty( $this->p->cf['lca'] ) ?
-				'sucom' : $this->p->cf['lca'];
+
+			if ( ! empty( $this->p->cf['lca'] ) )
+				$this->lca = $this->p->cf['lca'];
 
 			$uca = strtoupper( $this->lca );
 			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? 
@@ -38,11 +43,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
 				add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ) );
+
+				global $wp_version;
+				if ( version_compare( $wp_version, 4.2, '>=' ) )
+					$this->can_dismiss = true;
 			}
 		}
 
-		public function nag( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) { 
-			$this->log( 'nag', $msg_txt, $store, $user_id, $msg_id, $dismiss );
+		public function nag( $msg_txt, $store = false, $user_id = true, $msg_id = false ) { 
+			$this->log( 'nag', $msg_txt, $store, $user_id, $msg_id, false );	// $dismiss = false
 		}
 
 		public function err( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) {
@@ -63,12 +72,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				empty( $msg_txt ) ) 
 					return;
 
-			$payload['msg_id'] = empty( $msg_id ) ? 
-				'' : $type.'_'.$msg_id;
+			$payload['msg_id'] = empty( $msg_id ) ? '' : $type.'_'.$msg_id;
 
-			$payload['dismiss'] = empty( $msg_id ) || 
-				empty( $dismiss ) ? 
-					false : $dismiss;
+			$payload['dismiss'] = ! empty( $dismiss ) && ! empty( $msg_id ) && 
+				$this->can_dismiss === true ? $dismiss : false;
 			
 			// save message until it can be displayed
 			if ( $store === true ) {
@@ -213,9 +220,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			// remind the user that there are hidden warning messages
-			if ( isset( $hidden['err'] ) && $hidden['err'] > 0 )
-				echo $this->get_notice_html( 'inf', $hidden['err'].' warning message(s) have been hidden &mdash; <a id="'.
-					$this->lca.'-unhide-notices">Unhide these notices temporarily</a>.' );
+			if ( isset( $hidden['err'] ) ) {
+				if ( $hidden['err'] > 1 )
+					echo $this->get_notice_html( 'inf', $hidden['err'].' warning messages have been hidden &mdash; <a id="'.
+						$this->lca.'-unhide-notices">unhide these notices temporarily</a>.' );
+				elseif ( $hidden['err'] > 0 )
+					echo $this->get_notice_html( 'inf', $hidden['err'].' warning message has been hidden &mdash; <a id="'.
+						$this->lca.'-unhide-notices">unhide this notice temporarily</a>.' );
+			}
 
 			echo $msg_html;
 		}
@@ -309,8 +321,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$payload['dismiss'] : 0 ).'"';
 
 			// optionally hide notices if required
-			$style_attr = ' style="'.( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? '' : 'display:none;' ).'"';
+			$style_attr = ' style="'.
+				( empty( $payload['style'] ) ? '' : $payload['style'] ).
+				( empty( $payload['hidden'] ) ? 'display:block !important;' : 'display:none;' ).'"';
 
 			$msg_html = '<div class="'.$this->lca.'-notice '.
 				( ! $is_dismissible ? '' : $this->lca.'-dismissible ' ).
@@ -321,7 +334,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $payload['label'] ) ) {
 				$msg_html .= '<div style="display:table-cell;">
-					<p style="white-space:nowrap;margin-right:0;">
+					<p style="white-space:nowrap;margin-right:10px;">
 						<b>'.$payload['label'].'</b>:</p></div>';
 			}
 

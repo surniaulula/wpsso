@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
 				add_action( 'activated_plugin', array( &$this, 'um_activate_trunc_notice' ), 10, 2 );
 	
+				add_filter( 'current_screen', array( &$this, 'screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 	
 				if ( is_multisite() ) {
@@ -73,34 +74,45 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		public function screen_notices( $screen ) {
+			$lca = $this->p->cf['lca'];
+			$screen_id = SucomUtil::get_screen_id( $screen );
+			switch ( $screen_id ) {
+				case 'dashboard':
+				case ( strpos( $screen_id, '_page_'.$lca.'-' ) !== false ? true : false ):
+					$this->timed_notices();
+					break;
+			}
+		}
+
 		public function timed_notices( $store = false ) {
+
+			if ( ! $this->p->notice->can_dismiss )			// true for wordpress 4.2+
+				return;
 			if ( ! current_user_can( 'manage_options' ) )
 				return;
+
 			global $wp_version;
 			$wp_name = 'WordPress version '.$wp_version;
 			$user_id = get_current_user_id();
-			$dis = empty( $user_id ) ? false : 			// just in case
+			$dis_arr = empty( $user_id ) ? false : 			// just in case
 				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
 			$ts = get_option( WPSSO_TS_NAME, array() );
-			$t = array(
-				'now' => time(),
-				'hour' => 3600,
-				'day' => 86400,
-				'week' => 604800,
-				'month' => 18144000,
-			);
+			$now_time = time();
+			$week_ago = $now_time - $this->p->cf['form']['time_by_name']['week'];
+			$month_ago = $now_time - $this->p->cf['form']['time_by_name']['month'];
 			$type = 'inf';
+
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				$plugin_name = $info['name'].' version '.$info['version'];
-				$msg_id_works = 'ask-'.$lca.'-'.$info['version'].'-plugin-works';	// unique for every version
-				$msg_id_review = 'ask-'.$lca.'-plugin-review';
 
 				if ( empty( $info['version'] ) )		// must be an active plugin
 					continue;
-
 				if ( empty( $info['url']['review'] ) )		// must be hosted on wordpress.org
 					continue;
 
+				$plugin_name = $info['name'].' version '.$info['version'];
+				$msg_id_works = 'ask-'.$lca.'-'.$info['version'].'-plugin-works';	// unique for every version
+				$msg_id_review = 'ask-'.$lca.'-plugin-review';
 				$help_links = '<li>Got questions or need some help?';
 				if ( ! empty( $info['url']['pro_support'] ) && $this->p->check->aop( $lca ) )
 					$help_links .= ' <a href="'.$info['url']['pro_support'].'" target="_blank">Open a new ticket on the '.
@@ -110,9 +122,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$info['short'].' Free version support forum</a>.';
 				$help_links .= '</li>';
 
-				if ( ! isset( $dis[$type.'_'.$msg_id_works] ) && 
+				if ( ! isset( $dis_arr[$type.'_'.$msg_id_works] ) && 
 					isset( $ts[$lca.'_update'] ) && 
-					$ts[$lca.'_update'] < $t['now'] - $t['week'] ) {
+					$ts[$lca.'_update'] < $week_ago ) {
 
 					$this->p->notice->log( $type, '<b>Excellent!</b> It looks like you\'ve been running <b>'.
 					$plugin_name.'</b> for over a week now &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
@@ -122,9 +134,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<b>'.$plugin_name.' is compatible with '.$wp_name.'</b></a>.</li>'.
 					$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
 
-				} elseif ( ! isset( $dis[$type.'_'.$msg_id_review] ) && 
+				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
 					isset( $ts[$lca.'_install'] ) && 
-					$ts[$lca.'_install'] < $t['now'] - $t['hour'] ) {
+					$ts[$lca.'_install'] < $month_ago ) {
 
 					$this->p->notice->log( $type, '<b>Fantastic!</b> It looks like you\'ve been running <b>'.
 					$info['name'].'</b> for over a month now &mdash; How do you like it so far?<ul>'.
@@ -373,7 +385,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_form_page() {
 			wp_enqueue_script( 'postbox' );
-			$this->timed_notices();
 
 			if ( ! empty( $_GET['action'] ) ) {
 				if ( empty( $_GET[ WPSSO_NONCE ] ) )
