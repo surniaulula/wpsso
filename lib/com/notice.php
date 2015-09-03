@@ -182,7 +182,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$all_msgs[$msg_txt] = true;	// avoid duplicates
 						switch ( $type ) {
 							case 'nag':
-								$nag_msgs .= $msg_txt;	// append to echo single nag msg block
+								$nag_msgs .= $msg_txt;	// append to echo a single message
 								continue;
 							default:
 								if ( ! empty( $payload['dismiss'] ) &&
@@ -216,17 +216,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $nag_msgs ) ) {
 				echo $this->get_nag_style();
-				echo '<div class="update-nag '.$this->lca.'-update-nag">', $nag_msgs, '</div>', "\n";
+				echo '<div class="'.$this->lca.
+					'-update-nag update-nag" style="display:block !important;">'.
+						$nag_msgs.'</div>'."\n";
 			}
 
 			// remind the user that there are hidden warning messages
 			if ( isset( $hidden['err'] ) ) {
 				if ( $hidden['err'] > 1 )
-					echo $this->get_notice_html( 'inf', $hidden['err'].' warning messages have been hidden &mdash; <a id="'.
-						$this->lca.'-unhide-notices">unhide these notices temporarily</a>.' );
+					echo $this->get_notice_html( 'inf', $hidden['err'].
+						' warning messages have been hidden &mdash; <a id="'.$this->lca.
+							'-unhide-notices">unhide these notices temporarily</a>.' );
 				elseif ( $hidden['err'] > 0 )
-					echo $this->get_notice_html( 'inf', $hidden['err'].' warning message has been hidden &mdash; <a id="'.
-						$this->lca.'-unhide-notices">unhide this notice temporarily</a>.' );
+					echo $this->get_notice_html( 'inf', $hidden['err'].
+						' warning message has been hidden &mdash; <a id="'.$this->lca.
+							'-unhide-notices">unhide this notice temporarily</a>.' );
 			}
 
 			echo $msg_html;
@@ -298,6 +302,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['label'] = strtoupper( $this->lca ).' Notice';
 
 			switch ( $type ) {
+				case 'nag':
+					$msg_class = 'update-nag';
+					break;
 				case 'err':
 					$msg_class = 'error';
 					break;
