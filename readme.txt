@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.8 =
+= Version 3.8 (2015/09/03) =
 
 * **New Features**
 	* *None*
@@ -496,140 +496,6 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Developer Notes**
 	* The WPSSO WordPress REST API v2 module extends the returned /wp-json/wp/v2/posts (including custom post types), terms, and users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays (Pro version).
-
-= Version 3.6.5 (2015/08/14) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added a check for full size image dimensions vs the requested image size dimensions - if identical, the full size image URL will be used instead. This allows the plugin to use a (potentially) better quality image than the re-generated version provided by WordPress. 
-	* Added a check and admin notice on activation for lower "Object Cache Expiry" values than the recommended default (86400 seconds).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.4.4 (2015/08/11) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added extra error checking for custom max image/video values from post/taxonomy/user settings.
-* **Bugfixes**
-	* Fixed the custom post/taxonomy/user settings update process by removing the addition of default values (Pro version).
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.4.3 (2015/08/07) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Improved filtering for incorrect Yoast SEO error message(s).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.4.2 (2015/08/04) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Confirmed WordPress v4.2.4 compatibility.
-	* Added PHP realpath() to the WPSSO_PLUGINDIR constant value to prevent PHP fwrite() issues.
-* **Bugfixes**
-	* Fixed the WooCommerce and WPeCommerce term description code to use the 'wpsso_description_seed' filter for compatibility with SEO integration modules (Pro version).
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.4 (2015/08/02) =
-
-* **New Features**
-	* Added new `wpsso_get_sharing_url()` and `wpsso_get_short_url()` functions.
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.3.1 (2015/07/31) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Added missing check for a default image URL in the WpssoUtil `force_default_media()` method.
-	* Fixed the post cache object variable name in the WpssoProUtilShorten `filter_post_cache_objects()` method (Pro version).
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.3 (2015/07/28) =
-
-* **New Features**
-	* Added information about the new WPSSO RRSSB extension in the Extension Plugins settings page.
-* **Improvements**
-	* The "Use Filtered (SEO) Titles" option is now enabled by default.
-	* Added a check in the various SEO Pro modules to skip SEO titles when "Use Filtered (SEO) Titles" is disabled (Pro version).
-	* Added an onMouseOut check for Social Settings input fields.
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* The $add_hashtags method argument now supports integer values as well (not just true/false).
-
-= Version 3.6.2.1 (2015/07/25) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added a check for missing DOMDocument PHP class in older PHP versions.
-	* Updated the minimum PHP version requirement to v4.1.
-* **Bugfixes**
-	* Added a check for missing $screen->id attribute when creating new taxonomy terms.
-* **Developer Notes**
-	* *None*
-
-= Version 3.6.2 (2015/07/25) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Fixed two option variable names in the WpssoUtil get_cache_file_url() method.
-	* Fixed an incorrectly named variable when retrieving WooCommerce term descriptions (Pro version).
-* **Developer Notes**
-	* Moved the get_tweet_max_len() method from the SucomUtil class to the WpssoUtil class.
-	* Added a get_tweet_text() method in the WpssoUtil class (for future use by extensions, etc).
-	* Added $short_url and $service arguments to the WpssoUtil get_tweet_max_len() method.
-	* Added support for a %%short_url%% inline variable.
-
-= Version 3.6.1 (2015/07/23) =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Changed the "Apply WordPress Content Filters" default from checked to unchecked.
-	* Added an informational message on activation about enabling the "Apply WordPress Content Filters" if using shortcodes.
-	* Added a check for an empty WooCommerce term description value before setting the Open Graph and Twitter description meta tag (Pro version).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Moved additional plugin activation checks from the Wpsso to the WpssoRegister class.
-
-= Version 3.6 (2015/07/21) =
-
-* **New Features**
-	* Added the Article "headline" and "datepublished" markup for Google's testing tool.
-	* Added a "Video Preview Image(s)" option in the Social Settings metabox under the Priority Media tab.
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Renamed the SucomUtil th() method to get_th().
 
 == Upgrade Notice ==
 
