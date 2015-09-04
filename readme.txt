@@ -415,6 +415,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.8 (2015/09/03) =
 
+<blockquote>
+<p>This latest version include new dismissible warnings for rejected images (too small and/or extreme aspect ratios) when using WordPress v4.2+. When previously dismissed warnings are found, an additional notice will be shown to allow these warnings to be displayed again temporarily.</p>
+
+<p>This release also include code improvements for small performance gains on the admin side (tooltip and message lookups, for example). Developers should note that filtering of individual meta tags has been disabled by default, and can be re-enabled using the WPSSO_FILTER_SINGLE_TAGS constant. Some tooltip and message lookup filter names have also been changed, which meant releasing updates for all WPSSO extension plugins as well.</p>
+</blockquote>
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -501,7 +507,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.8 =
 
-Added ability to dismiss image dimension warnings when using WordPress 4.2+. Lots of code improvements for developers, and small speed improvements.
+Added ability to dismiss image dimension warnings when using WordPress 4.2+. Code improvements for developers, and small speed improvements.
 
 = 3.7.4 =
 
