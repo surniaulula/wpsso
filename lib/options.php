@@ -97,7 +97,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $update_version === true || $update_options === true ) {
 
-					SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_update', time() );
+					if ( $update_version === true )
+						SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_update', time() );
 
 					if ( $update_options === true ) {
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
@@ -108,6 +109,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 						$opts = $this->upg->options( $options_name, $opts, $this->get_defaults(), $network );
 					}
+
 					if ( $network === false ) {
 						if ( is_admin() && current_user_can( 'manage_options' ) )
 							$this->save_options( $options_name, $opts, $network );
