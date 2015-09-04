@@ -401,7 +401,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Changelog ==
 
-<blockquote>
+<blockquote id="changelog_top_info">
 <p>New versions of the plugin are released approximately every week (more or less). 
 New features are added, tested, and released incrementally, instead of grouping them together in a major version release. 
 When minor bugs fixes and/or code improvements are applied, new versions are also released.
@@ -424,7 +424,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Developer Notes**
 	* Moved the 'installed_version' and 'ua_plugin' filter methods from Wpsso to the WpssoUtil class.
-	* Added three new entries in the options table for installed, activated, and updated timestamps.
+	* Added a new entries in the options table (wpsso_timestamps) for installed, activated, and updated timestamps.
 	* Improved the setting of constants with new `set_variable_constants()` and `get_variable_constants()` methods in the WpssoConfig class.
 	* Refactored the `uninstall_plugin()` method in the WpssoRegister class to use the new `get_variable_constants()` method.
 	* Added a new WPSSO_FILTER_SINGLE_TAGS constant to enable filtering of individual meta tags (disabled by default).
