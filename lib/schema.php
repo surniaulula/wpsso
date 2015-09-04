@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				else $doctype .= ' itemtype="'.$item_type.'"';
 
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema item_type variable is empty' );
+				$this->p->debug->log( 'schema item_type value is empty' );
 
 			return $doctype;
 		}

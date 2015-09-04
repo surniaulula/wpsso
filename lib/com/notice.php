@@ -72,10 +72,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				empty( $msg_txt ) ) 
 					return;
 
-			$payload['msg_id'] = empty( $msg_id ) ? '' : $type.'_'.$msg_id;
+			$payload['msg_id'] = empty( $msg_id ) ? 
+				'' : $type.'_'.$msg_id;
 
-			$payload['dismiss'] = ! empty( $dismiss ) && ! empty( $msg_id ) && 
-				$this->can_dismiss === true ? $dismiss : false;
+			$payload['dismiss'] = ! empty( $dismiss ) && 
+				! empty( $msg_id ) && 
+					$this->can_dismiss === true ? 
+						$dismiss : false;
 			
 			// save message until it can be displayed
 			if ( $store === true ) {
@@ -216,9 +219,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $nag_msgs ) ) {
 				echo $this->get_nag_style();
-				echo '<div class="'.$this->lca.
-					'-update-nag update-nag" style="display:block !important;">'.
-						$nag_msgs.'</div>'."\n";
+				echo $this->get_notice_html( 'nag', $nag_msgs );
 			}
 
 			// remind the user that there are hidden warning messages
@@ -303,6 +304,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			switch ( $type ) {
 				case 'nag':
+					$payload['label'] = '';
 					$msg_class = 'update-nag';
 					break;
 				case 'err':
@@ -374,8 +376,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_nag_style() {
 			return '<style type="text/css">
-.'.$this->lca.'-update-nag {
-	display:block;
+.'.$this->lca.'-notice.update-nag {
 	line-height:1.4em;
 	background-color:'.( empty( $this->p->cf['bgcolor'] ) ?
 		'none' : '#'.$this->p->cf['bgcolor'] ).';
@@ -387,22 +388,26 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	padding:10px 40px 10px 40px;
 	margin-top:0;
 }
-.'.$this->lca.'-update-nag p,
-.'.$this->lca.'-update-nag ul,
-.'.$this->lca.'-update-nag ol {
-	font-size:1em;
+.'.$this->lca.'-notice.update-nag > div {
 	clear:both;
+	display:block !important;
 	max-width:720px;
-	margin:15px auto 15px auto;
-	text-align:center;
+	margin:0 auto;
 }
-.'.$this->lca.'-update-nag ul li {
+.'.$this->lca.'-notice.update-nag p,
+.'.$this->lca.'-notice.update-nag ul,
+.'.$this->lca.'-notice.update-nag ol {
+	font-size:1em;
+	text-align:center;
+	margin:15px auto 15px auto;
+}
+.'.$this->lca.'-notice.update-nag ul li {
 	list-style-type:square;
 }
-.'.$this->lca.'-update-nag ol li {
+.'.$this->lca.'-notice.update-nag ol li {
 	list-style-type:decimal;
 }
-.'.$this->lca.'-update-nag li {
+.'.$this->lca.'-notice.update-nag li {
 	text-align:left;
 	margin:5px 0 5px 60px;
 }
