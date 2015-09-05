@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$def_opts = $this->p->opt->get_defaults();
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
-			$this->p->notice->trunc();					// clear all messages before sanitation checks
+			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), $this->get_nonce(), WPSSO_NONCE );
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = empty( $_POST[WPSSO_SITE_OPTIONS_NAME] ) ? $def_opts : 
 				SucomUtil::restore_checkboxes( $_POST[WPSSO_SITE_OPTIONS_NAME] );
 			$opts = array_merge( $this->p->site_options, $opts );
-			$this->p->notice->trunc();					// clear all messages before sanitation checks
+			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );

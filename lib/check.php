@@ -15,6 +15,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private $p;
 		private $active_plugins = array();
 
+		private static $c = array();
 		private static $extend_checks = array(
 			'seo' => array(
 				'seou' => 'SEO Ultimate',
@@ -256,17 +257,21 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $this->aop( $lca );
 		}
 
-		public function aop( $lca = '', $active = true ) {
+		public function aop( $lca = '', $li = true, $rv = true ) {
 			$lca = empty( $lca ) ? 
 				$this->p->cf['lca'] : $lca;
+			$kn = $lca.'_'.$li.'_'.$rv;
+			if ( isset( self::$c[$kn] ) )
+				return self::$c[$kn];
+			$on = 'plugin_'.$lca.'_tid';
 			$uca = strtoupper( $lca );
-			$installed = ( defined( $uca.'_PLUGINDIR' ) &&
-				is_dir( constant( $uca.'_PLUGINDIR' ).'lib/pro/' ) ) ? true : false;
-			return $active === true ? ( ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
-				$installed && class_exists( 'SucomUpdate' ) &&
-					( $umsg = SucomUpdate::get_umsg( $lca ) ? 
-						false : $installed ) ) ? 
-							$umsg : false ) : $installed;
+			$ins = ( defined( $uca.'_PLUGINDIR' ) &&
+				is_dir( constant( $uca.'_PLUGINDIR' ).'lib/pro/' ) ) ? $rv : false;
+			return self::$c[$kn] = $li === true ? 
+				( ( ! empty( $this->p->options[$on] ) && 
+					$ins && class_exists( 'SucomUpdate' ) &&
+						( $um = SucomUpdate::get_umsg( $lca ) ? 
+							false : $ins ) ) ? $um : false ) : $ins;
 		}
 
 		public function conflict_warnings() {
