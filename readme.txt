@@ -86,7 +86,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* *Summary Card* &mdash; All other webpages.
 * Customizable image dimensions for each Twitter Card type.
 * Additional profile contact fields with configurable label and field names.
-* A custom Social Setings metabox for each Post, Page, custom post type, user profile, and taxonomy (category and tag) pages.
+* A "Social Settings" metabox for Post, Page, custom post type, user profile, and taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 * Options to include / exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.
 * Support for embedded videos in content text (iframe and object HTML tags).
 * **Integrates with 3rd party plugins and services for additional image, video, product, and content information** (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
