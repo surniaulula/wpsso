@@ -284,7 +284,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_input( $name, $class = '', $id = '' ) {
-			$value = $this->in_options( $name ) ? $this->options[$name] : '';
+			$value = $this->in_options( $name ) ?
+				$this->options[$name] : '';
 			$html = $this->get_hidden( $name ).
 				'<input type="text" disabled="disabled"'.
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).

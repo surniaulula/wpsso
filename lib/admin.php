@@ -99,8 +99,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				get_user_option( WPSSO_DISMISS_NAME, $user_id );	// get dismissed message ids
 			$ts = get_option( WPSSO_TS_NAME, array() );
 			$now_time = time();
-			$three_days = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 3 );
-			$month = $now_time - $this->p->cf['form']['time_by_name']['month'];
+			$few_days = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 3 );
+			$few_weeks = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 21 );
 			$type = 'inf';
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
@@ -124,11 +124,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$help_links .= '</li>';
 
 				if ( ! isset( $dis_arr[$type.'_'.$msg_id_works] ) && 
-					isset( $ts[$lca.'_update'] ) && 
-					$ts[$lca.'_update'] < $three_days ) {
+					isset( $ts[$lca.'_update_time'] ) && 
+					$ts[$lca.'_update_time'] < $few_days ) {
 
 					$this->p->notice->log( $type, '<b>Excellent!</b> It looks like you\'ve been running <b>'.
-					$plugin_name.'</b> for several days &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
+					$plugin_name.'</b> for a few days &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
 					'<li>Let us know with your vote on wordpress.org &mdash; '.
 					'<a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.
 					'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.
@@ -136,11 +136,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
 
 				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
-					isset( $ts[$lca.'_install'] ) && 
-					$ts[$lca.'_install'] < $month ) {
+					isset( $ts[$lca.'_install_time'] ) && 
+					$ts[$lca.'_install_time'] < $few_weeks ) {
 
 					$this->p->notice->log( $type, '<b>Fantastic!</b> It looks like you\'ve been running <b>'.
-					$info['name'].'</b> for over a month &mdash; How do you like it so far?<ul>'.
+					$info['name'].'</b> for a few weeks &mdash; How do you like it so far?<ul>'.
 					'<li><a href="'.$info['url']['review'].'" target="_blank">'.
 					'<b>Let us know with a 5-star rating and a wonderful review on wordpress.org!</b></a> ;-)</li>'.
 					$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );

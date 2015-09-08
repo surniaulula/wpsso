@@ -151,6 +151,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return update_option( $name, $opts );
 		}
 
+		public static function get_option_key( $name, $key, $site = false ) {
+			if ( $site === true )
+				$opts = get_site_option( $name, array() );
+			else $opts = get_option( $name, array() );
+			if ( isset( $opts[$key] ) )
+				return $opts[$key];
+			else return false;
+		}
+
 		public static function a2aa( $a ) {
 			$aa = array();
 			foreach ( $a as $i )

@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL'.' - '.$reset_msg, true );
+							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL - '.$reset_msg, true );
 							$val = $def_val;
 						}
 					}
@@ -457,10 +457,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
-				// must be numeric (blank or zero is ok)
+				// must be numeric
+				case 'blank_num':
+					$passed = ( $val !== '' && 
+						! is_numeric( $val ) ) ? false : true;
+					// no break;
 				case 'numeric':
-					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric'.' - '.$reset_msg, true );
+					$passed = ( ! isset( $passed ) && 
+						! is_numeric( $val ) ) ? false : true;
+
+					if ( $passed === false ) {
+						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -468,7 +475,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.$key.'\''.' - '.$reset_msg, true );
+						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.$key.'\' - '.$reset_msg, true );
 						$val = $def_val;
 					}
 					break;
@@ -727,6 +734,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->options['tc_site'] ) ) - 5;	// 5 for 'via' word and 2 spaces
 
 			return $max_len;
+		}
+
+		// $protect = true/false/version
+		public static function save_time( $lca, $version, $type, $protect = false ) {
+
+			if ( ! is_bool( $protect ) ) {
+				if ( ! empty( $protect ) ) {
+					if ( ( $ts_version = SucomUtil::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== false &&
+						version_compare( $ts_version, $protect, '==' ) )
+							$protect = true;
+					else $protect = false;
+				} else $protect = true;	// just in case
+			}
+
+			if ( ! empty( $version ) )
+				SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
+
+			SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
 		}
 	}
 }

@@ -19,7 +19,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			// prevent image_downsize() from lying about image width and height
 			if ( is_admin() )

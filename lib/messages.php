@@ -320,26 +320,26 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Plugin Settings' settings
 						 */
+						case 'tooltip-plugin_debug':
+							$text = 'Add hidden debug messages to the HTML of webpages (default is unchecked).';
+							break;
 						case 'tooltip-plugin_show_opts':
-							$text = 'Select the default number of options to display on the '.$atts['short'].' settings pages. The basic view shows only the essential options that are most commonly used.';
+							$text = 'Select the default number of options to display on the '.$atts['short'].' settings pages by default. The basic view shows only the essential options that are most commonly used.';
 							break;
 						case 'tooltip-plugin_preserve':
 							$text = 'Check this option if you would like to preserve all '.$atts['short'].' settings when you <em>uninstall</em> the plugin (default is unchecked).';
 							break;
-						case 'tooltip-plugin_debug':
-							$text = 'Add hidden debug messages to the HTML of webpages (default is unchecked).';
-							break;
 						case 'tooltip-plugin_cache_info':
 							$text = 'Report the number of objects removed from the cache when updating Posts and Pages.';
-							break;
-						case 'tooltip-plugin_check_head':
-							$text = $atts['short'].' can check the front-end webpage head section for duplicate HTML tags when editing Posts and Pages. You may uncheck this option if you\'ve edited a few Posts and Pages without seeing any warning messages about duplicate HTML tags.';
 							break;
 						case 'tooltip-plugin_filter_lang':
 							$text = $atts['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
 							break;
 						case 'tooltip-plugin_auto_img_resize':
 							$text = 'Automatically generate missing or incorrect image sizes for previously uploaded images in the WordPress Media Library (default is checked).';
+							break;
+						case 'tooltip-plugin_ignore_small_img':
+							$text = 'Images that are detected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_shortcodes':
 							$text = 'Enable the '.$atts['short'].' shortcode features (default is checked).';
@@ -359,17 +359,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_filter_excerpt':
 							$text = 'Apply the standard WordPress \'get_the_excerpt\' filter to render the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpt, for example.';
 							break;
-						case 'tooltip-plugin_ignore_small_img':
-							$text = 'Images that are detected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
+						case 'tooltip-plugin_embedded_media':
+							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';
 							break;
 						case 'tooltip-plugin_page_excerpt':
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$atts['short'].' can use as a default description value.';
 							break;
 						case 'tooltip-plugin_page_tags':
 							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$atts['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
-							break;
-						case 'tooltip-plugin_embedded_media':
-							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';
 							break;
 						/*
 						 * 'Social Settings' settings
@@ -385,6 +382,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_cf_vid_embed':
 							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
+							break;
+						/*
+						 * 'Theme Integration' settings
+						 */
+						case 'tooltip-plugin_check_head':
+							$text = $atts['short'].' can check the front-end webpage head section for duplicate HTML tags when editing Posts and Pages. You may uncheck this option if you\'ve edited a few Posts and Pages without seeing any warning messages about duplicate HTML tags.';
+							break;
+						case 'tooltip-plugin_html_attr_filter':
+							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to add / modify required Open Graph namespace prefix values. The "language_attributes" filter and function are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header.php template uses the language_attributes() function. Example:
+<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>
+Leave this option blank to disable adding Open Graph namespace values.';
+							break;
+						case 'tooltip-plugin_head_attr_filter':
+							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to modify &amp;lt;html&amp;gt; element attributes for Schema itemscope / itemtype values. The &amp;lt;head&amp;gt; element is actually the preferred location for this Schema markup, but most (if not all) themes do not have a standard filter for the &amp;lt;head&amp;gt; element. If your theme uses a filter for its &amp;lt;head&amp;gt; element attributes (that returns a complete attribute string), enter its name here. Example (using "schema_attributes" as a filter name):
+<pre><code>&amp;lt;head&amp;lt;?php echo apply_filters(\'schema_attributes\', \'\'); ?&amp;gt;&amp;gt;</code></pre>
+Leave this option blank to disable adding Schema itemprop / itemtype values.';
 							break;
 						/*
 						 * 'File and Object Cache' settings

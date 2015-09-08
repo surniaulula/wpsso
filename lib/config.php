@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.8',		// plugin version
+					'version' => '3.9',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso350',				// increment when changing default options
+				'version' => 'sso355',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -429,6 +429,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_taxonomy' => 1,
 					'plugin_add_to_user' => 1,
 					'plugin_add_to_attachment' => 1,
+					'plugin_html_attr_filter_name' => 'language_attributes',
+					'plugin_html_attr_filter_prio' => 100,
+					'plugin_head_attr_filter_name' => 'language_attributes',
+					'plugin_head_attr_filter_prio' => 100,
 					'plugin_object_cache_exp' => 86400,	// 24 hours
 					'plugin_file_cache_exp' => 0,
 					'plugin_verify_certs' => 0,
@@ -777,7 +781,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_META_SAVE_PRIORITY'] = 6;
 			$var_const['WPSSO_META_CACHE_PRIORITY'] = 9;
 			$var_const['WPSSO_INIT_PRIORITY'] = 12;
-			$var_const['WPSSO_DOCTYPE_PRIORITY'] = 100;
 			$var_const['WPSSO_HEAD_PRIORITY'] = 10;
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 

@@ -14,11 +14,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			) );
-			add_filter( 'language_attributes', 
-				array( &$this, 'add_doctype' ), WPSSO_DOCTYPE_PRIORITY, 1 );
+
+			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
+				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
+
+					$prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
+						100 : $this->p->options['plugin_head_attr_filter_prio'];
+
+					add_filter( $this->p->options['plugin_head_attr_filter_name'], 
+						array( &$this, 'add_head_attr' ), $prio, 1 );
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'add_head_attr filter skipped: plugin_head_attr_filter_name is empty' );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -30,11 +41,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $sizes;
 		}
 
-		public function add_doctype( $doctype ) {
+		public function add_head_attr( $head_attr ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$obj = $this->p->util->get_post_object( false );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 			$post_type = '';
-			$item_type = $this->p->cf['head']['schema_type']['blog'];	// default value for non-singular webpages
+			$item_type = $this->p->cf['head']['schema_type']['website'];	// default value for non-singular webpages
 
 			if ( is_singular() ) {
 
@@ -43,13 +56,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( isset( $this->p->cf['head']['schema_type'][$post_type] ) )
 					$item_type = $this->p->cf['head']['schema_type'][$post_type];
-				else $item_type = $this->p->cf['head']['schema_type']['article'];
+				else $item_type = $this->p->cf['head']['schema_type']['webpage'];
 
 			} elseif ( $this->p->util->force_default_author() &&
 				! empty( $this->p->options['og_def_author_id'] ) )
-					$item_type = $this->p->cf['head']['schema_type']['article'];
+					$item_type = $this->p->cf['head']['schema_type']['webpage'];
 
-			$item_type = apply_filters( $this->p->cf['lca'].'_doctype_schema_type', $item_type, $post_id, $obj );
+			$item_type = apply_filters( $this->p->cf['lca'].'_schema_item_type', $item_type, $post_id, $obj );
 
 			if ( ! empty( $item_type ) ) {
 
@@ -58,22 +71,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$item_type = 'http://schema.org/'.$item_type;
 
 				// fix incorrect itemscope values
-				if ( strpos( $doctype, ' itemscope="itemscope"' ) !== false )
-					$doctype = preg_replace( '/ itemscope="itemscope"/', 
-						' itemscope', $doctype );
-				elseif ( strpos( $doctype, ' itemscope' ) === false )
-					$doctype .= ' itemscope';
+				if ( strpos( $head_attr, ' itemscope="itemscope"' ) !== false )
+					$head_attr = preg_replace( '/ itemscope="itemscope"/', 
+						' itemscope', $head_attr );
+				elseif ( strpos( $head_attr, ' itemscope' ) === false )
+					$head_attr .= ' itemscope';
 
 				// replace existing itemtype values
-				if ( strpos( $doctype, ' itemtype="' ) !== false )
-					$doctype = preg_replace( '/ itemtype="[^"]+"/',
-						' itemtype="'.$item_type.'"', $doctype );
-				else $doctype .= ' itemtype="'.$item_type.'"';
+				if ( strpos( $head_attr, ' itemtype="' ) !== false )
+					$head_attr = preg_replace( '/ itemtype="[^"]+"/',
+						' itemtype="'.$item_type.'"', $head_attr );
+				else $head_attr .= ' itemtype="'.$item_type.'"';
 
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item_type value is empty' );
 
-			return $doctype;
+			return $head_attr;
 		}
 
 		public function get_meta_array( $use_post, &$obj, &$meta_og = array() ) {

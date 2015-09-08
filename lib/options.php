@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$update_options === true ) {
 
 					if ( $update_version === true )
-						SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_update', time() );
+						WpssoUtil::save_time( $lca, $this->p->cf['plugin'][$lca]['version'], 'update' );
 
 					if ( $update_options === true ) {
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
@@ -121,6 +121,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $network === false ) {
 					if ( ! empty( $this->p->is_avail['seo']['*'] ) ) {
+						// checkbox options
 						foreach ( array( 'canonical', 'description' ) as $name ) {
 							$opts['add_meta_name_'.$name] = 0;
 							$opts['add_meta_name_'.$name.':is'] = 'disabled';
@@ -313,7 +314,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// js and css
 				case ( strpos( $key, '_js_' ) === false ? false : true ):
 				case ( strpos( $key, '_css_' ) === false ? false : true ):
-				case ( strpos( $key, '_html' ) === false ? false : true ):
 					return 'code';
 					break;
 				// twitter-style usernames (prepend with an at)
@@ -333,14 +333,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'url';
 					break;
 				// must be numeric (blank or zero is ok)
-				case 'seo_def_author_id':
-				case 'og_desc_hashtags': 
-				case 'og_img_max':
-				case 'og_vid_max':
 				case 'og_img_id':
 				case 'og_def_img_id':
 				case 'og_def_author_id':
+				case 'seo_def_author_id':
+					return 'blank_num';
+					break;
+				case 'og_img_max':
+				case 'og_vid_max':
+				case 'og_desc_hashtags': 
 				case 'plugin_file_cache_exp':
+				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
 					return 'numeric';
 					break;
 				// integer options that must be 1 or more (not zero)
@@ -380,6 +383,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_cf_vid_url':
 				case 'plugin_cf_vid_embed':
 				case 'plugin_bitly_login':
+				case ( strpos( $key, '_filter_name' ) === false ? false : true ):
 					return 'ok_blank';
 					break;
 				// options that cannot be blank

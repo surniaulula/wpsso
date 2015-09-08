@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.0
  * Tested Up To: 4.3
- * Version: 3.8
+ * Version: 3.9
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! class_exists( 'Wpsso' ) ) {
 
 	class Wpsso {
-		/**
+		/*
 		 * Class Object Variables
 		 */
 		public $p;			// Wpsso
@@ -40,7 +40,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $util;			// WpssoUtil (extends SucomUtil)
 		public $webpage;		// SucomWebpage (title, desc, etc., plus shortcodes)
 
-		/**
+		/*
 		 * Reference Variables (config, options, modules, etc.)
 		 */
 		public $cf = array();		// config array defined in construct method
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return self::$instance;
 		}
 
-		/**
+		/*
 		 * Wpsso Constructor
 		 */
 		public function __construct() {
@@ -66,7 +66,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cf = WpssoConfig::get_config();			// unfiltered - $cf['*'] array is not available yet
 			WpssoConfig::set_constants( __FILE__ );
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
-
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
 			add_action( 'init', array( &$this, 'set_config' ), -1 );

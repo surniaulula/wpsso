@@ -78,39 +78,38 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$lca = $this->p->cf['lca'];
 			$uca = $this->p->cf['uca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
+			$version = $this->p->cf['plugin'][$lca]['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 				switch ( $key ) {
 					case 'wp':
-						$label = 'WordPress';
 						global $wp_version;
-						$version = $wp_version;
+						$label = 'WordPress';
+						$req_version = $wp_version;
 						break;
 					case 'php':
 						$label = 'PHP';
-						$version = phpversion();
+						$req_version = phpversion();
 						break;
 				}
-				$short = $this->p->cf['plugin'][$lca]['short'];
 				$min_version = $this->p->cf[$key]['min_version'];
-
-				if ( version_compare( $version, $min_version, '<' ) ) {
+				if ( version_compare( $req_version, $min_version, '<' ) ) {
 					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
 					deactivate_plugins( WPSSO_PLUGINBASE );
-					error_log( WPSSO_PLUGINBASE.' requires '.$label.' '.$min_version.' or higher ('.$version.' reported).' );
+					error_log( WPSSO_PLUGINBASE.' requires '.$label.' '.$min_version.' or higher ('.$req_version.' reported).' );
 					wp_die( '<p>The '.$short.' plugin cannot be activated &mdash; '.
 						$short.' requires '.$label.' version '.$min_version.' or newer.</p>' );
 				}
 			}
 
-			SucomUtil::add_option_key( WPSSO_TS_NAME, $lca.'_install', time() );	// does not update an existing key
-			SucomUtil::add_option_key( WPSSO_TS_NAME, $lca.'_update', time() );	// does not update an existing key
-			SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_activate', time() );
+			$this->p->set_config();
+			$this->p->set_objects( true );					// $activate = true
+
+			WpssoUtil::save_time( $lca, $version, 'install', true );		// $protect = true
+			WpssoUtil::save_time( $lca, $version, 'update', $version );	// $protect only if same version
+			WpssoUtil::save_time( $lca, $version, 'activate' );		// always update timestamp
 
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
-
-			$this->p->set_config();
-			$this->p->set_objects( true );	// $activate = true
 
 			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
 				( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) ) ) {

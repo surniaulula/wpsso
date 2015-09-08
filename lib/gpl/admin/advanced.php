@@ -18,6 +18,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'plugin_settings_rows' => 3,
 				'plugin_content_rows' => 2,
 				'plugin_social_rows' => 2,
+				'plugin_integration_rows' => 2,
 				'plugin_cache_rows' => 3,
 				'plugin_apikeys_rows' => 3,
 				'cm_custom_rows' => 2,
@@ -34,8 +35,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->get_th( 'Check Webpage Head for Conflicts', 'highlight', 'plugin_check_head' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
+			$rows[] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_preserve' ).'</td>';
+
+			$rows[] = $this->p->util->get_th( 'Options to Show by Default', null, 'plugin_show_opts' ).
+			'<td class="blank">'.$this->p->cf['form']['show_options'][$this->p->options['plugin_show_opts']].'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Report Cache Purge Count', null, 'plugin_cache_info' ).
@@ -72,6 +76,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			$rows[] = $this->p->util->get_th( 'Use Filtered (SEO) Titles', 'highlight', 'plugin_filter_title' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_title' ).'</td>';
+			
+			$rows[] = $this->p->util->get_th( 'Apply WordPress Content Filters', 'highlight', 'plugin_filter_content' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_content' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Apply WordPress Excerpt Filters', null, 'plugin_filter_excerpt' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_excerpt' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( 'Check for Embedded Media', null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
@@ -121,6 +135,27 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->p->util->get_th( 'Video Embed HTML Custom Field', null, 'plugin_cf_vid_embed' ).
 			'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_embed' ).
 				$this->p->options['plugin_cf_vid_embed'].'</td>';
+			
+			return $rows;
+		}
+
+		public function filter_plugin_integration_rows( $rows, $form, $network = false ) {
+
+			$rows[] = '<td colspan="'.( $network === false ? 2 : 4 ).'" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			$rows[] = $this->p->util->get_th( 'Check for Duplicate Meta Tags', 'highlight', 'plugin_check_head' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_check_head' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Header &lt;html&gt; Attribute Filter', null, 'plugin_html_attr_filter' ).
+			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].'</td><td class="blank">'.
+				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
+			
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Header &lt;head&gt; Attribute Filter', 'highlight', 'plugin_head_attr_filter' ).
+			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].'</td><td class="blank">'.
+				'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 			
 			return $rows;
 		}

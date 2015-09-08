@@ -16,11 +16,22 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			) );
-			add_filter( 'language_attributes', 
-				array( &$this, 'add_doctype' ), 100, 1 );
+
+			if ( ! empty( $this->p->options['plugin_html_attr_filter_name'] ) &&
+				$this->p->options['plugin_html_attr_filter_name'] !== 'none' ) {
+
+					$prio = empty( $this->p->options['plugin_html_attr_filter_prio'] ) ? 
+						100 : $this->p->options['plugin_html_attr_filter_prio'];
+
+					add_filter( $this->p->options['plugin_html_attr_filter_name'], 
+						array( &$this, 'add_html_attr' ), $prio, 1 );
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'add_html_attr filter skipped: plugin_html_attr_filter_name is empty' );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -35,29 +46,31 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return $sizes;
 		}
 
-		public function add_doctype( $doctype ) {
+		public function add_html_attr( $html_attr ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			/*
 			 * HTML5 Compliant
 			 */
-			$html_prefix = apply_filters( $this->p->cf['lca'].'_doctype_prefix_ns', array(
+			$html_prefix = apply_filters( $this->p->cf['lca'].'_html_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 			) );
 	
 			// find and extract an existing prefix attribute value
-			if ( strpos( $doctype, ' prefix=' ) &&
-				preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $doctype, $match ) ) {
-					$doctype = $match[1].$match[3];
-					$attr_value = ' '.$match[2];
-			} else $attr_value = '';
+			if ( strpos( $html_attr, ' prefix=' ) &&
+				preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
+					$html_attr = $match[1].$match[3];
+					$prefix_value = ' '.$match[2];
+			} else $prefix_value = '';
 
 			foreach ( $html_prefix as $ns => $url )
-				if ( strpos( $attr_value, ' '.$ns.': '.$url ) === false )
-					$attr_value .= ' '.$ns.': '.$url;
+				if ( strpos( $prefix_value, ' '.$ns.': '.$url ) === false )
+					$prefix_value .= ' '.$ns.': '.$url;
 
-			$doctype .= ' prefix="'.trim( $attr_value ).'"';
+			$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
 
-			return $doctype;
+			return $html_attr;
 		}
 
 		public function get_array( &$og = array(), $use_post = false, $obj = false ) {
