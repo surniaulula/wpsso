@@ -413,6 +413,22 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.9 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added a new "Theme Integration" tab on the Advanced settings page.
+	* Changed the default index schema type to "WebSite" instead of "Blog" (pseudo-standard SEO value).
+	* Changed the default post/page schema type to "WebPage" instead of "Article" (pseudo-standard SEO value).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Renamed the 'wpsso_doctype_prefix_ns' filter to 'wpsso_html_prefix_ns' (returns an array of namespace values).
+	* Renamed the 'wpsso_doctype_schema_type' filter to 'wpsso_schema_item_type' (returns an itemtype string value).
+	* Added a new `WpssoUtil::save_time()` method called by WPSSO extensions when activated. 
+	* Added a new `SucomUtil::get_option_key()` method.
+
 = Version 3.8 (2015/09/03) =
 
 <p>This latest version include new dismissible warnings for rejected images (too small and/or extreme aspect ratios) when using WordPress v4.2+. When previously dismissed warnings are found, an additional notice will be shown to allow these warnings to be displayed again temporarily.</p>
