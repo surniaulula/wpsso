@@ -415,6 +415,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.9 =
 
+<a href="http://wpsso.com/2015/09/09/ngfb-wpsso-update-improved-schema-support/">Complete release notes for Version 3.9</a>.
+
 * **New Features**
 	* Added a new "Theme Integration" tab on the Advanced settings page.
 	* Added a new "Header <html> Attribute Filter" option on the Advanced settings page (Pro version).
@@ -524,6 +526,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* The WPSSO WordPress REST API v2 module extends the returned /wp-json/wp/v2/posts (including custom post types), terms, and users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays (Pro version).
 
 == Upgrade Notice ==
+
+= 3.9 =
+
+Added a new "Theme Integration" tab on the Advanced settings page, along with new filters and function, for better Schema markup support.
 
 = 3.8 =
 
