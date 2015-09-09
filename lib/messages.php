@@ -396,14 +396,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = $atts['short'].' can check the front-end webpage head section for duplicate HTML tags when editing Posts and Pages. You may uncheck this option if you\'ve edited a few Posts and Pages without seeing any warning messages about duplicate HTML tags.';
 							break;
 						case 'tooltip-plugin_html_attr_filter':
-							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to add / modify required Open Graph namespace prefix values. The "language_attributes" filter and function are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header.php template uses the language_attributes() function. Example:
-<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>
-Leave this option blank to disable the addition of Open Graph namespace values.';
+							$text = $atts['short'].' hooks the "language_attributes" filter to add / modify required Open Graph namespace prefix values by default. The "language_attributes" filter and function are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header.php template uses the language_attributes() function. Leaving this option blank disables the addition of Open Graph namespace values. Example template code: <pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 							break;
 						case 'tooltip-plugin_head_attr_filter':
-							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to modify the &amp;lt;html&amp;gt; element for Schema itemscope / itemtype markup. The &amp;lt;head&amp;gt; element is actually the preferred location for this markup, but WordPress does not have standard filter for the &amp;lt;head&amp;gt; element attributes. If your theme has a filter for its &amp;lt;head&amp;gt; element attributes (that returns a complete attribute string), enter its name here. Example (using "schema_attributes" as a filter name):
-<pre><code>&amp;lt;head&amp;lt;?php echo apply_filters(\'schema_attributes\', \'\'); ?&amp;gt;&amp;gt;</code></pre>
-Leave this option blank to disable the addition of Schema itemprop / itemtype markup.';
+							$text = $atts['short'].' hooks the "language_attributes" filter to modify the &amp;lt;html&amp;gt; element for Schema itemscope / itemtype markup by default. The &amp;lt;head&amp;gt; element is actually the preferred location for this markup, but WordPress does not offer a standard filter for the &amp;lt;head&amp;gt; element attributes. If your theme has a filter for its &amp;lt;head&amp;gt; element attributes (that returns a complete attribute string), enter its name here. Alternatively, you can use the '.$atts['short'].' Schema attributes function instead (see example). Leaving this option blank disables the addition of Schema itemprop / itemtype markup. Example template code: <pre><code>&amp;lt;head&amp;lt;?php '.$atts['lca'].'_schema_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 							break;
 						/*
 						 * 'File and Object Cache' settings
