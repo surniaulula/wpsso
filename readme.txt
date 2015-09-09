@@ -419,6 +419,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added a new "Theme Integration" tab on the Advanced settings page.
 	* Added a new "Header <html> Attribute Filter" option on the Advanced settings page (Pro version).
 	* Added a new "Header <head> Attribute Filter" option on the Advanced settings page (Pro version).
+	* Added a new "Image Alt Text Prefix" option on the Advanced settings page (Pro version).
 	* Added a new "WP Caption Paragraph Prefix" option on the Advanced settings page (Pro version).
 * **Improvements**
 	* Changed the default index schema type from "Blog" to "WebSite" (pseudo-standard SEO value).
