@@ -63,6 +63,7 @@ apply_filters( 'wpsso_save_options', $opts, $options_name );
 apply_filters( 'wpsso_save_site_options', $opts );
 apply_filters( 'wpsso_save_taxonomy_options', $opts );
 apply_filters( 'wpsso_save_user_options', $opts, $user_id );
+apply_filters( 'wpsso_schema_post_types', $schema_types );
 apply_filters( 'wpsso_schema_item_type', $item_type, $post_id, $obj );
 apply_filters( 'wpsso_section', $section );
 apply_filters( 'wpsso_sharing_url', $url, $use_post, $add_page, $source_id );
