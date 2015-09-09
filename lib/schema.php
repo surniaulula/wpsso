@@ -42,8 +42,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function add_head_attr( $head_attr ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
 			$obj = $this->p->util->get_post_object( false );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
 			$post_type = '';

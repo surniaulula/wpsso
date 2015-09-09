@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows[] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
+					$rows['plugin_debug'] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
 					'<td>'.( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ? 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';

@@ -653,9 +653,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'person' => 'http://schema.org/Person',
 					'place' => 'http://schema.org/Place',
 					'product' => 'http://schema.org/Product',
+					'recipe' => 'http://schema.org/Recipe',
 					'review' => 'http://schema.org/Review',
 					'other' => 'http://schema.org/Other',
 					'local.business' => 'http://schema.org/LocalBusiness',
+					'webpage' => 'http://schema.org/WebPage',
+					'website' => 'http://schema.org/WebSite',
 				),
 			),
 			'cache' => array(
@@ -707,7 +710,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			if ( $idx !== false ) {
-				if ( array_key_exists( $idx, self::$cf ) )
+				if ( isset( self::$cf[$idx] ) )
 					return self::$cf[$idx];
 				else return false;
 			} else return self::$cf;

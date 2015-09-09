@@ -54,18 +54,18 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings': 
 
-					$rows[] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>'.
-					$this->p->util->get_th( 'Site Use', 'narrow' ).'<td>'.
-					$this->form->get_select( 'plugin_preserve:use',
-						$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>'; 
-					
-					$rows[] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
+					$rows['plugin_debug'] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_debug' ).'</td>'.
-					$this->p->util->get_th( 'Site Use', 'narrow' ).'<td>'.
+					$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
 					$this->form->get_select( 'plugin_debug:use',
 						$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>';
 						
+					$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>'.
+					$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
+					$this->form->get_select( 'plugin_preserve:use',
+						$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>'; 
+					
 					break;
 			}
 			return $rows;

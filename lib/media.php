@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function editor_max_image_size( $max_sizes = array(), $size_name = '', $context = '' ) {
 			// allow only our sizes to exceed the editor width
 			if ( is_string( $size_name ) &&
-				strpos( $size_name, $this->p->cf['lca'].'-' ) !== false )
+				strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 )
 					$max_sizes = array( 0, 0 );
 			return $max_sizes;
 		}
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'requesting full size name instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
 
-			} elseif ( strpos( $size_name, $this->p->cf['lca'].'-' ) !== false ) {		// only resize our own custom image sizes
+			} elseif ( strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 ) {		// only resize our own custom image sizes
 
 				if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {		// auto-resize images option must be enabled
 

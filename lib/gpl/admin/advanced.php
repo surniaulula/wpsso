@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+			$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_preserve' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( 'Options to Show by Default', null, 'plugin_show_opts' ).
@@ -165,11 +165,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="'.( $network === false ? 2 : 4 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->get_th( 'Object Cache Expiry', 'highlight', 'plugin_object_cache_exp' ).
+			$rows['plugin_object_cache_exp'] = $this->p->util->get_th( 'Object Cache Expiry', 'highlight', 'plugin_object_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_object_cache_exp'].' seconds</td>'.
 			$this->get_site_use( $form, $network, 'plugin_object_cache_exp' );
 
-			$rows[] = '<tr class="hide_in_basic">'.
+			$rows['plugin_verify_certs'] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Verify SSL Certificates', null, 'plugin_verify_certs' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_verify_certs' ).'</td>'.
 			$this->get_site_use( $form, $network, 'plugin_verify_certs' );
@@ -209,12 +209,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_site_use( $form, $network, 'plugin_google_shorten' );
 
 			return $rows;
-		}
-
-		protected function get_site_use( &$form, &$network, $opt ) {
-			return $network === false ? '' : $this->p->util->get_th( 'Site Use', 'site_use' ).
-				'<td class="site_use blank">'.$form->get_select( $opt.':use', 
-					$this->p->cf['form']['site_option_use'], 'site_use', null, true, true ).'</td>';
 		}
 
 		public function filter_cm_custom_rows( $rows, $form ) {
@@ -309,6 +303,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			}
 
 			return array_merge( $rows, $col_rows );
+		}
+
+		protected function get_site_use( &$form, &$network, $opt ) {
+			return $network === false ? '' : $this->p->util->get_th( 'Site Use', 'site_use' ).
+				'<td class="site_use blank">'.$form->get_select( $opt.':use', 
+					$this->p->cf['form']['site_option_use'], 'site_use', null, true, true ).'</td>';
 		}
 	}
 }

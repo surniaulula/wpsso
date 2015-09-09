@@ -392,19 +392,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_html_attr_filter':
 							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to add / modify required Open Graph namespace prefix values. The "language_attributes" filter and function are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header.php template uses the language_attributes() function. Example:
 <pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>
-Leave this option blank to disable adding Open Graph namespace values.';
+Leave this option blank to disable the addition of Open Graph namespace values.';
 							break;
 						case 'tooltip-plugin_head_attr_filter':
-							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to modify &amp;lt;html&amp;gt; element attributes for Schema itemscope / itemtype values. The &amp;lt;head&amp;gt; element is actually the preferred location for this Schema markup, but most (if not all) themes do not have a standard filter for the &amp;lt;head&amp;gt; element. If your theme uses a filter for its &amp;lt;head&amp;gt; element attributes (that returns a complete attribute string), enter its name here. Example (using "schema_attributes" as a filter name):
+							$text = 'By default, '.$atts['short'].' hooks the "language_attributes" filter to modify the &amp;lt;html&amp;gt; element for Schema itemscope / itemtype markup. The &amp;lt;head&amp;gt; element is actually the preferred location for this markup, but WordPress does not have standard filter for the &amp;lt;head&amp;gt; element attributes. If your theme has a filter for its &amp;lt;head&amp;gt; element attributes (that returns a complete attribute string), enter its name here. Example (using "schema_attributes" as a filter name):
 <pre><code>&amp;lt;head&amp;lt;?php echo apply_filters(\'schema_attributes\', \'\'); ?&amp;gt;&amp;gt;</code></pre>
-Leave this option blank to disable adding Schema itemprop / itemtype values.';
+Leave this option blank to disable the addition of Schema itemprop / itemtype markup.';
 							break;
 						/*
 						 * 'File and Object Cache' settings
 						 */
 						case 'tooltip-plugin_object_cache_exp':
-							$exp_hrs = sprintf( '%0.2d', $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) / 60 / 60 );
-							$text = $atts['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).<br/><br/>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.';
+							$exp_sec = 86400;
+							$exp_hrs = sprintf( '%0.2d', $exp_sec / 60 / 60 );
+							$text = $atts['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).<br/><br/>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.';
 							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';

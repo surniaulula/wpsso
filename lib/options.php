@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( array_key_exists( $key, $this->p->cf['opt']['defaults'] ) && 
 							array_key_exists( $key.':use', $this->p->site_options ) ) {
 	
-							if ( $this->p->site_options[$key.':use'] == 'default' )
+							if ( $this->p->site_options[$key.':use'] === 'default' )
 								$this->p->cf['opt']['defaults'][$key] = $this->p->site_options[$key];
 						}
 					}

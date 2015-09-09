@@ -47,12 +47,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		}
 
 		public function add_html_attr( $html_attr ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-			/*
-			 * HTML5 Compliant
-			 */
-			$html_prefix = apply_filters( $this->p->cf['lca'].'_html_prefix_ns', array(
+			
+			$prefix_ns = apply_filters( $this->p->cf['lca'].'_og_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 			) );
@@ -64,7 +63,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$prefix_value = ' '.$match[2];
 			} else $prefix_value = '';
 
-			foreach ( $html_prefix as $ns => $url )
+			foreach ( $prefix_ns as $ns => $url )
 				if ( strpos( $prefix_value, ' '.$ns.': '.$url ) === false )
 					$prefix_value .= ' '.$ns.': '.$url;
 
