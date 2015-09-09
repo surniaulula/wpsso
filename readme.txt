@@ -424,8 +424,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Renamed the 'wpsso_doctype_prefix_ns' filter to 'wpsso_html_prefix_ns' (returns an array of namespace values).
-	* Renamed the 'wpsso_doctype_schema_type' filter to 'wpsso_schema_item_type' (returns an itemtype string value).
+	* Renamed the 'wpsso_doctype_prefix_ns' filter to 'wpsso_og_prefix_ns' (returns an array of Open Graph namespace URLs).
+	* Renamed the 'wpsso_doctype_schema_type' filter to 'wpsso_schema_item_type' (returns an itemtype URL string).
 	* Added a new `WpssoUtil::save_time()` method called by WPSSO extensions when activated. 
 	* Added a new `SucomUtil::get_option_key()` method.
 

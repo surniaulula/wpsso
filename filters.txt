@@ -14,7 +14,6 @@ apply_filters( 'wpsso_content_accept_img_size', $ret, $img_url, $img_width, $img
 apply_filters( 'wpsso_description', $desc, $use_post, $add_hashtags, $custom_idx, $source_id );
 apply_filters( 'wpsso_description_pre_limit', $desc );
 apply_filters( 'wpsso_description_seed', '', $use_post, $add_hashtags, $custom_idx, $source_id );
-apply_filters( 'wpsso_doctype_schema_type', $item_type, $post_id, $obj );
 apply_filters( 'wpsso_get_avail', $ret );
 apply_filters( 'wpsso_get_config', $cf );
 apply_filters( 'wpsso_get_defaults', $defaults );
@@ -44,6 +43,7 @@ apply_filters( 'wpsso_og_image_post_column_content', $value, $column_name, $post
 apply_filters( 'wpsso_og_image_taxonomy_column_content', $value, $column_name, $term_id );
 apply_filters( 'wpsso_og_image_user_column_content', $value, $column_name, $user_id );
 apply_filters( 'wpsso_og_marketpress', $og_ecom );
+apply_filters( 'wpsso_og_prefix_ns', $ns );
 apply_filters( 'wpsso_og_seed', $og, $use_post, $obj );
 apply_filters( 'wpsso_og_type', $og['og:type'], $use_post );
 apply_filters( 'wpsso_og_woocommerce', $og_ecom, $use_post, $obj );
@@ -63,6 +63,7 @@ apply_filters( 'wpsso_save_options', $opts, $options_name );
 apply_filters( 'wpsso_save_site_options', $opts );
 apply_filters( 'wpsso_save_taxonomy_options', $opts );
 apply_filters( 'wpsso_save_user_options', $opts, $user_id );
+apply_filters( 'wpsso_schema_item_type', $item_type, $post_id, $obj );
 apply_filters( 'wpsso_section', $section );
 apply_filters( 'wpsso_sharing_url', $url, $use_post, $add_page, $source_id );
 apply_filters( 'wpsso_shorten_url', $long_url, $service );
