@@ -129,10 +129,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$this->p->notice->log( $type, '<b>Excellent!</b> It looks like you\'ve been running <b>'.
 					$plugin_name.'</b> for a few days &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
-					'<li>Let us know with your vote on wordpress.org &mdash; '.
-					'<a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.
+					'<li><a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.
 					'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.
-					'<b>'.$plugin_name.' is compatible with '.$wp_name.'</b></a>.</li>'.
+					'Let us know with your "Works" vote on wordpress.org!</a></li>'.
 					$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
 
 				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
@@ -142,7 +141,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->notice->log( $type, '<b>Fantastic!</b> It looks like you\'ve been running <b>'.
 					$info['name'].'</b> for a few weeks &mdash; How do you like it so far?<ul>'.
 					'<li><a href="'.$info['url']['review'].'" target="_blank">'.
-					'<b>Let us know with a 5-star rating and a wonderful review on wordpress.org!</b></a> ;-)</li>'.
+					'Let us know with a 5-star rating and wonderful review on wordpress.org!</a> ;-)</li>'.
 					$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );
 				}
 			}
