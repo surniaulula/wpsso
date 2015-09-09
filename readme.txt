@@ -424,6 +424,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Changed the default index schema type from "Blog" to "WebSite" (pseudo-standard SEO value).
 	* Changed the default post/page schema type from "Article" to "WebPage" (pseudo-standard SEO value).
+	* Updated the Easy Digital Downloads (EDD) module to add a "Product" schema item type for "download" post types (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
