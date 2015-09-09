@@ -314,6 +314,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// js and css
 				case ( strpos( $key, '_js_' ) === false ? false : true ):
 				case ( strpos( $key, '_css_' ) === false ? false : true ):
+				case ( preg_match( '/^[a-z]+_html$/', $key ) ? true : false ):
 					return 'code';
 					break;
 				// twitter-style usernames (prepend with an at)
