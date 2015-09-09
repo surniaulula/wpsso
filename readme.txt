@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.3
-Stable Tag: 3.8
+Stable Tag: 3.9
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -415,7 +415,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.9 (2015/09/09) =
 
-<p><a href="http://surniaulula.com/2015/09/09/ngfb-wpsso-update-improved-schema-support/">Complete release notes for WPSSO Version 3.9</a>.</p>
+<p><a href="http://surniaulula.com/2015/09/09/ngfb-wpsso-update-improved-schema-support/">Release notes for WPSSO Version 3.9</a>.</p>
 
 * **New Features**
 	* Added a new "Theme Integration" tab on the Advanced settings page.
