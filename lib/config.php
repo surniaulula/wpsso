@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso355',				// increment when changing default options
+				'version' => 'sso358',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
@@ -287,8 +287,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_len' => 70,
 					'og_desc_len' => 300,
 					'og_desc_hashtags' => 3,
-					'og_desc_strip' => 0,
-					'og_desc_alt' => 1,
 					'rp_publisher_url' => '',
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
 					'rp_img_width' => 600,
@@ -410,12 +408,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_content' => 0,
 					'plugin_filter_excerpt' => 0,
 					'plugin_filter_lang' => 1,
+					'plugin_p_strip' => 0,
+					'plugin_p_cap_prefix' => 'Caption:',
+					'plugin_use_img_alt' => 1,
+					'plugin_img_alt_prefix' => 'Image:',
 					'plugin_shortcodes' => 0,
 					'plugin_widgets' => 1,
+					'plugin_page_excerpt' => 0,
+					'plugin_page_tags' => 0,
 					'plugin_auto_img_resize' => 1,
 					'plugin_ignore_small_img' => 1,
-					'plugin_page_excerpt' => 1,
-					'plugin_page_tags' => 1,
 					'plugin_gravatar_api' => 1,
 					'plugin_slideshare_api' => 1,
 					'plugin_vimeo_api' => 1,

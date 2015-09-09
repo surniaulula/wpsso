@@ -35,9 +35,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_preserve' ).'</td>';
-
 			$rows[] = $this->p->util->get_th( 'Options to Show by Default', null, 'plugin_show_opts' ).
 			'<td class="blank">'.$this->p->cf['form']['show_options'][$this->p->options['plugin_show_opts']].'</td>';
 
@@ -59,15 +56,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( 'Enable Shortcode(s)', null, 'plugin_shortcodes' ).
+				$this->p->util->get_th( 'Enable Plugin Shortcode(s)', null, 'plugin_shortcodes' ).
 				'<td class="blank">'.$form->get_no_checkbox( 'plugin_shortcodes' ).'</td>';
 			}
 
 			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
 				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( 'Enable Widget(s)', null, 'plugin_widgets' ).
+				$this->p->util->get_th( 'Enable Plugin Widget(s)', null, 'plugin_widgets' ).
 				'<td class="blank">'.$form->get_no_checkbox( 'plugin_widgets' ).'</td>';
 			}
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Enable WP Excerpt for Pages', null, 'plugin_page_excerpt' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_excerpt' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Enable WP Tags for Pages', null, 'plugin_page_tags' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_tags' ).'</td>';
 
 			return $rows;
 		}
@@ -87,6 +92,22 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->p->util->get_th( 'Apply WordPress Excerpt Filters', null, 'plugin_filter_excerpt' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_excerpt' ).'</td>';
 
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Content Starts at 1st Paragraph', null, 'plugin_p_strip' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_p_strip' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Use Image Alt if No Content', null, 'plugin_use_img_alt' ).
+			'<td class="blank">'.$form->get_no_checkbox( 'plugin_use_img_alt' ).'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Image Alt Text Prefix', null, 'plugin_img_alt_prefix' ).
+			'<td class="blank">'.$form->options['plugin_img_alt_prefix'].'</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'WP Caption Paragraph Prefix', null, 'plugin_p_cap_prefix' ).
+			'<td class="blank">'.$form->options['plugin_p_cap_prefix'].'</td>';
+
 			$rows[] = $this->p->util->get_th( 'Check for Embedded Media', null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
 			'<p>'.$form->get_no_checkbox( 'plugin_slideshare_api' ).' Slideshare Presentations</p>'.
@@ -94,14 +115,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<p>'.$form->get_no_checkbox( 'plugin_wistia_api' ).' Wistia Videos</p>'.
 			'<p>'.$form->get_no_checkbox( 'plugin_youtube_api' ).' YouTube Videos and Playlists</p>'.
 			'</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Enable Excerpt for Pages', null, 'plugin_page_excerpt' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_excerpt' ).'</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Enable WordPress Tags for Pages', null, 'plugin_page_tags' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'plugin_page_tags' ).'</td>';
 
 			return $rows;
 		}

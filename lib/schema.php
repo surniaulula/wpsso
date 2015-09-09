@@ -48,21 +48,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$obj = $this->p->util->get_post_object( false );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-			$post_type = '';
-			$item_type = $this->p->cf['head']['schema_type']['website'];	// default value for non-singular webpages
+			$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
+				$this->p->cf['head']['schema_type'] );
+			$item_type = $schema_types['website'];		// default value for non-singular webpages
 
 			if ( is_singular() ) {
 
-				if ( ! empty( $obj->post_type ) )
-					$post_type = $obj->post_type;
-
-				if ( isset( $this->p->cf['head']['schema_type'][$post_type] ) )
-					$item_type = $this->p->cf['head']['schema_type'][$post_type];
-				else $item_type = $this->p->cf['head']['schema_type']['webpage'];
+				if ( ! empty( $obj->post_type ) &&
+					isset( $schema_types[$obj->post_type] ) )
+						$item_type = $schema_types[$obj->post_type];
+				else $item_type = $schema_types['webpage'];
 
 			} elseif ( $this->p->util->force_default_author() &&
 				! empty( $this->p->options['og_def_author_id'] ) )
-					$item_type = $this->p->cf['head']['schema_type']['webpage'];
+					$item_type = $schema_types['webpage'];
 
 			$item_type = apply_filters( $this->p->cf['lca'].'_schema_item_type', $item_type, $post_id, $obj );
 

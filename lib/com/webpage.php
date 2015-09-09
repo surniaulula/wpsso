@@ -399,10 +399,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( empty( $desc ) )
 						$desc = $this->get_content( $post_id, $use_post, $use_cache, $custom_idx, $source_id );
 			
-					// ignore everything until the first paragraph tag if $this->p->options['og_desc_strip'] is true
-					if ( $this->p->options['og_desc_strip'] ) {
+					// ignore everything before the first paragraph if true
+					if ( $this->p->options['plugin_p_strip'] ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'removing all text before first paragraph' );
+							$this->p->debug->log( 'removing all text before the first paragraph' );
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
 		
@@ -457,7 +457,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['og_desc_alt'] );
+			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 			if ( $textlen > 0 ) {
@@ -503,6 +503,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->debug->log( 'using content from object id '.$post_id );
 			$filter_content = $this->p->options['plugin_filter_content'];
 			$filter_name = $filter_content  ? 'filtered' : 'unfiltered';
+			$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
+				$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
 
 			/*
 			 * retrieve the content
@@ -591,9 +593,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
 				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
-			$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
-			$content = preg_replace( '/<p class="wp-caption-text">/', '${0}Caption: ', $content );
-			$content = str_replace( ']]>', ']]&gt;', $content );
+
+			if ( strpos( $content, '>Google+<' ) !== false )
+				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
+
+			if ( ! empty( $caption_prefix ) &&
+				strpos( $content, '<p class="wp-caption-text">' ) !== false )
+					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}'.$caption_prefix.' ', $content );
+
+			if ( strpos( $content, ']]>' ) !== false )
+				$content = str_replace( ']]>', ']]&gt;', $content );
 
 			$content_strlen_after = strlen( $content );
 			if ( $this->p->debug->enabled )

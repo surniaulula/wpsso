@@ -85,6 +85,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
+					$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
+
 					break;
 			}
 			return $rows;

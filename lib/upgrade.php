@@ -35,6 +35,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'twitter_js_loc' => 'twitter_script_loc',	// wpsso ssb
 			'buffer_js_loc' => 'buffer_script_loc',		// wpsso ssb
 			'linkedin_js_loc' => 'linkedin_script_loc',	// wpsso ssb
+			'og_desc_strip' => 'plugin_p_strip',
+			'og_desc_alt' => 'plugin_use_img_alt',
 		);
 
 		protected $p;

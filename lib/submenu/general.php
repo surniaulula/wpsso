@@ -99,24 +99,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_th( 'Description Length', null, 'og_desc_len' ).
 					'<td>'.$this->form->get_input( 'og_desc_len', 'short' ).' characters or less</td>';
 
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Content Starts at 1st Paragraph', null, 'og_desc_strip' ).
-					'<td>'.$this->form->get_checkbox( 'og_desc_strip' ).'</td>';
-
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Use Image Alt if Content is Empty', null, 'og_desc_alt' ).
-					'<td>'.$this->form->get_checkbox( 'og_desc_alt' ).'</td>';
-
 					$rows[] = $this->p->util->get_th( 'Add Hashtags to Descriptions', null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
 						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).' tag names</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Add Page Title in Tags', null, 'og_page_title_tag' ).
+					$this->p->util->get_th( 'Add Page Title in Tags / Hashtags', null, 'og_page_title_tag' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Add Page Ancestor Tags', null, 'og_page_parent_tags' ).
+					$this->p->util->get_th( 'Add Parent Page Tags / Hashtags', null, 'og_page_parent_tags' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_parent_tags' ).'</td>';
 
 					break;

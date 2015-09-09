@@ -734,6 +734,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_alt = false ) {
 			$alt_text = '';
+			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
+				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
 			$text = strip_shortcodes( $text );						// remove any remaining shortcodes
 			$text = html_entity_decode( $text, ENT_QUOTES, get_bloginfo( 'charset' ) );
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
@@ -742,9 +744,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$text = preg_replace( '/<style\b[^>]*>(.*?)<\/style>/i', ' ', $text);		// remove inline stylesheets
 			$text = preg_replace( '/<!--'.$this->p->cf['lca'].'-ignore-->(.*?)<!--\/'.
 				$this->p->cf['lca'].'-ignore-->/i', ' ', $text);			// remove text between comment strings
+
 			if ( $strip_tags ) {
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
 				$text_stripped = trim( strip_tags( $text ) );				// remove remaining html tags
+
 				if ( $text_stripped === '' && $use_alt ) {				// possibly use img alt strings if no text
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/U', 
@@ -753,8 +757,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						foreach ( $matches[1] as $alt ) {
 							$alt = trim( $alt );
 							if ( ! empty( $alt ) ) {
-								$alt = 'Image: '.$alt;
-								// add a period after the image alt text, if necessary
+								$alt = empty( $alt_prefix ) ? 
+									$alt : $alt_prefix.' '.$alt;
+
+								// add a period after the image alt text if missing
 								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? 
 									$alt.' ' : $alt.'. ';
 							}
@@ -766,6 +772,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				} else $text = $text_stripped;
 			}
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// convert space-like chars to a single space
+
 			return trim( $text );
 		}
 

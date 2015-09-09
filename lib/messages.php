@@ -281,12 +281,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_desc_hashtags':
 							$text = 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Pinterest Rich Pin description, tweet text, and social captions. Each tag name is converted to lowercase with whitespaces removed.  Select \'0\' to disable the addition of hashtags.';
 							break;
-						case 'tooltip-og_desc_strip':
-							$text = 'If a Page or Post does <em>not</em> have an excerpt, the plugin will ignore all text until the first html paragraph tag in the content. If an excerpt exists, then this option is ignored and the complete text of the excerpt is used.';
-							break;
-						case 'tooltip-og_desc_alt':
-							$text = 'If the content is empty or comprised entirely of HTML tags &mdash; which must be stripped to create a description &mdash; '.$atts['short'].' can extract and use the text from the image <em>alt=""</em> attributes instead of returning an empty description.';
-							break;
 						/*
 						 * 'Authorship' settings
 						 */
@@ -358,6 +352,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_filter_excerpt':
 							$text = 'Apply the standard WordPress \'get_the_excerpt\' filter to render the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpt, for example.';
+							break;
+						case 'tooltip-plugin_p_strip':
+							$text = 'If a Page or Post does <em>not</em> have an excerpt, and this option is checked, the plugin will ignore all text until the first html paragraph tag in the content. If an excerpt exists, then this option is ignored and the complete text of the excerpt is used.';
+							break;
+						case 'tooltip-plugin_use_img_alt':
+							$text = 'If the content is empty, or comprised entirely of HTML tags (that must be stripped to create a description text), '.$atts['short'].' can extract and use text from the image <em>alt=""</em> attributes instead of returning an empty description.';
+							break;
+						case 'tooltip-plugin_img_alt_prefix':
+							$text = 'When use of the image <em>alt=""</em> text is enabled, '.$atts['short'].' can prefix that text with an optional string. Leave this option empty to prevent image alt text from being prefixed.';
+							break;
+						case 'tooltip-plugin_p_cap_prefix':
+							$text = $atts['short'].' can add a custom text prefix to paragraphs assigned the "wp-caption-text" class. Leave this option empty to prevent caption paragraphs from being prefixed.';
 							break;
 						case 'tooltip-plugin_embedded_media':
 							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';

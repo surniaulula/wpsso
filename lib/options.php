@@ -380,6 +380,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'seo_desc':
 				case 'fb_app_id':
 				case 'tc_desc':
+				case 'plugin_img_alt_prefix':
+				case 'plugin_p_cap_prefix':
 				case 'plugin_cf_vid_url':
 				case 'plugin_cf_vid_embed':
 				case 'plugin_bitly_login':
