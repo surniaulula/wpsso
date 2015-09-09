@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
 
-			return $html_attr;
+			return trim( $html_attr );
 		}
 
 		public function get_array( &$og = array(), $use_post = false, $obj = false ) {

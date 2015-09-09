@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item_type value is empty' );
 
-			return $head_attr;
+			return trim( $head_attr );
 		}
 
 		public function get_meta_array( $use_post, &$obj, &$meta_og = array() ) {
