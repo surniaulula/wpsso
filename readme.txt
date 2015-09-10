@@ -413,6 +413,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.9.1 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Completed the Network SSO Advanced settings page "Plugin Settings" tab with all available options (Pro version).
+* **Bugfixes**
+	* Fixed an incorrect "Include Preview Image(s)" default value in the Social Settings metabox (Pro version).
+* **Developer Notes**
+	* *None*
+
 = Version 3.9 (2015/09/09) =
 
 <p><a href="http://surniaulula.com/2015/09/09/ngfb-wpsso-update-improved-schema-support/">Release notes for WPSSO Version 3.9</a>.</p>
