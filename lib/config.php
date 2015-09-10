@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_p_cap_prefix' => 'Caption:',
 					'plugin_use_img_alt' => 1,
 					'plugin_img_alt_prefix' => 'Image:',
-					'plugin_shortcodes' => 0,
+					'plugin_shortcodes' => 1,
 					'plugin_widgets' => 1,
 					'plugin_page_excerpt' => 0,
 					'plugin_page_tags' => 0,
