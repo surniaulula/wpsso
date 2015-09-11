@@ -374,7 +374,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$resized = image_make_intermediate_size( $fullsizepath, 
 							$size_info['width'], $size_info['height'], $size_info['crop'] );
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'image_make_intermediate_size() reported '.
+							$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
 								( $resized === false ? 'failure' : 'success' ) );
 						if ( $resized !== false ) {
 							$img_meta['sizes'][$size_name] = $resized;

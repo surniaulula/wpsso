@@ -49,7 +49,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						( $prio = has_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ) ) ) ) {
 							$ret = remove_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ), $prio );
 					}
-					if ( ! empty( $this->p->options['tc_enable'] ) && $this->aop() ) {
+					if ( ! empty( $this->p->options['tc_enable'] ) && 
+						$this->is_aop( $this->p->cf['lca'] ) ) {
+
 						global $wpseo_twitter;
 						if ( is_object( $wpseo_twitter ) && 
 							( $prio = has_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ) ) ) )
@@ -254,7 +256,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		public function is_aop( $lca = '' ) { 
-			return $this->aop( $lca );
+			return $this->aop( $lca, true, $this->get_avail_check( 'aop' ) );
 		}
 
 		public function aop( $lca = '', $li = true, $rv = true ) {
@@ -292,10 +294,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				if ( ! empty( $this->p->options['plugin_shortener'] ) && 
 					$this->p->options['plugin_shortener'] !== 'none' ) {
 
-					$this->p->debug->log( 'url shortening is enabled but curl function is missing' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'url shortening is enabled but curl function is missing' );
 					$this->p->notice->err( sprintf( __( 'URL shortening has been enabled, but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
 				} elseif ( ! empty( $this->p->options['plugin_file_cache_exp'] ) ) {
-					$this->p->debug->log( 'file caching is enabled but curl function is missing' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'file caching is enabled but curl function is missing' );
 					$this->p->notice->err( sprintf( __( 'The file caching feature has been enabled but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', WPSSO_TEXTDOM ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', WPSSO_TEXTDOM ) );
 				}
 			}
@@ -304,19 +308,26 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			if ( $this->p->is_avail['seo']['wpseo'] === true ) {
 				$opts = get_option( 'wpseo_social' );
 				if ( ! empty( $opts['opengraph'] ) ) {
-					$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Open Graph meta data</em>\' Facebook option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
 				}
-				if ( ! empty( $this->p->options['tc_enable'] ) && $this->aop() && ! empty( $opts['twitter'] ) ) {
-					$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
+				if ( ! empty( $this->p->options['tc_enable'] ) && 
+					! empty( $opts['twitter'] ) &&
+					$this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Twitter card meta data</em>\' Twitter option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
 				}
 				if ( ! empty( $opts['googleplus'] ) ) {
-					$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Google+ specific post meta data</em>\' Google+ option in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 				if ( ! empty( $opts['plus-publisher'] ) ) {
-					$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered in the <a href="%s">Yoast SEO: Social</a> settings.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 
@@ -334,7 +345,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$opts = get_option( 'seo_ultimate' );
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
-						$this->p->debug->log( $log_pre.'seo ultimate opengraph module is enabled' );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $log_pre.'seo ultimate opengraph module is enabled' );
 						$this->p->notice->err( $err_pre.sprintf( __( 'Please disable the \'<em>Open Graph Integrator</em>\' module in the <a href="%s">SEO Ultimate plugin Module Manager</a>.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=seo' ) ) );
 					}
 				}
@@ -344,18 +356,23 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			if ( $this->p->is_avail['seo']['aioseop'] === true ) {
 				$opts = get_option( 'aioseop_options' );
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
-					$this->p->debug->log( $log_pre.'aioseop social meta fetaure is enabled' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'aioseop social meta fetaure is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please deactivate the \'<em>Social Meta</em>\' feature in the <a href="%s">All in One SEO Pack Feature Manager</a>.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_feature_manager.php' ) ) );
 				}
 				if ( array_key_exists( 'aiosp_google_disable_profile', $opts ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
-					$this->p->debug->log( $log_pre.'aioseop google plus profile is enabled' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'aioseop google plus profile is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please check the \'<em>Disable Google Plus Profile</em>\' option in the <a href="%s">All in One SEO Pack Plugin Options</a>.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
 				}
 			}
 
 			// JetPack Photon
-			if ( $this->p->is_avail['media']['photon'] === true && ! $this->aop() ) {
-				$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
+			if ( $this->p->is_avail['media']['photon'] === true && 
+				! $this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
 				$this->p->notice->err( $err_pre.__( '<strong>JetPack\'s Photon module cripples the WordPress image size functions on purpose</strong>.', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', WPSSO_TEXTDOM ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> which includes an <a href="%s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %s images.', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
 			}
 
@@ -365,13 +382,18 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			// NextGEN Facebook (NGFB)
 			if ( class_exists( 'Ngfb' ) ) {
-                                $this->p->debug->log( $log_pre.'NGFB plugin is active' );
+				if ( $this->p->debug->enabled )
+                                	$this->p->debug->log( $log_pre.'NGFB plugin is active' );
                                 $this->p->notice->err( $err_pre.sprintf( __( 'Please <a href="%s">deactivate the NextGEN Facebook (NGFB) plugin</a> to prevent duplicate and conflicting features.', WPSSO_TEXTDOM ), get_admin_url( null, 'plugins.php?s=nextgen-facebook/nextgen-facebook.php' ) ) );
                         }
 
 			// WooCommerce
-			if ( class_exists( 'Woocommerce' ) && ! $this->aop() && ! empty( $this->p->options['plugin_filter_content'] ) ) {
-				$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
+			if ( class_exists( 'Woocommerce' ) && 
+				! empty( $this->p->options['plugin_filter_content'] ) &&
+				! $this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
 				$this->p->notice->err( $err_pre.__( '<strong>WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', WPSSO_TEXTDOM ).' '.sprintf( __( 'Please uncheck the \'<em>Apply WordPress Content Filters</em>\' option on the <a href="%s">%s Advanced settings page</a>.', WPSSO_TEXTDOM ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%s">%s version</a> that includes an <a href="%s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', WPSSO_TEXTDOM ), $purchase_url, $short_pro, 'http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
 			}
 		}
