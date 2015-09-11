@@ -19,11 +19,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$this->p->debug->mark();
 		}
 
-		public function get( $idx = false, $atts = array(), $class = '' ) {
+		public function get( $idx = false, $atts = array() ) {
+
 			if ( is_string( $atts ) ) {
 				$text = $atts;
 				$atts = array();
-			} else $text = '';
+			} else {
+				$text = isset( $atts['text'] ) ?
+					$atts['text'] : '';
+			}
 
 			$idx = sanitize_title_with_dashes( $idx );
 
@@ -45,8 +49,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * All tooltips
 			 */
 			if ( strpos( $idx, 'tooltip-' ) === 0 ) {
-				if ( empty( $class ) )
-					$class = $this->p->cf['form']['tooltip_class'];	// default tooltip class
 				/*
 				 * 'Plugin Features' side metabox
 				 */
@@ -405,7 +407,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'File and Object Cache' settings
 						 */
 						case 'tooltip-plugin_object_cache_exp':
-							$exp_sec = 86400;
+							// use the original un-filtered value
+							$exp_sec = WpssoConfig::$cf['opt']['defaults']['plugin_object_cache_exp'];
 							$exp_hrs = sprintf( '%0.2d', $exp_sec / 60 / 60 );
 							$text = $atts['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).<br/><br/>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.';
 							break;
@@ -771,12 +774,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				}
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $atts );
 
-			if ( is_array( $atts ) && ! empty( $atts['is_locale'] ) )
-				$text .= ' This option is localized &mdash; you may change the WordPress admin locale with <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, <a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>, etc., to define alternate values for different languages.';
+			if ( is_array( $atts ) && 
+				! empty( $atts['is_locale'] ) )
+					$text .= ' This option is localized &mdash; you may change the WordPress admin locale with <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, <a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>, etc., to define alternate values for different languages.';
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) )
 				return '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.
-					$class.'" alt="'.esc_attr( $text ).'" />';
+					( isset( $atts['class'] ) ? $atts['class'] : $this->p->cf['form']['tooltip_class'] ).
+						'" alt="'.esc_attr( $text ).'" />';
 			else return $text;
 		}
 	}

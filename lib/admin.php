@@ -744,7 +744,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $status ) ) {
 					$tooltip_text = empty( $arr['tooltip'] ) ? '' : $arr['tooltip'];
-					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$name, $tooltip_text, 'sucom_tooltip_side' );
+					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$name, 
+						array( 'text' => $tooltip_text, 'class' => 'sucom_tooltip_side' ) );
 
 					echo '<tr><td class="side'.$td_class.'">'.
 					$tooltip_text.( $status == 'rec' ? '<strong>'.$name.'</strong>' : $name ).
@@ -944,9 +945,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '</td></tr>'."\n";
 
 				if ( $network ) {
-					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+					if ( ! empty( $info['update_auth'] ) || 
+						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+
 						if ( $this->p->cf['lca'] === $lca || 
-							$this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+							$this->p->check->aop( $this->p->cf['lca'], 
+								true, $this->p->is_avail['aop'] ) ) {
+
 							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
 								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
 								$this->p->util->get_th( 'Site Use', 'site_use' ).
@@ -957,17 +962,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
-									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td>
-									<td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+								'</td><td colspan="2">'.( $this->p->check->aop( $this->p->cf['lca'], 
+									true, $this->p->is_avail['aop'] ) ?
+										'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 				} else {
-					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+					if ( ! empty( $info['update_auth'] ) || 
+						! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+
 						if ( $this->p->cf['lca'] === $lca || 
-							$this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+							$this->p->check->aop( $this->p->cf['lca'], 
+								true, $this->p->is_avail['aop'] ) ) {
+
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $lca, 'qty_used' ) : false;
+
 							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
 								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).
 								'</td><td><p>'.( empty( $qty_used ) ? 
@@ -977,15 +987,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
 									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
 									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ? 
-									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
+								'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], 
+									true, $this->p->is_avail['aop'] ) ? 
+										'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
 				}
 
-				if ( $num < $total )
-					echo '<tr><td style="border-bottom:1px dotted #ddd;" colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
-				else echo '<tr><td colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
+				echo '<tr><td'.( $num < $total ? ' style="border-bottom:1px dotted #ddd;"' : '' ).
+					' colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
 			}
 			echo '</table>'."\n";
 		}

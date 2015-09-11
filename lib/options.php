@@ -25,6 +25,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
+
 			if ( ! isset( $this->p->cf['opt']['defaults']['options_filtered'] ) ||
 				$this->p->cf['opt']['defaults']['options_filtered'] !== true ||
 				$force_filter === true ) {
@@ -58,14 +59,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['defaults']['options_version'] = $this->p->cf['opt']['version'];
 				$this->p->cf['opt']['defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
+
 			if ( $idx !== false ) 
-				if ( array_key_exists( $idx, $this->p->cf['opt']['defaults'] ) )
+				if ( isset( $this->p->cf['opt']['defaults'][$idx] ) )
 					return $this->p->cf['opt']['defaults'][$idx];
 				else return false;
 			else return $this->p->cf['opt']['defaults'];
 		}
 
 		public function get_site_defaults( $idx = false, $force_filter = false ) {
+
 			if ( ! isset( $this->p->cf['opt']['site_defaults']['options_filtered'] ) ||
 				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
 				$force_filter === true ) {
@@ -78,8 +81,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
 				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
+
 			if ( $idx !== false ) {
-				if ( array_key_exists( $idx, $defs ) )
+				if ( isset( $this->p->cf['opt']['site_defaults'][$idx] ) )
 					return $this->p->cf['opt']['site_defaults'][$idx];
 				else return false;
 			} else return $this->p->cf['opt']['site_defaults'];

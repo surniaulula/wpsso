@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 
 			$rows[] = $this->p->util->get_th( 'Include Preview Image(s)', 'medium', 'post-og_vid_prev_img', $head_info ).
-			'<td class="blank">&nbsp;</td>';
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			'<td colspan="2" class="subsection"><h4>Pinterest (Rich Pin)</h4></td>';

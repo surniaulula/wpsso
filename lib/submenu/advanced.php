@@ -43,7 +43,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
+					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
+						array(), $this->form, false ) );	// $network = false
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
@@ -55,7 +56,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
+					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
+						array(), $this->form, false ) );	// $network = false
 			$this->p->util->do_table_rows( 
 				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
 				'metabox-'.$metabox.'-info'

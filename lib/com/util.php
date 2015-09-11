@@ -1010,21 +1010,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// deprecated
-		public function th( $title = '', $class = '', $id = '', $atts = null ) {
-			return $this->get_th( $title, $class, $id, $atts );
-		}
-
 		// table header with optional tooltip text
-		public function get_th( $title = '', $class = '', $id = '', $atts = null ) {
-			if ( ! empty( $this->p->msgs ) ) {
+		public function get_th( $title = '', $class = '', $id = '', $atts = array() ) {
+
+			if ( isset( $this->p->msgs ) ) {
 				if ( empty( $id ) ) 
 					$tooltip_idx = 'tooltip-'.$title;
 				else $tooltip_idx = 'tooltip-'.$id;
 				$tooltip_text = $this->p->msgs->get( $tooltip_idx, $atts );	// text is esc_attr()
-			}
+			} else $tooltip_text = '';
 
-			if ( is_array( $atts ) && ! empty( $atts['is_locale'] ) )
+			if ( isset( $atts['is_locale'] ) )
 				$title .= ' <span style="font-weight:normal;">('.self::get_locale().')</span>';
 
 			return '<th'.

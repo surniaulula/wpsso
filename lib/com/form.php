@@ -50,30 +50,37 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return '<input type="hidden" name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $value ).'" />';
 		}
 
-		public function get_checkbox( $name, $check = array( 1, 0 ), $class = '', $id = '', $disabled = false ) {
-			if ( empty( $name ) ) return;	// just in case
-			if ( ! is_array( $check ) ) $check = array( 1, 0 );
+		public function get_checkbox( $name, $class = '', $id = '', $disabled = false ) {
+			if ( empty( $name ) )
+				return;	// just in case
+
 			if ( $this->in_options( $name.':is' ) && 
 				$this->options[$name.':is'] === 'disabled' )
 					$disabled = true;
+
 			$html = $disabled === true ? 
 				$this->get_hidden( $name ) :
 				$this->get_hidden( 'is_checkbox_'.$name, 1 );
+
 			$html .= '<input type="checkbox"'.
 				( $disabled === true ?
 					' disabled="disabled"' :
-					' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $check[0] ).'"' ).
+					' name="'.$this->options_name.'['.$name.']" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="checkbox_'.$id.'"' ).
-				( $this->in_options( $name ) ? checked( $this->options[$name], $check[0], false ) : '' ).
+				( $this->in_options( $name ) ? 
+					checked( $this->options[$name], 1, false ) :
+					( $this->in_defaults( $name ) ?		// use default if option not defined
+						checked( $this->defaults[$name], 1, false ) : '' ) ).
 				' title="default is '.( $this->in_defaults( $name ) && 
-					$this->defaults[$name] == $check[0] ? 'checked' : 'unchecked' ).
+					! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
 				( $disabled === true ? ' (option disabled)' : '' ).'" />';
+
 			return $html;
 		}
 
-		public function get_no_checkbox( $name, $check = array( 1, 0 ), $class = '', $id = '' ) {
-			return $this->get_checkbox( $name, $check, $class, $id, true );
+		public function get_no_checkbox( $name, $class = '', $id = '' ) {
+			return $this->get_checkbox( $name, $class, $id, true );
 		}
 
 		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $disabled = false ) {
@@ -95,8 +102,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						' name="'.$this->options_name.'['.$name.']" value="'.esc_attr( $val ).'"' ).
 					( empty( $class ) ? '' : ' class="'.$class.'"' ).
 					( empty( $id ) ? '' : ' id="radio_'.$id.'"' ).
-					( $this->in_options( $name ) ? checked( $this->options[$name], $val, false ) : '' ).
-					( $this->in_defaults( $name ) ? ' title="default is '.$values[$this->defaults[$name]].'"' : '' ).
+					( $this->in_options( $name ) ? 
+						checked( $this->options[$name], $val, false ) : '' ).
+					( $this->in_defaults( $name ) ?
+						' title="default is '.$values[$this->defaults[$name]].'"' : '' ).
 					'/> '.$desc.'&nbsp;&nbsp;';
 			}
 			return $html;

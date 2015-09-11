@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		static function delete_metabox_prefs( $user_id = false ) {
+		public static function delete_metabox_prefs( $user_id = false ) {
 			$user_id = $user_id === false ? 
 				get_current_user_id() : $user_id;
 			$cf = WpssoConfig::get_config( false, true );
@@ -490,7 +490,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		static function delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug ) {
+		private static function delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug ) {
 			$pagehook = get_plugin_page_hookname( $menu_slug, $parent_slug);
 			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $state ) {
 				$meta_key = $state.'_'.$pagehook;

@@ -26,10 +26,12 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_plugin', 'Network Advanced Settings', array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_plugin', 'Network Advanced Settings', 
+				array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes
-			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_plugin', array( &$this, 'add_class_postbox_network' ) );
+			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_plugin', 
+				array( &$this, 'add_class_postbox_network' ) );
 		}
 
 		public function add_class_postbox_network( $classes ) {
@@ -44,28 +46,27 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 				'cache' => 'File and Object Cache' ) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form, true ) );
+				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
+						array(), $this->form, true ) );	// $network = true
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
 		protected function get_rows( $metabox, $key ) {
 			$rows = array();
 			switch ( $metabox.'-'.$key ) {
-				case 'plugin-settings': 
+				case 'plugin-settings':
 
 					$rows['plugin_debug'] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_debug' ).'</td>'.
-					$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
-					$this->form->get_select( 'plugin_debug:use',
-						$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>';
-						
+					$this->p->util->get_th( 'Site Use', 'site_use' ).
+					'<td>'.$this->form->get_select( 'plugin_debug:use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>';
+
 					$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>'.
-					$this->p->util->get_th( 'Site Use', 'site_use' ).'<td>'.
-					$this->form->get_select( 'plugin_preserve:use',
-						$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>'; 
-					
+					$this->p->util->get_th( 'Site Use', 'site_use' ).
+					'<td>'.$this->form->get_select( 'plugin_preserve:use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>';
+
 					break;
 			}
 			return $rows;
