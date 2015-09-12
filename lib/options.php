@@ -17,7 +17,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$this->p->util->add_plugin_filters( $this, array( 
 				'option_type' => 2,	// identify option type for sanitation
 			) );
@@ -106,8 +107,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						WpssoUtil::save_time( $lca, $this->p->cf['plugin'][$lca]['version'], 'update' );
 
 					if ( $update_options === true ) {
-						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
-							' different than saved v'.$opts['options_version'] );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
+								' different than saved v'.$opts['options_version'] );
 						if ( ! is_object( $this->upg ) ) {
 							require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
 							$this->upg = new WpssoOptionsUpgrade( $this->p );
@@ -147,7 +149,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts_err_msg = 'returned an empty array when reading '.$options_name.' from';
 				else $opts_err_msg = 'returned an unknown condition when reading '.$options_name.' from';
 
-				$this->p->debug->log( 'WordPress '.$opts_err_msg.' the options database table.' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'WordPress '.$opts_err_msg.' the options database table.' );
+
 				if ( $network === false )
 					$opts = $this->get_defaults();
 				else $opts = $this->get_site_defaults();
@@ -248,16 +252,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts['og_desc_len'] < $this->p->cf['head']['min_desc_len'] ) 
 					$opts['og_desc_len'] = $this->p->cf['head']['min_desc_len'];
 
-			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
-				$opt_name = 'plugin_'.$lca.'_tid';
-				if ( isset( $opts[$opt_name] ) ) {
-					if ( empty( $opts[$opt_name] ) )
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				if ( ! empty( $info['update_auth'] ) ) {
+					$opt_name = 'plugin_'.$lca.'_'.$info['update_auth'];
+					if ( isset( $opts[$opt_name] ) &&
+						isset( $this->p->options[$opt_name] ) &&
+						$opts[$opt_name] !== $this->p->options[$opt_name] ) {
+
+						$this->p->options[$opt_name] = $opts[$opt_name];
 						delete_option( $lca.'_umsg' );
-					if ( isset( $this->p->options[$opt_name] ) && 
-						$opts[$opt_name] !== $this->p->options[$opt_name] )
-							delete_option( $lca.'_utime' );
+						delete_option( $lca.'_utime' );
+					}
 				}
 			}
+
 			return $opts;
 		}
 
@@ -265,7 +273,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function save_options( $options_name, &$opts, $network = false ) {
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
-				$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
 				return $opts;
 			}
 			// mark the new options as current

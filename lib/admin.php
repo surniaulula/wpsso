@@ -24,7 +24,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 				// nothing to do
@@ -389,11 +390,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			wp_enqueue_script( 'postbox' );
 
 			if ( ! empty( $_GET['action'] ) ) {
-				if ( empty( $_GET[ WPSSO_NONCE ] ) )
-					$this->p->debug->log( 'nonce token validation query field missing' );
-				elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], $this->get_nonce() ) )
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'nonce token validation query field missing' );
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], $this->get_nonce() ) ) {
 					$this->p->notice->err( __( 'Nonce token validation failed for plugin action (action ignored).', WPSSO_TEXTDOM ) );
-				else {
+				} else {
 					switch ( $_GET['action'] ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {

@@ -16,7 +16,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		public function get( $idx = false, $atts = array() ) {
