@@ -250,10 +250,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				// if multisite options are found, check for overwrite of site specific options
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
-					$current_blog_id = function_exists( 'get_current_blog_id' ) ? get_current_blog_id() : false;
+					$current_blog_id = function_exists( 'get_current_blog_id' ) ? 
+						get_current_blog_id() : false;
 					foreach ( $this->site_options as $key => $val ) {
-						if ( array_key_exists( $key, $this->options ) && 
-							array_key_exists( $key.':use', $this->site_options ) ) {
+						if ( isset( $this->site_options[$key.':use'] ) &&
+							isset( $this->options[$key] ) ) {
 
 							switch ( $this->site_options[$key.':use'] ) {
 								case'force':
