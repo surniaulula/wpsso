@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.9.1 =
+= Version 3.9.1 (2015/09/13) =
 
 * **New Features**
 	* *None*
@@ -537,6 +537,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* The WPSSO WordPress REST API v2 module extends the returned /wp-json/wp/v2/posts (including custom post types), terms, and users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays (Pro version).
 
 == Upgrade Notice ==
+
+= 3.9.1 =
+
+Fixed incorrect "Include Preview Image(s)" default value in Social Settings metabox, and completed the Network Advanced settings page "Plugin Settings" tab (Pro version).
 
 = 3.9 =
 
