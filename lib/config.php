@@ -755,9 +755,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_variable_constants() { 
 			$var_const = array();
 
-			if ( defined( 'WPSSO_DEBUG' ) )				// backwards compatibility
-				$var_const['WPSSO_HTML_DEBUG'] = WPSSO_DEBUG;
-
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR.'cache/';
 				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR.'share/topics.txt';
