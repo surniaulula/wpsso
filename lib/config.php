@@ -396,28 +396,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_description' => 1,
 					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_image' => 1,
-					// advanced plugin options
+					/*
+					 * Advanced Settings
+					 */
 					'plugin_version' => '',
 					'plugin_wpsso_tid' => '',
-					'plugin_show_opts' => 'basic',
-					'plugin_preserve' => 0,
-					'plugin_debug' => 0,
-					'plugin_cache_info' => 0,
+					// Plugin Settings Tab
+					'plugin_debug' => 0,				// Add Hidden Debug Messages
+					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
+					'plugin_show_opts' => 'basic',			// Options to Show by Default
+					'plugin_cache_info' => 0,			// Report Cache Purge Count
+					'plugin_filter_lang' => 1,			// Use WP Locale for Language
+					'plugin_auto_img_resize' => 1,			// Auto-Resize Media Images
+					'plugin_ignore_small_img' => 1,			// Check Image Dimensions
+					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
+					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					'plugin_check_head' => 1,
 					'plugin_filter_title' => 1,
 					'plugin_filter_content' => 0,
 					'plugin_filter_excerpt' => 0,
-					'plugin_filter_lang' => 1,
 					'plugin_p_strip' => 0,
 					'plugin_p_cap_prefix' => 'Caption:',
 					'plugin_use_img_alt' => 1,
 					'plugin_img_alt_prefix' => 'Image:',
 					'plugin_shortcodes' => 1,
 					'plugin_widgets' => 1,
-					'plugin_page_excerpt' => 0,
-					'plugin_page_tags' => 0,
-					'plugin_auto_img_resize' => 1,
-					'plugin_ignore_small_img' => 1,
 					'plugin_gravatar_api' => 1,
 					'plugin_slideshare_api' => 1,
 					'plugin_vimeo_api' => 1,
@@ -435,9 +438,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_html_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'language_attributes',
 					'plugin_head_attr_filter_prio' => 100,
-					'plugin_object_cache_exp' => 86400,	// 24 hours
+					// File and Object Cache Tab
+					'plugin_object_cache_exp' => 86400,		// Object Cache Expiry
 					'plugin_file_cache_exp' => 0,
-					'plugin_verify_certs' => 0,
+					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_shortener' => 'none',
 					'plugin_min_shorten' => 22,
 					'plugin_bitly_login' => '',
@@ -487,31 +491,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'site_defaults' => array(
 					'options_filtered' => false,
 					'options_version' => '',
+					/*
+					 * Advanced Settings
+					 */
 					'plugin_version' => '',
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
-					'plugin_preserve' => 0,
-					'plugin_preserve:use' => 'default',
-					'plugin_debug' => 0,
+					// Plugin Settings Tab
+					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_debug:use' => 'default',
-					'plugin_object_cache_exp' => 86400,	// 24 hours
+					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
+					'plugin_preserve:use' => 'default',
+					'plugin_show_opts' => 'basic',			// Options to Show by Default
+					'plugin_show_opts:use' => 'default',
+					'plugin_cache_info' => 0,			// Report Cache Purge Count
+					'plugin_cache_info:use' => 'default',
+					'plugin_filter_lang' => 1,			// Use WP Locale for Language
+					'plugin_filter_lang:use' => 'default',
+					'plugin_auto_img_resize' => 1,			// Auto-Resize Media Images
+					'plugin_auto_img_resize:use' => 'default',
+					'plugin_ignore_small_img' => 1,			// Check Image Dimensions
+					'plugin_ignore_small_img:use' => 'default',
+					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
+					'plugin_page_excerpt:use' => 'default',
+					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
+					'plugin_page_tags:use' => 'default',
+					// File and Object Cache Tab
+					'plugin_object_cache_exp' => 86400,		// Object Cache Expiry
 					'plugin_object_cache_exp:use' => 'default',
 					'plugin_file_cache_exp' => 0,
 					'plugin_file_cache_exp:use' => 'default',
-					'plugin_verify_certs' => 0,
+					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
-					'plugin_shortener' => 'none',
-					'plugin_shortener:use' => 'default',
-					'plugin_min_shorten' => 22,
-					'plugin_min_shorten:use' => 'default',
-					'plugin_bitly_login' => '',
-					'plugin_bitly_login:use' => 'default',
-					'plugin_bitly_api_key' => '',
-					'plugin_bitly_api_key:use' => 'default',
-					'plugin_google_api_key' => '',
-					'plugin_google_api_key:use' => 'default',
-					'plugin_google_shorten' => 0,
-					'plugin_google_shorten:use' => 'default',
 				),
 				'pre' => array(
 					'email' => 'email', 
