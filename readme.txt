@@ -422,7 +422,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* Fixed an incorrect "Include Preview Image(s)" default value in the Social Settings metabox (Pro version).
 * **Developer Notes**
-	* *None*
+	* Moved the `conflict_warnings()` method from WpssoCheck to the WpssoAdmin class.
 
 = Version 3.9 (2015/09/09) =
 
