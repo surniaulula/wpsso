@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
-				add_action( 'activated_plugin', array( &$this, 'um_activate_trunc_notice' ), 10, 2 );
+				add_action( 'activated_plugin', array( &$this, 'um_activated_trunc_nag' ), 10, 2 );
 	
 				add_filter( 'current_screen', array( &$this, 'screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
@@ -178,14 +178,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function um_activate_trunc_notice( $plugin = false, $sitewide = false ) {
+		public function um_activated_trunc_nag( $plugin = false, $sitewide = false ) {
 			$um_lca = $this->p->cf['lca'].'um';
 			$um_base = $this->p->cf['plugin'][$um_lca]['base'];
 			if ( $plugin === $um_base )
 				$this->p->notice->trunc( 'nag' );
 		}
 
-		protected function set_form() {
+		protected function set_form_property() {
 			$def_opts = $this->p->opt->get_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts );
 		}
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! $this->is_setting( $this->menu_id ) )	// the "setting" pages display their own error messages
 				settings_errors( WPSSO_OPTIONS_NAME );	// display "error" and "updated" messages
 
-			$this->set_form();				// define form for side boxes and show_form_content()
+			$this->set_form_property();			// define form for side boxes and show_form_content()
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );

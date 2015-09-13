@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 			$this->menu_name = $name;
 		}
 
-		protected function set_form() {
+		protected function set_form_property() {
 			$def_site_opts = $this->p->opt->get_site_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts );
 		}
