@@ -36,7 +36,7 @@
 
 <h4>Quick List of Features</h4>
 
-<p><strong>WPSSO Free / Basic Version Features</strong></p>
+<p><strong>WPSSO Free / Basic Features</strong></p>
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -80,7 +80,7 @@
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
 </div>
 
-<p><strong>WPSSO Pro / Power-User Version Features</strong></p>
+<p><strong>WPSSO Pro / Power-User Features</strong></p>
 
 <ul>
 <li>Twitter Card meta tags:
