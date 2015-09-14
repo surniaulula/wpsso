@@ -6,7 +6,7 @@ Donate Link: https://wpsso.com/
 Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, gallery card, google, google plus, hashtags, imagebrowser, jetpack, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, photo card, photon, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
-Requires At Least: 3.0
+Requires At Least: 3.1
 Tested Up To: 4.3
 Stable Tag: 3.9.2
 
