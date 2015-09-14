@@ -115,7 +115,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<h4>3rd Party Integration</h4>
+<h4>3rd Party Integration (Pro version)</h4>
 
 Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.
 
@@ -126,7 +126,7 @@ Aside from the additional support for Twitter Cards, the main difference between
 
 <strong>Images and Videos</strong>
 
-WPSSO detects and uses all images - associated or included in your Post or Page content - including WordPress image galleries. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).
+WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and NextGEN Gallery shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).
 
 WPSSO (Pro version) also includes support for [JetPack Photon](http://jetpack.me/support/photon/) and [NextGEN Gallery v1 and v2](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).
 
@@ -259,10 +259,6 @@ WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/ty
 <h4>Proven Performance</h4>
 
 WPSSO is *fast and coded for performance*, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features.
-
-<h4>Clean Uninstall</h4>
-
-Try the WPSSO plugin with complete confidence &mdash; when uninstalled, WPSSO removes *all* traces of itself from the database (options, site options, user and post meta, transients, etc.).
 
 <h4>Professional Support</h4>
 
