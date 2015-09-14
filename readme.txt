@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.0
 Tested Up To: 4.3
-Stable Tag: 3.9.1
+Stable Tag: 3.9.2
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.9.1 (2015/09/13) =
+= Version 3.9.2 (2015/09/13) =
 
 * **New Features**
 	* *None*
@@ -538,7 +538,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 == Upgrade Notice ==
 
-= 3.9.1 =
+= 3.9.2 =
 
 Fixed incorrect "Include Preview Image(s)" default value in Social Settings metabox, and completed the Network Advanced settings page "Plugin Settings" tab (Pro version).
 
