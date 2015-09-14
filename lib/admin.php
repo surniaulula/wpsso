@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 				if ( ! empty( $this->p->options['tc_enable'] ) && 
 					! empty( $opts['twitter'] ) &&
-					$this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+					$this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// JetPack Photon
 			if ( $this->p->is_avail['media']['photon'] === true && 
-				! $this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
@@ -1106,7 +1106,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// WooCommerce
 			if ( class_exists( 'Woocommerce' ) && 
 				! empty( $this->p->options['plugin_filter_content'] ) &&
-				! $this->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
