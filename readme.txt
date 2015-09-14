@@ -423,7 +423,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Fixed an incorrect "Include Preview Image(s)" default value in the Social Settings metabox (Pro version).
 * **Developer Notes**
 	* Moved the `conflict_warnings()` method from WpssoCheck to the WpssoAdmin class.
-	* Changed the minimum WordPress version from 3.0 to 3.1 to use WPSSO (required to display admin notices).
+	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 = Version 3.9 (2015/09/09) =
 
