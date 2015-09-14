@@ -36,7 +36,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 <h4>Quick List of Features</h4>
 
-<strong>WPSSO Free / Basic Version</strong>
+<strong>WPSSO Free / Basic Version Features</strong>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -74,7 +74,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
 </div>
 
-<strong>WPSSO Pro / Power-User Version</strong>
+<strong>WPSSO Pro / Power-User Version Features</strong>
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
