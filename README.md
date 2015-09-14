@@ -135,46 +135,6 @@
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<h4>3rd Party Integration (Pro version)</h4>
-
-<p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
-
-<div style="clear:both;"></div>
-
-<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="100%" height="100%"/></p>
-</div>
-
-<p><strong>Images and Videos</strong></p>
-
-<p>WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and NextGEN Gallery shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).</p>
-
-<p>WPSSO (Pro version) also includes support for <a href="http://jetpack.me/support/photon/">JetPack Photon</a> and <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery v1 and v2</a> albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).</p>
-
-<p><strong>Enhanced SEO</strong></p>
-
-<p>WPSSO (Pro version) integrates with <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a>, <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, and <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a> &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, and Twitter Card meta tags.</p>
-
-<blockquote>
-<p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the Yoast SEO (aka WordPress SEO) and WPSSO plugins</a> for social sharing.</p>
-</blockquote>
-
-<div style="clear:both;"></div>
-
-<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png" width="100%" height="100%"/></p>
-</div>
-
-<p><strong>eCommerce Products</strong></p>
-
-<p>WPSSO (Pro version) also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a>, <a href="https://dev.twitter.com/docs/cards/types/product-card">Twitter Product Cards</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
-
-<p><strong>Forums and Social</strong></p>
-
-<p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
-
-<div style="clear:both;"></div>
-
 <h4>User Profile Social Contacts</h4>
 
 <p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:</p>
@@ -298,6 +258,46 @@
 <li>twitter:title</li>
 </ul></li>
 </ul>
+
+<h4>3rd Party Integration (Pro version)</h4>
+
+<p>Aside from the additional support for Twitter Cards, the main difference between the WPSSO Free and Pro versions is the integration of 3rd party plugins and services.</p>
+
+<div style="clear:both;"></div>
+
+<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-tiled-gallery-wpsso.png" width="100%" height="100%"/></p>
+</div>
+
+<p><strong>Images and Videos</strong></p>
+
+<p>WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and NextGEN Gallery shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended audience (Facebook, Twitter, Pinterest, etc). The Pro version also detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including their preview images).</p>
+
+<p>WPSSO (Pro version) also includes support for <a href="http://jetpack.me/support/photon/">JetPack Photon</a> and <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery v1 and v2</a> albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).</p>
+
+<p><strong>Enhanced SEO</strong></p>
+
+<p>WPSSO (Pro version) integrates with <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a>, <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, and <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a> &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, and Twitter Card meta tags.</p>
+
+<blockquote>
+<p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the Yoast SEO (aka WordPress SEO) and WPSSO plugins</a> for social sharing.</p>
+</blockquote>
+
+<div style="clear:both;"></div>
+
+<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png" width="100%" height="100%"/></p>
+</div>
+
+<p><strong>eCommerce Products</strong></p>
+
+<p>WPSSO (Pro version) also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a>, <a href="https://dev.twitter.com/docs/cards/types/product-card">Twitter Product Cards</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
+
+<p><strong>Forums and Social</strong></p>
+
+<p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a> and <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.</p>
+
+<div style="clear:both;"></div>
 
 <h4>Proven Performance</h4>
 
