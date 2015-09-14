@@ -115,22 +115,6 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<h4>User Profile Social Contacts</h4>
-
-WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts from the user profile page:
-
-* AIM
-* Facebook URL
-* Google+ URL
-* Jabber / Google Talk
-* LinkedIn URL
-* Pinterest URL
-* Skype Username
-* Tumblr URL
-* Twitter @username
-* Yahoo IM
-* YouTube Channel URL
-
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
 <p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="100%" height="100%"/></p>
@@ -141,6 +125,24 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 WPSSO provides <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their profile social sharing image, and all listed contact URLs from their user profile. The publisher (Organization) markup includes the website URL, a corporate logo, a default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
 
 <div style="clear:both;"></div>
+
+<h4>User Profile Social Contacts</h4>
+
+WPSSO allows you to customize (Pro version) the field names, label, and add / remove the following contacts from the user profile page:
+
+* AIM
+* Facebook URL
+* Google+ URL
+* Instagram URL
+* Jabber / Google Talk
+* LinkedIn URL
+* MySpace URL
+* Pinterest URL
+* Skype Username
+* Tumblr URL
+* Twitter @username
+* Yahoo IM
+* YouTube Channel URL
 
 <h4>Complete Social Meta Tags</h4>
 
