@@ -34,9 +34,9 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
-<h4> Quick List of Features</h4>
+<h4>Quick List of Features</h4>
 
-<strong>Free / Basic Version</strong>
+<strong>WPSSO Free / Basic Version</strong>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
@@ -74,7 +74,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
 </div>
 
-<strong>Pro / Power-User Version</strong>
+<strong>WPSSO Pro / Power-User Version</strong>
 
 * Twitter Card meta tags:
 	* *Product Card* &mdash; Product information from an e-commerce plugin.
