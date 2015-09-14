@@ -711,10 +711,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'pro-activate-msg':
 						if ( ! is_multisite() ) {
-							$text = '<p><strong>The '.$atts['name'].' Authentication ID option is empty.</strong><br/>
+							$text = '<strong>The '.$atts['name'].' Authentication ID option is empty.</strong><br/>
 							To enable Pro version features and allow the plugin to authenticate itself for 
 							updates, please enter the unique Authentication ID you received by email on the '.
-							$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).'.</p>';
+							$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).'.';
 						}
 						break;
 					case 'pro-not-installed':

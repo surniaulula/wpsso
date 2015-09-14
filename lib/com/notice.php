@@ -42,7 +42,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ) );
+				add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), 5 );	// since wp 3.1
 
 				global $wp_version;
 				if ( version_compare( $wp_version, 4.2, '>=' ) )
@@ -217,6 +217,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				else update_user_option( $user_id, $this->dis_name, $dis_arr );
 			}
 
+			echo "\n";
+			echo '<!-- '.$this->lca.' admin notices begin -->'."\n";
+
 			if ( ! empty( $nag_msgs ) ) {
 				echo $this->get_nag_style();
 				echo $this->get_notice_html( 'nag', $nag_msgs );
@@ -235,6 +238,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			echo $msg_html;
+			echo '<!-- '.$this->lca.' admin notices end -->'."\n";
 		}
 
 		public function ajax_dismiss_notice() {
@@ -411,7 +415,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	text-align:left;
 	margin:5px 0 5px 60px;
 }
-</style>';
+</style>'."\n";
 		}
 	}
 }
