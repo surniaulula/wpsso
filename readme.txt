@@ -7,7 +7,7 @@ Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Fa
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.3
+Tested Up To: 4.3.1
 Stable Tag: 3.9.2
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
@@ -410,17 +410,6 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
-
-= Version 3.9.3 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Changed H2 to H1 in settings pages for WordPress 4.3.
 
 = Version 3.9.2 (2015/09/13) =
 
