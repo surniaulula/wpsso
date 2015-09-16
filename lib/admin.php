@@ -475,10 +475,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_single_page() {
 			?>
 			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h2>
-					<?php $this->show_follow_icons(); ?>
-					<?php echo $this->menu_name; ?>
-				</h2>
+				<h1><?php $this->show_follow_icons(); echo $this->menu_name; ?></h1>
 				<div id="poststuff" class="metabox-holder">
 					<div id="post-body" class="">
 						<div id="post-body-content" class="">
@@ -518,7 +515,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			?>
 
 			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h2><?php $this->show_follow_icons(); echo $short_aop.' &ndash; '.$this->menu_name; ?></h2>
+				<h1><?php $this->show_follow_icons(); echo $short_aop.' &ndash; '.$this->menu_name; ?></h1>
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
 					<div id="side-info-column" class="inner-sidebar">
 						<?php do_meta_boxes( $this->pagehook, 'side', null ); ?>

@@ -196,9 +196,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $rows;
 		}
 
-		public function filter_plugin_apikeys_rows( $rows, $form ) {
+		public function filter_plugin_apikeys_rows( $rows, $form, $network = false ) {
 
-			$rows[] = '<td align="center">'.
+			$rows[] = '<td colspan="'.( $network ? 4 : 2 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
 			$rows['plugin_shortener'] = $this->p->util->get_th( 'Preferred URL Shortening Service', null, 'plugin_shortener' ).
