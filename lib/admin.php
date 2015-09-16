@@ -93,6 +93,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! $this->p->notice->can_dismiss )			// true for wordpress 4.2+
 				return;
+
 			if ( ! current_user_can( 'manage_options' ) )
 				return;
 
@@ -109,9 +110,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 
-				if ( empty( $info['version'] ) )		// must be an active plugin
+				// must be an active plugin
+				if ( empty( $info['version'] ) )
 					continue;
-				if ( empty( $info['url']['review'] ) )		// must be hosted on wordpress.org
+
+				// check and register version updates if necessary
+				if ( version_compare( $ts[$lca.'_update_version'], $info['version'], '!=' ) )
+					WpssoUtil::save_time( $lca, $info['version'], 'update', false );
+				
+				// must be hosted on wordpress.org
+				if ( empty( $info['url']['review'] ) )
 					continue;
 
 				$plugin_name = $info['name'].' version '.$info['version'];
