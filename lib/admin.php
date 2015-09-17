@@ -91,36 +91,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function timed_notices( $store = false ) {
 
-			if ( ! $this->p->notice->can_dismiss )			// true for wordpress 4.2+
-				return;
-
-			if ( ! current_user_can( 'manage_options' ) )
-				return;
+			if ( ! $this->p->notice->can_dismiss ||			// true for wordpress 4.2+
+				! current_user_can( 'manage_options' ) )
+					return;
 
 			global $wp_version;
 			$wp_name = 'WordPress version '.$wp_version;
 			$user_id = get_current_user_id();
 			$dis_arr = empty( $user_id ) ? false : 			// just in case
 				get_user_option( WPSSO_DISMISS_NAME, $user_id );	// get dismissed message ids
-			$ts = get_option( WPSSO_TS_NAME, array() );
+			$ts = $this->p->util->get_all_times();
 			$now_time = time();
 			$few_days = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 3 );
 			$few_weeks = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 21 );
 			$type = 'inf';
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-
-				// must be an active plugin
-				if ( empty( $info['version'] ) )
-					continue;
-
-				// check and register version updates if necessary
-				if ( version_compare( $ts[$lca.'_update_version'], $info['version'], '!=' ) )
-					WpssoUtil::save_time( $lca, $info['version'], 'update', false );
-				
-				// must be hosted on wordpress.org
-				if ( empty( $info['url']['review'] ) )
-					continue;
+				if ( empty( $info['version'] ) ||		// must be an active plugin
+					empty( $info['url']['review'] ) )	// must be hosted on wordpress.org
+						continue;
 
 				$plugin_name = $info['name'].' version '.$info['version'];
 				$msg_id_works = 'ask-'.$lca.'-'.$info['version'].'-plugin-works';	// unique for every version
@@ -137,7 +126,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! isset( $dis_arr[$type.'_'.$msg_id_works] ) && 
 					isset( $ts[$lca.'_update_time'] ) && 
-					$ts[$lca.'_update_time'] < $few_days ) {
+						$ts[$lca.'_update_time'] < $few_days ) {
 
 					$this->p->notice->log( $type, '<b>Excellent!</b> It looks like you\'ve been running <b>'.
 					$plugin_name.'</b> for a few days &mdash; How\'s it working with <b>'.$wp_name.'</b>?<ul>'.
@@ -148,7 +137,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
 					isset( $ts[$lca.'_install_time'] ) && 
-					$ts[$lca.'_install_time'] < $few_weeks ) {
+						$ts[$lca.'_install_time'] < $few_weeks ) {
 
 					$this->p->notice->log( $type, '<b>Fantastic!</b> It looks like you\'ve been running <b>'.
 					$info['name'].'</b> for a few weeks &mdash; How do you like it so far?<ul>'.

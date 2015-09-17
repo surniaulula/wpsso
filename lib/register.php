@@ -108,8 +108,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_config();
 			$this->p->set_objects( true );					// $activate = true
 
-			WpssoUtil::save_time( $lca, $version, 'install', true );		// $protect = true
 			WpssoUtil::save_time( $lca, $version, 'update', $version );	// $protect only if same version
+			WpssoUtil::save_time( $lca, $version, 'install', true );		// $protect = true
 			WpssoUtil::save_time( $lca, $version, 'activate' );		// always update timestamp
 
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );

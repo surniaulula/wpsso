@@ -738,7 +738,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $protect = true/false/version
 		public static function save_time( $lca, $version, $type, $protect = false ) {
-
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
 					if ( ( $ts_version = SucomUtil::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== false &&
@@ -747,11 +746,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					else $protect = false;
 				} else $protect = true;	// just in case
 			}
-
 			if ( ! empty( $version ) )
 				SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
-
 			SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
+		}
+
+		// get the timestamp array and perform a quick sanity check
+		public function get_all_times() {
+			$has_changed = false;
+			$ts = get_option( WPSSO_TS_NAME, array() );
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				if ( empty( $info['version'] ) )
+					continue;
+				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
+					if ( empty( $ts[$lca.'_'.$type.'_time'] ) ||
+						( $type === 'update' && ( empty( $ts[$lca.'_'.$type.'_version'] ) || 
+							version_compare( $ts[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) )
+								$has_changed = self::save_time( $lca, $info['version'], $type );
+				}
+			}
+			return $has_changed === false ?
+				$ts : get_option( WPSSO_TS_NAME, array() );
 		}
 	}
 }
