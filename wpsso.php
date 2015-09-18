@@ -9,7 +9,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.1
  * Tested Up To: 4.3.1
- * Version: 3.9.2
+ * Version: 3.10-dev1
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -33,6 +33,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $msgs;			// WpssoMessages (admin tooltip messages)
 		public $notice;			// SucomNotice
 		public $og;			// WpssoOpengraph
+		public $tc;			// WpssoTwittercard
 		public $opt;			// WpssoOptions
 		public $reg;			// WpssoRegister
 		public $script;			// SucomScript (admin jquery tooltips)
@@ -150,8 +151,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->script = new SucomScript( $this );		// admin jquery tooltips
 			$this->webpage = new SucomWebpage( $this );		// title, desc, etc., plus shortcodes
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
-			$this->head = new WpssoHead( $this );			// open graph and twitter card meta tags
-			$this->og = new WpssoOpengraph( $this );		// prepare open graph array
+			$this->head = new WpssoHead( $this );
+			$this->og = new WpssoOpengraph( $this );
+			$this->tc = new WpssoTwittercard( $this );
 			$this->schema = new WpssoSchema( $this );
 
 			if ( is_admin() ) {

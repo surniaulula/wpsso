@@ -244,7 +244,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-pinterest':
 
-					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.$this->p->msgs->get( 'info-pub-pinterest' ).'</td>';
+					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
+						$this->p->msgs->get( 'info-pub-pinterest' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( 'Pinterest Company Page URL', null, 'rp_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
@@ -264,8 +265,21 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-twitter':
 
+					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
+						$this->p->msgs->get( 'info-pub-twitter' ).'</td>';
+
 					$rows[] = $this->p->util->get_th( 'Twitter Business @username', 'highlight', 'tc_site' ).
 					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( 'Maximum Description Length', null, 'tc_desc_len' ).
+					'<td>'.$this->form->get_input( 'tc_desc_len', 'short' ).' characters or less</td>';
+
+					$rows[] = $this->p->util->get_th( '<em>Summary</em> Card Image Dimensions', null, 'tc_sum_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum', false, false ).'</td>';
+
+					$rows[] = $this->p->util->get_th( '<em>Large Image</em> Card Image Dimensions', null, 'tc_lrgimg_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg', false, false ).'</td>';
 
 					break;
 

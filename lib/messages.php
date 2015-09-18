@@ -518,9 +518,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_site':
 							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
 							break;
-						case 'tooltip-tc_enable':
-							$text = 'Add Twitter Card meta tags to all webpage headers. <strong>Your website must be "authorized" by Twitter for each type of Twitter Card you support</strong>. See the FAQ entry titled <a href="http://surniaulula.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/" target="_blank">Why don’t my Twitter Cards show on Twitter?</a> for more information on Twitter\'s authorization process.';
-							break;
 						case 'tooltip-tc_desc_len':
 							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
 							break;
@@ -531,27 +528,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_lrgimg_dimensions':
 							$card = 'lrgimg';
 							$text = 'The dimension of Post Meta, Featured or Attached images provided for the <a href="https://dev.twitter.com/docs/cards/large-image-summary-card" target="_blank">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB). The default image dimensions are '.$this->p->opt->get_defaults( 'tc_'.$card.'_width' ).'x'.$this->p->opt->get_defaults( 'tc_'.$card.'_height' ).', '.( $this->p->opt->get_defaults( 'tc_'.$card.'_crop' ) ? '' : 'un' ).'cropped.';
-							break;
-						case 'tooltip-tc_photo_dimensions':
-							$card = 'photo';
-							$text = 'The dimension of ImageBrowser or Attachment Page images provided for the <a href="https://dev.twitter.com/docs/cards/types/photo-card" target="_blank">Photo Card</a> (should be at least 560x750 and less than 1MB). The default image dimensions are '.$this->p->opt->get_defaults( 'tc_'.$card.'_width' ).'x'.$this->p->opt->get_defaults( 'tc_'.$card.'_height' ).', '.( $this->p->opt->get_defaults( 'tc_'.$card.'_crop' ) ? '' : 'un' ).'cropped.';
-							break;
-						case 'tooltip-tc_gal_minimum':
-							$text = 'The minimum number of images found in a gallery to qualify for the <a href="https://dev.twitter.com/docs/cards/types/gallery-card" target="_blank">Gallery Card</a>.';
-							break;
-						case 'tooltip-tc_gal_dimensions':
-							$card = 'gal';
-							$text = 'The dimension of gallery images provided for the <a href="https://dev.twitter.com/docs/cards/types/gallery-card" target="_blank">Gallery Card</a>. The default image dimensions are '.$this->p->opt->get_defaults( 'tc_'.$card.'_width' ).'x'.$this->p->opt->get_defaults( 'tc_'.$card.'_height' ).', '.( $this->p->opt->get_defaults( 'tc_'.$card.'_crop' ) ? '' : 'un' ).'cropped.';
-							break;
-						case 'tooltip-tc_prod_dimensions':
-							$card = 'prod';
-							$text = 'The dimension of a <em>featured product image</em> for the <a href="https://dev.twitter.com/docs/cards/types/product-card" target="_blank">Product Card</a>. The product card requires an image of size 160 x 160 or greater. A square (aka cropped) image is better, but Twitter can crop/resize oddly shaped images to fit, as long as both dimensions are greater than or equal to 160 pixels. The default image dimensions are '.$this->p->opt->get_defaults( 'tc_'.$card.'_width' ).'x'.$this->p->opt->get_defaults( 'tc_'.$card.'_height' ).', '.( $this->p->opt->get_defaults( 'tc_'.$card.'_crop' ) ? '' : 'un' ).'cropped.';
-							break;
-						case 'tooltip-tc_prod_labels':
-							$text = 'The maximum number of label and data meta tags to include for the <em>Product</em> Twitter Card.';
-							break;
-						case 'tooltip-tc_prod_defaults':
-							$text = 'The <em>Product</em> Twitter Card needs a <strong>minimum of two product attributes</strong>. The first attribute will be the product price, and if your product has additional attribute fields associated with it (weight, size, color, etc), these will be included in the <em>Product</em> Card as well (maximum of 4 attributes). <strong>If your product does not have additional attributes beyond its price</strong>, then this default second attribute label and value will be used. You may modify both the Label <em>and</em> Value for whatever is most appropriate for your website and/or products. Some examples: Promotion / Free Shipping, Ships from / Hong Kong, Made in / China, etc.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_tc', $text, $idx, $atts );
@@ -661,6 +637,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'info-pub-pinterest':
 						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
 						<p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).</p>
+						</blockquote>';
+						break;
+					case 'info-pub-twitter':
+						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+						<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. '.$atts['short'].' continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card.</p>
 						</blockquote>';
 						break;
 					case 'info-taglist':

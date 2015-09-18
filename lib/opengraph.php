@@ -72,10 +72,14 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( &$og = array(), $use_post = false, $obj = false ) {
+		public function get_array( $use_post = false, $obj = false, &$og = array() ) {
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			if ( ! is_object( $obj ) )
 				$obj = $this->p->util->get_post_object( $use_post );
+
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 

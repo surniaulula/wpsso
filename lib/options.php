@@ -164,15 +164,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					else $url = $this->p->util->get_admin_url( 'network' );
 					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. The plugin settings have been returned to their default values &mdash; <a href="'.$url.'">please review and save these new settings</a>.' );
 				}
-				if ( $network === false ) {
-					if ( ! empty( $this->p->is_avail['ecom']['*'] ) &&
-						$opts['tc_prod_def_label2'] === $this->p->cf['opt']['defaults']['tc_prod_def_label2'] &&
-						$opts['tc_prod_def_data2'] === $this->p->cf['opt']['defaults']['tc_prod_def_data2'] &&
-						$this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-
-						$this->p->notice->inf( 'An eCommerce plugin has been detected. Please update Twitter\'s <em>Product Card Default 2nd Label</em> option values on the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings page' ).' (to something else than \''.$this->p->cf['opt']['defaults']['tc_prod_def_label2'].'\' and \''.$this->p->cf['opt']['defaults']['tc_prod_def_data2'].'\').', true );
-					}
-				}
 			}
 			return $opts;
 		}
@@ -410,8 +401,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_author_field':
 				case 'rp_author_name':
 				case 'fb_lang': 
-				case 'tc_prod_def_label2': 
-				case 'tc_prod_def_data2': 
 				case ( preg_match( '/_tid:use$/', $key ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 					return 'not_blank';

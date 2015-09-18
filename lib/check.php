@@ -49,13 +49,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						( $prio = has_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ) ) ) ) {
 							$ret = remove_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ), $prio );
 					}
-					if ( ! empty( $this->p->options['tc_enable'] ) && 
-						$this->is_aop( $this->p->cf['lca'] ) ) {
-
-						global $wpseo_twitter;
-						if ( is_object( $wpseo_twitter ) && 
-							( $prio = has_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ) ) ) )
-								$ret = remove_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ), $prio );
+					global $wpseo_twitter;
+					if ( is_object( $wpseo_twitter ) && 
+						( $prio = has_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ) ) ) ) {
+							$ret = remove_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ), $prio );
 					}
 					if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 						global $wpseo_front;
@@ -183,9 +180,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/*
 						 * Pro Version Features / Options
 						 */
-						case 'head-twittercard':
-							$chk['optval'] = 'tc_enable';
-							break;
 						case 'media-gravatar':
 							$chk['optval'] = 'plugin_gravatar_api';
 							break;

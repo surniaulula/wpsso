@@ -22,8 +22,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'link_def_author_on_index' => 'seo_def_author_on_index',
 			'link_def_author_on_search' => 'seo_def_author_on_search',
 			'plugin_tid' => 'plugin_wpsso_tid',
-			'tc_prod_def_l2' => 'tc_prod_def_label2',
-			'tc_prod_def_d2' => 'tc_prod_def_data2',
 			'og_publisher_url' => 'fb_publisher_url',
 			'add_meta_property_og:video' => 'add_meta_property_og:video:url',
 			'twitter_shortener' => 'plugin_shortener',

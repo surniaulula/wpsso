@@ -188,12 +188,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'author_id: '.$author_id );
 
 			/**
-			 * Open Graph, Twitter Card
-			 *
-			 * The Twitter Card meta tags are added by the 
-			 * WpssoHeadTwittercard class using an 'wpsso_og' filter hook.
+			 * Open Graph
 			 */
-			$meta_og = $this->p->og->get_array( $meta_og, $use_post, $obj );
+			$meta_og = $this->p->og->get_array( $use_post, $obj, $meta_og );
+
+			/**
+			 * Twitter Cards
+			 */
+			$meta_tc = $this->p->tc->get_array( $use_post, $obj, $meta_og );
 
 			/**
 			 * Name / SEO meta tags
@@ -254,6 +256,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
 				$this->get_tag_array( 'link', 'rel', $link_rel, $use_post ),
 				$this->get_tag_array( 'meta', 'property', $meta_og, $use_post ),
+				$this->get_tag_array( 'meta', 'name', $meta_tc, $use_post ),
 				$this->get_tag_array( 'meta', 'itemprop', $meta_schema, $use_post ),
 				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),		// seo description is last
 				SucomUtil::a2aa( $this->p->schema->get_json_array( $post_id, $author_id,
