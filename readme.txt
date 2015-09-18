@@ -411,6 +411,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.10 =
+
+<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card.</p>
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added Twitter Card features to Free version.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Removed Product Card features from all e-Commerce modules (Pro version).
+	* Removed Photo and Gallery Card features.
+
 = Version 3.9.2 (2015/09/13) =
 
 * **New Features**
