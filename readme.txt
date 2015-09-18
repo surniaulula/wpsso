@@ -419,11 +419,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* Added Twitter Card features to Free version.
+	* Removed Photo and Gallery Card features.
+	* Removed Product Card from all e-Commerce integration modules (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Removed Product Card features from all e-Commerce modules (Pro version).
-	* Removed Photo and Gallery Card features.
+	* Removed the 'wpsso_tc_edd', 'wpsso_tc_marketpress', 'wpsso_tc_woocommerce', and 'wpsso_tc_wpecommerce' filters.
 
 = Version 3.9.2 (2015/09/13) =
 
