@@ -413,7 +413,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.10 =
 
-<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card. This latest version removes the Photo Card, Gallery Card, and Product card features.</p>
+<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card. This latest version of WPSSO removes the deprecated Photo Card, Gallery Card, and Product card features.</p>
 
 * **New Features**
 	* *None*
