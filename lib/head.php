@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->util->log_is_functions();
 
-			if ( $this->p->is_avail['metatags'] )
+			if ( $this->p->is_avail['mt'] )
 				echo $this->get_header_html( apply_filters( $lca.'_header_use_post', false ) );
 			else echo "\n<!-- ".$lca." meta tags disabled -->\n";
 
@@ -252,7 +252,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$header_array = array_merge(
 				$this->get_single_tag( 'meta', 'name', 'generator',
 					$short_aop.' '.$this->p->cf['plugin'][$lca]['version'].
-					( $this->p->check->aop() ? 'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
+					( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
+						'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
 				$this->get_tag_array( 'link', 'rel', $link_rel, $use_post ),
 				$this->get_tag_array( 'meta', 'property', $meta_og, $use_post ),

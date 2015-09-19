@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', $this->default_tabs );
-			if ( empty( $this->p->is_avail['metatags'] ) )
+			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
 			$rows = array();

@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 					if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 						global $wpseo_front;
-						if ( is_object( $wpseo_front ) &&
+						if ( is_object( $wpseo_front ) && 
 							( $prio = has_action( 'wpseo_head', array( $wpseo_front, 'publisher' ) ) ) )
 								$ret = remove_action( 'wpseo_head', array( $wpseo_front, 'publisher' ), $prio );
 					}
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'aop':
 					return ( ! defined( 'WPSSO_PRO_MODULE_DISABLE' ) ||
 					( defined( 'WPSSO_PRO_MODULE_DISABLE' ) && ! WPSSO_PRO_MODULE_DISABLE ) ) &&
-					file_exists( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
+					is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'mt':
 				case 'metatags':
@@ -93,6 +93,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					( defined( 'WPSSO_META_TAGS_DISABLE' ) && ! WPSSO_META_TAGS_DISABLE ) ) &&
 					empty( $_SERVER['WPSSO_META_TAGS_DISABLE'] ) &&
 					empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ? true : false;	// allow meta tags to be disabled with query argument
+					break;
+				default:
+					return false;
 					break;
 			}
 		}
@@ -102,8 +105,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$ret['curl'] = function_exists( 'curl_init' ) ? true : false;
 			$ret['postthumb'] = function_exists( 'has_post_thumbnail' ) ? true : false;
-			$ret['metatags'] = $this->get_avail_check( 'mt' );
-			$ret['aop'] = $this->get_avail_check( 'aop' );
+			foreach ( array( 'aop', 'mt' ) as $key )
+				$ret[$key] = $this->get_avail_check( $key );
 
 			foreach ( $this->p->cf['cache'] as $name => $val ) {
 				$constant_name = 'WPSSO_'.strtoupper( $name ).'_CACHE_DISABLE';

@@ -671,6 +671,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'Transient Cache' => array(
 							'status' => $this->p->is_avail['cache']['transient'] ? 'on' : 'rec',
 						),
+						'Twitter Cards' => array( 
+							'status' => class_exists( $this->p->cf['lca'].'twittercard' ) ? 'on' : 'rec',
+						),
 					);
 				else $features = array();
 
@@ -709,7 +712,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
 						$features[$name] = array( 
 							'status' => class_exists( $lca.'pro'.$sub.$id ) ? ( $aop ? 'on' : $off ) : $off,
-							'tooltip' => 'If the '.$name.' plugin is detected, '.$this->p->cf['plugin'][$lca]['short'].' Pro will load an integration modules to provide additional support and features for '.$name.'.',
+							'tooltip' => 'If the '.$name.' plugin is detected, '.$this->p->cf['plugin'][$lca]['short'].
+								' Pro will load integration modules to provide additional support and features for '.$name.'.',
 							'td_class' => $aop ? '' : 'blank',
 						);
 					}
@@ -794,9 +798,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $help_links ) ) {
 					echo '<p><strong>'.$info['short'].
-						( $this->p->check->aop( $lca, true, 
-							$this->p->is_avail['aop'] ) ? 
-								' Pro' : ' Free' ).' Help</strong></p>';
+						( $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ? 
+							' Pro' : ' Free' ).' Help</strong></p>';
 					echo '<ul>'.$help_links.'</ul>';
 				}
 			}
