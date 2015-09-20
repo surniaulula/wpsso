@@ -736,6 +736,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $max_len;
 		}
 
+		public static function save_all_times( $lca, $version ) {
+			self::save_time( $lca, $version, 'update', $version );	// $protect only if same version
+			self::save_time( $lca, $version, 'install', true );	// $protect = true
+			self::save_time( $lca, $version, 'activate' );		// always update timestamp
+		}
+
 		// $protect = true/false/version
 		public static function save_time( $lca, $version, $type, $protect = false ) {
 			if ( ! is_bool( $protect ) ) {

@@ -17,7 +17,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'post_header_rows' => 3,
 				'post_media_rows' => 3,
-				'check_head_meta_options' => 2,
 			) );
 		}
 

@@ -106,12 +106,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			$this->p->set_config();
-			$this->p->set_objects( true );					// $activate = true
+			$this->p->set_objects( true );	// $activate = true
 
-			WpssoUtil::save_time( $lca, $version, 'update', $version );	// $protect only if same version
-			WpssoUtil::save_time( $lca, $version, 'install', true );		// $protect = true
-			WpssoUtil::save_time( $lca, $version, 'activate' );		// always update timestamp
-
+			WpssoUtil::save_all_times( $lca, $version );
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
 
 			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
