@@ -93,7 +93,7 @@
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
 <li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
-<li><strong>Additional free extension plugins for WPSSO</strong>:
+<li>Additional and optional Free extension plugins for WPSSO:
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">App Meta</a> for Apple Store / iTunes and Google Play App meta tags.</li>
