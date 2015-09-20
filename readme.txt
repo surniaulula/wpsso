@@ -39,7 +39,13 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 <strong>WPSSO Free / Basic Features</strong>
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
+* Twitter Card meta tags:
+	* *Player Card* &mdash; An embedded video in the Post / Page content.
+	* *Large Image Summary Card* &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.
+	* *App Card* &mdash; Apple Store iPhone / iPad or Google Play App (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension).
+	* *Summary Card* &mdash; All other webpages.
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
+* Customizable image dimensions for each Twitter Card type.
 * Optional fallback to a default image and video for index and search webpages.
 * Supports featured, attached, gallery shortcode, and/or HTML image tags in content.
 * Fallback to the image alt value if the content and except do not include any text.
@@ -76,19 +82,10 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 <strong>WPSSO Pro / Power-User Features</strong>
 
-* Twitter Card meta tags:
-	* *Product Card* &mdash; Product information from an e-commerce plugin.
-	* *Player Card* &mdash; An embedded video in the Post / Page content.
-	* *Gallery Card* &mdash; A Media Library gallery or NextGEN Gallery shortcode.
-	* *Photo Card* &mdash; An Attachment page or NextGEN Gallery ImageBrowser webpage.
-	* *Large Image Summary Card* &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.
-	* *App Card* &mdash; Apple Store iPhone / iPad or Google Play App (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension).
-	* *Summary Card* &mdash; All other webpages.
-* Customizable image dimensions for each Twitter Card type.
-* Additional profile contact fields with configurable label and field names.
 * A "Social Settings" metabox for Post, Page, custom post type, user profile, and taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
-* Options to include / exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.
 * Support for embedded videos in content text (iframe and object HTML tags).
+* Additional profile contact fields with configurable label and field names.
+* Options to include / exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.
 * **Integrates with 3rd party plugins and services for additional image, video, product, and content information** (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 	* Supported 3rd Party Plugins
 		* All in One SEO Pack
@@ -413,7 +410,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.10 (2015/09/20) =
 
-<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card. This latest version of WPSSO removes the deprecated Photo Card, Gallery Card, and Product card features.</p>
+<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card &mdash; in both the Free (New) and Pro versions.</p>
 
 * **New Features**
 	* *None*
