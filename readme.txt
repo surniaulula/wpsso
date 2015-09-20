@@ -60,7 +60,6 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Includes the author's name for Pinterest Rich Pins.
 * Includes a Google / SEO description meta tag, if a known SEO plugin is not detected.
 * Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
-* 
 * Configurable website / business social accounts for JSON-LD markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
@@ -107,7 +106,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) markup for embedded videos from Slideshare, Vimeo, Wistia, and/or Youtube.
 * Configurable user profile contact field names and labels for customized theme / SEO plugin integration.
 * Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from webpage headers.
-* **Integrates with 3rd party plugins and services for additional image, video, product, and content information** (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
+* Integrates with **3rd party plugins and services** for additional image, video, product, and content information (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 	* Supported 3rd Party Plugins
 		* All in One SEO Pack
 		* bbPress
