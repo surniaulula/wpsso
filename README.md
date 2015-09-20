@@ -125,7 +125,7 @@
 <li>Integrates with <strong>3rd party plugins and services</strong> for additional image, video, product, and content information (see <a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 
 <ul>
-<li>Supported 3rd Party Plugins
+<li><strong>Supported 3rd Party Plugins</strong>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -142,7 +142,7 @@
 <li>WP e-Commerce</li>
 <li><a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a></li>
 </ul></li>
-<li>Supported Service APIs
+<li><strong>Supported Service APIs</strong>
 
 <ul>
 <li>Gravatar Images</li>

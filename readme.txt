@@ -107,7 +107,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Configurable user profile contact field names and labels for customized theme / SEO plugin integration.
 * Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from webpage headers.
 * Integrates with **3rd party plugins and services** for additional image, video, product, and content information (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
-	* Supported 3rd Party Plugins
+	* **Supported 3rd Party Plugins**
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress
@@ -121,7 +121,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* Yoast SEO (aka WordPress SEO)
 		* WP e-Commerce
 		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a>
-	* Supported Service APIs
+	* **Supported Service APIs**
 		* Gravatar Images
 		* Slideshare Presentations
 		* Vimeo Videos
