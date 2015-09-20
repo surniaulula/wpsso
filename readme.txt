@@ -40,10 +40,11 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Twitter Card meta tags:
-	* *Player Card* &mdash; An embedded video in the Post / Page content.
-	* *Large Image Summary Card* &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.
-	* *App Card* &mdash; Apple Store iPhone / iPad or Google Play App (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension).
-	* *Summary Card* &mdash; All other webpages.
+	* [App Card](https://dev.twitter.com/cards/types/app) &mdash; Apple Store iPhone / iPad or Google Play App (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension).
+	* [Player Card](https://dev.twitter.com/cards/types/player) &mdash; An embedded video in the Post / Page content (Slideshare, Vimeo, Wistia, Youtube).
+	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image) &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.
+	* [Summary Card](https://dev.twitter.com/cards/types/summary) &mdash; All other webpages.
+	* The [Photo Card](https://dev.twitter.com/cards/types/photo), [Gallery Card](https://dev.twitter.com/cards/types/gallery), and [Product Card](https://dev.twitter.com/cards/types/product) were deprecated by Twitter on July 3rd, 2015.
 * Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.
 * Customizable image dimensions for each Twitter Card type.
 * Optional fallback to a default image and video for index and search webpages.
@@ -151,7 +152,7 @@ WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http:/
 <p><img src="https://surniaulula.github.io/wpsso/images/settings/wpsso-advanced-settings-page-w-meta-tags.png" width="100%" height="100%"/></p>
 </div>
 
-WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/types/summary-card), [Large Image Summary](https://dev.twitter.com/docs/cards/large-image-summary-card), [Photo](https://dev.twitter.com/docs/cards/types/photo-card), [Gallery](https://dev.twitter.com/docs/cards/types/gallery-card), [Player](https://dev.twitter.com/docs/cards/types/player-card) and [Product](https://dev.twitter.com/docs/cards/types/product-card) Twitter Cards &mdash; *including configurable image sizes for each card type*.
+WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. The [Photo](https://dev.twitter.com/cards/types/photo), [Gallery](https://dev.twitter.com/cards/types/gallery), and [Product](https://dev.twitter.com/cards/types/product) Twitter Cards were deprecated by Twitter on July 3rd, 2015.
 
 * **Google / SEO Link and Meta Tags**
 	* author
@@ -193,7 +194,7 @@ WPSSO (Pro version) provides the [Summary](https://dev.twitter.com/docs/cards/ty
 	* image
 	* url
 * **Twitter Card Meta Tags** (Pro version)
-	* twitter:card (Summary, Large Image Summary, Photo, Gallery, Player and Product)
+	* twitter:card (Summary, Summary with Large Image, App, Player Cards)
 	* twitter:creator
 	* twitter:data1
 	* twitter:data2
