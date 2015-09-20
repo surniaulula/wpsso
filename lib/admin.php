@@ -304,23 +304,42 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// add links on the main plugins page
 		public function add_plugin_action_links( $links, $file ) {
-			// only add links when filter is called for this plugin
-			if ( $file == WPSSO_PLUGINBASE ) {
-				// remove the Edit link
-				foreach ( $links as $num => $val ) {
-					if ( preg_match( '/>Edit</', $val ) )
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				if ( $file !== $info['base'] )
+					continue;
+
+				foreach ( $links as $num => $val )
+					if ( strpos( $val, '>Edit<' ) !== false )
 						unset ( $links[$num] );
-				}
-				$urls = $this->p->cf['plugin'][$this->p->cf['lca']]['url'];
-				array_push( $links, '<a href="'.$urls['faq'].'">'.__( 'FAQ', WPSSO_TEXTDOM ).'</a>' );
-				array_push( $links, '<a href="'.$urls['notes'].'">'.__( 'Notes', WPSSO_TEXTDOM ).'</a>' );
-				if ( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-					array_push( $links, '<a href="'.$urls['pro_support'].'">'.__( 'Pro Support', WPSSO_TEXTDOM ).'</a>' );
+
+				if ( ! empty( $info['url']['faq'] ) )
+					$links[] = '<a href="'.$info['url']['faq'].'">'.
+						__( 'FAQ', WPSSO_TEXTDOM ).'</a>';
+
+				if ( ! empty( $info['url']['notes'] ) )
+					$links[] = '<a href="'.$info['url']['notes'].'">'.
+						__( 'Notes', WPSSO_TEXTDOM ).'</a>';
+
+				if ( ! empty( $info['url']['latest_zip'] ) )
+					$links[] = '<a href="'.$info['url']['latest_zip'].'">'.
+						__( 'Download Latest', WPSSO_TEXTDOM ).'</a>';
+
+				if ( ! empty( $info['url']['pro_support'] ) &&
+					$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ) {
+						$links[] = '<a href="'.$info['url']['pro_support'].'">'.
+							__( 'Pro Support', WPSSO_TEXTDOM ).'</a>';
 				} else {
-					array_push( $links, '<a href="'.$urls['wp_support'].'">'.__( 'Support Forum', WPSSO_TEXTDOM ).'</a>' );
-					if ( $this->p->is_avail['aop'] ) 
-						array_push( $links, '<a href="'.$urls['purchase'].'">'.__( 'Purchase License', WPSSO_TEXTDOM ).'</a>' );
-					else array_push( $links, '<a href="'.$urls['purchase'].'">'.__( 'Purchase Pro', WPSSO_TEXTDOM ).'</a>' );
+					if ( ! empty( $info['url']['wp_support'] ) )
+						$links[] = '<a href="'.$info['url']['wp_support'].'">'.
+							__( 'Support Forum', WPSSO_TEXTDOM ).'</a>';
+
+					if ( ! empty( $info['url']['purchase'] ) ) {
+						if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
+							$links[] = '<a href="'.$info['url']['purchase'].'">'.
+								__( 'Purchase License', WPSSO_TEXTDOM ).'</a>';
+						else $links[] = '<a href="'.$info['url']['purchase'].'">'.
+							__( 'Purchase Pro', WPSSO_TEXTDOM ).'</a>';
+					}
 				}
 			}
 			return $links;
@@ -903,7 +922,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 						}
-					} else $view_text = 'View Plugin Details and Install Free Version';
+					} else $view_text = 'View Plugin Details + Install';
 
 					$links .= ' | <a href="'.$img_href.'" class="thickbox">'.$view_text.'</a>';
 

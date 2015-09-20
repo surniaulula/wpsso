@@ -146,8 +146,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-am/',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-am?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-am/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-am',
 						// surniaulula
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-am/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-am/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-am/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-am/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-am/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-am/feed/',
+						'pro_support' => 'http://wpsso-am.support.wpsso.com/',
 					),
 				),
 				'wpssoplm' => array(
@@ -164,8 +174,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-plm?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-plm/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-plm',
 						// surniaulula
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-plm/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-plm/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-plm/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-plm/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-plm/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-plm/feed/',
+						'pro_support' => 'http://wpsso-plm.support.wpsso.com/',
 					),
 				),
 				'wpssorrssb' => array(
@@ -180,10 +200,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'icon_medium' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
 					),
 					'url' => array(
-						// wordpress
+						// wordpress.org
 						'download' => 'https://wordpress.org/plugins/wpsso-rrssb/',
-						// surniaulula
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-rrssb?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-rrssb/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
+						// wpsso.com
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-rrssb/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-rrssb/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-rrssb/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-rrssb/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-rrssb/feed/',
+						'pro_support' => 'http://wpsso-rrssb.support.wpsso.com/',
 					),
 				),
 				'wpssossb' => array(
@@ -200,8 +230,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-ssb/',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-ssb?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-ssb/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						// surniaulula
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-ssb/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-ssb/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-ssb/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-ssb/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-ssb/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-ssb/feed/',
+						'pro_support' => 'http://wpsso-ssb.support.wpsso.com/',
 					),
 				),
 				'wpssoum' => array(
@@ -217,9 +257,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// surniaulula
-						'download' => 'https://wpsso.com/extend/plugins/wpsso-um/',
+						'download' => 'http://wpsso.com/extend/plugins/wpsso-um/',
 						'latest_zip' => 'http://wpsso.com/extend/plugins/wpsso-um/latest/',
+						'review' => '',
+						'readme' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
+						'wp_support' => '',
 						'update' => 'http://wpsso.com/extend/plugins/wpsso-um/update/',
+						'purchase' => '',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-um/changelog/',
+						'codex' => '',
+						'faq' => '',
+						'notes' => '',
+						'feed' => '',
+						'pro_support' => '',
 					),
 				),
 			),
@@ -690,19 +740,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_constants( $plugin_filepath ) { 
-			$cf = self::get_config();
-			$slug = $cf['plugin'][$cf['lca']]['slug'];
-			$version = $cf['plugin'][$cf['lca']]['version'];
-
-			// constants that cannot be pre-defined
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
-			define( 'WPSSO_PLUGINBASE', plugin_basename( $plugin_filepath ) );
-			define( 'WPSSO_TEXTDOM', $slug );
+			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );		// wpsso/wpsso.php
+			define( 'WPSSO_TEXTDOM', self::$cf['plugin']['wpsso']['slug'] );		// wpsso
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
-			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.$version.
+			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.self::$cf['plugin']['wpsso']['version'].
 				( defined( 'NONCE_SALT' ) ? NONCE_SALT : '' ) ) );
-
 			self::set_variable_constants();
 		}
 
