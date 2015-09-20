@@ -563,7 +563,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'php' => array(				// php
-				'min_version' => '4.0.6',	// minimum php version
+				'min_version' => '4.1.0',	// minimum php version
 			),
 			'follow' => array(
 				'size' => 32,
@@ -694,17 +694,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		// get_config is called very early, so don't apply filters unless instructed
 		public static function get_config( $idx = false, $filter = false ) { 
 
-			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
+			if ( ! isset( self::$cf['config_filtered'] ) || 
+				self::$cf['config_filtered'] !== true ) {
 
 				if ( $filter === true ) {
 					self::$cf['opt']['version'] .= is_dir( trailingslashit( dirname( __FILE__ ) ).'pro/' ) ? 'pro' : 'gpl';
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf );
 					self::$cf['config_filtered'] = true;
 					self::$cf['*'] = array(
+						'base' => array(),
 						'lib' => array(),
 						'version' => '',
 					);
 					foreach ( self::$cf['plugin'] as $lca => $info ) {
+						if ( isset( $info['base'] ) )
+							self::$cf['*']['base'][$info['base']] = $lca;
 						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) )
 							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( 
 								self::$cf['*']['lib'], 
@@ -718,17 +722,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				// complete relative paths in the image array
 				foreach ( self::$cf['plugin'] as $lca => $info ) {
-					if ( isset( $info['base'] ) ) {
-						$base = self::$cf['plugin'][$lca]['base'];	// wpsso/wpsso.php
-						foreach ( array( 'img' ) as $sub ) {
-							if ( isset( $info[$sub] ) && is_array( $info[$sub] ) ) {
-								foreach ( $info[$sub] as $id => $url ) {
-									if ( ! empty( $url ) && strpos( $url, '//' ) === false )
-										self::$cf['plugin'][$lca][$sub][$id] = trailingslashit( plugins_url( '', $base ) ).$url;
-								}
-							}
-						}
-					}
+					if ( ! isset( $info['base'] ) )
+						continue;
+					$base = self::$cf['plugin'][$lca]['base'];	// nextgen-facebook/nextgen-facebook.php
+					foreach ( $info['img'] as $id => $url )
+						if ( ! empty( $url ) && strpos( $url, '//' ) === false )
+							self::$cf['plugin'][$lca]['img'][$id] = trailingslashit( plugins_url( '', $base ) ).$url;
 				}
 			}
 

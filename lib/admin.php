@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
-					isset( $info['base'] ) && WpssoUtil::active_plugins( $info['base'] ) ) {
+					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
 					$has_tid = true;
 					if ( ! $this->p->check->aop( $lca, false ) )
 						$this->p->notice->inf( $this->p->msgs->get( 'pro-not-installed', array( 'lca' => $lca ) ), true );
@@ -304,44 +304,47 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// add links on the main plugins page
 		public function add_plugin_action_links( $links, $file ) {
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( $file !== $info['base'] )
-					continue;
 
-				foreach ( $links as $num => $val )
-					if ( strpos( $val, '>Edit<' ) !== false )
-						unset ( $links[$num] );
+			if ( ! isset( $this->p->cf['*']['base'][$file] ) )
+				return $links;
 
-				if ( ! empty( $info['url']['faq'] ) )
-					$links[] = '<a href="'.$info['url']['faq'].'">'.
-						__( 'FAQ', WPSSO_TEXTDOM ).'</a>';
+			$lca = $this->p->cf['*']['base'][$file];
+			$info = $this->p->cf['plugin'][$lca];
 
-				if ( ! empty( $info['url']['notes'] ) )
-					$links[] = '<a href="'.$info['url']['notes'].'">'.
-						__( 'Notes', WPSSO_TEXTDOM ).'</a>';
+			foreach ( $links as $num => $val )
+				if ( strpos( $val, '>Edit<' ) !== false )
+					unset ( $links[$num] );
 
-				if ( ! empty( $info['url']['latest_zip'] ) )
-					$links[] = '<a href="'.$info['url']['latest_zip'].'">'.
-						__( 'Download Latest', WPSSO_TEXTDOM ).'</a>';
+			if ( ! empty( $info['url']['faq'] ) )
+				$links[] = '<a href="'.$info['url']['faq'].'">'.
+					__( 'FAQ', WPSSO_TEXTDOM ).'</a>';
 
-				if ( ! empty( $info['url']['pro_support'] ) &&
-					$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ) {
-						$links[] = '<a href="'.$info['url']['pro_support'].'">'.
-							__( 'Pro Support', WPSSO_TEXTDOM ).'</a>';
-				} else {
-					if ( ! empty( $info['url']['wp_support'] ) )
-						$links[] = '<a href="'.$info['url']['wp_support'].'">'.
-							__( 'Support Forum', WPSSO_TEXTDOM ).'</a>';
+			if ( ! empty( $info['url']['notes'] ) )
+				$links[] = '<a href="'.$info['url']['notes'].'">'.
+					__( 'Notes', WPSSO_TEXTDOM ).'</a>';
 
-					if ( ! empty( $info['url']['purchase'] ) ) {
-						if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
-							$links[] = '<a href="'.$info['url']['purchase'].'">'.
-								__( 'Purchase License', WPSSO_TEXTDOM ).'</a>';
-						else $links[] = '<a href="'.$info['url']['purchase'].'">'.
-							__( 'Purchase Pro', WPSSO_TEXTDOM ).'</a>';
-					}
+			if ( ! empty( $info['url']['latest_zip'] ) )
+				$links[] = '<a href="'.$info['url']['latest_zip'].'">'.
+					__( 'Download Latest', WPSSO_TEXTDOM ).'</a>';
+
+			if ( ! empty( $info['url']['pro_support'] ) &&
+				$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ) {
+					$links[] = '<a href="'.$info['url']['pro_support'].'">'.
+						__( 'Pro Support', WPSSO_TEXTDOM ).'</a>';
+			} else {
+				if ( ! empty( $info['url']['wp_support'] ) )
+					$links[] = '<a href="'.$info['url']['wp_support'].'">'.
+						__( 'Support Forum', WPSSO_TEXTDOM ).'</a>';
+
+				if ( ! empty( $info['url']['purchase'] ) ) {
+					if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
+						$links[] = '<a href="'.$info['url']['purchase'].'">'.
+							__( 'Purchase License', WPSSO_TEXTDOM ).'</a>';
+					else $links[] = '<a href="'.$info['url']['purchase'].'">'.
+						__( 'Purchase Pro', WPSSO_TEXTDOM ).'</a>';
 				}
 			}
+
 			return $links;
 		}
 
