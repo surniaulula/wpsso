@@ -43,10 +43,10 @@
 <li>Twitter Card meta tags:
 
 <ul>
-<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> &mdash; Apple Store iPhone / iPad or Google Play App (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO App Meta</a> extension).</li>
-<li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a> &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.</li>
-<li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a> &mdash; All other webpages.</li>
-<li>The <a href="https://dev.twitter.com/cards/types/photo">Photo Card</a>, <a href="https://dev.twitter.com/cards/types/gallery">Gallery Card</a>, and <a href="https://dev.twitter.com/cards/types/product">Product Card</a> were deprecated by Twitter on July 3rd, 2015.</li>
+<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO App Meta</a> extension)</li>
+<li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
+<li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
+<li>The <a href="https://dev.twitter.com/cards/types/photo">Photo Card</a>, <a href="https://dev.twitter.com/cards/types/gallery">Gallery Card</a>, and <a href="https://dev.twitter.com/cards/types/product">Product Card</a> were deprecated by Twitter on July 3rd, 2015 and are no longer supported. The <a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (as it requires video discovery modules available only in the Pro version).</li>
 </ul></li>
 <li>Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.</li>
 <li>Customizable image dimensions for each Twitter Card type.</li>
@@ -120,13 +120,9 @@
 <li>A "Social Settings" metabox for Post, Page, custom post type, user profile, and taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.</li>
 <li>Support for embedded videos in content text ("iframe" and "object" HTML markup).</li>
 <li>Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.</li>
-<li>Additional Twitter Card meta tags:
-
-<ul>
-<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> &mdash; An embedded video from Slideshare, Vimeo, Wistia, and/or Youtube.</li>
-</ul></li>
-<li>Configurable user profile contact field names and labels.</li>
-<li>Include or exclude specific Google / SEO, Open Graph, Twitter Card, and Schema meta tags.</li>
+<li>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> markup for embedded videos from Slideshare, Vimeo, Wistia, and/or Youtube.</li>
+<li>Configurable user profile contact field names and labels for customized theme / SEO plugin integration.</li>
+<li>Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from webpage headers.</li>
 <li><strong>Integrates with 3rd party plugins and services for additional image, video, product, and content information</strong> (see <a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 
 <ul>
