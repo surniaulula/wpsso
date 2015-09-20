@@ -44,7 +44,6 @@
 
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> &mdash; Apple Store iPhone / iPad or Google Play App (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO App Meta</a> extension).</li>
-<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> &mdash; An embedded video in the Post / Page content (Slideshare, Vimeo, Wistia, Youtube).</li>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a> &mdash; An image from the custom Social Settings, Featured, Attached, or NextGEN Gallery singlepic.</li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a> &mdash; All other webpages.</li>
 <li>The <a href="https://dev.twitter.com/cards/types/photo">Photo Card</a>, <a href="https://dev.twitter.com/cards/types/gallery">Gallery Card</a>, and <a href="https://dev.twitter.com/cards/types/product">Product Card</a> were deprecated by Twitter on July 3rd, 2015.</li>
@@ -60,13 +59,38 @@
 <li>Support of WordPress and/or SEO titles for Posts and Pages.</li>
 <li>Configurable title separator character (hyphen by default).</li>
 <li>Configurable title and description lengths for different contexts (Open Graph, Twitter Card, SEO).</li>
-<li>Includes author and publisher profile URLs for Facebook and Google Search.</li>
+<li>Includes author and publisher profile URLs and markup for Facebook and Google Search.</li>
 <li>Includes hashtags from Post and Page WordPress tags.</li>
 <li>Includes the author's name for Pinterest Rich Pins.</li>
-<li>Includes a Google / SEO description meta tag if a known SEO plugin is not detected.</li>
+<li>Includes a Google / SEO description meta tag, if a known SEO plugin is not detected.</li>
 <li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.</li>
-<li>Provides Facebook, Google+ and Twitter URL user profile contact fields.</li>
-<li>Validation tools and special meta tag preview tabs on admin edit pages.</li>
+<li></li>
+<li>Website / Business social account fields for JSON-LD markup:
+
+<ul>
+<li>Facebook Business Page URL</li>
+<li>Google+ Business Page URL</li>
+<li>Pinterest Company Page URL</li>
+<li>Twitter Business @username</li>
+<li>Instagram Business URL</li>
+<li>LinkedIn Company Page URL</li>
+<li>MySpace Business (Brand) URL</li>
+</ul></li>
+<li>User profile contact fields:
+
+<ul>
+<li>Facebook URL</li>
+<li>Google+ URL</li>
+<li>Instagram URL</li>
+<li>LinkedIn URL</li>
+<li>MySpace URL</li>
+<li>Pinterest URL</li>
+<li>Skype Username</li>
+<li>Tumblr URL</li>
+<li>Twitter @username</li>
+<li>YouTube Channel URL</li>
+</ul></li>
+<li>Validation tools, social preview, and meta tag list tabs on admin editing pages.</li>
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
 <li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
@@ -94,9 +118,15 @@
 
 <ul>
 <li>A "Social Settings" metabox for Post, Page, custom post type, user profile, and taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.</li>
-<li>Support for embedded videos in content text (iframe and object HTML tags).</li>
-<li>Additional profile contact fields with configurable label and field names.</li>
-<li>Options to include / exclude specific Google / SEO, Open Graph, and Twitter Card meta tags.</li>
+<li>Support for embedded videos in content text ("iframe" and "object" HTML markup).</li>
+<li>Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.</li>
+<li>Additional Twitter Card meta tags:
+
+<ul>
+<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> &mdash; An embedded video from Slideshare, Vimeo, Wistia, and/or Youtube.</li>
+</ul></li>
+<li>Configurable user profile contact field names and labels.</li>
+<li>Include or exclude specific Google / SEO, Open Graph, Twitter Card, and Schema meta tags.</li>
 <li><strong>Integrates with 3rd party plugins and services for additional image, video, product, and content information</strong> (see <a href="http://wpsso.com/codex/plugins/wpsso/notes/modules/">About Pro Modules</a> and <a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a> for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 
 <ul>
