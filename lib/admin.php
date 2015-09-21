@@ -16,7 +16,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_id;
 		protected $menu_name;
 		protected $pagehook;
-		protected $readme_info = array();
+
+		protected static $is;
+		protected static $readme_info = array();
 
 		public $form;
 		public $lang = array();
@@ -58,6 +60,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// load all submenu classes into the $this->submenu array
 		// the id of each submenu item must be unique
 		private function set_objects() {
+			self::$is = $this->p->check->aop( $this->p->cf['lca'], true, 
+				$this->p->is_avail['aop'] ) ? ' Pro' : ' Free';
 			$menus = array( 
 				'submenu', 
 				'setting'	// setting must be last to extend submenu/advanced.php
@@ -68,7 +72,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 					if ( isset( $info['lib'][$sub] ) ) {
 						foreach ( $info['lib'][$sub] as $id => $name ) {
-							if ( strpos( $id, 'separator' ) !== false ) continue;
+							if ( strpos( $id, 'separator' ) !== false ) 
+								continue;
 							$classname = apply_filters( $lca.'_load_lib', false, $sub.'/'.$id );
 							if ( $classname !== false && class_exists( $classname ) )
 								$this->submenu[$id] = new $classname( $this->p, $id, $name );
@@ -204,8 +209,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function set_readme_info( $expire_secs = 86400 ) {
 			foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
-				if ( empty( $this->readme_info[$lca] ) )
-					$this->readme_info[$lca] = $this->p->util->parse_readme( $lca, $expire_secs );
+				if ( empty( self::$readme_info[$lca] ) )
+					self::$readme_info[$lca] = $this->p->util->parse_readme( $lca, $expire_secs );
 			}
 		}
 
@@ -245,14 +250,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_menu_page( $menu_slug ) {
 			global $wp_version;
-			$short_aop = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-				( $this->p->check->aop( $this->p->cf['lca'], true, 
-					$this->p->is_avail['aop'] ) ? ' Pro' : ' Free' );
-
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				$short_aop.' : '.$this->menu_name, 
-				$this->p->cf['menu'], 
+				$this->p->cf['plugin'][$this->p->cf['lca']]['short'].self::$is.' &mdash; '.$this->menu_name, 
+				$this->p->cf['menu'].self::$is, 
 				'manage_options', 
 				$menu_slug, 
 				array( &$this, 'show_form_page' ), 
@@ -265,9 +266,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_submenu_page( $parent_slug, $menu_id = false, $menu_name = false ) {
 			$menu_id = $menu_id === false ? $this->menu_id : $menu_id;
 			$menu_name = $menu_name === false ? $this->menu_name : $menu_name;
-			$short_aop = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-				( $this->p->check->aop( $this->p->cf['lca'], true, 
-					$this->p->is_avail['aop'] ) ? ' Pro' : ' Free' );
+
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
 				$menu_title = '<div style="z-index:999;
 					padding:2px 0;
@@ -275,7 +274,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					cursor:default;
 					border-bottom:1px dotted;
 					color:#666;" onclick="return false;">'.
-						$menu_name.'</div>';
+						( $menu_name === $this->p->cf['menu'] ? 
+							$menu_name.self::$is : $menu_name ).'</div>';
 				$menu_slug = '';
 				$page_title = '';
 				$function = '';
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'<div style="color:#'.$this->p->cf['color'].';">$1</div>', $menu_name );
 				else $menu_title = $menu_name;
 				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-				$page_title = $short_aop.' : '.$menu_title;
+				$page_title = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].self::$is.' &mdash; '.$menu_title;
 				$function = array( &$this, 'show_form_page' );
 			}
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $_GET['action'] ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {
-								$this->readme_info = array();
+								self::$readme_info = array();
 								$wpssoum = WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );
 							} else {
@@ -517,9 +517,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_form_page() {
-			$short_aop = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-				( $this->p->check->aop( $this->p->cf['lca'], true, 
-					$this->p->is_avail['aop'] ) ? ' Pro' : ' Free' );
 
 			if ( ! $this->is_setting( $this->menu_id ) )	// the "setting" pages display their own error messages
 				settings_errors( WPSSO_OPTIONS_NAME );	// display "error" and "updated" messages
@@ -534,7 +531,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			?>
 
 			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h1><?php $this->show_follow_icons(); echo $short_aop.' &ndash; '.$this->menu_name; ?></h1>
+				<h1><?php $this->show_follow_icons(); 
+					echo $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
+						self::$is.' &ndash; '.$this->menu_name; ?></h1>
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
 					<div id="side-info-column" class="inner-sidebar">
 						<?php do_meta_boxes( $this->pagehook, 'side', null ); ?>
@@ -589,9 +588,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<input type="hidden" name="page" value="'.$this->menu_id.'">';
 			}
 
-			echo $this->form->get_hidden( 'options_version', $this->p->cf['opt']['version'] );
-			echo $this->form->get_hidden( 'plugin_version', $this->p->cf['plugin'][$this->p->cf['lca']]['version'] );
-
 			// wp_nonce_field( $action, $name, $referer, $echo
 			// $name = the hidden form field to be created (aka $_POST[$name]).
 			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
@@ -630,9 +626,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$changelog_url = $info['url']['changelog'];
 
 				// the readme_info array is populated by set_readme_info(), which is called from load_form_page()
-				if ( ! empty( $this->p->admin->readme_info[$lca]['stable_tag'] ) ) {
-					$stable_version = $this->p->admin->readme_info[$lca]['stable_tag'];
-					$upgrade_notice = $this->p->admin->readme_info[$lca]['upgrade_notice'];
+				if ( ! empty( self::$readme_info[$lca]['stable_tag'] ) ) {
+					$stable_version = self::$readme_info[$lca]['stable_tag'];
+					$upgrade_notice = self::$readme_info[$lca]['upgrade_notice'];
 					if ( is_array( $upgrade_notice ) ) {
 						reset( $upgrade_notice );
 						$latest_version = key( $upgrade_notice );

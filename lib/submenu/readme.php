@@ -43,23 +43,23 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 			$rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'readme-description':
-					$rows[] = '<td>'.( empty( $this->p->admin->readme_info[$lca]['sections']['description'] ) ? 
-						'Content not Available' : $this->p->admin->readme_info[$lca]['sections']['description'] ).'</td>';
+					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['description'] ) ? 
+						'Content not Available' : self::$readme_info[$lca]['sections']['description'] ).'</td>';
 					break;
 
 				case 'readme-faq':
-					$rows[] = '<td>'.( empty( $this->p->admin->readme_info[$lca]['sections']['frequently_asked_questions'] ) ?
-						'Content not Available' : $this->p->admin->readme_info[$lca]['sections']['frequently_asked_questions'] ).'</td>';
+					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['frequently_asked_questions'] ) ?
+						'Content not Available' : self::$readme_info[$lca]['sections']['frequently_asked_questions'] ).'</td>';
 					break;
 
 				case 'readme-notes':
-					$rows[] = '<td>'.( empty( $this->p->admin->readme_info[$lca]['remaining_content'] ) ?
-						'Content not Available' : $this->p->admin->readme_info[$lca]['remaining_content'] ).'</td>';
+					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['remaining_content'] ) ?
+						'Content not Available' : self::$readme_info[$lca]['remaining_content'] ).'</td>';
 					break;
 
 				case 'readme-changelog':
-					$rows[] = '<td>'.( empty( $this->p->admin->readme_info[$lca]['sections']['changelog'] ) ?
-						'Content not Available' : $this->p->admin->readme_info[$lca]['sections']['changelog'] ).'</td>';
+					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['changelog'] ) ?
+						'Content not Available' : self::$readme_info[$lca]['sections']['changelog'] ).'</td>';
 					break;
 			}
 			return $rows;

@@ -280,16 +280,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function rename_keys( &$opts = array(), &$keys = array() ) {
-			// move old option values to new option names
-			foreach ( $keys as $old => $new )
-				// rename if the old array key exists, but not the new one (we don't want to overwrite current values)
-				if ( ! empty( $old ) && ! empty( $new ) && 
-					array_key_exists( $old, $opts ) && 
-					! array_key_exists( $new, $opts ) ) {
-
-					$opts[$new] = $opts[$old];
+			foreach ( $keys as $old => $new ) {
+				if ( empty( $old ) )
+					continue;
+				elseif ( isset( $opts[$old] ) ) {
+					if ( ! empty( $new ) && 
+						! isset( $opts[$new] ) )
+							$opts[$new] = $opts[$old];
 					unset( $opts[$old] );
 				}
+			}
 			return $opts;
 		}
 

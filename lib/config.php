@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.10',		// plugin version
+					'version' => '3.10.1-dev1',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -274,10 +274,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso358',				// increment when changing default options
+				'version' => 'sso360',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
-					'options_version' => '',
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
 					'schema_website_json' => 1,
 					'schema_publisher_json' => 1,
@@ -409,8 +408,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings
 					 */
-					'plugin_version' => '',
-					'plugin_wpsso_tid' => '',
 					// Plugin Settings Tab
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
@@ -458,6 +455,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_api_key' => '',
 					'plugin_google_api_key' => '',
 					'plugin_google_shorten' => 0,
+					// Contact Field Names and Labels
 					'plugin_cm_fb_name' => 'facebook', 
 					'plugin_cm_fb_label' => 'Facebook URL', 
 					'plugin_cm_fb_enabled' => 1,
@@ -497,16 +495,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name' => 'yim',
 					'wp_cm_yim_label' => 'Yahoo IM', 
 					'wp_cm_yim_enabled' => 1,
+					// Extension Plugins and Pro Licenses
+					'plugin_wpsso_tid' => '',
 				),
 				'site_defaults' => array(
 					'options_filtered' => false,
-					'options_version' => '',
 					/*
 					 * Advanced Settings
 					 */
-					'plugin_version' => '',
-					'plugin_wpsso_tid' => '',
-					'plugin_wpsso_tid:use' => 'default',
 					// Plugin Settings Tab
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_debug:use' => 'default',
@@ -533,6 +529,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
+					// Extension Plugins and Pro Licenses
+					'plugin_wpsso_tid' => '',
+					'plugin_wpsso_tid:use' => 'default',
 				),
 				'pre' => array(
 					'email' => 'email', 
@@ -722,12 +721,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				// complete relative paths in the image array
 				foreach ( self::$cf['plugin'] as $lca => $info ) {
-					if ( ! isset( $info['base'] ) )
-						continue;
-					$base = self::$cf['plugin'][$lca]['base'];	// nextgen-facebook/nextgen-facebook.php
 					foreach ( $info['img'] as $id => $url )
 						if ( ! empty( $url ) && strpos( $url, '//' ) === false )
-							self::$cf['plugin'][$lca]['img'][$id] = trailingslashit( plugins_url( '', $base ) ).$url;
+							self::$cf['plugin'][$lca]['img'][$id] = trailingslashit( plugins_url( '', $info['base'] ) ).$url;
 				}
 			}
 

@@ -57,8 +57,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->cf['opt']['defaults'] );
 
 				$this->p->cf['opt']['defaults']['options_filtered'] = true;
-				$this->p->cf['opt']['defaults']['options_version'] = $this->p->cf['opt']['version'];
-				$this->p->cf['opt']['defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
 
 			if ( $idx !== false ) 
@@ -79,8 +77,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->cf['opt']['site_defaults'] );
 
 				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
-				$this->p->cf['opt']['site_defaults']['options_version'] = $this->p->cf['opt']['version'];
-				$this->p->cf['opt']['site_defaults']['plugin_version'] = $this->p->cf['plugin'][$lca]['version'];
 			}
 
 			if ( $idx !== false ) {
@@ -94,19 +90,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
 				$opts_err_msg = '';
-				$lca = $this->p->cf['lca'];
-				$update_version = ( empty( $opts['plugin_version'] ) || 
-					$opts['plugin_version'] !== $this->p->cf['plugin'][$lca]['version'] ) ? true : false;
-				$update_options = ( empty( $opts['options_version'] ) || 
-					$opts['options_version'] !== $this->p->cf['opt']['version'] ) ? true : false;
+				$has_diff_version = false;
+				$has_diff_options = false;
 
-				if ( $update_version === true || 
-					$update_options === true ) {
+				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+					if ( empty( $info['version'] ) )
+						continue;
+					$key = 'plugin_'.$lca.'_version';
+					if ( empty( $opts[$key] ) || $opts[$key] !== $info['version'] ) {
+						WpssoUtil::save_time( $lca, $info['version'], 'update' );
+						$opts[$key] = $info['version'];
+						$has_diff_version = true;
+					}
+				}
 
-					if ( $update_version === true )
-						WpssoUtil::save_time( $lca, $this->p->cf['plugin'][$lca]['version'], 'update' );
+				if ( empty( $opts['options_version'] ) || 
+					$opts['options_version'] !== $this->p->cf['opt']['version'] )
+						$has_diff_options = true;
 
-					if ( $update_options === true ) {
+				if ( $has_diff_version === true || $has_diff_options === true ) {
+
+					if ( $has_diff_options === true ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
 								' different than saved v'.$opts['options_version'] );
@@ -120,14 +124,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $network === false ) {
 						if ( is_admin() && current_user_can( 'manage_options' ) )
 							$this->save_options( $options_name, $opts, $network );
-						if ( $update_version === true )
-							set_transient( $lca.'_update_redirect', true, 60 * 60 );
 					} else $this->save_options( $options_name, $opts, $network );
 				}
 
 				if ( $network === false ) {
 					if ( ! empty( $this->p->is_avail['seo']['*'] ) ) {
-						// checkbox options
 						foreach ( array( 'canonical', 'description' ) as $name ) {
 							$opts['add_meta_name_'.$name] = 0;
 							$opts['add_meta_name_'.$name.':is'] = 'disabled';
@@ -162,7 +163,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $network === false )
 						$url = $this->p->util->get_admin_url( 'general' );
 					else $url = $this->p->util->get_admin_url( 'network' );
-					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. The plugin settings have been returned to their default values &mdash; <a href="'.$url.'">please review and save these new settings</a>.' );
+					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. '.
+						'The plugin settings have been returned to their default values &mdash; '.
+						'<a href="'.$url.'">please review and save these new settings</a>.' );
 				}
 			}
 			return $opts;
@@ -271,7 +274,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			// mark the new options as current
 			$prev_opts_version = $opts['options_version'];
 			$opts['options_version'] = $this->p->cf['opt']['version'];
-			$opts['plugin_version'] = $this->p->cf['plugin'][$this->p->cf['lca']]['version'];
+
+			foreach ( $this->p->cf['plugin'] as $lca => $info )
+				if ( ! empty( $info['version'] ) )
+					$opts['plugin_'.$lca.'_version'] = $info['version'];
+
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
 			// update_option() returns false if options are the same or there was an error, 
