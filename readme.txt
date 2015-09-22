@@ -419,17 +419,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.10.1 =
+= Version 3.10.1 (2015/09/23) =
 
 * **New Features**
 	* *None*
 * **Improvements**
-	* Added Free/Pro status to the admin menu / settings item name.
-	* Slight performance improvement when reading the options array.
+	* Added Free / Pro status text to the SSO admin menu / settings item names.
+	* Slight performance improvement when reading / processing the options array.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added saving of all plugin extension versions to the options array.
+	* Added saving of plugin extension versions to the options array when new versions are found.
 	* Removed all Photo, Gallery, and Product Twitter Card related options from the options array.
 	* Changed WpssoAdmin $readme_info to a static variable.
 
@@ -577,37 +577,5 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.10 =
 
-Added Twitter Card features in the Free version. Removed the deprecated Photo, Gallery, and Product Twitter Cards.
-
-= 3.9.2 =
-
-Fixed incorrect "Include Preview Image(s)" default value in Social Settings metabox, and completed the Network Advanced settings page "Plugin Settings" tab (Pro version).
-
-= 3.9 =
-
-Added a new "Theme Integration" tab on the Advanced settings page, along with new filters and function, for better Schema markup support.
-
-= 3.8 =
-
-Added ability to dismiss image dimension warnings when using WordPress 4.2+. Code improvements for developers, and small speed improvements.
-
-= 3.7.4 =
-
-Fixed a Facebook debugger error for 'fb:admins' with multiple comma-delimited values. Added three new filters to accept under-sized images individually.
-
-= 3.7.3 =
-
-Fixed incorrect warning message for empty Video Embed option value. Refactored / improved WpssoCheck->get_avail() method for a slight speed improvement.
-
-= 3.7.2 =
-
-Fixed a missing "R" issue in titles and descriptions by replacing the '\R' regex escape sequence by '\n\r'.
-
-= 3.7.1 =
-
-Fixed / improved duplicate meta tag pattern matching by allowing extra newline characters added by W3TC.
-
-= 3.7 =
-
-Added support for the WordPress REST API (Version 2) plugin (Pro version).
+2015/09/20 Added all Twitter Cards in the Free version. Removed the now deprecated Photo, Gallery, and Product Twitter Cards.
 
