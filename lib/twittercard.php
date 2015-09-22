@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				if ( ! isset( $tc['twitter:card'] ) && ! $use_post ) {
 					if ( $this->p->util->force_default_image() ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'large image summary card: checking for default image' );
+							$this->p->debug->log( 'large image card: checking for default image' );
 						$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-tc-lrgimg' );
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 					if ( ! isset( $tc['twitter:card'] ) ) {
 
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'large image summary card: checking for post image (meta, featured, attached)' );
+							$this->p->debug->log( 'large image card: checking for post image (meta, featured, attached)' );
 						$og_image = $this->p->media->get_post_images( 1, $this->p->cf['lca'].'-tc-lrgimg', $post_id, false );
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
@@ -152,14 +152,18 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 					if ( ! isset( $tc['twitter:card'] ) && 
 						$this->p->is_avail['media']['ngg'] === true ) {
 
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'summary card: checking for singlepic image' );
-						$og_image = $this->p->mods['media']['ngg']->get_singlepic_images( 1, $this->p->cf['lca'].'-tc-lrgimg', false );
-						if ( count( $og_image ) > 0 ) {
-							$image = reset( $og_image );
-							$tc['twitter:card'] = 'summary_large_image';
-							$tc['twitter:image'] = $image['og:image'];
-						}
+						if ( ! empty( $this->p->mods['media']['ngg'] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'large image card: checking for singlepic image' );
+							$og_image = $this->p->mods['media']['ngg']->get_singlepic_images( 1, 
+								$this->p->cf['lca'].'-tc-lrgimg', false );
+							if ( count( $og_image ) > 0 ) {
+								$image = reset( $og_image );
+								$tc['twitter:card'] = 'summary_large_image';
+								$tc['twitter:image'] = $image['og:image'];
+							}
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( 'large image card: singlepic check skipped - NGG module not available' );
 					}
 				} 
 			}

@@ -372,23 +372,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
 		 */
 		public function get_mod_options( $mod, $id = false, $idx = false, $attr = array() ) {
-			if ( ! empty( $id ) ) {
-				if ( isset( $this->p->mods['util'][$mod] ) ) {
-					// use first matching index key
-					if ( ! is_array( $idx ) )
-						$idx = array( $idx );
-					foreach ( array_unique( $idx ) as $key ) {
-						$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
-						if ( ! empty( $ret ) )
-							break;
-					}
-					if ( ! empty( $ret ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom '.$mod.' '.
-								( $key === false ? 'options' : $key ).' = '.
-								( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
-						return $ret;
-					}
+			if ( empty( $id ) || empty( $idx ) || 
+				! isset( $this->p->mods['util'][$mod] ) )
+					return false;
+			if ( ! is_array( $idx ) )
+				$idx = array( $idx );
+			foreach ( array_unique( $idx ) as $key ) {
+				if ( empty( $key ) )
+					return false;
+				$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
+				if ( ! empty( $ret ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom '.$mod.' '.
+							( $key === false ? 'options' : $key ).' = '.
+							( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+					return $ret;	// stop here
 				}
 			}
 			return false;

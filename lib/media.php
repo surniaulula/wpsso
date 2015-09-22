@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
 			}
 
-			list( $img_url, $img_width, $img_height ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
+			list( $img_url, $img_width, $img_height, $img_inter ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
 				image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), $pid, $size_name );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'image_downsize() = '.$img_url.' ('.$img_width.'x'.$img_height.')' );
