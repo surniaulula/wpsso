@@ -424,15 +424,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* Added Free / Pro status text to the SSO admin menu / settings item names.
 	* Slight performance improvement when reading / processing the options array.
+	* Added Free / Pro status text to the SSO admin menu / settings item names.
 * **Bugfixes**
-	* Fixed the Open Graph default title and description value in post Social Settings metabox.
-	* Fixed the use of a possibly missing NextGEN Gallery module in the Twitter Card class (Free version).
+	* Fixed the Open Graph default title and description values in the post Social Settings metabox.
+	* Fixed the use of a possibly missing NextGEN Gallery Pro version module in the Twitter Card class (Free version).
 * **Developer Notes**
-	* Added saving of plugin extension versions to the options array when new versions are found.
-	* Removed all Photo, Gallery, and Product Twitter Card related options from the options array.
-	* Changed WpssoAdmin $readme_info to a static variable.
+	* Added saving of plugin extension version numbers to the options array when new versions are found.
+	* Removed all Photo, Gallery, and Product Twitter Card related option keys from the options array.
+	* Changed the WpssoAdmin $readme_info property to a static variable.
 
 = Version 3.10 (2015/09/20) =
 
@@ -575,6 +575,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* The WPSSO WordPress REST API v2 module extends the returned /wp-json/wp/v2/posts (including custom post types), terms, and users JSON with a new 'head' array field consisting of 'html' and 'parts' arrays (Pro version).
 
 == Upgrade Notice ==
+
+= 3.10.1 =
+
+2015/09/23 Fixed Open Graph default title + description values in Social Settings metabox.
 
 = 3.10 =
 

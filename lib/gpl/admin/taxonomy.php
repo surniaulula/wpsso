@@ -25,30 +25,30 @@ if ( ! class_exists( 'WpssoGplAdminTaxonomy' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( 'Default Title', 'medium', 'meta-og_title', $head_info ). 
-			'<td class="blank">'.$this->p->webpage->get_title( $this->p->options['og_title_len'], '...', 
-				false ).'</td>';	// use_post = false
+			'<td class="blank">'.$this->p->webpage->get_title( $this->p->options['og_title_len'],
+				'...', false, true, false, true, null ).'</td>';	// $use_post = false, $custom_idx = null
 		
 			$rows[] = $this->p->util->get_th( 'Default (Facebook / Open Graph, LinkedIn, 
 				Pinterest Rich Pin) Description', 'medium', 'meta-og_desc', $head_info ).
-			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', 
-				false ).'</td>';	// use_post = false
+			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'],
+				'...', false, true, true, true, null ).'</td>';	// $use_post = false, $custom_idx = null
 	
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Google+ / Schema Description', 'medium', 'meta-schema_desc', $head_info ).
-			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'], '...', 
-				false ).'</td>';	// use_post = false
+			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'],
+				'...', false ).'</td>';	// $use_post = false
 	
 			$rows[] = $this->p->util->get_th( 'Google Search / SEO Description', 'medium', 'meta-seo_desc', $head_info ).
-			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['seo_desc_len'], '...', 
-				false, true, false ).'</td>';	// use_post = false, and no hashtags
+			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['seo_desc_len'],
+				'...', false, true, false ).'</td>';	// $use_post = false, $add_hashtags = false
 
 			$rows[] = $this->p->util->get_th( 'Twitter Card Description', 'medium', 'meta-tc_desc', $head_info ).
-			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'], '...', 
-				false ).'</td>';	// use_post = false
+			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'],
+				'...', false ).'</td>';	// $use_post = false
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Sharing URL', 'medium', 'meta-sharing_url', $head_info ).
-			'<td class="blank">'.$this->p->util->get_sharing_url( false ).'</td>';	// use_post = false
+			'<td class="blank">'.$this->p->util->get_sharing_url( false ).'</td>';	// $use_post = false
 
 			return $rows;
 		}
