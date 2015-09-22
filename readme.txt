@@ -8,7 +8,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.10
+Stable Tag: 3.10.1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -428,7 +428,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added Free / Pro status text to the SSO admin menu / settings item names.
 * **Bugfixes**
 	* Fixed the Open Graph default title and description values in the post Social Settings metabox.
-	* Fixed the use of a possibly missing NextGEN Gallery Pro version module in the Twitter Card class (Free version).
+	* Fixed use of a missing NextGEN Gallery Pro version module in the Twitter Card class (Free version).
 * **Developer Notes**
 	* Added saving of plugin extension version numbers to the options array when new versions are found.
 	* Removed all Photo, Gallery, and Product Twitter Card related option keys from the options array.
@@ -578,7 +578,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.10.1 =
 
-2015/09/23 Fixed Open Graph default title + description values in Social Settings metabox.
+2015/09/23 Fixed OG default title + description in Social Settings metabox. Fixed use of a missing NextGEN Gallery Pro version module in Free version. Slight performance improvement when reading the options array.
 
 = 3.10 =
 
