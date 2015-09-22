@@ -427,7 +427,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added Free / Pro status text to the SSO admin menu / settings item names.
 	* Slight performance improvement when reading / processing the options array.
 * **Bugfixes**
-	* *None*
+	* Fixed the Open Graph default title and description value in post Social Settings metabox.
+	* Fixed the use of a possibly missing NextGEN Gallery module in the Twitter Card class (Free version).
 * **Developer Notes**
 	* Added saving of plugin extension versions to the options array when new versions are found.
 	* Removed all Photo, Gallery, and Product Twitter Card related options from the options array.
