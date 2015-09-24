@@ -419,6 +419,24 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.10.2 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Removed the unnecessary current/new options comparison before saving in the WpssoOptions `save_options()` method.
+	* Renamed a few variables and methods for improve readability:
+		* Renamed the `$custom_idx` variable to `$md_idx`.
+		* Renamed the `$source_id` variable to `$src_id`.
+		* Renamed the WpssoHead `get_tag_array()` private method to `get_mt_array()`.
+		* Renamed the WpssoHead `get_single_tag()` private method to `get_single_mt()`.
+		* Renamed the WpssoSchema `add_head_attr()` public method (and filter) to `add_head_attributes()`.
+		* Renamed the WpssoOpengraph `add_html_attr()` public method (and filter) to `add_html_attributes()`.
+
 = Version 3.10.1 (2015/09/23) =
 
 * **New Features**
