@@ -424,9 +424,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* *None*
 * **Improvements**
-	* *None*
+	* The user and taxonomy "Priority Media" options now takes precedence over any forced default media from the plugin settings.
+	* Added the 'Maximum Images', 'Maximum Videos', and 'Include Preview Image(s)' options to the user and taxonomy Social Settings metabox.
 * **Bugfixes**
-	* *None*
+	* Fixed the saving and checking / use of the 'Include Preview Image(s)' option in the Social Settings metabox.
 * **Developer Notes**
 	* Removed the unnecessary current/new options comparison before saving in the WpssoOptions `save_options()` method.
 	* Renamed a few variables and methods for improve readability:
