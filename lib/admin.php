@@ -916,7 +916,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( isset( $update_plugins->response ) ) {
 							foreach ( (array) $update_plugins->response as $file => $plugin ) {
 								if ( $plugin->slug === $info['slug'] ) {
-									$view_text = '<font color="red">View Plugin Details and Update</font>';
+									$view_text = '<font color="red">View Plugin Details + Update</font>';
 									break;
 								}
 							}

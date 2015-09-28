@@ -37,8 +37,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_filter( 'manage_users_custom_column', array( $this, 'get_user_column_content',), 10, 3 );
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'og_image_user_column_content' => 3,
-					'og_desc_user_column_content' => 3,
+					'og_image_user_column_content' => 4,
+					'og_desc_user_column_content' => 4,
 				) );
 
 				// exit here if not a user page, or showing the profile page
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->get_mod_column_content( $value, $column_name, $id, 'user' );
 		}
 
-		public function filter_og_image_user_column_content( $value, $column_name, $id ) {
+		public function filter_og_image_user_column_content( $value, $column_name, $id, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -70,17 +70,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$check_dupes = false;	// using first image we find, so dupe checking is useless
 			$force_regen = false;
 			$meta_pre = 'og';
+			$og_image = array();
 
-			if ( ! empty( $this->p->options['og_def_img_on_author'] ) )
-				$og_image = $this->p->media->get_default_image( 1, $size_name,
-					$check_dupes, $force_regen );
-			else {
-				$og_image = $this->get_og_image( 1, $size_name, $id,
-					$check_dupes, $force_regen, $meta_pre );
-				if ( empty( $og_image ) )
-					$og_image = $this->p->media->get_default_image( 1, $size_name,
-						$check_dupes, $force_regen );
-			}
+			if ( empty( $og_image ) )
+				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $meta_pre );
+
+			if ( empty( $og_image ) )
+				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $meta_pre );
+
+			if ( empty( $og_image ) )
+				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
 
 			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
 				$image = reset( $og_image );
@@ -91,7 +90,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_user_column_content( $value, $column_name, $id ) {
+		public function filter_og_desc_user_column_content( $value, $column_name, $id, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -573,8 +572,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'mod:user_lang:'.$lang.'_id:'.$user_id.'_column:'.$lca.'_og_image',
-					'mod:user_lang:'.$lang.'_id:'.$user_id.'_column:'.$lca.'_og_desc',
+					'lang:'.$lang.'_id:'.$user_id.'_mod:user_column:'.$lca.'_og_image',
+					'lang:'.$lang.'_id:'.$user_id.'_mod:user_column:'.$lca.'_og_desc',
 				),
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 

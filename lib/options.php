@@ -281,33 +281,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
-			// update_option() returns false if options are the same or there was an error, 
-			// so check to make sure they need to be updated to avoid throwing a false error
-			if ( $options_name === WPSSO_SITE_OPTIONS_NAME )
-				$opts_current = get_site_option( $options_name, $opts, false );	// use_cache = false
-			else $opts_current = get_option( $options_name, $opts );
+			if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
+				$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
+			else $saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
 
-			if ( $opts_current !== $opts ) {
-				if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
-					$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
-				else $saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
-
-				if ( $saved === true ) {
-					// if we're just saving a new plugin version string, don't bother showing the upgrade message
-					if ( $prev_opts_version !== $opts['options_version'] ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
-						$this->p->notice->inf( 'Plugin settings ('.$options_name.') have been upgraded and saved.', true );
-					}
-				} else {
+			if ( $saved === true ) {
+				// if we're just saving a new plugin version string, don't bother showing the upgrade message
+				if ( $prev_opts_version !== $opts['options_version'] ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
-					$this->p->notice->err( 'The plugin settings ('.$options_name.') have been upgraded, but WordPress returned an error when saving them to the options table (WordPress '.( $options_name == WPSSO_SITE_OPTIONS_NAME ? 'update_site_option' : 'update_option' ).'() function did not return true). This is a known issue in some shared hosting environments. The plugin will attempt to upgrade and save its settings again &mdash; report the issue to your hosting provider if you see this warning message more than once.', true );
-					return false;
+						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
+					$this->p->notice->inf( 'Plugin settings ('.$options_name.') have been upgraded and saved.', true );
 				}
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'new and old options array is identical' );
-
+			} else {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
+				return false;
+			}
 			return true;
 		}
 

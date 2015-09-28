@@ -60,10 +60,6 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_index' ).'</td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Force Default Video on Author Index', null, 'og_def_vid_on_author' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_author' ).'</td>';
-	
-			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Force Default Video on Search Results', null, 'og_def_vid_on_search' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_search' ).'</td>';
 

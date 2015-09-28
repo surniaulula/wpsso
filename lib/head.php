@@ -79,15 +79,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		// extract certain key fields for reference and sanity checks
-		public function extract_head_info( &$head_meta_tags, &$head_info = array() ) {
-			foreach ( $head_meta_tags as $tag ) {
-				if ( ! isset( $tag[2] ) || 
-					! isset( $tag[3] ) )
+		public function extract_head_info( &$head_mt, &$head_info = array() ) {
+			foreach ( $head_mt as $mt ) {
+				if ( ! isset( $mt[2] ) || 
+					! isset( $mt[3] ) )
 						continue;
 				// any time we're outside an og:image block, set $first_image to false
-				if ( strpos( $tag[3], 'og:image' ) !== 0 )
+				if ( strpos( $mt[3], 'og:image' ) !== 0 )
 					$first_image = false;
-				switch ( $tag[2].'-'.$tag[3] ) {
+				switch ( $mt[2].'-'.$mt[3] ) {
 					case 'property-og:image':
 					case 'property-og:image:secure_url':
 						if ( $first_image === false &&
@@ -95,45 +95,47 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								isset( $head_info['og:image:secure_url'] ) ) )
 									continue;
 						else {
-							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
+							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
 							$first_image = true;
 						}
 						break;
 					case 'property-og:image:width':
 					case 'property-og:image:height':
 						if ( $first_image === true )
-							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
+							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
 						break;
 					case 'name-author':
 					case 'property-og:description':
 					case 'property-og:title':
 					case 'property-og:type':
-						if ( ! isset( $head_info[$tag[3]] ) )
-							$head_info[$tag[3]] = $tag[5];	// save the meta tag value
+						if ( ! isset( $head_info[$mt[3]] ) )
+							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
 						break;
 				}
 			}
 			return $head_info;
 		}
 
-		public function get_header_html( $use_post = false, $read_cache = true, &$meta_og = array() ) {
+		public function get_header_html( $use_post = false, $read_cache = true, &$mt_og = array() ) {
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			$html = "\n\n".'<!-- '.$cmt.'begin -->'."\n";
+
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
 				$html .= '<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'begin"/>'."\n";
 
-			foreach ( $this->get_header_array( $use_post, $read_cache, $meta_og ) as $meta )
-				if ( ! empty( $meta[0] ) )	// first element of the array should be a complete html tag
-					$html .= $meta[0];
+			foreach ( $this->get_header_array( $use_post, $read_cache, $mt_og ) as $mt )
+				if ( ! empty( $mt[0] ) )	// first element of the array should be a complete html tag
+					$html .= $mt[0];
 
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
 				$html .= '<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'end"/>'."\n";
+
 			$html .= '<!-- '.$cmt.'end -->'."\n\n";
 
 			return $html;
 		}
 
-		public function get_header_array( $use_post = false, $read_cache = true, &$meta_og = array() ) {
+		public function get_header_array( $use_post = false, $read_cache = true, &$mt_og = array() ) {
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
@@ -190,37 +192,37 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Open Graph
 			 */
-			$meta_og = $this->p->og->get_array( $use_post, $obj, $meta_og );
+			$mt_og = $this->p->og->get_array( $use_post, $obj, $mt_og );
 
 			/**
 			 * Twitter Cards
 			 */
-			$meta_tc = $this->p->tc->get_array( $use_post, $obj, $meta_og );
+			$mt_tc = $this->p->tc->get_array( $use_post, $obj, $mt_og );
 
 			/**
 			 * Name / SEO meta tags
 			 */
-			$meta_name = array();
+			$mt_name = array();
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				if ( isset( $this->p->options['seo_author_name'] ) && 
 					$this->p->options['seo_author_name'] !== 'none' )
-						$meta_name['author'] = $this->p->mods['util']['user']->get_author_name( $author_id, 
+						$mt_name['author'] = $this->p->mods['util']['user']->get_author_name( $author_id, 
 							$this->p->options['seo_author_name'] );
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
-				$meta_name['canonical'] = $sharing_url;
+				$mt_name['canonical'] = $sharing_url;
 
 			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
-				$meta_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
+				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
 					'...', $use_post, true, false, true, 'seo_desc' );	// add_hashtags = false
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
 				if ( ! empty( $this->p->options['rp_dom_verify'] ) )
-					$meta_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
+					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
 			}
 
-			$meta_name = apply_filters( $lca.'_meta_name', $meta_name, $use_post, $obj );
+			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $obj );
 
 			/**
 			 * Link relation tags
@@ -243,23 +245,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Schema meta tags
 			 */
-			$meta_schema = $this->p->schema->get_meta_array( $use_post, $obj, $meta_og );
+			$mt_schema = $this->p->schema->get_meta_array( $use_post, $obj, $mt_og );
 
 			/**
 			 * Combine and return all meta tags
 			 */
-			$comment = $this->p->cf['lca'].' meta tags';
 			$header_array = array_merge(
-				$this->get_single_tag( 'meta', 'name', 'generator',
+				$this->get_single_mt( 'meta', 'name', 'generator',
 					$short_aop.' '.$this->p->cf['plugin'][$lca]['version'].
 					( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
 						'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
-				$this->get_tag_array( 'link', 'rel', $link_rel, $use_post ),
-				$this->get_tag_array( 'meta', 'property', $meta_og, $use_post ),
-				$this->get_tag_array( 'meta', 'name', $meta_tc, $use_post ),
-				$this->get_tag_array( 'meta', 'itemprop', $meta_schema, $use_post ),
-				$this->get_tag_array( 'meta', 'name', $meta_name, $use_post ),		// seo description is last
+				$this->get_mt_array( 'link', 'rel', $link_rel, $use_post ),
+				$this->get_mt_array( 'meta', 'property', $mt_og, $use_post ),
+				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
+				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
+				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),		// seo description is last
 				SucomUtil::a2aa( $this->p->schema->get_json_array( $post_id, $author_id,
 					$this->p->cf['lca'].'-schema' ) )
 			);
@@ -277,38 +278,38 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/**
-		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_tag() for each
+		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_mt() for each
 		 */
-		private function get_tag_array( $tag = 'meta', $type = 'property', $tag_array, $use_post = false ) {
+		private function get_mt_array( $tag = 'meta', $type = 'property', $mt_array, $use_post = false ) {
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $tag_array ).' '.$tag.' '.$type.' to process' );
-				$this->p->debug->log( $tag_array );
+				$this->p->debug->log( count( $mt_array ).' '.$tag.' '.$type.' to process' );
+				$this->p->debug->log( $mt_array );
 			}
 			$ret = array();
-			if ( empty( $tag_array ) )
+			if ( empty( $mt_array ) )
 				return $ret;
-			elseif ( ! is_array( $tag_array ) ) {
+			elseif ( ! is_array( $mt_array ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: tag_array argument is not an array' );
+					$this->p->debug->log( 'exiting early: mt_array argument is not an array' );
 				return $ret;
 			}
-			foreach ( $tag_array as $f_name => $f_val ) {					// 1st-dimension array (associative)
+			foreach ( $mt_array as $f_name => $f_val ) {					// 1st-dimension array (associative)
 				if ( is_array( $f_val ) ) {
 					foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
 						if ( SucomUtil::is_assoc( $s_val ) ) {
 							foreach ( $s_val as $t_name => $t_val )		// 3rd-dimension array (associative)
-								$ret = array_merge( $ret, $this->get_single_tag( $tag, $type, 
+								$ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
 									$t_name, $t_val, $f_name.':'.( $s_num + 1 ), $use_post ) );
-						} else $ret = array_merge( $ret, $this->get_single_tag( $tag, $type, 
+						} else $ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
 							$f_name, $s_val, $f_name.':'.( $s_num + 1 ), $use_post ) );
 					}
-				} else $ret = array_merge( $ret, $this->get_single_tag( $tag, $type, 
+				} else $ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
 					$f_name, $f_val, '', $use_post ) );
 			}
 			return $ret;
 		}
 
-		private function get_single_tag( $tag = 'meta', $type = 'property', $name, $value = '', $comment = '', $use_post = false ) {
+		private function get_single_mt( $tag = 'meta', $type = 'property', $name, $value = '', $cmt = '', $use_post = false ) {
 
 			// known exceptions for the 'property' $type
 			if ( $tag === 'meta' && $type === 'property' && 
@@ -355,25 +356,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$secure_url = $value;
 				$value = preg_replace( '/^https:/', 'http:', $value );
-				$ret[] = array( '', $tag, $type, $name.':secure_url', $attr, $secure_url, $comment );
+				$ret[] = array( '', $tag, $type, $name.':secure_url', $attr, $secure_url, $cmt );
 			}
-			$ret[] = array( '', $tag, $type, $name, $attr, $value, $comment );
+			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
-			// $parts = array( $html, $tag, $type, $name, $attr, $value, $comment );
+			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			foreach ( $ret as $num => $parts ) {
 				if ( defined( 'WPSSO_FILTER_SINGLE_TAGS' ) && WPSSO_FILTER_SINGLE_TAGS ) {
 					/*
 					 * Example: 'wpsso_link_rel_publisher_content'
-					 * apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $comment, $use_post );
+					 * apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $cmt, $use_post );
 					 *
 					 * Example: 'wpsso_meta_itemprop_description_content'
-					 * apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $comment, $use_post );
+					 * apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $cmt, $use_post );
 					 *
 					 * Example: 'wpsso_meta_name_twitter:description_content'
-					 * apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $comment, $use_post );
+					 * apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $cmt, $use_post );
 					 *
 					 * Example: 'wpsso_meta_property_og:description_content'
-					 * apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $comment, $use_post );
+					 * apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $cmt, $use_post );
 					 */
 					$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
 					$parts[5] = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );

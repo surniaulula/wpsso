@@ -159,10 +159,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( 'Force Default Image on Author Index', null, 'og_def_img_on_author' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_img_on_author' ).'</td>';
-		
-					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( 'Force Default Image on Search Results', null, 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 		

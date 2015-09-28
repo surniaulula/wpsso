@@ -120,7 +120,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				elseif ( $mod === 'user' )
 					$id = empty( $obj->ID ) ?
 						$this->get_author_object( 'id' ): $obj->ID;
-
 			} elseif ( empty( $id ) ) {
 				if ( $mod === 'post' )
 					$id = $this->get_post_object( false, 'id' );
@@ -136,7 +135,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} elseif ( empty( $id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'no object id defined' );
-			} else $meta_opts = $this->get_mod_options( $mod, $id );
+			} else $meta_opts = $this->get_mod_options( $mod, $id );			// get all metadata options
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -147,22 +146,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'name' => $save_name,
 						'label' => $save_name
 					);
-				} elseif ( ! empty( $size_info['prefix'] ) )					// allow for alternate option prefix
+				} elseif ( ! empty( $size_info['prefix'] ) )				// allow for alternate option prefix
 					$opt_prefix = $size_info['prefix'];
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
-					if ( isset( $size_info[$key] ) )					// prefer existing info from filters
+					if ( isset( $size_info[$key] ) )				// prefer existing info from filters
 						continue;
-					elseif ( isset( $meta_opts[$opt_prefix.'_'.$key] ) )			// use post meta if available
+					elseif ( isset( $meta_opts[$opt_prefix.'_'.$key] ) )		// use post meta if available
 						$size_info[$key] = $meta_opts[$opt_prefix.'_'.$key];
-					elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) )		// current plugin settings
+					elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) )	// current plugin settings
 						$size_info[$key] = $this->p->options[$opt_prefix.'_'.$key];
 					else {
-						if ( ! isset( $def_opts ) )					// only read once if necessary
+						if ( ! isset( $def_opts ) )				// only read once if necessary
 							$def_opts = $this->p->opt->get_defaults();
-						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];		// fallback to default value
+						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];	// fallback to default value
 					}
-					if ( $key === 'crop' )							// make sure crop is true or false
+					if ( $key === 'crop' )						// make sure crop is true or false
 						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
 				}
 
@@ -270,7 +269,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
-							'mod:post_lang:'.$lang.'_id:'.$post_id.'_column:'.$lca.'_og_image',
+							'lang:'.$lang.'_id:'.$post_id.'_mod:post_column:'.$lca.'_og_image',
 						),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', 
@@ -372,22 +371,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
 		 */
 		public function get_mod_options( $mod, $id = false, $idx = false, $attr = array() ) {
-			if ( empty( $id ) || empty( $idx ) || 
+			if ( empty( $id ) || 
 				! isset( $this->p->mods['util'][$mod] ) )
 					return false;
-			if ( ! is_array( $idx ) )
-				$idx = array( $idx );
-			foreach ( array_unique( $idx ) as $key ) {
-				if ( empty( $key ) )
-					return false;
-				$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
-				if ( ! empty( $ret ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom '.$mod.' '.
-							( $key === false ? 'options' : $key ).' = '.
-							( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
-					return $ret;	// stop here
+			// return the whole options array
+			if ( $idx === false ) {
+				$ret = $this->p->mods['util'][$mod]->get_options( $id, $idx, $attr );
+			} else {
+				if ( ! is_array( $idx ) )
+					$idx = array( $idx );
+				foreach ( array_unique( $idx ) as $key ) {
+					if ( $key === 'none' )		// special keyword
+						return false;		// stop here
+					if ( empty( $key ) )
+						continue;
+					$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
+					if ( ! empty( $ret ) )
+						break;
 				}
+			}
+			if ( ! empty( $ret ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'custom '.$mod.' '.
+						( $idx === false ? 'options' : ( is_array( $idx ) ? 
+							implode( ', ', $idx ) : $idx ) ).' = '.
+						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+				return $ret;	// stop here
 			}
 			return false;
 		}
@@ -401,6 +410,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			switch ( $option_type ) {
 				case 'html':	// leave html and css / javascript code blocks as-is
 				case 'code':
+					$val = stripslashes( $val );
 					break;
 				default:
 					$val = stripslashes( $val );
@@ -507,7 +517,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
-				// everything else is a 1 of 0 checkbox option 
+				// everything else is a 1 or 0 checkbox option 
 				case 'checkbox':
 				default:
 					if ( $def_val === 0 || $def_val === 1 )	// make sure the default option is also a 1 or 0, just in case
@@ -627,29 +637,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function force_default_media( $use_post = false, $opt_pre = 'og', $media = 'img' ) {
 			$ret = null;
 
-			// save some time
+			// make sure we have default media
 			if ( empty( $this->p->options[$opt_pre.'_def_'.$media.'_id'] ) &&
-				empty( $this->p->options[$opt_pre.'_def_'.$media.'_url'] ) )
+				empty( $this->p->options[$opt_pre.'_def_'.$media.'_url'] ) ) {
 					$ret = false;
-			else {
+			} else {
 				// check for singular pages first
-				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
+				if ( $ret === null && SucomUtil::is_post_page( $use_post ) ) {
 					$ret = false;
-	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_index'] ) )
+				}
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_index'] ) ) {
 					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
 						$ret = true;
-	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_author'] ) )
-					if ( SucomUtil::is_author_page() )
-						$ret = true;
-	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_search'] ) )
+				}	
+				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_search'] ) ) {
 					if ( is_search() )
 						$ret = true;
-	
-				if ( $ret === null )
+				}
+				if ( $ret === null ) {
 					$ret = false;
+				}
 			}
 			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$media, $ret );
 
@@ -674,15 +681,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
 			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
-			$source_id = $this->p->util->get_source_id( $opt_prefix, $atts );
+			$src_id = $this->p->util->get_source_id( $opt_prefix, $atts );
 
 			if ( ! isset( $atts['add_page'] ) )
 				$atts['add_page'] = true;	// required by get_sharing_url()
 
 			$long_url = empty( $atts['url'] ) ? 
-				$this->p->util->get_sharing_url( $use_post, $atts['add_page'], $source_id ) : 
+				$this->p->util->get_sharing_url( $use_post, $atts['add_page'], $src_id ) : 
 				apply_filters( $this->p->cf['lca'].'_sharing_url',
-					$atts['url'], $use_post, $atts['add_page'], $source_id );
+					$atts['url'], $use_post, $atts['add_page'], $src_id );
 
 			$short_url = empty( $atts['short_url'] ) ?
 				apply_filters( $this->p->cf['lca'].'_shorten_url',
@@ -702,8 +709,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					true,			// use_cache
 					$add_hashtags, 		// add_hashtags
 					false, 			// encode
-					$meta_prefix.'_desc',	// custom meta
-					$source_id		// 
+					$meta_prefix.'_desc',	// meta data
+					$src_id			// 
 				);
 			}
 
@@ -771,6 +778,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			return $has_changed === false ?
 				$ts : get_option( WPSSO_TS_NAME, array() );
+		}
+	
+		public function get_mod_obj( $id, $mod = 'post' ) {
+			$obj = false;
+			if ( empty( $id ) || empty( $mod ) ) {
+				if ( ! empty( $id ) )
+					$mod = 'post';		// default to post if no module name
+				elseif ( SucomUtil::is_post_page( false ) )
+					$mod = 'post';
+				elseif ( SucomUtil::is_term_page() )
+					$mod = 'taxonomy';
+				elseif ( SucomUtil::is_author_page() )
+					$mod = 'user';
+			}
+			if ( isset( $this->p->mods['util'][$mod] ) ) {
+				$obj =& $this->p->mods['util'][$mod];
+				if ( empty( $id ) ) {
+					switch ( $mod ) {
+						case 'post':
+							$id = $this->get_post_object( false, 'id' );
+							break;
+						case 'taxonomy':
+							$id = $this->get_term_object( 'id' );
+							break;
+						case 'author':
+							$id = $this->get_author_object( 'id' );
+							break;
+					}
+				}
+			}
+			return array( $id, $obj );
 		}
 	}
 }

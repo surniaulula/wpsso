@@ -18,7 +18,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $base_url = '/cache/';
 		public $verify_certs = false;
 		public $default_file_expire = 0;	// don't cache to disk by default
-		public $default_object_expire = 3600;	// default object expire is 1 hour
+		public $default_object_expire = 86400;	// default object expire is 24 hours
 		public $timeout = 10;			// wait 10 seconds for a completed transaction
 		public $connect_timeout = 5;		// wait 5 seconds for a connection
 
@@ -243,26 +243,22 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_data = false;
 			switch ( $cache_name ) {
 				case 'wp_cache' :
-					if ( $this->p->is_avail['cache']['object'] ) {
-						$cache_type = 'object cache';
-						$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$cache_data = wp_cache_get( $cache_id, __CLASS__ );
-						if ( $this->p->debug->enabled && $cache_data !== false )
-							$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
-					}
+					$cache_type = 'object cache';
+					$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
+					if ( $this->p->debug->enabled && $cache_data !== false )
+						$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
 					break;
 				case 'transient' :
-					if ( $this->p->is_avail['cache']['transient'] ) {
-						$cache_type = 'object cache';
-						$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$cache_data = get_transient( $cache_id );
-						if ( $this->p->debug->enabled && $cache_data !== false )
-							$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
-					}
+					$cache_type = 'object cache';
+					$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$cache_data = get_transient( $cache_id );
+					if ( $this->p->debug->enabled && $cache_data !== false )
+						$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
 					break;
 				case 'file' :
 					$cache_type = 'file cache';
@@ -305,34 +301,30 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			switch ( $cache_name ) {
 				case 'wp_cache' :
-					if ( $this->p->is_avail['cache']['object'] ) {
-						$cache_type = 'object cache';
-						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$object_expire = $expire_secs === false ? 
-							$this->default_object_expire : $expire_secs;
-						wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_expire );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
-								$cache_id.' ('.$object_expire.' seconds)' );
-						$ret_status = true;	// success
-					}
+					$cache_type = 'object cache';
+					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$object_expire = $expire_secs === false ? 
+						$this->default_object_expire : $expire_secs;
+					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_expire );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
+							$cache_id.' ('.$object_expire.' seconds)' );
+					$ret_status = true;	// success
 					break;
 				case 'transient' :
-					if ( $this->p->is_avail['cache']['transient'] ) {
-						$cache_type = 'object cache';
-						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-						$object_expire = $expire_secs === false ? 
-							$this->default_object_expire : $expire_secs;
-						set_transient( $cache_id, $cache_data, $object_expire );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
-								$cache_id.' ('.$object_expire.' seconds)' );
-						$ret_status = true;	// success
-					}
+					$cache_type = 'object cache';
+					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$object_expire = $expire_secs === false ? 
+						$this->default_object_expire : $expire_secs;
+					set_transient( $cache_id, $cache_data, $object_expire );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
+							$cache_id.' ('.$object_expire.' seconds)' );
+					$ret_status = true;	// success
 					break;
 				case 'file' :
 					$cache_type = 'file cache';

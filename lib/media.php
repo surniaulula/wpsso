@@ -80,7 +80,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function num_remains( &$arr, $num = 0 ) {
 			$remains = 0;
-			if ( ! is_array( $arr ) ) return false;
+			if ( ! is_array( $arr ) ) 
+				return false;
 			if ( $num > 0 && $num >= count( $arr ) )
 				$remains = $num - count( $arr );
 			return $remains;
@@ -745,10 +746,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// check for ngg gallery
-			if ( $this->p->is_avail['media']['ngg'] === true && ! empty( $this->p->mods['media']['ngg'] ) ) {
+			if ( $this->p->is_avail['media']['ngg'] === true && 
+				! empty( $this->p->mods['media']['ngg'] ) ) {
 
 				$og_ret = $this->p->mods['media']['ngg']->get_gallery_images( $num , $size_name, $get, $check_dupes );
-
 				if ( $this->p->util->is_maxed( $og_ret, $num ) )
 					return $og_ret;
 			}

@@ -167,8 +167,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'sharing_url' => '',
 					'og_img_width' => '',
 					'og_img_height' => '',
-					'og_img_crop' => ( empty( $this->p->options['og_img_crop'] ) ?
-						0 : $this->p->options['og_img_crop'] ),
+					'og_img_crop' => ( empty( $this->p->options['og_img_crop'] ) ? 0 : 1 ),
 					'og_img_crop_x' => ( empty( $this->p->options['og_img_crop_x'] ) ?
 						'center' : $this->p->options['og_img_crop_x'] ),
 					'og_img_crop_y' => ( empty( $this->p->options['og_img_crop_y'] ) ?
@@ -181,12 +180,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_vid_embed' => '',
 					'og_img_max' => -1,
 					'og_vid_max' => -1,
-					'og_vid_prev_img' => ( empty( $this->p->options['og_vid_prev_img'] ) ?
-						0 : $this->p->options['og_vid_prev_img'] ),
+					'og_vid_prev_img' => ( empty( $this->p->options['og_vid_prev_img'] ) ? 0 : 1 ),
 					'rp_img_width' => '',
 					'rp_img_height' => '',
-					'rp_img_crop' => ( empty( $this->p->options['rp_img_crop'] ) ?
-						0 : $this->p->options['rp_img_crop'] ),
+					'rp_img_crop' => ( empty( $this->p->options['rp_img_crop'] ) ? 0 : 1 ),
 					'rp_img_crop_x' => ( empty( $this->p->options['rp_img_crop_x'] ) ?
 						'center' : $this->p->options['rp_img_crop_x'] ),
 					'rp_img_crop_y' => ( empty( $this->p->options['rp_img_crop_y'] ) ?
@@ -255,7 +252,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			unset ( $prev['options_filtered'] );
 			unset ( $prev['options_version'] );
 
-			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
+			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ? 
+				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $prev, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// network is false
@@ -264,9 +262,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod, $id );
 
 			foreach ( $defs as $key => $def_val )
-				if ( array_key_exists( $key, $opts ) )
+				if ( isset( $opts[$key] ) )
 					if ( $opts[$key] == -1 || $opts[$key] === '' )
 						unset ( $opts[$key] );
+
+			if ( $opts['og_vid_prev_img'] === $this->p->options['og_vid_prev_img'] )
+				unset ( $opts['og_vid_prev_img'] );
 
 			if ( empty( $opts['buttons_disabled'] ) )
 				unset ( $opts['buttons_disabled'] );
@@ -334,7 +335,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
 				$lang = SucomUtil::get_locale();
-				$cache_salt = __METHOD__.'(mod:'.$mod.'_lang:'.$lang.'_id:'.$id.'_column:'.$column_name.')';
+				$cache_salt = __METHOD__.'(lang:'.$lang.'_id:'.$id.'_mod:'.$mod.'_column:'.$column_name.')';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				$value = get_transient( $cache_id );
 				if ( $value !== false )
@@ -348,7 +349,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					break;
 			}
 
-			$value = apply_filters( $column_name.'_'.$mod.'_column_content', $value, $column_name, $id  );
+			$value = apply_filters( $column_name.'_'.$mod.'_column_content', $value, $column_name, $id, $mod  );
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
 				set_transient( $cache_id, $value, $this->p->options['plugin_object_cache_exp'] );
@@ -395,7 +396,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'tag_pre' => $tag_pre,
 				), get_class( $this ) );
 			}
-
 			$meta_ret = array();
 			$meta_image = SucomUtil::meta_image_tags( $tag_pre );
 
@@ -461,8 +461,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return $og_ret;
 
 			foreach( array_unique( array( $meta_pre, 'og' ) ) as $prefix ) {
+
 				$html = $this->get_options( $id, $prefix.'_vid_embed' );
 				$url = $this->get_options( $id, $prefix.'_vid_url' );
+
 				if ( ! empty( $html ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
@@ -471,6 +473,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( ! empty( $og_video ) )
 						return array_merge( $og_ret, $og_video );
 				}
+
 				if ( ! empty( $url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
@@ -483,6 +486,40 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 			return $og_ret;
+		}
+
+		public function get_og_video_preview_image( $id, $mod, $check_dupes = false, $meta_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array( 
+					'id' => $id,
+					'mod' => $mod,
+					'check_dupes' => $check_dupes,
+					'meta_pre' => $meta_pre,
+				), get_class( $this ) );
+			}
+
+			$og_image = array();
+			$opt_prev_img = $this->get_options( $id, 'og_vid_prev_img' ); 
+			if ( $opt_prev_img === false )
+				$opt_prev_img = $this->p->options['og_vid_prev_img'];
+
+			// get video preview images if allowed
+			if ( ! empty( $opt_prev_img ) ) {
+				// assumes the first video will have a preview image
+				$og_video = $this->p->og->get_all_videos( 1, $id, $mod, $check_dupes, $meta_pre );
+				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
+					foreach ( $og_video as $video ) {
+						if ( ! empty( $video['og:image'] ) ) {
+							$og_image[] = $video;
+							break;
+						}
+					}
+				}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'og_vid_prev_img is 0 - skipping retrieval of video preview image' );
+
+			return $og_image;
 		}
 	}
 }

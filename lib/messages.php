@@ -116,16 +116,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-meta-og_title':
-							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and possibly the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
+							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
 						 	break;
 						case 'tooltip-meta-og_desc':
-							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with some social sharing buttons' ).'. '.'The default description value is based on the biographical info, if one is available. Update and save this description to change the default value of all other description fields.';
-						 	break;
-						case 'tooltip-meta-seo_desc':
-							$text = 'A custom description for the Google Search / SEO description meta tag.';
+							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with some social sharing buttons' ).'. '.'The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
 						 	break;
 						case 'tooltip-meta-schema_desc':
 							$text = 'A custom description for the Google+ schema description meta tag.';
+						 	break;
+						case 'tooltip-meta-seo_desc':
+							$text = 'A custom description for the Google Search / SEO description meta tag.';
 						 	break;
 						case 'tooltip-meta-tc_desc':
 							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
@@ -139,11 +139,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_img_url':
 							$text = 'A custom image URL (instead of an Image ID) to include first in the Facebook / Open Graph, and \'Large Image Summary\' Twitter Card meta tags. Please make sure your custom image is large enough, or it may be ignored by the social website(s). Facebook recommends an image size of 1200x630 (for retina and high-PPI displays), 600x315 as a minimum, and will ignore any images less than 200x200 (1200x1200 is recommended). <em>This field is disabled if an Image ID has been specified</em>.';
 							break;
+						case 'tooltip-meta-og_img_max':
+							$text = 'The maximum number of images to include in the Facebook / Open Graph meta tags.';
+						 	break;
 						case 'tooltip-meta-og_vid_embed':
 							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video Embed HTML Custom Field' ).' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
 						 	break;
 						case 'tooltip-meta-og_vid_url':
 							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video URL Custom Field' ).' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
+						 	break;
+						case 'tooltip-meta-og_vid_max':
+							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.';
+						 	break;
+						case 'tooltip-meta-og_vid_prev_img':
+							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
 						 	break;
 						case 'tooltip-meta-rp_img_id':
 							$text = 'A custom Image ID to include first when the Pinterest crawler is detected.';
@@ -167,32 +176,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-post-og_art_section':
 							$text = 'A custom topic, different from the default Article Topic selected in the General settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
 						 	break;
-						case 'tooltip-post-og_title':
-							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and possibly the Pinterest, Tumblr, and Twitter sharing caption / text, depending on some option settings. The default title value is refreshed when the (draft or published) '.$ptn.' is saved.';
-						 	break;
 						case 'tooltip-post-og_desc':
 							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with some social sharing buttons' ).'. The default description value is based on the content, or excerpt if one is available, and is refreshed when the (draft or published) '.$ptn.' is saved. Update and save this description to change the default value of all other description fields.';
-						 	break;
-						case 'tooltip-post-seo_desc':
-							$text = 'A custom description for the Google Search / SEO description meta tag. The default description value is refreshed when the '.$ptn.' is saved.';
-						 	break;
-						case 'tooltip-post-schema_desc':
-							$text = 'A custom description for the Google+ / Schema description meta tag. The default description value is refreshed when the '.$ptn.' is saved.';
-						 	break;
-						case 'tooltip-post-tc_desc':
-							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats). The default description value is refreshed when the '.$ptn.' is saved.';
-						 	break;
-						case 'tooltip-post-og_img_max':
-							$text = 'The maximum number of images to include in the Facebook / Open Graph meta tags for this '.$ptn.'.';
-						 	break;
-						case 'tooltip-post-og_vid_max':
-							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags for this '.$ptn.'.';
-						 	break;
-						case 'tooltip-post-og_vid_prev_img':
-							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
-						 	break;
-						case 'tooltip-post-sharing_url':
-							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
 						 	break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $atts );
@@ -218,9 +203,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_def_img_on_index':
 							$text = 'Check this option to force the default image on index webpages (<strong>non-static</strong> homepage, archives, categories). If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$atts['short'].' will use image(s) from the first entry on the webpage (default is checked).';
 							break;
-						case 'tooltip-og_def_img_on_author':
-							$text = 'Check this option to force the default image on author index webpages. If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong> (default is unchecked).';
-							break;
 						case 'tooltip-og_def_img_on_search':
 							$text = 'Check this option to force the default image on search results. If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$atts['short'].' will use image(s) returned in the search results (default is unchecked).';
 							break;
@@ -229,9 +211,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-og_def_vid_on_index':
 							$text = 'Check this option to force the default video on index webpages (<strong>non-static</strong> homepage, archives, categories). If this option is <em>checked</em>, but a Default Video URL has not been defined, then <strong>no video will be included in the meta tags</strong> (this is usually preferred). If the option is <em>unchecked</em>, then '.$atts['short'].' will use video(s) from the first entry on the webpage (default is checked).';
-							break;
-						case 'tooltip-og_def_vid_on_author':
-							$text = 'Check this option to force the default video on author index webpages. If this option is <em>checked</em>, but a Default Video URL has not been defined, then <strong>no video will be included in the meta tags</strong> (default is unchecked).';
 							break;
 						case 'tooltip-og_def_vid_on_search':
 							$text = 'Check this option to force the default video on search results. If this option is <em>checked</em>, but a Default Video URL has not been defined, then <strong>no video will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$atts['short'].' will use video(s) returned in the search results (default is unchecked).';

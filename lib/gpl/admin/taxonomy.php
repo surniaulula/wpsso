@@ -26,25 +26,25 @@ if ( ! class_exists( 'WpssoGplAdminTaxonomy' ) ) {
 
 			$rows[] = $this->p->util->get_th( 'Default Title', 'medium', 'meta-og_title', $head_info ). 
 			'<td class="blank">'.$this->p->webpage->get_title( $this->p->options['og_title_len'],
-				'...', false, true, false, true, null ).'</td>';	// $use_post = false, $custom_idx = null
+				'...', false, true, false, true, 'none' ).'</td>';	// $use_post = false, $md_idx = 'none'
 		
 			$rows[] = $this->p->util->get_th( 'Default (Facebook / Open Graph, LinkedIn, 
 				Pinterest Rich Pin) Description', 'medium', 'meta-og_desc', $head_info ).
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'],
-				'...', false, true, true, true, null ).'</td>';	// $use_post = false, $custom_idx = null
+				'...', false, true, true, true, 'none' ).'</td>';	// $use_post = false, $md_idx = 'none'
 	
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Google+ / Schema Description', 'medium', 'meta-schema_desc', $head_info ).
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'],
-				'...', false ).'</td>';	// $use_post = false
+				'...', false ).'</td>';				// $use_post = false
 	
 			$rows[] = $this->p->util->get_th( 'Google Search / SEO Description', 'medium', 'meta-seo_desc', $head_info ).
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['seo_desc_len'],
-				'...', false, true, false ).'</td>';	// $use_post = false, $add_hashtags = false
+				'...', false, true, false ).'</td>';		// $use_post = false, $add_hashtags = false
 
 			$rows[] = $this->p->util->get_th( 'Twitter Card Description', 'medium', 'meta-tc_desc', $head_info ).
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'],
-				'...', false ).'</td>';	// $use_post = false
+				'...', false ).'</td>';				// $use_post = false
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( 'Sharing URL', 'medium', 'meta-sharing_url', $head_info ).
@@ -71,11 +71,22 @@ if ( ! class_exists( 'WpssoGplAdminTaxonomy' ) ) {
 			$rows[] = $this->p->util->get_th( 'or Image URL', 'medium', 'meta-og_img_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Maximum Images', 'medium', 'meta-og_img_max', $head_info ).
+			'<td class="blank">'.$this->p->options['og_img_max'].'</td>';
+
 			$rows[] = $this->p->util->get_th( 'Video Embed HTML', 'medium', 'meta-og_vid_embed', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = $this->p->util->get_th( 'or Video URL', 'medium', 'meta-og_vid_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
+
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( 'Maximum Videos', 'medium', 'meta-og_vid_max', $head_info ).
+			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
+
+			$rows[] = $this->p->util->get_th( 'Include Preview Image(s)', 'medium', 'meta-og_vid_prev_img', $head_info ).
+			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			'<td colspan="2" class="subsection"><h4>Pinterest (Rich Pin)</h4></td>';

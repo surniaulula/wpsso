@@ -39,14 +39,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( is_array( $post_types ) ) {
 						foreach ( $post_types as $ptn ) {
-							add_filter( 'manage_'.$ptn.'_posts_columns', array( $this, 'add_column_headings' ), 10, 1 );
-							add_action( 'manage_'.$ptn.'_posts_custom_column', array( $this, 'show_post_column_content',), 10, 2 );
+							add_filter( 'manage_'.$ptn.'_posts_columns', 
+								array( $this, 'add_column_headings' ), 10, 1 );
+							add_action( 'manage_'.$ptn.'_posts_custom_column', 
+								array( $this, 'show_post_column_content',), 10, 2 );
 						}
 					}
 
 					$this->p->util->add_plugin_filters( $this, array( 
-						'og_image_post_column_content' => 3,
-						'og_desc_post_column_content' => 3,
+						'og_image_post_column_content' => 4,
+						'og_desc_post_column_content' => 4,
 					) );
 				}
 			}
@@ -56,37 +58,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_mod_column_content( '', $column_name, $id, 'post' );
 		}
 
-		public function filter_og_image_post_column_content( $value, $column_name, $id ) {
+		public function filter_og_image_post_column_content( $value, $column_name, $id, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
 			// use the open graph image dimensions to reject images that are too small
 			$size_name = $this->p->cf['lca'].'-opengraph';
-			$check_dupes = false;	// using first image we find, so dupe checking is useless
+			$check_dupes = false;	// use first image we find, so dupe checking is useless
 			$force_regen = false;
 			$meta_pre = 'og';
 			$og_image = array();
 
-			// get video preview images if allowed
-			if ( ! empty( $this->p->options['og_vid_prev_img'] ) ) {
-				// assume the first video will have a preview image
-				$og_video = $this->p->og->get_all_videos( 1, $id, $check_dupes, $meta_pre );
-				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
-					foreach ( $og_video as $video ) {
-						if ( ! empty( $video['og:image'] ) ) {
-							$og_image[] = $video;
-							break;
-						}
-					}
-				}
-			}
+			if ( empty( $og_image ) )
+				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $meta_pre );
 
 			if ( empty( $og_image ) ) {
-				$og_image = $this->p->og->get_all_images( 1, $size_name, $id,
-					$check_dupes, $meta_pre );
+				$og_image = $this->p->og->get_all_images( 1, $size_name, $id, $check_dupes, $meta_pre );
 				if ( empty( $og_image ) )
-					$og_image = $this->p->media->get_default_image( 1, $size_name,
-						$check_dupes, $force_regen );
+					$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
 			}
 
 			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
@@ -98,7 +87,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_post_column_content( $value, $column_name, $id ) {
+		public function filter_og_desc_post_column_content( $value, $column_name, $id, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
