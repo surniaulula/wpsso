@@ -428,8 +428,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Added the 'Maximum Images', 'Maximum Videos', and 'Include Preview Image(s)' options to the user and taxonomy Social Settings metabox.
 * **Bugfixes**
 	* Fixed the saving and checking / use of the 'Include Preview Image(s)' option in the Social Settings metabox.
+	* Fixed the default Open Graph title and description values in the Social Settings metabox (custom values were detected as defaults and being lost after saving a second time).
+	* Fixed detection of the `profile.php` page as an 'user page' for custom social settings.
 * **Developer Notes**
-	* Removed the unnecessary current/new options comparison before saving in the WpssoOptions `save_options()` method.
+	* Removed unnecessary current/new options comparison in the WpssoOptions `save_options()` method (current options may have been incorrectly reported as new by some database caching solutions).
 	* Renamed a few variables and methods for improve readability:
 		* Renamed the `$custom_idx` variable to `$md_idx`.
 		* Renamed the `$source_id` variable to `$src_id`.
