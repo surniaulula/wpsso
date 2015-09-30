@@ -222,13 +222,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// pre-define the array key order for the list() construct (which assigns elements from right to left)
-		public static function meta_image_tags( $tag_prefix = 'og' ) {
+		public static function meta_image_tags( $mt_pre = 'og' ) {
 			return array(
-				$tag_prefix.':image' => '',
-				$tag_prefix.':image:width' => '',
-				$tag_prefix.':image:height' => '',
-				$tag_prefix.':image:cropped' => '',
-				$tag_prefix.':image:id' => '',
+				$mt_pre.':image' => '',
+				$mt_pre.':image:width' => '',
+				$mt_pre.':image:height' => '',
+				$mt_pre.':image:cropped' => '',
+				$mt_pre.':image:id' => '',
 			);
 		}
 

@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		}
 
 		public function get_term_images( $num = 0, $size_name = 'thumbnail', $term_id,
-			$check_dupes = true, $force_regen = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
@@ -85,13 +85,13 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 					'term_id' => $term_id,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
-					'meta_pre' => $meta_pre,
-					'tag_pre' => $tag_pre,
+					'md_pre' => $md_pre,
+					'mt_pre' => $mt_pre,
 				) );
 			}
 
 			$meta_ret = array();
-			$meta_image = SucomUtil::meta_image_tags( $tag_pre );
+			$meta_image = SucomUtil::meta_image_tags( $mt_pre );
 
 			if ( empty( $term_id ) )
 				return $meta_ret;
@@ -99,14 +99,14 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			foreach ( apply_filters( $this->p->cf['lca'].'_term_image_ids', array(), $term_id ) as $pid ) {
 				if ( $pid > 0 ) {
 					list( 
-						$meta_image[$tag_pre.':image'],
-						$meta_image[$tag_pre.':image:width'],
-						$meta_image[$tag_pre.':image:height'],
-						$meta_image[$tag_pre.':image:cropped'],
-						$meta_image[$tag_pre.':image:id']
+						$meta_image[$mt_pre.':image'],
+						$meta_image[$mt_pre.':image:width'],
+						$meta_image[$mt_pre.':image:height'],
+						$meta_image[$mt_pre.':image:cropped'],
+						$meta_image[$mt_pre.':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $meta_image[$tag_pre.':image'] ) &&
+					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
 						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
 							return $meta_ret;
 				}
@@ -127,17 +127,17 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$size_name = $this->p->cf['lca'].'-opengraph';
 			$check_dupes = false;	// using first image we find, so dupe checking is useless
 			$force_regen = false;
-			$meta_pre = 'og';
+			$md_pre = 'og';
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $meta_pre );
+				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $md_pre );
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $meta_pre );
+				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_term_images( 1, $size_name, $id, $check_dupes, $force_regen, $meta_pre );
+				$og_image = $this->get_term_images( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );

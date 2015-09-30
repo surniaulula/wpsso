@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id,
-			$check_dupes = true, $meta_pre = 'og' ) {
+			$check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'size_name' => $size_name,
 					'post_id' => $post_id,
 					'check_dupes' => $check_dupes,
-					'meta_pre' => $meta_pre,
+					'md_pre' => $md_pre,
 				) );
 			}
 			$og_ret = array();
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! empty( $post_id ) ) {
 
 				if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
-					$force_regen_transient_id = $this->p->cf['lca'].'_post_'.$post_id.'_regen_'.$meta_pre;
+					$force_regen_transient_id = $this->p->cf['lca'].'_post_'.$post_id.'_regen_'.$md_pre;
 					$force_regen = get_transient( $force_regen_transient_id );
 					if ( $force_regen !== false )
 						delete_transient( $force_regen_transient_id );
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 						$num_remains = $this->num_remains( $og_ret, $num );
 						$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_image( $num_remains, 
-							$size_name, $post_id, $check_dupes, $force_regen, $meta_pre ) );
+							$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 					}
 				}
 			}

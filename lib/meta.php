@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'nonce token validation failed' );
 				if ( is_admin() )
-					$this->p->notice->err( __( 'Nonce token validation for the submitted form has failed (update ignored).', WPSSO_TEXTDOM ), true );
+					$this->p->notice->err( __( 'Nonce token validation for the submitted form has failed (update ignored).', 'wpsso' ), true );
 				return false;
 			} else return true;
 		}
@@ -272,39 +272,39 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( empty( $opts['buttons_disabled'] ) )
 				unset ( $opts['buttons_disabled'] );
 
-			foreach ( array( 'rp', 'og' ) as $meta_pre ) {
-				if ( empty( $opts[$meta_pre.'_img_id'] ) )
-					unset ( $opts[$meta_pre.'_img_id_pre'] );
+			foreach ( array( 'rp', 'og' ) as $md_pre ) {
+				if ( empty( $opts[$md_pre.'_img_id'] ) )
+					unset ( $opts[$md_pre.'_img_id_pre'] );
 
 				$force_regen = false;
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 					// if option is the same as the default, then unset it
-					if ( isset( $opts[$meta_pre.'_img_'.$key] ) &&
-						isset( $defs[$meta_pre.'_img_'.$key] ) &&
-							$opts[$meta_pre.'_img_'.$key] === $defs[$meta_pre.'_img_'.$key] )
-								unset( $opts[$meta_pre.'_img_'.$key] );
+					if ( isset( $opts[$md_pre.'_img_'.$key] ) &&
+						isset( $defs[$md_pre.'_img_'.$key] ) &&
+							$opts[$md_pre.'_img_'.$key] === $defs[$md_pre.'_img_'.$key] )
+								unset( $opts[$md_pre.'_img_'.$key] );
 
 					if ( $mod !== false ) {
 						if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
-							$check_current = isset( $opts[$meta_pre.'_img_'.$key] ) ?
-								$opts[$meta_pre.'_img_'.$key] : '';
-							$check_previous = isset( $prev[$meta_pre.'_img_'.$key] ) ?
-								$prev[$meta_pre.'_img_'.$key] : '';
+							$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
+								$opts[$md_pre.'_img_'.$key] : '';
+							$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
+								$prev[$md_pre.'_img_'.$key] : '';
 							if ( $check_current !== $check_previous )
 								$force_regen = true;
 						}
 					}
 				}
 				if ( $force_regen === true )
-					set_transient( $this->p->cf['lca'].'_'.$mod.'_'.$id.'_regen_'.$meta_pre, true );
+					set_transient( $this->p->cf['lca'].'_'.$mod.'_'.$id.'_regen_'.$md_pre, true );
 			}
 			return $opts;
 		}
 
 		public function add_column_headings( $columns ) { 
 			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => __( 'Social Img', WPSSO_TEXTDOM ),
-				$this->p->cf['lca'].'_og_desc' => __( 'Social Desc', WPSSO_TEXTDOM )
+				$this->p->cf['lca'].'_og_image' => __( 'Social Img', 'wpsso' ),
+				$this->p->cf['lca'].'_og_desc' => __( 'Social Desc', 'wpsso' )
 			) );
 		}
 
@@ -376,14 +376,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_og_image( $num = 0, $size_name = 'thumbnail', $id,
-			$check_dupes = true, $force_regen = false, $meta_pre = 'og' ) {
+			$check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
 
 			return $this->get_meta_image( $num, $size_name, $id,
-				$check_dupes, $force_regen, $meta_pre, 'og' );
+				$check_dupes, $force_regen, $md_pre, 'og' );
 		}
 
 		public function get_meta_image( $num = 0, $size_name = 'thumbnail', $id,
-			$check_dupes = true, $force_regen = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
@@ -392,17 +392,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'id' => $id,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
-					'meta_pre' => $meta_pre,
-					'tag_pre' => $tag_pre,
+					'md_pre' => $md_pre,
+					'mt_pre' => $mt_pre,
 				), get_class( $this ) );
 			}
 			$meta_ret = array();
-			$meta_image = SucomUtil::meta_image_tags( $tag_pre );
+			$meta_image = SucomUtil::meta_image_tags( $mt_pre );
 
 			if ( empty( $id ) )
 				return $meta_ret;
 
-			foreach( array_unique( array( $meta_pre, 'og' ) ) as $prefix ) {
+			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
 				$pid = $this->get_options( $id, $prefix.'_img_id' );
 				$pre = $this->get_options( $id, $prefix.'_img_id_pre' );
@@ -414,43 +414,43 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
 							get_class( $this ) );	// log extended class name
 					list( 
-						$meta_image[$tag_pre.':image'],
-						$meta_image[$tag_pre.':image:width'],
-						$meta_image[$tag_pre.':image:height'],
-						$meta_image[$tag_pre.':image:cropped'],
-						$meta_image[$tag_pre.':image:id']
+						$meta_image[$mt_pre.':image'],
+						$meta_image[$mt_pre.':image:width'],
+						$meta_image[$mt_pre.':image:height'],
+						$meta_image[$mt_pre.':image:cropped'],
+						$meta_image[$mt_pre.':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $meta_image[$tag_pre.':image'] ) && ! empty( $url ) ) {
+				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
 					list(
-						$meta_image[$tag_pre.':image'],
-						$meta_image[$tag_pre.':image:width'],
-						$meta_image[$tag_pre.':image:height'],
-						$meta_image[$tag_pre.':image:cropped'],
-						$meta_image[$tag_pre.':image:id']
+						$meta_image[$mt_pre.':image'],
+						$meta_image[$mt_pre.':image:width'],
+						$meta_image[$mt_pre.':image:height'],
+						$meta_image[$mt_pre.':image:cropped'],
+						$meta_image[$mt_pre.':image:id']
 					) = array( $url, -1, -1, -1, -1 );
 				}
 
-				if ( ! empty( $meta_image[$tag_pre.':image'] ) &&
+				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
 					$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
 						return $meta_ret;
 			}
 			return $meta_ret;
 		}
 
-		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+		public function get_og_video( $num = 0, $id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
 					'id' => $id,
 					'check_dupes' => $check_dupes,
-					'meta_pre' => $meta_pre,
-					'tag_pre' => $tag_pre,
+					'md_pre' => $md_pre,
+					'mt_pre' => $mt_pre,
 				), get_class( $this ) );
 			}
 
@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( empty( $id ) )
 				return $og_ret;
 
-			foreach( array_unique( array( $meta_pre, 'og' ) ) as $prefix ) {
+			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
 				$html = $this->get_options( $id, $prefix.'_vid_embed' );
 				$url = $this->get_options( $id, $prefix.'_vid_url' );
@@ -488,14 +488,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_ret;
 		}
 
-		public function get_og_video_preview_image( $id, $mod, $check_dupes = false, $meta_pre = 'og' ) {
+		public function get_og_video_preview_image( $id, $mod, $check_dupes = false, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'id' => $id,
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,
-					'meta_pre' => $meta_pre,
+					'md_pre' => $md_pre,
 				), get_class( $this ) );
 			}
 
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			// get video preview images if allowed
 			if ( ! empty( $opt_prev_img ) ) {
 				// assumes the first video will have a preview image
-				$og_video = $this->p->og->get_all_videos( 1, $id, $mod, $check_dupes, $meta_pre );
+				$og_video = $this->p->og->get_all_videos( 1, $id, $mod, $check_dupes, $md_pre );
 				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
 					foreach ( $og_video as $video ) {
 						if ( ! empty( $video['og:image'] ) ) {

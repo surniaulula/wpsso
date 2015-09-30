@@ -69,14 +69,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$size_name = $this->p->cf['lca'].'-opengraph';
 			$check_dupes = false;	// using first image we find, so dupe checking is useless
 			$force_regen = false;
-			$meta_pre = 'og';
+			$md_pre = 'og';
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $meta_pre );
+				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $md_pre );
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $meta_pre );
+				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );

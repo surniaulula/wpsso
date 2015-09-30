@@ -670,9 +670,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 		public function get_section( $post_id ) {
 			$section = '';
-			if ( ( is_singular() || ! empty( $post_id ) ) && 
-				isset( $this->p->mods['util']['post'] ) )
-					$section = $this->p->mods['util']['post']->get_options( $post_id, 'og_art_section' );
+			if ( is_singular() || ! empty( $post_id ) )
+				$section = $this->p->mods['util']['post']->get_options( $post_id, 'og_art_section' );
 
 			if ( ! empty( $section ) ) {
 				if ( $this->p->debug->enabled )

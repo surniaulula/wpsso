@@ -1,6 +1,9 @@
 <?php
 /*
  * Plugin Name: WordPress Social Sharing Optimization (WPSSO)
+ * Plugin Slug: wpsso
+ * Text Domain: wpsso
+ * Domain Path: /languages
  * Plugin URI: http://surniaulula.com/extend/plugins/wpsso/
  * Author: Jean-Sebastien Morisset
  * Author URI: http://surniaulula.com/
@@ -9,7 +12,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.1
  * Tested Up To: 4.3.1
- * Version: 3.10.2
+ * Version: 3.10.3-dev1
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -99,8 +102,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function init_plugin() {
 			if ( ! empty( $_SERVER['WPSSO_DISABLE'] ) ) 
 				return;
-
-			load_plugin_textdomain( WPSSO_TEXTDOM, false, dirname( WPSSO_PLUGINBASE ).'/languages/' );
 
 			$this->set_objects();				// define the class object variables
 

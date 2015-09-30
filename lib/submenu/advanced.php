@@ -82,12 +82,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows['plugin_debug'] = $this->p->util->get_th( 'Add Hidden Debug Messages', null, 'plugin_debug' ).
+					$rows['plugin_debug'] = $this->p->util->get_th( __( 'Add Hidden Debug Messages', 
+						'wpsso' ), null, 'plugin_debug' ).
 					'<td>'.( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ? 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
-					$rows['plugin_preserve'] = $this->p->util->get_th( 'Preserve Settings on Uninstall', 'highlight', 'plugin_preserve' ).
+					$rows['plugin_preserve'] = $this->p->util->get_th( __( 'Preserve Settings on Uninstall',
+						'wpsso' ), 'highlight', 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
 					break;

@@ -20,11 +20,11 @@ if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_meta_image( $num = 0, $size_name = 'thumbnail', $id,
-			$check_dupes = true, $force_regen = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 
-		public function get_og_video( $num = 0, $id, $check_dupes = false, $meta_pre = 'og', $tag_pre = 'og' ) {
+		public function get_og_video( $num = 0, $id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 	}

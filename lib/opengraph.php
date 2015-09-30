@@ -223,13 +223,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								break;
 						}
 					}
-					foreach ( $img_sizes as $meta_pre => $size_name ) {
+					foreach ( $img_sizes as $md_pre => $size_name ) {
 						// only check for dupes on last image size
-						$check_dupes = ( is_admin() && $meta_pre !== 'og' ) ?
+						$check_dupes = ( is_admin() && $md_pre !== 'og' ) ?
 							false : true;
 
 						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], 
-							$size_name, $post_id, $check_dupes, $meta_pre );
+							$size_name, $post_id, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview image, then add the default image for non-index webpages
 						if ( empty( $og['og:image'] ) && $video_previews === 0 &&
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_og', $og, $use_post, $obj );
 		}
 
-		public function get_all_videos( $num = 0, $id, $mod = 'post', $check_dupes = true, $meta_pre = 'og', $force_prev_img = false ) {
+		public function get_all_videos( $num = 0, $id, $mod = 'post', $check_dupes = true, $md_pre = 'og', $force_prev_img = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'id' => $id,
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,
-					'meta_pre' => $meta_pre,
+					'md_pre' => $md_pre,
 					'force_prev_img' => $force_prev_img,
 				) );
 			}
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'setting og_vid_prev_img to '.$opt_prev_img.' from meta data' );
 					}
-					$og_ret = array_merge( $og_ret, $mod_obj->get_og_video( $num_remains, $id, $check_dupes, $meta_pre ) );
+					$og_ret = array_merge( $og_ret, $mod_obj->get_og_video( $num_remains, $id, $check_dupes, $md_pre ) );
 				}
 			}
 
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			} else return $og_ret;
 		}
 
-		public function get_all_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $meta_pre = 'og' ) {
+		public function get_all_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array(
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'size_name' => $size_name,
 					'post_id' => $post_id,
 					'check_dupes' => $check_dupes,
-					'meta_pre' => $meta_pre,
+					'md_pre' => $md_pre,
 				) );
 			$og_ret = array();
 			$force_regen = false;
@@ -363,11 +363,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( SucomUtil::is_term_page() ) {
 				$term_id = $this->p->util->get_term_object( 'id' );
 				$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
-					$size_name, $term_id, $check_dupes, $force_regen, $meta_pre ) );
+					$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
 			} elseif ( SucomUtil::is_author_page() ) {
 				$author_id = $this->p->util->get_author_object( 'id' );
 				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
-					$size_name, $author_id, $check_dupes, $force_regen, $meta_pre ) );
+					$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
 			}
 
 			if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() )
@@ -378,12 +378,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( SucomUtil::is_term_page() ) {
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
 					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_term_images( $num_remains, 
-						$size_name, $term_id, $check_dupes, $force_regen, $meta_pre ) );
+						$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
 			} else {
 				// check for custom meta, featured, or attached image(s)
 				// allow for empty post_id in order to execute featured/attached image filters for modules
 				$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
-					$size_name, $post_id, $check_dupes, $meta_pre ) );
+					$size_name, $post_id, $check_dupes, $md_pre ) );
 
 				// check for ngg shortcodes and query vars
 				if ( $this->p->is_avail['media']['ngg'] === true && 
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			else return get_bloginfo( 'name', 'display' );
 		}
 
-		public function get_the_media_urls( $size_name = 'thumbnail', $post_id, $meta_pre = 'og',
+		public function get_the_media_urls( $size_name = 'thumbnail', $post_id, $md_pre = 'og',
 			$items = array( 'image', 'video' ) ) {
 			if ( empty( $post_id ) )
 				return array();
@@ -446,12 +446,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					case 'pid':
 					case 'image':
 						if ( ! isset( $og_image ) )
-							$og_image = $this->get_all_images( 1, $size_name, $post_id, false, $meta_pre );
+							$og_image = $this->get_all_images( 1, $size_name, $post_id, false, $md_pre );
 						break;
 					case 'video':
 					case 'preview':
 						if ( ! isset( $og_video ) )
-							$og_video = $this->get_all_videos( 1, $post_id, 'post', false, $meta_pre, true );
+							$og_video = $this->get_all_videos( 1, $post_id, 'post', false, $md_pre, true );
 						break;
 				}
 				switch ( $item ) {
@@ -477,20 +477,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return $ret;
 		}
 
-		public function get_og_media_url( $name, $og, $tag_pre = 'og' ) {
+		public function get_og_media_url( $name, $og, $mt_pre = 'og' ) {
 			if ( ! empty( $og ) && is_array( $og ) ) {
 				$media = reset( $og );
 				switch ( $name ) {
 					case 'pid':
 						$search = array(
-							$tag_pre.':image:id',
+							$mt_pre.':image:id',
 						);
 						break;
 					default:
 						$search = array(
-							$tag_pre.':'.$name.':secure_url',
-							$tag_pre.':'.$name.':url',
-							$tag_pre.':'.$name,
+							$mt_pre.':'.$name.':secure_url',
+							$mt_pre.':'.$name.':url',
+							$mt_pre.':'.$name,
 						);
 						break;
 				}

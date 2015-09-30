@@ -1,6 +1,8 @@
 === WordPress Social Sharing Optimization - Improves Editing / Publishing / Shared Content ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
+Text Domain: wpsso
+Domain Path: /languages
 Contributors: jsmoriss
 Donate Link: https://wpsso.com/
 Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, jetpack, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, photon, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube
@@ -418,6 +420,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
+
+= Version 3.10.3 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Updated the text domain in preparation for plugin import to translate.wordpress.org.
+	* Added a translation function call for all option labels.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
 
 = Version 3.10.2 2015/09/29 =
 

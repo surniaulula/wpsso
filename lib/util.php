@@ -235,15 +235,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 				w3tc_pgcache_flush();
-				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', WPSSO_TEXTDOM ), true );
+				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', 'wpsso' ), true );
 			}
 			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 				wp_cache_clear_cache();
-				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', WPSSO_TEXTDOM ), true );
+				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', 'wpsso' ), true );
 			}
 			if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
 				$GLOBALS['zencache']->wipe_cache();
-				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', WPSSO_TEXTDOM ), true );
+				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', 'wpsso' ), true );
 			}
 		}
 
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, 
 				FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				$this->p->notice->err( 'Error reading the '.WPSSO_TOPICS_LIST.' topic list file.' );
+				$this->p->notice->err( sprintf( 'Error reading the %s topic list file.', WPSSO_TOPICS_LIST ) );
 				return $topics;
 			}
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
@@ -404,7 +404,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod = false ) {
 			// hooked by the sharing class
 			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
-			$reset_msg = __( 'resetting the option to its default value.', WPSSO_TEXTDOM );
 
 			// pre-filter most values to remove html
 			switch ( $option_type ) {
@@ -430,7 +429,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( 'The value of option \''.$key.'\' must be a URL - '.$reset_msg, true );
+							$this->p->notice->err( sprintf( 'The value of option \'%s\' must be a URL - resetting the option to its default value.', $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -461,7 +460,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val === '' && $mod !== false )
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be greater or equal to '.$min_int.' - '.$reset_msg, true );
+						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be greater or equal to %s - resetting the option to its default value.', $key, $min_int ), true );
 						$val = $def_val;
 					}
 					break;
@@ -475,7 +474,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						! is_numeric( $val ) ) ? false : true;
 
 					if ( $passed === false ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be numeric - '.$reset_msg, true );
+						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -483,7 +482,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( '\''.$val.'\' is not an acceptable value for option \''.$key.'\' - '.$reset_msg, true );
+						$this->p->notice->err( sprintf( '\'%s\' is not an acceptable value for option \'%s\' - resetting the option to its default value.', $val, $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -491,7 +490,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' must be alpha-numeric - '.$reset_msg, true );
+						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.', $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -504,7 +503,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = trim( $val );
 						if ( ! preg_match( '/<.*>/', $val ) ) {
-							$this->p->notice->err( 'The value of option \''.$key.'\' must be HTML code - '.$reset_msg, true );
+							$this->p->notice->err( sprintf( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.', $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -513,7 +512,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'not_blank':
 				case 'code':
 					if ( $val === '' ) {
-						$this->p->notice->err( 'The value of option \''.$key.'\' cannot be empty - '.$reset_msg, true );
+						$this->p->notice->err( sprintf( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.', $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -558,7 +557,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'DOMDocument PHP class missing' );
 				if ( is_admin() )
-					$this->p->notice->err( 'DOMDocument PHP class missing - unable to read head meta from '.$url.'.', true );
+					$this->p->notice->err( sprintf( 'DOMDocument PHP class missing - unable to read head meta from %s. Please contact your hosting provider to install the missing DOMDocument PHP class.', $url ), true );
 			}
 			return $ret;
 		}
@@ -676,7 +675,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
-		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $meta_prefix = 'twitter' ) {
+		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
 
 			$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
@@ -709,7 +708,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					true,			// use_cache
 					$add_hashtags, 		// add_hashtags
 					false, 			// encode
-					$meta_prefix.'_desc',	// meta data
+					$md_pre.'_desc',	// meta data
 					$src_id			// 
 				);
 			}

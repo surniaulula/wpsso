@@ -200,20 +200,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * all tests to make sure additional / unnecessary
 			 * options are not created in post meta.
 			 */
-			foreach ( array( 'og', 'rp' ) as $meta_pre ) {
-				if ( ! empty( $opts[$meta_pre.'_img_width'] ) &&
-					! empty( $opts[$meta_pre.'_img_height'] ) &&
-					! empty( $opts[$meta_pre.'_img_crop'] ) ) {
+			foreach ( array( 'og', 'rp' ) as $md_pre ) {
+				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
+					! empty( $opts[$md_pre.'_img_height'] ) &&
+					! empty( $opts[$md_pre.'_img_crop'] ) ) {
 
-					$img_width = $opts[$meta_pre.'_img_width'];
-					$img_height = $opts[$meta_pre.'_img_height'];
+					$img_width = $opts[$md_pre.'_img_width'];
+					$img_height = $opts[$md_pre.'_img_height'];
 					$ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
 					if ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
-						$reset_msg = __( 'resetting the option to its default value.', WPSSO_TEXTDOM );
-						$this->p->notice->err( 'The values for \''.$meta_pre.'_img_width\' and  \''.$meta_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1 &mdash; resetting these options to their default values.', true );
-						$opts[$meta_pre.'_img_width'] = $def_opts[$meta_pre.'_img_width'];
-						$opts[$meta_pre.'_img_height'] = $def_opts[$meta_pre.'_img_height'];
-						$opts[$meta_pre.'_img_crop'] = $def_opts[$meta_pre.'_img_crop'];
+						$this->p->notice->err( 'The values for \''.$md_pre.'_img_width\' and  \''.$md_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1 &mdash; resetting these options to their default values.', true );
+						$opts[$md_pre.'_img_width'] = $def_opts[$md_pre.'_img_width'];
+						$opts[$md_pre.'_img_height'] = $def_opts[$md_pre.'_img_height'];
+						$opts[$md_pre.'_img_crop'] = $def_opts[$md_pre.'_img_crop'];
 					}
 				}
 			}
