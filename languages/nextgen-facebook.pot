@@ -1,0 +1,546 @@
+# Copyright (C) 2015 NextGEN Facebook (WPSSO)
+# This file is distributed under the same license as the NextGEN Facebook (WPSSO) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: NextGEN Facebook (WPSSO) 8.10.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
+"POT-Creation-Date: 2015-09-30 17:41:22+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/admin.php:322
+msgid "FAQ"
+msgstr ""
+
+#: lib/admin.php:326
+msgid "Notes"
+msgstr ""
+
+#: lib/admin.php:330
+msgid "Download Latest"
+msgstr ""
+
+#: lib/admin.php:335
+msgid "Pro Support"
+msgstr ""
+
+#: lib/admin.php:339
+msgid "Support Forum"
+msgstr ""
+
+#: lib/admin.php:344
+msgid "Purchase License"
+msgstr ""
+
+#: lib/admin.php:346
+msgid "Purchase Pro"
+msgstr ""
+
+#: lib/admin.php:359
+msgid "Submitted settings are not an array."
+msgstr ""
+
+#: lib/admin.php:370 lib/admin.php:404
+msgid "Plugin settings have been updated."
+msgstr ""
+
+#: lib/admin.php:371
+msgid ""
+"Wait %1$d seconds for cache objects to expire (default) or <a href=\"%2$s"
+"\">Clear All Cache(s)</a> now."
+msgstr ""
+
+#: lib/admin.php:387
+msgid "Nonce token validation failed for network options (update ignored)."
+msgstr ""
+
+#: lib/admin.php:391
+msgid "Insufficient privileges to modify network options."
+msgstr ""
+
+#: lib/admin.php:422
+msgid "Nonce token validation failed for plugin action (action ignored)."
+msgstr ""
+
+#: lib/admin.php:433
+msgid ""
+"The <strong>%s</strong> extension is required to check for plugin and "
+"extension updates."
+msgstr ""
+
+#: lib/admin.php:445
+msgid "Metabox layout preferences for user \"%s\" have been reset."
+msgstr ""
+
+#: lib/admin.php:452
+msgid "Hidden notices for user \"%s\" have been cleared."
+msgstr ""
+
+#: lib/admin.php:472
+msgid "Pro Version"
+msgstr ""
+
+#: lib/admin.php:480
+msgid "Version Information"
+msgstr ""
+
+#: lib/admin.php:483
+msgid "Basic / Common Features"
+msgstr ""
+
+#: lib/admin.php:486
+msgid "Pro Version Features"
+msgstr ""
+
+#: lib/admin.php:489
+msgid "Help and Support"
+msgstr ""
+
+#: lib/admin.php:621 lib/admin.php:622
+msgid "N/A"
+msgstr ""
+
+#: lib/admin.php:645
+msgid "Installed"
+msgstr ""
+
+#: lib/admin.php:647
+msgid "Stable"
+msgstr ""
+
+#: lib/admin.php:649
+msgid "Latest"
+msgstr ""
+
+#: lib/admin.php:653
+msgid "View %s changelog..."
+msgstr ""
+
+#: lib/admin.php:789
+msgid "Purchase Pro License(s)"
+msgstr ""
+
+#: lib/admin.php:790
+msgid "Purchase Pro Version"
+msgstr ""
+
+#: lib/admin.php:838
+msgid "Save All Plugin Settings"
+msgstr ""
+
+#: lib/admin.php:849
+msgid "Clear All Cache(s)"
+msgstr ""
+
+#: lib/admin.php:853
+msgid "Check for Update(s)"
+msgstr ""
+
+#: lib/admin.php:859
+msgid "Reset Metabox Layout"
+msgstr ""
+
+#: lib/admin.php:864
+msgid "Reset Hidden Notices"
+msgstr ""
+
+#: lib/admin.php:1036
+msgid "Plugin conflict detected"
+msgstr ""
+
+#: lib/admin.php:1046
+msgid ""
+"URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
+"\">Client URL Library</a> (cURL) is missing."
+msgstr ""
+
+#: lib/admin.php:1046 lib/admin.php:1050
+msgid ""
+"Please contact your hosting provider to have the missing cURL library files "
+"installed."
+msgstr ""
+
+#: lib/admin.php:1050
+msgid ""
+"The file caching feature has been enabled but PHP's <a href=\"%s\" target="
+"\"_blank\">Client URL Library</a> (cURL) is missing."
+msgstr ""
+
+#: lib/admin.php:1060
+msgid ""
+"Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
+"the <a href=\"%s\">Yoast SEO: Social</a> settings."
+msgstr ""
+
+#: lib/admin.php:1068
+msgid ""
+"Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
+"the <a href=\"%s\">Yoast SEO: Social</a> settings."
+msgstr ""
+
+#: lib/admin.php:1073
+msgid ""
+"Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
+"option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
+msgstr ""
+
+#: lib/admin.php:1078
+msgid ""
+"Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
+"href=\"%s\">Yoast SEO: Social</a> settings."
+msgstr ""
+
+#: lib/admin.php:1089
+msgid ""
+"Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
+"s\">SEO Ultimate plugin Module Manager</a>."
+msgstr ""
+
+#: lib/admin.php:1100
+msgid ""
+"Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
+"\">All in One SEO Pack Feature Manager</a>."
+msgstr ""
+
+#: lib/admin.php:1105
+msgid ""
+"Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
+"href=\"%s\">All in One SEO Pack Plugin Options</a>."
+msgstr ""
+
+#: lib/admin.php:1115
+msgid ""
+"<strong>JetPack's Photon module cripples the WordPress image size functions "
+"on purpose</strong>."
+msgstr ""
+
+#: lib/admin.php:1115
+msgid ""
+"Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
+"the %s Free plugin."
+msgstr ""
+
+#: lib/admin.php:1115
+msgid ""
+"You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
+"an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
+"image size functions specifically for %4$s images."
+msgstr ""
+
+#: lib/admin.php:1125
+msgid ""
+"<strong>WooCommerce does not include shortcode support in the admin "
+"interface</strong> (required by WordPress for its content filters)."
+msgstr ""
+
+#: lib/admin.php:1125
+msgid ""
+"Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
+"<a href=\"%s\">%s Advanced settings page</a>."
+msgstr ""
+
+#: lib/admin.php:1125
+msgid ""
+"You may also upgrade to the <a href=\"%1$s\">%2$s version</a> that includes "
+"an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
+"(shortcodes, products, categories, tags, images, etc.)."
+msgstr ""
+
+#: lib/com/script.php:72
+msgid "Use Image"
+msgstr ""
+
+#: lib/meta.php:236
+msgid ""
+"Nonce token validation for the submitted form has failed (update ignored)."
+msgstr ""
+
+#: lib/meta.php:306
+msgid "Social Img"
+msgstr ""
+
+#: lib/meta.php:307
+msgid "Social Desc"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:120
+msgid "%s's Profile"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:125
+msgid "%s's Topics Started"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:128
+msgid "%s's Replies Created"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:131
+msgid "%s's Favorites"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:134
+msgid "%s's Subscriptions"
+msgstr ""
+
+#: lib/pro/forum/bbpress.php:137
+msgid "Edit %s's Profile"
+msgstr ""
+
+#: lib/submenu/advanced.php:85
+msgid "Add Hidden Debug Messages"
+msgstr ""
+
+#: lib/submenu/advanced.php:91
+msgid "Preserve Settings on Uninstall"
+msgstr ""
+
+#: lib/submenu/general.php:74
+msgid "Default Article Topic"
+msgstr ""
+
+#: lib/submenu/general.php:78
+msgid "Site Name"
+msgstr ""
+
+#: lib/submenu/general.php:83
+msgid "Site Description"
+msgstr ""
+
+#: lib/submenu/general.php:92
+msgid "Title Separator"
+msgstr ""
+
+#: lib/submenu/general.php:97
+msgid "Title Length"
+msgstr ""
+
+#: lib/submenu/general.php:102
+msgid "Description Length"
+msgstr ""
+
+#: lib/submenu/general.php:106
+msgid "Add Hashtags to Descriptions"
+msgstr ""
+
+#: lib/submenu/general.php:112
+msgid "Add Page Title in Tags / Hashtags"
+msgstr ""
+
+#: lib/submenu/general.php:117
+msgid "Add Parent Page Tags / Hashtags"
+msgstr ""
+
+#: lib/submenu/general.php:125
+msgid "Author Profile URL Field"
+msgstr ""
+
+#: lib/submenu/general.php:130
+msgid "Fallback to Author Index URL"
+msgstr ""
+
+#: lib/submenu/general.php:135 lib/submenu/general.php:245
+msgid "Default Author when Missing"
+msgstr ""
+
+#: lib/submenu/general.php:140 lib/submenu/general.php:250
+msgid "Force Default Author on Indexes"
+msgstr ""
+
+#: lib/submenu/general.php:145 lib/submenu/general.php:255
+msgid "Default Author on Search Results"
+msgstr ""
+
+#: lib/submenu/general.php:153
+msgid "Max Images to Include"
+msgstr ""
+
+#: lib/submenu/general.php:161
+msgid "Open Graph Image Dimensions"
+msgstr ""
+
+#: lib/submenu/general.php:165
+msgid "Default / Fallback Image ID"
+msgstr ""
+
+#: lib/submenu/general.php:169
+msgid "or Default / Fallback Image URL"
+msgstr ""
+
+#: lib/submenu/general.php:174
+msgid "Force Default Image on Indexes"
+msgstr ""
+
+#: lib/submenu/general.php:179
+msgid "Force Default Image on Search Results"
+msgstr ""
+
+#: lib/submenu/general.php:185
+msgid "Add Tags from NGG Featured Image"
+msgstr ""
+
+#: lib/submenu/general.php:198
+msgid "Facebook Business Page URL"
+msgstr ""
+
+#: lib/submenu/general.php:202
+msgid "Facebook Admin Username(s)"
+msgstr ""
+
+#: lib/submenu/general.php:206
+msgid "Facebook Application ID"
+msgstr ""
+
+#: lib/submenu/general.php:210
+msgid "Default Language"
+msgstr ""
+
+#: lib/submenu/general.php:214 lib/submenu/general.php:290
+msgid "Author Name Format"
+msgstr ""
+
+#: lib/submenu/general.php:222
+msgid "Google+ Business Page URL"
+msgstr ""
+
+#: lib/submenu/general.php:226
+msgid "Schema Website / Business Logo URL"
+msgstr ""
+
+#: lib/submenu/general.php:231
+msgid "Schema Meta Description Length"
+msgstr ""
+
+#: lib/submenu/general.php:236
+msgid "Search / SEO Description Length"
+msgstr ""
+
+#: lib/submenu/general.php:240
+msgid "Author Link URL Field"
+msgstr ""
+
+#: lib/submenu/general.php:260
+msgid "Add Schema Website JSON-LD"
+msgstr ""
+
+#: lib/submenu/general.php:265
+msgid "Add Schema Publisher JSON-LD"
+msgstr ""
+
+#: lib/submenu/general.php:270
+msgid "Add Schema Author JSON-LD"
+msgstr ""
+
+#: lib/submenu/general.php:281
+msgid "Pinterest Company Page URL"
+msgstr ""
+
+#: lib/submenu/general.php:285
+msgid "Rich Pin Image Dimensions"
+msgstr ""
+
+#: lib/submenu/general.php:295
+msgid "Website Verification ID"
+msgstr ""
+
+#: lib/submenu/general.php:306
+msgid "Twitter Business @username"
+msgstr ""
+
+#: lib/submenu/general.php:311
+msgid "Maximum Description Length"
+msgstr ""
+
+#: lib/submenu/general.php:315
+msgid "<em>Summary</em> Card Image Dimensions"
+msgstr ""
+
+#: lib/submenu/general.php:319
+msgid "<em>Large Image</em> Card Image Dimensions"
+msgstr ""
+
+#: lib/submenu/general.php:327
+msgid "Instagram Business URL"
+msgstr ""
+
+#: lib/submenu/general.php:331
+msgid "LinkedIn Company Page URL"
+msgstr ""
+
+#: lib/submenu/general.php:335
+msgid "MySpace Business (Brand) URL"
+msgstr ""
+
+#: lib/submenu/sharing.php:145
+msgid "Include on Index Webpages"
+msgstr ""
+
+#: lib/submenu/sharing.php:149
+msgid "Include on Static Homepage"
+msgstr ""
+
+#: lib/submenu/sharing.php:157
+msgid "Position in Content Text"
+msgstr ""
+
+#: lib/submenu/sharing.php:162
+msgid "Position in Excerpt Text"
+msgstr ""
+
+#: lib/submenu/style.php:170
+msgid "Use the Social Stylesheet"
+msgstr ""
+
+#: lib/submenu/style.php:174
+msgid "Enqueue the Stylesheet"
+msgstr ""
+
+#: lib/user.php:293
+msgid "AIM"
+msgstr ""
+
+#: lib/user.php:294
+msgid "Yahoo IM"
+msgstr ""
+
+#: lib/user.php:295
+msgid "Jabber / Google Talk"
+msgstr ""
+
+#: lib/util.php:238
+msgid "W3 Total Cache has been cleared as well."
+msgstr ""
+
+#: lib/util.php:242
+msgid "WP Super Cache has been cleared as well."
+msgstr ""
+
+#: lib/util.php:246
+msgid "ZenCache has been cleared as well."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "NextGEN Facebook (WPSSO)"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://surniaulula.com/extend/plugins/wpsso/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Display your content in the best possible way on Facebook, Google+, Twitter, "
+"Pinterest, etc. - no matter how your webpage is shared!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jean-Sebastien Morisset"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://surniaulula.com/"
+msgstr ""
