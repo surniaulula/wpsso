@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'info-missing-og-image':
-						$text = 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly. You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.';
+						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
 						break;
 					case 'info-plugin-tid':
 						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
@@ -660,14 +660,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase '.
-							$atts['short_pro'].' licence(s) to modify the following options and install / enable Pro modules</a></p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">Purchase the '.
-							$atts['short_pro'].' plugin to modify the following options and install / enable Pro modules</a></p>';
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							printf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules',
+								'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							printf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules',
+								'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-						$atts['short_pro'].' required to use this option</a></p>';
+						printf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-activate-msg':
 						if ( ! is_multisite() ) {

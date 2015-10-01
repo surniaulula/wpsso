@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-09-30 18:21:49+00:00\n"
+"POT-Creation-Date: 2015-10-01 13:19:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -253,6 +253,182 @@ msgstr ""
 
 #: lib/com/script.php:71
 msgid "Use Image"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:35 lib/pro/admin/advanced.php:38
+msgid "Options to Show by Default"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:41 lib/pro/admin/advanced.php:44
+msgid "Report Cache Purge Count"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:47 lib/pro/admin/advanced.php:50
+msgid "Use WP Locale for Language"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:53 lib/pro/admin/advanced.php:56
+msgid "Auto-Resize Media Images"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:59 lib/pro/admin/advanced.php:62
+msgid "Check Image Dimensions"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:66 lib/pro/admin/advanced.php:69
+msgid "Enable Plugin Shortcode(s)"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:74 lib/pro/admin/advanced.php:77
+msgid "Enable Plugin Widget(s)"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:81 lib/pro/admin/advanced.php:84
+msgid "Enable WP Excerpt for Pages"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:87 lib/pro/admin/advanced.php:90
+msgid "Enable WP Tags for Pages"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:100 lib/pro/admin/advanced.php:100
+msgid "Use Filtered (SEO) Titles"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:104 lib/pro/admin/advanced.php:104
+msgid "Apply WordPress Content Filters"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:109 lib/pro/admin/advanced.php:109
+msgid "Apply WordPress Excerpt Filters"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:114 lib/pro/admin/advanced.php:114
+msgid "Content Starts at 1st Paragraph"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:119 lib/pro/admin/advanced.php:119
+msgid "Use Image Alt if No Content"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:124 lib/pro/admin/advanced.php:124
+msgid "Image Alt Text Prefix"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:129 lib/pro/admin/advanced.php:129
+msgid "WP Caption Paragraph Prefix"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:133 lib/pro/admin/advanced.php:133
+msgid "Check for Embedded Media"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:157 lib/pro/admin/advanced.php:154
+msgid "Show Social Settings Metabox on"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:162 lib/pro/admin/advanced.php:159
+msgid "Image URL Custom Field"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:168 lib/pro/admin/advanced.php:164
+msgid "Video URL Custom Field"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:174 lib/pro/admin/advanced.php:169
+msgid "Video Embed HTML Custom Field"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:187 lib/pro/admin/advanced.php:178
+msgid "Check for Duplicate Meta Tags"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:192 lib/pro/admin/advanced.php:183
+msgid "Header &lt;html&gt; Attribute Filter"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:189
+msgid "Header &lt;head&gt; Attribute Filter"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:211 lib/pro/admin/advanced.php:199
+msgid "Object Cache Expiry"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:217 lib/pro/admin/advanced.php:205
+msgid "Verify SSL Certificates"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:230 lib/pro/admin/advanced.php:215
+msgid "Preferred URL Shortening Service"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:236 lib/pro/admin/advanced.php:220
+msgid "Minimum URL Length to Shorten"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:240 lib/pro/admin/advanced.php:224
+msgid "Bit.ly Username"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:244 lib/pro/admin/advanced.php:228
+msgid "Bit.ly API Key"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:248 lib/pro/admin/advanced.php:232
+msgid "Google Project App BrowserKey"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:252 lib/pro/admin/advanced.php:236
+msgid "Google URL Shortener API is ON"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:265 lib/gpl/admin/advanced.php:304
+#: lib/pro/admin/advanced.php:246 lib/pro/admin/advanced.php:282
+msgid "Show"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:267 lib/gpl/admin/advanced.php:306
+#: lib/pro/admin/advanced.php:248 lib/pro/admin/advanced.php:284
+msgid "Contact Field Name"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:269 lib/gpl/admin/advanced.php:308
+#: lib/pro/admin/advanced.php:250 lib/pro/admin/advanced.php:286
+msgid "Profile Contact Label"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:361 lib/pro/admin/advanced.php:346
+msgid "Site Use"
+msgstr ""
+
+#: lib/messages.php:598
+msgid ""
+"An Open Graph image meta tag could not be created from this webpage content "
+"&mdash; Facebook and other social websites <em>require</em> at least one "
+"Open Graph image meta tag to render shared content correctly."
+msgstr ""
+
+#: lib/messages.php:598
+msgid ""
+"You may select an optional customized image, for Facebook and other social "
+"websites, in the Social Settings metabox under the Priority Media tab."
+msgstr ""
+
+#: lib/messages.php:664
+msgid ""
+"Purchase %s licence(s) to modify the following options and install / enable "
+"Pro modules"
+msgstr ""
+
+#: lib/messages.php:667
+msgid ""
+"Purchase the %s plugin to modify the following options and install / enable "
+"Pro modules"
+msgstr ""
+
+#: lib/messages.php:672
+msgid "%s required to use this option"
 msgstr ""
 
 #: lib/meta.php:236
