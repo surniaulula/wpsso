@@ -196,9 +196,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function push_add_to_options( &$opts = array(), $add_to_prefixes = array( 'plugin' => 'backend' ) ) {
+		public function push_add_to_options( &$opts = array(), 
+			$add_to_prefixes = array( 'plugin' => 'backend' ) ) {
+
 			foreach ( $add_to_prefixes as $opt_prefix => $type ) {
 				foreach ( $this->get_post_types( $type ) as $post_type ) {
+
 					$option_name = $opt_prefix.'_add_to_'.$post_type->name;
 					$filter_name = $this->p->cf['lca'].'_add_to_options_'.$post_type->name;
 					if ( ! isset( $opts[$option_name] ) )

@@ -384,11 +384,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], $this->get_nonce() ) ) {
-				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).', 'wpsso' ), true );
+				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
+					'wpsso' ), true );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
-				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ), true );
+				$this->p->notice->err( __( 'Insufficient privileges to modify network options.',
+					'wpsso' ), true );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			}
@@ -975,19 +977,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$this->p->check->aop( $this->p->cf['lca'], 
 								true, $this->p->is_avail['aop'] ) ) {
 
-							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
-								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
-								$this->p->util->get_th( 'Site Use', 'site_use' ).
-								'<td>'.$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
-									$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
+							echo '<tr>'.$this->p->util->get_th( __( 'Pro Authentication ID',
+								'wpsso' ), 'medium nowrap' ).
+							'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).'</td>'.
+							$this->p->util->get_th( __( 'Site Use', 'wpsso' ), 'site_use' ).
+							'<td>'.$this->form->get_select( 'plugin_'.$lca.'_tid:use', 
+								$this->p->cf['form']['site_option_use'], 'site_use' ).'</td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
-								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
-									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
-									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td colspan="2">'.( $this->p->check->aop( $this->p->cf['lca'], 
-									true, $this->p->is_avail['aop'] ) ?
-										'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
+							echo '<tr>'.$this->p->util->get_th( __( 'Pro Authentication ID',
+								'wpsso' ), 'medium nowrap' ).
+							'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
+								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
+							'</td><td colspan="2">'.( $this->p->check->aop( $this->p->cf['lca'], 
+								true, $this->p->is_avail['aop'] ) ?
+									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 				} else {
@@ -1001,18 +1005,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $lca, 'qty_used' ) : false;
 
-							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
-								'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).
-								'</td><td><p>'.( empty( $qty_used ) ? 
-									'' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
+							echo '<tr>'.$this->p->util->get_th( __( 'Pro Authentication ID',
+								'wpsso' ), 'medium nowrap' ).
+							'<td class="tid">'.$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ).
+							'</td><td><p>'.( empty( $qty_used ) ? 
+								'' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->get_th( 'Pro Authentication ID', 'medium nowrap' ).
-								'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
-									$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
-									$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
-								'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], 
-									true, $this->p->is_avail['aop'] ) ? 
-										'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
+							echo '<tr>'.$this->p->util->get_th( __( 'Pro Authentication ID',
+								'wpsso' ), 'medium nowrap' ).
+							'<td class="blank">'.( empty( $this->p->options['plugin_'.$lca.'_tid'] ) ?
+								$this->form->get_no_input( 'plugin_'.$lca.'_tid', 'tid mono' ) :
+								$this->form->get_input( 'plugin_'.$lca.'_tid', 'tid mono' ) ).
+							'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], 
+								true, $this->p->is_avail['aop'] ) ? 
+									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
 				}

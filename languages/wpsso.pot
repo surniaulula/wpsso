@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3-"
-"dev2\n"
+"dev3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-01 13:19:28+00:00\n"
+"POT-Creation-Date: 2015-10-01 22:29:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Submitted options are not an array."
 msgstr ""
 
-#: lib/admin.php:370 lib/admin.php:404
+#: lib/admin.php:370 lib/admin.php:406
 msgid "Plugin settings have been updated."
 msgstr ""
 
@@ -59,192 +59,201 @@ msgstr ""
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:391
+#: lib/admin.php:392
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:422
+#: lib/admin.php:424
 msgid "Nonce token validation failed for plugin action (action ignored)."
 msgstr ""
 
-#: lib/admin.php:433
+#: lib/admin.php:435
 msgid ""
 "The <strong>%s</strong> extension is required to check for plugin and "
 "extension updates."
 msgstr ""
 
-#: lib/admin.php:445
+#: lib/admin.php:447
 msgid "Metabox layout preferences for user \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:452
+#: lib/admin.php:454
 msgid "Hidden notices for user \"%s\" have been cleared."
 msgstr ""
 
-#: lib/admin.php:472
+#: lib/admin.php:474
 msgid "Pro Version"
 msgstr ""
 
-#: lib/admin.php:480
+#: lib/admin.php:482
 msgid "Version Information"
 msgstr ""
 
-#: lib/admin.php:483
+#: lib/admin.php:485
 msgid "Basic / Common Features"
 msgstr ""
 
-#: lib/admin.php:486
+#: lib/admin.php:488
 msgid "Pro Version Features"
 msgstr ""
 
-#: lib/admin.php:489
+#: lib/admin.php:491
 msgid "Help and Support"
 msgstr ""
 
-#: lib/admin.php:621 lib/admin.php:622
+#: lib/admin.php:623 lib/admin.php:624
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:645
+#: lib/admin.php:647
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:647
+#: lib/admin.php:649
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:649
+#: lib/admin.php:651
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:653
+#: lib/admin.php:655
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:789
+#: lib/admin.php:791
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:790
+#: lib/admin.php:792
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:838
+#: lib/admin.php:840
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:849
+#: lib/admin.php:851
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:853
+#: lib/admin.php:855
 msgid "Check for Update(s)"
 msgstr ""
 
-#: lib/admin.php:859
+#: lib/admin.php:861
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:864
+#: lib/admin.php:866
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:1036
+#: lib/admin.php:980 lib/admin.php:987 lib/admin.php:1008 lib/admin.php:1014
+msgid "Pro Authentication ID"
+msgstr ""
+
+#: lib/admin.php:983 lib/gpl/admin/advanced.php:361
+#: lib/pro/admin/advanced.php:346
+msgid "Site Use"
+msgstr ""
+
+#: lib/admin.php:1042
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1046
+#: lib/admin.php:1052
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1046 lib/admin.php:1050
+#: lib/admin.php:1052 lib/admin.php:1056
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1050
+#: lib/admin.php:1056
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1060
+#: lib/admin.php:1066
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1068
+#: lib/admin.php:1074
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1073
+#: lib/admin.php:1079
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
 "option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1078
+#: lib/admin.php:1084
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
 "href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1089
+#: lib/admin.php:1095
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate plugin Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1100
+#: lib/admin.php:1106
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1105
+#: lib/admin.php:1111
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1121
 msgid ""
 "<strong>JetPack's Photon module cripples the WordPress image size functions "
 "on purpose</strong>."
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1121
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1121
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1125
+#: lib/admin.php:1131
 msgid ""
 "<strong>WooCommerce does not include shortcode support in the admin "
 "interface</strong> (required by WordPress for its content filters)."
 msgstr ""
 
-#: lib/admin.php:1125
+#: lib/admin.php:1131
 msgid ""
 "Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
 "<a href=\"%s\">%s Advanced settings page</a>."
 msgstr ""
 
-#: lib/admin.php:1125
+#: lib/admin.php:1131
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> that includes "
 "an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
@@ -398,8 +407,82 @@ msgstr ""
 msgid "Profile Contact Label"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:361 lib/pro/admin/advanced.php:346
-msgid "Site Use"
+#: lib/gpl/admin/post.php:30 lib/pro/admin/post.php:33
+msgid "Article Topic"
+msgstr ""
+
+#: lib/gpl/admin/post.php:35 lib/gpl/admin/post.php:40
+#: lib/pro/admin/post.php:40 lib/pro/admin/post.php:45
+msgid "Default Title"
+msgstr ""
+
+#: lib/gpl/admin/post.php:46 lib/gpl/admin/post.php:51
+#: lib/pro/admin/post.php:53 lib/pro/admin/post.php:58
+msgid ""
+"Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description"
+msgstr ""
+
+#: lib/gpl/admin/post.php:58 lib/gpl/admin/post.php:64
+#: lib/pro/admin/post.php:66 lib/pro/admin/post.php:72
+msgid "Google+ / Schema Description"
+msgstr ""
+
+#: lib/gpl/admin/post.php:70 lib/gpl/admin/post.php:75
+#: lib/pro/admin/post.php:80 lib/pro/admin/post.php:85
+msgid "Google Search / SEO Description"
+msgstr ""
+
+#: lib/gpl/admin/post.php:81 lib/gpl/admin/post.php:86
+#: lib/pro/admin/post.php:93 lib/pro/admin/post.php:98
+msgid "Twitter Card Description"
+msgstr ""
+
+#: lib/gpl/admin/post.php:93 lib/gpl/admin/post.php:98
+#: lib/pro/admin/post.php:106 lib/pro/admin/post.php:111
+msgid "Sharing URL"
+msgstr ""
+
+#: lib/gpl/admin/post.php:112 lib/pro/admin/post.php:122
+msgid "All Social Websites / Open Graph"
+msgstr ""
+
+#: lib/gpl/admin/post.php:116 lib/gpl/admin/post.php:155
+#: lib/pro/admin/post.php:126 lib/pro/admin/post.php:165
+msgid "Image Dimensions"
+msgstr ""
+
+#: lib/gpl/admin/post.php:120 lib/gpl/admin/post.php:160
+#: lib/pro/admin/post.php:130 lib/pro/admin/post.php:170
+msgid "Image ID"
+msgstr ""
+
+#: lib/gpl/admin/post.php:124 lib/gpl/admin/post.php:165
+#: lib/pro/admin/post.php:134 lib/pro/admin/post.php:175
+msgid "or Image URL"
+msgstr ""
+
+#: lib/gpl/admin/post.php:129 lib/pro/admin/post.php:139
+msgid "Maximum Images"
+msgstr ""
+
+#: lib/gpl/admin/post.php:133 lib/pro/admin/post.php:143
+msgid "Video Embed HTML"
+msgstr ""
+
+#: lib/gpl/admin/post.php:137 lib/pro/admin/post.php:147
+msgid "or Video URL"
+msgstr ""
+
+#: lib/gpl/admin/post.php:142 lib/pro/admin/post.php:152
+msgid "Maximum Videos"
+msgstr ""
+
+#: lib/gpl/admin/post.php:146 lib/pro/admin/post.php:156
+msgid "Include Preview Image(s)"
+msgstr ""
+
+#: lib/gpl/admin/post.php:151 lib/pro/admin/post.php:161
+msgid "Pinterest (Rich Pin)"
 msgstr ""
 
 #: lib/messages.php:598
@@ -664,15 +747,15 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:238
+#: lib/util.php:241
 msgid "W3 Total Cache has been cleared as well."
 msgstr ""
 
-#: lib/util.php:242
+#: lib/util.php:245
 msgid "WP Super Cache has been cleared as well."
 msgstr ""
 
-#: lib/util.php:246
+#: lib/util.php:249
 msgid "ZenCache has been cleared as well."
 msgstr ""
 

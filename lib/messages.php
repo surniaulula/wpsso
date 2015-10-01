@@ -661,15 +661,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-feature-msg':
 						if ( $this->p->check->aop( $lca, false ) )
 							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-							printf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules',
+							sprintf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules',
 								'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-							printf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules',
+							sprintf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules',
 								'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-						printf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						sprintf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-activate-msg':
 						if ( ! is_multisite() ) {
