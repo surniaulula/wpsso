@@ -427,7 +427,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* Updated the text domain in preparation for plugin import to translate.wordpress.org.
-	* Added a translation function call for all option labels.
+	* Added the translation function to all option headers in the settings pages and metaboxes.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
