@@ -365,11 +365,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Improvements**
 	* Updated the text domain in preparation for plugin import to translate.wordpress.org.
-	* Added the translation function to all option headers in the settings pages and metaboxes.
+	* Added the translation function to all option labels in the settings pages and metaboxes.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* *None*
+	* Added a POT (Portable Object Template) file with translation strings in wpsso/languages/wpsso.pot.
 
 = Version 3.10.2 2015/09/29 =
 
