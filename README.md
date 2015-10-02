@@ -158,7 +158,7 @@
 </ul>
 
 <blockquote>
-<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version on WPSSO.com</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
+<p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
 <div style="clear:both;"></div>
@@ -218,10 +218,6 @@
 <p><strong>Enhanced SEO</strong></p>
 
 <p>WPSSO (Pro version) integrates with <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a>, <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, and <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a> &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, and Twitter Card meta tags.</p>
-
-<blockquote>
-<p>Read about the <a href="http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/">differences between the Yoast SEO (aka WordPress SEO) and WPSSO plugins</a> for social sharing.</p>
-</blockquote>
 
 <div style="clear:both;"></div>
 
