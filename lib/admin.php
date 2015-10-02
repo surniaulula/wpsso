@@ -33,8 +33,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// nothing to do
 
 			} else {
-				load_plugin_textdomain( 'wpsso', false, dirname( WPSSO_PLUGINBASE ).'/languages/' );
-
+				$this->load_textdoms();		// load the text domains of all active extensions
 				$this->set_objects();
 				$this->pro_req_notices();
 				$this->conflict_warnings();
@@ -59,6 +58,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		}
 
+		// load the text domains of all active extensions
+		private function load_textdoms() {
+			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				if ( ! empty( $info['text_domain'] ) ) {
+					if ( ! empty( $info['domain_path'] ) )
+						load_plugin_textdomain( $info['text_domain'], false, $info['slug'].$info['domain_path'] );
+					else load_plugin_textdomain( $info['text_domain'], false, false );
+				}
+			}
+		}
+
 		// load all submenu classes into the $this->submenu array
 		// the id of each submenu item must be unique
 		private function set_objects() {
@@ -66,7 +76,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->is_avail['aop'] ) ? ' Pro' : ' Free';
 			$menus = array( 
 				'submenu', 
-				'setting'	// setting must be last to extend submenu/advanced.php
+				'setting'		// setting must be last to extend submenu/advanced.php
 			);
 			if ( is_multisite() )
 				$menus[] = 'sitesubmenu';

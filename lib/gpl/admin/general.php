@@ -25,7 +25,8 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 		
-			$rows[] = $this->p->util->get_th( 'Use Author Gravatar Image', null, 'og_author_gravatar' ).
+			$rows[] = $this->p->util->get_th( __( 'Use Author Gravatar Image',
+				'wpsso' ), null, 'og_author_gravatar' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $rows;
@@ -34,34 +35,42 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 		public function filter_og_videos_rows( $rows, $form ) {
 
 			$rows[] = '<td colspan="2" align="center">'.
-				'<p>Video discovery and integration modules are provided with the Pro version.</p>'.
+				'<p>'.__( 'Video discovery and integration modules are provided with the Pro version.',
+					'wpsso' ).'</p>'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 		
-			$rows[] = $this->p->util->get_th( 'Max Videos to Include', null, 'og_vid_max' ).
+			$rows[] = $this->p->util->get_th( __( 'Max Videos to Include',
+				'wpsso' ), null, 'og_vid_max' ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Use HTTPS for Video API Calls', null, 'og_vid_https' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_https' ).'</td>';
+			$this->p->util->get_th( __( 'Use HTTPS for Video API Calls',
+				'wpsso' ), null, 'og_vid_https' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
-			$rows[] = $this->p->util->get_th( 'Include Video Preview Image(s)', null, 'og_vid_prev_img' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).
+			$rows[] = $this->p->util->get_th( __( 'Include Video Preview Image(s)',
+				'wpsso' ), null, 'og_vid_prev_img' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" />'.
 			'&nbsp;&nbsp;video preview images (when available) are included first</td>';
 
-			$rows[] = $this->p->util->get_th( 'Include Embed text/html Type', null, 'og_vid_html_type' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_html_type' ).'</td>';
+			$rows[] = $this->p->util->get_th( __( 'Include Embed text/html Type',
+				'wpsso' ), null, 'og_vid_html_type' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Default / Fallback Video URL', null, 'og_def_vid_url' ).
+			$this->p->util->get_th( __( 'Default / Fallback Video URL',
+				'wpsso' ), null, 'og_def_vid_url' ).
 			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Force Default Video on Indexes', null, 'og_def_vid_on_index' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_index' ).'</td>';
+			$this->p->util->get_th( __( 'Force Default Video on Indexes',
+				'wpsso' ), null, 'og_def_vid_on_index' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( 'Force Default Video on Search Results', null, 'og_def_vid_on_search' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'og_def_vid_on_search' ).'</td>';
+			$this->p->util->get_th( __( 'Force Default Video on Search Results',
+				'wpsso' ), null, 'og_def_vid_on_search' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $rows;
 		}

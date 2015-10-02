@@ -49,16 +49,20 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$rows[] = $this->p->util->get_th( 'Facebook / Open Graph', null, 'og_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( __( 'Facebook / Open Graph',
+						'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
-					$rows[] = $this->p->util->get_th( 'Pinterest Rich Pin', null, 'rp_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( __( 'Pinterest Rich Pin',
+						'wpsso' ), null, 'rp_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 	
-					$rows[] = $this->p->util->get_th( 'Twitter <em>Summary</em> Card', null, 'tc_sum_dimensions' ).
+					$rows[] = $this->p->util->get_th( __( 'Twitter <em>Summary</em> Card',
+						'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';
 	
-					$rows[] = $this->p->util->get_th( 'Twitter <em>Large Image Summary</em> Card', null, 'tc_lrgimg_dimensions' ).
+					$rows[] = $this->p->util->get_th( __( 'Twitter <em>Large Image Summary</em> Card',
+						'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';
 
 					break;

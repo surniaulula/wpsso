@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3-"
-"dev3\n"
+"dev4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-01 22:29:08+00:00\n"
+"POT-Creation-Date: 2015-10-02 09:28:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,247 +13,248 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:322
+#: lib/admin.php:332
 msgid "FAQ"
 msgstr ""
 
-#: lib/admin.php:326
+#: lib/admin.php:336
 msgid "Notes"
 msgstr ""
 
-#: lib/admin.php:330
+#: lib/admin.php:340
 msgid "Download Latest"
 msgstr ""
 
-#: lib/admin.php:335
+#: lib/admin.php:345
 msgid "Pro Support"
 msgstr ""
 
-#: lib/admin.php:339
+#: lib/admin.php:349
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:344
+#: lib/admin.php:354
 msgid "Purchase License"
 msgstr ""
 
-#: lib/admin.php:346
+#: lib/admin.php:356
 msgid "Purchase Pro"
 msgstr ""
 
-#: lib/admin.php:359
+#: lib/admin.php:369
 msgid "Submitted options are not an array."
 msgstr ""
 
-#: lib/admin.php:370 lib/admin.php:406
+#: lib/admin.php:380 lib/admin.php:416
 msgid "Plugin settings have been updated."
 msgstr ""
 
-#: lib/admin.php:371
+#: lib/admin.php:381
 msgid ""
 "Wait %1$d seconds for cache objects to expire or <a href=\"%2$s\">Clear All "
 "Cache(s)</a> now."
 msgstr ""
 
-#: lib/admin.php:387
+#: lib/admin.php:397
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:392
+#: lib/admin.php:402
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:424
+#: lib/admin.php:434
 msgid "Nonce token validation failed for plugin action (action ignored)."
 msgstr ""
 
-#: lib/admin.php:435
+#: lib/admin.php:445
 msgid ""
 "The <strong>%s</strong> extension is required to check for plugin and "
 "extension updates."
 msgstr ""
 
-#: lib/admin.php:447
+#: lib/admin.php:457
 msgid "Metabox layout preferences for user \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:454
+#: lib/admin.php:464
 msgid "Hidden notices for user \"%s\" have been cleared."
 msgstr ""
 
-#: lib/admin.php:474
+#: lib/admin.php:484
 msgid "Pro Version"
 msgstr ""
 
-#: lib/admin.php:482
+#: lib/admin.php:492
 msgid "Version Information"
 msgstr ""
 
-#: lib/admin.php:485
+#: lib/admin.php:495
 msgid "Basic / Common Features"
 msgstr ""
 
-#: lib/admin.php:488
+#: lib/admin.php:498
 msgid "Pro Version Features"
 msgstr ""
 
-#: lib/admin.php:491
+#: lib/admin.php:501
 msgid "Help and Support"
 msgstr ""
 
-#: lib/admin.php:623 lib/admin.php:624
+#: lib/admin.php:633 lib/admin.php:634
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:647
+#: lib/admin.php:657
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:649
+#: lib/admin.php:659
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:651
+#: lib/admin.php:661
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:655
+#: lib/admin.php:665
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:791
+#: lib/admin.php:801
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:792
+#: lib/admin.php:802
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:840
+#: lib/admin.php:850
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:851
+#: lib/admin.php:861
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:855
+#: lib/admin.php:865
 msgid "Check for Update(s)"
 msgstr ""
 
-#: lib/admin.php:861
+#: lib/admin.php:871
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:866
+#: lib/admin.php:876
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:980 lib/admin.php:987 lib/admin.php:1008 lib/admin.php:1014
+#: lib/admin.php:990 lib/admin.php:997 lib/admin.php:1018 lib/admin.php:1024
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:983 lib/gpl/admin/advanced.php:361
-#: lib/pro/admin/advanced.php:346
+#: lib/admin.php:993 lib/gpl/admin/advanced.php:361
+#: lib/pro/admin/advanced.php:346 lib/sitesubmenu/siteadvanced.php:63
+#: lib/sitesubmenu/siteadvanced.php:69
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1042
+#: lib/admin.php:1052
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1052
+#: lib/admin.php:1062
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1052 lib/admin.php:1056
+#: lib/admin.php:1062 lib/admin.php:1066
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1056
+#: lib/admin.php:1066
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1066
+#: lib/admin.php:1076
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1074
+#: lib/admin.php:1084
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1079
+#: lib/admin.php:1089
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
 "option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1084
+#: lib/admin.php:1094
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
 "href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1095
+#: lib/admin.php:1105
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate plugin Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1106
+#: lib/admin.php:1116
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1111
+#: lib/admin.php:1121
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1121
+#: lib/admin.php:1131
 msgid ""
 "<strong>JetPack's Photon module cripples the WordPress image size functions "
 "on purpose</strong>."
 msgstr ""
 
-#: lib/admin.php:1121
+#: lib/admin.php:1131
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1121
+#: lib/admin.php:1131
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
 "<strong>WooCommerce does not include shortcode support in the admin "
 "interface</strong> (required by WordPress for its content filters)."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
 "Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
 "<a href=\"%s\">%s Advanced settings page</a>."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> that includes "
 "an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
@@ -407,81 +408,156 @@ msgstr ""
 msgid "Profile Contact Label"
 msgstr ""
 
+#: lib/gpl/admin/general.php:28 lib/pro/admin/general.php:31
+msgid "Use Author Gravatar Image"
+msgstr ""
+
+#: lib/gpl/admin/general.php:38
+msgid ""
+"Video discovery and integration modules are provided with the Pro version."
+msgstr ""
+
+#: lib/gpl/admin/general.php:42 lib/pro/admin/general.php:40
+msgid "Max Videos to Include"
+msgstr ""
+
+#: lib/gpl/admin/general.php:47 lib/pro/admin/general.php:46
+msgid "Use HTTPS for Video API Calls"
+msgstr ""
+
+#: lib/gpl/admin/general.php:51 lib/pro/admin/general.php:50
+msgid "Include Video Preview Image(s)"
+msgstr ""
+
+#: lib/gpl/admin/general.php:56 lib/pro/admin/general.php:55
+msgid "Include Embed text/html Type"
+msgstr ""
+
+#: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:60
+msgid "Default / Fallback Video URL"
+msgstr ""
+
+#: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:65
+msgid "Force Default Video on Indexes"
+msgstr ""
+
+#: lib/gpl/admin/general.php:71 lib/pro/admin/general.php:70
+msgid "Force Default Video on Search Results"
+msgstr ""
+
 #: lib/gpl/admin/post.php:30 lib/pro/admin/post.php:33
 msgid "Article Topic"
 msgstr ""
 
 #: lib/gpl/admin/post.php:35 lib/gpl/admin/post.php:40
+#: lib/gpl/admin/taxonomy.php:27 lib/gpl/admin/user.php:28
 #: lib/pro/admin/post.php:40 lib/pro/admin/post.php:45
+#: lib/pro/admin/taxonomy.php:31 lib/pro/admin/user.php:31
 msgid "Default Title"
 msgstr ""
 
 #: lib/gpl/admin/post.php:46 lib/gpl/admin/post.php:51
+#: lib/gpl/admin/taxonomy.php:32 lib/gpl/admin/user.php:33
 #: lib/pro/admin/post.php:53 lib/pro/admin/post.php:58
+#: lib/pro/admin/taxonomy.php:38 lib/pro/admin/user.php:38
 msgid ""
 "Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:58 lib/gpl/admin/post.php:64
+#: lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:39
 #: lib/pro/admin/post.php:66 lib/pro/admin/post.php:72
+#: lib/pro/admin/taxonomy.php:45 lib/pro/admin/user.php:45
 msgid "Google+ / Schema Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:70 lib/gpl/admin/post.php:75
+#: lib/gpl/admin/taxonomy.php:43 lib/gpl/admin/user.php:44
 #: lib/pro/admin/post.php:80 lib/pro/admin/post.php:85
+#: lib/pro/admin/taxonomy.php:51 lib/pro/admin/user.php:51
 msgid "Google Search / SEO Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:81 lib/gpl/admin/post.php:86
+#: lib/gpl/admin/taxonomy.php:48 lib/gpl/admin/user.php:49
 #: lib/pro/admin/post.php:93 lib/pro/admin/post.php:98
+#: lib/pro/admin/taxonomy.php:57 lib/pro/admin/user.php:57
 msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:93 lib/gpl/admin/post.php:98
+#: lib/gpl/admin/taxonomy.php:54 lib/gpl/admin/user.php:55
 #: lib/pro/admin/post.php:106 lib/pro/admin/post.php:111
+#: lib/pro/admin/taxonomy.php:64 lib/pro/admin/user.php:64
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:112 lib/pro/admin/post.php:122
+#: lib/gpl/admin/post.php:112 lib/gpl/admin/taxonomy.php:67
+#: lib/gpl/admin/user.php:68 lib/pro/admin/post.php:122
+#: lib/pro/admin/taxonomy.php:75 lib/pro/admin/user.php:75
 msgid "All Social Websites / Open Graph"
 msgstr ""
 
 #: lib/gpl/admin/post.php:116 lib/gpl/admin/post.php:155
+#: lib/gpl/admin/taxonomy.php:71 lib/gpl/admin/taxonomy.php:110
+#: lib/gpl/admin/user.php:72 lib/gpl/admin/user.php:111
 #: lib/pro/admin/post.php:126 lib/pro/admin/post.php:165
+#: lib/pro/admin/taxonomy.php:79 lib/pro/admin/taxonomy.php:112
+#: lib/pro/admin/user.php:79 lib/pro/admin/user.php:113
 msgid "Image Dimensions"
 msgstr ""
 
 #: lib/gpl/admin/post.php:120 lib/gpl/admin/post.php:160
+#: lib/gpl/admin/taxonomy.php:75 lib/gpl/admin/taxonomy.php:115
+#: lib/gpl/admin/user.php:76 lib/gpl/admin/user.php:116
 #: lib/pro/admin/post.php:130 lib/pro/admin/post.php:170
+#: lib/pro/admin/taxonomy.php:83 lib/pro/admin/taxonomy.php:117
+#: lib/pro/admin/user.php:83 lib/pro/admin/user.php:118
 msgid "Image ID"
 msgstr ""
 
 #: lib/gpl/admin/post.php:124 lib/gpl/admin/post.php:165
+#: lib/gpl/admin/taxonomy.php:79 lib/gpl/admin/taxonomy.php:120
+#: lib/gpl/admin/user.php:80 lib/gpl/admin/user.php:121
 #: lib/pro/admin/post.php:134 lib/pro/admin/post.php:175
+#: lib/pro/admin/taxonomy.php:87 lib/pro/admin/taxonomy.php:122
+#: lib/pro/admin/user.php:87 lib/pro/admin/user.php:123
 msgid "or Image URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:129 lib/pro/admin/post.php:139
+#: lib/gpl/admin/post.php:129 lib/gpl/admin/taxonomy.php:84
+#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:139
+#: lib/pro/admin/taxonomy.php:92
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/post.php:133 lib/pro/admin/post.php:143
+#: lib/gpl/admin/post.php:133 lib/gpl/admin/taxonomy.php:88
+#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:143
+#: lib/pro/admin/taxonomy.php:96 lib/pro/admin/user.php:91
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/post.php:137 lib/pro/admin/post.php:147
+#: lib/gpl/admin/post.php:137 lib/gpl/admin/taxonomy.php:92
+#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:147
+#: lib/pro/admin/taxonomy.php:100 lib/pro/admin/user.php:95
 msgid "or Video URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:142 lib/pro/admin/post.php:152
+#: lib/gpl/admin/post.php:142 lib/gpl/admin/taxonomy.php:97
+#: lib/gpl/admin/user.php:98 lib/pro/admin/post.php:152
+#: lib/pro/admin/user.php:100
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/post.php:146 lib/pro/admin/post.php:156
+#: lib/gpl/admin/post.php:146 lib/gpl/admin/taxonomy.php:101
+#: lib/gpl/admin/user.php:102 lib/pro/admin/post.php:156
+#: lib/pro/admin/taxonomy.php:104 lib/pro/admin/user.php:104
 msgid "Include Preview Image(s)"
 msgstr ""
 
-#: lib/gpl/admin/post.php:151 lib/pro/admin/post.php:161
+#: lib/gpl/admin/post.php:151 lib/gpl/admin/taxonomy.php:106
+#: lib/gpl/admin/user.php:107 lib/pro/admin/post.php:161
+#: lib/pro/admin/user.php:109
 msgid "Pinterest (Rich Pin)"
 msgstr ""
 
@@ -514,16 +590,36 @@ msgstr ""
 msgid "%s required to use this option"
 msgstr ""
 
-#: lib/meta.php:236
+#: lib/meta.php:86
+msgid "Open Graph Example"
+msgstr ""
+
+#: lib/meta.php:125
+msgid "Facebook Debugger"
+msgstr ""
+
+#: lib/meta.php:129
+msgid "Google Structured Data Testing Tool"
+msgstr ""
+
+#: lib/meta.php:133
+msgid "Pinterest Rich Pin Validator"
+msgstr ""
+
+#: lib/meta.php:137
+msgid "Twitter Card Validator"
+msgstr ""
+
+#: lib/meta.php:237
 msgid ""
 "Nonce token validation for the submitted form has failed (update ignored)."
 msgstr ""
 
-#: lib/meta.php:306
+#: lib/meta.php:308
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:307
+#: lib/meta.php:309
 msgid "Social Desc"
 msgstr ""
 
@@ -551,11 +647,55 @@ msgstr ""
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/submenu/advanced.php:85
+#: lib/setting/image-dimensions.php:52
+msgid "Facebook / Open Graph"
+msgstr ""
+
+#: lib/setting/image-dimensions.php:56
+msgid "Pinterest Rich Pin"
+msgstr ""
+
+#: lib/setting/image-dimensions.php:60
+msgid "Twitter <em>Summary</em> Card"
+msgstr ""
+
+#: lib/setting/image-dimensions.php:64
+msgid "Twitter <em>Large Image Summary</em> Card"
+msgstr ""
+
+#: lib/setting/social-accounts.php:49 lib/submenu/general.php:198
+msgid "Facebook Business Page URL"
+msgstr ""
+
+#: lib/setting/social-accounts.php:53 lib/submenu/general.php:222
+msgid "Google+ Business Page URL"
+msgstr ""
+
+#: lib/setting/social-accounts.php:57 lib/submenu/general.php:281
+msgid "Pinterest Company Page URL"
+msgstr ""
+
+#: lib/setting/social-accounts.php:61 lib/submenu/general.php:306
+msgid "Twitter Business @username"
+msgstr ""
+
+#: lib/setting/social-accounts.php:65 lib/submenu/general.php:327
+msgid "Instagram Business URL"
+msgstr ""
+
+#: lib/setting/social-accounts.php:69 lib/submenu/general.php:331
+msgid "LinkedIn Company Page URL"
+msgstr ""
+
+#: lib/setting/social-accounts.php:73 lib/submenu/general.php:335
+msgid "MySpace Business (Brand) URL"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:60 lib/submenu/advanced.php:85
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/submenu/advanced.php:91
+#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:91
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
@@ -643,10 +783,6 @@ msgstr ""
 msgid "Add Tags from NGG Featured Image"
 msgstr ""
 
-#: lib/submenu/general.php:198
-msgid "Facebook Business Page URL"
-msgstr ""
-
 #: lib/submenu/general.php:202
 msgid "Facebook Admin Username(s)"
 msgstr ""
@@ -661,10 +797,6 @@ msgstr ""
 
 #: lib/submenu/general.php:214 lib/submenu/general.php:290
 msgid "Author Name Format"
-msgstr ""
-
-#: lib/submenu/general.php:222
-msgid "Google+ Business Page URL"
 msgstr ""
 
 #: lib/submenu/general.php:226
@@ -695,20 +827,12 @@ msgstr ""
 msgid "Add Schema Author JSON-LD"
 msgstr ""
 
-#: lib/submenu/general.php:281
-msgid "Pinterest Company Page URL"
-msgstr ""
-
 #: lib/submenu/general.php:285
 msgid "Rich Pin Image Dimensions"
 msgstr ""
 
 #: lib/submenu/general.php:295
 msgid "Website Verification ID"
-msgstr ""
-
-#: lib/submenu/general.php:306
-msgid "Twitter Business @username"
 msgstr ""
 
 #: lib/submenu/general.php:311
@@ -721,18 +845,6 @@ msgstr ""
 
 #: lib/submenu/general.php:319
 msgid "<em>Large Image</em> Card Image Dimensions"
-msgstr ""
-
-#: lib/submenu/general.php:327
-msgid "Instagram Business URL"
-msgstr ""
-
-#: lib/submenu/general.php:331
-msgid "LinkedIn Company Page URL"
-msgstr ""
-
-#: lib/submenu/general.php:335
-msgid "MySpace Business (Brand) URL"
 msgstr ""
 
 #: lib/user.php:293
