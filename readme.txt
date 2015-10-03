@@ -366,6 +366,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Updated the text domain in preparation for plugin import to translate.wordpress.org.
 	* Added the translation function to all option labels in the settings pages and metaboxes.
+	* Updated the follow icons on WPSSO settings pages.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
