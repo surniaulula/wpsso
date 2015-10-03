@@ -713,9 +713,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'side-purchase':
 						$text = '<p>';
 						if ( $this->p->is_avail['aop'] )
-							$text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &mdash; allowing you to license and enable Pro version features within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
-						else $text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &mdash; allowing you to update the plugin within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
-						$text .= ' '.__( 'Pro version licenses do not expire &mdash; there are no yearly or recurring fees for updates and support.', 'wpsso' );
+							$text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &ndash; allowing you to license and enable Pro version features within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
+						else $text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &ndash; allowing you to update the plugin within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
+						$text .= ' '.__( 'Pro version licenses do not expire &ndash; there are no yearly or recurring fees for updates and support.', 'wpsso' );
 						$text .= '<p>';
 						break;
 					case 'side-help':

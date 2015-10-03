@@ -567,9 +567,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'follow' => array(
 				'size' => 32,
 				'src' => array(
+					'images/follow/Wordpress.png' => 'https://profiles.wordpress.org/jsmoriss/',
+					'images/follow/Github.png' => 'https://github.com/SurniaUlula',
 					'images/follow/Facebook.png' => 'https://www.facebook.com/SurniaUlulaCom',
 					'images/follow/GooglePlus.png' => 'https://plus.google.com/+SurniaUlula/',
-					'images/follow/Linkedin.png' => 'https://www.linkedin.com/in/jsmoriss',
+					'images/follow/Linkedin.png' => 'https://www.linkedin.com/company/surnia-ulula-ltd',
 					'images/follow/Twitter.png' => 'https://twitter.com/surniaululacom',
 					'images/follow/Youtube.png' => 'https://www.youtube.com/user/SurniaUlulaCom',
 					'images/follow/Rss.png' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-03 15:26:08+00:00\n"
+"POT-Creation-Date: 2015-10-03 22:11:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -691,19 +691,19 @@ msgstr ""
 
 #: lib/messages.php:716
 msgid ""
-"%s can be purchased quickly and easily via Paypal &mdash; allowing you to "
+"%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
 #: lib/messages.php:717
 msgid ""
-"%s can be purchased quickly and easily via Paypal &mdash; allowing you to "
+"%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
 #: lib/messages.php:718
 msgid ""
-"Pro version licenses do not expire &mdash; there are no yearly or recurring "
+"Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
