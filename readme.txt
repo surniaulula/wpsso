@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.10.2
+Stable Tag: 3.10.3
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -359,18 +359,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.10.3 =
+= Version 3.10.3 2015/10/04 =
 
 * **New Features**
 	* *None*
 * **Improvements**
+	* Added translations function calls to all option labels in settings pages and metaboxes.
 	* Updated the text domain in preparation for plugin import to translate.wordpress.org.
-	* Added the translation function to all option labels in the settings pages and metaboxes.
-	* Updated the follow icons on WPSSO settings pages.
+	* Updated the follow icons on SSO settings pages for high-resolution displays.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added a POT (Portable Object Template) file with translation strings in wpsso/languages/wpsso.pot.
+	* Added POT (Portable Object Template) file with translation strings in languages/wpsso.pot.
 
 = Version 3.10.2 2015/09/29 =
 
@@ -488,6 +488,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Refactored the WpssoMessages->get() method a slight speed improvement. Please note that 'wpsso_tooltip_\*' filters have been renamed to 'wpsso_messages_tooltip_\*' (adjust your filter hooks accordingly).
 
 == Upgrade Notice ==
+
+= 3.10.2 =
+
+2015/10/04 Added translation function calls to all option labels in settings pages and metaboxes. Added POT (Portable Object Template) file with translation strings in languages/nextgen-facebook.pot.
 
 = 3.10.2 =
 
