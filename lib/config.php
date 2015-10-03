@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.10.3-dev4',		// plugin version
+					'version' => '3.10.3',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -567,12 +567,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'follow' => array(
 				'size' => 32,
 				'src' => array(
-					'facebook.png' => 'https://www.facebook.com/SurniaUlulaCom',
-					'gplus.png' => 'https://plus.google.com/+SurniaUlula/',
-					'linkedin.png' => 'https://www.linkedin.com/in/jsmoriss',
-					'twitter.png' => 'https://twitter.com/surniaululacom',
-					'youtube.png' => 'https://www.youtube.com/user/SurniaUlulaCom',
-					'feed.png' => 'http://feed.wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
+					'images/follow/Facebook.png' => 'https://www.facebook.com/SurniaUlulaCom',
+					'images/follow/GooglePlus.png' => 'https://plus.google.com/+SurniaUlula/',
+					'images/follow/Linkedin.png' => 'https://www.linkedin.com/in/jsmoriss',
+					'images/follow/Twitter.png' => 'https://twitter.com/surniaululacom',
+					'images/follow/Youtube.png' => 'https://www.youtube.com/user/SurniaUlulaCom',
+					'images/follow/Rss.png' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
 				),
 			),
 			'form' => array(

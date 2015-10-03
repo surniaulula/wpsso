@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'seou' => 'SEO Ultimate',
 			),
 			'util' => array(
-				'um' => 'Update Manager',
+				'um' => 'Pro Update Manager',
 			),
 		);
 

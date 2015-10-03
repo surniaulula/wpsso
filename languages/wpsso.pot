@@ -2,10 +2,9 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3-"
-"dev4\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-02 09:28:49+00:00\n"
+"POT-Creation-Date: 2015-10-03 15:23:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -105,158 +104,205 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:657
+#: lib/admin.php:656
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:659
+#: lib/admin.php:658
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:661
+#: lib/admin.php:660
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:665
+#: lib/admin.php:664
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:801
+#: lib/admin.php:752
+msgid ""
+"If the %1$s plugin is detected, %2$s will load additional integration "
+"modules to provide enhanced support and features for %3$s."
+msgstr ""
+
+#: lib/admin.php:805 lib/admin.php:960 lib/admin.php:961
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:802
+#: lib/admin.php:806
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:850
+#: lib/admin.php:821
+msgid ""
+"Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
+msgstr ""
+
+#: lib/admin.php:824
+msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
+msgstr ""
+
+#: lib/admin.php:829
+msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
+msgstr ""
+
+#: lib/admin.php:832
+msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
+msgstr ""
+
+#: lib/admin.php:837
+msgid "Support"
+msgstr ""
+
+#: lib/admin.php:855 lib/messages.php:722
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:861
+#: lib/admin.php:866
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:865
+#: lib/admin.php:870
 msgid "Check for Update(s)"
 msgstr ""
 
-#: lib/admin.php:871
+#: lib/admin.php:876
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:876
+#: lib/admin.php:881
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:990 lib/admin.php:997 lib/admin.php:1018 lib/admin.php:1024
+#: lib/admin.php:916
+msgid "View Plugin Details"
+msgstr ""
+
+#: lib/admin.php:936
+msgid "View Plugin Details + Update"
+msgstr ""
+
+#: lib/admin.php:942
+msgid "View Plugin Details + Install"
+msgstr ""
+
+#: lib/admin.php:948
+msgid "Plugin Description Page"
+msgstr ""
+
+#: lib/admin.php:953
+msgid "Download the Latest Version"
+msgstr ""
+
+#: lib/admin.php:1001 lib/admin.php:1008 lib/admin.php:1029 lib/admin.php:1035
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:993 lib/gpl/admin/advanced.php:361
+#: lib/admin.php:1004 lib/gpl/admin/advanced.php:361
 #: lib/pro/admin/advanced.php:346 lib/sitesubmenu/siteadvanced.php:63
 #: lib/sitesubmenu/siteadvanced.php:69
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1052
+#: lib/admin.php:1062
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1062
+#: lib/admin.php:1072
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1062 lib/admin.php:1066
+#: lib/admin.php:1072 lib/admin.php:1076
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1066
+#: lib/admin.php:1076
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1076
+#: lib/admin.php:1086
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1084
+#: lib/admin.php:1094
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1089
+#: lib/admin.php:1099
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
 "option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1094
+#: lib/admin.php:1104
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
 "href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1105
+#: lib/admin.php:1115
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate plugin Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1116
+#: lib/admin.php:1126
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1121
+#: lib/admin.php:1131
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
-"<strong>JetPack's Photon module cripples the WordPress image size functions "
-"on purpose</strong>."
+"JetPack's Photon module cripples the WordPress image size functions on "
+"purpose."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1141
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1141
+#: lib/admin.php:1151
 msgid ""
-"<strong>WooCommerce does not include shortcode support in the admin "
-"interface</strong> (required by WordPress for its content filters)."
+"WooCommerce does not include shortcode support in the admin interface</"
+"strong> (required by WordPress for its content filters)."
 msgstr ""
 
-#: lib/admin.php:1141
+#: lib/admin.php:1151
 msgid ""
 "Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
 "<a href=\"%s\">%s Advanced settings page</a>."
 msgstr ""
 
-#: lib/admin.php:1141
+#: lib/admin.php:1151
 msgid ""
-"You may also upgrade to the <a href=\"%1$s\">%2$s version</a> that includes "
+"You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
 "(shortcodes, products, categories, tags, images, etc.)."
 msgstr ""
@@ -574,20 +620,103 @@ msgid ""
 "websites, in the Social Settings metabox under the Priority Media tab."
 msgstr ""
 
-#: lib/messages.php:664
+#: lib/messages.php:663
 msgid ""
 "Purchase %s licence(s) to modify the following options and install / enable "
 "Pro modules"
 msgstr ""
 
-#: lib/messages.php:667
+#: lib/messages.php:664
 msgid ""
 "Purchase the %s plugin to modify the following options and install / enable "
 "Pro modules"
 msgstr ""
 
-#: lib/messages.php:672
+#: lib/messages.php:667
 msgid "%s required to use this option"
+msgstr ""
+
+#: lib/messages.php:671
+msgid "The %s Authentication ID option is empty."
+msgstr ""
+
+#: lib/messages.php:671
+msgid ""
+"To enable Pro version features and allow the plugin to authenticate itself "
+"for updates, please enter the unique Authentication ID you received by email "
+"on the <a href=\"%s\">Pro Licenses settings page</a>."
+msgstr ""
+
+#: lib/messages.php:674
+msgid ""
+"An Authentication ID has been entered for %s, but the Pro version is not yet "
+"installed &ndash; don't forget to update this plugin to install the latest "
+"Pro version."
+msgstr ""
+
+#: lib/messages.php:684
+msgid ""
+"One or more Authentication IDs have been entered on the <a href=\"%1$s\">Pro "
+"Licenses settings page</a>, but the <strong>%2$s</strong> plugin is not "
+"active."
+msgstr ""
+
+#: lib/messages.php:687
+msgid ""
+"This <strong>Free extension</strong> is required to update and enable the %s "
+"plugin and its extensions."
+msgstr ""
+
+#: lib/messages.php:688
+msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
+msgstr ""
+
+#: lib/messages.php:689
+msgid ""
+"Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
+"plugin upload page."
+msgstr ""
+
+#: lib/messages.php:692
+msgid ""
+"Once the %s extension has been activated, one or more Pro version updates "
+"may be available for your licensed plugin(s)."
+msgstr ""
+
+#: lib/messages.php:693
+msgid ""
+"Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
+"plugin</a>."
+msgstr ""
+
+#: lib/messages.php:716
+msgid ""
+"%s can be purchased quickly and easily via Paypal &mdash; allowing you to "
+"license and enable Pro version features within seconds of your purchase."
+msgstr ""
+
+#: lib/messages.php:717
+msgid ""
+"%s can be purchased quickly and easily via Paypal &mdash; allowing you to "
+"update the plugin within seconds of your purchase."
+msgstr ""
+
+#: lib/messages.php:718
+msgid ""
+"Pro version licenses do not expire &mdash; there are no yearly or recurring "
+"fees for updates and support."
+msgstr ""
+
+#: lib/messages.php:723
+msgid ""
+"Metaboxes (like this one) can be opened / closed by clicking on their title "
+"bar, moved and re-ordered by dragging them, or removed / added from the "
+"<em>Screen Options</em> tab (top-right of page)."
+msgstr ""
+
+#: lib/messages.php:723
+msgid ""
+"Settings in multiple tabs can be edited before clicking the '%s' button."
 msgstr ""
 
 #: lib/meta.php:86
@@ -869,6 +998,19 @@ msgstr ""
 
 #: lib/util.php:249
 msgid "ZenCache has been cleared as well."
+msgstr ""
+
+#: wpsso.php:221
+msgid ""
+"HTML debug mode is active &ndash; transient cache use could not be disabled."
+msgstr ""
+
+#: wpsso.php:222
+msgid "HTML debug mode is active &ndash; transient cache use is disabled."
+msgstr ""
+
+#: wpsso.php:223
+msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

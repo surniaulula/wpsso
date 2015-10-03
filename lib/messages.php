@@ -598,13 +598,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
 						break;
 					case 'info-plugin-tid':
-						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+						$text = '<blockquote class="top-info">
 						<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to check for Pro version updates immediately and every 24 hours thereafter.</p>
 						<p><strong>'.$atts['name'].' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$atts['short'].' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version. ;-)</p>
 						</blockquote>';
 						break;
 					case 'info-plugin-tid-network':
-						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+						$text = '<blockquote class="top-info">
 						<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to define default/forced a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>.</p>
 						</blockquote>';
 						break;
@@ -619,7 +619,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						</blockquote>';
 						break;
 					case 'info-pub-twitter':
-						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+						$text = '<blockquote class="top-info">
 						<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. '.$atts['short'].' continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card.</p>
 						</blockquote>';
 						break;
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						</blockquote>';
 						break;
 					case 'info-sharing-include':
-						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
+						$text = '<blockquote class="top-info">
 						<p>The buttons enabled bellow (along with those in the widget) can be included or excluded from specific webpage types. This does <em>not</em> apply to the shortcode and function buttons, which are displayed (or not) based on their own parameter options.</p>
 						</blockquote>';
 						break;
@@ -660,28 +660,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-							sprintf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules',
-								'wpsso' ), $atts['short_pro'] ).'</a></p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-							sprintf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules',
-								'wpsso' ), $atts['short_pro'] ).'</a></p>';
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
-						sprintf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-activate-msg':
-						if ( ! is_multisite() ) {
-							$text = '<strong>The '.$atts['name'].' Authentication ID option is empty.</strong><br/>
-							To enable Pro version features and allow the plugin to authenticate itself for 
-							updates, please enter the unique Authentication ID you received by email on the '.
-							$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).'.';
-						}
+						if ( ! is_multisite() )
+							$text = '<strong>'.sprintf( __( 'The %s Authentication ID option is empty.', 'wpsso' ), $atts['name'] ).'</strong><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) );
 						break;
 					case 'pro-not-installed':
-						$text = 'An Authentication ID has been entered for '.$atts['name'].', but the Pro version is not yet 
-						installed &ndash; don\'t forget to update this plugin to install the latest Pro version.';
+						$text = sprintf( __( 'An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don\'t forget to update this plugin to install the latest Pro version.', 'wpsso' ), $atts['name'] );
 						break;
 					case 'pro-um-extension-required':
 					case 'pro-um-activate-extension':
@@ -690,22 +680,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
 						$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
 						$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
-						$text = '<p>At least one Authentication ID has been entered on the '.
-						$this->p->util->get_admin_url( 'licenses', 'Pro Licenses settings page' ).
-						', but the <strong>'.$um_name.'</strong> plugin is not active. ';
+
+						$text = '<p>'.sprintf( __( 'One or more Authentication IDs have been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the <strong>%2$s</strong> plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).' ';
+
 						if ( $idx === 'pro-um-extension-required' ) {
-							$text .= 'This <strong>free extension</strong> is required to update 
-							and enable the '.$atts['name_pro'].' plugin and its extensions.</p>
-							<ol>
-							<li><strong>Download the free <a href="'.$um_latest.'">'.$um_name.' plugin archive</a>
-								(zip file).</strong>
-							<li><strong>Then <a href="'.$upload_url.'">upload and activate the plugin</a>
-								on the WordPress plugin upload page</strong>.</li>
-							</ol><p>';
-						}
-						$text .= 'Once this '.$atts['short'].' extension has been activated, one or more Pro version updates 
-						may be available for your licensed plugin(s). Read more <a href="'.$um_dl.'" 
-						target="_blank">about the '.$um_name.' extension plugin</a>.</p>';
+							$text .= sprintf( __( 'This <strong>Free extension</strong> is required to update and enable the %s plugin and its extensions.', 'wpsso' ), $atts['name_pro'] ).'</p>';
+							$text .= '<ol><li><strong>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</strong></li>';
+							$text .= '<li><strong>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</strong></li></ol>';
+						} else $text .= '</p>';
+
+						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_name ).'</p>';
+						$text .= '<p>'.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_dl, $um_name ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $atts );
@@ -726,10 +711,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'side-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'side-purchase':
-						$text = '<p>'.$atts['short_pro'].' can be purchased quickly and easily via Paypal &ndash; and '.( $this->p->is_avail['aop'] == true ? 'licensed' : 'installed' ).' immediately following your purchase. Pro version licenses do not expire and there are no recurring or yearly fees for updates and support.';
+						$text = '<p>';
+						if ( $this->p->is_avail['aop'] )
+							$text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &mdash; allowing you to license and enable Pro version features within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
+						else $text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &mdash; allowing you to update the plugin within seconds of your purchase.', 'wpsso' ), $atts['short_pro'] );
+						$text .= ' '.__( 'Pro version licenses do not expire &mdash; there are no yearly or recurring fees for updates and support.', 'wpsso' );
+						$text .= '<p>';
 						break;
 					case 'side-help':
-						$text = '<p>Individual option boxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, and removed / added from the <em>Screen Options</em> tab (top-right). Values in multiple tabs can be edited before clicking the \'Save All Changes\' button.</p>';
+						$submit_text = __( 'Save All Plugin Settings', 'wpsso' );
+						$text = '<p>'.sprintf( __( 'Metaboxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, or removed / added from the <em>Screen Options</em> tab (top-right of page).', 'wpsso' ).' '.__( 'Settings in multiple tabs can be edited before clicking the \'%s\' button.', 'wpsso' ), $submit_text ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $atts );

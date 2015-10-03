@@ -12,7 +12,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.1
  * Tested Up To: 4.3.1
- * Version: 3.10.3-dev4
+ * Version: 3.10.3
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -180,7 +180,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				! empty( $_GET['action'] ) && $_GET['action'] == 'activate-plugin' &&
 				! empty( $_GET['plugin'] ) && $_GET['plugin'] == WPSSO_PLUGINBASE ) ) {
 				if ( $this->debug->enabled )
-					$this->debug->log( 'exiting early: init_plugin() hook will follow' );
+					$this->debug->log( 'exiting early: init_plugin hook will follow' );
 				return;
 			}
 
@@ -188,6 +188,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * check and upgrade options if necessary
 			 */
 			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options );
+
 			if ( is_multisite() )
 				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, 
 					$this->site_options, true );
@@ -196,9 +197,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * configure class properties based on plugin settings
 			 */
 			$this->cache->default_object_expire = $this->options['plugin_object_cache_exp'];
+
 			$this->cache->default_file_expire = ( $this->check->aop() ? 
 				( $this->debug->is_enabled( 'wp' ) ? 
-					WPSSO_DEBUG_FILE_EXP : $this->options['plugin_file_cache_exp'] ) : 0 );
+					WPSSO_DEBUG_FILE_EXP : 
+					$this->options['plugin_file_cache_exp'] ) : 0 );
+
 			$this->is_avail['cache']['file'] = $this->cache->default_file_expire > 0 ? true : false;
 
 			// disable the transient cache if html debug mode is on
@@ -207,15 +211,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->is_avail['cache']['transient'] = defined( 'WPSSO_TRANSIENT_CACHE_DISABLE' ) && 
 					! WPSSO_TRANSIENT_CACHE_DISABLE ? true : false;
 
-				$cache_status = 'transient cache use '.
-					( $this->is_avail['cache']['transient'] ?
-						'could not be' : 'is' ).' disabled';
-
 				if ( $this->debug->enabled )
-					$this->debug->log( 'html debug mode is active: '.$cache_status );
+					$this->debug->log( 'html debug mode is active: transient cache use '.
+						( $this->is_avail['cache']['transient'] ? 'could not be' : 'is' ).' disabled' );
 
-				$this->notice->inf( 'HTML debug mode is active &ndash; '.$cache_status.
-					' and informational messages are being added as hidden HTML comments.' );
+				if ( is_admin() )
+					// text_domain is already loaded by the NgfbAdmin class construct
+					$this->notice->inf( ( $this->is_avail['cache']['transient'] ?
+						__( 'HTML debug mode is active &ndash; transient cache use could not be disabled.', 'wpsso' ) :
+						__( 'HTML debug mode is active &ndash; transient cache use is disabled.', 'wpsso' ) ).' '.
+						__( 'Informational debug messages are being added as hidden HTML comments.', 'wpsso' ) );
 			}
 		}
 
