@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-04 12:33:44+00:00\n"
+"POT-Creation-Date: 2015-10-04 14:32:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,12 +32,12 @@ msgstr ""
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:361
-msgid "Purchase License"
+#: lib/admin.php:361 lib/admin.php:821 lib/admin.php:976 lib/admin.php:977
+msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:363
-msgid "Purchase Pro"
+#: lib/admin.php:363 lib/admin.php:822
+msgid "Purchase Pro Version"
 msgstr ""
 
 #: lib/admin.php:376
@@ -81,230 +81,227 @@ msgid "Hidden notices for user \"%s\" have been cleared."
 msgstr ""
 
 #: lib/admin.php:491
-msgid "Pro Version"
+msgctxt "side metabox title"
+msgid "Pro / Power-User Version"
 msgstr ""
 
-#: lib/admin.php:499
+#: lib/admin.php:500
+msgctxt "side metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/admin.php:502
-msgid "Basic / Common Features"
-msgstr ""
-
-#: lib/admin.php:505
-msgid "Pro Version Features"
+#: lib/admin.php:504
+msgctxt "side metabox title"
+msgid "Free / Basic Features"
 msgstr ""
 
 #: lib/admin.php:508
+msgctxt "side metabox title"
+msgid "Pro Version Features"
+msgstr ""
+
+#: lib/admin.php:512
+msgctxt "side metabox title"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/admin.php:640 lib/admin.php:641
+#: lib/admin.php:645 lib/admin.php:646
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:663
+#: lib/admin.php:668
 msgctxt "plugin status label followed by version number"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:666
+#: lib/admin.php:671
 msgctxt "plugin status label followed by version number"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:669
+#: lib/admin.php:674
 msgctxt "plugin status label followed by version number"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:674
+#: lib/admin.php:679
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:763
+#: lib/admin.php:768
 msgid ""
 "If the %1$s plugin is detected, %2$s will load additional integration "
 "modules to provide enhanced support and features for %3$s."
 msgstr ""
 
-#: lib/admin.php:816 lib/admin.php:971 lib/admin.php:972
-msgid "Purchase Pro License(s)"
-msgstr ""
-
-#: lib/admin.php:817
-msgid "Purchase Pro Version"
-msgstr ""
-
-#: lib/admin.php:832
+#: lib/admin.php:837
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:835
+#: lib/admin.php:840
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:840
+#: lib/admin.php:845
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:843
+#: lib/admin.php:848
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:848
+#: lib/admin.php:853
 msgid "Support"
 msgstr ""
 
-#: lib/admin.php:866 lib/messages.php:722
+#: lib/admin.php:871 lib/messages.php:722
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:877
+#: lib/admin.php:882
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:881
+#: lib/admin.php:886
 msgid "Check for Update(s)"
 msgstr ""
 
-#: lib/admin.php:887
+#: lib/admin.php:892
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:892
+#: lib/admin.php:897
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:927
+#: lib/admin.php:932
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:947
+#: lib/admin.php:952
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:953
+#: lib/admin.php:958
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:959
+#: lib/admin.php:964
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:964
+#: lib/admin.php:969
 msgid "Download the Latest Version"
 msgstr ""
 
-#: lib/admin.php:1012 lib/admin.php:1019 lib/admin.php:1040 lib/admin.php:1046
+#: lib/admin.php:1017 lib/admin.php:1024 lib/admin.php:1045 lib/admin.php:1051
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1015 lib/gpl/admin/advanced.php:361
+#: lib/admin.php:1020 lib/gpl/admin/advanced.php:361
 #: lib/pro/admin/advanced.php:346 lib/sitesubmenu/siteadvanced.php:63
 #: lib/sitesubmenu/siteadvanced.php:69
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1073
+#: lib/admin.php:1078
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1083
+#: lib/admin.php:1088
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1083 lib/admin.php:1087
+#: lib/admin.php:1088 lib/admin.php:1092
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1087
+#: lib/admin.php:1092
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1097
+#: lib/admin.php:1102
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1105
+#: lib/admin.php:1110
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
 "the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1110
+#: lib/admin.php:1115
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
 "option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1120
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
 "href=\"%s\">Yoast SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1126
+#: lib/admin.php:1131
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate plugin Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1137
+#: lib/admin.php:1142
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1142
+#: lib/admin.php:1147
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1152
+#: lib/admin.php:1157
 msgid ""
 "JetPack's Photon module cripples the WordPress image size functions on "
 "purpose."
 msgstr ""
 
-#: lib/admin.php:1152
+#: lib/admin.php:1157
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1152
+#: lib/admin.php:1157
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1162
+#: lib/admin.php:1167
 msgid ""
 "WooCommerce does not include shortcode support in the admin interface</"
 "strong> (required by WordPress for its content filters)."
 msgstr ""
 
-#: lib/admin.php:1162
+#: lib/admin.php:1167
 msgid ""
 "Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
 "<a href=\"%s\">%s Advanced settings page</a>."
 msgstr ""
 
-#: lib/admin.php:1162
+#: lib/admin.php:1167
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
@@ -352,7 +349,7 @@ msgid "Enable WP Tags for Pages"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:100 lib/pro/admin/advanced.php:100
-msgid "Use Filtered (SEO) Titles"
+msgid "Use Filtered (SEO) Title"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:104 lib/pro/admin/advanced.php:104
@@ -756,27 +753,33 @@ msgstr ""
 msgid "Social Desc"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:116
+#: lib/pro/forum/bbpress.php:69 lib/pro/forum/bbpress.php:117
+msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:121
+#: lib/pro/forum/bbpress.php:123
+msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:124
+#: lib/pro/forum/bbpress.php:127
+msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:127
+#: lib/pro/forum/bbpress.php:131
+msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:130
+#: lib/pro/forum/bbpress.php:135
+msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:133
+#: lib/pro/forum/bbpress.php:139
+msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
@@ -849,11 +852,11 @@ msgid "Title Separator"
 msgstr ""
 
 #: lib/submenu/general.php:97
-msgid "Title Length"
+msgid "Maximum Title Length"
 msgstr ""
 
-#: lib/submenu/general.php:102
-msgid "Description Length"
+#: lib/submenu/general.php:102 lib/submenu/general.php:311
+msgid "Maximum Description Length"
 msgstr ""
 
 #: lib/submenu/general.php:106
@@ -966,10 +969,6 @@ msgstr ""
 
 #: lib/submenu/general.php:295
 msgid "Website Verification ID"
-msgstr ""
-
-#: lib/submenu/general.php:311
-msgid "Maximum Description Length"
 msgstr ""
 
 #: lib/submenu/general.php:315

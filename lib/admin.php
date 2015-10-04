@@ -358,9 +358,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info['url']['purchase'] ) ) {
 					if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
 						$links[] = '<a href="'.$info['url']['purchase'].'">'.
-							__( 'Purchase License', 'wpsso' ).'</a>';
+							__( 'Purchase Pro License(s)', 'wpsso' ).'</a>';
 					else $links[] = '<a href="'.$info['url']['purchase'].'">'.
-						__( 'Purchase Pro', 'wpsso' ).'</a>';
+						__( 'Purchase Pro Version', 'wpsso' ).'</a>';
 				}
 			}
 
@@ -488,7 +488,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) || 
 				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 
-				add_meta_box( $this->pagehook.'_purchase', __( 'Pro Version', 'wpsso' ), 
+				add_meta_box( $this->pagehook.'_purchase', _x( 'Pro / Power-User Version', 
+					'side metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 				add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_purchase', 
 					array( &$this, 'add_class_postbox_highlight_side' ) );
@@ -496,16 +497,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( 'purchase' ), null, 'side', true );
 			}
 
-			add_meta_box( $this->pagehook.'_info', __( 'Version Information', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_info', _x( 'Version Information', 
+				'side metabox title', 'wpsso' ), 
 				array( &$this, 'show_metabox_info' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_status_gpl', __( 'Basic / Common Features', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_status_gpl', _x( 'Free / Basic Features',
+				'side metabox title', 'wpsso' ), 
 				array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_status_pro', __( 'Pro Version Features', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_status_pro', _x( 'Pro Version Features',
+				'side metabox title', 'wpsso' ), 
 				array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_help', __( 'Help and Support', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_help', _x( 'Help and Support',
+				'side metabox title', 'wpsso' ), 
 				array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
 
 		}

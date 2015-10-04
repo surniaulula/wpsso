@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'Use Filtered (SEO) Titles',
+			$rows[] = $this->p->util->get_th( __( 'Use Filtered (SEO) Title',
 				'wpsso' ), 'highlight', 'plugin_filter_title' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'plugin_filter_title' ).'</td>';
 			

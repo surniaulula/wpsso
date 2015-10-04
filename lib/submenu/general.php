@@ -94,12 +94,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'og_title_sep', 'short' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Title Length',
+					$this->p->util->get_th( __( 'Maximum Title Length',
 						'wpsso' ), null, 'og_title_len' ).
 					'<td>'.$this->form->get_input( 'og_title_len', 'short' ).' characters or less</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Description Length',
+					$this->p->util->get_th( __( 'Maximum Description Length',
 						'wpsso' ), null, 'og_desc_len' ).
 					'<td>'.$this->form->get_input( 'og_desc_len', 'short' ).' characters or less</td>';
 
