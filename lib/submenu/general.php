@@ -21,10 +21,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_opengraph', 'All Social Websites / Open Graph',
-				array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
-			add_meta_box( $this->pagehook.'_publishers', 'Specific Websites and Publishers',
-				array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_opengraph', _x( 'All Social Websites / Open Graph',
+				'normal metabox title', 'wpsso' ), 
+					array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
+
+			add_meta_box( $this->pagehook.'_publishers', _x( 'Specific Websites and Publishers',
+				'normal metabox title', 'wpsso' ), 
+					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
 			$this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph' );
@@ -33,11 +36,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_opengraph() {
 			$metabox = 'og';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'general' => 'Site Information',
-				'content' => 'Title / Description',
-				'author' => 'Authorship',
-				'images' => 'Images',
-				'videos' => 'Videos',
+				'general' => _x( 'Site Information', 'normal metabox tab', 'wpsso' ),
+				'content' => _x( 'Title / Description', 'normal metabox tab', 'wpsso' ),
+				'author' => _x( 'Authorship', 'normal metabox tab', 'wpsso' ),
+				'images' => _x( 'Images', 'normal metabox tab', 'wpsso' ),
+				'videos' => _x( 'Videos', 'normal metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
@@ -49,11 +52,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_publishers() {
 			$metabox = 'pub';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'facebook' => 'Facebook',
-				'google' => 'Google / Schema',
-				'pinterest' => 'Pinterest',
-				'twitter' => 'Twitter',
-				'other' => 'Others',
+				'facebook' => _x( 'Facebook', 'normal metabox tab', 'wpsso' ),
+				'google' => _x( 'Google / Schema', 'normal metabox tab', 'wpsso' ),
+				'pinterest' => _x( 'Pinterest', 'normal metabox tab', 'wpsso' ),
+				'twitter' => _x( 'Twitter', 'normal metabox tab', 'wpsso' ),
+				'other' => _x( 'Others', 'normal metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )

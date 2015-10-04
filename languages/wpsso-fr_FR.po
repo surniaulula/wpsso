@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-04 10:10-0400\n"
-"PO-Revision-Date: 2015-10-04 10:18-0400\n"
+"POT-Creation-Date: 2015-10-04 12:42-0400\n"
+"PO-Revision-Date: 2015-10-04 13:05-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,32 +16,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: lib/admin.php:339
+msgctxt "plugin action link"
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: lib/admin.php:343
+msgctxt "plugin action link"
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: lib/admin.php:347
+msgctxt "plugin action link"
 msgid "Download Latest"
-msgstr ""
+msgstr "Téléchargez dernière version"
 
 #: lib/admin.php:352
+msgctxt "plugin action link"
 msgid "Pro Support"
-msgstr ""
+msgstr "Soutien Pro"
 
 #: lib/admin.php:356
+msgctxt "plugin action link"
 msgid "Support Forum"
-msgstr ""
+msgstr "Forum d’aide"
 
-#: lib/admin.php:361 lib/admin.php:821 lib/admin.php:976 lib/admin.php:977
+#: lib/admin.php:361
+msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
-msgstr ""
+msgstr "Achetez licence(s) Pro"
 
-#: lib/admin.php:363 lib/admin.php:822
+#: lib/admin.php:363
+msgctxt "plugin action link"
 msgid "Purchase Pro Version"
-msgstr ""
+msgstr "Achetez version Pro"
 
 #: lib/admin.php:376
 msgid "Submitted options are not an array."
@@ -84,214 +91,222 @@ msgctxt "side metabox title"
 msgid "Pro / Power-User Version"
 msgstr "Version Pro /  Avancé"
 
-#: lib/admin.php:500
+#: lib/admin.php:502
 msgctxt "side metabox title"
 msgid "Version Information"
 msgstr "Information de Version"
 
-#: lib/admin.php:504
+#: lib/admin.php:506
 msgctxt "side metabox title"
 msgid "Free / Basic Features"
 msgstr "Fonctionnalités de Base"
 
-#: lib/admin.php:508
+#: lib/admin.php:510
 msgctxt "side metabox title"
 msgid "Pro Version Features"
 msgstr "Attributs Version Pro"
 
-#: lib/admin.php:512
+#: lib/admin.php:514
 msgctxt "side metabox title"
 msgid "Help and Support"
 msgstr "Assistance et Soutien"
 
-#: lib/admin.php:645 lib/admin.php:646
+#: lib/admin.php:647 lib/admin.php:648
 msgid "N/A"
 msgstr "Indispo."
 
-#: lib/admin.php:668
+#: lib/admin.php:670
 msgctxt "plugin status label followed by version number"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:671
+#: lib/admin.php:673
 msgctxt "plugin status label followed by version number"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:674
+#: lib/admin.php:676
 msgctxt "plugin status label followed by version number"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:679
+#: lib/admin.php:681
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
-msgstr "Voir le changelog %s…"
+msgstr "Voir changelog %s…"
 
-#: lib/admin.php:768
+#: lib/admin.php:770
 msgid ""
 "If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support "
 "and features for %3$s."
 msgstr ""
 
-#: lib/admin.php:837
+#: lib/admin.php:823 lib/admin.php:978 lib/admin.php:979
+msgid "Purchase Pro License(s)"
+msgstr "Achetez licence(s) Pro"
+
+#: lib/admin.php:824
+msgid "Purchase Pro Version"
+msgstr "Achetez version Pro"
+
+#: lib/admin.php:839
 msgid "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:840
+#: lib/admin.php:842
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:845
+#: lib/admin.php:847
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:848
+#: lib/admin.php:850
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:853
+#: lib/admin.php:855
 msgid "Support"
-msgstr ""
+msgstr "Support"
 
-#: lib/admin.php:871 lib/messages.php:722
+#: lib/admin.php:873 lib/messages.php:722
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:882
+#: lib/admin.php:884
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:886
+#: lib/admin.php:888
 msgid "Check for Update(s)"
 msgstr ""
 
-#: lib/admin.php:892
+#: lib/admin.php:894
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:897
+#: lib/admin.php:899
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:932
+#: lib/admin.php:934
 msgid "View Plugin Details"
 msgstr "Afficher les détails"
 
-#: lib/admin.php:952
+#: lib/admin.php:954
 msgid "View Plugin Details + Update"
 msgstr "Afficher les détails + mise à jour"
 
-#: lib/admin.php:958
+#: lib/admin.php:960
 msgid "View Plugin Details + Install"
 msgstr "Afficher les détails + installer"
 
-#: lib/admin.php:964
+#: lib/admin.php:966
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:969
-msgid "Download the Latest Version"
-msgstr "Téléchargez la dernière version"
+#: lib/admin.php:971
+msgid "Download Latest Version"
+msgstr "Téléchargez dernière version"
 
-#: lib/admin.php:1017 lib/admin.php:1024 lib/admin.php:1045 lib/admin.php:1051
+#: lib/admin.php:1019 lib/admin.php:1026 lib/admin.php:1047 lib/admin.php:1053
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
 
-#: lib/admin.php:1020 lib/gpl/admin/advanced.php:361 lib/pro/admin/advanced.php:346
-#: lib/sitesubmenu/siteadvanced.php:63 lib/sitesubmenu/siteadvanced.php:69
+#: lib/admin.php:1022 lib/gpl/admin/advanced.php:361 lib/pro/admin/advanced.php:346
+#: lib/sitesubmenu/siteadvanced.php:64 lib/sitesubmenu/siteadvanced.php:70
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:1078
+#: lib/admin.php:1080
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1088
+#: lib/admin.php:1090
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank\">Client URL Library</a> (cURL) is "
 "missing."
 msgstr ""
 
-#: lib/admin.php:1088 lib/admin.php:1092
+#: lib/admin.php:1090 lib/admin.php:1094
 msgid "Please contact your hosting provider to have the missing cURL library files installed."
 msgstr ""
 
-#: lib/admin.php:1092
+#: lib/admin.php:1094
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target=\"_blank\">Client URL Library</a> "
 "(cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1102
+#: lib/admin.php:1104
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in the <a href=\"%s\">Yoast SEO: "
 "Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1110
+#: lib/admin.php:1112
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in the <a href=\"%s\">Yoast SEO: "
 "Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1117
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ option in the <a href=\"%s\">Yoast "
 "SEO: Social</a> settings."
 msgstr ""
 
-#: lib/admin.php:1120
+#: lib/admin.php:1122
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered in the <a href=\"%s\">Yoast SEO: Social</a> "
 "settings."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1133
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%s\">SEO Ultimate plugin Module "
 "Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1142
+#: lib/admin.php:1144
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s\">All in One SEO Pack Feature "
 "Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1147
+#: lib/admin.php:1149
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a href=\"%s\">All in One SEO Pack "
 "Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1157
+#: lib/admin.php:1159
 msgid "JetPack's Photon module cripples the WordPress image size functions on purpose."
 msgstr ""
 
-#: lib/admin.php:1157
+#: lib/admin.php:1159
 msgid "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1157
+#: lib/admin.php:1159
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes an <a href=\"%3$s\">integration "
 "module for JetPack Photon</a> to re-enable image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1167
+#: lib/admin.php:1169
 msgid ""
 "WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for "
 "its content filters)."
 msgstr ""
 
-#: lib/admin.php:1167
+#: lib/admin.php:1169
 msgid ""
 "Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the <a href=\"%s\">%s Advanced "
 "settings page</a>."
 msgstr ""
 
-#: lib/admin.php:1167
+#: lib/admin.php:1169
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes an <a href=\"%3$s\">integration "
 "module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.)."
@@ -299,7 +314,7 @@ msgstr ""
 
 #: lib/com/script.php:71
 msgid "Use Image"
-msgstr ""
+msgstr "Utiliser l’image"
 
 #: lib/gpl/admin/advanced.php:35 lib/pro/admin/advanced.php:38
 msgid "Options to Show by Default"
@@ -323,11 +338,11 @@ msgstr "Vérifier dimensions des images"
 
 #: lib/gpl/admin/advanced.php:66 lib/pro/admin/advanced.php:69
 msgid "Enable Plugin Shortcode(s)"
-msgstr ""
+msgstr "Activer le/les Shortcode(s)"
 
 #: lib/gpl/admin/advanced.php:74 lib/pro/admin/advanced.php:77
 msgid "Enable Plugin Widget(s)"
-msgstr ""
+msgstr "Activer le/les Widget(s)"
 
 #: lib/gpl/admin/advanced.php:81 lib/pro/admin/advanced.php:84
 msgid "Enable WP Excerpt for Pages"
@@ -507,7 +522,7 @@ msgstr ""
 #: lib/gpl/admin/post.php:81 lib/gpl/admin/post.php:86 lib/gpl/admin/taxonomy.php:48 lib/gpl/admin/user.php:49
 #: lib/pro/admin/post.php:93 lib/pro/admin/post.php:98 lib/pro/admin/taxonomy.php:57 lib/pro/admin/user.php:57
 msgid "Twitter Card Description"
-msgstr ""
+msgstr "Description carte Twitter"
 
 #: lib/gpl/admin/post.php:93 lib/gpl/admin/post.php:98 lib/gpl/admin/taxonomy.php:54 lib/gpl/admin/user.php:55
 #: lib/pro/admin/post.php:106 lib/pro/admin/post.php:111 lib/pro/admin/taxonomy.php:64
@@ -518,7 +533,7 @@ msgstr ""
 #: lib/gpl/admin/post.php:112 lib/gpl/admin/taxonomy.php:67 lib/gpl/admin/user.php:68
 #: lib/pro/admin/post.php:122 lib/pro/admin/taxonomy.php:75 lib/pro/admin/user.php:75
 msgid "All Social Websites / Open Graph"
-msgstr ""
+msgstr "Tous Sites Sociaux / Open Graph"
 
 #: lib/gpl/admin/post.php:116 lib/gpl/admin/post.php:155 lib/gpl/admin/taxonomy.php:71
 #: lib/gpl/admin/taxonomy.php:110 lib/gpl/admin/user.php:72 lib/gpl/admin/user.php:111
@@ -679,7 +694,7 @@ msgstr ""
 
 #: lib/meta.php:125
 msgid "Facebook Debugger"
-msgstr ""
+msgstr "Débogueur Facebook"
 
 #: lib/meta.php:129
 msgid "Google Structured Data Testing Tool"
@@ -691,7 +706,7 @@ msgstr ""
 
 #: lib/meta.php:137
 msgid "Twitter Card Validator"
-msgstr ""
+msgstr "Vérificateur de carte Twitter"
 
 #: lib/meta.php:237
 msgid "Nonce token validation for the submitted form has failed (update ignored)."
@@ -735,201 +750,366 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:52
-msgid "Facebook / Open Graph"
-msgstr ""
+#: lib/setting/contact-fields.php:24 lib/submenu/advanced.php:28
+msgctxt "normal metabox title"
+msgid "Contact Field Names and Labels"
+msgstr "Nom et En-tête des Champs Contacts"
 
-#: lib/setting/image-dimensions.php:56
+#: lib/setting/image-dimensions.php:24
+msgctxt "normal metabox title"
+msgid "Social Image Dimensions"
+msgstr "Dimensions des Images Sociaux"
+
+#: lib/setting/image-dimensions.php:53
+msgid "Facebook / Open Graph"
+msgstr "Facebook / Open Graph"
+
+#: lib/setting/image-dimensions.php:57
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:60
+#: lib/setting/image-dimensions.php:61
 msgid "Twitter <em>Summary</em> Card"
-msgstr ""
+msgstr "Carte Twitter <em>sommaire</em>"
 
-#: lib/setting/image-dimensions.php:64
+#: lib/setting/image-dimensions.php:65
 msgid "Twitter <em>Large Image Summary</em> Card"
-msgstr ""
+msgstr "Carte Twitter <em>grande image</em>"
 
-#: lib/setting/social-accounts.php:49 lib/submenu/general.php:198
+#: lib/setting/social-accounts.php:24
+msgctxt "normal metabox title"
+msgid "Website / Business Social Accounts"
+msgstr "Site Web / Comptes Sociaux de l’Entreprise"
+
+#: lib/setting/social-accounts.php:50 lib/submenu/general.php:201
 msgid "Facebook Business Page URL"
-msgstr ""
+msgstr "URL de la page d’affaires Facebook"
 
-#: lib/setting/social-accounts.php:53 lib/submenu/general.php:222
+#: lib/setting/social-accounts.php:54 lib/submenu/general.php:225
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:57 lib/submenu/general.php:281
+#: lib/setting/social-accounts.php:58 lib/submenu/general.php:284
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:61 lib/submenu/general.php:306
+#: lib/setting/social-accounts.php:62 lib/submenu/general.php:309
 msgid "Twitter Business @username"
 msgstr ""
 
-#: lib/setting/social-accounts.php:65 lib/submenu/general.php:327
+#: lib/setting/social-accounts.php:66 lib/submenu/general.php:330
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:69 lib/submenu/general.php:331
+#: lib/setting/social-accounts.php:70 lib/submenu/general.php:334
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:73 lib/submenu/general.php:335
+#: lib/setting/social-accounts.php:74 lib/submenu/general.php:338
 msgid "MySpace Business (Brand) URL"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:60 lib/submenu/advanced.php:85
+#: lib/sitesubmenu/siteadvanced.php:29
+msgctxt "normal metabox title"
+msgid "Network Advanced Settings"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:61 lib/submenu/advanced.php:90
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de déboggage caché"
 
-#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:91
+#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:96
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
 
-#: lib/submenu/general.php:74
+#: lib/sitesubmenu/sitelicenses.php:29 lib/submenu/licenses.php:24
+msgctxt "normal metabox title"
+msgid "Extension Plugins and Pro Licenses"
+msgstr "Autres Extensions et Licences Pro"
+
+#: lib/submenu/advanced.php:24
+msgctxt "normal metabox title"
+msgid "Advanced Settings"
+msgstr "Réglages Avancés"
+
+#: lib/submenu/advanced.php:32
+msgctxt "normal metabox title"
+msgid "Header Tags List"
+msgstr ""
+
+#: lib/submenu/advanced.php:40
+msgctxt "normal metabox tab"
+msgid "Plugin Settings"
+msgstr "Réglages de l’Extension"
+
+#: lib/submenu/advanced.php:41
+msgctxt "normal metabox tab"
+msgid "Content and Filters"
+msgstr "Contenu et Filtres"
+
+#: lib/submenu/advanced.php:42
+msgctxt "normal metabox tab"
+msgid "Social Settings Metabox"
+msgstr ""
+
+#: lib/submenu/advanced.php:43
+msgctxt "normal metabox tab"
+msgid "Theme Integration"
+msgstr "Intégration de Thème"
+
+#: lib/submenu/advanced.php:44
+msgctxt "normal metabox tab"
+msgid "File and Object Cache"
+msgstr ""
+
+#: lib/submenu/advanced.php:45
+msgctxt "normal metabox tab"
+msgid "Service API Keys"
+msgstr ""
+
+#: lib/submenu/advanced.php:58
+msgctxt "normal metabox tab"
+msgid "Custom Contacts"
+msgstr "Contacts Personnalisés"
+
+#: lib/submenu/advanced.php:59
+msgctxt "normal metabox tab"
+msgid "Built-In Contacts"
+msgstr "Contacts Intégrés"
+
+#: lib/submenu/general.php:24
+msgctxt "normal metabox title"
+msgid "All Social Websites / Open Graph"
+msgstr "Tous les Sites Sociaux / Open Graph"
+
+#: lib/submenu/general.php:28
+msgctxt "normal metabox title"
+msgid "Specific Websites and Publishers"
+msgstr "Éditeurs et Sites Web Spécifiques"
+
+#: lib/submenu/general.php:39
+msgctxt "normal metabox tab"
+msgid "Site Information"
+msgstr "Informations du Site"
+
+#: lib/submenu/general.php:40
+msgctxt "normal metabox tab"
+msgid "Title / Description"
+msgstr "Titre / Description"
+
+#: lib/submenu/general.php:41
+msgctxt "normal metabox tab"
+msgid "Authorship"
+msgstr "Paternité"
+
+#: lib/submenu/general.php:42
+msgctxt "normal metabox tab"
+msgid "Images"
+msgstr "Images"
+
+#: lib/submenu/general.php:43
+msgctxt "normal metabox tab"
+msgid "Videos"
+msgstr "Vidéos"
+
+#: lib/submenu/general.php:55
+msgctxt "normal metabox tab"
+msgid "Facebook"
+msgstr "Facebook"
+
+#: lib/submenu/general.php:56
+msgctxt "normal metabox tab"
+msgid "Google / Schema"
+msgstr "Google / Schéma"
+
+#: lib/submenu/general.php:57
+msgctxt "normal metabox tab"
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: lib/submenu/general.php:58
+msgctxt "normal metabox tab"
+msgid "Twitter"
+msgstr "Twitter"
+
+#: lib/submenu/general.php:59
+msgctxt "normal metabox tab"
+msgid "Others"
+msgstr "Autres"
+
+#: lib/submenu/general.php:77
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/general.php:78
+#: lib/submenu/general.php:81
 msgid "Site Name"
 msgstr ""
 
-#: lib/submenu/general.php:83
+#: lib/submenu/general.php:86
 msgid "Site Description"
 msgstr ""
 
-#: lib/submenu/general.php:92
+#: lib/submenu/general.php:95
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:97
+#: lib/submenu/general.php:100
 msgid "Maximum Title Length"
 msgstr "Longueur de titre maximale"
 
-#: lib/submenu/general.php:102 lib/submenu/general.php:311
+#: lib/submenu/general.php:105 lib/submenu/general.php:314
 msgid "Maximum Description Length"
 msgstr "Longueur de description maximale"
 
-#: lib/submenu/general.php:106
+#: lib/submenu/general.php:109
 msgid "Add Hashtags to Descriptions"
 msgstr "Ajouter des hashtags aux descriptions"
 
-#: lib/submenu/general.php:112
+#: lib/submenu/general.php:115
 msgid "Add Page Title in Tags / Hashtags"
 msgstr "Ajouter le titre de Page au étiquettes"
 
-#: lib/submenu/general.php:117
+#: lib/submenu/general.php:120
 msgid "Add Parent Page Tags / Hashtags"
 msgstr "Ajouter étiquettes de la Page parent"
 
-#: lib/submenu/general.php:125
+#: lib/submenu/general.php:128
 msgid "Author Profile URL Field"
 msgstr ""
 
-#: lib/submenu/general.php:130
+#: lib/submenu/general.php:133
 msgid "Fallback to Author Index URL"
 msgstr ""
 
-#: lib/submenu/general.php:135 lib/submenu/general.php:245
+#: lib/submenu/general.php:138 lib/submenu/general.php:248
 msgid "Default Author when Missing"
 msgstr ""
 
-#: lib/submenu/general.php:140 lib/submenu/general.php:250
+#: lib/submenu/general.php:143 lib/submenu/general.php:253
 msgid "Force Default Author on Indexes"
 msgstr ""
 
-#: lib/submenu/general.php:145 lib/submenu/general.php:255
+#: lib/submenu/general.php:148 lib/submenu/general.php:258
 msgid "Default Author on Search Results"
 msgstr ""
 
-#: lib/submenu/general.php:153
+#: lib/submenu/general.php:156
 msgid "Max Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:161
+#: lib/submenu/general.php:164
 msgid "Open Graph Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:165
+#: lib/submenu/general.php:168
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/general.php:169
+#: lib/submenu/general.php:172
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/general.php:174
+#: lib/submenu/general.php:177
 msgid "Force Default Image on Indexes"
 msgstr ""
 
-#: lib/submenu/general.php:179
+#: lib/submenu/general.php:182
 msgid "Force Default Image on Search Results"
 msgstr ""
 
-#: lib/submenu/general.php:185
+#: lib/submenu/general.php:188
 msgid "Add Tags from NGG Featured Image"
 msgstr ""
 
-#: lib/submenu/general.php:202
+#: lib/submenu/general.php:205
 msgid "Facebook Admin Username(s)"
-msgstr ""
+msgstr "Nom d’utilisateur admin. Facebook"
 
-#: lib/submenu/general.php:206
+#: lib/submenu/general.php:209
 msgid "Facebook Application ID"
-msgstr ""
+msgstr "Ident. d’application Facebook"
 
-#: lib/submenu/general.php:210
+#: lib/submenu/general.php:213
 msgid "Default Language"
 msgstr ""
 
-#: lib/submenu/general.php:214 lib/submenu/general.php:290
+#: lib/submenu/general.php:217 lib/submenu/general.php:293
 msgid "Author Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:226
+#: lib/submenu/general.php:229
 msgid "Schema Website / Business Logo URL"
 msgstr ""
 
-#: lib/submenu/general.php:231
+#: lib/submenu/general.php:234
 msgid "Schema Meta Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:236
+#: lib/submenu/general.php:239
 msgid "Search / SEO Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:240
+#: lib/submenu/general.php:243
 msgid "Author Link URL Field"
 msgstr ""
 
-#: lib/submenu/general.php:260
+#: lib/submenu/general.php:263
 msgid "Add Schema Website JSON-LD"
 msgstr "Ajouter le Schéma Site Web JSON-LD"
 
-#: lib/submenu/general.php:265
+#: lib/submenu/general.php:268
 msgid "Add Schema Publisher JSON-LD"
 msgstr "Ajouter le Schéma Editeur JSON-LD"
 
-#: lib/submenu/general.php:270
+#: lib/submenu/general.php:273
 msgid "Add Schema Author JSON-LD"
 msgstr "Ajouter le Schéma Auteur JSON-LD"
 
-#: lib/submenu/general.php:285
+#: lib/submenu/general.php:288
 msgid "Rich Pin Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:295
+#: lib/submenu/general.php:298
 msgid "Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:315
+#: lib/submenu/general.php:318
 msgid "<em>Summary</em> Card Image Dimensions"
-msgstr "Dimensions d’images carte <em>sommaire</em>"
+msgstr "Dimension d’image carte <em>sommaire</em>"
 
-#: lib/submenu/general.php:319
+#: lib/submenu/general.php:322
 msgid "<em>Large Image</em> Card Image Dimensions"
-msgstr "Dimensions d’images carte <em>grande image</em>"
+msgstr "Dimension d’image carte <em>grande image</em>"
+
+#: lib/submenu/readme.php:24
+msgctxt "normal metabox title"
+msgid "Read Me"
+msgstr "Lisez-moi"
+
+#: lib/submenu/readme.php:32
+msgctxt "normal metabox tab"
+msgid "Description"
+msgstr "Description"
+
+#: lib/submenu/readme.php:33
+msgctxt "normal metabox tab"
+msgid "FAQ"
+msgstr "FAQ"
+
+#: lib/submenu/readme.php:34
+msgctxt "normal metabox tab"
+msgid "Other Notes"
+msgstr "Autres Notes"
+
+#: lib/submenu/readme.php:35
+msgctxt "normal metabox tab"
+msgid "Changelog"
+msgstr "Changelog"
+
+#: lib/submenu/setup.php:24
+msgctxt "normal metabox title"
+msgid "Setup Guide"
+msgstr "Guide d’Installation"
 
 #: lib/user.php:293
 msgid "AIM"
@@ -988,6 +1168,3 @@ msgstr "Jean-Sebastien Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
-
-#~ msgid "Description Length"
-#~ msgstr "Longueur des descriptions"

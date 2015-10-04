@@ -21,25 +21,29 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_plugin', 'Advanced Settings', 
-				array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_plugin', _x( 'Advanced Settings', 
+				'normal metabox title', 'wpsso' ), 
+					array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_contact_fields', 'Contact Field Names and Labels', 
-				array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_contact_fields', _x( 'Contact Field Names and Labels', 
+				'normal metabox title', 'wpsso' ), 
+					array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_taglist', 'Header Tags List', 
-				array( &$this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_taglist', _x( 'Header Tags List', 
+				'normal metabox title', 'wpsso' ), 
+					array( &$this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_plugin() {
 			$metabox = 'plugin';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'settings' => 'Plugin Settings',
-				'content' => 'Content and Filters',
-				'social' => 'Social Settings Metabox',
-				'integration' => 'Theme Integration',
-				'cache' => 'File and Object Cache',
-				'apikeys' => 'Service API Keys' ) );
+				'settings' => _x( 'Plugin Settings', 'normal metabox tab', 'wpsso' ),
+				'content' => _x( 'Content and Filters', 'normal metabox tab', 'wpsso' ),
+				'social' => _x( 'Social Settings Metabox', 'normal metabox tab', 'wpsso' ),
+				'integration' => _x( 'Theme Integration', 'normal metabox tab', 'wpsso' ),
+				'cache' => _x( 'File and Object Cache', 'normal metabox tab', 'wpsso' ),
+				'apikeys' => _x( 'Service API Keys', 'normal metabox tab', 'wpsso' ),
+			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
@@ -51,8 +55,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		public function show_metabox_contact_fields() {
 			$metabox = 'cm';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'custom' => 'Custom Contacts',
-				'builtin' => 'Built-In Contacts' ) );
+				'custom' => _x( 'Custom Contacts', 'normal metabox tab', 'wpsso' ),
+				'builtin' => _x( 'Built-In Contacts', 'normal metabox tab', 'wpsso' ),
+			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
