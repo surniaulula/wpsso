@@ -62,9 +62,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function load_textdoms() {
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( ! empty( $info['text_domain'] ) ) {
-					if ( ! empty( $info['domain_path'] ) )
+					if ( ! empty( $info['domain_path'] ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
+								' from '.$info['slug'].$info['domain_path'] );
 						load_plugin_textdomain( $info['text_domain'], false, $info['slug'].$info['domain_path'] );
-					else load_plugin_textdomain( $info['text_domain'], false, false );
+					} else {
+						$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
+							' from default location' );
+						load_plugin_textdomain( $info['text_domain'], false, false );
+					}
 				}
 			}
 		}
