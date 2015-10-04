@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-03 23:10-0400\n"
+"PO-Revision-Date: 2015-10-03 23:23-0400\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.5\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
@@ -306,7 +306,7 @@ msgstr "Options a montrer par défaut"
 
 #: lib/gpl/admin/advanced.php:41 lib/pro/admin/advanced.php:44
 msgid "Report Cache Purge Count"
-msgstr "Rapporter le vidange de caches"
+msgstr "Rapporter le vidange des caches"
 
 #: lib/gpl/admin/advanced.php:47 lib/pro/admin/advanced.php:50
 msgid "Use WP Locale for Language"
