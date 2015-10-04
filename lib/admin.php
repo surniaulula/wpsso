@@ -660,15 +660,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2"><h4>'.$info['short'].( $this->p->check->aop( $lca,
 					true, $this->p->is_avail['aop'] ) ? ' Pro' : ' Free' ).'</h4></td></tr>';
-				echo '<tr><th class="side">'.__( 'Installed', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Installed',
+					'plugin status label followed by version number', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
-				echo '<tr><th class="side">'.__( 'Stable', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Stable',
+					'plugin status label followed by version number', 'wpsso' ).':</th>
 					<td class="side_version">'.$stable_version.'</td></tr>';
-				echo '<tr><th class="side">'.__( 'Latest', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Latest',
+					'plugin status label followed by version number', 'wpsso' ).':</th>
 					<td class="side_version">'.$latest_version.'</td></tr>';
 				echo '<tr><td colspan="2" id="latest_notice"><p>'.$latest_notice.'</p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
-						sprintf( __( 'View %s changelog...', 'wpsso' ), $info['short'] ).'</a></p></td></tr>';
+						sprintf( _x( 'View %s changelog...', 'following plugin status version numbers',
+							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 			echo '</table>';
 		}
