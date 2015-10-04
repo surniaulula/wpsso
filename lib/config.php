@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'min_version' => '4.1.0',	// minimum php version
 			),
 			'follow' => array(
-				'size' => 32,
+				'size' => 24,
 				'src' => array(
 					'images/follow/Wordpress.png' => 'https://profiles.wordpress.org/jsmoriss/',
 					'images/follow/Github.png' => 'https://github.com/SurniaUlula',
