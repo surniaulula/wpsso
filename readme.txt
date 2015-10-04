@@ -220,23 +220,17 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Install and Uninstall =
 
-<ul>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation-to/install-the-plugin/">Install the Plugin</a></li>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/">Integration Notes</a>
-	<ul>
-		<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
-	</ul></li>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the Plugin</a></li>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NGFB to WPSSO</a></li>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special – Buy one, Get one Free</a></li>
-</ul>
+* [Install the Plugin](http://wpsso.com/codex/plugins/wpsso/installation-to/install-the-plugin/)
+* [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/)
+	* [BuddyPress Integration](http://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/)
+* [Uninstall the Plugin](http://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/)
+* [Debugging and Problem Solving](http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/)
+* [How-To Migrate from NGFB to WPSSO](http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
+* [Developer Special – Buy one, Get one Free](http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 = Plugin Setup =
 
-<ul>
-	<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
-</ul>
+* [A Setup Guide for WPSSO](http://wpsso.com/codex/plugins/wpsso/installation/a-setup-guide/)
 
 == Frequently Asked Questions ==
 
