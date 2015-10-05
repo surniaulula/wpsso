@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.10.3',		// plugin version
+					'version' => '3.11.0-dev1',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
@@ -52,47 +52,49 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'pro_support' => 'http://wpsso.support.wpsso.com/',
 					),
 					'lib' => array(			// libraries
-						'setting' => array (
+						'setting' => array (	// lib file descriptions will be translated
 							'wpsso-separator-0' => 'SSO',
 							'image-dimensions' => 'Social Image Dimensions',
 							'social-accounts' => 'Website / Business Social Accounts',
 							'contact-fields' => 'User Profile Contact Methods',
 							'wpsso-separator-1' => '',
 						),
-						'submenu' => array (
+						'submenu' => array (	// lib file descriptions will be translated
 							'general' => 'General',
 							'advanced' => 'Advanced',
 							'readme' => 'Read Me',
 							'setup' => 'Setup Guide',
+							// the first 2 words will be highlighted in menu
 							'licenses' => 'Extension Plugins and Pro Licenses',
 						),
-						'sitesubmenu' => array(
+						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced',
 							'sitereadme' => 'Read Me',
 							'sitesetup' => 'Setup Guide',
+							// the first 2 words will be highlighted in menu
 							'sitelicenses' => 'Extension Plugins and Pro Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
-								'post' => 'Post Social Settings',
-								'taxonomy' => 'Taxonomy Social Settings',
-								'user' => 'User Social Settings',
+								'post' => 'Post Settings',
+								'taxonomy' => 'Taxonomy Settings',
+								'user' => 'User Settings',
 							),
 							'util' => array(
-								'post' => 'Post Social Settings',
-								'taxonomy' => 'Taxonomy Social Settings',
-								'user' => 'User Social Settings',
+								'post' => 'Post Settings',
+								'taxonomy' => 'Taxonomy Settings',
+								'user' => 'User Settings',
 							),
 						),
 						'pro' => array(
 							'admin' => array(
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
-								'post' => 'Post Social Settings',
-								'taxonomy' => 'Taxonomy Social Settings',
-								'user' => 'User Social Settings',
+								'post' => 'Post Settings',
+								'taxonomy' => 'Taxonomy Settings',
+								'user' => 'User Settings',
 							),
 							'ecom' => array(
 								'edd' => 'Easy Digital Downloads',
@@ -126,10 +128,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'util' => array(
 								'language' => 'Publisher Language',
 								'shorten' => 'URL Shortening',
-								'post' => 'Post Social Settings',
+								'post' => 'Post Settings',
 								'restapi' => 'WP REST API v2',
-								'taxonomy' => 'Taxonomy Social Settings',
-								'user' => 'User Social Settings',
+								'taxonomy' => 'Taxonomy Settings',
+								'user' => 'User Settings',
 							),
 						),
 					),

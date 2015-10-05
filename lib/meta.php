@@ -19,15 +19,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected $form;
 		protected $head_meta_tags = array();
 		protected $head_info = array();
-		protected $default_tabs = array(
-			'header' => 'Title / Descriptions', 
-			'media' => 'Priority Media', 
-			'preview' => 'Social Preview',
-			'tags' => 'Head Tags',
-			'validate' => 'Validate'
-		);
 		protected $opts = array();	// cache for options
 		protected $defs = array();	// cache for default values
+
+		protected function get_default_tabs() {
+			return  array(
+				'header' => _x( 'Title / Descriptions', 'normal metabox tab', 'wpsso' ),
+				'media' => _x( 'Priority Media', 'normal metabox tab', 'wpsso' ),
+				'preview' => _x( 'Social Preview', 'normal metabox tab', 'wpsso' ),
+				'tags' => _x( 'Head Tags', 'normal metabox tab', 'wpsso' ),
+				'validate' => _x( 'Validate', 'normal metabox tab', 'wpsso' ),
+			);
+		}
 
 		protected function get_rows( $metabox, $key, &$head_info ) {
 			$rows = array();
@@ -50,19 +53,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_rows_social_preview( &$form, &$head_info ) {
 			$rows = array();
-			$max_width = 600;
-			$max_height = 315;
-			$div_style = 'width:'.$max_width.'px; height:'.$max_height.'px;';
+			$prev_width = 600;
+			$prev_height = 315;
+			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
 			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && 
 				! empty( $head_info['og:image:height'] ) ) ? true : false;
 			$is_sufficient = ( $have_sizes === true && 
-				$head_info['og:image:width'] >= $max_width && 
-				$head_info['og:image:height'] >= $max_height ) ? true : false;
-			$msgs = array(
-				'not_found' => '<p>No Open Graph Image Found</p>',
-				'too_small' => '<p>Image Dimensions Smaller<br/>than Suggested Minimum<br/>of '.$max_width.' x '.$max_height.'px</p>',
-				'no_size' => '<p>Image Dimensions Unknown<br/>or Not Available</p>',
-			);
+				$head_info['og:image:width'] >= $prev_width && 
+				$head_info['og:image:height'] >= $prev_height ) ? true : false;
 
 			foreach ( array( 'og:image:secure_url', 'og:image' ) as $key ) {
 				if ( ! empty( $head_info[$key] ) ) {
@@ -71,23 +69,28 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						background-size:'.( $is_sufficient === true ? 
 							'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
 						background-image:url('.$head_info[$key].');" />'.( $is_sufficient === true ? 
-							'' : $msgs['too_small'] ).'</div>';
+							'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
+								'preview image error', 'wpsso' ),
+									$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
 					} else {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-image:url('.$head_info[$key].');" />'.$msgs['no_size'].'</div>';
+						background-image:url('.$head_info[$key].');" /><p>'.
+						_x( 'Image Dimensions Unknown<br/>or Not Available',
+							'preview image error', 'wpsso' ).'</p></div>';
 					}
 					break;	// stop after first image
 				}
 			}
 
 			if ( empty( $image_preview_html ) )
-				$image_preview_html = '<div class="preview_img" style="'.$div_style.'">'.$msgs['not_found'].'</div>';
+				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
+				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
 			$rows[] = $this->p->util->get_th( __( 'Open Graph Example',
 				'wpsso' ), 'medium', 'post-social-preview' ).
 			'<td style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
-			<div class="preview_box" style="width:'.( $max_width + 40 ).'px;">
-				<div class="preview_box" style="width:'.$max_width.'px;">
+			<div class="preview_box" style="width:'.( $prev_width + 40 ).'px;">
+				<div class="preview_box" style="width:'.$prev_width.'px;">
 					'.$image_preview_html.'
 					<div class="preview_txt">
 						<div class="preview_title">'.( empty( $head_info['og:title'] ) ?
@@ -122,22 +125,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_rows_validate( &$form, &$head_info ) {
 			$rows = array();
 
-			$rows[] = $this->p->util->get_th( __( 'Facebook Debugger', 'wpsso' ) ).'<td class="validate"><p>Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags. The Facebook debugger allows you to refresh Facebook\'s cache while also validating the Open Graph / Rich Pin meta tags. The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the "Fetch new scrape information" button several times to refresh Facebook\'s cache</strong>.</p></td>
-			<td class="validate">'.$form->get_button( 'Validate Open Graph', 'button-secondary', null, 
-			'https://developers.facebook.com/tools/debug/og/object?q='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
+			$rows[] = $this->p->util->get_th( __( 'Facebook Debugger', 'wpsso' ) ).'<td class="validate"><p>Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags. The Facebook debugger allows you to refresh Facebook\'s cache while also validating the Open Graph / Rich Pin meta tags. The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the "Fetch new scrape information" button several times to refresh Facebook\'s cache</strong>.</p></td><td class="validate">'.$form->get_button( 'Validate Open Graph', 'button-secondary', null, 'https://developers.facebook.com/tools/debug/og/object?q='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'Google Structured Data Testing Tool', 'wpsso' ) ).'<td class="validate"><p>Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+.</p></td>
-			<td class="validate">'.$form->get_button( 'Validate Data Markup', 'button-secondary', null, 
-			'https://developers.google.com/structured-data/testing-tool/?url='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
+			$rows[] = $this->p->util->get_th( __( 'Google Structured Data Testing Tool', 'wpsso' ) ).'<td class="validate"><p>Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+.</p></td><td class="validate">'.$form->get_button( 'Validate Data Markup', 'button-secondary', null, 'https://developers.google.com/structured-data/testing-tool/?url='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'Pinterest Rich Pin Validator', 'wpsso' ) ).'<td class="validate"><p>Validate the Open Graph / Rich Pin meta tags, and apply to have them displayed on Pinterest.</p></td>
-			<td class="validate">'.$form->get_button( 'Validate Rich Pins', 'button-secondary', null, 
-			'http://developers.pinterest.com/rich_pins/validator/?link='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
+			$rows[] = $this->p->util->get_th( __( 'Pinterest Rich Pin Validator', 'wpsso' ) ).'<td class="validate"><p>Validate the Open Graph / Rich Pin meta tags, and apply to have them displayed on Pinterest.</p></td><td class="validate">'.$form->get_button( 'Validate Rich Pins', 'button-secondary', null, 'http://developers.pinterest.com/rich_pins/validator/?link='.urlencode( $this->p->util->get_sharing_url( $head_info['post_id'] ) ), true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'Twitter Card Validator', 'wpsso' ) ).'<td class="validate"><p>The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field. To enable the display of Twitter Card information in tweets, you must submit a URL for each type of card you provide (Summary, Summary with Large Image, Photo, Gallery, Player, and/or Product card).</p>
-			<p>'.$form->get_input_for_copy( $this->p->util->get_sharing_url( $head_info['post_id'] ), 'wide' ).'</p></td>
-			<td class="validate">'.$form->get_button( 'Validate Twitter Card', 'button-secondary', null, 
-			'https://dev.twitter.com/docs/cards/validation/validator', true ).'</td>';
+			$rows[] = $this->p->util->get_th( __( 'Twitter Card Validator', 'wpsso' ) ).'<td class="validate"><p>The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field. To enable the display of Twitter Card information in tweets, you must submit a URL for each type of card you provide (Summary, Summary with Large Image, Photo, Gallery, Player, and/or Product card).</p><p>'.$form->get_input_for_copy( $this->p->util->get_sharing_url( $head_info['post_id'] ), 'wide' ).'</p></td><td class="validate">'.$form->get_button( 'Validate Twitter Card', 'button-secondary', null, 'https://dev.twitter.com/docs/cards/validation/validator', true ).'</td>';
 
 			return $rows;
 		}
@@ -305,8 +299,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_column_headings( $columns ) { 
 			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => __( 'Social Img', 'wpsso' ),
-				$this->p->cf['lca'].'_og_desc' => __( 'Social Desc', 'wpsso' )
+				$this->p->cf['lca'].'_og_image' => _x( 'Social Img', 'column title', 'wpsso' ),
+				$this->p->cf['lca'].'_og_desc' => _x( 'Social Desc', 'column title', 'wpsso' )
 			) );
 		}
 
@@ -322,7 +316,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$hidden = get_user_option( 'manage'.$screen_id.'columnshidden' );
 				if ( is_array( $hidden ) && 
 					in_array( $column_name, $hidden ) )
-						return 'Reload to View';
+						return __( 'Reload to View', 'wpsso' );
 			}
 
 			switch ( $column_name ) {

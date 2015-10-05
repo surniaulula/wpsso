@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		public function filter_plugin_integration_rows( $rows, $form ) {
 
-			$rows[] = '<td colspan="2" align="center">'.
+			$rows[] = '<td colspan="3" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( __( 'Check for Duplicate Meta Tags',
@@ -262,12 +262,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td></td>'.
-			$this->p->util->get_th( __( 'Show',
-				'wpsso' ), 'left checkbox' ).
-			$this->p->util->get_th( __( 'Contact Field Name',
-				'wpsso' ), 'left medium', 'custom-cm-field-name' ).
-			$this->p->util->get_th( __( 'Profile Contact Label',
-				'wpsso' ), 'left wide' );
+			$this->p->util->get_th( _x( 'Show',
+				'column title', 'wpsso' ), 'left checkbox' ).
+			$this->p->util->get_th( _x( 'Contact Field Name',
+				'column title', 'wpsso' ), 'left medium', 'custom-cm-field-name' ).
+			$this->p->util->get_th( _x( 'Profile Contact Label',
+				'column title', 'wpsso' ), 'left wide' );
 
 			$sorted_opt_pre = $this->p->cf['opt']['pre'];
 			ksort( $sorted_opt_pre );

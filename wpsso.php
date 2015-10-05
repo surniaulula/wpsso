@@ -12,7 +12,7 @@
  * Description: Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs.
  * Requires At Least: 3.1
  * Tested Up To: 4.3.1
- * Version: 3.10.3
+ * Version: 3.11.0-dev1
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */

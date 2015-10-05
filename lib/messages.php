@@ -55,6 +55,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				if ( strpos( $idx, 'tooltip-side-' ) === 0 ) {
 					switch ( $idx ) {
+						/*
+						 * Free version
+						 */
 						case 'tooltip-side-author-json-ld':
 							$text = 'Add author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.';
 							break;
@@ -67,29 +70,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-open-graph-rich-pin':
 							$text = 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a compatible eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices, images, and other attributes.';
 							break;
-						case 'tooltip-side-transient-cache':
-							$text = $atts['short'].' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
-							break;
 						case 'tooltip-side-publisher-json-ld':
 							$text = 'Add publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.';
 							break;
-						case 'tooltip-side-post-social-settings':
-							$text = 'The Post Social Settings feature adds a Social Settings metabox to the Post, Page, and custom post type editing pages.  Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
+						case 'tooltip-side-transient-cache':
+							$text = $atts['short'].' saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, etc. to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache for '.$this->p->options['plugin_object_cache_exp'].' seconds (default is '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds). You can adjust the Transient / Object Cache expiration value in the '.$this->p->util->get_admin_url( 'advanced', 'Advanced settings' ).', or disable it completely using an available <a href="http://surniaulula.com/codex/plugins/wpsso/notes/constants/" target="_blank">constant</a>.';
 							break;
-						case 'tooltip-side-user-social-settings':
-							$text = 'The User Social Settings feature adds a Social Settings metabox to the user profile pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
+						case 'tooltip-side-twitter-cards':
+							$text = 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with content-specific information for image galleries, photographs, eCommerce products, etc. Twitter Cards are displayed differently on Twitter, either online or from mobile Twitter clients, allowing you to highlight your content.';
+							break;
+						/*
+						 * Pro version
+						 */
+						case 'tooltip-side-author-gravatar':
+							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
+							break;
+						case 'tooltip-side-post-settings':
+							$text = 'The Post Settings feature adds a Social Settings metabox to the Post, Page, and custom post type editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
 							break;
 						case 'tooltip-side-publisher-language':
 							$text = $atts['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature.';
 							break;
-						case 'tooltip-side-twitter-cards':
-							$text = 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with content-specific information for image galleries, photographs, eCommerce products, etc. Twitter Cards are displayed differently on Twitter, either online or from mobile Twitter clients, allowing you to highlight your content. The Twitter Cards meta tags can be enabled from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_twitter', 'General settings' ).' page.';
-							break;
-						case 'tooltip-side-author-gravatar':
-							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
-							break;
 						case 'tooltip-side-slideshare-api':
 							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
+							break;
+						case 'tooltip-side-taxonomy-settings':
+							$text = 'The Taxonomy Settings feature adds a Social Settings metabox to taxonomy (category and tags) editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
+							break;
+						case 'tooltip-side-url-shortening':
+							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced settings' ).' page, '.$atts['short_pro'].' will load an integration module for various '.$atts['short'].' plugin filters and/or extensions that may need to shorten URLs.';
+							break;
+						case 'tooltip-side-user-settings':
+							$text = 'The User Settings feature adds a Social Settings metabox to the user profile pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
 							break;
 						case 'tooltip-side-vimeo-video-api':
 							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
@@ -97,14 +109,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-wistia-video-api':
 							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
-						case 'tooltip-side-youtube-video-playlist-api':
-							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
-							break;
-						case 'tooltip-side-url-shortening':
-							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced settings' ).' page, '.$atts['short_pro'].' will load an integration module for various '.$atts['short'].' plugin filters and/or extensions that may need to shorten URLs.';
-							break;
 						case 'tooltip-side-wp-rest-api-routes':
 							$text = $atts['short_pro'].' loads a module to extend the WordPress REST API routes.';
+							break;
+						case 'tooltip-side-youtube-video-playlist-api':
+							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_side', $text, $idx, $atts );
@@ -719,7 +728,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '<p>';
 						break;
 					case 'side-help':
-						$submit_text = __( 'Save All Plugin Settings', 'wpsso' );
+						$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 						$text = '<p>'.sprintf( __( 'Metaboxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, or removed / added from the <em>Screen Options</em> tab (top-right of page).', 'wpsso' ).' '.__( 'Settings in multiple tabs can be edited before clicking the \'%s\' button.', 'wpsso' ), $submit_text ).'</p>';
 						break;
 					default:

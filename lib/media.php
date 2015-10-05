@@ -564,13 +564,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// img attributes in order of preference
 			// data_tags_preg provides a filter hook for 3rd party modules like ngg to return image information
 			if ( preg_match_all( '/<('.$this->data_tags_preg.'[^>]*? '.$this->data_attr_preg.'=[\'"]([0-9]+)[\'"]|'.
-				'(img)[^>]*? (data-share-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $match, PREG_SET_ORDER ) ) {
+				'(img)[^>]*? (data-share-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( count( $match ).' x matching <'.$this->data_tags_preg.'/> html tag(s) found' );
+					$this->p->debug->log( count( $all_matches ).' x matching <'.$this->data_tags_preg.'/> html tag(s) found' );
 
-				foreach ( $match as $img_num => $img_arr ) {
+				foreach ( $all_matches as $img_num => $img_arr ) {
+
 					$tag_value = $img_arr[0];
+
 					if ( empty( $img_arr[5] ) ) {
 						$tag_name = $img_arr[2];	// img
 						$attr_name = $img_arr[3];	// data-wp-pid
@@ -580,8 +582,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$attr_name = $img_arr[6];	// data-share-src|src
 						$attr_value = $img_arr[7];	// url
 					}
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
+
 					switch ( $attr_name ) {
 						case 'data-wp-pid' :
 							list(
@@ -616,24 +620,38 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 												break;	// stop here
 	
 							// recognize gravatar images in the content
-							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/', $attr_value, $match) ) {
+							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/',
+								$attr_value, $match ) ) {
+
 								$og_image['og:image'] = $match[0].'?s='.$size_info['width'].'&d=404&r=G';
 								$og_image['og:image:width'] = $size_info['width'];
 								$og_image['og:image:height'] = $size_info['width'];	// square image
 								break;	// stop here
 							}
 
-							$og_image = array(
-								'og:image' => $attr_value,
-								'og:image:width' => -1,
-								'og:image:height' => -1,
-							);
+							// check for image ID in class for old content w/o the data-wp-pid attribute
+							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
+								list(
+									$og_image['og:image'],
+									$og_image['og:image:width'],
+									$og_image['og:image:height'],
+									$og_image['og:image:cropped'],
+									$og_image['og:image:id']
+								) = $this->get_attachment_image_src( $match[1], $size_name, false );
+								break;	// stop here
+							} else {
+								$og_image = array(
+									'og:image' => $attr_value,
+									'og:image:width' => -1,
+									'og:image:height' => -1,
+								);
+							}
 
 							// try and get the width and height from the image attributes
 							if ( ! empty( $og_image['og:image'] ) ) {
-								if ( preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match) ) 
+								if ( preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
 									$og_image['og:image:width'] = $match[1];
-								if ( preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match) ) 
+								if ( preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
 									$og_image['og:image:height'] = $match[1];
 							}
 

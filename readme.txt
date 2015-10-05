@@ -353,6 +353,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.11.0 =
+
+* **New Features**
+	* Added a French language (fr_FR) translation.
+* **Improvements**
+	* Added a check for image IDs within class names to detect Media Library images in older content.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added context to all metabox titles and tab text strings.
+
 = Version 3.10.3 2015/10/04 =
 
 * **New Features**

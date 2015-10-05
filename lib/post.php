@@ -215,8 +215,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', $add_metabox, $post_id ) === true )
-				add_meta_box( WPSSO_META_NAME, 'Social Settings', array( &$this, 'show_metabox_post' ),
-					$post_type->name, 'advanced', 'high' );
+				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'normal metabox title', 'wpsso' ),
+					array( &$this, 'show_metabox_post' ), $post_type->name, 'normal', 'low' );
 		}
 
 		public function show_metabox_post( $post ) {
@@ -230,7 +230,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'post';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', $this->default_tabs );
+			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
+				$this->get_default_tabs() );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 

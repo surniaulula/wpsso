@@ -65,8 +65,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['domain_path'] ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
-								' from '.$info['slug'].$info['domain_path'] );
-						load_plugin_textdomain( $info['text_domain'], false, $info['slug'].$info['domain_path'] );
+								' from '.trailingslashit( $info['slug'].$info['domain_path'] ) );
+						load_plugin_textdomain( $info['text_domain'], false, 
+							trailingslashit( $info['slug'].$info['domain_path'] ) );
 					} else {
 						$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
 							' from default location' );
@@ -94,8 +95,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							if ( strpos( $id, 'separator' ) !== false ) 
 								continue;
 							$classname = apply_filters( $lca.'_load_lib', false, $sub.'/'.$id );
-							if ( $classname !== false && class_exists( $classname ) )
+							if ( $classname !== false && class_exists( $classname ) ) {
+								if ( ! empty( $info['text_domain'] ) )
+									$name = _x( $name, 'lib file description', $info['text_domain'] );
 								$this->submenu[$id] = new $classname( $this->p, $id, $name );
+							}
 						}
 					}
 				}
@@ -283,8 +287,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = false, $menu_name = false ) {
-			$menu_id = $menu_id === false ? $this->menu_id : $menu_id;
-			$menu_name = $menu_name === false ? $this->menu_name : $menu_name;
+			$menu_id = $menu_id === false ?
+				$this->menu_id : $menu_id;
+			$menu_name = $menu_name === false ?
+				$this->menu_name : $menu_name;
 
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
 				$menu_title = '<div style="z-index:999;
@@ -300,8 +306,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$function = '';
 			} else {
 				// highlight the "extension plugins" part of the menu title
-				if ( strpos( $menu_name, 'Extension Plugins' ) !== false )
-					$menu_title = preg_replace( '/(Extension Plugins)/',
+				if ( strpos( $menu_id, 'licenses' ) !== false )
+					$menu_title = preg_replace( '/^(\w+ \w+)/',
 						'<div style="color:#'.$this->p->cf['color'].';">$1</div>', $menu_name );
 				else $menu_title = $menu_name;
 				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
@@ -767,7 +773,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$features[$name] = array( 
 							'status' => class_exists( $lca.'pro'.$sub.$id ) ?
 								( $lca_aop ? 'on' : $off ) : $off,
-							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support and features for %3$s.', 'wpsso'), $name, $short_pro, $name ),
+							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional '.
+								'integration modules to provide enhanced support and features for %3$s.',
+									'wpsso'), $name, $short_pro, $name ),
 							'td_class' => $lca_aop ? '' : 'blank',
 						);
 					}
@@ -792,8 +800,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			uksort( $features, 'strcasecmp' );
 			$first = key( $features );
 			foreach ( $features as $name => $arr ) {
-
-				$td_class = empty( $arr['td_class'] ) ? '' : ' '.$arr['td_class'];
+				$td_class = empty( $arr['td_class'] ) ?
+					'' : ' '.$arr['td_class'];
 
 				if ( array_key_exists( 'classname', $arr ) )
 					$status = class_exists( $arr['classname'] ) ? 'on' : 'off';
@@ -802,14 +810,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				else $status = '';
 
 				if ( ! empty( $status ) ) {
-					$tooltip_text = empty( $arr['tooltip'] ) ? '' : $arr['tooltip'];
+					$tooltip_text = empty( $arr['tooltip'] ) ?
+						'' : $arr['tooltip'];
 					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$name, 
 						array( 'text' => $tooltip_text, 'class' => 'sucom_tooltip_side' ) );
 
 					echo '<tr><td class="side'.$td_class.'">'.
 					$tooltip_text.( $status == 'rec' ? '<strong>'.$name.'</strong>' : $name ).
 					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">
-					<img src="'.WPSSO_URLPATH.'images/'.$images[$status].'" width="12" height="12" /></td></tr>';
+					<img src="'.WPSSO_URLPATH.'images/'.$images[$status].
+						'" width="12" height="12" /></td></tr>'."\n";
 				}
 			}
 		}
@@ -870,7 +880,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
 			if ( empty( $submit_text ) ) 
-				$submit_text = __( 'Save All Plugin Settings', 'wpsso' );
+				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
 			$show_opts_text = 'View '.$this->p->cf['form']['show_options'][$show_opts_next].' by Default';
@@ -881,22 +891,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					wp_nonce_url( $show_opts_url, $this->get_nonce(), WPSSO_NONCE ) ).'<br/>';
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( __( 'Clear All Cache(s)', 'wpsso' ), 
+				$action_buttons .= $this->form->get_button( _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
-			$action_buttons .= $this->form->get_button( __( 'Check for Update(s)', 'wpsso' ), 'button-secondary', null,
-				wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), $this->get_nonce(), WPSSO_NONCE ),
-				false, ( $this->p->is_avail['util']['um'] ? false : true )	// disable button if update manager is not available
+			$action_buttons .= $this->form->get_button( _x( 'Check for Update(s)', 'submit button', 'wpsso' ),
+					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), 
+						$this->get_nonce(), WPSSO_NONCE ), false,
+							( $this->p->is_avail['util']['um'] ? false : true )	// disable button if um not available
 			);
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( __( 'Reset Metabox Layout', 'wpsso' ), 
+				$action_buttons .= $this->form->get_button( _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_metabox_prefs' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( __( 'Reset Hidden Notices', 'wpsso' ), 
+				$action_buttons .= $this->form->get_button( _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_hidden_notices' ),
 						$this->get_nonce(), WPSSO_NONCE ) );
 
