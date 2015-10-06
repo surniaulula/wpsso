@@ -13,9 +13,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	class WpssoMedia {
 
 		private $p;
-
-		public $data_tags_preg = '(img)';
-		public $data_attr_preg = '(data-[a-z]+-pid)';
+		private $default_img_preg = array(
+			'html_tag' => 'img',
+			'pid_attr' => 'data-[a-z]+-pid',
+			'ngg_src' => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
+		);
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -544,10 +546,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'content' => strlen( $content ).' chars',
 				) );
 			}
-
 			$og_ret = array();
-			$og_image = SucomUtil::meta_image_tags( 'og' );
-			$size_info = $this->get_size_info( $size_name );
 
 			// allow custom content to be passed as argument
 			if ( empty( $content ) ) {
@@ -561,13 +560,26 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret; 
 			}
 
+			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$size_info = $this->get_size_info( $size_name );
+			$img_preg = $this->default_img_preg;
+
+			// allow the html_tag and pid_attr regex to be modified
+			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
+				$filter_name = $this->p->cf['lca'].'_content_image_preg_'.$type;
+				if ( has_filter( $filter_name ) ) {
+					$img_preg[$type] = apply_filters( $filter_name, $this->default_img_preg[$type] );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'filtered image preg '.$type.' = \''.$img_preg[$type].'\'' );
+				}
+			}
+
 			// img attributes in order of preference
-			// data_tags_preg provides a filter hook for 3rd party modules like ngg to return image information
-			if ( preg_match_all( '/<('.$this->data_tags_preg.'[^>]*? '.$this->data_attr_preg.'=[\'"]([0-9]+)[\'"]|'.
+			if ( preg_match_all( '/<(('.$img_preg['html_tag'].')[^>]*? ('.$img_preg['pid_attr'].')=[\'"]([0-9]+)[\'"]|'.
 				'(img)[^>]*? (data-share-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( count( $all_matches ).' x matching <'.$this->data_tags_preg.'/> html tag(s) found' );
+					$this->p->debug->log( count( $all_matches ).' x matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
 
 				foreach ( $all_matches as $img_num => $img_arr ) {
 
@@ -587,7 +599,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
 
 					switch ( $attr_name ) {
+
 						case 'data-wp-pid' :
+
 							list(
 								$og_image['og:image'],
 								$og_image['og:image:width'],
@@ -595,19 +609,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image:cropped'],
 								$og_image['og:image:id']
 							) = $this->get_attachment_image_src( $attr_value, $size_name, false );
+
 							break;
 
-						// filter hook for 3rd party modules to return image information
+						// check for other data attributes like 'data-ngg-pid'
 						case ( preg_match( '/^data-[a-z]+-pid$/', $attr_name ) ? true : false ):
-							$filter_name = $this->p->cf['lca'].'_get_content_'.$tag_name.'_'.
-								( preg_replace( '/-/', '_', $attr_name ) );
+
+							// build a filter hook for 3rd party modules to return image information
+							$filter_name = $this->p->cf['lca'].'_get_content_'.
+								$tag_name.'_'.( preg_replace( '/-/', '_', $attr_name ) );
+
 							list(
 								$og_image['og:image'],
 								$og_image['og:image:width'],
 								$og_image['og:image:height'],
 								$og_image['og:image:cropped'],
 								$og_image['og:image:id']
-							) = apply_filters( $filter_name, array( null, null, null, null ), $attr_value, $size_name, false );
+							) = apply_filters( $filter_name, array( null, null, null, null, null ),
+								$attr_value, $size_name, false );
+
 							break;
 
 						default:
@@ -615,7 +635,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( $this->p->is_avail['media']['ngg'] === true && 
 								! empty( $this->p->mods['media']['ngg'] ) &&
 									( strpos( $tag_value, " class='ngg-" ) !== false || 
-										preg_match( '/^'.$this->p->mods['media']['ngg']->img_src_preg.'$/', 
+										preg_match( '/^('.$img_preg['ngg_src'].')$/', 
 											$attr_value ) ) )
 												break;	// stop here
 	
@@ -630,7 +650,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							// check for image ID in class for old content w/o the data-wp-pid attribute
-							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
+							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/',
+								$tag_value, $match ) ) {
 								list(
 									$og_image['og:image'],
 									$og_image['og:image:width'],
@@ -649,10 +670,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							// try and get the width and height from the image attributes
 							if ( ! empty( $og_image['og:image'] ) ) {
-								if ( preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
-									$og_image['og:image:width'] = $match[1];
-								if ( preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
-									$og_image['og:image:height'] = $match[1];
+								if ( preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i',
+									$tag_value, $match ) ) 
+										$og_image['og:image:width'] = $match[1];
+								if ( preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i',
+									$tag_value, $match ) ) 
+										$og_image['og:image:height'] = $match[1];
 							}
 
 							$is_sufficient_width = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
@@ -667,9 +690,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							// make sure the image width and height are large enough
 							if ( ( $attr_name == 'src' && $accept_img_size ) ||
-								( $attr_name == 'src' && $size_info['crop'] === 1 && 
+								( $attr_name == 'src' && $size_info['crop'] && 
 									( $is_sufficient_width && $is_sufficient_height ) ) ||
-								( $attr_name == 'src' && $size_info['crop'] !== 1 && 
+								( $attr_name == 'src' && ! $size_info['crop'] && 
 									( $is_sufficient_width || $is_sufficient_height ) ) ||
 								$attr_name == 'data-share-src' ) {
 
@@ -688,9 +711,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$size_label = $this->p->util->get_image_size_label( $size_name );
 									$msg_id = 'content_'.$og_image['og:image'].'_'.$size_name.'_rejected';
 
-									// $content_provided = true then it may have been provided by
-									// an integration module, so don't mention the Media Library
-									$this->p->notice->err( 'Content image '.$og_image['og:image'].' has been ignored &mdash; the image width / height attributes are missing or too small for the '.$size_label.' ('.$size_name.') image dimensions.'.( $content_provided ? '' : ' '.$short.' includes an additional \'data-wp-pid\' attribute for Media Library images to replace width / height information &mdash; if this image was selected from the Media Library before '.$short.' was first activated, try removing and adding the image back to your content.' ), false, true, $msg_id, true );
+									if ( ! $content_provided )
+										$data_wp_pid_msg = ' '.sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for images from the Media Library to supplement the width / height information &mdash; if this image was selected from the Media Library before %2$s was first activated, try removing and adding the image back to your content.', 'wpsso' ), $short, $short );
+									else $data_wp_pid_msg = '';
+
+									$this->p->notice->err( sprintf( __( 'Content image %1$s has been ignored &mdash; the image width / height attributes are missing or too small for the %2$s image dimensions.', 'wpsso' ), $og_image['og:image'], $size_label.' ('.$size_name.')' ).$data_wp_pid_msg, false, true, $msg_id, true );
 								}
 								$og_image = array();
 							}
@@ -704,7 +729,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret;
 			}
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'no matching <'.$this->data_tags_preg.'/> html tag(s) found' );
+				$this->p->debug->log( 'no matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
 			return $og_ret;
 		}
 

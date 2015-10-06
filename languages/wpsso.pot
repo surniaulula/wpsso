@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.0-"
-"dev2\n"
+"dev3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-06 12:39:24+00:00\n"
+"POT-Creation-Date: 2015-10-06 16:34:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -664,6 +664,20 @@ msgstr ""
 #: lib/gpl/admin/user.php:107 lib/pro/admin/post.php:161
 #: lib/pro/admin/user.php:109
 msgid "Pinterest (Rich Pin)"
+msgstr ""
+
+#: lib/media.php:715
+msgid ""
+"%1$s includes an additional 'data-wp-pid' attribute for images from the "
+"Media Library to supplement the width / height information &mdash; if this "
+"image was selected from the Media Library before %2$s was first activated, "
+"try removing and adding the image back to your content."
+msgstr ""
+
+#: lib/media.php:718
+msgid ""
+"Content image %1$s has been ignored &mdash; the image width / height "
+"attributes are missing or too small for the %2$s image dimensions."
 msgstr ""
 
 #: lib/messages.php:607

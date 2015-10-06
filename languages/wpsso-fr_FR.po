@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-06 07:38-0400\n"
-"PO-Revision-Date: 2015-10-06 07:39-0400\n"
+"POT-Creation-Date: 2015-10-06 12:13-0400\n"
+"PO-Revision-Date: 2015-10-06 12:28-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -298,6 +298,8 @@ msgid ""
 "WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for "
 "its content filters)."
 msgstr ""
+"WooCommerce n’inclut pas le soutien de shortcode dans l’interface admin (requis par WordPress pour ses "
+"filtres de contenu)."
 
 #: lib/admin.php:1180
 msgid ""
@@ -627,6 +629,22 @@ msgstr "Inclure l’image d’aperçu"
 #: lib/pro/admin/post.php:161 lib/pro/admin/user.php:109
 msgid "Pinterest (Rich Pin)"
 msgstr "Pinterest (Rich Pin)"
+
+#: lib/media.php:715
+msgid ""
+"%1$s includes an additional 'data-wp-pid' attribute for images from the Media Library to supplement the "
+"width / height information &mdash; if this image was selected from the Media Library before %2$s was first "
+"activated, try removing and adding the image back to your content."
+msgstr ""
+"%1$s inclut un attribut supplémentaire ‘data-wp-pid’ pour les images qui proviennent de la librairie Média "
+"(pour compléter l’information sur la largeur / hauteur) &mdash; si cette image a été sélectionnée de la "
+"librairie Média avant que %2$s a été activé, essayez de supprimer et ré-ajouter l’image à votre contenu."
+
+#: lib/media.php:718
+msgid ""
+"Content image %1$s has been ignored &mdash; the image width / height attributes are missing or too small for "
+"the %2$s image dimensions."
+msgstr ""
 
 #: lib/messages.php:607
 msgid ""
@@ -1222,15 +1240,15 @@ msgstr "Le cache %s a été vidé aussi."
 
 #: wpsso.php:221
 msgid "HTML debug mode is active &ndash; transient cache use could not be disabled."
-msgstr ""
+msgstr "Le mode de débogage HTML est actif – l’utilisation du cache transitoire n'a pas pu être désactivée."
 
 #: wpsso.php:222
 msgid "HTML debug mode is active &ndash; transient cache use is disabled."
-msgstr ""
+msgstr "Le mode de débogage HTML est actif – l’utilisation du cache transitoire est désactivée."
 
 #: wpsso.php:223
 msgid "Informational debug messages are being added as hidden HTML comments."
-msgstr ""
+msgstr "Des messages d’information de débogage sont ajoutés entant que commentaires HTML."
 
 #. Plugin Name of the plugin/theme
 msgid "WordPress Social Sharing Optimization (WPSSO)"
