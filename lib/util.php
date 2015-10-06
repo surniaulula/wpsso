@@ -232,21 +232,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$del_files = $this->p->util->delete_expired_file_cache( true );
 			$del_transients = $this->p->util->delete_expired_db_transients( true );
+			$other_cache_msg = __( '%s has been cleared as well.', 'wpsso' );
 
 			$this->p->notice->inf( $this->p->cf['uca'].' cached files, transient cache,'.
 				' and the WordPress object cache have been cleared.', true );
 
 			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 				w3tc_pgcache_flush();
-				$this->p->notice->inf( __( 'W3 Total Cache has been cleared as well.', 'wpsso' ), true );
+				$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
 			}
 			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 				wp_cache_clear_cache();
-				$this->p->notice->inf( __( 'WP Super Cache has been cleared as well.', 'wpsso' ), true );
+				$this->p->notice->inf( sprintf( $other_cache_msg, 'WP Super Cache' ), true );
 			}
 			if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
 				$GLOBALS['zencache']->wipe_cache();
-				$this->p->notice->inf( __( 'ZenCache has been cleared as well.', 'wpsso' ), true );
+				$this->p->notice->inf( sprintf( $other_cache_msg, 'ZenCache' ), true );
 			}
 		}
 

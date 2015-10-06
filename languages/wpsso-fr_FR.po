@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-05 10:11-0400\n"
-"PO-Revision-Date: 2015-10-05 10:18-0400\n"
+"POT-Creation-Date: 2015-10-06 07:38-0400\n"
+"PO-Revision-Date: 2015-10-06 07:39-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -145,19 +145,19 @@ msgstr "Achetez version Pro"
 
 #: lib/admin.php:849
 msgid "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
-msgstr ""
+msgstr "Consulter la <a href=“%s” target=“_blank”>Foire aux Questions</a>"
 
 #: lib/admin.php:852
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
-msgstr ""
+msgstr "et <a href=“%s” target=“_blank”>autres notes</a>"
 
 #: lib/admin.php:857
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
-msgstr ""
+msgstr "Ouvrir un <a href=“%s” target=“_blank”>billet de soutien</a>"
 
 #: lib/admin.php:860
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
-msgstr ""
+msgstr "Poster dans le <a href=“%s” target=“_blank”>forum de soutien</a>"
 
 #: lib/admin.php:865
 msgid "Support"
@@ -483,68 +483,59 @@ msgstr ""
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:265 lib/pro/admin/advanced.php:246
+#: lib/gpl/admin/advanced.php:265 lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:246
+#: lib/pro/admin/advanced.php:282
 msgctxt "column title"
 msgid "Show"
 msgstr "Afficher"
 
-#: lib/gpl/admin/advanced.php:267 lib/pro/admin/advanced.php:248
+#: lib/gpl/admin/advanced.php:267 lib/gpl/admin/advanced.php:306 lib/pro/admin/advanced.php:248
+#: lib/pro/admin/advanced.php:284
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr "Nom du Champ Contact"
 
-#: lib/gpl/admin/advanced.php:269 lib/pro/admin/advanced.php:250
+#: lib/gpl/admin/advanced.php:269 lib/gpl/admin/advanced.php:308 lib/pro/admin/advanced.php:250
+#: lib/pro/admin/advanced.php:286
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr "Titre du Champ Contact"
 
-#: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:282
-msgid "Show"
-msgstr "Afficher"
-
-#: lib/gpl/admin/advanced.php:306 lib/pro/admin/advanced.php:284
-msgid "Contact Field Name"
-msgstr "Nom du Champ Contact"
-
-#: lib/gpl/admin/advanced.php:308 lib/pro/admin/advanced.php:286
-msgid "Profile Contact Label"
-msgstr ""
-
 #: lib/gpl/admin/general.php:28 lib/pro/admin/general.php:31
-msgid "Use Author Gravatar Image"
-msgstr ""
+msgid "Include Author Gravatar Image"
+msgstr "Inclure l’image Gravatar de l’auteur"
 
 #: lib/gpl/admin/general.php:38
 msgid "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
 #: lib/gpl/admin/general.php:42 lib/pro/admin/general.php:40
-msgid "Max Videos to Include"
-msgstr ""
+msgid "Maximum Videos to Include"
+msgstr "Vidéos maximum a inclure"
 
 #: lib/gpl/admin/general.php:47 lib/pro/admin/general.php:46
 msgid "Use HTTPS for Video API Calls"
-msgstr ""
+msgstr "Utiliser HTTPS pour appels API vidéo"
 
 #: lib/gpl/admin/general.php:51 lib/pro/admin/general.php:50
 msgid "Include Video Preview Image(s)"
-msgstr ""
+msgstr "Inclure l’image d’aperçu du vidéo"
 
 #: lib/gpl/admin/general.php:56 lib/pro/admin/general.php:55
 msgid "Include Embed text/html Type"
-msgstr ""
+msgstr "Inclure text/html pour vidéo intégrée"
 
 #: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:60
 msgid "Default / Fallback Video URL"
-msgstr ""
+msgstr "URL d’un vidéo par défaut / repli"
 
 #: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:65
-msgid "Force Default Video on Indexes"
-msgstr ""
+msgid "Use Default Video on Indexes"
+msgstr "Utiliser vidéo par défaut sur index"
 
 #: lib/gpl/admin/general.php:71 lib/pro/admin/general.php:70
-msgid "Force Default Video on Search Results"
-msgstr ""
+msgid "Use Default Video on Search Results"
+msgstr "Utiliser vidéo par défaut<br/>pour résultats de recherche"
 
 #: lib/gpl/admin/post.php:30 lib/pro/admin/post.php:33
 msgid "Article Topic"
@@ -553,22 +544,22 @@ msgstr "Rubrique de l’article"
 #: lib/gpl/admin/post.php:35 lib/gpl/admin/post.php:40 lib/gpl/admin/taxonomy.php:27 lib/gpl/admin/user.php:28
 #: lib/pro/admin/post.php:40 lib/pro/admin/post.php:45 lib/pro/admin/taxonomy.php:31 lib/pro/admin/user.php:31
 msgid "Default Title"
-msgstr ""
+msgstr "Titre par défaut"
 
 #: lib/gpl/admin/post.php:46 lib/gpl/admin/post.php:51 lib/gpl/admin/taxonomy.php:32 lib/gpl/admin/user.php:33
 #: lib/pro/admin/post.php:53 lib/pro/admin/post.php:58 lib/pro/admin/taxonomy.php:38 lib/pro/admin/user.php:38
 msgid "Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description"
-msgstr ""
+msgstr "Description par défaut (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)"
 
 #: lib/gpl/admin/post.php:58 lib/gpl/admin/post.php:64 lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:39
 #: lib/pro/admin/post.php:66 lib/pro/admin/post.php:72 lib/pro/admin/taxonomy.php:45 lib/pro/admin/user.php:45
 msgid "Google+ / Schema Description"
-msgstr ""
+msgstr "Description Google+ / Schéma"
 
 #: lib/gpl/admin/post.php:70 lib/gpl/admin/post.php:75 lib/gpl/admin/taxonomy.php:43 lib/gpl/admin/user.php:44
 #: lib/pro/admin/post.php:80 lib/pro/admin/post.php:85 lib/pro/admin/taxonomy.php:51 lib/pro/admin/user.php:51
 msgid "Google Search / SEO Description"
-msgstr ""
+msgstr "Description Google Search / SEO"
 
 #: lib/gpl/admin/post.php:81 lib/gpl/admin/post.php:86 lib/gpl/admin/taxonomy.php:48 lib/gpl/admin/user.php:49
 #: lib/pro/admin/post.php:93 lib/pro/admin/post.php:98 lib/pro/admin/taxonomy.php:57 lib/pro/admin/user.php:57
@@ -598,39 +589,39 @@ msgstr "Dimensions de l’image"
 #: lib/pro/admin/post.php:130 lib/pro/admin/post.php:170 lib/pro/admin/taxonomy.php:83
 #: lib/pro/admin/taxonomy.php:117 lib/pro/admin/user.php:83 lib/pro/admin/user.php:118
 msgid "Image ID"
-msgstr ""
+msgstr "ID d’une image"
 
 #: lib/gpl/admin/post.php:124 lib/gpl/admin/post.php:165 lib/gpl/admin/taxonomy.php:79
 #: lib/gpl/admin/taxonomy.php:120 lib/gpl/admin/user.php:80 lib/gpl/admin/user.php:121
 #: lib/pro/admin/post.php:134 lib/pro/admin/post.php:175 lib/pro/admin/taxonomy.php:87
 #: lib/pro/admin/taxonomy.php:122 lib/pro/admin/user.php:87 lib/pro/admin/user.php:123
-msgid "or Image URL"
-msgstr ""
+msgid "or an Image URL"
+msgstr "ou URL d’une image"
 
 #: lib/gpl/admin/post.php:129 lib/gpl/admin/taxonomy.php:84 lib/gpl/admin/user.php:85
 #: lib/pro/admin/post.php:139 lib/pro/admin/taxonomy.php:92
 msgid "Maximum Images"
-msgstr ""
+msgstr "Images maximum"
 
 #: lib/gpl/admin/post.php:133 lib/gpl/admin/taxonomy.php:88 lib/gpl/admin/user.php:89
 #: lib/pro/admin/post.php:143 lib/pro/admin/taxonomy.php:96 lib/pro/admin/user.php:91
 msgid "Video Embed HTML"
-msgstr ""
+msgstr "HTML de vidéo intégrée"
 
 #: lib/gpl/admin/post.php:137 lib/gpl/admin/taxonomy.php:92 lib/gpl/admin/user.php:93
 #: lib/pro/admin/post.php:147 lib/pro/admin/taxonomy.php:100 lib/pro/admin/user.php:95
-msgid "or Video URL"
-msgstr ""
+msgid "or a Video URL"
+msgstr "ou URL d’un vidéo"
 
 #: lib/gpl/admin/post.php:142 lib/gpl/admin/taxonomy.php:97 lib/gpl/admin/user.php:98
 #: lib/pro/admin/post.php:152 lib/pro/admin/user.php:100
 msgid "Maximum Videos"
-msgstr ""
+msgstr "Vidéos maximum"
 
 #: lib/gpl/admin/post.php:146 lib/gpl/admin/taxonomy.php:101 lib/gpl/admin/user.php:102
 #: lib/pro/admin/post.php:156 lib/pro/admin/taxonomy.php:104 lib/pro/admin/user.php:104
 msgid "Include Preview Image(s)"
-msgstr ""
+msgstr "Inclure l’image d’aperçu"
 
 #: lib/gpl/admin/post.php:151 lib/gpl/admin/taxonomy.php:106 lib/gpl/admin/user.php:107
 #: lib/pro/admin/post.php:161 lib/pro/admin/user.php:109
@@ -650,13 +641,13 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:672
-msgid "Purchase %s licence(s) to modify the following options and install / enable Pro modules"
+msgid "Purchase %s licence(s) to install / enable Pro modules and modify the following options"
 msgstr ""
-"Achetez une/des licence(s) %s pour modifier les options suivantes et installer / activer les modules Pro"
+"Achetez une/des licence(s) %s pour installer / activer les modules Pro et modifier les options suivantes"
 
 #: lib/messages.php:673
-msgid "Purchase the %s plugin to modify the following options and install / enable Pro modules"
-msgstr "Achetez l’extension %s pour modifier les options suivantes et installer / activer les modules Pro"
+msgid "Purchase the %s plugin to install / enable Pro modules and modify the following options"
+msgstr "Achetez l’extension %s pour installer / activer les modules Pro et modifier les options suivantes"
 
 #: lib/messages.php:676
 msgid "%s required to use this option"
@@ -762,7 +753,7 @@ msgstr "Balises Head"
 #: lib/meta.php:31
 msgctxt "normal metabox tab"
 msgid "Validate"
-msgstr "Valider"
+msgstr "Validations"
 
 #: lib/meta.php:72
 msgctxt "preview image error"
@@ -789,11 +780,11 @@ msgstr "Débogueur Facebook"
 
 #: lib/meta.php:130
 msgid "Google Structured Data Testing Tool"
-msgstr ""
+msgstr "Outil Google de test des données structurées"
 
 #: lib/meta.php:132
 msgid "Pinterest Rich Pin Validator"
-msgstr ""
+msgstr "Validateur Pinterest de Rich Pin"
 
 #: lib/meta.php:134
 msgid "Twitter Card Validator"
@@ -825,32 +816,32 @@ msgstr "Réglages Sociaux"
 #: lib/pro/forum/bbpress.php:69 lib/pro/forum/bbpress.php:117
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
-msgstr ""
+msgstr "Profil de %s"
 
 #: lib/pro/forum/bbpress.php:123
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
-msgstr ""
+msgstr "Sujets débutés par %s"
 
 #: lib/pro/forum/bbpress.php:127
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
-msgstr ""
+msgstr "Réponses crées de %s"
 
 #: lib/pro/forum/bbpress.php:131
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
-msgstr ""
+msgstr "Favoris de %s"
 
 #: lib/pro/forum/bbpress.php:135
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
-msgstr ""
+msgstr "Abonnements de %s"
 
 #: lib/pro/forum/bbpress.php:139
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
-msgstr ""
+msgstr "Modifier le profil de %s"
 
 #: lib/setting/contact-fields.php:24 lib/submenu/advanced.php:28
 msgctxt "normal metabox title"
@@ -889,23 +880,23 @@ msgstr "URL de la page d’affaires Facebook"
 
 #: lib/setting/social-accounts.php:54 lib/submenu/general.php:225
 msgid "Google+ Business Page URL"
-msgstr ""
+msgstr "URL de la page d’affaires Google+"
 
 #: lib/setting/social-accounts.php:58 lib/submenu/general.php:284
 msgid "Pinterest Company Page URL"
-msgstr ""
+msgstr "URL de la page entreprise Pinterest"
 
 #: lib/setting/social-accounts.php:62 lib/submenu/general.php:309
 msgid "Twitter Business @username"
-msgstr ""
+msgstr "Nom d’utilisateur d’affaires Twitter"
 
 #: lib/setting/social-accounts.php:66 lib/submenu/general.php:330
 msgid "Instagram Business URL"
-msgstr ""
+msgstr "URL de la page d’affaires Instagram"
 
 #: lib/setting/social-accounts.php:70 lib/submenu/general.php:334
 msgid "LinkedIn Company Page URL"
-msgstr ""
+msgstr "URL de la page entreprise LinkedIn"
 
 #: lib/setting/social-accounts.php:74 lib/submenu/general.php:338
 msgid "MySpace Business (Brand) URL"
@@ -1002,7 +993,7 @@ msgstr "Titre / Description"
 #: lib/submenu/general.php:41
 msgctxt "normal metabox tab"
 msgid "Authorship"
-msgstr "Paternité"
+msgstr "Auteurs"
 
 #: lib/submenu/general.php:42
 msgctxt "normal metabox tab"
@@ -1077,7 +1068,7 @@ msgstr "Ajouter étiquettes de la Page parent"
 
 #: lib/submenu/general.php:128
 msgid "Author Profile URL Field"
-msgstr ""
+msgstr "Champ URL pour profil d’auteur"
 
 #: lib/submenu/general.php:133
 msgid "Fallback to Author Index URL"
@@ -1085,19 +1076,19 @@ msgstr ""
 
 #: lib/submenu/general.php:138 lib/submenu/general.php:248
 msgid "Default Author when Missing"
-msgstr ""
+msgstr "Auteur par défaut si manquant"
 
 #: lib/submenu/general.php:143 lib/submenu/general.php:253
-msgid "Force Default Author on Indexes"
-msgstr ""
+msgid "Use Default Author on Indexes"
+msgstr "Utiliser l’auteur par défaut sur index"
 
 #: lib/submenu/general.php:148 lib/submenu/general.php:258
-msgid "Default Author on Search Results"
-msgstr ""
+msgid "Use Default Author on Search Results"
+msgstr "Utiliser l’auteur par défaut<br/>pour résultats de recherche"
 
 #: lib/submenu/general.php:156
-msgid "Max Images to Include"
-msgstr ""
+msgid "Maximum Images to Include"
+msgstr "Images maximum a inclure"
 
 #: lib/submenu/general.php:164
 msgid "Open Graph Image Dimensions"
@@ -1105,19 +1096,19 @@ msgstr "Dimensions d’images Open Graph"
 
 #: lib/submenu/general.php:168
 msgid "Default / Fallback Image ID"
-msgstr ""
+msgstr "ID de l’image par défaut / repli"
 
 #: lib/submenu/general.php:172
 msgid "or Default / Fallback Image URL"
-msgstr ""
+msgstr "ou URL d’une image par défaut / repli"
 
 #: lib/submenu/general.php:177
-msgid "Force Default Image on Indexes"
-msgstr ""
+msgid "Use Default Image on Indexes"
+msgstr "Utiliser l’image par défaut sur index"
 
 #: lib/submenu/general.php:182
-msgid "Force Default Image on Search Results"
-msgstr ""
+msgid "Use Default Image on Search Results"
+msgstr "Utiliser l’image par défaut<br/>pour résultats de recherche"
 
 #: lib/submenu/general.php:188
 msgid "Add Tags from NGG Featured Image"
@@ -1125,19 +1116,19 @@ msgstr ""
 
 #: lib/submenu/general.php:205
 msgid "Facebook Admin Username(s)"
-msgstr "Nom d’utilisateur admin. Facebook"
+msgstr "Nom d’utilisateurs admin. Facebook"
 
 #: lib/submenu/general.php:209
 msgid "Facebook Application ID"
-msgstr "Ident. d’application Facebook"
+msgstr "ID de l’application Facebook"
 
 #: lib/submenu/general.php:213
 msgid "Default Language"
-msgstr ""
+msgstr "Langue par défaut"
 
 #: lib/submenu/general.php:217 lib/submenu/general.php:293
 msgid "Author Name Format"
-msgstr ""
+msgstr "Format du nom d’auteur"
 
 #: lib/submenu/general.php:229
 msgid "Schema Website / Business Logo URL"
@@ -1145,15 +1136,15 @@ msgstr ""
 
 #: lib/submenu/general.php:234
 msgid "Schema Meta Description Length"
-msgstr ""
+msgstr "Longueur max. de description Schéma"
 
 #: lib/submenu/general.php:239
 msgid "Search / SEO Description Length"
-msgstr ""
+msgstr "Longueur max. de description SEO"
 
 #: lib/submenu/general.php:243
 msgid "Author Link URL Field"
-msgstr ""
+msgstr "Champ URL pour balise Link d’auteur"
 
 #: lib/submenu/general.php:263
 msgid "Add Schema Website JSON-LD"
@@ -1225,17 +1216,9 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:241
-msgid "W3 Total Cache has been cleared as well."
-msgstr ""
-
-#: lib/util.php:245
-msgid "WP Super Cache has been cleared as well."
-msgstr ""
-
-#: lib/util.php:249
-msgid "ZenCache has been cleared as well."
-msgstr ""
+#: lib/util.php:235
+msgid "%s has been cleared as well."
+msgstr "Le cache %s a été vidé aussi."
 
 #: wpsso.php:221
 msgid "HTML debug mode is active &ndash; transient cache use could not be disabled."
@@ -1262,6 +1245,8 @@ msgid ""
 "Make sure social websites present your content correctly, no matter how your webpage is shared - from "
 "buttons, browser add-ons, or pasted URLs."
 msgstr ""
+"Assurez-vous que les sites sociaux présentent votre contenu correctement, peu importe comment votre page Web "
+"est partagée - à partir de boutons, d’extensions du navigateur, ou URLs collées."
 
 #. Author of the plugin/theme
 msgid "Jean-Sebastien Morisset"
@@ -1270,3 +1255,19 @@ msgstr "Jean-Sebastien Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
+
+#~ msgid "W3 Total Cache has been cleared as well."
+#~ msgstr "Le cache W3 Total Cache a été vidé aussi."
+
+#~ msgid "WP Super Cache has been cleared as well."
+#~ msgstr "Le cache WP Super Cache a été vidé aussi."
+
+#~ msgid "Show"
+#~ msgstr "Afficher"
+
+#~ msgid "Contact Field Name"
+#~ msgstr "Nom du Champ Contact"
+
+#, fuzzy
+#~ msgid "Profile Contact Label"
+#~ msgstr "Titre du Champ Contact"

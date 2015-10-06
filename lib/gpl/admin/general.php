@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 		
-			$rows[] = $this->p->util->get_th( __( 'Use Author Gravatar Image',
+			$rows[] = $this->p->util->get_th( __( 'Include Author Gravatar Image',
 				'wpsso' ), null, 'og_author_gravatar' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 					'wpsso' ).'</p>'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 		
-			$rows[] = $this->p->util->get_th( __( 'Max Videos to Include',
+			$rows[] = $this->p->util->get_th( __( 'Maximum Videos to Include',
 				'wpsso' ), null, 'og_vid_max' ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 	
@@ -63,12 +63,12 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( __( 'Force Default Video on Indexes',
+			$this->p->util->get_th( __( 'Use Default Video on Indexes',
 				'wpsso' ), null, 'og_def_vid_on_index' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( __( 'Force Default Video on Search Results',
+			$this->p->util->get_th( __( 'Use Default Video on Search Results',
 				'wpsso' ), null, 'og_def_vid_on_search' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 

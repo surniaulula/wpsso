@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
 						case 'tooltip-og_author_gravatar':
-							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Force Default Image on <em>Author</em> Index</strong>" option is also checked under the \'Images\' tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
+							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Use Default Image on <em>Author</em> Index</strong>" option is also checked under the Images tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $atts );
@@ -669,8 +669,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to modify the following options and install / enable Pro modules', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to modify the following options and install / enable Pro modules', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to install / enable Pro modules and modify the following options', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to install / enable Pro modules and modify the following options', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';

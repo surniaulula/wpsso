@@ -301,12 +301,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = '<td></td>'.
-			$this->p->util->get_th( __( 'Show',
-				'wpsso' ), 'left checkbox' ).
-			$this->p->util->get_th( __( 'Contact Field Name',
-				'wpsso' ), 'left medium', 'custom-cm-field-name' ).
-			$this->p->util->get_th( __( 'Profile Contact Label',
-				'wpsso' ), 'left wide' );
+			$this->p->util->get_th( _x( 'Show',
+				'column title', 'wpsso' ), 'left checkbox' ).
+			$this->p->util->get_th( _x( 'Contact Field Name',
+				'column title', 'wpsso' ), 'left medium', 'custom-cm-field-name' ).
+			$this->p->util->get_th( _x( 'Profile Contact Label',
+				'column title', 'wpsso' ), 'left wide' );
 
 			$sorted_wp_cm = $this->p->cf['wp']['cm'];
 			ksort( $sorted_wp_cm );

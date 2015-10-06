@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.0-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-05 14:54:57+00:00\n"
+"POT-Creation-Date: 2015-10-06 12:39:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -495,35 +495,26 @@ msgstr ""
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:265 lib/pro/admin/advanced.php:246
+#: lib/gpl/admin/advanced.php:265 lib/gpl/admin/advanced.php:304
+#: lib/pro/admin/advanced.php:246 lib/pro/admin/advanced.php:282
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:267 lib/pro/admin/advanced.php:248
+#: lib/gpl/admin/advanced.php:267 lib/gpl/admin/advanced.php:306
+#: lib/pro/admin/advanced.php:248 lib/pro/admin/advanced.php:284
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:269 lib/pro/admin/advanced.php:250
+#: lib/gpl/admin/advanced.php:269 lib/gpl/admin/advanced.php:308
+#: lib/pro/admin/advanced.php:250 lib/pro/admin/advanced.php:286
 msgctxt "column title"
-msgid "Profile Contact Label"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:282
-msgid "Show"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:306 lib/pro/admin/advanced.php:284
-msgid "Contact Field Name"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:308 lib/pro/admin/advanced.php:286
 msgid "Profile Contact Label"
 msgstr ""
 
 #: lib/gpl/admin/general.php:28 lib/pro/admin/general.php:31
-msgid "Use Author Gravatar Image"
+msgid "Include Author Gravatar Image"
 msgstr ""
 
 #: lib/gpl/admin/general.php:38
@@ -532,7 +523,7 @@ msgid ""
 msgstr ""
 
 #: lib/gpl/admin/general.php:42 lib/pro/admin/general.php:40
-msgid "Max Videos to Include"
+msgid "Maximum Videos to Include"
 msgstr ""
 
 #: lib/gpl/admin/general.php:47 lib/pro/admin/general.php:46
@@ -552,11 +543,11 @@ msgid "Default / Fallback Video URL"
 msgstr ""
 
 #: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:65
-msgid "Force Default Video on Indexes"
+msgid "Use Default Video on Indexes"
 msgstr ""
 
 #: lib/gpl/admin/general.php:71 lib/pro/admin/general.php:70
-msgid "Force Default Video on Search Results"
+msgid "Use Default Video on Search Results"
 msgstr ""
 
 #: lib/gpl/admin/post.php:30 lib/pro/admin/post.php:33
@@ -636,7 +627,7 @@ msgstr ""
 #: lib/pro/admin/post.php:134 lib/pro/admin/post.php:175
 #: lib/pro/admin/taxonomy.php:87 lib/pro/admin/taxonomy.php:122
 #: lib/pro/admin/user.php:87 lib/pro/admin/user.php:123
-msgid "or Image URL"
+msgid "or an Image URL"
 msgstr ""
 
 #: lib/gpl/admin/post.php:129 lib/gpl/admin/taxonomy.php:84
@@ -654,7 +645,7 @@ msgstr ""
 #: lib/gpl/admin/post.php:137 lib/gpl/admin/taxonomy.php:92
 #: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:147
 #: lib/pro/admin/taxonomy.php:100 lib/pro/admin/user.php:95
-msgid "or Video URL"
+msgid "or a Video URL"
 msgstr ""
 
 #: lib/gpl/admin/post.php:142 lib/gpl/admin/taxonomy.php:97
@@ -690,14 +681,14 @@ msgstr ""
 
 #: lib/messages.php:672
 msgid ""
-"Purchase %s licence(s) to modify the following options and install / enable "
-"Pro modules"
+"Purchase %s licence(s) to install / enable Pro modules and modify the "
+"following options"
 msgstr ""
 
 #: lib/messages.php:673
 msgid ""
-"Purchase the %s plugin to modify the following options and install / enable "
-"Pro modules"
+"Purchase the %s plugin to install / enable Pro modules and modify the "
+"following options"
 msgstr ""
 
 #: lib/messages.php:676
@@ -1137,15 +1128,15 @@ msgid "Default Author when Missing"
 msgstr ""
 
 #: lib/submenu/general.php:143 lib/submenu/general.php:253
-msgid "Force Default Author on Indexes"
+msgid "Use Default Author on Indexes"
 msgstr ""
 
 #: lib/submenu/general.php:148 lib/submenu/general.php:258
-msgid "Default Author on Search Results"
+msgid "Use Default Author on Search Results"
 msgstr ""
 
 #: lib/submenu/general.php:156
-msgid "Max Images to Include"
+msgid "Maximum Images to Include"
 msgstr ""
 
 #: lib/submenu/general.php:164
@@ -1161,11 +1152,11 @@ msgid "or Default / Fallback Image URL"
 msgstr ""
 
 #: lib/submenu/general.php:177
-msgid "Force Default Image on Indexes"
+msgid "Use Default Image on Indexes"
 msgstr ""
 
 #: lib/submenu/general.php:182
-msgid "Force Default Image on Search Results"
+msgid "Use Default Image on Search Results"
 msgstr ""
 
 #: lib/submenu/general.php:188
@@ -1274,16 +1265,8 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:241
-msgid "W3 Total Cache has been cleared as well."
-msgstr ""
-
-#: lib/util.php:245
-msgid "WP Super Cache has been cleared as well."
-msgstr ""
-
-#: lib/util.php:249
-msgid "ZenCache has been cleared as well."
+#: lib/util.php:235
+msgid "%s has been cleared as well."
 msgstr ""
 
 #: wpsso.php:221

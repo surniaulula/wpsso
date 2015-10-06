@@ -140,12 +140,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'og_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Force Default Author on Indexes',
+					$this->p->util->get_th( __( 'Use Default Author on Indexes',
 						'wpsso' ), null, 'og_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Default Author on Search Results',
+					$this->p->util->get_th( __( 'Use Default Author on Search Results',
 						'wpsso' ), null, 'og_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' defines search webpages as articles</td>';
 
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-images':
 
-					$rows[] = $this->p->util->get_th( __( 'Max Images to Include',
+					$rows[] = $this->p->util->get_th( __( 'Maximum Images to Include',
 						'wpsso' ), null, 'og_img_max' ).
 					'<td>'.$this->form->get_select( 'og_img_max', 
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
@@ -174,12 +174,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Force Default Image on Indexes',
+					$this->p->util->get_th( __( 'Use Default Image on Indexes',
 						'wpsso' ), null, 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Force Default Image on Search Results',
+					$this->p->util->get_th( __( 'Use Default Image on Search Results',
 						'wpsso' ), null, 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 		
@@ -250,12 +250,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'seo_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Force Default Author on Indexes',
+					$this->p->util->get_th( __( 'Use Default Author on Indexes',
 						'wpsso' ), null, 'google_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
 			
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Default Author on Search Results',
+					$this->p->util->get_th( __( 'Use Default Author on Search Results',
 						'wpsso' ), null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 	

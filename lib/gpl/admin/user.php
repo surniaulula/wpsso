@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 				'wpsso' ), 'medium', 'meta-og_img_id', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'or Image URL',
+			$rows[] = $this->p->util->get_th( __( 'or an Image URL',
 				'wpsso' ), 'medium', 'meta-og_img_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 				'wpsso' ), 'medium', 'meta-og_vid_embed', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
-			$rows[] = $this->p->util->get_th( __( 'or Video URL',
+			$rows[] = $this->p->util->get_th( __( 'or a Video URL',
 				'wpsso' ), 'medium', 'meta-og_vid_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 			'<td class="blank">&nbsp;</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( __( 'or Image URL',
+			$this->p->util->get_th( __( 'or an Image URL',
 				'wpsso' ), 'medium', 'meta-rp_img_url', $head_info ).
 			'<td class="blank">&nbsp;</td>';
 
