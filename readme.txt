@@ -359,6 +359,9 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Developer Notes**
 	* Added context to all metabox titles and tab text strings.
+	* Added new filters to customize the image pattern matching in the content:
+		* apply_filters( 'wpsso_content_images_tags_preg_or', $tags_preg = 'img' );
+		* apply_filters( 'wpsso_content_images_attr_preg_or', $attr_preg = 'data-[a-z]+-pid' );
 
 = Version 3.10.3 2015/10/04 =
 

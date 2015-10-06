@@ -9,8 +9,10 @@ apply_filters( 'wpsso_attached_images', $og_ret, $num, $size_name, $post_id, $ch
 apply_filters( 'wpsso_attached_accept_img_size', $ret, $img_url, $img_width, $img_height, $size_name, $pid );
 apply_filters( 'wpsso_caption', $caption, $use_post, $add_hashtags, $md_idx, $src_id );
 apply_filters( 'wpsso_content', $content, $post_id, $use_post, $md_idx, $src_id );
-apply_filters( 'wpsso_content_seed', '', $post_id, $use_post, $md_idx, $src_id );
 apply_filters( 'wpsso_content_accept_img_size', $ret, $img_url, $img_width, $img_height, $size_name, $post_id );
+apply_filters( 'wpsso_content_images_tags_preg', $tags_preg = 'img' );
+apply_filters( 'wpsso_content_images_attr_preg', $attr_preg = 'data-[a-z]+-pid' );
+apply_filters( 'wpsso_content_seed', '', $post_id, $use_post, $md_idx, $src_id );
 apply_filters( 'wpsso_description', $desc, $use_post, $add_hashtags, $md_idx, $src_id );
 apply_filters( 'wpsso_description_pre_limit', $desc );
 apply_filters( 'wpsso_description_seed', '', $use_post, $add_hashtags, $md_idx, $src_id );
