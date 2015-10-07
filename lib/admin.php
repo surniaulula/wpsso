@@ -272,10 +272,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_menu_page( $menu_slug ) {
+
 			global $wp_version;
+			$lca = $this->p->cf['lca'];
+			$short = $this->p->cf['plugin'][$lca]['short'];
+
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				$this->p->cf['plugin'][$this->p->cf['lca']]['short'].self::$is.' &mdash; '.$this->menu_name, 
+				$short.self::$is.' &mdash; '.$this->menu_name, 
 				$this->p->cf['menu'].self::$is, 
 				'manage_options', 
 				$menu_slug, 
@@ -287,6 +291,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = false, $menu_name = false ) {
+
+			$lca = $this->p->cf['lca'];
+			$short = $this->p->cf['plugin'][$lca]['short'];
 			$menu_id = $menu_id === false ?
 				$this->menu_id : $menu_id;
 			$menu_name = $menu_name === false ?
@@ -310,8 +317,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$menu_title = preg_replace( '/^(\w+ \w+)/',
 						'<div style="color:#'.$this->p->cf['color'].';">$1</div>', $menu_name );
 				else $menu_title = $menu_name;
-				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-				$page_title = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].self::$is.' &mdash; '.$menu_title;
+				$menu_slug = $lca.'-'.$menu_id;
+				$page_title = $short.self::$is.' &mdash; '.$menu_title;
 				$function = array( &$this, 'show_form_page' );
 			}
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
@@ -391,8 +398,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), $this->get_nonce(), WPSSO_NONCE );
 			$this->p->notice->inf( __( 'Plugin settings have been updated.', 'wpsso' ).' '.
-				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">Clear All Cache(s)</a> now.',
-					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link ), true );
+				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
+					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
+						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
 			return $opts;
 		}
 
@@ -883,7 +891,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$show_opts_text = 'View '.$this->p->cf['form']['show_options'][$show_opts_next].' by Default';
+			$show_opts_text = sprintf( __( 'View %s by Default', 'wpsso' ),
+				_x( $this->p->cf['form']['show_options'][$show_opts_next],
+					'form option value', 'wpsso' ) );
 			$show_opts_url = $this->p->util->get_admin_url( '?action=change_show_options&show_opts='.$show_opts_next );
 
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
@@ -1167,7 +1177,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
-				$this->p->notice->err( $err_pre.'<strong>'.__( 'JetPack\'s Photon module cripples the WordPress image size functions on purpose.', 'wpsso' ).'</strong> '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', 'wpsso' ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %4$s images.', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
+				$this->p->notice->err( $err_pre.'<strong>'.__( 'JetPack\'s Photon module purposefully cripples the WordPress image size functions.', 'wpsso' ).'</strong> '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', 'wpsso' ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %4$s images.', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
 			}
 
 			// WooCommerce

@@ -276,10 +276,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Authorship' settings
 						 */
 						case 'tooltip-og_author_field':
-							$text = 'Select which field to use from the author\'s profile for the Facebook / Open Graph and Pinterest Rich Pin \'article:author\' meta tag(s). The preferred (and default) setting is the Facebook URL field.';
+							$text = __( 'Select which contact field to use from the author\'s profile page for the Facebook / Open Graph and Pinterest Rich Pin \'article:author\' meta tag(s). The preferred setting is the Facebook URL field (default value).', 'wpsso' );
 							break;
 						case 'tooltip-og_author_fallback':
-							$text = 'If the Author Profile URL (and the Author Link URL in the Google Settings below) is not a valid URL, then '.$atts['short'].' can fallback to using the author index on this website (\''.trailingslashit( site_url() ).'author/username\' for example). Uncheck this option to disable the fallback feature (default is unchecked).';
+							$text = sprintf( __( 'If the Author Profile URL (and the Author Link URL in the Google Settings below) is not a valid URL, then %1$s can fallback to using the author index / archive page on this website (\'%2$s\' for example).', 'wpsso' ), $atts['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-og_def_author_id':
 							$text = 'A default author for webpages <em>missing authorship information</em> (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[none]</em> (the default).';
@@ -411,22 +411,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Service API Keys' (URL Shortening) settings
 						 */
 						case 'tooltip-plugin_shortener':
-							$text = 'A preferred URL shortening service for various '.$atts['short'].' plugin filters and/or extensions that may need to shorten URLs. Don\'t forget to define the Service API Keys for the URL shortening service you select.';
+							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or extensions that may need to shorten URLs &mdash; don\'t forget to define the Service API Keys for the URL shortening service of your choice.', 'wpsso' ), $atts['short'] );
 							break;
 						case 'tooltip-plugin_min_shorten':
-							$text = 'URLs / permalinks shorter than this length will not be shortened (the default suggested by Twitter is '.$this->p->opt->get_defaults( 'plugin_min_shorten' ).' characters).';
+							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
 							break;
 						case 'tooltip-plugin_bitly_login':
-							$text = 'The username for your Bit.ly API key (see <a href="https://bitly.com/a/your_api_key" target="_blank">Your Bit.ly API Key</a> for details).';
+							$text = sprintf( __( 'The username for your Bit.ly API key (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 							break;
 						case 'tooltip-plugin_bitly_api_key':
-							$text = 'Your Bit.ly API key for this website (see <a href="https://bitly.com/a/your_api_key" target="_blank">Your Bit.ly API Key</a> for details).';
+							$text = sprintf( __( 'Your Bit.ly API key for this website (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 							break;
 						case 'tooltip-plugin_google_api_key':
-							$text = 'The Google BrowserKey for this website / project. If you don\'t already have one, visit <a href="https://cloud.google.com/console#/project" target="_blank">Google\'s Cloud Console</a> and create a new project for your website. Under the <em>API &amp; auth - Registered apps</em>, register a new \'Web Application\' (name it \'WPSSO\' for example) and enter it\'s BrowserKey here.';
+							$text = sprintf( __( 'The Google BrowserKey for this website (project). If you don\'t already have one, visit <a href="%s" target="_blank">Google\'s Cloud Console</a> and create a new project for your website (use the \'Select a project\' drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
 							break;
 						case 'tooltip-plugin_google_shorten':
-							$text = 'In order to use Google\'s URL Shortener for URLs, you must turn on the URL Shortener API from <a href="https://cloud.google.com/console#/project" target="_blank">Google\'s Cloud Console</a> under the <em>API &amp; auth - APIs</em> menu options. Confirm that you have enabled Google\'s URL Shortener by checking the \'Yes\' option here.';
+							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API from <a href="%s" target="_blank">Google\'s Cloud Console</a> (under the project\'s <em>API &amp; auth / APIs / URL Shortener API</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/start' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the \'Yes\' option here.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_plugin', $text, $idx, $atts );
@@ -533,10 +533,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (defaults is '.$this->p->opt->get_defaults( 'rp_img_width' ).'x'.$this->p->opt->get_defaults( 'rp_img_height' ).' '.( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'un' : '' ).'cropped). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-rp_author_name':
-							$text = 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags. An <em>additional</em> \'article:author\' meta tag may be included when the Pinterest crawler is detected. Select an Author Name Format, or \'[none]\' to disable this feature (the default and recommended value is \'Display Name\').';
+							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'An additional \'article:author\' meta tag can be included when the Pinterest crawler is detected.', 'wpsso' ).' '.__( 'Select an Author Name Format to use, or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' );
 							break;
 						case 'tooltip-rp_dom_verify':
-							$text = 'To <a href="https://help.pinterest.com/en/articles/verify-your-website#meta_tag" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest, click the \'Verify Website\' button, and enter the p:domain_verify meta tag <em>content</em> value here.';
+							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'ttps://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_rp', $text, $idx, $atts );
@@ -729,7 +729,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'side-help':
 						$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
-						$text = '<p>'.sprintf( __( 'Metaboxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, or removed / added from the <em>Screen Options</em> tab (top-right of page).', 'wpsso' ).' '.__( 'Settings in multiple tabs can be edited before clicking the \'%s\' button.', 'wpsso' ), $submit_text ).'</p>';
+						$text = '<p>'.sprintf( __( 'Metaboxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, or removed / added from the <em>Screen Options</em> tab (top-right of page).', 'wpsso' ).' '.__( 'Option values in multiple tabs can be modified before clicking the \'%s\' button.', 'wpsso' ), $submit_text ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $atts );

@@ -230,12 +230,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_cache_flush();					// clear non-database transients as well
 
+			$lca = $this->p->cf['lca'];
+			$short = $this->p->cf['plugin'][$lca]['short'];
 			$del_files = $this->p->util->delete_expired_file_cache( true );
 			$del_transients = $this->p->util->delete_expired_db_transients( true );
 			$other_cache_msg = __( '%s has been cleared as well.', 'wpsso' );
 
-			$this->p->notice->inf( $this->p->cf['uca'].' cached files, transient cache,'.
-				' and the WordPress object cache have been cleared.', true );
+			$this->p->notice->inf( sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
+				'wpsso' ), $short ), true );
 
 			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 				w3tc_pgcache_flush();

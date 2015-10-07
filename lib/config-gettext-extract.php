@@ -1,0 +1,34 @@
+<?php die( 'These aren\'t the droids you\'re looking for...' );
+// an extract of translatable text strings from the static config array
+_x( 'Advanced', 'lib file description', 'wpsso' );
+_x( 'All Options', 'form option value', 'wpsso' );
+_x( 'Basic Options', 'form option value', 'wpsso' );
+_x( 'Bit.ly', 'form option value', 'wpsso' );
+_x( 'Bottom', 'form option value', 'wpsso' );
+_x( 'Center', 'form option value', 'wpsso' );
+_x( 'Default value', 'form option value', 'wpsso' );
+_x( 'Display Name', 'form option value', 'wpsso' );
+_x( 'Excerpt Only', 'form option value', 'wpsso' );
+_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' );
+_x( 'First and Last Names', 'form option value', 'wpsso' );
+_x( 'Footer', 'form option value', 'wpsso' );
+_x( 'Force this value', 'form option value', 'wpsso' );
+_x( 'General', 'lib file description', 'wpsso' );
+_x( 'Goo.gl', 'form option value', 'wpsso' );
+_x( 'Header', 'form option value', 'wpsso' );
+_x( 'If value is empty', 'form option value', 'wpsso' );
+_x( 'Left', 'form option value', 'wpsso' );
+_x( 'Nickname', 'form option value', 'wpsso' );
+_x( 'No', 'form option value', 'wpsso' );
+_x( '[none]', 'form option value', 'wpsso' );
+_x( 'Read Me', 'lib file description', 'wpsso' );
+_x( 'Right', 'form option value', 'wpsso' );
+_x( 'Setup Guide', 'lib file description', 'wpsso' );
+_x( 'Social Image Dimensions', 'lib file description', 'wpsso' );
+_x( 'Title and Excerpt', 'form option value', 'wpsso' );
+_x( 'Title Only', 'form option value', 'wpsso' );
+_x( 'Top', 'form option value', 'wpsso' );
+_x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
+_x( 'Website / Business Social Accounts', 'lib file description', 'wpsso' );
+_x( 'Yes', 'form option value', 'wpsso' );
+?>

@@ -14,6 +14,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca = 'sucom';
+		private $text_dom = 'sucom';
 		private $opt_name = 'sucom_notices';
 		private $dis_name = 'sucom_dismissed';
 		private $log = array(
@@ -30,8 +31,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $this->p->debug->enabled ) )
 				$this->p->debug->mark();
 
-			if ( ! empty( $this->p->cf['lca'] ) )
+			if ( ! empty( $this->p->cf['lca'] ) ) {
 				$this->lca = $this->p->cf['lca'];
+				if ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) )
+					$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			}
 
 			$uca = strtoupper( $this->lca );
 			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? 
@@ -228,13 +232,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// remind the user that there are hidden warning messages
 			if ( isset( $hidden['err'] ) ) {
 				if ( $hidden['err'] > 1 )
-					echo $this->get_notice_html( 'inf', $hidden['err'].
-						' warning messages have been hidden &mdash; <a id="'.$this->lca.
-							'-unhide-notices">unhide these notices temporarily</a>.' );
+					echo $this->get_notice_html( 'inf', sprintf( __( '%1$d warning messages have been hidden &mdash; <a id="%2$s">unhide these notices temporarily</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
 				elseif ( $hidden['err'] > 0 )
-					echo $this->get_notice_html( 'inf', $hidden['err'].
-						' warning message has been hidden &mdash; <a id="'.$this->lca.
-							'-unhide-notices">unhide this notice temporarily</a>.' );
+					echo $this->get_notice_html( 'inf', sprintf( __( '%1$d warning message has been hidden &mdash; <a id="%2$s">unhide this notice temporarily</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
 			}
 
 			echo $msg_html;
@@ -304,7 +304,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_html( $type, $msg_txt, $payload = array() ) {
 
 			if ( ! isset( $payload['label'] ) )
-				$payload['label'] = strtoupper( $this->lca ).' Notice';
+				$payload['label'] = sprintf( __( '%s Notice',
+					$this->text_dom ), strtoupper( $this->lca ) );
 
 			switch ( $type ) {
 				case 'nag':

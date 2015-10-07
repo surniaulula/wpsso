@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'og_author_field', $this->form->author_contact_fields ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Fallback to Author Index URL',
+					$this->p->util->get_th( __( 'Fallback to Author\'s Archive Page',
 						'wpsso' ), null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
 	
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'rp_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( __( 'Website Verification ID',
+					$this->p->util->get_th( __( 'Pinterest Website Verification ID',
 						'wpsso' ), null, 'rp_dom_verify' ).
 					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
 		
