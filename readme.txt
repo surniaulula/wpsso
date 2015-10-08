@@ -495,7 +495,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = 3.10.3 =
 
-2015/10/04 Added translation function calls to all option labels in settings pages and metaboxes. Added POT (Portable Object Template) file with translation strings in languages/nextgen-facebook.pot.
+2015/10/04 Added translation function calls to all option labels in settings pages and metaboxes. Added POT (Portable Object Template) file with translation strings in languages/wpsso.pot.
 
 = 3.10.2 =
 
