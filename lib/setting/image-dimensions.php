@@ -21,18 +21,15 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_image_dimensions', _x( 'Social Image Dimensions', 
-				'normal metabox title', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_image_dimensions',
+				_x( 'Social Image Dimensions', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_image_dimensions() {
 			$metabox = $this->menu_id;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" 
-				style="padding-bottom:0;"><tr><td>'.
-			$this->p->msgs->get( 'info-'.$metabox ).
-			'</td></tr></table>';
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
+			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
 			$rows = array_merge( $this->get_rows( $metabox, 'general' ), 
 				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows', array(), $this->form ) );
@@ -40,6 +37,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 			foreach ( $rows as $num => $row ) 
 				echo '<tr>'.$row.'</tr>'."\n";
+
 			echo '</table>';
 		}
 
@@ -50,20 +48,20 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$rows[] = $this->p->util->get_th( __( 'Facebook / Open Graph',
-						'wpsso' ), null, 'og_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( _x( 'Facebook / Open Graph',
+						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'Pinterest Rich Pin',
-						'wpsso' ), null, 'rp_img_dimensions' ).
+					$rows[] = $this->p->util->get_th( _x( 'Pinterest Rich Pin',
+						'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 	
-					$rows[] = $this->p->util->get_th( __( 'Twitter <em>Summary</em> Card',
-						'wpsso' ), null, 'tc_sum_dimensions' ).
+					$rows[] = $this->p->util->get_th( _x( 'Twitter <em>Summary</em> Card',
+						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';
 	
-					$rows[] = $this->p->util->get_th( __( 'Twitter <em>Large Image Summary</em> Card',
-						'wpsso' ), null, 'tc_lrgimg_dimensions' ).
+					$rows[] = $this->p->util->get_th( _x( 'Twitter <em>Large Image Summary</em> Card',
+						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';
 
 					break;

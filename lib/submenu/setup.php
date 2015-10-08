@@ -21,14 +21,15 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_guide', _x( 'Setup Guide',
-				'normal metabox title', 'wpsso' ),
+			add_meta_box( $this->pagehook.'_guide',
+				_x( 'Setup Guide', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_guide' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_guide() {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' setup-metabox"><tr><td>';
-			echo $this->p->msgs->get( 'info-review' );
+			echo '<table class="sucom-setting '.$this->p->cf['lca'].' setup-metabox">';
+			echo '<tr><td>'.$this->p->msgs->get( 'info-review' ).'</td></tr>';
+			echo '<tr><td>';
 			echo $this->p->util->get_remote_content( 
 				$this->p->cf['plugin'][$this->p->cf['lca']]['url']['setup'],
 				constant( $this->p->cf['uca'].'_PLUGINDIR' ).'setup.html'

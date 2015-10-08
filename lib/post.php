@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', $add_metabox, $post_id ) === true )
-				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'normal metabox title', 'wpsso' ),
+				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_post' ), $post_type->name, 'normal', 'low' );
 		}
 

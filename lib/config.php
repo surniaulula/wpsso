@@ -20,10 +20,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.11.0-dev4',		// plugin version
+					'version' => '3.11.0-dev5',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
-					'desc' => 'Improve WordPress editing and publishing for better content on all social websites - no matter how your content is shared or re-shared!',
+					'desc' => 'Improve WordPress editing and publishing for a better presentation on all social websites - no matter how your content is shared or re-shared!',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -65,14 +65,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'readme' => 'Read Me',
 							'setup' => 'Setup Guide',
 							// the first 2 words will be highlighted in menu
-							'licenses' => 'Extension Plugins and Pro Licenses',
+							'licenses' => '<span>Extension Plugins</span> and Pro Licenses',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced',
 							'sitereadme' => 'Read Me',
 							'sitesetup' => 'Setup Guide',
 							// the first 2 words will be highlighted in menu
-							'sitelicenses' => 'Extension Plugins and Pro Licenses',
+							'sitelicenses' => '<span>Extension Plugins</span> and Pro Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
 					'name' => 'WPSSO Pro Update Manager (WPSSO UM)',
-					'desc' => 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its extensions.',
+					'desc' => 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',

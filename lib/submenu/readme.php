@@ -21,18 +21,18 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_readme', _x( 'Read Me',
-				'normal metabox title', 'wpsso' ),
+			add_meta_box( $this->pagehook.'_readme',
+				_x( 'Read Me', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_readme' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_readme() {
 			$metabox = 'readme';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'description' => _x( 'Description', 'normal metabox tab', 'wpsso' ),
-				'faq' => _x( 'FAQ', 'normal metabox tab', 'wpsso' ),
-				'notes' => _x( 'Other Notes', 'normal metabox tab', 'wpsso' ),
-				'changelog' => _x( 'Changelog', 'normal metabox tab', 'wpsso' ),
+				'description' => _x( 'Description', 'metabox tab', 'wpsso' ),
+				'faq' => _x( 'FAQ', 'metabox tab', 'wpsso' ),
+				'notes' => _x( 'Other Notes', 'metabox tab', 'wpsso' ),
+				'changelog' => _x( 'Changelog', 'metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )

@@ -21,18 +21,16 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_social_accounts', _x( 'Website / Business Social Accounts', 
-				'normal metabox title', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_social_accounts',
+				_x( 'Website / Business Social Accounts', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_social_accounts() {
 			$metabox = $this->menu_id;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'"
-				style="padding-bottom:0;"><tr><td>'.
-			$this->p->msgs->get( 'info-'.$metabox ).
-			'</td></tr></table>';
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
+			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
+
 			foreach ( array_merge( $this->get_rows( $metabox, 'general' ), 
 				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows', 
 					array(), $this->form ) ) as $num => $row ) 
@@ -47,32 +45,32 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 				case 'social-accounts-general':
 
-					$rows[] = $this->p->util->get_th( __( 'Facebook Business Page URL',
-						'wpsso' ), null, 'fb_publisher_url' ).
+					$rows[] = $this->p->util->get_th( _x( 'Facebook Business Page URL',
+						'option label', 'wpsso' ), null, 'fb_publisher_url' ).
 					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'Google+ Business Page URL',
-						'wpsso' ), null, 'google_publisher_url' ).
+					$rows[] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
+						'option label', 'wpsso' ), null, 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'Pinterest Company Page URL',
-						'wpsso' ), null, 'rp_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( _x( 'Pinterest Company Page URL',
+						'option label', 'wpsso' ), null, 'rp_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'Twitter Business @username',
-						'wpsso' ), null, 'tc_site' ).
+					$rows[] = $this->p->util->get_th( _x( 'Twitter Business @username',
+						'option label', 'wpsso' ), null, 'tc_site' ).
 					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'Instagram Business URL',
-						'wpsso' ), null, 'instgram_publisher_url' ).
+					$rows[] = $this->p->util->get_th( _x( 'Instagram Business URL',
+						'option label', 'wpsso' ), null, 'instgram_publisher_url' ).
 					'<td>'.$this->form->get_input( 'instgram_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'LinkedIn Company Page URL',
-						'wpsso' ), null, 'linkedin_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( _x( 'LinkedIn Company Page URL',
+						'option label', 'wpsso' ), null, 'linkedin_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'linkedin_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( __( 'MySpace Business (Brand) URL',
-						'wpsso' ), null, 'myspace_publisher_url'  ).
+					$rows[] = $this->p->util->get_th( _x( 'MySpace Business (Brand) URL',
+						'option label', 'wpsso' ), null, 'myspace_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'myspace_publisher_url', 'wide' ).'</td>';
 
 					break;

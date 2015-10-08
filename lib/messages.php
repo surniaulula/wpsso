@@ -588,10 +588,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change \'gplus\' to \'googleplus\'. If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$this->p->util->get_admin_url( 'general', 'General settings' ).' as well.';
 							break;
 						case 'tooltip-wp-cm-field-name':
-							$text = 'The built-in WordPress contact field names cannot be modified.';
+							$text = __( 'The built-in WordPress contact field names cannot be modified.', 'wpsso' );
 							break;
 						case 'tooltip-site-use':
-							$text = 'Individual sites/blogs may use this option value as a default (when the plugin is first activated), if the current site/blog value is blank, or force every site/blog to use this value (disabling the option).';
+							$text = __( 'Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip', $text, $idx, $atts );
@@ -607,56 +607,42 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
 						break;
 					case 'info-plugin-tid':
-						$text = '<blockquote class="top-info">
-						<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to check for Pro version updates immediately and every 24 hours thereafter.</p>
-						<p><strong>'.$atts['name'].' must be active in order to check for Pro version updates.</strong> If you accidentally de-activate the plugin, update information will be provided by the WordPress.org Free plugin repository, and any update notices will be for the Free version &mdash; always update the Pro version when '.$atts['short'].' is active. If you accidentally re-install the Free version from WordPress.org &mdash; don\'t worry &mdash; your Authentication ID will always allow you update back to the Pro version. ;-)</p>
-						</blockquote>';
+						$um_lca = $this->p->cf['lca'].'um';
+						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
+						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
+						
+						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'Enter the unique Authentication ID on this settings page to check for Pro version updates immediately, and every 24 hours thereafter.', 'wpsso' ).'</p><p><strong>'.sprintf( __( 'The %s extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_name ).'</strong> '.sprintf( __( 'If you accidentally de-activate the %1$s extension, update information will be provided by the WordPress.org plugin repository, and any update notices will be for the Free versions &mdash; always update the Pro version when the %2$s extension is active.', 'wpsso' ), $um_short, $um_short ).' '.__( 'If you accidentally re-install the Free version from WordPress.org &ndash; don\'t worry &ndash; your Authentication ID will always allow you update back to the Pro version.', 'wpsso' ).' ;-)</p></blockquote>';
 						break;
 					case 'info-plugin-tid-network':
-						$text = '<blockquote class="top-info">
-						<p>After purchasing Pro version license(s), an email is sent to you with a <strong>unique Authentication ID</strong> and installation / activation instructions. Enter the unique Authentication ID on this page to define default/forced a value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s <em>Pro Licenses</em> settings page. <strong>Please note that the <em>default</em> site / blog must be licensed in order to update the plugin from the Network admin interface</strong>.</p>
-						</blockquote>';
+						$um_lca = $this->p->cf['lca'].'um';
+						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
+						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
+
+						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing Pro version license(s), an email is sent to you with a unique Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'Enter the unique Authentication ID on this page to define a default / forced value for <em>all</em> sites within the network, or enter the Authentication ID(s) individually on each site\'s Pro Licenses settings page.', 'wpsso' ).' <strong>'.sprintf( __( 'Please note that the <em>default</em> site / blog must be licensed and the %1$s extension must be active in order to install %2$s Pro updates from the Network admin interface.', 'wpsso' ), $um_name, $atts['short'] ).'</strong></p></blockquote>';
 						break;
 					case 'info-review':
-						$text = '<blockquote style="margin-top:0;">
-						<p>If you appreciate the features or quality of this plugin, and/or the support we provide, please <a href="'.$url['review'].'" target="_blank">take a moment to rate the '.$atts['short'].' plugin on WordPress.org</a>. Your rating will help other WordPress users find higher quality and better supported plugins &mdash; and <strong>encourage us to keep improving '.$atts['short'].'</strong> as well! ;-)</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'If you appreciate the features, quality, and/or support of this plugin, please <a href="%1$s" target="_blank">take a moment to rate the %2$s plugin on WordPress.org</a>.', 'wpsso' ), $url['review'], $atts['short'] ).' '.sprintf( __( 'Your rating will help other WordPress users find higher quality and better supported plugins &mdash; and <strong>encourage us to keep improving %s</strong> as well!', 'wpsso' ), $atts['short'] ).' ;-)</p></blockquote>';
 						break;
 					case 'info-pub-pinterest':
-						$text = '<blockquote style="margin-top:0;margin-bottom:10px;">
-						<p>Pinterest uses Open Graph meta tags for their Rich Pins. These options allow you to manage and/or override some Pinterest-specific Open Graph settings. Please note that if you use a full-page caching plugin or front-end caching service, it should detect the Pinterest crawler user-agent and bypass the cache, so that different meta tags can be provided to the Pinterest crawler (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.__( 'Pinterest uses the Open Graph standard meta tags for their Rich Pins.', 'wpsso' ).' '.__( 'These options allow you to manage and/or override some Pinterest-specific Open Graph settings.', 'wpsso' ).' '.__( 'Please note that if you use a caching plugin, or front-end caching service, it should detect the Pinterest crawler user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).', 'wpsso' ).' '.sprintf( __( 'This will allow %s to provide different / customized meta tags specifically for the Pinterest crawler.', 'wpsso' ), $atts['short'] ).'</p></blockquote>';
 						break;
 					case 'info-pub-twitter':
-						$text = '<blockquote class="top-info">
-						<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. '.$atts['short'].' continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card.</p>
-						</blockquote>';
-						break;
-					case 'info-taglist':
-						$text = '<blockquote style="margin:0;">
-						<p>'.$atts['short'].' will add the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages. If your theme or another plugin already generates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added. As an example, the "meta name description" HTML tag is automatically unchecked if a known SEO plugin is detected. The "meta name canonical" HTML tag is unchecked by default since themes often include it in their <code>header.php</code> template file.</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p><strong>'.__( 'The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015.', 'wpsso' ).'</strong> '.sprintf( __( '%1s continues to support all <a href="%2s">current Twitter Card formats</a>, including the Summary, Summary with Large Image, App (extension plugin required), and Player Cards.', 'wpsso' ), $atts['short'], 'https://dev.twitter.com/cards/types' ).'</p></blockquote>';
 						break;
 					case 'info-cm':
-						$text = '<blockquote style="margin:0;">
-						<p>The following options allow you to customize the contact field names and labels shown on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page. '.$atts['short'].' uses the Facebook, Google+ and Twitter contact field values for Open Graph and Twitter Card meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Twitter social sharing button' ).'. <strong>You should not modify the <em>Contact Field Name</em> unless you have a very good reason to do so.</strong> The <em>Profile Contact Label</em> on the other hand is for <strong>display purposes only</strong>, and its text can be changed as you wish. Although the following contact fields may be shown on user profile pages, your theme is responsible for using and displaying their values appropriately (see <a href="https://codex.wordpress.org/Function_Reference/get_the_author_meta" target="_blank">get_the_author_meta()</a> for examples).</p>
-						<p><center><strong>DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.</strong><br/>Enter your contact information on the <a href="'.get_admin_url( null, 'profile.php' ).'">user profile</a> page.</center></p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact field names and labels shown on <a href="%s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact fields for Facebook / Open Graph, Schema, and Twitter Card meta tags.', 'wpsso' ), $atts['short'] ).' <strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' '.sprintf( __( 'Enabled contact methods are shown on user profile pages automatically, but your theme is responsible for displaying them in other locations throughout your website (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+						break;
+					case 'info-taglist':
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $atts['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their <code>header.php</code> template file.', 'wpsso' ).'</p></blockquote>';
 						break;
 					case 'info-image-dimensions':
-						$text = '<blockquote style="margin-top:0;margin-bottom:0;">
-						<p>'.$atts['short'].' provides several image dimension options, depending on the intended use for the image (Open Graph meta tags, Twitter Card formats, etc.). The image dimensions should always be chosen for their intended use. For example, Open Graph meta tags are read by Facebook, Google+, LinkedIn, and others. Facebook has published a preference for images measuring 1200x630px (to support retina and high-PPI displays), but horizontally cropped images may not show as well on all social sites. A good compromise for your Open Graph image dimensions is 1200x1200px cropped. If you use these dimensions, make sure your original images are at least 1200px in <em>both</em> width and height.</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s uses several image dimensions, based on their intended use (Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, etc.).', 'wpsso' ), $atts['short'] ).' '.__( 'For example, Facebook / Open Graph meta tags are also read by Google+, LinkedIn, and many others.', 'wpsso' ).' '.__( 'Facebook has published a preference for images measuring 1200x630px (to support retina and high-PPI displays), but horizontally cropped images may not show as well on all social sites.', 'wpsso' ).' '.__( 'A good compromise for your Open Graph image dimensions might be 1200x1200px cropped.', 'wpsso' ).' '.__( 'If you use these dimensions, make sure your original images are at least 1200px in <em>both</em> width and height.', 'wpsso' ).'</p></blockquote>';
 						break;
 					case 'info-social-accounts':
-						$text = '<blockquote style="margin-top:0;margin-bottom:0;">
-						<p>The social account values are used for Google / SEO, Schema, Open Graph, and other meta tags, including the publisher (Organization) social profiles markup in schema.org JSON-LD format. These social accounts may also appear in Google Search results for your website / business. See the '.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', 'Google specific settings' ).' to define a website / business logo, and/or enable / disable the addition of publisher (Organization) and author (Person) JSON-LD markup to your webpage headers.</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).' '.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search, and/or enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup in your webpage headers.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
 						break;
 					case 'info-sharing-include':
-						$text = '<blockquote class="top-info">
-						<p>The buttons enabled bellow (along with those in the widget) can be included or excluded from specific webpage types. This does <em>not</em> apply to the shortcode and function buttons, which are displayed (or not) based on their own parameter options.</p>
-						</blockquote>';
+						$text = '<blockquote class="top-info"><p>'.__( 'The buttons enabled bellow (along with those in the widget) can be included or excluded as a group based on the webpage content type.', 'wpsso' ).' '.__( 'This does <em>not</em> apply to the shortcode and/or function buttons, which are managed with their own parameter options.', 'wpsso' ).'</p></blockquote>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_info', $text, $idx, $atts );

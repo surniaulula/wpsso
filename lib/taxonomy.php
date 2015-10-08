@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			}
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', $add_metabox ) === true )
-				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'normal metabox title', 'wpsso' ),
+				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_taxonomy' ), 'taxonomy', 'normal', 'low' );
 		}
 

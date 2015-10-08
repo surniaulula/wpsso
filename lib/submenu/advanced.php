@@ -21,28 +21,28 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_plugin', _x( 'Advanced Settings', 
-				'normal metabox title', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_plugin', 
+				_x( 'Advanced Settings', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_contact_fields', _x( 'Contact Field Names and Labels', 
-				'normal metabox title', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_contact_fields',
+				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_taglist', _x( 'Header Tags List', 
-				'normal metabox title', 'wpsso' ), 
+			add_meta_box( $this->pagehook.'_taglist',
+				_x( 'Header Tags List', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_plugin() {
 			$metabox = 'plugin';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'settings' => _x( 'Plugin Settings', 'normal metabox tab', 'wpsso' ),
-				'content' => _x( 'Content and Filters', 'normal metabox tab', 'wpsso' ),
-				'social' => _x( 'Social Settings Metabox', 'normal metabox tab', 'wpsso' ),
-				'integration' => _x( 'Theme Integration', 'normal metabox tab', 'wpsso' ),
-				'cache' => _x( 'File and Object Cache', 'normal metabox tab', 'wpsso' ),
-				'apikeys' => _x( 'Service API Keys', 'normal metabox tab', 'wpsso' ),
+				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
+				'content' => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
+				'social' => _x( 'Social Settings Metabox', 'metabox tab', 'wpsso' ),
+				'integration' => _x( 'Theme Integration', 'metabox tab', 'wpsso' ),
+				'cache' => _x( 'File and Object Cache', 'metabox tab', 'wpsso' ),
+				'apikeys' => _x( 'Service API Keys', 'metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
@@ -55,18 +55,19 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		public function show_metabox_contact_fields() {
 			$metabox = 'cm';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
-				'custom' => _x( 'Custom Contacts', 'normal metabox tab', 'wpsso' ),
-				'builtin' => _x( 'Built-In Contacts', 'normal metabox tab', 'wpsso' ),
+				'custom' => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
+				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
+
 			foreach ( $tabs as $key => $title )
 				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
-			$this->p->util->do_table_rows( 
-				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
-				'metabox-'.$metabox.'-info'
-			);
+
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
+				'metabox-'.$metabox.'-info' );
+
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
@@ -87,14 +88,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows['plugin_debug'] = $this->p->util->get_th( __( 'Add Hidden Debug Messages', 
-						'wpsso' ), null, 'plugin_debug' ).
+					$rows['plugin_debug'] = $this->p->util->get_th( _x( 'Add Hidden Debug Messages', 
+						'option label', 'wpsso' ), null, 'plugin_debug' ).
 					'<td>'.( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ? 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
-					$rows['plugin_preserve'] = $this->p->util->get_th( __( 'Preserve Settings on Uninstall',
-						'wpsso' ), 'highlight', 'plugin_preserve' ).
+					$rows['plugin_preserve'] = $this->p->util->get_th( _x( 'Preserve Settings on Uninstall',
+						'option label', 'wpsso' ), 'highlight', 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
 					break;
