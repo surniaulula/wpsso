@@ -356,7 +356,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* Added a check for image IDs within class names to detect Media Library images in older content.
 * **Bugfixes**
-	* *None*
+	* Updated checks for conflicting Yoast SEO 'wpseo_head' actions.
 * **Developer Notes**
 	* Added context to all metabox titles and tab text strings.
 	* Added new filters to customize the image pattern matching in the content:
