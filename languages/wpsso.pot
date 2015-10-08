@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.0-"
-"dev5\n"
+"dev6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-08 14:50:24+00:00\n"
+"POT-Creation-Date: 2015-10-08 20:34:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,7 +95,7 @@ msgid "Submitted options are not an array."
 msgstr ""
 
 #: lib/admin.php:394 lib/admin.php:431
-msgid "Plugin settings have been updated."
+msgid "Plugin settings have been saved."
 msgstr ""
 
 #: lib/admin.php:395
@@ -122,9 +122,7 @@ msgid "Nonce token validation failed for plugin action (action ignored)."
 msgstr ""
 
 #: lib/admin.php:460
-msgid ""
-"The <strong>%s</strong> extension is required to check for plugin and "
-"extension updates."
+msgid "The <b>%s</b> extension is required to check for Pro version updates."
 msgstr ""
 
 #: lib/admin.php:472
@@ -216,7 +214,7 @@ msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:885 lib/messages.php:717
+#: lib/admin.php:885 lib/messages.php:720
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
@@ -267,6 +265,7 @@ msgid "Download Latest Version"
 msgstr ""
 
 #: lib/admin.php:1035 lib/admin.php:1040 lib/admin.php:1061 lib/admin.php:1067
+#: lib/messages.php:681
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -295,85 +294,66 @@ msgstr ""
 
 #: lib/admin.php:1118
 msgid ""
-"Please uncheck the '<em>Add Open Graph meta data</em>' Facebook option in "
-"the <a href=\"%s\">Yoast SEO: Social</a> settings."
+"Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
+"href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1126
+#: lib/admin.php:1123
 msgid ""
-"Please uncheck the '<em>Add Twitter card meta data</em>' Twitter option in "
-"the <a href=\"%s\">Yoast SEO: Social</a> settings."
+"Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
+"href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1131
+#: lib/admin.php:1128
 msgid ""
-"Please uncheck the '<em>Add Google+ specific post meta data</em>' Google+ "
-"option in the <a href=\"%s\">Yoast SEO: Social</a> settings."
+"Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
+"under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1136
+#: lib/admin.php:1133
 msgid ""
-"Please remove the '<em>Google Publisher Page</em>' value entered in the <a "
-"href=\"%s\">Yoast SEO: Social</a> settings."
+"Please remove the '<em>Google Publisher Page</em>' value entered under the "
+"<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1147
+#: lib/admin.php:1144
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate plugin Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1158
+#: lib/admin.php:1155
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1163
+#: lib/admin.php:1160
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1173
+#: lib/admin.php:1170
 msgid ""
 "JetPack's Photon module purposefully cripples the WordPress image size "
 "functions."
 msgstr ""
 
-#: lib/admin.php:1173
+#: lib/admin.php:1170
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1173
+#: lib/admin.php:1170
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1183
-msgid ""
-"WooCommerce does not include shortcode support in the admin interface</"
-"strong> (required by WordPress for its content filters)."
-msgstr ""
-
-#: lib/admin.php:1183
-msgid ""
-"Please uncheck the '<em>Apply WordPress Content Filters</em>' option on the "
-"<a href=\"%s\">%s Advanced settings page</a>."
-msgstr ""
-
-#: lib/admin.php:1183
-msgid ""
-"You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
-"an <a href=\"%3$s\">integration module specifically for WooCommerce</a> "
-"(shortcodes, products, categories, tags, images, etc.)."
-msgstr ""
-
-#: lib/admin.php:1201
+#: lib/admin.php:1199
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -646,7 +626,8 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:104 lib/pro/admin/advanced.php:104
+#: lib/gpl/admin/advanced.php:104 lib/messages.php:674
+#: lib/pro/admin/advanced.php:104
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
 msgstr ""
@@ -716,7 +697,8 @@ msgctxt "option label"
 msgid "Header &lt;head&gt; Attribute Filter"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:211 lib/pro/admin/advanced.php:199
+#: lib/gpl/admin/advanced.php:211 lib/messages.php:677
+#: lib/pro/admin/advanced.php:199
 msgctxt "option label"
 msgid "Object Cache Expiry"
 msgstr ""
@@ -768,14 +750,14 @@ msgid "Show"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:268 lib/gpl/admin/advanced.php:307
-#: lib/messages.php:633 lib/pro/admin/advanced.php:249
+#: lib/messages.php:630 lib/pro/admin/advanced.php:249
 #: lib/pro/admin/advanced.php:285
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:270 lib/gpl/admin/advanced.php:309
-#: lib/messages.php:633 lib/pro/admin/advanced.php:251
+#: lib/messages.php:630 lib/pro/admin/advanced.php:251
 #: lib/pro/admin/advanced.php:287
 msgctxt "column title"
 msgid "Profile Contact Label"
@@ -1085,37 +1067,24 @@ msgid ""
 "every site/blog to use this specific value."
 msgstr ""
 
-#: lib/messages.php:607
-msgid ""
-"An Open Graph image meta tag could not be created from this webpage content "
-"&mdash; Facebook and other social websites <em>require</em> at least one "
-"Open Graph image meta tag to render shared content correctly."
-msgstr ""
-
-#: lib/messages.php:607
-msgid ""
-"You may select an optional customized image, for Facebook and other social "
-"websites, in the Social Settings metabox under the Priority Media tab."
-msgstr ""
-
-#: lib/messages.php:614 lib/messages.php:621
+#: lib/messages.php:611 lib/messages.php:618
 msgid ""
 "After purchasing Pro version license(s), an email is sent to you with a "
 "unique Authentication ID and installation / activation instructions."
 msgstr ""
 
-#: lib/messages.php:614
+#: lib/messages.php:611
 msgid ""
 "Enter the unique Authentication ID on this settings page to check for Pro "
 "version updates immediately, and every 24 hours thereafter."
 msgstr ""
 
-#: lib/messages.php:614
+#: lib/messages.php:611
 msgid ""
 "The %s extension must be active in order to check for Pro version updates."
 msgstr ""
 
-#: lib/messages.php:614
+#: lib/messages.php:611
 msgid ""
 "If you accidentally de-activate the %1$s extension, update information will "
 "be provided by the WordPress.org plugin repository, and any update notices "
@@ -1123,52 +1092,52 @@ msgid ""
 "%2$s extension is active."
 msgstr ""
 
-#: lib/messages.php:614
+#: lib/messages.php:611
 msgid ""
 "If you accidentally re-install the Free version from WordPress.org &ndash; "
 "don't worry &ndash; your Authentication ID will always allow you update back "
 "to the Pro version."
 msgstr ""
 
-#: lib/messages.php:621
+#: lib/messages.php:618
 msgid ""
 "Enter the unique Authentication ID on this page to define a default / forced "
 "value for <em>all</em> sites within the network, or enter the Authentication "
 "ID(s) individually on each site's Pro Licenses settings page."
 msgstr ""
 
-#: lib/messages.php:621
+#: lib/messages.php:618
 msgid ""
 "Please note that the <em>default</em> site / blog must be licensed and the %1"
 "$s extension must be active in order to install %2$s Pro updates from the "
 "Network admin interface."
 msgstr ""
 
-#: lib/messages.php:624
+#: lib/messages.php:621
 msgid ""
 "If you appreciate the features, quality, and/or support of this plugin, "
 "please <a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s "
 "plugin on WordPress.org</a>."
 msgstr ""
 
-#: lib/messages.php:624
+#: lib/messages.php:621
 msgid ""
 "Your rating will help other WordPress users find higher quality and better "
 "supported plugins &mdash; and <strong>encourage us to keep improving %s</"
 "strong> as well!"
 msgstr ""
 
-#: lib/messages.php:627
+#: lib/messages.php:624
 msgid "Pinterest uses the Open Graph standard meta tags for their Rich Pins."
 msgstr ""
 
-#: lib/messages.php:627
+#: lib/messages.php:624
 msgid ""
 "These options allow you to manage and/or override some Pinterest-specific "
 "Open Graph settings."
 msgstr ""
 
-#: lib/messages.php:627
+#: lib/messages.php:624
 msgid ""
 "Please note that if you use a caching plugin, or front-end caching service, "
 "it should detect the Pinterest crawler user-agent and bypass its cache (for "
@@ -1176,50 +1145,50 @@ msgid ""
 "\"Pinterest/\" to that list)."
 msgstr ""
 
-#: lib/messages.php:627
+#: lib/messages.php:624
 msgid ""
 "This will allow %s to provide different / customized meta tags specifically "
 "for the Pinterest crawler."
 msgstr ""
 
-#: lib/messages.php:630
+#: lib/messages.php:627
 msgid ""
 "The Photo, Gallery, and Product Cards were deprecated by Twitter on July "
 "3rd, 2015."
 msgstr ""
 
-#: lib/messages.php:630
+#: lib/messages.php:627
 msgid ""
 "%1s continues to support all <a href=\"%2s\">current Twitter Card formats</"
 "a>, including the Summary, Summary with Large Image, App (extension plugin "
 "required), and Player Cards."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "The following options allow you to customize the contact field names and "
 "labels shown on <a href=\"%s\">the user profile page</a>."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "%s uses the Facebook, Google+, and Twitter contact fields for Facebook / "
 "Open Graph, Schema, and Twitter Card meta tags."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "You should not modify the <em>%s</em> unless you have a <em>very</em> good "
 "reason to do so."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "The <em>%s</em> on the other hand is for display purposes only and it can be "
 "changed as you wish."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "Enabled contact methods are shown on user profile pages automatically, but "
 "your theme is responsible for displaying them in other locations throughout "
@@ -1227,82 +1196,82 @@ msgid ""
 "\">get_the_author_meta()</a> documentation for examples)."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD "
 "LABELS ONLY."
 msgstr ""
 
-#: lib/messages.php:633
+#: lib/messages.php:630
 msgid ""
 "Enter your personal contact information on <a href=\"%1$s\">the user profile "
 "page</a>."
 msgstr ""
 
-#: lib/messages.php:636
+#: lib/messages.php:633
 msgid ""
 "%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, "
 "and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your "
 "webpages."
 msgstr ""
 
-#: lib/messages.php:636
+#: lib/messages.php:633
 msgid ""
 "If your theme or another plugin already creates one or more of these HTML "
 "tags, you can uncheck them here to prevent duplicates from being added."
 msgstr ""
 
-#: lib/messages.php:636
+#: lib/messages.php:633
 msgid ""
 "As an example, the \"meta name description\" HTML tag is automatically "
 "unchecked if a <em>known</em> SEO plugin is detected."
 msgstr ""
 
-#: lib/messages.php:636
+#: lib/messages.php:633
 msgid ""
 "The \"meta name canonical\" HTML tag is unchecked by default since themes "
 "often include this meta tag in their <code>header.php</code> template file."
 msgstr ""
 
-#: lib/messages.php:639
+#: lib/messages.php:636
 msgid ""
 "%s uses several image dimensions, based on their intended use (Facebook / "
 "Open Graph, Twitter Cards, Pinterest Rich Pins, etc.)."
 msgstr ""
 
-#: lib/messages.php:639
+#: lib/messages.php:636
 msgid ""
 "For example, Facebook / Open Graph meta tags are also read by Google+, "
 "LinkedIn, and many others."
 msgstr ""
 
-#: lib/messages.php:639
+#: lib/messages.php:636
 msgid ""
 "Facebook has published a preference for images measuring 1200x630px (to "
 "support retina and high-PPI displays), but horizontally cropped images may "
 "not show as well on all social sites."
 msgstr ""
 
-#: lib/messages.php:639
+#: lib/messages.php:636
 msgid ""
 "A good compromise for your Open Graph image dimensions might be 1200x1200px "
 "cropped."
 msgstr ""
 
-#: lib/messages.php:639
+#: lib/messages.php:636
 msgid ""
 "If you use these dimensions, make sure your original images are at least "
 "1200px in <em>both</em> width and height."
 msgstr ""
 
-#: lib/messages.php:642
+#: lib/messages.php:639
 msgid ""
 "The website / business social account values are used for SEO, Schema, Open "
 "Graph, and other social meta tags &ndash; including publisher (Organization) "
 "social markup for Google Search."
 msgstr ""
 
-#: lib/messages.php:642
+#: lib/messages.php:639
 msgid ""
 "See the <a href=\"%s\">Google / Schema settings tab</a> to define a "
 "website / business logo for Google Search, and/or enable / disable the "
@@ -1310,113 +1279,157 @@ msgid ""
 "in your webpage headers."
 msgstr ""
 
-#: lib/messages.php:645
+#: lib/messages.php:642
 msgid ""
 "The buttons enabled bellow (along with those in the widget) can be included "
 "or excluded as a group based on the webpage content type."
 msgstr ""
 
-#: lib/messages.php:645
+#: lib/messages.php:642
 msgid ""
 "This does <em>not</em> apply to the shortcode and/or function buttons, which "
 "are managed with their own parameter options."
 msgstr ""
 
-#: lib/messages.php:658
+#: lib/messages.php:655
 msgid ""
 "Purchase %s licence(s) to install / enable Pro modules and modify the "
-"following options"
+"following options."
+msgstr ""
+
+#: lib/messages.php:656
+msgid ""
+"Purchase the %s plugin to install / enable Pro modules and modify the "
+"following options."
 msgstr ""
 
 #: lib/messages.php:659
-msgid ""
-"Purchase the %s plugin to install / enable Pro modules and modify the "
-"following options"
-msgstr ""
-
-#: lib/messages.php:662
 msgid "%s required to use this option"
 msgstr ""
 
-#: lib/messages.php:666
-msgid "The %s Authentication ID option is empty."
+#: lib/messages.php:671
+msgid ""
+"An Open Graph image meta tag could not be created from this webpage content "
+"&mdash; Facebook and other social websites <em>require</em> at least one "
+"Open Graph image meta tag to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:666
+#: lib/messages.php:671
+msgid ""
+"You may select an optional customized image, for Facebook and other social "
+"websites, in the Social Settings metabox under the Priority Media tab."
+msgstr ""
+
+#: lib/messages.php:674
+msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
+msgstr ""
+
+#: lib/messages.php:674
+msgid ""
+"The use of WordPress content filters allows %s to fully render your content "
+"text for meta tag descriptions, and detect additional images / embedded "
+"videos provided by shortcodes."
+msgstr ""
+
+#: lib/messages.php:674
+msgid ""
+"Some theme / plugins have badly coded content filters, so this option is "
+"disabled by default."
+msgstr ""
+
+#: lib/messages.php:674
+msgid ""
+"<a href=\"%s\">If you use any shortcodes in your content text, this option "
+"should be enabled</a> &mdash; if you experience display issues after "
+"enabling this option, determine which theme / plugin content filter is at "
+"fault, and report the problem to its author(s)."
+msgstr ""
+
+#: lib/messages.php:677
+msgid ""
+"Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently "
+"set at %3$d seconds &mdash; this is lower than the recommended default value "
+"of %4$d seconds."
+msgstr ""
+
+#: lib/messages.php:681
+msgid "The %1$s plugin %2$s option is empty."
+msgstr ""
+
+#: lib/messages.php:681
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Pro Licenses settings page</a>."
 msgstr ""
 
-#: lib/messages.php:669
+#: lib/messages.php:684
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update this plugin to install the latest "
 "Pro version."
 msgstr ""
 
-#: lib/messages.php:679
+#: lib/messages.php:694
 msgid ""
-"One or more Authentication IDs have been entered on the <a href=\"%1$s\">Pro "
-"Licenses settings page</a>, but the <strong>%2$s</strong> plugin is not "
-"active."
+"At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
+"Licenses settings page</a>, but the <b>%2$s</b> plugin is not active."
 msgstr ""
 
-#: lib/messages.php:682
+#: lib/messages.php:697
 msgid ""
-"This <strong>Free extension</strong> is required to update and enable the %s "
-"plugin and its extensions."
+"This <b>Free extension</b> is required to update and enable the %s plugin "
+"and its Pro extensions."
 msgstr ""
 
-#: lib/messages.php:683
+#: lib/messages.php:697
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:684
+#: lib/messages.php:697
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:687
+#: lib/messages.php:700
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:688
+#: lib/messages.php:700
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:711
+#: lib/messages.php:714
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:712
+#: lib/messages.php:715
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:713
+#: lib/messages.php:716
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:718
+#: lib/messages.php:721
 msgid ""
 "Metaboxes (like this one) can be opened / closed by clicking on their title "
 "bar, moved and re-ordered by dragging them, or removed / added from the "
 "<em>Screen Options</em> tab (top-right of page)."
 msgstr ""
 
-#: lib/messages.php:718
+#: lib/messages.php:721
 msgid ""
 "Option values in multiple tabs can be modified before clicking the '%s' "
 "button."
@@ -1541,6 +1554,10 @@ msgstr ""
 
 #: lib/meta.php:319
 msgid "Reload to View"
+msgstr ""
+
+#: lib/options.php:306
+msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
 #: lib/post.php:218 lib/taxonomy.php:220 lib/user.php:156

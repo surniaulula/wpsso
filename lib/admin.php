@@ -177,7 +177,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
 					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
 						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'pro-activate-msg' ) );
+							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
 			// check all *active* plugins / extensions to make sure pro version is installed
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
 					$has_tid = true;
 					if ( ! $this->p->check->aop( $lca, false ) )
-						$this->p->notice->inf( $this->p->msgs->get( 'pro-not-installed', array( 'lca' => $lca ) ), true );
+						$this->p->notice->inf( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $lca ) ), true );
 				}
 			}
 			// if we have at least one tid, make sure the update manager is installed
@@ -195,8 +195,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$installed_plugins = get_plugins();
 				if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
 					is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
-						$this->p->notice->nag( $this->p->msgs->get( 'pro-um-activate-extension' ), true );
-				else $this->p->notice->nag( $this->p->msgs->get( 'pro-um-extension-required' ), true );
+						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ), true );
+				else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ), true );
 			}
 		}
 
@@ -391,7 +391,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), $this->get_nonce(), WPSSO_NONCE );
-			$this->p->notice->inf( __( 'Plugin settings have been updated.', 'wpsso' ).' '.
+			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
 						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
-			$this->p->notice->inf( __( 'Plugin settings have been updated.', 'wpsso' ), true );
+			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ), true );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
 			exit;	// stop here
 		}
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							} else {
 								$um_lca = $this->p->cf['lca'].'um';
 								$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-								$this->p->notice->err( sprintf( __( 'The <strong>%s</strong> extension is required to check for plugin and extension updates.', 'wpsso' ), $um_name ) );
+								$this->p->notice->err( sprintf( __( 'The <b>%s</b> extension is required to check for Pro version updates.', 'wpsso' ), $um_name ) );
 							}
 							break;
 
@@ -1110,30 +1110,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// Yoast SEO
-			if ( $this->p->is_avail['seo']['wpseo'] === true ) {
+			if ( $this->p->is_avail['seo']['wpseo'] ) {
 				$opts = get_option( 'wpseo_social' );
 				if ( ! empty( $opts['opengraph'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Open Graph meta data</em>\' Facebook option in the <a href="%s">Yoast SEO: Social</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Open Graph meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Facebook</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
 				}
-				if ( ! empty( $this->p->options['tc_enable'] ) && 
-					! empty( $opts['twitter'] ) &&
-					$this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-
+				if ( ! empty( $opts['twitter'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Twitter card meta data</em>\' Twitter option in the <a href="%s">Yoast SEO: Social</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Twitter card meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Twitter</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
 				}
 				if ( ! empty( $opts['googleplus'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Google+ specific post meta data</em>\' Google+ option in the <a href="%s">Yoast SEO: Social</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please uncheck the \'<em>Add Google+ specific post meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 				if ( ! empty( $opts['plus-publisher'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered in the <a href="%s">Yoast SEO: Social</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'Please remove the \'<em>Google Publisher Page</em>\' value entered under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 			}
 
@@ -1174,14 +1171,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// WooCommerce
+			/*
 			if ( class_exists( 'Woocommerce' ) && 
 				! empty( $this->p->options['plugin_filter_content'] ) &&
 				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
-				$this->p->notice->err( $err_pre.'<strong>'.__( 'WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', 'wpsso' ).'</strong> '.sprintf( __( 'Please uncheck the \'<em>Apply WordPress Content Filters</em>\' option on the <a href="%s">%s Advanced settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
+				$this->p->notice->err( $err_pre.'<strong>'.__( 'WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', 'wpsso' ).'</strong> '.sprintf( __( 'Please uncheck the \'<em>%1$s</em>\' option on the <a href="%2$s">%3$s Advanced settings page</a>.', 'wpsso' ), _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
 			}
+			*/
 		}
 
 		// Dismiss an Incorrect Yoast SEO Conflict Notification

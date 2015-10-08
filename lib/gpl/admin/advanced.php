@@ -335,16 +335,26 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$og_cols = 2;
 			$cells = array();
 			foreach ( $this->p->opt->get_defaults() as $opt => $val ) {
-				if ( preg_match( '/^add_('.$tag.')_([^_]+)_(.+)$/', $opt, $match ) && 
-					$opt !== 'add_meta_name_generator' ) {
-					$highlight = $opt === 'add_meta_name_description' ? ' highlight' : '';
-					$cells[] = '<td class="checkbox blank">'.$form->get_no_checkbox( $opt ).'</td>'.
+				if ( strpos( $opt, 'add_' ) === 0 &&
+					preg_match( '/^add_('.$tag.')_([^_]+)_(.+)$/', $opt, $match ) ) {
+					switch ( $opt ) {
+						case 'add_meta_name_generator':
+							continue 2;
+						case 'add_meta_name_canonical':
+						case 'add_meta_name_description':
+							$highlight = ' highlight';
+							break;
+						default:
+							$highlight = '';
+							break;
+					}
+					$cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
+						'<td class="checkbox blank">'.$form->get_checkbox( $opt, null, null, true ).'</td>'.
 						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
 						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
 						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
 				}
 			}
-
 			sort( $cells );
 			$col_rows = array();
 			$per_col = ceil( count( $cells ) / $og_cols );
@@ -353,7 +363,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$col_rows[ $num % $per_col ] = '<tr class="hide_in_basic">';	// initialize the array
 				$col_rows[ $num % $per_col ] .= $cell;					// create the html for each row
 			}
-
 			return array_merge( $rows, $col_rows );
 		}
 	}

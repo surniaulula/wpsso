@@ -108,27 +108,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts['options_version'] !== $this->p->cf['opt']['version'] )
 						$has_diff_options = true;
 
-				if ( $has_diff_version === true || $has_diff_options === true ) {
-
-					if ( $has_diff_options === true ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
-								' different than saved v'.$opts['options_version'] );
-						if ( ! is_object( $this->upg ) ) {
-							require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
-							$this->upg = new WpssoOptionsUpgrade( $this->p );
-						}
-						$opts = $this->upg->options( $options_name, $opts, $this->get_defaults(), $network );
+				if ( $has_diff_options ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
+							' different than saved v'.$opts['options_version'] );
+					if ( ! is_object( $this->upg ) ) {
+						require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
+						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
-
-					if ( $network === false ) {
-						if ( is_admin() && current_user_can( 'manage_options' ) )
-							$this->save_options( $options_name, $opts, $network );
-					} else $this->save_options( $options_name, $opts, $network );
+					$opts = $this->upg->options( $options_name, $opts, $this->get_defaults(), $network );
 				}
 
-				if ( $network === false ) {
-					if ( ! empty( $this->p->is_avail['seo']['*'] ) ) {
+				// adjust some options based on factors
+				if ( ! $network ) {
+					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
+						true, $this->p->is_avail['aop'] ) )
+							$opts['plugin_filter_content'] = 0;
+
+					if ( ! $this->p->is_avail['seo']['*'] ) {
 						foreach ( array( 'canonical', 'description' ) as $name ) {
 							$opts['add_meta_name_'.$name] = 0;
 							$opts['add_meta_name_'.$name.':is'] = 'disabled';
@@ -136,6 +133,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					$opts['add_meta_name_generator'] = defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
 						WPSSO_META_GENERATOR_DISABLE ? 0 : 1;
+				}
+
+				// save options and issue warnings if required
+				if ( $has_diff_version || $has_diff_options ) {
+					if ( ! $network ) {
+						if ( is_admin() ) {
+							if ( current_user_can( 'manage_options' ) )
+								$this->save_options( $options_name, $opts, $network );
+
+							if ( empty( $opts['plugin_filter_content'] ) )
+								$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), true );
+		
+							if ( empty( $opts['plugin_object_cache_exp'] ) ||
+								$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) )
+									$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
+						}
+					} else $this->save_options( $options_name, $opts, $network );
 				}
 
 				// add any missing 'plugin_add_to' options for current post types
@@ -289,7 +303,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $prev_opts_version !== $opts['options_version'] ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
-					$this->p->notice->inf( 'Plugin settings ('.$options_name.') have been upgraded and saved.', true );
+					$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
+						'wpsso' ), $options_name ), true );
 				}
 			} else {
 				if ( $this->p->debug->enabled )

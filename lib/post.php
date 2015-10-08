@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $obj->post_status == 'publish' ) {
 						if ( empty( $this->head_info['og:image'] ) )
-							$this->p->notice->err( $this->p->msgs->get( 'info-missing-og-image' ) );
+							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 						// check for duplicates once the post has been published and we have a functioning permalink
 						if ( ! empty( $this->p->options['plugin_check_head'] ) )
 							$this->check_post_header( $post_id, $obj );

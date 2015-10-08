@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 						$this->head_info = $this->p->head->extract_head_info( $this->head_meta_tags );
 
 						if ( empty( $this->head_info['og:image'] ) )
-							$this->p->notice->err( $this->p->msgs->get( 'info-missing-og-image' ) );
+							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 					}
 					break;
 			}

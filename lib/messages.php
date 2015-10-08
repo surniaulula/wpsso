@@ -603,9 +603,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
-					case 'info-missing-og-image':
-						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
-						break;
 					case 'info-plugin-tid':
 						$um_lca = $this->p->cf['lca'].'um';
 						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
@@ -655,37 +652,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to install / enable Pro modules and modify the following options', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to install / enable Pro modules and modify the following options', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to install / enable Pro modules and modify the following options.', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to install / enable Pro modules and modify the following options.', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( '%s required to use this option', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
-						break;
-					case 'pro-activate-msg':
-						if ( ! is_multisite() )
-							$text = '<strong>'.sprintf( __( 'The %s Authentication ID option is empty.', 'wpsso' ), $atts['name'] ).'</strong><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) );
-						break;
-					case 'pro-not-installed':
-						$text = sprintf( __( 'An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don\'t forget to update this plugin to install the latest Pro version.', 'wpsso' ), $atts['name'] );
-						break;
-					case 'pro-um-extension-required':
-					case 'pro-um-activate-extension':
-						$um_lca = $lca.'um';
-						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-						$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
-						$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
-						$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
-
-						$text = '<p>'.sprintf( __( 'One or more Authentication IDs have been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the <strong>%2$s</strong> plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).' ';
-
-						if ( $idx === 'pro-um-extension-required' ) {
-							$text .= sprintf( __( 'This <strong>Free extension</strong> is required to update and enable the %s plugin and its extensions.', 'wpsso' ), $atts['name_pro'] ).'</p>';
-							$text .= '<ol><li><strong>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</strong></li>';
-							$text .= '<li><strong>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</strong></li></ol>';
-						} else $text .= '</p>';
-
-						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_name ).'</p>';
-						$text .= '<p>'.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_dl, $um_name ).'</p>';
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( '%s required to use this option', 'option comment', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $atts );
@@ -694,12 +665,44 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/*
 			 * Misc notice messages
 			 */
-			//} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
-			//	switch ( $idx ) {
-			//		default:
-			//			$text = apply_filters( $lca.'_messages_notice', $text, $idx, $atts );
-			//			break;
-			//	}
+			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
+				switch ( $idx ) {
+					case 'notice-missing-og-image':
+						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
+						break;
+					case 'notice-content-filters-disabled':
+						$text = '<b>'.sprintf( __( 'The <a href="%1$s">%2$s</a> advanced option is currently disabled.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $atts['short'] ).'<br/><br/><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s).', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ) );
+						break;
+					case 'notice-object-cache-exp':
+						$text = sprintf( __( 'Please note that the <a href="%1$s">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this is lower than the recommended default value of %4$d seconds.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache' ), _x( 'Object Cache Expiry', 'option label', 'wpsso' ), $this->p->options['plugin_object_cache_exp'], $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) );
+						break;
+					case 'notice-pro-tid-missing':
+						if ( ! is_multisite() )
+							$text = '<b>'.sprintf( __( 'The %1$s plugin %2$s option is empty.', 'wpsso' ), $atts['name'], _x( 'Pro Authentication ID', 'option label', 'wpsso' ) ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) );
+						break;
+					case 'notice-pro-not-installed':
+						$text = sprintf( __( 'An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don\'t forget to update this plugin to install the latest Pro version.', 'wpsso' ), $atts['name'] );
+						break;
+					case 'notice-um-extension-required':
+					case 'notice-um-activate-extension':
+						$um_lca = $lca.'um';
+						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
+						$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
+						$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
+						$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
+
+						$text = '<p>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the <b>%2$s</b> plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).' ';
+
+						if ( $idx === 'notice-um-extension-required' ) {
+							$text .= sprintf( __( 'This <b>Free extension</b> is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $atts['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</b></li></ol>';
+						} else $text .= '</p>';
+
+						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_name ).'</p><p>'.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_dl, $um_name ).'</p>';
+						break;
+					default:
+						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $atts );
+						break;
+			}
 			/*
 			 * Misc sidebox messages
 			 */

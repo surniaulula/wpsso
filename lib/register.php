@@ -107,6 +107,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->p->set_config();
 			$this->p->set_objects( true );	// $activate = true
+			$this->p->util->clear_all_cache();
 
 			WpssoUtil::save_all_times( $lca, $version );
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
@@ -125,16 +126,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					$this->p->notice->inf( $uca.'_RESET_ON_ACTIVATE constant is true &ndash; 
 						plugin options have been reset to their default values.', true );
 			}
-
-			if ( empty( $this->p->options['plugin_filter_content'] ) )
-				$this->p->notice->inf( '<strong>The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Apply WordPress Content Filters' ).' advanced option is currently disabled</strong>. The use of WordPress content filters allows '.$short.' to fully render your content text for meta tag descriptions and detect additional images / embedded videos provided by shortcodes (for example).<br/><br/><strong>Some theme / plugins have badly coded content filters, so this option is disabled by default</strong>. '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'If you use any shortcodes in your content text, this option should be enabled' ).' &mdash; if you experience back-end / front-end display issues after enabling this option, determine which theme / plugin is at fault and report the problem to the appropriate theme / plugin author(s).', true );
-
-			if ( empty( $this->p->options['plugin_object_cache_exp'] ) ||
-				$this->p->options['plugin_object_cache_exp'] < $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) ) {
-				$this->p->notice->inf( 'Please note that the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache', 'Object Cache Expiry' ).' advanced option is currently set at '.$this->p->options['plugin_object_cache_exp'].' seconds &mdash; this is lower than the recommended default value of '.$this->p->opt->get_defaults( 'plugin_object_cache_exp' ).' seconds.', true );
-			}
-
-			$this->p->util->clear_all_cache();
 		}
 
 		private function deactivate_plugin() {
