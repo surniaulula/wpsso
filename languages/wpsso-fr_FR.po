@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-08 16:23-0400\n"
-"PO-Revision-Date: 2015-10-08 16:24-0400\n"
+"POT-Creation-Date: 2015-10-08 22:07-0400\n"
+"PO-Revision-Date: 2015-10-08 22:12-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -276,6 +276,8 @@ msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank\">Client URL Library</a> (cURL) is "
 "missing."
 msgstr ""
+"Le service de raccourcissement d'URL a été activée, mais la <a href=\"%s\" target=\"_blank\">librairie d'URL "
+"Client</a> (cURL) de PHP est manquante."
 
 #: lib/admin.php:1104 lib/admin.php:1108
 msgid "Please contact your hosting provider to have the missing cURL library files installed."
@@ -321,21 +323,27 @@ msgstr ""
 
 #: lib/admin.php:1144
 msgid ""
-"Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%s\">SEO Ultimate plugin Module "
+"Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%s\">SEO Ultimate Module "
 "Manager</a>."
 msgstr ""
+"Veuillez désactiver le module '<em>Open Graph Integrator</em>' dans <a href=\"%s\">SEO Ultimate Module "
+"Manager</a>."
 
 #: lib/admin.php:1155
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s\">All in One SEO Pack Feature "
 "Manager</a>."
 msgstr ""
+"Veuillez désactiver la fonctionnalité '<em>Social Meta</em>' dans le <a href=\"%s\">All in One SEO Pack "
+"Feature Manager</a>."
 
 #: lib/admin.php:1160
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a href=\"%s\">All in One SEO Pack "
 "Plugin Options</a>."
 msgstr ""
+"Veuillez crocher l'option '<em>Disable Google Plus Profile</em>' dans les réglages de l'extension <a href="
+"\"%s\">All in One SEO Pack</a>."
 
 #: lib/admin.php:1170
 msgid "JetPack's Photon module purposefully cripples the WordPress image size functions."
@@ -345,6 +353,7 @@ msgstr ""
 #: lib/admin.php:1170
 msgid "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin."
 msgstr ""
+"Veuillez <a href=\"%s\">désactiver le module Photon de JetPack</a> ou de désactiver l'extension gratuite %s."
 
 #: lib/admin.php:1170
 msgid ""
@@ -970,6 +979,8 @@ msgstr ""
 msgid ""
 "URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters)."
 msgstr ""
+"Les URLs plus court que cette longueur ne seront pas raccourcie (la valeur par défaut suggéré par Twitter "
+"est de %d caractères)."
 
 #: lib/messages.php:420
 msgid ""
@@ -1024,6 +1035,8 @@ msgid ""
 "To <a href=\"%s\" target=\"_blank\">verify your website</a> with Pinterest, edit your business account "
 "profile on Pinterest and click the \"Verify Website\" button."
 msgstr ""
+"Pour <a href=\"%s\" target=\"_blank\">vérifier votre site Web</a> avec Pinterest, modifiez votre profil de "
+"compte d'entreprise sur Pinterest et cliquez sur le bouton \"Vérifier le site\"."
 
 #: lib/messages.php:539
 msgid "Enter the supplied 'p:domain_verify' meta tag <em>content</em> value here."
@@ -1088,6 +1101,8 @@ msgid ""
 "Please note that the <em>default</em> site / blog must be licensed and the %1$s extension must be active in "
 "order to install %2$s Pro updates from the Network admin interface."
 msgstr ""
+"Veuillez noter que l'installation de mises à jour %2$s Pro par l'interface d'admin réseau requiert que le "
+"site / blog <em>par défaut</em> est une licence, et que l'extension %1$s soit active ."
 
 #: lib/messages.php:621
 msgid ""
@@ -1324,6 +1339,7 @@ msgstr ""
 #: lib/messages.php:674
 msgid "Some theme / plugins have badly coded content filters, so this option is disabled by default."
 msgstr ""
+"Certains thème / extensions ont des filtres de contenu mal codé, donc cette option est désactivée par défaut."
 
 #: lib/messages.php:674
 msgid ""
@@ -1340,6 +1356,8 @@ msgid ""
 "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this "
 "is lower than the recommended default value of %4$d seconds."
 msgstr ""
+"Veuillez noter que l'option avancée <a href=\"%1$s\">%2$s</a> est actuellement fixé à %3$d secondes &mdash; "
+"ceci est inférieur à la valeur recommandée par défaut de %4$d secondes."
 
 #: lib/messages.php:681
 msgid "The %1$s plugin %2$s option is empty."
@@ -1489,9 +1507,11 @@ msgstr ""
 
 #: lib/meta.php:128
 msgid ""
-"The Facebook debugger allows you to refresh Facebook's cache while also validating the Open Graph / Rich Pin "
-"meta tags."
+"The Facebook debugger allows you to refresh Facebook's cache, while also validating the Open Graph and "
+"Pinterest Rich Pin meta tags."
 msgstr ""
+"Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout en validant également les "
+"balises méta Open Graph et Rich Pin de Pinterest."
 
 #: lib/meta.php:128
 msgid ""
@@ -1537,6 +1557,8 @@ msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into "
 "the validation input field."
 msgstr ""
+"Le validateur de carte Twitter n'accepte pas les arguments de requête &ndash; copier-coller l'URL de partage "
+"suivant dans le champ d'entrée de validation."
 
 #: lib/meta.php:231
 msgid "Nonce token validation failed for the submitted form (update ignored)."
@@ -1556,7 +1578,23 @@ msgstr "Desc Social"
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
-#: lib/options.php:306
+#: lib/options.php:171
+msgid "WordPress could not find an entry for %s in the options table."
+msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
+
+#: lib/options.php:174
+msgid "WordPress returned a non-array value when reading %s from the options table."
+msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
+
+#: lib/options.php:177
+msgid "WordPress returned an empty array when reading %s from the options table."
+msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
+
+#: lib/options.php:179
+msgid "WordPress returned an unknown condition when reading %s from the options table."
+msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
+
+#: lib/options.php:322
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 

@@ -87,40 +87,51 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
+
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
-				$opts_err_msg = '';
 				$has_diff_version = false;
 				$has_diff_options = false;
 
+				// check for a new plugin and/or extension version
 				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+
 					if ( empty( $info['version'] ) )
 						continue;
+
 					$key = 'plugin_'.$lca.'_version';
+
 					if ( empty( $opts[$key] ) || $opts[$key] !== $info['version'] ) {
+
 						WpssoUtil::save_time( $lca, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
 					}
 				}
 
+				// check for an upgrade to the options array
 				if ( empty( $opts['options_version'] ) || 
 					$opts['options_version'] !== $this->p->cf['opt']['version'] )
 						$has_diff_options = true;
 
+				// upgrade the options array if necessary (renamed or removed keys)
 				if ( $has_diff_options ) {
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
 							' different than saved v'.$opts['options_version'] );
+
 					if ( ! is_object( $this->upg ) ) {
 						require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
+
 					$opts = $this->upg->options( $options_name, $opts, $this->get_defaults(), $network );
 				}
 
-				// adjust some options based on factors
+				// adjust some options based on external factors
 				if ( ! $network ) {
+
 					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
 						true, $this->p->is_avail['aop'] ) )
 							$opts['plugin_filter_content'] = 0;
@@ -131,57 +142,61 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts['add_meta_name_'.$name.':is'] = 'disabled';
 						}
 					}
+
 					$opts['add_meta_name_generator'] = defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
 						WPSSO_META_GENERATOR_DISABLE ? 0 : 1;
 				}
 
-				// save options and issue warnings if required
+				// save options and issue possibly issue reminders
 				if ( $has_diff_version || $has_diff_options ) {
-					if ( ! $network ) {
-						if ( is_admin() ) {
-							if ( current_user_can( 'manage_options' ) )
-								$this->save_options( $options_name, $opts, $network );
 
-							if ( empty( $opts['plugin_filter_content'] ) )
-								$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), true );
-		
-							if ( empty( $opts['plugin_object_cache_exp'] ) ||
-								$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) )
-									$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
-						}
-					} else $this->save_options( $options_name, $opts, $network );
+					$this->save_options( $options_name, $opts, $network );
+
+					if ( is_admin() ) {
+						if ( empty( $opts['plugin_filter_content'] ) )
+							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), true );
+			
+						if ( empty( $opts['plugin_object_cache_exp'] ) ||
+							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) )
+								$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
+					}
 				}
 
 				// add any missing 'plugin_add_to' options for current post types
 				$this->p->util->push_add_to_options( $opts, array( 'plugin' => 'backend' ) );
 
+			// $opts should be an array and not empty
 			} else {
 				if ( $opts === false )
-					$opts_err_msg = 'could not find an entry for '.$options_name.' in';
+					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.',
+						'wpsso' ), $options_name );
 				elseif ( ! is_array( $opts ) )
-					$opts_err_msg = 'returned a non-array value when reading '.$options_name.' from';
+					$err_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.',
+						'wpsso' ), $options_name );
 				elseif ( empty( $opts ) )
-					$opts_err_msg = 'returned an empty array when reading '.$options_name.' from';
-				else $opts_err_msg = 'returned an unknown condition when reading '.$options_name.' from';
+					$err_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.',
+						'wpsso' ), $options_name );
+				else $err_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.',
+					'wpsso' ), $options_name );
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'WordPress '.$opts_err_msg.' the options database table.' );
+					$this->p->debug->log( $err_msg );
 
 				if ( $network === false )
 					$opts = $this->get_defaults();
 				else $opts = $this->get_site_defaults();
-			}
-
-			if ( is_admin() ) {
-				if ( ! empty( $opts_err_msg ) ) {
+			
+				if ( is_admin() ) {
 					if ( $network === false )
 						$url = $this->p->util->get_admin_url( 'general' );
 					else $url = $this->p->util->get_admin_url( 'network' );
-					$this->p->notice->err( 'WordPress '.$opts_err_msg.' the options table. '.
-						'The plugin settings have been returned to their default values &mdash; '.
-						'<a href="'.$url.'">please review and save these new settings</a>.' );
+
+					$this->p->notice->err( $err_msg.
+						sprintf( __( 'The plugin settings have been returned to their default values &mdash; '.
+						'<a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 			}
+
 			return $opts;
 		}
 
@@ -299,10 +314,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			else $saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
 
 			if ( $saved === true ) {
-				// if we're just saving a new plugin version string, don't bother showing the upgrade message
 				if ( $prev_opts_version !== $opts['options_version'] ) {
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
+
 					$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
 						'wpsso' ), $options_name ), true );
 				}
