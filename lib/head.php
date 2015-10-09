@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Define an author_id, if one is available
 			 */
 			if ( is_singular() || $use_post !== false ) {
@@ -189,17 +189,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id: '.$author_id );
 
-			/**
+			/*
 			 * Open Graph
 			 */
 			$mt_og = $this->p->og->get_array( $use_post, $obj, $mt_og );
 
-			/**
+			/*
 			 * Twitter Cards
 			 */
 			$mt_tc = $this->p->tc->get_array( $use_post, $obj, $mt_og );
 
-			/**
+			/*
 			 * Name / SEO meta tags
 			 */
 			$mt_name = array();
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $obj );
 
-			/**
+			/*
 			 * Link relation tags
 			 */
 			$link_rel = array();
@@ -242,12 +242,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $obj );
 
-			/**
+			/*
 			 * Schema meta tags
 			 */
 			$mt_schema = $this->p->schema->get_meta_array( $use_post, $obj, $mt_og );
 
-			/**
+			/*
 			 * Combine and return all meta tags
 			 */
 			$header_array = array_merge(
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->cf['lca'].'-schema' ) )
 			);
 
-			/**
+			/*
 			 * Save the header array to the WordPress transient cache
 			 */
 			if ( apply_filters( $lca.'_header_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $header_array;
 		}
 
-		/**
+		/*
 		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_mt() for each
 		 */
 		private function get_mt_array( $tag = 'meta', $type = 'property', $mt_array, $use_post = false ) {

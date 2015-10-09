@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Open Graph Example',
-				'option label', 'wpsso' ), 'medium', 'post-social-preview' ).
+				'option label', 'wpsso' ), 'medium', 'meta-social-preview' ).
 			'<td style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 			<div class="preview_box" style="width:'.( $prev_width + 40 ).'px;">
 				<div class="preview_box" style="width:'.$prev_width.'px;">

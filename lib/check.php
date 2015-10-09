@@ -36,48 +36,48 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			if ( ! is_admin() ) {
 				// disable jetPack open graph meta tags
-				if ( class_exists( 'JetPack' ) || isset( $this->active_plugins['jetpack/jetpack.php'] ) ) {
+				if ( class_exists( 'JetPack' ) || 
+					isset( $this->active_plugins['jetpack/jetpack.php'] ) ) {
 					add_filter( 'jetpack_enable_opengraph', '__return_false', 99 );
 					add_filter( 'jetpack_enable_open_graph', '__return_false', 99 );
 					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 99 );
 				}
 	
-				// disable Yoast SEO opengraph, twitter, publisher, and author meta tags
-				if ( function_exists( 'wpseo_init' ) || isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) ) {
-					global $wpseo_og;
-					if ( is_object( $wpseo_og ) && 
-						( $prio = has_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ) ) ) ) {
-							$ret = remove_action( 'wpseo_head', array( $wpseo_og, 'opengraph' ), $prio );
-					}
-					global $wpseo_twitter;
-					if ( is_object( $wpseo_twitter ) && 
-						( $prio = has_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ) ) ) ) {
-							$ret = remove_action( 'wpseo_head', array( $wpseo_twitter, 'twitter' ), $prio );
-					}
-					if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
-						global $wpseo_front;
-						if ( is_object( $wpseo_front ) && 
-							( $prio = has_action( 'wpseo_head', array( $wpseo_front, 'publisher' ) ) ) )
-								$ret = remove_action( 'wpseo_head', array( $wpseo_front, 'publisher' ), $prio );
-					}
-					if ( ! empty( $this->p->options['seo_def_author_id'] ) &&
-						! empty( $this->p->options['seo_def_author_on_index'] ) ) {
-						global $wpseo_front;
-						if ( is_object( $wpseo_front ) && 
-							( $prio = has_action( 'wpseo_head', array( $wpseo_front, 'author' ) ) ) )
-								$ret = remove_action( 'wpseo_head', array( $wpseo_front, 'author' ), $prio );
-					}
-					if ( ! empty( $this->p->options['schema_website_json'] ) ) {
-						add_filter( 'wpseo_json_ld_output', '__return_empty_array', 99 );
-					}
-				}
+				// disable Yoast SEO social meta tags
+				if ( function_exists( 'wpseo_init' ) || 
+					isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) )
+						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9999 );
 
-				if ( class_exists( 'Ngfb' ) || isset( $this->active_plugins['nextgen-facebook/nextgen-facebook.php'] ) ) {
+				if ( class_exists( 'Ngfb' ) || 
+					isset( $this->active_plugins['nextgen-facebook/nextgen-facebook.php'] ) ) {
 					if ( ! defined( 'NGFB_META_TAGS_DISABLE' ) )
 						define( 'NGFB_META_TAGS_DISABLE', true );
 				}
 			}
 			do_action( $this->p->cf['lca'].'_init_check', $this->active_plugins );
+		}
+
+		public function cleanup_wpseo_filters() {
+
+			if ( is_object( $GLOBALS['wpseo_og'] ) && 
+				( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false )
+					$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
+
+			if ( class_exists( 'WPSEO_Twitter' ) &&
+				( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) !== false )
+					$ret = remove_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ), $prio );
+
+			if ( class_exists( 'WPSEO_GooglePlus' ) && 
+				( $prio = has_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ) ) ) !== false )
+					$ret = remove_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ), $prio );
+
+			if ( ! empty( $this->p->options['seo_publisher_url'] ) &&
+				isset( WPSEO_Frontend::$instance ) &&
+					 ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) )
+						$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
+
+			if ( ! empty( $this->p->options['schema_website_json'] ) )
+				add_filter( 'wpseo_json_ld_output', '__return_empty_array', 99 );
 		}
 
 		private function get_avail_check( $key ) {

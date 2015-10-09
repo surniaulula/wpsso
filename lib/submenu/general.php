@@ -297,7 +297,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'rp_author_name' ).
-					'<td>'.$this->form->get_select( 'rp_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
+					'<td>'.$this->form->get_select( 'rp_author_name',
+						$this->p->cf['form']['user_name_fields'] ).'</td>';
 		
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Pinterest Website Verification ID',

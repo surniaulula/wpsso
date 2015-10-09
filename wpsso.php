@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.3.1
- * Version: 3.11.0-dev7
+ * Version: 3.11.0
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
  */
@@ -34,7 +34,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $loader;			// WpssoLoader
 		public $media;			// WpssoMedia (images, videos, etc.)
 		public $msgs;			// WpssoMessages (admin tooltip messages)
-		public $notice;			// SucomNotice
+		public $notice;			// SucomNotice or WpssoNoNotice
 		public $og;			// WpssoOpengraph
 		public $tc;			// WpssoTwittercard
 		public $opt;			// WpssoOptions
@@ -136,15 +136,22 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ? true : false;
 			$wp_debug = defined( 'WPSSO_WP_DEBUG' ) && WPSSO_WP_DEBUG ? true : false;
 
+			// only load the debug class if one or more debug options are enabled
 			if ( ( $html_debug || $wp_debug ) && 
-				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) !== false )
+				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) )
 					$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
-			else $this->debug = new WpssoNoDebug();			// fallback to dummy debug class
+			else $this->debug = new WpssoNoDebug();
 
-			if ( $this->debug->enabled && $activate === true )
-				$this->debug->log( 'method called for plugin activation' );
+			if ( $activate === true &&
+				$this->debug->enabled )
+					$this->debug->log( 'method called for plugin activation' );
 
-			$this->notice = new SucomNotice( $this );
+			// only load the notification class in the admin interface
+			if ( is_admin() &&
+				( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) )
+					$this->notice = new $classname( $this );
+			else $this->notice = new WpssoNoNotice();
+
 			$this->util = new WpssoUtil( $this );
 			$this->opt = new WpssoOptions( $this );
 			$this->cache = new SucomCache( $this );			// object and file caching
@@ -162,7 +169,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->admin = new WpssoAdmin( $this );		// admin menus and page loader
 			}
 
-			$this->loader = new WpssoLoader( $this, $activate );
+			$this->loader = new WpssoLoader( $this, $activate );	// module loader
 
 			do_action( 'wpsso_init_objects', $activate );
 
@@ -218,8 +225,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( is_admin() )
 					// text_domain is already loaded by the NgfbAdmin class construct
 					$this->notice->inf( ( $this->is_avail['cache']['transient'] ?
-						__( 'HTML debug mode is active &ndash; transient cache use could not be disabled.', 'wpsso' ) :
-						__( 'HTML debug mode is active &ndash; transient cache use is disabled.', 'wpsso' ) ).' '.
+						__( 'HTML debug mode is active (transient cache could NOT be disabled).', 'nextgen-facebook' ) :
+						__( 'HTML debug mode is active (transient cache use is disabled).', 'nextgen-facebook' ) ).' '.
 						__( 'Informational debug messages are being added as hidden HTML comments.', 'wpsso' ) );
 			}
 		}
@@ -311,6 +318,16 @@ if ( ! class_exists( 'WpssoNoDebug' ) ) {
 		public function show_html() { return; }
 		public function get_html() { return; }
 		public function is_enabled() { return false; }
+	}
+}
+
+if ( ! class_exists( 'WpssoNoNotice' ) ) {
+	class WpssoNoNotice {
+		public function nag() { return; }
+		public function inf() { return; }
+		public function err() { return; }
+		public function log() { return; }
+		public function trunc() { return; }
 	}
 }
 

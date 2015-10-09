@@ -13,16 +13,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 	class SucomForm {
 	
 		private $p;
+		private $text_dom = false;
+
 		public $options = array();
 		public $defaults = array();
 		public $options_name;
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$this->options_name =& $opts_name;
 			$this->options =& $opts;
 			$this->defaults =& $def_opts;
+			$this->text_dom = isset( $this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'] ) ?
+				$this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'] : false;
 		}
 
 		public function get_image_upload_input( $name_prefix ) {
@@ -74,7 +79,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						checked( $this->defaults[$name], 1, false ) : '' ) ).
 				' title="default is '.( $this->in_defaults( $name ) && 
 					! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
-				( $disabled === true ? ' (option disabled)' : '' ).'" />';
+				( $disabled === true ? ' '._x( '(option disabled)',
+					'form option value', $this->text_dom ) : '' ).'" />';
 
 			return $html;
 		}
@@ -84,18 +90,31 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $disabled = false ) {
-			if ( empty( $name ) || ! is_array( $values ) ) return;
+
+			if ( empty( $name ) || 
+				! is_array( $values ) )
+					return;
+
 			if ( $is_assoc == false ) 
 				$is_assoc = SucomUtil::is_assoc( $values );
+
 			if ( $this->in_options( $name.':is' ) && 
 				$this->options[$name.':is'] === 'disabled' )
 					$disabled = true;
+
 			$html = $disabled === true ?
 				$this->get_hidden( $name ) : '';
+
 			foreach ( $values as $val => $desc ) {
+
 				// if the array is NOT associative (so regular numered array), 
 				// then the description is used as the saved value as well
-				if ( $is_assoc == false ) $val = $desc;
+				if ( $is_assoc == false )
+					$val = $desc;
+
+				if ( $this->text_dom )
+					$desc = _x( $desc, 'form option value', $this->text_dom );
+
 				$html .= '<input type="radio"'.
 					( $disabled === true ?
 						' disabled="disabled"' :
@@ -108,15 +127,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						' title="default is '.$values[$this->defaults[$name]].'"' : '' ).
 					'/> '.$desc.'&nbsp;&nbsp;';
 			}
+
 			return $html;
 		}
 
 		public function get_no_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false ) {
 			return $this->get_radio( $name, $values, $class, $id, $is_assoc, true );
-		}
-
-		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false ) {
-			return $this->get_select( $name, $values, $class, $id, $is_assoc, true );
 		}
 
 		public function get_select( $name, $values = array(), $class = '', $id = '', 
@@ -129,7 +145,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 
 			$html = '';
-			$select_id = empty( $id ) ? 'select_'.$name : 'select_'.$id;
+			$select_id = empty( $id ) ?
+				'select_'.$name :
+				'select_'.$id;
 
 			if ( $reload === true ) {
 				$url = empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://';
@@ -155,25 +173,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $is_assoc == false ) 
 					$val = $desc;
 				if ( $val == -1 ) 
-					$desc = '(settings value)';
+					$desc = _x( '(settings value)', 'form option value', $this->text_dom );
 				else {
+					if ( $this->text_dom )
+						$desc = _x( $desc, 'form option value', $this->text_dom );
+
 					switch ( $name ) {
 						case 'og_img_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' (no images)'; 
+								$desc .= ' '._x( '(no images)', 'form option value', $this->text_dom );
 							break;
 						case 'og_vid_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' (no videos)'; 
+								$desc .= ' '._x( '(no videos)', 'form option value', $this->text_dom );
 							break;
 						default: 
 							if ( $desc === '' || $desc === 'none' ) 
-								$desc = '[none]'; 
+								$desc = _x( '[none]', 'form option value', $this->text_dom ); 
 							break;
 					}
 					if ( $this->in_defaults( $name ) && 
 						$val === $this->defaults[$name] )
-							$desc .= ' (default)';	// mark default value
+							$desc .= ' '._x( '(default)', 'form option value', $this->text_dom );
 				}
 
 				$html .= '<option value="'.esc_attr( $val ).'"';
@@ -185,6 +206,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 			$html .= '</select>';
 			return $html;
+		}
+
+		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false ) {
+			return $this->get_select( $name, $values, $class, $id, $is_assoc, true );
 		}
 
 		// $use_opt_defs = true when used for post / user meta forms (to show default values)
@@ -208,7 +233,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					' <div class="img_crop_from">From';
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$pos_vals = $this->options[$name.'_'.$key] == -1 ? 
-						array_merge( array( '-1' => '(settings value)' ), $this->p->cf['form']['position_'.$key] ) : 
+						array_merge( array( '-1' => _x( '(settings value)', 'form option value', $this->text_dom ) ),
+							$this->p->cf['form']['position_'.$key] ) : 
 						$this->p->cf['form']['position_'.$key];
 					$crop_select .= ' '.$this->get_select( $name.'_'.$key, $pos_vals, 'medium' );
 				}
@@ -254,7 +280,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$html .= selected( $this->options[$name], $size_name, false );
 				$html .= '>'.$size_name.' [ '.$size['width'].'x'.$size['height'].( $size['crop'] ? ' cropped' : '' ).' ]';
 				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] ) 
-					$html .= ' (default)';	// mark default value
+					$html .= ' '._x( '(default)', 'form option value', $this->text_dom );
 				$html .= '</option>';
 			}
 			$html .= '</select>';

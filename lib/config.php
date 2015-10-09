@@ -20,10 +20,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.11.0-dev7',		// plugin version
+					'version' => '3.11.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
-					'desc' => 'Improve WordPress editing and publishing for a better presentation on all social websites - no matter how your content is shared or re-shared!',
+					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso362',				// increment when changing default options
+				'version' => 'sso363',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
@@ -608,6 +608,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					259200 => 72,
 					604800 => 168,
 				),
+				'qualifiers' => array(
+					'default' => '(default)',
+					'no_images' => '(no images)',
+					'no_videos' => '(no videos)',
+					'settings' => '(settings value)',
+					'disabled' => '(option disabled)',
+				),
 				'script_locations' => array(
 					'none' => '[none]',
 					'header' => 'Header',
@@ -824,7 +831,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			
 			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/com/notice.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/script.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/style.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/webpage.php' );

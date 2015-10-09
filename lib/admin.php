@@ -80,8 +80,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// load all submenu classes into the $this->submenu array
 		// the id of each submenu item must be unique
 		private function set_objects() {
-			self::$is = $this->p->check->aop( $this->p->cf['lca'], true, 
-				$this->p->is_avail['aop'] ) ? ' Pro' : ' Free';
+			self::$is = ' '.( $this->p->check->aop( $this->p->cf['lca'], 
+				true, $this->p->is_avail['aop'] ) ? 
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' ) );
 			$menus = array( 
 				'submenu', 
 				'setting'		// setting must be last to extend submenu/advanced.php
@@ -496,9 +498,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) || 
 				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 
-				add_meta_box( $this->pagehook.'_purchase', _x( 'Pro / Power-User Version', 
-					'metabox title (side)', 'wpsso' ), 
-					array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
+				add_meta_box( $this->pagehook.'_purchase',
+					_x( 'Pro / Power-User Version', 'metabox title (side)', 'wpsso' ), 
+						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 
 				add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_purchase', 
 					array( &$this, 'add_class_postbox_highlight_side' ) );
@@ -507,21 +509,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( 'purchase' ), null, 'side', true );
 			}
 
-			add_meta_box( $this->pagehook.'_info', _x( 'Version Information', 
-				'metabox title (side)', 'wpsso' ), 
-				array( &$this, 'show_metabox_info' ), $this->pagehook, 'side' );
+			add_meta_box( $this->pagehook.'_info',
+				_x( 'Version Information', 'metabox title (side)', 'wpsso' ), 
+					array( &$this, 'show_metabox_info' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_status_gpl', _x( 'Free / Basic Features',
-				'metabox title (side)', 'wpsso' ), 
-				array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
+			add_meta_box( $this->pagehook.'_status_gpl',
+				_x( 'Free / Basic Features', 'metabox title (side)', 'wpsso' ), 
+					array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_status_pro', _x( 'Pro Version Features',
-				'metabox title (side)', 'wpsso' ), 
-				array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+			add_meta_box( $this->pagehook.'_status_pro',
+				_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ), 
+					array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
 
-			add_meta_box( $this->pagehook.'_help', _x( 'Help and Support',
-				'metabox title (side)', 'wpsso' ), 
-				array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
+			add_meta_box( $this->pagehook.'_help',
+				_x( 'Help and Support', 'metabox title (side)', 'wpsso' ), 
+					array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
 
 		}
 
@@ -673,8 +675,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'style="background-color:#0f0;"';
 				}
 
-				echo '<tr><td colspan="2"><h4>'.$info['short'].( $this->p->check->aop( $lca,
-					true, $this->p->is_avail['aop'] ) ? ' Pro' : ' Free' ).'</h4></td></tr>';
+				echo '<tr><td colspan="2"><h4>'.$info['short'].' '.
+					( $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ?
+						_x( 'Pro', 'package type', 'wpsso' ) :
+						_x( 'Free', 'package type', 'wpsso' ) ).'</h4></td></tr>';
 				echo '<tr><th class="side">'._x( 'Installed',
 					'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';

@@ -124,11 +124,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
+						case 'tooltip-meta-social-preview':
+						 	$text = 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social networks may look significantly different than this <em>example</em> (depending on the viewing platform resolution, orientation, etc.).';
+						 	break;
 						case 'tooltip-meta-og_title':
 							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
 						 	break;
 						case 'tooltip-meta-og_desc':
-							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with some social sharing buttons' ).'. '.'The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
+							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
 						 	break;
 						case 'tooltip-meta-schema_desc':
 							$text = 'A custom description for the Google+ schema description meta tag.';
@@ -179,14 +182,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-post-' ) === 0 ) {
 					$ptn = empty( $atts['ptn'] ) ? 'Post' : $atts['ptn'];
 					switch ( $idx ) {
-						case 'tooltip-post-social-preview':
-						 	$text = 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social networks may look significantly different than this <em>example</em> (depending on the viewing platform resolution, orientation, etc.).';
-						 	break;
 						case 'tooltip-post-og_art_section':
 							$text = 'A custom topic, different from the default Article Topic selected in the General settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
 						 	break;
 						case 'tooltip-post-og_desc':
-							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with some social sharing buttons' ).'. The default description value is based on the content, or excerpt if one is available, and is refreshed when the (draft or published) '.$ptn.' is saved. Update and save this description to change the default value of all other description fields.';
+							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the content, or excerpt if one is available, and is refreshed when the (draft or published) '.$ptn.' is saved. Update and save this description to change the default value of all other description fields.';
 						 	break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $atts );
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Select which contact field to use from the author\'s profile page for the Facebook / Open Graph and Pinterest Rich Pin \'article:author\' meta tag(s). The preferred setting is the Facebook URL field (default value).', 'wpsso' );
 							break;
 						case 'tooltip-og_author_fallback':
-							$text = sprintf( __( 'If the Author Profile URL (and the Author Link URL in the Google Settings below) is not a valid URL, then %1$s can fallback to using the author index / archive page on this website (\'%2$s\' for example).', 'wpsso' ), $atts['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
+							$text = sprintf( __( 'If the \'%1$s\' (and the \'%2$s\' in the Google settings below) is not a valid URL, then %3$s can fallback to using the author index / archive page on this website (for example, \'%4$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), _x( 'Author Link URL Field', 'option label', 'wpsso' ), $atts['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-og_def_author_id':
 							$text = 'A default author for webpages <em>missing authorship information</em> (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[none]</em> (the default).';
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Your Bit.ly API key for this website (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 							break;
 						case 'tooltip-plugin_google_api_key':
-							$text = sprintf( __( 'The Google BrowserKey for this website (project). If you don\'t already have one, visit <a href="%s" target="_blank">Google\'s Cloud Console</a> and create a new project for your website (use the \'Select a project\' drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
+							$text = sprintf( __( 'The Google BrowserKey value for this website (project). If you don\'t already have a Google project, visit <a href="%s" target="_blank">Google\'s Cloud Console</a> and create a new project for your website (use the \'Select a project\' drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
 							break;
 						case 'tooltip-plugin_google_shorten':
 							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API from <a href="%s" target="_blank">Google\'s Cloud Console</a> (under the project\'s <em>API &amp; auth / APIs / URL Shortener API</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/start' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the \'Yes\' option here.', 'wpsso' );
@@ -438,16 +438,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-fb_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-fb_publisher_url':
-							$text = 'If you have a <a href="https://www.facebook.com/business" target="_blank">Facebook Business Page for your website / business</a>, you may enter its URL here. For example, the Facebook Business Page URL for Surnia Ulula is <a href="https://www.facebook.com/SurniaUlulaCom" target="_blank">https://www.facebook.com/SurniaUlulaCom</a>. The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages (not index / archive webpages) and schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = sprintf( __( 'If you have a <a href="%1$s" target="_blank">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s" target="_blank">%4$s</a>).', 'wpsso' ), 'https://www.facebook.com/business', 'Surnia Ulula', 'https://www.facebook.com/SurniaUlulaCom', 'https://www.facebook.com/SurniaUlulaCom' ).' '.__( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages (not index or archive webpages) and schema publisher (Organization) social JSON.', 'wpsso' ).' '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-fb_admins':
-							$text = 'The Facebook Admin Username(s) are used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data for your website. Note that these are <strong>user account names, and not Facebook age names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (example: https://www.facebook.com/<strong>user_name</strong>). Enter only the user name(s), not the URL(s). <a href="https://www.facebook.com/settings?tab=account&section=username&view" target="_blank">You may update your Facebook user name in the Facebook General Account Settings</a>.';
+							$text = sprintf( __( 'The \'%1$s\' are used by Facebook to allow access to <a href="%2$s" target="_blank">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), 'https://developers.facebook.com/docs/insights/' ).' '.sprintf( __( 'You may update your Facebook user name in the <a href="%1$s" target="_blank">Facebook General Account Settings</a>.', 'wpsso' ), 'https://www.facebook.com/settings?tab=account&section=username&view' );
 							break;
 						case 'tooltip-fb_app_id':
-							$text = 'If you have a <a href="https://developers.facebook.com/apps" target="_blank">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in your webpage meta tags, and is used by Facebook to allow access to <a href="https://developers.facebook.com/docs/insights/" target="_blank">Facebook Insight</a> data for accounts associated with that Application ID.';
+							$text = sprintf( __( 'If you have a <a href="%1$s" target="_blank">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%2$s" target="_blank">Facebook Insight</a> data for accounts associated with that Application ID.', 'wpsso' ), 'https://developers.facebook.com/apps', 'https://developers.facebook.com/docs/insights/' );
 							break;
 						case 'tooltip-fb_lang':
-							$text = 'The default language of your website content, used in the Facebook / Open Graph and Pinterest Rich Pin meta tags. The Pro version can also use the WordPress locale to adjust the language value dynamically (useful for websites with multilingual content).';
+							$text = __( 'The default language of your website content, used in the Facebook / Open Graph and Pinterest Rich Pin meta tags. The Pro version can also use the WordPress locale to adjust the language value dynamically (useful for websites with multilingual content).', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_fb', $text, $idx, $atts );
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-google_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-google_publisher_url':
-							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here. For example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>. The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-google_seo_desc_len':
 							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The URL to an image that Google should use as your organization\'s logo in search results and their <em>Knowledge Graph</em>.';
 							break;
 						case 'tooltip-google_author_name':
-							$text = 'Select an Author Name Format for the "author" meta tag, or \'none\' to disable this feature (the recommended value is \'Display Name\'). Facebook uses the "author" meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
+							$text = sprintf( __( 'Select an \'%1$s\' to use for the \'%2$s\' meta tag, or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'author' ).' Facebook uses the "author" meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
 							break;
 						case 'tooltip-google_author_field':
 							$text = $atts['short'].' can include an <em>author</em> and <em>publisher</em> link in your webpage headers. These are not Facebook / Open Graph and Pinterest Rich Pin meta property tags &mdash; they are used primarily by Google\'s search engine to associate Google+ profiles with search results. Select which field to use from the author\'s profile for the <em>author</em> link tag.';
@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-tc_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-tc_site':
-							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-tc_desc_len':
 							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
@@ -527,13 +527,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-rp_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-rp_publisher_url':
-							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-rp_img_dimensions':
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (defaults is '.$this->p->opt->get_defaults( 'rp_img_width' ).'x'.$this->p->opt->get_defaults( 'rp_img_height' ).' '.( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'un' : '' ).'cropped). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-rp_author_name':
-							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'An additional \'article:author\' meta tag can be included when the Pinterest crawler is detected.', 'wpsso' ).' '.__( 'Select an Author Name Format to use, or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' );
+							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'An additional \'article:author\' meta tag can be included when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' to use for the \'%2$s\' meta tag, or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
 							break;
 						case 'tooltip-rp_dom_verify':
 							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'ttps://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );
@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-instgram_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-instgram_publisher_url':
-							$text = 'If you have an <a href="http://blog.business.instagram.com/" target="_blank">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have an <a href="http://blog.business.instagram.com/" target="_blank">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_instgram', $text, $idx, $atts );
@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-linkedin_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-linkedin_publisher_url':
-							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page for your website / business</a>, you may enter its URL here. For example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>. The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page for your website / business</a>, you may enter its URL here (for example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>). The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_linkedin', $text, $idx, $atts );
@@ -573,7 +573,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-myspace_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-myspace_publisher_url':
-							$text = 'If you have a <a href="http://myspace.com/" target="_blank">MySpace account for your website / business</a>, you may enter its URL here. The MySpace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. Google Search may use this information to display additional publisher / business details in its search results.';
+							$text = 'If you have a <a href="http://myspace.com/" target="_blank">MySpace account for your website / business</a>, you may enter its URL here. The MySpace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_myspace', $text, $idx, $atts );
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $atts['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their <code>header.php</code> template file.', 'wpsso' ).'</p></blockquote>';
 						break;
 					case 'info-image-dimensions':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s uses several image dimensions, based on their intended use (Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, etc.).', 'wpsso' ), $atts['short'] ).' '.__( 'For example, Facebook / Open Graph meta tags are also read by Google+, LinkedIn, and many others.', 'wpsso' ).' '.__( 'Facebook has published a preference for images measuring 1200x630px (to support retina and high-PPI displays), but horizontally cropped images may not show as well on all social sites.', 'wpsso' ).' '.__( 'A good compromise for your Open Graph image dimensions might be 1200x1200px cropped.', 'wpsso' ).' '.__( 'If you use these dimensions, make sure your original images are at least 1200px in <em>both</em> width and height.', 'wpsso' ).'</p></blockquote>';
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s uses several image dimensions, based on their intended use (Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, etc.).', 'wpsso' ), $atts['short'] ).' '.__( 'Facebook has published a preference for images measuring 1200x630px (to support retina and high-PPI displays), but horizontally cropped images may not show as well on all social sites.', 'wpsso' ).' '.__( 'A good compromise for your Open Graph image dimensions might be 1200x1200px cropped.', 'wpsso' ).' '.__( 'If you use these dimensions, make sure your original images are at least 1200px in <em>both</em> width and height.', 'wpsso' ).'</p></blockquote>';
 						break;
 					case 'info-social-accounts':
 						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).' '.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search, and/or enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup in your webpage headers.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
@@ -728,7 +728,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( is_array( $atts ) && 
 				! empty( $atts['is_locale'] ) )
-					$text .= ' This option is localized &mdash; you may change the WordPress admin locale with <a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, <a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>, etc., to define alternate values for different languages.';
+					$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress admin locale with <a href="%1$s" target="_blank">Polylang</a>, <a href="%2$s" target="_blank">WP Native Dashboard</a>, etc., to define alternate option values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/polylang/', 'https://wordpress.org/plugins/wp-native-dashboard/' );
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) )
 				return '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.
