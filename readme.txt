@@ -359,8 +359,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Updated checks for conflicting Yoast SEO 'wpseo_head' actions.
 	* Fixed a condition where updated options were not getting saved if the user did not have sufficient privileges.
 * **Developer Notes**
-	* Added a check to load the notifications class only when when in the admin interface.
-	* Added context to all metabox titles and tab text strings.
+	* Added a check to load the notifications class only when when in the admin interface (shaving a few ms off load time).
+	* Added a translation context to all metabox titles and tab text strings.
 	* Added new filters to customize the image pattern matching in the content:
 		* apply_filters( 'wpsso_content_image_preg_html_tag', $default = 'img' );
 		* apply_filters( 'wpsso_content_image_preg_pid_attr', $default = 'data-[a-z]+-pid' );
