@@ -349,7 +349,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.11.0 =
+= Version 3.11.0 2015/10/09 =
 
 * **New Features**
 	* Added a French language (fr_FR) translation.
@@ -494,6 +494,10 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* Refactored the WpssoMessages->get() method a slight speed improvement. Please note that 'wpsso_tooltip_\*' filters have been renamed to 'wpsso_messages_tooltip_\*' (adjust your filter hooks accordingly).
 
 == Upgrade Notice ==
+
+= 3.11.0 =
+
+2015/10/09 Added a French language (fr_FR) translation. Added a check to detect image IDs within class names. Small fixes and a slight performance improvement.
 
 = 3.10.3 =
 
