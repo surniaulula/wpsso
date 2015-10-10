@@ -192,8 +192,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					else $url = $this->p->util->get_admin_url( 'network' );
 
 					$this->p->notice->err( $err_msg.
-						sprintf( __( 'The plugin settings have been returned to their default values &mdash; '.
-						'<a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
+						sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 			}
 

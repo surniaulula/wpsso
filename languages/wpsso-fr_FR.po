@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-09 17:00-0400\n"
-"PO-Revision-Date: 2015-10-10 09:31-0400\n"
+"POT-Creation-Date: 2015-10-10 11:02-0400\n"
+"PO-Revision-Date: 2015-10-10 11:04-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1764,7 +1764,15 @@ msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa t
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:322
+#: lib/options.php:195
+msgid ""
+"The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save "
+"the new settings</a>."
+msgstr ""
+"Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît "
+"examiner et sauvegarder les nouveaux réglages</a>."
+
+#: lib/options.php:321
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
