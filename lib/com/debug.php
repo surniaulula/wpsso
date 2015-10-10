@@ -134,8 +134,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( $this->subsys['html'] == true )
 				$this->buffer[] = $log_msg;
 
-			if ( $this->subsys['wp'] == true )
-				error_log( $this->log_prefix.' '.$log_msg );
+			if ( $this->subsys['wp'] == true ) {
+				$sid = session_id();
+				error_log( ( $sid ? $sid : $_SERVER['REMOTE_ADDR'] ).
+					' '.$this->log_prefix.' '.$log_msg );
+			}
 		}
 
 		public function show_html( $data = null, $title = null ) {
