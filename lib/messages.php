@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'An additional \'article:author\' meta tag can be included when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' to use for the \'%2$s\' meta tag, or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
 							break;
 						case 'tooltip-rp_dom_verify':
-							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'ttps://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );
+							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_rp', $text, $idx, $atts );

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.10.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2015-10-10 19:22-0400\n"
-"PO-Revision-Date: 2015-10-10 19:22-0400\n"
+"PO-Revision-Date: 2015-10-11 09:36-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -31,11 +31,11 @@ msgstr "Vous avez des questions ou besoin d'aide ?"
 
 #: lib/admin.php:150
 msgid "Open a new ticket on the %s support website."
-msgstr "Ouvrir un nouveau billet sur le site Web de soutien %s."
+msgstr "Ouvrez un nouveau billet sur le site Web de soutien %s."
 
 #: lib/admin.php:154
 msgid "Open a new thread in the %s version support forum."
-msgstr "Ouvrir un nouveau sujet dans le forum de soutien pour l'extension %s."
+msgstr "Ouvrez un nouveau sujet dans le forum de soutien pour l'extension %s."
 
 #: lib/admin.php:162
 msgid "Excellent!"
@@ -211,7 +211,7 @@ msgstr "et <a href=\"%s\" target=\"_blank\">autres notes</a>"
 
 #: lib/admin.php:863
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
-msgstr "Ouvrir un <a href=\"%s\" target=\"_blank\">billet de soutien</a>"
+msgstr "Ouvrez un <a href=\"%s\" target=\"_blank\">billet de soutien</a>"
 
 #: lib/admin.php:866
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
