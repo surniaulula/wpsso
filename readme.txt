@@ -48,7 +48,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
 * Twitter Card meta tags:
-	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
+	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is provided with the Pro version (as it requires video discovery modules available only in the Pro version).
@@ -93,7 +93,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Contextual help for *every* plugin option and [comprehensive online documentation](http://wpsso.com/codex/plugins/wpsso/).
 * Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional and optional Free extension plugins for WPSSO:
-	* [App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags.
+	* [Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags.
 	* [Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) for Facebook *Location* and Pinterest *Place* Rich Pin meta tags.
 	* [Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) for great looking SVG buttons in any size.
 	* [Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) for fast and accurate social sharing buttons.
@@ -176,7 +176,7 @@ WPSSO allows you to customize (Pro version) the field names, label, and add / re
 
 WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, product, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options *are* available). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.
 
-WPSSO provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. The [Photo](https://dev.twitter.com/cards/types/photo), [Gallery](https://dev.twitter.com/cards/types/gallery), and [Product](https://dev.twitter.com/cards/types/product) Twitter Cards were deprecated by Twitter on July 3rd, 2015.
+WPSSO provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. The [Photo](https://dev.twitter.com/cards/types/photo), [Gallery](https://dev.twitter.com/cards/types/gallery), and [Product](https://dev.twitter.com/cards/types/product) Twitter Cards were deprecated by Twitter on July 3rd, 2015.
 
 <h4>3rd Party Integration (Pro version)</h4>
 
