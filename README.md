@@ -102,13 +102,13 @@
 <li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
 <li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
-<li>Additional and optional Free extension plugins for WPSSO:
+<li>Additional and optional Free extension plugins:
 
 <ul>
-<li><a href="https://wordpress.org/plugins/wpsso-am/">Mobile App Meta</a> for Apple Store / iTunes and Google Play App meta tags.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">Place and Location Meta</a> for Facebook <em>Location</em> and Pinterest <em>Place</em> Rich Pin meta tags.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">Ridiculously Responsive Social Sharing Buttons</a> for great looking SVG buttons in any size.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-ssb/">Social Sharing Buttons</a> for fast and accurate social sharing buttons.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> for Apple Store / iTunes and Google Play App meta tags.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Location Meta</a> for Facebook <em>Location</em> and Pinterest <em>Place</em> Rich Pin meta tags.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> for great looking SVG buttons in any size.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> for fast and accurate social sharing buttons.</li>
 </ul></li>
 </ul>
 
