@@ -22,7 +22,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **WPSSO automatically retrieves and uses information from a wide range or sources**, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, JetPack Photon, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API v2, and much more.
 
-**Available in multiple languages:**
+= Available in Multiple Languages =
 
 * English (US)
 * French (France)
