@@ -101,7 +101,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$key = 'plugin_'.$lca.'_version';
 
-					if ( empty( $opts[$key] ) || $opts[$key] !== $info['version'] ) {
+					if ( empty( $opts[$key] ) || 
+						version_compare( $opts[$key], $info['version'], '!=' ) ) {
 
 						WpssoUtil::save_time( $lca, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
