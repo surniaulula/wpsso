@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
-			$this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph' );
+			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph', false );
 		}
 
 		public function show_metabox_opengraph() {

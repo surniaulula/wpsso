@@ -27,8 +27,16 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 			// the app and player cards do not use an image size
-			$sizes['tc_sum'] = array( 'name' => 'tc-summary', 'label' => 'Twitter Summary Card' );
-			$sizes['tc_lrgimg'] = array( 'name' => 'tc-lrgimg', 'label' => 'Twitter Large Image Card' );
+			$sizes['tc_sum'] = array(
+				'name' => 'tc-summary',
+				'label' => _x( 'Twitter Summary Card',
+					'image size label', 'wpsso' ),
+			);
+			$sizes['tc_lrgimg'] = array(
+				'name' => 'tc-lrgimg',
+				'label' => _x( 'Twitter Large Image Card',
+					'image size label', 'wpsso' ),
+			);
 			return $sizes;
 		}
 

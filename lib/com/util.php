@@ -1025,6 +1025,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				( empty( $tooltip_text ) ? '' : $tooltip_text ).'</p></th>';
 		}
 
+		// tab titles in the array should already be translated:
+		//
+		// $tabs = array(
+		//		'header' => _x( 'Title / Descriptions', 'metabox tab', 'nextgen-facebook' ),
+		//		'media' => _x( 'Priority Media', 'metabox tab', 'nextgen-facebook' ),
+		//		'preview' => _x( 'Social Preview', 'metabox tab', 'nextgen-facebook' ),
+		//		'tags' => _x( 'Head Tags', 'metabox tab', 'nextgen-facebook' ),
+		//		'validate' => _x( 'Validate', 'metabox tab', 'nextgen-facebook' ),
+		// );
+		//
 		public function do_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 			$tab_keys = array_keys( $tabs );
 			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore

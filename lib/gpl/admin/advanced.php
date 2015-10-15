@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows['plugin_google_shorten'] = $this->p->util->get_th( _x( 'Google URL Shortener API is ON',
 				'option label', 'wpsso' ), null, 'plugin_google_shorten' ).
 			'<td class="blank">'._x( $this->p->cf['form']['yes_no'][$this->p->options['plugin_google_shorten']],
-				'form option value', 'wpsso' ).'</td>';
+				'option value', 'wpsso' ).'</td>';
 
 			return $rows;
 		}

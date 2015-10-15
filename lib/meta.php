@@ -374,6 +374,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_og_image( $num = 0, $size_name = 'thumbnail', $id,
 			$check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			return $this->get_meta_image( $num, $size_name, $id,
 				$check_dupes, $force_regen, $md_pre, 'og' );
 		}

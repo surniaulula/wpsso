@@ -80,7 +80,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' title="default is '.( $this->in_defaults( $name ) && 
 					! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
 				( $disabled === true ? ' '._x( '(option disabled)',
-					'form option value', $this->text_dom ) : '' ).'" />';
+					'option value', $this->text_dom ) : '' ).'" />';
 
 			return $html;
 		}
@@ -113,7 +113,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$val = $desc;
 
 				if ( $this->text_dom )
-					$desc = _x( $desc, 'form option value', $this->text_dom );
+					$desc = _x( $desc, 'option value', $this->text_dom );
 
 				$html .= '<input type="radio"'.
 					( $disabled === true ?
@@ -173,28 +173,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $is_assoc == false ) 
 					$val = $desc;
 				if ( $val == -1 ) 
-					$desc = _x( '(settings value)', 'form option value', $this->text_dom );
+					$desc = _x( '(settings value)', 'option value', $this->text_dom );
 				else {
 					if ( $this->text_dom )
-						$desc = _x( $desc, 'form option value', $this->text_dom );
+						$desc = _x( $desc, 'option value', $this->text_dom );
 
 					switch ( $name ) {
 						case 'og_img_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' '._x( '(no images)', 'form option value', $this->text_dom );
+								$desc .= ' '._x( '(no images)', 'option value', $this->text_dom );
 							break;
 						case 'og_vid_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' '._x( '(no videos)', 'form option value', $this->text_dom );
+								$desc .= ' '._x( '(no videos)', 'option value', $this->text_dom );
 							break;
 						default: 
 							if ( $desc === '' || $desc === 'none' ) 
-								$desc = _x( '[none]', 'form option value', $this->text_dom ); 
+								$desc = _x( '[none]', 'option value', $this->text_dom ); 
 							break;
 					}
 					if ( $this->in_defaults( $name ) && 
 						$val === $this->defaults[$name] )
-							$desc .= ' '._x( '(default)', 'form option value', $this->text_dom );
+							$desc .= ' '._x( '(default)', 'option value', $this->text_dom );
 				}
 
 				$html .= '<option value="'.esc_attr( $val ).'"';
@@ -233,7 +233,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					' <div class="img_crop_from">From';
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$pos_vals = $this->options[$name.'_'.$key] == -1 ? 
-						array_merge( array( '-1' => _x( '(settings value)', 'form option value', $this->text_dom ) ),
+						array_merge( array( '-1' => _x( '(settings value)', 'option value', $this->text_dom ) ),
 							$this->p->cf['form']['position_'.$key] ) : 
 						$this->p->cf['form']['position_'.$key];
 					$crop_select .= ' '.$this->get_select( $name.'_'.$key, $pos_vals, 'medium' );
@@ -280,7 +280,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$html .= selected( $this->options[$name], $size_name, false );
 				$html .= '>'.$size_name.' [ '.$size['width'].'x'.$size['height'].( $size['crop'] ? ' cropped' : '' ).' ]';
 				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] ) 
-					$html .= ' '._x( '(default)', 'form option value', $this->text_dom );
+					$html .= ' '._x( '(default)', 'option value', $this->text_dom );
 				$html .= '</option>';
 			}
 			$html .= '</select>';

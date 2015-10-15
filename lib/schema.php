@@ -35,7 +35,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_plugin_image_sizes( $sizes ) {
 			$sizes['schema_img'] = array(
 				'name' => 'schema',
-				'label' => 'Schema JSON-LD (same as Facebook / Open Graph)',
+				'label' => _x( 'Schema JSON-LD (same as Facebook / Open Graph)',
+					'image size label', 'wpsso' ),
 				'prefix' => 'og_img'	// use opengraph dimensions
 			);
 			return $sizes;
@@ -133,6 +134,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_json_array( $post_id = false, $author_id = false, $size_name = 'thumbnail' ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$json_array = array();
 
 			if ( ! empty( $this->p->options['schema_website_json'] ) &&
@@ -151,6 +155,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_website_json_script( $post_id = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
 			// pass options array to allow fallback if locale option does not exist
 			$site_name = $this->p->og->get_site_name( $post_id );
@@ -169,6 +176,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_organization_json_script( $size_name = 'thumbnail') {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
 			$logo_url = $this->p->options['schema_logo_url'];
 			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-schema', false );

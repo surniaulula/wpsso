@@ -297,13 +297,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' ); 
-					if ( is_admin() ) {
-						$lca = $this->p->cf['lca'];
-						$short = $this->p->cf['plugin'][$lca]['short'];
-						$short_pro = $short.' Pro';
-						$this->p->notice->err( 'The NextGEN Gallery integration module provided by '.
-							$short_pro.' is required to read information about image ID '.$pid.'.' ); 
-					}
+
+					if ( is_admin() )
+						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information about image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro', $pid ) ); 
+
 					return $ret_empty; 
 				}
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
@@ -339,6 +336,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						// if not cropped, make sure the resized image respects the original aspect ratio
 						if ( $is_accurate_width && $is_accurate_height && $img_cropped === 0 ) {
+
 							if ( $img_meta['width'] > $img_meta['height'] ) {
 								$ratio = $img_meta['width'] / $size_info['width'];
 								$check = 'height';
@@ -370,15 +368,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								( empty( $img_meta['sizes'][$size_name]['height'] ) ? 0 : 
 									$img_meta['sizes'][$size_name]['height'] ).') does not match '.
 								$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
-								( $img_cropped === 0 ? '' : ' cropped' ).')' );
+									( $img_cropped === 0 ? '' : ' cropped' ).')' );
 						}
 	
 						$fullsizepath = get_attached_file( $pid );
 						$resized = image_make_intermediate_size( $fullsizepath, 
 							$size_info['width'], $size_info['height'], $size_info['crop'] );
+
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
 								( $resized === false ? 'failure' : 'success' ) );
+
 						if ( $resized !== false ) {
 							$img_meta['sizes'][$size_name] = $resized;
 							wp_update_attachment_metadata( $pid, $img_meta );
@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$accept_img_size = apply_filters( $this->p->cf['lca'].'_attached_accept_img_size', 
 				( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
-				$img_url, $img_width, $img_height, $size_name, $pid );
+					$img_url, $img_width, $img_height, $size_name, $pid );
 
 			// check for resulting image dimensions that may be too small
 			if ( empty( $accept_img_size ) ) {
@@ -424,23 +424,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( empty( $size_info['crop'] ) && ( ! $is_sufficient_width && ! $is_sufficient_height ) ) ||
 					( ! empty( $size_info['crop'] ) && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
 
-					$is_too_small_text = ' is too small for the '.$size_name.
-						' ('.$size_info['width'].'x'.$size_info['height'].
-							( $img_cropped === 0 ? '' : ' cropped' ).') image size';
-
 					if ( ! empty( $img_meta['width'] ) && ! empty( $img_meta['height'] ) &&
-						$img_meta['width'] < $size_info['width'] && $img_meta['height'] < $size_info['height'] )
-							$rejected_text = 'the full size image ('.$img_meta['width'].'x'.$img_meta['height'].')'.
-								$is_too_small_text;
-					else $rejected_text = $img_width.'x'.$img_height.$is_too_small_text;
+						$img_meta['width'] < $size_info['width'] && $img_meta['height'] < $size_info['height'] ) {
+						
+						$img_src_log = 'full size image ('.
+							$img_meta['width'].'x'.$img_meta['height'].')';
+						$img_src_txt = __( 'the full size image', 'wpsso' ).' ('.
+							$img_meta['width'].'x'.$img_meta['height'].')';
+
+					} else $img_src_log = $img_src_txt = $img_width.'x'.$img_height;
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$rejected_text );
+						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
+							$img_src_log.' too small for the '.$size_name.' ('.
+								$size_info['width'].'x'.$size_info['height'].
+									( $img_cropped === 0 ? '' : ' cropped' ).') image size' );
+
 					if ( is_admin() )
-						$this->p->notice->err( 'Media Library image ID '.$pid.' has been ignored &mdash; '.
-							$rejected_text.'. Upload and/or choose a larger image, or adjust the '.
-							$this->p->util->get_admin_url( 'image-dimensions', $size_label.
-								' social image dimensions' ).'.', false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; %2$s is too small for the %3$s image size.', 'wpsso' ), $pid, $img_src_txt, $size_label.' ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' '.__( 'cropped', 'wpsso' ) ).')' ).' '.sprintf( __( 'Upload or choose a larger image, or adjust the <a href="%1%s">%2$s social image dimensions</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $size_label ), false, true, $msg_id, true );
+
 					return $ret_empty;
 
 				// if this is an open graph image, make sure it is larger than 200x200
@@ -451,28 +453,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
 							$img_width.'x'.$img_height.' smaller than hard-coded minimum '.
-							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
+								$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
+
 					if ( is_admin() )
-						$this->p->notice->err( 'Media Library image ID '.$pid.' has been ignored &mdash; '.
-							'the resulting image of '.$img_width.'x'.$img_height.' created for the '.
-							$this->p->util->get_admin_url( 'image-dimensions', $size_label.' social image dimensions' ).
-							' is smaller than the minimum '.
-							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'].
-							' allowed by the Facebook / Open Graph standard.', false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting image of %2$s created for the <a href="%3%s">%4$s social image dimensions</a> is smaller than the minimum %5$s allowed by the Facebook / Open Graph standard.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->util->get_admin_url( 'image-dimensions' ), $size_label, $this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] ), false, true, $msg_id, true );
 					return $ret_empty;
 
 				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
 
-					$rejected_text = $img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.
-						$this->p->cf['head']['max_img_ratio'].':1';
-
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$rejected_text );
+						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
+							$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.
+								$this->p->cf['head']['max_img_ratio'].':1' );
+
 					if ( is_admin() )
-						$this->p->notice->err( 'Media Library image ID '.$pid.' has been ignored &mdash; the '.
-							$rejected_text.'. Upload and/or choose a different image or adjust the '.
-							$this->p->util->get_admin_url( 'image-dimensions', $size_label.
-								' social image dimensions' ).'.', false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting %2$s image aspect ratio is equal to/or greater than %3$d:1.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->cf['head']['max_img_ratio'] ).' '.sprintf( __( 'Upload or choose a larger image, or adjust the <a href="%1%s">%2$s social image dimensions</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $size_label ), false, true, $msg_id, true );
+
 					return $ret_empty;
 
 				} elseif ( $this->p->debug->enabled )
@@ -499,39 +495,46 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 			$og_image = SucomUtil::meta_image_tags( 'og' );
 
-			$pid = empty( $this->p->options['og_def_img_id'] ) ? '' : $this->p->options['og_def_img_id'];
-			$pre = empty( $this->p->options['og_def_img_id_pre'] ) ? '' : $this->p->options['og_def_img_id_pre'];
-			$url = empty( $this->p->options['og_def_img_url'] ) ? '' : $this->p->options['og_def_img_url'];
+			foreach ( array( 'id', 'id_pre', 'url' ) as $key )
+				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
+					'' : $this->p->options['og_def_img_'.$key];
 
-			if ( $pid === '' && $url === '' ) {
+			if ( $img['id'] === '' && $img['url'] === '' ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				return $og_ret;
 			}
 
-			if ( $pid > 0 ) {
-				$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
+			if ( ! empty( $img['id'] ) ) {
+				$img['id'] = $img['id_pre'] === 'ngg' ?
+					'ngg-'.$img['id'] : $img['id'];
+
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default img pid = '.$pid );
+					$this->p->debug->log( 'using default img pid = '.$img['id'] );
+
 				list(
 					$og_image['og:image'],
 					$og_image['og:image:width'],
 					$og_image['og:image:height'],
 					$og_image['og:image:cropped'],
 					$og_image['og:image:id']
-				) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+				) = $this->get_attachment_image_src( $img['id'], $size_name, $check_dupes, $force_regen );
 			}
 
-			if ( empty( $og_image['og:image'] ) && ! empty( $url ) ) {
+			if ( empty( $og_image['og:image'] ) && 
+				! empty( $img['url'] ) ) {
+
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default img url = '.$url );
+					$this->p->debug->log( 'using default img url = '.$img['url'] );
+
 				$og_image = array();	// clear all array values
-				$og_image['og:image'] = $url;
+				$og_image['og:image'] = $img['url'];
 			}
 
 			if ( ! empty( $og_image['og:image'] ) && 
 				$this->p->util->push_max( $og_ret, $og_image, $num ) )
 					return $og_ret;
+
 			return $og_ret;
 		}
 
@@ -705,9 +708,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->debug->log( 'content image rejected: '.
 										'width / height missing or too small for '.$size_name );
 								if ( is_admin() ) {
-									$lca = $this->p->cf['lca'];
-									$short = $this->p->cf['plugin'][$lca]['short'];
-									$short_pro = $short.' Pro';
+									$short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'];
 									$size_label = $this->p->util->get_image_size_label( $size_name );
 									$msg_id = 'content_'.$og_image['og:image'].'_'.$size_name.'_rejected';
 
@@ -811,7 +812,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 			$og_ret = array();
-			$url = empty( $this->p->options['og_def_vid_url'] ) ? '' : $this->p->options['og_def_vid_url'];
+
+			$url = empty( $this->p->options['og_def_vid_url'] ) ?
+				'' : $this->p->options['og_def_vid_url'];
+
 			if ( ! empty( $url ) && ( $check_dupes == false || 
 				$this->p->util->is_uniq_url( $url ) ) ) {
 

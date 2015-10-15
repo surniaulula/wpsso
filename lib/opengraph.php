@@ -37,11 +37,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function filter_plugin_image_sizes( $sizes ) {
 			$sizes['rp_img'] = array(
 				'name' => 'richpin',
-				'label' => 'Pinterest Rich Pin'
+				'label' => _x( 'Pinterest Rich Pin',
+					'image size label', 'wpsso' ),
 			);
 			$sizes['og_img'] = array( 
 				'name' => 'opengraph', 
-				'label' => 'Facebook / Open Graph'
+				'label' => _x( 'Facebook / Open Graph',
+					'image size label', 'wpsso' ),
 			);
 			return $sizes;
 		}

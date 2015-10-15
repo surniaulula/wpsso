@@ -301,6 +301,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_person_json_script( $author_id, $size_name = 'thumbnail' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array(
+					'author_id' => $author_id,
+					'size_name' => $size_name,
+				) );
+			}
+
 			if ( empty( $author_id ) )
 				return false;
 

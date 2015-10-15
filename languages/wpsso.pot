@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-12 22:06:08+00:00\n"
+"POT-Creation-Date: 2015-10-15 20:09:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -368,32 +368,32 @@ msgid "Site Use"
 msgstr ""
 
 #: lib/com/form.php:82 lib/config-gettext-extract.php:27
-msgctxt "form option value"
+msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
 #: lib/com/form.php:176 lib/com/form.php:236 lib/config-gettext-extract.php:30
-msgctxt "form option value"
+msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/com/form.php:184 lib/config-gettext-extract.php:24
-msgctxt "form option value"
+#: lib/com/form.php:184 lib/config-gettext-extract.php:23
+msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
 #: lib/com/form.php:188 lib/config-gettext-extract.php:26
-msgctxt "form option value"
+msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:192 lib/config-gettext-extract.php:25
-msgctxt "form option value"
+#: lib/com/form.php:192 lib/config-gettext-extract.php:24
+msgctxt "option value"
 msgid "[none]"
 msgstr ""
 
 #: lib/com/form.php:197 lib/com/form.php:283 lib/config-gettext-extract.php:9
-msgctxt "form option value"
+msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
@@ -423,42 +423,42 @@ msgid "Advanced"
 msgstr ""
 
 #: lib/config-gettext-extract.php:4
-msgctxt "form option value"
+msgctxt "option value"
 msgid "All Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:5
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Basic Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:6
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Bit.ly"
 msgstr ""
 
 #: lib/config-gettext-extract.php:7
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Bottom"
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Center"
 msgstr ""
 
 #: lib/config-gettext-extract.php:10
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Default value"
 msgstr ""
 
 #: lib/config-gettext-extract.php:11
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
 #: lib/config-gettext-extract.php:12
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
@@ -470,17 +470,17 @@ msgid ""
 msgstr ""
 
 #: lib/config-gettext-extract.php:14
-msgctxt "form option value"
+msgctxt "option value"
 msgid "First and Last Names"
 msgstr ""
 
 #: lib/config-gettext-extract.php:15
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Footer"
 msgstr ""
 
 #: lib/config-gettext-extract.php:16
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Force this value"
 msgstr ""
 
@@ -490,32 +490,32 @@ msgid "General"
 msgstr ""
 
 #: lib/config-gettext-extract.php:18
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Goo.gl"
 msgstr ""
 
 #: lib/config-gettext-extract.php:19
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Header"
 msgstr ""
 
 #: lib/config-gettext-extract.php:20
-msgctxt "form option value"
+msgctxt "option value"
 msgid "If value is empty"
 msgstr ""
 
 #: lib/config-gettext-extract.php:21
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Left"
 msgstr ""
 
 #: lib/config-gettext-extract.php:22
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: lib/config-gettext-extract.php:23
-msgctxt "form option value"
+#: lib/config-gettext-extract.php:25
+msgctxt "option value"
 msgid "No"
 msgstr ""
 
@@ -525,7 +525,7 @@ msgid "Read Me"
 msgstr ""
 
 #: lib/config-gettext-extract.php:29
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Right"
 msgstr ""
 
@@ -545,17 +545,17 @@ msgid "<span>Extension Plugins</span> and Pro Licenses"
 msgstr ""
 
 #: lib/config-gettext-extract.php:34
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
 #: lib/config-gettext-extract.php:35
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
 #: lib/config-gettext-extract.php:36
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Top"
 msgstr ""
 
@@ -606,7 +606,7 @@ msgid ""
 msgstr ""
 
 #: lib/config-gettext-extract.php:44
-msgctxt "form option value"
+msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
@@ -989,7 +989,47 @@ msgctxt "metabox title"
 msgid "Pinterest (Rich Pin)"
 msgstr ""
 
-#: lib/media.php:715
+#: lib/media.php:302
+msgid ""
+"The NextGEN Gallery integration module provided by %1$s is required to read "
+"information about image ID %2$s."
+msgstr ""
+
+#: lib/media.php:432
+msgid "the full size image"
+msgstr ""
+
+#: lib/media.php:444
+msgid ""
+"Media Library image ID %1$s has been ignored &mdash; %2$s is too small for "
+"the %3$s image size."
+msgstr ""
+
+#: lib/media.php:444 lib/pro/media/ngg.php:197
+msgid "cropped"
+msgstr ""
+
+#: lib/media.php:444 lib/media.php:470 lib/pro/media/ngg.php:197
+#: lib/pro/media/ngg.php:223
+msgid ""
+"Upload or choose a larger image, or adjust the <a href=\"%1%s\">%2$s social "
+"image dimensions</a>."
+msgstr ""
+
+#: lib/media.php:459
+msgid ""
+"Media Library image ID %1$s has been ignored &mdash; the resulting image of %"
+"2$s created for the <a href=\"%3%s\">%4$s social image dimensions</a> is "
+"smaller than the minimum %5$s allowed by the Facebook / Open Graph standard."
+msgstr ""
+
+#: lib/media.php:470
+msgid ""
+"Media Library image ID %1$s has been ignored &mdash; the resulting %2$s "
+"image aspect ratio is equal to/or greater than %3$d:1."
+msgstr ""
+
+#: lib/media.php:716
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for images from the "
 "Media Library to supplement the width / height information &mdash; if this "
@@ -997,7 +1037,7 @@ msgid ""
 "try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:718
+#: lib/media.php:719
 msgid ""
 "Content image %1$s has been ignored &mdash; the image width / height "
 "attributes are missing or too small for the %2$s image dimensions."
@@ -1679,6 +1719,16 @@ msgstr ""
 msgid "Reload to View"
 msgstr ""
 
+#: lib/opengraph.php:40
+msgctxt "image size label"
+msgid "Pinterest Rich Pin"
+msgstr ""
+
+#: lib/opengraph.php:45
+msgctxt "image size label"
+msgid "Facebook / Open Graph"
+msgstr ""
+
 #: lib/options.php:172
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
@@ -1742,6 +1792,30 @@ msgstr ""
 #: lib/pro/forum/bbpress.php:139
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
+msgstr ""
+
+#: lib/pro/media/ngg.php:197
+msgid ""
+"NextGEN Gallery image ID %1$s has been ignored &mdash; %2$s is too small for "
+"the %3$s image size."
+msgstr ""
+
+#: lib/pro/media/ngg.php:211
+msgid ""
+"NextGEN Gallery image ID %1$s has been ignored &mdash; the resulting image "
+"of %2$s created for the <a href=\"%3%s\">%4$s social image dimensions</a> is "
+"smaller than the minimum %5$s allowed by the Facebook / Open Graph standard."
+msgstr ""
+
+#: lib/pro/media/ngg.php:223
+msgid ""
+"NextGEN Gallery image ID %1$s has been ignored &mdash; the resulting %2$s "
+"image aspect ratio is equal to/or greater than %3$d:1."
+msgstr ""
+
+#: lib/schema.php:38
+msgctxt "image size label"
+msgid "Schema JSON-LD (same as Facebook / Open Graph)"
 msgstr ""
 
 #: lib/setting/contact-fields.php:25 lib/submenu/advanced.php:29
@@ -1819,12 +1893,22 @@ msgctxt "metabox title"
 msgid "Network Advanced Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:61 lib/submenu/advanced.php:91
+#: lib/sitesubmenu/siteadvanced.php:46 lib/submenu/advanced.php:40
+msgctxt "metabox tab"
+msgid "Plugin Settings"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:47 lib/submenu/advanced.php:44
+msgctxt "metabox tab"
+msgid "File and Object Cache"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:91
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:97
+#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:97
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
@@ -1844,11 +1928,6 @@ msgctxt "metabox title"
 msgid "Header Tags List"
 msgstr ""
 
-#: lib/submenu/advanced.php:40
-msgctxt "metabox tab"
-msgid "Plugin Settings"
-msgstr ""
-
 #: lib/submenu/advanced.php:41
 msgctxt "metabox tab"
 msgid "Content and Filters"
@@ -1862,11 +1941,6 @@ msgstr ""
 #: lib/submenu/advanced.php:43
 msgctxt "metabox tab"
 msgid "Theme Integration"
-msgstr ""
-
-#: lib/submenu/advanced.php:44
-msgctxt "metabox tab"
-msgid "File and Object Cache"
 msgstr ""
 
 #: lib/submenu/advanced.php:45
@@ -2141,6 +2215,16 @@ msgstr ""
 #: lib/submenu/setup.php:25
 msgctxt "metabox title"
 msgid "Setup Guide"
+msgstr ""
+
+#: lib/twittercard.php:32
+msgctxt "image size label"
+msgid "Twitter Summary Card"
+msgstr ""
+
+#: lib/twittercard.php:37
+msgctxt "image size label"
+msgid "Twitter Large Image Card"
 msgstr ""
 
 #: lib/user.php:294

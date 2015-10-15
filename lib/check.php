@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function cleanup_wpseo_filters() {
 
-			if ( is_object( $GLOBALS['wpseo_og'] ) && 
+			if ( isset( $GLOBALS['wpseo_og'] ) && is_object( $GLOBALS['wpseo_og'] ) && 
 				( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false )
 					$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
 
@@ -71,10 +71,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				( $prio = has_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ) ) ) !== false )
 					$ret = remove_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ), $prio );
 
-			if ( ! empty( $this->p->options['seo_publisher_url'] ) &&
-				isset( WPSEO_Frontend::$instance ) &&
-					 ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) )
-						$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
+			if ( ! empty( $this->p->options['seo_publisher_url'] ) && isset( WPSEO_Frontend::$instance ) &&
+				 ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) )
+					$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
 
 			if ( ! empty( $this->p->options['schema_website_json'] ) )
 				add_filter( 'wpseo_json_ld_output', '__return_empty_array', 99 );
