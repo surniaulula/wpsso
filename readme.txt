@@ -292,7 +292,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 	* [Constants](http://wpsso.com/codex/plugins/wpsso/notes/developer/constants/)
 	* [Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/)
 		* [Filter Examples](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/)
-			* [Add Availability to Product Card for WooCommerce](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/add-availability-to-product-card-for-woocommerce/)
 			* [Detect YouTube URL Links as Videos](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Disable the Social Settings Metabox by Post ID](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
 			* [Force Wistia Videos to Autoplay on Facebook](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/force-wistia-videos-to-autoplay-on-facebook/)
@@ -421,7 +420,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.10 2015/09/20 =
 
-<p>The Photo Card, Gallery Card, and Product Card were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support all <a href="https://dev.twitter.com/cards/types">current Twitter Card formats</a>, including the Summary Card, Summary Card with Large Image, App Card (extension plugin required), and Player Card &mdash; in both the Free (New) and Pro versions.</p>
+The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support [all current Twitter Card formats](https://dev.twitter.com/cards/types), including the Summary, Summary with Large Image, App (extension plugin required), and Player Cards &mdash; in both the Free and Pro versions of WPSSO.
 
 * **New Features**
 	* *None*
@@ -446,57 +445,6 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Developer Notes**
 	* Moved the `conflict_warnings()` method from WpssoCheck to the WpssoAdmin class.
 	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
-
-= Version 3.9 2015/09/09 =
-
-<p><a href="http://surniaulula.com/2015/09/09/ngfb-wpsso-update-improved-schema-support/">Release notes for WPSSO Version 3.9</a>.</p>
-
-* **New Features**
-	* Added a new "Theme Integration" tab on the Advanced settings page.
-	* Added a new "Header <html> Attribute Filter" option on the Advanced settings page (Pro version).
-	* Added a new "Header <head> Attribute Filter" option on the Advanced settings page (Pro version).
-	* Added a new "Image Alt Text Prefix" option on the Advanced settings page (Pro version).
-	* Added a new "WP Caption Paragraph Prefix" option on the Advanced settings page (Pro version).
-* **Improvements**
-	* Changed the default index schema type from "Blog" to "WebSite" (pseudo-standard SEO value).
-	* Changed the default post/page schema type from "Article" to "WebPage" (pseudo-standard SEO value).
-	* Updated the Easy Digital Downloads (EDD) module to add a "Product" schema item type for "download" post types (Pro version).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Renamed the 'wpsso_doctype_prefix_ns' filter to 'wpsso_og_prefix_ns' (returns an array of Open Graph namespace URLs).
-	* Renamed the 'wpsso_doctype_schema_type' filter to 'wpsso_schema_item_type' (returns an itemtype URL string).
-	* Added a new 'wpsso_schema_post_types' filter to return an associative array of post types and Schema URL values.
-	* Added a new `WpssoUtil::save_time()` method called by WPSSO extensions when activated. 
-	* Added a new `SucomUtil::get_option_key()` method.
-	* Added a new `wpsso_schema_attributes()` function for optional use in the &lt;head&gt; element.
-
-= Version 3.8 2015/09/03 =
-
-<p>This latest version include new dismissible warnings for rejected images (too small and/or extreme aspect ratios) when using WordPress v4.2+. When previously dismissed warnings are found, an additional notice will be shown to allow these warnings to be displayed again temporarily.</p>
-
-<p>This release also include code improvements for small performance gains on the admin side (tooltip and message lookups, for example). Developers should note that filtering of individual meta tags has been disabled by default, and can be re-enabled using the WPSSO_FILTER_SINGLE_TAGS constant. Some tooltip and message lookup filter names have also been changed, which meant releasing updates for all WPSSO extension plugins as well.</p>
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added the ability to dismiss image dimension warnings when using WordPress 4.2+.
-	* The "Pro Authentication ID" option is now included on the Pro Licenses settings page for all plugins / extensions with a Pro version available (and not only for active plugins / extensions).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Moved the 'installed_version' and 'ua_plugin' filter methods from Wpsso to the WpssoUtil class.
-	* Added a new entries in the options table (wpsso_timestamps) for installed, activated, and updated timestamps.
-	* Improved the setting of constants with new `set_variable_constants()` and `get_variable_constants()` methods in the WpssoConfig class.
-	* Refactored the `uninstall_plugin()` method in the WpssoRegister class to use the new `get_variable_constants()` method.
-	* Added a new WPSSO_FILTER_SINGLE_TAGS constant to enable filtering of individual meta tags (disabled by default).
-	* Added new WPSSO_TS_NAME, WPSSO_NOTICE_NAME, and WPSSO_DISMISS_NAME constants.
-	* Added new SucomUtil `add_option_key()` and `update_option_key()` static methods to update values within an option. 
-	* Refactored most of the SucomNotice class code. Notice messages are now saved as array keys (instead of array elements) with a payload array as their value. This allows notice messages to have a number of properties (message ID string, dismissible true/false, etc.). 
-	* Added a new SucomNotice `ajax_dismiss_notice()` method to handle dismissible notices.
-	* Added a new `$dismiss` argument to all SucomNotice logging methods.
-	* Added a new "Reset Hidden Notices" button on the WPSSO settings pages.
-	* Refactored the WpssoMessages->get() method a slight speed improvement. Please note that 'wpsso_tooltip_\*' filters have been renamed to 'wpsso_messages_tooltip_\*' (adjust your filter hooks accordingly).
 
 == Upgrade Notice ==
 
