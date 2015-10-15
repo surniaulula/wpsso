@@ -355,6 +355,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.11.1 =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Additional French translation for image size labels and notice messages.
+* **Bugfixes**
+	* Fixed an undefined index error for a WP SEO global variable.
+* **Developer Notes**
+	* *None*
+
 = Version 3.11.0 2015/10/09 =
 
 * **New Features**
@@ -504,12 +515,4 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = 3.11.0 =
 
 2015/10/09 Added a French language (fr_FR) translation. Added a check to detect image IDs within class names. Small fixes and a slight performance improvement.
-
-= 3.10.3 =
-
-2015/10/04 Added translation function calls to all option labels in settings pages and metaboxes. Added POT (Portable Object Template) file with translation strings in languages/wpsso.pot.
-
-= 3.10.2 =
-
-2015/09/29 Fixed use of the 'Include Preview Image(s)' option in Social Settings metabox. Fixed default Open Graph title / description values in Social Settings metabox. Fixed detection of profile.php as a 'user page' for custom settings.
 
