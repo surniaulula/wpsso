@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.11.0
+Stable Tag: 3.11.1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -342,7 +342,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.11.1 =
+= Version 3.11.1 2015/10/16 =
 
 * **New Features**
 	* *None*
@@ -447,6 +447,10 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 == Upgrade Notice ==
+
+= 3.11.1 =
+
+2015/10/16 Additional French translations. Fixed an undefined index error for a WP SEO global variable.
 
 = 3.11.0 =
 
