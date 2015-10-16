@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-16 00:14:59+00:00\n"
+"POT-Creation-Date: 2015-10-16 21:23:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -579,23 +579,22 @@ msgstr ""
 #: lib/config-gettext-extract.php:40
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
-"tags for Apple's mobile Safari and Twitter's App Card."
+"WPSSO extension to add Social Sharing Buttons with support for hashtags, "
+"short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:41
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
-"\"Place\" Rich Pin meta tags."
+"WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
+"tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
 #: lib/config-gettext-extract.php:42
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide fast and accurate Social Sharing Buttons, "
-"including support for hashtags, short URLs, bbPress, BuddyPress, and "
-"WooCommerce."
+"WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
+"\"Place\" Rich Pin meta tags."
 msgstr ""
 
 #: lib/config-gettext-extract.php:43
