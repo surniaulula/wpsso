@@ -255,17 +255,27 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $this->aop( $lca, true, $this->get_avail_check( 'aop' ) );
 		}
 
-		public function aop( $lca = '', $li = true, $rv = true ) {
+		public function aop( $lca = '', $lic = true, $rv = true ) {
 			$lca = empty( $lca ) ? 
 				$this->p->cf['lca'] : $lca;
 			$kn = $lca.'-'.$li.'-'.$rv;
 			if ( isset( self::$c[$kn] ) )
 				return self::$c[$kn];
-			$on = 'plugin_'.$lca.'_tid';
 			$uca = strtoupper( $lca );
-			$ins = ( defined( $uca.'_PLUGINDIR' ) &&
-				is_dir( constant( $uca.'_PLUGINDIR' ).'lib/pro/' ) ) ? $rv : false;
-			return self::$c[$kn] = $li === true ? 
+			if ( defined( $uca.'_PLUGINDIR' ) )
+				$pdir = constant( $uca.'_PLUGINDIR' );
+			elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
+				$slug = $this->p->cf['plugin'][$lca]['slug'];
+				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) || 
+					! is_dir( $pdir = WPMU_PLUGIN_DIR.'/'.$slug.'/' ) ) {
+					if ( ! defined ( 'WP_PLUGIN_DIR' ) || 
+						! is_dir( $pdir = WP_PLUGIN_DIR.'/'.$slug.'/' ) )
+							return self::$c[$kn] = false;
+				}
+			} else return self::$c[$kn] = false;
+			$on = 'plugin_'.$lca.'_tid';
+			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
+			return self::$c[$kn] = $lic === true ? 
 				( ( ! empty( $this->p->options[$on] ) && 
 					$ins && class_exists( 'SucomUpdate' ) &&
 						( $um = SucomUpdate::get_umsg( $lca ) ? 

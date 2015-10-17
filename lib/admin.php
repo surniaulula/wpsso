@@ -1173,17 +1173,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
 				$this->p->notice->err( $err_pre.'<strong>'.__( 'JetPack\'s Photon module purposefully cripples the WordPress image size functions.', 'wpsso' ).'</strong> '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', 'wpsso' ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %4$s images.', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
 			}
-
-			// WooCommerce
-			/*
-			if ( class_exists( 'Woocommerce' ) && 
-				! empty( $this->p->options['plugin_filter_content'] ) &&
-				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.'woocommerce shortcode support not available in the admin interface' );
-				$this->p->notice->err( $err_pre.'<strong>'.__( 'WooCommerce does not include shortcode support in the admin interface</strong> (required by WordPress for its content filters).', 'wpsso' ).'</strong> '.sprintf( __( 'Please uncheck the \'<em>%1$s</em>\' option on the <a href="%2$s">%3$s Advanced settings page</a>.', 'wpsso' ), _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), $this->p->cf['menu'] ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module specifically for WooCommerce</a> (shortcodes, products, categories, tags, images, etc.).', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/woocommerce/' ) );
-			}
-			*/
 		}
 
 		// Dismiss an Incorrect Yoast SEO Conflict Notification
