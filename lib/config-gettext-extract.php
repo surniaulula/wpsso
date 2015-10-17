@@ -37,7 +37,7 @@ _x( 'Top', 'option value', 'wpsso' );
 _x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
 _x( 'Website / Business Social Accounts', 'lib file description', 'wpsso' );
 _x( 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
-_x( 'WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to add traditional Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Facebook / Open Graph "Location" and Pinterest "Place" Rich Pin meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
