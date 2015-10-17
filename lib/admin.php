@@ -1188,7 +1188,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_site_use( &$form, $network = false, $name ) {
 			if ( $network !== true )
 				return '';
-
 			return $this->p->util->get_th( _x( 'Site Use',
 				'option label (very short)', 'wpsso' ), 'site_use' ).
 			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?

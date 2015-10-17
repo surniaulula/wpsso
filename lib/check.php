@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function aop( $lca = '', $lic = true, $rv = true ) {
 			$lca = empty( $lca ) ? 
 				$this->p->cf['lca'] : $lca;
-			$kn = $lca.'-'.$li.'-'.$rv;
+			$kn = $lca.'-'.$lic.'-'.$rv;
 			if ( isset( self::$c[$kn] ) )
 				return self::$c[$kn];
 			$uca = strtoupper( $lca );
