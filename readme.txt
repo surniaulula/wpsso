@@ -342,6 +342,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.12.0 =
+
+* **New Features**
+	* Added a new Show Social Columns option for Posts, Pages, Taxonomy, and Users list pages.
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.11.1 2015/10/16 =
 
 * **New Features**
@@ -451,8 +462,4 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 = 3.11.1 =
 
 2015/10/16 Additional French translations. Fixed an undefined index error for a WP SEO global variable.
-
-= 3.11.0 =
-
-2015/10/09 Added a French language (fr_FR) translation. Added a check to detect image IDs within class names. Small fixes and a slight performance improvement.
 
