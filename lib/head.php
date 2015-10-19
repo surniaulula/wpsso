@@ -69,8 +69,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					switch ( true ) {
 						case ( strpos( $key, '_js_' ) !== false ):
 						case ( strpos( $key, '_css_' ) !== false ):
-						case ( preg_match( '/_(key|tid)$/', $key ) ):
+						case ( preg_match( '/_(html|key|tid)$/', $key ) ):
 							$opts[$key] = '********';
+							break;
 					}
 				}
 				$this->p->debug->show_html( $opts, 'wpsso settings' );
