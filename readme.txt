@@ -350,6 +350,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 * **Bugfixes**
 	* Fixed detection of NextGEN Gallery image IDs by adding support for NGG's "data-image-id" attribute (Pro version).
+	* Fixed an undefined index error by adding a check for the full image width and height attributes (which may be missing).
+	* Fixed a variable name mis-match by renaming all `$length` variables to `$textlen` in the `get_caption()` method.
 * **Developer Notes**
 	* *None*
 
