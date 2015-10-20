@@ -313,8 +313,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$img_meta = wp_get_attachment_metadata( $pid );
 
-			$use_full = $img_meta['width'] === $size_info['width'] && 
-				$img_meta['height'] === $size_info['height'] ? true : false;
+			$use_full = isset( $img_meta['width'] ) && isset( $img_meta['height'] ) &&
+				$img_meta['width'] === $size_info['width'] && 
+					$img_meta['height'] === $size_info['height'] ? true : false;
 
 			if ( $use_full === true ) {
 				if ( $this->p->debug->enabled )
@@ -337,7 +338,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$img_meta['sizes'][$size_name]['height'] == $size_info['height'] ? true : false;
 
 						// if not cropped, make sure the resized image respects the original aspect ratio
-						if ( $is_accurate_width && $is_accurate_height && $img_cropped === 0 ) {
+						if ( $is_accurate_width && $is_accurate_height && empty( $img_cropped ) &&
+							isset( $img_meta['width'] ) && isset( $img_meta['height'] ) ) {
 
 							if ( $img_meta['width'] > $img_meta['height'] ) {
 								$ratio = $img_meta['width'] / $size_info['width'];
@@ -347,6 +349,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$check = 'width';
 							}
 							$should_be = (int) round( $img_meta[$check] / $ratio );
+
 							// allow for a +/-1 pixel difference
 							if ( $img_meta['sizes'][$size_name][$check] < ( $should_be - 1 ) ||
 								$img_meta['sizes'][$size_name][$check] > ( $should_be + 1 ) ) {
@@ -426,8 +429,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( empty( $size_info['crop'] ) && ( ! $is_sufficient_width && ! $is_sufficient_height ) ) ||
 					( ! empty( $size_info['crop'] ) && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
 
-					if ( ! empty( $img_meta['width'] ) && ! empty( $img_meta['height'] ) &&
-						$img_meta['width'] < $size_info['width'] && $img_meta['height'] < $size_info['height'] ) {
+					if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) &&
+						$img_meta['width'] < $size_info['width'] && 
+							$img_meta['height'] < $size_info['height'] ) {
 						
 						$img_src_log = 'full size image ('.
 							$img_meta['width'].'x'.$img_meta['height'].')';

@@ -77,13 +77,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_quote', $quote );
 		}
 
-		public function get_caption( $type = 'title', $length = 200, $use_post = true, $use_cache = true,
+		public function get_caption( $type = 'title', $textlen = 200, $use_post = true, $use_cache = true,
 			$add_hashtags = true, $encode = true, $md_idx = true, $src_id = '' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array( 
 					'type' => $type, 
-					'length' => $length, 
+					'textlen' => $textlen, 
 					'use_post' => $use_post, 
 					'use_cache' => $use_cache, 
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
@@ -154,18 +154,18 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( $type ) {
 					case 'title':
-						$caption = $this->get_title( $length, '...', $use_post, $use_cache, 
+						$caption = $this->get_title( $textlen, '...', $use_post, $use_cache, 
 							$add_hashtags, false, $md_title, $src_id );
 						break;
 					case 'excerpt':
-						$caption = $this->get_description( $length, '...', $use_post, $use_cache, 
+						$caption = $this->get_description( $textlen, '...', $use_post, $use_cache, 
 							$add_hashtags, false, $md_desc, $src_id );
 						break;
 					case 'both':
 						$prefix = $this->get_title( 0, '', $use_post, $use_cache, 
 							false, false, $md_title, $src_id ).' '.$separator.' ';
 
-						$caption = $prefix.$this->get_description( $length - strlen( $prefix ), '...', $use_post, $use_cache, 
+						$caption = $prefix.$this->get_description( $textlen - strlen( $prefix ), '...', $use_post, $use_cache, 
 							$add_hashtags, false, $md_desc, $src_id );
 						break;
 				}

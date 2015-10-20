@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-20 00:14:16+00:00\n"
+"POT-Creation-Date: 2015-10-20 13:19:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1012,41 +1012,41 @@ msgid ""
 "information about image ID %2$s."
 msgstr ""
 
-#: lib/media.php:434
+#: lib/media.php:438
 msgid "the full size image"
 msgstr ""
 
-#: lib/media.php:446
+#: lib/media.php:450
 msgid ""
 "Media Library image ID %1$s has been ignored &mdash; %2$s is too small for "
 "the %3$s image size."
 msgstr ""
 
-#: lib/media.php:446 lib/pro/media/ngg.php:195
+#: lib/media.php:450 lib/pro/media/ngg.php:195
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:446 lib/media.php:472 lib/pro/media/ngg.php:195
+#: lib/media.php:450 lib/media.php:476 lib/pro/media/ngg.php:195
 #: lib/pro/media/ngg.php:221
 msgid ""
 "Upload or choose a larger image, or adjust the <a href=\"%1%s\">%2$s social "
 "image dimensions</a>."
 msgstr ""
 
-#: lib/media.php:461
+#: lib/media.php:465
 msgid ""
 "Media Library image ID %1$s has been ignored &mdash; the resulting image of %"
 "2$s created for the <a href=\"%3%s\">%4$s social image dimensions</a> is "
 "smaller than the minimum %5$s allowed by the Facebook / Open Graph standard."
 msgstr ""
 
-#: lib/media.php:472
+#: lib/media.php:476
 msgid ""
 "Media Library image ID %1$s has been ignored &mdash; the resulting %2$s "
 "image aspect ratio is equal to/or greater than %3$d:1."
 msgstr ""
 
-#: lib/media.php:718
+#: lib/media.php:722
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for images from the "
 "Media Library to supplement the width / height information &mdash; if this "
@@ -1054,7 +1054,7 @@ msgid ""
 "try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:721
+#: lib/media.php:725
 msgid ""
 "Content image %1$s has been ignored &mdash; the image width / height "
 "attributes are missing or too small for the %2$s image dimensions."
