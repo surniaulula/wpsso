@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
 								! empty( $this->p->mods['media']['ngg'] ) &&
-									( preg_match( '/ class=[\'"]ngg-/', $tag_value ) || 
+									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || 
 										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )
 											break;	// stop here
 	
