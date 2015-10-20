@@ -291,7 +291,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_cropped = $size_info['crop'] === false ? 0 : 1;	// get_size_info() returns false, true, or an array
 			$ret_empty = array( null, null, null, null, null );
 
-			if ( $this->p->is_avail['media']['ngg'] === true && strpos( $pid, 'ngg-' ) === 0 ) {
+			if ( $this->p->is_avail['media']['ngg'] === true && 
+				strpos( $pid, 'ngg-' ) === 0 ) {
+
 				if ( ! empty( $this->p->mods['media']['ngg'] ) )
 					return $this->p->mods['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes );
 				else {
@@ -603,7 +605,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					switch ( $attr_name ) {
 
-						case 'data-wp-pid' :
+						// wordpress media library image id
+						case 'data-wp-pid':
 
 							list(
 								$og_image['og:image'],
@@ -616,7 +619,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							break;
 
 						// check for other data attributes like 'data-ngg-pid'
-						case ( preg_match( '/^data-[a-z]+-pid$/', $attr_name ) ? true : false ):
+						case ( preg_match( '/^'.$img_preg['pid_attr'].'$/', $attr_name ) ? true : false ):
 
 							// build a filter hook for 3rd party modules to return image information
 							$filter_name = $this->p->cf['lca'].'_get_content_'.
@@ -637,10 +640,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
 								! empty( $this->p->mods['media']['ngg'] ) &&
-									( strpos( $tag_value, " class='ngg-" ) !== false || 
-										preg_match( '/^('.$img_preg['ngg_src'].')$/', 
-											$attr_value ) ) )
-												break;	// stop here
+									( preg_match( '/ class=[\'"]ngg-/', $tag_value ) || 
+										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )
+											break;	// stop here
 	
 							// recognize gravatar images in the content
 							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/',

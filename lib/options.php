@@ -427,6 +427,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_author_field':
 				case 'rp_author_name':
 				case 'fb_lang': 
+				case 'plugin_shortener':	// none or name of shortener
 				case ( preg_match( '/_tid:use$/', $key ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 					return 'not_blank';

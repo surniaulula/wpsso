@@ -35,13 +35,16 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				if ( ! $this->tax_obj->public )
 					return;
 
-				add_filter( 'manage_edit-'.$this->tax_slug.'_columns', array( $this, 'add_column_headings' ), 10, 1 );
-				add_filter( 'manage_'.$this->tax_slug.'_custom_column', array( $this, 'get_taxonomy_column_content' ), 10, 3 );
+				if ( $this->p->options['plugin_columns_taxonomy'] ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 
-					'og_image_taxonomy_column_content' => 4,
-					'og_desc_taxonomy_column_content' => 4,
-				) );
+					add_filter( 'manage_edit-'.$this->tax_slug.'_columns', array( $this, 'add_column_headings' ), 10, 1 );
+					add_filter( 'manage_'.$this->tax_slug.'_custom_column', array( $this, 'get_taxonomy_column_content' ), 10, 3 );
+	
+					$this->p->util->add_plugin_filters( $this, array( 
+						'og_image_taxonomy_column_content' => 4,
+						'og_desc_taxonomy_column_content' => 4,
+					) );
+				}
 
 				if ( ( $this->term_id = SucomUtil::get_req_val( 'tag_ID' ) ) === '' )
 					return;

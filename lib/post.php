@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				} else {
+				} elseif ( $this->p->options['plugin_columns_post'] ) {
 
 					// only check registered front-end post types (to avoid menu items, product variations, etc.)
 					$post_types = $this->p->util->get_post_types( 'frontend', 'names' );

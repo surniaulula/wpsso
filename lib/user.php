@@ -33,13 +33,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'admin_head', array( &$this, 'set_head_meta_tags' ), 100 );
 				add_action( 'show_user_profile', array( &$this, 'show_metaboxes' ), 20 );	// your profile
 
-				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), 10, 1 );
-				add_filter( 'manage_users_custom_column', array( $this, 'get_user_column_content',), 10, 3 );
+				if ( $this->p->options['plugin_columns_user'] ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 
-					'og_image_user_column_content' => 4,
-					'og_desc_user_column_content' => 4,
-				) );
+					add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), 10, 1 );
+					add_filter( 'manage_users_custom_column', array( $this, 'get_user_column_content',), 10, 3 );
+	
+					$this->p->util->add_plugin_filters( $this, array( 
+						'og_image_user_column_content' => 4,
+						'og_desc_user_column_content' => 4,
+					) );
+				}
 
 				// exit here if not a user page, or showing the profile page
 				$user_id = SucomUtil::get_req_val( 'user_id' );

@@ -1020,6 +1020,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return '<th'.
 				( empty( $atts['colspan'] ) ? '' : ' colspan="'.$atts['colspan'].'"' ).
+				( empty( $atts['rowspan'] ) ? '' : ' rowspan="'.$atts['rowspan'].'"' ).
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).
 				( empty( $id ) ? '' : ' id="th_'.$id.'"' ).'><p>'.$title.
 				( empty( $tooltip_text ) ? '' : $tooltip_text ).'</p></th>';
