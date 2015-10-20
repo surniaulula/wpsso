@@ -32,8 +32,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 				foreach ( $info['lib'][$type] as $sub => $lib ) {
-					if ( $sub === 'admin' && ! is_admin() )
-						continue;
+					if ( $sub === 'admin' ) { 
+						if ( ! is_admin() )
+							continue;
+						// save time on known admin pages we don't modify
+						else switch ( basename( $_SERVER['PHP_SELF'] ) ) {
+							case 'index.php':		// Dashboard
+							case 'upload.php':		// Media
+							case 'edit-comments.php':	// Comments
+							case 'themes.php':		// Appearance
+							case 'plugins.php':		// Plugins
+							case 'tools.php':		// Tools
+								continue 2;
+						}
+					}
 					foreach ( $lib as $id => $name ) {
 						if ( $this->p->is_avail[$sub][$id] ) {
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
