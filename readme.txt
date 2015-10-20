@@ -349,7 +349,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* *None*
+	* Fixed detection of NextGEN Gallery image IDs by adding support for NGG's "data-image-id" attribute.
 * **Developer Notes**
 	* *None*
 
