@@ -345,11 +345,11 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.12.0 =
 
 * **New Features**
-	* Added a new Show Social Columns option for Posts, Pages, Taxonomy, and Users list pages.
+	* Added a new Show Social Columns option for Posts, Pages, Taxonomy, and Users list pages (Pro version).
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed detection of NextGEN Gallery image IDs by adding support for NGG's "data-image-id" attribute.
+	* Fixed detection of NextGEN Gallery image IDs by adding support for NGG's "data-image-id" attribute (Pro version).
 * **Developer Notes**
 	* *None*
 
