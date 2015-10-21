@@ -347,7 +347,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* Added a new Show Social Columns option for Posts, Pages, Taxonomy, and Users list pages (Pro version).
 * **Improvements**
-	* *None*
+	* Added a check for settings pages (aka admin.php) before loading the settings pages library files.
+	* Added a check for `is_admin()` before making admin library files available to the library loader.
 * **Bugfixes**
 	* Fixed detection of NextGEN Gallery image IDs by adding support for NGG's "data-image-id" attribute (Pro version).
 	* Fixed an undefined index error by adding a check for the full image width and height attributes (which may be missing).
