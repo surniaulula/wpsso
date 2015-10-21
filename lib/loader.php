@@ -24,6 +24,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		}
 
 		private function modules() {
+			if ( is_admin() ) {
+				// save time on known admin pages we don't modify
+				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
+					case 'index.php':		// Dashboard
+					case 'upload.php':		// Media
+					case 'edit-comments.php':	// Comments
+					case 'themes.php':		// Appearance
+					case 'plugins.php':		// Plugins
+					case 'tools.php':		// Tools
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'no modules required for current page' );
+						return;
+				}
+			}
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				$type = $this->p->is_avail['aop'] &&
 					$this->p->is_avail['util']['um'] &&
@@ -32,26 +46,14 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 				foreach ( $info['lib'][$type] as $sub => $lib ) {
-					if ( $sub === 'admin' ) { 
-						if ( ! is_admin() )
+					if ( $sub === 'admin' &&
+						! is_admin() )
 							continue;
-						// save time on known admin pages we don't modify
-						else switch ( basename( $_SERVER['PHP_SELF'] ) ) {
-							case 'index.php':		// Dashboard
-							case 'upload.php':		// Media
-							case 'edit-comments.php':	// Comments
-							case 'themes.php':		// Appearance
-							case 'plugins.php':		// Plugins
-							case 'tools.php':		// Tools
-								continue 2;
-						}
-					}
 					foreach ( $lib as $id => $name ) {
 						if ( $this->p->is_avail[$sub][$id] ) {
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
-							if ( $classname !== false && class_exists( $classname ) ) {
+							if ( $classname !== false && class_exists( $classname ) )
 								$this->p->mods[$sub][$id] = new $classname( $this->p );
-							}
 						}
 					}
 				}
