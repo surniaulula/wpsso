@@ -345,7 +345,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 = Version 3.12.0 =
 
 * **New Features**
-	* Added a new Show Social Columns option for Posts, Pages, Taxonomy, and Users list pages (Pro version).
+	* Added a Show Social Columns option to manage displayed columns for Posts, Pages, Taxonomy, and Users list pages (Pro version).
 * **Improvements**
 	* Added a check for settings pages (aka admin.php) before loading the settings pages library files.
 	* Added a check for `is_admin()` before making admin library files available to the library loader.
