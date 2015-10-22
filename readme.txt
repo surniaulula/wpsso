@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.11.1
+Stable Tag: 3.12.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -461,6 +461,10 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 == Upgrade Notice ==
+
+= 3.12.0 =
+
+Added a new Show Social Columns option to manage displayed columns (Pro version). Fixed NextGEN Gallery image ID detection (Pro version).
 
 = 3.11.1 =
 
