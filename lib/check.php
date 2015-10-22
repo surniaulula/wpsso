@@ -101,9 +101,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function get_avail() {
 			$ret = array();
+			$is_admin = is_admin();
 
 			$ret['curl'] = function_exists( 'curl_init' ) ? true : false;
 			$ret['postthumb'] = function_exists( 'has_post_thumbnail' ) ? true : false;
+
 			foreach ( array( 'aop', 'mt' ) as $key )
 				$ret[$key] = $this->get_avail_check( $key );
 
@@ -200,14 +202,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'admin-general':
 						case 'admin-advanced':
 							// only load on the 'settings' (aka admin.php) pages
-							if ( is_admin() && 
+							if ( $is_admin && 
 								basename( $_SERVER['PHP_SELF'] ) === 'admin.php' )
 									$ret[$sub]['*'] = $ret[$sub][$id] = true;
 							break;
 						case 'admin-post':
 						case 'admin-taxonomy':
 						case 'admin-user':
-							if ( is_admin() )
+							if ( $is_admin )
 								$ret[$sub]['*'] = $ret[$sub][$id] = true;
 							break;
 						case 'util-post':

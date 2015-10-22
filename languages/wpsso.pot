@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-21 06:37:45+00:00\n"
+"POT-Creation-Date: 2015-10-22 09:31:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -417,7 +417,7 @@ msgstr ""
 msgid "Use Image"
 msgstr ""
 
-#: lib/config-gettext-extract.php:3
+#: lib/config-gettext-extract.php:3 lib/messages.php:77
 msgctxt "lib file description"
 msgid "Advanced"
 msgstr ""
@@ -1058,6 +1058,60 @@ msgstr ""
 msgid ""
 "Content image %1$s has been ignored &mdash; the image width / height "
 "attributes are missing or too small for the %2$s image dimensions."
+msgstr ""
+
+#: lib/messages.php:62
+msgid ""
+"Add author (Person) social profiles markup to webpage headers in schema.org "
+"JSON-LD format for Google Search."
+msgstr ""
+
+#: lib/messages.php:65
+msgid ""
+"The debug library is loaded when the <em>Add Hidden Debug Messages</em> "
+"option is checked, or one of the debugging <a href=\"%s\" target=\"_blank"
+"\">constants</a> is defined."
+msgstr ""
+
+#: lib/messages.php:68
+msgid ""
+"The plugin saves filtered / rendered content to a non-persistant cache (aka "
+"<a href=\"%1$s\" target=\"_blank\">WP Object Cache</a>) for re-use within "
+"the same page load. You can disable the use of non-persistant cache (not "
+"recommended) using one of the available <a href=\"%2$s\" target=\"_blank"
+"\">constants</a>."
+msgstr ""
+
+#: lib/messages.php:71
+msgid ""
+"Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head "
+"section of all webpages. You must have a supported eCommerce plugin "
+"installed to add <em>Product</em> Rich Pins, including product prices and "
+"attributes."
+msgstr ""
+
+#: lib/messages.php:74
+msgid ""
+"Add publisher (Organization) social profiles markup to webpage headers in "
+"schema.org JSON-LD format for Google Search."
+msgstr ""
+
+#: lib/messages.php:77
+msgid ""
+"The plugin saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card "
+"meta tags, and JSON-LD markup to a persistant (aka <a href=\"%1$s\" target="
+"\"_blank\">Transient</a>) cache for %2$d seconds. You can adjust the "
+"Transient cache expiration value on the <a href=\"%3$s\">%4$s</a> settings "
+"page, or disable it completely by using one of the available <a href=\"%5$s"
+"\" target=\"_blank\">constants</a>."
+msgstr ""
+
+#: lib/messages.php:80
+msgid ""
+"Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich "
+"Pin meta tags with additional information about your content. Twitter Cards "
+"are displayed more prominently on Twitter, allowing you to highlight your "
+"content more effectively."
 msgstr ""
 
 #: lib/messages.php:279
