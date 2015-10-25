@@ -249,23 +249,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'post-preview':
 					if ( get_post_status( $head_info['post_id'] ) !== 'auto-draft' )
 						$rows = $this->get_rows_social_preview( $this->form, $head_info );
-					else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
-						$head_info['ptn'].' to display the open graph social preview.</p></td>';
+					else $rows[] = '<td><p class="centered">'.sprintf( __( 'Save a draft version or publish the %s to display the open graph social preview.', 'wpsso' ), $head_info['ptn'] ).'</p></td>';
 					break;
 
 				case 'post-tags':	
 					if ( get_post_status( $head_info['post_id'] ) !== 'auto-draft' ) {
 						$rows = $this->get_rows_head_tags( $this->head_meta_tags );
-					} else $rows[] = '<td><p class="centered">Save a draft version or publish the '.
-						$head_info['ptn'].' to display the header preview.</p></td>';
+					} else $rows[] = '<td><p class="centered">'.sprintf( __( 'Save a draft version or publish the %s to display the head tags preview.', 'wpsso' ), $head_info['ptn'] ).'</p></td>';
 					break; 
 
 				case 'post-validate':
 					if ( get_post_status( $head_info['post_id'] ) === 'publish' ||
 						get_post_type( $head_info['post_id'] ) === 'attachment' )
 							$rows = $this->get_rows_validate( $this->form, $head_info );
-					else $rows[] = '<td><p class="centered">The validation links will be available when the '.
-						$head_info['ptn'].' is published with public visibility.</p></td>';
+					else $rows[] = '<td><p class="centered">'.sprintf( __( 'The validation links will be available when the %s is published with public visibility.', 'wpsso' ), $head_info['ptn'] ).'</p></td>';
 					break; 
 			}
 			return $rows;

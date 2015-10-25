@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-25 12:56:25+00:00\n"
+"POT-Creation-Date: 2015-10-25 13:18:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1833,6 +1833,23 @@ msgstr ""
 #: lib/post.php:218 lib/taxonomy.php:223 lib/user.php:159
 msgctxt "metabox title"
 msgid "Social Settings"
+msgstr ""
+
+#: lib/post.php:252
+msgid ""
+"Save a draft version or publish the %s to display the open graph social "
+"preview."
+msgstr ""
+
+#: lib/post.php:258
+msgid ""
+"Save a draft version or publish the %s to display the head tags preview."
+msgstr ""
+
+#: lib/post.php:265
+msgid ""
+"The validation links will be available when the %s is published with public "
+"visibility."
 msgstr ""
 
 #: lib/pro/forum/bbpress.php:69 lib/pro/forum/bbpress.php:117

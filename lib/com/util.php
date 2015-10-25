@@ -347,6 +347,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				elseif ( self::get_req_val( 'post_ID', 'POST' ) !== '' ||
 					self::get_req_val( 'post', 'GET' ) !== '' )
 						$ret = true;
+				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
+					$ret = true;
 			}
 			if ( $cache === true )
 				return self::$is['post_page'] = apply_filters( 'sucom_is_post_page', $ret, $use_post );
