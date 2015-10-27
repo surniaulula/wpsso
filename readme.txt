@@ -347,6 +347,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **New Features**
 	* Added a new "Get Shortlink Button Gives Short URL" Advanced option to enable/disable the use of shortened URLs in the "Get Shortlink" button on post editing pages (Pro version).
 	* Added the Ow.ly URL shortening service with an "Ow.ly API Key" option on the Advanced settings page (Pro version).
+	* Added support for the TinyURL shortening service (no API keys required) on the Advanced settings page (Pro version).
 * **Improvements**
 	* The Google and Ow.ly API options are now hidden by default, leaving only Bit.ly, which is simpler to configure.
 * **Bugfixes**
