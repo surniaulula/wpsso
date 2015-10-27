@@ -342,6 +342,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.13.0 (TBD) =
+
+* **New Features**
+	* Added a new "Get Shortlink Button Gives Short URL" Advanced option to enable/disable the use of shortened URLs in the "Get Shortlink" button on post editing pages (Pro version).
+	* Added the Ow.ly URL shortening service with an "Ow.ly API Key" option on the Advanced settings page (Pro version).
+* **Improvements**
+	* The Google and Ow.ly API options are now hidden by default, leaving only Bit.ly, which is simpler to configure.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.12.0 2015/10/22 =
 
 * **New Features**
@@ -465,8 +477,4 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 = 3.12.0 =
 
 2015/10/22 Added a new Show Social Columns option to manage displayed columns (Pro version). Fixed NextGEN Gallery image ID detection (Pro version).
-
-= 3.11.1 =
-
-2015/10/16 Additional French translations. Fixed an undefined index error for a WP SEO global variable.
 
