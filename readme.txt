@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.12.0
+Stable Tag: 3.13.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -342,14 +342,14 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.13.0 (TBD) =
+= Version 3.13.0 (2015/10/27) =
 
 * **New Features**
 	* Added a new "Get Shortlink Button Gives Short URL" Advanced option to enable/disable the use of shortened URLs in the "Get Shortlink" button on post editing pages (Pro version).
 	* Added the Ow.ly URL shortening service with an "Ow.ly API Key" option on the Advanced settings page (Pro version).
 	* Added support for the TinyURL shortening service (no API keys required) on the Advanced settings page (Pro version).
 * **Improvements**
-	* The Google and Ow.ly API credential options are now hidden in the basic options view, leaving only the Bit.ly API credentials, which are easier to configure.
+	* The Google and Ow.ly API credential options are now hidden in the basic options view, leaving only the Bit.ly API credentials, which are easier to setup.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
@@ -474,6 +474,10 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 == Upgrade Notice ==
+
+= 3.13.0 =
+
+2015/10/27 Added a new option to enable/disable the use of shortened URLs in the "Get Shortlink" button, and added the Ow.ly and TinyURL shortening services (Pro version).
 
 = 3.12.0 =
 
