@@ -82,21 +82,21 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private function get_avail_check( $key ) {
 			switch ( $key ) {
 				case 'aop':
-					return ( ! defined( 'WPSSO_PRO_MODULE_DISABLE' ) ||
+					$ret = ( ! defined( 'WPSSO_PRO_MODULE_DISABLE' ) ||
 					( defined( 'WPSSO_PRO_MODULE_DISABLE' ) && ! WPSSO_PRO_MODULE_DISABLE ) ) &&
 					is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'mt':
-				case 'metatags':
-					return ( ! defined( 'WPSSO_META_TAGS_DISABLE' ) || 
+					$ret = ( ! defined( 'WPSSO_META_TAGS_DISABLE' ) || 
 					( defined( 'WPSSO_META_TAGS_DISABLE' ) && ! WPSSO_META_TAGS_DISABLE ) ) &&
 					empty( $_SERVER['WPSSO_META_TAGS_DISABLE'] ) &&
 					empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ? true : false;	// allow meta tags to be disabled with query argument
 					break;
 				default:
-					return false;
+					$ret = false;
 					break;
 			}
+			return $ret;
 		}
 
 		public function get_avail() {
