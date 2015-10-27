@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
 			$rows['plugin_shortener'] = $this->p->util->get_th( _x( 'Preferred URL Shortening Service',
-				'option label', 'wpsso' ), null, 'plugin_shortener' ).
+				'option label', 'wpsso' ), 'highlight', 'plugin_shortener' ).
 			'<td class="blank">[none]</td>';
 
 			$rows['plugin_shortlink'] = $this->p->util->get_th( _x( '<em>Get Shortlink</em> Button Gives Short URL',

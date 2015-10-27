@@ -666,9 +666,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'shorteners' => array(
 					'none' => '[none]',
-					'bitly' => 'Bit.ly',
+					'bitly' => 'Bit.ly (suggested)',
 					'googl' => 'Goo.gl',
 					'owly' => 'Ow.ly',
+					'tinyurl' => 'TinyURL (slow)',
 				),
 			),
 			'head' => array(

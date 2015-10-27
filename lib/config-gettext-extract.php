@@ -3,7 +3,7 @@
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
-_x( 'Bit.ly', 'option value', 'wpsso' );
+_x( 'Bit.ly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( '(default)', 'option value', 'wpsso' );
@@ -32,6 +32,7 @@ _x( '(settings value)', 'option value', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Social Image Dimensions', 'lib file description', 'wpsso' );
 _x( '<span>Extension Plugins</span> and Pro Licenses', 'lib file description', 'wpsso' );
+_x( 'TinyURL (slow)', 'option value', 'wpsso' );
 _x( 'Title and Excerpt', 'option value', 'wpsso' );
 _x( 'Title Only', 'option value', 'wpsso' );
 _x( 'Top', 'option value', 'wpsso' );

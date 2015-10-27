@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-27 11:22-0400\n"
-"PO-Revision-Date: 2015-10-27 11:22-0400\n"
+"POT-Creation-Date: 2015-10-27 13:31-0400\n"
+"PO-Revision-Date: 2015-10-27 13:32-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,12 +15,12 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/admin.php:67 lib/admin.php:662
+#: lib/admin.php:67 lib/admin.php:661
 msgctxt "package type"
 msgid "Pro"
 msgstr "Pro"
 
-#: lib/admin.php:68 lib/admin.php:663
+#: lib/admin.php:68 lib/admin.php:662
 msgctxt "package type"
 msgid "Free"
 msgstr "Gratuit"
@@ -99,7 +99,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr "Forum d’aide"
 
-#: lib/admin.php:352 lib/admin.php:980 lib/admin.php:981
+#: lib/admin.php:352 lib/admin.php:979 lib/admin.php:980
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr "Achetez licence(s) Pro"
@@ -125,7 +125,7 @@ msgstr ""
 "Attendre %1$d secondes pour que les objets du cache expire ou <a href=\"%2$s"
 "\">%3$s</a> immédiatement."
 
-#: lib/admin.php:381 lib/admin.php:884
+#: lib/admin.php:381 lib/admin.php:883
 msgctxt "submit button"
 msgid "Clear All Cache(s)"
 msgstr "Vider tout les caches"
@@ -187,123 +187,123 @@ msgctxt "metabox title (side)"
 msgid "Help and Support"
 msgstr "Assistance et Soutien"
 
-#: lib/admin.php:639 lib/admin.php:640
+#: lib/admin.php:638 lib/admin.php:639
 msgid "N/A"
 msgstr "Non-dispo."
 
-#: lib/admin.php:664
+#: lib/admin.php:663
 msgctxt "plugin status label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:667
+#: lib/admin.php:666
 msgctxt "plugin status label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:670
+#: lib/admin.php:669
 msgctxt "plugin status label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:675
+#: lib/admin.php:674
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr "Voir changelog %s…"
 
-#: lib/admin.php:821
+#: lib/admin.php:820
 msgctxt "submit button"
 msgid "Purchase Pro License(s)"
 msgstr "Achetez Licence(s) Pro"
 
-#: lib/admin.php:822
+#: lib/admin.php:821
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr "Achetez Version Pro"
 
-#: lib/admin.php:837
+#: lib/admin.php:836
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr "Consulter la <a href=\"%s\" target=\"_blank\">Foire aux Questions</a>"
 
-#: lib/admin.php:840
+#: lib/admin.php:839
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr "et <a href=\"%s\" target=\"_blank\">autres notes</a>"
 
-#: lib/admin.php:845
+#: lib/admin.php:844
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr "Ouvrez un <a href=\"%s\" target=\"_blank\">billet de soutien</a>"
 
-#: lib/admin.php:848
+#: lib/admin.php:847
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr "Postez dans le <a href=\"%s\" target=\"_blank\">forum de soutien</a>"
 
-#: lib/admin.php:852
+#: lib/admin.php:851
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:871 lib/messages.php:729
+#: lib/admin.php:870 lib/messages.php:729
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:874
+#: lib/admin.php:873
 msgctxt "submit button"
 msgid "View %s by Default"
 msgstr "Voir %s par Défaut"
 
-#: lib/admin.php:888
+#: lib/admin.php:887
 msgctxt "submit button"
 msgid "Check for Update(s)"
 msgstr "Vérifier pour mises à jour"
 
-#: lib/admin.php:895
+#: lib/admin.php:894
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinit. disposition metabox"
 
-#: lib/admin.php:900
+#: lib/admin.php:899
 msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr "Réinit. les avis cachés"
 
-#: lib/admin.php:936
+#: lib/admin.php:935
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr "Afficher les détails"
 
-#: lib/admin.php:956
+#: lib/admin.php:955
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr "Afficher les détails + mise à jour"
 
-#: lib/admin.php:962
+#: lib/admin.php:961
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr "Afficher les détails + installer"
 
-#: lib/admin.php:968
+#: lib/admin.php:967
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr "Description de l’extension"
 
-#: lib/admin.php:973
+#: lib/admin.php:972
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr "Téléchargez dernière version"
 
-#: lib/admin.php:1021 lib/admin.php:1026 lib/admin.php:1047 lib/admin.php:1053
+#: lib/admin.php:1020 lib/admin.php:1025 lib/admin.php:1046 lib/admin.php:1052
 #: lib/messages.php:690
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
 
-#: lib/admin.php:1080
+#: lib/admin.php:1079
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#: lib/admin.php:1090
+#: lib/admin.php:1089
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
@@ -311,7 +311,7 @@ msgstr ""
 "Le service de raccourcissement d'URL est actif, mais la <a href=\"%s\" "
 "target=\"_blank\">librairie d'URL Client</a> (cURL) de PHP est manquante."
 
-#: lib/admin.php:1090 lib/admin.php:1094
+#: lib/admin.php:1089 lib/admin.php:1093
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
@@ -319,7 +319,7 @@ msgstr ""
 "Contactez votre hébergeur pour installer les fichiers de librairie cURL "
 "manquants."
 
-#: lib/admin.php:1094
+#: lib/admin.php:1093
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
@@ -328,7 +328,7 @@ msgstr ""
 "\"%s\" target=\"_blank\">librarie d'URL Client</a> (cURL) de PHP est "
 "manquante."
 
-#: lib/admin.php:1104
+#: lib/admin.php:1103
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
@@ -336,7 +336,7 @@ msgstr ""
 "Veuillez décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous "
 "l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1109
+#: lib/admin.php:1108
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
@@ -345,7 +345,7 @@ msgstr ""
 "em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Twitter</"
 "a>."
 
-#: lib/admin.php:1114
+#: lib/admin.php:1113
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
@@ -354,7 +354,7 @@ msgstr ""
 "+</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google"
 "+</a>."
 
-#: lib/admin.php:1119
+#: lib/admin.php:1118
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
@@ -363,7 +363,7 @@ msgstr ""
 "entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google "
 "+</a>."
 
-#: lib/admin.php:1130
+#: lib/admin.php:1129
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
@@ -371,7 +371,7 @@ msgstr ""
 "Veuillez désactiver le module '<em>Open Graph Integrator</em>' dans <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 
-#: lib/admin.php:1141
+#: lib/admin.php:1140
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
@@ -379,7 +379,7 @@ msgstr ""
 "Veuillez désactiver la fonctionnalité '<em>Social Meta</em>' dans le <a href="
 "\"%s\">All in One SEO Pack Feature Manager</a>."
 
-#: lib/admin.php:1146
+#: lib/admin.php:1145
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
@@ -387,7 +387,7 @@ msgstr ""
 "Veuillez crocher l'option '<em>Disable Google Plus Profile</em>' dans les "
 "réglages de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1156
+#: lib/admin.php:1155
 msgid ""
 "JetPack's Photon module purposefully cripples the WordPress image size "
 "functions."
@@ -395,7 +395,7 @@ msgstr ""
 "Le module Photon de Jetpack paralyse délibérément les fonctions de WordPress "
 "pour les dimensions d’image."
 
-#: lib/admin.php:1156
+#: lib/admin.php:1155
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
@@ -403,7 +403,7 @@ msgstr ""
 "Veuillez <a href=\"%s\">désactiver le module Photon de JetPack</a> ou de "
 "désactiver l'extension gratuite %s."
 
-#: lib/admin.php:1156
+#: lib/admin.php:1155
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
@@ -414,7 +414,7 @@ msgstr ""
 "Photon</a> qui réactive les fonctions de taille d'image spécifiquement pour "
 "images de %4$s."
 
-#: lib/admin.php:1173
+#: lib/admin.php:1172
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -490,8 +490,8 @@ msgstr "Options de Base"
 
 #: lib/config-gettext-extract.php:6
 msgctxt "option value"
-msgid "Bit.ly"
-msgstr "Bit.ly"
+msgid "Bit.ly (suggested)"
+msgstr "Bit.ly (suggéré)"
 
 #: lib/config-gettext-extract.php:7
 msgctxt "option value"
@@ -609,30 +609,35 @@ msgstr "<span>Autres Extensions</span> et Licences Pro"
 
 #: lib/config-gettext-extract.php:35
 msgctxt "option value"
+msgid "TinyURL (slow)"
+msgstr "TinyURL (lent)"
+
+#: lib/config-gettext-extract.php:36
+msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr "Titre et extrait"
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "Title Only"
 msgstr "Titre seulement"
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Top"
 msgstr "Le haut"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:39
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr "Méthodes de Contact du Profil Utilisateur"
 
-#: lib/config-gettext-extract.php:39
+#: lib/config-gettext-extract.php:40
 msgctxt "lib file description"
 msgid "Website / Business Social Accounts"
 msgstr "Site Web et Comptes Sociaux de l’Entreprise"
 
-#: lib/config-gettext-extract.php:40
+#: lib/config-gettext-extract.php:41
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
@@ -642,7 +647,7 @@ msgstr ""
 "réactif (SVG) dans votre contenu, les extraits, barre flottante CSS, widget, "
 "shortcode, etc."
 
-#: lib/config-gettext-extract.php:41
+#: lib/config-gettext-extract.php:42
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add traditional Social Sharing Buttons with support for "
@@ -652,7 +657,7 @@ msgstr ""
 "pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien "
 "plus."
 
-#: lib/config-gettext-extract.php:42
+#: lib/config-gettext-extract.php:43
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
@@ -661,7 +666,7 @@ msgstr ""
 "Une extension WPSSO qui fournie des balises méta Apple Store / iTunes et "
 "Google Play App pour mobile Safari de Apple et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:44
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
@@ -670,7 +675,7 @@ msgstr ""
 "Une extension WPSSO pour fournir les balises méta Facebook / Open Graph de "
 "\"Position\" et Pinterest Rich Pin de \"Place\"."
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:45
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
@@ -679,7 +684,7 @@ msgstr ""
 "Une extension WPSSO pour fournir des mises à jour a WordPress Social Sharing "
 "Optimization (WPSSO) Pro et ses extensions Pro."
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:46
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
@@ -1223,6 +1228,10 @@ msgid ""
 "are displayed more prominently on Twitter, allowing you to highlight your "
 "content more effectively."
 msgstr ""
+"Les cartes Twitter bonifie les standards de balises méta Facebook / Open "
+"Graph et Pinterest Rich Pin avec des informations supplémentaires à propos "
+"de votre contenu. Les cartes Twitter sont mis en évidence sur Twitter, vous "
+"permettant de promouvoir votre contenu plus efficacement."
 
 #: lib/messages.php:279
 msgid ""
@@ -2297,7 +2306,7 @@ msgstr ""
 "L'image avec l'ID %1$s de NextGEN Gallery a été ignoré &mdash; les "
 "proportions de %2$s de l'image créé sont égale ou supérieur a %3$d:1."
 
-#: lib/pro/util/shorten.php:105
+#: lib/pro/util/shorten.php:114
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""

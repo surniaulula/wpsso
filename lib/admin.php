@@ -632,7 +632,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_info() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-
 				if ( empty( $info['version'] ) )	// filter out extensions that are not active
 					continue;
 
