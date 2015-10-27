@@ -290,7 +290,7 @@
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an “HTTP error” when uploading images?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-facebook-sees/">How can I see what Facebook sees?</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-attach-an-image-without-showing-it-on-the-webpage/">How do I attach an image without showing it on the webpage?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme’s front page pagination?</a></li>
