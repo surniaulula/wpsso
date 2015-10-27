@@ -266,6 +266,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_shortener' ).
 			'<td class="blank">[none]</td>';
 
+			$rows['plugin_shortlink'] = $this->p->util->get_th( _x( '<em>Get Shortlink</em> Button Gives Short URL',
+				'option label', 'wpsso' ), null, 'plugin_shortlink' ).
+			$this->get_nocb_cell( 'plugin_shortlink' );
+
 			$rows['plugin_min_shorten'] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Minimum URL Length to Shorten',
 				'option label', 'wpsso' ), null, 'plugin_min_shorten' ). 
@@ -280,11 +284,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_bitly_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].'</td>';
 
-			$rows['plugin_google_api_key'] = $this->p->util->get_th( _x( 'Google Project App BrowserKey',
+			$rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Ow.ly API Key',
+				'option label', 'wpsso' ), null, 'plugin_owly_api_key' ).
+			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
+
+			$rows['plugin_google_api_key'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Google Project App BrowserKey',
 				'option label', 'wpsso' ), null, 'plugin_google_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_google_api_key'].'</td>';
 
-			$rows['plugin_google_shorten'] = $this->p->util->get_th( _x( 'Google URL Shortener API is ON',
+			$rows['plugin_google_shorten'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Google URL Shortener API is ON',
 				'option label', 'wpsso' ), null, 'plugin_google_shorten' ).
 			'<td class="blank">'._x( $this->p->cf['form']['yes_no'][$this->p->options['plugin_google_shorten']],
 				'option value', 'wpsso' ).'</td>';

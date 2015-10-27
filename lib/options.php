@@ -158,8 +158,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), true );
 			
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
-							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) )
+							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) ) {
+
+							if ( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
 								$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
+							else $opts['plugin_object_cache_exp'] = $this->get_defaults( 'plugin_object_cache_exp' );
+						}
 					}
 				}
 
@@ -244,17 +248,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opts[$md_pre.'_img_crop'] = $def_opts[$md_pre.'_img_crop'];
 					}
 				}
-			}
-
-			if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-				foreach( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $suffix ) {
-					if ( isset( $opts['og_img_'.$suffix] ) &&
-						isset( $opts['rp_img_'.$suffix] ) ) {
-						$opts['rp_img_'.$suffix] = $opts['og_img_'.$suffix];
-					}
-				}
-				if ( ! empty( $opts['plugin_file_cache_exp'] ) )
-					$opts['plugin_file_cache_exp'] = 0;
 			}
 
 			// if an image id is being used, remove the image url (only one can be defined)

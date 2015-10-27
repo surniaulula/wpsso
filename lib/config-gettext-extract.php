@@ -25,6 +25,7 @@ _x( '[none]', 'option value', 'wpsso' );
 _x( 'No', 'option value', 'wpsso' );
 _x( '(no videos)', 'option value', 'wpsso' );
 _x( '(option disabled)', 'option value', 'wpsso' );
+_x( 'Ow.ly', 'option value', 'wpsso' );
 _x( 'Read Me', 'lib file description', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );

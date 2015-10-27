@@ -199,7 +199,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 									$dis_time = $dis_arr[$payload['msg_id']];
 									if ( empty( $dis_time ) || $dis_time > $now_time ) {
 										$payload['hidden'] = true;
-										$hidden[$type]++;
+										if ( isset( $hidden[$type] ) )
+											$hidden[$type]++;
+										else $hidden[$type] = 1;
 									} else {
 										$have_changes = true;
 										unset( $dis_arr[$payload['msg_id']] );

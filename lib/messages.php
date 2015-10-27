@@ -416,6 +416,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_shortener':
 							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or extensions that may need to shorten URLs &mdash; don\'t forget to define the Service API Keys for the URL shortening service of your choice.', 'wpsso' ), $atts['short'] );
 							break;
+						case 'tooltip-plugin_shortlink':
+							$text = __( 'The <em>Get Shortlink</em> button on Posts / Pages admin editing pages provides the shortened sharing URL instead of the default WordPress shortlink URL.', 'wpsso' );
+							break;
 						case 'tooltip-plugin_min_shorten':
 							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
 							break;
@@ -423,7 +426,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'The username for your Bit.ly API key (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 							break;
 						case 'tooltip-plugin_bitly_api_key':
-							$text = sprintf( __( 'Your Bit.ly API key for this website (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+							$text = sprintf( __( 'To use Bit.ly as your preferred shortening service, you must provide the Bit.ly API key for this website (see <a href="%s" target="_blank">Your Bit.ly API Key</a> for details).', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+							break;
+						case 'tooltip-plugin_owly_api_key':
+							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API key for this website (complete this form to <a href="%s" target="_blank">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
 							break;
 						case 'tooltip-plugin_google_api_key':
 							$text = sprintf( __( 'The Google BrowserKey value for this website (project). If you don\'t already have a Google project, visit <a href="%s" target="_blank">Google\'s Cloud Console</a> and create a new project for your website (use the \'Select a project\' drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );

@@ -33,7 +33,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// nothing to do
 
 			} else {
-				$this->load_textdoms();		// load the text domains of all active extensions
+				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+
 				$this->set_objects();
 				$this->pro_req_notices();
 				$this->conflict_warnings();
@@ -56,25 +57,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( &$this, 'dismiss_wpseo_notice' ), 10, 3 );
 			}
 
-		}
-
-		// load the text domains of all active extensions
-		private function load_textdoms() {
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( ! empty( $info['text_domain'] ) ) {
-					if ( ! empty( $info['domain_path'] ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
-								' from '.trailingslashit( $info['slug'].$info['domain_path'] ) );
-						load_plugin_textdomain( $info['text_domain'], false, 
-							trailingslashit( $info['slug'].$info['domain_path'] ) );
-					} else {
-						$this->p->debug->log( 'loading textdomain '.$info['text_domain'].
-							' from default location' );
-						load_plugin_textdomain( $info['text_domain'], false, false );
-					}
-				}
-			}
 		}
 
 		// load all submenu classes into the $this->submenu array

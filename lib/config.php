@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.12.0',		// plugin version
+					'version' => '3.13.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso366',				// increment when changing default options
+				'version' => 'sso367',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
@@ -459,9 +459,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
+					'plugin_shortlink' => 1,
 					'plugin_min_shorten' => 22,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_api_key' => '',
+					'plugin_owly_api_key' => '',
 					'plugin_google_api_key' => '',
 					'plugin_google_shorten' => 0,
 					// Contact Field Names and Labels
@@ -666,6 +668,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none' => '[none]',
 					'bitly' => 'Bit.ly',
 					'googl' => 'Goo.gl',
+					'owly' => 'Ow.ly',
 				),
 			),
 			'head' => array(
