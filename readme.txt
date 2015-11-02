@@ -342,6 +342,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.14.0 (TBD) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added 'og_type_mt' to the config array to pre-define basic Open Graph meta tags for each type (article, product, etc.).
+
 = Version 3.13.1 (2015/10/28) =
 
 * **New Features**
