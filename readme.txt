@@ -358,6 +358,8 @@ Official announcement: [NGFB / WPSSO Update — Pre-defined Meta Tags for CPTs](
 
 = Version 3.13.1 (2015/10/28) =
 
+Official announcement: N/A
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -400,6 +402,8 @@ Official announcement: [NGFB / WPSSO Update — Manage Social Columns](http://su
 
 = Version 3.11.1 2015/10/16 =
 
+Official announcement: N/A
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -429,6 +433,8 @@ Official announcement: [NGFB / WPSSO Update — French Translation](http://surni
 
 = Version 3.10.3 2015/10/04 =
 
+Official announcement: N/A
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -441,6 +447,8 @@ Official announcement: [NGFB / WPSSO Update — French Translation](http://surni
 	* Added POT (Portable Object Template) file with translation strings in languages/wpsso.pot.
 
 = Version 3.10.2 2015/09/29 =
+
+Official announcement: N/A
 
 * **New Features**
 	* *None*
@@ -462,6 +470,8 @@ Official announcement: [NGFB / WPSSO Update — French Translation](http://surni
 		* Renamed the WpssoOpengraph `add_html_attr()` public method (and filter) to `add_html_attributes()`.
 
 = Version 3.10.1 2015/09/23 =
+
+Official announcement: N/A
 
 * **New Features**
 	* *None*
