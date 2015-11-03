@@ -342,7 +342,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.14.0 (TBD) =
+= Version 3.14.0 (2015/11/03) =
 
 * **New Features**
 	* *None*
@@ -351,7 +351,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added 'og_type_mt' to the config array to add pre-defined Open Graph meta tag names for each type (article, product, etc.).
+	* Added 'og_type_mt' to the config array to add pre-defined Open Graph meta tag names for custom post types (article, book, music.album, product, etc.).
 	* Added a filter_single_mt() method to the WpssoHead class to optionally filter each meta tag value. The filter hooks ('wpsso_meta_property_article:tag_content' for example) can return a string or an array of values. The WPSSO_FILTER_SINGLE_TAGS constant must be defined as true to enable filtering of individual meta tag values.
 
 = Version 3.13.1 (2015/10/28) =
@@ -497,6 +497,10 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 == Upgrade Notice ==
+
+= 3.14.0 =
+
+2015/11/03 Added pre-defined Open Graph meta tags for custom post types (article, book, music.album, product, etc.). The pre-defined meta tags allow developers to easily hook single meta tag names to modify their values.
 
 = 3.13.1 =
 
