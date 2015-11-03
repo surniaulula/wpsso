@@ -344,6 +344,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.14.0 (2015/11/03) =
 
+Official announcement: [NGFB / WPSSO Update — Pre-defined Meta Tags for CPTs](http://surniaulula.com/2015/11/03/ngfb-wpsso-update-pre-defined-meta-tags-for-cpts/)
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -367,6 +369,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.13.0 (2015/10/27) =
 
+Official announcement: N/A
+
 * **New Features**
 	* Added a new "Get Shortlink Button Gives Short URL" Advanced option to enable/disable the use of shortened URLs in the "Get Shortlink" button on post editing pages (Pro version).
 	* Added the Ow.ly URL shortening service with an "Ow.ly API Key" option on the Advanced settings page (Pro version).
@@ -379,6 +383,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 
 = Version 3.12.0 2015/10/22 =
+
+Official announcement: [NGFB / WPSSO Update — Manage Social Columns](http://surniaulula.com/2015/10/25/ngfb-wpsso-update-manage-social-columns/)
 
 * **New Features**
 	* Added a Show Social Columns option to manage displayed columns for Posts, Pages, Taxonomy, and Users list pages (Pro version).
@@ -404,6 +410,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 	* *None*
 
 = Version 3.11.0 2015/10/09 =
+
+Official announcement: [NGFB / WPSSO Update — French Translation](http://surniaulula.com/2015/10/09/ngfb-wpsso-update-french-translation/)
 
 * **New Features**
 	* Added a French language (fr_FR) translation.
@@ -472,6 +480,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support [all current Twitter Card formats](https://dev.twitter.com/cards/types), including the Summary, Summary with Large Image, App (extension plugin required), and Player Cards &mdash; in both the Free and Pro versions of WPSSO.
 
+Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://surniaulula.com/2015/09/20/ngfb-wpsso-update-twitter-card-updates/)
+
 * **New Features**
 	* *None*
 * **Improvements**
@@ -483,18 +493,6 @@ The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 20
 * **Developer Notes**
 	* Removed the 'wpsso_tc_edd', 'wpsso_tc_marketpress', 'wpsso_tc_woocommerce', and 'wpsso_tc_wpecommerce' filters.
 	* Added a new WpssoUtil::save_all_times() method to save installation, activation, and update times.
-
-= Version 3.9.2 2015/09/13 =
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Completed the Network SSO Advanced settings page "Plugin Settings" tab with all available options (Pro version).
-* **Bugfixes**
-	* Fixed an incorrect "Include Preview Image(s)" default value in the Social Settings metabox (Pro version).
-* **Developer Notes**
-	* Moved the `conflict_warnings()` method from WpssoCheck to the WpssoAdmin class.
-	* Changed the minimum WordPress version from 3.0 to 3.1 (required to display admin notices).
 
 == Upgrade Notice ==
 
