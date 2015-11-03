@@ -384,7 +384,7 @@ Official announcement: N/A
 * **Developer Notes**
 	* *None*
 
-= Version 3.12.0 2015/10/22 =
+= Version 3.12.0 (2015/10/22) =
 
 Official announcement: [NGFB / WPSSO Update — Manage Social Columns](http://surniaulula.com/2015/10/25/ngfb-wpsso-update-manage-social-columns/)
 
@@ -400,7 +400,7 @@ Official announcement: [NGFB / WPSSO Update — Manage Social Columns](http://su
 * **Developer Notes**
 	* *None*
 
-= Version 3.11.1 2015/10/16 =
+= Version 3.11.1 (2015/10/16) =
 
 Official announcement: N/A
 
@@ -413,7 +413,7 @@ Official announcement: N/A
 * **Developer Notes**
 	* *None*
 
-= Version 3.11.0 2015/10/09 =
+= Version 3.11.0 (2015/10/09) =
 
 Official announcement: [NGFB / WPSSO Update — French Translation](http://surniaulula.com/2015/10/09/ngfb-wpsso-update-french-translation/)
 
@@ -431,7 +431,7 @@ Official announcement: [NGFB / WPSSO Update — French Translation](http://surni
 		* apply_filters( 'wpsso_content_image_preg_html_tag', $default = 'img' );
 		* apply_filters( 'wpsso_content_image_preg_pid_attr', $default = 'data-[a-z]+-pid' );
 
-= Version 3.10.3 2015/10/04 =
+= Version 3.10.3 (2015/10/04) =
 
 Official announcement: N/A
 
@@ -446,7 +446,7 @@ Official announcement: N/A
 * **Developer Notes**
 	* Added POT (Portable Object Template) file with translation strings in languages/wpsso.pot.
 
-= Version 3.10.2 2015/09/29 =
+= Version 3.10.2 (2015/09/29) =
 
 Official announcement: N/A
 
@@ -469,7 +469,7 @@ Official announcement: N/A
 		* Renamed the WpssoSchema `add_head_attr()` public method (and filter) to `add_head_attributes()`.
 		* Renamed the WpssoOpengraph `add_html_attr()` public method (and filter) to `add_html_attributes()`.
 
-= Version 3.10.1 2015/09/23 =
+= Version 3.10.1 (2015/09/23) =
 
 Official announcement: N/A
 
@@ -486,7 +486,7 @@ Official announcement: N/A
 	* Removed all Photo, Gallery, and Product Twitter Card related option keys from the options array.
 	* Changed the WpssoAdmin $readme_info property to a static variable.
 
-= Version 3.10 2015/09/20 =
+= Version 3.10 (2015/09/20) =
 
 The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015. WPSSO continues to support [all current Twitter Card formats](https://dev.twitter.com/cards/types), including the Summary, Summary with Large Image, App (extension plugin required), and Player Cards &mdash; in both the Free and Pro versions of WPSSO.
 
