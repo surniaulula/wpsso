@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.13.1',		// plugin version
+					'version' => '3.14.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso367',				// increment when changing default options
+				'version' => 'sso369',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
@@ -358,8 +358,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// enable/disable header html tags
 					'add_link_rel_author' => 1,
 					'add_link_rel_publisher' => 1,
+					// facebook
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,
+					// open graph
 					'add_meta_property_og:locale' => 1,
 					'add_meta_property_og:site_name' => 1,
 					'add_meta_property_og:description' => 1,
@@ -375,20 +377,67 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:video:width' => 1,
 					'add_meta_property_og:video:height' => 1,
 					'add_meta_property_og:video:type' => 1,
+					'add_meta_property_og:altitude' => 1,
+					'add_meta_property_og:latitude' => 1,
+					'add_meta_property_og:longitude' => 1,
+					// article
 					'add_meta_property_article:author' => 1,
 					'add_meta_property_article:publisher' => 1,
 					'add_meta_property_article:published_time' => 1,
 					'add_meta_property_article:modified_time' => 1,
 					'add_meta_property_article:section' => 1,
 					'add_meta_property_article:tag' => 1,
+					// book
+					'add_meta_property_book:author' => 1,
+					'add_meta_property_book:isbn' => 1,
+					'add_meta_property_book:release_date' => 1,
+					'add_meta_property_book:tag' => 1,
+					// music
+					'add_meta_property_music:album' => 1,
+					'add_meta_property_music:album:disc' => 1,
+					'add_meta_property_music:album:track' => 1,
+					'add_meta_property_music:creator' => 1,
+					'add_meta_property_music:duration' => 1,
+					'add_meta_property_music:musician' => 1,
+					'add_meta_property_music:release_date' => 1,
+					'add_meta_property_music:song' => 1,
+					'add_meta_property_music:song:disc' => 1,
+					'add_meta_property_music:song:track' => 1,
+					// place
+					'add_meta_property_place:location:altitude' => 1,
+					'add_meta_property_place:location:latitude' => 1,
+					'add_meta_property_place:location:longitude' => 1,
+					'add_meta_property_place:street_address' => 1,
+					'add_meta_property_place:locality' => 1,
+					'add_meta_property_place:region' => 1,
+					'add_meta_property_place:postal_code' => 1,
+					'add_meta_property_place:country_name' => 1,
+					// product
 					'add_meta_property_product:price:amount' => 1,
 					'add_meta_property_product:price:currency' => 1,
 					'add_meta_property_product:availability' => 1,
+					// profile
+					'add_meta_property_profile:first_name' => 1,
+					'add_meta_property_profile:last_name' => 1,
+					'add_meta_property_profile:username' => 1,
+					'add_meta_property_profile:gender' => 1,
+					// video
+					'add_meta_property_video:actor' => 1,
+					'add_meta_property_video:actor:role' => 1,
+					'add_meta_property_video:director' => 1,
+					'add_meta_property_video:writer' => 1,
+					'add_meta_property_video:duration' => 1,
+					'add_meta_property_video:release_date' => 1,
+					'add_meta_property_video:tag' => 1,
+					'add_meta_property_video:series' => 1,
+					// seo
 					'add_meta_name_author' => 1,
 					'add_meta_name_canonical' => 0,
 					'add_meta_name_description' => 1,
 					'add_meta_name_generator' => 1,
+					// pinterest
 					'add_meta_name_p:domain_verify' => 1,
+					// twitter cards
 					'add_meta_name_twitter:card' => 1,
 					'add_meta_name_twitter:creator' => 1,
 					'add_meta_name_twitter:domain' => 1,
@@ -401,12 +450,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:player' => 1,
 					'add_meta_name_twitter:player:width' => 1,
 					'add_meta_name_twitter:player:height' => 1,
+					// schema
 					'add_meta_itemprop_name' => 1,
 					'add_meta_itemprop_headline' => 1,
 					'add_meta_itemprop_datepublished' => 1,
 					'add_meta_itemprop_description' => 1,
 					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_image' => 1,
+					'add_meta_itemprop_address' => 1,
 					/*
 					 * Advanced Settings
 					 */
@@ -691,6 +742,106 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'video.other' => 'http://ogp.me/ns/video#',
 					'video.tv_show' => 'http://ogp.me/ns/video#',
 					'website' => 'http://ogp.me/ns/website#',
+				),
+				'og_type_mt' => array(
+					'article' => array(
+						'article:author',
+						'article:section',
+						'article:tag',
+						'article:published_time',
+						'article:modified_time',
+						'article:expiration_time',
+					),
+					'book' => array(
+						'book:author',
+						'book:isbn',
+						'book:release_date',
+						'book:tag',
+					),
+					'music.album' => array(
+						'music:song',
+						'music:song:disc',
+						'music:song:track',
+						'music:musician',
+						'music:release_date',
+					),
+					'music.playlist' => array(
+						'music:creator',
+						'music:song',
+						'music:song:disc',
+						'music:song:track',
+					),
+					'music.radio_station' => array(
+						'music:creator',
+					),
+					'music.song' => array(
+						'music:album',
+						'music:album:disc',
+						'music:album:track',
+						'music:duration',
+						'music:musician',
+					),
+					'place' => array(
+						'og:altitude',
+						'og:latitude',
+						'og:longitude',
+						'place:location:latitude',
+						'place:location:longitude',
+						'place:location:altitude',
+						'place:street_address',
+						'place:locality',
+						'place:region',
+						'place:postal_code',
+						'place:country_name',
+					),
+					'product' => array(
+						'product:price:amount',
+						'product:price:currency',
+						'product:availability',
+					),
+					'profile' => array(
+						'profile:first_name',
+						'profile:last_name',
+						'profile:username',
+						'profile:gender',
+					),
+					'video.episode' => array(
+						'video:actor',
+						'video:actor:role',
+						'video:director',
+						'video:writer',
+						'video:duration',
+						'video:release_date',
+						'video:tag',
+						'video:series',
+					),
+					'video.movie' => array(
+						'video:actor',
+						'video:actor:role',
+						'video:director',
+						'video:writer',
+						'video:duration',
+						'video:release_date',
+						'video:tag',
+					),
+					'video.other' => array(
+						'video:actor',
+						'video:actor:role',
+						'video:director',
+						'video:writer',
+						'video:duration',
+						'video:release_date',
+						'video:tag',
+					),
+					'video.tv_show' => array(
+						'video:actor',
+						'video:actor:role',
+						'video:director',
+						'video:writer',
+						'video:duration',
+						'video:release_date',
+						'video:tag',
+					),
 				),
 				'schema_type' => array(
 					'article' => 'http://schema.org/Article',

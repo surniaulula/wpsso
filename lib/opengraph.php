@@ -84,9 +84,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
-			$post_type = '';
+			// counter for video previews found
 			$video_previews = 0;
-			$og_max = $this->p->util->get_max_nums( $post_id, 'post' );	// post_id 0 returns the plugin settings 
+
+			// post_id 0 returns the default plugin settings 
+			$og_max = $this->p->util->get_max_nums( $post_id, 'post' );
 			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
 
 			if ( ! empty( $og ) && 
@@ -113,11 +115,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				// check the post_type for a match with a known open graph type
 				if ( is_singular() || $use_post !== false ) {
 
-					if ( ! empty( $obj->post_type ) )
-						$post_type = $obj->post_type;
-
-					if ( isset( $this->p->cf['head']['og_type_ns'][$post_type] ) )
-						$og['og:type'] = $post_type;
+					if ( ! empty( $obj->post_type ) && 
+						isset( $this->p->cf['head']['og_type_ns'][$obj->post_type] ) )
+							$og['og:type'] = $obj->post_type;
 					else $og['og:type'] = 'article';
 
 				// check for default author info on indexes and searches
@@ -125,13 +125,27 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					! empty( $this->p->options['og_def_author_id'] ) ) {
 
 					$og['og:type'] = 'article';
+
+					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $this->p->options['og_def_author_id'] );
+						$og['article:author'] = $this->p->mods['util']['user']->get_article_author( 
+							$this->p->options['og_def_author_id'] );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
 
 				$og['og:type'] = apply_filters( $this->p->cf['lca'].'_og_type', $og['og:type'], $use_post );
+
+				// pre-define basic open graph meta tags for this type
+				if ( isset( $this->p->cf['head']['og_type_mt'][$og['og:type']] ) ) {
+					foreach( $this->p->cf['head']['og_type_mt'][$og['og:type']] as $mt_name ) {
+						if ( ! isset( $og[$mt_name] ) ) {
+							$og[$mt_name] = null;
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( $og['og:type'].' pre-defined mt: '.$mt_name );
+						}
+					}
+				}
 			}
 
 			if ( ! isset( $og['og:locale'] ) ) {
@@ -157,6 +171,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// if the page is an article, then define the other article meta tags
 			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:author'] ) ) {
 					if ( is_singular() || $use_post !== false ) {
 						if ( ! empty( $obj->post_author ) )
@@ -166,18 +181,23 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					}
 				}
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:publisher'] ) )
 					$og['article:publisher'] = $this->p->options['fb_publisher_url'];
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:tag'] ) )
 					$og['article:tag'] = $this->p->webpage->get_tags( $post_id );
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:section'] ) )
 					$og['article:section'] = $this->p->webpage->get_section( $post_id );
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:published_time'] ) )
 					$og['article:published_time'] = trim( get_the_date('c') );
 
+				// meta tag not defined or value is null
 				if ( ! isset( $og['article:modified_time'] ) )
 					$og['article:modified_time'] = trim( get_the_modified_date('c') );
 			}
@@ -242,21 +262,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				} 
 			}
 
-			// only a few opengraph meta tags are allowed to be empty
-			foreach ( $og as $key => $val ) {
-				switch ( $key ) {
-					case 'og:locale':
-					case 'og:site_name':
-					case 'og:description':
-						break;
-					default:
-						if ( $val === '' || ( is_array( $val ) && empty( $val ) ) )
-							unset( $og[$key] );
-						break;
-				}
-			}
-
-			// twitter cards are hooked into this filter to use existing open graph values
 			return apply_filters( $this->p->cf['lca'].'_og', $og, $use_post, $obj );
 		}
 

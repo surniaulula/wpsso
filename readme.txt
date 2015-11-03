@@ -351,7 +351,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added 'og_type_mt' to the config array to pre-define basic Open Graph meta tags for each type (article, product, etc.).
+	* Added 'og_type_mt' to the config array to add pre-defined Open Graph meta tag names for each type (article, product, etc.).
+	* Added a filter_single_mt() method to the WpssoHead class to optionally filter each meta tag value. The filter hooks ('wpsso_meta_property_article:tag_content' for example) can return a string or an array of values. The WPSSO_FILTER_SINGLE_TAGS constant must be defined as true to enable filtering of individual meta tag values.
 
 = Version 3.13.1 (2015/10/28) =
 

@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_type = 'object cache';
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
-				if ( apply_filters( $lca.'_header_read_cache', $read_cache ) ) {
+				if ( apply_filters( $lca.'_header_get_cache', $read_cache ) ) {
 					$header_array = get_transient( $cache_id );
 					if ( $header_array !== false ) {
 						if ( $this->p->debug->enabled )
@@ -297,7 +297,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 			foreach ( $mt_array as $f_name => $f_val ) {					// 1st-dimension array (associative)
 				if ( is_array( $f_val ) ) {
-					foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
+					if ( empty( $f_val ) )						// allow hooks to modify the value
+						$ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
+							$f_name, null, '', $use_post ) );
+					else foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
 						if ( SucomUtil::is_assoc( $s_val ) ) {
 							foreach ( $s_val as $t_name => $t_val )		// 3rd-dimension array (associative)
 								$ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
@@ -322,17 +325,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$attr = $tag === 'link' ? 'href' : 'content';
 			$log_pre = $tag.' '.$type.' '.$name;
 
-			if ( $value === '' || $value === null ) {	// allow for 0
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' value is empty (skipped)' );
-				return $ret;
-
-			} elseif ( $value === -1 ) {	// -1 is reserved, meaning use the defaults - exclude, just in case
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
-				return $ret;
-
-			} elseif ( is_array( $value ) ) {
+			if ( is_array( $value ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.' value is an array (skipped)' );
 				return $ret;
@@ -348,49 +341,86 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$charset = get_bloginfo( 'charset' );
 			$value = htmlentities( $value, ENT_QUOTES, $charset, false );	// double_encode = false
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( $log_pre.' = "'.$value.'"' );
 
-			// add an additional secure_url meta tag for open graph images and videos
-			if ( $tag === 'meta' && $type === 'property' && 
-				( $name === 'og:image' || $name === 'og:video:url' ) && 
-					strpos( $value, 'https:' ) === 0 ) {
+			// add secure_url meta tag for open graph images and videos
+			if ( $tag === 'meta' && 
+				$type === 'property' && 
+				strpos( $value, 'https:' ) === 0 ) {
 
-				$secure_url = $value;
-				$value = preg_replace( '/^https:/', 'http:', $value );
-				$ret[] = array( '', $tag, $type, $name.':secure_url', $attr, $secure_url, $cmt );
+				switch ( $name ) {
+					case 'og:image':
+					case 'og:image:url':
+					case 'og:video':
+					case 'og:video:url':
+						$secure_value = $value;
+						$secure_name = preg_replace( '/:url$/', '', $name ).':secure_url';
+						$value = preg_replace( '/^https:/', 'http:', $value );
+						$ret[] = array( '', $tag, $type, $secure_name, $attr, $secure_value, $cmt );
+						break;
+				}
 			}
 			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
+			// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
+			if ( defined( 'WPSSO_FILTER_SINGLE_TAGS' ) && WPSSO_FILTER_SINGLE_TAGS )
+				$ret = $this->filter_single_mt( $ret, $use_post );
+
 			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			foreach ( $ret as $num => $parts ) {
-				if ( defined( 'WPSSO_FILTER_SINGLE_TAGS' ) && WPSSO_FILTER_SINGLE_TAGS ) {
-					/*
-					 * Example: 'wpsso_link_rel_publisher_content'
-					 * apply_filters( 'wpsso_link_rel_'.$name.'_content', $value, $cmt, $use_post );
-					 *
-					 * Example: 'wpsso_meta_itemprop_description_content'
-					 * apply_filters( 'wpsso_meta_itemprop_'.$name.'_content', $value, $cmt, $use_post );
-					 *
-					 * Example: 'wpsso_meta_name_twitter:description_content'
-					 * apply_filters( 'wpsso_meta_name_'.$name.'_content', $value, $cmt, $use_post );
-					 *
-					 * Example: 'wpsso_meta_property_og:description_content'
-					 * apply_filters( 'wpsso_meta_property_'.$name.'_content', $value, $cmt, $use_post );
-					 */
-					$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
-					$parts[5] = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
-				}
+				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $log_pre.' = "'.$parts[5].'"' );
 
-				if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) )
+				if ( $parts[5] === '' || $parts[5] === null ) {		// allow for 0
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.' value is empty (skipped)' );
+
+				} elseif ( $parts[5] === -1 ) {				// -1 is reserved
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
+
+				} elseif ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ) {
 					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 						'<'.$parts[1].' '.$parts[2].'="'.$parts[3].'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
-				elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
+					$ret[$num] = $parts;
 
-				$ret[$num] = $parts;
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
 			}
 			return $ret;
+		}
+
+		// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
+		private function filter_single_mt( &$in, &$use_post ) {
+			$out = array();
+
+			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+			foreach ( $in as $num => $parts ) {
+				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+
+				// example: wpsso_meta_property_og:description_content
+				$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
+				$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
+
+				if ( $parts[5] !== $new_value ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.' (original) = "'.$parts[5].'"' );
+					if ( is_array( $new_value ) ) {
+						foreach( $new_value as $key => $value ) {
+							$this->p->debug->log( $log_pre.' (filtered:'.$key.') = "'.$value.'"' );
+							$parts[6] = $parts[3].':'.
+								( is_numeric( $key ) ? $key + 1 : $key );
+							$parts[5] = $value;
+							$out[] = $parts;
+						}
+					} else {
+						$this->p->debug->log( $log_pre.' (filtered) = "'.$new_value.'"' );
+						$parts[5] = $new_value;
+						$out[] = $parts;
+					}
+				} else $out[] = $parts;
+			}
+			return $out;
 		}
 	}
 }

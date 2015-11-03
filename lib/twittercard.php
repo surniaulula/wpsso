@@ -192,9 +192,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				}
 			}
 
-			$tc = apply_filters( $this->p->cf['lca'].'_tc', $tc, $use_post, $obj );
-
-			return $tc;
+			return apply_filters( $this->p->cf['lca'].'_tc', $tc, $use_post, $obj );
 		}
 	}
 }
