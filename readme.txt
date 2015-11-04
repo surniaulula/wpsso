@@ -298,6 +298,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 			* [Modify the article:tag Keywords / Names](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Topics List](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
+			* [Working with Pre-defined Meta Tags and Custom Post Types](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/)
 		* [Filters by Category](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/)
 			* [Head Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/)
 			* [Media Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/media/)
