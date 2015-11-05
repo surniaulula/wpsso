@@ -343,6 +343,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.14.1 (TBD) =
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the get_all_images() method to correctly return post ID images and index / archive page images.
+* **Developer Notes**
+	* *None*
+
 = Version 3.14.0 (2015/11/03) =
 
 Official announcement: [NGFB / WPSSO Update — Pre-defined Meta Tags for CPTs](http://surniaulula.com/2015/11/03/ngfb-wpsso-update-pre-defined-meta-tags-for-cpts/)
