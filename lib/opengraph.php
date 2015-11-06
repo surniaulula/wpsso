@@ -354,7 +354,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
 
 			// if requesting images for a specific post_id
-			if ( SucomUtil::is_term_page( $post_id ) ) {
+			if ( SucomUtil::is_post_page( $post_id ) ) {
 
 				// is_attachment() only works on the front-end, so check the post_type as well
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && 
