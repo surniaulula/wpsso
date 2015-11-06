@@ -331,11 +331,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_post_page( $use_post = false, $cache = true ) {
-			if ( $cache === true &&
-				isset( self::$is['post_page'] ) )
-					return self::$is['post_page'];
+			if ( $cache &&
+				isset( self::$is['post_page'][$use_post] ) )
+					return self::$is['post_page'][$use_post];
 			$ret = false;
-			if ( is_singular() || $use_post !== false )
+			if ( is_singular() || $use_post )
 				$ret = true;
 			elseif ( is_admin() ) {
 				$screen_id = self::get_screen_id();
@@ -350,9 +350,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
 					$ret = true;
 			}
-			if ( $cache === true )
-				return self::$is['post_page'] = apply_filters( 'sucom_is_post_page', $ret, $use_post );
-			else return apply_filters( 'sucom_is_post_page', $ret, $use_post );
+			$ret = apply_filters( 'sucom_is_post_page', $ret, $use_post );
+			if ( $cache )
+				self::$is['post_page'][$use_post] = $ret;
+			return $ret;
 		}
 
 		// on archives and taxonomies, this will return the first post object
@@ -392,7 +393,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_term_page( $cache = true ) {
-			if ( $cache === true &&
+			if ( $cache &&
 				isset( self::$is['term_page'] ) )
 					return self::$is['term_page'];
 			$ret = false;
@@ -403,9 +404,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_req_val( 'tag_ID' ) !== '' )
 						$ret = true;
 			}
-			if ( $cache === true )
-				return self::$is['term_page'] = apply_filters( 'sucom_is_term_page', $ret );
-			else return apply_filters( 'sucom_is_term_page', $ret );
+			$ret = apply_filters( 'sucom_is_term_page', $ret );
+			if ( $cache )
+				self::$is['term_page'] = $ret;
+			return $ret;
 		}
 
 		public static function is_category_page() {
@@ -446,7 +448,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_author_page( $cache = true ) {
-			if ( $cache === true &&
+			if ( $cache &&
 				isset( self::$is['author_page'] ) )
 					return self::$is['author_page'];
 			$ret = false;
@@ -461,9 +463,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'profile.php' )
 					$ret = true;
 			}
-			if ( $cache === true )
-				return self::$is['author_page'] = apply_filters( 'sucom_is_author_page', $ret );
-			else return apply_filters( 'sucom_is_author_page', $ret );
+			$ret = apply_filters( 'sucom_is_author_page', $ret );
+			if ( $cache )
+				self::$is['author_page'] = $ret;
+			return $ret;
 		}
 
 		public function get_author_object( $ret = 'object' ) {

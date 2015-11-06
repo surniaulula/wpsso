@@ -348,54 +348,37 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 				) );
+
 			$og_ret = array();
 			$force_regen = false;
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
 
-			// is_attachment() only works on the front-end, so check the post_type as well
-			if ( ! empty( $post_id ) ) {
-				if ( ( is_attachment( $post_id ) || 
-					get_post_type( $post_id ) === 'attachment' ) &&
-						wp_attachment_is_image( $post_id ) ) {
+			// if requesting images for a specific post_id
+			if ( SucomUtil::is_term_page( $post_id ) ) {
 
-					$og_image = $this->p->media->get_attachment_image( $num_remains, $size_name, $post_id, $check_dupes );
-	
+				// is_attachment() only works on the front-end, so check the post_type as well
+				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && 
+					wp_attachment_is_image( $post_id ) ) {
+
+					$og_image = $this->p->media->get_attachment_image( $num_remains, 
+						$size_name, $post_id, $check_dupes );
+
+					// exiting early
 					if ( empty( $og_image ) )
-						return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, $size_name ) );
+						return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
+							$size_name, $check_dupes, $force_regen ) );
 					else return array_merge( $og_ret, $og_image );
 				}
-			}
 
-			// check for priority media before using the default image
-			if ( SucomUtil::is_term_page() ) {
-				$term_id = $this->p->util->get_term_object( 'id' );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
-					$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
-			} elseif ( SucomUtil::is_author_page() ) {
-				$author_id = $this->p->util->get_author_object( 'id' );
-				$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
-					$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
-			}
-
-			if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() )
-				return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, $size_name ) );
-
-			$num_remains = $this->p->media->num_remains( $og_ret, $num );
-
-			if ( SucomUtil::is_term_page() ) {
-				if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_term_images( $num_remains, 
-						$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
-			} else {
 				// check for custom meta, featured, or attached image(s)
 				// allow for empty post_id in order to execute featured/attached image filters for modules
-				$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
-					$size_name, $post_id, $check_dupes, $md_pre ) );
+				if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
+					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_remains, 
+						$size_name, $post_id, $check_dupes, $md_pre ) );
 
 				// check for ngg shortcodes and query vars
-				if ( $this->p->is_avail['media']['ngg'] === true && 
-					! empty( $this->p->mods['media']['ngg'] ) &&
-					! $this->p->util->is_maxed( $og_ret, $num ) ) {
+				if ( ! $this->p->util->is_maxed( $og_ret, $num ) &&
+					$this->p->is_avail['media']['ngg'] && ! empty( $this->p->mods['media']['ngg'] ) ) {
 	
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'checking for ngg shortcodes and query vars' );
@@ -422,14 +405,42 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								$size_name, $check_dupes ) );
 					}
 				} // end of check for ngg shortcodes and query vars
-
+	
 				// if we haven't reached the limit of images yet, keep going and check the content text
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 					$num_remains = $this->p->media->num_remains( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_remains, 
 						$size_name, $post_id, $check_dupes ) );
 				}
+
+			} else {
+				// check for priority media before using the default image
+				if ( SucomUtil::is_term_page() ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'is_term_page() = true' );
+					$term_id = $this->p->util->get_term_object( 'id' );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
+						$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
+	
+					if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
+						$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_term_images( $num_remains, 
+							$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
+
+				} elseif ( SucomUtil::is_author_page() ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'is_author_page() = true' );
+					$author_id = $this->p->util->get_author_object( 'id' );
+					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+						$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
+				}
+	
+				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() )
+					return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
+						$size_name, $check_dupes, $force_regen ) );
+	
+				$num_remains = $this->p->media->num_remains( $og_ret, $num );
 			}
+
 			$this->p->util->slice_max( $og_ret, $num );
 
 			return $og_ret;
@@ -445,8 +456,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_the_media_urls( $size_name = 'thumbnail', $post_id, $md_pre = 'og',
 			$items = array( 'image', 'video' ) ) {
-			if ( empty( $post_id ) )
-				return array();
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+			
 			$ret = array();
 			foreach ( $items as $item ) {
 				switch ( $item ) {
@@ -479,8 +492,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						break;
 				}
 			}
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $ret );
+
 			return $ret;
 		}
 

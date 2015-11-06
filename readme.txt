@@ -350,7 +350,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed the get_all_images() method to correctly return post ID images and index / archive page images.
+	* Fixed the get_all_images() method to correctly detect and return post ID images, and index / archive page images.
 * **Developer Notes**
 	* *None*
 
