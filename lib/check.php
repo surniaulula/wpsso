@@ -201,10 +201,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'admin-general':
 						case 'admin-advanced':
-							// only load on the 'settings' (aka admin.php) pages
-							if ( $is_admin && 
-								basename( $_SERVER['PHP_SELF'] ) === 'admin.php' )
+							// only load on the settings pages
+							if ( $is_admin ) {
+								$page = basename( $_SERVER['PHP_SELF'] );
+								if ( $page === 'admin.php' || $page === 'options-general.php' )
 									$ret[$sub]['*'] = $ret[$sub][$id] = true;
+							}
 							break;
 						case 'admin-post':
 						case 'admin-taxonomy':
