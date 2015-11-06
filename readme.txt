@@ -343,7 +343,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.14.1 (TBD) =
+= Version 3.14.1 (2015/11/05) =
 
 * **New Features**
 	* *None*
@@ -517,6 +517,10 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 	* Added a new WpssoUtil::save_all_times() method to save installation, activation, and update times.
 
 == Upgrade Notice ==
+
+= 3.14.1 =
+
+2015/11/05 Fixed the get_all_images() method to correctly detect and return post ID images, and index / archive page images.
 
 = 3.14.0 =
 
