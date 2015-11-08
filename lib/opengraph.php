@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				foreach ( $search as $key )
 					if ( isset( $media[$key] ) &&
 						! empty( $media[$key] ) &&
-							$media[$key] !== -1 )
+							$media[$key] != -1 )
 								return $media[$key];
 			}
 			return '';

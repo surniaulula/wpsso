@@ -233,7 +233,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					' <div class="img_crop_from">From';
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$pos_vals = $this->options[$name.'_'.$key] == -1 ? 
-						array_merge( array( '-1' => _x( '(settings value)', 'option value', $this->text_dom ) ),
+						array_merge( array( -1 => _x( '(settings value)', 'option value', $this->text_dom ) ),
 							$this->p->cf['form']['position_'.$key] ) : 
 						$this->p->cf['form']['position_'.$key];
 					$crop_select .= ' '.$this->get_select( $name.'_'.$key, $pos_vals, 'medium' );

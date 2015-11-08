@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.' value is empty (skipped)' );
 
-				} elseif ( $parts[5] === -1 ) {				// -1 is reserved
+				} elseif ( $parts[5] == -1 ) {				// -1 is reserved
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
 

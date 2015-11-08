@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $defs as $key => $def_val )
 				if ( isset( $opts[$key] ) )
-					if ( $opts[$key] == -1 || $opts[$key] === '' )
+					if ( $opts[$key] === '' || $opts[$key] == -1 )
 						unset ( $opts[$key] );
 
 			if ( $opts['og_vid_prev_img'] === $this->p->options['og_vid_prev_img'] )
