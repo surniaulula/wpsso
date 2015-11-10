@@ -34,6 +34,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$this->p->debug->mark();
 		}
 
+		public static function get_const( $const ) {
+			if ( defined( $const ) )
+				return constant( $const );
+			else return false;
+		}
+
 		// returns false or the admin screen id text string
 		public static function get_screen_id( $screen = false ) {
 			if ( $screen === false &&

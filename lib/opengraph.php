@@ -35,11 +35,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
-			$sizes['rp_img'] = array(
-				'name' => 'richpin',
-				'label' => _x( 'Pinterest Rich Pin',
-					'image size label', 'wpsso' ),
-			);
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+				$sizes['rp_img'] = array(
+					'name' => 'richpin',
+					'label' => _x( 'Pinterest Rich Pin',
+						'image size label', 'wpsso' ),
+				);
+			}
 			$sizes['og_img'] = array( 
 				'name' => 'opengraph', 
 				'label' => _x( 'Facebook / Open Graph',
@@ -230,21 +232,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
-					if ( is_admin() ) {
-						$img_sizes = array (
-							'rp' => $this->p->cf['lca'].'-richpin',
-							'og' => $this->p->cf['lca'].'-opengraph',	// must be last for meta tags preview
-						);
-					} else {
-						switch ( SucomUtil::crawler_name() ) {
-							case 'pinterest':
-								$img_sizes = array ( 'rp' => $this->p->cf['lca'].'-richpin' );
-								break;
-							default:
-								$img_sizes = array ( 'og' => $this->p->cf['lca'].'-opengraph' );
-								break;
-						}
-					}
+					$img_sizes = array();
+					$crawler_name = SucomUtil::crawler_name();
+
+					if ( ( is_admin() || $crawler_name === 'pinterest' ) &&
+						! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
+							$img_sizes['rp'] = $this->p->cf['lca'].'-richpin';
+
+					$img_sizes['og'] = $this->p->cf['lca'].'-opengraph';	// must be last for meta tags preview
+
 					foreach ( $img_sizes as $md_pre => $size_name ) {
 						// only check for dupes on last image size
 						$check_dupes = ( is_admin() && $md_pre !== 'og' ) ?

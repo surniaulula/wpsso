@@ -23,9 +23,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function filter_head_cache_salt( $salt, $use_post = false ) {
-			switch ( SucomUtil::crawler_name() ) {
+			$crawler_name = SucomUtil::crawler_name();
+			switch ( $crawler_name ) {
 				case 'pinterest':
-					$salt .= '_crawler:'.SucomUtil::crawler_name();
+					$salt .= '_crawler:'.$crawler_name;
 					break;
 			}
 			return $salt;

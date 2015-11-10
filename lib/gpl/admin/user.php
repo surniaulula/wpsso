@@ -102,24 +102,27 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 				'option label', 'wpsso' ), 'medium', 'meta-og_vid_prev_img', $head_info ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
 
-			$rows[] = '<tr class="hide_in_basic">'.
-			'<td colspan="2" class="subsection"><h4>'.
-				_x( 'Pinterest (Rich Pin)', 'metabox title', 'wpsso' ).'</h4></td>';
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Image Dimensions',
-				'option label', 'wpsso' ), 'medium', 'rp_img_dimensions' ).
-			'<td class="blank">'.$form->get_image_dimensions_text( 'rp_img', true ).'</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Image ID',
-				'option label', 'wpsso' ), 'medium', 'meta-rp_img_id', $head_info ).
-			'<td class="blank">&nbsp;</td>';
-
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'or an Image URL',
-				'option label', 'wpsso' ), 'medium', 'meta-rp_img_url', $head_info ).
-			'<td class="blank">&nbsp;</td>';
+				$rows[] = '<tr class="hide_in_basic">'.
+				'<td colspan="2" class="subsection"><h4>'.
+					_x( 'Pinterest (Rich Pin)', 'metabox title', 'wpsso' ).'</h4></td>';
+	
+				$rows[] = '<tr class="hide_in_basic">'.
+				$this->p->util->get_th( _x( 'Image Dimensions',
+					'option label', 'wpsso' ), 'medium', 'rp_img_dimensions' ).
+				'<td class="blank">'.$form->get_image_dimensions_text( 'rp_img', true ).'</td>';
+	
+				$rows[] = '<tr class="hide_in_basic">'.
+				$this->p->util->get_th( _x( 'Image ID',
+					'option label', 'wpsso' ), 'medium', 'meta-rp_img_id', $head_info ).
+				'<td class="blank">&nbsp;</td>';
+	
+				$rows[] = '<tr class="hide_in_basic">'.
+				$this->p->util->get_th( _x( 'or an Image URL',
+					'option label', 'wpsso' ), 'medium', 'meta-rp_img_url', $head_info ).
+				'<td class="blank">&nbsp;</td>';
+			}
 
 			return $rows;
 		}

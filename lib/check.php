@@ -82,13 +82,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private function get_avail_check( $key ) {
 			switch ( $key ) {
 				case 'aop':
-					$ret = ( ! defined( 'WPSSO_PRO_MODULE_DISABLE' ) ||
-					( defined( 'WPSSO_PRO_MODULE_DISABLE' ) && ! WPSSO_PRO_MODULE_DISABLE ) ) &&
+					$ret = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
 					is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'mt':
-					$ret = ( ! defined( 'WPSSO_META_TAGS_DISABLE' ) || 
-					( defined( 'WPSSO_META_TAGS_DISABLE' ) && ! WPSSO_META_TAGS_DISABLE ) ) &&
+					$ret = ! SucomUtil::get_const( 'WPSSO_META_TAGS_DISABLE' ) &&
 					empty( $_SERVER['WPSSO_META_TAGS_DISABLE'] ) &&
 					empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ? true : false;	// allow meta tags to be disabled with query argument
 					break;

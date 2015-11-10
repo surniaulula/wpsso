@@ -291,10 +291,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'rp_publisher_url'  ).
 					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
-						'option label', 'wpsso' ), 'highlight', 'rp_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
-			
+					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+						$rows[] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
+							'option label', 'wpsso' ), 'highlight', 'rp_img_dimensions' ).
+						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
+					}
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'rp_author_name' ).
