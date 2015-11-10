@@ -343,7 +343,22 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.14.2 (2015/11/10) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added support for a new WPSSO_RICH_PIN_DISABLE constant.
+
 = Version 3.14.1 (2015/11/05) =
+
+Official announcement: N/A
 
 * **New Features**
 	* *None*
@@ -517,6 +532,10 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 	* Added a new WpssoUtil::save_all_times() method to save installation, activation, and update times.
 
 == Upgrade Notice ==
+
+= 3.14.2 =
+
+2015/11/10 Added support for a new NGFB_RICH_PIN_DISABLE constant.
 
 = 3.14.1 =
 
