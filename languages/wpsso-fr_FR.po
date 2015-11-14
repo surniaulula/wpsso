@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-10-27 13:31-0400\n"
-"PO-Revision-Date: 2015-10-27 13:32-0400\n"
+"POT-Creation-Date: 2015-11-13 18:14-0700\n"
+"PO-Revision-Date: 2015-11-13 18:14-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1029,32 +1029,32 @@ msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
 msgstr "Tous les Sites Sociaux / Open Graph"
 
-#: lib/gpl/admin/post.php:115 lib/gpl/admin/post.php:154
-#: lib/gpl/admin/taxonomy.php:70 lib/gpl/admin/taxonomy.php:109
-#: lib/gpl/admin/user.php:71 lib/gpl/admin/user.php:110
-#: lib/pro/admin/post.php:125 lib/pro/admin/post.php:164
-#: lib/pro/admin/taxonomy.php:78 lib/pro/admin/taxonomy.php:112
-#: lib/pro/admin/user.php:78 lib/pro/admin/user.php:112
+#: lib/gpl/admin/post.php:115 lib/gpl/admin/post.php:156
+#: lib/gpl/admin/taxonomy.php:70 lib/gpl/admin/taxonomy.php:111
+#: lib/gpl/admin/user.php:71 lib/gpl/admin/user.php:112
+#: lib/pro/admin/post.php:125 lib/pro/admin/post.php:166
+#: lib/pro/admin/taxonomy.php:78 lib/pro/admin/taxonomy.php:114
+#: lib/pro/admin/user.php:78 lib/pro/admin/user.php:114
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr "Dimensions de l’image"
 
-#: lib/gpl/admin/post.php:119 lib/gpl/admin/post.php:159
-#: lib/gpl/admin/taxonomy.php:74 lib/gpl/admin/taxonomy.php:114
-#: lib/gpl/admin/user.php:75 lib/gpl/admin/user.php:115
-#: lib/pro/admin/post.php:129 lib/pro/admin/post.php:169
-#: lib/pro/admin/taxonomy.php:82 lib/pro/admin/taxonomy.php:117
-#: lib/pro/admin/user.php:82 lib/pro/admin/user.php:117
+#: lib/gpl/admin/post.php:119 lib/gpl/admin/post.php:161
+#: lib/gpl/admin/taxonomy.php:74 lib/gpl/admin/taxonomy.php:116
+#: lib/gpl/admin/user.php:75 lib/gpl/admin/user.php:117
+#: lib/pro/admin/post.php:129 lib/pro/admin/post.php:171
+#: lib/pro/admin/taxonomy.php:82 lib/pro/admin/taxonomy.php:119
+#: lib/pro/admin/user.php:82 lib/pro/admin/user.php:119
 msgctxt "option label"
 msgid "Image ID"
 msgstr "ID d’une image"
 
-#: lib/gpl/admin/post.php:123 lib/gpl/admin/post.php:164
-#: lib/gpl/admin/taxonomy.php:78 lib/gpl/admin/taxonomy.php:119
-#: lib/gpl/admin/user.php:79 lib/gpl/admin/user.php:120
-#: lib/pro/admin/post.php:133 lib/pro/admin/post.php:174
-#: lib/pro/admin/taxonomy.php:86 lib/pro/admin/taxonomy.php:122
-#: lib/pro/admin/user.php:86 lib/pro/admin/user.php:122
+#: lib/gpl/admin/post.php:123 lib/gpl/admin/post.php:166
+#: lib/gpl/admin/taxonomy.php:78 lib/gpl/admin/taxonomy.php:121
+#: lib/gpl/admin/user.php:79 lib/gpl/admin/user.php:122
+#: lib/pro/admin/post.php:133 lib/pro/admin/post.php:176
+#: lib/pro/admin/taxonomy.php:86 lib/pro/admin/taxonomy.php:124
+#: lib/pro/admin/user.php:86 lib/pro/admin/user.php:124
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr "ou URL d’une image"
@@ -1094,9 +1094,9 @@ msgctxt "option label"
 msgid "Include Preview Image(s)"
 msgstr "Inclure l’image d’aperçu"
 
-#: lib/gpl/admin/post.php:151 lib/gpl/admin/taxonomy.php:106
-#: lib/gpl/admin/user.php:107 lib/pro/admin/post.php:161
-#: lib/pro/admin/taxonomy.php:109 lib/pro/admin/user.php:109
+#: lib/gpl/admin/post.php:153 lib/gpl/admin/taxonomy.php:108
+#: lib/gpl/admin/user.php:109 lib/pro/admin/post.php:163
+#: lib/pro/admin/taxonomy.php:111 lib/pro/admin/user.php:111
 msgctxt "metabox title"
 msgid "Pinterest (Rich Pin)"
 msgstr "Pinterest (Rich Pin)"
@@ -1180,6 +1180,8 @@ msgid ""
 "Add author (Person) social profiles markup to webpage headers in schema.org "
 "JSON-LD format for Google Search."
 msgstr ""
+"Ajouter des balises sociales de profil d'auteur (personne) en format schema."
+"org JSON-LD à l'en-tête des pages Web pour l'engin de recherche Google."
 
 #: lib/messages.php:65
 msgid ""
@@ -1187,6 +1189,9 @@ msgid ""
 "option is checked, or one of the debugging <a href=\"%s\" target=\"_blank"
 "\">constants</a> is defined."
 msgstr ""
+"La librairie de débogage est chargée lorsque l'option <em>Ajout messages de "
+"débogage caché</em> est cochée, ou une des <a href=\"%s\" target=\"_blank"
+"\">constantes</a> de débogage est définie."
 
 #: lib/messages.php:68
 msgid ""
@@ -1204,12 +1209,19 @@ msgid ""
 "installed to add <em>Product</em> Rich Pins, including product prices and "
 "attributes."
 msgstr ""
+"Des balises méta Facebook / Open Graph et Pinterest Rich Pin sont ajoutés à "
+"l'en-tête de toutes les pages Web. Vous devez avoir une extension eCommerce "
+"supportés pour ajouter des Rich Pins de type <em>Product</em>, y compris les "
+"prix et les attributs de ces produits."
 
 #: lib/messages.php:74
 msgid ""
 "Add publisher (Organization) social profiles markup to webpage headers in "
 "schema.org JSON-LD format for Google Search."
 msgstr ""
+"Ajouter des balises sociales de profil d'éditeur (organisation) en format "
+"schema.org JSON-LD à l'en-tête des pages Web pour l'engin de recherche "
+"Google."
 
 #: lib/messages.php:77
 msgid ""
@@ -1286,6 +1298,9 @@ msgid ""
 "provides the shortened sharing URL instead of the default WordPress "
 "shortlink URL."
 msgstr ""
+"Le bouton <em>Get Shortlink</em> sur les pages d'édition d'Articles et de "
+"Pages retourne l'URL de partage raccourci au lieu de l'URL shortlink par "
+"défaut de WordPress."
 
 #: lib/messages.php:423
 msgid ""
@@ -1457,7 +1472,7 @@ msgstr ""
 "afficher publiquement')."
 
 #: lib/messages.php:483 lib/messages.php:545 lib/submenu/general.php:221
-#: lib/submenu/general.php:299
+#: lib/submenu/general.php:301
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr "Format du nom d’auteur"
@@ -1858,8 +1873,12 @@ msgstr ""
 "sociaux, dans le metabox Réglages Sociaux sous l’onglet Média Prioritaire."
 
 #: lib/messages.php:683
-msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
-msgstr "L'option avancée <a href=\"%1$s\">%2$s</a> est actuellement désactivé."
+msgid ""
+"The <a href=\"%1$s\">%2$s</a> advanced (Pro version) option is currently "
+"disabled."
+msgstr ""
+"L'option avancée <a href=\"%1$s\">%2$s</a> (version Pro) est actuellement "
+"désactivé."
 
 #: lib/messages.php:683
 msgid ""
@@ -2167,12 +2186,12 @@ msgstr "Desc Social"
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
-#: lib/opengraph.php:40
+#: lib/opengraph.php:41
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
 
-#: lib/opengraph.php:45
+#: lib/opengraph.php:47
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
@@ -2333,17 +2352,17 @@ msgctxt "option label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/setting/image-dimensions.php:55
+#: lib/setting/image-dimensions.php:56
 msgctxt "option label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
 
-#: lib/setting/image-dimensions.php:59
+#: lib/setting/image-dimensions.php:61
 msgctxt "option label"
 msgid "Twitter <em>Summary</em> Card"
 msgstr "Carte Twitter <em>sommaire</em>"
 
-#: lib/setting/image-dimensions.php:63
+#: lib/setting/image-dimensions.php:65
 msgctxt "option label"
 msgid "Twitter <em>Large Image Summary</em> Card"
 msgstr "Carte Twitter <em>grande image</em>"
@@ -2368,22 +2387,22 @@ msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL de la page entreprise Pinterest"
 
-#: lib/setting/social-accounts.php:60 lib/submenu/general.php:316
+#: lib/setting/social-accounts.php:60 lib/submenu/general.php:318
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "Le @nom d’affaires Twitter"
 
-#: lib/setting/social-accounts.php:64 lib/submenu/general.php:338
+#: lib/setting/social-accounts.php:64 lib/submenu/general.php:340
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr "URL de la page d’affaires Instagram"
 
-#: lib/setting/social-accounts.php:68 lib/submenu/general.php:342
+#: lib/setting/social-accounts.php:68 lib/submenu/general.php:344
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr "URL de la page entreprise LinkedIn"
 
-#: lib/setting/social-accounts.php:72 lib/submenu/general.php:346
+#: lib/setting/social-accounts.php:72 lib/submenu/general.php:348
 msgctxt "option label"
 msgid "MySpace Business (Brand) URL"
 msgstr "URL de la page d’affaires MySpace"
@@ -2535,12 +2554,12 @@ msgstr "Longueur de titre maximale"
 
 #: lib/submenu/general.php:104 lib/submenu/general.php:110
 #: lib/submenu/general.php:241 lib/submenu/general.php:247
-#: lib/submenu/general.php:324
+#: lib/submenu/general.php:326
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/submenu/general.php:107 lib/submenu/general.php:321
+#: lib/submenu/general.php:107 lib/submenu/general.php:323
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr "Longueur de description maximale"
@@ -2669,22 +2688,22 @@ msgctxt "option label"
 msgid "Add Schema Author JSON-LD"
 msgstr "Ajouter le Schéma Auteur JSON-LD"
 
-#: lib/submenu/general.php:294
+#: lib/submenu/general.php:295
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr "Dimensions d’images Rich Pin"
 
-#: lib/submenu/general.php:305
+#: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr "ID de vérif. du site Web pour Pinterest"
 
-#: lib/submenu/general.php:326
+#: lib/submenu/general.php:328
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>sommaire</em>"
 
-#: lib/submenu/general.php:330
+#: lib/submenu/general.php:332
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>grande img.</em>"
@@ -2741,11 +2760,11 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:237
+#: lib/util.php:236
 msgid "%s has been cleared as well."
 msgstr "Le cache %s a été vidé aussi."
 
-#: lib/util.php:239
+#: lib/util.php:238
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
