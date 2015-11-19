@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$rows[] = '<tr class="hide_in_basic">'.
 				'<td colspan="2" class="subsection"><h4>'.
 					_x( 'Pinterest (Rich Pin)', 'metabox title', 'wpsso' ).'</h4></td>';
-	
+
 				$rows[] = '<tr class="hide_in_basic">'.
 				$this->p->util->get_th( _x( 'Image Dimensions',
 					'option label', 'wpsso' ), 'medium', 'rp_img_dimensions' ).

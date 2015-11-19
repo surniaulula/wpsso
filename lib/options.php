@@ -137,12 +137,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						true, $this->p->is_avail['aop'] ) )
 							$opts['plugin_filter_content'] = 0;
 
-					if ( ! $this->p->is_avail['seo']['*'] ) {
+					// if an seo plugin is found, disable the canonical and description meta tags
+					if ( $this->p->is_avail['seo']['*'] ) {
 						foreach ( array( 'canonical', 'description' ) as $name ) {
 							$opts['add_meta_name_'.$name] = 0;
 							$opts['add_meta_name_'.$name.':is'] = 'disabled';
 						}
-					}
+					} 
 
 					$opts['add_meta_name_generator'] = defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
 						WPSSO_META_GENERATOR_DISABLE ? 0 : 1;

@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'admin_head', array( &$this, 'set_head_meta_tags' ), 100 );
 				add_action( 'show_user_profile', array( &$this, 'show_metaboxes' ), 20 );	// your profile
 
-				if ( $this->p->options['plugin_columns_user'] ) {
+				if ( ! empty( $this->p->options['plugin_columns_user'] ) ) {
 
 					add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), 10, 1 );
 					add_filter( 'manage_users_custom_column', array( $this, 'get_user_column_content',), 10, 3 );

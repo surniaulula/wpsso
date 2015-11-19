@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				if ( ! $this->tax_obj->public )
 					return;
 
-				if ( $this->p->options['plugin_columns_taxonomy'] ) {
+				if ( ! empty( $this->p->options['plugin_columns_taxonomy'] ) ) {
 
 					add_filter( 'manage_edit-'.$this->tax_slug.'_columns', array( $this, 'add_column_headings' ), 10, 1 );
 					add_filter( 'manage_'.$this->tax_slug.'_custom_column', array( $this, 'get_taxonomy_column_content' ), 10, 3 );

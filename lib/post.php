@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->options['plugin_shortlink'] )
 							add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 
-				} elseif ( $this->p->options['plugin_columns_post'] ) {
+				} elseif ( ! empty( $this->p->options['plugin_columns_post'] ) ) {
 
 					// only check registered front-end post types (to avoid menu items, product variations, etc.)
 					$post_types = $this->p->util->get_post_types( 'frontend', 'names' );

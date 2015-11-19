@@ -230,16 +230,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), 'highlight', 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Schema Website / Business Logo URL',
-						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).
-					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
-
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Schema Meta Description Length',
-						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
-					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
-						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
-	
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Search / SEO Description Length',
 						'option label', 'wpsso' ), null, 'google_seo_desc_len' ).
@@ -265,20 +255,38 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 	
+					$rows[] = '<td colspan="2" class="subsection"><h4>'.
+						_x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
+
+					$rows[] = $this->p->util->get_th( _x( 'Website / Business Logo URL',
+						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).
+					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
+
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Add Schema Website JSON-LD',
-						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
-					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
+					$this->p->util->get_th( _x( 'Maximum Description Length',
+						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
+					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
+						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Add Schema Publisher JSON-LD',
+					$this->p->util->get_th( _x( 'Use Meta Property Container(s)',
+						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
+					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Include Author JSON-LD',
+						'option label', 'wpsso' ), null, 'google_schema_author_json' ).
+					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Include Publisher JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_publisher_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
 	
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Add Schema Author JSON-LD',
-						'option label', 'wpsso' ), null, 'google_schema_author_json' ).
-					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
+					$this->p->util->get_th( _x( 'Include Website JSON-LD',
+						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
+					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
 
 					break;
 

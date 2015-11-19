@@ -262,9 +262,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'property', $mt_og, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),		// seo description is last
-				SucomUtil::a2aa( $this->p->schema->get_json_array( $post_id, $author_id,
-					$this->p->cf['lca'].'-schema' ) )
+				$this->p->schema->get_noscript_array( $use_post, $obj, $mt_og ),
+				$this->p->schema->get_json_array( $post_id, $author_id, $this->p->cf['lca'].'-schema' ),
+				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post )	// seo description is last
 			);
 
 			/*
@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/*
 		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_mt() for each
 		 */
-		private function get_mt_array( $tag = 'meta', $type = 'property', $mt_array, $use_post = false ) {
+		private function get_mt_array( $tag = 'meta', $type = 'property', &$mt_array, $use_post = false ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( count( $mt_array ).' '.$tag.' '.$type.' to process' );
 				$this->p->debug->log( $mt_array );
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		private function get_single_mt( $tag = 'meta', $type = 'property', $name, $value = '', $cmt = '', $use_post = false ) {
+		public function get_single_mt( $tag = 'meta', $type = 'property', $name, $value = '', $cmt = '', $use_post = false ) {
 
 			// known exceptions for the 'property' $type
 			if ( $tag === 'meta' && $type === 'property' && 

@@ -91,46 +91,84 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $head_attr );
 		}
 
-		public function get_meta_array( $use_post, &$obj, &$meta_og = array() ) {
+		public function get_meta_array( $use_post, &$obj, &$mt_og = array() ) {
 			$mt_schema = array();
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_name'] ) ) {
-				if ( ! empty( $meta_og['og:title'] ) )
-					$mt_schema['name'] = $meta_og['og:title'];
+				if ( ! empty( $mt_og['og:title'] ) )
+					$mt_schema['name'] = $mt_og['og:title'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_headline'] ) ) {
-				if ( ! empty( $meta_og['og:title'] ) &&
-					isset( $meta_og['og:type'] ) &&
-						$meta_og['og:type'] === 'article' )
-							$mt_schema['headline'] = $meta_og['og:title'];
+				if ( ! empty( $mt_og['og:title'] ) &&
+					isset( $mt_og['og:type'] ) &&
+						$mt_og['og:type'] === 'article' )
+							$mt_schema['headline'] = $mt_og['og:title'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {
-				if ( ! empty( $meta_og['article:published_time'] ) )
-					$mt_schema['datepublished'] = $meta_og['article:published_time'];
+				if ( ! empty( $mt_og['article:published_time'] ) )
+					$mt_schema['datepublished'] = $mt_og['article:published_time'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
-				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], 
+				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_url'] ) ) {
-				if ( ! empty( $meta_og['og:url'] ) )
-					$mt_schema['url'] = $meta_og['og:url'];
+				if ( ! empty( $mt_og['og:url'] ) )
+					$mt_schema['url'] = $mt_og['og:url'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-				if ( ! empty( $meta_og['og:image'] ) ) {
-					if ( is_array( $meta_og['og:image'] ) )
-						foreach ( $meta_og['og:image'] as $image )
+				if ( ! empty( $mt_og['og:image'] ) ) {
+					if ( is_array( $mt_og['og:image'] ) )
+						foreach ( $mt_og['og:image'] as $image )
 							$mt_schema['image'][] = $image['og:image'];
-					else $mt_schema['image'] = $meta_og['og:image'];
+					else $mt_schema['image'] = $mt_og['og:image'];
 				}
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $obj );
+		}
+
+		public function get_noscript_array( $use_post, &$obj, &$mt_og = array() ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			if ( empty( $this->p->options['schema_add_noscript'] ) ||
+				empty( $mt_og['og:type'] ) )
+					return array();
+
+			$ret = array();
+			$og_type = $mt_og['og:type'];
+
+			if ( ! empty( $mt_og[$og_type.':rating:average'] ) &&
+				( ! empty( $mt_og[$og_type.':rating:count'] ) || 
+					! empty( $mt_og[$og_type.':review:count'] ) ) ) {
+
+				$ret = array_merge( 
+					array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">'."\n" ) ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingvalue', 
+						$mt_og[$og_type.':rating:average'], '', $use_post ),
+					( empty( $mt_og[$og_type.':rating:count'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingcount', 
+							$mt_og[$og_type.':rating:count'], '', $use_post ) ),
+					( empty( $mt_og[$og_type.':rating:worst'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'worstrating', 
+							$mt_og[$og_type.':rating:worst'], '', $use_post ) ),
+					( empty( $mt_og[$og_type.':rating:best'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'bestrating', 
+							$mt_og[$og_type.':rating:best'], '', $use_post ) ),
+					( empty( $mt_og[$og_type.':review:count'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'reviewcount', 
+							$mt_og[$og_type.':review:count'], '', $use_post ) ),
+					array( array( '</noscript>'."\n" ) )
+				);
+			}
+
+			return $ret;
 		}
 
 		public function get_json_array( $post_id = false, $author_id = false, $size_name = 'thumbnail' ) {
@@ -151,7 +189,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				( $json_script = $this->get_organization_json_script( $size_name ) ) !== false )
 					$json_array[] = $json_script;
 
-			return $json_array;	// must be an array
+			return SucomUtil::a2aa( $json_array );	// convert to array or arrays
 		}
 
 		public function get_website_json_script( $post_id = false ) {
@@ -171,7 +209,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		"target":"'.$home_url.'?s={search_term_string}",
 		"query-input":"required name=search_term_string"
 	}
-}</script>';
+}</script>'."\n";
 			return $json_script;
 		}
 
