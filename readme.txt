@@ -5,7 +5,7 @@ Text Domain: wpsso
 Domain Path: /languages
 Contributors: jsmoriss
 Donate Link: https://wpsso.com/
-Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, jetpack, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, photon, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube
+Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, jetpack, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, photon, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
@@ -129,9 +129,10 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* MarketPress - WordPress eCommerce
 		* Polylang
 		* <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce v1 and v2</a>
-		* Yoast SEO (aka WordPress SEO)
 		* WP e-Commerce
 		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a>
+		* Yoast SEO (aka WordPress SEO)
+		* Yotpo Social Reviews for WooCommerce
 	* **Supported Service APIs**
 		* Gravatar Images
 		* Slideshare Presentations
@@ -342,6 +343,22 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
+
+= Version 3.15.0 (TBD) =
+
+Official announcement: N/A
+
+* **New Features**
+	* Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab to include additional schema properties in webpage headers (product ratings, for example).
+	* Added support for WooCommerce product ratings in the meta properties container.
+	* Added support for Yotpo Social Reviews for Woocommerce product ratings.
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the disabling of canonical and description options when no SEO plugin is detected (the options should not be disabled).
+* **Developer Notes**
+	* Added a new `get_noscript_array()` method in the NgfbSchema class.
+	* Added a new 'ngfb_og_woocommerce_review_rating' filter.
 
 = Version 3.14.2 (2015/11/10) =
 
