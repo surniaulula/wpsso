@@ -351,14 +351,14 @@ Official announcement: N/A
 * **New Features**
 	* Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab to include additional schema properties in webpage headers (product ratings, for example).
 	* Added support for WooCommerce product ratings in the meta properties container.
-	* Added support for Yotpo Social Reviews for Woocommerce product ratings.
+	* Added support for Yotpo Social Reviews for WooCommerce product ratings.
 * **Improvements**
 	* *None*
 * **Bugfixes**
 	* Fixed the disabling of canonical and description options when no SEO plugin is detected (the options should not be disabled).
 * **Developer Notes**
 	* Added a new `get_noscript_array()` method in the NgfbSchema class.
-	* Added a new 'ngfb_og_woocommerce_review_rating' filter.
+	* Added a new 'ngfb_og_woocommerce_product_page' filter.
 
 = Version 3.14.2 (2015/11/10) =
 
