@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['class'] = 'WP_eCommerce';
 							$chk['plugin'] = 'wp-e-commerce/wp-shopping-cart.php';
 							break;
-						case 'ecom-wcyotpo':
+						case 'ecom-yotpowc':	// yotpo-social-reviews-for-woocommerce
 							$chk['function'] = 'wc_yotpo_init';
 							break;
 						case 'forum-bbpress':

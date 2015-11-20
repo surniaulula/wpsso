@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'marketpress' => 'MarketPress',
 								'woocommerce' => 'WooCommerce',
 								'wpecommerce' => 'WP e-Commerce',
-								'wcyotpo' => 'Yotpo for WC',
+								'yotpowc' => 'Yotpo for WC',	// yotpo-social-reviews-for-woocommerce
 							),
 							'forum' => array(
 								'bbpress' => 'bbPress',
