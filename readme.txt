@@ -562,7 +562,3 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 
 2015/11/03 Added pre-defined Open Graph meta tags for custom post types (article, book, music.album, product, etc.). The pre-defined meta tags allow developers to easily hook single meta tag names to modify their values.
 
-= 3.13.1 =
-
-2015/10/27 Added a new option to enable/disable the use of shortened URLs in the "Get Shortlink" button, and added the Ow.ly and TinyURL shortening services (Pro version).
-
