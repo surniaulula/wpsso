@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_rows_head_tags( &$head_meta_tags ) {
 			$rows = array();
 			foreach ( $head_meta_tags as $m ) {
-				if ( empty( $m[1] ) || 
+				if ( empty( $m[5] ) || 
 					empty( $this->p->options['add_'.$m[1].'_'.$m[2].'_'.$m[3]] ) )
 						continue;
 

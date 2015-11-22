@@ -596,6 +596,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$url = get_search_link();
 
 				} elseif ( is_front_page() ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
 					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
 
 				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
@@ -646,6 +648,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					else {
 						if ( is_front_page() ) {
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );
 							$url = home_url( $base );
 						}
 						$url = user_trailingslashit( trailingslashit( $url ).

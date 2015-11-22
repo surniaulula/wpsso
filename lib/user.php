@@ -392,6 +392,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$name = get_the_author_meta( $field_id, $author_id );	// since wp 2.8.0 
 					break;
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' name: '.$name );
+
 			return $name;
 		}
 
@@ -421,6 +425,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 					break;
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' url: '.$url );
+
 			return $url;
 		}
 
