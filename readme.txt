@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.14.2
+Stable Tag: 3.15.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -344,7 +344,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.15.0 (TBD) =
+= Version 3.15.0 (2015/11/21) =
 
 Official announcement: N/A
 
@@ -357,8 +357,8 @@ Official announcement: N/A
 * **Bugfixes**
 	* Fixed the disabling of canonical and description options when no SEO plugin is detected (the options should not be disabled).
 * **Developer Notes**
-	* Added a new `get_noscript_array()` method in the NgfbSchema class.
-	* Added a new 'ngfb_og_woocommerce_product_page' filter.
+	* Added a new `get_noscript_array()` method in the WpssoSchema class.
+	* Added a new 'wpsso_og_woocommerce_product_page' filter.
 
 = Version 3.14.2 (2015/11/10) =
 
@@ -549,6 +549,10 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 	* Added a new WpssoUtil::save_all_times() method to save installation, activation, and update times.
 
 == Upgrade Notice ==
+
+= 3.15.0 =
+
+2015/11/21 Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab, added support for WooCommerce product ratings, added support for Yotpo Social Reviews for WooCommerce product ratings.
 
 = 3.14.2 =
 
