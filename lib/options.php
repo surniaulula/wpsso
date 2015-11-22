@@ -156,8 +156,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( is_admin() ) {
 						if ( empty( $opts['plugin_filter_content'] ) )
-							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), true );
-			
+							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
+								true, true, 'notice-content-filters-disabled', true );
+
+						/*
+						// save this check for a later version
+						if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
+							$opts['plugin_head_attr_filter_name'] === 'language_attributes' )
+								$this->p->notice->inf( $this->p->msgs->get( 'notice-head-attr-filter-default' ), 
+									true, true, 'notice-head-attr-filter-default', true );
+						*/
+
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
 							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) ) {
 

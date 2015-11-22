@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-11-20 02:46:05+00:00\n"
+"POT-Creation-Date: 2015-11-22 03:03:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -223,7 +223,7 @@ msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:870 lib/messages.php:732
+#: lib/admin.php:870 lib/messages.php:735
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
@@ -274,7 +274,7 @@ msgid "Download Latest Version"
 msgstr ""
 
 #: lib/admin.php:1020 lib/admin.php:1025 lib/admin.php:1046 lib/admin.php:1052
-#: lib/messages.php:693
+#: lib/messages.php:696
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -758,86 +758,87 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:227 lib/pro/admin/advanced.php:218
 msgctxt "option label"
-msgid "Header &lt;html&gt; Attribute Filter"
+msgid "&lt;html&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:233 lib/pro/admin/advanced.php:224
+#: lib/gpl/admin/advanced.php:232 lib/messages.php:689
+#: lib/pro/admin/advanced.php:223
 msgctxt "option label"
-msgid "Header &lt;head&gt; Attribute Filter"
+msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:246 lib/messages.php:689
-#: lib/pro/admin/advanced.php:234
+#: lib/gpl/admin/advanced.php:245 lib/messages.php:692
+#: lib/pro/admin/advanced.php:233
 msgctxt "option label"
 msgid "Object Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:252 lib/pro/admin/advanced.php:240
+#: lib/gpl/admin/advanced.php:251 lib/pro/admin/advanced.php:239
 msgctxt "option label"
 msgid "Verify SSL Certificates"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:265 lib/pro/admin/advanced.php:250
+#: lib/gpl/admin/advanced.php:264 lib/pro/admin/advanced.php:249
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:269 lib/pro/admin/advanced.php:254
+#: lib/gpl/admin/advanced.php:268 lib/pro/admin/advanced.php:253
 msgctxt "option label"
 msgid "<em>Get Shortlink</em> Button Gives Short URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:274 lib/pro/admin/advanced.php:259
+#: lib/gpl/admin/advanced.php:273 lib/pro/admin/advanced.php:258
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:277 lib/pro/admin/advanced.php:262
+#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:261
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:279 lib/pro/admin/advanced.php:264
+#: lib/gpl/admin/advanced.php:278 lib/pro/admin/advanced.php:263
 msgctxt "option label"
 msgid "Bit.ly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:283 lib/pro/admin/advanced.php:268
+#: lib/gpl/admin/advanced.php:282 lib/pro/admin/advanced.php:267
 msgctxt "option label"
 msgid "Bit.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:288 lib/pro/admin/advanced.php:273
+#: lib/gpl/admin/advanced.php:287 lib/pro/admin/advanced.php:272
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:293 lib/pro/admin/advanced.php:278
+#: lib/gpl/admin/advanced.php:292 lib/pro/admin/advanced.php:277
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:298
+#: lib/gpl/admin/advanced.php:297
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:312 lib/gpl/admin/advanced.php:351
-#: lib/pro/admin/advanced.php:293 lib/pro/admin/advanced.php:329
+#: lib/gpl/admin/advanced.php:311 lib/gpl/admin/advanced.php:350
+#: lib/pro/admin/advanced.php:292 lib/pro/admin/advanced.php:328
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:314 lib/gpl/admin/advanced.php:353
-#: lib/messages.php:642 lib/pro/admin/advanced.php:295
-#: lib/pro/admin/advanced.php:331
+#: lib/gpl/admin/advanced.php:313 lib/gpl/admin/advanced.php:352
+#: lib/messages.php:642 lib/pro/admin/advanced.php:294
+#: lib/pro/admin/advanced.php:330
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:316 lib/gpl/admin/advanced.php:355
-#: lib/messages.php:642 lib/pro/admin/advanced.php:297
-#: lib/pro/admin/advanced.php:333
+#: lib/gpl/admin/advanced.php:315 lib/gpl/admin/advanced.php:354
+#: lib/messages.php:642 lib/pro/admin/advanced.php:296
+#: lib/pro/admin/advanced.php:332
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -1582,9 +1583,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:686
-msgid ""
-"The <a href=\"%1$s\">%2$s</a> advanced (Pro version) option is currently "
-"disabled."
+msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr ""
 
 #: lib/messages.php:686
@@ -1603,9 +1602,9 @@ msgstr ""
 #: lib/messages.php:686
 msgid ""
 "<a href=\"%s\">If you use any shortcodes in your content text, this option "
-"should be enabled</a> &mdash; if you experience display issues after "
-"enabling this option, determine which theme / plugin content filter is at "
-"fault, and report the problem to its author(s)."
+"should be enabled</a> (Pro version required) &mdash; if you experience "
+"display issues after enabling this option, determine which theme / plugin "
+"content filter is at fault, and report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages.php:686
@@ -1616,95 +1615,112 @@ msgstr ""
 
 #: lib/messages.php:689
 msgid ""
+"The <a href=\"%1$s\">%2$s</a> advanced option is currently set to its "
+"default value of \"language_attributes\"."
+msgstr ""
+
+#: lib/messages.php:689
+msgid ""
+"If your theme does not offer a filter hook for the &lt;head&gt; element "
+"attributes, consider adding a call to the %1$s function in your theme's "
+"header.php template instead. Example: %2$s"
+msgstr ""
+
+#: lib/messages.php:689
+msgid "Leave the option value empty if you add this function to your template."
+msgstr ""
+
+#: lib/messages.php:692
+msgid ""
 "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently "
 "set at %3$d seconds &mdash; this is lower than the recommended default value "
 "of %4$d seconds."
 msgstr ""
 
-#: lib/messages.php:693
+#: lib/messages.php:696
 msgid "The %1$s plugin %2$s option is empty."
 msgstr ""
 
-#: lib/messages.php:693
+#: lib/messages.php:696
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Pro Licenses settings page</a>."
 msgstr ""
 
-#: lib/messages.php:696
+#: lib/messages.php:699
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update this plugin to install the latest "
 "Pro version."
 msgstr ""
 
-#: lib/messages.php:706
+#: lib/messages.php:709
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
 "Licenses settings page</a>, but the <b>%2$s</b> plugin is not active."
 msgstr ""
 
-#: lib/messages.php:709
+#: lib/messages.php:712
 msgid ""
 "This <b>Free extension</b> is required to update and enable the %s plugin "
 "and its Pro extensions."
 msgstr ""
 
-#: lib/messages.php:709
+#: lib/messages.php:712
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:709
+#: lib/messages.php:712
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:712
+#: lib/messages.php:715
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:712
+#: lib/messages.php:715
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:726
+#: lib/messages.php:729
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:727
+#: lib/messages.php:730
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:728
+#: lib/messages.php:731
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:733
+#: lib/messages.php:736
 msgid ""
 "Metaboxes (like this one) can be opened / closed by clicking on their title "
 "bar, moved and re-ordered by dragging them, or removed / added from the "
 "<em>Screen Options</em> tab (top-right of page)."
 msgstr ""
 
-#: lib/messages.php:733
+#: lib/messages.php:736
 msgid ""
 "Option values in multiple tabs can be modified before clicking the '%s' "
 "button."
 msgstr ""
 
-#: lib/messages.php:743
+#: lib/messages.php:746
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
@@ -1843,33 +1859,33 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:177
+#: lib/options.php:186
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:180
+#: lib/options.php:189
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:183
+#: lib/options.php:192
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:185
+#: lib/options.php:194
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:201
+#: lib/options.php:210
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:316
+#: lib/options.php:325
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -1895,7 +1911,7 @@ msgid ""
 "visibility."
 msgstr ""
 
-#: lib/pro/admin/advanced.php:283
+#: lib/pro/admin/advanced.php:282
 msgctxt "option label"
 msgid "Goo.gl URL Shortener API is ON"
 msgstr ""
