@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Define an author_id, if one is available
 			 */
-			if ( SucomUtil::is_post_page() ) {
+			if ( SucomUtil::is_post_page( $use_post ) ) {
 				if ( ! empty( $obj->post_author ) )
 					$author_id = $obj->post_author;
 				elseif ( ! empty( $this->p->options['seo_def_author_id'] ) )

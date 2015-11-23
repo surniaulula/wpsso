@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( ! is_object( $obj ) )
 				$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ||
-				! SucomUtil::is_post_page() ? 0 : $obj->ID;
+				! SucomUtil::is_post_page( $use_post ) ? 0 : $obj->ID;
 
 			// counter for video previews found
 			$video_previews = 0;
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// singular posts / pages are articles by default
 				// check the post_type for a match with a known open graph type
-				if ( SucomUtil::is_post_page() ) {
+				if ( SucomUtil::is_post_page( $use_post ) ) {
 					if ( ! empty( $obj->post_type ) && 
 						isset( $this->p->cf['head']['og_type_ns'][$obj->post_type] ) )
 							$og['og:type'] = $obj->post_type;
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:author'] ) ) {
-					if ( SucomUtil::is_post_page() ) {
+					if ( SucomUtil::is_post_page( $use_post ) ) {
 						if ( ! empty( $obj->post_author ) )
 							$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $obj->post_author );
 						elseif ( ! empty( $this->p->options['og_def_author_id'] ) )
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 							$size_name, $post_id, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview image, then add the default image for non-index webpages
-						if ( empty( $og['og:image'] ) && $video_previews === 0 && SucomUtil::is_post_page() )
+						if ( empty( $og['og:image'] ) && $video_previews === 0 && SucomUtil::is_post_page( $use_post ) )
 							$og['og:image'] = $this->p->media->get_default_image( $og_max['og_img_max'],
 								$size_name, $check_dupes );
 					}
