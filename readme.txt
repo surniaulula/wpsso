@@ -344,9 +344,23 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.15.0 (2015/11/21) =
+= Version 3.16.0 (TBD) =
 
 Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* The default "&lt;head&gt; Attributes Filter Hook" option value has been changed from "language_attributes" to "head_attributes".
+	* Added a check on theme activation / update for a an un-modified &lt;head&gt; element in the header.php theme template. If found, a warning will be displayed with a feature to modify the &lt;head&gt; element in order to include a "head_attributes" filter function call.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
+= Version 3.15.0 (2015/11/21) =
+
+Official announcement: http://surniaulula.com/2015/11/22/ngfb-wpsso-update-product-rating-schema/
 
 * **New Features**
 	* Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab to include additional schema properties in webpage headers (product ratings, for example).
@@ -553,16 +567,4 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 = 3.15.0 =
 
 2015/11/21 Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab, added support for WooCommerce product ratings, added support for Yotpo Social Reviews for WooCommerce product ratings.
-
-= 3.14.2 =
-
-2015/11/10 Added support for a new NGFB_RICH_PIN_DISABLE constant.
-
-= 3.14.1 =
-
-2015/11/05 Fixed the get_all_images() method to correctly detect and return post ID images, and index / archive page images.
-
-= 3.14.0 =
-
-2015/11/03 Added pre-defined Open Graph meta tags for custom post types (article, book, music.album, product, etc.). The pre-defined meta tags allow developers to easily hook single meta tag names to modify their values.
 
