@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
 			
 			$rows[] = $this->p->util->get_th( _x( '&lt;head&gt; Attributes Filter Hook',
-				'option label', 'wpsso' ), 'highlight', 'plugin_head_attr_filter' ).
+				'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
 			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].'</td><td class="blank">'.
 				'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 			

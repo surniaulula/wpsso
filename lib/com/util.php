@@ -1398,6 +1398,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			asort( $ret );
 			return $ret;
 		}
+
+		public static function get_stripped_php ( $file ) {
+			$ret = '';
+			if ( file_exists( $file ) ) {
+				$php = file_get_contents( $file );
+				$comments = array(T_COMMENT); 
+				if ( defined( 'T_DOC_COMMENT' ) )
+					$comments[] = T_DOC_COMMENT;	// php 5
+				if ( defined( 'T_ML_COMMENT' ) )
+				        $comments[] = T_ML_COMMENT;	// php 4
+				$tokens = token_get_all( $php );
+				foreach ( $tokens as $token ) {
+					if ( is_array( $token ) ) {
+						if ( in_array( $token[0], $comments ) )
+							continue; 
+						$token = $token[1];
+					}
+					$ret .= $token;
+				}
+			} else $ret = false;
+			return $ret;
+		}
 	}
 }
 

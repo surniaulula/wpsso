@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->head_info['post_id'] = $post->ID;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',

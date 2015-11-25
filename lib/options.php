@@ -155,25 +155,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->save_options( $options_name, $opts, $network );
 
 					if ( is_admin() ) {
-						if ( empty( $opts['plugin_filter_content'] ) )
-							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
-								true, true, 'notice-content-filters-disabled', true );
-
-						/*
-						// save this check for a later version
-						if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
-							$opts['plugin_head_attr_filter_name'] === 'language_attributes' )
-								$this->p->notice->inf( $this->p->msgs->get( 'notice-head-attr-filter-default' ), 
-									true, true, 'notice-head-attr-filter-default', true );
-						*/
-
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
 							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) ) {
-
 							if ( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
 								$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
 							else $opts['plugin_object_cache_exp'] = $this->get_defaults( 'plugin_object_cache_exp' );
 						}
+
+						if ( empty( $opts['plugin_filter_content'] ) )
+							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
+								true, true, 'notice-content-filters-disabled', true );
+
+						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
+							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' )
+								$this->p->admin->head_attr_filter_check();
 					}
 				}
 

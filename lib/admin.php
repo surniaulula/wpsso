@@ -43,6 +43,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
 				add_action( 'activated_plugin', array( &$this, 'check_activated_plugin' ), 10, 2 );
+				add_action( 'after_switch_theme', array( &$this, 'head_attr_filter_check' ) );
+				add_action( 'upgrader_process_complete', array( &$this, 'head_attr_filter_check' ) );
 
 				add_filter( 'current_screen', array( &$this, 'screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
@@ -374,7 +376,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
-			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), $this->get_nonce(), WPSSO_NONCE );
+			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ), self::get_nonce(), WPSSO_NONCE );
 			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
@@ -392,7 +394,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], $this->get_nonce() ) ) {
+			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], self::get_nonce() ) ) {
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
 					'wpsso' ), true );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
@@ -429,7 +431,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'nonce token validation query field missing' );
-				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], $this->get_nonce() ) ) {
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], self::get_nonce() ) ) {
 					$this->p->notice->err( __( 'Nonce token validation failed for plugin action (action ignored).', 'wpsso' ) );
 				} else {
 					switch ( $_GET['action'] ) {
@@ -466,6 +468,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'change_show_options': 
 							if ( isset( $this->p->cf['form']['show_options'][$_GET['show_opts']] ) )
 								WpssoUser::save_pref( array( 'show_opts' => $_GET['show_opts'] ) );
+							break;
+						case 'head_attr_filter_update': 
+							$this->head_attr_filter_update();
 							break;
 					}
 				}
@@ -608,7 +613,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// wp_nonce_field( $action, $name, $referer, $echo
 			// $name = the hidden form field to be created (aka $_POST[$name]).
-			wp_nonce_field( $this->get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( self::get_nonce(), WPSSO_NONCE );
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 
@@ -877,33 +882,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
 				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null, 
-					wp_nonce_url( $show_opts_url, $this->get_nonce(), WPSSO_NONCE ) ).'<br/>';
+					wp_nonce_url( $show_opts_url, self::get_nonce(), WPSSO_NONCE ) ).'<br/>';
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
 				$action_buttons .= $this->form->get_button( _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_all_cache' ),
-						$this->get_nonce(), WPSSO_NONCE ) );
+						self::get_nonce(), WPSSO_NONCE ) );
 
 			$action_buttons .= $this->form->get_button( _x( 'Check for Update(s)', 'submit button', 'wpsso' ),
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=check_for_updates' ), 
-						$this->get_nonce(), WPSSO_NONCE ), false,
+						self::get_nonce(), WPSSO_NONCE ), false,
 							( $this->p->is_avail['util']['um'] ? false : true )	// disable button if um not available
 			);
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
 				$action_buttons .= $this->form->get_button( _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_metabox_prefs' ),
-						$this->get_nonce(), WPSSO_NONCE ) );
+						self::get_nonce(), WPSSO_NONCE ) );
 
 			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
 				$action_buttons .= $this->form->get_button( _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ), 
 					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?action=clear_hidden_notices' ),
-						$this->get_nonce(), WPSSO_NONCE ) );
+						self::get_nonce(), WPSSO_NONCE ) );
 
 			return '<div class="'.$class.'">'.$action_buttons.'</div>';
 		}
 
-		protected function get_nonce() {
+		public static function get_nonce() {
 			return ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ).plugin_basename( __FILE__ );
 		}
 
@@ -1156,7 +1161,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// Dismiss an Incorrect Yoast SEO Conflict Notification
+		public function head_attr_filter_check() {
+
+			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) )
+				return;
+
+			$file = get_stylesheet_directory().'/header.php';
+			$html = SucomUtil::get_stripped_php( $file );
+			if ( $html === false )
+				return;
+
+			if ( $this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' ) {
+				if ( strpos( $html, '<head>' ) !== false ) {
+					$this->p->notice->err( $this->p->msgs->get( 'notice-header-tmpl-default-head' ),
+						true, true, 'notice-header-tmpl-default-head', true );
+				}
+			}
+		}
+
+		public function head_attr_filter_update() {
+
+			$file = get_stylesheet_directory().'/header.php';
+			$backup = $file.'~backup-'.date( 'Ymd-His' );
+
+			if ( ! file_exists( $file ) )
+				return;
+
+			// double check in case of reloads etc.
+			if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
+				strpos( $html, '<head>' ) === false ) {
+				$this->p->notice->err( sprintf( __( 'No update possible: An standard / un-modified &lt;head&gt; element was not found in %s.', 'wpsso' ), $file ), true );
+				return;
+			}
+
+			// make a backup of the original
+			if ( ! copy( $file, $backup ) ) {
+				$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), 'header.php', $backup ), true );
+				return;
+			}
+
+			$php = file_get_contents( $file );
+			$php = str_replace( '<head>', '<head <?php echo apply_filters( \'head_attributes\', \'\' ); ?>>', $php );
+
+			if ( ! $fh = @fopen( $file, 'wb' ) ) {
+				$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.', 'wpsso' ), $file ), true );
+				return;
+			}
+			
+			if ( fwrite( $fh, $php ) ) {
+				$this->p->notice->trunc_id( 'notice-header-tmpl-default-head' );
+				$this->p->notice->inf( sprintf( __( 'The header.php theme template has been successfully updated and saved. A backup of your original header.php is available in %s.', 'wpsso' ), $backup ), true );
+				fclose( $fh );
+			}
+		}
+
+		// dismiss an incorrect yoast seo conflict notification
 		public function dismiss_wpseo_notice( $dismissed, $opt_name, $user_obj ) {
 			$lca = $this->p->cf['lca'];
 			$base = $this->p->cf['plugin'][$lca]['base'];

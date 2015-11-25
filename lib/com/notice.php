@@ -66,7 +66,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'inf', $msg_txt, $store, $user_id, $msg_id, $dismiss );
 		}
 
-		// $user_id can be true, false, or an ID number
+		// $user_id can be true, false, or an id number
 		// $dismiss can be true, false, or a number of seconds
 		public function log( $type, $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false, 
 			$payload = array() ) {
@@ -106,8 +106,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->log[$type][$msg_txt] = $payload;
 		}
 
+		public function trunc_id( $msg_id ) {
+			return $this->trunc( '', '', true, true, $msg_id );
+		}
+
 		// truncates all notices by default
-		public function trunc( $type = '', $msg_txt = '', $store = true, $user_id = true ) {
+		public function trunc( $type = '', $msg_txt = '', $store = true, $user_id = true, $msg_id = false ) {
 			$types = empty( $type ) ? 
 				array_keys( $this->log ) : 
 				array( $type );
@@ -118,8 +122,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$have_changes = false;
 				foreach ( $types as $type ) {
 					if ( isset( $all_opts[$name][$type] ) ) {
+						// clear msg for a specific msg id
+						if ( ! empty( $msg_id ) ) {
+							foreach ( $all_opts[$name][$type] as $msg_txt => $payload ) {
+								if ( $payload['msg_id'] === $type.'_'.$msg_id ) {
+									unset( $all_opts[$name][$type][$msg_txt] );
+									$have_changes = true;
+								}
+							}
 						// clear all msgs for that type
-						if ( empty( $msg_txt ) ) {
+						} elseif ( empty( $msg_txt ) ) {
 							if ( $name === 'log' )
 								$this->log[$type] = array();
 							else {
@@ -182,7 +194,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			foreach ( array( 'opt', 'usr', 'log' ) as $name ) {
 				foreach ( array_keys( $this->log ) as $type ) {
 					foreach ( $all_opts[$name][$type] as $msg_txt => $payload ) {
-
 						if ( empty( $msg_txt ) || 
 							isset( $all_msgs[$msg_txt] ) )
 								continue;
@@ -353,8 +364,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $payload['label'] ) ) {
 				$msg_html .= '<div style="display:table-cell;">
-					<p style="white-space:nowrap;margin-right:5px;">
-						<b>'.$payload['label'].'</b>&nbsp;&nbsp;&mdash;</p></div>';
+					<p style="white-space:nowrap;margin-right:2px;">
+						<b>'.$payload['label'].'</b>&nbsp;&nbsp;&ndash;</p></div>';
 			}
 
 			$msg_html .= '<div style="display:table-cell;">

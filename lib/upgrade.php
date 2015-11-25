@@ -121,6 +121,18 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
+				if ( version_compare( $opts_version, 296, '<=' ) ) {
+					if ( empty( $opts['plugin_min_shorten'] ) || 
+						$opts['plugin_min_shorten'] < 22 ) 
+							$opts['plugin_min_shorten'] = 22;
+				}
+
+				if ( version_compare( $opts_version, 373, '<=' ) ) {
+					if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
+						$opts['plugin_head_attr_filter_name'] === 'language_attributes' ) 
+							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
 				$opts = SucomUtil::rename_keys( $opts, $this->renamed_site_keys );
 
