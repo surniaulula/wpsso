@@ -344,7 +344,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.16.0 (TBD) =
+= Version 3.16.0 (2015/TBD) =
 
 Official announcement: N/A
 
@@ -352,7 +352,7 @@ Official announcement: N/A
 	* *None*
 * **Improvements**
 	* The default "&lt;head&gt; Attributes Filter Hook" option value has been changed from "language_attributes" to "head_attributes".
-	* Added a check on theme activation / update for a an un-modified &lt;head&gt; element in the header.php theme template. If found, a warning will be displayed with a feature to modify the &lt;head&gt; element in order to include a "head_attributes" filter function call.
+	* Added a check on theme activation / update for a standard &lt;head&gt; element (without an attribute filter) in the header.php theme template. If found, a warning will be displayed with a feature to modify the &lt;head&gt; element in order to include the new "head_attributes" filter.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
@@ -563,6 +563,10 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 	* Added a new WpssoUtil::save_all_times() method to save installation, activation, and update times.
 
 == Upgrade Notice ==
+
+= 8.16.0 =
+
+2015/TBD Added a check for a standard &lt;head&gt; element in the header.php theme template, and provide a method to add a new "head_attributes" filter.
 
 = 3.15.0 =
 
