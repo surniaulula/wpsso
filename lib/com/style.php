@@ -133,15 +133,37 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			display:none;
 		}
 	}
+	.'.$lca.'-notice.error,
+	.'.$lca.'-notice.updated {
+		padding:0;
+	}
+	.'.$lca.'-notice .notice-label {
+		display:table-cell;
+		vertical-align:top;
+		padding:10px;
+		margin:0;
+		white-space:nowrap;
+		font-weight:bold;
+		background:#e0e0e0;
+		border-right:1px solid #ccc;
+	}
+	.'.$lca.'-notice .notice-message {
+		display:table-cell;
+		vertical-align:top;
+		padding:10px 20px;
+		margin:0;
+		line-height:1.5em;
+	}
 	.'.$lca.'-notice ul {
 		margin:5px 0 5px 40px;
 		list-style:disc outside none;
 	}
 	.'.$lca.'-dismissible .notice-dismiss {
+		display:table-cell;
+		vertical-align:top;
 		position:relative;
-		float:right;
-		margin:4px 0;
-		padding:0;
+		padding:10px;
+		margin:0;
 		top:0;
 		right:0;
 	}

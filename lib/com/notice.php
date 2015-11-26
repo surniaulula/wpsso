@@ -359,17 +359,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				( ! $is_dismissible ? '' : $this->lca.'-dismissible ' ).
 					$msg_class.'"'.$cssid_attr.$style_attr.$data_attr.'>';	// display block or none
 
-			if ( ! empty( $payload['dismiss'] ) )
-				$msg_html .= '<div class="notice-dismiss"></div>';		// floats right
-
 			if ( ! empty( $payload['label'] ) ) {
-				$msg_html .= '<div style="display:table-cell;">
-					<p style="white-space:nowrap;margin-right:2px;">
-						<b>'.$payload['label'].'</b>&nbsp;&nbsp;&ndash;</p></div>';
+				$msg_html .= '<div class="notice-label">'.
+					$payload['label'].'</div>';
 			}
 
-			$msg_html .= '<div style="display:table-cell;">
-				<p>'.$msg_txt.'</p></div>';
+			$msg_html .= '<div class="notice-message">'.
+				$msg_txt.'</div>';
+
+			if ( ! empty( $payload['dismiss'] ) )
+				$msg_html .= '<div class="notice-dismiss"></div>';		// floats right
 
 			$msg_html .= '</div>'."\n";
 

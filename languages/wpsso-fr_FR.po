@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-11-25 09:22-0800\n"
-"PO-Revision-Date: 2015-11-25 09:22-0800\n"
+"POT-Creation-Date: 2015-11-25 20:12-0700\n"
+"PO-Revision-Date: 2015-11-25 20:12-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -146,43 +146,43 @@ msgstr ""
 "La validation du jeton Nonce pour l’action demandé a échoué (l’action est "
 "ignorée)."
 
-#: lib/admin.php:446
+#: lib/admin.php:447
 msgid "The <b>%s</b> extension is required to check for Pro version updates."
 msgstr ""
 "L'extension <b>%s</b> est requise afin de vérifier pour des mises à jour de "
 "versions Pro."
 
-#: lib/admin.php:458
+#: lib/admin.php:459
 msgid "Metabox layout preferences for user \"%s\" have been reset."
 msgstr ""
 "Préférences de positionnement des metabox pour l’utilisateur \"%s\" ont été "
 "réinitialisés."
 
-#: lib/admin.php:465
+#: lib/admin.php:466
 msgid "Hidden notices for user \"%s\" have been cleared."
 msgstr "Avis cachés pour l’utilisateur \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:489
+#: lib/admin.php:490
 msgctxt "metabox title (side)"
 msgid "Pro / Power-User Version"
 msgstr "Version Pro /  Avancé"
 
-#: lib/admin.php:500
+#: lib/admin.php:501
 msgctxt "metabox title (side)"
 msgid "Version Information"
 msgstr "Information de Version"
 
-#: lib/admin.php:504
+#: lib/admin.php:505
 msgctxt "metabox title (side)"
 msgid "Free / Basic Features"
 msgstr "Fonctionnalités de Base"
 
-#: lib/admin.php:508
+#: lib/admin.php:509
 msgctxt "metabox title (side)"
 msgid "Pro Version Features"
 msgstr "Fonctionnalités Pro"
 
-#: lib/admin.php:512
+#: lib/admin.php:513
 msgctxt "metabox title (side)"
 msgid "Help and Support"
 msgstr "Assistance et Soutien"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: lib/admin.php:1193
 msgid ""
-"No update possible: An standard / un-modified &lt;head&gt; element was not "
+"No update possible - An standard / un-modified &lt;head&gt; element was not "
 "found in %s."
 msgstr ""
 
@@ -428,13 +428,15 @@ msgstr "Erreur copiant %1$s à %2$s."
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1213
-msgid ""
-"The header.php theme template has been successfully updated and saved. A "
-"backup of your original header.php is available in %s."
+#: lib/admin.php:1214
+msgid "The header.php theme template has been successfully updated and saved."
 msgstr ""
-"Le modèle de thème header.php a été mis à jour et enregistré avec succès. "
-"Une sauvegarde de votre fichier header.php original est disponible dans %s."
+"Le modèle de thème header.php a été mis à jour et enregistré avec succès."
+
+#: lib/admin.php:1214
+msgid "A backup copy of your original header.php is available in %s."
+msgstr ""
+" Une sauvegarde de votre fichier header.php original est disponible dans %s."
 
 #: lib/admin.php:1231
 msgctxt "option label (very short)"
@@ -1942,11 +1944,11 @@ msgstr ""
 
 #: lib/messages.php:690
 msgid ""
-"This options check and notice display is only performed once when updating "
-"the plugin."
+"Note: This options sanity check is only performed when updating the %s "
+"plugin."
 msgstr ""
-"Ce contrôle d'option et l'affichage d'avis est effectuées seulement une fois "
-"lors de mises à jour de l'extension."
+"Notez: Cette validation d'option est effectuées seulement lors de mises à "
+"jour de l'extension %s."
 
 #: lib/messages.php:695
 msgid ""
@@ -1967,10 +1969,10 @@ msgstr ""
 #: lib/messages.php:695
 msgid ""
 "%1$s can update the header.php theme template automatically for you to "
-"change the default %2$s element to: %3$s"
+"change the default %2$s element to:"
 msgstr ""
 "%1$s peut mettre à jour le modèle de thème header.php automatiquement pour "
-"changer la balise %2$s par défaut à: %3$s"
+"changer la balise %2$s par défaut à:"
 
 #: lib/messages.php:695
 msgid ""
@@ -1981,6 +1983,15 @@ msgstr ""
 "<b><a href=\"%1$s\">Cliquez ici pour mettre à jour le modèle de thème header."
 "php automatiquement</a></b> &mdash; ou <a href=\"%2$s\">modifier le modèle "
 "vous-même à l'aide de l'éditeur WordPress</a>."
+
+#: lib/messages.php:695
+msgid ""
+"Note: This template sanity check is only performed when updating the %s "
+"plugin, updating a theme, or activating a new theme."
+msgstr ""
+"Notez: Cette validation de modèle est effectuées seulement lors de mises à "
+"jour de l'extension %s, mise à jour d'un thème, ou lors de l'activation d'un "
+"nouveau thème."
 
 #: lib/messages.php:699
 msgid "The %1$s plugin %2$s option is empty."
