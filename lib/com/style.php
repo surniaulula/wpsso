@@ -159,8 +159,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		list-style:disc outside none;
 	}
 	.'.$lca.'-dismissible .notice-dismiss {
-		display:table-cell;
-		vertical-align:top;
+		float:right;
 		position:relative;
 		padding:10px;
 		margin:0;
