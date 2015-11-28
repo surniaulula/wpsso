@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.3.1
-Stable Tag: 3.15.0
+Stable Tag: 3.16.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -344,7 +344,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.16.0 (2015/TBD) =
+= Version 3.16.0 (2015/11/27) =
 
 Official announcement: N/A
 
@@ -566,7 +566,7 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 
 = 8.16.0 =
 
-2015/TBD Added a check for a standard &lt;head&gt; element in the header.php theme template, and provide a method to add a new "head_attributes" filter.
+2015/11/27 Added a check for a standard &lt;head&gt; element in the header.php theme template, and provide a method to add a new "head_attributes" filter.
 
 = 3.15.0 =
 
