@@ -346,7 +346,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.16.0 (2015/11/27) =
 
-Official announcement: N/A
+Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-head_attributes-filter/
 
 * **New Features**
 	* *None*
