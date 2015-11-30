@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-11-30 03:11:47+00:00\n"
+"POT-Creation-Date: 2015-11-30 03:29:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2474,7 +2474,7 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Jean-Sebastien Morisset"
+msgid "JS Morisset"
 msgstr ""
 
 #. Author URI of the plugin/theme
