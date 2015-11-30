@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function timed_notices( $store = false ) {
 
-			if ( ! $this->p->notice->can_dismiss ||			// true for wordpress 4.2+
+			if ( ! $this->p->notice->can_dismiss() ||			// true for wordpress 4.2+
 				! current_user_can( 'manage_options' ) )
 					return;
 

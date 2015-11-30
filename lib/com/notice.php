@@ -23,8 +23,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			'inf' => array(),
 		);
 
-		public $can_dismiss = false;
-
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
@@ -47,11 +45,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
 				add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), 5 );	// since wp 3.1
-
-				global $wp_version;
-				if ( version_compare( $wp_version, 4.2, '>=' ) )
-					$this->can_dismiss = true;
 			}
+		}
+
+		public function can_dismiss() {
+			global $wp_version;
+			if ( version_compare( $wp_version, 4.2, '>=' ) )
+				return true;
+			else return false;
 		}
 
 		public function nag( $msg_txt, $store = false, $user_id = true, $msg_id = false ) { 
@@ -81,7 +82,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$payload['dismiss'] = ! empty( $dismiss ) && 
 				! empty( $msg_id ) && 
-					$this->can_dismiss === true ? 
+					$this->can_dismiss() === true ? 
 						$dismiss : false;
 			
 			// save message until it can be displayed
@@ -360,7 +361,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$msg_class.'"'.$cssid_attr.$style_attr.$data_attr.'>';	// display block or none
 
 			if ( ! empty( $payload['dismiss'] ) )
-				$msg_html .= '<div class="notice-dismiss"></div>';		// floats right
+				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">Dismiss</div></div>';
 
 			if ( ! empty( $payload['label'] ) ) {
 				$msg_html .= '<div class="notice-label">'.

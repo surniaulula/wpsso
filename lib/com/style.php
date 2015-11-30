@@ -158,6 +158,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:5px 0 5px 40px;
 		list-style:disc outside none;
 	}
+	.'.$lca.'-dismissible .notice-dismiss:before {
+		display:inline-block;
+		margin-right:2px;
+	}
 	.'.$lca.'-dismissible .notice-dismiss {
 		float:right;
 		position:relative;
@@ -165,6 +169,11 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		top:0;
 		right:0;
+	}
+	.'.$lca.'-dismissible .notice-dismiss-text {
+		display:inline-block;
+		font-size:12px;
+		vertical-align:top;
 	}
 </style>';
 		}
