@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-11-30 03:29:28+00:00\n"
+"POT-Creation-Date: 2015-11-30 20:15:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1404,16 +1404,16 @@ msgstr ""
 
 #: lib/messages.php:634
 msgid ""
-"If you appreciate the features, quality, and/or support of this plugin, "
-"please <a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s "
-"plugin on WordPress.org</a>."
+"If you appreciate the features, quality and support of this plugin, please "
+"<a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s plugin on "
+"WordPress.org</a>."
 msgstr ""
 
 #: lib/messages.php:634
 msgid ""
-"Your rating will help other WordPress users find higher quality and better "
-"supported plugins &mdash; and <strong>encourage us to keep improving %s</"
-"strong> as well!"
+"Your rating will help other WordPress users find higher quality and well "
+"supported plugins &mdash; along with <strong>encouraging us to keep "
+"improving %s</strong> as well!"
 msgstr ""
 
 #: lib/messages.php:637

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-11-25 20:12-0700\n"
-"PO-Revision-Date: 2015-11-25 20:12-0700\n"
+"POT-Creation-Date: 2015-11-30 13:06-0700\n"
+"PO-Revision-Date: 2015-11-30 13:07-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -419,6 +419,8 @@ msgid ""
 "No update possible - An standard / un-modified &lt;head&gt; element was not "
 "found in %s."
 msgstr ""
+"Mise à jour impossible - une balise &lt;head&gt; standard / non-modifiées "
+"n'a pas été trouvée dans %s."
 
 #: lib/admin.php:1199
 msgid "Error copying %1$s to %2$s."
@@ -473,7 +475,7 @@ msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:248
+#: lib/com/notice.php:249
 msgid ""
 "%1$d warning messages have been hidden &mdash; <a id=\"%2$s\">unhide these "
 "notices temporarily</a>."
@@ -481,7 +483,7 @@ msgstr ""
 "%1$d messages d'avertissement ont été cachés &mdash; <a id=\"%2$s\">afficher "
 "ces avis temporairement</a>."
 
-#: lib/com/notice.php:250
+#: lib/com/notice.php:251
 msgid ""
 "%1$d warning message has been hidden &mdash; <a id=\"%2$s\">unhide this "
 "notice temporarily</a>."
@@ -489,7 +491,7 @@ msgstr ""
 "%1$d message d'avertissement a été caché &mdash; <a id=\"%2$s\">afficher cet "
 "avis temporairement</a>."
 
-#: lib/com/notice.php:320
+#: lib/com/notice.php:321
 msgid "%s Notice"
 msgstr "Avis %s"
 
@@ -1620,23 +1622,23 @@ msgstr ""
 
 #: lib/messages.php:634
 msgid ""
-"If you appreciate the features, quality, and/or support of this plugin, "
-"please <a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s "
-"plugin on WordPress.org</a>."
+"If you appreciate the features, quality and support of this plugin, please "
+"<a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s plugin on "
+"WordPress.org</a>."
 msgstr ""
-"Si vous appréciez les fonctionnalités, la qualité et/ou le soutien de cette "
+"Si vous appréciez les fonctionnalités, la qualité et le soutien de cette "
 "extension, s'il vous plaît <a href=\"%1$s\" target=\"_blank\">prenez un "
 "moment pour noter l'extension %2$s sur WordPress.org</a>."
 
 #: lib/messages.php:634
 msgid ""
-"Your rating will help other WordPress users find higher quality and better "
-"supported plugins &mdash; and <strong>encourage us to keep improving %s</"
-"strong> as well!"
+"Your rating will help other WordPress users find higher quality and well "
+"supported plugins &mdash; along with <strong>encouraging us to keep "
+"improving %s</strong> as well!"
 msgstr ""
 "Votre cote aidera d'autres utilisateurs de WordPress à trouver des "
-"extensions de meilleure qualité — et <strong>nous encouragera à continuer "
-"d'améliorer %s</strong> aussi!"
+"extensions de meilleure qualité &mdash; et <strong>nous encouragera à "
+"continuer d'améliorer %s</strong> aussi!"
 
 #: lib/messages.php:637
 msgid "Pinterest uses the Open Graph standard meta tags for their Rich Pins."
@@ -2883,8 +2885,8 @@ msgstr ""
 "sociaux - peu importe comment votre contenu est partagé ou re-partagé!"
 
 #. Author of the plugin/theme
-msgid "Jean-Sebastien Morisset"
-msgstr "Jean-Sebastien Morisset"
+msgid "JS Morisset"
+msgstr "JS Morisset"
 
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
