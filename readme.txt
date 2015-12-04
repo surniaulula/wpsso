@@ -344,6 +344,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.16.1 (TBD) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Improved post object detection in the All in One SEO Pack integration module (Pro version).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added `sanitize_classname()` and `sanitize_hookname()` static methods in the SucomUtil class.
+	* Added a check for the required mbstring PHP extension.
+
 = Version 3.16.0 (2015/11/27) =
 
 Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-head_attributes-filter/
