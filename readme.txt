@@ -352,6 +352,7 @@ Official announcement: N/A
 	* *None*
 * **Improvements**
 	* Improved post object detection in the All in One SEO Pack integration module (Pro version).
+	* Improved the Vimeo integration module by adding support for a new "Force Autoplay when Possible" option (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
