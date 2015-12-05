@@ -344,15 +344,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.16.1 (TBD) =
+= Version 3.17.0 (TBD) =
 
 Official announcement: N/A
 
 * **New Features**
-	* *None*
+	* Added a new "Tabs in Social Settings Metabox" option on the Advanced settings page to include/exclude the Social Preview, Head Tags, and Validate tabs (Pro version).
+	* Added a new "Force Autoplay when Possible" option on the General settings page to force autoplay of Vimeo and Wistia videos when possible (Pro version).
 * **Improvements**
-	* Improved post object detection in the All in One SEO Pack integration module (Pro version).
-	* Improved the Vimeo integration module by adding support for a new "Force Autoplay when Possible" option (Pro version).
+	* Refactored the All in One SEO Pack integration module to improved post object detection (Pro version).
+	* Refactored the video integration modules to improve code quality (Pro version).
+	* Moved several Advanced options under the "WP / Theme Integration" tab.
+	* Improved the "Head Tags" listing in the Social Settings metabox to include JSON and additional Schema markup HTML blocks.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
