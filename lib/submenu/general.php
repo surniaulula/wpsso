@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox = 'og';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'content' => _x( 'Title / Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
+				'content' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
 				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_th( _x( 'Add Page Title in Tags / Hashtags',
 						'option label', 'wpsso' ), null, 'og_page_title_tag' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
-		
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Add Parent Page Tags / Hashtags',
 						'option label', 'wpsso' ), null, 'og_page_parent_tags' ).
@@ -137,17 +137,17 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_th( _x( 'Fallback to Author\'s Archive Page',
 						'option label', 'wpsso' ), null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Default Author when Missing',
 						'option label', 'wpsso' ), null, 'og_def_author_id' ).
 					'<td>'.$this->form->get_select( 'og_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Indexes',
 						'option label', 'wpsso' ), null, 'og_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
-			
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Search Results',
 						'option label', 'wpsso' ), null, 'og_def_author_on_search' ).
@@ -168,25 +168,25 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
 						'option label', 'wpsso' ), 'highlight', 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
-	
+
 					$rows[] = $this->p->util->get_th( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), 'highlight', 'og_def_img_id' ).
 					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
-	
+
 					$rows[] = $this->p->util->get_th( _x( 'or Default / Fallback Image URL',
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Image on Indexes',
 						'option label', 'wpsso' ), null, 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Image on Search Results',
 						'option label', 'wpsso' ), null, 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
-		
+
 					if ( $this->p->is_avail['media']['ngg'] === true ) {
 						$rows[] = '<tr class="hide_in_basic">'.
 						$this->p->util->get_th( _x( 'Add Tags from NGG Featured Image',
@@ -239,22 +239,22 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = $this->p->util->get_th( _x( 'Author Link URL Field',
 						'option label', 'wpsso' ), null, 'google_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $this->form->author_contact_fields ).'</td>';
-		
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Default Author when Missing',
 						'option label', 'wpsso' ), null, 'google_def_author_id' ).
 					'<td>'.$this->form->get_select( 'seo_def_author_id', $this->form->user_ids, null, null, true ).'</td>';
-			
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Indexes',
 						'option label', 'wpsso' ), null, 'google_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
-			
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Search Results',
 						'option label', 'wpsso' ), null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
-	
+
 					$rows[] = '<td colspan="2" class="subsection"><h4>'.
 						_x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
 
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Meta Property Container(s)',
 						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_th( _x( 'Include Publisher JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_publisher_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
-	
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Include Website JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
@@ -310,12 +310,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'rp_author_name' ).
 					'<td>'.$this->form->get_select( 'rp_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
-		
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Pinterest Website Verification ID',
 						'option label', 'wpsso' ), null, 'rp_dom_verify' ).
 					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
-		
+
 					break;
 
 				case 'pub-twitter':

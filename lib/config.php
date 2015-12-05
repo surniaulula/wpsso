@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.16.0',		// plugin version
+					'version' => '3.17.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso380',				// increment when changing default options
+				'version' => 'sso382',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_logo_url' => '',
@@ -313,6 +313,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_img_max' => 1,
 					'og_vid_max' => 1,
 					'og_vid_https' => 1,
+					'og_vid_autoplay' => 1,
 					'og_vid_prev_img' => 0,
 					'og_vid_html_type' => 1,
 					'og_def_img_id_pre' => 'wp',
@@ -498,14 +499,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api' => 1,
 					'plugin_youtube_api' => 1,
 					// Social Settings Tab
-					'plugin_columns_post' => 1,			// Show Social Columns for: Posts, Pages, and CPTs
-					'plugin_columns_taxonomy' => 1,			// Show Social Columns for: Taxonomies (Categories and Tags)
-					'plugin_columns_user' => 1,			// Show Social Columns for: Users
+					'plugin_columns_post' => 1,
+					'plugin_columns_taxonomy' => 1,
+					'plugin_columns_user' => 1,
 					'plugin_add_to_post' => 1,
 					'plugin_add_to_page' => 1,
 					'plugin_add_to_taxonomy' => 1,
 					'plugin_add_to_user' => 1,
 					'plugin_add_to_attachment' => 1,
+					'plugin_add_tab_preview' => 1,
+					'plugin_add_tab_tags' => 1,
+					'plugin_add_tab_validate' => 1,
 					'plugin_cf_img_url' => '_format_image_url',
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '_format_video_embed',
@@ -1050,7 +1054,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( file_exists( $filepath ) ) {
 					require_once( $filepath );
 					if ( empty( $classname ) )
-						return 'wpsso'.str_replace( array( '/', '-' ), '', $filespec );
+						return SucomUtil::sanitize_classname( 'wpsso'.$filespec );
 					else return $classname;
 				}
 			}

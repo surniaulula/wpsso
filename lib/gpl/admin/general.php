@@ -58,6 +58,10 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				'option label', 'wpsso' ), null, 'og_vid_html_type' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
+			$rows[] = $this->p->util->get_th( _x( 'Force Autoplay when Possible',
+				'option label', 'wpsso' ), null, 'og_vid_autoplay' ).
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
+
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Default / Fallback Video URL',
 				'option label', 'wpsso' ), null, 'og_def_vid_url' ).

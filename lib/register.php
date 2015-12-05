@@ -78,10 +78,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function activate_plugin() {
-			$lca = $this->p->cf['lca'];
-			$uca = $this->p->cf['uca'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
-			$version = $this->p->cf['plugin'][$lca]['version'];
+			$lca = WpssoConfig::$cf['lca'];
+			$uca = strtoupper( $lca );
+			$short = WpssoConfig::$cf['plugin'][$lca]['short'];
+			$version = WpssoConfig::$cf['plugin'][$lca]['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 				switch ( $key ) {
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						$req_version = phpversion();
 						break;
 				}
-				$min_version = $this->p->cf[$key]['min_version'];
+				$min_version = WpssoConfig::$cf[$key]['min_version'];
 				if ( version_compare( $req_version, $min_version, '<' ) ) {
 					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
 					deactivate_plugins( WPSSO_PLUGINBASE );

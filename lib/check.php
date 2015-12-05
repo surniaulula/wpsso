@@ -103,6 +103,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$ret['curl'] = function_exists( 'curl_init' ) ? true : false;
 			$ret['postthumb'] = function_exists( 'has_post_thumbnail' ) ? true : false;
+			$ret['mbstring'] = extension_loaded( 'mbstring' ) ? true : false;
 
 			foreach ( array( 'aop', 'mt' ) as $key )
 				$ret[$key] = $this->get_avail_check( $key );
@@ -164,7 +165,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'seo-aioseop':
 							$chk['class'] = 'All_in_One_SEO_Pack';
-							$chk['plugin'] = 'all-in-one-seo-pack/all-in-one-seo-pack.php';
 							break;
 						case 'seo-headspace2':
 							$chk['class'] = 'HeadSpace_Plugin';

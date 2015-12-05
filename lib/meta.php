@@ -23,13 +23,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected $defs = array();	// cache for default values
 
 		protected function get_default_tabs() {
-			return  array(
-				'header' => _x( 'Title / Descriptions', 'metabox tab', 'wpsso' ),
+			$tabs = array();
+			foreach( array(
+				'header' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),
 				'media' => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
 				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
-			);
+			) as $key => $name ) {
+				if ( isset( $this->p->options['plugin_add_tab_'.$key] ) ) {
+					if ( ! empty( $this->p->options['plugin_add_tab_'.$key] ) )
+						$tabs[$key] = $name;
+				} else $tabs[$key] = $name;
+			}
+			return $tabs;
 		}
 
 		protected function get_rows( $metabox, $key, &$head_info ) {
@@ -106,18 +113,34 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_rows_head_tags( &$head_meta_tags ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$rows = array();
+			$xtra_class = '';
 			foreach ( $head_meta_tags as $m ) {
-				if ( empty( $m[5] ) || 
-					empty( $this->p->options['add_'.$m[1].'_'.$m[2].'_'.$m[3]] ) )
-						continue;
+				if ( empty( $m[0] ) )	// array elements without HTML are ignored
+					continue;
 
-				$rows[] = '<th class="xshort">'.$m[1].'</th>'.
-				'<th class="xshort">'.$m[2].'</th>'.
-				'<td class="short">'.( empty( $m[6] ) ? '' : '<!-- '.$m[6].' -->' ).$m[3].'</td>'.
-				'<th class="xshort">'.$m[4].'</th>'.
-				'<td class="wide">'.( strpos( $m[5], 'http' ) === 0 ? 
-					'<a href="'.$m[5].'">'.$m[5].'</a>' : $m[5] ).'</td>';
+				if ( count( $m ) === 1 ) {
+					if ( strpos( $m[0], '<script ' ) === 0 )
+						$xtra_class = 'script';
+					elseif ( strpos( $m[0], '<noscript ' ) === 0 )
+						$xtra_class = 'noscript';
+					$rows[] = '<td colspan="5" class="html '.$xtra_class.'"><pre>'.
+						esc_html( $m[0] ).'</pre></th>';
+					if ( $xtra_class === 'script' ||
+						strpos( $m[0], '</noscript>' ) === 0 )
+							$xtra_class = '';
+				} elseif ( isset( $m[5] ) ) {
+					$rows[] = '<tr class="'.$xtra_class.'">'.
+					'<th class="xshort">'.$m[1].'</th>'.
+					'<th class="xshort">'.$m[2].'</th>'.
+					'<td class="short">'.( empty( $m[6] ) ? 
+						'' : '<!-- '.$m[6].' -->' ).$m[3].'</td>'.
+					'<th class="xshort">'.$m[4].'</th>'.
+					'<td class="wide">'.( strpos( $m[5], 'http' ) === 0 ? 
+						'<a href="'.$m[5].'">'.$m[5].'</a>' : $m[5] ).'</td>';
+				}
 			}
 			return $rows;
 		}

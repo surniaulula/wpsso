@@ -168,6 +168,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 			}
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $ret );
+
 			return $ret;
 		}
 
@@ -175,21 +178,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$json_array = array();
+			$ret = array();
 
 			if ( ! empty( $this->p->options['schema_website_json'] ) &&
 				( $json_script = $this->get_website_json_script( $post_id ) ) !== false )
-					$json_array[] = $json_script;
+					$ret[] = $json_script;
 
 			if ( ! empty( $this->p->options['schema_author_json'] ) && ! empty( $author_id ) &&
 				( $json_script = $this->p->mods['util']['user']->get_person_json_script( $author_id, $size_name ) ) !== false )
-					$json_array[] = $json_script;
+					$ret[] = $json_script;
 
 			if ( ! empty( $this->p->options['schema_publisher_json'] ) &&
 				( $json_script = $this->get_organization_json_script( $size_name ) ) !== false )
-					$json_array[] = $json_script;
+					$ret[] = $json_script;
 
-			return SucomUtil::a2aa( $json_array );	// convert to array or arrays
+			$ret = SucomUtil::a2aa( $ret );	// convert to array or arrays
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $ret );
+
+			return $ret;
 		}
 
 		public function get_website_json_script( $post_id = false ) {

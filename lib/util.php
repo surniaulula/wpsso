@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cf['lca'] : $lca;
 			foreach ( $hooks as $name => $num ) {
 				$hook = $lca.'_'.$name;
-				$method = $type.'_'.str_replace( array( '/', '-' ), '_', $name );
+				$method = SucomUtil::sanitize_hookname( $type.'_'.$name );
 				call_user_func( 'add_'.$type, $hook, array( &$class, $method ), $prio, $num );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $type.' for '.$hook.' added', 3 );
@@ -407,6 +407,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod = false ) {
+
+			// remove localization for more generic match
+			if ( preg_match( '/(#.*|:[0-9]+)$/', $key ) > 0 )
+				$key = preg_replace( '/(#.*|:[0-9]+)$/', '', $key );
+
 			// hooked by the sharing class
 			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
 
@@ -469,16 +474,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
-				// must be numeric
+				// must be blank or numeric
 				case 'blank_num':
-					$passed = ( $val !== '' && 
-						! is_numeric( $val ) ) ? false : true;
-					// no break;
+					if ( $val !== '' && ! is_numeric( $val ) ) {
+						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', $key ), true );
+						$val = $def_val;
+					}
+					break;
+				// must be numeric
 				case 'numeric':
-					$passed = ( ! isset( $passed ) && 
-						! is_numeric( $val ) ) ? false : true;
-
-					if ( $passed === false ) {
+					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', $key ), true );
 						$val = $def_val;
 					}

@@ -50,6 +50,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function sanitize_hookname( $name ) {
+			return str_replace( array( '/', '-' ), '_', $name );
+		}
+
+		public static function sanitize_classname( $name ) {
+			return str_replace( array( '/', '-' ), '', $name );
+		}
+
 		public static function sanitize_tag( $tag ) {
 			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
 			$tag = urldecode( $tag );
@@ -1044,7 +1052,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// tab titles in the array should already be translated:
 		//
 		// $tabs = array(
-		//		'header' => _x( 'Title / Descriptions', 'metabox tab', 'nextgen-facebook' ),
+		//		'header' => _x( 'Descriptions', 'metabox tab', 'nextgen-facebook' ),
 		//		'media' => _x( 'Priority Media', 'metabox tab', 'nextgen-facebook' ),
 		//		'preview' => _x( 'Social Preview', 'metabox tab', 'nextgen-facebook' ),
 		//		'tags' => _x( 'Head Tags', 'metabox tab', 'nextgen-facebook' ),

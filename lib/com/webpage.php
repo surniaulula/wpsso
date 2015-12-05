@@ -237,7 +237,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// get seed if no custom meta title
 			if ( empty( $title ) ) {
 				$title = apply_filters( $this->p->cf['lca'].'_title_seed', '', $use_post, $add_hashtags, $md_idx, $src_id );
-
 				if ( ! empty( $title ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'title seed = "'.$title.'"' );
@@ -402,7 +401,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// get seed if no custom meta description
 			if ( empty( $desc ) ) {
 				$desc = apply_filters( $this->p->cf['lca'].'_description_seed', '', $use_post, $add_hashtags, $md_idx, $src_id );
-
 				if ( ! empty( $desc ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'description seed = "'.$desc.'"' );
@@ -695,7 +693,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			else return;
 
 			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id, $add_hashtags );
-
 			if ( ! empty( $hashtags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
@@ -715,7 +712,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->cf['lca'].'_tags_seed', array(), $post_id );
-
 			if ( ! empty( $tags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'tags seed = "'.implode( ',', $tags ).'"' );

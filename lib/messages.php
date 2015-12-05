@@ -236,6 +236,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_vid_https':
 							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
 							break;
+						case 'tooltip-og_vid_autoplay':
+							$text = 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).';
+							break;
 						case 'tooltip-og_vid_prev_img':
 							$text = 'Include video preview images in the webpage meta tags (default is unchecked). When video preview images are enabled and available, they are included before any custom, featured, attached, etc. images.';
 							break;
@@ -243,7 +246,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
 							break;
 						/*
-						 * 'Title / Description' settings
+						 * 'Description' settings
 						 */
 						case 'tooltip-og_art_section':
 							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
@@ -374,6 +377,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_add_to':
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
 							break;
+						case 'tooltip-plugin_add_tab':
+							$text = 'Include and exclude specific tabs in the Social Settings metabox.';
+							break;
 						case 'tooltip-plugin_cf_img_url':
 							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
 							break;
@@ -384,7 +390,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
 							break;
 						/*
-						 * 'Theme Integration' settings
+						 * 'WP / Theme Integration' settings
 						 */
 						case 'tooltip-plugin_check_head':
 							$text = $atts['short'].' can check the front-end webpage head section for duplicate HTML tags when editing Posts and Pages. You may uncheck this option if you\'ve edited a few Posts and Pages without seeing any warning messages about duplicate HTML tags.';
@@ -690,9 +696,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<p><b>'.sprintf( __( 'The <a href="%1$s">%2$s</a> advanced option is currently disabled.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $atts['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> (Pro version required) &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s).', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ) ).'</p><p>'.sprintf( __( 'Note: This options sanity check is only performed when updating the %s plugin.', 'wpsso' ), $atts['short'] ).'</p>';
 						break;
 					case 'notice-header-tmpl-default-head':
+						$action_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+							'-action=head_attr_filter_update' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
 						$edit_url = get_admin_url( null, 'theme-editor.php?file=header.php&theme='.get_stylesheet() );
-						$update_url = wp_nonce_url( $this->p->util->get_admin_url( '?action=head_attr_filter_update' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
-						$text = '<p><b>'.__( 'Your header.php theme template does not support Schema markup of webpage headers.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header.php theme template should include a filter function call for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update the header.php theme template automatically for you to change the default %2$s element to:', 'wpsso' ), $atts['short'], '<code>&lt;head&gt;</code>' ).'</p><pre><code>&lt;head &lt;?php echo apply_filters( \'head_attributes\', \'\' ); ?&gt;&gt;</code></pre><p>'.sprintf( __( '<b><a href="%1$s">Click here to update the header.php theme template automatically</a></b> &mdash; or <a href="%2$s">modify the template yourself using the WordPress editor</a>.', 'wpsso' ), $update_url, $edit_url ).'</p><p>'.sprintf( __( 'Note: This template sanity check is only performed when updating the %s plugin, updating a theme, or activating a new theme.', 'wpsso' ), $atts['short'] ).'</p>';
+						$text = '<p><b>'.__( 'Your header.php theme template does not support Schema markup of webpage headers.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header.php theme template should include a filter function call for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update the header.php theme template automatically for you to change the default %2$s element to:', 'wpsso' ), $atts['short'], '<code>&lt;head&gt;</code>' ).'</p><pre><code>&lt;head &lt;?php echo apply_filters( \'head_attributes\', \'\' ); ?&gt;&gt;</code></pre><p>'.sprintf( __( '<b><a href="%1$s">Click here to update the header.php theme template automatically</a></b> &mdash; or <a href="%2$s">modify the template yourself using the WordPress editor</a>.', 'wpsso' ), $action_url, $edit_url ).'</p><p>'.sprintf( __( 'Note: This template sanity check is only performed when updating the %s plugin, updating a theme, or activating a new theme.', 'wpsso' ), $atts['short'] ).'</p>';
 						break;
 					case 'notice-pro-tid-missing':
 						if ( ! is_multisite() )
