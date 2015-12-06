@@ -262,9 +262,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'property', $mt_og, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
+				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
 				$this->p->schema->get_noscript_array( $use_post, $obj, $mt_og ),
-				$this->p->schema->get_json_array( $post_id, $author_id, $this->p->cf['lca'].'-schema' ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post )	// seo description is last
+				$this->p->schema->get_json_array( $post_id, $author_id, $this->p->cf['lca'].'-schema' )
 			);
 
 			/*

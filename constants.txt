@@ -1,0 +1,40 @@
+/*
+ * hard-coded / fixed constants
+ */
+WPSSO_FILEPATH
+WPSSO_PLUGINDIR
+WPSSO_PLUGINBASE
+WPSSO_URLPATH
+WPSSO_NONCE
+/*
+ * variable constants - can be pre-defined in wp-config.php file to modify default values
+ */
+WPSSO_CACHEDIR			= WPSSO_PLUGINDIR.'cache/'
+WPSSO_TOPICS_LIST		= WPSSO_PLUGINDIR.'share/topics.txt'
+WPSSO_CACHEURL			= WPSSO_URLPATH.'cache/'
+WPSSO_DEBUG_FILE_EXP		= 300
+WPSSO_MENU_ORDER			= 99.11
+WPSSO_MENU_ICON_HIGHLIGHT	= true
+WPSSO_SHARING_SHORTCODE		= 'wpsso'
+WPSSO_TS_NAME			= 'wpsso_timestamps'
+WPSSO_OPTIONS_NAME		= 'wpsso_options'
+WPSSO_SITE_OPTIONS_NAME		= 'wpsso_site_options'
+WPSSO_NOTICE_NAME		= 'wpsso_notices'
+WPSSO_DISMISS_NAME		= 'wpsso_dismissed'
+WPSSO_META_NAME			= '_wpsso_meta'
+WPSSO_PREF_NAME			= '_wpsso_pref'
+WPSSO_OPTIONS_NAME_ALT		= 'wpsso_options'
+WPSSO_SITE_OPTIONS_NAME_ALT	= 'wpsso_site_options'
+WPSSO_META_NAME_ALT		= '_wpsso_meta'
+WPSSO_PREF_NAME_ALT		= '_wpsso_pref'
+WPSSO_ADD_MENU_PRIORITY		= -20
+WPSSO_ADD_SETTINGS_PRIORITY	= -10
+WPSSO_META_SAVE_PRIORITY		= 6
+WPSSO_META_CACHE_PRIORITY	= 9
+WPSSO_INIT_PRIORITY		= 14
+WPSSO_HEAD_PRIORITY		= 10
+WPSSO_SOCIAL_PRIORITY		= 100
+WPSSO_FOOTER_PRIORITY		= 100
+WPSSO_SEO_FILTERS_PRIORITY	= 100
+WPSSO_CURL_CAINFO		= WPSSO_PLUGINDIR.'share/curl/cacert.pem'
+WPSSO_CURL_USERAGENT		= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0'
