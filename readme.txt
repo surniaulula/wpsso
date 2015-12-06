@@ -349,8 +349,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 Official announcement: N/A
 
 * **New Features**
-	* Added a new "Tabs in Social Settings Metabox" option on the Advanced settings page to include/exclude the Social Preview, Head Tags, and Validate tabs (Pro version).
 	* Added a new "Force Autoplay when Possible" option on the General settings page to force autoplay of Vimeo and Wistia videos when possible (Pro version).
+	* Added a new "Show Tabs in Social Settings Metabox" option on the Advanced settings page to include/exclude the Social Preview, Head Tags, and Validate tabs (Pro version).
 * **Improvements**
 	* Refactored the All in One SEO Pack integration module to improved post object detection (Pro version).
 	* Refactored the video integration modules to improve code quality (Pro version).
