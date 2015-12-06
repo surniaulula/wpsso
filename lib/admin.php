@@ -376,6 +376,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
 						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
+			$this->head_attr_filter_check();
 			return $opts;
 		}
 
@@ -1173,7 +1174,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function head_attr_filter_check() {
-
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) )
 				return;
 
@@ -1201,7 +1201,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// double check in case of reloads etc.
 			if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
 				strpos( $html, '<head>' ) === false ) {
-				$this->p->notice->err( sprintf( __( 'No update possible - An standard / un-modified &lt;head&gt; element was not found in %s.', 'wpsso' ), $file ), true );
+				$this->p->notice->err( sprintf( __( 'No update possible - a standard / un-modified &lt;head&gt; element was not found in %s.', 'wpsso' ), $file ), true );
 				return;
 			}
 
