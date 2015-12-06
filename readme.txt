@@ -346,7 +346,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.17.0 (2015/12/06) =
 
-Official announcement: N/A
+Official announcement: http://surniaulula.com/2015/12/06/ngfb-wpsso-update-improvements-video-autoplay/
 
 * **New Features**
 	* Added a new "Force Autoplay when Possible" option on the General settings page to force autoplay of Vimeo and Wistia videos when possible (Pro version).
