@@ -82,8 +82,34 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
+			$checkboxes = '';
+			foreach ( $this->p->util->get_post_types( 'backend' ) as $post_type )
+				$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_'.$post_type->name ).' '.
+					$post_type->label.' '.( empty( $post_type->description ) ?
+						'' : '('.$post_type->description.')' ).'</p>';
+			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_taxonomy' ).
+				' '.__( 'Taxonomy (Categories and Tags)', 'wpsso' ).'</p>';
+			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_user' ).
+				' '.__( 'User Profile', 'wpsso' ).'</p>';
+
+			$rows[] = $this->p->util->get_th( _x( 'Include Social Settings Metabox on',
+				'option label', 'wpsso' ), null, 'plugin_add_to' ).
+			'<td class="blank">'.$checkboxes.'</td>';
+			
+			$rows[] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Show Tabs in Social Settings Metabox',
+				'option label', 'wpsso' ), null, 'plugin_add_tab' ).
+			'<td class="blank">'.
+			'<p>'.$this->get_nocb( 'plugin_add_tab_preview' ).' '.
+				_x( 'Social Preview', 'metabox tab', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( 'plugin_add_tab_tags' ).' '.
+				_x( 'Head Tags', 'metabox tab', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( 'plugin_add_tab_validate' ).' '.
+				_x( 'Validate', 'metabox tab', 'wpsso' ).'</p>'.
+			'</td>';
+
 			if ( $network ) {
-				$rows[] = $this->p->util->get_th( _x( 'Show Social Columns by Default for',
+				$rows[] = $this->p->util->get_th( _x( 'Enable Social Img/Desc Columns for',
 					'option label', 'wpsso' ), null, 'plugin_social_columns',
 						array( 'rowspan' => 3 ) ).
 				$this->get_nocb_cell( 'plugin_columns_post', 
@@ -100,9 +126,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					__( 'Users' ) ).
 				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_user' );
 			} else {
-				$rows[] = $this->p->util->get_th( _x( 'Show Social Columns by Default for',
+				$rows[] = $this->p->util->get_th( _x( 'Enable Social Img/Desc Columns for',
 					'option label', 'wpsso' ), null, 'plugin_social_columns' ).
-				'<td>'.
+				'<td class="blank">'.
 				'<p>'.$this->get_nocb( 'plugin_columns_post', 
 					__( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).'</p>'.
 				'<p>'.$this->get_nocb( 'plugin_columns_taxonomy',
@@ -111,32 +137,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					__( 'Users' ) ).'</p>'.
 				'</td>';
 			}
-
-			$checkboxes = '';
-			foreach ( $this->p->util->get_post_types( 'backend' ) as $post_type )
-				$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_'.$post_type->name ).' '.
-					$post_type->label.' '.( empty( $post_type->description ) ?
-						'' : '('.$post_type->description.')' ).'</p>';
-			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_taxonomy' ).
-				' '.__( 'Taxonomy (Categories and Tags)', 'wpsso' ).'</p>';
-			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_user' ).
-				' '.__( 'User Profile', 'wpsso' ).'</p>';
-
-			$rows[] = $this->p->util->get_th( _x( 'Include Social Settings Metabox on',
-				'option label', 'wpsso' ), null, 'plugin_add_to' ).
-			'<td class="blank">'.$checkboxes.'</td>';
-			
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Tabs in Social Settings Metabox',
-				'option label', 'wpsso' ), null, 'plugin_add_tab' ).
-			'<td class="blank">'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_preview' ).' '.
-				_x( 'Social Preview', 'metabox tab', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_tags' ).' '.
-				_x( 'Head Tags', 'metabox tab', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_validate' ).' '.
-				_x( 'Validate', 'metabox tab', 'wpsso' ).'</p>'.
-			'</td>';
 
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Image URL Custom Field',

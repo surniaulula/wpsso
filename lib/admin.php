@@ -140,15 +140,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					isset( $ts[$ext.'_update_time'] ) && 
 						$ts[$ext.'_update_time'] < $days ) {
 
-					$this->p->notice->log( $type, '<b>'.__( 'Excellent!', 'wpsso' ).'</b> '.
-					sprintf( __( 'It looks like you\'ve been running <b>%1$s version %2$s</b> for several days &mdash; is it working well with <b>WordPress version %3$s</b>?', 'wpsso' ), $info['name'], $info['version'], $wp_version ).'<ul><li><a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.__( 'Let us know with a "Works" vote on WordPress.org!', 'wpsso' ).'</a></li>'.$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
+					$this->p->notice->log( $type, '<b>'.__( 'Excellent!', 'wpsso' ).'</b> '.sprintf( __( 'It looks like you\'ve been running <b>%1$s version %2$s</b> for several days &mdash; is it working well with <b>WordPress version %3$s</b>?', 'wpsso' ), $info['name'], $info['version'], $wp_version ).'<ul><li><a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.__( 'Let us know with a "Works" vote on WordPress.org!', 'wpsso' ).'</a></li>'.$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
 
 				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
 					isset( $ts[$ext.'_install_time'] ) && 
 						$ts[$ext.'_install_time'] < $weeks ) {
 
-					$this->p->notice->log( $type, '<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
-					sprintf( __( 'It looks like you\'ve been running <b>%s</b> for several weeks &mdash; how do you like it so far?', 'wpsso' ), $info['name'] ).'<ul><li><a href="'.$info['url']['review'].'" target="_blank">'.__( 'Let us know with a 5-star rating and a few encouraging words on wordpress.org!', 'wpsso' ).'</a> ;-)</li>'.$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );
+					$this->p->notice->log( $type, '<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.sprintf( __( 'It looks like you\'ve been running <b>%s</b> for several weeks &mdash; how do you like it so far?', 'wpsso' ), $info['name'] ).'<ul><li><a href="'.$info['url']['review'].'" target="_blank">'.__( 'Let us know with a 5-star rating and a few encouraging words on wordpress.org!', 'wpsso' ).'</a> ;-)</li>'.$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );
 				}
 			}
 		}
@@ -1177,17 +1175,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) )
 				return;
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'check header.php' );
+
 			$file = get_stylesheet_directory().'/header.php';
 			$html = SucomUtil::get_stripped_php( $file );
-			if ( $html === false )
+
+			if ( $html === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: header.php not found' );
 				return;
+			}
 
 			if ( $this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' ) {
 				if ( strpos( $html, '<head>' ) !== false ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'header.php contains an un-modified head element' );
 					$this->p->notice->err( $this->p->msgs->get( 'notice-header-tmpl-default-head' ),
 						true, true, 'notice-header-tmpl-default-head', true );
 				}
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'check header.php' );
 		}
 
 		public function head_attr_filter_update() {
@@ -1201,7 +1211,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// double check in case of reloads etc.
 			if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
 				strpos( $html, '<head>' ) === false ) {
-				$this->p->notice->err( sprintf( __( 'No update possible - a standard / un-modified &lt;head&gt; element was not found in %s.', 'wpsso' ), $file ), true );
+				$this->p->notice->err( sprintf( __( 'No update possible - an un-modified &lt;head&gt; element was not found in %s.', 'wpsso' ), $file ), true );
 				return;
 			}
 
