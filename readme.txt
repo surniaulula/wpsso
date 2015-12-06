@@ -344,7 +344,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.17.0 (TBD) =
+= Version 3.17.0 (2015/12/06) =
 
 Official announcement: N/A
 
@@ -355,7 +355,7 @@ Official announcement: N/A
 	* Refactored the All in One SEO Pack integration module to improved post object detection (Pro version).
 	* Refactored the video integration modules to improve code quality (Pro version).
 	* Moved several Advanced options under the "WP / Theme Integration" tab.
-	* Improved the "Head Tags" listing in the Social Settings metabox to include JSON and additional Schema markup HTML blocks.
+	* Improved the Head Tags listing in the Social Settings metabox to include JSON and additional Schema markup HTML blocks.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
@@ -582,11 +582,11 @@ Official announcement: [NGFB / WPSSO Update — Twitter Card Updates](http://sur
 
 == Upgrade Notice ==
 
-= 8.16.0 =
+= 3.17.0 =
+
+2015/12/06 Added new options to manage video autoplay, and include/exclude tabs in the Social Settings metabox. Refactored video integration modules and improved the Head Tags listing in the Social Settings metabox.
+
+= 3.16.0 =
 
 2015/11/27 Added a check for a standard &lt;head&gt; element in the header.php theme template, and provide a method to add a new "head_attributes" filter.
-
-= 3.15.0 =
-
-2015/11/21 Added a new "Use Meta Property Container(s)" option in the Google / Schema settings tab, added support for WooCommerce product ratings, added support for Yotpo Social Reviews for WooCommerce product ratings.
 
