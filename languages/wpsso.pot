@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-06 13:27:40+00:00\n"
+"POT-Creation-Date: 2015-12-06 17:46:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:68 lib/admin.php:670
+#: lib/admin.php:68 lib/admin.php:669 lib/user.php:168
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:69 lib/admin.php:671
+#: lib/admin.php:69 lib/admin.php:670 lib/user.php:169
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -167,36 +167,36 @@ msgctxt "metabox title (side)"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/admin.php:647 lib/admin.php:648
+#: lib/admin.php:646 lib/admin.php:647
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:672
+#: lib/admin.php:671
 msgctxt "plugin status label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:675
+#: lib/admin.php:674
 msgctxt "plugin status label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:678
+#: lib/admin.php:677
 msgctxt "plugin status label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:683
+#: lib/admin.php:682
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:829
+#: lib/admin.php:828
 msgctxt "submit button"
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:830
+#: lib/admin.php:829
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr ""
@@ -2017,7 +2017,7 @@ msgid ""
 "image aspect ratio is equal to/or greater than %3$d:1."
 msgstr ""
 
-#: lib/pro/util/shorten.php:114
+#: lib/pro/util/shorten.php:108
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
@@ -2447,15 +2447,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:297
+#: lib/user.php:303
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:298
+#: lib/user.php:304
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:299
+#: lib/user.php:305
 msgid "Jabber / Google Talk"
 msgstr ""
 

@@ -521,7 +521,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_single_page() {
 			?>
 			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h1><?php $this->show_follow_icons(); echo $this->menu_name; ?></h1>
+				<h1><?php echo $this->menu_name; ?></h1>
 				<div id="poststuff" class="metabox-holder">
 					<div id="post-body" class="">
 						<div id="post-body-content" class="">
@@ -558,9 +558,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			?>
 
 			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h1><?php $this->show_follow_icons(); 
-					echo $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-						self::$is_suffix.' &ndash; '.$this->menu_name; ?></h1>
+				<h1><?php echo $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
+					self::$is_suffix.' &ndash; '.$this->menu_name; ?></h1>
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
 					<div id="side-info-column" class="inner-sidebar">
 						<?php do_meta_boxes( $this->pagehook, 'side', null ); ?>
@@ -835,6 +834,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_help() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
 			echo $this->p->msgs->get( 'side-help' );
+			$this->show_follow_icons();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
 					continue;

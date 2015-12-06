@@ -163,6 +163,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function show_metaboxes( $user ) {
 			if ( ! current_user_can( 'edit_user', $user->ID ) )
 				return;
+			$is_suffix = ' '.( $this->p->check->aop( $this->p->cf['lca'], 
+				true, $this->p->is_avail['aop'] ) ? 
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' ) );
+			echo '<h2>'.$this->p->cf['plugin'][$this->p->cf['lca']]['short'].
+				$is_suffix.' &ndash; User Profile</h2>';
 			echo '<div id="poststuff">';
 			do_meta_boxes( 'user', 'normal', $user );
 			echo '</div>';
