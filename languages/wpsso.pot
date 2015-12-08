@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-08 19:25:56+00:00\n"
+"POT-Creation-Date: 2015-12-08 19:30:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1668,8 +1668,8 @@ msgstr ""
 
 #: lib/messages.php:704
 msgid ""
-"One or more of your theme header templates does not support Schema markup of "
-"the webpage head section."
+"At least one of your theme header templates does not support Schema markup "
+"of the webpage head section."
 msgstr ""
 
 #: lib/messages.php:704
