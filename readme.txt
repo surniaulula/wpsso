@@ -343,6 +343,27 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.18.0 (TBA) =
+
+Official announcement: N/A
+
+* **New Features**
+	* Added a new "Schema Item Type by Post Type" option to select the Schema item type for each post type.
+* **Improvements**
+	* Checks for head HTML elements without attribute filters - along with its template update process - are now done on all header templates, not just the header.php file.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added a new `Sucom::sanitize_key()` method (returns a lower case string with alpha-numeric, hypens, and underscores).
+	* Refactored the post, user, and taxonomy meta code to support action hooks for URL query arguments, and improve loading / parsing of head meta tags.
+	* Renamed the NgfbOptions method `push_add_to_options()` to `add_ptns_to_opts()` and changed its arguments (not backwards compatible).
+	* Changed the NgfbUtil `get_post_types()` arguments as well (not backwards compatible).
+	* Renamed several NgfbAmin methods:
+		* `load_form_page()` to `load_setting_page()`.
+		* `show_form_page()` to `show_setting_page()`
+		* `head_attr_filter_check()` to `check_tmpl_head_elements()`
+		* `head_attr_filter_update()` to `modify_tmpl_head_elements()`
+
 = Version 3.17.0 (2015/12/06) =
 
 Official announcement: http://surniaulula.com/2015/12/06/ngfb-wpsso-update-improvements-video-autoplay/
