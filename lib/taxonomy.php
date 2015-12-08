@@ -37,8 +37,10 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 				if ( ! empty( $this->p->options['plugin_columns_taxonomy'] ) ) {
 
-					add_filter( 'manage_edit-'.$this->tax_slug.'_columns', array( $this, 'add_column_headings' ), 10, 1 );
-					add_filter( 'manage_'.$this->tax_slug.'_custom_column', array( $this, 'get_taxonomy_column_content' ), 10, 3 );
+					add_filter( 'manage_edit-'.$this->tax_slug.'_columns', 
+						array( $this, 'add_column_headings' ), 10, 1 );
+					add_filter( 'manage_'.$this->tax_slug.'_custom_column', 
+						array( $this, 'get_taxonomy_column_content' ), 10, 3 );
 	
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_image_taxonomy_column_content' => 4,
@@ -67,7 +69,8 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				 */
 
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
-				add_action( 'admin_head', array( &$this, 'set_head_meta_tags' ) );
+				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
+				add_action( 'admin_head', array( &$this, 'load_meta_page' ), 300 );
 				add_action( $this->tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
 				add_action( 'created_'.$this->tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
 				add_action( 'created_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
@@ -180,35 +183,54 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		}
 
 		// hooked into the admin_head action
-		public function set_head_meta_tags() {
-
-			if ( ! empty( $this->head_meta_tags ) )	// only set header tags once
+		public function load_meta_page() {
+			// all meta modules set this property, so use it to optimize code execution
+			if ( ! empty( WpssoMeta::$head_meta_tags ) )
 				return;
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
 			$screen_id = SucomUtil::get_screen_id();
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'screen id = '.$screen_id );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->debug->log( 'screen_id: '.$screen_id );
+			}
 
-			switch ( $screen_id ) {
-				case 'edit-'.$this->tax_slug:
-					$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
-					if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
-						$add_metabox, $this->term_id, $screen_id ) === true ) {
+			if ( $screen_id !== 'edit-'.$this->tax_slug )
+				return;
 
-						do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $this->term_id, $screen_id );
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 
-						// use_post is false since this isn't a post
-						// read_cache is false to generate notices etc.
-						$this->head_meta_tags = $this->p->head->get_header_array( false );
-						$this->head_info = $this->p->head->extract_head_info( $this->head_meta_tags );
+			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
+				$add_metabox, $this->term_id, $screen_id ) === true ) {
 
-						if ( empty( $this->head_info['og:image'] ) )
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
+				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $this->term_id, $screen_id );
+
+				// use_post is false since this isn't a post
+				// read_cache is false to generate notices etc.
+				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false );
+				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
+
+				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
+					// check for missing open graph image and issue warning
+					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
+			}
+
+			$lca = $this->p->cf['lca'];
+			$action_query = $lca.'-action';
+			if ( ! empty( $_GET[$action_query] ) ) {
+				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'nonce token validation query field missing' );
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+					$this->p->notice->err( __( 'Nonce token validation failed for action \"'.$action_name.'\".', 'wpsso' ) );
+				} else {
+					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
+					switch ( $action_name ) {
+						default: 
+							do_action( $lca.'_load_meta_page_taxonomy_'.$action_name, $this->term_id );
+							break;
 					}
-					break;
+				}
 			}
 		}
 
@@ -235,22 +257,22 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		public function show_metabox_taxonomy( $term ) {
 			$opts = $this->get_options( $term->term_id );
 			$def_opts = $this->get_defaults();
-			$this->head_info['post_id'] = false;
+			WpssoMeta::$head_meta_info['post_id'] = false;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'taxonomy';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
-				$this->get_default_tabs() );
+				$this->get_default_tabs(), $term );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, $this->head_info ), 
+				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, WpssoMeta::$head_meta_info ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
-						array(), $this->form, $this->head_info ) );
+						array(), $this->form, WpssoMeta::$head_meta_info ) );
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 

@@ -165,7 +165,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 			$html .= '<select name="'.$this->options_name.'['.$name.']"'.
 				( empty( $class ) ? '' : ' class="'.$class.'"' ).' id="'.$select_id.'"'.
-				( $disabled === true ? ' disabled="disabled"' : '' ).'>';
+				( $disabled === true ? ' disabled="disabled"' : '' ).'>'."\n";
 
 			foreach ( $values as $val => $desc ) {
 				// if the array is NOT associative (so regular numered array), 
@@ -202,9 +202,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$html .= selected( $selected, $val, false );
 				elseif ( $this->in_options( $name ) )
 					$html .= selected( $this->options[$name], $val, false );
-				$html .= '>'.$desc.'</option>';
+				$html .= '>'.$desc.'</option>'."\n";
 			}
-			$html .= '</select>';
+			$html .= '</select>'."\n";
 			return $html;
 		}
 

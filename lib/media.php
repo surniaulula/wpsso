@@ -311,15 +311,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $ret_empty; 
 			}
 
+			$use_full = false;
 			$img_meta = wp_get_attachment_metadata( $pid );
 
-			$use_full = isset( $img_meta['width'] ) && isset( $img_meta['height'] ) &&
-				$img_meta['width'] === $size_info['width'] && 
-					$img_meta['height'] === $size_info['height'] ? true : false;
+			if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) ) {
+				if ( $img_meta['width'] === $size_info['width'] && 
+					$img_meta['height'] === $size_info['height'] )
+						$use_full = true;
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $img_meta['file'].' full size image dimensions '.$img_meta['width'].'x'.$img_meta['height'] );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( $img_meta['file'].' full size image dimensions are missing' );
 
 			if ( $use_full === true ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'requesting full size name instead - image dimensions same as '.
+					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
 
 			} elseif ( strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 ) {		// only resize our own custom image sizes

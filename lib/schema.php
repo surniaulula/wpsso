@@ -22,14 +22,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
 
-					$prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
-						100 : $this->p->options['plugin_head_attr_filter_prio'];
+				add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ) );
 
-					add_filter( $this->p->options['plugin_head_attr_filter_name'], 
-						array( &$this, 'add_head_attributes' ), $prio, 1 );
+				$prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
+					100 : $this->p->options['plugin_head_attr_filter_prio'];
+
+				add_filter( $this->p->options['plugin_head_attr_filter_name'], 
+					array( &$this, 'filter_head_attributes' ), $prio, 1 );
 
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'add_head_attributes skipped: plugin_head_attr_filter_name option is empty' );
+				$this->p->debug->log( 'head attributes filter skipped: plugin_head_attr_filter_name option is empty' );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -42,8 +44,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $sizes;
 		}
 
-		public function add_head_attributes( $head_attr ) {
+		public function add_head_attributes() {
+			echo apply_filters( $this->p->options['plugin_head_attr_filter_name'], '' );
+		}
 
+		public function filter_head_attributes( $head_attr = '' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -54,17 +59,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$item_type = $schema_types['website'];		// default value for non-singular webpages
 
 			if ( is_singular() ) {
-
 				if ( ! empty( $obj->post_type ) &&
-					isset( $schema_types[$obj->post_type] ) )
-						$item_type = $schema_types[$obj->post_type];
-				else $item_type = $schema_types['webpage'];
+					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
+
+					$type_name = $this->p->options['schema_type_for_'.$obj->post_type];
+					if ( isset( $schema_types[$type_name] ) )
+						$item_type = $schema_types[$type_name];
+					else $item_type = $schema_types['webpage'];
+
+				} else $item_type = $schema_types['webpage'];
 
 			} elseif ( $this->p->util->force_default_author() &&
 				! empty( $this->p->options['og_def_author_id'] ) )
 					$item_type = $schema_types['webpage'];
 
-			$item_type = apply_filters( $this->p->cf['lca'].'_schema_item_type', $item_type, $post_id, $obj );
+			$item_type = apply_filters( $this->p->cf['lca'].'_schema_item_type',
+				$item_type, $post_id, $obj );
 
 			if ( ! empty( $item_type ) ) {
 

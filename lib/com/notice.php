@@ -406,13 +406,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	background-position:top;
 	background-size:cover;
 	border:1px dashed #ccc;
-	padding:10px 40px 10px 40px;
+	padding:0 40px;
 	margin-top:0;
 }
 .'.$this->lca.'-notice.update-nag > div {
 	clear:both;
 	display:block !important;
-	max-width:720px;
 	margin:0 auto;
 }
 .'.$this->lca.'-notice.update-nag p,

@@ -196,37 +196,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function push_add_to_options( &$opts = array(),
-			$add_to_prefixes = array( 'plugin' => 'backend' ), $default = 1 ) {
+		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {
+			if ( ! is_array( $prefixes ) )
+				$prefixes = array( $prefixes => $default );
 
-			foreach ( $add_to_prefixes as $opt_prefix => $type ) {
-				foreach ( $this->get_post_types( $type ) as $post_type ) {
-					$option_name = $opt_prefix.'_add_to_'.$post_type->name;
-					$filter_name = $this->p->cf['lca'].'_add_to_options_'.$post_type->name;
-					if ( ! isset( $opts[$option_name] ) )
-						$opts[$option_name] = apply_filters( $filter_name, $default );
+			foreach ( $prefixes as $opt_pre => $def_val ) {
+				foreach ( $this->get_post_types() as $post_type ) {
+					$idx = $opt_pre.'_'.$post_type->name;
+					if ( ! isset( $opts[$idx] ) )
+						$opts[$idx] = $def_val;
 				}
 			}
 			return $opts;
 		}
 
-		public function get_post_types( $type = 'frontend', $output = 'objects' ) {
-			switch ( $type ) {
-				case 'frontend':
-					$post_types = get_post_types( array( 'public' => true ), $output );
-					break;
-				case 'backend':
-					$post_types = get_post_types( array( 'public' => true, 'show_ui' => true ), $output );
-					break;
-				default:
-					$post_types = array();
-					break;
-			}
-			return apply_filters( $this->p->cf['lca'].'_post_types', $post_types, $type, $output );
+		public function get_post_types( $output = 'objects' ) {
+			return apply_filters( $this->p->cf['lca'].'_post_types', 
+				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
 		public function clear_all_cache() {
-
 			wp_cache_flush();					// clear non-database transients as well
 
 			$lca = $this->p->cf['lca'];

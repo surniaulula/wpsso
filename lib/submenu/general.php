@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'og_img_max', 
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
 					( empty( $this->form->options['og_vid_prev_img'] ) ?
-						'' : ' '._x( '<em>video preview images are enabled</em> and &ndash; when available &ndash; are included first',
+						'' : ' '._x( '<em>video preview images are enabled</em> and will be included first',
 							'option comment', 'wpsso' ) ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
@@ -268,15 +268,28 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
+					$schema_select = '';
+					$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
+						$this->p->cf['head']['schema_type'] );
+					foreach ( $this->p->util->get_post_types() as $post_type )
+						$schema_select .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name, $schema_types ).
+							' for '.$post_type->label.' '.( empty( $post_type->description ) ?
+								'' : '('.$post_type->description.')' ).'</p>'."\n";
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Schema Item Type by Post Type',
+						'option label', 'wpsso' ), null, 'google_schema_post_type' ).
+					'<td>'.$schema_select.'</td>';
+
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Meta Property Container(s)',
 						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
 					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Include Author JSON-LD',
-						'option label', 'wpsso' ), null, 'google_schema_author_json' ).
-					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
+					$this->p->util->get_th( _x( 'Include Website JSON-LD',
+						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
+					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Include Publisher JSON-LD',
@@ -284,9 +297,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Include Website JSON-LD',
-						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
-					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
+					$this->p->util->get_th( _x( 'Include Author JSON-LD',
+						'option label', 'wpsso' ), null, 'google_schema_author_json' ).
+					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
 
 					break;
 

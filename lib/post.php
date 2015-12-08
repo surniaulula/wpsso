@@ -24,9 +24,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * editing a post and/or page.
 				 */
 				if ( SucomUtil::is_post_page() ) {
-				
 					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-					add_action( 'admin_head', array( &$this, 'set_head_meta_tags' ) );
+					// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
+					add_action( 'admin_head', array( &$this, 'load_meta_page' ), 100 );
 					add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
@@ -37,19 +37,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 
 				} elseif ( ! empty( $this->p->options['plugin_columns_post'] ) ) {
-
-					// only check registered front-end post types (to avoid menu items, product variations, etc.)
-					$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
-
-					if ( is_array( $post_types ) ) {
-						foreach ( $post_types as $ptn ) {
+					$ptns = $this->p->util->get_post_types( 'names' );
+					if ( is_array( $ptns ) ) {
+						foreach ( $ptns as $ptn ) {
 							add_filter( 'manage_'.$ptn.'_posts_columns', 
 								array( $this, 'add_column_headings' ), 10, 1 );
 							add_action( 'manage_'.$ptn.'_posts_custom_column', 
 								array( $this, 'show_post_column_content',), 10, 2 );
 						}
 					}
-
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_image_post_column_content' => 4,
 						'og_desc_post_column_content' => 4,
@@ -111,33 +107,36 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		// hooked into the admin_head action
-		public function set_head_meta_tags() {
-
-			if ( ! empty( $this->head_meta_tags ) )	// only set header tags once
+		public function load_meta_page() {
+			// all meta modules set this property, so use it to optimize code execution
+			if ( ! empty( WpssoMeta::$head_meta_tags ) )
 				return;
 
 			$screen_id = SucomUtil::get_screen_id();
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+				$this->p->debug->log( 'screen_id: '.$screen_id );
 				$this->p->util->log_is_functions();
-				$this->p->debug->log( 'screen id = '.$screen_id );
 			}
 
-			// check for post/page/media editing lists
+			// check for list type pages
 			if ( strpos( $screen_id, 'edit-' ) !== false ||
 				$screen_id === 'upload' )
 					return;
 
+			// make sure we have at least a post type and post status
 			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
-				empty( $obj->post_type ) )
-					return;
+				empty( $obj->post_type ) || 
+					empty( $obj->post_status ) )
+						return;
 
-			$post_id = empty( $obj->ID ) ? 0 : $obj->ID;
-			if ( isset( $obj->post_status ) && 
-				$obj->post_status !== 'auto-draft' ) {
+			$post_id = empty( $obj->ID ) ?
+				0 : $obj->ID;
 
+			if ( $obj->post_status !== 'auto-draft' ) {
 				$post_type = get_post_type_object( $obj->post_type );
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
+
 				if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', 
 					$add_metabox, $post_id, $post_type->name ) === true ) {
 
@@ -145,15 +144,36 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					do_action( $this->p->cf['lca'].'_admin_post_header', $post_id, $post_type->name );
 
 					// read_cache is false to generate notices etc.
-					$this->head_meta_tags = $this->p->head->get_header_array( $post_id, false );
-					$this->head_info = $this->p->head->extract_head_info( $this->head_meta_tags );
+					WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( $post_id, false );
+					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
-					if ( $obj->post_status == 'publish' ) {
-						if ( empty( $this->head_info['og:image'] ) )
+					if ( $obj->post_status === 'publish' ) {
+						// check for missing open graph image and issue warning
+						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
-						// check for duplicates once the post has been published and we have a functioning permalink
+
+						// check duplicates only when the post is published and we have a permalink
 						if ( ! empty( $this->p->options['plugin_check_head'] ) )
 							$this->check_post_header( $post_id, $obj );
+					}
+				}
+			}
+
+			$lca = $this->p->cf['lca'];
+			$action_query = $lca.'-action';
+			if ( ! empty( $_GET[$action_query] ) ) {
+				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'nonce token validation query field missing' );
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+					$this->p->notice->err( __( 'Nonce token validation failed for action \"'.$action_name.'\".', 'wpsso' ) );
+				} else {
+					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
+					switch ( $action_name ) {
+						default: 
+							do_action( $lca.'_load_meta_page_post_'.$action_name, $post_id, $obj );
+							break;
 					}
 				}
 			}
@@ -174,9 +194,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return $post_id;
 
 			// only check registered front-end post types (to avoid menu items, product variations, etc.)
-			$post_types = $this->p->util->get_post_types( 'frontend', 'names' );
+			$ptns = $this->p->util->get_post_types( 'names' );
 			if ( empty( $obj->post_type ) || 
-				! in_array( $obj->post_type, $post_types ) )
+				! in_array( $obj->post_type, $ptns ) )
 					return $post_id;
 
 			$permalink = get_permalink( $post_id );
@@ -239,23 +259,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$opts = $this->get_options( $post->ID );	// sanitize when saving, not reading
 			$def_opts = $this->get_defaults();
 			$post_type = get_post_type_object( $post->post_type );	// since 3.0
-			$this->head_info['ptn'] = ucfirst( $post_type->name );
-			$this->head_info['post_id'] = $post->ID;
+			WpssoMeta::$head_meta_info['ptn'] = ucfirst( $post_type->name );
+			WpssoMeta::$head_meta_info['post_id'] = $post->ID;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
-				$this->get_default_tabs() );
+				$this->get_default_tabs(), $post, $post_type );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, $this->head_info ), 
+				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, WpssoMeta::$head_meta_info ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
-						array(), $this->form, $this->head_info ) );
+						array(), $this->form, WpssoMeta::$head_meta_info ) );
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
@@ -270,7 +290,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				case 'post-tags':	
 					if ( get_post_status( $head_info['post_id'] ) !== 'auto-draft' ) {
-						$rows = $this->get_rows_head_tags( $this->head_meta_tags );
+						$rows = $this->get_rows_head_tags();
 					} else $rows[] = '<td><p class="centered">'.sprintf( __( 'Save a draft version or publish the %s to display the head tags preview.', 'wpsso' ), $head_info['ptn'] ).'</p></td>';
 					break; 
 

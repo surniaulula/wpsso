@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.17.0',		// plugin version
+					'version' => '3.18.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -279,11 +279,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso385',				// increment when changing default options
+				'version' => 'sso390',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_logo_url' => '',
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
+					'schema_type_for_post' => 'article',
+					'schema_type_for_page' => 'article',
+					'schema_type_for_attachment' => 'webpage',
+					'schema_type_for_article' => 'article',
+					'schema_type_for_book' => 'book',
+					'schema_type_for_blog' => 'blog',
+					'schema_type_for_event' => 'event',
+					'schema_type_for_organization' => 'organization',
+					'schema_type_for_person' => 'person',
+					'schema_type_for_place' => 'place',
+					'schema_type_for_product' => 'product',
+					'schema_type_for_recipe' => 'recipe',
+					'schema_type_for_review' => 'review',
+					'schema_type_for_other' => 'other',
+					'schema_type_for_local.business' => 'local.business',
+					'schema_type_for_webpage' => 'webpage',
+					'schema_type_for_website' => 'website',
 					'schema_author_json' => 1,
 					'schema_publisher_json' => 1,
 					'schema_website_json' => 1,

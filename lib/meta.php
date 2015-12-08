@@ -17,10 +17,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected $p;
 		protected $form;
-		protected $head_meta_tags = array();
-		protected $head_info = array();
 		protected $opts = array();	// cache for options
 		protected $defs = array();	// cache for default values
+
+		protected static $head_meta_tags = array();
+		protected static $head_meta_info = array();
 
 		protected function get_default_tabs() {
 			$tabs = array();
@@ -47,7 +48,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					break;
 
 				case 'tags':	
-					$rows = $this->get_rows_head_tags( $this->head_meta_tags );
+					$rows = $this->get_rows_head_tags();
 					break; 
 
 				case 'validate':
@@ -112,12 +113,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $rows;
 		}
 
-		public function get_rows_head_tags( &$head_meta_tags ) {
+		public function get_rows_head_tags() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 			$rows = array();
 			$xtra_class = '';
-			foreach ( $head_meta_tags as $m ) {
+			foreach ( WpssoMeta::$head_meta_tags as $m ) {
 				if ( empty( $m[0] ) )	// array elements without HTML are ignored
 					continue;
 

@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$force_filter === true ) {
 
 				$lca = $this->p->cf['lca'];
-				$this->p->cf['opt']['defaults'] = $this->p->util->push_add_to_options( $this->p->cf['opt']['defaults'], 
-					array( 'plugin' => 'backend' ) );
+				$this->p->cf['opt']['defaults'] = $this->p->util->add_ptns_to_opts( $this->p->cf['opt']['defaults'], 
+					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
 				$this->p->cf['opt']['defaults']['seo_author_field'] = empty( $this->p->options['plugin_cm_gp_name'] ) ? 
 					$this->p->cf['opt']['defaults']['plugin_cm_gp_name'] : $this->p->options['plugin_cm_gp_name'];
@@ -168,12 +168,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' )
-								$this->p->admin->head_attr_filter_check();
+								$this->p->admin->check_tmpl_head_elements();
 					}
 				}
 
-				// add any missing 'plugin_add_to' options for current post types
-				$this->p->util->push_add_to_options( $opts, array( 'plugin' => 'backend' ) );
+				// add missing options for all post types
+				$opts = $this->p->util->add_ptns_to_opts( $opts,
+					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
 			// $opts should be an array and not empty
 			} else {

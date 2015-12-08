@@ -51,17 +51,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_hookname( $name ) {
-			return str_replace( array( '/', '-' ), '_', $name );
+			$name = str_replace( array( '/', '-' ), '_', $name );
+			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_classname( $name ) {
-			return str_replace( array( '/', '-' ), '', $name );
+			$name = str_replace( array( '/', '-' ), '', $name );
+			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_tag( $tag ) {
 			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
 			$tag = urldecode( $tag );
 			return $tag;
+		}
+
+		public static function sanitize_key( $key ) {
+			$key = strtolower( $key );
+			$key = preg_replace( '/[^a-z0-9_\-]/', '', $key );
+			return $key;
 		}
 
 		public function get_inline_vars() {
