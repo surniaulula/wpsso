@@ -11,7 +11,7 @@
  * License URI: http://www.gnu.org/licenses/gpl.txt
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
- * Tested Up To: 4.3.1
+ * Tested Up To: 4.4
  * Version: 3.18.0
  * 
  * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/

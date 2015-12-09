@@ -45,7 +45,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_elements' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_elements' ) );
 
-				add_filter( 'current_screen', array( &$this, 'current_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 	
 				if ( is_multisite() ) {
@@ -91,77 +90,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function current_screen_notices( $screen ) {
-			$screen_id = SucomUtil::get_screen_id( $screen );
-			switch ( $screen_id ) {
-				// only show timed notices on the dashboard and settings pages
-				case 'dashboard':
-				case ( strpos( $screen_id, '_page_'.$this->p->cf['lca'].'-' ) !== false ? true : false ):
-					$this->timed_notices();
-					break;
-			}
-			return $screen;	// it's a filter
-		}
-
-		public function timed_notices( $store = false ) {
-			if ( ! $this->p->notice->can_dismiss() ||			// true for wordpress 4.2+
-				! current_user_can( 'manage_options' ) )
-					return;
-
-			global $wp_version;
-			$user_id = get_current_user_id();
-			$dis_arr = empty( $user_id ) ? false : 			// just in case
-				get_user_option( WPSSO_DISMISS_NAME, $user_id );	// get dismissed message ids
-			$ts = $this->p->util->get_all_times();
-			$now_time = time();
-			$days = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 5 );
-			$weeks = $now_time - ( $this->p->cf['form']['time_by_name']['day'] * 21 );
-			$type = 'inf';
-
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) ||		// must be an active plugin
-					empty( $info['url']['review'] ) )	// must be hosted on wordpress.org
-						continue;
-
-				$msg_id_works = 'ask-'.$ext.'-'.$info['version'].'-plugin-works';	// unique for every version
-				$msg_id_review = 'ask-'.$ext.'-plugin-review';
-				$help_links = '<li>'.__( 'Got questions or need some help?', 'wpsso' );
-
-				if ( ! empty( $info['url']['pro_support'] ) && 
-					$this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) )
-						$help_links .= ' <a href="'.$info['url']['pro_support'].'" target="_blank">'.
-							sprintf( __( 'Open a new ticket on the %s support website.',
-								'wpsso' ), $info['short'].self::$is_suffix ).'</a>';
-				elseif ( ! empty( $info['url']['wp_support'] ) )
-					$help_links .= ' <a href="'.$info['url']['wp_support'].'" target="_blank">'.
-						sprintf( __( 'Open a new thread in the %s version support forum.',
-							'wpsso' ), $info['short'].self::$is_suffix ).'</a>';
-				$help_links .= '</li>';
-
-				if ( ! isset( $dis_arr[$type.'_'.$msg_id_works] ) && 
-					isset( $ts[$ext.'_update_time'] ) && 
-						$ts[$ext.'_update_time'] < $days ) {
-
-					$this->p->notice->log( $type, '<b>'.__( 'Excellent!', 'wpsso' ).'</b> '.sprintf( __( 'It looks like you\'ve been running <b>%1$s version %2$s</b> for several days &mdash; is it working well with <b>WordPress version %3$s</b>?', 'wpsso' ), $info['name'], $info['version'], $wp_version ).'<ul><li><a href="https://wordpress.org/plugins/'.$info['slug'].'/?compatibility[version]='.$wp_version.'&compatibility[topic_version]='.$info['version'].'&compatibility[compatible]=1" target="_blank">'.__( 'Let us know with a "Works" vote on WordPress.org!', 'wpsso' ).'</a></li>'.$help_links.'</ul>', $store, $user_id, $msg_id_works, true, array( 'label' => false ) );
-
-				} elseif ( ! isset( $dis_arr[$type.'_'.$msg_id_review] ) && 
-					isset( $ts[$ext.'_install_time'] ) && 
-						$ts[$ext.'_install_time'] < $weeks ) {
-
-					$this->p->notice->log( $type, '<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.sprintf( __( 'It looks like you\'ve been running <b>%s</b> for several weeks &mdash; how do you like it so far?', 'wpsso' ), $info['name'] ).'<ul><li><a href="'.$info['url']['review'].'" target="_blank">'.__( 'Let us know with a 5-star rating and a few encouraging words on wordpress.org!', 'wpsso' ).'</a> ;-)</li>'.$help_links.'</ul>', $store, $user_id, $msg_id_review, true, array( 'label' => false ) );
-				}
-			}
-		}
-
 		private function pro_req_notices() {
-			// check that wpsso pro has an authentication id
 			$lca = $this->p->cf['lca'];
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
 					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
 						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
 							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
-			// check all *active* plugins / extensions to make sure pro version is installed
+
 			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
@@ -172,7 +108,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'lca' => $ext ) ), true );
 				}
 			}
-			// if we have at least one tid, make sure the update manager is installed
+
 			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] ) {
 				if ( ! function_exists( 'get_plugins' ) )
 					require_once( ABSPATH.'wp-admin/includes/plugin.php' );

@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'screen_id: '.$screen_id );
 			}
 
-			if ( $screen_id !== 'user-edit' ||
+			if ( $screen_id !== 'user-edit' &&
 				$screen_id !== 'profile' )
 					return;
 
