@@ -356,9 +356,9 @@ Official announcement: N/A
 * **Developer Notes**
 	* Added a new `Sucom::sanitize_key()` method (returns a lower case string with alpha-numeric, hypens, and underscores).
 	* Refactored the post, user, and taxonomy meta code to support action hooks for URL query arguments, and improve loading / parsing of head meta tags.
-	* Renamed the NgfbOptions method `push_add_to_options()` to `add_ptns_to_opts()` and changed its arguments (not backwards compatible).
-	* Changed the NgfbUtil `get_post_types()` arguments as well (not backwards compatible).
-	* Renamed several NgfbAmin methods:
+	* Renamed the WpssoOptions method `push_add_to_options()` to `add_ptns_to_opts()` and changed its arguments (breaking change - not backwards compatible).
+	* Changed the WpssoUtil `get_post_types()` arguments as well (breaking change - not backwards compatible).
+	* Renamed several WpssoAmin methods:
 		* `load_form_page()` to `load_setting_page()`.
 		* `show_form_page()` to `show_setting_page()`
 		* `head_attr_filter_check()` to `check_tmpl_head_elements()`
