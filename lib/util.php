@@ -808,6 +808,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			return array( $id, $obj );
 		}
+
+		// deprecated 2015/12/09
+		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
+			return $opts;
+		}
 	}
 }
 
