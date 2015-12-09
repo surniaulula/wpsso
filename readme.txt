@@ -398,6 +398,10 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 
 == Upgrade Notice ==
 
+= 3.18.0 =
+
+2015/12/09 Added a new "Schema Item Type by Post Type" option, improved head HTML element checks in theme templates, refactored the post, user, and taxonomy meta code.
+
 = 3.17.0 =
 
 2015/12/06 Added new options to manage video autoplay, and include/exclude tabs in the Social Settings metabox. Refactored video integration modules and improved the Head Tags listing in the Social Settings metabox.
