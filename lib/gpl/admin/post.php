@@ -54,14 +54,12 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'...', true, true, true, true, 'none' ).'</td>';	// $use_post = true, $md_idx = 'none'
 	
 			if ( $post_status == 'auto-draft' )
-				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( _x( 'Google+ / Schema Description',
+				$rows[] = $this->p->util->get_th( _x( 'Google / Schema Description',
 					'option label', 'wpsso' ), 'medium', 'meta-schema_desc', $head_info ).
 				'<td class="blank"><em>Save a draft version or publish the '.
 					$head_info['ptn'].' to update and display this value.</em></td>';
 			else
-				$rows[] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( _x( 'Google+ / Schema Description',
+				$rows[] = $this->p->util->get_th( _x( 'Google / Schema Description',
 					'option label', 'wpsso' ), 'medium', 'meta-schema_desc', $head_info ).
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', true ).'</td>';
@@ -88,18 +86,20 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'],
 					'...', true ).'</td>';
 
-			if ( $post_status == 'publish' || $post_type == 'attachment' )
+			if ( $post_type === 'attachment' ||
+				$post_status !== 'auto-draft' ) {
+
 				$rows[] = '<tr class="hide_in_basic">'.
 				$this->p->util->get_th( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium', 'meta-sharing_url', $head_info ).
 				'<td class="blank">'.$this->p->util->get_sharing_url( true ).'</td>';
-			else
+			} else {
 				$rows[] = '<tr class="hide_in_basic">'.
 				$this->p->util->get_th( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium', 'meta-sharing_url', $head_info ).
-				'<td class="blank"><em>The Sharing URL permalink will be available when the '.
-					$head_info['ptn'].' is published.</em></td>';
-
+				'<td class="blank"><em>Save a draft version or publish the '.
+					$head_info['ptn'].' to update and display this value.</em></td>';
+			}
 			return $rows;
 		}
 

@@ -223,6 +223,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
+		public function get_display_names() {
+			$user_ids = array();
+			foreach ( get_users() as $user ) 
+				$user_ids[$user->ID] = $user->display_name;
+			$user_ids[0] = 'none';
+			return $user_ids;
+		}
+
 		public function get_contact_fields( $fields = array() ) { 
 			return array_merge( 
 				array( 'none' => '[none]' ), 	// make sure none is first
@@ -395,14 +403,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'author_id provided is empty' );
 			return $ret;
-		}
-
-		public function get_display_names() {
-			$user_ids = array();
-			foreach ( get_users() as $user ) 
-				$user_ids[$user->ID] = $user->display_name;
-			$user_ids[0] = 'none';
-			return $user_ids;
 		}
 
 		// called from head and opengraph classes

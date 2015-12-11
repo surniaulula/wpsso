@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.18.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.18.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-09 17:59:09+00:00\n"
+"POT-Creation-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -925,25 +925,23 @@ msgid ""
 "Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:58 lib/gpl/admin/post.php:64
-#: lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:39
-#: lib/pro/admin/post.php:66 lib/pro/admin/post.php:72
-#: lib/pro/admin/taxonomy.php:45 lib/pro/admin/user.php:45
+#: lib/gpl/admin/post.php:57 lib/gpl/admin/post.php:62
+#: lib/pro/admin/post.php:65 lib/pro/admin/post.php:70
 msgctxt "option label"
-msgid "Google+ / Schema Description"
+msgid "Google / Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:70 lib/gpl/admin/post.php:75
+#: lib/gpl/admin/post.php:68 lib/gpl/admin/post.php:73
 #: lib/gpl/admin/taxonomy.php:43 lib/gpl/admin/user.php:44
-#: lib/pro/admin/post.php:80 lib/pro/admin/post.php:85
+#: lib/pro/admin/post.php:78 lib/pro/admin/post.php:83
 #: lib/pro/admin/taxonomy.php:51 lib/pro/admin/user.php:51
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:81 lib/gpl/admin/post.php:86
+#: lib/gpl/admin/post.php:79 lib/gpl/admin/post.php:84
 #: lib/gpl/admin/taxonomy.php:48 lib/gpl/admin/user.php:49
-#: lib/pro/admin/post.php:93 lib/pro/admin/post.php:98
+#: lib/pro/admin/post.php:91 lib/pro/admin/post.php:96
 #: lib/pro/admin/taxonomy.php:57 lib/pro/admin/user.php:57
 msgctxt "option label"
 msgid "Twitter Card Description"
@@ -1035,6 +1033,12 @@ msgstr ""
 #: lib/pro/admin/taxonomy.php:111 lib/pro/admin/user.php:111
 msgctxt "metabox title"
 msgid "Pinterest (Rich Pin)"
+msgstr ""
+
+#: lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:39
+#: lib/pro/admin/taxonomy.php:45 lib/pro/admin/user.php:45
+msgctxt "option label"
+msgid "Google+ / Schema Description"
 msgstr ""
 
 #: lib/media.php:304
@@ -1896,21 +1900,21 @@ msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/post.php:288
+#: lib/post.php:303
 msgid ""
 "Save a draft version or publish the %s to display the open graph social "
 "preview."
 msgstr ""
 
-#: lib/post.php:294
+#: lib/post.php:311
 msgid ""
 "Save a draft version or publish the %s to display the head tags preview."
 msgstr ""
 
-#: lib/post.php:301
+#: lib/post.php:321
 msgid ""
-"The validation links will be available when the %s is published with public "
-"visibility."
+"Social validation tools will be available when the %s is published with "
+"public visibility."
 msgstr ""
 
 #: lib/pro/admin/advanced.php:284
@@ -2062,12 +2066,12 @@ msgctxt "metabox tab"
 msgid "File and Object Cache"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:97
+#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:94
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:93
+#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:90
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
@@ -2117,7 +2121,7 @@ msgctxt "metabox tab"
 msgid "Built-In Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:103
+#: lib/submenu/advanced.php:100
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
@@ -2408,15 +2412,15 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
-#: lib/user.php:330
+#: lib/user.php:338
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:331
+#: lib/user.php:339
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:332
+#: lib/user.php:340
 msgid "Jabber / Google Talk"
 msgstr ""
 

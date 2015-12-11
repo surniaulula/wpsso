@@ -253,6 +253,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
+
+					// transients persist from one page load to another
 					$transients = array(
 						'SucomCache::get' => array(
 							'url:'.$permalink,
@@ -264,11 +266,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
 							'lang:'.$lang.'_id:'.$post_id.'_mod:post_column:'.$lca.'_og_image',
+							'lang:'.$lang.'_id:'.$post_id.'_mod:post_column:'.$lca.'_og_desc',
 						),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', 
 						$transients, $post_id, $lang, $sharing_url );
-	
+
+					// wp objects are only available for the duration of a single page load
 					$objects = array(
 						'SucomWebpage::get_content' => array(
 							'lang:'.$lang.'_post:'.$post_id.'_filtered',
@@ -508,8 +512,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					break;
 				// options that cannot be blank
-				case 'not_blank':
 				case 'code':
+				case 'not_blank':
 					if ( $val === '' ) {
 						$this->p->notice->err( sprintf( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.', $key ), true );
 						$val = $def_val;
