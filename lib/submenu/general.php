@@ -206,21 +206,22 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), 'highlight', 'fb_publisher_url' ).
 					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Facebook Admin Username(s)',
-						'option label', 'wpsso' ), 'highlight', 'fb_admins' ).
-					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
-
 					$rows[] = $this->p->util->get_th( _x( 'Facebook Application ID',
-						'option label', 'wpsso' ), null, 'fb_app_id' ).
+						'option label', 'wpsso' ), 'highlight', 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Default Language',
-						'option label', 'wpsso' ), null, 'fb_lang' ).
-					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
+					$rows[] = $this->p->util->get_th( _x( 'or Facebook Admin Username(s)',
+						'option label', 'wpsso' ), null, 'fb_admins' ).
+					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Author Name Format',
-						'option label', 'wpsso' ), 'highlight', 'google_author_name' ).
-					'<td>'.$this->form->get_select( 'seo_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
+						'option label', 'wpsso' ), 'highlight', 'google_seo_author_name' ).
+					'<td>'.$this->form->get_select( 'seo_author_name', 
+						$this->p->cf['form']['user_name_fields'] ).'</td>';
+
+					$rows[] = $this->p->util->get_th( _x( 'Default Content Language',
+						'option label', 'wpsso' ), null, 'fb_lang' ).
+					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
 					break;
 
@@ -267,6 +268,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Author Name Format',
+						'option label', 'wpsso' ), null, 'google_schema_author_name' ).
+					'<td>'.$this->form->get_select( 'schema_author_name', 
+						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$schema_select = '';
 					$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 

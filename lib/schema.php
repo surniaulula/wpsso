@@ -12,13 +12,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
+		protected $p;
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
+				'json_http_schema_org_website' => 6,
+				'json_http_schema_org_organization' => 6,
 			) );
 
+			// only hook the head attribute filter if we have one
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
 
@@ -52,29 +57,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$obj = $this->p->util->get_post_object( false );
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
-			$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
-				$this->p->cf['head']['schema_type'] );
-			$item_type = $schema_types['website'];		// default value for non-singular webpages
-
-			if ( is_singular() ) {
-				if ( ! empty( $obj->post_type ) &&
-					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
-
-					$type_name = $this->p->options['schema_type_for_'.$obj->post_type];
-					if ( isset( $schema_types[$type_name] ) )
-						$item_type = $schema_types[$type_name];
-					else $item_type = $schema_types['webpage'];
-
-				} else $item_type = $schema_types['webpage'];
-
-			} elseif ( $this->p->util->force_default_author() &&
-				! empty( $this->p->options['og_def_author_id'] ) )
-					$item_type = $schema_types['webpage'];
-
-			$item_type = apply_filters( $this->p->cf['lca'].'_schema_item_type',
-				$item_type, $post_id, $obj );
+			$item_type = $this->get_head_item_type();
 
 			if ( ! empty( $item_type ) ) {
 
@@ -101,6 +84,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $head_attr );
 		}
 
+		public function get_head_item_type( $use_post = false, $obj = false ) {
+
+			if ( ! is_object( $obj ) )
+				$obj = $this->p->util->get_post_object( $use_post );
+			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ||
+				! SucomUtil::is_post_page( $use_post ) ? 0 : $obj->ID;
+
+			$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
+				$this->p->cf['head']['schema_type'] );
+
+			$item_type = $schema_types['website'];		// default value for non-singular webpages
+
+			if ( is_singular() ) {
+				if ( ! empty( $obj->post_type ) &&
+					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
+
+					$type_name = $this->p->options['schema_type_for_'.$obj->post_type];
+					if ( isset( $schema_types[$type_name] ) )
+						$item_type = $schema_types[$type_name];
+					else $item_type = $schema_types['webpage'];
+
+				} else $item_type = $schema_types['webpage'];
+
+			} elseif ( $this->p->util->force_default_author() &&
+				! empty( $this->p->options['og_def_author_id'] ) )
+					$item_type = $schema_types['webpage'];
+
+			return apply_filters( $this->p->cf['lca'].'_schema_item_type',
+				$item_type, $post_id, $obj );
+		}
+
 		public function get_meta_array( $use_post, &$obj, &$mt_og = array() ) {
 			$mt_schema = array();
 
@@ -109,11 +123,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['name'] = $mt_og['og:title'];
 			}
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_headline'] ) ) {
-				if ( ! empty( $mt_og['og:title'] ) &&
-					isset( $mt_og['og:type'] ) &&
-						$mt_og['og:type'] === 'article' )
-							$mt_schema['headline'] = $mt_og['og:title'];
+			if ( ! empty( $this->p->options['add_meta_itemprop_url'] ) ) {
+				if ( ! empty( $mt_og['og:url'] ) )
+					$mt_schema['url'] = $mt_og['og:url'];
 			}
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {
@@ -121,29 +133,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['datepublished'] = $mt_og['article:published_time'];
 			}
 
+			if ( ! empty( $this->p->options['add_meta_itemprop_datemodified'] ) ) {
+				if ( ! empty( $mt_og['article:modified_time'] ) )
+					$mt_schema['datemodified'] = $mt_og['article:modified_time'];
+			}
+
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
 				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
 			}
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_url'] ) ) {
-				if ( ! empty( $mt_og['og:url'] ) )
-					$mt_schema['url'] = $mt_og['og:url'];
-			}
-
-			if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-				if ( ! empty( $mt_og['og:image'] ) ) {
-					if ( is_array( $mt_og['og:image'] ) )
-						foreach ( $mt_og['og:image'] as $image )
-							$mt_schema['image'][] = $image['og:image'];
-					else $mt_schema['image'] = $mt_og['og:image'];
+			if ( empty( $this->p->options['schema_add_noscript'] ) ) {
+				if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+					if ( ! empty( $mt_og['og:image'] ) ) {
+						if ( is_array( $mt_og['og:image'] ) )
+							foreach ( $mt_og['og:image'] as $image )
+								$mt_schema['image'][] = $image['og:image'];
+						else $mt_schema['image'] = $mt_og['og:image'];
+					}
 				}
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $obj );
 		}
 
-		public function get_noscript_array( $use_post, &$obj, &$mt_og = array() ) {
+		public function get_noscript_array( $use_post, &$obj, &$mt_og, $post_id, $author_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -152,13 +166,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					return array();
 
 			$ret = array();
-			$og_type = $mt_og['og:type'];
+			$og_type = $mt_og['og:type'];	// used to get product:rating:* values
+
+			if ( ! empty( $author_id ) ) {
+				$ret = array_merge( $ret,
+					array( array( '<noscript itemprop="author" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'author.name', 
+						$this->p->mods['util']['user']->get_author_name( $author_id,
+							$this->p->options['schema_author_name'] ), '', $use_post ),
+					array( array( '</noscript>'."\n" ) )
+				);
+			}
+
+			if ( ! empty( $mt_og['og:image'] ) ) {
+				if ( is_array( $mt_og['og:image'] ) )
+					foreach ( $mt_og['og:image'] as $image )
+						$ret = array_merge( $ret, $this->get_noscript_single_image( $use_post, $image ) );
+				else $ret = array_merge( $ret, $this->get_noscript_single_image( $use_post, $mt_og['og:image'] ) );
+			}
 
 			if ( ! empty( $mt_og[$og_type.':rating:average'] ) &&
 				( ! empty( $mt_og[$og_type.':rating:count'] ) || 
 					! empty( $mt_og[$og_type.':review:count'] ) ) ) {
 
-				$ret = array_merge( 
+				$ret = array_merge( $ret,
 					array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">'."\n" ) ),
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingvalue', 
 						$mt_og[$og_type.':rating:average'], '', $use_post ),
@@ -180,94 +211,126 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $ret );
-
 			return $ret;
 		}
 
-		public function get_json_array( $post_id = false, $author_id = false, $size_name = 'thumbnail' ) {
+		public function get_json_array( $use_post, &$obj, &$mt_og, $post_id, $author_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-
 			$ret = array();
-
-			if ( ! empty( $this->p->options['schema_website_json'] ) &&
-				( $json_script = $this->get_website_json_script( $post_id ) ) !== false )
-					$ret[] = $json_script;
-
-			if ( ! empty( $this->p->options['schema_author_json'] ) && ! empty( $author_id ) &&
-				( $json_script = $this->p->mods['util']['user']->get_person_json_script( $author_id, $size_name ) ) !== false )
-					$ret[] = $json_script;
-
-			if ( ! empty( $this->p->options['schema_publisher_json'] ) &&
-				( $json_script = $this->get_organization_json_script( $size_name ) ) !== false )
-					$ret[] = $json_script;
-
+			foreach ( array_unique( array(
+				'http://schema.org/WebSite',
+				'http://schema.org/Person',
+				'http://schema.org/Organization',
+				$this->get_head_item_type( $use_post, $obj )
+			) ) as $type ) {
+				$filter_name = $this->p->cf['lca'].'_json_'.
+					SucomUtil::sanitize_hookname( $type );
+				if ( ( $json = apply_filters( $filter_name, false,
+					$use_post, $obj, $mt_og, $post_id, $author_id ) ) !== false )
+						$ret[] = "<script type=\"application/ld+json\">\n".
+							$json."</script>\n";
+			}
 			$ret = SucomUtil::a2aa( $ret );	// convert to array or arrays
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $ret );
-
 			return $ret;
 		}
 
-		public function get_website_json_script( $post_id = false ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
-			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
-			// pass options array to allow fallback if locale option does not exist
-			$site_name = $this->p->og->get_site_name( $post_id );
-			$json_script = '<script type="application/ld+json">{
+		public function filter_json_http_schema_org_website( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
+			if ( empty( $this->p->options['schema_website_json'] ) )
+				return $json;
+			else return '{
 	"@context":"http://schema.org",
 	"@type":"WebSite",
-	"url":"'.$home_url.'",
-	"name":"'.$site_name.'",
+	"name":"'.$this->p->og->get_site_name( $post_id ).'",
+	"url":"'.get_bloginfo( 'url' ).'",
 	"potentialAction":{
 		"@type":"SearchAction",
-		"target":"'.$home_url.'?s={search_term_string}",
+		"target":"'.get_bloginfo( 'url' ).'?s={search_term_string}",
 		"query-input":"required name=search_term_string"
-	}
-}</script>'."\n";
-			return $json_script;
+	}'."\n}\n";
 		}
 
-		public function get_organization_json_script( $size_name = 'thumbnail') {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+		public function filter_json_http_schema_org_organization( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
+			if ( empty( $this->p->options['schema_publisher_json'] ) )
+				return $json;
 
-			$home_url = get_bloginfo( 'url' );	// equivalent to get_home_url()
-			$logo_url = $this->p->options['schema_logo_url'];
-			$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-schema', false );
-			if ( count( $og_image ) > 0 ) {
-				$image = reset( $og_image );
-				$image_url = $image['og:image'];
-			} else $image_url = '';
-
-			$json_script = '<script type="application/ld+json">{
+			$json = '{
 	"@context":"http://schema.org",
 	"@type":"Organization",
-	"url":"'.$home_url.'",
-	"logo":"'.$logo_url.'",
-	"image":"'.$image_url.'",
-	"sameAs":['."\n";
-			foreach ( array(
-				'seo_publisher_url',
-				'fb_publisher_url',
-				'linkedin_publisher_url',
-				'tc_site',
-			) as $key ) {
-				$sameAs = isset( $this->p->options[$key] ) ?
+	"name":"'.$this->p->og->get_site_name( $post_id ).'",
+	"url":"'.get_bloginfo( 'url' )."\",\n".
+	$this->get_json_single_image( 'logo', $this->p->options, 'schema_logo_url' ).
+	"\t\"sameAs\":[\n";
+			$url_list = '';
+			foreach ( array( 'seo_publisher_url', 'fb_publisher_url',
+				'linkedin_publisher_url', 'tc_site' ) as $key ) {
+				$url = isset( $this->p->options[$key] ) ?
 					trim( $this->p->options[$key] ) : '';
-				if ( empty( $sameAs ) )
+				if ( empty( $url ) )
 					continue;
-
 				if ( $key === 'tc_site' )
-					$sameAs = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameAs );
-
-				if ( strpos( $sameAs, '://' ) !== false )
-					$json_script .= "\t\t\"".$sameAs."\",\n";
+					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+				if ( strpos( $url, '://' ) !== false )
+					$url_list .= "\t\t\"".$url."\",\n";
 			}
-			return rtrim( $json_script, ",\n" )."\n\t]\n}</script>\n";
+			return $json.rtrim( $url_list, ",\n" )."\n\t]\n}\n";
+		}
+
+		// pass a two dimension array in $arr
+		public function get_json_images( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
+			foreach ( $arr as $image )
+				$json .= $this->get_json_single_image( $type, $image, $key_prefix );
+			return $json;
+		}
+
+		// pass a single dimension array in $arr
+		public function get_json_single_image( $type = 'image', &$arr, $key_prefix = 'og:image' ) {
+			if ( empty( $arr ) )
+				return array();
+			elseif ( is_array( $arr ) ) {
+				if ( empty( $arr[$key_prefix] ) &&
+					empty( $arr[$key_prefix.':secure_url'] ) )
+						return array();
+				else return "\t\"".$type."\":{\n\t\t\"@type\":\"ImageObject\",\n".
+					trim( "\t\t\"url\":\"".
+						( ! empty( $arr[$key_prefix.':secure_url'] ) ?
+							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ).'",'."\n".
+						( ! empty( $arr[$key_prefix.':width'] ) && $arr[$key_prefix.':width'] > 0 ?
+							"\t\t\"width\":\"".$arr[$key_prefix.':width'].'",'."\n" : '' ).
+						( ! empty( $arr[$key_prefix.':height'] ) && $arr[$key_prefix.':height'] > 0 ?
+							"\t\t\"height\":\"".$arr[$key_prefix.':height'].'",'."\n" : '' ),
+						",\n" )."\n\t},\n";
+			} else return '';
+		}
+
+		// pass a single dimension array in $arr
+		public function get_noscript_single_image( $use_post, &$arr, $key_prefix = 'og:image' ) {
+			if ( empty( $arr ) )
+				return array();
+			elseif ( is_array( $arr ) )
+				if ( empty( $arr[$key_prefix] ) &&
+					empty( $arr[$key_prefix.':secure_url'] ) )
+						return array();
+				else return array_merge(
+					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', 
+						( ! empty( $arr[$key_prefix.':secure_url'] ) ?
+							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ), '', $use_post ),
+					( empty( $arr[$key_prefix.':width'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.width',
+							$arr[$key_prefix.':width'], '', $use_post ) ),
+					( empty( $arr[$key_prefix.':height'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.height',
+							$arr[$key_prefix.':height'], '', $use_post ) ),
+					array( array( '</noscript>'."\n" ) )
+				);
+			else return array_merge(
+				array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+				$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $arr, '', $use_post ),
+				array( array( '</noscript>'."\n" ) )
+			);
 		}
 	}
 }

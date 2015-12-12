@@ -129,8 +129,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->mods['util']['user']->get_article_author( 
-							$this->p->options['og_def_author_id'] );
+						$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
@@ -170,15 +169,16 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $use_post );
 
 			// if the page is an article, then define the other article meta tags
-			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
+			if ( isset( $og['og:type'] ) && 
+				$og['og:type'] == 'article' ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:author'] ) ) {
 					if ( SucomUtil::is_post_page( $use_post ) ) {
 						if ( ! empty( $obj->post_author ) )
-							$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $obj->post_author );
+							$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $obj->post_author );
 						elseif ( ! empty( $this->p->options['og_def_author_id'] ) )
-							$og['article:author'] = $this->p->mods['util']['user']->get_article_author( $this->p->options['og_def_author_id'] );
+							$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
 					}
 				}
 

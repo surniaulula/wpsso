@@ -51,12 +51,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_hookname( $name ) {
-			$name = str_replace( array( '/', '-' ), '_', $name );
+			$name = preg_replace( '/[:\/\-\.]+/', '_', $name );
 			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_classname( $name ) {
-			$name = str_replace( array( '/', '-' ), '', $name );
+			$name = preg_replace( '/[:\/\-\.]+/', '', $name );
 			return self::sanitize_key( $name );
 		}
 

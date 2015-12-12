@@ -507,11 +507,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 			$og_image = SucomUtil::meta_image_tags( 'og' );
 
-			foreach ( array( 'id', 'id_pre', 'url' ) as $key )
+			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key )
 				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
 					'' : $this->p->options['og_def_img_'.$key];
 
-			if ( $img['id'] === '' && $img['url'] === '' ) {
+			if ( empty( $img['id'] ) && empty( $img['url'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				return $og_ret;
@@ -522,7 +522,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'ngg-'.$img['id'] : $img['id'];
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default img pid = '.$img['id'] );
+					$this->p->debug->log( 'using default image pid: '.$img['id'] );
 
 				list(
 					$og_image['og:image'],
@@ -537,10 +537,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				! empty( $img['url'] ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default img url = '.$img['url'] );
+					$this->p->debug->log( 'using default image url: '.$img['url'] );
 
-				$og_image = array();	// clear all array values
-				$og_image['og:image'] = $img['url'];
+				$og_image = array(
+					'og:image' => $img['url'],
+					'og:image:width' => $img['url:width'],
+					'og:image:height' => $img['url:height'],
+				);
 			}
 
 			if ( ! empty( $og_image['og:image'] ) && 

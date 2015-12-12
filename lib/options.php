@@ -291,6 +291,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ), true );
 
+			// get / remove dimensions for remote image urls
+			foreach ( array(
+				'rp_img_url',
+				'og_img_url',
+				'og_def_img_url',
+				'schema_logo_url',
+			) as $key ) {
+				if ( ! empty( $opts[$key] ) &&
+					strpos( $opts[$key], '://' ) !== false )
+						list( $opts[$key.':width'], $opts[$key.':height'],
+							$type, $attr ) = getimagesize( $opts[$key] );
+				else unset( $opts[$key.':width'], $opts[$key.':height'] );
+			}
+
 			return $opts;
 		}
 

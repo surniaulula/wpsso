@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.18.1',		// plugin version
+					'version' => '3.19.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -279,13 +279,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso390',				// increment when changing default options
+				'version' => 'sso402',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_logo_url' => '',
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
-					'schema_type_for_post' => 'article',
-					'schema_type_for_page' => 'article',
+					'schema_type_for_post' => 'webpage',
+					'schema_type_for_page' => 'webpage',
 					'schema_type_for_attachment' => 'webpage',
 					'schema_type_for_article' => 'article',
 					'schema_type_for_book' => 'book',
@@ -301,6 +301,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_local.business' => 'local.business',
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
+					'schema_author_name' => 'display_name',
 					'schema_author_json' => 1,
 					'schema_publisher_json' => 1,
 					'schema_website_json' => 1,
@@ -476,11 +477,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:player:height' => 1,
 					// schema
 					'add_meta_itemprop_name' => 1,
-					'add_meta_itemprop_headline' => 1,
 					'add_meta_itemprop_datepublished' => 1,
+					'add_meta_itemprop_datemodified' => 1,
 					'add_meta_itemprop_description' => 1,
 					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_image' => 1,
+					'add_meta_itemprop_image.url' => 1,
+					'add_meta_itemprop_image.width' => 1,
+					'add_meta_itemprop_image.height' => 1,
+					'add_meta_itemprop_publisher.name' => 1,
+					'add_meta_itemprop_author.name' => 1,
 					'add_meta_itemprop_address' => 1,
 					'add_meta_itemprop_ratingvalue' => 1,
 					'add_meta_itemprop_ratingcount' => 1,

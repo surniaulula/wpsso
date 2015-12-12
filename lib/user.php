@@ -19,7 +19,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		protected static $pref = array();
 
 		protected function add_actions() {
+
 			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
+
+			$this->p->util->add_plugin_filters( $this, array( 'json_http_schema_org_person' => 6 ) );
 
 			if ( is_admin() ) {
 				/**
@@ -344,64 +347,53 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function get_person_json_script( $author_id, $size_name = 'thumbnail' ) {
+		public function filter_json_http_schema_org_person( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
+			if ( empty( $this->p->options['schema_author_json'] ) ||
+				empty( $author_id ) )
+					return $json;
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
-					'author_id' => $author_id,
-					'size_name' => $size_name,
-				) );
-			}
-
-			if ( empty( $author_id ) )
+			// only add the person json if the author has a website url
+			$author_website_url = get_the_author_meta( 'url', $author_id );
+			if ( strpos( $author_website_url, '://' ) === false )
 				return false;
 
-			$website_url = get_the_author_meta( 'url', $author_id );
-			if ( strpos( $website_url, '://' ) === false )
-				return false;
-
-			$cm = self::get_user_id_contact_methods( $author_id );
-
+			$size_name = $this->p->cf['lca'].'-schema';
 			$og_image = $this->get_og_image( 1, $size_name, $author_id, false );
-			if ( ! empty( $og_image ) ) {
-				$image = reset( $og_image );
-				$image_url = $image['og:image'];
-			} else $image_url = '';
-
-			$json_script = '<script type="application/ld+json">{
+			$json = '{
 	"@context":"http://schema.org",
 	"@type":"Person",
 	"name":"'.$this->get_author_name( $author_id, 'fullname' ).'",
-	"url":"'.$website_url.'",
-	"image":"'.$image_url.'",
-	"sameAs":['."\n";
-			foreach ( $cm as $id => $label ) {
-				$sameAs = trim( get_the_author_meta( $id, $author_id ) );
-				if ( empty( $sameAs ) )
+	"url":"'.$author_website_url."\",\n".
+	$this->p->schema->get_json_images( 'image', $og_image, 'og:image' ).
+	"\t\"sameAs\":[\n";
+			$url_list = '';
+			foreach ( self::get_user_id_contact_methods( $author_id ) as $id => $label ) {
+				$url = trim( get_the_author_meta( $id, $author_id ) );
+				if ( empty( $url ) )
 					continue;
-
 				if ( $id === $this->p->options['plugin_cm_twitter_name'] )
-					$sameAs = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameAs );
-
-				if ( strpos( $sameAs, '://' ) !== false )
-					$json_script .= "\t\t\"".$sameAs."\",\n";
+					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+				if ( strpos( $url, '://' ) !== false )
+					$url_list .= "\t\t\"".$url."\",\n";
 			}
-			$json_script = rtrim( $json_script, ",\n" )."\n\t]\n}</script>\n";
-
-			return $json_script;
+			return $json.rtrim( $url_list, ",\n" )."\n\t]\n}\n";
 		}
 
-		public function get_article_author( $author_id, $url_field = 'og_author_field' ) {
+		// returns the facebook profile url for an author
+		// unless the pinterest crawler is detected, in which case it returns the author's name
+		public function get_author_profile_url( $author_ids, $url_field = 'og_author_field' ) {
 			$ret = array();
-			if ( ! empty( $author_id ) ) {
-				$ret[] = $this->get_author_website_url( $author_id, $this->p->options[$url_field] );
-
-				// add the author's name if this is the Pinterest crawler
-				if ( SucomUtil::crawler_name( 'pinterest' ) === true )
-					$ret[] = $this->get_author_name( $author_id, $this->p->options['rp_author_name'] );
-
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author_id provided is empty' );
+			if ( ! empty( $author_ids ) ) {
+				if ( ! is_array( $author_ids ) )
+					$author_ids = array( $author_ids );
+				foreach ( $author_ids as $author_id ) {
+					if ( ! empty( $author_id ) ) {
+						if ( SucomUtil::crawler_name( 'pinterest' ) === true )
+							$ret[] = $this->get_author_name( $author_id, $this->p->options['rp_author_name'] );
+						else $ret[] = $this->get_author_website_url( $author_id, $this->p->options[$url_field] );
+					}
+				}	
+			}
 			return $ret;
 		}
 
@@ -425,10 +417,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$name = get_the_author_meta( $field_id, $author_id );	// since wp 2.8.0 
 					break;
 			}
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' name: '.$name );
-
 			return $name;
 		}
 

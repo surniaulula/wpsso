@@ -263,8 +263,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
-				$this->p->schema->get_noscript_array( $use_post, $obj, $mt_og ),
-				$this->p->schema->get_json_array( $post_id, $author_id, $this->p->cf['lca'].'-schema' )
+				$this->p->schema->get_noscript_array( $use_post, $obj, $mt_og, $post_id, $author_id ),
+				$this->p->schema->get_json_array( $use_post, $obj, $mt_og, $post_id, $author_id )
 			);
 
 			/*
@@ -381,8 +381,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
 
 				} elseif ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ) {
+
+					// change meta itemtype "image.url" to "url" (for example)
+					if ( $parts[1] === 'meta' && 
+						$parts[2] === 'itemprop' && 
+							strpos( $parts[3], '.' ) !== 0 )
+								$parts[3] = preg_replace( '/^.*\./', '', $parts[3] );
+
 					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 						'<'.$parts[1].' '.$parts[2].'="'.$parts[3].'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
+
 					$ret[$num] = $parts;
 
 				} elseif ( $this->p->debug->enabled )
