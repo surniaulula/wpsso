@@ -345,7 +345,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Version 3.19.0 (TBD) =
 
-Official announcement: N/A
+Official announcement: http://wpsso.com/2015/12/12/wpsso-update-schema-type-by-post-type/
 
 * **New Features**
 	* Added a new "Author Name Format" option under the Google / Schema tab on the General settings page.
@@ -431,6 +431,10 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 	* *None*
 
 == Upgrade Notice ==
+
+= 3.18.1 =
+
+2015/12/11 Enabled all fields in the Social Settings metabox when editing a non-auto-draft Post / Page.
 
 = 3.18.0 =
 
