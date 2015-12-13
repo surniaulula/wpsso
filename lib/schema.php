@@ -169,11 +169,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_type = $mt_og['og:type'];	// used to get product:rating:* values
 
 			if ( ! empty( $author_id ) ) {
+				$author_website_url = get_the_author_meta( 'url', $author_id );
 				$ret = array_merge( $ret,
 					array( array( '<noscript itemprop="author" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'author.name', 
 						$this->p->mods['util']['user']->get_author_name( $author_id,
 							$this->p->options['schema_author_name'] ), '', $use_post ),
+					( strpos( $author_website_url, '://' ) === false ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'url', 
+							$author_website_url, '', $use_post ) ),
 					array( array( '</noscript>'."\n" ) )
 				);
 			}
@@ -279,21 +283,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// pass a two dimension array in $arr
-		public function get_json_images( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
+		public function get_json_image_list( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
 			foreach ( $arr as $image )
 				$json .= $this->get_json_single_image( $type, $image, $key_prefix );
 			return $json;
 		}
 
 		// pass a single dimension array in $arr
-		public function get_json_single_image( $type = 'image', &$arr, $key_prefix = 'og:image' ) {
+		public function get_json_single_image( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
 			if ( empty( $arr ) )
-				return array();
+				return $json;
 			elseif ( is_array( $arr ) ) {
 				if ( empty( $arr[$key_prefix] ) &&
 					empty( $arr[$key_prefix.':secure_url'] ) )
-						return array();
-				else return "\t\"".$type."\":{\n\t\t\"@type\":\"ImageObject\",\n".
+						return $json;
+				else $json .= "\t\"".$type."\":{\n\t\t\"@type\":\"ImageObject\",\n".
 					trim( "\t\t\"url\":\"".
 						( ! empty( $arr[$key_prefix.':secure_url'] ) ?
 							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ).'",'."\n".
@@ -302,7 +306,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						( ! empty( $arr[$key_prefix.':height'] ) && $arr[$key_prefix.':height'] > 0 ?
 							"\t\t\"height\":\"".$arr[$key_prefix.':height'].'",'."\n" : '' ),
 						",\n" )."\n\t},\n";
-			} else return '';
+			};
+			return $json;
 		}
 
 		// pass a single dimension array in $arr

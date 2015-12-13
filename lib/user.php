@@ -362,9 +362,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$json = '{
 	"@context":"http://schema.org",
 	"@type":"Person",
-	"name":"'.$this->get_author_name( $author_id, 'fullname' ).'",
-	"url":"'.$author_website_url."\",\n".
-	$this->p->schema->get_json_images( 'image', $og_image, 'og:image' ).
+	"name":"'.$this->get_author_name( $author_id, 'fullname' )."\",\n".
+	( strpos( $author_website_url, '://' ) === false ? 
+		'' : "\t\"url\":\"".$author_website_url."\",\n" ).
+	$this->p->schema->get_json_image_list( 'image', $og_image, 'og:image' ).
 	"\t\"sameAs\":[\n";
 			$url_list = '';
 			foreach ( self::get_user_id_contact_methods( $author_id ) as $id => $label ) {
