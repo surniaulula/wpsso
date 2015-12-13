@@ -135,7 +135,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} elseif ( empty( $id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'no object id defined' );
-			} else $meta_opts = $this->get_mod_options( $mod, $id );			// get all metadata options
+			// custom filters may use image sizes, so don't filter/cache the meta options
+			} else $meta_opts = $this->get_mod_options( $mod, $id,
+				false, array( 'filter_options' => false ) );
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -368,13 +370,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_mod_options( $mod, $id = false, $idx = false, $attr = array() ) {
+		public function get_mod_options( $mod, $id = false, $idx = false, $atts = array() ) {
 			if ( empty( $id ) || 
 				! isset( $this->p->mods['util'][$mod] ) )
 					return false;
 			// return the whole options array
 			if ( $idx === false ) {
-				$ret = $this->p->mods['util'][$mod]->get_options( $id, $idx, $attr );
+				$ret = $this->p->mods['util'][$mod]->get_options( $id, $idx, $atts );
 			} else {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
@@ -383,7 +385,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						return false;		// stop here
 					if ( empty( $key ) )
 						continue;
-					$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $attr );
+					$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $atts );
 					if ( ! empty( $ret ) )
 						break;
 				}
@@ -551,10 +553,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
 				foreach ( $metas as $m ) {
-					$attrs = array();		// put all attributes in a single array
+					$m_atts = array();		// put all attributes in a single array
 					foreach ( $m->attributes as $a )
-						$attrs[$a->name] = $a->value;
-					$ret[$m->tagName][] = $attrs;
+						$m_atts[$a->name] = $a->value;
+					$ret[$m->tagName][] = $m_atts;
 				}
 			} else {
 				if ( $this->p->debug->enabled )

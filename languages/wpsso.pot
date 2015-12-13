@@ -2436,11 +2436,11 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:225
+#: lib/util.php:227
 msgid "%s has been cleared as well."
 msgstr ""
 
-#: lib/util.php:227
+#: lib/util.php:229
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."

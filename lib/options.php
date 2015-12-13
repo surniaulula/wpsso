@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( ! isset( $this->p->cf['opt']['defaults']['options_filtered'] ) ||
 				$this->p->cf['opt']['defaults']['options_filtered'] !== true ||
-				$force_filter === true ) {
+					$force_filter === true ) {
 
 				$lca = $this->p->cf['lca'];
 				$this->p->cf['opt']['defaults'] = $this->p->util->add_ptns_to_opts( $this->p->cf['opt']['defaults'], 
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( ! isset( $this->p->cf['opt']['site_defaults']['options_filtered'] ) ||
 				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
-				$force_filter === true ) {
+					$force_filter === true ) {
 
 				$lca = $this->p->cf['lca'];
 				$this->p->cf['opt']['site_defaults'] = apply_filters( $lca.'_get_site_defaults', 
