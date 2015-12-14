@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( ! empty( $opts[$key] ) &&
 					strpos( $opts[$key], '://' ) !== false )
 						list( $opts[$key.':width'], $opts[$key.':height'],
-							$type, $attr ) = getimagesize( $opts[$key] );
+							$type, $attr ) = @getimagesize( $opts[$key] );
 				else unset( $opts[$key.':width'], $opts[$key.':height'] );
 			}
 
