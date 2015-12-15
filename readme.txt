@@ -299,6 +299,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 			* [Modify the article:tag Keywords / Names](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Topics List](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
+			* [Use the REQUEST_URI for Post URLs](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
 			* [Working with Pre-defined Meta Tags and Custom Post Types](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/)
 		* [Filters by Category](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/)
 			* [Head Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/)
@@ -344,9 +345,22 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.19.0 (2015/12/14) =
+= Version 3.19.2 (TBD) =
 
 Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added a new "Essential Settings" page to combine all essential / basic General and Advanced options on one page.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
+= Version 3.19.0 (2015/12/14) =
+
+Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvements-and-filter-hooks/
 
 * **New Features**
 	* Added a new "Author Name Format" option under the Google / Schema tab on the General settings page.
