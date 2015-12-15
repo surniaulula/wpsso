@@ -354,7 +354,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$add_hashtags = true, $encode = true, $md_idx = 'og_desc', $src_id = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'render description' );
+				$this->p->debug->mark( 'render description' );	// start timer
 				$this->p->debug->args( array( 
 					'textlen' => $textlen, 
 					'trailing' => $trailing, 
@@ -396,6 +396,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( ! empty( $author->ID ) )
 						$desc = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
 				}
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $desc ) )
+						$this->p->debug->log( 'no custom description found' );
+					else $this->p->debug->log( 'custom description = "'.$desc.'"' );
+				}
 			}
 
 			// get seed if no custom meta description
@@ -416,6 +421,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					! empty( $this->p->options['og_desc_hashtags'] ) )
 						$hashtags = $this->get_hashtags( $post_id, $add_hashtags );
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
 
 			// if there's no custom description, and no pre-seed, 
 			// then go ahead and generate the description value
@@ -500,6 +508,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'description strlen before html cleanup '.strlen( $desc ) );
 			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
@@ -507,8 +517,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( ! empty( $add_hashtags ) && 
 					! empty( $hashtags ) ) 
 						$textlen = $textlen - strlen( $hashtags ) -1;
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'description strlen before limit length '.strlen( $desc ).' (limiting to '.$textlen.' chars)' );
 				$desc = $this->p->util->limit_text_length( $desc, $textlen, $trailing, false );	// don't run cleanup_html_tags()
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'description limit text length skipped' );
 
 			if ( ! empty( $add_hashtags ) && 
 				! empty( $hashtags ) ) 
@@ -518,7 +531,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$desc = htmlentities( $desc, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'render description' );
+				$this->p->debug->mark( 'render description' );	// stop timer
 
 			return apply_filters( $this->p->cf['lca'].'_description', $desc, $use_post, $add_hashtags, $md_idx, $src_id );
 		}
@@ -613,7 +626,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				global $post;
 				$saved_post = $post;	// woocommerce can change the $post, so save and restore
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'saving $post object and calling apply_filters(\'the_content\')' );
+					$this->p->debug->log( 'saving $post and applying the_content filters' );
 				$content = apply_filters( 'the_content', $content );
 				$post = $saved_post;
 
@@ -632,7 +645,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							if ( array_key_exists( $id, $this->shortcode ) && 
 								is_object( $this->shortcode[$id] ) )
 									$this->shortcode[$id]->add();
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'the_content filters skipped' );
 
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
@@ -650,7 +664,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			$content_strlen_after = strlen( $content );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'content strlen before '.$content_strlen_before.', after '.$content_strlen_after );
+				$this->p->debug->log( 'content strlen before '.$content_strlen_before.' and after changes / filters '.$content_strlen_after );
 
 			// apply filters before caching
 			$content = apply_filters( $this->p->cf['lca'].'_content', $content, $post_id, $use_post, $md_idx, $src_id );

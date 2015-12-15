@@ -676,8 +676,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// fallback for themes and plugins that don't use the standard wordpress functions/variables
 			if ( empty ( $url ) ) {
-				$url = empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://';
-				$url .= $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+				$url = ( empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://' ).
+					$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				// strip out tracking query arguments by facebook, google, etc.
 				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', $url );
 			}
