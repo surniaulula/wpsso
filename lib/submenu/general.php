@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'other' => _x( 'Others', 'metabox tab', 'wpsso' ),
+				'other' => _x( 'Other', 'metabox tab', 'wpsso' ),
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Author Name Format',
-						'option label', 'wpsso' ), 'highlight', 'google_seo_author_name' ).
+						'option label', 'wpsso' ), null, 'google_seo_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
@@ -256,8 +256,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 
-					$rows[] = '<td colspan="2" class="subsection"><h4>'.
-						_x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
+					$rows[] = '<td></td><td class="subsection"><h4>'.
+						_x( 'Schema Markup / Google Structured Data',
+							'metabox title', 'wpsso' ).'</h4></td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Website / Business Logo URL',
 						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).

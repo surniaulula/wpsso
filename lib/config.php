@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.19.0',		// plugin version
+					'version' => '3.19.2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -60,17 +60,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'wpsso-separator-1' => '',
 						),
 						'submenu' => array (	// lib file descriptions will be translated
-							'general' => 'General',
-							'advanced' => 'Advanced',
-							'readme' => 'Read Me',
-							'setup' => 'Setup Guide',
+							'essential' => 'Essential Settings',
+							'general' => 'General Settings',
+							'advanced' => 'Advanced Settings',
+							'readme' => 'Plugin Read Me',
+							'setup' => 'Quick Setup Guide',
 							// the first 2 words will be highlighted in menu
 							'licenses' => '<span>Extension Plugins</span> and Pro Licenses',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
-							'siteadvanced' => 'Advanced',
-							'sitereadme' => 'Read Me',
-							'sitesetup' => 'Setup Guide',
+							'siteadvanced' => 'Advanced Settings',
+							'sitereadme' => 'Plugin Read Me',
+							'sitesetup' => 'Quick Setup Guide',
 							// the first 2 words will be highlighted in menu
 							'sitelicenses' => '<span>Extension Plugins</span> and Pro Licenses',
 						),

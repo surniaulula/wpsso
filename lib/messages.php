@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * Pro version
 						 */
 						case 'tooltip-side-author-gravatar':
-							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General settings page' ).'.';
+							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General Settings' ).' page.';
 							break;
 						case 'tooltip-side-post-settings':
 							$text = 'The Post Settings feature adds a Social Settings metabox to the Post, Page, and custom post type editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
@@ -92,28 +92,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = $atts['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature.';
 							break;
 						case 'tooltip-side-slideshare-api':
-							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-taxonomy-settings':
 							$text = 'The Taxonomy Settings feature adds a Social Settings metabox to taxonomy (category and tags) editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
 							break;
 						case 'tooltip-side-url-shortening':
-							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced settings' ).' page, '.$atts['short_pro'].' will load an integration module for various '.$atts['short'].' plugin filters and/or extensions that may need to shorten URLs.';
+							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced Settings' ).' page, '.$atts['short_pro'].' will load an integration module for various '.$atts['short'].' plugin filters and/or extensions that may need to shorten URLs.';
 							break;
 						case 'tooltip-side-user-settings':
 							$text = 'The User Settings feature adds a Social Settings metabox to the user profile pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
 							break;
 						case 'tooltip-side-vimeo-video-api':
-							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-wistia-video-api':
-							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
+							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
 						case 'tooltip-side-wp-rest-api-routes':
 							$text = $atts['short_pro'].' loads a module to extend the WordPress REST API routes.';
 							break;
 						case 'tooltip-side-youtube-video-playlist-api':
-							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
+							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_side', $text, $idx, $atts );
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$ptn = empty( $atts['ptn'] ) ? 'Post' : $atts['ptn'];
 					switch ( $idx ) {
 						case 'tooltip-post-og_art_section':
-							$text = 'A custom topic, different from the default Article Topic selected in the General settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
+							$text = 'A custom topic, different from the default Article Topic selected in the General Settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
 						 	break;
 						case 'tooltip-post-og_desc':
 							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the content, or excerpt if one is available, and is refreshed when the (draft or published) '.$ptn.' is saved. Update and save this description to change the default value of all other description fields.';
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} else {
 					switch ( $idx ) {
 						case 'tooltip-custom-cm-field-name':
-							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change \'gplus\' to \'googleplus\'. If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$this->p->util->get_admin_url( 'general', 'General settings' ).' as well.';
+							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change \'gplus\' to \'googleplus\'. If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$this->p->util->get_admin_url( 'general', 'General Settings' ).' as well.';
 							break;
 						case 'tooltip-wp-cm-field-name':
 							$text = __( 'The built-in WordPress contact field names cannot be modified.', 'wpsso' );
@@ -649,7 +649,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<blockquote class="top-info"><p>'.__( 'Pinterest uses the Open Graph standard meta tags for their Rich Pins.', 'wpsso' ).' '.__( 'These options allow you to manage and/or override some Pinterest-specific Open Graph settings.', 'wpsso' ).' '.__( 'Please note that if you use a caching plugin, or front-end caching service, it should detect the Pinterest crawler user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).', 'wpsso' ).' '.sprintf( __( 'This will allow %s to provide different / customized meta tags specifically for the Pinterest crawler.', 'wpsso' ), $atts['short'] ).'</p></blockquote>';
 						break;
 					case 'info-pub-twitter':
-						$text = '<blockquote class="top-info"><p><strong>'.__( 'The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015.', 'wpsso' ).'</strong> '.sprintf( __( '%1s continues to support all <a href="%2s">current Twitter Card formats</a>, including the Summary, Summary with Large Image, App (extension plugin required), and Player Cards.', 'wpsso' ), $atts['short'], 'https://dev.twitter.com/cards/types' ).'</p></blockquote>';
+						$text = '<blockquote class="top-info"><p><strong>'.__( 'The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015.', 'wpsso' ).'</strong> '.sprintf( __( '%1s continues to support all <a href="%2s">current Twitter Card formats</a>, including the Summary, Summary with Large Image, mobile App (extension plugin required), and video Player Cards (Pro version required).', 'wpsso' ), $atts['short'], 'https://dev.twitter.com/cards/types' ).'</p></blockquote>';
 						break;
 					case 'info-cm':
 						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact field names and labels shown on <a href="%s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact fields for Facebook / Open Graph, Schema, and Twitter Card meta tags.', 'wpsso' ), $atts['short'] ).' <strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' '.sprintf( __( 'Enabled contact methods are shown on user profile pages automatically, but your theme is responsible for displaying them in other locations throughout your website (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
