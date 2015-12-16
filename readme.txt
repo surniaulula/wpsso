@@ -352,6 +352,7 @@ Official announcement: N/A
 * **New Features**
 	* *None*
 * **Improvements**
+	* Updated the Setup Guide.
 	* Added a new "Essential Settings" page to combine all essential / basic General and Advanced options on one page.
 	* Added encoding of special / foreign characters in URL meta tag values.
 * **Bugfixes**
