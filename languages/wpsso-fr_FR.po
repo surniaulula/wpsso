@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.19.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.19.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-13 09:22-0700\n"
-"PO-Revision-Date: 2015-12-13 09:22-0700\n"
+"POT-Creation-Date: 2015-12-16 13:08-0700\n"
+"PO-Revision-Date: 2015-12-16 13:09-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -402,27 +402,27 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/com/form.php:82 lib/config-gettext-extract.php:27
+#: lib/com/form.php:82 lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:176 lib/com/form.php:236 lib/config-gettext-extract.php:31
+#: lib/com/form.php:176 lib/com/form.php:236 lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/com/form.php:184 lib/config-gettext-extract.php:23
+#: lib/com/form.php:184 lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:188 lib/config-gettext-extract.php:26
+#: lib/com/form.php:188 lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:192 lib/config-gettext-extract.php:24
+#: lib/com/form.php:192 lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "[none]"
 msgstr "[aucun]"
@@ -456,10 +456,10 @@ msgstr "Avis %s"
 msgid "Use Image"
 msgstr "Utiliser l’image"
 
-#: lib/config-gettext-extract.php:3 lib/messages.php:77
+#: lib/config-gettext-extract.php:3
 msgctxt "lib file description"
-msgid "Advanced"
-msgstr "Avancés"
+msgid "Advanced Settings"
+msgstr "Réglages Avancés"
 
 #: lib/config-gettext-extract.php:4
 msgctxt "option value"
@@ -497,11 +497,16 @@ msgid "Display Name"
 msgstr "Nom d'affichage publique"
 
 #: lib/config-gettext-extract.php:12
+msgctxt "lib file description"
+msgid "Essential Settings"
+msgstr "Réglages Essentiels"
+
+#: lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr "Extrait seulement"
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "plugin description"
 msgid ""
 "Fast, light-weight, full-featured plugin for great looking shares on all "
@@ -510,117 +515,122 @@ msgstr ""
 "Extension rapide et complète pour une belle présentation sur tous sites "
 "sociaux - peu importe comment votre contenu est partagé ou re-partagé!"
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr "Nom et prénom"
 
-#: lib/config-gettext-extract.php:15
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "Footer"
 msgstr "Pied de page"
 
-#: lib/config-gettext-extract.php:16
+#: lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "Force this value"
 msgstr "Forcer cette valeur"
 
-#: lib/config-gettext-extract.php:17
-msgctxt "lib file description"
-msgid "General"
-msgstr "Général"
-
 #: lib/config-gettext-extract.php:18
+msgctxt "lib file description"
+msgid "General Settings"
+msgstr "Réglages Généraux"
+
+#: lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "Goo.gl"
 msgstr "Goo.gl"
 
-#: lib/config-gettext-extract.php:19
+#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "Header"
 msgstr "Entête"
 
-#: lib/config-gettext-extract.php:20
+#: lib/config-gettext-extract.php:21
 msgctxt "option value"
 msgid "If value is empty"
 msgstr "Si la valeur est vide"
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "Left"
 msgstr "Gauche"
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Nickname"
 msgstr "Pseudonyme"
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "No"
 msgstr "Non"
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr "Ow.ly"
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:30
 msgctxt "lib file description"
-msgid "Read Me"
+msgid "Plugin Read Me"
 msgstr "Lisez-moi"
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:31
+msgctxt "lib file description"
+msgid "Quick Setup Guide"
+msgstr "Guide de Configuration"
+
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Right"
 msgstr "Droite"
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:34
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr "Guide de Config"
 
-#: lib/config-gettext-extract.php:33
+#: lib/config-gettext-extract.php:35
 msgctxt "lib file description"
 msgid "Social Image Dimensions"
 msgstr "Dimensions des Images Sociaux"
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:36
 msgctxt "lib file description"
 msgid "<span>Extension Plugins</span> and Pro Licenses"
 msgstr "<span>Autres Extensions</span> et Licences Pro"
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "TinyURL (slow)"
 msgstr "TinyURL (lent)"
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr "Titre et extrait"
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Title Only"
 msgstr "Titre seulement"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "Top"
 msgstr "Le haut"
 
-#: lib/config-gettext-extract.php:39
+#: lib/config-gettext-extract.php:41
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr "Méthodes de Contact du Profil Utilisateur"
 
-#: lib/config-gettext-extract.php:40
+#: lib/config-gettext-extract.php:42
 msgctxt "lib file description"
 msgid "Website / Business Social Accounts"
 msgstr "Site Web et Comptes Sociaux de l’Entreprise"
 
-#: lib/config-gettext-extract.php:41
+#: lib/config-gettext-extract.php:43
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
@@ -630,7 +640,7 @@ msgstr ""
 "réactif (SVG) dans votre contenu, les extraits, barre flottante CSS, widget, "
 "shortcode, etc."
 
-#: lib/config-gettext-extract.php:42
+#: lib/config-gettext-extract.php:44
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add traditional Social Sharing Buttons with support for "
@@ -640,7 +650,7 @@ msgstr ""
 "pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien "
 "plus."
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:45
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
@@ -649,7 +659,7 @@ msgstr ""
 "Une extension WPSSO qui fournie des balises méta Apple Store / iTunes et "
 "Google Play App pour mobile Safari de Apple et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:46
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
@@ -658,7 +668,7 @@ msgstr ""
 "Une extension WPSSO pour fournir les balises méta Facebook / Open Graph de "
 "\"Position\" et Pinterest Rich Pin de \"Place\"."
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:47
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
@@ -667,7 +677,7 @@ msgstr ""
 "Une extension WPSSO pour fournir des mises à jour a WordPress Social Sharing "
 "Optimization (WPSSO) Pro et ses extensions Pro."
 
-#: lib/config-gettext-extract.php:46
+#: lib/config-gettext-extract.php:48
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
@@ -1031,77 +1041,77 @@ msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
 msgstr "Tous les Sites Sociaux / Open Graph"
 
-#: lib/gpl/admin/post.php:115 lib/gpl/admin/post.php:156
-#: lib/gpl/admin/taxonomy.php:70 lib/gpl/admin/taxonomy.php:111
-#: lib/gpl/admin/user.php:71 lib/gpl/admin/user.php:112
-#: lib/pro/admin/post.php:125 lib/pro/admin/post.php:166
-#: lib/pro/admin/taxonomy.php:78 lib/pro/admin/taxonomy.php:114
-#: lib/pro/admin/user.php:78 lib/pro/admin/user.php:114
+#: lib/gpl/admin/post.php:116 lib/gpl/admin/post.php:158
+#: lib/gpl/admin/taxonomy.php:71 lib/gpl/admin/taxonomy.php:113
+#: lib/gpl/admin/user.php:72 lib/gpl/admin/user.php:114
+#: lib/pro/admin/post.php:126 lib/pro/admin/post.php:168
+#: lib/pro/admin/taxonomy.php:79 lib/pro/admin/taxonomy.php:116
+#: lib/pro/admin/user.php:79 lib/pro/admin/user.php:116
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr "Dimensions de l’image"
 
-#: lib/gpl/admin/post.php:119 lib/gpl/admin/post.php:161
-#: lib/gpl/admin/taxonomy.php:74 lib/gpl/admin/taxonomy.php:116
-#: lib/gpl/admin/user.php:75 lib/gpl/admin/user.php:117
-#: lib/pro/admin/post.php:129 lib/pro/admin/post.php:171
-#: lib/pro/admin/taxonomy.php:82 lib/pro/admin/taxonomy.php:119
-#: lib/pro/admin/user.php:82 lib/pro/admin/user.php:119
+#: lib/gpl/admin/post.php:120 lib/gpl/admin/post.php:163
+#: lib/gpl/admin/taxonomy.php:75 lib/gpl/admin/taxonomy.php:118
+#: lib/gpl/admin/user.php:76 lib/gpl/admin/user.php:119
+#: lib/pro/admin/post.php:130 lib/pro/admin/post.php:173
+#: lib/pro/admin/taxonomy.php:83 lib/pro/admin/taxonomy.php:121
+#: lib/pro/admin/user.php:83 lib/pro/admin/user.php:121
 msgctxt "option label"
 msgid "Image ID"
 msgstr "ID d’une image"
 
-#: lib/gpl/admin/post.php:123 lib/gpl/admin/post.php:166
-#: lib/gpl/admin/taxonomy.php:78 lib/gpl/admin/taxonomy.php:121
-#: lib/gpl/admin/user.php:79 lib/gpl/admin/user.php:122
-#: lib/pro/admin/post.php:133 lib/pro/admin/post.php:176
-#: lib/pro/admin/taxonomy.php:86 lib/pro/admin/taxonomy.php:124
-#: lib/pro/admin/user.php:86 lib/pro/admin/user.php:124
+#: lib/gpl/admin/post.php:124 lib/gpl/admin/post.php:168
+#: lib/gpl/admin/taxonomy.php:79 lib/gpl/admin/taxonomy.php:123
+#: lib/gpl/admin/user.php:80 lib/gpl/admin/user.php:124
+#: lib/pro/admin/post.php:134 lib/pro/admin/post.php:178
+#: lib/pro/admin/taxonomy.php:87 lib/pro/admin/taxonomy.php:126
+#: lib/pro/admin/user.php:87 lib/pro/admin/user.php:126
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr "ou URL d’une image"
 
-#: lib/gpl/admin/post.php:128 lib/gpl/admin/taxonomy.php:83
-#: lib/gpl/admin/user.php:84 lib/pro/admin/post.php:138
-#: lib/pro/admin/taxonomy.php:91
+#: lib/gpl/admin/post.php:129 lib/gpl/admin/taxonomy.php:84
+#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:139
+#: lib/pro/admin/taxonomy.php:92
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr "Images maximum"
 
-#: lib/gpl/admin/post.php:132 lib/gpl/admin/taxonomy.php:87
-#: lib/gpl/admin/user.php:88 lib/pro/admin/post.php:142
-#: lib/pro/admin/taxonomy.php:95 lib/pro/admin/user.php:90
+#: lib/gpl/admin/post.php:133 lib/gpl/admin/taxonomy.php:88
+#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:143
+#: lib/pro/admin/taxonomy.php:96 lib/pro/admin/user.php:91
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr "HTML de vidéo intégrée"
 
-#: lib/gpl/admin/post.php:136 lib/gpl/admin/taxonomy.php:91
-#: lib/gpl/admin/user.php:92 lib/pro/admin/post.php:146
-#: lib/pro/admin/taxonomy.php:99 lib/pro/admin/user.php:94
+#: lib/gpl/admin/post.php:137 lib/gpl/admin/taxonomy.php:92
+#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:147
+#: lib/pro/admin/taxonomy.php:100 lib/pro/admin/user.php:95
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr "ou URL d’un vidéo"
 
-#: lib/gpl/admin/post.php:141 lib/gpl/admin/taxonomy.php:96
-#: lib/gpl/admin/user.php:97 lib/pro/admin/post.php:151
-#: lib/pro/admin/user.php:99
+#: lib/gpl/admin/post.php:142 lib/gpl/admin/taxonomy.php:97
+#: lib/gpl/admin/user.php:98 lib/pro/admin/post.php:152
+#: lib/pro/admin/user.php:100
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr "Vidéos maximum"
 
-#: lib/gpl/admin/post.php:145 lib/gpl/admin/taxonomy.php:100
-#: lib/gpl/admin/user.php:101 lib/pro/admin/post.php:155
-#: lib/pro/admin/taxonomy.php:103 lib/pro/admin/user.php:103
+#: lib/gpl/admin/post.php:146 lib/gpl/admin/taxonomy.php:101
+#: lib/gpl/admin/user.php:102 lib/pro/admin/post.php:156
+#: lib/pro/admin/taxonomy.php:104 lib/pro/admin/user.php:104
 msgctxt "option label"
 msgid "Include Preview Image(s)"
 msgstr "Inclure l’image d’aperçu"
 
-#: lib/gpl/admin/post.php:153 lib/gpl/admin/taxonomy.php:108
-#: lib/gpl/admin/user.php:109 lib/pro/admin/post.php:163
-#: lib/pro/admin/taxonomy.php:111 lib/pro/admin/user.php:111
+#: lib/gpl/admin/post.php:154 lib/gpl/admin/taxonomy.php:109
+#: lib/gpl/admin/user.php:110 lib/pro/admin/post.php:164
+#: lib/pro/admin/taxonomy.php:112 lib/pro/admin/user.php:112
 msgctxt "metabox title"
-msgid "Pinterest (Rich Pin)"
-msgstr "Pinterest (Rich Pin)"
+msgid "Pinterest / Rich Pin"
+msgstr "Pinterest / Rich Pin"
 
 #: lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:39
 #: lib/pro/admin/taxonomy.php:45 lib/pro/admin/user.php:45
@@ -1251,6 +1261,11 @@ msgstr ""
 "ajuster la valeur d'expiration du cache persistant dans la page de réglage "
 "<a href=\"%3$s\">%4$s</a>, ou désactiver le cache complètement en utilisant "
 "l'une des <a href=\"%5$s\" target=\"_blank\">constantes</a> disponibles."
+
+#: lib/messages.php:77
+msgctxt "lib file description"
+msgid "Advanced"
+msgstr "Avancés"
 
 #: lib/messages.php:80
 msgid ""
@@ -1491,8 +1506,8 @@ msgstr ""
 "afficher publiquement')."
 
 #: lib/messages.php:484 lib/messages.php:505 lib/messages.php:561
-#: lib/submenu/general.php:217 lib/submenu/general.php:273
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:217 lib/submenu/general.php:274
+#: lib/submenu/general.php:330
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr "Format du nom d’auteur"
@@ -1625,23 +1640,21 @@ msgstr ""
 
 #: lib/messages.php:646
 msgid ""
-"If you appreciate the features, quality and support of this plugin, please "
-"<a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s plugin on "
-"WordPress.org</a>."
+"How do you like the plugin? Please take a moment to <a href=\"%1$s\" target="
+"\"_blank\">rate the %2$s plugin on WordPress.org</a>."
 msgstr ""
-"Si vous appréciez les fonctionnalités, la qualité et le soutien de cette "
-"extension, s'il vous plaît <a href=\"%1$s\" target=\"_blank\">prenez un "
-"moment pour noter l'extension %2$s sur WordPress.org</a>."
+"Comment aimez-vous l'extension? S'il vous plaît prenez un moment pour <a "
+"href=\"%1$s\" target=\"_blank\">noter l'extension %2$s sur WordPress.org</a>."
 
 #: lib/messages.php:646
 msgid ""
-"Your rating will help other WordPress users find higher quality and well "
-"supported plugins &mdash; along with <strong>encouraging us to keep "
-"improving %s</strong> as well!"
+"Ratings help the WordPress community as a whole find higher-quality plugins "
+"&mdash; along with <strong>encouraging us to keep improving %s</strong> as "
+"well!"
 msgstr ""
-"Votre cote aidera d'autres utilisateurs de WordPress à trouver des "
-"extensions de meilleure qualité &mdash; et <strong>nous encouragera à "
-"continuer d'améliorer %s</strong> aussi!"
+"Votre cote aidera la communauté WordPress à trouver des extensions de "
+"meilleure qualité &mdash; et <strong>nous encourage à continuer d'améliorer "
+"%s</strong> aussi!"
 
 #: lib/messages.php:649
 msgid "Pinterest uses the Open Graph standard meta tags for their Rich Pins."
@@ -1688,12 +1701,12 @@ msgstr ""
 #: lib/messages.php:652
 msgid ""
 "%1s continues to support all <a href=\"%2s\">current Twitter Card formats</"
-"a>, including the Summary, Summary with Large Image, App (extension plugin "
-"required), and Player Cards."
+"a>, including the Summary, Summary with Large Image, mobile App (extension "
+"plugin required), and video Player Cards (Pro version required)."
 msgstr ""
 "%1s continue d'appuyer tous les <a href=\"%2s\">formats de carte courante de "
 "Twitter</a>, y compris la carte sommaire, sommaire avec la grande image, App "
-"(une extension additionnelle est requise) et la carte joueur."
+"mobile (une extension additionnelle est requise) et la carte video joueur."
 
 #: lib/messages.php:655
 msgid ""
@@ -2422,37 +2435,41 @@ msgctxt "metabox title"
 msgid "Website / Business Social Accounts"
 msgstr "Site Web et Comptes Sociaux de l’Entreprise"
 
-#: lib/setting/social-accounts.php:48 lib/submenu/general.php:205
+#: lib/setting/social-accounts.php:48 lib/submenu/essential.php:80
+#: lib/submenu/general.php:205
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr "URL de la page d’affaires Facebook"
 
-#: lib/setting/social-accounts.php:52 lib/submenu/general.php:230
+#: lib/setting/social-accounts.php:52 lib/submenu/essential.php:111
+#: lib/submenu/general.php:230
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr "URL de la page d’affaires Google+"
 
-#: lib/setting/social-accounts.php:56 lib/submenu/general.php:318
+#: lib/setting/social-accounts.php:56 lib/submenu/essential.php:122
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL de la page entreprise Pinterest"
 
-#: lib/setting/social-accounts.php:60 lib/submenu/general.php:346
+#: lib/setting/social-accounts.php:60 lib/submenu/essential.php:135
+#: lib/submenu/general.php:347
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "Le @nom d’affaires Twitter"
 
-#: lib/setting/social-accounts.php:64 lib/submenu/general.php:368
+#: lib/setting/social-accounts.php:64 lib/submenu/general.php:369
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr "URL de la page d’affaires Instagram"
 
-#: lib/setting/social-accounts.php:68 lib/submenu/general.php:372
+#: lib/setting/social-accounts.php:68 lib/submenu/general.php:373
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr "URL de la page entreprise LinkedIn"
 
-#: lib/setting/social-accounts.php:72 lib/submenu/general.php:376
+#: lib/setting/social-accounts.php:72 lib/submenu/general.php:377
 msgctxt "option label"
 msgid "MySpace Business (Brand) URL"
 msgstr "URL de la page d’affaires MySpace"
@@ -2478,6 +2495,7 @@ msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
 #: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:90
+#: lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
@@ -2487,7 +2505,7 @@ msgctxt "metabox title"
 msgid "Extension Plugins and Pro Licenses"
 msgstr "Autres Extensions et Licences Pro"
 
-#: lib/submenu/advanced.php:25
+#: lib/submenu/advanced.php:25 lib/submenu/essential.php:29
 msgctxt "metabox title"
 msgid "Advanced Settings"
 msgstr "Réglages Avancés"
@@ -2531,6 +2549,91 @@ msgstr "Contacts Intégrés"
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
+
+#: lib/submenu/essential.php:25
+msgctxt "metabox title"
+msgid "General Settings"
+msgstr "Réglages Généraux"
+
+#: lib/submenu/essential.php:61
+msgctxt "metabox title"
+msgid "Site Information"
+msgstr "Informations du Site"
+
+#: lib/submenu/essential.php:63 lib/submenu/general.php:78
+msgctxt "option label"
+msgid "Default Article Topic"
+msgstr "Rubrique d’article par défaut"
+
+#: lib/submenu/essential.php:67 lib/submenu/general.php:82
+msgctxt "option label"
+msgid "Site Name"
+msgstr "Nom du site"
+
+#: lib/submenu/essential.php:72 lib/submenu/general.php:87
+msgctxt "option label"
+msgid "Site Description"
+msgstr "Description du site"
+
+#: lib/submenu/essential.php:78
+msgctxt "metabox title"
+msgid "Facebook / Open Graph"
+msgstr "Facebook / Open Graph"
+
+#: lib/submenu/essential.php:84 lib/submenu/general.php:209
+msgctxt "option label"
+msgid "Facebook Application ID"
+msgstr "ID de l’application Facebook"
+
+#: lib/submenu/essential.php:88 lib/submenu/general.php:213
+msgctxt "option label"
+msgid "or Facebook Admin Username(s)"
+msgstr "ou Nom d’utilisateurs admin Facebook"
+
+#: lib/submenu/essential.php:92 lib/submenu/general.php:222
+msgctxt "option label"
+msgid "Default Content Language"
+msgstr "Langue par défaut du contenu"
+
+#: lib/submenu/essential.php:96 lib/submenu/general.php:172
+msgctxt "option label"
+msgid "Default / Fallback Image ID"
+msgstr "ID de l’image par défaut / repli"
+
+#: lib/submenu/essential.php:100 lib/submenu/general.php:176
+msgctxt "option label"
+msgid "or Default / Fallback Image URL"
+msgstr "ou URL d’une image par défaut / repli"
+
+#: lib/submenu/essential.php:104 lib/submenu/general.php:168
+msgctxt "option label"
+msgid "Open Graph Image Dimensions"
+msgstr "Dimensions d’images Open Graph"
+
+#: lib/submenu/essential.php:109
+msgctxt "metabox title"
+msgid "Google / Schema"
+msgstr "Google / Schéma"
+
+#: lib/submenu/essential.php:115 lib/submenu/general.php:263
+msgctxt "option label"
+msgid "Website / Business Logo URL"
+msgstr "Logo de l'entreprise / site Web"
+
+#: lib/submenu/essential.php:120
+msgctxt "metabox title"
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: lib/submenu/essential.php:127 lib/submenu/general.php:324
+msgctxt "option label"
+msgid "Rich Pin Image Dimensions"
+msgstr "Dimensions d’images Rich Pin"
+
+#: lib/submenu/essential.php:133
+msgctxt "metabox title"
+msgid "Twitter"
+msgstr "Twitter"
 
 #: lib/submenu/general.php:29
 msgctxt "metabox title"
@@ -2579,23 +2682,8 @@ msgstr "Twitter"
 
 #: lib/submenu/general.php:60
 msgctxt "metabox tab"
-msgid "Others"
-msgstr "Autres"
-
-#: lib/submenu/general.php:78
-msgctxt "option label"
-msgid "Default Article Topic"
-msgstr "Rubrique d’article par défaut"
-
-#: lib/submenu/general.php:82
-msgctxt "option label"
-msgid "Site Name"
-msgstr "Nom du site"
-
-#: lib/submenu/general.php:87
-msgctxt "option label"
-msgid "Site Description"
-msgstr "Description du site"
+msgid "Other"
+msgstr "Autre"
 
 #: lib/submenu/general.php:96
 msgctxt "option label"
@@ -2608,14 +2696,14 @@ msgid "Maximum Title Length"
 msgstr "Longueur de titre maximale"
 
 #: lib/submenu/general.php:104 lib/submenu/general.php:110
-#: lib/submenu/general.php:238 lib/submenu/general.php:270
-#: lib/submenu/general.php:354
+#: lib/submenu/general.php:238 lib/submenu/general.php:271
+#: lib/submenu/general.php:355
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/submenu/general.php:107 lib/submenu/general.php:267
-#: lib/submenu/general.php:351
+#: lib/submenu/general.php:107 lib/submenu/general.php:268
+#: lib/submenu/general.php:352
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr "Longueur de description maximale"
@@ -2671,21 +2759,6 @@ msgid "<em>video preview images are enabled</em> and will be included first"
 msgstr ""
 "<em>images d'aperçu vidéo sont activés</em> et seront inclus en premier"
 
-#: lib/submenu/general.php:168
-msgctxt "option label"
-msgid "Open Graph Image Dimensions"
-msgstr "Dimensions d’images Open Graph"
-
-#: lib/submenu/general.php:172
-msgctxt "option label"
-msgid "Default / Fallback Image ID"
-msgstr "ID de l’image par défaut / repli"
-
-#: lib/submenu/general.php:176
-msgctxt "option label"
-msgid "or Default / Fallback Image URL"
-msgstr "ou URL d’une image par défaut / repli"
-
 #: lib/submenu/general.php:181
 msgctxt "option label"
 msgid "Use Default Image on Indexes"
@@ -2701,21 +2774,6 @@ msgctxt "option label"
 msgid "Add Tags from NGG Featured Image"
 msgstr "Ajouter étiquettes de l’image NGG vedette"
 
-#: lib/submenu/general.php:209
-msgctxt "option label"
-msgid "Facebook Application ID"
-msgstr "ID de l’application Facebook"
-
-#: lib/submenu/general.php:213
-msgctxt "option label"
-msgid "or Facebook Admin Username(s)"
-msgstr "ou Nom d’utilisateurs admin Facebook"
-
-#: lib/submenu/general.php:222
-msgctxt "option label"
-msgid "Default Content Language"
-msgstr "Langue par défaut du contenu"
-
 #: lib/submenu/general.php:235
 msgctxt "option label"
 msgid "Search / SEO Description Length"
@@ -2723,55 +2781,45 @@ msgstr "Longueur max. de description SEO"
 
 #: lib/submenu/general.php:260
 msgctxt "metabox title"
-msgid "Google Structured Data / Schema Markup"
-msgstr "Données Structurées Google / Balises de Schéma"
+msgid "Schema Markup / Google Structured Data"
+msgstr "Balises de Schéma / Données Structurées Google"
 
-#: lib/submenu/general.php:262
-msgctxt "option label"
-msgid "Website / Business Logo URL"
-msgstr "Logo de l'entreprise / site Web"
-
-#: lib/submenu/general.php:287
+#: lib/submenu/general.php:288
 msgctxt "option label"
 msgid "Schema Item Type by Post Type"
 msgstr "Type de schéma par type d'article"
 
-#: lib/submenu/general.php:292
+#: lib/submenu/general.php:293
 msgctxt "option label"
 msgid "Use Meta Property Container(s)"
 msgstr "Utiliser Conteneur(s) de Propriétés Méta"
 
-#: lib/submenu/general.php:297
+#: lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Include Website JSON-LD"
 msgstr "Inclure le Schéma Site Web JSON-LD"
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Include Publisher JSON-LD"
 msgstr "Inclure le Schéma d'Éditeur JSON-LD"
 
-#: lib/submenu/general.php:307
+#: lib/submenu/general.php:308
 msgctxt "option label"
 msgid "Include Author JSON-LD"
 msgstr "Inclure le Schéma d'Auteur JSON-LD"
 
-#: lib/submenu/general.php:323
-msgctxt "option label"
-msgid "Rich Pin Image Dimensions"
-msgstr "Dimensions d’images Rich Pin"
-
-#: lib/submenu/general.php:335
+#: lib/submenu/general.php:336
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr "ID de vérif. du site Web pour Pinterest"
 
-#: lib/submenu/general.php:356
+#: lib/submenu/general.php:357
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>sommaire</em>"
 
-#: lib/submenu/general.php:360
+#: lib/submenu/general.php:361
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>grande img.</em>"
@@ -2836,11 +2884,11 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:225
+#: lib/util.php:227
 msgid "%s has been cleared as well."
 msgstr "Le cache %s a été vidé aussi."
 
-#: lib/util.php:227
+#: lib/util.php:229
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
@@ -2888,3 +2936,15 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
+
+#~ msgctxt "lib file description"
+#~ msgid "General"
+#~ msgstr "Général"
+
+#~ msgctxt "metabox title"
+#~ msgid "Pinterest (Rich Pin)"
+#~ msgstr "Pinterest (Rich Pin)"
+
+#~ msgctxt "metabox title"
+#~ msgid "Google Structured Data / Schema Markup"
+#~ msgstr "Données Structurées Google / Balises de Schéma"

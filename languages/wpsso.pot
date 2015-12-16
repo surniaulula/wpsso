@@ -534,80 +534,85 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:34
 msgctxt "lib file description"
-msgid "Social Image Dimensions"
+msgid "Setup Guide"
 msgstr ""
 
 #: lib/config-gettext-extract.php:35
 msgctxt "lib file description"
-msgid "<span>Extension Plugins</span> and Pro Licenses"
+msgid "Social Image Dimensions"
 msgstr ""
 
 #: lib/config-gettext-extract.php:36
-msgctxt "option value"
-msgid "TinyURL (slow)"
+msgctxt "lib file description"
+msgid "<span>Extension Plugins</span> and Pro Licenses"
 msgstr ""
 
 #: lib/config-gettext-extract.php:37
 msgctxt "option value"
-msgid "Title and Excerpt"
+msgid "TinyURL (slow)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:38
 msgctxt "option value"
-msgid "Title Only"
+msgid "Title and Excerpt"
 msgstr ""
 
 #: lib/config-gettext-extract.php:39
 msgctxt "option value"
-msgid "Top"
+msgid "Title Only"
 msgstr ""
 
 #: lib/config-gettext-extract.php:40
-msgctxt "lib file description"
-msgid "User Profile Contact Methods"
+msgctxt "option value"
+msgid "Top"
 msgstr ""
 
 #: lib/config-gettext-extract.php:41
 msgctxt "lib file description"
-msgid "Website / Business Social Accounts"
+msgid "User Profile Contact Methods"
 msgstr ""
 
 #: lib/config-gettext-extract.php:42
+msgctxt "lib file description"
+msgid "Website / Business Social Accounts"
+msgstr ""
+
+#: lib/config-gettext-extract.php:43
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
 "in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:44
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add traditional Social Sharing Buttons with support for "
 "hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:45
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:46
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
 "\"Place\" Rich Pin meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:46
+#: lib/config-gettext-extract.php:47
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
 "Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:47
+#: lib/config-gettext-extract.php:48
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
@@ -1414,16 +1419,15 @@ msgstr ""
 
 #: lib/messages.php:646
 msgid ""
-"If you appreciate the features, quality and support of this plugin, please "
-"<a href=\"%1$s\" target=\"_blank\">take a moment to rate the %2$s plugin on "
-"WordPress.org</a>."
+"How do you like the plugin? Please take a moment to <a href=\"%1$s\" target="
+"\"_blank\">rate the %2$s plugin on WordPress.org</a>."
 msgstr ""
 
 #: lib/messages.php:646
 msgid ""
-"Your rating will help other WordPress users find higher quality and well "
-"supported plugins &mdash; along with <strong>encouraging us to keep "
-"improving %s</strong> as well!"
+"Ratings help the WordPress community as a whole find higher-quality plugins "
+"&mdash; along with <strong>encouraging us to keep improving %s</strong> as "
+"well!"
 msgstr ""
 
 #: lib/messages.php:649

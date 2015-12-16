@@ -31,6 +31,7 @@ _x( 'Plugin Read Me', 'lib file description', 'wpsso' );
 _x( 'Quick Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );
+_x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Social Image Dimensions', 'lib file description', 'wpsso' );
 _x( '<span>Extension Plugins</span> and Pro Licenses', 'lib file description', 'wpsso' );
 _x( 'TinyURL (slow)', 'option value', 'wpsso' );
