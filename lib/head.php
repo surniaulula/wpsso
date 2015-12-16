@@ -325,6 +325,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$ret = array();
 			$attr = $tag === 'link' ? 'href' : 'content';
 			$log_pre = $tag.' '.$type.' '.$name;
+			$charset = get_bloginfo( 'charset' );
 
 			if ( is_array( $value ) ) {
 				if ( $this->p->debug->enabled )
@@ -340,25 +341,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( strpos( $value, '%%' ) )
 				$value = $this->p->util->replace_inline_vars( $value, $use_post );
 
-			$charset = get_bloginfo( 'charset' );
-			$value = htmlentities( $value, ENT_QUOTES, $charset, false );	// double_encode = false
-
-			// add secure_url meta tag for open graph images and videos
-			if ( $tag === 'meta' && 
-				$type === 'property' && 
-				strpos( $value, 'https:' ) === 0 ) {
-
-				switch ( $name ) {
-					case 'og:image':
-					case 'og:image:url':
-					case 'og:video':
-					case 'og:video:url':
+			switch ( $name ) {
+				case 'og:image':
+				case 'og:image:url':
+				case 'og:video':
+				case 'og:video:url':
+					// add secure_url meta tag for open graph images and videos
+					if ( strpos( $value, 'https://' ) === 0 ) {
 						$secure_value = $value;
 						$secure_name = preg_replace( '/:url$/', '', $name ).':secure_url';
 						$value = preg_replace( '/^https:/', 'http:', $value );
 						$ret[] = array( '', $tag, $type, $secure_name, $attr, $secure_value, $cmt );
-						break;
-				}
+					}
+					break;
 			}
 			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
@@ -369,6 +364,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			foreach ( $ret as $num => $parts ) {
 				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $log_pre.' = "'.$parts[5].'"' );
 
@@ -387,6 +383,26 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$parts[2] === 'itemprop' && 
 							strpos( $parts[3], '.' ) !== 0 )
 								$parts[3] = preg_replace( '/^.*\./', '', $parts[3] );
+
+					switch ( $parts[3] ) {
+						case 'og:url':
+						case 'og:image':
+						case 'og:image:url':
+						case 'og:image:secure_url':
+						case 'og:video':
+						case 'og:video:url':
+						case 'og:video:url:secure_url':
+						case 'og:video:url:embed_url':
+						case 'twitter:image':
+						case 'twitter:player':
+						case 'canonical':
+						case 'url':
+							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
+							break;
+						default:
+							$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );
+							break;
+					}
 
 					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 						'<'.$parts[1].' '.$parts[2].'="'.$parts[3].'" '.$parts[4].'="'.$parts[5].'"/>'."\n";

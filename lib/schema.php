@@ -248,10 +248,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	"@context":"http://schema.org",
 	"@type":"WebSite",
 	"name":"'.$this->p->og->get_site_name( $post_id ).'",
-	"url":"'.get_bloginfo( 'url' ).'",
+	"url":"'.esc_url( get_bloginfo( 'url' ) ).'",
 	"potentialAction":{
 		"@type":"SearchAction",
-		"target":"'.get_bloginfo( 'url' ).'?s={search_term_string}",
+		"target":"'.esc_url( get_bloginfo( 'url' ) ).'?s={search_term_string}",
 		"query-input":"required name=search_term_string"
 	}'."\n}\n";
 		}
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	"@context":"http://schema.org",
 	"@type":"Organization",
 	"name":"'.$this->p->og->get_site_name( $post_id ).'",
-	"url":"'.get_bloginfo( 'url' )."\",\n".
+	"url":"'.esc_url( get_bloginfo( 'url' ) )."\",\n".
 	$this->get_json_single_image( 'logo', $this->p->options, 'schema_logo_url' ).
 	"\t\"sameAs\":[\n";
 			$url_list = '';
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $key === 'tc_site' )
 					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
 				if ( strpos( $url, '://' ) !== false )
-					$url_list .= "\t\t\"".$url."\",\n";
+					$url_list .= "\t\t\"".esc_url( $url )."\",\n";
 			}
 			return $json.rtrim( $url_list, ",\n" )."\n\t]\n}\n";
 		}
@@ -299,8 +299,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						return $json;
 				else $json .= "\t\"".$type."\":{\n\t\t\"@type\":\"ImageObject\",\n".
 					trim( "\t\t\"url\":\"".
-						( ! empty( $arr[$key_prefix.':secure_url'] ) ?
-							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ).'",'."\n".
+						esc_url( ( ! empty( $arr[$key_prefix.':secure_url'] ) ?
+							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ) ).'",'."\n".
 						( ! empty( $arr[$key_prefix.':width'] ) && $arr[$key_prefix.':width'] > 0 ?
 							"\t\t\"width\":\"".$arr[$key_prefix.':width'].'",'."\n" : '' ).
 						( ! empty( $arr[$key_prefix.':height'] ) && $arr[$key_prefix.':height'] > 0 ?
