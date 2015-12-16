@@ -353,6 +353,7 @@ Official announcement: N/A
 	* *None*
 * **Improvements**
 	* Added a new "Essential Settings" page to combine all essential / basic General and Advanced options on one page.
+	* Added encoding of special / foreign characters in URL meta tag values.
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
