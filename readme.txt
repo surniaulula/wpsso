@@ -345,7 +345,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.19.2 (TBD) =
+= Version 3.19.2 (2015/12/16) =
 
 Official announcement: N/A
 
@@ -449,15 +449,11 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 
 == Upgrade Notice ==
 
+= 3.19.2 =
+
+2015/12/16 - Added a new "Essential Settings" page. Added encoding of special / foreign characters in URL meta tag values.
+
 = 3.19.0 =
 
 2015/12/14 - Added a new Google / Schema "Author Name Format" option. Additional schema and JSON improvements, including new JSON filter hooks.
-
-= 3.18.1 =
-
-2015/12/11 - Enabled all fields in the Social Settings metabox when editing a non-auto-draft Post / Page.
-
-= 3.18.0 =
-
-2015/12/09 - Added a new "Schema Item Type by Post Type" option, improved head HTML element checks in theme templates, refactored the post, user, and taxonomy meta code.
 
