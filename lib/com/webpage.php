@@ -411,9 +411,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$this->p->debug->log( 'description seed = "'.$desc.'"' );
 				}
 			}
-		
-			// check for hashtags in meta or seed description, remove and then add again after shorten
-			if ( preg_match( '/(.*)(( #[a-z0-9\-]+)+)$/U', $desc, $match ) ) {
+
+			// remove and save trailing hashtags
+			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $desc, $match ) ) {
 				$desc = $match[1];
 				$hashtags = trim( $match[2] );
 			} elseif ( is_singular() || $use_post !== false ) {
@@ -714,7 +714,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$tags = array_slice( $this->get_tags( $post_id ), 0, $max_hashtags );
 				if ( ! empty( $tags ) ) {
 					// remove special character incompatible with Twitter
-					$hashtags = '#'.trim( implode( ' #', preg_replace( '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '', $tags ) ) );
+					$hashtags = SucomUtil::array_to_hashtags( $tags );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'hashtags (max '.$max_hashtags.') = "'.$hashtags.'"' );
 				}

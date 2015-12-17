@@ -66,10 +66,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $tag;
 		}
 
+		public static function sanitize_hashtags( $tags = array() ) {
+			// truncate tags that start with a number (not allowed)
+			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), 
+				array( '', '', '#$0' ), $tags );
+		}
+
+		public static function array_to_hashtags( $tags = array() ) {
+			// array_filter() removes empty array values
+			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) );
+		}
+
 		public static function sanitize_key( $key ) {
-			$key = strtolower( $key );
-			$key = preg_replace( '/[^a-z0-9_\-]/', '', $key );
-			return $key;
+			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
 		}
 
 		public function get_inline_vars() {
