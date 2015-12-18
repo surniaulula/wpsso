@@ -231,27 +231,41 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
-					$img_sizes = array();
 					$crawler_name = SucomUtil::crawler_name();
+					$img_sizes = array( 'og' => $this->p->cf['lca'].'-opengraph' );
 
-					if ( ( is_admin() || $crawler_name === 'pinterest' ) &&
-						! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
+					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+						if ( is_admin() )
 							$img_sizes['rp'] = $this->p->cf['lca'].'-richpin';
+						elseif ( $crawler_name === 'pinterest' )
+							$img_sizes['og'] = $this->p->cf['lca'].'-richpin';
+					}
 
-					$img_sizes['og'] = $this->p->cf['lca'].'-opengraph';	// must be last for meta tags preview
-
+					$size_count = count( $img_sizes );
+					$size_num = 0;
 					foreach ( $img_sizes as $md_pre => $size_name ) {
-						// only check for dupes on last image size
-						$check_dupes = ( is_admin() && $md_pre !== 'og' ) ?
+						$check_dupes = $size_num++ < $size_count ?
 							false : true;
 
-						$og['og:image'] = $this->get_all_images( $og_max['og_img_max'], 
+						$og[$md_pre.':image'] = $this->get_all_images( $og_max['og_img_max'], 
 							$size_name, $post_id, $check_dupes, $md_pre );
 
-						// if there's no image, and no video preview image, then add the default image for non-index webpages
-						if ( empty( $og['og:image'] ) && $video_previews === 0 && SucomUtil::is_post_page( $use_post ) )
-							$og['og:image'] = $this->p->media->get_default_image( $og_max['og_img_max'],
-								$size_name, $check_dupes );
+						switch ( $md_pre ) {
+							case 'rp':
+								foreach ( $og[$md_pre.':image'] as $num => $arr )
+									$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
+										$arr, false, 'pinterest:' );
+								break;
+							case 'og':
+								// if there's no image, and no video preview image, 
+								// then add the default image for singular webpages
+								if ( empty( $og[$md_pre.':image'] ) && $video_previews === 0 && 
+									SucomUtil::is_post_page( $use_post ) ) {
+									$og[$md_pre.':image'] = $this->p->media->get_default_image( $og_max['og_img_max'],
+										$size_name, $check_dupes );
+								}
+								break;
+						}
 					}
 				} 
 			}

@@ -118,29 +118,27 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 			$rows = array();
 			$xtra_class = '';
-			foreach ( WpssoMeta::$head_meta_tags as $m ) {
-				if ( empty( $m[0] ) )	// array elements without HTML are ignored
-					continue;
-
-				if ( count( $m ) === 1 ) {
-					if ( strpos( $m[0], '<script ' ) === 0 )
+			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
+				if ( count( $parts ) === 1 ) {
+					if ( strpos( $parts[0], '<script ' ) === 0 )
 						$xtra_class = 'script';
-					elseif ( strpos( $m[0], '<noscript ' ) === 0 )
+					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
 						$xtra_class = 'noscript';
 					$rows[] = '<td colspan="5" class="html '.$xtra_class.'"><pre>'.
-						esc_html( $m[0] ).'</pre></th>';
+						esc_html( $parts[0] ).'</pre></th>';
 					if ( $xtra_class === 'script' ||
-						strpos( $m[0], '</noscript>' ) === 0 )
+						strpos( $parts[0], '</noscript>' ) === 0 )
 							$xtra_class = '';
-				} elseif ( isset( $m[5] ) ) {
-					$rows[] = '<tr class="'.$xtra_class.'">'.
-					'<th class="xshort">'.$m[1].'</th>'.
-					'<th class="xshort">'.$m[2].'</th>'.
-					'<td class="short">'.( empty( $m[6] ) ? 
-						'' : '<!-- '.$m[6].' -->' ).$m[3].'</td>'.
-					'<th class="xshort">'.$m[4].'</th>'.
-					'<td class="wide">'.( strpos( $m[5], 'http' ) === 0 ? 
-						'<a href="'.$m[5].'">'.$m[5].'</a>' : $m[5] ).'</td>';
+				} elseif ( isset( $parts[5] ) ) {
+					$rows[] = '<tr class="'.$xtra_class.' '.
+						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).'">'.
+					'<th class="xshort">'.$parts[1].'</th>'.
+					'<th class="xshort">'.$parts[2].'</th>'.
+					'<td class="short">'.( empty( $parts[6] ) ? 
+						'' : '<!-- '.$parts[6].' -->' ).$parts[3].'</td>'.
+					'<th class="xshort">'.$parts[4].'</th>'.
+					'<td class="wide">'.( strpos( $parts[5], 'http' ) === 0 ? 
+						'<a href="'.$parts[5].'">'.$parts[5].'</a>' : $parts[5] ).'</td>';
 				}
 			}
 			return $rows;
