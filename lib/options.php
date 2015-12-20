@@ -372,22 +372,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'url_base';
 					break;
 				// must be a url
-				case 'seo_publisher_url':
+				case 'sharing_url':
 				case 'fb_page_url':
 				case 'fb_publisher_url':
+				case 'seo_publisher_url':
 				case 'schema_logo_url':
 				case 'og_def_img_url':
 				case 'og_img_url':
+				case 'og_vid_url':
+				case 'rp_img_url':
 					return 'url';
 					break;
-				// must be numeric (blank or zero is ok)
+				// must be numeric (blank and zero are ok)
 				case 'fb_app_id':
-				case 'og_img_id':
-				case 'og_def_img_id':
-				case 'og_def_author_id':
 				case 'seo_def_author_id':
+				case 'og_def_author_id':
+				case 'og_def_img_id':
+				case 'og_img_id':
+				case 'rp_img_id':
 					return 'blank_num';
 					break;
+				// must be numeric (zero and -1 is ok)
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
@@ -395,7 +400,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
 					return 'numeric';
 					break;
-				// integer options that must be 1 or more (not zero)
+				// integer options that must be positive (1 or more)
 				case 'plugin_object_cache_exp':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_len$/', $key ) ? true : false ):
@@ -420,7 +425,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/_tid$/', $key ) ? true : false ):
 					return 'auth_id';
 					break;
-				// text strings that can be blank
+				// text strings that can be blank (multi-line is ok)
+				case 'plugin_cf_vid_embed':
+					return 'ok_blank';
+					break;
+				// text strings that can be blank (line breaks are removed)
 				case 'og_art_section':
 				case 'og_title':
 				case 'og_desc':
@@ -429,22 +438,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_desc':
 				case 'seo_desc':
 				case 'tc_desc':
+				case 'pin_desc':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
 				case 'plugin_cf_vid_url':
-				case 'plugin_cf_vid_embed':
 				case 'plugin_bitly_login':
 				case ( strpos( $key, '_filter_name' ) === false ? false : true ):
-					return 'ok_blank';
+					return 'one_line';
 					break;
 				// options that cannot be blank
+				case 'fb_lang': 
+				case 'og_author_field':
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
-				case 'og_author_field':
+				case 'rp_img_id_pre': 
 				case 'rp_author_name':
-				case 'fb_lang': 
 				case 'plugin_shortener':	// none or name of shortener
+				case ( strpos( $key, '_crop_x' ) === false ? false : true ):
+				case ( strpos( $key, '_crop_y' ) === false ? false : true ):
 				case ( preg_match( '/_tid:use$/', $key ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 					return 'not_blank';

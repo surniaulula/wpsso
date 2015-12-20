@@ -1128,7 +1128,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array(  $lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 				// default row class and id attribute values
@@ -1432,7 +1432,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( defined( 'T_DOC_COMMENT' ) )
 					$comments[] = T_DOC_COMMENT;	// php 5
 				if ( defined( 'T_ML_COMMENT' ) )
-				        $comments[] = T_ML_COMMENT;	// php 4
+					$comments[] = T_ML_COMMENT;	// php 4
 				$tokens = token_get_all( $php );
 				foreach ( $tokens as $token ) {
 					if ( is_array( $token ) ) {

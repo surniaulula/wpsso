@@ -504,6 +504,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' )
 						$val = trim( $val );
 					break;
+				case 'desc':
+				case 'one_line':
+					if ( $val !== '' )
+						$val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $val ) );
+					break;
 				case 'html':
 					if ( $val !== '' ) {
 						$val = trim( $val );
