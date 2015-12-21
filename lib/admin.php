@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
 					$has_tid = true;
 					if ( ! $this->p->check->aop( $ext, false ) )
-						$this->p->notice->inf( $this->p->msgs->get( 'notice-pro-not-installed', 
+						$this->p->notice->err( $this->p->msgs->get( 'notice-pro-not-installed', 
 							array( 'lca' => $ext ) ), true );
 				}
 			}

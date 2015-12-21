@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.19.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-16 13:08-0700\n"
-"PO-Revision-Date: 2015-12-16 13:09-0700\n"
+"POT-Creation-Date: 2015-12-21 07:10-0700\n"
+"PO-Revision-Date: 2015-12-21 07:10-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2008,14 +2008,15 @@ msgstr ""
 "\">page de réglages de Licences Pro</a>."
 
 #: lib/messages.php:714
+#, fuzzy
 msgid ""
-"An Authentication ID has been entered for %s, but the Pro version is not yet "
-"installed &ndash; don't forget to update this plugin to install the latest "
-"Pro version."
+"<b>An Authentication ID has been entered for %s, but the Pro version is not "
+"yet installed</b> &ndash; don't forget to update this plugin to install the "
+"latest Pro version. ;-)"
 msgstr ""
-"Un ID d’authentification a été saisi pour %s, mais la version Pro n’est pas "
-"encore installé &ndash; n’oubliez pas de mettre à jour l’extension pour "
-"installer la version Pro."
+"<b>Un ID d’authentification a été saisi pour %s, mais la version Pro n’est "
+"pas encore installé</b> &ndash; n’oubliez pas de mettre à jour l’extension "
+"pour installer la version Pro. ;-)"
 
 #: lib/messages.php:724
 msgid ""
@@ -2147,12 +2148,12 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr "Example Open Graph"
 
-#: lib/meta.php:152
+#: lib/meta.php:150
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:152
+#: lib/meta.php:150
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
@@ -2160,7 +2161,7 @@ msgstr ""
 "Facebook, Pinterest, LinkedIn, Google+ et la majorité des sites sociaux "
 "utilisent les balises méta Open Graph."
 
-#: lib/meta.php:152
+#: lib/meta.php:150
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
@@ -2168,7 +2169,7 @@ msgstr ""
 "Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout "
 "en validant également les balises méta Open Graph et Rich Pin de Pinterest."
 
-#: lib/meta.php:152
+#: lib/meta.php:150
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
@@ -2179,12 +2180,12 @@ msgstr ""
 "bouton \"Fetch new scrape information\" quelques fois pour actualiser le "
 "cache de Facebook</strong>."
 
-#: lib/meta.php:154
+#: lib/meta.php:152
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:154
+#: lib/meta.php:152
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
@@ -2194,12 +2195,12 @@ msgstr ""
 "structurées (méta, schéma, microdonnées, et social JSON-LD) pour Google "
 "Search et Google+."
 
-#: lib/meta.php:156
+#: lib/meta.php:154
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:156
+#: lib/meta.php:154
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
@@ -2207,12 +2208,12 @@ msgstr ""
 "Valider les balises méta Open Graph / Rich Pin et appliquent pour les "
 "montrés sur les épingles Pinterest agrandis ."
 
-#: lib/meta.php:158
+#: lib/meta.php:156
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:158
+#: lib/meta.php:156
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
@@ -2221,23 +2222,23 @@ msgstr ""
 "&ndash; copier-coller l'URL de partage suivant dans le champ d'entrée de "
 "validation."
 
-#: lib/meta.php:255
+#: lib/meta.php:253
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour "
 "ignorée)."
 
-#: lib/meta.php:321
+#: lib/meta.php:319
 msgctxt "column title"
 msgid "Social Img"
 msgstr "Img Social"
 
-#: lib/meta.php:322
+#: lib/meta.php:320
 msgctxt "column title"
 msgid "Social Desc"
 msgstr "Desc Social"
 
-#: lib/meta.php:338
+#: lib/meta.php:336
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
@@ -2410,22 +2411,22 @@ msgctxt "metabox title"
 msgid "Social Image Dimensions"
 msgstr "Dimensions des Images Sociaux"
 
-#: lib/setting/image-dimensions.php:51
+#: lib/setting/image-dimensions.php:50
 msgctxt "option label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/setting/image-dimensions.php:56
+#: lib/setting/image-dimensions.php:55
 msgctxt "option label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
 
-#: lib/setting/image-dimensions.php:61
+#: lib/setting/image-dimensions.php:60
 msgctxt "option label"
 msgid "Twitter <em>Summary</em> Card"
 msgstr "Carte Twitter <em>sommaire</em>"
 
-#: lib/setting/image-dimensions.php:65
+#: lib/setting/image-dimensions.php:64
 msgctxt "option label"
 msgid "Twitter <em>Large Image Summary</em> Card"
 msgstr "Carte Twitter <em>grande image</em>"
@@ -2489,16 +2490,17 @@ msgctxt "metabox tab"
 msgid "File and Object Cache"
 msgstr "Cache Fichiers / Objets"
 
-#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:94
-msgctxt "option label"
-msgid "Add Hidden Debug Messages"
-msgstr "Ajout messages de débogage caché"
-
-#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:90
+#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:90
 #: lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
+
+#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:94
+#: lib/submenu/essential.php:147
+msgctxt "option label"
+msgid "Add Hidden Debug Messages"
+msgstr "Ajout messages de débogage caché"
 
 #: lib/sitesubmenu/sitelicenses.php:30 lib/submenu/licenses.php:25
 msgctxt "metabox title"
@@ -2936,15 +2938,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
-
-#~ msgctxt "lib file description"
-#~ msgid "General"
-#~ msgstr "Général"
-
-#~ msgctxt "metabox title"
-#~ msgid "Pinterest (Rich Pin)"
-#~ msgstr "Pinterest (Rich Pin)"
-
-#~ msgctxt "metabox title"
-#~ msgid "Google Structured Data / Schema Markup"
-#~ msgstr "Données Structurées Google / Balises de Schéma"
