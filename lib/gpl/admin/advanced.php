@@ -32,11 +32,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Use Filtered (SEO) Title',
-				'option label', 'wpsso' ), 'highlight', 'plugin_filter_title' ).
+				'option label', 'wpsso' ), null, 'plugin_filter_title' ).
 			$this->get_nocb_cell( 'plugin_filter_title' );
 			
 			$rows[] = $this->p->util->get_th( _x( 'Apply WordPress Content Filters',
-				'option label', 'wpsso' ), 'highlight', 'plugin_filter_content' ).
+				'option label', 'wpsso' ), null, 'plugin_filter_content' ).
 			$this->get_nocb_cell( 'plugin_filter_content' );
 
 			$rows[] = '<tr class="hide_in_basic">'.
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Check for Duplicate Meta Tags',
-				'option label', 'wpsso' ), 'highlight', 'plugin_check_head' ).
+				'option label', 'wpsso' ), null, 'plugin_check_head' ).
 			$this->get_nocb_cell( 'plugin_check_head' );
 
 			$rows[] = '<tr class="hide_in_basic">'.
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
 			$rows['plugin_object_cache_exp'] = $this->p->util->get_th( _x( 'Object Cache Expiry',
-				'option label', 'wpsso' ), 'highlight', 'plugin_object_cache_exp' ).
+				'option label', 'wpsso' ), null, 'plugin_object_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_object_cache_exp'].' seconds</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_object_cache_exp' );
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
 			$rows['plugin_shortener'] = $this->p->util->get_th( _x( 'Preferred URL Shortening Service',
-				'option label', 'wpsso' ), 'highlight', 'plugin_shortener' ).
+				'option label', 'wpsso' ), null, 'plugin_shortener' ).
 			'<td class="blank">[none]</td>';
 
 			$rows['plugin_shortlink'] = $this->p->util->get_th( _x( '<em>Get Shortlink</em> Button Gives Short URL',

@@ -2091,15 +2091,15 @@ msgctxt "metabox tab"
 msgid "File and Object Cache"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:94
-msgctxt "option label"
-msgid "Add Hidden Debug Messages"
-msgstr ""
-
-#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:90
+#: lib/sitesubmenu/siteadvanced.php:62 lib/submenu/advanced.php:90
 #: lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:94
+msgctxt "option label"
+msgid "Add Hidden Debug Messages"
 msgstr ""
 
 #: lib/sitesubmenu/sitelicenses.php:30 lib/submenu/licenses.php:25

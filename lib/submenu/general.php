@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'og-general':
 
 					$rows[] = $this->p->util->get_th( _x( 'Default Article Topic',
-						'option label', 'wpsso' ), 'highlight', 'og_art_section' ).
+						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics() ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Site Name',
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Site Description',
-						'option label', 'wpsso' ), 'highlight', 'og_site_description', array( 'is_locale' => true ) ).
+						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_locale_key( 'og_site_description' ), 
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
 
@@ -166,11 +166,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							'option comment', 'wpsso' ) ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
-						'option label', 'wpsso' ), 'highlight', 'og_img_dimensions' ).
+						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Default / Fallback Image ID',
-						'option label', 'wpsso' ), 'highlight', 'og_def_img_id' ).
+						'option label', 'wpsso' ), null, 'og_def_img_id' ).
 					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'or Default / Fallback Image URL',
@@ -203,11 +203,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'pub-facebook':
 
 					$rows[] = $this->p->util->get_th( _x( 'Facebook Business Page URL',
-						'option label', 'wpsso' ), 'highlight', 'fb_publisher_url' ).
+						'option label', 'wpsso' ), null, 'fb_publisher_url' ).
 					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Facebook Application ID',
-						'option label', 'wpsso' ), 'highlight', 'fb_app_id' ).
+						'option label', 'wpsso' ), null, 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'or Facebook Admin Username(s)',
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'pub-google':
 
 					$rows[] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
-						'option label', 'wpsso' ), 'highlight', 'google_publisher_url' ).
+						'option label', 'wpsso' ), null, 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						$rows[] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
-							'option label', 'wpsso' ), 'highlight', 'rp_img_dimensions' ).
+							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
 
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->p->msgs->get( 'info-pub-twitter' ).'</td>';
 
 					$rows[] = $this->p->util->get_th( _x( 'Twitter Business @username',
-						'option label', 'wpsso' ), 'highlight', 'tc_site' ).
+						'option label', 'wpsso' ), null, 'tc_site' ).
 					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.

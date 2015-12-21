@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				case 'plugin-settings':
 
 					$rows['plugin_preserve'] = $this->p->util->get_th( _x( 'Preserve Settings on Uninstall',
-						'option label', 'wpsso' ), 'highlight', 'plugin_preserve' ).
+						'option label', 'wpsso' ), null, 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
 					$rows['plugin_debug'] = $this->p->util->get_th( _x( 'Add Hidden Debug Messages', 
