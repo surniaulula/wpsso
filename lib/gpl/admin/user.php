@@ -35,8 +35,7 @@ if ( ! class_exists( 'WpssoGplAdminUser' ) ) {
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'],
 				'...', false, true, true, true, 'none' ).'</td>';	// $use_post = false, $md_idx = 'none'
 	
-			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Google+ / Schema Description',
+			$rows[] = $this->p->util->get_th( _x( 'Google / Schema Description',
 				'option label', 'wpsso' ), 'medium', 'meta-schema_desc', $head_info ).
 			'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'],
 				'...', false ).'</td>';				// $use_post = false

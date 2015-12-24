@@ -20,9 +20,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
-			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
+			add_filter( 'user_contactmethods', 
+				array( &$this, 'add_contact_methods' ), 20, 2 );
 
-			$this->p->util->add_plugin_filters( $this, array( 'json_http_schema_org_person' => 6 ) );
+			$this->p->util->add_plugin_filters( $this, 
+				array( 'json_http_schema_org_person' => 6 ) );
 
 			if ( is_admin() ) {
 				/**
@@ -31,11 +33,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * but missing when viewing our own profile page.
 				 */
 
-				// common to the show profile and user editing pages
+				// common to your profile and user editing pages
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
+
 				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
-				add_action( 'admin_head', array( &$this, 'load_meta_page' ), 200 );
-				add_action( 'show_user_profile', array( &$this, 'show_metaboxes' ), 20 );	// your profile
+				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
+
+				// the social settings metabox has moved to its own settings page
+				//add_action( 'show_user_profile', array( &$this, 'show_metabox_section' ), 20 );
 
 				if ( ! empty( $this->p->options['plugin_columns_user'] ) ) {
 
@@ -50,16 +55,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					) );
 				}
 
-				// exit here if not a user page, or showing the profile page
+				// exit here if not a user or profile page
 				$user_id = SucomUtil::get_req_val( 'user_id' );
 				if ( empty( $user_id ) )
 					return;
 
 				// hooks for user and profile editing
-				add_action( 'edit_user_profile', array( &$this, 'show_metaboxes' ), 20 );
+				add_action( 'edit_user_profile', array( &$this, 'show_metabox_section' ), 20 );
+
 				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_contact_methods' ), 5 );
 				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_user_profile_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+
 				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
 				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
@@ -119,29 +126,37 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		// hooked into the admin_head action
-		public function load_meta_page() {
-			// all meta modules set this property, so use it to optimize code execution
-			if ( ! empty( WpssoMeta::$head_meta_tags ) )
-				return;
+		// hooked into the current_screen action
+		public function load_meta_page( $screen = false ) {
 
-			$screen_id = SucomUtil::get_screen_id();
+			// all meta modules set this property, so use it to optimize code execution
+			if ( ! empty( WpssoMeta::$head_meta_tags ) 
+				|| ! isset( $screen->id ) )
+					return;
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-				$this->p->debug->log( 'screen_id: '.$screen_id );
+				$this->p->debug->log( 'screen id: '.$screen->id );
 			}
 
-			if ( $screen_id !== 'user-edit' &&
-				$screen_id !== 'profile' )
+			$lca = $this->p->cf['lca'];
+			switch ( $screen->id ) {
+				case 'user-edit':
+				case 'profile':
+				case ( strpos( $screen->id, 'users_page_'.$lca.'-' ) !== false ? true : false ):
+					break;
+				default:
 					return;
+					break;
+			}
 
 			$user_id = $this->p->util->get_author_object( 'id' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
-				$add_metabox, $user_id, $screen_id ) === true ) {
+				$add_metabox, $user_id, $screen->id ) === true ) {
 
-				do_action( $this->p->cf['lca'].'_admin_user_header', $user_id, $screen_id );
+				do_action( $this->p->cf['lca'].'_admin_user_header', $user_id, $screen->id );
 
 				// use_post is false since this isn't a post
 				// read_cache is false to generate notices etc.
@@ -153,7 +168,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
@@ -166,7 +180,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
 						default: 
-							do_action( $lca.'_load_meta_page_user_'.$action_name, $user_id, $screen_id );
+							do_action( $lca.'_load_meta_page_user_'.$action_name, $user_id, $screen->id );
 							break;
 					}
 				}
@@ -186,22 +200,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					array( &$this, 'show_metabox_user' ), 'user', 'normal', 'low' );
 		}
 
-		public function show_metaboxes( $user ) {
+		public function show_metabox_section( $user ) {
 			if ( ! current_user_can( 'edit_user', $user->ID ) )
 				return;
-			$is_suffix = ' '.( $this->p->check->aop( $this->p->cf['lca'], 
+
+			$lca = $this->p->cf['lca'];
+			$is_suffix = ' '.( $this->p->check->aop( $lca, 
 				true, $this->p->is_avail['aop'] ) ? 
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' ) );
-			$screen_id = SucomUtil::get_screen_id();
-			$page_name = $screen_id === 'profile' ? 
-				__( 'Your Profile' ) : __( 'Edit User' );
 
-			echo '<h3>'.$this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-				$is_suffix.' &ndash; '.$page_name.'</h3>';
+			echo '<h3 id="'.$lca.'-metaboxes">'.
+				$this->p->cf['plugin'][$lca]['name'].
+				$is_suffix.'</h3>'."\n";
 			echo '<div id="poststuff">';
 			do_meta_boxes( 'user', 'normal', $user );
-			echo '</div>';
+			echo '</div>'."\n";
 		}
 
 		public function show_metabox_user( $user ) {

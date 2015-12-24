@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
 				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
-				add_action( 'admin_head', array( &$this, 'load_meta_page' ), 300 );
+				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
 				add_action( $this->tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
 				add_action( 'created_'.$this->tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
 				add_action( 'created_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
@@ -182,27 +182,34 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			return $value;
 		}
 
-		// hooked into the admin_head action
-		public function load_meta_page() {
-			// all meta modules set this property, so use it to optimize code execution
-			if ( ! empty( WpssoMeta::$head_meta_tags ) )
-				return;
+		// hooked into the current_screen action
+		public function load_meta_page( $screen = false ) {
 
-			$screen_id = SucomUtil::get_screen_id();
+			// all meta modules set this property, so use it to optimize code execution
+			if ( ! empty( WpssoMeta::$head_meta_tags ) 
+				|| ! isset( $screen->id ) )
+					return;
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-				$this->p->debug->log( 'screen_id: '.$screen_id );
+				$this->p->debug->log( 'screen id: '.$screen->id );
 			}
 
-			if ( $screen_id !== 'edit-'.$this->tax_slug )
-				return;
+			$lca = $this->p->cf['lca'];
+			switch ( $screen->id ) {
+				case 'edit-'.$this->tax_slug:
+					break;
+				default:
+					return;
+					break;
+			}
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
-				$add_metabox, $this->term_id, $screen_id ) === true ) {
+				$add_metabox, $this->term_id, $screen->id ) === true ) {
 
-				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $this->term_id, $screen_id );
+				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $this->term_id, $screen->id );
 
 				// use_post is false since this isn't a post
 				// read_cache is false to generate notices etc.
@@ -214,7 +221,6 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );

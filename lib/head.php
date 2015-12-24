@@ -399,8 +399,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
 							break;
+						case 'og:title':
+						case 'og:description':
+						case 'twitter:title':
+						case 'twitter:description':
+						case 'description':
+						case 'name':
+							$parts[5] = wp_encode_emoji( htmlentities( $parts[5],
+								ENT_QUOTES, $charset, false ) );	// double_encode = false
 						default:
-							$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );
+							$parts[5] = htmlentities( $parts[5],
+								ENT_QUOTES, $charset, false );		// double_encode = false
 							break;
 					}
 

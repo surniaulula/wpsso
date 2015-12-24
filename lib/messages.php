@@ -721,10 +721,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
 						$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
 
-						$text = '<p>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the <b>%2$s</b> plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).' ';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).'</b> ';
 
 						if ( $idx === 'notice-um-extension-required' ) {
-							$text .= sprintf( __( 'This <b>Free extension</b> is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $atts['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</b></li></ol>';
+							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $atts['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</b></li></ol>';
 						} else $text .= '</p>';
 
 						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_name ).'</p><p>'.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_dl, $um_name ).'</p>';

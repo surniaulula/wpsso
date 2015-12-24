@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		protected function add_actions() {
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from an url
-			add_action( 'admin_init', array( &$this, 'add_plugin_image_sizes' ), -100 );
+			add_action( 'current_screen', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_file_cache' ) );
 		}
@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return $size_name;
 		}
 
-		// called directly (with or without an id) and from the 'wp' action ($id will be an object)
+		// called directly (with or without an id) and from the 'wp' + 'current_screen' actions ($id will be an object)
 		public function add_plugin_image_sizes( $id = false, $sizes = array(), $filter = true, $mod = false ) {
 			/*
 			 * Allow various plugin extensions to provide their image names, labels, etc.
@@ -95,49 +95,62 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( $filter === true )
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $id, $mod );
+
 			$meta_opts = array();
 
-			if ( $mod === false ) {
+			// check for object passed by some action hooks
+			if ( is_object( $id ) ) {
+				switch ( get_class( $id ) ) {
+					case 'WP':
+					case 'WP_Screen':
+						$id = false;
+						break;
+					case 'WP_Post':
+						$mod = 'post';
+						$id = $id->ID;
+						break;
+					case 'WP_Term':
+						$mod = 'taxonomy';
+						$id = $id->term_id;
+						break;
+					case 'WP_User':
+						$mod = 'user';
+						$id = $id->ID;
+						break;
+					default:
+						$id = false;
+						break;
+				}
+			}
+
+			if ( empty( $mod ) ) {
 				if ( SucomUtil::is_post_page( false ) )
 					$mod = 'post';
 				elseif ( SucomUtil::is_term_page() )
 					$mod = 'taxonomy';
 				elseif ( SucomUtil::is_author_page() )
 					$mod = 'user';
-				elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'module type could not be determined' );
 			}
 
-			if ( is_object( $id ) ) {
-				$obj = $id;	// could be WP_Object or post/term/user object
-				$id = false;
-				if ( $mod === 'post' )
-					$id = empty( $obj->ID ) || empty( $obj->post_type ) ? 
-						$this->get_post_object( false, 'id' ) : $obj->ID;
-				elseif ( $mod === 'taxonomy' )
-					$id = empty( $obj->term_id ) ?
-						$this->get_term_object( 'id' ) : $obj->term_id;
-				elseif ( $mod === 'user' )
-					$id = empty( $obj->ID ) ?
-						$this->get_author_object( 'id' ): $obj->ID;
-			} elseif ( empty( $id ) ) {
+			if ( empty( $id ) && ! empty( $mod ) ) {
 				if ( $mod === 'post' )
 					$id = $this->get_post_object( false, 'id' );
 				elseif ( $mod === 'taxonomy' )
 					$id = $this->get_term_object( 'id' );
 				elseif ( $mod === 'user' )
 					$id = $this->get_author_object( 'id' );
-			}
+			};
 
 			if ( empty( $mod ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'no module defined' );
+					$this->p->debug->log( 'module is unknown' );
+
 			} elseif ( empty( $id ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'no object id defined' );
+					$this->p->debug->log( 'object id is unknown' );
+
 			// custom filters may use image sizes, so don't filter/cache the meta options
-			} else $meta_opts = $this->get_mod_options( $mod, $id,
-				false, array( 'filter_options' => false ) );
+			} else $meta_opts = $this->get_mod_options( $mod, $id, false, array( 'filter_options' => false ) );
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -419,7 +432,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				default:
 					$val = stripslashes( $val );
 					$val = wp_filter_nohtml_kses( $val );
-					$val = htmlentities( $val, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
+					$val = wp_encode_emoji( htmlentities( $val, 
+						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 					break;
 			}
 

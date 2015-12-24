@@ -172,10 +172,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( $encode === true )
-				$caption = htmlentities( $caption, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
+				$caption = wp_encode_emoji( htmlentities( $caption, 
+					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			else {	// just in case
 				$charset = get_bloginfo( 'charset' );
-				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), ENT_QUOTES, $charset );
+				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ),
+					ENT_QUOTES, $charset );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_caption', $caption, $use_post, $add_hashtags, $md_idx, $src_id );
@@ -345,7 +347,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$title .= ' '.$hashtags;
 
 			if ( $encode === true )
-				$title = htmlentities( $title, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
+				$title = wp_encode_emoji( htmlentities( $title, 
+					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 
 			return apply_filters( $this->p->cf['lca'].'_title', $title, $use_post, $add_hashtags, $md_idx, $src_id );
 		}
@@ -528,7 +531,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc .= ' '.$hashtags;
 
 			if ( $encode === true )
-				$desc = htmlentities( $desc, ENT_QUOTES, get_bloginfo( 'charset' ), false );	// double_encode = false
+				$desc = wp_encode_emoji( htmlentities( $desc, 
+					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'render description' );	// stop timer

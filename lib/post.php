@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( SucomUtil::is_post_page() ) {
 					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 					// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
-					add_action( 'admin_head', array( &$this, 'load_meta_page' ), 100 );
+					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
 					add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
@@ -107,23 +107,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $id );
 		}
 
-		// hooked into the admin_head action
-		public function load_meta_page() {
-			// all meta modules set this property, so use it to optimize code execution
-			if ( ! empty( WpssoMeta::$head_meta_tags ) )
-				return;
+		// hooked into the current_screen action
+		public function load_meta_page( $screen = false ) {
 
-			$screen_id = SucomUtil::get_screen_id();
+			// all meta modules set this property, so use it to optimize code execution
+			if ( ! empty( WpssoMeta::$head_meta_tags ) 
+				|| ! isset( $screen->id ) )
+					return;
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-				$this->p->debug->log( 'screen_id: '.$screen_id );
+				$this->p->debug->log( 'screen id: '.$screen->id );
 				$this->p->util->log_is_functions();
 			}
 
-			// check for list type pages
-			if ( strpos( $screen_id, 'edit-' ) !== false ||
-				$screen_id === 'upload' )
+			$lca = $this->p->cf['lca'];
+			switch ( $screen->id ) {
+				case 'upload':
+				case ( strpos( $screen->id, 'edit-' ) !== false ? true : false ):
 					return;
+					break;
+			}
 
 			// make sure we have at least a post type and post status
 			if ( ( $obj = $this->p->util->get_post_object() ) === false ||
@@ -135,6 +139,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				0 : $obj->ID;
 
 			if ( $obj->post_status !== 'auto-draft' ) {
+
 				$post_type = get_post_type_object( $obj->post_type );
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
 
@@ -160,7 +165,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$lca = $this->p->cf['lca'];
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );

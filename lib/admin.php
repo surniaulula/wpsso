@@ -15,10 +15,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $p;
 		protected $menu_id;
 		protected $menu_name;
+		protected $menu_lib;
 		protected $pagehook;
 
-		protected static $is_suffix;
-		protected static $readme_info = array();
+		public static $is_suffix;
+		public static $readme_info = array();
 
 		public $form;
 		public $lang = array();
@@ -40,12 +41,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-				add_action( 'admin_menu', array( &$this, 'add_admin_settings' ), WPSSO_ADD_SETTINGS_PRIORITY );
+				// add settings and users submenu items
+				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 				add_action( 'activated_plugin', array( &$this, 'check_activated_plugin' ), 10, 2 );
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_elements' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_elements' ) );
 
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+				add_filter( 'wp_redirect', array( &$this, 'wp_profile_updated_redirect' ), -100, 2 );
 	
 				if ( is_multisite() ) {
 					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
@@ -66,23 +69,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				true, $this->p->is_avail['aop'] ) ? 
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' ) );
-			$menus = array( 
+
+			$menu_libs = array( 
 				'submenu', 
-				'setting'		// setting must be last to extend submenu/advanced.php
+				'setting',		// setting must be after submenu to extend submenu/advanced.php
+				'profile', 
 			);
+
 			if ( is_multisite() )
-				$menus[] = 'sitesubmenu';
-			foreach ( $menus as $sub ) {
+				$menu_libs[] = 'sitesubmenu';
+
+			foreach ( $menu_libs as $menu_lib ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['lib'][$sub] ) ) {
-						foreach ( $info['lib'][$sub] as $id => $name ) {
-							if ( strpos( $id, 'separator' ) !== false ) 
+					if ( isset( $info['lib'][$menu_lib] ) ) {
+						foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+							if ( strpos( $menu_id, 'separator' ) !== false ) 
 								continue;
-							$classname = apply_filters( $ext.'_load_lib', false, $sub.'/'.$id );
+							$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
 							if ( $classname !== false && class_exists( $classname ) ) {
 								if ( ! empty( $info['text_domain'] ) )
-									$name = _x( $name, 'lib file description', $info['text_domain'] );
-								$this->submenu[$id] = new $classname( $this->p, $id, $name );
+									$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
+								$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib );
 							}
 						}
 					}
@@ -150,36 +157,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function add_admin_settings() {
-			foreach ( $this->p->cf['*']['lib']['setting'] as $id => $name ) {
-				$parent_slug = 'options-general.php';
-				if ( array_key_exists( $id, $this->submenu ) ) {
-					$this->submenu[$id]->add_submenu_page( $parent_slug );
-				} else $this->add_submenu_page( $parent_slug, $id, $name );
+		public function add_admin_submenus() {
+			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
+				$parent_slug = $this->p->cf['wp']['admin_page'][$menu_lib];
+				foreach ( $this->p->cf['*']['lib'][$menu_lib] as $menu_id => $menu_name ) {
+					if ( isset( $this->submenu[$menu_id] ) )
+						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
+					else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
+				}
 			}
 		}
 
 		public function add_network_admin_menus() {
-			$this->add_admin_menus( $this->p->cf['*']['lib']['sitesubmenu'] );
+			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
-		public function add_admin_menus( $submenus = false ) {
-			if ( ! is_array( $submenus ) )
-				$submenus = $this->p->cf['*']['lib']['submenu'];
+		public function add_admin_menus( $menu_lib = '' ) {
+			$menu_lib = empty( $menu_lib ) ?
+				'submenu' : $menu_lib;
+			$libs = $this->p->cf['*']['lib'][$menu_lib];
 
-			$this->menu_id = key( $submenus );
-			$this->menu_name = $submenus[ $this->menu_id ];
+			$this->menu_id = key( $libs );
+			$this->menu_name = $libs[$this->menu_id];
+			$this->menu_lib = $menu_lib;
 
-			if ( array_key_exists( $this->menu_id, $this->submenu ) ) {
+			if ( isset( $this->submenu[$this->menu_id] ) ) {
 				$menu_slug = $this->p->cf['lca'].'-'.$this->menu_id;
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
-			foreach ( $submenus as $id => $name ) {
+			foreach ( $libs as $menu_id => $menu_name ) {
 				$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
-				if ( array_key_exists( $id, $this->submenu ) )
-					$this->submenu[$id]->add_submenu_page( $parent_slug );
-				else $this->add_submenu_page( $parent_slug, $id, $name );
+				if ( isset( $this->submenu[$menu_id] ) )
+					$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
+				else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
 			}
 		}
 
@@ -201,13 +212,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = false, $menu_name = false ) {
+		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '' ) {
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$menu_id = $menu_id === false ?
+
+			$menu_id = empty( $menu_id ) ?
 				$this->menu_id : $menu_id;
-			$menu_name = $menu_name === false ?
+			$menu_name = empty( $menu_name ) ?
 				$this->menu_name : $menu_name;
+			$menu_lib = empty( $menu_lib ) ?
+				$this->menu_lib : $menu_lib;
 
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
 				$menu_title = '<div style="z-index:999;
@@ -227,19 +241,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$menu_title = preg_replace( '/^<span>/',
 						'<span style="color:#'.$this->p->cf['color'].';">', $menu_name );
 				else $menu_title = $menu_name;
+
 				$menu_slug = $lca.'-'.$menu_id;
 				$page_title = $short.self::$is_suffix.' &mdash; '.$menu_title;
 				$function = array( &$this, 'show_setting_page' );
 			}
+
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-			$this->pagehook = add_submenu_page( 
-				$parent_slug, 
-				$page_title, 
-				$menu_title, 
-				'manage_options', 
-				$menu_slug, 
-				$function
-			);
+			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, 'manage_options', $menu_slug, $function );
+
 			if ( $function )
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
@@ -387,24 +397,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_metabox_prefs': 
-							$user = get_userdata( get_current_user_id() );
-							$user_name = $user->first_name.' '.$user->last_name;
-							WpssoUser::delete_metabox_prefs( $user->ID );
-							$this->p->notice->inf( sprintf( __( 'Metabox layout preferences for user "%s" have been reset.',
-								'wpsso' ), $user_name ) );
+							$user_id = get_current_user_id();
+							$user = get_userdata( $user_id );
+							//$user_name = trim( $user->first_name.' '.$user->last_name );
+							$user_name = $user->display_name;
+							WpssoUser::delete_metabox_prefs( $user_id );
+							$this->p->notice->inf( sprintf( __( 'Metabox layout preferences for user id #%d "%s" have been reset.',
+								'wpsso' ), $user_id, $user_name ) );
 							break;
 
 						case 'clear_hidden_notices': 
-							$user = get_userdata( get_current_user_id() );
-							$user_name = $user->first_name.' '.$user->last_name;
-							delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
-							$this->p->notice->inf( sprintf( __( 'Hidden notices for user "%s" have been cleared.',
-								'wpsso' ), $user_name ) );
+							$user_id = get_current_user_id();
+							$user = get_userdata( $user_id );
+							//$user_name = trim( $user->first_name.' '.$user->last_name );
+							$user_name = $user->display_name;
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME );
+							$this->p->notice->inf( sprintf( __( 'Hidden notices for user id #%d "%s" have been cleared.',
+								'wpsso' ), $user_id, $user_name ) );
 							break;
 
 						case 'change_show_options': 
-							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) )
+							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) ) {
+								$this->p->notice->inf( sprintf( 'Option preference saved &mdash; viewing "%s" by default.',
+									$this->p->cf['form']['show_options'][$_GET['show-opts']] ) );
 								WpssoUser::save_pref( array( 'show_opts' => $_GET['show-opts'] ) );
+							}
 							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
 							break;
 
@@ -414,7 +431,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						default: 
 							do_action( $lca.'_load_setting_page_'.$action_name, 
-								$this->pagehook, $this->menu_id, $this->menu_name );
+								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
 							break;
 					}
 				}
@@ -433,80 +450,74 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro / Power-User Version', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 
-				add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_purchase', 
-					array( &$this, 'add_class_postbox_highlight_side' ) );
+				//add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_purchase', 
+				//	array( &$this, 'add_class_postbox_highlight_side' ) );
 
 				$this->p->mods['util']['user']->reset_metabox_prefs( $this->pagehook, 
 					array( 'purchase' ), null, 'side', true );
 			}
 
-			add_meta_box( $this->pagehook.'_info',
-				_x( 'Version Information', 'metabox title (side)', 'wpsso' ), 
-					array( &$this, 'show_metabox_info' ), $this->pagehook, 'side' );
-
-			add_meta_box( $this->pagehook.'_status_gpl',
-				_x( 'Free / Basic Features', 'metabox title (side)', 'wpsso' ), 
-					array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
-
-			add_meta_box( $this->pagehook.'_status_pro',
-				_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ), 
-					array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
-
 			add_meta_box( $this->pagehook.'_help',
 				_x( 'Help and Support', 'metabox title (side)', 'wpsso' ), 
 					array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
 
+			if ( $this->menu_lib === 'submenu' ) {
+				add_meta_box( $this->pagehook.'_status_gpl',
+					_x( 'Standard Features', 'metabox title (side)', 'wpsso' ), 
+						array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
+	
+				add_meta_box( $this->pagehook.'_status_pro',
+					_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ), 
+						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+			}
+
+			if ( $this->menu_lib === 'submenu' || $this->menu_lib === 'sitesubmenu' ) {
+				add_meta_box( $this->pagehook.'_version_info',
+					_x( 'Version Information', 'metabox title (side)', 'wpsso' ), 
+						array( &$this, 'show_metabox_version_info' ), $this->pagehook, 'side' );
+			}
 		}
 
-		public function show_single_page() {
-			?>
-			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h1><?php echo $this->menu_name; ?></h1>
-				<div id="poststuff" class="metabox-holder">
-					<div id="post-body" class="">
-						<div id="post-body-content" class="">
-							<?php $this->show_single_content(); ?>
-						</div><!-- .post-body-content -->
-					</div><!-- .post-body -->
-				</div><!-- .metabox-holder -->
-			</div><!-- .wrap -->
-			<script type="text/javascript">
-				//<![CDATA[
-				jQuery(document).ready( 
-					function($) {
-						$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
-					}
-				);
-				//]]>
-			</script>
-			<?php
+		protected function add_meta_boxes() {
 		}
 
-		public function show_setting_page() {
+		public function add_class_postbox_highlight_side( $classes ) {
+			array_push( $classes, 'postbox_highlight_side' );
+			return $classes;
+		}
 
-			if ( ! $this->is_setting( $this->menu_id ) )	// the "setting" pages display their own error messages
-				settings_errors( WPSSO_OPTIONS_NAME );	// display "error" and "updated" messages
+		public function show_setting_page( $sidebar = true ) {
 
-			$this->set_form_property();			// define form for side boxes and show_form_content()
+			if ( ! $this->is_setting() )
+				settings_errors( WPSSO_OPTIONS_NAME );
+
+			$this->set_form_property();			// set form for side boxes and show_form_content()
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
 				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
 				$this->p->debug->show_html( null, 'debug log' );
 			}
-			?>
+			
+			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
+			echo '<h1>'.$this->p->cf['plugin'][$this->p->cf['lca']]['short'].
+				self::$is_suffix.' &ndash; '.$this->menu_name.'</h1>'."\n";
 
-			<div class="wrap" id="<?php echo $this->pagehook; ?>">
-				<h1><?php echo $this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-					self::$is_suffix.' &ndash; '.$this->menu_name; ?></h1>
-				<div id="poststuff" class="metabox-holder has-right-sidebar">
-					<div id="side-info-column" class="inner-sidebar">
-						<?php do_meta_boxes( $this->pagehook, 'side', null ); ?>
-					</div><!-- .inner-sidebar -->
-					<div id="post-body" class="has-sidebar">
-						<div id="post-body-content" class="has-sidebar-content">
-							<?php $this->show_form_content(); ?>
+			if ( $sidebar === false ) {
+				echo '<div id="poststuff" class="metabox-holder">'."\n";
+				echo '<div id="post-body">'."\n";
+				echo '<div id="post-body-content">'."\n";
+			} else {
+				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
+				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
+				do_meta_boxes( $this->pagehook, 'side', null );
+				echo '</div><!-- .inner-sidebar -->'."\n";
+				echo '<div id="post-body" class="has-sidebar">'."\n";
+				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
+			}
+
+			$this->show_form_content();
+			?>
 						</div><!-- .post-body-content -->
 					</div><!-- .post-body -->
 				</div><!-- .metabox-holder -->
@@ -526,31 +537,52 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			<?php
 		}
 
-		public function add_class_postbox_highlight_side( $classes ) {
-			array_push( $classes, 'postbox_highlight_side' );
-			return $classes;
-		}
-
-		protected function show_single_content() {
-			do_meta_boxes( $this->pagehook, 'normal', null ); 
+		public function wp_profile_updated_redirect( $location, $status ) {
+			if ( strpos( $location, 'updated=' ) !== false && strpos( $location, 'wp_http_referer=' ) ) {
+				if ( strpos( $location, get_edit_user_link( get_current_user_id() ) ) === 0 ) {
+					parse_str( parse_url( $location, PHP_URL_QUERY ), $values );
+					if ( strpos( $values['wp_http_referer'], 
+						$this->p->cf['wp']['admin_page']['profile'].'?page='.$this->p->cf['lca'].'-' ) ) {
+						$this->p->notice->inf( __( 'Profile updated.' ), true );
+						return add_query_arg( 'updated', true, $values['wp_http_referer'] );
+					}
+				}
+			}
+			return $location;
 		}
 
 		protected function show_form_content() {
 
-			if ( $this->is_submenu( $this->menu_id ) ||
-				$this->is_setting( $this->menu_id ) ) {
+			$lca = $this->p->cf['lca'];
 
-				echo '<form name="'.$this->p->cf['lca'].'" id="'.
-					$this->p->cf['lca'].'_setting_form" action="options.php" method="post">'."\n";
-				settings_fields( $this->p->cf['lca'].'_setting' ); 
+			if ( $this->menu_lib === 'profile' ) {
 
-			} elseif ( $this->is_sitesubmenu( $this->menu_id ) ) {
+				$user_id = get_current_user_id();
+				$profileuser = get_user_to_edit( $user_id );
 
-				echo '<form name="'.$this->p->cf['lca'].'" id="'.
-					$this->p->cf['lca'].'_setting_form" action="edit.php?action='.
-						WPSSO_SITE_OPTIONS_NAME.'" method="post">'."\n";
-				echo '<input type="hidden" name="page" value="'.$this->menu_id.'">';
-			}
+				// wp_http_referer is required so we come back to this form
+				echo '<form name="'.$lca.'" id="'.$lca.'_setting_form" action="user-edit.php" method="post">'."\n";
+				echo '<input type="hidden" name="wp_http_referer" value="'.$this->p->util->get_admin_url().'" />'."\n";
+				echo '<input type="hidden" name="action" value="update" />'."\n";
+				echo '<input type="hidden" name="user_id" value="'.$user_id.'" />'."\n";
+				echo '<input type="hidden" name="nickname" value="'.$profileuser->nickname.'" />'."\n";	// required field
+				echo '<input type="hidden" name="email" value="'.$profileuser->user_email.'" />'."\n";	// required field
+
+				wp_nonce_field( 'update-user_'.$user_id );
+
+			} elseif ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' ) {
+
+				echo '<form name="'.$lca.'" id="'.$lca.'_setting_form" action="options.php" method="post">'."\n";
+
+				settings_fields( $lca.'_setting' ); 
+
+			} elseif ( $this->menu_lib === 'sitesubmenu' ) {
+
+				echo '<form name="'.$lca.'" id="'.$lca.'_setting_form" action="edit.php?action='.
+					WPSSO_SITE_OPTIONS_NAME.'" method="post">'."\n";
+				echo '<input type="hidden" name="page" value="'.$this->menu_id.'" />';
+
+			} else return;
 
 			wp_nonce_field( self::get_nonce(), WPSSO_NONCE );
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
@@ -568,13 +600,53 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				case 'sitesetup':
 					break;
 				default:
-					echo $this->get_submit_buttons();
+					if ( $this->menu_lib === 'profile' )
+						echo $this->get_submit_buttons( _x( 'Save All Profile Settings',
+							'submit button', 'wpsso' ) );
+					else echo $this->get_submit_buttons();
 					break;
 			}
 			echo '</form>', "\n";
 		}
 
-		public function show_metabox_info() {
+		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
+			if ( empty( $submit_text ) ) 
+				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
+
+			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$show_opts_text = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ),
+				_x( $this->p->cf['form']['show_options'][$show_opts_next],
+					'option value', 'wpsso' ) );
+			$show_opts_url = $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+				'-action=change_show_options&show-opts='.$show_opts_next );
+
+			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
+				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null, 
+					wp_nonce_url( $show_opts_url, self::get_nonce(), WPSSO_NONCE ) ).'<br/>';
+
+			if ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' )
+				$action_buttons .= $this->form->get_button( _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ), 
+					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+						'-action=clear_all_cache' ), self::get_nonce(), WPSSO_NONCE ) );
+
+			if ( $this->menu_lib !== 'profile' )		// don't show on profile pages
+				$action_buttons .= $this->form->get_button( _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ),
+					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+						'-action=check_for_updates' ), self::get_nonce(), WPSSO_NONCE ), false,
+							( $this->p->is_avail['util']['um'] ? false : true ) );	// disable button if um not available
+
+			$action_buttons .= $this->form->get_button( _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ), 
+				'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+					'-action=clear_metabox_prefs' ), self::get_nonce(), WPSSO_NONCE ) );
+
+			$action_buttons .= $this->form->get_button( _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ), 
+				'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+					'-action=clear_hidden_notices' ), self::get_nonce(), WPSSO_NONCE ) );
+
+			return '<div class="'.$class.'">'.$action_buttons.'</div>';
+		}
+
+		public function show_metabox_version_info() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not active
@@ -770,7 +842,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
-			echo $this->p->msgs->get( 'side-help' );
+			//echo $this->p->msgs->get( 'side-help' );
 			$this->show_follow_icons();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
@@ -811,59 +883,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div>';
 		}
 
-		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
-			if ( empty( $submit_text ) ) 
-				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
-
-			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$show_opts_text = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ),
-				_x( $this->p->cf['form']['show_options'][$show_opts_next],
-					'option value', 'wpsso' ) );
-			$show_opts_url = $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-				'-action=change_show_options&show-opts='.$show_opts_next );
-
-			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
-				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null, 
-					wp_nonce_url( $show_opts_url, self::get_nonce(), WPSSO_NONCE ) ).'<br/>';
-
-			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ), 
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=clear_all_cache' ), self::get_nonce(), WPSSO_NONCE ) );
-
-			$action_buttons .= $this->form->get_button( _x( 'Check for Update(s)', 'submit button', 'wpsso' ),
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=check_for_updates' ), self::get_nonce(), WPSSO_NONCE ), false,
-							( $this->p->is_avail['util']['um'] ? false : true )	// disable button if um not available
-			);
-
-			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ), 
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=clear_metabox_prefs' ), self::get_nonce(), WPSSO_NONCE ) );
-
-			if ( empty( $this->p->cf['*']['lib']['sitesubmenu'][$this->menu_id] ) )	// don't show on the network admin pages
-				$action_buttons .= $this->form->get_button( _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ), 
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=clear_hidden_notices' ), self::get_nonce(), WPSSO_NONCE ) );
-
-			return '<div class="'.$class.'">'.$action_buttons.'</div>';
-		}
-
 		public static function get_nonce() {
 			return ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ).plugin_basename( __FILE__ );
 		}
 
-		private function is_setting( $menu_id ) {
-			return isset( $this->p->cf['*']['lib']['setting'][$menu_id] ) ? true : false;
+		private function is_profile( $menu_id = false ) {
+			return $this->is_lib( 'profile', $menu_id );
 		}
 
-		private function is_submenu( $menu_id ) {
-			return isset( $this->p->cf['*']['lib']['submenu'][$menu_id] ) ? true : false;
+		private function is_setting( $menu_id = false ) {
+			return $this->is_lib( 'setting', $menu_id );
 		}
 
-		private function is_sitesubmenu( $menu_id ) {
-			return isset( $this->p->cf['*']['lib']['sitesubmenu'][$menu_id] ) ? true : false;
+		private function is_submenu( $menu_id = false ) {
+			return $this->is_lib( 'submenu', $menu_id );
+		}
+
+		private function is_sitesubmenu( $menu_id = false ) {
+			return $this->is_lib( 'sitesubmenu', $menu_id );
+		}
+
+		private function is_lib( $lib_name, $menu_id = false ) {
+			if ( $menu_id === false )
+				$menu_id = $this->menu_id;
+			return isset( $this->p->cf['*']['lib'][$lib_name][$menu_id] ) ? true : false;
 		}
 
 		public function licenses_metabox_content( $network = false ) {

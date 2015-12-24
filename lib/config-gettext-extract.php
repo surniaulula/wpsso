@@ -46,4 +46,5 @@ _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta ta
 _x( 'WPSSO extension to provide Facebook / Open Graph "Location" and Pinterest "Place" Rich Pin meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
+_x( 'Your Social Settings', 'lib file description', 'wpsso' );
 ?>
