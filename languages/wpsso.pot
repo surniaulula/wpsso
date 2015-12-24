@@ -89,11 +89,11 @@ msgid "The <b>%s</b> extension is required to check for Pro version updates."
 msgstr ""
 
 #: lib/admin.php:405
-msgid "Metabox layout preferences for user id #%d \"%s\" have been reset."
+msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:415
-msgid "Hidden notices for user id #%d \"%s\" have been cleared."
+msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr ""
 
 #: lib/admin.php:450

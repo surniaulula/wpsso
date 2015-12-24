@@ -402,7 +402,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							//$user_name = trim( $user->first_name.' '.$user->last_name );
 							$user_name = $user->display_name;
 							WpssoUser::delete_metabox_prefs( $user_id );
-							$this->p->notice->inf( sprintf( __( 'Metabox layout preferences for user id #%d "%s" have been reset.',
+							$this->p->notice->inf( sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.',
 								'wpsso' ), $user_id, $user_name ) );
 							break;
 
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							//$user_name = trim( $user->first_name.' '.$user->last_name );
 							$user_name = $user->display_name;
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME );
-							$this->p->notice->inf( sprintf( __( 'Hidden notices for user id #%d "%s" have been cleared.',
+							$this->p->notice->inf( sprintf( __( 'Hidden notices for user ID #%d "%s" have been cleared.',
 								'wpsso' ), $user_id, $user_name ) );
 							break;
 
