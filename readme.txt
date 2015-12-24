@@ -345,7 +345,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.20.2 (TBD) =
+= Version 3.20.0 (2015/12/25) =
 
 Official announcement: N/A
 
@@ -471,7 +471,7 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 
 = 3.20.0 =
 
-TBD - Added a new "Your Social Settings" menu page, fixed 'article:published_time' and 'article:modified_time' values on post editing pages, added a call to wp_encode_emoji() for all encoded strings.
+2015/12/25 - Added a new "Your Social Settings" menu page, fixed 'article:published_time' and 'article:modified_time' values on post editing pages, added a call to wp_encode_emoji() for all encoded strings.
 
 = 3.19.2 =
 
