@@ -32,9 +32,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-					if ( isset( $this->p->options['plugin_shortlink'] ) &&
-						$this->p->options['plugin_shortlink'] )
-							add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+					if ( ! empty( $this->p->options['plugin_shortlink'] ) )
+						add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 
 				} elseif ( ! empty( $this->p->options['plugin_columns_post'] ) ) {
 
@@ -55,10 +54,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function get_shortlink( $shortlink, $id, $context, $allow_slugs ) {
+		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 			if ( isset( $this->p->options['plugin_shortener'] ) &&
 				$this->p->options['plugin_shortener'] !== 'none' ) {
-					$long_url = $this->p->util->get_sharing_url( $id );
+					$long_url = $this->p->util->get_sharing_url( $post_id );
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
 					if ( $long_url !== $short_url )

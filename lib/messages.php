@@ -124,9 +124,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
-						case 'tooltip-meta-social-preview':
-						 	$text = 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social networks may look significantly different than this <em>example</em> (depending on the viewing platform resolution, orientation, etc.).';
-						 	break;
 						case 'tooltip-meta-og_title':
 							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
 						 	break;
@@ -628,6 +625,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
+					case 'info-meta-social-preview':
+					 	$text = '<p style="text-align:right;">The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the application platform, resolution, orientation, etc.).</p>';
+					 	break;
 					case 'info-plugin-tid':
 						$um_lca = $this->p->cf['lca'].'um';
 						$um_short = $this->p->cf['plugin'][$um_lca]['short'];

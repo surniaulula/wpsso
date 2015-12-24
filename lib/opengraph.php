@@ -196,11 +196,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:published_time'] ) )
-					$og['article:published_time'] = trim( get_the_date('c') );
+					$og['article:published_time'] = trim( get_post_time( 'c', null, $post_id ) );
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:modified_time'] ) )
-					$og['article:modified_time'] = trim( get_the_modified_date('c') );
+					$og['article:modified_time'] = trim( get_post_modified_time( 'c', null, $post_id ) );
 			}
 
 			// get all videos

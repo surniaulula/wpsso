@@ -94,9 +94,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
+			$long_url = $this->p->util->get_sharing_url( $head_info['post_id'] );
+			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
+				$long_url, $this->p->options['plugin_shortener'] );
+
+			if ( $long_url === $short_url &&
+				SucomUtil::is_post_page() )
+					$short_url = wp_get_shortlink();
+
+			$rows[] = $this->p->util->get_th( _x( 'Sharing URL',
+				'option label', 'wpsso' ), 'medium' ).
+			'<td class="blank"><a href="'.$long_url.'" target="_blank">'.$long_url.'</a></td>';
+
+			$rows[] = $this->p->util->get_th( _x( 'Short URL',
+				'option label', 'wpsso' ), 'medium' ).
+			'<td class="blank"><a href="'.$short_url.'" target="_blank">'.$short_url.'</a></td>';
+
 			$rows[] = $this->p->util->get_th( _x( 'Open Graph Example',
-				'option label', 'wpsso' ), 'medium', 'meta-social-preview' ).
-			'<td style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
+				'option label', 'wpsso' ), 'medium' ).
+			'<td rowspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 			<div class="preview_box" style="width:'.( $prev_width + 40 ).'px;">
 				<div class="preview_box" style="width:'.$prev_width.'px;">
 					'.$image_preview_html.'
@@ -110,6 +126,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					</div>
 				</div>
 			</div></td>';
+
+			$rows[] = '<th class="medium textinfo">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</th>';
+
 			return $rows;
 		}
 
