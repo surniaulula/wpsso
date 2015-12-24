@@ -666,11 +666,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'jabber' => 'Google Talk',
 					'yim' => 'Yahoo IM',
 				),
-				'admin_page' => array(
-					'profile' => 'users.php',
-					'setting' => 'options-general.php',
-					'submenu' => 'admin.php',
-					'sitesubmenu' => 'admin.php',
+				'admin' => array(
+					'profile' => array(
+						'page' => 'profile.php',
+						'cap' => 'edit_posts',
+					),
+					'setting' => array(
+						'page' => 'options-general.php',
+						'cap' => 'manage_options',
+					),
+					'submenu' => array(
+						'page' => 'admin.php',
+						'cap' => 'manage_options',
+					),
+					'sitesubmenu' => array(
+						'page' => 'admin.php',
+						'cap' => 'manage_options',
+					),
 				),
 			),
 			'php' => array(				// php

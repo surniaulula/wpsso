@@ -12,354 +12,354 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:70 lib/admin.php:678 lib/user.php:210
+#: lib/admin.php:70 lib/admin.php:682 lib/user.php:211
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:71 lib/admin.php:679 lib/user.php:211
+#: lib/admin.php:71 lib/admin.php:683 lib/user.php:212
 msgctxt "package type"
 msgid "Free"
 msgstr ""
 
-#: lib/admin.php:272
+#: lib/admin.php:276
 msgctxt "plugin action link"
 msgid "FAQ"
 msgstr ""
 
-#: lib/admin.php:276
+#: lib/admin.php:280
 msgctxt "plugin action link"
 msgid "Notes"
 msgstr ""
 
-#: lib/admin.php:280
+#: lib/admin.php:284
 msgctxt "plugin action link"
 msgid "Download Latest"
 msgstr ""
 
-#: lib/admin.php:285
+#: lib/admin.php:289
 msgctxt "plugin action link"
 msgid "Pro Support"
 msgstr ""
 
-#: lib/admin.php:289
+#: lib/admin.php:293
 msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:294 lib/admin.php:969 lib/admin.php:970
+#: lib/admin.php:298 lib/admin.php:973 lib/admin.php:974
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:296
+#: lib/admin.php:300
 msgctxt "plugin action link"
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:309
+#: lib/admin.php:313
 msgid "Submitted options are not an array."
 msgstr ""
 
-#: lib/admin.php:321 lib/admin.php:359
+#: lib/admin.php:325 lib/admin.php:363
 msgid "Plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:322
+#: lib/admin.php:326
 msgid ""
 "Wait %1$d seconds for cache objects to expire or <a href=\"%2$s\">%3$s</a> "
 "now."
 msgstr ""
 
-#: lib/admin.php:324 lib/admin.php:628
+#: lib/admin.php:328 lib/admin.php:632
 msgctxt "submit button"
 msgid "Clear All Cache(s)"
 msgstr ""
 
-#: lib/admin.php:340
+#: lib/admin.php:344
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:345
+#: lib/admin.php:349
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:390
+#: lib/admin.php:394
 msgid "The <b>%s</b> extension is required to check for Pro version updates."
 msgstr ""
 
-#: lib/admin.php:405
+#: lib/admin.php:409
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:415
+#: lib/admin.php:419
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr ""
 
-#: lib/admin.php:450
+#: lib/admin.php:454
 msgctxt "metabox title (side)"
 msgid "Pro / Power-User Version"
 msgstr ""
 
-#: lib/admin.php:461
+#: lib/admin.php:465
 msgctxt "metabox title (side)"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/admin.php:466
+#: lib/admin.php:470
 msgctxt "metabox title (side)"
 msgid "Standard Features"
 msgstr ""
 
-#: lib/admin.php:470
+#: lib/admin.php:474
 msgctxt "metabox title (side)"
 msgid "Pro Version Features"
 msgstr ""
 
-#: lib/admin.php:476
+#: lib/admin.php:480
 msgctxt "metabox title (side)"
 msgid "Version Information"
 msgstr ""
 
-#: lib/admin.php:546
+#: lib/admin.php:550
 msgid "Profile updated."
 msgstr ""
 
-#: lib/admin.php:604
+#: lib/admin.php:608
 msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr ""
 
-#: lib/admin.php:614 lib/messages.php:750
+#: lib/admin.php:618 lib/messages.php:750
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:617
+#: lib/admin.php:621
 msgctxt "submit button"
 msgid "View %s by Default"
 msgstr ""
 
-#: lib/admin.php:633
+#: lib/admin.php:637
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
 
-#: lib/admin.php:638
+#: lib/admin.php:642
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/admin.php:642
+#: lib/admin.php:646
 msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:655 lib/admin.php:656
+#: lib/admin.php:659 lib/admin.php:660
 msgid "N/A"
 msgstr ""
 
-#: lib/admin.php:680
+#: lib/admin.php:684
 msgctxt "plugin status label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:683
+#: lib/admin.php:687
 msgctxt "plugin status label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:686
+#: lib/admin.php:690
 msgctxt "plugin status label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:691
+#: lib/admin.php:695
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:837
+#: lib/admin.php:841
 msgctxt "submit button"
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:838
+#: lib/admin.php:842
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:854
+#: lib/admin.php:858
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:857
+#: lib/admin.php:861
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:862
+#: lib/admin.php:866
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:865
+#: lib/admin.php:869
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:869
+#: lib/admin.php:873
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:925
+#: lib/admin.php:929
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:945
+#: lib/admin.php:949
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:951
+#: lib/admin.php:955
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:957
+#: lib/admin.php:961
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:962
+#: lib/admin.php:966
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr ""
 
-#: lib/admin.php:1010 lib/admin.php:1015 lib/admin.php:1036 lib/admin.php:1042
+#: lib/admin.php:1014 lib/admin.php:1019 lib/admin.php:1040 lib/admin.php:1046
 #: lib/messages.php:711
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1069
+#: lib/admin.php:1073
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1079
+#: lib/admin.php:1083
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1079
+#: lib/admin.php:1083
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1083
+#: lib/admin.php:1087
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1083
+#: lib/admin.php:1087
 msgid ""
 "Please contact your hosting provider to have the missing library installed."
 msgstr ""
 
-#: lib/admin.php:1089
+#: lib/admin.php:1093
 msgid ""
 "PHP's <a href=\"%s\" target=\"_blank\">Multibyte String</a> extension is "
 "missing."
 msgstr ""
 
-#: lib/admin.php:1089
+#: lib/admin.php:1093
 msgid ""
 "Please contact your hosting provider to have the missing extension installed."
 msgstr ""
 
-#: lib/admin.php:1098
+#: lib/admin.php:1102
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1103
+#: lib/admin.php:1107
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1108
+#: lib/admin.php:1112
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1113
+#: lib/admin.php:1117
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1124
+#: lib/admin.php:1128
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%"
 "s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1135
+#: lib/admin.php:1139
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1140
+#: lib/admin.php:1144
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1150
+#: lib/admin.php:1154
 msgid ""
 "JetPack's Photon module purposefully cripples the WordPress image size "
 "functions."
 msgstr ""
 
-#: lib/admin.php:1150
+#: lib/admin.php:1154
 msgid ""
 "Please <a href=\"%s\">deactivate the JetPack Photon module</a> or deactivate "
 "the %s Free plugin."
 msgstr ""
 
-#: lib/admin.php:1150
+#: lib/admin.php:1154
 msgid ""
 "You may also upgrade to the <a href=\"%1$s\">%2$s version</a> which includes "
 "an <a href=\"%3$s\">integration module for JetPack Photon</a> to re-enable "
 "image size functions specifically for %4$s images."
 msgstr ""
 
-#: lib/admin.php:1182
+#: lib/admin.php:1186
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1189
+#: lib/admin.php:1193
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1198
+#: lib/admin.php:1202
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1205
+#: lib/admin.php:1209
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1224
+#: lib/admin.php:1228
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -974,7 +974,7 @@ msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:93 lib/gpl/admin/post.php:98
-#: lib/gpl/admin/taxonomy.php:53 lib/gpl/admin/user.php:54 lib/meta.php:105
+#: lib/gpl/admin/taxonomy.php:53 lib/gpl/admin/user.php:54 lib/meta.php:107
 #: lib/pro/admin/post.php:108 lib/pro/admin/post.php:114
 #: lib/pro/admin/taxonomy.php:67 lib/pro/admin/user.php:67
 msgctxt "option label"
@@ -1784,124 +1784,124 @@ msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/meta.php:80
+#: lib/meta.php:82
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:86
+#: lib/meta.php:88
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:95
+#: lib/meta.php:97
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:109
+#: lib/meta.php:111
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
 
-#: lib/meta.php:113
+#: lib/meta.php:115
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:169
+#: lib/meta.php:171
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:169
+#: lib/meta.php:171
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:169
+#: lib/meta.php:171
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:169
+#: lib/meta.php:171
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:169
+#: lib/meta.php:171
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:171
+#: lib/meta.php:173
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:171
+#: lib/meta.php:173
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:171
+#: lib/meta.php:173
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:173
+#: lib/meta.php:175
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:173
+#: lib/meta.php:175
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:173
+#: lib/meta.php:175
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:175
+#: lib/meta.php:177
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:175
+#: lib/meta.php:177
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:175
+#: lib/meta.php:177
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:272
+#: lib/meta.php:274
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:338
+#: lib/meta.php:340
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:339
+#: lib/meta.php:341
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:355
+#: lib/meta.php:357
 msgid "Reload to View"
 msgstr ""
 
@@ -1952,7 +1952,7 @@ msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
 #: lib/post.php:258 lib/profile/social-settings.php:26 lib/taxonomy.php:251
-#: lib/user.php:199
+#: lib/user.php:200
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2506,15 +2506,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:355
+#: lib/user.php:356
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:356
+#: lib/user.php:357
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:357
+#: lib/user.php:358
 msgid "Jabber / Google Talk"
 msgstr ""
 

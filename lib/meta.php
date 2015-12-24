@@ -64,25 +64,27 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev_width = 600;
 			$prev_height = 315;
 			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
-			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && 
-				! empty( $head_info['og:image:height'] ) ) ? true : false;
+			$have_sizes = ( ! empty( $head_info['og:image:width'] ) &&
+				$head_info['og:image:width'] > 0 && 
+					! empty( $head_info['og:image:height'] ) &&
+						$head_info['og:image:height'] > 0 ) ? true : false;
 			$is_sufficient = ( $have_sizes === true && 
 				$head_info['og:image:width'] >= $prev_width && 
 				$head_info['og:image:height'] >= $prev_height ) ? true : false;
 
-			foreach ( array( 'og:image:secure_url', 'og:image' ) as $key ) {
-				if ( ! empty( $head_info[$key] ) ) {
+			foreach ( array( 'og:image:secure_url', 'og:image' ) as $img_url ) {
+				if ( ! empty( $head_info[$img_url] ) ) {
 					if ( $have_sizes === true ) {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
 						background-size:'.( $is_sufficient === true ? 
 							'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
-						background-image:url('.$head_info[$key].');" />'.( $is_sufficient === true ? 
+						background-image:url('.$head_info[$img_url].');" />'.( $is_sufficient === true ? 
 							'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
 								'preview image error', 'wpsso' ),
 									$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
 					} else {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-image:url('.$head_info[$key].');" /><p>'.
+						background-image:url('.$head_info[$img_url].');" /><p>'.
 						_x( 'Image Dimensions Unknown<br/>or Not Available',
 							'preview image error', 'wpsso' ).'</p></div>';
 					}
@@ -458,16 +460,27 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
+
+					$width = $this->get_options( $id, $prefix.'_img_url:width' );
+					$height = $this->get_options( $id, $prefix.'_img_url:height' );
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
+
 					list(
 						$meta_image[$mt_pre.':image'],
 						$meta_image[$mt_pre.':image:width'],
 						$meta_image[$mt_pre.':image:height'],
 						$meta_image[$mt_pre.':image:cropped'],
 						$meta_image[$mt_pre.':image:id']
-					) = array( $url, -1, -1, -1, -1 );
+					) = array(
+						$url,
+						( $width > 0 ? $width : -1 ), 
+						( $height > 0 ? $height : -1 ), 
+						-1,
+						-1
+					);
 				}
 
 				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&

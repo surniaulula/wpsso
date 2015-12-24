@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
 				case 'upload':
-				case ( strpos( $screen->id, 'edit-' ) !== false ? true : false ):
+				case ( strpos( $screen->id, 'edit-' ) === 0 ? true : false ):	// posts list table
 					return;
 					break;
 			}

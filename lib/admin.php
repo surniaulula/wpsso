@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_admin_submenus() {
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
-				$parent_slug = $this->p->cf['wp']['admin_page'][$menu_lib];
+				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 				foreach ( $this->p->cf['*']['lib'][$menu_lib] as $menu_id => $menu_name ) {
 					if ( isset( $this->submenu[$menu_id] ) )
 						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
@@ -203,7 +203,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->pagehook = add_menu_page( 
 				$short.self::$is_suffix.' &mdash; '.$this->menu_name, 
 				$this->p->cf['menu'].self::$is_suffix, 
-				'manage_options', 
+				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
+					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
+					'manage_options' ),
 				$menu_slug, 
 				array( &$this, 'show_setting_page' ), 
 				( version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share' ),
@@ -215,7 +217,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '' ) {
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-
 			$menu_id = empty( $menu_id ) ?
 				$this->menu_id : $menu_id;
 			$menu_name = empty( $menu_name ) ?
@@ -248,7 +249,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, 'manage_options', $menu_slug, $function );
+			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
+				( isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
+					$this->p->cf['wp']['admin'][$menu_lib]['cap'] :
+					'manage_options' ), $menu_slug, $function );
 
 			if ( $function )
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
@@ -542,7 +546,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( strpos( $location, get_edit_user_link( get_current_user_id() ) ) === 0 ) {
 					parse_str( parse_url( $location, PHP_URL_QUERY ), $values );
 					if ( strpos( $values['wp_http_referer'], 
-						$this->p->cf['wp']['admin_page']['profile'].'?page='.$this->p->cf['lca'].'-' ) ) {
+						$this->p->cf['wp']['admin']['profile']['page'].'?page='.$this->p->cf['lca'].'-' ) ) {
 						$this->p->notice->inf( __( 'Profile updated.' ), true );
 						return add_query_arg( 'updated', true, $values['wp_http_referer'] );
 					}

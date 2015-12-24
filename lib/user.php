@@ -141,9 +141,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
-				case 'user-edit':
 				case 'profile':
-				case ( strpos( $screen->id, 'users_page_'.$lca.'-' ) !== false ? true : false ):
+				case 'user-edit':
+				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):
+				case ( strpos( $screen->id, 'users_page_' ) === 0 ? true : false ):
 					break;
 				default:
 					return;
