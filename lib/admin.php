@@ -461,9 +461,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro / Power-User Version', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 
-				//add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_purchase', 
-				//	array( &$this, 'add_class_postbox_highlight_side' ) );
-
 				$this->p->mods['util']['user']->reset_metabox_prefs( $this->pagehook, 
 					array( 'purchase' ), null, 'side', true );
 			}
@@ -490,11 +487,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_meta_boxes() {
-		}
-
-		public function add_class_postbox_highlight_side( $classes ) {
-			array_push( $classes, 'postbox_highlight_side' );
-			return $classes;
 		}
 
 		public function show_setting_page( $sidebar = true ) {

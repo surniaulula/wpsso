@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							sprintf( __( 'Save a draft version or publish the %s to display the head tags preview.',
 								'wpsso' ), $head_info['ptn'] ).'</p></blockquote></td>';
-					else $rows = $this->get_rows_head_tags();
+					else $rows = $this->get_rows_head_tags( $this->form, $head_info );
 					break; 
 
 				case 'post-validate':

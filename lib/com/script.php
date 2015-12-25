@@ -43,25 +43,36 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 			// don't load our javascript where we don't need it
 			switch ( $hook ) {
+				// license settings pages include a "view plugin details" feature
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
-					wp_enqueue_script( 'plugin-install' );	// required to view plugin details box
-					// no break
+
+					wp_enqueue_script( 'plugin-install' );		// required for the plugin details box
+
+					// no break - continue to enqueue the settings page
+
 				case 'edit-tags.php':
 				case 'user-edit.php':
 				case 'profile.php':
 				case 'post.php':
 				case 'post-new.php':
-				case ( preg_match( '/_page_'.$this->p->cf['lca'].'-/', $hook ) ? true : false ) :
+				// includes the profile_page and users_page hooks (profile submenu items)
+				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
+
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
 						if ( get_queried_object_id() !== 0 )
 							wp_enqueue_media( array( 'post' => get_queried_object_id() ) );
 						else wp_enqueue_media();
+
 						wp_enqueue_script( 'sucom-admin-media' );
 					}
+
 					wp_enqueue_script( 'jquery-qtip' );
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );
-					wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n', $this->localize_media_script() );
+
+					wp_localize_script( 'sucom-admin-media',
+						'sucomMediaL10n', $this->localize_media_script() );
+
 					break;
 			}
 		}
