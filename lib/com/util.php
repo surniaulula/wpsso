@@ -916,39 +916,47 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $plugin_info;
 		}
 
-		public function get_admin_url( $menu_id = '', $link_text = '', $lca = '' ) {
-			$query = '';
+		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
 			$hash = '';
+			$query = '';
 			$admin_url = '';
-			$lca = empty( $lca ) ? 
-				$this->p->cf['lca'] : $lca;
+			$lca = $this->p->cf['lca'];
 
-			if ( strpos( $menu_id, '#' ) !== false )
-				list( $menu_id, $hash ) = explode( '#', $menu_id );
-
-			if ( strpos( $menu_id, '?' ) !== false )
-				list( $menu_id, $query ) = explode( '?', $menu_id );
-
-			if ( $menu_id == '' ) {
+			if ( empty( $menu_id ) ) {
 				$current = $_SERVER['REQUEST_URI'];
 				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) )
 					$menu_id = $match[1];
 				else $menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
+			} else {
+				if ( strpos( $menu_id, '#' ) !== false )
+					list( $menu_id, $hash ) = explode( '#', $menu_id );
+	
+				if ( strpos( $menu_id, '?' ) !== false )
+					list( $menu_id, $query ) = explode( '?', $menu_id );
 			}
 
-			foreach ( $this->p->cf['*']['lib'] as $menu_lib => $libs ) {
-				if ( isset( $libs[$menu_id] ) ) {
-					$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
-					switch ( $menu_lib ) {
-						case 'sitesubmenu':
-							$admin_url = network_admin_url( $parent_slug );
-							break;
-						default:
-							$admin_url = admin_url( $parent_slug );
-							break;
-					}
-					break;
+			// find the menu_lib value for this menu_id
+			if ( empty( $menu_lib ) ) {
+				foreach ( $this->p->cf['*']['lib'] as $menu_lib => $menu ) {
+					if ( isset( $menu[$menu_id] ) )
+						break;
+					else $menu_lib = '';
 				}
+			}
+
+			if ( empty( $menu_lib ) ||
+				empty( $this->p->cf['wp']['admin'][$menu_lib]['page'] ) )
+					return;
+
+			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
+
+			switch ( $menu_lib ) {
+				case 'sitesubmenu':
+					$admin_url = network_admin_url( $parent_slug );
+					break;
+				default:
+					$admin_url = admin_url( $parent_slug );
+					break;
 			}
 
 			if ( ! empty( $query ) ) 

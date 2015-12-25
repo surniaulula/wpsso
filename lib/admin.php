@@ -159,7 +159,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_admin_submenus() {
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
-				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+
+				// match wordpress behavior (users page for admins, profile page for everyone else)
+				if ( $menu_lib === 'profile' && current_user_can( 'list_users' ) )
+					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
+				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+
 				foreach ( $this->p->cf['*']['lib'][$menu_lib] as $menu_id => $menu_name ) {
 					if ( isset( $this->submenu[$menu_id] ) )
 						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
@@ -332,8 +337,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function save_site_options() {
 			$network = true;
+
 			$page = empty( $_POST['page'] ) ? 
-				key( $this->p->cf['*']['lib']['sitesubmenu'] ) : $_POST['page'];
+				key( $this->p->cf['*']['lib']['sitesubmenu'] ) :
+				$_POST['page'];
 
 			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {
 				if ( $this->p->debug->enabled )
@@ -542,14 +549,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function wp_profile_updated_redirect( $location, $status ) {
-			if ( strpos( $location, 'updated=' ) !== false && strpos( $location, 'wp_http_referer=' ) ) {
-				if ( strpos( $location, get_edit_user_link( get_current_user_id() ) ) === 0 ) {
-					parse_str( parse_url( $location, PHP_URL_QUERY ), $values );
-					if ( strpos( $values['wp_http_referer'], 
-						$this->p->cf['wp']['admin']['profile']['page'].'?page='.$this->p->cf['lca'].'-' ) ) {
-						$this->p->notice->inf( __( 'Profile updated.' ), true );
-						return add_query_arg( 'updated', true, $values['wp_http_referer'] );
-					}
+			if ( strpos( $location, 'updated=' ) !== false && 
+				strpos( $location, 'wp_http_referer=' ) ) {
+
+				// match wordpress behavior (users page for admins, profile page for everyone else)
+				$menu_lib = current_user_can( 'list_users' ) ? 'users' : 'profile';
+				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+				$referer_match = '/'.$parent_slug.'?page='.$this->p->cf['lca'].'-';
+				parse_str( parse_url( $location, PHP_URL_QUERY ), $parts );
+
+				if ( strpos( $parts['wp_http_referer'], $referer_match ) ) {
+					$this->p->notice->inf( __( 'Profile updated.' ), true );
+					return add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
 			}
 			return $location;
@@ -564,9 +575,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$user_id = get_current_user_id();
 				$profileuser = get_user_to_edit( $user_id );
 
-				// wp_http_referer is required so we come back to this form
+				// match wordpress behavior (users page for admins, profile page for everyone else)
+				$admin_url = current_user_can( 'list_users' ) ? 
+					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
+					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
+
 				echo '<form name="'.$lca.'" id="'.$lca.'_setting_form" action="user-edit.php" method="post">'."\n";
-				echo '<input type="hidden" name="wp_http_referer" value="'.$this->p->util->get_admin_url().'" />'."\n";
+				echo '<input type="hidden" name="wp_http_referer" value="'.$admin_url.'" />'."\n";
 				echo '<input type="hidden" name="action" value="update" />'."\n";
 				echo '<input type="hidden" name="user_id" value="'.$user_id.'" />'."\n";
 				echo '<input type="hidden" name="nickname" value="'.$profileuser->nickname.'" />'."\n";	// required field

@@ -667,6 +667,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yim' => 'Yahoo IM',
 				),
 				'admin' => array(
+					'users' => array(
+						'page' => 'users.php',
+						'cap' => 'list_users',
+					),
 					'profile' => array(
 						'page' => 'profile.php',
 						'cap' => 'edit_posts',
