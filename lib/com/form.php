@@ -375,7 +375,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				global $wp_version;
 				// version 3.8 is required to have the dashicons
 				if ( version_compare( $wp_version, 3.8, '>=' ) )
-					$html = '<div class="clipboard"><div class="copy_button"><a class="outline" href="#" onClick="return sucomCopyInputId( \'text_'.$id.'\');"><span class="dashicons dashicons-clipboard"></span></a></div><div class="copy_text">'.$input.'</div></div>';
+					$html = '<div class="clipboard"><div class="copy_button"><a class="outline" href="" title="Copy to clipboard" onClick="return sucomCopyInputId( \'text_'.$id.'\');"><span class="dashicons dashicons-clipboard"></span></a></div><div class="copy_text">'.$input.'</div></div>';
 			} else $html = $input;
 			return $html;
 		}
