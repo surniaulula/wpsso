@@ -203,10 +203,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				! in_array( $obj->post_type, $ptns ) )
 					return $post_id;
 
+			$charset = get_bloginfo( 'charset' );
 			$permalink = get_permalink( $post_id );
+			$permalink_html = wp_encode_emoji( htmlentities( urldecode( $permalink ), 
+				ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_meta_options',
 				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
+
+			if ( current_user_can( 'manage_options' ) )
+				$notice_suffix = ' ('.sprintf( __( 'see <a href="%s">Theme Integration</a> settings', 'wpsso' ),
+					$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')...';
+			else $notice_suffix = '...';
+
+			$this->p->notice->inf( sprintf( __( 'Checking %1$s webpage header for duplicate meta tags', 'wpsso' ), 
+				'<a href="'.$permalink.'">'.$permalink_html.'</a>' ).$notice_suffix, true );
 
 			// use the permalink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
@@ -277,18 +288,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->get_default_tabs(), $post, $post_type );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
-
-			/*
-			if ( WpssoMeta::$head_meta_info['psn'] !== 'auto-draft' &&
-				WpssoMeta::$head_meta_info['psn'] !== 'publish' &&
-				WpssoMeta::$head_meta_info['ptn'] !== 'Attachment' ) {
-
-				$this->p->util->do_table_rows( array(
-					'<td><blockquote class="status-info"><p class="centered">'.
-						sprintf( __( 'The %s must be published with public visibility in order for social crawlers to access its meta tags.', 'wpsso' ), WpssoMeta::$head_meta_info['ptn'] ).'</p></blockquote></td>'
-				), 'metabox-'.$metabox.'-info' );
-			}
-			*/
 
 			$rows = array();
 			foreach ( $tabs as $key => $title )

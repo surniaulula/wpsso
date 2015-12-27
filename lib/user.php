@@ -63,11 +63,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				// hooks for user and profile editing
 				add_action( 'edit_user_profile', array( &$this, 'show_metabox_section' ), 20 );
 
-				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_contact_methods' ), 5 );
+				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_submit_cm' ), 5 );
 				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_user_profile_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'personal_options_update', array( &$this, 'sanitize_contact_methods' ), 5 ); 
+				add_action( 'personal_options_update', array( &$this, 'sanitize_submit_cm' ), 5 ); 
 				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
 				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
 			}
@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $fields;
 		}
 
-		public function sanitize_contact_methods( $user_id ) {
+		public function sanitize_submit_cm( $user_id ) {
 			if ( ! current_user_can( 'edit_user', $user_id ) )
 				return;
 

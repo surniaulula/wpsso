@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.20.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.20.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2015-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1951,24 +1951,32 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:258 lib/profile/social-settings.php:26 lib/taxonomy.php:251
+#: lib/post.php:215
+msgid "see <a href=\"%s\">Theme Integration</a> settings"
+msgstr ""
+
+#: lib/post.php:219
+msgid "Checking %1$s webpage header for duplicate meta tags"
+msgstr ""
+
+#: lib/post.php:269 lib/profile/social-settings.php:26 lib/taxonomy.php:251
 #: lib/user.php:200
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/post.php:307
+#: lib/post.php:306
 msgid ""
 "Save a draft version or publish the %s to display the open graph social "
 "preview."
 msgstr ""
 
-#: lib/post.php:315
+#: lib/post.php:314
 msgid ""
 "Save a draft version or publish the %s to display the head tags preview."
 msgstr ""
 
-#: lib/post.php:325
+#: lib/post.php:324
 msgid ""
 "Social validation tools will be available when the %s is published with "
 "public visibility."

@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->cf['menu'].self::$is_suffix, 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
-					'manage_options' ),
+					'manage_options' ),	// fallback to manage_options capability
 				$menu_slug, 
 				array( &$this, 'show_setting_page' ), 
 				( version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share' ),
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
 				( isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$menu_lib]['cap'] :
-					'manage_options' ), $menu_slug, $function );
+					'manage_options' ), $menu_slug, $function );	// fallback to manage_options capability
 
 			if ( $function )
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
