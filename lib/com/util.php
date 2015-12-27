@@ -922,17 +922,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$admin_url = '';
 			$lca = $this->p->cf['lca'];
 
+			// $menu_id may start with a hash or query, so parse before checking its value
+			if ( strpos( $menu_id, '#' ) !== false )
+				list( $menu_id, $hash ) = explode( '#', $menu_id );
+
+			if ( strpos( $menu_id, '?' ) !== false )
+				list( $menu_id, $query ) = explode( '?', $menu_id );
+
 			if ( empty( $menu_id ) ) {
 				$current = $_SERVER['REQUEST_URI'];
 				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) )
 					$menu_id = $match[1];
 				else $menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
-			} else {
-				if ( strpos( $menu_id, '#' ) !== false )
-					list( $menu_id, $hash ) = explode( '#', $menu_id );
-	
-				if ( strpos( $menu_id, '?' ) !== false )
-					list( $menu_id, $query ) = explode( '?', $menu_id );
 			}
 
 			// find the menu_lib value for this menu_id
