@@ -326,7 +326,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_site_description' => '',
 					'og_art_section' => 'none',
 					'og_img_width' => 600,
-					'og_img_height' => 600,
+					'og_img_height' => 315,
 					'og_img_crop' => 1,
 					'og_img_crop_x' => 'center',
 					'og_img_crop_y' => 'center',
