@@ -384,6 +384,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						case 'add_meta_name_description':
 							$highlight = ' highlight';
 							break;
+						// non standard / internal meta tags
+						case 'add_meta_property_og:image:cropped':
+						case 'add_meta_property_og:video:embed_url':
+						case 'add_meta_property_og:image:id':
+						case ( strpos( $opt, 'add_meta_property_pinterest:' ) === 0 ? true : false ):
+						case ( strpos( $opt, 'add_meta_property_product:rating:' ) === 0 ? true : false ):
+							$highlight = ' is_disabled';
+							break;
 						default:
 							$highlight = '';
 							break;
