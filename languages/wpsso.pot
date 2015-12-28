@@ -892,37 +892,37 @@ msgctxt "option label"
 msgid "Use HTTPS for Video API Calls"
 msgstr ""
 
-#: lib/gpl/admin/general.php:51 lib/pro/admin/general.php:50
+#: lib/gpl/admin/general.php:52 lib/pro/admin/general.php:51
 msgctxt "option label"
 msgid "Include Video Preview Image(s)"
 msgstr ""
 
-#: lib/gpl/admin/general.php:54 lib/pro/admin/general.php:53
+#: lib/gpl/admin/general.php:55 lib/pro/admin/general.php:54
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/gpl/admin/general.php:57 lib/pro/admin/general.php:56
+#: lib/gpl/admin/general.php:58 lib/pro/admin/general.php:57
 msgctxt "option label"
 msgid "Include Embed text/html Type"
 msgstr ""
 
-#: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:60
+#: lib/gpl/admin/general.php:62 lib/pro/admin/general.php:61
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:65
+#: lib/gpl/admin/general.php:67 lib/pro/admin/general.php:66
 msgctxt "option label"
 msgid "Default / Fallback Video URL"
 msgstr ""
 
-#: lib/gpl/admin/general.php:71 lib/pro/admin/general.php:70
+#: lib/gpl/admin/general.php:72 lib/pro/admin/general.php:71
 msgctxt "option label"
 msgid "Use Default Video on Indexes"
 msgstr ""
 
-#: lib/gpl/admin/general.php:76 lib/pro/admin/general.php:75
+#: lib/gpl/admin/general.php:77 lib/pro/admin/general.php:76
 msgctxt "option label"
 msgid "Use Default Video on Search Results"
 msgstr ""

@@ -980,6 +980,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function set_constants( $plugin_filepath ) { 
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
+			define( 'WPSSO_PLUGINSLUG', self::$cf['plugin']['wpsso']['slug'] );		// wpsso
 			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );		// wpsso/wpsso.php
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
 			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.self::$cf['plugin']['wpsso']['version'].
@@ -1042,7 +1043,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * WPSSO curl settings
 			 */
 			if ( defined( 'WPSSO_PLUGINDIR' ) )
-				$var_const['WPSSO_CURL_CAINFO'] = WPSSO_PLUGINDIR.'share/curl/cacert.pem';
+				$var_const['WPSSO_CURL_CAINFO'] = WPSSO_PLUGINDIR.'share/curl/ca-bundle.crt';
 			$var_const['WPSSO_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0';
 
 			// disable 3rd-party caching for duplicate meta tag checks
