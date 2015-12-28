@@ -21,9 +21,21 @@
 
 <li>
 <h3>Image Dimensions</h3>
-<p>Review the WordPress <u>Settings &gt; Social Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x1200px cropped or larger. Images that are 600px or wider are displayed more prominently on Facebook, and 1200px or wider is required to avoid up-scaling (stretching) images for retina / high PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original / full-size featured images are at least 1200px in width <em>and</em> height, along with setting an Open Graph image dimension of 1200x1200px cropped.</p>
-<p>The default Open Graph image dimensions are 600x600px cropped. You can reduce these values down to 200x200px, but Facebook will display small images as thumbnails in user timelines. The minimum recommended image dimensions value is 600x600px cropped &mdash; and for best results, use 1200px or wider. Most social websites, aside from Twitter and Google+ who use a different meta tag standard, will use the Open Graph image &mdash; 1200x1200px cropped is the most compatible dimension for all social sites, but if you're primarily concerned with Facebook, you should use 1200x630px cropped instead (this is Facebook's preferred image dimension).</p>
+
+<p>Review the WordPress <u>Settings &gt; Social Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px and wider is required to avoid up-scaling (stretching) images for retina / high PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original / full-size featured images are at least 1200px in width and 630px in height, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
+
+<p>The default Open Graph image dimensions are 600x315px cropped. You can reduce these values down to 200x200px cropped, but Facebook will display small images as thumbnails in user timelines. The minimum recommended image dimensions are 600x315px cropped &mdash; and for best results, use 1200px or wider.</p>
+
 <p>If your original images are large enough, you can also double the default Twitter Card image dimensions from 600x600px to 1200x1200px, and from 300x300px to 600x600px. By offering larger images, you allow Twitter to provide higher resolution images for retina / high DPI displays.</p>
+
+<blockquote>
+
+<h4>Cropped vs Uncropped</h4>
+
+<p>The difference between cropped and uncropped image dimensions is important -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions, and <u>any excess width or height will be lost</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px uncropped will have dimensions of 840x630px -- the original aspect ratio was preserved, and no parts of the image were sacrificed, but its width is not optimal for Facebook. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will display Open Graph images in aspect ratio anyway.</p>
+
+</blockquote>
+
 </li>
 
 <li>
