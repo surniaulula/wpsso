@@ -46,8 +46,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Use HTTPS for Video API Calls',
 				'option label', 'wpsso' ), null, 'og_vid_https' ).
-			'<td class="blank"><input type="checkbox" disabled="disabled" />'.
-				' uses '.( str_replace( WPSSO_PLUGINDIR, WPSSO_PLUGINSLUG.'/', WPSSO_CURL_CAINFO ) ).'</td>';
+			'<td class="blank"><input type="checkbox" disabled="disabled" /> '.
+				sprintf( _x( 'uses %s', 'option comment', 'wpsso' ),
+					str_replace( WPSSO_PLUGINDIR, WPSSO_PLUGINSLUG.'/', WPSSO_CURL_CAINFO ) ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Include Video Preview Image(s)',
 				'option label', 'wpsso' ), null, 'og_vid_prev_img' ).

@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.20.1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.20.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-27 06:25-0700\n"
-"PO-Revision-Date: 2015-12-27 06:25-0700\n"
+"POT-Creation-Date: 2015-12-27 17:25-0700\n"
+"PO-Revision-Date: 2015-12-27 17:25-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -959,37 +959,42 @@ msgctxt "option label"
 msgid "Use HTTPS for Video API Calls"
 msgstr "Utiliser HTTPS pour appels API vidéo"
 
-#: lib/gpl/admin/general.php:51 lib/pro/admin/general.php:50
+#: lib/gpl/admin/general.php:50 lib/pro/admin/general.php:49
+msgctxt "option comment"
+msgid "uses %s"
+msgstr "utilise %s"
+
+#: lib/gpl/admin/general.php:53 lib/pro/admin/general.php:52
 msgctxt "option label"
 msgid "Include Video Preview Image(s)"
 msgstr "Inclure l’image d’aperçu du vidéo"
 
-#: lib/gpl/admin/general.php:54 lib/pro/admin/general.php:53
+#: lib/gpl/admin/general.php:56 lib/pro/admin/general.php:55
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr "les images d'aperçu vidéo sont inclus en premier"
 
-#: lib/gpl/admin/general.php:57 lib/pro/admin/general.php:56
+#: lib/gpl/admin/general.php:59 lib/pro/admin/general.php:58
 msgctxt "option label"
 msgid "Include Embed text/html Type"
 msgstr "Inclure text/html pour vidéo intégrée"
 
-#: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:60
+#: lib/gpl/admin/general.php:63 lib/pro/admin/general.php:62
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr "Forcer a jouer lorsque possible"
 
-#: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:65
+#: lib/gpl/admin/general.php:68 lib/pro/admin/general.php:67
 msgctxt "option label"
 msgid "Default / Fallback Video URL"
 msgstr "URL d’un vidéo par défaut / repli"
 
-#: lib/gpl/admin/general.php:71 lib/pro/admin/general.php:70
+#: lib/gpl/admin/general.php:73 lib/pro/admin/general.php:72
 msgctxt "option label"
 msgid "Use Default Video on Indexes"
 msgstr "Utiliser vidéo par défaut sur index"
 
-#: lib/gpl/admin/general.php:76 lib/pro/admin/general.php:75
+#: lib/gpl/admin/general.php:78 lib/pro/admin/general.php:77
 msgctxt "option label"
 msgid "Use Default Video on Search Results"
 msgstr "Utiliser vidéo par défaut<br/>pour résultats de recherche"
