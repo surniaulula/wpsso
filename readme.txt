@@ -356,7 +356,7 @@ Official announcement: N/A
 * **Bugfixes**
 	* Fixed the `get_admin_url()` method, which returned empty URLs, when only hash / query fragments were passed as arguments.
 * **Developer Notes**
-	* *None*
+	* Renamed and updated the share/lib/cacert.pem file to share/lib/ca-bundle.crt.
 
 = Version 3.20.0 (2015/12/25) =
 
