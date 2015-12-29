@@ -345,6 +345,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.20.1.2 (2015/12/29) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed an Open Graph image size definition issue on the front-end.
+* **Developer Notes**
+	* *None*
+
 = Version 3.20.1.1 (2015/12/27) =
 
 Official announcement: N/A
@@ -481,6 +494,10 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 	* *None*
 
 == Upgrade Notice ==
+
+= 3.20.1.2 =
+
+2015/12/29 - Important update - Fixed an Open Graph image size definition issue on the front-end.
 
 = 3.20.1.1 =
 
