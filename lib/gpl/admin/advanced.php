@@ -164,21 +164,21 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$rows[] = '<td colspan="3" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Check for Duplicate Meta Tags',
-				'option label', 'wpsso' ), null, 'plugin_check_head' ).
-			$this->get_nocb_cell( 'plugin_check_head' );
-
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( '&lt;html&gt; Attributes Filter Hook',
 				'option label', 'wpsso' ), null, 'plugin_html_attr_filter' ).
 			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].'</td><td class="blank">'.
 				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
-			
+
 			$rows[] = $this->p->util->get_th( _x( '&lt;head&gt; Attributes Filter Hook',
 				'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
 			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].'</td><td class="blank">'.
 				'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 			
+			$rows[] = $this->p->util->get_th( _x( 'Check for Duplicate Meta Tags',
+				'option label', 'wpsso' ), null, 'plugin_check_head' ).
+			$this->get_nocb_cell( 'plugin_check_head' );
+
 			$rows[] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Use WP Locale for Language',
 				'option label', 'wpsso' ), null, 'plugin_filter_lang' ).
@@ -186,16 +186,28 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->p->admin->get_site_use( $form, $network, 'plugin_filter_lang' );
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Auto-Resize Media Images',
+			$this->p->util->get_th( _x( 'Create Missing WP Media Images',
 				'option label', 'wpsso' ), null, 'plugin_auto_img_resize' ).
 			$this->get_nocb_cell( 'plugin_auto_img_resize' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_auto_img_resize' );
 
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Check Image Dimensions',
+			$this->p->util->get_th( _x( 'Enforce Image Dimensions Check',
 				'option label', 'wpsso' ), null, 'plugin_ignore_small_img' ).
 			$this->get_nocb_cell( 'plugin_ignore_small_img' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_ignore_small_img' );
+
+			/*
+			$rows[] = $this->p->util->get_th( _x( 'Allow Upscaling of Smaller Images',
+				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).
+			$this->get_nocb_cell( 'plugin_upscale_images' ).
+			$this->p->admin->get_site_use( $form, $network, 'plugin_upscale_images' );
+
+			$rows[] = $this->p->util->get_th( _x( 'Maximum Image Upscale Percentage',
+				'option label', 'wpsso' ), null, 'plugin_upscale_img_max' ).
+			'<td class="blank">'.$this->p->options['plugin_upscale_img_max'].' %</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_upscale_img_max' );
+			*/
 
 			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
 				$rows[] = '<tr class="hide_in_basic">'.

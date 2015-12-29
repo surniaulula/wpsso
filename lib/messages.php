@@ -317,24 +317,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_preserve':
 							$text = 'Check this option if you would like to preserve all '.$atts['short'].' settings when you <em>uninstall</em> the plugin (default is unchecked).';
 							break;
-						case 'tooltip-plugin_cache_info':
-							$text = 'Report the number of objects removed from the cache when updating Posts and Pages.';
-							break;
-						case 'tooltip-plugin_filter_lang':
-							$text = $atts['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
-							break;
-						case 'tooltip-plugin_auto_img_resize':
-							$text = 'Automatically generate missing or incorrect image sizes for previously uploaded images in the WordPress Media Library (default is checked).';
-							break;
-						case 'tooltip-plugin_ignore_small_img':
-							$text = 'Images that are detected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve chosen. Uncheck this option to disable the image dimension checks. <em>Unchecking this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
-							break;
-						case 'tooltip-plugin_shortcodes':
-							$text = 'Enable the '.$atts['short'].' shortcode features (default is checked).';
-							break;
-						case 'tooltip-plugin_widgets':
-							$text = 'Enable the '.$atts['short'].' widget features (default is checked).';
-							break;
 						/*
 						 * 'Content and Filters' settings
 						 */
@@ -361,12 +343,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_embedded_media':
 							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';
-							break;
-						case 'tooltip-plugin_page_excerpt':
-							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$atts['short'].' can use as a default description value.';
-							break;
-						case 'tooltip-plugin_page_tags':
-							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$atts['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
 							break;
 						/*
 						 * 'Social Settings' settings
@@ -396,11 +372,37 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = $atts['short'].' can check the front-end webpage head section for duplicate HTML tags when editing Posts and Pages. You may uncheck this option if you\'ve edited a few Posts and Pages without seeing any warning messages about duplicate HTML tags.';
 							break;
 						case 'tooltip-plugin_html_attr_filter':
-							$text = $atts['short'].' hooks the "language_attributes" filter to add / modify required Open Graph namespace prefix values by default. The "language_attributes" filter and function are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header template(s) use the language_attributes() function. Leaving this option blank disables the addition of Open Graph namespace values. Example template code: <pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
+							$text = $atts['short'].' hooks the "language_attributes" filter by default to add / modify required Open Graph namespace prefix values. The "language_attributes" WordPress function and filter are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header template(s) use the language_attributes() function. Leaving this option blank disables the addition of Open Graph namespace values. Example template code: <pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 							break;
 						case 'tooltip-plugin_head_attr_filter':
-							$text = $atts['short'].' hooks the "head_attributes" filter to add / modify the <code>&amp;lt;head&amp;gt;</code> element attributes for the Schema itemscope / itemtype markup. If your theme offers a filter for <code>&amp;lt;head&amp;gt;</code> element attributes, enter its name here. Alternatively, you can add an action manually in your header templates to call the "head_attributes" filter. Example code:
-<pre><code>&amp;lt;head &amp;lt;?php do_action( \'add_head_attributes\' ); ?&amp;gt;&amp;gt;</code></pre>';
+							$text = $atts['short'].' hooks the "head_attributes" filter by default to add / modify the <code>&amp;lt;head&amp;gt;</code> element attributes for the Schema itemscope / itemtype markup. If your theme offers a filter for <code>&amp;lt;head&amp;gt;</code> element attributes, enter its name here (most themes do not). Alternatively, you can add an action manually in your header templates to call the "head_attributes" filter. Example code: <pre><code>&amp;lt;head &amp;lt;?php do_action( \'add_head_attributes\' ); ?&amp;gt;&amp;gt;</code></pre>';
+							break;
+						case 'tooltip-plugin_filter_lang':
+							$text = $atts['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
+							break;
+						case 'tooltip-plugin_auto_img_resize':
+							$text = 'Automatically generate missing or incorrect image sizes for previously uploaded images in the WordPress Media Library (default is checked).';
+							break;
+						case 'tooltip-plugin_ignore_small_img':
+							$text = 'Full size images selected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve defined. Uncheck this option to disable the minimum image dimensions check. <em>Disabling this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
+							break;
+						case 'tooltip-plugin_upscale_images':
+							$text = 'WordPress does not upscale (create larger) images from smaller full size originals by default &mdash; WordPress only generates smaller images from larger full size originals. Upscaled images do not look as sharp or clean when upscaled, and if upscaled too much, they will look fuzzy and unappealing &mdash; not something you want to promote on your website and social sites. '.$atts['short'].' includes a special filter for WordPress than allows it to upscale its own image dimensions. Do not enable this option unless you want to publish low quality images to social websites (not recommended).';
+							break;
+						case 'tooltip-plugin_upscale_img_max':
+							$text = 'When image upscaling is allowed, '.$atts['short'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which would publish low quality / fuzzy images on social websites (the default maximum is 20%). If an image needs to be upscaled <em>in either width or height</em> beyond this maximum value, it will not be upscaled.';
+							break;
+						case 'tooltip-plugin_shortcodes':
+							$text = 'Enable the '.$atts['short'].' shortcode features (default is checked).';
+							break;
+						case 'tooltip-plugin_widgets':
+							$text = 'Enable the '.$atts['short'].' widget features (default is checked).';
+							break;
+						case 'tooltip-plugin_page_excerpt':
+							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$atts['short'].' can use as a default description value.';
+							break;
+						case 'tooltip-plugin_page_tags':
+							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$atts['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
 							break;
 						/*
 						 * 'File and Object Cache' settings
@@ -413,6 +415,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
+							break;
+						case 'tooltip-plugin_cache_info':
+							$text = 'Report the number of objects removed from the cache when updating Posts and Pages.';
 							break;
 						case 'tooltip-plugin_file_cache_exp':
 							$text = $atts['short_pro'].' can save most social sharing JavaScript and images to a cache folder, providing URLs to these cached files instead of the originals. A value of 0 hours (the default) disables the file caching feature. If your hosting infrastructure performs reasonably well, this option can improve page load times significantly. All social sharing images and javascripts will be cached, except for the Facebook JavaScript SDK, which does not work correctly when cached.';

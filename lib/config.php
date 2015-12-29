@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.20.1.1',		// plugin version
+					'version' => '3.20.1.2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso402',				// increment when changing default options
+				'version' => 'sso403',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_logo_url' => '',
@@ -502,14 +502,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
-					'plugin_cache_info' => 0,			// Report Cache Purge Count
-					'plugin_filter_lang' => 1,			// Use WP Locale for Language
-					'plugin_auto_img_resize' => 1,			// Auto-Resize Media Images
-					'plugin_ignore_small_img' => 1,			// Check Image Dimensions
-					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
-					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
-					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
-					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// Content and Filters Tab
 					'plugin_filter_title' => 1,
 					'plugin_filter_content' => 0,
@@ -539,15 +531,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '_format_video_embed',
 					// Theme Integration Tab
-					'plugin_check_head' => 1,
 					'plugin_html_attr_filter_name' => 'language_attributes',
 					'plugin_html_attr_filter_prio' => 100,
-					'plugin_head_attr_filter_name' => 'language_attributes',
+					'plugin_head_attr_filter_name' => 'head_attributes',
 					'plugin_head_attr_filter_prio' => 100,
+					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
+					'plugin_filter_lang' => 1,			// Use WP Locale for Language
+					'plugin_auto_img_resize' => 1,			// Create Missing WP Media Images
+					'plugin_ignore_small_img' => 1,			// Enforce Image Dimensions Check
+					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
+					'plugin_upscale_img_max' => 20,			// Maximum Image Upscale Percentage
+					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
+					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
+					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
+					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// File and Object Cache Tab
 					'plugin_object_cache_exp' => 86400,		// Object Cache Expiry
-					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
+					'plugin_cache_info' => 0,			// Report Cache Purge Count
+					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
 					'plugin_shortlink' => 1,

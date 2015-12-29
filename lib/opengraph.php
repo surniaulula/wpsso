@@ -240,12 +240,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								'og' => $this->p->cf['lca'].'-opengraph',
 							);
 						elseif ( $crawler_name === 'pinterest' )
-							$img_sizes = array(
-								'og' => $this->p->cf['lca'].'-richpin',	// use the pinterest image size
-							);
-					} else $img_sizes = array(
-						'og' => $this->p->cf['lca'].'-opengraph',
-					);
+							$img_sizes = array( 'og' => $this->p->cf['lca'].'-richpin' );	// use the pinterest image size
+						else $img_sizes = array( 'og' => $this->p->cf['lca'].'-opengraph' );
+					} else $img_sizes = array( 'og' => $this->p->cf['lca'].'-opengraph' );
 
 					$size_count = count( $img_sizes );
 					$size_num = 0;
