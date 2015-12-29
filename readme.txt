@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4
-Stable Tag: 3.20.1.1
+Stable Tag: 3.20.1.2
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -497,7 +497,7 @@ Official announcement: http://surniaulula.com/2015/11/28/ngfb-wpsso-update-new-h
 
 = 3.20.1.2 =
 
-2015/12/29 - Important update - Fixed an Open Graph image size definition issue on the front-end.
+2015/12/29 - Important update: Fixed an Open Graph image size definition issue on the front-end.
 
 = 3.20.1.1 =
 
