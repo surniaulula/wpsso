@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
 							'sitereadme' => 'Plugin Read Me',
-							'sitesetup' => 'Quick Setup Guide',
+							'sitesetup' => 'Setup Guide',
 							// the first 2 words will be highlighted in menu
 							'sitelicenses' => '<span>Extension Plugins</span> and Pro Licenses',
 						),
