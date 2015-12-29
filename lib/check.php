@@ -191,6 +191,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-slideshare':
 							$chk['optval'] = 'plugin_slideshare_api';
 							break;
+						case 'media-upscale':
+							$chk['optval'] = 'plugin_upscale_images';
+							break;
 						case 'media-vimeo':
 							$chk['optval'] = 'plugin_vimeo_api';
 							break;

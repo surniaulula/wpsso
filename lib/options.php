@@ -401,6 +401,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'numeric';
 					break;
 				// integer options that must be positive (1 or more)
+				case 'plugin_upscale_img_max':
 				case 'plugin_object_cache_exp':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_len$/', $key ) ? true : false ):

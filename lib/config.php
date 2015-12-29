@@ -116,6 +116,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'ngg' => 'NextGEN Gallery',
 								'photon' => 'Jetpack Photon',
 								'slideshare' => 'Slideshare API',
+								//'upscale' => 'WP Image Upscaler',
 								'vimeo' => 'Vimeo Video API',
 								'wistia' => 'Wistia Video API',
 								'youtube' => 'YouTube Video / Playlist API',
