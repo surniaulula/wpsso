@@ -746,7 +746,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $encoded;
 
 			$decoded = preg_replace_callback( '/&#\d{2,5};/u',
-				'self::decode_utf8_entity( \'$0\' )', $encoded );
+				array( self, 'decode_utf8_entity( \'$0\' )' ), $encoded );
 
 			return $decoded;
 		}
