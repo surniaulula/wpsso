@@ -746,14 +746,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $encoded;
 
 			$decoded = preg_replace_callback( '/&#\d{2,5};/u',
-				array( self, 'decode_utf8_entity( \'$0\' )' ), $encoded );
+				array( __CLASS__, 'decode_utf8_entity' ), $encoded );
 
 			return $decoded;
 		}
 
-		public static function decode_utf8_entity( $entity ) {
+		public static function decode_utf8_entity( $matches ) {
 			$convmap = array( 0x0, 0x10000, 0, 0xfffff );
-			return mb_decode_numericentity( $entity, $convmap, 'UTF-8' );
+			return mb_decode_numericentity( $matches[0], $convmap, 'UTF-8' );
 		}
 
 		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr)
