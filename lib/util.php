@@ -393,7 +393,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
-				foreach ( array_unique( $idx ) as $key ) {
+				else $idx = array_unique( $idx );	// just in case
+				foreach ( $idx as $key ) {
 					if ( $key === 'none' )		// special keyword
 						return false;		// stop here
 					if ( empty( $key ) )
@@ -404,11 +405,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 			if ( ! empty( $ret ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'custom '.$mod.' '.
 						( $idx === false ? 'options' : ( is_array( $idx ) ? 
 							implode( ', ', $idx ) : $idx ) ).' = '.
 						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+				}
 				return $ret;	// stop here
 			}
 			return false;
