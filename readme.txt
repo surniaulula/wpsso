@@ -231,6 +231,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration](http://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/)
 * [Uninstall the Plugin](http://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/)
+* [Performance Tuning](http://wpsso.com/codex/plugins/wpsso/installation/performance-tuning/)
 * [Debugging and Problem Solving](http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/)
 * [How-To Migrate from NGFB to WPSSO](http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
 * [Developer Special – Buy one, Get one Free](http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
@@ -311,7 +312,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 		* [Other Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/other/)
 * [Inline Variables](http://wpsso.com/codex/plugins/wpsso/notes/inline-variables/)
 * [Multisite / Network Support](http://wpsso.com/codex/plugins/wpsso/notes/multisite-network-support/)
-* [Performance Tuning](http://wpsso.com/codex/plugins/wpsso/notes/performance-tuning/)
 * [Working with Image Attachments](http://wpsso.com/codex/plugins/wpsso/notes/working-with-image-attachments/)
 
 == Screenshots ==

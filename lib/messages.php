@@ -112,8 +112,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-wistia-video-api':
 							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
 							break;
-						case 'tooltip-side-wp-rest-api-routes':
-							$text = $atts['short_pro'].' loads a module to extend the WordPress REST API routes.';
+						case 'tooltip-side-wp-image-upscaler':
+							$text = $atts['short_pro'].' includes a special filter for WordPress than allows it to upscale ALL Media Library images when necessary. You can enable the WP Image Upscaler from the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', 'Advanced Settings' ).' page.';
 							break;
 						case 'tooltip-side-youtube-video-playlist-api':
 							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$atts['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Priority Media' settings
 						 */
 						case 'tooltip-og_img_dimensions':
-							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$this->p->opt->get_defaults( 'og_img_width' ).'x'.$this->p->opt->get_defaults( 'og_img_height' ).' '.( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'un' : '' ).'cropped). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions (WordPress does not upscale images).';
+							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$this->p->opt->get_defaults( 'og_img_width' ).'x'.$this->p->opt->get_defaults( 'og_img_height' ).' '.( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'un' : '' ).'cropped). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-og_def_img_id':
 							$text = 'The ID number and media location of your default image (example: 123). The Default Image ID will be used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content. The ID number for images in the WordPress Media Library can be found in the URL when editing an image (post=123 in the URL, for example). The NextGEN Gallery image IDs are easier to find -- it\'s the number in the first column when viewing a Gallery.';
@@ -387,10 +387,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Full size images selected by '.$atts['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve defined. Uncheck this option to disable the minimum image dimensions check. <em>Disabling this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_upscale_images':
-							$text = 'WordPress does not upscale (create larger) images from smaller full size originals by default &mdash; WordPress only generates smaller images from larger full size originals. Upscaled images do not look as sharp or clean when upscaled, and if upscaled too much, they will look fuzzy and unappealing &mdash; not something you want to promote on your website and social sites. '.$atts['short'].' includes a special filter for WordPress than allows it to upscale its own image dimensions. Do not enable this option unless you want to publish low quality images to social websites (not recommended).';
+							$text = 'WordPress does not upscale (create larger) images from smaller full size originals by default &mdash; WordPress only generates smaller images from larger full size originals. Upscaled images do not look as sharp or clean when upscaled, and if upscaled too much, they will look fuzzy and unappealing &mdash; not something you want to promote on your website and social sites. '.$atts['short'].' includes a special filter for WordPress than allows it to upscale ALL Media Library images when necessary. <strong>Do not enable this option unless you want to publish low quality images on your website and social sites</strong>.';
 							break;
 						case 'tooltip-plugin_upscale_img_max':
-							$text = 'When image upscaling is allowed, '.$atts['short'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which would publish low quality / fuzzy images on social websites (the default maximum is 20%). If an image needs to be upscaled <em>in either width or height</em> beyond this maximum value, it will not be upscaled.';
+							$text = 'When upscaling of Media Library images is enabled, '.$atts['short'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which could publish very low quality / fuzzy images on your website and social sites (the default maximum is 20%). If an image needs to be upscaled beyond this meximum value &ndash; <em>in either width or height</em> &ndash; it will not be upscaled.';
 							break;
 						case 'tooltip-plugin_shortcodes':
 							$text = 'Enable the '.$atts['short'].' shortcode features (default is checked).';

@@ -267,6 +267,7 @@
 <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
 </ul></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the Plugin</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NGFB to WPSSO</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special – Buy one, Get one Free</a></li>
@@ -373,7 +374,6 @@
 </ul></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/multisite-network-support/">Multisite / Network Support</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/notes/performance-tuning/">Performance Tuning</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/notes/working-with-image-attachments/">Working with Image Attachments</a></li>
 </ul>
 
