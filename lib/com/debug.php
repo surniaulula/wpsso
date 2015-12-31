@@ -217,6 +217,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						$val = 'false';
 					elseif ( $val === true )
 						$val = 'true';
+					elseif ( $val === null )
+						$val = 'null';
+					elseif ( $val === '' )
+						$val = '\'\'';
 					$line .= $key.'='.$val.', ';
 				}
 				return '('.trim( $line, ', ' ).')'; 
