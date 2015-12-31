@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, 
 				FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				$this->p->notice->err( sprintf( 'Error reading the %s topic list file.', WPSSO_TOPICS_LIST ) );
+				$this->p->notice->err( sprintf( __( 'Error reading the %s topic list file.', 'wpsso' ), WPSSO_TOPICS_LIST ) );
 				return $topics;
 			}
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( sprintf( 'The value of option \'%s\' must be a URL - resetting the option to its default value.', $key ), true );
+							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.', 'wpsso' ), $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -481,21 +481,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val === '' && $mod !== false )
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be greater or equal to %s - resetting the option to its default value.', $key, $min_int ), true );
+						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.', 'wpsso' ), $key, $min_int ), true );
 						$val = $def_val;
 					}
 					break;
 				// must be blank or numeric
 				case 'blank_num':
 					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', $key ), true );
+						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
 					}
 					break;
 				// must be numeric
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', $key ), true );
+						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( '\'%s\' is not an acceptable value for option \'%s\' - resetting the option to its default value.', $val, $key ), true );
+						$this->p->notice->err( sprintf( __( '\'%1$s\' is not an acceptable value for option \'%2$s\' - resetting the option to its default value.', 'wpsso' ), $val, $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( sprintf( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.', $key ), true );
+						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = trim( $val );
 						if ( ! preg_match( '/<.*>/', $val ) ) {
-							$this->p->notice->err( sprintf( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.', $key ), true );
+							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.', 'wpsso' ), $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'code':
 				case 'not_blank':
 					if ( $val === '' ) {
-						$this->p->notice->err( sprintf( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.', $key ), true );
+						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'DOMDocument PHP class missing' );
 				if ( is_admin() )
-					$this->p->notice->err( sprintf( 'DOMDocument PHP class missing - unable to read head meta from %s. Please contact your hosting provider to install the missing DOMDocument PHP class.', $url ), true );
+					$this->p->notice->err( sprintf( __( 'The DOMDocument PHP class is missing - unable to read the head meta from %s. Please contact your hosting provider to install the missing DOMDocument PHP class.', 'wpsso' ), $url ), true );
 			}
 			return $ret;
 		}

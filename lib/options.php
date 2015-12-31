@@ -133,15 +133,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// adjust some options based on external factors
 				if ( ! $network ) {
 
-					if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
+					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
+						true, $this->p->is_avail['aop'] ) ) {
 						foreach ( array(
 							'plugin_filter_content',
 							'plugin_check_head',
 							'plugin_upscale_images',
 							'plugin_object_cache_exp',
 							'plugin_shortener',
-						) as $idx )
-							$opts[$idx] = $this->get_defaults( $idx );
+						) as $idx ) {
+							$def_val = $this->get_defaults( $idx );
+							if ( $opts[$idx] !== $def_val ) {
+								$this->p->notice->err( sprintf( __( 'Non-standard value for Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $key ), true );
+								$opts[$idx] = $def_val;
+							}
+						}
+					}
 
 					// if an seo plugin is found, disable the canonical and description meta tags
 					if ( $this->p->is_avail['seo']['*'] ) {
@@ -208,8 +215,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$url = $this->p->util->get_admin_url( 'general' );
 					else $url = $this->p->util->get_admin_url( 'network' );
 
-					$this->p->notice->err( $err_msg.
-						sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
+					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 			}
 

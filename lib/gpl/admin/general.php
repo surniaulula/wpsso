@@ -52,9 +52,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 			$rows[] = $this->p->util->get_th( _x( 'Include Video Preview Image(s)',
 				'option label', 'wpsso' ), null, 'og_vid_prev_img' ).
-			'<td class="blank"><input type="checkbox" disabled="disabled" />'.
-			' '._x( 'video preview images are included first',
-				'option comment', 'wpsso' ).'</td>';
+			'<td class="blank"><input type="checkbox" disabled="disabled" />'.' '.
+				_x( 'video preview images are included first',
+					'option comment', 'wpsso' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Include Embed text/html Type',
 				'option label', 'wpsso' ), null, 'og_vid_html_type' ).

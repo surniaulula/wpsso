@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
 						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).
-							' '._x( 'tag names', 'option comment' ).'</td>';
+							' '._x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Add Page Title in Tags / Hashtags',
@@ -148,12 +148,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Indexes',
 						'option label', 'wpsso' ), null, 'og_def_author_on_index' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' defines index / archive webpages as articles</td>';
+					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' '.
+						_x( 'defines index / archive webpages as articles', 'option comment', 'wpsso' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Use Default Author on Search Results',
 						'option label', 'wpsso' ), null, 'og_def_author_on_search' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' defines search webpages as articles</td>';
+					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' '.
+						_x( 'defines search webpages as articles', 'option comment', 'wpsso' ).'</td>';
 
 					break;
 
