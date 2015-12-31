@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 	
 			$rows[] = '<tr class="hide_in_basic">'.
-			$this->p->util->get_th( _x( 'Use HTTPS for Video API Calls',
+			$this->p->util->get_th( _x( 'Use HTTPS for Video API',
 				'option label', 'wpsso' ), null, 'og_vid_https' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /> '.
 				sprintf( _x( 'uses %s', 'option comment', 'wpsso' ),

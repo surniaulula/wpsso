@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$schema_select.'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Meta Property Container(s)',
+					$this->p->util->get_th( _x( 'Use Meta Property Containers',
 						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
 					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
 

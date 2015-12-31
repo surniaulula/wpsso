@@ -133,9 +133,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// adjust some options based on external factors
 				if ( ! $network ) {
 
-					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
-						true, $this->p->is_avail['aop'] ) )
-							$opts['plugin_filter_content'] = 0;
+					if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
+						foreach ( array(
+							'plugin_filter_content',
+							'plugin_check_head',
+							'plugin_upscale_images',
+							'plugin_object_cache_exp',
+							'plugin_shortener',
+						) as $idx )
+							$opts[$idx] = $this->get_defaults( $idx );
 
 					// if an seo plugin is found, disable the canonical and description meta tags
 					if ( $this->p->is_avail['seo']['*'] ) {

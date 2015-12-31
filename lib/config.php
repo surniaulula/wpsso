@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.20.1.3',		// plugin version
+					'version' => '3.21.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'ngg' => 'NextGEN Gallery',
 								'photon' => 'Jetpack Photon',
 								'slideshare' => 'Slideshare API',
-								//'upscale' => 'WP Image Upscaler',
+								'upscale' => 'WP Image Upscaler',
 								'vimeo' => 'Vimeo Video API',
 								'wistia' => 'Wistia Video API',
 								'youtube' => 'YouTube Video / Playlist API',

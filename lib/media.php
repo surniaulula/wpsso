@@ -417,8 +417,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// check for resulting image dimensions that may be too small
 			if ( empty( $accept_img_size ) ) {
 
-				$is_sufficient_width = $img_width >= $size_info['width'] ? true : false;
-				$is_sufficient_height = $img_height >= $size_info['height'] ? true : false;
+				$is_sufficient_w = $img_width >= $size_info['width'] ? true : false;
+				$is_sufficient_h = $img_height >= $size_info['height'] ? true : false;
 
 				if ( $img_width > 0 && $img_height > 0 )	// just in case
 					$ratio = $img_width >= $img_height ? 
@@ -432,8 +432,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				// depending on cropping, one or both sides of the image must be large enough / sufficient
 				// return an empty array after showing an appropriate warning
-				if ( ( empty( $size_info['crop'] ) && ( ! $is_sufficient_width && ! $is_sufficient_height ) ) ||
-					( ! empty( $size_info['crop'] ) && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
+				if ( ( empty( $size_info['crop'] ) && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
+					( ! empty( $size_info['crop'] ) && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
 
 					if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) &&
 						$img_meta['width'] < $size_info['width'] && 
@@ -696,8 +696,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$og_image['og:image:height'] = $match[1];
 							}
 
-							$is_sufficient_width = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
-							$is_sufficient_height = $og_image['og:image:height'] >= $size_info['height'] ? true : false;
+							$is_sufficient_w = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
+							$is_sufficient_h = $og_image['og:image:height'] >= $size_info['height'] ? true : false;
 
 							$accept_img_size = apply_filters( $this->p->cf['lca'].'_content_accept_img_size', 
 								( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
@@ -709,9 +709,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// make sure the image width and height are large enough
 							if ( ( $attr_name == 'src' && $accept_img_size ) ||
 								( $attr_name == 'src' && $size_info['crop'] && 
-									( $is_sufficient_width && $is_sufficient_height ) ) ||
+									( $is_sufficient_w && $is_sufficient_h ) ) ||
 								( $attr_name == 'src' && ! $size_info['crop'] && 
-									( $is_sufficient_width || $is_sufficient_height ) ) ||
+									( $is_sufficient_w || $is_sufficient_h ) ) ||
 								$attr_name == 'data-share-src' ) {
 
 								// data-share-src attribute used and/or image size is acceptable
