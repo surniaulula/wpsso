@@ -352,7 +352,7 @@ Official announcement: N/A
 * **New Features**
 	* Added a new "Allow Upscaling of Smaller Images" and "Maximum Image Upscale Percentage" (default is 20%) option in the Advanced settings, under the WP / Theme Integration tab (Pro version).
 * **Improvements**
-	* *None*
+	* Added `SucomUtil::encode_emoji()` to call `wp_encode_emoji()` if it's available (or duplicate its behavior if it's missing).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
