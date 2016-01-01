@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2015-12-31 14:05-0700\n"
-"PO-Revision-Date: 2015-12-31 14:05-0700\n"
+"POT-Creation-Date: 2016-01-01 14:42-0700\n"
+"PO-Revision-Date: 2016-01-01 14:42-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -141,7 +141,7 @@ msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:632 lib/messages.php:758
+#: lib/admin.php:632 lib/messages.php:768
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
@@ -248,7 +248,7 @@ msgid "Download Latest Version"
 msgstr "Téléchargez dernière version"
 
 #: lib/admin.php:1028 lib/admin.php:1033 lib/admin.php:1054 lib/admin.php:1060
-#: lib/messages.php:719
+#: lib/messages.php:729
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
@@ -386,19 +386,19 @@ msgstr ""
 "Photon</a> qui réactive les fonctions de taille d'image spécifiquement pour "
 "images de %4$s."
 
-#: lib/admin.php:1200
+#: lib/admin.php:1203
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1207
+#: lib/admin.php:1210
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1216
+#: lib/admin.php:1219
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1223
+#: lib/admin.php:1226
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
@@ -406,7 +406,7 @@ msgstr ""
 "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de "
 "votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1242
+#: lib/admin.php:1245
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -696,7 +696,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr "Utiliser le titre filtré (SEO)"
 
-#: lib/gpl/admin/advanced.php:38 lib/messages.php:710
+#: lib/gpl/admin/advanced.php:38 lib/messages.php:720
 #: lib/pro/admin/advanced.php:41
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -867,7 +867,7 @@ msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr "Activer Étiquettes WP pour Pages"
 
-#: lib/gpl/admin/advanced.php:241 lib/messages.php:707
+#: lib/gpl/admin/advanced.php:241 lib/messages.php:717
 #: lib/pro/admin/advanced.php:232
 msgctxt "option label"
 msgid "Object Cache Expiry"
@@ -1169,25 +1169,15 @@ msgstr ""
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/media.php:456 lib/media.php:482 lib/pro/media/ngg.php:195
-#: lib/pro/media/ngg.php:221
-msgid ""
-"Upload or choose a larger image, or adjust the <a href=\"%1%s\">%2$s social "
-"image dimensions</a>."
-msgstr ""
-"Télécharger ou choisissez une image plus grande, ou ajuster les <a href="
-"\"%1%s\">dimensions d'image sociale %2$s</a>."
-
 #: lib/media.php:471
 msgid ""
 "Media Library image ID %1$s has been ignored &mdash; the resulting image of "
-"%2$s created for the <a href=\"%3%s\">%4$s social image dimensions</a> is "
-"smaller than the minimum %5$s allowed by the Facebook / Open Graph standard."
+"%2$s is smaller than the minimum %3$s allowed by the Facebook / Open Graph "
+"standard."
 msgstr ""
-"L'image avec l'ID %1$s de la Bibliothèque de Médias a été ignoré &mdash; "
-"l'image résultante de %2$s créé pour les <a href=\"%3%s\">dimensions d'image "
-"sociale %4$s</a> est plus petite que le minimum %5$s autorisés par la norme "
-"Facebook / Open Graph."
+"L'image de la Bibliothèque de Médias avec l'ID %1$s a été ignoré &mdash; "
+"l'image résultante de %2$s est plus petite que le minimum %3$s autorisés par "
+"la norme Facebook / Open Graph."
 
 #: lib/media.php:482
 msgid ""
@@ -1907,7 +1897,24 @@ msgstr ""
 msgid "%s required to use this option"
 msgstr "%s requis pour utiliser cette option"
 
-#: lib/messages.php:704
+#: lib/messages.php:705
+msgid "Upload or choose a larger / different image."
+msgstr "Télécharger ou choisissez une image de plus grande taille."
+
+#: lib/messages.php:706
+msgid "Adjust the <a href=\"%1$s\"><b>%2$s</b> social image dimensions</a>."
+msgstr ""
+"Ajuster les <a href=\"%1%s\">dimensions d'image sociale <b>%2$s</b></a>."
+
+#: lib/messages.php:709
+msgid ""
+"Enable or adjust the <a href=\"%1$s\">WP / Theme Integration image upscaling "
+"options</a>."
+msgstr ""
+"Activer ou ajuster les <a href=\"%1$s\">options  d'Intégration WP / Thème "
+"pour agrandir les images</a>."
+
+#: lib/messages.php:714
 msgid ""
 "An Open Graph image meta tag could not be created from this webpage content "
 "&mdash; Facebook and other social websites <em>require</em> at least one "
@@ -1917,7 +1924,7 @@ msgstr ""
 "ce contenu &mdash; Facebook et d’autres sites sociaux <em>exigents</em> au "
 "moins une image Open Graph pour présenter votre contenu partagé correctement."
 
-#: lib/messages.php:704
+#: lib/messages.php:714
 msgid ""
 "You may select an optional customized image, for Facebook and other social "
 "websites, in the Social Settings metabox under the Priority Media tab."
@@ -1925,7 +1932,7 @@ msgstr ""
 "Vous pouvez choisir une image personnalisée, pour Facebook et d’autres sites "
 "sociaux, dans le metabox Réglages Sociaux sous l’onglet Média Prioritaire."
 
-#: lib/messages.php:707
+#: lib/messages.php:717
 msgid ""
 "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently "
 "set at %3$d seconds &mdash; this is lower than the recommended default value "
@@ -1935,11 +1942,11 @@ msgstr ""
 "actuellement fixé à %3$d secondes &mdash; ceci est inférieur à la valeur "
 "recommandée par défaut de %4$d secondes."
 
-#: lib/messages.php:710
+#: lib/messages.php:720
 msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr "L'option avancée <a href=\"%1$s\">%2$s</a> est actuellement désactivé."
 
-#: lib/messages.php:710
+#: lib/messages.php:720
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions, and detect additional images / embedded "
@@ -1950,7 +1957,7 @@ msgstr ""
 "détecter des images additionnelles, ainsi que des vidéos intégrées ajouté a "
 "partir de shortcodes."
 
-#: lib/messages.php:710
+#: lib/messages.php:720
 msgid ""
 "Some theme / plugins have badly coded content filters, so this option is "
 "disabled by default."
@@ -1958,7 +1965,7 @@ msgstr ""
 "Certains thème / extensions ont des filtres de contenu mal codé, donc cette "
 "option est désactivée par défaut."
 
-#: lib/messages.php:710
+#: lib/messages.php:720
 msgid ""
 "<a href=\"%s\">If you use any shortcodes in your content text, this option "
 "should be enabled</a> (Pro version required) &mdash; if you experience "
@@ -1971,7 +1978,7 @@ msgstr ""
 "déterminer quel thème / extension filtre le contenu d'une façon incorrecte, "
 "et signalez le problème à son auteur(s)."
 
-#: lib/messages.php:715
+#: lib/messages.php:725
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
 "of the webpage head section."
@@ -1979,7 +1986,7 @@ msgstr ""
 "Au moins un modèle header de votre thème ne supporte pas les balises de "
 "schéma d'en-têtes de page Web."
 
-#: lib/messages.php:715
+#: lib/messages.php:725
 msgid ""
 "The %s element in your theme's header templates should include a function / "
 "action / filter call for its attributes."
@@ -1987,7 +1994,7 @@ msgstr ""
 "La balise %s dans vos modèles header de thème devrait inclure un appel de "
 "fonction / d'action / de filtre pour leurs attributs."
 
-#: lib/messages.php:715
+#: lib/messages.php:725
 msgid ""
 "%1$s can update your theme header templates automatically to change the "
 "default %2$s element to:"
@@ -1995,7 +2002,7 @@ msgstr ""
 "%1$s peut mettre à jour les modèles header du thème automatiquement pour "
 "changer la balise %2$s par défaut à:"
 
-#: lib/messages.php:715
+#: lib/messages.php:725
 msgid ""
 "<b><a href=\"%1$s\">Click here to update theme header templates "
 "automatically</a></b> or update the theme templates yourself manually."
@@ -2004,11 +2011,11 @@ msgstr ""
 "thème automatiquement </a></b> ou modifiez les modèles vous-même "
 "manuellement."
 
-#: lib/messages.php:719
+#: lib/messages.php:729
 msgid "The %1$s plugin %2$s option is empty."
 msgstr "L'option %2$s de l'extension %1$s est vide."
 
-#: lib/messages.php:719
+#: lib/messages.php:729
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
@@ -2019,7 +2026,7 @@ msgstr ""
 "d'authentification que vous avez reçu par courriel sur la <a href=\"%s"
 "\">page de réglages de Licences Pro</a>."
 
-#: lib/messages.php:722
+#: lib/messages.php:732
 msgid ""
 "<b>An Authentication ID has been entered for %s, but the Pro version is not "
 "yet installed</b> &ndash; don't forget to update this plugin to install the "
@@ -2029,7 +2036,7 @@ msgstr ""
 "pas encore installé</b> &ndash; n’oubliez pas de mettre à jour l’extension "
 "pour installer la version Pro. ;-)"
 
-#: lib/messages.php:732
+#: lib/messages.php:742
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
 "Licenses settings page</a>, but the %2$s plugin is not active."
@@ -2037,7 +2044,7 @@ msgstr ""
 "Au moins un ID d'authentification a été désigné sur la <a href=\"%1$s\">page "
 "de réglages licences Pro</a>, mais l'extension %2$s n'est pas active."
 
-#: lib/messages.php:735
+#: lib/messages.php:745
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
@@ -2045,11 +2052,11 @@ msgstr ""
 "Cette extension gratuite est nécessaire pour mettre à jour et activer %s et "
 "ses extensions Pro."
 
-#: lib/messages.php:735
+#: lib/messages.php:745
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr "Téléchargez <a href=\"%1$s\">la version gratuite de %2$s</a> (ZIP)."
 
-#: lib/messages.php:735
+#: lib/messages.php:745
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
@@ -2057,7 +2064,7 @@ msgstr ""
 "Puis sur la page d'extensions de WordPress, <a href=\"%s\">mettre cette "
 "extension en ligne et l'activer</a>."
 
-#: lib/messages.php:738
+#: lib/messages.php:748
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
@@ -2065,14 +2072,14 @@ msgstr ""
 "Lorsque l'extension %s est active, une ou plusieurs mises à jour pourrait "
 "devenir disponible pour les extensions Pro sous licence."
 
-#: lib/messages.php:738
+#: lib/messages.php:748
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 "En lire plus sur <a href=\"%1$s\" target=\"_blank\">l’extension %2$s</a>."
 
-#: lib/messages.php:752
+#: lib/messages.php:762
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
@@ -2081,7 +2088,7 @@ msgstr ""
 "permettant d’autoriser et activer la version Pro quelques secondes suivant "
 "votre achat."
 
-#: lib/messages.php:753
+#: lib/messages.php:763
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
@@ -2090,7 +2097,7 @@ msgstr ""
 "permettant de mettre à jour l’extension quelques secondes suivant votre "
 "achat."
 
-#: lib/messages.php:754
+#: lib/messages.php:764
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
@@ -2098,7 +2105,7 @@ msgstr ""
 "Les licences Pro n’expirent pas &ndash; il n’y a pas de frais annuels ou "
 "récurrents pour le soutien et les mises à jour."
 
-#: lib/messages.php:759
+#: lib/messages.php:769
 msgid ""
 "Metaboxes (like this one) can be opened / closed by clicking on their title "
 "bar, moved and re-ordered by dragging them, or removed / added from the "
@@ -2109,7 +2116,7 @@ msgstr ""
 "enlevés / ajoutée à partir de l’onglet <em>Options de l'écran</em> (en haut "
 "à droite de la page) ."
 
-#: lib/messages.php:759
+#: lib/messages.php:769
 msgid ""
 "Option values in multiple tabs can be modified before clicking the '%s' "
 "button."
@@ -2117,7 +2124,7 @@ msgstr ""
 "Les valeur d’option de plusieurs onglets peuvent être modifiés avant de "
 "cliquer sur le bouton ‘%s’."
 
-#: lib/messages.php:769
+#: lib/messages.php:779
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
@@ -2278,17 +2285,17 @@ msgstr "Desc Social"
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
-#: lib/opengraph.php:41
+#: lib/opengraph.php:42
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
 
-#: lib/opengraph.php:47
+#: lib/opengraph.php:48
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/options.php:147
+#: lib/options.php:143
 msgid ""
 "Non-standard value for Free version '%s' option - resetting the option to "
 "its default value."
@@ -2296,26 +2303,26 @@ msgstr ""
 "Valeur non-standard pour l'option '%s' de la version gratuite - l'option est "
 "remise à sa valeur par défaut."
 
-#: lib/options.php:195
+#: lib/options.php:190
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:198
+#: lib/options.php:193
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa "
 "table d'options."
 
-#: lib/options.php:201
+#: lib/options.php:196
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table "
 "d'options."
 
-#: lib/options.php:203
+#: lib/options.php:198
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
@@ -2323,7 +2330,7 @@ msgstr ""
 "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table "
 "options."
 
-#: lib/options.php:218
+#: lib/options.php:213
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
@@ -2332,7 +2339,7 @@ msgstr ""
 "href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</"
 "a>."
 
-#: lib/options.php:304
+#: lib/options.php:299
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
@@ -2340,39 +2347,39 @@ msgstr ""
 "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de "
 "longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:352
+#: lib/options.php:347
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:215
+#: lib/post.php:230
 msgid "see <a href=\"%s\">Theme Integration</a> settings"
 msgstr "voir les paramètres <a href=\"%s\">Intégration de Thème</a>"
 
-#: lib/post.php:219
+#: lib/post.php:234
 msgid "Checking %1$s webpage header for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour l'en-tête de page Web %1$s"
 
-#: lib/post.php:269 lib/profile/social-settings.php:26 lib/taxonomy.php:251
+#: lib/post.php:287 lib/profile/social-settings.php:26 lib/taxonomy.php:251
 #: lib/user.php:200
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr "Réglages Sociaux"
 
-#: lib/post.php:306
+#: lib/post.php:324
 msgid ""
 "Save a draft version or publish the %s to display the open graph social "
 "preview."
 msgstr ""
 "Enregistrer une version préliminaire ou publiez pour activer l'aperçu social."
 
-#: lib/post.php:314
+#: lib/post.php:332
 msgid ""
 "Save a draft version or publish the %s to display the head tags preview."
 msgstr ""
 "Enregistrer une version préliminaire ou publiez pour activer les balises "
 "d'entête."
 
-#: lib/post.php:324
+#: lib/post.php:342
 msgid ""
 "Social validation tools will be available when the %s is published with "
 "public visibility."
@@ -2426,13 +2433,12 @@ msgstr ""
 #: lib/pro/media/ngg.php:209
 msgid ""
 "NextGEN Gallery image ID %1$s has been ignored &mdash; the resulting image "
-"of %2$s created for the <a href=\"%3%s\">%4$s social image dimensions</a> is "
-"smaller than the minimum %5$s allowed by the Facebook / Open Graph standard."
+"of %2$s is smaller than the minimum %3$s allowed by the Facebook / Open "
+"Graph standard."
 msgstr ""
-"L'image avec l'ID %1$s de NextGEN Gallery a été ignoré &mdash; l'image "
-"résultante de %2$s créé pour les <a href=\"%3%s\">dimensions d'image sociale "
-"%4$s</a> est plus petite que le minimum %5$s autorisés par la norme "
-"Facebook / Open Graph."
+"L'image de NextGEN Gallery avec l'ID %1$s a été ignoré &mdash; l'image "
+"résultante de %2$s est plus petite que le minimum %3$s autorisés par la "
+"norme Facebook / Open Graph."
 
 #: lib/pro/media/ngg.php:221
 msgid ""
@@ -2945,11 +2951,11 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:240
+#: lib/util.php:245
 msgid "%s has been cleared as well."
 msgstr "Le cache %s a été vidé aussi."
 
-#: lib/util.php:242
+#: lib/util.php:247
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
@@ -2957,11 +2963,11 @@ msgstr ""
 "Les fichiers mis en cache par %s, ainsi que sont cache transitoire, et le "
 "cache d’objets de WordPress ont été vidés."
 
-#: lib/util.php:363
+#: lib/util.php:368
 msgid "Error reading the %s topic list file."
 msgstr "Erreur de lecture du fichier %s de la liste des sujets."
 
-#: lib/util.php:453
+#: lib/util.php:458
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
@@ -2969,7 +2975,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être un URL - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:484
+#: lib/util.php:489
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
@@ -2977,7 +2983,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être égal ou supérieur à %s - l'option est "
 "remise à sa valeur par défaut."
 
-#: lib/util.php:491 lib/util.php:498
+#: lib/util.php:496 lib/util.php:503
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
@@ -2985,7 +2991,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être numérique - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:506
+#: lib/util.php:511
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
@@ -2993,7 +2999,7 @@ msgstr ""
 "'%1$s' n'est pas une valeur acceptable pour l'option '%2$s' - l'option est "
 "remise à sa valeur par défaut."
 
-#: lib/util.php:514
+#: lib/util.php:519
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
@@ -3001,7 +3007,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à "
 "sa valeur par défaut."
 
-#: lib/util.php:532
+#: lib/util.php:537
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
@@ -3009,7 +3015,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:541
+#: lib/util.php:546
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
@@ -3017,7 +3023,7 @@ msgstr ""
 "La valeur de l'option '%s' ne peut pas être vide - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:586
+#: lib/util.php:591
 msgid ""
 "The DOMDocument PHP class is missing - unable to read the head meta from %s. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

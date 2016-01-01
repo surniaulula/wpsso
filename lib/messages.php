@@ -700,6 +700,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
 				switch ( $idx ) {
+					case 'notice-image-rejected':
+						$text = '<ul>';
+						$text .= '<li>'.__( 'Upload or choose a larger / different image.', 'wpsso' ).'</li>';
+						$text .= '<li>'.sprintf( __( 'Adjust the <a href="%1$s"><b>%2$s</b> social image dimensions</a>.',
+							'nextgen-facebok' ), $this->p->util->get_admin_url( 'image-dimensions' ), 
+								$atts['size_label'] ).'</li>';
+						$text .= '<li>'.sprintf( __( 'Enable or adjust the <a href="%1$s">WP / Theme Integration image upscaling options</a>.',
+							'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
+						$text .= '</ul>';
+						break;
 					case 'notice-missing-og-image':
 						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
 						break;

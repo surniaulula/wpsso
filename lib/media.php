@@ -453,7 +453,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( $img_cropped === 0 ? '' : ' cropped' ).') image size' );
 
 					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; %2$s is too small for the %3$s image size.', 'wpsso' ), $pid, $img_src_txt, $size_label.' ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' '.__( 'cropped', 'wpsso' ) ).')' ).' '.sprintf( __( 'Upload or choose a larger image, or adjust the <a href="%1%s">%2$s social image dimensions</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $size_label ), false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; %2$s is too small for the %3$s image size.', 'wpsso' ), $pid, $img_src_txt, $size_label.' ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' <i>'.__( 'cropped', 'wpsso' ).'</i>' ).')' ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
 
 					return $ret_empty;
 
@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
 
 					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting image of %2$s created for the <a href="%3%s">%4$s social image dimensions</a> is smaller than the minimum %5$s allowed by the Facebook / Open Graph standard.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->util->get_admin_url( 'image-dimensions' ), $size_label, $this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] ), false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting image of %2$s is smaller than the minimum %3$s allowed by the Facebook / Open Graph standard.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
 					return $ret_empty;
 
 				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->cf['head']['max_img_ratio'].':1' );
 
 					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting %2$s image aspect ratio is equal to/or greater than %3$d:1.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->cf['head']['max_img_ratio'] ).' '.sprintf( __( 'Upload or choose a larger image, or adjust the <a href="%1%s">%2$s social image dimensions</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $size_label ), false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( 'Media Library image ID %1$s has been ignored &mdash; the resulting %2$s image aspect ratio is equal to/or greater than %3$d:1.', 'wpsso' ), $pid, $img_width.'x'.$img_height, $this->p->cf['head']['max_img_ratio'] ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
 
 					return $ret_empty;
 
