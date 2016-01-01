@@ -37,7 +37,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_const( $const ) {
 			if ( defined( $const ) )
 				return constant( $const );
-			else return false;
+			else return null;
 		}
 
 		// returns false or the admin screen id text string
@@ -1481,6 +1481,37 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D',
 				'%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
 			return str_replace( $replace, $allowed, urlencode( esc_url( $url ) ) );
+		}
+
+		// wp_encode_emoji() is only available since v4.2
+		// use the wp function if available, otherwise provide the same functionality
+		public static function encode_emoji( $content ) {
+			if ( function_exists( 'wp_encode_emoji' ) )
+				return wp_encode_emoji( $content );		// since wp 4.2 
+			elseif ( function_exists( 'mb_convert_encoding' ) ) {
+				$regex = '/(
+				     \x23\xE2\x83\xA3               # Digits
+				     [\x30-\x39]\xE2\x83\xA3
+				   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
+				   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
+				   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
+				   | \xF0\x9F\x99[\x80-\x8F]
+				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
+				)/x';
+				$matches = array();
+				if ( preg_match_all( $regex, $content, $matches ) ) {
+					if ( ! empty( $matches[1] ) ) {
+						foreach ( $matches[1] as $emoji ) {
+							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
+							if ( isset( $unpacked[1] ) ) {
+								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
+								$content = str_replace( $emoji, $entity, $content );
+							}
+						}
+					}
+				}
+			}
+			return $content;
 		}
 	}
 }

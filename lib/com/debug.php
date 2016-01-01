@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->mark();
 		}
 
-		public function mark( $id = false ) { 
+		public function mark( $id = false, $comment = '' ) { 
 			if ( $this->enabled !== true ) 
 				return;
 
@@ -64,6 +64,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log( 'mark ('.
 				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ).' / '.
 				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ).')'.
+				( $comment ? ' '.$comment : '' ).
 				( $id !== false ? "\n\t".$id_text : '' ), 2 );
 		}
 

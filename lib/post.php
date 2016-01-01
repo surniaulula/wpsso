@@ -185,27 +185,42 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function check_post_header( $post_id = true, &$obj = false ) {
 
-			if ( empty( $this->p->options['plugin_check_head'] ) )
+			if ( empty( $this->p->options['plugin_check_head'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'exiting early: plugin_check_head option not enabled');
 				return $post_id;
+			}
 
 			if ( ! is_object( $obj ) &&
-				( $obj = $this->p->util->get_post_object( $post_id ) ) === false )
-					return $post_id;
+				( $obj = $this->p->util->get_post_object( $post_id ) ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
+				return $post_id;
+			}
 
 			// only check publicly available posts
 			if ( ! isset( $obj->post_status ) || 
-				$obj->post_status !== 'publish' )
-					return $post_id;
+				$obj->post_status !== 'publish' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'exiting early: post_status \''.$obj->post_status.'\' not published');
+				return $post_id;
+			}
 
-			// only check registered front-end post types (to avoid menu items, product variations, etc.)
+			// only check public post types (to avoid menu items, product variations, etc.)
 			$ptns = $this->p->util->get_post_types( 'names' );
 			if ( empty( $obj->post_type ) || 
-				! in_array( $obj->post_type, $ptns ) )
-					return $post_id;
+				! in_array( $obj->post_type, $ptns ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'exiting early: post_type \''.$obj->post_type.'\' not public' );
+				return $post_id;
+			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'check head meta' );
 
 			$charset = get_bloginfo( 'charset' );
 			$permalink = get_permalink( $post_id );
-			$permalink_html = wp_encode_emoji( htmlentities( urldecode( $permalink ), 
+			$permalink_html = SucomUtil::encode_emoji( htmlentities( urldecode( $permalink ), 
 				ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_meta_options',
@@ -239,6 +254,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'check head meta' );
+
 			return $post_id;
 		}
 

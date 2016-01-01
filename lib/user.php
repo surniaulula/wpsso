@@ -363,6 +363,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function filter_json_http_schema_org_person( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			if ( empty( $this->p->options['schema_author_json'] ) ||
 				empty( $author_id ) )
 					return $json;

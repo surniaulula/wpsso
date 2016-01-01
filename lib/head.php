@@ -138,6 +138,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_header_array( $use_post = false, $read_cache = true, &$mt_og = array() ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'build header array' );	// begin timer
+
 			$lca = $this->p->cf['lca'];
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
@@ -277,6 +280,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'build header array' );	// end timer
+
 			return $header_array;
 		}
 
@@ -358,7 +364,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
 			// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
-			if ( defined( 'WPSSO_FILTER_SINGLE_TAGS' ) && WPSSO_FILTER_SINGLE_TAGS )
+			if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
 				$ret = $this->filter_single_mt( $ret, $use_post );
 
 			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
@@ -405,7 +411,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'twitter:description':
 						case 'description':
 						case 'name':
-							$parts[5] = wp_encode_emoji( htmlentities( $parts[5],
+							$parts[5] = SucomUtil::encode_emoji( htmlentities( $parts[5],
 								ENT_QUOTES, $charset, false ) );	// double_encode = false
 						default:
 							$parts[5] = htmlentities( $parts[5],

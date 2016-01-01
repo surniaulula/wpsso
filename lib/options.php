@@ -95,19 +95,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// check for a new plugin and/or extension version
 				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-
 					if ( empty( $info['version'] ) )
 						continue;
-
 					$key = 'plugin_'.$lca.'_version';
-
 					if ( empty( $opts[$key] ) || 
 						version_compare( $opts[$key], $info['version'], '!=' ) ) {
-
 						WpssoUtil::save_time( $lca, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
 					}
+					unset( $key );
 				}
 
 				// check for an upgrade to the options array
@@ -132,19 +129,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// adjust some options based on external factors
 				if ( ! $network ) {
-
 					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
-						true, $this->p->is_avail['aop'] ) ) {
+						false, $this->p->is_avail['aop'] ) ) {
 						foreach ( array(
 							'plugin_filter_content',
 							'plugin_check_head',
 							'plugin_upscale_images',
 							'plugin_object_cache_exp',
-							'plugin_shortener',
+							'plugin_shortener'
 						) as $idx ) {
 							$def_val = $this->get_defaults( $idx );
 							if ( $opts[$idx] !== $def_val ) {
-								$this->p->notice->err( sprintf( __( 'Non-standard value for Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $key ), true );
+								$this->p->notice->err( sprintf( __( 'Non-standard value for Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
 								$opts[$idx] = $def_val;
 							}
 						}
@@ -158,8 +154,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					} 
 
-					$opts['add_meta_name_generator'] = defined( 'WPSSO_META_GENERATOR_DISABLE' ) && 
-						WPSSO_META_GENERATOR_DISABLE ? 0 : 1;
+					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
 
 				// save options and issue possibly issue reminders

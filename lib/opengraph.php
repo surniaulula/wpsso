@@ -27,6 +27,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$prio = empty( $this->p->options['plugin_html_attr_filter_prio'] ) ? 
 						100 : $this->p->options['plugin_html_attr_filter_prio'];
 
+					// add open graph namespace attributes to the <html> tag
 					add_filter( $this->p->options['plugin_html_attr_filter_name'], 
 						array( &$this, 'add_html_attributes' ), $prio, 1 );
 

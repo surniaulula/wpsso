@@ -172,7 +172,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( $encode === true )
-				$caption = wp_encode_emoji( htmlentities( $caption, 
+				$caption = SucomUtil::encode_emoji( htmlentities( $caption, 
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			else {	// just in case
 				$charset = get_bloginfo( 'charset' );
@@ -347,7 +347,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$title .= ' '.$hashtags;
 
 			if ( $encode === true )
-				$title = wp_encode_emoji( htmlentities( $title, 
+				$title = SucomUtil::encode_emoji( htmlentities( $title, 
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 
 			return apply_filters( $this->p->cf['lca'].'_title', $title, $use_post, $add_hashtags, $md_idx, $src_id );
@@ -357,7 +357,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$add_hashtags = true, $encode = true, $md_idx = 'og_desc', $src_id = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'render description' );	// start timer
+				$this->p->debug->mark( 'render description' );	// begin timer
+
 				$this->p->debug->args( array( 
 					'textlen' => $textlen, 
 					'trailing' => $trailing, 
@@ -531,11 +532,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc .= ' '.$hashtags;
 
 			if ( $encode === true )
-				$desc = wp_encode_emoji( htmlentities( $desc, 
+				$desc = SucomUtil::encode_emoji( htmlentities( $desc, 
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'render description' );	// stop timer
+				$this->p->debug->mark( 'render description' );	// end timer
 
 			return apply_filters( $this->p->cf['lca'].'_description', $desc, $use_post, $add_hashtags, $md_idx, $src_id );
 		}

@@ -93,6 +93,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 *		)
 			 *	)
 			 */
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'define image sizes' );	// begin timer
+
 			if ( $filter === true )
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $id, $mod );
 
@@ -209,6 +212,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
 				}
 			}
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'define image sizes' );	// end timer
 		}
 
 		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {
@@ -434,7 +439,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				default:
 					$val = stripslashes( $val );
 					$val = wp_filter_nohtml_kses( $val );
-					$val = wp_encode_emoji( htmlentities( $val, 
+					$val = SucomUtil::encode_emoji( htmlentities( $val, 
 						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 					break;
 			}

@@ -220,8 +220,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_json_array( $use_post, &$obj, &$mt_og, $post_id, $author_id ) {
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+				$this->p->debug->mark( 'build json array' );	// begin timer
+
 			$ret = array();
+
 			foreach ( array_unique( array(
 				'http://schema.org/WebSite',
 				'http://schema.org/Person',
@@ -230,14 +232,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) ) as $type ) {
 				$filter_name = $this->p->cf['lca'].'_json_'.
 					SucomUtil::sanitize_hookname( $type );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'filter '.$filter_name );
 				if ( ( $json = apply_filters( $filter_name, false,
 					$use_post, $obj, $mt_og, $post_id, $author_id ) ) !== false )
 						$ret[] = "<script type=\"application/ld+json\">\n".
 							$json."</script>\n";
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'filter '.$filter_name );
 			}
+
 			$ret = SucomUtil::a2aa( $ret );	// convert to array or arrays
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $ret );
+				$this->p->debug->mark( 'build json array' );	// end timer
+			}
+
 			return $ret;
 		}
 

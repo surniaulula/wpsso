@@ -1170,6 +1170,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function check_tmpl_head_elements() {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			// only check if using the default filter name
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' )

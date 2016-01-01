@@ -17,10 +17,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		public function __construct( &$plugin, $activate = false ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'load modules' );
+				$this->p->debug->mark( 'load modules' );	// begin timer
 			$this->modules();
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'load modules' );
+				$this->p->debug->mark( 'load modules' );	// end timer
 		}
 
 		private function modules() {
