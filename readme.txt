@@ -350,7 +350,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 Official announcement: N/A
 
 * **New Features**
-	* Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" (default is 20%) options on the Advanced settings page, under the WP / Theme Integration tab (Pro version).
+	* Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" options on the Advanced settings page, under the WP / Theme Integration tab (Pro version).
 * **Improvements**
 	* Improved the NextGEN Gallery integration module by calling `get_post_object()` instead of using the $post global.
 	* Added `SucomUtil::encode_emoji()` to call WordPress v4.2's `wp_encode_emoji()` function if available (or duplicate its behavior if missing).
@@ -465,7 +465,7 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 
 = 3.21.0 =
 
-2016/01/03 - Fixed a call to wp_encode_emoji() which did not exist before WP v4.2. Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" (default is 20%) options (Pro version).
+2016/01/03 - Fixed a call to wp_encode_emoji() which did not exist before WP v4.2. Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" options (Pro version).
 
 = 3.20.1.3 =
 
