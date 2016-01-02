@@ -1,14 +1,8 @@
 <?php
 /*
- * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING,
- * RUNNING, OR OTHERWISE USING THE WORDPRESS SOCIAL SHARING OPTIMIZATION (WPSSO) PRO APPLICATION, YOU
- * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT AGREE
- * TO THE TERMS OF THIS LICENSE AGREEMENT, PLEASE DO NOT INSTALL, RUN, COPY, OR
- * OTHERWISE USE THE WORDPRESS SOCIAL SHARING OPTIMIZATION (WPSSO) PRO APPLICATION.
- * 
- * License: Nontransferable License for a WordPress Site Address URL
- * License URI: http://surniaulula.com/wp-content/plugins/wpsso/license/pro.txt
- * Copyright 2012-2015 - Jean-Sebastien Morisset - http://surniaulula.com/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl.txt
+ * Copyright 2012-2016 Jean-Sebastien Morisset (http://surniaulula.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) 
