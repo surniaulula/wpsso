@@ -196,11 +196,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_ignore_small_img' ).
 			$this->get_nocb_cell( 'plugin_ignore_small_img' );
 
-			$rows[] = $this->p->util->get_th( _x( 'Allow Upscaling of Smaller Images',
+			$rows[] = $this->p->util->get_th( _x( 'Allow Upscaling of Small WP Images',
 				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).
-			$this->get_nocb_cell( 'plugin_upscale_images',
-				_x( 'upscaling option applies to all defined WP image sizes',
-					'option comment', 'wpsso' ) ).'</td>';
+			$this->get_nocb_cell( 'plugin_upscale_images' ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Maximum Image Upscale Percentage',
 				'option label', 'wpsso' ), null, 'plugin_upscale_img_max' ).

@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 
 			if ( current_user_can( 'manage_options' ) )
-				$notice_suffix = ' ('.sprintf( __( 'see <a href="%s">Theme Integration</a> settings', 'wpsso' ),
+				$notice_suffix = ' ('.sprintf( __( 'see <a href="%s">WP / Theme Integration</a> settings', 'wpsso' ),
 					$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')';
 			else $notice_suffix = '';
 

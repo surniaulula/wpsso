@@ -768,116 +768,111 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:199 lib/pro/admin/advanced.php:193
 msgctxt "option label"
-msgid "Allow Upscaling of Smaller Images"
+msgid "Allow Upscaling of Small WP Images"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:202 lib/pro/admin/advanced.php:196
-msgctxt "option comment"
-msgid "upscaling option applies to all defined WP image sizes"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:205 lib/pro/admin/advanced.php:199
+#: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:197
 msgctxt "option label"
 msgid "Maximum Image Upscale Percentage"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:211 lib/pro/admin/advanced.php:205
+#: lib/gpl/admin/advanced.php:209 lib/pro/admin/advanced.php:203
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:218 lib/pro/admin/advanced.php:212
+#: lib/gpl/admin/advanced.php:216 lib/pro/admin/advanced.php:210
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:224 lib/pro/admin/advanced.php:218
+#: lib/gpl/admin/advanced.php:222 lib/pro/admin/advanced.php:216
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:229 lib/pro/admin/advanced.php:223
+#: lib/gpl/admin/advanced.php:227 lib/pro/admin/advanced.php:221
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:241 lib/messages.php:717
-#: lib/pro/admin/advanced.php:232
+#: lib/gpl/admin/advanced.php:239 lib/messages.php:717
+#: lib/pro/admin/advanced.php:230
 msgctxt "option label"
 msgid "Object Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:247 lib/pro/admin/advanced.php:238
+#: lib/gpl/admin/advanced.php:245 lib/pro/admin/advanced.php:236
 msgctxt "option label"
 msgid "Verify Peer SSL Certificate"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:253 lib/pro/admin/advanced.php:244
+#: lib/gpl/admin/advanced.php:251 lib/pro/admin/advanced.php:242
 msgctxt "option label"
 msgid "Report Cache Purge Count"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:266 lib/pro/admin/advanced.php:254
+#: lib/gpl/admin/advanced.php:264 lib/pro/admin/advanced.php:252
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:270 lib/pro/admin/advanced.php:258
+#: lib/gpl/admin/advanced.php:268 lib/pro/admin/advanced.php:256
 msgctxt "option label"
 msgid "<em>Get Shortlink</em> Button Gives Short URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:263
+#: lib/gpl/admin/advanced.php:273 lib/pro/admin/advanced.php:261
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:278 lib/pro/admin/advanced.php:266
+#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:264
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:280 lib/pro/admin/advanced.php:268
+#: lib/gpl/admin/advanced.php:278 lib/pro/admin/advanced.php:266
 msgctxt "option label"
 msgid "Bit.ly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:284 lib/pro/admin/advanced.php:272
+#: lib/gpl/admin/advanced.php:282 lib/pro/admin/advanced.php:270
 msgctxt "option label"
 msgid "Bit.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:289 lib/pro/admin/advanced.php:277
+#: lib/gpl/admin/advanced.php:287 lib/pro/admin/advanced.php:275
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:294 lib/pro/admin/advanced.php:282
+#: lib/gpl/admin/advanced.php:292 lib/pro/admin/advanced.php:280
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:299
+#: lib/gpl/admin/advanced.php:297
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:313 lib/gpl/admin/advanced.php:352
-#: lib/pro/admin/advanced.php:297 lib/pro/admin/advanced.php:333
+#: lib/gpl/admin/advanced.php:311 lib/gpl/admin/advanced.php:350
+#: lib/pro/admin/advanced.php:295 lib/pro/admin/advanced.php:331
 msgctxt "column title"
 msgid "Show"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:313 lib/gpl/admin/advanced.php:352
+#: lib/messages.php:663 lib/pro/admin/advanced.php:297
+#: lib/pro/admin/advanced.php:333
+msgctxt "column title"
+msgid "Contact Field Name"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:315 lib/gpl/admin/advanced.php:354
 #: lib/messages.php:663 lib/pro/admin/advanced.php:299
 #: lib/pro/admin/advanced.php:335
-msgctxt "column title"
-msgid "Contact Field Name"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:317 lib/gpl/admin/advanced.php:356
-#: lib/messages.php:663 lib/pro/admin/advanced.php:301
-#: lib/pro/admin/advanced.php:337
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -1076,40 +1071,43 @@ msgctxt "metabox title"
 msgid "Pinterest / Rich Pin"
 msgstr ""
 
-#: lib/media.php:304
+#: lib/media.php:331
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
-"information about image ID %2$s."
+"information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:444
-msgid "the full size image"
+#: lib/media.php:470
+msgid "full size original"
 msgstr ""
 
-#: lib/media.php:456
+#: lib/media.php:480 lib/pro/media/ngg.php:198
 msgid ""
-"Media Library image ID %1$s has been ignored &mdash; %2$s is too small for "
-"the %3$s image size."
+"%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
+"for the %4$s image size."
 msgstr ""
 
-#: lib/media.php:456 lib/pro/media/ngg.php:195
+#: lib/media.php:481 lib/media.php:501 lib/media.php:517
+msgid "Media Library"
+msgstr ""
+
+#: lib/media.php:485 lib/pro/media/ngg.php:203
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:471
+#: lib/media.php:500 lib/pro/media/ngg.php:217
 msgid ""
-"Media Library image ID %1$s has been ignored &mdash; the resulting image of "
-"%2$s is smaller than the minimum %3$s allowed by the Facebook / Open Graph "
-"standard."
+"%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller "
+"than the minimum %4$s allowed by the Facebook / Open Graph standard."
 msgstr ""
 
-#: lib/media.php:482
+#: lib/media.php:516 lib/pro/media/ngg.php:233
 msgid ""
-"Media Library image ID %1$s has been ignored &mdash; the resulting %2$s "
-"image aspect ratio is equal to/or greater than %3$d:1."
+"%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect "
+"ratio equal to/or greater than %4$d:1."
 msgstr ""
 
-#: lib/media.php:731
+#: lib/media.php:770
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for images from the "
 "Media Library to supplement the width / height information &mdash; if this "
@@ -1117,10 +1115,10 @@ msgid ""
 "try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:734
+#: lib/media.php:773
 msgid ""
-"Content image %1$s has been ignored &mdash; the image width / height "
-"attributes are missing or too small for the %2$s image dimensions."
+"Content image %1$s ignored &mdash; the image width / height attributes are "
+"missing or too small for the %2$s image size."
 msgstr ""
 
 #: lib/messages.php:50
@@ -1969,7 +1967,7 @@ msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
 #: lib/post.php:230
-msgid "see <a href=\"%s\">Theme Integration</a> settings"
+msgid "see <a href=\"%s\">WP / Theme Integration</a> settings"
 msgstr ""
 
 #: lib/post.php:234
@@ -1999,7 +1997,7 @@ msgid ""
 "public visibility."
 msgstr ""
 
-#: lib/pro/admin/advanced.php:287
+#: lib/pro/admin/advanced.php:285
 msgctxt "option label"
 msgid "Goo.gl URL Shortener API is ON"
 msgstr ""
@@ -2034,23 +2032,21 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:195
-msgid ""
-"NextGEN Gallery image ID %1$s has been ignored &mdash; %2$s is too small for "
-"the %3$s image size."
+#: lib/pro/media/ngg.php:199 lib/pro/media/ngg.php:218
+#: lib/pro/media/ngg.php:234
+msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:209
+#: lib/pro/media/upscale.php:188
 msgid ""
-"NextGEN Gallery image ID %1$s has been ignored &mdash; the resulting image "
-"of %2$s is smaller than the minimum %3$s allowed by the Facebook / Open "
-"Graph standard."
+"Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the "
+"%6$s image size (exceeds %7$s maximum)."
 msgstr ""
 
-#: lib/pro/media/ngg.php:221
+#: lib/pro/media/upscale.php:198
 msgid ""
-"NextGEN Gallery image ID %1$s has been ignored &mdash; the resulting %2$s "
-"image aspect ratio is equal to/or greater than %3$d:1."
+"Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
+"%6$s image size."
 msgstr ""
 
 #: lib/pro/util/shorten.php:108

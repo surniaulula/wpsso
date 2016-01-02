@@ -403,7 +403,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$num_remains = $this->p->media->num_remains( $og_ret, $num );
 					if ( version_compare( $this->p->mods['media']['ngg']->ngg_version, '2.0.0', '<' ) )
 						$ngg_query_og_ret = $this->p->mods['media']['ngg']->get_query_images( $num_remains, 
-							$size_name, $check_dupes );
+							$size_name, $post_id, $check_dupes );
 	
 					// if we found images in the query, skip content shortcodes
 					if ( count( $ngg_query_og_ret ) > 0 ) {
@@ -417,7 +417,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						$num_remains = $this->p->media->num_remains( $og_ret, $num );
 						$og_ret = array_merge( $og_ret, 
 							$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, 
-								$size_name, $check_dupes ) );
+								$size_name, $post_id, $check_dupes ) );
 					}
 				} // end of check for ngg shortcodes and query vars
 	
@@ -469,8 +469,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			else return get_bloginfo( 'name', 'display' );
 		}
 
-		public function get_the_media_urls( $size_name = 'thumbnail', $post_id, $md_pre = 'og',
-			$items = array( 'image', 'video' ) ) {
+		// the returned array can include a varying number of elements, depending on the $items value
+		public function get_the_media_urls( $size_name = 'thumbnail', 
+			$post_id, $md_pre = 'og', $items = array( 'image', 'video' ) ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();

@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'large image card: checking for singlepic image' );
 							$og_image = $this->p->mods['media']['ngg']->get_singlepic_images( 1, 
-								$this->p->cf['lca'].'-tc-lrgimg', false );
+								$this->p->cf['lca'].'-tc-lrgimg', $post_id, false );
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );
 								$tc['twitter:card'] = 'summary_large_image';
