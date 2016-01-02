@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. '.$atts['short_pro'].' includes an optional module that allows upscaling of WordPress Media Library images for '.$atts['short'].' image sizes (up to a maximum upscale percentage). <strong>Do not enable this option unless you want to publish lower quality images on social sites</strong>.';
 							break;
 						case 'tooltip-plugin_upscale_img_max':
-							$text = 'When upscaling of '.$atts['short'].' image sizes is allowed, '.$atts['short_pro'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which could publish very low quality / fuzzy images on social sites (the default maximum is 20%). If an image needs to be upscaled beyond this maximum &ndash; <em>in either width or height</em> &ndash; the image will not be upscaled.';
+							$text = 'When upscaling of '.$atts['short'].' image sizes is allowed, '.$atts['short_pro'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which could publish very low quality / fuzzy images on social sites (the default maximum is 50%). If an image needs to be upscaled beyond this maximum &ndash; <em>in either width or height</em> &ndash; the image will not be upscaled.';
 							break;
 						case 'tooltip-plugin_shortcodes':
 							$text = 'Enable the '.$atts['short'].' shortcode features (default is checked).';
