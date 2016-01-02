@@ -363,7 +363,7 @@ Official announcement: N/A
 		* WPSSO_IMAGE_UPSCALE_TEST = false
 	* Added three filters for the image upscaling feature:
 		* apply_filters( 'wpsso_image_upscale_all', WPSSO_IMAGE_UPSCALE_ALL = false );
-		* apply_filters( 'wpsso_image_upscale_max', $max_diff, $img_info );
+		* apply_filters( 'wpsso_image_upscale_max', $max_diff = 50, $img_info );
 		* apply_filters( 'wpsso_image_upscale_test', WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
 
 = Version 3.20.1.3 (2015/12/30) =
