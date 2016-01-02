@@ -39,11 +39,13 @@
 
 <p><strong>Note &ndash; this is a new feature in the upcoming v3.21.0 release (Pro version).</strong></p>
 
-<p>WordPress does not upscale (enlarge) images from smaller full-size originals &mdash; WordPress only generates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on your website (and social sites).</p>
+<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images for WPSSO image sizes (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 120x240px using the default maximum of 20%, but resizing the images any larger would fail (unless you increased the default maximum).</p> 
 
-<p>WPSSO includes an optional feature that allows it to upscale ALL WordPress Media Library images <em>when necessary</em> &mdash; up to a maximum upscale percentage (20% by default). For example, a 100x200px image could be upscaled up to 120x240px using the default maximum of 20%, but resizing the images any larger would fail (unless you increased the default maximum).</p> 
+<p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <em>Do not enable this feature unless you want to publish lower quality images on social sites.</em></p>
 
-<p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <strong>Do not enable this feature unless you want to publish lower quality images on your website and social sites.</strong></p>
+<p><strong>Not sure?</strong><p>
+
+<p>You can simulate the upscaling feature to generate the upscaling success / failure notice messages, without having WordPress save the resulting images &mdash; simply define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</p>
 </blockquote>
 
 </li>
