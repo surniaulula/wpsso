@@ -1924,45 +1924,45 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:143
+#: lib/options.php:144
 msgid ""
 "Non-standard value for Free version '%s' option - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:190
+#: lib/options.php:192
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:193
+#: lib/options.php:195
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:196
+#: lib/options.php:198
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:198
+#: lib/options.php:200
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:213
+#: lib/options.php:215
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:299
+#: lib/options.php:301
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:347
+#: lib/options.php:349
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
