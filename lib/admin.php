@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				// nothing to do
 			} else {
 				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );

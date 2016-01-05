@@ -17,40 +17,40 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 	class WpssoPost extends WpssoMeta {
 
 		protected function add_actions() {
-			if ( is_admin() ) {
-				/**
-				 * Hook a minimum number of admin actions to maximize performance.
-				 * The post or post_ID arguments are always present when we're
-				 * editing a post and/or page.
-				 */
-				if ( SucomUtil::is_post_page() ) {
-					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-					// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
-					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
-					add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
-					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-					if ( ! empty( $this->p->options['plugin_shortlink'] ) )
-						add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+			if ( is_admin() && SucomUtil::is_post_page() ) {
 
-				} elseif ( ! empty( $this->p->options['plugin_columns_post'] ) ) {
+				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
+				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
+				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-					$ptns = $this->p->util->get_post_types( 'names' );
-					if ( is_array( $ptns ) ) {
-						foreach ( $ptns as $ptn ) {
+				if ( ! empty( $this->p->options['plugin_shortlink'] ) )
+					add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+			}
+
+			// add the columns when doing AJAX as well, to allow Quick Edit to add the required columns
+			if ( ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) &&
+				! empty( $this->p->options['plugin_columns_post'] ) ) {
+
+				$ptns = $this->p->util->get_post_types( 'names' );
+				if ( is_array( $ptns ) ) {
+					foreach ( $ptns as $ptn ) {
+						if ( apply_filters( $this->p->cf['lca'].'_columns_post_'.$ptn, true ) ) { 
 							add_filter( 'manage_'.$ptn.'_posts_columns', 
 								array( $this, 'add_column_headings' ), 10, 1 );
 							add_action( 'manage_'.$ptn.'_posts_custom_column', 
 								array( $this, 'show_post_column_content',), 10, 2 );
 						}
 					}
-					$this->p->util->add_plugin_filters( $this, array( 
-						'og_image_post_column_content' => 4,
-						'og_desc_post_column_content' => 4,
-					) );
 				}
+				$this->p->util->add_plugin_filters( $this, array( 
+					'og_image_post_column_content' => 4,
+					'og_desc_post_column_content' => 4,
+				) );
 			}
 		}
 

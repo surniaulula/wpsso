@@ -139,7 +139,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_shortener'
 						) as $idx ) {
 							$def_val = $this->get_defaults( $idx );
-							if ( $opts[$idx] !== $def_val ) {
+							// numeric options from forms are strings, so don't do a strict test
+							if ( $opts[$idx] != $def_val ) {
 								if ( is_admin() )
 									$this->p->notice->err( sprintf( __( 'Non-standard value for Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
 								$opts[$idx] = $def_val;
