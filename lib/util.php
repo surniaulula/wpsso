@@ -450,6 +450,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' )
 						$val = trim( wptexturize( ' '.$val.' ' ) );
 					break;
+
 				// must be empty or a url
 				case 'url':
 					if ( $val !== '' ) {
@@ -460,6 +461,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 					break;
+
 				// strip leading urls off facebook usernames
 				case 'url_base':
 					if ( $val !== '' ) {
@@ -467,6 +469,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
 					}
 					break;
+
 				// twitter-style usernames (prepend with an @ character)
 				case 'at_name':
 					if ( $val !== '' ) {
@@ -475,6 +478,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$val = '@'.$val;
 					}
 					break;
+
 				case 'pos_num':		// integer options that must be 1 or more (not zero)
 				case 'img_dim':		// image dimensions, subject to minimum value (typically, at least 200px)
 					if ( $option_type == 'img_dim' )
@@ -488,22 +492,28 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.', 'wpsso' ), $key, $min_int ), true );
 						$val = $def_val;
-					}
+					} else $val = (int) $val;	// cast as integer
+
 					break;
+
 				// must be blank or numeric
 				case 'blank_num':
-					if ( $val !== '' && ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
-						$val = $def_val;
+					if ( $val !== '' ) {
+						if ( ! is_numeric( $val ) ) {
+							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
+							$val = $def_val;
+						} else $val = (int) $val;	// cast as integer
 					}
 					break;
+
 				// must be numeric
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
-					}
+					} else $val = (int) $val;	// cast as integer
 					break;
+
 				// must be alpha-numeric uppercase (hyphens are allowed as well)
 				case 'auth_id':
 					$val = trim( $val );
@@ -512,6 +522,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
+
 				// blank or alpha-numeric (upper or lower case), plus underscores
 				case 'api_key':
 					$val = trim( $val );
@@ -520,16 +531,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
+
 				// text strings that can be blank
 				case 'ok_blank':
 					if ( $val !== '' )
 						$val = trim( $val );
 					break;
+
 				case 'desc':
 				case 'one_line':
 					if ( $val !== '' )
 						$val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $val ) );
 					break;
+
 				case 'html':
 					if ( $val !== '' ) {
 						$val = trim( $val );
@@ -539,6 +553,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 					break;
+
 				// options that cannot be blank
 				case 'code':
 				case 'not_blank':
@@ -547,6 +562,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = $def_val;
 					}
 					break;
+
 				// everything else is a 1 or 0 checkbox option 
 				case 'checkbox':
 				default:

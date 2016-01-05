@@ -819,7 +819,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:268 lib/pro/admin/advanced.php:261
 msgctxt "option label"
-msgid "<em>Get Shortlink</em> Button Gives Short URL"
+msgid "<em>Get Shortlink</em> Gives Shortened URL"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:273 lib/pro/admin/advanced.php:266
@@ -984,7 +984,7 @@ msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:93 lib/gpl/admin/post.php:98
-#: lib/gpl/admin/taxonomy.php:53 lib/gpl/admin/user.php:54 lib/meta.php:107
+#: lib/gpl/admin/taxonomy.php:53 lib/gpl/admin/user.php:54 lib/meta.php:111
 #: lib/pro/admin/post.php:113 lib/pro/admin/post.php:119
 #: lib/pro/admin/taxonomy.php:72 lib/pro/admin/user.php:72
 msgctxt "option label"
@@ -1808,7 +1808,7 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:111
+#: lib/meta.php:107
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
@@ -2563,49 +2563,49 @@ msgstr ""
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:458
+#: lib/util.php:459
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:489
+#: lib/util.php:493
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:496 lib/util.php:503
+#: lib/util.php:503 lib/util.php:512
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:511
+#: lib/util.php:521
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:519
+#: lib/util.php:530
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:537
+#: lib/util.php:551
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:546
+#: lib/util.php:561
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:591
+#: lib/util.php:607
 msgid ""
 "The DOMDocument PHP class is missing - unable to read the head meta from %s. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

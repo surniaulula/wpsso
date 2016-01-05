@@ -104,13 +104,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				SucomUtil::is_post_page() )
 					$short_url = wp_get_shortlink();
 
-			$rows[] = $this->p->util->get_th( _x( 'Sharing URL',
-				'option label', 'wpsso' ), 'medium' ).
-			'<td>'.$form->get_copy_input( $long_url ).'</td>';
-
 			$rows[] = $this->p->util->get_th( _x( 'Short URL',
 				'option label', 'wpsso' ), 'medium' ).
 			'<td>'.$form->get_copy_input( $short_url ).'</td>';
+
+			$rows[] = $this->p->util->get_th( _x( 'Sharing URL',
+				'option label', 'wpsso' ), 'medium' ).
+			'<td>'.$form->get_copy_input( $long_url ).'</td>';
 
 			$rows[] = $this->p->util->get_th( _x( 'Open Graph Example',
 				'option label', 'wpsso' ), 'medium' ).

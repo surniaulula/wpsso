@@ -408,14 +408,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'plugin_file_cache_exp':
 				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
-					return 'numeric';
+					return 'numeric';	// cast as integer
 					break;
 				// integer options that must be positive (1 or more)
 				case 'plugin_upscale_img_max':
 				case 'plugin_object_cache_exp':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_len$/', $key ) ? true : false ):
-					return 'pos_num';
+					return 'pos_num';	// cast as integer
 					break;
 				// image dimensions, subject to minimum value (typically, at least 200px)
 				case ( preg_match( '/_img_(width|height)$/', $key ) ? true : false ):
