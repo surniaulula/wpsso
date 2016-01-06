@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4
-Stable Tag: 3.21.0
+Stable Tag: 3.21.1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -345,7 +345,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.21.1 (TBD) =
+= Version 3.21.1 (2016/01/06) =
 
 Official announcement: N/A
 
@@ -355,6 +355,7 @@ Official announcement: N/A
 	* *None*
 * **Bugfixes**
 	* Fixed the missing Social Img / Desc columns after using Quick Edit on a post / page.
+	* Fixed recurring error message about resetting the 'plugin_object_cache_exp' option to its default value (Free version).
 * **Developer Notes**
 	* Added a new 'wpsso_columns_post_{post_type_name}' filter (true by default).
 	* Added an integer cast when saving numeric options.
@@ -476,6 +477,10 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 	* Added a call to `getimagesize()` when saving options to retrieve image dimensions from URLs (default image URL, schema logo URL, etc.).
 
 == Upgrade Notice ==
+
+= 3.21.1 =
+
+2016/01/06 - Fixed the missing Social Img / Desc columns after Quick Edit. Fixed recurring error message about resetting the 'plugin_object_cache_exp' option (Free version).
 
 = 3.21.0 =
 
