@@ -20,7 +20,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **A solid social meta tag plugin is the foundation of any good social strategy** &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information [social website crawlers](https://developers.facebook.com/docs/sharing/webmasters/crawler) need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).
 
-**WPSSO automatically retrieves and uses information from a wide range or sources**, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API v2, and much more.
+**WPSSO automatically retrieves and uses information from a wide range or sources**, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API version 2, and much more.
 
 = Available in Multiple Languages =
 
@@ -129,7 +129,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* Polylang
 		* <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce versions 1 and 2</a>
 		* WP e-Commerce
-		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API v2</a>
+		* <a href="https://wordpress.org/plugins/rest-api/">WordPress REST API version 2</a>
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 	* **Supported Service APIs**
@@ -287,7 +287,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 	* [HeadSpace2 SEO](http://wpsso.com/codex/plugins/wpsso/notes/modules/headspace2-seo/)
 	* [Slideshare, Vimeo, Wistia, Youtube APIs](http://wpsso.com/codex/plugins/wpsso/notes/modules/slideshare-vimeo-wistia-youtube-apis/)
 	* [WooCommerce](http://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/)
-	* [WordPress REST API v2](http://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
+	* [WordPress REST API version 2](http://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
 * [Contact Information and Feeds](http://wpsso.com/codex/plugins/wpsso/notes/contact-information/)
 * [Developer Resources](http://wpsso.com/codex/plugins/wpsso/notes/developer/)
 	* [Constants](http://wpsso.com/codex/plugins/wpsso/notes/developer/constants/)
