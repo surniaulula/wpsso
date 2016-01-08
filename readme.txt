@@ -343,6 +343,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.21.2 (TBD) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Removed the Jetpack Photon integration module -- the latest version of Photon can return correct image dimensions.
+* **Bugfixes**
+	* Fixed author Schema meta tags by adding only to Article, Blog, Review, WebPage, and WebSite item types.
+* **Developer Notes**
+	* Modified all `get_options()` and `get_defaults()` methods to return a null instead of false for a missing settings key.
+	* Wrapped the `image_downsize()` function with `array_pad()` to sanitize the output (prevents a PHP notice caused by Jetpack Photon).
+
 = Version 3.21.1 (2016/01/06) =
 
 Official announcement: N/A
@@ -479,8 +493,4 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 = 3.21.1 =
 
 2016/01/06 - Fixed the missing Social Img / Desc columns after Quick Edit. Fixed recurring error message about resetting the 'plugin_object_cache_exp' option (Free version).
-
-= 3.21.0 =
-
-2016/01/03 - Fixed a call to wp_encode_emoji() which did not exist before WP v4.2. Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" options (Pro version).
 
