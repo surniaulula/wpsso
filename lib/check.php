@@ -157,12 +157,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['class'] = 'nggdb';	// C_NextGEN_Bootstrap
 							$chk['plugin'] = 'nextgen-gallery/nggallery.php';
 							break;
-						case 'media-photon':
-							if ( class_exists( 'Jetpack' ) && 
-								method_exists( 'Jetpack', 'get_active_modules' ) && 
-								in_array( 'photon', Jetpack::get_active_modules() ) )
-									$ret[$sub]['*'] = $ret[$sub][$id] = true;
-							break;
 						case 'seo-aioseop':
 							$chk['class'] = 'All_in_One_SEO_Pack';
 							break;

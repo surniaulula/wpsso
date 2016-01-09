@@ -190,7 +190,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else $opts = get_option( $name, array() );
 			if ( isset( $opts[$key] ) )
 				return $opts[$key];
-			else return false;
+			else return null;
 		}
 
 		public static function a2aa( $a ) {
@@ -1021,7 +1021,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					isset( $this->p->mods['util'][$mod] ) )
 						$num_meta = $this->p->mods['util'][$mod]->get_options( $id, $max_name );
 				// quick sanitation of returned value
-				if ( $num_meta === false || $num_meta === '' || $num_meta < 0 ) {
+				if ( $num_meta === null || $num_meta === '' || $num_meta < 0 ) {
 					$og_max[$max_name] = $this->p->options[$max_name];
 				} else {
 					$og_max[$max_name] = $num_meta;

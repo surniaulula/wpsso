@@ -380,7 +380,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_options( $idx = false, $def_val = false ) {
+		public function get_options( $idx = false, $def_val = null ) {
 			if ( $idx !== false ) {
 				if ( isset( $this->options[$idx] ) )
 					return $this->options[$idx];

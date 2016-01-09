@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $idx !== false ) 
 				if ( isset( $this->p->cf['opt']['defaults'][$idx] ) )
 					return $this->p->cf['opt']['defaults'][$idx];
-				else return false;
+				else return null;
 			else return $this->p->cf['opt']['defaults'];
 		}
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $idx !== false ) {
 				if ( isset( $this->p->cf['opt']['site_defaults'][$idx] ) )
 					return $this->p->cf['opt']['site_defaults'][$idx];
-				else return false;
+				else return null;
 			} else return $this->p->cf['opt']['site_defaults'];
 		}
 

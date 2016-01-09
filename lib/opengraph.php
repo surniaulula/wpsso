@@ -294,19 +294,22 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			$og_ret = array();
-			$opt_prev_img = $this->p->options['og_vid_prev_img'];	// default value
+			$use_prev_img = $this->p->options['og_vid_prev_img'];	// default value
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
 
 			// video modules are not available in the free version
 			if ( $this->p->check->aop() ) {
 				list( $id, $mod_obj ) = $this->p->util->get_mod_obj( $id, $mod );
 				if ( ! empty( $mod_obj ) ) {
-					if ( $mod_obj->get_options( $id, 'og_vid_prev_img' ) !== false ) {
-						$opt_prev_img = $mod_obj->get_options( $id, 'og_vid_prev_img' ); 
+					if ( ( $mod_prev_img = $mod_obj->get_options( $id, 'og_vid_prev_img' ) ) !== null ) {
+						$use_prev_img = $mod_prev_img;
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'setting og_vid_prev_img to '.$opt_prev_img.' from meta data' );
+							$this->p->debug->log( 'setting use_prev_img to '.
+								$use_prev_img.' from meta data' );
 					}
-					$og_ret = array_merge( $og_ret, $mod_obj->get_og_video( $num_remains, $id, $check_dupes, $md_pre ) );
+					$og_ret = array_merge( $og_ret, 
+						$mod_obj->get_og_video( $num_remains, 
+							$id, $check_dupes, $md_pre ) );
 				}
 			}
 
@@ -318,14 +321,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// if we haven't reached the limit of videos yet, keep going
 			if ( $mod === 'post' && 
 				! $this->p->util->is_maxed( $og_ret, $num ) )
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_remains, $id, $check_dupes ) );
+					$og_ret = array_merge( $og_ret, 
+						$this->p->media->get_content_videos( $num_remains, 
+							$id, $check_dupes ) );
 
 			$this->p->util->slice_max( $og_ret, $num );
 
-			// remove preview images if the 'og_vid_prev_img' option is disabled (unless forced by method argument)
-			if ( empty( $opt_prev_img ) && $force_prev_img === false ) {
+			if ( empty( $use_prev_img ) && $force_prev_img === false ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'og_vid_prev_img is 0 and force_prev_img is false - removing video preview images' );
+					$this->p->debug->log( 'use_prev_img is 0 and force_prev_img is false - removing video preview images' );
 				foreach ( $og_ret as $num => $og_video ) {
 					unset ( 
 						$og_ret[$num]['og:image'],

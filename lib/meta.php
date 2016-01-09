@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( $idx !== false ) {
 				if ( isset( $this->defs[$idx] ) )
 					return $this->defs[$idx];
-				else return false;
+				else return null;
 			} else return $this->defs;
 		}
 
@@ -551,12 +551,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			$og_image = array();
-			$opt_prev_img = $this->get_options( $id, 'og_vid_prev_img' ); 
-			if ( $opt_prev_img === false )
-				$opt_prev_img = $this->p->options['og_vid_prev_img'];
+
+			// fallback to value from general plugin settings
+			if ( ( $use_prev_img = $this->get_options( $id, 'og_vid_prev_img' ) ) === null )
+				$use_prev_img = $this->p->options['og_vid_prev_img'];
 
 			// get video preview images if allowed
-			if ( ! empty( $opt_prev_img ) ) {
+			if ( ! empty( $use_prev_img ) ) {
 				// assumes the first video will have a preview image
 				$og_video = $this->p->og->get_all_videos( 1, $id, $mod, $check_dupes, $md_pre );
 				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
@@ -568,7 +569,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				}
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'og_vid_prev_img is 0 - skipping retrieval of video preview image' );
+				$this->p->debug->log( 'use_prev_img is 0 - skipping retrieval of video preview image' );
 
 			return $og_image;
 		}

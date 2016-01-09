@@ -168,18 +168,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$og_type = $mt_og['og:type'];	// used to get product:rating:* values
 
+			// only include author meta tags for appropriate schema types 
 			if ( ! empty( $author_id ) ) {
-				$author_website_url = get_the_author_meta( 'url', $author_id );
-				$ret = array_merge( $ret,
-					array( array( '<noscript itemprop="author" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'author.name', 
-						$this->p->mods['util']['user']->get_author_name( $author_id,
-							$this->p->options['schema_author_name'] ), '', $use_post ),
-					( strpos( $author_website_url, '://' ) === false ? array() :
-						$this->p->head->get_single_mt( 'meta', 'itemprop', 'url', 
-							$author_website_url, '', $use_post ) ),
-					array( array( '</noscript>'."\n" ) )
-				);
+				switch ( $this->get_head_item_type( $use_post, $obj ) ) {
+					case 'http://schema.org/Article':
+					case 'http://schema.org/Blog':
+					case 'http://schema.org/Review':
+					case 'http://schema.org/WebPage':
+					case 'http://schema.org/WebSite':
+						$author_website_url = get_the_author_meta( 'url', $author_id );
+						$ret = array_merge( $ret,
+							array( array( '<noscript itemprop="author" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
+							$this->p->head->get_single_mt( 'meta', 'itemprop', 'author.name', 
+								$this->p->mods['util']['user']->get_author_name( $author_id,
+									$this->p->options['schema_author_name'] ), '', $use_post ),
+							( strpos( $author_website_url, '://' ) === false ? array() :
+								$this->p->head->get_single_mt( 'meta', 'itemprop', 'url', 
+									$author_website_url, '', $use_post ) ),
+							array( array( '</noscript>'."\n" ) )
+						);
+						break;
+					default:
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'author meta tags skipped for '.$og_type.' schema type' );
+						break;
+				}
 			}
 
 			if ( ! empty( $mt_og['og:image'] ) ) {

@@ -1158,15 +1158,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->notice->err( $err_pre.sprintf( __( 'Please check the \'<em>Disable Google Plus Profile</em>\' option in the <a href="%s">All in One SEO Pack Plugin Options</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
 				}
 			}
-
-			// JetPack Photon
-			if ( $this->p->is_avail['media']['photon'] === true && 
-				! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.'jetpack photon is enabled' );
-				$this->p->notice->err( $err_pre.'<strong>'.__( 'JetPack\'s Photon module purposefully cripples the WordPress image size functions.', 'wpsso' ).'</strong> '.sprintf( __( 'Please <a href="%s">deactivate the JetPack Photon module</a> or deactivate the %s Free plugin.', 'wpsso' ), get_admin_url( null, 'admin.php?page=jetpack' ), $short ).' '.sprintf( __( 'You may also upgrade to the <a href="%1$s">%2$s version</a> which includes an <a href="%3$s">integration module for JetPack Photon</a> to re-enable image size functions specifically for %4$s images.', 'wpsso' ), $purchase_url, $short_pro, 'http://surniaulula.com/codex/plugins/wpsso/notes/modules/jetpack-photon/', $short ) );
-			}
 		}
 
 		public function check_tmpl_head_elements() {

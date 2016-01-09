@@ -399,6 +399,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
 				else $idx = array_unique( $idx );	// just in case
+
 				foreach ( $idx as $key ) {
 					if ( $key === 'none' )		// special keyword
 						return false;		// stop here
@@ -797,7 +798,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public static function save_time( $lca, $version, $type, $protect = false ) {
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
-					if ( ( $ts_version = SucomUtil::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== false &&
+					if ( ( $ts_version = SucomUtil::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== null &&
 						version_compare( $ts_version, $protect, '==' ) )
 							$protect = true;
 					else $protect = false;

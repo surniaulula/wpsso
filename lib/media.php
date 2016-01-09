@@ -166,7 +166,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				} elseif ( $this->p->is_avail['postthumb'] == true && has_post_thumbnail( $post_id ) )
 					$pid = get_post_thumbnail_id( $post_id );
 				else $pid = false;
-
 				if ( ! empty( $pid ) ) {
 					list(
 						$og_image['og:image'],
@@ -288,7 +287,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $idx !== false ) 
 				if ( isset( self::$image_src_info[$idx] ) )
 					return self::$image_src_info[$idx];
-				else return false;
+				else return null;
 			else return self::$image_src_info;
 		}
 
@@ -426,8 +425,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
 			}
 
-			list( $img_url, $img_width, $img_height, $img_inter ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
-				image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), $pid, $size_name );
+			// some image_downsize() hooks may return only 3 elements, for use array_pad() to sanitize returned array
+			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
+				array_pad( image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'image_downsize() = '.$img_url.' ('.$img_width.'x'.$img_height.')' );
 
