@@ -26,9 +26,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_default_tabs() {
 			$tabs = array();
 			foreach( array(
+				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
 				'header' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),
 				'media' => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
-				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 			) as $key => $name ) {

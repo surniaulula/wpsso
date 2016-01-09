@@ -684,7 +684,7 @@ msgctxt "option label"
 msgid "Add Tabs to Social Settings Metabox"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:136 lib/meta.php:31
+#: lib/gpl/admin/advanced.php:136 lib/meta.php:29
 #: lib/pro/admin/advanced.php:141
 msgctxt "metabox tab"
 msgid "Social Preview"
@@ -1764,12 +1764,12 @@ msgid ""
 "values for different languages."
 msgstr ""
 
-#: lib/meta.php:29 lib/submenu/general.php:43
+#: lib/meta.php:30 lib/submenu/general.php:43
 msgctxt "metabox tab"
 msgid "Descriptions"
 msgstr ""
 
-#: lib/meta.php:30
+#: lib/meta.php:31
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
