@@ -374,7 +374,7 @@ Official announcement: N/A
 
 = Version 3.21.0 (2016/01/03) =
 
-Official announcement: N/A
+Official announcement: http://wpsso.com/2016/01/03/wpsso-update-upscale-enlarge-small-images/
 
 * **New Features**
 	* Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" options on the Advanced settings page, under the WP / Theme Integration tab (Pro version).
