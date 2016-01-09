@@ -351,6 +351,7 @@ Official announcement: N/A
 	* *None*
 * **Improvements**
 	* Removed the Jetpack Photon integration module -- the latest version of Photon can return correct image dimensions.
+	* Moved the "Social Preview" tab from third to first in the Social Settings metabox.
 * **Bugfixes**
 	* Fixed author Schema meta tags by adding only to Article, Blog, Review, WebPage, and WebSite item types.
 * **Developer Notes**
