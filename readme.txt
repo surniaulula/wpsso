@@ -343,7 +343,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.21.2 (TBD) =
+= Version 3.21.2 (2016/01/09) =
 
 Official announcement: N/A
 
@@ -489,6 +489,10 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 	* Added a call to `getimagesize()` when saving options to retrieve image dimensions from URLs (default image URL, schema logo URL, etc.).
 
 == Upgrade Notice ==
+
+= 3.21.2 =
+
+2016/01/09 - Removed the Jetpack Photon integration module -- the latest version of Photon can return correct image dimensions. Fixed author Schema meta tags by adding only to Article, Blog, Review, WebPage, and WebSite item types.
 
 = 3.21.1 =
 
