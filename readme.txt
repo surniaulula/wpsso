@@ -343,6 +343,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.21.3 (2016/01/10) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the SucomUtil::get_max_nums() method to return the correct maximum number of Open Graph images for index type webpages.
+* **Developer Notes**
+	* *None*
+
 = Version 3.21.2 (2016/01/09) =
 
 Official announcement: N/A
