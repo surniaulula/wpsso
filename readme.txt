@@ -352,7 +352,7 @@ Official announcement: N/A
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* Fixed the SucomUtil::get_max_nums() method to return the correct maximum number of Open Graph images for index type webpages.
+	* Fixed the `SucomUtil::get_max_nums()` method to return the correct maximum number of Open Graph images for index type webpages.
 * **Developer Notes**
 	* *None*
 
