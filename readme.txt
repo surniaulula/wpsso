@@ -516,4 +516,3 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 
 2016/01/06 - Fixed the missing Social Img / Desc columns after Quick Edit. Fixed recurring error message about resetting the 'plugin_object_cache_exp' option (Free version).
 
-
