@@ -1012,24 +1012,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		// if id 0 then returns values from the plugin settings 
-		public function get_max_nums( $id, $mod = false ) {
-			$og_max = array();
+		// if id is 0 or false, return values from the plugin settings 
+		public function get_max_nums( $id = false, $mod = false ) {
+			$max = array();
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
-				$num_meta = false;
 				if ( ! empty( $id ) && 
 					isset( $this->p->mods['util'][$mod] ) )
 						$num_meta = $this->p->mods['util'][$mod]->get_options( $id, $max_name );
+				else $num_meta = null;	// default value returned by get_options() if index key is missing
+
 				// quick sanitation of returned value
-				if ( $num_meta === null || $num_meta === '' || $num_meta < 0 ) {
-					$og_max[$max_name] = $this->p->options[$max_name];
-				} else {
-					$og_max[$max_name] = $num_meta;
+				if ( is_numeric( $num_meta ) && $num_meta >= 0 ) {
+					$max[$max_name] = $num_meta;
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
-				}
+				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
 			}
-			return $og_max;
+			return $max;
 		}
 
 		public function push_max( &$dst, &$src, $num = 0 ) {

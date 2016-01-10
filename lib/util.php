@@ -668,8 +668,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$ret = false;
 			}
 			$ret = apply_filters( $this->p->cf['lca'].'_force_default_author', $ret, $use_post, $opt_pre );
+
 			if ( $ret === true && $this->p->debug->enabled )
 				$this->p->debug->log( 'default author is forced' );
+
 			return $ret;
 		}
 

@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
 				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
 
-			$og_max = $this->p->util->get_max_nums( $post_id, 'post' );	// post_id 0 returns the plugin settings
+			$max = $this->p->util->get_max_nums( $post_id, 'post' );	// a post_id of 0 returns the plugin settings
 			$tc = SucomUtil::preg_grep_keys( '/^twitter:/', $og );		// read any pre-defined twitter card values
 			$tc = apply_filters( $this->p->cf['lca'].'_tc_seed', $tc, $use_post, $obj );
 
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			/*
 			 * All Image Cards
 			 */
-			if ( empty( $og_max['og_img_max'] ) ) {
+			if ( empty( $max['og_img_max'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'images disabled: maximum images = 0' );
 			} else {
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			 */
 			if ( ! isset( $tc['twitter:card'] ) ) {
 				$tc['twitter:card'] = 'summary';
-				if ( ! empty( $og_max['og_img_max'] ) ) {
+				if ( ! empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'summary card: checking for content image' );
 					$og_image = $this->p->og->get_all_images( 1, $this->p->cf['lca'].'-tc-summary', $post_id, false );

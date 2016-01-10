@@ -90,8 +90,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// counter for video previews found
 			$video_previews = 0;
 
-			// post_id 0 returns the default plugin settings 
-			$og_max = $this->p->util->get_max_nums( $post_id, 'post' );
+			// a post_id of 0 returns the default plugin settings 
+			$max = $this->p->util->get_max_nums( $post_id, 'post' );
 			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
 
 			if ( ! empty( $og ) && 
@@ -207,20 +207,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			// get all videos
 			// call before getting all images to find / use preview images
 			if ( ! isset( $og['og:video'] ) ) {
-				if ( empty( $og_max['og_vid_max'] ) ) {
+				if ( empty( $max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
-					$og['og:video'] = $this->get_all_videos( $og_max['og_vid_max'], $post_id, 'post', false, 'og' );
+					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $post_id, 'post', false, 'og' );
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
 						foreach ( $og['og:video'] as $val )
 							if ( ! empty( $val['og:image'] ) )
 								$video_previews++;
 						if ( $video_previews > 0 ) {
-							$og_max['og_img_max'] -= $video_previews;
+							$max['og_img_max'] -= $video_previews;
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( $video_previews.
-									' video preview images found (og_img_max adjusted to '.$og_max['og_img_max'].')' );
+									' video preview images found (og_img_max adjusted to '.$max['og_img_max'].')' );
 						}
 					}
 				} 
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			// get all images
 			if ( ! isset( $og['og:image'] ) ) {
-				if ( empty( $og_max['og_img_max'] ) ) {
+				if ( empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting all images for '.$md_pre.' ('.$size_name.')' );
 
-						$og[$md_pre.':image'] = $this->get_all_images( $og_max['og_img_max'], 
+						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], 
 							$size_name, $post_id, $check_dupes, $md_pre );
 
 						switch ( $md_pre ) {
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								// then add the default image for singular webpages
 								if ( empty( $og[$md_pre.':image'] ) && $video_previews === 0 && 
 									SucomUtil::is_post_page( $use_post ) ) {
-									$og[$md_pre.':image'] = $this->p->media->get_default_image( $og_max['og_img_max'],
+									$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 										$size_name, $check_dupes );
 								}
 								break;
@@ -453,9 +453,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
 				}
 	
-				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() )
+				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() ) {
 					return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
 						$size_name, $check_dupes, $force_regen ) );
+				}
 	
 				$num_remains = $this->p->media->num_remains( $og_ret, $num );
 			}
