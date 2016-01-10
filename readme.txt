@@ -508,11 +508,3 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 
 2016/01/10 - Fixed the SucomUtil::get_max_nums() method to return the correct maximum number of Open Graph images for index type webpages.
 
-= 3.21.2 =
-
-2016/01/09 - Removed the Jetpack Photon integration module -- the latest version of Photon can return correct image dimensions. Fixed author Schema meta tags by adding only to Article, Blog, Review, WebPage, and WebSite item types.
-
-= 3.21.1 =
-
-2016/01/06 - Fixed the missing Social Img / Desc columns after Quick Edit. Fixed recurring error message about resetting the 'plugin_object_cache_exp' option (Free version).
-
