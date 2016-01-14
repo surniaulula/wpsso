@@ -343,6 +343,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.21.4 (2016/01/14) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added enabled / disabled / recommended tooltip text to the green / gray / red status lights in the settings page side metaboxes.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* *None*
+
 = Version 3.21.3 (2016/01/10) =
 
 Official announcement: N/A
@@ -503,6 +516,10 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 	* Added a call to `getimagesize()` when saving options to retrieve image dimensions from URLs (default image URL, schema logo URL, etc.).
 
 == Upgrade Notice ==
+
+= 3.21.4 =
+
+2016/01/14 - Added enabled / disabled / recommended tooltip text to the green / gray / red status lights in the settings page side metaboxes.
 
 = 3.21.3 =
 
