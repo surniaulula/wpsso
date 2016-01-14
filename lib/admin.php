@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
 						echo '<tr><td><h4>'.$this->p->cf['plugin'][$ext]['short'].'</h4></td></tr>';
-					$this->show_plugin_status( $features );
+					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
 			echo '</table>';
@@ -786,19 +786,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$features = array();
 				$short = $this->p->cf['plugin'][$ext]['short'];
 				$short_pro = $short.' Pro';
-				$aop = $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] );
+				$aop = $this->p->check->aop( $ext, 
+					true, $this->p->is_avail['aop'] );
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
 					if ( $sub === 'admin' ) 
 						continue;	// skip status for admin menus and tabs
 					foreach ( $libs as $id => $name ) {
-						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						$off = $this->p->is_avail[$sub][$id] ?
+							'rec' : 'off';
 						$features[$name] = array( 
 							'status' => class_exists( $ext.'pro'.$sub.$id ) ?
 								( $aop ? 'on' : $off ) : $off,
+							// default tooltip text
 							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional '.
 								'integration modules to provide enhanced support and features for %3$s.',
 									'wpsso'), $name, $short_pro, $name ),
 							'td_class' => $aop ? '' : 'blank',
+							'purchase' => empty( $info['url']['purchase'] ) ?
+								'' : $info['url']['purchase'],
 						);
 					}
 				}
@@ -807,41 +812,62 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
 						echo '<tr><td><h4>'.$this->p->cf['plugin'][$ext]['short'].'</h4></td></tr>';
-					$this->show_plugin_status( $features );
+					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
 			echo '</table>';
 		}
 
-		private function show_plugin_status( $features = array() ) {
-			$images = array( 
-				'on' => 'green-circle.png',
-				'off' => 'gray-circle.png',
-				'rec' => 'red-circle.png',
+		private function show_plugin_status( &$ext = '', &$info = array(), &$features = array() ) {
+			$status_info = array( 
+				'on' => array(
+					'img' => 'green-circle.png',
+					'title' => 'Feature is Enabled',
+				),
+				'off' => array(
+					'img' => 'gray-circle.png',
+					'title' => 'Feature is Disabled / not Loaded',
+				),
+				'rec' => array(
+					'img' => 'red-circle.png',
+					'title' => 'Feature is Recommended but Disabled / not Available',
+				),
 			);
+
 			uksort( $features, 'strcasecmp' );
-			$first = key( $features );
 			foreach ( $features as $name => $arr ) {
-				$td_class = empty( $arr['td_class'] ) ?
-					'' : ' '.$arr['td_class'];
 
-				if ( array_key_exists( 'classname', $arr ) )
-					$status = class_exists( $arr['classname'] ) ? 'on' : 'off';
-				elseif ( array_key_exists( 'status', $arr ) )
-					$status = $arr['status'];
-				else $status = '';
+				if ( isset( $arr['classname'] ) )
+					$status_key = class_exists( $arr['classname'] ) ?
+						'on' : 'off';
+				elseif ( isset( $arr['status'] ) )
+					$status_key = $arr['status'];
+				else $status_key = '';
 
-				if ( ! empty( $status ) ) {
-					$tooltip_text = empty( $arr['tooltip'] ) ?
-						'' : $arr['tooltip'];
+				if ( ! empty( $status_key ) ) {
+
+					$purchase_url = $status_key === 'rec' && 
+						! empty( $arr['purchase'] ) ?
+							$arr['purchase'] : '';
+	
+					$td_class = empty( $arr['td_class'] ) ?
+						'' : ' '.$arr['td_class'];
+
 					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$name, 
-						array( 'text' => $tooltip_text, 'class' => 'sucom_tooltip_side' ) );
+						array( 'text' => ( empty( $arr['tooltip'] ) ? '' : $arr['tooltip'] ),
+							'class' => 'sucom_tooltip_side' ) );
 
-					echo '<tr><td class="side'.$td_class.'">'.
-					$tooltip_text.( $status == 'rec' ? '<strong>'.$name.'</strong>' : $name ).
-					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">
-					<img src="'.WPSSO_URLPATH.'images/'.$images[$status].
-						'" width="12" height="12" /></td></tr>'."\n";
+					echo '<tr><td class="side'.$td_class.'">'.$tooltip_text.
+					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
+					( $status_key === 'rec' ? '<strong>'.$name.'</strong>' : $name ).
+					( $purchase_url ? '</a>' : '' ).
+					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">'.
+					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
+					'<img src="'.WPSSO_URLPATH.'images/'.
+						$status_info[$status_key]['img'].'" width="12" height="12" title="'.
+						$status_info[$status_key]['title'].'"/>'.
+					( $purchase_url ? '</a>' : '' ).
+					'</td></tr>'."\n";
 				}
 			}
 		}
