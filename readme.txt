@@ -343,6 +343,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.21.5 (2016/01/16) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* *None*
+* **Bugfixes**
+	* Fixed the 'fb_app_id' value check for some 32bit platforms where the max integer size is 2147483647.
+* **Developer Notes**
+	* *None*
+
 = Version 3.21.4 (2016/01/14) =
 
 Official announcement: N/A
@@ -516,6 +529,10 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 	* Added a call to `getimagesize()` when saving options to retrieve image dimensions from URLs (default image URL, schema logo URL, etc.).
 
 == Upgrade Notice ==
+
+= 3.21.5 =
+
+2016/01/16 - Fixed the 'fb_app_id' value check for some 32bit platforms where the max integer size is 2147483647.
 
 = 3.21.4 =
 
