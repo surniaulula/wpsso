@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4
-Stable Tag: 3.21.4
+Stable Tag: 3.21.5
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -532,7 +532,7 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 
 = 3.21.5 =
 
-2016/01/16 - Fixed the 'fb_app_id' value check for some 32bit platforms where the max integer size is 2147483647.
+2016/01/16 - Fixed 'fb_app_id' value for some 32bit platforms where max integer size is 2147483647. Added shorter / more helpful notice, displayed for users without admin privileges, for images that are too small.
 
 = 3.21.4 =
 
