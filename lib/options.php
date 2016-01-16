@@ -136,13 +136,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_check_head',
 							'plugin_upscale_images',
 							'plugin_object_cache_exp',
-							'plugin_shortener'
 						) as $idx ) {
 							$def_val = $this->get_defaults( $idx );
 							// numeric options from forms are strings, so don't do a strict test
 							if ( $opts[$idx] != $def_val ) {
 								if ( is_admin() )
-									$this->p->notice->err( sprintf( __( 'Non-standard value for Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
+									$this->p->notice->err( sprintf( __( 'Non-standard value found for the Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
 								$opts[$idx] = $def_val;
 								$has_diff_options = true;	// save the options
 							}
@@ -364,6 +363,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return $type;
 
 			switch ( $key ) {
+				// empty string or must include at least one HTML tag
 				case 'og_vid_embed':
 					return 'html';
 					break;
@@ -394,13 +394,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'url';
 					break;
 				// must be numeric (blank and zero are ok)
-				case 'fb_app_id':
 				case 'seo_def_author_id':
 				case 'og_def_author_id':
 				case 'og_def_img_id':
 				case 'og_img_id':
 				case 'rp_img_id':
-					return 'blank_num';
+					return 'blank_num';	// cast as integer
 					break;
 				// must be numeric (zero and -1 is ok)
 				case 'og_img_max':
@@ -420,21 +419,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// image dimensions, subject to minimum value (typically, at least 200px)
 				case ( preg_match( '/_img_(width|height)$/', $key ) ? true : false ):
 				case ( preg_match( '/^tc_[a-z]+_(width|height)$/', $key ) ? true : false ):
-					return 'img_dim';
+					return 'img_dim';	// cast as integer
 					break;
 				// must be texturized 
 				case 'og_title_sep':
 					return 'textured';
 					break;
-				// must be alpha-numeric (upper or lower case)
+				// empty of alpha-numeric uppercase (hyphens are allowed as well)
+				case ( preg_match( '/_tid$/', $key ) ? true : false ):
+					return 'auth_id';
+					break;
+				// empty or alpha-numeric (upper or lower case), plus underscores
+				case 'fb_app_id':
 				case 'fb_app_secret':
 				case 'rp_dom_verify':
 				case ( preg_match( '/_api_key$/', $key ) ? true : false ):
 					return 'api_key';
-					break;
-				// must be alpha-numeric uppercase (hyphens allowed as well)
-				case ( preg_match( '/_tid$/', $key ) ? true : false ):
-					return 'auth_id';
 					break;
 				// text strings that can be blank (multi-line is ok)
 				case 'plugin_cf_vid_embed':

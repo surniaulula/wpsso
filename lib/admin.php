@@ -43,7 +43,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				// add settings and users submenu items
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
-				add_action( 'activated_plugin', array( &$this, 'check_activated_plugin' ), 10, 2 );
+
+				// nag notices are no longer stored, so this filter hook is unnecessary
+				//add_action( 'activated_plugin', array( &$this, 'check_activated_plugin' ), 10, 2 );
+
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_elements' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_elements' ) );
 
@@ -109,10 +112,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
 					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
-					$has_tid = true;
+					$has_tid = true;	// found at least one active plugin with an auth id
 					if ( ! $this->p->check->aop( $ext, false ) )
 						$this->p->notice->err( $this->p->msgs->get( 'notice-pro-not-installed', 
-							array( 'lca' => $ext ) ), true );
+							array( 'lca' => $ext ) ) );
 				}
 			}
 
@@ -122,19 +125,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$installed_plugins = get_plugins();
 				if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
 					is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
-						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ), true );
-				else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ), true );
+						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+				else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 			}
 		}
 
-		public function check_activated_plugin( $plugin = false, $sitewide = false ) {
+		// nag notices are no longer stored, so this filter hook is unnecessary
+		/* public function check_activated_plugin( $plugin = false, $sitewide = false ) {
 			$lca = $this->p->cf['lca'];
 			switch ( $plugin ) {
 				case $this->p->cf['plugin'][$lca.'um']['base']:
-					$this->p->notice->trunc( 'nag' );
+					$this->p->notice->trunc_all( 'nag' );
 					break;
 			}
-		}
+		} */
 
 		protected function set_form_property() {
 			$def_opts = $this->p->opt->get_defaults();
@@ -1209,7 +1213,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function modify_tmpl_head_elements() {
+
+			$have_changes = false;
 			$headers = glob( get_stylesheet_directory().'/header*.php' );
+
 			foreach ( $headers as $file ) {
 				$base = basename( $file );
 				$backup = $file.'~backup-'.date( 'Ymd-His' );
@@ -1241,9 +1248,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( fwrite( $fh, $php ) ) {
 					fclose( $fh );
 					$this->p->notice->inf( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ), true );
+					$have_changes = true;
 				}
 			}
-			$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr' );	// just in case
+			if ( $have_changes === true )
+				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr', 'all' );	// just in case
 		}
 
 		// dismiss an incorrect yoast seo conflict notification

@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.', 'wpsso' ), $key, $min_int ), true );
 						$val = $def_val;
-					} else $val = (int) $val;	// cast as integer
+					} else $val = (int) $val;		// cast as integer
 
 					break;
 
@@ -512,25 +512,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
-					} else $val = (int) $val;	// cast as integer
+					} else $val = (int) $val;		// cast as integer
 					break;
 
-				// must be alpha-numeric uppercase (hyphens are allowed as well)
+				// empty of alpha-numeric uppercase (hyphens are allowed as well)
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
 						$this->p->notice->err( sprintf( __( '\'%1$s\' is not an acceptable value for option \'%2$s\' - resetting the option to its default value.', 'wpsso' ), $val, $key ), true );
 						$val = $def_val;
-					}
+					} else $val = (string) $val;		// cast as string
 					break;
 
-				// blank or alpha-numeric (upper or lower case), plus underscores
+				// empty or alpha-numeric (upper or lower case), plus underscores
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
 						$val = $def_val;
-					}
+					} else $val = (string) $val;		// cast as string
 					break;
 
 				// text strings that can be blank
@@ -539,12 +539,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = trim( $val );
 					break;
 
+				// text strings that can be blank (line breaks are removed)
 				case 'desc':
 				case 'one_line':
 					if ( $val !== '' )
 						$val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $val ) );
 					break;
 
+				// empty string or must include at least one HTML tag
 				case 'html':
 					if ( $val !== '' ) {
 						$val = trim( $val );

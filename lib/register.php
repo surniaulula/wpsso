@@ -129,13 +129,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function deactivate_plugin() {
+
 			// clear all cached objects and transients
 			$this->p->util->delete_expired_db_transients( true );
 			$this->p->util->delete_expired_file_cache( true );
-			$this->p->notice->trunc();
+
+			// trunc all stored notices for all users
+			$this->p->notice->trunc_all();
 		}
 
 		private static function uninstall_plugin() {
+
 			$var_const = WpssoConfig::get_variable_constants();
 			$opts = get_option( $var_const['WPSSO_OPTIONS_NAME'], array() );
 

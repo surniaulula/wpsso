@@ -701,14 +701,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'notice-image-rejected':
-						$text = '<ul>';
-						$text .= '<li>'.__( 'Upload or choose a larger / different image.', 'wpsso' ).'</li>';
-						$text .= '<li>'.sprintf( __( 'Adjust the <a href="%1$s"><b>%2$s</b> social image dimensions</a>.',
-							'nextgen-facebok' ), $this->p->util->get_admin_url( 'image-dimensions' ), 
-								$atts['size_label'] ).'</li>';
-						$text .= '<li>'.sprintf( __( 'Enable or adjust the <a href="%1$s">WP / Theme Integration image upscaling options</a>.',
-							'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
-						$text .= '</ul>';
+						if ( current_user_can( 'manage_options' ) ) {
+							$text = '<ul>';
+							$text .= '<li>'.__( 'Select or upload a larger / different image &mdash; the Priority Media tab can also be used to select a larger image specifically for social sharing.', 'wpsso' ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Adjust the <a href="%1$s"><b>%2$s</b> social image dimensions</a>.',
+								'nextgen-facebok' ), $this->p->util->get_admin_url( 'image-dimensions' ), 
+									$atts['size_label'] ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Enable or adjust the <a href="%1$s">WP / Theme Integration image upscaling options</a>.',
+								'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
+							$text .= '</ul>';
+						} else $text = __( 'Please select or upload a larger / different image. The Priority Media tab can also be used to select a larger image specifically for social sharing.', 'wpsso' );
 						break;
 					case 'notice-missing-og-image':
 						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
@@ -729,7 +731,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<p><b>'.sprintf( __( 'The %1$s plugin %2$s option is empty.', 'wpsso' ), $atts['name'], _x( 'Pro Authentication ID', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) ).'</p>';
 						break;
 					case 'notice-pro-not-installed':
-						$text = sprintf( __( '<b>An Authentication ID has been entered for %s, but the Pro version is not yet installed</b> &ndash; don\'t forget to update this plugin to install the latest Pro version. ;-)', 'wpsso' ), $atts['name'] );
+						$text = sprintf( __( 'An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don\'t forget to update the plugin to install the latest Pro version. ;-)', 'wpsso' ), $atts['name'] );
 						break;
 					case 'notice-um-extension-required':
 					case 'notice-um-activate-extension':

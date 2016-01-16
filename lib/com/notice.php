@@ -89,9 +89,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $store === true ) {
 				if ( $user_id === true )
 					$user_id = get_current_user_id();
-				if ( empty( $user_id ) )
-					$msg_arr = get_option( $this->opt_name );
-				else $msg_arr = get_user_option( $this->opt_name, $user_id );
+				if ( is_numeric( $user_id ) && $user_id > 0 )
+					$msg_arr = get_user_option( $this->opt_name, $user_id );
+				else $msg_arr = get_option( $this->opt_name );
 
 				if ( ! is_array( $msg_arr ) ) 
 					foreach ( array_keys( $this->log ) as $check )
@@ -99,72 +99,98 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( ! isset( $msg_arr[$type][$msg_txt] ) ) {
 					$msg_arr[$type][$msg_txt] = $payload;
-					if ( empty( $user_id ) )
-						update_option( $this->opt_name, $msg_arr );
-					else update_user_option( $user_id, $this->opt_name, $msg_arr );
+					if ( is_numeric( $user_id ) && $user_id > 0 )
+						update_user_option( $user_id, $this->opt_name, $msg_arr );
+					else update_option( $this->opt_name, $msg_arr );
 				}
 			} elseif ( ! isset( $this->log[$type][$msg_txt] ) )
 				$this->log[$type][$msg_txt] = $payload;
 		}
 
-		public function trunc_id( $msg_id ) {
-			return $this->trunc( '', '', true, true, $msg_id );
+		public function trunc_id( $msg_id, $user_id = true ) {
+			return $this->trunc( '', '', true, $user_id, $msg_id );
+		}
+
+		public function trunc_all( $type = '' ) {
+			return $this->trunc( $type, '', true, 'all', false );
 		}
 
 		// truncates all notices by default
 		public function trunc( $type = '', $msg_txt = '', $store = true, $user_id = true, $msg_id = false ) {
+
 			$types = empty( $type ) ? 
 				array_keys( $this->log ) : 
-				array( $type );
-			if ( $user_id === true )
-				$user_id = get_current_user_id();
-			$all_opts = $this->get_all_options( $user_id );
-			foreach ( array( 'opt', 'usr', 'log' ) as $name ) {
-				$have_changes = false;
-				foreach ( $types as $type ) {
-					if ( isset( $all_opts[$name][$type] ) ) {
-						// clear msg for a specific msg id
-						if ( ! empty( $msg_id ) ) {
-							foreach ( $all_opts[$name][$type] as $msg_txt => $payload ) {
-								if ( $payload['msg_id'] === $type.'_'.$msg_id ) {
+				array( (string) $type );
+
+			if ( $user_id === 'all' ) {
+				foreach ( get_users() as $user )
+					$user_ids[] = $user->ID;
+			} elseif ( $user_id === true )
+				$user_ids[] = get_current_user_id();
+			else $user_ids[] = $user_id;
+
+			$sources = null;
+
+			foreach ( $user_ids as $user_id ) {
+
+				// check and trunc all sources on first pass
+				// only check user options after that
+				$sources = $sources === null ?
+					array( 'opt', 'usr', 'log' ) : array( 'usr' );
+
+				$all_opts = $this->get_all_options( $user_id, $sources );
+
+				foreach ( $sources as $name ) {		// opt, usr, and log
+
+					$have_changes = false;
+
+					foreach ( $types as $type ) {	// nag, err, and inf
+
+						if ( isset( $all_opts[$name][$type] ) ) {
+
+							// clear msg for a specific msg id
+							if ( ! empty( $msg_id ) ) {
+								foreach ( $all_opts[$name][$type] as $msg_txt => $payload ) {
+									if ( $payload['msg_id'] === $type.'_'.$msg_id ) {
+										unset( $all_opts[$name][$type][$msg_txt] );
+										$have_changes = true;
+									}
+								}
+							// clear all msgs for that type
+							} elseif ( empty( $msg_txt ) ) {
+								if ( $name === 'log' )
+									$this->log[$type] = array();
+								else {
+									unset( $all_opts[$name][$type] );
+									$have_changes = true;
+								}
+							// clear a specific message
+							} elseif ( isset( $all_opts[$name][$type][$msg_txt] ) ) {
+								if ( $name === 'log' )
+									unset( $this->log[$type][$msg_txt] );
+								else {
 									unset( $all_opts[$name][$type][$msg_txt] );
 									$have_changes = true;
 								}
 							}
-						// clear all msgs for that type
-						} elseif ( empty( $msg_txt ) ) {
-							if ( $name === 'log' )
-								$this->log[$type] = array();
-							else {
-								unset( $all_opts[$name][$type] );
-								$have_changes = true;
-							}
-						// clear a specific message
-						} elseif ( isset( $all_opts[$name][$type][$msg_txt] ) ) {
-							if ( $name === 'log' )
-								unset( $this->log[$type][$msg_txt] );
-							else {
-								unset( $all_opts[$name][$type][$msg_txt] );
-								$have_changes = true;
-							}
 						}
 					}
-				}
-				if ( $store === true && 
-					$have_changes === true ) {
-					switch( $name ) {
-						case 'opt':
-							if ( empty( $all_opts[$name] ) )
-								delete_option( $this->opt_name );
-							else update_option( $this->opt_name, $all_opts[$name] );
-							break;
-						case 'usr':
-							if ( ! empty( $user_id ) ) {
+
+					if ( $store === true && $have_changes === true ) {
+						switch( $name ) {
+							case 'opt':
 								if ( empty( $all_opts[$name] ) )
-									delete_user_option( $user_id, $this->opt_name );
-								else update_user_option( $user_id, $this->opt_name, $all_opts[$name] );
-							}
-							break;
+									delete_option( $this->opt_name );
+								else update_option( $this->opt_name, $all_opts[$name] );
+								break;
+							case 'usr':
+								if ( is_numeric( $user_id ) && $user_id > 0 ) {
+									if ( empty( $all_opts[$name] ) )
+										delete_user_option( $user_id, $this->opt_name );
+									else update_user_option( $user_id, $this->opt_name, $all_opts[$name] );
+								}
+								break;
+						}
 					}
 				}
 			}
@@ -228,8 +254,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->trunc();
 
 			// don't save unless we've changes something
-			if ( $have_changes === true &&
-				! empty( $user_id ) ) {
+			if ( $have_changes === true && ! empty( $user_id ) ) {
 				if ( empty( $dis_arr ) )
 					delete_user_option( $user_id, $this->dis_name );
 				else update_user_option( $user_id, $this->dis_name, $dis_arr );
@@ -376,22 +401,34 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $msg_html;
 		}
 
-		private function get_all_options( $user_id = true ) {
+		private function get_all_options( $user_id = true, $sources = array( 'opt', 'usr', 'log' ) ) {
+
 			if ( $user_id === true )
 				$user_id = get_current_user_id();
-			$all_opts = array(
-				'opt' => get_option( $this->opt_name ),
-				'usr' => empty( $user_id ) ? array() : 
-					get_user_option( $this->opt_name, $user_id ),
-				'log' => $this->log,
-			);
-			// sanity check - make sure array types exist
-			foreach ( array( 'opt', 'usr' ) as $name ) {
-				foreach ( array_keys( $this->log ) as $type ) {
-					if ( ! isset( $all_opts[$name][$type] ) )
-						$all_opts[$name][$type] = array();
+
+			foreach ( $sources as $name ) {
+
+				switch ( $name ) {
+					case 'opt':
+						$all_opts[$name] = get_option( $this->opt_name );
+						break;
+					case 'usr':
+						$all_opts[$name] = is_numeric( $user_id ) && $user_id > 0 ?
+							$all_opts[$name] = get_user_option( $this->opt_name, $user_id ) : array();
+						break;
+					case 'log':
+						$all_opts[$name] = $this->log;
+						break;
+				}
+
+				if ( $name !== 'log' ) {
+					foreach ( array_keys( $this->log ) as $type ) {
+						if ( ! isset( $all_opts[$name][$type] ) )
+							$all_opts[$name][$type] = array();
+					}
 				}
 			}
+
 			return $all_opts;
 		}
 
