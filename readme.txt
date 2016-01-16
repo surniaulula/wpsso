@@ -350,7 +350,7 @@ Official announcement: N/A
 * **New Features**
 	* *None*
 * **Improvements**
-	* *None*
+	* Added a shorter and more helpful notice, displayed for users without admin privileges, for images that are too small.
 * **Bugfixes**
 	* Fixed the 'fb_app_id' value check for some 32bit platforms where the max integer size is 2147483647.
 * **Developer Notes**
