@@ -138,8 +138,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select( $name, $values = array(), $class = '', $id = '', 
 			$is_assoc = false, $disabled = false, $selected = false, $reload = false ) {
 
-			if ( empty( $name ) || ! is_array( $values ) ) 
-				return;
+			if ( empty( $name ) || 
+				! is_array( $values ) ) 
+					return;
 
 			if ( $is_assoc === false ) 
 				$is_assoc = SucomUtil::is_assoc( $values );
@@ -150,9 +151,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'select_'.$id;
 
 			if ( $reload === true ) {
-				$url = empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://';
-				$url .= $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-				$url = add_query_arg( array( $name => '%%'.$name.'%%' ), $url );
+				$url = add_query_arg( array( $name => '%%'.$name.'%%' ), 
+					SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
 				$html .= '
 <script type="text/javascript">
 	jQuery(function(){

@@ -29,21 +29,26 @@
 <p>If your original images are large enough, you can also double the default Twitter Card image dimensions from 600x600px to 1200x1200px, and from 300x300px to 600x600px. By offering larger images, you allow Twitter to provide higher resolution images for retina / high-PPI displays.</p>
 
 <blockquote>
-<h4>Cropped vs Uncropped</h4>
+<h4>Cropped or Uncropped?</h4>
 
-<p>The difference between cropped and uncropped image dimensions is important -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions, and <u>any excess width or height will be trimmed</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px uncropped will have dimensions of 840x630px -- the original aspect ratio was preserved and no parts of the image were sacrificed, but its width is not optimal for Facebook. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will crop Open Graph images to this aspect ratio for display anyway.</p>
+<p>The difference between cropped and uncropped image dimensions is important to know -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions, and then <u>the excess width or height is trimmed</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px uncropped will have dimensions of 840x630px -- the original aspect ratio was preserved, and no parts of the image were sacrificed, but its width is not optimal for Facebook. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will crop Open Graph images to this aspect ratio for display anyway.</p>
 </blockquote>
 
+
 <blockquote>
-<h4>Upscale (Enlarge) Images or Not?</h4>
+<h4>Upscale / Enlarge Images?</h4>
 
 <p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images for WPSSO image sizes (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using the default maximum of 50%, but resizing the images any larger would fail (unless you increased the maximum).</p> 
 
 <p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <em>Do not enable this feature unless you want to publish lower quality images on social sites.</em></p>
 
-<p><strong>Not sure?</strong><p>
+<!-- <p>You can simulate the upscaling feature to generate the upscaling success / failure notice messages, without having WordPress save the resulting images &mdash; simply define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</p> -->
+</blockquote>
 
-<p>You can simulate the upscaling feature to generate the upscaling success / failure notice messages, without having WordPress save the resulting images &mdash; simply define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</p>
+<blockquote>
+<h4>Use Smaller / Thumbnail Images?</h4>
+
+<p>By default, WPSSO double-checks all images returned by WordPress to make sure they match the dimensions it requested, as WordPress can return inaccurate images. This check also insures that images that are too small (smaller than the image dimensions requested) are rejected in favour of other potentially larger / more suitable images. You can use smaller / innaccurate images by unchecking the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
 </blockquote>
 
 </li>

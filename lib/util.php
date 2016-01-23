@@ -729,7 +729,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
 
-			$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
 			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
 			$src_id = $this->p->util->get_source_id( $opt_prefix, $atts );

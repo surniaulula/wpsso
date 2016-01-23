@@ -34,6 +34,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$this->p->debug->mark();
 		}
 
+		public static function is_https( $url = '' ) {
+			if ( ! empty( $url ) ) {
+				if ( parse_url( $url, PHP_URL_SCHEME ) === 'https' )
+					return true;
+				else return false;
+			} elseif ( ! empty( $_SERVER['HTTPS'] ) ||
+				( is_admin() && self::get_const( 'FORCE_SSL_ADMIN' ) ) )
+					return true;
+			else return false;
+		}
+
+		// returns 'http' or 'https'
+		public static function get_prot( $url = '' ) {
+			if ( self::is_https( $url ) )
+				return 'https';
+			else 'http';
+		}
+
 		public static function get_const( $const ) {
 			if ( defined( $const ) )
 				return constant( $const );
@@ -108,7 +126,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
-			else $request_url = ( empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://' ).
+			else $request_url = self::get_prot().'://'.
 				$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 			$short_url = empty( $atts['short_url'] ) ?
@@ -344,8 +362,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// complete the url with a protocol name
 			if ( strpos( $url, '//' ) === 0 )
-				$url = empty( $_SERVER['HTTPS'] ) ?
-					'http:'.$url : 'https:'.$url;
+				$url = SucomUtil::get_prot().'//'.$url;
 
 			if ( $this->p->debug->enabled && 
 				strpos( $url, '://' ) === false )
@@ -694,32 +711,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// fallback for themes and plugins that don't use the standard wordpress functions/variables
 			if ( empty ( $url ) ) {
-				$url = ( empty( $_SERVER['HTTPS'] ) ? 'http://' : 'https://' ).
-					$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				// strip out tracking query arguments by facebook, google, etc.
-				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', $url );
+				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page, $src_id );
 		}
 
 		public function fix_relative_url( $url = '' ) {
-			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
+			if ( ! empty( $url ) && 
+				strpos( $url, '://' ) === false ) {
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url found = '.$url );
-				$prot = empty( $_SERVER['HTTPS'] ) ? 'http:' : 'https:';
+
 				if ( strpos( $url, '//' ) === 0 )
-					$url = $prot.$url;
+					$url = SucomUtil::get_prot().':'.$url;
 				elseif ( strpos( $url, '/' ) === 0 ) 
 					$url = home_url( $url );
 				else {
-					$base = $prot.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+					$base = SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 					if ( strpos( $base, '?' ) !== false ) {
 						$base_parts = explode( '?', $base );
 						$base = reset( $base_parts );
 					}
 					$url = trailingslashit( $base, false ).$url;
 				}
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url fixed = '.$url );
 			}
