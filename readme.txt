@@ -343,6 +343,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.21.6 (2016/01/24) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Added the Facebook "Author Name Format" option to the Essential Settings page.
+	* Used the new SucomUtil::get_prot() static method to determine the URL protocol to be used (http or https).
+	* Updated the Setup Guide with a new "Use Smaller / Thumbnail Images?" information box.
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for both PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
+
 = Version 3.21.5 (2016/01/16) =
 
 Official announcement: N/A
