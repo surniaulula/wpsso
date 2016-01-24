@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// add any missing options from the default options
 			foreach ( $def_opts as $key => $def_val )
-				if ( ! empty( $key ) && ! array_key_exists( $key, $opts ) )
+				if ( ! empty( $key ) && ! isset( $opts[$key] ) )
 					$opts[$key] = $def_val;
 
 			// sanitize values
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( preg_match( '/:is$/', $key ) )	// don't save option states
 					unset( $opts[$key] );
 				elseif ( ! empty( $key ) ) {
-					$def_val = array_key_exists( $key, $def_opts ) ? $def_opts[$key] : '';
+					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// just in case
 					$opts[$key] = $this->p->util->sanitize_option_value( $key, $val, $def_val, $network, $mod );
 				}
 			}

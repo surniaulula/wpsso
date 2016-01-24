@@ -1257,7 +1257,7 @@ msgstr ""
 #: lib/messages.php:450
 msgid ""
 "Confirm that you have enabled Google's URL Shortener API service by checking "
-"the 'Yes' option here."
+"the 'Yes' option value."
 msgstr ""
 
 #: lib/messages.php:462
@@ -1322,15 +1322,15 @@ msgid ""
 "websites with multilingual content)."
 msgstr ""
 
-#: lib/messages.php:489 lib/messages.php:566
+#: lib/messages.php:489
 msgid ""
-"Select an '%1$s' for the '%2$s' meta tag or '[none]' to disable this feature "
-"(the recommended value is 'Display Name')."
+"Select an \"<strong>%1$s</strong>\" for the '%2$s' meta tag or '[none]' to "
+"disable this feature (the recommended value is 'Display Name')."
 msgstr ""
 
 #: lib/messages.php:489 lib/messages.php:510 lib/messages.php:566
-#: lib/submenu/general.php:221 lib/submenu/general.php:278
-#: lib/submenu/general.php:334
+#: lib/submenu/essential.php:94 lib/submenu/general.php:221
+#: lib/submenu/general.php:278 lib/submenu/general.php:334
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -1351,6 +1351,12 @@ msgstr ""
 msgid ""
 "A different 'article:author' meta tag can be used when the Pinterest crawler "
 "is detected."
+msgstr ""
+
+#: lib/messages.php:566
+msgid ""
+"Select an '%1$s' for the '%2$s' meta tag or '[none]' to disable this feature "
+"(the recommended value is 'Display Name')."
 msgstr ""
 
 #: lib/messages.php:569
@@ -1889,17 +1895,17 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:343
+#: lib/meta.php:355
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:344
+#: lib/meta.php:356
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:360
+#: lib/meta.php:372
 msgid "Reload to View"
 msgstr ""
 
@@ -2093,19 +2099,19 @@ msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:54 lib/submenu/essential.php:113
+#: lib/setting/social-accounts.php:54 lib/submenu/essential.php:118
 #: lib/submenu/general.php:234
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:58 lib/submenu/essential.php:124
+#: lib/setting/social-accounts.php:58 lib/submenu/essential.php:129
 #: lib/submenu/general.php:323
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:62 lib/submenu/essential.php:137
+#: lib/setting/social-accounts.php:62 lib/submenu/essential.php:142
 #: lib/submenu/general.php:351
 msgctxt "option label"
 msgid "Twitter Business @username"
@@ -2142,13 +2148,13 @@ msgid "File and Object Cache"
 msgstr ""
 
 #: lib/sitesubmenu/siteadvanced.php:64 lib/submenu/advanced.php:92
-#: lib/submenu/essential.php:145
+#: lib/submenu/essential.php:150
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
 #: lib/sitesubmenu/siteadvanced.php:69 lib/submenu/advanced.php:96
-#: lib/submenu/essential.php:149
+#: lib/submenu/essential.php:154
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
@@ -2243,47 +2249,47 @@ msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/essential.php:94 lib/submenu/general.php:226
+#: lib/submenu/essential.php:99 lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Default Content Language"
 msgstr ""
 
-#: lib/submenu/essential.php:98 lib/submenu/general.php:176
+#: lib/submenu/essential.php:103 lib/submenu/general.php:176
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:102 lib/submenu/general.php:180
+#: lib/submenu/essential.php:107 lib/submenu/general.php:180
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:106 lib/submenu/general.php:172
+#: lib/submenu/essential.php:111 lib/submenu/general.php:172
 msgctxt "option label"
 msgid "Open Graph Image Dimensions"
 msgstr ""
 
-#: lib/submenu/essential.php:111
+#: lib/submenu/essential.php:116
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:117 lib/submenu/general.php:267
+#: lib/submenu/essential.php:122 lib/submenu/general.php:267
 msgctxt "option label"
 msgid "Website / Business Logo URL"
 msgstr ""
 
-#: lib/submenu/essential.php:122
+#: lib/submenu/essential.php:127
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:328
+#: lib/submenu/essential.php:134 lib/submenu/general.php:328
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr ""
 
-#: lib/submenu/essential.php:135
+#: lib/submenu/essential.php:140
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""

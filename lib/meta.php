@@ -281,6 +281,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		protected function get_submit_opts( $id, $mod = false ) {
+
 			$defs = $this->get_defaults( false, $mod );
 			unset ( $defs['options_filtered'] );
 			unset ( $defs['options_version'] );
@@ -300,16 +301,26 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $defs as $key => $def_val )
 				if ( isset( $opts[$key] ) )
-					if ( $opts[$key] === '' || $opts[$key] == -1 )
+					if ( $opts[$key] === '' || $opts[$key] === -1 )
 						unset ( $opts[$key] );
 
-			if ( $opts['og_vid_prev_img'] === $this->p->options['og_vid_prev_img'] )
-				unset ( $opts['og_vid_prev_img'] );
+			// checkbox options
+			foreach ( array(
+				'og_vid_prev_img',
+				'buttons_disabled',
+			) as $key ) {
+				// don't save if the value is the same as the default value
+				if ( isset( $this->p->options[$key] ) ) {
+					if ( $opts[$key] === $this->p->options[$key] )
+						unset ( $opts['og_vid_prev_img'] );
+				// if there's no default, then don't save an unchecked / disabled value
+				} elseif ( empty( $opts[$key] ) )
+					unset ( $opts[$key] );
+			}
 
-			if ( empty( $opts['buttons_disabled'] ) )
-				unset ( $opts['buttons_disabled'] );
-
+			// image size options (id, prefix, width, height, crop, etc.)
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
+
 				if ( empty( $opts[$md_pre.'_img_id'] ) )
 					unset ( $opts[$md_pre.'_img_id_pre'] );
 
@@ -322,6 +333,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								unset( $opts[$md_pre.'_img_'.$key] );
 
 					if ( $mod !== false ) {
+						// has anything changed? if yes, then set the force_regen flag
 						if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
 							$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
 								$opts[$md_pre.'_img_'.$key] : '';
