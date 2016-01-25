@@ -353,6 +353,8 @@ Official announcement: N/A
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::get_prot() static method to determine the URL protocol to be used (http or https).
 	* Updated the Setup Guide with a new "Use Smaller / Thumbnail Images?" information box.
+	* Treat BuddyPress single activity pages as posts (using attached / content images, etc.) (Pro version).
+	* Treat BuddyPress user + activity URLs as an activity page instead of a user page (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
