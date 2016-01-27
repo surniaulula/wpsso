@@ -154,8 +154,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'use_post: '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
 				$this->p->debug->log( 'post_id: '.$post_id );
-				$this->p->debug->log( 'obj post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
-				$this->p->debug->log( 'sharing url: '.$sharing_url );
+				$this->p->debug->log( 'post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
 			}
 
 			$header_array = array();

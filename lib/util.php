@@ -865,6 +865,76 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
 			return $opts;
 		}
+
+		public function get_inline_vars() {
+			return $inline_vars;
+		}
+
+		public function get_inline_vals( $use_post = false, &$obj = false, &$atts = array() ) {
+
+			if ( ! is_object( $obj ) ) {
+				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: invalid object type' );
+					return array();
+				}
+			}
+			$post_id = empty( $obj->ID ) || 
+				empty( $obj->post_type ) ? 
+					0 : $obj->ID;
+
+			if ( isset( $atts['url'] ) )
+				$sharing_url = $atts['url'];
+			else $sharing_url = $this->get_sharing_url( $use_post, 
+				( isset( $atts['add_page'] ) ?
+					$atts['add_page'] : true ),
+				( isset( $atts['source_id'] ) ?
+					$atts['source_id'] : false ) );
+
+			if ( is_admin() )
+				$request_url = $sharing_url;
+			else $request_url = self::get_prot().'://'.
+				$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+
+			$short_url = empty( $atts['short_url'] ) ?
+				apply_filters( $this->p->cf['lca'].'_shorten_url',
+					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
+
+			$this->inline_vals = array(
+				$post_id,		// %%post_id%%
+				$request_url,		// %%request_url%%
+				$sharing_url,		// %%sharing_url%%
+				$short_url,		// %%short_url%%
+			);
+
+			return $this->inline_vals;
+		}
+
+		// allow the variables and values array to be extended
+		// $ext must be an associative array with key/value pairs to be replaced
+		public function replace_inline_vars( $text, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
+
+			if ( strpos( $text, '%%' ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: no inline vars' );
+				return $text;
+			}
+
+			$vars = $this->inline_vars;
+			$vals = $this->get_inline_vals( $use_post, $obj, $atts );
+
+			if ( ! empty( $ext ) && 
+				self::is_assoc( $ext ) ) {
+
+				foreach ( $ext as $key => $str ) {
+					$vars[] = '%%'.$key.'%%';
+					$vals[] = $str;
+				}
+			}
+
+			return str_replace( $vars, $vals, $text );
+		}
+
 	}
 }
 

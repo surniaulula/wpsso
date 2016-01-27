@@ -49,7 +49,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_prot( $url = '' ) {
 			if ( self::is_https( $url ) )
 				return 'https';
-			else 'http';
+			else return 'http';
 		}
 
 		public static function get_const( $const ) {
@@ -97,64 +97,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_key( $key ) {
 			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
-		}
-
-		public function get_inline_vars() {
-			return $inline_vars;
-		}
-
-		public function get_inline_vals( $use_post = false, &$obj = false, &$atts = array() ) {
-
-			if ( ! is_object( $obj ) ) {
-				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: invalid object type' );
-					return array();
-				}
-			}
-			$post_id = empty( $obj->ID ) || 
-				empty( $obj->post_type ) ? 
-					0 : $obj->ID;
-
-			if ( isset( $atts['url'] ) )
-				$sharing_url = $atts['url'];
-			else $sharing_url = $this->get_sharing_url( $use_post, 
-				( isset( $atts['add_page'] ) ?
-					$atts['add_page'] : true ),
-				( isset( $atts['source_id'] ) ?
-					$atts['source_id'] : false ) );
-
-			if ( is_admin() )
-				$request_url = $sharing_url;
-			else $request_url = self::get_prot().'://'.
-				$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-
-			$short_url = empty( $atts['short_url'] ) ?
-				apply_filters( $this->p->cf['lca'].'_shorten_url',
-					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
-
-			$this->inline_vals = array(
-				$post_id,		// %%post_id%%
-				$request_url,		// %%request_url%%
-				$sharing_url,		// %%sharing_url%%
-				$short_url,		// %%short_url%%
-			);
-
-			return $this->inline_vals;
-		}
-
-		// allow the variables and values array to be extended
-		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $text, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
-			$vars = $this->inline_vars;
-			$vals = $this->get_inline_vals( $use_post, $obj, $atts );
-			if ( ! empty( $ext ) && self::is_assoc( $ext ) ) {
-				foreach ( $ext as $key => $str ) {
-					$vars[] = '%%'.$key.'%%';
-					$vals[] = $str;
-				}
-			}
-			return str_replace( $vars, $vals, $text );
 		}
 
 		public static function active_plugins( $idx = false ) {
@@ -617,6 +559,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// "use_post = false" when used for open graph meta tags and buttons in widget,
 		// true when buttons are added to individual posts on an index webpage
 		public function get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array( 
+					'use_post' => $use_post,
+					'add_page' => $add_page,
+					'src_id' => $src_id,
+				) );
+			}
 			$url = false;
 			if ( is_singular() || $use_post !== false ) {
 				if ( ( $obj = $this->get_post_object( $use_post ) ) === false )
@@ -629,7 +578,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom post sharing_url = '.$url );
-					} else $url = get_permalink( $post_id );
+					} else {
+						$url = get_permalink( $post_id );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'post_id '.$post_id.' permalink = '.$url );
+					}
 
 					if ( $add_page && get_query_var( 'page' ) > 1 ) {
 						global $wp_rewrite;
