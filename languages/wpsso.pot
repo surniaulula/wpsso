@@ -1088,7 +1088,7 @@ msgid ""
 "ratio equal to/or greater than %4$d:1."
 msgstr ""
 
-#: lib/media.php:771
+#: lib/media.php:787
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for images from the "
 "Media Library to supplement the width / height information &mdash; if this "
@@ -1096,7 +1096,7 @@ msgid ""
 "try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:774
+#: lib/media.php:790
 msgid ""
 "Content image %1$s ignored &mdash; the image width / height attributes are "
 "missing or too small for the %2$s image size."

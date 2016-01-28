@@ -359,6 +359,7 @@ Official announcement: N/A
 	* *None*
 * **Developer Notes**
 	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for both PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
+	* Added a call to getimagesize() for images in the content without width / height attribute values.
 
 = Version 3.21.5 (2016/01/16) =
 

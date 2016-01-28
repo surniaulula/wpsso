@@ -698,12 +698,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 											break;	// stop here
 	
 							// recognize gravatar images in the content
-							if ( preg_match( '/^https?:\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+/',
+							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/',
 								$attr_value, $match ) ) {
 
-								$og_image['og:image'] = $match[0].'?s='.$size_info['width'].'&d=404&r=G';
+								$og_image['og:image'] = SucomUtil::get_prot().':'.$match[2].
+									'?s='.$size_info['width'].'&d=404&r=G';
 								$og_image['og:image:width'] = $size_info['width'];
 								$og_image['og:image:height'] = $size_info['width'];	// square image
+
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'gravatar image found: '.$og_image['og:image'] );
+
 								break;	// stop here
 							}
 
@@ -726,14 +731,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								);
 							}
 
-							// try and get the width and height from the image attributes
 							if ( ! empty( $og_image['og:image'] ) ) {
-								if ( preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i',
-									$tag_value, $match ) ) 
-										$og_image['og:image:width'] = $match[1];
-								if ( preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i',
-									$tag_value, $match ) ) 
-										$og_image['og:image:height'] = $match[1];
+
+								// try and get the width and height from the image HTML attributes
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'checking for width / height attribute values' );
+								foreach ( array( 'width', 'height' ) as $key )
+									if ( preg_match( '/ '.$key.'=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
+										$og_image['og:image:'.$key] = $match[1];
+
+								// try and get the width and height from the image file itself
+								if ( $og_image['og:image:width'] <= 0 ||
+									$og_image['og:image:height'] <= 0 ) {
+
+									list( $og_image['og:image:width'], $og_image['og:image:height'],
+										$image_type, $image_atts ) = @getimagesize( $og_image['og:image'] );
+									if ( $this->p->debug->enabled )
+										$this->p->debug->log( 'getimagesize() width / height returned: '.
+											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
+								}
 							}
 
 							$is_sufficient_w = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
