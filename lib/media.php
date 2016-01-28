@@ -606,6 +606,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 
 			// allow custom content to be passed as argument
+			// allow empty post_ids to get additional content from filter hooks
 			if ( empty( $content ) ) {
 				$content_provided = false;
 				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
@@ -903,8 +904,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 
 			// allow custom content to be passed as argument
-			if ( empty( $content ) && $post_id > 0 )
+			// allow empty post_ids to get additional content from filter hooks
+			if ( empty( $content ) ) {
+				$content_provided = false;
 				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
+			} else $content_provided = true;
 
 			if ( empty( $content ) ) { 
 				if ( $this->p->debug->enabled )
