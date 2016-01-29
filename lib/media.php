@@ -787,10 +787,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$msg_id = 'content_'.$og_image['og:image'].'_'.$size_name.'_rejected';
 
 									if ( ! $content_provided )
-										$data_wp_pid_msg = ' '.sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for images from the Media Library to supplement the width / height information &mdash; if this image was selected from the Media Library before %2$s was first activated, try removing and adding the image back to your content.', 'wpsso' ), $short, $short );
+										$data_wp_pid_msg = ' '.sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for Media Library images &mdash; if this image was selected from the Media Library before %2$s was first activated, try removing and adding the image back to your content.', 'wpsso' ), $short, $short );
 									else $data_wp_pid_msg = '';
 
-									$this->p->notice->err( sprintf( __( 'Content image %1$s ignored &mdash; the image width / height attributes are missing or too small for the %2$s image size.', 'wpsso' ), $og_image['og:image'], '<b>'.$size_label.'</b> ('.$size_name.')' ).$data_wp_pid_msg, false, true, $msg_id, true );
+									$this->p->notice->err( sprintf( __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the %2$s image size.', 'wpsso' ), $og_image['og:image'], '<b>'.$size_label.'</b> ('.$size_name.')' ).$data_wp_pid_msg, false, true, $msg_id, true );
 								}
 								$og_image = array();
 							}
