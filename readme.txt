@@ -343,7 +343,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.22.0 (TBD) =
+= Version 3.22.0 (2016/01/30) =
 
 Official announcement: N/A
 
@@ -354,13 +354,13 @@ Official announcement: N/A
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::is_https() and SucomUtil::get_prot() static methods to determine the protocol to be used (http or https).
 	* Updated the Setup Guide with a new "Accept Smaller / Thumbnail Images?" information box.
-	* Treat BuddyPress single activity pages as posts (using attached / content images, etc.) (Pro version).
+	* Treat BuddyPress single activity pages as posts (to use attached / content images, etc.) (Pro version).
 	* Treat BuddyPress user + activity URLs as an activity page instead of a user page (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
 	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
-	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of getimagesize().
+	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
 = Version 3.21.5 (2016/01/16) =
 
@@ -549,15 +549,7 @@ Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvement
 
 == Upgrade Notice ==
 
-= 3.21.5 =
+= 3.22.0 =
 
-2016/01/16 - Fixed 'fb_app_id' value for some 32bit platforms where max integer size is 2147483647. Added shorter / more helpful notice, displayed for users without admin privileges, for images that are too small.
-
-= 3.21.4 =
-
-2016/01/14 - Added enabled / disabled / recommended tooltip text to the green / gray / red status lights in the settings page side metaboxes.
-
-= 3.21.3 =
-
-2016/01/10 - Fixed the SucomUtil::get_max_nums() method to return the correct maximum number of Open Graph images for index type webpages.
+2016/01/30 - Added a call to getimagesize() for images in the content without width / height attribute values. Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
 
