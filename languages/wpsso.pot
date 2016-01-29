@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.21.6\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.22.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1052,43 +1052,43 @@ msgctxt "metabox title"
 msgid "Pinterest / Rich Pin"
 msgstr ""
 
-#: lib/media.php:330
+#: lib/media.php:336
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:470
+#: lib/media.php:476
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:480 lib/pro/media/ngg.php:203
+#: lib/media.php:486 lib/pro/media/ngg.php:203
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the %4$s image size."
 msgstr ""
 
-#: lib/media.php:481 lib/media.php:501 lib/media.php:517
+#: lib/media.php:487 lib/media.php:507 lib/media.php:523
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:485 lib/pro/media/ngg.php:208
+#: lib/media.php:491 lib/pro/media/ngg.php:208
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:500 lib/pro/media/ngg.php:222
+#: lib/media.php:506 lib/pro/media/ngg.php:222
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller "
 "than the minimum %4$s allowed by the Facebook / Open Graph standard."
 msgstr ""
 
-#: lib/media.php:516 lib/pro/media/ngg.php:238
+#: lib/media.php:522 lib/pro/media/ngg.php:238
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect "
 "ratio equal to/or greater than %4$d:1."
 msgstr ""
 
-#: lib/media.php:787
+#: lib/media.php:790
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for images from the "
 "Media Library to supplement the width / height information &mdash; if this "
@@ -1096,7 +1096,7 @@ msgid ""
 "try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:790
+#: lib/media.php:793
 msgid ""
 "Content image %1$s ignored &mdash; the image width / height attributes are "
 "missing or too small for the %2$s image size."
@@ -1957,7 +1957,7 @@ msgid ""
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:349
+#: lib/options.php:343
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 

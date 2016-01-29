@@ -30,6 +30,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( is_admin() )
 				add_filter( 'editor_max_image_size', array( &$this, 'editor_max_image_size' ), 10, 3 );
 
+			add_filter( 'init', array( &$this, 'allow_img_data_attributes' ) );
 			add_filter( 'wp_get_attachment_image_attributes', array( &$this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( &$this, 'add_image_tag' ), 10, 6 );
 		}
@@ -41,6 +42,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 )
 					$max_sizes = array( 0, 0 );
 			return $max_sizes;
+		}
+
+		public function allow_img_data_attributes() {
+			global $allowedposttags;
+			$allowedposttags['img']['data-wp-pid'] = true;
 		}
 
 		// $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
@@ -661,6 +667,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						// wordpress media library image id
 						case 'data-wp-pid':
 
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'WP image attribute ID found: '.$attr_value );
+
 							list(
 								$og_image['og:image'],
 								$og_image['og:image:width'],
@@ -733,23 +742,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( ! empty( $og_image['og:image'] ) ) {
 
-								// try and get the width and height from the image HTML attributes
+								// get the width and height from the image HTML attributes
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'checking for width / height attribute values' );
 								foreach ( array( 'width', 'height' ) as $key )
 									if ( preg_match( '/ '.$key.'=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
 										$og_image['og:image:'.$key] = $match[1];
 
-								// try and get the width and height from the image file itself
+								// get the width and height of the image file using http / https
 								if ( $og_image['og:image:width'] <= 0 ||
-									$og_image['og:image:height'] <= 0 ) {
-
-									list( $og_image['og:image:width'], $og_image['og:image:height'],
-										$image_type, $image_atts ) = @getimagesize( $og_image['og:image'] );
-									if ( $this->p->debug->enabled )
-										$this->p->debug->log( 'getimagesize() width / height returned: '.
-											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
-								}
+									$og_image['og:image:height'] <= 0 )
+										$this->p->util->add_image_wh( 'og:image', $og_image );
 							}
 
 							$is_sufficient_w = $og_image['og:image:width'] >= $size_info['width'] ? true : false;

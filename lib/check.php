@@ -157,6 +157,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['class'] = 'nggdb';	// C_NextGEN_Bootstrap
 							$chk['plugin'] = 'nextgen-gallery/nggallery.php';
 							break;
+						case 'media-rtmedia':
+							$chk['plugin'] = 'buddypress-media/index.php';
+							break;
 						case 'seo-aioseop':
 							$chk['class'] = 'All_in_One_SEO_Pack';
 							break;
@@ -287,8 +290,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return self::$c[$kn] = $lic === true ? 
 				( ( ! empty( $this->p->options[$on] ) && 
 					$ins && class_exists( 'SucomUpdate' ) &&
-						( $um = SucomUpdate::get_umsg( $lca ) ? 
-							false : $ins ) ) ? $um : false ) : $ins;
+						( $uerr = SucomUpdate::get_uerr( $lca ) ? 
+							false : $ins ) ) ? $uerr : false ) : $ins;
 		}
 	}
 }

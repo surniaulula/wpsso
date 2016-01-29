@@ -935,6 +935,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return str_replace( $vars, $vals, $text );
 		}
 
+		public function add_image_wh( $keys, &$opts ) {
+			if ( SucomUtil::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
+				return $opts;
+
+			if ( ! is_array( $keys ) )
+				$keys = array( $keys );
+
+			foreach ( $keys as $key ) {
+				if ( ! empty( $opts[$key] ) &&
+					strpos( $opts[$key], '://' ) !== false ) {
+
+					list( $opts[$key.':width'], $opts[$key.':height'],
+						$image_type, $image_attr ) = @getimagesize( $opts[$key] );
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'getimagesize() for '.$opts[$key].' returned '.
+							$opts[$key.':width'].'x'.$opts[$key.':height'] );
+				} else {
+					foreach ( array( 'width', 'height' ) as $wh )
+						if ( isset( $opts[$key.':'.$wh] ) )
+							$opts[$key.':'.$wh] = -1;
+				}
+			}
+
+			return $opts;
+		}
 	}
 }
 
