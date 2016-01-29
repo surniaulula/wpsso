@@ -352,14 +352,14 @@ Official announcement: N/A
 * **Improvements**
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::is_https() and SucomUtil::get_prot() static methods to determine the protocol to be used (http or https).
-	* Updated the Setup Guide with a new "Use Smaller / Thumbnail Images?" information box.
+	* Updated the Setup Guide with a new "Accept Smaller / Thumbnail Images?" information box.
 	* Treat BuddyPress single activity pages as posts (using attached / content images, etc.) (Pro version).
 	* Treat BuddyPress user + activity URLs as an activity page instead of a user page (Pro version).
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
 	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for both PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
-	* Added a call to getimagesize() for images in the content without width / height attribute values.
+	* Added a call to getimagesize() for images in the content without width / height attribute values. The WPSSO_GETIMGSIZE_DISABLE constant can be defined as true in order to disable this feature.
 
 = Version 3.21.5 (2016/01/16) =
 
