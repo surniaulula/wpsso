@@ -348,6 +348,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 Official announcement: N/A
 
 * **New Features**
+	* Added a call to getimagesize() for images in the content without width / height attribute values.
 	* Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
 * **Improvements**
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
@@ -358,8 +359,8 @@ Official announcement: N/A
 * **Bugfixes**
 	* *None*
 * **Developer Notes**
-	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for both PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
-	* Added a call to getimagesize() for images in the content without width / height attribute values. The WPSSO_GETIMGSIZE_DISABLE constant can be defined as true in order to disable this feature.
+	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
+	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of getimagesize().
 
 = Version 3.21.5 (2016/01/16) =
 
