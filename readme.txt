@@ -343,7 +343,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.22.0 (2016/01/30) =
+= Version 3.22.1 (2016/01/30) =
 
 Official announcement: N/A
 
@@ -351,6 +351,7 @@ Official announcement: N/A
 	* Added a call to getimagesize() for images in the content without width / height attribute values.
 	* Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
 * **Improvements**
+	* Enabled the WordPress oEmbed filters on post content in the head section to generate proper video embed code.
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::is_https() and SucomUtil::get_prot() static methods to determine the protocol to be used (http or https).
 	* Updated the Setup Guide with a new "Accept Smaller / Thumbnail Images?" information box.
@@ -362,194 +363,9 @@ Official announcement: N/A
 	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
-= Version 3.21.5 (2016/01/16) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added a shorter and more helpful notice, displayed for users without admin privileges, for images that are too small.
-* **Bugfixes**
-	* Fixed the 'fb_app_id' value check for some 32bit platforms where the max integer size is 2147483647.
-* **Developer Notes**
-	* *None*
-
-= Version 3.21.4 (2016/01/14) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Added enabled / disabled / recommended tooltip text to the green / gray / red status lights in the settings page side metaboxes.
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* *None*
-
-= Version 3.21.3 (2016/01/10) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Fixed the `SucomUtil::get_max_nums()` method to return the correct maximum number of Open Graph images for index type webpages.
-* **Developer Notes**
-	* *None*
-
-= Version 3.21.2 (2016/01/09) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Removed the Jetpack Photon integration module -- the latest version of Photon can return correct image dimensions.
-	* Moved the "Social Preview" tab from third to first in the Social Settings metabox.
-* **Bugfixes**
-	* Fixed author Schema meta tags by adding only to Article, Blog, Review, WebPage, and WebSite item types.
-* **Developer Notes**
-	* Modified all `get_options()` and `get_defaults()` methods to return a null instead of false for a missing settings key.
-	* Wrapped the `image_downsize()` function with `array_pad()` to sanitize the output (prevents a PHP notice caused by Jetpack Photon).
-
-= Version 3.21.1 (2016/01/06) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Fixed the missing Social Img / Desc columns after using Quick Edit on a post / page.
-	* Fixed recurring error message about resetting the 'plugin_object_cache_exp' option to its default value (Free version).
-* **Developer Notes**
-	* Added a new 'wpsso_columns_post_{post_type_name}' filter (true by default).
-	* Added an integer cast when saving numeric options.
-
-= Version 3.21.0 (2016/01/03) =
-
-Official announcement: http://wpsso.com/2016/01/03/wpsso-update-upscale-enlarge-small-images/
-
-* **New Features**
-	* Added new "Allow Upscaling of Small WP Images" and "Maximum Image Upscale Percentage" options on the Advanced settings page, under the WP / Theme Integration tab (Pro version).
-* **Improvements**
-	* Improved the NextGEN Gallery integration module by calling `get_post_object()` instead of using the $post global.
-	* Added `SucomUtil::encode_emoji()` to call WordPress v4.2's `wp_encode_emoji()` function if available (or duplicate its behavior if missing).
-* **Bugfixes**
-	* Fixed a call to a `wp_encode_emoji()` function which did not exist before WordPress v4.2.
-* **Developer Notes**
-	* Added the $post_id argument to NGG integration module methods for `get_post_object()`.
-	* Added two constants for the image upscaling feature:
-		* WPSSO_IMAGE_UPSCALE_ALL = false
-		* WPSSO_IMAGE_UPSCALE_TEST = false
-	* Added three filters for the image upscaling feature:
-		* apply_filters( 'wpsso_image_upscale_all', WPSSO_IMAGE_UPSCALE_ALL = false );
-		* apply_filters( 'wpsso_image_upscale_max', $max_diff = 50, $img_info );
-		* apply_filters( 'wpsso_image_upscale_test', WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
-
-= Version 3.20.1.3 (2015/12/30) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Fixed a preg_replace_callback() syntax error.
-* **Developer Notes**
-	* *None*
-
-= Version 3.20.1.2 (2015/12/29) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* Fixed an Open Graph image size definition issue on the front-end.
-* **Developer Notes**
-	* *None*
-
-= Version 3.20.1.1 (2015/12/27) =
-
-Official announcement: N/A
-
-* **New Features**
-	* Added a "Copy to clipboard" icon for the sharing and short URLs under the Social Preview tab in the Social Settings metabox.
-* **Improvements**
-	* Added an information notice when checking the post/page for duplicate meta tags.
-* **Bugfixes**
-	* Fixed the `get_admin_url()` method, which returned empty URLs, when only hash / query fragments were passed as arguments.
-* **Developer Notes**
-	* Renamed and updated the share/lib/cacert.pem file to share/lib/ca-bundle.crt.
-
-= Version 3.20.0 (2015/12/25) =
-
-Official announcement: N/A
-
-* **New Features**
-	* Added a new "Your Social Settings" menu page with the user profile Social Settings metabox (and removed it from the "Your Profile" page).
-* **Improvements**
-	* Cleaned-up the side metaboxes on settings pages by selectively adding them certain pages and simplifying their content.
-	* Added disabled and internal meta tags to the "Head Tags" list in the Social Settings metabox (shown as gray on gray).
-* **Bugfixes**
-	* Fixed the 'article:published_time' and 'article:modified_time' values on post editing pages.
-* **Developer Notes**
-	* Added a call to `wp_encode_emoji()` for all encoded string values.
-	* Added a new `$this->menu_lib` property to all setting pages (value passed to constructor).
-	* Renamed the `WPSSO_ADD_SETTINGS_PRIORITY` constant to `WPSSO_ADD_SUBMENU_PRIORITY`.
-	* Renamed the website class `$id` and `$name` properties to `$website_id` and `$website_name`.
-	* Moved image size definitions from the 'admin_init' hook to 'current_screen'.
-	* Moved `load_meta_page()` methods from the 'admin_head' hook to 'current_screen'.
-	* Refactored the `add_plugin_image_sizes()` method to handle a variety of WP object classes.
-
-= Version 3.19.2 (2015/12/16) =
-
-Official announcement: N/A
-
-* **New Features**
-	* *None*
-* **Improvements**
-	* Updated the Setup Guide.
-	* Added a new "Essential Settings" page to combine all essential / basic General and Advanced options on one page.
-	* Added encoding of special / foreign characters in URL meta tag values.
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* *None*
-
-= Version 3.19.0 (2015/12/14) =
-
-Official announcement: http://wpsso.com/2015/12/14/wpsso-update-json-improvements-and-filter-hooks/
-
-* **New Features**
-	* Added a new "Author Name Format" option under the Google / Schema tab on the General settings page.
-	* Added a schema ImageObject with URL, width, and height information for JSON and noscript meta tags.
-* **Improvements**
-	* *None*
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
-	* Added new filter hooks for the LD+JSON schema scripts:
-		* 'wpsso_json_http_schema_org_organization'
-		* 'wpsso_json_http_schema_org_person'
-		* 'wpsso_json_http_schema_org_website'
-		* 'wpsso_json_http_schema_org_{item_type}'
-	* Renamed the WpssoUser `get_article_author()` method to `get_author_profile_url()`.
-	* Refactored the WpssoSchema class and JSON related sections of the WpssoUser class.
-	* Added a call to `getimagesize()` when saving options to retrieve image dimensions from URLs (default image URL, schema logo URL, etc.).
-
 == Upgrade Notice ==
 
-= 3.22.0 =
+= 3.22.1 =
 
 2016/01/30 - Added a call to getimagesize() for images in the content without width / height attribute values. Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
 
