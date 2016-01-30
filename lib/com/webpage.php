@@ -635,10 +635,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				global $post;
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'saving the original $post object' );
-				$saved_post = $post;	// save the original post object
+				$original_post = $post;	// save the original post object
 
 				// WordPress oEmbed needs a $post ID, so make sure we have one
-				if ( ! isset( $post->ID ) && ! empty( $post_id ) ) {
+				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
+				if ( empty( $post->ID ) && ! empty( $post_id ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'incomplete $post object found: setting $post from $obj variable' );
 					$post = $obj;
@@ -651,7 +652,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'restoring the original $post object' );
-				$post = $saved_post;	// restore the original post object
+				$post = $original_post;	// restore the original post object
 
 				// cleanup for NGG pre-v2 album shortcode
 				unset ( $GLOBALS['subalbum'] );
