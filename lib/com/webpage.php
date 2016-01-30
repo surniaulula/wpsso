@@ -554,17 +554,21 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$content = false;
 
 			// if $post_id is 0, then pass the $use_post (true/false) value instead
-			if ( ( $obj = $this->p->util->get_post_object( ( empty( $post_id ) ? $use_post : $post_id ) ) ) === false ) {
+			if ( ( $obj = $this->p->util->get_post_object( ( empty( $post_id ) ?
+				$use_post : $post_id ) ) ) === false ) {
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: invalid object type' );
 				return $content;
 			}
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+
+			$post_id = empty( $obj->ID ) || 
+				empty( $obj->post_type ) ? 0 : $obj->ID;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'using content from object id '.$post_id );
 
 			$filter_content = $this->p->options['plugin_filter_content'];
-			$filter_name = $filter_content  ? 'filtered' : 'unfiltered';
+			$filter_name = $filter_content ? 'filtered' : 'unfiltered';
 			$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 				$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
 
@@ -629,11 +633,25 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 									$this->shortcode[$id]->remove();
 
 				global $post;
-				$saved_post = $post;	// woocommerce can change the $post, so save and restore
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'saving $post and applying the_content filters' );
+					$this->p->debug->log( 'saving the original $post object' );
+				$saved_post = $post;	// save the original post object
+
+				// WordPress oEmbed needs a $post ID, so make sure we have one
+				if ( ! isset( $post->ID ) && ! empty( $post_id ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'incomplete $post object found: setting $post from $obj variable' );
+					$post = $obj;
+				}
+
+				// apply the content filters
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'applying the WordPress the_content filters' );
 				$content = apply_filters( 'the_content', $content );
-				$post = $saved_post;
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'restoring the original $post object' );
+				$post = $saved_post;	// restore the original post object
 
 				// cleanup for NGG pre-v2 album shortcode
 				unset ( $GLOBALS['subalbum'] );
@@ -650,6 +668,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							if ( array_key_exists( $id, $this->shortcode ) && 
 								is_object( $this->shortcode[$id] ) )
 									$this->shortcode[$id]->add();
+
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'the_content filters skipped' );
 
