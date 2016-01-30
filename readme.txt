@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4
-Stable Tag: 3.22.0
+Stable Tag: 3.22.1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -351,7 +351,7 @@ Official announcement: N/A
 	* Added a call to getimagesize() for images in the content without width / height attribute values.
 	* Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
 * **Improvements**
-	* Enabled the WordPress oEmbed filters on post content in the head section to generate proper video embed code.
+	* **Enabled WordPress oEmbed filters on post content in the head section to generate complete HTML embed code.**
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::is_https() and SucomUtil::get_prot() static methods to determine the protocol to be used (http or https).
 	* Updated the Setup Guide with a new "Accept Smaller / Thumbnail Images?" information box.
