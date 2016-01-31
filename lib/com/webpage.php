@@ -54,27 +54,29 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		}
 
 		// called from Tumblr class
-		public function get_quote() {
+		public function get_quote( $use_post = true ) {
 
-			global $post;
-			if ( empty( $post ) ) 
+			if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: invalid object type' );
 				return '';
+			}
 
-			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '' );
+			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '', $use_post, $obj );
 
 			if ( $quote != '' ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'quote seed = "'.$quote.'"' );
 			} else {
-				if ( has_excerpt( $post->ID ) ) 
-					$quote = get_the_excerpt( $post->ID );
-				else $quote = $post->post_content;
+				if ( has_excerpt( $obj->ID ) ) 
+					$quote = get_the_excerpt( $obj->ID );
+				else $quote = $obj->post_content;
 			}
 
 			// remove shortcodes, etc., but don't strip html tags
 			$quote = $this->p->util->cleanup_html_tags( $quote, false );
 
-			return apply_filters( $this->p->cf['lca'].'_quote', $quote );
+			return apply_filters( $this->p->cf['lca'].'_quote', $quote, $use_post, $obj );
 		}
 
 		public function get_caption( $type = 'title', $textlen = 200, $use_post = true, $use_cache = true,
@@ -641,7 +643,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
 				if ( empty( $post->ID ) && ! empty( $post_id ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'incomplete $post object: setting $post from $obj variable' );
+						$this->p->debug->log( '$post ID property empty: setting $post from $obj variable' );
 					$post = $obj;
 				}
 

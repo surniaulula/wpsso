@@ -1210,8 +1210,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$atts['use_post'] : true;
 			$src_id = $src_name.( empty( $atts['css_id'] ) ? 
 				'' : '-'.preg_replace( '/^'.$this->p->cf['lca'].'-/','', $atts['css_id'] ) );
-			if ( $use_post == true && isset( $post->ID ) ) 
-				$src_id = $src_id.'-post-'.$post->ID;
+			if ( $use_post == true )
+				$src_id = $src_id.'-post-'.
+					( isset( $post->ID ) ? $post->ID : 0 );
 			return $src_id;
 		}
 
