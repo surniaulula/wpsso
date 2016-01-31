@@ -4,6 +4,7 @@ apply_filters( 'sucom_get_term_object', $obj );
 apply_filters( 'sucom_is_author_page', $ret );
 apply_filters( 'sucom_is_post_page', $ret );
 apply_filters( 'sucom_is_term_page', $ret );
+apply_filters( 'sucom_strip_shortcodes', $preg_array );
 apply_filters( 'wpsso_attached_image_ids', $attach_ids, $post_id );
 apply_filters( 'wpsso_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes );
 apply_filters( 'wpsso_attached_accept_img_size', $ret, $img_url, $img_width, $img_height, $size_name, $pid );
