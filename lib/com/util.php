@@ -752,8 +752,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$alt_text = '';
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
-			$text = strip_shortcodes( $text );						// remove any remaining shortcodes
-			//$text = html_entity_decode( $text, ENT_QUOTES, get_bloginfo( 'charset' ) );	// leave it encoded
+			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
 			$text = preg_replace( '/<\?.*\?>/i', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*?)<\/script>/i', ' ', $text);		// remove javascript
@@ -790,6 +789,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// convert space-like chars to a single space
 
 			return trim( $text );
+		}
+
+		public static function strip_shortcodes( $text ) {
+			if ( strpos( $text, '[' ) === false )
+				return $text;
+			$shortcodes_preg = apply_filters( 
+				'sucom_strip_shortcodes',
+				array(
+					'/\[\/?vc_[^\]]+\]/',
+				)
+			);
+			$text = preg_replace( $shortcodes_preg, '', $text );
+			$text = strip_shortcodes( $text );	// strip any remaining registered shortcodes
+			return $text;
 		}
 
 		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
