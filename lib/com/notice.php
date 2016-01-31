@@ -211,7 +211,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
 					if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-						$uerr = SucomUpdate::get_uerr( $lca );
+						$uerr = SucomUpdate::get_umsg( $lca );
 						if ( $uerr !== false && $uerr !== true )
 							$all_opts['log']['err'][$uerr] = array();
 					}

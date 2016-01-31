@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return self::$c[$kn] = $lic === true ? 
 				( ( ! empty( $this->p->options[$on] ) && 
 					$ins && class_exists( 'SucomUpdate' ) &&
-						( $uerr = SucomUpdate::get_uerr( $lca ) ? 
+						( $uerr = SucomUpdate::get_umsg( $lca ) ? 
 							false : $ins ) ) ? $uerr : false ) : $ins;
 		}
 	}
