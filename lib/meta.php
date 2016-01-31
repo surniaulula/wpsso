@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $defs as $key => $def_val )
 				if ( isset( $opts[$key] ) )
-					if ( $opts[$key] === '' || $opts[$key] === -1 )
+					if ( $opts[$key] === '' || $opts[$key] == -1 )	// -1 can be string or integer
 						unset ( $opts[$key] );
 
 			// checkbox options

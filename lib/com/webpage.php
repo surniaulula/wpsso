@@ -641,7 +641,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
 				if ( empty( $post->ID ) && ! empty( $post_id ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'incomplete $post object found: setting $post from $obj variable' );
+						$this->p->debug->log( 'incomplete $post object: setting $post from $obj variable' );
 					$post = $obj;
 				}
 
