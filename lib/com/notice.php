@@ -205,13 +205,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$have_changes = false;
 			$user_id = get_current_user_id();
-			$dis_arr = empty( $user_id ) ? false : 			// just in case
-				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
+			$dis_arr = empty( $user_id ) ? false : 				// just in case
+				get_user_option( $this->dis_name, $user_id );		// get dismissed message ids
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
 					if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-						$uerr = SucomUpdate::get_umsg( $lca );
+						$uerr = SucomUpdate::get_umsg( $lca );	// use get_umsg() for backwards compat
 						if ( $uerr !== false && $uerr !== true )
 							$all_opts['log']['err'][$uerr] = array();
 					}
@@ -224,7 +224,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						if ( empty( $msg_txt ) || 
 							isset( $all_msgs[$msg_txt] ) )
 								continue;
-						$all_msgs[$msg_txt] = true;	// avoid duplicates
+						$all_msgs[$msg_txt] = true;		// avoid duplicates
 						switch ( $type ) {
 							case 'nag':
 								$nag_msgs .= $msg_txt;	// append to echo a single message
