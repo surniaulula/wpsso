@@ -352,7 +352,8 @@ Official announcement: N/A
 * **Improvements**
 	* *None*
 * **Bugfixes**
-	* *None*
+	* Fixed missing custom image sizes when editing an image in the Media Library.
+	* Fixed the use of a custom Pinterest image ID / URL for the Pinterest crawler.
 * **Developer Notes**
 	* Added a new SucomUtil::strip_shortcodes() static method and 'sucom_strip_shortcodes' filter.
 
