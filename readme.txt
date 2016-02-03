@@ -20,7 +20,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **A solid social meta tag plugin is the foundation of any good social strategy** &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information [social website crawlers](https://developers.facebook.com/docs/sharing/webmasters/crawler) need, improving Google Search ranking, social engagement, and click-through-rates on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).
 
-**WPSSO automatically retrieves and uses information from a wide range or sources**, including All in One SEO Pack, bbPress, BuddyPress, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API version 2, and much more.
+**WPSSO automatically retrieves and uses information from a wide range or sources**, including All in One SEO Pack, bbPress, BuddyPress, BuddyPress rtMedia, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, WooCommerce, Yoast SEO (aka WordPress SEO), WP e-Commerce, Gravatar, Slideshare, Vimeo, Wistia, YouTube, extends the WordPress REST API version 2, and much more.
 
 = Available in Multiple Languages =
 
@@ -122,6 +122,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress
+		* BuddyPress rtMedia
 		* Easy Digital Downloads
 		* HeadSpace2 SEO
 		* NextGEN Gallery
@@ -208,7 +209,7 @@ WPSSO (Pro version) also supports [Easy Digital Downloads](https://wordpress.org
 
 **Forums and Social**
 
-WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/) and [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.
+WPSSO (Pro version) supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), and [BuddyPress rtMedia](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, etc.
 
 <div style="clear:both;"></div>
 
