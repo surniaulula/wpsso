@@ -449,22 +449,26 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				), get_class( $this ) );
 			}
 			$meta_ret = array();
-			$meta_image = SucomUtil::meta_image_tags( $mt_pre );
 
 			if ( empty( $id ) )
 				return $meta_ret;
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
+				$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+
 				$pid = $this->get_options( $id, $prefix.'_img_id' );
 				$pre = $this->get_options( $id, $prefix.'_img_id_pre' );
 				$url = $this->get_options( $id, $prefix.'_img_url' );
 
 				if ( $pid > 0 ) {
-					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
+					$pid = $pre === 'ngg' ?
+						'ngg-'.$pid : $pid;
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
 							get_class( $this ) );	// log extended class name
+
 					list( 
 						$meta_image[$mt_pre.':image'],
 						$meta_image[$mt_pre.':image:width'],
@@ -474,7 +478,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
+				if ( empty( $meta_image[$mt_pre.':image'] ) && 
+					! empty( $url ) ) {
 
 					$width = $this->get_options( $id, $prefix.'_img_url:width' );
 					$height = $this->get_options( $id, $prefix.'_img_url:height' );
@@ -498,9 +503,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					);
 				}
 
-				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-					$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
+				if ( ! empty( $meta_image[$mt_pre.':image'] ) ) {
+					if ( $this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
 						return $meta_ret;
+					}
+				}
 			}
 			return $meta_ret;
 		}

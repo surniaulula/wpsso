@@ -31,7 +31,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		public static function is_https( $url = '' ) {

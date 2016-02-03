@@ -41,12 +41,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-				// add settings and users submenu items
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
-
-				// nag notices are no longer stored, so this filter hook is unnecessary
-				//add_action( 'activated_plugin', array( &$this, 'check_activated_plugin' ), 10, 2 );
-
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_elements' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_elements' ) );
 
@@ -129,16 +124,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 			}
 		}
-
-		// nag notices are no longer stored, so this filter hook is unnecessary
-		/* public function check_activated_plugin( $plugin = false, $sitewide = false ) {
-			$lca = $this->p->cf['lca'];
-			switch ( $plugin ) {
-				case $this->p->cf['plugin'][$lca.'um']['base']:
-					$this->p->notice->trunc_all( 'nag' );
-					break;
-			}
-		} */
 
 		protected function set_form_property() {
 			$def_opts = $this->p->opt->get_defaults();

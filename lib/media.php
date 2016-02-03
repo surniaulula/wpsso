@@ -124,8 +124,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				// get_og_image() is only available in the Pro version
 				if ( $this->p->check->aop() ) {
 					if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-						$num_remains = $this->num_remains( $og_ret, $num );
-						$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_image( $num_remains, 
+						// get only the first image from $md_pre, do not try both $md_pre and 'og'
+						$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_image( 1, 
 							$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 					}
 				}
@@ -352,8 +352,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$use_full = true;
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.$img_meta['width'].'x'.$img_meta['height'] );
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions are missing' );
+			} elseif ( $this->p->debug->enabled ) {
+				if ( isset( $img_meta['file'] ) )
+					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions are missing' );
+				else $this->p->debug->log( 'full size image file path meta for '.$pid.' is missing' );
+			}
 
 			if ( $use_full === true ) {
 				if ( $this->p->debug->enabled )

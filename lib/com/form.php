@@ -388,14 +388,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			} else return $this->options;
 		}
 
-		private function in_options( $name ) {
-			return is_array( $this->options ) && 
-				array_key_exists( $name, $this->options ) ? true : false;
+		public function in_options( $idx, $is_preg = false ) {
+			if ( ! is_array( $this->options ) )
+				return false;
+
+			if ( $is_preg === false ) {
+				return isset( $this->options[$idx] ) ? 
+					true : false;
+			} else {
+				$opts = SucomUtil::preg_grep_keys( $idx, $this->options );
+				return ( ! empty( $opts ) ) ? 
+					true : false;
+			}
 		}
 
-		private function in_defaults( $name ) {
-			return is_array( $this->defaults ) && 
-				array_key_exists( $name, $this->defaults ) ? true : false;
+		public function in_defaults( $idx ) {
+			if ( ! is_array( $this->defaults ) )
+				return false;
+
+			return isset( $this->defaults[$idx] ) ? 
+				true : false;
 		}
 	}
 }

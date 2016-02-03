@@ -31,7 +31,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			$this->verify_certs = empty( $this->p->options['plugin_verify_certs'] ) ? 0 : 1;
 			$this->base_dir = trailingslashit( constant( $this->p->cf['uca'].'_CACHEDIR' ) );
 			$this->base_url = trailingslashit( constant( $this->p->cf['uca'].'_CACHEURL' ) );

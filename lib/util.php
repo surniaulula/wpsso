@@ -16,19 +16,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
 			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) )
 				$this->add_plugin_filters( $this, array( 
 					'installed_version' => 2, 
 					'ua_plugin' => 2,
 				), 10, 'sucom' );
-			$this->add_actions();
-		}
 
-		protected function add_actions() {
-			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from an url
+			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from a url
 			add_action( 'current_screen', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_file_cache' ) );
+
+			// the "current_screen" action hook is not called when editing / saving an image
+			// hook the "image_editor_save_pre" filter as to add image sizes for that attachment / post
+			add_filter( 'image_save_pre', array( &$this, 'image_editor_save_pre_image_sizes' ), -100, 2 );	// filter deprecated in wp 3.5
+			add_filter( 'image_editor_save_pre', array( &$this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
 		}
 
 		// called from several class __construct() methods to hook their filters
@@ -75,8 +78,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return $size_name;
 		}
 
-		// called directly (with or without an id) and from the 'wp' + 'current_screen' actions ($id will be an object)
-		public function add_plugin_image_sizes( $id = false, $sizes = array(), $filter = true, $mod = false ) {
+		public function image_editor_save_pre_image_sizes( $image, $post_id ) {
+			$this->add_plugin_image_sizes( $post_id, array(), true, 'post' );
+			return $image;
+		}
+
+		// can be called directly and from the "wp" and "current_screen" actions
+		// this method does not return a value, so do not use as a filter
+		public function add_plugin_image_sizes( $obj = false, $sizes = array(), $filter = true, $mod = false ) {
 			/*
 			 * Allow various plugin extensions to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
@@ -97,17 +106,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'define image sizes' );	// begin timer
 
 			if ( $filter === true )
-				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $id, $mod );
+				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $obj, $mod );
 
+			$id = false;
 			$meta_opts = array();
 
-			// check for object passed by some action hooks
-			if ( is_object( $id ) ) {
-				switch ( get_class( $id ) ) {
-					case 'WP':
-					case 'WP_Screen':
-						$id = false;
-						break;
+			// check for a recognized object passed by some action hooks
+			if ( is_object( $obj ) ) {
+				switch ( get_class( $obj ) ) {
 					case 'WP_Post':
 						$mod = 'post';
 						$id = $id->ID;
@@ -120,11 +126,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$mod = 'user';
 						$id = $id->ID;
 						break;
-					default:
-						$id = false;
-						break;
 				}
-			}
+			} else $id = $obj;
 
 			if ( empty( $mod ) ) {
 				if ( SucomUtil::is_post_page( false ) )

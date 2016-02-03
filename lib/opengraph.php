@@ -86,17 +86,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$obj = $this->p->util->get_post_object( $use_post );
 			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ||
 				! SucomUtil::is_post_page( $use_post ) ? 0 : $obj->ID;
+			$lca = $this->p->cf['lca'];
 
 			// counter for video previews found
 			$video_previews = 0;
 
 			// a post_id of 0 returns the default plugin settings 
 			$max = $this->p->util->get_max_nums( $post_id, 'post' );
-			$og = apply_filters( $this->p->cf['lca'].'_og_seed', $og, $use_post, $obj );
+			$og = apply_filters( $lca.'_og_seed', $og, $use_post, $obj );
 
 			if ( ! empty( $og ) && 
 				$this->p->debug->enabled ) {
-					$this->p->debug->log( $this->p->cf['lca'].'_og_seed filter returned:' );
+					$this->p->debug->log( $lca.'_og_seed filter returned:' );
 					$this->p->debug->log( $og );
 			}
 
@@ -135,7 +136,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
 
-				$og['og:type'] = apply_filters( $this->p->cf['lca'].'_og_type', $og['og:type'], $use_post );
+				$og['og:type'] = apply_filters( $lca.'_og_type', $og['og:type'], $use_post );
 
 				// pre-define basic open graph meta tags for this type
 				if ( isset( $this->p->cf['head']['og_type_mt'][$og['og:type']] ) ) {
@@ -154,7 +155,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$lang = empty( $this->p->options['fb_lang'] ) ? 
 					SucomUtil::get_locale( $post_id ) : $this->p->options['fb_lang'];
 
-				$lang = apply_filters( $this->p->cf['lca'].'_lang', 
+				$lang = apply_filters( $lca.'_lang', 
 					$lang, SucomUtil::get_pub_lang( 'facebook' ), $post_id );
 
 				$og['og:locale'] = $lang;
@@ -232,52 +233,55 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
+					$img_sizes = array( 'og' => $lca.'-opengraph' );
 					$crawler_name = SucomUtil::crawler_name();
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'crawler name detected: '.$crawler_name );
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						if ( is_admin() )
+						if ( is_admin() ) {
 							$img_sizes = array(
-								'rp' => $this->p->cf['lca'].'-richpin',
-								'og' => $this->p->cf['lca'].'-opengraph',
+								'rp' => $lca.'-richpin',
+								'og' => $lca.'-opengraph',
 							);
-						elseif ( $crawler_name === 'pinterest' )
-							$img_sizes = array( 'og' => $this->p->cf['lca'].'-richpin' );	// use the pinterest image size
-						else $img_sizes = array( 'og' => $this->p->cf['lca'].'-opengraph' );
-					} else $img_sizes = array( 'og' => $this->p->cf['lca'].'-opengraph' );
+						} elseif ( $crawler_name === 'pinterest' )
+							$img_sizes = array( 'rp' => $lca.'-richpin' );	// use the pinterest image size
+					}
 
-					$size_count = count( $img_sizes );
-					$size_num = 0;
 					foreach ( $img_sizes as $md_pre => $size_name ) {
-						$check_dupes = ++$size_num < $size_count ?
-							false : true;
 
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting all images for '.$md_pre.' ('.$size_name.')' );
 
+						// the size_name is used as a context for duplicate checks
 						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], 
 							$size_name, $post_id, $check_dupes, $md_pre );
 
-						switch ( $md_pre ) {
-							case 'rp':
-								foreach ( $og[$md_pre.':image'] as $num => $arr )
-									$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
-										$arr, false, 'pinterest:' );
-								break;
-							case 'og':
-								// if there's no image, and no video preview image, 
-								// then add the default image for singular webpages
-								if ( empty( $og[$md_pre.':image'] ) && $video_previews === 0 && 
-									SucomUtil::is_post_page( $use_post ) ) {
-									$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
-										$size_name, $check_dupes );
-								}
-								break;
+						// if there's no image, and no video preview image, 
+						// then add the default image for singular webpages
+						if ( empty( $og[$md_pre.':image'] ) && 
+							$video_previews === 0 && 
+							SucomUtil::is_post_page( $use_post ) ) {
+
+							$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
+								$size_name, $check_dupes );
+						}
+
+						if ( is_admin() ) {
+							switch ( $md_pre ) {
+								case 'rp':
+									// show both og and pinterest meta tags in the Head Tags tab
+									foreach ( $og[$md_pre.':image'] as $num => $arr )
+										$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
+											$arr, false, 'pinterest:' );
+									break;
+							}
 						}
 					}
 				} 
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_og', $og, $use_post, $obj );
+			return apply_filters( $lca.'_og', $og, $use_post, $obj );
 		}
 
 		public function get_all_videos( $num = 0, $id, $mod = 'post', $check_dupes = true, $md_pre = 'og', $force_prev_img = false ) {
