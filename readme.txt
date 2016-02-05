@@ -344,12 +344,12 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.22.2 (TBD) =
+= Version 3.23.0 (TBD) =
 
 Official announcement: N/A
 
 * **New Features**
-	* *None*
+	* Added a new "Website Alternate Name" option in the General settings under the Google / Schema tab.
 * **Improvements**
 	* *None*
 * **Bugfixes**
@@ -357,6 +357,16 @@ Official announcement: N/A
 	* Fixed the use of a custom Pinterest image ID / URL for the Pinterest crawler.
 * **Developer Notes**
 	* Added a new SucomUtil::strip_shortcodes() static method and 'sucom_strip_shortcodes' filter, which strips all registered shortcodes and Visual Composer shortcodes as well.
+	* Refactored the WpssoSchema json methods and added a new SuextJsonFormat class to format json code for PHP pre-5.4.
+	* Added a new WpssoUtil `json_format()` method to encode (if required) json data and format json code for the Head Tags tab.
+	* Added new filters (see wpsso/filters.txt for all available filters):
+		* 'wpsso_json_ld_search_url' (return url or false to disable)
+		* 'wpsso_add_schema_website_json' (return true or false)
+		* 'wpsso_add_schema_organization_json' (return true or false)
+		* 'wpsso_add_schema_person_json' (return true or false)
+		* 'wpsso_schema_website_data' (return an array)
+		* 'wpsso_schema_organization_data' (return an array)
+		* 'wpsso_schema_person_data' (return an array)
 
 = Version 3.22.1 (2016/01/30) =
 
