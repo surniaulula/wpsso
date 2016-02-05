@@ -366,26 +366,43 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( empty( $this->p->options['schema_author_json'] ) ||
-				empty( $author_id ) )
-					return $json;
+			$lca = $this->p->cf['lca'];
 
-			// only add the person json if the author has a website url
+			if ( empty( $author_id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: empty author_id' );
+				return $json;
+			}
+
+			$add_author_json = apply_filters( $lca.'_add_schema_author_json', 
+				$this->p->options['schema_author_json'] );
+
+			if ( empty( $add_author_json ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: author / person json disabled' );
+				return $json;
+			}
+
+			// only add the person json if the author has a valid website url
 			$author_website_url = get_the_author_meta( 'url', $author_id );
-			if ( strpos( $author_website_url, '://' ) === false )
+			if ( strpos( $author_website_url, '://' ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: invalid author website url' );
 				return false;
+			}
 
 			$size_name = $this->p->cf['lca'].'-schema';
 			$og_image = $this->get_og_image( 1, $size_name, $author_id, false );
-			$json = '{
-	"@context":"http://schema.org",
-	"@type":"Person",
-	"name":"'.$this->get_author_name( $author_id, 'fullname' )."\",\n".
-	( strpos( $author_website_url, '://' ) === false ? 
-		'' : "\t\"url\":\"".$author_website_url."\",\n" ).
-	$this->p->schema->get_json_image_list( 'image', $og_image, 'og:image' ).
-	"\t\"sameAs\":[\n";
-			$url_list = '';
+
+			$data = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'Person',
+				'url' => $author_website_url,
+				'name' => $this->get_author_name( $author_id, 'fullname' ),
+			);
+
+			$this->p->schema->add_image_list_data( $data, 'image', $og_image, 'og:image' );
+
 			foreach ( self::get_user_id_contact_methods( $author_id ) as $id => $label ) {
 				$url = trim( get_the_author_meta( $id, $author_id ) );
 				if ( empty( $url ) )
@@ -393,9 +410,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( $id === $this->p->options['plugin_cm_twitter_name'] )
 					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
 				if ( strpos( $url, '://' ) !== false )
-					$url_list .= "\t\t\"".$url."\",\n";
+					$data['sameAs'][] = esc_url( $url );
 			}
-			return $json.rtrim( $url_list, ",\n" )."\n\t]\n}\n";
+
+			return $this->p->util->json_format( apply_filters( $lca.'_schema_person_data', 
+				$data, $use_post, $obj, $mt_og, $post_id, $author_id ) );
 		}
 
 		// returns the facebook profile url for an author

@@ -1498,6 +1498,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			return $content;
 		}
+
+		public static function json_encode_array( array $data, $options = 0, $depth = 512 ) {
+			if ( function_exists( 'wp_json_encode' ) )
+				return wp_json_encode( $data, $options, $depth );
+			else return json_encode( $data, $options, $depth );
+		}
 	}
 }
 

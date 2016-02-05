@@ -269,6 +269,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Website Alternate Name',
+						'option label', 'wpsso' ), null, 'google_schema_alt_name' ).
+					'<td>'.$this->form->get_input( 'schema_alt_name', 'wide' ).'</td>';
+
+					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.

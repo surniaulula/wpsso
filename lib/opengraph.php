@@ -233,6 +233,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
+					$check_dupes = true;
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
 					$crawler_name = SucomUtil::crawler_name();
 					if ( $this->p->debug->enabled )

@@ -100,9 +100,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! empty( $obj->post_type ) &&
 					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
 
-					$type_name = $this->p->options['schema_type_for_'.$obj->post_type];
-					if ( isset( $schema_types[$type_name] ) )
-						$item_type = $schema_types[$type_name];
+					$ptn = $this->p->options['schema_type_for_'.$obj->post_type];
+					if ( isset( $schema_types[$ptn] ) )
+						$item_type = $schema_types[$ptn];
 					else $item_type = $schema_types['webpage'];
 
 				} else $item_type = $schema_types['webpage'];
@@ -198,8 +198,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $mt_og['og:image'] ) ) {
 				if ( is_array( $mt_og['og:image'] ) )
 					foreach ( $mt_og['og:image'] as $image )
-						$ret = array_merge( $ret, $this->get_noscript_single_image( $use_post, $image ) );
-				else $ret = array_merge( $ret, $this->get_noscript_single_image( $use_post, $mt_og['og:image'] ) );
+						$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
+				else $ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $mt_og['og:image'] ) );
 			}
 
 			if ( ! empty( $mt_og[$og_type.':rating:average'] ) &&
@@ -242,20 +242,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'http://schema.org/Person',
 				'http://schema.org/Organization',
 				$this->get_head_item_type( $use_post, $obj )
-			) ) as $type ) {
+			) ) as $item_type ) {
 				$filter_name = $this->p->cf['lca'].'_json_'.
-					SucomUtil::sanitize_hookname( $type );
+					SucomUtil::sanitize_hookname( $item_type );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'filter '.$filter_name );
 				if ( ( $json = apply_filters( $filter_name, false,
 					$use_post, $obj, $mt_og, $post_id, $author_id ) ) !== false )
-						$ret[] = "<script type=\"application/ld+json\">\n".
+						$ret[] = "<script type=\"application/ld+json\">".
 							$json."</script>\n";
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'filter '.$filter_name );
 			}
 
-			$ret = SucomUtil::a2aa( $ret );	// convert to array or arrays
+			$ret = SucomUtil::a2aa( $ret );	// convert to array of arrays
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $ret );
@@ -266,34 +266,76 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function filter_json_http_schema_org_website( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
-			if ( empty( $this->p->options['schema_website_json'] ) )
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$lca = $this->p->cf['lca'];
+
+			$add_website_json = apply_filters( $lca.'_add_schema_website_json', 
+				$this->p->options['schema_website_json'] );
+
+			$search_url = apply_filters( $lca.'_json_ld_search_url',
+				get_bloginfo( 'url' ).'?s={search_term_string}' );
+
+			if ( empty( $add_website_json ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: website json disabled' );
 				return $json;
-			else return '{
-	"@context":"http://schema.org",
-	"@type":"WebSite",
-	"name":"'.$this->p->og->get_site_name( $post_id ).'",
-	"url":"'.esc_url( get_bloginfo( 'url' ) ).'",
-	"potentialAction":{
-		"@type":"SearchAction",
-		"target":"'.esc_url( get_bloginfo( 'url' ) ).'?s={search_term_string}",
-		"query-input":"required name=search_term_string"
-	}'."\n}\n";
+			}
+
+			$data = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'WebSite',
+				'url' => esc_url( get_bloginfo( 'url' ) ),
+				'name' => $this->p->og->get_site_name( $post_id ),
+			);
+
+			if ( ! empty( $this->p->options['schema_alt_name'] ) )
+				$data['alternateName'] = $this->p->options['schema_alt_name'];
+
+			$data['url'] = esc_url( get_bloginfo( 'url' ) );
+
+			if ( ! empty( $search_url ) )
+				$data['potentialAction'] = array(
+					'@type' => 'SearchAction',
+					'target' => $search_url,
+					'query-input' => 'required name=search_term_string',
+				);
+
+			return $this->p->util->json_format( apply_filters( $lca.'_schema_website_data',
+				$data, $use_post, $obj, $mt_og, $post_id, $author_id ) );
 		}
 
 		public function filter_json_http_schema_org_organization( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
-			if ( empty( $this->p->options['schema_publisher_json'] ) )
-				return $json;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
-			$json = '{
-	"@context":"http://schema.org",
-	"@type":"Organization",
-	"name":"'.$this->p->og->get_site_name( $post_id ).'",
-	"url":"'.esc_url( get_bloginfo( 'url' ) )."\",\n".
-	$this->get_json_single_image( 'logo', $this->p->options, 'schema_logo_url' ).
-	"\t\"sameAs\":[\n";
-			$url_list = '';
-			foreach ( array( 'seo_publisher_url', 'fb_publisher_url',
-				'linkedin_publisher_url', 'tc_site' ) as $key ) {
+			$lca = $this->p->cf['lca'];
+
+			$add_organization_json = apply_filters( $lca.'_add_schema_organization_json', 
+				$this->p->options['schema_publisher_json'] );
+
+			if ( empty( $add_organization_json ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: organization json disabled' );
+				return $json;
+			}
+
+			$data = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'Organization',
+				'url' => esc_url( get_bloginfo( 'url' ) ),
+				'name' => $this->p->og->get_site_name( $post_id ),
+			);
+
+			$this->add_single_image_data( $data, 'logo', $this->p->options, 'schema_logo_url' );
+
+			foreach ( array(
+				'seo_publisher_url',
+				'fb_publisher_url',
+				'linkedin_publisher_url',
+				'tc_site',
+			) as $key ) {
 				$url = isset( $this->p->options[$key] ) ?
 					trim( $this->p->options[$key] ) : '';
 				if ( empty( $url ) )
@@ -301,63 +343,67 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $key === 'tc_site' )
 					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
 				if ( strpos( $url, '://' ) !== false )
-					$url_list .= "\t\t\"".esc_url( $url )."\",\n";
+					$data['sameAs'][] = esc_url( $url );
 			}
-			return $json.rtrim( $url_list, ",\n" )."\n\t]\n}\n";
+
+			return $this->p->util->json_format( apply_filters( $lca.'_schema_organization_data',
+				$data, $use_post, $obj, $mt_og, $post_id, $author_id ) );
 		}
 
-		// pass a two dimension array in $arr
-		public function get_json_image_list( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
-			foreach ( $arr as $image )
-				$json .= $this->get_json_single_image( $type, $image, $key_prefix );
-			return $json;
+		// pass a two dimension array in $og_image
+		public function add_image_list_data( array &$data, $obj_type = 'image', &$og_image, $opt_pre = 'og:image' ) {
+			foreach ( $og_image as $image )
+				$this->add_single_image_data( $data, $obj_type, $image, $opt_pre );
+			return $data;
 		}
 
-		// pass a single dimension array in $arr
-		public function get_json_single_image( $type = 'image', &$arr, $key_prefix = 'og:image', $json = '' ) {
-			if ( empty( $arr ) )
-				return $json;
-			elseif ( is_array( $arr ) ) {
-				if ( empty( $arr[$key_prefix] ) &&
-					empty( $arr[$key_prefix.':secure_url'] ) )
-						return $json;
-				else $json .= "\t\"".$type."\":{\n\t\t\"@type\":\"ImageObject\",\n".
-					trim( "\t\t\"url\":\"".
-						esc_url( ( ! empty( $arr[$key_prefix.':secure_url'] ) ?
-							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ) ).'",'."\n".
-						( ! empty( $arr[$key_prefix.':width'] ) && $arr[$key_prefix.':width'] > 0 ?
-							"\t\t\"width\":\"".$arr[$key_prefix.':width'].'",'."\n" : '' ).
-						( ! empty( $arr[$key_prefix.':height'] ) && $arr[$key_prefix.':height'] > 0 ?
-							"\t\t\"height\":\"".$arr[$key_prefix.':height'].'",'."\n" : '' ),
-						",\n" )."\n\t},\n";
-			};
-			return $json;
+		// pass a single dimension array in $opts
+		public function add_single_image_data( array &$data, $obj_type = 'image', &$opts, $opt_pre = 'og:image' ) {
+			if ( empty( $opts ) || 
+				! is_array( $opts ) )
+					return $data;
+
+			if ( empty( $opts[$opt_pre] ) &&
+				empty( $opts[$opt_pre.':secure_url'] ) )
+					return $data;
+			else {
+				$data[$obj_type] = array(
+					'@type' => 'ImageObject',
+					'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?
+						$opts[$opt_pre] : $opts[$opt_pre.':secure_url'] ),
+				);
+				foreach ( array ( 'width', 'height' ) as $wh )
+					if ( isset( $opts[$opt_pre.':'.$wh] ) && 
+						$opts[$opt_pre.':'.$wh] > 0 )
+							$data[$obj_type][$wh] = $opts[$opt_pre.':'.$wh];
+			}
+			return $data;
 		}
 
-		// pass a single dimension array in $arr
-		public function get_noscript_single_image( $use_post, &$arr, $key_prefix = 'og:image' ) {
-			if ( empty( $arr ) )
+		// pass a single dimension array in $opts
+		public function get_single_image_noscript( $use_post, &$opts, $opt_pre = 'og:image' ) {
+			if ( empty( $opts ) )
 				return array();
-			elseif ( is_array( $arr ) )
-				if ( empty( $arr[$key_prefix] ) &&
-					empty( $arr[$key_prefix.':secure_url'] ) )
+			elseif ( is_array( $opts ) )
+				if ( empty( $opts[$opt_pre] ) &&
+					empty( $opts[$opt_pre.':secure_url'] ) )
 						return array();
 				else return array_merge(
 					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', 
-						( ! empty( $arr[$key_prefix.':secure_url'] ) ?
-							$arr[$key_prefix.':secure_url'] : $arr[$key_prefix] ), '', $use_post ),
-					( empty( $arr[$key_prefix.':width'] ) ? array() :
+						( ! empty( $opts[$opt_pre.':secure_url'] ) ?
+							$opts[$opt_pre.':secure_url'] : $opts[$opt_pre] ), '', $use_post ),
+					( empty( $opts[$opt_pre.':width'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.width',
-							$arr[$key_prefix.':width'], '', $use_post ) ),
-					( empty( $arr[$key_prefix.':height'] ) ? array() :
+							$opts[$opt_pre.':width'], '', $use_post ) ),
+					( empty( $opts[$opt_pre.':height'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.height',
-							$arr[$key_prefix.':height'], '', $use_post ) ),
+							$opts[$opt_pre.':height'], '', $use_post ) ),
 					array( array( '</noscript>'."\n" ) )
 				);
 			else return array_merge(
 				array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
-				$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $arr, '', $use_post ),
+				$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $opts, '', $use_post ),
 				array( array( '</noscript>'."\n" ) )
 			);
 		}

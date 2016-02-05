@@ -503,6 +503,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_schema_logo_url':
 							$text = 'The URL to an image that Google should use as your organization\'s logo in search results and their <em>Knowledge Graph</em>.';
 							break;
+						case 'tooltip-google_schema_alt_name':
+							$text = 'An alternate name for your Website that you want Google to consider (optional).';
+							break;
 						case 'tooltip-google_schema_desc_len':
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
 							break;
@@ -519,7 +522,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include publisher (Organization) social profiles markup to webpage headers for Google Search. All URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).' will be included. The Open Graph Default Image ID / URL will be used as the Organization image, and the Schema Website / Business Logo URL will be used as the Organization\'s logo.';
 							break;
 						case 'tooltip-google_schema_website_json':
-							$text = 'Include Website schema markup in webpage headers for Google Search. The Website information includes the site name, URL, and search query URL.';
+							$text = 'Include Website schema markup in webpage headers for Google Search. The Website information includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false.';
 							break;
 						case 'tooltip-google_schema_add_noscript':
 							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';

@@ -252,6 +252,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 				w3tc_pgcache_flush();
+				w3tc_objectcache_flush();
 				$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
 			}
 			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
@@ -963,6 +964,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $opts;
+		}
+
+		// accepts json script or json array
+		public function json_format( $json, $options = JSON_UNESCAPED_SLASHES, $depth = 512 ) {
+
+			$json_format = false;
+
+			if ( is_admin() || $this->p->debug->enabled ) {
+				if ( function_exists( 'phpversion' ) && phpversion() >= 5.4 )
+					$options = $options|JSON_PRETTY_PRINT;
+				else $json_format = true;
+			}
+
+			if ( ! is_string( $json ) )
+				$json = SucomUtil::json_encode_array( $json, $options, $depth );
+
+			if ( $json_format ) {
+				$classname = WpssoConfig::load_lib( false, 'ext/jsonformat', 'suextjsonformat' );
+				if ( $classname !== false && class_exists( $classname ) )
+					$json = SuextJsonFormat::get( $json, $options, $depth );
+			}
+
+			return $json;
 		}
 	}
 }
