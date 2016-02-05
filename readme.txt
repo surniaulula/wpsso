@@ -344,14 +344,14 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.23.0 (TBD) =
+= Version 3.23.0 (2016/02/06) =
 
-Official announcement: N/A
+Official announcement: http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/
 
 * **New Features**
 	* Added a new "Website Alternate Name" option in the General settings under the Google / Schema tab.
 * **Improvements**
-	* Updated the Wistia media integration module to support the new Wistia video async embed HTML.
+	* Updated the Wistia media integration module to support the new Wistia video async embed HTML (Pro version).
 * **Bugfixes**
 	* Fixed missing custom image sizes when editing an image in the Media Library.
 	* Fixed the use of a custom Pinterest image ID / URL for the Pinterest crawler.
@@ -389,6 +389,10 @@ Official announcement: N/A
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
 == Upgrade Notice ==
+
+= 3.23.0 =
+
+2016/02/06 - Added a new "Website Alternate Name" option. Updated Wistia media integration module. Fixed missing custom image sizes when editing an image in the Media Library. Fixed use of a custom Pinterest image ID / URL.
 
 = 3.22.1 =
 
