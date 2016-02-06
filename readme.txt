@@ -3,7 +3,7 @@ Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
-Contributors: jsmoriss
+Contributors: JS Morisset
 Donate Link: https://wpsso.com/
 Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo
 License: GPLv3
