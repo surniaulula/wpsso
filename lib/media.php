@@ -892,17 +892,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 			$og_ret = array();
 
-			$url = empty( $this->p->options['og_def_vid_url'] ) ?
+			$embed_url = empty( $this->p->options['og_def_vid_url'] ) ?
 				'' : $this->p->options['og_def_vid_url'];
 
-			if ( ! empty( $url ) && ( $check_dupes == false || 
-				$this->p->util->is_uniq_url( $url ) ) ) {
+			if ( ! empty( $embed_url ) && ( $check_dupes == false || 
+				$this->p->util->is_uniq_url( $embed_url ) ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default video url = '.$url );
+					$this->p->debug->log( 'using default video url = '.$embed_url );
 
 				// fallback to video url if necessary
-				$og_video = $this->get_video_info( $url, 0, 0, $check_dupes, true );
+				$og_video = $this->get_video_info( $embed_url, 0, 0, $check_dupes, true );
 				if ( ! empty( $og_video ) && 
 					$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
 						return $og_ret;
@@ -953,10 +953,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $embed_url ) && ( $check_dupes == false || 
 						$this->p->util->is_uniq_url( $embed_url ) ) ) {
 
-						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
-						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : -1;
+						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', 
+							$media[0], $match) ? $match[1] : -1;
+						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', 
+							$media[0], $match) ? $match[1] : -1;
 
 						$og_video = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
+
 						if ( ! empty( $og_video ) && 
 							$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
 								return $og_ret;
@@ -979,6 +982,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( ! empty( $media[0] ) && ( $check_dupes == false || 
 								$this->p->util->is_uniq_url( $media[0] ) ) ) {
 
+								// 
 								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
 								if ( ! empty( $og_video ) && 
 									$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
@@ -992,8 +996,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( $url, $embed_width = 0, $embed_height = 0, $check_dupes = true, $fallback = false ) {
-			if ( empty( $url ) ) 
+		public function get_video_info( $embed_url, $embed_width = -1, $embed_height = -1, $check_dupes = true, $fallback = false ) {
+			if ( empty( $embed_url ) ) 
 				return array();
 
 			$filter_name = $this->p->cf['lca'].'_video_info';
@@ -1004,50 +1008,60 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_video = array(
+				// video
+				'og:video:secure_url' => '',				// secure url before standard url
 				'og:video:url' => '',
-				'og:video:embed_url' => '',
-				'og:video:secure_url' => '',
 				'og:video:type' => 'application/x-shockwave-flash',	// default type, after the url
 				'og:video:width' => $embed_width,			// default width
 				'og:video:height' => $embed_height,			// default height
+				'og:video:embed_url' => '',				// oembed url providing text/html
+				// image
+				'og:image:secure_url' => '',				// secure url before standard url
 				'og:image' => '',
 				'og:image:width' => -1,
 				'og:image:height' => -1,
 			);
 
-			$og_video = apply_filters( $filter_name, $og_video, $url, $embed_width, $embed_height );
+			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
-			// cleanup any extra video meta tags - just in case
-			if ( empty( $og_video['og:video:url'] ) || ( $check_dupes &&
-				! $this->p->util->is_uniq_url( $og_video['og:video:url'] ) ) )
-					unset ( 
-						$og_video['og:video:url'],
-						$og_video['og:video:embed_url'],
-						$og_video['og:video:secure_url'],
-						$og_video['og:video:type'],
-						$og_video['og:video:width'],
-						$og_video['og:video:height']
-					);
+			$have = array(
+				'video' => false,
+				'image' => false
+			);
 
-			// cleanup any extra image meta tags
-			if ( empty( $og_video['og:image'] ) || 
-				( $check_dupes && ! $this->p->util->is_uniq_url( $og_video['og:image'] ) ) )
-					unset ( 
-						$og_video['og:image'],
-						$og_video['og:image:secure_url'],
-						$og_video['og:image:width'],
-						$og_video['og:image:height']
-					);
-
-			// fallback to the original url
-			if ( empty( $og_video['og:video:url'] ) && $fallback === true ) {
-				if ( ! $check_dupes || $this->p->util->is_uniq_url( $url ) )
-					$og_video['og:video:url'] = $url;
+			foreach ( array( 'video', 'image' ) as $media ) {
+				// secure_url takes precedence
+				foreach ( array( ':secure_url', ':url', '' ) as $type ) {
+					if ( ! empty( $og_video['og:'.$media.$type] ) ) {
+						$key = 'og:'.$media.$type;
+						$have[$media] = true;
+						break;
+					}
+				}
+				// if there's no video, or it's a duplicate, unset the whole array for that media
+				if ( empty( $og_video[$key] ) || 
+					( $check_dupes && ! $this->p->util->is_uniq_url( $og_video[$key] ) ) )
+						unset ( 
+							$og_video['og:'.$media.':secure_url'],
+							$og_video['og:'.$media.':url'],
+							$og_video['og:'.$media],
+							$og_video['og:'.$media.':type'],
+							$og_video['og:'.$media.':width'],
+							$og_video['og:'.$media.':height'],
+							$og_video['og:'.$media.':embed_url']
+						);
 			}
 
-			if ( empty( $og_video['og:video:url'] ) && 
-				empty( $og_video['og:image'] ) ) 
-					return array();
+			// fallback to the original url
+			if ( ! $have['video'] && $fallback ) {
+				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url ) ) {
+					$og_video['og:video:url'] = $embed_url;
+					$have['video'] = true;
+				}
+			}
+
+			if ( ! $have['video'] && ! $have['image'] ) 
+				return array();
 			else return $og_video;
 		}
 	}
