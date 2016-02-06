@@ -968,9 +968,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				// complete relative paths in the image array
 				foreach ( self::$cf['plugin'] as $lca => $info ) {
-					foreach ( $info['img'] as $id => $url )
-						if ( ! empty( $url ) && strpos( $url, '//' ) === false )
+					foreach ( $info['img'] as $id => $url ) {
+						if ( ! empty( $url ) && strpos( $url, '//' ) === false ) {
 							self::$cf['plugin'][$lca]['img'][$id] = trailingslashit( plugins_url( '', $info['base'] ) ).$url;
+						}
+					}
 				}
 			}
 
