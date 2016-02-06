@@ -9,7 +9,7 @@ Tags: attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Fa
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.4
+Tested Up To: 4.4.2
 Stable Tag: 3.23.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
