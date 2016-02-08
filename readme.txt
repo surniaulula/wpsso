@@ -344,6 +344,37 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
+= Version 3.24.0 (TBD) =
+
+Official announcement: N/A
+
+* **New Features**
+	* *None*
+* **Improvements**
+	* Removed the "Use Meta Property Containers" option (the 'noscript' meta container feature has been deprecated).
+* **Bugfixes**
+	* *None*
+* **Developer Notes**
+	* Refactored the WpssoUtil `add_plugin_hooks()` method to support both method and function hooks.
+	* Removed the WpssoSchema `get_noscript_array()` and `get_single_image_noscript()` methods (the 'noscript' meta container feature has been deprecated).
+	* Added new WpssoSchema filters:
+		* 'ngfb_add_schema_head_attributes'
+		* 'ngfb_add_schema_meta_array'
+		* 'ngfb_data_http_schema_org_item_type'
+		* 'ngfb_data_http_schema_org_organization'
+		* 'ngfb_data_http_schema_org_person'
+		* 'ngfb_data_http_schema_org_website'
+		* 'ngfb_data_http_schema_org_{item_type}'
+	* Removed deprecated filters:
+		* 'ngfb_schema_website_data'
+		* 'ngfb_schema_organization_data'
+		* 'ngfb_schema_person_data'
+		* 'ngfb_json_http_schema_org_item_type'
+		* 'ngfb_json_http_schema_org_organization'
+		* 'ngfb_json_http_schema_org_person'
+		* 'ngfb_json_http_schema_org_website'
+		* 'ngfb_json_http_schema_org_{item_type}'
+
 = Version 3.23.0 (2016/02/06) =
 
 Official announcement: http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/
