@@ -348,6 +348,8 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Official announcement: N/A
 
+Please note: This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
+
 * **New Features**
 	* *None*
 * **Improvements**
