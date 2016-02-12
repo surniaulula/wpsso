@@ -346,7 +346,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-= Version 3.24.0 (2016/02/13) =
+**Version 3.24.0 (2016/02/13)**
 
 Official announcement: N/A
 
@@ -380,7 +380,7 @@ Please note: This latest release includes many core filter name changes -- **if 
 		* 'wpsso_json_http_schema_org_{item_type}'
 	* Renamed all core 'wpsso_*_tabs' filters.
 
-= Version 3.23.0 (2016/02/06) =
+**Version 3.23.0 (2016/02/06)**
 
 Official announcement: http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/
 
@@ -404,7 +404,7 @@ Official announcement: http://wpsso.com/2016/02/05/wpsso-update-wistia-and-socia
 		* 'wpsso_schema_organization_data' (return an array)
 		* 'wpsso_schema_person_data' (return an array)
 
-= Version 3.22.1 (2016/01/30) =
+**Version 3.22.1 (2016/01/30)**
 
 Official announcement: N/A
 
