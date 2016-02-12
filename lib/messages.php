@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to install / enable Pro modules and modify the following options.', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( '%s required to use this option', 'option comment', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ), $atts['short_pro'] ).'</a></p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $atts );

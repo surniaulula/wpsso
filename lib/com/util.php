@@ -250,12 +250,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function insert_before_key( array &$array, $before_key, $new_key, $new_value ) {
+		public static function insert_before_key( array &$array, $before_key, $new_key_or_arr, $new_key_value = '' ) {
 			if ( array_key_exists( $before_key, $array ) ) {
 				$new_array = array();
 				foreach ( $array as $key => $value ) {
 					if ( $key === $before_key ) {
-						$new_array[$new_key] = $new_value;
+						if ( is_array( $new_key_or_arr ) )
+							$new_array = array_merge( $new_array, $new_key_or_arr );
+						else $new_array[$new_key_or_arr] = $new_key_value;
 					}
 					$new_array[$key] = $value;
 				}
@@ -264,13 +266,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $array;
 		}
 
-		public static function insert_after_key( array &$array, $after_key, $new_key, $new_value ) {
+		public static function insert_after_key( array &$array, $after_key, $new_key_or_arr, $new_key_value = '' ) {
 			if ( array_key_exists( $after_key, $array ) ) {
 				$new_array = array();
 				foreach ( $array as $key => $value ) {
 					$new_array[$key] = $value;
 					if ( $key === $after_key ) {
-						$new_array[$new_key] = $new_value;
+						if ( is_array( $new_key_or_arr ) )
+							$new_array = array_merge( $new_array, $new_key_or_arr );
+						else $new_array[$new_key_or_arr] = $new_key_value;
 					}
 				}
 				return $new_array;
