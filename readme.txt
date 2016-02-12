@@ -348,7 +348,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Official announcement: N/A
 
-Please note: This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
+Please note: This latest release includes many core filter name changes -- **if you use additional WPSSO extensions, please make sure you update these as well**.
 
 * **New Features**
 	* *None*
@@ -360,22 +360,23 @@ Please note: This latest release includes many core filter name changes -- if yo
 	* Refactored the WpssoUtil `add_plugin_hooks()` method to support both method and function hooks.
 	* Removed the WpssoSchema `get_noscript_array()` and `get_single_image_noscript()` methods (the 'noscript' meta container feature has been deprecated).
 	* Added new WpssoSchema filters:
-		* 'ngfb_add_schema_head_attributes'
-		* 'ngfb_add_schema_meta_array'
-		* 'ngfb_data_http_schema_org_item_type'
-		* 'ngfb_data_http_schema_org_organization'
-		* 'ngfb_data_http_schema_org_person'
-		* 'ngfb_data_http_schema_org_website'
-		* 'ngfb_data_http_schema_org_{item_type}'
+		* 'wpsso_add_schema_head_attributes'
+		* 'wpsso_add_schema_meta_array'
+		* 'wpsso_data_http_schema_org_item_type'
+		* 'wpsso_data_http_schema_org_organization'
+		* 'wpsso_data_http_schema_org_person'
+		* 'wpsso_data_http_schema_org_website'
+		* 'wpsso_data_http_schema_org_{item_type}'
 	* Removed deprecated filters:
-		* 'ngfb_schema_website_data'
-		* 'ngfb_schema_organization_data'
-		* 'ngfb_schema_person_data'
-		* 'ngfb_json_http_schema_org_item_type'
-		* 'ngfb_json_http_schema_org_organization'
-		* 'ngfb_json_http_schema_org_person'
-		* 'ngfb_json_http_schema_org_website'
-		* 'ngfb_json_http_schema_org_{item_type}'
+		* 'wpsso_schema_website_data'
+		* 'wpsso_schema_organization_data'
+		* 'wpsso_schema_person_data'
+		* 'wpsso_json_http_schema_org_item_type'
+		* 'wpsso_json_http_schema_org_organization'
+		* 'wpsso_json_http_schema_org_person'
+		* 'wpsso_json_http_schema_org_website'
+		* 'wpsso_json_http_schema_org_{item_type}'
+	* Renamed all core 'wpsso_*_tabs' filters.
 
 = Version 3.23.0 (2016/02/06) =
 
@@ -423,11 +424,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.23.0 =
+= 3.24.0 =
 
-2016/02/06 - Added a new "Website Alternate Name" option. Updated Wistia media integration module. Fixed missing custom image sizes when editing an image in the Media Library. Fixed use of a custom Pinterest image ID / URL.
-
-= 3.22.1 =
-
-2016/01/30 - Added a call to getimagesize() for images in the content without width / height attribute values. Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
+2016/02/13 - This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
 
