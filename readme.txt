@@ -344,7 +344,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 * [GitHub](https://github.com/SurniaUlula/wpsso)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version 3.24.0 (TBD) =
+= Version 3.24.0 (2016/02/13) =
 
 Official announcement: N/A
 
