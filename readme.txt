@@ -382,7 +382,7 @@ Please note: This latest release includes many core filter name changes -- **if 
 
 **Version 3.23.0 (2016/02/06)**
 
-Official announcement: http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/
+Official announcement: [WPSSO Update – Wistia and Social JSON Improvements](http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/)
 
 * **New Features**
 	* Added a new "Website Alternate Name" option in the General settings under the Google / Schema tab.
