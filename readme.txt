@@ -352,13 +352,13 @@ Official announcement: N/A
 
 Please note: This latest release includes many core filter name changes -- **if you use additional WPSSO extensions, please make sure you update these as well**.
 
-* **New Features**
-	* *None*
-* **Improvements**
+* *New Features*
+	* None
+* *Improvements*
 	* Removed the "Use Meta Property Containers" option (the 'noscript' meta container feature has been deprecated).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
+* *Bugfixes*
+	* None
+* *Developer Notes*
 	* Refactored the WpssoUtil `add_plugin_hooks()` method to support both method and function hooks.
 	* Removed the WpssoSchema `get_noscript_array()` and `get_single_image_noscript()` methods (the 'noscript' meta container feature has been deprecated).
 	* Added new WpssoSchema filters:
@@ -384,14 +384,14 @@ Please note: This latest release includes many core filter name changes -- **if 
 
 Official announcement: [WPSSO Update – Wistia and Social JSON Improvements](http://wpsso.com/2016/02/05/wpsso-update-wistia-and-social-json-improvements/)
 
-* **New Features**
+* *New Features*
 	* Added a new "Website Alternate Name" option in the General settings under the Google / Schema tab.
-* **Improvements**
+* *Improvements*
 	* Updated the Wistia media integration module to support the new Wistia video async embed HTML (Pro version).
-* **Bugfixes**
+* *Bugfixes*
 	* Fixed missing custom image sizes when editing an image in the Media Library.
 	* Fixed the use of a custom Pinterest image ID / URL for the Pinterest crawler.
-* **Developer Notes**
+* *Developer Notes*
 	* Added a new SucomUtil::strip_shortcodes() static method and 'sucom_strip_shortcodes' filter, which strips all registered shortcodes and Visual Composer shortcodes as well.
 	* Refactored the WpssoSchema json methods and added a new SuextJsonFormat class to format json code for PHP pre-5.4.
 	* Added a new WpssoUtil `json_format()` method to encode (if required) json data and format json code for the Head Tags tab.
@@ -408,19 +408,19 @@ Official announcement: [WPSSO Update – Wistia and Social JSON Improvements](ht
 
 Official announcement: N/A
 
-* **New Features**
+* *New Features*
 	* Added a call to getimagesize() for images in the content without width / height attribute values.
 	* Added a new module for BuddyPress rtMedia to include WP Media Library image IDs in BuddyPress activity images (Pro version).
-* **Improvements**
+* *Improvements*
 	* **Enabled WordPress oEmbed filters on post content in the head section to generate complete HTML embed code.**
 	* Added the Facebook "Author Name Format" option to the Essential Settings page.
 	* Used the new SucomUtil::is_https() and SucomUtil::get_prot() static methods to determine the protocol to be used (http or https).
 	* Updated the Setup Guide with a new "Accept Smaller / Thumbnail Images?" information box.
 	* Treat BuddyPress single activity pages as posts (to use attached / content images, etc.) (Pro version).
 	* Treat BuddyPress user + activity URLs as an activity page instead of a user page (Pro version).
-* **Bugfixes**
-	* *None*
-* **Developer Notes**
+* *Bugfixes*
+	* None
+* *Developer Notes*
 	* Added SucomUtil::is_https() and SucomUtil::get_prot() static methods to test for PHP's `$_SERVER['HTTPS']` variable and the 'FORCE_SSL_ADMIN' WordPress constant.
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
