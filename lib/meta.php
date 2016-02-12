@@ -25,13 +25,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected function get_default_tabs() {
 			$tabs = array();
-			foreach( array(
+			foreach( apply_filters( $this->p->cf['lca'].'_social_settings_default_tabs', array(
 				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
-				'header' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),
-				'media' => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
+				'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
+				'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
-			) as $key => $name ) {
+			) ) as $key => $name ) {
 				if ( isset( $this->p->options['plugin_add_tab_'.$key] ) ) {
 					if ( ! empty( $this->p->options['plugin_add_tab_'.$key] ) )
 						$tabs[$key] = $name;
@@ -129,7 +129,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				</div>
 			</div></td>';
 
-			$rows[] = '<th class="medium textinfo">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</th>';
+			$rows[] = '<th class="medium textinfo" id="info-meta-social-preview">'.
+				$this->p->msgs->get( 'info-meta-social-preview' ).'</th>';
 
 			return $rows;
 		}
@@ -201,6 +202,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_art_section' => -1,
 					'og_title' => '',
 					'og_desc' => '',
+					'schema_headline' => '',
 					'schema_desc' => '',
 					'seo_desc' => '',
 					'tc_desc' => '',

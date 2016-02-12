@@ -12,6 +12,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
+		protected $inline_vars = array(
+			'%%post_id%%',
+			'%%request_url%%',
+			'%%sharing_url%%',
+			'%%short_url%%',
+		);
+		protected $inline_vals = array();
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
@@ -46,12 +54,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		protected function add_plugin_hooks( $type, &$class, &$hooks, &$prio, &$lca ) {
 			$lca = $lca === '' ?
 				$this->p->cf['lca'] : $lca;
-			foreach ( $hooks as $name => $num ) {
-				$hook = $lca.'_'.$name;
-				$method = SucomUtil::sanitize_hookname( $type.'_'.$name );
-				call_user_func( 'add_'.$type, $hook, array( &$class, $method ), $prio, $num );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $type.' for '.$hook.' added', 3 );
+			foreach ( $hooks as $name => $val ) {
+				if ( ! is_string( $name ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $name.' => '.$val.' '.$type.
+							' skipped: filter name must be a string' );
+					continue;
+				}
+				$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+				if ( is_int( $val ) ) {
+					$arg_nums = $val;
+					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+					call_user_func( 'add_'.$type, $hook_name, 
+						array( &$class, $method_name ), $prio, $arg_nums );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'added '.$hook_name.' '.$type.
+							' method hook '.$method_name, 3 );	// show calling method
+				} elseif ( is_string( $val ) ) {
+					$arg_nums = 1;
+					$function_name = SucomUtil::sanitize_hookname( $val );
+					call_user_func( 'add_'.$type, $hook_name, 
+						$function_name, $prio, $arg_nums );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'added '.$hook_name.' '.$type.
+							' function hook '.$function_name, 3 );	// show calling method
+				}
 			}
 		}
 
@@ -871,7 +898,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_inline_vars() {
-			return $inline_vars;
+			return $this->inline_vars;
 		}
 
 		public function get_inline_vals( $use_post = false, &$obj = false, &$atts = array() ) {
@@ -981,7 +1008,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$json = SucomUtil::json_encode_array( $json, $options, $depth );
 
 			if ( $json_format ) {
-				$classname = WpssoConfig::load_lib( false, 'ext/jsonformat', 'suextjsonformat' );
+				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 				if ( $classname !== false && class_exists( $classname ) )
 					$json = SuextJsonFormat::get( $json, $options, $depth );
 			}

@@ -23,9 +23,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			add_filter( 'user_contactmethods', 
 				array( &$this, 'add_contact_methods' ), 20, 2 );
 
-			$this->p->util->add_plugin_filters( $this, 
-				array( 'json_http_schema_org_person' => 6 ) );
-
 			if ( is_admin() ) {
 				/**
 				 * Hook a minimum number of admin actions to maximize performance.
@@ -228,7 +225,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'user';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
+			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_user_tabs',
 				$this->get_default_tabs(), $user );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
@@ -362,61 +359,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function filter_json_http_schema_org_person( $json, $use_post, $obj, $mt_og, $post_id, $author_id ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
-			$lca = $this->p->cf['lca'];
-
-			if ( empty( $author_id ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: empty author_id' );
-				return $json;
-			}
-
-			$add_author_json = apply_filters( $lca.'_add_schema_author_json', 
-				$this->p->options['schema_author_json'] );
-
-			if ( empty( $add_author_json ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: author / person json disabled' );
-				return $json;
-			}
-
-			// only add the person json if the author has a valid website url
-			$author_website_url = get_the_author_meta( 'url', $author_id );
-			if ( strpos( $author_website_url, '://' ) === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: invalid author website url' );
-				return false;
-			}
-
-			$size_name = $this->p->cf['lca'].'-schema';
-			$og_image = $this->get_og_image( 1, $size_name, $author_id, false );
-
-			$data = array(
-				'@context' => 'http://schema.org',
-				'@type' => 'Person',
-				'url' => $author_website_url,
-				'name' => $this->get_author_name( $author_id, 'fullname' ),
-			);
-
-			$this->p->schema->add_image_list_data( $data, 'image', $og_image, 'og:image' );
-
-			foreach ( self::get_user_id_contact_methods( $author_id ) as $id => $label ) {
-				$url = trim( get_the_author_meta( $id, $author_id ) );
-				if ( empty( $url ) )
-					continue;
-				if ( $id === $this->p->options['plugin_cm_twitter_name'] )
-					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				if ( strpos( $url, '://' ) !== false )
-					$data['sameAs'][] = esc_url( $url );
-			}
-
-			return $this->p->util->json_format( apply_filters( $lca.'_schema_person_data', 
-				$data, $use_post, $obj, $mt_og, $post_id, $author_id ) );
-		}
-
 		// returns the facebook profile url for an author
 		// unless the pinterest crawler is detected, in which case it returns the author's name
 		public function get_author_profile_url( $author_ids, $url_field = 'og_author_field' ) {
@@ -456,7 +398,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					break;
 			}
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' name: '.$name );
+				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' value: '.$name );
 			return $name;
 		}
 

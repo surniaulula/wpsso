@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.4.2
- * Version: 3.23.0
+ * Version: 3.24.0
  * 
  * Copyright 2012-2016 Jean-Sebastien Morisset (http://surniaulula.com/)
  */

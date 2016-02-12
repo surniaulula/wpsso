@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * Free version
 						 */
 						case 'tooltip-side-author-json-ld':
-							$text = __( 'Include author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
+							$text = __( 'Add author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
 							break;
 						case 'tooltip-side-debug-messages':
 							$text = sprintf( __( 'The debug library is loaded when the <em>Add Hidden Debug Messages</em> option is checked, or one of the debugging <a href="%s" target="_blank">constants</a> is defined.', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
@@ -74,13 +74,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a supported eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices and attributes.', 'wpsso' );
 							break;
 						case 'tooltip-side-publisher-json-ld':
-							$text = __( 'Include publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
+							$text = __( 'Add publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
 							break;
 						case 'tooltip-side-transient-cache':
 							$text = sprintf( __( 'The plugin saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, and JSON-LD markup to a persistant (aka <a href="%1$s" target="_blank">Transient</a>) cache for %2$d seconds. You can adjust the Transient cache expiration value on the <a href="%3$s">%4$s</a> settings page, or disable it completely by using one of the available <a href="%5$s" target="_blank">constants</a>.', 'wpsso' ), 'https://codex.wordpress.org/Transients_API', $this->p->options['plugin_object_cache_exp'], $this->p->util->get_admin_url( 'advanced' ), _x( 'Advanced', 'lib file description', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
 							break;
 						case 'tooltip-side-twitter-cards':
 							$text = __( 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with additional information about your content. Twitter Cards are displayed more prominently on Twitter, allowing you to highlight your content more effectively.', 'wpsso' );
+							break;
+						case 'tooltip-side-website-json-ld':
+							$text = __( 'Add Website markup to webpage headers in schema.org JSON-LD format for Google Search. The Website markup includes the home page URL, name, alternate name, and search query URL.', 'wpsso' );
 							break;
 						/*
 						 * Pro version
@@ -128,7 +131,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-meta-og_title':
-							$text = 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags (all Twitter Card formats), and the Pinterest, Tumblr, and Twitter sharing captions / texts, depending on some option settings.';
+							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_desc':
 							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
@@ -524,9 +527,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_schema_website_json':
 							$text = 'Include Website schema markup in webpage headers for Google Search. The Website information includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false.';
 							break;
-						case 'tooltip-google_schema_add_noscript':
-							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';
-							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $atts );
 							break;
@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'info-meta-social-preview':
-					 	$text = '<p style="text-align:right;">The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the application platform, resolution, orientation, etc.).</p>';
+					 	$text = '<p style="text-align:right;">'.__( 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 					 	break;
 					case 'info-plugin-tid':
 						$um_lca = $this->p->cf['lca'].'um';
@@ -716,7 +716,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						} else $text = __( 'Please select or upload a larger / different image. The Priority Media tab can also be used to select a larger image specifically for social sharing.', 'wpsso' );
 						break;
 					case 'notice-missing-og-image':
-						$text = __( 'An Open Graph image meta tag could not be created from this webpage content &mdash; Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image, for Facebook and other social websites, in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
+						$text = __( 'An Open Graph image meta tag could not be created from this webpage content. Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image &ndash; for Facebook and other social websites &ndash; in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
 						break;
 					case 'notice-object-cache-exp':
 						$text = sprintf( __( 'Please note that the <a href="%1$s">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this is lower than the recommended default value of %4$d seconds.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache' ), _x( 'Object Cache Expiry', 'option label', 'wpsso' ), $this->p->options['plugin_object_cache_exp'], $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) );

@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		public function show_metabox_plugin() {
 			$metabox = 'plugin';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_advanced_plugin_tabs', array( 
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
 				'social' => _x( 'Social Settings', 'metabox tab', 'wpsso' ),
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		public function show_metabox_contact_fields() {
 			$metabox = 'cm';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_advanced_cm_tabs', array( 
 				'custom' => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
 				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
 			) );

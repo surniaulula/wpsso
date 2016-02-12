@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_opengraph() {
 			$metabox = 'og';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array( 
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_publishers() {
 			$metabox = 'pub';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_general_pub_tabs', array( 
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
@@ -299,22 +299,17 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$schema_select.'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Meta Property Containers',
-						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
-					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
-
-					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Include Website JSON-LD',
+					$this->p->util->get_th( _x( 'Add Website JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_website_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_website_json' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Include Publisher JSON-LD',
+					$this->p->util->get_th( _x( 'Add Publisher (Organization) JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_publisher_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_publisher_json' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Include Author JSON-LD',
+					$this->p->util->get_th( _x( 'Add Author (Person) JSON-LD',
 						'option label', 'wpsso' ), null, 'google_schema_author_json' ).
 					'<td>'.$this->form->get_checkbox( 'schema_author_json' ).'</td>';
 

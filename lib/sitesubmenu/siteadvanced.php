@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 		public function show_metabox_plugin() {
 			$metabox = 'plugin';
-			$tabs = apply_filters( $this->p->cf['lca'].'_network_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array( 
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'File and Object Cache', 'metabox tab', 'wpsso' ),
 			) );

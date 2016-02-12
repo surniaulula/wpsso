@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.23.0',		// plugin version
+					'version' => '3.24.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -168,6 +168,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'pro_support' => 'http://wpsso-am.support.wpsso.com/',
 					),
 				),
+				'wpssojson' => array(
+					'short' => 'WPSSO JSON',		// short plugin name
+					'name' => 'WPSSO Schema JSON-LD (WPSSO JSON)',
+					'desc' => 'WPSSO extension to add Schema JSON-LD markup in webpage headers for Google, Pinterest, etc.',
+					'slug' => 'wpsso-schema-json-ld',
+					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
+					'update_auth' => 'tid',
+					'img' => array(
+						'icon_small' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
+					),
+					'url' => array(
+						// wordpress
+						'download' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-schema-json-ld?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-schema-json-ld/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
+						// surniaulula
+						'update' => 'http://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-schema-json-ld/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-schema-json-ld/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-schema-json-ld/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-schema-json-ld/feed/',
+						'pro_support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
+					),
+				),
 				'wpssoplm' => array(
 					'short' => 'WPSSO PLM',		// short plugin name
 					'name' => 'WPSSO Place and Location Meta (WPSSO PLM)',
@@ -282,7 +310,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso405',				// increment when changing default options
+				'version' => 'sso407',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_logo_url' => '',
@@ -309,7 +337,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_author_json' => 1,
 					'schema_publisher_json' => 1,
 					'schema_website_json' => 1,
-					'schema_add_noscript' => 1,
 					'seo_desc_len' => 156,			// meta name="description" maximum text length
 					'seo_author_name' => 'none',		// meta name="author" format
 					'seo_def_author_id' => 0,
@@ -661,6 +688,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'youtube' => 'yt',
 					'skype' => 'skype',
 					'vk' => 'vk',
+					'whatsapp' => 'wa',
 				),
 			),
 			'wp' => array(				// wordpress

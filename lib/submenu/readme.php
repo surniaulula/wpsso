@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_readme() {
 			$metabox = 'readme';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_plugin_readme_tabs', array( 
 				'description' => _x( 'Description', 'metabox tab', 'wpsso' ),
 				'faq' => _x( 'FAQ', 'metabox tab', 'wpsso' ),
 				'notes' => _x( 'Other Notes', 'metabox tab', 'wpsso' ),

@@ -16,11 +16,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		public function __construct( &$plugin, $activate = false ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'load modules' );	// begin timer
 			$this->modules();
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'load modules' );	// end timer
 		}
 
 		private function modules() {
@@ -38,6 +34,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						return;
 				}
 			}
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'load modules' );	// begin timer
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				$type = $this->p->is_avail['aop'] &&
 					$this->p->is_avail['util']['um'] &&
@@ -51,6 +49,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							continue;
 					foreach ( $lib as $id => $name ) {
 						if ( $this->p->is_avail[$sub][$id] ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id.' ('.$name.')' );
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
 							if ( $classname !== false && class_exists( $classname ) )
 								$this->p->mods[$sub][$id] = new $classname( $this->p );
@@ -58,6 +58,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					}
 				}
 			}
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'load modules' );	// end timer
 		}
 	}
 }

@@ -627,28 +627,34 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$show_opts_url = $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
 				'-action=change_show_options&show-opts='.$show_opts_next );
 
+			// Save All Plugin Settings and View All / Basic Options by Default
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
 				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null, 
 					wp_nonce_url( $show_opts_url, self::get_nonce(), WPSSO_NONCE ) ).'<br/>';
 
-			if ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' )
-				$action_buttons .= $this->form->get_button( _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ), 
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=clear_all_cache' ), self::get_nonce(), WPSSO_NONCE ) );
+			// Secondary Action Buttons
+			foreach ( apply_filters( $this->p->cf['lca'].'_secondary_action_buttons', array(
+				'clear_all_cache' => _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ),
+				'check_for_updates' => _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ),
+				'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
+				'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
+			), $this->menu_id, $this->menu_name, $this->menu_lib ) as $action => $label ) {
 
-			if ( $this->menu_lib !== 'profile' )		// don't show on profile pages
-				$action_buttons .= $this->form->get_button( _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ),
-					'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-						'-action=check_for_updates' ), self::get_nonce(), WPSSO_NONCE ), false,
-							( $this->p->is_avail['util']['um'] ? false : true ) );	// disable button if um not available
+				// only show the clear_all_cache button on setting and submenu pages
+				if ( $action === 'clear_all_cache' && 
+					$this->menu_lib !== 'setting' && 
+						$this->menu_lib !== 'submenu' )
+							continue;
 
-			$action_buttons .= $this->form->get_button( _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ), 
-				'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-					'-action=clear_metabox_prefs' ), self::get_nonce(), WPSSO_NONCE ) );
+				// don't show the check_for_updates button on profile pages
+				if ( $action === 'check_for_updates' && 
+					$this->menu_lib === 'profile' )
+						continue;
 
-			$action_buttons .= $this->form->get_button( _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ), 
-				'button-secondary', null, wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-					'-action=clear_hidden_notices' ), self::get_nonce(), WPSSO_NONCE ) );
+				$action_buttons .= $this->form->get_button( $label, 'button-secondary', null, 
+					wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action='.$action ),
+						self::get_nonce(), WPSSO_NONCE ) );
+			}
 
 			return '<div class="'.$class.'">'.$action_buttons.'</div>';
 		}
@@ -742,6 +748,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						),
 						'Twitter Cards' => array( 
 							'status' => class_exists( $this->p->cf['lca'].'twittercard' ) ?
+								'on' : 'rec',
+						),
+						'WebSite JSON-LD' => array(
+							'status' => $this->p->options['schema_website_json'] ?
 								'on' : 'rec',
 						),
 					);

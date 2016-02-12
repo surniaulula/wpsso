@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'taxonomy';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
+			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_taxonomy_tabs',
 				$this->get_default_tabs(), $term );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );

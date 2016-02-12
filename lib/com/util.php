@@ -13,16 +13,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	class SucomUtil {
 
 		protected $p;
-		protected $uniq_urls = array();		// array to detect duplicate images, etc.
-		protected $size_labels = array();	// reference array for image size labels
-		protected $inline_vars = array(
-			'%%post_id%%',
-			'%%request_url%%',
-			'%%sharing_url%%',
-			'%%short_url%%',
-		);
-		protected $inline_vals = array();
+		protected $uniq_urls = array();			// array to detect duplicate images, etc.
+		protected $size_labels = array();		// reference array for image size labels
 
+		protected static $mobile_detect = null;		// SuextMobileDetect object
 		protected static $plugins_idx = array();	// hash of active site and network plugins
 		protected static $site_plugins = array();
 		protected static $network_plugins = array();
@@ -201,6 +195,49 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return self::$crawler_name;
 		}
 
+		public static function is_assoc( $arr ) {
+			if ( ! is_array( $arr ) ) 
+				return false;
+			return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
+		}
+
+		public static function keys_start_with( $str, array $arr ) {
+			$found = array();
+			foreach ( $arr as $key => $value ) {
+				if ( strpos( $key, $str ) === 0 )
+					$found[$key] = $value;
+			}
+			return $found;
+		}
+
+		public static function preg_grep_keys( $preg, array &$arr, $invert = false, $replace = false ) {
+			$invert = $invert == false ? 
+				null : PREG_GREP_INVERT;
+			$match = preg_grep( $preg, array_keys( $arr ), $invert );
+			$found = array();
+			foreach ( $match as $key ) {
+				if ( $replace !== false ) {
+					$fixed = preg_replace( $preg, $replace, $key );
+					$found[$fixed] = $arr[$key]; 
+				} else $found[$key] = $arr[$key]; 
+			}
+			return $found;
+		}
+
+		public static function rename_keys( &$opts = array(), &$keys = array() ) {
+			foreach ( $keys as $old => $new ) {
+				if ( empty( $old ) )
+					continue;
+				elseif ( isset( $opts[$old] ) ) {
+					if ( ! empty( $new ) && 
+						! isset( $opts[$new] ) )
+							$opts[$new] = $opts[$old];
+					unset( $opts[$old] );
+				}
+			}
+			return $opts;
+		}
+
 		public static function next_key( $needle, $arr, $cycle = true ) {
 			$keys = array_keys( $arr );
 			$pos = array_search( $needle, $keys );
@@ -213,6 +250,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function insert_before_key( array &$array, $before_key, $new_key, $new_value ) {
+			if ( array_key_exists( $before_key, $array ) ) {
+				$new_array = array();
+				foreach ( $array as $key => $value ) {
+					if ( $key === $before_key ) {
+						$new_array[$new_key] = $new_value;
+					}
+					$new_array[$key] = $value;
+				}
+				return $new_array;
+			}
+			return $array;
+		}
+
+		public static function insert_after_key( array &$array, $after_key, $new_key, $new_value ) {
+			if ( array_key_exists( $after_key, $array ) ) {
+				$new_array = array();
+				foreach ( $array as $key => $value ) {
+					$new_array[$key] = $value;
+					if ( $key === $after_key ) {
+						$new_array[$new_key] = $new_value;
+					}
+				}
+				return $new_array;
+			}
+			return $array;
+		}
+
+		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
+			$merged = $array1; 
+			foreach ( $array2 as $key => &$value ) {
+				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) )
+					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value ); 
+				else $merged[$key] = $value;
+			} 
+			return $merged;
+		}
+
 		// pre-define the array key order for the list() construct (which assigns elements from right to left)
 		public static function meta_image_tags( $mt_pre = 'og' ) {
 			return array(
@@ -222,12 +297,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre.':image:cropped' => '',
 				$mt_pre.':image:id' => '',
 			);
-		}
-
-		public static function is_assoc( $arr ) {
-			if ( ! is_array( $arr ) ) 
-				return false;
-			return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
 		}
 
 		// argument can also be a numeric post ID to return the language of that post
@@ -255,36 +324,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return $key;	// may contain an empty value - that's ok
 			}
 			return $new_key;
-		}
-
-		public static function preg_grep_keys( $preg, &$arr, $invert = false, $replace = false ) {
-			if ( ! is_array( $arr ) ) 
-				return false;
-			$invert = $invert == false ? 
-				null : PREG_GREP_INVERT;
-			$match = preg_grep( $preg, array_keys( $arr ), $invert );
-			$found = array();
-			foreach ( $match as $key ) {
-				if ( $replace !== false ) {
-					$fixed = preg_replace( $preg, $replace, $key );
-					$found[$fixed] = $arr[$key]; 
-				} else $found[$key] = $arr[$key]; 
-			}
-			return $found;
-		}
-
-		public static function rename_keys( &$opts = array(), &$keys = array() ) {
-			foreach ( $keys as $old => $new ) {
-				if ( empty( $old ) )
-					continue;
-				elseif ( isset( $opts[$old] ) ) {
-					if ( ! empty( $new ) && 
-						! isset( $opts[$new] ) )
-							$opts[$new] = $opts[$old];
-					unset( $opts[$old] );
-				}
-			}
-			return $opts;
 		}
 
 		public static function restore_checkboxes( &$opts ) {
@@ -1230,16 +1269,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $src_id;
 		}
 
-		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
-			$merged = $array1; 
-			foreach ( $array2 as $key => &$value ) {
-				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) )
-					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value ); 
-				else $merged[$key] = $value;
-			} 
-			return $merged;
-		}
-
 		public static function get_pub_lang( $pub = '' ) {
 			$ret = array();
 			switch ( $pub ) {
@@ -1503,6 +1532,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( function_exists( 'wp_json_encode' ) )
 				return wp_json_encode( $data, $options, $depth );
 			else return json_encode( $data, $options, $depth );
+		}
+
+		public static function is_mobile() {
+			// load class object on first use
+			if ( self::$mobile_detect === null ) {
+				if ( ! class_exists( 'SuextMobileDetect' ) )
+					require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
+				self::$mobile_detect = new SuextMobileDetect();
+			}
+			return self::$mobile_detect->isMobile();
+		}
+
+		public static function is_desktop() {
+			return self::is_mobile() ? false : true;
 		}
 	}
 }

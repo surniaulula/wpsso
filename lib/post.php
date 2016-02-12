@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'post';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_tabs',
+			$tabs = apply_filters( $this->p->cf['lca'].'_post_social_settings_tabs',
 				$this->get_default_tabs(), $post, $post_type );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
