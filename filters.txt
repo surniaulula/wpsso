@@ -68,7 +68,7 @@ apply_filters( 'wpsso_og_type', $og['og:type'], $use_post );
 apply_filters( 'wpsso_og_woocommerce', $og_ecom, $use_post, $obj );
 apply_filters( 'wpsso_og_wpecommerce', $og_ecom );
 apply_filters( 'wpsso_option_type', false, $key, $opts_type );
-apply_filters( 'wpsso_plugin_image_sizes', $sizes, $post_id );
+apply_filters( 'wpsso_plugin_image_sizes', $sizes, $obj, $mod, $crawler_name );
 apply_filters( 'wpsso_post_cache_objects', $objects, $post_id, $lang, $sharing_url );
 apply_filters( 'wpsso_post_cache_transients', $transients, $post_id, $lang, $sharing_url );
 apply_filters( 'wpsso_post_filter_add', false, 'get_the_excerpt' );
