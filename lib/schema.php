@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'plugin_image_sizes' => 1,
+				'plugin_image_sizes' => 4,
 				'data_http_schema_org_website' => 5,
 				'data_http_schema_org_organization' => 5,
 				'data_http_schema_org_person' => 6,
@@ -43,13 +43,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'head attributes filter skipped: plugin_head_attr_filter_name option is empty' );
 		}
 
-		public function filter_plugin_image_sizes( $sizes ) {
+		public function filter_plugin_image_sizes( $sizes, $obj, $mod, $crawler_name ) {
+			$opt_pre = 'og_img';			// use opengraph dimensions
+
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+				if ( $crawler_name === 'pinterest' )
+					$opt_pre = 'rp_img';	// use pinterest dimensions
+			}
+
 			$sizes['schema_img'] = array(
 				'name' => 'schema',
 				'label' => _x( 'Schema JSON-LD (same as Facebook / Open Graph)',
 					'image size label', 'wpsso' ),
-				'prefix' => 'og_img'	// use opengraph dimensions
+				'prefix' => $opt_pre
 			);
+
 			return $sizes;
 		}
 
@@ -163,7 +171,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$data = apply_filters( $lca.'_data_http_schema_org_item_type',
 						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
 
-				$data = apply_filters( $filter_name, $data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+				$data = apply_filters( $filter_name,
+					$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
 
 				if ( ! empty( $data ) )
 					$ret[] = "<script type=\"application/ld+json\">".
@@ -354,7 +363,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public function get_meta_array( $use_post, &$obj, &$mt_og = array() ) {
+		public function get_meta_array( $use_post, &$obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 

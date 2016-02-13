@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, $obj = false, &$og = array() ) {
+		public function get_array( $use_post = false, $obj = false, &$og = array(), $crawler_name = 'unknown' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -235,18 +235,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				} else {
 					$check_dupes = true;
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
-					$crawler_name = SucomUtil::crawler_name();
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'crawler name detected: '.$crawler_name );
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						if ( is_admin() ) {
+						if ( is_admin() ) {					// process both image sizes
 							$img_sizes = array(
 								'rp' => $lca.'-richpin',
 								'og' => $lca.'-opengraph',
 							);
 						} elseif ( $crawler_name === 'pinterest' )
-							$img_sizes = array( 'rp' => $lca.'-richpin' );	// use the pinterest image size
+							$img_sizes = array( 'rp' => $lca.'-richpin' );	// use only pinterest image size
 					}
 
 					foreach ( $img_sizes as $md_pre => $size_name ) {
@@ -268,15 +265,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								$size_name, $check_dupes );
 						}
 
-						if ( is_admin() ) {
-							switch ( $md_pre ) {
-								case 'rp':
-									// show both og and pinterest meta tags in the Head Tags tab
+						switch ( $md_pre ) {
+							case 'rp':
+								if ( is_admin() ) {
+									// show both og and pinterest meta tags in the head tags tab
+									// by renaming each og:image to pinterest:image 
 									foreach ( $og[$md_pre.':image'] as $num => $arr )
 										$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
 											$arr, false, 'pinterest:' );
-									break;
-							}
+								} else {
+									// rename the rp:image array to og:image
+									$og['og:image'] = $og[$md_pre.':image'];
+									unset ( $og[$md_pre.':image'] );
+								}
+								break;
 						}
 					}
 				} 

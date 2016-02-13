@@ -132,8 +132,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'define image sizes' );	// begin timer
 
-			if ( $filter === true )
-				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes', $sizes, $obj, $mod );
+			if ( $filter === true ) {
+				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
+					$sizes, $obj, $mod, SucomUtil::crawler_name() );
+			}
 
 			$id = false;
 			$meta_opts = array();

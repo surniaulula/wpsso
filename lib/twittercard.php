@@ -16,7 +16,9 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->util->add_plugin_filters( $this, array( 'plugin_image_sizes' => 1 ) );
+			$this->p->util->add_plugin_filters( $this, array( 
+				'plugin_image_sizes' => 1,
+			) );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -34,10 +36,23 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			return $sizes;
 		}
 
-		public function get_array( $use_post = false, $obj = false, &$og = array() ) {
+		public function get_array( $use_post = false, $obj = false, &$og = array(), $crawler_name = 'unknown' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
+			switch ( $crawler_name ) {
+				case 'pinterest':
+					// behave normally if rich pin support is disabled
+					if ( SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
+						break;
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+					return array();
+
+					break;
+			}
 
 			if ( ! is_object( $obj ) )
 				$obj = $this->p->util->get_post_object( $use_post );

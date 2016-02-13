@@ -193,15 +193,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id: '.$author_id );
 
+			$crawler_name = SucomUtil::crawler_name();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'crawler_name: '.$crawler_name );
+
 			/*
 			 * Open Graph
 			 */
-			$mt_og = $this->p->og->get_array( $use_post, $obj, $mt_og );
+			$mt_og = $this->p->og->get_array( $use_post, $obj, $mt_og, $crawler_name );
 
 			/*
 			 * Twitter Cards
 			 */
-			$mt_tc = $this->p->tc->get_array( $use_post, $obj, $mt_og );
+			$mt_tc = $this->p->tc->get_array( $use_post, $obj, $mt_og, $crawler_name );
 
 			/*
 			 * Name / SEO meta tags
@@ -249,7 +253,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Schema meta tags
 			 */
-			$mt_schema = $this->p->schema->get_meta_array( $use_post, $obj, $mt_og );
+			$mt_schema = $this->p->schema->get_meta_array( $use_post, $obj, $mt_og, $crawler_name );
 
 			/*
 			 * Combine and return all meta tags
