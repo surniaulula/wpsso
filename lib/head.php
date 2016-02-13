@@ -90,11 +90,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( strpos( $mt[3], 'og:image' ) !== 0 )
 					$first_image = false;
 				switch ( $mt[2].'-'.$mt[3] ) {
-					case 'property-og:image':
 					case 'property-og:image:secure_url':
+					case 'property-og:image':
 						if ( $first_image === false &&
-							( isset( $head_info['og:image'] ) || 
-								isset( $head_info['og:image:secure_url'] ) ) )
+							( isset( $head_info['og:image:secure_url'] ) || 
+								isset( $head_info['og:image'] ) ) )
 									continue;
 						else {
 							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
@@ -115,6 +115,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						break;
 				}
 			}
+
+			$head_info['schema:item_type'] = $this->p->schema->get_head_item_type();
+
 			return $head_info;
 		}
 

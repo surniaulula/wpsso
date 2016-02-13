@@ -791,10 +791,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $sub === 'admin' ) 
 						continue;	// skip status for admin menus and tabs
 					foreach ( $libs as $id => $name ) {
-						$off = $this->p->is_avail[$sub][$id] ?
-							'rec' : 'off';
+						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
 						$features[$name] = array( 
-							'status' => class_exists( $ext.'pro'.$sub.$id ) ?
+							'status' => class_exists( $classname ) ?
 								( $aop ? 'on' : $off ) : $off,
 							// default tooltip text
 							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional '.

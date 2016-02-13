@@ -109,15 +109,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! is_object( $obj ) )
 				$obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ||
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $obj->ID;
 
 			$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
 				$this->p->cf['head']['schema_type'] );
 
-			$head_type = $schema_types['website'];		// default value for non-singular webpages
+			$head_type = $schema_types['website'];	// default value for non-singular webpages
 
-			if ( is_singular() ) {
+			if ( SucomUtil::is_post_page( $use_post ) ) {
 				if ( ! empty( $obj->post_type ) &&
 					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
 
@@ -132,7 +130,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				! empty( $this->p->options['og_def_author_id'] ) )
 					$head_type = $schema_types['webpage'];
 
-			return apply_filters( $this->p->cf['lca'].'_schema_item_type', $head_type, $post_id, $obj );
+			return apply_filters( $this->p->cf['lca'].'_schema_item_type', $head_type, $use_post, $obj );
 		}
 
 		public function get_head_type_context( $use_post = false, $obj = false ) {
@@ -155,24 +153,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$head_type = $this->get_head_item_type( $use_post, $obj );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'head item type: '.$head_type );
 
-			foreach ( array_unique( array(
-				'http://schema.org/WebSite',
-				'http://schema.org/Organization',
-				'http://schema.org/Person',
-				$head_type
-			) ) as $item_type ) {
+			foreach ( array(
+				'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
+				'http://schema.org/Organization' => $this->p->options['schema_publisher_json'],
+				'http://schema.org/Person' => $this->p->options['schema_author_json'],
+				$head_type => true,
+			) as $item_type => $enable ) {
 
 				$data = false;
-				$filter_name = $this->p->cf['lca'].'_data_'.SucomUtil::sanitize_hookname( $item_type );
+				$item_type_hook = SucomUtil::sanitize_hookname( $item_type );
+				$generic_item_hook = 'http_schema_org_item_type';
 
 				// filter the webpage item type through a generic / common filter first
-				if ( $item_type === $head_type )
-					$data = apply_filters( $lca.'_data_http_schema_org_item_type',
-						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+				if ( $item_type === $head_type ) {
+					if ( apply_filters( $lca.'_add_'.$generic_item_hook, true ) )
+						$data = apply_filters( $lca.'_data_'.$generic_item_hook,
+							$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+					elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( $generic_item_hook.' is disabled' );
+				}
 
-				$data = apply_filters( $filter_name,
-					$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+				if ( apply_filters( $lca.'_add_'.$item_type_hook, $enable ) )
+					$data = apply_filters( $lca.'_data_'.$item_type_hook,
+						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+				elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( $item_type_hook.' is disabled' );
 
 				if ( ! empty( $data ) )
 					$ret[] = "<script type=\"application/ld+json\">".
@@ -194,13 +202,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-
-			if ( ! apply_filters( $lca.'_add_schema_website_json', $this->p->options['schema_website_json'] ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: website schema data disabled' );
-				return $data;
-			}
-
 			$data = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'WebSite',
@@ -230,13 +231,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-
-			if ( ! apply_filters( $lca.'_add_schema_organization_json', $this->p->options['schema_publisher_json'] ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: organization schema data disabled' );
-				return $data;
-			}
-
 			$data = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'Organization',
@@ -269,20 +263,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$lca = $this->p->cf['lca'];
-
-			if ( ! apply_filters( $lca.'_add_schema_author_json', $this->p->options['schema_author_json'] ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: author / person schema data disabled' );
-				return $data;
-			}
-
 			if ( empty( $author_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: empty author_id' );
 				return $data;
 			}
 
+			$lca = $this->p->cf['lca'];
 			$data = array();
 			WpssoSchema::add_single_person_data( $data, '', $author_id );
 

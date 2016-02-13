@@ -23,11 +23,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 		public function filter_post_header_rows( $rows, $form, $head_info ) {
 			$post_status = get_post_status( $head_info['post_id'] );
 			$post_type = get_post_type( $head_info['post_id'] );
+
 			$td_save_draft = '<td class="blank"><em>'.
 				sprintf( __( 'Save a draft version or publish the %s to update this value.',
 					'wpsso' ), $head_info['ptn'] ).'</em></td>';
+
 			$disable_article = isset( $head_info['og:type'] ) &&
-				$head_info['og:type'] === 'article' ? false : true;
+				$head_info['og:type'] === 'article' ?
+					false : true;
 
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';

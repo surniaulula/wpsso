@@ -925,137 +925,137 @@ msgctxt "option label"
 msgid "Use Default Video on Search Results"
 msgstr ""
 
-#: lib/gpl/admin/post.php:27
+#: lib/gpl/admin/post.php:28
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/admin/post.php:36 lib/pro/admin/post.php:44
+#: lib/gpl/admin/post.php:39 lib/pro/admin/post.php:47
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:41 lib/gpl/admin/post.php:44
+#: lib/gpl/admin/post.php:44 lib/gpl/admin/post.php:47
 #: lib/gpl/admin/taxonomy.php:28 lib/gpl/admin/user.php:28
-#: lib/pro/admin/post.php:50 lib/pro/admin/post.php:53
+#: lib/pro/admin/post.php:53 lib/pro/admin/post.php:56
 #: lib/pro/admin/taxonomy.php:36 lib/pro/admin/user.php:36
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/post.php:50 lib/gpl/admin/post.php:53
+#: lib/gpl/admin/post.php:53 lib/gpl/admin/post.php:56
 #: lib/gpl/admin/taxonomy.php:33 lib/gpl/admin/user.php:33
-#: lib/pro/admin/post.php:61 lib/pro/admin/post.php:64
+#: lib/pro/admin/post.php:64 lib/pro/admin/post.php:67
 #: lib/pro/admin/taxonomy.php:43 lib/pro/admin/user.php:43
 msgctxt "option label"
 msgid ""
 "Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:59 lib/gpl/admin/post.php:62
+#: lib/gpl/admin/post.php:62 lib/gpl/admin/post.php:65
 #: lib/gpl/admin/taxonomy.php:38 lib/gpl/admin/user.php:38
-#: lib/pro/admin/post.php:72 lib/pro/admin/post.php:75
+#: lib/pro/admin/post.php:75 lib/pro/admin/post.php:78
 #: lib/pro/admin/taxonomy.php:50 lib/pro/admin/user.php:50
 msgctxt "option label"
 msgid "Google / Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:69 lib/gpl/admin/post.php:73
+#: lib/gpl/admin/post.php:72 lib/gpl/admin/post.php:76
 #: lib/gpl/admin/taxonomy.php:45 lib/gpl/admin/user.php:45
-#: lib/pro/admin/post.php:85 lib/pro/admin/post.php:89
+#: lib/pro/admin/post.php:88 lib/pro/admin/post.php:92
 #: lib/pro/admin/taxonomy.php:59 lib/pro/admin/user.php:59
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:79 lib/gpl/admin/post.php:82
+#: lib/gpl/admin/post.php:82 lib/gpl/admin/post.php:85
 #: lib/gpl/admin/taxonomy.php:50 lib/gpl/admin/user.php:50
-#: lib/pro/admin/post.php:97 lib/pro/admin/post.php:100
+#: lib/pro/admin/post.php:100 lib/pro/admin/post.php:103
 #: lib/pro/admin/taxonomy.php:66 lib/pro/admin/user.php:66
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/post.php:89 lib/gpl/admin/post.php:93
+#: lib/gpl/admin/post.php:92 lib/gpl/admin/post.php:96
 #: lib/gpl/admin/taxonomy.php:56 lib/gpl/admin/user.php:56 lib/meta.php:111
-#: lib/pro/admin/post.php:109 lib/pro/admin/post.php:114
+#: lib/pro/admin/post.php:112 lib/pro/admin/post.php:117
 #: lib/pro/admin/taxonomy.php:74 lib/pro/admin/user.php:74
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:106 lib/gpl/admin/taxonomy.php:69
-#: lib/gpl/admin/user.php:69 lib/pro/admin/post.php:124
+#: lib/gpl/admin/post.php:109 lib/gpl/admin/taxonomy.php:69
+#: lib/gpl/admin/user.php:69 lib/pro/admin/post.php:127
 #: lib/pro/admin/taxonomy.php:85 lib/pro/admin/user.php:85
 #: lib/submenu/general.php:27
 msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/post.php:110 lib/gpl/admin/post.php:152
+#: lib/gpl/admin/post.php:113 lib/gpl/admin/post.php:155
 #: lib/gpl/admin/taxonomy.php:73 lib/gpl/admin/taxonomy.php:115
 #: lib/gpl/admin/user.php:73 lib/gpl/admin/user.php:105
-#: lib/pro/admin/post.php:128 lib/pro/admin/post.php:174
+#: lib/pro/admin/post.php:131 lib/pro/admin/post.php:177
 #: lib/pro/admin/taxonomy.php:89 lib/pro/admin/taxonomy.php:135
 #: lib/pro/admin/user.php:89 lib/pro/admin/user.php:125
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/post.php:114 lib/gpl/admin/post.php:157
+#: lib/gpl/admin/post.php:117 lib/gpl/admin/post.php:160
 #: lib/gpl/admin/taxonomy.php:77 lib/gpl/admin/taxonomy.php:120
 #: lib/gpl/admin/user.php:77 lib/gpl/admin/user.php:110
-#: lib/pro/admin/post.php:132 lib/pro/admin/post.php:179
+#: lib/pro/admin/post.php:135 lib/pro/admin/post.php:182
 #: lib/pro/admin/taxonomy.php:93 lib/pro/admin/taxonomy.php:140
 #: lib/pro/admin/user.php:93 lib/pro/admin/user.php:130
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gpl/admin/post.php:118 lib/gpl/admin/post.php:162
+#: lib/gpl/admin/post.php:121 lib/gpl/admin/post.php:165
 #: lib/gpl/admin/taxonomy.php:81 lib/gpl/admin/taxonomy.php:125
 #: lib/gpl/admin/user.php:81 lib/gpl/admin/user.php:115
-#: lib/pro/admin/post.php:136 lib/pro/admin/post.php:184
+#: lib/pro/admin/post.php:139 lib/pro/admin/post.php:187
 #: lib/pro/admin/taxonomy.php:97 lib/pro/admin/taxonomy.php:145
 #: lib/pro/admin/user.php:97 lib/pro/admin/user.php:135
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:123 lib/gpl/admin/taxonomy.php:86
-#: lib/pro/admin/post.php:141 lib/pro/admin/taxonomy.php:102
+#: lib/gpl/admin/post.php:126 lib/gpl/admin/taxonomy.php:86
+#: lib/pro/admin/post.php:144 lib/pro/admin/taxonomy.php:102
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/post.php:127 lib/gpl/admin/taxonomy.php:90
-#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:145
+#: lib/gpl/admin/post.php:130 lib/gpl/admin/taxonomy.php:90
+#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:148
 #: lib/pro/admin/taxonomy.php:106 lib/pro/admin/user.php:101
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/post.php:131 lib/gpl/admin/taxonomy.php:94
-#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:149
+#: lib/gpl/admin/post.php:134 lib/gpl/admin/taxonomy.php:94
+#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:152
 #: lib/pro/admin/taxonomy.php:110 lib/pro/admin/user.php:105
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gpl/admin/post.php:136 lib/gpl/admin/taxonomy.php:99
-#: lib/pro/admin/post.php:154 lib/pro/admin/taxonomy.php:115
+#: lib/gpl/admin/post.php:139 lib/gpl/admin/taxonomy.php:99
+#: lib/pro/admin/post.php:157 lib/pro/admin/taxonomy.php:115
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/gpl/admin/taxonomy.php:103
-#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:158
+#: lib/gpl/admin/post.php:143 lib/gpl/admin/taxonomy.php:103
+#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:161
 #: lib/pro/admin/taxonomy.php:119 lib/pro/admin/user.php:109
 msgctxt "option label"
 msgid "Include Preview Image(s)"
 msgstr ""
 
-#: lib/gpl/admin/post.php:148 lib/gpl/admin/taxonomy.php:111
-#: lib/gpl/admin/user.php:101 lib/pro/admin/post.php:170
+#: lib/gpl/admin/post.php:151 lib/gpl/admin/taxonomy.php:111
+#: lib/gpl/admin/user.php:101 lib/pro/admin/post.php:173
 #: lib/pro/admin/taxonomy.php:131 lib/pro/admin/user.php:121
 msgctxt "metabox title"
 msgid "Pinterest / Rich Pin"
@@ -2029,7 +2029,7 @@ msgctxt "option label"
 msgid "Goo.gl URL Shortener API is ON"
 msgstr ""
 
-#: lib/pro/admin/post.php:38
+#: lib/pro/admin/post.php:39
 msgid "Save a draft version or publish the %s to enable this option."
 msgstr ""
 
