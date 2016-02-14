@@ -565,15 +565,15 @@ msgstr ""
 #: lib/config-gettext-extract.php:42
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
-"in your content, excerpts, CSS sidebar, widget, shortcode, etc."
+"WPSSO extension to add complete Schema JSON-LD markup in webpage headers for "
+"Google and Pinterest."
 msgstr ""
 
 #: lib/config-gettext-extract.php:43
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Schema JSON-LD markup in webpage headers for Google, "
-"Pinterest, etc."
+"WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
+"in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
 #: lib/config-gettext-extract.php:44

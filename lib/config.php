@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(
 					'short' => 'WPSSO JSON',		// short plugin name
 					'name' => 'WPSSO Schema JSON-LD (WPSSO JSON)',
-					'desc' => 'WPSSO extension to add Schema JSON-LD markup in webpage headers for Google, Pinterest, etc.',
+					'desc' => 'WPSSO extension to add complete Schema JSON-LD markup in webpage headers for Google and Pinterest.',
 					'slug' => 'wpsso-schema-json-ld',
 					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
