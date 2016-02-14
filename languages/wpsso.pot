@@ -565,8 +565,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:42
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add complete Schema JSON-LD markup in webpage headers for "
-"Google and Pinterest."
+"WPSSO extension to add complete Schema JSON-LD markup (Article, Product, "
+"etc.) for Google and Pinterest."
 msgstr ""
 
 #: lib/config-gettext-extract.php:43

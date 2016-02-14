@@ -39,7 +39,7 @@ _x( 'Title Only', 'option value', 'wpsso' );
 _x( 'Top', 'option value', 'wpsso' );
 _x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
 _x( 'Website / Business Social Accounts', 'lib file description', 'wpsso' );
-_x( 'WPSSO extension to add complete Schema JSON-LD markup in webpage headers for Google and Pinterest.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to add complete Schema JSON-LD markup (Article, Product, etc.) for Google and Pinterest.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add traditional Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
