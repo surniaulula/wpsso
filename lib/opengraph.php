@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
+						$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
@@ -178,9 +178,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				if ( ! isset( $og['article:author'] ) ) {
 					if ( SucomUtil::is_post_page( $use_post ) ) {
 						if ( ! empty( $obj->post_author ) )
-							$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $obj->post_author );
+							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $obj->post_author );
 						elseif ( ! empty( $this->p->options['og_def_author_id'] ) )
-							$og['article:author'] = $this->p->mods['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
+							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
 					}
 				}
 
@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// check for ngg shortcodes and query vars
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) &&
-					$this->p->is_avail['media']['ngg'] && ! empty( $this->p->mods['media']['ngg'] ) ) {
+					$this->p->is_avail['media']['ngg'] && ! empty( $this->p->m['media']['ngg'] ) ) {
 	
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'checking for ngg shortcodes and query vars' );
@@ -414,8 +414,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					// ngg pre-v2 used query arguments
 					$ngg_query_og_ret = array();
 					$num_remains = $this->p->media->num_remains( $og_ret, $num );
-					if ( version_compare( $this->p->mods['media']['ngg']->ngg_version, '2.0.0', '<' ) )
-						$ngg_query_og_ret = $this->p->mods['media']['ngg']->get_query_images( $num_remains, 
+					if ( version_compare( $this->p->m['media']['ngg']->ngg_version, '2.0.0', '<' ) )
+						$ngg_query_og_ret = $this->p->m['media']['ngg']->get_query_images( $num_remains, 
 							$size_name, $post_id, $check_dupes );
 	
 					// if we found images in the query, skip content shortcodes
@@ -429,7 +429,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 						$num_remains = $this->p->media->num_remains( $og_ret, $num );
 						$og_ret = array_merge( $og_ret, 
-							$this->p->mods['media']['ngg']->get_shortcode_images( $num_remains, 
+							$this->p->m['media']['ngg']->get_shortcode_images( $num_remains, 
 								$size_name, $post_id, $check_dupes ) );
 					}
 				} // end of check for ngg shortcodes and query vars
@@ -447,18 +447,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'is_term_page() = true' );
 					$term_id = $this->p->util->get_term_object( 'id' );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_og_image( $num_remains, 
+					$og_ret = array_merge( $og_ret, $this->p->m['util']['taxonomy']->get_og_image( $num_remains, 
 						$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
 	
 					if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
-						$og_ret = array_merge( $og_ret, $this->p->mods['util']['taxonomy']->get_term_images( $num_remains, 
+						$og_ret = array_merge( $og_ret, $this->p->m['util']['taxonomy']->get_term_images( $num_remains, 
 							$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
 
 				} elseif ( SucomUtil::is_author_page() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'is_author_page() = true' );
 					$author_id = $this->p->util->get_author_object( 'id' );
-					$og_ret = array_merge( $og_ret, $this->p->mods['util']['user']->get_og_image( $num_remains, 
+					$og_ret = array_merge( $og_ret, $this->p->m['util']['user']->get_og_image( $num_remains, 
 						$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
 				}
 	

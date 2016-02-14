@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->check->aop() ) {
 					if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 						// get only the first image from $md_pre, do not try both $md_pre and 'og'
-						$og_ret = array_merge( $og_ret, $this->p->mods['util']['post']->get_og_image( 1, 
+						$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_image( 1, 
 							$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 					}
 				}
@@ -325,8 +325,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->is_avail['media']['ngg'] === true && 
 				strpos( $pid, 'ngg-' ) === 0 ) {
 
-				if ( ! empty( $this->p->mods['media']['ngg'] ) )
-					return self::reset_image_src_info( $this->p->mods['media']['ngg']->get_image_src( $pid, 
+				if ( ! empty( $this->p->m['media']['ngg'] ) )
+					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid, 
 						$size_name, $check_dupes ) );
 				else {
 					if ( $this->p->debug->enabled )
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						default:
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
-								! empty( $this->p->mods['media']['ngg'] ) &&
+								! empty( $this->p->m['media']['ngg'] ) &&
 									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || 
 										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )
 											break;	// stop here
@@ -868,9 +868,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// check for ngg gallery
 			if ( $this->p->is_avail['media']['ngg'] === true && 
-				! empty( $this->p->mods['media']['ngg'] ) ) {
+				! empty( $this->p->m['media']['ngg'] ) ) {
 
-				$og_ret = $this->p->mods['media']['ngg']->get_gallery_images( $num , 
+				$og_ret = $this->p->m['media']['ngg']->get_gallery_images( $num , 
 					$size_name, $post_id, $check_dupes, $get );
 
 				if ( $this->p->util->is_maxed( $og_ret, $num ) )

@@ -169,10 +169,10 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 					if ( ! isset( $tc['twitter:card'] ) && 
 						$this->p->is_avail['media']['ngg'] === true ) {
 
-						if ( ! empty( $this->p->mods['media']['ngg'] ) ) {
+						if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'large image card: checking for singlepic image' );
-							$og_image = $this->p->mods['media']['ngg']->get_singlepic_images( 1, 
+							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, 
 								$this->p->cf['lca'].'-tc-lrgimg', $post_id, false );
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );

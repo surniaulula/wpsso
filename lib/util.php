@@ -423,11 +423,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function get_mod_options( $mod, $id = false, $idx = false, $atts = array() ) {
 			if ( empty( $id ) || 
-				! isset( $this->p->mods['util'][$mod] ) )
+				! isset( $this->p->m['util'][$mod] ) )
 					return false;
 			// return the whole options array
 			if ( $idx === false ) {
-				$ret = $this->p->mods['util'][$mod]->get_options( $id, $idx, $atts );
+				$ret = $this->p->m['util'][$mod]->get_options( $id, $idx, $atts );
 			} else {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						return false;		// stop here
 					if ( empty( $key ) )
 						continue;
-					$ret = $this->p->mods['util'][$mod]->get_options( $id, $key, $atts );
+					$ret = $this->p->m['util'][$mod]->get_options( $id, $key, $atts );
 					if ( ! empty( $ret ) )
 						break;
 				}
@@ -875,8 +875,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				elseif ( SucomUtil::is_author_page() )
 					$mod = 'user';
 			}
-			if ( isset( $this->p->mods['util'][$mod] ) ) {
-				$obj =& $this->p->mods['util'][$mod];
+			if ( isset( $this->p->m['util'][$mod] ) ) {
+				$obj =& $this->p->m['util'][$mod];
 				if ( empty( $id ) ) {
 					switch ( $mod ) {
 						case 'post':

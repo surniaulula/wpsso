@@ -12,7 +12,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 	/*
 	 * This class is extended by gpl/util/post.php or pro/util/post.php
-	 * and the class object is created as $this->p->mods['util']['post'].
+	 * and the class object is created as $this->p->m['util']['post'].
 	 */
 	class WpssoPost extends WpssoMeta {
 

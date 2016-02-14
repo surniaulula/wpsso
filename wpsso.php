@@ -47,11 +47,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/*
 		 * Reference Variables (config, options, modules, etc.)
 		 */
+		public $m = array();		// plugin modules
+		public $m_ext = array();	// plugin extension modules
 		public $cf = array();		// config array defined in construct method
 		public $is_avail = array();	// assoc array for other plugin checks
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
-		public $mods = array();		// pro and gpl modules
 
 		protected static $instance = null;
 

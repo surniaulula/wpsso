@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro / Power-User Version', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 
-				$this->p->mods['util']['user']->reset_metabox_prefs( $this->pagehook, 
+				$this->p->m['util']['user']->reset_metabox_prefs( $this->pagehook, 
 					array( 'purchase' ), null, 'side', true );
 			}
 

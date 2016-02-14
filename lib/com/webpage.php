@@ -710,7 +710,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_section( $post_id ) {
 			$section = '';
 			if ( is_singular() || ! empty( $post_id ) )
-				$section = $this->p->mods['util']['post']->get_options( $post_id, 'og_art_section' );
+				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
 
 			if ( ! empty( $section ) ) {
 				if ( $this->p->debug->enabled )
@@ -760,7 +760,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( is_singular() || ! empty( $post_id ) ) {
 					$tags = $this->get_wp_tags( $post_id );
 
-					if ( isset( $this->p->mods['media']['ngg'] ) && 
+					if ( isset( $this->p->m['media']['ngg'] ) && 
 						$this->p->options['og_ngg_tags'] && 
 						$this->p->is_avail['postthumb'] && 
 						has_post_thumbnail( $post_id ) ) {
@@ -768,7 +768,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$pid = get_post_thumbnail_id( $post_id );
 						// featured images from ngg pre-v2 had 'ngg-' prefix
 						if ( is_string( $pid ) && substr( $pid, 0, 4 ) == 'ngg-' )
-							$tags = array_merge( $tags, $this->p->mods['media']['ngg']->get_tags( $pid ) );
+							$tags = array_merge( $tags, $this->p->m['media']['ngg']->get_tags( $pid ) );
 					}
 				} elseif ( is_search() )
 					$tags = preg_split( '/ *, */', get_search_query( false ) );

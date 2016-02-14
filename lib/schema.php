@@ -137,12 +137,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::get_item_type_context( $this->get_head_item_type( $use_post, $obj ) );
 		}
 
-		public static function get_item_type_context( $item_type ) {
+		public static function get_item_type_context( $item_type, $properties = array() ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $item_type, $match ) )
-				return array(
+				return array_merge( array(
 					'@context' => $match[1],
 					'@type' => $match[2],
-				);
+				), $properties );
 			else return array();
 		}
 
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@context' => 'http://schema.org',
 				'@type' => 'Person',
 				'url' => '',
-				'name' => $wpsso->mods['util']['user']->get_author_name( $author_id,
+				'name' => $wpsso->m['util']['user']->get_author_name( $author_id,
 					$wpsso->options['schema_author_name'] ),
 			);
 
@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$person_data['url'] = esc_url( $person_url );
 
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $wpsso->mods['util']['user']->get_og_image( 1, $size_name, $author_id, false );
+			$og_image = $wpsso->m['util']['user']->get_og_image( 1, $size_name, $author_id, false );
 			WpssoSchema::add_image_list_data( $person_data, 'image', $og_image, 'og:image' );
 
 			if ( empty( $item_prop ) )

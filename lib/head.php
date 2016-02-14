@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				if ( isset( $this->p->options['seo_author_name'] ) && 
 					$this->p->options['seo_author_name'] !== 'none' )
-						$mt_name['author'] = $this->p->mods['util']['user']->get_author_name( $author_id, 
+						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id, 
 							$this->p->options['seo_author_name'] );
 			}
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
 				if ( ! empty( $author_id ) )
-					$link_rel['author'] = $this->p->mods['util']['user']->get_author_website_url( $author_id, 
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $author_id, 
 						$this->p->options['seo_author_field'] );
 			}
 

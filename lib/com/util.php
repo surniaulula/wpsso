@@ -617,8 +617,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$post_id = empty( $obj->ID ) || 
 					empty( $obj->post_type ) ? 0 : $obj->ID;
 				if ( ! empty( $post_id ) ) {
-					if ( isset( $this->p->mods['util']['post'] ) )
-						$url = $this->p->mods['util']['post']->get_options( $post_id, 'sharing_url' );
+					if ( isset( $this->p->m['util']['post'] ) )
+						$url = $this->p->m['util']['post']->get_options( $post_id, 'sharing_url' );
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom post sharing_url = '.$url );
@@ -654,8 +654,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				} elseif ( self::is_term_page() ) {
 					$term = $this->get_term_object();
 					if ( ! empty( $term->term_id ) ) {
-						if ( isset( $this->p->mods['util']['taxonomy'] ) )
-							$url = $this->p->mods['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
+						if ( isset( $this->p->m['util']['taxonomy'] ) )
+							$url = $this->p->m['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom taxonomy sharing_url = '.$url );
@@ -666,8 +666,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				} elseif ( self::is_author_page() ) {
 					$author = $this->get_author_object();
 					if ( ! empty( $author->ID ) ) {
-						if ( isset( $this->p->mods['util']['user'] ) )
-							$url = $this->p->mods['util']['user']->get_options( $author->ID, 'sharing_url' );
+						if ( isset( $this->p->m['util']['user'] ) )
+							$url = $this->p->m['util']['user']->get_options( $author->ID, 'sharing_url' );
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
@@ -1045,8 +1045,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$max = array();
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
 				if ( ! empty( $id ) && 
-					isset( $this->p->mods['util'][$mod] ) )
-						$num_meta = $this->p->mods['util'][$mod]->get_options( $id, $max_name );
+					isset( $this->p->m['util'][$mod] ) )
+						$num_meta = $this->p->m['util'][$mod]->get_options( $id, $max_name );
 				else $num_meta = null;	// default value returned by get_options() if index key is missing
 
 				// quick sanitation of returned value

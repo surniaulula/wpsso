@@ -2648,15 +2648,15 @@ msgid ""
 "class."
 msgstr ""
 
-#: wpsso.php:228
+#: wpsso.php:229
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:229
+#: wpsso.php:230
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:230
+#: wpsso.php:231
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 

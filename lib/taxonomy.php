@@ -12,7 +12,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 	/*
 	 * This class is extended by gpl/util/taxonomy.php or pro/util/taxonomy.php
-	 * and the class object is created as $this->p->mods['util']['taxonomy'].
+	 * and the class object is created as $this->p->m['util']['taxonomy'].
 	 */
 	class WpssoTaxonomy extends WpssoMeta {
 
