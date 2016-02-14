@@ -350,7 +350,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Official announcement: N/A
 
-Please note: This latest release includes many core filter name changes -- **if you use additional WPSSO extensions, please make sure you update these as well**.
+Please note: This latest release includes many core filter and variable name changes -- **if you use additional WPSSO extensions, PLEASE MAKE SURE YOU UPDATE THESE AS WELL**.
 
 * *New Features*
 	* None
@@ -436,5 +436,5 @@ Official announcement: N/A
 
 = 3.24.0 =
 
-2016/02/14 - This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
+2016/02/14 - This latest release includes many core filter and variable name changes -- if you use additional WPSSO extensions, PLEASE MAKE SURE YOU UPDATE THESE AS WELL.
 
