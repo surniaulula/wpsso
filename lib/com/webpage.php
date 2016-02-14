@@ -709,7 +709,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 		public function get_section( $post_id ) {
 			$section = '';
-			if ( is_singular() || ! empty( $post_id ) )
+			if ( ! empty( $post_id ) )
 				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
 
 			if ( ! empty( $section ) ) {
@@ -720,7 +720,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( $section == 'none' )
 				$section = '';
 
-			return apply_filters( $this->p->cf['lca'].'_section', $section );
+			return apply_filters( $this->p->cf['lca'].'_section', $section, $post_id );
 		}
 
 		public function get_hashtags( $post_id, $add_hashtags = true ) {
