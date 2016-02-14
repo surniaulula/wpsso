@@ -346,7 +346,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.24.0 (2016/02/13)**
+**Version 3.24.0 (2016/02/14)**
 
 Official announcement: N/A
 
@@ -436,5 +436,5 @@ Official announcement: N/A
 
 = 3.24.0 =
 
-2016/02/13 - This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
+2016/02/14 - This latest release includes many core filter name changes -- if you use additional WPSSO extensions, please make sure you update these as well.
 
