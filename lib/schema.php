@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$head_type = $this->get_head_item_type( $use_post, $obj );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'head item type: '.$head_type );
+				$this->p->debug->log( 'schema item type: '.$head_type );
 
 			foreach ( array(
 				'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
@@ -238,7 +238,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'name' => $this->p->og->get_site_name( $post_id ),
 			);
 
-			self::add_single_image_data( $data, 'logo', $this->p->options, 'schema_logo_url' );
+			if ( ! empty( $this->p->options['schema_logo_url'] ) )
+				self::add_single_image_data( $data['logo'],
+					$this->p->options, 'schema_logo_url', false );	// list_element = false
 
 			foreach ( array(
 				'seo_publisher_url',
@@ -271,7 +273,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$data = array();
-			WpssoSchema::add_single_person_data( $data, '', $author_id );
+			WpssoSchema::add_single_person_data( $data, $author_id, false );	// list_element = false
 
 			foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
 				$url = trim( get_the_author_meta( $cm_id, $author_id ) );
@@ -286,12 +288,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $data;
 		}
 
-		public static function add_single_person_data( array &$data, $item_prop = '', $author_id ) {
+		public static function add_single_person_data( &$data, $author_id, $list_element = true ) {
+
 			$wpsso = Wpsso::get_instance();
+
 			if ( empty( $author_id ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty author_id' );
-				return;
+				return false;
 			}
 
 			$person_data = array(
@@ -308,46 +312,56 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$og_image = $wpsso->m['util']['user']->get_og_image( 1, $size_name, $author_id, false );
-			WpssoSchema::add_image_list_data( $person_data, 'image', $og_image, 'og:image' );
+			if ( ! empty( $og_image ) )
+				WpssoSchema::add_image_list_data( $person_data['image'], $og_image, 'og:image' );
 
-			if ( empty( $item_prop ) )
+			if ( empty( $list_element ) )
 				$data = $person_data;
-			else $data[$item_prop][] = $person_data;
+			else $data[] = $person_data;
+
+			return true;
 		}
 
 		// pass a single or two dimension image array in $og_image
-		public static function add_image_list_data( array &$data, $item_prop = 'image', &$og_image, $opt_pre = 'og:image' ) {
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) )
+		public static function add_image_list_data( &$data, &$og_image, $opt_pre = 'og:image' ) {
+			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) )			// 2 dimensional array
 				foreach ( $og_image as $image )
-					self::add_single_image_data( $data, $item_prop, $image, $opt_pre );
+					self::add_single_image_data( $data, $image, $opt_pre, true );	// list_element = true
 			elseif ( is_array( $og_image ) )
-				self::add_single_image_data( $data, $item_prop, $og_image, $opt_pre );
+				self::add_single_image_data( $data, $og_image, $opt_pre, true );	// list_element = true
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( array &$data, $item_prop = '', &$opts, $opt_pre = 'og:image' ) {
-			if ( empty( $opts ) || 
-				! is_array( $opts ) )
-					return $data;
+		public static function add_single_image_data( &$data, &$opts, $opt_pre = 'og:image', $list_element = true ) {
 
-			if ( empty( $opts[$opt_pre] ) &&
-				empty( $opts[$opt_pre.':secure_url'] ) )
-					return $data;
-			else {
-				$image_data = array(
-					'@context' => 'http://schema.org',
-					'@type' => 'ImageObject',
-					'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?
-						$opts[$opt_pre] : $opts[$opt_pre.':secure_url'] ),
-				);
-				foreach ( array ( 'width', 'height' ) as $wh )
-					if ( isset( $opts[$opt_pre.':'.$wh] ) && 
-						$opts[$opt_pre.':'.$wh] > 0 )
-							$image_data[$wh] = $opts[$opt_pre.':'.$wh];
-				if ( empty( $item_prop ) )
-					$data = $image_data;
-				else $data[$item_prop][] = $image_data;
+			if ( empty( $opts ) || ! is_array( $opts ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
+				return false;
 			}
+
+			if ( empty( $opts[$opt_pre] ) && empty( $opts[$opt_pre.':secure_url'] ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'exiting early: '.$opt_pre.' and '.
+						$opt_pre.':secure_url values are empty' );
+				return false;
+			}
+			
+			$image_data = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'ImageObject',
+				'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?
+					$opts[$opt_pre] : $opts[$opt_pre.':secure_url'] ),
+			);
+			foreach ( array ( 'width', 'height' ) as $wh )
+				if ( isset( $opts[$opt_pre.':'.$wh] ) && 
+					$opts[$opt_pre.':'.$wh] > 0 )
+						$image_data[$wh] = $opts[$opt_pre.':'.$wh];
+			if ( empty( $list_element ) )
+				$data = $image_data;
+			else $data[] = $image_data;	// add an item to the list
+
+			return true;
 		}
 
 		public function get_meta_array( $use_post, &$obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
