@@ -346,6 +346,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.24.2 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added support for an array of filter/action hook names in NgfbUtil `add_plugin_hooks()`.
+
 **Version 3.24.1 (2016/02/15)**
 
 Official announcement: N/A
