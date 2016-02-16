@@ -357,7 +357,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added support for an array of filter/action hook names in NgfbUtil `add_plugin_hooks()`.
+	* Added support for an array of filter/action hook names in WpssoUtil `add_plugin_hooks()`.
 
 **Version 3.24.1 (2016/02/15)**
 
