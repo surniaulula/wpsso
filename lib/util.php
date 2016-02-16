@@ -54,6 +54,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		protected function add_plugin_hooks( $type, &$class, &$hooks, &$prio, &$lca ) {
 			$lca = $lca === '' ?
 				$this->p->cf['lca'] : $lca;
+
 			foreach ( $hooks as $name => $val ) {
 				if ( ! is_string( $name ) ) {
 					if ( $this->p->debug->enabled )
@@ -61,23 +62,56 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							' skipped: filter name must be a string' );
 					continue;
 				}
-				$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+				/*
+				 * example:
+				 * 	'data_http_schema_org_item_type' => 7
+				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
+					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
 					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+
 					call_user_func( 'add_'.$type, $hook_name, 
 						array( &$class, $method_name ), $prio, $arg_nums );
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'added '.$hook_name.' '.$type.
 							' method hook '.$method_name, 3 );	// show calling method
+				/*
+				 * example:
+				 * 	'add_schema_meta_array' => '__return_false'
+				 */
 				} elseif ( is_string( $val ) ) {
 					$arg_nums = 1;
+					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
 					$function_name = SucomUtil::sanitize_hookname( $val );
+
 					call_user_func( 'add_'.$type, $hook_name, 
 						$function_name, $prio, $arg_nums );
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'added '.$hook_name.' '.$type.
 							' function hook '.$function_name, 3 );	// show calling method
+				/*
+				 * example:
+				 * 	'data_http_schema_org_article' => array(
+				 *		'data_http_schema_org_article' => 7,
+				 *		'data_http_schema_org_newsarticle' => 7,
+				 *		'data_http_schema_org_techarticle' => 7,
+				 *	)
+				 */
+				} elseif ( is_array( $val ) ) {
+					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+					foreach ( $val as $hook_name => $arg_nums ) {
+						$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$hook_name );
+
+						call_user_func( 'add_'.$type, $hook_name, 
+							array( &$class, $method_name ), $prio, $arg_nums );
+
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'added '.$hook_name.' '.$type.
+								' method hook '.$method_name, 3 );	// show calling method
+					}
 				}
 			}
 		}

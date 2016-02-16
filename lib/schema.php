@@ -119,9 +119,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! empty( $obj->post_type ) &&
 					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
 
-					$ptn = $this->p->options['schema_type_for_'.$obj->post_type];
-					if ( isset( $schema_types[$ptn] ) )
-						$head_type = $schema_types[$ptn];
+					// examples:
+					//	$item_key = article, article.news, article.tech, etc.
+					$item_key = $this->p->options['schema_type_for_'.$obj->post_type];
+
+					if ( isset( $schema_types[$item_key] ) )
+						$head_type = $schema_types[$item_key];
 					else $head_type = $schema_types['webpage'];
 
 				} else $head_type = $schema_types['webpage'];
@@ -153,6 +156,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$head_type = $this->get_head_item_type( $use_post, $obj );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type: '.$head_type );
 
@@ -169,18 +173,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// filter the webpage item type through a generic / common filter first
 				if ( $item_type === $head_type ) {
-					if ( apply_filters( $lca.'_add_'.$generic_item_hook, true ) )
-						$data = apply_filters( $lca.'_data_'.$generic_item_hook,
-							$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
-					elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( $generic_item_hook.' is disabled' );
+
+					if ( ! apply_filters( $lca.'_add_'.$generic_item_hook, true ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $generic_item_hook.' is disabled' );
+						continue;
+					}
+
+					$data = apply_filters( $lca.'_data_'.$generic_item_hook,
+						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
 				}
 
-				if ( apply_filters( $lca.'_add_'.$item_type_hook, $enable ) )
-					$data = apply_filters( $lca.'_data_'.$item_type_hook,
-						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
-				elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( $item_type_hook.' is disabled' );
+				if ( ! apply_filters( $lca.'_add_'.$item_type_hook, $enable ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $item_type_hook.' is disabled' );
+					continue;
+				}
+
+				$data = apply_filters( $lca.'_data_'.$item_type_hook,
+					$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
 
 				if ( ! empty( $data ) )
 					$ret[] = "<script type=\"application/ld+json\">".
@@ -397,7 +408,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			switch ( $head_type ) {
-				case 'http://schema.org/Blog':
+				case 'http://schema.org/BlogPosting':
 				case 'http://schema.org/WebPage':
 
 					if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {

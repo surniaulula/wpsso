@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.24.1',		// plugin version
+					'version' => '3.24.2',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -932,13 +932,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'schema_type' => array(
 					'article' => 'http://schema.org/Article',
-					'news_article' => 'http://schema.org/NewsArticle',
-					'tech_article' => 'http://schema.org/TechArticle',
+					'article.news' => 'http://schema.org/NewsArticle',
+					'article.news' => 'http://schema.org/TechArticle',
 					'book' => 'http://schema.org/Book',
 					'blog' => 'http://schema.org/Blog',
-					'blog_posting' => 'http://schema.org/BlogPosting',
+					'blog.posting' => 'http://schema.org/BlogPosting',
 					'event' => 'http://schema.org/Event',
-					'local_business' => 'http://schema.org/LocalBusiness',
+					'local.business' => 'http://schema.org/LocalBusiness',
 					'organization' => 'http://schema.org/Organization',
 					'other' => 'http://schema.org/Other',
 					'person' => 'http://schema.org/Person',

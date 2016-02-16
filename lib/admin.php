@@ -792,6 +792,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						continue;	// skip status for admin menus and tabs
 					foreach ( $libs as $id => $name ) {
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						// remove any comment part before checking for class name
+						if ( ( $pos = strpos( $id, '#' ) ) !== false )
+							$id = substr( $id, 0, $pos );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
 						$features[$name] = array( 
 							'status' => class_exists( $classname ) ?

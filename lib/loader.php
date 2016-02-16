@@ -48,17 +48,33 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 
-				foreach ( $info['lib'][$type] as $sub => $lib ) {
+				foreach ( $info['lib'][$type] as $sub => $libs ) {
 					// the admin sub-folder gets loaded only in the back-end
 					if ( $sub === 'admin' && ! is_admin() )
 						continue;
 
-					foreach ( $lib as $id => $name ) {
+					foreach ( $libs as $id => $name ) {
 						if ( $this->p->is_avail[$sub][$id] ) {
+							/* 
+							 * Don't create class objects for class names with comments.
+							 *
+							 * Example:
+							 *	'article' => 'Item Type Article',
+							 *	'article#news' => 'Item Type NewsArticle',
+							 *	'article#tech' => 'Item Type TechArticle',
+							 */
+							if ( ( $pos = strpos( $id, '#' ) ) !== false ) {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'skipping '.$lca.' '.$type.'/'.$sub.'/'.$id.' ('.$name.')' );
+								continue;
+							}
+
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id.' ('.$name.')' );
+
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
-							if ( $classname !== false && class_exists( $classname ) ) {
+
+							if ( ! is_bool( $classname ) && class_exists( $classname ) ) {
 								if ( $lca === $this->p->cf['lca'] )
 									$this->p->m[$sub][$id] = new $classname( $this->p );
 								else $this->p->m_ext[$lca][$sub][$id] = new $classname( $this->p );
