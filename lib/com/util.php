@@ -1551,6 +1551,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_desktop() {
 			return self::is_mobile() ? false : true;
 		}
+
+		/*
+		 * Example:
+		 *      'article' => 'Item Type Article',
+		 *      'article#news:no_load' => 'Item Type NewsArticle',
+		 *      'article#tech:no_load' => 'Item Type TechArticle',
+		 */
+		public static function get_id_stub_action( $id ) {
+			if ( ( $pos = strpos( $id, ':' ) ) !== false ) {
+				$action = substr( $id, $pos + 1 );
+				$id = substr( $id, 0, $pos );
+			} else $action = false;
+
+			if ( ( $pos = strpos( $id, '#' ) ) !== false ) {
+				$stub = substr( $id, $pos + 1 );
+				$id = substr( $id, 0, $pos );
+			} else $stub = false;
+
+			return array( $id, $stub, $action );
+		}
 	}
 }
 

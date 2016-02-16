@@ -47,7 +47,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:292 lib/admin.php:1015 lib/admin.php:1016
+#: lib/admin.php:292 lib/admin.php:1016 lib/admin.php:1017
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr ""
@@ -179,168 +179,174 @@ msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:883
-msgctxt "submit button"
-msgid "Purchase Pro License(s)"
+#: lib/admin.php:807
+msgid ""
+"If the %1$s plugin is detected, %2$s will load additional integration "
+"modules to provide enhanced support and features for %3$s."
 msgstr ""
 
 #: lib/admin.php:884
 msgctxt "submit button"
+msgid "Purchase Pro License(s)"
+msgstr ""
+
+#: lib/admin.php:885
+msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:900
+#: lib/admin.php:901
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:903
+#: lib/admin.php:904
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:908
+#: lib/admin.php:909
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:911
+#: lib/admin.php:912
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:915
+#: lib/admin.php:916
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:971
+#: lib/admin.php:972
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:991
+#: lib/admin.php:992
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:997
+#: lib/admin.php:998
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:1003
+#: lib/admin.php:1004
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:1008
+#: lib/admin.php:1009
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr ""
 
-#: lib/admin.php:1056 lib/admin.php:1061 lib/admin.php:1082 lib/admin.php:1088
+#: lib/admin.php:1057 lib/admin.php:1062 lib/admin.php:1083 lib/admin.php:1089
 #: lib/messages.php:734
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1116
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1125
+#: lib/admin.php:1126
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1125
+#: lib/admin.php:1126
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
 msgstr ""
 
-#: lib/admin.php:1129
+#: lib/admin.php:1130
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
 msgstr ""
 
-#: lib/admin.php:1129
+#: lib/admin.php:1130
 msgid ""
 "Please contact your hosting provider to have the missing library installed."
 msgstr ""
 
-#: lib/admin.php:1135
+#: lib/admin.php:1136
 msgid ""
 "PHP's <a href=\"%s\" target=\"_blank\">Multibyte String</a> extension is "
 "missing."
 msgstr ""
 
-#: lib/admin.php:1135
+#: lib/admin.php:1136
 msgid ""
 "Please contact your hosting provider to have the missing extension installed."
 msgstr ""
 
-#: lib/admin.php:1144
+#: lib/admin.php:1145
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1149
+#: lib/admin.php:1150
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1154
+#: lib/admin.php:1155
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1159
+#: lib/admin.php:1160
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1170
+#: lib/admin.php:1171
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1181
+#: lib/admin.php:1182
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1186
+#: lib/admin.php:1187
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1225
+#: lib/admin.php:1226
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1232
+#: lib/admin.php:1233
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1241
+#: lib/admin.php:1242
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1248
+#: lib/admin.php:1249
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1269
+#: lib/admin.php:1270
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""

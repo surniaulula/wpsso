@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							if ( strpos( $menu_id, 'separator' ) !== false ) 
 								continue;
 							$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
-							if ( $classname !== false && class_exists( $classname ) ) {
+							if ( is_string( $classname ) && class_exists( $classname ) ) {
 								if ( ! empty( $info['text_domain'] ) )
 									$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
 								$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib );
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib']['gpl'] ) )
 					continue;
-				if ( $ext === $this->p->cf['lca'] )	// features for this plugin
+				if ( $ext === $this->p->cf['lca'] ) {	// features for this plugin
 					$features = array(
 						'Author JSON-LD' => array( 
 							'status' => $this->p->options['schema_author_json'] ?
@@ -755,7 +755,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'on' : 'rec',
 						),
 					);
-				else $features = array();
+				} else $features = array();
 
 				$features = apply_filters( $ext.'_'.$metabox.'_gpl_features', $features, $ext, $info );
 
@@ -787,28 +787,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$short_pro = $short.' Pro';
 				$aop = $this->p->check->aop( $ext, 
 					true, $this->p->is_avail['aop'] );
+
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
 					if ( $sub === 'admin' ) 
 						continue;	// skip status for admin menus and tabs
 					foreach ( $libs as $id => $name ) {
-						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
-						// remove any comment part before checking for class name
-						if ( ( $pos = strpos( $id, '#' ) ) !== false )
-							$id = substr( $id, 0, $pos );
+						/* 
+						 * Example:
+						 *	'article' => 'Item Type Article',
+						 *	'article#news:no_load' => 'Item Type NewsArticle',
+						 *	'article#tech:no_load' => 'Item Type TechArticle',
+						 */
+						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
+						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
 						$features[$name] = array( 
-							'status' => class_exists( $classname ) ?
-								( $aop ? 'on' : $off ) : $off,
-							// default tooltip text
-							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional '.
-								'integration modules to provide enhanced support and features for %3$s.',
-									'wpsso'), $name, $short_pro, $name ),
+							'status' => class_exists( $classname ) ? ( $aop ? 'on' : $off ) : $off,
+							'purchase' => empty( $info['url']['purchase'] ) ? '' : $info['url']['purchase'],
+							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support and features for %3$s.', 'wpsso'), $name, $short_pro, $name ),
 							'td_class' => $aop ? '' : 'blank',
-							'purchase' => empty( $info['url']['purchase'] ) ?
-								'' : $info['url']['purchase'],
 						);
 					}
 				}
+
 				$features = apply_filters( $ext.'_'.$metabox.'_pro_features', $features, $ext, $info );
 
 				if ( ! empty( $features ) ) {

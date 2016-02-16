@@ -70,8 +70,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					switch ( true ) {
 						case ( strpos( $key, '_js_' ) !== false ):
 						case ( strpos( $key, '_css_' ) !== false ):
-						case ( preg_match( '/_(html|key|tid)$/', $key ) ):
-							$opts[$key] = '********';
+						case ( preg_match( '/_(html|key|secret|tid)$/', $key ) ):
+							$opts[$key] = '[removed]';
 							break;
 					}
 				}
@@ -155,9 +155,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$author_id = false;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post: '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
-				$this->p->debug->log( 'post_id: '.$post_id );
-				$this->p->debug->log( 'post_type: '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
+				$this->p->debug->log( 'use_post is '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+				$this->p->debug->log( 'post_id is '.$post_id );
+				$this->p->debug->log( 'post_type is '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
 			}
 
 			$header_array = array();
@@ -173,10 +173,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $header_array !== false ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_type.': header array retrieved from transient '.$cache_id );
-						return $header_array;
+						return $header_array;	// stop here
 					}
 				}
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'skipped checking for transient cache object' );
 
 			/*
 			 * Define an author_id, if one is available
@@ -194,11 +195,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$author_id = $this->p->options['seo_def_author_id'];
 
 			if ( $this->p->debug->enabled && $author_id !== false )
-				$this->p->debug->log( 'author_id: '.$author_id );
+				$this->p->debug->log( 'author_id is '.$author_id );
 
 			$crawler_name = SucomUtil::crawler_name();
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'crawler_name: '.$crawler_name );
+				$this->p->debug->log( 'crawler_name is '.$crawler_name );
 
 			/*
 			 * Open Graph

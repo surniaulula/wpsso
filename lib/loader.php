@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			$this->modules();
 		}
 
-		private function modules() {
+		private function modules( $has_action = false ) {
 
 			if ( is_admin() ) {
 				// save time on known admin pages we don't modify
@@ -36,48 +36,54 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				}
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'load modules' );	// begin timer
+				if ( $has_action )
+					$this->p->debug->log( 'loading module only for action: '.$has_action );
+			}
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				$type = $this->p->is_avail['aop'] &&
-						$this->p->is_avail['util']['um'] &&
-							$this->p->check->aop( $lca, true, -1 ) === -1 ?
-								'pro' : 'gpl';
-
+					$this->p->is_avail['util']['um'] &&
+						$this->p->check->aop( $lca, true, -1 ) === -1 ?
+							'pro' : 'gpl';
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
-
 				foreach ( $info['lib'][$type] as $sub => $libs ) {
 					// the admin sub-folder gets loaded only in the back-end
 					if ( $sub === 'admin' && ! is_admin() )
 						continue;
 
-					foreach ( $libs as $id => $name ) {
+					foreach ( $libs as $id_key => $label ) {
+						/* 
+						 * Example:
+						 *	'article' => 'Item Type Article',
+						 *	'article#news:no_load' => 'Item Type NewsArticle',
+						 *	'article#tech:no_load' => 'Item Type TechArticle',
+						 */
+						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id_key );
 						if ( $this->p->is_avail[$sub][$id] ) {
-							/* 
-							 * Don't create class objects for class names with comments.
-							 *
-							 * Example:
-							 *	'article' => 'Item Type Article',
-							 *	'article#news' => 'Item Type NewsArticle',
-							 *	'article#tech' => 'Item Type TechArticle',
-							 */
-							if ( ( $pos = strpos( $id, '#' ) ) !== false ) {
+							// this is usually a false === false comparison
+							if ( $action !== $has_action ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'skipping '.$lca.' '.$type.'/'.$sub.'/'.$id.' ('.$name.')' );
+									$this->p->debug->log( 'ignoring '.$lca.' '.
+										$type.'/'.$sub.'/'.$id_key );
 								continue;
 							}
-
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id.' ('.$name.')' );
-
+								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id_key.': '.$label );
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
 
-							if ( ! is_bool( $classname ) && class_exists( $classname ) ) {
-								if ( $lca === $this->p->cf['lca'] )
-									$this->p->m[$sub][$id] = new $classname( $this->p );
-								else $this->p->m_ext[$lca][$sub][$id] = new $classname( $this->p );
+							if ( is_string( $classname ) && class_exists( $classname ) ) {
+								if ( $lca === $this->p->cf['lca'] ) {
+									if ( ! isset( $this->p->m[$sub][$id] ) )
+										$this->p->m[$sub][$id] = new $classname( $this->p );
+									elseif ( $this->p->debug->enabled )
+										$this->p->debug->log( 'module ['.$sub.']['.$id.'] already defined' );
+								} elseif ( ! isset( $this->p->m_ext[$lca][$sub][$id] ) ) {
+									$this->p->m_ext[$lca][$sub][$id] = new $classname( $this->p );
+								} elseif ( $this->p->debug->enabled )
+									$this->p->debug->log( 'module ['.$lca.']['.$sub.']['.$id.'] already defined' );
 							}
 						}
 					}

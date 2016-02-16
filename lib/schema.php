@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$head_type = $this->get_head_item_type( $use_post, $obj );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema item type: '.$head_type );
+				$this->p->debug->log( 'schema item type is '.$head_type );
 
 			foreach ( array(
 				'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
