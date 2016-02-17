@@ -346,18 +346,27 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.24.2 (TBD)**
+**Version 3.25.0 (TBD)**
 
 Official announcement: N/A
 
 * *New Features*
-	* None
+	* Added a new "Google / Schema Image Dimensions" option (defaults to 800x1200 uncropped).
+	* Added a new "Google / Schema Logo Dimensions" option (defaults to 600x60 cropped).
 * *Improvements*
-	* None
+	* Updated default image dimensions:
+		* Google / Schema Image: 800x1200 uncropped (new image size)
+		* Google / Schema Logo: 600x60 cropped (new image size)
+		* Facebook / Open Graph: 600x315 cropped
+		* Pinterest / Rich Pin: 800x1200 uncropped
+		* Twitter Large Image Summary: 800x1200 uncropped
+		* Twitter Summary Card: 600x600 cropped
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Added support for an array of filter/action hook names in WpssoUtil `add_plugin_hooks()`.
+	* Added a SucomUtil::get_id_stub_action() static method to return the id, stub, and action strings for a library item.
+	* Added a WpssoMedia check_image_min_max() method to check for minimum image dimensions and aspect ratio.
 
 **Version 3.24.1 (2016/02/15)**
 
