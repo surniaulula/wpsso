@@ -352,7 +352,7 @@ Official announcement: N/A
 
 * *New Features*
 	* Added a new "Google / Schema Image Dimensions" option (defaults to 800x1200 uncropped).
-	* Added a new "Google / Schema Logo Dimensions" option (defaults to 600x60 cropped).
+	* Added a new "Business Banner (600x60) Image URL" option.
 * *Improvements*
 	* Updated default image dimensions:
 		* Google / Schema Image: 800x1200 uncropped (new image size)
