@@ -521,8 +521,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_schema_author_name':
 							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[none]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
+						case 'tooltip-google_schema_home_page':
+							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
+							break;
 						case 'tooltip-google_schema_post_type':
-							$text = 'Select the Schema item type used in webpage headers for each WordPress post type.';
+							$text = 'Select the Schema item type for each WordPress post type. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
 							break;
 						case 'tooltip-google_schema_json':
 							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';

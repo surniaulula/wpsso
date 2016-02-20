@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				/*
 				 * example:
-				 * 	'data_http_schema_org_item_type' => 8
+				 * 	'json_data_http_schema_org_item_type' => 8
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
@@ -75,8 +75,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						array( &$class, $method_name ), $prio, $arg_nums );
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'added '.$hook_name.' '.$type.
-							' method hook '.$method_name, 3 );	// show calling method
+						$this->p->debug->log( 'added '.$method_name.' (method) '.$type, 3 );
 				/*
 				 * example:
 				 * 	'add_schema_meta_array' => '__return_false'
@@ -90,14 +89,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$function_name, $prio, $arg_nums );
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'added '.$hook_name.' '.$type.
-							' function hook '.$function_name, 3 );	// show calling method
+						$this->p->debug->log( 'added '.$function_name.' (function) '.$type, 3 );
 				/*
 				 * example:
-				 * 	'data_http_schema_org_article' => array(
-				 *		'data_http_schema_org_article' => 8,
-				 *		'data_http_schema_org_newsarticle' => 8,
-				 *		'data_http_schema_org_techarticle' => 8,
+				 * 	'json_data_http_schema_org_article' => array(
+				 *		'json_data_http_schema_org_article' => 8,
+				 *		'json_data_http_schema_org_newsarticle' => 8,
+				 *		'json_data_http_schema_org_techarticle' => 8,
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
@@ -109,8 +107,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							array( &$class, $method_name ), $prio, $arg_nums );
 
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'added '.$hook_name.' '.$type.
-								' method hook '.$method_name, 3 );	// show calling method
+							$this->p->debug->log( 'added '.$method_name.' (method) '.$type.' to '.$hook_name, 3 );
 					}
 				}
 			}

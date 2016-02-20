@@ -118,10 +118,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $function_idx ) ) {
-				$log_msg .= sprintf( '%-40s: ', 
+				$log_msg .= sprintf( '%-45s: ', 
 					( empty( $stack[$function_idx]['function'] ) ? 
 						'' : $stack[$function_idx]['function'] ) );
-			} else $log_msg .= sprintf( '%-40s: ', $function_idx );
+			} else $log_msg .= sprintf( '%-45s: ', $function_idx );
 
 			if ( is_multisite() ) {
 				global $blog_id; 

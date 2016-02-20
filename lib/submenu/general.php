@@ -311,11 +311,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'schema_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$schema_select = '';
 					$schema_types = $this->p->schema->get_schema_types_select();
+					$schema_select = '';
 					foreach ( $this->p->util->get_post_types() as $post_type )
 						$schema_select .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
 							$schema_types, 'schema_type' ).' for '.$post_type->label.'</p>'."\n";
+
+					$rows[] = '<tr class="hide_in_basic">'.
+					$this->p->util->get_th( _x( 'Schema Item Type for Home Page',
+						'option label', 'wpsso' ), null, 'google_schema_home_page' ).
+					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'schema_type' ).'</td>';
 
 					$rows[] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Schema Item Type by Post Type',

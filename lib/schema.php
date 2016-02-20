@@ -125,12 +125,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'custom type key "'.$type_key.'" from module '.$mod_name );
 				}
-			}
+			} else $id = $mod_name = $mod_obj = null;
 
 			if ( empty( $type_key ) ) {
 
 				if ( is_front_page() ) {
-					$type_key = 'website';
+					$type_key = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
+						( empty( $this->p->options['schema_type_for_home_page'] ) ?
+							'website' : $this->p->options['schema_type_for_home_page'] ) );
 
 				// possible values are post, taxonomy, and user
 				} elseif ( $mod_name === 'post' ) {
@@ -150,15 +152,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$this->p->debug->log( 'schema type key "'.$type_key.'" not found in schema types' );
 							$type_key = 'webpage';
 						}
-	
+
+					// posts without a post_type property
 					} else $type_key = 'webpage';
 
 				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'forcing schema type key "webpage" for default author' );
 					$type_key = 'webpage';
-	
-				} else $type_key = 'webpage';	// default value for non-singular webpages
+
+				// default value for non-singular webpages
+				} else $type_key = 'webpage';
 			}
 
 			$type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type',
@@ -227,40 +231,45 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $item_types as $item_type => $is_enabled ) {
 
-				$data = null;
-				$hook_name = SucomUtil::sanitize_hookname( $item_type );
+				$json_data = null;
+				$type_hook_name = SucomUtil::sanitize_hookname( $item_type );
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( $type_hook_name );	// begin timer for json array
 
 				if ( $item_type === $head_type )
 					$main_entity = true;
 				else $main_entity = false;
 
 				if ( is_front_page() && 
-					method_exists( __CLASS__, 'filter_data_'.$hook_name ) ) {
+					method_exists( __CLASS__, 'filter_json_data_'.$type_hook_name ) && 
+						! has_filter( $lca.'_json_data_'.$type_hook_name ) ) {
 
-					if ( $is_enabled ) {
-						$data = call_user_func( array( __CLASS__, 'filter_data_'.$hook_name ), $data,
-							$use_post, $post_obj, $mt_og, $post_id, $author_id,
+					if ( $is_enabled )
+						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_hook_name ),
+							$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
 								$head_type, $main_entity );
-					}
-				} else {
-					if ( apply_filters( $lca.'_add_http_schema_org_item_type', $is_enabled ) )
-						$data = apply_filters( $lca.'_data_http_schema_org_item_type', $data,
-							$use_post, $post_obj, $mt_og, $post_id, $author_id,
-								$head_type, $main_entity );
-					elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'http_schema_org_item_type is disabled' );
-	
-					if ( apply_filters( $lca.'_add_'.$hook_name, $is_enabled ) )
-						$data = apply_filters( $lca.'_data_'.$hook_name, $data,
-							$use_post, $post_obj, $mt_og, $post_id, $author_id,
-								$head_type, $main_entity );
-					elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $hook_name.' is disabled' );
+
+				} else foreach ( array( 'http_schema_org_item_type', $type_hook_name ) as $hook_name ) {
+
+					if ( has_filter( $lca.'_json_data_'.$hook_name ) ) {
+						if ( apply_filters( $lca.'_add_json_'.$hook_name, $is_enabled ) )
+							$json_data = apply_filters( $lca.'_json_data_'.$hook_name,
+								$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
+									$head_type, $main_entity );
+						elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( $hook_name.' filter is disabled' );
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'no hooks registered for '.$hook_name.' filter' );
 				}
 
-				if ( ! empty( $data ) && is_array( $data ) )
+				if ( ! empty( $json_data ) && is_array( $json_data ) )
 					$ret[] = "<script type=\"application/ld+json\">".
-						$this->p->util->json_format( $data )."</script>\n";
+						$this->p->util->json_format( $json_data )."</script>\n";
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( $type_hook_name );	// end timer for json array
+
 			}
 
 			$ret = SucomUtil::a2aa( $ret );	// convert to array of arrays
@@ -276,7 +285,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/WebSite for Google
 		 */
-		public function filter_data_http_schema_org_website( $data, 
+		public function filter_json_data_http_schema_org_website( $json_data, 
 			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
 
 			if ( $this->p->debug->enabled )
@@ -298,7 +307,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['description'] = $desc;
 
 			if ( $main_entity )
-				self::add_main_entity( $ret, $ret['url'] );
+				self::add_main_entity_data( $ret, $ret['url'] );
 
 			$search_url = apply_filters( $lca.'_json_ld_search_url',
 				get_bloginfo( 'url' ).'?s={search_term_string}' );
@@ -312,17 +321,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 			}
 
-			// if data is an array, then merge the new values
-			// if data is a boolean, return the boolean
-			return $data === null ? 
-				$ret : ( is_array( $data ) ?
-					array_merge( $data, $ret ) : $data );
+			return self::return_data_from_filter( $json_data, $ret );
 		}
 
 		/*
 		 * http://schema.org/Organization social markup for Google
 		 */
-		public function filter_data_http_schema_org_organization( $data, 
+		public function filter_json_data_http_schema_org_organization( $json_data, 
 			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
 
 			if ( $this->p->debug->enabled )
@@ -334,7 +339,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::add_single_organization_data( $ret, $post_id );	// list_element = false
 
 			if ( $main_entity )
-				self::add_main_entity( $ret, $ret['url'] );
+				self::add_main_entity_data( $ret, $ret['url'] );
 
 			if ( is_front_page() ) {
 				// add the sameAs social profile links
@@ -355,17 +360,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 	
-			// if data is an array, then merge the new values
-			// if data is a boolean, return the boolean
-			return $data === null ? 
-				$ret : ( is_array( $data ) ?
-					array_merge( $data, $ret ) : $data );
+			return self::return_data_from_filter( $json_data, $ret );
 		}
 
 		/*
 		 * http://schema.org/Person social markup for Google
 		 */
-		public function filter_data_http_schema_org_person( $data, 
+		public function filter_json_data_http_schema_org_person( $json_data, 
 			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
 
 			if ( $this->p->debug->enabled )
@@ -376,7 +377,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( empty( $author_id ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: no schema_person_id for front page' );
-					return $data;
+					return $json_data;
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using author id '.$author_id.' for front page' );
 			}
@@ -384,42 +385,49 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $author_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: no author_id' );
-				return $data;
+				return $json_data;
 			}
 
 			$lca = $this->p->cf['lca'];
 			$ret = array();
 			self::add_single_person_data( $ret, $author_id, false );	// list_element = false
 
-			// OVERRIDE AUTHOR'S WEBSITE URL FROM USER PROFILE
-			if ( is_front_page() || $main_entity )
+			if ( is_front_page() || $main_entity ) {
+
+				// override the author's website url from his profile
+				// and use the open graph url instead
 				$ret['url'] = $mt_og['og:url'];
 
-			if ( $main_entity )
-				self::add_main_entity( $ret, $ret['url'] );
+				if ( $main_entity )
+					self::add_main_entity_data( $ret, $ret['url'] );
 
-			if ( is_front_page() ) {
-				// add the sameAs social profile links
-				foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
-					$url = trim( get_the_author_meta( $cm_id, $author_id ) );
-					if ( empty( $url ) )
-						continue;
-					if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
-						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-					if ( strpos( $url, '://' ) !== false )
-						$ret['sameAs'][] = esc_url( $url );
+				if ( is_front_page() ) {
+					// add the sameAs social profile links
+					foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
+						$url = trim( get_the_author_meta( $cm_id, $author_id ) );
+						if ( empty( $url ) )
+							continue;
+						if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
+							$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+						if ( strpos( $url, '://' ) !== false )
+							$ret['sameAs'][] = esc_url( $url );
+					}
 				}
 			}
 
-			// if data is an array, then merge the new values
-			// if data is a boolean, return the boolean
-			return $data === null ? 
-				$ret : ( is_array( $data ) ?
-					array_merge( $data, $ret ) : $data );
+			return self::return_data_from_filter( $json_data, $ret );
+		}
+
+		// sanitation
+		public static function return_data_from_filter( &$json_data, &$ret_data ) {
+			return empty( $ret_data ) ? $json_data : 
+				( $json_data === null ? $ret_data : 
+					( is_array( $json_data ) ? array_merge( $json_data, $ret_data ) : 
+						$json_data ) );
 		}
 
 		// $logo_key can be 'schema_logo_url' or 'schema_banner_url' (for Articles)
-		public static function add_single_organization_data( &$data, 
+		public static function add_single_organization_data( &$json_data,
 			$post_id, $logo_key = 'schema_logo_url', $list_element = false ) {
 
 			$wpsso = Wpsso::get_instance();
@@ -440,14 +448,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->options, $logo_key, false );	// list_element = false
 
 			if ( empty( $list_element ) )
-				$data = $ret;
-			else $data[] = $ret;
+				$json_data = $ret;
+			else $json_data[] = $ret;
 
 			return true;
 		}
 
-		public static function add_single_person_data( &$data, 
-			$author_id, $list_element = true ) {
+		public static function add_single_person_data( &$json_data, $author_id, $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -484,26 +491,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
 
 			if ( empty( $list_element ) )
-				$data = $ret;
-			else $data[] = $ret;
+				$json_data = $ret;
+			else $json_data[] = $ret;
 
 			return true;
 		}
 
 		// pass a single or two dimension image array in $og_image
-		public static function add_image_list_data( &$data, 
-			&$og_image, $opt_pre = 'og:image' ) {
+		public static function add_image_list_data( &$json_data, &$og_image, $opt_pre = 'og:image' ) {
 
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {			// 2 dimensional array
+			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {	// 2 dimensional array
 				foreach ( $og_image as $image )
-					self::add_single_image_data( $data, $image, $opt_pre, true );	// list_element = true
+					self::add_single_image_data( $json_data,
+						$image, $opt_pre, true );		// list_element = true
 
 			} elseif ( is_array( $og_image ) )
-				self::add_single_image_data( $data, $og_image, $opt_pre, true );	// list_element = true
+				self::add_single_image_data( $json_data,
+					$og_image, $opt_pre, true );			// list_element = true
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$data,
+		public static function add_single_image_data( &$json_data,
 			&$opts, $opt_pre = 'og:image', $list_element = true ) {
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -532,24 +540,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$ret[$wh] = $opts[$opt_pre.':'.$wh];
 
 			if ( empty( $list_element ) )
-				$data = $ret;
-			else $data[] = $ret;	// add an item to the list
+				$json_data = $ret;
+			else $json_data[] = $ret;	// add an item to the list
 
 			return true;
 		}
 
-		public static function add_main_entity( array &$data, $url ) {
-			$data['mainEntityOfPage'] = array(
+		public static function add_main_entity_data( array &$json_data, $url ) {
+			$json_data['mainEntityOfPage'] = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'WebPage',
 				'@id' => $url,
 			);
 		}
 
-		public static function add_data_prop_from_og( array &$data, array &$mt_og, array $names ) {
+		public static function add_data_prop_from_og( array &$json_data, array &$mt_og, array $names ) {
 			foreach ( $names as $mt_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
-					$data[$mt_name] = $mt_og[$og_name];
+					$json_data[$mt_name] = $mt_og[$og_name];
 		}
 
 		public function get_meta_array( $use_post, &$post_obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
