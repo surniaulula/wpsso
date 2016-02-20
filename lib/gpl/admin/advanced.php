@@ -388,8 +388,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 							break;
 						// non standard / internal meta tags
 						case 'add_meta_property_og:image:cropped':
-						case 'add_meta_property_og:video:embed_url':
 						case 'add_meta_property_og:image:id':
+						case 'add_meta_property_og:video:embed_url':
+						case 'add_meta_property_place:po_box_number':
+						case 'add_meta_property_place:type':
+						case 'add_meta_property_product:sku':
 						case ( strpos( $opt, 'add_meta_property_pinterest:' ) === 0 ? true : false ):
 						case ( strpos( $opt, 'add_meta_property_product:rating:' ) === 0 ? true : false ):
 							$highlight = ' is_disabled';
