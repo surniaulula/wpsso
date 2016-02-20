@@ -367,6 +367,8 @@ Official announcement: N/A
 	* Added support for an array of filter/action hook names in WpssoUtil `add_plugin_hooks()`.
 	* Added a SucomUtil::get_id_stub_action() static method to return the id, stub, and action strings for a library item.
 	* Added a WpssoMedia check_image_min_max() method to check for minimum image dimensions and aspect ratio.
+	* Renamed filter hooks:
+		* 'ngfb_schema_item_type' to 'ngfb_schema_head_type_key' (now filters the type key instead of its value)
 
 **Version 3.24.1 (2016/02/15)**
 
