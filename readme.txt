@@ -346,7 +346,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.25.0 (TBD)**
+**Version 3.25.0 (2016/02/21)**
 
 Official announcement: N/A
 
@@ -368,7 +368,8 @@ Official announcement: N/A
 	* Added a SucomUtil::get_id_stub_action() static method to return the id, stub, and action strings for a library item.
 	* Added a WpssoMedia check_image_min_max() method to check for minimum image dimensions and aspect ratio.
 	* Renamed filter hooks:
-		* 'ngfb_schema_item_type' to 'ngfb_schema_head_type_key' (now filters the type key instead of its value)
+		* 'wpsso_schema_item_type' to 'wpsso_schema_head_type' (now filters the type key instead of its value)
+		* 'wpsso_schema_post_types' to 'wpsso_schema_types'
 
 **Version 3.24.1 (2016/02/15)**
 
@@ -471,11 +472,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.25.0 =
+
+2016/02/21 - New "Google / Schema Image Dimensions" and "Business Banner (600x60) Image URL" options. Refactored much of the Schema JSON-LD related code. 
+
 = 3.24.1 =
 
 2016/02/15 - Modified the WpssoSchema::add_* methods argument list (removed $item_type and added $list_element).
-
-= 3.24.0 =
-
-2016/02/14 - This latest release includes many core filter and variable name changes -- if you use additional WPSSO extensions, PLEASE MAKE SURE YOU UPDATE THESE AS WELL.
 
