@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_mod_column_content( '', $column_name, $id, 'post' );
 		}
 
-		public function filter_og_image_post_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_image_post_column_content( $value, $column_name, $id, $mod_name ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $md_pre );
+				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
 
 			if ( empty( $og_image ) ) {
 				$og_image = $this->p->og->get_all_images( 1, $size_name, $id, $check_dupes, $md_pre );
@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_post_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_desc_post_column_content( $value, $column_name, $id, $mod_name ) {
 			if ( ! empty( $value ) )
 				return $value;
 

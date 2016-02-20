@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				/*
 				 * example:
-				 * 	'data_http_schema_org_item_type' => 7
+				 * 	'data_http_schema_org_item_type' => 8
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
@@ -95,9 +95,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				/*
 				 * example:
 				 * 	'data_http_schema_org_article' => array(
-				 *		'data_http_schema_org_article' => 7,
-				 *		'data_http_schema_org_newsarticle' => 7,
-				 *		'data_http_schema_org_techarticle' => 7,
+				 *		'data_http_schema_org_article' => 8,
+				 *		'data_http_schema_org_newsarticle' => 8,
+				 *		'data_http_schema_org_techarticle' => 8,
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// can be called directly and from the "wp" and "current_screen" actions
 		// this method does not return a value, so do not use as a filter
-		public function add_plugin_image_sizes( $obj = false, $sizes = array(), $filter = true, $mod = false ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), $filter = true, $mod_name = false ) {
 			/*
 			 * Allow various plugin extensions to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
@@ -168,58 +168,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $filter === true ) {
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
-					$sizes, $obj, $mod, SucomUtil::crawler_name() );
+					$sizes, $wp_obj, $mod_name, SucomUtil::crawler_name() );
 			}
 
 			$id = false;
+			$use_post = false;
 			$meta_opts = array();
 
-			// check for a recognized object passed by some action hooks
-			if ( is_object( $obj ) ) {
-				switch ( get_class( $obj ) ) {
-					case 'WP_Post':
-						$mod = 'post';
-						$id = $id->ID;
-						break;
-					case 'WP_Term':
-						$mod = 'taxonomy';
-						$id = $id->term_id;
-						break;
-					case 'WP_User':
-						$mod = 'user';
-						$id = $id->ID;
-						break;
-				}
-			} else $id = $obj;
+			list( $id, $mod_name, $mod_obj ) = $this->get_object_id_mod( $use_post, $wp_obj, $mod_name );
 
-			if ( empty( $mod ) ) {
-				if ( SucomUtil::is_post_page( false ) )
-					$mod = 'post';
-				elseif ( SucomUtil::is_term_page() )
-					$mod = 'taxonomy';
-				elseif ( SucomUtil::is_author_page() )
-					$mod = 'user';
-			}
-
-			if ( empty( $id ) && ! empty( $mod ) ) {
-				if ( $mod === 'post' )
-					$id = $this->get_post_object( false, 'id' );
-				elseif ( $mod === 'taxonomy' )
-					$id = $this->get_term_object( 'id' );
-				elseif ( $mod === 'user' )
-					$id = $this->get_author_object( 'id' );
-			};
-
-			if ( empty( $mod ) ) {
+			if ( empty( $mod_name ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'module is unknown' );
-
 			} elseif ( empty( $id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'object id is unknown' );
-
-			// custom filters may use image sizes, so don't filter/cache the meta options
-			} else $meta_opts = $this->get_mod_options( $mod, $id, false, array( 'filter_options' => false ) );
+			} else {
+				// custom filters may use image sizes, so don't filter/cache the meta options
+				$meta_opts = $this->get_mod_options( $mod_name, $id, false, array( 'filter_options' => false ) );
+			}
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -246,7 +213,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];	// fallback to default value
 					}
 					if ( $key === 'crop' )						// make sure crop is true or false
-						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
+						$size_info[$key] = empty( $size_info[$key] ) ?
+							false : true;
 				}
 
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
@@ -263,7 +231,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					// allow custom function hooks to make changes
 					if ( $filter === true )
 						$size_info = apply_filters( $this->p->cf['lca'].'_size_info_'.$size_info['name'], 
-							$size_info, $id, $mod );
+							$size_info, $id, $mod_name );
 
 					// a lookup array for image size labels, used in image size error messages
 					$this->size_labels[$this->p->cf['lca'].'-'.$size_info['name']] = $size_info['label'];
@@ -455,48 +423,55 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_mod_options( $mod, $id = false, $idx = false, $atts = array() ) {
+		public function get_mod_options( $mod_name, $id = false, $idx = false, $atts = array() ) {
+
 			if ( empty( $id ) || 
-				! isset( $this->p->m['util'][$mod] ) )
+				! isset( $this->p->m['util'][$mod_name] ) )
 					return false;
+
 			// return the whole options array
 			if ( $idx === false ) {
-				$ret = $this->p->m['util'][$mod]->get_options( $id, $idx, $atts );
+				$ret = $this->p->m['util'][$mod_name]->get_options( $id, $idx, $atts );
 			} else {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
 				else $idx = array_unique( $idx );	// just in case
 
 				foreach ( $idx as $key ) {
+
 					if ( $key === 'none' )		// special keyword
 						return false;		// stop here
+
 					if ( empty( $key ) )
 						continue;
-					$ret = $this->p->m['util'][$mod]->get_options( $id, $key, $atts );
+
+					$ret = $this->p->m['util'][$mod_name]->get_options( $id, $key, $atts );
+
 					if ( ! empty( $ret ) )
 						break;
 				}
 			}
+
 			if ( ! empty( $ret ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom '.$mod.' '.
-						( $idx === false ? 'options' : ( is_array( $idx ) ? 
-							implode( ', ', $idx ) : $idx ) ).' = '.
+					$this->p->debug->log( 'custom '.$mod_name.' '.
+						( $idx === false ? 'options' : ( is_array( $idx ) ? implode( ', ', $idx ) : $idx ) ).' = '.
 						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
 				}
 				return $ret;	// stop here
 			}
+
 			return false;
 		}
 
-		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod = false ) {
+		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod_name = false ) {
 
 			// remove localization for more generic match
 			if ( preg_match( '/(#.*|:[0-9]+)$/', $key ) > 0 )
 				$key = preg_replace( '/(#.*|:[0-9]+)$/', '', $key );
 
 			// hooked by the sharing class
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod_name );
 
 			// pre-filter most values to remove html
 			switch ( $option_type ) {
@@ -548,14 +523,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 
 				case 'pos_num':		// integer options that must be 1 or more (not zero)
-				case 'img_dim':		// image dimensions, subject to minimum value (typically, at least 200px)
-					if ( $option_type == 'img_dim' )
-						$min_int = empty( $this->p->cf['head']['min_img_dim'] ) ? 
-							200 : $this->p->cf['head']['min_img_dim'];
+				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
+				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
+
+					if ( $option_type == 'img_width' )
+						$min_int = $this->p->cf['head']['min']['og_img_width'];
+					elseif ( $option_type == 'img_height' )
+						$min_int = $this->p->cf['head']['min']['og_img_height'];
 					else $min_int = 1;
 
 					// custom meta options are allowed to be empty
-					if ( $val === '' && $mod !== false )
+					if ( $val === '' && $mod_name !== false )
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.', 'wpsso' ), $key, $min_int ), true );
@@ -714,72 +692,63 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( $function.'() = true' );
 		}
 
+		public function get_default_author_id( $opt_pre = 'og' ) {
+			$lca = $this->p->cf['lca'];
+			$id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
+				$this->p->options[$opt_pre.'_def_author_id'] : null;
+			return apply_filters( $lca.'_'.$opt_pre.'_default_author_id', $id );
+		}
+
+		// returns an author id if the default author is forced
 		public function force_default_author( $use_post = false, $opt_pre = 'og' ) {
-			$ret = null;
+			$id = $this->get_default_author_id( $opt_pre );		// applies the author id filter
+			return $id && $this->force_default( $use_post, $opt_pre, 'author' ) ?
+				$id : false;
+		}
+
+		// returns true if the default image is forced
+		public function force_default_image( $use_post = false, $opt_pre = 'og' ) {
+			return $this->force_default( $use_post, $opt_pre, 'img' );
+		}
+
+		// returns true if the default video is forced
+		public function force_default_video( $use_post = false, $opt_pre = 'og' ) {
+			return $this->force_default( $use_post, $opt_pre, 'vid' );
+		}
+
+		public function force_default( $use_post = false, $opt_pre = 'og', $type ) {
+
+			$lca = $this->p->cf['lca'];
+			$def = array();
+
+			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key )
+				$def[$key] = apply_filters( $lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, 
+					( isset( $this->p->options[$opt_pre.'_def_'.$type.'_'.$key] ) ? 
+						$this->p->options[$opt_pre.'_def_'.$type.'_'.$key] : null ) );
 
 			// save some time
-			if ( empty( $this->p->options[$opt_pre.'_def_author_id'] ) )
+			if ( empty( $def['id'] ) && 
+				empty( $def['url'] ) )
+					$ret = false;
+
+			// check for singular pages first
+			elseif ( SucomUtil::is_post_page( $use_post ) )
 				$ret = false;
-			else {
-				// check for singular pages first
-				if ( $ret === null && SucomUtil::is_post_page( $use_post ) )
-					$ret = false;
-	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_author_on_index'] ) )
-					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
-						$ret = true;
-	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_author_on_search'] ) )
-					if ( is_search() )
-						$ret = true;
-	
-				if ( $ret === null )
-					$ret = false;
-			}
-			$ret = apply_filters( $this->p->cf['lca'].'_force_default_author', $ret, $use_post, $opt_pre );
 
-			if ( $ret === true && $this->p->debug->enabled )
-				$this->p->debug->log( 'default author is forced' );
+			elseif ( ! empty( $def['on_index'] ) &&
+				( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) )
+					$ret = true;
 
-			return $ret;
-		}
+			elseif ( ! empty( $def['on_search'] ) &&
+				is_search() )
+					$ret = true;
 
-		public function force_default_image( $use_post = false, $opt_pre = 'og' ) {
-			return $this->force_default_media( $use_post, $opt_pre, 'img' );
-		}
+			else $ret = false;
 
-		public function force_default_video( $use_post = false, $opt_pre = 'og' ) {
-			return $this->force_default_media( $use_post, $opt_pre, 'vid' );
-		}
+			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$type, $ret, $use_post, $opt_pre );
 
-		public function force_default_media( $use_post = false, $opt_pre = 'og', $media = 'img' ) {
-			$ret = null;
-
-			// make sure we have default media
-			if ( empty( $this->p->options[$opt_pre.'_def_'.$media.'_id'] ) &&
-				empty( $this->p->options[$opt_pre.'_def_'.$media.'_url'] ) ) {
-					$ret = false;
-			} else {
-				// check for singular pages first
-				if ( $ret === null && SucomUtil::is_post_page( $use_post ) ) {
-					$ret = false;
-				}
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_index'] ) ) {
-					if ( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) )
-						$ret = true;
-				}	
-				if ( $ret === null && ! empty( $this->p->options[$opt_pre.'_def_'.$media.'_on_search'] ) ) {
-					if ( is_search() )
-						$ret = true;
-				}
-				if ( $ret === null ) {
-					$ret = false;
-				}
-			}
-			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$media, $ret );
-
-			if ( $ret === true && $this->p->debug->enabled )
-				$this->p->debug->log( 'default '.$media.' is forced' );
+			if ( $ret && $this->p->debug->enabled )
+				$this->p->debug->log( 'default '.$type.' is forced' );
 
 			return $ret;
 		}
@@ -897,37 +866,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ts : get_option( WPSSO_TS_NAME, array() );
 		}
 	
-		public function get_mod_obj( $id, $mod = 'post' ) {
-			$obj = false;
-			if ( empty( $id ) || empty( $mod ) ) {
-				if ( ! empty( $id ) )
-					$mod = 'post';		// default to post if no module name
-				elseif ( SucomUtil::is_post_page( false ) )
-					$mod = 'post';
-				elseif ( SucomUtil::is_term_page() )
-					$mod = 'taxonomy';
-				elseif ( SucomUtil::is_author_page() )
-					$mod = 'user';
-			}
-			if ( isset( $this->p->m['util'][$mod] ) ) {
-				$obj =& $this->p->m['util'][$mod];
-				if ( empty( $id ) ) {
-					switch ( $mod ) {
-						case 'post':
-							$id = $this->get_post_object( false, 'id' );
-							break;
-						case 'taxonomy':
-							$id = $this->get_term_object( 'id' );
-							break;
-						case 'author':
-							$id = $this->get_author_object( 'id' );
-							break;
-					}
-				}
-			}
-			return array( $id, $obj );
-		}
-
 		// deprecated 2015/12/09
 		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
 			return $opts;
@@ -937,18 +875,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $this->inline_vars;
 		}
 
-		public function get_inline_vals( $use_post = false, &$obj = false, &$atts = array() ) {
+		public function get_inline_vals( $use_post = false, &$post_obj = false, &$atts = array() ) {
 
-			if ( ! is_object( $obj ) ) {
-				if ( ( $obj = $this->get_post_object( $use_post ) ) === false ) {
+			if ( ! is_object( $post_obj ) ) {
+				if ( ( $post_obj = $this->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return array();
 				}
 			}
-			$post_id = empty( $obj->ID ) || 
-				empty( $obj->post_type ) ? 
-					0 : $obj->ID;
+			$post_id = empty( $post_obj->ID ) || 
+				empty( $post_obj->post_type ) ? 
+					0 : $post_obj->ID;
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
@@ -979,7 +917,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// allow the variables and values array to be extended
 		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $text, $use_post = false, $obj = false, $atts = array(), $ext = array() ) {
+		public function replace_inline_vars( $text, $use_post = false, $post_obj = false, $atts = array(), $ext = array() ) {
 
 			if ( strpos( $text, '%%' ) === false ) {
 				if ( $this->p->debug->enabled )
@@ -988,7 +926,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$vars = $this->inline_vars;
-			$vals = $this->get_inline_vals( $use_post, $obj, $atts );
+			$vals = $this->get_inline_vals( $use_post, $post_obj, $atts );
 
 			if ( ! empty( $ext ) && 
 				self::is_assoc( $ext ) ) {
@@ -1002,31 +940,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return str_replace( $vars, $vals, $text );
 		}
 
-		public function add_image_wh( $keys, &$opts ) {
+		public function add_image_url_sizes( $keys, array &$arr ) {
+
 			if ( SucomUtil::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
-				return $opts;
+				return $arr;
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
 
-			foreach ( $keys as $key ) {
-				if ( ! empty( $opts[$key] ) &&
-					strpos( $opts[$key], '://' ) !== false ) {
+			foreach ( $keys as $pre ) {
+				if ( ! empty( $arr[$pre] ) &&
+					strpos( $arr[$pre], '://' ) !== false ) {
 
-					list( $opts[$key.':width'], $opts[$key.':height'],
-						$image_type, $image_attr ) = @getimagesize( $opts[$key] );
+					list( $arr[$pre.':width'], $arr[$pre.':height'],
+						$image_type, $image_attr ) = @getimagesize( $arr[$pre] );
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'getimagesize() for '.$opts[$key].' returned '.
-							$opts[$key.':width'].'x'.$opts[$key.':height'] );
+						$this->p->debug->log( 'getimagesize() for '.$arr[$pre].' returned '.
+							$arr[$pre.':width'].'x'.$arr[$pre.':height'] );
 				} else {
 					foreach ( array( 'width', 'height' ) as $wh )
-						if ( isset( $opts[$key.':'.$wh] ) )
-							$opts[$key.':'.$wh] = -1;
+						if ( isset( $arr[$pre.':'.$wh] ) )
+							$arr[$pre.':'.$wh] = -1;
 				}
 			}
 
-			return $opts;
+			return $arr;
 		}
 
 		// accepts json script or json array
@@ -1050,6 +989,128 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $json;
+		}
+
+		// $id can be a numeric id or a WP class object
+		public function get_object_id_mod( $use_post = false, $id = false, $mod_name = false ) {
+
+			// check for a recognized object
+			if ( is_object( $id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'object is '.get_class( $id ) );
+				switch ( get_class( $id ) ) {
+					case 'WP_Post':
+						$mod_name = 'post';
+						$id = $id->ID;
+						break;
+					case 'WP_Term':
+						$mod_name = 'taxonomy';
+						$id = $id->term_id;
+						break;
+					case 'WP_User':
+						$mod_name = 'user';
+						$id = $id->ID;
+						break;
+					default:
+						$id = false;
+						break;
+				}
+			}
+
+			if ( empty( $mod_name ) ) {
+				if ( SucomUtil::is_post_page( $use_post ) )
+					$mod_name = 'post';
+				elseif ( SucomUtil::is_term_page() )
+					$mod_name = 'taxonomy';
+				elseif ( SucomUtil::is_author_page() )
+					$mod_name = 'user';
+				else $mod_name = false;
+			}
+
+			if ( ! empty( $mod_name ) ) {
+				if ( empty( $id ) ) {
+					if ( $mod_name === 'post' )
+						$id = $this->get_post_object( false, 'id' );
+					elseif ( $mod_name === 'taxonomy' )
+						$id = $this->get_term_object( 'id' );
+					elseif ( $mod_name === 'user' )
+						$id = $this->get_author_object( 'id' );
+					else $id = false;
+				}
+
+				if ( isset( $this->p->m['util'][$mod_name] ) )
+					$mod_obj =& $this->p->m['util'][$mod_name];
+				else $mod_obj = false;
+
+			} else $mod_obj = false;
+
+			return array( $id, $mod_name, $mod_obj );
+		}
+
+		public function is_maxed( &$arr, $num = 0 ) {
+			if ( ! is_array( $arr ) ) 
+				return false;
+			if ( $num > 0 && count( $arr ) >= $num ) 
+				return true;
+			return false;
+		}
+
+		public function push_max( &$dst, &$src, $num = 0 ) {
+			if ( ! is_array( $dst ) || 
+				! is_array( $src ) ) 
+					return false;
+
+			// if the array is not empty, or contains some non-empty values, then push it
+			if ( ! empty( $src ) && 
+				array_filter( $src ) ) 
+					array_push( $dst, $src );
+
+			return $this->slice_max( $dst, $num );	// returns true or false
+		}
+
+		public function slice_max( &$arr, $num = 0 ) {
+			if ( ! is_array( $arr ) )
+				return false;
+
+			$has = count( $arr );
+
+			if ( $num > 0 ) {
+				if ( $has == $num ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'max values reached ('.$has.' == '.$num.')' );
+					return true;
+				} elseif ( $has > $num ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'max values reached ('.$has.' > '.$num.') - slicing array' );
+					$arr = array_slice( $arr, 0, $num );
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		// if $id is 0 or false, return values from the plugin settings 
+		public function get_max_nums( $id = false, $mod_name = false ) {
+
+			$max = array();
+
+			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
+
+				if ( ! empty( $id ) && 
+					isset( $this->p->m['util'][$mod_name] ) )
+						$num_meta = $this->p->m['util'][$mod_name]->get_options( $id, $max_name );
+				else $num_meta = null;	// default value returned by get_options() if index key is missing
+
+				// quick sanitation of returned value
+				if ( is_numeric( $num_meta ) && $num_meta >= 0 ) {
+					$max[$max_name] = $num_meta;
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
+				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
+			}
+
+			return $max;
 		}
 	}
 }

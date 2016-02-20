@@ -56,27 +56,27 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		// called from Tumblr class
 		public function get_quote( $use_post = true ) {
 
-			if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+			if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: invalid object type' );
 				return '';
 			}
 
-			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '', $use_post, $obj );
+			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '', $use_post, $post_obj );
 
 			if ( $quote != '' ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'quote seed = "'.$quote.'"' );
 			} else {
-				if ( has_excerpt( $obj->ID ) ) 
-					$quote = get_the_excerpt( $obj->ID );
-				else $quote = $obj->post_content;
+				if ( has_excerpt( $post_obj->ID ) ) 
+					$quote = get_the_excerpt( $post_obj->ID );
+				else $quote = $post_obj->post_content;
 			}
 
 			// remove shortcodes, etc., but don't strip html tags
 			$quote = $this->p->util->cleanup_html_tags( $quote, false );
 
-			return apply_filters( $this->p->cf['lca'].'_quote', $quote, $use_post, $obj );
+			return apply_filters( $this->p->cf['lca'].'_quote', $quote, $use_post, $post_obj );
 		}
 
 		public function get_caption( $type = 'title', $textlen = 200, $use_post = true, $use_cache = true,
@@ -111,12 +111,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( is_singular() || $use_post !== false ) {
-				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $caption;
 				}
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
@@ -212,12 +212,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( is_singular() || $use_post !== false ) {
-				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $title;
 				}
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
@@ -259,7 +259,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// construct a title of our own
 			if ( empty( $title ) ) {
-				// $obj and $post_id are defined above, with the same test, so we should be good
+
 				if ( is_singular() || $use_post !== false ) {
 					if ( is_singular() ) {
 						$title = wp_title( $separator, false, 'right' );
@@ -378,12 +378,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$page = ''; 
 
 			if ( is_singular() || $use_post !== false ) {
-				if ( ( $obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
+				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $desc;
 				}
-				$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ? 0 : $obj->ID;
+				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
@@ -434,11 +434,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// if there's no custom description, and no pre-seed, 
 			// then go ahead and generate the description value
 			if ( empty( $desc ) ) {
-				// $obj and $post_id are defined above, with the same test, so we should be good
+				// $post_obj and $post_id are defined above, with the same test, so we should be good
 				if ( is_singular() || $use_post !== false ) {
 					// use the excerpt, if we have one
 					if ( has_excerpt( $post_id ) ) {
-						$desc = $obj->post_excerpt;
+						$desc = $post_obj->post_excerpt;
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
 							$filter_removed = apply_filters( $this->p->cf['lca'].'_pre_filter_remove',
 								false, 'get_the_excerpt' );
@@ -496,12 +496,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// if there's still no description, then fallback to a generic version
 			if ( empty( $desc ) ) {
-				if ( is_admin() && ! empty( $obj->post_status ) && $obj->post_status == 'auto-draft' ) {
+				if ( is_admin() && ! empty( $post_obj->post_status ) && $post_obj->post_status == 'auto-draft' ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'post_status is auto-draft - using empty description' );
 				} else {
 					// pass options array to allow fallback if locale option does not exist
 					$key = SucomUtil::get_locale_key( 'og_site_description', $this->p->options, $post_id );
+
 					if ( ! empty( $this->p->options[$key] ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'description is empty - custom site description ('.$key.')' );
@@ -556,7 +557,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$content = false;
 
 			// if $post_id is 0, then pass the $use_post (true/false) value instead
-			if ( ( $obj = $this->p->util->get_post_object( ( empty( $post_id ) ?
+			if ( ( $post_obj = $this->p->util->get_post_object( ( empty( $post_id ) ?
 				$use_post : $post_id ) ) ) === false ) {
 
 				if ( $this->p->debug->enabled )
@@ -564,8 +565,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				return $content;
 			}
 
-			$post_id = empty( $obj->ID ) || 
-				empty( $obj->post_type ) ? 0 : $obj->ID;
+			$post_id = empty( $post_obj->ID ) || 
+				empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'using content from object id '.$post_id );
 
@@ -604,8 +605,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( ! empty( $content ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'content seed = "'.$content.'"' );
-			} elseif ( ! empty( $obj->post_content ) )
-				$content = $obj->post_content;
+			} elseif ( ! empty( $post_obj->post_content ) )
+				$content = $post_obj->post_content;
 			elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'exiting early: empty post content' );
 
@@ -643,8 +644,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
 				if ( empty( $post->ID ) && ! empty( $post_id ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( '$post ID property empty: setting $post from $obj variable' );
-					$post = $obj;
+						$this->p->debug->log( '$post ID property empty: setting $post from $post_obj variable' );
+					$post = $post_obj;
 				}
 
 				// apply the content filters

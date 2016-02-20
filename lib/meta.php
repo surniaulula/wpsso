@@ -26,9 +26,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_default_tabs() {
 			$tabs = array();
 			foreach( apply_filters( $this->p->cf['lca'].'_social_settings_default_tabs', array(
-				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
 				'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 				'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
+				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 			) ) as $key => $name ) {
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				( $idx === false ? array() : false ) );
 		}
 
-		public function get_defaults( $idx = false, $mod = false ) {
+		public function get_defaults( $idx = false, $mod_name = false ) {
 			if ( ! isset( $this->defs['options_filtered'] ) || 
 				$this->defs['options_filtered'] !== true ) {
 				$this->defs = array(
@@ -204,6 +204,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_desc' => '',
 					'schema_headline' => '',
 					'schema_desc' => '',
+					'schema_type' => $this->p->schema->get_head_item_type( false, false, true ),	// return the head type key
 					'seo_desc' => '',
 					'tc_desc' => '',
 					'pin_desc' => '',
@@ -236,8 +237,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'' : $this->p->options['og_def_img_id_pre'] ),
 					'rp_img_url' => '',
 				);
-				if ( $mod !== false )
-					$this->defs = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs, $mod );
+				if ( $mod_name !== false )
+					$this->defs = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs, $mod_name );
 				$this->defs['options_filtered'] = true;
 			}
 			if ( $idx !== false ) {
@@ -282,9 +283,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else return true;
 		}
 
-		protected function get_submit_opts( $id, $mod = false ) {
+		protected function get_submit_opts( $id, $mod_name = false ) {
 
-			$defs = $this->get_defaults( false, $mod );
+			$defs = $this->get_defaults( false, $mod_name );
 			unset ( $defs['options_filtered'] );
 			unset ( $defs['options_version'] );
 
@@ -296,10 +297,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $prev, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// network is false
+			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod_name );	// network is false
 
-			if ( $mod !== false )
-				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod, $id );
+			if ( $mod_name !== false )
+				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod_name, $id );
 
 			foreach ( $defs as $key => $def_val )
 				if ( isset( $opts[$key] ) )
@@ -334,7 +335,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							$opts[$md_pre.'_img_'.$key] === $defs[$md_pre.'_img_'.$key] )
 								unset( $opts[$md_pre.'_img_'.$key] );
 
-					if ( $mod !== false ) {
+					if ( $mod_name !== false ) {
 						// has anything changed? if yes, then set the force_regen flag
 						if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
 							$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
@@ -347,7 +348,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				}
 				if ( $force_regen === true )
-					set_transient( $this->p->cf['lca'].'_'.$mod.'_'.$id.'_regen_'.$md_pre, true );
+					set_transient( $this->p->cf['lca'].'_'.$mod_name.'_'.$id.'_regen_'.$md_pre, true );
 			}
 			return $opts;
 		}
@@ -359,7 +360,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			) );
 		}
 
-		protected function get_mod_column_content( $value, $column_name, $id, $mod = '' ) {
+		protected function get_mod_column_content( $value, $column_name, $id, $mod_name = '' ) {
 
 			// optimize performance and return immediately if this is not our column
 			if ( strpos( $column_name, $this->p->cf['lca'].'_' ) !== 0 )
@@ -386,7 +387,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
 				$lang = SucomUtil::get_locale();
-				$cache_salt = __METHOD__.'(lang:'.$lang.'_id:'.$id.'_mod:'.$mod.'_column:'.$column_name.')';
+				$cache_salt = __METHOD__.'(lang:'.$lang.'_id:'.$id.'_mod_name:'.$mod_name.'_column:'.$column_name.')';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				$value = get_transient( $cache_id );
 				if ( $value !== false )
@@ -396,11 +397,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			switch ( $column_name ) {
 				case $this->p->cf['lca'].'_og_image':
 					// set custom image dimensions for this post/term/user id
-					$this->p->util->add_plugin_image_sizes( $id, array(), true, $mod );
+					$this->p->util->add_plugin_image_sizes( $id, array(), true, $mod_name );
 					break;
 			}
 
-			$value = apply_filters( $column_name.'_'.$mod.'_column_content', $value, $column_name, $id, $mod  );
+			$value = apply_filters( $column_name.'_'.$mod_name.'_column_content', $value, $column_name, $id, $mod_name  );
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
 				set_transient( $cache_id, $value, $this->p->options['plugin_object_cache_exp'] );
@@ -560,12 +561,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_ret;
 		}
 
-		public function get_og_video_preview_image( $id, $mod, $check_dupes = false, $md_pre = 'og' ) {
+		public function get_og_video_preview_image( $id, $mod_name, $check_dupes = false, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'id' => $id,
-					'mod' => $mod,
+					'mod_name' => $mod_name,
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 				), get_class( $this ) );
@@ -580,7 +581,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			// get video preview images if allowed
 			if ( ! empty( $use_prev_img ) ) {
 				// assumes the first video will have a preview image
-				$og_video = $this->p->og->get_all_videos( 1, $id, $mod, $check_dupes, $md_pre );
+				$og_video = $this->p->og->get_all_videos( 1, $id, $mod_name, $check_dupes, $md_pre );
 				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
 					foreach ( $og_video as $video ) {
 						if ( ! empty( $video['og:image'] ) ) {

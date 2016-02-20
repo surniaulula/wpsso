@@ -136,13 +136,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_select( $name, $values = array(), $class = '', $id = '', 
-			$is_assoc = false, $disabled = false, $selected = false, $reload = false ) {
+			$is_assoc = null, $disabled = false, $selected = false, $reload = false ) {
 
 			if ( empty( $name ) || 
 				! is_array( $values ) ) 
 					return;
 
-			if ( $is_assoc === false ) 
+			if ( $is_assoc === null ) 
 				$is_assoc = SucomUtil::is_assoc( $values );
 
 			$html = '';

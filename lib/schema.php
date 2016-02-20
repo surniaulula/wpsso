@@ -13,6 +13,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		protected $p;
+		protected $schema_types = null;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -21,9 +22,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 4,
-				'data_http_schema_org_website' => 5,
-				'data_http_schema_org_organization' => 5,
-				'data_http_schema_org_person' => 6,
 			), 5 );
 
 			// only hook the head attribute filter if we have one
@@ -43,20 +41,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'head attributes filter skipped: plugin_head_attr_filter_name option is empty' );
 		}
 
-		public function filter_plugin_image_sizes( $sizes, $obj, $mod, $crawler_name ) {
-			$opt_pre = 'og_img';			// use opengraph dimensions
-
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				if ( $crawler_name === 'pinterest' )
-					$opt_pre = 'rp_img';	// use pinterest dimensions
-			}
+		public function filter_plugin_image_sizes( $sizes, $wp_obj, $mod_name, $crawler_name ) {
 
 			$sizes['schema_img'] = array(
 				'name' => 'schema',
-				'label' => _x( 'Schema JSON-LD (same as Facebook / Open Graph)',
+				'label' => _x( 'Google / Schema Image',
 					'image size label', 'wpsso' ),
-				'prefix' => $opt_pre
 			);
+
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) &&
+				$crawler_name === 'pinterest' )
+					$sizes['schema_img']['prefix'] = 'rp_img';
 
 			return $sizes;
 		}
@@ -79,65 +74,107 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$head_type = $this->get_head_item_type();
+			if ( empty( $head_type ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: schema head type value is empty' );
+				return $head_attr;
+			}
 
-			if ( ! empty( $head_type ) ) {
+			// fix incorrect itemscope values
+			if ( strpos( $head_attr, ' itemscope="itemscope"' ) !== false )
+				$head_attr = preg_replace( '/ itemscope="itemscope"/', 
+					' itemscope', $head_attr );
+			elseif ( strpos( $head_attr, ' itemscope' ) === false )
+				$head_attr .= ' itemscope';
 
-				// backwards compatibility
-				if ( strpos( $head_type, '://' ) === false )
-					$head_type = 'http://schema.org/'.$head_type;
-
-				// fix incorrect itemscope values
-				if ( strpos( $head_attr, ' itemscope="itemscope"' ) !== false )
-					$head_attr = preg_replace( '/ itemscope="itemscope"/', 
-						' itemscope', $head_attr );
-				elseif ( strpos( $head_attr, ' itemscope' ) === false )
-					$head_attr .= ' itemscope';
-
-				// replace existing itemtype values
-				if ( strpos( $head_attr, ' itemtype="' ) !== false )
-					$head_attr = preg_replace( '/ itemtype="[^"]+"/',
-						' itemtype="'.$head_type.'"', $head_attr );
-				else $head_attr .= ' itemtype="'.$head_type.'"';
-
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema item_type value is empty' );
+			// replace existing itemtype values
+			if ( strpos( $head_attr, ' itemtype="' ) !== false )
+				$head_attr = preg_replace( '/ itemtype="[^"]+"/',
+					' itemtype="'.$head_type.'"', $head_attr );
+			else $head_attr .= ' itemtype="'.$head_type.'"';
 
 			return trim( $head_attr );
 		}
 
-		public function get_head_item_type( $use_post = false, $obj = false ) {
+		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_key = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
-			if ( ! is_object( $obj ) )
-				$obj = $this->p->util->get_post_object( $use_post );
+			$schema_types = $this->get_schema_types();
 
-			$schema_types = apply_filters( $this->p->cf['lca'].'_schema_post_types', 
-				$this->p->cf['head']['schema_type'] );
+			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
-			$head_type = $schema_types['website'];	// default value for non-singular webpages
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'use_post is '.( $use_post === false ?
+					'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+				$this->p->debug->log( 'id is '.$id );
+				$this->p->debug->log( 'mod_name is '.$mod_name );
+			}
 
-			if ( SucomUtil::is_post_page( $use_post ) ) {
-				if ( ! empty( $obj->post_type ) &&
-					! empty( $this->p->options['schema_type_for_'.$obj->post_type] ) ) {
+			if ( ! empty( $id ) && ! empty( $mod_name ) ) {
 
-					// examples:
-					//	$item_key = article, article.news, article.tech, etc.
-					$item_key = $this->p->options['schema_type_for_'.$obj->post_type];
+				$head_type_key = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
 
-					if ( isset( $schema_types[$item_key] ) )
-						$head_type = $schema_types[$item_key];
-					else $head_type = $schema_types['webpage'];
+				if ( empty( $head_type_key ) || $head_type_key === 'none' ) {
+					$head_type_key = null;
 
-				} else $head_type = $schema_types['webpage'];
+				} elseif ( empty( $schema_types[$head_type_key] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom type key "'.$head_type_key.'" not found in schema types' );
+					$head_type_key = null;
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'custom type key "'.$head_type_key.'" from module '.$mod_name );
+			}
 
-			} elseif ( $this->p->util->force_default_author() &&
-				! empty( $this->p->options['og_def_author_id'] ) )
-					$head_type = $schema_types['webpage'];
+			if ( empty( $head_type_key ) ) {
 
-			return apply_filters( $this->p->cf['lca'].'_schema_item_type', $head_type, $use_post, $obj );
+				if ( is_front_page() ) {
+					$head_type_key = 'website';
+
+				// possible values are post, taxonomy, and user
+				} elseif ( $mod_name === 'post' ) {
+
+					if ( ! is_object( $post_obj ) )
+						$post_obj = $this->p->util->get_post_object( $id );
+	
+					if ( ! empty( $post_obj->post_type ) &&
+						! empty( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
+	
+						$head_type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
+	
+						if ( empty( $head_type_key ) || $head_type_key === 'none' )
+							$head_type_key = null;
+						elseif ( empty( $schema_types[$head_type_key] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'schema type key "'.$head_type_key.'" not found in schema types' );
+							$head_type_key = 'webpage';
+						}
+	
+					} else $head_type_key = 'webpage';
+
+				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'forcing schema type key "webpage" for default author' );
+					$head_type_key = 'webpage';
+	
+				} else $head_type_key = 'webpage';	// default value for non-singular webpages
+			}
+
+			$head_type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type_key',
+				$head_type_key, $use_post, $post_obj );
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'schema type key is "'.$head_type_key.'"' );
+
+			if ( isset( $schema_types[$head_type_key] ) ) {
+				if ( $ret_key !== false )
+					return $head_type_key;
+				else return $schema_types[$head_type_key];
+			} else return false;
 		}
 
-		public function get_head_type_context( $use_post = false, $obj = false ) {
-			return self::get_item_type_context( $this->get_head_item_type( $use_post, $obj ) );
+		public function get_head_type_context( $use_post = false, $post_obj = false ) {
+			return self::get_item_type_context( $this->get_head_item_type( $use_post, $post_obj ) );
 		}
 
 		public static function get_item_type_context( $item_type, $properties = array() ) {
@@ -149,51 +186,78 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			else return array();
 		}
 
-		public function get_json_array( $use_post, &$obj, &$mt_og, $post_id, $author_id ) {
+		public function get_schema_types() {
+			if ( $this->schema_types === null )
+				$this->schema_types = (array) apply_filters( $this->p->cf['lca'].'_schema_types', 
+					$this->p->cf['head']['schema_type'] );
+			return $this->schema_types;
+		}
+
+		public function get_schema_types_select() {
+			$schema_types = $this->get_schema_types();
+			$select = array( 'none' => '[none]' );
+			foreach ( $schema_types as $key => $label )
+				$select[$key] = $key.' ('.$label.')';
+			return $select;
+		}
+
+		public function get_json_array( $use_post, &$post_obj, &$mt_og, $post_id, $author_id ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$head_type = $this->get_head_item_type( $use_post, $obj );
-
+			$head_type = $this->get_head_item_type( $use_post, $post_obj );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type is '.$head_type );
 
-			foreach ( array(
-				'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
-				'http://schema.org/Organization' => $this->p->options['schema_publisher_json'],
-				'http://schema.org/Person' => $this->p->options['schema_author_json'],
-				$head_type => true,
-			) as $item_type => $enable ) {
+			if ( is_front_page() )
+				$item_types = array(
+					'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
+					'http://schema.org/Organization' => $this->p->options['schema_organization_json'],
+					'http://schema.org/Person' => $this->p->options['schema_person_json'],
+				);
+			else $item_types = array();
 
-				$data = false;
-				$item_type_hook = SucomUtil::sanitize_hookname( $item_type );
-				$generic_item_hook = 'http_schema_org_item_type';
+			if ( ! empty( $head_type ) && 
+				! isset( $item_types[$head_type] ) )
+					$item_types[$head_type] = true;
 
-				// filter the webpage item type through a generic / common filter first
-				if ( $item_type === $head_type ) {
+			foreach ( $item_types as $item_type => $is_enabled ) {
 
-					if ( ! apply_filters( $lca.'_add_'.$generic_item_hook, true ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $generic_item_hook.' is disabled' );
-						continue;
+				$data = null;
+				$hook_name = SucomUtil::sanitize_hookname( $item_type );
+
+				if ( $item_type === $head_type )
+					$main_entity = true;
+				else $main_entity = false;
+
+				if ( is_front_page() && 
+					method_exists( __CLASS__, 'filter_data_'.$hook_name ) ) {
+
+					if ( $is_enabled ) {
+						$data = call_user_func( array( __CLASS__, 'filter_data_'.$hook_name ), $data,
+							$use_post, $post_obj, $mt_og, $post_id, $author_id,
+								$head_type, $main_entity );
 					}
-
-					$data = apply_filters( $lca.'_data_'.$generic_item_hook,
-						$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
+				} else {
+					if ( apply_filters( $lca.'_add_http_schema_org_item_type', $is_enabled ) )
+						$data = apply_filters( $lca.'_data_http_schema_org_item_type', $data,
+							$use_post, $post_obj, $mt_og, $post_id, $author_id,
+								$head_type, $main_entity );
+					elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'http_schema_org_item_type is disabled' );
+	
+					if ( apply_filters( $lca.'_add_'.$hook_name, $is_enabled ) )
+						$data = apply_filters( $lca.'_data_'.$hook_name, $data,
+							$use_post, $post_obj, $mt_og, $post_id, $author_id,
+								$head_type, $main_entity );
+					elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( $hook_name.' is disabled' );
 				}
 
-				if ( ! apply_filters( $lca.'_add_'.$item_type_hook, $enable ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $item_type_hook.' is disabled' );
-					continue;
-				}
-
-				$data = apply_filters( $lca.'_data_'.$item_type_hook,
-					$data, $use_post, $obj, $mt_og, $post_id, $author_id, $head_type );
-
-				if ( ! empty( $data ) )
+				if ( ! empty( $data ) && is_array( $data ) )
 					$ret[] = "<script type=\"application/ld+json\">".
 						$this->p->util->json_format( $data )."</script>\n";
 			}
@@ -208,98 +272,181 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $ret;
 		}
 
-		public function filter_data_http_schema_org_website( $data, $use_post, $obj, $mt_og, $post_id ) {
+		/*
+		 * http://schema.org/WebSite for Google
+		 */
+		public function filter_data_http_schema_org_website( $data, 
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$data = array(
+			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'WebSite',
-				'url' => esc_url( get_bloginfo( 'url' ) ),
+				'url' => $mt_og['og:url'],
 				'name' => $this->p->og->get_site_name( $post_id ),
 			);
 
 			if ( ! empty( $this->p->options['schema_alt_name'] ) )
-				$data['alternateName'] = $this->p->options['schema_alt_name'];
+				$ret['alternateName'] = $this->p->options['schema_alt_name'];
+
+			$desc = $this->p->og->get_site_desc( $post_id );
+			if ( ! empty( $desc ) )
+				$ret['description'] = $desc;
+
+			if ( $main_entity )
+				self::add_main_entity( $ret, $ret['url'] );
 
 			$search_url = apply_filters( $lca.'_json_ld_search_url',
 				get_bloginfo( 'url' ).'?s={search_term_string}' );
 
-			if ( ! empty( $search_url ) )
-				$data['potentialAction'] = array(
+			if ( ! empty( $search_url ) ) {
+				$ret['potentialAction'] = array(
 					'@context' => 'http://schema.org',
 					'@type' => 'SearchAction',
 					'target' => $search_url,
 					'query-input' => 'required name=search_term_string',
 				);
+			}
 
-			return $data;
+			// if data is an array, then merge the new values
+			// if data is a boolean, return the boolean
+			return $data === null ? 
+				$ret : ( is_array( $data ) ?
+					array_merge( $data, $ret ) : $data );
 		}
 
-		public function filter_data_http_schema_org_organization( $data, $use_post, $obj, $mt_og, $post_id ) {
+		/*
+		 * http://schema.org/Organization social markup for Google
+		 */
+		public function filter_data_http_schema_org_organization( $data, 
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$data = array(
-				'@context' => 'http://schema.org',
-				'@type' => 'Organization',
-				'url' => esc_url( get_bloginfo( 'url' ) ),
-				'name' => $this->p->og->get_site_name( $post_id ),
-			);
+			$ret = array();
 
-			if ( ! empty( $this->p->options['schema_logo_url'] ) )
-				self::add_single_image_data( $data['logo'],
-					$this->p->options, 'schema_logo_url', false );	// list_element = false
+			self::add_single_organization_data( $ret, $post_id );	// list_element = false
 
-			foreach ( array(
-				'seo_publisher_url',
-				'fb_publisher_url',
-				'linkedin_publisher_url',
-				'tc_site',
-			) as $key ) {
-				$url = isset( $this->p->options[$key] ) ?
-					trim( $this->p->options[$key] ) : '';
-				if ( empty( $url ) )
-					continue;
-				if ( $key === 'tc_site' )
-					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				if ( strpos( $url, '://' ) !== false )
-					$data['sameAs'][] = esc_url( $url );
+			if ( $main_entity )
+				self::add_main_entity( $ret, $ret['url'] );
+
+			if ( is_front_page() ) {
+				// add the sameAs social profile links
+				foreach ( array(
+					'seo_publisher_url',
+					'fb_publisher_url',
+					'linkedin_publisher_url',
+					'tc_site',
+				) as $key ) {
+					$url = isset( $this->p->options[$key] ) ?
+						trim( $this->p->options[$key] ) : '';
+					if ( empty( $url ) )
+						continue;
+					if ( $key === 'tc_site' )
+						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+					if ( strpos( $url, '://' ) !== false )
+						$ret['sameAs'][] = esc_url( $url );
+				}
 			}
-
-			return $data;
+	
+			// if data is an array, then merge the new values
+			// if data is a boolean, return the boolean
+			return $data === null ? 
+				$ret : ( is_array( $data ) ?
+					array_merge( $data, $ret ) : $data );
 		}
 
-		public function filter_data_http_schema_org_person( $data, $use_post, $obj, $mt_og, $post_id, $author_id ) {
+		/*
+		 * http://schema.org/Person social markup for Google
+		 */
+		public function filter_data_http_schema_org_person( $data, 
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			if ( is_front_page() ) {
+				$author_id = $this->p->options['schema_person_id'];
+				if ( empty( $author_id ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: no schema_person_id for front page' );
+					return $data;
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'using author id '.$author_id.' for front page' );
+			}
+
 			if ( empty( $author_id ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: empty author_id' );
+					$this->p->debug->log( 'exiting early: no author_id' );
 				return $data;
 			}
 
 			$lca = $this->p->cf['lca'];
-			$data = array();
-			WpssoSchema::add_single_person_data( $data, $author_id, false );	// list_element = false
+			$ret = array();
+			self::add_single_person_data( $ret, $author_id, false );	// list_element = false
 
-			foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
-				$url = trim( get_the_author_meta( $cm_id, $author_id ) );
-				if ( empty( $url ) )
-					continue;
-				if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
-					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				if ( strpos( $url, '://' ) !== false )
-					$data['sameAs'][] = esc_url( $url );
+			// OVERRIDE AUTHOR'S WEBSITE URL FROM USER PROFILE
+			if ( is_front_page() || $main_entity )
+				$ret['url'] = $mt_og['og:url'];
+
+			if ( $main_entity )
+				self::add_main_entity( $ret, $ret['url'] );
+
+			if ( is_front_page() ) {
+				// add the sameAs social profile links
+				foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
+					$url = trim( get_the_author_meta( $cm_id, $author_id ) );
+					if ( empty( $url ) )
+						continue;
+					if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
+						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+					if ( strpos( $url, '://' ) !== false )
+						$ret['sameAs'][] = esc_url( $url );
+				}
 			}
 
-			return $data;
+			// if data is an array, then merge the new values
+			// if data is a boolean, return the boolean
+			return $data === null ? 
+				$ret : ( is_array( $data ) ?
+					array_merge( $data, $ret ) : $data );
 		}
 
-		public static function add_single_person_data( &$data, $author_id, $list_element = true ) {
+		// $logo_key can be 'schema_logo_url' or 'schema_banner_url' (for Articles)
+		public static function add_single_organization_data( &$data, 
+			$post_id, $logo_key = 'schema_logo_url', $list_element = false ) {
+
+			$wpsso = Wpsso::get_instance();
+
+			$ret = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'Organization',
+				'url' => esc_url( get_bloginfo( 'url' ) ),
+				'name' => $wpsso->og->get_site_name( $post_id ),
+			);
+
+			$desc = $wpsso->og->get_site_desc( $post_id );
+			if ( ! empty( $desc ) )
+				$ret['description'] = $desc;
+
+			if ( ! empty( $wpsso->options[$logo_key] ) )
+				self::add_single_image_data( $ret['logo'],
+					$wpsso->options, $logo_key, false );	// list_element = false
+
+			if ( empty( $list_element ) )
+				$data = $ret;
+			else $data[] = $ret;
+
+			return true;
+		}
+
+		public static function add_single_person_data( &$data, 
+			$author_id, $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -309,41 +456,54 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			$person_data = array(
+			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'Person',
-				'url' => '',
-				'name' => $wpsso->m['util']['user']->get_author_name( $author_id,
-					$wpsso->options['schema_author_name'] ),
 			);
 
-			$person_url = get_the_author_meta( 'url', $author_id );
-			if ( strpos( $person_url, '://' ) !== false )
-				$person_data['url'] = esc_url( $person_url );
+			$url = get_the_author_meta( 'url', $author_id );
+			if ( strpos( $url, '://' ) !== false )
+				$ret['url'] = esc_url( $url );
+
+			$name = $wpsso->m['util']['user']->get_author_name( $author_id,
+				$wpsso->options['schema_author_name'] );
+			if ( ! empty( $name ) )
+				$ret['name'] = $name;
+
+			$desc = $wpsso->util->get_mod_options( 'user', $author_id, 
+				array( 'schema_desc', 'og_desc' ) );
+			if ( empty( $desc ) )
+				$desc = get_the_author_meta( 'description', $author_id );
+			if ( ! empty( $desc ) )
+				$ret['description'] = $desc;
 
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$og_image = $wpsso->m['util']['user']->get_og_image( 1, $size_name, $author_id, false );
 			if ( ! empty( $og_image ) )
-				WpssoSchema::add_image_list_data( $person_data['image'], $og_image, 'og:image' );
+				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
 
 			if ( empty( $list_element ) )
-				$data = $person_data;
-			else $data[] = $person_data;
+				$data = $ret;
+			else $data[] = $ret;
 
 			return true;
 		}
 
 		// pass a single or two dimension image array in $og_image
-		public static function add_image_list_data( &$data, &$og_image, $opt_pre = 'og:image' ) {
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) )			// 2 dimensional array
+		public static function add_image_list_data( &$data, 
+			&$og_image, $opt_pre = 'og:image' ) {
+
+			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {			// 2 dimensional array
 				foreach ( $og_image as $image )
 					self::add_single_image_data( $data, $image, $opt_pre, true );	// list_element = true
-			elseif ( is_array( $og_image ) )
+
+			} elseif ( is_array( $og_image ) )
 				self::add_single_image_data( $data, $og_image, $opt_pre, true );	// list_element = true
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$data, &$opts, $opt_pre = 'og:image', $list_element = true ) {
+		public static function add_single_image_data( &$data,
+			&$opts, $opt_pre = 'og:image', $list_element = true ) {
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $wpsso->debug->enabled )
@@ -358,30 +518,46 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 			
-			$image_data = array(
+			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'ImageObject',
 				'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?
 					$opts[$opt_pre] : $opts[$opt_pre.':secure_url'] ),
 			);
+
 			foreach ( array ( 'width', 'height' ) as $wh )
 				if ( isset( $opts[$opt_pre.':'.$wh] ) && 
 					$opts[$opt_pre.':'.$wh] > 0 )
-						$image_data[$wh] = $opts[$opt_pre.':'.$wh];
+						$ret[$wh] = $opts[$opt_pre.':'.$wh];
+
 			if ( empty( $list_element ) )
-				$data = $image_data;
-			else $data[] = $image_data;	// add an item to the list
+				$data = $ret;
+			else $data[] = $ret;	// add an item to the list
 
 			return true;
 		}
 
-		public function get_meta_array( $use_post, &$obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
+		public static function add_main_entity( array &$data, $url ) {
+			$data['mainEntityOfPage'] = array(
+				'@context' => 'http://schema.org',
+				'@type' => 'WebPage',
+				'@id' => $url,
+			);
+		}
+
+		public static function add_data_prop_from_og( array &$data, array &$mt_og, array $names ) {
+			foreach ( $names as $mt_name => $og_name )
+				if ( ! empty( $mt_og[$og_name] ) )
+					$data[$mt_name] = $mt_og[$og_name];
+		}
+
+		public function get_meta_array( $use_post, &$post_obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
+			$mt_schema = array();
 
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
@@ -390,50 +566,57 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $mt_schema;
 			}
 
-			$head_type = $this->get_head_item_type();
+			if ( ! is_object( $post_obj ) )
+				$post_obj = $this->p->util->get_post_object( $use_post );
+			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ||
+				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_url'] ) ) {
-				if ( ! empty( $mt_og['og:url'] ) )
-					$mt_schema['url'] = $mt_og['og:url'];
-			}
+			$head_type = $this->get_head_item_type( $use_post, $post_obj );
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_name'] ) ) {
-				if ( ! empty( $mt_og['og:title'] ) )
-					$mt_schema['name'] = $mt_og['og:title'];
-			}
+			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
+				'url' => 'og:url',
+				'name' => 'og:title',
+			) );
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
+			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
 				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
-			}
 
 			switch ( $head_type ) {
 				case 'http://schema.org/BlogPosting':
 				case 'http://schema.org/WebPage':
 
-					if ( ! empty( $this->p->options['add_meta_itemprop_datepublished'] ) ) {
-						if ( ! empty( $mt_og['article:published_time'] ) )
-							$mt_schema['datepublished'] = $mt_og['article:published_time'];
-					}
-
-					if ( ! empty( $this->p->options['add_meta_itemprop_datemodified'] ) ) {
-						if ( ! empty( $mt_og['article:modified_time'] ) )
-							$mt_schema['datemodified'] = $mt_og['article:modified_time'];
-					}
+					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
+						'datepublished' => 'article:published_time',
+						'datemodified' => 'article:modified_time',
+					) );
 
 					if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-						if ( ! empty( $mt_og['og:image'] ) ) {
-							if ( is_array( $mt_og['og:image'] ) )
-								foreach ( $mt_og['og:image'] as $image )
-									$mt_schema['image'][] = $image['og:image'];
-							else $mt_schema['image'] = $mt_og['og:image'];
+
+						$size_name = $this->p->cf['lca'].'-schema';
+						$og_image = $this->p->og->get_all_images( 1, $size_name, $post_id, true, 'schema' );
+
+						if ( empty( $og_image ) && 
+							SucomUtil::is_post_page( $use_post ) )
+								$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+
+						if ( ! empty( $og_image ) ) {
+							$image = reset( $og_image );
+							$mt_schema['image'] = $image['og:image'];
 						}
 					}
 
 					break;
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $obj );
+			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $post_obj );
+		}
+
+		public function add_mt_schema_from_og( array &$mt_schema, array &$mt_og, array $names ) {
+			foreach ( $names as $mt_name => $og_name )
+				if ( ! empty( $this->p->options['add_meta_itemprop_'.$mt_name] )
+					&& ! empty( $mt_og[$og_name] ) )
+						$mt_schema[$mt_name] = $mt_og[$og_name];
 		}
 	}
 }

@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			return $this->get_mod_column_content( $value, $column_name, $id, 'taxonomy' );
 		}
 
-		public function filter_og_image_taxonomy_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_image_taxonomy_column_content( $value, $column_name, $id, $mod_name ) {
 
 			if ( ! empty( $value ) )
 				return $value;
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $md_pre );
+				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_taxonomy_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_desc_taxonomy_column_content( $value, $column_name, $id, $mod_name ) {
 			if ( ! empty( $value ) )
 				return $value;
 

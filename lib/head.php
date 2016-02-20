@@ -148,16 +148,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$short_aop = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
 
-			$obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) || 
-				( ! is_singular() && $use_post === false ) ? 0 : $obj->ID;
+			$post_obj = $this->p->util->get_post_object( $use_post );
+			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) || 
+				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
 			$author_id = false;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post is '.( $use_post === false ? 'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+				$this->p->debug->log( 'use_post is '.( $use_post === false ?
+					'false' : ( $use_post === true ? 'true' : $use_post ) ) );
 				$this->p->debug->log( 'post_id is '.$post_id );
-				$this->p->debug->log( 'post_type is '.( empty( $obj->post_type ) ? '' : $obj->post_type ) );
+				$this->p->debug->log( 'post_type is '.( empty( $post_obj->post_type ) ?
+					'' : $post_obj->post_type ) );
 			}
 
 			$header_array = array();
@@ -168,7 +170,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_type = 'object cache';
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
-				if ( apply_filters( $lca.'_header_get_cache', $read_cache ) ) {
+				if ( apply_filters( $lca.'_header_read_cache', $read_cache ) ) {
 					$header_array = get_transient( $cache_id );
 					if ( $header_array !== false ) {
 						if ( $this->p->debug->enabled )
@@ -183,16 +185,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Define an author_id, if one is available
 			 */
 			if ( SucomUtil::is_post_page( $use_post ) ) {
-				if ( ! empty( $obj->post_author ) )
-					$author_id = $obj->post_author;
-				elseif ( ! empty( $this->p->options['seo_def_author_id'] ) )
-					$author_id = $this->p->options['seo_def_author_id'];
+
+				if ( ! empty( $post_obj->post_author ) )
+					$author_id = $post_obj->post_author;
+
+				elseif ( $def_author_id = $this->p->util->get_default_author_id( 'seo' ) )
+					$author_id = $def_author_id;
 
 			} elseif ( SucomUtil::is_author_page() ) {
 				$author_id = $this->p->util->get_author_object( 'id' );
 
-			} elseif ( $this->p->util->force_default_author( $use_post, 'seo' ) )
-				$author_id = $this->p->options['seo_def_author_id'];
+			} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'seo' ) )
+				$author_id = $def_author_id;
 
 			if ( $this->p->debug->enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id is '.$author_id );
@@ -204,12 +208,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Open Graph
 			 */
-			$mt_og = $this->p->og->get_array( $use_post, $obj, $mt_og, $crawler_name );
+			$mt_og = $this->p->og->get_array( $use_post, $post_obj, $mt_og, $crawler_name );
 
 			/*
 			 * Twitter Cards
 			 */
-			$mt_tc = $this->p->tc->get_array( $use_post, $obj, $mt_og, $crawler_name );
+			$mt_tc = $this->p->tc->get_array( $use_post, $post_obj, $mt_og, $crawler_name );
 
 			/*
 			 * Name / SEO meta tags
@@ -234,7 +238,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
 			}
 
-			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $obj );
+			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $post_obj );
 
 			/*
 			 * Link relation tags
@@ -252,12 +256,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
 			}
 
-			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $obj );
+			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $post_obj );
 
 			/*
 			 * Schema meta tags
 			 */
-			$mt_schema = $this->p->schema->get_meta_array( $use_post, $obj, $mt_og, $crawler_name );
+			$mt_schema = $this->p->schema->get_meta_array( $use_post, $post_obj, $mt_og, $crawler_name );
 
 			/*
 			 * Combine and return all meta tags
@@ -273,7 +277,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
-				$this->p->schema->get_json_array( $use_post, $obj, $mt_og, $post_id, $author_id )
+				$this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $author_id )
 			);
 
 			/*

@@ -456,12 +456,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$is_sufficient_w = $img_width >= $size_info['width'] ? true : false;
 				$is_sufficient_h = $img_height >= $size_info['height'] ? true : false;
 
-				if ( $img_width > 0 && $img_height > 0 )	// just in case
-					$ratio = $img_width >= $img_height ? 
-						$img_width / $img_height : 
-						$img_height / $img_width;
-				else $ratio = 0;
-
 				$size_label = $this->p->util->get_image_size_label( $size_name );
 				$msg_id = 'wp_'.$pid.'_'.$img_width.'x'.$img_height.'_'.
 					$size_name.'_'.$size_info['width'].'x'.$size_info['height'].'_rejected';
@@ -486,51 +480,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( $img_cropped === 0 ? '' : ' cropped' ).') image size' );
 
 					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the %4$s image size.', 'wpsso' ),
-							__( 'Media Library', 'wpsso' ),
-							$pid,
-							$size_text,
-							'<b>'.$size_label.'</b> ('.$size_info['width'].'x'.$size_info['height'].
-								( $img_cropped === 0 ? '' : ' <i>'.__( 'cropped', 'wpsso' ).'</i>' ).')'
-						).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the %4$s image size.', 'wpsso' ), __( 'Media Library', 'wpsso' ), $pid, $size_text, '<b>'.$size_label.'</b> ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' <i>'.__( 'cropped', 'wpsso' ).'</i>' ).')' ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
 					return self::reset_image_src_info();
 
-				// if this is an open graph image, make sure it is larger than 200x200
-				} elseif ( $size_name == $this->p->cf['lca'].'-opengraph' &&
-					( $img_width < $this->p->cf['head']['min_img_dim'] ||
-					$img_height < $this->p->cf['head']['min_img_dim'] ) ) {
+				} elseif ( ! $this->check_image_id_min_max( $pid, $size_name, $img_width, $img_height, 
+					__( 'Media Library', 'wpsso' ), $msg_id ) )
+						return self::reset_image_src_info();
 
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
-							$img_width.'x'.$img_height.' smaller than hard-coded minimum '.
-								$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'] );
-
-					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the Facebook / Open Graph standard.', 'wpsso' ), 
-							__( 'Media Library', 'wpsso' ),
-							$pid,
-							$img_width.'x'.$img_height,
-							$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim']
-						).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
-					return self::reset_image_src_info();
-
-				} elseif ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
-							$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.
-								$this->p->cf['head']['max_img_ratio'].':1' );
-
-					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ),
-							__( 'Media Library', 'wpsso' ),
-							$pid,
-							$img_width.'x'.$img_height,
-							$this->p->cf['head']['max_img_ratio']
-						).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
-					return self::reset_image_src_info();
-
-				} elseif ( $this->p->debug->enabled )
+				elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'returned image dimensions ('.$img_width.'x'.$img_height.') are sufficient' );
 			}
 
@@ -755,7 +712,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								// get the width and height of the image file using http / https
 								if ( $og_image['og:image:width'] <= 0 ||
 									$og_image['og:image:height'] <= 0 )
-										$this->p->util->add_image_wh( 'og:image', $og_image );
+										$this->p->util->add_image_url_sizes( 'og:image', $og_image );
 							}
 
 							$is_sufficient_w = $og_image['og:image:width'] >= $size_info['width'] ? true : false;
@@ -828,17 +785,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $get == 'gallery' ) {
 
-				if ( ( $obj = $this->p->util->get_post_object( $post_id ) ) === false || empty( $obj->post_type ) ) {
+				if ( ( $post_obj = $this->p->util->get_post_object( $post_id ) ) === false || 
+					empty( $post_obj->post_type ) ) {
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: object without post type' );
 					return $og_ret; 
-				} elseif ( empty( $obj->post_content ) ) { 
+
+				} elseif ( empty( $post_obj->post_content ) ) { 
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: post without content' ); 
 					return $og_ret;
 				}
 
-				if ( preg_match( '/\[(gallery)[^\]]*\]/im', $obj->post_content, $match ) ) {
+				if ( preg_match( '/\[(gallery)[^\]]*\]/im', $post_obj->post_content, $match ) ) {
 
 					$shortcode_type = strtolower( $match[1] );
 
@@ -1063,6 +1024,66 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! $have['video'] && ! $have['image'] ) 
 				return array();
 			else return $og_video;
+		}
+
+		public function check_image_id_min_max( $pid, $size_name, $img_width, $img_height, $media_lib_name, $msg_id ) {
+
+			if ( $img_width > 0 && $img_height > 0 )	// just in case
+				$img_ratio = $img_width >= $img_height ? 
+					$img_width / $img_height : 
+					$img_height / $img_width;
+			else $img_ratio = 0;
+
+			switch ( $size_name ) {
+				case $this->p->cf['lca'].'-opengraph':
+					$std_name = 'Facebook / Open Graph';
+					$max_ratio = $this->p->cf['head']['max']['og_img_ratio'];
+					$min_width = $this->p->cf['head']['min']['og_img_width'];
+					$min_height = $this->p->cf['head']['min']['og_img_height'];
+					break;
+				case $this->p->cf['lca'].'-schema':
+					$std_name = 'Google / Schema';
+					$max_ratio = 0;
+					$min_width = $this->p->cf['head']['min']['schema_img_width'];
+					$min_height = 0;
+					break;
+				default:
+					$max_ratio = 0;
+					$min_width = 0;
+					$min_height = 0;
+					break;
+			}
+
+			// check the maximum image aspect ratio
+			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
+						$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.
+							$max_ratio.':1' );
+
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib_name, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
+
+				return false;
+			}
+
+			// check the minimum image width and/or height
+			if ( ( $min_width > 0 || $min_height > 0 ) &&
+				( $img_width < $min_width || $img_height < $min_height ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.
+						$img_width.'x'.$img_height.' smaller than minimum '.
+							$min_width.'x'.$min_height.' for '.$size_name );
+
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib_name, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
+
+				return false;
+			}
+
+			return true;
 		}
 	}
 }

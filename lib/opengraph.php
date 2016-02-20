@@ -36,18 +36,21 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
+
+			$sizes['og_img'] = array( 		// options prefix
+				'name' => 'opengraph',		// wpsso-opengraph
+				'label' => _x( 'Facebook / Open Graph',
+					'image size label', 'wpsso' ),
+			);
+
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				$sizes['rp_img'] = array(
-					'name' => 'richpin',
+				$sizes['rp_img'] = array(	// options prefix
+					'name' => 'richpin',	// wpsso-richpin
 					'label' => _x( 'Pinterest Rich Pin',
 						'image size label', 'wpsso' ),
 				);
 			}
-			$sizes['og_img'] = array( 
-				'name' => 'opengraph', 
-				'label' => _x( 'Facebook / Open Graph',
-					'image size label', 'wpsso' ),
-			);
+
 			return $sizes;
 		}
 
@@ -77,15 +80,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, $obj = false, &$og = array(), $crawler_name = 'unknown' ) {
+		public function get_array( $use_post = false, $post_obj = false, &$og = array(), $crawler_name = 'unknown' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( ! is_object( $obj ) )
-				$obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $obj->ID ) || empty( $obj->post_type ) ||
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $obj->ID;
+			if ( ! is_object( $post_obj ) )
+				$post_obj = $this->p->util->get_post_object( $use_post );
+			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ||
+				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 			$lca = $this->p->cf['lca'];
 
 			// counter for video previews found
@@ -93,7 +96,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			// a post_id of 0 returns the default plugin settings 
 			$max = $this->p->util->get_max_nums( $post_id, 'post' );
-			$og = apply_filters( $lca.'_og_seed', $og, $use_post, $obj );
+			$og = apply_filters( $lca.'_og_seed', $og, $use_post, $post_obj );
 
 			if ( ! empty( $og ) && 
 				$this->p->debug->enabled ) {
@@ -118,20 +121,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				// singular posts / pages are articles by default
 				// check the post_type for a match with a known open graph type
 				if ( SucomUtil::is_post_page( $use_post ) ) {
-					if ( ! empty( $obj->post_type ) && 
-						isset( $this->p->cf['head']['og_type_ns'][$obj->post_type] ) )
-							$og['og:type'] = $obj->post_type;
+					if ( ! empty( $post_obj->post_type ) && 
+						isset( $this->p->cf['head']['og_type_ns'][$post_obj->post_type] ) )
+							$og['og:type'] = $post_obj->post_type;
 					else $og['og:type'] = 'article';
 
 				// check for default author info on indexes and searches
-				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) &&
-					! empty( $this->p->options['og_def_author_id'] ) ) {
+				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
 
 					$og['og:type'] = 'article';
 
 					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
+						$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $def_author_id );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
@@ -176,11 +178,14 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:author'] ) ) {
+
 					if ( SucomUtil::is_post_page( $use_post ) ) {
-						if ( ! empty( $obj->post_author ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $obj->post_author );
-						elseif ( ! empty( $this->p->options['og_def_author_id'] ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $this->p->options['og_def_author_id'] );
+
+						if ( ! empty( $post_obj->post_author ) )
+							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $post_obj->post_author );
+
+						elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
+							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $def_author_id );
 					}
 				}
 
@@ -214,9 +219,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				} else {
 					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $post_id, 'post', false, 'og' );
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
-						foreach ( $og['og:video'] as $val )
-							if ( ! empty( $val['og:image'] ) )
+						foreach ( $og['og:video'] as $video_num => $video_arr ) {
+							if ( ! empty( $video_arr['og:image'] ) ) {
+								$og['og:video'][$video_num]['og:video:has_image'] = true;
 								$video_previews++;
+							}
+						}
 						if ( $video_previews > 0 ) {
 							$max['og_img_max'] -= $video_previews;
 							if ( $this->p->debug->enabled )
@@ -256,10 +264,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 							$size_name, $post_id, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview image, 
-						// then add the default image for singular webpages
-						if ( empty( $og[$md_pre.':image'] ) && 
-							$video_previews === 0 && 
-							SucomUtil::is_post_page( $use_post ) ) {
+						// then add the default image for singular (aka post) webpages
+						if ( $video_previews === 0 && 
+							empty( $og[$md_pre.':image'] ) && 
+								SucomUtil::is_post_page( $use_post ) ) {
 
 							$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 								$size_name, $check_dupes );
@@ -284,16 +292,16 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				} 
 			}
 
-			return apply_filters( $lca.'_og', $og, $use_post, $obj );
+			return apply_filters( $lca.'_og', $og, $use_post, $post_obj );
 		}
 
-		public function get_all_videos( $num = 0, $id, $mod = 'post', $check_dupes = true, $md_pre = 'og', $force_prev_img = false ) {
+		public function get_all_videos( $num = 0, $id, $mod_name = 'post', $check_dupes = true, $md_pre = 'og', $force_prev_img = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
 					'id' => $id,
-					'mod' => $mod,
+					'mod_name' => $mod_name,
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 					'force_prev_img' => $force_prev_img,
@@ -304,9 +312,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$use_prev_img = $this->p->options['og_vid_prev_img'];	// default value
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
 
-			// video modules are not available in the free version
 			if ( $this->p->check->aop() ) {
-				list( $id, $mod_obj ) = $this->p->util->get_mod_obj( $id, $mod );
+
+				list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( false, $id, $mod_name );
+
 				if ( ! empty( $mod_obj ) ) {
 					if ( ( $mod_prev_img = $mod_obj->get_options( $id, 'og_vid_prev_img' ) ) !== null ) {
 						$use_prev_img = $mod_prev_img;
@@ -315,8 +324,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 								$use_prev_img.' from meta data' );
 					}
 					$og_ret = array_merge( $og_ret, 
-						$mod_obj->get_og_video( $num_remains, 
-							$id, $check_dupes, $md_pre ) );
+						$mod_obj->get_og_video( $num_remains, $id, $check_dupes, $md_pre ) );
 				}
 			}
 
@@ -326,7 +334,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$num_remains = $this->p->media->num_remains( $og_ret, $num );
 
 			// if we haven't reached the limit of videos yet, keep going
-			if ( $mod === 'post' && 
+			if ( $mod_name === 'post' && 
 				! $this->p->util->is_maxed( $og_ret, $num ) )
 					$og_ret = array_merge( $og_ret, 
 						$this->p->media->get_content_videos( $num_remains, 
@@ -462,7 +470,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
 				}
 	
-				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image() ) {
+				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image( $post_id, 'og' ) ) {
 					return array_merge( $og_ret, $this->p->media->get_default_image( $num_remains, 
 						$size_name, $check_dupes, $force_regen ) );
 				}
@@ -478,9 +486,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function get_site_name( $get = 'current' ) {
 			// provide options array to allow fallback if locale option does not exist
 			$key = SucomUtil::get_locale_key( 'og_site_name', $this->p->options, $get );
+
 			if ( ! empty( $this->p->options[$key] ) )
 				return $this->p->options[$key];
 			else return get_bloginfo( 'name', 'display' );
+		}
+
+		public function get_site_desc( $get = 'current' ) {
+			// provide options array to allow fallback if locale option does not exist
+			$key = SucomUtil::get_locale_key( 'og_site_description', $this->p->options, $get );
+
+			if ( ! empty( $this->p->options[$key] ) )
+				return $this->p->options[$key];
+			else return get_bloginfo( 'description', 'display' );
 		}
 
 		// the returned array can include a varying number of elements, depending on the $items value

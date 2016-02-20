@@ -47,10 +47,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return 'http';
 		}
 
-		public static function get_const( $const ) {
+		public static function get_const( $const, $not_found = null ) {
 			if ( defined( $const ) )
 				return constant( $const );
-			else return null;
+			else return $not_found;
 		}
 
 		// returns false or the admin screen id text string
@@ -1040,63 +1040,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		// if id is 0 or false, return values from the plugin settings 
-		public function get_max_nums( $id = false, $mod = false ) {
-			$max = array();
-			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
-				if ( ! empty( $id ) && 
-					isset( $this->p->m['util'][$mod] ) )
-						$num_meta = $this->p->m['util'][$mod]->get_options( $id, $max_name );
-				else $num_meta = null;	// default value returned by get_options() if index key is missing
-
-				// quick sanitation of returned value
-				if ( is_numeric( $num_meta ) && $num_meta >= 0 ) {
-					$max[$max_name] = $num_meta;
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
-				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
-			}
-			return $max;
-		}
-
-		public function push_max( &$dst, &$src, $num = 0 ) {
-			if ( ! is_array( $dst ) || 
-				! is_array( $src ) ) 
-					return false;
-			// if the array is not empty, or contains some non-empty values, then push it
-			if ( ! empty( $src ) && 
-				array_filter( $src ) ) 
-					array_push( $dst, $src );
-			return $this->slice_max( $dst, $num );	// returns true or false
-		}
-
-		public function slice_max( &$arr, $num = 0 ) {
-			if ( ! is_array( $arr ) )
-				return false;
-			$has = count( $arr );
-			if ( $num > 0 ) {
-				if ( $has == $num ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'max values reached ('.$has.' == '.$num.')' );
-					return true;
-				} elseif ( $has > $num ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'max values reached ('.$has.' > '.$num.') - slicing array' );
-					$arr = array_slice( $arr, 0, $num );
-					return true;
-				}
-			}
-			return false;
-		}
-
-		public function is_maxed( &$arr, $num = 0 ) {
-			if ( ! is_array( $arr ) ) 
-				return false;
-			if ( $num > 0 && count( $arr ) >= $num ) 
-				return true;
-			return false;
-		}
-
 		// table header with optional tooltip text
 		public function get_th( $title = '', $class = '', $id = '', $atts = array() ) {
 
@@ -1570,6 +1513,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else $stub = false;
 
 			return array( $id, $stub, $action );
+		}
+
+		public static function get_user_select( $roles = array( 'administrator' ), $blog_id = false ) {
+
+			if ( ! $blog_id )
+				$blog_id = get_current_blog_id();
+
+			if ( ! is_array( $roles ) )
+				$roles = array( $roles );
+
+			foreach ( $roles as $role ) {
+				foreach ( get_users( array(
+					'blog_id' => $blog_id,
+					'role' => $role,
+					'fields' => array(
+						'id',
+						'display_name'
+					)
+				) ) as $user ) {
+					$ret[$user->display_name] = $user->id;
+				}
+			}
+
+			ksort( $ret, SORT_NATURAL );
+
+			return array_flip( array_merge( array( '[none]' => 'none' ), $ret ) );
 		}
 	}
 }

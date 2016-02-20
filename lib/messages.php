@@ -61,11 +61,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * Free version
 						 */
-						case 'tooltip-side-author-json-ld':
-							$text = __( 'Add author (Person) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
-							break;
-						case 'tooltip-side-debug-messages':
+						case 'tooltip-side-debug-logging-enabled':
 							$text = sprintf( __( 'The debug library is loaded when the <em>Add Hidden Debug Messages</em> option is checked, or one of the debugging <a href="%s" target="_blank">constants</a> is defined.', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
+							break;
+						case 'tooltip-side-google-person-markup':
+							$text = __( 'Add Person social profiles markup to the home page header for Google Search.', 'wpsso' );
+							break;
+						case 'tooltip-side-google-puborg-markup':
+							$text = __( 'Add Organization social profiles markup to the home page header for Google Search.', 'wpsso' );
+							break;
+						case 'tooltip-side-google-website-markup':
+							$text = __( 'Add Website markup to the home page header Google Search. The Website markup includes the home page URL, name, alternate name, and search query URL.', 'wpsso' );
 							break;
 						case 'tooltip-side-non-persistant-cache':
 							$text = sprintf( __( 'The plugin saves filtered / rendered content to a non-persistant cache (aka <a href="%1$s" target="_blank">WP Object Cache</a>) for re-use within the same page load. You can disable the use of non-persistant cache (not recommended) using one of the available <a href="%2$s" target="_blank">constants</a>.', 'wpsso' ), 'https://codex.wordpress.org/Class_Reference/WP_Object_Cache', 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
@@ -73,17 +79,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-side-open-graph-rich-pin':
 							$text = __( 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a supported eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices and attributes.', 'wpsso' );
 							break;
-						case 'tooltip-side-publisher-json-ld':
-							$text = __( 'Add publisher (Organization) social profiles markup to webpage headers in schema.org JSON-LD format for Google Search.', 'wpsso' );
-							break;
 						case 'tooltip-side-transient-cache':
 							$text = sprintf( __( 'The plugin saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, and JSON-LD markup to a persistant (aka <a href="%1$s" target="_blank">Transient</a>) cache for %2$d seconds. You can adjust the Transient cache expiration value on the <a href="%3$s">%4$s</a> settings page, or disable it completely by using one of the available <a href="%5$s" target="_blank">constants</a>.', 'wpsso' ), 'https://codex.wordpress.org/Transients_API', $this->p->options['plugin_object_cache_exp'], $this->p->util->get_admin_url( 'advanced' ), _x( 'Advanced', 'lib file description', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
 							break;
 						case 'tooltip-side-twitter-cards':
 							$text = __( 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with additional information about your content. Twitter Cards are displayed more prominently on Twitter, allowing you to highlight your content more effectively.', 'wpsso' );
-							break;
-						case 'tooltip-side-website-json-ld':
-							$text = __( 'Add Website markup to webpage headers in schema.org JSON-LD format for Google Search. The Website markup includes the home page URL, name, alternate name, and search query URL.', 'wpsso' );
 							break;
 						/*
 						 * Pro version
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The ID number and media location of your default image (example: 123). The Default Image ID will be used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content. The ID number for images in the WordPress Media Library can be found in the URL when editing an image (post=123 in the URL, for example). The NextGEN Gallery image IDs are easier to find -- it\'s the number in the first column when viewing a Gallery.';
 							break;
 						case 'tooltip-og_def_img_url':
-							$text = 'You can enter a Default Image URL (including the http:// prefix) instead of choosing a Default Image ID (if a Default Image ID is specified, the Default Image URL option is disabled). The Default Image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['min_img_dim'].'x'.$this->p->cf['head']['min_img_dim'].' or more in width and height. The Default Image ID or URL is used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content.';
+							$text = 'You can enter a Default Image URL (including the http:// prefix) instead of choosing a Default Image ID (if a Default Image ID is specified, the Default Image URL option is disabled). The Default Image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['min']['og_img_width'].'x'.$this->p->cf['head']['min']['og_img_height'].' or more in width and height. The Default Image ID or URL is used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content.';
 							break;
 						case 'tooltip-og_def_img_on_index':
 							$text = 'Check this option to force the default image on index webpages (<strong>non-static</strong> homepage, archives, categories). If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$atts['short'].' will use image(s) from the first entry on the webpage (default is checked).';
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum length of text used in the Facebook / Open Graph and Rich Pin title tag (default is '.$this->p->opt->get_defaults( 'og_title_len' ).' characters).';
 							break;
 						case 'tooltip-og_desc_len':
-							$text = 'The maximum length of text used in the Facebook / Open Graph and Rich Pin description tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more, and the default is '.$this->p->opt->get_defaults( 'og_desc_len' ).' characters.';
+							$text = 'The maximum length of text used in the Facebook / Open Graph and Rich Pin description tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more, and the default is '.$this->p->opt->get_defaults( 'og_desc_len' ).' characters.';
 							break;
 						case 'tooltip-og_page_title_tag':
 							$text = 'Add the title of the <em>Page</em> to the Facebook / Open Graph and Pinterest Rich Pin article tag and Hashtag list (default is unchecked). If the Add Page Ancestor Tags option is checked, all the titles of the ancestor Pages will be added as well. This option works well if the title of your Pages are short (one or two words) and subject-oriented.';
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-google_seo_desc_len':
-							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
+							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
 							break;
 						case 'tooltip-google_seo_author_name':
 							$text = sprintf( __( 'Select an "<strong>%1$s</strong>" for the \'%2$s\' meta tag or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'author' ).' Facebook uses the \'author\' meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
@@ -503,29 +503,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
 							break;
-						case 'tooltip-google_schema_logo_url':
-							$text = 'The URL to an image that Google should use as your organization\'s logo in search results and their <em>Knowledge Graph</em>.';
-							break;
 						case 'tooltip-google_schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
 							break;
+						case 'tooltip-google_schema_logo_url':
+							$text = 'An image of your organization\'s logo that Google can use in search results and <em>Knowledge Graph</em>.';
+							break;
+						case 'tooltip-google_schema_banner_url':
+							$text = 'A 600x60px banner of your organization\'s logo that Google can use in Articles and other Schema item types.';
+							break;
+						case 'tooltip-google_schema_img_dimensions':
+							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$this->p->opt->get_defaults( 'schema_img_width' ).'x'.$this->p->opt->get_defaults( 'schema_img_height' ).' '.( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'un' : '' ).'cropped). The minimum image width required by Google is 696px for the resulting image. If you do not choose to crop this image size, make sure the height value is large enough for portrait images.';
+							break;
 						case 'tooltip-google_schema_desc_len':
-							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
+							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
 							break;
 						case 'tooltip-google_schema_author_name':
-							$text = sprintf( __( 'Select an \'%1$s\' for the author (Person) schema markup or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[none]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-google_schema_post_type':
 							$text = 'Select the Schema item type used in webpage headers for each WordPress post type.';
 							break;
-						case 'tooltip-google_schema_author_json':
-							$text = 'Include author (Person) social profiles markup to webpage headers for Google Search. <strong>The author must have entered a valid URL in the Website field of their user profile page</strong>. All URLs within the various contact method fields will be listed in the social profile markup. The "Twitter @username" field will be used to include a URL for their Twitter profile.';
-							break;
-						case 'tooltip-google_schema_publisher_json':
-							$text = 'Include publisher (Organization) social profiles markup to webpage headers for Google Search. All URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).' will be included. The Open Graph Default Image ID / URL will be used as the Organization image, and the Schema Website / Business Logo URL will be used as the Organization\'s logo.';
-							break;
-						case 'tooltip-google_schema_website_json':
-							$text = 'Include Website schema markup in webpage headers for Google Search. The Website information includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false.';
+						case 'tooltip-google_schema_json':
+							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $atts );
@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-tc_desc_len':
-							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['min_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
+							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
 							break;
 						case 'tooltip-tc_sum_dimensions':
 							$card = 'sum';

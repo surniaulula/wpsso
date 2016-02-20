@@ -115,13 +115,31 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$rows[] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';
 
+					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
+					$rows[] = $this->p->util->get_th( _x( 'Include Google Structured Data',
+						'option label', 'wpsso' ), null, 'google_schema_json' ).
+					'<td>'.
+					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
+						sprintf( __( '<a href="%s">WebSite Information</a> for Search Results',
+							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
+					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
+						' Site Publisher / <a href="https://developers.google.com/structured-data/customize/social-profiles">Organization Social Profile</a></p>'.
+					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
+						' <a href="https://developers.google.com/structured-data/customize/social-profiles">Person Social Profile</a> for Site Owner '.
+							$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
+					'</td>';
+
 					$rows[] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
 						'option label', 'wpsso' ), null, 'google_publisher_url' ).
 					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Website / Business Logo URL',
+					$rows[] = $this->p->util->get_th( _x( 'Business Logo Image URL',
 						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
+
+					$rows[] = $this->p->util->get_th( _x( 'Schema Image Dimensions',
+						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
 					$rows[] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';

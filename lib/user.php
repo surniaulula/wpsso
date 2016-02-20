@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->get_mod_column_content( $value, $column_name, $id, 'user' );
 		}
 
-		public function filter_og_image_user_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_image_user_column_content( $value, $column_name, $id, $mod_name ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod, $check_dupes, $md_pre );
+				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_user_column_content( $value, $column_name, $id, $mod ) {
+		public function filter_og_desc_user_column_content( $value, $column_name, $id, $mod_name ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case 'nickname':
 				case 'first_name':
 				case 'last_name':
-					$name = get_the_author_meta( $field_id, $author_id );	// since wp 2.8.0 
+					$name = get_the_author_meta( $field_id, $author_id );
 					break;
 			}
 			if ( $this->p->debug->enabled )
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$url = get_author_posts_url( $author_id );
 					break;
 				default:
-					$url = get_the_author_meta( $field_id, $author_id );	// since wp 2.8.0 
+					$url = get_the_author_meta( $field_id, $author_id );
 
 					// if empty or not a url, then fallback to the author index page,
 					// if the requested field is the opengraph or link author field

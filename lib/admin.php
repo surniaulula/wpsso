@@ -723,12 +723,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				if ( $ext === $this->p->cf['lca'] ) {	// features for this plugin
 					$features = array(
-						'Author JSON-LD' => array( 
-							'status' => $this->p->options['schema_author_json'] ?
+						'Debug Logging Enabled' => array(
+							'classname' => 'SucomDebug',
+						),
+						'Google Person Markup' => array( 
+							'status' => $this->p->options['schema_person_json'] ?
+								'on' : 'off',
+						),
+						'Google Pub/Org Markup' => array(
+							'status' => $this->p->options['schema_organization_json'] ?
 								'on' : 'rec',
 						),
-						'Debug Messages' => array(
-							'classname' => 'SucomDebug',
+						'Google WebSite Markup' => array(
+							'status' => $this->p->options['schema_website_json'] ?
+								'on' : 'rec',
 						),
 						'Non-Persistant Cache' => array(
 							'status' => $this->p->is_avail['cache']['object'] ?
@@ -738,20 +746,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ?
 								'on' : 'rec',
 						),
-						'Publisher JSON-LD' => array(
-							'status' => $this->p->options['schema_publisher_json'] ?
-								'on' : 'rec',
-						),
 						'Transient Cache' => array(
 							'status' => $this->p->is_avail['cache']['transient'] ?
 								'on' : 'rec',
 						),
 						'Twitter Cards' => array( 
 							'status' => class_exists( $this->p->cf['lca'].'twittercard' ) ?
-								'on' : 'rec',
-						),
-						'WebSite JSON-LD' => array(
-							'status' => $this->p->options['schema_website_json'] ?
 								'on' : 'rec',
 						),
 					);
@@ -791,20 +791,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
 					if ( $sub === 'admin' ) 
 						continue;	// skip status for admin menus and tabs
-					foreach ( $libs as $id => $name ) {
+					foreach ( $libs as $id_key => $label ) {
 						/* 
 						 * Example:
 						 *	'article' => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
-						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id );
+						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
-						$features[$name] = array( 
+						$features[$label] = array( 
 							'status' => class_exists( $classname ) ? ( $aop ? 'on' : $off ) : $off,
 							'purchase' => empty( $info['url']['purchase'] ) ? '' : $info['url']['purchase'],
-							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support and features for %3$s.', 'wpsso'), $name, $short_pro, $name ),
+							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support and features for %3$s.', 'wpsso'), $label, $short_pro, $label ),
 							'td_class' => $aop ? '' : 'blank',
 						);
 					}
@@ -838,7 +838,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			);
 
 			uksort( $features, 'strcasecmp' );
-			foreach ( $features as $name => $arr ) {
+			foreach ( $features as $label => $arr ) {
 
 				if ( isset( $arr['classname'] ) )
 					$status_key = class_exists( $arr['classname'] ) ?
@@ -856,14 +856,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$td_class = empty( $arr['td_class'] ) ?
 						'' : ' '.$arr['td_class'];
 
-					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$name, 
+					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$label, 
 						array( 'text' => ( empty( $arr['tooltip'] ) ? '' : $arr['tooltip'] ),
 							'class' => 'sucom_tooltip_side' ) );
 
 					echo '<tr><td class="side'.$td_class.'">'.$tooltip_text.
-					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
-					( $status_key === 'rec' ? '<strong>'.$name.'</strong>' : $name ).
-					( $purchase_url ? '</a>' : '' ).
+					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">'.$label.'</a>' : $label ).
 					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">'.
 					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
 					'<img src="'.WPSSO_URLPATH.'images/'.

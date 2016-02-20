@@ -115,8 +115,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$checkboxes = '';
 			foreach ( $this->p->util->get_post_types() as $post_type )
 				$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_'.$post_type->name ).' '.
-					$post_type->label.' '.( empty( $post_type->description ) ?
-						'' : '('.$post_type->description.')' ).'</p>';
+					$post_type->label.'</p>';
 
 			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_taxonomy' ).
 				' '.__( 'Taxonomy (Categories and Tags)', 'wpsso' ).'</p>';

@@ -12,8 +12,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 	class WpssoOptions {
 
-		private $upg;
 		protected $p;
+
+		private $upg;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -248,16 +249,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * all tests to make sure additional / unnecessary
 			 * options are not created in post meta.
 			 */
-			foreach ( array( 'og', 'rp' ) as $md_pre ) {
+			foreach ( array( 'og', 'rp', 'schema' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
 					! empty( $opts[$md_pre.'_img_height'] ) &&
 					! empty( $opts[$md_pre.'_img_crop'] ) ) {
 
 					$img_width = $opts[$md_pre.'_img_width'];
 					$img_height = $opts[$md_pre.'_img_height'];
-					$ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					if ( $ratio >= $this->p->cf['head']['max_img_ratio'] ) {
-						$this->p->notice->err( 'The values for \''.$md_pre.'_img_width\' and  \''.$md_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$this->p->cf['head']['max_img_ratio'].':1 &mdash; resetting these options to their default values.', true );
+					$img_ratio = $img_width >= $img_height ?
+						$img_width / $img_height :
+						$img_height / $img_width;
+					$max_ratio = $this->p->cf['head']['max']['og_img_ratio'];
+
+					if ( $img_ratio >= $max_ratio ) {
+						$this->p->notice->err( 'The values for \''.$md_pre.'_img_width\' and  \''.$md_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$max_ratio.':1 &mdash; resetting these options to their default values.', true );
 						$opts[$md_pre.'_img_width'] = $def_opts[$md_pre.'_img_width'];
 						$opts[$md_pre.'_img_height'] = $def_opts[$md_pre.'_img_height'];
 						$opts[$md_pre.'_img_crop'] = $def_opts[$md_pre.'_img_crop'];
@@ -279,8 +284,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// og_desc_len must be at least 156 chars (defined in config)
 			if ( isset( $opts['og_desc_len'] ) && 
-				$opts['og_desc_len'] < $this->p->cf['head']['min_desc_len'] ) 
-					$opts['og_desc_len'] = $this->p->cf['head']['min_desc_len'];
+				$opts['og_desc_len'] < $this->p->cf['head']['min']['og_desc_len'] ) 
+					$opts['og_desc_len'] = $this->p->cf['head']['min']['og_desc_len'];
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( ! empty( $info['update_auth'] ) ) {
@@ -301,11 +306,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ), true );
 
 			// get / remove dimensions for remote image urls
-			$this->p->util->add_image_wh( array(
+			$this->p->util->add_image_url_sizes( array(
 				'rp_img_url',
 				'og_img_url',
 				'og_def_img_url',
 				'schema_logo_url',
+				'schema_banner_url',
 			), $opts );
 
 			return $opts;
@@ -381,6 +387,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'fb_publisher_url':
 				case 'seo_publisher_url':
 				case 'schema_logo_url':
+				case 'schema_banner_url':
 				case 'og_def_img_url':
 				case 'og_img_url':
 				case 'og_vid_url':
@@ -410,10 +417,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/_len$/', $key ) ? true : false ):
 					return 'pos_num';	// cast as integer
 					break;
-				// image dimensions, subject to minimum value (typically, at least 200px)
-				case ( preg_match( '/_img_(width|height)$/', $key ) ? true : false ):
-				case ( preg_match( '/^tc_[a-z]+_(width|height)$/', $key ) ? true : false ):
-					return 'img_dim';	// cast as integer
+				// image width, subject to minimum value (typically, at least 200px)
+				case ( preg_match( '/_img_width$/', $key ) ? true : false ):
+				case ( preg_match( '/^tc_[a-z]+_width$/', $key ) ? true : false ):
+					return 'img_width';	// cast as integer
+					break;
+				// image height, subject to minimum value (typically, at least 200px)
+				case ( preg_match( '/_img_height$/', $key ) ? true : false ):
+				case ( preg_match( '/^tc_[a-z]+_height$/', $key ) ? true : false ):
+					return 'img_height';	// cast as integer
 					break;
 				// must be texturized 
 				case 'og_title_sep':
