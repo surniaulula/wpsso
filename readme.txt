@@ -96,6 +96,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags.
 	* [WPSSO Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) for Facebook *Location* and Pinterest *Place* Rich Pin meta tags.
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) for great looking SVG buttons in any size.
+	* [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/) to add Schema, Structured Data and Rich Snippet markup for Google and Pinterest.
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) for fast and accurate social sharing buttons.
 
 <blockquote>
