@@ -96,40 +96,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $head_attr );
 		}
 
-		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_key = false ) {
+		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_key = false, $use_mod = true ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$schema_types = $this->get_schema_types();
+			$type_key = null;
 
-			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
+			if ( $use_mod ) {
+				list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post is '.( $use_post === false ?
-					'false' : ( $use_post === true ? 'true' : $use_post ) ) );
-				$this->p->debug->log( 'id is '.$id );
-				$this->p->debug->log( 'mod_name is '.$mod_name );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'id is '.$id );
+					$this->p->debug->log( 'mod_name is '.$mod_name );
+				}
+	
+				if ( ! empty( $id ) && ! empty( $mod_name ) ) {
+					$type_key = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
+	
+					if ( empty( $type_key ) || $type_key === 'none' ) {
+						$type_key = null;
+
+					} elseif ( empty( $schema_types[$type_key] ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'custom type key "'.$type_key.'" not in schema types' );
+						$type_key = null;
+	
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom type key "'.$type_key.'" from module '.$mod_name );
+				}
 			}
 
-			if ( ! empty( $id ) && ! empty( $mod_name ) ) {
-
-				$head_type_key = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
-
-				if ( empty( $head_type_key ) || $head_type_key === 'none' ) {
-					$head_type_key = null;
-
-				} elseif ( empty( $schema_types[$head_type_key] ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type key "'.$head_type_key.'" not found in schema types' );
-					$head_type_key = null;
-				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'custom type key "'.$head_type_key.'" from module '.$mod_name );
-			}
-
-			if ( empty( $head_type_key ) ) {
+			if ( empty( $type_key ) ) {
 
 				if ( is_front_page() ) {
-					$head_type_key = 'website';
+					$type_key = 'website';
 
 				// possible values are post, taxonomy, and user
 				} elseif ( $mod_name === 'post' ) {
@@ -140,36 +141,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! empty( $post_obj->post_type ) &&
 						! empty( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
 	
-						$head_type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
+						$type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
 	
-						if ( empty( $head_type_key ) || $head_type_key === 'none' )
-							$head_type_key = null;
-						elseif ( empty( $schema_types[$head_type_key] ) ) {
+						if ( empty( $type_key ) || $type_key === 'none' )
+							$type_key = null;
+						elseif ( empty( $schema_types[$type_key] ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'schema type key "'.$head_type_key.'" not found in schema types' );
-							$head_type_key = 'webpage';
+								$this->p->debug->log( 'schema type key "'.$type_key.'" not found in schema types' );
+							$type_key = 'webpage';
 						}
 	
-					} else $head_type_key = 'webpage';
+					} else $type_key = 'webpage';
 
 				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'forcing schema type key "webpage" for default author' );
-					$head_type_key = 'webpage';
+					$type_key = 'webpage';
 	
-				} else $head_type_key = 'webpage';	// default value for non-singular webpages
+				} else $type_key = 'webpage';	// default value for non-singular webpages
 			}
 
-			$head_type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type_key',
-				$head_type_key, $use_post, $post_obj );
+			$type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type',
+				$type_key, $use_post, $post_obj );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema type key is "'.$head_type_key.'"' );
+				$this->p->debug->log( 'schema type key is "'.$type_key.'"' );
 
-			if ( isset( $schema_types[$head_type_key] ) ) {
+			if ( isset( $schema_types[$type_key] ) ) {
 				if ( $ret_key !== false )
-					return $head_type_key;
-				else return $schema_types[$head_type_key];
+					return $type_key;
+				else return $schema_types[$type_key];
 			} else return false;
 		}
 
