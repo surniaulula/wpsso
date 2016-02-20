@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'google_schema_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( '<a href="%s">WebSite Information</a> for Search Results',
+						sprintf( __( '<a href="%s">WebSite Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
 						' Site Publisher / <a href="https://developers.google.com/structured-data/customize/social-profiles">'.

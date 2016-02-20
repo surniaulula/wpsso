@@ -130,23 +130,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
+						case 'tooltip-meta-sharing_url':
+							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
+						 	break;
+						case 'tooltip-meta-schema_type':
+							$text = 'The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
+						 	break;
+						case 'tooltip-meta-schema_headline':
+							$text = 'A custom Article headline for the Google / Schema headline JSON-LD property.';
+						 	break;
+						case 'tooltip-meta-schema_desc':
+							$text = 'A custom description for the Google / Schema description meta tag and JSON-LD property.';
+						 	break;
 						case 'tooltip-meta-og_title':
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_desc':
 							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
 						 	break;
-						case 'tooltip-meta-schema_desc':
-							$text = 'A custom description for the Google+ schema description meta tag.';
-						 	break;
 						case 'tooltip-meta-seo_desc':
 							$text = 'A custom description for the Google Search / SEO description meta tag.';
 						 	break;
 						case 'tooltip-meta-tc_desc':
 							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
-						 	break;
-						case 'tooltip-meta-sharing_url':
-							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
 						 	break;
 						case 'tooltip-meta-og_img_id':
 							$text = 'A custom Image ID to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Large Image Summary\' Twitter Card meta tags,'.( empty( $this->p->is_avail['ssb'] ) ? '' : ' along with the Pinterest and Tumblr social sharing buttons,' ).' before any featured, attached, or content images.';
@@ -525,7 +531,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
 							break;
 						case 'tooltip-google_schema_post_type':
-							$text = 'Select the Schema item type for each WordPress post type. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
+							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
 							break;
 						case 'tooltip-google_schema_json':
 							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
