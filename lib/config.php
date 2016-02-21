@@ -953,7 +953,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'schema_type' => array(
 					'article' => 'http://schema.org/Article',
 					'article.news' => 'http://schema.org/NewsArticle',
-					'article.news' => 'http://schema.org/TechArticle',
+					'article.tech' => 'http://schema.org/TechArticle',
 					'book' => 'http://schema.org/Book',
 					'blog' => 'http://schema.org/Blog',
 					'blog.posting' => 'http://schema.org/BlogPosting',
