@@ -103,14 +103,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types = $this->get_schema_types();
 			$type_key = null;
 
-			if ( $use_mod ) {
-				list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
+			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'id is '.$id );
-					$this->p->debug->log( 'mod_name is '.$mod_name );
-				}
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'id is '.$id );
+				$this->p->debug->log( 'mod_name is '.$mod_name );
+			}
 	
+			if ( $use_mod ) {
 				if ( ! empty( $id ) && ! empty( $mod_name ) ) {
 					$type_key = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
 	
@@ -125,7 +125,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'custom type key "'.$type_key.'" from module '.$mod_name );
 				}
-			} else $id = $mod_name = $mod_obj = null;
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'ignoring module option for custom schema type' );
 
 			if ( empty( $type_key ) ) {
 
