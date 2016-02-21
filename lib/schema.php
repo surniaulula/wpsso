@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'custom type key "'.$type_key.'" from module '.$mod_name );
 				}
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'ignoring module option for custom schema type' );
+				$this->p->debug->log( 'ignoring module option for custom type key' );
 
 			if ( empty( $type_key ) ) {
 
