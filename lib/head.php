@@ -363,23 +363,32 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:url':
 				case 'og:video':
 				case 'og:video:url':
-					// add secure_url meta tag for open graph images and videos
+					// add secure_url for open graph images and videos
 					if ( strpos( $value, 'https://' ) === 0 ) {
-						$secure_value = $value;
-						$secure_name = preg_replace( '/:url$/', '', $name ).':secure_url';
+						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '',
+							$name ).':secure_url', $attr, $value, $cmt );
 						$value = preg_replace( '/^https:/', 'http:', $value );
-						$ret[] = array( '', $tag, $type, $secure_name, $attr, $secure_value, $cmt );
+					}
+					break;
+				case 'og:image:secure_url':
+				case 'og:video:secure_url':
+					if ( strpos( $value, 'https://' ) !== 0 ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $log_pre.' is not https (skipped)' );
+						return $ret;
 					}
 					break;
 			}
-			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
-			// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
-			if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
-				$ret = $this->filter_single_mt( $ret, $use_post );
+			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
 			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			foreach ( $ret as $num => $parts ) {
+
+				// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
+				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
+					$parts = $this->filter_single_mt( $parts, $use_post );
+
 				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
 
 				if ( $this->p->debug->enabled )
@@ -442,36 +451,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
-		private function filter_single_mt( &$in, &$use_post ) {
-			$out = array();
+		// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+		private function filter_single_mt( &$parts, &$use_post ) {
+			$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+			$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
+			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
 
-			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
-			foreach ( $in as $num => $parts ) {
-				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
-
-				// example: wpsso_meta_property_og:description_content
-				$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
-				$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
-
-				if ( $parts[5] !== $new_value ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $log_pre.' (original) = "'.$parts[5].'"' );
-					if ( is_array( $new_value ) ) {
-						foreach( $new_value as $key => $value ) {
-							$this->p->debug->log( $log_pre.' (filtered:'.$key.') = "'.$value.'"' );
-							$parts[6] = $parts[3].':'.
-								( is_numeric( $key ) ? $key + 1 : $key );
-							$parts[5] = $value;
-							$out[] = $parts;
-						}
-					} else {
-						$this->p->debug->log( $log_pre.' (filtered) = "'.$new_value.'"' );
-						$parts[5] = $new_value;
-						$out[] = $parts;
+			if ( $parts[5] !== $new_value ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $log_pre.' (original) = "'.$parts[5].'"' );
+				if ( is_array( $new_value ) ) {
+					foreach( $new_value as $key => $value ) {
+						$this->p->debug->log( $log_pre.' (filtered:'.$key.') = "'.$value.'"' );
+						$parts[6] = $parts[3].':'.( is_numeric( $key ) ? $key + 1 : $key );
+						$parts[5] = $value;
 					}
-				} else $out[] = $parts;
+				} else {
+					$this->p->debug->log( $log_pre.' (filtered) = "'.$new_value.'"' );
+					$parts[5] = $new_value;
+				}
 			}
-			return $out;
+			return $parts;
 		}
 	}
 }
