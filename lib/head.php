@@ -365,8 +365,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:url':
 					// add secure_url for open graph images and videos
 					if ( strpos( $value, 'https:' ) === 0 ) {
-						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).
-							':secure_url', $attr, $value, $cmt );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $log_pre.' adding secure_url for '.$value );
+						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url',
+							$attr, $value, $cmt );
 						$value = preg_replace( '/^https:/', 'http:', $value );
 					}
 					break;
