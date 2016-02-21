@@ -349,7 +349,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 **Version 3.25.0 (2016/02/21)**
 
-Official announcement: N/A
+Official announcement: [WPSSO Update – New Google / Schema JSON-LD Extension](http://wpsso.com/2016/02/21/wpsso-update-new-google-schema-json-ld-extension/)
 
 * *New Features*
 	* Added a new "Google / Schema Image Dimensions" option (defaults to 800x1200 uncropped).
