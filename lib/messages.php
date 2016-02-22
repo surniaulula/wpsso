@@ -509,6 +509,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
 							break;
+						case 'tooltip-google_schema_add_noscript':
+							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';
+							break;
+						case 'tooltip-google_schema_json':
+							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
+							break;
 						case 'tooltip-google_schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
 							break;
@@ -530,11 +536,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_schema_home_page':
 							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
 							break;
-						case 'tooltip-google_schema_post_type':
+						case 'tooltip-google_schema_type_for_ptn':
 							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
-							break;
-						case 'tooltip-google_schema_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $atts );

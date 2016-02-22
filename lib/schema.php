@@ -207,6 +207,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $select;
 		}
 
+		/*
+		 * JSON-LD Script Array
+		 */
 		public function get_json_array( $use_post, &$post_obj, &$mt_og, $post_id, $author_id ) {
 
 			if ( $this->p->debug->enabled )
@@ -241,6 +244,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $item_type === $head_type )
 					$main_entity = true;
 				else $main_entity = false;
+
+				$main_entity = apply_filters( $lca.'_json_is_main_entity', 
+					$main_entity, $use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type );
 
 				if ( is_front_page() && 
 					method_exists( __CLASS__, 'filter_json_data_'.$type_hook_name ) && 
@@ -561,19 +567,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[$mt_name] = $mt_og[$og_name];
 		}
 
+		/*
+		 * Meta Name Array
+		 */
 		public function get_meta_array( $use_post, &$post_obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$mt_schema = array();
+			$ret = array();
+			$add_meta = apply_filters( $lca.'_add_schema_meta_array', true );
 
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
+			if ( ! $add_meta ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
-				return $mt_schema;
+				return $ret;
 			}
 
 			if ( ! is_object( $post_obj ) )
@@ -583,20 +593,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$head_type = $this->get_head_item_type( $use_post, $post_obj );
 
-			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
+			$this->add_mt_schema_from_og( $ret, $mt_og, array(
 				'url' => 'og:url',
 				'name' => 'og:title',
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
-				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
+				$ret['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
 
 			switch ( $head_type ) {
 				case 'http://schema.org/BlogPosting':
 				case 'http://schema.org/WebPage':
 
-					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
+					$this->add_mt_schema_from_og( $ret, $mt_og, array(
 						'datepublished' => 'article:published_time',
 						'datemodified' => 'article:modified_time',
 					) );
@@ -612,14 +622,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( ! empty( $og_image ) ) {
 							$image = reset( $og_image );
-							$mt_schema['image'] = $image['og:image'];
+							$ret['image'] = $image['og:image'];
 						}
 					}
 
 					break;
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $post_obj );
+			return apply_filters( $this->p->cf['lca'].'_meta_schema', $ret, $use_post, $post_obj );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$mt_og, array $names ) {
@@ -627,6 +637,69 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! empty( $this->p->options['add_meta_itemprop_'.$mt_name] )
 					&& ! empty( $mt_og[$og_name] ) )
 						$mt_schema[$mt_name] = $mt_og[$og_name];
+		}
+
+		/*
+		 * NoScript Meta Name Array
+		 */
+		public function get_noscript_array( $use_post, &$post_obj, &$mt_og, $post_id, $author_id ) {
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$ret = array();
+			$lca = $this->p->cf['lca'];
+			$add_noscript = apply_filters( $lca.'_add_schema_meta_array',
+				( isset( $this->p->options['schema_add_noscript'] ) ?
+					$this->p->options['schema_add_noscript'] : true ) );
+
+			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
+			if ( ! $add_noscript ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: schema noscript array disabled' );
+				return $ret;
+			}
+
+			if ( ! empty( $mt_og['og:image'] ) ) {
+				if ( is_array( $mt_og['og:image'] ) )
+					foreach ( $mt_og['og:image'] as $image )
+						$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
+				else $ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $mt_og['og:image'] ) );
+			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $ret );
+			return $ret;
+		}
+
+		// pass a single dimension array in $opts
+		public function get_single_image_noscript( $use_post, &$opts, $opt_pre = 'og:image' ) {
+			if ( empty( $opts ) )
+				return array();
+			elseif ( is_array( $opts ) )
+				if ( empty( $opts[$opt_pre] ) &&
+					empty( $opts[$opt_pre.':secure_url'] ) )
+						return array();
+				// define a two-dimensional array
+				else return array_merge(
+					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', 
+						( ! empty( $opts[$opt_pre.':secure_url'] ) ?
+							$opts[$opt_pre.':secure_url'] : $opts[$opt_pre] ), '', $use_post ),
+					( empty( $opts[$opt_pre.':width'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.width',
+							$opts[$opt_pre.':width'], '', $use_post ) ),
+					( empty( $opts[$opt_pre.':height'] ) ? array() :
+						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.height',
+							$opts[$opt_pre.':height'], '', $use_post ) ),
+					array( array( '</noscript>'."\n" ) )
+				);
+			// define a two-dimensional array
+			else return array_merge(
+				array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+				$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $opts, '', $use_post ),
+				array( array( '</noscript>'."\n" ) )
+			);
 		}
 	}
 }

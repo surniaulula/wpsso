@@ -376,27 +376,33 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		public function filter_taglist_tags_rows( $rows, $form, $network = false, $tag = '[^_]+' ) {
 			$og_cols = 2;
 			$cells = array();
+
 			foreach ( $this->p->opt->get_defaults() as $opt => $val ) {
+
 				if ( strpos( $opt, 'add_' ) === 0 &&
 					preg_match( '/^add_('.$tag.')_([^_]+)_(.+)$/', $opt, $match ) ) {
+
 					switch ( $opt ) {
+						// disabled with a constant instead
 						case 'add_meta_name_generator':
 							continue 2;
+						// highlight important meta tags
 						case 'add_meta_name_canonical':
 						case 'add_meta_name_description':
 							$highlight = ' highlight';
 							break;
-						// non standard / internal meta tags
+						// non-standard meta tags
+						/*
 						case 'add_meta_property_og:image:cropped':
 						case 'add_meta_property_og:image:id':
 						case 'add_meta_property_og:video:embed_url':
-						case 'add_meta_property_place:po_box_number':
-						case 'add_meta_property_place:type':
+						case 'add_meta_property_product:review:count':
 						case 'add_meta_property_product:sku':
 						case ( strpos( $opt, 'add_meta_property_pinterest:' ) === 0 ? true : false ):
 						case ( strpos( $opt, 'add_meta_property_product:rating:' ) === 0 ? true : false ):
 							$highlight = ' is_disabled';
 							break;
+						*/
 						default:
 							$highlight = '';
 							break;
