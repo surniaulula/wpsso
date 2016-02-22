@@ -347,6 +347,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.25.1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed the Schema Type default value in the Social Settings metabox.
+* *Developer Notes*
+	* Added WpssoSchema `get_json_data_filter()` and `has_json_data_filter()` methods to get JSON-LD filter names and check for registered hooks.
+
 **Version 3.25.0 (2016/02/21)**
 
 Official announcement: [WPSSO Update – New Google / Schema JSON-LD Extension](http://wpsso.com/2016/02/21/wpsso-update-new-google-schema-json-ld-extension/)
