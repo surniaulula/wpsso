@@ -705,15 +705,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// pass a single dimension array in $opts
 		public function get_single_image_noscript( $use_post, &$opts, $opt_pre = 'og:image' ) {
+
+			$mt_image = array();
+			$have_html = false;
+
 			if ( empty( $opts ) )
 				return array();
+
 			elseif ( is_array( $opts ) )
+
 				if ( empty( $opts[$opt_pre] ) &&
 					empty( $opts[$opt_pre.':secure_url'] ) )
 						return array();
-				// define a two-dimensional array
-				else return array_merge(
-					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+
+				// defines a two-dimensional array
+				else $mt_image = array_merge(
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', 
 						( ! empty( $opts[$opt_pre.':secure_url'] ) ?
 							$opts[$opt_pre.':secure_url'] : $opts[$opt_pre] ), '', $use_post ),
@@ -722,15 +728,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$opts[$opt_pre.':width'], '', $use_post ) ),
 					( empty( $opts[$opt_pre.':height'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.height',
-							$opts[$opt_pre.':height'], '', $use_post ) ),
+							$opts[$opt_pre.':height'], '', $use_post ) )
+				);
+
+			// defines a two-dimensional array
+			else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $opts, '', $use_post );
+
+			// make sure we have html for at least one meta tag
+			foreach ( $mt_image as $num => $img ) {
+				if ( ! empty( $img[0] ) ) {
+					$have_html = true;
+					break;
+				}
+			}
+
+			if ( $have_html ) {
+				return array_merge(
+					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+					$mt_image,
 					array( array( '</noscript>'."\n" ) )
 				);
-			// define a two-dimensional array
-			else return array_merge(
-				array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
-				$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $opts, '', $use_post ),
-				array( array( '</noscript>'."\n" ) )
-			);
+			} else return array();
 		}
 	}
 }
