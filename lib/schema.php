@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'plugin_image_sizes' => 4,
 			), 5 );
 
-			// only hook the head attribute filter if we have one
+			// only filter the head attribute if we have one
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
 
@@ -101,6 +101,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			$schema_types = $this->get_schema_types();
+			$default_key = apply_filters( $this->p->cf['lca'].'_schema_type_for_default', 'webpage' );
 			$type_key = null;
 
 			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
@@ -119,11 +120,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} elseif ( empty( $schema_types[$type_key] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type key "'.$type_key.'" not in schema types' );
+							$this->p->debug->log( 'custom type key '.$type_key.' not in schema types' );
 						$type_key = null;
 	
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type key "'.$type_key.'" from module '.$mod_name );
+						$this->p->debug->log( 'custom type key '.$type_key.' from module '.$mod_name );
 				}
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'ignoring module option for custom type key' );
@@ -141,39 +142,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! is_object( $post_obj ) )
 						$post_obj = $this->p->util->get_post_object( $id );
 	
-					if ( ! empty( $post_obj->post_type ) &&
-						! empty( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
+					if ( ! empty( $post_obj->post_type ) ) {
+						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
+							$type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
 	
-						$type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
+							if ( empty( $type_key ) || $type_key === 'none' ) {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'schema type for '.$post_obj->post_type.' post type is disabled' );
+								$type_key = null;
 	
-						if ( empty( $type_key ) || $type_key === 'none' )
-							$type_key = null;
-						elseif ( empty( $schema_types[$type_key] ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'schema type key "'.$type_key.'" not found in schema types' );
-							$type_key = 'webpage';
-						}
+							} elseif ( empty( $schema_types[$type_key] ) ) {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'schema type key '.$type_key.' not found in schema types' );
+								$type_key = $default_key;
+							}
+	
+						} elseif ( ! empty( $schema_types[$post_obj->post_type] ) ) {
+							$type_key = $post_obj->post_type;
 
-					// posts without a post_type property
-					} else $type_key = 'webpage';
+						// unknown post type
+						} else $type_key = $default_key;
+
+					// post objects without a post_type property
+					} else $type_key = $default_key;
 
 				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'forcing schema type key "webpage" for default author' );
-					$type_key = 'webpage';
+					$type_key = $default_key;
 
-				// default value for non-singular webpages
-				} else $type_key = 'webpage';
+				// default value for all other webpages
+				} else $type_key = $default_key;
 			}
 
-			$type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type',
-				$type_key, $use_post, $post_obj );
+			$type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_key, $use_post, $post_obj );
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema type key is "'.$type_key.'"' );
 
 			if ( isset( $schema_types[$type_key] ) ) {
-				if ( $ret_key !== false )
+				if ( $ret_key !== false )	// return the type key, not its associated value
 					return $type_key;
 				else return $schema_types[$type_key];
 			} else return false;
@@ -207,6 +213,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $select;
 		}
 
+		// $item_type examples: http_schema_org_webpage or http://schema.org/WebPage
+		public function has_json_data_filter( $item_type = '', $use_post = false, $post_obj = false ) {
+			$filter_name = $this->get_json_data_filter( $item_type, $use_post, $post_obj );
+			return ! empty( $filter_name ) && 
+				has_filter( $filter_name ) ? 
+					true : false;
+		}
+
+		public function get_json_data_filter( $item_type = '', $use_post = false, $post_obj = false ) {
+			if ( empty( $item_type ) )
+				$item_type = $this->get_head_item_type( $use_post, $post_obj );
+			return $this->p->cf['lca'].'_json_data_'.SucomUtil::sanitize_hookname( $item_type );
+		}
+
 		/*
 		 * JSON-LD Script Array
 		 */
@@ -220,6 +240,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$head_type = $this->get_head_item_type( $use_post, $post_obj );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type is '.$head_type );
+
+			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
 			if ( is_front_page() )
 				$item_types = array(
@@ -236,38 +258,45 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $item_types as $item_type => $is_enabled ) {
 
 				$json_data = null;
-				$type_hook_name = SucomUtil::sanitize_hookname( $item_type );
+				$type_filter_name = SucomUtil::sanitize_hookname( $item_type );
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->mark( $type_hook_name );	// begin timer for json array
+					$this->p->debug->mark( $type_filter_name );	// begin timer for json array
 
-				if ( $item_type === $head_type )
-					$main_entity = true;
-				else $main_entity = false;
+				if ( ! empty( $id ) && ! empty( $mod_name ) )
+					// returns null if index key is not set in the options array
+					$is_main = $this->p->util->get_mod_options( $mod_name, $id, 'schema_is_main' );
+				else $is_main = null;
 
-				$main_entity = apply_filters( $lca.'_json_is_main_entity', 
-					$main_entity, $use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type );
+				if ( $is_main === null ) {
+					if ( $item_type === $head_type )
+						$is_main = true;
+					else $is_main = false;
+				}
+
+				$is_main = apply_filters( $lca.'_json_is_main_entity', 
+					$is_main, $use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type );
 
 				if ( is_front_page() && 
-					method_exists( __CLASS__, 'filter_json_data_'.$type_hook_name ) && 
-						! has_filter( $lca.'_json_data_'.$type_hook_name ) ) {
+					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
+						! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
 
 					if ( $is_enabled )
-						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_hook_name ),
+						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 							$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
-								$head_type, $main_entity );
+								$head_type, $is_main );
 
-				} else foreach ( array( 'http_schema_org_item_type', $type_hook_name ) as $hook_name ) {
+				} else foreach ( array( 'http_schema_org_item_type', $type_filter_name ) as $filter_name ) {
 
-					if ( has_filter( $lca.'_json_data_'.$hook_name ) ) {
-						if ( apply_filters( $lca.'_add_json_'.$hook_name, $is_enabled ) )
-							$json_data = apply_filters( $lca.'_json_data_'.$hook_name,
+					if ( has_filter( $lca.'_json_data_'.$filter_name ) ) {
+						if ( apply_filters( $lca.'_add_json_'.$filter_name, $is_enabled ) )
+							$json_data = apply_filters( $lca.'_json_data_'.$filter_name,
 								$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
-									$head_type, $main_entity );
+									$head_type, $is_main );
 						elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $hook_name.' filter is disabled' );
+							$this->p->debug->log( $filter_name.' filter is disabled' );
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'no hooks registered for '.$hook_name.' filter' );
+						$this->p->debug->log( 'no filters registered for '.$filter_name );
 				}
 
 				if ( ! empty( $json_data ) && is_array( $json_data ) )
@@ -275,7 +304,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->util->json_format( $json_data )."</script>\n";
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->mark( $type_hook_name );	// end timer for json array
+					$this->p->debug->mark( $type_filter_name );	// end timer for json array
 
 			}
 
@@ -293,7 +322,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/WebSite for Google
 		 */
 		public function filter_json_data_http_schema_org_website( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -313,7 +342,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
-			if ( $main_entity )
+			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
 
 			$search_url = apply_filters( $lca.'_json_ld_search_url',
@@ -335,7 +364,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/Organization social markup for Google
 		 */
 		public function filter_json_data_http_schema_org_organization( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -345,7 +374,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			self::add_single_organization_data( $ret, $post_id );	// list_element = false
 
-			if ( $main_entity )
+			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
 
 			if ( is_front_page() ) {
@@ -374,7 +403,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_http_schema_org_person( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $main_entity ) {
+			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -399,13 +428,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			self::add_single_person_data( $ret, $author_id, false );	// list_element = false
 
-			if ( is_front_page() || $main_entity ) {
+			if ( is_front_page() || $is_main ) {
 
 				// override the author's website url from his profile
 				// and use the open graph url instead
 				$ret['url'] = $mt_og['og:url'];
 
-				if ( $main_entity )
+				if ( $is_main )
 					self::add_main_entity_data( $ret, $ret['url'] );
 
 				if ( is_front_page() ) {
@@ -520,6 +549,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// pass a single dimension image array in $opts
 		public static function add_single_image_data( &$json_data,
 			&$opts, $opt_pre = 'og:image', $list_element = true ) {
+
+			$wpsso = Wpsso::get_instance();
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $wpsso->debug->enabled )

@@ -123,6 +123,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( ! empty( $md_idx ) ) {
 				if ( is_singular() || $use_post !== false ) {
 					if ( ! empty( $post_id ) )
+						// returns null if index key is not set in the options array
 						$caption = $this->p->util->get_mod_options( 'post', $post_id, $md_idx );
 					if ( ! empty( $caption ) &&
 						! empty( $add_hashtags ) && 
@@ -137,11 +138,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				} elseif ( SucomUtil::is_term_page() ) {
 					$term = $this->p->util->get_term_object();
 					if ( ! empty( $term->term_id ) )
+						// returns null if index key is not set in the options array
 						$caption = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author = $this->p->util->get_author_object();
 					if ( ! empty( $author->ID ) )
+						// returns null if index key is not set in the options array
 						$caption = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
 				}
 			}
@@ -224,16 +227,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( ! empty( $md_idx ) ) {
 				if ( is_singular() || $use_post !== false ) {
 					if ( ! empty( $post_id ) )
+						// returns null if index key is not set in the options array
 						$title = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_title' ) );
 	
 				} elseif ( SucomUtil::is_term_page() ) {
 					$term = $this->p->util->get_term_object();
 					if ( ! empty( $term->term_id ) )
+						// returns null if index key is not set in the options array
 						$title = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author = $this->p->util->get_author_object();
 					if ( ! empty( $author->ID ) )
+						// returns null if index key is not set in the options array
 						$title = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
 				}
 			}
@@ -390,16 +396,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( ! empty( $md_idx ) ) {
 				if ( is_singular() || $use_post !== false ) {
 					if ( ! empty( $post_id ) )
+						// returns null if index key is not set in the options array
 						$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_desc' ) );
 	
 				} elseif ( SucomUtil::is_term_page() ) {
 					$term = $this->p->util->get_term_object();
 					if ( ! empty( $term->term_id ) )
+						// returns null if index key is not set in the options array
 						$desc = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author = $this->p->util->get_author_object();
 					if ( ! empty( $author->ID ) )
+						// returns null if index key is not set in the options array
 						$desc = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
 				}
 				if ( $this->p->debug->enabled ) {

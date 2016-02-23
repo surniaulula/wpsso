@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.25.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.25.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -975,23 +975,23 @@ msgstr ""
 
 #: lib/gpl/admin/post.php:82 lib/gpl/admin/post.php:85
 #: lib/gpl/admin/taxonomy.php:50 lib/gpl/admin/user.php:50
-#: lib/pro/admin/post.php:100 lib/pro/admin/post.php:103
-#: lib/pro/admin/taxonomy.php:66 lib/pro/admin/user.php:66
+#: lib/pro/admin/post.php:103 lib/pro/admin/post.php:106
+#: lib/pro/admin/taxonomy.php:69 lib/pro/admin/user.php:69
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/post.php:92 lib/gpl/admin/post.php:96
 #: lib/gpl/admin/taxonomy.php:56 lib/gpl/admin/user.php:56 lib/meta.php:111
-#: lib/pro/admin/post.php:112 lib/pro/admin/post.php:117
-#: lib/pro/admin/taxonomy.php:74 lib/pro/admin/user.php:74
+#: lib/pro/admin/post.php:115 lib/pro/admin/post.php:120
+#: lib/pro/admin/taxonomy.php:77 lib/pro/admin/user.php:77
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gpl/admin/post.php:109 lib/gpl/admin/taxonomy.php:69
-#: lib/gpl/admin/user.php:69 lib/pro/admin/post.php:127
-#: lib/pro/admin/taxonomy.php:85 lib/pro/admin/user.php:85
+#: lib/gpl/admin/user.php:69 lib/pro/admin/post.php:130
+#: lib/pro/admin/taxonomy.php:88 lib/pro/admin/user.php:88
 #: lib/submenu/general.php:27
 msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
@@ -1000,9 +1000,9 @@ msgstr ""
 #: lib/gpl/admin/post.php:113 lib/gpl/admin/post.php:155
 #: lib/gpl/admin/taxonomy.php:73 lib/gpl/admin/taxonomy.php:115
 #: lib/gpl/admin/user.php:73 lib/gpl/admin/user.php:105
-#: lib/pro/admin/post.php:131 lib/pro/admin/post.php:177
-#: lib/pro/admin/taxonomy.php:89 lib/pro/admin/taxonomy.php:135
-#: lib/pro/admin/user.php:89 lib/pro/admin/user.php:125
+#: lib/pro/admin/post.php:134 lib/pro/admin/post.php:180
+#: lib/pro/admin/taxonomy.php:92 lib/pro/admin/taxonomy.php:138
+#: lib/pro/admin/user.php:92 lib/pro/admin/user.php:128
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
@@ -1010,9 +1010,9 @@ msgstr ""
 #: lib/gpl/admin/post.php:117 lib/gpl/admin/post.php:160
 #: lib/gpl/admin/taxonomy.php:77 lib/gpl/admin/taxonomy.php:120
 #: lib/gpl/admin/user.php:77 lib/gpl/admin/user.php:110
-#: lib/pro/admin/post.php:135 lib/pro/admin/post.php:182
-#: lib/pro/admin/taxonomy.php:93 lib/pro/admin/taxonomy.php:140
-#: lib/pro/admin/user.php:93 lib/pro/admin/user.php:130
+#: lib/pro/admin/post.php:138 lib/pro/admin/post.php:185
+#: lib/pro/admin/taxonomy.php:96 lib/pro/admin/taxonomy.php:143
+#: lib/pro/admin/user.php:96 lib/pro/admin/user.php:133
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
@@ -1020,49 +1020,49 @@ msgstr ""
 #: lib/gpl/admin/post.php:121 lib/gpl/admin/post.php:165
 #: lib/gpl/admin/taxonomy.php:81 lib/gpl/admin/taxonomy.php:125
 #: lib/gpl/admin/user.php:81 lib/gpl/admin/user.php:115
-#: lib/pro/admin/post.php:139 lib/pro/admin/post.php:187
-#: lib/pro/admin/taxonomy.php:97 lib/pro/admin/taxonomy.php:145
-#: lib/pro/admin/user.php:97 lib/pro/admin/user.php:135
+#: lib/pro/admin/post.php:142 lib/pro/admin/post.php:190
+#: lib/pro/admin/taxonomy.php:100 lib/pro/admin/taxonomy.php:148
+#: lib/pro/admin/user.php:100 lib/pro/admin/user.php:138
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
 #: lib/gpl/admin/post.php:126 lib/gpl/admin/taxonomy.php:86
-#: lib/pro/admin/post.php:144 lib/pro/admin/taxonomy.php:102
+#: lib/pro/admin/post.php:147 lib/pro/admin/taxonomy.php:105
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gpl/admin/post.php:130 lib/gpl/admin/taxonomy.php:90
-#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:148
-#: lib/pro/admin/taxonomy.php:106 lib/pro/admin/user.php:101
+#: lib/gpl/admin/user.php:85 lib/pro/admin/post.php:151
+#: lib/pro/admin/taxonomy.php:109 lib/pro/admin/user.php:104
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
 #: lib/gpl/admin/post.php:134 lib/gpl/admin/taxonomy.php:94
-#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:152
-#: lib/pro/admin/taxonomy.php:110 lib/pro/admin/user.php:105
+#: lib/gpl/admin/user.php:89 lib/pro/admin/post.php:155
+#: lib/pro/admin/taxonomy.php:113 lib/pro/admin/user.php:108
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
 #: lib/gpl/admin/post.php:139 lib/gpl/admin/taxonomy.php:99
-#: lib/pro/admin/post.php:157 lib/pro/admin/taxonomy.php:115
+#: lib/pro/admin/post.php:160 lib/pro/admin/taxonomy.php:118
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
 #: lib/gpl/admin/post.php:143 lib/gpl/admin/taxonomy.php:103
-#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:161
-#: lib/pro/admin/taxonomy.php:119 lib/pro/admin/user.php:109
+#: lib/gpl/admin/user.php:93 lib/pro/admin/post.php:164
+#: lib/pro/admin/taxonomy.php:122 lib/pro/admin/user.php:112
 msgctxt "option label"
 msgid "Include Preview Image(s)"
 msgstr ""
 
 #: lib/gpl/admin/post.php:151 lib/gpl/admin/taxonomy.php:111
-#: lib/gpl/admin/user.php:101 lib/pro/admin/post.php:173
-#: lib/pro/admin/taxonomy.php:131 lib/pro/admin/user.php:121
+#: lib/gpl/admin/user.php:101 lib/pro/admin/post.php:176
+#: lib/pro/admin/taxonomy.php:134 lib/pro/admin/user.php:124
 msgctxt "metabox title"
 msgid "Pinterest / Rich Pin"
 msgstr ""
@@ -1927,21 +1927,21 @@ msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:280
+#: lib/meta.php:276
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:358
+#: lib/meta.php:348
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:359
+#: lib/meta.php:349
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:375
+#: lib/meta.php:365
 msgid "Reload to View"
 msgstr ""
 
@@ -1998,7 +1998,9 @@ msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
 #: lib/post.php:230
-msgid "enabled in <a href=\"%s\">WP / Theme Integration</a> settings"
+msgid ""
+"can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
+"settings"
 msgstr ""
 
 #: lib/post.php:234
@@ -2035,6 +2037,13 @@ msgstr ""
 
 #: lib/pro/admin/post.php:39
 msgid "Save a draft version or publish the %s to enable this option."
+msgstr ""
+
+#: lib/pro/admin/post.php:99 lib/pro/admin/taxonomy.php:66
+#: lib/pro/admin/user.php:66
+msgid ""
+"The SEO description field is disabled - the \"meta name description\" option "
+"is disabled and/or a known SEO plugin has been detected."
 msgstr ""
 
 #: lib/pro/forum/bbpress.php:73 lib/pro/forum/bbpress.php:121
@@ -2626,49 +2635,49 @@ msgstr ""
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:499
+#: lib/util.php:495
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:536
+#: lib/util.php:532
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:546 lib/util.php:555
+#: lib/util.php:542 lib/util.php:551
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:564
+#: lib/util.php:560
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:573
+#: lib/util.php:569
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:596
+#: lib/util.php:592
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:606
+#: lib/util.php:602
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:652
+#: lib/util.php:648
 msgid ""
 "The DOMDocument PHP class is missing - unable to read the head meta from %s. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

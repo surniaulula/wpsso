@@ -183,31 +183,26 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $rows;
 		}
 
-		public function reset_options_filter( $id ) {
-			if ( isset( $this->opts[$id]['options_filtered'] ) )
-				$this->opts[$id]['options_filtered'] = false;
-		}
-
 		public function get_options( $id, $idx = false, $attr = array() ) {
 			return $this->not_implemented( __METHOD__,
 				( $idx === false ? array() : false ) );
 		}
 
 		public function get_defaults( $idx = false, $mod_name = false ) {
-			if ( ! isset( $this->defs['options_filtered'] ) || 
-				$this->defs['options_filtered'] !== true ) {
-				$this->defs = array(
+
+			if ( ! isset( $this->defs[$mod_name]['options_filtered'] ) || 
+				$this->defs[$mod_name]['options_filtered'] !== true ) {
+
+				$this->defs[$mod_name] = array(
 					'options_filtered' => '',
 					'options_version' => '',
 					'og_art_section' => -1,
 					'og_title' => '',
 					'og_desc' => '',
-					'schema_headline' => '',
-					'schema_desc' => '',
-					'schema_type' => $this->p->schema->get_head_item_type( false, false, true ),	// return the head type key
 					'seo_desc' => '',
 					'tc_desc' => '',
 					'pin_desc' => '',
+					'schema_desc' => '',
 					'sharing_url' => '',
 					'og_img_width' => '',
 					'og_img_height' => '',
@@ -237,15 +232,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'' : $this->p->options['og_def_img_id_pre'] ),
 					'rp_img_url' => '',
 				);
-				if ( $mod_name !== false )
-					$this->defs = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs, $mod_name );
-				$this->defs['options_filtered'] = true;
+
+				$this->defs[$mod_name] = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs[$mod_name], $mod_name );
+				$this->defs[$mod_name]['options_filtered'] = true;
 			}
+
 			if ( $idx !== false ) {
-				if ( isset( $this->defs[$idx] ) )
-					return $this->defs[$idx];
+				if ( isset( $this->defs[$mod_name][$idx] ) )
+					return $this->defs[$mod_name][$idx];
 				else return null;
-			} else return $this->defs;
+			} else return $this->defs[$mod_name];
 		}
 
 		public function save_options( $id, $rel_id = false ) {
@@ -307,18 +303,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $opts[$key] === '' || $opts[$key] == -1 )	// -1 can be string or integer
 						unset ( $opts[$key] );
 
-			// checkbox options
-			foreach ( array(
-				'og_vid_prev_img',
-				'buttons_disabled',
-			) as $key ) {
-				// don't save if the value is the same as the default value
+			// checkbox options - don't save if the value is the same as the default value
+			foreach ( array( 'og_vid_prev_img' ) as $key ) {
 				if ( isset( $this->p->options[$key] ) ) {
 					if ( $opts[$key] === $this->p->options[$key] )
-						unset ( $opts['og_vid_prev_img'] );
-				// if there's no default, then don't save an unchecked / disabled value
-				} elseif ( empty( $opts[$key] ) )
-					unset ( $opts[$key] );
+						unset ( $opts[$key] );
+				}
 			}
 
 			// image size options (id, prefix, width, height, crop, etc.)

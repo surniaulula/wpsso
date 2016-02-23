@@ -424,41 +424,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $id ) || 
 				! isset( $this->p->m['util'][$mod_name] ) )
-					return false;
+					return null;
 
 			// return the whole options array
 			if ( $idx === false ) {
 				$ret = $this->p->m['util'][$mod_name]->get_options( $id, $idx, $atts );
+
+			// return the first matching index value
 			} else {
 				if ( ! is_array( $idx ) )
 					$idx = array( $idx );
 				else $idx = array_unique( $idx );	// just in case
 
 				foreach ( $idx as $key ) {
-
-					if ( $key === 'none' )		// special keyword
-						return false;		// stop here
-
-					if ( empty( $key ) )
+					if ( $key === 'none' )		// special index keyword
+						return null;
+					elseif ( empty( $key ) )
 						continue;
-
-					$ret = $this->p->m['util'][$mod_name]->get_options( $id, $key, $atts );
-
-					if ( ! empty( $ret ) )
+					// get_options() returns null if key index is missing
+					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $id, $key, $atts ) ) !== null );
 						break;
 				}
 			}
 
-			if ( ! empty( $ret ) ) {
+			if ( $ret !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'custom '.$mod_name.' '.
 						( $idx === false ? 'options' : ( is_array( $idx ) ? implode( ', ', $idx ) : $idx ) ).' = '.
 						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
 				}
-				return $ret;	// stop here
 			}
-
-			return false;
+			return $ret;
 		}
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod_name = false ) {

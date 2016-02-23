@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.25.0',		// plugin version
+					'version' => '3.25.1',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso412',				// increment when changing default options
+				'version' => 'sso413',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_add_noscript' => 1,
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 86400,		// Object Cache Expiry
+					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (259200 secs = 3 days)
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry
@@ -668,7 +668,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					'plugin_page_tags:use' => 'default',
 					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 86400,		// Object Cache Expiry
+					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (259200 secs = 3 days)
 					'plugin_object_cache_exp:use' => 'default',
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					'plugin_file_cache_exp:use' => 'default',
