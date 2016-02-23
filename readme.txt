@@ -347,18 +347,18 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.25.1 (TBD)**
+**Version 3.25.1 (2016/02/23)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Increased the default object cache expiry from 86400 secs (1 day) to 259200 secs (3 days).
 * *Bugfixes*
-	* Fixed the Schema Type default value in the Social Settings metabox.
+	* None
 * *Developer Notes*
-	* Added WpssoSchema `get_json_data_filter()` and `has_json_data_filter()` methods to get JSON-LD filter names and check for registered hooks.
+	* Added WpssoSchema `get_json_data_filter()` and `has_json_data_filter()` methods to get JSON-LD filter name and check for registered hooks.
 
 **Version 3.25.0 (2016/02/21)**
 
@@ -486,11 +486,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.25.1 =
+
+2016/02/23 - Added new NgfbSchema methods to get the JSON-LD filter name and check for registered hooks.
+
 = 3.25.0 =
 
 2016/02/21 - New "Google / Schema Image Dimensions" and "Business Banner (600x60) Image URL" options. Refactored much of the Schema JSON-LD related code. 
-
-= 3.24.1 =
-
-2016/02/15 - Modified the WpssoSchema::add_* methods argument list (removed $item_type and added $list_element).
 
