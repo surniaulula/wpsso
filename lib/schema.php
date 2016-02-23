@@ -243,6 +243,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
+			// include WebSite, Organization, and/or Person on the home page
 			if ( is_front_page() )
 				$item_types = array(
 					'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
@@ -277,6 +278,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$is_main = apply_filters( $lca.'_json_is_main_entity', 
 					$is_main, $use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type );
 
+				// include WebSite, Organization, and/or Person on the home page
+				// if there isn't a hook for that filter (from WPSSO JSON, for example)
 				if ( is_front_page() && 
 					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
 						! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
@@ -284,8 +287,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $is_enabled )
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 							$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
-								$head_type, $is_main );
+								$head_type, false );	// $is_main = false when called directly
 
+				// call http_schema_org_item_type as a generic / common data filter first
 				} else foreach ( array( 'http_schema_org_item_type', $type_filter_name ) as $filter_name ) {
 
 					if ( has_filter( $lca.'_json_data_'.$filter_name ) ) {
@@ -305,7 +309,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( $type_filter_name );	// end timer for json array
-
 			}
 
 			$ret = SucomUtil::a2aa( $ret );	// convert to array of arrays
