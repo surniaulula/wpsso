@@ -116,8 +116,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// get the item type key
-			$head_info['schema:head_type'] = $this->p->schema->get_head_item_type( false, false, true );
+			$head_info['schema:head_type'] = $this->p->schema->get_head_item_type( false, false, true );	// $ret_key = true
 
 			return $head_info;
 		}

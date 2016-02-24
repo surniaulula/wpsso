@@ -133,14 +133,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-sharing_url':
 							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
 						 	break;
+						case 'tooltip-meta-schema_is_main':
+							$text = 'Select if this Schema markup describes the <em>main entity</em> for this webpage.';
+						 	break;
 						case 'tooltip-meta-schema_type':
 							$text = 'The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
 						 	break;
+						case 'tooltip-meta-schema_title':
+							$text = 'A custom name / title for the Schema item type "name" JSON-LD property.';
+						 	break;
 						case 'tooltip-meta-schema_headline':
-							$text = 'A custom Article headline for the Google / Schema headline JSON-LD property.';
+							$text = 'A custom headline for the Schema Article "headline" JSON-LD property. The custom headline field is disabled for all non-Article item types.';
 						 	break;
 						case 'tooltip-meta-schema_desc':
-							$text = 'A custom description for the Google / Schema description meta tag and JSON-LD property.';
+							$text = 'A custom description for the Schema description meta tag and JSON-LD property.';
 						 	break;
 						case 'tooltip-meta-og_title':
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
@@ -330,7 +336,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Content and Filters' settings
 						 */
 						case 'tooltip-plugin_filter_title':
-							$text = 'By default, '.$atts['short'].' uses the title values provided by WordPress, which may include modifications by themes and/or SEO plugins (appending the blog name to all titles, for example, is a fairly common practice). If you wish to use the original title value without these modifications, uncheck this option.';
+							$text = 'By default, '.$atts['short'].' uses the title values provided by WordPress, which may include modifications by themes and/or SEO plugins (appending the blog name to all titles, for example, is a fairly common practice). Uncheck this option to use the original title value without modifications.';
 							break;
 						case 'tooltip-plugin_filter_content':
 							$text = 'Apply the standard WordPress \'the_content\' filter to render content text (default is unchecked). This renders all shortcodes, and allows '.$atts['short'].' to detect images and embedded videos that may be provided by these.';

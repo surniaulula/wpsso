@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					// Content and Filters Tab
-					'plugin_filter_title' => 1,
+					'plugin_filter_title' => 0,
 					'plugin_filter_content' => 0,
 					'plugin_filter_excerpt' => 0,
 					'plugin_p_strip' => 0,
