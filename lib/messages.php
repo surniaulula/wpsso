@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'A custom headline for the Schema Article "headline" JSON-LD property. The custom headline field is disabled for all non-Article item types.';
 						 	break;
 						case 'tooltip-meta-schema_desc':
-							$text = 'A custom description for the Schema description meta tag and JSON-LD property.';
+							$text = 'A custom description for the Schema meta tag and item type "description" JSON-LD property.';
 						 	break;
 						case 'tooltip-meta-og_title':
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
