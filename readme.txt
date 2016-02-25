@@ -347,6 +347,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.25.3 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new `WPSSO_HIDE_ALL_WARNINGS` constant - see the SSO Setup Guide for details. 
+
 **Version 3.25.1 (2016/02/23)**
 
 Official announcement: N/A
