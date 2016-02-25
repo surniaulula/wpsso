@@ -349,7 +349,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 **Version 3.25.3 (2016/02/25)**
 
-Official announcement: N/A
+Official announcement: [WPSSO Update – Auto-Hide All Warning Notices](http://wpsso.com/2016/02/25/wpsso-update-auto-hide-all-warning-notices/)
 
 * *New Features*
 	* None
@@ -501,7 +501,7 @@ Official announcement: N/A
 
 = 3.25.3 =
 
-2016/02/25 - Added a new NGFB_HIDE_ALL_WARNINGS constant - see the NGFB Setup Guide for details. 
+2016/02/25 - Added a new WPSSO_HIDE_ALL_WARNINGS constant - see the WPSSO Setup Guide for details. 
 
 = 3.25.1 =
 
