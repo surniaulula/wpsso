@@ -42,30 +42,47 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				case 'profile.php':
 				case 'post.php':
 				case 'post-new.php':
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for editing page' );
+
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
+
 					break;
+
+				// license settings pages include a "view plugin details" feature
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ):
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' licenses page' );
+
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
-					add_thickbox();		// required to view plugin details box
-					// no break
+					add_thickbox();					// required for the plugin details box
+
+					// no break - continue to enqueue the settings page
+
+				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
+
 					wp_enqueue_style( 'jquery-qtip.js' );
-					wp_enqueue_style( 'sucom-setting-pages' );
+					wp_enqueue_style( 'sucom-setting-pages' );	// sidebar, buttons, etc.
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
+
 					break;
-				case 'plugin-install.php':	// view plugin details thickbox
+
+				case 'plugin-install.php':				// css for view plugin details thickbox
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for plugin install page' );
+
 					$this->thickbox_inline_styles( $hook );
+
 					break;
 			}
 			$this->admin_inline_styles( $hook );
@@ -137,6 +154,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	.'.$lca.'-notice.updated {
 		padding:0;
 	}
+	.'.$lca.'-notice ul {
+		margin:5px 0 5px 40px;
+		list-style:disc outside none;
+	}
 	.'.$lca.'-notice .notice-label {
 		display:table-cell;
 		vertical-align:top;
@@ -154,9 +175,12 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		line-height:1.5em;
 	}
-	.'.$lca.'-notice ul {
-		margin:5px 0 5px 40px;
-		list-style:disc outside none;
+	.'.$lca.'-notice .notice-message ul li {
+		margin-top:3px;
+		margin-bottom:3px;
+	}
+	.'.$lca.'-notice .notice-message a {
+		text-decoration:none;
 	}
 	.'.$lca.'-dismissible .notice-dismiss:before {
 		display:inline-block;

@@ -79,13 +79,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				empty( $msg_txt ) ) 
 					return;
 
-			$payload['msg_id'] = empty( $msg_id ) ? 
-				'' : $type.'_'.$msg_id;
+			$payload['msg_id'] = empty( $msg_id ) ? '' : $type.'_'.$msg_id;
 
-			$payload['dismiss'] = ! empty( $dismiss ) && 
-				! empty( $msg_id ) && 
-					$this->can_dismiss() === true ? 
-						$dismiss : false;
+			// a msg_id is required to dismiss the notice
+			$payload['dismiss'] = ! empty( $msg_id ) && ! empty( $dismiss ) && 
+				$this->can_dismiss() === true ? $dismiss : false;
 			
 			// save message until it can be displayed
 			if ( $store === true ) {
@@ -232,6 +230,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								$nag_msgs .= $msg_txt;	// append to echo a single message
 								continue;
 							default:
+								// dismiss will always be false if there's no msg id
 								if ( $payload['dismiss'] ) {
 									// auto-hide all warnings by default
 									if ( $type === 'err' && $this->hide_err ) {
@@ -480,7 +479,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 }
 .'.$this->lca.'-notice.update-nag li {
 	text-align:left;
-	margin:3px 0 3px 60px;
+	margin:5px 0 5px 60px;
 }
 </style>'."\n";
 		}

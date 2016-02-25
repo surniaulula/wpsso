@@ -381,19 +381,19 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:287
+#: lib/com/notice.php:286
 msgid ""
 "%1$d important warning notices have been hidden and/or dismissed &mdash; <a "
 "id=\"%2$s\">unhide and view the warning messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:289
+#: lib/com/notice.php:288
 msgid ""
 "%1$d important warning notice has been hidden and/or dismissed &mdash; <a id="
 "\"%2$s\">unhide and view the warning message</a>."
 msgstr ""
 
-#: lib/com/notice.php:359
+#: lib/com/notice.php:358
 msgid "%s Notice"
 msgstr ""
 
@@ -1645,20 +1645,20 @@ msgstr ""
 
 #: lib/messages.php:732
 msgid ""
-"You can also adjust the <b>%2$s</b> <a href=\"%1$s\">Social Image "
-"Dimensions</a>."
+"You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social "
+"Image Dimensions</a> settings."
 msgstr ""
 
 #: lib/messages.php:734
 msgid ""
 "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image "
-"upscaling percentage</em>."
+"upscaling percentage</em> feature."
 msgstr ""
 
 #: lib/messages.php:736
 msgid ""
 "Disable the <a href=\"%1$s\">WP / Theme Integration</a> <em>image dimensions "
-"check</em> (not recommended)."
+"check</em> option (not recommended)."
 msgstr ""
 
 #: lib/messages.php:739
