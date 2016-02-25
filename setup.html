@@ -22,16 +22,16 @@
 <li>
 <h3>Image Dimensions</h3>
 
-<p>Review the WordPress <u>Settings &gt; Social Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px and wider is required to avoid web browsers upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original / full-size featured images are at least 1200px in width and 630px in height, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
+<p>Review the WordPress <u>Settings &gt; Social Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or wider is required to avoid web browsers upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original / full-size featured images are at least 1200px in width and 630px in height, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
 
 <p>The default Open Graph image dimensions are 600x315px cropped. You can reduce these values down to 200x200px cropped, but Facebook will display small images as thumbnails in user timelines. The minimum recommended image dimensions are 600x315px cropped &mdash; and for best results, use 1200px or wider.</p>
 
-<p>If your original images are large enough, you can also double the default Twitter Card image dimensions from 600x600px to 1200x1200px, and from 300x300px to 600x600px. By offering larger images, you allow Twitter to provide higher resolution images for retina / high-PPI displays.</p>
+<p>If your original images are large enough, you can also increase the default Twitter Card image dimensions to 1200x1200px. By offering larger images, you allow Twitter to provide higher resolution images for retina / high-PPI displays.</p>
 
 <blockquote>
 <h4>Cropped or Uncropped?</h4>
 
-<p>The difference between cropped and uncropped image dimensions is important to know -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions, and then <u>the excess width or height is trimmed</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px uncropped will have dimensions of 840x630px -- the original aspect ratio was preserved, and no parts of the image were sacrificed, but its width is not optimal for Facebook. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will crop Open Graph images to this aspect ratio for display anyway.</p>
+<p>The difference between cropped and uncropped image dimensions is important to know -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required, and then <u>the excess width or height is trimmed</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px uncropped will have dimensions of 840x630px -- the original aspect ratio was preserved, and no parts of the image were sacrificed, but its width is not optimal for Facebook. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will crop Open Graph images to this aspect ratio for display purposes anyway.</p>
 </blockquote>
 
 
@@ -46,7 +46,7 @@
 <blockquote>
 <h4>Accept Smaller / Thumbnail Images?</h4>
 
-<p>By default, WPSSO double-checks all images returned by WordPress to make sure they match the dimensions it requested, as WordPress can return inaccurate images. This check also insures that images that are too small (smaller than the image dimensions requested) are rejected in favour of other potentially larger / more suitable images. You can use smaller / innaccurate images by unchecking the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
+<p>WPSSO double-checks that all images returned by WordPress match the dimensions it requested (as WordPress can return inaccurate images). This check also insures that images that are too small for social sites (smaller than the image dimensions requested) are rejected in favour of other potentially larger / more suitable images. You can use smaller / innaccurate images by unchecking the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab. Unchecking this option is not recommended as it may cause WPSSO to provide sub-optimal images to social sites.</p>
 </blockquote>
 
 </li>
@@ -91,14 +91,31 @@
 
 <li>
 <h3>Developers and Designers</h3>
-<p>Website developers / designers will probably want to look at a few options on the Advanced Settings page...</p>
+<p>Website developers / designers will probably want to consider a few additional settings...</p>
 <ol>
+	<!-- Apply WordPress Content Filters -->
 	<li>If your site uses shortcodes, you'll want to enable the "Apply WordPress Content Filters" option to expand shortcodes in the content for description text and/or image meta tags (the content can be searched for images).</li>
-	<li>Users can hide / view the "Social Img" and "Social Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable both these columns globally by post type under the <u>Social Settings</u> tab.</li>
-	<li>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the <u>Social Settings</u> tab.</li>
+
+	<!-- WPSSO_HIDE_ALL_WARNINGS -->
+	<li>WPSSO can display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</li>
+
+	<!-- Show Social Img / Desc Columns -->
+	<li>Users can hide / unhide the "Social Img" and "Social Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the Advanced settings &gt; Social Settings tab.</li>
+
+	<!-- Custom Field Names -->
+	<li>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the Advanced settings &gt; Social Settings tab.</li>
+
+	<!-- Check for Duplicate Meta Tags -->
 	<li>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</li>
-	<li>By default, WPSSO modifies the <code>&lt;head&gt;</code> element attributes to add a Schema itemtype for the <code>&lt;head&gt;</code> section only. To have WPSSO add the Schema itemtype for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</li>
-	<li>You can simulate the image upscaling feature to generate success / failure notice messages without having WordPress save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</li>
+
+	<!-- head Attributes Filter Hook -->
+	<li>WPSSO modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To have WPSSO add the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</li>
+
+	<!-- WPSSO Schema JSON-LD -->
+	<li>WPSSO creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the home page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/" target="_blank">WPSSO Schema JSON-LD</a> extension, which adds complete Schema JSON-LD markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google and Pinterest. </li>
+
+	<!-- WPSSO_IMAGE_UPSCALE_TEST -->
+	<li>You can <em>simulate / test</em> the WPSSO image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</li>
 </ol>
 </li>
 
