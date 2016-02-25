@@ -40,6 +40,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
 			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? 
 				constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
+			$this->hide_err = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? 
+				constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
 
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
@@ -142,41 +144,41 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $sources as $name ) {		// opt, usr, and log
 
-					$have_changes = false;
+					$dis_upd = false;
 
 					foreach ( $types as $type ) {	// nag, err, and inf
 
 						if ( isset( $all_opts[$name][$type] ) ) {
 
-							// clear msg for a specific msg id
+							// clear notice for a specific msg id
 							if ( ! empty( $msg_id ) ) {
 								foreach ( $all_opts[$name][$type] as $msg_txt => $payload ) {
 									if ( $payload['msg_id'] === $type.'_'.$msg_id ) {
 										unset( $all_opts[$name][$type][$msg_txt] );
-										$have_changes = true;
+										$dis_upd = true;
 									}
 								}
-							// clear all msgs for that type
+							// clear all notices for that type
 							} elseif ( empty( $msg_txt ) ) {
 								if ( $name === 'log' )
 									$this->log[$type] = array();
 								else {
 									unset( $all_opts[$name][$type] );
-									$have_changes = true;
+									$dis_upd = true;
 								}
-							// clear a specific message
+							// clear a specific message string
 							} elseif ( isset( $all_opts[$name][$type][$msg_txt] ) ) {
 								if ( $name === 'log' )
 									unset( $this->log[$type][$msg_txt] );
 								else {
 									unset( $all_opts[$name][$type][$msg_txt] );
-									$have_changes = true;
+									$dis_upd = true;
 								}
 							}
 						}
 					}
 
-					if ( $store === true && $have_changes === true ) {
+					if ( $store === true && $dis_upd === true ) {
 						switch( $name ) {
 							case 'opt':
 								if ( empty( $all_opts[$name] ) )
@@ -203,7 +205,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$all_opts = $this->get_all_options();
 			$all_msgs = array();
 
-			$have_changes = false;
+			$dis_upd = false;
 			$user_id = get_current_user_id();
 			$dis_arr = empty( $user_id ) ? false : 				// just in case
 				get_user_option( $this->dis_name, $user_id );		// get dismissed message ids
@@ -230,19 +232,30 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								$nag_msgs .= $msg_txt;	// append to echo a single message
 								continue;
 							default:
-								if ( ! empty( $payload['dismiss'] ) &&
-									isset( $dis_arr[$payload['msg_id']] ) ) {
-
-									$now_time = time();
-									$dis_time = $dis_arr[$payload['msg_id']];
-									if ( empty( $dis_time ) || $dis_time > $now_time ) {
+								if ( $payload['dismiss'] ) {
+									// auto-hide all warnings by default
+									if ( $this->hide_err ) {
 										$payload['hidden'] = true;
 										if ( isset( $hidden[$type] ) )
 											$hidden[$type]++;
 										else $hidden[$type] = 1;
-									} else {
-										$have_changes = true;
-										unset( $dis_arr[$payload['msg_id']] );
+
+									// msg id has been dismissed
+									} elseif ( isset( $dis_arr[$payload['msg_id']] ) ) {
+
+										$now_time = time();
+										$dis_time = $dis_arr[$payload['msg_id']];
+
+										if ( empty( $dis_time ) || $dis_time > $now_time ) {
+											$payload['hidden'] = true;
+											if ( isset( $hidden[$type] ) )
+												$hidden[$type]++;
+											else $hidden[$type] = 1;
+										// dismiss has expired
+										} else {
+											$dis_upd = true;
+											unset( $dis_arr[$payload['msg_id']] );
+										}
 									}
 								}
 								$msg_html .= $this->get_notice_html( $type, $msg_txt, $payload );
@@ -253,8 +266,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 			$this->trunc();
 
-			// don't save unless we've changes something
-			if ( $have_changes === true && ! empty( $user_id ) ) {
+			// don't save unless we've changed something
+			if ( $dis_upd === true && ! empty( $user_id ) ) {
 				if ( empty( $dis_arr ) )
 					delete_user_option( $user_id, $this->dis_name );
 				else update_user_option( $user_id, $this->dis_name, $dis_arr );
@@ -271,9 +284,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// remind the user that there are hidden warning messages
 			if ( isset( $hidden['err'] ) ) {
 				if ( $hidden['err'] > 1 )
-					echo $this->get_notice_html( 'inf', sprintf( __( '%1$d warning messages have been hidden &mdash; <a id="%2$s">unhide these notices temporarily</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
+					echo $this->get_notice_html( 'err', sprintf( __( '%1$d important warning notices have been hidden and/or dismissed &mdash; <a id="%2$s">unhide and view the warning messages</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
 				elseif ( $hidden['err'] > 0 )
-					echo $this->get_notice_html( 'inf', sprintf( __( '%1$d warning message has been hidden &mdash; <a id="%2$s">unhide this notice temporarily</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
+					echo $this->get_notice_html( 'err', sprintf( __( '%1$d important warning notice has been hidden and/or dismissed &mdash; <a id="%2$s">unhide and view the warning message</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
 			}
 
 			echo $msg_html;
@@ -467,7 +480,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 }
 .'.$this->lca.'-notice.update-nag li {
 	text-align:left;
-	margin:5px 0 5px 60px;
+	margin:3px 0 3px 60px;
 }
 </style>'."\n";
 		}

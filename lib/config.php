@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.25.1',		// plugin version
+					'version' => '3.25.3',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -1053,8 +1053,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
 
 			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
-			$var_const['WPSSO_MENU_ORDER'] = '99.10';
-			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;
+			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
+			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;		// highlight the SSO menu icon
+			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// hide all warning notices by default
 
 			/*
 			 * WPSSO option and meta array names
@@ -1095,7 +1096,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			// disable 3rd-party caching for duplicate meta tag checks
 			if ( ! empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ) {
-				$var_const['DONOTCACHEPAGE'] = true;		// wp super cache
+				$var_const['DONOTCACHEPAGE'] = true;		// wp super cache and w3tc
+				$var_const['COMET_CACHE_ALLOWED'] = false;	// comet cache
 				$var_const['QUICK_CACHE_ALLOWED'] = false;	// quick cache
 				$var_const['ZENCACHE_ALLOWED'] = false;		// zencache
 			}
