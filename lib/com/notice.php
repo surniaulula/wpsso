@@ -234,7 +234,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							default:
 								if ( $payload['dismiss'] ) {
 									// auto-hide all warnings by default
-									if ( $this->hide_err ) {
+									if ( $type === 'err' && $this->hide_err ) {
 										$payload['hidden'] = true;
 										if ( isset( $hidden[$type] ) )
 											$hidden[$type]++;
