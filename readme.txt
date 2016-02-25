@@ -347,7 +347,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.25.3 (TBD)**
+**Version 3.25.3 (2016/02/25)**
 
 Official announcement: N/A
 
@@ -498,6 +498,10 @@ Official announcement: N/A
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
 == Upgrade Notice ==
+
+= 3.25.3 =
+
+2016/02/25 - Added a new NGFB_HIDE_ALL_WARNINGS constant - see the NGFB Setup Guide for details. 
 
 = 3.25.1 =
 
