@@ -573,7 +573,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				),
 			);
 
-			WpssoSchema::add_data_prop_from_og( $ret, $opts, array(
+			self::add_data_prop_from_og( $ret, $opts, array(
 				'width' => $opt_pre.':width',
 				'height' => $opt_pre.':height',
 			) );
