@@ -347,15 +347,15 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.25.4 (TBD)**
+**Version 3.25.4 (2016/02/27)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Refactored the Wistia to parse the API XML meta tags for the video URL and description (Pro version).
-	* Added video title and description (internal) meta tags for later use by Schema JSON-LD filters.
+	* Refactored the Wistia module to parse API XML meta tags for the video URL and description (Pro version).
+	* Added video title and description (internal) meta tags for use by Schema JSON-LD filters.
 * *Bugfixes*
 	* Fixed detection of duplicate embedded videos.
 * *Developer Notes*
@@ -512,6 +512,10 @@ Official announcement: N/A
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
 == Upgrade Notice ==
+
+= 3.25.4 =
+
+2016/02/27 - Fixed detection of duplicate embedded videos. Added video title and description (internal) meta tags for Schema JSON-LD filters. Added two functions developers can use to clear the WPSSO cache.
 
 = 3.25.3 =
 
