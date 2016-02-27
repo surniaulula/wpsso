@@ -266,31 +266,40 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache() {
+		public function clear_all_cache( $ext_cache = true ) {
 			wp_cache_flush();					// clear non-database transients as well
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
 			$del_files = $this->p->util->delete_expired_file_cache( true );
 			$del_transients = $this->p->util->delete_expired_db_transients( true );
-			$other_cache_msg = __( '%s has been cleared as well.', 'wpsso' );
 
 			$this->p->notice->inf( sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
 				'wpsso' ), $short ), true );
 
-			if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
-				w3tc_pgcache_flush();
-				w3tc_objectcache_flush();
-				$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
+			if ( $ext_cache ) {
+				$other_cache_msg = __( '%s has been cleared as well.', 'wpsso' );
+
+				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
+					w3tc_pgcache_flush();
+					w3tc_objectcache_flush();
+					$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
+				}
+				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
+					wp_cache_clear_cache();
+					$this->p->notice->inf( sprintf( $other_cache_msg, 'WP Super Cache' ), true );
+				}
+				if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
+					$GLOBALS['zencache']->wipe_cache();
+					$this->p->notice->inf( sprintf( $other_cache_msg, 'ZenCache' ), true );
+				}
+				if ( isset( $GLOBALS['comet-cache'] ) ) {		// comet cache
+					$GLOBALS['comet-cache']->wipe_cache();
+					$this->p->notice->inf( sprintf( $other_cache_msg, 'Comet Cache' ), true );
+				}
 			}
-			if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
-				wp_cache_clear_cache();
-				$this->p->notice->inf( sprintf( $other_cache_msg, 'WP Super Cache' ), true );
-			}
-			if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
-				$GLOBALS['zencache']->wipe_cache();
-				$this->p->notice->inf( sprintf( $other_cache_msg, 'ZenCache' ), true );
-			}
+
+			return $del_files + $del_transients;
 		}
 
 		public function clear_post_cache( $post_id ) {
@@ -617,11 +626,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// query examples:
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
-		public function get_head_meta( $url, $query = '/html/head/meta', $remove_self = false ) {
+		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false ) {
+
 			if ( empty( $query ) )
 				return false;
-			if ( ( $html = $this->p->cache->get( $url, 'raw', 'transient' ) ) === false )
-				return false;
+
+			if ( strpos( $request, '<' ) !== false )	// check for HTML content
+				$html = $request;
+			elseif ( strpos( $request, '://' ) !== false && 
+				( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false )
+					return false;
+			else return false;
+
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
 				$pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':comment"[\s\n\r]+content=")';
@@ -629,24 +645,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
+
 			$ret = array();
+
 			if ( class_exists( 'DOMDocument' ) ) {
 				$doc = new DOMDocument();		// since PHP v4.1.0
 				@$doc->loadHTML( $html );		// suppress parsing errors
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
+
 				foreach ( $metas as $m ) {
 					$m_atts = array();		// put all attributes in a single array
+
 					foreach ( $m->attributes as $a )
 						$m_atts[$a->name] = $a->value;
+
+					if ( isset( $m->textContent ) )
+						$m_atts['textContent'] = $m->textContent;
+
 					$ret[$m->tagName][] = $m_atts;
 				}
 			} else {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'DOMDocument PHP class missing' );
+					$this->p->debug->log( 'DOMDocument PHP class is missing' );
 				if ( is_admin() )
-					$this->p->notice->err( sprintf( __( 'The DOMDocument PHP class is missing - unable to read the head meta from %s. Please contact your hosting provider to install the missing DOMDocument PHP class.', 'wpsso' ), $url ), true );
+					$this->p->notice->err( __( 'The DOMDocument PHP class is missing - unable to read head meta from HTML. Please contact your hosting provider to install the missing DOMDocument PHP class.', 'wpsso' ), true );
 			}
+
 			return $ret;
 		}
 
@@ -1023,7 +1048,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $mod_name ) ) {
 				if ( empty( $id ) ) {
 					if ( $mod_name === 'post' )
-						$id = $this->get_post_object( false, 'id' );
+						$id = $this->get_post_object( $use_post, 'id' );
 					elseif ( $mod_name === 'taxonomy' )
 						$id = $this->get_term_object( 'id' );
 					elseif ( $mod_name === 'user' )

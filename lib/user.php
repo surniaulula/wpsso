@@ -169,11 +169,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'nonce token validation query field missing' );
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-					$this->p->notice->err( __( 'Nonce token validation failed for action \"'.$action_name.'\".', 'wpsso' ) );
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
+						'wpsso' ), 'user', $action_name ) );
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
@@ -222,7 +223,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			WpssoMeta::$head_meta_info['post_id'] = false;
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
 
 			$metabox = 'user';
 			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_user_tabs',

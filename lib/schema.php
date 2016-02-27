@@ -466,8 +466,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $logo_key can be 'schema_logo_url' or 'schema_banner_url' (for Articles)
-		public static function add_single_organization_data( &$json_data,
-			$post_id, $logo_key = 'schema_logo_url', $list_element = false ) {
+		public static function add_single_organization_data( &$json_data, $post_id, $logo_key = 'schema_logo_url', $list_element = false ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -483,8 +482,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['description'] = $desc;
 
 			if ( ! empty( $wpsso->options[$logo_key] ) )
-				self::add_single_image_data( $ret['logo'],
-					$wpsso->options, $logo_key, false );	// list_element = false
+				self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false );	// list_element = false
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -526,6 +524,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$og_image = $wpsso->m['util']['user']->get_og_image( 1, $size_name, $author_id, false );
+
 			if ( ! empty( $og_image ) )
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
 
@@ -539,19 +538,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// pass a single or two dimension image array in $og_image
 		public static function add_image_list_data( &$json_data, &$og_image, $opt_pre = 'og:image' ) {
 
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {	// 2 dimensional array
+			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {				// 2 dimensional array
 				foreach ( $og_image as $image )
-					self::add_single_image_data( $json_data,
-						$image, $opt_pre, true );		// list_element = true
+					self::add_single_image_data( $json_data, $image, $opt_pre, true );	// list_element = true
 
 			} elseif ( is_array( $og_image ) )
-				self::add_single_image_data( $json_data,
-					$og_image, $opt_pre, true );			// list_element = true
+				self::add_single_image_data( $json_data, $og_image, $opt_pre, true );		// list_element = true
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$json_data,
-			&$opts, $opt_pre = 'og:image', $list_element = true ) {
+		public static function add_single_image_data( &$json_data, &$opts, $opt_pre = 'og:image', $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -567,18 +563,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$opt_pre.':secure_url values are empty' );
 				return false;
 			}
-			
+
 			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'ImageObject',
-				'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?
-					$opts[$opt_pre] : $opts[$opt_pre.':secure_url'] ),
+				'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?	// prefer secure_url if available
+					$opts[$opt_pre] :
+					$opts[$opt_pre.':secure_url']
+				),
 			);
 
-			foreach ( array ( 'width', 'height' ) as $wh )
-				if ( isset( $opts[$opt_pre.':'.$wh] ) && 
-					$opts[$opt_pre.':'.$wh] > 0 )
-						$ret[$wh] = $opts[$opt_pre.':'.$wh];
+			WpssoSchema::add_data_prop_from_og( $ret, $opts, array(
+				'width' => $opt_pre.':width',
+				'height' => $opt_pre.':height',
+			) );
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -710,7 +708,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_single_image_noscript( $use_post, &$opts, $opt_pre = 'og:image' ) {
 
 			$mt_image = array();
-			$have_html = false;
+			$have_image_html = false;
 
 			if ( empty( $opts ) )
 				return array();
@@ -740,12 +738,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// make sure we have html for at least one meta tag
 			foreach ( $mt_image as $num => $img ) {
 				if ( ! empty( $img[0] ) ) {
-					$have_html = true;
+					$have_image_html = true;
 					break;
 				}
 			}
 
-			if ( $have_html ) {
+			if ( $have_image_html ) {
 				return array_merge(
 					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
 					$mt_image,

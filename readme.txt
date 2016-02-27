@@ -347,6 +347,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.25.4 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added video title and description (internal) meta tags for later use by Schema JSON-LD filters.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.25.3 (2016/02/25)**
 
 Official announcement: [WPSSO Update – Auto-Hide All Warning Notices](http://wpsso.com/2016/02/25/wpsso-update-auto-hide-all-warning-notices/)

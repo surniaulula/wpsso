@@ -31,4 +31,18 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
+	function wpsso_clear_all_cache() {
+		$wpsso =& Wpsso::get_instance();
+		return $wpsso->util->clear_all_cache( false );	// $ext_cache = false
+	}
+}
+
+if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
+	function wpsso_clear_post_cache( $post_id ) {
+		$wpsso =& Wpsso::get_instance();
+		return $wpsso->util->clear_post_cache( $post_id );
+	}
+}
+
 ?>

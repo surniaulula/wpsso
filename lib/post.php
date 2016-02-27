@@ -153,6 +153,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
 					if ( $post_obj->post_status === 'publish' ) {
+
 						// check for missing open graph image and issue warning
 						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
@@ -167,11 +168,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'nonce token validation query field missing' );
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-					$this->p->notice->err( __( 'Nonce token validation failed for action \"'.$action_name.'\".', 'wpsso' ) );
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
+						'wpsso' ), 'post', $action_name ) );
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
@@ -199,8 +201,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			// only check publicly available posts
-			if ( ! isset( $post_obj->post_status ) || 
-				$post_obj->post_status !== 'publish' ) {
+			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: post_status \''.$post_obj->post_status.'\' not published');
 				return $post_id;
@@ -208,8 +209,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// only check public post types (to avoid menu items, product variations, etc.)
 			$ptns = $this->p->util->get_post_types( 'names' );
-			if ( empty( $post_obj->post_type ) || 
-				! in_array( $post_obj->post_type, $ptns ) ) {
+			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
 				return $post_id;
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							foreach( $types as $t ) {
 								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
 									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
-										$this->p->notice->err( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>'.$tag.' '.$t.'="'.$m[$t].'"</code> HTML tag to the head section of this webpage.', true );
+										$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$t.'="'.$m[$t].'"' ), true );
 							}
 						}
 					}
@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			WpssoMeta::$head_meta_info['post_id'] = $post->ID;			// post id
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_post_social_settings_tabs',

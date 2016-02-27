@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-				'-action=clear_all_cache' ), self::get_nonce(), WPSSO_NONCE );
+				'-action=clear_all_cache' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
 			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
@@ -331,12 +331,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				key( $this->p->cf['*']['lib']['sitesubmenu'] ) :
 				$_POST['page'];
 
-			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {
+			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], self::get_nonce() ) ) {
+			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
 					'wpsso' ), true );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
@@ -373,11 +373,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {
+				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'nonce token validation query field missing' );
-				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], self::get_nonce() ) ) {
-					$this->p->notice->err( __( 'Nonce token validation failed for action \"'.$action_name.'\".', 'wpsso' ) );
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
+						'wpsso' ), 'admin', $action_name ) );
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
@@ -591,7 +592,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else return;
 
-			wp_nonce_field( self::get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 
@@ -630,7 +631,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// Save All Plugin Settings and View All / Basic Options by Default
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
 				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null, 
-					wp_nonce_url( $show_opts_url, self::get_nonce(), WPSSO_NONCE ) ).'<br/>';
+					wp_nonce_url( $show_opts_url, WpssoAdmin::get_nonce(), WPSSO_NONCE ) ).'<br/>';	// WPSSO_NONCE is an md5() string
 
 			// Secondary Action Buttons
 			foreach ( apply_filters( $this->p->cf['lca'].'_secondary_action_buttons', array(
@@ -653,7 +654,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$action_buttons .= $this->form->get_button( $label, 'button-secondary', null, 
 					wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action='.$action ),
-						self::get_nonce(), WPSSO_NONCE ) );
+						WpssoAdmin::get_nonce(), WPSSO_NONCE ) );	// WPSSO_NONCE is an md5() string
 			}
 
 			return '<div class="'.$class.'">'.$action_buttons.'</div>';
@@ -929,7 +930,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public static function get_nonce() {
-			return ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ).plugin_basename( __FILE__ );
+			return __FILE__.
+				SucomUtil::get_const( 'NONCE_KEY' ).
+				SucomUtil::get_const( 'NONCE_SALT' );
 		}
 
 		private function is_profile( $menu_id = false ) {

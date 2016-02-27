@@ -443,17 +443,25 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// if there's no custom description, and no pre-seed, 
 			// then go ahead and generate the description value
 			if ( empty( $desc ) ) {
+
 				// $post_obj and $post_id are defined above, with the same test, so we should be good
 				if ( is_singular() || $use_post !== false ) {
+
 					// use the excerpt, if we have one
 					if ( has_excerpt( $post_id ) ) {
+
 						$desc = $post_obj->post_excerpt;
+
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
+
 							$filter_removed = apply_filters( $this->p->cf['lca'].'_pre_filter_remove',
 								false, 'get_the_excerpt' );
+
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'calling apply_filters(\'get_the_excerpt\')' );
+
 							$desc = apply_filters( 'get_the_excerpt', $desc );
+
 							if ( $filter_removed )
 								$filter_added = apply_filters( $this->p->cf['lca'].'_post_filter_add',
 									false, 'get_the_excerpt' );
@@ -469,6 +477,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( $this->p->options['plugin_p_strip'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'removing all text before the first paragraph' );
+
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
 		

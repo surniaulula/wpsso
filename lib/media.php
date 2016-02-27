@@ -970,58 +970,55 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_video = array(
 				// video
-				'og:video:secure_url' => '',				// secure url before standard url
-				'og:video:url' => '',
+				'og:video:title' => '',					// non-standard / internal meta tag
+				'og:video:description' => '',				// non-standard / internal meta tag
+				'og:video:secure_url' => '',				// https secure_url key (position before the url key)
+				'og:video:url' => '',					// http url
 				'og:video:type' => 'application/x-shockwave-flash',	// default type, after the url
 				'og:video:width' => $embed_width,			// default width
 				'og:video:height' => $embed_height,			// default height
-				'og:video:embed_url' => '',				// oembed url providing text/html
+				'og:video:embed_url' => '',				// non-standard / internal meta tag
+				'og:video:has_image' => false,				// non-standard / internal meta tag
 				// image
-				'og:image:secure_url' => '',				// secure url before standard url
-				'og:image' => '',
+				'og:image:secure_url' => '',				// https secure_url key (position before the url key)
+				'og:image' => '',					// http url
 				'og:image:width' => -1,
 				'og:image:height' => -1,
 			);
 
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
-			$have = array(
-				'video' => false,
-				'image' => false
-			);
-
 			foreach ( array( 'video', 'image' ) as $media ) {
+
+				$og_url_key = '';
+				$have_og[$media] = false;
+
 				// secure_url takes precedence
-				foreach ( array( ':secure_url', ':url', '' ) as $type ) {
-					if ( ! empty( $og_video['og:'.$media.$type] ) ) {
-						$key = 'og:'.$media.$type;
-						$have[$media] = true;
+				foreach ( array( ':secure_url', ':url', '' ) as $suffix ) {
+					if ( ! empty( $og_video['og:'.$media.$suffix] ) ) {
+						$og_url_key = 'og:'.$media.$suffix;
+						$have_og[$media] = true;
 						break;
 					}
 				}
-				// if there's no video, or it's a duplicate, unset the whole array for that media
-				if ( empty( $og_video[$key] ) || 
-					( $check_dupes && ! $this->p->util->is_uniq_url( $og_video[$key] ) ) )
-						unset ( 
-							$og_video['og:'.$media.':secure_url'],
-							$og_video['og:'.$media.':url'],
-							$og_video['og:'.$media],
-							$og_video['og:'.$media.':type'],
-							$og_video['og:'.$media.':width'],
-							$og_video['og:'.$media.':height'],
-							$og_video['og:'.$media.':embed_url']
-						);
-			}
 
-			// fallback to the original url
-			if ( ! $have['video'] && $fallback ) {
-				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url ) ) {
-					$og_video['og:video:url'] = $embed_url;
-					$have['video'] = true;
+				// if there's no video, or it's a duplicate, unset the whole array for that media
+				if ( empty( $og_video[$og_url_key] ) || ( $check_dupes && ! $this->p->util->is_uniq_url( $og_video[$og_url_key] ) ) ) {
+					foreach( SucomUtil::preg_grep_keys( '/^og:'.$media.':/', $og_video ) as $k => $v )
+						unset ( $og_video[$k] );
+					unset ( $og_video['og:'.$media] );
 				}
 			}
 
-			if ( ! $have['video'] && ! $have['image'] ) 
+			// fallback to the original url
+			if ( ! $have_og['video'] && $fallback ) {
+				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url ) ) {
+					$og_video['og:video:url'] = $embed_url;
+					$have_og['video'] = true;
+				}
+			}
+
+			if ( ! $have_og['video'] && ! $have_og['image'] ) 
 				return array();
 			else return $og_video;
 		}

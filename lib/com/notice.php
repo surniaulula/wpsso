@@ -231,7 +231,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								continue;
 							default:
 								// dismiss will always be false if there's no msg id
-								if ( $payload['dismiss'] ) {
+								if ( isset( $payload['dismiss'] ) &&
+									$payload['dismiss'] ) {
+
 									// auto-hide all warnings by default
 									if ( $type === 'err' && $this->hide_err ) {
 										$payload['hidden'] = true;

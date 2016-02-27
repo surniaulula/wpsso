@@ -16,7 +16,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 		}
@@ -59,8 +60,9 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
-						if ( get_queried_object_id() !== 0 )
-							wp_enqueue_media( array( 'post' => get_queried_object_id() ) );
+						if ( SucomUtil::is_post_page() &&
+							( $post_id = $this->p->util->get_post_object( false, 'id' ) ) > 0 )
+								wp_enqueue_media( array( 'post' => $post_id ) );
 						else wp_enqueue_media();
 
 						wp_enqueue_script( 'sucom-admin-media' );

@@ -82,40 +82,46 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		// extract certain key fields for reference and sanity checks
 		public function extract_head_info( &$head_mt, &$head_info = array() ) {
+
 			foreach ( $head_mt as $mt ) {
 				if ( ! isset( $mt[2] ) || 
 					! isset( $mt[3] ) )
 						continue;
-				// any time we're outside an og:image block, set $first_image to false
+
+				// any time we're outside an og:image block, set $is_first_image to false
 				if ( strpos( $mt[3], 'og:image' ) !== 0 )
-					$first_image = false;
+					$is_first_image = false;
+
 				switch ( $mt[2].'-'.$mt[3] ) {
 					case 'property-og:image:secure_url':
+					case 'property-og:image:url':
 					case 'property-og:image':
-						if ( $first_image === false &&
-							( isset( $head_info['og:image:secure_url'] ) || 
-								isset( $head_info['og:image'] ) ) )
-									continue;
-						else {
-							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
-							$first_image = true;
+						if ( ! isset( $head_info['og:image'] ) ) {
+							// only define og:image for simplicity
+							$head_info['og:image'] = $mt[5];
+							$is_first_image = true;
 						}
 						break;
+
 					case 'property-og:image:width':
 					case 'property-og:image:height':
-						if ( $first_image === true )
-							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
+						// save the width / height for the first image only
+						if ( $is_first_image === true )
+							$head_info[$mt[3]] = $mt[5];
 						break;
-					case 'name-author':
-					case 'property-og:description':
-					case 'property-og:title':
+
 					case 'property-og:type':
+					case 'property-og:title':
+					case 'property-og:description':
+					case 'name-author':
 						if ( ! isset( $head_info[$mt[3]] ) )
-							$head_info[$mt[3]] = $mt[5];	// save the meta tag value
+							$head_info[$mt[3]] = $mt[5];
 						break;
 				}
 			}
 
+			// save the schema item type key for JSON extension
+			// example: article, article.news, article.tech, etc.
 			$head_info['schema:head_type'] = $this->p->schema->get_head_item_type( false, false, true );	// $ret_key = true
 
 			return $head_info;

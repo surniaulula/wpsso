@@ -90,6 +90,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ||
 				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 			$lca = $this->p->cf['lca'];
+			$check_dupes = true;
 
 			// counter for video previews found
 			$video_previews = 0;
@@ -217,7 +218,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
-					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $post_id, 'post', false, 'og' );
+					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $post_id, 'post', $check_dupes, 'og' );
+
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
 						foreach ( $og['og:video'] as $video_num => $video_arr ) {
 							if ( ! empty( $video_arr['og:image'] ) ) {
@@ -241,7 +243,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 				} else {
-					$check_dupes = true;
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
