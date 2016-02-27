@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.25.3\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.25.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-02-25 07:52-0400\n"
-"PO-Revision-Date: 2016-02-25 07:53-0400\n"
+"POT-Creation-Date: 2016-02-27 08:17-0400\n"
+"PO-Revision-Date: 2016-02-27 08:18-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,12 +15,12 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/admin.php:68 lib/admin.php:691 lib/user.php:208
+#: lib/admin.php:68 lib/admin.php:692 lib/user.php:209
 msgctxt "package type"
 msgid "Pro"
 msgstr "Pro"
 
-#: lib/admin.php:69 lib/admin.php:692 lib/user.php:209
+#: lib/admin.php:69 lib/admin.php:693 lib/user.php:210
 msgctxt "package type"
 msgid "Free"
 msgstr "Gratuit"
@@ -50,7 +50,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr "Forum d’aide"
 
-#: lib/admin.php:292 lib/admin.php:1014 lib/admin.php:1015
+#: lib/admin.php:292 lib/admin.php:1017 lib/admin.php:1018
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr "Achetez licence(s) Pro"
@@ -76,7 +76,7 @@ msgstr ""
 "Attendre %1$d secondes pour que les objets du cache expire ou <a href=\"%2$s"
 "\">%3$s</a> immédiatement."
 
-#: lib/admin.php:322 lib/admin.php:637
+#: lib/admin.php:322 lib/admin.php:638
 msgctxt "submit button"
 msgid "Clear All Cache(s)"
 msgstr "Vider tout les caches"
@@ -91,106 +91,110 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:390
+#: lib/admin.php:380 lib/post.php:175 lib/taxonomy.php:231 lib/user.php:176
+msgid "Nonce token validation failed for %1$s action \"%2$s\"."
+msgstr "La validation du jeton Nonce pour l’action %1$s \"%2$s\" a échoué."
+
+#: lib/admin.php:391
 msgid "The <b>%s</b> extension is required to check for Pro version updates."
 msgstr ""
 "L'extension <b>%s</b> est requise afin de vérifier pour des mises à jour de "
 "versions Pro."
 
-#: lib/admin.php:405
+#: lib/admin.php:406
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 "Préférences de positionnement des metabox pour ID d'utilisateur #%d \"%s\" "
 "ont été réinitialisés."
 
-#: lib/admin.php:415
+#: lib/admin.php:416
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr "Avis cachés pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:450
+#: lib/admin.php:451
 msgctxt "metabox title (side)"
 msgid "Pro / Power-User Version"
 msgstr "Version Pro /  Avancé"
 
-#: lib/admin.php:458
+#: lib/admin.php:459
 msgctxt "metabox title (side)"
 msgid "Help and Support"
 msgstr "Assistance et Soutien"
 
-#: lib/admin.php:463
+#: lib/admin.php:464
 msgctxt "metabox title (side)"
 msgid "Standard Features"
 msgstr "Fonctionnalités Standard"
 
-#: lib/admin.php:467
+#: lib/admin.php:468
 msgctxt "metabox title (side)"
 msgid "Pro Version Features"
 msgstr "Fonctionnalités Pro"
 
-#: lib/admin.php:473
+#: lib/admin.php:474
 msgctxt "metabox title (side)"
 msgid "Version Information"
 msgstr "Information de Version"
 
-#: lib/admin.php:543
+#: lib/admin.php:544
 msgid "Profile updated."
 msgstr "Profil mis à jour."
 
-#: lib/admin.php:611
+#: lib/admin.php:612
 msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:621 lib/messages.php:800
+#: lib/admin.php:622 lib/messages.php:800
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:624
+#: lib/admin.php:625
 msgctxt "submit button"
 msgid "View %s by Default"
 msgstr "Voir %s par Défaut"
 
-#: lib/admin.php:638
+#: lib/admin.php:639
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr "Vérifier pour mises à jour"
 
-#: lib/admin.php:639
+#: lib/admin.php:640
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinit. disposition metabox"
 
-#: lib/admin.php:640
+#: lib/admin.php:641
 msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr "Réinit. les avis cachés"
 
-#: lib/admin.php:668 lib/admin.php:669
+#: lib/admin.php:669 lib/admin.php:670
 msgid "N/A"
 msgstr "Non-dispo."
 
-#: lib/admin.php:693
+#: lib/admin.php:694
 msgctxt "plugin status label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:696
+#: lib/admin.php:697
 msgctxt "plugin status label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:699
+#: lib/admin.php:700
 msgctxt "plugin status label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:704
+#: lib/admin.php:705
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr "Voir changelog %s…"
 
-#: lib/admin.php:807
+#: lib/admin.php:808
 msgid ""
 "If the %1$s plugin is detected, %2$s will load additional integration "
 "modules to provide enhanced support and features for %3$s."
@@ -199,74 +203,74 @@ msgstr ""
 "supplémentaires pour fournir des fonctionnalités et un soutien accru pour "
 "%3$s."
 
-#: lib/admin.php:882
+#: lib/admin.php:883
 msgctxt "submit button"
 msgid "Purchase Pro License(s)"
 msgstr "Achetez Licence(s) Pro"
 
-#: lib/admin.php:883
+#: lib/admin.php:884
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr "Achetez Version Pro"
 
-#: lib/admin.php:899
+#: lib/admin.php:900
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr "Consulter la <a href=\"%s\" target=\"_blank\">Foire aux Questions</a>"
 
-#: lib/admin.php:902
+#: lib/admin.php:903
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr "et <a href=\"%s\" target=\"_blank\">autres notes</a>"
 
-#: lib/admin.php:907
+#: lib/admin.php:908
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr "Ouvrez un <a href=\"%s\" target=\"_blank\">billet de soutien</a>"
 
-#: lib/admin.php:910
+#: lib/admin.php:911
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr "Postez dans le <a href=\"%s\" target=\"_blank\">forum de soutien</a>"
 
-#: lib/admin.php:914
+#: lib/admin.php:915
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:970
+#: lib/admin.php:973
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr "Afficher les détails"
 
-#: lib/admin.php:990
+#: lib/admin.php:993
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr "Afficher les détails + mise à jour"
 
-#: lib/admin.php:996
+#: lib/admin.php:999
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr "Afficher les détails + installer"
 
-#: lib/admin.php:1002
+#: lib/admin.php:1005
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr "Description de l’extension"
 
-#: lib/admin.php:1007
+#: lib/admin.php:1010
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr "Téléchargez dernière version"
 
-#: lib/admin.php:1055 lib/admin.php:1060 lib/admin.php:1081 lib/admin.php:1087
+#: lib/admin.php:1058 lib/admin.php:1063 lib/admin.php:1084 lib/admin.php:1090
 #: lib/messages.php:761
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
 
-#: lib/admin.php:1114
+#: lib/admin.php:1117
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#: lib/admin.php:1124
+#: lib/admin.php:1127
 msgid ""
 "URL shortening has been enabled, but PHP's <a href=\"%s\" target=\"_blank"
 "\">Client URL Library</a> (cURL) is missing."
@@ -274,7 +278,7 @@ msgstr ""
 "Le service de raccourcissement d'URL est actif, mais la <a href=\"%s\" "
 "target=\"_blank\">librairie d'URL Client</a> (cURL) de PHP est manquante."
 
-#: lib/admin.php:1124
+#: lib/admin.php:1127
 msgid ""
 "Please contact your hosting provider to have the missing cURL library files "
 "installed."
@@ -282,7 +286,7 @@ msgstr ""
 "Contactez votre hébergeur pour installer les fichiers de librairie cURL "
 "manquants."
 
-#: lib/admin.php:1128
+#: lib/admin.php:1131
 msgid ""
 "The file caching feature has been enabled but PHP's <a href=\"%s\" target="
 "\"_blank\">Client URL Library</a> (cURL) is missing."
@@ -291,12 +295,12 @@ msgstr ""
 "\"%s\" target=\"_blank\">librarie d'URL Client</a> (cURL) de PHP est "
 "manquante."
 
-#: lib/admin.php:1128
+#: lib/admin.php:1131
 msgid ""
 "Please contact your hosting provider to have the missing library installed."
 msgstr "SVP contactez votre hébergeur pour installer la librairie manquante."
 
-#: lib/admin.php:1134
+#: lib/admin.php:1137
 msgid ""
 "PHP's <a href=\"%s\" target=\"_blank\">Multibyte String</a> extension is "
 "missing."
@@ -304,12 +308,12 @@ msgstr ""
 "L'extension PHP de <a href=\"%s\" target=\"_blank\">chaînes de caractères "
 "multi-octets</a> est manquante."
 
-#: lib/admin.php:1134
+#: lib/admin.php:1137
 msgid ""
 "Please contact your hosting provider to have the missing extension installed."
 msgstr "SVP contactez votre hébergeur pour installer l'extension manquante."
 
-#: lib/admin.php:1143
+#: lib/admin.php:1146
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
@@ -317,7 +321,7 @@ msgstr ""
 "Veuillez décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous "
 "l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1148
+#: lib/admin.php:1151
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
@@ -326,7 +330,7 @@ msgstr ""
 "em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Twitter</"
 "a>."
 
-#: lib/admin.php:1153
+#: lib/admin.php:1156
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
@@ -335,7 +339,7 @@ msgstr ""
 "+</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google"
 "+</a>."
 
-#: lib/admin.php:1158
+#: lib/admin.php:1161
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
@@ -344,7 +348,7 @@ msgstr ""
 "entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google "
 "+</a>."
 
-#: lib/admin.php:1169
+#: lib/admin.php:1172
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
@@ -352,7 +356,7 @@ msgstr ""
 "Veuillez désactiver le module '<em>Open Graph Integrator</em>' dans <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 
-#: lib/admin.php:1180
+#: lib/admin.php:1183
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
@@ -360,7 +364,7 @@ msgstr ""
 "Veuillez désactiver la fonctionnalité '<em>Social Meta</em>' dans le <a href="
 "\"%s\">All in One SEO Pack Feature Manager</a>."
 
-#: lib/admin.php:1185
+#: lib/admin.php:1188
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
@@ -368,19 +372,19 @@ msgstr ""
 "Veuillez crocher l'option '<em>Disable Google Plus Profile</em>' dans les "
 "réglages de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1224
+#: lib/admin.php:1227
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1231
+#: lib/admin.php:1234
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1240
+#: lib/admin.php:1243
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1247
+#: lib/admin.php:1250
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
@@ -388,7 +392,7 @@ msgstr ""
 "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de "
 "votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1268
+#: lib/admin.php:1271
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -423,7 +427,7 @@ msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:286
+#: lib/com/notice.php:288
 msgid ""
 "%1$d important warning notices have been hidden and/or dismissed &mdash; <a "
 "id=\"%2$s\">unhide and view the warning messages</a>."
@@ -431,7 +435,7 @@ msgstr ""
 "%1$d avis d'avertissement importants on été masqués et/ou ignorés &mdash; <a "
 "id=\"%2$s\">afficher les messages d'avertissement</a>."
 
-#: lib/com/notice.php:288
+#: lib/com/notice.php:290
 msgid ""
 "%1$d important warning notice has been hidden and/or dismissed &mdash; <a id="
 "\"%2$s\">unhide and view the warning message</a>."
@@ -439,11 +443,11 @@ msgstr ""
 "%1$d avis d'avertissement important a été masqué et/ou ignoré &mdash; <a id="
 "\"%2$s\">afficher le message d'avertissement</a>."
 
-#: lib/com/notice.php:358
+#: lib/com/notice.php:360
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/script.php:82
+#: lib/com/script.php:84
 msgid "Use Image"
 msgstr "Utiliser l’image"
 
@@ -1179,7 +1183,7 @@ msgstr ""
 "L’image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est "
 "insuffisante pour les dimensions exigées par %2$s."
 
-#: lib/media.php:1066
+#: lib/media.php:1063
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect "
 "ratio equal to/or greater than %4$d:1."
@@ -1187,7 +1191,7 @@ msgstr ""
 "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de "
 "%3$s a une proportion égale ou supérieur a %4$d:1."
 
-#: lib/media.php:1081
+#: lib/media.php:1078
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller "
 "than the minimum %4$s allowed by the %5$s standard."
@@ -2422,8 +2426,16 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:287 lib/profile/social-settings.php:26 lib/taxonomy.php:251
-#: lib/user.php:197
+#: lib/post.php:251
+msgid ""
+"Possible conflict detected &mdash; your theme or another plugin is adding a "
+"<code>%1$s</code> HTML tag to the head section of this webpage."
+msgstr ""
+"Conflit possible détecté &mdash; votre thème ou une autre extension ajoute "
+"une balise HTML <code>%1$s</code> à l'en-tête de cette page Web."
+
+#: lib/post.php:287 lib/profile/social-settings.php:26 lib/taxonomy.php:252
+#: lib/user.php:198
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr "Réglages Sociaux"
@@ -3038,23 +3050,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter Grande Image"
 
-#: lib/user.php:353
+#: lib/user.php:354
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:354
+#: lib/user.php:355
 msgid "Yahoo IM"
 msgstr "Yahoo IM"
 
-#: lib/user.php:355
+#: lib/user.php:356
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:276
-msgid "%s has been cleared as well."
-msgstr "Le cache %s a été vidé aussi."
-
-#: lib/util.php:278
+#: lib/util.php:277
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
@@ -3062,11 +3070,15 @@ msgstr ""
 "Les fichiers mis en cache par %s, ainsi que sont cache transitoire, et le "
 "cache d’objets de WordPress ont été vidés."
 
-#: lib/util.php:400
+#: lib/util.php:281
+msgid "%s has been cleared as well."
+msgstr "Le cache %s a été vidé aussi."
+
+#: lib/util.php:409
 msgid "Error reading the %s topic list file."
 msgstr "Erreur de lecture du fichier %s de la liste des sujets."
 
-#: lib/util.php:495
+#: lib/util.php:504
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
@@ -3074,7 +3086,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être un URL - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:532
+#: lib/util.php:541
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
@@ -3082,7 +3094,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être égal ou supérieur à %s - l'option est "
 "remise à sa valeur par défaut."
 
-#: lib/util.php:542 lib/util.php:551
+#: lib/util.php:551 lib/util.php:560
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
@@ -3090,7 +3102,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être numérique - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:560
+#: lib/util.php:569
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
@@ -3098,7 +3110,7 @@ msgstr ""
 "'%1$s' n'est pas une valeur acceptable pour l'option '%2$s' - l'option est "
 "remise à sa valeur par défaut."
 
-#: lib/util.php:569
+#: lib/util.php:578
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
@@ -3106,7 +3118,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à "
 "sa valeur par défaut."
 
-#: lib/util.php:592
+#: lib/util.php:601
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
@@ -3114,7 +3126,7 @@ msgstr ""
 "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:602
+#: lib/util.php:611
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
@@ -3122,14 +3134,14 @@ msgstr ""
 "La valeur de l'option '%s' ne peut pas être vide - l'option est remise à sa "
 "valeur par défaut."
 
-#: lib/util.php:648
+#: lib/util.php:672
 msgid ""
-"The DOMDocument PHP class is missing - unable to read the head meta from %s. "
+"The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "
 "class."
 msgstr ""
 "La classe DOMDocument PHP est manquante - impossible de lire les métas "
-"d'entête pour %s. Veuillez communiquer avec votre fournisseur d'hébergement "
+"d'entête HTML. Veuillez communiquer avec votre fournisseur d'hébergement "
 "pour installer la classe DOMDocument PHP manquante."
 
 #: wpsso.php:229
