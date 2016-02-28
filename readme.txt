@@ -347,6 +347,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.26.0 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* Added a new filter to include the BuddyPress member image on author pages (Pro version).
+* *Improvements*
+	* Refactored the Gravatar module to hook 'ngfb_user_image_urls' instead of adding an option in the user Social Settings (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.25.4 (2016/02/27)**
 
 Official announcement: N/A
