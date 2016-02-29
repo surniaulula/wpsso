@@ -354,7 +354,7 @@ Official announcement: N/A
 * *New Features*
 	* Added a new 'wpsso_user_image_urls' filter to include the BuddyPress member image on author pages (Pro version).
 * *Improvements*
-	* Refactored the Gravatar module to hook 'wpsso_user_image_urls' instead of adding an option in the user Social Settings (Pro version).
+	* Refactored the Gravatar module to hook 'wpsso_user_image_urls' instead of pushing a custom option in the user Social Settings (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
