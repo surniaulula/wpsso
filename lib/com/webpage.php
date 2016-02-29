@@ -136,10 +136,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 									' '.$hashtags;
 					}
 				} elseif ( SucomUtil::is_term_page() ) {
-					$term = $this->p->util->get_term_object();
-					if ( ! empty( $term->term_id ) )
+					$term_obj = $this->p->util->get_term_object();
+					if ( ! empty( $term_obj->term_id ) )
 						// returns null if index key is not set in the options array
-						$caption = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
+						$caption = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author_obj = $this->p->util->get_author_object();
@@ -231,10 +231,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$title = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_title' ) );
 	
 				} elseif ( SucomUtil::is_term_page() ) {
-					$term = $this->p->util->get_term_object();
-					if ( ! empty( $term->term_id ) )
+					$term_obj = $this->p->util->get_term_object();
+					if ( ! empty( $term_obj->term_id ) )
 						// returns null if index key is not set in the options array
-						$title = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
+						$title = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author_obj = $this->p->util->get_author_object();
@@ -279,15 +279,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				// by default, use the wordpress title if an seo plugin is available
 				} elseif ( $this->p->is_avail['seo']['*'] == true ) {
-
-					// use separator on right for compatibility with aioseo
-					$title = wp_title( $separator, false, 'right' );
+					$title = wp_title( $separator, false, 'right' );	// on right for compatibility with aioseo
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
 	
 				} elseif ( SucomUtil::is_term_page() ) {
-					$term = $this->p->util->get_term_object();
-					$title = apply_filters( 'wp_title', $term->name.' '.$separator.' ', $separator, 'right' );
+					$term_obj = $this->p->util->get_term_object();
+					$title = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
 
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author_obj = $this->p->util->get_author_object();
@@ -401,10 +399,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_desc' ) );
 	
 				} elseif ( SucomUtil::is_term_page() ) {
-					$term = $this->p->util->get_term_object();
-					if ( ! empty( $term->term_id ) )
+					$term_obj = $this->p->util->get_term_object();
+					if ( ! empty( $term_obj->term_id ) )
 						// returns null if index key is not set in the options array
-						$desc = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
+						$desc = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
 					$author_obj = $this->p->util->get_author_object();
@@ -478,7 +476,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( $this->p->options['plugin_p_strip'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'removing all text before the first paragraph' );
-
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
 		
@@ -492,11 +489,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						if ( empty( $desc ) )
 							$desc = sprintf( '%s Category', single_cat_title( '', false ) ); 
 					} else { 	// other taxonomies
-						$term = $this->p->util->get_term_object();
-						if ( ! empty( $term->description ) )
-							$desc = $term->description;
-						elseif ( ! empty( $term->name ) )
-							$desc = $term->name.' Archives';
+						$term_obj = $this->p->util->get_term_object();
+						if ( ! empty( $term_obj->description ) )
+							$desc = $term_obj->description;
+						elseif ( ! empty( $term_obj->name ) )
+							$desc = $term_obj->name.' Archives';
 					}
 				} elseif ( SucomUtil::is_author_page() ) { 
 					$author_obj = $this->p->util->get_author_object();
@@ -657,7 +654,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				global $post;
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'saving the original $post object' );
-				$original_post = $post;	// save the original post object
+				$post_saved = $post;	// save the original GLOBAL post object
 
 				// WordPress oEmbed needs a $post ID, so make sure we have one
 				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
@@ -674,7 +671,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'restoring the original $post object' );
-				$post = $original_post;	// restore the original post object
+				$post = $post_saved;	// restore the original GLOBAL post object
 
 				// cleanup for NGG pre-v2 album shortcode
 				unset ( $GLOBALS['subalbum'] );
@@ -827,16 +824,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
 		}
 
-		public function get_category_title( $term = false ) {
-			if ( ! is_object( $term ) )
-				$term = $this->p->util->get_term_object();
+		public function get_category_title( $term_obj = false ) {
+			if ( ! is_object( $term_obj ) )
+				$term_obj = $this->p->util->get_term_object();
 
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$title = $term->name.' Archives '.$separator.' ';	// default value
+			$title = $term_obj->name.' Archives '.$separator.' ';	// default value
 
-			$cat = get_category( $term->term_id );
+			$cat = get_category( $term_obj->term_id );
 			if ( ! empty( $cat->category_parent ) ) {
-				$cat_parents = get_category_parents( $term->term_id, false, ' '.$separator.' ', false );
+				$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$separator.' ', false );
 				if ( is_wp_error( $cat_parents ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'get_category_parents error: '.$cat_parents->get_error_message() );
