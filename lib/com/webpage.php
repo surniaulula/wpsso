@@ -142,10 +142,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$caption = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
-					$author = $this->p->util->get_author_object();
-					if ( ! empty( $author->ID ) )
+					$author_obj = $this->p->util->get_author_object();
+					if ( ! empty( $author_obj->ID ) )
 						// returns null if index key is not set in the options array
-						$caption = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
+						$caption = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
 				}
 			}
 
@@ -237,10 +237,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$title = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
-					$author = $this->p->util->get_author_object();
-					if ( ! empty( $author->ID ) )
+					$author_obj = $this->p->util->get_author_object();
+					if ( ! empty( $author_obj->ID ) )
 						// returns null if index key is not set in the options array
-						$title = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
+						$title = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
 				}
 			}
 	
@@ -290,8 +290,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$title = apply_filters( 'wp_title', $term->name.' '.$separator.' ', $separator, 'right' );
 
 				} elseif ( SucomUtil::is_author_page() ) {
-					$author = $this->p->util->get_author_object();
-					$title = apply_filters( 'wp_title', $author->display_name.' '.$separator.' ', $separator, 'right' );
+					$author_obj = $this->p->util->get_author_object();
+					$title = apply_filters( 'wp_title', $author_obj->display_name.' '.$separator.' ', $separator, 'right' );
+					$title = apply_filters( $this->p->cf['lca'].'_author_object_title', $title, $author_obj );
 
 				// category title, with category parents
 				} elseif ( SucomUtil::is_category_page() ) {
@@ -406,10 +407,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, $md_idx );
 	
 				} elseif ( SucomUtil::is_author_page() ) {
-					$author = $this->p->util->get_author_object();
-					if ( ! empty( $author->ID ) )
+					$author_obj = $this->p->util->get_author_object();
+					if ( ! empty( $author_obj->ID ) )
 						// returns null if index key is not set in the options array
-						$desc = $this->p->util->get_mod_options( 'user', $author->ID, $md_idx );
+						$desc = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
 				}
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc ) )
@@ -454,7 +455,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
 
-							$filter_removed = apply_filters( $this->p->cf['lca'].'_pre_filter_remove',
+							$filter_removed = apply_filters( $this->p->cf['lca'].'_text_filter_has_removed', 
 								false, 'get_the_excerpt' );
 
 							if ( $this->p->debug->enabled )
@@ -463,7 +464,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
 							if ( $filter_removed )
-								$filter_added = apply_filters( $this->p->cf['lca'].'_post_filter_add',
+								$filter_added = apply_filters( $this->p->cf['lca'].'_text_filter_has_added', 
 									false, 'get_the_excerpt' );
 						}
 					} elseif ( $this->p->debug->enabled )
@@ -498,11 +499,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							$desc = $term->name.' Archives';
 					}
 				} elseif ( SucomUtil::is_author_page() ) { 
-					$author = $this->p->util->get_author_object();
-					if ( ! empty( $author->description ) )
-						$desc = $author->description;
-					elseif ( ! empty( $author->display_name ) )
-						$desc = sprintf( 'Authored by %s', $author->display_name );
+					$author_obj = $this->p->util->get_author_object();
+					if ( ! empty( $author_obj->description ) )
+						$desc = $author_obj->description;
+					elseif ( ! empty( $author_obj->display_name ) )
+						$desc = sprintf( 'Authored by %s', $author_obj->display_name );
+					$desc = apply_filters( $this->p->cf['lca'].'_author_object_description', $desc, $author_obj );
 			
 				} elseif ( is_day() ) 
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
@@ -642,8 +644,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( $filter_content == true ) {
-				$filter_removed = apply_filters( $this->p->cf['lca'].'_pre_filter_remove',
-					false, 'the_content' );
+				$filter_removed = apply_filters( $this->p->cf['lca'].'_text_filter_has_removed', false, 'the_content' );
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
@@ -680,8 +681,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				unset ( $GLOBALS['nggShowGallery'] );
 
 				if ( $filter_removed )
-					$filter_added = apply_filters( $this->p->cf['lca'].'_post_filter_add',
-						false, 'the_content' );
+					$filter_added = apply_filters( $this->p->cf['lca'].'_text_filter_has_added', false, 'the_content' );
 
 				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
