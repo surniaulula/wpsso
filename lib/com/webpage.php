@@ -753,11 +753,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			else return;
 
 			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id, $add_hashtags );
+
 			if ( ! empty( $hashtags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
 			} else {
 				$tags = array_slice( $this->get_tags( $post_id ), 0, $max_hashtags );
+
 				if ( ! empty( $tags ) ) {
 					// remove special character incompatible with Twitter
 					$hashtags = SucomUtil::array_to_hashtags( $tags );

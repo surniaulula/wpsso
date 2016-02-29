@@ -84,11 +84,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( empty( $og_image ) )
 				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
 
-			if ( empty( $og_image ) ) {
+			if ( empty( $og_image ) )
 				$og_image = $this->p->og->get_all_images( 1, $size_name, $id, $check_dupes, $md_pre );
-				if ( empty( $og_image ) )
-					$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
-			}
+
+			if ( empty( $og_image ) )
+				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
 
 			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
 				$image = reset( $og_image );

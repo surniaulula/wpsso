@@ -23,6 +23,212 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $crawler_name = null;		// saved crawler name from user-agent
 		protected static $is = array();			// saved return values for is_post/term/author_page() checks
 
+		private static $pub_lang = array(
+			// https://www.facebook.com/translations/FacebookLocales.xml
+			'facebook' => array(
+				'af_ZA' => 'Afrikaans',
+				'sq_AL' => 'Albanian',
+				'ar_AR' => 'Arabic',
+				'hy_AM' => 'Armenian',
+				'az_AZ' => 'Azerbaijani',
+				'eu_ES' => 'Basque',
+				'be_BY' => 'Belarusian',
+				'bn_IN' => 'Bengali',
+				'bs_BA' => 'Bosnian',
+				'bg_BG' => 'Bulgarian',
+				'ca_ES' => 'Catalan',
+				'zh_HK' => 'Chinese (Hong Kong)',
+				'zh_CN' => 'Chinese (Simplified)',
+				'zh_TW' => 'Chinese (Traditional)',
+				'hr_HR' => 'Croatian',
+				'cs_CZ' => 'Czech',
+				'da_DK' => 'Danish',
+				'nl_NL' => 'Dutch',
+				'en_GB' => 'English (UK)',
+				'en_PI' => 'English (Pirate)',
+				'en_UD' => 'English (Upside Down)',
+				'en_US' => 'English (US)',
+				'eo_EO' => 'Esperanto',
+				'et_EE' => 'Estonian',
+				'fo_FO' => 'Faroese',
+				'tl_PH' => 'Filipino',
+				'fi_FI' => 'Finnish',
+				'fr_CA' => 'French (Canada)',
+				'fr_FR' => 'French (France)',
+				'fy_NL' => 'Frisian',
+				'gl_ES' => 'Galician',
+				'ka_GE' => 'Georgian',
+				'de_DE' => 'German',
+				'el_GR' => 'Greek',
+				'he_IL' => 'Hebrew',
+				'hi_IN' => 'Hindi',
+				'hu_HU' => 'Hungarian',
+				'is_IS' => 'Icelandic',
+				'id_ID' => 'Indonesian',
+				'ga_IE' => 'Irish',
+				'it_IT' => 'Italian',
+				'ja_JP' => 'Japanese',
+				'km_KH' => 'Khmer',
+				'ko_KR' => 'Korean',
+				'ku_TR' => 'Kurdish',
+				'la_VA' => 'Latin',
+				'lv_LV' => 'Latvian',
+				'fb_LT' => 'Leet Speak',
+				'lt_LT' => 'Lithuanian',
+				'mk_MK' => 'Macedonian',
+				'ms_MY' => 'Malay',
+				'ml_IN' => 'Malayalam',
+				'ne_NP' => 'Nepali',
+				'nb_NO' => 'Norwegian (Bokmal)',
+				'nn_NO' => 'Norwegian (Nynorsk)',
+				'ps_AF' => 'Pashto',
+				'fa_IR' => 'Persian',
+				'pl_PL' => 'Polish',
+				'pt_BR' => 'Portuguese (Brazil)',
+				'pt_PT' => 'Portuguese (Portugal)',
+				'pa_IN' => 'Punjabi',
+				'ro_RO' => 'Romanian',
+				'ru_RU' => 'Russian',
+				'sk_SK' => 'Slovak',
+				'sl_SI' => 'Slovenian',
+				'es_LA' => 'Spanish',
+				'es_ES' => 'Spanish (Spain)',
+				'sr_RS' => 'Serbian',
+				'sw_KE' => 'Swahili',
+				'sv_SE' => 'Swedish',
+				'ta_IN' => 'Tamil',
+				'te_IN' => 'Telugu',
+				'th_TH' => 'Thai',
+				'tr_TR' => 'Turkish',
+				'uk_UA' => 'Ukrainian',
+				'vi_VN' => 'Vietnamese',
+				'cy_GB' => 'Welsh',
+			),
+			// https://developers.google.com/+/web/api/supported-languages
+			'google' => array(
+				'af'	=> 'Afrikaans',
+				'am'	=> 'Amharic',
+				'ar'	=> 'Arabic',
+				'eu'	=> 'Basque',
+				'bn'	=> 'Bengali',
+				'bg'	=> 'Bulgarian',
+				'ca'	=> 'Catalan',
+				'zh-HK'	=> 'Chinese (Hong Kong)',
+				'zh-CN'	=> 'Chinese (Simplified)',
+				'zh-TW'	=> 'Chinese (Traditional)',
+				'hr'	=> 'Croatian',
+				'cs'	=> 'Czech',
+				'da'	=> 'Danish',
+				'nl'	=> 'Dutch',
+				'en-GB'	=> 'English (UK)',
+				'en-US'	=> 'English (US)',
+				'et'	=> 'Estonian',
+				'fil'	=> 'Filipino',
+				'fi'	=> 'Finnish',
+				'fr'	=> 'French',
+				'fr-CA'	=> 'French (Canadian)',
+				'gl'	=> 'Galician',
+				'de'	=> 'German',
+				'el'	=> 'Greek',
+				'gu'	=> 'Gujarati',
+				'iw'	=> 'Hebrew',
+				'hi'	=> 'Hindi',
+				'hu'	=> 'Hungarian',
+				'is'	=> 'Icelandic',
+				'id'	=> 'Indonesian',
+				'it'	=> 'Italian',
+				'ja'	=> 'Japanese',
+				'kn'	=> 'Kannada',
+				'ko'	=> 'Korean',
+				'lv'	=> 'Latvian',
+				'lt'	=> 'Lithuanian',
+				'ms'	=> 'Malay',
+				'ml'	=> 'Malayalam',
+				'mr'	=> 'Marathi',
+				'no'	=> 'Norwegian',
+				'fa'	=> 'Persian',
+				'pl'	=> 'Polish',
+				'pt-BR'	=> 'Portuguese (Brazil)',
+				'pt-PT'	=> 'Portuguese (Portugal)',
+				'ro'	=> 'Romanian',
+				'ru'	=> 'Russian',
+				'sr'	=> 'Serbian',
+				'sk'	=> 'Slovak',
+				'sl'	=> 'Slovenian',
+				'es'	=> 'Spanish',
+				'es-419'	=> 'Spanish (Latin America)',
+				'sw'	=> 'Swahili',
+				'sv'	=> 'Swedish',
+				'ta'	=> 'Tamil',
+				'te'	=> 'Telugu',
+				'th'	=> 'Thai',
+				'tr'	=> 'Turkish',
+				'uk'	=> 'Ukrainian',
+				'ur'	=> 'Urdu',
+				'vi'	=> 'Vietnamese',
+				'zu'	=> 'Zulu',
+			),
+			'pinterest' => array(
+				'en'	=> 'English',
+				'ja'	=> 'Japanese',
+			),
+			// https://www.tumblr.com/docs/en/share_button
+			'tumblr' => array(
+				'en_US' => 'English',
+				'de_DE' => 'German',
+				'fr_FR' => 'French',
+				'it_IT' => 'Italian',
+				'ja_JP' => 'Japanese',
+				'tr_TR' => 'Turkish',
+				'es_ES' => 'Spanish',
+				'ru_RU' => 'Russian',
+				'pl_PL' => 'Polish',
+				'pt_PT' => 'Portuguese (PT)',
+				'pt_BR' => 'Portuguese (BR)',
+				'nl_NL' => 'Dutch',
+				'ko_KR' => 'Korean',
+				'zh_CN' => 'Chinese (Simplified)',
+				'zh_TW' => 'Chinese (Traditional)',
+			),
+			// https://dev.twitter.com/web/overview/languages
+			'twitter' => array(
+				'ar'	=> 'Arabic',
+				'bn'	=> 'Bengali',
+				'zh-tw'	=> 'Chinese (Traditional)',
+				'zh-cn'	=> 'Chinese (Simplified)',
+				'cs'	=> 'Czech',
+				'da'	=> 'Danish',
+				'en'	=> 'English',
+				'de'	=> 'German',
+				'el'	=> 'Greek',
+				'fi'	=> 'Finnish',
+				'fil'	=> 'Filipino',
+				'fr'	=> 'French',
+				'he'	=> 'Hebrew',
+				'hi'	=> 'Hindi',
+				'hu'	=> 'Hungarian',
+				'id'	=> 'Indonesian',
+				'it'	=> 'Italian',
+				'ja'	=> 'Japanese',
+				'ko'	=> 'Korean',
+				'msa'	=> 'Malay',
+				'nl'	=> 'Dutch',
+				'no'	=> 'Norwegian',
+				'fa'	=> 'Persian',
+				'pl'	=> 'Polish',
+				'pt'	=> 'Portuguese',
+				'ro'	=> 'Romanian',
+				'ru'	=> 'Russian',
+				'es'	=> 'Spanish',
+				'sv'	=> 'Swedish',
+				'th'	=> 'Thai',
+				'tr'	=> 'Turkish',
+				'uk'	=> 'Ukrainian',
+				'ur'	=> 'Urdu',
+				'vi'	=> 'Vietnamese',
+			)
+		);
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
@@ -303,21 +509,39 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
+		public static function get_pub_lang( $pub = '' ) {
+			switch ( $pub ) {
+				case 'fb' :
+					return self::$pub_lang['facebook'];
+				case 'gplus' :
+				case 'googleplus' :
+					return self::$pub_lang['google'];
+				case 'pin' :
+					return self::$pub_lang['pinterest'];
+				default:
+					if ( isset( self::$pub_lang[$pub] ) )
+						return self::$pub_lang[$pub];
+					else return array();
+			}
+		}
+
 		// argument can also be a numeric post ID to return the language of that post
-		public static function get_locale( $get = 'current' ) {
+		public static function get_locale( $mixed = 'current' ) {
 			switch ( true ) {
-				case ( $get === 'default' ):
-					$lang = ( defined( 'WPLANG' ) && WPLANG ) ? WPLANG : 'en_US';
+				case ( $mixed === 'default' ):
+					$lang = defined( 'WPLANG' ) && WPLANG ?
+						WPLANG : 'en_US';
 					break;
 				default:
 					$lang = get_locale();
 					break;
 			}
-			return apply_filters( 'sucom_locale', $lang, $get );
+			return apply_filters( 'sucom_locale', $lang, $mixed );
 		}
 
 		// localize the options array key
 		public static function get_locale_key( $key, &$opts = false, $get = 'current' ) {
+
 			$default = self::get_locale( 'default' );
 			$new_key = self::get_locale( $get ) !== $default ?
 				$key.'#'.self::get_locale( $get ) : $key;
@@ -327,17 +551,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! array_key_exists( $new_key, $opts ) )
 					return $key;	// may contain an empty value - that's ok
 			}
+
 			return $new_key;
 		}
 
 		public static function restore_checkboxes( &$opts ) {
 			// unchecked checkboxes are not provided, so re-create them here based on hidden values
 			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, false, '' );
+
 			foreach ( $checkbox as $key => $val ) {
 				if ( ! array_key_exists( $key, $opts ) )
 					$opts[$key] = 0;	// add missing checkbox as empty
 				unset ( $opts['is_checkbox_'.$key] );
 			}
+
 			return $opts;
 		}
 
@@ -1216,204 +1443,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $src_id;
 		}
 
-		public static function get_pub_lang( $pub = '' ) {
-			$ret = array();
-			switch ( $pub ) {
-				case 'fb' :
-				case 'facebook' :
-					$ret = array(
-						'af_ZA' => 'Afrikaans',
-						'sq_AL' => 'Albanian',
-						'ar_AR' => 'Arabic',
-						'hy_AM' => 'Armenian',
-						'az_AZ' => 'Azerbaijani',
-						'eu_ES' => 'Basque',
-						'be_BY' => 'Belarusian',
-						'bn_IN' => 'Bengali',
-						'bs_BA' => 'Bosnian',
-						'bg_BG' => 'Bulgarian',
-						'ca_ES' => 'Catalan',
-						'zh_HK' => 'Chinese (Hong Kong)',
-						'zh_CN' => 'Chinese (Simplified)',
-						'zh_TW' => 'Chinese (Traditional)',
-						'hr_HR' => 'Croatian',
-						'cs_CZ' => 'Czech',
-						'da_DK' => 'Danish',
-						'nl_NL' => 'Dutch',
-						'en_GB' => 'English (UK)',
-						'en_PI' => 'English (Pirate)',
-						'en_UD' => 'English (Upside Down)',
-						'en_US' => 'English (US)',
-						'eo_EO' => 'Esperanto',
-						'et_EE' => 'Estonian',
-						'fo_FO' => 'Faroese',
-						'tl_PH' => 'Filipino',
-						'fi_FI' => 'Finnish',
-						'fr_CA' => 'French (Canada)',
-						'fr_FR' => 'French (France)',
-						'fy_NL' => 'Frisian',
-						'gl_ES' => 'Galician',
-						'ka_GE' => 'Georgian',
-						'de_DE' => 'German',
-						'el_GR' => 'Greek',
-						'he_IL' => 'Hebrew',
-						'hi_IN' => 'Hindi',
-						'hu_HU' => 'Hungarian',
-						'is_IS' => 'Icelandic',
-						'id_ID' => 'Indonesian',
-						'ga_IE' => 'Irish',
-						'it_IT' => 'Italian',
-						'ja_JP' => 'Japanese',
-						'km_KH' => 'Khmer',
-						'ko_KR' => 'Korean',
-						'ku_TR' => 'Kurdish',
-						'la_VA' => 'Latin',
-						'lv_LV' => 'Latvian',
-						'fb_LT' => 'Leet Speak',
-						'lt_LT' => 'Lithuanian',
-						'mk_MK' => 'Macedonian',
-						'ms_MY' => 'Malay',
-						'ml_IN' => 'Malayalam',
-						'ne_NP' => 'Nepali',
-						'nb_NO' => 'Norwegian (Bokmal)',
-						'nn_NO' => 'Norwegian (Nynorsk)',
-						'ps_AF' => 'Pashto',
-						'fa_IR' => 'Persian',
-						'pl_PL' => 'Polish',
-						'pt_BR' => 'Portuguese (Brazil)',
-						'pt_PT' => 'Portuguese (Portugal)',
-						'pa_IN' => 'Punjabi',
-						'ro_RO' => 'Romanian',
-						'ru_RU' => 'Russian',
-						'sk_SK' => 'Slovak',
-						'sl_SI' => 'Slovenian',
-						'es_LA' => 'Spanish',
-						'es_ES' => 'Spanish (Spain)',
-						'sr_RS' => 'Serbian',
-						'sw_KE' => 'Swahili',
-						'sv_SE' => 'Swedish',
-						'ta_IN' => 'Tamil',
-						'te_IN' => 'Telugu',
-						'th_TH' => 'Thai',
-						'tr_TR' => 'Turkish',
-						'uk_UA' => 'Ukrainian',
-						'vi_VN' => 'Vietnamese',
-						'cy_GB' => 'Welsh',
-					);
-					break;
-				case 'gplus' :
-				case 'google' :
-					$ret = array(
-						'af'	=> 'Afrikaans',
-						'am'	=> 'Amharic',
-						'ar'	=> 'Arabic',
-						'eu'	=> 'Basque',
-						'bn'	=> 'Bengali',
-						'bg'	=> 'Bulgarian',
-						'ca'	=> 'Catalan',
-						'zh-HK'	=> 'Chinese (Hong Kong)',
-						'zh-CN'	=> 'Chinese (Simplified)',
-						'zh-TW'	=> 'Chinese (Traditional)',
-						'hr'	=> 'Croatian',
-						'cs'	=> 'Czech',
-						'da'	=> 'Danish',
-						'nl'	=> 'Dutch',
-						'en-GB'	=> 'English (UK)',
-						'en-US'	=> 'English (US)',
-						'et'	=> 'Estonian',
-						'fil'	=> 'Filipino',
-						'fi'	=> 'Finnish',
-						'fr'	=> 'French',
-						'fr-CA'	=> 'French (Canadian)',
-						'gl'	=> 'Galician',
-						'de'	=> 'German',
-						'el'	=> 'Greek',
-						'gu'	=> 'Gujarati',
-						'iw'	=> 'Hebrew',
-						'hi'	=> 'Hindi',
-						'hu'	=> 'Hungarian',
-						'is'	=> 'Icelandic',
-						'id'	=> 'Indonesian',
-						'it'	=> 'Italian',
-						'ja'	=> 'Japanese',
-						'kn'	=> 'Kannada',
-						'ko'	=> 'Korean',
-						'lv'	=> 'Latvian',
-						'lt'	=> 'Lithuanian',
-						'ms'	=> 'Malay',
-						'ml'	=> 'Malayalam',
-						'mr'	=> 'Marathi',
-						'no'	=> 'Norwegian',
-						'fa'	=> 'Persian',
-						'pl'	=> 'Polish',
-						'pt-BR'	=> 'Portuguese (Brazil)',
-						'pt-PT'	=> 'Portuguese (Portugal)',
-						'ro'	=> 'Romanian',
-						'ru'	=> 'Russian',
-						'sr'	=> 'Serbian',
-						'sk'	=> 'Slovak',
-						'sl'	=> 'Slovenian',
-						'es'	=> 'Spanish',
-						'es-419'	=> 'Spanish (Latin America)',
-						'sw'	=> 'Swahili',
-						'sv'	=> 'Swedish',
-						'ta'	=> 'Tamil',
-						'te'	=> 'Telugu',
-						'th'	=> 'Thai',
-						'tr'	=> 'Turkish',
-						'uk'	=> 'Ukrainian',
-						'ur'	=> 'Urdu',
-						'vi'	=> 'Vietnamese',
-						'zu'	=> 'Zulu',
-					);
-					break;
-				case 'twitter' :
-					$ret = array(
-						'ar'	=> 'Arabic',
-						'ca'	=> 'Catalan',
-						'cs'	=> 'Czech',
-						'da'	=> 'Danish',
-						'de'	=> 'German',
-						'el'	=> 'Greek',
-						'en'	=> 'English',
-						'en-gb'	=> 'English UK',
-						'es'	=> 'Spanish',
-						'eu'	=> 'Basque',
-						'fa'	=> 'Farsi',
-						'fi'	=> 'Finnish',
-						'fil'	=> 'Filipino',
-						'fr'	=> 'French',
-						'gl'	=> 'Galician',
-						'he'	=> 'Hebrew',
-						'hi'	=> 'Hindi',
-						'hu'	=> 'Hungarian',
-						'id'	=> 'Indonesian',
-						'it'	=> 'Italian',
-						'ja'	=> 'Japanese',
-						'ko'	=> 'Korean',
-						'msa'	=> 'Malay',
-						'nl'	=> 'Dutch',
-						'no'	=> 'Norwegian',
-						'pl'	=> 'Polish',
-						'pt'	=> 'Portuguese',
-						'ro'	=> 'Romanian',
-						'ru'	=> 'Russian',
-						'sv'	=> 'Swedish',
-						'th'	=> 'Thai',
-						'tr'	=> 'Turkish',
-						'uk'	=> 'Ukrainian',
-						'ur'	=> 'Urdu',
-						'xx-lc'	=> 'Lolcat',
-						'zh-tw'	=> 'Traditional Chinese',
-						'zh-cn'	=> 'Simplified Chinese',
-	
-					);
-					break;
-			}
-			asort( $ret );
-			return $ret;
-		}
-
 		public static function get_stripped_php ( $file ) {
 			$ret = '';
 			if ( file_exists( $file ) ) {
@@ -1539,6 +1568,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			ksort( $ret, SORT_NATURAL );
 
 			return array_flip( array_merge( array( '[none]' => 'none' ), $ret ) );
+		}
+
+		public static function count_diff( &$arr, $max = 0 ) {
+			$diff = 0;
+			if ( ! is_array( $arr ) ) 
+				return false;
+			if ( $max > 0 && $max >= count( $arr ) )
+				$diff = $max - count( $arr );
+			return $diff;
 		}
 	}
 }

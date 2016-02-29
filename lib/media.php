@@ -88,15 +88,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
 		}
 
-		public function num_remains( &$arr, $num = 0 ) {
-			$remains = 0;
-			if ( ! is_array( $arr ) ) 
-				return false;
-			if ( $num > 0 && $num >= count( $arr ) )
-				$remains = $num - count( $arr );
-			return $remains;
-		}
-
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id,
 			$check_dupes = true, $md_pre = 'og' ) {
 
@@ -114,6 +105,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
+				// set the $force_regen value and remove the transient
 				if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
 					$force_regen_transient_id = $this->p->cf['lca'].'_post_'.$post_id.'_regen_'.$md_pre;
 					$force_regen = get_transient( $force_regen_transient_id );
@@ -121,26 +113,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						delete_transient( $force_regen_transient_id );
 				} 
 	
-				// get_og_image() is only available in the Pro version
-				if ( $this->p->check->aop() ) {
-					if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-						// get only the first image from $md_pre, do not try both $md_pre and 'og'
-						$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_image( 1, 
-							$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
-					}
-				}
+				// get_og_images() also provides filter hooks for additional image ids and urls
+				$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_image( 1,
+					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
 	
-			// allow for empty post_id in order to execute featured/attached image filters for modules
+			// allow for empty post_id in order to execute featured / attached image filters for modules
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-				$num_remains = $this->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->get_featured( $num_remains, 
+				$num_diff = SucomUtil::count_diff( $og_ret, $num );
+				$og_ret = array_merge( $og_ret, $this->get_featured( $num_diff, 
 					$size_name, $post_id, $check_dupes, $force_regen ) );
 			}
 
+			// 'wpsso_attached_images' filter is used by the buddypress module
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-				$num_remains = $this->num_remains( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->get_attached_images( $num_remains, 
+				$num_diff = SucomUtil::count_diff( $og_ret, $num );
+				$og_ret = array_merge( $og_ret, $this->get_attached_images( $num_diff, 
 					$size_name, $post_id, $check_dupes, $force_regen ) );
 			}
 
@@ -253,32 +241,41 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_image = SucomUtil::meta_image_tags( 'og' );
 
 			if ( ! empty( $post_id ) ) {
-				$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image') );
-				if ( is_array( $images ) )
-					$attach_ids = array();
-					foreach ( $images as $attach ) {
-						if ( ! empty( $attach->ID ) )
-							$attach_ids[] = $attach->ID;
-					}
-					rsort( $attach_ids, SORT_NUMERIC ); 
-					$attach_ids = array_unique( apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id ) );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
-					foreach ( $attach_ids as $pid ) {
-						list(
-							$og_image['og:image'],
-							$og_image['og:image:width'],
-							$og_image['og:image:height'],
-							$og_image['og:image:cropped'],
-							$og_image['og:image:id']
-						) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
-						if ( ! empty( $og_image['og:image'] ) &&
-							$this->p->util->push_max( $og_ret, $og_image, $num ) )
-								break;	// end foreach and apply filters
-					}
+
+				$images = get_children( array(
+					'post_parent' => $post_id,
+					'post_type' => 'attachment',
+					'post_mime_type' => 'image'
+				), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N
+
+				$attach_ids = array();
+				foreach ( $images as $attach ) {
+					if ( ! empty( $attach->ID ) )
+						$attach_ids[] = $attach->ID;
+				}
+				rsort( $attach_ids, SORT_NUMERIC ); 
+
+				$attach_ids = array_unique( apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id ) );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
+
+				foreach ( $attach_ids as $pid ) {
+					list(
+						$og_image['og:image'],
+						$og_image['og:image:width'],
+						$og_image['og:image:height'],
+						$og_image['og:image:cropped'],
+						$og_image['og:image:id']
+					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+					if ( ! empty( $og_image['og:image'] ) &&
+						$this->p->util->push_max( $og_ret, $og_image, $num ) )
+							break;	// stop here and apply the 'wpsso_attached_images' filter
+				}
 			}
-			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, 
-				$size_name, $post_id, $check_dupes );
+
+			// 'wpsso_attached_images' filter is used by the buddypress module
+			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret,
+				$num, $size_name, $post_id, $check_dupes );
 		}
 
 		/* Use these static methods in get_attachment_image_src() to set/reset information about

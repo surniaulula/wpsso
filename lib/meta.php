@@ -417,17 +417,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $value;
 		}
 
-		public function get_og_image( $num = 0, $size_name = 'thumbnail', $id,
-			$check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
-
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
-			return $this->get_meta_image( $num, $size_name, $id,
-				$check_dupes, $force_regen, $md_pre, 'og' );
+		public function get_og_image( $num, $size_name, $id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+			return $this->not_implemented( __METHOD__, array() );
 		}
 
-		public function get_meta_image( $num = 0, $size_name = 'thumbnail', $id,
+		public function get_meta_image( $num, $size_name, $id, $mod_name = '',
 			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -435,17 +429,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'num' => $num,
 					'size_name' => $size_name,
 					'id' => $id,
+					'mod_name' => $mod_name,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 					'md_pre' => $md_pre,
 					'mt_pre' => $mt_pre,
 				), get_class( $this ) );
 			}
+
 			$meta_ret = array();
 
 			if ( empty( $id ) )
 				return $meta_ret;
 
+			// always fallback to 'og' meta options
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
 				$meta_image = SucomUtil::meta_image_tags( $mt_pre );
@@ -471,37 +468,75 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $meta_image[$mt_pre.':image'] ) && 
-					! empty( $url ) ) {
-
-					$width = $this->get_options( $id, $prefix.'_img_url:width' );
-					$height = $this->get_options( $id, $prefix.'_img_url:height' );
+				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
 
+					$width = $this->get_options( $id, $prefix.'_img_url:width' );
+					$height = $this->get_options( $id, $prefix.'_img_url:height' );
+
 					list(
+						$meta_image[$mt_pre.':image'],
+						$meta_image[$mt_pre.':image:width'],
+						$meta_image[$mt_pre.':image:height']
+					) = array(
+						$url,
+						( $width > 0 ? $width : -1 ), 
+						( $height > 0 ? $height : -1 )
+					);
+				}
+
+				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
+					$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
+						return $meta_ret;
+			}
+
+			if ( empty( $mod_name ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: empty module name' );
+				return $meta_ret;
+			}
+
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_ids', array(), $size_name, $id ) as $pid ) {
+				if ( $pid > 0 ) {	// quick sanity check
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'adding image pid: '.$pid );
+
+					$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+
+					list( 
 						$meta_image[$mt_pre.':image'],
 						$meta_image[$mt_pre.':image:width'],
 						$meta_image[$mt_pre.':image:height'],
 						$meta_image[$mt_pre.':image:cropped'],
 						$meta_image[$mt_pre.':image:id']
-					) = array(
-						$url,
-						( $width > 0 ? $width : -1 ), 
-						( $height > 0 ? $height : -1 ), 
-						-1,
-						-1
-					);
-				}
+					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-				if ( ! empty( $meta_image[$mt_pre.':image'] ) ) {
-					if ( $this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
-						return $meta_ret;
-					}
+					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
+						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
+							return $meta_ret;
 				}
 			}
+
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_urls', array(), $size_name, $id ) as $url ) {
+				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'adding image url: '.$url );
+
+					$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+					$meta_image[$mt_pre.':image'] = $url;
+
+					$this->p->util->add_image_url_sizes( $mt_pre.':image', $meta_image );
+
+					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
+						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
+							return $meta_ret;
+				}
+			}
+
 			return $meta_ret;
 		}
 

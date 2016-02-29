@@ -88,6 +88,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( empty( $og_image ) )
 				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
 
+			// get_og_images() also provides filter hooks for additional image ids and urls
 			if ( empty( $og_image ) )
 				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
 

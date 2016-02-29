@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) )
 
 if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 
+	// WpssoGplUtilUser extends WpssoUser which extends WpssoMeta
 	class WpssoGplUtilUser extends WpssoUser {
 
 		public function __construct( &$plugin ) {
@@ -19,12 +20,15 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 			$this->add_actions();
 		}
 
-		public function get_meta_image( $num = 0, $size_name = 'thumbnail', $id,
-			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_meta_image( $num, $size_name, $id, $mod_name = 'user', $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 
-		public function get_og_video( $num = 0, $id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_image( $num, $size_name, $id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+			return $this->not_implemented( __METHOD__, array() );
+		}
+
+		public function get_og_video( $num, $id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 	}

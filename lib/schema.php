@@ -501,6 +501,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
+			if ( empty( $wpsso->m['util']['user'] ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'exiting early: empty user module' );
+				return false;
+			} else $mod_obj =& $wpsso->m['util']['user'];
+
 			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'Person',
@@ -510,7 +516,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $wpsso->m['util']['user']->get_author_name( $author_id,
+			$name = $mod_obj->get_author_name( $author_id,
 				$wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
@@ -522,8 +528,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
+			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $wpsso->m['util']['user']->get_og_image( 1, $size_name, $author_id, false );
+			$og_image = $mod_obj->get_og_image( 1, $size_name, $author_id, false );
 
 			if ( ! empty( $og_image ) )
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
