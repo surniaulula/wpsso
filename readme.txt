@@ -347,7 +347,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.26.0 (TBD)**
+**Version 3.26.0 (2016/03/01)**
 
 Official announcement: N/A
 
@@ -525,6 +525,10 @@ Official announcement: N/A
 	* Added a new WPSSO_GETIMGSIZE_DISABLE constant disable the use of PHP's getimagesize() function.
 
 == Upgrade Notice ==
+
+= 3.26.0 =
+
+2016/03/01 - Added a new 'wpsso_user_image_urls' filter to include the BuddyPress member image on author pages (Pro version).
 
 = 3.25.4 =
 
