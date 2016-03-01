@@ -358,8 +358,11 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new `SucomUtil::get_is_page()` method to optimize all three `is_{post|term|author}_page()` checks.
-	* Refactored SucomWebpage `get_caption()`, `get_title()`, and `get_description()` to use the new `SucomUtil::get_is_page()` method.
+	* Added a new `SucomUtil::get_is_page()` method to optimize all three `is_{post|term|user}_page()` checks.
+	* Refactored the SucomWebpage `get_caption()`, `get_title()`, and `get_description()` methods to use the new `SucomUtil::get_is_page()` static method.
+	* Renamed the `SucomUtil::is_author_page()` method to `SucomUtil::is_user_page()`.
+	* Renamed the `SucomUtil::get_author_object()` method to `SucomUtil::get_user_object()`.
+	* Renamed the `$author_id` variables to `$user_id`.
 
 **Version 3.26.0 (2016/03/01)**
 
