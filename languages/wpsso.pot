@@ -2655,53 +2655,53 @@ msgstr ""
 msgid "%s has been cleared as well."
 msgstr ""
 
-#: lib/util.php:409
+#: lib/util.php:410
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:504
+#: lib/util.php:505
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:541
+#: lib/util.php:542
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:551 lib/util.php:560
+#: lib/util.php:552 lib/util.php:561
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:569
+#: lib/util.php:570
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:578
+#: lib/util.php:579
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:601
+#: lib/util.php:602
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:611
+#: lib/util.php:612
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:672
+#: lib/util.php:673
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

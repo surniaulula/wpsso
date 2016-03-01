@@ -285,17 +285,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					w3tc_objectcache_flush();
 					$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
 				}
+
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 					wp_cache_clear_cache();
 					$this->p->notice->inf( sprintf( $other_cache_msg, 'WP Super Cache' ), true );
 				}
-				if ( isset( $GLOBALS['zencache'] ) ) {			// zencache
+
+				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
+					$GLOBALS['comet_cache']->wipe_cache();
+					$this->p->notice->inf( sprintf( $other_cache_msg, 'Comet Cache' ), true );
+				} elseif ( isset( $GLOBALS['zencache'] ) ) {		// zencache
 					$GLOBALS['zencache']->wipe_cache();
 					$this->p->notice->inf( sprintf( $other_cache_msg, 'ZenCache' ), true );
-				}
-				if ( isset( $GLOBALS['comet-cache'] ) ) {		// comet cache
-					$GLOBALS['comet-cache']->wipe_cache();
-					$this->p->notice->inf( sprintf( $other_cache_msg, 'Comet Cache' ), true );
 				}
 			}
 
