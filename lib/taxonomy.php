@@ -116,29 +116,40 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_taxonomy_column_content( $value, $column_name, $id, $mod_name ) {
-			if ( ! empty( $value ) )
-				return $value;
+		public function filter_og_desc_taxonomy_column_content( $desc, $column_name, $id, $mod_name ) {
+			if ( ! empty( $desc ) )
+				return $desc;
 
-			$term = get_term_by( 'id', $id, $this->tax_slug, OBJECT, 'raw' );
-			if ( empty( $term->term_id ) )
-				return $value;
+			$term_obj = get_term_by( 'id', $id, $this->tax_slug, OBJECT, 'raw' );
+			if ( empty( $term_obj->term_id ) )
+				return $desc;
 
-			$value = $this->p->util->get_mod_options( 'taxonomy', $term->term_id, 'og_desc' );
+			$desc = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, 'og_desc' );
 
-			if ( ! empty( $term->description ) )
-				$value = $term->description;
-
-			if ( empty( $value ) && ! empty( $term->name ) ) {
-				if ( strpos( $term->taxonomy, '_tag' ) !== false )
-					$value = sprintf( 'Tagged with %s', $term->name );
-				elseif ( $term->taxonomy === 'category' ||
-					strpos( $term->taxonomy, '_cat' ) !== false )
-						$value = sprintf( '%s Category', $term->name ); 
-				else $value = $term->name.' Archives';
+			if ( $this->p->debug->enabled ) {
+				if ( empty( $desc ) )
+					$this->p->debug->log( 'no custom description found' );
+				else $this->p->debug->log( 'custom description = "'.$desc.'"' );
 			}
 
-			return $value;
+			if ( empty( $desc ) ) {
+				if ( is_tag( $term_obj->term_id ) ) {
+					if ( ! $desc = tag_description( $term_obj->term_id ) )
+						$desc = sprintf( 'Tagged with %s', $term_obj->name );
+	
+				} elseif ( is_category( $term_obj->term_id ) ) { 
+					if ( ! $desc = category_description( $term_obj->term_id ) )
+						$desc = sprintf( '%s Category', $term_obj->name ); 
+	
+				} else {
+					if ( ! empty( $term_obj->description ) )
+						$desc = $term_obj->description;
+					elseif ( ! empty( $term_obj->name ) )
+						$desc = $term_obj->name.' Archives';
+				}
+			}
+
+			return $desc;
 		}
 
 		// hooked into the current_screen action

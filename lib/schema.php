@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					// post objects without a post_type property
 					} else $type_key = $default_key;
 
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
+				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) ) {
 					$type_key = $default_key;
 
 				// default value for all other webpages
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * JSON-LD Script Array
 		 */
-		public function get_json_array( $use_post, &$post_obj, &$mt_og, $post_id, $author_id ) {
+		public function get_json_array( $use_post, &$post_obj, &$mt_og, $post_id, $user_id ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$is_main = apply_filters( $lca.'_json_is_main_entity', 
-					$is_main, $use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type );
+					$is_main, $use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type );
 
 				// include WebSite, Organization, and/or Person on the home page
 				// if there isn't a hook for that filter (from WPSSO JSON, for example)
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $is_enabled )
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
-							$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
+							$json_data, $use_post, $post_obj, $mt_og, $post_id, $user_id,
 								$head_type, false );	// $is_main = false when called directly
 
 				// call http_schema_org_item_type as a generic / common data filter first
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( has_filter( $lca.'_json_data_'.$filter_name ) ) {
 						if ( apply_filters( $lca.'_add_json_'.$filter_name, $is_enabled ) )
 							$json_data = apply_filters( $lca.'_json_data_'.$filter_name,
-								$json_data, $use_post, $post_obj, $mt_og, $post_id, $author_id,
+								$json_data, $use_post, $post_obj, $mt_og, $post_id, $user_id,
 									$head_type, $is_main );
 						elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( $filter_name.' filter is disabled' );
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/WebSite for Google
 		 */
 		public function filter_json_data_http_schema_org_website( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
+			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/Organization social markup for Google
 		 */
 		public function filter_json_data_http_schema_org_organization( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
+			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -406,30 +406,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * http://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_http_schema_org_person( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $author_id, $head_type, $is_main ) {
+			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			if ( is_front_page() ) {
-				$author_id = $this->p->options['schema_person_id'];
-				if ( empty( $author_id ) ) {
+				$user_id = $this->p->options['schema_person_id'];
+				if ( empty( $user_id ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: no schema_person_id for front page' );
 					return $json_data;
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using author id '.$author_id.' for front page' );
+					$this->p->debug->log( 'using user_id '.$user_id.' for front page' );
 			}
 
-			if ( empty( $author_id ) ) {
+			if ( empty( $user_id ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: no author_id' );
+					$this->p->debug->log( 'exiting early: no user_id' );
 				return $json_data;
 			}
 
 			$lca = $this->p->cf['lca'];
 			$ret = array();
-			self::add_single_person_data( $ret, $author_id, false );	// list_element = false
+			self::add_single_person_data( $ret, $user_id, false );	// list_element = false
 
 			if ( is_front_page() || $is_main ) {
 
@@ -442,8 +442,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( is_front_page() ) {
 					// add the sameAs social profile links
-					foreach ( WpssoUser::get_user_id_contact_methods( $author_id ) as $cm_id => $cm_label ) {
-						$url = trim( get_the_author_meta( $cm_id, $author_id ) );
+					foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
+						$url = trim( get_the_author_meta( $cm_id, $user_id ) );
 						if ( empty( $url ) )
 							continue;
 						if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
@@ -491,13 +491,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		public static function add_single_person_data( &$json_data, $author_id, $list_element = true ) {
+		public static function add_single_person_data( &$json_data, $user_id, $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
 
-			if ( empty( $author_id ) ) {
+			if ( empty( $user_id ) ) {
 				if ( $wpsso->debug->enabled )
-					$wpsso->debug->log( 'exiting early: empty author_id' );
+					$wpsso->debug->log( 'exiting early: empty user_id' );
 				return false;
 			}
 
@@ -512,25 +512,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@type' => 'Person',
 			);
 
-			$url = get_the_author_meta( 'url', $author_id );
+			$url = get_the_author_meta( 'url', $user_id );
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod_obj->get_author_name( $author_id,
-				$wpsso->options['schema_author_name'] );
+			$name = $mod_obj->get_author_name( $user_id, $wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
-			$desc = $wpsso->util->get_mod_options( 'user', $author_id, 
-				array( 'schema_desc', 'og_desc' ) );
+			$desc = $wpsso->util->get_mod_options( 'user', $user_id, array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
-				$desc = get_the_author_meta( 'description', $author_id );
+				$desc = get_the_author_meta( 'description', $user_id );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $mod_obj->get_og_image( 1, $size_name, $author_id, false );
+			$og_image = $mod_obj->get_og_image( 1, $size_name, $user_id, false );
 
 			if ( ! empty( $og_image ) )
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
@@ -681,7 +679,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( $use_post, &$post_obj, &$mt_og, $post_id, $author_id ) {
+		public function get_noscript_array( $use_post, &$post_obj, &$mt_og, $post_id, $user_id ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();

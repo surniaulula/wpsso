@@ -104,24 +104,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_user_column_content( $value, $column_name, $id, $mod_name ) {
-			if ( ! empty( $value ) )
-				return $value;
+		public function filter_og_desc_user_column_content( $desc, $column_name, $id, $mod_name ) {
+			if ( ! empty( $desc ) )
+				return $desc;
 
-			$author = get_userdata( $id );
-			if ( empty( $author->ID ) )
-				return $value;
+			$user_obj = get_userdata( $id );	// get the user object
+			if ( empty( $user_obj->ID ) )
+				return $desc;
 
-			$value = $this->p->util->get_mod_options( 'user', $author->ID, 'og_desc' );
+			$desc = $this->p->util->get_mod_options( 'user', $user_obj->ID, 'og_desc' );
 
-			if ( empty( $value ) ) {
-				if ( ! empty( $author->description ) )
-					$value = $author->description;
-				elseif ( ! empty( $author->display_name ) )
-					$value = sprintf( 'Authored by %s', $author->display_name );
+			if ( $this->p->debug->enabled ) {
+				if ( empty( $desc ) )
+					$this->p->debug->log( 'no custom description found' );
+				else $this->p->debug->log( 'custom description = "'.$desc.'"' );
 			}
 
-			return $value;
+			if ( empty( $desc ) ) {
+				if ( ! empty( $user_obj->description ) )
+					$desc = $user_obj->description;
+				elseif ( ! empty( $user_obj->display_name ) )
+					$desc = sprintf( 'Authored by %s', $user_obj->display_name );
+			}
+
+			return apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
 		}
 
 		// hooked into the current_screen action
@@ -149,7 +155,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					break;
 			}
 
-			$user_id = $this->p->util->get_author_object( 'id' );
+			$user_id = $this->p->util->get_user_object( 'id' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
@@ -188,7 +194,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_metaboxes() {
-			$user_id = $this->p->util->get_author_object( 'id' );
+			$user_id = $this->p->util->get_user_object( 'id' );
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'insufficient privileges to add metabox for user ID '.$user_id );
@@ -240,7 +246,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->p->util->do_tabs( $metabox, $tabs, $rows );
 		}
 
-		public function get_display_names() {
+		public function get_form_display_names() {
 			$user_ids = array();
 			foreach ( get_users() as $user ) 
 				$user_ids[$user->ID] = $user->display_name;
@@ -248,7 +254,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_ids;
 		}
 
-		public function get_contact_fields( $fields = array() ) { 
+		public function get_form_contact_fields( $fields = array() ) { 
 			return array_merge( 
 				array( 'none' => '[none]' ), 	// make sure none is first
 				$this->add_contact_methods( 
@@ -361,33 +367,33 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		// returns the facebook profile url for an author
-		// unless the pinterest crawler is detected, in which case it returns the author's name
-		public function get_author_profile_url( $author_ids, $url_field = 'og_author_field' ) {
+		// returns an array of profile urls for the given user ids
+		// unless the pinterest crawler is detected, in which case it returns the user's name
+		public function get_og_profile_urls( $user_ids ) {
 			$ret = array();
-			if ( ! empty( $author_ids ) ) {
-				if ( ! is_array( $author_ids ) )
-					$author_ids = array( $author_ids );
-				foreach ( $author_ids as $author_id ) {
-					if ( ! empty( $author_id ) ) {
+			if ( ! empty( $user_ids ) ) {
+				if ( ! is_array( $user_ids ) )
+					$user_ids = array( $user_ids );
+				foreach ( $user_ids as $user_id ) {
+					if ( ! empty( $user_id ) ) {
 						if ( SucomUtil::crawler_name( 'pinterest' ) === true )
-							$ret[] = $this->get_author_name( $author_id, $this->p->options['rp_author_name'] );
-						else $ret[] = $this->get_author_website_url( $author_id, $this->p->options[$url_field] );
+							$ret[] = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
+						else $ret[] = $this->get_author_website_url( $user_id, $this->p->options['og_author_field'] );
 					}
-				}	
+				}
 			}
 			return $ret;
 		}
 
 		// called from head and opengraph classes
-		public function get_author_name( $author_id, $field_id = 'display_name' ) {
+		public function get_author_name( $user_id, $field_id = 'display_name' ) {
 			$name = '';
 			switch ( $field_id ) {
 				case 'none':
 					break;
 				case 'fullname':
-					$name = trim( get_the_author_meta( 'first_name', $author_id ) ).' '.
-						trim( get_the_author_meta( 'last_name', $author_id ) );
+					$name = trim( get_the_author_meta( 'first_name', $user_id ) ).' '.
+						trim( get_the_author_meta( 'last_name', $user_id ) );
 					break;
 				// sanitation controls, just in case ;-)
 				case 'user_login':
@@ -396,25 +402,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case 'nickname':
 				case 'first_name':
 				case 'last_name':
-					$name = get_the_author_meta( $field_id, $author_id );
+					$name = get_the_author_meta( $field_id, $user_id );
 					break;
 			}
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' value: '.$name );
+				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' value: '.$name );
 			return $name;
 		}
 
 		// called from head and opengraph classes
-		public function get_author_website_url( $author_id, $field_id = 'url' ) {
+		public function get_author_website_url( $user_id, $field_id = 'url' ) {
 			$url = '';
 			switch ( $field_id ) {
 				case 'none':
 					break;
 				case 'index':
-					$url = get_author_posts_url( $author_id );
+					$url = get_author_posts_url( $user_id );
 					break;
 				default:
-					$url = get_the_author_meta( $field_id, $author_id );
+					$url = get_the_author_meta( $field_id, $user_id );
 
 					// if empty or not a url, then fallback to the author index page,
 					// if the requested field is the opengraph or link author field
@@ -425,14 +431,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'fetching the author index page url as fallback' );
-							$url = get_author_posts_url( $author_id );
+							$url = get_author_posts_url( $user_id );
 						}
 					}
 					break;
 			}
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author_id '.$author_id.' '.$field_id.' url: '.$url );
+				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' url: '.$url );
 
 			return $url;
 		}

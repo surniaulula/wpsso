@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) || 
 				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
-			$author_id = false;
+			$user_id = false;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'use_post is '.( $use_post === false ?
@@ -188,24 +188,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'skipped checking for transient cache object' );
 
 			/*
-			 * Define an author_id, if one is available
+			 * Define an user_id, if one is available
 			 */
 			if ( SucomUtil::is_post_page( $use_post ) ) {
 
 				if ( ! empty( $post_obj->post_author ) )
-					$author_id = $post_obj->post_author;
+					$user_id = $post_obj->post_author;
 
-				elseif ( $def_author_id = $this->p->util->get_default_author_id( 'seo' ) )
-					$author_id = $def_author_id;
+				elseif ( $def_user_id = $this->p->util->get_default_author_id( 'seo' ) )
+					$user_id = $def_user_id;
 
-			} elseif ( SucomUtil::is_author_page() ) {
-				$author_id = $this->p->util->get_author_object( 'id' );
+			} elseif ( SucomUtil::is_user_page() ) {
+				$user_id = $this->p->util->get_user_object( 'id' );
 
-			} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'seo' ) )
-				$author_id = $def_author_id;
+			} elseif ( $def_user_id = $this->p->util->force_default_author( $use_post, 'seo' ) )
+				$user_id = $def_user_id;
 
-			if ( $this->p->debug->enabled && $author_id !== false )
-				$this->p->debug->log( 'author_id is '.$author_id );
+			if ( $this->p->debug->enabled && $user_id !== false )
+				$this->p->debug->log( 'user_id is '.$user_id );
 
 			$crawler_name = SucomUtil::crawler_name();
 			if ( $this->p->debug->enabled )
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				if ( isset( $this->p->options['seo_author_name'] ) && 
 					$this->p->options['seo_author_name'] !== 'none' )
-						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id, 
+						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $user_id, 
 							$this->p->options['seo_author_name'] );
 			}
 
@@ -252,8 +252,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$link_rel = array();
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
-				if ( ! empty( $author_id ) )
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $author_id, 
+				if ( ! empty( $user_id ) )
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $user_id, 
 						$this->p->options['seo_author_field'] );
 			}
 
@@ -283,8 +283,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
-				$this->p->schema->get_noscript_array( $use_post, $post_obj, $mt_og, $post_id, $author_id ),
-				$this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $author_id )
+				$this->p->schema->get_noscript_array( $use_post, $post_obj, $mt_og, $post_id, $user_id ),
+				$this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $user_id )
 			);
 
 			/*

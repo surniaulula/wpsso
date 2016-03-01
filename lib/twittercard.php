@@ -90,15 +90,15 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 					if ( ! empty( $post_obj->post_author ) )
 						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $post_obj->post_author );
 
-					elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
-						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
+					elseif ( $def_user_id = $this->p->util->get_default_author_id( 'og' ) )
+						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_user_id );
 
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_id = $this->p->util->get_author_object( 'id' );
-					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $author_id );
+				} elseif ( SucomUtil::is_user_page() ) {
+					$user_id = $this->p->util->get_user_object( 'id' );
+					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $user_id );
 
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) )
-					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
+				} elseif ( $def_user_id = $this->p->util->force_default_author( $use_post, 'og' ) )
+					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_user_id );
 			}
 
 			/*

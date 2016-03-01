@@ -713,16 +713,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_default_author_id( $opt_pre = 'og' ) {
 			$lca = $this->p->cf['lca'];
-			$id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
+			$user_id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
 				$this->p->options[$opt_pre.'_def_author_id'] : null;
-			return apply_filters( $lca.'_'.$opt_pre.'_default_author_id', $id );
+			return apply_filters( $lca.'_'.$opt_pre.'_default_author_id', $user_id );
 		}
 
 		// returns an author id if the default author is forced
 		public function force_default_author( $use_post = false, $opt_pre = 'og' ) {
-			$id = $this->get_default_author_id( $opt_pre );		// applies the author id filter
-			return $id && $this->force_default( $use_post, $opt_pre, 'author' ) ?
-				$id : false;
+			$user_id = $this->get_default_author_id( $opt_pre );
+			return $user_id && $this->force_default( $use_post, $opt_pre, 'author' ) ?
+				$user_id : false;
 		}
 
 		// returns true if the default image is forced
@@ -755,7 +755,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ret = false;
 
 			elseif ( ! empty( $def['on_index'] ) &&
-				( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_author_page() ) ) )
+				( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_user_page() ) ) )
 					$ret = true;
 
 			elseif ( ! empty( $def['on_search'] ) &&
@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$mod_name = 'post';
 				elseif ( SucomUtil::is_term_page() )
 					$mod_name = 'taxonomy';
-				elseif ( SucomUtil::is_author_page() )
+				elseif ( SucomUtil::is_user_page() )
 					$mod_name = 'user';
 				else $mod_name = false;
 			}
@@ -1053,7 +1053,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( $mod_name === 'taxonomy' )
 						$id = $this->get_term_object( 'id' );
 					elseif ( $mod_name === 'user' )
-						$id = $this->get_author_object( 'id' );
+						$id = $this->get_user_object( 'id' );
 					else $id = false;
 				}
 

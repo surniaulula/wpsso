@@ -17,7 +17,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public $options = array();
 		public $defaults = array();
-		public $options_name;
+		public $options_name = null;
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts ) {
 			$this->p =& $plugin;

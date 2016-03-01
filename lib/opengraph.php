@@ -128,13 +128,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					else $og['og:type'] = 'article';
 
 				// check for default author info on indexes and searches
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
+				} elseif ( $def_user_id = $this->p->util->force_default_author( $use_post, 'og' ) ) {
 
 					$og['og:type'] = 'article';
 
 					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $def_author_id );
+						$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_user_id );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
@@ -181,10 +181,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( SucomUtil::is_post_page( $use_post ) ) {
 
 						if ( ! empty( $post_obj->post_author ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $post_obj->post_author );
+							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $post_obj->post_author );
 
-						elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_author_profile_url( $def_author_id );
+						elseif ( $def_user_id = $this->p->util->get_default_author_id( 'og' ) )
+							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_user_id );
 					}
 				}
 
@@ -461,15 +461,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$og_ret = array_merge( $og_ret, $this->p->m['util']['taxonomy']->get_og_image( $num_diff, 
 						$size_name, $term_id, $check_dupes, $force_regen, $md_pre ) );
 	
-				} elseif ( SucomUtil::is_author_page() ) {
+				} elseif ( SucomUtil::is_user_page() ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'is_author_page() = true' );
+						$this->p->debug->log( 'is_user_page() = true' );
 
-					$author_id = $this->p->util->get_author_object( 'id' );
+					$user_id = $this->p->util->get_user_object( 'id' );
 
 					// get_og_images() also provides filter hooks for additional image ids and urls
 					$og_ret = array_merge( $og_ret, $this->p->m['util']['user']->get_og_image( $num_diff, 
-						$size_name, $author_id, $check_dupes, $force_regen, $md_pre ) );
+						$size_name, $user_id, $check_dupes, $force_regen, $md_pre ) );
 				}
 	
 				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image( $post_id, 'og' ) ) {

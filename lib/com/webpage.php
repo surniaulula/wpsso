@@ -82,7 +82,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_caption( $type = 'title', $textlen = 200, $use_post = true, $use_cache = true,
 			$add_hashtags = true, $encode = true, $md_idx = true, $src_id = '' ) {
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'type' => $type, 
 					'textlen' => $textlen, 
@@ -93,8 +93,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'md_idx' => $md_idx,
 					'src_id' => $src_id,
 				) );
+			}
+
 			$caption = false;
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$post_obj = new stdClass();
+			$post_id = 0;
+			$is = SucomUtil::get_is_page( $use_post );
 
 			if ( $md_idx === true ) {
 				switch ( $type ) {
@@ -110,21 +115,24 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			if ( is_singular() || $use_post !== false ) {
+			if ( $is['post_page'] ) {
 				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $caption;
 				}
-				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
+				$post_id = empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ? 
+						0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
-				if ( is_singular() || $use_post !== false ) {
+				if ( $is['post_page'] ) {
+					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						// returns null if index key is not set in the options array
 						$caption = $this->p->util->get_mod_options( 'post', $post_id, $md_idx );
+
 					if ( ! empty( $caption ) &&
 						! empty( $add_hashtags ) && 
 							! preg_match( '/( #[a-z0-9\-]+)+$/U', $caption ) ) {
@@ -135,21 +143,33 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 								$textlen - strlen( $hashtags ) - 1, '...', false ).	// don't run cleanup_html_tags()
 									' '.$hashtags;
 					}
-				} elseif ( SucomUtil::is_term_page() ) {
+
+				} elseif ( $is['term_page'] ) {
 					$term_obj = $this->p->util->get_term_object();
+					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						// returns null if index key is not set in the options array
 						$caption = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_obj = $this->p->util->get_author_object();
-					if ( ! empty( $author_obj->ID ) )
-						// returns null if index key is not set in the options array
-						$caption = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
+				} elseif ( $is['user_page'] ) {
+					$user_obj = $this->p->util->get_user_object();
+					// returns null if index key is not set in the options array
+					if ( ! empty( $user_obj->ID ) )
+						$caption = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'custom caption skipped: unknown page type' );
+
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $caption ) )
+						$this->p->debug->log( 'no custom caption found' );
+					else $this->p->debug->log( 'custom caption = "'.$caption.'"' );
 				}
-			}
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'custom caption skipped: no md_idx value' );
 
 			if ( empty( $caption ) ) {
+
 				if ( ! empty( $md_idx ) ) {
 					$md_prefix = preg_replace( '/_(title|desc|caption)$/', '', $md_idx );
 					$md_title = $md_prefix.'_title';
@@ -191,7 +211,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_title( $textlen = 70, $trailing = '', $use_post = false, $use_cache = true,
 			$add_hashtags = false, $encode = true, $md_idx = 'og_title', $src_id = '' ) {
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'textlen' => $textlen, 
 					'trailing' => $trailing, 
@@ -202,11 +222,15 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'md_idx' => $md_idx,
 					'src_id' => $src_id,
 				) );
+			}
+
 			$title = false;
 			$hashtags = '';
-			$post_id = 0;
 			$paged_suffix = '';
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$post_obj = new stdClass();
+			$post_id = 0;
+			$is = SucomUtil::get_is_page( $use_post );
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
@@ -214,35 +238,47 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				add_filter( 'wp_title', array( &$this, 'wp_title_restore' ), 9000, 3 );
 			}
 
-			if ( is_singular() || $use_post !== false ) {
+			if ( $is['post_page'] ) {
 				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $title;
 				}
-				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
+				$post_id = empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ? 
+						0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
-				if ( is_singular() || $use_post !== false ) {
+				if ( $is['post_page'] ) {
+					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						// returns null if index key is not set in the options array
 						$title = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_title' ) );
 	
-				} elseif ( SucomUtil::is_term_page() ) {
+				} elseif ( $is['term_page'] ) {
 					$term_obj = $this->p->util->get_term_object();
+					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						// returns null if index key is not set in the options array
 						$title = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_obj = $this->p->util->get_author_object();
-					if ( ! empty( $author_obj->ID ) )
-						// returns null if index key is not set in the options array
-						$title = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
+				} elseif ( $is['user_page'] ) {
+					$user_obj = $this->p->util->get_user_object();
+					// returns null if index key is not set in the options array
+					if ( ! empty( $user_obj->ID ) )
+						$title = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'custom title skipped: unknown page type' );
+
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $title ) )
+						$this->p->debug->log( 'no custom title found' );
+					else $this->p->debug->log( 'custom title = "'.$title.'"' );
 				}
-			}
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'custom title skipped: no md_idx value' );
 	
 			// get seed if no custom meta title
 			if ( empty( $title ) ) {
@@ -257,16 +293,20 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( preg_match( '/(.*)(( #[a-z0-9\-]+)+)$/U', $title, $match ) ) {
 				$title = $match[1];
 				$hashtags = trim( $match[2] );
-			} elseif ( is_singular() || $use_post !== false ) {
+			} elseif ( $is['post_page'] ) {
 				if ( ! empty( $add_hashtags ) && 
 					! empty( $this->p->options['og_desc_hashtags'] ) )
 						$hashtags = $this->get_hashtags( $post_id, $add_hashtags );	// add_hashtags = true/false/numeric
 			}
 
+			if ( $hashtags && $this->p->debug->enabled )
+				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
+
 			// construct a title of our own
 			if ( empty( $title ) ) {
 
-				if ( is_singular() || $use_post !== false ) {
+				if ( $is['post_page'] ) {
+
 					if ( is_singular() ) {
 						$title = wp_title( $separator, false, 'right' );
 						if ( $this->p->debug->enabled )
@@ -277,24 +317,29 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							$this->p->debug->log( 'post_id get_the_title() = "'.$title.'"' );
 					}
 
-				// by default, use the wordpress title if an seo plugin is available
-				} elseif ( $this->p->is_avail['seo']['*'] == true ) {
+				// if we're using filtered titles, and an seo plugin is available,
+				// the use the wordpress title (provided by the seo plugin)
+				} elseif ( $this->p->options['plugin_filter_title'] &&
+					$this->p->is_avail['seo']['*'] == true ) {
+
 					$title = wp_title( $separator, false, 'right' );	// on right for compatibility with aioseo
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
 	
-				} elseif ( SucomUtil::is_term_page() ) {
+				} elseif ( $is['term_page'] ) {
+
 					$term_obj = $this->p->util->get_term_object();
-					$title = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
 
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_obj = $this->p->util->get_author_object();
-					$title = apply_filters( 'wp_title', $author_obj->display_name.' '.$separator.' ', $separator, 'right' );
-					$title = apply_filters( $this->p->cf['lca'].'_author_object_title', $title, $author_obj );
+					// category title, with category parents
+					if ( SucomUtil::is_category_page() ) {
+						$title = $this->get_category_title( $term_obj );	// includes parents in title string
+					} else $title = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
 
-				// category title, with category parents
-				} elseif ( SucomUtil::is_category_page() ) {
-					$title = $this->get_category_title();	// includes parents in title string
+				} elseif ( $is['user_page'] ) { 
+
+					$user_obj = $this->p->util->get_user_object();
+					$title = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
+					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
 				} else {
 					/* The title text depends on the query:
@@ -312,7 +357,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( empty( $title ) ) {
 					$title = get_bloginfo( 'name', 'display' );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'last resort get_bloginfo() = "'.$title.'"' );
+						$this->p->debug->log( 'fallback to get_bloginfo() = "'.$title.'"' );
 				}
 			}
 
@@ -377,45 +422,54 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'src_id' => $src_id,
 				) );
 			}
+
 			$desc = false;
 			$hashtags = '';
+			$post_obj = new stdClass();
 			$post_id = 0;
-			$page = ''; 
+			$is = SucomUtil::get_is_page( $use_post );
 
-			if ( is_singular() || $use_post !== false ) {
+			if ( $is['post_page'] ) {
 				if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $desc;
 				}
-				$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
+				$post_id = empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ? 
+						0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
-				if ( is_singular() || $use_post !== false ) {
+				if ( $is['post_page'] ) {
+					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						// returns null if index key is not set in the options array
 						$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_desc' ) );
 	
-				} elseif ( SucomUtil::is_term_page() ) {
+				} elseif ( $is['term_page'] ) {
 					$term_obj = $this->p->util->get_term_object();
+					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						// returns null if index key is not set in the options array
 						$desc = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
 	
-				} elseif ( SucomUtil::is_author_page() ) {
-					$author_obj = $this->p->util->get_author_object();
-					if ( ! empty( $author_obj->ID ) )
-						// returns null if index key is not set in the options array
-						$desc = $this->p->util->get_mod_options( 'user', $author_obj->ID, $md_idx );
-				}
+				} elseif ( $is['user_page'] ) {
+					$user_obj = $this->p->util->get_user_object();
+					// returns null if index key is not set in the options array
+					if ( ! empty( $user_obj->ID ) )
+						$desc = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'custom description skipped: unknown page type' );
+
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc ) )
 						$this->p->debug->log( 'no custom description found' );
 					else $this->p->debug->log( 'custom description = "'.$desc.'"' );
 				}
-			}
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'custom description skipped: no md_idx value' );
 
 			// get seed if no custom meta description
 			if ( empty( $desc ) ) {
@@ -426,33 +480,30 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			// remove and save trailing hashtags
+			// check for hashtags in meta or seed title, remove and then add again after shorten
 			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $desc, $match ) ) {
 				$desc = $match[1];
 				$hashtags = trim( $match[2] );
-			} elseif ( is_singular() || $use_post !== false ) {
+			} elseif ( $is['post_page'] ) {
 				if ( ! empty( $add_hashtags ) && 
 					! empty( $this->p->options['og_desc_hashtags'] ) )
 						$hashtags = $this->get_hashtags( $post_id, $add_hashtags );
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $hashtags && $this->p->debug->enabled )
 				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
 
 			// if there's no custom description, and no pre-seed, 
 			// then go ahead and generate the description value
 			if ( empty( $desc ) ) {
 
-				// $post_obj and $post_id are defined above, with the same test, so we should be good
-				if ( is_singular() || $use_post !== false ) {
+				if ( $is['post_page'] ) {
 
 					// use the excerpt, if we have one
 					if ( has_excerpt( $post_id ) ) {
-
 						$desc = $post_obj->post_excerpt;
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
-
 							$filter_removed = apply_filters( $this->p->cf['lca'].'_text_filter_has_removed', 
 								false, 'get_the_excerpt' );
 
@@ -479,15 +530,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
 		
-				} elseif ( SucomUtil::is_term_page() ) {
+				} elseif ( $is['term_page'] ) {
+
 					if ( is_tag() ) {
-						$desc = tag_description();
-						if ( empty( $desc ) )
+						if ( ! $desc = tag_description() )
 							$desc = sprintf( 'Tagged with %s', single_tag_title( '', false ) );
+
 					} elseif ( is_category() ) { 
-						$desc = category_description();
-						if ( empty( $desc ) )
+						if ( ! $desc = category_description() )
 							$desc = sprintf( '%s Category', single_cat_title( '', false ) ); 
+
 					} else { 	// other taxonomies
 						$term_obj = $this->p->util->get_term_object();
 						if ( ! empty( $term_obj->description ) )
@@ -495,13 +547,17 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						elseif ( ! empty( $term_obj->name ) )
 							$desc = $term_obj->name.' Archives';
 					}
-				} elseif ( SucomUtil::is_author_page() ) { 
-					$author_obj = $this->p->util->get_author_object();
-					if ( ! empty( $author_obj->description ) )
-						$desc = $author_obj->description;
-					elseif ( ! empty( $author_obj->display_name ) )
-						$desc = sprintf( 'Authored by %s', $author_obj->display_name );
-					$desc = apply_filters( $this->p->cf['lca'].'_author_object_description', $desc, $author_obj );
+
+				} elseif ( $is['user_page'] ) { 
+
+					$user_obj = $this->p->util->get_user_object();
+
+					if ( ! empty( $user_obj->description ) )
+						$desc = $user_obj->description;
+					elseif ( ! empty( $user_obj->display_name ) )
+						$desc = sprintf( 'Authored by %s', $user_obj->display_name );
+
+					$desc = apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
 			
 				} elseif ( is_day() ) 
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
@@ -513,7 +569,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// if there's still no description, then fallback to a generic version
 			if ( empty( $desc ) ) {
-				if ( is_admin() && ! empty( $post_obj->post_status ) && $post_obj->post_status == 'auto-draft' ) {
+				if ( is_admin() && isset( $post_obj->post_status ) && $post_obj->post_status === 'auto-draft' ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'post_status is auto-draft - using empty description' );
 				} else {
@@ -825,6 +881,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		}
 
 		public function get_category_title( $term_obj = false ) {
+
 			if ( ! is_object( $term_obj ) )
 				$term_obj = $this->p->util->get_term_object();
 
