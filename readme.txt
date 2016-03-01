@@ -347,6 +347,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.26.1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new BuddyPress filter (and constant) to return a member "biographical" field value (Pro version). See the [BuddyPress Integration Notes](http://surniaulula.com/codex/plugins/nextgen-facebook/installation/integration/buddypress-integration/) for more information.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new `SucomUtil::get_is_page()` method to optimize all three `is_{post|term|author}_page()` checks.
+	* Refactored SucomWebpage `get_caption()`, `get_title()`, and `get_description()` to use the new `SucomUtil::get_is_page()` method.
+
 **Version 3.26.0 (2016/03/01)**
 
 Official announcement: N/A
