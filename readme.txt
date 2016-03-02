@@ -93,11 +93,11 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Contextual help for *every* plugin option and [comprehensive online documentation](http://wpsso.com/codex/plugins/wpsso/).
 * Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional (and optional) Free extension plugins:
-	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
-	* [WPSSO Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/)
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
-	* [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/)
-	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
+	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
+	* [WPSSO Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
+	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
+	* [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
+	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
 
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
@@ -141,11 +141,11 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* Wistia Videos
 		* YouTube Videos and Playlists
 * Additional (and optional) Free or Pro extension plugins:
-	* [WPSSO Mobile App Meta (Pro version)](https://wpsso.com/extend/plugins/wpsso-am/)
-	* [WPSSO Place and Location Meta (Pro version)](https://wpsso.com/extend/plugins/wpsso-plm/)
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons (Pro version)](https://wpsso.com/extend/plugins/wpsso-rrssb/)
-	* [WPSSO Schema JSON-LD (Pro version)](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/)
-	* [WPSSO Social Sharing Buttons (Pro version)](https://wpsso.com/extend/plugins/wpsso-ssb/)
+	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
+	* [WPSSO Place and Location Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
+	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
+	* [WPSSO Schema JSON-LD](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
+	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
 <blockquote>
 <p><a href="http://wpsso.com/extend/plugins/wpsso/">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
