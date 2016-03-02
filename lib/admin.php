@@ -154,10 +154,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
 				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 
-				foreach ( $this->p->cf['*']['lib'][$menu_lib] as $menu_id => $menu_name ) {
-					if ( isset( $this->submenu[$menu_id] ) )
-						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
-					else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
+				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+						if ( isset( $this->submenu[$menu_id] ) )
+							$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
+						else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
+					}
 				}
 			}
 		}
@@ -211,22 +213,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '' ) {
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$menu_id = empty( $menu_id ) ?
-				$this->menu_id : $menu_id;
-			$menu_name = empty( $menu_name ) ?
-				$this->menu_name : $menu_name;
-			$menu_lib = empty( $menu_lib ) ?
-				$this->menu_lib : $menu_lib;
+			$menu_id = empty( $menu_id ) ? $this->menu_id : $menu_id;
+			$menu_name = empty( $menu_name ) ? $this->menu_name : $menu_name;
+			$menu_lib = empty( $menu_lib ) ? $this->menu_lib : $menu_lib;
 
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
-				$menu_title = '<div style="z-index:999;
-					padding:2px 0;
-					margin:0;
-					cursor:default;
-					border-bottom:1px dotted;
-					color:#666;" onclick="return false;">'.
-						( $menu_name === $this->p->cf['menu'] ? 
-							$menu_name.self::$is_suffix : $menu_name ).'</div>';
+				/*
+				if ( ( $pos = strpos( $menu_name, ' Extension' ) ) !== false && 
+					preg_match( '/^([a-z]+)-separator-[0-9]+$/', $menu_id, $match ) ) {
+					$menu_name = preg_replace( '/( Extension)/', ' '.
+						( $this->p->check->aop( $match[1], true, $this->p->is_avail['aop'] ) ?
+							'Pro' : 'Free' ).'$1', $menu_name );
+				}
+				*/
+				$menu_title = '<div style="z-index:999;color:#666;text-align:left;border-bottom:1px dotted;padding:0;margin:0;cursor:default;"'.
+					' onClick="return false;">'.( $menu_name === $this->p->cf['menu'] ? 
+						$menu_name.self::$is_suffix : $menu_name ).'</div>';
 				$menu_slug = '';
 				$page_title = '';
 				$function = '';
