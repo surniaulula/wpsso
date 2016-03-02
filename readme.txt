@@ -347,7 +347,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.26.1 (TBD)**
+**Version 3.26.1 (2016/03/03)**
 
 Official announcement: N/A
 
@@ -444,6 +444,10 @@ Official announcement: [WPSSO Update – New Google / Schema JSON-LD Extension](
 		* 'wpsso_schema_post_types' to 'wpsso_schema_types'
 
 == Upgrade Notice ==
+
+= 3.26.1 =
+
+2016/03/03 - Added a new BuddyPress filter (and constant) to return a member "biographical" field value (Pro version). Added a new 'NGFB_JSON_PRETTY_PRINT' constant (defaults to true).
 
 = 3.26.0 =
 
