@@ -322,8 +322,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 							$this->p->debug->log( 'setting use_prev_img to '.
 								$use_prev_img.' from meta data' );
 					}
-					$og_ret = array_merge( $og_ret, 
-						$mod_obj->get_og_video( $num_diff, $id, $check_dupes, $md_pre ) );
+					$og_ret = array_merge( $og_ret, $mod_obj->get_og_video( $num_diff, $id, $check_dupes, $md_pre ) );
 				}
 			}
 

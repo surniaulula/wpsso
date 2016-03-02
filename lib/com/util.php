@@ -498,14 +498,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $merged;
 		}
 
-		// pre-define the array key order for the list() construct (which assigns elements from right to left)
-		public static function meta_image_tags( $mt_pre = 'og' ) {
+		public static function get_mt_prop_video( $mt_pre = 'og' ) {
 			return array(
+				$mt_pre.':video:title' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:description' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:secure_url' => '',
+				$mt_pre.':video:url' => '',
+				$mt_pre.':video:type' => 'application/x-shockwave-flash',
+				$mt_pre.':video:width' => '',
+				$mt_pre.':video:height' => '',
+				$mt_pre.':video:duration' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:upload_date' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:thumbnail_url' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:embed_url' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:has_image' => false,	// non-standard / internal meta tag
+			);
+		}
+
+		// pre-define the array key order for the list() construct (which assigns elements from right to left)
+		public static function get_mt_prop_image( $mt_pre = 'og' ) {
+			return array(
+				$mt_pre.':image:secure_url' => '',
 				$mt_pre.':image' => '',
 				$mt_pre.':image:width' => '',
 				$mt_pre.':image:height' => '',
-				$mt_pre.':image:cropped' => '',
-				$mt_pre.':image:id' => '',
+				$mt_pre.':image:cropped' => '',		// non-standard / internal meta tag
+				$mt_pre.':image:id' => '',		// non-standard / internal meta tag
 			);
 		}
 

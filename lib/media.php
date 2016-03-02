@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 
 			if ( ! empty( $post_id ) ) {
 				// check for an attachment page, just in case
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 
 			if ( ! empty( $attach_id ) ) {
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0 
@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 
 			if ( ! empty( $post_id ) ) {
 
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key )
 				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
@@ -581,7 +581,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret; 
 			}
 
-			$og_image = SucomUtil::meta_image_tags( 'og' );
+			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 			$size_info = $this->get_size_info( $size_name );
 			$img_preg = $this->default_img_preg;
 
@@ -667,8 +667,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/',
 								$attr_value, $match ) ) {
 
-								$og_image['og:image'] = SucomUtil::get_prot().':'.$match[2].
-									'?s='.$size_info['width'].'&d=404&r=G';
+								$og_image['og:image'] = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
 								$og_image['og:image:width'] = $size_info['width'];
 								$og_image['og:image:height'] = $size_info['width'];	// square image
 
@@ -720,7 +719,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image'], 
 								$og_image['og:image:width'], 
 								$og_image['og:image:height'], 
-								$size_name, $post_id );
+								$size_name,
+								$post_id );
 
 							// make sure the image width and height are large enough
 							if ( ( $attr_name == 'src' && $accept_img_size ) ||
@@ -965,45 +965,34 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			$og_video = array(
-				// video
-				'og:video:title' => '',					// non-standard / internal meta tag
-				'og:video:description' => '',				// non-standard / internal meta tag
-				'og:video:secure_url' => '',				// https secure_url key (position before the url key)
-				'og:video:url' => '',					// http url
-				'og:video:type' => 'application/x-shockwave-flash',	// default type, after the url
-				'og:video:width' => $embed_width,			// default width
-				'og:video:height' => $embed_height,			// default height
-				'og:video:embed_url' => '',				// non-standard / internal meta tag
-				'og:video:has_image' => false,				// non-standard / internal meta tag
-				// image
-				'og:image:secure_url' => '',				// https secure_url key (position before the url key)
-				'og:image' => '',					// http url
-				'og:image:width' => -1,
-				'og:image:height' => -1,
+			$og_video = array_merge( 
+				SucomUtil::get_mt_prop_video( 'og' ), 
+				SucomUtil::get_mt_prop_image( 'og' ),
+				array( 
+					'og:video:width' => $embed_width,			// default width
+					'og:video:height' => $embed_height,			// default height
+				)
 			);
 
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
 			foreach ( array( 'video', 'image' ) as $media ) {
-
-				$og_url_key = '';
+				$og_media_url = '';
 				$have_og[$media] = false;
 
 				// secure_url takes precedence
 				foreach ( array( ':secure_url', ':url', '' ) as $suffix ) {
 					if ( ! empty( $og_video['og:'.$media.$suffix] ) ) {
-						$og_url_key = 'og:'.$media.$suffix;
+						$og_media_url = $og_video['og:'.$media.$suffix];
 						$have_og[$media] = true;
 						break;
 					}
 				}
 
-				// if there's no video, or it's a duplicate, unset the whole array for that media
-				if ( empty( $og_video[$og_url_key] ) || ( $check_dupes && ! $this->p->util->is_uniq_url( $og_video[$og_url_key] ) ) ) {
+				if ( ! $og_media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $og_media_url ) ) ) {
+					unset ( $og_video['og:'.$media] );
 					foreach( SucomUtil::preg_grep_keys( '/^og:'.$media.':/', $og_video ) as $k => $v )
 						unset ( $og_video[$k] );
-					unset ( $og_video['og:'.$media] );
 				}
 			}
 

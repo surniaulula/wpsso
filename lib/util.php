@@ -990,18 +990,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// accepts json script or json array
 		public function json_format( $json, $options = JSON_UNESCAPED_SLASHES, $depth = 512 ) {
 
-			$json_format = false;
+			$ext_json_fmt = false;
+			$pretty_print = SucomUtil::get_const( $this->p->cf['uca'].'_JSON_PRETTY_PRINT' );
 
-			if ( is_admin() || $this->p->debug->enabled ) {
+			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
 				if ( function_exists( 'phpversion' ) && phpversion() >= 5.4 )
 					$options = $options|JSON_PRETTY_PRINT;
-				else $json_format = true;
+				else $ext_json_fmt = true;	// use SuextJsonFormat::get() if PHP is too old
 			}
 
 			if ( ! is_string( $json ) )
 				$json = SucomUtil::json_encode_array( $json, $options, $depth );
 
-			if ( $json_format ) {
+			if ( $ext_json_fmt ) {
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 				if ( $classname !== false && class_exists( $classname ) )
 					$json = SuextJsonFormat::get( $json, $options, $depth );

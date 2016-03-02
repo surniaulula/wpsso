@@ -1055,7 +1055,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;		// highlight the SSO menu icon
-			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// hide all warning notices by default
+			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
+			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// don't minimize json code
 
 			/*
 			 * WPSSO option and meta array names

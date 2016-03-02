@@ -445,7 +445,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			// always fallback to 'og' meta options
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
-				$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 				$pid = $this->get_options( $id, $prefix.'_img_id' );
 				$pre = $this->get_options( $id, $prefix.'_img_id_pre' );
@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding image pid: '.$pid );
 
-					$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 					list( 
 						$meta_image[$mt_pre.':image'],
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding image url: '.$url );
 
-					$meta_image = SucomUtil::meta_image_tags( $mt_pre );
+					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 					$meta_image[$mt_pre.':image'] = $url;
 
 					$this->p->util->add_image_url_sizes( $mt_pre.':image', $meta_image );
