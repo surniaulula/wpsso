@@ -694,7 +694,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_tag',
 				'is_tax',
 				/*
-				 * e-commerce / woocommerce functions
+				 * common e-commerce / woocommerce functions
 				 */
 				'is_account_page',
 				'is_cart',
@@ -990,19 +990,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// accepts json script or json array
 		public function json_format( $json, $options = JSON_UNESCAPED_SLASHES, $depth = 512 ) {
 
-			$ext_json_fmt = false;
-			$pretty_print = SucomUtil::get_const( $this->p->cf['uca'].'_JSON_PRETTY_PRINT' );
+			$do_pretty_print = SucomUtil::get_const( $this->p->cf['uca'].'_JSON_PRETTY_PRINT' );
+			$do_ext_pretty = false;
 
-			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
+			// decide if the encoded json will be minimized or not
+			if ( is_admin() || $this->p->debug->enabled || $do_pretty_print ) {
 				if ( function_exists( 'phpversion' ) && phpversion() >= 5.4 )
 					$options = $options|JSON_PRETTY_PRINT;
-				else $ext_json_fmt = true;	// use SuextJsonFormat::get() if PHP is too old
+				else $do_ext_pretty = true;	// use the SuextJsonFormat lib
 			}
 
+			// encode the json
+			// $options may include JSON_PRETTY_PRINT for PHP version 5.4 and up
 			if ( ! is_string( $json ) )
 				$json = SucomUtil::json_encode_array( $json, $options, $depth );
 
-			if ( $ext_json_fmt ) {
+			// use the pretty print external library for older PHP versions
+			if ( $do_ext_pretty ) {
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 				if ( $classname !== false && class_exists( $classname ) )
 					$json = SuextJsonFormat::get( $json, $options, $depth );

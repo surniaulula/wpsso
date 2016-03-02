@@ -34,10 +34,9 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		 * 
 		 * @return string
 		 */
-		public static function process($css, $options = array())
-		{
-			$obj = new SuextMinifyCssCompressor($options);
-			return $obj->_process($css);
+		public static function process( $css, $options = array() ) {
+			$instance = new SuextMinifyCssCompressor( $options );
+			return $instance->_process( $css );
 		}
 		
 		/**
