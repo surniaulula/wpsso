@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['description'] = $desc;
 
 			if ( ! empty( $wpsso->options[$logo_key] ) )
-				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) );	// list_element = false
+				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) )	// list_element = false
 					unset( $ret['logo'] );
 
 			if ( empty( $list_element ) )
