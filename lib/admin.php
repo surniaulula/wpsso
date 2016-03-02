@@ -13,12 +13,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	class WpssoAdmin {
 	
 		protected $p;
-		protected $menu_id;
-		protected $menu_name;
-		protected $menu_lib;
-		protected $pagehook;
+		protected $menu_id = null;
+		protected $menu_name = null;
+		protected $menu_lib = null;
+		protected $menu_ext = null;
+		protected $pagehook = null;
 
-		public static $is_suffix;
+		public static $is_pkg = array();
 		public static $readme_info = array();
 
 		public $form;
@@ -63,10 +64,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// load all submenu classes into the $this->submenu array
 		// the id of each submenu item must be unique
 		private function set_objects() {
-			self::$is_suffix = ' '.( $this->p->check->aop( $this->p->cf['lca'], 
-				true, $this->p->is_avail['aop'] ) ? 
-					_x( 'Pro', 'package type', 'wpsso' ) :
-					_x( 'Free', 'package type', 'wpsso' ) );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info )
+				self::$is_pkg[$ext] = ' '.
+					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ? 
+						_x( 'Pro', 'package type', 'wpsso' ) :
+						_x( 'Free', 'package type', 'wpsso' ) );
 
 			$menu_libs = array( 
 				'submenu', 
@@ -79,16 +82,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $menu_libs as $menu_lib ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['lib'][$menu_lib] ) ) {
-						foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
-							if ( strpos( $menu_id, 'separator' ) !== false ) 
-								continue;
-							$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
-							if ( is_string( $classname ) && class_exists( $classname ) ) {
-								if ( ! empty( $info['text_domain'] ) )
-									$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
-								$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib );
-							}
+					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+						continue;
+					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+						if ( strpos( $menu_id, 'separator' ) !== false ) 
+							continue;
+						$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
+						if ( is_string( $classname ) && class_exists( $classname ) ) {
+							if ( ! empty( $info['text_domain'] ) )
+								$menu_name = _x( $menu_name, 
+									'lib file description', $info['text_domain'] );
+							$this->submenu[$menu_id] = new $classname( $this->p, 
+								$menu_id, $menu_name, $menu_lib, $ext );
 						}
 					}
 				}
@@ -146,6 +151,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		// add sub-menu items to existing menus (profile and setting)
 		public function add_admin_submenus() {
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
 
@@ -154,11 +160,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
 				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 
-				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+						continue;
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 						if ( isset( $this->submenu[$menu_id] ) )
 							$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
-						else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
+						else $this->add_submenu_page( $parent_slug,
+							$menu_id, $menu_name, $menu_lib, $ext );
 					}
 				}
 			}
@@ -168,25 +177,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
+		// add a new main menu, and its sub-menu items
 		public function add_admin_menus( $menu_lib = '' ) {
-			$menu_lib = empty( $menu_lib ) ?
-				'submenu' : $menu_lib;
+			$menu_lib = empty( $menu_lib ) ? 'submenu' : $menu_lib;
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
 
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
 			$this->menu_lib = $menu_lib;
+			$this->menu_ext = $this->p->cf['lca'];
 
 			if ( isset( $this->submenu[$this->menu_id] ) ) {
 				$menu_slug = $this->p->cf['lca'].'-'.$this->menu_id;
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
-			foreach ( $libs as $menu_id => $menu_name ) {
-				$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
-				if ( isset( $this->submenu[$menu_id] ) )
-					$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
-				else $this->add_submenu_page( $parent_slug, $menu_id, $menu_name, $menu_lib );
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+					continue;
+				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
+					if ( isset( $this->submenu[$menu_id] ) )
+						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
+					else $this->add_submenu_page( $parent_slug, 
+						$menu_id, $menu_name, $menu_lib, $ext );
+				}
 			}
 		}
 
@@ -197,8 +212,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				$short.self::$is_suffix.' &mdash; '.$this->menu_name, 
-				$this->p->cf['menu'].self::$is_suffix, 
+				$short.self::$is_pkg[$lca].' &mdash; '.$this->menu_name, 
+				$this->p->cf['menu'].self::$is_pkg[$lca], 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
 					'manage_options' ),	// fallback to manage_options capability
@@ -210,25 +225,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '' ) {
-			$lca = $this->p->cf['lca'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
-			$menu_id = empty( $menu_id ) ? $this->menu_id : $menu_id;
-			$menu_name = empty( $menu_name ) ? $this->menu_name : $menu_name;
-			$menu_lib = empty( $menu_lib ) ? $this->menu_lib : $menu_lib;
+		protected function add_submenu_page( $parent_slug, 
+			$menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
+
+			if ( empty( $menu_id ) )
+				$menu_id = $this->menu_id;
+
+			if ( empty( $menu_name ) )
+				$menu_name = $this->menu_name;
+
+			if ( empty( $menu_lib ) )
+				$menu_lib = $this->menu_lib;
+
+			if ( empty( $menu_ext ) ) {
+				$menu_ext = $this->menu_ext;
+				if ( empty( $menu_ext ) )
+					$menu_ext = $this->p->cf['lca'];
+			}
+
+			$short = $this->p->cf['plugin'][$menu_ext]['short'];
 
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
-				/*
-				if ( ( $pos = strpos( $menu_name, ' Extension' ) ) !== false && 
-					preg_match( '/^([a-z]+)-separator-[0-9]+$/', $menu_id, $match ) ) {
-					$menu_name = preg_replace( '/( Extension)/', ' '.
-						( $this->p->check->aop( $match[1], true, $this->p->is_avail['aop'] ) ?
-							'Pro' : 'Free' ).'$1', $menu_name );
-				}
-				*/
 				$menu_title = '<div style="z-index:999;color:#666;text-align:left;border-bottom:1px dotted;padding:0;margin:0;cursor:default;"'.
 					' onClick="return false;">'.( $menu_name === $this->p->cf['menu'] ? 
-						$menu_name.self::$is_suffix : $menu_name ).'</div>';
+						$menu_name.self::$is_pkg[$menu_ext] : 
+							( strpos( $menu_name, ' Extension' ) !== false ? 
+								str_replace( ' Extension', self::$is_pkg[$menu_ext].' Extension', $menu_name ) : 
+									$menu_name ) ).'</div>';
 				$menu_slug = '';
 				$page_title = '';
 				$function = '';
@@ -239,16 +262,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'<span style="color:#'.$this->p->cf['color'].';">', $menu_name );
 				else $menu_title = $menu_name;
 
-				$menu_slug = $lca.'-'.$menu_id;
-				$page_title = $short.self::$is_suffix.' &mdash; '.$menu_title;
+				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
+				$page_title = $short.self::$is_pkg[$menu_ext].' &mdash; '.$menu_title;
 				$function = array( &$this, 'show_setting_page' );
 			}
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
 				( isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
-					$this->p->cf['wp']['admin'][$menu_lib]['cap'] :
-					'manage_options' ), $menu_slug, $function );	// fallback to manage_options capability
+					$this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options' ),
+						$menu_slug, $function );	// fallback to manage_options capability
 
 			if ( $function )
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
@@ -494,9 +517,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->show_html( null, 'debug log' );
 			}
 			
+			$menu_ext = $this->menu_ext;
+			if ( empty( $menu_ext ) )
+				$menu_ext = $this->p->cf['lca'];
+			$short = $this->p->cf['plugin'][$menu_ext]['short'];
+
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.$this->p->cf['plugin'][$this->p->cf['lca']]['short'].
-				self::$is_suffix.' &ndash; '.$this->menu_name.'</h1>'."\n";
+			echo '<h1>'.$short.self::$is_pkg[$this->menu_ext].' &ndash; '.$this->menu_name.'</h1>'."\n";
 
 			if ( $sidebar === false ) {
 				echo '<div id="poststuff" class="metabox-holder">'."\n";
@@ -890,14 +917,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
-			//echo $this->p->msgs->get( 'side-help' );
+
 			$this->show_follow_icons();
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
 					continue;
 
 				$help_links = '';
 				$aop = $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] );
+
 				if ( ! empty( $info['url']['faq'] ) ) {
 					$help_links .= '<li>'.sprintf( __( 'Review the <a href="%s" target="_blank">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faq'] );
@@ -906,6 +935,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'wpsso' ), $info['url']['notes'] );
 					$help_links .= '</li>';
 				}
+
 				if ( ! empty( $info['url']['pro_support'] ) && $aop )
 					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Support Ticket</a>',
 						'wpsso' ), $info['url']['pro_support'] ).'</li>';
@@ -915,10 +945,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $help_links ) ) {
 					echo '<p><strong>'.sprintf( _x( '%s Support', 
-						'metabox title (side)', 'wpsso' ), $info['short'].self::$is_suffix ).'</strong></p>';
+						'metabox title (side)', 'wpsso' ), 
+							$info['short'].self::$is_pkg[$ext] ).'</strong></p>';
 					echo '<ul>'.$help_links.'</ul>';
 				}
 			}
+
 			echo '</td></tr></table>';
 		}
 
