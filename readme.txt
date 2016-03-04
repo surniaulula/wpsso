@@ -353,6 +353,23 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.26.2 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new `SucomCountryCodes::get()` class and method to return 2 letter, 3 letter, and numeric country codes.
+	* Added a new `SucomUtil::get_alpha2_countries()` method to return an array of 2 letter country codes.
+	* Added a new `SucomUtil::get_alpha2_country_name()` method to return a countrry name from a 2 letter country code.
+	* Added a new SucomForm `get_select_country()` method to select a country.
+	* Added a new `sucom_select_change_unhide_rows()` javascript function to hide/unhide rows on select change.
+
 **Version 3.26.1 (2016/03/03)**
 
 Official announcement: N/A
