@@ -99,7 +99,7 @@
 <li>YouTube Channel URL</li>
 </ul></li>
 <li>Validation tools, social preview, and meta tag value tabs on admin editing pages.</li>
-<li>Customizable <em>multilingual</em> Site Title and Site Description texts.</li>
+<li>Customizable <strong>multilingual</strong> / multi-language Site Title and Site Description texts.</li>
 <li>Contextual help for <em>every</em> plugin option and <a href="http://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
 <li>Additional (and optional) Free extension plugins:

@@ -89,7 +89,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* Twitter @username
 	* YouTube Channel URL
 * Validation tools, social preview, and meta tag value tabs on admin editing pages.
-* Customizable *multilingual* Site Title and Site Description texts.
+* Customizable **multilingual** / multi-language Site Title and Site Description texts.
 * Contextual help for *every* plugin option and [comprehensive online documentation](http://wpsso.com/codex/plugins/wpsso/).
 * Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional (and optional) Free extension plugins:
