@@ -353,16 +353,17 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.26.2 (TBD)**
+**Version 3.27.0 (TBD)**
 
 Official announcement: N/A
 
 * *New Features*
-	* None
+	* Added support for 'og:video:tag' provided by the YouTube video module (Pro version).
+	* Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox for Posts / Pages and Custom Post Types.
 * *Improvements*
-	* None
+	* Optimized the speed of meta tag creation in the NgfbHead `get_mt_array()` method.
 * *Bugfixes*
-	* None
+	* Fixed the meta tag parser for fetched webpages (for Youtube videos and duplicate meta tag checks).
 * *Developer Notes*
 	* Added a new `SucomCountryCodes::get()` class and method to return 2 letter, 3 letter, and numeric country codes.
 	* Added a new `SucomUtil::get_alpha2_countries()` method to return an array of 2 letter country codes.
@@ -401,71 +402,6 @@ Official announcement: N/A
 * *Developer Notes*
 	* None
 
-**Version 3.25.4 (2016/02/27)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Refactored the Wistia module to parse API XML meta tags for the video URL and description (Pro version).
-	* Added video title and description (internal) meta tags for use by Schema JSON-LD filters.
-* *Bugfixes*
-	* Fixed detection of duplicate embedded videos.
-* *Developer Notes*
-	* Added `wpsso_clear_all_cache()` and `wpsso_clear_post_cache( $post_id )` functions.
-
-**Version 3.25.3 (2016/02/25)**
-
-Official announcement: [WPSSO Update – Auto-Hide All Warning Notices](http://wpsso.com/2016/02/25/wpsso-update-auto-hide-all-warning-notices/)
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added a new `WPSSO_HIDE_ALL_WARNINGS` constant - see the SSO Setup Guide for details. 
-
-**Version 3.25.1 (2016/02/23)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Increased the default object cache expiry from 86400 secs (1 day) to 259200 secs (3 days).
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added WpssoSchema `get_json_data_filter()` and `has_json_data_filter()` methods to get JSON-LD filter name and check for registered hooks.
-
-**Version 3.25.0 (2016/02/21)**
-
-Official announcement: [WPSSO Update – New Google / Schema JSON-LD Extension](http://wpsso.com/2016/02/21/wpsso-update-new-google-schema-json-ld-extension/)
-
-* *New Features*
-	* Added a new "Google / Schema Image Dimensions" option (defaults to 800x1200 uncropped).
-	* Added a new "Business Banner (600x60) Image URL" option.
-* *Improvements*
-	* Updated default image dimensions:
-		* Google / Schema Image: 800x1200 uncropped (new image size)
-		* Google / Schema Logo: 600x60 cropped (new image size)
-		* Facebook / Open Graph: 600x315 cropped
-		* Pinterest / Rich Pin: 800x1200 uncropped
-		* Twitter Large Image Summary: 800x1200 uncropped
-		* Twitter Summary Card: 600x600 cropped
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added support for an array of filter/action hook names in WpssoUtil `add_plugin_hooks()`.
-	* Added a SucomUtil::get_id_stub_action() static method to return the id, stub, and action strings for a library item.
-	* Added a WpssoMedia check_image_min_max() method to check for minimum image dimensions and aspect ratio.
-	* Renamed filter hooks:
-		* 'wpsso_schema_item_type' to 'wpsso_schema_head_type' (now filters the type key instead of its value)
-		* 'wpsso_schema_post_types' to 'wpsso_schema_types'
-
 == Upgrade Notice ==
 
 = 3.26.1 =
@@ -475,20 +411,4 @@ Official announcement: [WPSSO Update – New Google / Schema JSON-LD Extension](
 = 3.26.0 =
 
 2016/03/01 - Added a new 'wpsso_user_image_urls' filter to include the BuddyPress member image on author pages (Pro version).
-
-= 3.25.4 =
-
-2016/02/27 - Fixed detection of duplicate embedded videos. Added video title and description (internal) meta tags for Schema JSON-LD filters. Added two functions developers can use to clear the WPSSO cache.
-
-= 3.25.3 =
-
-2016/02/25 - Added a new WPSSO_HIDE_ALL_WARNINGS constant - see the WPSSO Setup Guide for details. 
-
-= 3.25.1 =
-
-2016/02/23 - Added new NgfbSchema methods to get the JSON-LD filter name and check for registered hooks.
-
-= 3.25.0 =
-
-2016/02/21 - New "Google / Schema Image Dimensions" and "Business Banner (600x60) Image URL" options. Refactored much of the Schema JSON-LD related code. 
 
