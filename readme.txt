@@ -362,6 +362,7 @@ Official announcement: N/A
 	* Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox for Posts / Pages and Custom Post Types.
 * *Improvements*
 	* Optimized the speed of meta tag creation in the NgfbHead `get_mt_array()` method.
+	* Enabled multilingual / multi-language support of all publisher URL options (Facebook Business Page URL, etc.).
 * *Bugfixes*
 	* Fixed the meta tag parser for fetched webpages (for Youtube videos and duplicate meta tag checks).
 * *Developer Notes*
