@@ -571,18 +571,17 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( empty( $desc ) ) {
 				if ( is_admin() && isset( $post_obj->post_status ) && $post_obj->post_status === 'auto-draft' ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'post_status is auto-draft - using empty description' );
+						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
 				} else {
 					// pass options array to allow fallback if locale option does not exist
-					$key = SucomUtil::get_locale_key( 'og_site_description', $this->p->options, $post_id );
-
-					if ( ! empty( $this->p->options[$key] ) ) {
+					$key_locale = SucomUtil::get_key_locale( 'og_site_description', $this->p->options, $post_id );
+					if ( ! empty( $this->p->options[$key_locale] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'description is empty - custom site description ('.$key.')' );
-						$desc = $this->p->options[$key];
+							$this->p->debug->log( 'description is empty: using custom site description ('.$key_locale.')' );
+						$desc = $this->p->options[$key_locale];
 					} else {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'description is empty - using blog description' );
+							$this->p->debug->log( 'description is empty: using blog description' );
 						$desc = get_bloginfo( 'description', 'display' );
 					}
 				}

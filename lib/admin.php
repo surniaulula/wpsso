@@ -225,8 +225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, 
-			$menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
+		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
 
 			if ( empty( $menu_id ) )
 				$menu_id = $this->menu_id;

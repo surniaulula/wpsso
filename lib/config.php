@@ -355,16 +355,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'seo_def_author_on_index' => 0,
 					'seo_def_author_on_search' => 0,
 					'seo_author_field' => '',		// default value set by WpssoOptions::get_defaults()
-					'seo_publisher_url' => '',
-					'fb_publisher_url' => '',
+					'seo_publisher_url' => '',		// multilingual
+					'fb_publisher_url' => '',		// multilingual
 					'fb_admins' => '',
 					'fb_app_id' => '',
 					'fb_lang' => 'en_US',
-					'instgram_publisher_url' => '',
-					'linkedin_publisher_url' => '',
-					'myspace_publisher_url' => '',
-					'og_site_name' => '',
-					'og_site_description' => '',
+					'instgram_publisher_url' => '',		// multilingual
+					'linkedin_publisher_url' => '',		// multilingual
+					'myspace_publisher_url' => '',		// multilingual
+					'og_site_name' => '',			// multilingual
+					'og_site_description' => '',		// multilingual
 					'og_art_section' => 'none',
 					'og_img_width' => 600,
 					'og_img_height' => 315,
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_len' => 70,
 					'og_desc_len' => 300,
 					'og_desc_hashtags' => 3,
-					'rp_publisher_url' => '',
+					'rp_publisher_url' => '',		// multilingual
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
 					'rp_img_width' => 800,
 					'rp_img_height' => 1200,
@@ -405,7 +405,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rp_img_crop_x' => 'center',
 					'rp_img_crop_y' => 'center',
 					'rp_dom_verify' => '',
-					'tc_site' => '',
+					'tc_site' => '',			// multilingual
 					'tc_desc_len' => 200,
 					// summary card
 					'tc_sum_width' => 600,

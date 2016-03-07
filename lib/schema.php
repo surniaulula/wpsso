@@ -416,19 +416,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( is_front_page() ) {
 				// add the sameAs social profile links
 				foreach ( array(
-					'seo_publisher_url',
 					'fb_publisher_url',
+					'seo_publisher_url',
+					'rp_publisher_url',
+					'instgram_publisher_url',
 					'linkedin_publisher_url',
+					'myspace_publisher_url',
 					'tc_site',
 				) as $key ) {
-					$url = isset( $this->p->options[$key] ) ?
-						trim( $this->p->options[$key] ) : '';
-					if ( empty( $url ) )
+					$key_locale = SucomUtil::get_key_locale( $key, $this->p->options );
+					$url_locale = trim( $this->p->options[$key_locale] );
+					if ( empty( $url_locale ) )
 						continue;
 					if ( $key === 'tc_site' )
-						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-					if ( strpos( $url, '://' ) !== false )
-						$ret['sameAs'][] = esc_url( $url );
+						$url_locale = 'https://twitter.com/'.preg_replace( '/^@/', '', $url_locale );
+					if ( strpos( $url_locale, '://' ) !== false )
+						$ret['sameAs'][] = esc_url( $url_locale );
 				}
 			}
 	

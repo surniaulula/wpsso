@@ -60,64 +60,64 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			switch ( $metabox.'-'.$key ) {
 				case 'essential-general':
 
-					$rows[] = '<td></td><td class="subsection top"><h4>'.
+					$rows['subsection_site_information'] = '<td></td><td class="subsection top"><h4>'.
 						_x( 'Site Information', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Default Article Topic',
+					$rows['og_art_section'] = $this->p->util->get_th( _x( 'Default Article Topic',
 						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics() ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Site Name',
+					$rows['og_site_name'] = $this->p->util->get_th( _x( 'Site Name',
 						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_locale_key( 'og_site_name' ), 
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'og_site_name', $this->p->options ),
 						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Site Description',
+					$rows['og_site_description'] = $this->p->util->get_th( _x( 'Site Description',
 						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_textarea( SucomUtil::get_locale_key( 'og_site_description' ), 
+					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'og_site_description', $this->p->options ),
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
 
-					$rows[] = '<td></td><td class="subsection"><h4>'.
+					$rows['subsection_opengraph'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Facebook / Open Graph', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Facebook Business Page URL',
-						'option label', 'wpsso' ), null, 'fb_publisher_url' ).
-					'<td>'.$this->form->get_input( 'fb_publisher_url', 'wide' ).'</td>';
+					$rows['fb_publisher_url'] = $this->p->util->get_th( _x( 'Facebook Business Page URL',
+						'option label', 'wpsso' ), null, 'fb_publisher_url', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Facebook Application ID',
+					$rows['fb_app_id'] = $this->p->util->get_th( _x( 'Facebook Application ID',
 						'option label', 'wpsso' ), null, 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'or Facebook Admin Username(s)',
+					$rows['fb_admins'] = $this->p->util->get_th( _x( 'or Facebook Admin Username(s)',
 						'option label', 'wpsso' ), null, 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Author Name Format',
+					$rows['seo_author_name'] = $this->p->util->get_th( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'google_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Default Content Language',
+					$rows['fb_lang'] = $this->p->util->get_th( _x( 'Default Content Language',
 						'option label', 'wpsso' ), null, 'fb_lang' ).
 					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Default / Fallback Image ID',
+					$rows['og_def_img_id'] = $this->p->util->get_th( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), null, 'og_def_img_id' ).
 					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'or Default / Fallback Image URL',
+					$rows['og_def_img_url'] = $this->p->util->get_th( _x( 'or Default / Fallback Image URL',
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
+					$rows['og_img'] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
-					$rows[] = '<td></td><td class="subsection"><h4>'.
+					$rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-					$rows[] = $this->p->util->get_th( _x( 'Include Google Structured Data',
+					$rows['schema_json'] = $this->p->util->get_th( _x( 'Include Google Structured Data',
 						'option label', 'wpsso' ), null, 'google_schema_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
@@ -130,37 +130,37 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 							$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
-						'option label', 'wpsso' ), null, 'google_publisher_url' ).
-					'<td>'.$this->form->get_input( 'seo_publisher_url', 'wide' ).'</td>';
+					$rows['seo_publisher_url'] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
+						'option label', 'wpsso' ), null, 'google_publisher_url', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Business Logo Image URL',
+					$rows['schema_logo_url'] = $this->p->util->get_th( _x( 'Business Logo Image URL',
 						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Schema Image Dimensions',
+					$rows['schema_img'] = $this->p->util->get_th( _x( 'Schema Image Dimensions',
 						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
-					$rows[] = '<td></td><td class="subsection"><h4>'.
+					$rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Pinterest Company Page URL',
-						'option label', 'wpsso' ), null, 'rp_publisher_url'  ).
-					'<td>'.$this->form->get_input( 'rp_publisher_url', 'wide' ).'</td>';
+					$rows['rp_publisher_url'] = $this->p->util->get_th( _x( 'Pinterest Company Page URL',
+						'option label', 'wpsso' ), null, 'rp_publisher_url', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'rp_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$rows[] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
+						$rows['rp_img'] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
 
-					$rows[] = '<td></td><td class="subsection"><h4>'.
+					$rows['subsection_twitter'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Twitter', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Twitter Business @username',
-						'option label', 'wpsso' ), null, 'tc_site' ).
-					'<td>'.$this->form->get_input( 'tc_site' ).'</td>';
+					$rows['tc_site'] = $this->p->util->get_th( _x( 'Twitter Business @username',
+						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ).'</td>';
 
 					break;
 

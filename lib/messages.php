@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
 							break;
 						case 'tooltip-og_site_name':
-							$text = 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Site Title value</a>.';
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="%s">the default WordPress Site Title value</a>.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_site_description':
 							$text = 'The WordPress Tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin description (og:description) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.';

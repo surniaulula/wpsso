@@ -262,12 +262,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_input( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false ) {
-			if ( empty( $name ) ) return;	// just in case
-			if ( $disabled !== false || ( $this->in_options( $name.':is' ) && 
-				$this->options[$name.':is'] === 'disabled' ) )
-					return $this->get_no_input( $name, $class, $id, $len, $placeholder );
+			if ( empty( $name ) ) 
+				return;	// just in case
+
+			if ( $disabled !== false || 
+				( $this->in_options( $name.':is' ) && 
+					$this->options[$name.':is'] === 'disabled' ) )
+						return $this->get_no_input( $name, $class, $id, $len, $placeholder );
+
+			$value = $this->in_options( $name ) ?
+				$this->options[$name] : '';
+
+			if ( empty( $placeholder ) && ( $pos = strpos( $name, '#' ) ) > 0 ) {
+				$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+				if ( $name !== $key_default )
+					$placeholder = $this->options[$key_default];
+			}
+
 			$html = '';
-			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			if ( ! empty( $len ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'text_'.$id );
 			
@@ -278,6 +290,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( $this->get_placeholder_events( 'input', $placeholder ) ).
 				' value="'.esc_attr( $value ).'" />'.
 				( empty( $len ) ? '' : ' <div id="text_'.$id.'-lenMsg"></div>' );
+
 			return $html;
 		}
 
@@ -447,25 +460,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function in_options( $idx, $is_preg = false ) {
-			if ( ! is_array( $this->options ) )
-				return false;
-
-			if ( $is_preg === false ) {
-				return isset( $this->options[$idx] ) ? 
-					true : false;
-			} else {
+			if ( $is_preg ) {
+				if ( ! is_array( $this->options ) ) return false;
 				$opts = SucomUtil::preg_grep_keys( $idx, $this->options );
-				return ( ! empty( $opts ) ) ? 
-					true : false;
-			}
+				return ( ! empty( $opts ) ) ? true : false;
+			} else return isset( $this->options[$idx] ) ? true : false;
 		}
 
 		public function in_defaults( $idx ) {
-			if ( ! is_array( $this->defaults ) )
-				return false;
-
-			return isset( $this->defaults[$idx] ) ? 
-				true : false;
+			return isset( $this->defaults[$idx] ) ? true : false;
 		}
 
 		private function get_text_len_js( $id ) {

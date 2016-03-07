@@ -551,34 +551,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		// localize the options array key
+		public static function get_key_locale( $key, &$opts = false, $get = 'current' ) {
+			$default = self::get_locale( 'default' );
+			$locale = self::get_locale( $get );
+			$key_locale = $key.'#'.$locale;
+			// the default language may have changed, so if we're using the default,
+			// check for a locale version for the default language
+			if ( $locale === $default )
+				return isset( $opts[$key_locale] ) ?
+					$key_locale : $key;
+			else return $key_locale;
+		}
+
 		// argument can also be a numeric post ID to return the language of that post
 		public static function get_locale( $mixed = 'current' ) {
 			switch ( true ) {
 				case ( $mixed === 'default' ):
-					$lang = defined( 'WPLANG' ) && WPLANG ?
-						WPLANG : 'en_US';
+					$lang = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
 					break;
 				default:
 					$lang = get_locale();
 					break;
 			}
 			return apply_filters( 'sucom_locale', $lang, $mixed );
-		}
-
-		// localize the options array key
-		public static function get_locale_key( $key, &$opts = false, $get = 'current' ) {
-
-			$default = self::get_locale( 'default' );
-			$new_key = self::get_locale( $get ) !== $default ?
-				$key.'#'.self::get_locale( $get ) : $key;
-
-			// fallback if the locale option key does not exist in the array
-			if ( is_array( $opts ) && $new_key !== $key ) {
-				if ( ! array_key_exists( $new_key, $opts ) )
-					return $key;	// may contain an empty value - that's ok
-			}
-
-			return $new_key;
 		}
 
 		public static function restore_checkboxes( &$opts ) {
@@ -590,7 +586,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$opts[$key] = 0;	// add missing checkbox as empty
 				unset ( $opts['is_checkbox_'.$key] );
 			}
-
 			return $opts;
 		}
 

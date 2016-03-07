@@ -158,7 +158,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$lang = empty( $this->p->options['fb_lang'] ) ? 
 					SucomUtil::get_locale( $post_id ) :
 					$this->p->options['fb_lang'];
-
 				$og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $post_id );
 			}
 
@@ -189,8 +188,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				}
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:publisher'] ) )
-					$og['article:publisher'] = $this->p->options['fb_publisher_url'];
+				if ( ! isset( $og['article:publisher'] ) ) {
+					$key_locale = SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options, $post_id );
+					$og['article:publisher'] = $this->p->options[$key_locale];
+				}
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:tag'] ) )
@@ -502,19 +503,19 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_site_name( $get = 'current' ) {
 			// provide options array to allow fallback if locale option does not exist
-			$key = SucomUtil::get_locale_key( 'og_site_name', $this->p->options, $get );
+			$key_locale = SucomUtil::get_key_locale( 'og_site_name', $this->p->options, $get );
 
-			if ( ! empty( $this->p->options[$key] ) )
-				return $this->p->options[$key];
+			if ( ! empty( $this->p->options[$key_locale] ) )
+				return $this->p->options[$key_locale];
 			else return get_bloginfo( 'name', 'display' );
 		}
 
 		public function get_site_desc( $get = 'current' ) {
 			// provide options array to allow fallback if locale option does not exist
-			$key = SucomUtil::get_locale_key( 'og_site_description', $this->p->options, $get );
+			$key_locale = SucomUtil::get_key_locale( 'og_site_description', $this->p->options, $get );
 
-			if ( ! empty( $this->p->options[$key] ) )
-				return $this->p->options[$key];
+			if ( ! empty( $this->p->options[$key_locale] ) )
+				return $this->p->options[$key_locale];
 			else return get_bloginfo( 'description', 'display' );
 		}
 
