@@ -999,6 +999,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					( $network ? '-network' : '' ) ).'</td></tr>'."\n";
 
 			$num = 0;
+			$lca = $this->p->cf['lca'];
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$total = count( $this->p->cf['plugin'] );
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				$num++;
@@ -1045,10 +1047,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'plugin action link', 'wpsso' ).'</a> (ZIP)';
 
 				if ( ! empty( $info['url']['purchase'] ) ) {
-					if ( $this->p->cf['lca'] === $ext || 
-						$this->p->check->aop( $this->p->cf['lca'], false, $this->p->is_avail['aop'] ) )
-							$links .= ' | <a href="'.$info['url']['purchase'].'" target="_blank">'.
-								_x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</a>';
+					if ( $lca === $ext || $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
+						$links .= ' | <a href="'.$info['url']['purchase'].'" target="_blank">'.
+							_x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</a>';
 					else $links .= ' | <em>'._x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</em>';
 				}
 
@@ -1085,10 +1086,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $this->p->cf['lca'] === $ext || 
-							$this->p->check->aop( $this->p->cf['lca'], 
-								true, $this->p->is_avail['aop'] ) ) {
-
+						if ( $lca === $ext || $aop ) {
 							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
@@ -1099,36 +1097,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td colspan="2">'.( $this->p->check->aop( $this->p->cf['lca'], 
-								true, $this->p->is_avail['aop'] ) ?
-									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
+							'</td><td colspan="2">'.( $aop ? '' :
+								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 				} else {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $this->p->cf['lca'] === $ext || 
-							$this->p->check->aop( $this->p->cf['lca'], 
-								true, $this->p->is_avail['aop'] ) ) {
-
+						if ( $lca === $ext || $aop ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-
 							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).
-							'</td><td><p>'.( empty( $qty_used ) ? 
-								'' : $qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
+							'</td><td><p>'.( empty( $qty_used ) ? '' :
+								$qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
 							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td>'.( $this->p->check->aop( $this->p->cf['lca'], 
-								true, $this->p->is_avail['aop'] ) ? 
-									'' : $this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
+							'</td><td>'.( $aop ? '' :
+								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
 				}

@@ -67,10 +67,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				// show all plugin options
 				$opts = $this->p->options;
 				foreach ( $opts as $key => $val ) {
-					switch ( true ) {
-						case ( strpos( $key, '_js_' ) !== false ):
-						case ( strpos( $key, '_css_' ) !== false ):
-						case ( preg_match( '/_(html|key|secret|tid)$/', $key ) ):
+					switch ( $key ) {
+						case ( strpos( $key, '_js_' ) !== false ? true : false ):
+						case ( strpos( $key, '_css_' ) !== false ? true : false ):
+						case ( preg_match( '/_(html|key|secret|tid)$/', $key ) ? true : false ):
 							$opts[$key] = '[removed]';
 							break;
 					}
@@ -83,47 +83,71 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		// extract certain key fields for reference and sanity checks
 		public function extract_head_info( &$head_mt, &$head_info = array() ) {
 
+			// default values defined in WpssoPost show_metabox_post(), etc.
+			$head_info['psn'] = false;	// post status name
+			$head_info['ptn'] = false;	// post type name
+			$head_info['post_id'] = false;	// post id
+			$head_info['term_id'] = false;	// term id
+			$head_info['user_id'] = false;	// user id
+
 			foreach ( $head_mt as $mt ) {
 				if ( ! isset( $mt[2] ) || 
 					! isset( $mt[3] ) )
 						continue;
-
-				// any time we're outside an og:image block, set $is_first_image to false
-				if ( strpos( $mt[3], 'og:image' ) !== 0 )
-					$is_first_image = false;
-
-				switch ( $mt[2].'-'.$mt[3] ) {
-					case 'property-og:image:secure_url':
-					case 'property-og:image:url':
-					case 'property-og:image':
-						if ( ! isset( $head_info['og:image'] ) ) {
-							// only define og:image for simplicity
-							$head_info['og:image'] = $mt[5];
-							$is_first_image = true;
-						}
-						break;
-
-					case 'property-og:image:width':
-					case 'property-og:image:height':
-						// save the width / height for the first image only
-						if ( $is_first_image === true )
-							$head_info[$mt[3]] = $mt[5];
-						break;
-
+				$mt_match = $mt[2].'-'.$mt[3];
+				switch ( $mt_match ) {
 					case 'property-og:type':
 					case 'property-og:title':
 					case 'property-og:description':
 					case 'name-author':
+					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
 						if ( ! isset( $head_info[$mt[3]] ) )
 							$head_info[$mt[3]] = $mt[5];
+						break;
+					case ( preg_match( '/^property-([a-z]+:(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+						if ( ! empty( $mt[5] ) )
+							$has_media[$m[1]] = true;		// optimize media loop
 						break;
 				}
 			}
 
-			// save the schema item type key for JSON extension
-			// example: article, article.news, article.tech, etc.
-			$head_info['schema:head_type'] = $this->p->schema->get_head_item_type( false, false, true );	// $ret_key = true
+			// save first image and video information
+			// assumes array key order defined by SucomUtil::get_mt_prop_image() 
+			// and SucomUtil::get_mt_prop_video()
+			foreach ( array( 'og:image', 'og:video', 'pinterest:image' ) as $prefix ) {
+				if ( empty( $has_media[$prefix] ) )
+					continue;
+				$is_first = false;
+				foreach ( $head_mt as $mt ) {
+					if ( ! isset( $mt[2] ) || 
+						! isset( $mt[3] ) )
+							continue;
+					if ( strpos( $mt[3], $prefix ) !== 0 ) {
+						$is_first = false;
+						// if we already found media, then skip to the next media prefix
+						if ( ! empty( $head_info[$prefix] ) )
+							continue 2;
+						else continue;	// skip meta tags without matching prefix
+					}
+					$mt_match = $mt[2].'-'.$mt[3];
+					switch ( $mt_match ) {
+						case ( preg_match( '/^property-'.$prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+							if ( ! empty( $head_info[$prefix] ) )	// only save the media URL once
+								continue 2;			// get the next meta tag
+							if ( ! empty( $mt[5] ) ) {
+								$head_info[$prefix] = $mt[5];	// save the media URL
+								$is_first = true;
+							}
+							break;
 
+						case ( preg_match( '/^property-'.$prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
+							if ( $is_first !== true )		// only save for first media found
+								continue 2;			// get the next meta tag
+							$head_info[$mt[3]] = $mt[5];
+							break;
+					}
+				}
+			}
 			return $head_info;
 		}
 
@@ -270,6 +294,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_schema = $this->p->schema->get_meta_array( $use_post, $post_obj, $mt_og, $crawler_name );
 
 			/*
+			 * JSON-LD script array - execute before mergse to set some internal $mt_og meta tags
+			 */
+			$mt_json_array = $this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $user_id );
+
+			/*
 			 * Combine and return all meta tags
 			 */
 			$header_array = array_merge(
@@ -284,7 +313,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
 				$this->p->schema->get_noscript_array( $use_post, $post_obj, $mt_og, $post_id, $user_id ),
-				$this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $user_id )
+				$mt_json_array
 			);
 
 			/*
@@ -304,60 +333,92 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/*
-		 * Loops through the arrays (1 to 3 dimensions) and calls get_single_mt() for each
+		 * Loops through the arrays and calls get_single_mt() for each
 		 */
 		private function get_mt_array( $tag = 'meta', $type = 'property', &$mt_array, $use_post = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( count( $mt_array ).' '.$tag.' '.$type.' to process' );
 				$this->p->debug->log( $mt_array );
 			}
-			$ret = array();
+
 			if ( empty( $mt_array ) )
-				return $ret;
+				return array();
 			elseif ( ! is_array( $mt_array ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: mt_array argument is not an array' );
-				return $ret;
+				return array();
 			}
-			foreach ( $mt_array as $f_name => $f_val ) {					// 1st-dimension array (associative)
-				if ( is_array( $f_val ) ) {
-					if ( empty( $f_val ) )						// allow hooks to modify the value
-						$ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
-							$f_name, null, '', $use_post ) );
-					else foreach ( $f_val as $s_num => $s_val ) {			// 2nd-dimension array
-						if ( SucomUtil::is_assoc( $s_val ) ) {
-							foreach ( $s_val as $t_name => $t_val )		// 3rd-dimension array (associative)
-								$ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
-									$t_name, $t_val, $f_name.':'.( $s_num + 1 ), $use_post ) );
-						} else $ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
-							$f_name, $s_val, $f_name.':'.( $s_num + 1 ), $use_post ) );
+
+			$singles = array();
+			foreach ( $mt_array as $d_name => $d_val ) {	// 1st-dimension array (associative)
+				if ( is_array( $d_val ) ) {
+					if ( empty( $d_val ) ) {	// allow hooks to modify the value
+						$singles[] = $this->get_single_mt( $tag,
+							$type, $d_name, null, '', $use_post );
+					} else foreach ( $d_val as $dd_num => $dd_val ) {	// 2nd-dimension array
+						if ( SucomUtil::is_assoc( $dd_val ) ) {
+							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// 3rd-dimension array (associative)
+								if ( is_array( $ddd_val ) ) {
+									if ( empty( $ddd_val ) ) {
+										$singles[] = $this->get_single_mt( $tag,
+											$type, $ddd_name, null, '', $use_post );
+									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// 4th-dimension array
+										$singles[] = $this->get_single_mt( $tag,
+											$type, $ddd_name, $dddd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
+									}
+								} else $singles[] = $this->get_single_mt( $tag,
+									$type, $ddd_name, $ddd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
+							}
+						} else $singles[] = $this->get_single_mt( $tag,
+							$type, $d_name, $dd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
 					}
-				} else $ret = array_merge( $ret, $this->get_single_mt( $tag, $type, 
-					$f_name, $f_val, '', $use_post ) );
+				} else $singles[] = $this->get_single_mt( $tag,
+					$type, $d_name, $d_val, '', $use_post );
 			}
-			return $ret;
+
+			$merged = array();
+			foreach ( $singles as $num => $element ) {
+				foreach ( $element as $parts )
+					$merged[] = $parts;
+				unset ( $singles[$num] );
+			}
+
+			return $merged;
 		}
 
 		public function get_single_mt( $tag = 'meta', $type = 'property', $name, $value = '', $cmt = '', $use_post = false ) {
 
-			// known exceptions for the 'property' $type
-			if ( $tag === 'meta' && $type === 'property' && 
-				( strpos( $name, 'twitter:' ) === 0 || strpos( $name, ':' ) === false ) )
-					$type = 'name';
+			// check for known exceptions for the 'property' $type
+			if ( $tag === 'meta' && $type === 'property' ) {
+				switch ( $name ) {
+					// optimize by matching known values first
+					case ( strpos( $name, 'og:' ) === 0 ||
+						strpos( $name, 'article:' ) === 0 ? true : false ):
+						// $type is already property
+						break;
+					case ( strpos( $name, ':' ) === false ? true : false ):
+					// schema is an internal set of meta tags
+					case ( strpos( $name, 'twitter:' ) === 0 ||
+						strpos( $name, 'schema:' ) === 0 ? true : false ):
+						$type = 'name';
+						break;
+				}
+			}
 
 			$ret = array();
 			$attr = $tag === 'link' ? 'href' : 'content';
-			$log_pre = $tag.' '.$type.' '.$name;
+			$log_prefix = $tag.' '.$type.' '.$name;
 			$charset = get_bloginfo( 'charset' );
 
 			if ( is_array( $value ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' value is an array (skipped)' );
+					$this->p->debug->log( $log_prefix.' value is an array (skipped)' );
 				return $ret;
 
 			} elseif ( is_object( $value ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' value is an object (skipped)' );
+					$this->p->debug->log( $log_prefix.' value is an object (skipped)' );
 				return $ret;
 			}
 
@@ -372,7 +433,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					// add secure_url for open graph images and videos
 					if ( strpos( $value, 'https:' ) === 0 ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $log_pre.' adding secure_url for '.$value );
+							$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
 						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url',
 							$attr, $value, $cmt );
 						$value = preg_replace( '/^https:/', 'http:', $value );
@@ -382,7 +443,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:secure_url':
 					if ( strpos( $value, 'https:' ) !== 0 ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $log_pre.' is not https (skipped)' );
+							$this->p->debug->log( $log_prefix.' is not https (skipped)' );
 						return $ret;
 					}
 					break;
@@ -397,36 +458,44 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
 					$parts = $this->filter_single_mt( $parts, $use_post );
 
-				$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+				$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' = "'.$parts[5].'"' );
+					$this->p->debug->log( $log_prefix.' = "'.$parts[5].'"' );
 
 				if ( $parts[5] === '' || $parts[5] === null ) {		// allow for 0
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $log_pre.' value is empty (skipped)' );
+						$this->p->debug->log( $log_prefix.' value is empty (skipped)' );
 
-				} elseif ( $parts[5] == -1 ) {				// -1 is reserved
+				} elseif ( $parts[5] === -1 || $parts[5] === '-1' ) {	// -1 is reserved
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $log_pre.' value is -1 (skipped)' );
+						$this->p->debug->log( $log_prefix.' value is -1 (skipped)' );
 
-				} elseif ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ) {
-
-					// change meta itemtype "image.url" to "url" (for example)
+				/*
+				 * Encode and escape all values, regardless if the meta tag is enabled or not.
+				 *
+				 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
+				 */
+				} else {
 					if ( $parts[1] === 'meta' && 
 						$parts[2] === 'itemprop' && 
 							strpos( $parts[3], '.' ) !== 0 )
-								$parts[3] = preg_replace( '/^.*\./', '', $parts[3] );
+								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+					else $match_name = $parts[3];
 
-					switch ( $parts[3] ) {
+					// boolean values are converted to their string equivalent
+					if ( is_bool( $parts[5] ) )
+						$parts[5] = $parts[5] ? 'true' : 'false';
+
+					switch ( $match_name ) {
 						case 'og:url':
 						case 'og:image':
 						case 'og:image:url':
 						case 'og:image:secure_url':
 						case 'og:video':
 						case 'og:video:url':
-						case 'og:video:url:secure_url':
-						case 'og:video:url:embed_url':
+						case 'og:video:secure_url':
+						case 'og:video:embed_url':
 						case 'twitter:image':
 						case 'twitter:player':
 						case 'canonical':
@@ -447,35 +516,37 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 					}
 
-					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
-						'<'.$parts[1].' '.$parts[2].'="'.$parts[3].'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
+					if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$match_name] ) ) {
+						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
+							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_prefix.' is disabled (skipped)' );
 
-					$ret[$num] = $parts;
-
-				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' is disabled (skipped)' );
+					$ret[$num] = $parts;	// save the HTML and encoded value
+				}
 			}
+
 			return $ret;
 		}
 
 		// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
 		// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 		private function filter_single_mt( &$parts, &$use_post ) {
-			$log_pre = $parts[1].' '.$parts[2].' '.$parts[3];
+			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 			$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
 			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
 
 			if ( $parts[5] !== $new_value ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_pre.' (original) = "'.$parts[5].'"' );
+					$this->p->debug->log( $log_prefix.' (original) = "'.$parts[5].'"' );
 				if ( is_array( $new_value ) ) {
 					foreach( $new_value as $key => $value ) {
-						$this->p->debug->log( $log_pre.' (filtered:'.$key.') = "'.$value.'"' );
+						$this->p->debug->log( $log_prefix.' (filtered:'.$key.') = "'.$value.'"' );
 						$parts[6] = $parts[3].':'.( is_numeric( $key ) ? $key + 1 : $key );
 						$parts[5] = $value;
 					}
 				} else {
-					$this->p->debug->log( $log_pre.' (filtered) = "'.$new_value.'"' );
+					$this->p->debug->log( $log_prefix.' (filtered) = "'.$new_value.'"' );
 					$parts[5] = $new_value;
 				}
 			}

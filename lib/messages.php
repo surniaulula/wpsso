@@ -175,6 +175,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_vid_url':
 							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video URL Custom Field' ).' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
 						 	break;
+						case 'tooltip-meta-og_vid_title':
+						case 'tooltip-meta-og_vid_desc':
+							$text = sprintf( __( 'The %1$s video API modules retrieve the video name / title and description <em>when available</em>.', 'wpsso' ), $atts['short_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
+							break;
 						case 'tooltip-meta-og_vid_max':
 							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.';
 						 	break;
@@ -195,10 +199,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 * Post Meta settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-post-' ) === 0 ) {
-					$ptn = empty( $atts['ptn'] ) ? 'Post' : $atts['ptn'];
+					$ptn = empty( $atts['ptn'] ) ?
+						'Post' : $atts['ptn'];
 					switch ( $idx ) {
 						case 'tooltip-post-og_art_section':
-							$text = 'A custom topic, different from the default Article Topic selected in the General Settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag.';
+							$text = 'A custom topic, different from the default Article Topic selected in the General Settings. The Facebook / Open Graph \'og:type\' meta tag must be an \'article\' to enable this option. The value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the \'article:section\' meta tag.';
 						 	break;
 						case 'tooltip-post-og_desc':
 							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the content, or excerpt if one is available, and is refreshed when the (draft or published) '.$ptn.' is saved. Update and save this description to change the default value of all other description fields.';
@@ -264,7 +269,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Description' settings
 						 */
 						case 'tooltip-og_art_section':
-							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[none]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
+							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
 							break;
 						case 'tooltip-og_site_name':
 							$text = 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Site Title value</a>.';
@@ -300,10 +305,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'If the \'%1$s\' (and the \'%2$s\' in the Google settings below) is not a valid URL, then %3$s can fallback to using the author index / archive page on this website (for example, \'%4$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), _x( 'Author Link URL Field', 'option label', 'wpsso' ), $atts['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-og_def_author_id':
-							$text = 'A default author for webpages <em>missing authorship information</em> (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[none]</em> (the default).';
+							$text = 'A default author for webpages <em>missing authorship information</em> (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default).';
 							break;
 						case 'tooltip-og_def_author_on_index':
-							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.). If this option is checked, index webpages will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked). If the Default Author is <em>[none]</em>, then the index webpages will be labeled as a \'website\'.';
+							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.). If this option is checked, index webpages will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked). If the Default Author is <em>[None]</em>, then the index webpages will be labeled as a \'website\'.';
 							break;
 						case 'tooltip-og_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
@@ -496,7 +501,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $idx ) {
 						// located under the Facebook tab
 						case 'tooltip-google_author_name':
-							$text = sprintf( __( 'Select an "<strong>%1$s</strong>" for the \'%2$s\' meta tag or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'author' ).' Facebook uses the \'author\' meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
+							$text = sprintf( __( 'Select an "<strong>%1$s</strong>" for the \'%2$s\' meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'author' ).' Facebook uses the \'author\' meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
 							break;
 						case 'tooltip-google_publisher_url':
 							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
@@ -508,7 +513,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = $atts['short'].' can include an <em>author</em> and <em>publisher</em> link in your webpage headers. These are not Facebook / Open Graph and Pinterest Rich Pin meta property tags &mdash; they are used primarily by Google\'s search engine to associate Google+ profiles with search results. Select which field to use from the author\'s profile for the <em>author</em> link tag.';
 							break;
 						case 'tooltip-google_def_author_id':
-							$text = 'A default author for webpages missing authorship information (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[none]</em> (the default). This option is similar to the Facebook / Open Graph and Pinterest Rich Pin Default Author, except that it\'s applied to the Link meta tag instead.';
+							$text = 'A default author for webpages missing authorship information (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default). This option is similar to the Facebook / Open Graph and Pinterest Rich Pin Default Author, except that it\'s applied to the Link meta tag instead.';
 							break;
 						case 'tooltip-google_def_author_on_index':
 							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.).';
@@ -538,7 +543,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
 							break;
 						case 'tooltip-google_schema_author_name':
-							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[none]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[None]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-google_schema_home_page':
 							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
@@ -585,7 +590,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$this->p->opt->get_defaults( 'rp_img_width' ).'x'.$this->p->opt->get_defaults( 'rp_img_height' ).' '.( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'un' : '' ).'cropped). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-rp_author_name':
-							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'A different \'article:author\' meta tag can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' for the \'%2$s\' meta tag or \'[none]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
+							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'A different \'article:author\' meta tag can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' for the \'%2$s\' meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
 							break;
 						case 'tooltip-rp_dom_verify':
 							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );

@@ -28,74 +28,56 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				sprintf( __( 'Save a draft version or publish the %s to update this value.',
 					'wpsso' ), $head_info['ptn'] ).'</em></td>';
 
-			$disable_article = isset( $head_info['og:type'] ) &&
+			$disable_og_article = isset( $head_info['og:type'] ) &&
 				$head_info['og:type'] === 'article' ?
 					false : true;
 
 			$rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$rows['og_art_section'] = ( $disable_article ? '<tr class="hide_in_basic">' : '' ).
+			$rows['og_art_section'] = ( $disable_og_article ? '<tr class="hide_in_basic">' : '' ).
 			$this->p->util->get_th( _x( 'Article Topic',
-				'option label', 'wpsso' ), 'medium', 'post-og_art_section', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'post-og_art_section' ).
 			'<td class="blank">'.$this->p->options['og_art_section'].'</td>';
 
-			if ( $post_status == 'auto-draft' )
-				$rows['og_title'] = $this->p->util->get_th( _x( 'Default Title',
-					'option label', 'wpsso' ), 'medium', 'meta-og_title', $head_info ).
-						$td_save_draft;
-			else $rows['og_title'] = $this->p->util->get_th( _x( 'Default Title',
-					'option label', 'wpsso' ), 'medium', 'meta-og_title', $head_info ). 
+			$rows['og_title'] = $this->p->util->get_th( _x( 'Default Title',
+				'option label', 'wpsso' ), 'medium', 'meta-og_title' ). 
+			( $post_status === 'auto-draft' ? $td_save_draft :
 				'<td class="blank">'.$this->p->webpage->get_title( $this->p->options['og_title_len'],
-					'...', true, true, false, true, 'none' ).'</td>';	// $use_post = true, $md_idx = 'none'
+					'...', true, true, false, true, 'none' ).'</td>' );	// $use_post = true, $md_idx = 'none'
 		
-			if ( $post_status == 'auto-draft' )
-				$rows['og_desc'] = $this->p->util->get_th( _x( 'Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description',
-					'option label', 'wpsso' ), 'medium', 'post-og_desc', $head_info ).
-						$td_save_draft;
-			else $rows['og_desc'] = $this->p->util->get_th( _x( 'Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description',
-					'option label', 'wpsso' ), 'medium', 'post-og_desc', $head_info ).
+			$rows['og_desc'] = $this->p->util->get_th( _x( 'Default (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin) Description',
+				'option label', 'wpsso' ), 'medium', 'post-og_desc', $head_info ).	// $head_info required for 'ptn'
+			( $post_status === 'auto-draft' ? $td_save_draft :
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['og_desc_len'],
-					'...', true, true, true, true, 'none' ).'</td>';	// $use_post = true, $md_idx = 'none'
+					'...', true, true, true, true, 'none' ).'</td>' );	// $use_post = true, $md_idx = 'none'
 	
-			if ( $post_status == 'auto-draft' )
-				$rows['schema_desc'] = $this->p->util->get_th( _x( 'Google / Schema Description',
-					'option label', 'wpsso' ), 'medium', 'meta-schema_desc', $head_info ).
-						$td_save_draft;
-			else $rows['schema_desc'] = $this->p->util->get_th( _x( 'Google / Schema Description',
-					'option label', 'wpsso' ), 'medium', 'meta-schema_desc', $head_info ).
+			$rows['schema_desc'] = $this->p->util->get_th( _x( 'Google / Schema Description',
+				'option label', 'wpsso' ), 'medium', 'meta-schema_desc' ).
+			( $post_status === 'auto-draft' ? $td_save_draft :
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
-					'...', true ).'</td>';
+					'...', true ).'</td>' );
 	
 			$disable_seo_desc = $this->p->options['add_meta_name_description'] ? false : true;
-			if ( $post_status == 'auto-draft' )
-				$rows['seo_desc'] = $this->p->util->get_th( _x( 'Google Search / SEO Description',
-					'option label', 'wpsso' ), 'medium', 'meta-seo_desc', $head_info ).
-						$td_save_draft;
-			else $rows['seo_desc'] = ( $disable_seo_desc ? '<tr class="hide_in_basic">' : '' ).
-				$this->p->util->get_th( _x( 'Google Search / SEO Description',
-					'option label', 'wpsso' ), 'medium', 'meta-seo_desc', $head_info ).
+			$rows['seo_desc'] = ( $disable_seo_desc ? '<tr class="hide_in_basic">' : '' ).
+			$this->p->util->get_th( _x( 'Google Search / SEO Description',
+				'option label', 'wpsso' ), 'medium', 'meta-seo_desc' ).
+			( $post_status === 'auto-draft' ? $td_save_draft :
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
-					'...', true, true, false ).'</td>';			// $add_hashtags = false
+					'...', true, true, false ).'</td>' );			// $add_hashtags = false
 
-			if ( $post_status == 'auto-draft' )
-				$rows['tc_desc'] = $this->p->util->get_th( _x( 'Twitter Card Description',
-					'option label', 'wpsso' ), 'medium', 'meta-tc_desc', $head_info ).
-						$td_save_draft;
-			else $rows['tc_desc'] = $this->p->util->get_th( _x( 'Twitter Card Description',
-					'option label', 'wpsso' ), 'medium', 'meta-tc_desc', $head_info ).
+			$rows['tc_desc'] = $this->p->util->get_th( _x( 'Twitter Card Description',
+				'option label', 'wpsso' ), 'medium', 'meta-tc_desc' ).
+			( $post_status === 'auto-draft' ? $td_save_draft :
 				'<td class="blank">'.$this->p->webpage->get_description( $this->p->options['tc_desc_len'],
-					'...', true ).'</td>';
+					'...', true ).'</td>' );
 
-			if ( $post_type === 'attachment' || $post_status !== 'auto-draft' )
-				$rows['sharing_url'] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( _x( 'Sharing URL',
-					'option label', 'wpsso' ), 'medium', 'meta-sharing_url', $head_info ).
-				'<td class="blank">'.$this->p->util->get_sharing_url( true ).'</td>';	// use_post = true
-			else $rows['sharing_url'] = '<tr class="hide_in_basic">'.
-				$this->p->util->get_th( _x( 'Sharing URL',
-					'option label', 'wpsso' ), 'medium', 'meta-sharing_url', $head_info ).
-						$td_save_draft;
+			$rows['sharing_url'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Sharing URL',
+				'option label', 'wpsso' ), 'medium', 'meta-sharing_url' ).
+			( $post_type === 'attachment' || $post_status !== 'auto-draft' ?
+				'<td class="blank">'.$this->p->util->get_sharing_url( true ).'</td>' :	// use_post = true
+				$td_save_draft );
 
 			return $rows;
 		}
@@ -109,39 +91,62 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				_x( 'All Social Websites / Open Graph',
 					'metabox title', 'wpsso' ).'</h4></td>';
 
+			$rows[] = '<td></td><td><h5>'.
+				_x( 'Priority Image Information',
+					'metabox title', 'wpsso' ).'</h5></td>';
+
 			$rows['og_img_dimensions'] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Image Dimensions',
 				'option label', 'wpsso' ), 'medium', 'og_img_dimensions' ).
 			'<td class="blank">'.$form->get_image_dimensions_text( 'og_img', true ).'</td>';
 
 			$rows['og_img_id'] = $this->p->util->get_th( _x( 'Image ID',
-				'option label', 'wpsso' ), 'medium', 'meta-og_img_id', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_img_id' ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows['og_img_url'] = $this->p->util->get_th( _x( 'or an Image URL',
-				'option label', 'wpsso' ), 'medium', 'meta-og_img_url', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_img_url' ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows['og_img_max'] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Maximum Images',
-				'option label', 'wpsso' ), 'medium', 'meta-og_img_max', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_img_max' ).
 			'<td class="blank">'.$this->p->options['og_img_max'].'</td>';
 
+			$rows[] = '<td></td><td><h5>'.
+				_x( 'Priority Video Information',
+					'metabox title', 'wpsso' ).'</h5></td>';
+
 			$rows['og_vid_embed'] = $this->p->util->get_th( _x( 'Video Embed HTML',
-				'option label', 'wpsso' ), 'medium', 'meta-og_vid_embed', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_embed' ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows['og_vid_url'] = $this->p->util->get_th( _x( 'or a Video URL',
-				'option label', 'wpsso' ), 'medium', 'meta-og_vid_url', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_url' ).
+			'<td class="blank">&nbsp;</td>';
+
+			$rows['og_vid_title'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Video Name / Title',
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_title' ).
+			'<td class="blank">&nbsp;</td>';
+
+			$rows['og_vid_desc'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Video Description',
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_desc' ).
+			'<td class="blank">&nbsp;</td>';
+
+			$rows['og_vid_desc'] = '<tr class="hide_in_basic">'.
+			$this->p->util->get_th( _x( 'Video Description',
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_desc' ).
 			'<td class="blank">&nbsp;</td>';
 
 			$rows['og_vid_max'] = '<tr class="hide_in_basic">'.
 			$this->p->util->get_th( _x( 'Maximum Videos',
-				'option label', 'wpsso' ), 'medium', 'meta-og_vid_max', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_max' ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 
 			$rows['og_vid_prev_img'] = $this->p->util->get_th( _x( 'Include Preview Image(s)',
-				'option label', 'wpsso' ), 'medium', 'meta-og_vid_prev_img', $head_info ).
+				'option label', 'wpsso' ), 'medium', 'meta-og_vid_prev_img' ).
 			'<td class="blank">'.$form->get_no_checkbox( 'og_vid_prev_img' ).'</td>';
 
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
@@ -158,12 +163,12 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 	
 				$rows['rp_img_id'] = '<tr class="hide_in_basic">'.
 				$this->p->util->get_th( _x( 'Image ID',
-					'option label', 'wpsso' ), 'medium', 'meta-rp_img_id', $head_info ).
+					'option label', 'wpsso' ), 'medium', 'meta-rp_img_id' ).
 				'<td class="blank">&nbsp;</td>';
 	
 				$rows['rp_img_url'] = '<tr class="hide_in_basic">'.
 				$this->p->util->get_th( _x( 'or an Image URL',
-					'option label', 'wpsso' ), 'medium', 'meta-rp_img_url', $head_info ).
+					'option label', 'wpsso' ), 'medium', 'meta-rp_img_url' ).
 				'<td class="blank">&nbsp;</td>';
 			}
 

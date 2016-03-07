@@ -308,16 +308,17 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			$og_ret = array();
-			$use_prev_img = $this->p->options['og_vid_prev_img'];	// default value
+			$lca = $this->p->cf['lca'];
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$use_prev_img = $this->p->options['og_vid_prev_img'];	// default option value
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$mod_obj = null;
 
-			if ( $this->p->check->aop() ) {
-
+			if ( $aop ) {
 				list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( false, $id, $mod_name );
-
 				if ( ! empty( $mod_obj ) ) {
 					if ( ( $mod_prev_img = $mod_obj->get_options( $id, 'og_vid_prev_img' ) ) !== null ) {
-						$use_prev_img = $mod_prev_img;
+						$use_prev_img = $mod_prev_img;	// use module option value
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'setting use_prev_img to '.
 								$use_prev_img.' from meta data' );
@@ -326,31 +327,46 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				}
 			}
 
-			if ( count( $og_ret ) < 1 && $this->p->util->force_default_video() )
-				return array_merge( $og_ret, $this->p->media->get_default_video( $num_diff, $check_dupes ) );
+			if ( count( $og_ret ) < 1 && $this->p->util->force_default_video() ) {
+				$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_diff, $check_dupes ) );
 
-			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			} else {
+				$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-			// if we haven't reached the limit of videos yet, keep going
-			if ( $mod_name === 'post' && 
-				! $this->p->util->is_maxed( $og_ret, $num ) )
-					$og_ret = array_merge( $og_ret, 
-						$this->p->media->get_content_videos( $num_diff, 
-							$id, $check_dupes ) );
+				if ( $mod_name === 'post' && 
+					! $this->p->util->is_maxed( $og_ret, $num ) )
+						$og_ret = array_merge( $og_ret, 
+							$this->p->media->get_content_videos( $num_diff, 
+								$id, $check_dupes ) );
 
-			$this->p->util->slice_max( $og_ret, $num );
+				$this->p->util->slice_max( $og_ret, $num );
 
-			if ( empty( $use_prev_img ) && $force_prev_img === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'use_prev_img is 0 and force_prev_img is false - removing video preview images' );
-				foreach ( $og_ret as $num => $og_video ) {
-					unset ( 
-						$og_ret[$num]['og:video:has_image'],
-						$og_ret[$num]['og:image:secure_url'],
-						$og_ret[$num]['og:image'],
-						$og_ret[$num]['og:image:width'],
-						$og_ret[$num]['og:image:height']
-					);
+				if ( empty( $use_prev_img ) && 
+					$force_prev_img === false ) {
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'use_prev_img and force_prev_img are false: removing video preview images' );
+					foreach ( $og_ret as $num => $og_video ) {
+						$og_ret[$num]['og:video:has_image'] = false;
+						foreach( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $og_video ) as $k => $v )
+							unset ( $og_ret[$num][$k] );
+					}
+				}
+			}
+
+			// if $md_pre is 'none' (special index keyword), don't load custom video title / description
+			if ( $aop && ! empty( $mod_obj ) && $md_pre !== 'none' ) {
+				foreach ( array(
+					'og_vid_title' => 'og:video:title',
+					'og_vid_desc' => 'og:video:description',
+				) as $key => $tag ) {
+					$value = $mod_obj->get_options( $id, $key );
+					if ( ! empty( $value ) ) {
+						foreach ( $og_ret as $num => $og_video ) {
+							$og_ret[$num][$tag] = $value;
+							break;	// only do the first video
+						}
+					}
 				}
 			}
 
@@ -502,42 +518,71 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			else return get_bloginfo( 'description', 'display' );
 		}
 
+		// deprecated on 2016/03/07
+		public function get_the_media_urls( $size_name, $post_id, $md_pre = 'og', $items = array( 'image', 'video' ) ) {
+			return array_values( $this->get_the_media_info( $size_name, $post_id, $md_pre, $items ) );
+		}
+
+		// used by some sharing buttons (buffer, pinterest, tumblr)
+		// creates image and video information for a specific $size_name ('wpsso-buffer-button' for example)
 		// the returned array can include a varying number of elements, depending on the $items value
-		public function get_the_media_urls( $size_name = 'thumbnail', 
-			$post_id, $md_pre = 'og', $items = array( 'image', 'video' ) ) {
+		public function get_the_media_info( $size_name, $post_id, $md_pre = 'og', $items = array() ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-			
+
 			$ret = array();
+			$og_image = null;
+			$og_video = null;
+			$image_url = null;
+			$preview_url = null;
+
+			// get the media first
 			foreach ( $items as $item ) {
 				switch ( $item ) {
 					case 'pid':
-					case 'image':
-						if ( ! isset( $og_image ) )
+					case ( preg_match( '/^(image|img)/', $item ) ? true : false ):
+						if ( $og_image === null )	// only get images once
 							$og_image = $this->get_all_images( 1, $size_name, $post_id, false, $md_pre );
 						break;
-					case 'video':
-					case 'preview':
-						if ( ! isset( $og_video ) )
+					case ( preg_match( '/^(prev|vid)/', $item ) ? true : false ):
+						if ( $og_video === null )	// only get videos once
 							$og_video = $this->get_all_videos( 1, $post_id, 'post', false, $md_pre, true );
 						break;
 				}
+			}
+
+			foreach ( $items as $item ) {
 				switch ( $item ) {
 					case 'pid':
-						$ret[] = self::get_og_media_url( 'pid', $og_image );
+						$ret[$item] = self::get_first_media_info( 'og:image:id', $og_image );
 						break;
 					case 'image':
-						$ret[] = self::get_og_media_url( 'image', $og_image );
+					case 'img_url':
+						$image_url = self::get_first_media_info( 'og:image', $og_image );
+						// get the preview image, if there is one
+						if ( empty( $image_url ) && $og_video !== null )
+							$image_url = $preview_url = self::get_first_media_info( 'og:image', $og_video );
+						$ret[$item] = $image_url;
 						break;
 					case 'video':
-						$ret[] = self::get_og_media_url( 'video', $og_video );
+					case 'vid_url':
+						$ret[$item] = self::get_first_media_info( 'og:video', $og_video );
 						break;
+					case 'vid_title':
+						$ret[$item] = self::get_first_media_info( 'og:video:title', $og_video );
+						break;
+					case 'vid_desc':
+						$ret[$item] = self::get_first_media_info( 'og:video:description', $og_video );
+						break;
+					case 'prev_url':
 					case 'preview':
-						$ret[] = self::get_og_media_url( 'image', $og_video );
+						if ( $preview_url !== null )
+							$preview_url = self::get_first_media_info( 'og:image', $og_video );
+						$ret[$item] = $preview_url;
 						break;
 					default:
-						$ret[] = '';
+						$ret[$item] = '';
 						break;
 				}
 			}
@@ -548,30 +593,37 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return $ret;
 		}
 
-		public static function get_og_media_url( $name, $og, $mt_pre = 'og' ) {
-			if ( ! empty( $og ) && is_array( $og ) ) {
+		// deprecated on 2016/03/07
+		public static function get_first_media_url( $prefix, $og ) {
+			return self::get_first_media_info( $prefix, $og );
+		}
 
-				$media = reset( $og );
+		public static function get_first_media_info( $prefix, $og ) {
+			if ( empty( $og ) || 
+				! is_array( $og ) )
+					return '';
 
-				switch ( $name ) {
-					case 'pid':
-						$search = array(
-							$mt_pre.':image:id',
-						);
-						break;
-					default:
-						$search = array(
-							$mt_pre.':'.$name.':secure_url',
-							$mt_pre.':'.$name.':url',
-							$mt_pre.':'.$name,
-						);
-						break;
+			switch ( $prefix ) {
+				// search all three values, in order of preference
+				case ( preg_match( '/^og:(image|video)(:secure_url|:url)?$/', $prefix ) ? true : false ):
+					$search = array(
+						$prefix.':secure_url',	// og:image:secure_url
+						$prefix.':url',		// og:image:url
+						$prefix,		// og:image
+					);
+					break;
+				default:
+					$search = array( $prefix );
+					break;
+			}
+
+			$og_media = reset( $og );	// only search the first media array
+
+			foreach ( $search as $key ) {
+				if ( ! empty( $og_media[$key] ) && 
+					$og_media[$key] !== -1 ) {
+						return $og_media[$key];
 				}
-
-				foreach ( $search as $key )
-					if ( ! empty( $media[$key] ) &&
-						$media[$key] != -1 )	// just in case
-							return $media[$key];
 			}
 
 			return '';

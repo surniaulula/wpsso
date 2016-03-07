@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.26.1',		// plugin version
+					'version' => '3.27.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso415',				// increment when changing default options
+				'version' => 'sso416',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_add_noscript' => 1,
@@ -432,15 +432,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:title' => 1,
 					'add_meta_property_og:type' => 1,
 					'add_meta_property_og:url' => 1,
-					'add_meta_property_og:image' => 1,
 					'add_meta_property_og:image:secure_url' => 1,
+					'add_meta_property_og:image' => 1,
 					'add_meta_property_og:image:width' => 1,
 					'add_meta_property_og:image:height' => 1,
-					'add_meta_property_og:video:url' => 1,
 					'add_meta_property_og:video:secure_url' => 1,
+					'add_meta_property_og:video:url' => 1,
+					'add_meta_property_og:video:type' => 1,
 					'add_meta_property_og:video:width' => 1,
 					'add_meta_property_og:video:height' => 1,
-					'add_meta_property_og:video:type' => 1,
+					'add_meta_property_og:video:tag' => 1,
 					'add_meta_property_og:altitude' => 1,
 					'add_meta_property_og:latitude' => 1,
 					'add_meta_property_og:longitude' => 1,
@@ -769,18 +770,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'disabled' => '(option disabled)',
 				),
 				'script_locations' => array(
-					'none' => '[none]',
+					'none' => '[None]',
 					'header' => 'Header',
 					'footer' => 'Footer',
 				),
 				'caption_types' => array(
-					'none' => '[none]',
+					'none' => '[None]',
 					'title' => 'Title Only',
 					'excerpt' => 'Excerpt Only',
 					'both' => 'Title and Excerpt',
 				),
 				'user_name_fields' => array(
-					'none' => '[none]',
+					'none' => '[None]',
 					'fullname' => 'First and Last Names',
 					'display_name' => 'Display Name',
 					'nickname' => 'Nickname',
@@ -805,7 +806,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'bottom' => 'Bottom',
 				),
 				'shorteners' => array(
-					'none' => '[none]',
+					'none' => '[None]',
 					'bitly' => 'Bit.ly (suggested)',
 					'googl' => 'Goo.gl',
 					'owly' => 'Ow.ly',

@@ -109,16 +109,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			// all meta modules set this property, so use it to optimize code execution
 			if ( ! empty( WpssoMeta::$head_meta_tags ) 
 				|| ! isset( $screen->id ) )
 					return;
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );
-				$this->p->util->log_is_functions();
-			}
 
 			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
@@ -131,8 +131,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			// make sure we have at least a post type and post status
 			if ( ( $post_obj = $this->p->util->get_post_object() ) === false ||
 				empty( $post_obj->post_type ) || 
-					empty( $post_obj->post_status ) )
-						return;
+				empty( $post_obj->post_status ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: incomplete post object - empty post_type and/or post_status' );
+				return;
+			}
 
 			$post_id = empty( $post_obj->ID ) ?
 				0 : $post_obj->ID;
@@ -291,15 +295,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function show_metabox_post( $post ) {
 			$opts = $this->get_options( $post->ID );				// sanitized when saving
 			$def_opts = $this->get_defaults( false, 'post' );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
+
 			$post_type = get_post_type_object( $post->post_type );			// since 3.0
 
 			// save additional info about the post
 			WpssoMeta::$head_meta_info['psn'] = get_post_status( $post->ID );	// post status name
 			WpssoMeta::$head_meta_info['ptn'] = ucfirst( $post_type->name );		// post type name
 			WpssoMeta::$head_meta_info['post_id'] = $post->ID;			// post id
-
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_post_social_settings_tabs',

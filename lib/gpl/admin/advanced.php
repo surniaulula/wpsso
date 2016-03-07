@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$rows['plugin_shortener'] = $this->p->util->get_th( _x( 'Preferred URL Shortening Service',
 				'option label', 'wpsso' ), null, 'plugin_shortener' ).
-			'<td class="blank">[none]</td>';
+			'<td class="blank">[None]</td>';
 
 			$rows['plugin_shortlink'] = $this->p->util->get_th( _x( '<em>Get Shortlink</em> Gives Shortened URL',
 				'option label', 'wpsso' ), null, 'plugin_shortlink' ).
@@ -391,8 +391,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						case 'add_meta_name_description':
 							$highlight = ' highlight';
 							break;
-						// non-standard meta tags
 						/*
+						// internal / non-standard meta tags
 						case 'add_meta_property_og:image:cropped':
 						case 'add_meta_property_og:image:id':
 						case 'add_meta_property_og:video:embed_url':

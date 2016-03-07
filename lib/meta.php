@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $xtra_class === 'script' ||
 						strpos( $parts[0], '</noscript>' ) === 0 )
 							$xtra_class = '';
-				} elseif ( isset( $parts[5] ) && $parts[5] != -1 ) {
+				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
 					$rows[] = '<tr class="'.$xtra_class.' '.
 						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).'">'.
 					'<th class="xshort">'.$parts[1].'</th>'.
@@ -265,17 +265,27 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 	
 		protected function verify_submit_nonce() {
-			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {
+			if ( empty( $_POST ) ) {
+
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'nonce token missing from submitted POST' );
+					$this->p->debug->log( 'empty POST for submit' );
 				return false;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+
+			} elseif ( empty( $_POST[ WPSSO_NONCE ] ) ) {
+
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'nonce token validation failed' );
+					$this->p->debug->log( 'submit POST missing nonce token' );
+				return false;
+
+			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'submit nonce token validation failed' );
 				if ( is_admin() )
 					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
 						'wpsso' ), true );
 				return false;
+
 			} else return true;
 		}
 
@@ -298,10 +308,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( $mod_name !== false )
 				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod_name, $id );
 
-			foreach ( $defs as $key => $def_val )
-				if ( isset( $opts[$key] ) )
-					if ( $opts[$key] === '' || $opts[$key] == -1 )	// -1 can be string or integer
+			foreach ( $defs as $key => $def_val ) {
+				if ( isset( $opts[$key] ) ) {
+					if ( $opts[$key] === '' || $opts[$key] === -1 || $opts[$key] === '-1' )
 						unset ( $opts[$key] );
+				}
+			}
 
 			// checkbox options - don't save if the value is the same as the default value
 			foreach ( array( 'og_vid_prev_img' ) as $key ) {
@@ -445,6 +457,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			// always fallback to 'og' meta options
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
+				if ( $prefix === 'none' )	// special index keyword
+					break;
+				elseif ( empty( $prefix ) )	// skip empty md_pre values
+					continue;
+
 				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 				$pid = $this->get_options( $id, $prefix.'_img_id' );
@@ -528,7 +545,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 					$meta_image[$mt_pre.':image'] = $url;
-
 					$this->p->util->add_image_url_sizes( $mt_pre.':image', $meta_image );
 
 					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&

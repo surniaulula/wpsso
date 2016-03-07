@@ -133,15 +133,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			// all meta modules set this property, so use it to optimize code execution
 			if ( ! empty( WpssoMeta::$head_meta_tags ) 
 				|| ! isset( $screen->id ) )
 					return;
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );
-			}
 
 			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
@@ -227,10 +228,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function show_metabox_user( $user ) {
 			$opts = $this->get_options( $user->ID );
 			$def_opts = $this->get_defaults( false, 'user' );
-			WpssoMeta::$head_meta_info['post_id'] = false;
-
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
+
+			// save additional info about the term
+			WpssoMeta::$head_meta_info['user_id'] = $user->ID;			// user id
 
 			$metabox = 'user';
 			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_user_tabs',
@@ -256,13 +258,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_form_contact_fields( $fields = array() ) { 
 			return array_merge( 
-				array( 'none' => '[none]' ), 	// make sure none is first
-				$this->add_contact_methods( 
-					array( 
-						'author' => 'Author Index', 
-						'url' => 'Website'
-					)
-				)
+				array( 'none' => '[None]' ), 	// make sure none is first
+				$this->add_contact_methods( array( 
+					'author' => 'Author Index', 
+					'url' => 'Website'
+				) )
 			);
 		}
 
@@ -306,6 +306,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function sanitize_submit_cm( $user_id ) {
+
 			if ( ! current_user_can( 'edit_user', $user_id ) )
 				return;
 

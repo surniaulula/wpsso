@@ -112,14 +112,17 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				if ( isset( $og['og:video'] ) && count( $og['og:video'] ) > 0 ) {
 					foreach ( $og['og:video'] as $video ) {
 						if ( ! empty( $video['og:video:embed_url'] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'using og:video:embed_url = '.
+									$video['og:video:embed_url'] );
 							$tc['twitter:card'] = 'player';
 							$tc['twitter:player'] = $video['og:video:embed_url'];
-							if ( ! empty( $video['og:image'] ) )
-								$tc['twitter:image'] = $video['og:image'];
 							if ( ! empty( $video['og:video:width'] ) )
 								$tc['twitter:player:width'] = $video['og:video:width'];
 							if ( ! empty( $video['og:video:height'] ) )
 								$tc['twitter:player:height'] = $video['og:video:height'];
+							if ( ! empty( $video['og:image'] ) )
+								$tc['twitter:image'] = $video['og:image'];
 							break;	// only list the first video
 						}
 					}

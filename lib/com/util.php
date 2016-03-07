@@ -498,20 +498,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $merged;
 		}
 
+		public static function get_mt_media_url( $prefix, &$opts ) {
+			foreach ( array( ':secure_url', ':url', '' ) as $suffix )
+				if ( ! empty( $opts[$prefix.$suffix] ) )
+					return $media_url = $opts[$prefix.$suffix];
+			return '';
+		}
+
 		public static function get_mt_prop_video( $mt_pre = 'og' ) {
 			return array(
-				$mt_pre.':video:title' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:description' => '',	// non-standard / internal meta tag
 				$mt_pre.':video:secure_url' => '',
 				$mt_pre.':video:url' => '',
 				$mt_pre.':video:type' => 'application/x-shockwave-flash',
 				$mt_pre.':video:width' => '',
 				$mt_pre.':video:height' => '',
+				$mt_pre.':video:tag' => array(),
 				$mt_pre.':video:duration' => '',	// non-standard / internal meta tag
 				$mt_pre.':video:upload_date' => '',	// non-standard / internal meta tag
 				$mt_pre.':video:thumbnail_url' => '',	// non-standard / internal meta tag
 				$mt_pre.':video:embed_url' => '',	// non-standard / internal meta tag
 				$mt_pre.':video:has_image' => false,	// non-standard / internal meta tag
+				$mt_pre.':video:title' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:description' => '',	// non-standard / internal meta tag
 			);
 		}
 
@@ -1471,7 +1479,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$class_tabset_mb.'-msg '.
 					$class_href_key.'-msg">'.
 					$hidden_opts.' more options not shown in '.
-					$show_opts_label.' view (<a href="javascript:void(0);" onClick="sucomUnhideRows( \''.
+					$show_opts_label.' view (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.
 					$class_href_key.'\', \''.$show_opts.'\' );">unhide these options</a>)</div>'."\n";
 			}
 		}
@@ -1605,14 +1613,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						'id',
 						'display_name'
 					)
-				) ) as $user ) {
+				) ) as $user ) 
 					$ret[$user->display_name] = $user->id;
-				}
 			}
 
+			// sort by the display name key value
 			ksort( $ret, SORT_NATURAL );
 
-			return array_flip( array_merge( array( '[none]' => 'none' ), $ret ) );
+			// add 'none' to create an associative array *before* flipping the array
+			// in order to preserve the user id => display name association
+			return array_flip( array_merge( array( '[None]' => 'none' ), $ret ) );
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {
@@ -1622,6 +1632,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $max > 0 && $max >= count( $arr ) )
 				$diff = $max - count( $arr );
 			return $diff;
+		}
+
+		public static function get_alpha2_countries() {
+			if ( ! class_exists( 'SucomCountryCodes' ) )
+				require_once( dirname( __FILE__ ).'/country-codes.php' );
+			return SucomCountryCodes::get( 'alpha2' );
+		}
+
+		public static function get_alpha2_country_name( $country_code, $default_code = false ) {
+			if ( empty( $country_code ) ||
+				$country_code === 'none' )
+					return false;
+
+			if ( ! class_exists( 'SucomCountryCodes' ) )
+				require_once( dirname( __FILE__ ).'/country-codes.php' );
+
+			$countries = SucomCountryCodes::get( 'alpha2' );
+
+			if ( ! isset( $countries[$country_code] ) ) {
+				if ( $default_code === false || 
+					! isset( $countries[$default_code] ) )
+						return false;
+				else return $countries[$default_code];
+			} else return $countries[$country_code];
 		}
 	}
 }

@@ -96,13 +96,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $head_attr );
 		}
 
-		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_key = false, $use_mod = true ) {
+		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_id = false, $use_mod = true ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$schema_types = $this->get_schema_types();
+			if ( $this->schema_types === null )
+				$this->set_schema_types_property();
+
 			$default_key = apply_filters( $this->p->cf['lca'].'_schema_type_for_default', 'webpage' );
-			$type_key = null;
+			$type_id = null;
 
 			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
@@ -113,26 +115,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	
 			if ( $use_mod ) {
 				if ( ! empty( $id ) && ! empty( $mod_name ) ) {
-					$type_key = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
+					$type_id = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
 	
-					if ( empty( $type_key ) || $type_key === 'none' ) {
-						$type_key = null;
+					if ( empty( $type_id ) || $type_id === 'none' ) {
+						$type_id = null;
 
-					} elseif ( empty( $schema_types[$type_key] ) ) {
+					} elseif ( empty( $this->schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type key '.$type_key.' not in schema types' );
-						$type_key = null;
+							$this->p->debug->log( 'custom type id '.$type_id.' not in schema types' );
+						$type_id = null;
 	
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type key '.$type_key.' from module '.$mod_name );
+						$this->p->debug->log( 'custom type id '.$type_id.' from module '.$mod_name );
 				}
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'ignoring module option for custom type key' );
+				$this->p->debug->log( 'ignoring module option for custom type id' );
 
-			if ( empty( $type_key ) ) {
+			if ( empty( $type_id ) ) {
 
 				if ( is_front_page() ) {
-					$type_key = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
+					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
 						( empty( $this->p->options['schema_type_for_home_page'] ) ?
 							'website' : $this->p->options['schema_type_for_home_page'] ) );
 
@@ -144,45 +146,55 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	
 					if ( ! empty( $post_obj->post_type ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
-							$type_key = $this->p->options['schema_type_for_'.$post_obj->post_type];
+							$type_id = $this->p->options['schema_type_for_'.$post_obj->post_type];
 	
-							if ( empty( $type_key ) || $type_key === 'none' ) {
+							if ( empty( $type_id ) || $type_id === 'none' ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'schema type for '.$post_obj->post_type.' post type is disabled' );
-								$type_key = null;
+								$type_id = null;
 	
-							} elseif ( empty( $schema_types[$type_key] ) ) {
+							} elseif ( empty( $this->schema_types[$type_id] ) ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type key '.$type_key.' not found in schema types' );
-								$type_key = $default_key;
+									$this->p->debug->log( 'schema type id '.$type_id.' not found in schema types' );
+								$type_id = $default_key;
 							}
 	
-						} elseif ( ! empty( $schema_types[$post_obj->post_type] ) ) {
-							$type_key = $post_obj->post_type;
+						} elseif ( ! empty( $this->schema_types[$post_obj->post_type] ) ) {
+							$type_id = $post_obj->post_type;
 
 						// unknown post type
-						} else $type_key = $default_key;
+						} else $type_id = $default_key;
 
 					// post objects without a post_type property
-					} else $type_key = $default_key;
+					} else $type_id = $default_key;
 
 				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) ) {
-					$type_key = $default_key;
+					$type_id = $default_key;
 
 				// default value for all other webpages
-				} else $type_key = $default_key;
+				} else $type_id = $default_key;
 			}
 
-			$type_key = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_key, $use_post, $post_obj );
+			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $use_post, $post_obj );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema type key is "'.$type_key.'"' );
+				$this->p->debug->log( 'schema type id is "'.$type_id.'"' );
 
-			if ( isset( $schema_types[$type_key] ) ) {
-				if ( $ret_key !== false )	// return the type key, not its associated value
-					return $type_key;
-				else return $schema_types[$type_key];
+			if ( isset( $this->schema_types[$type_id] ) ) {
+				if ( $ret_id !== false )	// return the type id, not its associated value
+					return $type_id;
+				else return $this->schema_types[$type_id];
 			} else return false;
+		}
+
+		// get the full Schema type URL from the array key
+		// example: returns 'http://schema.org/TechArticle' for 'article.tech'
+		public function get_item_type_value( $type_id ) {
+			if ( $this->schema_types === null )
+				$this->set_schema_types_property();
+			if ( isset( $this->schema_types[$type_id] ) )
+				return $this->schema_types[$type_id];
+			else return false;
 		}
 
 		public function get_head_type_context( $use_post = false, $post_obj = false ) {
@@ -198,18 +210,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			else return array();
 		}
 
+		public static function get_item_type_parts( $item_type ) {
+			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $item_type, $match ) )
+				return array( $match[1], $match[2] );
+			else return array();
+		}
+
 		public function get_schema_types() {
 			if ( $this->schema_types === null )
-				$this->schema_types = (array) apply_filters( $this->p->cf['lca'].'_schema_types', 
-					$this->p->cf['head']['schema_type'] );
+				$this->set_schema_types_property();
 			return $this->schema_types;
 		}
 
+		public function set_schema_types_property() {
+			if ( $this->schema_types === null )
+				$this->schema_types = (array) apply_filters( $this->p->cf['lca'].'_schema_types', 
+					$this->p->cf['head']['schema_type'] );
+		}
+
 		public function get_schema_types_select() {
-			$schema_types = $this->get_schema_types();
-			$select = array( 'none' => '[none]' );
-			foreach ( $schema_types as $key => $label )
-				$select[$key] = $key.' ('.$label.')';
+			if ( $this->schema_types === null )
+				$this->set_schema_types_property();
+			$select = array( 'none' => '[None]' );
+			foreach ( $this->schema_types as $id => $label )
+				$select[$id] = $id.' ('.$label.')';
 			return $select;
 		}
 
@@ -237,7 +261,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$head_type = $this->get_head_item_type( $use_post, $post_obj );
+
+			// example: article.tech
+			$mt_og['schema:type:id'] = $this->get_head_item_type( $use_post, $post_obj, true );	// return the type id
+
+			// example: http://schema.org/TechArticle
+			$mt_og['schema:type:url'] = $head_type = $this->get_item_type_value( $mt_og['schema:type:id'] );
+
+			// example: http://schema.org, TechArticle
+			list( $mt_og['schema:type:context'], $mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type is '.$head_type );
 
@@ -542,46 +575,43 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// pass a single or two dimension image array in $og_image
-		public static function add_image_list_data( &$json_data, &$og_image, $opt_pre = 'og:image' ) {
+		public static function add_image_list_data( &$json_data, &$og_image, $prefix = 'og:image' ) {
 
 			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {				// 2 dimensional array
 				foreach ( $og_image as $image )
-					self::add_single_image_data( $json_data, $image, $opt_pre, true );	// list_element = true
+					self::add_single_image_data( $json_data, $image, $prefix, true );	// list_element = true
 
 			} elseif ( is_array( $og_image ) )
-				self::add_single_image_data( $json_data, $og_image, $opt_pre, true );		// list_element = true
+				self::add_single_image_data( $json_data, $og_image, $prefix, true );		// list_element = true
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$json_data, &$opts, $opt_pre = 'og:image', $list_element = true ) {
+		public static function add_single_image_data( &$json_data, &$opts, $prefix = 'og:image', $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
-
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
 				return false;
 			}
 
-			if ( empty( $opts[$opt_pre] ) && empty( $opts[$opt_pre.':secure_url'] ) ) {
+			$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
+
+			if ( empty( $media_url ) ) {
 				if ( $wpsso->debug->enabled )
-					$wpsso->debug->log( 'exiting early: '.$opt_pre.' and '.
-						$opt_pre.':secure_url values are empty' );
+					$wpsso->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
 				return false;
 			}
 
 			$ret = array(
 				'@context' => 'http://schema.org',
 				'@type' => 'ImageObject',
-				'url' => esc_url( empty( $opts[$opt_pre.':secure_url'] ) ?	// prefer secure_url if available
-					$opts[$opt_pre] :
-					$opts[$opt_pre.':secure_url']
-				),
+				'url' => esc_url( $media_url ),
 			);
 
 			self::add_data_prop_from_og( $ret, $opts, array(
-				'width' => $opt_pre.':width',
-				'height' => $opt_pre.':height',
+				'width' => $prefix.':width',
+				'height' => $prefix.':height',
 			) );
 
 			if ( empty( $list_element ) )
@@ -711,37 +741,40 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// pass a single dimension array in $opts
-		public function get_single_image_noscript( $use_post, &$opts, $opt_pre = 'og:image' ) {
+		public function get_single_image_noscript( $use_post, &$mixed, $prefix = 'og:image' ) {
 
 			$mt_image = array();
-			$have_image_html = false;
 
-			if ( empty( $opts ) )
+			if ( empty( $mixed ) ) {
 				return array();
 
-			elseif ( is_array( $opts ) )
+			} elseif ( is_array( $mixed ) ) {
 
-				if ( empty( $opts[$opt_pre] ) &&
-					empty( $opts[$opt_pre.':secure_url'] ) )
-						return array();
+				$media_url = SucomUtil::get_mt_media_url( $prefix, $mixed );
+
+				if ( empty( $media_url ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
+					return array();
+				}
 
 				// defines a two-dimensional array
-				else $mt_image = array_merge(
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', 
-						( ! empty( $opts[$opt_pre.':secure_url'] ) ?
-							$opts[$opt_pre.':secure_url'] : $opts[$opt_pre] ), '', $use_post ),
-					( empty( $opts[$opt_pre.':width'] ) ? array() :
+				$mt_image = array_merge(
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url',
+						$media_url, '', $use_post ),
+					( empty( $mixed[$prefix.':width'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.width',
-							$opts[$opt_pre.':width'], '', $use_post ) ),
-					( empty( $opts[$opt_pre.':height'] ) ? array() :
+							$mixed[$prefix.':width'], '', $use_post ) ),
+					( empty( $mixed[$prefix.':height'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.height',
-							$opts[$opt_pre.':height'], '', $use_post ) )
+							$mixed[$prefix.':height'], '', $use_post ) )
 				);
 
 			// defines a two-dimensional array
-			else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $opts, '', $use_post );
+			} else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $use_post );
 
 			// make sure we have html for at least one meta tag
+			$have_image_html = false;
 			foreach ( $mt_image as $num => $img ) {
 				if ( ! empty( $img[0] ) ) {
 					$have_image_html = true;

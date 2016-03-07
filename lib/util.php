@@ -20,6 +20,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		);
 		protected $inline_vals = array();
 
+		protected $sanitize_error_msgs = null;	// translated error messages for sanitize_option_value()
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
@@ -176,10 +178,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $mod_name ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'module is unknown' );
+					$this->p->debug->log( 'module name is unknown' );
 			} elseif ( empty( $id ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'object id is unknown' );
+					$this->p->debug->log( 'id for module is unknown' );
 			} else {
 				// custom filters may use image sizes, so don't filter/cache the meta options
 				$meta_opts = $this->get_mod_options( $mod_name, $id, false, array( 'filter_options' => false ) );
@@ -407,7 +409,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, 
 				FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				$this->p->notice->err( sprintf( __( 'Error reading the %s topic list file.', 'wpsso' ), WPSSO_TOPICS_LIST ) );
+				$this->p->notice->err( sprintf( __( 'Error reading the %s topic list file.', 
+					'wpsso' ), WPSSO_TOPICS_LIST ) );
 				return $topics;
 			}
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
@@ -476,6 +479,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			// hooked by the sharing class
 			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod_name );
 
+			if ( $this->sanitize_error_msgs === null ) {
+				$this->sanitize_error_msgs = array(
+					'url' => __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.',
+						'wpsso' ),
+					'pos_num' => __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.',
+						'wpsso' ),
+					'blank_num' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
+						'wpsso' ),
+					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
+						'wpsso' ),
+					'auth_id' => __( '\'%1$s\' is not an acceptable value for option \'%2$s\' - resetting the option to its default value.',
+						'wpsso' ),
+					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.',
+						'wpsso' ),
+					'html' => __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.',
+						'wpsso' ),
+					'not_blank' => __( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.',
+						'wpsso' ),
+				);
+			}
+
 			// pre-filter most values to remove html
 			switch ( $option_type ) {
 				case 'html':	// leave html and css / javascript code blocks as-is
@@ -502,7 +526,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.', 'wpsso' ), $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['url'], $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -539,7 +563,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val === '' && $mod_name !== false )
 						break;
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.', 'wpsso' ), $key, $min_int ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ), true );
 						$val = $def_val;
 					} else $val = (int) $val;		// cast as integer
 
@@ -549,7 +573,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'blank_num':
 					if ( $val !== '' ) {
 						if ( ! is_numeric( $val ) ) {
-							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['blank_num'], $key ), true );
 							$val = $def_val;
 						} else $val = (int) $val;	// cast as integer
 					}
@@ -558,7 +582,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// must be numeric
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['numeric'], $key ), true );
 						$val = $def_val;
 					} else $val = (int) $val;		// cast as integer
 					break;
@@ -567,7 +591,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( __( '\'%1$s\' is not an acceptable value for option \'%2$s\' - resetting the option to its default value.', 'wpsso' ), $val, $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['auth_id'], $val, $key ), true );
 						$val = $def_val;
 					} else $val = (string) $val;		// cast as string
 					break;
@@ -576,7 +600,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.', 'wpsso' ), $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['api_key'], $key ), true );
 						$val = $def_val;
 					} else $val = (string) $val;		// cast as string
 					break;
@@ -599,7 +623,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = trim( $val );
 						if ( ! preg_match( '/<.*>/', $val ) ) {
-							$this->p->notice->err( sprintf( __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.', 'wpsso' ), $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['html'], $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -609,7 +633,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'code':
 				case 'not_blank':
 					if ( $val === '' ) {
-						$this->p->notice->err( sprintf( __( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.', 'wpsso' ), $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['not_blank'], $key ), true );
 						$val = $def_val;
 					}
 					break;
@@ -621,6 +645,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$val = empty( $val ) ? 0 : 1;
 					break;
 			}
+
 			return $val;
 		}
 
@@ -632,12 +657,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( empty( $query ) )
 				return false;
 
-			if ( strpos( $request, '<' ) !== false )	// check for HTML content
+			if ( strpos( $request, '<' ) === 0 )	// check for HTML content
 				$html = $request;
-			elseif ( strpos( $request, '://' ) !== false && 
-				( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false )
-					return false;
-			else return false;
+			elseif ( strpos( $request, '://' ) === false )
+				return false;
+			elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false )
+				return false;
 
 			$cmt = $this->p->cf['lca'].' meta tags ';
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
@@ -654,16 +679,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				@$doc->loadHTML( $html );		// suppress parsing errors
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
-
 				foreach ( $metas as $m ) {
 					$m_atts = array();		// put all attributes in a single array
-
 					foreach ( $m->attributes as $a )
 						$m_atts[$a->name] = $a->value;
-
 					if ( isset( $m->textContent ) )
 						$m_atts['textContent'] = $m->textContent;
-
 					$ret[$m->tagName][] = $m_atts;
 				}
 			} else {
@@ -959,32 +980,28 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return str_replace( $vars, $vals, $text );
 		}
 
-		public function add_image_url_sizes( $keys, array &$arr ) {
-
+		public function add_image_url_sizes( $keys, array &$opts ) {
 			if ( SucomUtil::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
-				return $arr;
+				return $opts;
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
 
-			foreach ( $keys as $pre ) {
-				if ( ! empty( $arr[$pre] ) &&
-					strpos( $arr[$pre], '://' ) !== false ) {
-
-					list( $arr[$pre.':width'], $arr[$pre.':height'],
-						$image_type, $image_attr ) = @getimagesize( $arr[$pre] );
-
+			foreach ( $keys as $prefix ) {
+				$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
+				if ( ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
+					list( $opts[$prefix.':width'], $opts[$prefix.':height'],
+						$image_type, $image_attr ) = @getimagesize( $media_url );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'getimagesize() for '.$arr[$pre].' returned '.
-							$arr[$pre.':width'].'x'.$arr[$pre.':height'] );
+						$this->p->debug->log( 'getimagesize() for '.$media_url.' returned '.
+							$opts[$prefix.':width'].'x'.$opts[$prefix.':height'] );
 				} else {
 					foreach ( array( 'width', 'height' ) as $wh )
-						if ( isset( $arr[$pre.':'.$wh] ) )
-							$arr[$pre.':'.$wh] = -1;
+						if ( isset( $opts[$prefix.':'.$wh] ) )
+							$opts[$prefix.':'.$wh] = -1;
 				}
 			}
-
-			return $arr;
+			return $opts;
 		}
 
 		// accepts json script or json array

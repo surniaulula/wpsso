@@ -88,8 +88,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
 		}
 
-		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id,
-			$check_dupes = true, $md_pre = 'og' ) {
+		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
@@ -976,36 +975,31 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
-			foreach ( array( 'video', 'image' ) as $media ) {
-				$og_media_url = '';
-				$have_og[$media] = false;
+			foreach ( array( 'og:video', 'og:image' ) as $prefix ) {
+				$media_url = SucomUtil::get_mt_media_url( $prefix, $og_video );
+				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
-				// secure_url takes precedence
-				foreach ( array( ':secure_url', ':url', '' ) as $suffix ) {
-					if ( ! empty( $og_video['og:'.$media.$suffix] ) ) {
-						$og_media_url = $og_video['og:'.$media.$suffix];
-						$have_og[$media] = true;
-						break;
-					}
-				}
-
-				if ( ! $og_media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $og_media_url ) ) ) {
-					unset ( $og_video['og:'.$media] );
-					foreach( SucomUtil::preg_grep_keys( '/^og:'.$media.':/', $og_video ) as $k => $v )
+				if ( ! $media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url ) ) ) {
+					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v )
 						unset ( $og_video[$k] );
+				} elseif ( $prefix === 'og:image' ) {
+					if ( $og_video['og:image:width'] <= 0 || 
+						$og_video['og:image:height'] <= 0 )
+							$this->p->util->add_image_url_sizes( 'og:image', $og_video );
 				}
 			}
 
 			// fallback to the original url
-			if ( ! $have_og['video'] && $fallback ) {
+			if ( ! $have_media['og:video'] && $fallback ) {
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url ) ) {
 					$og_video['og:video:url'] = $embed_url;
-					$have_og['video'] = true;
+					$have_media['og:video'] = true;
 				}
 			}
 
-			if ( ! $have_og['video'] && ! $have_og['image'] ) 
-				return array();
+			if ( ! $have_media['og:video'] && 
+				! $have_media['og:image'] ) 
+					return array();
 			else return $og_video;
 		}
 

@@ -115,8 +115,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$rows['og_desc_hashtags'] = $this->p->util->get_th( _x( 'Add Hashtags to Descriptions',
 						'option label', 'wpsso' ), null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
-						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).
-							' '._x( 'tag names', 'option comment', 'wpsso' ).'</td>';
+						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).' '.
+							_x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
 					$rows['og_page_title_tag'] = '<tr class="hide_in_basic">'.
 					$this->p->util->get_th( _x( 'Add Page Title in Tags / Hashtags',
