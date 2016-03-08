@@ -33,13 +33,13 @@
 
 <p>"<em>If you want to make every tweet, like, share, pin, and +1 count, then you should definitely start using WPSSO on your WordPress site.</em>" &mdash; <a href="http://www.indexwp.com/wordpress-social-sharing-optimization-pro-review/">indexwp.com</a></p>
 
-<p>"<em>I’m now a customer. This plugin is invaluable and a real time saver. The fact that it won’t slow my site down either is something that also sold me on it.</em>" &mdash; <a href="http://www.wpkube.com/wpsso-plugin-review/">wpkube.com</a></p>
+<p>"<em>I'm now a customer. This plugin is invaluable and a real time saver. The fact that it won't slow my site down either is something that also sold me on it.</em>" &mdash; <a href="http://www.wpkube.com/wpsso-plugin-review/">wpkube.com</a></p>
 
 <p>"<em>Wherever you are at with the social media marketing strategy for your site, the WP Social Sharing Optimization plugin can help you get better results.</em>" &mdash; <a href="http://wplift.com/wordpress-social-sharing-optimization">wplift.com</a></p>
 
 <p>"<em>If you want to get the most out of the social shares your content receives, ensure your content stands out when it is posted on the various social networks, and listed in the search engines, then this plugin is a great choice that covers all the bases.</em>" &mdash; <a href="http://www.wpmayor.com/wordpress-social-sharing-optimization-pro-plugin-review/">wpmayor.com</a></p>
 
-<p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it’s shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
+<p>"<em>WPSSO Pro provides a handy tool for your marketing team, and improves your content whenever it's shared by you or your fans. The free version has a lot of great features and makes a good trial version, but I think that eCommerce sites really benefit from the eCommerce plugin and video integrations (as well as the inclusion of Twitter card support) that the Pro version offers.</em>" &mdash; <a href="http://www.sellwithwp.com/optimized-social-media-wpsso-plugin-review/">sellwithwp.com</a></p>
 </blockquote>
 
 <h4>Quick List of Features</h4>
@@ -297,10 +297,10 @@
 <ul>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/can-i-use-the-pro-version-on-multiple-websites/">Can I use the Pro version on multiple websites?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/does-linkedin-read-the-open-graph-meta-tags/">Does LinkedIn read the Open Graph meta tags?</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/">Doesn’t an SEO plugin cover that?</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/">Doesn't an SEO plugin cover that?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/">How can I exclude / ignore certain parts of the content text?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an “HTTP error” when uploading images?</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an "HTTP error" when uploading images?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
@@ -314,13 +314,13 @@
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-features-of-nextgen-gallery-are-supported/">What features of NextGEN Gallery are supported?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NGFB and WPSSO?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/">What is the difference between the Free and Pro versions?</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/">Why aren’t Pins from my website posting Rich?</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/">Why aren't Pins from my website posting Rich?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-do-my-facebook-shares-have-small-images/">Why do my Facebook shares have small images?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-wpsso-ignore-some-img-html-tags/">Why does WPSSO ignore some &lt;img/&gt; HTML tags?</a></li>
-<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/">Why don’t my Twitter Cards show on Twitter?</a></li>
+<li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/">Why don't my Twitter Cards show on Twitter?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
 <li><a href="http://wpsso.com/codex/plugins/wpsso/faq/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or its components misaligned?</a></li>
 </ul>
