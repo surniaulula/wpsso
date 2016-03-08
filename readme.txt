@@ -371,8 +371,8 @@ Official announcement: N/A
 	* Added a new `SucomUtil::get_alpha2_countries()` method to return an array of 2 letter country codes.
 	* Added a new `SucomUtil::get_alpha2_country_name()` method to return a countrry name from a 2 letter country code.
 	* Added a new SucomForm `get_select_country()` method to select a country.
-	* Renamed the NgfbOpengraph `get_the_media_urls()` method to `get_the_media_info()` (old method gives deprecated message).
-	* Renamed the NgfbOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
+	* Renamed the WpssoOpengraph `get_the_media_urls()` method to `get_the_media_info()` (old method gives deprecated message).
+	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 **Version 3.26.1 (2016/03/03)**
 
