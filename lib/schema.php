@@ -579,13 +579,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// pass a single or two dimension image array in $og_image
 		public static function add_image_list_data( &$json_data, &$og_image, $prefix = 'og:image' ) {
-
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {				// 2 dimensional array
+			$images_added = 0;
+			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {						// 2 dimensional array
 				foreach ( $og_image as $image )
-					self::add_single_image_data( $json_data, $image, $prefix, true );	// list_element = true
-
+					$images_added += self::add_single_image_data( $json_data, $image, $prefix, true );	// list_element = true
 			} elseif ( is_array( $og_image ) )
-				self::add_single_image_data( $json_data, $og_image, $prefix, true );		// list_element = true
+				$images_added += self::add_single_image_data( $json_data, $og_image, $prefix, true );		// list_element = true
+			return $images_added;	// return count of images added
 		}
 
 		// pass a single dimension image array in $opts
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
-				return false;
+				return 0;	// return count of images added
 			}
 
 			$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
@@ -603,7 +603,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $media_url ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
-				return false;
+				return 0;	// return count of images added
 			}
 
 			$ret = array(
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = $ret;
 			else $json_data[] = $ret;	// add an item to the list
 
-			return true;
+			return 1;	// return count of images added
 		}
 
 		public static function add_main_entity_data( array &$json_data, $url ) {
