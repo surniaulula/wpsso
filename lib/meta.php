@@ -142,6 +142,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$xtra_class = '';
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
 				if ( count( $parts ) === 1 ) {
+
 					if ( strpos( $parts[0], '<script ' ) === 0 )
 						$xtra_class = 'script';
 					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
@@ -151,13 +152,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $xtra_class === 'script' ||
 						strpos( $parts[0], '</noscript>' ) === 0 )
 							$xtra_class = '';
+
 				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
+
+					if ( $parts[1] === 'meta' && 
+						$parts[2] === 'itemprop' && 
+							strpos( $parts[3], '.' ) !== 0 )
+								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+					else $match_name = $parts[3];
+
 					$rows[] = '<tr class="'.$xtra_class.' '.
 						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).'">'.
 					'<th class="xshort">'.$parts[1].'</th>'.
 					'<th class="xshort">'.$parts[2].'</th>'.
 					'<td class="short">'.( empty( $parts[6] ) ? 
-						'' : '<!-- '.$parts[6].' -->' ).$parts[3].'</td>'.
+						'' : '<!-- '.$parts[6].' -->' ).$match_name.'</td>'.
 					'<th class="xshort">'.$parts[4].'</th>'.
 					'<td class="wide">'.( strpos( $parts[5], 'http' ) === 0 ? 
 						'<a href="'.$parts[5].'">'.$parts[5].'</a>' : $parts[5] ).'</td>';

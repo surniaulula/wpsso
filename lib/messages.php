@@ -25,25 +25,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( is_string( $atts ) ) {
 				$text = $atts;
 				$atts = array();
-			} else {
-				$text = isset( $atts['text'] ) ?
-					$atts['text'] : '';
-			}
+			} else $text = isset( $atts['text'] ) ?
+				$atts['text'] : '';
 
 			$idx = sanitize_title_with_dashes( $idx );
 
-			$atts['lca'] = isset( $atts['lca'] ) ?
+			/*
+			 * Define some basic values that can be used in any message text.
+			 */
+			$atts['lca'] = $lca = isset( $atts['lca'] ) ?
 				$atts['lca'] : $this->p->cf['lca'];
-			$lca = $atts['lca'];
 
-			$atts['short'] = isset( $atts['short'] ) ?
-				$atts['short'] : $this->p->cf['plugin'][$lca]['short'];
-			$atts['short_pro'] = $atts['short'].' Pro';
+			foreach ( array( 'short', 'name' ) as $key ) {
+				$atts[$key] = isset( $atts[$key] ) ?
+					$atts[$key] : $this->p->cf['plugin'][$lca][$key];
+				$atts[$key.'_pro'] = $atts[$key].' Pro';
+			}
 
-			$atts['name'] = isset( $atts['name'] ) ?
-				$atts['name'] : $this->p->cf['plugin'][$lca]['name'];
-			$atts['name_pro'] = $atts['name'].' Pro';
-
+			// an array of plugin urls (download, purchase, etc.)
 			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?
 				$this->p->cf['plugin'][$lca]['url'] : array();
 
@@ -177,7 +176,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 						case 'tooltip-meta-og_vid_title':
 						case 'tooltip-meta-og_vid_desc':
-							$text = sprintf( __( 'The %1$s video API modules retrieve the video name / title and description <em>when available</em>.', 'wpsso' ), $atts['short_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
+							$text = sprintf( __( 'The %1$s video API modules include the video name / title and description <em>when available</em>.', 'wpsso' ), $atts['short_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
 							break;
 						case 'tooltip-meta-og_vid_max':
 							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.';
@@ -272,10 +271,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The topic that best describes the Posts and Pages on your website. This value will be used in the \'article:section\' Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the \'article:section\' meta tag. The Pro version also allows you to select a custom Topic for each individual Post and Page.';
 							break;
 						case 'tooltip-og_site_name':
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin site name (og:site_name) meta tag. You may override <a href="%s">the default WordPress Site Title value</a>.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin \'og:site_name\' meta tag. You may override <a href="%s">the default WordPress Site Title value</a>.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_site_description':
-							$text = 'The WordPress Tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin description (og:description) meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.';
+							$text = 'The WordPress Tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin \'og:description\' meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.';
 							break;
 						case 'tooltip-og_title_sep':
 							$text = 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph and Pinterest Rich Pin title string (the default is the hyphen \''.$this->p->opt->get_defaults( 'og_title_sep' ).'\' character).';

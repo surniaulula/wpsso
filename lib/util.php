@@ -906,8 +906,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ts : get_option( WPSSO_TS_NAME, array() );
 		}
 	
-		// deprecated 2015/12/09
+		// deprecated in v8.20.1.1 on 2015/12/09
 		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
+			if ( function_exists( '_deprecated_function' ) )
+				_deprecated_function( __METHOD__, '3.20.1.1', 'add_ptns_to_opts' );
 			return $opts;
 		}
 

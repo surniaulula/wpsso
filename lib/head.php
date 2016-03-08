@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 					}
 
-					if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$match_name] ) ) {
+					if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ) {
 						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
 					} elseif ( $this->p->debug->enabled )

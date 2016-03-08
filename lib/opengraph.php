@@ -519,9 +519,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			else return get_bloginfo( 'description', 'display' );
 		}
 
-		// deprecated on 2016/03/07
+		// deprecated in v8.27.0 on 2016/03/07
 		public function get_the_media_urls( $size_name, $post_id, $md_pre = 'og', $items = array( 'image', 'video' ) ) {
+			if ( function_exists( '_deprecated_function' ) )
+				_deprecated_function( __METHOD__, '3.27.0.0', 'get_the_media_info' );
 			return array_values( $this->get_the_media_info( $size_name, $post_id, $md_pre, $items ) );
+		}
+
+		// deprecated in v8.27.0 on 2016/03/07
+		public static function get_first_media_url( $prefix, $og ) {
+			if ( function_exists( '_deprecated_function' ) )
+				_deprecated_function( __METHOD__, '3.27.0.0', 'get_first_media_info' );
+			return self::get_first_media_info( $prefix, $og );
 		}
 
 		// used by some sharing buttons (buffer, pinterest, tumblr)
@@ -592,11 +601,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$this->p->debug->log( $ret );
 
 			return $ret;
-		}
-
-		// deprecated on 2016/03/07
-		public static function get_first_media_url( $prefix, $og ) {
-			return self::get_first_media_info( $prefix, $og );
 		}
 
 		public static function get_first_media_info( $prefix, $og ) {
