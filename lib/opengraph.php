@@ -81,22 +81,28 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		}
 
 		public function get_array( $use_post = false, $post_obj = false, &$og = array(), $crawler_name = 'unknown' ) {
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( ! is_object( $post_obj ) )
-				$post_obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ||
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
 			$lca = $this->p->cf['lca'];
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$post_id = 0;
 			$check_dupes = true;
-
-			// counter for video previews found
 			$video_previews = 0;
 
-			// a post_id of 0 returns the default plugin settings 
-			$max = $this->p->util->get_max_nums( $post_id, 'post' );
+			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post, false, false );
+
+			// an id of 0 / false returns the default plugin settings 
+			$max = $this->p->util->get_max_nums( $id, $mod_name );
+
+			if ( SucomUtil::is_post_page( $use_post ) ) {
+				if ( ! is_object( $post_obj ) )
+					$post_obj = $this->p->util->get_post_object( $use_post );
+				$post_id = empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ?
+						0 : $post_obj->ID;
+			}
+
 			$og = apply_filters( $lca.'_og_seed', $og, $use_post, $post_obj );
 
 			if ( ! empty( $og ) && 

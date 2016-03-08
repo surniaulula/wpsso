@@ -175,21 +175,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build header array' );	// begin timer
 
 			$lca = $this->p->cf['lca'];
-			$short_aop = $this->p->cf['plugin'][$lca]['short'].
+			$post_id = 0;
+			$post_obj = false;
+			$user_id = false;
+			$sharing_url = $this->p->util->get_sharing_url( $use_post );
+			$gen_name = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );
 
-			$post_obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) || 
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
-			$sharing_url = $this->p->util->get_sharing_url( $use_post );
-			$user_id = false;
+			if ( SucomUtil::is_post_page( $use_post ) ) {
+				$post_obj = $this->p->util->get_post_object( $use_post );
+				$post_id = empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ?
+						0 : $post_obj->ID;
+			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'use_post is '.( $use_post === false ?
-					'false' : ( $use_post === true ? 'true' : $use_post ) ) );
+					'false' : ( $use_post === true ?
+						'true' : $use_post ) ) );
 				$this->p->debug->log( 'post_id is '.$post_id );
-				$this->p->debug->log( 'post_type is '.( empty( $post_obj->post_type ) ?
-					'' : $post_obj->post_type ) );
+				if ( ! empty( $post_obj->post_type ) )
+					$this->p->debug->log( 'post_type is '.$post_obj->post_type );
 			}
 
 			$header_array = array();
@@ -303,7 +309,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$header_array = array_merge(
 				$this->get_single_mt( 'meta', 'name', 'generator',
-					$short_aop.' '.$this->p->cf['plugin'][$lca]['version'].
+					$gen_name.' '.$this->p->cf['plugin'][$lca]['version'].
 					( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
 						'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),

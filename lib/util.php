@@ -1135,11 +1135,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// if $id is 0 or false, return values from the plugin settings 
 		public function get_max_nums( $id = false, $mod_name = false ) {
-
 			$max = array();
-
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
-
 				if ( ! empty( $id ) && 
 					isset( $this->p->m['util'][$mod_name] ) )
 						$num_meta = $this->p->m['util'][$mod_name]->get_options( $id, $max_name );
@@ -1152,7 +1149,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
 				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
 			}
-
 			return $max;
 		}
 	}
