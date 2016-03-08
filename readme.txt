@@ -353,24 +353,26 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.27.0 (TBD)**
+**Version 3.27.0 (ETA 2016/02/09)**
 
 Official announcement: N/A
 
 * *New Features*
-	* Added support for 'og:video:tag' provided by the YouTube video module (Pro version).
 	* Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox for Posts / Pages and Custom Post Types.
+	* Added support for 'og:video:tag' provided by the YouTube video module (Pro version).
 * *Improvements*
-	* Optimized the speed of meta tag creation in the NgfbHead `get_mt_array()` method.
 	* Enabled multilingual / multi-language support of all publisher URL options (Facebook Business Page URL, etc.).
+	* Optimized the speed of meta tag creation in the WpssoHead `get_mt_array()` method.
 * *Bugfixes*
-	* Fixed the meta tag parser for fetched webpages (for Youtube videos and duplicate meta tag checks).
+	* Fixed the meta tag parser for fetched webpage content (used by the Youtube API module and the duplicate meta tag check feature).
 * *Developer Notes*
+	* Added a new `sucomSelectChangeUnhideRows()` javascript function to hide/unhide rows on select change.
 	* Added a new `SucomCountryCodes::get()` class and method to return 2 letter, 3 letter, and numeric country codes.
 	* Added a new `SucomUtil::get_alpha2_countries()` method to return an array of 2 letter country codes.
 	* Added a new `SucomUtil::get_alpha2_country_name()` method to return a countrry name from a 2 letter country code.
 	* Added a new SucomForm `get_select_country()` method to select a country.
-	* Added a new `sucom_select_change_unhide_rows()` javascript function to hide/unhide rows on select change.
+	* Renamed the NgfbOpengraph `get_the_media_urls()` method to `get_the_media_info()` (old method gives deprecated message).
+	* Renamed the NgfbOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 **Version 3.26.1 (2016/03/03)**
 
@@ -404,6 +406,10 @@ Official announcement: N/A
 	* None
 
 == Upgrade Notice ==
+
+= 3.27.0 =
+
+ETA 2016/03/09 - Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox. Fixed the meta tag parser for fetched webpage content (Youtube API and duplicate meta tag check).
 
 = 3.26.1 =
 
