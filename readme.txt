@@ -353,7 +353,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.27.0 (ETA 2016/02/09)**
+**Version 3.27.0 (2016/02/09)**
 
 Official announcement: N/A
 
@@ -409,7 +409,7 @@ Official announcement: N/A
 
 = 3.27.0 =
 
-ETA 2016/03/09 - Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox. Fixed the meta tag parser for fetched webpage content (Youtube API and duplicate meta tag check).
+2016/03/09 - Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox. Fixed the meta tag parser for fetched webpage content (Youtube API and duplicate meta tag check).
 
 = 3.26.1 =
 
