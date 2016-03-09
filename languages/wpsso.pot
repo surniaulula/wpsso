@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/admin.php:720 lib/user.php:217
+#: lib/admin.php:71 lib/admin.php:720 lib/user.php:219
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/admin.php:721 lib/user.php:218
+#: lib/admin.php:72 lib/admin.php:721 lib/user.php:220
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:404 lib/post.php:191 lib/taxonomy.php:202 lib/user.php:184
+#: lib/admin.php:404 lib/post.php:192 lib/taxonomy.php:204 lib/user.php:186
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2050,40 +2050,40 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:246
+#: lib/post.php:247
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:250
+#: lib/post.php:251
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:267
+#: lib/post.php:268
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:303 lib/profile/social-settings.php:26 lib/taxonomy.php:223
-#: lib/user.php:206
+#: lib/post.php:304 lib/profile/social-settings.php:26 lib/taxonomy.php:225
+#: lib/user.php:208
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/post.php:340
+#: lib/post.php:341
 msgid ""
 "Save a draft version or publish the %s to display the open graph social "
 "preview."
 msgstr ""
 
-#: lib/post.php:348
+#: lib/post.php:349
 msgid ""
 "Save a draft version or publish the %s to display the head tags preview."
 msgstr ""
 
-#: lib/post.php:358
+#: lib/post.php:359
 msgid ""
 "Social validation tools will be available when the %s is published with "
 "public visibility."
@@ -2673,15 +2673,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:362
+#: lib/user.php:364
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:363
+#: lib/user.php:365
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:364
+#: lib/user.php:366
 msgid "Jabber / Google Talk"
 msgstr ""
 

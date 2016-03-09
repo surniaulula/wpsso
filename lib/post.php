@@ -154,7 +154,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 
 			if ( $post_obj->post_status !== 'auto-draft' ) {
-
 				$post_type = get_post_type_object( $post_obj->post_type );
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
 
@@ -169,7 +168,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
 					if ( $post_obj->post_status === 'publish' ) {
-
 						// check for missing open graph image and issue warning
 						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
@@ -179,14 +177,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->check_post_header( $post_id, $post_obj );
 					}
 				}
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'skipped head meta: post_status is auto-draft' );
 
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'found action query: '.$action_name );
 				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'nonce token validation query field missing' );
+						$this->p->debug->log( 'nonce token query field missing' );
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'post', $action_name ) );

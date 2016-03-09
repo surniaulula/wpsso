@@ -195,9 +195,11 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'found action query: '.$action_name );
 				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'nonce token validation query field missing' );
+						$this->p->debug->log( 'nonce token query field missing' );
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'taxonomy', $action_name ) );
