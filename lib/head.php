@@ -190,12 +190,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post is '.( $use_post === false ?
-					'false' : ( $use_post === true ?
-						'true' : $use_post ) ) );
+				$this->p->debug->log( 'use_post is '.
+					( $use_post === false ?
+						'false' : ( $use_post === true ?
+							'true' : $use_post ) ) );
 				$this->p->debug->log( 'post_id is '.$post_id );
-				if ( ! empty( $post_obj->post_type ) )
-					$this->p->debug->log( 'post_type is '.$post_obj->post_type );
+				$this->p->debug->log( 'post_type is '.
+					( empty( $post_obj->post_type ) ?
+						'empty' : $post_obj->post_type ) );
+				$this->p->debug->log( 'post_status is '.
+					( empty( $post_obj->post_status ) ?
+						'empty' : $post_obj->post_status ) );
 			}
 
 			$header_array = array();

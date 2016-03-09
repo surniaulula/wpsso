@@ -128,18 +128,30 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					break;
 			}
 
+			$post_obj = $this->p->util->get_post_object();
+			$post_id = empty( $post_obj->ID ) ?
+				0 : $post_obj->ID;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'post_id is '.$post_id );
+				$this->p->debug->log( 'post_type is '.
+					( empty( $post_obj->post_type ) ?
+						'empty' : $post_obj->post_type ) );
+				$this->p->debug->log( 'post_status is '.
+					( empty( $post_obj->post_status ) ?
+						'empty' : $post_obj->post_status ) );
+			}
+
 			// make sure we have at least a post type and post status
-			if ( ( $post_obj = $this->p->util->get_post_object() ) === false ||
+			if ( $post_obj === false || 
 				empty( $post_obj->post_type ) || 
 				empty( $post_obj->post_status ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: incomplete post object - empty post_type and/or post_status' );
+					$this->p->debug->log( 'exiting early: incomplete post object' );
 				return;
 			}
 
-			$post_id = empty( $post_obj->ID ) ?
-				0 : $post_obj->ID;
 
 			if ( $post_obj->post_status !== 'auto-draft' ) {
 

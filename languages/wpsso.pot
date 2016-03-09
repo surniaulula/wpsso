@@ -84,7 +84,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:404 lib/post.php:179 lib/taxonomy.php:202 lib/user.php:184
+#: lib/admin.php:404 lib/post.php:191 lib/taxonomy.php:202 lib/user.php:184
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2050,40 +2050,40 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:234
+#: lib/post.php:246
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:238
+#: lib/post.php:250
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:255
+#: lib/post.php:267
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:291 lib/profile/social-settings.php:26 lib/taxonomy.php:223
+#: lib/post.php:303 lib/profile/social-settings.php:26 lib/taxonomy.php:223
 #: lib/user.php:206
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/post.php:328
+#: lib/post.php:340
 msgid ""
 "Save a draft version or publish the %s to display the open graph social "
 "preview."
 msgstr ""
 
-#: lib/post.php:336
+#: lib/post.php:348
 msgid ""
 "Save a draft version or publish the %s to display the head tags preview."
 msgstr ""
 
-#: lib/post.php:346
+#: lib/post.php:358
 msgid ""
 "Social validation tools will be available when the %s is published with "
 "public visibility."
