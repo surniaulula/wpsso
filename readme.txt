@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4.2
-Stable Tag: 3.26.1
+Stable Tag: 3.27.0
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -241,7 +241,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [Performance Tuning](http://wpsso.com/codex/plugins/wpsso/installation/performance-tuning/)
 * [Debugging and Problem Solving](http://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/)
 * [How-To Migrate from NGFB to WPSSO](http://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
-* [Developer Special – Buy one, Get one Free](http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
+* [Developer Special - Buy one, Get one Free](http://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 = Plugin Setup =
 
@@ -261,11 +261,11 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How can I see what the Facebook crawler sees?](http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/)
 * [How can I share a single NextGEN Gallery image?](http://wpsso.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/)
 * [How do I attach an image without showing it on the webpage?](http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
-* [How do I fix my theme’s front page pagination?](http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/)
+* [How do I fix my theme's front page pagination?](http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/)
 * [How do I install the WPSSO Pro version?](http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](http://wpsso.com/codex/plugins/wpsso/faq/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO find / detect / select images?](http://wpsso.com/codex/plugins/wpsso/faq/how-does-wpsso-find-detect-select-images/)
-* [W3C says “there is no attribute ‘property’”](http://wpsso.com/codex/plugins/wpsso/faq/w3c-says-there-is-no-attribute-property/)
+* [W3C says "there is no attribute 'property'"](http://wpsso.com/codex/plugins/wpsso/faq/w3c-says-there-is-no-attribute-property/)
 * [What about Google Search and Google Plus?](http://wpsso.com/codex/plugins/wpsso/faq/what-about-google-search-and-google-plus/)
 * [What features of NextGEN Gallery are supported?](http://wpsso.com/codex/plugins/wpsso/faq/what-features-of-nextgen-gallery-are-supported/)
 * [What is the difference between NGFB and WPSSO?](http://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/)
@@ -303,7 +303,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 		* [Filter Examples](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/)
 			* [Detect YouTube URL Links as Videos](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Disable the Social Settings Metabox by Post ID](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
-			* [Modify the article:tag Keywords / Names](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
+			* [Modify the "article:tag" Keywords / Names](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Topics List](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
 			* [Use the REQUEST_URI for Post URLs](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
