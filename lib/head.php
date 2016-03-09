@@ -174,10 +174,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build header array' );	// begin timer
 
-			$lca = $this->p->cf['lca'];
 			$post_id = 0;
 			$post_obj = false;
 			$user_id = false;
+			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
 			$gen_name = $this->p->cf['plugin'][$lca]['short'].
 				( $this->p->is_avail['aop'] ? ' Pro' : '' );

@@ -84,9 +84,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			$post_id = 0;
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
-			$post_id = 0;
 			$check_dupes = true;
 			$video_previews = 0;
 
