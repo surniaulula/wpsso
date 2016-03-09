@@ -158,7 +158,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$unhide = $this->defaults[$name];
 								else $unhide = false;
 							} else $unhide = $selected;
-							if ( $unhide ) {
+							if ( $unhide !== true ) {	// just in case
 								$html .= '<script type="text/javascript">'.
 									'jQuery(document).ready( function(){ '.
 										'sucomSelectChangeUnhideRows("'.$name.'", '.
