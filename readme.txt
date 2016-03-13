@@ -353,6 +353,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.28.0 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Improved the Social Settings display of default values (Free version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Version 8.28.0 starts a refactoring process to remove most references to $post_id and $post_obj, replacing them by $mod array values instead (id, name, and obj).
+	* Modified the SucomUtil `get_term_object()` and `get_user_object()` arguments to allow requesting specific term and user IDs.
+	* Refactored several classes / methods to use the improved NgfbUtil `get_object_id_mod()` method.
+
 **Version 3.27.0 (2016/02/09)**
 
 Official announcement: N/A
