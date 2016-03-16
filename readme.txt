@@ -357,16 +357,24 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Official announcement: N/A
 
+Please note: **This release includes many WPSSO core changes and improvements to internal variable names, method and filter arguments**. New versions of the following WPSSO extensions have also been released (all extensions except for the WPSSO Pro Update Manager). Please make sure you update all your installed / active WPSSO extension plugins as well.
+
+* WPSSO Mobile App Meta (WPSSO AM) v1.6.0
+* WPSSO Place and Location Meta (WPSSO PLM) v1.5.0
+* WPSSO Ridiculously Responsive Social Sharing Buttons (WPSSO RRSSB) v1.3.0
+* WPSSO Schema JSON-LD (WPSSO JSON) v1.4.0
+* WPSSO Social Sharing Buttons (WPSSO SSB) v2.2.0
+
 * *New Features*
 	* None
 * *Improvements*
-	* Improved the Social Settings display of default values (Free version).
+	* Improved the Social Settings options display (Free version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Version 8.28.0 starts a refactoring process to remove most references to $post_id and $post_obj, replacing them by $mod array values instead (id, name, and obj).
-	* Modified the SucomUtil `get_term_object()` and `get_user_object()` arguments to allow requesting specific term and user IDs.
-	* Refactored several classes / methods to use the improved NgfbUtil `get_object_id_mod()` method.
+	* Version 8.28.0 starts a refactoring process to remove most references to `$post_id` and `$post_obj`, replacing them by a single `$mod` array instead. The $mod array includes the post/term/user id and module object reference.
+	* Modified the SucomUtil `get_term_object()` and `get_user_object()` method arguments to allow requesting a specific term and user ID.
+	* Refactored several classes / methods to use the new `$mod` variable and improved NgfbUtil `get_object_id_mod()` method.
 
 **Version 3.27.0 (2016/02/09)**
 
