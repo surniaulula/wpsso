@@ -357,13 +357,13 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 Official announcement: N/A
 
-Please note: **This release includes many WPSSO core changes and improvements to internal variable names, method and filter arguments**. New versions of the following WPSSO extensions have also been released (all extensions except for the WPSSO Pro Update Manager). Please make sure you update all your installed / active WPSSO extension plugins as well.
-
-* WPSSO Mobile App Meta (WPSSO AM) v1.6.0
-* WPSSO Place and Location Meta (WPSSO PLM) v1.5.0
-* WPSSO Ridiculously Responsive Social Sharing Buttons (WPSSO RRSSB) v1.3.0
-* WPSSO Schema JSON-LD (WPSSO JSON) v1.4.0
-* WPSSO Social Sharing Buttons (WPSSO SSB) v2.2.0
+> **This release includes many WPSSO core changes and improvements to internal variable names, method and filter arguments**. New versions of the following WPSSO extensions have also been released (all extensions except for the WPSSO Pro Update Manager). Please make sure you update all your installed / active WPSSO extension plugins as well.**
+> 
+> * WPSSO Mobile App Meta (WPSSO AM) v1.6.0
+> * WPSSO Place and Location Meta (WPSSO PLM) v1.5.0
+> * WPSSO Ridiculously Responsive Social Sharing Buttons (WPSSO RRSSB) v1.3.0
+> * WPSSO Schema JSON-LD (WPSSO JSON) v1.4.0
+> * WPSSO Social Sharing Buttons (WPSSO SSB) v2.2.0
 
 * *New Features*
 	* None
