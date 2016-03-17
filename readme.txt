@@ -369,10 +369,12 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Improved the Social Settings options display (Free version).
+	* Standardized checks for required PHP curl, json, and mbstring extensions.
+	* Added attribute and javascript escaping to name, class, and id form values.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Version 8.28.0 starts a refactoring process to remove most references to `$post_id` and `$post_obj`, replacing them by a single `$mod` array instead. The `$mod` array includes the post/term/user id and module object reference.
+	* Version 3.28.0 starts a refactoring process to remove most references to `$use_post`, `$post_id` and `$post_obj`, replacing them by a single `$mod` array instead. The `$mod` array includes the post/term/user id and module object reference.
 	* Modified the SucomUtil `get_term_object()` and `get_user_object()` method arguments to allow requesting a specific term and user ID.
 	* Refactored several classes / methods to use the new `$mod` variable and improved WpssoUtil `get_object_id_mod()` method.
 
