@@ -227,9 +227,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
 		}
 
-		public function get_defaults( $idx = false, $mod_id = false ) {
-
-			$mod = $this->get_mod( $mod_id );
+		public function get_defaults( $mod_id, $idx = false ) {
 
 			if ( ! isset( $this->defs[$mod_id] ) )
 				$this->defs[$mod_id] = array();
@@ -274,7 +272,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'rp_img_url' => '',
 				);
 
-				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $mod );
+				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $this->get_mod( $mod_id ) );
 				$defs['options_filtered'] = true;
 			}
 
@@ -340,7 +338,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_submit_opts( $mod_id ) {
 			$mod = $this->get_mod( $mod_id );
 
-			$defs = $this->get_defaults( false, $mod['id'] );
+			$defs = $this->get_defaults( $mod['id'] );
 			unset ( $defs['options_filtered'] );
 			unset ( $defs['options_version'] );
 
