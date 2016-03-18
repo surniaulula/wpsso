@@ -365,8 +365,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );		// WPSSO_NONCE is an md5() string
 
 			// save additional info about the post
-			$mod['post_status'] = get_post_status( $post_id );		// post status name
-			$mod['post_type'] = ucfirst( $post_type->name );		// post type name
+			$mod['post_status'] = get_post_status( $post_id );	// post status name
+			$mod['post_type'] = $post_type->name;			// post type name
 
 			$metabox = 'post';
 			$tabs = apply_filters( $this->p->cf['lca'].'_post_social_settings_tabs',
@@ -389,35 +389,33 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark( 'metabox post' );
 		}
 
-		// $post information is not available until a draft has been saved
 		protected function get_table_rows( &$metabox, &$key, &$head, &$mod ) {
 
 			$is_auto_draft = empty( $mod['post_status'] ) || 
 				$mod['post_status'] === 'auto-draft' ? true : false;
+			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
+				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
 			$rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'post-preview':
 					if ( $is_auto_draft )
 						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-							sprintf( __( 'Save a draft version or publish the %s to display the Open Graph social preview.',
-								'wpsso' ), $mod['post_type'] ).'</p></td>';
+							$auto_draft_msg.'</p></blockquote></td>';
 					else $rows = $this->get_rows_social_preview( $this->form, $head, $mod );
 					break;
 
 				case 'post-tags':	
 					if ( $is_auto_draft )
 						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-							sprintf( __( 'Save a draft version or publish the %s to display the head tags preview list.',
-								'wpsso' ), $mod['post_type'] ).'</p></blockquote></td>';
+							$auto_draft_msg.'</p></blockquote></td>';
 					else $rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					break; 
 
 				case 'post-validate':
-					if ( $mod['post_status'] !== 'publish' && $mod['post_type'] !== 'Attachment' )
+					if ( $is_auto_draft )
 						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-							sprintf( __( 'Social validation tools will be available when the %s is published with public visibility.',
-								'wpsso' ), $mod['post_type'] ).'</p></blockquote></td>';
+							$auto_draft_msg.'</p></blockquote></td>';
 					else $rows = $this->get_rows_validate( $this->form, $head, $mod );
 					break; 
 			}

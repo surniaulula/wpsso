@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_options( $mod_id, $idx = false, $attr = array() ) {
+		public function get_options( $mod_id, $idx = false, $filter_options = true ) {
 			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
 		}
 

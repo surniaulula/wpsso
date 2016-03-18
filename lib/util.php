@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
 			} elseif ( $aop )
-				$meta_opts = $this->get_mod_options( $mod['id'], $mod['name'], false, false );	// $filter_options = false
+				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_options = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Example: get_mod_options( $post_id, 'post', array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_mod_options( $mod_id, $mod_name, $index = false, $atts = array() ) {
+		public function get_mod_options( $mod_id, $mod_name, $idx = false, $filter_options = true ) {
 
 			// sanitation
 			if ( empty( $mod_id ) ) {
@@ -452,34 +452,34 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			// return the whole options array
-			if ( $index === false ) {
-				$ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $index, $atts );
+			if ( $idx === false ) {
+				$ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $idx, $filter_options );
 
 			// return the first matching index value
 			} else {
-				if ( ! is_array( $index ) )
-					$index = array( $index );
-				else $index = array_unique( $index );	// just in case
+				if ( ! is_array( $idx ) )
+					$idx = array( $idx );
+				else $idx = array_unique( $idx );	// just in case
 
-				foreach ( $index as $key ) {
+				foreach ( $idx as $key ) {
 					if ( $key === 'none' )		// special index keyword
 						return null;
 					elseif ( empty( $key ) )
 						continue;
-					// get_options() returns null if key index is missing
-					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $key, $atts ) ) !== null );
-						break;
+					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $key, $filter_options ) ) !== null );
+						break;			// stop if we have an option value
 				}
 			}
 
 			if ( $ret !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'custom '.$mod_name.' '.
-						( $index === false ? 'options' : ( is_array( $index ) ? 
-							implode( ', ', $index ) : $index ) ).' = '.
+						( $idx === false ? 'options' : ( is_array( $idx ) ? 
+							implode( ', ', $idx ) : $idx ) ).' = '.
 						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
 				}
 			}
+
 			return $ret;
 		}
 

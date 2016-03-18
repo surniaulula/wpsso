@@ -73,13 +73,13 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
-					'no_auto_draft' => ( $mod['post_type'] === 'Attachment' ? false : true ),
+					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod['use_post'] ), 'wide' ),
 				),
 			);
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), $mod['post_type'] );
+				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 		}
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) {
 				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 					sprintf( __( 'Save a draft version or publish the %s to display these options.',
-						'wpsso' ), $mod['post_type'] ).'</p></td>';
+						'wpsso' ), ucfirst( $mod['post_type'] ) ).'</p></td>';
 				return $table_rows;	// abort
 			}
 

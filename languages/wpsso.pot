@@ -1046,7 +1046,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:81 lib/pro/admin/post.php:101
+#: lib/gpl/admin/post.php:81 lib/post.php:396 lib/pro/admin/post.php:101
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2048,23 +2048,6 @@ msgstr ""
 #: lib/user.php:229
 msgctxt "metabox title"
 msgid "Social Settings"
-msgstr ""
-
-#: lib/post.php:403
-msgid ""
-"Save a draft version or publish the %s to display the Open Graph social "
-"preview."
-msgstr ""
-
-#: lib/post.php:411
-msgid ""
-"Save a draft version or publish the %s to display the head tags preview list."
-msgstr ""
-
-#: lib/post.php:419
-msgid ""
-"Social validation tools will be available when the %s is published with "
-"public visibility."
 msgstr ""
 
 #: lib/pro/admin/advanced.php:184
