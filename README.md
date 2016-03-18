@@ -9,7 +9,7 @@
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/">https://wpsso.com/</a></td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>attached, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -57,11 +57,12 @@
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is provided with the Pro version (as it requires video discovery modules available only in the Pro version).</li>
 <li><a href="https://dev.twitter.com/cards/types/photo">Photo Card</a>, <a href="https://dev.twitter.com/cards/types/gallery">Gallery Card</a>, and <a href="https://dev.twitter.com/cards/types/product">Product Card</a> were deprecated by Twitter on July 3rd, 2015 and are no longer supported.</li>
 </ul></li>
+<li>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</li>
+<li>Support for featured, attached, gallery shortcode, and/or image HTML tags in content.</li>
 <li>Configurable image sizes for Open Graph (Facebook, LinkedIn, etc.) and Pinterest.</li>
 <li>Customizable image dimensions for each Twitter Card type.</li>
-<li>Optional fallback to a default image and video for index and search webpages.</li>
-<li>Support for featured, attached, gallery shortcode, and/or HTML image tags in content.</li>
 <li>Fallback to image alt values if the content and except do not include any text.</li>
+<li>Optional fallback to a default image and video for index and search webpages.</li>
 <li>Validates image dimensions and aspect ratios for reliable sharing results.</li>
 <li>Auto-regeneration of inaccurate / missing WordPress image sizes.</li>
 <li>Fully renders content (including shortcodes) for accurate description texts.</li>
