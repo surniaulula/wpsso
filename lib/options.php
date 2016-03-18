@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// sanitize and validate options
-		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
+		public function sanitize( $opts = array(), $def_opts = array(), $network = false, &$mod = false ) {
 
 			// make sure we have something to work with
 			if ( empty( $def_opts ) || ! is_array( $def_opts ) )

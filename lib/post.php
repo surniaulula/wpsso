@@ -60,10 +60,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_mod( $mod_id ) {
 			$mod = WpssoMeta::$mod_array;
+			$mod['use_post'] = $mod_id;
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
-			$mod['use_post'] = $mod_id;
 			$mod['is_post'] = true;
 			$mod['is_complete'] = true;
 			return $mod;

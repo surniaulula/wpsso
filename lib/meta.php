@@ -227,16 +227,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
 		}
 
-		public function get_defaults( $idx = false, &$mod = array() ) {
+		public function get_defaults( $idx = false, $mod_id = false ) {
 
-			$mod_id = isset( $mod['id'] ) ? $mod['id'] : false;
-			$mod_name = isset( $mod['name'] ) ? $mod['name'] : false;
+			$mod = $this->get_mod( $mod_id );
 
-			if ( ! isset( $this->defs[$mod_name][$mod_id] ) )
-				$this->defs[$mod_name][$mod_id] = array();
+			if ( ! isset( $this->defs[$mod_id] ) )
+				$this->defs[$mod_id] = array();
 
-			$defs =& $this->defs[$mod_name][$mod_id];	// shortcut
-			$opts =& $this->p->options;			// shortcut
+			$defs =& $this->defs[$mod_id];		// shortcut
+			$opts =& $this->p->options;		// shortcut
 
 			if ( ! isset( $defs['options_filtered'] ) || 
 				$defs['options_filtered'] !== true ) {
@@ -338,13 +337,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else return true;
 		}
 
-		protected function get_submit_opts( $mod_id, $mod_name = false ) {
+		protected function get_submit_opts( $mod_id ) {
+			$mod = $this->get_mod( $mod_id );
 
-			$defs = $this->get_defaults( false, $mod_id, $mod_name );
+			$defs = $this->get_defaults( false, $mod['id'] );
 			unset ( $defs['options_filtered'] );
 			unset ( $defs['options_version'] );
 
-			$prev = $this->get_options( $mod_id );
+			$prev = $this->get_options( $mod['id'] );
 			unset ( $prev['options_filtered'] );
 			unset ( $prev['options_version'] );
 
@@ -352,10 +352,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $prev, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod_name );	// network is false
-
-			if ( $mod_name !== false )
-				$opts = apply_filters( $this->p->cf['lca'].'_save_md_options', $opts, $mod_id, $mod_name );
+			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// network is false
 
 			foreach ( $defs as $key => $def_val ) {
 				if ( isset( $opts[$key] ) ) {
@@ -386,21 +383,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							$opts[$md_pre.'_img_'.$key] === $defs[$md_pre.'_img_'.$key] )
 								unset( $opts[$md_pre.'_img_'.$key] );
 
-					if ( $mod_name !== false ) {
-						// has anything changed? if yes, then set the force_regen flag
-						if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
-							$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
-								$opts[$md_pre.'_img_'.$key] : '';
-							$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
-								$prev[$md_pre.'_img_'.$key] : '';
-							if ( $check_current !== $check_previous )
-								$force_regen = true;
-						}
+					if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
+						$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
+							$opts[$md_pre.'_img_'.$key] : '';
+						$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
+							$prev[$md_pre.'_img_'.$key] : '';
+						if ( $check_current !== $check_previous )
+							$force_regen = true;
 					}
 				}
+
 				if ( $force_regen === true )
-					set_transient( $this->p->cf['lca'].'_'.$mod_name.'_'.$mod_id.'_regen_'.$md_pre, true );
+					set_transient( $this->p->cf['lca'].'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre, true );
 			}
+
 			return $opts;
 		}
 
