@@ -827,6 +827,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
+		// deprecated on 2016/03/18
+		public function get_th( $title = '', $class = '', $css_id = '', $atts = array() ) {
+			return '<th><p>'.$title.'</p></th>';
+		}
+
 		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
 
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
