@@ -366,7 +366,7 @@ Official announcement: N/A
 > * WPSSO Social Sharing Buttons (WPSSO SSB) v2.2.0
 
 * *New Features*
-	* None
+	* Added support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 * *Improvements*
 	* Improved the Social Settings options display (Free version).
 	* Standardized checks for required PHP curl, json, and mbstring extensions.
