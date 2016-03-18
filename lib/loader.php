@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
-						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id_key );
+						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						if ( $this->p->is_avail[$sub][$id] ) {
 							// this is usually a false === false comparison
 							if ( $action !== $has_action ) {

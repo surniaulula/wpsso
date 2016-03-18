@@ -53,12 +53,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return ( $this->saved_title === false ? $title : $this->saved_title );
 		}
 
-		// called from Tumblr class
 		public function get_quote( $use_post = true ) {
 
 			if ( ( $post_obj = $this->p->util->get_post_object( $use_post ) ) === false ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: invalid object type' );
+					$this->p->debug->log( 'exiting early: invalid post object' );
 				return '';
 			}
 
@@ -131,7 +130,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $is['post_page'] ) {
 					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						$caption = $this->p->util->get_mod_options( 'post', $post_id, $md_idx );
+						$caption = $this->p->util->get_mod_options( $post_id, 'post', $md_idx );
 
 					if ( ! empty( $caption ) &&
 						! empty( $add_hashtags ) && 
@@ -148,13 +147,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$term_obj = $this->p->util->get_term_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						$caption = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
+						$caption = $this->p->util->get_mod_options( $term_obj->term_id, 'taxonomy', $md_idx );
 	
 				} elseif ( $is['user_page'] ) {
 					$user_obj = $this->p->util->get_user_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $user_obj->ID ) )
-						$caption = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+						$caption = $this->p->util->get_mod_options( $user_obj->ID, 'user', $md_idx );
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'custom caption skipped: unknown page type' );
@@ -254,19 +253,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $is['post_page'] ) {
 					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						$title = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_title' ) );
+						$title = $this->p->util->get_mod_options( $post_id, 'post', array( $md_idx, 'og_title' ) );
 	
 				} elseif ( $is['term_page'] ) {
 					$term_obj = $this->p->util->get_term_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						$title = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
+						$title = $this->p->util->get_mod_options( $term_obj->term_id, 'taxonomy', $md_idx );
 	
 				} elseif ( $is['user_page'] ) {
 					$user_obj = $this->p->util->get_user_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $user_obj->ID ) )
-						$title = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+						$title = $this->p->util->get_mod_options( $user_obj->ID, 'user', $md_idx );
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'custom title skipped: unknown page type' );
@@ -435,9 +434,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return $desc;
 				}
-				$post_id = empty( $post_obj->ID ) || 
-					empty( $post_obj->post_type ) ? 
-						0 : $post_obj->ID;
+				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 			}
 
 			// skip if no metadata index / key name
@@ -445,19 +442,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $is['post_page'] ) {
 					// returns null if index key is not set in the options array
 					if ( ! empty( $post_id ) )
-						$desc = $this->p->util->get_mod_options( 'post', $post_id, array( $md_idx, 'og_desc' ) );
+						$desc = $this->p->util->get_mod_options( $post_id, 'post', array( $md_idx, 'og_desc' ) );
 	
 				} elseif ( $is['term_page'] ) {
 					$term_obj = $this->p->util->get_term_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $term_obj->term_id ) )
-						$desc = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, $md_idx );
+						$desc = $this->p->util->get_mod_options( $term_obj->term_id, 'taxonomy', $md_idx );
 	
 				} elseif ( $is['user_page'] ) {
 					$user_obj = $this->p->util->get_user_object();
 					// returns null if index key is not set in the options array
 					if ( ! empty( $user_obj->ID ) )
-						$desc = $this->p->util->get_mod_options( 'user', $user_obj->ID, $md_idx );
+						$desc = $this->p->util->get_mod_options( $user_obj->ID, 'user', $md_idx );
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'custom description skipped: unknown page type' );
@@ -835,8 +832,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 					if ( isset( $this->p->m['media']['ngg'] ) && 
 						$this->p->options['og_ngg_tags'] && 
-						$this->p->is_avail['postthumb'] && 
-						has_post_thumbnail( $post_id ) ) {
+							$this->p->is_avail['post_thumbnail'] && 
+								has_post_thumbnail( $post_id ) ) {
 
 						$pid = get_post_thumbnail_id( $post_id );
 						// featured images from ngg pre-v2 had 'ngg-' prefix

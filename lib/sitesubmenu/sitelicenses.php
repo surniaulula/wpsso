@@ -12,12 +12,15 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 
 	class WpssoSitesubmenuSitelicenses extends WpssoAdmin {
 
-		public function __construct( &$plugin, $id, $name, $lib ) {
+		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
+			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function set_form_property() {

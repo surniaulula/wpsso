@@ -344,7 +344,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
 						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
-			$this->check_tmpl_head_elements();
+			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
+			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
+				$this->check_tmpl_head_elements();
 			return $opts;
 		}
 
@@ -827,7 +829,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
-						list( $id, $stub, $action ) = SucomUtil::get_id_stub_action( $id_key );
+						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
 						$features[$label] = array( 
@@ -1086,12 +1088,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
 						if ( $lca === $ext || $aop ) {
-							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
 							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid' );
 						} else {
-							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
@@ -1107,13 +1109,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $lca === $ext || $aop ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).
 							'</td><td><p>'.( empty( $qty_used ) ? '' :
 								$qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->p->util->get_th( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
@@ -1143,23 +1145,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$log_pre = 'plugin conflict detected - ';	// don't translate the debug 
 
 			// PHP
-			if ( empty( $this->p->is_avail['curl'] ) ) {
-				if ( ! empty( $this->p->options['plugin_shortener'] ) && 
-					$this->p->options['plugin_shortener'] !== 'none' ) {
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'url shortening is enabled but curl function is missing' );
-					$this->p->notice->err( sprintf( __( 'URL shortening has been enabled, but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', 'wpsso' ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing cURL library files installed.', 'wpsso' ) );
-				} elseif ( ! empty( $this->p->options['plugin_file_cache_exp'] ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'file caching is enabled but curl function is missing' );
-					$this->p->notice->err( sprintf( __( 'The file caching feature has been enabled but PHP\'s <a href="%s" target="_blank">Client URL Library</a> (cURL) is missing.', 'wpsso' ), 'http://ca3.php.net/curl' ).' '.__( 'Please contact your hosting provider to have the missing library installed.', 'wpsso' ) );
-				}
+			if ( ! extension_loaded( 'curl' ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'php curl extension is missing' );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Client URL Library (cURL) extension</a> is missing.', 'wpsso' ), 'http://php.net/manual/en/book.curl.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed.', 'wpsso' ) );
 			}
-			if ( empty( $this->p->is_avail['mbstring'] ) ) {
+			if ( ! extension_loaded( 'json' ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'php json extension is missing' );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP JavaScript Object Notation (JSON) extension</a> is missing.', 'wpsso' ), 'http://php.net/manual/en/book.json.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed.', 'wpsso' ) );
+			}
+			if ( ! extension_loaded( 'mbstring' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'php mbstring extension is missing' );
-				$this->p->notice->err( sprintf( __( 'PHP\'s <a href="%s" target="_blank">Multibyte String</a> extension is missing.', 'wpsso' ), 'http://php.net/manual/en/book.mbstring.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed.', 'wpsso' ) );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Multibyte String extension</a> is missing.', 'wpsso' ), 'http://php.net/manual/en/book.mbstring.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed.', 'wpsso' ) );
 			}
 
 			// Yoast SEO
@@ -1219,6 +1218,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
+				return;
+			}
+
 			// only check if using the default filter name
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' )
@@ -1262,7 +1268,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$php = file_get_contents( $file );
-				$php = str_replace( '<head>', '<head <?php do_action( \'add_head_attributes\' ); ?>>', $php );
+				$php = str_replace( '<head>', '<head <?php do_action( \'add_head_attributes\' ); ?\>>', $php );
 
 				if ( ! $fh = @fopen( $file, 'wb' ) ) {
 					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.',
@@ -1293,7 +1299,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_site_use( &$form, $network = false, $name ) {
 			if ( $network !== true )
 				return '';
-			return $this->p->util->get_th( _x( 'Site Use',
+			return $form->get_th_html( _x( 'Site Use',
 				'option label (very short)', 'wpsso' ), 'site_use' ).
 			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
 				'<td>'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :

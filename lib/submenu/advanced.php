@@ -14,12 +14,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
 			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function add_meta_boxes() {
@@ -49,10 +50,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
+				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
 		}
 
 		public function show_metabox_contact_fields() {
@@ -63,14 +64,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			) );
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
+				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
 			$this->p->util->do_table_rows( 
 				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
 				'metabox-'.$metabox.'-info'
 			);
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
 		}
 
 		public function show_metabox_taglist() {
@@ -85,22 +86,22 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			);
 		}
 
-		protected function get_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox, $key ) {
 			$rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows['plugin_preserve'] = $this->p->util->get_th( _x( 'Preserve Settings on Uninstall',
+					$rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
 						'option label', 'wpsso' ), null, 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
-					$rows['plugin_debug'] = $this->p->util->get_th( _x( 'Add Hidden Debug Messages', 
+					$rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages', 
 						'option label', 'wpsso' ), null, 'plugin_debug' ).
 					'<td>'.( SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? 
-						$this->form->get_no_checkbox( 'plugin_debug' ).' WPSSO_HTML_DEBUG constant enabled' :
+						$this->form->get_no_checkbox( 'plugin_debug' ).' <em>WPSSO_HTML_DEBUG constant is true</em>' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
-					$rows['plugin_show_opts'] = $this->p->util->get_th( _x( 'Options to Show by Default',
+					$rows['plugin_show_opts'] = $this->form->get_th_html( _x( 'Options to Show by Default',
 						'option label', 'wpsso' ), null, 'plugin_show_opts' ).
 					'<td>'.$this->form->get_select( 'plugin_show_opts', 
 						$this->p->cf['form']['show_options'] ).'</td>';

@@ -92,9 +92,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$file_expire = $expire_secs === false ?
 				$this->default_file_expire : $expire_secs;
 
-			if ( $this->p->is_avail['curl'] !== true ) {
+			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: curl is not available' );
+					$this->p->debug->log( 'exiting early: curl extension not available' );
 				return $return == 'url' ? $url : false;
 
 			} elseif ( defined( $this->p->cf['uca'].'_CURL_DISABLE' ) && 

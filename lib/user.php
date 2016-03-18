@@ -18,6 +18,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected static $pref = array();
 
+		public function __construct() {
+		}
+
 		protected function add_actions() {
 
 			add_filter( 'user_contactmethods', 
@@ -53,7 +56,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				// exit here if not a user or profile page
-				$user_id = SucomUtil::get_req_val( 'user_id' );
+				$user_id = SucomUtil::get_request_value( 'user_id' );
 				if ( empty( $user_id ) )
 					return;
 
@@ -70,11 +73,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function get_user_column_content( $value, $column_name, $id ) {
-			return $this->get_mod_column_content( $value, $column_name, $id, 'user' );
+		public function get_mod( $mod_id ) {
+			$mod = WpssoMeta::$mod_array;
+			$mod['id'] = $mod_id;
+			$mod['name'] = 'user';
+			$mod['obj'] =& $this;
+			$mod['is_user'] = true;
+			$mod['is_complete'] = true;
+			return $mod;
 		}
 
-		public function filter_og_image_user_column_content( $value, $column_name, $id, $mod_name ) {
+		public function get_user_column_content( $value, $column_name, $user_id ) {
+			$mod = $this->get_mod( $user_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+			return $this->get_mod_column_content( $value, $column_name, $mod );
+		}
+
+		public function filter_og_image_user_column_content( $value, $column_name, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -86,11 +102,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
+				$og_image = $this->get_og_video_preview_image( $mod, $check_dupes, $md_pre );
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
+				$og_image = $this->get_og_image( 1, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
@@ -104,15 +120,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_user_column_content( $desc, $column_name, $id, $mod_name ) {
+		public function filter_og_desc_user_column_content( $desc, $column_name, $mod ) {
 			if ( ! empty( $desc ) )
 				return $desc;
 
-			$user_obj = get_userdata( $id );	// get the user object
+			$user_obj = get_userdata( $mod['id'] );	// get the user object
 			if ( empty( $user_obj->ID ) )
 				return $desc;
 
-			$desc = $this->p->util->get_mod_options( 'user', $user_obj->ID, 'og_desc' );
+			$desc = $this->get_options( $mod['id'], 'og_desc' );
 
 			if ( $this->p->debug->enabled ) {
 				if ( empty( $desc ) )
@@ -132,7 +148,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -144,7 +159,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );
 
-			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
 				case 'profile':
 				case 'user-edit':
@@ -156,21 +170,28 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					break;
 			}
 
-			$user_id = $this->p->util->get_user_object( 'id' );
+			$lca = $this->p->cf['lca'];
+			$user_id = $this->p->util->get_user_object( false, 'id' );
+			$mod = $this->get_mod( $user_id );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
 				$add_metabox, $user_id, $screen->id ) === true ) {
 
-				do_action( $this->p->cf['lca'].'_admin_user_header', $user_id, $screen->id );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'adding metabox for user' );
 
-				// use_post is false since this isn't a post
-				// read_cache is false to generate notices etc.
-				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false, false );
+				do_action( $this->p->cf['lca'].'_admin_user_header', $mod, $screen->id );
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'setting head_meta_info static property' );
+
+				// $use_post = false, $read_cache = false to generate notices etc.
+				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
+				// check for missing open graph image and issue warning
 				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
-					// check for missing open graph image and issue warning
 					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 			}
 
@@ -197,7 +218,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_metaboxes() {
-			$user_id = $this->p->util->get_user_object( 'id' );
+			$user_id = $this->p->util->get_user_object( false, 'id' );
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'insufficient privileges to add metabox for user ID '.$user_id );
@@ -228,13 +249,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function show_metabox_user( $user ) {
-			$opts = $this->get_options( $user->ID );
-			$def_opts = $this->get_defaults( false, 'user' );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'metabox user' );
 
-			// save additional info about the term
-			WpssoMeta::$head_meta_info['user_id'] = $user->ID;			// user id
+			$mod = $this->get_mod( $user->ID );
+			$opts = $this->get_options( $user->ID );
+			$def_opts = $this->get_defaults( false, $mod );			// get the complete array
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );		// WPSSO_NONCE is an md5() string
 
 			$metabox = 'user';
 			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_user_tabs',
@@ -244,10 +266,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, WpssoMeta::$head_meta_info ), 
+				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
-						array(), $this->form, WpssoMeta::$head_meta_info ) );
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'metabox user' );
 		}
 
 		public function get_form_display_names() {
@@ -273,8 +298,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! empty( $this->p->cf['opt']['pre'] ) && 
 				is_array( $this->p->cf['opt']['pre'] ) ) {
 
-				foreach ( $this->p->cf['opt']['pre'] as $id => $pre ) {
-					$cm_opt = 'plugin_cm_'.$pre.'_';
+				foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
+					$cm_opt = 'plugin_cm_'.$cm_pre.'_';
 					// not all social websites have a contact fields, so check
 					if ( array_key_exists( $cm_opt.'name', $this->p->options ) ) {
 						$enabled = $this->p->options[$cm_opt.'enabled'];
@@ -291,15 +316,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				! empty( $this->p->cf['wp']['cm'] ) && 
 				is_array( $this->p->cf['wp']['cm'] ) ) {
 
-				foreach ( $this->p->cf['wp']['cm'] as $id => $name ) {
-					$cm_opt = 'wp_cm_'.$id.'_';
+				foreach ( $this->p->cf['wp']['cm'] as $cm_id => $name ) {
+					$cm_opt = 'wp_cm_'.$cm_id.'_';
 					if ( array_key_exists( $cm_opt.'enabled', $this->p->options ) ) {
 						$enabled = $this->p->options[$cm_opt.'enabled'];
 						$label = $this->p->options[$cm_opt.'label'];
 						if ( ! empty( $enabled ) ) {
 							if ( ! empty( $label ) )
-								$fields[$id] = $label;
-						} else unset( $fields[$id] );
+								$fields[$cm_id] = $label;
+						} else unset( $fields[$cm_id] );
 					}
 				}
 			}
@@ -312,8 +337,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! current_user_can( 'edit_user', $user_id ) )
 				return;
 
-			foreach ( $this->p->cf['opt']['pre'] as $id => $pre ) {
-				$cm_opt = 'plugin_cm_'.$pre.'_';
+			foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
+				$cm_opt = 'plugin_cm_'.$cm_pre.'_';
 				// not all social websites have contact fields, so check
 				if ( array_key_exists( $cm_opt.'name', $this->p->options ) ) {
 
@@ -470,23 +495,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$opts = array();
 				}
 				if ( $is_default || $force ) {
-					foreach ( $box_ids as $id ) {
+					foreach ( $box_ids as $box_id ) {
 						// change the order only if forced (default is controlled by add_meta_box() order)
 						if ( $force && $state == 'meta-box-order' && ! empty( $opts[$section] ) ) {
 							// don't proceed if the metabox is already first
-							if ( strpos( $opts[$section], $pagehook.'_'.$id ) !== 0 ) {
+							if ( strpos( $opts[$section], $pagehook.'_'.$box_id ) !== 0 ) {
 								$boxes = explode( ',', $opts[$section] );
 								// remove the box, no matter its position in the array
-								if ( $key = array_search( $pagehook.'_'.$id, $boxes ) !== false )
+								if ( $key = array_search( $pagehook.'_'.$box_id, $boxes ) !== false )
 									unset( $boxes[$key] );
 								// assume we want to be top-most
-								array_unshift( $boxes, $pagehook.'_'.$id );
+								array_unshift( $boxes, $pagehook.'_'.$box_id );
 								$opts[$section] = implode( ',', $boxes );
 								$is_changed = true;
 							}
 						} else {
 							// check to see if the metabox is present for that state
-							$key = array_search( $pagehook.'_'.$id, $opts );
+							$key = array_search( $pagehook.'_'.$box_id, $opts );
 
 							// if we're not targetting , then clear it
 							if ( empty( $meta_name ) && $key !== false ) {
@@ -494,7 +519,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								$is_changed = true;
 							// otherwise if we want a state, add if it's missing
 							} elseif ( ! empty( $meta_name ) && $key === false ) {
-								$opts[] = $pagehook.'_'.$id;
+								$opts[] = $pagehook.'_'.$box_id;
 								$is_changed = true;
 							}
 						}
@@ -511,14 +536,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cf = WpssoConfig::get_config( false, true );
 
 			$parent_slug = 'options-general.php';
-			foreach ( array_keys( $cf['*']['lib']['setting'] ) as $id ) {
-				$menu_slug = $cf['lca'].'-'.$id;
+			foreach ( array_keys( $cf['*']['lib']['setting'] ) as $lib_id ) {
+				$menu_slug = $cf['lca'].'-'.$lib_id;
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 
 			$parent_slug = $cf['lca'].'-'.key( $cf['*']['lib']['submenu'] );
-			foreach ( array_keys( $cf['*']['lib']['submenu'] ) as $id ) {
-				$menu_slug = $cf['lca'].'-'.$id;
+			foreach ( array_keys( $cf['*']['lib']['submenu'] ) as $lib_id ) {
+				$menu_slug = $cf['lca'].'-'.$lib_id;
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 		}
@@ -534,16 +559,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public static function save_pref( $prefs, $user_id = false ) {
+		public static function save_pref( $user_prefs, $user_id = false ) {
 			$user_id = $user_id === false ? 
 				get_current_user_id() : $user_id;
+
 			if ( ! current_user_can( 'edit_user', $user_id ) )
 				return false;
-			if ( ! is_array( $prefs ) || empty( $prefs ) )
-				return false;
+
+			if ( ! is_array( $user_prefs ) || 
+				empty( $user_prefs ) )
+					return false;
 
 			$old_prefs = self::get_pref( false, $user_id );	// get all prefs for user
-			$new_prefs = array_merge( $old_prefs, $prefs );
+			$new_prefs = array_merge( $old_prefs, $user_prefs );
 
 			// don't bother saving unless we have to
 			if ( $old_prefs !== $new_prefs ) {
@@ -596,18 +624,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
-			$post_id = 0;
 			$lca = $this->p->cf['lca'];
 			$lang = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
-					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
-					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
+					'lang:'.$lang.'_id:'.$user_id.'_name:user_url:'.$sharing_url,
+					'lang:'.$lang.'_id:'.$user_id.'_name:user_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'lang:'.$lang.'_id:'.$user_id.'_mod:user_column:'.$lca.'_og_image',
-					'lang:'.$lang.'_id:'.$user_id.'_mod:user_column:'.$lca.'_og_desc',
+					'lang:'.$lang.'_id:'.$user_id.'_name:user_column:'.$lca.'_og_image',
+					'lang:'.$lang.'_id:'.$user_id.'_name:user_column:'.$lca.'_og_desc',
 				),
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 

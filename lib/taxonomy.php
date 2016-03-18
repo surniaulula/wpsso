@@ -20,6 +20,9 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		protected $tax_obj = false;
 		protected $term_id = false;
 
+		public function __construct() {
+		}
+
 		protected function add_actions() {
 			if ( is_admin() ) {
 				/**
@@ -28,7 +31,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				 * editing a category and/or tag page, so return immediately if
 				 * they're not present.
 				 */
-				if ( ( $this->tax_slug = SucomUtil::get_req_val( 'taxonomy' ) ) === '' )
+				if ( ( $this->tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )
 					return;
 
 				$this->tax_obj = get_taxonomy( $this->tax_slug );
@@ -48,7 +51,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 					) );
 				}
 
-				if ( ( $this->term_id = SucomUtil::get_req_val( 'tag_ID' ) ) === '' )
+				if ( ( $this->term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
 					return;
 
 				if ( $this->p->debug->enabled )
@@ -81,11 +84,25 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			}
 		}
 
-		public function get_taxonomy_column_content( $value, $column_name, $id ) {
-			return $this->get_mod_column_content( $value, $column_name, $id, 'taxonomy' );
+		public function get_mod( $mod_id, $tax_slug = false ) {
+			$mod = WpssoMeta::$mod_array;
+			$mod['id'] = $mod_id;
+			$mod['name'] = 'taxonomy';
+			$mod['obj'] =& $this;
+			$mod['tax_slug'] = $tax_slug;
+			$mod['is_taxonomy'] = true;
+			$mod['is_complete'] = true;
+			return $mod;
 		}
 
-		public function filter_og_image_taxonomy_column_content( $value, $column_name, $id, $mod_name ) {
+		public function get_taxonomy_column_content( $value, $column_name, $term_id ) {
+			$mod = $this->get_mod( $term_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+			return $this->get_mod_column_content( $value, $column_name, $mod );
+		}
+
+		public function filter_og_image_taxonomy_column_content( $value, $column_name, $mod ) {
 
 			if ( ! empty( $value ) )
 				return $value;
@@ -98,11 +115,11 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$og_image = array();
 
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $id, $mod_name, $check_dupes, $md_pre );
+				$og_image = $this->get_og_video_preview_image( $mod, $check_dupes, $md_pre );
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			if ( empty( $og_image ) )
-				$og_image = $this->get_og_image( 1, $size_name, $id, $check_dupes, $force_regen, $md_pre );
+				$og_image = $this->get_og_image( 1, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
 
 			if ( empty( $og_image ) )
 				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
@@ -116,15 +133,15 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			return $value;
 		}
 
-		public function filter_og_desc_taxonomy_column_content( $desc, $column_name, $id, $mod_name ) {
+		public function filter_og_desc_taxonomy_column_content( $desc, $column_name, $mod ) {
 			if ( ! empty( $desc ) )
 				return $desc;
 
-			$term_obj = get_term_by( 'id', $id, $this->tax_slug, OBJECT, 'raw' );
+			$term_obj = get_term_by( 'id', $mod['id'], $this->tax_slug, OBJECT, 'raw' );
 			if ( empty( $term_obj->term_id ) )
 				return $desc;
 
-			$desc = $this->p->util->get_mod_options( 'taxonomy', $term_obj->term_id, 'og_desc' );
+			$desc = $this->p->util->get_mod_options( $term_obj->term_id, 'taxonomy', 'og_desc' );
 
 			if ( $this->p->debug->enabled ) {
 				if ( empty( $desc ) )
@@ -154,7 +171,6 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -166,7 +182,6 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );
 
-			$lca = $this->p->cf['lca'];
 			switch ( $screen->id ) {
 				case 'edit-'.$this->tax_slug:
 					break;
@@ -175,20 +190,27 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 					break;
 			}
 
+			$lca = $this->p->cf['lca'];
+			$mod = $this->get_mod( $this->term_id, $this->tax_slug );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
 				$add_metabox, $this->term_id, $screen->id ) === true ) {
 
-				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $this->term_id, $screen->id );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'adding metabox for taxonomy' );
 
-				// use_post is false since this isn't a post
-				// read_cache is false to generate notices etc.
-				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false );
+				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $mod, $screen->id );
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'setting head_meta_info static property' );
+
+				// $use_post = false, $read_cache = false to generate notices etc.
+				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
+				// check for missing open graph image and issue warning
 				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
-					// check for missing open graph image and issue warning
 					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 			}
 
@@ -235,13 +257,14 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		}
 
 		public function show_metabox_taxonomy( $term ) {
-			$opts = $this->get_options( $term->term_id );
-			$def_opts = $this->get_defaults( false, 'taxonomy' );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'metabox taxonomy' );
 
-			// save additional info about the term
-			WpssoMeta::$head_meta_info['term_id'] = $term->term_id;			// term id
+			$mod = $this->get_mod( $term->term_id, $this->tax_slug );
+			$opts = $this->get_options( $term->term_id );
+			$def_opts = $this->get_defaults( false, $mod );			// get the complete array
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
+			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );		// WPSSO_NONCE is an md5() string
 
 			$metabox = 'taxonomy';
 			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_taxonomy_tabs',
@@ -251,24 +274,26 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 			$rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key, WpssoMeta::$head_meta_info ), 
+				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
-						array(), $this->form, WpssoMeta::$head_meta_info ) );
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'metabox taxonomy' );
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
-			$post_id = 0;
 			$lca = $this->p->cf['lca'];
 			$lang = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
-					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
-					'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
+					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_url:'.$sharing_url,
+					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'lang:'.$lang.'_id:'.$term_id.'_mod:taxonomy_column:'.$lca.'_og_image',
+					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_column:'.$lca.'_og_image',
 				),
 			);
 			$transients = apply_filters( $this->p->cf['lca'].'_taxonomy_cache_transients', 

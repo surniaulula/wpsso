@@ -21,38 +21,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'plugin_image_sizes' => 4,
+				'plugin_image_sizes' => 3,
 			), 5 );
 
 			// only filter the head attribute if we have one
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
 
-				add_action( 'add_head_attributes', 
-					array( &$this, 'add_head_attributes' ) );
-
+				add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ) );
 				$prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
 					100 : $this->p->options['plugin_head_attr_filter_prio'];
-
 				add_filter( $this->p->options['plugin_head_attr_filter_name'], 
 					array( &$this, 'filter_head_attributes' ), $prio, 1 );
 
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'head attributes filter skipped: plugin_head_attr_filter_name option is empty' );
+				$this->p->debug->log( 'skipped head attributes: filter name option is empty' );
 		}
 
-		public function filter_plugin_image_sizes( $sizes, $wp_obj, $mod_name, $crawler_name ) {
-
+		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
 			$sizes['schema_img'] = array(
 				'name' => 'schema',
 				'label' => _x( 'Google / Schema Image',
 					'image size label', 'wpsso' ),
 			);
-
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) &&
 				$crawler_name === 'pinterest' )
 					$sizes['schema_img']['prefix'] = 'rp_img';
-
 			return $sizes;
 		}
 
@@ -64,16 +58,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$lca = $this->p->cf['lca'];
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: amp endpoint' );
+				return $head_attr;
+			}
 
 			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $lca.'_add_schema_head_attributes', true ) ) {
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
 				return $head_attr;
 			}
 
-			$head_type = $this->get_head_item_type();
+			$lca = $this->p->cf['lca'];
+			$use_post = apply_filters( $lca.'_header_use_post', false );
+			$mod = $this->p->util->get_object_id_mod( $use_post );
+			$head_type = $this->get_head_item_type( $mod );
+
 			if ( empty( $head_type ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema head type value is empty' );
@@ -96,53 +98,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $head_attr );
 		}
 
-		public function get_head_item_type( $use_post = false, $post_obj = false, $ret_id = false, $use_mod = true ) {
+		public function get_head_item_type( array &$mod, $return_id = false, $use_mod_opts = true ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			if ( $this->schema_types === null )
 				$this->set_schema_types_property();
 
-			$default_key = apply_filters( $this->p->cf['lca'].'_schema_type_for_default', 'webpage' );
+			$lca = $this->p->cf['lca'];
+			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
 			$type_id = null;
 
-			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'id is '.$id );
-				$this->p->debug->log( 'mod_name is '.$mod_name );
-			}
-	
-			if ( $use_mod ) {
-				if ( ! empty( $id ) && ! empty( $mod_name ) ) {
-					$type_id = $this->p->util->get_mod_options( $mod_name, $id, 'schema_type' );
-	
+			if ( $use_mod_opts ) {
+				if ( ! empty( $mod['id'] ) && ! empty( $mod['name'] ) ) {
+					$type_id = $this->p->util->get_mod_options( $mod['id'], $mod['name'], 'schema_type' );
 					if ( empty( $type_id ) || $type_id === 'none' ) {
 						$type_id = null;
-
 					} elseif ( empty( $this->schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type id '.$type_id.' not in schema types' );
+							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types' );
 						$type_id = null;
-	
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type id '.$type_id.' from module '.$mod_name );
-				}
+						$this->p->debug->log( 'custom type_id '.$type_id.' from module '.$mod['name'] );
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'incomplete module: missing id and/or name' );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'ignoring module option for custom type id' );
+				$this->p->debug->log( 'skipping check for custom type_id: use_mod_opts is false' );
 
 			if ( empty( $type_id ) ) {
-
-				if ( is_front_page() ) {
+				if ( is_front_page() )
 					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
 						( empty( $this->p->options['schema_type_for_home_page'] ) ?
 							'website' : $this->p->options['schema_type_for_home_page'] ) );
 
-				// possible values are post, taxonomy, and user
-				} elseif ( $mod_name === 'post' ) {
-
-					if ( ! is_object( $post_obj ) )
-						$post_obj = $this->p->util->get_post_object( $id );
+				elseif ( $mod['is_post'] ) {
+					$post_obj = $this->p->util->get_post_object( $mod['id'] );
 	
 					if ( ! empty( $post_obj->post_type ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
@@ -168,23 +158,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					// post objects without a post_type property
 					} else $type_id = $default_key;
 
-				} elseif ( $this->p->util->force_default_author( $use_post, 'og' ) ) {
+				} elseif ( $this->p->util->force_default_author( $mod, 'og' ) ) {
 					$type_id = $default_key;
 
 				// default value for all other webpages
 				} else $type_id = $default_key;
 			}
 
-			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $use_post, $post_obj );
+			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod );
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema type id is "'.$type_id.'"' );
 
 			if ( isset( $this->schema_types[$type_id] ) ) {
-				if ( $ret_id !== false )	// return the type id, not its associated value
-					return $type_id;
-				else return $this->schema_types[$type_id];
+				return $return_id ?
+					$type_id : $this->schema_types[$type_id];
 			} else return false;
+		}
+
+		public function get_head_type_context( array &$mod ) {
+			return self::get_item_type_context( $this->get_head_item_type( $mod ) );
 		}
 
 		// get the full Schema type URL from the array key
@@ -195,10 +188,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( isset( $this->schema_types[$type_id] ) )
 				return $this->schema_types[$type_id];
 			else return false;
-		}
-
-		public function get_head_type_context( $use_post = false, $post_obj = false ) {
-			return self::get_item_type_context( $this->get_head_item_type( $use_post, $post_obj ) );
 		}
 
 		public static function get_item_type_context( $item_type, $properties = array() ) {
@@ -232,38 +221,38 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->schema_types === null )
 				$this->set_schema_types_property();
 			$select = array( 'none' => '[None]' );
-			foreach ( $this->schema_types as $id => $label )
-				$select[$id] = $id.' ('.$label.')';
+			foreach ( $this->schema_types as $type_id => $label )
+				$select[$type_id] = $type_id.' ('.$label.')';
 			return $select;
 		}
 
 		// $item_type examples: http_schema_org_webpage or http://schema.org/WebPage
-		public function has_json_data_filter( $item_type = '', $use_post = false, $post_obj = false ) {
-			$filter_name = $this->get_json_data_filter( $item_type, $use_post, $post_obj );
+		public function has_json_data_filter( array &$mod, $item_type = '' ) {
+			$filter_name = $this->get_json_data_filter( $mod, $item_type );
 			return ! empty( $filter_name ) && 
 				has_filter( $filter_name ) ? 
 					true : false;
 		}
 
-		public function get_json_data_filter( $item_type = '', $use_post = false, $post_obj = false ) {
+		public function get_json_data_filter( array &$mod, $item_type = '' ) {
 			if ( empty( $item_type ) )
-				$item_type = $this->get_head_item_type( $use_post, $post_obj );
+				$item_type = $this->get_head_item_type( $mod );
 			return $this->p->cf['lca'].'_json_data_'.SucomUtil::sanitize_hookname( $item_type );
 		}
 
 		/*
 		 * JSON-LD Script Array
 		 */
-		public function get_json_array( $use_post, &$post_obj, &$mt_og, $post_id, $user_id ) {
-
+		public function get_json_array( $use_post, array &$mod, &$mt_og, $user_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
+			$post_obj = false;
 
 			// example: article.tech
-			$mt_og['schema:type:id'] = $this->get_head_item_type( $use_post, $post_obj, true );	// return the type id
+			$mt_og['schema:type:id'] = $this->get_head_item_type( $mod, true );	// return the type id
 
 			// example: http://schema.org/TechArticle
 			$mt_og['schema:type:url'] = $head_type = $this->get_item_type_value( $mt_og['schema:type:id'] );
@@ -273,8 +262,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type is '.$head_type );
-
-			list( $id, $mod_name, $mod_obj ) = $this->p->util->get_object_id_mod( $use_post );
 
 			// include WebSite, Organization, and/or Person on the home page
 			if ( is_front_page() )
@@ -297,9 +284,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( $type_filter_name );	// begin timer for json array
 
-				if ( ! empty( $id ) && ! empty( $mod_name ) )
+				if ( ! empty( $mod['id'] ) && ! empty( $mod['name'] ) )
 					// returns null if index key is not set in the options array
-					$is_main = $this->p->util->get_mod_options( $mod_name, $id, 'schema_is_main' );
+					$is_main = $this->p->util->get_mod_options( $mod['id'], $mod['name'], 'schema_is_main' );
 				else $is_main = null;
 
 				if ( $is_main === null ) {
@@ -309,7 +296,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$is_main = apply_filters( $lca.'_json_is_main_entity', 
-					$is_main, $use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type );
+					$is_main, $use_post, $mod, $mt_og, $user_id, $head_type );
 
 				// include WebSite, Organization, and/or Person on the home page
 				// if there isn't a hook for that filter (from WPSSO JSON, for example)
@@ -319,7 +306,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $is_enabled )
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
-							$json_data, $use_post, $post_obj, $mt_og, $post_id, $user_id,
+							$json_data, $use_post, $mod, $mt_og, $user_id,
 								$head_type, false );	// $is_main = false when called directly
 
 				// call http_schema_org_item_type as a generic / common data filter first
@@ -328,7 +315,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( has_filter( $lca.'_json_data_'.$filter_name ) ) {
 						if ( apply_filters( $lca.'_add_json_'.$filter_name, $is_enabled ) )
 							$json_data = apply_filters( $lca.'_json_data_'.$filter_name,
-								$json_data, $use_post, $post_obj, $mt_og, $post_id, $user_id,
+								$json_data, $use_post, $mod, $mt_og, $user_id,
 									$head_type, $is_main );
 						elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( $filter_name.' filter is disabled' );
@@ -357,8 +344,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/WebSite for Google
 		 */
-		public function filter_json_data_http_schema_org_website( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
+		public function filter_json_data_http_schema_org_website( $json_data, $use_post, $mod, $mt_og, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -368,13 +354,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@context' => 'http://schema.org',
 				'@type' => 'WebSite',
 				'url' => $mt_og['og:url'],
-				'name' => $this->p->og->get_site_name( $post_id ),
+				'name' => $this->p->og->get_site_name( $mod['use_post'] ),
 			);
 
 			if ( ! empty( $this->p->options['schema_alt_name'] ) )
 				$ret['alternateName'] = $this->p->options['schema_alt_name'];
 
-			$desc = $this->p->og->get_site_desc( $post_id );
+			$desc = $this->p->og->get_site_desc( $mod['use_post'] );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
@@ -399,8 +385,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/Organization social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_organization( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
+		public function filter_json_data_http_schema_org_organization( $json_data, $use_post, $mod, $mt_og, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -408,7 +393,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$ret = array();
 
-			self::add_single_organization_data( $ret, $post_id );	// list_element = false
+			self::add_single_organization_data( $ret, $mod, 'schema_logo_url', false );	// list_element = false
 
 			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
@@ -441,8 +426,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/Person social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_person( $json_data, 
-			$use_post, $post_obj, $mt_og, $post_id, $user_id, $head_type, $is_main ) {
+		public function filter_json_data_http_schema_org_person( $json_data, $use_post, $mod, $mt_og, $user_id, $head_type, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -502,7 +486,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $logo_key can be 'schema_logo_url' or 'schema_banner_url' (for Articles)
-		public static function add_single_organization_data( &$json_data, $post_id, $logo_key = 'schema_logo_url', $list_element = false ) {
+		public static function add_single_organization_data( &$json_data, &$mod, $logo_key = 'schema_logo_url', $list_element = false ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -510,16 +494,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@context' => 'http://schema.org',
 				'@type' => 'Organization',
 				'url' => esc_url( get_bloginfo( 'url' ) ),
-				'name' => $wpsso->og->get_site_name( $post_id ),
+				'name' => $wpsso->og->get_site_name( $mod['use_post'] ),
 			);
 
-			$desc = $wpsso->og->get_site_desc( $post_id );
+			$desc = $wpsso->og->get_site_desc( $mod['use_post'] );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
 			if ( ! empty( $wpsso->options[$logo_key] ) )
 				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) )	// list_element = false
-					unset( $ret['logo'] );
+					unset ( $ret['logo'] );
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -528,7 +512,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		public static function add_single_person_data( &$json_data, $user_id, $list_element = true ) {
+		public static function add_single_person_data( &$json_data, $user_id = 0, $list_element = true ) {
 
 			$wpsso = Wpsso::get_instance();
 
@@ -538,11 +522,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			if ( empty( $wpsso->m['util']['user'] ) ) {
+			if ( empty( $wpsso->m['util']['user'] ) ||
+				! is_object( $wpsso->m['util']['user'] ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty user module' );
 				return 0;
-			} else $mod_obj =& $wpsso->m['util']['user'];
+			} else $mod = $wpsso->m['util']['user']->get_mod( $user_id );
 
 			$ret = array(
 				'@context' => 'http://schema.org',
@@ -553,11 +538,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod_obj->get_author_name( $user_id, $wpsso->options['schema_author_name'] );
+			$name = $mod['obj']->get_author_name( $user_id, $wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
-			$desc = $wpsso->util->get_mod_options( 'user', $user_id, array( 'schema_desc', 'og_desc' ) );
+			$desc = $wpsso->util->get_mod_options( $user_id, $mod['name'], array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
 				$desc = get_the_author_meta( 'description', $user_id );
 			if ( ! empty( $desc ) )
@@ -565,7 +550,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $mod_obj->get_og_image( 1, $size_name, $user_id, false );
+			$og_image = $mod['obj']->get_og_image( 1, $size_name, $user_id, false );
 
 			if ( ! empty( $og_image ) )
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
@@ -598,6 +583,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;	// return count of images added
 			}
 
+			// get the preferred URL (og:image:secure_url, og:image:url, og:image)
 			$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
 
 			if ( empty( $media_url ) ) {
@@ -641,28 +627,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Meta Name Array
 		 */
-		public function get_meta_array( $use_post, &$post_obj, &$mt_og = array(), $crawler_name = 'unknown' ) {
-
+		public function get_meta_array( $use_post, &$mod, &$mt_og, $crawler_name = 'unknown' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$lca = $this->p->cf['lca'];
 			$ret = array();
-			$add_meta = apply_filters( $lca.'_add_schema_meta_array', true );
+			$lca = $this->p->cf['lca'];
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_object_id_mod( $use_post, $mod );
 
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! $add_meta ) {
+			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
 				return $ret;
 			}
 
-			if ( ! is_object( $post_obj ) )
-				$post_obj = $this->p->util->get_post_object( $use_post );
-			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) ||
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
-
-			$head_type = $this->get_head_item_type( $use_post, $post_obj );
+			$head_type = $this->get_head_item_type( $mod );
 
 			$this->add_mt_schema_from_og( $ret, $mt_og, array(
 				'url' => 'og:url',
@@ -685,22 +666,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
 
 						$size_name = $this->p->cf['lca'].'-schema';
-						$og_image = $this->p->og->get_all_images( 1, $size_name, $post_id, true, 'schema' );
+						$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );
 
-						if ( empty( $og_image ) && 
-							SucomUtil::is_post_page( $use_post ) )
-								$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+						if ( empty( $og_image ) && $mod['is_post'] ) 
+							$og_image = $this->p->media->get_default_image( 1, $size_name, false );
 
 						if ( ! empty( $og_image ) ) {
 							$image = reset( $og_image );
 							$ret['image'] = $image['og:image'];
 						}
 					}
-
 					break;
 			}
-
-			return apply_filters( $this->p->cf['lca'].'_meta_schema', $ret, $use_post, $post_obj );
+			return apply_filters( $this->p->cf['lca'].'_meta_schema', $ret, $use_post, $mod );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$mt_og, array $names ) {
@@ -713,19 +691,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( $use_post, &$post_obj, &$mt_og, $post_id, $user_id ) {
-
+		public function get_noscript_array( $use_post, &$mod, &$mt_og, $user_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$add_noscript = apply_filters( $lca.'_add_schema_meta_array',
-				( isset( $this->p->options['schema_add_noscript'] ) ?
-					$this->p->options['schema_add_noscript'] : true ) );
+
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: amp endpoint' );
+				return $ret;
+			}
 
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! $add_noscript ) {
+			if ( ! apply_filters( $lca.'_add_schema_noscript_array',
+				( isset( $this->p->options['schema_add_noscript'] ) ?
+					$this->p->options['schema_add_noscript'] : true ) ) ) {
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema noscript array disabled' );
 				return $ret;
@@ -752,7 +735,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 
 			} elseif ( is_array( $mixed ) ) {
-
 				$media_url = SucomUtil::get_mt_media_url( $prefix, $mixed );
 
 				if ( empty( $media_url ) ) {
@@ -763,8 +745,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// defines a two-dimensional array
 				$mt_image = array_merge(
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url',
-						$media_url, '', $use_post ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $media_url, '', $use_post ),
 					( empty( $mixed[$prefix.':width'] ) ? array() :
 						$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.width',
 							$mixed[$prefix.':width'], '', $use_post ) ),

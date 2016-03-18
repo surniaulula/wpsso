@@ -99,6 +99,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'md_pre' => $md_pre,
 				) );
 			}
+
 			$og_ret = array();
 			$force_regen = false;
 
@@ -153,12 +154,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				// check for an attachment page, just in case
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) &&
 					wp_attachment_is_image( $post_id ) ) {
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image ID' );
 					$pid = $post_id;
-				} elseif ( $this->p->is_avail['postthumb'] == true && has_post_thumbnail( $post_id ) )
-					$pid = get_post_thumbnail_id( $post_id );
+
+				} elseif ( $this->p->is_avail['post_thumbnail'] == true && 
+					has_post_thumbnail( $post_id ) )
+						$pid = get_post_thumbnail_id( $post_id );
+
 				else $pid = false;
+
 				if ( ! empty( $pid ) ) {
 					list(
 						$og_image['og:image'],
@@ -167,6 +173,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_image['og:image:cropped'], 
 						$og_image['og:image:id']
 					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+
 					if ( ! empty( $og_image['og:image'] ) )
 						$this->p->util->push_max( $og_ret, $og_image, $num );
 				}
@@ -273,8 +280,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// 'wpsso_attached_images' filter is used by the buddypress module
-			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret,
-				$num, $size_name, $post_id, $check_dupes );
+			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		/* Use these static methods in get_attachment_image_src() to set/reset information about

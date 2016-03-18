@@ -12,13 +12,15 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 	class WpssoSitesubmenuSiteadvanced extends WpssoAdmin {
 
-		public function __construct( &$plugin, $id, $name, $lib ) {
+		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
+			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function set_form_property() {
@@ -48,32 +50,32 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'File and Object Cache', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ),
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ),
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, true ) );	// $network = true
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
-		protected function get_rows( $metabox, $key ) {
-			$rows = array();
+		protected function get_table_rows( $metabox, $key ) {
+			$table_rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows['plugin_preserve'] = $this->p->util->get_th( _x( 'Preserve Settings on Uninstall',
+					$table_rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
 						'option label', 'wpsso' ), null, 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>'.
 					$this->p->admin->get_site_use( $this->form, true, 'plugin_preserve' );
 
-					$rows['plugin_debug'] = $this->p->util->get_th( _x( 'Add Hidden Debug Messages',
+					$table_rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages',
 						'option label', 'wpsso' ), null, 'plugin_debug' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_debug' ).'</td>'.
 					$this->p->admin->get_site_use( $this->form, true, 'plugin_debug' );
 
 					break;
 			}
-			return $rows;
+			return $table_rows;
 		}
 	}
 }

@@ -14,12 +14,13 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
 			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function add_meta_boxes() {
@@ -34,47 +35,47 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
-			$rows = array_merge( $this->get_rows( $metabox, 'general' ), 
+			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
 				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows',
 					array(), $this->form ) );
-			natsort( $rows );
-			foreach ( $rows as $num => $row ) 
+			natsort( $table_rows );
+			foreach ( $table_rows as $num => $row ) 
 				echo '<tr>'.$row.'</tr>'."\n";
 			echo '</table>';
 		}
 
-		protected function get_rows( $metabox, $key ) {
-			$rows = array();
+		protected function get_table_rows( $metabox, $key ) {
+			$table_rows = array();
 
 			switch ( $metabox.'-'.$key ) {
 
 				case 'image-dimensions-general':
 
-					$rows[] = $this->p->util->get_th( _x( 'Google / Schema Images',
+					$table_rows[] = $this->form->get_th_html( _x( 'Google / Schema Images',
 						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
-					$rows[] = $this->p->util->get_th( _x( 'Facebook / Open Graph Images',
+					$table_rows[] = $this->form->get_th_html( _x( 'Facebook / Open Graph Images',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$rows[] = $this->p->util->get_th( _x( 'Pinterest Rich Pin Images',
+						$table_rows[] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
 	
-					$rows[] = $this->p->util->get_th( _x( 'Twitter <em>Summary</em> Card',
+					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';
 	
-					$rows[] = $this->p->util->get_th( _x( 'Twitter <em>Large Image Summary</em> Card',
+					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';
 
 					break;
 			}
-			return $rows;
+			return $table_rows;
 		}
 	}
 }

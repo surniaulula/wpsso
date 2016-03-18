@@ -14,12 +14,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
 			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function add_meta_boxes() {
@@ -46,11 +47,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-					$this->get_rows( $metabox, $key ), $this->form );
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
+					$this->get_table_rows( $metabox, $key ), $this->form );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
 		public function show_metabox_publishers() {
@@ -62,15 +63,15 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other' => _x( 'Other', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-					$this->get_rows( $metabox, $key ), $this->form );
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
+					$this->get_table_rows( $metabox, $key ), $this->form );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
-		protected function get_rows( $metabox, $key ) {
-			$rows = array();
+		protected function get_table_rows( $metabox, $key ) {
+			$table_rows = array();
 			$user_names = $this->p->m['util']['user']->get_form_display_names();
 			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
 
@@ -78,16 +79,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-general':
 
-					$rows['og_art_section'] = $this->p->util->get_th( _x( 'Default Article Topic',
+					$table_rows['og_art_section'] = $this->form->get_th_html( _x( 'Default Article Topic',
 						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics() ).'</td>';
 
-					$rows['og_site_name'] = $this->p->util->get_th( _x( 'Site Name',
+					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Site Name',
 						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'og_site_name', $this->p->options ),
 						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$rows['og_site_description'] = $this->p->util->get_th( _x( 'Site Description',
+					$table_rows['og_site_description'] = $this->form->get_th_html( _x( 'Site Description',
 						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'og_site_description', $this->p->options ),
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
@@ -96,35 +97,35 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-content':
 
-					$rows['og_title_sep'] = $this->p->util->get_th( _x( 'Title Separator',
+					$table_rows['og_title_sep'] = $this->form->get_th_html( _x( 'Title Separator',
 						'option label', 'wpsso' ), null, 'og_title_sep' ).
 					'<td>'.$this->form->get_input( 'og_title_sep', 'short' ).'</td>';
 
-					$rows['og_title_len'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Maximum Title Length',
+					$table_rows['og_title_len'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Maximum Title Length',
 						'option label', 'wpsso' ), null, 'og_title_len' ).
 					'<td>'.$this->form->get_input( 'og_title_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['og_desc_len'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Maximum Description Length',
+					$table_rows['og_desc_len'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), null, 'og_desc_len' ).
 					'<td>'.$this->form->get_input( 'og_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['og_desc_hashtags'] = $this->p->util->get_th( _x( 'Add Hashtags to Descriptions',
+					$table_rows['og_desc_hashtags'] = $this->form->get_th_html( _x( 'Add Hashtags to Descriptions',
 						'option label', 'wpsso' ), null, 'og_desc_hashtags' ).
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
 						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', null, true ).' '.
 							_x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['og_page_title_tag'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Add Page Title in Tags / Hashtags',
+					$table_rows['og_page_title_tag'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Add Page Title in Tags / Hashtags',
 						'option label', 'wpsso' ), null, 'og_page_title_tag' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
 
-					$rows['og_page_parent_tags'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Add Parent Page Tags / Hashtags',
+					$table_rows['og_page_parent_tags'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Add Parent Page Tags / Hashtags',
 						'option label', 'wpsso' ), null, 'og_page_parent_tags' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_parent_tags' ).'</td>';
 
@@ -132,28 +133,28 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-author':
 
-					$rows['og_author_field'] = $this->p->util->get_th( _x( 'Author Profile URL Field',
+					$table_rows['og_author_field'] = $this->form->get_th_html( _x( 'Author Profile URL Field',
 						'option label', 'wpsso' ), null, 'og_author_field' ).
 					'<td>'.$this->form->get_select( 'og_author_field', $user_contacts ).'</td>';
 
-					$rows['og_author_fallback'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Fallback to Author\'s Archive Page',
+					$table_rows['og_author_fallback'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Fallback to Author\'s Archive Page',
 						'option label', 'wpsso' ), null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
 
-					$rows['og_def_author_id'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Default Author when Missing',
+					$table_rows['og_def_author_id'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Default Author when Missing',
 						'option label', 'wpsso' ), null, 'og_def_author_id' ).
 					'<td>'.$this->form->get_select( 'og_def_author_id', $user_names, null, null, true ).'</td>';
 
-					$rows['og_def_author_on_index'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Author on Indexes',
+					$table_rows['og_def_author_on_index'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Author on Indexes',
 						'option label', 'wpsso' ), null, 'og_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' '.
 						_x( 'defines index / archive webpages as articles', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['og_def_author_on_search'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Author on Search Results',
+					$table_rows['og_def_author_on_search'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Author on Search Results',
 						'option label', 'wpsso' ), null, 'og_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' '.
 						_x( 'defines search webpages as articles', 'option comment', 'wpsso' ).'</td>';
@@ -162,7 +163,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-images':
 
-					$rows['og_vid_prev_img'] = $this->p->util->get_th( _x( 'Maximum Images to Include',
+					$table_rows['og_vid_prev_img'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
 						'option label', 'wpsso' ), null, 'og_img_max' ).
 					'<td>'.$this->form->get_select( 'og_img_max', 
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
@@ -170,31 +171,31 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'' : ' '._x( '<em>video preview images are enabled</em> and will be included first',
 							'option comment', 'wpsso' ) ).'</td>';
 
-					$rows['og_img'] = $this->p->util->get_th( _x( 'Open Graph Image Dimensions',
+					$table_rows['og_img'] = $this->form->get_th_html( _x( 'Open Graph Image Dimensions',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
-					$rows['og_def_img_id'] = $this->p->util->get_th( _x( 'Default / Fallback Image ID',
+					$table_rows['og_def_img_id'] = $this->form->get_th_html( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), null, 'og_def_img_id' ).
 					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
 
-					$rows['og_def_img_url'] = $this->p->util->get_th( _x( 'or Default / Fallback Image URL',
+					$table_rows['og_def_img_url'] = $this->form->get_th_html( _x( 'or Default / Fallback Image URL',
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 
-					$rows['og_def_img_on_index'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Image on Indexes',
+					$table_rows['og_def_img_on_index'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Image on Indexes',
 						'option label', 'wpsso' ), null, 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 
-					$rows['og_def_img_on_search'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Image on Search Results',
+					$table_rows['og_def_img_on_search'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Image on Search Results',
 						'option label', 'wpsso' ), null, 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 
 					if ( $this->p->is_avail['media']['ngg'] === true ) {
-						$rows['og_ngg_tags'] = '<tr class="hide_in_basic">'.
-						$this->p->util->get_th( _x( 'Add Tags from NGG Featured Image',
+						$table_rows['og_ngg_tags'] = '<tr class="hide_in_basic">'.
+						$this->form->get_th_html( _x( 'Add Tags from NGG Featured Image',
 							'option label', 'wpsso' ), null, 'og_ngg_tags' ).
 						'<td>'.$this->form->get_checkbox( 'og_ngg_tags' ).'</td>';
 					}
@@ -207,24 +208,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-facebook':
 
-					$rows['fb_publisher_url'] = $this->p->util->get_th( _x( 'Facebook Business Page URL',
+					$table_rows['fb_publisher_url'] = $this->form->get_th_html( _x( 'Facebook Business Page URL',
 						'option label', 'wpsso' ), null, 'fb_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows['fb_app_id'] = $this->p->util->get_th( _x( 'Facebook Application ID',
+					$table_rows['fb_app_id'] = $this->form->get_th_html( _x( 'Facebook Application ID',
 						'option label', 'wpsso' ), null, 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$rows['fb_admins'] = $this->p->util->get_th( _x( 'or Facebook Admin Username(s)',
+					$table_rows['fb_admins'] = $this->form->get_th_html( _x( 'or Facebook Admin Username(s)',
 						'option label', 'wpsso' ), null, 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
-					$rows['seo_author_name'] = $this->p->util->get_th( _x( 'Author Name Format',
+					$table_rows['seo_author_name'] = $this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'google_author_name' ).
 					'<td>'.$this->form->get_select( 'seo_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$rows['fb_lang'] = $this->p->util->get_th( _x( 'Default Content Language',
+					$table_rows['fb_lang'] = $this->form->get_th_html( _x( 'Default Content Language',
 						'option label', 'wpsso' ), null, 'fb_lang' ).
 					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
 
@@ -232,47 +233,48 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
-					$rows['seo_publisher_url'] = $this->p->util->get_th( _x( 'Google+ Business Page URL',
+					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
 						'option label', 'wpsso' ), null, 'google_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows['seo_desc_len'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Search / SEO Description Length',
+					$table_rows['seo_desc_len'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Search / SEO Description Length',
 						'option label', 'wpsso' ), null, 'google_desc_len' ).
 					'<td>'.$this->form->get_input( 'seo_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['seo_author_field'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Author Link URL Field',
+					$table_rows['seo_author_field'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Author Link URL Field',
 						'option label', 'wpsso' ), null, 'google_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
 
-					$rows['seo_def_author_id'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Default Author when Missing',
+					$table_rows['seo_def_author_id'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Default Author when Missing',
 						'option label', 'wpsso' ), null, 'google_def_author_id' ).
 					'<td>'.$this->form->get_select( 'seo_def_author_id', $user_names, null, null, true ).'</td>';
 
-					$rows['seo_def_author_on_index'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Author on Indexes',
+					$table_rows['seo_def_author_on_index'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Author on Indexes',
 						'option label', 'wpsso' ), null, 'google_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
 
-					$rows['seo_def_author_on_search'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Default Author on Search Results',
+					$table_rows['seo_def_author_on_search'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Default Author on Search Results',
 						'option label', 'wpsso' ), null, 'google_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 
-					$rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
+					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google Structured Data / Schema Markup',
 							'metabox title', 'wpsso' ).'</h4></td>';
 
-					$rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Use Meta Property Containers',
+					$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Use Meta Property Containers',
 						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
 					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-					$rows['schema_json'] = $this->p->util->get_th( _x( 'Include Google Structured Data',
+
+					$table_rows['schema_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
 						'option label', 'wpsso' ), null, 'google_schema_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
@@ -287,32 +289,32 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
-					$rows['schema_alt_name'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Website Alternate Name',
+					$table_rows['schema_alt_name'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Website Alternate Name',
 						'option label', 'wpsso' ), null, 'google_schema_alt_name' ).
 					'<td>'.$this->form->get_input( 'schema_alt_name', 'wide' ).'</td>';
 
-					$rows['schema_logo_url'] = $this->p->util->get_th( '<a href="https://developers.google.com/structured-data/customize/logos">'.
+					$table_rows['schema_logo_url'] = $this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">'.
 						_x( 'Business Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'google_schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
-					$rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Business Banner (600x60) Image URL',
+					$table_rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Business Banner (600x60) Image URL',
 						'option label', 'wpsso' ), null, 'google_schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 
-					$rows['schema_img'] = $this->p->util->get_th( _x( 'Schema Image Dimensions',
+					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
 						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
-					$rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Maximum Description Length',
+					$table_rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['schema_author_name'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Author / Person Name Format',
+					$table_rows['schema_author_name'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Author / Person Name Format',
 						'option label', 'wpsso' ), null, 'google_schema_author_name' ).
 					'<td>'.$this->form->get_select( 'schema_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
@@ -323,13 +325,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$schema_select .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
 							$schema_types, 'schema_type' ).' for '.$post_type->label.'</p>'."\n";
 
-					$rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Schema Item Type for Home Page',
+					$table_rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Schema Item Type for Home Page',
 						'option label', 'wpsso' ), null, 'google_schema_home_page' ).
 					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'schema_type' ).'</td>';
 
-					$rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Schema Item Type by Post Type',
+					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Schema Item Type by Post Type',
 						'option label', 'wpsso' ), null, 'google_schema_type_for_ptn' ).
 					'<td>'.$schema_select.'</td>';
 
@@ -337,27 +339,27 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-pinterest':
 
-					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
+					$table_rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
 						$this->p->msgs->get( 'info-pub-pinterest' ).'</td>';
 
-					$rows['rp_publisher_url'] = $this->p->util->get_th( _x( 'Pinterest Company Page URL',
+					$table_rows['rp_publisher_url'] = $this->form->get_th_html( _x( 'Pinterest Company Page URL',
 						'option label', 'wpsso' ), null, 'rp_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'rp_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$rows['rp_img'] = $this->p->util->get_th( _x( 'Rich Pin Image Dimensions',
+						$table_rows['rp_img'] = $this->form->get_th_html( _x( 'Rich Pin Image Dimensions',
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
 
-					$rows['rp_author_name'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Author Name Format',
+					$table_rows['rp_author_name'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'rp_author_name' ).
 					'<td>'.$this->form->get_select( 'rp_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$rows['rp_dom_verify'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Pinterest Website Verification ID',
+					$table_rows['rp_dom_verify'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Pinterest Website Verification ID',
 						'option label', 'wpsso' ), null, 'rp_dom_verify' ).
 					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
 
@@ -365,24 +367,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-twitter':
 
-					$rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
+					$table_rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
 						$this->p->msgs->get( 'info-pub-twitter' ).'</td>';
 
-					$rows['tc_site'] = $this->p->util->get_th( _x( 'Twitter Business @username',
+					$table_rows['tc_site'] = $this->form->get_th_html( _x( 'Twitter Business @username',
 						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ).'</td>';
 
-					$rows['tc_desc_len'] = '<tr class="hide_in_basic">'.
-					$this->p->util->get_th( _x( 'Maximum Description Length',
+					$table_rows['tc_desc_len'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), null, 'tc_desc_len' ).
 					'<td>'.$this->form->get_input( 'tc_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$rows['tc_sum'] = $this->p->util->get_th( _x( '<em>Summary</em> Card Image Dimensions',
+					$table_rows['tc_sum'] = $this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum', false, false ).'</td>';
 
-					$rows['tc_lrgimg'] = $this->p->util->get_th( _x( '<em>Large Image</em> Card Image Dimensions',
+					$table_rows['tc_lrgimg'] = $this->form->get_th_html( _x( '<em>Large Image</em> Card Image Dimensions',
 						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg', false, false ).'</td>';
 
@@ -390,21 +392,21 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-other':
 
-					$rows['instgram_publisher_url'] = $this->p->util->get_th( _x( 'Instagram Business URL',
+					$table_rows['instgram_publisher_url'] = $this->form->get_th_html( _x( 'Instagram Business URL',
 						'option label', 'wpsso' ), null, 'instgram_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'instgram_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows['linkedin_publisher_url'] = $this->p->util->get_th( _x( 'LinkedIn Company Page URL',
+					$table_rows['linkedin_publisher_url'] = $this->form->get_th_html( _x( 'LinkedIn Company Page URL',
 						'option label', 'wpsso' ), null, 'linkedin_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'linkedin_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$rows['myspace_publisher_url'] = $this->p->util->get_th( _x( 'MySpace Business Page URL',
+					$table_rows['myspace_publisher_url'] = $this->form->get_th_html( _x( 'MySpace Business Page URL',
 						'option label', 'wpsso' ), null, 'myspace_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'myspace_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
 					break;
 			}
-			return $rows;
+			return $table_rows;
 		}
 	}
 }

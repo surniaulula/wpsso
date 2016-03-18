@@ -38,14 +38,14 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			return $sizes;
 		}
 
-		public function get_array( $use_post = false, $post_obj = false, &$og = array(), $crawler_name = 'unknown' ) {
-
+		public function get_array( $use_post = false, &$mod = array(), &$og = array(), $crawler_name = 'unknown' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			switch ( $crawler_name ) {
 				case 'pinterest':
-					// behave normally if rich pin support is disabled
+					// twitter card meta tags are not necessary for the pinterest crawler
+					// behave normally if rich pin support is disabled, otherwise, exit early
 					if ( SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
 						break;
 
@@ -56,15 +56,22 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 					break;
 			}
 
-			if ( ! is_object( $post_obj ) )
-				$post_obj = $this->p->util->get_post_object( $use_post );
+			$lca = $this->p->cf['lca'];
+			$mod = $this->p->util->get_object_id_mod( $use_post, $mod );	// complete any missing values
+			$post_id = false;
+			$post_obj = false;
 
-			$post_id = empty( $post_obj->ID ) || empty( $post_obj->post_type ) || 
-				! SucomUtil::is_post_page( $use_post ) ? 0 : $post_obj->ID;
+			// $mod['id'] of 0 or false returns the default plugin settings 
+			$max = $this->p->util->get_max_nums( $mod['id'], $mod['name'] );
 
-			$max = $this->p->util->get_max_nums( $post_id, 'post' );	// a post_id of 0 returns the plugin settings
+			// maintain backwards compatibility by defining the post id and object
+			if ( $mod['is_post'] ) {
+				$post_obj = $this->p->util->get_post_object( $mod['use_post'] );
+				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			}
+
 			$tc = SucomUtil::preg_grep_keys( '/^twitter:/', $og );		// read any pre-defined twitter card values
-			$tc = apply_filters( $this->p->cf['lca'].'_tc_seed', $tc, $use_post, $post_obj );
+			$tc = apply_filters( $lca.'_tc_seed', $tc, $mod['use_post'], $mod );
 
 			// the twitter:domain is used in place of the 'view on web' text
 			if ( ! isset( $tc['twitter:domain'] ) &&
@@ -73,33 +80,31 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 			if ( ! isset( $tc['twitter:site'] ) ) {
 				$key_locale = SucomUtil::get_key_locale( 'tc_site', $this->p->options );
-				$tc['twitter:site'] = $this->p->options[$key_locale];
+				$tc['twitter:site'] = isset( $this->p->options[$key_locale] ) ?		// just in case
+					$this->p->options[$key_locale] :
+					$this->p->options['tc_site'];
 			}
 
 			if ( ! isset( $tc['twitter:title'] ) )
 				$tc['twitter:title'] = $this->p->webpage->get_title( 70, 
-					'...', $use_post, true, false, true, 'og_title' );
+					'...', $mod['use_post'], true, false, true, 'og_title' );
 
 			if ( ! isset( $tc['twitter:description'] ) )
 				$tc['twitter:description'] = $this->p->webpage->get_description( $this->p->options['tc_desc_len'], 
-					'...', $use_post, true, true, true, 'tc_desc' );
+					'...', $mod['use_post'], true, true, true, 'tc_desc' );
 
 			if ( ! isset( $tc['twitter:creator'] ) ) {
-
-				if ( SucomUtil::is_post_page( $use_post ) ) {
-
+				if ( $mod['is_post'] ) {
 					if ( ! empty( $post_obj->post_author ) )
 						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $post_obj->post_author );
+					elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
+						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
 
-					elseif ( $def_user_id = $this->p->util->get_default_author_id( 'og' ) )
-						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_user_id );
+				} elseif ( $mod['is_user'] ) {
+					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['id'] );
 
-				} elseif ( SucomUtil::is_user_page() ) {
-					$user_id = $this->p->util->get_user_object( 'id' );
-					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $user_id );
-
-				} elseif ( $def_user_id = $this->p->util->force_default_author( $use_post, 'og' ) )
-					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_user_id );
+				} elseif ( $def_author_id = $this->p->util->force_default_author( $mod['use_post'], 'og' ) )
+					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
 			}
 
 			/*
@@ -107,9 +112,9 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			 */
 			// player card relies on existing og meta tags - a valid post_id is not required
 			if ( ! isset( $tc['twitter:card'] ) ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'player card: checking for videos' );
+
 				if ( isset( $og['og:video'] ) && count( $og['og:video'] ) > 0 ) {
 					foreach ( $og['og:video'] as $video ) {
 						if ( ! empty( $video['og:video:embed_url'] ) ) {
@@ -140,18 +145,19 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				/*
 				 * Default Image for Indexes
 				 */
-				if ( ! isset( $tc['twitter:card'] ) && ! $use_post ) {
-					if ( $this->p->util->force_default_image( $use_post, 'og' ) ) {
+				if ( ! isset( $tc['twitter:card'] ) && ! $mod['use_post'] ) {
+					if ( $this->p->util->force_default_image( $mod['use_post'], 'og' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'large image card: checking for default image' );
 
-						$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-tc-lrgimg' );
+						$og_image = $this->p->media->get_default_image( 1, $lca.'-tc-lrgimg' );
 
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
 							$tc['twitter:card'] = 'summary_large_image';
 							$tc['twitter:image'] = $image['og:image'];
 						}
+
 						$post_id = 0;	// skip additional image checks
 					}
 				}
@@ -165,7 +171,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'large image card: checking for post image (meta, featured, attached)' );
-						$og_image = $this->p->media->get_post_images( 1, $this->p->cf['lca'].'-tc-lrgimg', $post_id, false );
+						$og_image = $this->p->media->get_post_images( 1, $lca.'-tc-lrgimg', $post_id, false );
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
 							$tc['twitter:card'] = 'summary_large_image';
@@ -180,7 +186,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'large image card: checking for singlepic image' );
 							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, 
-								$this->p->cf['lca'].'-tc-lrgimg', $post_id, false );
+								$lca.'-tc-lrgimg', $post_id, false );
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );
 								$tc['twitter:card'] = 'summary_large_image';
@@ -200,7 +206,9 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				if ( ! empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'summary card: checking for content image' );
-					$og_image = $this->p->og->get_all_images( 1, $this->p->cf['lca'].'-tc-summary', $post_id, false );
+
+					$og_image = $this->p->og->get_all_images( 1, $lca.'-tc-summary', $mod, false );
+
 					if ( count( $og_image ) > 0 ) {
 						$image = reset( $og_image );
 						$tc['twitter:image'] = $image['og:image'];
@@ -208,7 +216,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_tc', $tc, $use_post, $post_obj );
+			return apply_filters( $lca.'_tc', $tc, $mod['use_post'], $mod );
 		}
 	}
 }

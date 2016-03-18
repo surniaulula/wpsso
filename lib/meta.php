@@ -23,12 +23,34 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected static $head_meta_tags = array();
 		protected static $head_meta_info = array();
 
+		public static $mod_array = array(
+			'id' => false,
+			'name' => false,
+			'obj' => false,
+			'use_post' => false,
+			'is_post' => false,
+			'is_taxonomy' => false,
+			'is_user' => false,
+			'is_complete' => false,
+		);
+
+		public function __construct() {
+		}
+
+		protected function add_actions() {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function get_mod( $mod_id ) {
+			return $this->must_be_extended( __METHOD__, self::$mod_array );
+		}
+
 		protected function get_default_tabs() {
 			$tabs = array();
 			foreach( apply_filters( $this->p->cf['lca'].'_social_settings_default_tabs', array(
 				'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 				'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
-				'preview' => _x( 'Social Preview', 'metabox tab', 'wpsso' ),
+				'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 			) ) as $key => $name ) {
@@ -40,51 +62,56 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $tabs;
 		}
 
-		protected function get_rows( $metabox, $key, &$head_info ) {
-			$rows = array();
+		protected function get_table_rows( &$metabox, &$key, &$head, &$mod ) {
+			$table_rows = array();
 			switch ( $key ) {
 				case 'preview':
-					$rows = $this->get_rows_social_preview( $this->form, $head_info );
+					$table_rows = $this->get_rows_social_preview( $this->form, $head, $mod );
 					break;
 
 				case 'tags':	
-					$rows = $this->get_rows_head_tags( $this->form, $head_info );
+					$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					break; 
 
 				case 'validate':
-					$rows = $this->get_rows_validate( $this->form, $head_info );
+					$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
 					break; 
 
 			}
-			return $rows;
+			return $table_rows;
 		}
 
-		public function get_rows_social_preview( &$form, &$head_info ) {
-			$rows = array();
+		public function get_rows_social_preview( &$form, &$head, &$mod ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$table_rows = array();
 			$prev_width = 600;
 			$prev_height = 315;
 			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
-			$have_sizes = ( ! empty( $head_info['og:image:width'] ) &&
-				$head_info['og:image:width'] > 0 && 
-					! empty( $head_info['og:image:height'] ) &&
-						$head_info['og:image:height'] > 0 ) ? true : false;
+
+			$have_sizes = ( ! empty( $head['og:image:width'] ) &&
+				$head['og:image:width'] > 0 && 
+					! empty( $head['og:image:height'] ) &&
+						$head['og:image:height'] > 0 ) ? true : false;
+
 			$is_sufficient = ( $have_sizes === true && 
-				$head_info['og:image:width'] >= $prev_width && 
-				$head_info['og:image:height'] >= $prev_height ) ? true : false;
+				$head['og:image:width'] >= $prev_width && 
+				$head['og:image:height'] >= $prev_height ) ? true : false;
 
 			foreach ( array( 'og:image:secure_url', 'og:image' ) as $img_url ) {
-				if ( ! empty( $head_info[$img_url] ) ) {
+				if ( ! empty( $head[$img_url] ) ) {
 					if ( $have_sizes === true ) {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
 						background-size:'.( $is_sufficient === true ? 
-							'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
-						background-image:url('.$head_info[$img_url].');" />'.( $is_sufficient === true ? 
+							'cover' : $head['og:image:width'].' '.$head['og:image:height'] ).'; 
+						background-image:url('.$head[$img_url].');" />'.( $is_sufficient === true ? 
 							'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
 								'preview image error', 'wpsso' ),
 									$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
 					} else {
 						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-image:url('.$head_info[$img_url].');" /><p>'.
+						background-image:url('.$head[$img_url].');" /><p>'.
 						_x( 'Image Dimensions Unknown<br/>or Not Available',
 							'preview image error', 'wpsso' ).'</p></div>';
 					}
@@ -96,50 +123,52 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
-			$long_url = $this->p->util->get_sharing_url( $head_info['post_id'] );
+			$long_url = $this->p->util->get_sharing_url( $mod['use_post'] );	// false or post ID
+
 			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 				$long_url, $this->p->options['plugin_shortener'] );
 
-			if ( $long_url === $short_url &&
-				SucomUtil::is_post_page() )
-					$short_url = wp_get_shortlink();
+			if ( $long_url === $short_url && $mod['is_post'] )
+				$short_url = wp_get_shortlink();
 
-			$rows[] = $this->p->util->get_th( _x( 'Short URL',
+			$table_rows[] = $form->get_th_html( _x( 'Short URL',
 				'option label', 'wpsso' ), 'medium' ).
 			'<td>'.$form->get_copy_input( $short_url ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Sharing URL',
+			$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 				'option label', 'wpsso' ), 'medium' ).
 			'<td>'.$form->get_copy_input( $long_url ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Open Graph Example',
+			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',
 				'option label', 'wpsso' ), 'medium' ).
 			'<td rowspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 			<div class="preview_box" style="width:'.( $prev_width + 40 ).'px;">
 				<div class="preview_box" style="width:'.$prev_width.'px;">
 					'.$image_preview_html.'
 					<div class="preview_txt">
-						<div class="preview_title">'.( empty( $head_info['og:title'] ) ?
-							'No Title' : $head_info['og:title'] ).'</div>
-						<div class="preview_desc">'.( empty( $head_info['og:description'] ) ?
-							'No Description' : $head_info['og:description'] ).'</div>
-						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].( empty( $head_info['author'] )
-							? '' : ' | By '.$head_info['author'] ) ).'</div>
+						<div class="preview_title">'.( empty( $head['og:title'] ) ?
+							'No Title' : $head['og:title'] ).'</div>
+						<div class="preview_desc">'.( empty( $head['og:description'] ) ?
+							'No Description' : $head['og:description'] ).'</div>
+						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].( empty( $head['author'] )
+							? '' : ' | By '.$head['author'] ) ).'</div>
 					</div>
 				</div>
 			</div></td>';
 
-			$rows[] = '<th class="medium textinfo" id="info-meta-social-preview">'.
+			$table_rows[] = '<th class="medium textinfo" id="info-meta-social-preview">'.
 				$this->p->msgs->get( 'info-meta-social-preview' ).'</th>';
 
-			return $rows;
+			return $table_rows;
 		}
 
-		public function get_rows_head_tags( &$form, &$head_info ) {
+		public function get_rows_head_tags( &$form, &$head, &$mod ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-			$rows = array();
+
+			$table_rows = array();
 			$xtra_class = '';
+
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
 				if ( count( $parts ) === 1 ) {
 
@@ -147,7 +176,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$xtra_class = 'script';
 					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
 						$xtra_class = 'noscript';
-					$rows[] = '<td colspan="5" class="html '.$xtra_class.'"><pre>'.
+					$table_rows[] = '<td colspan="5" class="html '.$xtra_class.'"><pre>'.
 						esc_html( $parts[0] ).'</pre></td>';
 					if ( $xtra_class === 'script' ||
 						strpos( $parts[0], '</noscript>' ) === 0 )
@@ -161,7 +190,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
 					else $match_name = $parts[3];
 
-					$rows[] = '<tr class="'.$xtra_class.' '.
+					$table_rows[] = '<tr class="'.$xtra_class.' '.
 						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).'">'.
 					'<th class="xshort">'.$parts[1].'</th>'.
 					'<th class="xshort">'.$parts[2].'</th>'.
@@ -172,37 +201,47 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'<a href="'.$parts[5].'">'.$parts[5].'</a>' : $parts[5] ).'</td>';
 				}
 			}
-			return $rows;
+			return $table_rows;
 		}
 
-		public function get_rows_validate( &$form, &$head_info ) {
-			$rows = array();
+		public function get_rows_validate( &$form, &$head, &$mod ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
-			$sharing_url = $this->p->util->get_sharing_url( $head_info['post_id'] );
-			$sharing_urlenc = urlencode( $sharing_url );
+			$table_rows = array();
+			$sharing_url = $this->p->util->get_sharing_url( $mod['use_post'] );	// false or post ID
+			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$rows[] = $this->p->util->get_th( _x( 'Facebook Debugger', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the "Fetch new scrape information" button several times to refresh Facebook\'s cache</strong>.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_urlenc, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Facebook Debugger', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the "Fetch new scrape information" button several times to refresh Facebook\'s cache</strong>.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded, true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.google.com/structured-data/testing-tool/?url='.$sharing_urlenc, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.google.com/structured-data/testing-tool/?url='.$sharing_url_encoded, true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Pinterest Rich Pin Validator', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.pinterest.com/tools/url-debugger/?link='.$sharing_urlenc, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Pinterest Rich Pin Validator', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://developers.pinterest.com/tools/url-debugger/?link='.$sharing_url_encoded, true ).'</td>';
 
-			$rows[] = $this->p->util->get_th( _x( 'Twitter Card Validator', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field.', 'wpsso' ).'</p><p>'.$form->get_copy_input( $sharing_url ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://dev.twitter.com/docs/cards/validation/validator', true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ) ).'<td class="validate"><p>'.__( 'The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field.', 'wpsso' ).'</p><p>'.$form->get_copy_input( $sharing_url ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ), 'button-secondary', null, 'https://dev.twitter.com/docs/cards/validation/validator', true ).'</td>';
 
-			return $rows;
+			return $table_rows;
 		}
 
-		public function get_options( $id, $idx = false, $attr = array() ) {
-			return $this->not_implemented( __METHOD__,
-				( $idx === false ? array() : false ) );
+		public function get_options( $mod_id, $idx = false, $attr = array() ) {
+			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
 		}
 
-		public function get_defaults( $idx = false, $mod_name = false ) {
+		public function get_defaults( $idx = false, &$mod = array() ) {
 
-			if ( ! isset( $this->defs[$mod_name]['options_filtered'] ) || 
-				$this->defs[$mod_name]['options_filtered'] !== true ) {
+			$mod_id = isset( $mod['id'] ) ? $mod['id'] : false;
+			$mod_name = isset( $mod['name'] ) ? $mod['name'] : false;
 
-				$this->defs[$mod_name] = array(
+			if ( ! isset( $this->defs[$mod_name][$mod_id] ) )
+				$this->defs[$mod_name][$mod_id] = array();
+
+			$defs =& $this->defs[$mod_name][$mod_id];	// shortcut
+			$opts =& $this->p->options;			// shortcut
+
+			if ( ! isset( $defs['options_filtered'] ) || 
+				$defs['options_filtered'] !== true ) {
+
+				$defs = array(
 					'options_filtered' => '',
 					'options_version' => '',
 					'og_art_section' => -1,
@@ -215,64 +254,65 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'sharing_url' => '',
 					'og_img_width' => '',
 					'og_img_height' => '',
-					'og_img_crop' => ( empty( $this->p->options['og_img_crop'] ) ? 0 : 1 ),
-					'og_img_crop_x' => ( empty( $this->p->options['og_img_crop_x'] ) ?
-						'center' : $this->p->options['og_img_crop_x'] ),
-					'og_img_crop_y' => ( empty( $this->p->options['og_img_crop_y'] ) ?
-						'center' : $this->p->options['og_img_crop_y'] ),
+					'og_img_crop' => ( empty( $opts['og_img_crop'] ) ? 0 : 1 ),
+					'og_img_crop_x' => ( empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'] ),
+					'og_img_crop_y' => ( empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'] ),
 					'og_img_id' => '',
-					'og_img_id_pre' => ( empty( $this->p->options['og_def_img_id_pre'] ) ?
-						'' : $this->p->options['og_def_img_id_pre'] ),
+					'og_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'og_img_url' => '',
 					'og_vid_url' => '',
 					'og_vid_embed' => '',
 					'og_img_max' => -1,
 					'og_vid_max' => -1,
-					'og_vid_prev_img' => ( empty( $this->p->options['og_vid_prev_img'] ) ? 0 : 1 ),
+					'og_vid_prev_img' => ( empty( $opts['og_vid_prev_img'] ) ? 0 : 1 ),
 					'rp_img_width' => '',
 					'rp_img_height' => '',
-					'rp_img_crop' => ( empty( $this->p->options['rp_img_crop'] ) ? 0 : 1 ),
-					'rp_img_crop_x' => ( empty( $this->p->options['rp_img_crop_x'] ) ?
-						'center' : $this->p->options['rp_img_crop_x'] ),
-					'rp_img_crop_y' => ( empty( $this->p->options['rp_img_crop_y'] ) ?
-						'center' : $this->p->options['rp_img_crop_y'] ),
+					'rp_img_crop' => ( empty( $opts['rp_img_crop'] ) ? 0 : 1 ),
+					'rp_img_crop_x' => ( empty( $opts['rp_img_crop_x'] ) ? 'center' : $opts['rp_img_crop_x'] ),
+					'rp_img_crop_y' => ( empty( $opts['rp_img_crop_y'] ) ? 'center' : $opts['rp_img_crop_y'] ),
 					'rp_img_id' => '',
-					'rp_img_id_pre' => ( empty( $this->p->options['og_def_img_id_pre'] ) ?
-						'' : $this->p->options['og_def_img_id_pre'] ),
+					'rp_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'rp_img_url' => '',
 				);
 
-				$this->defs[$mod_name] = apply_filters( $this->p->cf['lca'].'_get_meta_defaults', $this->defs[$mod_name], $mod_name );
-				$this->defs[$mod_name]['options_filtered'] = true;
+				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $mod );
+				$defs['options_filtered'] = true;
 			}
 
 			if ( $idx !== false ) {
-				if ( isset( $this->defs[$mod_name][$idx] ) )
-					return $this->defs[$mod_name][$idx];
+				if ( isset( $defs[$idx] ) )
+					return $defs[$idx];
 				else return null;
-			} else return $this->defs[$mod_name];
+			} else return $defs;
 		}
 
-		public function save_options( $id, $rel_id = false ) {
-			return $this->not_implemented( __METHOD__, $id );
+		public function save_options( $mod_id, $rel_id = false ) {
+			return $this->must_be_extended( __METHOD__, $mod_id );
 		}
 
-		public function clear_cache( $id, $rel_id = false ) {
+		public function clear_cache( $mod_id, $rel_id = false ) {
 			// nothing to do
-			return $id;
+			return $mod_id;
 		}
 
-		public function delete_options( $id, $rel_id = false ) {
-			return $this->not_implemented( __METHOD__, $id );
+		public function delete_options( $mod_id, $rel_id = false ) {
+			return $this->must_be_extended( __METHOD__, $mod_id );
 		}
 
 		protected function not_implemented( $method, $ret = true ) {
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( $method.' not implemented in free version',
+				$this->p->debug->log( $method.' not implemented in this version',
 					get_class( $this ) );	// log the extended class name
 			return $ret;
 		}
-	
+
+		protected function must_be_extended( $method, $ret = true ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $method.' must be extended',
+					get_class( $this ) );	// log the extended class name
+			return $ret;
+		}
+
 		protected function verify_submit_nonce() {
 			if ( empty( $_POST ) ) {
 
@@ -298,13 +338,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else return true;
 		}
 
-		protected function get_submit_opts( $id, $mod_name = false ) {
+		protected function get_submit_opts( $mod_id, $mod_name = false ) {
 
-			$defs = $this->get_defaults( false, $mod_name );
+			$defs = $this->get_defaults( false, $mod_id, $mod_name );
 			unset ( $defs['options_filtered'] );
 			unset ( $defs['options_version'] );
 
-			$prev = $this->get_options( $id );
+			$prev = $this->get_options( $mod_id );
 			unset ( $prev['options_filtered'] );
 			unset ( $prev['options_version'] );
 
@@ -315,7 +355,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod_name );	// network is false
 
 			if ( $mod_name !== false )
-				$opts = apply_filters( $this->p->cf['lca'].'_save_meta_options', $opts, $mod_name, $id );
+				$opts = apply_filters( $this->p->cf['lca'].'_save_md_options', $opts, $mod_id, $mod_name );
 
 			foreach ( $defs as $key => $def_val ) {
 				if ( isset( $opts[$key] ) ) {
@@ -359,7 +399,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				}
 				if ( $force_regen === true )
-					set_transient( $this->p->cf['lca'].'_'.$mod_name.'_'.$id.'_regen_'.$md_pre, true );
+					set_transient( $this->p->cf['lca'].'_'.$mod_name.'_'.$mod_id.'_regen_'.$md_pre, true );
 			}
 			return $opts;
 		}
@@ -371,10 +411,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			) );
 		}
 
-		protected function get_mod_column_content( $value, $column_name, $id, $mod_name = '' ) {
+		protected function get_mod_column_content( $value, $column_name, &$mod ) {
+
+			$lca = $this->p->cf['lca'];
 
 			// optimize performance and return immediately if this is not our column
-			if ( strpos( $column_name, $this->p->cf['lca'].'_' ) !== 0 )
+			if ( strpos( $column_name, $lca.'_' ) !== 0 )
 				return $value;
 
 			// when adding a new category, $screen_id may be false
@@ -387,8 +429,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			switch ( $column_name ) {
-				case $this->p->cf['lca'].'_og_image':
-				case $this->p->cf['lca'].'_og_desc':
+				case $lca.'_og_image':
+				case $lca.'_og_desc':
 					$use_cache = true;
 					break;
 				default:
@@ -398,21 +440,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
 				$lang = SucomUtil::get_locale();
-				$cache_salt = __METHOD__.'(lang:'.$lang.'_id:'.$id.'_mod_name:'.$mod_name.'_column:'.$column_name.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_salt = __METHOD__.'(lang:'.$lang.'_id:'.$mod['id'].'_name:'.$mod['name'].'_column:'.$column_name.')';
+				$cache_id = $lca.'_'.md5( $cache_salt );
 				$value = get_transient( $cache_id );
 				if ( $value !== false )
 					return $value;
 			}
 
 			switch ( $column_name ) {
-				case $this->p->cf['lca'].'_og_image':
+				case $lca.'_og_image':
 					// set custom image dimensions for this post/term/user id
-					$this->p->util->add_plugin_image_sizes( $id, array(), true, $mod_name );
+					$this->p->util->add_plugin_image_sizes( false, array(), $mod );
 					break;
 			}
 
-			$value = apply_filters( $column_name.'_'.$mod_name.'_column_content', $value, $column_name, $id, $mod_name  );
+			$value = apply_filters( $column_name.'_'.$mod['name'].'_column_content', $value, $column_name, $mod );
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
 				set_transient( $cache_id, $value, $this->p->options['plugin_object_cache_exp'] );
@@ -438,19 +480,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $value;
 		}
 
-		public function get_og_image( $num, $size_name, $id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
-			return $this->not_implemented( __METHOD__, array() );
+		public function get_og_image( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public function get_meta_image( $num, $size_name, $id, $mod_name = '',
-			$check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_image( $num, $size_name, array &$mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
 					'size_name' => $size_name,
-					'id' => $id,
-					'mod_name' => $mod_name,
+					'mod' => $mod,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 					'md_pre' => $md_pre,
@@ -460,7 +500,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$meta_ret = array();
 
-			if ( empty( $id ) )
+			if ( empty( $mod['id'] ) )
 				return $meta_ret;
 
 			// always fallback to 'og' meta options
@@ -473,9 +513,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
-				$pid = $this->get_options( $id, $prefix.'_img_id' );
-				$pre = $this->get_options( $id, $prefix.'_img_id_pre' );
-				$url = $this->get_options( $id, $prefix.'_img_url' );
+				$pid = $this->get_options( $mod['id'], $prefix.'_img_id' );
+				$pre = $this->get_options( $mod['id'], $prefix.'_img_id_pre' );
+				$url = $this->get_options( $mod['id'], $prefix.'_img_url' );
 
 				if ( $pid > 0 ) {
 					$pid = $pre === 'ngg' ?
@@ -500,8 +540,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
 
-					$width = $this->get_options( $id, $prefix.'_img_url:width' );
-					$height = $this->get_options( $id, $prefix.'_img_url:height' );
+					$width = $this->get_options( $mod['id'], $prefix.'_img_url:width' );
+					$height = $this->get_options( $mod['id'], $prefix.'_img_url:height' );
 
 					list(
 						$meta_image[$mt_pre.':image'],
@@ -525,7 +565,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return $meta_ret;
 			}
 
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_ids', array(), $size_name, $id ) as $pid ) {
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_ids', array(), $size_name, $mod['id'] ) as $pid ) {
 				if ( $pid > 0 ) {	// quick sanity check
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding image pid: '.$pid );
@@ -546,7 +586,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_urls', array(), $size_name, $id ) as $url ) {
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_urls', array(), $size_name, $mod['id'] ) as $url ) {
 				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
 
 					if ( $this->p->debug->enabled )
@@ -565,12 +605,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $meta_ret;
 		}
 
-		public function get_og_video( $num = 0, $id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_video( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'num' => $num,
-					'id' => $id,
+					'mod_id' => $mod_id,
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 					'mt_pre' => $mt_pre,
@@ -580,13 +620,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$og_ret = array();
 			$og_video = array();
 
-			if ( empty( $id ) )
+			if ( empty( $mod_id ) )
 				return $og_ret;
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
-				$html = $this->get_options( $id, $prefix.'_vid_embed' );
-				$url = $this->get_options( $id, $prefix.'_vid_url' );
+				$html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
+				$url = $this->get_options( $mod_id, $prefix.'_vid_url' );
 
 				if ( ! empty( $html ) ) {
 					if ( $this->p->debug->enabled )
@@ -611,12 +651,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_ret;
 		}
 
-		public function get_og_video_preview_image( $id, $mod_name, $check_dupes = false, $md_pre = 'og' ) {
+		public function get_og_video_preview_image( $mod, $check_dupes = false, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
-					'id' => $id,
-					'mod_name' => $mod_name,
+					'mod' => $mod,
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 				), get_class( $this ) );
@@ -625,13 +664,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$og_image = array();
 
 			// fallback to value from general plugin settings
-			if ( ( $use_prev_img = $this->get_options( $id, 'og_vid_prev_img' ) ) === null )
+			if ( ( $use_prev_img = $this->get_options( $mod['id'], 'og_vid_prev_img' ) ) === null )
 				$use_prev_img = $this->p->options['og_vid_prev_img'];
 
 			// get video preview images if allowed
 			if ( ! empty( $use_prev_img ) ) {
+
 				// assumes the first video will have a preview image
-				$og_video = $this->p->og->get_all_videos( 1, $id, $mod_name, $check_dupes, $md_pre );
+				$og_video = $this->p->og->get_all_videos( 1, $mod, $check_dupes, $md_pre );
+
 				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
 					foreach ( $og_video as $video ) {
 						if ( ! empty( $video['og:image'] ) ) {

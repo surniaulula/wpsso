@@ -12,6 +12,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
+		protected $uniq_urls = array();			// array to detect duplicate images, etc.
+		protected $size_labels = array();		// reference array for image size labels
 		protected $inline_vars = array(
 			'%%post_id%%',
 			'%%request_url%%',
@@ -70,8 +72,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
-					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
-					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
+					$method_name = self::sanitize_hookname( $type.'_'.$name );
 
 					call_user_func( 'add_'.$type, $hook_name, 
 						array( &$class, $method_name ), $prio, $arg_nums );
@@ -84,8 +86,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				} elseif ( is_string( $val ) ) {
 					$arg_nums = 1;
-					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
-					$function_name = SucomUtil::sanitize_hookname( $val );
+					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
+					$function_name = self::sanitize_hookname( $val );
 
 					call_user_func( 'add_'.$type, $hook_name, 
 						$function_name, $prio, $arg_nums );
@@ -101,9 +103,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
-					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+					$method_name = self::sanitize_hookname( $type.'_'.$name );
 					foreach ( $val as $hook_name => $arg_nums ) {
-						$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$hook_name );
+						$hook_name = self::sanitize_hookname( $lca.'_'.$hook_name );
 
 						call_user_func( 'add_'.$type, $hook_name, 
 							array( &$class, $method_name ), $prio, $arg_nums );
@@ -138,14 +140,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return $size_name;
 		}
 
-		public function image_editor_save_pre_image_sizes( $image, $post_id ) {
-			$this->add_plugin_image_sizes( $post_id, array(), true, 'post' );
+		public function image_editor_save_pre_image_sizes( $image, $id ) {
+			$mod = array( 'id' => $id, 'name' => 'post' );
+			$mod = $this->get_object_id_mod( $id, $mod );
+			$this->add_plugin_image_sizes( $id, array(), $mod, true );
 			return $image;
 		}
 
 		// can be called directly and from the "wp" and "current_screen" actions
 		// this method does not return a value, so do not use as a filter
-		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), $filter = true, $mod_name = false ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = array(), $filter = true ) {
 			/*
 			 * Allow various plugin extensions to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
@@ -165,27 +169,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'define image sizes' );	// begin timer
 
-			if ( $filter === true ) {
-				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
-					$sizes, $wp_obj, $mod_name, SucomUtil::crawler_name() );
-			}
-
-			$id = false;
 			$use_post = false;
+			$lca = $this->p->cf['lca'];
+			$mod = $this->get_object_id_mod( $use_post, $mod, $wp_obj );	// complete any missing values
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$meta_opts = array();
 
-			list( $id, $mod_name, $mod_obj ) = $this->get_object_id_mod( $use_post, $wp_obj, $mod_name );
+			if ( $filter === true ) {
+				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
+					$sizes, $mod, self::crawler_name() );
+			}
 
-			if ( empty( $mod_name ) ) {
+			if ( empty( $mod['id'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'module id is unknown' );
+			} elseif ( empty( $mod['name'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'module name is unknown' );
-			} elseif ( empty( $id ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'id for module is unknown' );
-			} else {
-				// custom filters may use image sizes, so don't filter/cache the meta options
-				$meta_opts = $this->get_mod_options( $mod_name, $id, false, array( 'filter_options' => false ) );
-			}
+			// custom filters may use image sizes, so don't filter/cache the meta options
+			} elseif ( $aop )
+				$meta_opts = $this->get_mod_options( $mod['id'], $mod['name'], false, false );	// $filter_options = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -230,7 +233,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					// allow custom function hooks to make changes
 					if ( $filter === true )
 						$size_info = apply_filters( $this->p->cf['lca'].'_size_info_'.$size_info['name'], 
-							$size_info, $id, $mod_name );
+							$size_info, $mod['id'], $mod['name'] );
 
 					// a lookup array for image size labels, used in image size error messages
 					$this->size_labels[$this->p->cf['lca'].'-'.$size_info['name']] = $size_info['label'];
@@ -255,9 +258,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $prefixes as $opt_pre => $def_val ) {
 				foreach ( $this->get_post_types() as $post_type ) {
-					$idx = $opt_pre.'_'.$post_type->name;
-					if ( ! isset( $opts[$idx] ) )
-						$opts[$idx] = $def_val;
+					$key = $opt_pre.'_'.$post_type->name;
+					if ( ! isset( $opts[$key] ) )
+						$opts[$key] = $def_val;
 				}
 			}
 			return $opts;
@@ -273,8 +276,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$del_files = $this->p->util->delete_expired_file_cache( true );
-			$del_transients = $this->p->util->delete_expired_db_transients( true );
+			$del_files = $this->delete_expired_file_cache( true );
+			$del_transients = $this->delete_expired_db_transients( true );
 
 			$this->p->notice->inf( sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
 				'wpsso' ), $short ), true );
@@ -313,10 +316,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'private':
 				case 'publish':
 					$lca = $this->p->cf['lca'];
-					$lang = SucomUtil::get_locale();
+					$lang = self::get_locale();
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
-					$sharing_url = $this->p->util->get_sharing_url( $post_id );
+					$sharing_url = $this->get_sharing_url( $post_id );
 
 					// transients persist from one page load to another
 					$transients = array(
@@ -325,19 +328,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'url:'.$permalink_no_meta,
 						),
 						'WpssoHead::get_header_array' => array( 
-							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url,
-							'lang:'.$lang.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
+							'lang:'.$lang.'_id:'.$post_id.'_name:post_url:'.$sharing_url,
+							'lang:'.$lang.'_id:'.$post_id.'_name:post_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
-							'lang:'.$lang.'_id:'.$post_id.'_mod:post_column:'.$lca.'_og_image',
-							'lang:'.$lang.'_id:'.$post_id.'_mod:post_column:'.$lca.'_og_desc',
+							'lang:'.$lang.'_id:'.$post_id.'_name:post_column:'.$lca.'_og_image',
+							'lang:'.$lang.'_id:'.$post_id.'_name:post_column:'.$lca.'_og_desc',
 						),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', 
 						$transients, $post_id, $lang, $sharing_url );
 
 					// wp objects are only available for the duration of a single page load
-					$objects = array(
+					$wp_objects = array(
 						'SucomWebpage::get_content' => array(
 							'lang:'.$lang.'_post:'.$post_id.'_filtered',
 							'lang:'.$lang.'_post:'.$post_id.'_unfiltered',
@@ -346,10 +349,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'lang:'.$lang.'_post:'.$post_id,
 						),
 					);
-					$objects = apply_filters( $lca.'_post_cache_objects', 
-						$objects, $post_id, $lang, $sharing_url );
+					$wp_objects = apply_filters( $lca.'_post_cache_objects', 
+						$wp_objects, $post_id, $lang, $sharing_url );
 	
-					$deleted = $this->clear_cache_objects( $transients, $objects );
+					$deleted = $this->clear_cache_objects( $transients, $wp_objects );
 
 					if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', true );
@@ -364,7 +367,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function clear_cache_objects( &$transients = array(), &$objects = array() ) {
+		public function clear_cache_objects( &$transients = array(), &$wp_objects = array() ) {
 			$deleted = 0;
 			foreach ( $transients as $group => $arr ) {
 				foreach ( $arr as $val ) {
@@ -379,7 +382,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-			foreach ( $objects as $group => $arr ) {
+			foreach ( $wp_objects as $group => $arr ) {
 				foreach ( $arr as $val ) {
 					if ( ! empty( $val ) ) {
 						$cache_salt = $group.'('.$val.')';
@@ -426,36 +429,45 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Purpose: returns a specific option from the custom social settings meta
+		 * Purpose: Returns a specific option from the custom social settings meta with
+		 * fallback for multiple option keys.
 	 	 *
-		 * If idx is an array, then get the first non-empty option from the idx array --
-		 * this is an easy way to provide a fall-back value for the first array key.
+		 * If index is an array, then get the first non-empty option from the index array.
+		 * This is an easy way to provide a fallback value for the first array key.
 		 *
-		 * Example: get_mod_options( 'post', $post_id, array( 'rp_desc', 'og_desc' ) );
+		 * Example: get_mod_options( $post_id, 'post', array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_mod_options( $mod_name, $id = false, $idx = false, $atts = array() ) {
+		public function get_mod_options( $mod_id, $mod_name, $index = false, $atts = array() ) {
 
-			if ( empty( $id ) || 
-				! isset( $this->p->m['util'][$mod_name] ) )
-					return null;
+			// sanitation
+			if ( empty( $mod_id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'mod_id \''.$mod_id.'\' is empty' );
+				return null;
+			} elseif ( ! isset( $this->p->m['util'][$mod_name] ) ||
+				! is_object( $this->p->m['util'][$mod_name] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'mod_name \''.$mod_name.'\' not an object' );
+				return null;
+			}
 
 			// return the whole options array
-			if ( $idx === false ) {
-				$ret = $this->p->m['util'][$mod_name]->get_options( $id, $idx, $atts );
+			if ( $index === false ) {
+				$ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $index, $atts );
 
 			// return the first matching index value
 			} else {
-				if ( ! is_array( $idx ) )
-					$idx = array( $idx );
-				else $idx = array_unique( $idx );	// just in case
+				if ( ! is_array( $index ) )
+					$index = array( $index );
+				else $index = array_unique( $index );	// just in case
 
-				foreach ( $idx as $key ) {
+				foreach ( $index as $key ) {
 					if ( $key === 'none' )		// special index keyword
 						return null;
 					elseif ( empty( $key ) )
 						continue;
 					// get_options() returns null if key index is missing
-					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $id, $key, $atts ) ) !== null );
+					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $key, $atts ) ) !== null );
 						break;
 				}
 			}
@@ -463,7 +475,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $ret !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'custom '.$mod_name.' '.
-						( $idx === false ? 'options' : ( is_array( $idx ) ? implode( ', ', $idx ) : $idx ) ).' = '.
+						( $index === false ? 'options' : ( is_array( $index ) ? 
+							implode( ', ', $index ) : $index ) ).' = '.
 						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
 				}
 			}
@@ -509,7 +522,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				default:
 					$val = stripslashes( $val );
 					$val = wp_filter_nohtml_kses( $val );
-					$val = SucomUtil::encode_emoji( htmlentities( $val, 
+					$val = self::encode_emoji( htmlentities( $val, 
 						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 					break;
 			}
@@ -725,6 +738,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_product_category',
 				'is_product_tag',
 				'is_shop',
+				/*
+				 *
+				 */
+				'is_amp_endpoint',
 			);
 			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
 			foreach ( $is_functions as $function ) 
@@ -740,43 +757,49 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// returns an author id if the default author is forced
-		public function force_default_author( $use_post = false, $opt_pre = 'og' ) {
-			$user_id = $this->get_default_author_id( $opt_pre );
-			return $user_id && $this->force_default( $use_post, $opt_pre, 'author' ) ?
-				$user_id : false;
+		public function force_default_author( &$mod = array(), $opt_pre = 'og' ) {
+			$author_id = $this->get_default_author_id( $opt_pre );
+			return $author_id && 
+				$this->force_default( $mod, $opt_pre, 'author' ) ?
+					$author_id : false;
 		}
 
 		// returns true if the default image is forced
-		public function force_default_image( $use_post = false, $opt_pre = 'og' ) {
-			return $this->force_default( $use_post, $opt_pre, 'img' );
+		public function force_default_image( &$mod = array(), $opt_pre = 'og' ) {
+			return $this->force_default( $mod, $opt_pre, 'img' );
 		}
 
 		// returns true if the default video is forced
-		public function force_default_video( $use_post = false, $opt_pre = 'og' ) {
-			return $this->force_default( $use_post, $opt_pre, 'vid' );
+		public function force_default_video( &$mod = array(), $opt_pre = 'og' ) {
+			return $this->force_default( $mod, $opt_pre, 'vid' );
 		}
 
-		public function force_default( $use_post = false, $opt_pre = 'og', $type ) {
+		public function force_default( &$mod = array(), $opt_pre = 'og', $type ) {
 
 			$lca = $this->p->cf['lca'];
 			$def = array();
 
+			// setup default true / false values
 			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key )
 				$def[$key] = apply_filters( $lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, 
 					( isset( $this->p->options[$opt_pre.'_def_'.$type.'_'.$key] ) ? 
 						$this->p->options[$opt_pre.'_def_'.$type.'_'.$key] : null ) );
 
-			// save some time
+			// save some time - if no default media, then return false
 			if ( empty( $def['id'] ) && 
 				empty( $def['url'] ) )
 					$ret = false;
 
 			// check for singular pages first
-			elseif ( SucomUtil::is_post_page( $use_post ) )
+			elseif ( $mod['is_post'] )
+				$ret = false;
+
+			// check for user pages first
+			elseif ( $mod['is_user'] )
 				$ret = false;
 
 			elseif ( ! empty( $def['on_index'] ) &&
-				( is_home() || ( is_archive() && ! is_admin() && ! SucomUtil::is_user_page() ) ) )
+				( is_home() || is_archive() || $mod['is_taxonomy'] ) )
 					$ret = true;
 
 			elseif ( ! empty( $def['on_search'] ) &&
@@ -785,7 +808,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			else $ret = false;
 
-			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$type, $ret, $use_post, $opt_pre );
+			// 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages)
+			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$type, $ret, $mod, $opt_pre );
 
 			if ( $ret && $this->p->debug->enabled )
 				$this->p->debug->log( 'default '.$type.' is forced' );
@@ -807,13 +831,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
 			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
-			$src_id = $this->p->util->get_source_id( $opt_prefix, $atts );
+			$src_id = $this->get_source_id( $opt_prefix, $atts );
 
 			if ( ! isset( $atts['add_page'] ) )
 				$atts['add_page'] = true;	// required by get_sharing_url()
 
 			$long_url = empty( $atts['url'] ) ? 
-				$this->p->util->get_sharing_url( $use_post, $atts['add_page'], $src_id ) : 
+				$this->get_sharing_url( $use_post, $atts['add_page'], $src_id ) : 
 				apply_filters( $this->p->cf['lca'].'_sharing_url',
 					$atts['url'], $use_post, $atts['add_page'], $src_id );
 
@@ -828,16 +852,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$tweet_text = $atts['tweet'];
 			else {
 				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
-				$tweet_text = $this->p->webpage->get_caption( 
-					$caption_type,		// title, excerpt, both
-					$caption_len,		// max caption length 
-					$use_post,		// true/false/post_id
-					true,			// use_cache
-					$add_hashtags, 		// add_hashtags
-					false, 			// encode
-					$md_pre.'_desc',	// meta data
-					$src_id			// 
-				);
+				$tweet_text = $this->p->webpage->get_caption( $caption_type, $caption_len,
+					$use_post, true, $add_hashtags, false, $md_pre.'_desc', $src_id );
 			}
 
 			return $tweet_text;
@@ -877,15 +893,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public static function save_time( $lca, $version, $type, $protect = false ) {
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
-					if ( ( $ts_version = SucomUtil::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== null &&
+					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== null &&
 						version_compare( $ts_version, $protect, '==' ) )
 							$protect = true;
 					else $protect = false;
 				} else $protect = true;	// just in case
 			}
 			if ( ! empty( $version ) )
-				SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
-			SucomUtil::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
+				self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
+			self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
 		}
 
 		// get the timestamp array and perform a quick sanity check
@@ -983,14 +999,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function add_image_url_sizes( $keys, array &$opts ) {
-			if ( SucomUtil::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
+			if ( self::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
 				return $opts;
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
 
 			foreach ( $keys as $prefix ) {
-				$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
+				$media_url = self::get_mt_media_url( $prefix, $opts );
 				if ( ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
 					list( $opts[$prefix.':width'], $opts[$prefix.':height'],
 						$image_type, $image_attr ) = @getimagesize( $media_url );
@@ -1007,25 +1023,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// accepts json script or json array
-		public function json_format( $json, $options = JSON_UNESCAPED_SLASHES, $depth = 512 ) {
+		public function json_format( $json, $options = 0, $depth = 32 ) {
 
-			$do_pretty_print = SucomUtil::get_const( $this->p->cf['uca'].'_JSON_PRETTY_PRINT' );
+			$do_pretty_print = self::get_const( 'WPSSO_JSON_PRETTY_PRINT' );
+			$ext_json_disable = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false );
 			$do_ext_pretty = false;
+
+			if ( $options === 0 &&
+				defined( 'JSON_UNESCAPED_SLASHES' ) )
+					$options = JSON_UNESCAPED_SLASHES;	// PHP v5.4
 
 			// decide if the encoded json will be minimized or not
 			if ( is_admin() || $this->p->debug->enabled || $do_pretty_print ) {
-				if ( function_exists( 'phpversion' ) && phpversion() >= 5.4 )
+				if ( defined( 'JSON_PRETTY_PRINT' ) )		// PHP v5.4
 					$options = $options|JSON_PRETTY_PRINT;
-				else $do_ext_pretty = true;	// use the SuextJsonFormat lib
+				else $do_ext_pretty = true;			// use the SuextJsonFormat lib
 			}
 
 			// encode the json
-			// $options may include JSON_PRETTY_PRINT for PHP version 5.4 and up
 			if ( ! is_string( $json ) )
-				$json = SucomUtil::json_encode_array( $json, $options, $depth );
+				$json = self::json_encode_array( $json, $options, $depth );	// prefers wp_json_encode() to json_encode()
 
 			// use the pretty print external library for older PHP versions
-			if ( $do_ext_pretty ) {
+			// define WPSSO_EXT_JSON_DISABLE as true to prevent external json formatting 
+			if ( ! $ext_json_disable && $do_ext_pretty ) {
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 				if ( $classname !== false && class_exists( $classname ) )
 					$json = SuextJsonFormat::get( $json, $options, $depth );
@@ -1034,60 +1055,250 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		// $id can be a numeric id or a WP class object
-		public function get_object_id_mod( $use_post = false, $id = false, $mod_name = false ) {
+		public function get_object_id_mod( $use_post = false, &$mod = array(), &$wp_obj = false ) {
+
+			// sanitize and optimize - return if all keys are defined
+			if ( ! is_array( $mod ) )
+				$mod = WpssoMeta::$mod_array;
+
+			if ( ! empty( $mod['is_complete'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: array is complete' );
+				return $mod;
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			// check for a recognized object
-			if ( is_object( $id ) ) {
+			if ( is_object( $wp_obj ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'object is '.get_class( $id ) );
-				switch ( get_class( $id ) ) {
+					$this->p->debug->log( 'wp_obj is '.get_class( $wp_obj ) );
+				switch ( get_class( $wp_obj ) ) {
 					case 'WP_Post':
-						$mod_name = 'post';
-						$id = $id->ID;
+						$mod['name'] = 'post';
+						$mod['id'] = $wp_obj->ID;
 						break;
 					case 'WP_Term':
-						$mod_name = 'taxonomy';
-						$id = $id->term_id;
+						$mod['name'] = 'taxonomy';
+						$mod['id'] = $wp_obj->term_id;
 						break;
 					case 'WP_User':
-						$mod_name = 'user';
-						$id = $id->ID;
-						break;
-					default:
-						$id = false;
+						$mod['name'] = 'user';
+						$mod['id'] = $wp_obj->ID;
 						break;
 				}
 			}
 
-			if ( empty( $mod_name ) ) {
-				if ( SucomUtil::is_post_page( $use_post ) )
-					$mod_name = 'post';
-				elseif ( SucomUtil::is_term_page() )
-					$mod_name = 'taxonomy';
-				elseif ( SucomUtil::is_user_page() )
-					$mod_name = 'user';
-				else $mod_name = false;
+			// we need a module name to get the id and object
+			if ( empty( $mod['name'] ) ) {
+				if ( self::is_post_page( $use_post ) )
+					$mod['name'] = 'post';
+				elseif ( self::is_term_page() )
+					$mod['name'] = 'taxonomy';
+				elseif ( self::is_user_page() )
+					$mod['name'] = 'user';
+				else $mod['name'] = false;
 			}
 
-			if ( ! empty( $mod_name ) ) {
-				if ( empty( $id ) ) {
-					if ( $mod_name === 'post' )
-						$id = $this->get_post_object( $use_post, 'id' );
-					elseif ( $mod_name === 'taxonomy' )
-						$id = $this->get_term_object( 'id' );
-					elseif ( $mod_name === 'user' )
-						$id = $this->get_user_object( 'id' );
-					else $id = false;
+			foreach ( array( 'post', 'taxonomy', 'user' ) as $mod_name )
+				$mod['is_'.$mod_name] = $mod_name === $mod['name'] ?
+					true : false;
+
+			if ( empty( $mod['id'] ) ) {
+				if ( $mod['is_post'] )
+					$mod['id'] = $this->get_post_object( $use_post, 'id' );
+				elseif ( $mod['is_taxonomy'] )
+					$mod['id'] = $this->get_term_object( false, '', 'id' );
+				elseif ( $mod['is_user'] )
+					$mod['id'] = $this->get_user_object( false, 'id' );
+				else $mod['id'] = false;
+			}
+
+			if ( empty( $mod['obj'] ) ) {
+				if ( isset( $this->p->m['util'][$mod['name']] ) )
+					$mod['obj'] =& $this->p->m['util'][$mod['name']];
+				else $mod['obj'] = false;
+			}
+
+			$mod['use_post'] = $mod['is_post'] ?
+				$mod['id'] : $use_post;
+
+			$mod['is_complete'] = true;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+
+			return $mod;
+		}
+
+		// "use_post = false" when used for open graph meta tags and buttons in widget,
+		// true when buttons are added to individual posts on an index webpage
+		public function get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array( 
+					'use_post' => $use_post,
+					'add_page' => $add_page,
+					'src_id' => $src_id,
+				) );
+			}
+
+			$url = false;
+
+			if ( self::is_post_page( $use_post ) ) {
+
+				$post_obj = $this->get_post_object( $use_post );
+				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+
+				if ( ! empty( $post_id ) ) {
+
+					if ( isset( $this->p->m['util']['post'] ) )
+						$url = $this->p->m['util']['post']->get_options( $post_id, 'sharing_url' );
+
+					if ( ! empty( $url ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'custom post sharing_url = '.$url );
+					} else {
+						$url = get_permalink( $post_id );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'post_id '.$post_id.' permalink = '.$url );
+					}
+
+					if ( $add_page && get_query_var( 'page' ) > 1 ) {
+						global $wp_rewrite;
+						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
+							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false )
+								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
+							else $url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
+						}
+					}
 				}
 
-				if ( isset( $this->p->m['util'][$mod_name] ) )
-					$mod_obj =& $this->p->m['util'][$mod_name];
-				else $mod_obj = false;
+				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page, $src_id );
 
-			} else $mod_obj = false;
+			} else {
+				if ( is_search() ) {
+					$url = get_search_link();
 
-			return array( $id, $mod_name, $mod_obj );
+				} elseif ( is_front_page() ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
+					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
+
+				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
+					$url = get_permalink( get_option( 'page_for_posts' ) );
+
+				} elseif ( self::is_term_page() ) {
+					$term = $this->get_term_object();
+					if ( ! empty( $term->term_id ) ) {
+						if ( isset( $this->p->m['util']['taxonomy'] ) )
+							$url = $this->p->m['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
+						if ( ! empty( $url ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'custom taxonomy sharing_url = '.$url );
+						} else $url = get_term_link( $term, $term->taxonomy );
+					} 
+					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
+
+				} elseif ( self::is_user_page() ) {
+					$author = $this->get_user_object();
+					if ( ! empty( $author->ID ) ) {
+						if ( isset( $this->p->m['util']['user'] ) )
+							$url = $this->p->m['util']['user']->get_options( $author->ID, 'sharing_url' );
+						if ( ! empty( $url ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'custom user sharing_url = '.$url );
+						} else $url = get_author_posts_url( $author->ID );
+					}
+					$url = apply_filters( $this->p->cf['lca'].'_author_url', $url, $author );
+
+				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
+					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
+
+				} elseif ( is_archive() ) {
+					if ( is_date() ) {
+						if ( is_day() )
+							$url = get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
+						elseif ( is_month() )
+							$url = get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) );
+						elseif ( is_year() )
+							$url = get_year_link( get_query_var( 'year' ) );
+					}
+				}
+
+				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
+					global $wp_rewrite;
+					if ( ! $wp_rewrite->using_permalinks() )
+						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
+					else {
+						if ( is_front_page() ) {
+							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );
+							$url = home_url( $base );
+						}
+						$url = user_trailingslashit( trailingslashit( $url ).
+							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
+					}
+				}
+			}
+
+			// fallback for themes and plugins that don't use the standard wordpress functions/variables
+			if ( empty ( $url ) ) {
+				// strip out tracking query arguments by facebook, google, etc.
+				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+			}
+
+			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page, $src_id );
+		}
+
+		public function fix_relative_url( $url = '' ) {
+			if ( ! empty( $url ) && 
+				strpos( $url, '://' ) === false ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'relative url found = '.$url );
+
+				if ( strpos( $url, '//' ) === 0 )
+					$url = self::get_prot().':'.$url;
+				elseif ( strpos( $url, '/' ) === 0 ) 
+					$url = home_url( $url );
+				else {
+					$base = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+					if ( strpos( $base, '?' ) !== false ) {
+						$base_parts = explode( '?', $base );
+						$base = reset( $base_parts );
+					}
+					$url = trailingslashit( $base, false ).$url;
+				}
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'relative url fixed = '.$url );
+			}
+			return $url;
+		}
+	
+		public function is_uniq_url( $url = '', $context = 'default' ) {
+
+			if ( empty( $url ) ) 
+				return false;
+
+			// complete the url with a protocol name
+			if ( strpos( $url, '//' ) === 0 )
+				$url = self::get_prot().'//'.$url;
+
+			if ( $this->p->debug->enabled && 
+				strpos( $url, '://' ) === false )
+					$this->p->debug->log( 'incomplete url given for context ('.$context.'): '.$url );
+
+			if ( ! isset( $this->uniq_urls[$context][$url] ) ) {
+				$this->uniq_urls[$context][$url] = 1;
+				return true;
+			} else {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'duplicate url rejected for context ('.$context.'): '.$url ); 
+				return false;
+			}
 		}
 
 		public function is_maxed( &$arr, $num = 0 ) {
@@ -1133,13 +1344,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// if $id is 0 or false, return values from the plugin settings 
-		public function get_max_nums( $id = false, $mod_name = false ) {
+		// if $mod_id is 0 or false, return values from the plugin settings 
+		public function get_max_nums( $mod_id = false, $mod_name = false ) {
 			$max = array();
 			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
-				if ( ! empty( $id ) && 
+				if ( ! empty( $mod_id ) && 
 					isset( $this->p->m['util'][$mod_name] ) )
-						$num_meta = $this->p->m['util'][$mod_name]->get_options( $id, $max_name );
+						$num_meta = $this->p->m['util'][$mod_name]->get_options( $mod_id, $max_name );
 				else $num_meta = null;	// default value returned by get_options() if index key is missing
 
 				// quick sanitation of returned value
@@ -1150,6 +1361,213 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
 			}
 			return $max;
+		}
+
+		public function delete_expired_db_transients( $all = false ) { 
+			global $wpdb;
+			$deleted = 0;
+			$time = isset ( $_SERVER['REQUEST_TIME'] ) ?
+				(int) $_SERVER['REQUEST_TIME'] : time() ; 
+			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+				' WHERE option_name LIKE \'_transient_timeout_'.$this->p->cf['lca'].'_%\'';
+			$dbquery .= $all === true ? ';' : ' AND option_value < '.$time.';';
+			$expired = $wpdb->get_col( $dbquery ); 
+			foreach( $expired as $transient ) { 
+				$key = str_replace( '_transient_timeout_', '', $transient );
+				if ( delete_transient( $key ) )
+					$deleted++;
+			}
+			return $deleted;
+		}
+
+		public function delete_expired_file_cache( $all = false ) {
+			$deleted = 0;
+			$time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
+			$time = empty( $this->p->options['plugin_file_cache_exp'] ) ? 
+				$time : $time - $this->p->options['plugin_file_cache_exp'];
+			$cachedir = constant( $this->p->cf['uca'].'_CACHEDIR' );
+			if ( ! $dh = @opendir( $cachedir ) )
+				$this->p->notice->err( 'Failed to open directory '.$cachedir.' for reading.', true );
+			else {
+				while ( $fn = @readdir( $dh ) ) {
+					$filepath = $cachedir.$fn;
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $fn ) && is_file( $filepath ) && 
+						( $all === true || filemtime( $filepath ) < $time ) ) {
+						if ( ! @unlink( $filepath ) ) 
+							$this->p->notice->err( 'Error removing file '.$filepath, true );
+						else $deleted++;
+					}
+				}
+				closedir( $dh );
+			}
+			return $deleted;
+		}
+
+		public function get_source_id( $src_name, &$atts = array() ) {
+			global $post;
+			$use_post = isset( $atts['use_post'] ) ?
+				$atts['use_post'] : true;
+			$src_id = $src_name.( empty( $atts['css_id'] ) ? 
+				'' : '-'.preg_replace( '/^'.$this->p->cf['lca'].'-/','', $atts['css_id'] ) );
+			if ( $use_post == true )
+				$src_id = $src_id.'-post-'.
+					( isset( $post->ID ) ? $post->ID : 0 );
+			return $src_id;
+		}
+
+		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
+			$content = false;
+			$get_remote = empty( $url ) ? false : true;
+
+			if ( $this->p->is_avail['cache']['transient'] ) {
+				$cache_salt = __METHOD__.'(url:'.$url.'_file:'.$file.'_version:'.$version.')';
+				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_type = 'object cache';
+				$content = get_transient( $cache_id );
+				if ( $content !== false )
+					return $content;	// no need to save, return now
+			} else $get_remote = false;
+
+			if ( $get_remote === true && $expire_secs > 0 ) {
+				$content = $this->p->cache->get( $url, 'raw', 'file', $expire_secs );
+				if ( empty( $content ) )
+					$get_remote = false;
+			} else $get_remote = false;
+
+			if ( $get_remote === false && ! empty( $file ) && $fh = @fopen( $file, 'rb' ) ) {
+				$content = fread( $fh, filesize( $file ) );
+				fclose( $fh );
+			}
+
+			if ( $this->p->is_avail['cache']['transient'] )
+				set_transient( $cache_id, $content, $this->p->options['plugin_object_cache_exp'] );
+
+			return $content;
+		}
+
+		public function parse_readme( $lca, $expire_secs = 86400 ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array( 
+					'lca' => $lca,
+					'expire_secs' => $expire_secs,
+				) );
+			}
+
+			$plugin_info = array();
+
+			if ( ! defined( strtoupper( $lca ).'_PLUGINDIR' ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( strtoupper( $lca ).'_PLUGINDIR is undefined and required for readme.txt path' );
+				return $plugin_info;
+			}
+
+			$readme_txt = constant( strtoupper( $lca ).'_PLUGINDIR' ).'readme.txt';
+			$readme_url = isset( $this->p->cf['plugin'][$lca]['url']['readme'] ) ? 
+				$this->p->cf['plugin'][$lca]['url']['readme'] : '';
+			$get_remote = empty( $readme_url ) ? false : true;	// fetch readme from wordpress.org by default
+			$content = '';
+
+			if ( $this->p->is_avail['cache']['transient'] ) {
+				$cache_salt = __METHOD__.'(url:'.$readme_url.'_txt:'.$readme_txt.')';
+				$cache_id = $lca.'_'.md5( $cache_salt );
+				$cache_type = 'object cache';
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
+				$plugin_info = get_transient( $cache_id );
+				if ( is_array( $plugin_info ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': plugin_info retrieved from transient '.$cache_id );
+					return $plugin_info;
+				}
+			} else $get_remote = false;	// use local if transient cache is disabled
+
+			// get remote readme.txt file
+			if ( $get_remote === true && $expire_secs > 0 )
+				$content = $this->p->cache->get( $readme_url, 'raw', 'file', $expire_secs );
+
+			// fallback to local readme.txt file
+			if ( empty( $content ) && $fh = @fopen( $readme_txt, 'rb' ) ) {
+				$get_remote = false;
+				$content = fread( $fh, filesize( $readme_txt ) );
+				fclose( $fh );
+			}
+
+			if ( ! empty( $content ) ) {
+				$parser = new SuextParseReadme( $this->p->debug );
+				$plugin_info = $parser->parse_readme_contents( $content );
+
+				// remove possibly inaccurate information from local file
+				if ( $get_remote !== true ) {
+					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key )
+						if ( array_key_exists( $key, $plugin_info ) )
+							unset ( $plugin_info[$key] );
+				}
+			}
+
+			// save the parsed readme (aka $plugin_info) to the transient cache
+			if ( $this->p->is_avail['cache']['transient'] ) {
+				set_transient( $cache_id, $plugin_info, $this->p->options['plugin_object_cache_exp'] );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.
+						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+			}
+			return $plugin_info;
+		}
+
+		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
+			$hash = '';
+			$query = '';
+			$admin_url = '';
+			$lca = $this->p->cf['lca'];
+
+			// $menu_id may start with a hash or query, so parse before checking its value
+			if ( strpos( $menu_id, '#' ) !== false )
+				list( $menu_id, $hash ) = explode( '#', $menu_id );
+
+			if ( strpos( $menu_id, '?' ) !== false )
+				list( $menu_id, $query ) = explode( '?', $menu_id );
+
+			if ( empty( $menu_id ) ) {
+				$current = $_SERVER['REQUEST_URI'];
+				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) )
+					$menu_id = $match[1];
+				else $menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
+			}
+
+			// find the menu_lib value for this menu_id
+			if ( empty( $menu_lib ) ) {
+				foreach ( $this->p->cf['*']['lib'] as $menu_lib => $menu ) {
+					if ( isset( $menu[$menu_id] ) )
+						break;
+					else $menu_lib = '';
+				}
+			}
+
+			if ( empty( $menu_lib ) ||
+				empty( $this->p->cf['wp']['admin'][$menu_lib]['page'] ) )
+					return;
+
+			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
+
+			switch ( $menu_lib ) {
+				case 'sitesubmenu':
+					$admin_url = network_admin_url( $parent_slug );
+					break;
+				default:
+					$admin_url = admin_url( $parent_slug );
+					break;
+			}
+
+			if ( ! empty( $query ) ) 
+				$admin_url .= '&'.$query;
+
+			if ( ! empty( $hash ) ) 
+				$admin_url .= '#'.$hash;
+
+			if ( empty( $link_text ) ) 
+				return $admin_url;
+			else return '<a href="'.$admin_url.'">'.$link_text.'</a>';
 		}
 	}
 }

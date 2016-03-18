@@ -14,12 +14,13 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
 			$this->menu_ext = $ext;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
 		protected function add_meta_boxes() {
@@ -37,38 +38,38 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 				'notes' => _x( 'Other Notes', 'metabox tab', 'wpsso' ),
 				'changelog' => _x( 'Changelog', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_rows( $metabox, $key ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
-			$this->p->util->do_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 		
-		protected function get_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox, $key ) {
 			$lca = $this->p->cf['lca'];
-			$rows = array();
+			$table_rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'readme-description':
-					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['description'] ) ? 
+					$table_rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['description'] ) ? 
 						'Content not Available' : self::$readme_info[$lca]['sections']['description'] ).'</td>';
 					break;
 
 				case 'readme-faq':
-					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['frequently_asked_questions'] ) ?
+					$table_rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['frequently_asked_questions'] ) ?
 						'Content not Available' : self::$readme_info[$lca]['sections']['frequently_asked_questions'] ).'</td>';
 					break;
 
 				case 'readme-notes':
-					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['remaining_content'] ) ?
+					$table_rows[] = '<td>'.( empty( self::$readme_info[$lca]['remaining_content'] ) ?
 						'Content not Available' : self::$readme_info[$lca]['remaining_content'] ).'</td>';
 					break;
 
 				case 'readme-changelog':
-					$rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['changelog'] ) ?
+					$table_rows[] = '<td>'.( empty( self::$readme_info[$lca]['sections']['changelog'] ) ?
 						'Content not Available' : self::$readme_info[$lca]['sections']['changelog'] ).'</td>';
 					break;
 			}
-			return $rows;
+			return $table_rows;
 		}
 	}
 }

@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.27.0',		// plugin version
+					'version' => '3.28.0',		// plugin version
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -81,8 +81,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
 								'post' => 'Post Settings',
-								'taxonomy' => 'Taxonomy Settings',
-								'user' => 'User Settings',
+								'meta' => 'User and Taxonomy Settings',
 							),
 							'util' => array(
 								'post' => 'Post Settings',
@@ -95,8 +94,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
 								'post' => 'Post Settings',
-								'taxonomy' => 'Taxonomy Settings',
-								'user' => 'User Settings',
+								'meta' => 'User and Taxonomy Settings',
 							),
 							'ecom' => array(
 								'edd' => 'Easy Digital Downloads',

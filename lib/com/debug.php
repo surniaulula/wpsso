@@ -95,7 +95,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			elseif ( $function_idx === false )
 				$function_idx = 2;
 
-			$this->log( 'args '.$this->fmt_array( $args ),
+			$this->log( 'args '.self::pretty_array( $args, true ),
 				$class_idx, $function_idx ); 
 		}
 
@@ -128,8 +128,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$log_msg .= '[blog '.$blog_id.'] ';
 			}
 
-			if ( is_array( $input ) || is_object( $input ) )
-				$log_msg .= print_r( $input, true );
+			if ( is_array( $input ) )
+				$log_msg .= trim( print_r( $input, true ) );
+			elseif ( is_object( $input ) )
+				$log_msg .= print_r( 'object '.get_class( $input ), true );
 			else $log_msg .= $input;
 
 			if ( $this->subsys['html'] == true )
@@ -161,7 +163,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( ! empty( $stack[$function_idx]['function'] ) )
 				$from .= $stack[$function_idx]['function'];
 			if ( $data === null ) {
-				//$this->log( 'truncating debug log' );
 				$data = $this->buffer;
 				$this->buffer = array();
 			}
@@ -183,12 +184,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						$html .= $is_assoc ?
 							"\t$key = $val\n" : "\t$val\n";
 					}
-				} else {
-					// check for print_r() output
-					if ( preg_match( '/^Array/', $data ) ) 
-						$html .= "\n";
-					$html .= $data;
-				}
+				} else $html .= $data;
 			}
 			$html .= ' -->'."\n";
 			return $html;
@@ -218,25 +214,37 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			return $this->enabled;
 		}
 
-		private function fmt_array( $input ) {
-			if ( is_array( $input ) ) {
-				$line = '';
-				foreach ( $input as $key => $val ) {
-					if ( is_array( $val ) )
-						$val = $this->fmt_array( $val );
-					elseif ( $val === false )
-						$val = 'false';
-					elseif ( $val === true )
-						$val = 'true';
-					elseif ( $val === null )
-						$val = 'null';
-					elseif ( $val === '' )
-						$val = '\'\'';
-					$line .= $key.'='.$val.', ';
+		public static function pretty_array( $mixed, $flatten = false ) {
+			$ret = '';
+
+			if ( is_array( $mixed ) ) {
+				foreach ( $mixed as $key => $val ) {
+					$val = self::pretty_array( $val, $flatten );
+					if ( $flatten )
+						$ret .= $key.'='.$val.', ';
+					else {
+						if ( is_object( $mixed[$key] ) )
+							unset ( $mixed[$key] );	// dereference the object first
+						$mixed[$key] = $val;
+					}
 				}
-				return '('.trim( $line, ', ' ).')'; 
-			} else return $input;
-		}	
+				if ( $flatten )
+					$ret = '('.trim( $ret, ', ' ).')'; 
+				else $ret = $mixed;
+			} elseif ( $mixed === false )
+				$ret = 'false';
+			elseif ( $mixed === true )
+				$ret = 'true';
+			elseif ( $mixed === null )
+				$ret = 'null';
+			elseif ( $mixed === '' )
+				$ret = '\'\'';
+			elseif ( is_object( $mixed ) )
+				$ret = 'object '.get_class( $mixed );
+			else $ret = $mixed;
+
+			return $ret;
+		}
 	}
 }
 

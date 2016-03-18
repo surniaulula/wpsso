@@ -13,8 +13,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	class SucomUtil {
 
 		protected $p;
-		protected $uniq_urls = array();			// array to detect duplicate images, etc.
-		protected $size_labels = array();		// reference array for image size labels
 
 		protected static $mobile_detect = null;		// SuextMobileDetect object
 		protected static $plugins_index = null;		// hash of active site and network plugins
@@ -229,10 +227,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			)
 		);
 
-		public function __construct( &$plugin ) {
-			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+		public function __construct() {
 		}
 
 		public static function is_https( $url = '' ) {
@@ -438,7 +433,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( $new ) && 
 						! isset( $opts[$new] ) )
 							$opts[$new] = $opts[$old];
-					unset( $opts[$old] );
+					unset ( $opts[$old] );
 				}
 			}
 			return $opts;
@@ -456,32 +451,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function insert_before_key( array &$array, $before_key, $new_key_or_arr, $new_key_value = '' ) {
-			if ( array_key_exists( $before_key, $array ) ) {
-				$new_array = array();
-				foreach ( $array as $key => $value ) {
-					if ( $key === $before_key ) {
-						if ( is_array( $new_key_or_arr ) )
-							$new_array = array_merge( $new_array, $new_key_or_arr );
-						else $new_array[$new_key_or_arr] = $new_key_value;
-					}
-					$new_array[$key] = $value;
-				}
-				return $new_array;
-			}
-			return $array;
+		public static function insert_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
 		}
 
-		public static function insert_after_key( array &$array, $after_key, $new_key_or_arr, $new_key_value = '' ) {
-			if ( array_key_exists( $after_key, $array ) ) {
+		public static function insert_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
+		}
+
+		private static function insert_in_array( $rel_pos, &$array, &$match_key, &$mixed, &$add_value ) {
+			if ( array_key_exists( $match_key, $array ) ) {
 				$new_array = array();
 				foreach ( $array as $key => $value ) {
-					$new_array[$key] = $value;
-					if ( $key === $after_key ) {
-						if ( is_array( $new_key_or_arr ) )
-							$new_array = array_merge( $new_array, $new_key_or_arr );
-						else $new_array[$new_key_or_arr] = $new_key_value;
+					if ( $rel_pos === 'after' )
+						$new_array[$key] = $value;
+					if ( $key === $match_key ) {
+						if ( is_array( $mixed ) )
+							$new_array = array_merge( $new_array, $mixed );
+						elseif ( is_string( $mixed ) )
+							$new_array[$mixed] = $add_value;
+						else $new_array[] = $add_value;
 					}
+					if ( $rel_pos === 'before' )
+						$new_array[$key] = $value;
 				}
 				return $new_array;
 			}
@@ -498,6 +490,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $merged;
 		}
 
+		// return the preferred URL (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( $prefix, &$opts ) {
 			foreach ( array( ':secure_url', ':url', '' ) as $suffix )
 				if ( ! empty( $opts[$prefix.$suffix] ) )
@@ -589,36 +582,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public function is_uniq_url( $url = '', $context = 'default' ) {
-
-			if ( empty( $url ) ) 
-				return false;
-
-			// complete the url with a protocol name
-			if ( strpos( $url, '//' ) === 0 )
-				$url = SucomUtil::get_prot().'//'.$url;
-
-			if ( $this->p->debug->enabled && 
-				strpos( $url, '://' ) === false )
-					$this->p->debug->log( 'incomplete url given for context ('.$context.'): '.$url );
-
-			if ( ! isset( $this->uniq_urls[$context][$url] ) ) {
-				$this->uniq_urls[$context][$url] = 1;
-				return true;
-			} else {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'duplicate url rejected for context ('.$context.'): '.$url ); 
-				return false;
-			}
-		}
-
 		public static function get_is_page( $use_post = false, $cache = true ) {
 
 			// optimize and only check what we need to
 			$is_term_page = $is_user_page = false;
-			if ( ! $is_post_page = SucomUtil::is_post_page( $use_post, $cache ) )
-				if ( ! $is_term_page = SucomUtil::is_term_page( $cache ) )
-					$is_user_page = SucomUtil::is_user_page( $cache );
+			if ( ! $is_post_page = self::is_post_page( $use_post, $cache ) )
+				if ( ! $is_term_page = self::is_term_page( $cache ) )
+					$is_user_page = self::is_user_page( $cache );
 
 			return array(
 				'post_page' => $is_post_page,
@@ -631,7 +601,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $cache &&
 				isset( self::$is['post_page'][$use_post] ) )
 					return self::$is['post_page'][$use_post];
+
 			$ret = false;
+
 			if ( is_singular() || $use_post )
 				$ret = true;
 			elseif ( is_admin() ) {
@@ -640,50 +612,59 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $screen_id === 'upload' ||
 					strpos( $screen_id, 'edit-' ) === 0 )
 						$ret = false;
-				elseif ( self::get_req_val( 'post_ID', 'POST' ) !== '' ||
-					self::get_req_val( 'post', 'GET' ) !== '' )
+				elseif ( self::get_request_value( 'post_ID', 'POST' ) !== '' ||
+					self::get_request_value( 'post', 'GET' ) !== '' )
 						$ret = true;
 				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
 					$ret = true;
 			}
+
 			$ret = apply_filters( 'sucom_is_post_page', $ret, $use_post );
+
 			if ( $cache )
 				return self::$is['post_page'][$use_post] = $ret;
 			else return $ret;
 		}
 
 		// on archives and taxonomies, this will return the first post object
-		public function get_post_object( $use_post = false, $ret = 'object' ) {
-			$post_obj = false;
-			if ( $use_post === false ) {
+		public function get_post_object( $use_post = false, $output = 'object' ) {
+			$post_obj = false;	// return false by default
+
+			if ( is_numeric( $use_post ) ) {
+				$post_obj = get_post( $use_post );
+
+			} elseif ( $use_post === false ) {
 				$post_obj = get_queried_object();
+
 				if ( $post_obj === null && is_admin() ) {
-					if ( ( $post_id = self::get_req_val( 'post_ID', 'POST' ) ) !== '' ||
-						( $post_id = self::get_req_val( 'post', 'GET' ) ) !== '' )
+					if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||
+						( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' )
 							$post_obj = get_post( $post_id );
 				}
+
 				// fallback to $post if object is empty / invalid
-				if ( ( empty( $post_obj->ID ) || empty( $post_obj->post_type ) ) &&
-					isset( $GLOBALS['post'] ) )
-						$post_obj = $GLOBALS['post'];
+				if ( ( empty( $post_obj->ID ) || 
+					empty( $post_obj->post_type ) ) &&
+						isset( $GLOBALS['post'] ) )
+							$post_obj = $GLOBALS['post'];
+
 			} elseif ( $use_post === true && 
-				isset( $GLOBALS['post'] ) )
+				isset( $GLOBALS['post'] ) ) {
 					$post_obj = $GLOBALS['post'];
-			elseif ( is_numeric( $use_post ) ) 
-				$post_obj = get_post( $use_post );
+
+			}
 
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
 
-			switch ( $ret ) {
+			switch ( $output ) {
 				case 'id':
 				case 'ID':
 					return isset( $post_obj->ID ) ? 
 						$post_obj->ID : false;
 					break;
 				default:
-					if ( $post_obj === false || ! is_object( $post_obj ) )
-						return false;
-					else return $post_obj;
+					return is_object( $post_obj ) ?
+						$post_obj : false;
 					break;
 			}
 		}
@@ -692,15 +673,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $cache &&
 				isset( self::$is['term_page'] ) )
 					return self::$is['term_page'];
+
 			$ret = false;
+
 			if ( is_tax() || is_category() || is_tag() )
 				$ret = true;
 			elseif ( is_admin() ) {
-				if ( self::get_req_val( 'taxonomy' ) !== '' && 
-					self::get_req_val( 'tag_ID' ) !== '' )
+				if ( self::get_request_value( 'taxonomy' ) !== '' && 
+					self::get_request_value( 'tag_ID' ) !== '' )
 						$ret = true;
 			}
+
 			$ret = apply_filters( 'sucom_is_term_page', $ret );
+
 			if ( $cache )
 				return self::$is['term_page'] = $ret;
 			else return $ret;
@@ -710,31 +695,43 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $cache &&
 				isset( self::$is['category_page'] ) )
 					return self::$is['category_page'];
+
 			$ret = false;
+
 			if ( is_category() )
 				$ret = true;
 			elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
-					self::get_req_val( 'taxonomy' ) === 'category' )
+					self::get_request_value( 'taxonomy' ) === 'category' )
 						$ret = true;
 			}
+
 			$ret = apply_filters( 'sucom_is_category_page', $ret );
+
 			if ( $cache )
 				return self::$is['category_page'] = $ret;
 			else return $ret;
 		}
 
-		public function get_term_object( $ret = 'object' ) {
+		public function get_term_object( $term_id = false, $tax_slug = '', $output = 'object' ) {
 			$term_obj = false;	// return false by default
-			if ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
-				$term_obj = apply_filters( 'sucom_get_term_object', get_queried_object() );
-			} elseif ( is_admin() ) {
-				if ( ( $tax_slug = self::get_req_val( 'taxonomy' ) ) !== '' &&
-					( $term_id = self::get_req_val( 'tag_ID' ) ) !== '' )
-						$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
-			} else return false;
 
-			switch ( $ret ) {
+			if ( is_numeric( $term_id ) ) {
+				$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+
+			} elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
+				$term_obj = get_queried_object();
+
+			} elseif ( is_admin() ) {
+				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' &&
+					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' )
+						$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+
+			}
+
+			$term_obj = apply_filters( 'sucom_get_term_object', $term_obj, $term_id, $tax_slug );
+
+			switch ( $output ) {
 				case 'term_id':
 				case 'id':
 				case 'ID':
@@ -742,7 +739,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$term_obj->term_id : false;
 					break;
 				default:
-					return $term_obj;
+					return is_object( $term_obj ) ? 
+						$term_obj : false;
 					break;
 			}
 		}
@@ -751,15 +749,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::is_user_page( $cache );
 		}
 
-		public function get_author_object( $ret = 'object' ) {
-			return $this->get_user_object( $ret );
-		}
-
 		public static function is_user_page( $cache = true ) {
 			if ( $cache &&
 				isset( self::$is['user_page'] ) )
 					return self::$is['user_page'];
+
 			$ret = false;
+
 			if ( is_author() ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
@@ -775,38 +771,53 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 				if ( $ret === false ) {
-					if ( self::get_req_val( 'user_id' ) !== '' )
+					if ( self::get_request_value( 'user_id' ) !== '' )
 						$ret = true;
 					elseif ( basename( $_SERVER['PHP_SELF'] ) === 'profile.php' )
 						$ret = true;
 				}
 			}
+
 			$ret = apply_filters( 'sucom_is_user_page', $ret );
+
 			if ( $cache )
 				return self::$is['user_page'] = $ret;
 			else return $ret;
 		}
 
-		public function get_user_object( $ret = 'object' ) {
-			$user_obj = false;
-			if ( apply_filters( 'sucom_is_user_page', is_author() ) ) {
-				$user_obj = apply_filters( 'sucom_get_user_object', ( get_query_var( 'author_name' ) ? 
+		public function get_author_object( $user_id = false, $output = 'object' ) {
+			return $this->get_user_object( $user_id, $ret );
+		}
+
+		public function get_user_object( $user_id = false, $output = 'object' ) {
+			$user_obj = false;	// return false by default
+
+			if ( is_numeric( $user_id ) ) {
+				$user_obj = get_userdata( $user_id );
+
+			} elseif ( apply_filters( 'sucom_is_user_page', is_author() ) ) {
+				$user_obj = get_query_var( 'author_name' ) ? 
 					get_user_by( 'slug', get_query_var( 'author_name' ) ) : 
-					get_userdata( get_query_var( 'author' ) ) ) );
+					get_userdata( get_query_var( 'author' ) );
+
 			} elseif ( is_admin() ) {
-				if ( ( $user_id = self::get_req_val( 'user_id' ) ) === '' )
+				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' )
 					$user_id = get_current_user_id();
 				$user_obj = get_userdata( $user_id );
-			} else return false;
 
-			switch ( $ret ) {
+			}
+
+			$user_obj = apply_filters( 'sucom_get_user_object', $user_obj, $user_id );
+
+			switch ( $output ) {
 				case 'id':
 				case 'ID':
 					return isset( $user_obj->ID ) ? 
 						$user_obj->ID : false;
 					break;
 				default:
-					return $user_obj;
+					return is_object( $user_obj ) ?
+						$user_obj : false;
 					break;
 			}
 		}
@@ -814,11 +825,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_product_page( $use_post = false, $product_obj = false ) {
 			if ( isset( self::$is['product_page'] ) )
 				return self::$is['product_page'];
+
 			$ret = false;
+
 			if ( function_exists( 'is_product' ) && 
 				is_product() )
 					$ret = true;
-			elseif ( is_object( $product_obj ) || is_admin() ) {
+			elseif ( is_admin() || is_object( $product_obj ) ) {
 				if ( ! is_object( $product_obj ) && 
 					! empty( $use_post ) )
 						$product_obj = get_post( $use_post );
@@ -826,40 +839,47 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$product_obj->post_type === 'product' )
 						$ret = true;
 			}
+
 			return self::$is['product_page'] = apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
 		}
 
 		public static function is_product_category() {
 			if ( isset( self::$is['product_category'] ) )
 				return self::$is['product_category'];
+
 			$ret = false;
+
 			if ( function_exists( 'is_product_category' ) && 
 				is_product_category() )
 					$ret = true;
 			elseif ( is_admin() ) {
-				if ( SucomUtil::get_req_val( 'taxonomy' ) === 'product_cat' &&
-					SucomUtil::get_req_val( 'post_type' ) === 'product' )
+				if ( self::get_request_value( 'taxonomy' ) === 'product_cat' &&
+					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
+
 			return self::$is['product_category'] = apply_filters( 'sucom_is_product_category', $ret );
 		}
 
 		public static function is_product_tag() {
 			if ( isset( self::$is['product_tag'] ) )
 				return self::$is['product_tag'];
+
 			$ret = false;
+
 			if ( function_exists( 'is_product_tag' ) && 
 				is_product_tag() )
 					$ret = true;
 			elseif ( is_admin() ) {
-				if ( SucomUtil::get_req_val( 'taxonomy' ) === 'product_tag' &&
-					SucomUtil::get_req_val( 'post_type' ) === 'product' )
+				if ( self::get_request_value( 'taxonomy' ) === 'product_tag' &&
+					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
+
 			return self::$is['product_tag'] = apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
-		public static function get_req_val( $key, $method = 'ANY' ) {
+		public static function get_request_value( $key, $method = 'ANY' ) {
 			if ( $method === 'ANY' )
 				$method = $_SERVER['REQUEST_METHOD'];
 			switch( $method ) {
@@ -875,147 +895,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '';
 		}
 
-		// "use_post = false" when used for open graph meta tags and buttons in widget,
-		// true when buttons are added to individual posts on an index webpage
-		public function get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
-					'use_post' => $use_post,
-					'add_page' => $add_page,
-					'src_id' => $src_id,
-				) );
-			}
-			$url = false;
-			if ( is_singular() || $use_post !== false ) {
-				if ( ( $post_obj = $this->get_post_object( $use_post ) ) === false )
-					return $url;
-				$post_id = empty( $post_obj->ID ) || 
-					empty( $post_obj->post_type ) ? 0 : $post_obj->ID;
-				if ( ! empty( $post_id ) ) {
-					if ( isset( $this->p->m['util']['post'] ) )
-						$url = $this->p->m['util']['post']->get_options( $post_id, 'sharing_url' );
-					if ( ! empty( $url ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom post sharing_url = '.$url );
-					} else {
-						$url = get_permalink( $post_id );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'post_id '.$post_id.' permalink = '.$url );
-					}
-
-					if ( $add_page && get_query_var( 'page' ) > 1 ) {
-						global $wp_rewrite;
-						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
-						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
-							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false )
-								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
-							else $url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
-						}
-					}
-				}
-				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page, $src_id );
-			} else {
-				if ( is_search() ) {
-					$url = get_search_link();
-
-				} elseif ( is_front_page() ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
-					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
-
-				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
-					$url = get_permalink( get_option( 'page_for_posts' ) );
-
-				} elseif ( self::is_term_page() ) {
-					$term = $this->get_term_object();
-					if ( ! empty( $term->term_id ) ) {
-						if ( isset( $this->p->m['util']['taxonomy'] ) )
-							$url = $this->p->m['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
-						if ( ! empty( $url ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'custom taxonomy sharing_url = '.$url );
-						} else $url = get_term_link( $term, $term->taxonomy );
-					} 
-					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
-
-				} elseif ( self::is_user_page() ) {
-					$author = $this->get_user_object();
-					if ( ! empty( $author->ID ) ) {
-						if ( isset( $this->p->m['util']['user'] ) )
-							$url = $this->p->m['util']['user']->get_options( $author->ID, 'sharing_url' );
-						if ( ! empty( $url ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'custom user sharing_url = '.$url );
-						} else $url = get_author_posts_url( $author->ID );
-					}
-					$url = apply_filters( $this->p->cf['lca'].'_author_url', $url, $author );
-
-				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
-					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
-
-				} elseif ( is_archive() ) {
-					if ( is_date() ) {
-						if ( is_day() )
-							$url = get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
-						elseif ( is_month() )
-							$url = get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) );
-						elseif ( is_year() )
-							$url = get_year_link( get_query_var( 'year' ) );
-					}
-				}
-
-				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
-					global $wp_rewrite;
-					if ( ! $wp_rewrite->using_permalinks() )
-						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
-					else {
-						if ( is_front_page() ) {
-							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );
-							$url = home_url( $base );
-						}
-						$url = user_trailingslashit( trailingslashit( $url ).
-							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
-					}
-				}
-			}
-
-			// fallback for themes and plugins that don't use the standard wordpress functions/variables
-			if ( empty ( $url ) ) {
-				// strip out tracking query arguments by facebook, google, etc.
-				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
-			}
-
-			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page, $src_id );
-		}
-
-		public function fix_relative_url( $url = '' ) {
-			if ( ! empty( $url ) && 
-				strpos( $url, '://' ) === false ) {
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'relative url found = '.$url );
-
-				if ( strpos( $url, '//' ) === 0 )
-					$url = SucomUtil::get_prot().':'.$url;
-				elseif ( strpos( $url, '/' ) === 0 ) 
-					$url = home_url( $url );
-				else {
-					$base = SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-					if ( strpos( $base, '?' ) !== false ) {
-						$base_parts = explode( '?', $base );
-						$base = reset( $base_parts );
-					}
-					$url = trailingslashit( $base, false ).$url;
-				}
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'relative url fixed = '.$url );
-			}
-			return $url;
-		}
-	
 		public static function encode_utf8( $decoded ) {
 			if ( ! mb_detect_encoding( $decoded, 'UTF-8') == 'UTF-8' )
 				$encoded = utf8_encode( $decoded );
@@ -1124,271 +1003,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $text;
 		}
 
-		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
-			$content = false;
-			$get_remote = empty( $url ) ? false : true;
-
-			if ( $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'(url:'.$url.'_file:'.$file.'_version:'.$version.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				$cache_type = 'object cache';
-				$content = get_transient( $cache_id );
-				if ( $content !== false )
-					return $content;	// no need to save, return now
-			} else $get_remote = false;
-
-			if ( $get_remote === true && $expire_secs > 0 ) {
-				$content = $this->p->cache->get( $url, 'raw', 'file', $expire_secs );
-				if ( empty( $content ) )
-					$get_remote = false;
-			} else $get_remote = false;
-
-			if ( $get_remote === false && ! empty( $file ) && $fh = @fopen( $file, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file ) );
-				fclose( $fh );
-			}
-
-			if ( $this->p->is_avail['cache']['transient'] )
-				set_transient( $cache_id, $content, $this->p->options['plugin_object_cache_exp'] );
-
-			return $content;
-		}
-
-		public function parse_readme( $lca, $expire_secs = 86400 ) {
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
-					'lca' => $lca,
-					'expire_secs' => $expire_secs,
-				) );
-			}
-			$plugin_info = array();
-			if ( ! defined( strtoupper( $lca ).'_PLUGINDIR' ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $lca ).'_PLUGINDIR is undefined and required for readme.txt path' );
-				return $plugin_info;
-			}
-			$readme_txt = constant( strtoupper( $lca ).'_PLUGINDIR' ).'readme.txt';
-			$readme_url = isset( $this->p->cf['plugin'][$lca]['url']['readme'] ) ? 
-				$this->p->cf['plugin'][$lca]['url']['readme'] : '';
-			$get_remote = empty( $readme_url ) ? false : true;	// fetch readme from wordpress.org by default
-			$content = '';
-
-			if ( $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'(url:'.$readme_url.'_txt:'.$readme_txt.')';
-				$cache_id = $lca.'_'.md5( $cache_salt );
-				$cache_type = 'object cache';
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
-				$plugin_info = get_transient( $cache_id );
-				if ( is_array( $plugin_info ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': plugin_info retrieved from transient '.$cache_id );
-					return $plugin_info;
-				}
-			} else $get_remote = false;	// use local if transient cache is disabled
-
-			// get remote readme.txt file
-			if ( $get_remote === true && $expire_secs > 0 )
-				$content = $this->p->cache->get( $readme_url, 'raw', 'file', $expire_secs );
-
-			// fallback to local readme.txt file
-			if ( empty( $content ) && $fh = @fopen( $readme_txt, 'rb' ) ) {
-				$get_remote = false;
-				$content = fread( $fh, filesize( $readme_txt ) );
-				fclose( $fh );
-			}
-
-			if ( ! empty( $content ) ) {
-				$parser = new SuextParseReadme( $this->p->debug );
-				$plugin_info = $parser->parse_readme_contents( $content );
-
-				// remove possibly inaccurate information from local file
-				if ( $get_remote !== true ) {
-					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key )
-						if ( array_key_exists( $key, $plugin_info ) )
-							unset( $plugin_info[$key] );
-				}
-			}
-
-			// save the parsed readme (aka $plugin_info) to the transient cache
-			if ( $this->p->is_avail['cache']['transient'] ) {
-				set_transient( $cache_id, $plugin_info, $this->p->options['plugin_object_cache_exp'] );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.
-						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
-			}
-			return $plugin_info;
-		}
-
-		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
-			$hash = '';
-			$query = '';
-			$admin_url = '';
-			$lca = $this->p->cf['lca'];
-
-			// $menu_id may start with a hash or query, so parse before checking its value
-			if ( strpos( $menu_id, '#' ) !== false )
-				list( $menu_id, $hash ) = explode( '#', $menu_id );
-
-			if ( strpos( $menu_id, '?' ) !== false )
-				list( $menu_id, $query ) = explode( '?', $menu_id );
-
-			if ( empty( $menu_id ) ) {
-				$current = $_SERVER['REQUEST_URI'];
-				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) )
-					$menu_id = $match[1];
-				else $menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
-			}
-
-			// find the menu_lib value for this menu_id
-			if ( empty( $menu_lib ) ) {
-				foreach ( $this->p->cf['*']['lib'] as $menu_lib => $menu ) {
-					if ( isset( $menu[$menu_id] ) )
-						break;
-					else $menu_lib = '';
-				}
-			}
-
-			if ( empty( $menu_lib ) ||
-				empty( $this->p->cf['wp']['admin'][$menu_lib]['page'] ) )
-					return;
-
-			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
-
-			switch ( $menu_lib ) {
-				case 'sitesubmenu':
-					$admin_url = network_admin_url( $parent_slug );
-					break;
-				default:
-					$admin_url = admin_url( $parent_slug );
-					break;
-			}
-
-			if ( ! empty( $query ) ) 
-				$admin_url .= '&'.$query;
-
-			if ( ! empty( $hash ) ) 
-				$admin_url .= '#'.$hash;
-
-			if ( empty( $link_text ) ) 
-				return $admin_url;
-			else return '<a href="'.$admin_url.'">'.$link_text.'</a>';
-		}
-
-		public function delete_expired_db_transients( $all = false ) { 
-			global $wpdb;
-			$deleted = 0;
-			$time = isset ( $_SERVER['REQUEST_TIME'] ) ?
-				(int) $_SERVER['REQUEST_TIME'] : time() ; 
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-				' WHERE option_name LIKE \'_transient_timeout_'.$this->p->cf['lca'].'_%\'';
-			$dbquery .= $all === true ? ';' : ' AND option_value < '.$time.';';
-			$expired = $wpdb->get_col( $dbquery ); 
-			foreach( $expired as $transient ) { 
-				$key = str_replace( '_transient_timeout_', '', $transient );
-				if ( delete_transient( $key ) )
-					$deleted++;
-			}
-			return $deleted;
-		}
-
-		public function delete_expired_file_cache( $all = false ) {
-			$deleted = 0;
-			$time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
-			$time = empty( $this->p->options['plugin_file_cache_exp'] ) ? 
-				$time : $time - $this->p->options['plugin_file_cache_exp'];
-			$cachedir = constant( $this->p->cf['uca'].'_CACHEDIR' );
-			if ( ! $dh = @opendir( $cachedir ) )
-				$this->p->notice->err( 'Failed to open directory '.$cachedir.' for reading.', true );
-			else {
-				while ( $fn = @readdir( $dh ) ) {
-					$filepath = $cachedir.$fn;
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $fn ) && is_file( $filepath ) && 
-						( $all === true || filemtime( $filepath ) < $time ) ) {
-						if ( ! @unlink( $filepath ) ) 
-							$this->p->notice->err( 'Error removing file '.$filepath, true );
-						else $deleted++;
-					}
-				}
-				closedir( $dh );
-			}
-			return $deleted;
-		}
-
-		// table header with optional tooltip text
-		public function get_th( $title = '', $class = '', $css_id = '', $atts = array() ) {
-
-			if ( isset( $this->p->msgs ) ) {
-				if ( empty( $css_id ) ) 
-					$tooltip_idx = 'tooltip-'.$title;
-				else $tooltip_idx = 'tooltip-'.$css_id;
-				$tooltip_text = $this->p->msgs->get( $tooltip_idx, $atts );	// text is esc_attr()
-			} else $tooltip_text = '';
-
-			if ( isset( $atts['is_locale'] ) )
-				$title .= ' <span style="font-weight:normal;">('.self::get_locale().')</span>';
-
-			return '<th'.
-				( empty( $atts['colspan'] ) ? '' : ' colspan="'.$atts['colspan'].'"' ).
-				( empty( $atts['rowspan'] ) ? '' : ' rowspan="'.$atts['rowspan'].'"' ).
-				( empty( $class ) ? '' : ' class="'.$class.'"' ).
-				( empty( $css_id ) ? '' : ' id="th_'.$css_id.'"' ).'><p>'.$title.
-				( empty( $tooltip_text ) ? '' : $tooltip_text ).'</p></th>';
-		}
-
-		// tab titles in the array should already be translated:
-		//
-		// $tabs = array(
-		//		'header' => _x( 'Descriptions', 'metabox tab', 'nextgen-facebook' ),
-		//		'media' => _x( 'Priority Media', 'metabox tab', 'nextgen-facebook' ),
-		//		'preview' => _x( 'Social Preview', 'metabox tab', 'nextgen-facebook' ),
-		//		'tags' => _x( 'Head Tags', 'metabox tab', 'nextgen-facebook' ),
-		//		'validate' => _x( 'Validate', 'metabox tab', 'nextgen-facebook' ),
-		// );
-		//
-		public function do_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-			$tab_keys = array_keys( $tabs );
-			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
-			$class_metabox_tabs = 'sucom-metabox-tabs';
-			$class_link = 'sucom-tablink';
-			$class_tabset = 'sucom-tabset';
-
-			if ( ! empty( $metabox ) ) {
-				$metabox = '_'.$metabox;		// must start with an underscore
-				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
-				$class_link .= ' '.$class_link.$metabox;
-			}
-
-			// allow a css ID to be passed as a query argument
-			extract( array_merge( array(
-				'scroll_to' => isset( $_GET['scroll_to'] ) ? 
-					'#'.SucomUtil::sanitize_key( $_GET['scroll_to'] ) : '',
-			), $args ) );
-
-			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
-				'sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
-			echo '<div class="'.$class_metabox_tabs.'">'."\n";
-			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
-			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="'.
-					$class_href_key.'"><a class="'.$class_link.'" href="#'.
-					$class_href_key.'">'.$title.'</a></li>'."\n";
-			}
-			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
-
-			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				$this->do_table_rows( 
-					$table_rows[$tab], 
-					$class_href_key,
-					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
-					$class_tabset
-				);
-			}
-			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
-		}
-
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
 			// just in case
 			if ( empty( $table_rows ) || ! is_array( $table_rows ) )
@@ -1479,16 +1093,57 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function get_source_id( $src_name, &$atts = array() ) {
-			global $post;
-			$use_post = isset( $atts['use_post'] ) ?
-				$atts['use_post'] : true;
-			$src_id = $src_name.( empty( $atts['css_id'] ) ? 
-				'' : '-'.preg_replace( '/^'.$this->p->cf['lca'].'-/','', $atts['css_id'] ) );
-			if ( $use_post == true )
-				$src_id = $src_id.'-post-'.
-					( isset( $post->ID ) ? $post->ID : 0 );
-			return $src_id;
+		// tab titles in the array should already be translated:
+		//
+		// $tabs = array(
+		//		'header' => _x( 'Edit Text', 'metabox tab', 'nextgen-facebook' ),
+		//		'media' => _x( 'Select Media', 'metabox tab', 'nextgen-facebook' ),
+		//		'preview' => _x( 'Preview', 'metabox tab', 'nextgen-facebook' ),
+		//		'tags' => _x( 'Head Tags', 'metabox tab', 'nextgen-facebook' ),
+		//		'validate' => _x( 'Validate', 'metabox tab', 'nextgen-facebook' ),
+		// );
+		//
+		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+			$tab_keys = array_keys( $tabs );
+			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
+			$class_metabox_tabs = 'sucom-metabox-tabs';
+			$class_link = 'sucom-tablink';
+			$class_tabset = 'sucom-tabset';
+
+			if ( ! empty( $metabox ) ) {
+				$metabox = '_'.$metabox;		// must start with an underscore
+				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
+				$class_link .= ' '.$class_link.$metabox;
+			}
+
+			// allow a css ID to be passed as a query argument
+			extract( array_merge( array(
+				'scroll_to' => isset( $_GET['scroll_to'] ) ? 
+					'#'.self::sanitize_key( $_GET['scroll_to'] ) : '',
+			), $args ) );
+
+			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
+				'sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
+			echo '<div class="'.$class_metabox_tabs.'">'."\n";
+			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
+			foreach ( $tabs as $tab => $title ) {
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				echo '<div class="tab_left">&nbsp;</div><li class="'.
+					$class_href_key.'"><a class="'.$class_link.'" href="#'.
+					$class_href_key.'">'.$title.'</a></li>'."\n";
+			}
+			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
+
+			foreach ( $tabs as $tab => $title ) {
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				$this->do_table_rows( 
+					$table_rows[$tab], 
+					$class_href_key,
+					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
+					$class_tabset
+				);
+			}
+			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}
 
 		public static function get_stripped_php ( $file ) {
@@ -1552,10 +1207,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
-		public static function json_encode_array( array $data, $options = 0, $depth = 512 ) {
+		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
 			if ( function_exists( 'wp_json_encode' ) )
 				return wp_json_encode( $data, $options, $depth );
-			else return json_encode( $data, $options, $depth );
+			elseif ( function_exists( 'json_encode' ) )
+				return json_encode( $data, $options, $depth );
+			else return '{}';	// empty string
 		}
 
 		public static function is_mobile() {
@@ -1578,7 +1235,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *      'article#news:no_load' => 'Item Type NewsArticle',
 		 *      'article#tech:no_load' => 'Item Type TechArticle',
 		 */
-		public static function get_id_stub_action( $lib_id ) {
+		public static function get_lib_stub_action( $lib_id ) {
 			if ( ( $pos = strpos( $lib_id, ':' ) ) !== false ) {
 				$action = substr( $lib_id, $pos + 1 );
 				$lib_id = substr( $lib_id, 0, $pos );

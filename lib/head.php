@@ -20,6 +20,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				'head_cache_salt' => 2,		// modify the cache salt for certain crawlers
 			) );
 			add_action( 'wp_head', array( &$this, 'add_header' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 		}
 
 		public function filter_head_cache_salt( $salt, $use_post = false ) {
@@ -34,17 +35,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		// called by wp_head action
 		public function add_header() {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$lca = $this->p->cf['lca'];
+			$use_post = apply_filters( $lca.'_header_use_post', false );	// used by woocommerce with is_shop()
+			$mod = $this->p->util->get_object_id_mod( $use_post );		// get post/user/term id, module name and object reference
+			$read_cache = true;
+			$mt_og = array();
 
 			if ( $this->p->debug->enabled )
 				$this->p->util->log_is_functions();
 
 			if ( $this->p->is_avail['mt'] )
-				echo $this->get_header_html( apply_filters( $lca.'_header_use_post', false ) );
+				echo $this->get_header_html( $use_post, $mod, $read_cache, $mt_og );
 			else echo "\n<!-- ".$lca." meta tags disabled -->\n";
 
 			// include additional information when debug mode is on
 			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'end of get_header_html' );
 
 				// show debug log
 				$this->p->debug->show_html( null, 'debug log' );
@@ -83,28 +92,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		// extract certain key fields for reference and sanity checks
 		public function extract_head_info( &$head_mt, &$head_info = array() ) {
 
-			// default values defined in WpssoPost show_metabox_post(), etc.
-			$head_info['psn'] = false;	// post status name
-			$head_info['ptn'] = false;	// post type name
-			$head_info['post_id'] = false;	// post id
-			$head_info['term_id'] = false;	// term id
-			$head_info['user_id'] = false;	// user id
-
 			foreach ( $head_mt as $mt ) {
 				if ( ! isset( $mt[2] ) || 
 					! isset( $mt[3] ) )
 						continue;
+
 				$mt_match = $mt[2].'-'.$mt[3];
+
 				switch ( $mt_match ) {
 					case 'property-og:type':
 					case 'property-og:title':
 					case 'property-og:description':
 					case 'name-author':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
+
 						if ( ! isset( $head_info[$mt[3]] ) )
 							$head_info[$mt[3]] = $mt[5];
 						break;
-					case ( preg_match( '/^property-([a-z]+:(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+
+					case ( preg_match( '/^property-((og|pinterest):(image|video))(:secure_url|:url)?$/',
+						$mt_match, $m ) ? true : false ):
+
 						if ( ! empty( $mt[5] ) )
 							$has_media[$m[1]] = true;		// optimize media loop
 						break;
@@ -117,19 +125,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( array( 'og:image', 'og:video', 'pinterest:image' ) as $prefix ) {
 				if ( empty( $has_media[$prefix] ) )
 					continue;
+
 				$is_first = false;
+
 				foreach ( $head_mt as $mt ) {
 					if ( ! isset( $mt[2] ) || 
 						! isset( $mt[3] ) )
 							continue;
+
 					if ( strpos( $mt[3], $prefix ) !== 0 ) {
 						$is_first = false;
+
 						// if we already found media, then skip to the next media prefix
 						if ( ! empty( $head_info[$prefix] ) )
 							continue 2;
 						else continue;	// skip meta tags without matching prefix
 					}
+
 					$mt_match = $mt[2].'-'.$mt[3];
+
 					switch ( $mt_match ) {
 						case ( preg_match( '/^property-'.$prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 							if ( ! empty( $head_info[$prefix] ) )	// only save the media URL once
@@ -148,74 +162,65 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 				}
 			}
+
 			return $head_info;
 		}
 
-		public function get_header_html( $use_post = false, $read_cache = true, &$mt_og = array() ) {
-			$cmt = $this->p->cf['lca'].' meta tags ';
-			$html = "\n\n".'<!-- '.$cmt.'begin -->'."\n";
+		public function get_header_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
+			$lca = $this->p->cf['lca'];
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_object_id_mod( $use_post );
+			$cmt_begin = $lca.' meta tags begin';
+			$cmt_end = $lca.' meta tags end';
+
+			// extra begin/end meta tag for duplicate meta tags check
+			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n";
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'begin"/>'."\n";
+				$html .= '<meta name="'.$lca.':comment" content="'.$cmt_begin.'"/>'."\n";
 
-			foreach ( $this->get_header_array( $use_post, $read_cache, $mt_og ) as $mt )
-				if ( ! empty( $mt[0] ) )	// first element of the array should be a complete html tag
+			// first element of returned array is the html tag
+			foreach ( $this->get_header_array( $use_post, $mod, $read_cache, $mt_og ) as $mt )
+				if ( ! empty( $mt[0] ) )
 					$html .= $mt[0];
 
+			// extra begin/end meta tag for duplicate meta tags check
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$this->p->cf['lca'].':comment" content="'.$cmt.'end"/>'."\n";
-
-			$html .= '<!-- '.$cmt.'end -->'."\n\n";
+				$html .= '<meta name="'.$lca.':comment" content="'.$cmt_end.'"/>'."\n";
+			$html .= '<!-- '.$cmt_end.' -->'."\n\n";
 
 			return $html;
 		}
 
-		public function get_header_array( $use_post = false, $read_cache = true, &$mt_og = array() ) {
+		public function get_header_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build header array' );	// begin timer
 
-			$post_id = 0;
-			$post_obj = false;
-			$user_id = false;
 			$lca = $this->p->cf['lca'];
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_object_id_mod( $use_post );
+			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
-			$gen_name = $this->p->cf['plugin'][$lca]['short'].
-				( $this->p->is_avail['aop'] ? ' Pro' : '' );
-
-			if ( SucomUtil::is_post_page( $use_post ) ) {
-				$post_obj = $this->p->util->get_post_object( $use_post );
-				$post_id = empty( $post_obj->ID ) || 
-					empty( $post_obj->post_type ) ?
-						0 : $post_obj->ID;
-			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'use_post is '.
-					( $use_post === false ?
-						'false' : ( $use_post === true ?
-							'true' : $use_post ) ) );
-				$this->p->debug->log( 'post_id is '.$post_id );
-				$this->p->debug->log( 'post_type is '.
-					( empty( $post_obj->post_type ) ?
-						'empty' : $post_obj->post_type ) );
-				$this->p->debug->log( 'post_status is '.
-					( empty( $post_obj->post_status ) ?
-						'empty' : $post_obj->post_status ) );
-			}
-
+			$gen_short = $this->p->cf['plugin'][$lca]['short'].( $this->p->is_avail['aop'] ? ' Pro' : '' );
 			$header_array = array();
+
 			if ( $this->p->is_avail['cache']['transient'] ) {
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
-					'lang:'.SucomUtil::get_locale().'_post:'.$post_id.'_url:'.$sharing_url, $use_post ).')';
+					'lang:'.SucomUtil::get_locale().'_id:'.$mod['id'].'_name:'.$mod['name'].
+						'_url:'.$sharing_url, $use_post ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
+
 				if ( apply_filters( $lca.'_header_read_cache', $read_cache ) ) {
 					$header_array = get_transient( $cache_id );
 					if ( $header_array !== false ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': header array retrieved from transient '.$cache_id );
+							$this->p->debug->log( $cache_type.': header array from transient '.$cache_id );
 						return $header_array;	// stop here
 					}
 				}
@@ -223,24 +228,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'skipped checking for transient cache object' );
 
 			/*
-			 * Define an user_id, if one is available
+			 * Define an author_id, if one is available
 			 */
-			if ( SucomUtil::is_post_page( $use_post ) ) {
-
+			if ( $mod['is_post'] ) {
+				$post_obj = $this->p->util->get_post_object( $mod['id'] );
 				if ( ! empty( $post_obj->post_author ) )
-					$user_id = $post_obj->post_author;
+					$author_id = $post_obj->post_author;
+				elseif ( $def_author_id = $this->p->util->get_default_author_id( 'seo' ) )
+					$author_id = $def_author_id;
+				unset ( $post_obj );
+			} elseif ( $mod['is_user'] ) {
+				$author_id = $this->p->util->get_user_object( false, 'id' );
+			} elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'seo' ) )
+				$author_id = $def_author_id;
 
-				elseif ( $def_user_id = $this->p->util->get_default_author_id( 'seo' ) )
-					$user_id = $def_user_id;
-
-			} elseif ( SucomUtil::is_user_page() ) {
-				$user_id = $this->p->util->get_user_object( 'id' );
-
-			} elseif ( $def_user_id = $this->p->util->force_default_author( $use_post, 'seo' ) )
-				$user_id = $def_user_id;
-
-			if ( $this->p->debug->enabled && $user_id !== false )
-				$this->p->debug->log( 'user_id is '.$user_id );
+			if ( $this->p->debug->enabled && $author_id !== false )
+				$this->p->debug->log( 'author_id is '.$author_id );
 
 			$crawler_name = SucomUtil::crawler_name();
 			if ( $this->p->debug->enabled )
@@ -249,12 +252,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Open Graph
 			 */
-			$mt_og = $this->p->og->get_array( $use_post, $post_obj, $mt_og, $crawler_name );
+			$mt_og = $this->p->og->get_array( $use_post, $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Twitter Cards
 			 */
-			$mt_tc = $this->p->tc->get_array( $use_post, $post_obj, $mt_og, $crawler_name );
+			$mt_tc = $this->p->tc->get_array( $use_post, $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Name / SEO meta tags
@@ -263,7 +266,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				if ( isset( $this->p->options['seo_author_name'] ) && 
 					$this->p->options['seo_author_name'] !== 'none' )
-						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $user_id, 
+						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id, 
 							$this->p->options['seo_author_name'] );
 			}
 
@@ -279,7 +282,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
 			}
 
-			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $post_obj );
+			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $mod );
 
 			/*
 			 * Link relation tags
@@ -287,8 +290,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$link_rel = array();
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
-				if ( ! empty( $user_id ) )
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $user_id, 
+				if ( ! empty( $author_id ) )
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $author_id, 
 						$this->p->options['seo_author_field'] );
 			}
 
@@ -297,24 +300,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
 			}
 
-			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $post_obj );
+			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $mod );
 
 			/*
 			 * Schema meta tags
 			 */
-			$mt_schema = $this->p->schema->get_meta_array( $use_post, $post_obj, $mt_og, $crawler_name );
+			$mt_schema = $this->p->schema->get_meta_array( $use_post, $mod, $mt_og, $crawler_name );
 
 			/*
 			 * JSON-LD script array - execute before mergse to set some internal $mt_og meta tags
 			 */
-			$mt_json_array = $this->p->schema->get_json_array( $use_post, $post_obj, $mt_og, $post_id, $user_id );
+			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id );
 
 			/*
 			 * Combine and return all meta tags
 			 */
 			$header_array = array_merge(
 				$this->get_single_mt( 'meta', 'name', 'generator',
-					$gen_name.' '.$this->p->cf['plugin'][$lca]['version'].
+					$gen_short.' '.$this->p->cf['plugin'][$lca]['version'].
 					( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
 						'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
 					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
@@ -323,7 +326,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
-				$this->p->schema->get_noscript_array( $use_post, $post_obj, $mt_og, $post_id, $user_id ),
+				$this->p->schema->get_noscript_array( $use_post, $mod, $mt_og, $author_id ),
 				$mt_json_array
 			);
 
@@ -362,27 +365,47 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$singles = array();
-			foreach ( $mt_array as $d_name => $d_val ) {	// 1st-dimension array (associative)
+			foreach ( $mt_array as $d_name => $d_val ) {	// first dimension array (associative)
+
 				if ( is_array( $d_val ) ) {
+
 					if ( empty( $d_val ) ) {	// allow hooks to modify the value
 						$singles[] = $this->get_single_mt( $tag,
 							$type, $d_name, null, '', $use_post );
-					} else foreach ( $d_val as $dd_num => $dd_val ) {	// 2nd-dimension array
+
+					} else foreach ( $d_val as $dd_num => $dd_val ) {	// second dimension array
+
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
-							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// 3rd-dimension array (associative)
+
+							// prevent duplicates - remove images from text/html video
+							if ( isset( $dd_val['og:video:type'] ) && 
+								$dd_val['og:video:type'] === 'text/html' )
+									$is_video_embed = true;
+							else $is_video_embed = false;
+
+							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
+
+								// prevent duplicates - remove images from text/html video
+								if ( $is_video_embed &&
+									strpos( $ddd_name, 'og:image' ) !== false )
+										continue;
+
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, null, '', $use_post );
-									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// 4th-dimension array
+									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// fourth dimension array
 										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, $dddd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
+											$type, $ddd_name, $dddd_val, $d_name.':'.
+												( $dd_num + 1 ), $use_post );
 									}
 								} else $singles[] = $this->get_single_mt( $tag,
-									$type, $ddd_name, $ddd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
+									$type, $ddd_name, $ddd_val, $d_name.':'.
+										( $dd_num + 1 ), $use_post );
 							}
 						} else $singles[] = $this->get_single_mt( $tag,
-							$type, $d_name, $dd_val, $d_name.':'.( $dd_num + 1 ), $use_post );
+							$type, $d_name, $dd_val, $d_name.':'.
+								( $dd_num + 1 ), $use_post );
 					}
 				} else $singles[] = $this->get_single_mt( $tag,
 					$type, $d_name, $d_val, '', $use_post );

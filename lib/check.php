@@ -101,9 +101,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret = array();
 			$is_admin = is_admin();
 
-			$ret['curl'] = function_exists( 'curl_init' ) ? true : false;
-			$ret['postthumb'] = function_exists( 'has_post_thumbnail' ) ? true : false;
-			$ret['mbstring'] = extension_loaded( 'mbstring' ) ? true : false;
+			$ret['post_thumbnail'] = function_exists( 'has_post_thumbnail' ) ? true : false;
+			$ret['amp_endpoint'] = function_exists( 'is_amp_endpoint' ) ? true : false;
 
 			foreach ( array( 'aop', 'mt' ) as $key )
 				$ret[$key] = $this->get_avail_check( $key );
@@ -210,8 +209,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							}
 							break;
 						case 'admin-post':
-						case 'admin-taxonomy':
-						case 'admin-user':
+						case 'admin-meta':
 							if ( $is_admin )
 								$ret[$sub]['*'] = $ret[$sub][$id] = true;
 							break;

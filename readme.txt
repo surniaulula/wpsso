@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.0 (TBD)**
+**Version 3.28.0 (ETA 2016/03/20)**
 
 Official announcement: N/A
 
@@ -371,7 +371,7 @@ Official announcement: N/A
 * *Improvements*
 	* Improved the Social Settings options display (Free version).
 	* Standardized checks for required PHP curl, json, and mbstring extensions.
-	* Added attribute and javascript escaping to name, class, and id form values.
+	* Added HTML attribute and javascript escaping to name, class, and id form values.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -400,48 +400,13 @@ Official announcement: N/A
 	* Renamed the WpssoOpengraph `get_the_media_urls()` method to `get_the_media_info()` (old method gives deprecated message).
 	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
-**Version 3.26.1 (2016/03/03)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added a new BuddyPress filter (and constant) to return a member "biographical" field value (Pro version). See the [BuddyPress Integration Notes](http://surniaulula.com/codex/plugins/nextgen-facebook/installation/integration/buddypress-integration/) for more information.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added a new 'WPSSO_JSON_PRETTY_PRINT' constant (defaults to true).
-	* Added a new `SucomUtil::get_is_page()` method to optimize all three `is_{post|term|user}_page()` checks.
-	* Refactored the SucomWebpage `get_caption()`, `get_title()`, and `get_description()` methods to use the new `SucomUtil::get_is_page()` static method.
-	* Renamed the `SucomUtil::is_author_page()` method to `SucomUtil::is_user_page()`.
-	* Renamed the `SucomUtil::get_author_object()` method to `SucomUtil::get_user_object()`.
-	* Renamed the `$author_id` variables to `$user_id`.
-
-**Version 3.26.0 (2016/03/01)**
-
-Official announcement: N/A
-
-* *New Features*
-	* Added a new 'wpsso_user_image_urls' filter to include the BuddyPress member image on author pages (Pro version).
-* *Improvements*
-	* Refactored the Gravatar module to hook 'wpsso_user_image_urls' instead of pushing a custom option in the user Social Settings (Pro version).
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* None
-
 == Upgrade Notice ==
+
+= 3.28.0 =
+
+ETA 2016/03/20 - Added support for Automattic's Accelerated Mobile Pages (AMP) plugin. Improved the Social Settings options display (Free version).
 
 = 3.27.0 =
 
 2016/03/09 - Added new "Video Name / Title" and "Video Description" options in the Social Settings metabox. Fixed the meta tag parser for fetched webpage content (Youtube API and duplicate meta tag check).
-
-= 3.26.1 =
-
-2016/03/03 - Added a new BuddyPress filter (and constant) to return a member "biographical" field value (Pro version). Added a new 'NGFB_JSON_PRETTY_PRINT' constant (defaults to true).
-
-= 3.26.0 =
-
-2016/03/01 - Added a new 'wpsso_user_image_urls' filter to include the BuddyPress member image on author pages (Pro version).
 
