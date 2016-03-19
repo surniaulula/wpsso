@@ -1062,10 +1062,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_object_id_mod( $use_post = false, &$mod = array(), &$wp_obj = false ) {
 
-			// sanitize and optimize - return if all keys are defined
-			if ( ! is_array( $mod ) )
-				$mod = WpssoMeta::$mod_array;
-
 			if ( ! empty( $mod['is_complete'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: array is complete' );
@@ -1104,30 +1100,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				else $mod['name'] = false;
 			}
 
-			foreach ( array( 'post', 'taxonomy', 'user' ) as $mod_name )
-				$mod['is_'.$mod_name] = $mod_name === $mod['name'] ?
-					true : false;
-
 			if ( empty( $mod['id'] ) ) {
-				if ( $mod['is_post'] )
+				if ( $mod['name'] === 'post' )
 					$mod['id'] = $this->get_post_object( $use_post, 'id' );
-				elseif ( $mod['is_taxonomy'] )
+				elseif ( $mod['name'] === 'taxonomy' )
 					$mod['id'] = $this->get_term_object( false, '', 'id' );
-				elseif ( $mod['is_user'] )
+				elseif ( $mod['name'] === 'user' )
 					$mod['id'] = $this->get_user_object( false, 'id' );
 				else $mod['id'] = false;
 			}
 
-			if ( empty( $mod['obj'] ) ) {
-				if ( isset( $this->p->m['util'][$mod['name']] ) )
-					$mod['obj'] =& $this->p->m['util'][$mod['name']];
-				else $mod['obj'] = false;
-			}
-
-			$mod['use_post'] = $mod['is_post'] ?
-				$mod['id'] : $use_post;
-
-			$mod['is_complete'] = true;
+			// make sure we have a complete $mod array
+			if ( isset( $this->p->m['util'][$mod['name']] ) )
+				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
+			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );

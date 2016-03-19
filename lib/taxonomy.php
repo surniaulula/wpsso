@@ -89,16 +89,17 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'taxonomy';
 			$mod['obj'] =& $this;
-			$mod['tax_slug'] = $tax_slug;
-			$mod['is_taxonomy'] = true;
 			$mod['is_complete'] = true;
+			/*
+			 * Term
+			 */
+			$mod['is_taxonomy'] = true;
+			$mod['tax_slug'] = $tax_slug;
 			return $mod;
 		}
 
 		public function get_taxonomy_column_content( $value, $column_name, $term_id ) {
 			$mod = $this->get_mod( $term_id );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			return $this->get_mod_column_content( $value, $column_name, $mod );
 		}
 
@@ -191,7 +192,11 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+
 			$mod = $this->get_mod( $this->term_id, $this->tax_slug );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
@@ -267,20 +272,23 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'taxonomy';
-			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_taxonomy_tabs',
-				$this->get_default_tabs(), $term );
+			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_social_settings_tabs',
+				$this->get_default_tabs(), $mod );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
-			$rows = array();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'table rows' );	// start timer
+
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'metabox taxonomy' );
+				$this->p->debug->mark( 'table rows' );	// end timer
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {

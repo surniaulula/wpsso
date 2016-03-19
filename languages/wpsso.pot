@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.0\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/admin.php:722 lib/user.php:240
+#: lib/admin.php:71 lib/admin.php:722 lib/user.php:245
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/admin.php:723 lib/user.php:241
+#: lib/admin.php:72 lib/admin.php:723 lib/user.php:246
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:406 lib/post.php:216 lib/taxonomy.php:226 lib/user.php:207
+#: lib/admin.php:406 lib/post.php:212 lib/taxonomy.php:231 lib/user.php:212
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -690,19 +690,19 @@ msgctxt "option label"
 msgid "Add Tabs to Social Settings Metabox"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:135 lib/meta.php:53
+#: lib/gpl/admin/advanced.php:135 lib/meta.php:65
 #: lib/pro/admin/advanced.php:140
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:137 lib/meta.php:54
+#: lib/gpl/admin/advanced.php:137 lib/meta.php:66
 #: lib/pro/admin/advanced.php:142
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:139 lib/meta.php:55
+#: lib/gpl/admin/advanced.php:139 lib/meta.php:67
 #: lib/pro/admin/advanced.php:144
 msgctxt "metabox tab"
 msgid "Validate"
@@ -956,7 +956,7 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:74 lib/meta.php:138
+#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:74 lib/meta.php:150
 #: lib/pro/admin/meta.php:87 lib/pro/admin/post.php:94
 msgctxt "option label"
 msgid "Sharing URL"
@@ -1046,7 +1046,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:81 lib/post.php:396 lib/pro/admin/post.php:101
+#: lib/gpl/admin/post.php:81 lib/post.php:385 lib/pro/admin/post.php:101
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -1845,134 +1845,134 @@ msgid ""
 "values for different languages."
 msgstr ""
 
-#: lib/meta.php:51
+#: lib/meta.php:63
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:52
+#: lib/meta.php:64
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:109
+#: lib/meta.php:121
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:115
+#: lib/meta.php:127
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:124
+#: lib/meta.php:136
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:134
+#: lib/meta.php:146
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
 
-#: lib/meta.php:142
+#: lib/meta.php:154
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:215
+#: lib/meta.php:227
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:215
+#: lib/meta.php:227
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:215
+#: lib/meta.php:227
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:215
+#: lib/meta.php:227
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:215
+#: lib/meta.php:227
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:217
+#: lib/meta.php:229
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:217
+#: lib/meta.php:229
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:217
+#: lib/meta.php:229
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:219
+#: lib/meta.php:231
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:219
+#: lib/meta.php:231
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:219
+#: lib/meta.php:231
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:221
+#: lib/meta.php:233
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:221
+#: lib/meta.php:233
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:221
+#: lib/meta.php:233
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:331
+#: lib/meta.php:343
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:403
+#: lib/meta.php:415
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:404
+#: lib/meta.php:416
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:422
+#: lib/meta.php:434
 msgid "Reload to View"
 msgstr ""
 
@@ -2028,24 +2028,24 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:273
+#: lib/post.php:269
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:277
+#: lib/post.php:273
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:294
+#: lib/post.php:290
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:339 lib/profile/social-settings.php:26 lib/taxonomy.php:247
-#: lib/user.php:229
+#: lib/post.php:334 lib/profile/social-settings.php:26 lib/taxonomy.php:252
+#: lib/user.php:234
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2630,15 +2630,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:389
+#: lib/user.php:397
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:390
+#: lib/user.php:398
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:391
+#: lib/user.php:399
 msgid "Jabber / Google Talk"
 msgstr ""
 

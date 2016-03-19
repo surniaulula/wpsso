@@ -631,7 +631,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$ret = array();
+			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_object_id_mod( $use_post, $mod );
@@ -640,25 +640,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
-				return $ret;
+				return $mt_schema;
 			}
 
 			$head_type = $this->get_head_item_type( $mod );
 
-			$this->add_mt_schema_from_og( $ret, $mt_og, array(
+			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 				'url' => 'og:url',
 				'name' => 'og:title',
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
-				$ret['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
+				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
 					'...', $use_post, true, true, true, 'schema_desc' );	// custom meta = schema_desc
 
 			switch ( $head_type ) {
 				case 'http://schema.org/BlogPosting':
 				case 'http://schema.org/WebPage':
 
-					$this->add_mt_schema_from_og( $ret, $mt_og, array(
+					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 						'datepublished' => 'article:published_time',
 						'datemodified' => 'article:modified_time',
 					) );
@@ -673,12 +673,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( ! empty( $og_image ) ) {
 							$image = reset( $og_image );
-							$ret['image'] = $image['og:image'];
+							$mt_schema['image'] = $image['og:image'];
 						}
 					}
 					break;
 			}
-			return apply_filters( $this->p->cf['lca'].'_meta_schema', $ret, $use_post, $mod );
+
+			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $mod );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$mt_og, array $names ) {

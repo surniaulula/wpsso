@@ -40,13 +40,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) &&
 				! empty( $this->p->options['plugin_columns_post'] ) ) {
 
-				$ptns = $this->p->util->get_post_types( 'names' );
-				if ( is_array( $ptns ) ) {
-					foreach ( $ptns as $ptn ) {
-						if ( apply_filters( $this->p->cf['lca'].'_columns_post_'.$ptn, true ) ) { 
-							add_filter( 'manage_'.$ptn.'_posts_columns', 
+				$post_type_names = $this->p->util->get_post_types( 'names' );
+				if ( is_array( $post_type_names ) ) {
+					foreach ( $post_type_names as $post_type ) {
+						if ( apply_filters( $this->p->cf['lca'].'_columns_post_'.$post_type, true ) ) { 
+							add_filter( 'manage_'.$post_type.'_posts_columns', 
 								array( $this, 'add_column_headings' ), 10, 1 );
-							add_action( 'manage_'.$ptn.'_posts_custom_column', 
+							add_action( 'manage_'.$post_type.'_posts_custom_column', 
 								array( $this, 'show_post_column_content',), 10, 2 );
 						}
 					}
@@ -60,12 +60,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_mod( $mod_id ) {
 			$mod = WpssoMeta::$mod_array;
-			$mod['use_post'] = $mod_id;
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
-			$mod['is_post'] = true;
 			$mod['is_complete'] = true;
+			/*
+			 * Post
+			 */
+			$mod['is_post'] = true;
+			$mod['use_post'] = $mod_id;
+			$mod['post_status'] = get_post_status( $mod_id );	// post status name
+			$mod['post_type'] = get_post_type( $mod_id );		// post type name
 			return $mod;
 		}
 
@@ -83,8 +88,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function show_post_column_content( $column_name, $post_id ) {
 			$mod = $this->get_mod( $post_id );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			echo $this->get_mod_column_content( '', $column_name, $mod );
 		}
 
@@ -149,34 +152,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$lca = $this->p->cf['lca'];
 			$post_obj = $this->p->util->get_post_object();
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
-			$mod = $this->get_mod( $post_id );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'post_id is '.$post_id );
-				$this->p->debug->log( 'post_type is '.
-					( empty( $post_obj->post_type ) ?
-						'empty' : $post_obj->post_type ) );
-				$this->p->debug->log( 'post_status is '.
-					( empty( $post_obj->post_status ) ?
-						'empty' : $post_obj->post_status ) );
-			}
 
 			// make sure we have at least a post type and post status
 			if ( $post_obj === false || 
 				empty( $post_obj->post_type ) || 
-				empty( $post_obj->post_status ) ) {
+					empty( $post_obj->post_status ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: incomplete post object' );
 				return;
 			}
 
+			$mod = $this->get_mod( $post_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+
 			if ( $post_obj->post_status !== 'auto-draft' ) {
-				$post_type = get_post_type_object( $post_obj->post_type );
-				$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
+
+				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
 
 				if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', 
-					$add_metabox, $post_id, $post_type->name ) === true ) {
+					$add_metabox, $post_id, $post_obj->post_type ) === true ) {
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding metabox for post' );
@@ -251,8 +247,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			// only check public post types (to avoid menu items, product variations, etc.)
-			$ptns = $this->p->util->get_post_types( 'names' );
-			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
+			$post_type_names = $this->p->util->get_post_types( 'names' );
+			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
 				return $post_id;
@@ -313,10 +309,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
-			$post_type = get_post_type_object( $post_obj->post_type );
 			$user_can_edit = false;		// deny by default
 
-			switch ( $post_type->name ) {
+			switch ( $post_obj->post_type ) {
 				case 'page' :
 					if ( current_user_can( 'edit_page', $post_id ) )
 						$user_can_edit = true;
@@ -329,15 +324,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $user_can_edit === false ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'insufficient privileges to add metabox for '.$post_type->name.' ID '.$post_id );
+					$this->p->debug->log( 'insufficient privileges to add metabox for '.$post_obj->post_type.' ID '.$post_id );
 				return;
 			}
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_type->name ] ) ? false : true;
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', $add_metabox, $post_id ) === true )
 				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_post' ), $post_type->name, 'normal', 'low' );
+					array( &$this, 'show_metabox_post' ), $post_obj->post_type, 'normal', 'low' );
 		}
 
 		public function show_metabox_post( $post_obj ) {
@@ -360,33 +355,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 			$opts = $this->get_options( $post_id );				// sanitized when saving
 			$def_opts = $this->get_defaults( $post_id );			// get the complete array
-			$post_type = get_post_type_object( $post_obj->post_type );	// since 3.0
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );		// WPSSO_NONCE is an md5() string
 
-			// save additional info about the post
-			$mod['post_status'] = get_post_status( $post_id );	// post status name
-			$mod['post_type'] = $post_type->name;			// post type name
-
 			$metabox = 'post';
-			$tabs = apply_filters( $this->p->cf['lca'].'_post_social_settings_tabs',
-				$this->get_default_tabs(), $post_obj, $post_type );
-
+			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_social_settings_tabs',
+				$this->get_default_tabs(), $mod );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'getting rows' );
+				$this->p->debug->mark( 'table rows' );	// start timer
 
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'metabox post' );
+				$this->p->debug->mark( 'table rows' );	// end timer
 		}
 
 		protected function get_table_rows( &$metabox, &$key, &$head, &$mod ) {
@@ -396,30 +385,30 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
-			$rows = array();
+			$table_rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'post-preview':
 					if ( $is_auto_draft )
-						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
-					else $rows = $this->get_rows_social_preview( $this->form, $head, $mod );
+					else $table_rows = $this->get_rows_social_preview( $this->form, $head, $mod );
 					break;
 
 				case 'post-tags':	
 					if ( $is_auto_draft )
-						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
-					else $rows = $this->get_rows_head_tags( $this->form, $head, $mod );
+					else $table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					break; 
 
 				case 'post-validate':
 					if ( $is_auto_draft )
-						$rows[] = '<td><blockquote class="status-info"><p class="centered">'.
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
-					else $rows = $this->get_rows_validate( $this->form, $head, $mod );
+					else $table_rows = $this->get_rows_validate( $this->form, $head, $mod );
 					break; 
 			}
-			return $rows;
+			return $table_rows;
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {

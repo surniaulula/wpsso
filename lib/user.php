@@ -78,15 +78,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'user';
 			$mod['obj'] =& $this;
-			$mod['is_user'] = true;
 			$mod['is_complete'] = true;
+			/*
+			 * User
+			 */
+			$mod['is_user'] = true;
 			return $mod;
 		}
 
 		public function get_user_column_content( $value, $column_name, $user_id ) {
 			$mod = $this->get_mod( $user_id );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			return $this->get_mod_column_content( $value, $column_name, $mod );
 		}
 
@@ -172,7 +173,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$user_id = $this->p->util->get_user_object( false, 'id' );
+
 			$mod = $this->get_mod( $user_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
@@ -259,20 +264,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			$metabox = 'user';
-			$tabs = apply_filters( $this->p->cf['lca'].'_social_settings_user_tabs',
-				$this->get_default_tabs(), $user );
+			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_social_settings_tabs',
+				$this->get_default_tabs(), $mod );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
 
-			$rows = array();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'table rows' );	// start timer
+
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'metabox user' );
+				$this->p->debug->mark( 'table rows' );	// end timer
 		}
 
 		public function get_form_display_names() {

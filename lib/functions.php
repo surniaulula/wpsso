@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) )
 
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 	function wpsso_get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
-		$wpsso =& Wpsso::get_instance();
+		$wpsso = Wpsso::get_instance();
 		return $wpsso->util->get_sharing_url( $use_post, $add_page, $src_id );
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 	function wpsso_get_short_url( $use_post = false, $add_page = true, $src_id = false ) {
-		$wpsso =& Wpsso::get_instance();
+		$wpsso = Wpsso::get_instance();
 		return apply_filters( 'wpsso_shorten_url', 
 			$wpsso->util->get_sharing_url( $use_post, $add_page, $src_id ),
 			$wpsso->options['plugin_shortener'] );
@@ -26,21 +26,21 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 	function wpsso_schema_attributes( $attr = '' ) {
-		$wpsso =& Wpsso::get_instance();
+		$wpsso = Wpsso::get_instance();
 		echo $wpsso->schema->add_head_attributes( $attr );
 	}
 }
 
 if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 	function wpsso_clear_all_cache() {
-		$wpsso =& Wpsso::get_instance();
+		$wpsso = Wpsso::get_instance();
 		return $wpsso->util->clear_all_cache( false );	// $ext_cache = false
 	}
 }
 
 if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
-		$wpsso =& Wpsso::get_instance();
+		$wpsso = Wpsso::get_instance();
 		return $wpsso->util->clear_post_cache( $post_id );
 	}
 }

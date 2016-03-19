@@ -27,11 +27,23 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'id' => false,
 			'name' => false,
 			'obj' => false,
-			'use_post' => false,
-			'is_post' => false,
-			'is_taxonomy' => false,
-			'is_user' => false,
 			'is_complete' => false,
+			/*
+			 * Post
+			 */
+			'is_post' => false,
+			'use_post' => false,
+			'post_status' => false,
+			'post_type' => false,
+			/*
+			 * Term
+			 */
+			'is_taxonomy' => false,
+			'tax_slug' => false,
+			/*
+			 * User
+			 */
+			'is_user' => false,
 		);
 
 		public function __construct() {
