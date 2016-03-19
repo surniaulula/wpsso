@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.0 (ETA 2016/03/20)**
+**Version 3.28.1 (ETA 2016/03/20)**
 
 Official announcement: N/A
 
@@ -402,7 +402,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.28.0 =
+= 3.28.1 =
 
 ETA 2016/03/20 - Added support for Automattic's Accelerated Mobile Pages (AMP) plugin. Improved the Social Settings options display (Free version).
 
