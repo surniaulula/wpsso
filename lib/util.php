@@ -141,15 +141,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function image_editor_save_pre_image_sizes( $image, $id ) {
-			$mod = array( 'id' => $id, 'name' => 'post' );
-			$mod = $this->get_page_mod( $id, $mod );	// get post/user/term id, module name and object reference
+			// get post/user/term id, module name, and module object reference
+			$mod = $this->get_page_mod( $id, array( 'id' => $id, 'name' => 'post' ) );
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
 			return $image;
 		}
 
 		// can be called directly and from the "wp" and "current_screen" actions
 		// this method does not return a value, so do not use as a filter
-		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = array(), $filter = true ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter = true ) {
 			/*
 			 * Allow various plugin extensions to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
@@ -171,7 +171,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
-			$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );	// get post/user/term id, module name and object reference
+			if ( ! is_array( $mod ) )
+				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$meta_opts = array();
 
@@ -1060,9 +1061,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		public function get_page_mod( $use_post = false, &$mod = array(), &$wp_obj = false ) {
+		// get post/user/term id, module name, and module object reference
+		public function get_page_mod( $use_post = false, $mod = false, &$wp_obj = false ) {
 
-			if ( ! empty( $mod['is_complete'] ) ) {
+			if ( ! is_array( $mod ) ) {
+				$mod = array();
+			} elseif ( ! empty( $mod['is_complete'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: array is complete' );
 				return $mod;

@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$post_id = false;
 			$post_obj = false;
 

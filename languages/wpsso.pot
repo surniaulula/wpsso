@@ -47,7 +47,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:316 lib/admin.php:1053 lib/admin.php:1054
+#: lib/admin.php:316 lib/admin.php:1056 lib/admin.php:1057
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr ""
@@ -189,157 +189,157 @@ msgid ""
 "modules to provide enhanced support and features for %3$s."
 msgstr ""
 
-#: lib/admin.php:913
+#: lib/admin.php:916
 msgctxt "submit button"
 msgid "Purchase Pro License(s)"
 msgstr ""
 
-#: lib/admin.php:914
+#: lib/admin.php:917
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:932
+#: lib/admin.php:935
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:935
+#: lib/admin.php:938
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:941
+#: lib/admin.php:944
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:944
+#: lib/admin.php:947
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:948
+#: lib/admin.php:951
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:1010
+#: lib/admin.php:1013
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:1030
+#: lib/admin.php:1033
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:1036
+#: lib/admin.php:1039
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:1042
+#: lib/admin.php:1045
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:1047
+#: lib/admin.php:1050
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr ""
 
-#: lib/admin.php:1091 lib/admin.php:1096 lib/admin.php:1112 lib/admin.php:1118
+#: lib/admin.php:1094 lib/admin.php:1099 lib/admin.php:1115 lib/admin.php:1121
 #: lib/messages.php:764
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1144
+#: lib/admin.php:1147
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1151
+#: lib/admin.php:1154
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> "
 "is missing."
 msgstr ""
 
-#: lib/admin.php:1151 lib/admin.php:1156 lib/admin.php:1161
+#: lib/admin.php:1154 lib/admin.php:1159 lib/admin.php:1164
 msgid ""
 "Please contact your hosting provider to have the missing extension installed."
 msgstr ""
 
-#: lib/admin.php:1156
+#: lib/admin.php:1159
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) "
 "extension</a> is missing."
 msgstr ""
 
-#: lib/admin.php:1161
+#: lib/admin.php:1164
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is "
 "missing."
 msgstr ""
 
-#: lib/admin.php:1170
+#: lib/admin.php:1173
 msgid ""
 "Please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1175
+#: lib/admin.php:1178
 msgid ""
 "Please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1180
+#: lib/admin.php:1183
 msgid ""
 "Please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1185
+#: lib/admin.php:1188
 msgid ""
 "Please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1196
+#: lib/admin.php:1199
 msgid ""
 "Please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1207
+#: lib/admin.php:1210
 msgid ""
 "Please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1212
+#: lib/admin.php:1215
 msgid ""
 "Please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1258
+#: lib/admin.php:1261
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1265
+#: lib/admin.php:1268
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1274
+#: lib/admin.php:1277
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1281
+#: lib/admin.php:1284
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1302
+#: lib/admin.php:1305
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -2642,63 +2642,63 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:282
+#: lib/util.php:283
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
 msgstr ""
 
-#: lib/util.php:286
+#: lib/util.php:287
 msgid "%s has been cleared as well."
 msgstr ""
 
-#: lib/util.php:415
+#: lib/util.php:416
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:497
+#: lib/util.php:498
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:499
+#: lib/util.php:500
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:501 lib/util.php:503
+#: lib/util.php:502 lib/util.php:504
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:505
+#: lib/util.php:506
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:507
+#: lib/util.php:508
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:509
+#: lib/util.php:510
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:511
+#: lib/util.php:512
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:707
+#: lib/util.php:708
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

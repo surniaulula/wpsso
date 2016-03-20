@@ -874,6 +874,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $arr['classname'] ) )
 					$status_key = class_exists( $arr['classname'] ) ?
 						'on' : 'off';
+				elseif ( isset( $arr['constant'] ) )
+					$status_key = SucomUtil::get_const( $arr['constant'] ) ?
+						'on' : 'off';
 				elseif ( isset( $arr['status'] ) )
 					$status_key = $arr['status'];
 				else $status_key = '';

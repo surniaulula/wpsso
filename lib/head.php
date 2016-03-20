@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_header_use_post', false );	// used by woocommerce with is_shop()
-			$mod = $this->p->util->get_page_mod( $use_post );		// get post/user/term id, module name and object reference
+			$mod = $this->p->util->get_page_mod( $use_post );		// get post/user/term id, module name, and module object reference
 			$read_cache = true;
 			$mt_og = array();
 
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$cmt_begin = $lca.' meta tags begin';
 			$cmt_end = $lca.' meta tags end';
 
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
 			$gen_short = $this->p->cf['plugin'][$lca]['short'].( $this->p->is_avail['aop'] ? ' Pro' : '' );

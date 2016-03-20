@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_header_use_post', false );
-			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
+			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$head_type = $this->get_head_item_type( $mod );
 
 			if ( empty( $head_type ) ) {
