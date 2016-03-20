@@ -118,7 +118,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
-							' different than saved v'.$opts['options_version'] );
+							' different than saved v'.( empty( $opts['options_version'] ) ?
+								0 : $opts['options_version'] ) );
 
 					if ( ! is_object( $this->upg ) ) {
 						require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
@@ -326,7 +327,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return $opts;
 			}
 			// mark the new options as current
-			$prev_opts_version = $opts['options_version'];
+			$prev_opts_version = empty( $opts['options_version'] ) ?
+				0 : $opts['options_version'];
 			$opts['options_version'] = $this->p->cf['opt']['version'];
 
 			foreach ( $this->p->cf['plugin'] as $lca => $info )
@@ -341,10 +343,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $saved === true ) {
 				if ( $prev_opts_version !== $opts['options_version'] ) {
-
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
-
 					if ( is_admin() )
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
 							'wpsso' ), $options_name ), true );

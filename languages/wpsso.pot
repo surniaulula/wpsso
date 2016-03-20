@@ -588,7 +588,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
-"\"Place\" Rich Pin meta tags."
+"Rich Pin / Schema \"Place\" meta tags."
 msgstr ""
 
 #: lib/config-gettext-extract.php:45
@@ -1986,39 +1986,39 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:145
+#: lib/options.php:146
 msgid ""
 "Non-standard value found for the Free version '%s' option - resetting the "
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:193
+#: lib/options.php:194
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:196
+#: lib/options.php:197
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:199
+#: lib/options.php:200
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:201
+#: lib/options.php:202
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:216
+#: lib/options.php:217
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:306
+#: lib/options.php:307
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
