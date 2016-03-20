@@ -379,7 +379,7 @@ Official announcement: N/A
 	* Modified the SucomUtil `get_term_object()` and `get_user_object()` method arguments to allow requesting a specific term and user ID.
 	* Refactored several classes / methods to use the new `$mod` variable and improved WpssoUtil `get_page_mod()` method.
 
-**Version 3.27.0 (2016/02/09)**
+**Version 3.27.0 (2016/03/09)**
 
 Official announcement: N/A
 
