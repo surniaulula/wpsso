@@ -1271,7 +1271,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$php = file_get_contents( $file );
-				$php = str_replace( '<head>', '<head <?php do_action( \'add_head_attributes\' ); ?\>>', $php );
+				$php = str_replace( '<head>', '<head <?php do_action( \'add_head_attributes\' ); ?>>', $php );
 
 				if ( ! $fh = @fopen( $file, 'wb' ) ) {
 					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.',
