@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_header_use_post', false );
-			$mod = $this->p->util->get_object_id_mod( $use_post );
+			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$head_type = $this->get_head_item_type( $mod );
 
 			if ( empty( $head_type ) ) {
@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * JSON-LD Script Array
 		 */
-		public function get_json_array( $use_post, array &$mod, &$mt_og, $user_id ) {
+		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
 
@@ -627,14 +627,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Meta Name Array
 		 */
-		public function get_meta_array( $use_post, &$mod, &$mt_og, $crawler_name = 'unknown' ) {
+		public function get_meta_array( $use_post, array &$mod, array &$mt_og, $crawler_name ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_object_id_mod( $use_post, $mod );
 
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
@@ -692,7 +690,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( $use_post, &$mod, &$mt_og, $user_id ) {
+		public function get_noscript_array( $use_post, array &$mod, array &$mt_og, $user_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -705,7 +703,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $ret;
 			}
 
-			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
+			// get_noscript_array() is disabled when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $lca.'_add_schema_noscript_array',
 				( isset( $this->p->options['schema_add_noscript'] ) ?
 					$this->p->options['schema_add_noscript'] : true ) ) ) {

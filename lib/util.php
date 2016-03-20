@@ -142,8 +142,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function image_editor_save_pre_image_sizes( $image, $id ) {
 			$mod = array( 'id' => $id, 'name' => 'post' );
-			$mod = $this->get_object_id_mod( $id, $mod );
-			$this->add_plugin_image_sizes( $id, array(), $mod, true );
+			$mod = $this->get_page_mod( $id, $mod );	// get post/user/term id, module name and object reference
+			$this->add_plugin_image_sizes( false, array(), $mod, true );
 			return $image;
 		}
 
@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
-			$mod = $this->get_object_id_mod( $use_post, $mod, $wp_obj );	// complete any missing values
+			$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );	// get post/user/term id, module name and object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$meta_opts = array();
 
@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		public function get_object_id_mod( $use_post = false, &$mod = array(), &$wp_obj = false ) {
+		public function get_page_mod( $use_post = false, &$mod = array(), &$wp_obj = false ) {
 
 			if ( ! empty( $mod['is_complete'] ) ) {
 				if ( $this->p->debug->enabled )

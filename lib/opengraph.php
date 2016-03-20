@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_object_id_mod( $use_post, $mod );
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$post_id = false;
 			$post_obj = false;
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_object_id_mod( false, $mod );
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_object_id_mod( false, $mod );
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$force_regen = false;
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_object_id_mod( false, $mod );
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$og_image = null;
 			$og_video = null;

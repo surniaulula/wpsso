@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			return $sizes;
 		}
 
-		public function get_array( $use_post = false, &$mod = array(), &$og = array(), $crawler_name = 'unknown' ) {
+		public function get_array( $use_post = false, &$mod = false, &$og = array(), $crawler_name = 'unknown' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -57,7 +57,8 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$mod = $this->p->util->get_object_id_mod( $use_post, $mod );	// complete any missing values
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name and object reference
 			$post_id = false;
 			$post_obj = false;
 
