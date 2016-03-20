@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.4.2
-Stable Tag: 3.27.0
+Stable Tag: 3.28.1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.1 (ETA 2016/03/20)**
+**Version 3.28.1 (2016/03/20)**
 
 Official announcement: N/A
 
@@ -404,7 +404,7 @@ Official announcement: N/A
 
 = 3.28.1 =
 
-ETA 2016/03/20 - Added support for Automattic's Accelerated Mobile Pages (AMP) plugin. Improved the Social Settings options display (Free version).
+2016/03/20 - Added support for Automattic's Accelerated Mobile Pages (AMP) plugin. Improved the Social Settings options display (Free version).
 
 = 3.27.0 =
 
