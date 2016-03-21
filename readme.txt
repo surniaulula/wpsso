@@ -356,7 +356,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 **Version 3.28.1.1 (2016/03/20)**
 
-Official announcement: N/A
+Official announcement: [WPSSO Update - AMP Support and Several Core Changes](http://wpsso.com/2016/03/20/wpsso-update-amp-support-and-several-core-changes/)
 
 > **This release includes many WPSSO core changes and improvements to internal variable names, method and filter arguments. New versions of the following WPSSO extensions have also been released (all extensions except for the WPSSO Pro Update Manager). Please make sure you update all your installed / active WPSSO extension plugins as well.**
 > 
