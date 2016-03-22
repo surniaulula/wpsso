@@ -354,7 +354,21 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.2 (ETA 2016/03/23)**
+**Version 3.28.3 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new WpssoMeta `get_options_multi()` method to fetch meta data using fallback index keys.
+	* Deprecated the WpssoUtil `get_mod_options()` method (which is replaced by WpssoMeta `get_options_multi()`).
+
+**Version 3.28.2.1 (ETA 2016/03/23)**
 
 Official announcement: N/A
 
@@ -418,7 +432,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.28.2 =
+= 3.28.2.1 =
 
 ETA 2016/03/23 - Refactored / improved several methods to use the new $mod array.
 
