@@ -354,6 +354,22 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.28.2 (ETA 2016/03/23)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Refactored the Polylang 'locale' filter to use the new `$mod` array as an argument (Pro version).
+	* Refactored the SucomWebpage `get_caption()`, `get_title()`, and `get_description()` methods to use the new `$mod` array.
+	* Removed the WpssoMedia and WpssoProMediaNgg `get_gallery_images()` methods. They are no longer required since Twitter deprecated their Gallery Card.
+	* Moved the 'opt_version' variable value of each extension into their individual config arrays. When saving options (plugin or meta), the value of each 'opt_version' is also saved. This allows each extension to check and update (if necessary) their options.
+
 **Version 3.28.1.1 (2016/03/20)**
 
 Official announcement: [WPSSO Update - AMP Support and Several Core Changes](http://wpsso.com/2016/03/20/wpsso-update-amp-support-and-several-core-changes/)
@@ -401,6 +417,10 @@ Official announcement: N/A
 	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 == Upgrade Notice ==
+
+= 3.28.2 =
+
+ETA 2016/03/23 - Refactored / improved several methods to use the new $mod array.
 
 = 3.28.1.1 =
 
