@@ -581,13 +581,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						return $meta_ret;
 			}
 
-			if ( empty( $mod_name ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: empty module name' );
-				return $meta_ret;
-			}
-
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_ids', array(), $size_name, $mod['id'] ) as $pid ) {
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'] ) as $pid ) {
 				if ( $pid > 0 ) {	// quick sanity check
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding image pid: '.$pid );
@@ -608,7 +602,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod_name.'_image_urls', array(), $size_name, $mod['id'] ) as $url ) {
+			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'] ) as $url ) {
 				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
 
 					if ( $this->p->debug->enabled )

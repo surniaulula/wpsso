@@ -296,7 +296,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return apply_filters( $lca.'_og', $og, $mod['use_post'], $mod );
 		}
 
-		public function get_all_videos( $num = 0, &$mod = false, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_videos( $num = 0, array &$mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
@@ -310,8 +310,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -400,7 +398,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			} else return $og_ret;
 		}
 
-		public function get_all_images( $num = 0, $size_name = 'thumbnail', &$mod = false, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num = 0, $size_name = 'thumbnail', array &$mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->args( array(
@@ -413,8 +411,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$force_regen = false;
 
@@ -524,14 +520,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		// used by some sharing buttons (buffer, pinterest, tumblr)
 		// creates image and video information for a specific $size_name ('wpsso-buffer-button' for example)
 		// the returned array can include a varying number of elements, depending on the $output value
-		public function get_the_media_info( $size_name, &$mod = false, $md_pre = 'og', $output = array(), &$head = array() ) {
+		public function get_the_media_info( $size_name, array &$mod, $md_pre = 'og', $output = array(), &$head = array() ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$og_image = null;
 			$og_video = null;
