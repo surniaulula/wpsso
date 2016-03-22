@@ -779,7 +779,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// $type = author | img | vid
-		public function force_default( string $type, array &$mod, $opt_pre = 'og') {
+		public function force_default( $type, array &$mod, $opt_pre = 'og') {
 
 			$lca = $this->p->cf['lca'];
 			$def = array();
