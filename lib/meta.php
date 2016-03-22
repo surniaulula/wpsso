@@ -364,10 +364,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				unset( $defs[$key], $prev[$key] );
 
 			// merge and sanitize the new options
-			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
+			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?		// make sure we have an array
 				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $prev, $opts );				// update the previous options array
+			$opts = array_merge( $prev, $opts );			// update the previous options array
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// $network = false
 
 			// remove any empty or "use plugin settings" options

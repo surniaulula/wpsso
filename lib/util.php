@@ -486,14 +486,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		public function sanitize_option_value( $key, $val, $def_val, $network = false, $mod_name = false ) {
+		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {
 
 			// remove localization for more generic match
 			if ( preg_match( '/(#.*|:[0-9]+)$/', $key ) > 0 )
 				$key = preg_replace( '/(#.*|:[0-9]+)$/', '', $key );
 
 			// hooked by the sharing class
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod_name );
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
 
 			if ( $this->sanitize_error_msgs === null ) {
 				$this->sanitize_error_msgs = array(
@@ -576,8 +576,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					else $min_int = 1;
 
 					// custom meta options are allowed to be empty
-					if ( $val === '' && $mod_name !== false )
-						break;
+					if ( $val === '' && ! empty( $mod['name'] ) )
+						break;	// abort
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ), true );
 						$val = $def_val;
@@ -760,24 +760,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// returns an author id if the default author is forced
-		public function force_default_author( &$mod = array(), $opt_pre = 'og' ) {
+		public function force_default_author( array &$mod, $opt_pre = 'og' ) {
 			$author_id = $this->get_default_author_id( $opt_pre );
+
 			return $author_id && 
-				$this->force_default( $mod, $opt_pre, 'author' ) ?
+				$this->force_default( 'author', $mod, $opt_pre ) ?
 					$author_id : false;
 		}
 
 		// returns true if the default image is forced
-		public function force_default_image( &$mod = array(), $opt_pre = 'og' ) {
-			return $this->force_default( $mod, $opt_pre, 'img' );
+		public function force_default_image( array &$mod, $opt_pre = 'og' ) {
+			return $this->force_default( 'img', $mod, $opt_pre );
 		}
 
 		// returns true if the default video is forced
-		public function force_default_video( &$mod = array(), $opt_pre = 'og' ) {
-			return $this->force_default( $mod, $opt_pre, 'vid' );
+		public function force_default_video( array &$mod, $opt_pre = 'og' ) {
+			return $this->force_default( 'vid', $mod, $opt_pre );
 		}
 
-		public function force_default( &$mod = array(), $opt_pre = 'og', $type ) {
+		// $type = author | img | vid
+		public function force_default( string $type, array &$mod, $opt_pre = 'og') {
 
 			$lca = $this->p->cf['lca'];
 			$def = array();

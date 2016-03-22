@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				} elseif ( $mod['is_user'] ) {
 					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['id'] );
 
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $mod['use_post'], 'og' ) )
+				} elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'og' ) )
 					$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
 			}
 
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				 * Default Image for Indexes
 				 */
 				if ( ! isset( $tc['twitter:card'] ) && ! $mod['use_post'] ) {
-					if ( $this->p->util->force_default_image( $mod['use_post'], 'og' ) ) {
+					if ( $this->p->util->force_default_image( $mod, 'og' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'large image card: checking for default image' );
 
