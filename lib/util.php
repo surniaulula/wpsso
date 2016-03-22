@@ -440,15 +440,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function get_mod_options( $mod_id, $mod_name, $idx = false, $filter_options = true ) {
 
-			// sanitation
+			// basic sanitation
 			if ( empty( $mod_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'mod_id \''.$mod_id.'\' is empty' );
 				return null;
+
 			} elseif ( ! isset( $this->p->m['util'][$mod_name] ) ||
 				! is_object( $this->p->m['util'][$mod_name] ) ) {
+
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'mod_name \''.$mod_name.'\' not an object' );
+					$this->p->debug->log( 'mod_name \''.$mod_name.'\' module not found' );
 				return null;
 			}
 
@@ -1061,7 +1063,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		// get post/user/term id, module name, and module object reference
+		/*
+		 * Return the post / user / term id, module name, and the module object reference.
+		 */
 		public function get_page_mod( $use_post = false, $mod = false, &$wp_obj = false ) {
 
 			if ( ! is_array( $mod ) ) {
@@ -1095,7 +1099,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// we need a module name to get the id and object
 			if ( empty( $mod['name'] ) ) {
-				if ( self::is_post_page( $use_post ) )
+				if ( self::is_post_page( $use_post ) )	// $use_post = true | false | post_id 
 					$mod['name'] = 'post';
 				elseif ( self::is_term_page() )
 					$mod['name'] = 'taxonomy';
@@ -1106,7 +1110,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $mod['id'] ) ) {
 				if ( $mod['name'] === 'post' )
-					$mod['id'] = $this->get_post_object( $use_post, 'id' );
+					$mod['id'] = $this->get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id 
 				elseif ( $mod['name'] === 'taxonomy' )
 					$mod['id'] = $this->get_term_object( false, '', 'id' );
 				elseif ( $mod['name'] === 'user' )
@@ -1120,13 +1124,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
 
 			return $mod;
 		}
 
-		// "use_post = false" when used for open graph meta tags and buttons in widget,
-		// true when buttons are added to individual posts on an index webpage
+		// $use_post = false when used for open graph meta tags and buttons in widget
+		// $use_post = true when buttons are added to individual posts on an index webpage
 		public function get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
 
 			if ( $this->p->debug->enabled ) {

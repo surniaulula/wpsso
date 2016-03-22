@@ -37,32 +37,32 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'label' => _x( 'Default Title', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_title', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $this->p->webpage->get_title( $this->p->options['og_title_len'],
-						'...', $mod['use_post'], true, false, true, 'none' ), 'wide' ),	// $md_idx = 'none'
+						'...', $mod, true, false, true, 'none' ), 'wide' ),	// $md_idx = 'none'
 				),
 				'og_desc' => array(
 					'label' => _x( 'Default Description (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['og_desc_len'],
-						'...', $mod['use_post'], true, true, true, 'none' ), '', '', $this->p->options['og_desc_len'] ),	// $md_idx = 'none'
+						'...', $mod, true, true, true, 'none' ), '', '', $this->p->options['og_desc_len'] ),	// $md_idx = 'none'
 				),
 				'schema_desc' => array(
 					'label' => _x( 'Google / Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
-						'...', $mod['use_post'] ), '', '', $this->p->options['schema_desc_len'] ),
+						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
 				),
 				'seo_desc' => array(
 					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
-						'...', $mod['use_post'], true, false ), '', '', $this->p->options['seo_desc_len'] ),	// $add_hashtags = false
+						'...', $mod, true, false ), '', '', $this->p->options['seo_desc_len'] ),	// $add_hashtags = false
 				),
 				'tc_desc' => array(
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['tc_desc_len'],
-						'...', $mod['use_post'] ), '', '', $this->p->options['tc_desc_len'] ),
+						'...', $mod ), '', '', $this->p->options['tc_desc_len'] ),
 				),
 				'sharing_url' => array(
 					'tr_class' => 'hide_in_basic',

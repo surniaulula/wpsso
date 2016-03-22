@@ -348,34 +348,41 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		protected function get_submit_opts( $mod_id ) {
+
 			$mod = $this->get_mod( $mod_id );
-
 			$defs = $this->get_defaults( $mod['id'] );
-			unset ( $defs['options_filtered'] );
-			unset ( $defs['options_version'] );
-
 			$prev = $this->get_options( $mod['id'] );
-			unset ( $prev['options_filtered'] );
-			unset ( $prev['options_version'] );
 
-			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ? 
+			// remove any version strings
+			$unset_keys = array( 'options_filtered', 'options_version' );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info )
+				if ( isset( $info['opt_version'] ) )
+					$unset_keys[] = 'plugin_'.$ext.'_opt_version';
+
+			foreach ( $unset_keys as $key )
+				unset( $defs[$key], $prev[$key] );
+
+			// merge and sanitize the new options
+			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
 				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $prev, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// network is false
+			$opts = array_merge( $prev, $opts );				// update the previous options array
+			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// $network = false
 
+			// remove any empty or "use plugin settings" options
 			foreach ( $defs as $key => $def_val ) {
 				if ( isset( $opts[$key] ) ) {
 					if ( $opts[$key] === '' || $opts[$key] === -1 || $opts[$key] === '-1' )
-						unset ( $opts[$key] );
+						unset( $opts[$key] );
 				}
 			}
 
-			// checkbox options - don't save if the value is the same as the default value
+			// checkbox options - don't save if value is same as default value
 			foreach ( array( 'og_vid_prev_img' ) as $key ) {
 				if ( isset( $this->p->options[$key] ) ) {
 					if ( $opts[$key] === $this->p->options[$key] )
-						unset ( $opts[$key] );
+						unset( $opts[$key] );
 				}
 			}
 
@@ -383,7 +390,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
 
 				if ( empty( $opts[$md_pre.'_img_id'] ) )
-					unset ( $opts[$md_pre.'_img_id_pre'] );
+					unset( $opts[$md_pre.'_img_id_pre'] );
 
 				$force_regen = false;
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
@@ -405,6 +412,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				if ( $force_regen === true )
 					set_transient( $this->p->cf['lca'].'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre, true );
+			}
+
+			// mark the new options as current
+			if ( ! empty( $opts ) ) {
+				$opts['options_version'] = $this->p->cf['opt']['version'];
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( isset( $info['opt_version'] ) )
+						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
+				}
 			}
 
 			return $opts;
@@ -623,6 +639,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				), get_class( $this ) );
 			}
 
+			$mod = $this->get_mod( $mod_id );	// required for get_content_videos()
 			$og_ret = array();
 			$og_video = array();
 
@@ -638,7 +655,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
 							get_class( $this ) );	// log extended class name
-					$og_video = $this->p->media->get_content_videos( $num, 0, $check_dupes, $html );
+					$og_video = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html );
 					if ( ! empty( $og_video ) )
 						return array_merge( $og_ret, $og_video );
 				}

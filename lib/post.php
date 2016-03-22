@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! empty( $value ) )
 				return $value;
 
-			return $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod['id'] );
+			return $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod );
 		}
 
 		// hooked into the current_screen action

@@ -88,11 +88,11 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 			if ( ! isset( $tc['twitter:title'] ) )
 				$tc['twitter:title'] = $this->p->webpage->get_title( 70, 
-					'...', $mod['use_post'], true, false, true, 'og_title' );
+					'...', $mod, true, false, true, 'og_title' );
 
 			if ( ! isset( $tc['twitter:description'] ) )
 				$tc['twitter:description'] = $this->p->webpage->get_description( $this->p->options['tc_desc_len'], 
-					'...', $mod['use_post'], true, true, true, 'tc_desc' );
+					'...', $mod, true, true, true, 'tc_desc' );
 
 			if ( ! isset( $tc['twitter:creator'] ) ) {
 				if ( $mod['is_post'] ) {

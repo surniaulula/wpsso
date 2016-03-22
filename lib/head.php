@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
 				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
-					'...', $use_post, true, false, true, 'seo_desc' );	// add_hashtags = false
+					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
 				if ( ! empty( $this->p->options['rp_dom_verify'] ) )

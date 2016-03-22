@@ -170,10 +170,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:site_name'] = $this->get_site_name( $post_id );
 
 			if ( ! isset( $og['og:title'] ) )
-				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod['use_post'] );
+				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
 
 			if ( ! isset( $og['og:description'] ) )
-				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod['use_post'] );
+				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod );
 
 			// if the page is an article, then define the other article meta tags
 			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				if ( $mod['is_post'] && 
 					! $this->p->util->is_maxed( $og_ret, $num ) )
 						$og_ret = array_merge( $og_ret, 
-							$this->p->media->get_content_videos( $num_diff, $mod['id'], $check_dupes ) );
+							$this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
 				$this->p->util->slice_max( $og_ret, $num );
 
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff, 
-						$size_name, $mod['id'], $check_dupes ) );
+						$size_name, $mod, $check_dupes ) );
 				}
 
 			} else {

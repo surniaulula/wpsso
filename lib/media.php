@@ -560,24 +560,32 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_content_images( $num = 0, $size_name = 'thumbnail', $post_id = 0, $check_dupes = true, $content = '' ) {
+		// $use_post = true | false | post_id | $mod array
+		public function get_content_images( $num = 0, $size_name = 'thumbnail', $use_post = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
-					'post_id' => $post_id,
+					'use_post' => $use_post,
 					'check_dupes' => $check_dupes,
 					'content' => strlen( $content ).' chars',
 				) );
 			}
+
+			// $use_post = true | false | post_id | $mod array
+			if ( is_array( $use_post ) ) {
+				$mod = $use_post;
+				$use_post = $mod['use_post'];	// just in case
+			} else $mod = $this->p->util->get_page_mod( $use_post );
+
 			$og_ret = array();
 
 			// allow custom content to be passed as argument
 			// allow empty post_ids to get additional content from filter hooks
 			if ( empty( $content ) ) {
 				$content_provided = false;
-				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
+				$content = $this->p->webpage->get_content( $mod['id'], $mod['use_post'] );
 			} else $content_provided = true;
 
 			if ( empty( $content ) ) { 
@@ -589,7 +597,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 			$size_info = $this->get_size_info( $size_name );
 			$img_preg = $this->default_img_preg;
-
 			// allow the html_tag and pid_attr regex to be modified
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
 				$filter_name = $this->p->cf['lca'].'_content_image_preg_'.$type;
@@ -724,8 +731,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image'], 
 								$og_image['og:image:width'], 
 								$og_image['og:image:height'], 
-								$size_name,
-								$post_id );
+								$size_name, $mod['use_post'] );
 
 							// make sure the image width and height are large enough
 							if ( ( $attr_name == 'src' && $accept_img_size ) ||
@@ -770,81 +776,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		// called by TwitterCard class to build the Gallery Card
-		public function get_gallery_images( $num = 0, $size_name = 'large', $post_id, $check_dupes = false, $get = 'gallery' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'post_id' => $post_id,
-					'check_dupes' => $check_dupes,
-					'get' => $get,
-				) );
-			}
-
-			$og_ret = array();
-
-			if ( $get == 'gallery' ) {
-
-				if ( ( $post_obj = $this->p->util->get_post_object( $post_id ) ) === false || 
-					empty( $post_obj->post_type ) ) {
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: object without post type' );
-					return $og_ret; 
-
-				} elseif ( empty( $post_obj->post_content ) ) { 
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: post without content' ); 
-					return $og_ret;
-				}
-
-				if ( preg_match( '/\[(gallery)[^\]]*\]/im', $post_obj->post_content, $match ) ) {
-
-					$shortcode_type = strtolower( $match[1] );
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( '['.$shortcode_type.'] shortcode found' );
-
-					switch ( $shortcode_type ) {
-						case 'gallery' :
-							$content = do_shortcode( $match[0] );
-
-							// prevent loops, just in case
-							$content = preg_replace( '/\['.$shortcode_type.'[^\]]*\]/', '', $content );
-
-							// provide content to the method and extract its images
-							// $post_id argument is 0 since we're passing the content
-							$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num, 
-								$size_name, 0, $check_dupes, $content ) );
-
-							if ( ! empty( $og_ret ) ) 
-								return $og_ret;		// return immediately and ignore any other type of image
-							break;
-					}
-
-				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( '[gallery] shortcode(s) not found' );
-			}
-
-			// check for ngg gallery
-			if ( $this->p->is_avail['media']['ngg'] === true && 
-				! empty( $this->p->m['media']['ngg'] ) ) {
-
-				$og_ret = $this->p->m['media']['ngg']->get_gallery_images( $num , 
-					$size_name, $post_id, $check_dupes, $get );
-
-				if ( $this->p->util->is_maxed( $og_ret, $num ) )
-					return $og_ret;
-			}
-
-			$this->p->util->slice_max( $og_ret, $num );
-
-			return $og_ret;
-		}
-
 		public function get_default_video( $num = 0, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -875,24 +806,33 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * Purpose: Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks.
+		 *
+		 * $use_post = true | false | post_id | $mod array
 		 */
-		public function get_content_videos( $num = 0, $post_id = 0, $check_dupes = true, $content = '' ) {
+		public function get_content_videos( $num = 0, $use_post = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
-					'post_id' => $post_id,
+					'use_post' => $use_post,
 					'check_dupes' => $check_dupes,
 					'content' => strlen( $content ).' chars',
 				) );
 			}
+
+			// $use_post = true | false | post_id | $mod array
+			if ( is_array( $use_post ) ) {
+				$mod = $use_post;
+				$use_post = $mod['use_post'];	// just in case
+			} else $mod = $this->p->util->get_page_mod( $use_post );
+
 			$og_ret = array();
 
-			// allow custom content to be passed as argument
-			// allow empty post_ids to get additional content from filter hooks
+			// allow custom content to be passed as an argument in $content
+			// allow empty post IDs to get additional content from filter hooks
 			if ( empty( $content ) ) {
 				$content_provided = false;
-				$content = $this->p->webpage->get_content( $post_id, false );	// use_post = false
+				$content = $this->p->webpage->get_content( $mod['id'], $mod['use_post'] );
 			} else $content_provided = true;
 
 			if ( empty( $content ) ) { 
@@ -956,6 +896,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( $filter_name.' filter did not return false or an array' ); 
 				}
 			}
+
 			return $og_ret;
 		}
 

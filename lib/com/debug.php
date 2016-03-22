@@ -95,8 +95,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			elseif ( $function_idx === false )
 				$function_idx = 2;
 
-			$this->log( 'args '.self::pretty_array( $args, true ),
-				$class_idx, $function_idx ); 
+			$this->log( 'args '.self::pretty_array( $args, true ), $class_idx, $function_idx ); 
 		}
 
 		public function log( $input = '', $class_idx = 1, $function_idx = false ) {

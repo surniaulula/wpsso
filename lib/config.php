@@ -20,7 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.28.1.1',	// plugin version
+					'version' => '3.28.2',		// plugin version
+					'opt_version' => '417',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -308,7 +309,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'opt' => array(						// options
-				'version' => 'sso416',				// increment when changing default options
 				'defaults' => array(
 					'options_filtered' => false,
 					'schema_add_noscript' => 1,
@@ -789,7 +789,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'all' => 'All Options',
 				),
 				'site_option_use' => array(
-					'default' => 'Default value',
+					'default' => 'New install value',
 					'empty' => 'If value is empty',
 					'force' => 'Force this value',
 				),
@@ -978,40 +978,52 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		);
 
 		// get_config is called very early, so don't apply filters unless instructed
-		public static function get_config( $idx = false, $filter = false ) { 
+		public static function get_config( $idx = false, $do_filter = false ) { 
 
 			if ( ! isset( self::$cf['config_filtered'] ) || 
 				self::$cf['config_filtered'] !== true ) {
 
-				if ( $filter === true ) {
-					self::$cf['opt']['version'] .= is_dir( trailingslashit( dirname( __FILE__ ) ).'pro/' ) ? 'pro' : 'gpl';
+				self::$cf['*'] = array(
+					'base' => array(),
+					'lib' => array(
+						'gpl' => array (),
+						'pro' => array (),
+					),
+					'version' => '',		// -wpsso3.28.2pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
+				);
+	
+				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro
+
+				if ( $do_filter ) {
+
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf );
+
 					self::$cf['config_filtered'] = true;
-					self::$cf['*'] = array(
-						'base' => array(),
-						'lib' => array(),
-						'version' => '',
-					);
-					foreach ( self::$cf['plugin'] as $lca => $info ) {
+
+					foreach ( self::$cf['plugin'] as $ext => $info ) {
+	
+						if ( defined( strtoupper( $ext ).'_PLUGINDIR' ) )
+							$pkg = is_dir( constant( strtoupper( $ext ).
+								'_PLUGINDIR' ).'lib/pro/' ) ? 'pro' : 'gpl';
+						else $pkg = '';
+	
 						if ( isset( $info['base'] ) )
-							self::$cf['*']['base'][$info['base']] = $lca;
+							self::$cf['*']['base'][$info['base']] = $ext;
+	
 						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) )
 							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( 
-								self::$cf['*']['lib'], 
-								$info['lib']
-							);
+								self::$cf['*']['lib'], $info['lib'] );
+	
 						if ( isset( $info['version'] ) )
-							self::$cf['*']['version'] .= '-'.$lca.$info['version'];
-					}
-					self::$cf['*']['version'] = trim( self::$cf['*']['version'], '-' );
-				}
+							self::$cf['*']['version'] .= '-'.$ext.$info['version'].$pkg;
+	
+						if ( isset( $info['opt_version'] ) )
+							self::$cf['opt']['version'] .= '-'.$ext.$info['opt_version'].$pkg;
 
-				// complete relative paths in the image array
-				foreach ( self::$cf['plugin'] as $lca => $info ) {
-					foreach ( $info['img'] as $id => $url ) {
-						if ( ! empty( $url ) && strpos( $url, '//' ) === false ) {
-							self::$cf['plugin'][$lca]['img'][$id] = trailingslashit( plugins_url( '', $info['base'] ) ).$url;
-						}
+						// complete relative paths in the image array
+						foreach ( $info['img'] as $id => $url )
+							if ( ! empty( $url ) && strpos( $url, '//' ) === false )
+								self::$cf['plugin'][$ext]['img'][$id] = trailingslashit( plugins_url( '', $info['base'] ) ).$url;
 					}
 				}
 			}

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.1.1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -431,69 +431,69 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
-msgid "Default value"
-msgstr ""
-
-#: lib/config-gettext-extract.php:16
-msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: lib/config-gettext-extract.php:17
+#: lib/config-gettext-extract.php:16
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:18
+#: lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:19
+#: lib/config-gettext-extract.php:18
 msgctxt "plugin description"
 msgid ""
 "Fast, light-weight, full-featured plugin for great looking shares on all "
 "social sites - no matter how your content is shared or re-shared!"
 msgstr ""
 
-#: lib/config-gettext-extract.php:20
+#: lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr ""
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "Footer"
 msgstr ""
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:21
 msgctxt "option value"
 msgid "Force this value"
 msgstr ""
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:22
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Goo.gl"
 msgstr ""
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "If value is empty"
 msgstr ""
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Left"
+msgstr ""
+
+#: lib/config-gettext-extract.php:27
+msgctxt "option value"
+msgid "New install value"
 msgstr ""
 
 #: lib/config-gettext-extract.php:28
@@ -1088,26 +1088,26 @@ msgstr ""
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:752
+#: lib/media.php:758
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %2$s was "
 "first activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:755
+#: lib/media.php:761
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the %2$s image size."
 msgstr ""
 
-#: lib/media.php:1049
+#: lib/media.php:990
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect "
 "ratio equal to/or greater than %4$d:1."
 msgstr ""
 
-#: lib/media.php:1064
+#: lib/media.php:1005
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller "
 "than the minimum %4$s allowed by the %5$s standard."
@@ -1435,8 +1435,8 @@ msgstr ""
 
 #: lib/messages.php:668 lib/messages.php:675
 msgid ""
-"After purchasing Pro version license(s), an email is sent to you with a "
-"unique Authentication ID and installation / activation instructions."
+"After purchasing one or more Pro version license(s), an email is sent to you "
+"with an Authentication ID and installation / activation instructions."
 msgstr ""
 
 #: lib/messages.php:668
@@ -1467,16 +1467,29 @@ msgstr ""
 
 #: lib/messages.php:675
 msgid ""
-"Enter the unique Authentication ID on this page to define a default / forced "
-"value for <em>all</em> sites within the network, or enter the Authentication "
-"ID(s) individually on each site's Pro Licenses settings page."
+"You may enter the unique Authentication ID on this page <em>to define a "
+"value for all sites within the network</em> &mdash; or enter the "
+"Authentication ID individually on each site's Pro Licenses settings page."
 msgstr ""
 
 #: lib/messages.php:675
 msgid ""
-"Please note that the <em>default</em> site / blog must be licensed and the "
-"%1$s extension must be active in order to install %2$s Pro updates from the "
-"Network admin interface."
+"If you enter an Authentication ID here, <em>please make sure you have "
+"purchased enough licenses to license all sites within the network</em> (for "
+"example, if you have 10 sites, you will need 10 or more licenses)."
+msgstr ""
+
+#: lib/messages.php:675
+msgid ""
+"To license one or more sites individually, enter the Authentication ID in "
+"each site's Pro Licenses settings page."
+msgstr ""
+
+#: lib/messages.php:675
+msgid ""
+"Please note that <em>the default site / blog must be licensed</em> and the "
+"%1$s extension active, in order to install %2$s Pro version updates from the "
+"network admin interface."
 msgstr ""
 
 #: lib/messages.php:678
@@ -1962,17 +1975,17 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:415
+#: lib/meta.php:431
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:416
+#: lib/meta.php:432
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:434
+#: lib/meta.php:450
 msgid "Reload to View"
 msgstr ""
 
@@ -1986,45 +1999,45 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:146
+#: lib/options.php:149
 msgid ""
 "Non-standard value found for the Free version '%s' option - resetting the "
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:194
-msgid "WordPress could not find an entry for %s in the options table."
-msgstr ""
-
 #: lib/options.php:197
-msgid ""
-"WordPress returned a non-array value when reading %s from the options table."
+msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
 #: lib/options.php:200
 msgid ""
+"WordPress returned a non-array value when reading %s from the options table."
+msgstr ""
+
+#: lib/options.php:203
+msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:202
+#: lib/options.php:205
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:217
+#: lib/options.php:220
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:307
+#: lib/options.php:310
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:349
+#: lib/options.php:359
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -2656,49 +2669,49 @@ msgstr ""
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:498
+#: lib/util.php:500
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:500
+#: lib/util.php:502
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:502 lib/util.php:504
+#: lib/util.php:504 lib/util.php:506
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:506
+#: lib/util.php:508
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:508
+#: lib/util.php:510
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:510
+#: lib/util.php:512
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:512
+#: lib/util.php:514
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:708
+#: lib/util.php:710
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

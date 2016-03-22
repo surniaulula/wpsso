@@ -95,13 +95,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$has_diff_options = false;
 
 				// check for a new plugin and/or extension version
-				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( empty( $info['version'] ) )
 						continue;
-					$key = 'plugin_'.$lca.'_version';
+
+					$key = 'plugin_'.$ext.'_version';
+
 					if ( empty( $opts[$key] ) || 
 						version_compare( $opts[$key], $info['version'], '!=' ) ) {
-						WpssoUtil::save_time( $lca, $info['version'], 'update' );
+
+						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
 					}
@@ -288,16 +291,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts['og_desc_len'] < $this->p->cf['head']['min']['og_desc_len'] ) 
 					$opts['og_desc_len'] = $this->p->cf['head']['min']['og_desc_len'];
 
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $info['update_auth'] ) ) {
-					$opt_name = 'plugin_'.$lca.'_'.$info['update_auth'];
+					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
 					if ( isset( $opts[$opt_name] ) &&
 						isset( $this->p->options[$opt_name] ) &&
 						$opts[$opt_name] !== $this->p->options[$opt_name] ) {
 
 						$this->p->options[$opt_name] = $opts[$opt_name];
-						delete_option( $lca.'_uerr' );
-						delete_option( $lca.'_utime' );
+						delete_option( $ext.'_uerr' );
+						delete_option( $ext.'_utime' );
 					}
 				}
 			}
@@ -320,20 +323,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		// save both options and site options
 		public function save_options( $options_name, &$opts, $network = false ) {
+
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
 				return $opts;
 			}
-			// mark the new options as current
+
+			// save the old version string to compare
 			$prev_opts_version = empty( $opts['options_version'] ) ?
 				0 : $opts['options_version'];
+
+			// mark the new options as current
 			$opts['options_version'] = $this->p->cf['opt']['version'];
 
-			foreach ( $this->p->cf['plugin'] as $lca => $info )
-				if ( ! empty( $info['version'] ) )
-					$opts['plugin_'.$lca.'_version'] = $info['version'];
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( isset( $info['version'] ) )
+					$opts['plugin_'.$ext.'_version'] = $info['version'];
+				if ( isset( $info['opt_version'] ) )
+					$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
+			}
 
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
@@ -354,6 +364,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'failed to save the upgraded '.$options_name.' settings' );
 				return false;
 			}
+
 			return true;
 		}
 

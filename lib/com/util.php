@@ -544,11 +544,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// localize the options array key
-		public static function get_key_locale( $key, &$opts = false, $get = 'current' ) {
+		// localize an options array key
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public static function get_key_locale( $key, &$opts = false, $mixed = 'current' ) {
 			$default = self::get_locale( 'default' );
-			$locale = self::get_locale( $get );
+			$locale = self::get_locale( $mixed );
 			$key_locale = $key.'#'.$locale;
+
 			// the default language may have changed, so if we're using the default,
 			// check for a locale version for the default language
 			if ( $locale === $default )
@@ -557,17 +559,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return $key_locale;
 		}
 
-		// argument can also be a numeric post ID to return the language of that post
+		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale( $mixed = 'current' ) {
 			switch ( true ) {
 				case ( $mixed === 'default' ):
-					$lang = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
+					$wp_locale = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
 					break;
 				default:
-					$lang = get_locale();
+					$wp_locale = get_locale();
 					break;
 			}
-			return apply_filters( 'sucom_locale', $lang, $mixed );
+			return apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
 		public static function restore_checkboxes( &$opts ) {
@@ -713,7 +715,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return $ret;
 		}
 
-		public function get_term_object( $term_id = false, $tax_slug = '', $output = 'object' ) {
+		public function get_term_object( $term_id = false, $tax_slug = false, $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
 			if ( is_numeric( $term_id ) ) {

@@ -1094,7 +1094,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
-							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid' );
+							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid', true );
 						} else {
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
@@ -1299,12 +1299,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $dismissed;
 		}
 
-		public function get_site_use( &$form, $network = false, $name ) {
+		public function get_site_use( &$form, $network = false, $name, $force = false ) {
 			if ( $network !== true )
 				return '';
 			return $form->get_th_html( _x( 'Site Use',
 				'option label (very short)', 'wpsso' ), 'site_use' ).
-			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
+			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] || $force ) ?
 				'<td>'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :
 				'<td class="site_use blank">'.$form->get_select( $name.':use', 
 					$this->p->cf['form']['site_option_use'], 'site_use', null, true, true ).'</td>' );
