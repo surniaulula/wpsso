@@ -264,8 +264,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 							$this->p->debug->log( 'getting all images for '.$md_pre.' ('.$size_name.')' );
 
 						// the size_name is used as a context for duplicate checks
-						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], 
-							$size_name, $mod, $check_dupes, $md_pre );
+						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview image, 
 						// then add the default image for singular (aka post) webpages
