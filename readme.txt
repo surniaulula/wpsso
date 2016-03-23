@@ -354,21 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.3 (TBD)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added a new WpssoMeta `get_options_multi()` method to fetch meta data using fallback index keys.
-	* Deprecated the WpssoUtil `get_mod_options()` method (which is replaced by WpssoMeta `get_options_multi()`).
-
-**Version 3.28.2.1 (ETA 2016/03/23)**
+**Version 3.28.3 (ETA 2016/03/23)**
 
 Official announcement: N/A
 
@@ -383,6 +369,9 @@ Official announcement: N/A
 	* Refactored the SucomWebpage `get_caption()`, `get_title()`, and `get_description()` methods to use the new `$mod` array.
 	* Removed the WpssoMedia and WpssoProMediaNgg `get_gallery_images()` methods. They are no longer required since Twitter deprecated their Gallery Card.
 	* Moved the 'opt_version' variable value of each extension into their individual config arrays. When saving options (plugin or meta), the value of each 'opt_version' is also saved. This allows each extension to check and update (if necessary) their options.
+	* Added a new WpssoMeta `get_options_multi()` method to fetch meta data using fallback index keys.
+	* Deprecated the WpssoUtil `get_mod_options()` method (which is replaced by WpssoMeta `get_options_multi()`).
+	* Added admin styles and scripts to the new term.php page in WP 4.5.
 
 **Version 3.28.1.1 (2016/03/20)**
 
@@ -432,9 +421,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.28.2.1 =
+= 3.28.3 =
 
-ETA 2016/03/23 - Refactored / improved several methods to use the new $mod array.
+ETA 2016/03/23 - Refactored / improved several methods to use the new $mod array. Added admin styles and scripts to the new term.php page in WP 4.5.
 
 = 3.28.1.1 =
 
