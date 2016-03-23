@@ -267,10 +267,15 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Google Structured Data / Schema Markup',
 							'metabox title', 'wpsso' ).'</h4></td>';
 
+					$noscript_disabled = apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', true ) ? false : true;
+
 					$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Use Meta Property Containers',
 						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
-					'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
+					'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
+							' <em>'._x( 'disabled by extension plugin or custom filter',
+								'option comment', 'wpsso' ).'</em>' :
+							$this->form->get_checkbox( 'schema_add_noscript' ) ).'</td>';
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 

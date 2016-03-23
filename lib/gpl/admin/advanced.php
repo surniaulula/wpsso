@@ -171,11 +171,20 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].', '.
 				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
 
-			$table_rows[] = $form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
-				'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
-			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].', '.
-				'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
-			
+			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
+				$table_rows[] = $form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
+					'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
+				'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].', '.
+					'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
+			} else {
+				$table_rows[] = '<tr class="hide_in_basic">'.
+				$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
+					'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
+				'<td colspan="2" class="blank"><em>'.
+				__( 'The schema head attributes filter has been disabled by an extension plugin or a custom filter.',
+					'wpsso' ).'<em></td>';
+			}
+				
 			$table_rows[] = $form->get_th_html( _x( 'Check for Duplicate Meta Tags',
 				'option label', 'wpsso' ), null, 'plugin_check_head' ).
 			$this->get_nocb_cell( 'plugin_check_head' );

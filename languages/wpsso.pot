@@ -344,32 +344,32 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/com/form.php:61 lib/config-gettext-extract.php:6
+#: lib/com/form.php:69 lib/config-gettext-extract.php:6
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:175 lib/com/form.php:367 lib/config-gettext-extract.php:7
+#: lib/com/form.php:183 lib/com/form.php:375 lib/config-gettext-extract.php:7
 msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/com/form.php:183 lib/config-gettext-extract.php:4
+#: lib/com/form.php:191 lib/config-gettext-extract.php:4
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:187 lib/config-gettext-extract.php:5
+#: lib/com/form.php:195 lib/config-gettext-extract.php:5
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:191 lib/config-gettext-extract.php:49
+#: lib/com/form.php:199 lib/config-gettext-extract.php:49
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:196 lib/com/form.php:262 lib/config-gettext-extract.php:3
+#: lib/com/form.php:204 lib/com/form.php:270 lib/config-gettext-extract.php:3
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -728,137 +728,143 @@ msgctxt "option label"
 msgid "&lt;html&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:174 lib/pro/admin/advanced.php:175
-#: lib/pro/admin/advanced.php:181
+#: lib/gpl/admin/advanced.php:175 lib/gpl/admin/advanced.php:181
+#: lib/pro/admin/advanced.php:175 lib/pro/admin/advanced.php:181
 msgctxt "option label"
 msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:179 lib/pro/admin/advanced.php:188
+#: lib/gpl/admin/advanced.php:184 lib/pro/admin/advanced.php:184
+msgid ""
+"The schema head attributes filter has been disabled by an extension plugin "
+"or a custom filter."
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:188 lib/pro/admin/advanced.php:188
 msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:184 lib/pro/admin/advanced.php:193
+#: lib/gpl/admin/advanced.php:193 lib/pro/admin/advanced.php:193
 msgctxt "option label"
 msgid "Use WP Locale for Language"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:189 lib/pro/admin/advanced.php:198
+#: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:198
 msgctxt "option label"
 msgid "Create Missing WP Media Images"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:194 lib/pro/admin/advanced.php:203
+#: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:203
 msgctxt "option label"
 msgid "Enforce Image Dimensions Check"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:207
+#: lib/gpl/admin/advanced.php:207 lib/pro/admin/advanced.php:207
 msgctxt "option label"
 msgid "Allow Upscaling of Small WP Images"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:202 lib/pro/admin/advanced.php:211
+#: lib/gpl/admin/advanced.php:211 lib/pro/admin/advanced.php:211
 msgctxt "option label"
 msgid "Maximum Image Upscale Percentage"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:208 lib/pro/admin/advanced.php:217
+#: lib/gpl/admin/advanced.php:217 lib/pro/admin/advanced.php:217
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:215 lib/pro/admin/advanced.php:224
+#: lib/gpl/admin/advanced.php:224 lib/pro/admin/advanced.php:224
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:221 lib/pro/admin/advanced.php:230
+#: lib/gpl/admin/advanced.php:230 lib/pro/admin/advanced.php:230
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:226 lib/pro/admin/advanced.php:235
+#: lib/gpl/admin/advanced.php:235 lib/pro/admin/advanced.php:235
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:238 lib/messages.php:749
+#: lib/gpl/admin/advanced.php:247 lib/messages.php:749
 #: lib/pro/admin/advanced.php:244
 msgctxt "option label"
 msgid "Object Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:244 lib/pro/admin/advanced.php:250
+#: lib/gpl/admin/advanced.php:253 lib/pro/admin/advanced.php:250
 msgctxt "option label"
 msgid "Verify Peer SSL Certificate"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:250 lib/pro/admin/advanced.php:256
+#: lib/gpl/admin/advanced.php:259 lib/pro/admin/advanced.php:256
 msgctxt "option label"
 msgid "Report Cache Purge Count"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:263 lib/pro/admin/advanced.php:266
+#: lib/gpl/admin/advanced.php:272 lib/pro/admin/advanced.php:266
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:267 lib/pro/admin/advanced.php:270
+#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:270
 msgctxt "option label"
 msgid "<em>Get Shortlink</em> Gives Shortened URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:272 lib/pro/admin/advanced.php:275
+#: lib/gpl/admin/advanced.php:281 lib/pro/admin/advanced.php:275
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:278
+#: lib/gpl/admin/advanced.php:284 lib/pro/admin/advanced.php:278
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:277 lib/pro/admin/advanced.php:280
+#: lib/gpl/admin/advanced.php:286 lib/pro/admin/advanced.php:280
 msgctxt "option label"
 msgid "Bit.ly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:281 lib/pro/admin/advanced.php:284
+#: lib/gpl/admin/advanced.php:290 lib/pro/admin/advanced.php:284
 msgctxt "option label"
 msgid "Bit.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:286 lib/pro/admin/advanced.php:289
+#: lib/gpl/admin/advanced.php:295 lib/pro/admin/advanced.php:289
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:291 lib/pro/admin/advanced.php:294
+#: lib/gpl/admin/advanced.php:300 lib/pro/admin/advanced.php:294
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:296
+#: lib/gpl/admin/advanced.php:305
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:310 lib/gpl/admin/advanced.php:349
+#: lib/gpl/admin/advanced.php:319 lib/gpl/admin/advanced.php:358
 #: lib/pro/admin/advanced.php:309 lib/pro/admin/advanced.php:345
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:312 lib/gpl/admin/advanced.php:351
+#: lib/gpl/admin/advanced.php:321 lib/gpl/admin/advanced.php:360
 #: lib/messages.php:687 lib/pro/admin/advanced.php:311
 #: lib/pro/admin/advanced.php:347
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:314 lib/gpl/admin/advanced.php:353
+#: lib/gpl/admin/advanced.php:323 lib/gpl/admin/advanced.php:362
 #: lib/messages.php:687 lib/pro/admin/advanced.php:313
 #: lib/pro/admin/advanced.php:349
 msgctxt "column title"
@@ -1372,7 +1378,7 @@ msgstr ""
 
 #: lib/messages.php:501 lib/messages.php:543 lib/messages.php:590
 #: lib/submenu/essential.php:96 lib/submenu/general.php:223
-#: lib/submenu/general.php:356
+#: lib/submenu/general.php:361
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -2051,12 +2057,6 @@ msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/pro/admin/advanced.php:184
-msgid ""
-"The schema head attributes filter has been disabled by an extension plugin "
-"and/or a custom filter."
-msgstr ""
-
 #: lib/pro/admin/advanced.php:299
 msgctxt "option label"
 msgid "Goo.gl URL Shortener API is ON"
@@ -2181,28 +2181,28 @@ msgid "Google+ Business Page URL"
 msgstr ""
 
 #: lib/setting/social-accounts.php:62 lib/submenu/essential.php:150
-#: lib/submenu/general.php:345
+#: lib/submenu/general.php:350
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
 #: lib/setting/social-accounts.php:66 lib/submenu/essential.php:163
-#: lib/submenu/general.php:373
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: lib/setting/social-accounts.php:70 lib/submenu/general.php:395
+#: lib/setting/social-accounts.php:70 lib/submenu/general.php:400
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:74 lib/submenu/general.php:399
+#: lib/setting/social-accounts.php:74 lib/submenu/general.php:404
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:78 lib/submenu/general.php:403
+#: lib/setting/social-accounts.php:78 lib/submenu/general.php:408
 msgctxt "option label"
 msgid "MySpace Business Page URL"
 msgstr ""
@@ -2349,21 +2349,21 @@ msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:122 lib/submenu/general.php:277
+#: lib/submenu/essential.php:122 lib/submenu/general.php:282
 msgctxt "option label"
 msgid "Include Google Structured Data"
 msgstr ""
 
-#: lib/submenu/essential.php:126 lib/submenu/general.php:281
+#: lib/submenu/essential.php:126 lib/submenu/general.php:286
 msgid "<a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/submenu/essential.php:139 lib/submenu/general.php:298
+#: lib/submenu/essential.php:139 lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Business Logo Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:143 lib/submenu/general.php:306
+#: lib/submenu/essential.php:143 lib/submenu/general.php:311
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
@@ -2373,7 +2373,7 @@ msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:155 lib/submenu/general.php:350
+#: lib/submenu/essential.php:155 lib/submenu/general.php:355
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr ""
@@ -2449,14 +2449,14 @@ msgid "Maximum Title Length"
 msgstr ""
 
 #: lib/submenu/general.php:108 lib/submenu/general.php:114
-#: lib/submenu/general.php:244 lib/submenu/general.php:314
-#: lib/submenu/general.php:381
+#: lib/submenu/general.php:244 lib/submenu/general.php:319
+#: lib/submenu/general.php:386
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/submenu/general.php:111 lib/submenu/general.php:311
-#: lib/submenu/general.php:378
+#: lib/submenu/general.php:111 lib/submenu/general.php:316
+#: lib/submenu/general.php:383
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
@@ -2546,47 +2546,52 @@ msgctxt "metabox title"
 msgid "Google Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/submenu/general.php:271
+#: lib/submenu/general.php:273
 msgctxt "option label"
 msgid "Use Meta Property Containers"
 msgstr ""
 
-#: lib/submenu/general.php:293
+#: lib/submenu/general.php:276
+msgctxt "option comment"
+msgid "disabled by extension plugin or custom filter"
+msgstr ""
+
+#: lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Website Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Business Banner (600x60) Image URL"
 msgstr ""
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:322
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:334
 msgctxt "option label"
 msgid "Schema Item Type for Home Page"
 msgstr ""
 
-#: lib/submenu/general.php:334
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Schema Item Type by Post Type"
 msgstr ""
 
-#: lib/submenu/general.php:362
+#: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:388
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:387
+#: lib/submenu/general.php:392
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Image Dimensions"
 msgstr ""

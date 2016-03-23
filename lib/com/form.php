@@ -42,7 +42,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return '<input type="hidden" name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="'.esc_attr( $value ).'" />';
 		}
 
-		public function get_checkbox( $name, $class = '', $id = '', $disabled = false ) {
+		public function get_checkbox( $name, $class = '', $id = '', $disabled = false, $force = null ) {
 			if ( empty( $name ) )
 				return;	// just in case
 
@@ -50,21 +50,29 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->options[$name.':is'] === 'disabled' )
 					$disabled = true;
 
+			if ( $force !== null )
+				$checked = checked( $force, 1, false );
+			elseif ( ! $disabled && $this->in_options( $name ) )
+				$checked = checked( $this->options[$name], 1, false );
+			elseif ( $this->in_defaults( $name ) )
+				$checked = checked( $this->defaults[$name], 1, false );
+			else $checked = '';
+
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1 ) ).
 				'<input type="checkbox"'.
-				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
+				( $disabled ? ' disabled="disabled"' :
+					' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
-				( ! $disabled && $this->in_options( $name ) ? checked( $this->options[$name], 1, false ) :
-					( $this->in_defaults( $name ) ? checked( $this->defaults[$name], 1, false ) : '' ) ).
-				' title="default is '.( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
+				$checked.' title="default is '.
+				( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
 				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_dom ) : '' ).'" />';
 
 			return $html;
 		}
 
-		public function get_no_checkbox( $name, $class = '', $id = '' ) {
-			return $this->get_checkbox( $name, $class, $id, true );
+		public function get_no_checkbox( $name, $class = '', $id = '', $force = null ) {
+			return $this->get_checkbox( $name, $class, $id, true, $force );
 		}
 
 		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $disabled = false ) {
@@ -532,15 +540,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			&$auto_draft_msg = 'Save draft or publish to update this value.' ) {
 
 			foreach ( $form_rows as $key => $val ) {
+
+				if ( ! empty( $val['no_auto_draft'] ) &&
+					( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
+					$is_auto_draft = true;
+					$val['td_class'] = $val['td_class'] ?
+						$val['td_class'].' blank' : 'blank';
+				} else $is_auto_draft = false;
+
 				if ( ! empty( $val['header'] ) )
 					$table_rows[$key] = '<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).
 						'><'.$val['header'].'>'.$val['label'].'</'.$val['header'].'></td>';
 				else $table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
-					$this->get_th_html( $val['label'], ( ! empty($val['th_class'] ) ? $val['th_class'] : '' ), $val['tooltip'] ).
+					$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ), $val['tooltip'] ).
 					'<td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).'>'.
-					( ! empty( $val['no_auto_draft'] ) && ( empty( $mod['post_status'] ) || 
-						$mod['post_status'] === 'auto-draft' ) ?
-							'<em>'.$auto_draft_msg.'</em>' : $val['content'] ).'</td>';
+					( $is_auto_draft ? '<em>'.$auto_draft_msg.'</em>' : $val['content'] ).'</td>';
 			}
 
 			return $table_rows;
