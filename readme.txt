@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.3 (ETA 2016/03/23)**
+**Version 3.28.3 (2016/03/23)**
 
 Official announcement: N/A
 
@@ -423,7 +423,7 @@ Official announcement: N/A
 
 = 3.28.3 =
 
-ETA 2016/03/23 - Refactored / improved several methods to use the new $mod array. Added admin styles and scripts to the new term.php page in WP 4.5.
+2016/03/23 - Refactored / improved several methods to use the new $mod array. Added admin styles and scripts to the new term.php page in WP 4.5.
 
 = 3.28.1.1 =
 
