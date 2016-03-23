@@ -119,8 +119,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
-						'option label', 'wpsso' ), null, 'google_schema_json' ).
+					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
+						'option label', 'wpsso' ), null, 'schema_social_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
 						sprintf( __( '<a href="%s">WebSite Information</a> for Google Search',
@@ -137,11 +137,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html( _x( 'Business Logo Image URL',
-						'option label', 'wpsso' ), null, 'google_schema_logo_url' ).
+						'option label', 'wpsso' ), null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
-						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
+						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.

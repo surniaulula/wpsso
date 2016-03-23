@@ -518,34 +518,43 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-google_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
 							break;
-						case 'tooltip-google_schema_add_noscript':
+						default:
+							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $info );
+							break;
+					}	// end of tooltip-google switch
+				/*
+				 * Publisher 'Schema' settings
+				 */
+				} elseif ( strpos( $idx, 'tooltip-schema_' ) === 0 ) {
+					switch ( $idx ) {
+						case 'tooltip-schema_add_noscript':
 							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';
 							break;
-						case 'tooltip-google_schema_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in webpage headers for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
+						case 'tooltip-schema_social_json':
+							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
 							break;
-						case 'tooltip-google_schema_alt_name':
+						case 'tooltip-schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
 							break;
-						case 'tooltip-google_schema_logo_url':
+						case 'tooltip-schema_logo_url':
 							$text = 'An image of your organization\'s logo that Google can use in search results and <em>Knowledge Graph</em>.';
 							break;
-						case 'tooltip-google_schema_banner_url':
+						case 'tooltip-schema_banner_url':
 							$text = 'A 600x60px banner of your organization\'s logo that Google can use in Articles and other Schema item types.';
 							break;
-						case 'tooltip-google_schema_img_dimensions':
+						case 'tooltip-schema_img_dimensions':
 							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$this->p->opt->get_defaults( 'schema_img_width' ).'x'.$this->p->opt->get_defaults( 'schema_img_height' ).' '.( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'un' : '' ).'cropped). The minimum image width required by Google is 696px for the resulting image. If you do not choose to crop this image size, make sure the height value is large enough for portrait images.';
 							break;
-						case 'tooltip-google_schema_desc_len':
+						case 'tooltip-schema_desc_len':
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
 							break;
-						case 'tooltip-google_schema_author_name':
+						case 'tooltip-schema_author_name':
 							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[None]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
-						case 'tooltip-google_schema_home_page':
+						case 'tooltip-schema_home_page':
 							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
 							break;
-						case 'tooltip-google_schema_type_for_ptn':
+						case 'tooltip-schema_type_for_ptn':
 							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
 							break;
 						default:

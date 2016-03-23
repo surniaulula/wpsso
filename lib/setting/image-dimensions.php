@@ -51,8 +51,8 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$table_rows[] = $this->form->get_th_html( _x( 'Google / Schema Images',
-						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
+					$table_rows[] = $this->form->get_th_html( _x( 'Google / Schema Markup Images',
+						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
 					$table_rows[] = $this->form->get_th_html( _x( 'Facebook / Open Graph Images',

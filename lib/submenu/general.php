@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Use Meta Property Containers',
-						'option label', 'wpsso' ), null, 'google_schema_add_noscript' ).
+						'option label', 'wpsso' ), null, 'schema_add_noscript' ).
 					'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
 							' <em>'._x( 'disabled by extension plugin or custom filter',
 								'option comment', 'wpsso' ).'</em>' :
@@ -279,8 +279,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
-						'option label', 'wpsso' ), null, 'google_schema_json' ).
+					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
+						'option label', 'wpsso' ), null, 'schema_social_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
 						sprintf( __( '<a href="%s">WebSite Information</a> for Google Search',
@@ -296,31 +296,31 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['schema_alt_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Website Alternate Name',
-						'option label', 'wpsso' ), null, 'google_schema_alt_name' ).
+						'option label', 'wpsso' ), null, 'schema_alt_name' ).
 					'<td>'.$this->form->get_input( 'schema_alt_name', 'wide' ).'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">'.
-						_x( 'Business Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'google_schema_logo_url' ).
+						_x( 'Business Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Business Banner (600x60) Image URL',
-						'option label', 'wpsso' ), null, 'google_schema_banner_url' ).
+						'option label', 'wpsso' ), null, 'schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 
 					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
-						'option label', 'wpsso' ), null, 'google_schema_img_dimensions' ).
+						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
 
 					$table_rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Maximum Description Length',
-						'option label', 'wpsso' ), null, 'google_schema_desc_len' ).
+						'option label', 'wpsso' ), null, 'schema_desc_len' ).
 					'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
 					$table_rows['schema_author_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author / Person Name Format',
-						'option label', 'wpsso' ), null, 'google_schema_author_name' ).
+						'option label', 'wpsso' ), null, 'schema_author_name' ).
 					'<td>'.$this->form->get_select( 'schema_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
@@ -332,12 +332,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Schema Item Type for Home Page',
-						'option label', 'wpsso' ), null, 'google_schema_home_page' ).
+						'option label', 'wpsso' ), null, 'schema_home_page' ).
 					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'schema_type' ).'</td>';
 
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Schema Item Type by Post Type',
-						'option label', 'wpsso' ), null, 'google_schema_type_for_ptn' ).
+						'option label', 'wpsso' ), null, 'schema_type_for_ptn' ).
 					'<td>'.$schema_select.'</td>';
 
 					break;
