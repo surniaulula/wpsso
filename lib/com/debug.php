@@ -107,13 +107,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( is_int( $class_idx ) ) {
 				if ( $function_idx === false )
 					$function_idx = $class_idx;
-				$log_msg .= sprintf( '%-35s:: ', 
+				$log_msg .= sprintf( '%-36s:: ', 
 					( empty( $stack[$class_idx]['class'] ) ? 
 						'' : $stack[$class_idx]['class'] ) );
 			} else {
 				if ( $function_idx === false )
 					$function_idx = 1;
-				$log_msg .= sprintf( '%-35s:: ', $class_idx );
+				$log_msg .= sprintf( '%-36s:: ', $class_idx );
 			}
 
 			if ( is_int( $function_idx ) ) {

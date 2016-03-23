@@ -695,9 +695,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'info-social-accounts':
 						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).' '.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search, and/or enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup in your webpage headers.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
 						break;
-					case 'info-sharing-include':
-						$text = '<blockquote class="top-info"><p>'.__( 'The buttons enabled bellow (along with those in the widget) can be included or excluded as a group based on the webpage content type.', 'wpsso' ).' '.__( 'This does <em>not</em> apply to the shortcode and/or function buttons, which are managed with their own parameter options.', 'wpsso' ).'</p></blockquote>';
-						break;
 					default:
 						$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
 						break;

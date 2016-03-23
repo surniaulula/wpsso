@@ -42,6 +42,9 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'hook name: '.$hook );
+
 			// don't load our javascript where we don't need it
 			switch ( $hook ) {
 				// license settings pages include a "view plugin details" feature
@@ -56,6 +59,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case 'profile.php':
 				case 'post.php':
 				case 'post-new.php':
+				case 'term.php':
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
 

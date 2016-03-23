@@ -606,11 +606,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = false;
 
-			if ( is_singular() || $use_post )
+			if ( $use_post || is_singular() )
 				$ret = true;
 			elseif ( is_admin() ) {
+				// $screen_id = upload | edit-post | post | edit-page | page
 				$screen_id = self::get_screen_id();
-				// exclude post/page/media editing lists
+
+				// exclude the post/page/media editing lists
 				if ( $screen_id === 'upload' ||
 					strpos( $screen_id, 'edit-' ) === 0 )
 						$ret = false;
@@ -635,7 +637,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $use_post ) ) {
 				$post_obj = get_post( $use_post );
 
-			} elseif ( $use_post === false ) {
+			} elseif ( $use_post === false || 
+				apply_filters( 'sucom_is_post_page', is_singular(), $use_post ) ) {
+
 				$post_obj = get_queried_object();
 
 				if ( $post_obj === null && is_admin() ) {
@@ -645,10 +649,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 
 				// fallback to $post if object is empty / invalid
-				if ( ( empty( $post_obj->ID ) || 
-					empty( $post_obj->post_type ) ) &&
-						isset( $GLOBALS['post'] ) )
-							$post_obj = $GLOBALS['post'];
+				if ( empty( $post_obj->ID ) &&
+					isset( $GLOBALS['post'] ) )
+						$post_obj = $GLOBALS['post'];
 
 			} elseif ( $use_post === true && 
 				isset( $GLOBALS['post'] ) ) {
@@ -681,7 +684,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_tax() || is_category() || is_tag() )
 				$ret = true;
 			elseif ( is_admin() ) {
+				// $screen_id = edit-category | edit-post_tag | term
+				$screen_id = self::get_screen_id();
+
 				if ( self::get_request_value( 'taxonomy' ) !== '' && 
+					self::get_request_value( 'tag_ID' ) !== '' )
+						$ret = true;
+				elseif ( $screen_id === 'term' &&
 					self::get_request_value( 'tag_ID' ) !== '' )
 						$ret = true;
 			}
@@ -715,6 +724,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return $ret;
 		}
 
+		public static function is_tag_page( $cache = true ) {
+			if ( $cache &&
+				isset( self::$is['tag_page'] ) )
+					return self::$is['tag_page'];
+
+			$ret = false;
+
+			if ( is_tag() )
+				$ret = true;
+			elseif ( is_admin() ) {
+				if ( self::is_term_page() &&
+					self::get_request_value( 'taxonomy' ) === '_tag' )
+						$ret = true;
+			}
+
+			$ret = apply_filters( 'sucom_is_tag_page', $ret );
+
+			if ( $cache )
+				return self::$is['tag_page'] = $ret;
+			else return $ret;
+		}
+
 		public function get_term_object( $term_id = false, $tax_slug = false, $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
@@ -734,9 +765,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$term_obj = apply_filters( 'sucom_get_term_object', $term_obj, $term_id, $tax_slug );
 
 			switch ( $output ) {
-				case 'term_id':
 				case 'id':
 				case 'ID':
+				case 'term_id':
 					return isset( $term_obj->term_id ) ? 
 						$term_obj->term_id : false;
 					break;
@@ -806,7 +837,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' )
 					$user_id = get_current_user_id();
 				$user_obj = get_userdata( $user_id );
-
 			}
 
 			$user_obj = apply_filters( 'sucom_get_user_object', $user_obj, $user_id );

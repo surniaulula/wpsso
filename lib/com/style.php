@@ -36,13 +36,16 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			wp_register_style( 'sucom-metabox-tabs',
 				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'hook name: '.$hook );
+
 			switch ( $hook ) {
 				case 'edit-tags.php':
 				case 'user-edit.php':
 				case 'profile.php':
 				case 'post.php':
 				case 'post-new.php':
-
+				case 'term.php':
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for editing page' );
 
@@ -54,7 +57,6 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 				// license settings pages include a "view plugin details" feature
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ):
-
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' licenses page' );
 
@@ -65,7 +67,6 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
-
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
 
@@ -77,7 +78,6 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					break;
 
 				case 'plugin-install.php':				// css for view plugin details thickbox
-
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for plugin install page' );
 

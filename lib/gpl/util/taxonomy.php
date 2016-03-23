@@ -20,6 +20,15 @@ if ( ! class_exists( 'WpssoGplUtilTaxonomy' ) && class_exists( 'WpssoTaxonomy' )
 			$this->add_actions();
 		}
 
+		/*
+		 * The Free version does not have any code to get / save meta data, nor
+		 * does it have any video API modules, so disable some methods that 
+		 * wouldn't return anything anyway. ;-)
+		 */
+		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
+			return $this->not_implemented( __METHOD__, null );
+		}
+
 		public function get_md_image( $num, $size_name, array &$mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}

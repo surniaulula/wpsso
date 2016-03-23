@@ -429,61 +429,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $topics;
 		}
 
-		/**
-		 * Purpose: Returns a specific option from the custom social settings meta with
-		 * fallback for multiple option keys.
-	 	 *
-		 * If index is an array, then get the first non-empty option from the index array.
-		 * This is an easy way to provide a fallback value for the first array key.
-		 *
-		 * Example: get_mod_options( $post_id, 'post', array( 'rp_desc', 'og_desc' ) );
-		 */
+		// deprecated 2016/03/22
 		public function get_mod_options( $mod_id, $mod_name, $idx = false, $filter_options = true ) {
-
-			// basic sanitation
-			if ( empty( $mod_id ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'mod_id \''.$mod_id.'\' is empty' );
-				return null;
-
-			} elseif ( ! isset( $this->p->m['util'][$mod_name] ) ||
-				! is_object( $this->p->m['util'][$mod_name] ) ) {
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'mod_name \''.$mod_name.'\' module not found' );
-				return null;
-			}
-
-			// return the whole options array
-			if ( $idx === false ) {
-				$ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $idx, $filter_options );
-
-			// return the first matching index value
-			} else {
-				if ( ! is_array( $idx ) )
-					$idx = array( $idx );
-				else $idx = array_unique( $idx );	// just in case
-
-				foreach ( $idx as $key ) {
-					if ( $key === 'none' )		// special index keyword
-						return null;
-					elseif ( empty( $key ) )
-						continue;
-					elseif ( ( $ret = $this->p->m['util'][$mod_name]->get_options( $mod_id, $key, $filter_options ) ) !== null );
-						break;			// stop if we have an option value
-				}
-			}
-
-			if ( $ret !== null ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom '.$mod_name.' '.
-						( $idx === false ? 'options' : ( is_array( $idx ) ? 
-							implode( ', ', $idx ) : $idx ) ).' = '.
-						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
-				}
-			}
-
-			return $ret;
+			return null;
 		}
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {

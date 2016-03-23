@@ -138,11 +138,11 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			if ( ! empty( $desc ) )
 				return $desc;
 
-			$term_obj = get_term_by( 'id', $mod['id'], $this->tax_slug, OBJECT, 'raw' );
+			$term_obj = get_term_by( 'id', $mod['id'], $mod['tax_slug'], OBJECT, 'raw' );
 			if ( empty( $term_obj->term_id ) )
 				return $desc;
 
-			$desc = $this->p->util->get_mod_options( $term_obj->term_id, 'taxonomy', 'og_desc' );
+			$desc = $this->get_options( $mod['id'], 'og_desc' );
 
 			if ( $this->p->debug->enabled ) {
 				if ( empty( $desc ) )
@@ -151,12 +151,12 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			}
 
 			if ( empty( $desc ) ) {
-				if ( is_tag( $term_obj->term_id ) ) {
-					if ( ! $desc = tag_description( $term_obj->term_id ) )
+				if ( is_tag( $mod['id'] ) ) {
+					if ( ! $desc = tag_description( $mod['id'] ) )
 						$desc = sprintf( 'Tagged with %s', $term_obj->name );
 	
-				} elseif ( is_category( $term_obj->term_id ) ) { 
-					if ( ! $desc = category_description( $term_obj->term_id ) )
+				} elseif ( is_category( $mod['id'] ) ) { 
+					if ( ! $desc = category_description( $mod['id'] ) )
 						$desc = sprintf( '%s Category', $term_obj->name ); 
 	
 				} else {

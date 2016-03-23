@@ -235,6 +235,52 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
+		/*
+		 * Return a specific option from the custom social settings meta with fallback for 
+		 * multiple option keys. If $idx is an array, then get the first non-empty option 
+		 * from the options array. This is an easy way to provide a fallback value for the 
+		 * first array key. Use 'none' as a key name to skip this fallback behavior.
+		 *
+		 * Example: get_options_multi( $id, array( 'rp_desc', 'og_desc' ) );
+		 */
+		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
+
+			if ( empty( $mod_id ) )
+				return null;
+
+			// return the whole options array
+			if ( $idx === false )
+				$ret = $this->get_options( $mod_id, $idx, $filter_options );
+
+			// return the first matching index value
+			else {
+				if ( ! is_array( $idx ) )		// convert a string to an array
+					$idx = array( $idx );
+				else $idx = array_unique( $idx );	// just in case
+
+				foreach ( $idx as $key ) {
+					if ( $key === 'none' )		// special index keyword
+						return null;
+					elseif ( empty( $key ) )	// just in case
+						continue;
+					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_options ) ) !== null );
+						break;			// stop if/when we have an option
+				}
+			}
+
+			if ( $ret !== null ) {
+				if ( $this->p->debug->enabled ) {
+					$mod = $this->get_mod( $mod_id );
+					$this->p->debug->log( 'custom '.$mod['name'].' '.
+						( $idx === false ? 'options' : ( is_array( $idx ) ? 
+							implode( ', ', $idx ) : $idx ) ).' = '.
+						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+				}
+			}
+
+			return $ret;
+		}
+
 		public function get_options( $mod_id, $idx = false, $filter_options = true ) {
 			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
 		}

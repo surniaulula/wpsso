@@ -110,8 +110,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type_id = null;
 
 			if ( $use_mod_opts ) {
-				if ( ! empty( $mod['id'] ) && ! empty( $mod['name'] ) ) {
-					$type_id = $this->p->util->get_mod_options( $mod['id'], $mod['name'], 'schema_type' );
+				if ( ! empty( $mod['obj'] ) ) {	// just in case
+					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );
+
 					if ( empty( $type_id ) || $type_id === 'none' ) {
 						$type_id = null;
 					} elseif ( empty( $this->schema_types[$type_id] ) ) {
@@ -120,6 +121,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'custom type_id '.$type_id.' from module '.$mod['name'] );
+
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'incomplete module: missing id and/or name' );
 			} elseif ( $this->p->debug->enabled )
@@ -284,9 +286,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( $type_filter_name );	// begin timer for json array
 
-				if ( ! empty( $mod['id'] ) && ! empty( $mod['name'] ) )
-					// returns null if index key is not set in the options array
-					$is_main = $this->p->util->get_mod_options( $mod['id'], $mod['name'], 'schema_is_main' );
+				if ( $mod['obj'] )
+					$is_main = $mod['obj']->get_options( $mod['id'], 'schema_is_main' );
 				else $is_main = null;
 
 				if ( $is_main === null ) {
@@ -522,8 +523,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			if ( empty( $wpsso->m['util']['user'] ) ||
-				! is_object( $wpsso->m['util']['user'] ) ) {
+			// get the user module
+			if ( empty( $wpsso->m['util']['user'] ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty user module' );
 				return 0;
@@ -534,23 +535,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@type' => 'Person',
 			);
 
-			$url = get_the_author_meta( 'url', $user_id );
+			$url = get_the_author_meta( 'url', $mod['id'] );
+
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod['obj']->get_author_name( $user_id, $wpsso->options['schema_author_name'] );
+			$name = $mod['obj'] ?
+				$mod['obj']->get_author_name( $mod['id'], $wpsso->options['schema_author_name'] ) : null;
+
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
-			$desc = $wpsso->util->get_mod_options( $user_id, $mod['name'], array( 'schema_desc', 'og_desc' ) );
+			$desc = $mod['obj'] ?
+				$mod['obj']->get_options_multi( $mod['id'], 
+					array( 'schema_desc', 'og_desc' ) ) : null;
+
 			if ( empty( $desc ) )
-				$desc = get_the_author_meta( 'description', $user_id );
+				$desc = get_the_author_meta( 'description', $mod['id'] );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $mod['obj']->get_og_image( 1, $size_name, $user_id, false );
+			$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );
 
 			if ( ! empty( $og_image ) )
 				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
