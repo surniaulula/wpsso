@@ -365,6 +365,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Tested with WordPress v4.5-RC1-37079.
 	* Added new filters for schema type defaults:
 		* 'ngfb_schema_type_for_author_forced'
 		* 'ngfb_schema_type_for_default'
@@ -441,7 +442,7 @@ Official announcement: N/A
 
 = 3.28.4 =
 
-2016/03/25 - Added new filters for schema type defaults.
+2016/03/25 - Added new filters for schema type defaults. Tested with WordPress v4.5-RC1-37079.
 
 = 3.28.3 =
 
