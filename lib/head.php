@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					continue;
 				$ins = $this->p->check->aop( $ext, false );
 				$mt_gen['generator'][] = $info['short'].' '.
-					( $ins ? 'Pro' : 'Free' ).' '.$info['version'].
+					( $ins ? 'P' : 'F' ).' '.$info['version'].
 					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ?
 						' L' : ( $ins ? ' U' : '' ) );
 			}
