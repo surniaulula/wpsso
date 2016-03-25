@@ -320,10 +320,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( empty( $info['version'] ) )	// only active extensions
 					continue;
 				$ins = $this->p->check->aop( $ext, false );
-				$mt_gen['generator'][] = $info['short'].' '.
-					( $ins ? 'P' : 'F' ).' '.$info['version'].
+				$mt_gen['generator'][] = $info['short'].' '.( $ins ? 'P' : 'F' ).'/'.
 					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ?
-						' L' : ( $ins ? ' U' : '' ) );
+						'L' : ( $ins ? 'U' : 'G' ) ).' '.$info['version'];
 			}
 
 			/*
