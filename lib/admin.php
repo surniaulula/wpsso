@@ -245,13 +245,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$short = $this->p->cf['plugin'][$menu_ext]['short'];
 
 			if ( strpos( $menu_id, 'separator' ) !== false ) {
-				$menu_title = '<div style="z-index:999;color:#666;text-align:left;border-bottom:1px dotted;padding:0;margin:0;cursor:default;"'.
-					' onClick="return false;">'.( $menu_name === $this->p->cf['menu'] ? 
+				$separator_css = 'z-index:999;opacity:0.3;padding:0;margin:-2px 0;cursor:default;'.
+					'text-align:center;line-height:0.9em;font-style:italic;letter-spacing:0.5px;';
+				$menu_title = '<div style="'.$separator_css.'" onClick="return false;">'.
+					( $menu_name === $this->p->cf['menu'] ? 
 						$menu_name.self::$is_pkg[$menu_ext] : 
 							( strpos( $menu_name, ' Extension' ) !== false ? 
 								str_replace( ' Extension', self::$is_pkg[$menu_ext].' Extension', $menu_name ) : 
 									$menu_name ) ).'</div>';
-				$menu_slug = '';
+				$menu_slug = '#';
 				$page_title = '';
 				$function = '';
 			} else {
@@ -326,11 +328,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// wordpress handles the actual saving of the options
 		public function registered_setting_sanitation( $opts ) {
 			$network = false;
+
 			if ( ! is_array( $opts ) ) {
 				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>'.$this->p->cf['uca'].' Error</b> : '.
 					__( 'Submitted options are not an array.', 'wpsso' ), 'error' );
 				return $opts;
 			}
+
 			// get default values, including css from default stylesheets
 			$def_opts = $this->p->opt->get_defaults();
 			$opts = SucomUtil::restore_checkboxes( $opts );
@@ -338,15 +342,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
+
+			// admin url will redirect to essential settings since we're not on a settings page here
 			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
 				'-action=clear_all_cache' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
+
 			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
 				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
 						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
+
 			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
 			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
 				$this->check_tmpl_head_elements();
+
 			return $opts;
 		}
 
@@ -693,7 +702,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_version_info() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) )	// filter out extensions that are not active
+				if ( empty( $info['version'] ) )	// only active extensions
 					continue;
 
 				$stable_version = __( 'N/A', 'wpsso' );
@@ -752,6 +761,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib']['gpl'] ) )
 					continue;
+
 				if ( $ext === $this->p->cf['lca'] ) {	// features for this plugin
 					$features = array(
 						'Debug Logging Enabled' => array(
@@ -813,6 +823,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib']['pro'] ) )
 					continue;
+
 				$features = array();
 				$short = $this->p->cf['plugin'][$ext]['short'];
 				$short_pro = $short.' Pro';
@@ -820,8 +831,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					true, $this->p->is_avail['aop'] );
 
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
-					if ( $sub === 'admin' ) 
-						continue;	// skip status for admin menus and tabs
+					if ( $sub === 'admin' )	// skip status for admin menus and tabs
+						continue;
 					foreach ( $libs as $id_key => $label ) {
 						/* 
 						 * Example:

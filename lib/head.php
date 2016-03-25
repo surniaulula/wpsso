@@ -203,7 +203,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $use_post );
-			$gen_short = $this->p->cf['plugin'][$lca]['short'].( $this->p->is_avail['aop'] ? ' Pro' : '' );
 			$header_array = array();
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
@@ -313,14 +312,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id );
 
 			/*
+			 * Generator meta tags
+			 */
+			$mt_gen = array();
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( empty( $info['version'] ) )	// only active extensions
+					continue;
+				$ins = $this->p->check->aop( $ext, false );
+				$mt_gen['generator'][] = $info['short'].' '.
+					( $ins ? 'Pro' : 'Free' ).' '.$info['version'].
+					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ?
+						' L' : ( $ins ? ' U' : '' ) );
+			}
+
+			/*
 			 * Combine and return all meta tags
 			 */
 			$header_array = array_merge(
-				$this->get_single_mt( 'meta', 'name', 'generator',
-					$gen_short.' '.$this->p->cf['plugin'][$lca]['version'].
-					( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ?
-						'L' : ( $this->p->is_avail['aop'] ? 'U' : 'G' ) ).
-					( $this->p->is_avail['util']['um'] ? ' +' : ' -' ).'UM', '', $use_post ),
+				$this->get_mt_array( 'meta', 'name', $mt_gen, $use_post ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $use_post ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $use_post ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),

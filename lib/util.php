@@ -1013,6 +1013,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
+		// deprecated 2016/03/23
+		public function get_object_id_mod( $use_post = false, $id = false, $mod_name = false ) {
+			return array();
+		}
+
 		/*
 		 * Return the post / user / term id, module name, and the module object reference.
 		 */

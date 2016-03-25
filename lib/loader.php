@@ -50,10 +50,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 				foreach ( $info['lib'][$type] as $sub => $libs ) {
-					// the admin sub-folder gets loaded only in the back-end
-					if ( $sub === 'admin' && ! is_admin() )
+					if ( $sub === 'admin' && ! is_admin() )	// load admin sub-folder only in back-end
 						continue;
-
 					foreach ( $libs as $id_key => $label ) {
 						/* 
 						 * Example:
@@ -62,14 +60,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
+
 						if ( $this->p->is_avail[$sub][$id] ) {
-							// this is usually a false === false comparison
+
+							// compare $action from lib id with $has_action method argument
+							// this is usually / almost always a false === false comparison
 							if ( $action !== $has_action ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'ignoring '.$lca.' '.
 										$type.'/'.$sub.'/'.$id_key );
 								continue;
 							}
+
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id_key.': '.$label );
 							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );

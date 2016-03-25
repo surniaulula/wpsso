@@ -117,15 +117,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = null;
 					} elseif ( empty( $this->schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types' );
+							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types property' );
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'custom type_id '.$type_id.' from module '.$mod['name'] );
 
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'incomplete module: missing id and/or name' );
+					$this->p->debug->log( 'incomplete module: class object is empty' );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'skipping check for custom type_id: use_mod_opts is false' );
+				$this->p->debug->log( 'skipping custom type_id check: use_mod_opts argument is false' );
 
 			if ( empty( $type_id ) ) {
 				if ( is_front_page() )
@@ -138,39 +138,56 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	
 					if ( ! empty( $post_obj->post_type ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
+
 							$type_id = $this->p->options['schema_type_for_'.$post_obj->post_type];
 	
 							if ( empty( $type_id ) || $type_id === 'none' ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type for '.$post_obj->post_type.' post type is disabled' );
+									$this->p->debug->log( 'schema type for post type '.$post_obj->post_type.' is disabled' );
 								$type_id = null;
 	
 							} elseif ( empty( $this->schema_types[$type_id] ) ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type id '.$type_id.' not found in schema types' );
+									$this->p->debug->log( 'schema type '.$type_id.' not found in schema types array' );
 								$type_id = $default_key;
 							}
 	
 						} elseif ( ! empty( $this->schema_types[$post_obj->post_type] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'setting schema type to post type '.$post_obj->post_type );
 							$type_id = $post_obj->post_type;
 
 						// unknown post type
-						} else $type_id = $default_key;
+						} else {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'using default schema type: unknown post type '.$post_obj->post_type );
+							$type_id = apply_filters( $lca.'_schema_type_for_post_type_unknown', $default_key );
+						}
 
 					// post objects without a post_type property
-					} else $type_id = $default_key;
+					} else {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'using default schema type: empty post type' );
+						$type_id = apply_filters( $lca.'_schema_type_for_post_type_empty', $default_key );
+					}
 
 				} elseif ( $this->p->util->force_default_author( $mod, 'og' ) ) {
-					$type_id = $default_key;
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'using schema type for post: default author is forced' );
+					$type_id = apply_filters( $lca.'_schema_type_for_author_forced', $this->p->options['schema_type_for_post'] );
 
 				// default value for all other webpages
-				} else $type_id = $default_key;
+				} else {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'using default schema type' );
+					$type_id = $default_key;
+				}
 			}
 
 			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema type id is "'.$type_id.'"' );
+				$this->p->debug->log( 'schema type id is '.$type_id );
 
 			if ( isset( $this->schema_types[$type_id] ) ) {
 				return $return_id ?

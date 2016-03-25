@@ -28,43 +28,43 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
 
-			if ( ! isset( $this->p->cf['opt']['defaults']['options_filtered'] ) ||
-				$this->p->cf['opt']['defaults']['options_filtered'] !== true ||
+			$defs =& $this->p->cf['opt']['defaults'];	// shortcut
+
+			if ( ! isset( $defs['options_filtered'] ) ||
+				$defs['options_filtered'] !== true ||
 					$force_filter === true ) {
 
 				$lca = $this->p->cf['lca'];
-				$this->p->cf['opt']['defaults'] = $this->p->util->add_ptns_to_opts( $this->p->cf['opt']['defaults'], 
+				$defs = $this->p->util->add_ptns_to_opts( $defs, 
 					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
-				$this->p->cf['opt']['defaults']['seo_author_field'] = empty( $this->p->options['plugin_cm_gp_name'] ) ? 
-					$this->p->cf['opt']['defaults']['plugin_cm_gp_name'] : $this->p->options['plugin_cm_gp_name'];
+				$defs['seo_author_field'] = empty( $this->p->options['plugin_cm_gp_name'] ) ? 
+					$defs['plugin_cm_gp_name'] : $this->p->options['plugin_cm_gp_name'];
 
-				$this->p->cf['opt']['defaults']['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
-					$this->p->cf['opt']['defaults']['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
+				$defs['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
+					$defs['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
 	
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {
-						if ( array_key_exists( $key, $this->p->cf['opt']['defaults'] ) && 
-							array_key_exists( $key.':use', $this->p->site_options ) ) {
-	
+						if ( isset( $defs[$key] ) && 
+							isset( $this->p->site_options[$key.':use'] ) ) {
 							if ( $this->p->site_options[$key.':use'] === 'default' )
-								$this->p->cf['opt']['defaults'][$key] = $this->p->site_options[$key];
+								$defs[$key] = $this->p->site_options[$key];
 						}
 					}
 				}
 
-				$this->p->cf['opt']['defaults'] = apply_filters( $lca.'_get_defaults', 
-					$this->p->cf['opt']['defaults'] );
+				$defs = apply_filters( $lca.'_get_defaults', $defs );
 
-				$this->p->cf['opt']['defaults']['options_filtered'] = true;
+				$defs['options_filtered'] = true;
 			}
 
 			if ( $idx !== false ) 
-				if ( isset( $this->p->cf['opt']['defaults'][$idx] ) )
-					return $this->p->cf['opt']['defaults'][$idx];
+				if ( isset( $defs[$idx] ) )
+					return $defs[$idx];
 				else return null;
-			else return $this->p->cf['opt']['defaults'];
+			else return $defs;
 		}
 
 		public function get_site_defaults( $idx = false, $force_filter = false ) {
