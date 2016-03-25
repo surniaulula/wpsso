@@ -9,7 +9,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Faceboo
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.4.2
+Tested Up To: 4.5
 Stable Tag: 3.28.3
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
@@ -354,6 +354,24 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.28.4 (2016/03/25)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added new filters for schema type defaults:
+		* 'ngfb_schema_type_for_author_forced'
+		* 'ngfb_schema_type_for_default'
+		* 'ngfb_schema_type_for_home_page'
+		* 'ngfb_schema_type_for_post_type_empty'
+		* 'ngfb_schema_type_for_post_type_unknown'
+
 **Version 3.28.3 (2016/03/23)**
 
 Official announcement: N/A
@@ -420,6 +438,10 @@ Official announcement: N/A
 	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 == Upgrade Notice ==
+
+= 3.28.4 =
+
+2016/03/25 - Added new filters for schema type defaults.
 
 = 3.28.3 =
 
