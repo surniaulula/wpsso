@@ -77,6 +77,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		// def_opts accepts output from functions, so don't force reference
 		public function options( $options_name, &$opts = array(), $def_opts = array() ) {
 
+			// each plugin options version is saved to a unique key
 			$opts_version = empty( $opts['plugin_'.$this->p->cf['lca'].'_opt_version'] ) ?
 				0 : $opts['plugin_'.$this->p->cf['lca'].'_opt_version'];
 

@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 						array( $this, 'add_column_headings' ), 10, 1 );
 					add_filter( 'manage_'.$this->tax_slug.'_custom_column', 
 						array( $this, 'get_taxonomy_column_content' ), 10, 3 );
-	
+
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_image_taxonomy_column_content' => 4,
 						'og_desc_taxonomy_column_content' => 4,
@@ -154,11 +154,11 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 				if ( is_tag( $mod['id'] ) ) {
 					if ( ! $desc = tag_description( $mod['id'] ) )
 						$desc = sprintf( 'Tagged with %s', $term_obj->name );
-	
+
 				} elseif ( is_category( $mod['id'] ) ) { 
 					if ( ! $desc = category_description( $mod['id'] ) )
 						$desc = sprintf( '%s Category', $term_obj->name ); 
-	
+
 				} else {
 					if ( ! empty( $term_obj->description ) )
 						$desc = $term_obj->description;

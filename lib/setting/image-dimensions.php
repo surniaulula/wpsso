@@ -64,11 +64,11 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
-	
+
 					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';
-	
+
 					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';

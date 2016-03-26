@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoAdmin {
-	
+
 		protected $p;
 		protected $menu_id = null;
 		protected $menu_name = null;
@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'wp_profile_updated_redirect' ), -100, 2 );
-	
+
 				if ( is_multisite() ) {
 					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 					add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_meta_box( $this->pagehook.'_status_gpl',
 					_x( 'Standard Features', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
-	
+
 				add_meta_box( $this->pagehook.'_status_pro',
 					_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
 				$this->p->debug->show_html( null, 'debug log' );
 			}
-			
+
 			$menu_ext = $this->menu_ext;
 			if ( empty( $menu_ext ) )
 				$menu_ext = $this->p->cf['lca'];
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$purchase_url = $status_key === 'rec' && 
 						! empty( $arr['purchase'] ) ?
 							$arr['purchase'] : '';
-	
+
 					$td_class = empty( $arr['td_class'] ) ?
 						'' : ' '.$arr['td_class'];
 
@@ -1289,7 +1289,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $file ), true );
 					continue;
 				}
-				
+
 				if ( fwrite( $fh, $php ) ) {
 					fclose( $fh );
 					$this->p->notice->inf( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ), true );

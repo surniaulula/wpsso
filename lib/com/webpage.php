@@ -129,7 +129,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( ! empty( $caption ) &&
 						! empty( $add_hashtags ) && 
 							! preg_match( '/( #[a-z0-9\-]+)+$/U', $caption ) ) {
-	
+
 						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 						if ( ! empty( $hashtags ) ) 
 							$caption = $this->p->util->limit_text_length( $caption, 
@@ -239,7 +239,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'custom title skipped: no md_idx value' );
-	
+
 			// get seed if no custom meta title
 			if ( empty( $title ) ) {
 				$title = apply_filters( $this->p->cf['lca'].'_title_seed', '', $mod['use_post'], $add_hashtags, $md_idx, $src_id );
@@ -288,7 +288,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$title = wp_title( $separator, false, 'right' );	// on right for compatibility with aioseo
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
-	
+
 				} elseif ( $mod['is_taxonomy'] ) {
 
 					$term_obj = $this->p->util->get_term_object( $mod['id'], $mod['tax_slug'] );
@@ -316,7 +316,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
 				}
-	
+
 				// just in case
 				if ( empty( $title ) ) {
 					$title = get_bloginfo( 'name', 'display' );
@@ -466,14 +466,14 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					// if there's no excerpt, then fallback to the content
 					if ( empty( $desc ) )
 						$desc = $this->get_content( $mod['id'], $mod['use_post'], $use_cache, $md_idx, $src_id );
-			
+
 					// ignore everything before the first paragraph if true
 					if ( $this->p->options['plugin_p_strip'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'removing all text before the first paragraph' );
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
-		
+
 				} elseif ( $mod['is_taxonomy'] ) {
 
 					if ( is_tag() ) {
@@ -503,7 +503,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = sprintf( 'Authored by %s', $user_obj->display_name );
 
 					$desc = apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
-			
+
 				} elseif ( is_day() ) 
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
 				elseif ( is_month() ) 

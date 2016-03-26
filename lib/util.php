@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					);
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', 
 						$wp_objects, $post_id, $lang, $sharing_url );
-	
+
 					$deleted = $this->clear_cache_objects( $transients, $wp_objects );
 
 					if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
@@ -879,7 +879,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $has_changed === false ?
 				$ts : get_option( WPSSO_TS_NAME, array() );
 		}
-	
+
 		// deprecated in v8.20.1.1 on 2015/12/09
 		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
 			if ( function_exists( '_deprecated_function' ) )
@@ -1231,7 +1231,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			return $url;
 		}
-	
+
 		public function is_uniq_url( $url = '', $context = 'default' ) {
 
 			if ( empty( $url ) ) 

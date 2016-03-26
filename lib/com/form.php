@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! class_exists( 'SucomForm' ) ) {
 
 	class SucomForm {
-	
+
 		private $p;
 		private $text_dom = false;
 
@@ -293,7 +293,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			if ( ! empty( $len ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'text_'.$id );
-			
+
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).

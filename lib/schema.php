@@ -135,23 +135,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				elseif ( $mod['is_post'] ) {
 					$post_obj = $this->p->util->get_post_object( $mod['id'] );
-	
+
 					if ( ! empty( $post_obj->post_type ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
 
 							$type_id = $this->p->options['schema_type_for_'.$post_obj->post_type];
-	
+
 							if ( empty( $type_id ) || $type_id === 'none' ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'schema type for post type '.$post_obj->post_type.' is disabled' );
 								$type_id = null;
-	
+
 							} elseif ( empty( $this->schema_types[$type_id] ) ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'schema type '.$type_id.' not found in schema types array' );
 								$type_id = $default_key;
 							}
-	
+
 						} elseif ( ! empty( $this->schema_types[$post_obj->post_type] ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'setting schema type to post type '.$post_obj->post_type );
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$ret['sameAs'][] = esc_url( $url_locale );
 				}
 			}
-	
+
 			return self::return_data_from_filter( $json_data, $ret );
 		}
 

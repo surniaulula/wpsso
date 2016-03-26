@@ -112,12 +112,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $force_regen !== false )
 						delete_transient( $force_regen_transient_id );
 				} 
-	
+
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_image( 1,
 					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
-	
+
 			// allow for empty post_id in order to execute featured / attached image filters for modules
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 				$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
 									( $img_cropped === 0 ? '' : ' cropped' ).')' );
 						}
-	
+
 						$fullsizepath = get_attached_file( $pid );
 						$resized = image_make_intermediate_size( $fullsizepath, 
 							$size_info['width'], $size_info['height'], $size_info['crop'] );
@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) &&
 						$img_meta['width'] < $size_info['width'] && 
 							$img_meta['height'] < $size_info['height'] ) {
-						
+
 						$size_text = $img_meta['width'].'x'.$img_meta['height'].' ('.
 							__( 'full size original', 'wpsso' ).')';
 					} else $size_text = $img_width.'x'.$img_height;
@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || 
 										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )
 											break;	// stop here
-	
+
 							// recognize gravatar images in the content
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/',
 								$attr_value, $match ) ) {

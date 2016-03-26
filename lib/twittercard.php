@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 						$post_id = 0;	// skip additional image checks
 					}
 				}
-	
+
 				if ( empty( $post_id ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'no post_id: image related cards skipped' );

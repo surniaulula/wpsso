@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoSubmenuReadme' ) && class_exists( 'WpssoAdmin' ) ) {
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', array(), $this->form ) );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
-		
+
 		protected function get_table_rows( $metabox, $key ) {
 			$lca = $this->p->cf['lca'];
 			$table_rows = array();

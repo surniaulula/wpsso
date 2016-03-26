@@ -673,7 +673,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_lca = $this->p->cf['lca'].'um';
 						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
 						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-						
+
 						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'Enter the unique Authentication ID on this settings page to check for Pro version updates immediately, and every 24 hours thereafter.', 'wpsso' ).'</p><p><strong>'.sprintf( __( 'The %s extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_name ).'</strong> '.sprintf( __( 'If you accidentally de-activate the %1$s extension, update information will be provided by the WordPress.org plugin repository, and any update notices will be for the Free versions &mdash; always update the Pro version when the %2$s extension is active.', 'wpsso' ), $um_short, $um_short ).' '.__( 'If you accidentally re-install the Free version from WordPress.org &ndash; don\'t worry &ndash; your Authentication ID will always allow you update back to the Pro version.', 'wpsso' ).' ;-)</p></blockquote>';
 						break;
 					case 'info-plugin-tid-network':

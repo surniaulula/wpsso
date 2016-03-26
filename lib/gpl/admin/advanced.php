@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = $form->get_th_html( _x( 'Use Filtered (SEO) Title',
 				'option label', 'wpsso' ), null, 'plugin_filter_title' ).
 			$this->get_nocb_cell( 'plugin_filter_title' );
-			
+
 			$table_rows[] = $form->get_th_html( _x( 'Apply WordPress Content Filters',
 				'option label', 'wpsso' ), null, 'plugin_filter_content' ).
 			$this->get_nocb_cell( 'plugin_filter_content' );
@@ -89,12 +89,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->get_nocb_cell( 'plugin_columns_post', 
 					__( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).
 				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_post' );
-	
+
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$this->get_nocb_cell( 'plugin_columns_taxonomy', 
 					__( 'Taxonomy (Categories and Tags)', 'wpsso' ) ).
 				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_taxonomy' );
-	
+
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$this->get_nocb_cell( 'plugin_columns_user', 
 					__( 'Users' ) ).
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = $form->get_th_html( _x( 'Include Social Settings Metabox on',
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
-			
+
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Add Tabs to Social Settings Metabox',
 				'option label', 'wpsso' ), null, 'plugin_add_tab' ).
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_cf_vid_embed' ).
 			'<td class="blank">'.$form->get_hidden( 'plugin_cf_vid_embed' ).
 				$this->p->options['plugin_cf_vid_embed'].'</td>';
-			
+
 			return $table_rows;
 		}
 
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				__( 'The schema head attributes filter has been disabled by an extension plugin or a custom filter.',
 					'wpsso' ).'<em></td>';
 			}
-				
+
 			$table_rows[] = $form->get_th_html( _x( 'Check for Duplicate Meta Tags',
 				'option label', 'wpsso' ), null, 'plugin_check_head' ).
 			$this->get_nocb_cell( 'plugin_check_head' );

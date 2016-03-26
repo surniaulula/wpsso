@@ -366,22 +366,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
 						self::$crawler_name = 'facebook';
 						break;
-	
+
 					// "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 					case ( strpos( $ua, 'compatible; googlebot/' ) !== false ):
 						self::$crawler_name = 'google';
 						break;
-	
+
 					// "Pinterest/0.1 +http://pinterest.com/"
 					case ( strpos( $ua, 'pinterest/' ) === 0 ):
 						self::$crawler_name = 'pinterest';
 						break;
-	
+
 					// "Twitterbot/1.0"
 					case ( strpos( $ua, 'twitterbot/' ) === 0 ):
 						self::$crawler_name = 'twitter';
 						break;
-	
+
 					// "W3C_Validator/1.3 http://validator.w3.org/services"
 					case ( strpos( $ua, 'w3c_validator/' ) === 0 ):
 						self::$crawler_name = 'w3c';

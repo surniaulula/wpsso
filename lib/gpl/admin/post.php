@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
 				);
 			}
-			
+
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
 		}
 	}

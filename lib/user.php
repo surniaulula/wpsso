@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						array( $this, 'add_column_headings' ), 10, 1 );
 					add_filter( 'manage_users_custom_column', 
 						array( $this, 'get_user_column_content',), 10, 3 );
-	
+
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_image_user_column_content' => 4,
 						'og_desc_user_column_content' => 4,

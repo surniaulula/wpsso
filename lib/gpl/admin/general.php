@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-		
+
 			$table_rows[] = $form->get_th_html( _x( 'Include Author Gravatar Image',
 				'option label', 'wpsso' ), null, 'og_author_gravatar' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
@@ -38,11 +38,11 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				'<p>'.__( 'Video discovery and integration modules are provided with the Pro version.',
 					'wpsso' ).'</p>'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-		
+
 			$table_rows[] = $form->get_th_html( _x( 'Maximum Videos to Include',
 				'option label', 'wpsso' ), null, 'og_vid_max' ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
-	
+
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use HTTPS for Video API',
 				'option label', 'wpsso' ), null, 'og_vid_https' ).
@@ -68,12 +68,12 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$form->get_th_html( _x( 'Default / Fallback Video URL',
 				'option label', 'wpsso' ), null, 'og_def_vid_url' ).
 			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
-	
+
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use Default Video on Indexes',
 				'option label', 'wpsso' ), null, 'og_def_vid_on_index' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
-	
+
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use Default Video on Search Results',
 				'option label', 'wpsso' ), null, 'og_def_vid_on_search' ).

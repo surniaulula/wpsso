@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$defs['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
 					$defs['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
-	
+
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $network === false )
 					$opts = $this->get_defaults();
 				else $opts = $this->get_site_defaults();
-			
+
 				if ( is_admin() ) {
 					if ( $network === false )
 						$url = $this->p->util->get_admin_url( 'general' );

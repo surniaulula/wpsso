@@ -84,7 +84,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// a msg_id is required to dismiss the notice
 			$payload['dismiss'] = ! empty( $msg_id ) && ! empty( $dismiss ) && 
 				$this->can_dismiss() === true ? $dismiss : false;
-			
+
 			// save message until it can be displayed
 			if ( $store === true ) {
 				if ( $user_id === true )
