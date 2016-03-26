@@ -584,13 +584,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public static function get_is_page( $use_post = false, $cache = true ) {
+		public static function get_is_page( $use_post = false, $use_cache = true ) {
 
 			// optimize and only check what we need to
 			$is_term_page = $is_user_page = false;
-			if ( ! $is_post_page = self::is_post_page( $use_post, $cache ) )
-				if ( ! $is_term_page = self::is_term_page( $cache ) )
-					$is_user_page = self::is_user_page( $cache );
+			if ( ! $is_post_page = self::is_post_page( $use_post, $use_cache ) )
+				if ( ! $is_term_page = self::is_term_page( $use_cache ) )
+					$is_user_page = self::is_user_page( $use_cache );
 
 			return array(
 				'post_page' => $is_post_page,
@@ -599,8 +599,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
-		public static function is_post_page( $use_post = false, $cache = true ) {
-			if ( $cache &&
+		public static function is_post_page( $use_post = false, $use_cache = true ) {
+			if ( $use_cache &&
 				isset( self::$is['post_page'][$use_post] ) )
 					return self::$is['post_page'][$use_post];
 
@@ -625,7 +625,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = apply_filters( 'sucom_is_post_page', $ret, $use_post );
 
-			if ( $cache )
+			if ( $use_cache )
 				return self::$is['post_page'][$use_post] = $ret;
 			else return $ret;
 		}
@@ -674,8 +674,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_term_page( $cache = true ) {
-			if ( $cache &&
+		public static function is_term_page( $use_cache = true ) {
+			if ( $use_cache &&
 				isset( self::$is['term_page'] ) )
 					return self::$is['term_page'];
 
@@ -697,13 +697,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = apply_filters( 'sucom_is_term_page', $ret );
 
-			if ( $cache )
+			if ( $use_cache )
 				return self::$is['term_page'] = $ret;
 			else return $ret;
 		}
 
-		public static function is_category_page( $cache = true ) {
-			if ( $cache &&
+		public static function is_category_page( $use_cache = true ) {
+			if ( $use_cache &&
 				isset( self::$is['category_page'] ) )
 					return self::$is['category_page'];
 
@@ -719,13 +719,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = apply_filters( 'sucom_is_category_page', $ret );
 
-			if ( $cache )
+			if ( $use_cache )
 				return self::$is['category_page'] = $ret;
 			else return $ret;
 		}
 
-		public static function is_tag_page( $cache = true ) {
-			if ( $cache &&
+		public static function is_tag_page( $use_cache = true ) {
+			if ( $use_cache &&
 				isset( self::$is['tag_page'] ) )
 					return self::$is['tag_page'];
 
@@ -741,7 +741,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = apply_filters( 'sucom_is_tag_page', $ret );
 
-			if ( $cache )
+			if ( $use_cache )
 				return self::$is['tag_page'] = $ret;
 			else return $ret;
 		}
@@ -778,12 +778,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_author_page( $cache = true ) {
-			return self::is_user_page( $cache );
+		public static function is_author_page( $use_cache = true ) {
+			return self::is_user_page( $use_cache );
 		}
 
-		public static function is_user_page( $cache = true ) {
-			if ( $cache &&
+		public static function is_user_page( $use_cache = true ) {
+			if ( $use_cache &&
 				isset( self::$is['user_page'] ) )
 					return self::$is['user_page'];
 
@@ -813,7 +813,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = apply_filters( 'sucom_is_user_page', $ret );
 
-			if ( $cache )
+			if ( $use_cache )
 				return self::$is['user_page'] = $ret;
 			else return $ret;
 		}

@@ -544,8 +544,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( ! empty( $val['no_auto_draft'] ) &&
 					( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
 					$is_auto_draft = true;
-					$val['td_class'] = $val['td_class'] ?
-						$val['td_class'].' blank' : 'blank';
+					$val['td_class'] = empty( $val['td_class'] ) ?
+						'blank' : $val['td_class'].' blank';
 				} else $is_auto_draft = false;
 
 				if ( ! empty( $val['header'] ) )

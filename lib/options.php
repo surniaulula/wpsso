@@ -231,10 +231,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( empty( $def_opts ) || ! is_array( $def_opts ) )
 				return $opts;
 
-			// add any missing options from the default options
-			foreach ( $def_opts as $key => $def_val )
-				if ( ! empty( $key ) && ! isset( $opts[$key] ) )
-					$opts[$key] = $def_val;
+			// add any missing options from the defaults, unless
+			// sanitizing for a module (default values will be
+			// removed anyway)
+			if ( $mod === false ) {
+				foreach ( $def_opts as $key => $def_val )
+					if ( ! empty( $key ) && ! isset( $opts[$key] ) )
+						$opts[$key] = $def_val;
+			}
 
 			// sanitize values
 			foreach ( $opts as $key => $val ) {

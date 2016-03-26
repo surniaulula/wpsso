@@ -399,7 +399,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$defs = $this->get_defaults( $mod['id'] );
 			$prev = $this->get_options( $mod['id'] );
 
-			// remove any version strings
+			/*
+			 * Remove version strings
+			 */
 			$unset_keys = array( 'options_filtered', 'options_version' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info )
@@ -409,32 +411,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			foreach ( $unset_keys as $key )
 				unset( $defs[$key], $prev[$key] );
 
-			// merge and sanitize the new options
-			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?		// make sure we have an array
+			/*
+			 * Merge and sanitize the new options
+			 */
+			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
 				array() : $_POST[ WPSSO_META_NAME ];
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $prev, $opts );			// update the previous options array
+			$opts = array_merge( $prev, $opts );				// update the previous options array
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// $network = false
 
-			// remove any empty or "use plugin settings" options
-			foreach ( $defs as $key => $def_val ) {
-				if ( isset( $opts[$key] ) ) {
-					if ( $opts[$key] === '' || $opts[$key] === -1 || $opts[$key] === '-1' )
-						unset( $opts[$key] );
-				}
-			}
-
-			// checkbox options - don't save if value is same as default value
-			foreach ( array( 'og_vid_prev_img' ) as $key ) {
-				if ( isset( $this->p->options[$key] ) ) {
-					if ( $opts[$key] === $this->p->options[$key] )
-						unset( $opts[$key] );
-				}
-			}
-
-			// image size options (id, prefix, width, height, crop, etc.)
+			/*
+			 * Image size options (id, prefix, width, height, crop, etc.)
+			 */
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
-
 				if ( empty( $opts[$md_pre.'_img_id'] ) )
 					unset( $opts[$md_pre.'_img_id_pre'] );
 
@@ -460,7 +449,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					set_transient( $this->p->cf['lca'].'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre, true );
 			}
 
-			// mark the new options as current
+			/*
+			 * Remove empty strings, use plugin settings (numeric or string -1), or same as default option values
+			 */
+			foreach ( $opts as $key => $def_val ) {
+				if ( $opts[$key] === '' || $opts[$key] === -1 || $opts[$key] === '-1' ||
+					( isset( $defs[$key] ) && $opts[$key] === $defs[$key] ) )
+						unset( $opts[$key] );
+			}
+
+			/*
+			 * Mark the new options as current
+			 */
 			if ( ! empty( $opts ) ) {
 				$opts['options_version'] = $this->p->cf['opt']['version'];
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {

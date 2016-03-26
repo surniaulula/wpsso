@@ -117,15 +117,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = null;
 					} elseif ( empty( $this->schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types property' );
+							$this->p->debug->log( 'custom type id '.$type_id.' not in schema types property' );
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type_id '.$type_id.' from module '.$mod['name'] );
+						$this->p->debug->log( 'custom type id '.$type_id.' from module '.$mod['name'] );
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'incomplete module: class object is empty' );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'skipping custom type_id check: use_mod_opts argument is false' );
+				$this->p->debug->log( 'skipping custom type id check: use_mod_opts argument is false' );
 
 			if ( empty( $type_id ) ) {
 				if ( is_front_page() )
@@ -148,13 +148,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							} elseif ( empty( $this->schema_types[$type_id] ) ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type '.$type_id.' not found in schema types array' );
+									$this->p->debug->log( 'schema type id '.$type_id.' not found in schema types array' );
 								$type_id = $default_key;
-							}
+
+							} elseif ( $this->p->debug->enabled )
+								$this->p->debug->log( 'schema type id for post type '.$post_obj->post_type.' is '.$type_id );
 
 						} elseif ( ! empty( $this->schema_types[$post_obj->post_type] ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'setting schema type to post type '.$post_obj->post_type );
+								$this->p->debug->log( 'setting schema type id to post type '.$post_obj->post_type );
 							$type_id = $post_obj->post_type;
 
 						// unknown post type
@@ -186,13 +188,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod );
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema type id is '.$type_id );
-
 			if ( isset( $this->schema_types[$type_id] ) ) {
-				return $return_id ?
-					$type_id : $this->schema_types[$type_id];
-			} else return false;
+				if ( $return_id ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'returning schema type id '.$type_id );
+					return $type_id;
+				} else {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'returning schema type value '.$this->schema_types[$type_id] );
+					return $this->schema_types[$type_id];
+				}
+			} else {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'returning false: schema type id '.$type_id.' not found' );
+				return false;
+			}
 		}
 
 		public function get_head_type_context( array &$mod ) {
