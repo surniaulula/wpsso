@@ -354,6 +354,20 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.28.4.1 (2016/03/26)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed an undefined index error for td_class when creating a new draft.
+	* Fixed saving of custom Social Settings that have variable default values (which may be incorrect during the WordPress save process).
+* *Developer Notes*
+	* None
+
 **Version 3.28.4 (2016/03/25)**
 
 Official announcement: N/A
@@ -439,6 +453,10 @@ Official announcement: N/A
 	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 == Upgrade Notice ==
+
+= 3.28.4.1 =
+
+2016/03/26 - Fixed an undefined index error for td_class. Fixed saving of custom Social Settings that have variable default values.
 
 = 3.28.4 =
 
