@@ -80,11 +80,18 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			$opts_version = empty( $opts['plugin_'.$this->p->cf['lca'].'_opt_version'] ) ?
 				0 : $opts['plugin_'.$this->p->cf['lca'].'_opt_version'];
 
+			// older versions had a single string with all versions appended
+			if ( empty( $opts_version ) )
+				// our own options version should be the first numeric string
+				$opts_version = empty( $opts['options_version'] ) ?
+					0 : preg_replace( '/^[^0-9]*([0-9]*).*$/',
+						'$1', $opts['options_version'] );
+
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
 				$opts = SucomUtil::rename_keys( $opts, $this->renamed_keys );
 
-				if ( version_compare( $opts_version, 260, '<=' ) ) {
+				if ( $opts_version && $opts_version <= 260 ) {
 					if ( $opts['og_img_width'] == 1200 &&
 						$opts['og_img_height'] == 630 &&
 						! empty( $opts['og_img_crop'] ) ) {
@@ -101,7 +108,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( version_compare( $opts_version, 270, '<=' ) ) {
+				if ( $opts_version && $opts_version <= 270 ) {
 					foreach ( $opts as $key => $val ) {
 						if ( strpos( $key, 'inc_' ) === 0 ) {
 							$new_key = '';
@@ -120,13 +127,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( version_compare( $opts_version, 296, '<=' ) ) {
+				if ( $opts_version && $opts_version <= 296 ) {
 					if ( empty( $opts['plugin_min_shorten'] ) || 
 						$opts['plugin_min_shorten'] < 22 ) 
 							$opts['plugin_min_shorten'] = 22;
 				}
 
-				if ( version_compare( $opts_version, 373, '<=' ) ) {
+				if ( $opts_version && $opts_version <= 373 ) {
 					if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
 						$opts['plugin_head_attr_filter_name'] === 'language_attributes' ) 
 							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
@@ -135,7 +142,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
 				$opts = SucomUtil::rename_keys( $opts, $this->renamed_site_keys );
 
-			if ( version_compare( $opts_version, 342, '<=' ) ) {
+			if ( $opts_version && $opts_version <= 342 ) {
 				if ( isset( $opts['plugin_file_cache_hrs'] ) ) {
 					$opts['plugin_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * 3600;
 					unset( $opts['plugin_file_cache_hrs'] );
