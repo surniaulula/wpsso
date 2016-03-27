@@ -22,7 +22,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $timeout = 10;			// wait 10 seconds for a completed transaction
 		public $connect_timeout = 5;		// wait 5 seconds for a connection
 
-		private $transient = array(	// saved on wp shutdown action
+		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
 			'expire' => 3600,
 			'ignore_time' => 900,
