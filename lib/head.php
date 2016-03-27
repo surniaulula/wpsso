@@ -24,12 +24,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function filter_head_cache_salt( $salt, $use_post = false ) {
+
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
+				$salt .= '_amp:true';
+
 			$crawler_name = SucomUtil::crawler_name();
+
 			switch ( $crawler_name ) {
 				case 'pinterest':
 					$salt .= '_crawler:'.$crawler_name;
 					break;
 			}
+
 			return $salt;
 		}
 
@@ -206,6 +212,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$header_array = array();
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
+				// head_cache_salt filter may add amp true/false and/or crawler name
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
 					'lang:'.SucomUtil::get_locale().'_id:'.$mod['id'].'_name:'.$mod['name'].
 						'_url:'.$sharing_url, $use_post ).')';
