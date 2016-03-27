@@ -17,13 +17,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'head_cache_salt' => 2,		// modify the cache salt for certain crawlers
+				'head_cache_salt' => 1,		// modify the cache salt for certain crawlers
 			) );
 			add_action( 'wp_head', array( &$this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 		}
 
-		public function filter_head_cache_salt( $salt, array &$mod ) {
+		public function filter_head_cache_salt( $salt ) {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
 				$salt .= '_amp:true';
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
 					'lang:'.SucomUtil::get_locale().
 					'_id:'.$mod['id'].'_name:'.$mod['name'].
-					'_url:'.$sharing_url, $mod ).')';
+					'_url:'.$sharing_url ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
 
