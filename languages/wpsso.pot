@@ -1965,21 +1965,21 @@ msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:389
+#: lib/meta.php:391
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:477
+#: lib/meta.php:479
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:478
+#: lib/meta.php:480
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:496
+#: lib/meta.php:498
 msgid "Reload to View"
 msgstr ""
 

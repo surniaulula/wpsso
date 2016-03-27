@@ -320,6 +320,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_img_max' => -1,
 					'og_vid_max' => -1,
 					'og_vid_prev_img' => ( empty( $opts['og_vid_prev_img'] ) ? 0 : 1 ),
+					'og_vid_title' => '',
+					'og_vid_desc' => '',
 					'rp_img_width' => '',
 					'rp_img_height' => '',
 					'rp_img_crop' => ( empty( $opts['rp_img_crop'] ) ? 0 : 1 ),
@@ -450,10 +452,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Remove empty strings, use plugin settings (numeric or string -1), or same as default option values
+			 * Remove "use plugin settings" (numeric or string -1), or "same as default" option values
 			 */
 			foreach ( $opts as $key => $def_val ) {
-				if ( $opts[$key] === '' || $opts[$key] === -1 || $opts[$key] === '-1' ||
+				if ( $opts[$key] === -1 || $opts[$key] === '-1' ||
 					( isset( $defs[$key] ) && $opts[$key] === $defs[$key] ) )
 						unset( $opts[$key] );
 			}
