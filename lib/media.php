@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			// prevent image_downsize() from lying about image width and height
+			// prevent image_downsize from lying about image width and height
 			if ( is_admin() )
 				add_filter( 'editor_max_image_size', array( &$this, 'editor_max_image_size' ), 10, 3 );
 
@@ -436,15 +436,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
 			}
 
-			// some image_downsize() hooks may return only 3 elements, for use array_pad() to sanitize returned array
+			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
 			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $this->p->cf['lca'].'_image_downsize', 
 				array_pad( image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'image_downsize() = '.$img_url.' ('.$img_width.'x'.$img_height.')' );
+				$this->p->debug->log( 'image_downsize returned '.$img_url.' ('.$img_width.'x'.$img_height.')' );
 
 			if ( empty( $img_url ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: returned image_downsize() url is empty' );
+					$this->p->debug->log( 'exiting early: image_downsize returned an empty url' );
 				return self::reset_image_src_info();
 			}
 
@@ -493,9 +493,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'returned image dimensions ('.$img_width.'x'.$img_height.') are sufficient' );
 			}
 
-			if ( $check_dupes == false || $this->p->util->is_uniq_url( $img_url, $size_name ) )
+			if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'applying rewrite_url filter for '.$img_url );
 				return self::reset_image_src_info( array( apply_filters( $this->p->cf['lca'].'_rewrite_url', $img_url ),
 					$img_width, $img_height, $img_cropped, $pid ) );
+			}
 
 			return self::reset_image_src_info();
 		}
