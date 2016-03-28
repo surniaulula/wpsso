@@ -354,6 +354,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.28.5 (2016/03/29)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the Google testing tool URL to remove the large and unnecessary header/footer.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.28.4.2 (2016/03/28)**
 
 Official announcement: N/A
@@ -466,6 +479,10 @@ Official announcement: N/A
 	* Renamed the WpssoOpengraph `get_first_media_url()` method to `get_first_media_info()` (old method gives deprecated message).
 
 == Upgrade Notice ==
+
+= 3.28.5 =
+
+2016/03/29 - Updated the Google testing tool URL to remove the large and unnecessary header/footer.
 
 = 3.28.4.2 =
 
