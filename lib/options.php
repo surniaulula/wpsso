@@ -295,16 +295,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts['og_desc_len'] < $this->p->cf['head']['min']['og_desc_len'] ) 
 					$opts['og_desc_len'] = $this->p->cf['head']['min']['og_desc_len'];
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( ! empty( $info['update_auth'] ) ) {
+			if ( $mod === false ) {
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( empty( $info['update_auth'] ) )
+						continue;
 					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
 					if ( isset( $opts[$opt_name] ) &&
 						isset( $this->p->options[$opt_name] ) &&
-						$opts[$opt_name] !== $this->p->options[$opt_name] ) {
-
+							$opts[$opt_name] !== $this->p->options[$opt_name] ) {
+						// auth id has changed
 						$this->p->options[$opt_name] = $opts[$opt_name];
-						delete_option( $ext.'_uerr' );
-						delete_option( $ext.'_utime' );
+						foreach ( array( 'err', 'inf', 'time' ) as $key ) {
+							delete_option( $ext.'_u'.$key );
+							delete_option( $ext.'_uapi2'.$key );
+						}
 					}
 				}
 			}

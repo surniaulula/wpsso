@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.4.2\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.28.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1887,99 +1887,99 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:227
+#: lib/meta.php:232
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:227
+#: lib/meta.php:232
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:227
+#: lib/meta.php:232
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:227
+#: lib/meta.php:232
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:227
+#: lib/meta.php:232
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:229
+#: lib/meta.php:234
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:229
+#: lib/meta.php:234
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:229
+#: lib/meta.php:234
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:231
+#: lib/meta.php:236
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:231
+#: lib/meta.php:236
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:231
+#: lib/meta.php:236
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:233
+#: lib/meta.php:238
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:233
+#: lib/meta.php:238
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:233
+#: lib/meta.php:238
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:391
+#: lib/meta.php:396
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:479
+#: lib/meta.php:484
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:480
+#: lib/meta.php:485
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:498
+#: lib/meta.php:503
 msgid "Reload to View"
 msgstr ""
 
@@ -2025,13 +2025,13 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:314
+#: lib/options.php:318
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:363
+#: lib/options.php:367
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
