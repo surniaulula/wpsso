@@ -61,14 +61,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: amp endpoint' );
-				return $head_attr;
+				return $head_attr;	// empty string
 			}
 
 			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
-				return $head_attr;
+				return $head_attr;	// empty string
 			}
 
 			$lca = $this->p->cf['lca'];
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
-				return $mt_schema;
+				return $mt_schema;	// empty array
 			}
 
 			$head_type = $this->get_head_item_type( $mod );
@@ -747,7 +747,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: amp endpoint' );
-				return $ret;
+				return $ret;	// empty array
 			}
 
 			// get_noscript_array() is disabled when the wpsso-schema-json-ld extension is active
@@ -757,7 +757,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema noscript array disabled' );
-				return $ret;
+				return $ret;	// empty array
 			}
 
 			if ( ! empty( $mt_og['og:image'] ) ) {
