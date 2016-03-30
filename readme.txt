@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.5-dev1 (ETA 2016/04/02)**
+**Version 3.28.5-1 (ETA 2016/03/31)**
 
 Official announcement: N/A
 
@@ -362,10 +362,14 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Updated the Google testing tool URL to remove the large and unnecessary header/footer.
+	* Allowed for missing second argument in the WpssoUtil `image_editor_save_pre_image_sizes()` filter to tolerate incorrect arguments from WordPress or other plugins.
 * *Bugfixes*
-	* None
+	* Fixed return of an image URL from the WpssoOpenGraph `get_the_media_info()` method.
 * *Developer Notes*
-	* None
+	* Renamed the 'wpsso_meta_schema' filter to 'wpsso_schema_meta_itemprop'.
+	* Added two new filters for WPSSO Pro Update Manager v1.4.0-1:
+		* 'wpsso_readme_upgrade_notices'
+		* 'wpsso_newer_version_available'
 
 **Version 3.28.4.2 (2016/03/28)**
 
@@ -480,9 +484,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.28.5-dev1 =
+= 3.28.5-1 =
 
-ETA 2016/04/02 - Updated the Google testing tool URL to remove the large and unnecessary header/footer.
+ETA 2016/03/31 - Updated the Google testing tool URL to remove the large and unnecessary header/footer.
 
 = 3.28.4.2 =
 
