@@ -85,8 +85,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
 						continue;
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
-						if ( strpos( $menu_id, 'separator' ) !== false ) 
-							continue;
 						$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
 							if ( ! empty( $info['text_domain'] ) )
@@ -179,7 +177,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// add a new main menu, and its sub-menu items
 		public function add_admin_menus( $menu_lib = '' ) {
-			$menu_lib = empty( $menu_lib ) ? 'submenu' : $menu_lib;
+			$menu_lib = empty( $menu_lib ) ?
+				'submenu' : $menu_lib;
+
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
 
 			$this->menu_id = key( $libs );
@@ -244,29 +244,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$short = $this->p->cf['plugin'][$menu_ext]['short'];
 
-			if ( strpos( $menu_id, 'separator' ) !== false ) {
-				$separator_css = 'z-index:999;opacity:0.3;padding:0;margin:-2px 0;cursor:default;'.
-					'text-align:center;line-height:0.9em;font-style:italic;letter-spacing:0.5px;';
-				$menu_title = '<div style="'.$separator_css.'" onClick="return false;">'.
-					( $menu_name === $this->p->cf['menu'] ? 
-						$menu_name.self::$is_pkg[$menu_ext] : 
-							( strpos( $menu_name, ' Extension' ) !== false ? 
-								str_replace( ' Extension', self::$is_pkg[$menu_ext].' Extension', $menu_name ) : 
-									$menu_name ) ).'</div>';
-				$menu_slug = '#';
-				$page_title = '';
-				$function = '';
-			} else {
-				// highlight the "extension plugins" part of the menu title
-				if ( strpos( $menu_id, 'licenses' ) !== false )
-					$menu_title = preg_replace( '/^<span>/',
-						'<span style="color:#'.$this->p->cf['color'].';">', $menu_name );
-				else $menu_title = $menu_name;
+			// highlight the "extension plugins" part of the menu title
+			if ( strpos( $menu_id, 'licenses' ) !== false )
+				$menu_title = preg_replace( '/^<span>/',
+					'<span style="color:#'.$this->p->cf['color'].';">', $menu_name );
+			else $menu_title = $menu_name;
 
-				$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-				$page_title = $short.self::$is_pkg[$menu_ext].' &mdash; '.$menu_title;
-				$function = array( &$this, 'show_setting_page' );
-			}
+			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
+			$page_title = $short.self::$is_pkg[$menu_ext].' &mdash; '.$menu_title;
+			$function = array( &$this, 'show_setting_page' );
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
@@ -705,40 +691,60 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $info['version'] ) )	// only active extensions
 					continue;
 
+				$installed_version = $info['version'];	// static value from config
+				$installed_style = '';
 				$stable_version = __( 'N/A', 'wpsso' );
 				$latest_version = __( 'N/A', 'wpsso' );
-				$installed_version = $info['version'];
-				$installed_style = '';
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
 
 				// the readme_info array is populated by set_readme_info(), which is called from load_setting_page()
 				if ( ! empty( self::$readme_info[$ext]['stable_tag'] ) ) {
+
 					$stable_version = self::$readme_info[$ext]['stable_tag'];
-					$upgrade_notice = self::$readme_info[$ext]['upgrade_notice'];
-					if ( is_array( $upgrade_notice ) ) {
+
+					if ( is_array( self::$readme_info[$ext]['upgrade_notice'] ) ) {
+						$upgrade_notice = apply_filters( $this->p->cf['lca'].'_readme_upgrade_notices',
+							self::$readme_info[$ext]['upgrade_notice'], $ext );
+
 						reset( $upgrade_notice );
 						$latest_version = key( $upgrade_notice );
 						$latest_notice = $upgrade_notice[$latest_version];
 					}
-					$installed_style = version_compare( $installed_version, $stable_version, '<' ) ?
-						'style="background-color:#f00;"' : 
-						'style="background-color:#0f0;"';
+
+					// hooked by the update manager to check installed version against
+					// the latest version, if a non-stable filter is selected for that
+					// plugin / extension
+					if ( apply_filters( $this->p->cf['lca'].'_newer_version_available',
+						version_compare( $installed_version, $stable_version, '<' ),
+							$ext, $installed_version, $stable_version, $latest_version ) )
+								$installed_style = 'style="background-color:#f00;"';	// red
+
+					// version is current but not stable (alpha characters found in version string)
+					elseif ( preg_match( '/[a-z]/', $installed_version ) )
+						$installed_style = 'style="background-color:#ff0;"';	// yellow
+
+					// version is current
+					else $installed_style = 'style="background-color:#0f0;"';	// green
 				}
 
 				echo '<tr><td colspan="2"><h4>'.$info['short'].' '.
 					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ?
 						_x( 'Pro', 'package type', 'wpsso' ) :
 						_x( 'Free', 'package type', 'wpsso' ) ).'</h4></td></tr>';
+
 				echo '<tr><th class="side">'._x( 'Installed',
 					'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
+
 				echo '<tr><th class="side">'._x( 'Stable',
 					'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$stable_version.'</td></tr>';
+
 				echo '<tr><th class="side">'._x( 'Latest',
 					'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$latest_version.'</td></tr>';
+
 				echo '<tr><td colspan="2" id="latest_notice"><p>'.$latest_notice.'</p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
 						sprintf( _x( 'View %s changelog...', 'following plugin status version numbers',

@@ -528,7 +528,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$og_image = null;
 			$og_video = null;
-			$prev_url = null;
 
 			if ( empty( $head ) ) {
 				foreach ( $output as $key ) {
@@ -554,10 +553,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					case 'image':
 					case 'img_url':
 						if ( $og_video !== null )
-							$prev_url = self::get_first_media_info( 'og:image', $og_video );
-						if ( empty( $prev_url ) )
-							$ret[$key] = self::get_first_media_info( 'og:video:thumbnail_url', $og_image );
-						else $ret[$key] = $prev_url;
+							$ret[$key] = self::get_first_media_info( 'og:image', $og_video );
+						if ( empty( $ret[$key] ) )
+							$ret[$key] = self::get_first_media_info( 'og:image', $og_image );
 						break;
 					case 'video':
 					case 'vid_url':
@@ -571,9 +569,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						break;
 					case 'prev_url':
 					case 'preview':
-						if ( $prev_url !== null )
-							$prev_url = self::get_first_media_info( 'og:video:thumbnail_url', $og_video );
-						$ret[$key] = $prev_url;
+						$ret[$key] = self::get_first_media_info( 'og:video:thumbnail_url', $og_video );
 						break;
 					default:
 						$ret[$key] = '';

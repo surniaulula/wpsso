@@ -12,7 +12,14 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.5
- * Version: 3.28.5
+ * Version: 3.28.5-1
+ * 
+ * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
+ *
+ *	{major}		Major code changes and/or significant feature changes.
+ *	{minor}		New features added and/or improvements included.
+ *	{bugfix}	Bugfixes and/or very minor improvements.
+ *	{stage}{level}	dev# (development), rc# (release candidate), # (production release)
  * 
  * Copyright 2012-2016 Jean-Sebastien Morisset (http://surniaulula.com/)
  */

@@ -724,7 +724,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					break;
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_meta_schema', $mt_schema, $use_post, $mod );
+			return apply_filters( $this->p->cf['lca'].'_schema_meta_itemprop', $mt_schema, $use_post, $mod );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$mt_og, array $names ) {

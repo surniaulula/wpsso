@@ -128,10 +128,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! isset( $this->p->cf['plugin'][$lca] ) )
 				return $plugin;
 			elseif ( $this->p->check->aop( $lca ) )
-				return $plugin.'L';
+				return $plugin.'/L';
 			elseif ( $this->p->check->aop( $lca, false ) )
-				return $plugin.'U';
-			else return $plugin.'G';
+				return $plugin.'/U';
+			else return $plugin.'/G';
 		}
 
 		public function get_image_size_label( $size_name ) {	// wpsso-opengraph
@@ -140,10 +140,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return $size_name;
 		}
 
-		public function image_editor_save_pre_image_sizes( $image, $id ) {
+		public function image_editor_save_pre_image_sizes( $image, $post_id = false ) {
+			if ( empty( $post_id ) )
+				return $image;
+
 			// get post/user/term id, module name, and module object reference
-			$mod = $this->get_page_mod( $id, array( 'id' => $id, 'name' => 'post' ) );
+			$mod = $this->get_page_mod( $post_id, array( 'id' => $post_id, 'name' => 'post' ) );
+
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
+
 			return $image;
 		}
 
