@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',		// lowercase acronym
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
-			'color' => '47d147',		// menu item color - lime green / shades of 33cc33
+			'color' => '33cc33',		// menu item color - lime green
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
