@@ -61,7 +61,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
 
-		protected static $instance = null;
+		private static $instance = null;
 
 		public static function &get_instance() {
 			if ( self::$instance === null )
@@ -314,7 +314,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 	}
 
         global $wpsso;
-	$wpsso = Wpsso::get_instance();
+	$wpsso =& Wpsso::get_instance();
 }
 
 if ( ! class_exists( 'WpssoNoDebug' ) ) {

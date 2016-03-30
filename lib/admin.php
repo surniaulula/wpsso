@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {
 								self::$readme_info = array();
-								$wpssoum = WpssoUm::get_instance();
+								$wpssoum =& WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );
 							} else {
 								$this->p->notice->err( sprintf( __( 'The <b>%s</b> extension is required to check for Pro version updates.',

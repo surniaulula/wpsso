@@ -35,10 +35,12 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
-			foreach ( array_merge( $this->get_table_rows( $metabox, 'general' ), 
-				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows', 
-					array(), $this->form ) ) as $num => $row ) 
-						echo '<tr>'.$row.'</tr>';
+			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ), 
+					array(), $this->form ) );
+					
+			foreach ( $table_rows as $num => $row ) 
+				echo '<tr>'.$row.'</tr>';
 			echo '</table>';
 		}
 

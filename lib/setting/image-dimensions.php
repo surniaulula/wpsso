@@ -36,8 +36,9 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
 			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
-				apply_filters( $this->p->cf['lca'].'_'.$metabox.'_general_rows',
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
 					array(), $this->form ) );
+
 			natsort( $table_rows );
 			foreach ( $table_rows as $num => $row ) 
 				echo '<tr>'.$row.'</tr>'."\n";

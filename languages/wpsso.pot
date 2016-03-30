@@ -2138,27 +2138,27 @@ msgctxt "metabox title"
 msgid "Social Image Dimensions"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:54
+#: lib/setting/image-dimensions.php:55
 msgctxt "option label"
 msgid "Google / Schema Markup Images"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:58
+#: lib/setting/image-dimensions.php:59
 msgctxt "option label"
 msgid "Facebook / Open Graph Images"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:63
+#: lib/setting/image-dimensions.php:64
 msgctxt "option label"
 msgid "Pinterest Rich Pin Images"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:68
+#: lib/setting/image-dimensions.php:69
 msgctxt "option label"
 msgid "Twitter <em>Summary</em> Card"
 msgstr ""
 
-#: lib/setting/image-dimensions.php:72
+#: lib/setting/image-dimensions.php:73
 msgctxt "option label"
 msgid "Twitter <em>Large Image Summary</em> Card"
 msgstr ""
@@ -2168,41 +2168,41 @@ msgctxt "metabox title"
 msgid "Website / Business Social Accounts"
 msgstr ""
 
-#: lib/setting/social-accounts.php:54 lib/submenu/essential.php:84
+#: lib/setting/social-accounts.php:56 lib/submenu/essential.php:84
 #: lib/submenu/general.php:211
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:58 lib/submenu/essential.php:135
+#: lib/setting/social-accounts.php:60 lib/submenu/essential.php:135
 #: lib/submenu/general.php:236
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:62 lib/submenu/essential.php:150
+#: lib/setting/social-accounts.php:64 lib/submenu/essential.php:150
 #: lib/submenu/general.php:350
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:66 lib/submenu/essential.php:163
+#: lib/setting/social-accounts.php:68 lib/submenu/essential.php:163
 #: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: lib/setting/social-accounts.php:70 lib/submenu/general.php:400
+#: lib/setting/social-accounts.php:72 lib/submenu/general.php:400
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:74 lib/submenu/general.php:404
+#: lib/setting/social-accounts.php:76 lib/submenu/general.php:404
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/setting/social-accounts.php:78 lib/submenu/general.php:408
+#: lib/setting/social-accounts.php:80 lib/submenu/general.php:408
 msgctxt "option label"
 msgid "MySpace Business Page URL"
 msgstr ""

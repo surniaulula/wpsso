@@ -399,7 +399,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array &$mod, $check_dupes = true, $md_pre = 'og' ) {
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -407,6 +407,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
 				) );
+			}
 
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
@@ -559,7 +560,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						// if there's no image, and no video preview image, 
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
-							$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes );
+							$og_image = $this->p->media->get_default_image( 1, $size_name, false );	// $check_dupes = false
 							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
 						}
 						break;

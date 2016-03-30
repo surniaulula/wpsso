@@ -549,7 +549,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else $is_auto_draft = false;
 
 				if ( ! empty( $val['header'] ) )
-					$table_rows[$key] = '<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).
+					$table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
+						'<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).
 						'><'.$val['header'].'>'.$val['label'].'</'.$val['header'].'></td>';
 				else $table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
 					$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ), $val['tooltip'] ).
