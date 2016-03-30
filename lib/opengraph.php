@@ -548,14 +548,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			foreach ( $output as $key ) {
 				switch ( $key ) {
 					case 'pid':
-						$ret[$key] = self::get_first_media_info( 'og:image:id', $og_image );
-						break;
 					case 'image':
 					case 'img_url':
+						$mt_name = $key === 'pid' ?
+							'og:image:id' : 'og:image';
 						if ( $og_video !== null )
-							$ret[$key] = self::get_first_media_info( 'og:image', $og_video );
+							$ret[$key] = self::get_first_media_info( $mt_name, $og_video );
 						if ( empty( $ret[$key] ) )
-							$ret[$key] = self::get_first_media_info( 'og:image', $og_image );
+							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
+						// if there's no image, and no video preview image, 
+						// then add the default image for singular (aka post) webpages
+						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
+							$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes );
+							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
+						}
 						break;
 					case 'video':
 					case 'vid_url':
