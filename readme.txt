@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.28.5-1 (ETA 2016/03/31)**
+**Version 3.28.5-1 (2016/03/31)**
 
 Official announcement: N/A
 
@@ -378,5 +378,5 @@ Official announcement: N/A
 
 = 3.28.5-1 =
 
-3.28.5-1 ETA 2016/03/31 - Updated the Google testing tool URL to remove the large and unnecessary header/footer.
+(2016/03/31) Updated the Google testing tool URL to remove the large and unnecessary header/footer.
 
