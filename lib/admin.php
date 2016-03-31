@@ -192,16 +192,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
+			$submenus = array();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
 					continue;
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
-					if ( isset( $this->submenu[$menu_id] ) )
-						$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
-					else $this->add_submenu_page( $parent_slug, 
-						$menu_id, $menu_name, $menu_lib, $ext );
+					$submenus[$menu_id] = array(		// menu_id is (should be) unique
+						'parent' => $parent_slug,
+						'id' => $menu_id,
+						'name' => $menu_name,
+						'lib' => $menu_lib,
+						'ext' => $ext,
+					);
 				}
+			}
+
+			foreach ( $submenus as $key => $m ) {
+				if ( isset( $this->submenu[$m['id']] ) )
+					$this->submenu[$m['id']]->add_submenu_page( $m['parent'] );
+				else $this->add_submenu_page( $m['parent'], $m['id'], $m['name'], $m['lib'], $m['ext'] );
 			}
 		}
 
@@ -745,7 +755,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$latest_version.'</td></tr>';
 
-				echo '<tr><td colspan="2" id="latest_notice"><p>'.$latest_notice.'</p>'.
+				echo '<tr><td colspan="2" id="latest_notice"><p>Version '.$latest_version.' '.$latest_notice.'</p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
 						sprintf( _x( 'View %s changelog...', 'following plugin status version numbers',
 							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
