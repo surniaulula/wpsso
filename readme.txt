@@ -354,6 +354,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.29.0-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* Added a new "Maximum Images to Include" option under the Google / Schema settings tab.
+* *Improvements*
+	* Schema itemprop meta tags for images will not be included if the "Use Meta Property Containers" option is checked (the containers include the same images).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.28.5-1 (2016/03/31)**
 
 Official announcement: N/A
