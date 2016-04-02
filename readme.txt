@@ -360,12 +360,13 @@ Official announcement: N/A
 
 * *New Features*
 	* Added a new "Maximum Images to Include" option under the Google / Schema settings tab.
+	* Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab.
 * *Improvements*
 	* Schema itemprop meta tags for images will not be included if the "Use Meta Property Containers" option is checked (the containers include the same images).
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Re-arranged the order of WpssoOpengraph `get_the_media_info()` method arguments (breaking change, not backwards compatible).
 
 **Version 3.28.5-1 (2016/03/31)**
 
