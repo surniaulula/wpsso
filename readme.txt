@@ -366,7 +366,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Re-arranged the order of WpssoOpengraph `get_the_media_info()` method arguments (breaking change, not backwards compatible).
+	* Re-arranged the order of WpssoOpengraph `get_the_media_info()` method arguments (WPSSO SSB and RRSSB updates required).
 
 **Version 3.28.5-1 (2016/03/31)**
 
