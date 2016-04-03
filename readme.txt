@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.29.0-dev1 (2016/04/02)**
+**Version 3.29.0-dev2 (2016/04/03)**
 
 Official announcement: N/A
 
@@ -370,6 +370,20 @@ Official announcement: N/A
 * *Developer Notes*
 	* Modified the order of WpssoOpengraph `get_the_media_info()` method arguments (WPSSO SSB and RRSSB updates required).
 	* Modified the WpssoUtil `get_max_nums()` arguments to allow for custom Schema image dimensions.
+	* Mofified the SucomWebpage `get_quote()` method to use the new `$mod` array.
+	* Renamed the `$mod['is_taxonomy']` array key to `$mod['is_term']` (the module is still named 'taxonomy' for now).
+	* Saved `$use_post` in the `$mod` array from the WpssoUtil `get_page_mod()` method.
+	* Removed the WpssoUtil 'sucom_installed_version' and 'sucom_ua_plugin' filters (no longer required).
+	* Added a new `SucomUtil::get_locale_opt()` static method to get localized option values.
+	* Added a new `SucomUtil::get_site_name()` and `SucomUtil::get_site_description()` to return localized values with fallback to WP values.
+	* Replaced `$use_post` argument with `$mod` in the following filters:
+		* 'ngfb_caption'
+		* 'ngfb_content'
+		* 'ngfb_content_seed'
+		* 'ngfb_description'
+		* 'ngfb_description_seed'
+		* 'ngfb_title'
+		* 'ngfb_title_seed'
 
 **Version 3.28.5-1 (2016/03/31)**
 
@@ -380,7 +394,7 @@ Official announcement: N/A
 * *Improvements*
 	* Updated the Google testing tool URL to remove the large and unnecessary header/footer.
 	* Allowed for missing second argument in the WpssoUtil `image_editor_save_pre_image_sizes()` filter to tolerate incorrect arguments from WordPress or other plugins.
-	* Added default image as fallback for posts in NgfbOpenGraph `get_the_media_info()`.
+	* Added default image as fallback for posts in WpssoOpenGraph `get_the_media_info()`.
 * *Bugfixes*
 	* Fixed return of an image URL from the WpssoOpenGraph `get_the_media_info()` method.
 * *Developer Notes*
@@ -393,9 +407,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.0-dev1 =
+= 3.29.0-dev2 =
 
-(2016/04/02) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab.
+(2016/04/03) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab. Changes to SucomWebpage caption, content, description, and title related methods.
 
 = 3.28.5-1 =
 
