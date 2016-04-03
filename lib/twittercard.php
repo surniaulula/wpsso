@@ -59,11 +59,9 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$max = $this->p->util->get_max_nums( $mod );
 			$post_id = false;
 			$post_obj = false;
-
-			// $mod['id'] of 0 or false returns the default plugin settings 
-			$max = $this->p->util->get_max_nums( $mod['id'], $mod['name'] );
 
 			// maintain backwards compatibility by defining the post id and object
 			if ( $mod['is_post'] ) {
@@ -79,12 +77,8 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				! empty( $og['og:url'] ) )
 					$tc['twitter:domain'] = preg_replace( '/^.*\/\/([^\/]+).*$/', '$1', $og['og:url'] );
 
-			if ( ! isset( $tc['twitter:site'] ) ) {
-				$key_locale = SucomUtil::get_key_locale( 'tc_site', $this->p->options );
-				$tc['twitter:site'] = isset( $this->p->options[$key_locale] ) ?		// just in case
-					$this->p->options[$key_locale] :
-					$this->p->options['tc_site'];
-			}
+			if ( ! isset( $tc['twitter:site'] ) )
+				$tc['twitter:site'] = SucomUtil::get_locale_opt( 'tc_site', $this->p->options, $mod );
 
 			if ( ! isset( $tc['twitter:title'] ) )
 				$tc['twitter:title'] = $this->p->webpage->get_title( 70, 
@@ -207,9 +201,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 				if ( ! empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'summary card: checking for content image' );
-
 					$og_image = $this->p->og->get_all_images( 1, $lca.'-tc-summary', $mod, false );
-
 					if ( count( $og_image ) > 0 ) {
 						$image = reset( $og_image );
 						$tc['twitter:image'] = $image['og:image'];

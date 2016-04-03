@@ -39,14 +39,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
-			$sizes['schema_img'] = array(
-				'name' => 'schema',
+
+			$sizes['schema_img'] = array(		// options prefix
+				'name' => 'schema',		// wpsso-schema
 				'label' => _x( 'Google / Schema Image',
 					'image size label', 'wpsso' ),
 			);
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) &&
-				$crawler_name === 'pinterest' )
+
+			// if the pinterest crawler is detected, use the pinterest image dimensions instead
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
+				if ( $crawler_name === 'pinterest' )
 					$sizes['schema_img']['prefix'] = 'rp_img';
+
 			return $sizes;
 		}
 
@@ -58,18 +62,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: amp endpoint' );
+			if ( ! $this->is_head_attributes_enabled() )
 				return $head_attr;	// empty string
-			}
-
-			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
-				return $head_attr;	// empty string
-			}
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_header_use_post', false );
@@ -96,6 +90,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			else $head_attr .= ' itemtype="'.$head_type.'"';
 
 			return trim( $head_attr );
+		}
+
+		public function is_head_attributes_enabled() {
+
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: amp endpoint' );
+				return false;
+			}
+
+			// returns false when the wpsso-schema-json-ld extension is active
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
+				return false;
+			}
+
+			return true;
 		}
 
 		public function get_head_item_type( array &$mod, $return_id = false, $use_mod_opts = true ) {
@@ -395,13 +407,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@context' => 'http://schema.org',
 				'@type' => 'WebSite',
 				'url' => $mt_og['og:url'],
-				'name' => $this->p->og->get_site_name( $mod['use_post'] ),
+				'name' => SucomUtil::get_site_name( $this->p->options, $mod ),
 			);
 
 			if ( ! empty( $this->p->options['schema_alt_name'] ) )
 				$ret['alternateName'] = $this->p->options['schema_alt_name'];
 
-			$desc = $this->p->og->get_site_desc( $mod['use_post'] );
+			$desc = SucomUtil::get_site_description( $this->p->options, $mod );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
@@ -450,12 +462,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'myspace_publisher_url',
 					'tc_site',
 				) as $key ) {
-					$key_locale = SucomUtil::get_key_locale( $key, $this->p->options );
-					$url_locale = trim( $this->p->options[$key_locale] );
+					$url_locale = SucomUtil::get_locale_opt( $key, $this->p->options, $mod );
 					if ( empty( $url_locale ) )
 						continue;
 					if ( $key === 'tc_site' )
-						$url_locale = 'https://twitter.com/'.preg_replace( '/^@/', '', $url_locale );
+						$url_locale = 'https://twitter.com/'.
+							preg_replace( '/^@/', '', $url_locale );
 					if ( strpos( $url_locale, '://' ) !== false )
 						$ret['sameAs'][] = esc_url( $url_locale );
 				}
@@ -535,10 +547,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@context' => 'http://schema.org',
 				'@type' => 'Organization',
 				'url' => esc_url( get_bloginfo( 'url' ) ),
-				'name' => $wpsso->og->get_site_name( $mod['use_post'] ),
+				'name' => SucomUtil::get_site_name( $wpsso->options, $mod ),
 			);
 
-			$desc = $wpsso->og->get_site_desc( $mod['use_post'] );
+			$desc = SucomUtil::get_site_description( $wpsso->options, $mod );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
@@ -679,16 +691,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$mt_schema = array();
-			$lca = $this->p->cf['lca'];
-
 			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $lca.'_add_schema_meta_array', true ) ) {
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
-				return $mt_schema;	// empty array
+				return array();	// empty array
 			}
 
+			$mt_schema = array();
+			$lca = $this->p->cf['lca'];
+			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$head_type = $this->get_head_item_type( $mod );
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
@@ -709,19 +721,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'datemodified' => 'article:modified_time',
 					) );
 
-					if ( ! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+					if ( ! $this->is_noscript_enabled() &&
+						! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
 
 						$size_name = $this->p->cf['lca'].'-schema';
-						$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );
+						$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
+							$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
 						if ( empty( $og_image ) && $mod['is_post'] ) 
-							$og_image = $this->p->media->get_default_image( 1, $size_name, false );
-
-						if ( ! empty( $og_image ) ) {
-							$image = reset( $og_image );
-							$mt_schema['image'] = $image['og:image'];
-						}
+							$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+	
+						foreach ( $og_image as $image )
+							$mt_schema['image'][] = SucomUtil::get_mt_media_url( 'og:image', $image );
 					}
+
 					break;
 			}
 
@@ -742,35 +755,46 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			if ( ! self::is_noscript_enabled() )
+				return array();	// empty array
+
 			$ret = array();
 			$lca = $this->p->cf['lca'];
+			$max = $this->p->util->get_max_nums( $mod, 'schema' );
+			$size_name = $this->p->cf['lca'].'-schema';
+			$og_image = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+
+			if ( empty( $og_image ) && $mod['is_post'] ) 
+				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+
+			foreach ( $og_image as $image )
+				$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $ret );
+
+			return $ret;
+		}
+
+		public function is_noscript_enabled() {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: amp endpoint' );
-				return $ret;	// empty array
+				return false;
 			}
 
-			// get_noscript_array() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $lca.'_add_schema_noscript_array',
+			// returns false when the wpsso-schema-json-ld extension is active
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array',
 				( isset( $this->p->options['schema_add_noscript'] ) ?
 					$this->p->options['schema_add_noscript'] : true ) ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema noscript array disabled' );
-				return $ret;	// empty array
+				return false;
 			}
 
-			if ( ! empty( $mt_og['og:image'] ) ) {
-				if ( is_array( $mt_og['og:image'] ) )
-					foreach ( $mt_og['og:image'] as $image )
-						$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
-				else $ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $mt_og['og:image'] ) );
-			}
-
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( $ret );
-			return $ret;
+			return true;
 		}
 
 		// pass a single dimension array in $opts

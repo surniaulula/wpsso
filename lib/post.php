@@ -68,9 +68,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Post
 			 */
 			$mod['is_post'] = true;
-			$mod['use_post'] = $mod_id;
-			$mod['post_status'] = get_post_status( $mod_id );	// post status name
 			$mod['post_type'] = get_post_type( $mod_id );		// post type name
+			$mod['post_status'] = get_post_status( $mod_id );	// post status name
 			return $mod;
 		}
 

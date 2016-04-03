@@ -54,15 +54,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_use_img_alt' ).
 			$this->get_nocb_cell( 'plugin_use_img_alt' );
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Image Alt Text Prefix',
-				'option label', 'wpsso' ), null, 'plugin_img_alt_prefix' ).
-			'<td class="blank">'.$form->options['plugin_img_alt_prefix'].'</td>';
+			$table_rows['plugin_img_alt_prefix'] = $form->get_th_html( _x( 'Image Alt Text Prefix',
+				'option label', 'wpsso' ), null, 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
+			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'WP Caption Paragraph Prefix',
-				'option label', 'wpsso' ), null, 'plugin_p_cap_prefix' ).
-			'<td class="blank">'.$form->options['plugin_p_cap_prefix'].'</td>';
+			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Paragraph Prefix',
+				'option label', 'wpsso' ), null, 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
+			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix'. $this->p->options ).'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Check for Embedded Media',
@@ -195,16 +193,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( 'plugin_filter_lang' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Create Missing WP Media Images',
+			$form->get_th_html( _x( 'Generate Missing WP Media Sizes',
 				'option label', 'wpsso' ), null, 'plugin_auto_img_resize' ).
 			$this->get_nocb_cell( 'plugin_auto_img_resize' );
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Enforce Image Dimensions Check',
+			$table_rows[] = $form->get_th_html( _x( 'Enforce Image Dimensions Check',
 				'option label', 'wpsso' ), null, 'plugin_ignore_small_img' ).
 			$this->get_nocb_cell( 'plugin_ignore_small_img' );
 
-			$table_rows[] = $form->get_th_html( _x( 'Allow Upscaling of Small WP Images',
+			$table_rows[] = $form->get_th_html( _x( 'Allow Upscaling of WP Media Images',
 				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).
 			$this->get_nocb_cell( 'plugin_upscale_images' ).'</td>';
 

@@ -110,10 +110,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 
-					$table_rows['og_img'] = $this->form->get_th_html( _x( 'Open Graph Image Dimensions',
-						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
-
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';
 
@@ -140,22 +136,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
-					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
-						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
-
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$table_rows['rp_publisher_url'] = $this->form->get_th_html( _x( 'Pinterest Company Page URL',
 						'option label', 'wpsso' ), null, 'rp_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'rp_publisher_url', $this->p->options ), 'wide' ).'</td>';
-
-					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$table_rows['rp_img'] = $this->form->get_th_html( _x( 'Rich Pin Image Dimensions',
-							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
-						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
-					}
 
 					$table_rows['subsection_twitter'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Twitter', 'metabox title', 'wpsso' ).'</h4></td>';

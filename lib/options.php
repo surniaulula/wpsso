@@ -422,6 +422,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'blank_num';	// cast as integer
 					break;
 				// must be numeric (zero and -1 is ok)
+				case 'schema_img_max':
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 

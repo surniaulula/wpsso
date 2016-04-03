@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.28.5-1',	// plugin version
-					'opt_version' => '418',		// increment when changing default options
+					'version' => '3.29.0-dev2',	// plugin version
+					'opt_version' => '419',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -57,8 +57,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'social-settings' => 'Your Social Settings',
 						),
 						'setting' => array (	// lib file descriptions will be translated
-							'image-dimensions' => 'Social Image Dimensions',
-							'social-accounts' => 'Website / Business Social Accounts',
+							'image-dimensions' => 'Social and SEO Image Dimensions',
+							'social-accounts' => 'Website Social Pages and Accounts',
 							'contact-fields' => 'User Profile Contact Methods',
 						),
 						'submenu' => array (	// lib file descriptions will be translated
@@ -342,8 +342,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
 					'schema_author_name' => 'display_name',
+					'schema_img_max' => 1,
 					'schema_img_width' => 800,		// must be at least 696px
-					'schema_img_height' => 1200,
+					'schema_img_height' => 1600,
 					'schema_img_crop' => 0,
 					'schema_img_crop_x' => 'center',
 					'schema_img_crop_y' => 'center',
@@ -398,7 +399,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rp_publisher_url' => '',		// multilingual
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
 					'rp_img_width' => 800,
-					'rp_img_height' => 1200,
+					'rp_img_height' => 1600,
 					'rp_img_crop' => 0,
 					'rp_img_crop_x' => 'center',
 					'rp_img_crop_y' => 'center',
@@ -413,7 +414,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_crop_y' => 'center',
 					// large image summary card
 					'tc_lrgimg_width' => 800,
-					'tc_lrgimg_height' => 1200,
+					'tc_lrgimg_height' => 1600,
 					'tc_lrgimg_crop' => 0,
 					'tc_lrgimg_crop_x' => 'center',
 					'tc_lrgimg_crop_y' => 'center',
@@ -989,7 +990,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'gpl' => array (),
 						'pro' => array (),
 					),
-					'version' => '',		// -wpsso3.28.2pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
+					'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
 				);
 	
 				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro

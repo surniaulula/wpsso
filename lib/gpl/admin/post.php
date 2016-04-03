@@ -16,7 +16,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
 				'post_header_rows' => 4,	// $table_rows, $form, $head, $mod
-				'post_media_rows' => 4,		// $table_rows, $form, $head, $mod
 			) );
 		}
 
@@ -24,7 +23,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$form_rows = array(
 				'og_art_section' => array(
@@ -82,123 +82,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
-		}
-
-		public function filter_post_media_rows( $table_rows, $form, $head, $mod ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
-			if ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) {
-				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-					sprintf( __( 'Save a draft version or publish the %s to display these options.',
-						'wpsso' ), ucfirst( $mod['post_type'] ) ).'</p></td>';
-				return $table_rows;	// abort
-			}
-
-			$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-opengraph',
-				$mod, 'none', array( 'pid', 'img_url' ), $head );	// $md_pre = 'none'
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
-
-			$form_rows = array(
-				'subsection_opengraph' => array(
-					'td_class' => 'subsection top',
-					'header' => 'h4',
-					'label' => _x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' )
-				),
-				'subsection_priority_image' => array(
-					'header' => 'h5',
-					'label' => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
-				),
-				'og_img_dimensions' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'og_img_dimensions', 'td_class' => 'blank',
-					'content' => $form->get_no_image_dimensions_input( 'og_img', true, false, true ),
-				),
-				'og_img_id' => array(
-					'label' => _x( 'Image ID', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_img_id', 'td_class' => 'blank',
-					'content' => $form->get_no_image_upload_input( 'og_img', $media_info['pid'], true ),
-				),
-				'og_img_url' => array(
-					'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_img_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
-				),
-				'og_img_max' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_img_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_img_max', array( -1 ), '', '', false ),
-				),
-				'subsection_priority_video' => array(
-					'header' => 'h5',
-					'label' => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
-				),
-				'og_vid_embed' => array(
-					'label' => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_embed', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( '' ),
-				),
-				'og_vid_url' => array(
-					'label' => _x( 'or a Video URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( '', 'wide' ),
-				),
-				'og_vid_title' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Video Name / Title', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_title', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( '', 'wide' ),
-				),
-				'og_vid_desc' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Video Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( '', 'wide' ),
-				),
-				'og_vid_max' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Maximum Videos', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_vid_max', array( -1 ), '', '', false ),
-				),
-				'og_vid_prev_img' => array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Include Preview Image(s)', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_prev_img', 'td_class' => 'blank',
-					'content' => $form->get_no_checkbox( 'og_vid_prev_img' ),
-				),
-			);
-
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				$form_rows['subsection_pinterest'] = array(
-					'tr_class' => 'hide_in_basic',
-					'td_class' => 'subsection',
-					'header' => 'h4',
-					'label' => _x( 'Pinterest / Rich Pin', 'metabox title', 'wpsso' )
-				);
-				$form_rows['rp_img_dimensions'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'rp_img_dimensions', 'td_class' => 'blank',
-					'content' => $form->get_no_image_dimensions_input( 'rp_img', true, false, true ),
-				);
-				$form_rows['rp_img_id'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Image ID', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-rp_img_id', 'td_class' => 'blank',
-					'content' => $form->get_no_image_upload_input( 'rp_img', $media_info['pid'], true ),
-				);
-				$form_rows['rp_img_url'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-rp_img_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
-				);
-			}
-
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
 		}
 	}
 }

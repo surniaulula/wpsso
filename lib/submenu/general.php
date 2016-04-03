@@ -163,12 +163,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-images':
 
-					$table_rows['og_vid_prev_img'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
+					$table_rows['og_img_max'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
 						'option label', 'wpsso' ), null, 'og_img_max' ).
 					'<td>'.$this->form->get_select( 'og_img_max', 
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
 					( empty( $this->form->options['og_vid_prev_img'] ) ?
-						'' : ' '._x( '<em>video preview images are enabled</em> and will be included first',
+						'' : ' '._x( '<em>video preview images are enabled</em> (and included first)',
 							'option comment', 'wpsso' ) ).'</td>';
 
 					$table_rows['og_img'] = $this->form->get_th_html( _x( 'Open Graph Image Dimensions',
@@ -308,6 +308,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 
+					$table_rows['schema_img_max'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
+						'option label', 'wpsso' ), null, 'schema_img_max' ).
+					'<td>'.$this->form->get_select( 'schema_img_max', 
+						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', null, true ).
+					( empty( $this->form->options['og_vid_prev_img'] ) ?
+						'' : ' '._x( '<em>video preview images are enabled</em> (and included first)',
+							'option comment', 'wpsso' ) ).'</td>';
+
 					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
 						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
@@ -371,9 +379,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					break;
 
 				case 'pub-twitter':
-
-					$table_rows[] = '<td colspan="2" style="padding-bottom:10px;">'.
-						$this->p->msgs->get( 'info-pub-twitter' ).'</td>';
 
 					$table_rows['tc_site'] = $this->form->get_th_html( _x( 'Twitter Business @username',
 						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).

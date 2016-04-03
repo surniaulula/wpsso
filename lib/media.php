@@ -114,6 +114,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				} 
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
+				// unless $md_pre is 'none', get_og_image() will fallback to the 'og' custom meta
 				$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_image( 1,
 					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
@@ -482,7 +483,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( $img_cropped === 0 ? '' : ' cropped' ).') image size' );
 
 					if ( is_admin() )
-						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the %4$s image size.', 'wpsso' ), __( 'Media Library', 'wpsso' ), $pid, $size_text, '<b>'.$size_label.'</b> ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' <i>'.__( 'cropped', 'wpsso' ).'</i>' ).')' ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
+						$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' ), __( 'Media Library', 'wpsso' ), $pid, $size_text, '<b>'.$size_label.'</b> ('.$size_info['width'].'x'.$size_info['height'].( $img_cropped === 0 ? '' : ' <i>'.__( 'cropped', 'wpsso' ).'</i>' ).')' ).' '.$this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) ), false, true, $msg_id, true );
 					return self::reset_image_src_info();
 
 				} elseif ( ! $this->check_image_id_min_max( $pid, $size_name, $img_width, $img_height, 
@@ -588,7 +589,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// allow empty post_ids to get additional content from filter hooks
 			if ( empty( $content ) ) {
 				$content_provided = false;
-				$content = $this->p->webpage->get_content( $mod['id'], $mod['use_post'] );
+				$content = $this->p->webpage->get_content( $mod );
 			} else $content_provided = true;
 
 			if ( empty( $content ) ) { 
@@ -761,7 +762,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$data_wp_pid_msg = ' '.sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for Media Library images &mdash; if this image was selected from the Media Library before %2$s was first activated, try removing and adding the image back to your content.', 'wpsso' ), $short, $short );
 									else $data_wp_pid_msg = '';
 
-									$this->p->notice->err( sprintf( __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the %2$s image size.', 'wpsso' ), $og_image['og:image'], '<b>'.$size_label.'</b> ('.$size_name.')' ).$data_wp_pid_msg, false, true, $msg_id, true );
+									$this->p->notice->err( sprintf( __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions.', 'wpsso' ), $og_image['og:image'], '<b>'.$size_label.'</b> ('.$size_name.')' ).$data_wp_pid_msg, false, true, $msg_id, true );
 								}
 								$og_image = array();
 							}
@@ -835,7 +836,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// allow empty post IDs to get additional content from filter hooks
 			if ( empty( $content ) ) {
 				$content_provided = false;
-				$content = $this->p->webpage->get_content( $mod['id'], $mod['use_post'] );
+				$content = $this->p->webpage->get_content( $mod );
 			} else $content_provided = true;
 
 			if ( empty( $content ) ) { 

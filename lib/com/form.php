@@ -369,7 +369,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! version_compare( $wp_version, 3.9, '<' ) ) {
 				$crop_area_select .= $narrow === true ? 
 					' <div class="img_crop_from is_narrow">' :
-					' <div class="img_crop_from">From';
+					' <div class="img_crop_from">from';
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$pos_vals = $this->options[$name.'_'.$key] === -1 ? 
 						array_merge( array( -1 => _x( '(settings value)', 'option value', $this->text_dom ) ),
@@ -381,9 +381,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$crop_area_select .= '</div>';
 			}
 
-			return 'Width '.$this->get_input( $name.'_width', 'short', '', 0, $def_width, $disabled ).' x '.
-				'Height '.$this->get_input( $name.'_height', 'short', '', 0, $def_height, $disabled ).
-				' &nbsp; Crop '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).$crop_area_select;
+			return $this->get_input( $name.'_width', 'short', '', 0, $def_width, $disabled ).'x'.
+				$this->get_input( $name.'_height', 'short', '', 0, $def_height, $disabled ).
+				'px &nbsp; cropped '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).$crop_area_select;
 		}
 
 		public function get_no_image_dimensions_input( $name, $use_opts = false, $narrow = false ) {

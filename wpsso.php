@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.5
- * Version: 3.28.5-1
+ * Version: 3.29.0-dev2
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *

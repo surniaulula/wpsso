@@ -31,14 +31,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Post
 			 */
-			'is_post' => false,
 			'use_post' => false,
-			'post_status' => false,
+			'is_post' => false,
 			'post_type' => false,
+			'post_status' => false,
 			/*
 			 * Term
 			 */
-			'is_taxonomy' => false,
+			'is_term' => false,
 			'tax_slug' => false,
 			/*
 			 * User
@@ -320,13 +320,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_img_id' => '',
 					'og_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'og_img_url' => '',
+					'og_img_max' => -1,
 					'og_vid_url' => '',
 					'og_vid_embed' => '',
-					'og_img_max' => -1,
-					'og_vid_max' => -1,
-					'og_vid_prev_img' => ( empty( $opts['og_vid_prev_img'] ) ? 0 : 1 ),
 					'og_vid_title' => '',
 					'og_vid_desc' => '',
+					'og_vid_max' => -1,
+					'og_vid_prev_img' => ( empty( $opts['og_vid_prev_img'] ) ? 0 : 1 ),
 					'rp_img_width' => '',
 					'rp_img_height' => '',
 					'rp_img_crop' => ( empty( $opts['rp_img_crop'] ) ? 0 : 1 ),
@@ -335,6 +335,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'rp_img_id' => '',
 					'rp_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'rp_img_url' => '',
+					'schema_img_width' => '',
+					'schema_img_height' => '',
+					'schema_img_crop' => ( empty( $opts['schema_img_crop'] ) ? 0 : 1 ),
+					'schema_img_crop_x' => ( empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'] ),
+					'schema_img_crop_y' => ( empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'] ),
+					'schema_img_id' => '',
+					'schema_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
+					'schema_img_url' => '',
+					'schema_img_max' => -1,
 				);
 
 				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $this->get_mod( $mod_id ) );
@@ -582,7 +591,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( empty( $mod['id'] ) )
 				return $meta_ret;
 
-			// always fallback to 'og' meta options
+			// unless $md_pre is 'none' allways fallback to the 'og' custom meta
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
 				if ( $prefix === 'none' )	// special index keyword

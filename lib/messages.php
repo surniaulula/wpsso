@@ -163,10 +163,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'A custom Image ID to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Large Image Summary\' Twitter Card meta tags,'.( empty( $this->p->is_avail['ssb'] ) ? '' : ' along with the Pinterest and Tumblr social sharing buttons,' ).' before any featured, attached, or content images.';
 						 	break;
 						case 'tooltip-meta-og_img_url':
-							$text = 'A custom image URL (instead of an Image ID) to include first in the Facebook / Open Graph, and \'Large Image Summary\' Twitter Card meta tags. Please make sure your custom image is large enough, or it may be ignored by the social website(s). '.$fb_recommends.' <em>This field is disabled if an Image ID has been specified</em>.';
+							$text = __( 'A custom image URL (instead of an Image ID) to include first in the Facebook / Open Graph, and "Large Image Summary" Twitter Card meta tags.', 'wpsso' ).' '.__( 'Please make sure your custom image is large enough, or it may be ignored by the social website(s).', 'wpsso' ).' '.$fb_recommends.' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
 							break;
 						case 'tooltip-meta-og_img_max':
-							$text = 'The maximum number of images to include in the Facebook / Open Graph meta tags.';
+							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_vid_embed':
 							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video Embed HTML Custom Field' ).' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'The %1$s video API modules include the video name / title and description <em>when available</em>.', 'wpsso' ), $info['short_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
 							break;
 						case 'tooltip-meta-og_vid_max':
-							$text = 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.';
+							$text = __( 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_vid_prev_img':
 							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
@@ -188,7 +188,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'A custom Image ID to include first when the Pinterest crawler is detected.';
 						 	break;
 						case 'tooltip-meta-rp_img_url':
-							$text = 'A custom image URL (instead of an Image ID) to include first when the Pinterest crawler is detected. <em>This field is disabled if an Image ID has been specified</em>.';
+							$text = __( 'A custom image URL (instead of an Image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
+						 	break;
+						case 'tooltip-meta-schema_img_id':
+							$text = 'A custom Image ID to include first in the Google / Schema meta tags and JSON-LD markup.';
+						 	break;
+						case 'tooltip-meta-schema_img_url':
+							$text = __( 'A custom image URL (instead of an Image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
+						 	break;
+						case 'tooltip-meta-schema_img_max':
+							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
 						 	break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_user', $text, $idx, $info );
@@ -218,7 +227,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Priority Media' settings
 						 */
 						case 'tooltip-og_img_dimensions':
-							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$this->p->opt->get_defaults( 'og_img_width' ).'x'.$this->p->opt->get_defaults( 'og_img_height' ).' '.( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'un' : '' ).'cropped). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
+							$def_dimensions = $this->p->opt->get_defaults( 'og_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'og_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$def_dimensions.'). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-og_def_img_id':
 							$text = 'The ID number and media location of your default image (example: 123). The Default Image ID will be used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content. The ID number for images in the WordPress Media Library can be found in the URL when editing an image (post=123 in the URL, for example). The NextGEN Gallery image IDs are easier to find -- it\'s the number in the first column when viewing a Gallery.';
@@ -245,10 +257,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'If the <em>featured</em> image in a Post or Page is from a NextGEN Gallery, then add that image\'s tags to the Facebook / Open Graph and Pinterest Rich Pin tag list (default is unchecked).';
 							break;
 						case 'tooltip-og_img_max':
-							$text = 'The maximum number of images to list in the Facebook / Open Graph and Pinterest Rich Pin meta tags -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the facebook / Open Graph and Pinterest Rich Pin meta tags (<strong>not recommended</strong>). If no images are listed in your meta tags, then social websites may choose an unsuitable image from your webpage (including headers, sidebars, etc.).';
+							$text = 'The maximum number of images to include in the Facebook / Open Graph meta tags -- this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content. If you select "0", then no images will be listed in the Facebook / Open Graph meta tags (<strong>not recommended</strong>). If no images are listed in your meta tags, social websites may choose an unsuitable image from your webpage (including headers, sidebars, etc.). There is no advantage in selecting a maximum value greater than 1.';
 							break;
 						case 'tooltip-og_vid_max':
-							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select \'0\', then no videos will be listed in the Facebook / Open Graph and Pinterest Rich Pin meta tags.';
+							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select "0", then no videos will be listed in the Facebook / Open Graph and Pinterest Rich Pin meta tags. There is no advantage in selecting a maximum value greater than 1.';
 							break;
 						case 'tooltip-og_vid_https':
 							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
@@ -428,7 +440,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							// use the original un-filtered value
 							$exp_sec = WpssoConfig::$cf['opt']['defaults']['plugin_object_cache_exp'];
 							$exp_hrs = sprintf( '%0.2d', $exp_sec / 60 / 60 );
-							$text = '<p>'.$info['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended).</p><p>If you have database performance issues, or don’t use an object / transient cache (like APC, XCache, memcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.</p>';
+							$text = '<p>'.$info['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended). If you have database performance issues, or don’t use an object / transient cache (like Memcache, Xcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.</p>';
 							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
@@ -531,7 +543,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';
 							break;
 						case 'tooltip-schema_social_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google. The Website markup includes the site name, alternate site name, URL, and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL, or disable the addition of a search URL by returning false. The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website / Business Social Accounts settings page' ).'. The Person markup includes all contact method URLs from the user\'s profile page. The "Twitter @username" will be used to include a URL for their Twitter account profile.';
+							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 						case 'tooltip-schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
@@ -542,8 +554,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_banner_url':
 							$text = 'A 600x60px banner of your organization\'s logo that Google can use in Articles and other Schema item types.';
 							break;
+						case 'tooltip-schema_img_max':
+							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
+							break;
 						case 'tooltip-schema_img_dimensions':
-							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$this->p->opt->get_defaults( 'schema_img_width' ).'x'.$this->p->opt->get_defaults( 'schema_img_height' ).' '.( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'un' : '' ).'cropped). The minimum image width required by Google is 696px for the resulting image. If you do not choose to crop this image size, make sure the height value is large enough for portrait images.';
+							$def_dimensions = $this->p->opt->get_defaults( 'schema_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'schema_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$def_dimensions.'). The minimum image width required by Google is 696px for the resulting resized image. If you do not choose to crop this image size, make sure the height value is large enough for portrait / vertical images.';
 							break;
 						case 'tooltip-schema_desc_len':
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
@@ -593,7 +611,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 						case 'tooltip-rp_img_dimensions':
-							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$this->p->opt->get_defaults( 'rp_img_width' ).'x'.$this->p->opt->get_defaults( 'rp_img_height' ).' '.( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'un' : '' ).'cropped). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
+							$def_dimensions = $this->p->opt->get_defaults( 'rp_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'rp_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$def_dimensions.'). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-rp_author_name':
 							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'A different \'article:author\' meta tag can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' for the \'%2$s\' meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
@@ -687,22 +708,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'How do you like the plugin? Please take a moment to <a href="%1$s" target="_blank">rate the %2$s plugin on WordPress.org</a>.', 'wpsso' ), $url['review'], $info['short'] ).' '.sprintf( __( 'Ratings help the WordPress community as a whole find higher-quality plugins &mdash; along with <strong>encouraging us to keep improving %s</strong> as well!', 'wpsso' ), $info['short'] ).' ;-)</p></blockquote>';
 						break;
 					case 'info-pub-pinterest':
-						$text = '<blockquote class="top-info"><p>'.__( 'Pinterest uses the Open Graph standard meta tags for their Rich Pins.', 'wpsso' ).' '.__( 'These options allow you to manage and/or override some Pinterest-specific Open Graph settings.', 'wpsso' ).' '.__( 'Please note that if you use a caching plugin, or front-end caching service, it should detect the Pinterest crawler user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> option and add "Pinterest/" to that list).', 'wpsso' ).' '.sprintf( __( 'This will allow %s to provide different / customized meta tags specifically for the Pinterest crawler.', 'wpsso' ), $info['short'] ).'</p></blockquote>';
-						break;
-					case 'info-pub-twitter':
-						$text = '<blockquote class="top-info"><p><strong>'.__( 'The Photo, Gallery, and Product Cards were deprecated by Twitter on July 3rd, 2015.', 'wpsso' ).'</strong> '.sprintf( __( '%1s continues to support all <a href="%2s">current Twitter Card formats</a>, including the Summary, Summary with Large Image, mobile App (extension plugin required), and video Player Cards (Pro version required).', 'wpsso' ), $info['short'], 'https://dev.twitter.com/cards/types' ).'</p></blockquote>';
+						$text = '<blockquote class="top-info"><p>'.__( 'These options allow you to customize some Open Graph meta tag and Schema markup values for the Pinterest crawler.', 'wpsso' ).' '.__( 'If you use a caching plugin (or front-end caching service), it should detect the Pinterest user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> setting and add "Pinterest/" to that list).', 'wpsso' ).'</p></blockquote>';
 						break;
 					case 'info-cm':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact field names and labels shown on <a href="%s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact fields for Facebook / Open Graph, Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).' <strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' '.sprintf( __( 'Enabled contact methods are shown on user profile pages automatically, but your theme is responsible for displaying them in other locations throughout your website (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> under the <strong>Contact Info</strong> header.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
 						break;
 					case 'info-taglist':
 						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their header template(s).', 'wpsso' ).'</p></blockquote>';
 						break;
-					case 'info-image-dimensions':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s allows you to control image dimensions based on their intended use (Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, etc.).', 'wpsso' ), $info['short'] ).' '.$fb_recommends.'</p></blockquote>';
-						break;
 					case 'info-social-accounts':
-						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).' '.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search, and/or enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup in your webpage headers.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
+						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).'</p><p>'.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
@@ -734,20 +749,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hide_warnings = SucomUtil::get_const( $hide_const_name );
 
-						$text = __( 'Please select or upload a larger / different featured image. The Priority Media tab bellow can also be used to select an image specifically for social sharing purposes.', 'wpsso' );
+						$text = __( 'The Select Media tab in the Social Settings metabox can be used to select a larger image specifically for social / SEO purposes.', 'wpsso' );
 						if ( current_user_can( 'manage_options' ) ) {
-							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso-schema-json-ld' ).'</em></p>';
+							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
 							$text .= '<ul>';
-							$text .= '<li>'.sprintf( __( 'You can also adjust the <b>%2$s</b> option in the <a href="%1$s">Social Image Dimensions</a> settings.',
-								'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $info['size_label'] ).'</li>';
-							$text .= '<li>'.sprintf( __( 'Enable or increase the <a href="%1$s">WP / Theme Integration</a> <em>image upscaling percentage</em> feature.',
-								'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
-							$text .= '<li>'.sprintf( __( 'Disable the <a href="%1$s">WP / Theme Integration</a> <em>image dimensions check</em> option (not recommended).',
-								'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
-							if ( ! $hide_warnings ) {
-								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.',
-									'wpsso' ), $hide_const_name ).'</li>';
-							}
+							$text .= '<li>'.sprintf( __( 'You can also adjust the <b>%2$s</b> option in the <a href="%1$s">Social and SEO Image Dimensions</a> settings.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $info['size_label'] ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Enable or increase the <a href="%1$s">WP / Theme Integration</a> <em>image upscaling percentage</em> feature.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Disable the <a href="%1$s">WP / Theme Integration</a> <em>image dimensions check</em> option (not recommended).', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
+							if ( ! $hide_warnings )
+								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.', 'wpsso' ), $hide_const_name ).'</li>';
 							$text .= '</ul>';
 						}
 						break;

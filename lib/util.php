@@ -29,12 +29,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( ! empty( $this->p->options['plugin_'.$this->p->cf['lca'].'_tid'] ) )
-				$this->add_plugin_filters( $this, array( 
-					'installed_version' => 2, 
-					'ua_plugin' => 2,
-				), 10, 'sucom' );
-
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from a url
 			add_action( 'current_screen', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
@@ -115,23 +109,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-		}
-
-		public function filter_installed_version( $version, $lca ) {
-			if ( ! empty( $this->p->cf['plugin'][$lca]['update_auth'] ) &&
-				! $this->p->check->aop( $lca, false ) )
-					return '0.'.$version;
-			else return $version;
-		}
-
-		public function filter_ua_plugin( $plugin, $lca ) {
-			if ( ! isset( $this->p->cf['plugin'][$lca] ) )
-				return $plugin;
-			elseif ( $this->p->check->aop( $lca ) )
-				return $plugin.'/L';
-			elseif ( $this->p->check->aop( $lca, false ) )
-				return $plugin.'/U';
-			else return $plugin.'/G';
 		}
 
 		public function get_image_size_label( $size_name ) {	// wpsso-opengraph
@@ -757,7 +734,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ret = false;
 
 			elseif ( ! empty( $def['on_index'] ) &&
-				( is_home() || is_archive() || $mod['is_taxonomy'] ) )
+				( is_home() || is_archive() || $mod['is_term'] ) )
 					$ret = true;
 
 			elseif ( ! empty( $def['on_search'] ) &&
@@ -1083,6 +1060,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
+			// save $use_post for backwards compatibility
+			$mod['use_post'] = $use_post;
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
 
@@ -1303,22 +1283,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// if $mod_id is 0 or false, return values from the plugin settings 
-		public function get_max_nums( $mod_id = false, $mod_name = false ) {
+		// get maximum media values from custom meta or plugin settings
+		public function get_max_nums( array &$mod, $opt_prefix = 'og' ) {
 			$max = array();
-			foreach ( array( 'og_vid_max', 'og_img_max' ) as $max_name ) {
-				if ( ! empty( $mod_id ) && 
-					isset( $this->p->m['util'][$mod_name] ) )
-						$num_meta = $this->p->m['util'][$mod_name]->get_options( $mod_id, $max_name );
-				else $num_meta = null;	// default value returned by get_options() if index key is missing
+			$opt_keys = array( $opt_prefix.'_vid_max', $opt_prefix.'_img_max' );
 
-				// quick sanitation of returned value
-				if ( is_numeric( $num_meta ) && $num_meta >= 0 ) {
-					$max[$max_name] = $num_meta;
+			foreach ( $opt_keys as $max_key ) {
+
+				if ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) )
+					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );
+				else $max_val = null;	// default value returned by get_options() if index key is missing
+
+				// quick sanitation of returned value - ignore -1 values
+				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
+					$max[$max_key] = $max_val;
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'found custom meta '.$max_name.' = '.$num_meta );
-				} else $max[$max_name] = $this->p->options[$max_name];	// fallback to options
+						$this->p->debug->log( 'found custom meta '.$max_key.' = '.$max_val );
+				} else $max[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
+					$this->p->options[$max_key] : 0;
 			}
+
 			return $max;
 		}
 

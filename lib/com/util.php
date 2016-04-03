@@ -425,11 +425,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		public static function rename_keys( &$opts = array(), &$keys = array() ) {
+		public static function rename_keys( &$opts = array(), $keys = array() ) {
 			foreach ( $keys as $old => $new ) {
-				if ( empty( $old ) )
+				if ( empty( $old ) )	// just in case
 					continue;
-				elseif ( isset( $opts[$old] ) ) {
+				if ( isset( $opts[$old] ) ) {
 					if ( ! empty( $new ) && 
 						! isset( $opts[$new] ) )
 							$opts[$new] = $opts[$old];
@@ -451,12 +451,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		// deprecated 2016/04/01
 		public static function insert_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return $array;
+		}
+
+		// deprecated 2016/04/01
+		public static function insert_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return $array;
+		}
+
+		public static function before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
 		}
 
-		public static function insert_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+		public static function after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
+		}
+
+		public static function replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
 		}
 
 		private static function insert_in_array( $rel_pos, &$array, &$match_key, &$mixed, &$add_value ) {
@@ -491,10 +505,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// return the preferred URL (og:image:secure_url, og:image:url, og:image)
-		public static function get_mt_media_url( $prefix, &$opts ) {
+		public static function get_mt_media_url( $prefix, &$arr ) {
 			foreach ( array( ':secure_url', ':url', '' ) as $suffix )
-				if ( ! empty( $opts[$prefix.$suffix] ) )
-					return $media_url = $opts[$prefix.$suffix];
+				if ( ! empty( $arr[$prefix.$suffix] ) )
+					return $media_url = $arr[$prefix.$suffix];
 			return '';
 		}
 
@@ -542,6 +556,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						return self::$pub_lang[$pub];
 					else return array();
 			}
+		}
+
+		// return the custom site name, and if empty, the default site name
+		public static function get_site_name( array &$opts, array &$mod ) {
+			self::get_locale_opt( 'og_site_name', $opts, $mod, 
+				get_bloginfo( 'name', 'display' ) );
+		}
+
+		// return the custom site description, and if empty, the default site description
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public static function get_site_description( array &$opts, array &$mod ) {
+			self::get_locale_opt( 'og_site_description', $opts, $mod, 
+				get_bloginfo( 'description', 'display' ) );
+		}
+
+		// return a localize options value
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public static function get_locale_opt( $key, &$opts, $mixed, $if_empty = null ) {
+			$key_locale = self::get_key_locale( $key, $opts, $mixed );
+			if ( $if_empty !== null )
+				return empty( $opts[$key_locale] ) ? $if_empty : $opts[$key_locale];
+			// allow for empty values
+			else return isset( $opts[$key_locale] ) ? $opts[$key_locale] : null;
 		}
 
 		// localize an options array key
@@ -958,11 +995,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr)
-		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup = true ) {
+		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 			$charset = get_bloginfo( 'charset' );
-			if ( $cleanup === true )
+
+			if ( $cleanup_html === true )
 				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
 			else $text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
+
 			if ( $maxlen > 0 ) {
 				if ( mb_strlen( $trailing ) > $maxlen )
 					$trailing = mb_substr( $trailing, 0, $maxlen );			// trim the trailing string, if too long
@@ -978,10 +1017,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $text;
 		}
 
-		public function cleanup_html_tags( $text, $strip_tags = true, $use_alt = false ) {
+		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
 			$alt_text = '';
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
+
 			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
 			$text = preg_replace( '/<\?.*\?>/i', ' ', $text);				// remove php
@@ -994,7 +1034,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
 				$text_stripped = trim( strip_tags( $text ) );				// remove remaining html tags
 
-				if ( $text_stripped === '' && $use_alt ) {				// possibly use img alt strings if no text
+				if ( $text_stripped === '' && $use_img_alt ) {				// possibly use img alt strings if no text
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/U', 
 							$text, $matches, PREG_PATTERN_ORDER ) ) {

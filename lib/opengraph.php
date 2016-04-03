@@ -87,14 +87,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$max = $this->p->util->get_max_nums( $mod );
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$post_id = false;
 			$post_obj = false;
 			$check_dupes = true;
 			$prev_count = 0;
-
-			// $mod['id'] of 0 or false returns the default plugin settings 
-			$max = $this->p->util->get_max_nums( $mod['id'], $mod['name'] );
 
 			// maintain backwards compatibility by defining the post id and object
 			if ( $mod['is_post'] ) {
@@ -161,13 +159,13 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( ! isset( $og['og:locale'] ) ) {
 				// get the current or configured language for og:locale
 				$lang = empty( $this->p->options['fb_lang'] ) ? 
-					SucomUtil::get_locale( $post_id ) :
+					SucomUtil::get_locale( $mod ) :
 					$this->p->options['fb_lang'];
 				$og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $post_id );
 			}
 
 			if ( ! isset( $og['og:site_name'] ) )
-				$og['og:site_name'] = $this->get_site_name( $post_id );
+				$og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
 
 			if ( ! isset( $og['og:title'] ) )
 				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
@@ -189,12 +187,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				}
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:publisher'] ) ) {
-					$key_locale = SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options, $post_id );
-					$og['article:publisher'] = isset( $this->p->options[$key_locale] ) ? 	// just in case
-						$this->p->options[$key_locale] :
-						$this->p->options['fb_publisher_url'];
-				}
+				if ( ! isset( $og['article:publisher'] ) )
+					$og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:tag'] ) )
@@ -249,13 +243,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						if ( is_admin() ) {					// process both image sizes
-							$img_sizes = array(
-								'rp' => $lca.'-richpin',
-								'og' => $lca.'-opengraph',
-							);
-						} elseif ( $crawler_name === 'pinterest' )
-							$img_sizes = array( 'rp' => $lca.'-richpin' );	// use only pinterest image size
+						// add richpin to process both image sizes
+						if ( is_admin() )
+							$img_sizes = SucomUtil::before_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
+						// use only pinterest image size
+						elseif ( $crawler_name === 'pinterest' )
+							$img_sizes = SucomUtil::replace_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
 					}
 
 					foreach ( $img_sizes as $md_pre => $size_name ) {
@@ -266,12 +259,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						// the size_name is used as a context for duplicate checks
 						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
-						// if there's no image, and no video preview image, 
-						// then add the default image for singular (aka post) webpages
-						if ( $mod['is_post'] && $prev_count === 0 && empty( $og[$md_pre.':image'] ) ) {
+						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
+						if ( empty( $og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] )
 							$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 								$size_name, $check_dupes );
-						}
 
 						switch ( $md_pre ) {
 							case 'rp':
@@ -281,11 +272,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 									foreach ( $og[$md_pre.':image'] as $num => $arr )
 										$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
 											$arr, false, 'pinterest:' );
-								} else {
-									// rename the rp:image array to og:image
-									$og['og:image'] = $og[$md_pre.':image'];
-									unset ( $og[$md_pre.':image'] );
-								}
+
+								// rename the rp:image array to og:image
+								} else $og = SucomUtil::rename_keys( $og, array( $md_pre.':image' => 'og:image' ) );
+
 								break;
 						}
 					}
@@ -349,6 +339,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			}
 
 			// if $md_pre is 'none' (special index keyword), don't load custom video title / description
+			// only the first video is given the custom title and description (if one was entered)
 			if ( $aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
 				foreach ( array(
 					'og_vid_title' => 'og:video:title',
@@ -378,9 +369,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 						// define the secure_url, if https is available
 						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
+
 							$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
 							$og_embed['og:video:url'] = preg_replace( '/^https:/', 'http:',
 								$og_video['og:video:embed_url'] );
+
 						} else $og_embed['og:video:url'] = $og_video['og:video:embed_url'];
 
 						$og_embed['og:video:type'] = 'text/html';
@@ -491,25 +484,6 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return $og_ret;
 		}
 
-		// $get = default / current / $post_id
-		public function get_site_name( $get = 'current' ) {
-			// provide options array to allow fallback if locale option does not exist
-			$key_locale = SucomUtil::get_key_locale( 'og_site_name', $this->p->options, $get );
-
-			if ( ! empty( $this->p->options[$key_locale] ) )
-				return $this->p->options[$key_locale];
-			else return get_bloginfo( 'name', 'display' );
-		}
-
-		public function get_site_desc( $get = 'current' ) {
-			// provide options array to allow fallback if locale option does not exist
-			$key_locale = SucomUtil::get_key_locale( 'og_site_description', $this->p->options, $get );
-
-			if ( ! empty( $this->p->options[$key_locale] ) )
-				return $this->p->options[$key_locale];
-			else return get_bloginfo( 'description', 'display' );
-		}
-
 		// deprecated in v8.27.0 on 2016/03/07
 		public function get_the_media_urls( $size_name, $post_id, $md_pre = 'og', $output = array( 'image', 'video' ) ) {
 			if ( function_exists( '_deprecated_function' ) )
@@ -517,10 +491,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return array();
 		}
 
-		// used by some sharing buttons (buffer, pinterest, tumblr)
-		// creates image and video information for a specific $size_name ('wpsso-buffer-button' for example)
-		// the returned array can include a varying number of elements, depending on the $output value
-		public function get_the_media_info( $size_name, array &$mod, $md_pre = 'og', $output = array(), &$head = array() ) {
+		// returned array can include a varying number of elements, depending on the $output value
+		public function get_the_media_info( $size_name, array $output, array &$mod, $md_pre = 'og', $mt_pre = 'og', &$head = array() ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -552,11 +525,14 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					case 'image':
 					case 'img_url':
 						$mt_name = $key === 'pid' ?
-							'og:image:id' : 'og:image';
+							$mt_pre.':image:id' : $mt_pre.':image';
+
 						if ( $og_video !== null )
 							$ret[$key] = self::get_first_media_info( $mt_name, $og_video );
+
 						if ( empty( $ret[$key] ) )
 							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
+
 						// if there's no image, and no video preview image, 
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
@@ -566,17 +542,17 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						break;
 					case 'video':
 					case 'vid_url':
-						$ret[$key] = self::get_first_media_info( 'og:video', $og_video );
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video', $og_video );
 						break;
 					case 'vid_title':
-						$ret[$key] = self::get_first_media_info( 'og:video:title', $og_video );
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:title', $og_video );
 						break;
 					case 'vid_desc':
-						$ret[$key] = self::get_first_media_info( 'og:video:description', $og_video );
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:description', $og_video );
 						break;
 					case 'prev_url':
 					case 'preview':
-						$ret[$key] = self::get_first_media_info( 'og:video:thumbnail_url', $og_video );
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:thumbnail_url', $og_video );
 						break;
 					default:
 						$ret[$key] = '';
@@ -603,14 +579,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					return '';
 
 			switch ( $prefix ) {
-				// search all three values, in order of preference
-				case ( preg_match( '/^og:(image|video)(:secure_url|:url)?$/', $prefix ) ? true : false ):
+				// if we're asking for an image or video URL, then search all three values sequentially
+				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $prefix ) ? true : false ):
 					$search = array(
 						$prefix.':secure_url',	// og:image:secure_url
 						$prefix.':url',		// og:image:url
 						$prefix,		// og:image
 					);
 					break;
+				// otherwise, only search for that specific meta tag name
 				default:
 					$search = array( $prefix );
 					break;
