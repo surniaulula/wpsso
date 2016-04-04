@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.29.0-dev2 (2016/04/03)**
+**Version 3.29.0-dev3 (2016/04/04)**
 
 Official announcement: N/A
 
@@ -377,13 +377,16 @@ Official announcement: N/A
 	* Added a new `SucomUtil::get_locale_opt()` static method to get localized option values.
 	* Added a new `SucomUtil::get_site_name()` and `SucomUtil::get_site_description()` to return localized values with fallback to WP values.
 	* Replaced `$use_post` argument with `$mod` in the following filters:
-		* 'ngfb_caption'
-		* 'ngfb_content'
-		* 'ngfb_content_seed'
-		* 'ngfb_description'
-		* 'ngfb_description_seed'
-		* 'ngfb_title'
-		* 'ngfb_title_seed'
+		* 'wpsso_caption'
+		* 'wpsso_content'
+		* 'wpsso_content_seed'
+		* 'wpsso_description'
+		* 'wpsso_description_seed'
+		* 'wpsso_title'
+		* 'wpsso_title_seed'
+	* Removed the WpssoUtil `get_source_id()` method.
+	* Removed `$src_id` from all method and filter arguments.
+	* Added a new `SucomDebug::clear()` static method to remove cached content by URL.
 
 **Version 3.28.5-1 (2016/03/31)**
 
@@ -407,9 +410,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.0-dev2 =
+= 3.29.0-dev3 =
 
-(2016/04/03) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab. Changes to SucomWebpage caption, content, description, and title related methods.
+(2016/04/04) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab. Changes to SucomWebpage caption, content, description, and title related methods.
 
 = 3.28.5-1 =
 
