@@ -42,7 +42,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function load_transient() {
 			if ( $this->transient['loaded'] !== true ) {
-				$cache_salt = __CLASS__.'(transient)';
+				$cache_salt = __CLASS__.'::salt(transient)';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				$ret = get_transient( $cache_id );
 				if ( $ret !== false )
@@ -53,7 +53,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function save_transient() {
 			if ( $this->transient['loaded'] === true ) {
-				$cache_salt = __CLASS__.'(transient)';
+				$cache_salt = __CLASS__.'::salt(transient)';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
 			}
@@ -84,6 +84,47 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'error connecting to URL '.$url.' for caching (http code '.$http_code.')' );
 				$this->p->debug->log( 'ignoring requests to cache this URL for '.$this->transient['ignore_time'].' second(s)' );
+			}
+		}
+
+		public function clear( $url, $url_ext = '' ) {
+
+			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
+			$cache_salt = __CLASS__.'::salt(url:'.$get_url.')';
+			$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+
+			/*
+			 * WP Object Cache
+			 */
+			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'cleared object cache salt: '.$cache_salt );
+			}
+
+			/*
+			 * Transient Cache
+			 */
+			if ( delete_transient( $cache_id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'cleared transient cache salt: '.$cache_salt );
+			}
+
+			/*
+			 * File Cache
+			 */
+			$url_path = parse_url( $get_url, PHP_URL_PATH );
+			if ( $url_ext === '' ) {
+				$url_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
+				if ( ! empty( $url_ext ) ) 
+					$url_ext = '.'.$url_ext;
+			}
+
+			$cache_id = md5( $cache_salt );		// no lca prefix on filenames
+			$cache_file = $this->base_dir.$cache_id.$url_ext;
+
+			if ( file_exists( $cache_file ) && @unlink( $cache_file ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'clear file cache: '.$cache_file );
 			}
 		}
 
@@ -119,7 +160,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$url_frag = parse_url( $url, PHP_URL_FRAGMENT );
 			if ( ! empty( $url_frag ) ) 
 				$url_frag = '#'.$url_frag;
-			$cache_salt = __METHOD__.'(url:'.$get_url.')';
+
+			$cache_salt = __CLASS__.'::salt(url:'.$get_url.')';
 			$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 			$cache_file = $this->base_dir.$cache_id.$url_ext;
 			$cache_url = $this->base_url.$cache_id.$url_ext.$url_frag;

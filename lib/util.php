@@ -771,15 +771,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
 			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
-			$src_id = $this->get_source_id( $opt_prefix, $atts );
 
 			if ( ! isset( $atts['add_page'] ) )
 				$atts['add_page'] = true;	// required by get_sharing_url()
 
 			$long_url = empty( $atts['url'] ) ? 
-				$this->get_sharing_url( $use_post, $atts['add_page'], $src_id ) : 
-				apply_filters( $this->p->cf['lca'].'_sharing_url',
-					$atts['url'], $use_post, $atts['add_page'], $src_id );
+				$this->get_sharing_url( $use_post, $atts['add_page'] ) : 
+				apply_filters( $this->p->cf['lca'].'_sharing_url', $atts['url'], $use_post, $atts['add_page'] );
 
 			$short_url = empty( $atts['short_url'] ) ?
 				apply_filters( $this->p->cf['lca'].'_shorten_url',
@@ -793,7 +791,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else {
 				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
 				$tweet_text = $this->p->webpage->get_caption( $caption_type, $caption_len,
-					$use_post, true, $add_hashtags, false, $md_pre.'_desc', $src_id );
+					$use_post, true, $add_hashtags, false, $md_pre.'_desc' );
 			}
 
 			return $tweet_text;
@@ -888,11 +886,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
-			else $sharing_url = $this->get_sharing_url( $use_post, 
-				( isset( $atts['add_page'] ) ?
-					$atts['add_page'] : true ),
-				( isset( $atts['source_id'] ) ?
-					$atts['source_id'] : false ) );
+			else $sharing_url = $this->get_sharing_url( $use_post, ( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
@@ -1071,13 +1065,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $use_post = false when used for open graph meta tags and buttons in widget
 		// $use_post = true when buttons are added to individual posts on an index webpage
-		public function get_sharing_url( $use_post = false, $add_page = true, $src_id = false ) {
+		public function get_sharing_url( $use_post = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
 					'use_post' => $use_post,
 					'add_page' => $add_page,
-					'src_id' => $src_id,
 				) );
 			}
 
@@ -1113,7 +1106,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page, $src_id );
+				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page );
 
 			} else {
 				if ( is_search() ) {
@@ -1188,7 +1181,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page, $src_id );
+			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page );
 		}
 
 		public function fix_relative_url( $url = '' ) {
@@ -1346,18 +1339,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function get_source_id( $src_name, &$atts = array() ) {
-			global $post;
-			$use_post = isset( $atts['use_post'] ) ?
-				$atts['use_post'] : true;
-			$src_id = $src_name.( empty( $atts['css_id'] ) ? 
-				'' : '-'.preg_replace( '/^'.$this->p->cf['lca'].'-/','', $atts['css_id'] ) );
-			if ( $use_post == true )
-				$src_id = $src_id.'-post-'.
-					( isset( $post->ID ) ? $post->ID : 0 );
-			return $src_id;
-		}
-
 		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
 			$content = false;
 			$get_remote = empty( $url ) ? false : true;
@@ -1388,36 +1369,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
-		public function parse_readme( $lca, $expire_secs = 86400 ) {
+		public function parse_readme( $ext, $expire_secs = 86400, $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
-					'lca' => $lca,
+					'ext' => $ext,
 					'expire_secs' => $expire_secs,
+					'use_cache' => $use_cache,
 				) );
 			}
 
 			$plugin_info = array();
 
-			if ( ! defined( strtoupper( $lca ).'_PLUGINDIR' ) ) {
+			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $lca ).'_PLUGINDIR is undefined and required for readme.txt path' );
+					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required for readme.txt path' );
 				return $plugin_info;
 			}
 
-			$readme_txt = constant( strtoupper( $lca ).'_PLUGINDIR' ).'readme.txt';
-			$readme_url = isset( $this->p->cf['plugin'][$lca]['url']['readme'] ) ? 
-				$this->p->cf['plugin'][$lca]['url']['readme'] : '';
+			$readme_txt = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
+			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? 
+				$this->p->cf['plugin'][$ext]['url']['readme'] : '';
 			$get_remote = empty( $readme_url ) ? false : true;	// fetch readme from wordpress.org by default
 			$content = '';
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
 				$cache_salt = __METHOD__.'(url:'.$readme_url.'_txt:'.$readme_txt.')';
-				$cache_id = $lca.'_'.md5( $cache_salt );
+				$cache_id = $ext.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
-				$plugin_info = get_transient( $cache_id );
+				$plugin_info = $use_cache ? get_transient( $cache_id ) : false;
 				if ( is_array( $plugin_info ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $cache_type.': plugin_info retrieved from transient '.$cache_id );
@@ -1426,8 +1408,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else $get_remote = false;	// use local if transient cache is disabled
 
 			// get remote readme.txt file
-			if ( $get_remote === true && $expire_secs > 0 )
+			if ( $get_remote === true && $expire_secs > 0 ) {
+				if ( ! $use_cache )
+					$this->p->cache->clear( $readme_url );	// clear the wp object, transient, and file cache
 				$content = $this->p->cache->get( $readme_url, 'raw', 'file', $expire_secs );
+			}
 
 			// fallback to local readme.txt file
 			if ( empty( $content ) && $fh = @fopen( $readme_txt, 'rb' ) ) {
@@ -1455,6 +1440,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( $cache_type.': plugin_info saved to transient '.
 						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
+
 			return $plugin_info;
 		}
 

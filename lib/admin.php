@@ -142,10 +142,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
 		} 
 
-		public function set_readme_info( $expire_secs = 86400 ) {
-			foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
+		public static function set_readme_info( $expire_secs = 86400, $use_cache = true ) {
+			$wpsso =& Wpsso::get_instance();
+			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
 				if ( empty( self::$readme_info[$ext] ) )
-					self::$readme_info[$ext] = $this->p->util->parse_readme( $ext, $expire_secs );
+					self::$readme_info[$ext] = $wpsso->util->parse_readme( $ext, $expire_secs, $use_cache );
 			}
 		}
 
@@ -415,7 +416,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $action_name ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {
-								self::$readme_info = array();
+								// refresh the readme info
+								WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'], false );	// $use_cache = false
+
 								$wpssoum =& WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );
 							} else {
@@ -469,8 +472,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			// the plugin information metabox on all settings pages needs this
-			$this->p->admin->set_readme_info( $this->p->cf['feed_cache_exp'] );
+			// the plugin information metabox on all settings pages needs the readme array
+			WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'] );
 
 			// add child metaboxes first, since they contain the default reset_metabox_prefs()
 			$this->p->admin->submenu[ $this->menu_id ]->add_meta_boxes();

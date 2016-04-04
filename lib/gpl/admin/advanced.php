@@ -329,14 +329,25 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$cm_name = 'plugin_cm_'.$pre.'_name';
 				$cm_label = 'plugin_cm_'.$pre.'_label';
 
-				// check for the lib website classname for a nice 'display name'
-				$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
-					ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
-				$name = $name == 'GooglePlus' ? 'Google+' : $name;
-
 				// not all social websites have a contact method field
 				if ( isset( $this->p->options[$cm_enabled] ) ) {
-					$table_rows[] = $form->get_th_html( $name, 'medium' ).
+
+					switch ( $id ) {
+						case 'facebook':
+						case 'gplus':
+						case 'twitter':
+							$tr = '';
+							break;
+						default:
+							$tr = '<tr class="hide_in_basic">';
+							break;
+					}
+
+					$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
+						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
+					$name = $name == 'GooglePlus' ? 'Google+' : $name;
+
+					$table_rows[] = $tr.$form->get_th_html( $name, 'medium' ).
 					'<td class="blank checkbox">'.$this->get_nocb( $cm_enabled ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';

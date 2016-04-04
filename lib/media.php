@@ -564,24 +564,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		// $use_post = true | false | post_id | $mod array
-		public function get_content_images( $num = 0, $size_name = 'thumbnail', $use_post = true, $check_dupes = true, $content = '' ) {
+		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
 					'size_name' => $size_name,
-					'use_post' => $use_post,
+					'mod' => $mod,
 					'check_dupes' => $check_dupes,
-					'content' => strlen( $content ).' chars',
+					'content strlen' => strlen( $content ),
 				) );
 			}
 
-			// $use_post = true | false | post_id | $mod array
-			if ( is_array( $use_post ) ) {
-				$mod = $use_post;
-				$use_post = $mod['use_post'];	// just in case
-			} else $mod = $this->p->util->get_page_mod( $use_post );
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_page_mod( $mod );
 
 			$og_ret = array();
 
@@ -735,7 +732,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image'], 
 								$og_image['og:image:width'], 
 								$og_image['og:image:height'], 
-								$size_name, $mod['use_post'] );
+								$size_name, $mod );
 
 							// make sure the image width and height are large enough
 							if ( ( $attr_name == 'src' && $accept_img_size ) ||
@@ -808,27 +805,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		/**
-		 * Purpose: Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks.
-		 *
-		 * $use_post = true | false | post_id | $mod array
+		/*
+		 * Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks.
 		 */
-		public function get_content_videos( $num = 0, $use_post = true, $check_dupes = true, $content = '' ) {
+		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array(
 					'num' => $num,
-					'use_post' => $use_post,
+					'mod' => $mod,
 					'check_dupes' => $check_dupes,
 					'content' => strlen( $content ).' chars',
 				) );
 			}
 
-			// $use_post = true | false | post_id | $mod array
-			if ( is_array( $use_post ) ) {
-				$mod = $use_post;
-				$use_post = $mod['use_post'];	// just in case
-			} else $mod = $this->p->util->get_page_mod( $use_post );
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) )
+				$mod = $this->p->util->get_page_mod( $mod );
 
 			$og_ret = array();
 

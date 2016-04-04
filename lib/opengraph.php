@@ -116,8 +116,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['fb:app_id'] = $this->p->options['fb_app_id'];
 
 			if ( ! isset( $og['og:url'] ) )
-				$og['og:url'] = $this->p->util->get_sharing_url( $mod['use_post'], true, 
-					$this->p->util->get_source_id( 'opengraph' ) );
+				$og['og:url'] = $this->p->util->get_sharing_url( $mod['use_post'], true );	// $add_page = true
 
 			// define the type after the url
 			if ( ! isset( $og['og:type'] ) ) {
@@ -462,6 +461,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// if we haven't reached the limit of images yet, keep going and check the content text
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'checking the content text for images' );
+
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff, 
 						$size_name, $mod, $check_dupes ) );
