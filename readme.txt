@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.29.0-dev4 (2016/04/05)**
+**Version 3.29.0-alpha1 (2016/04/05)**
 
 Official announcement: N/A
 
@@ -365,6 +365,8 @@ Official announcement: N/A
 	* Schema itemprop meta tags for images will not be included if the "Use Meta Property Containers" option is checked (the containers include the same images).
 	* Removed Image Dimension options from the Essential Settings page.
 	* Updated the non-cropped image dimension defaults to 800x1600.
+	* Added a notice for missing Schema Organization logo and banner images.
+	* Added a check for a minimum Pro Update Manager version required (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -411,7 +413,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.0-dev4 =
+= 3.29.0-alpha1 =
 
 (2016/04/05) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab. Changes to SucomWebpage caption, content, description, and title related methods.
 
