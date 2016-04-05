@@ -19,6 +19,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $site_plugins = null;
 		protected static $network_plugins = null;
 		protected static $crawler_name = null;		// saved crawler name from user-agent
+		protected static $filter_values = array();	// saved filter values
 		protected static $is = array();			// saved return values for is_post/term/user_page() checks
 
 		private static $pub_lang = array(
@@ -228,6 +229,40 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		);
 
 		public function __construct() {
+		}
+
+		public static function protect_filter_start( $filter_name ) {
+			if ( has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) )
+				return false;
+
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), -900000, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), 900000, 1 );
+
+			return true;
+		}
+
+		public static function protect_filter_stop( $filter_name ) {
+			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) )
+				return false;
+
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), -900000 );
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), 900000 );
+
+			return true;
+		}
+
+		public static function filter_value_save( $value ) {
+			$filter_name = current_filter();
+			// don't save / restore empty strings (for home page wp_title)
+			self::$filter_values[$filter_name] = trim( $value ) === '' ?
+				null : $value;
+			return $value;
+		}
+
+		public static function filter_value_restore( $value ) {
+			$filter_name = current_filter();
+			return self::$filter_values[$filter_name] === null ?
+				$value : self::$filter_values[$filter_name];
 		}
 
 		public static function is_https( $url = '' ) {
@@ -560,14 +595,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// return the custom site name, and if empty, the default site name
 		public static function get_site_name( array &$opts, array &$mod ) {
-			self::get_locale_opt( 'og_site_name', $opts, $mod, 
+			return self::get_locale_opt( 'og_site_name', $opts, $mod, 
 				get_bloginfo( 'name', 'display' ) );
 		}
 
 		// return the custom site description, and if empty, the default site description
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_site_description( array &$opts, array &$mod ) {
-			self::get_locale_opt( 'og_site_description', $opts, $mod, 
+			return self::get_locale_opt( 'og_site_description', $opts, $mod, 
 				get_bloginfo( 'description', 'display' ) );
 		}
 

@@ -550,13 +550,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'name' => SucomUtil::get_site_name( $wpsso->options, $mod ),
 			);
 
+			if ( ! empty( $wpsso->options['schema_alt_name'] ) )
+				$ret['alternateName'] = $wpsso->options['schema_alt_name'];
+
 			$desc = SucomUtil::get_site_description( $wpsso->options, $mod );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
 			if ( ! empty( $wpsso->options[$logo_key] ) )
 				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) )	// list_element = false
-					unset ( $ret['logo'] );
+					unset( $ret['logo'] );	// prevent null assignment
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -612,7 +615,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );
 
 			if ( ! empty( $og_image ) )
-				self::add_image_list_data( $ret['image'], $og_image, 'og:image' );
+				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) );
+					unset( $ret['image'] );	// prevent null assignment
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -624,11 +628,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// pass a single or two dimension image array in $og_image
 		public static function add_image_list_data( &$json_data, &$og_image, $prefix = 'og:image' ) {
 			$images_added = 0;
+
 			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {						// 2 dimensional array
 				foreach ( $og_image as $image )
 					$images_added += self::add_single_image_data( $json_data, $image, $prefix, true );	// list_element = true
 			} elseif ( is_array( $og_image ) )
 				$images_added += self::add_single_image_data( $json_data, $og_image, $prefix, true );		// list_element = true
+
 			return $images_added;	// return count of images added
 		}
 

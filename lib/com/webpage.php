@@ -43,16 +43,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				register_taxonomy_for_object_type( 'post_tag', 'page' );
 		}
 
-		// $title is empty for home page, so don't save/restore empty titles
-		public function wp_title_save( $title, $separator, $location ) {
-			$this->saved_title = trim( $title ) === '' ? false : $title;
-			return $title;
-		}
-
-		public function wp_title_restore( $title, $separator, $location ) {
-			return ( $this->saved_title === false ? $title : $this->saved_title );
-		}
-
 		public function get_quote( array &$mod ) {
 
 			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '', $mod );
@@ -209,10 +199,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			// setup filters to save and restore original / pre-filtered title value
-			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				add_filter( 'wp_title', array( &$this, 'wp_title_save' ), -9000, 3 );
-				add_filter( 'wp_title', array( &$this, 'wp_title_restore' ), 9000, 3 );
-			}
+			if ( empty( $this->p->options['plugin_filter_title'] ) )
+				SucomUtil::protect_filter_start( 'wp_title' );
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
@@ -313,10 +301,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				remove_filter( 'wp_title', array( &$this, 'wp_title_save' ), -9000 );
-				remove_filter( 'wp_title', array( &$this, 'wp_title_restore' ), 9000 );
-			}
+			if ( empty( $this->p->options['plugin_filter_title'] ) )
+				SucomUtil::protect_filter_stop( 'wp_title' );
 
 			$title = $this->p->util->cleanup_html_tags( $title );	// strip html tags before removing separator
 
@@ -573,7 +559,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			$content = apply_filters( $this->p->cf['lca'].'_content_seed', '', $mod, $use_cache, $md_id );
+			$content = apply_filters( $this->p->cf['lca'].'_content_seed', '', $mod, $use_cache, $md_idx );
 
 			if ( ! empty( $content ) ) {
 				if ( $this->p->debug->enabled )
