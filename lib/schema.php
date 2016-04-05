@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$sizes['schema_img'] = array(		// options prefix
 				'name' => 'schema',		// wpsso-schema
-				'label' => _x( 'Google / Schema Image',
+				'label' => _x( 'Google / Schema Markup Image',
 					'image size label', 'wpsso' ),
 			);
 
@@ -560,6 +560,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $wpsso->options[$logo_key] ) )
 				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) )	// list_element = false
 					unset( $ret['logo'] );	// prevent null assignment
+
+			if ( empty( $ret['logo'] ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
+				if ( is_admin() )
+					$wpsso->notice->err( $wpsso->msgs->get( 'notice-missing-'.$logo_key ) );
+			}
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;

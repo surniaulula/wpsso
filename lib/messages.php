@@ -160,10 +160,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
 						 	break;
 						case 'tooltip-meta-og_img_id':
-							$text = 'A custom Image ID to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Large Image Summary\' Twitter Card meta tags,'.( empty( $this->p->is_avail['ssb'] ) ? '' : ' along with the Pinterest and Tumblr social sharing buttons,' ).' before any featured, attached, or content images.';
+							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_img_url':
-							$text = __( 'A custom image URL (instead of an Image ID) to include first in the Facebook / Open Graph, and "Large Image Summary" Twitter Card meta tags.', 'wpsso' ).' '.__( 'Please make sure your custom image is large enough, or it may be ignored by the social website(s).', 'wpsso' ).' '.$fb_recommends.' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A custom image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ).' '.__( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ).' '.$fb_recommends.' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 							break;
 						case 'tooltip-meta-og_img_max':
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
@@ -185,16 +185,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
 						 	break;
 						case 'tooltip-meta-rp_img_id':
-							$text = 'A custom Image ID to include first when the Pinterest crawler is detected.';
+							$text = __( 'A custom image ID to include first when the Pinterest crawler is detected, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-rp_img_url':
-							$text = __( 'A custom image URL (instead of an Image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A custom image URL (instead of an image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 						 	break;
 						case 'tooltip-meta-schema_img_id':
-							$text = 'A custom Image ID to include first in the Google / Schema meta tags and JSON-LD markup.';
+							$text = __( 'A custom image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_img_url':
-							$text = __( 'A custom image URL (instead of an Image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom Image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A custom image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 						 	break;
 						case 'tooltip-meta-schema_img_max':
 							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$def_dimensions.'). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-og_def_img_id':
-							$text = 'The ID number and media location of your default image (example: 123). The Default Image ID will be used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content. The ID number for images in the WordPress Media Library can be found in the URL when editing an image (post=123 in the URL, for example). The NextGEN Gallery image IDs are easier to find -- it\'s the number in the first column when viewing a Gallery.';
+							$text = 'An image ID and media library for your default / fallback website image. The default image ID will be used as a fallback for Posts / Pages that do not have a suitable image featured, attached, or in their content.';
 							break;
 						case 'tooltip-og_def_img_url':
 							$text = 'You can enter a Default Image URL (including the http:// prefix) instead of choosing a Default Image ID (if a Default Image ID is specified, the Default Image URL option is disabled). The Default Image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['min']['og_img_width'].'x'.$this->p->cf['head']['min']['og_img_height'].' or more in width and height. The Default Image ID or URL is used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content.';
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
 						case 'tooltip-og_author_gravatar':
-							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Use Default Image on <em>Author</em> Index</strong>" option is also checked under the Images tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
+							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Use Default Image on <em>Author</em> Index</strong>" option is also checked under the <em>Images</em> tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $info );
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Social Settings' settings
 						 */
 						case 'tooltip-plugin_social_columns':
-							$text = '\'Social Image\' and \'Social Description\' columns are added to the Posts, Pages, Taxonomy, and Users list pages by default. You can exclude the columns individually from the \'Screen Options\' tab on the list pages, or disable the columns globally by unchecking these options.';
+							$text = '\'Social Image\' and \'Social Description\' columns are added to the Posts, Pages, Taxonomy, and Users list pages by default. You can exclude the columns individually from the <em>Screen Options</em> tab on the list pages, or disable the columns globally by unchecking these options.';
 							break;
 						case 'tooltip-plugin_add_to':
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
@@ -691,18 +691,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					 	$text = '<p style="text-align:right;">'.__( 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 					 	break;
 					case 'info-plugin-tid':
-						$um_lca = $this->p->cf['lca'].'um';
-						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
-						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-
-						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'Enter the unique Authentication ID on this settings page to check for Pro version updates immediately, and every 24 hours thereafter.', 'wpsso' ).'</p><p><strong>'.sprintf( __( 'The %s extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_name ).'</strong> '.sprintf( __( 'If you accidentally de-activate the %1$s extension, update information will be provided by the WordPress.org plugin repository, and any update notices will be for the Free versions &mdash; always update the Pro version when the %2$s extension is active.', 'wpsso' ), $um_short, $um_short ).' '.__( 'If you accidentally re-install the Free version from WordPress.org &ndash; don\'t worry &ndash; your Authentication ID will always allow you update back to the Pro version.', 'wpsso' ).' ;-)</p></blockquote>';
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'Enter the unique Authentication ID on this settings page to check for Pro version updates immediately, and every 24 hours thereafter.', 'wpsso' ).'</p><p><strong>'.sprintf( __( 'The %s extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_info['name'] ).'</strong> '.sprintf( __( 'If you accidentally de-activate the %1$s extension, update information will be provided by the WordPress.org plugin repository, and any update notices will be for the Free versions &mdash; always update the Pro version when the %2$s extension is active.', 'wpsso' ), $um_info['short'], $um_info['short'] ).' '.__( 'If you accidentally re-install the Free version from WordPress.org &ndash; don\'t worry &ndash; your Authentication ID will always allow you update back to the Pro version.', 'wpsso' ).' ;-)</p></blockquote>';
 						break;
 					case 'info-plugin-tid-network':
-						$um_lca = $this->p->cf['lca'].'um';
-						$um_short = $this->p->cf['plugin'][$um_lca]['short'];
-						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-
-						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'You may enter the unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication ID individually on each site\'s Pro Licenses settings page.', 'wpsso' ).'</p><p>'.__( 'If you enter an Authentication ID here, <em>please make sure you have purchased enough licenses to license all sites within the network</em> (for example, if you have 10 sites, you will need 10 or more licenses).', 'wpsso' ).' <strong>'.__( 'To license one or more sites individually, enter the Authentication ID in each site\'s Pro Licenses settings page.', 'wpsso' ).'</strong></p><p>'.sprintf( __( 'Please note that <em>the default site / blog must be licensed</em> and the %1$s extension active, in order to install %2$s Pro version updates from the network admin interface.', 'wpsso' ), $um_name, $info['short'] ).'</p></blockquote>';
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'You may enter the unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication ID individually on each site\'s Pro Licenses settings page.', 'wpsso' ).'</p><p>'.__( 'If you enter an Authentication ID here, <em>please make sure you have purchased enough licenses to license all sites within the network</em> (for example, if you have 10 sites, you will need 10 or more licenses).', 'wpsso' ).' <strong>'.__( 'To license one or more sites individually, enter the Authentication ID in each site\'s Pro Licenses settings page.', 'wpsso' ).'</strong></p><p>'.sprintf( __( 'Please note that <em>the default site / blog must be licensed</em> and the %1$s extension active, in order to install %2$s version updates from the network admin interface.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</p></blockquote>';
 						break;
 					case 'info-review':
 						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'How do you like the plugin? Please take a moment to <a href="%1$s" target="_blank">rate the %2$s plugin on WordPress.org</a>.', 'wpsso' ), $url['review'], $info['short'] ).' '.sprintf( __( 'Ratings help the WordPress community as a whole find higher-quality plugins &mdash; along with <strong>encouraging us to keep improving %s</strong> as well!', 'wpsso' ), $info['short'] ).' ;-)</p></blockquote>';
@@ -749,7 +743,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hide_warnings = SucomUtil::get_const( $hide_const_name );
 
-						$text = __( 'The Select Media tab in the Social Settings metabox can be used to select a larger image specifically for social / SEO purposes.', 'wpsso' );
+						$text = __( 'The <em>Select Media</em> tab in the Social Settings metabox can be used to select a larger image specifically for social / SEO purposes.', 'wpsso' );
 						if ( current_user_can( 'manage_options' ) ) {
 							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
 							$text .= '<ul>';
@@ -762,7 +756,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 						break;
 					case 'notice-missing-og-image':
-						$text = __( 'An Open Graph image meta tag could not be created from this webpage content. Facebook and other social websites <em>require</em> at least one Open Graph image meta tag to render shared content correctly.', 'wpsso' ).' '.__( 'You may select an optional customized image &ndash; for Facebook and other social websites &ndash; in the Social Settings metabox under the Priority Media tab.', 'wpsso' );
+						$text = __( 'An Open Graph image meta tag could not be created from this webpage content. Facebook and other social websites <em>require</em> at least one image meta tag to render shared content correctly.', 'wpsso' );
+						break;
+					case 'notice-missing-schema-image':
+						$text = __( 'Google / Schema image markup could not be created from this webpage content. Google <em>requires</em> at least one image object for this Schema item type.', 'wpsso' );
+						break;
+					case 'notice-missing-schema_logo_url':
+						$text = __( 'A Business Logo Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
+						sprintf( __( 'Please entrer a Business Logo Image URL in the %1$s settings.', 'wpsso' ),
+							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
+								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
+						break;
+					case 'notice-missing-schema_banner_url':
+						$text = __( 'A Business Banner Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
+						sprintf( __( 'Please enter a Business Banner (600x60) Image URL in the %1$s settings.', 'wpsso' ),
+							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
+								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;
 					case 'notice-object-cache-exp':
 						$text = sprintf( __( 'Please note that the <a href="%1$s">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this is lower than the recommended default value of %4$d seconds.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache' ), _x( 'Object Cache Expiry', 'option label', 'wpsso' ), $this->p->options['plugin_object_cache_exp'], $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) );
@@ -784,19 +793,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'notice-um-extension-required':
 					case 'notice-um-activate-extension':
-						$um_lca = $lca.'um';
-						$um_name = $this->p->cf['plugin'][$um_lca]['name'];
-						$um_dl = $this->p->cf['plugin'][$um_lca]['url']['download'];
-						$um_latest = $this->p->cf['plugin'][$um_lca]['url']['latest_zip'];
-						$upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
-
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_name ).'</b> ';
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$wp_upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_info['name'] ).'</b> ';
 
 						if ( $idx === 'notice-um-extension-required' ) {
-							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_latest, $um_name ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $upload_url ).'</b></li></ol>';
+							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_info['url']['latest_zip'], $um_info['name'] ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $wp_upload_url ).'</b></li></ol>';
 						} else $text .= '</p>';
 
-						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_name ).' '.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_dl, $um_name ).'</p>';
+						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_info['name'] ).' '.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_info['url']['download'], $um_info['name'] ).'</p>';
+						break;
+					case 'notice-um-version-required':
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['um_min_version'], $um_info['version'] ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu'], $um_info['url']['download'], $um_info['short'] );
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );

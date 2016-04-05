@@ -100,31 +100,41 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private function pro_req_notices() {
 			$lca = $this->p->cf['lca'];
+			$has_ext_tid = false;
+			$um_min_version = '1.4.1-alpha1';
+
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
 					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
 						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
 							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
 
-			$has_tid = false;
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
 					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
-					$has_tid = true;	// found at least one active plugin with an auth id
+					$has_ext_tid = true;	// found at least one active plugin with an auth id
 					if ( ! $this->p->check->aop( $ext, false ) )
 						$this->p->notice->err( $this->p->msgs->get( 'notice-pro-not-installed', 
 							array( 'lca' => $ext ) ) );
 				}
 			}
 
-			if ( $has_tid === true && ! $this->p->is_avail['util']['um'] ) {
-				if ( ! function_exists( 'get_plugins' ) )
-					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
-				$installed_plugins = get_plugins();
-				if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
-					is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
-						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
-				else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+			if ( $has_ext_tid === true ) {
+				if ( $this->p->is_avail['util']['um'] ) {
+					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $um_min_version, '<' ) )
+						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required', 
+							array( 'um_min_version' => $um_min_version ) ) );
+				} else {
+					if ( ! function_exists( 'get_plugins' ) )
+						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+
+					$installed_plugins = get_plugins();
+
+					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
+						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
+							$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+					else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+				}
 			}
 		}
 
@@ -1181,17 +1191,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'php curl extension is not loaded' );
-				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Client URL Library (cURL) extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.curl.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed and/or enabled.', 'wpsso' ) );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Client URL Library (cURL) extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.curl.php' ).' '.__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 			}
 			if ( ! extension_loaded( 'json' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'php json extension is not loaded' );
-				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP JavaScript Object Notation (JSON) extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.json.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed and/or enabled.', 'wpsso' ) );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP JavaScript Object Notation (JSON) extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.json.php' ).' '.__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 			}
 			if ( ! extension_loaded( 'mbstring' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'php mbstring extension is not loaded' );
-				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Multibyte String extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.mbstring.php' ).' '.__( 'Please contact your hosting provider to have the missing extension installed and/or enabled.', 'wpsso' ) );
+				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Multibyte String extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.mbstring.php' ).' '.__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 			}
 
 			// Yoast SEO
