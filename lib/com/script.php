@@ -64,8 +64,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
-						if ( SucomUtil::is_post_page() &&
-							( $post_id = $this->p->util->get_post_object( false, 'id' ) ) > 0 )
+						if ( SucomUtil::is_post_page( false ) &&
+							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 )
 								wp_enqueue_media( array( 'post' => $post_id ) );
 						else wp_enqueue_media();
 

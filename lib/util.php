@@ -872,7 +872,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_inline_vals( $use_post = false, &$post_obj = false, &$atts = array() ) {
 
 			if ( ! is_object( $post_obj ) ) {
-				if ( ( $post_obj = $this->get_post_object( $use_post ) ) === false ) {
+				if ( ( $post_obj = self::get_post_object( $use_post ) ) === false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: invalid object type' );
 					return array();
@@ -1039,11 +1039,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $mod['id'] ) ) {
 				if ( $mod['name'] === 'post' )
-					$mod['id'] = $this->get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id 
+					$mod['id'] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id 
 				elseif ( $mod['name'] === 'taxonomy' )
-					$mod['id'] = $this->get_term_object( false, '', 'id' );
+					$mod['id'] = self::get_term_object( false, '', 'id' );
 				elseif ( $mod['name'] === 'user' )
-					$mod['id'] = $this->get_user_object( false, 'id' );
+					$mod['id'] = self::get_user_object( false, 'id' );
 				else $mod['id'] = false;
 			}
 
@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( self::is_post_page( $use_post ) ) {
 
-				$post_obj = $this->get_post_object( $use_post );
+				$post_obj = self::get_post_object( $use_post );
 				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 				if ( ! empty( $post_id ) ) {
@@ -1108,17 +1108,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else {
 				if ( is_search() ) {
 					$url = get_search_link();
-
-				} elseif ( is_front_page() ) {
+				/*
+				 * is_front_page() will always return true, regardless if the site front page 
+				 * displays the blog posts index or a static page. 
+				 */
+				} elseif ( self::is_front_page() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
 					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
-
+				/*
+				 * is_home() will always return true on the blog posts index, regardless if the 
+				 * blog posts index is displayed on the site front page or a separate page. 
+				 */
 				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
 					$url = get_permalink( get_option( 'page_for_posts' ) );
 
 				} elseif ( self::is_term_page() ) {
-					$term = $this->get_term_object();
+					$term = self::get_term_object();
 					if ( ! empty( $term->term_id ) ) {
 						if ( isset( $this->p->m['util']['taxonomy'] ) )
 							$url = $this->p->m['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
@@ -1130,7 +1136,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
 
 				} elseif ( self::is_user_page() ) {
-					$author = $this->get_user_object();
+					$author = self::get_user_object();
 					if ( ! empty( $author->ID ) ) {
 						if ( isset( $this->p->m['util']['user'] ) )
 							$url = $this->p->m['util']['user']->get_options( $author->ID, 'sharing_url' );
@@ -1160,7 +1166,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! $wp_rewrite->using_permalinks() )
 						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
 					else {
-						if ( is_front_page() ) {
+						if ( self::is_front_page() ) {
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );

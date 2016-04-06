@@ -267,7 +267,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				} elseif ( $mod['is_term'] ) {
 
-					$term_obj = $this->p->util->get_term_object( $mod['id'], $mod['tax_slug'] );
+					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 					if ( SucomUtil::is_category_page() )
 						$title = $this->get_category_title( $term_obj );	// includes parents in title string
 					elseif ( isset( $term_obj->name ) )
@@ -277,7 +277,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				} elseif ( $mod['is_user'] ) { 
 
-					$user_obj = $this->p->util->get_user_object( $mod['id'] );
+					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 					$title = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
@@ -453,7 +453,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							$desc = sprintf( '%s Category', single_cat_title( '', false ) ); 
 
 					} else { 	// other taxonomies
-						$term_obj = $this->p->util->get_term_object( $mod['id'], $mod['tax_slug'] );
+						$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
 						if ( ! empty( $term_obj->description ) )
 							$desc = $term_obj->description;
@@ -462,7 +462,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					}
 
 				} elseif ( $mod['is_user'] ) { 
-					$user_obj = $this->p->util->get_user_object();
+					$user_obj = SucomUtil::get_user_object();
 
 					if ( ! empty( $user_obj->description ) )
 						$desc = $user_obj->description;
@@ -609,7 +609,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( empty( $post->ID ) && $mod['is_post'] ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '$post ID property empty: setting $post from mod ID '.$mod['id'] );
-					$post = $this->p->util->get_post_object( $mod['id'] );
+					$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
 				}
 
 				// apply the content filters
@@ -781,7 +781,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_category_title( $term_obj = false ) {
 
 			if ( ! is_object( $term_obj ) )
-				$term_obj = $this->p->util->get_term_object();
+				$term_obj = SucomUtil::get_term_object();
 
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], 
 				ENT_QUOTES, get_bloginfo( 'charset' ) );

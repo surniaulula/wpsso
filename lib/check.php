@@ -228,7 +228,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['optval'] = 'plugin_shortener';
 							break;
 						case 'util-um':
-							$chk['class'] = 'WpssoUm';
 							$chk['plugin'] = 'wpsso-um/wpsso-um.php';
 							break;
 					}

@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$user_id = $this->p->util->get_user_object( false, 'id' );
+			$user_id = SucomUtil::get_user_object( false, 'id' );
 
 			$mod = $this->get_mod( $user_id );
 			if ( $this->p->debug->enabled )
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_metaboxes() {
-			$user_id = $this->p->util->get_user_object( false, 'id' );
+			$user_id = SucomUtil::get_user_object( false, 'id' );
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'insufficient privileges to add metabox for user ID '.$user_id );

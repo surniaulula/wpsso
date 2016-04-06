@@ -20,7 +20,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $network_plugins = null;
 		protected static $crawler_name = null;		// saved crawler name from user-agent
 		protected static $filter_values = array();	// saved filter values
-		protected static $is = array();			// saved return values for is_post/term/user_page() checks
 
 		private static $pub_lang = array(
 			// https://www.facebook.com/translations/FacebookLocales.xml
@@ -677,13 +676,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public static function get_is_page( $use_post = false, $use_cache = true ) {
+		public static function get_is_page( $use_post = false ) {
 
 			// optimize and only check what we need to
 			$is_term_page = $is_user_page = false;
-			if ( ! $is_post_page = self::is_post_page( $use_post, $use_cache ) )
-				if ( ! $is_term_page = self::is_term_page( $use_cache ) )
-					$is_user_page = self::is_user_page( $use_cache );
+			if ( ! $is_post_page = self::is_post_page( $use_post ) )
+				if ( ! $is_term_page = self::is_term_page() )
+					$is_user_page = self::is_user_page();
 
 			return array(
 				'post_page' => $is_post_page,
@@ -692,11 +691,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
-		public static function is_post_page( $use_post = false, $use_cache = true ) {
-			if ( $use_cache &&
-				isset( self::$is['post_page'][$use_post] ) )
-					return self::$is['post_page'][$use_post];
+		public static function is_front_page( $use_post = false ) {
+			$ret = false;
 
+			if ( ( $use_post || is_admin() ) && 
+				self::is_post_page( $use_post ) ) {
+
+				$post_id = get_option( 'show_on_front' ) === 'page' ?
+					get_option( 'page_on_front' ) :
+					get_option( 'page_for_posts' );
+
+				if ( is_numeric( $post_id ) &&
+					self::get_post_object( $use_post, 'id' ) === (int) $post_id )
+						$ret = true;
+
+			} elseif ( ! $use_post && 
+				is_front_page() )
+					$ret = true;
+
+			return apply_filters( 'sucom_is_front_page', $ret, $use_post );
+		}
+
+		public static function is_post_page( $use_post = false ) {
 			$ret = false;
 
 			if ( $use_post || is_singular() )
@@ -716,15 +732,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$ret = true;
 			}
 
-			$ret = apply_filters( 'sucom_is_post_page', $ret, $use_post );
-
-			if ( $use_cache )
-				return self::$is['post_page'][$use_post] = $ret;
-			else return $ret;
+			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
 		// on archives and taxonomies, this will return the first post object
-		public function get_post_object( $use_post = false, $output = 'object' ) {
+		public static function get_post_object( $use_post = false, $output = 'object' ) {
 			$post_obj = false;	// return false by default
 
 			if ( is_numeric( $use_post ) ) {
@@ -758,7 +770,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 					return isset( $post_obj->ID ) ? 
-						$post_obj->ID : false;
+						(int) $post_obj->ID : false;
 					break;
 				default:
 					return is_object( $post_obj ) ?
@@ -767,11 +779,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_term_page( $use_cache = true ) {
-			if ( $use_cache &&
-				isset( self::$is['term_page'] ) )
-					return self::$is['term_page'];
-
+		public static function is_term_page() {
 			$ret = false;
 
 			if ( is_tax() || is_category() || is_tag() )
@@ -788,18 +796,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			$ret = apply_filters( 'sucom_is_term_page', $ret );
-
-			if ( $use_cache )
-				return self::$is['term_page'] = $ret;
-			else return $ret;
+			return apply_filters( 'sucom_is_term_page', $ret );
 		}
 
-		public static function is_category_page( $use_cache = true ) {
-			if ( $use_cache &&
-				isset( self::$is['category_page'] ) )
-					return self::$is['category_page'];
-
+		public static function is_category_page() {
 			$ret = false;
 
 			if ( is_category() )
@@ -810,18 +810,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			$ret = apply_filters( 'sucom_is_category_page', $ret );
-
-			if ( $use_cache )
-				return self::$is['category_page'] = $ret;
-			else return $ret;
+			return apply_filters( 'sucom_is_category_page', $ret );
 		}
 
-		public static function is_tag_page( $use_cache = true ) {
-			if ( $use_cache &&
-				isset( self::$is['tag_page'] ) )
-					return self::$is['tag_page'];
-
+		public static function is_tag_page() {
 			$ret = false;
 
 			if ( is_tag() )
@@ -832,14 +824,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			$ret = apply_filters( 'sucom_is_tag_page', $ret );
-
-			if ( $use_cache )
-				return self::$is['tag_page'] = $ret;
-			else return $ret;
+			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
-		public function get_term_object( $term_id = false, $tax_slug = false, $output = 'object' ) {
+		public static function get_term_object( $term_id = false, $tax_slug = false, $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
 			if ( is_numeric( $term_id ) ) {
@@ -862,7 +850,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'ID':
 				case 'term_id':
 					return isset( $term_obj->term_id ) ? 
-						$term_obj->term_id : false;
+						(int) $term_obj->term_id : false;
 					break;
 				default:
 					return is_object( $term_obj ) ? 
@@ -871,15 +859,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_author_page( $use_cache = true ) {
-			return self::is_user_page( $use_cache );
+		public static function is_author_page() {
+			return self::is_user_page();
 		}
 
-		public static function is_user_page( $use_cache = true ) {
-			if ( $use_cache &&
-				isset( self::$is['user_page'] ) )
-					return self::$is['user_page'];
-
+		public static function is_user_page() {
 			$ret = false;
 
 			if ( is_author() ) {
@@ -904,18 +888,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$ret = apply_filters( 'sucom_is_user_page', $ret );
-
-			if ( $use_cache )
-				return self::$is['user_page'] = $ret;
-			else return $ret;
+			return apply_filters( 'sucom_is_user_page', $ret );
 		}
 
-		public function get_author_object( $user_id = false, $output = 'object' ) {
-			return $this->get_user_object( $user_id, $ret );
+		public static function get_author_object( $user_id = false, $output = 'object' ) {
+			return self::get_user_object( $user_id, $ret );
 		}
 
-		public function get_user_object( $user_id = false, $output = 'object' ) {
+		public static function get_user_object( $user_id = false, $output = 'object' ) {
 			$user_obj = false;	// return false by default
 
 			if ( is_numeric( $user_id ) ) {
@@ -938,7 +918,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 					return isset( $user_obj->ID ) ? 
-						$user_obj->ID : false;
+						(int) $user_obj->ID : false;
 					break;
 				default:
 					return is_object( $user_obj ) ?
@@ -948,9 +928,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_product_page( $use_post = false, $product_obj = false ) {
-			if ( isset( self::$is['product_page'] ) )
-				return self::$is['product_page'];
-
 			$ret = false;
 
 			if ( function_exists( 'is_product' ) && 
@@ -965,13 +942,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			return self::$is['product_page'] = apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
+			return apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
 		}
 
 		public static function is_product_category() {
-			if ( isset( self::$is['product_category'] ) )
-				return self::$is['product_category'];
-
 			$ret = false;
 
 			if ( function_exists( 'is_product_category' ) && 
@@ -983,13 +957,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			return self::$is['product_category'] = apply_filters( 'sucom_is_product_category', $ret );
+			return apply_filters( 'sucom_is_product_category', $ret );
 		}
 
 		public static function is_product_tag() {
-			if ( isset( self::$is['product_tag'] ) )
-				return self::$is['product_tag'];
-
 			$ret = false;
 
 			if ( function_exists( 'is_product_tag' ) && 
@@ -1001,7 +972,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ret = true;
 			}
 
-			return self::$is['product_tag'] = apply_filters( 'sucom_is_product_tag', $ret );
+			return apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
 		public static function get_request_value( $key, $method = 'ANY' ) {

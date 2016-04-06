@@ -142,13 +142,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'skipping custom type id check: use_mod_opts argument is false' );
 
 			if ( empty( $type_id ) ) {
-				if ( is_front_page() )
+				if ( $mod['is_front'] )
 					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
 						( empty( $this->p->options['schema_type_for_home_page'] ) ?
 							'website' : $this->p->options['schema_type_for_home_page'] ) );
 
 				elseif ( $mod['is_post'] ) {
-					$post_obj = $this->p->util->get_post_object( $mod['id'] );
+					$post_obj = SucomUtil::get_post_object( $mod['id'] );
 
 					if ( ! empty( $post_obj->post_type ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'schema item type is '.$head_type );
 
 			// include WebSite, Organization, and/or Person on the home page
-			if ( is_front_page() )
+			if ( $mod['is_front'] )
 				$item_types = array(
 					'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
 					'http://schema.org/Organization' => $this->p->options['schema_organization_json'],
@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// include WebSite, Organization, and/or Person on the home page
 				// if there isn't a hook for that filter (from WPSSO JSON, for example)
-				if ( is_front_page() && 
+				if ( $mod['is_front'] && 
 					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
 						! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
 
@@ -451,7 +451,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
 
-			if ( is_front_page() ) {
+			if ( $mod['is_front'] ) {
 				// add the sameAs social profile links
 				foreach ( array(
 					'fb_publisher_url',
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( is_front_page() ) {
+			if ( $mod['is_front'] ) {
 				$user_id = $this->p->options['schema_person_id'];
 				if ( empty( $user_id ) ) {
 					if ( $this->p->debug->enabled )
@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			self::add_single_person_data( $ret, $user_id, false );	// list_element = false
 
-			if ( is_front_page() || $is_main ) {
+			if ( $is_main || $mod['is_front'] ) {
 
 				// override the author's website url from his profile
 				// and use the open graph url instead
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $is_main )
 					self::add_main_entity_data( $ret, $ret['url'] );
 
-				if ( is_front_page() ) {
+				if ( $mod['is_front'] ) {
 					// add the sameAs social profile links
 					foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 						$url = trim( get_the_author_meta( $cm_id, $user_id ) );

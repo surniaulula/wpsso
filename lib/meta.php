@@ -32,8 +32,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			'use_post' => false,
 			'is_post' => false,
+			'is_front' => false,
 			'post_type' => false,
 			'post_status' => false,
+			'post_author' => false,
 			/*
 			 * Term
 			 */

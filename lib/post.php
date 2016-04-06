@@ -67,8 +67,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Post
 			 */
 			$mod['is_post'] = true;
-			$mod['post_type'] = get_post_type( $mod_id );		// post type name
-			$mod['post_status'] = get_post_status( $mod_id );	// post status name
+			$mod['is_front'] = SucomUtil::is_front_page( $mod_id );
+			$mod['post_type'] = get_post_type( $mod_id );			// post type name
+			$mod['post_status'] = get_post_status( $mod_id );		// post status name
+			$mod['post_author'] = get_post_field( 'post_author', $mod_id );
 			return $mod;
 		}
 
@@ -148,7 +150,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$post_obj = $this->p->util->get_post_object();
+			$post_obj = SucomUtil::get_post_object();
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			// make sure we have at least a post type and post status
@@ -231,7 +233,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! is_object( $post_obj ) &&
-				( $post_obj = $this->p->util->get_post_object( $post_id ) ) === false ) {
+				( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
 				return $post_id;
@@ -298,7 +300,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function add_metaboxes() {
-			if ( ( $post_obj = $this->p->util->get_post_object() ) === false ||
+			if ( ( $post_obj = SucomUtil::get_post_object() ) === false ||
 				empty( $post_obj->post_type ) ) {
 
 				if ( $this->p->debug->enabled )

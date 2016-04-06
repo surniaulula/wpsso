@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function pro_req_notices() {
 			$lca = $this->p->cf['lca'];
 			$has_ext_tid = false;
-			$um_min_version = '1.4.1-alpha1';
+			$um_min_version = '1.4.1-alpha3';
 
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
@@ -120,7 +120,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $has_ext_tid === true ) {
-				if ( $this->p->is_avail['util']['um'] ) {
+				if ( $this->p->is_avail['util']['um'] &&
+					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
+
 					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $um_min_version, '<' ) )
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required', 
 							array( 'um_min_version' => $um_min_version ) ) );

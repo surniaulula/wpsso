@@ -60,14 +60,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$max = $this->p->util->get_max_nums( $mod );
-			$post_id = false;
-			$post_obj = false;
-
-			// maintain backwards compatibility by defining the post id and object
-			if ( $mod['is_post'] ) {
-				$post_obj = $this->p->util->get_post_object( $mod['use_post'] );
-				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
-			}
+			$post_id = $mod['is_post'] ? $mod['id'] : false;
 
 			$tc = SucomUtil::preg_grep_keys( '/^twitter:/', $og );		// read any pre-defined twitter card values
 			$tc = apply_filters( $lca.'_tc_seed', $tc, $mod['use_post'], $mod );
@@ -90,8 +83,8 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 			if ( ! isset( $tc['twitter:creator'] ) ) {
 				if ( $mod['is_post'] ) {
-					if ( ! empty( $post_obj->post_author ) )
-						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $post_obj->post_author );
+					if ( ! empty( $mod['post_author'] ) )
+						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['post_author'] );
 					elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
 						$tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
 
@@ -105,7 +98,6 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 			/*
 			 * Player Card
 			 */
-			// player card relies on existing og meta tags - a valid post_id is not required
 			if ( ! isset( $tc['twitter:card'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'player card: checking for videos' );
@@ -180,8 +172,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 						if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'large image card: checking for singlepic image' );
-							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, 
-								$lca.'-tc-lrgimg', $post_id, false );
+							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, $lca.'-tc-lrgimg', $post_id, false );
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );
 								$tc['twitter:card'] = 'summary_large_image';
