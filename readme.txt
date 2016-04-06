@@ -354,7 +354,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.29.0-alpha2 (2016/04/06)**
+**Version 3.29.0-alpha3 (2016/04/06)**
 
 Official announcement: N/A
 
@@ -389,7 +389,10 @@ Official announcement: N/A
 	* Removed the WpssoUtil `get_source_id()` method.
 	* Removed `$src_id` from all method and filter arguments.
 	* Added a new `SucomDebug::clear()` static method to remove cached content by URL.
+	* Added a new `SucomUtil::is_front_page()` static method (works front-end and back-end) and updated all `is_front_page()` function calls.
 	* Added new `SucomUtil::protect_filter_start()` and `SucomUtil::protect_filter_stop()` methods to save/restore pre-filtered values.
+	* Changed the SucomUtil `get_post_object()`, `get_term_object()` and `get_user_object()` methods to static methods.
+	* Added an 'is_front' element to the `$mod` array (element value is updated by the post module).
 
 **Version 3.28.5-1 (2016/03/31)**
 
@@ -413,7 +416,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.0-alpha2 =
+= 3.29.0-alpha3 =
 
 (2016/04/06) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox under the Select Media tab. Changes to SucomWebpage caption, content, description, and title related methods.
 
