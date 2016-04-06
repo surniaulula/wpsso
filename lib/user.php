@@ -78,7 +78,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'user';
 			$mod['obj'] =& $this;
-			$mod['is_complete'] = true;
 			/*
 			 * User
 			 */
@@ -633,20 +632,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 			$lca = $this->p->cf['lca'];
-			$lang = SucomUtil::get_locale();
+			$locale = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
-					'lang:'.$lang.'_id:'.$user_id.'_name:user_url:'.$sharing_url,
-					'lang:'.$lang.'_id:'.$user_id.'_name:user_url:'.$sharing_url.'_crawler:pinterest',
+					'locale:'.$locale.'_user:'.$user_id.'_url:'.$sharing_url,
+					'locale:'.$locale.'_user:'.$user_id.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'lang:'.$lang.'_id:'.$user_id.'_name:user_column:'.$lca.'_og_image',
-					'lang:'.$lang.'_id:'.$user_id.'_name:user_column:'.$lca.'_og_desc',
+					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_image',
+					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_desc',
 				),
 			);
-			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', 
-				$transients, $user_id, $lang, $sharing_url );
+			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', $transients, $user_id, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

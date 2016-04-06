@@ -528,7 +528,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			$content = false;
 			$filter_content = $this->p->options['plugin_filter_content'];
-			$filter_name = $filter_content ? 'filtered' : 'unfiltered';
+			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
 			$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 				$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
 
@@ -539,8 +539,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $this->p->is_avail['cache']['object'] ) {
 
 					// if the post id is 0, then add the sharing url to ensure a unique salt string
-					$cache_salt = __METHOD__.'(lang:'.SucomUtil::get_locale( $mod ).'_post:'.$mod['id'].'_'.$filter_name.
-						( empty( $post_id ) ? '_url:'.$this->p->util->get_sharing_url( $mod['id'], true ) : '' ).')';
+					$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.
+						( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod['use_post'], true ) : '' ).')';
 					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 					$cache_type = 'object cache';
 
@@ -550,7 +550,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$content = wp_cache_get( $cache_id, __METHOD__ );
 						if ( $content !== false ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $cache_type.': '.$filter_name.
+								$this->p->debug->log( $cache_type.': '.$filter_status.
 									' content retrieved from wp_cache '.$cache_id );
 							return $content;
 						}
@@ -665,7 +665,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
 				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': '.$filter_name.' content saved to wp_cache '.
+					$this->p->debug->log( $cache_type.': '.$filter_status.' content saved to wp_cache '.
 						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 

@@ -214,10 +214,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->is_avail['cache']['transient'] ) {
 
 				// head_cache_salt filter may add amp true/false and/or crawler name
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
-					'lang:'.SucomUtil::get_locale().
-					'_id:'.$mod['id'].'_name:'.$mod['name'].
-					'_url:'.$sharing_url ).')';
+				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
 

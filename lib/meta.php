@@ -27,7 +27,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'id' => false,
 			'name' => false,
 			'obj' => false,
-			'is_complete' => false,
 			/*
 			 * Post
 			 */
@@ -523,13 +522,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'('.
-					'lang:'.SucomUtil::get_locale().
-					'_id:'.$mod['id'].
-					'_name:'.$mod['name'].
-					'_column:'.$column_name.')';
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_column:'.$column_name.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
-
 				$value = get_transient( $cache_id );
 				if ( $value !== false )
 					return $value;

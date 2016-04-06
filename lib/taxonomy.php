@@ -89,7 +89,6 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'taxonomy';
 			$mod['obj'] =& $this;
-			$mod['is_complete'] = true;
 			/*
 			 * Term
 			 */
@@ -293,19 +292,18 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 			$lca = $this->p->cf['lca'];
-			$lang = SucomUtil::get_locale();
+			$locale = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
-					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_url:'.$sharing_url,
-					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_url:'.$sharing_url.'_crawler:pinterest',
+					'locale:'.$locale.'_taxonomy:'.$term_id.'_url:'.$sharing_url,
+					'locale:'.$locale.'_taxonomy:'.$term_id.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'lang:'.$lang.'_id:'.$term_id.'_name:taxonomy_column:'.$lca.'_og_image',
+					'locale:'.$locale.'_taxonomy:'.$term_id.'_column:'.$lca.'_og_image',
 				),
 			);
-			$transients = apply_filters( $this->p->cf['lca'].'_taxonomy_cache_transients', 
-				$transients, $term_id, $lang, $sharing_url );
+			$transients = apply_filters( $this->p->cf['lca'].'_taxonomy_cache_transients', $transients, $term_id, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

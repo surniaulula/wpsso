@@ -63,7 +63,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
-			$mod['is_complete'] = true;
 			/*
 			 * Post
 			 */

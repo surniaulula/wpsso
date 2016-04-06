@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.0-"
-"alpha1\n"
+"alpha2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/admin.php:756 lib/user.php:245
+#: lib/admin.php:71 lib/admin.php:756 lib/user.php:244
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/admin.php:757 lib/user.php:246
+#: lib/admin.php:72 lib/admin.php:757 lib/user.php:245
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:422 lib/post.php:211 lib/taxonomy.php:231 lib/user.php:212
+#: lib/admin.php:422 lib/post.php:210 lib/taxonomy.php:230 lib/user.php:211
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -692,19 +692,19 @@ msgctxt "option label"
 msgid "Add Tabs to Social Settings Metabox"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:133 lib/meta.php:65
+#: lib/gpl/admin/advanced.php:133 lib/meta.php:64
 #: lib/pro/admin/advanced.php:138
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:135 lib/meta.php:66
+#: lib/gpl/admin/advanced.php:135 lib/meta.php:65
 #: lib/pro/admin/advanced.php:140
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:137 lib/meta.php:67
+#: lib/gpl/admin/advanced.php:137 lib/meta.php:66
 #: lib/pro/admin/advanced.php:142
 msgctxt "metabox tab"
 msgid "Validate"
@@ -964,7 +964,7 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:71 lib/gpl/admin/post.php:74 lib/meta.php:150
+#: lib/gpl/admin/meta.php:71 lib/gpl/admin/post.php:74 lib/meta.php:149
 #: lib/pro/admin/meta.php:88 lib/pro/admin/post.php:93
 msgctxt "option label"
 msgid "Sharing URL"
@@ -1063,7 +1063,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:81 lib/post.php:384 lib/pro/admin/post.php:100
+#: lib/gpl/admin/post.php:81 lib/post.php:383 lib/pro/admin/post.php:100
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -1915,134 +1915,134 @@ msgid ""
 "values for different languages."
 msgstr ""
 
-#: lib/meta.php:63
+#: lib/meta.php:62
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:64
+#: lib/meta.php:63
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:121
+#: lib/meta.php:120
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:127
+#: lib/meta.php:126
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:136
+#: lib/meta.php:135
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:146
+#: lib/meta.php:145
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
 
-#: lib/meta.php:154
+#: lib/meta.php:153
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:231
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:231
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:231
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:231
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:231
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:234
+#: lib/meta.php:233
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:234
+#: lib/meta.php:233
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:234
+#: lib/meta.php:233
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:236
+#: lib/meta.php:235
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:236
+#: lib/meta.php:235
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:236
+#: lib/meta.php:235
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:238
+#: lib/meta.php:237
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:238
+#: lib/meta.php:237
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:238
+#: lib/meta.php:237
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:405
+#: lib/meta.php:404
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:493
+#: lib/meta.php:492
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:494
+#: lib/meta.php:493
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:512
+#: lib/meta.php:511
 msgid "Reload to View"
 msgstr ""
 
@@ -2098,24 +2098,24 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:268
+#: lib/post.php:267
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:272
+#: lib/post.php:271
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:289
+#: lib/post.php:288
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:333 lib/profile/social-settings.php:26 lib/taxonomy.php:252
-#: lib/user.php:234
+#: lib/post.php:332 lib/profile/social-settings.php:26 lib/taxonomy.php:251
+#: lib/user.php:233
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2694,15 +2694,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:397
+#: lib/user.php:396
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:398
+#: lib/user.php:397
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:399
+#: lib/user.php:398
 msgid "Jabber / Google Talk"
 msgstr ""
 
@@ -2716,53 +2716,53 @@ msgstr ""
 msgid "%s has been cleared as well."
 msgstr ""
 
-#: lib/util.php:398
+#: lib/util.php:396
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:430
+#: lib/util.php:428
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:432
+#: lib/util.php:430
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:434 lib/util.php:436
+#: lib/util.php:432 lib/util.php:434
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:438
+#: lib/util.php:436
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:440
+#: lib/util.php:438
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:442
+#: lib/util.php:440
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:444
+#: lib/util.php:442
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:640
+#: lib/util.php:638
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

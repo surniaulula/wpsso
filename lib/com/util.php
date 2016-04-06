@@ -299,6 +299,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function sanitize_use_post( $mixed ) {
+			if ( is_array( $mixed ) )
+				$use_post = isset( $mixed['use_post'] ) ?
+					$mixed['use_post'] : false;
+			elseif ( is_object( $mixed ) )
+				$use_post = isset( $mixed->use_post ) ?
+					$mixed->use_post : false;
+			else $use_post = $mixed;
+				
+			if ( empty( $use_post ) ||		// boolean false or 0
+				$use_post === 'false' )		// string 'false'
+					return false;
+			elseif ( is_numeric( $use_post ) )	// post ID
+				return (int) $use_post;		// return an integer
+			else return true;			// boolean true or string 'true'
+		}
+
 		public static function sanitize_hookname( $name ) {
 			$name = preg_replace( '/[:\/\-\.]+/', '_', $name );
 			return self::sanitize_key( $name );
@@ -642,6 +659,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 			return apply_filters( 'sucom_locale', $wp_locale, $mixed );
+		}
+
+		public static function get_mod_salt( array $mod ) {
+			return 'locale:'.SucomUtil::get_locale( $mod ).'_'.$mod['name'].':'.$mod['id'];
 		}
 
 		public static function restore_checkboxes( &$opts ) {

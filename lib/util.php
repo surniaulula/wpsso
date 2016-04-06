@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'private':
 				case 'publish':
 					$lca = $this->p->cf['lca'];
-					$lang = self::get_locale();
+					$locale = self::get_locale( $post_id );
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->get_sharing_url( $post_id );
@@ -311,29 +311,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'url:'.$permalink_no_meta,
 						),
 						'WpssoHead::get_header_array' => array( 
-							'lang:'.$lang.'_id:'.$post_id.'_name:post_url:'.$sharing_url,
-							'lang:'.$lang.'_id:'.$post_id.'_name:post_url:'.$sharing_url.'_crawler:pinterest',
+							'locale:'.$locale.'_post:'.$post_id.'_url:'.$sharing_url,
+							'locale:'.$locale.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
-							'lang:'.$lang.'_id:'.$post_id.'_name:post_column:'.$lca.'_og_image',
-							'lang:'.$lang.'_id:'.$post_id.'_name:post_column:'.$lca.'_og_desc',
+							'locale:'.$locale.'_post:'.$post_id.'_column:'.$lca.'_og_image',
+							'locale:'.$locale.'_post:'.$post_id.'_column:'.$lca.'_og_desc',
 						),
 					);
-					$transients = apply_filters( $lca.'_post_cache_transients', 
-						$transients, $post_id, $lang, $sharing_url );
+					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $post_id, $locale, $sharing_url );
 
 					// wp objects are only available for the duration of a single page load
 					$wp_objects = array(
 						'SucomWebpage::get_content' => array(
-							'lang:'.$lang.'_post:'.$post_id.'_filtered',
-							'lang:'.$lang.'_post:'.$post_id.'_unfiltered',
+							'locale:'.$locale.'_post:'.$post_id.'_filtered',
+							'locale:'.$locale.'_post:'.$post_id.'_unfiltered',
 						),
 						'SucomWebpage::get_hashtags' => array(
-							'lang:'.$lang.'_post:'.$post_id,
+							'locale:'.$locale.'_post:'.$post_id,
 						),
 					);
-					$wp_objects = apply_filters( $lca.'_post_cache_objects', 
-						$wp_objects, $post_id, $lang, $sharing_url );
+					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
 
 					$deleted = $this->clear_cache_objects( $transients, $wp_objects );
 
@@ -1001,9 +999,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_array( $mod ) ) {
 				$mod = array();
-			} elseif ( ! empty( $mod['is_complete'] ) ) {
+			} elseif ( ! empty( $mod['name'] ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: array is complete' );
+					$this->p->debug->log( 'exiting early: module is complete' );
 				return $mod;
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -1054,7 +1052,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
-			// save $use_post for backwards compatibility
 			$mod['use_post'] = $use_post;
 
 			if ( $this->p->debug->enabled )
