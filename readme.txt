@@ -373,8 +373,8 @@ Official announcement: N/A
 	* Modified the order of WpssoOpengraph `get_the_media_info()` method arguments (WPSSO SSB and RRSSB updates required).
 	* Modified the WpssoUtil `get_max_nums()` arguments to allow for custom Schema image dimensions.
 	* Mofified the SucomWebpage `get_quote()` method to use the new `$mod` array.
+	* Saved `$use_post` value in the `$mod` array from the WpssoUtil `get_page_mod()` method.
 	* Renamed the `$mod['is_taxonomy']` array key to `$mod['is_term']` (the module is still named 'taxonomy' for now).
-	* Saved `$use_post` in the `$mod` array from the WpssoUtil `get_page_mod()` method.
 	* Removed the WpssoUtil 'sucom_installed_version' and 'sucom_ua_plugin' filters (no longer required).
 	* Added a new `SucomUtil::get_locale_opt()` static method to get localized option values.
 	* Added a new `SucomUtil::get_site_name()` and `SucomUtil::get_site_description()` to return localized values with fallback to WP values.
@@ -388,11 +388,12 @@ Official announcement: N/A
 		* 'wpsso_title_seed'
 	* Removed the WpssoUtil `get_source_id()` method.
 	* Removed `$src_id` from all method and filter arguments.
-	* Added a new `SucomDebug::clear()` static method to remove cached content by URL.
-	* Added a new `SucomUtil::is_front_page()` static method (works front-end and back-end) and updated all `is_front_page()` function calls.
-	* Added new `SucomUtil::protect_filter_start()` and `SucomUtil::protect_filter_stop()` methods to save/restore pre-filtered values.
-	* Changed the SucomUtil `get_post_object()`, `get_term_object()` and `get_user_object()` methods to static methods.
+	* Added `SucomDebug::clear()` static method to remove cached content by URL.
+	* Added `SucomUtil::protect_filter_start()` and `SucomUtil::protect_filter_stop()` methods to save/restore pre-filtered values.
+	* Added `SucomUtil::is_front_page()` static method (works front-end and back-end) and updated all `is_front_page()` function calls.
 	* Added an 'is_front' element to the `$mod` array (element value is updated by the post module).
+	* Changed `is_front_page()` to `$mod['is_front']` checks where possible, and `SucomUtil::is_front_page()` elsewhere.
+	* Changed the SucomUtil `get_post_object()`, `get_term_object()` and `get_user_object()` methods to static methods.
 
 **Version 3.28.5-1 (2016/03/31)**
 
