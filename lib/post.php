@@ -131,6 +131,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -164,6 +165,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mod = $this->get_mod( $post_id );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 

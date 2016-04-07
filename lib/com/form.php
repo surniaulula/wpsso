@@ -13,21 +13,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 	class SucomForm {
 
 		private $p;
-		private $text_dom = false;
+		private $menu_ext = null;
+		private $text_domain = false;
 
 		public $options = array();
 		public $defaults = array();
 		public $options_name = null;
 
-		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts ) {
+		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
 			$this->p =& $plugin;
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
 			$this->options_name =& $opts_name;
 			$this->options =& $opts;
 			$this->defaults =& $def_opts;
-			$this->text_dom = isset( $this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'] ) ?
-				$this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'] : false;
+			$this->menu_ext = empty( $menu_ext ) ? $this->p->cf['lca'] : $menu_ext;
+			$this->text_domain = isset( $this->p->cf['plugin'][$this->menu_ext]['text_domain'] ) ?
+				$this->p->cf['plugin'][$this->menu_ext]['text_domain'] : false;
 		}
 
 		public function get_hidden( $name, $value = '' ) {
@@ -66,7 +70,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
 				$checked.' title="default is '.
 				( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
-				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_dom ) : '' ).'" />';
+				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_domain ) : '' ).'" />';
 
 			return $html;
 		}
@@ -97,8 +101,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $is_assoc == false )
 					$val = $desc;
 
-				if ( $this->text_dom )
-					$desc = _x( $desc, 'option value', $this->text_dom );
+				if ( $this->text_domain )
+					$desc = _x( $desc, 'option value', $this->text_domain );
 
 				$html .= '<input type="radio"'.
 					( $disabled ? ' disabled="disabled"' : ' name="'.
@@ -180,28 +184,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $is_assoc === false ) 
 					$val = $desc;
 				if ( $val === -1 || $val === '-1' ) 
-					$desc = _x( '(settings value)', 'option value', $this->text_dom );
+					$desc = _x( '(settings value)', 'option value', $this->text_domain );
 				else {
-					if ( $this->text_dom )
-						$desc = _x( $desc, 'option value', $this->text_dom );
+					if ( $this->text_domain )
+						$desc = _x( $desc, 'option value', $this->text_domain );
 
 					switch ( $name ) {
 						case 'og_img_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' '._x( '(no images)', 'option value', $this->text_dom );
+								$desc .= ' '._x( '(no images)', 'option value', $this->text_domain );
 							break;
 						case 'og_vid_max': 
 							if ( $desc === 0 ) 
-								$desc .= ' '._x( '(no videos)', 'option value', $this->text_dom );
+								$desc .= ' '._x( '(no videos)', 'option value', $this->text_domain );
 							break;
 						default: 
 							if ( $desc === '' || $desc === 'none' ) 
-								$desc = _x( '[None]', 'option value', $this->text_dom ); 
+								$desc = _x( '[None]', 'option value', $this->text_domain ); 
 							break;
 					}
 					if ( $this->in_defaults( $name ) && 
 						$val === $this->defaults[$name] )
-							$desc .= ' '._x( '(default)', 'option value', $this->text_dom );
+							$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
 				}
 
 				if ( ! is_bool( $selected ) )
@@ -267,7 +271,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '>'.esc_html( $size_name.' [ '.$size['width'].'x'.$size['height'].
 					( $size['crop'] ? ' cropped' : '' ).' ]' );
 				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] ) 
-					$html .= ' '._x( '(default)', 'option value', $this->text_dom );
+					$html .= ' '._x( '(default)', 'option value', $this->text_domain );
 				$html .= '</option>';
 			}
 			$html .= '</select>';
@@ -372,7 +376,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					' <div class="img_crop_from">from';
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$pos_vals = $this->options[$name.'_'.$key] === -1 ? 
-						array_merge( array( -1 => _x( '(settings value)', 'option value', $this->text_dom ) ),
+						array_merge( array( -1 => _x( '(settings value)', 'option value', $this->text_domain ) ),
 							$this->p->cf['form']['position_'.$key] ) : 
 						$this->p->cf['form']['position_'.$key];
 					$crop_area_select .= ' '.$this->get_select( $name.'_'.$key,

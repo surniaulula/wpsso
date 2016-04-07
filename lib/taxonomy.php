@@ -171,6 +171,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -191,8 +192,8 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-
 			$mod = $this->get_mod( $this->term_id, $this->tax_slug );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 

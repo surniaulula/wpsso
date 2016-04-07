@@ -150,9 +150,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			if ( ! isset( $og['og:locale'] ) ) {
 				// get the current or configured language for og:locale
-				$lang = empty( $this->p->options['fb_lang'] ) ? 
-					SucomUtil::get_locale( $mod ) :
-					$this->p->options['fb_lang'];
+				$lang = empty( $this->p->options['fb_lang'] ) ? SucomUtil::get_locale( $mod ) : $this->p->options['fb_lang'];
 				$og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $mod );
 			}
 

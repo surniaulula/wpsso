@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.0-"
-"alpha3\n"
+"beta1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/admin.php:758 lib/user.php:244
+#: lib/admin.php:71 lib/admin.php:758 lib/user.php:246
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/admin.php:759 lib/user.php:245
+#: lib/admin.php:72 lib/admin.php:759 lib/user.php:247
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:424 lib/post.php:212 lib/taxonomy.php:230 lib/user.php:211
+#: lib/admin.php:424 lib/post.php:214 lib/taxonomy.php:231 lib/user.php:213
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -346,32 +346,32 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/com/form.php:69 lib/config-gettext-extract.php:28
+#: lib/com/form.php:73 lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:183 lib/com/form.php:375 lib/config-gettext-extract.php:32
+#: lib/com/form.php:187 lib/com/form.php:379 lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/com/form.php:191 lib/config-gettext-extract.php:24
+#: lib/com/form.php:195 lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:195 lib/config-gettext-extract.php:27
+#: lib/com/form.php:199 lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:199 lib/config-gettext-extract.php:25
+#: lib/com/form.php:203 lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:204 lib/com/form.php:270 lib/config-gettext-extract.php:9
+#: lib/com/form.php:208 lib/com/form.php:274 lib/config-gettext-extract.php:9
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -1063,7 +1063,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:81 lib/post.php:385 lib/pro/admin/post.php:100
+#: lib/gpl/admin/post.php:81 lib/post.php:387 lib/pro/admin/post.php:100
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2098,24 +2098,24 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:269
+#: lib/post.php:271
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:273
+#: lib/post.php:275
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:290
+#: lib/post.php:292
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:334 lib/profile/social-settings.php:26 lib/taxonomy.php:251
-#: lib/user.php:233
+#: lib/post.php:336 lib/profile/social-settings.php:27 lib/taxonomy.php:252
+#: lib/user.php:235
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2182,7 +2182,7 @@ msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
 
-#: lib/profile/social-settings.php:35
+#: lib/profile/social-settings.php:36
 msgid "Invalid user ID."
 msgstr ""
 
@@ -2694,15 +2694,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:396
+#: lib/user.php:398
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:397
+#: lib/user.php:399
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:398
+#: lib/user.php:400
 msgid "Jabber / Google Talk"
 msgstr ""
 

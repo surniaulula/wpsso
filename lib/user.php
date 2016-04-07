@@ -148,6 +148,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -159,21 +160,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );
 
+			$lca = $this->p->cf['lca'];
+
 			switch ( $screen->id ) {
-				case 'profile':
-				case 'user-edit':
-				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):
-				case ( strpos( $screen->id, 'users_page_' ) === 0 ? true : false ):
+				case 'profile':		// user profile page
+				case 'user-edit':	// user editing page
+				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// your profile page
+				case ( strpos( $screen->id, 'users_page_'.$lca ) === 0 ? true : false ):	// custom social settings page
 					break;
 				default:
 					return;
 					break;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$user_id = SucomUtil::get_user_object( false, 'id' );
-
 			$mod = $this->get_mod( $user_id );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 

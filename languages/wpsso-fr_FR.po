@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-04-05 17:02-0400\n"
-"PO-Revision-Date: 2016-04-05 17:03-0400\n"
+"PO-Revision-Date: 2016-04-07 05:16-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -703,17 +703,17 @@ msgstr "Utiliser Alt d’image, si aucun contenu"
 #: lib/gpl/admin/advanced.php:57 lib/pro/admin/advanced.php:65
 msgctxt "option label"
 msgid "Image Alt Text Prefix"
-msgstr "Préfix pour le texte Alt d’image"
+msgstr "Préfixe pour texte Alt d’image"
 
 #: lib/gpl/admin/advanced.php:61 lib/pro/admin/advanced.php:69
 msgctxt "option label"
 msgid "WP Caption Paragraph Prefix"
-msgstr "Préfixe de paragraphe WP Légende"
+msgstr "Préfixe paragraphe Légende"
 
 #: lib/gpl/admin/advanced.php:66 lib/pro/admin/advanced.php:74
 msgctxt "option label"
 msgid "Check for Embedded Media"
-msgstr "Vérifier pour médias intégrés"
+msgstr "Découvrir les médias intégrés"
 
 #: lib/gpl/admin/advanced.php:84 lib/gpl/admin/advanced.php:101
 #: lib/pro/admin/advanced.php:89 lib/pro/admin/advanced.php:106
@@ -816,7 +816,7 @@ msgstr "Utilisez WP Locale pour la langue"
 #: lib/gpl/admin/advanced.php:196 lib/pro/admin/advanced.php:196
 msgctxt "option label"
 msgid "Generate Missing WP Media Sizes"
-msgstr "Créer tailles manquantes des Médias WP"
+msgstr "Créer tailles manquantes Médias WP"
 
 #: lib/gpl/admin/advanced.php:200 lib/pro/admin/advanced.php:200
 msgctxt "option label"
@@ -1236,7 +1236,7 @@ msgid ""
 "Add Website markup to the home page header Google Search. The Website markup "
 "includes the home page URL, name, alternate name, and search query URL."
 msgstr ""
-"Ajouter des balises Site Web a l'en-têtes de la page d'acceil pour l'engin "
+"Ajouter des balises Site Web a l'en-têtes de la page d'accueil pour l'engin "
 "de recherche Google. Les balises Site Web comprend l'URL de la page "
 "d'accueil, le nom du site, le nom alternatif, et l'URL de recherche."
 
@@ -2678,19 +2678,19 @@ msgstr "Pages et Comptes Sociaux"
 #: lib/submenu/general.php:211
 msgctxt "option label"
 msgid "Facebook Business Page URL"
-msgstr "URL de la page d’affaires Facebook"
+msgstr "URL page d’affaires Facebook"
 
 #: lib/setting/social-accounts.php:60 lib/submenu/essential.php:131
 #: lib/submenu/general.php:236
 msgctxt "option label"
 msgid "Google+ Business Page URL"
-msgstr "URL de la page d’affaires Google+"
+msgstr "URL page d’affaires Google+"
 
 #: lib/setting/social-accounts.php:64 lib/submenu/essential.php:142
 #: lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
-msgstr "URL de la page entreprise Pinterest"
+msgstr "URL page entreprise Pinterest"
 
 #: lib/setting/social-accounts.php:68 lib/submenu/essential.php:149
 #: lib/submenu/general.php:383
@@ -2701,17 +2701,17 @@ msgstr "Le @nom d’affaires Twitter"
 #: lib/setting/social-accounts.php:72 lib/submenu/general.php:405
 msgctxt "option label"
 msgid "Instagram Business URL"
-msgstr "URL de la page d’affaires Instagram"
+msgstr "URL page d’affaires Instagram"
 
 #: lib/setting/social-accounts.php:76 lib/submenu/general.php:409
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
-msgstr "URL de la page entreprise LinkedIn"
+msgstr "URL page entreprise LinkedIn"
 
 #: lib/setting/social-accounts.php:80 lib/submenu/general.php:413
 msgctxt "option label"
 msgid "MySpace Business Page URL"
-msgstr "URL de la page d’affaires MySpace"
+msgstr "URL page d’affaires MySpace"
 
 #: lib/sitesubmenu/siteadvanced.php:34
 msgctxt "metabox title"
@@ -3040,7 +3040,7 @@ msgstr "Longueur max. de description SEO"
 #: lib/submenu/general.php:273
 msgctxt "option label"
 msgid "Use Meta Property Containers"
-msgstr "Utiliser contenants de propriétés Méta"
+msgstr "Utiliser contenants propriétés Méta"
 
 #: lib/submenu/general.php:276
 msgctxt "option comment"

@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function pro_req_notices() {
 			$lca = $this->p->cf['lca'];
 			$has_ext_tid = false;
-			$um_min_version = '1.4.1-alpha3';
+			$um_min_version = '1.4.1-beta1';
 
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
@@ -140,9 +140,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		protected function set_form_property() {
+		protected function set_form_property( $menu_ext ) {
 			$def_opts = $this->p->opt->get_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts );
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
 		protected function &get_form_reference() {	// returns a reference
@@ -530,8 +530,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! $this->is_setting() )
 				settings_errors( WPSSO_OPTIONS_NAME );
 
-			$this->set_form_property();			// set form for side boxes and show_form_content()
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
 				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
@@ -542,6 +540,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $menu_ext ) )
 				$menu_ext = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$menu_ext]['short'];
+
+			$this->set_form_property( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
 			echo '<h1>'.$short.self::$is_pkg[$this->menu_ext].' &ndash; '.$this->menu_name.'</h1>'."\n";
