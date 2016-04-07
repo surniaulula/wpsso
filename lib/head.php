@@ -183,9 +183,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cmt_end = $lca.' meta tags end';
 
 			// extra begin/end meta tag for duplicate meta tags check
-			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n";
+			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n".
+				'<!-- generated on '.date( 'c' ).' -->'."\n";
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':comment" content="'.$cmt_begin.'"/>'."\n";
+				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_begin.'"/>'."\n";
 
 			// first element of returned array is the html tag
 			foreach ( $this->get_header_array( $use_post, $mod, $read_cache, $mt_og ) as $mt )
@@ -194,7 +195,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// extra begin/end meta tag for duplicate meta tags check
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':comment" content="'.$cmt_end.'"/>'."\n";
+				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_end.'"/>'."\n";
 			$html .= '<!-- '.$cmt_end.' -->'."\n\n";
 
 			return $html;
