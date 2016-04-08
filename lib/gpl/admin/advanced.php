@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Paragraph Prefix',
 				'option label', 'wpsso' ), null, 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
-			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix'. $this->p->options ).'</td>';
+			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Check for Embedded Media',

@@ -611,20 +611,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// return the custom site name, and if empty, the default site name
 		public static function get_site_name( array &$opts, array &$mod ) {
-			return self::get_locale_opt( 'og_site_name', $opts, $mod, 
-				get_bloginfo( 'name', 'display' ) );
+			return self::get_locale_opt( 'og_site_name', $opts, $mod, get_bloginfo( 'name', 'display' ) );
 		}
 
 		// return the custom site description, and if empty, the default site description
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_site_description( array &$opts, array &$mod ) {
-			return self::get_locale_opt( 'og_site_description', $opts, $mod, 
-				get_bloginfo( 'description', 'display' ) );
+			return self::get_locale_opt( 'og_site_description', $opts, $mod, get_bloginfo( 'description', 'display' ) );
 		}
 
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_locale_opt( $key, &$opts, $mixed, $if_empty = null ) {
+		public static function get_locale_opt( $key, array &$opts, $mixed = 'current', $if_empty = null ) {
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 			if ( $if_empty !== null )
 				return empty( $opts[$key_locale] ) ? $if_empty : $opts[$key_locale];
@@ -633,6 +631,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// localize an options array key
+		// $opts = false | array
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_key_locale( $key, &$opts = false, $mixed = 'current' ) {
 			$default = self::get_locale( 'default' );
