@@ -161,7 +161,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
 
 			if ( ! isset( $og['og:description'] ) )
-				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod );
+				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
+					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
 
 			// if the page is an article, then define the other article meta tags
 			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {

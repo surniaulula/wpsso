@@ -107,10 +107,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				// maybe add hashtags to a post caption
 				if ( $mod['is_post'] ) {
-					if ( ! empty( $caption ) &&
-						! empty( $add_hashtags ) && 
-							! preg_match( '/( #[a-z0-9\-]+)+$/U', $caption ) ) {
-
+					if ( ! empty( $caption ) && ! empty( $add_hashtags ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $caption ) ) {
 						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 						if ( ! empty( $hashtags ) ) 
 							$caption = $this->p->util->limit_text_length( $caption, 
@@ -137,26 +134,24 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( $type ) {
 					case 'title':
-						$caption = $this->get_title( $textlen, '...', $mod,
-							$use_cache, $add_hashtags, false, $md_title );
+						$caption = $this->get_title( $textlen, '...', $mod, $use_cache, $add_hashtags, false, $md_title );
 						break;
 
 					case 'excerpt':
-						$caption = $this->get_description( $textlen, '...', $mod,
-							$use_cache, $add_hashtags, false, $md_desc );
+						$caption = $this->get_description( $textlen, '...', $mod, $use_cache, $add_hashtags, false, $md_desc );
 						break;
 
 					case 'both':
 						// get the title first
-						$caption = $this->get_title( 0, '', $mod, $use_cache, false, false, $md_title );
+						$caption = $this->get_title( 0, '', $mod, $use_cache, false, false, $md_title );	// $add_hashtags = false
 
 						// add a separator between title and description
 						if ( ! empty( $caption ) )
 							$caption .= ' '.$separator.' ';
 
 						// reduce the requested $textlen by the title text length we already have
-						$caption .= $this->get_description( $textlen - strlen( $caption ), '...', $mod,
-							$use_cache, $add_hashtags, false, $md_desc );
+						$caption .= $this->get_description( $textlen - strlen( $caption ),
+							'...', $mod, $use_cache, $add_hashtags, false, $md_desc );
 						break;
 				}
 			}
@@ -233,7 +228,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			} elseif ( $mod['is_post'] ) {
 				if ( ! empty( $add_hashtags ) && 
 					! empty( $this->p->options['og_desc_hashtags'] ) )
-						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );	// add_hashtags = true/false/numeric
+						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );	// $add_hashtags = true | false | numeric
 			}
 
 			if ( $hashtags && $this->p->debug->enabled )
@@ -357,7 +352,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					'trailing' => $trailing, 
 					'mod' => $mod, 
 					'use_cache' => $use_cache, 
-					'add_hashtags' => $add_hashtags, 	// true/false/numeric
+					'add_hashtags' => $add_hashtags, 	// true | false | numeric
 					'encode' => $encode,
 					'md_idx' => $md_idx,
 				) );

@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoTwittercard' ) ) {
 
 			if ( ! isset( $tc['twitter:description'] ) )
 				$tc['twitter:description'] = $this->p->webpage->get_description( $this->p->options['tc_desc_len'], 
-					'...', $mod, true, true, true, 'tc_desc' );
+					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags = true
 
 			if ( ! isset( $tc['twitter:creator'] ) ) {
 				if ( $mod['is_post'] ) {

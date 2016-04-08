@@ -723,7 +723,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
 				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
-					'...', $mod, true, true, true, 'schema_desc' );	// custom meta = schema_desc
+					'...', $mod, true, true, true, 'schema_desc' );	// $md_idx = schema_desc
 
 			switch ( $head_type ) {
 				case 'http://schema.org/BlogPosting':

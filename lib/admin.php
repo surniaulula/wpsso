@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function pro_req_notices() {
 			$lca = $this->p->cf['lca'];
 			$has_ext_tid = false;
-			$um_min_version = '1.4.1-rc1';
+			$um_min_version = '1.4.1-1';
 
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
