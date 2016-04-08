@@ -412,8 +412,7 @@ Official announcement: N/A
 	* Added two new filters for WPSSO Pro Update Manager v1.4.0-1:
 		* 'wpsso_readme_upgrade_notices'
 		* 'wpsso_newer_version_available'
-	* Adopted a standard version numbering system:
-		* `{major}.{minor}.{bugfix}-{stage}{level}`
+	* Adopted a new version numbering system: `{major}.{minor}.{bugfix}-{stage}{level}`
 
 == Upgrade Notice ==
 
