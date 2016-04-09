@@ -283,11 +283,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Other Notes ==
 
-= Articles and Tutorials =
-
-* [How To Optimize Your Content For Social Networks Using WordPress](http://www.wpsuperstars.net/optimize-content-for-social-networks)
-* [Social SEO: Yoast SEO (aka WordPress SEO) vs WPSSO](http://surniaulula.com/2014/10/25/social-seo-wordpress-seo-vs-wpsso/) &mdash; read about the differences between Yoast SEO and WPSSO when used for social sharing.
-
 = Additional Documentation =
 
 * [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/)
