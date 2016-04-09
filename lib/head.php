@@ -396,16 +396,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							// prevent duplicates - remove images from text/html video
 							if ( isset( $dd_val['og:video:type'] ) && 
-								$dd_val['og:video:type'] === 'text/html' )
-									$is_video_embed = true;
-							else $is_video_embed = false;
+								$dd_val['og:video:type'] === 'text/html' ) {
+								$is_video_embed = true;
+								unset( $dd_val['og:video:embed_url'] );	// just in case
+							} else $is_video_embed = false;
 
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
 
 								// prevent duplicates - remove images from text/html video
-								if ( $is_video_embed &&
-									strpos( $ddd_name, 'og:image' ) !== false )
-										continue;
+								if ( $is_video_embed && strpos( $ddd_name, 'og:image' ) !== false )
+									continue;
 
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {

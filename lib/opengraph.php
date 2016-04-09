@@ -349,28 +349,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( ! empty( $this->p->options['og_vid_html_type'] ) ) {
 				$og_extend = array();
 				foreach ( $og_ret as $num => $og_video ) {
-
 					if ( ! empty( $og_video['og:video:embed_url'] ) ) {
 
 						$og_embed = $og_video;		// start with a copy of all meta tags
 
-						// keep associative key order
-						foreach ( array( 'og:video:secure_url', 'og:video:url' ) as $key )
-							$og_embed[$key] = '';
-
-						// define the secure_url, if https is available
 						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
-
 							$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
 							$og_embed['og:video:url'] = preg_replace( '/^https:/', 'http:',
 								$og_video['og:video:embed_url'] );
-
-						} else $og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+						} else {
+							$og_embed['og:video:secure_url'] = '';
+							$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+						}
 
 						$og_embed['og:video:type'] = 'text/html';
-
-						foreach ( array( 'og:video', 'og:video:embed_url' ) as $key )
-							unset ( $og_embed[$key], $og_video[$key] );
 
 						$og_extend[] = $og_video;	// add application/x-shockwave-flash first
 						$og_extend[] = $og_embed;	// add the new text/html video second
