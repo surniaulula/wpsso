@@ -1,63 +1,114 @@
-<p>WPSSO works great "<em>right out of the box</em>" &mdash; and you could keep the default plugin settings as-is &mdash; but taking a few minutes to review some basic options can help maximize your social presence and click-through rate. ;-)</p>
+<p>WPSSO works great "<em>right out of the box</em>" &mdash; and you could keep
+the default plugin settings as-is &mdash; but taking a few minutes to review
+some basic options can help maximize your social presence and click-through
+rate. ;-)</p>
 
 <ol style="list-style-type:numeric">
 
 <li>
 <h3>WebSite Social Accounts</h3>
-<p>Create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business (if you haven't already). You can enter your website's social accounts information on the WordPress <u>Settings &gt; Website Social Pages and Accounts</u> page. The social account values are used by WPSSO for Google / SEO, Schema, Open Graph, and other meta tags -- including the publisher (Organization) social profiles markup in schema.org JSON-LD format. These social accounts may appear in Google Search results to highlight your website / business social pages.<p>
+<p>If you haven't already done so, create a Facebook Page, Twitter account, and
+Google+ account (or Page) for your website / business. You can enter your
+website's social account information on the WordPress <u>Settings &gt; Website
+Social Pages and Accounts</u> page. The social account values are used by WPSSO
+for Google / SEO, Schema, Open Graph, and other meta tag values &mdash;
+including the publisher / Organization social profile URLs in the Schema
+JSON-LD markup (which may appear in Google Search results to highlight your
+website / business social pages).<p>
 </li>
 
 <li>
 <h3>Author Social Accounts</h3>
-<p>Ask your authors to enter their Facebook, Google+, and Twitter contact information on their profile page. Each author's contact information can appear in various meta tags and schema.org JSON-LD markup -- but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author (Person) social profile markup for Google. Authors should take a moment to update their <a href="https://www.facebook.com/settings?tab=followers">Facebook Follower Settings</a> to enable a Follow button on Facebook. In this way, authors can publish both private (for friends) and public (for friends and followers) content on their Facebook wall.</p>
+<p>Ask your authors to enter their Facebook, Google+, and Twitter contact
+information on their WordPress user profile page. Each author's contact
+information can appear in various meta tag values and Schema JSON-LD markup
+&mdash; but only if they complete their user profile. All URLs found in the
+author's contact methods will be listed in the author  / Person social profile
+markup for Google. Authors should take a moment to update their <a
+href="https://www.facebook.com/settings?tab=followers">Facebook Follower
+Settings</a> to enable a Follow button on Facebook. In this way, authors can
+publish both private (for friends) and public (for friends and followers)
+content on their Facebook wall.</p>
 </li>
 
 <li>
 <h3>Essential Settings</h3>
-<p>Review the Site Description on the WPSSO <u>Essential Settings</u> page and select a Default / Fallback Image ID. WPSSO uses information from the first post on index / archive and search webpages. If you define a <em>Default Image ID</em> (or Default Image URL), WPSSO can use this image as a fallback in case a Post / Page does not contain a suitable image, and/or force the default image on index / archive and search webpages. See the WPSSO <u>General Settings &gt; Images</u> tab for these and other image related options.</p>
+<p>Review the site description on the SSO <u>Essential Settings</u> page and
+select a default / fallback image ID or URL. The default image is used for
+index / archive pages, and as a fallback for Posts and Pages that do not have a
+suitable image featured, attached, or in their content. See the SSO <u>General
+Settings &gt; Images</u> tab for these and other image related options.</p>
 </li>
 
 <li>
 <h3>Image Dimensions</h3>
-
-<p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or better is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original images are at least 1200px in width and 630px in height, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
+<p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u>
+values. If your original images are large enough, you should set the Open Graph
+image dimensions to 1200x630px cropped or larger. Images that are 600px and
+wider are displayed more prominently on Facebook, and 1200px or better is
+required to avoid upscaling (stretching) images for retina / high-PPI displays
+&mdash; so it's worth taking the time to make sure <em>all</em> your original
+images are at least 1200px wide, along with setting an Open Graph image
+dimension of 1200x630px cropped.</p>
 
 <blockquote>
 <h4>Cropped or Uncropped?</h4>
-
-<p>The difference between cropped and uncropped image dimensions is important to know -- when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required, and then <u>the excess width or height is trimmed</u>. As an example, an image of 3264x2448px resized to 1200x630px cropped with have dimensions of 1200x630px, loosing 135px on both top and bottom (270px total). The same image resized to 1200x630px <em>uncropped</em> will have dimensions of 840x630px -- the original aspect ratio was preserved, and no parts of the image were sacrificed, but <u>its width is not optimal for Facebook</u>. The suggested Open Graph image dimensions are 600x315px or 1200x630px cropped since Facebook will often crop Open Graph images to this aspect ratio anyway (so you might as well have some control over the cropping).</p>
+<p>The difference between cropped and uncropped image dimensions is important
+to know &mdash; when resizing <em>and</em> cropping an image, it will be
+resized so that <em>both</em> sides meet or exceed the image dimensions
+required and <u>the excess width or height is trimmed</u>. The resulting image
+will match the required dimensions <em>exactly</em> (having sacrificed parts of
+the image). When resizing without cropping, <u>the original aspect ratio is
+preserved</u>, and no parts of the image are sacrificed. The image will be
+resized so both the width and height fit <em>within</em> the designed size
+&mash; so only one side of the image will match the required size.</p>
 </blockquote>
 
 <blockquote>
 <h4>Upscale / Enlarge Images?</h4>
+<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates
+smaller images from larger full-size originals. Upscaled images do not look as
+sharp or clean when upscaled, and if enlarged too much, images will look fuzzy
+and unappealing &mdash; not something you want to promote on social sites.
+WPSSO Pro includes an optional module that allows upscaling of WordPress Media
+Library images for WPSSO image sizes (up to a maximum upscale percentage). For
+example, a full-size image of 100x200px could be upscaled up to 150x300px using
+the default maximum of 50%, but resizing the images any larger would fail
+(unless you increased the maximum).</p> 
 
-<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images for WPSSO image sizes (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using the default maximum of 50%, but resizing the images any larger would fail (unless you increased the maximum).</p> 
-
-<p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <em>Do not enable this feature unless you want to publish lower quality images on social sites.</em></p>
+<p>If you feel strongly that upscaling small images in your WordPress Media
+Library is something you want (instead of uploading larger full-size
+originals), you can enable this feature under the <u>Advanced &gt; WP / Theme
+Integration</u> tab. <em>Do not enable this feature unless you want to publish
+lower quality images on social sites.</em></p>
 </blockquote>
 
 <blockquote>
 <h4>Accept Smaller / Thumbnail Images?</h4>
-
-<p>WPSSO double-checks that all images returned by WordPress match the dimensions it requested (as WordPress can return inaccurate images). This check also insures that images that are too small for social sites (smaller than the image dimensions requested) are rejected in favour of other potentially larger / more suitable images. You can use smaller / innaccurate images by unchecking the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab. Unchecking this option is not recommended as it may cause WPSSO to provide sub-optimal images to social sites.</p>
+<p>WPSSO double-checks that all images returned by WordPress match the
+dimensions it requested (as WordPress can return inaccurate images). This check
+also insures that images that are too small for social sites (smaller than the
+image dimensions requested) are rejected in favour of other potentially larger
+/ more suitable images. You can use smaller / innaccurate images by unchecking
+the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP /
+Theme Integration</u> tab. Unchecking this option is not recommended as it may
+cause WPSSO to provide small / sub-optimal images to social sites.</p>
 </blockquote>
-
 </li>
 
 <li>
 <h3>Validation Tools</h3>
-
 <p>Submit a few sample Posts and Pages to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <u>Social Settings</u> metabox. Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>.</p>
 
-<p>Submit a Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an extension of Open Graph meta tags, but the Rich Pin Validator can be a little buggy, so double check any errors with the Facebook Debugger to make sure they are actual / real errors.  Once approved, you can zoom a Pin to view its Rich Pin information.</p>
+<p>Submit a Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an extension of Open Graph meta tags, but the Rich Pin Validator can be a little buggy, so double check any errors with the Facebook Debugger to make sure they are actual / real errors.</p>
 
 <p>Submit index / archive and Post / Page URLs to the <A href="https://validator.w3.org/">W3C Markup Validation Service</a> to verify the HTML of your theme templates. Social crawlers expect properly coded HTML markup that conforms to current HTML / XHTML standards. If your webpages contain serious markup errors, social and/or search engine crawlers may be unable to parse your webpage content. Fix and/or report any template markup issues with your theme author.</p>
-
 </li>
 
 <li>
 <h3>Interface and General Usage</h3>
 <p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / vide the "Social Img" and "Social Desc" columns.</p>
+
 <p>When editing a Post, Page, category, tag, etc., you'll find a <u>Social Settings</u> metabox at the bottom of the page, where you can edit various social texts and image values. The "Social Preview" tab gives you an idea of what sharing a link to this webpage might look like on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </li>
 
