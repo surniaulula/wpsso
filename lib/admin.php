@@ -19,8 +19,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_ext = null;
 		protected $pagehook = null;
 
-		public static $is_pkg = array();
-		public static $readme_info = array();
+		public static $pkg_short = array();
+		public static $pkg_type = array();
+		public static $readme_info = array();	// array for the readme of each extension
 
 		public $form;
 		public $lang = array();
@@ -65,11 +66,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// the id of each submenu item must be unique
 		private function set_objects() {
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info )
-				self::$is_pkg[$ext] = ' '.
-					( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ? 
-						_x( 'Pro', 'package type', 'wpsso' ) :
-						_x( 'Free', 'package type', 'wpsso' ) );
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				self::$pkg_type[$ext] = ( $this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ? 
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' ) );
+				self::$pkg_short[$ext] = $info['short'].' '.self::$pkg_type[$ext];
+			}
 
 			$menu_libs = array( 
 				'submenu', 
@@ -140,6 +142,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		// extended by the sitesubmenu library classes to define / load site options instead
 		protected function set_form_property( $menu_ext ) {
 			$def_opts = $this->p->opt->get_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
@@ -231,12 +234,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_menu_page( $menu_slug ) {
 			global $wp_version;
 			$lca = $this->p->cf['lca'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
 
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				$short.self::$is_pkg[$lca].' &mdash; '.$this->menu_name, 
-				$this->p->cf['menu'].self::$is_pkg[$lca], 
+				self::$pkg_short[$lca].' &mdash; '.$this->menu_name, 
+				$this->p->cf['menu'].' '.self::$pkg_type[$lca], 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
 					'manage_options' ),	// fallback to manage_options capability
@@ -265,16 +267,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$menu_ext = $this->p->cf['lca'];
 			}
 
-			$short = $this->p->cf['plugin'][$menu_ext]['short'];
-
 			// highlight the "extension plugins" part of the menu title
-			if ( strpos( $menu_id, 'licenses' ) !== false )
-				$menu_title = preg_replace( '/^<span>/',
-					'<span style="color:#'.$this->p->cf['color'].';">', $menu_name );
+			if ( strpos( $menu_name, '<highlight>' ) !== false )
+				$menu_title = preg_replace( 
+					array( '/<highlight>/', '/<\/highlight>/' ),
+					array( '<span style="color:#'.$this->p->cf['color'].';">', '</span>' ),
+				$menu_name );
 			else $menu_title = $menu_name;
 
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-			$page_title = $short.self::$is_pkg[$menu_ext].' &mdash; '.$menu_title;
+			$page_title = self::$pkg_short[$menu_ext].' &mdash; '.$menu_title;
 			$function = array( &$this, 'show_setting_page' );
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
@@ -484,12 +486,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			// the plugin information metabox on all settings pages needs the readme array
-			WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'] );
-
 			// add child metaboxes first, since they contain the default reset_metabox_prefs()
-			$this->p->admin->submenu[ $this->menu_id ]->add_meta_boxes();
+			$this->p->admin->submenu[$this->menu_id]->add_meta_boxes();
 
+			// show the purchase metabox on all pages
 			if ( empty( $this->p->options['plugin_'.$lca.'_tid'] ) || 
 				! $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ) {
 
@@ -501,10 +501,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( 'purchase' ), null, 'side', true );
 			}
 
+			$this->p->admin->submenu[$this->menu_id]->add_side_meta_boxes();
+		}
+
+		protected function add_side_meta_boxes() {
+
+			// show the help metabox on all pages
 			add_meta_box( $this->pagehook.'_help',
 				_x( 'Help and Support', 'metabox title (side)', 'wpsso' ), 
 					array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
 
+			// only show under in the plugin settings pages
+			// (don't show under the WordPress settings menu or in network settings pages)
 			if ( $this->menu_lib === 'submenu' ) {
 				add_meta_box( $this->pagehook.'_status_gpl',
 					_x( 'Standard Features', 'metabox title (side)', 'wpsso' ), 
@@ -515,6 +523,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
 			}
 
+			// only show under in the plugin or network settings pages
+			// (don't show under the WordPress settings menu)
 			if ( $this->menu_lib === 'submenu' || $this->menu_lib === 'sitesubmenu' ) {
 				add_meta_box( $this->pagehook.'_version_info',
 					_x( 'Version Information', 'metabox title (side)', 'wpsso' ), 
@@ -539,12 +549,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_ext = $this->menu_ext;
 			if ( empty( $menu_ext ) )
 				$menu_ext = $this->p->cf['lca'];
-			$short = $this->p->cf['plugin'][$menu_ext]['short'];
 
 			$this->set_form_property( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.$short.self::$is_pkg[$this->menu_ext].' &ndash; '.$this->menu_name.'</h1>'."\n";
+			echo '<h1>'.self::$pkg_short[$this->menu_ext].' &ndash; '.$this->menu_name.'</h1>'."\n";
 
 			if ( $sidebar === false ) {
 				echo '<div id="poststuff" class="metabox-holder">'."\n";
@@ -711,6 +720,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_version_info() {
+
+			WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'] );
+
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// only active extensions
@@ -992,7 +1004,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $help_links ) ) {
 					echo '<p><strong>'.sprintf( _x( '%s Support', 
 						'metabox title (side)', 'wpsso' ), 
-							$info['short'].self::$is_pkg[$ext] ).'</strong></p>';
+							self::$pkg_short[$ext] ).'</strong></p>';
 					echo '<ul>'.$help_links.'</ul>';
 				}
 			}
@@ -1183,8 +1195,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$base = $this->p->cf['plugin'][$lca]['base'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
-			$short_pro = $short.' Pro';
 			$purchase_url = $this->p->cf['plugin'][$lca]['url']['purchase'];
 			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' - ';
 			$log_pre = 'plugin conflict detected - ';	// don't translate the debug 
@@ -1346,7 +1356,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return '';
 			return $form->get_th_html( _x( 'Site Use',
 				'option label (very short)', 'wpsso' ), 'site_use' ).
-			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] || $force ) ?
+			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) || $force ?
 				'<td>'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :
 				'<td class="site_use blank">'.$form->get_select( $name.':use', 
 					$this->p->cf['form']['site_option_use'], 'site_use', null, true, true ).'</td>' );

@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.29.2-1',	// plugin version
-					'opt_version' => '419',		// increment when changing default options
+					'version' => '3.29.3-dev1',	// plugin version
+					'opt_version' => '420',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -65,17 +65,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
-							'readme' => 'Plugin Read Me',
-							'setup' => 'Setup Guide',
-							// the first 2 words will be highlighted in menu
-							'licenses' => '<span>Extension Plugins</span> and Pro Licenses',
+							'setup' => '<highlight>Setup Guide</highlight>',
+							'licenses' => 'Pro Licenses and Extension Plugins',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
-							'sitereadme' => 'Plugin Read Me',
-							'sitesetup' => 'Setup Guide',
-							// the first 2 words will be highlighted in menu
-							'sitelicenses' => '<span>Extension Plugins</span> and Pro Licenses',
+							'sitesetup' => '<highlight>Setup Guide</highlight>',
+							'sitelicenses' => 'Pro Licenses and Extension Plugins',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -349,15 +345,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop_x' => 'center',
 					'schema_img_crop_y' => 'center',
 					'seo_desc_len' => 156,			// meta name="description" maximum text length
-					'seo_author_name' => 'none',		// meta name="author" format
 					'seo_def_author_id' => 0,
 					'seo_def_author_on_index' => 0,
 					'seo_def_author_on_search' => 0,
 					'seo_author_field' => '',		// default value set by WpssoOptions::get_defaults()
 					'seo_publisher_url' => '',		// multilingual
 					'fb_publisher_url' => '',		// multilingual
-					'fb_admins' => '',
 					'fb_app_id' => '',
+					'fb_admins' => '',
+					'fb_author_name' => 'display_name',
 					'fb_lang' => 'en_US',
 					'instgram_publisher_url' => '',		// multilingual
 					'linkedin_publisher_url' => '',		// multilingual
@@ -636,7 +632,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name' => 'yim',
 					'wp_cm_yim_label' => 'Yahoo IM', 
 					'wp_cm_yim_enabled' => 1,
-					// Extension Plugins and Pro Licenses
+					// Pro Licenses and Extension Plugins
 					'plugin_wpsso_tid' => '',
 				),
 				'site_defaults' => array(
@@ -674,7 +670,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
-					// Extension Plugins and Pro Licenses
+					// Pro Licenses and Extension Plugins
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
 				),
@@ -790,7 +786,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'all' => 'All Options',
 				),
 				'site_option_use' => array(
-					'default' => 'New install value',
+					'default' => 'New activation',
 					'empty' => 'If value is empty',
 					'force' => 'Force this value',
 				),

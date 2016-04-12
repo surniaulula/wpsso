@@ -270,10 +270,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$mt_name = array();
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
-				if ( isset( $this->p->options['seo_author_name'] ) && 
-					$this->p->options['seo_author_name'] !== 'none' )
-						$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id, 
-							$this->p->options['seo_author_name'] );
+				// fallback for authors without a Facebook page URL in their user profile
+				if ( empty( $mt_og['article:author'] ) )	// check for empty array
+					$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id,
+						$this->p->options['fb_author_name'] );
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
@@ -394,17 +394,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 
-							// prevent duplicates - remove images from text/html video
+							// prevent duplicates - ignore images from text/html video
 							if ( isset( $dd_val['og:video:type'] ) && 
 								$dd_val['og:video:type'] === 'text/html' ) {
-								$is_video_embed = true;
-								unset( $dd_val['og:video:embed_url'] );	// just in case
-							} else $is_video_embed = false;
+
+								// skip if text/html video markup is disabled
+								if ( empty( $this->p->options['og_vid_html_type'] ) )
+									continue;
+
+								unset( $dd_val['og:video:embed_url'] );	// redundant - just in case
+								$ignore_images = true;
+
+							} else $ignore_images = false;
 
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
 
-								// prevent duplicates - remove images from text/html video
-								if ( $is_video_embed && strpos( $ddd_name, 'og:image' ) !== false )
+								// prevent duplicates - ignore images from text/html video
+								if ( $ignore_images && strpos( $ddd_name, 'og:image' ) !== false )
 									continue;
 
 								if ( is_array( $ddd_val ) ) {

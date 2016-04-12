@@ -129,7 +129,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 					// meta tag not defined or value is null
 					if ( ! isset( $og['article:author'] ) )
-						$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id );
+						// returns the author name for the pinterest crawler
+						$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id, $crawler_name );
 
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
@@ -171,9 +172,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				if ( ! isset( $og['article:author'] ) ) {
 					if ( $mod['is_post'] ) {
 						if ( ! empty( $mod['post_author'] ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'] );
+							// returns the author name for the pinterest crawler
+							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
 						elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
-							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id );
+							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id, $crawler_name );
 					}
 				}
 
@@ -208,12 +210,20 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
 
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
-						foreach ( $og['og:video'] as $video_num => $video_arr ) {
-							if ( ! empty( $video_arr['og:image'] ) ) {
-								$og['og:video'][$video_num]['og:video:has_image'] = true;
-								$prev_count++;
-							}
+						foreach ( $og['og:video'] as $num => $og_video ) {
+
+							if ( SucomUtil::get_mt_media_url( 'og:image', $og_video ) ) {
+								$og['og:video'][$num]['og:video:has_image'] = true;
+
+								// prevent duplicates - ignore images from text/html video
+								if ( isset( $og_video['og:video:type'] ) &&
+									$og_video['og:video:type'] === 'text/html' )
+										continue;
+								else $prev_count++;
+
+							} else $og['og:video'][$num]['og:video:has_image'] = false;
 						}
+
 						if ( $prev_count > 0 ) {
 							$max['og_img_max'] -= $prev_count;
 							if ( $this->p->debug->enabled )

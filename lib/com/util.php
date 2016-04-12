@@ -14,7 +14,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $mobile_detect = null;		// SuextMobileDetect object
+		protected static $is_mobile = null;		// is_mobile cached value
+		protected static $mobile_obj = null;		// SuextMobileDetect class object
 		protected static $plugins_index = null;		// hash of active site and network plugins
 		protected static $site_plugins = null;
 		protected static $network_plugins = null;
@@ -1082,22 +1083,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$text = $alt_text;
 				} else $text = $text_stripped;
 			}
-			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// convert space-like chars to a single space
+			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );			// replace 1+ spaces to a single space
 
 			return trim( $text );
 		}
 
 		public static function strip_shortcodes( $text ) {
-			if ( strpos( $text, '[' ) === false )
+			if ( strpos( $text, '[' ) === false )		// exit now if no shortcodes
 				return $text;
-			$shortcodes_preg = apply_filters( 
-				'sucom_strip_shortcodes',
-				array(
-					'/\[\/?vc_[^\]]+\]/',
-				)
-			);
-			$text = preg_replace( $shortcodes_preg, '', $text );
-			$text = strip_shortcodes( $text );	// strip any remaining registered shortcodes
+			$shortcodes_preg = apply_filters( 'sucom_strip_shortcodes_preg', array(
+				'/\[\/?(mk|vc)_[^\]]+\]/',		// visual composer shortcodes
+			) );
+			$text = preg_replace( $shortcodes_preg, ' ', $text );
+			$text = strip_shortcodes( $text );		// strip any remaining registered shortcodes
 			return $text;
 		}
 
@@ -1313,14 +1311,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return '{}';	// empty string
 		}
 
+		// returns self::$is_mobile cached value after first check
 		public static function is_mobile() {
-			// load class object on first use
-			if ( self::$mobile_detect === null ) {
-				if ( ! class_exists( 'SuextMobileDetect' ) )
-					require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
-				self::$mobile_detect = new SuextMobileDetect();
-			}
-			return self::$mobile_detect->isMobile();
+			if ( self::$is_mobile === null ) {
+				// load class object on first check
+				if ( self::$mobile_obj === null ) {
+					if ( ! class_exists( 'SuextMobileDetect' ) )
+						require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
+					self::$mobile_obj = new SuextMobileDetect();
+				}
+				self::$is_mobile = self::$mobile_obj->isMobile();
+			} 
+			return self::$is_mobile;
 		}
 
 		public static function is_desktop() {
@@ -1368,7 +1370,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			// sort by the display name key value
-			ksort( $ret, SORT_NATURAL );
+			if ( defined( 'SORT_NATURAL' ) )	// available since PHP 5.4
+				ksort( $ret, SORT_NATURAL );
+			else uksort( $ret, 'strcasecmp' );	// case-insensitive string comparison
 
 			// add 'none' to create an associative array *before* flipping the array
 			// in order to preserve the user id => display name association

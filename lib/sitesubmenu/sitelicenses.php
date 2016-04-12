@@ -23,15 +23,15 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 				$this->p->debug->mark();
 		}
 
-		protected function set_form_property() {
+		protected function set_form_property( $menu_ext ) {
 			$def_site_opts = $this->p->opt->get_site_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts );
+			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Extension Plugins and Pro Licenses', 'metabox title', 'wpsso' ), 
+				_x( 'Pro Licenses and Extension Plugins', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes

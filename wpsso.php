@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.5
- * Version: 3.29.2-1
+ * Version: 3.29.3-dev1
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -257,6 +257,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( ! is_array( $this->options ) )
 				$this->options = array();
 
+			unset( $this->options['options_filtered'] );	// just in case
+
+			$this->options = apply_filters( 'wpsso_get_options', $this->options );
+
 			if ( is_multisite() ) {
 				$this->site_options = get_site_option( WPSSO_SITE_OPTIONS_NAME );
 
@@ -271,14 +275,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 
+				if ( ! is_array( $this->site_options ) )
+					$this->site_options = array();
+
+				unset( $this->site_options['options_filtered'] );	// just in case
+
+				$this->site_options = apply_filters( 'wpsso_get_site_options', $this->site_options );
+
 				// if multisite options are found, check for overwrite of site specific options
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
 					$current_blog_id = function_exists( 'get_current_blog_id' ) ? 
 						get_current_blog_id() : false;
 					foreach ( $this->site_options as $key => $val ) {
-						if ( isset( $this->site_options[$key.':use'] ) &&
-							isset( $this->options[$key] ) ) {
-
+						if ( isset( $this->site_options[$key.':use'] ) ) {
 							switch ( $this->site_options[$key.':use'] ) {
 								case'force':
 									$this->options[$key.':is'] = 'disabled';
@@ -289,27 +298,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 										$this->options[$key] = $this->site_options[$key];
 									break;
 							}
-
-							// check for constant over-rides
-							if ( $current_blog_id !== false ) {
-								$constant_name = 'WPSSO_OPTIONS_'.$current_blog_id.'_'.strtoupper( $key );
-								if ( defined( $constant_name ) )
-									$this->options[$key] = constant( $constant_name );
-							}
+						}
+						// check for constant over-rides
+						if ( $current_blog_id !== false ) {
+							$constant_name = 'WPSSO_OPTIONS_'.$current_blog_id.'_'.strtoupper( $key );
+							if ( defined( $constant_name ) )
+								$this->options[$key] = constant( $constant_name );
 						}
 					}
 				}
 			}
-
-			if ( ! is_array( $this->site_options ) )
-				$this->site_options = array();
-
-			// just in case
-			unset( $this->options['options_filtered'],
-				$this->site_options['options_filtered'] );
-
-			$this->options = apply_filters( 'wpsso_get_options', $this->options );
-			$this->site_options = apply_filters( 'wpsso_get_site_options', $this->site_options );
 		}
 	}
 

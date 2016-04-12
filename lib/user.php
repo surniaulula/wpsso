@@ -405,17 +405,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		// returns an array of profile urls for the given user ids
-		// unless the pinterest crawler is detected, in which case it returns the user's name
-		public function get_og_profile_urls( $user_ids ) {
+		// unless the pinterest crawler is detected, in which case it returns the user names
+		public function get_og_profile_urls( $user_ids, $crawler_name = null ) {
 			$ret = array();
+			if ( $crawler_name === null )
+				$crawler_name = SucomUtil::crawler_name();
 			if ( ! empty( $user_ids ) ) {
 				if ( ! is_array( $user_ids ) )
 					$user_ids = array( $user_ids );
 				foreach ( $user_ids as $user_id ) {
 					if ( ! empty( $user_id ) ) {
-						if ( SucomUtil::crawler_name( 'pinterest' ) === true )
-							$ret[] = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
-						else $ret[] = $this->get_author_website_url( $user_id, $this->p->options['og_author_field'] );
+						if ( $crawler_name === 'pinterest' )
+							$val = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
+						else $val = $this->get_author_website_url( $user_id, $this->p->options['og_author_field'] );
+						if ( ! empty( $val ) )	// make sure we don't add empty values
+							$ret[] = $val;
 					}
 				}
 			}

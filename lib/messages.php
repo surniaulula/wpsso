@@ -233,10 +233,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$def_dimensions.'). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-og_def_img_id':
-							$text = 'An image ID and media library for your default / fallback website image. The default image ID will be used as a fallback for Posts / Pages that do not have a suitable image featured, attached, or in their content.';
+							$text = 'An image ID and media library for your default / fallback website image. The default image ID will be used for index / archive pages, and as a fallback for Posts / Pages that do not have a suitable image featured, attached, or in their content.';
 							break;
 						case 'tooltip-og_def_img_url':
-							$text = 'You can enter a Default Image URL (including the http:// prefix) instead of choosing a Default Image ID (if a Default Image ID is specified, the Default Image URL option is disabled). The Default Image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['min']['og_img_width'].'x'.$this->p->cf['head']['min']['og_img_height'].' or more in width and height. The Default Image ID or URL is used as a <strong>fallback for Posts and Pages that do not have any images</strong> <em>featured</em>, <em>attached</em>, or suitable &lt;img/&gt; HTML tags in their content.';
+							$text = 'You can enter a default image URL (including the http:// prefix) instead of choosing a default image ID &mdash; if a default image ID is specified, the default image URL option is disabled. The default image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['min']['og_img_width'].'x'.$this->p->cf['head']['min']['og_img_height'].' or more in width and height. The default image ID or URL is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.';
 							break;
 						case 'tooltip-og_def_img_on_index':
 							$text = 'Check this option to force the default image on index webpages (<strong>non-static</strong> homepage, archives, categories). If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$info['short'].' will use image(s) from the first entry on the webpage (default is checked).';
@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Authorship' settings
 						 */
 						case 'tooltip-og_author_field':
-							$text = __( 'Select which contact field to use from the author\'s profile page for the Facebook / Open Graph and Pinterest Rich Pin \'article:author\' meta tag(s). The preferred setting is the Facebook URL field (default value).', 'wpsso' );
+							$text = __( 'Select which contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph <code>article:author</code> meta tag. The preferred setting is the Facebook URL field (default value).', 'wpsso' );
 							break;
 						case 'tooltip-og_author_fallback':
 							$text = sprintf( __( 'If the \'%1$s\' (and the \'%2$s\' in the Google settings below) is not a valid URL, then %3$s can fallback to using the author index / archive page on this website (for example, \'%4$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), _x( 'Author Link URL Field', 'option label', 'wpsso' ), $info['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
@@ -496,6 +496,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-fb_app_id':
 							$text = sprintf( __( 'If you have a <a href="%1$s" target="_blank">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%2$s" target="_blank">Facebook Insight</a> data for accounts associated with that Application ID.', 'wpsso' ), 'https://developers.facebook.com/apps', 'https://developers.facebook.com/docs/insights/' );
 							break;
+						case 'tooltip-fb_author_name':
+							$text = sprintf( __( '%1$s uses the Facebook contact field value in the author\'s WordPress profile for <code>article:author</code> Open Graph meta tags. This allows Facebook to credit an author on shares, and link their Facebook page URL.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If an author does not have a Facebook page URL, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is \'Display Name\').', 'wpsso' ), $info['short'], _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							break;
 						case 'tooltip-fb_lang':
 							$text = __( 'The default language of your website content, used in the Facebook / Open Graph and Pinterest Rich Pin meta tags. The Pro version can also use the WordPress locale to adjust the language value dynamically (useful for websites with multilingual content).', 'wpsso' );
 							break;
@@ -508,10 +511,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				} elseif ( strpos( $idx, 'tooltip-google_' ) === 0 ) {
 					switch ( $idx ) {
-						// located under the Facebook tab
-						case 'tooltip-google_author_name':
-							$text = sprintf( __( 'Select an "<strong>%1$s</strong>" for the \'%2$s\' meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'author' ).' Facebook uses the \'author\' meta tag value to credit the author on timeline shares, but the <strong>Facebook Debugger will show a warning</strong> &mdash; thus it is disabled by default. Now that you know about the false warning from the Facebook Debugger, you should set this option to \'Display Name\'. ;-)';
-							break;
 						case 'tooltip-google_publisher_url':
 							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
@@ -567,7 +566,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
 							break;
 						case 'tooltip-schema_author_name':
-							$text = sprintf( __( 'Select an \'%1$s\' for the author / Person markup, or \'[None]\' to exclude it from the author / Person markup (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-schema_home_page':
 							$text = 'Select the Schema item type for the site home page. The home page is found using the WordPress <code>is_front_page()</code> function. The Schema item type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema item type for the home page is http://schema.org/WebSite.';
@@ -617,7 +616,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$def_dimensions.'). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 						case 'tooltip-rp_author_name':
-							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the \'article:author\' Open Graph meta tags.', 'wpsso' ).' '.__( 'A different \'article:author\' meta tag can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an \'%1$s\' for the \'%2$s\' meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
+							$text = __( 'Pinterest ignores Facebook-style Author Profile URLs in the <code>article:author</code> Open Graph meta tags.', 'wpsso' ).' '.__( 'A different meta tag value can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an %1$s for the <code>%2$s</code> meta tag or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), 'article:author' );
 							break;
 						case 'tooltip-rp_dom_verify':
 							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied \'p:domain_verify\' meta tag <em>content</em> value here.', 'wpsso' );
@@ -697,9 +696,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'info-plugin-tid-network':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$text = '<blockquote class="top-info"><p>'.__( 'After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions.', 'wpsso' ).' '.__( 'You may enter the unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication ID individually on each site\'s Pro Licenses settings page.', 'wpsso' ).'</p><p>'.__( 'If you enter an Authentication ID here, <em>please make sure you have purchased enough licenses to license all sites within the network</em> (for example, if you have 10 sites, you will need 10 or more licenses).', 'wpsso' ).' <strong>'.__( 'To license one or more sites individually, enter the Authentication ID in each site\'s Pro Licenses settings page.', 'wpsso' ).'</strong></p><p>'.sprintf( __( 'Please note that <em>the default site / blog must be licensed</em> and the %1$s extension active, in order to install %2$s version updates from the network admin interface.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</p></blockquote>';
-						break;
-					case 'info-review':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'How do you like the plugin? Please take a moment to <a href="%1$s" target="_blank">rate the %2$s plugin on WordPress.org</a>.', 'wpsso' ), $url['review'], $info['short'] ).' '.sprintf( __( 'Ratings help the WordPress community as a whole find higher-quality plugins &mdash; along with <strong>encouraging us to keep improving %s</strong> as well!', 'wpsso' ), $info['short'] ).' ;-)</p></blockquote>';
 						break;
 					case 'info-pub-pinterest':
 						$text = '<blockquote class="top-info"><p>'.__( 'These options allow you to customize some Open Graph meta tag and Schema markup values for the Pinterest crawler.', 'wpsso' ).' '.__( 'If you use a caching plugin (or front-end caching service), it should detect the Pinterest user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> setting and add "Pinterest/" to that list).', 'wpsso' ).'</p></blockquote>';

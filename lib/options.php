@@ -28,13 +28,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
 
+			$lca = $this->p->cf['lca'];
 			$defs =& $this->p->cf['opt']['defaults'];	// shortcut
 
 			if ( ! isset( $defs['options_filtered'] ) ||
 				$defs['options_filtered'] !== true ||
 					$force_filter === true ) {
 
-				$lca = $this->p->cf['lca'];
 				$defs = $this->p->util->add_ptns_to_opts( $defs, 
 					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
@@ -47,8 +47,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {
-						if ( isset( $defs[$key] ) && 
-							isset( $this->p->site_options[$key.':use'] ) ) {
+						if ( isset( $defs[$key] ) && isset( $this->p->site_options[$key.':use'] ) ) {
 							if ( $this->p->site_options[$key.':use'] === 'default' )
 								$defs[$key] = $this->p->site_options[$key];
 						}
@@ -69,22 +68,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function get_site_defaults( $idx = false, $force_filter = false ) {
 
-			if ( ! isset( $this->p->cf['opt']['site_defaults']['options_filtered'] ) ||
-				$this->p->cf['opt']['site_defaults']['options_filtered'] !== true ||
+			$lca = $this->p->cf['lca'];
+			$defs =& $this->p->cf['opt']['site_defaults'];	// shortcut
+
+			if ( ! isset( $defs['options_filtered'] ) ||
+				$defs['options_filtered'] !== true ||
 					$force_filter === true ) {
 
-				$lca = $this->p->cf['lca'];
-				$this->p->cf['opt']['site_defaults'] = apply_filters( $lca.'_get_site_defaults', 
-					$this->p->cf['opt']['site_defaults'] );
+				$defs = apply_filters( $lca.'_get_site_defaults', $defs );
 
-				$this->p->cf['opt']['site_defaults']['options_filtered'] = true;
+				$defs['options_filtered'] = true;
 			}
 
 			if ( $idx !== false ) {
-				if ( isset( $this->p->cf['opt']['site_defaults'][$idx] ) )
-					return $this->p->cf['opt']['site_defaults'][$idx];
+				if ( isset( $defs[$idx] ) )
+					return $defs[$idx];
 				else return null;
-			} else return $this->p->cf['opt']['site_defaults'];
+			} else return $defs;
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {

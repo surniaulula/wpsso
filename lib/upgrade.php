@@ -64,6 +64,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'tc_prod_def_label2' => '',
 			'tc_prod_def_data2' => '',
 			'plugin_version' => '',
+			'seo_author_name' => '',
 		);
 
 		protected $p;

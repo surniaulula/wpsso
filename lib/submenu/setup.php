@@ -32,12 +32,9 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_guide() {
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' setup-metabox">';
-			echo '<tr><td>'.$this->p->msgs->get( 'info-review' ).'</td></tr>';
 			echo '<tr><td>';
-			echo $this->p->util->get_remote_content( 
-				$this->p->cf['plugin'][$this->p->cf['lca']]['url']['setup'],
-				constant( $this->p->cf['uca'].'_PLUGINDIR' ).'setup.html'
-			);
+			echo $this->p->util->get_remote_content( $this->p->cf['plugin'][$this->p->cf['lca']]['url']['setup'],
+				constant( $this->p->cf['uca'].'_PLUGINDIR' ).'setup.html' );
 			echo '</td></tr></table>';
 		}
 	}

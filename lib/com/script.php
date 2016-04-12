@@ -84,8 +84,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 		}
 
 		public function localize_media_script() {
-			$textdom = $this->p->cf['plugin'][$this->p->cf['lca']]['slug'];
-			return array( 'choose_image' => __( 'Use Image', $textdom ) );
+			$text_domain = $this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'];
+			return array( 'choose_image' => __( 'Use Image', $text_domain ) );
 		}
 	}
 }

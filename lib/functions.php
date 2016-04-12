@@ -45,4 +45,12 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_is_mobile' ) ) {
+	function wpsso_is_mobile() {
+		if ( class_exists( 'SucomUtil' ) )	// just in case
+			return SucomUtil::is_mobile();
+		else return null;
+	}
+}
+
 ?>
