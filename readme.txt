@@ -349,7 +349,7 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
-**Version 3.29.3-1 (2016/04/12)**
+**Version 3.29.4-1 (2016/04/12)**
 
 Official announcement: N/A
 
@@ -359,7 +359,7 @@ Official announcement: N/A
 	* Changed the Facebook "Author Name Format" option to a fallback feature instead, for cases where the author does not have a Facebook page URL in their WordPress profile.
 	* Removed the "Plugin Read Me" settings page and highlighted the "Setup Guide" settings page.
 * *Bugfixes*
-	* None
+	* Fixed 'og_vid_url' input option name in the Social Settings metabox.
 * *Developer Notes*
 	* Added crawler name argument to NgfbUser `get_og_profile_urls()` for the Pinterest crawler.
 	* Added an alternative to ksort() in `WpssoUtil::get_user_select()` for older PHP versions.
@@ -440,7 +440,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.3-1 =
+= 3.29.4-1 =
 
 (2016/04/12) Changed the Facebook "Author Name Format" option to a fallback feature. Fixed cache salt value for mobile/non-mobile version of sharing buttons.
 
