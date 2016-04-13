@@ -287,6 +287,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$current_blog_id = function_exists( 'get_current_blog_id' ) ? 
 						get_current_blog_id() : false;
 					foreach ( $this->site_options as $key => $val ) {
+						if ( strpos( $key, ':use' ) !== false )
+							continue;
 						if ( isset( $this->site_options[$key.':use'] ) ) {
 							switch ( $this->site_options[$key.':use'] ) {
 								case'force':
