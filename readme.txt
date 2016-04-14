@@ -351,7 +351,7 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
-**Version 3.29.5-dev1 (TBD)**
+**Version 3.29.5-dev1 (2016/04/14)**
 
 Official announcement: N/A
 
@@ -454,6 +454,10 @@ Official announcement: N/A
 	* Adopted a new version numbering system: `{major}.{minor}.{bugfix}-{stage}{level}`
 
 == Upgrade Notice ==
+
+= 3.29.5-dev1 =
+
+(2016/04/14) Added a message in the Free / Basic version to explain how to change the social text and image.
 
 = 3.29.4-1 =
 
