@@ -349,6 +349,19 @@ This release schedule keeps the code stable and reliable, at the cost of more fr
 
 = Changelog / Release Notes =
 
+**Version 3.29.5-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a message in the Free / Basic version to explain how to change the social text and image.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.29.4-1 (2016/04/12)**
 
 Official announcement: N/A

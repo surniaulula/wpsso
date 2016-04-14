@@ -26,6 +26,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
+			$table_rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-about-msg-post' ).'</td>';
+
 			$form_rows = array(
 				'og_art_section' => array(
 					'tr_class' => ( isset( $head['og:type'] ) && $head['og:type'] === 'article' ? '' : 'hide_in_basic' ),

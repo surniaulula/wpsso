@@ -34,6 +34,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
+			$table_rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-about-msg' ).'</td>';
+
 			$form_rows = array(
 				'og_title' => array(
 					'label' => _x( 'Default Title', 'option label', 'wpsso' ),
@@ -93,6 +96,12 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+
+			if ( $mod['is_post'] )
+				$table_rows[] = '<td colspan="2" align="center">'.
+					$this->p->msgs->get( 'pro-about-msg', __( 'You can change the social image by selecting a featured image (preferred), attaching one or more images, or including images in the content.', 'wpsso' ).' '.__( 'The service API modules required for embedded video discovery are available in the Pro version.', 'wpsso' ) ).'</td>';
+			else $table_rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-about-msg' ).'</td>';
 
 			$form_rows['subsection_opengraph'] = array(
 				'td_class' => 'subsection top',

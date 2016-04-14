@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( is_string( $info ) ) {
 				$text = $info;
-				$info = array();
+				$info = array( 'text' => $text );
 			} else $text = isset( $info['text'] ) ?
 				$info['text'] : '';
 
@@ -725,6 +725,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'pro-option-msg':
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ), $info['short_pro'] ).'</a></p>';
+						break;
+					case 'pro-about-msg-post':
+						$info['text'] = __( 'You can modify the description values by updating the content or excerpt, and change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' );
+						// no break
+					case 'pro-about-msg':
+						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include the modules required to manage custom post, taxonomy, or user meta &mdash; these options are included for display purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
