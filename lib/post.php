@@ -173,14 +173,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
 
-				if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', 
+				if ( apply_filters( $lca.'_add_metabox_post', 
 					$add_metabox, $post_id, $post_obj->post_type ) === true ) {
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding metabox for post' );
 
 					// hooked by woocommerce module to load front-end libraries and start a session
-					do_action( $this->p->cf['lca'].'_admin_post_header', $mod, $screen->id );
+					do_action( $lca.'_admin_post_header', $mod, $screen->id );
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'setting head_meta_info static property' );
@@ -259,17 +259,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'check head meta' );
 
+			$lca = $this->p->cf['lca'];
 			$charset = get_bloginfo( 'charset' );
 			$permalink = get_permalink( $post_id );
 			$permalink_html = SucomUtil::encode_emoji( htmlentities( urldecode( $permalink ), 
 				ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
-			$check_opts = apply_filters( $this->p->cf['lca'].'_check_head_meta_options',
+			$check_opts = apply_filters( $lca.'_check_head_meta_options',
 				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 
-			if ( current_user_can( 'manage_options' ) )
-				$notice_suffix = ' ('.sprintf( __( 'can be disabled in the <a href="%s">WP / Theme Integration</a> Advanced settings', 'wpsso' ),
-					$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')';
+			if ( current_user_can( 'manage_options' ) &&
+				$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
+					$notice_suffix = ' ('.sprintf( __( 'can be disabled in the <a href="%s">WP / Theme Integration</a> Advanced settings',
+						'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')';
 			else $notice_suffix = '';
 
 			$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
@@ -310,6 +312,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
+			$lca = $this->p->cf['lca'];
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 			$user_can_edit = false;		// deny by default
 
@@ -332,7 +335,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
 
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_post', $add_metabox, $post_id ) === true )
+			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id ) === true )
 				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_post' ), $post_obj->post_type, 'normal', 'low' );
 		}
@@ -361,7 +364,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );		// WPSSO_NONCE is an md5() string
 
 			$metabox = 'post';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_social_settings_tabs',
+			$tabs = apply_filters( $lca.'_'.$metabox.'_social_settings_tabs',
 				$this->get_default_tabs(), $mod );
 			if ( empty( $this->p->is_avail['mt'] ) )
 				unset( $tabs['tags'] );
@@ -372,7 +375,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$table_rows = array();
 			foreach ( $tabs as $key => $title )
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
+					apply_filters( $lca.'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 

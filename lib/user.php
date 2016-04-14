@@ -181,13 +181,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', 
+			if ( apply_filters( $lca.'_add_metabox_user', 
 				$add_metabox, $user_id, $screen->id ) === true ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'adding metabox for user' );
 
-				do_action( $this->p->cf['lca'].'_admin_user_header', $mod, $screen->id );
+				do_action( $lca.'_admin_user_header', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -650,7 +650,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_desc',
 				),
 			);
-			$transients = apply_filters( $this->p->cf['lca'].'_user_cache_transients', $transients, $user_id, $locale, $sharing_url );
+			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $user_id, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

@@ -199,13 +199,13 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_taxonomy' ] ) ? false : true;
 
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_taxonomy', 
+			if ( apply_filters( $lca.'_add_metabox_taxonomy', 
 				$add_metabox, $this->term_id, $screen->id ) === true ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'adding metabox for taxonomy' );
 
-				do_action( $this->p->cf['lca'].'_admin_taxonomy_header', $mod, $screen->id );
+				do_action( $lca.'_admin_taxonomy_header', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 					'locale:'.$locale.'_taxonomy:'.$term_id.'_column:'.$lca.'_og_image',
 				),
 			);
-			$transients = apply_filters( $this->p->cf['lca'].'_taxonomy_cache_transients', $transients, $term_id, $locale, $sharing_url );
+			$transients = apply_filters( $lca.'_taxonomy_cache_transients', $transients, $term_id, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

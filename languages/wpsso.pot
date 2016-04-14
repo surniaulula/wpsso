@@ -1070,7 +1070,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:84 lib/post.php:387 lib/pro/admin/post.php:100
+#: lib/gpl/admin/post.php:84 lib/post.php:390 lib/pro/admin/post.php:100
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2113,23 +2113,23 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:271
+#: lib/post.php:273
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:275
+#: lib/post.php:277
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:292
+#: lib/post.php:294
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:336 lib/profile/social-settings.php:27 lib/taxonomy.php:252
+#: lib/post.php:339 lib/profile/social-settings.php:27 lib/taxonomy.php:252
 #: lib/user.php:235
 msgctxt "metabox title"
 msgid "Social Settings"
