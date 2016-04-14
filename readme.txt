@@ -336,10 +336,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 == Changelog ==
 
 <blockquote id="changelog_top_info">
-<p>New versions of the plugin are released approximately every week (more or less). 
-New features are added, tested, and released incrementally, instead of grouping them together in a major version release. 
-When minor bugs fixes and/or code improvements are applied, new versions are also released.
-This release schedule keeps the code stable and reliable, at the cost of more frequent updates.</p>
+<p>New versions of the plugin are released approximately every week (more or
+less). New features are added, tested, and released incrementally, instead of
+grouping them together in a major version release. When minor bugs fixes
+and/or code improvements are applied, new versions are also released. This
+release schedule keeps the code stable and reliable, at the cost of more
+frequent updates.</p>
 </blockquote>
 
 = Free / Basic Version Repository =
