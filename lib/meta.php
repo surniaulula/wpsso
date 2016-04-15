@@ -27,10 +27,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'id' => false,
 			'name' => false,
 			'obj' => false,
+			'use_post' => false,
 			/*
 			 * Post
 			 */
-			'use_post' => false,
 			'is_post' => false,
 			'is_front' => false,
 			'post_type' => false,

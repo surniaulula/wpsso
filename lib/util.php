@@ -979,7 +979,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = array();
 			} elseif ( ! empty( $mod['obj'] ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: module is complete' );
+					$this->p->debug->log( 'exiting early: module object is defined' );
 				return $mod;
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->mark();
