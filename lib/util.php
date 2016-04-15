@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
-			} elseif ( $aop )
+			} elseif ( $aop && ! empty( $mod['id'] ) && is_object( $mod['obj'] ) )
 				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_options = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
@@ -407,11 +407,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $topics;
-		}
-
-		// deprecated 2016/03/22
-		public function get_mod_options( $mod_id, $mod_name, $idx = false, $filter_options = true ) {
-			return null;
 		}
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {
@@ -760,11 +755,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
-		// deprecated on 2016/03/18
-		public function get_th( $title = '', $class = '', $css_id = '', $atts = array() ) {
-			return '<th><p>'.$title.'</p></th>';
-		}
-
 		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
 
 			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
@@ -856,13 +846,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			return $has_changed === false ?
 				$ts : get_option( WPSSO_TS_NAME, array() );
-		}
-
-		// deprecated in v8.20.1.1 on 2015/12/09
-		public function push_add_to_options( &$opts, $arr = array(), $def = 1 ) {
-			if ( function_exists( '_deprecated_function' ) )
-				_deprecated_function( __METHOD__, '3.20.1.1', 'add_ptns_to_opts' );
-			return $opts;
 		}
 
 		public function get_inline_vars() {
@@ -987,11 +970,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		// deprecated 2016/03/23
-		public function get_object_id_mod( $use_post = false, $id = false, $mod_name = false ) {
-			return array();
-		}
-
 		/*
 		 * Return the post / user / term id, module name, and the module object reference.
 		 */
@@ -999,7 +977,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_array( $mod ) ) {
 				$mod = array();
-			} elseif ( ! empty( $mod['name'] ) ) {
+			} elseif ( ! empty( $mod['obj'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: module is complete' );
 				return $mod;

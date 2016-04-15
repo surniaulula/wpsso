@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.5-"
-"dev1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.5-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -346,27 +345,27 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/com/form.php:73 lib/config-gettext-extract.php:29
+#: lib/com/form.php:73 lib/config-gettext-extract.php:31
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:187 lib/com/form.php:379 lib/config-gettext-extract.php:33
+#: lib/com/form.php:187 lib/com/form.php:379 lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/com/form.php:195 lib/config-gettext-extract.php:25
+#: lib/com/form.php:195 lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:199 lib/config-gettext-extract.php:28
+#: lib/com/form.php:199 lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:203 lib/config-gettext-extract.php:26
+#: lib/com/form.php:203 lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -464,148 +463,183 @@ msgid "Force this value"
 msgstr ""
 
 #: lib/config-gettext-extract.php:17
+msgctxt "option value"
+msgid "Friday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:18
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:18
+#: lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "Goo.gl"
 msgstr ""
 
-#: lib/config-gettext-extract.php:19
+#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: lib/config-gettext-extract.php:20
+#: lib/config-gettext-extract.php:21
 msgctxt "lib file description"
 msgid "<highlight>Setup Guide</highlight>"
 msgstr ""
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "If value is empty"
 msgstr ""
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:24
+msgctxt "option value"
+msgid "Monday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "New activation"
 msgstr ""
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "No"
 msgstr ""
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr ""
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:33
 msgctxt "lib file description"
 msgid "Pro Licenses and Extension Plugins"
 msgstr ""
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "Right"
 msgstr ""
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:35
+msgctxt "option value"
+msgid "Saturday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:37
 msgctxt "lib file description"
 msgid "Social and SEO Image Dimensions"
 msgstr ""
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:38
+msgctxt "option value"
+msgid "Sunday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:39
+msgctxt "option value"
+msgid "Thursday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "TinyURL (slow)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:41
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:42
 msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "Top"
 msgstr ""
 
-#: lib/config-gettext-extract.php:39
+#: lib/config-gettext-extract.php:44
+msgctxt "option value"
+msgid "Tuesday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:45
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr ""
 
-#: lib/config-gettext-extract.php:40
+#: lib/config-gettext-extract.php:46
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
 msgstr ""
 
-#: lib/config-gettext-extract.php:41
+#: lib/config-gettext-extract.php:47
+msgctxt "option value"
+msgid "Wednesday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:48
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, "
 "Place, Product, etc.) for Google and Pinterest."
 msgstr ""
 
-#: lib/config-gettext-extract.php:42
+#: lib/config-gettext-extract.php:49
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
 "in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:50
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add traditional Social Sharing Buttons with support for "
 "hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:51
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:52
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Facebook / Open Graph \"Location\" and Pinterest "
 "Rich Pin / Schema \"Place\" meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:46
+#: lib/config-gettext-extract.php:53
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
 "Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:47
+#: lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:48
+#: lib/config-gettext-extract.php:55
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr ""
@@ -971,8 +1005,8 @@ msgstr ""
 
 #: lib/gpl/admin/meta.php:102
 msgid ""
-"You can change the social image by selecting a featured image (preferred), "
-"attaching one or more images, or including images in the content."
+"You can change the social image by selecting a featured image, attaching one "
+"or more images, or including images in the content."
 msgstr ""
 
 #: lib/gpl/admin/meta.php:102
@@ -2710,49 +2744,49 @@ msgstr ""
 msgid "Error reading the %s topic list file."
 msgstr ""
 
-#: lib/util.php:428
+#: lib/util.php:423
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:430
+#: lib/util.php:425
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:432 lib/util.php:434
+#: lib/util.php:427 lib/util.php:429
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:436
+#: lib/util.php:431
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:438
+#: lib/util.php:433
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:440
+#: lib/util.php:435
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:442
+#: lib/util.php:437
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:638
+#: lib/util.php:633
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "

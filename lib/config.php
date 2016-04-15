@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.29.5-dev1',	// plugin version
+					'version' => '3.29.5-1',	// plugin version
 					'opt_version' => '420',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -737,6 +737,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'yes_no' => array(
 					'1' => 'Yes',
 					'0' => 'No',
+				),
+				'weekdays' => array(
+					'sun' => 'Sunday',
+					'mon' => 'Monday',
+					'tue' => 'Tuesday',
+					'wed' => 'Wednesday',
+					'thu' => 'Thursday',
+					'fri' => 'Friday',
+					'sat' => 'Saturday',
 				),
 				'time_by_name' => array(
 					'hour' => 3600,

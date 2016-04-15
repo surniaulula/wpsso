@@ -503,16 +503,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// deprecated 2016/04/01
-		public static function insert_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return $array;
-		}
-
-		// deprecated 2016/04/01
-		public static function insert_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return $array;
-		}
-
 		public static function before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
 		}
@@ -1242,11 +1232,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}
 
-		public static function get_stripped_php ( $file ) {
+		public static function get_stripped_php( $file ) {
 			$ret = '';
 			if ( file_exists( $file ) ) {
 				$php = file_get_contents( $file );
-				$comments = array(T_COMMENT); 
+				$comments = array( T_COMMENT ); 
 				if ( defined( 'T_DOC_COMMENT' ) )
 					$comments[] = T_DOC_COMMENT;	// php 5
 				if ( defined( 'T_ML_COMMENT' ) )
@@ -1410,6 +1400,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						return false;
 				else return $countries[$default_code];
 			} else return $countries[$country_code];
+		}
+
+		public static function get_hours_range( $start = 0, $end = 86400, $step = 3600, $format = 'g:i a' ) {
+			$times = array();
+		        foreach ( range( $start, $end, $step ) as $timestamp ) {
+				$hour_mins = gmdate( 'H:i', $timestamp );
+				if ( ! empty( $format ) )
+					$times[$hour_mins] = gmdate( $format, $timestamp );
+				else $times[$hour_mins] = $hour_mins;
+			} 
+			return $times;
 		}
 	}
 }
