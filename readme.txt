@@ -358,7 +358,7 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a plugin icon for extension sub-menu items.
 * *Bugfixes*
 	* Fixed non-static home page detection for WebSite, Person, and Organization markup.
 * *Developer Notes*
@@ -454,20 +454,4 @@ Official announcement: N/A
 = 3.29.6-1 =
 
 (2016/04/21) Fixed non-static home page detection for WebSite, Person, and Organization markup. Added support for a date form input field using jQuery's datepicker.
-
-= 3.29.5-1 =
-
-(2016/04/15) Added a message in the Free / Basic version to explain how to change the social text and image. Fixed possible call to undefined module object when loading image sizes (Pro version).
-
-= 3.29.4-1 =
-
-(2016/04/12) Changed the Facebook "Author Name Format" option to a fallback feature. Fixed cache salt value for mobile/non-mobile version of sharing buttons.
-
-= 3.29.2-1 =
-
-(2016/04/09) Fixed Twitter Card player video detection.
-
-= 3.29.1-1 =
-
-(2016/04/08) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox. Changes to SucomWebpage caption, content, description, and title related methods.
 
