@@ -254,26 +254,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $menu_id ) )
 				$menu_id = $this->menu_id;
-
 			if ( empty( $menu_name ) )
 				$menu_name = $this->menu_name;
-
 			if ( empty( $menu_lib ) )
 				$menu_lib = $this->menu_lib;
-
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->menu_ext;
 				if ( empty( $menu_ext ) )
 					$menu_ext = $this->p->cf['lca'];
 			}
 
-			// highlight the "extension plugins" part of the menu title
-			if ( strpos( $menu_name, '<highlight>' ) !== false )
-				$menu_title = preg_replace( 
-					array( '/<highlight>/', '/<\/highlight>/' ),
-					array( '<span style="color:#'.$this->p->cf['color'].';">', '</span>' ),
-				$menu_name );
-			else $menu_title = $menu_name;
+			global $wp_version;
+			if ( $menu_ext === $this->p->cf['lca'] )		// plugin menu and sub-menu items
+				$menu_title = $menu_name;
+			elseif ( version_compare( $wp_version, 3.8, '<' ) )	// wp v3.8 required for dashicons
+				$menu_title = $menu_name;
+			else $menu_title = '<div class="extension-plugin'.	// add plugin icon for extensions
+				' dashicons-before dashicons-admin-plugins"></div>'.
+				'<div class="extension-plugin">'.$menu_name.'</div>';
+
+			if ( strpos( $menu_title, '<color>' ) !== false )
+				$menu_title = preg_replace( array( '/<color>/', '/<\/color>/' ),
+					array( '<span style="color:#'.$this->p->cf['color'].';">', '</span>' ), $menu_title );
 
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$page_title = self::$pkg_short[$menu_ext].' &mdash; '.$menu_title;

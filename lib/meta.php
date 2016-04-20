@@ -32,7 +32,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Post
 			 */
 			'is_post' => false,
-			'is_front' => false,
+			'is_home' => false,		// home page (any)
+			'is_home_page' => false,	// static home page (have post ID)
+			'is_home_index' => false,	// blog index page (archive)
 			'post_type' => false,
 			'post_status' => false,
 			'post_author' => false,

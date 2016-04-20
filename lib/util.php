@@ -1045,6 +1045,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
 			$mod['use_post'] = $use_post;
+			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
+			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
@@ -1100,18 +1102,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else {
 				if ( is_search() ) {
 					$url = get_search_link();
-				/*
-				 * is_front_page() will always return true, regardless if the site front page 
-				 * displays the blog posts index or a static page. 
-				 */
-				} elseif ( self::is_front_page() ) {
+
+				} elseif ( self::is_home_page() ) {	// static home page (have post ID)
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
 					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
-				/*
-				 * is_home() will always return true on the blog posts index, regardless if the 
-				 * blog posts index is displayed on the site front page or a separate page. 
-				 */
+
 				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
 					$url = get_permalink( get_option( 'page_for_posts' ) );
 
@@ -1158,7 +1154,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! $wp_rewrite->using_permalinks() )
 						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
 					else {
-						if ( self::is_front_page() ) {
+						if ( self::is_home_page() ) {	// static home page (have post ID)
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );

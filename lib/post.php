@@ -67,10 +67,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Post
 			 */
 			$mod['is_post'] = true;
-			$mod['is_front'] = SucomUtil::is_front_page( $mod_id );
-			$mod['post_type'] = get_post_type( $mod_id );			// post type name
-			$mod['post_status'] = get_post_status( $mod_id );		// post status name
+			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );			// static home page (have post ID)
+			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
+			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
+			$mod['post_type'] = get_post_type( $mod_id );					// post type name
+			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = get_post_field( 'post_author', $mod_id );
+
 			return $mod;
 		}
 

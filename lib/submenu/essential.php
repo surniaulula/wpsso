@@ -26,11 +26,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_general',
-				_x( 'General Settings', 'metabox title', 'wpsso' ), 
+				_x( 'Essential General Settings', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_general' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_advanced',
-				_x( 'Advanced Settings', 'metabox title', 'wpsso' ), 
+				_x( 'Essential Advanced Settings', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small

@@ -309,7 +309,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input_date( $name = '', $class = '', $id = '', $min = '', $max = '', $disabled = false ) {
 			return '<input type="text" style="text-align:center;"'.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
-				( empty( $class ) ? 'class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
+				( empty( $class ) ? ' class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
 				( empty( $min ) ? '' : ' min="'.esc_attr( $min ).'"' ).
 				( empty( $max ) ? '' : ' min="'.esc_attr( $max ).'"' ).

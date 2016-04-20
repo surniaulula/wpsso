@@ -681,25 +681,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
-		public static function is_front_page( $use_post = false ) {
+		// returns true if using a static home page (with page or posts content)
+		public static function is_home_page( $use_post = false ) {
 			$ret = false;
 
-			if ( ( $use_post || is_admin() ) && 
-				self::is_post_page( $use_post ) ) {
+			// get the static post ID
+			$post_id = get_option( 'show_on_front' ) === 'page' ?
+				get_option( 'page_on_front' ) :
+				get_option( 'page_for_posts' );
 
-				$post_id = get_option( 'show_on_front' ) === 'page' ?
-					get_option( 'page_on_front' ) :
-					get_option( 'page_for_posts' );
-
-				if ( is_numeric( $post_id ) &&
-					self::get_post_object( $use_post, 'id' ) === (int) $post_id )
-						$ret = true;
-
-			} elseif ( ! $use_post && 
-				is_front_page() )
+			if ( is_numeric( $post_id ) &&
+				self::get_post_object( $use_post, 'id' ) === (int) $post_id )
 					$ret = true;
 
-			return apply_filters( 'sucom_is_front_page', $ret, $use_post );
+			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
 		}
 
 		public static function is_post_page( $use_post = false ) {

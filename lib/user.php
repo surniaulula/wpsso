@@ -82,6 +82,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * User
 			 */
 			$mod['is_user'] = true;
+
 			return $mod;
 		}
 

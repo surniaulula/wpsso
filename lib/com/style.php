@@ -124,11 +124,24 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				if ( $icon_highlight ) 
 					echo '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
-	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before {
+	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
+	#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
+	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
 		color:#'.$this->p->cf['color'].';
 	}';
 			}
 			echo '
+	#adminmenu ul.wp-submenu div.extension-plugin {
+		display:table-cell;
+	}
+	#adminmenu ul.wp-submenu div.extension-plugin.dashicons-before {
+		max-width:1.1em;
+		padding-right:5px;
+	}
+	#adminmenu ul.wp-submenu div.extension-plugin.dashicons-before:before {
+		text-align:left;
+		font-size:1.1em;
+	}
 	.column-'.$lca.'_og_image { 
 		width:'.$this->p->cf['form']['og_image_col_width'].';
 	}
