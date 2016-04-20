@@ -141,7 +141,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'skipping custom type id check: use_mod_opts argument is false' );
 
+			if ( empty( $type_id ) )
+				$is_md_type = false;
+			else $is_md_type = true;
+
 			if ( empty( $type_id ) ) {
+
 				if ( $mod['is_front'] )
 					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
 						( empty( $this->p->options['schema_type_for_home_page'] ) ?
@@ -208,7 +213,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod );
+			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod, $is_md_type );
 
 			if ( isset( $this->schema_types[$type_id] ) ) {
 				if ( $return_id ) {

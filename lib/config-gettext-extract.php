@@ -31,6 +31,7 @@ _x( '(no videos)', 'option value', 'wpsso' );
 _x( '(option disabled)', 'option value', 'wpsso' );
 _x( 'Ow.ly', 'option value', 'wpsso' );
 _x( 'Pro Licenses and Extension Plugins', 'lib file description', 'wpsso' );
+_x( 'Public Holidays', 'option value', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
 _x( 'Saturday', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );

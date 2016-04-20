@@ -64,8 +64,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1 ) ).
 				'<input type="checkbox"'.
-				( $disabled ? ' disabled="disabled"' :
-					' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
+				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
 				$checked.' title="default is '.
@@ -228,8 +227,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false ) {
-			return $this->get_select( $name, $values, $class, $id, $is_assoc, true );
+		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $selected = false ) {
+			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected );
 		}
 
 		public function get_no_select_country( $name, $class = '', $id = '', $selected = false ) {
@@ -297,7 +296,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			if ( ! empty( $len ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'text_'.$id );
-
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
@@ -308,7 +306,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_input( $name, $class = '', $id = '', $placeholder = '' ) {
+		public function get_input_date( $name = '', $class = '', $id = '', $min = '', $max = '', $disabled = false ) {
+			return '<input type="text" style="text-align:center;"'.
+				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
+				( empty( $class ) ? 'class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
+				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
+				( empty( $min ) ? '' : ' min="'.esc_attr( $min ).'"' ).
+				( empty( $max ) ? '' : ' min="'.esc_attr( $max ).'"' ).
+				' placeholder="yyyy-mm-dd">';
+		}
+
+		public function get_no_input_date() {
+			return $this->get_input_date( '', '', '', '', '', true );
+		}
+
+		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
 			if ( empty( $name ) ) 
 				return $this->get_no_input_value( '', $class, $id, $placeholder );
 			else return $this->get_hidden( $name ).

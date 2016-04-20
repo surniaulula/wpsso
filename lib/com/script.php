@@ -72,7 +72,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 						wp_enqueue_script( 'sucom-admin-media' );
 					}
 
-					wp_enqueue_script( 'jquery-qtip' );
+					wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );
 

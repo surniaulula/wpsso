@@ -432,6 +432,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ),
 					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.',
 						'wpsso' ),
+					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting the option to its default value.',
+						'wpsso' ),
+					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting the option to its default value.',
+						'wpsso' ),
 					'html' => __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.',
 						'wpsso' ),
 					'not_blank' => __( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.',
@@ -465,7 +469,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['url'], $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 							$val = $def_val;
 						}
 					}
@@ -512,7 +516,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'blank_num':
 					if ( $val !== '' ) {
 						if ( ! is_numeric( $val ) ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['blank_num'], $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 							$val = $def_val;
 						} else $val = (int) $val;	// cast as integer
 					}
@@ -521,7 +525,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// must be numeric
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['numeric'], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
 					} else $val = (int) $val;		// cast as integer
 					break;
@@ -530,7 +534,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['auth_id'], $val, $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ), true );
 						$val = $def_val;
 					} else $val = (string) $val;		// cast as string
 					break;
@@ -539,7 +543,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['api_key'], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+						$val = $def_val;
+					} else $val = (string) $val;		// cast as string
+					break;
+
+				case 'date':
+				case 'time':
+					$val = trim( $val );
+					$fmt = $option_type === 'date' ? '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/' : '/^[0-9]{2,2}:[0-9]{2,2}$/';
+					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
 					} else $val = (string) $val;		// cast as string
 					break;

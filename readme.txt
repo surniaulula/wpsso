@@ -351,6 +351,20 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
+**Version 3.29.6-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added the '$is_md_type' argument to the 'wpsso_schema_head_type' filter.
+	* Added support for a date form input field using jQuery's datepicker.
+
 **Version 3.29.5-1 (2016/04/15)**
 
 Official announcement: N/A

@@ -27,6 +27,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
+			wp_enqueue_style( 'jquery-ui.js',
+				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css', array(), '1.11.4' );
 			wp_register_style( 'jquery-qtip.js',
 				$url_path.'css/ext/jquery-qtip.min.css', array(), '2.2.1' );
 			wp_register_style( 'sucom-setting-pages',
@@ -49,6 +51,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for editing page' );
 
+					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
@@ -70,6 +73,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
 
+					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-setting-pages' );	// sidebar, buttons, etc.
 					wp_enqueue_style( 'sucom-table-setting' );
