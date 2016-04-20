@@ -351,7 +351,7 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
-**Version 3.29.6-dev1 (TBD)**
+**Version 3.29.6-1 (2016/04/21)**
 
 Official announcement: N/A
 
@@ -360,10 +360,11 @@ Official announcement: N/A
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed non-static home page detection for WebSite, Person, and Organization markup.
 * *Developer Notes*
 	* Added the '$is_md_type' argument to the 'wpsso_schema_head_type' filter.
 	* Added support for a date form input field using jQuery's datepicker.
+	* Refactored and renamed `SucomUtil::is_front_page()` to `SucomUtil::is_home_page()` to test for a static home page.
 
 **Version 3.29.5-1 (2016/04/15)**
 
@@ -448,26 +449,11 @@ Official announcement: N/A
 	* Changed `is_front_page()` to `$mod['is_front']` checks where possible, and `SucomUtil::is_front_page()` elsewhere.
 	* Changed the SucomUtil `get_post_object()`, `get_term_object()` and `get_user_object()` methods to static methods.
 
-**Version 3.28.5-1 (2016/03/31)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Updated the Google testing tool URL to remove the large and unnecessary header/footer.
-	* Allowed for missing second argument in the WpssoUtil `image_editor_save_pre_image_sizes()` filter to tolerate incorrect arguments from WordPress or other plugins.
-	* Added default image as fallback for posts in WpssoOpenGraph `get_the_media_info()`.
-* *Bugfixes*
-	* Fixed return of an image URL from the WpssoOpenGraph `get_the_media_info()` method.
-* *Developer Notes*
-	* Renamed the 'wpsso_meta_schema' filter to 'wpsso_schema_meta_itemprop'.
-	* Added two new filters for WPSSO Pro Update Manager v1.4.0-1:
-		* 'wpsso_readme_upgrade_notices'
-		* 'wpsso_newer_version_available'
-	* Adopted a new version numbering system: `{major}.{minor}.{bugfix}-{stage}{level}`
-
 == Upgrade Notice ==
+
+= 3.29.6-1 =
+
+(2016/04/21) Fixed non-static home page detection for WebSite, Person, and Organization markup. Added support for a date form input field using jQuery's datepicker.
 
 = 3.29.5-1 =
 
@@ -484,8 +470,4 @@ Official announcement: N/A
 = 3.29.1-1 =
 
 (2016/04/08) Added a new "Google Structured Data / Schema Markup" section in the Social Settings metabox. Changes to SucomWebpage caption, content, description, and title related methods.
-
-= 3.28.5-1 =
-
-(2016/03/31) Updated the Google testing tool URL to remove the large and unnecessary header/footer.
 
