@@ -683,7 +683,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// deprecated 2016/04/21
 		public static function is_front_page( $use_post = false ) {
-			self::is_home_page( $use_post );
+			return self::is_home_page( $use_post );
 		}
 
 		// returns true if using a static home page (with page or posts content)

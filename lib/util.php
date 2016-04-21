@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					break;
 
-				// options that cannot be blank
+				// options that cannot be blank (aka empty string)
 				case 'code':
 				case 'not_blank':
 					if ( $val === '' ) {
@@ -1047,6 +1047,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$mod['use_post'] = $use_post;
 			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
+
+			// deprecated 2016/04/21
+			$mod['is_front'] = $mod['is_home_page'];
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
