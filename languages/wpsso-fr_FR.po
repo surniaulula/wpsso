@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.3-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.29.6-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-04-20 19:24-0400\n"
-"PO-Revision-Date: 2016-04-20 19:24-0400\n"
+"PO-Revision-Date: 2016-04-21 07:23-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2434,11 +2434,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
-
-#~ msgctxt "lib file description"
-#~ msgid "<highlight>Setup Guide</highlight>"
-#~ msgstr "<highlight>Guide de Config</highlight>"
-
-#~ msgctxt "metabox title"
-#~ msgid "General Settings"
-#~ msgstr "Réglages Généraux"
