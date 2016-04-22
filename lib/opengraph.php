@@ -62,6 +62,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$prefix_ns = apply_filters( $this->p->cf['lca'].'_og_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
+				'article' => 'http://ogp.me/ns/article#',
 			) );
 
 			// find and extract an existing prefix attribute value

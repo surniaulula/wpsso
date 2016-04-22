@@ -178,8 +178,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
 					'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
-				'<td colspan="2" class="blank"><em>'.
-				__( 'The schema head attributes filter has been disabled by an extension plugin or a custom filter.',
+				'<td colspan="2"><em>'.__( 'head attributes filter disabled by extension plugin or custom filter',
 					'wpsso' ).'<em></td>';
 			}
 

@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.29.6-1',	// plugin version
+					'version' => '3.29.7-dev1',	// plugin version
 					'opt_version' => '420',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -883,9 +883,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'music:musician',
 					),
 					'place' => array(
-						'og:altitude',
-						'og:latitude',
-						'og:longitude',
 						'place:location:latitude',
 						'place:location:longitude',
 						'place:location:altitude',

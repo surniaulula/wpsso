@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Use Meta Property Containers',
 						'option label', 'wpsso' ), null, 'schema_add_noscript' ).
 					'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
-							' <em>'._x( 'disabled by extension plugin or custom filter',
+							' <em>'._x( 'option disabled by extension plugin or custom filter',
 								'option comment', 'wpsso' ).'</em>' :
 							$this->form->get_checkbox( 'schema_add_noscript' ) ).'</td>';
 

@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'schema item type is '.$head_type );
 
-			// include WebSite, Organization, and/or Person on the home page
+			// include WebSite, Organization, and/or Person on the home page (static or non-static)
 			if ( $mod['is_home'] )	// static or index page
 				$item_types = array(
 					'http://schema.org/WebSite' => $this->p->options['schema_website_json'],
@@ -336,7 +336,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				! isset( $item_types[$head_type] ) )
 					$item_types[$head_type] = true;
 
-			foreach ( $item_types as $item_type => $is_enabled ) {
+			foreach ( apply_filters( $lca.'_json_item_types', 
+				$item_types, $use_post, $mod ) as $item_type => $is_enabled ) {
 
 				$json_data = null;
 				$type_filter_name = SucomUtil::sanitize_hookname( $item_type );
@@ -359,16 +360,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// include WebSite, Organization, and/or Person on the home page
 				// if there isn't a hook for that filter (from WPSSO JSON, for example)
-				if ( $mod['is_home'] && 
-					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
-						! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
+				if ( $mod['is_home'] && method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
+					! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
 
 					if ( $is_enabled )
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 							$json_data, $use_post, $mod, $mt_og, $user_id,
 								$head_type, false );	// $is_main = false when called directly
 
-				// call http_schema_org_item_type as a generic / common data filter first
+				// add http_schema_org_item_type first as a generic / common data filter
 				} else foreach ( array( 'http_schema_org_item_type', $type_filter_name ) as $filter_name ) {
 
 					if ( has_filter( $lca.'_json_data_'.$filter_name ) ) {

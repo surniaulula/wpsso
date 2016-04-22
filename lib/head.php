@@ -314,9 +314,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_schema = $this->p->schema->get_meta_array( $use_post, $mod, $mt_og, $crawler_name );
 
 			/*
-			 * JSON-LD script array - execute before mergse to set some internal $mt_og meta tags
+			 * JSON-LD script array - execute before merge to set some internal $mt_og meta tags
 			 */
 			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id );
+
+			/*
+			 * Clean-up open graph meta tags
+			 */
+			$og_types =& $this->p->cf['head']['og_type_mt'];
+			foreach ( $og_types as $og_type => $mt_names ) {
+				if ( $og_type === $mt_og['og:type'] )
+					continue;
+				foreach ( $mt_names as $key ) {
+					if ( isset( $mt_og[$key] ) && ! isset( $og_types[$mt_og['og:type']][$key] ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'non-matching '.$mt_og['og:type'].' meta tag - unsetting '.$key );
+						unset( $og[$key] );
+					}
+				}
+			}
 
 			/*
 			 * Generator meta tags

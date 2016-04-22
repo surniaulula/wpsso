@@ -1097,23 +1097,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
 							else $url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
 						}
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'add page query url = '.$url );
 					}
 				}
 
 				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page );
 
 			} else {
-				if ( is_search() ) {
-					$url = get_search_link();
-
-				} elseif ( self::is_home_page() ) {	// static home page (have post ID)
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'home_url(/) = '.home_url( '/' ) );
-					$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
-
-				} elseif ( is_home() && 'page' === get_option( 'show_on_front' ) ) {
-					$url = get_permalink( get_option( 'page_for_posts' ) );
-
+				if ( is_home() ) {
+					if ( 'page' === get_option( 'show_on_front' ) ) {	// show_on_front = posts | page
+						$url = get_permalink( get_option( 'page_for_posts' ) );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'page for posts url = '.$url );
+					} else {
+						$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'home url = '.$url );
+					}
 				} elseif ( self::is_term_page() ) {
 					$term = self::get_term_object();
 					if ( ! empty( $term->term_id ) ) {
@@ -1125,6 +1126,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						} else $url = get_term_link( $term, $term->taxonomy );
 					} 
 					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'term url = '.$url );
 
 				} elseif ( self::is_user_page() ) {
 					$author = self::get_user_object();
@@ -1137,9 +1140,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						} else $url = get_author_posts_url( $author->ID );
 					}
 					$url = apply_filters( $this->p->cf['lca'].'_author_url', $url, $author );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'user / author url = '.$url );
+
+				} elseif ( is_search() ) {
+					$url = get_search_link();
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
 					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'post type archive url = '.$url );
 
 				} elseif ( is_archive() ) {
 					if ( is_date() ) {
@@ -1149,6 +1159,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$url = get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) );
 						elseif ( is_year() )
 							$url = get_year_link( get_query_var( 'year' ) );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'date archive url = '.$url );
 					}
 				}
 
@@ -1166,6 +1178,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$url = user_trailingslashit( trailingslashit( $url ).
 							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
 					}
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'add paged query url = '.$url );
 				}
 			}
 
@@ -1175,6 +1189,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|'.
 					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i',
 						'$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'server request url = '.$url );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page );

@@ -307,17 +307,33 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_input_date( $name = '', $class = '', $id = '', $min = '', $max = '', $disabled = false ) {
-			return '<input type="text" style="text-align:center;"'.
+
+			if ( empty( $name ) ) {
+				$value = '';
+				$disabled = true;
+			} else {
+				$value = $this->in_options( $name ) ?
+					$this->options[$name] : '';
+				if ( $this->in_options( $name.':is' ) && $this->options[$name.':is'] === 'disabled' )
+					$disabled = true;
+			}
+
+			return '<input type="text" '.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? ' class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
 				( empty( $min ) ? '' : ' min="'.esc_attr( $min ).'"' ).
 				( empty( $max ) ? '' : ' min="'.esc_attr( $max ).'"' ).
-				' placeholder="yyyy-mm-dd">';
+				' placeholder="yyyy-mm-dd" value="'.esc_attr( $value ).'" />';
 		}
 
-		public function get_no_input_date() {
-			return $this->get_input_date( '', '', '', '', '', true );
+		public function get_no_input_date( $name = '' ) {
+			return $this->get_input_date( $name, '', '', '', '', true );
+		}
+
+		public function get_no_input_date_options( $name, &$opts ) {
+			$value = isset( $opts[$name] ) ? $opts[$name] : '';
+			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
 		}
 
 		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
