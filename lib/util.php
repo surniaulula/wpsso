@@ -1222,8 +1222,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $url;
 		}
 
-		public function is_uniq_url( $url = '', $context = 'default' ) {
+		public function clear_uniq_urls( $context = 'default' ) {
+			$cleared = isset( $this->uniq_urls[$context] ) ?
+				count( $this->uniq_urls[$context] ) : 0;
+			$this->uniq_urls[$context] = array();
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'cleared uniq url cache for context '.$context ); 
+			return $cleared;
+		}
 
+		public function is_dupe_url( $url, $context = 'default' ) {
+			return $this->is_uniq_url( $url, $context ) ? false : true;
+		}
+
+		public function is_uniq_url( $url, $context = 'default' ) {
 			if ( empty( $url ) ) 
 				return false;
 
@@ -1233,14 +1245,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $this->p->debug->enabled && 
 				strpos( $url, '://' ) === false )
-					$this->p->debug->log( 'incomplete url given for context ('.$context.'): '.$url );
+					$this->p->debug->log( 'incomplete url given for context '.$context.': '.$url );
 
 			if ( ! isset( $this->uniq_urls[$context][$url] ) ) {
 				$this->uniq_urls[$context][$url] = 1;
 				return true;
 			} else {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'duplicate url rejected for context ('.$context.'): '.$url ); 
+					$this->p->debug->log( 'duplicate url rejected for context '.$context.': '.$url ); 
 				return false;
 			}
 		}

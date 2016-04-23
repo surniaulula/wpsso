@@ -302,8 +302,9 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
-			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value true/false
+			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
 
 			if ( $aop && ! empty( $mod['obj'] ) ) {
 				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
@@ -399,6 +400,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$this->p->util->clear_uniq_urls( $size_name );	// clear cache for $size_name context
 			$force_regen = false;
 
 			if ( $mod['is_post'] ) {

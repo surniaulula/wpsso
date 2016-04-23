@@ -765,8 +765,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 							break;
 					}
-					if ( ! empty( $og_image['og:image'] ) && ( $check_dupes === false || 
-						$this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) )
+					if ( ! empty( $og_image['og:image'] ) && 
+						( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) )
 							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) )
 								return $og_ret;
 				}
@@ -790,8 +790,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$embed_url = empty( $this->p->options['og_def_vid_url'] ) ?
 				'' : $this->p->options['og_def_vid_url'];
 
-			if ( ! empty( $embed_url ) && ( $check_dupes == false || 
-				$this->p->util->is_uniq_url( $embed_url ) ) ) {
+			if ( ! empty( $embed_url ) && 
+				( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {	// $context = 'video'
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using default video url = '.$embed_url );
@@ -850,8 +850,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '<'.$media[1].'/> html tag found = '.$media[2] );
 					$embed_url = $media[2];
-					if ( ! empty( $embed_url ) && ( $check_dupes == false || 
-						$this->p->util->is_uniq_url( $embed_url ) ) ) {
+					if ( ! empty( $embed_url ) && 
+						( $check_dupes == false || 
+							$this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {	// $context = 'video'
 
 						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', 
 							$media[0], $match) ? $match[1] : -1;
@@ -879,10 +880,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( count( $match_all ).' x videos returned by '.$filter_name.' filter' );
 						foreach ( $match_all as $media ) {
-							if ( ! empty( $media[0] ) && ( $check_dupes == false || 
-								$this->p->util->is_uniq_url( $media[0] ) ) ) {
+							if ( ! empty( $media[0] ) && 
+								( $check_dupes == false || 
+									$this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {	// $context = 'video'
 
-								// 
 								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
 								if ( ! empty( $og_video ) && 
 									$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
@@ -923,7 +924,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$media_url = SucomUtil::get_mt_media_url( $prefix, $og_video );
 				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
-				if ( ! $media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url ) ) ) {
+				if ( ! $media_url || 
+					( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v )
 						unset ( $og_video[$k] );
 				} elseif ( $prefix === 'og:image' ) {
@@ -935,7 +937,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// fallback to the original url
 			if ( ! $have_media['og:video'] && $fallback ) {
-				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url ) ) {
+				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) {	// $context = 'video'
 					$og_video['og:video:url'] = $embed_url;
 					$have_media['og:video'] = true;
 				}

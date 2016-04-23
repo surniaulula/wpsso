@@ -569,9 +569,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'og:video:url':
 						case 'og:video:secure_url':
 						case 'og:video:embed_url':
+						case 'place:business:menu_url':
 						case 'twitter:image':
 						case 'twitter:player':
 						case 'canonical':
+						case 'menu':
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
 							break;

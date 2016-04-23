@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			list( $mt_og['schema:type:context'], $mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'schema item type is '.$head_type );
+				$this->p->debug->log( 'head_type: '.$head_type );
 
 			// include WebSite, Organization, and/or Person on the home page (static or non-static)
 			if ( $mod['is_home'] )	// static or index page
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $head_type ) && 
 				! isset( $item_types[$head_type] ) )
-					$item_types[$head_type] = true;
+					$item_types[$head_type] = true;	// add head type if not already defined
 
 			foreach ( apply_filters( $lca.'_json_item_types', 
 				$item_types, $use_post, $mod ) as $item_type => $is_enabled ) {
@@ -358,15 +358,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$is_main = apply_filters( $lca.'_json_is_main_entity', 
 					$is_main, $use_post, $mod, $mt_og, $user_id, $head_type );
 
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'is_main: '.( $is_main ? 'true' : 'false' ) );
+
 				// include WebSite, Organization, and/or Person on the home page
 				// if there isn't a hook for that filter (from WPSSO JSON, for example)
-				if ( $mod['is_home'] && method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
-					! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
+				if ( $mod['is_home'] && 
+					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) && 
+						! has_filter( $lca.'_json_data_'.$type_filter_name ) ) {
 
-					if ( $is_enabled )
+					if ( $is_enabled ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'calling class method '.$type_filter_name );
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 							$json_data, $use_post, $mod, $mt_og, $user_id,
-								$head_type, false );	// $is_main = false when called directly
+								$head_type, false );	// $is_main = always false when called directly
+					}
 
 				// add http_schema_org_item_type first as a generic / common data filter
 				} else foreach ( array( 'http_schema_org_item_type', $type_filter_name ) as $filter_name ) {
@@ -624,7 +631,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );
+			$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );	// $check_dupes = false
 
 			if ( ! empty( $og_image ) )
 				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) );
@@ -788,10 +795,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $og_image as $image )
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( $ret );
-
-			return $ret;
+			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $use_post, $mod, $mt_og );
 		}
 
 		public function is_noscript_enabled() {
