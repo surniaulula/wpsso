@@ -356,14 +356,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 
-			// admin url will redirect to essential settings since we're not on a settings page here
-			$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-				'-action=clear_all_cache' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
-
-			$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
-				sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
-					'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
-						_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
+			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
+				// admin url will redirect to essential settings since we're not on a settings page here
+				$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
+					'-action=clear_all_cache' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
+	
+				$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
+					sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
+						'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
+							_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
+			} else {
+				$this->p->notice->inf( __( 'Plugin settings have been saved.', 'wpsso' ), true );
+				$this->p->util->clear_all_cache( true, true );	// $clear_ext_cache = true, $run_only_once = true
+			}
 
 			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
 			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
@@ -946,12 +951,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$td_class = empty( $arr['td_class'] ) ?
 						'' : ' '.$arr['td_class'];
 
-					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$label, 
-						array( 'text' => ( empty( $arr['tooltip'] ) ? '' : $arr['tooltip'] ),
-							'class' => 'sucom_tooltip_side' ) );
+					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$label, array(
+						'text' => ( empty( $arr['tooltip'] ) ? '' : $arr['tooltip'] ),
+						'class' => 'sucom_tooltip_side',
+					) );
+
+					$label_text = empty( $arr['label'] ) ? $label : $arr['label'];
 
 					echo '<tr><td class="side'.$td_class.'">'.$tooltip_text.
-					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">'.$label.'</a>' : $label ).
+					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">'.$label_text.'</a>' : $label_text ).
 					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">'.
 					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
 					'<img src="'.WPSSO_URLPATH.'images/'.

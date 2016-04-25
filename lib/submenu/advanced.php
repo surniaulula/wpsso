@@ -48,12 +48,12 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'cache' => _x( 'File and Object Cache', 'metabox tab', 'wpsso' ),
 				'apikeys' => _x( 'Service API Keys', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
 		public function show_metabox_contact_fields() {
@@ -62,16 +62,16 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'custom' => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
 				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
 			) );
-			$rows = array();
+			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
 			$this->p->util->do_table_rows( 
 				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
 				'metabox-'.$metabox.'-info'
 			);
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $rows );
+			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
 		public function show_metabox_taglist() {
@@ -87,28 +87,32 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		}
 
 		protected function get_table_rows( $metabox, $key ) {
-			$rows = array();
+			$table_rows = array();
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
+					$table_rows['plugin_clear_on_save'] = $this->form->get_th_html( _x( 'Clear All Cache(s) on Save Settings',
+						'option label', 'wpsso' ), null, 'plugin_clear_on_save' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_clear_on_save' ).'</td>';
+
+					$table_rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
 						'option label', 'wpsso' ), null, 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';
 
-					$rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages', 
+					$table_rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages', 
 						'option label', 'wpsso' ), null, 'plugin_debug' ).
 					'<td>'.( SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? 
 						$this->form->get_no_checkbox( 'plugin_debug' ).' <em>WPSSO_HTML_DEBUG constant is true</em>' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
-					$rows['plugin_show_opts'] = $this->form->get_th_html( _x( 'Options to Show by Default',
+					$table_rows['plugin_show_opts'] = $this->form->get_th_html( _x( 'Options to Show by Default',
 						'option label', 'wpsso' ), null, 'plugin_show_opts' ).
 					'<td>'.$this->form->get_select( 'plugin_show_opts', 
 						$this->p->cf['form']['show_options'] ).'</td>';
 
 					break;
 			}
-			return $rows;
+			return $table_rows;
 		}
 	}
 }

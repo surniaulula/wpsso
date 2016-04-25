@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.29.7-dev2',	// plugin version
-					'opt_version' => '422',		// increment when changing default options
+					'version' => '3.29.7-dev3',	// plugin version
+					'opt_version' => '423',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -539,8 +539,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
+					'plugin_debug' => 0,				// Add Hidden Debug Messages
+					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					// Content and Filters Tab
 					'plugin_filter_title' => 0,
@@ -949,18 +950,71 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'schema_type' => array(
-					'article' => 'http://schema.org/Article',
-					'article.news' => 'http://schema.org/NewsArticle',
-					'article.tech' => 'http://schema.org/TechArticle',
+					'article' => array( 
+						'article' => 'http://schema.org/Article',
+						'article.news' => 'http://schema.org/NewsArticle',
+						'article.tech' => 'http://schema.org/TechArticle',
+						'article.scholarly' => 'http://schema.org/ScholarlyArticle',
+						'report' => 'http://schema.org/Report',
+						'social.media.posting' => 'http://schema.org/SocialMediaPosting',
+					),
 					'book' => 'http://schema.org/Book',
 					'blog' => 'http://schema.org/Blog',
 					'blog.posting' => 'http://schema.org/BlogPosting',
 					'event' => 'http://schema.org/Event',
-					'local.business' => 'http://schema.org/LocalBusiness',
 					'organization' => 'http://schema.org/Organization',
 					'other' => 'http://schema.org/Other',
 					'person' => 'http://schema.org/Person',
-					'place' => 'http://schema.org/Place',
+					'place' => array(
+						'administrative.area' => 'http://schema.org/AdministrativeArea',
+						'civic.structure' => 'http://schema.org/CivicStructure',
+						'landform' => 'http://schema.org/Landform',
+						'landmarks.or.historical.buildings' => 'http://schema.org/LandmarksOrHistoricalBuildings',
+						'local.business' => array( 
+							'animal.shelter' => 'http://schema.org/AnimalShelter',
+							'automotive.business' => 'http://schema.org/AutomotiveBusiness',
+							'child.care' => 'http://schema.org/ChildCare',
+							'dry.cleaning.or.laundry' => 'http://schema.org/DryCleaningOrLaundry',
+							'emergency.service' => 'http://schema.org/EmergencyService',
+							'employement.agency' => 'http://schema.org/EmploymentAgency',
+							'entertainment.business' => 'http://schema.org/EntertainmentBusiness',
+							'financial.service' => 'http://schema.org/FinancialService',
+							'food.establishment' => array( 
+								'bakery' => 'http://schema.org/Bakery',
+								'bar.or.pub' => 'http://schema.org/BarOrPub',
+								'brewery' => 'http://schema.org/Brewery',
+								'cafe.or.coffee.shop' => 'http://schema.org/CafeOrCoffeeShop',
+								'fast.food.restaurant' => 'http://schema.org/FastFoodRestaurant',
+								'food.establishment' => 'http://schema.org/FoodEstablishment',
+								'ice.cream.shop' => 'http://schema.org/IceCreamShop',
+								'restaurant' => 'http://schema.org/Restaurant',
+								'winery' => 'http://schema.org/Winery',
+							),
+							'government.office' => 'http://schema.org/GovernmentOffice',
+							'health.and.beauty.business' => 'http://schema.org/HealthAndBeautyBusiness',
+							'home.and.construction.business' => 'http://schema.org/HomeAndConstructionBusiness',
+							'internet.cafe' => 'http://schema.org/InternetCafe',
+							'legal.service' => 'http://schema.org/LegalService',
+							'library' => 'http://schema.org/Library',
+							'local.business' => 'http://schema.org/LocalBusiness',
+							'lodging.business' => 'http://schema.org/LodgingBusiness',
+							'medical.organization' => 'http://schema.org/MedicalOrganization',
+							'professional.service' => 'http://schema.org/ProfessionalService',
+							'radio.station' => 'http://schema.org/RadioStation',
+							'real.estate.agent' => 'http://schema.org/RealEstateAgent',
+							'recycling.center' => 'http://schema.org/RecyclingCenter',
+							'self.storage' => 'http://schema.org/SelfStorage',
+							'shopping.center' => 'http://schema.org/ShoppingCenter',
+							'sports.activity.location' => 'http://schema.org/SportsActivityLocation',
+							'store' => 'http://schema.org/Store',
+							'television.station' => 'http://schema.org/TelevisionStation',
+							'tourist.information.center' => 'http://schema.org/TouristInformationCenter',
+							'travel.agency' => 'http://schema.org/TravelAgency',
+						),
+						'place' => 'http://schema.org/Place',
+						'residence' => 'http://schema.org/Residence',
+						'tourist.attraction' => 'http://schema.org/TouristAttraction',
+					),
 					'product' => 'http://schema.org/Product',
 					'recipe' => 'http://schema.org/Recipe',
 					'review' => 'http://schema.org/Review',

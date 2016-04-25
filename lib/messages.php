@@ -337,14 +337,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Plugin Settings' settings
 						 */
-						case 'tooltip-plugin_debug':
+						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
+							$text = 'Check this option if you would like to preserve all '.$info['short'].' settings when you <em>uninstall</em> the plugin (default is unchecked).';
+							break;
+						case 'tooltip-plugin_debug':	// Add Hidden Debug Messages
 							$text = 'Add hidden debug messages to the HTML of webpages (default is unchecked).';
 							break;
-						case 'tooltip-plugin_show_opts':
-							$text = 'Select the default number of options to display on the '.$info['short'].' settings pages by default. The basic view shows only the essential options that are most commonly used.';
+						case 'tooltip-plugin_clear_on_save':	// Clear All Cache(s) on Save Settings
+							$text = 'Automatically clear all cache(s) when saving the plugin settings (default is checked).';
 							break;
-						case 'tooltip-plugin_preserve':
-							$text = 'Check this option if you would like to preserve all '.$info['short'].' settings when you <em>uninstall</em> the plugin (default is unchecked).';
+						case 'tooltip-plugin_show_opts':	// Options to Show by Default
+							$text = 'Select the default number of options to display on the '.$info['short'].' settings pages by default. The basic view shows only the essential options that are most commonly used.';
 							break;
 						/*
 						 * 'Content and Filters' settings

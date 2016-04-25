@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			'%%short_url%%',
 		);
 		protected $inline_vals = array();
-
-		protected $sanitize_error_msgs = null;	// translated error messages for sanitize_option_value()
+		protected $sanitize_error_msgs = null;		// translated error messages for sanitize_option_value()
+		protected $cleared_all_cache = false;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				/*
 				 * example:
-				 * 	'json_data_http_schema_org_item_type' => 8
+				 * 	'json_data_http_schema_org_website' => 8
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
@@ -254,39 +254,46 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache( $ext_cache = true ) {
+		public function clear_all_cache( $clear_ext_cache = true, $run_only_once = false ) {
+
+			if ( $this->cleared_all_cache )
+				return;
+
+			if ( $run_only_once )
+				$this->cleared_all_cache = true;
+
 			wp_cache_flush();					// clear non-database transients as well
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
 			$del_files = $this->delete_expired_file_cache( true );
 			$del_transients = $this->delete_expired_db_transients( true );
+			$ext_cache_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
+			$clear_all_msg = sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
+				'wpsso' ), $short );
 
-			$this->p->notice->inf( sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
-				'wpsso' ), $short ), true );
-
-			if ( $ext_cache ) {
-				$other_cache_msg = __( '%s has been cleared as well.', 'wpsso' );
-
+			if ( $clear_ext_cache ) {
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
-					$this->p->notice->inf( sprintf( $other_cache_msg, 'W3 Total Cache' ), true );
+					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'W3 Total Cache' );
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 					wp_cache_clear_cache();
-					$this->p->notice->inf( sprintf( $other_cache_msg, 'WP Super Cache' ), true );
+					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'WP Super Cache' );
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
 					$GLOBALS['comet_cache']->wipe_cache();
-					$this->p->notice->inf( sprintf( $other_cache_msg, 'Comet Cache' ), true );
+					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'Comet Cache' );
 				} elseif ( isset( $GLOBALS['zencache'] ) ) {		// zencache
 					$GLOBALS['zencache']->wipe_cache();
-					$this->p->notice->inf( sprintf( $other_cache_msg, 'ZenCache' ), true );
+					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'ZenCache' );
 				}
 			}
+
+			$this->p->notice->inf( $clear_all_msg, true );
 
 			return $del_files + $del_transients;
 		}

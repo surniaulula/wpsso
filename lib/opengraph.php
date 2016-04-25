@@ -209,22 +209,15 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
 					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
-
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
 						foreach ( $og['og:video'] as $num => $og_video ) {
-
-							if ( SucomUtil::get_mt_media_url( 'og:image', $og_video ) ) {
+							if ( isset( $og_video['og:video:type'] ) && 
+								$og_video['og:video:type'] !== 'text/html' &&
+									SucomUtil::get_mt_media_url( 'og:image', $og_video ) ) {
+								$prev_count++;
 								$og['og:video'][$num]['og:video:has_image'] = true;
-
-								// prevent duplicates - ignore images from text/html video
-								if ( isset( $og_video['og:video:type'] ) &&
-									$og_video['og:video:type'] === 'text/html' )
-										continue;
-								else $prev_count++;
-
 							} else $og['og:video'][$num]['og:video:has_image'] = false;
 						}
-
 						if ( $prev_count > 0 ) {
 							$max['og_img_max'] -= $prev_count;
 							if ( $this->p->debug->enabled )

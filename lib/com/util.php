@@ -546,6 +546,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $merged;
 		}
 
+		public static function array_flatten( array $array ) {
+			$return = array();
+		        foreach ( $array as $key => $value ) {
+				if ( is_array( $value ) )
+					$return = array_merge( $return, self::array_flatten( $value ) );
+				else $return[$key] = $value;
+			} 
+			return $return;
+		}
+
+		// must be an associative array
+		public static function array_parents( array $array, $parent_key = '', $gparent_key = '' ) {
+			$return = array();
+		        foreach ( $array as $child_key => $value ) {
+				if ( is_array( $value ) )
+					$return += self::array_parents( $value, $child_key, $parent_key );
+				elseif ( $parent_key && $child_key !== $parent_key )
+					$return[$value] = $parent_key;
+				elseif ( $gparent_key && $child_key === $parent_key )
+					$return[$value] = $gparent_key;
+			} 
+			return $return;
+		}
+
+		public static function has_array_element( $needle, array $array, $strict = false ) {
+			foreach ( $array as $key => $element )
+				if ( ( $strict ? $element === $needle : $element == $needle ) ||
+					( is_array( $element ) && self::has_array_element( $needle, $element, $strict ) ) )
+						return true;
+			return false;
+		}
+
 		// return the preferred URL (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( $prefix, &$arr ) {
 			foreach ( array( ':secure_url', ':url', '' ) as $suffix )
