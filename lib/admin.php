@@ -852,7 +852,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
-						echo '<tr><td><h4>'.$this->p->cf['plugin'][$ext]['short'].'</h4></td></tr>';
+						echo '<tr><td colspan="3"><h4>'.$info['short'].'</h4></td></tr>';
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
@@ -906,7 +906,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
-						echo '<tr><td><h4>'.$this->p->cf['plugin'][$ext]['short'].'</h4></td></tr>';
+						echo '<tr><td colspan="3"><h4>'.$info['short'].' Pro</h4></td></tr>';
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
@@ -958,9 +958,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$label_text = empty( $arr['label'] ) ? $label : $arr['label'];
 
-					echo '<tr><td class="side'.$td_class.'">'.$tooltip_text.
-					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">'.$label_text.'</a>' : $label_text ).
-					'</td><td style="min-width:0;text-align:center;" class="'.$td_class.'">'.
+					echo '<tr><td class="side">'.$tooltip_text.'</td>'.
+					'<td class="side'.$td_class.'">'.$label_text.'</td>'.
+					'<td class="side">'.
 					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
 					'<img src="'.WPSSO_URLPATH.'images/'.
 						$status_info[$status_key]['img'].'" width="12" height="12" title="'.

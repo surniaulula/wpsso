@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// get the full schema type url from the array key
-		public function get_item_type_value( $type_id, $default_id = false ) {
+		public function get_item_type_url( $type_id, $default_id = false ) {
 			$schema_types =& $this->get_schema_types( true );
 			if ( isset( $schema_types[$type_id] ) )
 				return $schema_types[$type_id];
@@ -290,19 +290,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 			if ( ! is_array( $schema_types ) )
 				$schema_types =& $this->get_schema_types( true );
-			else {
-				$schema_types = SucomUtil::array_flatten( $schema_types );
-				natsort( $schema_types );
-			}
+			else $schema_types = SucomUtil::array_flatten( $schema_types );
 
-			if ( $add_none )
-				$select = array( 'none' => '[None]' );
-			else $select = array();
+			$select = array();
 
 			foreach ( $schema_types as $type_id => $label ) {
 				$label = preg_replace( '/^.*:\/\//', '', $label );	// remove the protocol
-				$select[$type_id] = $type_id.' ('.$label.')';
+				$select[$type_id] = $label.' ('.$type_id.')';
 			}
+
+			if ( defined( 'SORT_NATURAL' ) )
+				asort( $select, SORT_NATURAL );
+			else asort( $select );
+
+			if ( $add_none )
+				$select = array_merge( array( 'none' => '[None]' ), $select );
+
 			return $select;
 		}
 
@@ -322,7 +325,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $return;
 		}
 
-		// $item_type examples: http_schema_org_webpage or http://schema.org/WebPage
 		public function has_json_data_filter( array &$mod, $item_type = '' ) {
 			$filter_name = $this->get_json_data_filter( $mod, $item_type );
 			return ! empty( $filter_name ) && 
@@ -352,7 +354,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$mt_og['schema:type:id'] = $this->get_head_item_type( $mod, true );	// return the type id
 
 			// example: http://schema.org/TechArticle
-			$mt_og['schema:type:url'] = $head_type = $this->get_item_type_value( $mt_og['schema:type:id'] );
+			$mt_og['schema:type:url'] = $head_type = $this->get_item_type_url( $mt_og['schema:type:id'] );
 
 			// example: http://schema.org, TechArticle
 			list( $mt_og['schema:type:context'], $mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type );
