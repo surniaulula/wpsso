@@ -906,7 +906,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
-						echo '<tr><td colspan="3"><h4>'.$info['short'].' Pro</h4></td></tr>';
+						echo '<tr><td colspan="3"><h4>'.$info['short'].'</h4></td></tr>';
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
