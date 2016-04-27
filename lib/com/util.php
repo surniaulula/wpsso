@@ -556,16 +556,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $return;
 		}
 
-		// must be an associative array
-		public static function array_parents( array $array, $parent_key = '', $gparent_key = '' ) {
+		// array must use unique associative / string keys
+		public static function array_parents_index( array $array, $parent_key = '', $gparent_key = '' ) {
 			$return = array();
 		        foreach ( $array as $child_key => $value ) {
 				if ( is_array( $value ) )
-					$return += self::array_parents( $value, $child_key, $parent_key );
+					$return += self::array_parents_index( $value, $child_key, $parent_key );
 				elseif ( $parent_key && $child_key !== $parent_key )
-					$return[$value] = $parent_key;
+					$return[$child_key] = $parent_key;
 				elseif ( $gparent_key && $child_key === $parent_key )
-					$return[$value] = $gparent_key;
+					$return[$child_key] = $gparent_key;
 			} 
 			return $return;
 		}
