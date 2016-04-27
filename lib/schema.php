@@ -397,7 +397,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $type_ids as $top_type_id => $is_enabled ) {
 
-error_log( $top_type_id.' has '.$this->count_schema_type_children( $top_type_id ).' children' );
 				$json_data = null;
 				$top_type_url = $this->get_schema_type_url( $top_type_id );
 				$top_filter_name = SucomUtil::sanitize_hookname( $top_type_url );
@@ -439,10 +438,8 @@ error_log( $top_type_id.' has '.$this->count_schema_type_children( $top_type_id 
 					$parent_urls = array( 'http://schema.org' );
 
 					// returns an array of type ids with gparents, parents, child (in that order)
-					foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id ) {
-error_log( $rel_type_id.' has '.$this->count_schema_type_children( $rel_type_id ).' children' );
+					foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
 						$parent_urls[] = $this->get_schema_type_url( $rel_type_id );
-					}
 
 					foreach ( $parent_urls as $rel_type_url ) {
 						$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
