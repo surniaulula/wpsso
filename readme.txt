@@ -351,7 +351,7 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
-**Version 3.29.7-rc1 (2016/04/26)**
+**Version 3.29.7-1 (2016/04/27)**
 
 Official announcement: N/A
 
@@ -469,9 +469,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.29.7-rc1 =
+= 3.29.7-1 =
 
-(2016/04/26) Added a new "Clear All Cache(s) on Save Settings" option. Included additional Schema Place and LocalBusiness types. Added a 'video' context to improve duplicate video detection.
+(2016/04/27) Added a new "Clear All Cache(s) on Save Settings" option. Included additional Schema Place and LocalBusiness types. Added a 'video' context to improve duplicate video detection.
 
 = 3.29.6-1 =
 
