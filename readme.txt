@@ -95,7 +95,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional (and optional) Free extension plugins:
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
-	* [WPSSO Place and Location Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
+	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
 	* [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
@@ -143,7 +143,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* YouTube Videos and Playlists
 * Additional (and optional) Free or Pro extension plugins:
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
-	* [WPSSO Place and Location Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
+	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
 	* [WPSSO Schema JSON-LD](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)

@@ -107,7 +107,7 @@
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Free version)</li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Location Meta</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)</li>
@@ -170,7 +170,7 @@
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place and Location Meta</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
