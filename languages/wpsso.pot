@@ -628,8 +628,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:53
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide FB / Open Graph \"Location\", Pinterest \"Place\" "
-"and Google / Schema \"Local Business\" meta tags."
+"WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
+"and Google / Schema Local Business meta tags."
 msgstr ""
 
 #: lib/config-gettext-extract.php:54

@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoplm' => array(
 					'short' => 'WPSSO PLM',		// short plugin name
 					'name' => 'WPSSO Place / Location and Local Business Meta (WPSSO PLM)',
-					'desc' => 'WPSSO extension to provide FB / Open Graph "Location", Pinterest "Place" and Google / Schema "Local Business" meta tags.',
+					'desc' => 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, and Google / Schema Local Business meta tags.',
 					'slug' => 'wpsso-plm',
 					'base' => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',
