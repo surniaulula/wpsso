@@ -233,7 +233,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Examples =
 
-* Example meta tags from WPSSO with the [WPSSO JSON Pro](http://wpsso.com/extend/plugins/wpsso-schema-json-ld/) extension for Schema JSON-LD markup.
+* Example meta tags from WPSSO Pro for an Open Graph article, including the [WPSSO JSON Pro](http://wpsso.com/extend/plugins/wpsso-schema-json-ld/) extension for schema.org/TechArticle JSON-LD markup.
 
 `
 <link rel="author" href="https://plus.google.com/+JSMorisset"/>
