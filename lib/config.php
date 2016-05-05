@@ -1027,6 +1027,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'department.store' => 'http://schema.org/DepartmentStore',
 								'electronics.store' => 'http://schema.org/ElectronicsStore',
 								'florist' => 'http://schema.org/Florist',
+								'flower.shop' => 'http://schema.org/Florist',
 								'furniture.store' => 'http://schema.org/FurnitureStore',
 								'garden.store' => 'http://schema.org/GardenStore',
 								'grocery.store' => 'http://schema.org/GroceryStore',
