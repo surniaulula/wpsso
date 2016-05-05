@@ -3,7 +3,7 @@
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
-_x( 'Bit.ly (suggested)', 'option value', 'wpsso' );
+_x( 'Bitly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( '<color>Plugin Setup Guide and Notes</color>', 'lib file description', 'wpsso' );
@@ -17,7 +17,7 @@ _x( 'Footer', 'option value', 'wpsso' );
 _x( 'Force this value', 'option value', 'wpsso' );
 _x( 'Friday', 'option value', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
-_x( 'Goo.gl', 'option value', 'wpsso' );
+_x( 'Google', 'option value', 'wpsso' );
 _x( 'Header', 'option value', 'wpsso' );
 _x( 'If value is empty', 'option value', 'wpsso' );
 _x( 'Left', 'option value', 'wpsso' );
@@ -38,7 +38,7 @@ _x( '(settings value)', 'option value', 'wpsso' );
 _x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' );
 _x( 'Sunday', 'option value', 'wpsso' );
 _x( 'Thursday', 'option value', 'wpsso' );
-_x( 'TinyURL (slow)', 'option value', 'wpsso' );
+_x( 'TinyURL', 'option value', 'wpsso' );
 _x( 'Title and Excerpt', 'option value', 'wpsso' );
 _x( 'Title Only', 'option value', 'wpsso' );
 _x( 'Top', 'option value', 'wpsso' );
@@ -53,5 +53,6 @@ _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta ta
 _x( 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, and Google / Schema Local Business meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
+_x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your Social Settings', 'lib file description', 'wpsso' );
 ?>

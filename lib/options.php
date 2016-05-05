@@ -411,6 +411,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_url':
 				case 'og_vid_url':
 				case 'rp_img_url':
+				case 'plugin_yourls_api_url':
 					return 'url';
 					break;
 				// must be numeric (blank and zero are ok)
@@ -480,6 +481,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_p_cap_prefix':
 				case 'plugin_cf_vid_url':
 				case 'plugin_bitly_login':
+				case 'plugin_yourls_username':
+				case 'plugin_yourls_password':
+				case 'plugin_yourls_token':
 				case ( strpos( $key, '_filter_name' ) === false ? false : true ):
 					return 'one_line';
 					break;

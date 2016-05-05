@@ -279,18 +279,21 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td nowrap class="blank">'.$this->p->options['plugin_min_shorten'].' '.
 				_x( 'characters', 'option comment', 'wpsso' ).'</td>';
 
-			$table_rows['plugin_bitly_login'] = $form->get_th_html( _x( 'Bit.ly Username',
+			$table_rows['subsection_plugin_bitly'] = '<tr class="hide_in_basic">'.
+				'<td></td><td class="subsection"><h4>'.
+				_x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+
+			$table_rows['plugin_bitly_login'] = $form->get_th_html( _x( 'Bitly Username',
 				'option label', 'wpsso' ), null, 'plugin_bitly_login' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_login'].'</td>';
 
-			$table_rows['plugin_bitly_api_key'] = $form->get_th_html( _x( 'Bit.ly API Key',
+			$table_rows['plugin_bitly_api_key'] = $form->get_th_html( _x( 'Bitly API Key',
 				'option label', 'wpsso' ), null, 'plugin_bitly_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].'</td>';
 
-			$table_rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Ow.ly API Key',
-				'option label', 'wpsso' ), null, 'plugin_owly_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
+			$table_rows['subsection_plugin_google'] = '<tr class="hide_in_basic">'.
+				'<td></td><td class="subsection"><h4>'.
+				_x( 'Google APIs', 'metabox title', 'wpsso' ).'</h4></td>';
 
 			$table_rows['plugin_google_api_key'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Google Project App BrowserKey',
@@ -302,6 +305,44 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_google_shorten' ).
 			'<td class="blank">'._x( $this->p->cf['form']['yes_no'][$this->p->options['plugin_google_shorten']],
 				'option value', 'wpsso' ).'</td>';
+
+			$table_rows['subsection_plugin_owly'] = '<tr class="hide_in_basic">'.
+				'<td></td><td class="subsection"><h4>'.
+				_x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+
+			$table_rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Ow.ly API Key',
+				'option label', 'wpsso' ), null, 'plugin_owly_api_key' ).
+			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
+
+			$table_rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Ow.ly API Key',
+				'option label', 'wpsso' ), null, 'plugin_owly_api_key' ).
+			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
+
+			$table_rows['subsection_plugin_yourls'] = '<tr class="hide_in_basic">'.
+				'<td></td><td class="subsection"><h4>'.
+				_x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ).'</h4></td>';
+
+			$table_rows['plugin_yourls_api_url'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'YOURLS API URL',
+				'option label', 'wpsso' ), null, 'plugin_yourls_api_url' ).
+			'<td class="blank mono">'.$this->p->options['plugin_yourls_api_url'].'</td>';
+
+			$table_rows['plugin_yourls_username'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'YOURLS Username',
+				'option label', 'wpsso' ), null, 'plugin_yourls_username' ).
+			'<td class="blank mono">'.$this->p->options['plugin_yourls_username'].'</td>';
+
+			$table_rows['plugin_yourls_password'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'YOURLS Password',
+				'option label', 'wpsso' ), null, 'plugin_yourls_password' ).
+			'<td class="blank mono">'.$this->p->options['plugin_yourls_password'].'</td>';
+
+			$table_rows['plugin_yourls_token'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'YOURLS Token',
+				'option label', 'wpsso' ), null, 'plugin_yourls_token' ).
+			'<td class="blank mono">'.$this->p->options['plugin_yourls_token'].'</td>';
 
 			return $table_rows;
 		}

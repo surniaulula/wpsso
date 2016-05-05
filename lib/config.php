@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.29.7-1',	// plugin version
+					'version' => '3.30.0-dev1',	// plugin version
 					'opt_version' => '423',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -597,9 +597,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_min_shorten' => 22,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_api_key' => '',
-					'plugin_owly_api_key' => '',
 					'plugin_google_api_key' => '',
 					'plugin_google_shorten' => 0,
+					'plugin_owly_api_key' => '',
+					'plugin_yourls_api_url' => '',
+					'plugin_yourls_username' => '',
+					'plugin_yourls_password' => '',
+					'plugin_yourls_token' => '',
 					// Contact Field Names and Labels
 					'plugin_cm_fb_name' => 'facebook', 
 					'plugin_cm_fb_label' => 'Facebook URL', 
@@ -818,12 +822,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'center' => 'Center',
 					'bottom' => 'Bottom',
 				),
+				// shortener key is also its filename under lib/pro/ext/
 				'shorteners' => array(
 					'none' => '[None]',
-					'bitly' => 'Bit.ly (suggested)',
-					'googl' => 'Goo.gl',
+					'bitly' => 'Bitly (suggested)',
+					'googl' => 'Google',
 					'owly' => 'Ow.ly',
-					'tinyurl' => 'TinyURL (slow)',
+					'tinyurl' => 'TinyURL',
+					'yourls' => 'YOURLS',
 				),
 			),
 			'head' => array(
