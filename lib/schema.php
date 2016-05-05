@@ -284,8 +284,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$select = array();
 
 			foreach ( $schema_types as $type_id => $label ) {
-				$label = preg_replace( '/^.*:\/\//', '', $label );	// remove the protocol
-				$select[$type_id] = $label.' ('.$type_id.')';
+				$select[$type_id] = $type_id.' ('.$label.')';
 			}
 
 			if ( defined( 'SORT_NATURAL' ) )
