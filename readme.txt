@@ -501,6 +501,7 @@ Official announcement: N/A
 	* Added support for [Your Own URL Shortener](https://yourls.org/) (YOURLS) (Pro version).
 * *Improvements*
 	* Added support for bbPress topics in BuddyPress groups (Pro version).
+	* Added more specific types (30) under the http://schema.org/Store item type.
 * *Bugfixes*
 	* None
 * *Developer Notes*
