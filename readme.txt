@@ -626,7 +626,7 @@ Official announcement: N/A
 
 = 3.30.0-dev2 =
 
-(2016/05/05) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version).
+(2016/05/05) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version). Added support for bbPress topics in BuddyPress groups (Pro version) (Pro version).
 
 = 3.29.7-1 =
 
