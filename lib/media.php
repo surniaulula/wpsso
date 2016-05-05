@@ -711,17 +711,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( ! empty( $og_image['og:image'] ) ) {
 
-								// get the width and height from the image HTML attributes
-								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'checking for width / height attribute values' );
 								foreach ( array( 'width', 'height' ) as $key )
 									if ( preg_match( '/ '.$key.'=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
 										$og_image['og:image:'.$key] = $match[1];
 
 								// get the width and height of the image file using http / https
-								if ( $og_image['og:image:width'] <= 0 ||
-									$og_image['og:image:height'] <= 0 )
-										$this->p->util->add_image_url_sizes( 'og:image', $og_image );
+								if ( empty( $og_image['og:image:width'] ) || $og_image['og:image:width'] < 0 ||
+									empty( $og_image['og:image:height'] ) || $og_image['og:image:height'] < 0 ) {
+
+									$this->p->util->add_image_url_sizes( 'og:image', $og_image );
+									if ( $this->p->debug->enabled )
+										$this->p->debug->log( 'add_image_url_sizes() returned '.
+											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
+								} else {
+									if ( $this->p->debug->enabled )
+										$this->p->debug->log( 'width / height attribute values: '.
+											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
+								}
 							}
 
 							$is_sufficient_w = $og_image['og:image:width'] >= $size_info['width'] ? true : false;

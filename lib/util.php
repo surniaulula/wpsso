@@ -238,7 +238,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {
 			if ( ! is_array( $prefixes ) )
 				$prefixes = array( $prefixes => $default );
-
 			foreach ( $prefixes as $opt_pre => $def_val ) {
 				foreach ( $this->get_post_types() as $post_type ) {
 					$key = $opt_pre.'_'.$post_type->name;

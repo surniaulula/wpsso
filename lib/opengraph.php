@@ -159,12 +159,18 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			if ( ! isset( $og['og:site_name'] ) )
 				$og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
 
-			if ( ! isset( $og['og:title'] ) )
+			if ( ! isset( $og['og:title'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting title for og:title meta tag' );
 				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
+			}
 
-			if ( ! isset( $og['og:description'] ) )
+			if ( ! isset( $og['og:description'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting description for og:description meta tag' );
 				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
+			}
 
 			// if the page is an article, then define the other article meta tags
 			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
@@ -208,6 +214,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'getting videos for og:video meta tag' );
 					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
 					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
 						foreach ( $og['og:video'] as $num => $og_video ) {
@@ -249,7 +257,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					foreach ( $img_sizes as $md_pre => $size_name ) {
 
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'getting all images for '.$md_pre.' ('.$size_name.')' );
+							$this->p->debug->log( 'getting images for '.$md_pre.' ('.$size_name.')' );
 
 						// the size_name is used as a context for duplicate checks
 						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
