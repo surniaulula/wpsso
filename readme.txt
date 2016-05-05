@@ -493,6 +493,19 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
+**Version 3.30.0-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* Added support for [Your Own URL Shortener](https://yourls.org/) (YOURLS) (Pro version).
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.29.7-1 (2016/04/27)**
 
 Official announcement: N/A
@@ -611,11 +624,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.30.0-dev1 =
+
+(2016/05/04) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version).
+
 = 3.29.7-1 =
 
 (2016/04/27) Added a new "Clear All Cache(s) on Save Settings" option. Included additional Schema Place and LocalBusiness types. Added a 'video' context to improve duplicate video detection.
-
-= 3.29.6-1 =
-
-(2016/04/21) Fixed non-static home page detection for WebSite, Person, and Organization markup. Added support for a date form input field using jQuery's datepicker.
 
