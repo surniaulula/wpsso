@@ -184,8 +184,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $mod['is_post'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting name / url for article:author meta tag' );
-						if ( ! empty( $mod['post_author'] ) ) {
-							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
+						if ( $author_id = apply_filters( $lca.'_post_author_id', $mod['post_author'] ) ) {
+							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $author_id, $crawler_name );
 						} elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'using default author id '.$def_author_id );
