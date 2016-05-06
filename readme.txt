@@ -493,7 +493,7 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
-**Version 3.30.0-dev3 (2016/05/06)**
+**Version 3.30.0-dev4 (2016/05/06)**
 
 Official announcement: N/A
 
@@ -501,7 +501,7 @@ Official announcement: N/A
 	* Added support for [Your Own URL Shortener](https://yourls.org/) (YOURLS) (Pro version).
 * *Improvements*
 	* Added support for bbPress topics in BuddyPress groups (Pro version).
-	* Added more specific types (30) under the http://schema.org/Store item type.
+	* Added 30 more specific types under the http://schema.org/Store type.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -625,7 +625,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.30.0-dev3 =
+= 3.30.0-dev4 =
 
 (2016/05/06) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version). Added support for bbPress topics in BuddyPress groups (Pro version) (Pro version).
 
