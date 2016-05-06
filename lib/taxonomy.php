@@ -85,6 +85,9 @@ if ( ! class_exists( 'WpssoTaxonomy' ) ) {
 		}
 
 		public function get_mod( $mod_id, $tax_slug = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$mod = WpssoMeta::$mod_array;
 			$mod['id'] = $mod_id;
 			$mod['name'] = 'taxonomy';

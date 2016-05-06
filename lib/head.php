@@ -237,15 +237,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Define an author_id, if one is available
 			 */
 			if ( $mod['is_post'] ) {
-				$post_obj = SucomUtil::get_post_object( $mod['id'] );
-				if ( ! empty( $post_obj->post_author ) )
-					$author_id = $post_obj->post_author;
+				if ( $mod['post_author'] )
+					$author_id = $mod['post_author'];
 				elseif ( $def_author_id = $this->p->util->get_default_author_id( 'seo' ) )
 					$author_id = $def_author_id;
-				unset ( $post_obj );
-			} elseif ( $mod['is_user'] ) {
-				$author_id = SucomUtil::get_user_object( false, 'id' );
-			} elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'seo' ) )
+			} elseif ( $mod['is_user'] )
+				$author_id = $mod['id'];
+			elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'seo' ) )
 				$author_id = $def_author_id;
 
 			if ( $this->p->debug->enabled && $author_id !== false )

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.30.0-"
-"dev3\n"
+"dev4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/admin.php:777 lib/user.php:247
+#: lib/admin.php:71 lib/admin.php:777 lib/user.php:250
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/admin.php:778 lib/user.php:248
+#: lib/admin.php:72 lib/admin.php:778 lib/user.php:251
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:433 lib/post.php:217 lib/taxonomy.php:232 lib/user.php:214
+#: lib/admin.php:433 lib/post.php:220 lib/taxonomy.php:235 lib/user.php:217
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1154,7 +1154,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:84 lib/post.php:393 lib/pro/admin/post.php:100
+#: lib/gpl/admin/post.php:84 lib/post.php:396 lib/pro/admin/post.php:100
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2224,24 +2224,24 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:276
+#: lib/post.php:279
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:280
+#: lib/post.php:283
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:297
+#: lib/post.php:300
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:342 lib/profile/social-settings.php:27 lib/taxonomy.php:253
-#: lib/user.php:236
+#: lib/post.php:345 lib/profile/social-settings.php:27 lib/taxonomy.php:256
+#: lib/user.php:239
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2800,15 +2800,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:399
+#: lib/user.php:402
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:400
+#: lib/user.php:403
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:401
+#: lib/user.php:404
 msgid "Jabber / Google Talk"
 msgstr ""
 
