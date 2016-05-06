@@ -254,7 +254,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// if we're using filtered titles, and an seo plugin is available,
 				// the use the wordpress title (provided by the seo plugin)
 				} elseif ( $this->p->options['plugin_filter_title'] &&
-					$this->p->is_avail['seo']['*'] == true ) {
+					$this->p->is_avail['seo']['*'] ) {
 
 					$title = wp_title( $separator, false, 'right' );	// on right for compatibility with aioseo
 					if ( $this->p->debug->enabled )
