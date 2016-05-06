@@ -405,8 +405,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		// returns an array of profile urls for the given user ids
-		// unless the pinterest crawler is detected, in which case it returns the user names
+		// returns an array of urls (or author names for the pinterest crawler)
 		public function get_og_profile_urls( $user_ids, $crawler_name = null ) {
 			$ret = array();
 			if ( $crawler_name === null )
@@ -416,9 +415,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$user_ids = array( $user_ids );
 				foreach ( $user_ids as $user_id ) {
 					if ( ! empty( $user_id ) ) {
+
 						if ( $crawler_name === 'pinterest' )
 							$val = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
 						else $val = $this->get_author_website_url( $user_id, $this->p->options['og_author_field'] );
+
 						if ( ! empty( $val ) )	// make sure we don't add empty values
 							$ret[] = $val;
 					}
@@ -455,6 +456,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		// called from head and opengraph classes
 		public function get_author_website_url( $user_id, $field_id = 'url' ) {
 			$url = '';
+			$name = get_the_author_meta( 'display_name', $user_id );
 			switch ( $field_id ) {
 				case 'none':
 					break;
@@ -480,7 +482,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' url: '.$url );
+				$this->p->debug->log( 'user_id '.$user_id.' ('.$name.') '.$field_id.' url: '.$url );
 
 			return $url;
 		}
