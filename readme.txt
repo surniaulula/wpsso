@@ -9,7 +9,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Faceboo
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.5
+Tested Up To: 4.5.2
 Stable Tag: 3.29.7-1
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
