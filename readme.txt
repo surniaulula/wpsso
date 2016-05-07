@@ -119,11 +119,12 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) markup for embedded videos from Slideshare, Vimeo, Wistia, and/or Youtube.
 * Configurable user profile contact field names and labels for customized theme / SEO plugin integration.
 * Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from webpage headers.
+* URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS "Shortlink" URLs.
 * Integrates with **3rd party plugins and services** for additional image, video, product, and content information (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 	* **Supported 3rd Party Plugins**
 		* All in One SEO Pack
 		* bbPress
-		* BuddyPress
+		* BuddyPress (including Group Forum Topics)
 		* BuddyPress rtMedia
 		* Easy Digital Downloads
 		* HeadSpace2 SEO
@@ -136,10 +137,15 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 	* **Supported Service APIs**
+		* Bitly
+		* [Google URL Shortener](https://goo.gl/)
 		* Gravatar Images
+		* Ow.ly
 		* Slideshare Presentations
+		* TinyURL
 		* Vimeo Videos
 		* Wistia Videos
+		* [Your Own URL Shortener](http://yourls.org/) (YOURLS)
 		* YouTube Videos and Playlists
 * Additional (and optional) Free or Pro extension plugins:
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
