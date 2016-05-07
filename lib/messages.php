@@ -742,6 +742,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ), $info['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-about-msg-post':
+						// additional text for the following pro-about-msg paragraph
 						$info['text'] = __( 'You can modify the description values by updating the content or excerpt, and change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' );
 						// no break
 					case 'pro-about-msg':

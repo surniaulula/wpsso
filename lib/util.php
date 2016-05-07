@@ -153,9 +153,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$meta_opts = array();
 
 			if ( $filter === true ) {
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
-			} elseif ( $aop && ! empty( $mod['id'] ) && is_object( $mod['obj'] ) )
+			} elseif ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) && $aop )
 				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_options = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {

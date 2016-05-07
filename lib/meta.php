@@ -205,11 +205,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
 					else $match_name = $parts[3];
 
-					$table_rows[] = '<tr class="'.$xtra_class.' '.
-						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).'">'.
+					$table_rows[] = '<tr class="'.
+						( empty( $xtra_class ) ? '' : $xtra_class.' ' ).
+						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).
+						( isset( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ?
+							'' : ' is_internal' ).'">'.
 					'<th class="xshort">'.$parts[1].'</th>'.
 					'<th class="xshort">'.$parts[2].'</th>'.
-					'<td class="short">'.( empty( $parts[6] ) ? 
+					'<td class="">'.( empty( $parts[6] ) ? 
 						'' : '<!-- '.$parts[6].' -->' ).$match_name.'</td>'.
 					'<th class="xshort">'.$parts[4].'</th>'.
 					'<td class="wide">'.( strpos( $parts[5], 'http' ) === 0 ? 

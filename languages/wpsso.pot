@@ -135,7 +135,7 @@ msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr ""
 
-#: lib/admin.php:688 lib/messages.php:846
+#: lib/admin.php:688 lib/messages.php:847
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
@@ -145,7 +145,7 @@ msgctxt "submit button"
 msgid "View %s by Default"
 msgstr ""
 
-#: lib/admin.php:705 lib/messages.php:826
+#: lib/admin.php:705 lib/messages.php:827
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -248,7 +248,7 @@ msgid "Download Latest Version"
 msgstr ""
 
 #: lib/admin.php:1158 lib/admin.php:1163 lib/admin.php:1179 lib/admin.php:1185
-#: lib/messages.php:806
+#: lib/messages.php:807
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -660,7 +660,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:38 lib/messages.php:797
+#: lib/gpl/admin/advanced.php:38 lib/messages.php:798
 #: lib/pro/admin/advanced.php:46
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -830,7 +830,7 @@ msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:243 lib/messages.php:794
+#: lib/gpl/admin/advanced.php:243 lib/messages.php:795
 #: lib/pro/admin/advanced.php:240
 msgctxt "option label"
 msgid "Object Cache Expiry"
@@ -1803,109 +1803,109 @@ msgctxt "option comment"
 msgid "%s required to use this option"
 msgstr ""
 
-#: lib/messages.php:745
+#: lib/messages.php:746
 msgid ""
 "You can modify the description values by updating the content or excerpt, "
 "and change the social image by selecting a featured image, attaching one or "
 "more images, or including images in the content."
 msgstr ""
 
-#: lib/messages.php:748
+#: lib/messages.php:749
 msgid ""
 "The Free / Basic version of %1$s does not include the modules required to "
 "manage custom post, taxonomy, or user meta &mdash; these options are "
 "included for display purposes only."
 msgstr ""
 
-#: lib/messages.php:763
+#: lib/messages.php:764
 msgid ""
 "The <em>Select Media</em> tab in the Social Settings metabox can be used to "
 "select a larger image specifically for social / SEO purposes."
 msgstr ""
 
-#: lib/messages.php:765
+#: lib/messages.php:766
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:767
+#: lib/messages.php:768
 msgid ""
 "You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social "
 "and SEO Image Dimensions</a> settings."
 msgstr ""
 
-#: lib/messages.php:768
+#: lib/messages.php:769
 msgid ""
 "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image "
 "upscaling percentage</em> feature."
 msgstr ""
 
-#: lib/messages.php:769
+#: lib/messages.php:770
 msgid ""
 "Disable the <a href=\"%1$s\">WP / Theme Integration</a> <em>image dimensions "
 "check</em> option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:771
+#: lib/messages.php:772
 msgid ""
 "Define the %1$s constant as <em>true</em> to auto-hide all dismissable "
 "warnings."
 msgstr ""
 
-#: lib/messages.php:776
+#: lib/messages.php:777
 msgid ""
 "An Open Graph image meta tag could not be created from this webpage content. "
 "Facebook and other social websites <em>require</em> at least one image meta "
 "tag to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:779
+#: lib/messages.php:780
 msgid ""
 "Google / Schema image markup could not be created from this webpage content. "
 "Google <em>requires</em> at least one image object for this Schema item type."
 msgstr ""
 
-#: lib/messages.php:782
+#: lib/messages.php:783
 msgid "A Business Logo Image is missing for the Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:783
+#: lib/messages.php:784
 msgid "Please entrer a Business Logo Image URL in the %1$s settings."
 msgstr ""
 
-#: lib/messages.php:788
+#: lib/messages.php:789
 msgid "A Business Banner Image is missing for the Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:789
+#: lib/messages.php:790
 msgid "Please enter a Business Banner (600x60) Image URL in the %1$s settings."
 msgstr ""
 
-#: lib/messages.php:794
+#: lib/messages.php:795
 msgid ""
 "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently "
 "set at %3$d seconds &mdash; this is lower than the recommended default value "
 "of %4$d seconds."
 msgstr ""
 
-#: lib/messages.php:797
+#: lib/messages.php:798
 msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:797
+#: lib/messages.php:798
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions, and detect additional images / embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:797
+#: lib/messages.php:798
 msgid ""
 "Some theme / plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:797
+#: lib/messages.php:798
 msgid ""
 "<a href=\"%s\">If you use any shortcodes in your content text, this option "
 "should be enabled</a> (Pro version required) &mdash; if you experience "
@@ -1913,127 +1913,127 @@ msgid ""
 "content filter is at fault, and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:802
+#: lib/messages.php:803
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
 "of the webpage head section."
 msgstr ""
 
-#: lib/messages.php:802
+#: lib/messages.php:803
 msgid ""
 "The %s element in your theme's header templates should include a function / "
 "action / filter call for its attributes."
 msgstr ""
 
-#: lib/messages.php:802
+#: lib/messages.php:803
 msgid ""
 "%1$s can update your theme header templates automatically to change the "
 "default %2$s element to:"
 msgstr ""
 
-#: lib/messages.php:802
+#: lib/messages.php:803
 msgid ""
 "<b><a href=\"%1$s\">Click here to update theme header templates "
 "automatically</a></b> or update the theme templates yourself manually."
 msgstr ""
 
-#: lib/messages.php:806
+#: lib/messages.php:807
 msgid "The %1$s plugin %2$s option is empty."
 msgstr ""
 
-#: lib/messages.php:806
+#: lib/messages.php:807
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Pro Licenses settings page</a>."
 msgstr ""
 
-#: lib/messages.php:809
+#: lib/messages.php:810
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update the plugin to install the latest "
 "Pro version. ;-)"
 msgstr ""
 
-#: lib/messages.php:815
+#: lib/messages.php:816
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
 "Licenses settings page</a>, but the %2$s plugin is not active."
 msgstr ""
 
-#: lib/messages.php:818
+#: lib/messages.php:819
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:818
+#: lib/messages.php:819
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:818
+#: lib/messages.php:819
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:821
+#: lib/messages.php:822
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:821
+#: lib/messages.php:822
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:826
+#: lib/messages.php:827
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:826
+#: lib/messages.php:827
 msgid ""
 "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
 "latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:840
+#: lib/messages.php:841
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:841
+#: lib/messages.php:842
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:842
+#: lib/messages.php:843
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:847
+#: lib/messages.php:848
 msgid ""
 "Metaboxes (like this one) can be opened / closed by clicking on their title "
 "bar, moved and re-ordered by dragging them, or removed / added from the "
 "<em>Screen Options</em> tab (top-right of page)."
 msgstr ""
 
-#: lib/messages.php:847
+#: lib/messages.php:848
 msgid ""
 "Option values in multiple tabs can be modified before clicking the '%s' "
 "button."
 msgstr ""
 
-#: lib/messages.php:857
+#: lib/messages.php:858
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
@@ -2076,99 +2076,99 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:238
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:238
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:238
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:238
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:238
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:237
+#: lib/meta.php:240
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:237
+#: lib/meta.php:240
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:237
+#: lib/meta.php:240
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:239
+#: lib/meta.php:242
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:239
+#: lib/meta.php:242
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:239
+#: lib/meta.php:242
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:241
+#: lib/meta.php:244
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:241
+#: lib/meta.php:244
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:241
+#: lib/meta.php:244
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:408
+#: lib/meta.php:411
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:496
+#: lib/meta.php:499
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:497
+#: lib/meta.php:500
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:515
+#: lib/meta.php:518
 msgid "Reload to View"
 msgstr ""
 
@@ -2800,15 +2800,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:402
+#: lib/user.php:406
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:403
+#: lib/user.php:407
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:404
+#: lib/user.php:408
 msgid "Jabber / Google Talk"
 msgstr ""
 

@@ -307,6 +307,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_contact_methods( $fields = array(), $user = null ) { 
+			$lca = $this->p->cf['lca'];
+			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+
 			// loop through each social website option prefix
 			if ( ! empty( $this->p->cf['opt']['pre'] ) && 
 				is_array( $this->p->cf['opt']['pre'] ) ) {
@@ -325,9 +328,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 				}
 			}
-			if ( $this->p->check->aop() && 
-				! empty( $this->p->cf['wp']['cm'] ) && 
-				is_array( $this->p->cf['wp']['cm'] ) ) {
+
+			if ( ! empty( $this->p->cf['wp']['cm'] ) && 
+				is_array( $this->p->cf['wp']['cm'] ) && $aop ) {
 
 				foreach ( $this->p->cf['wp']['cm'] as $cm_id => $name ) {
 					$cm_opt = 'wp_cm_'.$cm_id.'_';
@@ -341,6 +344,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 				}
 			}
+
 			ksort( $fields, SORT_STRING );
 			return $fields;
 		}
