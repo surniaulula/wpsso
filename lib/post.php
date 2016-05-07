@@ -83,11 +83,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 			if ( isset( $this->p->options['plugin_shortener'] ) &&
 				$this->p->options['plugin_shortener'] !== 'none' ) {
+
+					$post_type = get_post_type( $post_id );				// post type name
+					$post_status = get_post_status( $post_id );			// post status name
+
+					if ( empty( $post_type ) || empty( $post_status ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'exiting early: incomplete post object' );
+						return $shortlink;
+					} elseif ( $post_status === 'auto-draft' ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'exiting early: post is an auto-draft' );
+						return $shortlink;
+					}
+
 					$long_url = $this->p->util->get_sharing_url( $post_id );
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
-					if ( $long_url !== $short_url )
-						$shortlink = $short_url;
+
+					if ( $long_url !== $short_url )	// just in case
+						return $short_url;
 			}
 			return $shortlink;
 		}
@@ -164,7 +179,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $post_obj === false || 
 				empty( $post_obj->post_type ) || 
 					empty( $post_obj->post_status ) ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: incomplete post object' );
 				return;
