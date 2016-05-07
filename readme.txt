@@ -5,7 +5,7 @@ Text Domain: wpsso
 Domain Path: /languages
 Contributors: jsmoriss
 Donate Link: https://wpsso.com/
-Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, featured, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, object cache, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, transient cache, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo
+Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo, yourls
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
@@ -239,7 +239,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Examples =
 
-* Example meta tags from WPSSO Pro for an Open Graph article, including the [WPSSO JSON Pro](http://wpsso.com/extend/plugins/wpsso-schema-json-ld/) extension for schema.org/TechArticle JSON-LD markup.
+* Example meta tags from WPSSO Pro for an Open Graph article, including the [WPSSO JSON Pro](http://wpsso.com/extend/plugins/wpsso-schema-json-ld/) extension for [schema.org/TechArticle](http://schema.org/TechArticle) JSON-LD markup for Google and Pinterest.
 
 `
 <link rel="author" href="https://plus.google.com/+JSMorisset"/>
@@ -499,7 +499,7 @@ frequent updates.</p>
 
 = Changelog / Release Notes =
 
-**Version 3.30.0-rc1 (2016/05/07)**
+**Version 3.30.0-1 (2016/05/08)**
 
 Official announcement: N/A
 
@@ -631,9 +631,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.30.0-rc1 =
+= 3.30.0-1 =
 
-(2016/05/07) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version). Added support for bbPress topics in BuddyPress groups (Pro version).
+(2016/05/08) Added support for Your Own URL Shortener (YOURLS) https://yourls.org/ (Pro version). Added support for bbPress topics in BuddyPress groups (Pro version).
 
 = 3.29.7-1 =
 
