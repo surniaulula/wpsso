@@ -413,15 +413,18 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = get_post_field( 'post_excerpt', $mod['id'] );
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
-							$filter_removed = apply_filters( $this->p->cf['lca'].'_text_filter_has_removed', false, 'get_the_excerpt' );
+							$filters_changed = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'get_the_excerpt' );
 
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'calling apply_filters(\'get_the_excerpt\')' );
+							// apply the content filters
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
+								$this->p->debug->log( SucomDebug::get_hooks( 'get_the_excerpt' ) );
+							}
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							if ( $filter_removed )
-								$filter_added = apply_filters( $this->p->cf['lca'].'_text_filter_has_added', false, 'get_the_excerpt' );
+							if ( $filters_changed )
+								apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'get_the_excerpt' );
 						}
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'no post_excerpt for post ID '.$mod['id'] );
@@ -584,7 +587,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( $filter_content == true ) {
-				$filter_removed = apply_filters( $this->p->cf['lca'].'_text_filter_has_removed', false, 'the_content' );
+				$filters_changed = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'the_content' );
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
@@ -612,6 +615,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$this->p->debug->log( 'applying the WordPress the_content filters' );
 					$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
 				}
+
 				$content = apply_filters( 'the_content', $content );
 
 				if ( $this->p->debug->enabled )
@@ -622,8 +626,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				unset ( $GLOBALS['subalbum'] );
 				unset ( $GLOBALS['nggShowGallery'] );
 
-				if ( $filter_removed )
-					$filter_added = apply_filters( $this->p->cf['lca'].'_text_filter_has_added', false, 'the_content' );
+				if ( $filters_changed )
+					apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'the_content' );
 
 				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 

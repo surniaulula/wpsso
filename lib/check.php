@@ -38,15 +38,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				// disable jetPack open graph meta tags
 				if ( class_exists( 'JetPack' ) || 
 					isset( $this->active_plugins['jetpack/jetpack.php'] ) ) {
-					add_filter( 'jetpack_enable_opengraph', '__return_false', 99 );
-					add_filter( 'jetpack_enable_open_graph', '__return_false', 99 );
-					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 99 );
+					add_filter( 'jetpack_enable_opengraph', '__return_false', 100 );
+					add_filter( 'jetpack_enable_open_graph', '__return_false', 100 );
+					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 100 );
 				}
 	
 				// disable Yoast SEO social meta tags
 				if ( function_exists( 'wpseo_init' ) || 
 					isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) )
-						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9999 );
+						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 1000 );
 
 				if ( class_exists( 'Ngfb' ) || 
 					isset( $this->active_plugins['nextgen-facebook/nextgen-facebook.php'] ) ) {

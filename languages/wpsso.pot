@@ -2251,32 +2251,32 @@ msgid ""
 "is disabled and/or a known SEO plugin has been detected."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:85 lib/pro/forum/bbpress.php:146
+#: lib/pro/forum/bbpress.php:86 lib/pro/forum/bbpress.php:147
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:152
+#: lib/pro/forum/bbpress.php:153
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:156
+#: lib/pro/forum/bbpress.php:157
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:160
+#: lib/pro/forum/bbpress.php:161
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:164
+#: lib/pro/forum/bbpress.php:165
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:168
+#: lib/pro/forum/bbpress.php:169
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
