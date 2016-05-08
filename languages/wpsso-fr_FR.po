@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.30.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-05-07 19:47-0400\n"
-"PO-Revision-Date: 2016-05-07 19:49-0400\n"
+"POT-Creation-Date: 2016-05-08 08:15-0400\n"
+"PO-Revision-Date: 2016-05-08 08:21-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -603,7 +603,7 @@ msgstr "Oui"
 #: lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "YOURLS"
-msgstr ""
+msgstr "YOURLS"
 
 #: lib/config-gettext-extract.php:57
 msgctxt "lib file description"
@@ -758,7 +758,7 @@ msgstr "Appliquer verif. dimensions d'images"
 #: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:203
 msgctxt "option label"
 msgid "Allow Upscaling of WP Media Images"
-msgstr "Permettre d'agrandir images Médias WP"
+msgstr "Permettre agrandir images Médias WP"
 
 #: lib/gpl/admin/advanced.php:207 lib/pro/admin/advanced.php:207
 msgctxt "option label"
@@ -865,12 +865,12 @@ msgstr "La Clé d’API pour Ow.ly"
 #: lib/gpl/admin/advanced.php:325 lib/pro/admin/advanced.php:314
 msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
-msgstr ""
+msgstr "Your Own URL Shortener (YOURLS)"
 
 #: lib/gpl/admin/advanced.php:328 lib/pro/admin/advanced.php:317
 msgctxt "option label"
 msgid "YOURLS API URL"
-msgstr ""
+msgstr "URL de l'API YOURLS"
 
 #: lib/gpl/admin/advanced.php:333 lib/pro/admin/advanced.php:322
 msgctxt "option label"
@@ -880,12 +880,12 @@ msgstr "Nom d’utilisateur YOURLS"
 #: lib/gpl/admin/advanced.php:338 lib/pro/admin/advanced.php:327
 msgctxt "option label"
 msgid "YOURLS Password"
-msgstr ""
+msgstr "Mot de passe YOURLS"
 
 #: lib/gpl/admin/advanced.php:343 lib/pro/admin/advanced.php:332
 msgctxt "option label"
 msgid "YOURLS Token"
-msgstr ""
+msgstr "Jeton YOURLS"
 
 #: lib/gpl/admin/advanced.php:356 lib/gpl/admin/advanced.php:406
 #: lib/pro/admin/advanced.php:342 lib/pro/admin/advanced.php:389
@@ -1308,19 +1308,19 @@ msgstr "Pour utiliser Ow.ly comme votre service de raccourcissement préféré, 
 
 #: lib/messages.php:485
 msgid "The URL to <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) shortening service."
-msgstr ""
+msgstr "L'URL du service de raccourcissement de lien <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS)."
 
 #: lib/messages.php:488
 msgid "If <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options)."
-msgstr ""
+msgstr "Si le service <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un nom d' utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d' utilisateur / mot de passe)."
 
 #: lib/messages.php:491
 msgid "If <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options)."
-msgstr ""
+msgstr "Si le service <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un mot de passe d'utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d' utilisateur / mot de passe)."
 
 #: lib/messages.php:494
 msgid "If <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination."
-msgstr ""
+msgstr "Si le service <a href=\"%1$s\" target=\"_blank\">Your Own URL Shortener</a> (YOURLS) est privé, vous pouvez utiliser un jeton d'authentification YOURLS au lieu d'un nom d'utilisateur et mot de passe."
 
 #: lib/messages.php:506
 msgid "If you have a <a href=\"%1$s\" target=\"_blank\">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href=\"%3$s\" target=\"_blank\">%4$s</a>)."
@@ -1858,32 +1858,32 @@ msgstr "Réglages Sociaux"
 msgid "The SEO description field is disabled - the \"meta name description\" option is disabled and/or a known SEO plugin has been detected."
 msgstr "Le champ de description de SEO est désactivé - l'option \"nom meta description\" est désactivé et/ou un extension SEO connu a été détectée."
 
-#: lib/pro/forum/bbpress.php:85 lib/pro/forum/bbpress.php:146
+#: lib/pro/forum/bbpress.php:86 lib/pro/forum/bbpress.php:147
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr "Profil de %s"
 
-#: lib/pro/forum/bbpress.php:152
+#: lib/pro/forum/bbpress.php:153
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr "Sujets débutés par %s"
 
-#: lib/pro/forum/bbpress.php:156
+#: lib/pro/forum/bbpress.php:157
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr "Réponses crées de %s"
 
-#: lib/pro/forum/bbpress.php:160
+#: lib/pro/forum/bbpress.php:161
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr "Favoris de %s"
 
-#: lib/pro/forum/bbpress.php:164
+#: lib/pro/forum/bbpress.php:165
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr "Abonnements de %s"
 
-#: lib/pro/forum/bbpress.php:168
+#: lib/pro/forum/bbpress.php:169
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
