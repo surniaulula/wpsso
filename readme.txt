@@ -511,7 +511,8 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Renamed the 'wpsso_text_filter_has_removed' to 'wpsso_text_filter_has_changes_before'.
+	* Renamed the 'wpsso_text_filter_has_added' to 'wpsso_text_filter_has_changes_after'.
 
 **Version 3.29.7-1 (2016/04/27)**
 
