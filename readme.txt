@@ -113,7 +113,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **WPSSO Pro / Power-User Features**
 
-* A "Social Settings" metabox for Post, Page, custom post type, user profile, and taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
+* A "Social Settings" metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 * Support for embedded videos in content text ("iframe" and "object" HTML markup).
 * Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) markup for embedded videos from Slideshare, Vimeo, Wistia, and/or Youtube.
@@ -468,8 +468,8 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 01. WPSSO General Settings Page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.
 02. WPSSO Advanced Settings Page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.
-03. WPSSO Social Settings on Posts, Pages, Taxonomies, etc. &mdash; The Social Settings metabox allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate the webpage markup with online tools.
-04. WPSSO "Social Image" and "Social Description" preview columns (available on posts, pages, tags, and custom taxonomy editing pages).
+03. WPSSO Social Settings on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; The Social Settings metabox allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate the webpage markup with online tools.
+04. WPSSO "Social Image" and "Social Description" preview columns (available on posts, pages, category, tags, and custom taxonomy editing pages).
 05. Example Pinterest Product Pin (Zoomed).
 06. Example Facebook Link Share.
 07. Example Facebook Video Share.
@@ -496,6 +496,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.31.0-dev1 (2016/05/10)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Categorized the display of Free / Pro features in the sidebar metabox.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed the 'taxonomy' module and all related filters to 'term'.
+
 **Version 3.30.0-1 (2016/05/08)**
 
 Official announcement: N/A
@@ -512,6 +525,10 @@ Official announcement: N/A
 	* Renamed the 'wpsso_text_filter_has_added' to 'wpsso_text_filter_has_changes_after'.
 
 == Upgrade Notice ==
+
+= 3.31.0-dev1 =
+
+(2016/05/10) Renamed the 'taxonomy' module and all related filters to 'term'.
 
 = 3.30.0-1 =
 
