@@ -528,7 +528,7 @@ Official announcement: N/A
 
 = 3.31.0-dev1 =
 
-(2016/05/10) Renamed the 'taxonomy' module and all related filters to 'term'.
+(2016/05/10) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox.
 
 = 3.30.0-1 =
 
