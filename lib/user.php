@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				// common to your profile and user editing pages
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
 
-				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
+				// load_meta_page() priorities: 100 post, 200 user, 300 term
 				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
 
 				// the social settings metabox has moved to its own settings page
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$mod['is_user'] = true;
 
-			return $mod;
+			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
 		}
 
 		public function get_user_column_content( $value, $column_name, $user_id ) {

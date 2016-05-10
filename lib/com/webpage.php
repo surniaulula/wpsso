@@ -241,14 +241,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 					if ( is_singular() ) {
 						$title = wp_title( $separator, false, 'right' );
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'is_singular wp_title() = "'.$title.'"' );
-
+							if ( $this->p->options['plugin_filter_title'] )
+								$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
+						}
 					} elseif ( ! empty( $mod['id'] ) ) {
 						$title = apply_filters( 'wp_title', get_the_title( $mod['id'] ).
 							' '.$separator.' ', $separator, 'right' );
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
+							if ( $this->p->options['plugin_filter_title'] )
+								$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
+						}
 					}
 
 				// if we're using filtered titles, and an seo plugin is available,

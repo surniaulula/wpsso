@@ -309,6 +309,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$permalink = get_permalink( $post_id );
 					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->get_sharing_url( $post_id );
+					$locale_salt = 'locale:'.$locale.'_post:'.$post_id;
 
 					// transients persist from one page load to another
 					$transients = array(
@@ -317,12 +318,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							'url:'.$permalink_no_meta,
 						),
 						'WpssoHead::get_header_array' => array( 
-							'locale:'.$locale.'_post:'.$post_id.'_url:'.$sharing_url,
-							'locale:'.$locale.'_post:'.$post_id.'_url:'.$sharing_url.'_crawler:pinterest',
+							$locale_salt.'_url:'.$sharing_url,
+							$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
-							'locale:'.$locale.'_post:'.$post_id.'_column:'.$lca.'_og_image',
-							'locale:'.$locale.'_post:'.$post_id.'_column:'.$lca.'_og_desc',
+							$locale_salt.'_column:'.$lca.'_og_image',
+							$locale_salt.'_column:'.$lca.'_og_desc',
 						),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $post_id, $locale, $sharing_url );
@@ -330,11 +331,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					// wp objects are only available for the duration of a single page load
 					$wp_objects = array(
 						'SucomWebpage::get_content' => array(
-							'locale:'.$locale.'_post:'.$post_id.'_filtered',
-							'locale:'.$locale.'_post:'.$post_id.'_unfiltered',
+							$locale_salt.'_filtered',
+							$locale_salt.'_unfiltered',
 						),
 						'SucomWebpage::get_hashtags' => array(
-							'locale:'.$locale.'_post:'.$post_id,
+							$locale_salt,
 						),
 					);
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
@@ -1014,7 +1015,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$mod['id'] = $wp_obj->ID;
 						break;
 					case 'WP_Term':
-						$mod['name'] = 'taxonomy';
+						$mod['name'] = 'term';
 						$mod['id'] = $wp_obj->term_id;
 						break;
 					case 'WP_User':
@@ -1029,7 +1030,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( self::is_post_page( $use_post ) )	// $use_post = true | false | post_id 
 					$mod['name'] = 'post';
 				elseif ( self::is_term_page() )
-					$mod['name'] = 'taxonomy';
+					$mod['name'] = 'term';
 				elseif ( self::is_user_page() )
 					$mod['name'] = 'user';
 				else $mod['name'] = false;
@@ -1038,7 +1039,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( empty( $mod['id'] ) ) {
 				if ( $mod['name'] === 'post' )
 					$mod['id'] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id 
-				elseif ( $mod['name'] === 'taxonomy' )
+				elseif ( $mod['name'] === 'term' )
 					$mod['id'] = self::get_term_object( false, '', 'id' );
 				elseif ( $mod['name'] === 'user' )
 					$mod['id'] = self::get_user_object( false, 'id' );
@@ -1053,9 +1054,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$mod['use_post'] = $use_post;
 			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
-
-			// deprecated 2016/04/21
-			$mod['is_front'] = $mod['is_home_page'];
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
@@ -1124,11 +1122,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} elseif ( self::is_term_page() ) {
 					$term = self::get_term_object();
 					if ( ! empty( $term->term_id ) ) {
-						if ( isset( $this->p->m['util']['taxonomy'] ) )
-							$url = $this->p->m['util']['taxonomy']->get_options( $term->term_id, 'sharing_url' );
+						if ( isset( $this->p->m['util']['term'] ) )
+							$url = $this->p->m['util']['term']->get_options( $term->term_id, 'sharing_url' );
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'custom taxonomy sharing_url = '.$url );
+								$this->p->debug->log( 'custom term sharing_url = '.$url );
 						} else $url = get_term_link( $term, $term->taxonomy );
 					} 
 					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );

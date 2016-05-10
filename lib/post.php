@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( is_admin() && SucomUtil::is_post_page() ) {
 
 				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-				// load_meta_page() priorities: 100 post, 200 user, 300 taxonomy
+				// load_meta_page() priorities: 100 post, 200 user, 300 term
 				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
 				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = get_post_field( 'post_author', $mod_id );			// post author id
 
-			return $mod;
+			return apply_filters( $this->p->cf['lca'].'_get_post_mod', $mod, $mod_id );
 		}
 
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {

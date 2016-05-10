@@ -89,9 +89,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_post' );
 
 				$table_rows[] = '<tr class="hide_in_basic">'.
-				$this->get_nocb_cell( 'plugin_columns_taxonomy', 
-					__( 'Taxonomy (Categories and Tags)', 'wpsso' ) ).
-				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_taxonomy' );
+				$this->get_nocb_cell( 'plugin_columns_term', 
+					__( 'Terms (Categories and Tags)', 'wpsso' ) ).
+				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_term' );
 
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$this->get_nocb_cell( 'plugin_columns_user', 
@@ -103,8 +103,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'<td class="blank">'.
 				'<p>'.$this->get_nocb( 'plugin_columns_post', 
 					__( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).'</p>'.
-				'<p>'.$this->get_nocb( 'plugin_columns_taxonomy',
-					__( 'Taxonomy (Categories and Tags)', 'wpsso' ) ).'</p>'.
+				'<p>'.$this->get_nocb( 'plugin_columns_term',
+					__( 'Terms (Categories and Tags)', 'wpsso' ) ).'</p>'.
 				'<p>'.$this->get_nocb( 'plugin_columns_user',
 					__( 'Users' ) ).'</p>'.
 				'</td>';
@@ -115,8 +115,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_'.$post_type->name ).' '.
 					$post_type->label.'</p>';
 
-			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_taxonomy' ).
-				' '.__( 'Taxonomy (Categories and Tags)', 'wpsso' ).'</p>';
+			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_term' ).
+				' '.__( 'Terms (Categories and Tags)', 'wpsso' ).'</p>';
 
 			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_user' ).
 				' '.__( 'User Profile', 'wpsso' ).'</p>';

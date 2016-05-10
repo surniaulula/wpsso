@@ -464,7 +464,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	clear:both;
 	display:block !important;
 	margin:0 auto;
-	max-width:800px;
+	max-width:700px;
 }
 .'.$this->lca.'-notice.update-nag p,
 .'.$this->lca.'-notice.update-nag ul,

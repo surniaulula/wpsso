@@ -10,9 +10,6 @@ if ( ! defined( 'ABSPATH' ) )
 
 if ( ! class_exists( 'WpssoMeta' ) ) {
 
-	/*
-	 * This class is extended by WpssoPost, WpssoUser, and WpssoTaxonomy.
-	 */
 	class WpssoMeta {
 
 		protected $p;
@@ -38,6 +35,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'post_type' => false,
 			'post_status' => false,
 			'post_author' => false,
+			'post_coauthors' => array(),
 			/*
 			 * Term
 			 */

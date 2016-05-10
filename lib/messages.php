@@ -52,82 +52,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * All tooltips
 			 */
 			if ( strpos( $idx, 'tooltip-' ) === 0 ) {
-				/*
-				 * 'Plugin Features' side metabox
-				 */
-				if ( strpos( $idx, 'tooltip-side-' ) === 0 ) {
-					switch ( $idx ) {
-						/*
-						 * Free version
-						 */
-						case 'tooltip-side-debug-logging-enabled':
-							$text = sprintf( __( 'The debug library is loaded when the <em>Add Hidden Debug Messages</em> option is checked, or one of the debugging <a href="%s" target="_blank">constants</a> is defined.', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
-							break;
-						case 'tooltip-side-google-person-markup':
-							$text = __( 'Add Person social profiles markup to the home page header for Google Search.', 'wpsso' );
-							break;
-						case 'tooltip-side-google-puborg-markup':
-							$text = __( 'Add Organization social profiles markup to the home page header for Google Search.', 'wpsso' );
-							break;
-						case 'tooltip-side-google-website-markup':
-							$text = __( 'Add Website markup to the home page header Google Search. The Website markup includes the home page URL, name, alternate name, and search query URL.', 'wpsso' );
-							break;
-						case 'tooltip-side-non-persistant-cache':
-							$text = sprintf( __( 'The plugin saves filtered / rendered content to a non-persistant cache (aka <a href="%1$s" target="_blank">WP Object Cache</a>) for re-use within the same page load. You can disable the use of non-persistant cache (not recommended) using one of the available <a href="%2$s" target="_blank">constants</a>.', 'wpsso' ), 'https://codex.wordpress.org/Class_Reference/WP_Object_Cache', 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
-							break;
-						case 'tooltip-side-open-graph-rich-pin':
-							$text = __( 'Facebook / Open Graph and Pinterest Rich Pin meta tags are added to the head section of all webpages. You must have a supported eCommerce plugin installed to add <em>Product</em> Rich Pins, including product prices and attributes.', 'wpsso' );
-							break;
-						case 'tooltip-side-transient-cache':
-							$text = sprintf( __( 'The plugin saves Facebook / Open Graph, Pinterest Rich Pin, Twitter Card meta tags, and JSON-LD markup to a persistant (aka <a href="%1$s" target="_blank">Transient</a>) cache for %2$d seconds. You can adjust the Transient cache expiration value on the <a href="%3$s">%4$s</a> settings page, or disable it completely by using one of the available <a href="%5$s" target="_blank">constants</a>.', 'wpsso' ), 'https://codex.wordpress.org/Transients_API', $this->p->options['plugin_object_cache_exp'], $this->p->util->get_admin_url( 'advanced' ), _x( 'Advanced', 'lib file description', 'wpsso' ), 'http://surniaulula.com/codex/plugins/wpsso/notes/constants/' );
-							break;
-						case 'tooltip-side-twitter-cards':
-							$text = __( 'Twitter Cards extend the standard Facebook / Open Graph and Pinterest Rich Pin meta tags with additional information about your content. Twitter Cards are displayed more prominently on Twitter, allowing you to highlight your content more effectively.', 'wpsso' );
-							break;
-						/*
-						 * Pro version
-						 */
-						case 'tooltip-side-author-gravatar':
-							$text = 'Include the author\'s Gravatar image in meta tags for author index / archive webpages. Enable or disable this option from the '.$this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_author', 'General Settings' ).' page.';
-							break;
-						case 'tooltip-side-post-settings':
-							$text = 'The Post Settings feature adds a Social Settings metabox to the Post, Page, and custom post type editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
-							break;
-						case 'tooltip-side-publisher-language':
-							$text = $info['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature.';
-							break;
-						case 'tooltip-side-slideshare-api':
-							$text = 'If the embedded Slideshare Presentations option on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$info['short_pro'].' will load an integration module for Slideshare, to detect embedded Slideshare presentations and retrieve slide information using Slideshare\'s oEmbed API (media dimentions, preview image, etc).';
-							break;
-						case 'tooltip-side-taxonomy-settings':
-							$text = 'The Taxonomy Settings feature adds a Social Settings metabox to taxonomy (category and tags) editing pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
-							break;
-						case 'tooltip-side-url-shortening':
-							$text = 'When a Preferred URL Shortening Service has been selected on the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys', 'Advanced Settings' ).' page, '.$info['short_pro'].' will load an integration module for various '.$info['short'].' plugin filters and/or extensions that may need to shorten URLs.';
-							break;
-						case 'tooltip-side-user-settings':
-							$text = 'The User Settings feature adds a Social Settings metabox to the user profile pages. Custom descriptions and images can be entered for Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags.';
-							break;
-						case 'tooltip-side-vimeo-video-api':
-							$text = 'If the embedded Vimeo Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$info['short_pro'].' will load an integration module for Vimeo, to detect embedded Vimeo videos and retrieve video information using Vimeo\'s oEmbed API (media dimentions, preview image, etc).';
-							break;
-						case 'tooltip-side-wistia-video-api':
-							$text = 'If the embedded Wistia Videos option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$info['short_pro'].' will load an integration module for Wistia to detect embedded Wistia videos, and retrieve video information using Wistia\'s oEmbed API (media dimentions, preview image, etc).';
-							break;
-						case 'tooltip-side-wp-image-upscaler':
-							$text = $info['short_pro'].' includes an optional module that allows it to upscale WordPress Media Library images for '.$info['short'].' image sizes (up to a maximum upscale percentage). You can enable the WP Image Upscaler from the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', 'Advanced Settings' ).' page.';
-							break;
-						case 'tooltip-side-youtube-video-playlist-api':
-							$text = 'If the embedded Youtube Videos and Playlists option in the '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content', 'Advanced Settings' ).' page is checked, '.$info['short_pro'].' will load an integration module for YouTube to detect embedded YouTube videos and playlists, and retrieve video information using Youtube\'s XML and oEmbed APIs (media dimentions, preview image, etc).';
-							break;
-						default:
-							$text = apply_filters( $lca.'_messages_tooltip_side', $text, $idx, $info );
-							break;
-					}	// end of tooltip-side switch
-				/*
-				 * Generic Meta settings
-				 */
-				} elseif ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
+				if ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-meta-sharing_url':
 							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
@@ -380,7 +305,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Social Settings' settings
 						 */
 						case 'tooltip-plugin_social_columns':
-							$text = '\'Social Image\' and \'Social Description\' columns are added to the Posts, Pages, Taxonomy, and Users list pages by default. You can exclude the columns individually from the <em>Screen Options</em> tab on the list pages, or disable the columns globally by unchecking these options.';
+							$text = '\'Social Image\' and \'Social Description\' columns are added to the Posts, Pages, Taxonomy / Terms, and Users list pages by default. You can exclude the columns individually from the <em>Screen Options</em> tab on the list pages, or disable the columns globally by unchecking these options.';
 							break;
 						case 'tooltip-plugin_add_to':
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
@@ -746,7 +671,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$info['text'] = __( 'You can modify the description values by updating the content or excerpt, and change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' );
 						// no break
 					case 'pro-about-msg':
-						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include the modules required to manage custom post, taxonomy, or user meta &mdash; these options are included for display purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
+						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include the modules required to manage custom post, term, or user meta &mdash; these options are included for display purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
@@ -804,7 +729,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'notice-pro-tid-missing':
 						if ( ! is_multisite() )
-							$text = '<p><b>'.sprintf( __( 'The %1$s plugin %2$s option is empty.', 'wpsso' ), $info['name'], _x( 'Pro Authentication ID', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses settings page</a>.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) ).'</p>';
+							$text = '<p><b>'.sprintf( __( 'The %1$s plugin %2$s option is empty.', 'wpsso' ), $info['name'], _x( 'Pro Authentication ID', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Pro Licenses and Extension Plugins</a> settings page.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) ).'</p>';
 						break;
 					case 'notice-pro-not-installed':
 						$text = sprintf( __( 'An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don\'t forget to update the plugin to install the latest Pro version. ;-)', 'wpsso' ), $info['name'] );
@@ -813,7 +738,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-um-activate-extension':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$wp_upload_url = get_admin_url( null, 'plugin-install.php?tab=upload' );
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses settings page</a>, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_info['name'] ).'</b> ';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Pro Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_info['name'] ).'</b> ';
 
 						if ( $idx === 'notice-um-extension-required' ) {
 							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_info['url']['latest_zip'], $um_info['name'] ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $wp_upload_url ).'</b></li></ol>';
@@ -857,11 +782,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				! empty( $info['is_locale'] ) )
 					$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress admin locale with <a href="%1$s" target="_blank">Polylang</a>, <a href="%2$s" target="_blank">WP Native Dashboard</a>, etc., to define alternate option values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/polylang/', 'https://wordpress.org/plugins/wp-native-dashboard/' );
 
-			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) )
-				return '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.
+			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {
+				$text = '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.
 					( isset( $info['class'] ) ? $info['class'] : $this->p->cf['form']['tooltip_class'] ).
 						'" alt="'.esc_attr( $text ).'" />';
-			else return $text;
+			}
+
+			return $text;
 		}
 	}
 }

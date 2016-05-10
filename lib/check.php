@@ -213,6 +213,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							if ( $is_admin )
 								$ret[$sub]['*'] = $ret[$sub][$id] = true;
 							break;
+						case 'util-coauthors':
+							$chk['plugin'] = 'co-authors-plus/co-authors-plus.php';
+							break;
 						case 'util-post':
 						case 'util-taxonomy':
 						case 'util-user':

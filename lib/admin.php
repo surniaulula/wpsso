@@ -814,34 +814,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $ext === $this->p->cf['lca'] ) {	// features for this plugin
 					$features = array(
-						'Debug Logging Enabled' => array(
+						'(tool) Debug Logging Enabled' => array(
 							'classname' => 'SucomDebug',
 						),
-						'Google Person Markup' => array( 
-							'status' => $this->p->options['schema_person_json'] ?
-								'on' : 'off',
-						),
-						'Google Pub/Org Markup' => array(
-							'status' => $this->p->options['schema_organization_json'] ?
-								'on' : 'rec',
-						),
-						'Google WebSite Markup' => array(
-							'status' => $this->p->options['schema_website_json'] ?
-								'on' : 'rec',
-						),
-						'Non-Persistant Cache' => array(
+						'(tool) WordPress Object (Non-Persistant) Cache' => array(
 							'status' => $this->p->is_avail['cache']['object'] ?
-								'on' : 'rec',
+								'on' : ( SucomUtil::get_const( 'WPSSO_OBJECT_CACHE_DISABLE' ) ?
+									'off' : 'rec' ),
 						),
-						'Open Graph / Rich Pin' => array( 
+						'(tool) WordPress Transient (Persistant) Cache' => array(
+							'status' => $this->p->is_avail['cache']['transient'] ?
+								'on' : ( SucomUtil::get_const( 'WPSSO_TRANSIENT_CACHE_DISABLE' ) ?
+									'off' : 'rec' ),
+						),
+						'(code) Facebook / Open Graph Meta Tags' => array( 
 							'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ?
 								'on' : 'rec',
 						),
-						'Transient Cache' => array(
-							'status' => $this->p->is_avail['cache']['transient'] ?
+						'(code) Google Author / Person Markup' => array( 
+							'status' => $this->p->options['schema_person_json'] ?
+								'on' : 'off',
+						),
+						'(code) Google Publisher / Organization Markup' => array(
+							'status' => $this->p->options['schema_organization_json'] ?
 								'on' : 'rec',
 						),
-						'Twitter Cards' => array( 
+						'(code) Google WebSite Markup' => array(
+							'status' => $this->p->options['schema_website_json'] ?
+								'on' : 'rec',
+						),
+						'(code) Schema Meta Property Containers' => array(
+							'status' => apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', 
+								$this->p->options['schema_add_noscript'] ) ? 'on' : 'off',
+						),
+						'(code) Twitter Card Meta Tags' => array( 
 							'status' => class_exists( $this->p->cf['lca'].'twittercard' ) ?
 								'on' : 'rec',
 						),
@@ -893,11 +899,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+
 						$features[$label] = array( 
-							'status' => class_exists( $classname ) ? ( $aop ? 'on' : $off ) : $off,
-							'purchase' => empty( $info['url']['purchase'] ) ? '' : $info['url']['purchase'],
-							'tooltip' => sprintf( __( 'If the %1$s plugin is detected, %2$s will load additional integration modules to provide enhanced support and features for %3$s.', 'wpsso'), $label, $short_pro, $label ),
 							'td_class' => $aop ? '' : 'blank',
+							'purchase' => empty( $info['url']['purchase'] ) ? '' : $info['url']['purchase'],
+							'status' => class_exists( $classname ) ? ( $aop ? 'on' : $off ) : $off,
 						);
 					}
 				}
@@ -914,22 +920,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function show_plugin_status( &$ext = '', &$info = array(), &$features = array() ) {
+
 			$status_info = array( 
 				'on' => array(
 					'img' => 'green-circle.png',
-					'title' => 'Feature is Enabled',
+					'title' => 'Feature is enabled',
 				),
 				'off' => array(
 					'img' => 'gray-circle.png',
-					'title' => 'Feature is Disabled / not Loaded',
+					'title' => 'Feature is disabled / not loaded',
 				),
 				'rec' => array(
 					'img' => 'red-circle.png',
-					'title' => 'Feature is Recommended but Disabled / not Available',
+					'title' => 'Feature is recommended but disabled / not available',
 				),
 			);
 
-			uksort( $features, 'strcasecmp' );
+			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
+
 			foreach ( $features as $label => $arr ) {
 
 				if ( isset( $arr['classname'] ) )
@@ -944,31 +952,44 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $status_key ) ) {
 
-					$purchase_url = $status_key === 'rec' && 
-						! empty( $arr['purchase'] ) ?
-							$arr['purchase'] : '';
+					$td_class = empty( $arr['td_class'] ) ? '' : ' '.$arr['td_class'];
+					$icon_type = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
+					$label_text = empty( $match[2] ) ? $label : $match[2];
+					$label_text = empty( $arr['label'] ) ? $label_text : $arr['label'];
+					$purchase_url = $status_key === 'rec' && ! empty( $arr['purchase'] ) ? $arr['purchase'] : '';
 
-					$td_class = empty( $arr['td_class'] ) ?
-						'' : ' '.$arr['td_class'];
+					switch ( $icon_type ) {
+						case 'api': $icon_type = 'controls-repeat'; break;
+						case 'code': $icon_type = 'editor-code'; break;
+						case 'plugin': $icon_type = 'admin-plugins'; break;
+						case 'sharing': $icon_type = 'screenoptions'; break;
+						case 'tool': $icon_type = 'admin-tools'; break;
+					}
 
-					$tooltip_text = $this->p->msgs->get( 'tooltip-side-'.$label, array(
-						'text' => ( empty( $arr['tooltip'] ) ? '' : $arr['tooltip'] ),
-						'class' => 'sucom_tooltip_side',
-					) );
-
-					$label_text = empty( $arr['label'] ) ? $label : $arr['label'];
-
-					echo '<tr><td class="side">'.$tooltip_text.'</td>'.
+					echo '<tr>'.
+					'<td class="side"><span class="dashicons dashicons-'.$icon_type.'"></span></td>'.
 					'<td class="side'.$td_class.'">'.$label_text.'</td>'.
 					'<td class="side">'.
-					( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
-					'<img src="'.WPSSO_URLPATH.'images/'.
-						$status_info[$status_key]['img'].'" width="12" height="12" title="'.
-						$status_info[$status_key]['title'].'"/>'.
-					( $purchase_url ? '</a>' : '' ).
-					'</td></tr>'."\n";
+						( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
+						'<img src="'.WPSSO_URLPATH.'images/'.
+							$status_info[$status_key]['img'].'" width="12" height="12" title="'.
+							$status_info[$status_key]['title'].'"/>'.
+						( $purchase_url ? '</a>' : '' ).
+					'</td>'.
+					'</tr>'."\n";
 				}
 			}
+		}
+
+		private static function sort_plugin_features( $feature_a, $feature_b ) {
+			return strcasecmp( self::feature_priority( $feature_a ), 
+				self::feature_priority( $feature_b ) );
+		}
+
+		private static function feature_priority( $feature ) {
+			if ( strpos( $feature, '(tool)' ) === 0 )
+				return '(10) '.$feature;
+			else return $feature;
 		}
 
 		public function show_metabox_purchase() {

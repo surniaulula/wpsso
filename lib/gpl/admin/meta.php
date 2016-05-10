@@ -17,12 +17,12 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'meta_header_rows' => array(
 					'user_header_rows' => 4,	// $table_rows, $form, $head, $mod
-					'taxonomy_header_rows' => 4,	// $table_rows, $form, $head, $mod
+					'term_header_rows' => 4,	// $table_rows, $form, $head, $mod
 				),
 				'meta_media_rows' => array(
 					'post_media_rows' => 4,		// $table_rows, $form, $head, $mod
 					'user_media_rows' => 4,		// $table_rows, $form, $head, $mod
-					'taxonomy_media_rows' => 4,	// $table_rows, $form, $head, $mod
+					'term_media_rows' => 4,		// $table_rows, $form, $head, $mod
 				),
 			) );
 		}

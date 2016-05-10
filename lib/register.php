@@ -161,8 +161,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 					WpssoUser::delete_metabox_prefs( $user->ID );
 				}
-				foreach ( WpssoTaxonomy::get_public_terms() as $term_id )
-					WpssoTaxonomy::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
+				foreach ( WpssoTerm::get_public_terms() as $term_id )
+					WpssoTerm::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
 			}
 
 			// delete transients

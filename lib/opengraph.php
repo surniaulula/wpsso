@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			} else {
 				// get_og_images() also provides filter hooks for additional image ids and urls
-				if ( ! empty( $mod['obj'] ) )	// taxonomy or user
+				if ( ! empty( $mod['obj'] ) )	// term or user
 					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_image( $num_diff, 
 						$size_name, $mod['id'], $check_dupes, $force_regen, $md_pre ) );
 

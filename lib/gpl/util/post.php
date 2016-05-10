@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) )
 
 if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 
-	// WpssoGplUtilPost extends WpssoPost which extends WpssoMeta
 	class WpssoGplUtilPost extends WpssoPost {
 
 		public function __construct( &$plugin ) {
@@ -22,8 +21,8 @@ if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * The Free version does not have any code to get / save meta data, nor
-		 * does it have any video API modules, so disable some methods that 
-		 * wouldn't return anything anyway. ;-)
+		 * does it have any video API modules, so optimize and disable some methods 
+		 * that wouldn't return anything anyway. ;-)
 		 */
 		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
 			return $this->not_implemented( __METHOD__, null );

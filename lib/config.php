@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.30.0-1',	// plugin version
+					'version' => '3.31.0-dev1',	// plugin version
 					'opt_version' => '425',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -78,12 +78,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
 								'post' => 'Post Settings',
-								'meta' => 'User and Taxonomy Settings',
+								'meta' => 'Term and User Settings',
 							),
 							'util' => array(
-								'post' => 'Post Settings',
-								'taxonomy' => 'Taxonomy Settings',
-								'user' => 'User Settings',
+								'post' => 'Custom Post Meta',
+								'term' => 'Custom Term Meta',
+								'user' => 'Custom User Meta',
 							),
 						),
 						'pro' => array(
@@ -91,46 +91,46 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'general' => 'General Settings',
 								'advanced' => 'Advanced Settings',
 								'post' => 'Post Settings',
-								'meta' => 'User and Taxonomy Settings',
+								'meta' => 'Term and User Settings',
 							),
 							'ecom' => array(
-								'edd' => 'Easy Digital Downloads',
-								'marketpress' => 'MarketPress',
-								'woocommerce' => 'WooCommerce',
-								'wpecommerce' => 'WP e-Commerce',
-								'yotpowc' => 'Yotpo Social Reviews for WooCommerce',	// yotpo-social-reviews-for-woocommerce
+								'edd' => '(plugin) Easy Digital Downloads',
+								'marketpress' => '(plugin) MarketPress',
+								'woocommerce' => '(plugin) WooCommerce',
+								'wpecommerce' => '(plugin) WP e-Commerce',
+								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'forum' => array(
-								'bbpress' => 'bbPress',
+								'bbpress' => '(plugin) bbPress',
 							),
 							'lang' => array(
-								'polylang' => 'Polylang',
+								'polylang' => '(plugin) Polylang',
 							),
 							'media' => array(
-								'gravatar' => 'Author Gravatar',
-								'ngg' => 'NextGEN Gallery',
-								'rtmedia' => 'BuddyPress rtMedia',
-								'slideshare' => 'Slideshare API',
-								'upscale' => 'WP Image Upscaler',
-								'vimeo' => 'Vimeo Video API',
-								'wistia' => 'Wistia Video API',
-								'youtube' => 'YouTube Video / Playlist API',
+								'gravatar' => '(api) Author Gravatar Image',
+								'ngg' => '(plugin) NextGEN Gallery',
+								'rtmedia' => '(plugin) BuddyPress rtMedia',
+								'slideshare' => '(api) Slideshare API',
+								'upscale' => '(tool) WP Image Upscaling',
+								'vimeo' => '(api) Vimeo Video API',
+								'wistia' => '(api) Wistia Video API',
+								'youtube' => '(api) YouTube Video / Playlist API',
 							),
 							'seo' => array(
-								'aioseop' => 'All in One SEO Pack',
-								'headspace2' => 'HeadSpace2 SEO',
-								'wpseo' => 'Yoast SEO',
+								'aioseop' => '(plugin) All in One SEO Pack',
+								'headspace2' => '(plugin) HeadSpace2 SEO',
+								'wpseo' => '(plugin) Yoast SEO',
 							),
 							'social' => array(
-								'buddypress' => 'BuddyPress',
+								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'language' => 'Publisher Language',
-								'shorten' => 'URL Shortening',
-								'post' => 'Post Settings',
-								'restapi' => 'WP REST API v2',
-								'taxonomy' => 'Taxonomy Settings',
-								'user' => 'User Settings',
+								'language' => '(tool) WP Locale to Publisher Language',
+								'shorten' => '(api) URL Shortening Service APIs',
+								'post' => '(tool) Custom Post Meta',
+								'restapi' => '(plugin) WordPress REST API (Version 2)',
+								'term' => '(tool) Custom Term Meta',
+								'user' => '(tool) Custom User Meta',
 							),
 						),
 					),
@@ -558,14 +558,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_youtube_api' => 1,
 					// Social Settings Tab
 					'plugin_columns_post' => 1,
-					'plugin_columns_taxonomy' => 1,
+					'plugin_columns_term' => 1,
 					'plugin_columns_user' => 1,
 					'plugin_add_to_attachment' => 1,
 					'plugin_add_to_page' => 1,
 					'plugin_add_to_post' => 1,
 					'plugin_add_to_product' => 1,
 					'plugin_add_to_reply' => 0,	// bbpress
-					'plugin_add_to_taxonomy' => 1,
+					'plugin_add_to_term' => 1,
 					'plugin_add_to_topic' => 0,	// bbpress
 					'plugin_add_to_user' => 1,
 					'plugin_add_tab_preview' => 1,
@@ -1248,7 +1248,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once( WPSSO_PLUGINDIR.'lib/options.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/meta.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/post.php' );		// extends meta.php
-			require_once( WPSSO_PLUGINDIR.'lib/taxonomy.php' );	// extends meta.php
+			require_once( WPSSO_PLUGINDIR.'lib/term.php' );		// extends meta.php
 			require_once( WPSSO_PLUGINDIR.'lib/user.php' );		// extends meta.php
 			require_once( WPSSO_PLUGINDIR.'lib/media.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/head.php' );
