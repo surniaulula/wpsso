@@ -65,6 +65,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'tc_prod_def_data2' => '',
 			'plugin_version' => '',
 			'seo_author_name' => '',
+			'plugin_columns_taxonomy' => 'plugin_columns_term',	// renamed in v3.31.0-1
+			'plugin_add_to_taxonomy' => 'plugin_add_to_term',	// renamed in v3.31.0-1
 		);
 
 		protected $p;

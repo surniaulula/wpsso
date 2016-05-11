@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 
 			$mod = WpssoMeta::$mod_array;
-			$mod['id'] = $mod_id;
+			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
 			/*
@@ -75,8 +75,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
 			$mod['post_type'] = get_post_type( $mod_id );					// post type name
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
-			$mod['post_author'] = get_post_field( 'post_author', $mod_id );			// post author id
+			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
 
+			// hooked by the 'coauthors' pro module
 			return apply_filters( $this->p->cf['lca'].'_get_post_mod', $mod, $mod_id );
 		}
 

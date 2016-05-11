@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.31.0-dev1',	// plugin version
+					'version' => '3.31.0-dev2',	// plugin version
 					'opt_version' => '425',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'edd' => '(plugin) Easy Digital Downloads',
 								'marketpress' => '(plugin) MarketPress',
 								'woocommerce' => '(plugin) WooCommerce',
-								'wpecommerce' => '(plugin) WP e-Commerce',
+								'wpecommerce' => '(plugin) WP eCommerce',
 								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'forum' => array(
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'media' => array(
 								'gravatar' => '(api) Author Gravatar Image',
 								'ngg' => '(plugin) NextGEN Gallery',
-								'rtmedia' => '(plugin) BuddyPress rtMedia',
+								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'upscale' => '(tool) WP Image Upscaling',
 								'vimeo' => '(api) Vimeo Video API',
@@ -125,6 +125,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
+								'coauthors' => '(plugin) Co-Authors Plus',
 								'language' => '(tool) WP Locale to Publisher Language',
 								'shorten' => '(api) URL Shortening Service APIs',
 								'post' => '(tool) Custom Post Meta',
@@ -194,7 +195,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoplm' => array(
 					'short' => 'WPSSO PLM',		// short plugin name
 					'name' => 'WPSSO Place / Location and Local Business Meta (WPSSO PLM)',
-					'desc' => 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, and Google / Schema Local Business meta tags.',
+					'desc' => 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags.',
 					'slug' => 'wpsso-plm',
 					'base' => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',

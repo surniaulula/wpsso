@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 
 			$mod = WpssoMeta::$mod_array;
-			$mod['id'] = $mod_id;
+			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'user';
 			$mod['obj'] =& $this;
 			/*
