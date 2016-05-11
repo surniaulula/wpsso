@@ -497,12 +497,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.0-dev1 (2016/05/10)**
+**Version 3.31.0-dev2 (2016/05/11)**
 
 Official announcement: N/A
 
 * *New Features*
-	* None
+	* Added support for the [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) plugin.
 * *Improvements*
 	* Categorized the display of Free / Pro features in the sidebar metabox.
 * *Bugfixes*
@@ -527,9 +527,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.31.0-dev1 =
+= 3.31.0-dev2 =
 
-(2016/05/10) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox.
+(2016/05/11) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox.
 
 = 3.30.0-1 =
 
