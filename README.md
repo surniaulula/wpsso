@@ -142,34 +142,35 @@
 <li><strong>Supported 3rd Party Plugins</strong>
 
 <ul>
-<li>All in One SEO Pack</li>
-<li>bbPress</li>
-<li>BuddyPress (including Group Forum Topics)</li>
-<li>BuddyPress rtMedia</li>
-<li>Easy Digital Downloads</li>
-<li>HeadSpace2 SEO</li>
-<li>NextGEN Gallery</li>
-<li>MarketPress - WordPress eCommerce</li>
-<li>Polylang</li>
-<li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce versions 1 and 2</a></li>
-<li>WP e-Commerce</li>
-<li><a href="https://wordpress.org/plugins/rest-api/">WordPress REST API version 2</a></li>
-<li>Yoast SEO (aka WordPress SEO)</li>
-<li>Yotpo Social Reviews for WooCommerce</li>
+<li><a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a></li>
+<li><a href="https://wordpress.org/plugins/bbpress/">bbPress</a></li>
+<li><a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (including Group Forum Topics)</li>
+<li><a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a></li>
+<li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a></li>
+<li><a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a></li>
+<li><a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a></li>
+<li><a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a></li>
+<li><a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/polylang/">Polylang</a></li>
+<li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a> (version 1 and 2)</li>
+<li><a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/rest-api/">WordPress REST API</a> (version 2)</li>
+<li><a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO)</li>
+<li><a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a></li>
 </ul></li>
 <li><strong>Supported Service APIs</strong>
 
 <ul>
-<li>Bitly</li>
+<li><a href="https://bitly.com/">Bitly</a></li>
 <li><a href="https://goo.gl/">Google URL Shortener</a></li>
-<li>Gravatar Images</li>
-<li>Ow.ly</li>
-<li>Slideshare Presentations</li>
-<li>TinyURL</li>
-<li>Vimeo Videos</li>
-<li>Wistia Videos</li>
+<li><a href="https://en.gravatar.com/">Gravatar</a> (Author Image)</li>
+<li><a href="http://ow.ly/">Ow.ly</a></li>
+<li><a href="http://www.slideshare.net/">Slideshare</a> Presentations</li>
+<li><a href="http://tinyurl.com/">TinyURL</a></li>
+<li><a href="https://vimeo.com/">Vimeo</a> Videos</li>
+<li><a href="http://wistia.com/">Wistia</a> Videos</li>
 <li><a href="http://yourls.org/">Your Own URL Shortener</a> (YOURLS)</li>
-<li>YouTube Videos and Playlists</li>
+<li><a href="https://www.youtube.com/">YouTube</a> Videos and Playlists</li>
 </ul></li>
 </ul></li>
 <li>Additional (and optional) Free or Pro extension plugins:
