@@ -908,6 +908,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_user_page', $ret );
 		}
 
+		public static function user_exists( $user_id ) {
+			if ( $user_id ) {
+				global $wpdb;
+				return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(ID) FROM $wpdb->users WHERE ID = %d", $user_id ) ) ? true : false;
+			} else return false;
+		}
+
 		public static function get_author_object( $user_id = false, $output = 'object' ) {
 			return self::get_user_object( $user_id, $ret );
 		}

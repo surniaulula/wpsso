@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.31.0-dev3',	// plugin version
-					'opt_version' => '425',		// increment when changing default options
+					'version' => '3.31.0-dev4',	// plugin version
+					'opt_version' => '426',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -522,7 +522,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_image.width' => 1,
 					'add_meta_itemprop_image.height' => 1,
 					'add_meta_itemprop_publisher.name' => 1,
+					'add_meta_itemprop_author.url' => 1,
 					'add_meta_itemprop_author.name' => 1,
+					'add_meta_itemprop_contributor.url' => 1,
+					'add_meta_itemprop_contributor.name' => 1,
 					'add_meta_itemprop_address' => 1,
 					'add_meta_itemprop_openinghoursspecification.dayofweek' => 1,
 					'add_meta_itemprop_openinghoursspecification.opens' => 1,

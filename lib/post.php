@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
-						if ( ! empty( $this->p->options['plugin_check_head'] ) )
+						if ( apply_filters( $lca.'_check_post_header', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
 							$this->check_post_header( $post_id, $post_obj );
 					}
 				}

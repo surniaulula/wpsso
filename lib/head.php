@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
 				if ( ! empty( $author_id ) )
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website_url( $author_id, 
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
 						$this->p->options['seo_author_field'] );
 			}
 

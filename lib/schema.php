@@ -673,21 +673,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@type' => 'Person',
 			);
 
-			$url = get_the_author_meta( 'url', $mod['id'] );
-
+			$url = $mod['obj']->get_author_website( $author_id, 'url' );
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod['obj'] ?
-				$mod['obj']->get_author_name( $mod['id'], $wpsso->options['schema_author_name'] ) : null;
-
+			$name = $mod['obj']->get_author_name( $mod['id'], $wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
-			$desc = $mod['obj'] ?
-				$mod['obj']->get_options_multi( $mod['id'], 
-					array( 'schema_desc', 'og_desc' ) ) : null;
-
+			$desc = $mod['obj']->get_options_multi( $mod['id'], array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
 				$desc = get_the_author_meta( 'description', $mod['id'] );
 			if ( ! empty( $desc ) )
@@ -851,6 +845,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$size_name = $this->p->cf['lca'].'-schema';
+			$head_type_url = $this->get_head_item_type( $mod );
+
 			$og_image = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
 			if ( empty( $og_image ) && $mod['is_post'] ) 
@@ -858,6 +854,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $og_image as $image )
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
+
+			switch ( $head_type_url ) {
+				case 'http://schema.org/BlogPosting':
+				case 'http://schema.org/WebPage':
+					$ret = array_merge( $ret, $this->get_author_list_noscript( $use_post, $mod ) );
+					break;
+			}
 
 			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $use_post, $mod, $mt_og );
 		}
@@ -883,7 +886,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		// pass a single dimension array in $opts
 		public function get_single_image_noscript( $use_post, &$mixed, $prefix = 'og:image' ) {
 
 			$mt_image = array();
@@ -927,6 +929,63 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array_merge(
 					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
 					$mt_image,
+					array( array( '</noscript>'."\n" ) )
+				);
+			} else return array();
+		}
+
+		public function get_author_list_noscript( $use_post, $mod ) {
+
+			if ( empty( $mod['post_author'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: empty post_author' );
+				return array();
+			}
+
+			$ret = $this->get_single_author_noscript( $use_post, $mod['post_author'], 'author' );
+
+			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
+				foreach ( $mod['post_coauthors'] as $author_id )
+					$ret = array_merge( $ret, $this->get_single_author_noscript( $use_post, $author_id, 'contributor' ) );
+
+			return $ret;
+		}
+
+		public function get_single_author_noscript( $use_post, $author_id, $itemprop = 'author' ) {
+
+			if ( empty( $author_id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: empty author_id' );
+				return array();
+			} elseif ( empty( $this->p->m['util']['user'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: empty user module' );
+				return array();
+			} else $mod = $this->p->m['util']['user']->get_mod( $author_id );
+
+			$url = $mod['obj']->get_author_website( $author_id, 'url' );
+			$name = $mod['obj']->get_author_name( $author_id, $this->p->options['schema_author_name'] );
+
+			$mt_author = array_merge(
+				( empty( $url ) ? array() : 
+					$this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.url', $url, '', $use_post ) ),
+				( empty( $name ) ? array() : 
+					$this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.name', $name, '', $use_post ) )
+			);
+
+			// make sure we have html for at least one meta tag
+			$have_author_html = false;
+			foreach ( $mt_author as $num => $author ) {
+				if ( ! empty( $author[0] ) ) {
+					$have_author_html = true;
+					break;
+				}
+			}
+
+			if ( $have_author_html ) {
+				return array_merge(
+					array( array( '<noscript itemprop="'.$itemprop.'" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
+					$mt_author,
 					array( array( '</noscript>'."\n" ) )
 				);
 			} else return array();

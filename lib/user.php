@@ -425,7 +425,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						if ( $crawler_name === 'pinterest' )
 							$val = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
-						else $val = $this->get_author_website_url( $user_id, $this->p->options['og_author_field'] );
+						else $val = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
 
 						if ( ! empty( $val ) )	// make sure we don't add empty values
 							$ret[] = $val;
@@ -435,62 +435,66 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $ret;
 		}
 
-		// called from head and opengraph classes
 		public function get_author_name( $user_id, $field_id = 'display_name' ) {
 			$name = '';
-			switch ( $field_id ) {
-				case 'none':
-					break;
-				case 'fullname':
-					$name = trim( get_the_author_meta( 'first_name', $user_id ) ).' '.
-						trim( get_the_author_meta( 'last_name', $user_id ) );
-					break;
-				// sanitation controls, just in case ;-)
-				case 'user_login':
-				case 'user_nicename':
-				case 'display_name':
-				case 'nickname':
-				case 'first_name':
-				case 'last_name':
-					$name = get_the_author_meta( $field_id, $user_id );
-					break;
+			$is_user = SucomUtil::user_exists( $user_id );
+			if ( $is_user ) {
+				switch ( $field_id ) {
+					case 'none':
+						break;
+					case 'fullname':
+						$name = get_the_author_meta( 'first_name', $user_id ).' '.
+							get_the_author_meta( 'last_name', $user_id );
+						break;
+					case 'user_login':
+					case 'user_nicename':
+					case 'display_name':
+					case 'nickname':
+					case 'first_name':
+					case 'last_name':
+						$name = get_the_author_meta( $field_id, $user_id );
+						break;
+				}
+				$name = trim( $name );	// just in case
 			}
+			$name = apply_filters( $this->p->cf['lca'].'_get_author_name', $name, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' value: '.$name );
 			return $name;
 		}
 
-		// called from head and opengraph classes
-		public function get_author_website_url( $user_id, $field_id = 'url' ) {
+		public function get_author_website( $user_id, $field_id = 'url' ) {
 			$url = '';
-			$name = get_the_author_meta( 'display_name', $user_id );
-			switch ( $field_id ) {
-				case 'none':
-					break;
-				case 'index':
-					$url = get_author_posts_url( $user_id );
-					break;
-				default:
-					$url = get_the_author_meta( $field_id, $user_id );
-
-					// if empty or not a url, then fallback to the author index page,
-					// if the requested field is the opengraph or link author field
-					if ( empty( $url ) || ! preg_match( '/:\/\//', $url ) ) {
-						if ( $this->p->options['og_author_fallback'] && (
-							$field_id === $this->p->options['og_author_field'] || 
-							$field_id === $this->p->options['seo_author_field'] ) ) {
-
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'fetching the author index page url as fallback' );
-							$url = get_author_posts_url( $user_id );
+			$is_user = SucomUtil::user_exists( $user_id );
+			if ( $is_user ) {
+				switch ( $field_id ) {
+					case 'none':
+						break;
+					case 'index':
+						$url = get_author_posts_url( $user_id );
+						break;
+					default:
+						$url = get_the_author_meta( $field_id, $user_id );
+	
+						// if empty or not a url, then fallback to the author index page,
+						// if the requested field is the opengraph or link author field
+						if ( empty( $url ) || ! preg_match( '/:\/\//', $url ) ) {
+							if ( $this->p->options['og_author_fallback'] && 
+								( $field_id === $this->p->options['og_author_field'] || 
+									$field_id === $this->p->options['seo_author_field'] ) ) {
+	
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'fetching the author index page url as fallback' );
+								$url = get_author_posts_url( $user_id );
+							}
 						}
-					}
-					break;
+						break;
+				}
+				$url = trim( $url );	// just in case
 			}
-
+			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' ('.$name.') '.$field_id.' url: '.$url );
-
+				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' url: '.$url );
 			return $url;
 		}
 
