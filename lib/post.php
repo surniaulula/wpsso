@@ -101,7 +101,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$long_url = $this->p->util->get_sharing_url( $post_id );
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
-
 					if ( $long_url !== $short_url )	// just in case
 						return $short_url;
 			}

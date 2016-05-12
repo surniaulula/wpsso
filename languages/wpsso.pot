@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.0-"
-"dev2\n"
+"dev3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:433 lib/post.php:235 lib/taxonomy.php:235 lib/term.php:232
+#: lib/admin.php:433 lib/post.php:234 lib/taxonomy.php:235 lib/term.php:232
 #: lib/user.php:217
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
@@ -1149,7 +1149,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:84 lib/post.php:411 lib/pro/admin/post.php:100
+#: lib/gpl/admin/post.php:84 lib/post.php:410 lib/pro/admin/post.php:100
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2156,23 +2156,23 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:294
+#: lib/post.php:293
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:298
+#: lib/post.php:297
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:315
+#: lib/post.php:314
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:360 lib/profile/social-settings.php:27 lib/taxonomy.php:256
+#: lib/post.php:359 lib/profile/social-settings.php:27 lib/taxonomy.php:256
 #: lib/term.php:253 lib/user.php:239
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2230,7 +2230,7 @@ msgid ""
 "%6$s image size."
 msgstr ""
 
-#: lib/pro/util/shorten.php:150
+#: lib/pro/util/shorten.php:158
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
