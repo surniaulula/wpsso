@@ -125,7 +125,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
 		* [bbPress](https://wordpress.org/plugins/bbpress/)
 		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/)
+		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
 		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
 		* [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/)
 		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
@@ -497,12 +497,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.0-dev3 (2016/05/12)**
+**Version 3.31.0-dev4 (2016/05/12)**
 
 Official announcement: N/A
 
 * *New Features*
-	* Added support for the [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) plugin.
+	* Added support for the [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) plugin (including Guest Authors).
 * *Improvements*
 	* Categorized the display of Free / Pro features in the sidebar metabox.
 * *Bugfixes*
@@ -527,9 +527,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.31.0-dev3 =
+= 3.31.0-dev4 =
 
-(2016/05/12) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox. Added support for the Co-Authors Plus plugin.
+(2016/05/12) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox. Added support for the Co-Authors Plus plugin (including Guest Authors).
 
 = 3.30.0-1 =
 

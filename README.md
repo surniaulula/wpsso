@@ -145,7 +145,7 @@
 <li><a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a></li>
 <li><a href="https://wordpress.org/plugins/bbpress/">bbPress</a></li>
 <li><a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (including Group Forum Topics)</li>
-<li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a></li>
+<li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> (including Guest Authors)</li>
 <li><a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a></li>
 <li><a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a></li>
 <li><a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a></li>
