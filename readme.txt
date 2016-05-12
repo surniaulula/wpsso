@@ -125,13 +125,13 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
 		* [bbPress](https://wordpress.org/plugins/bbpress/)
 		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
 		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/)
 		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
 		* [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/)
 		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
 		* [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/)
 		* [Polylang](https://wordpress.org/plugins/polylang/)
+		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
 		* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (version 1 and 2)
 		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
 		* [WordPress REST API](https://wordpress.org/plugins/rest-api/) (version 2)
@@ -497,7 +497,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.0-dev2 (2016/05/11)**
+**Version 3.31.0-dev3 (2016/05/12)**
 
 Official announcement: N/A
 
@@ -527,9 +527,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.31.0-dev2 =
+= 3.31.0-dev3 =
 
-(2016/05/11) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox.
+(2016/05/12) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox. Added support for the Co-Authors Plus plugin.
 
 = 3.30.0-1 =
 
