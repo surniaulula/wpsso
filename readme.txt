@@ -177,7 +177,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 	* [WPSSO Schema JSON-LD](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
-**NGFB Pro / Power-User Example Meta Tags**
+**WPSSO Pro / Power-User Example Meta Tags**
 
 Example meta tags from [WPSSO Pro](http://wpsso.com/) for an Open Graph article, including the [WPSSO JSON Pro](http://wpsso.com/extend/plugins/wpsso-schema-json-ld/) extension for [schema.org/TechArticle](http://schema.org/TechArticle) JSON-LD markup (read by Google and Pinterest).
 
