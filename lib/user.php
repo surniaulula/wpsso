@@ -317,14 +317,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
 					$cm_opt = 'plugin_cm_'.$cm_pre.'_';
 					// not all social websites have a contact fields, so check
-					if ( array_key_exists( $cm_opt.'name', $this->p->options ) ) {
-						$enabled = $this->p->options[$cm_opt.'enabled'];
-						$name = $this->p->options[$cm_opt.'name'];
-						$label = $this->p->options[$cm_opt.'label'];
-						if ( ! empty( $enabled ) && 
-							! empty( $name ) && 
-							! empty( $label ) )
-								$fields[$name] = $label;
+					if ( isset( $this->p->options[$cm_opt.'name'] ) ) {
+						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) && 
+							! empty( $this->p->options[$cm_opt.'name'] ) && 
+							! empty( $this->p->options[$cm_opt.'label'] ) ) {
+							$fields[$this->p->options[$cm_opt.'name']] = $this->p->options[$cm_opt.'label'];
+						}
 					}
 				}
 			}
@@ -334,18 +332,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				foreach ( $this->p->cf['wp']['cm'] as $cm_id => $name ) {
 					$cm_opt = 'wp_cm_'.$cm_id.'_';
-					if ( array_key_exists( $cm_opt.'enabled', $this->p->options ) ) {
-						$enabled = $this->p->options[$cm_opt.'enabled'];
-						$label = $this->p->options[$cm_opt.'label'];
-						if ( ! empty( $enabled ) ) {
-							if ( ! empty( $label ) )
-								$fields[$cm_id] = $label;
+					if ( isset( $this->p->options[$cm_opt.'enabled'] ) ) {
+						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) ) {
+							if ( ! empty( $this->p->options[$cm_opt.'label'] ) )
+								$fields[$cm_id] = $this->p->options[$cm_opt.'label'];
 						} else unset( $fields[$cm_id] );
 					}
 				}
 			}
 
-			ksort( $fields, SORT_STRING );
+			asort( $fields );	// sort associative array by value
+
 			return $fields;
 		}
 

@@ -578,30 +578,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$ret = array();
+
+			if ( $is_main )
+				self::add_main_entity_data( $ret, $ret['url'] );
+
 			self::add_single_person_data( $ret, $user_id, false );	// list_element = false
 
-			if ( $is_main || $mod['is_home'] ) {
-
-				// override the author's website url from his profile
-				// and use the open graph url instead
+			// override the author's website url from his profile and use the open graph url instead
+			if ( $mod['is_home'] )
 				$ret['url'] = $mt_og['og:url'];
-
-				if ( $is_main )
-					self::add_main_entity_data( $ret, $ret['url'] );
-
-				// add the sameAs social profile links
-				if ( $mod['is_home'] ) {	// static or index page
-					foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
-						$url = trim( get_the_author_meta( $cm_id, $user_id ) );
-						if ( empty( $url ) )
-							continue;
-						if ( $cm_id === $this->p->options['plugin_cm_twitter_name'] )
-							$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-						if ( strpos( $url, '://' ) !== false )
-							$ret['sameAs'][] = esc_url( $url );
-					}
-				}
-			}
 
 			return self::return_data_from_filter( $json_data, $ret );
 		}
@@ -651,6 +636,39 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
+		// $user_id is optional and takes precedence over the $mod post_author value
+		public static function add_author_and_coauthor_data( &$json_data, $mod, $user_id = 0 ) {
+			$authors_added = 0;
+			$coauthors_added = 0;
+			$wpsso =& Wpsso::get_instance();
+
+			if ( empty( $user_id ) && 
+				isset( $mod['post_author'] ) )
+					$user_id = $mod['post_author'];
+
+			if ( empty( $user_id ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
+				return 0;
+			}
+
+			// single author
+			$authors_added += self::add_single_person_data( $json_data['author'],
+				$user_id, false );			// list_element = false
+
+			// list of contributors / co-authors
+			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
+				foreach ( $mod['post_coauthors'] as $author_id )
+					$coauthors_added += self::add_single_person_data( $json_data['contributor'],
+						$author_id, true );	// list_element = true
+
+			foreach ( array( 'author', 'contributor' ) as $itemprop )
+				if ( empty( $json_data[$itemprop] ) )
+					unset( $json_data[$itemprop] );	// prevent null assignment
+
+			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
+		}
+
 		public static function add_single_person_data( &$json_data, $user_id = 0, $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -670,27 +688,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'@type' => 'Person',
 			);
 
-			$url = $mod['obj']->get_author_website( $author_id, 'url' );
+			$url = $mod['obj']->get_author_website( $user_id, 'url' );
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod['obj']->get_author_meta( $mod['id'], $wpsso->options['schema_author_name'] );
+			$name = $mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
-			$desc = $mod['obj']->get_options_multi( $mod['id'], array( 'schema_desc', 'og_desc' ) );
+			$desc = $mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
-				$desc = $mod['obj']->get_author_meta( $mod['id'], 'description' );
+				$desc = $mod['obj']->get_author_meta( $user_id, 'description' );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
 			// get_og_images() also provides filter hooks for additional image ids and urls
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );	// $check_dupes = false
+			$og_image = $mod['obj']->get_og_image( 1, $size_name, $user_id, false );	// $check_dupes = false
 
 			if ( ! empty( $og_image ) )
 				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) );
 					unset( $ret['image'] );	// prevent null assignment
+
+			foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
+				$url = $mod['obj']->get_author_meta( $user_id, $cm_id );
+				if ( empty( $url ) )
+					continue;
+				if ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] )
+					$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
+				if ( strpos( $url, '://' ) !== false )
+					$ret['sameAs'][] = esc_url( $url );
+			}
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -714,7 +742,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// pass a single dimension image array in $opts
 		public static function add_single_image_data( &$json_data, &$opts, $prefix = 'og:image', $list_element = true ) {
-
 			$wpsso =& Wpsso::get_instance();
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -987,7 +1014,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				$size_name = $this->p->cf['lca'].'-schema';
-				$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );	// $check_dupes = false
+				$og_image = $mod['obj']->get_og_image( 1, $size_name, $author_id, false );	// $check_dupes = false
 	
 				foreach ( $og_image as $image ) {
 					$image_url = SucomUtil::get_mt_media_url( 'og:image', $image );
