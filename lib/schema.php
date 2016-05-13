@@ -659,10 +659,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty user_id' );
 				return 0;
-			}
-
-			// get the user module
-			if ( empty( $wpsso->m['util']['user'] ) ) {
+			} elseif ( empty( $wpsso->m['util']['user'] ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty user module' );
 				return 0;
@@ -677,13 +674,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( strpos( $url, '://' ) !== false )
 				$ret['url'] = esc_url( $url );
 
-			$name = $mod['obj']->get_author_name( $mod['id'], $wpsso->options['schema_author_name'] );
+			$name = $mod['obj']->get_author_meta( $mod['id'], $wpsso->options['schema_author_name'] );
 			if ( ! empty( $name ) )
 				$ret['name'] = $name;
 
 			$desc = $mod['obj']->get_options_multi( $mod['id'], array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
-				$desc = get_the_author_meta( 'description', $mod['id'] );
+				$desc = $mod['obj']->get_author_meta( $mod['id'], 'description' );
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
@@ -805,6 +802,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'datemodified' => 'article:modified_time',
 					) );
 
+					// add single image meta tags (no width or height) if noscript containers are disabled
 					if ( ! $this->is_noscript_enabled() &&
 						! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
 
@@ -817,7 +815,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						foreach ( $og_image as $image )
 							$mt_schema['image'][] = SucomUtil::get_mt_media_url( 'og:image', $image );
 					}
-
 					break;
 			}
 
@@ -905,12 +902,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				// defines a two-dimensional array
 				$mt_image = array_merge(
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $media_url, '', $use_post ),
-					( empty( $mixed[$prefix.':width'] ) ? 
-						array() : $this->p->head->get_single_mt( 'meta',
-							'itemprop', 'image.width', $mixed[$prefix.':width'], '', $use_post ) ),
-					( empty( $mixed[$prefix.':height'] ) ? 
-						array() : $this->p->head->get_single_mt( 'meta',
-							'itemprop', 'image.height', $mixed[$prefix.':height'], '', $use_post ) )
+					( empty( $mixed[$prefix.':width'] ) ? array() : $this->p->head->get_single_mt( 'meta',
+						'itemprop', 'image.width', $mixed[$prefix.':width'], '', $use_post ) ),
+					( empty( $mixed[$prefix.':height'] ) ? array() : $this->p->head->get_single_mt( 'meta',
+						'itemprop', 'image.height', $mixed[$prefix.':height'], '', $use_post ) )
 				);
 
 			// defines a two-dimensional array
@@ -951,8 +946,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $ret;
 		}
 
-		public function get_single_author_noscript( $use_post, $author_id, $itemprop = 'author' ) {
+		public function get_single_author_noscript( $use_post, $author_id = 0, $itemprop = 'author' ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array( 
+					'use_post' => $use_post,
+					'author_id' => $author_id,
+					'itemprop' => $itemprop,
+				) );
+			}
+
+			$og_ret = array();
 			if ( empty( $author_id ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: empty author_id' );
@@ -964,14 +968,35 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else $mod = $this->p->m['util']['user']->get_mod( $author_id );
 
 			$url = $mod['obj']->get_author_website( $author_id, 'url' );
-			$name = $mod['obj']->get_author_name( $author_id, $this->p->options['schema_author_name'] );
+			$name = $mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
+			$desc = $mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
+			if ( empty( $desc ) )
+				$desc = $mod['obj']->get_author_meta( $author_id, 'description' );
 
 			$mt_author = array_merge(
-				( empty( $url ) ? array() : 
-					$this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.url', $url, '', $use_post ) ),
-				( empty( $name ) ? array() : 
-					$this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.name', $name, '', $use_post ) )
+				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',
+					'itemprop', $itemprop.'.url', $url, '', $use_post ) ),
+				( empty( $name ) ? array() : $this->p->head->get_single_mt( 'meta',
+					'itemprop', $itemprop.'.name', $name, '', $use_post ) ),
+				( empty( $desc ) ? array() : $this->p->head->get_single_mt( 'meta',
+					'itemprop', $itemprop.'.description', $desc, '', $use_post ) )
 			);
+
+			// optimize by first checking if the meta tag is enabled
+			if ( ! empty( $this->p->options['add_meta_itemprop_author.image'] ) ) {
+
+				// get_og_images() also provides filter hooks for additional image ids and urls
+				$size_name = $this->p->cf['lca'].'-schema';
+				$og_image = $mod['obj']->get_og_image( 1, $size_name, $mod['id'], false );	// $check_dupes = false
+	
+				foreach ( $og_image as $image ) {
+					$image_url = SucomUtil::get_mt_media_url( 'og:image', $image );
+					if ( ! empty( $image_url ) ) {
+						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'meta',
+							'itemprop', $itemprop.'.image', $image_url, '', $use_post ) );
+					}
+				}
+			}
 
 			// make sure we have html for at least one meta tag
 			$have_author_html = false;

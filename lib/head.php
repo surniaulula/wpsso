@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				// fallback for authors without a Facebook page URL in their user profile
 				if ( empty( $mt_og['article:author'] ) )	// check for empty array
-					$mt_name['author'] = $this->p->m['util']['user']->get_author_name( $author_id,
+					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
 						$this->p->options['fb_author_name'] );
 			}
 

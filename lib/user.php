@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					if ( ! empty( $user_id ) ) {
 
 						if ( $crawler_name === 'pinterest' )
-							$val = $this->get_author_name( $user_id, $this->p->options['rp_author_name'] );
+							$val = $this->get_author_meta( $user_id, $this->p->options['rp_author_name'] );
 						else $val = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
 
 						if ( ! empty( $val ) )	// make sure we don't add empty values
@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $ret;
 		}
 
-		public function get_author_name( $user_id, $field_id = 'display_name' ) {
+		public function get_author_meta( $user_id, $field_id ) {
 			$name = '';
 			$is_user = SucomUtil::user_exists( $user_id );
 			if ( $is_user ) {
@@ -446,18 +446,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$name = get_the_author_meta( 'first_name', $user_id ).' '.
 							get_the_author_meta( 'last_name', $user_id );
 						break;
-					case 'user_login':
-					case 'user_nicename':
-					case 'display_name':
-					case 'nickname':
-					case 'first_name':
-					case 'last_name':
+					default:
 						$name = get_the_author_meta( $field_id, $user_id );
 						break;
 				}
 				$name = trim( $name );	// just in case
 			}
-			$name = apply_filters( $this->p->cf['lca'].'_get_author_name', $name, $user_id, $field_id, $is_user );
+			$name = apply_filters( $this->p->cf['lca'].'_get_author_meta', $name, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' value: '.$name );
 			return $name;

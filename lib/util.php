@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// twitter-style usernames (prepend with an @ character)
 				case 'at_name':
 					if ( $val !== '' ) {
-						$val = substr( preg_replace( '/[^a-zA-Z0-9_]/', '', $val ), 0, 15 );
+						$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
 						if ( ! empty( $val ) ) 
 							$val = '@'.$val;
 					}
