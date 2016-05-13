@@ -618,9 +618,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $desc ) )
 				$ret['description'] = $desc;
 
-			if ( ! empty( $wpsso->options[$logo_key] ) )
-				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) )	// list_element = false
+			if ( ! empty( $wpsso->options[$logo_key] ) ) {
+				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) ) {	// list_element = false
 					unset( $ret['logo'] );	// prevent null assignment
+				}
+			}
 
 			if ( empty( $ret['logo'] ) ) {
 				if ( $wpsso->debug->enabled )
@@ -662,9 +664,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$coauthors_added += self::add_single_person_data( $json_data['contributor'],
 						$author_id, true );	// list_element = true
 
-			foreach ( array( 'author', 'contributor' ) as $itemprop )
-				if ( empty( $json_data[$itemprop] ) )
+			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
+				if ( empty( $json_data[$itemprop] ) ) {
 					unset( $json_data[$itemprop] );	// prevent null assignment
+				}
+			}
 
 			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
 		}
@@ -706,9 +710,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$og_image = $mod['obj']->get_og_image( 1, $size_name, $user_id, false );	// $check_dupes = false
 
-			if ( ! empty( $og_image ) )
-				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) );
+			if ( ! empty( $og_image ) ) {
+				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) ) {
 					unset( $ret['image'] );	// prevent null assignment
+				}
+			}
 
 			foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 				$url = $mod['obj']->get_author_meta( $user_id, $cm_id );
