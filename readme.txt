@@ -42,7 +42,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Fully renders content (including shortcodes) for accurate description texts.
 * Configurable title separator character (hyphen by default).
 * Configurable title and description lengths (Open Graph, Twitter Card, SEO).
-* Includes author, co-author and publisher markup for Facebook, Pinterest and Google.
+* Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.
 * Includes WordPress tags as hashtags (including a configurable maximum).
 * Includes a Google / SEO description meta tag (if an SEO plugin is not detected).
 * Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
