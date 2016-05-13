@@ -44,7 +44,7 @@
 <li>Fully renders content (including shortcodes) for accurate description texts.</li>
 <li>Configurable title separator character (hyphen by default).</li>
 <li>Configurable title and description lengths (Open Graph, Twitter Card, SEO).</li>
-<li>Includes author and publisher markup for Facebook, PInterest, and Google.</li>
+<li>Includes author, co-author and publisher markup for Facebook, Pinterest and Google.</li>
 <li>Includes WordPress tags as hashtags (including a configurable maximum).</li>
 <li>Includes a Google / SEO description meta tag (if an SEO plugin is not detected).</li>
 <li>Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.</li>
