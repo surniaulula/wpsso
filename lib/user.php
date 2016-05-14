@@ -310,23 +310,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 
-			// loop through each social website option prefix
-			if ( ! empty( $this->p->cf['opt']['pre'] ) && 
-				is_array( $this->p->cf['opt']['pre'] ) ) {
-
-				foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
-					$cm_opt = 'plugin_cm_'.$cm_pre.'_';
-					// not all social websites have a contact fields, so check
-					if ( isset( $this->p->options[$cm_opt.'name'] ) ) {
-						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) && 
-							! empty( $this->p->options[$cm_opt.'name'] ) && 
-							! empty( $this->p->options[$cm_opt.'label'] ) ) {
-							$fields[$this->p->options[$cm_opt.'name']] = $this->p->options[$cm_opt.'label'];
-						}
-					}
-				}
-			}
-
+			// unset built-in contact fields and/or update their labels
 			if ( ! empty( $this->p->cf['wp']['cm'] ) && 
 				is_array( $this->p->cf['wp']['cm'] ) && $aop ) {
 
@@ -337,6 +321,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							if ( ! empty( $this->p->options[$cm_opt.'label'] ) )
 								$fields[$cm_id] = $this->p->options[$cm_opt.'label'];
 						} else unset( $fields[$cm_id] );
+					}
+				}
+			}
+
+			// loop through each social website option prefix
+			if ( ! empty( $this->p->cf['opt']['pre'] ) && 
+				is_array( $this->p->cf['opt']['pre'] ) ) {
+
+				foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
+					$cm_opt = 'plugin_cm_'.$cm_pre.'_';
+
+					// not all social websites have a contact fields, so check
+					if ( isset( $this->p->options[$cm_opt.'name'] ) ) {
+
+						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) && 
+							! empty( $this->p->options[$cm_opt.'name'] ) && 
+							! empty( $this->p->options[$cm_opt.'label'] ) ) {
+
+							$fields[$this->p->options[$cm_opt.'name']] = $this->p->options[$cm_opt.'label'];
+						}
 					}
 				}
 			}
@@ -448,7 +452,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 				$name = trim( $name );	// just in case
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'user_id '.$user_id.' is not a wordpress user' );
 			$name = apply_filters( $this->p->cf['lca'].'_get_author_meta', $name, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' value: '.$name );
@@ -483,7 +488,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 				$url = trim( $url );	// just in case
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'user_id '.$user_id.' is not a wordpress user' );
 			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' url: '.$url );
@@ -604,19 +610,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public static function get_pref( $idx = false, $user_id = false ) {
 			$user_id = $user_id === false ? 
 				get_current_user_id() : $user_id;
+
 			if ( ! isset( self::$pref[$user_id]['options_filtered'] ) || 
 				self::$pref[$user_id]['options_filtered'] !== true ) {
 
-				self::$pref[$user_id] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
+				$wpsso = Wpsso::get_instance();
+
+				self::$pref[$user_id] = apply_filters( $wpsso->cf['lca'].'_get_user_pref',
+					get_user_meta( $user_id, WPSSO_PREF_NAME, true ), $user_id );
+
 				if ( ! is_array( self::$pref[$user_id] ) )
 					self::$pref[$user_id] = array();
 
-				$wpsso = Wpsso::get_instance();
 				if ( ! isset( self::$pref[$user_id]['show_opts'] ) )
 					self::$pref[$user_id]['show_opts'] = $wpsso->options['plugin_show_opts'];
 
 				self::$pref[$user_id]['options_filtered'] = true;
 			}
+
 			if ( $idx !== false ) {
 				if ( isset( self::$pref[$user_id][$idx] ) ) 
 					return self::$pref[$user_id][$idx];

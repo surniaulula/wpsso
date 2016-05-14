@@ -21,6 +21,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $network_plugins = null;
 		protected static $crawler_name = null;		// saved crawler name from user-agent
 		protected static $filter_values = array();	// saved filter values
+		protected static $user_exists = array();	// saved user_exists() values
 
 		private static $pub_lang = array(
 			// https://www.facebook.com/translations/FacebookLocales.xml
@@ -910,8 +911,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function user_exists( $user_id ) {
 			if ( $user_id ) {
-				global $wpdb;
-				return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(ID) FROM $wpdb->users WHERE ID = %d", $user_id ) ) ? true : false;
+				if ( isset( self::$user_exists[$user_id] ) )
+					return self::$user_exists[$user_id];
+				else {
+					global $wpdb;
+					$select_sql = 'SELECT COUNT(ID) FROM '.$wpdb->users.' WHERE ID = %d';
+					return self::$user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+				}
 			} else return false;
 		}
 
