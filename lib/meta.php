@@ -600,13 +600,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
+				// get the image id, library prefix, and/or url values
 				$pid = $this->get_options( $mod['id'], $prefix.'_img_id' );
 				$pre = $this->get_options( $mod['id'], $prefix.'_img_id_pre' );
 				$url = $this->get_options( $mod['id'], $prefix.'_img_url' );
 
 				if ( $pid > 0 ) {
-					$pid = $pre === 'ngg' ?
-						'ngg-'.$pid : $pid;
+					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
