@@ -9,7 +9,7 @@
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/">https://wpsso.com/</a></td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="http://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo, yourls</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo, yourls, co-authors plus</td></tr>
 </table>
 
 <h2>Description</h2>

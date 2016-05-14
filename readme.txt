@@ -5,7 +5,7 @@ Text Domain: wpsso
 Domain Path: /languages
 Contributors: jsmoriss
 Donate Link: https://wpsso.com/
-Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo, yourls
+Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Facebook, g+, gallery, google, google plus, hashtags, imagebrowser, JSON-LD, knowledge graph, linkedin, marketpress, meta-tags, multilingual, multisite, nextgen gallery, nggalbum, nggallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, Summary Card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, wp_cache, youtube, yotpo, yourls, co-authors plus
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
