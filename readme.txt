@@ -404,7 +404,7 @@ Official announcement: N/A
 
 **Version 3.31.0-1 (2016/05/14)**
 
-Official announcement: N/A
+Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http://wpsso.com/2016/05/13/wpsso-update-adds-support-for-co-authors-plus/)
 
 * *New Features*
 	* Added support for the [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) plugin (including Guest Authors).
