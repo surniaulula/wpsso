@@ -28,8 +28,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Post
 			 */
-			'is_post' => false,
-			'is_home' => false,		// home page (any)
+			'is_post' => false,		// is post module
+			'is_home' => false,		// home page (archive or static)
 			'is_home_page' => false,	// static home page (have post ID)
 			'is_home_index' => false,	// blog index page (archive)
 			'post_type' => false,
@@ -39,12 +39,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Term
 			 */
-			'is_term' => false,
+			'is_term' => false,		// is term module
 			'tax_slug' => false,
 			/*
 			 * User
 			 */
-			'is_user' => false,
+			'is_user' => false,		// is user module
 		);
 
 		public function __construct() {
@@ -180,20 +180,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 
 			$table_rows = array();
-			$xtra_class = '';
+			$script_class = '';
 
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
 				if ( count( $parts ) === 1 ) {
 
 					if ( strpos( $parts[0], '<script ' ) === 0 )
-						$xtra_class = 'script';
+						$script_class = 'script';
 					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
-						$xtra_class = 'noscript';
-					$table_rows[] = '<td colspan="5" class="html '.$xtra_class.'"><pre>'.
+						$script_class = 'noscript';
+					$table_rows[] = '<td colspan="5" class="html '.$script_class.'"><pre>'.
 						esc_html( $parts[0] ).'</pre></td>';
-					if ( $xtra_class === 'script' ||
+					if ( $script_class === 'script' ||
 						strpos( $parts[0], '</noscript>' ) === 0 )
-							$xtra_class = '';
+							$script_class = '';
 
 				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
 
@@ -203,11 +203,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
 					else $match_name = $parts[3];
 
-					$table_rows[] = '<tr class="'.
-						( empty( $xtra_class ) ? '' : $xtra_class.' ' ).
-						( empty( $parts[0] ) ? 'is_disabled' : 'is_enabled' ).
-						( isset( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ?
-							'' : ' is_internal' ).'">'.
+					$opt_name = 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3];
+
+					$tr_class = ( empty( $script_class ) ?
+							'' : ' '.$script_class ).
+						( empty( $parts[0] ) ?
+							' is_disabled' : ' is_enabled' ).
+						( empty( $parts[5] ) && 
+							! empty( $this->p->options[$opt_name] ) ?
+								' is_empty' : '' ).
+						( isset( $this->p->options[$opt_name] ) ?
+							' is_standard' : ' is_internal' ).'">';
+
+					$table_rows[] = '<tr class="'.trim( $tr_class ).
 					'<th class="xshort">'.$parts[1].'</th>'.
 					'<th class="xshort">'.$parts[2].'</th>'.
 					'<td class="">'.( empty( $parts[6] ) ? 
