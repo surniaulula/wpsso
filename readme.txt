@@ -381,20 +381,26 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.1-dev1 (TBD)**
+**Version 3.31.1-dev1 (2016/05/16)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added new Open Graph meta tags for WooCommerce (Pro version):
+	* Added new internal / non-standard Open Graph meta tags for WooCommerce (Pro version):
+		* product:id
 		* product:sku
+		* product:colors
+		* product:sizes
 		* product:dimensions
-		* product:weight
+		* product:width (cm)
+		* product:height (cm)
+		* product:length (cm)
+		* product:weight (kg)
 		* product:category 
 		* product:tag
-	* Added new Open Graph meta tags for Easy Digital Downloads (Pro version):
+	* Added new internal / non-standard Open Graph meta tags for Easy Digital Downloads (Pro version):
 		* product:category 
 		* product:tag
 * *Bugfixes*
@@ -416,6 +422,10 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 	* Renamed the 'taxonomy' module and all related filters to 'term'.
 
 == Upgrade Notice ==
+
+= 3.31.1-dev1 =
+
+(2016/05/16) Added new internal / non-standard Open Graph meta tags for WooCommerce and Easy Digital Downloads (Pro version).
 
 = 3.31.0-1 =
 
