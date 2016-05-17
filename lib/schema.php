@@ -771,7 +771,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => esc_url( $media_url ),
 			);
 
-			self::add_data_prop_from_og( $ret, $opts, array(
+			self::add_data_itemprop_from_og( $ret, $opts, array(
 				'width' => $prefix.':width',
 				'height' => $prefix.':height',
 			) );
@@ -791,10 +791,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 		}
 
-		public static function add_data_prop_from_og( array &$json_data, array &$mt_og, array $names ) {
-			foreach ( $names as $mt_name => $og_name )
+		public static function add_data_itemprop_from_og( array &$json_data, array &$mt_og, array $names ) {
+			foreach ( $names as $itemprop_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
-					$json_data[$mt_name] = $mt_og[$og_name];
+					$json_data[$itemprop_name] = $mt_og[$og_name];
+		}
+
+		public static function get_data_itemprop_from_og( array &$mt_og, array $names ) {
+			foreach ( $names as $itemprop_name => $og_name )
+				if ( ! empty( $mt_og[$og_name] ) )
+					$ret[$itemprop_name] = $mt_og[$og_name];
+			return empty( $ret ) ? false : $ret;
+		}
+
+		// QuantitativeValue (width, height, length, depth, weight)
+		public static function add_data_quantitative_from_og( array &$json_data, array &$mt_og, array $names ) {
+			foreach ( $names as $itemprop_name => $og_name )
+				if ( ! empty( $mt_og[$og_name] ) )
+					switch ( $itemprop_name ) {
+						case 'length':	// QuantitativeValue does not have a length itemprop
+							$json_data['additionalProperty'][] = array(
+								'@context' => 'http://schema.org',
+								'@type' => 'PropertyValue',
+								'propertyID' => $itemprop_name,
+								'value' => $mt_og[$og_name],
+								// http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
+								'unitCode' => 'CMT',
+							);
+							break;
+						default:
+							$json_data[$itemprop_name] = array(
+								'@context' => 'http://schema.org',
+								'@type' => 'QuantitativeValue',
+								'value' => $mt_og[$og_name],
+								// http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
+								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
+							);
+							break;
+					}
 		}
 
 		/*
