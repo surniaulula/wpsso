@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.1-"
-"dev3\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -389,26 +388,6 @@ msgstr ""
 
 #: lib/com/script.php:89
 msgid "Use Image"
-msgstr ""
-
-#: lib/com/util.php:1215
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr ""
-
-#: lib/com/util.php:1218
-msgctxt "option comment"
-msgid "unhide these options"
-msgstr ""
-
-#: lib/com/util.php:1221
-msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
-msgstr ""
-
-#: lib/com/util.php:1224
-msgctxt "option comment"
-msgid "unhide these rows"
 msgstr ""
 
 #: lib/config-gettext-extract.php:3
@@ -2837,6 +2816,26 @@ msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "
 "class."
+msgstr ""
+
+#: lib/util.php:1613
+msgctxt "option comment"
+msgid "%1$d additional options not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1616
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/util.php:1619
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1622
+msgctxt "option comment"
+msgid "unhide these rows"
 msgstr ""
 
 #: wpsso.php:236
