@@ -381,7 +381,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.1-dev1 (2016/05/16)**
+**Version 3.31.1-dev2 (TBD)**
 
 Official announcement: N/A
 
@@ -423,9 +423,9 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.31.1-dev1 =
+= 3.31.1-dev2 =
 
-(2016/05/16) Added new internal / non-standard Open Graph meta tags for WooCommerce and Easy Digital Downloads (Pro version).
+(TBD) Added new internal / non-standard Open Graph meta tags for WooCommerce and Easy Digital Downloads (Pro version).
 
 = 3.31.0-1 =
 
