@@ -327,6 +327,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_book' => 'book',
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_blog.posting' => 'blog.posting',
+					'schema_type_for_download' => 'product',
 					'schema_type_for_event' => 'event',
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_person' => 'person',

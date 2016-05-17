@@ -189,9 +189,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_begin.'"/>'."\n";
 
 			// first element of returned array is the html tag
-			foreach ( $this->get_header_array( $use_post, $mod, $read_cache, $mt_og ) as $mt )
-				if ( ! empty( $mt[0] ) )
-					$html .= $mt[0];
+			$indent = "";
+			foreach ( $this->get_header_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
+				if ( ! empty( $mt[0] ) ) {
+					if ( $indent && 
+						strpos( $mt[0], '</noscript' ) === 0 )
+							$indent = "";
+					$html .= $indent.$mt[0];
+					if ( strpos( $mt[0], '<noscript' ) === 0 )
+						$indent = "\t";
+				}
+			}
 
 			// extra begin/end meta tag for duplicate meta tags check
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
