@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.1-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -389,6 +389,26 @@ msgstr ""
 
 #: lib/com/script.php:89
 msgid "Use Image"
+msgstr ""
+
+#: lib/com/util.php:1215
+msgctxt "option comment"
+msgid "%1$d additional options not shown in %2$s view"
+msgstr ""
+
+#: lib/com/util.php:1218
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/com/util.php:1221
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/com/util.php:1224
+msgctxt "option comment"
+msgid "unhide these rows"
 msgstr ""
 
 #: lib/config-gettext-extract.php:3
@@ -2008,99 +2028,99 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:244
+#: lib/meta.php:247
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:244
+#: lib/meta.php:247
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:244
+#: lib/meta.php:247
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:244
+#: lib/meta.php:247
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:244
+#: lib/meta.php:247
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:246
+#: lib/meta.php:249
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:246
+#: lib/meta.php:249
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:246
+#: lib/meta.php:249
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:248
+#: lib/meta.php:251
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:248
+#: lib/meta.php:251
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:248
+#: lib/meta.php:251
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:250
+#: lib/meta.php:253
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:250
+#: lib/meta.php:253
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:250
+#: lib/meta.php:253
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:417
+#: lib/meta.php:420
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:505
+#: lib/meta.php:508
 msgctxt "column title"
 msgid "Social Img"
 msgstr ""
 
-#: lib/meta.php:506
+#: lib/meta.php:509
 msgctxt "column title"
 msgid "Social Desc"
 msgstr ""
 
-#: lib/meta.php:524
+#: lib/meta.php:527
 msgid "Reload to View"
 msgstr ""
 

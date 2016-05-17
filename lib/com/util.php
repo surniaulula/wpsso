@@ -1165,8 +1165,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						// if we're here, then we have a table row tag already
 						// count the number of rows and options that are hidden
 						if ( $att === 'class' && ! empty( $show_opts ) && 
-							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide_in_'.$show_opts.'[" ]/', $row ) > 0 ) ) {
-							$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $matches );
+							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_'.$show_opts.'[" ]/', $row, $m ) > 0 ) ) {
+							if ( ! isset( $m[1] ) )
+								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row );
 							$hidden_rows += $matched;
 						}
 
@@ -1198,7 +1199,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			echo '<table class="sucom-setting '.$lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
-				( $hidden_rows === $count_rows ? ' hide_in_'.$show_opts : '' ).
+				( $hidden_rows === $count_rows ? ' hide_in_'.$show_opts : '' ).	// if all rows hidden, then hide the whole table
 			'">'."\n";
 
 			foreach ( $table_rows as $row )
@@ -1207,15 +1208,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			echo '</table>'."\n";
 			echo '</div>'."\n";
 
+			$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
+
 			if ( $hidden_opts > 0 ) {
-				$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
-				echo '<div class="hidden_opts_msg '.
-					$class_tabset.'-msg '.
-					$class_tabset_mb.'-msg '.
-					$class_href_key.'-msg">'.
-					$hidden_opts.' more options not shown in '.
-					$show_opts_label.' view (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.
-					$class_href_key.'\', \''.$show_opts.'\' );">unhide these options</a>)</div>'."\n";
+				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
+					sprintf( _x( '%1$d additional options not shown in %2$s view', 'option comment', 'nextgen-facebook' ), 
+						$hidden_opts, _x( $show_opts_label, 'option value', 'nextgen-facebook' ) ).
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\' );">'.
+					_x( 'unhide these options', 'option comment', 'nextgen-facebook' ).'</a>)</div>'."\n";
+			} elseif ( $hidden_rows > 0 ) {
+				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
+					sprintf( _x( '%1$d additional rows not shown in %2$s view', 'option comment', 'nextgen-facebook' ), 
+						$hidden_rows, _x( $show_opts_label, 'option value', 'nextgen-facebook' ) ).
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\', \'hide_row_in\' );">'.
+					_x( 'unhide these rows', 'option comment', 'nextgen-facebook' ).'</a>)</div>'."\n";
 			}
 		}
 

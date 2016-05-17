@@ -184,7 +184,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
 				if ( count( $parts ) === 1 ) {
-
 					if ( strpos( $parts[0], '<script ' ) === 0 )
 						$script_class = 'script';
 					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
@@ -194,6 +193,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $script_class === 'script' ||
 						strpos( $parts[0], '</noscript>' ) === 0 )
 							$script_class = '';
+
+				// do not show product offers
+				} elseif ( isset( $parts[3] ) && strpos( $parts[3], 'product:offer:' ) === 0 ) {
+					continue;
 
 				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
 
@@ -213,7 +216,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							! empty( $this->p->options[$opt_name] ) ?
 								' is_empty' : '' ).
 						( isset( $this->p->options[$opt_name] ) ?
-							' is_standard' : ' is_internal' ).'">';
+							' is_standard' : ' is_internal hide_row_in_basic' ).'">';
 
 					$table_rows[] = '<tr class="'.trim( $tr_class ).
 					'<th class="xshort">'.$parts[1].'</th>'.
