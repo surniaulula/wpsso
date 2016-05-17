@@ -381,7 +381,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.1-dev2 (2016/05/17)**
+**Version 3.31.1-dev3 (2016/05/17)**
 
 Official announcement: N/A
 
@@ -391,13 +391,16 @@ Official announcement: N/A
 	* Added new internal / non-standard Open Graph meta tags for WooCommerce (Pro version):
 		* product:id
 		* product:sku
-		* product:colors
-		* product:sizes
+		* product:url
+		* product:name
+		* product:image:id
 		* product:dimensions
 		* product:width (cm)
 		* product:height (cm)
 		* product:length (cm)
 		* product:weight (kg)
+		* product:color
+		* product:size
 		* product:category 
 		* product:tag
 	* Added new internal / non-standard Open Graph meta tags for Easy Digital Downloads (Pro version):
@@ -408,6 +411,21 @@ Official announcement: N/A
 	* None
 * *Developer Notes*
 	* Added a new 'wpsso_og_add_product_mt_offer' filter (returns false by default) to include "product:offer" meta tags in the Open Graph array for WooCommerce products (Pro version).
+		* product:offer:id
+		* product:offer:sku
+		* product:offer:url
+		* product:offer:name
+		* product:offer:image:id
+		* product:offer:dimensions
+		* product:offer:width (cm)
+		* product:offer:height (cm)
+		* product:offer:length (cm)
+		* product:offer:weight (kg)
+		* product:offer:color
+		* product:offer:size
+		* product:offer:category 
+		* product:offer:tag
+		* product:offer:description
 
 **Version 3.31.0-1 (2016/05/14)**
 
@@ -424,7 +442,7 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.31.1-dev2 =
+= 3.31.1-dev3 =
 
 (2016/05/17) Added new internal / non-standard Open Graph meta tags for WooCommerce and Easy Digital Downloads (Pro version).
 
