@@ -392,7 +392,7 @@ Official announcement: N/A
 		* product:id
 		* product:sku
 		* product:url
-		* product:name
+		* product:title
 		* product:image:id
 		* product:dimensions
 		* product:width (cm)
@@ -414,7 +414,7 @@ Official announcement: N/A
 		* product:offer:id
 		* product:offer:sku
 		* product:offer:url
-		* product:offer:name
+		* product:offer:title
 		* product:offer:image:id
 		* product:offer:dimensions
 		* product:offer:width (cm)
