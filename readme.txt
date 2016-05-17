@@ -403,10 +403,11 @@ Official announcement: N/A
 	* Added new internal / non-standard Open Graph meta tags for Easy Digital Downloads (Pro version):
 		* product:category 
 		* product:tag
+	* Added an "unhide these rows" link for internal / non-standard meta tags under the Head Tags tab in the Social Settings metabox.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added a new 'wpsso_og_add_product_mt_offer' filter (returns false by default) to include "product:offer" meta tags in the Open Graph array for WooCommerce products (Pro version).
 
 **Version 3.31.0-1 (2016/05/14)**
 
