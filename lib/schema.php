@@ -791,6 +791,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 		}
 
+		// deprecated 2016/05/18
+		public static function add_data_prop_from_og( array &$json_data, array &$mt_og, array $names ) {
+			return self::add_data_itemprop_from_og( $json_data, $mt_og, $names );
+		}
+
 		public static function add_data_itemprop_from_og( array &$json_data, array &$mt_og, array $names ) {
 			foreach ( $names as $itemprop_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
@@ -805,6 +810,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// QuantitativeValue (width, height, length, depth, weight)
+		// unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
 		public static function add_data_quantitative_from_og( array &$json_data, array &$mt_og, array $names ) {
 			foreach ( $names as $itemprop_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
@@ -815,7 +821,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								'@type' => 'PropertyValue',
 								'propertyID' => $itemprop_name,
 								'value' => $mt_og[$og_name],
-								// http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
 								'unitCode' => 'CMT',
 							);
 							break;
@@ -824,7 +829,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								'@context' => 'http://schema.org',
 								'@type' => 'QuantitativeValue',
 								'value' => $mt_og[$og_name],
-								// http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
 								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
 							);
 							break;
