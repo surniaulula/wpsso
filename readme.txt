@@ -86,7 +86,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 &lt;meta property="fb:app_id" content="525239184171769"/&gt;
 &lt;meta property="og:url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/&gt;
 &lt;meta property="og:type" content="article"/&gt;
-&lt;!-- article:author:1 --&gt;&ltmeta property="article:author" content="https://www.facebook.com/jsmoriss"/&gt;
+&lt;!-- article:author:1 --&gt;&lt;meta property="article:author" content="https://www.facebook.com/jsmoriss"/&gt;
 &lt;meta property="article:section" content="Social Networking"/&gt;
 &lt;meta property="article:published_time" content="2013-03-15T17:23:27+00:00"/&gt;
 &lt;meta property="article:modified_time" content="2016-05-13T11:02:32+00:00"/&gt;
@@ -95,9 +95,9 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 &lt;meta property="og:title" content="Tiled Gallery"/&gt;
 &lt;meta property="og:description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
 &lt;meta property="article:publisher" content="https://www.facebook.com/SurniaUlulaCom/"/&gt;
-&lt;!-- og:image:1 --&gt;&ltmeta property="og:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-600x315.jpg"/&gt;
-&lt;!-- og:image:1 --&gt;&ltmeta property="og:image:width" content="600"/&gt;
-&lt;!-- og:image:1 --&gt;&ltmeta property="og:image:height" content="315"/&gt;
+&lt;!-- og:image:1 --&gt;&lt;meta property="og:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-600x315.jpg"/&gt;
+&lt;!-- og:image:1 --&gt;&lt;meta property="og:image:width" content="600"/&gt;
+&lt;!-- og:image:1 --&gt;&lt;meta property="og:image:height" content="315"/&gt;
 &lt;meta name="twitter:domain" content="test.surniaulula.com"/&gt;
 &lt;meta name="twitter:site" content="@surniaululacom"/&gt;
 &lt;meta name="twitter:title" content="Tiled Gallery"/&gt;
