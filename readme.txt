@@ -381,6 +381,21 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.31.2-dev1 (2016/05/19)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Changed the default "Enforce Image Dimensions Check" value to unchecked.
+	* Added a new Verify Image Dimensions module, enabled when the "Enforce Image Dimensions Check" option is checked (Pro version).
+	* Moved the Social Preview tab in the Social Settings metabox to the left-most position.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added an internal / non-standard 'article:author:name' meta tag (used for the Social Preview feature).
+
 **Version 3.31.1-1 (2016/05/18)**
 
 Official announcement: N/A
@@ -441,6 +456,10 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 	* Renamed the 'taxonomy' module and all related filters to 'term'.
 
 == Upgrade Notice ==
+
+= 3.31.2-dev1 =
+
+(2016/05/19) Moved the Social Preview tab to the left-most position. Added a new Verify Image Dimensions module (Pro version).
 
 = 3.31.1-1 =
 
