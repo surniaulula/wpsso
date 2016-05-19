@@ -61,9 +61,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_default_tabs() {
 			$tabs = array();
 			foreach( apply_filters( $this->p->cf['lca'].'_social_settings_default_tabs', array(
+				'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 				'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 				'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
-				'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 			) ) as $key => $name ) {
@@ -163,8 +163,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							'No Title' : $head['og:title'] ).'</div>
 						<div class="preview_desc">'.( empty( $head['og:description'] ) ?
 							'No Description' : $head['og:description'] ).'</div>
-						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].( empty( $head['author'] )
-							? '' : ' | By '.$head['author'] ) ).'</div>
+						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].
+							( empty( $head['article:author:name'] ) ?
+								'' : ' | By '.$head['article:author:name'] ) ).'</div>
 					</div>
 				</div>
 			</div></td>';

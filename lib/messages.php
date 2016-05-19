@@ -659,9 +659,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'pro-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
+						if ( $lca !== $this->p->cf['lca'] &&
+							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+								$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
+								$req_msg = '<br>'.sprintf( __( '(note that all $1%s extensions also require a licensed and active %1$s plugin)',
+									'wpsso' ), $req_short );
+						} else $req_msg = '';
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase %s licence(s) to install / enable Pro modules and modify the following options.', 'wpsso' ), $info['short_pro'] ).'</a></p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( __( 'Purchase the %s plugin to install / enable Pro modules and modify the following options.', 'wpsso' ), $info['short_pro'] ).'</a></p>';
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+								sprintf( __( 'Purchase %s licence(s) to install its Pro modules and use the following features / options.',
+									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
+						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
+								'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						break;
 					case 'pro-option-msg':
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ), $info['short_pro'] ).'</a></p>';
