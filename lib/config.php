@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.31.1-1',	// plugin version
-					'opt_version' => '431',		// increment when changing default options
+					'opt_version' => '432',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
 					'plugin_auto_img_resize' => 1,			// Create Missing WP Media Images
-					'plugin_ignore_small_img' => 1,			// Enforce Image Dimensions Check
+					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
 					'plugin_upscale_img_max' => 50,			// Maximum Image Upscale Percentage
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
@@ -677,8 +677,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_lang:use' => 'default',
 					'plugin_auto_img_resize' => 1,			// Auto-Resize Media Images
 					'plugin_auto_img_resize:use' => 'default',
-					'plugin_ignore_small_img' => 1,			// Check Image Dimensions
-					'plugin_ignore_small_img:use' => 'default',
+					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
+					'plugin_check_img_dims:use' => 'default',
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_shortcodes:use' => 'default',
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)

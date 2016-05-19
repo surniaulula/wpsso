@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_auto_img_resize':
 							$text = 'Automatically generate missing or incorrect image sizes for previously uploaded images in the WordPress Media Library (default is checked).';
 							break;
-						case 'tooltip-plugin_ignore_small_img':
+						case 'tooltip-plugin_check_img_dims':
 							$text = 'Full size images selected by '.$info['short'].' must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social Image Dimensions' ).' you\'ve defined. Uncheck this option to disable the minimum image dimensions check. <em>Disabling this option is not advised</em> &mdash; if you uncheck this option, images that are too small for some social websites may be included in your meta tags.';
 							break;
 						case 'tooltip-plugin_upscale_images':

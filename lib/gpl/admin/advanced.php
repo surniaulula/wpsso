@@ -197,8 +197,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( 'plugin_auto_img_resize' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Enforce Image Dimensions Check',
-				'option label', 'wpsso' ), null, 'plugin_ignore_small_img' ).
-			$this->get_nocb_cell( 'plugin_ignore_small_img' );
+				'option label', 'wpsso' ), null, 'plugin_check_img_dims' ).
+			$this->get_nocb_cell( 'plugin_check_img_dims' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Allow Upscaling of WP Media Images',
 				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).

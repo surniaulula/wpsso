@@ -14,6 +14,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		private $renamed_site_keys = array(
 			'plugin_tid' => 'plugin_wpsso_tid',
+			'plugin_tid:use' => 'plugin_wpsso_tid:use',
+			'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
+			'plugin_ignore_small_img:use' => 'plugin_check_img_dims:use',	// renamed in v3.31.1-1
 		);
 
 		private $renamed_keys = array(
@@ -67,6 +70,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'seo_author_name' => '',
 			'plugin_columns_taxonomy' => 'plugin_columns_term',	// renamed in v3.31.0-1
 			'plugin_add_to_taxonomy' => 'plugin_add_to_term',	// renamed in v3.31.0-1
+			'plugin_ignore_small_img' => 'plugin_check_img_dims',	// renamed in v3.31.1-1
 		);
 
 		protected $p;

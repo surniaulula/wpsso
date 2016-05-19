@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$accept_img_size = apply_filters( $this->p->cf['lca'].'_attached_accept_img_size', 
-				( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
+				( empty( $this->p->options['plugin_check_img_dims'] ) ? true : false ),
 					$img_url, $img_width, $img_height, $size_name, $pid );
 
 			// check for resulting image dimensions that may be too small
@@ -734,7 +734,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$is_sufficient_h = $og_image['og:image:height'] >= $size_info['height'] ? true : false;
 
 							$accept_img_size = apply_filters( $this->p->cf['lca'].'_content_accept_img_size', 
-								( empty( $this->p->options['plugin_ignore_small_img'] ) ? true : false ),
+								( empty( $this->p->options['plugin_check_img_dims'] ) ? true : false ),
 								$og_image['og:image'], 
 								$og_image['og:image:width'], 
 								$og_image['og:image:height'], 
