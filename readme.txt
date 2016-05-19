@@ -80,47 +80,47 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http://wptest.io/) data.
 
-`
-<link rel="author" href="https://plus.google.com/u/1/+JSMorisset"/>
-<link rel="publisher" href="https://plus.google.com/+SurniaUlula"/>
-<meta property="fb:app_id" content="525239184171769"/>
-<meta property="og:url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/>
-<meta property="og:type" content="article"/>
-<!-- article:author:1 --><meta property="article:author" content="https://www.facebook.com/jsmoriss"/>
-<meta property="article:section" content="Social Networking"/>
-<meta property="article:published_time" content="2013-03-15T17:23:27+00:00"/>
-<meta property="article:modified_time" content="2016-05-13T11:02:32+00:00"/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:site_name" content="Test Site"/>
-<meta property="og:title" content="Tiled Gallery"/>
-<meta property="og:description" content="This is a test for Jetpack&#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/>
-<meta property="article:publisher" content="https://www.facebook.com/SurniaUlulaCom/"/>
-<!-- og:image:1 --><meta property="og:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-600x315.jpg"/>
-<!-- og:image:1 --><meta property="og:image:width" content="600"/>
-<!-- og:image:1 --><meta property="og:image:height" content="315"/>
-<meta name="twitter:domain" content="test.surniaulula.com"/>
-<meta name="twitter:site" content="@surniaululacom"/>
-<meta name="twitter:title" content="Tiled Gallery"/>
-<meta name="twitter:description" content="This is a test for Jetpack&#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/>
-<meta itemprop="url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/>
-<meta itemprop="name" content="Tiled Gallery"/>
-<meta itemprop="description" content="This is a test for Jetpack&#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/>
-<meta itemprop="datepublished" content="2013-03-15T17:23:27+00:00"/>
-<meta itemprop="datemodified" content="2016-05-13T11:02:32+00:00"/>
-<meta name="description" content="This is a test for Jetpack&#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to..."/>
-<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-	<meta itemprop="url" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/>
-	<meta itemprop="width" content="800"/>
-	<meta itemprop="height" content="1212"/>
-</noscript>
-<noscript itemprop="author" itemscope itemtype="http://schema.org/Person">
-	<meta itemprop="url" content="http://surniaulula.com/"/>
-	<meta itemprop="name" content="JS Morisset"/>
-	<meta itemprop="description" content="PHP developer and author of several Pro / Freemium plugins for WordPress."/>
-</noscript>
-`
+<pre>
+&lt;link rel="author" href="https://plus.google.com/u/1/+JSMorisset"/&gt;
+&lt;link rel="publisher" href="https://plus.google.com/+SurniaUlula"/&gt;
+&lt;meta property="fb:app_id" content="525239184171769"/&gt;
+&lt;meta property="og:url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/&gt;
+&lt;meta property="og:type" content="article"/&gt;
+&lt;!-- article:author:1 --&gt;<meta property="article:author" content="https://www.facebook.com/jsmoriss"/>
+&lt;meta property="article:section" content="Social Networking"/&gt;
+&lt;meta property="article:published_time" content="2013-03-15T17:23:27+00:00"/&gt;
+&lt;meta property="article:modified_time" content="2016-05-13T11:02:32+00:00"/&gt;
+&lt;meta property="og:locale" content="en_US"/&gt;
+&lt;meta property="og:site_name" content="Test Site"/&gt;
+&lt;meta property="og:title" content="Tiled Gallery"/&gt;
+&lt;meta property="og:description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
+&lt;meta property="article:publisher" content="https://www.facebook.com/SurniaUlulaCom/"/&gt;
+&lt;!-- og:image:1 --&gt;<meta property="og:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-600x315.jpg"/>
+&lt;!-- og:image:1 --&gt;<meta property="og:image:width" content="600"/>
+&lt;!-- og:image:1 --&gt;<meta property="og:image:height" content="315"/>
+&lt;meta name="twitter:domain" content="test.surniaulula.com"/&gt;
+&lt;meta name="twitter:site" content="@surniaululacom"/&gt;
+&lt;meta name="twitter:title" content="Tiled Gallery"/&gt;
+&lt;meta name="twitter:description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
+&lt;meta name="twitter:card" content="summary_large_image"/&gt;
+&lt;meta name="twitter:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/&gt;
+&lt;meta itemprop="url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/&gt;
+&lt;meta itemprop="name" content="Tiled Gallery"/&gt;
+&lt;meta itemprop="description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
+&lt;meta itemprop="datepublished" content="2013-03-15T17:23:27+00:00"/&gt;
+&lt;meta itemprop="datemodified" content="2016-05-13T11:02:32+00:00"/&gt;
+&lt;meta name="description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to..."/&gt;
+&lt;noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject"&gt;
+	&lt;meta itemprop="url" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/&gt;
+	&lt;meta itemprop="width" content="800"/&gt;
+	&lt;meta itemprop="height" content="1212"/&gt;
+&lt;/noscript&gt;
+&lt;noscript itemprop="author" itemscope itemtype="http://schema.org/Person"&gt;
+	&lt;meta itemprop="url" content="http://surniaulula.com/"/&gt;
+	&lt;meta itemprop="name" content="JS Morisset"/&gt;
+	&lt;meta itemprop="description" content="PHP developer and author of several Pro / Freemium plugins for WordPress."/&gt;
+&lt;/noscript&gt;
+</pre>
 
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
