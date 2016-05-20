@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( $lca !== $this->p->cf['lca'] &&
 							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 								$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
-								$req_msg = '<br>'.sprintf( __( '(note that all $1%s extensions also require a licensed and active %1$s plugin)',
+								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed and active %1$s plugin)',
 									'wpsso' ), $req_short );
 						} else $req_msg = '';
 						if ( $this->p->check->aop( $lca, false ) )

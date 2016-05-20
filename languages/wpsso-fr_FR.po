@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.1-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.2-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-05-17 19:16-0400\n"
-"PO-Revision-Date: 2016-05-17 19:16-0400\n"
+"POT-Creation-Date: 2016-05-20 10:42-0400\n"
+"PO-Revision-Date: 2016-05-20 10:42-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -136,7 +136,7 @@ msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:688 lib/messages.php:772
+#: lib/admin.php:688 lib/messages.php:782
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
@@ -146,7 +146,7 @@ msgctxt "submit button"
 msgid "View %s by Default"
 msgstr "Voir %s par Défaut"
 
-#: lib/admin.php:705 lib/messages.php:752
+#: lib/admin.php:705 lib/messages.php:762
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr "Vérifier pour mises à jour"
@@ -242,7 +242,7 @@ msgid "Download Latest Version"
 msgstr "Téléchargez dernière version"
 
 #: lib/admin.php:1179 lib/admin.php:1184 lib/admin.php:1200 lib/admin.php:1206
-#: lib/messages.php:732
+#: lib/messages.php:742
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
@@ -361,26 +361,6 @@ msgstr "Avis %s"
 #: lib/com/script.php:89
 msgid "Use Image"
 msgstr "Utiliser l’image"
-
-#: lib/com/util.php:1215
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
-
-#: lib/com/util.php:1218
-msgctxt "option comment"
-msgid "unhide these options"
-msgstr "afficher ces options"
-
-#: lib/com/util.php:1221
-msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
-msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
-
-#: lib/com/util.php:1224
-msgctxt "option comment"
-msgid "unhide these rows"
-msgstr "afficher ces lignes"
 
 #: lib/config-gettext-extract.php:3
 msgctxt "lib file description"
@@ -632,7 +612,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr "Utiliser le titre filtré (SEO)"
 
-#: lib/gpl/admin/advanced.php:38 lib/messages.php:723
+#: lib/gpl/admin/advanced.php:38 lib/messages.php:733
 #: lib/pro/admin/advanced.php:46
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -704,7 +684,7 @@ msgctxt "option label"
 msgid "Add Tabs to Social Settings Metabox"
 msgstr "Ajout d'onglets aux Réglages Sociaux"
 
-#: lib/gpl/admin/advanced.php:133 lib/meta.php:66
+#: lib/gpl/admin/advanced.php:133 lib/meta.php:64
 #: lib/pro/admin/advanced.php:138
 msgctxt "metabox tab"
 msgid "Preview"
@@ -802,7 +782,7 @@ msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr "Activer Étiquettes WP pour Pages"
 
-#: lib/gpl/admin/advanced.php:243 lib/messages.php:720
+#: lib/gpl/admin/advanced.php:243 lib/messages.php:730
 #: lib/pro/admin/advanced.php:240
 msgctxt "option label"
 msgid "Object Cache Expiry"
@@ -1023,11 +1003,11 @@ msgstr "URL de partage"
 msgid "Save a draft version or publish the %s to display these options."
 msgstr "Enregistrer un brouillon ou publier pour activer ces options."
 
-#: lib/gpl/admin/meta.php:102
+#: lib/gpl/admin/meta.php:99
 msgid "You can change the social image by selecting a featured image, attaching one or more images, or including images in the content."
 msgstr "Vous pouvez modifier l'image sociale en sélectionnant une image à la Une, attacher une image, ou ajouter une image aux contenu."
 
-#: lib/gpl/admin/meta.php:102
+#: lib/gpl/admin/meta.php:99
 msgid "The service API modules required for embedded video discovery are available in the Pro version."
 msgstr "Les modules de services APIs nécessaires à la découverte de vidéo embarqué sont disponibles dans la version Pro."
 
@@ -1124,39 +1104,15 @@ msgstr "Rubrique de l’article"
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
 
-#: lib/media.php:339
+#: lib/media.php:340
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:476
-msgid "full size original"
-msgstr "originale pleine grandeur"
-
-#: lib/media.php:486 lib/pro/media/ngg.php:197
-msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
-msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
-
-#: lib/media.php:486 lib/media.php:490
-msgid "Media Library"
-msgstr "la Bibliothèque de Médias"
-
-#: lib/media.php:486 lib/pro/media/ngg.php:197
-msgid "cropped"
-msgstr "recadrée"
-
-#: lib/media.php:765
-msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %2$s was first activated, try removing and adding the image back to your content."
-msgstr "%1$s inclut un attribut supplémentaire ‘data-wp-pid’ pour les images de la Bibliothèque de Médias &mdash; si cette image provient de la Bibliothèque de Médias, et quelle a été inséré au contenu avant que %2$s soit activé, essayez de supprimer et ré-ajouter à nouveau l’image au contenu."
-
-#: lib/media.php:768
-msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
-msgstr "L’image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
-
-#: lib/media.php:995
+#: lib/media.php:925
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une proportion égale ou supérieur a %4$d:1."
 
-#: lib/media.php:1010
+#: lib/media.php:940
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est plus petite que le minimum %4$s autorisés par la norme %5$s."
 
@@ -1484,185 +1440,189 @@ msgstr "Les valeurs des comptes sociaux site Web / d'affaires sont utilisées po
 msgid "See the <a href=\"%s\">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup."
 msgstr "Voir <a href=\"%s\">l'onglet de réglages Google / Schéma</a> pour définir un logo site Web / d'entreprise pour Google Search, ou activer / désactiver l'ajout de balisage Éditeur (Organisation) et/ou Auteur (Personne) JSON-LD."
 
-#: lib/messages.php:663
-msgid "Purchase %s licence(s) to install / enable Pro modules and modify the following options."
-msgstr "Achetez une/des licence(s) %s pour installer / activer les modules Pro et modifier les options suivantes."
+#: lib/messages.php:665
+msgid "(note that all %1$s extensions also require a licensed and active %1$s plugin)"
+msgstr "(notez que toutes les extensions %1$s nécessitent également %1$s comme base)"
 
-#: lib/messages.php:664
-msgid "Purchase the %s plugin to install / enable Pro modules and modify the following options."
-msgstr "Achetez l’extension %s pour installer / activer les modules Pro et modifier les options suivantes."
+#: lib/messages.php:670
+msgid "Purchase %s licence(s) to install its Pro modules and use the following features / options."
+msgstr "Achetez une license %s pour installer ces modules Pro et utiliser les options / fonctionnalités suivantes."
 
-#: lib/messages.php:667
+#: lib/messages.php:673
+msgid "Purchase the %s plugin to install its Pro modules and use the following features / options."
+msgstr "Achetez l’extension %s pour installer ces modules Pro et utiliser les options / fonctionnalités suivantes."
+
+#: lib/messages.php:677
 msgctxt "option comment"
 msgid "%s required to use this option"
 msgstr "%s requis pour utiliser cette option"
 
-#: lib/messages.php:671
+#: lib/messages.php:681
 msgid "You can modify the description values by updating the content or excerpt, and change the social image by selecting a featured image, attaching one or more images, or including images in the content."
 msgstr "Vous pouvez modifier les descriptions en mettant à jour le contenu ou l'extrait, et modifier l'image sociale en sélectionnant une image à la Une, attacher une image, ou ajouter une image aux contenu."
 
-#: lib/messages.php:674
+#: lib/messages.php:684
 msgid "The Free / Basic version of %1$s does not include the modules required to manage custom post, term, or user meta &mdash; these options are included for display purposes only."
 msgstr "Le version gratuite / de base de %1$s n'inclut pas les modules nécéssaire pour gérer le méta personnalisé d'articles, termes, ou d'utilisateur &mdash; ces options sont affichées seulement pour votre information."
 
-#: lib/messages.php:689
+#: lib/messages.php:699
 msgid "The <em>Select Media</em> tab in the Social Settings metabox can be used to select a larger image specifically for social / SEO purposes."
 msgstr "L'onglet <em>Choisir Média</em> dans la metabox Réglages Sociaux permet de choisir une image plus grande pour les balises SEO / sociaux."
 
-#: lib/messages.php:691
+#: lib/messages.php:701
 msgid "Additional information shown only to users with Administrative privileges:"
 msgstr "Informations complémentaires montré uniquement aux utilisateurs administratifs:"
 
-#: lib/messages.php:693
+#: lib/messages.php:703
 msgid "You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social and SEO Image Dimensions</a> settings."
 msgstr "Vous pouvez aussi ajuster les <a href=\"%1%s\">Dimensions d'Image SEO et Sociale</a> pour <b>%2$s</b>."
 
-#: lib/messages.php:694
+#: lib/messages.php:704
 msgid "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image upscaling percentage</em> feature."
 msgstr "Activer ou augmenter l'option d'<a href=\"%1$s\">Intégration WP / Thème</a> de <em>pourcentage d'agrandissement des images</em>."
 
-#: lib/messages.php:695
+#: lib/messages.php:705
 msgid "Disable the <a href=\"%1$s\">WP / Theme Integration</a> <em>image dimensions check</em> option (not recommended)."
 msgstr "Désactiver l'option d'<a href=\"%1$s\">Intégration WP / Thème</a> de vérification des dimensions d'images (non recommandé)."
 
-#: lib/messages.php:697
+#: lib/messages.php:707
 msgid "Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings."
 msgstr "Définir la constante %1$s comme <em>true</em> pour masquer tous les avis importants automatiquement."
 
-#: lib/messages.php:702
+#: lib/messages.php:712
 msgid "An Open Graph image meta tag could not be created from this webpage content. Facebook and other social websites <em>require</em> at least one image meta tag to render shared content correctly."
 msgstr "Une balise méta Open Graph d’image n’a pas pu être conçue à partir de ce contenu. Facebook et d’autres sites sociaux <em>exiges</em> au moins une image Open Graph pour présenter un partage correctement."
 
-#: lib/messages.php:705
+#: lib/messages.php:715
 msgid "Google / Schema image markup could not be created from this webpage content. Google <em>requires</em> at least one image object for this Schema item type."
 msgstr "Un balisage Google / Schéma d’image n’a pas pu être conçue à partir de ce contenu. Google <em>exige</em> au moins un object d'image pour ce type de Schéma."
 
-#: lib/messages.php:708
+#: lib/messages.php:718
 msgid "A Business Logo Image is missing for the Schema Organization markup."
 msgstr "Une image logo pour l'entreprise est manquante pour le balisage Schéma Organisation."
 
-#: lib/messages.php:709
+#: lib/messages.php:719
 msgid "Please entrer a Business Logo Image URL in the %1$s settings."
 msgstr "SVP fournir une image logo pour l'entreprise dans les réglages %1$s."
 
-#: lib/messages.php:714
+#: lib/messages.php:724
 msgid "A Business Banner Image is missing for the Schema Organization markup."
 msgstr "Une image bannière pour l'entreprise est manquante pour le balisage Schéma Organisation."
 
-#: lib/messages.php:715
+#: lib/messages.php:725
 msgid "Please enter a Business Banner (600x60) Image URL in the %1$s settings."
 msgstr "SVP fournir une image bannière (600x60) pour l'entreprise dans les réglages %1$s."
 
-#: lib/messages.php:720
+#: lib/messages.php:730
 msgid "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this is lower than the recommended default value of %4$d seconds."
 msgstr "Veuillez noter que l'option avancée <a href=\"%1$s\">%2$s</a> est actuellement fixé à %3$d secondes &mdash; ceci est inférieur à la valeur recommandée par défaut de %4$d secondes."
 
-#: lib/messages.php:723
+#: lib/messages.php:733
 msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr "L'option avancée <a href=\"%1$s\">%2$s</a> est actuellement désactivé."
 
-#: lib/messages.php:723
+#: lib/messages.php:733
 msgid "The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes."
 msgstr "L'utilisation de filtres de contenu WordPress permet a %s de rendre pleinement le texte du contenu pour les balises méta de description, et de détecter des images additionnelles, ainsi que des vidéos intégrées ajouté a partir de shortcodes."
 
-#: lib/messages.php:723
+#: lib/messages.php:733
 msgid "Some theme / plugins have badly coded content filters, so this option is disabled by default."
 msgstr "Certains thème / extensions ont des filtres de contenu mal codé, donc cette option est désactivée par défaut."
 
-#: lib/messages.php:723
+#: lib/messages.php:733
 msgid "<a href=\"%s\">If you use any shortcodes in your content text, this option should be enabled</a> (Pro version required) &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s)."
 msgstr "<a href=\"%s\">Si vous utilisez des shortcodes dans votre contenu, cette option devrait être activée</a> (version Pro requis) &mdash; si vous rencontrez des problèmes d'affichage après l'activation de cette option, déterminer quel thème / extension filtre le contenu d'une façon incorrecte, et signalez le problème à son auteur(s)."
 
-#: lib/messages.php:728
+#: lib/messages.php:738
 msgid "At least one of your theme header templates does not support Schema markup of the webpage head section."
 msgstr "Au moins un modèle header de votre thème ne supporte pas les balises de schéma d'en-têtes de page Web."
 
-#: lib/messages.php:728
+#: lib/messages.php:738
 msgid "The %s element in your theme's header templates should include a function / action / filter call for its attributes."
 msgstr "La balise %s dans vos modèles header de thème devrait inclure un appel de fonction / d'action / de filtre pour leurs attributs."
 
-#: lib/messages.php:728
+#: lib/messages.php:738
 msgid "%1$s can update your theme header templates automatically to change the default %2$s element to:"
 msgstr "%1$s peut mettre à jour les modèles header du thème automatiquement pour changer la balise %2$s par défaut à:"
 
-#: lib/messages.php:728
+#: lib/messages.php:738
 msgid "<b><a href=\"%1$s\">Click here to update theme header templates automatically</a></b> or update the theme templates yourself manually."
 msgstr "<b><a href=\"%1$s\">Cliquez ici pour mettre à jour les modèles header du thème automatiquement </a></b> ou modifiez les modèles vous-même manuellement."
 
-#: lib/messages.php:732
+#: lib/messages.php:742
 msgid "The %1$s plugin %2$s option is empty."
 msgstr "L'option %2$s de l'extension %1$s est vide."
 
-#: lib/messages.php:732
+#: lib/messages.php:742
 msgid "To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href=\"%s\">Pro Licenses and Extension Plugins</a> settings page."
 msgstr "Pour activer les fonctionnalités Pro et permettre a l'extensions de s'authentifier pour les mises à jour, veuillez entrer l'ID unique d'authentification que vous avez reçu par courriel sur la page de réglages <a href=\"%s\">Licences Pro et Autres Extensions</a>."
 
-#: lib/messages.php:735
+#: lib/messages.php:745
 msgid "An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don't forget to update the plugin to install the latest Pro version. ;-)"
 msgstr "Un ID d’authentification a été saisi pour %s, mais la version Pro n’est pas encore installé &ndash; n’oubliez pas de mettre à jour l’extension pour installer la version Pro. ;-)"
 
-#: lib/messages.php:741
+#: lib/messages.php:751
 msgid "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not active."
 msgstr "Au moins un ID d'authentification a été désigné sur la page de réglages <a href=\"%1$s\">Licences Pro et Autres Extensions</a>, mais l'extension %2$s n'est pas active."
 
-#: lib/messages.php:744
+#: lib/messages.php:754
 msgid "This Free plugin is required to update and enable the %s plugin and its Pro extensions."
 msgstr "Cette extension gratuite est nécessaire pour mettre à jour et activer %s et ses extensions Pro."
 
-#: lib/messages.php:744
+#: lib/messages.php:754
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr "Téléchargez <a href=\"%1$s\">la version gratuite de %2$s</a> (ZIP)."
 
-#: lib/messages.php:744
+#: lib/messages.php:754
 msgid "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress plugin upload page."
 msgstr "Puis sur la page d'extensions de WordPress, <a href=\"%s\">mettre cette extension en ligne et l'activer</a>."
 
-#: lib/messages.php:747
+#: lib/messages.php:757
 msgid "Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s)."
 msgstr "Lorsque l'extension %s est active, une ou plusieurs mises à jour pourrait devenir disponible pour les extensions Pro sous licence."
 
-#: lib/messages.php:747
+#: lib/messages.php:757
 msgid "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension plugin</a>."
 msgstr "En lire plus sur <a href=\"%1$s\" target=\"_blank\">l’extension %2$s</a>."
 
-#: lib/messages.php:752
+#: lib/messages.php:762
 msgid "%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed)."
 msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus récent (la version %5$s est actuellement installée)."
 
-#: lib/messages.php:752
+#: lib/messages.php:762
 msgid "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href=\"%3$s\" target=\"_blank\">download the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr "Utilisez le bouton <em>%1$s</em> d'une page de réglages %2$s pour récupérer l'information de mise à jour la plus récente, ou <a href=\"%3$s\" target=\"_blank\">télécharger la version de l'extension %4$s la plus récente</a> et installer le fichier ZIP manuellement."
 
-#: lib/messages.php:766
+#: lib/messages.php:776
 msgid "%s can be purchased quickly and easily via Paypal &ndash; allowing you to license and enable Pro version features within seconds of your purchase."
 msgstr "%s peut être acheté facilement et rapidement avec Paypal &ndash; vous permettant d’autoriser et activer la version Pro quelques secondes suivant votre achat."
 
-#: lib/messages.php:767
+#: lib/messages.php:777
 msgid "%s can be purchased quickly and easily via Paypal &ndash; allowing you to update the plugin within seconds of your purchase."
 msgstr "%s peut être acheté facilement et rapidement avec Paypal &ndash; vous permettant de mettre à jour l’extension quelques secondes suivant votre achat."
 
-#: lib/messages.php:768
+#: lib/messages.php:778
 msgid "Pro version licenses do not expire &ndash; there are no yearly or recurring fees for updates and support."
 msgstr "Les licences Pro n’expirent pas &ndash; il n’y a pas de frais annuels ou récurrents pour le soutien et les mises à jour."
 
-#: lib/messages.php:773
+#: lib/messages.php:783
 msgid "Metaboxes (like this one) can be opened / closed by clicking on their title bar, moved and re-ordered by dragging them, or removed / added from the <em>Screen Options</em> tab (top-right of page)."
 msgstr "Les metabox (comme celle-ci) peuvent être ouvertes / fermées en cliquant sur la barre de titre, déplacés et ré-organisées en les faisant glisser, ou enlevés / ajoutée à partir de l’onglet <em>Options de l'écran</em> (en haut à droite de la page) ."
 
-#: lib/messages.php:773
+#: lib/messages.php:783
 msgid "Option values in multiple tabs can be modified before clicking the '%s' button."
 msgstr "Les valeur d’option de plusieurs onglets peuvent être modifiés avant de cliquer sur le bouton ‘%s’."
 
-#: lib/messages.php:783
+#: lib/messages.php:793
 msgid "This option is localized &mdash; you may change the WordPress admin locale with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" target=\"_blank\">WP Native Dashboard</a>, etc., to define alternate option values for different languages."
 msgstr "Cette option est localisé &mdash; vous pouvez changer la langue locale admin WordPress avec <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" target=\"_blank\">WP Native Dashboard</a>, etc., pour définir des valeurs d'option alternatives pour d'autres langues."
 
-#: lib/meta.php:64
+#: lib/meta.php:65
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr "Modifier Texte"
 
-#: lib/meta.php:65
+#: lib/meta.php:66
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr "Choisir Média"
@@ -1692,85 +1652,85 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr "Example Open Graph"
 
-#: lib/meta.php:247
+#: lib/meta.php:248
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:247
+#: lib/meta.php:248
 msgid "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags."
 msgstr "Facebook, Pinterest, LinkedIn, Google+ et la majorité des sites sociaux utilisent les balises méta Open Graph."
 
-#: lib/meta.php:247
+#: lib/meta.php:248
 msgid "The Facebook debugger allows you to refresh Facebook's cache, while also validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr "Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout en validant également les balises méta Open Graph et Rich Pin de Pinterest."
 
-#: lib/meta.php:247
+#: lib/meta.php:248
 msgid "The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape information\" button several times to refresh Facebook's cache</strong>."
 msgstr "Le débogueur Facebook reste la méthode la plus stable et fiable pour vérifier les balises méta Open Graph. <strong>Vous devez cliquer sur le bouton \"Fetch new scrape information\" quelques fois pour actualiser le cache de Facebook</strong>."
 
-#: lib/meta.php:247
+#: lib/meta.php:248
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:249
+#: lib/meta.php:250
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:249
+#: lib/meta.php:250
 msgid "Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+."
 msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, schéma, microdonnées, et social JSON-LD) pour Google Search et Google+."
 
-#: lib/meta.php:249
+#: lib/meta.php:250
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider Données Structurées"
 
-#: lib/meta.php:251
+#: lib/meta.php:252
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:251
+#: lib/meta.php:252
 msgid "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins."
 msgstr "Valider les balises méta Open Graph / Rich Pin et appliquent pour les montrés sur les épingles Pinterest agrandis ."
 
-#: lib/meta.php:251
+#: lib/meta.php:252
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:253
+#: lib/meta.php:254
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:253
+#: lib/meta.php:254
 msgid "The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field."
 msgstr "Le validateur de carte Twitter n'accepte pas les arguments de requête &ndash; copier-coller l'URL de partage suivant dans le champ d'entrée de validation."
 
-#: lib/meta.php:253
+#: lib/meta.php:254
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:420
+#: lib/meta.php:421
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/meta.php:508
+#: lib/meta.php:509
 msgctxt "column title"
 msgid "Social Img"
 msgstr "Img Social"
 
-#: lib/meta.php:509
+#: lib/meta.php:510
 msgctxt "column title"
 msgid "Social Desc"
 msgstr "Desc Social"
 
-#: lib/meta.php:527
+#: lib/meta.php:528
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
@@ -1868,9 +1828,17 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
 
-#: lib/pro/media/ngg.php:197 lib/pro/media/ngg.php:201
+#: lib/pro/media/ngg.php:180
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
+
+#: lib/pro/media/ngg.php:195 lib/pro/util/checkimgdims.php:63
+msgid "cropped"
+msgstr "recadrée"
+
+#: lib/pro/media/ngg.php:197 lib/pro/util/checkimgdims.php:65
+msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
+msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/upscale.php:193
 msgid "Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum)."
@@ -1879,6 +1847,22 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 #: lib/pro/media/upscale.php:203
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
+
+#: lib/pro/util/checkimgdims.php:38
+msgid "Media Library"
+msgstr "la Bibliothèque de Médias"
+
+#: lib/pro/util/checkimgdims.php:53
+msgid "full size original"
+msgstr "originale pleine grandeur"
+
+#: lib/pro/util/checkimgdims.php:99
+msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
+msgstr "%1$s inclut un attribut supplémentaire ‘data-wp-pid’ pour les images de la Bibliothèque de Médias &mdash; si cette image provient de la Bibliothèque de Médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l’image au contenu."
+
+#: lib/pro/util/checkimgdims.php:103
+msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
+msgstr "L’image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
 #: lib/pro/util/shorten.php:158
 msgid "Incomplete and/or missing %s service API credentials for URL shortening."
@@ -2444,6 +2428,26 @@ msgstr "La valeur de l'option '%s' ne peut pas être vide - l'option est remise 
 #: lib/util.php:654
 msgid "The DOMDocument PHP class is missing - unable to read head meta from HTML. Please contact your hosting provider to install the missing DOMDocument PHP class."
 msgstr "La classe DOMDocument PHP est manquante - impossible de lire les métas d'entête HTML. Veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe DOMDocument PHP manquante."
+
+#: lib/util.php:1613
+msgctxt "option comment"
+msgid "%1$d additional options not shown in %2$s view"
+msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
+
+#: lib/util.php:1616
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr "afficher ces options"
+
+#: lib/util.php:1619
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
+
+#: lib/util.php:1622
+msgctxt "option comment"
+msgid "unhide these rows"
+msgstr "afficher ces lignes"
 
 #: wpsso.php:236
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
