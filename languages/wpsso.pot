@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.31.2-"
-"dev1\n"
+"rc1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2189,18 +2189,18 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
+#: lib/pro/media/ngg.php:180
+msgid "NextGEN Gallery"
+msgstr ""
+
+#: lib/pro/media/ngg.php:195 lib/pro/util/checkimgdims.php:63
+msgid "cropped"
+msgstr ""
+
 #: lib/pro/media/ngg.php:197 lib/pro/util/checkimgdims.php:65
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
-msgstr ""
-
-#: lib/pro/media/ngg.php:197 lib/pro/media/ngg.php:201
-msgid "NextGEN Gallery"
-msgstr ""
-
-#: lib/pro/media/ngg.php:197 lib/pro/util/checkimgdims.php:63
-msgid "cropped"
 msgstr ""
 
 #: lib/pro/media/upscale.php:193
