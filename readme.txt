@@ -381,7 +381,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.31.2-rc1 (2016/05/20)**
+**Version 3.31.2-1 (2016/05/20)**
 
 Official announcement: N/A
 
@@ -457,7 +457,7 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.31.2-rc1 =
+= 3.31.2-1 =
 
 (2016/05/20) Moved the Social Preview tab to the left-most position. Added a new Verify Image Dimensions module (Pro version).
 
