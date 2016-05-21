@@ -295,9 +295,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				// just in case
 				if ( empty( $title ) ) {
-					$title = get_bloginfo( 'name', 'display' );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title.'"' );
+					if ( ! ( $title = get_bloginfo( 'name', 'display' ) ) )
+						$title = 'No Title';	// just in case
 				}
 			}
 
@@ -487,7 +488,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $mod['post_status'] === 'auto-draft' ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
-				} else $desc = SucomUtil::get_site_description( $this->p->options, $mod );
+				} elseif ( ! ( $desc = SucomUtil::get_site_description( $this->p->options, $mod ) ) )
+					$desc = 'No Description';	// just in case
 			}
 
 			if ( $this->p->debug->enabled )
