@@ -142,13 +142,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		text-align:left;
 		font-size:1.1em;
 	}
-	.column-'.$lca.'_og_image { 
-		width:'.$this->p->cf['form']['og_image_col_width'].';
+	.column-'.$lca.'_og_img { 
+		width:'.$this->p->cf['form']['og_img_col_width'].';
 	}
-	.column-'.$lca.'_og_image .preview_img { 
-		width:'.$this->p->cf['form']['og_image_col_width'].';
-		height:'.$this->p->cf['form']['og_image_col_height'].';
-		background-size:'.$this->p->cf['form']['og_image_col_width'].' auto;
+	.column-'.$lca.'_og_img .preview_img { 
+		width:'.$this->p->cf['form']['og_img_col_width'].';
+		height:'.$this->p->cf['form']['og_img_col_height'].';
+		background-size:'.$this->p->cf['form']['og_img_col_width'].' auto;
 		background-position:center center;
 		background-repeat:no-repeat;
 		background-position:center middle;

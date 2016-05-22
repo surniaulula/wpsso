@@ -504,11 +504,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $opts;
 		}
 
-		public function add_column_headings( $columns ) { 
-			return array_merge( $columns, array(
-				$this->p->cf['lca'].'_og_image' => _x( 'Social Img', 'column title', 'wpsso' ),
-				$this->p->cf['lca'].'_og_desc' => _x( 'Social Desc', 'column title', 'wpsso' )
-			) );
+		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
+			if ( ! empty( $mod_name ) ) {
+				foreach ( array( 
+					'og_img' => sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ),
+					'og_desc' => sprintf( _x( '%s Desc', 'option label', 'wpsso' ), $this->p->cf['menu'] ),
+				) as $key => $label ) {
+					if ( ! empty( $this->p->options['plugin_'.$key.'_col_'.$mod_name] ) )
+						$columns[$this->p->cf['lca'].'_'.$key] = $label;
+				}
+			}
+			return $columns;
 		}
 
 		protected function get_mod_column_content( $value, $column_name, &$mod ) {
@@ -529,7 +535,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			switch ( $column_name ) {
-				case $lca.'_og_image':
+				case $lca.'_og_img':
 				case $lca.'_og_desc':
 					$use_cache = true;
 					break;
@@ -547,7 +553,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			switch ( $column_name ) {
-				case $lca.'_og_image':
+				case $lca.'_og_img':
 					// set custom image dimensions for this post/term/user id
 					$this->p->util->add_plugin_image_sizes( false, array(), $mod );
 					break;
@@ -561,7 +567,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $value;
 		}
 
-		public function get_og_image_column_html( $og_image ) {
+		public function get_og_img_column_html( $og_image ) {
 			$value = '';
 			// try and get a smaller thumbnail version if we can
 			if ( isset( $og_image['og:image:id'] ) && 

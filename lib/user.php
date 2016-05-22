@@ -42,15 +42,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				// the social settings metabox has moved to its own settings page
 				//add_action( 'show_user_profile', array( &$this, 'show_metabox_section' ), 20 );
 
-				if ( ! empty( $this->p->options['plugin_columns_user'] ) ) {
+				if ( ! empty( $this->p->options['plugin_og_img_col_user'] ) ||
+					! empty( $this->p->options['plugin_og_desc_col_user'] ) ) {
 
 					add_filter( 'manage_users_columns', 
 						array( $this, 'add_column_headings' ), 10, 1 );
 					add_filter( 'manage_users_custom_column', 
-						array( $this, 'get_user_column_content',), 10, 3 );
+						array( $this, 'get_column_content',), 10, 3 );
 
 					$this->p->util->add_plugin_filters( $this, array( 
-						'og_image_user_column_content' => 4,
+						'og_img_user_column_content' => 4,
 						'og_desc_user_column_content' => 4,
 					) );
 				}
@@ -89,12 +90,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
 		}
 
-		public function get_user_column_content( $value, $column_name, $user_id ) {
+		public function add_column_headings( $columns ) { 
+			return $this->add_mod_column_headings( $columns, 'user' );
+		}
+
+		public function get_column_content( $value, $column_name, $user_id ) {
 			$mod = $this->get_mod( $user_id );
 			return $this->get_mod_column_content( $value, $column_name, $mod );
 		}
 
-		public function filter_og_image_user_column_content( $value, $column_name, $mod ) {
+		public function filter_og_img_user_column_content( $value, $column_name, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -118,7 +123,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
 				$image = reset( $og_image );
 				if ( ! empty( $image['og:image'] ) )
-					$value = $this->get_og_image_column_html( $image );
+					$value = $this->get_og_img_column_html( $image );
 			}
 
 			return $value;
@@ -663,7 +668,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					'locale:'.$locale.'_user:'.$user_id.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_image',
+					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_img',
 					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_desc',
 				),
 			);

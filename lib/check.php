@@ -18,6 +18,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $c = array();
 		private static $extend_checks = array(
 			'seo' => array(
+				'autodescription' => 'The SEO Framework',
 				'seou' => 'SEO Ultimate',
 			),
 			'util' => array(
@@ -161,6 +162,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'seo-aioseop':
 							$chk['class'] = 'All_in_One_SEO_Pack';
+							break;
+						case 'seo-autodescription':
+							$chk['plugin'] = 'autodescription/autodescription.php';
 							break;
 						case 'seo-headspace2':
 							$chk['class'] = 'HeadSpace_Plugin';

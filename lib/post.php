@@ -38,21 +38,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
 			if ( ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) &&
-				! empty( $this->p->options['plugin_columns_post'] ) ) {
+				( ! empty( $this->p->options['plugin_og_img_col_post'] ) || 
+					! empty( $this->p->options['plugin_og_desc_col_post'] ) ) ) {
 
 				$post_type_names = $this->p->util->get_post_types( 'names' );
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
-						if ( apply_filters( $this->p->cf['lca'].'_columns_post_'.$post_type, true ) ) { 
-							add_filter( 'manage_'.$post_type.'_posts_columns', 
-								array( $this, 'add_column_headings' ), 10, 1 );
-							add_action( 'manage_'.$post_type.'_posts_custom_column', 
-								array( $this, 'show_post_column_content',), 10, 2 );
-						}
+						add_filter( 'manage_'.$post_type.'_posts_columns', 
+							array( $this, 'add_column_headings' ), 10, 1 );
+						add_action( 'manage_'.$post_type.'_posts_custom_column', 
+							array( $this, 'show_column_content',), 10, 2 );
 					}
 				}
 				$this->p->util->add_plugin_filters( $this, array( 
-					'og_image_post_column_content' => 4,
+					'og_img_post_column_content' => 4,
 					'og_desc_post_column_content' => 4,
 				) );
 			}
@@ -107,12 +106,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $shortlink;
 		}
 
-		public function show_post_column_content( $column_name, $post_id ) {
+		public function add_column_headings( $columns ) { 
+			return $this->add_mod_column_headings( $columns, 'post' );
+		}
+
+		public function show_column_content( $column_name, $post_id ) {
 			$mod = $this->get_mod( $post_id );
 			echo $this->get_mod_column_content( '', $column_name, $mod );
 		}
 
-		public function filter_og_image_post_column_content( $value, $column_name, $mod ) {
+		public function filter_og_img_post_column_content( $value, $column_name, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 
@@ -137,7 +140,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$image = reset( $og_image );
 				if ( ! empty( $image['og:image'] ) )
-					$value = $this->get_og_image_column_html( $image );
+					$value = $this->get_og_img_column_html( $image );
 			}
 
 			return $value;

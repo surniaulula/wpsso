@@ -304,8 +304,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Social Settings' settings
 						 */
-						case 'tooltip-plugin_social_columns':
-							$text = '\'Social Image\' and \'Social Description\' columns are added to the Posts, Pages, Taxonomy / Terms, and Users list pages by default. You can exclude the columns individually from the <em>Screen Options</em> tab on the list pages, or disable the columns globally by unchecking these options.';
+						case 'tooltip-plugin_og_img_col':
+							$col_name = sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] );
+						case 'tooltip-plugin_og_desc_col':
+							if ( empty( $col_name ) )
+								$col_name = sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] );
+							$text = sprintf( __( 'An "%1$s" column can be added to the Posts, Pages, Taxonomy / Terms, and Users admin list pages. When enabled, <b>users can also hide this column</b> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' ), $col_name );
 							break;
 						case 'tooltip-plugin_add_to':
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';

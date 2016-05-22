@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.31.2-1',	// plugin version
-					'opt_version' => '432',		// increment when changing default options
+					'version' => '3.32.0-dev1',	// plugin version
+					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -118,6 +118,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'seo' => array(
 								'aioseop' => '(plugin) All in One SEO Pack',
+								'autodescription' => '(plugin) The SEO Framework',
 								'headspace2' => '(plugin) HeadSpace2 SEO',
 								'wpseo' => '(plugin) Yoast SEO',
 							),
@@ -567,9 +568,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api' => 1,
 					'plugin_youtube_api' => 1,
 					// Social Settings Tab
-					'plugin_columns_post' => 1,
-					'plugin_columns_term' => 1,
-					'plugin_columns_user' => 1,
+					'plugin_og_img_col_post' => 1,
+					'plugin_og_img_col_term' => 1,
+					'plugin_og_img_col_user' => 1,
+					'plugin_og_desc_col_post' => 0,
+					'plugin_og_desc_col_term' => 0,
+					'plugin_og_desc_col_user' => 0,
 					'plugin_add_to_attachment' => 1,
 					'plugin_add_to_page' => 1,
 					'plugin_add_to_post' => 1,
@@ -754,8 +758,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'min_version' => '4.1.0',	// minimum php version
 			),
 			'form' => array(
-				'og_image_col_width' => '70px',
-				'og_image_col_height' => '37px',
+				'og_img_col_width' => '70px',
+				'og_img_col_height' => '37px',
 				'tooltip_class' => 'sucom_tooltip',
 				'max_hashtags' => 10,
 				'max_media_items' => 20,

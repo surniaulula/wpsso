@@ -80,36 +80,35 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			if ( $network ) {
-				$table_rows[] = $form->get_th_html( _x( 'Show Social Img / Desc Columns for',
-					'option label', 'wpsso' ), null, 'plugin_social_columns',
-						array( 'th_rowspan' => 3 ) ).
-				$this->get_nocb_cell( 'plugin_columns_post', 
-					__( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).
-				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_post' );
+			foreach ( array( 
+				'og_img' => sprintf( _x( 'Show "%s" Column for', 'option label', 'wpsso' ), 
+					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
+				'og_desc' => sprintf( _x( 'Show "%s" Column for', 'option label', 'wpsso' ), 
+					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
+			) as $key => $label ) {
 
-				$table_rows[] = '<tr class="hide_in_basic">'.
-				$this->get_nocb_cell( 'plugin_columns_term', 
-					__( 'Terms (Categories and Tags)', 'wpsso' ) ).
-				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_term' );
-
-				$table_rows[] = '<tr class="hide_in_basic">'.
-				$this->get_nocb_cell( 'plugin_columns_user', 
-					__( 'Users' ) ).
-				$this->p->admin->get_site_use( $form, $network, 'plugin_columns_user' );
-			} else {
-				$table_rows[] = $form->get_th_html( _x( 'Show Social Img / Desc Columns for',
-					'option label', 'wpsso' ), null, 'plugin_social_columns' ).
-				'<td class="blank">'.
-				'<p>'.$this->get_nocb( 'plugin_columns_post', 
-					__( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).'</p>'.
-				'<p>'.$this->get_nocb( 'plugin_columns_term',
-					__( 'Terms (Categories and Tags)', 'wpsso' ) ).'</p>'.
-				'<p>'.$this->get_nocb( 'plugin_columns_user',
-					__( 'Users' ) ).'</p>'.
-				'</td>';
+				if ( $network ) {
+					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col', array( 'th_rowspan' => 3 ) ).
+					$this->get_nocb_cell( 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).
+					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_post' );
+	
+					$table_rows[] = '<tr class="hide_in_basic">'.
+					$this->get_nocb_cell( 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags)', 'wpsso' ) ).
+					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_term' );
+	
+					$table_rows[] = '<tr class="hide_in_basic">'.
+					$this->get_nocb_cell( 'plugin_'.$key.'_col_user', __( 'Users' ) ).
+					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_user' );
+				} else {
+					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col' ).
+					'<td class="blank">'.
+					'<p>'.$this->get_nocb( 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).'</p>'.
+					'<p>'.$this->get_nocb( 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags)', 'wpsso' ) ).'</p>'.
+					'<p>'.$this->get_nocb( 'plugin_'.$key.'_col_user', __( 'Users' ) ).'</p>'.
+					'</td>';
+				}
 			}
-
+	
 			$checkboxes = '';
 			foreach ( $this->p->util->get_post_types() as $post_type )
 				$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_'.$post_type->name ).' '.
@@ -121,7 +120,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$checkboxes .= '<p>'.$this->get_nocb( 'plugin_add_to_user' ).
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
-			$table_rows[] = $form->get_th_html( _x( 'Include Social Settings Metabox on',
+			$table_rows[] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Include Social Settings Metabox on',
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
 

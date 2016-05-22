@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
-							$locale_salt.'_column:'.$lca.'_og_image',
+							$locale_salt.'_column:'.$lca.'_og_img',
 							$locale_salt.'_column:'.$lca.'_og_desc',
 						),
 					);
