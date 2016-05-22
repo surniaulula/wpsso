@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( ! empty( $mod_name ) ) {
 				foreach ( array( 
 					'og_img' => sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ),
-					'og_desc' => sprintf( _x( '%s Desc', 'option label', 'wpsso' ), $this->p->cf['menu'] ),
+					'og_desc' => sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] ),
 				) as $key => $label ) {
 					if ( ! empty( $this->p->options['plugin_'.$key.'_col_'.$mod_name] ) )
 						$columns[$this->p->cf['lca'].'_'.$key] = $label;
