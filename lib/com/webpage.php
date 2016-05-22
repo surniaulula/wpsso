@@ -680,20 +680,20 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return $content;
 		}
 
-		public function get_section( $post_id ) {
+		public function get_article_section( $post_id ) {
 			$section = '';
 			if ( ! empty( $post_id ) )
 				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
 
 			if ( ! empty( $section ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'found custom meta section = '.$section );
+					$this->p->debug->log( 'found custom meta article section = '.$section );
 			} else $section = $this->p->options['og_art_section'];
 
-			if ( $section == 'none' )
+			if ( $section === 'none' )
 				$section = '';
 
-			return apply_filters( $this->p->cf['lca'].'_section', $section, $post_id );
+			return apply_filters( $this->p->cf['lca'].'_article_section', $section, $post_id );
 		}
 
 		public function get_hashtags( $post_id, $add_hashtags = true ) {

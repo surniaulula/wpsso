@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.0-dev1',	// plugin version
+					'version' => '3.32.0-dev2',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1096,6 +1096,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'images/follow/Twitter.png' => 'https://twitter.com/surniaululacom',
 					//'images/follow/Youtube.png' => 'https://www.youtube.com/user/SurniaUlulaCom',
 					'images/follow/Rss.png' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
+				),
+			),
+			'schema' => array(
+				'organization' => array(
+					'sameas' => array(
+						'fb_publisher_url' => 'Facebook Business Page URL',
+						'instgram_publisher_url' => 'Instagram Business URL',
+						'linkedin_publisher_url' => 'LinkedIn Company Page URL',
+						'myspace_publisher_url' => 'MySpace Business Page URL',
+						'rp_publisher_url' => 'Pinterest Company Page URL',
+						'seo_publisher_url' => 'Google+ Business Page URL',
+						'tc_site' => 'Twitter Business @username',
+					),
 				),
 			),
 		);

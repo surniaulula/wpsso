@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:section'] ) )
-					$og['article:section'] = $this->p->webpage->get_section( $post_id );
+					$og['article:section'] = $this->p->webpage->get_article_section( $post_id );
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:published_time'] ) )

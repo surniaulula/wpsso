@@ -51,41 +51,14 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 				case 'social-accounts-general':
 
-					foreach ( array(
-						'fb_publisher_url' => array(
-							'label' => _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
-							'tooltip' => 'fb_publisher_url', 'input_class' => 'wide',
-						),
-						'seo_publisher_url' => array(
-							'label' => _x( 'Google+ Business Page URL', 'option label', 'wpsso' ),
-							'tooltip' => 'google_publisher_url', 'input_class' => 'wide',
-						),
-						'rp_publisher_url' => array(
-							'label' => _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
-							'tooltip' => 'rp_publisher_url', 'input_class' => 'wide',
-						),
-						'tc_site' => array(
-							'label' => _x( 'Twitter Business @username', 'option label', 'wpsso' ),
-							'tooltip' => 'tc_site', 'input_class' => '',
-						),
-						'instgram_publisher_url' => array(
-							'label' => _x( 'Instagram Business URL', 'option label', 'wpsso' ),
-							'tooltip' => 'instgram_publisher_url', 'input_class' => 'wide',
-						),
-						'linkedin_publisher_url' => array(
-							'label' => _x( 'LinkedIn Company Page URL', 'option label', 'wpsso' ),
-							'tooltip' => 'linkedin_publisher_url', 'input_class' => 'wide',
-						),
-						'myspace_publisher_url' => array(
-							'label' => _x( 'MySpace Business Page URL', 'option label', 'wpsso' ),
-							'tooltip' => 'myspace_publisher_url', 'input_class' => 'wide',
-						),
-					) as $key => $att ) {
-						$table_rows[$key] = $this->form->get_th_html( $att['label'],
-							null, $att['tooltip'], array( 'is_locale' => true ) ).
-						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key,
-							$this->p->options ), $att['input_class'] ).'</td>';
-					}
+					$sameas = apply_filters( $this->p->cf['lca'].'_schema_organization_sameas', 
+						$this->p->cf['schema']['organization']['sameas'] );
+					asort( $sameas );	// sort values and maintain key association
+					foreach ( $sameas as $key => $label )
+						$table_rows[$key] = $this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
+							null, $key, array( 'is_locale' => true ) ).
+						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key, $this->p->options ),
+							( strpos( $key, '_url' ) ? 'wide' : '' ) ).'</td>';
 
 					break;
 			}
