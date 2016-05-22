@@ -380,7 +380,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.0-dev1 (2016/05/22)**
+**Version 3.32.0-dev2 (2016/05/22)**
 
 Official announcement: N/A
 
@@ -392,7 +392,8 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added a new 'ngfb_author_object_description' filter.
+	* Renamed the 'ngfb_section' filter to 'ngfb_article_section'.
 
 **Version 3.31.2-1 (2016/05/20)**
 
@@ -470,7 +471,7 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.32.0-dev1 =
+= 3.32.0-dev2 =
 
 (2016/05/22) Added new 'Show "SSO Img" Column for' and 'Show "SSO Desc" Column for' options. Added support for The SEO Framework plugin (Pro version).
 
