@@ -478,11 +478,3 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 (2016/05/20) Moved the Social Preview tab to the left-most position. Added a new Verify Image Dimensions module (Pro version).
 
-= 3.31.1-1 =
-
-(2016/05/18) Added new internal / non-standard Open Graph meta tags for WooCommerce and Easy Digital Downloads (Pro version).
-
-= 3.31.0-1 =
-
-(2016/05/14) Renamed the 'taxonomy' module and all related filters to 'term'. Categorized the display of Free / Pro features in the sidebar metabox. Added support for the Co-Authors Plus plugin (including Guest Authors).
-
