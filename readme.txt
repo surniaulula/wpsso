@@ -380,7 +380,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.0-1 (2016/05/22)**
+**Version 3.32.0-1 (2016/05/23)**
 
 Official announcement: N/A
 
@@ -473,7 +473,7 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 = 3.32.0-1 =
 
-(2016/05/22) Added new 'Show "SSO Img" Column for' and 'Show "SSO Desc" Column for' options. Added support for The SEO Framework plugin (Pro version).
+(2016/05/23) Added new 'Show "SSO Img" Column for' and 'Show "SSO Desc" Column for' options. Added support for The SEO Framework plugin (Pro version).
 
 = 3.31.2-1 =
 
