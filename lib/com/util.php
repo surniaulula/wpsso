@@ -797,6 +797,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function maybe_load_post( $id, $force = false ) {
+			global $post;
+			if ( empty( $post ) || $force ) {
+				$post = SucomUtil::get_post_object( $id, 'object' );
+				return true;
+			} else return false;
+		}
+
 		public static function is_term_page() {
 			$ret = false;
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-05-22 10:30-0400\n"
-"PO-Revision-Date: 2016-05-22 10:30-0400\n"
+"POT-Creation-Date: 2016-05-23 07:51-0400\n"
+"PO-Revision-Date: 2016-05-23 07:51-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -50,7 +50,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr "Forum d’aide"
 
-#: lib/admin.php:331 lib/admin.php:1141 lib/admin.php:1142
+#: lib/admin.php:331 lib/admin.php:1144 lib/admin.php:1145
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr "Achetez licence(s) Pro"
@@ -195,164 +195,168 @@ msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr "Achetez Version Pro"
 
-#: lib/admin.php:1020
+#: lib/admin.php:1012
+msgid "The development of %1$s is mostly driven by customer requests &mdash; we welcome your comments and suggestions. ;-)"
+msgstr "Le développement de %1$s est principalement dictée par les requêtes de nos clients &mdash; nous accueillons vos commentaires et suggestions. ;-)"
+
+#: lib/admin.php:1023
 msgid "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr "Consulter la <a href=\"%s\" target=\"_blank\">Foire aux Questions</a>"
 
-#: lib/admin.php:1023
+#: lib/admin.php:1026
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr "et <a href=\"%s\" target=\"_blank\">autres notes</a>"
 
-#: lib/admin.php:1029
+#: lib/admin.php:1032
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr "Ouvrez un <a href=\"%s\" target=\"_blank\">billet de soutien</a>"
 
-#: lib/admin.php:1032
+#: lib/admin.php:1035
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr "Postez dans le <a href=\"%s\" target=\"_blank\">forum de soutien</a>"
 
-#: lib/admin.php:1036
+#: lib/admin.php:1039
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:1098
+#: lib/admin.php:1101
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr "Afficher les détails"
 
-#: lib/admin.php:1118
+#: lib/admin.php:1121
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr "Afficher les détails + mise à jour"
 
-#: lib/admin.php:1124
+#: lib/admin.php:1127
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr "Afficher les détails + installer"
 
-#: lib/admin.php:1130
+#: lib/admin.php:1133
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr "Description de l’extension"
 
-#: lib/admin.php:1135
+#: lib/admin.php:1138
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr "Téléchargez dernière version"
 
-#: lib/admin.php:1179 lib/admin.php:1184 lib/admin.php:1200 lib/admin.php:1206
+#: lib/admin.php:1182 lib/admin.php:1187 lib/admin.php:1203 lib/admin.php:1209
 #: lib/messages.php:746
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
 
-#: lib/admin.php:1230
+#: lib/admin.php:1233
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#: lib/admin.php:1237
+#: lib/admin.php:1240
 msgid "<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP Bibliothèque d'URL client (cURL)</a> n'est pas chargé."
 
-#: lib/admin.php:1237 lib/admin.php:1242 lib/admin.php:1247
+#: lib/admin.php:1240 lib/admin.php:1245 lib/admin.php:1250
 msgid "please contact your hosting provider to have the missing PHP extension installed and/or enabled."
 msgstr "s'il vous plaît contactez votre hébergeur pour installer l'extension PHP manquante."
 
-#: lib/admin.php:1242
+#: lib/admin.php:1245
 msgid "<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP Notation Objet JavaScript (JSON)</a> n'est pas chargé."
 
-#: lib/admin.php:1247
+#: lib/admin.php:1250
 msgid "<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP chaînes de caractères multi-octets</a> n'est pas chargé."
 
-#: lib/admin.php:1256
+#: lib/admin.php:1259
 msgid "please uncheck the '<em>Add Open Graph meta data</em>' option under the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr "s'il vous plaît décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1261
+#: lib/admin.php:1264
 msgid "please uncheck the '<em>Add Twitter card meta data</em>' option under the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr "s'il vous plaît décocher l'option '<em>Ajoute les métadonnées de carte Twitter</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Twitter</a>."
 
-#: lib/admin.php:1266
+#: lib/admin.php:1269
 msgid "please uncheck the '<em>Add Google+ specific post meta data</em>' option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît décocher l'option '<em>Ajouter des méta données spécifiques à Google+</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google+</a>."
 
-#: lib/admin.php:1271
+#: lib/admin.php:1274
 msgid "please remove the '<em>Google Publisher Page</em>' value entered under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît supprimer la valeur de '<em>Page Google Publisher</em>' entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google +</a>."
 
-#: lib/admin.php:1282
+#: lib/admin.php:1285
 msgid "please disable the '<em>Open Graph Integrator</em>' module in the <a href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr "s'il vous plaît désactiver le module '<em>Open Graph Integrator</em>' dans <a href=\"%s\">SEO Ultimate Module Manager</a>."
 
-#: lib/admin.php:1293
+#: lib/admin.php:1296
 msgid "please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr "s'il vous plaît désactiver la fonctionnalité '<em>Social Meta</em>' dans le <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 
-#: lib/admin.php:1298
+#: lib/admin.php:1301
 msgid "please check the '<em>Disable Google Plus Profile</em>' option in the <a href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr "s'il vous plaît cocher l'option '<em>Disable Google Plus Profile</em>' dans les réglages de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1308
+#: lib/admin.php:1311
 msgid "please uncheck the '<em>Output Open Graph meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Output Open Graph meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1313
+#: lib/admin.php:1316
 msgid "please uncheck the '<em>Output Faceboook meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Output Faceboook meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1318
+#: lib/admin.php:1321
 msgid "please uncheck the '<em>Output Twitter meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Output Twitter meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1331
+#: lib/admin.php:1334
 msgid "please uncheck the '<em>%1$s</em>' option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1378
+#: lib/admin.php:1381
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1385
+#: lib/admin.php:1388
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1394
+#: lib/admin.php:1397
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1401
+#: lib/admin.php:1404
 msgid "The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1422
+#: lib/admin.php:1425
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/com/form.php:72 lib/config-gettext-extract.php:31
+#: lib/com/form.php:72 lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:186 lib/com/form.php:407 lib/config-gettext-extract.php:37
+#: lib/com/form.php:186 lib/com/form.php:407 lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/com/form.php:194 lib/config-gettext-extract.php:27
+#: lib/com/form.php:194 lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:198 lib/config-gettext-extract.php:30
+#: lib/com/form.php:198 lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:202 lib/config-gettext-extract.php:28
+#: lib/com/form.php:202 lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
@@ -429,196 +433,231 @@ msgid "Excerpt Only"
 msgstr "Extrait seulement"
 
 #: lib/config-gettext-extract.php:14
+msgctxt "option value"
+msgid "Facebook Business Page URL"
+msgstr "URL page d’affaires Facebook"
+
+#: lib/config-gettext-extract.php:15
 msgctxt "plugin description"
 msgid "Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!"
 msgstr "Extension rapide et complète pour une belle présentation sur tous sites sociaux - peu importe comment votre contenu est partagé ou re-partagé!"
 
-#: lib/config-gettext-extract.php:15
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr "Nom et prénom"
 
-#: lib/config-gettext-extract.php:16
+#: lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "Footer"
 msgstr "Pied de page"
 
-#: lib/config-gettext-extract.php:17
+#: lib/config-gettext-extract.php:18
 msgctxt "option value"
 msgid "Force this value"
 msgstr "Forcer cette valeur"
 
-#: lib/config-gettext-extract.php:18
+#: lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "Friday"
 msgstr "Vendredi"
 
-#: lib/config-gettext-extract.php:19
+#: lib/config-gettext-extract.php:20
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr "Réglages Généraux"
 
-#: lib/config-gettext-extract.php:20
+#: lib/config-gettext-extract.php:21
+msgctxt "option value"
+msgid "Google+ Business Page URL"
+msgstr "URL page d’affaires Google+"
+
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "Google"
 msgstr "Google"
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Header"
 msgstr "Entête"
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "If value is empty"
 msgstr "Si la valeur est vide"
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:25
+msgctxt "option value"
+msgid "Instagram Business URL"
+msgstr "URL page d’affaires Instagram"
+
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Left"
 msgstr "Gauche"
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:27
+msgctxt "option value"
+msgid "LinkedIn Company Page URL"
+msgstr "URL page entreprise LinkedIn"
+
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "Monday"
 msgstr "Lundi"
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:29
+msgctxt "option value"
+msgid "MySpace Business Page URL"
+msgstr "URL page d’affaires MySpace"
+
+#: lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "New activation"
 msgstr "Nouvelle activation"
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:31
 msgctxt "option value"
 msgid "Nickname"
 msgstr "Pseudonyme"
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "No"
 msgstr "Non"
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr "Ow.ly"
 
-#: lib/config-gettext-extract.php:33
+#: lib/config-gettext-extract.php:38
+msgctxt "option value"
+msgid "Pinterest Company Page URL"
+msgstr "URL page entreprise Pinterest"
+
+#: lib/config-gettext-extract.php:39
 msgctxt "lib file description"
 msgid "Pro Licenses and Extension Plugins"
 msgstr "Licences Pro et Autres Extensions"
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "Public Holidays"
 msgstr "Jours fériés"
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:41
 msgctxt "option value"
 msgid "Right"
 msgstr "Droite"
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:42
 msgctxt "option value"
 msgid "Saturday"
 msgstr "Samedi"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:44
 msgctxt "lib file description"
 msgid "Social and SEO Image Dimensions"
 msgstr "Dimensions des Images SEO et Sociaux"
 
-#: lib/config-gettext-extract.php:39
+#: lib/config-gettext-extract.php:45
 msgctxt "option value"
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: lib/config-gettext-extract.php:40
+#: lib/config-gettext-extract.php:46
 msgctxt "option value"
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: lib/config-gettext-extract.php:41
+#: lib/config-gettext-extract.php:47
 msgctxt "option value"
 msgid "TinyURL"
 msgstr "TinyURL"
 
-#: lib/config-gettext-extract.php:42
+#: lib/config-gettext-extract.php:48
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr "Titre et extrait"
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:49
 msgctxt "option value"
 msgid "Title Only"
 msgstr "Titre seulement"
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:50
 msgctxt "option value"
 msgid "Top"
 msgstr "Le haut"
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:51
 msgctxt "option value"
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: lib/config-gettext-extract.php:46
+#: lib/config-gettext-extract.php:52
+msgctxt "option value"
+msgid "Twitter Business @username"
+msgstr "Le @nom d’affaires Twitter"
+
+#: lib/config-gettext-extract.php:53
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr "Méthodes de Contact du Profil Utilisateur"
 
-#: lib/config-gettext-extract.php:47
+#: lib/config-gettext-extract.php:54
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
 msgstr "Pages et Comptes Sociaux du Site Web"
 
-#: lib/config-gettext-extract.php:48
+#: lib/config-gettext-extract.php:55
 msgctxt "option value"
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: lib/config-gettext-extract.php:49
+#: lib/config-gettext-extract.php:56
 msgctxt "plugin description"
 msgid "WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, Place, Product, etc.) for Google and Pinterest."
 msgstr "Une extension WPSSO pour ajouter des balises de Schéma JSON-LD (BlogPosting, Article, Place, Produit, etc.) pour Google et Pinterest."
 
-#: lib/config-gettext-extract.php:50
+#: lib/config-gettext-extract.php:57
 msgctxt "plugin description"
 msgid "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr "Une extension WPSSO pour ajouter des boutons de partage sociaux ridiculement réactif (SVG) dans votre contenu, les extraits, barre flottante CSS, widget, shortcode, etc."
 
-#: lib/config-gettext-extract.php:51
+#: lib/config-gettext-extract.php:58
 msgctxt "plugin description"
 msgid "WPSSO extension to add traditional Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr "Une extension WPSSO pour ajouter des boutons de partage social avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
 
-#: lib/config-gettext-extract.php:52
+#: lib/config-gettext-extract.php:59
 msgctxt "plugin description"
 msgid "WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari and Twitter's App Card."
 msgstr "Une extension WPSSO qui fournie des balises méta Apple Store / iTunes et Google Play App pour mobile Safari de Apple et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:53
+#: lib/config-gettext-extract.php:60
 msgctxt "plugin description"
 msgid "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags."
 msgstr "Une extension WPSSO pour fournir des balises méta Pinterest Place, Facebook / Open Graph de Position, et Schéma d'Entreprise Locale."
 
-#: lib/config-gettext-extract.php:54
+#: lib/config-gettext-extract.php:61
 msgctxt "plugin description"
 msgid "WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr "Une extension WPSSO pour fournir des mises à jour a WordPress Social Sharing Optimization (WPSSO) Pro et ses extensions Pro."
 
-#: lib/config-gettext-extract.php:55
+#: lib/config-gettext-extract.php:62
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
 
-#: lib/config-gettext-extract.php:56
+#: lib/config-gettext-extract.php:63
 msgctxt "option value"
 msgid "YOURLS"
 msgstr "YOURLS"
 
-#: lib/config-gettext-extract.php:57
+#: lib/config-gettext-extract.php:64
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr "Vos Réglages Sociaux"
@@ -1939,45 +1978,6 @@ msgctxt "metabox title"
 msgid "Social Pages and Accounts"
 msgstr "Pages et Comptes Sociaux"
 
-#: lib/setting/social-accounts.php:56 lib/submenu/essential.php:84
-#: lib/submenu/general.php:211
-msgctxt "option label"
-msgid "Facebook Business Page URL"
-msgstr "URL page d’affaires Facebook"
-
-#: lib/setting/social-accounts.php:60 lib/submenu/essential.php:131
-#: lib/submenu/general.php:236
-msgctxt "option label"
-msgid "Google+ Business Page URL"
-msgstr "URL page d’affaires Google+"
-
-#: lib/setting/social-accounts.php:64 lib/submenu/essential.php:142
-#: lib/submenu/general.php:358
-msgctxt "option label"
-msgid "Pinterest Company Page URL"
-msgstr "URL page entreprise Pinterest"
-
-#: lib/setting/social-accounts.php:68 lib/submenu/essential.php:149
-#: lib/submenu/general.php:383
-msgctxt "option label"
-msgid "Twitter Business @username"
-msgstr "Le @nom d’affaires Twitter"
-
-#: lib/setting/social-accounts.php:72 lib/submenu/general.php:405
-msgctxt "option label"
-msgid "Instagram Business URL"
-msgstr "URL page d’affaires Instagram"
-
-#: lib/setting/social-accounts.php:76 lib/submenu/general.php:409
-msgctxt "option label"
-msgid "LinkedIn Company Page URL"
-msgstr "URL page entreprise LinkedIn"
-
-#: lib/setting/social-accounts.php:80 lib/submenu/general.php:413
-msgctxt "option label"
-msgid "MySpace Business Page URL"
-msgstr "URL page d’affaires MySpace"
-
 #: lib/sitesubmenu/siteadvanced.php:34
 msgctxt "metabox title"
 msgid "Network Advanced Settings"
@@ -2095,6 +2095,11 @@ msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
+#: lib/submenu/essential.php:84 lib/submenu/general.php:211
+msgctxt "option label"
+msgid "Facebook Business Page URL"
+msgstr "URL page d’affaires Facebook"
+
 #: lib/submenu/essential.php:88 lib/submenu/general.php:215
 msgctxt "option label"
 msgid "Facebook Application ID"
@@ -2134,6 +2139,11 @@ msgstr "Inclure données structurées Google"
 msgid "<a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr "<a href=\"%s\">Informations du site Web</a> pour Google Search"
 
+#: lib/submenu/essential.php:131 lib/submenu/general.php:236
+msgctxt "option label"
+msgid "Google+ Business Page URL"
+msgstr "URL page d’affaires Google+"
+
 #: lib/submenu/essential.php:135 lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Business Logo Image URL"
@@ -2144,10 +2154,20 @@ msgctxt "metabox title"
 msgid "Pinterest"
 msgstr "Pinterest"
 
+#: lib/submenu/essential.php:142 lib/submenu/general.php:358
+msgctxt "option label"
+msgid "Pinterest Company Page URL"
+msgstr "URL page entreprise Pinterest"
+
 #: lib/submenu/essential.php:147
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr "Twitter"
+
+#: lib/submenu/essential.php:149 lib/submenu/general.php:383
+msgctxt "option label"
+msgid "Twitter Business @username"
+msgstr "Le @nom d’affaires Twitter"
 
 #: lib/submenu/general.php:33
 msgctxt "metabox title"
@@ -2371,6 +2391,21 @@ msgstr "Dimensions d’image carte <em>sommaire</em>"
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>grande img.</em>"
+
+#: lib/submenu/general.php:405
+msgctxt "option label"
+msgid "Instagram Business URL"
+msgstr "URL page d’affaires Instagram"
+
+#: lib/submenu/general.php:409
+msgctxt "option label"
+msgid "LinkedIn Company Page URL"
+msgstr "URL page entreprise LinkedIn"
+
+#: lib/submenu/general.php:413
+msgctxt "option label"
+msgid "MySpace Business Page URL"
+msgstr "URL page d’affaires MySpace"
 
 #: lib/submenu/setup.php:29
 msgctxt "metabox title"

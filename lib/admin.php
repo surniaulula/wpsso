@@ -1009,6 +1009,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->show_follow_icons();
 
+			echo '<p>'.sprintf( __( 'The development of %1$s is mostly driven by customer requests &mdash; we welcome your comments and suggestions. ;-)',
+				'wpsso' ), $this->p->cf['plugin'][$this->p->cf['lca']]['short'] ).'</p>';
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
 					continue;
