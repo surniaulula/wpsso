@@ -393,7 +393,7 @@ Official announcement: N/A
 	* None
 * *Developer Notes*
 	* Renamed the 'wpsso_section' filter to 'wpsso_article_section'.
-	* Added a new 'wpsso_schema_organization_sameas' filter.
+	* Added a new 'wpsso_social_accounts' filter.
 
 **Version 3.31.2-1 (2016/05/20)**
 
