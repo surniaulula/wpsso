@@ -848,6 +848,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tinyurl' => 'TinyURL',
 					'yourls' => 'YOURLS',
 				),
+				// social account keys and labels for organization sameas
+				'social_accounts' => array(
+					'fb_publisher_url' => 'Facebook Business Page URL',
+					'instgram_publisher_url' => 'Instagram Business URL',
+					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
+					'myspace_publisher_url' => 'MySpace Business Page URL',
+					'rp_publisher_url' => 'Pinterest Company Page URL',
+					'seo_publisher_url' => 'Google+ Business Page URL',
+					'tc_site' => 'Twitter Business @username',
+				),
 			),
 			'head' => array(
 				'min' => array(
@@ -1096,19 +1106,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'images/follow/Twitter.png' => 'https://twitter.com/surniaululacom',
 					//'images/follow/Youtube.png' => 'https://www.youtube.com/user/SurniaUlulaCom',
 					'images/follow/Rss.png' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
-				),
-			),
-			'schema' => array(
-				'organization' => array(
-					'sameas' => array(
-						'fb_publisher_url' => 'Facebook Business Page URL',
-						'instgram_publisher_url' => 'Instagram Business URL',
-						'linkedin_publisher_url' => 'LinkedIn Company Page URL',
-						'myspace_publisher_url' => 'MySpace Business Page URL',
-						'rp_publisher_url' => 'Pinterest Company Page URL',
-						'seo_publisher_url' => 'Google+ Business Page URL',
-						'tc_site' => 'Twitter Business @username',
-					),
 				),
 			),
 		);

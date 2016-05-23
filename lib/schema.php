@@ -529,10 +529,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				self::add_main_entity_data( $ret, $ret['url'] );
 
 			if ( $mod['is_home'] ) {	// static or index page
-				$sameas = apply_filters( $this->p->cf['lca'].'_schema_organization_sameas', 
-					$this->p->cf['schema']['organization']['sameas'] );
-				asort( $sameas );	// sort values and maintain key association
-				foreach ( $sameas as $key => $label ) {
+
+				$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', 
+					$this->p->cf['form']['social_accounts'] );
+				asort( $social_accounts );	// sort by label and maintain key association
+				foreach ( $social_accounts as $key => $label ) {
 					$url_locale = SucomUtil::get_locale_opt( $key, $this->p->options, $mod );
 					if ( empty( $url_locale ) )
 						continue;
