@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-05-23 09:19-0400\n"
-"PO-Revision-Date: 2016-05-23 09:19-0400\n"
+"POT-Creation-Date: 2016-05-24 10:07-0400\n"
+"PO-Revision-Date: 2016-05-24 10:07-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -300,38 +300,42 @@ msgid "please check the '<em>Disable Google Plus Profile</em>' option in the <a 
 msgstr "s'il vous plaît cocher l'option '<em>Disable Google Plus Profile</em>' dans les réglages de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
 #: lib/admin.php:1311
-msgid "please uncheck the '<em>Output Open Graph meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
-msgstr "s'il vous plaît décocher l'option '<em>Output Open Graph meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
+msgid "please uncheck the '<em>Output Open Graph meta tags?</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
+msgstr "s'il vous plaît décocher l'option '<em>Output Open Graph meta tags?</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
 #: lib/admin.php:1316
-msgid "please uncheck the '<em>Output Faceboook meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
-msgstr "s'il vous plaît décocher l'option '<em>Output Faceboook meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
+msgid "please uncheck the '<em>Output Faceboook meta tags?</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
+msgstr "s'il vous plaît décocher l'option '<em>Output Faceboook meta tags?</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
 #: lib/admin.php:1321
-msgid "please uncheck the '<em>Output Twitter meta tags</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
-msgstr "s'il vous plaît décocher l'option '<em>Output Twitter meta tags</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
+msgid "please uncheck the '<em>Output Twitter meta tags?</em>' option in <a href=\"%s\">The SEO Framework</a> Social Meta Settings."
+msgstr "s'il vous plaît décocher l'option '<em>Output Twitter meta tags?</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1334
+#: lib/admin.php:1326
+msgid "please uncheck the '<em>Output Knowledge tags?</em>' option in <a href=\"%s\">The SEO Framework</a> Knowledge Graph Settings."
+msgstr "s'il vous plaît décocher l'option '<em>Output Knowledge tags?</em>' dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
+
+#: lib/admin.php:1339
 msgid "please uncheck the '<em>%1$s</em>' option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1381
+#: lib/admin.php:1386
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1388
+#: lib/admin.php:1393
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1397
+#: lib/admin.php:1402
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1404
+#: lib/admin.php:1409
 msgid "The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1425
+#: lib/admin.php:1430
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -2434,74 +2438,74 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:270
+#: lib/util.php:271
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:271
+#: lib/util.php:272
 msgid "%s cached files, transient cache, and the WordPress object cache have been cleared."
 msgstr "Les fichiers mis en cache par %s, ainsi que sont cache transitoire, et le cache d’objets de WordPress ont été vidés."
 
-#: lib/util.php:403
+#: lib/util.php:404
 msgid "Error reading the %s topic list file."
 msgstr "Erreur de lecture du fichier %s de la liste des sujets."
 
-#: lib/util.php:430
+#: lib/util.php:431
 msgid "The value of option '%s' must be a URL - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:432
+#: lib/util.php:433
 msgid "The value of option '%s' must be equal to or greather than %s - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être égal ou supérieur à %s - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:434 lib/util.php:436
+#: lib/util.php:435 lib/util.php:437
 msgid "The value of option '%s' must be numeric - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:438
+#: lib/util.php:439
 msgid "'%1$s' is not an acceptable value for option '%2$s' - resetting the option to its default value."
 msgstr "'%1$s' n'est pas une valeur acceptable pour l'option '%2$s' - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:440
+#: lib/util.php:441
 msgid "The value of option '%s' must be alpha-numeric - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:442
+#: lib/util.php:443
 msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:444
+#: lib/util.php:445
 msgid "The value of option '%s' must be a hh:mm time - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:446
+#: lib/util.php:447
 msgid "The value of option '%s' must be HTML code - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:448
+#: lib/util.php:449
 msgid "The value of option '%s' cannot be empty - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' ne peut pas être vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:654
+#: lib/util.php:655
 msgid "The DOMDocument PHP class is missing - unable to read head meta from HTML. Please contact your hosting provider to install the missing DOMDocument PHP class."
 msgstr "La classe DOMDocument PHP est manquante - impossible de lire les métas d'entête HTML. Veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe DOMDocument PHP manquante."
 
-#: lib/util.php:1613
+#: lib/util.php:1624
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1616
+#: lib/util.php:1627
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1619
+#: lib/util.php:1630
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1622
+#: lib/util.php:1633
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
