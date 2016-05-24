@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( $use_post, array &$mod, array &$mt_og, $user_id ) {
+		public function get_noscript_array( array &$mod, array &$mt_og, $user_id ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -916,16 +916,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
 
 			foreach ( $og_image as $image )
-				$ret = array_merge( $ret, $this->get_single_image_noscript( $use_post, $image ) );
+				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
 
 			switch ( $head_type_url ) {
 				case 'http://schema.org/BlogPosting':
 				case 'http://schema.org/WebPage':
-					$ret = array_merge( $ret, $this->get_author_list_noscript( $use_post, $mod ) );
+					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
 					break;
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $use_post, $mod, $mt_og );
+			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og );
 		}
 
 		public function is_noscript_enabled() {
@@ -949,7 +949,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		public function get_single_image_noscript( $use_post, &$mixed, $prefix = 'og:image' ) {
+		public function get_single_image_noscript( array &$mod, &$mixed, $prefix = 'og:image' ) {
 
 			$mt_image = array();
 
@@ -967,15 +967,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// defines a two-dimensional array
 				$mt_image = array_merge(
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $media_url, '', $use_post ),
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $media_url, '', $mod ),
 					( empty( $mixed[$prefix.':width'] ) ? array() : $this->p->head->get_single_mt( 'meta',
-						'itemprop', 'image.width', $mixed[$prefix.':width'], '', $use_post ) ),
+						'itemprop', 'image.width', $mixed[$prefix.':width'], '', $mod ) ),
 					( empty( $mixed[$prefix.':height'] ) ? array() : $this->p->head->get_single_mt( 'meta',
-						'itemprop', 'image.height', $mixed[$prefix.':height'], '', $use_post ) )
+						'itemprop', 'image.height', $mixed[$prefix.':height'], '', $mod ) )
 				);
 
 			// defines a two-dimensional array
-			} else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $use_post );
+			} else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $mod );
 
 			// make sure we have html for at least one meta tag
 			$have_image_html = false;
@@ -995,7 +995,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else return array();
 		}
 
-		public function get_author_list_noscript( $use_post, $mod ) {
+		public function get_author_list_noscript( array &$mod ) {
 
 			if ( empty( $mod['post_author'] ) ) {
 				if ( $this->p->debug->enabled )
@@ -1003,20 +1003,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 			}
 
-			$ret = $this->get_single_author_noscript( $use_post, $mod['post_author'], 'author' );
+			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
 
 			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
-					$ret = array_merge( $ret, $this->get_single_author_noscript( $use_post, $author_id, 'contributor' ) );
+					$ret = array_merge( $ret, $this->get_single_author_noscript( $mod, $author_id, 'contributor' ) );
 
 			return $ret;
 		}
 
-		public function get_single_author_noscript( $use_post, $author_id = 0, $itemprop = 'author' ) {
+		public function get_single_author_noscript( array &$mod, $author_id = 0, $itemprop = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
-					'use_post' => $use_post,
+					'mod' => $mod,
 					'author_id' => $author_id,
 					'itemprop' => $itemprop,
 				) );
@@ -1041,11 +1041,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_author = array_merge(
 				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.url', $url, '', $use_post ) ),
+					'itemprop', $itemprop.'.url', $url, '', $mod ) ),
 				( empty( $name ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.name', $name, '', $use_post ) ),
+					'itemprop', $itemprop.'.name', $name, '', $mod ) ),
 				( empty( $desc ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.description', $desc, '', $use_post ) )
+					'itemprop', $itemprop.'.description', $desc, '', $mod ) )
 			);
 
 			// optimize by first checking if the meta tag is enabled
@@ -1059,7 +1059,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$image_url = SucomUtil::get_mt_media_url( 'og:image', $image );
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'meta',
-							'itemprop', $itemprop.'.image', $image_url, '', $use_post ) );
+							'itemprop', $itemprop.'.image', $image_url, '', $mod ) );
 					}
 				}
 			}

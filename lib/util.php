@@ -14,13 +14,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		protected $uniq_urls = array();			// array to detect duplicate images, etc.
 		protected $size_labels = array();		// reference array for image size labels
-		protected $inline_vars = array(
-			'%%post_id%%',
-			'%%request_url%%',
-			'%%sharing_url%%',
-			'%%short_url%%',
-		);
-		protected $inline_vals = array();
 		protected $sanitize_error_msgs = null;		// translated error messages for sanitize_option_value()
 		protected $cleared_all_cache = false;
 
@@ -777,17 +770,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
-		// TODO pass $mod as argument
-		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
-
-			if ( isset( $atts['tweet'] ) )
-				$tweet_text = $atts['tweet'];
+		public function get_tweet_text( array &$mod, $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
+			if ( isset( $atts['tweet'] ) )	// just in case
+				return $atts['tweet'];
 			else {
 				$lca = $this->p->cf['lca'];
 				$atts['use_post'] = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
 				$atts['add_page'] = isset( $atts['add_page'] ) ? $atts['add_page'] : true;	// required by get_sharing_url()
 				$atts['add_hashtags'] = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
-				$mod = $this->get_page_mod( $atts['use_post'] );
 	
 				$long_url = empty( $atts['url'] ) ? 
 					$this->get_sharing_url( $mod, $atts['add_page'] ) : 
@@ -802,28 +792,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 	
 				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
 
-				$tweet_text = $this->p->webpage->get_caption( $caption_type, $caption_len,
+				return $this->p->webpage->get_caption( $caption_type, $caption_len,
 					$mod, true, $atts['add_hashtags'], false, $md_pre.'_desc' );
 			}
-
-			return $tweet_text;
 		}
 
 		// $opt_prefix can be twitter, buffer, etc.
-		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter', $short_url = '', $service = '' ) {
-
-			$service = empty( $service ) &&
-				isset( $this->p->options['plugin_shortener'] ) ? 
-					$this->p->options['plugin_shortener'] : $service;
+		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter', $short_url = '' ) {
 
 			$short_url = empty( $short_url ) ? 
-				apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, $service ) : $short_url;
+				apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, 
+					( empty( $this->p->options['plugin_shortener'] ) ?
+						'' : $this->p->options['plugin_shortener'] ) ) : $short_url;
 
 			$len_adjust = strpos( $short_url, 'https:' ) === false ? 1 : 2;
 
-			if ( $short_url < $this->p->options['plugin_min_shorten'] )
-				$max_len = $this->p->options[$opt_prefix.'_cap_len'] - strlen( $short_url ) - $len_adjust;
-			else $max_len = $this->p->options[$opt_prefix.'_cap_len'] - $this->p->options['plugin_min_shorten'] - $len_adjust;
+			$max_len = $short_url < $this->p->options['plugin_min_shorten'] ?
+				$this->p->options[$opt_prefix.'_cap_len'] - strlen( $short_url ) - $len_adjust :
+				$this->p->options[$opt_prefix.'_cap_len'] - $this->p->options['plugin_min_shorten'] - $len_adjust;
 
 			if ( ! empty( $this->p->options['tc_site'] ) && 
 				! empty( $this->p->options[$opt_prefix.'_via'] ) )
@@ -873,49 +859,45 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_inline_vars() {
-			return $this->inline_vars;
+			return array(
+				'%%request_url%%',
+				'%%sharing_url%%',
+				'%%short_url%%',
+			);
 		}
 
-		public function get_inline_vals( $use_post = false, &$post_obj = false, &$atts = array() ) {
+		public function get_inline_vals( $mod = false, &$atts = array() ) {
 
-			if ( ! is_object( $post_obj ) ) {
-				if ( ( $post_obj = self::get_post_object( $use_post ) ) === false ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: invalid object type' );
-					return array();
-				}
-			}
-			$post_id = empty( $post_obj->ID ) || 
-				empty( $post_obj->post_type ) ? 
-					0 : $post_obj->ID;
+			// allow compatibility with $use_post as first argument
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) )
+				$mod = $this->get_page_mod( $mod );
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
-			else $sharing_url = $this->get_sharing_url( $use_post,
-				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
+			else $sharing_url = $this->get_sharing_url( $mod, 
+				( isset( $atts['add_page'] ) ? 
+					$atts['add_page'] : true ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
-			else $request_url = self::get_prot().'://'.
-				$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+			else $request_url = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 			$short_url = empty( $atts['short_url'] ) ?
-				apply_filters( $this->p->cf['lca'].'_shorten_url',
-					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
+				apply_filters( $this->p->cf['lca'].'_shorten_url', 
+					$sharing_url, $this->p->options['plugin_shortener'] ) :
+				$atts['short_url'];
 
-			$this->inline_vals = array(
-				$post_id,		// %%post_id%%
+			return array(
 				$request_url,		// %%request_url%%
 				$sharing_url,		// %%sharing_url%%
 				$short_url,		// %%short_url%%
 			);
-
-			return $this->inline_vals;
 		}
 
 		// allow the variables and values array to be extended
 		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $text, $use_post = false, $post_obj = false, $atts = array(), $ext = array() ) {
+		public function replace_inline_vars( $text, $mod = false, $atts = array(), $extra = array() ) {
 
 			if ( strpos( $text, '%%' ) === false ) {
 				if ( $this->p->debug->enabled )
@@ -923,17 +905,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $text;
 			}
 
-			$vars = $this->inline_vars;
-			$vals = $this->get_inline_vals( $use_post, $post_obj, $atts );
+			// allow compatibility with $use_post as first argument
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) )
+				$mod = $this->get_page_mod( $mod );
 
-			if ( ! empty( $ext ) && 
-				self::is_assoc( $ext ) ) {
+			$vars = $this->get_inline_vars();
+			$vals = $this->get_inline_vals( $mod, $atts );
 
-				foreach ( $ext as $key => $str ) {
-					$vars[] = '%%'.$key.'%%';
-					$vals[] = $str;
+			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
+				foreach ( $extra as $match => $replace ) {
+					$vars[] = '%%'.$match.'%%';
+					$vals[] = $replace;
 				}
 			}
+
+			ksort( $vars );
+			ksort( $vals );
 
 			return str_replace( $vars, $vals, $text );
 		}
@@ -1079,7 +1067,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$url = false;
 
-			// allow for backwards compatibility with $use_post as first argument
+			// allow compatibility with $use_post as first argument
 			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $mod );

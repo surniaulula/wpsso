@@ -360,13 +360,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Combine and return all meta tags
 			 */
 			$header_array = array_merge(
-				$this->get_mt_array( 'meta', 'name', $mt_gen, $use_post ),
-				$this->get_mt_array( 'link', 'rel', $link_rel, $use_post ),
-				$this->get_mt_array( 'meta', 'property', $mt_og, $use_post ),
-				$this->get_mt_array( 'meta', 'name', $mt_tc, $use_post ),
-				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $use_post ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $use_post ),	// seo description is last
-				$this->p->schema->get_noscript_array( $use_post, $mod, $mt_og, $author_id ),
+				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
+				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
+				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
+				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),		// seo description is last
+				$this->p->schema->get_noscript_array( $mod, $mt_og, $author_id ),
 				$mt_json_array
 			);
 
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/*
 		 * Loops through the arrays and calls get_single_mt() for each
 		 */
-		private function get_mt_array( $tag = 'meta', $type = 'property', &$mt_array, $use_post = false ) {
+		private function get_mt_array( $tag, $type, array &$mt_array, array &$mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( count( $mt_array ).' '.$tag.' '.$type.' to process' );
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( empty( $d_val ) ) {	// allow hooks to modify the value
 						$singles[] = $this->get_single_mt( $tag,
-							$type, $d_name, null, '', $use_post );
+							$type, $d_name, null, '', $mod );
 
 					} else foreach ( $d_val as $dd_num => $dd_val ) {	// second dimension array
 
@@ -439,22 +439,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
 										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, null, '', $use_post );
+											$type, $ddd_name, null, '', $mod );
 									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// fourth dimension array
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, $dddd_val, $d_name.':'.
-												( $dd_num + 1 ), $use_post );
+												( $dd_num + 1 ), $mod );
 									}
 								} else $singles[] = $this->get_single_mt( $tag,
 									$type, $ddd_name, $ddd_val, $d_name.':'.
-										( $dd_num + 1 ), $use_post );
+										( $dd_num + 1 ), $mod );
 							}
 						} else $singles[] = $this->get_single_mt( $tag,
 							$type, $d_name, $dd_val, $d_name.':'.
-								( $dd_num + 1 ), $use_post );
+								( $dd_num + 1 ), $mod );
 					}
 				} else $singles[] = $this->get_single_mt( $tag,
-					$type, $d_name, $d_val, '', $use_post );
+					$type, $d_name, $d_val, '', $mod );
 			}
 
 			$merged = array();
@@ -467,7 +467,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $merged;
 		}
 
-		public function get_single_mt( $tag = 'meta', $type = 'property', $name, $value = '', $cmt = '', $use_post = false ) {
+		public function get_single_mt( $tag, $type, $name, $value, $cmt, array &$mod ) {
 
 			// check for known exceptions for the 'property' $type
 			if ( $tag === 'meta' && $type === 'property' ) {
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( strpos( $value, '%%' ) )
-				$value = $this->p->util->replace_inline_vars( $value, $use_post );
+				$value = $this->p->util->replace_inline_vars( $value, $mod );
 
 			switch ( $name ) {
 				case 'og:image':
@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
 				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
-					$parts = $this->filter_single_mt( $parts, $use_post );
+					$parts = $this->filter_single_mt( $parts, $mod );
 
 				$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 
@@ -613,10 +613,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
 		// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
-		private function filter_single_mt( &$parts, &$use_post ) {
+		private function filter_single_mt( array &$parts, array &$mod ) {
 			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 			$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
-			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $use_post );
+			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $mod );
 
 			if ( $parts[5] !== $new_value ) {
 				if ( $this->p->debug->enabled )
