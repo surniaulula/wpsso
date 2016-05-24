@@ -380,6 +380,25 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.32.1-dev1 (2016/05/24)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a warning if The SEO Framework's Knowledge Graph is enabled.
+	* Added support for The SEO Framework's custom canonical URL (Pro version).
+	* Added a hook for 'the_seo_framework_current_object_id' coming in The SEO Framework v2.6.2 (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Refactored the WpssoUtil `get_sharing_url()` method and changed several filter arguments:
+		* apply_filters( 'wpsso_post_url', $url, $mod, $add_page );
+		* apply_filters( 'wpsso_term_url', $url, $mod, $add_page );
+		* apply_filters( 'wpsso_author_url', $url, $mod, $add_page );
+		* apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
+
 **Version 3.32.0-1 (2016/05/23)**
 
 Official announcement: N/A
@@ -470,6 +489,10 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 	* Renamed the 'taxonomy' module and all related filters to 'term'.
 
 == Upgrade Notice ==
+
+= 3.32.1-dev1 =
+
+(2016/05/24) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
 
 = 3.32.0-1 =
 
