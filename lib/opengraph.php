@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				$og['fb:app_id'] = $this->p->options['fb_app_id'];
 
 			if ( ! isset( $og['og:url'] ) )
-				$og['og:url'] = $this->p->util->get_sharing_url( $mod['use_post'], true );	// $add_page = true
+				$og['og:url'] = $this->p->util->get_sharing_url( $mod, true );	// $add_page = true
 
 			// define the type after the url
 			if ( ! isset( $og['og:type'] ) ) {

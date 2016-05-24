@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			'is_post' => false,		// is post module
 			'is_home' => false,		// home page (archive or static)
-			'is_home_page' => false,	// static home page (have post ID)
+			'is_home_page' => false,	// static home page (have post id)
 			'is_home_index' => false,	// blog index page (archive)
 			'post_type' => false,
 			'post_status' => false,
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
-			$long_url = $this->p->util->get_sharing_url( $mod['use_post'] );	// false or post ID
+			$long_url = $this->p->util->get_sharing_url( $mod, false );	// false or post ID
 
 			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 				$long_url, $this->p->options['plugin_shortener'] );
@@ -237,7 +237,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 
 			$table_rows = array();
-			$sharing_url = $this->p->util->get_sharing_url( $mod['use_post'] );	// false or post ID
+			$sharing_url = $this->p->util->get_sharing_url( $mod, false );
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$facebook_url = 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded;

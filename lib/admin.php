@@ -1304,21 +1304,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// The SEO Framework
 			if ( $this->p->is_avail['seo']['autodescription'] ) {
-				$ad = the_seo_framework();
-				if ( $ad->use_og_tags() ) {
+				$the_seo_framework = the_seo_framework();
+				if ( $the_seo_framework->use_og_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription open graph meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Open Graph meta tags</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Open Graph meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
-				if ( $ad->use_facebook_tags() ) {
+				if ( $the_seo_framework->use_facebook_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription facebook meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Faceboook meta tags</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Faceboook meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
-				if ( $ad->use_twitter_tags() ) {
+				if ( $the_seo_framework->use_twitter_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription twitter meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Twitter meta tags</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Twitter meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+				}
+				if ( $the_seo_framework->is_option_checked( 'knowledge_output' ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'autodescription knowledge graph is enabled' );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Knowledge tags?</em>\' option in <a href="%s">The SEO Framework</a> Knowledge Graph Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
 				foreach ( array(
 					'post_publish_time' => 'Add article:published_time to Posts',
@@ -1328,7 +1333,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'page_modify_time' => 'Add article:modified_time to Pages',
 					'home_modify_time' => 'Add article:modified_time to Home Page',
 				) as $key => $label ) {
-					if ( $ad->get_option( $key ) ) {
+					if ( $the_seo_framework->get_option( $key ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_pre.'autodescription '.$key.' option is enabled' );
 						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>%1$s</em>\' option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), $label, get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );

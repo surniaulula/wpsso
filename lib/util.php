@@ -122,7 +122,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $image;
 
 			// get post/user/term id, module name, and module object reference
-			$mod = $this->get_page_mod( $post_id, array( 'id' => $post_id, 'name' => 'post' ) );
+			$mod = $this->get_page_mod( $post_id, 
+				array( 'id' => $post_id, 'name' => 'post' ) );
 
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
 
@@ -776,37 +777,39 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
+		// TODO pass $mod as argument
 		public function get_tweet_text( $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
-
-			$use_post = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
-			$add_hashtags = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
-
-			if ( ! isset( $atts['add_page'] ) )
-				$atts['add_page'] = true;	// required by get_sharing_url()
-
-			$long_url = empty( $atts['url'] ) ? 
-				$this->get_sharing_url( $use_post, $atts['add_page'] ) : 
-				apply_filters( $this->p->cf['lca'].'_sharing_url', $atts['url'], $use_post, $atts['add_page'] );
-
-			$short_url = empty( $atts['short_url'] ) ?
-				apply_filters( $this->p->cf['lca'].'_shorten_url',
-					$long_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
-
-			$caption_type = empty( $this->p->options[$opt_prefix.'_caption'] ) ?
-				'title' : $this->p->options[$opt_prefix.'_caption'];
 
 			if ( isset( $atts['tweet'] ) )
 				$tweet_text = $atts['tweet'];
 			else {
+				$lca = $this->p->cf['lca'];
+				$atts['use_post'] = isset( $atts['use_post'] ) ? $atts['use_post'] : true;
+				$atts['add_page'] = isset( $atts['add_page'] ) ? $atts['add_page'] : true;	// required by get_sharing_url()
+				$atts['add_hashtags'] = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
+				$mod = $this->get_page_mod( $atts['use_post'] );
+	
+				$long_url = empty( $atts['url'] ) ? 
+					$this->get_sharing_url( $mod, $atts['add_page'] ) : 
+					apply_filters( $lca.'_sharing_url', $atts['url'], $mod, $atts['add_page'] );
+	
+				$short_url = empty( $atts['short_url'] ) ?
+					apply_filters( $lca.'_shorten_url', $long_url, $this->p->options['plugin_shortener'] ) :
+					$atts['short_url'];
+	
+				$caption_type = empty( $this->p->options[$opt_prefix.'_caption'] ) ?
+					'title' : $this->p->options[$opt_prefix.'_caption'];
+	
 				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
+
 				$tweet_text = $this->p->webpage->get_caption( $caption_type, $caption_len,
-					$use_post, true, $add_hashtags, false, $md_pre.'_desc' );
+					$mod, true, $atts['add_hashtags'], false, $md_pre.'_desc' );
 			}
 
 			return $tweet_text;
 		}
 
-		// $opt_prefix could be twitter, buffer, etc.
+		// $opt_prefix can be twitter, buffer, etc.
 		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter', $short_url = '', $service = '' ) {
 
 			$service = empty( $service ) &&
@@ -888,7 +891,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
-			else $sharing_url = $this->get_sharing_url( $use_post, ( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
+			else $sharing_url = $this->get_sharing_url( $use_post,
+				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
@@ -1061,41 +1065,44 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $mod;
 		}
 
-		// $use_post = false when used for open graph meta tags and buttons in widget
-		// $use_post = true when buttons are added to individual posts on an index webpage
-		public function get_sharing_url( $use_post = false, $add_page = true ) {
+		// $mod is false when used for open graph meta tags and buttons in widget
+		// $mod is true when buttons are added to individual posts on an index webpage
+		public function get_sharing_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
-					'use_post' => $use_post,
+					'mod' => $mod,
 					'add_page' => $add_page,
 				) );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$url = false;
 
-			if ( self::is_post_page( $use_post ) ) {
+			// allow for backwards compatibility with $use_post as first argument
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) )
+				$mod = $this->get_page_mod( $mod );
 
-				$post_obj = self::get_post_object( $use_post );
-				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
-
-				if ( ! empty( $post_id ) ) {
-
-					if ( isset( $this->p->m['util']['post'] ) )
-						$url = $this->p->m['util']['post']->get_options( $post_id, 'sharing_url' );
+			if ( $mod['is_post'] ) {
+				if ( ! empty( $mod['id'] ) ) {
+					if ( is_object( $mod['obj'] ) )
+						$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
 
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom post sharing_url = '.$url );
 					} else {
-						$url = get_permalink( $post_id );
+						$url = get_permalink( $mod['id'] );
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'post_id '.$post_id.' permalink = '.$url );
+							$this->p->debug->log( 'post permalink url = '.$url );
 					}
 
 					if ( $add_page && get_query_var( 'page' ) > 1 ) {
 						global $wp_rewrite;
+						$post_obj = self::get_post_object( $mod['id'] );
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
 							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false )
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
@@ -1105,8 +1112,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'add page query url = '.$url );
 					}
 				}
-
-				$url = apply_filters( $this->p->cf['lca'].'_post_url', $url, $post_id, $use_post, $add_page );
+				$url = apply_filters( $lca.'_post_url', $url, $mod, $add_page );
 
 			} else {
 				if ( is_home() ) {
@@ -1115,37 +1121,41 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'page for posts url = '.$url );
 					} else {
-						$url = apply_filters( $this->p->cf['lca'].'_home_url', home_url( '/' ) );
+						$url = apply_filters( $lca.'_home_url', home_url( '/' ) );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'home url = '.$url );
 					}
-				} elseif ( self::is_term_page() ) {
-					$term = self::get_term_object();
-					if ( ! empty( $term->term_id ) ) {
-						if ( isset( $this->p->m['util']['term'] ) )
-							$url = $this->p->m['util']['term']->get_options( $term->term_id, 'sharing_url' );
+				} elseif ( $mod['is_term'] ) {
+					if ( ! empty( $mod['id'] ) ) {
+						if ( is_object( $mod['obj'] ) )
+							$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
+
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom term sharing_url = '.$url );
-						} else $url = get_term_link( $term, $term->taxonomy );
+						} else {
+							$url = get_term_link( $mod['id'], $mod['tax_slug'] );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'term link url = '.$url );
+						}
 					} 
-					$url = apply_filters( $this->p->cf['lca'].'_term_url', $url, $term );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'term url = '.$url );
+					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page );
 
-				} elseif ( self::is_user_page() ) {
-					$author = self::get_user_object();
-					if ( ! empty( $author->ID ) ) {
-						if ( isset( $this->p->m['util']['user'] ) )
-							$url = $this->p->m['util']['user']->get_options( $author->ID, 'sharing_url' );
+				} elseif ( $mod['is_user'] ) {
+					if ( ! empty( $mod['id'] ) ) {
+						if ( is_object( $mod['obj'] ) )
+							$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
+
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
-						} else $url = get_author_posts_url( $author->ID );
+						} else {
+							$url = get_author_posts_url( $mod['id'] );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'author posts url = '.$url );
+						}
 					}
-					$url = apply_filters( $this->p->cf['lca'].'_author_url', $url, $author );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'user / author url = '.$url );
+					$url = apply_filters( $lca.'_author_url', $url, $mod, $add_page );
 
 				} elseif ( is_search() ) {
 					$url = get_search_link();
@@ -1173,11 +1183,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! $wp_rewrite->using_permalinks() )
 						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
 					else {
-						if ( self::is_home_page() ) {	// static home page (have post ID)
+						if ( $mod['is_home_page'] ) {	// static home page (have post id)
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'home_url('.$base.') = '.home_url( $base ) );
 							$url = home_url( $base );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'home_url for '.$base.' = '.$url );
 						}
 						$url = user_trailingslashit( trailingslashit( $url ).
 							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
@@ -1197,7 +1207,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'server request url = '.$url );
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_sharing_url', $url, $use_post, $add_page );
+			return apply_filters( $lca.'_sharing_url', $url, $mod, $add_page );
 		}
 
 		public function fix_relative_url( $url = '' ) {
@@ -1529,8 +1539,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
 			// just in case
-			if ( empty( $table_rows ) || ! is_array( $table_rows ) )
-				return;
+			if ( empty( $table_rows ) || 
+				! is_array( $table_rows ) )
+					return;
 
 			$lca = empty( $this->p->cf['lca'] ) ? 
 				'sucom' : $this->p->cf['lca'];

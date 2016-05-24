@@ -662,14 +662,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$lca = $this->p->cf['lca'];
 			$locale = SucomUtil::get_locale();
 			$sharing_url = $this->p->util->get_sharing_url( false );
+			$locale_salt = 'locale:'.$locale.'_user:'.$user_id;
 			$transients = array(
 				'WpssoHead::get_header_array' => array( 
-					'locale:'.$locale.'_user:'.$user_id.'_url:'.$sharing_url,
-					'locale:'.$locale.'_user:'.$user_id.'_url:'.$sharing_url.'_crawler:pinterest',
+					$locale_salt.'_url:'.$sharing_url,
+					$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
-					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_img',
-					'locale:'.$locale.'_user:'.$user_id.'_column:'.$lca.'_og_desc',
+					$locale_salt.'_column:'.$lca.'_og_img',
+					$locale_salt.'_column:'.$lca.'_og_desc',
 				),
 			);
 			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $user_id, $locale, $sharing_url );

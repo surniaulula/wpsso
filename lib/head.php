@@ -217,13 +217,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$author_id = false;
-			$sharing_url = $this->p->util->get_sharing_url( $use_post );
+			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$header_array = array();
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
 
 				// head_cache_salt filter may add amp true/false and/or crawler name
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url ).')';
+				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt',
+					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
 
