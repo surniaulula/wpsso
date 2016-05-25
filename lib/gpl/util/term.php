@@ -8,10 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
 
-if ( ! class_exists( 'WpssoGplUtilTaxonomy' ) && class_exists( 'WpssoTaxonomy' ) ) {
+if ( ! class_exists( 'WpssoGplUtilTerm' ) && class_exists( 'WpssoTerm' ) ) {
 
-	// WpssoGplUtilTaxonomy extends WpssoTaxonomy which extends WpssoMeta
-	class WpssoGplUtilTaxonomy extends WpssoTaxonomy {
+	class WpssoGplUtilTerm extends WpssoTerm {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -22,8 +21,8 @@ if ( ! class_exists( 'WpssoGplUtilTaxonomy' ) && class_exists( 'WpssoTaxonomy' )
 
 		/*
 		 * The Free version does not have any code to get / save meta data, nor
-		 * does it have any video API modules, so disable some methods that 
-		 * wouldn't return anything anyway. ;-)
+		 * does it have any video API modules, so optimize and disable some methods 
+		 * that wouldn't return anything anyway. ;-)
 		 */
 		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
 			return $this->not_implemented( __METHOD__, null );
