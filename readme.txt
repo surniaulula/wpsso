@@ -380,7 +380,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.1-dev2 (2016/05/24)**
+**Version 3.32.1-dev3 (2016/05/25)**
 
 Official announcement: N/A
 
@@ -390,6 +390,7 @@ Official announcement: N/A
 	* Added a warning if The SEO Framework's Knowledge Graph is enabled.
 	* Added support for The SEO Framework's custom canonical URL (Pro version).
 	* Added a hook for 'the_seo_framework_current_object_id' coming in The SEO Framework v2.6.2 (Pro version).
+	* Added top-level schema.org/CreativeWork to the available Schema types.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -492,9 +493,9 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.32.1-dev2 =
+= 3.32.1-dev3 =
 
-(2016/05/24) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
+(2016/05/25) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
 
 = 3.32.0-1 =
 
