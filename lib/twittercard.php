@@ -8,9 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
 
-if ( ! class_exists( 'WpssoTwittercard' ) ) {
+if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
-	class WpssoTwittercard {
+	class WpssoTwitterCard {
 
 		private $p;
 

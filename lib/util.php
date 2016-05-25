@@ -805,11 +805,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					( empty( $this->p->options['plugin_shortener'] ) ?
 						'' : $this->p->options['plugin_shortener'] ) ) : $short_url;
 
-			$len_adjust = strpos( $short_url, 'https:' ) === false ? 1 : 2;
+			$short_len = $short_url > $this->p->options['plugin_min_shorten'] ? 
+				$this->p->options['plugin_min_shorten'] :	// twitter shortens urls to 23 characters
+				strlen( $short_url );
 
-			$max_len = $short_url < $this->p->options['plugin_min_shorten'] ?
-				$this->p->options[$opt_prefix.'_cap_len'] - strlen( $short_url ) - $len_adjust :
-				$this->p->options[$opt_prefix.'_cap_len'] - $this->p->options['plugin_min_shorten'] - $len_adjust;
+			$max_len = $this->p->options[$opt_prefix.'_cap_len'] - $short_len;
 
 			if ( ! empty( $this->p->options['tc_site'] ) && 
 				! empty( $this->p->options[$opt_prefix.'_via'] ) )
