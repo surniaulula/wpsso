@@ -428,7 +428,7 @@ Official announcement: N/A
 	* Moved the Social Preview tab in the Social Settings metabox to the left-most position.
 	* Added a Verify Image Dimensions module, enabled when the "Enforce Image Dimensions Check" option is checked (Pro version).
 * *Bugfixes*
-	* None
+	* Refactored the WpssoUrl `get_tweet_max_len()` method to provide more accurate and predictable results.
 * *Developer Notes*
 	* Added an internal / non-standard 'article:author:name' meta tag (used for the Social Preview feature).
 
