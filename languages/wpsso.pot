@@ -85,8 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:433 lib/post.php:237 lib/taxonomy.php:235 lib/term.php:237
-#: lib/user.php:222
+#: lib/admin.php:433 lib/post.php:237 lib/term.php:237 lib/user.php:222
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2227,8 +2226,8 @@ msgid ""
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:362 lib/profile/social-settings.php:27 lib/taxonomy.php:256
-#: lib/term.php:258 lib/user.php:244
+#: lib/post.php:362 lib/profile/social-settings.php:27 lib/term.php:258
+#: lib/user.php:244
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
