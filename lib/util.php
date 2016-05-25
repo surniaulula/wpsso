@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
 		}
 
-		public function get_tweet_text( array &$mod, $atts = array(), $opt_prefix = 'twitter', $md_pre = 'twitter' ) {
+		public function get_tweet_text( array &$mod, $atts = array(), $opt_pre = 'twitter', $md_pre = 'twitter' ) {
 			if ( isset( $atts['tweet'] ) )	// just in case
 				return $atts['tweet'];
 			else {
@@ -779,42 +779,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$atts['add_page'] = isset( $atts['add_page'] ) ? $atts['add_page'] : true;	// required by get_sharing_url()
 				$atts['add_hashtags'] = isset( $atts['add_hashtags'] ) ? $atts['add_hashtags'] : true;
 	
-				$long_url = empty( $atts['url'] ) ? 
-					$this->get_sharing_url( $mod, $atts['add_page'] ) : 
-					apply_filters( $lca.'_sharing_url', $atts['url'], $mod, $atts['add_page'] );
+				$caption_type = empty( $this->p->options[$opt_pre.'_caption'] ) ?
+					'title' : $this->p->options[$opt_pre.'_caption'];
 	
-				$short_url = empty( $atts['short_url'] ) ?
-					apply_filters( $lca.'_shorten_url', $long_url, $this->p->options['plugin_shortener'] ) :
-					$atts['short_url'];
-	
-				$caption_type = empty( $this->p->options[$opt_prefix.'_caption'] ) ?
-					'title' : $this->p->options[$opt_prefix.'_caption'];
-	
-				$caption_len = $this->get_tweet_max_len( $long_url, $opt_prefix, $short_url );
+				$caption_len = $this->get_tweet_max_len( $opt_pre );
 
 				return $this->p->webpage->get_caption( $caption_type, $caption_len,
 					$mod, true, $atts['add_hashtags'], false, $md_pre.'_desc' );
 			}
 		}
 
-		// $opt_prefix can be twitter, buffer, etc.
-		public function get_tweet_max_len( $long_url, $opt_prefix = 'twitter', $short_url = '' ) {
+		// $opt_pre can be twitter, buffer, etc.
+		public function get_tweet_max_len( $opt_pre = 'twitter' ) {
 
-			$short_url = empty( $short_url ) ? 
-				apply_filters( $this->p->cf['lca'].'_shorten_url', $long_url, 
-					( empty( $this->p->options['plugin_shortener'] ) ?
-						'' : $this->p->options['plugin_shortener'] ) ) : $short_url;
+			$short_len = 23;	// twitter counts 23 characters for any url
 
-			$short_len = $short_url > $this->p->options['plugin_min_shorten'] ? 
-				$this->p->options['plugin_min_shorten'] :	// twitter shortens urls to 23 characters
-				strlen( $short_url );
+			if ( isset( $this->p->options['tc_site'] ) && 
+				! empty( $this->p->options[$opt_pre.'_via'] ) ) {
+					$tc_site = preg_replace( '/^@/', '', $this->p->options['tc_site'] );
+					$site_len = empty( $tc_site ) ? 0 : strlen( $tc_site ) + 6;
+			} else $site_len = 0;
 
-			$max_len = $this->p->options[$opt_prefix.'_cap_len'] - $short_len;
+			$max_len = $this->p->options[$opt_pre.'_cap_len'] - $short_len - $site_len;
 
-			if ( ! empty( $this->p->options['tc_site'] ) && 
-				! empty( $this->p->options[$opt_prefix.'_via'] ) )
-					$max_len = $max_len - strlen( preg_replace( '/^@/', '', 
-						$this->p->options['tc_site'] ) ) - 5;	// 5 for 'via' word and 2 spaces
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'max tweet length is '.$max_len.' chars ('.
+					$this->p->options[$opt_pre.'_cap_len'].' minus '.
+					$site_len.' for site name and '.$short_len.' for url)' );
 
 			return $max_len;
 		}
@@ -1303,9 +1294,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// get maximum media values from custom meta or plugin settings
-		public function get_max_nums( array &$mod, $opt_prefix = 'og' ) {
+		public function get_max_nums( array &$mod, $opt_pre = 'og' ) {
 			$max = array();
-			$opt_keys = array( $opt_prefix.'_vid_max', $opt_prefix.'_img_max' );
+			$opt_keys = array( $opt_pre.'_vid_max', $opt_pre.'_img_max' );
 
 			foreach ( $opt_keys as $max_key ) {
 

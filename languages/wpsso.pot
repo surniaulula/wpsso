@@ -2900,22 +2900,22 @@ msgid ""
 "class."
 msgstr ""
 
-#: lib/util.php:1612
+#: lib/util.php:1603
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1615
+#: lib/util.php:1606
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1618
+#: lib/util.php:1609
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1621
+#: lib/util.php:1612
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
