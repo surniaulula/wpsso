@@ -458,10 +458,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 				$name = trim( $name );	// just in case
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' is not a wordpress user' );
+				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
 			$name = apply_filters( $this->p->cf['lca'].'_get_author_meta', $name, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' value: '.$name );
+				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$name );
 			return $name;
 		}
 
@@ -494,10 +494,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 				$url = trim( $url );	// just in case
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' is not a wordpress user' );
+				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
 			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user_id '.$user_id.' '.$field_id.' url: '.$url );
+				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$url );
 			return $url;
 		}
 

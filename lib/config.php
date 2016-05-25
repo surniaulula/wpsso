@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.1-dev2',	// plugin version
+					'version' => '3.32.1-dev3',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -330,7 +330,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_blog.posting' => 'blog.posting',
 					'schema_type_for_download' => 'product',
-					'schema_type_for_event' => 'event',
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_person' => 'person',
 					'schema_type_for_place' => 'place',
@@ -985,20 +984,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				// NgfbSchema get_schema_types() flattens the array.
 				// MAKE SURE NOT TO USE DUPLICATE KEYS IN THE ARRAY.
 				'schema_type' => array(
-					'article' => array( 
-						'article' => 'http://schema.org/Article',
-						'article.news' => 'http://schema.org/NewsArticle',
-						'article.tech' => 'http://schema.org/TechArticle',
-						'article.scholarly' => 'http://schema.org/ScholarlyArticle',
-						'report' => 'http://schema.org/Report',
-						'social.media.posting' => 'http://schema.org/SocialMediaPosting',
+					'creative.work' => array(
+						'article' => array( 
+							'article' => 'http://schema.org/Article',
+							'article.news' => 'http://schema.org/NewsArticle',
+							'article.tech' => 'http://schema.org/TechArticle',
+							'article.scholarly' => 'http://schema.org/ScholarlyArticle',
+							'blog.posting' => 'http://schema.org/BlogPosting',
+							'report' => 'http://schema.org/Report',
+							'social.media.posting' => 'http://schema.org/SocialMediaPosting',
+						),
+						'book' => 'http://schema.org/Book',
+						'blog' => 'http://schema.org/Blog',
+						'creative.work' => 'http://schema.org/CreativeWork',
+						'recipe' => 'http://schema.org/Recipe',
+						'review' => 'http://schema.org/Review',
+						'webpage' => 'http://schema.org/WebPage',
+						'website' => 'http://schema.org/WebSite',
 					),
-					'book' => 'http://schema.org/Book',
-					'blog' => 'http://schema.org/Blog',
-					'blog.posting' => 'http://schema.org/BlogPosting',
-					'event' => 'http://schema.org/Event',
 					'organization' => 'http://schema.org/Organization',
-					'other' => 'http://schema.org/Other',
 					'person' => 'http://schema.org/Person',
 					'place' => array(
 						'administrative.area' => 'http://schema.org/AdministrativeArea',
@@ -1084,10 +1088,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'tourist.attraction' => 'http://schema.org/TouristAttraction',
 					),
 					'product' => 'http://schema.org/Product',
-					'recipe' => 'http://schema.org/Recipe',
-					'review' => 'http://schema.org/Review',
-					'webpage' => 'http://schema.org/WebPage',
-					'website' => 'http://schema.org/WebSite',
 				),
 			),
 			'cache' => array(
