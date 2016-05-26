@@ -222,13 +222,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->get_nocb_cell( 'plugin_widgets' );
 			}
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Enable WP Excerpt for Pages',
+			$table_rows[] = $form->get_th_html( _x( 'Enable WP Excerpt for Pages',
 				'option label', 'wpsso' ), null, 'plugin_page_excerpt' ).
 			$this->get_nocb_cell( 'plugin_page_excerpt' );
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Enable WP Tags for Pages',
+			$table_rows[] = $form->get_th_html( _x( 'Enable WP Tags for Pages',
 				'option label', 'wpsso' ), null, 'plugin_page_tags' ).
 			$this->get_nocb_cell( 'plugin_page_tags' );
 

@@ -161,8 +161,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			else {	// just in case
 				$charset = get_bloginfo( 'charset' );
-				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ),
-					ENT_QUOTES, $charset );
+				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), ENT_QUOTES, $charset );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_caption', $caption, $mod, $add_hashtags, $md_idx );
@@ -492,9 +491,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc = 'No Description';	// just in case
 			}
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'description strlen before html cleanup '.strlen( $desc ) );
+			$strlen_before_cleanup = $this->p->debug->enabled ? strlen( $desc ) : 0;
 			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'description strlen before html cleanup '.$strlen_before_cleanup.' and after '.strlen( $desc ) );
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 			if ( $textlen > 0 ) {
