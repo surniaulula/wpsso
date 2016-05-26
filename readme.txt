@@ -380,7 +380,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.1-rc1 (2016/05/25)**
+**Version 3.32.1-rc2 (2016/05/26)**
 
 Official announcement: N/A
 
@@ -494,9 +494,9 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.32.1-rc1 =
+= 3.32.1-rc2 =
 
-(2016/05/25) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
+(2016/05/26) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
 
 = 3.32.0-1 =
 
