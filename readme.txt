@@ -380,7 +380,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.1-dev4 (2016/05/25)**
+**Version 3.32.1-rc1 (2016/05/25)**
 
 Official announcement: N/A
 
@@ -396,6 +396,7 @@ Official announcement: N/A
 * *Developer Notes*
 	* Replaced the `$use_post` variable by `$mod` in the WpssoHead `get_single_mt()` method.
 	* Replaced the `$use_post` variable by `$mod` in the WpssoUtil `replace_inline_vars()` method.
+	* Refactored the `is_post_page()`, `is_term_page()`, and `is_user_page()` method to use `$screen->base` instead of `$screen->id`.
 	* Refactored the WpssoUtil `get_sharing_url()` method and changed several filter arguments:
 		* apply_filters( 'wpsso_post_url', $url, $mod, $add_page );
 		* apply_filters( 'wpsso_term_url', $url, $mod, $add_page );
@@ -428,7 +429,7 @@ Official announcement: N/A
 	* Moved the Social Preview tab in the Social Settings metabox to the left-most position.
 	* Added a Verify Image Dimensions module, enabled when the "Enforce Image Dimensions Check" option is checked (Pro version).
 * *Bugfixes*
-	* Refactored the WpssoUrl `get_tweet_max_len()` method to provide more accurate and predictable results.
+	* None
 * *Developer Notes*
 	* Added an internal / non-standard 'article:author:name' meta tag (used for the Social Preview feature).
 
@@ -493,7 +494,7 @@ Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http:
 
 == Upgrade Notice ==
 
-= 3.32.1-dev4 =
+= 3.32.1-rc1 =
 
 (2016/05/25) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
 
