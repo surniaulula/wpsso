@@ -831,9 +831,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
-				if ( $screen_base === 'term' )
+				if ( $screen_base === 'term' )	// since wp v4.2
 					$ret = true;
-				elseif ( $screen_base === false &&	// called too early for screen
+				elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' && 
 						self::get_request_value( 'tag_ID' ) !== '' ) )
 							$ret = true;
