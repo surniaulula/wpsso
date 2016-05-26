@@ -297,7 +297,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$screen = get_current_screen();
 			if ( isset( $screen->id ) )
 				return $screen->id;
-			return false;
+			else return false;
+		}
+
+		// returns false or the admin screen base text string
+		public static function get_screen_base( $screen = false ) {
+			if ( $screen === false &&
+				function_exists( 'get_current_screen' ) )
+					$screen = get_current_screen();
+			if ( isset( $screen->base ) )
+				return $screen->base;
+			else return false;
 		}
 
 		public static function sanitize_use_post( $mixed ) {
@@ -714,6 +724,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
+		public static function is_archive_page() {
+			$ret = false;
+			if ( is_archive() )
+				$ret = true;
+			elseif ( is_admin() ) {
+				$screen_base = self::get_screen_base();
+				if ( $screen_base !== false ) {
+					switch ( $screen_base ) {
+						case 'edit':		// post/page list
+						case 'edit-tags':	// categories/tags list
+						case 'users':		// users list
+							$ret = true;
+							break;
+					}
+				}
+			}
+			return apply_filters( 'sucom_is_archive_page', $ret );
+		}
+
 		// returns true if using a static home page (with page or posts content)
 		public static function is_home_page( $use_post = false ) {
 			$ret = false;
@@ -732,24 +761,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_post_page( $use_post = false ) {
 			$ret = false;
-
 			if ( $use_post || is_singular() )
 				$ret = true;
 			elseif ( is_admin() ) {
-				// $screen_id = upload | edit-post | post | edit-page | page
-				$screen_id = self::get_screen_id();
-
-				// exclude the post/page/media editing lists
-				if ( $screen_id === 'upload' ||
-					strpos( $screen_id, 'edit-' ) === 0 )
-						$ret = false;
-				elseif ( self::get_request_value( 'post_ID', 'POST' ) !== '' ||
-					self::get_request_value( 'post', 'GET' ) !== '' )
-						$ret = true;
-				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
+				$screen_base = self::get_screen_base();
+				if ( $screen_base === 'post' )
 					$ret = true;
+				elseif ( $screen_base === false &&	// called too early for screen
+					( self::get_request_value( 'post_ID', 'POST' ) !== '' ||
+						self::get_request_value( 'post', 'GET' ) !== '' ) )
+							$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
@@ -777,10 +799,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$post_obj = $GLOBALS['post'];
 
 			} elseif ( $use_post === true && 
-				isset( $GLOBALS['post'] ) ) {
+				isset( $GLOBALS['post'] ) )
 					$post_obj = $GLOBALS['post'];
-
-			}
 
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
 
@@ -807,27 +827,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_term_page() {
 			$ret = false;
-
 			if ( is_tax() || is_category() || is_tag() )
 				$ret = true;
 			elseif ( is_admin() ) {
-				// $screen_id = edit-category | edit-post_tag | term
-				$screen_id = self::get_screen_id();
-
-				if ( self::get_request_value( 'taxonomy' ) !== '' && 
-					self::get_request_value( 'tag_ID' ) !== '' )
-						$ret = true;
-				elseif ( $screen_id === 'term' &&
-					self::get_request_value( 'tag_ID' ) !== '' )
-						$ret = true;
+				$screen_base = self::get_screen_base();
+				if ( $screen_base === 'term' )
+					$ret = true;
+				elseif ( $screen_base === false &&	// called too early for screen
+					( self::get_request_value( 'taxonomy' ) !== '' && 
+						self::get_request_value( 'tag_ID' ) !== '' ) )
+							$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_term_page', $ret );
 		}
 
 		public static function is_category_page() {
 			$ret = false;
-
 			if ( is_category() )
 				$ret = true;
 			elseif ( is_admin() ) {
@@ -835,13 +850,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_request_value( 'taxonomy' ) === 'category' )
 						$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_category_page', $ret );
 		}
 
 		public static function is_tag_page() {
 			$ret = false;
-
 			if ( is_tag() )
 				$ret = true;
 			elseif ( is_admin() ) {
@@ -849,7 +862,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_request_value( 'taxonomy' ) === '_tag' )
 						$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
@@ -891,29 +903,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_user_page() {
 			$ret = false;
-
 			if ( is_author() ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
-				$screen_id = self::get_screen_id();
-				if ( $screen_id !== false ) {
-					switch ( $screen_id ) {
+				$screen_base = self::get_screen_base();
+				if ( $screen_base !== false ) {
+					switch ( $screen_base ) {
 						case 'profile':
 						case 'user-edit':
-						case ( strpos( $screen_id, 'profile_page_' ) === 0 ? true : false ):
-						case ( strpos( $screen_id, 'users_page_' ) === 0 ? true : false ):
+						case ( strpos( $screen_base, 'profile_page_' ) === 0 ? true : false ):
+						case ( strpos( $screen_base, 'users_page_' ) === 0 ? true : false ):
 							$ret = true;
 							break;
 					}
-				}
-				if ( $ret === false ) {
-					if ( self::get_request_value( 'user_id' ) !== '' )
+				} elseif ( self::get_request_value( 'user_id' ) !== '' || 	// called too early for screen
+					basename( $_SERVER['PHP_SELF'] ) === 'profile.php' )
 						$ret = true;
-					elseif ( basename( $_SERVER['PHP_SELF'] ) === 'profile.php' )
-						$ret = true;
-				}
 			}
-
 			return apply_filters( 'sucom_is_user_page', $ret );
 		}
 
@@ -967,7 +973,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_product_page( $use_post = false, $product_obj = false ) {
 			$ret = false;
-
 			if ( function_exists( 'is_product' ) && 
 				is_product() )
 					$ret = true;
@@ -979,13 +984,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$product_obj->post_type === 'product' )
 						$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
 		}
 
 		public static function is_product_category() {
 			$ret = false;
-
 			if ( function_exists( 'is_product_category' ) && 
 				is_product_category() )
 					$ret = true;
@@ -994,13 +997,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_product_category', $ret );
 		}
 
 		public static function is_product_tag() {
 			$ret = false;
-
 			if ( function_exists( 'is_product_tag' ) && 
 				is_product_tag() )
 					$ret = true;
@@ -1009,7 +1010,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
-
 			return apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
