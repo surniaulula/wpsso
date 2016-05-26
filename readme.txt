@@ -22,7 +22,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **Tired of average and sub-standard social meta tags from other SEO plugins?** WPSSO Pro automatically retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.
 
-**Optional Free and Pro extensions** for *Mobile App Meta* to provide Apple Store / iTunes and Google Play App meta tags, *Place / Location and Local Business Meta* to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, complete *Schema JSON-LD* markup (BlogPosting, Article, Place, Product, etc.) for Google and Pinterest, Ridiculously Responsive (SVG) *Social Sharing Buttons*, and more.
+**Optional Free and Pro extensions:** *WPSSO Mobile App Meta* for Apple Store / iTunes and Google Play App meta tags, *WPSSO Place / Location and Local Business Meta* for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, complete *WPSSO Schema JSON-LD* markup (BlogPosting, Article, Place, Product, etc.) for Google and Pinterest, **WPSSO Ridiculously Responsive Social Sharing Buttons*, and others.
 
 = Quick List of Features =
 
