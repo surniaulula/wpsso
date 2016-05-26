@@ -831,7 +831,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
-				if ( $screen_base === 'term' )	// since wp v4.2
+				if ( $screen_base === 'term' )	// since wp v4.5
 					$ret = true;
 				elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' && 
@@ -1089,11 +1089,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
-			$text = preg_replace( '/<\?.*\?>/i', ' ', $text);				// remove php
-			$text = preg_replace( '/<script\b[^>]*>(.*?)<\/script>/i', ' ', $text);		// remove javascript
-			$text = preg_replace( '/<style\b[^>]*>(.*?)<\/style>/i', ' ', $text);		// remove inline stylesheets
+			$text = preg_replace( '/<\?.*\?>/U', ' ', $text);				// remove php
+			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
 			$text = preg_replace( '/<!--'.$this->p->cf['lca'].'-ignore-->(.*?)<!--\/'.
-				$this->p->cf['lca'].'-ignore-->/i', ' ', $text);			// remove text between comment strings
+				$this->p->cf['lca'].'-ignore-->/Ui', ' ', $text);			// remove text between comment strings
 
 			if ( $strip_tags ) {
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
@@ -1101,7 +1101,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( $text_stripped === '' && $use_img_alt ) {				// possibly use img alt strings if no text
 					if ( strpos( $text, '<img ' ) !== false &&
-						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/U', 
+						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', 
 							$text, $matches, PREG_PATTERN_ORDER ) ) {
 
 						foreach ( $matches[1] as $alt ) {
@@ -1121,6 +1121,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$text = $alt_text;
 				} else $text = $text_stripped;
 			}
+
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );			// replace 1+ spaces to a single space
 
 			return trim( $text );
