@@ -29,7 +29,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$salt .= '_amp:true';
 
 			$crawler_name = SucomUtil::crawler_name();
-
 			switch ( $crawler_name ) {
 				case 'pinterest':
 					$salt .= '_crawler:'.$crawler_name;
