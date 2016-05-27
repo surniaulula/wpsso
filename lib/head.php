@@ -181,10 +181,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$cmt_begin = $lca.' meta tags begin';
 			$cmt_end = $lca.' meta tags end';
+			$crawler_name = SucomUtil::crawler_name();
 
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n".
-				'<!-- generated on '.date( 'c' ).' -->'."\n";
+				'<!-- generated on '.date( 'c' ).' for '.$crawler_name.' -->'."\n";
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
 				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_begin.'"/>'."\n";
 

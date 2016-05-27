@@ -419,8 +419,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $aa;
 		}
 
-		public static function crawler_name( $is_crawler = '' ) {
-			// optimize perf - only check once
+		public static function crawler_name( $is_crawler_name = '' ) {
+
 			if ( self::$crawler_name === null ) {
 				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
 					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
@@ -454,8 +454,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						break;
 				}
 			}
-			if ( ! empty( $is_crawler ) )
-				return $is_crawler === self::$crawler_name ? true : false;
+
+			if ( ! empty( $is_crawler_name ) )
+				return $is_crawler_name === self::$crawler_name ? true : false;
 			else return self::$crawler_name;
 		}
 
