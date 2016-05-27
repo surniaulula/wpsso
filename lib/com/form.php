@@ -227,8 +227,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $selected = false ) {
-			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected );
+		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $selected = false, $on_change = false ) {
+			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected, $on_change );
 		}
 
 		public function get_no_select_country( $name, $class = '', $id = '', $selected = false ) {
