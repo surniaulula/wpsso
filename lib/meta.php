@@ -136,21 +136,37 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
-			$long_url = $this->p->util->get_sharing_url( $mod, false );	// false or post ID
+			if ( isset( $mod['post_status'] ) &&
+				$mod['post_status'] === 'auto-draft' ) {
 
-			$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
-				$long_url, $this->p->options['plugin_shortener'] );
+				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
+					'wpsso' ), ucfirst( $mod['post_type'] ) );
 
-			if ( $long_url === $short_url && $mod['is_post'] )
-				$short_url = wp_get_shortlink();
+				$table_rows[] = $form->get_th_html( _x( 'Short URL',
+					'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+	
+				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
+					'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+	
+			} else {
+				$long_url = $this->p->util->get_sharing_url( $mod, false );	// false or post ID
 
-			$table_rows[] = $form->get_th_html( _x( 'Short URL',
-				'option label', 'wpsso' ), 'medium' ).
-			'<td>'.$form->get_copy_input( $short_url ).'</td>';
+				$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
+					$long_url, $this->p->options['plugin_shortener'] );
 
-			$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
-				'option label', 'wpsso' ), 'medium' ).
-			'<td>'.$form->get_copy_input( $long_url ).'</td>';
+				if ( $long_url === $short_url && $mod['is_post'] )
+					$short_url = wp_get_shortlink();
+
+				$table_rows[] = $form->get_th_html( _x( 'Short URL',
+					'option label', 'wpsso' ), 'medium' ).
+				'<td>'.$form->get_copy_input( $short_url ).'</td>';
+	
+				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
+					'option label', 'wpsso' ), 'medium' ).
+				'<td>'.$form->get_copy_input( $long_url ).'</td>';
+			}
 
 			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',
 				'option label', 'wpsso' ), 'medium' ).
