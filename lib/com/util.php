@@ -784,7 +784,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$post_obj = get_post( $use_post );
 
 			} elseif ( $use_post === false || 
-				apply_filters( 'sucom_is_post_page', is_singular(), $use_post ) ) {
+				apply_filters( 'sucom_is_post_page', ( is_singular() || 
+					( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ? 
+						true : false ), $use_post ) ) {
 
 				$post_obj = get_queried_object();
 
