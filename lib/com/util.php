@@ -761,8 +761,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_post_page( $use_post = false ) {
 			$ret = false;
-			if ( $use_post || is_singular() )
-				$ret = true;
+			if ( $use_post || is_singular() || 
+				( is_front_page() && get_option( 'show_on_front' ) === 'page' ) )
+					$ret = true;
 			elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'post' )
