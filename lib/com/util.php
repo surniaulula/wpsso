@@ -762,7 +762,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_post_page( $use_post = false ) {
 			$ret = false;
 			// is_singular() covers is_single(), is_post(), and is_attachement()
-			// include an is_front_page() check for themes/plugins that break is_singular()
+			// include is_front_page() for themes/plugins that break is_singular()
 			if ( $use_post || is_singular() || 
 				( is_front_page() && get_option( 'show_on_front' ) === 'page' ) )
 					$ret = true;
@@ -785,6 +785,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $use_post ) ) {
 				$post_obj = get_post( $use_post );
 
+			// is_singular() covers is_single(), is_post(), and is_attachement()
+			// include is_front_page() for themes/plugins that break is_singular()
 			} elseif ( $use_post === false || 
 				apply_filters( 'sucom_is_post_page', ( is_singular() || 
 					( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ? 
