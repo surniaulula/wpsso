@@ -382,6 +382,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.32.2-dev1 (2016/05/28)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Refactored the Organization schema filter to allow for Organization sub-types.
+* *Bugfixes*
+	* Added a missing third argument to `preg_match_all()` in WpssoUtil for older PHP versions.
+* *Developer Notes*
+	* None
+
 **Version 3.32.1-1 (2016/05/27)**
 
 Official announcement: N/A
@@ -420,91 +433,17 @@ Official announcement: N/A
 	* Renamed the 'wpsso_section' filter to 'wpsso_article_section'.
 	* Added a new 'wpsso_social_accounts' filter.
 
-**Version 3.31.2-1 (2016/05/20)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Changed the default "Enforce Image Dimensions Check" value to unchecked.
-	* Moved the Social Preview tab in the Social Settings metabox to the left-most position.
-	* Added a Verify Image Dimensions module, enabled when the "Enforce Image Dimensions Check" option is checked (Pro version).
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added an internal / non-standard 'article:author:name' meta tag (used for the Social Preview feature).
-
-**Version 3.31.1-1 (2016/05/18)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added new internal / non-standard Open Graph meta tags for WooCommerce (Pro version):
-		* product:id
-		* product:sku
-		* product:url
-		* product:title
-		* product:image:id
-		* product:dimensions
-		* product:width (cm)
-		* product:height (cm)
-		* product:length (cm)
-		* product:weight (kg)
-		* product:color
-		* product:size
-		* product:category 
-		* product:tag
-	* Added new internal / non-standard Open Graph meta tags for Easy Digital Downloads (Pro version):
-		* product:category 
-		* product:tag
-	* Added an "unhide these rows" link for internal / non-standard meta tags under the Head Tags tab in the Social Settings metabox.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added a new 'wpsso_og_add_product_mt_offer' filter (returns false by default) to include "product:offer" meta tags in the Open Graph array for WooCommerce products (Pro version).
-		* product:offer:id
-		* product:offer:sku
-		* product:offer:url
-		* product:offer:title
-		* product:offer:image:id
-		* product:offer:dimensions
-		* product:offer:width (cm)
-		* product:offer:height (cm)
-		* product:offer:length (cm)
-		* product:offer:weight (kg)
-		* product:offer:color
-		* product:offer:size
-		* product:offer:category 
-		* product:offer:tag
-		* product:offer:description
-
-**Version 3.31.0-1 (2016/05/14)**
-
-Official announcement: [WPSSO Update – Adds Support for Co-Authors Plus](http://wpsso.com/2016/05/13/wpsso-update-adds-support-for-co-authors-plus/)
-
-* *New Features*
-	* Added support for the [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) plugin (including Guest Authors).
-* *Improvements*
-	* Categorized the display of Free / Pro features in the sidebar metabox.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Renamed the 'taxonomy' module and all related filters to 'term'.
-
 == Upgrade Notice ==
+
+= 3.32.2-dev1 =
+
+(2016/05/28) Refactored the Organization schema filter to allow for Organization sub-types. Added a missing third argument to preg_match_all() in WpssoUtil for older PHP versions.
 
 = 3.32.1-1 =
 
-(2016/05/27) Improvements for The SEO Framework plugin. Refactored the NgfbUtil get_sharing_url() method and changed several filter arguments.
+(2016/05/27) Improvements for The SEO Framework plugin. Refactored the WpssoUtil get_sharing_url() method and changed several filter arguments.
 
 = 3.32.0-1 =
 
 (2016/05/23) Added new 'Show "SSO Img" Column for' and 'Show "SSO Desc" Column for' options. Added support for The SEO Framework plugin (Pro version).
-
-= 3.31.2-1 =
-
-(2016/05/20) Moved the Social Preview tab to the left-most position. Added a new Verify Image Dimensions module (Pro version).
 
