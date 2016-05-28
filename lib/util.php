@@ -1515,7 +1515,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( $att === 'class' && ! empty( $show_opts ) && 
 							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_'.$show_opts.'[" ]/', $row, $m ) > 0 ) ) {
 							if ( ! isset( $m[1] ) )
-								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row );
+								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
 							$hidden_rows += $matched;
 						}
 

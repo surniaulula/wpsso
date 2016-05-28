@@ -240,10 +240,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function get_item_type_context( $type_url, $properties = array() ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) )
-				return array_merge( array(
+				return array_merge( $properties, array(
 					'@context' => $match[1],
 					'@type' => $match[2],
-				), $properties );
+				) );
 			else return array();
 		}
 
@@ -358,6 +358,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$post_obj = false;
 			$type_ids = array();
+			$filtered_names = array();	// prevent duplicate branches
 
 			// example: article.tech
 			$mt_og['schema:type:id'] = $head_type_id = $this->get_head_item_type( $mod, true );
@@ -386,7 +387,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Array (
 			 *	[restaurant] => 1
-			 *	[webSite] => 1
+			 *	[website] => 1
 			 *	[organization] => 1
 			 *	[person] => 1
 			 * )
@@ -398,6 +399,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = null;
 				$top_type_url = $this->get_schema_type_url( $top_type_id );
 				$top_filter_name = SucomUtil::sanitize_hookname( $top_type_url );
+
+				if ( ! empty( $filtered_names[$top_filter_name] ) ) {	// prevent duplicate branches
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'skipping '.$top_type_url.': type or sub-type previously added' );
+					continue;
+				}
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( $top_type_id.' schema' );	// begin timer for schema json
@@ -426,6 +433,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $is_enabled ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'calling class method '.$top_filter_name );
+						$filtered_names[$top_filter_name] = true;	// prevent duplicate branches
 						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$top_filter_name ),
 							$json_data, $use_post, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
 					} elseif ( $this->p->debug->enabled )
@@ -443,19 +451,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
 	
 						if ( has_filter( $lca.'_json_data_'.$rel_filter_name ) ) {
-							if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) )
+							if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) ) {
+								$filtered_names[$rel_filter_name] = true;	// prevent duplicate branches
 								$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
 									$json_data, $use_post, $mod, $mt_og, $user_id, $is_main );
-							elseif ( $this->p->debug->enabled )
+							} elseif ( $this->p->debug->enabled )
 								$this->p->debug->log( $rel_filter_name.' filter is disabled' );
 						} elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( 'no filters registered for '.$rel_filter_name );
 					}
 				}
 
-				if ( ! empty( $json_data ) && is_array( $json_data ) )
-					$ret[] = "<script type=\"application/ld+json\">".
-						$this->p->util->json_format( $json_data )."</script>\n";
+				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
+					// define the context and type properties for methods / filters that
+					// may not define them, or re-define them incorrectly
+					$json_data = self::get_item_type_context( $top_type_url, $json_data );
+					$ret[] = '<script type="application/ld+json">'.
+						$this->p->util->json_format( $json_data ).
+							'</script>'."\n";
+				}
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( $top_type_id.' schema' );	// end timer for schema json
@@ -528,20 +542,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
 
-			if ( $mod['is_home'] ) {	// static or index page
-
-				$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', 
-					$this->p->cf['form']['social_accounts'] );
-				asort( $social_accounts );	// sort by label and maintain key association
-				foreach ( $social_accounts as $key => $label ) {
-					$url_locale = SucomUtil::get_locale_opt( $key, $this->p->options, $mod );
-					if ( empty( $url_locale ) )
-						continue;
-					if ( $key === 'tc_site' )
-						$url_locale = 'https://twitter.com/'.preg_replace( '/^@/', '', $url_locale );
-					if ( strpos( $url_locale, '://' ) )
-						$ret['sameAs'][] = esc_url( $url_locale );
-				}
+			$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', 
+				$this->p->cf['form']['social_accounts'] );
+			asort( $social_accounts );	// sort by label and maintain key association
+			foreach ( $social_accounts as $key => $label ) {
+				$url_locale = SucomUtil::get_locale_opt( $key, $this->p->options, $mod );
+				if ( empty( $url_locale ) )
+					continue;
+				if ( $key === 'tc_site' )
+					$url_locale = 'https://twitter.com/'.preg_replace( '/^@/', '', $url_locale );
+				if ( strpos( $url_locale, '://' ) )
+					$ret['sameAs'][] = esc_url( $url_locale );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret );

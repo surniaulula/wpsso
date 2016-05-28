@@ -777,12 +777,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
 			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? src=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
-				$content, $match_all, PREG_SET_ORDER ) ) {
+				$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( count( $match_all ).' x video <iframe|embed/> html tag(s) found' );
+					$this->p->debug->log( count( $all_matches ).' x video <iframe|embed/> html tag(s) found' );
 
-				foreach ( $match_all as $media ) {
+				foreach ( $all_matches as $media ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( '<'.$media[1].'/> html tag found = '.$media[2] );
 					$embed_url = $media[2];
@@ -811,11 +811,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'applying filter '.$filter_name ); 
 				// should return an array of arrays
-				if ( ( $match_all = apply_filters( $filter_name, false, $content ) ) !== false ) {
-					if ( is_array( $match_all ) ) {
+				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
+					if ( is_array( $all_matches ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( count( $match_all ).' x videos returned by '.$filter_name.' filter' );
-						foreach ( $match_all as $media ) {
+							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );
+						foreach ( $all_matches as $media ) {
 							if ( ! empty( $media[0] ) && 
 								( $check_dupes == false || 
 									$this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {	// $context = 'video'

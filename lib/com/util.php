@@ -1112,9 +1112,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $text_stripped === '' && $use_img_alt ) {				// possibly use img alt strings if no text
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', 
-							$text, $matches, PREG_PATTERN_ORDER ) ) {
+							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
 
-						foreach ( $matches[1] as $alt ) {
+						foreach ( $all_matches[1] as $alt ) {
 							$alt = trim( $alt );
 							if ( ! empty( $alt ) ) {
 								$alt = empty( $alt_prefix ) ? 
@@ -1193,10 +1193,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				   | \xF0\x9F\x99[\x80-\x8F]
 				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
 				)/x';
-				$matches = array();
-				if ( preg_match_all( $regex, $content, $matches ) ) {
-					if ( ! empty( $matches[1] ) ) {
-						foreach ( $matches[1] as $emoji ) {
+				if ( preg_match_all( $regex, $content, $all_matches ) ) {
+					if ( ! empty( $all_matches[1] ) ) {
+						foreach ( $all_matches[1] as $emoji ) {
 							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
 							if ( isset( $unpacked[1] ) ) {
 								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
