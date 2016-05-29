@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.2-dev1 (2016/05/28)**
+**Version 3.32.2-1 (2016/05/29)**
 
 Official announcement: N/A
 
@@ -435,9 +435,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.2-dev1 =
+= 3.32.2-1 =
 
-(2016/05/28) Refactored the Organization schema filter to allow for Organization sub-types. Added a missing third argument to preg_match_all() in WpssoUtil for older PHP versions.
+(2016/05/29) Refactored the Organization schema filter to allow for Organization sub-types. Added a missing third argument to preg_match_all() in WpssoUtil for older PHP versions.
 
 = 3.32.1-1 =
 
