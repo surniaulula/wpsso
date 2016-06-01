@@ -382,6 +382,22 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.32.3-dev1 (2016/06/01)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added support for all Schema Organization sub-types.
+	* Improved loop through Schema types and sub-types.
+	* Sorted extension sub-menu items alphabetically.
+	* Updated some option labels and help texts.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.32.2-1 (2016/05/29)**
 
 Official announcement: N/A
@@ -434,6 +450,10 @@ Official announcement: N/A
 	* Added a new 'wpsso_social_accounts' filter.
 
 == Upgrade Notice ==
+
+= 3.32.3-dev1 =
+
+(2016/06/01) Added support for all Schema Organization sub-types. Improved loop through Schema types and sub-types. Sorted extension sub-menu items alphabetically.
 
 = 3.32.2-1 =
 
