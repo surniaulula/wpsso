@@ -152,17 +152,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'website' : $this->p->options['schema_type_for_home_page'] ) );
 
 				elseif ( $mod['is_post'] ) {
-					$post_obj = SucomUtil::get_post_object( $mod['id'] );
+					if ( ! empty( $mod['post_type'] ) ) {
+						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
 
-					if ( ! empty( $post_obj->post_type ) ) {
-						if ( isset( $this->p->options['schema_type_for_'.$post_obj->post_type] ) ) {
-
-							$type_id = $this->p->options['schema_type_for_'.$post_obj->post_type];
+							$type_id = $this->p->options['schema_type_for_'.$mod['post_type']];
 
 							if ( empty( $type_id ) || $type_id === 'none' ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'schema type for post type '.
-										$post_obj->post_type.' is disabled' );
+										$mod['post_type'].' is disabled' );
 								$type_id = null;
 
 							} elseif ( empty( $schema_types[$type_id] ) ) {
@@ -173,19 +171,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							} elseif ( $this->p->debug->enabled )
 								$this->p->debug->log( 'schema type id for post type '.
-									$post_obj->post_type.' is '.$type_id );
+									$mod['post_type'].' is '.$type_id );
 
-						} elseif ( ! empty( $schema_types[$post_obj->post_type] ) ) {
+						} elseif ( ! empty( $schema_types[$mod['post_type']] ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'setting schema type id to post type '.
-									$post_obj->post_type );
-							$type_id = $post_obj->post_type;
+									$mod['post_type'] );
+							$type_id = $mod['post_type'];
 
 						// unknown post type
 						} else {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'using page schema type: unknown post type '.
-									$post_obj->post_type );
+									$mod['post_type'] );
 							$type_id = apply_filters( $lca.'_schema_type_for_post_type_unknown',
 								$this->p->options['schema_type_for_page'] );
 						}
@@ -291,9 +289,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			else asort( $select );
 
 			if ( $add_none )
-				$select = array_merge( array( 'none' => '[None]' ), $select );
-
-			return $select;
+				return array_merge( array( 'none' => '[None]' ), $select );
+			else return $select;
 		}
 
 		// get the full schema type url from the array key
@@ -356,7 +353,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$post_obj = false;
 			$type_ids = array();
 			$filtered_names = array();	// prevent duplicate branches
 
@@ -402,7 +398,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( ! empty( $filtered_names[$top_filter_name] ) ) {	// prevent duplicate branches
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'skipping '.$top_type_url.': type or sub-type previously added' );
+						$this->p->debug->log( 'skipping '.$top_filter_name.': type or sub-type previously added' );
 					continue;
 				}
 
@@ -421,45 +417,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'is_main_entity: '.( $is_main ? 'true' : 'false' ) );
 
-				/*
-				 * Include website, organization, and/or person markup on the home page. 
-				 * IF there isn't a hook for that filter then call the method directly, 
-				 * otherwise execute the filter instead.
-				 */
-				if ( $mod['is_home'] && 
-					method_exists( __CLASS__, 'filter_json_data_'.$top_filter_name ) && 
-						! has_filter( $lca.'_json_data_'.$top_filter_name ) ) {
+				// add http_schema_org first as a generic / common data filter
+				$parent_urls = array( 'http://schema.org' );
 
-					if ( $is_enabled ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'calling class method '.$top_filter_name );
-						$filtered_names[$top_filter_name] = true;	// prevent duplicate branches
-						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$top_filter_name ),
-							$json_data, $use_post, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
-					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( $top_filter_name.' class method is disabled' );
+				// returns an array of type ids with gparents, parents, child (in that order)
+				foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
+					$parent_urls[] = $this->get_schema_type_url( $rel_type_id );
 
-				} else {
-					// add http_schema_org first as a generic / common data filter
-					$parent_urls = array( 'http://schema.org' );
+				foreach ( $parent_urls as $rel_type_url ) {
+					$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
+					$has_filter = has_filter( $lca.'_json_data_'.$rel_filter_name );
+					$filtered_names[$rel_filter_name] = true;	// prevent duplicate branches
 
-					// returns an array of type ids with gparents, parents, child (in that order)
-					foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
-						$parent_urls[] = $this->get_schema_type_url( $rel_type_id );
-
-					foreach ( $parent_urls as $rel_type_url ) {
-						$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
+					// add website, organization, and person markup to home page
+					if ( $mod['is_home'] && ! $has_filter &&
+						method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
 	
-						if ( has_filter( $lca.'_json_data_'.$rel_filter_name ) ) {
-							if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) ) {
-								$filtered_names[$rel_filter_name] = true;	// prevent duplicate branches
-								$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
-									$json_data, $use_post, $mod, $mt_og, $user_id, $is_main );
-							} elseif ( $this->p->debug->enabled )
-								$this->p->debug->log( $rel_filter_name.' filter is disabled' );
+						if ( $is_enabled ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'calling class method '.$rel_filter_name );
+							$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
+								$json_data, $use_post, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
 						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( 'no filters registered for '.$rel_filter_name );
-					}
+							$this->p->debug->log( $rel_filter_name.' class method is disabled' );
+					} elseif ( $has_filter ) {
+						if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) ) {
+							$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
+								$json_data, $use_post, $mod, $mt_og, $user_id, $is_main );
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( $rel_filter_name.' filter is disabled' );
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'no filters registered for '.$rel_filter_name );
 				}
 
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {

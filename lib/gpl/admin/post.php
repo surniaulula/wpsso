@@ -50,13 +50,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['og_desc_len'],
 						'...', $mod, true, true, true, 'none' ), '', '', $this->p->options['og_desc_len'] ),	// $md_idx = 'none'
 				),
-				'schema_desc' => array(
-					'label' => _x( 'Google / Schema Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
-						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
-				),
 				'seo_desc' => array(
 					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
@@ -79,12 +72,33 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),
 				),
+				'subsection_schema' => array(
+					'td_class' => 'subsection',
+					'header' => 'h4',
+					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+				),
+				'schema_desc' => array(
+					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
+					'no_auto_draft' => true,
+					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
+						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
+				),
 			);
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
+
+			if ( $this->p->cf['lca'] === 'wpsso' ) {
+				$info = $this->p->cf['plugin']['wpssojson'];
+				$table_rows[] = '<td colspan="2" align="center"><p class="pro-about-msg">'.
+					sprintf( __( 'Additional Schema markup options are available when the %s extension is active.', 'wpsso' ),
+						'<a href="'.$info['url']['download'].'" target="_blank">'.$info['name'].'</a>' ).'</p></td>';
+			}
+
+			return $table_rows;
 		}
 	}
 }

@@ -170,19 +170,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
 
 				// match wordpress behavior (users page for admins, profile page for everyone else)
-				if ( $menu_lib === 'profile' && current_user_can( 'list_users' ) )
-					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
+				if ( $menu_lib === 'profile' && 
+					current_user_can( 'list_users' ) )
+						$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
 				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 
+				$sorted_menu = array();
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
 						continue;
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
-						if ( isset( $this->submenu[$menu_id] ) )
-							$this->submenu[$menu_id]->add_submenu_page( $parent_slug );
-						else $this->add_submenu_page( $parent_slug,
-							$menu_id, $menu_name, $menu_lib, $ext );
+						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
+						$sorted_menu[$name_text.'-'.$menu_id] = array( $parent_slug, 
+							$menu_id, $menu_name, $menu_lib, $ext );	// add_submenu_page() args
 					}
+				}
+				ksort( $sorted_menu );
+
+				foreach ( $sorted_menu as $key => $arg ) {
+					if ( isset( $this->submenu[$arg[1]] ) )
+						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
+					else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
 				}
 			}
 		}
@@ -196,38 +204,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_lib = empty( $menu_lib ) ?
 				'submenu' : $menu_lib;
 
+			$lca = $this->p->cf['lca'];
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
-
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
 			$this->menu_lib = $menu_lib;
-			$this->menu_ext = $this->p->cf['lca'];
+			$this->menu_ext = $lca;
 
 			if ( isset( $this->submenu[$this->menu_id] ) ) {
-				$menu_slug = $this->p->cf['lca'].'-'.$this->menu_id;
+				$menu_slug = $lca.'-'.$this->menu_id;
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
-			$submenus = array();
+			$sorted_menu = array();
+			$unsorted_menu = array();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
 					continue;
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
-					$submenus[$menu_id] = array(		// menu_id is (should be) unique
-						'parent' => $parent_slug,
-						'id' => $menu_id,
-						'name' => $menu_name,
-						'lib' => $menu_lib,
-						'ext' => $ext,
-					);
+					if ( $lca === $ext )
+						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+					else {
+						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
+						$sorted_key = $name_text.'-'.$menu_id;
+						$sorted_menu[$sorted_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+					}
 				}
 			}
+			ksort( $sorted_menu );
 
-			foreach ( $submenus as $key => $m ) {
-				if ( isset( $this->submenu[$m['id']] ) )
-					$this->submenu[$m['id']]->add_submenu_page( $m['parent'] );
-				else $this->add_submenu_page( $m['parent'], $m['id'], $m['name'], $m['lib'], $m['ext'] );
+			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
+				if ( isset( $this->submenu[$arg[1]] ) )
+					$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
+				else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
 			}
 		}
 

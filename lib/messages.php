@@ -451,30 +451,30 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 					}	// end of tooltip-fb switch
 				/*
-				 * Publisher 'Google' settings
+				 * Publisher 'Google' / SEO settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-google_' ) === 0 ) {
+				} elseif ( strpos( $idx, 'tooltip-seo_' ) === 0 ) {
 					switch ( $idx ) {
-						case 'tooltip-google_publisher_url':
+						case 'tooltip-seo_publisher_url':
 							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation header tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
-						case 'tooltip-google_desc_len':
+						case 'tooltip-seo_desc_len':
 							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
 							break;
-						case 'tooltip-google_author_field':
+						case 'tooltip-seo_author_field':
 							$text = $info['short'].' can include an <em>author</em> and <em>publisher</em> link in your webpage headers. These are not Facebook / Open Graph and Pinterest Rich Pin meta property tags &mdash; they are used primarily by Google\'s search engine to associate Google+ profiles with search results. Select which field to use from the author\'s profile for the <em>author</em> link tag.';
 							break;
-						case 'tooltip-google_def_author_id':
+						case 'tooltip-seo_def_author_id':
 							$text = 'A default author for webpages missing authorship information (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default). This option is similar to the Facebook / Open Graph and Pinterest Rich Pin Default Author, except that it\'s applied to the Link meta tag instead.';
 							break;
-						case 'tooltip-google_def_author_on_index':
+						case 'tooltip-seo_def_author_on_index':
 							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.).';
 							break;
-						case 'tooltip-google_def_author_on_search':
+						case 'tooltip-seo_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
 							break;
 						default:
-							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $info );
+							$text = apply_filters( $lca.'_messages_tooltip_seo', $text, $idx, $info );
 							break;
 					}	// end of tooltip-google switch
 				/*
@@ -486,16 +486,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When additional schema properties are available (product ratings, for example), one or more "noscript" containers can be included in webpage headers. The "noscript" container is read correctly by the Google Structured Data Testing Tool, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored).';
 							break;
 						case 'tooltip-schema_social_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
+							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 						case 'tooltip-schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
 							break;
 						case 'tooltip-schema_logo_url':
-							$text = 'An image of your organization\'s logo that Google can use in search results and <em>Knowledge Graph</em>.';
+							$text = 'A URL for the business / organization\'s logo image, that Google can use in search results and its <em>Knowledge Graph</em>.';
 							break;
 						case 'tooltip-schema_banner_url':
-							$text = 'A 600x60px banner of your organization\'s logo that Google can use in Articles and other Schema item types.';
+							$text = 'A URL for the business / organization\'s logo image, <em>that measures exactly 600x60px</em>, that Google can use as a banner for Articles.';
 							break;
 						case 'tooltip-schema_img_max':
 							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to define the item type for Schema JSON-LD and/or meta tags in webpage headers.';
 							break;
 						default:
-							$text = apply_filters( $lca.'_messages_tooltip_google', $text, $idx, $info );
+							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
 							break;
 					}	// end of tooltip-google switch
 				/*
@@ -678,14 +678,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						break;
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ), $info['short_pro'] ).'</a></p>';
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ),
+								$info['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-about-msg-post':
 						// additional text for the following pro-about-msg paragraph
-						$info['text'] = __( 'You can modify the description values by updating the content or excerpt, and change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' );
+						$info['text'] = __( 'Update the content or excerpt text to change the default values shown here.',
+							'wpsso' );
 						// no break
 					case 'pro-about-msg':
-						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include the modules required to manage custom post, term, or user meta &mdash; these options are included for display purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
+						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).
+							( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
@@ -719,14 +723,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = __( 'Google / Schema image markup could not be created from this webpage content. Google <em>requires</em> at least one image object for this Schema item type.', 'wpsso' );
 						break;
 					case 'notice-missing-schema_logo_url':
-						$text = __( 'A Business Logo Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please entrer a Business Logo Image URL in the %1$s settings.', 'wpsso' ),
+						$text = __( 'A Business / Organization Logo image is missing for the Schema Organization markup.', 'wpsso' ).' '.
+						sprintf( __( 'Please enter an Business / Organization Logo URL in the %1$s settings.', 'wpsso' ),
 							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;
 					case 'notice-missing-schema_banner_url':
 						$text = __( 'A Business Banner Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please enter a Business Banner (600x60) Image URL in the %1$s settings.', 'wpsso' ),
+						sprintf( __( 'Please enter a Business Banner 600x60px Image URL in the %1$s settings.', 'wpsso' ),
 							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;

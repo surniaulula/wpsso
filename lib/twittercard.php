@@ -97,6 +97,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			/*
 			 * Player Card
+			 *
+			 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
+			 * YouTube, Vimeo, Wistia, etc. are application/x-shockwave-flash or text/html (embed URL).
+			 *
+			 * twitter:player:stream
+			 * 	This is a URL to the video file itself (not a video embed). The video must be an mp4 file. The
+			 * 	supported codecs within the file are: H.264 video, Baseline Profile Level 3.0, up to 640 x 480 at
+			 * 	30 fps and AAC Low Complexity Profile (LC) audio. This property is optional.
+			 *
+			 * twitter:player:stream:content_type
+			 *	The MIME type for your video file (video/mp4). This property is only required if you have set a
+			 *	twitter:player:stream meta tag.
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 				if ( isset( $mt_og['og:video'] ) && count( $mt_og['og:video'] ) > 0 ) {

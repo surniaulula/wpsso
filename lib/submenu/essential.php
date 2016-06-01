@@ -113,27 +113,29 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';
 
+					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
+						'option label', 'wpsso' ), null, 'seo_publisher_url', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
+
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
+					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
 						'option label', 'wpsso' ), null, 'schema_social_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( '<a href="%s">WebSite Information</a> for Google Search',
+						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
-						' Site Publisher / <a href="https://developers.google.com/structured-data/customize/social-profiles">Organization Social Profile</a></p>'.
+						sprintf( __( ' Include <a href="%s">Organization Social Profile</a>',
+							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
-						' <a href="https://developers.google.com/structured-data/customize/social-profiles">Person Social Profile</a> for Site Owner '.
-							$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
+						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Site Owner',
+							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
+								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
-					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
-						'option label', 'wpsso' ), null, 'google_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
-
-					$table_rows['schema_logo_url'] = $this->form->get_th_html( _x( 'Business Logo Image URL',
-						'option label', 'wpsso' ), null, 'schema_logo_url' ).
+					$table_rows['schema_logo_url'] = $this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">'.
+						_x( 'Business / Organization Logo URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.

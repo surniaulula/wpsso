@@ -234,33 +234,33 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'pub-google':
 
 					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
-						'option label', 'wpsso' ), null, 'google_publisher_url', array( 'is_locale' => true ) ).
+						'option label', 'wpsso' ), null, 'seo_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['seo_desc_len'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Search / SEO Description Length',
-						'option label', 'wpsso' ), null, 'google_desc_len' ).
+						'option label', 'wpsso' ), null, 'seo_desc_len' ).
 					'<td>'.$this->form->get_input( 'seo_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
 					$table_rows['seo_author_field'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author Link URL Field',
-						'option label', 'wpsso' ), null, 'google_author_field' ).
+						'option label', 'wpsso' ), null, 'seo_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
 
 					$table_rows['seo_def_author_id'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Default Author when Missing',
-						'option label', 'wpsso' ), null, 'google_def_author_id' ).
+						'option label', 'wpsso' ), null, 'seo_def_author_id' ).
 					'<td>'.$this->form->get_select( 'seo_def_author_id', $user_names, null, null, true ).'</td>';
 
 					$table_rows['seo_def_author_on_index'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Use Default Author on Indexes',
-						'option label', 'wpsso' ), null, 'google_def_author_on_index' ).
+						'option label', 'wpsso' ), null, 'seo_def_author_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
 
 					$table_rows['seo_def_author_on_search'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Use Default Author on Search Results',
-						'option label', 'wpsso' ), null, 'google_def_author_on_search' ).
+						'option label', 'wpsso' ), null, 'seo_def_author_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
 
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$noscript_disabled = apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', true ) ? false : true;
 
 					$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Use Meta Property Containers',
+					$this->form->get_th_html( _x( 'Meta Property Containers',
 						'option label', 'wpsso' ), null, 'schema_add_noscript' ).
 					'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
 							' <em>'._x( 'option disabled by extension plugin or custom filter',
@@ -279,18 +279,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Include Google Structured Data',
+					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
 						'option label', 'wpsso' ), null, 'schema_social_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( '<a href="%s">WebSite Information</a> for Google Search',
+						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
-						' Site Publisher / <a href="https://developers.google.com/structured-data/customize/social-profiles">'.
-							'Organization Social Profile</a></p>'.
+						sprintf( __( ' Include <a href="%s">Organization Social Profile</a>',
+							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
-						' <a href="https://developers.google.com/structured-data/customize/social-profiles">'.
-							'Person Social Profile</a> for the Site Owner '.
+						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Site Owner',
+							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
@@ -300,11 +300,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'schema_alt_name', 'wide' ).'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">'.
-						_x( 'Business Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
+						_x( 'Business / Organization Logo URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Business Banner (600x60) Image URL',
+					$this->form->get_th_html( _x( 'Business Banner 600x60px Image URL',
 						'option label', 'wpsso' ), null, 'schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 
@@ -333,9 +333,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$schema_types = $this->p->schema->get_schema_types_select();
-					$schema_select = '';
+					$schema_by_ptn = '';
 					foreach ( $this->p->util->get_post_types() as $post_type )
-						$schema_select .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
+						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
 							$schema_types, 'schema_type' ).' for '.$post_type->label.'</p>'."\n";
 
 					$table_rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Default Item Type by Post Type',
 						'option label', 'wpsso' ), null, 'schema_type_for_ptn' ).
-					'<td>'.$schema_select.'</td>';
+					'<td>'.$schema_by_ptn.'</td>';
 
 					break;
 

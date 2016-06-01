@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.2-1',	// plugin version
+					'version' => '3.32.3-dev1',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1002,7 +1002,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'webpage' => 'http://schema.org/WebPage',
 						'website' => 'http://schema.org/WebSite',
 					),
-					'organization' => 'http://schema.org/Organization',
+					'organization' => array(
+						'airline' => 'http://schema.org/Airline',
+						'corporation' => 'http://schema.org/Corporation',
+						'educational.organization' => array(
+							'college.or.university' => 'http://schema.org/CollegeOrUniversity',
+							'educational.organization' => 'http://schema.org/EducationalOrganization',
+							'elementary.school' => 'http://schema.org/ElementarySchool',
+							'middle.school' => 'http://schema.org/MiddleSchool',
+							'preschool' => 'http://schema.org/Preschool',
+							'school' => 'http://schema.org/School',
+						),
+						'government.organization' => 'http://schema.org/GovernmentOrganization',
+						'medical.organization' => array(
+							'dentist' => 'http://schema.org/Dentist',
+							'hospital' => 'http://schema.org/Hospital',
+							'medical.organization' => 'http://schema.org/MedicalOrganization',
+							'pharmacy' => 'http://schema.org/Pharmacy',
+							'physician' => 'http://schema.org/Physician',
+						),
+						'non-governmental.organization' => 'http://schema.org/NGO',
+						'organization' => 'http://schema.org/Organization',
+						'performing.group' => array(
+							'dance.group' => 'http://schema.org/DanceGroup',
+							'music.group' => 'http://schema.org/MusicGroup',
+							'performing.group' => 'http://schema.org/PerformingGroup',
+							'theater.group' => 'http://schema.org/TheaterGroup',
+						),
+						'sports.organization' => array(
+							'sports.team' => 'http://schema.org/SportsTeam',
+							'sports.organization' => 'http://schema.org/SportsOrganization',
+						),
+					),
 					'person' => 'http://schema.org/Person',
 					'place' => array(
 						'administrative.area' => 'http://schema.org/AdministrativeArea',

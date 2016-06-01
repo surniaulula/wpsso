@@ -50,12 +50,6 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['og_desc_len'],
 						'...', $mod, true, true, true, 'none' ), '', '', $this->p->options['og_desc_len'] ),	// $md_idx = 'none'
 				),
-				'schema_desc' => array(
-					'label' => _x( 'Google / Schema Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
-						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
-				),
 				'seo_desc' => array(
 					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
@@ -74,6 +68,17 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),
+				),
+				'subsection_schema' => array(
+					'td_class' => 'subsection',
+					'header' => 'h4',
+					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+				),
+				'schema_desc' => array(
+					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
+					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
+						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
 				),
 			);
 
@@ -96,7 +101,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( $mod['is_post'] )
 				$table_rows[] = '<td colspan="2" align="center">'.
-					$this->p->msgs->get( 'pro-about-msg', __( 'You can change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' ).' '.__( 'The service API modules required for embedded video discovery are available in the Pro version.', 'wpsso' ) ).'</td>';
+					$this->p->msgs->get( 'pro-about-msg', __( 'You can change the social image by selecting a featured image, attaching one or more images, or including images in the content.', 'wpsso' ).' '.__( 'The video service API modules &mdash; required to find embedded videos &mdash; are available in the Pro version.', 'wpsso' ) ).'</td>';
 			else $table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-about-msg' ).'</td>';
 
