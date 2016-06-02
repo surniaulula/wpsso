@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.3-dev1 (2016/06/01)**
+**Version 3.32.3-2 (2016/06/02)**
 
 Official announcement: N/A
 
@@ -451,9 +451,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.3-dev1 =
+= 3.32.3-1 =
 
-(2016/06/01) Added support for all Schema Organization sub-types. Improved loop through Schema types and sub-types. Sorted extension sub-menu items alphabetically.
+(2016/06/02) Added support for all Schema Organization sub-types. Improved loop through Schema types and sub-types. Sorted extension sub-menu items alphabetically.
 
 = 3.32.2-1 =
 
