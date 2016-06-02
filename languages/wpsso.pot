@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.3-"
-"dev1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1238,10 +1237,9 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/admin/post.php:97 lib/pro/admin/post.php:113
+#: lib/gpl/admin/post.php:100 lib/pro/admin/post.php:116
 msgid ""
-"Additional Schema markup options are available when the %s extension is "
-"active."
+"Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
 #: lib/media.php:340
