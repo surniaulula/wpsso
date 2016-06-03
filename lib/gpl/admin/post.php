@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 
 				$info = $this->p->cf['plugin']['wpssojson'];
-				$table_rows[] = '<td colspan="2" align="center"><p class="pro-about-msg">'.
+				$table_rows[] = '<td colspan="2" align="center"><p class="ext-about-msg">'.
 					sprintf( __( 'Activate the %s extension for additional Schema markup features and options.', 'wpsso' ),
 						'<a href="'.$info['url']['download'].'" target="_blank">'.$info['name'].'</a>' ).'</p></td>';
 			}

@@ -1137,18 +1137,6 @@ msgstr ""
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:104
-msgid ""
-"You can change the social image by selecting a featured image, attaching one "
-"or more images, or including images in the content."
-msgstr ""
-
-#: lib/gpl/admin/meta.php:104
-msgid ""
-"The video service API modules &mdash; required to find embedded videos "
-"&mdash; are available in the Pro version."
-msgstr ""
-
 #: lib/gpl/admin/meta.php:114 lib/pro/admin/meta.php:120
 #: lib/submenu/general.php:29
 msgctxt "metabox title"
@@ -1805,16 +1793,28 @@ msgctxt "option comment"
 msgid "%s required to use this option"
 msgstr ""
 
-#: lib/messages.php:687
-msgid ""
-"Update the content or excerpt text to change the default values shown here."
-msgstr ""
-
-#: lib/messages.php:691
+#: lib/messages.php:686 lib/messages.php:689 lib/messages.php:692
 msgid ""
 "The Free / Basic version of %1$s does not include modules required to "
 "customize post, term, and/or user meta &mdash; these options are shown for "
 "informative purposes only."
+msgstr ""
+
+#: lib/messages.php:686
+msgid ""
+"Update the content or excerpt text to change the default values shown here."
+msgstr ""
+
+#: lib/messages.php:689
+msgid ""
+"You can change the social image by selecting a featured image, attaching one "
+"or more images, or including images in the content."
+msgstr ""
+
+#: lib/messages.php:689
+msgid ""
+"The video service API modules &mdash; required to find embedded videos "
+"&mdash; are available in the Pro version."
 msgstr ""
 
 #: lib/messages.php:707
