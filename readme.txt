@@ -144,7 +144,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 * Configurable user profile contact field names and labels for customized theme / SEO plugin integration.
 * Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from webpage headers.
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
-* Integrates with **3rd party plugins and services** for additional image, video, product, and content information (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
+* Integrates with 3rd party plugins and services for additional image, video, product, and content information (see [About Pro Modules](http://wpsso.com/codex/plugins/wpsso/notes/modules/) and [Integration Notes](http://wpsso.com/codex/plugins/wpsso/installation/integration/) for details). The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are detected.
 	* **Supported 3rd Party Plugins**
 		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
 		* [bbPress](https://wordpress.org/plugins/bbpress/)
