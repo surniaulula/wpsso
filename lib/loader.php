@@ -42,10 +42,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					$this->p->debug->log( 'loading module only for action: '.$has_action );
 			}
 
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				$type = $this->p->is_avail['aop'] &&
-					$this->p->is_avail['util']['um'] &&
-						$this->p->check->aop( $lca, true, -1 ) === -1 ?
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) &&
+						$this->p->check->aop( $ext, true, -1 ) === -1 ?
 							'pro' : 'gpl';
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
@@ -67,25 +66,25 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							// this is usually / almost always a false === false comparison
 							if ( $action !== $has_action ) {
 								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'ignoring '.$lca.' '.
+									$this->p->debug->log( 'ignoring '.$ext.' '.
 										$type.'/'.$sub.'/'.$id_key );
 								continue;
 							}
 
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'loading '.$lca.' '.$type.'/'.$sub.'/'.$id_key.': '.$label );
-							$classname = apply_filters( $lca.'_load_lib', false, "$type/$sub/$id" );
+								$this->p->debug->log( 'loading '.$ext.' '.$type.'/'.$sub.'/'.$id_key.': '.$label );
+							$classname = apply_filters( $ext.'_load_lib', false, "$type/$sub/$id" );
 
 							if ( is_string( $classname ) && class_exists( $classname ) ) {
-								if ( $lca === $this->p->cf['lca'] ) {
+								if ( $ext === $this->p->cf['lca'] ) {
 									if ( ! isset( $this->p->m[$sub][$id] ) )
 										$this->p->m[$sub][$id] = new $classname( $this->p );
 									elseif ( $this->p->debug->enabled )
 										$this->p->debug->log( 'module ['.$sub.']['.$id.'] already defined' );
-								} elseif ( ! isset( $this->p->m_ext[$lca][$sub][$id] ) ) {
-									$this->p->m_ext[$lca][$sub][$id] = new $classname( $this->p );
+								} elseif ( ! isset( $this->p->m_ext[$ext][$sub][$id] ) ) {
+									$this->p->m_ext[$ext][$sub][$id] = new $classname( $this->p );
 								} elseif ( $this->p->debug->enabled )
-									$this->p->debug->log( 'module ['.$lca.']['.$sub.']['.$id.'] already defined' );
+									$this->p->debug->log( 'module ['.$ext.']['.$sub.']['.$id.'] already defined' );
 							}
 						}
 					}
