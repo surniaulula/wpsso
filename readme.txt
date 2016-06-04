@@ -22,7 +22,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **Tired of average and sub-standard social meta tags from other SEO plugins?** &mdash; WPSSO Pro automatically retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.
 
-**Optional Free and Pro extensions** &mdash; [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags, [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/) for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/), and others.
+**Optional Free and Pro extensions** &mdash; [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags, [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/), and others.
 
 = Quick List of Features =
 
@@ -75,7 +75,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
-	* [WPSSO Schema JSON-LD](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
+	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
 
 **WPSSO Free / Basic Example Meta Tags**
@@ -177,7 +177,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
-	* [WPSSO Schema JSON-LD](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
+	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
 <blockquote>

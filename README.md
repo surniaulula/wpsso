@@ -20,7 +20,7 @@
 
 <p><strong>Tired of average and sub-standard social meta tags from other SEO plugins?</strong> &mdash; WPSSO Pro automatically retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 
-<p><strong>Optional Free and Pro extensions</strong> &mdash; <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> for Apple Store / iTunes and Google Play App meta tags, <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD</a> for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), <a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a>, and others.</p>
+<p><strong>Optional Free and Pro extensions</strong> &mdash; <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> for Apple Store / iTunes and Google Play App meta tags, <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), <a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a>, and others.</p>
 
 <h4>Quick List of Features</h4>
 
@@ -85,7 +85,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Free version)</li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)</li>
 </ul></li>
 </ul>
@@ -202,7 +202,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 </ul></li>
 </ul>
