@@ -1185,7 +1185,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_aop[$ext] ) {
+						if ( $lca === $ext || self::$pkg_aop[$lca] ) {
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_aop[$ext] ) {
+						if ( $lca === $ext || self::$pkg_aop[$lca] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',

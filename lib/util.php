@@ -648,7 +648,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->notice->err( __( 'The DOMDocument PHP class is missing - unable to read head meta from HTML. Please contact your hosting provider to install the missing DOMDocument PHP class.', 'wpsso' ), true );
 			}
 
-			return $ret;
+			return empty( $ret ) ? false : $ret;
 		}
 
 		public function log_is_functions() {
