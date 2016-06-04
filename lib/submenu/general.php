@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Site Name',
 						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'og_site_name', $this->p->options ),
-						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
+						'long_name', null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
 					$table_rows['og_site_description'] = $this->form->get_th_html( _x( 'Site Description',
 						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
@@ -336,12 +336,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$schema_by_ptn = '';
 					foreach ( $this->p->util->get_post_types() as $post_type )
 						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
-							$schema_types, 'schema_type' ).' for '.$post_type->label.'</p>'."\n";
+							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
 
 					$table_rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Default Item Type for Home Page',
 						'option label', 'wpsso' ), null, 'schema_home_page' ).
-					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'schema_type' ).'</td>';
+					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'long_name' ).'</td>';
 
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Default Item Type by Post Type',

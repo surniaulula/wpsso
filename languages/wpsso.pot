@@ -1807,14 +1807,14 @@ msgstr ""
 
 #: lib/messages.php:689
 msgid ""
-"You can change the social image by selecting a featured image, attaching one "
-"or more images, or including images in the content."
+"You can change the social image by selecting a featured image or including "
+"images in the content."
 msgstr ""
 
 #: lib/messages.php:689
 msgid ""
-"The video service API modules &mdash; required to find embedded videos "
-"&mdash; are available in the Pro version."
+"The video service modules &mdash; required to detect embedded videos &mdash; "
+"are available in the %s Pro version."
 msgstr ""
 
 #: lib/messages.php:707

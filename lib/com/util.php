@@ -660,9 +660,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_locale_opt( $key, array &$opts, $mixed = 'current', $if_empty = null ) {
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 			if ( $if_empty !== null )
-				return empty( $opts[$key_locale] ) ? $if_empty : $opts[$key_locale];
+				return empty( $opts[$key_locale] ) ?
+					$if_empty : $opts[$key_locale];
 			// allow for empty values
-			else return isset( $opts[$key_locale] ) ? $opts[$key_locale] : null;
+			else return isset( $opts[$key_locale] ) ?
+				$opts[$key_locale] : null;
 		}
 
 		// localize an options array key
