@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Select if this Schema markup describes the <em>main entity</em> for this webpage.';
 						 	break;
 						case 'tooltip-meta-schema_type':
-							$text = 'The Schema type is used to declare the item type for Schema JSON-LD and/or meta tags in webpage headers.';
+							$text = 'The Schema type is used to declare the item type for Schema JSON-LD markup and/or meta tags in webpage headers.';
 						 	break;
 						case 'tooltip-meta-schema_title':
 							$text = 'A custom name / title for the Schema item type "name" JSON-LD property.';
@@ -513,10 +513,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-schema_home_page':
-							$text = 'Select the Schema type for the site home page. The Schema type is used to define the item type for Schema JSON-LD and/or meta tags in webpage headers. The default Schema type for the home page is http://schema.org/WebSite.';
+							$text = 'Select the Schema type for the site home page. The Schema type is used to define the item type for Schema JSON-LD markup and/or meta tags in webpage headers. The default Schema type for the home page is http://schema.org/WebSite.';
 							break;
 						case 'tooltip-schema_type_for_ptn':
-							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to define the item type for Schema JSON-LD and/or meta tags in webpage headers.';
+							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to define the item type for Schema JSON-LD markup and/or meta tags in webpage headers.';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
@@ -725,13 +725,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-missing-schema_logo_url':
 						$text = __( 'A Business / Organization Logo image is missing for the Schema Organization markup.', 'wpsso' ).' '.
 						sprintf( __( 'Please enter an Business / Organization Logo URL in the %1$s settings.', 'wpsso' ),
-							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
+							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;
 					case 'notice-missing-schema_banner_url':
 						$text = __( 'A Business Banner Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
 						sprintf( __( 'Please enter a Business Banner 600x60px Image URL in the %1$s settings.', 'wpsso' ),
-							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema JSON-LD</a>' :
+							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;
 					case 'notice-object-cache-exp':

@@ -238,11 +238,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function get_item_type_context( $type_url, $properties = array() ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) )
-				return array_merge( $properties, array(
-					'@context' => $match[1],
-					'@type' => $match[2],
-				) );
-			else return array();
+				// list content and type array keys first, in case they don't already exist
+				return array_merge( array( '@context' => null, '@type' => null ), $properties, 
+					array( '@context' => $match[1], '@type' => $match[2] ) );
+			else return $properties;
 		}
 
 		public static function get_item_type_parts( $type_url ) {

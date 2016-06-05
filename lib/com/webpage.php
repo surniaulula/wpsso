@@ -532,7 +532,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			$content = false;
-			$filter_content = $this->p->options['plugin_filter_content'];
+			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
 			$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 				$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
@@ -540,7 +540,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			/*
 			 * retrieve the content
 			 */
-			if ( $filter_content == true ) {
+			if ( $filter_content ) {
 				if ( $this->p->is_avail['cache']['object'] ) {
 
 					// if the post id is 0, then add the sharing url to ensure a unique salt string
@@ -593,7 +593,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$this->p->debug->log( $count.' [singlepic] shortcode(s) removed from content' );
 			}
 
-			if ( $filter_content == true ) {
+			if ( $filter_content ) {
 				$filters_changed = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'the_content' );
 
 				// remove all of our shortcodes
@@ -645,7 +645,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 									$this->shortcode[$id]->add();
 
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'the_content filters skipped' );
+				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
@@ -668,7 +668,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// apply filters before caching
 			$content = apply_filters( $this->p->cf['lca'].'_content', $content, $mod, $use_cache, $md_idx );
 
-			if ( $filter_content == true && ! empty( $cache_id ) ) {
+			if ( $filter_content && ! empty( $cache_id ) ) {
 				// only some caching plugins implement this function
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
 				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->options['plugin_object_cache_exp'] );
