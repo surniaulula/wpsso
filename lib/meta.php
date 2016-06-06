@@ -50,29 +50,38 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function __construct() {
 		}
 
-		protected function add_actions() {
-			return $this->must_be_extended( __METHOD__ );
-		}
-
 		public function get_mod( $mod_id ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_array );
 		}
 
-		protected function get_default_tabs() {
-			$tabs = array();
-			foreach( apply_filters( $this->p->cf['lca'].'_social_settings_default_tabs', array(
-				'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
-				'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
-				'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
-				'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
-				'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
-			) ) as $key => $name ) {
-				if ( isset( $this->p->options['plugin_add_tab_'.$key] ) ) {
-					if ( ! empty( $this->p->options['plugin_add_tab_'.$key] ) )
-						$tabs[$key] = $name;
-				} else $tabs[$key] = $name;
+		protected function add_actions() {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function add_metaboxes() {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function show_metabox_social_settings( $obj ) {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		protected function get_social_tabs( $metabox, array &$mod ) {
+			switch ( $metabox ) {
+				case 'social_settings':
+					$tabs = array(
+						'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
+						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
+						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
+						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
+						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
+					);
+					break;
+				default:
+					$tabs = array();	// just in case
+					break;
 			}
-			return $tabs;
+			return apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_'.$metabox.'_tabs', $tabs, $mod );
 		}
 
 		protected function get_table_rows( &$metabox, &$key, &$head, &$mod ) {

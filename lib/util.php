@@ -446,7 +446,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// pre-filter most values to remove html
 			switch ( $option_type ) {
-				case 'html':	// leave html and css / javascript code blocks as-is
+				case 'ignore':
+					return $val;	// stop here
+					break;
+				case 'html':		// leave html and css / javascript code blocks as-is
 				case 'code':
 					$val = stripslashes( $val );
 					break;
@@ -509,7 +512,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ), true );
 						$val = $def_val;
-					} else $val = (int) $val;		// cast as integer
+					} else $val = (int) $val;	// cast as integer
 
 					break;
 
@@ -528,7 +531,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (int) $val;		// cast as integer
+					} else $val = (int) $val;	// cast as integer
 					break;
 
 				// empty of alpha-numeric uppercase (hyphens are allowed as well)
@@ -537,7 +540,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;		// cast as string
+					} else $val = (string) $val;	// cast as string
 					break;
 
 				// empty or alpha-numeric (upper or lower case), plus underscores
@@ -546,7 +549,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;		// cast as string
+					} else $val = (string) $val;	// cast as string
 					break;
 
 				case 'date':
@@ -556,7 +559,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;		// cast as string
+					} else $val = (string) $val;	// cast as string
 					break;
 
 				// text strings that can be blank
@@ -1573,16 +1576,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// tab titles in the array should already be translated:
-		//
-		// $tabs = array(
-		//		'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
-		//		'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
-		//		'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
-		//		'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
-		//		'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
-		// );
-		//
 		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 			$tab_keys = array_keys( $tabs );
 			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore

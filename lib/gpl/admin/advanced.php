@@ -81,9 +81,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			foreach ( array( 
-				'og_img' => sprintf( _x( 'Show "%s" Column for', 'option label', 'wpsso' ), 
+				'og_img' => sprintf( _x( 'Add \'%s\' Column for', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
-				'og_desc' => sprintf( _x( 'Show "%s" Column for', 'option label', 'wpsso' ), 
+				'og_desc' => sprintf( _x( 'Add \'%s\' Column for', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
 			) as $key => $label ) {
 
@@ -121,21 +121,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Include Social Settings Metabox on',
+			$form->get_th_html( _x( 'Include Social Metaboxed on',
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
-
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Add Tabs to Social Settings Metabox',
-				'option label', 'wpsso' ), null, 'plugin_add_tab' ).
-			'<td class="blank">'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_preview' ).' '.
-				_x( 'Preview', 'metabox tab', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_tags' ).' '.
-				_x( 'Head Tags', 'metabox tab', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( 'plugin_add_tab_validate' ).' '.
-				_x( 'Validate', 'metabox tab', 'wpsso' ).'</p>'.
-			'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Image URL Custom Field',

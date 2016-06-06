@@ -89,19 +89,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), ucfirst( $mod['post_type'] ) );
 
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
-
-			// wpsso json is available, but not active
-			if ( ! empty( $this->p->cf['plugin']['wpssojson'] ) &&
-				empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
-
-				$info = $this->p->cf['plugin']['wpssojson'];
-				$table_rows[] = '<td colspan="2" align="center"><p class="ext-about-msg">'.
-					sprintf( __( 'Activate the %s extension for additional Schema markup features and options.', 'wpsso' ),
-						'<a href="'.$info['url']['download'].'" target="_blank">'.$info['name'].'</a>' ).'</p></td>';
-			}
-
-			return $table_rows;
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 		}
 	}
 }

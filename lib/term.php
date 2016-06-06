@@ -199,14 +199,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $this->term_id, $this->tax_slug );
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-
-			if ( apply_filters( $lca.'_add_metabox_term', 
-				$add_metabox, $this->term_id, $screen->id ) === true ) {
+			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->term_id ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'adding metabox for term' );
@@ -248,15 +245,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function add_metaboxes() {
+
 			if ( ! current_user_can( $this->tax_obj->cap->edit_terms ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'insufficient privileges to add metabox for term '.$this->term_id );
 				return;
 			}
+
+			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox ) === true )
-				add_meta_box( WPSSO_META_NAME, _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_term' ), 'term', 'normal', 'low' );
+
+			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox, $this->term_id ) ) {
+				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
+					array( &$this, 'show_metabox_social_settings' ), 'term', 'normal', 'low' );
+			}
 		}
 
 		public function show_metaboxes( $term ) {
@@ -267,34 +269,32 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			echo '</div>';
 		}
 
-		public function show_metabox_term( $term ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'metabox term' );
+		public function show_metabox_social_settings( $term_obj ) {
 
-			$mod = $this->get_mod( $term->term_id, $this->tax_slug );
-			$opts = $this->get_options( $term->term_id );
-			$def_opts = $this->get_defaults( $term->term_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$lca = $this->p->cf['lca'];
+			$metabox = 'social_settings';
+			$mod = $this->get_mod( $term_obj->term_id, $this->tax_slug );
+			$tabs = $this->get_social_tabs( $metabox, $mod );
+			$opts = $this->get_options( $term_obj->term_id );
+			$def_opts = $this->get_defaults( $term_obj->term_id );
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
-			$metabox = 'term';
-			$tabs = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_social_settings_tabs',
-				$this->get_default_tabs(), $mod );
-			if ( empty( $this->p->is_avail['mt'] ) )
-				unset( $tabs['tags'] );
-
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'table rows' );	// start timer
+				$this->p->debug->mark( $metabox.' table rows' );	// start timer
 
 			$table_rows = array();
-			foreach ( $tabs as $key => $title )
+			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
-						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+			}
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'table rows' );	// end timer
+				$this->p->debug->mark( $metabox.' table rows' );	// end timer
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {

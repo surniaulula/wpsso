@@ -33,11 +33,9 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		public function show_metabox_image_dimensions() {
 			$metabox = $this->menu_id;
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
-
 			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
 				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
 					array(), $this->form ) );
-
 			natsort( $table_rows );
 			foreach ( $table_rows as $num => $row ) 
 				echo '<tr>'.$row.'</tr>'."\n";
