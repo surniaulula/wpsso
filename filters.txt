@@ -69,7 +69,7 @@ apply_filters( 'wpsso_og_seed', $og, $use_post, $mod );
 apply_filters( 'wpsso_og_type', $og['og:type'], $use_post );
 apply_filters( 'wpsso_og_woocommerce', $og_ecom, $use_post, $mod );
 apply_filters( 'wpsso_og_wpecommerce', $og_ecom );
-apply_filters( 'wpsso_option_type', false, $key, $opts_type );
+apply_filters( 'wpsso_option_type', false, $key, $network, $mod );
 apply_filters( 'wpsso_plugin_image_sizes', $sizes, $mod, $crawler_name );
 apply_filters( 'wpsso_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
 apply_filters( 'wpsso_post_cache_transients', $transients, $post_id, $locale, $sharing_url );

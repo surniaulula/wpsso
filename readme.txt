@@ -382,6 +382,21 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.32.4-dev1 (2016/06/05)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
+* *Developer Notes*
+	* Optimized the option type detection for the site social account URLs.
+	* Allowed fallback to custom Open Graph description for terms and user pages as well.
+	* Added a new `SucomUtil::get_multi_key_locale()` and `SucomUtil::get_first_next_nums()` method for the PLM extension.
+
 **Version 3.32.3-2 (2016/06/02)**
 
 Official announcement: N/A
@@ -451,19 +466,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.32.4-dev1 =
+
+(2016/06/05) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
+
 = 3.32.3-1 =
 
 (2016/06/02) Added support for all Schema Organization sub-types. Improved loop through Schema types and sub-types. Sorted extension sub-menu items alphabetically.
-
-= 3.32.2-1 =
-
-(2016/05/29) Refactored the Organization schema filter to allow for Organization sub-types. Added a missing third argument to preg_match_all() in WpssoUtil for older PHP versions.
-
-= 3.32.1-1 =
-
-(2016/05/27) Improvements for The SEO Framework plugin. Refactored the WpssoUtil get_sharing_url() method and changed several filter arguments.
-
-= 3.32.0-1 =
-
-(2016/05/23) Added new 'Show "SSO Img" Column for' and 'Show "SSO Desc" Column for' options. Added support for The SEO Framework plugin (Pro version).
 
