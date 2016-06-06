@@ -382,14 +382,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev1 (2016/06/05)**
+**Version 3.32.4-dev2 (2016/06/06)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Removed the "Add Tabs to Social Settings Metabox" option.
 * *Bugfixes*
 	* Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
 * *Developer Notes*
@@ -466,9 +466,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev1 =
+= 3.32.4-dev2 =
 
-(2016/06/05) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
+(2016/06/06) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
 
 = 3.32.3-1 =
 
