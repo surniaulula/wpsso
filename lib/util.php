@@ -412,13 +412,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {
 
-			// remove localization for more generic match
-			if ( preg_match( '/(#.*|:[0-9]+)$/', $key ) > 0 )
-				$key = preg_replace( '/(#.*|:[0-9]+)$/', '', $key );
+			// remove multiples, localization, and status for more generic match
+			$option_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $key );
 
 			// hooked by the sharing class
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $key, $network, $mod );
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $option_key, $network, $mod );
 
+			// translate error messages only once
 			if ( $this->sanitize_error_msgs === null ) {
 				$this->sanitize_error_msgs = array(
 					'url' => __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.',
@@ -1054,7 +1054,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = apply_filters( $lca.'_post_url', $url, $mod, $add_page );
 
 			} else {
-				if ( is_home() ) {
+				if ( $mod['is_home'] ) {
 					if ( 'page' === get_option( 'show_on_front' ) ) {	// show_on_front = posts | page
 						$url = get_permalink( get_option( 'page_for_posts' ) );
 						if ( $this->p->debug->enabled )

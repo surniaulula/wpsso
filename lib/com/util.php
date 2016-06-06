@@ -475,16 +475,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		public static function preg_grep_keys( $preg, array &$arr, $invert = false, $replace = false ) {
+		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false ) {
 			$invert = $invert == false ? 
 				null : PREG_GREP_INVERT;
-			$match = preg_grep( $preg, array_keys( $arr ), $invert );
+			$match = preg_grep( $pattern, array_keys( $input ), $invert );
 			$found = array();
 			foreach ( $match as $key ) {
 				if ( $replace !== false ) {
-					$fixed = preg_replace( $preg, $replace, $key );
-					$found[$fixed] = $arr[$key]; 
-				} else $found[$key] = $arr[$key]; 
+					$fixed = preg_replace( $pattern, $replace, $key );
+					$found[$fixed] = $input[$key]; 
+				} else $found[$key] = $input[$key]; 
 			}
 			return $found;
 		}
@@ -503,13 +503,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public static function next_key( $needle, $arr, $cycle = true ) {
-			$keys = array_keys( $arr );
+		public static function next_key( $needle, array &$input, $loop = true ) {
+			$keys = array_keys( $input );
 			$pos = array_search( $needle, $keys );
 			if ( $pos !== false ) {
 				if ( isset( $keys[ $pos + 1 ] ) )
 					return $keys[ $pos + 1 ];
-				elseif ( $cycle === true )
+				elseif ( $loop === true )
 					return $keys[0];
 			}
 			return false;
@@ -681,6 +681,45 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return isset( $opts[$key_locale] ) ?
 					$key_locale : $key;
 			else return $key_locale;
+		}
+
+		public static function get_multi_key_locale( $key, array &$opts, $add_none = false ) {
+			$default = SucomUtil::get_locale( 'default' );
+			$current = SucomUtil::get_locale( 'current' );
+			$matches = SucomUtil::preg_grep_keys( '/^'.$key.'_([0-9]+)(#.*)?$/', $opts );
+			$results = array();
+
+			foreach ( $matches as $id => $value ) {
+				if ( empty( $value ) )	// wait until we have a fallback value
+					continue;
+
+				$num = preg_replace( '/^'.$key.'_([0-9]+)(#.*)?$/', '$1', $id );
+				if ( isset( $results[$num] ) )	// we already have a preferred value
+					continue;
+
+				if ( ! empty( $opts[$key.'_'.$num.'#'.$current] ) )
+					$results[$num] = $opts[$key.'_'.$num.'#'.$current];
+				elseif ( ! empty( $opts[$key.'_'.$num.'#'.$default] ) )
+					$results[$num] = $opts[$key.'_'.$num.'#'.$default];
+				elseif ( ! empty( $opts[$key.'_'.$num] ) )
+					$results[$num] = $opts[$key.'_'.$num];
+				else $results[$num] = $value;
+			}
+
+			asort( $results );	// sort values for display
+
+			if ( $add_none )
+				return array_merge( array( 'none' => '[None]' ), $results );
+			else return $results;
+		}
+
+		public static function get_first_next_nums( array &$input ) {
+			$keys = array_keys( $input );
+			sort( $keys );
+			$first_num = (int) reset( $keys );
+			$last_num = (int) end( $keys );
+			$next_num = isset( $input[0] ) ? $last_num + 1 : 0;
+			return array( $first_num, $next_num );
 		}
 
 		// $mixed = 'default' | 'current' | post ID | $mod array

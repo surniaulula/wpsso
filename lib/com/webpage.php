@@ -372,10 +372,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
-				$desc = $mod['obj'] ?
-					$mod['obj']->get_options_multi( $mod['id'], ( $mod['is_post'] ? 
-						array( $md_idx, 'og_desc' ) : $md_idx ) ) : null;
-
+				// fallback to og_desc value
+				$desc = is_object( $mod['obj'] ) ?
+					$mod['obj']->get_options_multi( $mod['id'], array( $md_idx, 'og_desc' ) ) : null;
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc ) )
 						$this->p->debug->log( 'no custom description found for '.$md_idx );

@@ -290,7 +290,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $placeholder ) && ( $pos = strpos( $name, '#' ) ) > 0 ) {
 				$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
 				if ( $name !== $key_default )
-					$placeholder = $this->options[$key_default];
+					$placeholder = isset( $this->options[$key_default] ) ?
+						$this->options[$key_default] : '';
 			}
 
 			$html = '';

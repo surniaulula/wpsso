@@ -293,14 +293,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			else {
 				if ( ! is_array( $idx ) )		// convert a string to an array
 					$idx = array( $idx );
-				else $idx = array_unique( $idx );	// just in case
+				else $idx = array_unique( $idx );	// prevent duplicate idx values
 
 				foreach ( $idx as $key ) {
 					if ( $key === 'none' )		// special index keyword
 						return null;
 					elseif ( empty( $key ) )	// just in case
 						continue;
-					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_options ) ) !== null );
+					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_options ) ) !== null )
 						break;			// stop if/when we have an option
 				}
 			}
