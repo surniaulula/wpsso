@@ -683,27 +683,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return $key_locale;
 		}
 
-		public static function get_multi_key_locale( $key, array &$opts, $add_none = false ) {
+		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
 			$default = SucomUtil::get_locale( 'default' );
 			$current = SucomUtil::get_locale( 'current' );
-			$matches = SucomUtil::preg_grep_keys( '/^'.$key.'_([0-9]+)(#.*)?$/', $opts );
+			$matches = SucomUtil::preg_grep_keys( '/^'.$prefix.'_([0-9]+)(#.*)?$/', $opts );
 			$results = array();
 
-			foreach ( $matches as $id => $value ) {
-				if ( empty( $value ) )	// wait until we have a fallback value
-					continue;
+			foreach ( $matches as $key => $value ) {
+				$num = preg_replace( '/^'.$prefix.'_([0-9]+)(#.*)?$/', '$1', $key );
 
-				$num = preg_replace( '/^'.$key.'_([0-9]+)(#.*)?$/', '$1', $id );
-				if ( isset( $results[$num] ) )	// we already have a preferred value
+				if ( ! empty( $results[$num] ) )	// preserve the first non-blank value
 					continue;
-
-				if ( ! empty( $opts[$key.'_'.$num.'#'.$current] ) )
-					$results[$num] = $opts[$key.'_'.$num.'#'.$current];
-				elseif ( ! empty( $opts[$key.'_'.$num.'#'.$default] ) )
-					$results[$num] = $opts[$key.'_'.$num.'#'.$default];
-				elseif ( ! empty( $opts[$key.'_'.$num] ) )
-					$results[$num] = $opts[$key.'_'.$num];
-				else $results[$num] = $value;
+				elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$current] ) )	// current locale
+					$results[$num] = $opts[$prefix.'_'.$num.'#'.$current];
+				elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$default] ) )	// default locale
+					$results[$num] = $opts[$prefix.'_'.$num.'#'.$default];
+				elseif ( ! empty( $opts[$prefix.'_'.$num] ) )			// no locale
+					$results[$num] = $opts[$prefix.'_'.$num];
+				else $results[$num] = $value;					// use value (could be empty)
 			}
 
 			asort( $results );	// sort values for display
@@ -713,13 +710,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return $results;
 		}
 
-		public static function get_first_next_nums( array &$input ) {
+		public static function get_first_last_next_nums( array &$input ) {
 			$keys = array_keys( $input );
+			if ( ! is_numeric( implode( $keys ) ) )	// array cannot be associative
+				return array();
 			sort( $keys );
-			$first_num = (int) reset( $keys );
-			$last_num = (int) end( $keys );
-			$next_num = isset( $input[0] ) ? $last_num + 1 : 0;
-			return array( $first_num, $next_num );
+			$first = (int) reset( $keys );
+			$last = (int) end( $keys );
+			$next = $last ? $last + 1 : $last;	// next is 0 for an empty array
+			return array( $first, $last, $next );
 		}
 
 		// $mixed = 'default' | 'current' | post ID | $mod array
