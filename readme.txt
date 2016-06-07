@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev2 (2016/06/06)**
+**Version 3.32.4-dev3 (2016/06/07)**
 
 Official announcement: N/A
 
@@ -395,7 +395,7 @@ Official announcement: N/A
 * *Developer Notes*
 	* Optimized the option type detection for the site social account URLs.
 	* Allowed fallback to custom Open Graph description for terms and user pages as well.
-	* Added a new `SucomUtil::get_multi_key_locale()` and `SucomUtil::get_first_next_nums()` method for the PLM extension.
+	* Added a new `SucomUtil::get_multi_key_locale()` and `SucomUtil::get_first_last_next_nums()` method for the PLM extension.
 
 **Version 3.32.3-2 (2016/06/02)**
 
@@ -466,9 +466,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev2 =
+= 3.32.4-dev3 =
 
-(2016/06/06) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
+(2016/06/07) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
 
 = 3.32.3-1 =
 
