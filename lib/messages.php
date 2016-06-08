@@ -489,13 +489,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 						case 'tooltip-schema_alt_name':
-							$text = 'An alternate name for your Website that you want Google to consider (optional).';
+							$text = 'An alternate name for your business / organization that you want Google to consider (optional).';
 							break;
 						case 'tooltip-schema_logo_url':
-							$text = 'A URL for the business / organization\'s logo image, that Google can use in search results and its <em>Knowledge Graph</em>.';
+							$text = 'A URL for the website / organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
 							break;
 						case 'tooltip-schema_banner_url':
-							$text = 'A URL for the business / organization\'s logo image, <em>that measures exactly 600x60px</em>, that Google can use as a banner for Articles.';
+							$text = 'A URL for the website / organization\'s banner image &mdash; <em>that measures exactly 600x60px</em> &mdash; that Google can use as a banner for Articles.';
 							break;
 						case 'tooltip-schema_img_max':
 							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
@@ -723,14 +723,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = __( 'Google / Schema image markup could not be created from this webpage content. Google <em>requires</em> at least one image object for this Schema item type.', 'wpsso' );
 						break;
 					case 'notice-missing-schema_logo_url':
-						$text = __( 'A Business / Organization Logo image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please enter an Business / Organization Logo URL in the %1$s settings.', 'wpsso' ),
+						$text = __( 'An Organization logo image is missing for the Schema Organization markup.', 'wpsso' ).' '.
+						sprintf( __( 'Please enter a Website / Organization logo image URL in the %1$s settings.', 'wpsso' ),
 							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;
 					case 'notice-missing-schema_banner_url':
-						$text = __( 'A Business Banner Image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please enter a Business Banner 600x60px Image URL in the %1$s settings.', 'wpsso' ),
+						$text = __( 'An Organization banner image is missing for the Schema Organization markup.', 'wpsso' ).' '.
+						sprintf( __( 'Please enter a Website / Organization banner (600x60px) image URL in the %1$s settings.', 'wpsso' ),
 							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
 								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
 						break;

@@ -524,24 +524,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$ret = array();
 
-			self::add_single_organization_data( $ret, $mod, 'schema_logo_url', false );	// list_element = false
-
 			if ( $is_main )
 				self::add_main_entity_data( $ret, $ret['url'] );
 
-			$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', 
-				$this->p->cf['form']['social_accounts'] );
-			asort( $social_accounts );	// sort by label and maintain key association
-
-			foreach ( $social_accounts as $key => $label ) {
-				$url_locale = SucomUtil::get_locale_opt( $key, $this->p->options, $mod );
-				if ( empty( $url_locale ) )
-					continue;
-				if ( $key === 'tc_site' )
-					$url_locale = 'https://twitter.com/'.preg_replace( '/^@/', '', $url_locale );
-				if ( strpos( $url_locale, '://' ) )
-					$ret['sameAs'][] = esc_url( $url_locale );
-			}
+			self::add_single_organization_data( $ret, $mod, false, 'org_logo_url', false );	// list_element = false
 
 			return self::return_data_from_filter( $json_data, $ret );
 		}
@@ -593,29 +579,47 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data ) );
 		}
 
-		// $logo_key can be 'schema_logo_url' or 'schema_banner_url' (for Articles)
-		public static function add_single_organization_data( &$json_data, &$mod, $logo_key = 'schema_logo_url', $list_element = false ) {
+		// $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles
+		public static function add_single_organization_data( &$json_data, &$mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
+			$org_opts = apply_filters( $wpsso->cf['lca'].'_organization_options', array(), $mod, $org_id );
 
-			$ret = array(
-				'@context' => 'http://schema.org',
-				'@type' => 'Organization',
-				'url' => esc_url( get_bloginfo( 'url' ) ),
-				'name' => SucomUtil::get_site_name( $wpsso->options, $mod ),
-			);
+			if ( empty( $org_opts ) ) {
+				$org_opts = array(
+					'org_name' => SucomUtil::get_site_name( $wpsso->options, $mod ),
+					'org_alt_name' => SucomUtil::get_locale_opt( 'schema_alt_name', $wpsso->options, $mod ),
+					'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mod ),
+					'org_url' => esc_url( get_bloginfo( 'url' ) ),
+					'org_logo_url' => $wpsso->options['schema_logo_url'],
+					'org_banner_url' => $wpsso->options['schema_banner_url'],
+					'org_type' => 'organization',
+					'org_place' => 'none',
+				);
+				foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
+					$wpsso->cf['form']['social_accounts'] ) as $key => $label )
+						$org_opts['org_sameas_'.$key] = SucomUtil::get_locale_opt( $key, $wpsso->options, $mod );
+			}
 
-			if ( ! empty( $wpsso->options['schema_alt_name'] ) )
-				$ret['alternateName'] = $wpsso->options['schema_alt_name'];
+			$org_type_url = $wpsso->schema->get_schema_type_url( $org_opts['org_type'], 'organization' );
+			$ret = self::get_item_type_context( $org_type_url );
 
-			$desc = SucomUtil::get_site_description( $wpsso->options, $mod );
-			if ( ! empty( $desc ) )
-				$ret['description'] = $desc;
+			// add schema properties from the origanization options
+			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
+				'url' => 'org_url',
+				'name' => 'org_name',
+				'alternateName' => 'org_alt_name',
+				'description' => 'org_desc',
+			) );
 
-			if ( ! empty( $wpsso->options[$logo_key] ) ) {
-				if ( ! self::add_single_image_data( $ret['logo'], $wpsso->options, $logo_key, false ) ) {	// list_element = false
+			/*
+			 * Organization Logo
+			 *
+			 * $logo_key can be 'org_logo_url' (default) or 'org_banner_url' (600x60px image) for Articles
+			 */
+			if ( ! empty( $org_opts[$logo_key] ) ) {
+				if ( ! self::add_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) )	// list_element = false
 					unset( $ret['logo'] );	// prevent null assignment
-				}
 			}
 
 			if ( empty( $ret['logo'] ) ) {
@@ -623,6 +627,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
 				if ( is_admin() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) )
 					$wpsso->notice->err( $wpsso->msgs->get( 'notice-missing-'.$logo_key ) );
+			}
+
+			/*
+			 * Google Knowledge Graph
+			 */
+			foreach ( $org_opts as $key => $label ) {
+				if ( strpos( $key, 'org_sameas_' ) !== 0 || 
+					empty( $org_opts[$key] ) )
+						continue;
+				if ( $key === 'org_sameas_tc_site' )
+					$org_opts[$key] = 'https://twitter.com/'.preg_replace( '/^@/', '', $org_opts[$key] );
+				if ( strpos( $org_opts[$key], '://' ) )
+					$ret['sameAs'][] = esc_url( $org_opts[$key] );
 			}
 
 			if ( empty( $list_element ) )
@@ -658,11 +675,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$coauthors_added += self::add_single_person_data( $json_data['contributor'],
 						$author_id, true );	// list_element = true
 
-			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
-				if ( empty( $json_data[$itemprop] ) ) {
+			foreach ( array( 'author', 'contributor' ) as $itemprop )
+				if ( empty( $json_data[$itemprop] ) )
 					unset( $json_data[$itemprop] );	// prevent null assignment
-				}
-			}
 
 			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
 		}
@@ -705,11 +720,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_image = $mod['obj']->get_og_image( 1, $size_name, $user_id, false );	// $check_dupes = false
 
 			if ( ! empty( $og_image ) ) {
-				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) ) {
+				if ( ! self::add_image_list_data( $ret['image'], $og_image, 'og:image' ) )
 					unset( $ret['image'] );	// prevent null assignment
-				}
 			}
 
+			/*
+			 * Google Knowledge Graph
+			 */
 			foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 				$url = $mod['obj']->get_author_meta( $user_id, $cm_id );
 				if ( empty( $url ) )
@@ -765,7 +782,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => esc_url( $media_url ),
 			);
 
-			self::add_data_itemprop_from_og( $ret, $opts, array(
+			self::add_data_itemprop_from_assoc( $ret, $opts, array(
 				'width' => $prefix.':width',
 				'height' => $prefix.':height',
 			) );
@@ -785,18 +802,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 		}
 
-		// deprecated 2016/05/18
-		public static function add_data_prop_from_og( array &$json_data, array &$mt_og, array $names ) {
-			return self::add_data_itemprop_from_og( $json_data, $mt_og, $names );
+		// deprecated 2016/06/08
+		public static function add_data_itemprop_from_og( array &$json_data, array &$mt_og, array $names ) {
+			self::add_data_itemprop_from_assoc( $json_data, $mt_og, $names );
 		}
 
-		public static function add_data_itemprop_from_og( array &$json_data, array &$mt_og, array $names ) {
+		public static function add_data_itemprop_from_assoc( array &$json_data, array &$mt_og, array $names ) {
 			foreach ( $names as $itemprop_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
 					$json_data[$itemprop_name] = $mt_og[$og_name];
 		}
 
+		// deprecated 2016/06/08
 		public static function get_data_itemprop_from_og( array &$mt_og, array $names ) {
+			return self::get_data_itemprop_from_assoc( $mt_org, $names );
+		}
+
+		public static function get_data_itemprop_from_assoc( array &$mt_og, array $names ) {
 			foreach ( $names as $itemprop_name => $og_name )
 				if ( ! empty( $mt_og[$og_name] ) )
 					$ret[$itemprop_name] = $mt_og[$og_name];

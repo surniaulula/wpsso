@@ -22,6 +22,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		protected static $crawler_name = null;		// saved crawler name from user-agent
 		protected static $filter_values = array();	// saved filter values
 		protected static $user_exists = array();	// saved user_exists() values
+		protected static $locales = array();		// saved get_locale() values
 
 		private static $pub_lang = array(
 			// https://www.facebook.com/translations/FacebookLocales.xml
@@ -702,7 +703,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$results[$num] = $opts[$prefix.'_'.$num];
 				else $results[$num] = $value;					// use value (could be empty)
 			}
-
 			asort( $results );	// sort values for display
 
 			if ( $add_none )
@@ -723,15 +723,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale( $mixed = 'current' ) {
-			switch ( true ) {
-				case ( $mixed === 'default' ):
-					$wp_locale = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
-					break;
-				default:
-					$wp_locale = get_locale();
-					break;
-			}
-			return apply_filters( 'sucom_locale', $wp_locale, $mixed );
+			$key = is_array( $mixed ) ?
+				$key = $mixed['name'].'_'.$mixed['id'] : $mixed;
+
+			/*
+			 * We use a class static variable (instead of a method static variable)
+			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
+			 * same variable.
+			 */
+			if ( isset( self::$locales[$key] ) )
+				return self::$locales[$key];
+
+			if ( $mixed === 'default' )
+				$wp_locale = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
+			else $wp_locale = get_locale();
+
+			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
 		public static function get_mod_salt( array $mod ) {

@@ -319,9 +319,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// get / remove dimensions for remote image urls
 			$this->p->util->add_image_url_sizes( array(
-				'rp_img_url',
 				'og_img_url',
 				'og_def_img_url',
+				'rp_img_url',
 				'schema_logo_url',
 				'schema_banner_url',
 			), $opts );
@@ -407,12 +407,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// must be a url
 				case 'sharing_url':
 				case 'fb_page_url':
-				case 'schema_logo_url':
-				case 'schema_banner_url':
-				case 'og_def_img_url':
 				case 'og_img_url':
 				case 'og_vid_url':
+				case 'og_def_img_url':
 				case 'rp_img_url':
+				case 'schema_logo_url':
+				case 'schema_banner_url':
 				case 'plugin_yourls_api_url':
 				case ( strpos( $key, '_url' ) && 
 					isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):

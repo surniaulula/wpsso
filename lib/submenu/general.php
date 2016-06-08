@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_opengraph() {
 			$metabox = 'og';
 			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array( 
-				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
+				'general' => _x( 'Website Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
 				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
@@ -83,12 +83,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics() ).'</td>';
 
-					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Site Name',
+					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Website Name',
 						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'og_site_name', $this->p->options ),
 						'long_name', null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$table_rows['og_site_description'] = $this->form->get_th_html( _x( 'Site Description',
+					$table_rows['og_site_description'] = $this->form->get_th_html( _x( 'Website Description',
 						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'og_site_description', $this->p->options ),
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
@@ -283,13 +283,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'schema_social_json' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
+						sprintf( __( 'Include <a href="%s">Website Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
 						sprintf( __( ' Include <a href="%s">Organization Social Profile</a>',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
-						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Site Owner',
+						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Website Owner',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
@@ -299,12 +299,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'schema_alt_name' ).
 					'<td>'.$this->form->get_input( 'schema_alt_name', 'wide' ).'</td>';
 
-					$table_rows['schema_logo_url'] = $this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">'.
-						_x( 'Business / Organization Logo URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
+					$table_rows['schema_logo_url'] = $this->form->get_th_html( 
+						'<a href="https://developers.google.com/structured-data/customize/logos">'.
+						_x( 'Website Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Business Banner 600x60px Image URL',
+					$this->form->get_th_html( _x( 'Website Banner (600x60px) URL',
 						'option label', 'wpsso' ), null, 'schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 

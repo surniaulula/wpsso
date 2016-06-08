@@ -849,7 +849,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'status' => $this->p->options['schema_organization_json'] ?
 								'on' : 'rec',
 						),
-						'(code) Google WebSite Markup' => array(
+						'(code) Google Website Markup' => array(
 							'status' => $this->p->options['schema_website_json'] ?
 								'on' : 'rec',
 						),
