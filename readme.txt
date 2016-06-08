@@ -382,20 +382,24 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev3 (2016/06/07)**
+**Version 3.32.4-dev4 (2016/06/08)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Removed the "Add Tabs to Social Settings Metabox" option.
+	* None
 * *Bugfixes*
 	* Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
 * *Developer Notes*
 	* Optimized the option type detection for the site social account URLs.
 	* Allowed fallback to custom Open Graph description for terms and user pages as well.
+	* Removed the "Add Tabs to Social Settings Metabox" option (using a filter hook is preferred to modify the Social Settings metabox tabs).
 	* Added a new `SucomUtil::get_multi_key_locale()` and `SucomUtil::get_first_last_next_nums()` method for the PLM extension.
+	* Added value caching to the `SucomUtil::get_locale()` method for a minor performance improvement.
+	* Refactored the `WpssoSchema::add_single_organization_data()` method, and added a new `$org_id` argument (false by default).
+	* Added a new 'wpsso_organization_options' filter to provide custom organization information.
 
 **Version 3.32.3-2 (2016/06/02)**
 
@@ -466,9 +470,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev3 =
+= 3.32.4-dev4 =
 
-(2016/06/07) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
+(2016/06/08) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
 
 = 3.32.3-1 =
 
