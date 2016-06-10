@@ -78,13 +78,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_checkbox( $name, $class, $id, true, $force );
 		}
 
-		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $disabled = false ) {
+		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = null, $disabled = false ) {
 
 			if ( empty( $name ) || 
 				! is_array( $values ) )
 					return;
 
-			if ( $is_assoc == false ) 
+			if ( $is_assoc === null ) 
 				$is_assoc = SucomUtil::is_assoc( $values );
 
 			if ( $this->in_options( $name.':is' ) && 
@@ -97,7 +97,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				// if the array is NOT associative (so regular numbered array), 
 				// then the description is used as the saved value as well
-				if ( $is_assoc == false )
+				if ( $is_assoc === false )
 					$val = $desc;
 
 				if ( $this->text_domain )
@@ -116,7 +116,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = false ) {
+		public function get_no_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = null ) {
 			return $this->get_radio( $name, $values, $class, $id, $is_assoc, true );
 		}
 
@@ -227,7 +227,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = false, $selected = false, $on_change = false ) {
+		public function get_no_select( $name, $values = array(), $class = '', $id = '', $is_assoc = null, $selected = false, $on_change = false ) {
 			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected, $on_change );
 		}
 
@@ -501,7 +501,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_textarea( $name, $class, $id, $len, $placeholder, true );
 		}
 
-		public function get_no_textarea_value( $value, $class = '', $id = '', $len = 0, $placeholder = '' ) {
+		public function get_no_textarea_value( $value = '', $class = '', $id = '', $len = 0, $placeholder = '' ) {
 			return '<textarea disabled="disabled"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="textarea_'.esc_attr( $id ).'"' ).
@@ -573,6 +573,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			&$auto_draft_msg = 'Save a draft version or publish to update this value.' ) {
 
 			foreach ( $form_rows as $key => $val ) {
+				if ( empty( $val ) ) {
+					$table_rows[$key] = '';	// placeholder
+					continue;
+				}
 
 				if ( ! empty( $val['no_auto_draft'] ) &&
 					( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {

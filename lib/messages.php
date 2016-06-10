@@ -236,16 +236,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Select which contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph <code>article:author</code> meta tag. The preferred setting is the Facebook URL field (default value).', 'wpsso' );
 							break;
 						case 'tooltip-og_author_fallback':
-							$text = sprintf( __( 'If the \'%1$s\' (and the \'%2$s\' in the Google settings below) is not a valid URL, then %3$s can fallback to using the author index / archive page on this website (for example, \'%4$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), _x( 'Author Link URL Field', 'option label', 'wpsso' ), $info['short'], trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the fallback feature (default is unchecked).', 'wpsso' );
+							$text = sprintf( __( 'If the \'%1$s\' is not a valid URL, then fallback to using the author archive URL from this website (example: \'%2$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the author URL fallback feature (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-og_def_author_id':
-							$text = 'A default author for webpages <em>missing authorship information</em> (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default).';
+							$text = 'A default author for webpages <em>missing authorship information</em> (for example, a custom post type without an author ID). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default).';
 							break;
 						case 'tooltip-og_def_author_on_index':
 							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.). If this option is checked, index webpages will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked). If the Default Author is <em>[None]</em>, then the index webpages will be labeled as a \'website\'.';
 							break;
 						case 'tooltip-og_def_author_on_search':
-							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.  If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
+							$text = 'Check this option if you would like to force the Default Author on search result webpages as well. If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
 						case 'tooltip-og_author_gravatar':
 							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Use Default Image on <em>Author</em> Index</strong>" option is also checked under the <em>Images</em> tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
@@ -489,13 +489,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the \''.$lca.'_json_ld_search_url\' filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 						case 'tooltip-schema_alt_name':
-							$text = 'An alternate name for your business / organization that you want Google to consider (optional).';
+							$text = 'An alternate name for your Website that you want Google to consider (optional).';
 							break;
 						case 'tooltip-schema_logo_url':
 							$text = 'A URL for the website / organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
 							break;
 						case 'tooltip-schema_banner_url':
-							$text = 'A URL for the website / organization\'s banner image &mdash; <em>that measures exactly 600x60px</em> &mdash; that Google can use as a banner for Articles.';
+							$text = 'A URL for the website / organization\'s banner image &mdash; <em>measuring exactly 600x60px</em> &mdash; that Google can use as a banner for Articles.';
 							break;
 						case 'tooltip-schema_img_max':
 							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';

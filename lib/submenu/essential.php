@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				case 'essential-general':
 
 					$table_rows['subsection_site_information'] = '<td></td><td class="subsection top"><h4>'.
-						_x( 'Website Information', 'metabox title', 'wpsso' ).'</h4></td>';
+						_x( 'Site Information', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$table_rows['og_art_section'] = $this->form->get_th_html( _x( 'Default Article Topic',
 						'option label', 'wpsso' ), null, 'og_art_section' ).
@@ -129,14 +129,14 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						sprintf( __( ' Include <a href="%s">Organization Social Profile</a>',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
-						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Website Owner',
+						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Site Owner',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html( 
 						'<a href="https://developers.google.com/structured-data/customize/logos">'.
-						_x( 'Website Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
+						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.

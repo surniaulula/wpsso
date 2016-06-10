@@ -23,6 +23,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			$is_og_article = isset( $head['og:type'] ) && 
+				$head['og:type'] === 'article' ? false : true;
+
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-about-msg-post' ).'</td>';
 
@@ -31,7 +34,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$form_rows = array(
 				'og_art_section' => array(
-					'tr_class' => ( isset( $head['og:type'] ) && $head['og:type'] === 'article' ? '' : 'hide_in_basic' ),
+					'tr_class' => ( $is_og_article ? '' : 'hide_in_basic' ),	// hide if not an article
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'og_art_section', array( -1 ), '', '', false ),

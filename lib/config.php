@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.4-dev4',	// plugin version
+					'version' => '3.32.4-dev5',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -194,6 +194,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'pro_support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
 					),
 				),
+				'wpssoorg' => array(
+					'short' => 'WPSSO ORG',		// short plugin name
+					'name' => 'WPSSO Organization Markup (WPSSO ORG)',
+					'desc' => 'WPSSO extension to provide additional Schema Organization types and markup properties.',
+					'slug' => 'wpsso-organization',
+					'base' => 'wpsso-organization/wpsso-organization.php',
+					'update_auth' => 'tid',
+					'img' => array(
+						'icon_small' => 'https://surniaulula.github.io/wpsso-organization/images/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-organization/images/icon-256x256.png',
+					),
+					'url' => array(
+						// wordpress
+						'download' => 'https://wordpress.org/plugins/wpsso-organization/',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-organization?filter=5&rate=5#postform',
+						'readme' => 'https://plugins.svn.wordpress.org/wpsso-organization/trunk/readme.txt',
+						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-organization',
+						// surniaulula
+						'update' => 'http://wpsso.com/extend/plugins/wpsso-organization/update/',
+						'purchase' => 'http://wpsso.com/extend/plugins/wpsso-organization/',
+						'changelog' => 'http://wpsso.com/extend/plugins/wpsso-organization/changelog/',
+						'codex' => 'http://wpsso.com/codex/plugins/wpsso-organization/',
+						'faq' => 'http://wpsso.com/codex/plugins/wpsso-organization/faq/',
+						'notes' => '',
+						'feed' => 'http://wpsso.com/category/application/wordpress/wp-plugins/wpsso-organization/feed/',
+						'pro_support' => 'http://wpsso-organization.support.wpsso.com/',
+					),
+				),
 				'wpssoplm' => array(
 					'short' => 'WPSSO PLM',		// short plugin name
 					'name' => 'WPSSO Place / Location and Local Business Meta (WPSSO PLM)',
@@ -320,15 +348,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_banner_url' => '',
 					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
 					'schema_type_for_home_page' => 'website',
-					'schema_type_for_post' => 'webpage',
+					'schema_type_for_post' => 'blog.posting',
 					'schema_type_for_page' => 'webpage',
 					'schema_type_for_attachment' => 'webpage',
 					'schema_type_for_article' => 'article',
-					'schema_type_for_article.news' => 'article.news',
-					'schema_type_for_article.tech' => 'article.tech',
 					'schema_type_for_book' => 'book',
 					'schema_type_for_blog' => 'blog',
-					'schema_type_for_blog.posting' => 'blog.posting',
+					'schema_type_for_business' => 'local.business',
 					'schema_type_for_download' => 'product',
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_person' => 'person',
@@ -337,7 +363,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_recipe' => 'recipe',
 					'schema_type_for_review' => 'review',
 					'schema_type_for_other' => 'other',
-					'schema_type_for_local.business' => 'local.business',
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
 					'schema_author_name' => 'display_name',

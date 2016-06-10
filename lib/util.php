@@ -694,19 +694,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_default_author_id( $opt_pre = 'og' ) {
-			$lca = $this->p->cf['lca'];
-			$user_id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
-				$this->p->options[$opt_pre.'_def_author_id'] : null;
-			return apply_filters( $lca.'_'.$opt_pre.'_default_author_id', $user_id );
+			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
+				$user_id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
+					$this->p->options[$opt_pre.'_def_author_id'] : null;
+				return apply_filters( $this->p->cf['lca'].'_'.$opt_pre.'_default_author_id', $user_id );
+			} else return null;
 		}
 
 		// returns an author id if the default author is forced
 		public function force_default_author( array &$mod, $opt_pre = 'og' ) {
-			$author_id = $this->get_default_author_id( $opt_pre );
-
-			return $author_id && 
-				$this->force_default( 'author', $mod, $opt_pre ) ?
-					$author_id : false;
+			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
+				$author_id = $this->get_default_author_id( $opt_pre );
+				return $author_id && $this->force_default( 'author', $mod, $opt_pre ) ? $author_id : false;
+			} else return false;
 		}
 
 		// returns true if the default image is forced
@@ -1496,6 +1496,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
+				if ( empty( $row ) )	// just in case
+					continue;
+
 				// default row class and id attribute values
 				$tr = array(
 					'class' => 'sucom_alt'.( $count_rows % 2 ).
