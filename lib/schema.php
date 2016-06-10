@@ -597,7 +597,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles
 		public static function add_single_organization_data( &$json_data, &$mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
 
-			// $org_id can be false, 'none', 'site', or id number (including 0).
+			// $org_id can be null, false, 'none', 'site', or number (including 0)
 			if ( $org_id === 'none' )
 				return 0;
 
