@@ -382,14 +382,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev4 (2016/06/08)**
+**Version 3.32.4-dev5 (2016/06/10)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Disabled the "Default Author" options and features unless the 'WPSSO_DEFAULT_AUTHOR_OPTIONS' constant is set to true.
 * *Bugfixes*
 	* Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
 * *Developer Notes*
@@ -470,9 +470,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev4 =
+= 3.32.4-dev5 =
 
-(2016/06/08) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
+(2016/06/10) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
 
 = 3.32.3-1 =
 
