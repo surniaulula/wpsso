@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev5 (2016/06/10)**
+**Version 3.32.4-dev6 (2016/06/12)**
 
 Official announcement: N/A
 
@@ -400,6 +400,7 @@ Official announcement: N/A
 	* Added value caching to the `SucomUtil::get_locale()` method for a minor performance improvement.
 	* Refactored the `WpssoSchema::add_single_organization_data()` method, and added a new `$org_id` argument (false by default).
 	* Added a new 'wpsso_organization_options' filter to provide custom organization information.
+	* Added a new `WpssoSchema::add_single_place_data()` method.
 
 **Version 3.32.3-2 (2016/06/02)**
 
@@ -470,9 +471,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev5 =
+= 3.32.4-dev6 =
 
-(2016/06/10) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
+(2016/06/12) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
 
 = 3.32.3-1 =
 
