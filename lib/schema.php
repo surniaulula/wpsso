@@ -318,6 +318,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $parents;
 		}
 
+		public function schema_type_child_of( $child_id, $parent_id ) {
+			$parents = $this->get_schema_type_parents( $child_id );
+			return in_array( $parent_id, $parents ) ? true : false;
+		}
+
 		public function count_schema_type_children( $type_id ) {
 			return count( $this->get_schema_type_children( $type_id ) );
 		}
@@ -612,7 +617,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'org_logo_url' => $wpsso->options['schema_logo_url'],
 					'org_banner_url' => $wpsso->options['schema_banner_url'],
 					'org_type' => 'organization',
-					'org_place' => 'none',
+					'org_place_id' => 'none',
 				);
 				foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
 					$wpsso->cf['form']['social_accounts'] ) as $key => $label )
@@ -626,7 +631,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_opts['org_type'], 'organization' );
 			$ret = self::get_item_type_context( $org_type_url );
 
-			// add schema properties from the origanization options
+			// add schema properties from the organization options
 			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
 				'url' => 'org_url',
 				'name' => 'org_name',
@@ -652,6 +657,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
+			 * Location
+			 */
+			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $org_opts['org_place_id'], false ) )	// list_element = false
+					unset( $ret['location'] );	// prevent null assignment
+			}
+
+			/*
 			 * Google Knowledge Graph
 			 */
 			foreach ( $org_opts as $key => $label ) {
@@ -662,6 +675,130 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$org_opts[$key] = 'https://twitter.com/'.preg_replace( '/^@/', '', $org_opts[$key] );
 				if ( strpos( $org_opts[$key], '://' ) )
 					$ret['sameAs'][] = esc_url( $org_opts[$key] );
+			}
+
+			if ( empty( $list_element ) )
+				$json_data = $ret;
+			else $json_data[] = $ret;
+
+			return 1;
+		}
+
+		public static function add_single_place_data( &$json_data, &$mod, $place_id = false, $list_element = false ) {
+
+			// $org_id can be null, false, 'none', or number (including 0)
+			if ( $place_id === 'none' )
+				return 0;
+
+			$wpsso =& Wpsso::get_instance();
+			$place_opts = apply_filters( $wpsso->cf['lca'].'_place_options', array(), $mod, $place_id );
+
+			if ( empty( $place_opts ) ) {	// $org_opts could be false or empty array
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'exiting early: no place options' );
+				return 0;
+			}
+
+			// local business is a sub-type of place
+			// use the local business schema type if we have one
+			if ( ! empty( $place_opts['place_business_type'] ) &&
+				$place_opts['place_business_type'] !== 'none' )
+					$place_type_url = $wpsso->schema->get_schema_type_url( $place_opts['place_business_type'], 'place' );
+			else $place_type_url = 'http://schema.org/Place';
+
+			$ret = self::get_item_type_context( $place_type_url );
+			$address = array();
+			$geo = array();
+			$opening_hours = array();
+
+			// add schema properties from the place options
+			self::add_data_itemprop_from_assoc( $ret, $place_opts, array(
+				'url' => 'place_url',
+				'name' => 'place_name',
+				'alternateName' => 'place_alt_name',
+				'description' => 'place_desc',
+			) );
+
+			/*
+			 * Property:
+			 *	address as http://schema.org/PostalAddress
+			 */
+			foreach ( array(
+				'streetAddress' => 'place_streetaddr', 
+				'postOfficeBoxNumber' => 'place_po_box_number', 
+				'addressLocality' => 'place_city',
+				'addressRegion' => 'place_state',
+				'postalCode' => 'place_zipcode',
+				'addressCountry' => 'place_country',
+			) as $prop_name => $key ) {
+				if ( isset( $place_opts[$key] ) )
+					$address[$prop_name] = $place_opts[$key];
+			}
+
+			if ( ! empty( $address ) )
+				$ret['address'] = self::get_item_type_context( 'http://schema.org/PostalAddress', $address );
+
+			/*
+			 * Property:
+			 *	geo as http://schema.org/GeoCoordinates
+			 */
+			foreach ( array(
+				'elevation' => 'place_altitude', 
+				'latitude' => 'place_latitude',
+				'longitude' => 'place_longitude',
+			) as $prop_name => $key ) {
+				if ( isset( $place_opts[$key] ) )
+					$geo[$prop_name] = $place_opts[$key];
+			}
+
+			if ( ! empty( $geo ) )
+				$ret['geo'] = self::get_item_type_context( 'http://schema.org/GeoCoordinates', $geo );
+
+
+			/*
+			 * Property:
+			 *	openingHoursSpecification as http://schema.org/OpeningHoursSpecification
+			 */
+			foreach ( $wpsso->cf['form']['weekdays'] as $day => $label ) {
+				if ( ! empty( $place_opts['place_day_'.$day] ) ) {
+					$dayofweek = array(
+						'@context' => 'http://schema.org',
+						'@type' => 'OpeningHoursSpecification',
+						'dayOfWeek' => $label,
+					);
+					foreach ( array(
+						'opens' => 'place_'.$day.'_open',
+						'closes' => 'place_'.$day.'_close',
+						'validFrom' => 'place_season_from_date',
+						'validThrough' => 'place_season_to_date',
+					) as $prop_name => $key ) {
+						if ( isset( $place_opts[$key] ) )
+							$dayofweek[$prop_name] = $place_opts[$key];
+					}
+					$opening_hours[] = $dayofweek;
+				}
+			}
+
+			if ( ! empty( $opening_hours ) )
+				$ret['openingHoursSpecification'] = $opening_hours;
+
+			/*
+			 * FoodEstablishment schema type properties
+			 */
+			if ( ! empty( $place_opts['place_business_type'] ) &&
+				$place_opts['place_business_type'] !== 'none' ) {
+
+				if ( $wpsso->schema->schema_type_child_of( $place_opts['place_business_type'], 'food.establishment' ) ) {
+					foreach ( array(
+						'menu' => 'place_menu_url',
+						'acceptsReservations' => 'place_accept_res',
+					) as $prop_name => $key ) {
+						if ( $key === 'place_accept_res' )
+							$ret[$prop_name] = empty( $place_opts[$key] ) ? 'false' : 'true';
+						elseif ( isset( $place_opts[$key] ) )
+							$ret[$prop_name] = $place_opts[$key];
+					}
+				}
 			}
 
 			if ( empty( $list_element ) )

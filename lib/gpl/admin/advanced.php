@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Include Social Metaboxed on',
+			$form->get_th_html( _x( 'Include Social Metaboxes on',
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
 

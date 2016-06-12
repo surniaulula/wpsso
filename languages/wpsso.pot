@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.32.4-"
-"dev5\n"
+"dev6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -806,9 +806,9 @@ msgstr ""
 msgid "User Profile"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:124
+#: lib/gpl/admin/advanced.php:124 lib/pro/admin/advanced.php:129
 msgctxt "option label"
-msgid "Include Social Metaboxed on"
+msgid "Include Social Metaboxes on"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:129 lib/pro/admin/advanced.php:134
@@ -2230,11 +2230,6 @@ msgstr ""
 #: lib/user.php:246
 msgctxt "metabox title"
 msgid "Social Settings"
-msgstr ""
-
-#: lib/pro/admin/advanced.php:129
-msgctxt "option label"
-msgid "Include Social Metaboxes on"
 msgstr ""
 
 #: lib/pro/admin/meta.php:47 lib/pro/admin/post.php:42
