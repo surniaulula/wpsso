@@ -712,8 +712,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_first_last_next_nums( array &$input ) {
 			$keys = array_keys( $input );
-			if ( ! is_numeric( implode( $keys ) ) )	// array cannot be associative
-				return array();
+			if ( ! empty( $keys ) &&
+				! is_numeric( implode( $keys ) ) )	// array cannot be associative
+					return false;
 			sort( $keys );
 			$first = (int) reset( $keys );
 			$last = (int) end( $keys );

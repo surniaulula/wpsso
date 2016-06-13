@@ -652,8 +652,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $ret['logo'] ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
-				if ( is_admin() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) )
-					$wpsso->notice->err( $wpsso->msgs->get( 'notice-missing-'.$logo_key ) );
+				if ( is_admin() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
+					switch ( $logo_key ) {
+						case 'org_logo_url':
+							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo Image is missing and required for the Schema %2$s markup.',
+								'wpsso' ), $ret['name'], $org_type_url ) );
+							break;
+						case 'org_banner_url':
+							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Banner (600x60px) is missing and required for the Schema %2$s markup.',
+								'wpsso' ), $ret['name'], $org_type_url ) );
+							break;
+					}
+				}
 			}
 
 			/*

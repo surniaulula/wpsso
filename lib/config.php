@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.4-dev6',	// plugin version
+					'version' => '3.32.4-1',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoorg' => array(
 					'short' => 'WPSSO ORG',		// short plugin name
 					'name' => 'WPSSO Organization Markup (WPSSO ORG)',
-					'desc' => 'WPSSO extension to provide additional Schema Organization types and markup properties.',
+					'desc' => 'WPSSO extension to manage multiple Organizations / Publishers and additional properties for the Schema Article types (BlogPosting, etc.).',
 					'slug' => 'wpsso-organization',
 					'base' => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',

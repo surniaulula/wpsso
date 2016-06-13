@@ -55,22 +55,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				if ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-meta-sharing_url':
-							$text = 'A custom sharing URL used in the Facebook / Open Graph, Pinterest Rich Pin meta tags and social sharing buttons. The default sharing URL may be influenced by settings from supported SEO plugins. Please make sure any custom URL you enter here is functional and redirects correctly.';
+							$text = __( 'A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and (optional) social sharing buttons.', 'wpsso' ).' '.__( 'Please make sure any custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_is_main':
-							$text = 'Select if this Schema markup describes the <em>main entity</em> for this webpage.';
+							$text = __( 'Check this option if the Schema markup describes the main content (aka "main entity") of this webpage.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_type':
-							$text = 'The Schema type is used to declare the item type for Schema JSON-LD markup and/or meta tags in webpage headers.';
+							$text = __( 'The Schema item type that defines the Schema markup and/or the meta tags of this webpage.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_title':
-							$text = 'A custom name / title for the Schema item type "name" JSON-LD property.';
+							$text = __( 'A custom name / title for the Schema item type\'s name property.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_headline':
-							$text = 'A custom headline for the Schema Article "headline" JSON-LD property. The custom headline field is disabled for all non-Article item types.';
+							$text = __( 'A custom headline for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The headline property is not used for non-Article item types.', 'wpsso' );
+						 	break;
+						case 'tooltip-meta-schema_pub_org_id':
+							$text = __( 'Select a publisher for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The publisher property is not used for non-Article item types.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_desc':
-							$text = 'A custom description for the Schema meta tag and item type "description" JSON-LD property.';
+							$text = __( 'A custom description for the Schema item type\'s description property.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_title':
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
@@ -717,22 +720,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 						break;
 					case 'notice-missing-og-image':
-						$text = __( 'An Open Graph image meta tag could not be created from this webpage content. Facebook and other social websites <em>require</em> at least one image meta tag to render shared content correctly.', 'wpsso' );
+						$text = __( 'An Open Graph image meta tag could not be created from this webpage content and/or custom settings. Facebook and other social websites <em>require at least one image meta tag</em> to render shared content correctly.', 'wpsso' );
 						break;
 					case 'notice-missing-schema-image':
-						$text = __( 'Google / Schema image markup could not be created from this webpage content. Google <em>requires</em> at least one image object for this Schema item type.', 'wpsso' );
-						break;
-					case 'notice-missing-schema_logo_url':
-						$text = __( 'An Organization logo image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please enter a Website / Organization logo image URL in the %1$s settings.', 'wpsso' ),
-							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
-								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
-						break;
-					case 'notice-missing-schema_banner_url':
-						$text = __( 'An Organization banner image is missing for the Schema Organization markup.', 'wpsso' ).' '.
-						sprintf( __( 'Please enter a Website / Organization banner (600x60px) image URL in the %1$s settings.', 'wpsso' ),
-							( $this->p->is_avail['json'] ? '<a href="'.$this->p->util->get_admin_url( 'schema-json-ld' ).'">Schema Markup</a>' :
-								'<a href="'.$this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ).'">Google / Schema</a>' ) );
+						$text = __( 'A Schema image property could not be created from this webpage content and/or custom settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' );
 						break;
 					case 'notice-object-cache-exp':
 						$text = sprintf( __( 'Please note that the <a href="%1$s">%2$s</a> advanced option is currently set at %3$d seconds &mdash; this is lower than the recommended default value of %4$d seconds.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache' ), _x( 'Object Cache Expiry', 'option label', 'wpsso' ), $this->p->options['plugin_object_cache_exp'], $this->p->opt->get_defaults( 'plugin_object_cache_exp' ) );
