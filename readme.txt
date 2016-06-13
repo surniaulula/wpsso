@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-dev6 (2016/06/12)**
+**Version 3.32.4-1 (2016/06/13)**
 
 Official announcement: N/A
 
@@ -471,9 +471,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-dev6 =
+= 3.32.4-1 =
 
-(2016/06/12) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
+(2016/06/13) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
 
 = 3.32.3-1 =
 
