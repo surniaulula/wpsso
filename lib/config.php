@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoam' => array(
 					'short' => 'WPSSO AM',		// short plugin name
-					'name' => 'WPSSO App Meta (WPSSO AM)',
+					'name' => 'WPSSO Mobile App Meta (WPSSO AM)',
 					'desc' => 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
 					'slug' => 'wpsso-am',
 					'base' => 'wpsso-am/wpsso-am.php',
