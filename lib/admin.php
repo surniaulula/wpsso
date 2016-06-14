@@ -56,9 +56,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				}
-
-				add_filter( 'get_user_option_wpseo_dismissed_conflicts', 
-					array( &$this, 'dismiss_wpseo_notice' ), 10, 3 );
 			}
 
 		}
@@ -1419,16 +1416,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 			if ( $have_changes === true )
 				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr', 'all' );	// just in case
-		}
-
-		// dismiss an incorrect yoast seo conflict notification
-		public function dismiss_wpseo_notice( $dismissed, $opt_name, $user_obj ) {
-			$lca = $this->p->cf['lca'];
-			$base = $this->p->cf['plugin'][$lca]['base'];
-			if ( ! is_array( $dismissed['open_graph'] ) ||
-				! in_array( $base, $dismissed['open_graph'] ) )
-					$dismissed['open_graph'][] = $base;
-			return $dismissed;
 		}
 
 		public function get_site_use( &$form, $network = false, $name, $force = false ) {

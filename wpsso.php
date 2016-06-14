@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.5.2
- * Version: 3.32.4-1
+ * Version: 3.32.4-2
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -80,12 +80,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
-			add_action( 'init', array( &$this, 'set_config' ), -1 );
+			add_action( 'init', array( &$this, 'set_config' ), -10 );
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );
 			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );
 		}
 
-		// runs at init priority -1
+		// runs at init priority -10
 		public function set_config() {
 			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}

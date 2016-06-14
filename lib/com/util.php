@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected static $is_mobile = null;		// is_mobile cached value
 		protected static $mobile_obj = null;		// SuextMobileDetect class object
-		protected static $plugins_index = null;		// hash of active site and network plugins
+		protected static $plugins_index = null;		// active site and network plugins
 		protected static $site_plugins = null;
 		protected static $network_plugins = null;
 		protected static $crawler_name = null;		// saved crawler name from user-agent
