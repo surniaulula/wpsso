@@ -73,6 +73,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional (and optional) Free extension plugins:
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
+	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
 	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
@@ -175,6 +176,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 		* [YouTube](https://www.youtube.com/) Videos and Playlists
 * Additional (and optional) Free or Pro extension plugins:
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
+	* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
 	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
 	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
@@ -382,13 +384,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-1 (2016/06/13)**
+**Version 3.32.4-2 (2016/06/13)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
+	* Updated a filter to cleanup incorrect notifications in Yoast SEO v3.3.0.
 	* Disabled the "Default Author" options and features unless the 'WPSSO_DEFAULT_AUTHOR_OPTIONS' constant is set to true.
 * *Bugfixes*
 	* Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback for other description meta tags.
@@ -471,9 +474,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.4-1 =
+= 3.32.4-2 =
 
-(2016/06/13) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup.
+(2016/06/13) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup. Updated a filter to cleanup incorrect notifications in Yoast SEO v3.3.0.
 
 = 3.32.3-1 =
 
