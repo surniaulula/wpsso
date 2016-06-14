@@ -202,8 +202,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base' => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
 					'img' => array(
-						'icon_small' => 'https://surniaulula.github.io/wpsso-organization/images/icon-128x128.png',
-						'icon_medium' => 'https://surniaulula.github.io/wpsso-organization/images/icon-256x256.png',
+						'icon_small' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
 					),
 					'url' => array(
 						// wordpress
