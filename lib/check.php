@@ -53,11 +53,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		// cleanup incorrect Yoast SEO notifications
 		public function cleanup_wpseo_notifications() {
-			$lca = $this->p->cf['lca'];
-			$base = $this->p->cf['plugin'][$lca]['base'];
-			$notif_center = Yoast_Notification_Center::get();
-			if ( $notif_obj = $notif_center->get_notification_by_id( 'wpseo-conflict-'.md5( $base ) ) )
-				$notif_center->remove_notification( $notif_obj, true );
+			if ( class_exists( 'Yoast_Notification_Center' ) ) {	// just in case
+				$lca = $this->p->cf['lca'];
+				$base = $this->p->cf['plugin'][$lca]['base'];
+				$notif_center = Yoast_Notification_Center::get();
+				if ( $notif_obj = $notif_center->get_notification_by_id( 'wpseo-conflict-'.md5( $base ) ) )
+					$notif_center->remove_notification( $notif_obj, true );
+			}
 		}
 
 		// disable Yoast SEO social meta tags
