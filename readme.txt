@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.5.2
-Stable Tag: 3.32.3-1
+Stable Tag: 3.32.4-2
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
 
@@ -384,7 +384,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.4-2 (2016/06/13)**
+**Version 3.32.4-2 (2016/06/14)**
 
 Official announcement: N/A
 
@@ -476,7 +476,7 @@ Official announcement: N/A
 
 = 3.32.4-2 =
 
-(2016/06/13) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup. Updated a filter to cleanup incorrect notifications in Yoast SEO v3.3.0.
+(2016/06/14) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup. Updated a filter to cleanup incorrect notifications in Yoast SEO v3.3.0.
 
 = 3.32.3-1 =
 
