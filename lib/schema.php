@@ -318,15 +318,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $parents;
 		}
 
-		public function schema_type_child_of( $child_id, $parent_id ) {
-			$parents = $this->get_schema_type_parents( $child_id );
-			return in_array( $parent_id, $parents ) ? true : false;
-		}
-
-		public function count_schema_type_children( $type_id ) {
-			return count( $this->get_schema_type_children( $type_id ) );
-		}
-
 		// returns an array of schema type ids with child, parent, gparent (in that order)
 		public function get_schema_type_children( $type_id, &$children = array() ) {
 			$children[] = $type_id;	// add children before parents
@@ -337,6 +328,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 			return $children;
+		}
+
+		public function schema_type_child_of( $child_id, $parent_id ) {
+			$parents = $this->get_schema_type_parents( $child_id );
+			return in_array( $parent_id, $parents ) ? true : false;
+		}
+
+		public function count_schema_type_children( $type_id ) {
+			return count( $this->get_schema_type_children( $type_id ) );
 		}
 
 		public function get_schema_type_css_classes( $type_id ) {

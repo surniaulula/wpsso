@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.32.4-2',	// plugin version
+					'version' => '3.32.5-dev1',	// plugin version
 					'opt_version' => '434',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1023,6 +1023,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'review' => 'http://schema.org/Review',
 						'webpage' => 'http://schema.org/WebPage',
 						'website' => 'http://schema.org/WebSite',
+					),
+					'event' => array(
+						'event' => 'http://schema.org/Event',
+						'event.business' => 'http://schema.org/BusinessEvent',
+						'event.childrens' => 'http://schema.org/ChildrensEvent',
+						'event.comedy' => 'http://schema.org/ComedyEvent',
+						'event.dance' => 'http://schema.org/DanceEvent',
+						'event.delivery' => 'http://schema.org/DeliveryEvent',
+						'event.education' => 'http://schema.org/EducationEvent',
+						'event.exhibition' => 'http://schema.org/ExhibitionEvent',
+						'event.festival' => 'http://schema.org/Festival',
+						'event.food' => 'http://schema.org/FoodEvent',
+						'event.literary' => 'http://schema.org/LiteraryEvent',
+						'event.music' => 'http://schema.org/MusicEvent',
+						'event.publication' => 'http://schema.org/PublicationEvent',
+						'event.sale' => 'http://schema.org/SaleEvent',
+						'event.screening' => 'http://schema.org/ScreeningEvent',
+						'event.social' => 'http://schema.org/SocialEvent',
+						'event.sports' => 'http://schema.org/SportsEvent',
+						'event.theater' => 'http://schema.org/TheaterEvent',
+						'event.visual.arts' => 'http://schema.org/VisualArtsEvent',
 					),
 					'organization' => array(
 						'airline' => 'http://schema.org/Airline',
