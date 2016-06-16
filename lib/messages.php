@@ -70,7 +70,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'A custom headline for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The headline property is not used for non-Article item types.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_pub_org_id':
-							$text = __( 'Select a publisher for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The publisher property is not used for non-Article item types.', 'wpsso' );
+							$text = __( 'Select a publisher for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc).', 'wpsso' );
+						 	break;
+						case 'tooltip-meta-schema_event_org_id':
+							$text = __( 'Select an event organizer for the Schema Event item type and its sub-types (Festival, MusicEvent, etc).', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_desc':
 							$text = __( 'A custom description for the Schema item type\'s description property.', 'wpsso' );
