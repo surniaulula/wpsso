@@ -531,11 +531,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$lca = $this->p->cf['lca'];
 			$ret = array();
-			$org_id = $mod['is_home'] ? 'site' : false;
 
-			self::add_single_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// list_element = false
+			self::add_single_organization_data( $ret, $mod, 'site', 'org_logo_url', false );	// list_element = false
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -564,7 +562,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $json_data;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$ret = array();
 
 			self::add_single_person_data( $ret, $user_id, false );	// list_element = false
@@ -600,9 +597,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles
+		// $org_id can be null, false, 'none', 'site', or number (including 0) -- null and false are the same as 'site'
 		public static function add_single_organization_data( &$json_data, &$mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
 
-			// $org_id can be null, false, 'none', 'site', or number (including 0)
 			if ( $org_id === 'none' )
 				return 0;
 
@@ -694,9 +691,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
+		// $place_id can be null, false, 'none', 'site', or number (including 0) -- null and false are the same as 'site'
 		public static function add_single_place_data( &$json_data, &$mod, $place_id = false, $list_element = false ) {
 
-			// $org_id can be null, false, 'none', or number (including 0)
 			if ( $place_id === 'none' )
 				return 0;
 
