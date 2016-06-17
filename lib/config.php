@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.32.5-dev2',	// plugin version
-					'opt_version' => '434',		// increment when changing default options
+					'opt_version' => '436',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -99,6 +99,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'woocommerce' => '(plugin) WooCommerce',
 								'wpecommerce' => '(plugin) WP eCommerce',
 								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
+							),
+							'event' => array(
+								'tribe_events' => '(plugin) The Events Calendar',
 							),
 							'forum' => array(
 								'bbpress' => '(plugin) bbPress',
@@ -356,13 +359,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_business' => 'local.business',
 					'schema_type_for_download' => 'product',
+					'schema_type_for_event' => 'event',
 					'schema_type_for_organization' => 'organization',
+					'schema_type_for_other' => 'other',
 					'schema_type_for_person' => 'person',
 					'schema_type_for_place' => 'place',
 					'schema_type_for_product' => 'product',
 					'schema_type_for_recipe' => 'recipe',
 					'schema_type_for_review' => 'review',
-					'schema_type_for_other' => 'other',
+					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
 					'schema_author_name' => 'display_name',
@@ -1375,7 +1380,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( file_exists( $filepath ) ) {
 					require_once( $filepath );
 					if ( empty( $classname ) )
-						return SucomUtil::sanitize_classname( 'wpsso'.$filespec );
+						return SucomUtil::sanitize_classname( 'wpsso'.$filespec, false );	// $underscore = false
 					else return $classname;
 				}
 			}

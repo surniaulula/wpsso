@@ -150,6 +150,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'ecom-yotpowc':	// yotpo-social-reviews-for-woocommerce
 							$chk['function'] = 'wc_yotpo_init';
 							break;
+						case 'event-tribe_events':
+							$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
+							break;
 						case 'forum-bbpress':
 							$chk['class'] = 'bbPress';
 							$chk['plugin'] = 'bbpress/bbpress.php';

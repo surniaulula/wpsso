@@ -902,7 +902,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
-						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id );
+						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id, false );	// $underscore = false
 						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
 
 						$features[$label] = array( 
