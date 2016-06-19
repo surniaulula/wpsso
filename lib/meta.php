@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$facebook_url = 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded;
-			$google_url = 'https://structured-data-testing-tool.developers.google.com/sdtt/web?#url='.$sharing_url_encoded;
+			$google_url = 'https://search.google.com/structured-data/testing-tool/u/0/#url='.$sharing_url_encoded;
 			$pinterest_url = 'https://developers.pinterest.com/tools/url-debugger/?link='.$sharing_url_encoded;
 			$twitter_url = 'https://dev.twitter.com/docs/cards/validation/validator';
 
