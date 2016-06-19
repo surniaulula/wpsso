@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.32.5-dev2 (2016/06/16)**
+**Version 3.33.0-dev3 (2016/06/19)**
 
 Official announcement: N/A
 
@@ -413,7 +413,7 @@ Official announcement: N/A
 	* Added a new `SucomUtil::get_multi_key_locale()` and `SucomUtil::get_first_last_next_nums()` method for the PLM extension.
 	* Added value caching to the `SucomUtil::get_locale()` method for a minor performance improvement.
 	* Refactored the `WpssoSchema::add_single_organization_data()` method, and added a new `$org_id` argument (false by default).
-	* Added a new 'wpsso_organization_options' filter to provide custom organization information.
+	* Added a new 'wpsso_get_organization_options' filter to provide custom organization information.
 	* Added a new `WpssoSchema::add_single_place_data()` method.
 
 **Version 3.32.3-2 (2016/06/02)**
@@ -485,9 +485,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.32.5-dev2 =
+= 3.33.0-dev3 =
 
-(2016/06/16) Added basic support for the http://schema.org/Event type and its sub-types.
+(2016/06/19) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
 = 3.32.4-2 =
 
