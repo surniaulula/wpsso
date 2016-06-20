@@ -235,7 +235,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						foreach ( $og['og:video'] as $num => $og_video ) {
 							if ( isset( $og_video['og:video:type'] ) && 
 								$og_video['og:video:type'] !== 'text/html' &&
-									SucomUtil::get_mt_media_url( 'og:image', $og_video ) ) {
+									SucomUtil::get_mt_media_url( $og_video, 'og:image' ) ) {
 								$prev_count++;
 								$og['og:video'][$num]['og:video:has_image'] = true;
 							} else $og['og:video'][$num]['og:video:has_image'] = false;

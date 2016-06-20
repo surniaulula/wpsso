@@ -985,7 +985,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// get the preferred URL (og:image:secure_url, og:image:url, og:image)
-			$media_url = SucomUtil::get_mt_media_url( $prefix, $opts );
+			$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
 
 			if ( empty( $media_url ) ) {
 				if ( $wpsso->debug->enabled )
@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$og_image = $this->p->media->get_default_image( 1, $size_name, true );
 	
 						foreach ( $og_image as $image )
-							$mt_schema['image'][] = SucomUtil::get_mt_media_url( 'og:image', $image );
+							$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 					}
 					break;
 			}
@@ -1188,7 +1188,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 
 			} elseif ( is_array( $mixed ) ) {
-				$media_url = SucomUtil::get_mt_media_url( $prefix, $mixed );
+				$media_url = SucomUtil::get_mt_media_url( $mixed, $prefix );
 
 				if ( empty( $media_url ) ) {
 					if ( $this->p->debug->enabled )
@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$og_image = $mod['obj']->get_og_image( 1, $size_name, $author_id, false );	// $check_dupes = false
 	
 				foreach ( $og_image as $image ) {
-					$image_url = SucomUtil::get_mt_media_url( 'og:image', $image );
+					$image_url = SucomUtil::get_mt_media_url( $image, 'og:image' );
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'meta',
 							'itemprop', $itemprop.'.image', $image_url, '', $mod ) );

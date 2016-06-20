@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								$this->p->debug->log( 'player card: embed url = '.$embed_url );
 						} elseif ( ! empty( $video['og:video:type'] ) &&
 							$video['og:video:type'] === 'text/html' ) {
-							$embed_url = SucomUtil::get_mt_media_url( 'og:video', $video );
+							$embed_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'player card: text/html url = '.$embed_url );
 						} else continue;

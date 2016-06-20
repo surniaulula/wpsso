@@ -888,7 +888,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$keys = array( $keys );
 
 			foreach ( $keys as $prefix ) {
-				$media_url = self::get_mt_media_url( $prefix, $opts );
+				$media_url = self::get_mt_media_url( $opts, $prefix );
 				if ( ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
 					list( $opts[$prefix.':width'], $opts[$prefix.':height'],
 						$image_type, $image_attr ) = @getimagesize( $media_url );

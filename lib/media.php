@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_url = '';
 			$img_width = -1;
 			$img_height = -1;
-			$img_cropped = $size_info['crop'] === false ? 0 : 1;	// get_size_info() returns false, true, or an array
+			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;	// get_size_info() returns false, true, or an array
 
 			if ( $this->p->is_avail['media']['ngg'] === true && 
 				strpos( $pid, 'ngg-' ) === 0 ) {
@@ -407,8 +407,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					// depending on cropping, one or both sides of the image must be accurate
 					// if not, attempt to create a resized image by calling image_make_intermediate_size()
-					if ( ( empty( $size_info['crop'] ) && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
-						( ! empty( $size_info['crop'] ) && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
+					if ( ( ! $img_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
+						( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							if ( empty( $img_meta['sizes'][$size_name] ) )
@@ -451,11 +451,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_info();
 			}
 
-			// 'wpsso_attached_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
-			if ( apply_filters( $lca.'_attached_accept_img_dims', true, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
+			$pid_within_bounds = $this->p->media->pid_within_bounds( $pid, 
+				$size_name, $img_width, $img_height, __( 'Media Library', 'wpsso' ) );
+
+			// wpsso_attached_accept_img_dims is hooked by the WpssoProCheckImgSize class / module.
+			if ( apply_filters( $lca.'_attached_accept_img_dims', $pid_within_bounds, 
+				$img_url, $img_width, $img_height, $size_name, $pid ) ) {
+
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'applying rewrite_url filter for '.$img_url );
+
 					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_url', $img_url ),
 						$img_width, $img_height, $img_cropped, $pid ) );
 				}
@@ -858,7 +865,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
 
 			foreach ( array( 'og:video', 'og:image' ) as $prefix ) {
-				$media_url = SucomUtil::get_mt_media_url( $prefix, $og_video );
+				$media_url = SucomUtil::get_mt_media_url( $og_video, $prefix );
 				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
 				if ( ! $media_url || 
@@ -886,7 +893,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			else return $og_video;
 		}
 
-		public function check_image_id_min_max( $pid, $size_name, $img_width, $img_height, $media_lib, $msg_id ) {
+		public function pid_within_bounds( $pid, $size_name, $img_width, $img_height, $media_lib, $msg_id = false ) {
 
 			if ( $img_width > 0 && $img_height > 0 )	// just in case
 				$img_ratio = $img_width >= $img_height ? 
@@ -922,6 +929,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 
 				if ( is_admin() ) {
+					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$reject_notice, false, true, $msg_id, true );
 				}
@@ -937,11 +945,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 
 				if ( is_admin() ) {
+					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true, $msg_id, true );
 				}
 				return false;
 			}
+
 			return true;
 		}
 	}
