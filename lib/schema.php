@@ -921,7 +921,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
 					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
 					'person_desc' => $user_desc,
-					'person_og_image' => $mod['obj']->get_og_image( 1, $wpsso->cf['lca'].'-schema', $user_id, false ),
+					'person_og_image' => $user_mod['obj']->get_og_image( 1, $wpsso->cf['lca'].'-schema', $user_id, false ),
 					'person_sameas' => $user_sameas,
 				);
 			}
