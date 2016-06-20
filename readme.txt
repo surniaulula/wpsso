@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.0-dev3 (2016/06/19)**
+**Version 3.33.0-dev4 (2016/06/19)**
 
 Official announcement: N/A
 
@@ -485,7 +485,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.0-dev3 =
+= 3.33.0-dev4 =
 
 (2016/06/19) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
