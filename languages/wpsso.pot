@@ -2937,29 +2937,29 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:651
+#: lib/util.php:660
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "
 "class."
 msgstr ""
 
-#: lib/util.php:1569
+#: lib/util.php:1578
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1572
+#: lib/util.php:1581
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1575
+#: lib/util.php:1584
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1578
+#: lib/util.php:1587
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

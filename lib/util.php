@@ -614,22 +614,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( empty( $query ) )
 				return false;
 
-			if ( strpos( $request, '<' ) === 0 )	// check for HTML content
+			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'using html submitted in the request argument' );
 				$html = $request;
-			elseif ( strpos( $request, '://' ) === false )
+			} elseif ( strpos( $request, '://' ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
 				return false;
-			elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false )
+			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: error caching '.$request );
 				return false;
+			}
 
+			$ret = array();
 			$cmt = $this->p->cf['lca'].' meta tags ';
+
 			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'removing self meta tags' );
 				$pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':mark"[\s\n\r]+content=")';
 				$post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
 				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
 					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
-
-			$ret = array();
 
 			if ( class_exists( 'DOMDocument' ) ) {
 				$doc = new DOMDocument();		// since PHP v4.1.0
