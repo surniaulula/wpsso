@@ -9,7 +9,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, Faceboo
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.5.2
+Tested Up To: 4.5.3
 Stable Tag: 3.32.4-2
 
 Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
@@ -20,7 +20,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **A solid social meta tag plugin is the foundation of any good social strategy** &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information social website crawlers need, improving *Google Search ranking*, *social engagement*, and *click-through-rates* on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).
 
-**Tired of sub-standard social meta tags from other SEO plugins?** &mdash; WPSSO Pro *automatically* retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.
+**Tired of sub-standard social meta tags from other SEO plugins?** &mdash; WPSSO Pro *automatically* retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.
 
 **Optional Free and Pro extensions** &mdash; [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) for Apple Store / iTunes and Google Play App meta tags, [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/), and others.
 
@@ -157,6 +157,7 @@ Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http:/
 		* [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/)
 		* [Polylang](https://wordpress.org/plugins/polylang/)
 		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
+		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
 		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
 		* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (version 1 and 2)
 		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
