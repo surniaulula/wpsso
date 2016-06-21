@@ -451,11 +451,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_info();
 			}
 
-			$pid_within_bounds = $this->p->media->pid_within_bounds( $pid, 
-				$size_name, $img_width, $img_height, __( 'Media Library', 'wpsso' ) );
+			$img_size_in_bounds = $this->p->media->img_size_in_bounds( $pid, $size_name, $img_width, $img_height );
 
 			// wpsso_attached_accept_img_dims is hooked by the WpssoProCheckImgSize class / module.
-			if ( apply_filters( $lca.'_attached_accept_img_dims', $pid_within_bounds, 
+			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_in_bounds, 
 				$img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
@@ -893,7 +892,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			else return $og_video;
 		}
 
-		public function pid_within_bounds( $pid, $size_name, $img_width, $img_height, $media_lib, $msg_id = false ) {
+		public function img_size_in_bounds( $pid, $size_name, $img_width, $img_height, $media_lib = '' ) {
+
+			$lca =& $this->p->cf['lca'];
+			$min =& $this->p->cf['head']['min'];
+			$max =& $this->p->cf['head']['max'];
+
+			if ( $media_lib === '' )
+				__( 'Media Library', 'wpsso' );
 
 			if ( $img_width > 0 && $img_height > 0 )	// just in case
 				$img_ratio = $img_width >= $img_height ? 
@@ -902,18 +908,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			else $img_ratio = 0;
 
 			switch ( $size_name ) {
-				case $this->p->cf['lca'].'-opengraph':
+				case $lca.'-opengraph':
 					$std_name = 'Facebook / Open Graph';
-					$max_ratio = $this->p->cf['head']['max']['og_img_ratio'];
-					$min_width = $this->p->cf['head']['min']['og_img_width'];
-					$min_height = $this->p->cf['head']['min']['og_img_height'];
+					$max_ratio = $max['og_img_ratio'];
+					$min_width = $min['og_img_width'];
+					$min_height = $min['og_img_height'];
 					break;
-				case $this->p->cf['lca'].'-schema':
+
+				case $lca.'-schema':
 					$std_name = 'Google / Schema';
-					$max_ratio = 0;
-					$min_width = $this->p->cf['head']['min']['schema_img_width'];
+					$max_ratio = $max['schema_img_ratio'];
+					$min_width = $min['schema_img_width'];
 					$min_height = 0;
 					break;
+
 				default:
 					$max_ratio = 0;
 					$min_width = 0;
@@ -931,8 +939,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$reject_notice, false, true, $msg_id, true );
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$reject_notice, false, true );
 				}
+
 				return false;
 			}
 
@@ -947,8 +956,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true, $msg_id, true );
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
 				}
+
 				return false;
 			}
 
