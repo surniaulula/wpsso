@@ -383,7 +383,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.0-rc1 (2016/06/21)**
+**Version 3.33.0-1 (2016/06/21)**
 
 Official announcement: N/A
 
@@ -392,7 +392,7 @@ Official announcement: N/A
 * *Improvements*
 	* Added basic support for the http://schema.org/Event type and its sub-types.
 * *Bugfixes*
-	* None
+	* Fixed incorrect Open Graph article type detection in the Social Settings metabox (Pro version).
 * *Developer Notes*
 	* Added a new `WpssoSchema::add_single_event_data()` method.
 	* Added the $mod argument to all `WpssoSchema::add_single_person_data()` method calls.
@@ -490,9 +490,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.0-rc1 =
+= 3.33.0-1 =
 
-(2016/06/20) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
+(2016/06/21) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
 = 3.32.4-2 =
 
