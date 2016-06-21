@@ -382,7 +382,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.0-dev6 (2016/06/20)**
+**Version 3.33.0-rc1 (2016/06/21)**
 
 Official announcement: N/A
 
@@ -395,9 +395,9 @@ Official announcement: N/A
 * *Developer Notes*
 	* Added a new `WpssoSchema::add_single_event_data()` method.
 	* Added the $mod argument to all `WpssoSchema::add_single_person_data()` method calls.
-	* Refactored the `WpssoSchema::add_single_person_data()` method.
 	* Renamed the WpssoSchema `add_data_itemprop_from_og()` method to `add_data_itemprop_from_assoc()`.
 	* Renamed the WpssoSchema `add_data_quantitative_from_og()` method to `add_data_quant_from_assoc()`.
+	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 **Version 3.32.4-2 (2016/06/14)**
 
@@ -489,7 +489,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.0-dev6 =
+= 3.33.0-rc1 =
 
 (2016/06/20) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
