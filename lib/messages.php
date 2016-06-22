@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
 
-						$text = __( 'A larger and/or different image &mdash; specifically for social / SEO meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
+						$text = __( 'A larger and/or different custom image &mdash; specifically for social / SEO meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
 						if ( empty( $info['hard_limit'] ) && current_user_can( 'manage_options' ) ) {
 							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
 							$text .= '<ul>';

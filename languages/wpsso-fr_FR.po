@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-06-21 15:39-0400\n"
-"PO-Revision-Date: 2016-06-21 15:39-0400\n"
+"POT-Creation-Date: 2016-06-22 14:03-0400\n"
+"PO-Revision-Date: 2016-06-22 14:03-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1159,13 +1159,13 @@ msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis p
 msgid "Media Library"
 msgstr "la Bibliothèque de Médias"
 
-#: lib/media.php:942
-msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1."
-msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une proportion égale ou supérieur a %4$d:1."
+#: lib/media.php:943
+msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
+msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:959
-msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard."
-msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est plus petite que le minimum %4$s autorisés par la norme %5$s."
+#: lib/media.php:961
+msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
+msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
 #: lib/messages.php:49
 msgid "Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px."
@@ -1173,7 +1173,7 @@ msgstr "Facebook a publié une préférence pour les dimensions d'image Open Gra
 
 #: lib/messages.php:58
 msgid "A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and (optional) social sharing buttons."
-msgstr ""
+msgstr "Un URL personnalisée pour les balises méta tags Facebook / Open Graph, Pinterest Rich Pin, balisage de Schéma, et boutons de partage (facultatif)."
 
 #: lib/messages.php:58
 msgid "Please make sure any custom URL you enter here is functional and redirects correctly."
@@ -1185,19 +1185,19 @@ msgstr "Cochez cette option si le balisage Schéma décrit le contenu principal 
 
 #: lib/messages.php:64
 msgid "The Schema item type that defines the Schema markup and/or the meta tags of this webpage."
-msgstr ""
+msgstr "Le type de Schéma qui définit le balisage de Schéma et / ou les balises meta de cette page Web."
 
 #: lib/messages.php:67
 msgid "A custom name / title for the Schema item type's name property."
-msgstr ""
+msgstr "Un nom / titre personnalisé pour la propriété \"name\" du type d’élément Schéma."
 
 #: lib/messages.php:70
 msgid "A custom headline for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The headline property is not used for non-Article item types."
-msgstr ""
+msgstr "Un titre personnalisé pour pour la propriété \"headline\" du type d’élément Schéma Article et ses sous-types (NewsArticle, TechArticle, etc.)."
 
 #: lib/messages.php:73
 msgid "A custom description for the Schema item type's description property."
-msgstr ""
+msgstr "Une description personnalisé pour la propriété \"description\" du type d’élément Schéma."
 
 #: lib/messages.php:76
 msgid "A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats)."
@@ -1552,8 +1552,8 @@ msgid "The video service modules &mdash; required to detect embedded videos &mda
 msgstr "Les modules de services vidéo &mdash; nécessaires pour détecter des vidéos intégrées &mdash; sont disponibles dans la version %s Pro."
 
 #: lib/messages.php:707
-msgid "The <em>Select Media</em> tab in the Social Settings metabox can be used to select a larger image specifically for social / SEO purposes."
-msgstr "L'onglet <em>Choisir Média</em> dans la metabox Réglages Sociaux permet de choisir une image plus grande pour les balises SEO / sociaux."
+msgid "A larger and/or different custom image &mdash; specifically for social / SEO meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab."
+msgstr "Une image personnalisée plus grande et/ou différente &mdash précisément pour les balises social / SEO &mdash; peut être sélectionné dans le metabox Réglages Sociaux sous l’onglet <em>Média Prioritaire</em>."
 
 #: lib/messages.php:709
 msgid "Additional information shown only to users with Administrative privileges:"
@@ -2567,20 +2567,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Add Tabs to Social Settings Metabox"
-#~ msgstr "Ajout d'onglets aux Réglages Sociaux"
-
-#~ msgid "Please enter an Business / Organization Logo URL in the %1$s settings."
-#~ msgstr "SVP fournir une image logo pour l'entreprise dans les réglages %1$s."
-
-#~ msgid "A Business Banner Image is missing for the Schema Organization markup."
-#~ msgstr "Une image bannière pour l'entreprise est manquante pour le balisage Schéma Organisation."
-
-#~ msgid "Please enter a Business Banner 600x60px Image URL in the %1$s settings."
-#~ msgstr "SVP fournir une image bannière 600x60px pour l'entreprise dans les réglages %1$s."
-
-#~ msgctxt "option label"
-#~ msgid "Website Alternate Name"
-#~ msgstr "Autre nom du site Web"

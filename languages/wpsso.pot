@@ -1838,9 +1838,9 @@ msgstr ""
 
 #: lib/messages.php:707
 msgid ""
-"A larger and/or different image &mdash; specifically for social / SEO meta "
-"tags and markup &mdash; can be selected in the Social Settings metabox under "
-"the <em>Select Media</em> tab."
+"A larger and/or different custom image &mdash; specifically for social / SEO "
+"meta tags and markup &mdash; can be selected in the Social Settings metabox "
+"under the <em>Select Media</em> tab."
 msgstr ""
 
 #: lib/messages.php:709
