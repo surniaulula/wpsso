@@ -830,13 +830,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'endDate' => 'event_end_date',
 			) );
 
-			if ( isset( $opts['event_organizer_person_ids'] ) &&
-				is_array( $opts['event_organizer_person_ids'] ) )
-					foreach ( $opts['event_organizer_person_ids'] as $person_id )
-						self::add_single_person_data( $ret['organizer'], $mod, $person_id, true );	// $list_element = true
-
-			if ( empty( $ret['organizer'] ) )
-				unset( $ret['organizer'] );
+			if ( ! empty( $opts['event_organizer_person_id'] ) ) {
+				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $opts['event_organizer_person_id'], false ) ) 	// $list_element = false
+					unset( $ret['organizer'] );	// prevent null assignment
+			}
 
 			if ( ! empty( $opts['event_place_id'] ) ) {
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $opts['event_place_id'], false ) )	// $list_element = false
