@@ -14,13 +14,11 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons / extensions, or URLs pasted directly on timelines and private messages (PM) &mdash; the WordPress Social Sharing Optimization (WPSSO) covers all the bases in one fast, light-weight, and full-featured plugin.</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons / extensions, or URLs pasted directly on timelines and private messages (PM) &mdash; WordPress Social Sharing Optimization (WPSSO) covers all the bases in one fast, light-weight, and full-featured plugin.</p>
 
-<p><strong>A solid social meta tag plugin is the foundation of any good social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information social website crawlers need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).</p>
+<p><strong>A solid social meta tag plugin is the foundation of any good social strategy</strong> &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).</p>
 
-<p><strong>Tired of sub-standard social meta tags from other SEO plugins?</strong> &mdash; WPSSO Pro <em>automatically</em> retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
-
-<p><strong>Optional Free and Pro extensions</strong> &mdash; <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> for Apple Store / iTunes and Google Play App meta tags, <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> for Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags, <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> for Google and Pinterest Schema.org markup (BlogPosting, Article, Place, Product, etc.), <a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a>, and others.</p>
+<p><strong>Easy and complete social / SEO meta tags + Schema markup</strong> &mdash; WPSSO Pro <em>automatically</em> retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 
 <h4>Quick List of Features</h4>
 
@@ -41,9 +39,8 @@
 <li>Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and each Twitter Card type.</li>
 <li>Fallback to image alt values if the content and except do not include any text.</li>
 <li>Optional fallback to a default image and video for index and search webpages.</li>
-<li>Validates image dimensions and aspect ratios for reliable sharing results.</li>
+<li>Validates min/max image dimensions and aspect ratios for reliable sharing results.</li>
 <li>Auto-regeneration of inaccurate / missing WordPress image sizes.</li>
-<li>Fully renders content (including shortcodes) for accurate description texts.</li>
 <li>Configurable title separator character (hyphen by default).</li>
 <li>Configurable title and description lengths (Open Graph, Twitter Card, SEO).</li>
 <li>Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.</li>
@@ -153,7 +150,8 @@
 
 <ul>
 <li>A "Social Settings" metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.</li>
-<li>Support for embedded videos in content text ("iframe" and "object" HTML markup).</li>
+<li>Fully renders content (including shortcodes) for accurate description texts.</li>
+<li>Support for embedded videos in content text (iframe and object HTML markup).</li>
 <li>Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.</li>
 <li>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> markup for embedded videos from Slideshare, Vimeo, Wistia, and/or Youtube.</li>
 <li>Configurable user profile contact field names and labels for customized theme / SEO plugin integration.</li>
