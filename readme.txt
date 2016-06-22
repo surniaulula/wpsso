@@ -492,7 +492,3 @@ Official announcement: N/A
 
 (2016/06/21) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
-= 3.32.4-2 =
-
-(2016/06/14) Fixed extra semi-colon preventing the custom Open Graph description from being used as a fallback. Several code changes to allow for additional origanization Schema markup. Updated a filter to cleanup incorrect notifications in Yoast SEO v3.3.0.
-
