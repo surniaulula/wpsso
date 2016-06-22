@@ -278,9 +278,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_name = array();
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				// fallback for authors without a Facebook page URL in their user profile
-				if ( empty( $mt_og['article:author'] ) )	// check for empty array
-					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
-						$this->p->options['fb_author_name'] );
+				if ( empty( $mt_og['article:author'] ) &&
+					is_object( $this->p->m['util']['user'] ) )	// just in case
+						$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
+							$this->p->options['fb_author_name'] );
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
@@ -303,9 +304,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$link_rel = array();
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
-				if ( ! empty( $author_id ) )
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
-						$this->p->options['seo_author_field'] );
+				if ( ! empty( $author_id ) &&
+					is_object( $this->p->m['util']['user'] ) )	// just in case
+						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
+							$this->p->options['seo_author_field'] );
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {
