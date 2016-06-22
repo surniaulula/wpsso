@@ -938,7 +938,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
-					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
+					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
+						array( 'size_label' => $size_label, 'hard_limit' => true ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$reject_notice, false, true );
 				}
 
@@ -955,7 +956,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
-					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
+					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
+						array( 'size_label' => $size_label, 'hard_limit' => true ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
 				}
 
