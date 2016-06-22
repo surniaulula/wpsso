@@ -899,7 +899,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$max =& $this->p->cf['head']['max'];
 
 			if ( $media_lib === '' )
-				__( 'Media Library', 'wpsso' );
+				$media_lib = __( 'Media Library', 'wpsso' );
 
 			if ( $img_width > 0 && $img_height > 0 )	// just in case
 				$img_ratio = $img_width >= $img_height ? 
@@ -933,14 +933,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$img_width.'x'.$img_height.
+					$this->p->debug->log( 'exiting early: '.$media_lib.' image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
 						' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an aspect ratio equal to/or greater than %4$d:1.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio ).' '.$reject_notice, false, true );
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice, false, true );
 				}
 
 				return false;
@@ -951,14 +951,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				( $img_width < $min_width || $img_height < $min_height ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: image ID '.$pid.' rejected - '.$img_width.'x'.$img_height.
+					$this->p->debug->log( 'exiting early: '.$media_lib.' image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
 						' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is smaller than the minimum %4$s allowed by the %5$s standard.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
+					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
 				}
 
 				return false;
