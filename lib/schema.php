@@ -840,6 +840,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['location'] );	// prevent null assignment
 			}
 
+			if ( is_array( $opts['event_offers'] ) ) {
+				foreach ( $opts['event_offers'] as $event_offer ) {
+
+					// setup the offer with basic itemprops
+					if ( is_array( $event_offer ) &&	// just in case
+						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
+							'price' => 'offer_price',
+							'priceCurrency' => 'offer_price_currency',
+							'availability' => 'offer_availability',
+					) ) ) !== false ) {
+
+						// add the complete offer
+						$ret['offers'][] = self::get_item_type_context( 'http://schema.org/Offer', $offer );
+					}
+				}
+			}
+
 			if ( empty( $list_element ) )
 				$json_data = $ret;
 			else $json_data[] = $ret;
