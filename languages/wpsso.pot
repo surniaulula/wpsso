@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2849,6 +2849,46 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
+#: lib/submenu/styles.php:37
+msgid ""
+"Add the CSS of all <em>%1$s</em> to webpages (default is checked). The CSS "
+"will be <strong>minimized</strong>, and saved to a single stylesheet with a "
+"URL of <a href=\"%2$s\">%3$s</a>. The minimized stylesheet can be enqueued "
+"or added directly to the webpage HTML."
+msgstr ""
+
+#: lib/submenu/styles.php:37
+msgctxt "lib file description"
+msgid "Sharing Styles"
+msgstr ""
+
+#: lib/submenu/styles.php:41
+msgid "JavaScript added to webpages for the social sharing sidebar."
+msgstr ""
+
+#: lib/submenu/styles.php:45
+msgid ""
+"Have WordPress enqueue the social stylesheet instead of adding the CSS to in "
+"the webpage HTML (default is unchecked). Enqueueing the stylesheet may be "
+"desirable if you use a plugin to concatenate all enqueued styles into a "
+"single stylesheet URL."
+msgstr ""
+
+#: lib/submenu/styles.php:128
+msgctxt "metabox title"
+msgid "Social Sharing Styles"
+msgstr ""
+
+#: lib/submenu/styles.php:141
+msgctxt "option label"
+msgid "Use the Social Stylesheet"
+msgstr ""
+
+#: lib/submenu/styles.php:145
+msgctxt "option label"
+msgid "Enqueue the Stylesheet"
+msgstr ""
+
 #: lib/twittercard.php:28
 msgctxt "image size label"
 msgid "Twitter Summary Card"
@@ -2939,29 +2979,29 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:660
+#: lib/util.php:659
 msgid ""
 "The DOMDocument PHP class is missing - unable to read head meta from HTML. "
 "Please contact your hosting provider to install the missing DOMDocument PHP "
 "class."
 msgstr ""
 
-#: lib/util.php:1578
+#: lib/util.php:1577
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1581
+#: lib/util.php:1580
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1584
+#: lib/util.php:1583
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1587
+#: lib/util.php:1586
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

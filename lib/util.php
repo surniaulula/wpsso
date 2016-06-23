@@ -512,8 +512,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ), true );
 						$val = $def_val;
-					} else $val = (int) $val;	// cast as integer
-
+					}
 					break;
 
 				// must be blank or numeric
@@ -522,7 +521,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( ! is_numeric( $val ) ) {
 							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 							$val = $def_val;
-						} else $val = (int) $val;	// cast as integer
+						}
 					}
 					break;
 
@@ -531,7 +530,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (int) $val;	// cast as integer
+					}
 					break;
 
 				// empty of alpha-numeric uppercase (hyphens are allowed as well)
@@ -540,7 +539,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;	// cast as string
+					}
 					break;
 
 				// empty or alpha-numeric (upper or lower case), plus underscores
@@ -549,7 +548,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;	// cast as string
+					}
 					break;
 
 				case 'date':
@@ -559,7 +558,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
 						$val = $def_val;
-					} else $val = (string) $val;	// cast as string
+					}
 					break;
 
 				// text strings that can be blank

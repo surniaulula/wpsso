@@ -703,11 +703,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$results[$num] = $opts[$prefix.'_'.$num];
 				else $results[$num] = $value;					// use value (could be empty)
 			}
+
 			asort( $results );	// sort values for display
 
 			if ( $add_none )
-				return array_merge( array( 'none' => '[None]' ), $results );
-			else return $results;
+				$results = array( 'none' => '[None]' ) + $results;	// maintain numeric index
+
+			return $results;
 		}
 
 		public static function get_first_last_next_nums( array &$input ) {
