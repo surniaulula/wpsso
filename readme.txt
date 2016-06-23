@@ -44,8 +44,8 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 * Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.
 * Includes WordPress tags as hashtags (including a configurable maximum).
 * Includes a Google / SEO description meta tag (if an SEO plugin is not detected).
-* Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite Site Name</a> in schema.org JSON-LD format for Google Search and their <em>Knowledge Graph</em></a>.
-* Configurable website / business social accounts for JSON-LD markup:
+* Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author / Person and publisher / Organization social profiles</a>, Organization logo and WebSite markup for Google Search and their <em>Knowledge Graph</em>.
+* Configurable website / business social accounts for social profile Schema markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
 	* Pinterest Company Page URL
@@ -53,7 +53,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* Instagram Business URL
 	* LinkedIn Company Page URL
 	* MySpace Business (Brand) URL
-* User profile contact fields for Open Graph, Twitter Card, and JSON-LD markup:
+* User profile contact fields for Open Graph, Twitter Card, and social profile Schema markup:
 	* Facebook URL
 	* Google+ URL
 	* Instagram URL
@@ -75,52 +75,6 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
 	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
-
-**WPSSO Free / Basic Example Meta Tags**
-
-Example meta tags from the *Tiled Gallery* post provided by the [WP Test](http://wptest.io/) data.
-
-<pre>
-&lt;link rel="author" href="https://plus.google.com/u/1/+JSMorisset"/&gt;
-&lt;link rel="publisher" href="https://plus.google.com/+SurniaUlula"/&gt;
-&lt;meta property="fb:app_id" content="525239184171769"/&gt;
-&lt;meta property="og:url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/&gt;
-&lt;meta property="og:type" content="article"/&gt;
-&lt;!-- article:author:1 --&gt;&lt;meta property="article:author" content="https://www.facebook.com/jsmoriss"/&gt;
-&lt;meta property="article:section" content="Social Networking"/&gt;
-&lt;meta property="article:published_time" content="2013-03-15T17:23:27+00:00"/&gt;
-&lt;meta property="article:modified_time" content="2016-05-13T11:02:32+00:00"/&gt;
-&lt;meta property="og:locale" content="en_US"/&gt;
-&lt;meta property="og:site_name" content="Test Site"/&gt;
-&lt;meta property="og:title" content="Tiled Gallery"/&gt;
-&lt;meta property="og:description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
-&lt;meta property="article:publisher" content="https://www.facebook.com/SurniaUlulaCom/"/&gt;
-&lt;!-- og:image:1 --&gt;&lt;meta property="og:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-600x315.jpg"/&gt;
-&lt;!-- og:image:1 --&gt;&lt;meta property="og:image:width" content="600"/&gt;
-&lt;!-- og:image:1 --&gt;&lt;meta property="og:image:height" content="315"/&gt;
-&lt;meta name="twitter:domain" content="test.surniaulula.com"/&gt;
-&lt;meta name="twitter:site" content="@surniaululacom"/&gt;
-&lt;meta name="twitter:title" content="Tiled Gallery"/&gt;
-&lt;meta name="twitter:description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
-&lt;meta name="twitter:card" content="summary_large_image"/&gt;
-&lt;meta name="twitter:image" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/&gt;
-&lt;meta itemprop="url" content="http://test.surniaulula.com/2013/03/15/tiled-gallery/"/&gt;
-&lt;meta itemprop="name" content="Tiled Gallery"/&gt;
-&lt;meta itemprop="description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to make sure that everything spaces nicely."/&gt;
-&lt;meta itemprop="datepublished" content="2013-03-15T17:23:27+00:00"/&gt;
-&lt;meta itemprop="datemodified" content="2016-05-13T11:02:32+00:00"/&gt;
-&lt;meta name="description" content="This is a test for Jetpack&amp;#039;s Tiled Gallery. You can install Jetpack or Slim Jetpack to test it out. This is some text after the Tiled Gallery just to..."/&gt;
-&lt;noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject"&gt;
-	&lt;meta itemprop="url" content="http://test.surniaulula.com/wp-content/uploads/2013/03/captain-america-800x1212.jpg"/&gt;
-	&lt;meta itemprop="width" content="800"/&gt;
-	&lt;meta itemprop="height" content="1212"/&gt;
-&lt;/noscript&gt;
-&lt;noscript itemprop="author" itemscope itemtype="http://schema.org/Person"&gt;
-	&lt;meta itemprop="url" content="http://surniaulula.com/"/&gt;
-	&lt;meta itemprop="name" content="JS Morisset"/&gt;
-	&lt;meta itemprop="description" content="PHP developer and author of several Pro / Freemium plugins for WordPress."/&gt;
-&lt;/noscript&gt;
-</pre>
 
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
