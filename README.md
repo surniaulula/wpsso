@@ -26,7 +26,7 @@
 
 <ul>
 <li>Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
-<li>Alls all Twitter Card meta tags:
+<li>Adds all available Twitter Card meta tags:
 
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>

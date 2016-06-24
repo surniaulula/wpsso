@@ -27,7 +27,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 **WPSSO Free / Basic Features**
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
-* Alls all Twitter Card meta tags:
+* Adds all available Twitter Card meta tags:
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
