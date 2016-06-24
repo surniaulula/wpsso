@@ -16,9 +16,9 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 == Description ==
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>Make sure social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, browser add-ons / extensions, or URLs pasted directly on timelines and private messages (PM) &mdash; WordPress Social Sharing Optimization (WPSSO) covers all the bases in one fast, light-weight, and full-featured plugin.</p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>Make sure all social websites present your content in the best possible way, no matter <em>how</em> your webpage is shared</strong> &mdash; from sharing buttons on the webpage, web browser add-ons / extensions, or URLs pasted directly on timelines and in private messages (PM).</p>
 
-**A solid social meta tag plugin is the foundation of any good social strategy** &mdash; WordPress Social Sharing Optimization (WPSSO) gives you total control over all the information social websites need, improving *Google Search ranking*, *social engagement*, and *click-through-rates* on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more &mdash; independently of any social sharing buttons you may or may not already use (sharing buttons are not required).
+**A solid social meta tag plugin is the foundation of any good social strategy** &mdash; WordPress Social Sharing Optimization (WPSSO) allows you to manage all the information social websites need, improving *Google Search ranking*, *social engagement*, and *click-through-rates* on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.
 
 **Easy and complete social / SEO meta tags + Schema markup** &mdash; WPSSO Pro *automatically* retrieves and uses information from a wide range or sources, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.
 
@@ -27,25 +27,25 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 **WPSSO Free / Basic Features**
 
 * Adds Open Graph / Rich Pin meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
-* Twitter Card meta tags:
+* Alls all Twitter Card meta tags:
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
-* Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
-* Support for featured, attached, gallery shortcode, and/or image HTML tags in content.
+* Adds author (Person), publisher (Organization) and WebSite markup for Google Search and Google's <em>Knowledge Graph</em>.
 * Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and each Twitter Card type.
-* Fallback to image alt values if the content and except do not include any text.
-* Optional fallback to a default image and video for index and search webpages.
 * Validates min/max image dimensions and aspect ratios for reliable sharing results.
 * Auto-regeneration of inaccurate / missing WordPress image sizes.
+* Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
+* Support for featured, attached, gallery shortcode, and/or image HTML tags in content.
+* Fallback to image alt values if the content and excerpt does not include any text.
+* Optional fallback to a default image and video for index and search webpages.
 * Configurable title separator character (hyphen by default).
 * Configurable title and description lengths (Open Graph, Twitter Card, SEO).
 * Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.
 * Includes WordPress tags as hashtags (including a configurable maximum).
 * Includes a Google / SEO description meta tag (if an SEO plugin is not detected).
-* Includes <a href="https://developers.google.com/structured-data/customize/social-profiles">author / Person and publisher / Organization social profiles</a>, Organization logo and WebSite markup for Google Search and their <em>Knowledge Graph</em>.
-* Configurable website / business social accounts for social profile Schema markup:
+* Configurable website / business social accounts for Schema markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
 	* Pinterest Company Page URL
@@ -53,7 +53,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* Instagram Business URL
 	* LinkedIn Company Page URL
 	* MySpace Business (Brand) URL
-* User profile contact fields for Open Graph, Twitter Card, and social profile Schema markup:
+* User profile contact fields for Open Graph, Twitter Card, and Schema markup:
 	* Facebook URL
 	* Google+ URL
 	* Instagram URL
@@ -64,7 +64,6 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 	* Tumblr URL
 	* Twitter @username
 	* YouTube Channel URL
-* Validation tools, social preview, and meta tag value tabs on admin editing pages.
 * Customizable **multilingual** / multi-language Site Title and Site Description texts.
 * Contextual help for *every* plugin option and [comprehensive online documentation](http://wpsso.com/codex/plugins/wpsso/).
 * Uses object and transient caches to provide incredibly fast execution speeds.
@@ -89,7 +88,7 @@ Fast, light-weight, full-featured plugin for great looking shares on all social 
 
 **WPSSO Pro / Power-User Features**
 
-* A "Social Settings" metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the "Social Settings" metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
+* A Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 * Fully renders content (including shortcodes) for accurate description texts.
 * Support for embedded videos in content text (iframe and object HTML markup).
 * Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.
