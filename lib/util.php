@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// empty of alpha-numeric uppercase (hyphens are allowed as well)
 				case 'auth_id':
-					$val = trim( $val );
+					$val = preg_replace( array( '/&(shy|ndash|mdash);/', '/(--+)/' ), '-', trim( $val ) );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ), true );
 						$val = $def_val;
