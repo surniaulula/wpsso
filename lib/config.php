@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.1-1',	// plugin version
-					'opt_version' => '437',		// increment when changing default options
+					'version' => '3.33.2-dev1',	// plugin version
+					'opt_version' => '438',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_auto_img_resize' => 1,			// Create Missing WP Media Images
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
-					'plugin_upscale_img_max' => 50,			// Maximum Image Upscale Percentage
+					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percentage
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages

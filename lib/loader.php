@@ -49,8 +49,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 				foreach ( $info['lib'][$type] as $sub => $libs ) {
-					if ( $sub === 'admin' && ! is_admin() )	// load admin sub-folder only in back-end
-						continue;
+					if ( $sub === 'admin' ) {
+						if ( ! is_admin() )	// load admin sub-folder only in back-end
+							continue;
+						elseif ( $type === 'gpl' &&
+							! empty( $this->p->options['plugin_hide_pro'] ) )
+								continue;
+					}
 					foreach ( $libs as $id_key => $label ) {
 						/* 
 						 * Example:

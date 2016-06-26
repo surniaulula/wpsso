@@ -694,15 +694,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
+			$lca = $this->p->cf['lca'];
+
 			if ( empty( $submit_text ) ) 
 				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
 			$show_opts_text = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ),
-				_x( $this->p->cf['form']['show_options'][$show_opts_next],
-					'option value', 'wpsso' ) );
-			$show_opts_url = $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-				'-action=change_show_options&show-opts='.$show_opts_next );
+				_x( $this->p->cf['form']['show_options'][$show_opts_next], 'option value', 'wpsso' ) );
+			$show_opts_url = $this->p->util->get_admin_url( '?'.$lca.'-action=change_show_options&show-opts='.$show_opts_next );
 
 			// Save All Plugin Settings and View All / Basic Options by Default
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
@@ -710,26 +710,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					wp_nonce_url( $show_opts_url, WpssoAdmin::get_nonce(), WPSSO_NONCE ) ).'<br/>';	// WPSSO_NONCE is an md5() string
 
 			// Secondary Action Buttons
-			foreach ( apply_filters( $this->p->cf['lca'].'_secondary_action_buttons', array(
+			foreach ( apply_filters( $lca.'_secondary_action_buttons', array(
 				'clear_all_cache' => _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ),
 				'check_for_updates' => _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ),
 				'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 				'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
 			), $this->menu_id, $this->menu_name, $this->menu_lib ) as $action => $label ) {
 
-				// only show the clear_all_cache button on setting and submenu pages
-				if ( $action === 'clear_all_cache' && 
-					$this->menu_lib !== 'setting' && 
-						$this->menu_lib !== 'submenu' )
-							continue;
-
-				// don't show the check_for_updates button on profile pages
-				if ( $action === 'check_for_updates' && 
-					$this->menu_lib === 'profile' )
-						continue;
+				switch ( $action ) {
+					case 'clear_all_cache':
+						// only show the clear_all_cache button on setting and submenu pages
+						if ( $this->menu_lib !== 'setting' && 
+							$this->menu_lib !== 'submenu' )
+								continue 2;
+						break;
+					case 'check_for_updates':
+						// don't show the check_for_updates button on profile pages
+						if ( $this->menu_lib === 'profile' ||
+							empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
+								continue 2;
+						break;
+				}
 
 				$action_buttons .= $this->form->get_button( $label, 'button-secondary', null, 
-					wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action='.$action ),
+					wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action ),
 						WpssoAdmin::get_nonce(), WPSSO_NONCE ) );	// WPSSO_NONCE is an md5() string
 			}
 

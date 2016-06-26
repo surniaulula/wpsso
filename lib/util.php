@@ -1433,6 +1433,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
+
 			$hash = '';
 			$query = '';
 			$admin_url = '';
@@ -1487,11 +1488,54 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else return '<a href="'.$admin_url.'">'.$link_text.'</a>';
 		}
 
+		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+
+			$tab_keys = array_keys( $tabs );
+			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
+			$class_metabox_tabs = 'sucom-metabox-tabs';
+			$class_link = 'sucom-tablink';
+			$class_tabset = 'sucom-tabset';
+
+			if ( ! empty( $metabox ) ) {
+				$metabox = '_'.$metabox;		// must start with an underscore
+				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
+				$class_link .= ' '.$class_link.$metabox;
+			}
+
+			// allow a css ID to be passed as a query argument
+			extract( array_merge( array(
+				'scroll_to' => isset( $_GET['scroll_to'] ) ? 
+					'#'.self::sanitize_key( $_GET['scroll_to'] ) : '',
+			), $args ) );
+
+			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
+				'sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
+			echo '<div class="'.$class_metabox_tabs.'">'."\n";
+			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
+			foreach ( $tabs as $tab => $title ) {
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				echo '<div class="tab_left">&nbsp;</div><li class="'.
+					$class_href_key.'"><a class="'.$class_link.'" href="#'.
+					$class_href_key.'">'.$title.'</a></li>'."\n";
+			}
+			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
+
+			foreach ( $tabs as $tab => $title ) {
+				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				$this->do_table_rows( 
+					$table_rows[$tab], 
+					$class_href_key,
+					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
+					$class_tabset
+				);
+			}
+			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
+		}
+
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
-			// just in case
-			if ( empty( $table_rows ) || 
-				! is_array( $table_rows ) )
-					return;
+
+			if ( ! is_array( $table_rows ) )	// just in case
+				return;
 
 			$lca = empty( $this->p->cf['lca'] ) ? 
 				'sucom' : $this->p->cf['lca'];
@@ -1501,7 +1545,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $lca.'user' ) ? 
+				call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 				if ( empty( $row ) )	// just in case
@@ -1552,6 +1597,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$count_rows++;
 			}
 
+			if ( $count_rows === 0 ) {
+				$table_rows[] = '<tr><td align="center"><p><em>'.__( 'No options available.',
+					'wpsso' ).'</em></p></td></tr>';
+				$count_rows++;
+			}
+
 			echo '<div class="'.
 				( empty( $show_opts ) ? '' : 'sucom-show_'.$show_opts ).
 				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
@@ -1561,8 +1612,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			echo '<table class="sucom-setting '.$lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
-				( $hidden_rows === $count_rows ? ' hide_in_'.$show_opts : '' ).	// if all rows hidden, then hide the whole table
-			'">'."\n";
+				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
+					' hide_in_'.$show_opts : '' ).'">'."\n";
 
 			foreach ( $table_rows as $row )
 				echo $row;
@@ -1571,63 +1622,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			echo '</div>'."\n";
 
 			$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
-
 			if ( $hidden_opts > 0 ) {
 				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
 					sprintf( _x( '%1$d additional options not shown in %2$s view', 'option comment', 'wpsso' ), 
 						$hidden_opts, _x( $show_opts_label, 'option value', 'wpsso' ) ).
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\' );">'.
+					' (<a href="javascript:void(0);"'.
+					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\' );">'.
 					_x( 'unhide these options', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
 			} elseif ( $hidden_rows > 0 ) {
 				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
 					sprintf( _x( '%1$d additional rows not shown in %2$s view', 'option comment', 'wpsso' ), 
 						$hidden_rows, _x( $show_opts_label, 'option value', 'wpsso' ) ).
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\', \'hide_row_in\' );">'.
+					' (<a href="javascript:void(0);"'.
+					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\', \'hide_row_in\' );">'.
 					_x( 'unhide these rows', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
 			}
-		}
-
-		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-			$tab_keys = array_keys( $tabs );
-			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
-			$class_metabox_tabs = 'sucom-metabox-tabs';
-			$class_link = 'sucom-tablink';
-			$class_tabset = 'sucom-tabset';
-
-			if ( ! empty( $metabox ) ) {
-				$metabox = '_'.$metabox;		// must start with an underscore
-				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
-				$class_link .= ' '.$class_link.$metabox;
-			}
-
-			// allow a css ID to be passed as a query argument
-			extract( array_merge( array(
-				'scroll_to' => isset( $_GET['scroll_to'] ) ? 
-					'#'.self::sanitize_key( $_GET['scroll_to'] ) : '',
-			), $args ) );
-
-			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
-				'sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
-			echo '<div class="'.$class_metabox_tabs.'">'."\n";
-			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
-			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="'.
-					$class_href_key.'"><a class="'.$class_link.'" href="#'.
-					$class_href_key.'">'.$title.'</a></li>'."\n";
-			}
-			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
-
-			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				$this->do_table_rows( 
-					$table_rows[$tab], 
-					$class_href_key,
-					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
-					$class_tabset
-				);
-			}
-			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}
 	}
 }

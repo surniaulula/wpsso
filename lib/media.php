@@ -451,10 +451,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_info();
 			}
 
-			$img_size_in_bounds = $this->p->media->img_size_in_bounds( $pid, $size_name, $img_width, $img_height );
+			$img_size_within_limits = $this->p->media->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
 			// wpsso_attached_accept_img_dims is hooked by the WpssoProCheckImgSize class / module.
-			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_in_bounds, 
+			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_within_limits, 
 				$img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
@@ -892,11 +892,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			else return $og_video;
 		}
 
-		public function img_size_in_bounds( $pid, $size_name, $img_width, $img_height, $media_lib = '' ) {
+		public function img_size_within_limits( $pid, $size_name, $img_width, $img_height, $media_lib = '' ) {
 
 			$lca =& $this->p->cf['lca'];
 			$min =& $this->p->cf['head']['min'];
 			$max =& $this->p->cf['head']['max'];
+
+			if ( strpos( $size_name, $lca.'-' ) !== 0 )	// only check our own sizes
+				return true;
 
 			if ( $media_lib === '' )
 				$media_lib = __( 'Media Library', 'wpsso' );
@@ -910,24 +913,28 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			switch ( $size_name ) {
 				case $lca.'-opengraph':
 					$std_name = 'Facebook / Open Graph';
-					$max_ratio = $max['og_img_ratio'];
 					$min_width = $min['og_img_width'];
 					$min_height = $min['og_img_height'];
+					$max_ratio = $max['og_img_ratio'];
 					break;
 
 				case $lca.'-schema':
 					$std_name = 'Google / Schema';
-					$max_ratio = $max['schema_img_ratio'];
 					$min_width = $min['schema_img_width'];
-					$min_height = 0;
+					$min_height = $min['schema_img_height'];
+					$max_ratio = $max['schema_img_ratio'];
 					break;
 
 				default:
-					$max_ratio = 0;
 					$min_width = 0;
 					$min_height = 0;
+					$max_ratio = 0;
 					break;
 			}
+
+			// filter name example: wpsso_opengraph_img_size_limits
+			list( $min_width, $min_height, $max_ratio ) = apply_filters( SucomUtil::sanitize_hookname( $size_name ).'_img_size_limits',
+				array( $min_width, $min_height, $max_ratio ) );
 
 			// check the maximum image aspect ratio
 			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
@@ -942,7 +949,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice, false, true );
 				}
-
 				return false;
 			}
 
@@ -960,7 +966,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
 					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
 				}
-
 				return false;
 			}
 

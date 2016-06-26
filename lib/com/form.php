@@ -34,7 +34,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->cf['plugin'][$this->menu_ext]['text_domain'] : false;
 		}
 
-		public function get_hidden( $name, $value = '' ) {
+		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
 			if ( empty( $name ) )
 				return;	// just in case
 
@@ -43,7 +43,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->in_options( $name ) ?
 					$this->options[$name] : $value;
 
-			return '<input type="hidden" name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="'.esc_attr( $value ).'" />';
+			return ( $is_checkbox ? $this->get_hidden( 'is_checkbox_'.$name, 1, false ) : '' ).
+				'<input type="hidden" name="'.esc_attr( $this->options_name.
+					'['.$name.']' ).'" value="'.esc_attr( $value ).'" />';
 		}
 
 		public function get_checkbox( $name, $class = '', $id = '', $disabled = false, $force = null ) {

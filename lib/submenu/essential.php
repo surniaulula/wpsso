@@ -171,6 +171,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$this->form->get_no_checkbox( 'plugin_debug' ).' <em>WPSSO_HTML_DEBUG constant is true</em>' :
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
+					if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
+						$table_rows['plugin_hide_pro'] = $this->form->get_th_html( _x( 'Hide All Pro Settings and Options',
+							'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
+						'<td>'.$this->form->get_checkbox( 'plugin_hide_pro' ).'</td>';
+					else $this->form->get_hidden( 'plugin_hide_pro',  0, true );
+
 					break;
 			}
 			return $table_rows;
