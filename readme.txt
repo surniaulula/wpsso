@@ -309,17 +309,15 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Screenshots ==
 
-01. General settings page &mdash; Includes options for Open Graph (All Publishers) site information, titles, descriptions, images, videos, and authors. There is also a Publisher Specific section for Facebook, Google (G+ and Search), LinkedIn, Pinterest Rich Pins, and Twitter Cards.
-02. Advanced settings page &mdash; Allows you to fine-tune some advanced plugin settings, the use of various content filters, custom post meta fields, caching techniques, user profile contacts, and enable / disable a long list of meta tags.
-03. Social Settings metabox on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; Allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate the webpage markup with online tools.
-04. "Social Image" and "Social Description" preview columns (available on posts, pages, category, tags, and custom taxonomy editing pages).
-05. Example Pinterest Product Pin (Zoomed).
-06. Example Facebook Link Share.
-07. Example Facebook Video Share.
-08. Example Twitter 'Summary' Card.
-09. Example Twitter 'Large Image Summary' Card.
-10. Example Twitter 'Player' Card.
-11. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
+01. WPSSO Free Essential Settings &mdash; includes site information, Facebook / Open Graph, Google / Schema, Pinterest, and Twitter options. Additional options are available in General and Advanced settings pages.
+02. WPSSO Pro Social Settings on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate webpage markup with online tools. The WPSSO Schema JSON-LD Markup (WPSSO JSON) extension includes additional options for Schema Articles, Events, etc.
+03. Example Facebook Link Share.
+04. Example Facebook Video Share (Pro version required).
+05. Example Twitter 'Summary' Card.
+06. Example Twitter 'Large Image Summary' Card.
+07. Example Twitter 'Player' Card (Pro version required).
+08. Example Pinterest Product Pin (Zoomed).
+09. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
 
 == Changelog ==
 
