@@ -310,7 +310,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 == Screenshots ==
 
 01. WPSSO Free Essential Settings &mdash; includes site information, Facebook / Open Graph, Google / Schema, Pinterest, and Twitter options. Additional options are available in General and Advanced settings pages.
-02. WPSSO Pro Social Settings on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate webpage markup with online tools. The WPSSO Schema JSON-LD Markup (WPSSO JSON) extension includes additional options for Schema Articles, Events, etc.
+02. WPSSO Pro Social Settings on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate webpage markup with online tools. The WPSSO Schema JSON-LD Markup (WPSSO JSON) extension (shown here) includes additional options for Schema Articles, Events, etc.
 03. Example Facebook Link Share.
 04. Example Facebook Video Share (Pro version required).
 05. Example Twitter 'Summary' Card.
