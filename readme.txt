@@ -334,6 +334,26 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.2-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new "Hide All Pro Settings and Options" option.
+	* Added tabs to the Header Tags List metabox:
+		* Open Graph
+		* Schema
+		* Twitter
+		* SEO / Other
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added new filters to manage image size hard-limits.
+		* 'wpsso_opengraph_img_size_limits'
+		* 'wpsso_schema_img_size_limits'
+
 **Version 3.33.1-1 (2016/06/23)**
 
 Official announcement: N/A
@@ -369,8 +389,4 @@ Official announcement: N/A
 = 3.33.1-1 =
 
 (2016/06/23) Fixed SucomUtil::get_multi_key_locale() method to preserve numeric index.
-
-= 3.33.0-1 =
-
-(2016/06/21) Added support for The Events Calendar plugin (Pro version). Added basic support for the http://schema.org/Event type and its sub-types.
 
