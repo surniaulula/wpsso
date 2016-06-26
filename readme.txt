@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.2-dev1 (TBD)**
+**Version 3.33.2-dev1 (2016/06/26)**
 
 Official announcement: N/A
 
@@ -385,6 +385,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.2-dev1 =
+
+(2016/06/26) Added a new "Hide All Pro Settings and Options" option. Added tabs to the Header Tags List metabox.
 
 = 3.33.1-1 =
 
