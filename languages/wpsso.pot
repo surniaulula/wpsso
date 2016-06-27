@@ -2870,46 +2870,6 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/styles.php:37
-msgid ""
-"Add the CSS of all <em>%1$s</em> to webpages (default is checked). The CSS "
-"will be <strong>minimized</strong>, and saved to a single stylesheet with a "
-"URL of <a href=\"%2$s\">%3$s</a>. The minimized stylesheet can be enqueued "
-"or added directly to the webpage HTML."
-msgstr ""
-
-#: lib/submenu/styles.php:37
-msgctxt "lib file description"
-msgid "Sharing Styles"
-msgstr ""
-
-#: lib/submenu/styles.php:41
-msgid "JavaScript added to webpages for the social sharing sidebar."
-msgstr ""
-
-#: lib/submenu/styles.php:45
-msgid ""
-"Have WordPress enqueue the social stylesheet instead of adding the CSS to in "
-"the webpage HTML (default is unchecked). Enqueueing the stylesheet may be "
-"desirable if you use a plugin to concatenate all enqueued styles into a "
-"single stylesheet URL."
-msgstr ""
-
-#: lib/submenu/styles.php:128
-msgctxt "metabox title"
-msgid "Social Sharing Styles"
-msgstr ""
-
-#: lib/submenu/styles.php:141
-msgctxt "option label"
-msgid "Use the Social Stylesheet"
-msgstr ""
-
-#: lib/submenu/styles.php:145
-msgctxt "option label"
-msgid "Enqueue the Stylesheet"
-msgstr ""
-
 #: lib/twittercard.php:28
 msgctxt "image size label"
 msgid "Twitter Summary Card"
