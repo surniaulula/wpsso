@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					$this->p->debug->log( 'default options have been added to the database' );
 
 				if ( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) )
-					$this->p->notice->inf( $uca.'_RESET_ON_ACTIVATE constant is true &ndash; 
+					$this->p->notice->warn( $uca.'_RESET_ON_ACTIVATE constant is true &ndash; 
 						plugin options have been reset to their default values.', true );
 			}
 		}

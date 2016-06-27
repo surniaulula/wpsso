@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							// numeric options from forms are strings, so don't do a strict test
 							if ( $opts[$idx] != $def_val ) {
 								if ( is_admin() )
-									$this->p->notice->err( sprintf( __( 'Non-standard value found for the Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
+									$this->p->notice->warn( sprintf( __( 'Non-standard value found for the Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
 								$opts[$idx] = $def_val;
 								$has_diff_options = true;	// save the options
 							}
@@ -172,13 +172,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( is_admin() ) {
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
 							$opts['plugin_object_cache_exp'] < $this->get_defaults( 'plugin_object_cache_exp' ) ) {
+
 							if ( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
-								$this->p->notice->inf( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
 							else $opts['plugin_object_cache_exp'] = $this->get_defaults( 'plugin_object_cache_exp' );
 						}
 
 						if ( empty( $opts['plugin_filter_content'] ) )
-							$this->p->notice->inf( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
 								true, true, 'notice-content-filters-disabled', true );
 
 						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&

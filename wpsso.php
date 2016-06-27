@@ -12,7 +12,7 @@
  * Description: Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!
  * Requires At Least: 3.1
  * Tested Up To: 4.5.3
- * Version: 3.33.2-dev1
+ * Version: 3.33.2-dev2
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -232,7 +232,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				if ( is_admin() )
 					// text_domain is already loaded by the NgfbAdmin class construct
-					$this->notice->inf( ( $this->is_avail['cache']['transient'] ?
+					$this->notice->warn( ( $this->is_avail['cache']['transient'] ?
 						__( 'HTML debug mode is active (transient cache could NOT be disabled).', 'nextgen-facebook' ) :
 						__( 'HTML debug mode is active (transient cache use is disabled).', 'nextgen-facebook' ) ).' '.
 						__( 'Informational debug messages are being added as hidden HTML comments.', 'wpsso' ) );

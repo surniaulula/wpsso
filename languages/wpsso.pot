@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.2-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -406,20 +406,20 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:288
+#: lib/com/notice.php:298
 msgid ""
-"%1$d important warning notices have been hidden and/or dismissed &mdash; <a "
-"id=\"%2$s\">unhide and view the warning messages</a>."
+"%1$d important error notices have been hidden and/or dismissed &mdash; <a id="
+"\"%2$s\">unhide and view the error messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:290
+#: lib/com/notice.php:300
 msgid ""
-"%1$d important warning notice has been hidden and/or dismissed &mdash; <a id="
-"\"%2$s\">unhide and view the warning message</a>."
+"%1$d important error notice has been hidden and/or dismissed &mdash; <a id="
+"\"%2$s\">unhide and view the error message</a>."
 msgstr ""
 
-#: lib/com/notice.php:360
-msgid "%s Notice"
+#: lib/com/notice.php:370
+msgid "%s Note"
 msgstr ""
 
 #: lib/com/script.php:89
@@ -2200,39 +2200,39 @@ msgid ""
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:197
+#: lib/options.php:198
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:200
+#: lib/options.php:201
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:203
+#: lib/options.php:204
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:205
+#: lib/options.php:206
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:220
+#: lib/options.php:221
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:318
+#: lib/options.php:319
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:367
+#: lib/options.php:368
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -2319,7 +2319,7 @@ msgid ""
 "%6$s image size (exceeds %7$s maximum)."
 msgstr ""
 
-#: lib/pro/media/upscale.php:203
+#: lib/pro/media/upscale.php:195
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."

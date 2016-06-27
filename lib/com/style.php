@@ -167,13 +167,33 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			display:none;
 		}
 	}
-	.'.$lca.'-notice.error,
-	.'.$lca.'-notice.updated {
+	.'.$lca.'-notice.notice {
 		padding:0;
 	}
 	.'.$lca.'-notice ul {
 		margin:5px 0 5px 40px;
 		list-style:disc outside none;
+	}
+	.'.$lca.'-notice.notice-success .notice-label:before,
+	.'.$lca.'-notice.notice-info .notice-label:before,
+	.'.$lca.'-notice.notice-warning .notice-label:before,
+	.'.$lca.'-notice.notice-error .notice-label:before {
+		vertical-align:bottom;
+		font-family:dashicons;
+		font-size:1.2em;
+		margin-right:8px;
+	}
+	.'.$lca.'-notice.notice-success .notice-label:before {
+		content: "\f147";	/* yes */
+	}
+	.'.$lca.'-notice.notice-info .notice-label:before {
+		content: "\f537";	/* sticky */
+	}
+	.'.$lca.'-notice.notice-warning .notice-label:before {
+		content: "\f227";	/* flag */
+	}
+	.'.$lca.'-notice.notice-error .notice-label:before {
+		content: "\f488";	/* megaphone */
 	}
 	.'.$lca.'-notice .notice-label {
 		display:table-cell;
