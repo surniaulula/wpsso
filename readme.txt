@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.2-dev1 (2016/06/26)**
+**Version 3.33.2-dev2 (2016/06/27)**
 
 Official announcement: N/A
 
@@ -347,6 +347,8 @@ Official announcement: N/A
 		* Schema
 		* Twitter
 		* SEO / Other
+	* Updated the notification colors from red (error) and green (update), to red (error), yellow (warning), blue (informational), and green (update).
+	* Reclassified several notification messages to use all four notification colors.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -386,9 +388,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.2-dev1 =
+= 3.33.2-dev2 =
 
-(2016/06/26) Added a new "Hide All Pro Settings and Options" option. Added tabs to the Header Tags List metabox.
+(2016/06/27) Added a new "Hide All Pro Settings and Options" option. Added tabs to the Header Tags List metabox.
 
 = 3.33.1-1 =
 
