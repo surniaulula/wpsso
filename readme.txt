@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.2-dev3 (2016/06/28)**
+**Version 3.33.2-dev4 (2016/06/28)**
 
 Official announcement: N/A
 
@@ -349,6 +349,7 @@ Official announcement: N/A
 		* SEO / Other
 	* Updated the notification categories / colors from red (error) and green (update), to red (error), yellow (warning), blue (info), and green (success).
 	* Reclassified several notification messages to use all four notification colors.
+	* Added support for the "data-lazy-src" and "data-src" img attributes when searching for images in the content.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -388,7 +389,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.2-dev3 =
+= 3.33.2-dev4 =
 
 (2016/06/28) Added a new "Hide All Pro Version Options" option. Added tabs to the Header Tags List metabox. Reclassified several notification messages.
 
