@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.2-dev2',	// plugin version
-					'opt_version' => '438',		// increment when changing default options
+					'version' => '3.33.2-dev3',	// plugin version
+					'opt_version' => '439',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, full-featured plugin for great looking shares on all social sites - no matter how your content is shared or re-shared!',
@@ -582,9 +582,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
+					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
-					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
+					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					// Content and Filters Tab
 					'plugin_filter_title' => 0,

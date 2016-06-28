@@ -634,7 +634,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'info-meta-social-preview':
-					 	$text = '<p style="text-align:right;">'.__( 'The Open Graph social preview shows an <em>example</em> of a typical share on a social website. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+					 	$text = '<p style="text-align:right;">'.__( 'The social preview shows an <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 					 	break;
 					case 'info-plugin-tid':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
@@ -669,7 +669,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( $lca !== $this->p->cf['lca'] &&
 							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
 								$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
-								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed and active %1$s plugin)',
+								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
 									'wpsso' ), $req_short );
 						} else $req_msg = '';
 						if ( $this->p->check->aop( $lca, false ) )
@@ -707,7 +707,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
 
-						$text = __( 'A larger and/or different custom image &mdash; specifically for social / SEO meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
+						$text = __( 'A larger and/or different custom image &mdash; specifically for social meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
 						if ( empty( $info['hard_limit'] ) && current_user_can( 'manage_options' ) ) {
 							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
 							$text .= '<ul>';

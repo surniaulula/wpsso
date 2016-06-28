@@ -67,10 +67,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
-			$this->p->util->do_table_rows( 
-				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
-				'metabox-'.$metabox.'-info'
-			);
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
+				'metabox-'.$metabox.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
@@ -87,10 +85,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ), 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
 						array(), $this->form, false ) );	// $network = false
-			$this->p->util->do_table_rows( 
-				array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
-				'metabox-'.$metabox.'-info'
-			);
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
+				'metabox-'.$metabox.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}
 
@@ -114,7 +110,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 						$this->form->get_checkbox( 'plugin_debug' ) ).'</td>';
 
 					if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
-						$table_rows['plugin_hide_pro'] = $this->form->get_th_html( _x( 'Hide All Pro Settings and Options',
+						$table_rows['plugin_hide_pro'] = $this->form->get_th_html( _x( 'Hide All Pro Version Options',
 							'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
 						'<td>'.$this->form->get_checkbox( 'plugin_hide_pro' ).'</td>';
 					else $this->form->get_hidden( 'plugin_hide_pro',  0, true );

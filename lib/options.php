@@ -134,19 +134,26 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// adjust some options based on external factors
 				if ( ! $network ) {
-					if ( ! $this->p->check->aop( $this->p->cf['lca'], 
-						false, $this->p->is_avail['aop'] ) ) {
+					if ( $this->p->check->aop( $this->p->cf['lca'], false, $this->p->is_avail['aop'] ) ) {
+						foreach ( array( 'plugin_hide_pro' ) as $idx ) {
+							$def_val = $this->get_defaults( $idx );
+							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
+								$opts[$idx] = $def_val;
+								$has_diff_options = true;	// save the options
+							}
+						}
+					} else {
 						foreach ( array(
 							'plugin_filter_content',
 							'plugin_check_head',
 							'plugin_upscale_images',
 							'plugin_object_cache_exp',
+							'plugin_file_cache_exp',
 						) as $idx ) {
 							$def_val = $this->get_defaults( $idx );
-							// numeric options from forms are strings, so don't do a strict test
-							if ( $opts[$idx] != $def_val ) {
+							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
 								if ( is_admin() )
-									$this->p->notice->warn( sprintf( __( 'Non-standard value found for the Free version \'%s\' option - resetting the option to its default value.', 'wpsso' ), $idx ), true );
+									$this->p->notice->warn( sprintf( __( 'Free version non-standard value found for the \'%s\' option - resetting to its default value.', 'wpsso' ), $idx ), true );
 								$opts[$idx] = $def_val;
 								$has_diff_options = true;	// save the options
 							}

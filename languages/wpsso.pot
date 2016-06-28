@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.2-"
-"dev2\n"
+"dev3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -408,14 +408,14 @@ msgstr ""
 
 #: lib/com/notice.php:298
 msgid ""
-"%1$d important error notices have been hidden and/or dismissed &mdash; <a id="
-"\"%2$s\">unhide and view the error messages</a>."
+"%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
+"\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:300
+#: lib/com/notice.php:299
 msgid ""
-"%1$d important error notice has been hidden and/or dismissed &mdash; <a id="
-"\"%2$s\">unhide and view the error message</a>."
+"%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
+"\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
 #: lib/com/notice.php:370
@@ -1563,7 +1563,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:447 lib/messages.php:516 lib/messages.php:566
-#: lib/submenu/essential.php:96 lib/submenu/general.php:225
+#: lib/submenu/essential.php:92 lib/submenu/general.php:225
 #: lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Author Name Format"
@@ -1626,11 +1626,11 @@ msgstr ""
 
 #: lib/messages.php:637
 msgid ""
-"The Open Graph social preview shows an <em>example</em> of a typical share "
-"on a social website. Images are displayed using Facebooks suggested minimum "
-"image dimensions of 600x315px. Actual shares on Facebook and other social "
-"websites may look significantly different than this example (depending on "
-"the client platform, resolution, orientation, etc.)."
+"The social preview shows an <em>example</em> link share on Facebook. Images "
+"are displayed using Facebooks suggested minimum image dimensions of "
+"600x315px. Actual shares on Facebook and other social websites may look "
+"significantly different than this example (depending on the client platform, "
+"resolution, orientation, etc.)."
 msgstr ""
 
 #: lib/messages.php:641 lib/messages.php:645
@@ -1791,9 +1791,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:672
-msgid ""
-"(note that all %1$s extensions also require a licensed and active %1$s "
-"plugin)"
+msgid "(note that all %1$s extensions also require a licensed %1$s plugin)"
 msgstr ""
 
 #: lib/messages.php:677
@@ -1839,9 +1837,9 @@ msgstr ""
 
 #: lib/messages.php:710
 msgid ""
-"A larger and/or different custom image &mdash; specifically for social / SEO "
-"meta tags and markup &mdash; can be selected in the Social Settings metabox "
-"under the <em>Select Media</em> tab."
+"A larger and/or different custom image &mdash; specifically for social meta "
+"tags and markup &mdash; can be selected in the Social Settings metabox under "
+"the <em>Select Media</em> tab."
 msgstr ""
 
 #: lib/messages.php:712
@@ -2194,45 +2192,45 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:149
+#: lib/options.php:156
 msgid ""
-"Non-standard value found for the Free version '%s' option - resetting the "
-"option to its default value."
+"Free version non-standard value found for the '%s' option - resetting to its "
+"default value."
 msgstr ""
 
-#: lib/options.php:198
+#: lib/options.php:205
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:201
+#: lib/options.php:208
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:204
+#: lib/options.php:211
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:206
+#: lib/options.php:213
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:221
+#: lib/options.php:228
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:319
+#: lib/options.php:326
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:368
+#: lib/options.php:375
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -2423,14 +2421,14 @@ msgctxt "metabox tab"
 msgid "File and Object Cache"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:106
-#: lib/submenu/essential.php:164
+#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:102
+#: lib/submenu/essential.php:160
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:110
-#: lib/submenu/essential.php:168
+#: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:106
+#: lib/submenu/essential.php:164
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
@@ -2480,37 +2478,37 @@ msgctxt "metabox tab"
 msgid "Built-In Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:80
+#: lib/submenu/advanced.php:78
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:81
+#: lib/submenu/advanced.php:79
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:82 lib/submenu/general.php:63
+#: lib/submenu/advanced.php:80 lib/submenu/general.php:63
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/advanced.php:83
+#: lib/submenu/advanced.php:81
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/advanced.php:102 lib/submenu/essential.php:160
+#: lib/submenu/advanced.php:98 lib/submenu/essential.php:156
 msgctxt "option label"
 msgid "Clear All Cache(s) on Save Settings"
 msgstr ""
 
-#: lib/submenu/advanced.php:117 lib/submenu/essential.php:175
+#: lib/submenu/advanced.php:113 lib/submenu/essential.php:171
 msgctxt "option label"
-msgid "Hide All Pro Settings and Options"
+msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/submenu/advanced.php:122
+#: lib/submenu/advanced.php:118
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
@@ -2525,109 +2523,109 @@ msgctxt "metabox title"
 msgid "Essential Advanced Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:65
+#: lib/submenu/essential.php:61
 msgctxt "metabox title"
 msgid "Site Information"
 msgstr ""
 
-#: lib/submenu/essential.php:67 lib/submenu/general.php:82
+#: lib/submenu/essential.php:63 lib/submenu/general.php:82
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/essential.php:71 lib/submenu/general.php:86
+#: lib/submenu/essential.php:67 lib/submenu/general.php:86
 msgctxt "option label"
 msgid "Website Name"
 msgstr ""
 
-#: lib/submenu/essential.php:76 lib/submenu/general.php:91
+#: lib/submenu/essential.php:72 lib/submenu/general.php:91
 msgctxt "option label"
 msgid "Website Description"
 msgstr ""
 
-#: lib/submenu/essential.php:82
+#: lib/submenu/essential.php:78
 msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:84 lib/submenu/general.php:213
+#: lib/submenu/essential.php:80 lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:88 lib/submenu/general.php:217
+#: lib/submenu/essential.php:84 lib/submenu/general.php:217
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:92 lib/submenu/general.php:221
+#: lib/submenu/essential.php:88 lib/submenu/general.php:221
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/essential.php:101 lib/submenu/general.php:230
+#: lib/submenu/essential.php:97 lib/submenu/general.php:230
 msgctxt "option label"
 msgid "Default Content Language"
 msgstr ""
 
-#: lib/submenu/essential.php:105 lib/submenu/general.php:180
+#: lib/submenu/essential.php:101 lib/submenu/general.php:180
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:109 lib/submenu/general.php:184
+#: lib/submenu/essential.php:105 lib/submenu/general.php:184
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:114
+#: lib/submenu/essential.php:110
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:116 lib/submenu/general.php:238
+#: lib/submenu/essential.php:112 lib/submenu/general.php:238
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:122 lib/submenu/general.php:287
+#: lib/submenu/essential.php:118 lib/submenu/general.php:287
 msgctxt "option label"
 msgid "Google Knowledge Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:126 lib/submenu/general.php:291
+#: lib/submenu/essential.php:122 lib/submenu/general.php:291
 msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:294
+#: lib/submenu/essential.php:125 lib/submenu/general.php:294
 msgid " Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/submenu/essential.php:132 lib/submenu/general.php:297
+#: lib/submenu/essential.php:128 lib/submenu/general.php:297
 msgid " Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr ""
 
-#: lib/submenu/essential.php:139 lib/submenu/general.php:304
+#: lib/submenu/essential.php:135 lib/submenu/general.php:304
 msgctxt "option label"
 msgid "Organization Logo Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:143
+#: lib/submenu/essential.php:139
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:145 lib/submenu/general.php:359
+#: lib/submenu/essential.php:141 lib/submenu/general.php:359
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:150
+#: lib/submenu/essential.php:146
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:152 lib/submenu/general.php:384
+#: lib/submenu/essential.php:148 lib/submenu/general.php:384
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -2967,26 +2965,26 @@ msgid ""
 "class."
 msgstr ""
 
-#: lib/util.php:1601
+#: lib/util.php:1597
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1627
+#: lib/util.php:1623
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1631
+#: lib/util.php:1627
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1634
+#: lib/util.php:1630
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1638
+#: lib/util.php:1634
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

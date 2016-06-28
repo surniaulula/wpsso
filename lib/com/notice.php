@@ -242,7 +242,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							default:
 								// dismiss will always be false if there's no msg id
 								if ( ! empty( $payload['dismiss'] ) ) {
-
 									if ( ( $type === 'err' && $this->hide_err ) ||
 										( $type === 'warn' && $this->hide_warn ) ) {
 
@@ -293,11 +292,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			// remind the user that there are hidden error messages
-			if ( isset( $hidden['err'] ) ) {
-				if ( $hidden['err'] > 1 )
-					echo $this->get_notice_html( 'err', sprintf( __( '%1$d important error notices have been hidden and/or dismissed &mdash; <a id="%2$s">unhide and view the error messages</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
-				elseif ( $hidden['err'] > 0 )
-					echo $this->get_notice_html( 'err', sprintf( __( '%1$d important error notice has been hidden and/or dismissed &mdash; <a id="%2$s">unhide and view the error message</a>.', $this->text_dom ), $hidden['err'], $this->lca.'-unhide-notices' ) );
+			foreach ( array( 'err' => 'error', 'warn' => 'warning' ) as $type => $name ) {
+				if ( isset( $hidden[$type] ) && $hidden[$type] > 0 ) {
+					if ( $hidden[$type] > 1 )
+						echo $this->get_notice_html( $type, sprintf( __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_dom ), $hidden[$type], $name, $this->lca.'-unhide-notices' ) );
+					else echo $this->get_notice_html( $type, sprintf( __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_dom ), $hidden[$type], $name, $this->lca.'-unhide-notices' ) );
+				}
 			}
 
 			echo $msg_html;

@@ -181,7 +181,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		vertical-align:bottom;
 		font-family:dashicons;
 		font-size:1.2em;
-		margin-right:8px;
+		margin-right:6px;
 	}
 	.'.$lca.'-notice.notice-success .notice-label:before {
 		content: "\f147";	/* yes */

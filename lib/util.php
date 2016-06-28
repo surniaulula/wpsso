@@ -247,9 +247,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache( $clear_ext_cache = true, $run_only_once = false ) {
+		public function clear_all_cache( $clear_ext_cache = true, $run_only_once = false, $msg_id = false, $dismiss = false ) {
 
-			if ( $this->cleared_all_cache )
+			if ( $this->cleared_all_cache )	// already run once
 				return;
 
 			if ( $run_only_once )
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$this->p->notice->inf( $clear_all_msg, true );
+			$this->p->notice->inf( $clear_all_msg, true, true, $msg_id, $dismiss );
 
 			return $del_files + $del_transients;
 		}
@@ -1522,12 +1522,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				$this->do_table_rows( 
-					$table_rows[$tab], 
-					$class_href_key,
-					( empty( $metabox ) ? '' : $class_tabset.$metabox ),
-					$class_tabset
-				);
+				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox ) ?
+					'' : $class_tabset.$metabox ), $class_tabset );
 			}
 			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}
