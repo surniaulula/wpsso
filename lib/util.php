@@ -662,6 +662,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return empty( $ret ) ? false : $ret;
 		}
 
+		public function get_body_html( $request ) {
+
+			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'using html submitted in the request argument' );
+				$html = $request;
+			} elseif ( strpos( $request, '://' ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
+				return false;
+			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: error caching '.$request );
+				return false;
+			}
+
+			return preg_replace( '/^.*<body[^>]*>(.*)<\/body>.*$/ms', '$1', $html );
+		}
+
 		public function log_is_functions() {
 			$is_functions = array( 
 				'is_ajax',

@@ -539,28 +539,31 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			/*
 			 * retrieve the content
 			 */
-			if ( $filter_content ) {
-				if ( $this->p->is_avail['cache']['object'] ) {
+			if ( $this->p->is_avail['cache']['object'] ) {
 
-					// if the post id is 0, then add the sharing url to ensure a unique salt string
-					$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.
-						( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod, true ) : '' ).')';
-					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-					$cache_type = 'object cache';
+				// if the post id is 0, then add the sharing url to ensure a unique salt string
+				if ( empty( $mod['id'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'adding sharing_url to cache_salt for mod id 0' );
+					$url_salt = '_url:'.$this->p->util->get_sharing_url( $mod, true );
+				} else $url_salt = '';
 
-					if ( $use_cache === true ) {
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.$url_salt.')';
+				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_type = 'object cache';
+
+				if ( $use_cache === true ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': wp_cache salt '.$cache_salt );
+					$content = wp_cache_get( $cache_id, __METHOD__ );
+					if ( $content !== false ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': wp_cache salt '.$cache_salt );
-						$content = wp_cache_get( $cache_id, __METHOD__ );
-						if ( $content !== false ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $cache_type.': '.$filter_status.
-									' content retrieved from wp_cache '.$cache_id );
-							return $content;
-						}
-					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'use_cache = false' );
-				}
+							$this->p->debug->log( $cache_type.': '.$filter_status.
+								' content retrieved from wp_cache '.$cache_id );
+						return $content;
+					}
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'use_cache = false' );
 			}
 
 			$content = apply_filters( $this->p->cf['lca'].'_content_seed', '', $mod, $use_cache, $md_idx );
@@ -646,6 +649,9 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 
+			$content = preg_replace_callback( '/<iframe [^>]*src=[\'"]([^\'"]+)[\'"][^>]*><\/iframe>/ms', 
+				array( $this, 'get_iframe_src_callback' ), $content );
+
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
 				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
@@ -667,7 +673,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// apply filters before caching
 			$content = apply_filters( $this->p->cf['lca'].'_content', $content, $mod, $use_cache, $md_idx );
 
-			if ( $filter_content && ! empty( $cache_id ) ) {
+			if ( ! empty( $cache_id ) ) {
 				// only some caching plugins implement this function
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
 				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->options['plugin_object_cache_exp'] );
@@ -677,6 +683,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			return $content;
+		}
+
+		private function get_iframe_src_callback( $matches ) {
+			return $this->p->util->get_body_html( $matches[1] );
 		}
 
 		public function get_article_section( $post_id ) {

@@ -1373,7 +1373,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( strpos( $html, '<head>' ) !== false ) {
 					$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-						true, true, 'notice-header-tmpl-no-head-attr', false );
+						true, true, 'notice-header-tmpl-no-head-attr-'.
+							SucomUtil::get_theme_slug_version(), true );
 					break;
 				}
 			}
@@ -1419,7 +1420,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			if ( $have_changes === true )
-				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr', 'all' );	// just in case
+				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.
+					SucomUtil::get_theme_slug_version(), 'all' );	// just in case
 		}
 
 		public function get_site_use( &$form, $network = false, $name, $force = false ) {

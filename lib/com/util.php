@@ -1378,17 +1378,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $times;
 		}
 
-		public static function get_column_rows( array $cells, $cols = 2, $hide_in_basic = false ) {
-			sort( $cells );
-			$col_rows = array();
-			$per_col = ceil( count( $cells ) / $cols );
-			foreach ( $cells as $num => $cell ) {
-				if ( empty( $col_rows[ $num % $per_col ] ) )	// initialize the array element
-					$col_rows[ $num % $per_col ] = $hide_in_basic ?
+		public static function get_column_rows( array $table_cells, $row_cols = 2, $hide_in_basic = false ) {
+			sort( $table_cells );
+			$table_rows = array();
+			$per_col = ceil( count( $table_cells ) / $row_cols );
+			foreach ( $table_cells as $num => $cell ) {
+				if ( empty( $table_rows[ $num % $per_col ] ) )	// initialize the array element
+					$table_rows[ $num % $per_col ] = $hide_in_basic ?
 						'<tr class="hide_in_basic">' : '';
-				$col_rows[ $num % $per_col ] .= $cell;		// create the html for each row
+				$table_rows[ $num % $per_col ] .= $cell;	// create the html for each row
 			}
-			return $col_rows;
+			return $table_rows;
+		}
+
+		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
+			$theme = wp_get_theme( $stylesheet, $theme_root );
+			return $theme->get_template().'-'.$theme->Version;
 		}
 	}
 }

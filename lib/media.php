@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// img attributes in order of preference
 			if ( preg_match_all( '/<(('.$img_preg['html_tag'].')[^>]*? ('.$img_preg['pid_attr'].')=[\'"]([0-9]+)[\'"]|'.
-				'(img)[^>]*? (data-share-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $all_matches, PREG_SET_ORDER ) ) {
+				'(img)[^>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( count( $all_matches ).' x matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$attr_value = $img_arr[4];	// id
 					} else {
 						$tag_name = $img_arr[5];	// img
-						$attr_name = $img_arr[6];	// data-share-src|src
+						$attr_name = $img_arr[6];	// data-share-src|data-lazy-src|src
 						$attr_value = $img_arr[7];	// url
 					}
 
@@ -635,6 +635,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
+						// data-share-src|data-lazy-src|src
 						default:
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
@@ -698,16 +699,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							// 'wpsso_content_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
 							if ( apply_filters( $this->p->cf['lca'].'_content_accept_img_dims', 
-								true, $og_image, $size_name, $attr_name, $content_passed ) ) {
-
-								// data-share-src attribute used and/or image size is acceptable
-								// check for relative urls, just in case
-								$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
-
-							} else $og_image = array();
+								true, $og_image, $size_name, $attr_name, $content_passed ) )
+									$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
+							else $og_image = array();
 
 							break;
 					}
+
 					if ( ! empty( $og_image['og:image'] ) && 
 						( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) )
 							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) )

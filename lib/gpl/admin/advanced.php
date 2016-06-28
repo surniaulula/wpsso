@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		private function get_taglist_rows( &$table_rows, &$form, &$network, array $opt_preg ) {
-			$cells = array();
+			$table_cells = array();
 			$opt_defs = $this->p->opt->get_defaults();
 			foreach ( $opt_preg as $preg ) {
 				foreach ( $opt_defs as $opt => $val ) {
@@ -462,14 +462,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 							$highlight = ' highlight';
 							break;
 					}
-					$cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
+					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
 						'<td class="checkbox blank">'.$this->get_nocb( $opt ).'</td>'.
 						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
 						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
 						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
 				}
 			}
-			return array_merge( $table_rows, SucomUtil::get_column_rows( $cells, 2 ) );
+			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
 		}
 
 		private function get_nocb( $name, $text = '' ) {
