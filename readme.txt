@@ -334,14 +334,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.2-dev2 (2016/06/27)**
+**Version 3.33.2-dev3 (2016/06/28)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new "Hide All Pro Settings and Options" option.
+	* Added a new "Hide All Pro Version Options" option.
 	* Added tabs to the Header Tags List metabox:
 		* Open Graph
 		* Schema
@@ -388,9 +388,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.2-dev2 =
+= 3.33.2-dev3 =
 
-(2016/06/27) Added a new "Hide All Pro Settings and Options" option. Added tabs to the Header Tags List metabox. Reclassified several notification messages.
+(2016/06/28) Added a new "Hide All Pro Version Options" option. Added tabs to the Header Tags List metabox. Reclassified several notification messages.
 
 = 3.33.1-1 =
 
