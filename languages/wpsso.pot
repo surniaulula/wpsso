@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.2-"
-"dev4\n"
+"dev5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -774,13 +774,13 @@ msgctxt "option label"
 msgid "Add '%s' Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:90 lib/messages.php:311 lib/meta.php:535
+#: lib/gpl/admin/advanced.php:90 lib/messages.php:311 lib/meta.php:538
 #: lib/pro/admin/advanced.php:93
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:92 lib/messages.php:314 lib/meta.php:536
+#: lib/gpl/admin/advanced.php:92 lib/messages.php:314 lib/meta.php:539
 #: lib/pro/admin/advanced.php:95
 msgctxt "column title"
 msgid "%s Desc"
@@ -1098,8 +1098,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:68 lib/gpl/admin/post.php:73 lib/meta.php:158
-#: lib/meta.php:175 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
+#: lib/gpl/admin/meta.php:68 lib/gpl/admin/post.php:73 lib/meta.php:161
+#: lib/meta.php:178 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1205,7 +1205,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:92 lib/meta.php:151 lib/post.php:386
+#: lib/gpl/admin/post.php:92 lib/meta.php:154 lib/post.php:386
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2075,114 +2075,114 @@ msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:131
+#: lib/meta.php:134
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:137
+#: lib/meta.php:140
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:146
+#: lib/meta.php:149
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:154 lib/meta.php:171
+#: lib/meta.php:157 lib/meta.php:174
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
 
-#: lib/meta.php:180
+#: lib/meta.php:183
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:276
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:276
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:276
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:276
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:276
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:278
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:278
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:278
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:280
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:280
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:280
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:282
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:282
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:282
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:446
+#: lib/meta.php:449
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:559
+#: lib/meta.php:562
 msgid "Reload to View"
 msgstr ""
 

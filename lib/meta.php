@@ -76,6 +76,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
+					// keep it clean and remove demo form pages
+					if ( ! empty( $this->p->options['plugin_hide_pro'] ) )
+						unset( $tabs['header'], $tabs['media'] );
 					break;
 				default:
 					$tabs = array();	// just in case

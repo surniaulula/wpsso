@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.2-dev4',	// plugin version
+					'version' => '3.33.2-dev5',	// plugin version
 					'opt_version' => '439',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -895,6 +895,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_img_width' => 200,
 					'og_img_height' => 200,
 					'schema_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles#article_types
+					'schema_img_height' => 279,
 				),
 				'max' => array(
 					'og_img_ratio' => 3,
