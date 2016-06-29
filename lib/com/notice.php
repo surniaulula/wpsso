@@ -292,7 +292,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			// remind the user that there are hidden error messages
-			foreach ( array( 'err' => 'error', 'warn' => 'warning' ) as $type => $name ) {
+			foreach ( array(
+				'err' => _x( 'error', 'notification type', $this->text_dom ),
+				'warn' => _x( 'warning', 'notification type', $this->text_dom ),
+			) as $type => $name ) {
 				if ( isset( $hidden[$type] ) && $hidden[$type] > 0 ) {
 					if ( $hidden[$type] > 1 )
 						echo $this->get_notice_html( $type, sprintf( __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_dom ), $hidden[$type], $name, $this->lca.'-unhide-notices' ) );
