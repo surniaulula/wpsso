@@ -63,12 +63,22 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
 
-			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Paragraph Prefix',
+			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Prefix',
 				'option label', 'wpsso' ), null, 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Embedded Media',
+			$form->get_th_html( _x( 'Maximum Images from Content',
+				'option label', 'wpsso' ), null, 'plugin_content_img_max' ).
+			'<td class="blank">'.$this->p->options['plugin_content_img_max'].'</td>';
+
+			$table_rows[] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Maximum Videos from Content',
+				'option label', 'wpsso' ), null, 'plugin_content_vid_max' ).
+			'<td class="blank">'.$this->p->options['plugin_content_vid_max'].'</td>';
+
+			$table_rows[] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Check for Embedded Media from',
 				'option label', 'wpsso' ), null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
 			'<p>'.$this->get_nocb( 'plugin_slideshare_api' ).' Slideshare Presentations</p>'.

@@ -440,6 +440,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
 				case 'plugin_file_cache_exp':
+				case 'plugin_content_img_max':
+				case 'plugin_content_vid_max':
 				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
 					return 'numeric';	// cast as integer
 					break;

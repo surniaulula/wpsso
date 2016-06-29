@@ -301,6 +301,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_p_cap_prefix':
 							$text = $info['short'].' can add a custom text prefix to paragraphs assigned the "wp-caption-text" class. Leave this option empty to prevent caption paragraphs from being prefixed.';
 							break;
+						case 'tooltip-plugin_content_img_max':
+							$text = 'The maximum number of images that '.$info['short'].' will consider using from your content.';
+							break;
+						case 'tooltip-plugin_content_vid_max':
+							$text = 'The maximum number of embedded videos that '.$info['short'].' will consider using from your content.';
+							break;
 						case 'tooltip-plugin_embedded_media':
 							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';
 							break;
@@ -686,13 +692,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$info['short_pro'] ).'</a></p>';
 						break;
 					case 'pro-about-msg-post':
-						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).' '.__( 'Update the content or excerpt text to change the default values shown here.', 'wpsso' ).'</p>';
+						$text = '<p>'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).' '.__( 'Update the content or excerpt text to change the default values shown here.', 'wpsso' ).'</p>';
 						break;
 					case 'pro-about-msg-media':
-						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).' '.__( 'You can change the social image by selecting a featured image or including images in the content.', 'wpsso' ).' '.sprintf( __( 'The video service modules &mdash; required to detect embedded videos &mdash; are available in the %s Pro version.', 'wpsso' ),  $info['short'] ).'</p>';
+						$text = '<p>'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).' '.__( 'You can change the social image by selecting a featured image or including images in the content.', 'wpsso' ).' '.sprintf( __( 'The video service modules &mdash; required to detect embedded videos &mdash; are available in the %s Pro version.', 'wpsso' ),  $info['short'] ).'</p>';
 						break;
 					case 'pro-about-msg':
-						$text = '<p class="pro-about-msg">'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
+						$text = '<p>'.sprintf( __( 'The Free / Basic version of %1$s does not include modules required to customize post, term, and/or user meta &mdash; these options are shown for informative purposes only.', 'wpsso' ), $info['short'] ).( empty( $info['text'] ) ? '' : ' '.$info['text'] ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );

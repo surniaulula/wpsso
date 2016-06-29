@@ -577,7 +577,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// img attributes in order of preference
 			if ( preg_match_all( '/<(('.$img_preg['html_tag'].')[^>]*? ('.$img_preg['pid_attr'].')=[\'"]([0-9]+)[\'"]|'.
-				'(img)[^>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', $content, $all_matches, PREG_SET_ORDER ) ) {
+				'(img)[^>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s', 
+					$content, $all_matches, PREG_SET_ORDER ) ) {
+
+				if ( isset( $this->p->options['plugin_content_img_max'] ) &&
+					count( $all_matches ) > $this->p->options['plugin_content_img_max'] ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'limiting matches returned from '.count( $all_matches ).
+							' to '.$this->p->options['plugin_content_img_max'] );
+					$all_matches = array_splice( $all_matches, 0, $this->p->options['plugin_content_img_max'] );
+				}
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( count( $all_matches ).' x matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
@@ -787,6 +796,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? src=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
 				$content, $all_matches, PREG_SET_ORDER ) ) {
+
+				if ( isset( $this->p->options['plugin_content_vid_max'] ) &&
+					count( $all_matches ) > $this->p->options['plugin_content_vid_max'] ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'limiting matches returned from '.count( $all_matches ).
+							' to '.$this->p->options['plugin_content_vid_max'] );
+					$all_matches = array_splice( $all_matches, 0, $this->p->options['plugin_content_vid_max'] );
+				}
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( count( $all_matches ).' x video <iframe|embed/> html tag(s) found' );
