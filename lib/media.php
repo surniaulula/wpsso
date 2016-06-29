@@ -451,7 +451,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_info();
 			}
 
-			$img_size_within_limits = $this->p->media->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
+			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
 			// wpsso_attached_accept_img_dims is hooked by the WpssoProCheckImgSize class / module.
 			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_within_limits, 
@@ -697,9 +697,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
 							}
 
+							$img_size_within_limits = $this->img_size_within_limits( $og_image['og:image'], 
+								$size_name, $og_image['og:image:width'], $og_image['og:image:height'],
+									__( 'Content', 'wpsso' ) );
+
 							// 'wpsso_content_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
 							if ( apply_filters( $this->p->cf['lca'].'_content_accept_img_dims', 
-								true, $og_image, $size_name, $attr_name, $content_passed ) )
+								$img_size_within_limits, $og_image, $size_name, $attr_name, $content_passed ) )
 									$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
 							else $og_image = array();
 
@@ -890,7 +894,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			else return $og_video;
 		}
 
-		public function img_size_within_limits( $pid, $size_name, $img_width, $img_height, $media_lib = '' ) {
+		// $img_name cam be an image ID or URL
+		// $src_name can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
 			$lca =& $this->p->cf['lca'];
 			$min =& $this->p->cf['head']['min'];
@@ -899,8 +905,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( strpos( $size_name, $lca.'-' ) !== 0 )	// only check our own sizes
 				return true;
 
-			if ( $media_lib === '' )
-				$media_lib = __( 'Media Library', 'wpsso' );
+			if ( $src_name === '' )
+				$src_name = __( 'Media Library', 'wpsso' );
+
+			if ( strpos( $img_name, '://' ) === false )
+				$img_name = 'ID '.$img_name;
 
 			if ( $img_width > 0 && $img_height > 0 )	// just in case
 				$img_ratio = $img_width >= $img_height ? 
@@ -938,14 +947,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: '.$media_lib.' image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
-						' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
+					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
+						$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice, false, true );
+					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice, false, true );
 				}
 				return false;
 			}
@@ -955,14 +964,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				( $img_width < $min_width || $img_height < $min_height ) ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: '.$media_lib.' image id '.$pid.' rejected - '.$img_width.'x'.$img_height.
-						' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
+					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
+						$img_width.'x'.$img_height.' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 
 				if ( is_admin() ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $media_lib, $pid, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
+					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, false, true );
 				}
 				return false;
 			}

@@ -135,7 +135,7 @@ msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr ""
 
-#: lib/admin.php:700 lib/messages.php:781
+#: lib/admin.php:700 lib/messages.php:784
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
@@ -145,7 +145,7 @@ msgctxt "submit button"
 msgid "View %s by Default"
 msgstr ""
 
-#: lib/admin.php:715 lib/messages.php:761
+#: lib/admin.php:715 lib/messages.php:764
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -248,7 +248,7 @@ msgid "Download Latest Version"
 msgstr ""
 
 #: lib/admin.php:1190 lib/admin.php:1195 lib/admin.php:1211 lib/admin.php:1217
-#: lib/messages.php:741
+#: lib/messages.php:744
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -732,7 +732,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:43 lib/messages.php:732
+#: lib/gpl/admin/advanced.php:43 lib/messages.php:735
 #: lib/pro/admin/advanced.php:49
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -891,7 +891,7 @@ msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:234 lib/messages.php:729
+#: lib/gpl/admin/advanced.php:234 lib/messages.php:732
 #: lib/pro/admin/advanced.php:229
 msgctxt "option label"
 msgid "Object Cache Expiry"
@@ -1216,20 +1216,24 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:903 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:702
+msgid "Content"
+msgstr ""
+
+#: lib/media.php:909 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:948
+#: lib/media.php:957
 msgid ""
-"%1$s image ID %2$s ignored &mdash; the resulting image of %3$s has an "
+"%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:965
+#: lib/media.php:974
 msgid ""
-"%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is "
+"%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
 "strong>."
 msgstr ""
@@ -1835,81 +1839,81 @@ msgid ""
 "are available in the %s Pro version."
 msgstr ""
 
-#: lib/messages.php:710
+#: lib/messages.php:711
 msgid ""
 "A larger and/or different custom image &mdash; specifically for social meta "
 "tags and markup &mdash; can be selected in the Social Settings metabox under "
 "the <em>Select Media</em> tab."
 msgstr ""
 
-#: lib/messages.php:712
+#: lib/messages.php:715
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:714
+#: lib/messages.php:717
 msgid ""
 "You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social "
 "and SEO Image Dimensions</a> settings."
 msgstr ""
 
-#: lib/messages.php:715
+#: lib/messages.php:718
 msgid ""
 "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image "
 "upscaling percentage</em> feature."
 msgstr ""
 
-#: lib/messages.php:716
+#: lib/messages.php:719
 msgid ""
 "Disable the <a href=\"%1$s\">WP / Theme Integration</a> <em>image dimensions "
 "check</em> option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:718
+#: lib/messages.php:721
 msgid ""
 "Define the %1$s constant as <em>true</em> to auto-hide all dismissable "
 "warnings."
 msgstr ""
 
-#: lib/messages.php:723
+#: lib/messages.php:726
 msgid ""
 "An Open Graph image meta tag could not be created from this webpage content "
 "and/or custom settings. Facebook and other social websites <em>require at "
 "least one image meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:726
+#: lib/messages.php:729
 msgid ""
 "A Schema image property could not be created from this webpage content and/"
 "or custom settings. Google <em>requires at least one image property</em> for "
 "this Schema item type."
 msgstr ""
 
-#: lib/messages.php:729
+#: lib/messages.php:732
 msgid ""
 "Please note that the <a href=\"%1$s\">%2$s</a> advanced option is currently "
 "set at %3$d seconds &mdash; this is lower than the recommended default value "
 "of %4$d seconds."
 msgstr ""
 
-#: lib/messages.php:732
+#: lib/messages.php:735
 msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:732
+#: lib/messages.php:735
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions, and detect additional images / embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:732
+#: lib/messages.php:735
 msgid ""
 "Some theme / plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:732
+#: lib/messages.php:735
 msgid ""
 "<a href=\"%s\">If you use any shortcodes in your content text, this option "
 "should be enabled</a> &mdash; if you experience display issues after "
@@ -1917,128 +1921,128 @@ msgid ""
 "fault, and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:737
+#: lib/messages.php:740
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
 "of the webpage head section."
 msgstr ""
 
-#: lib/messages.php:737
+#: lib/messages.php:740
 msgid ""
 "The %s element in your theme's header templates should include a function / "
 "action / filter call for its attributes."
 msgstr ""
 
-#: lib/messages.php:737
+#: lib/messages.php:740
 msgid ""
 "%1$s can update your theme header templates automatically to change the "
 "default %2$s element to:"
 msgstr ""
 
-#: lib/messages.php:737
+#: lib/messages.php:740
 msgid ""
 "<b><a href=\"%1$s\">Click here to update theme header templates "
 "automatically</a></b> or update the theme templates yourself manually."
 msgstr ""
 
-#: lib/messages.php:741
+#: lib/messages.php:744
 msgid "The %1$s plugin %2$s option is empty."
 msgstr ""
 
-#: lib/messages.php:741
+#: lib/messages.php:744
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Pro Licenses and Extension Plugins</a> settings page."
 msgstr ""
 
-#: lib/messages.php:744
+#: lib/messages.php:747
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update the plugin to install the latest "
 "Pro version. ;-)"
 msgstr ""
 
-#: lib/messages.php:750
+#: lib/messages.php:753
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
 "Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not "
 "active."
 msgstr ""
 
-#: lib/messages.php:753
+#: lib/messages.php:756
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:753
+#: lib/messages.php:756
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:753
+#: lib/messages.php:756
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:756
+#: lib/messages.php:759
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:756
+#: lib/messages.php:759
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:761
+#: lib/messages.php:764
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:761
+#: lib/messages.php:764
 msgid ""
 "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
 "latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:775
+#: lib/messages.php:778
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:776
+#: lib/messages.php:779
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:777
+#: lib/messages.php:780
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:782
+#: lib/messages.php:785
 msgid ""
 "Metaboxes (like this one) can be opened / closed by clicking on their title "
 "bar, moved and re-ordered by dragging them, or removed / added from the "
 "<em>Screen Options</em> tab (top-right of page)."
 msgstr ""
 
-#: lib/messages.php:782
+#: lib/messages.php:785
 msgid ""
 "Option values in multiple tabs can be modified before clicking the '%s' "
 "button."
 msgstr ""
 
-#: lib/messages.php:792
+#: lib/messages.php:795
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
