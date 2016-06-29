@@ -817,10 +817,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// additional filters / Pro modules may detect other embedded video markup
 			$filter_name = $this->p->cf['lca'].'_content_videos';
 			if ( has_filter( $filter_name ) ) {
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'applying filter '.$filter_name ); 
+
 				// should return an array of arrays
 				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
+
 					if ( is_array( $all_matches ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );

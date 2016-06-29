@@ -588,15 +588,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					// Content and Filters Tab
-					'plugin_filter_title' => 0,
-					'plugin_filter_content' => 0,
-					'plugin_filter_excerpt' => 0,
-					'plugin_p_strip' => 0,
-					'plugin_use_img_alt' => 1,
-					'plugin_img_alt_prefix' => 'Image:',
-					'plugin_p_cap_prefix' => 'Caption:',
-					'plugin_gravatar_api' => 1,
-					'plugin_slideshare_api' => 1,
+					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
+					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
+					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters
+					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph
+					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content
+					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
+					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Paragraph Prefix
+					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
+					'plugin_slideshare_api' => 1,			// Check for Embedded Media
 					'plugin_vimeo_api' => 1,
 					'plugin_wistia_api' => 1,
 					'plugin_youtube_api' => 1,
@@ -1288,8 +1288,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;		// highlight the SSO menu icon
+			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
-			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// don't minimize json code
+			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
 
 			/*
 			 * WPSSO option and meta array names
