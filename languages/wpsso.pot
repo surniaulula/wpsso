@@ -400,7 +400,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:209 lib/com/form.php:275 lib/config-gettext-extract.php:10
+#: lib/com/form.php:209 lib/com/form.php:275 lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -441,60 +441,60 @@ msgid "Advanced Settings"
 msgstr ""
 
 #: lib/config-gettext-extract.php:4
-msgctxt "option value"
-msgid "All Options"
+msgctxt "plugin description"
+msgid ""
+"A fast, light-weight, comprehensive plugin to manage all aspects of social "
+"meta tags & Schema markup for Google + all social websites."
 msgstr ""
 
 #: lib/config-gettext-extract.php:5
 msgctxt "option value"
-msgid "Basic Options"
+msgid "All Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:6
 msgctxt "option value"
-msgid "Bitly (suggested)"
+msgid "Basic Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:7
 msgctxt "option value"
-msgid "Bottom"
+msgid "Bitly (suggested)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
 msgctxt "option value"
-msgid "Center"
+msgid "Bottom"
 msgstr ""
 
 #: lib/config-gettext-extract.php:9
+msgctxt "option value"
+msgid "Center"
+msgstr ""
+
+#: lib/config-gettext-extract.php:10
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Notes</color>"
 msgstr ""
 
-#: lib/config-gettext-extract.php:11
+#: lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: lib/config-gettext-extract.php:12
+#: lib/config-gettext-extract.php:13
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "Facebook Business Page URL"
-msgstr ""
-
-#: lib/config-gettext-extract.php:15
-msgctxt "plugin description"
-msgid ""
-"Fast, light-weight, full-featured plugin for great looking shares on all "
-"social sites - no matter how your content is shared or re-shared!"
 msgstr ""
 
 #: lib/config-gettext-extract.php:16
@@ -676,7 +676,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, "
-"Place, Product, etc.) for Google and Pinterest."
+"Organization, Place, Product, etc.) for Google and Pinterest."
 msgstr ""
 
 #: lib/config-gettext-extract.php:57
@@ -689,15 +689,15 @@ msgstr ""
 #: lib/config-gettext-extract.php:58
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add traditional Social Sharing Buttons with support for "
-"hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
+"WPSSO extension to add Social Sharing Buttons with support for hashtags, "
+"short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:59
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to manage multiple Organizations / Publishers and additional "
-"properties for the Schema Article types (BlogPosting, etc.)."
+"WPSSO extension to manage Organizations and additional Schema Article / "
+"Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:60
