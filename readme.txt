@@ -4,7 +4,7 @@ Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
 Contributors: jsmoriss
-Donate Link: https://wpsso.com/
+Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, facebook, g+, gallery, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, meta tags, multilingual, multisite, nextgen gallery, open graph, pinterest, player card, polylang, rich pins, schema, seo, singlepic, slideshare, social, summary card, twitter, twitter cards, vimeo, wistia, woocommerce, wpsso, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
