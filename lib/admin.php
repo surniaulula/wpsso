@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
 			} else {
 				$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ), true );
-				$this->p->util->clear_all_cache( true, true, __FUNCTION__.'_clear_on_save', true );
+				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
 			}
 
 			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_all_cache': 
-							$this->p->util->clear_all_cache();
+							$this->p->util->clear_all_cache( true );	// $clear_external = true
 							break;
 
 						case 'clear_metabox_prefs': 

@@ -247,13 +247,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache( $clear_ext_cache = true, $run_only_once = false, $msg_id = false, $dismiss = false ) {
+		public function clear_all_cache( $clear_external = true, $msg_id = false, $dismiss = false ) {
 
 			if ( $this->cleared_all_cache )	// already run once
 				return;
-
-			if ( $run_only_once )
-				$this->cleared_all_cache = true;
+			else $this->cleared_all_cache = true;
 
 			wp_cache_flush();					// clear non-database transients as well
 
@@ -265,7 +263,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
 				'wpsso' ), $short );
 
-			if ( $clear_ext_cache ) {
+			if ( $clear_external ) {
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
