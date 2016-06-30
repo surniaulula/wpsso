@@ -250,7 +250,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function clear_all_cache( $clear_external = true, $msg_id = false, $dismiss = false ) {
 
 			if ( $this->cleared_all_cache )	// already run once
-				return;
+				return 0;
 			else $this->cleared_all_cache = true;
 
 			wp_cache_flush();					// clear non-database transients as well
