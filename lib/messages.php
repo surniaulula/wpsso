@@ -678,16 +678,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
 									'wpsso' ), $req_short );
 						} else $req_msg = '';
+
+						$purchase_url = add_query_arg( 'utm_source', $idx, $url['purchase'] );
 						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							$text = '<p class="pro-feature-msg"><a href="'.$purchase_url.'" target="_blank">'.
 								sprintf( __( 'Purchase %s licence(s) to install its Pro modules and use the following features / options.',
 									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+						else $text = '<p class="pro-feature-msg"><a href="'.$purchase_url.'" target="_blank">'.
 							sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
 								'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						break;
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+						$purchase_url = add_query_arg( 'utm_source', $idx, $url['purchase'] );
+						$text = '<p class="pro-option-msg"><a href="'.$purchase_url.'" target="_blank">'.
 							sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ),
 								$info['short_pro'] ).'</a></p>';
 						break;

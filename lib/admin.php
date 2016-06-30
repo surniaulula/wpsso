@@ -336,10 +336,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Support Forum', 'plugin action link', 'wpsso' ).'</a>';
 
 				if ( ! empty( $info['url']['purchase'] ) ) {
+					$purchase_url = add_query_arg( 'utm_source', 'plugin-action-links', $info['url']['purchase'] );
 					if ( $this->p->check->aop( $ext, false, $this->p->is_avail['aop'] ) )
-						$links[] = '<a href="'.$info['url']['purchase'].'">'.
+						$links[] = '<a href="'.$purchase_url.'">'.
 							_x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</a>';
-					else $links[] = '<a href="'.$info['url']['purchase'].'">'.
+					else $links[] = '<a href="'.$purchase_url.'">'.
 						_x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ).'</a>';
 				}
 			}
@@ -907,12 +908,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id, false );	// $underscore = false
-						$off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						$status_off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						$purchase_url = empty( $info['url']['purchase'] ) ? 
+							'' : add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
 
 						$features[$label] = array( 
 							'td_class' => self::$pkg_aop[$ext] ? '' : 'blank',
-							'purchase' => empty( $info['url']['purchase'] ) ? '' : $info['url']['purchase'],
-							'status' => class_exists( $classname ) ? ( self::$pkg_aop[$ext] ? 'on' : $off ) : $off,
+							'purchase' => $purchase_url,
+							'status' => class_exists( $classname ) ?
+								( self::$pkg_aop[$ext] ? 'on' : $status_off ) : $status_off,
 						);
 					}
 				}
@@ -1002,7 +1006,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_purchase() {
-			$purchase_url = $this->p->cf['plugin'][$this->p->cf['lca']]['url']['purchase'];
+			$info =& $this->p->cf['plugin'][$this->p->cf['lca']];
+			$purchase_url = empty( $info['url']['purchase'] ) ? 
+				'' : add_query_arg( 'utm_source', 'side-purchase', $info['url']['purchase'] );
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
@@ -1147,8 +1153,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'plugin action link', 'wpsso' ).'</a> (ZIP)';
 
 				if ( ! empty( $info['url']['purchase'] ) ) {
+					$purchase_url = add_query_arg( 'utm_source', 'license-action-links', $info['url']['purchase'] );
 					if ( $lca === $ext || $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) )
-						$links .= ' | <a href="'.$info['url']['purchase'].'" target="_blank">'.
+						$links .= ' | <a href="'.$purchase_url.'" target="_blank">'.
 							_x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</a>';
 					else $links .= ' | <em>'._x( 'Purchase Pro License(s)', 'plugin action link', 'wpsso' ).'</em>';
 				}
@@ -1237,7 +1244,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$base = $this->p->cf['plugin'][$lca]['base'];
-			$purchase_url = $this->p->cf['plugin'][$lca]['url']['purchase'];
 			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
 			$log_pre = 'plugin conflict detected - ';	// don't translate the debug 
 
