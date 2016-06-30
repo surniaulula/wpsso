@@ -394,7 +394,3 @@ Official announcement: N/A
 
 (2016/06/30) Added a new "Hide All Pro Version Options" option. Added tabs to the Header Tags List metabox. Reclassified several notification messages.
 
-= 3.33.1-1 =
-
-(2016/06/23) Fixed SucomUtil::get_multi_key_locale() method to preserve numeric index.
-
