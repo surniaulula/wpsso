@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.3-dev1 (TBD)**
+**Version 3.33.3-dev1 (2016/07/02)**
 
 Official announcement: N/A
 
@@ -402,6 +402,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.3-dev1 =
+
+(2016/07/02) Removed the WpssoUtil::clear_post_cache() method.
 
 = 3.33.2-1 =
 
