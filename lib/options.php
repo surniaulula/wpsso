@@ -373,7 +373,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 					if ( is_admin() )
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
-							'wpsso' ), $options_name ), true );
+							'wpsso' ), $options_name ), true, true, __FUNCTION__.'_upgraded', true );
 				}
 			} else {
 				if ( $this->p->debug->enabled )

@@ -410,7 +410,63 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {
-			$this->p->util->clear_post_cache( $post_id );
+			switch ( get_post_status( $post_id ) ) {
+				case 'draft':
+				case 'pending':
+				case 'future':
+				case 'private':
+				case 'publish':
+					$lca = $this->p->cf['lca'];
+					$locale = SucomUtil::get_locale( $post_id );
+					$permalink = get_permalink( $post_id );
+					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
+					$sharing_url = $this->p->util->get_sharing_url( $post_id );
+					$locale_salt = 'locale:'.$locale.'_post:'.$post_id;
+
+					// transients persist from one page load to another
+					$transients = array(
+						'SucomCache::get' => array(
+							'url:'.$permalink,
+							'url:'.$permalink_no_meta,
+						),
+						'WpssoHead::get_header_array' => array( 
+							$locale_salt.'_url:'.$sharing_url,
+							$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
+						),
+						'WpssoMeta::get_mod_column_content' => array( 
+							$locale_salt.'_column:'.$lca.'_og_img',
+							$locale_salt.'_column:'.$lca.'_og_desc',
+						),
+					);
+					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $post_id, $locale, $sharing_url );
+
+					// wp objects are only available for the duration of a single page load
+					$wp_objects = array(
+						'SucomWebpage::get_content' => array(
+							$locale_salt.'_filtered',
+							$locale_salt.'_unfiltered',
+						),
+						'SucomWebpage::get_hashtags' => array(
+							$locale_salt,
+						),
+					);
+					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
+
+					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
+
+					if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
+						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
+							true, true, __FUNCTION__.'_items_removed', true );
+
+					if ( function_exists( 'w3tc_pgcache_flush_post' ) )	// w3 total cache
+						w3tc_pgcache_flush_post( $post_id );
+
+					if ( function_exists( 'wp_cache_post_change' ) )	// wp super cache
+						wp_cache_post_change( $post_id );
+
+					break;
+			}
+
 			return $post_id;
 		}
 

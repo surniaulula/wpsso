@@ -57,17 +57,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-sharing_url':
 							$text = __( 'A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and (optional) social sharing buttons.', 'wpsso' ).' '.__( 'Please make sure any custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 						 	break;
-						case 'tooltip-meta-schema_is_main':
-							$text = __( 'Check this option if the Schema markup describes the main content (aka "main entity") of this webpage.', 'wpsso' );
-						 	break;
-						case 'tooltip-meta-schema_type':
-							$text = __( 'The Schema item type that defines the Schema markup and/or the meta tags of this webpage.', 'wpsso' );
-						 	break;
 						case 'tooltip-meta-schema_title':
 							$text = __( 'A custom name / title for the Schema item type\'s name property.', 'wpsso' );
-						 	break;
-						case 'tooltip-meta-schema_headline':
-							$text = __( 'A custom headline for the Schema Article item type and its sub-types (NewsArticle, TechArticle, etc). The headline property is not used for non-Article item types.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-schema_desc':
 							$text = __( 'A custom description for the Schema item type\'s description property.', 'wpsso' );

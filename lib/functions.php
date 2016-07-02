@@ -41,7 +41,8 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
-		return $wpsso->util->clear_post_cache( $post_id );
+		if ( is_object( $wpsso->m['util']['post'] ) )
+			$wpsso->m['util']['post']->clear_cache( $post_id );
 	}
 }
 
