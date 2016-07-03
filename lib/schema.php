@@ -42,8 +42,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$sizes['schema_img'] = array(		// options prefix
 				'name' => 'schema',		// wpsso-schema
-				'label' => _x( 'Google / Schema Markup Image',
+				'label' => _x( 'Google / Schema Image',
 					'image size label', 'wpsso' ),
+			);
+
+			$sizes['schema_img_article'] = array(		// options prefix
+				'name' => 'schema-article',		// wpsso-schema-article
+				'label' => _x( 'Google / Schema Image',
+					'image size label', 'wpsso' ),
+				'prefix' => 'schema_img',
 			);
 
 			// if the pinterest crawler is detected, use the pinterest image dimensions instead
@@ -1092,8 +1099,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$size_name = $this->p->cf['lca'].'-schema';
 			$head_type_url = $this->get_head_item_type( $mod );
+			$size_name = $this->p->cf['lca'].'-schema';
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 				'url' => 'og:url',
@@ -1106,27 +1113,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			switch ( $head_type_url ) {
 				case 'http://schema.org/BlogPosting':
-				case 'http://schema.org/WebPage':
+					$size_name = $this->p->cf['lca'].'-schema-article';
+					// no break
 
+				case 'http://schema.org/WebPage':
 					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 						'datepublished' => 'article:published_time',
 						'datemodified' => 'article:modified_time',
 					) );
-
-					// add single image meta tags (no width or height) if noscript containers are disabled
-					if ( ! $this->is_noscript_enabled() &&
-						! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-
-						$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
-							$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
-
-						if ( empty( $og_image ) && $mod['is_post'] ) 
-							$og_image = $this->p->media->get_default_image( 1, $size_name, true );
-	
-						foreach ( $og_image as $image )
-							$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
-					}
 					break;
+			}
+
+
+			// add single image meta tags (no width or height) if noscript containers are disabled
+			if ( ! $this->is_noscript_enabled() &&
+				! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+
+				$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
+					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+
+				if ( empty( $og_image ) && $mod['is_post'] ) 
+					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+
+				foreach ( $og_image as $image )
+					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_schema_meta_itemprop', $mt_schema, $use_post, $mod );
@@ -1152,23 +1162,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$size_name = $this->p->cf['lca'].'-schema';
 			$head_type_url = $this->get_head_item_type( $mod );
+			$size_name = $this->p->cf['lca'].'-schema';
 
-			$og_image = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+			switch ( $head_type_url ) {
+				case 'http://schema.org/BlogPosting':
+					$size_name = $this->p->cf['lca'].'-schema-article';
+					// no break
+
+				case 'http://schema.org/WebPage':
+					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
+					break;
+			}
+
+			$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
+				$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
 			if ( empty( $og_image ) && $mod['is_post'] ) 
 				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
 
 			foreach ( $og_image as $image )
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
-
-			switch ( $head_type_url ) {
-				case 'http://schema.org/BlogPosting':
-				case 'http://schema.org/WebPage':
-					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
-					break;
-			}
 
 			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og );
 		}

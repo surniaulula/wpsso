@@ -441,9 +441,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
 
 					if ( $option_type == 'img_width' )
-						$min_int = $this->p->cf['head']['min']['og_img_width'];
+						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
 					elseif ( $option_type == 'img_height' )
-						$min_int = $this->p->cf['head']['min']['og_img_height'];
+						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
 					else $min_int = 1;
 
 					// custom meta options are allowed to be empty

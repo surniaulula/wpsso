@@ -919,8 +919,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
 			$lca =& $this->p->cf['lca'];
-			$min =& $this->p->cf['head']['min'];
-			$max =& $this->p->cf['head']['max'];
+			$min =& $this->p->cf['head']['limit_min'];
+			$max =& $this->p->cf['head']['limit_max'];
 
 			if ( strpos( $size_name, $lca.'-' ) !== 0 )	// only check our own sizes
 				return true;
@@ -950,6 +950,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$min_width = $min['schema_img_width'];
 					$min_height = $min['schema_img_height'];
 					$max_ratio = $max['schema_img_ratio'];
+					break;
+
+				case $lca.'-schema-article':
+					$std_name = 'Google / Schema';
+					$min_width = $min['article_img_width'];
+					$min_height = $min['article_img_height'];
+					$max_ratio = $max['article_img_ratio'];
 					break;
 
 				default:

@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
 				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
 					array(), $this->form ) );
-			natsort( $table_rows );
+			sort( $table_rows );
 			foreach ( $table_rows as $num => $row ) 
 				echo '<tr>'.$row.'</tr>'."\n";
 			echo '</table>';
@@ -49,25 +49,25 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$table_rows[] = $this->form->get_th_html( _x( 'Google / Schema Markup Images',
-						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
-
-					$table_rows[] = $this->form->get_th_html( _x( 'Facebook / Open Graph Images',
+					$table_rows['og_img_dimensions'] = $this->form->get_th_html( _x( 'Facebook / Open Graph Images',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$table_rows[] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
+						$table_rows['rp_img_dimensions'] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
 					}
 
-					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
+					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema Images',
+						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
+
+					$table_rows['tc_sum_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';
 
-					$table_rows[] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
+					$table_rows['tc_lrgimg_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';
 

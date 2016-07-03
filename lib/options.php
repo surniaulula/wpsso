@@ -268,17 +268,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( array( 'og', 'rp', 'schema' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
 					! empty( $opts[$md_pre.'_img_height'] ) &&
-					! empty( $opts[$md_pre.'_img_crop'] ) ) {
+					! empty( $opts[$md_pre.'_img_crop'] ) ) {	// check cropped image ratio
 
 					$img_width = $opts[$md_pre.'_img_width'];
 					$img_height = $opts[$md_pre.'_img_height'];
+
 					$img_ratio = $img_width >= $img_height ?
 						$img_width / $img_height :
 						$img_height / $img_width;
-					$max_ratio = $this->p->cf['head']['max']['og_img_ratio'];
+
+					$max_ratio = isset( $this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] ) ?
+						$this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] :
+						$this->p->cf['head']['limit_max']['og_img_ratio'];
 
 					if ( $img_ratio >= $max_ratio ) {
-						$this->p->notice->err( 'The values for \''.$md_pre.'_img_width\' and  \''.$md_pre.'_img_height\' have an aspect ratio that is equal to / or greater than '.$max_ratio.':1 &mdash; resetting these options to their default values.', true );
+						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre.'_img_width', $md_pre.'_img_height', $max_ratio ), true );
+
 						$opts[$md_pre.'_img_width'] = $def_opts[$md_pre.'_img_width'];
 						$opts[$md_pre.'_img_height'] = $def_opts[$md_pre.'_img_height'];
 						$opts[$md_pre.'_img_crop'] = $def_opts[$md_pre.'_img_crop'];
@@ -300,8 +305,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// og_desc_len must be at least 156 chars (defined in config)
 			if ( isset( $opts['og_desc_len'] ) && 
-				$opts['og_desc_len'] < $this->p->cf['head']['min']['og_desc_len'] ) 
-					$opts['og_desc_len'] = $this->p->cf['head']['min']['og_desc_len'];
+				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] ) 
+					$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
 
 			if ( $mod === false ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {

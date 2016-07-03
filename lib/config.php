@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.3-dev1',	// plugin version
+					'version' => '3.33.3-dev2',	// plugin version
 					'opt_version' => '440',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -892,16 +892,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'head' => array(
-				'min' => array(
+				'limit_min' => array(
 					'og_desc_len' => 156,
-					'og_img_width' => 200,
+					'og_img_width' => 200,		// https://developers.facebook.com/docs/sharing/best-practices
 					'og_img_height' => 200,
-					'schema_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles#article_types
-					'schema_img_height' => 279,
+					'schema_img_width' => 400,	// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_img_height' => 160,
+					'article_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles
+					'article_img_height' => 279,	// based on the max image ratio
 				),
-				'max' => array(
+				'limit_max' => array(
 					'og_img_ratio' => 3,
 					'schema_img_ratio' => 2.5,	// https://developers.google.com/+/web/snippet/article-rendering
+					'article_img_ratio' => 2.5,
 				),
 				'og_type_ns' => array(		// http://ogp.me/#types
 					'article' => 'http://ogp.me/ns/article#',
