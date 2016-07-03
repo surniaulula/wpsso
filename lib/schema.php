@@ -1268,20 +1268,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 			}
 
-			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
+			$ret = $this->get_single_author_noscript( $mod['post_author'], 'author' );
 
 			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
-					$ret = array_merge( $ret, $this->get_single_author_noscript( $mod, $author_id, 'contributor' ) );
+					$ret = array_merge( $ret, $this->get_single_author_noscript( $author_id, 'contributor' ) );
 
 			return $ret;
 		}
 
-		public function get_single_author_noscript( array &$mod, $author_id = 0, $itemprop = 'author' ) {
+		public function get_single_author_noscript( $author_id = 0, $itemprop = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
-					'mod' => $mod,
 					'author_id' => $author_id,
 					'itemprop' => $itemprop,
 				) );
@@ -1298,7 +1297,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 			} else {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'getting module for author id '.$author_id );
+					$this->p->debug->log( 'getting user_mod for author id '.$author_id );
 				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
 			}
 
@@ -1310,11 +1309,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_author = array_merge(
 				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.url', $url, '', $mod ) ),
+					'itemprop', $itemprop.'.url', $url, '', $user_mod ) ),
 				( empty( $name ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.name', $name, '', $mod ) ),
+					'itemprop', $itemprop.'.name', $name, '', $user_mod ) ),
 				( empty( $desc ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.description', $desc, '', $mod ) )
+					'itemprop', $itemprop.'.description', $desc, '', $user_mod ) )
 			);
 
 			// optimize by first checking if the meta tag is enabled
@@ -1328,7 +1327,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$image_url = SucomUtil::get_mt_media_url( $image, 'og:image' );
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'meta',
-							'itemprop', $itemprop.'.image', $image_url, '', $mod ) );
+							'itemprop', $itemprop.'.image', $image_url, '', $user_mod ) );
 					}
 				}
 			}
