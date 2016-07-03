@@ -334,14 +334,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.3-dev1 (2016/07/02)**
+**Version 3.33.3-dev2 (2016/07/03)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a check for Schema Article images, which must be 696px wide, compared to standard Schema images, which must be 400px wide.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -403,9 +403,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.3-dev1 =
+= 3.33.3-dev2 =
 
-(2016/07/02) Removed the WpssoUtil::clear_post_cache() method.
+(2016/07/03) Removed the WpssoUtil::clear_post_cache() method. Added a check for Schema Article image width, different than standard Schema image width.
 
 = 3.33.2-1 =
 
