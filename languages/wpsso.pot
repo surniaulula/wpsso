@@ -1239,18 +1239,18 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:929 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:930 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:984
+#: lib/media.php:985
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1001
+#: lib/media.php:1002
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"

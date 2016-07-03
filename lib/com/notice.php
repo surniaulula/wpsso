@@ -59,29 +59,29 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			else return false;
 		}
 
-		public function nag( $msg_txt, $store = false, $user_id = true, $msg_id = false ) { 
-			$this->log( 'nag', $msg_txt, $store, $user_id, $msg_id, false );	// $dismiss = false
+		public function nag( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false ) { 
+			$this->log( 'nag', $msg_txt, $save_msg, $user_id, $msg_id, false );	// $dismiss = false
 		}
 
-		public function err( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) {
-			$this->log( 'err', $msg_txt, $store, $user_id, $msg_id, $dismiss );
+		public function err( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false, $dismiss = false ) {
+			$this->log( 'err', $msg_txt, $save_msg, $user_id, $msg_id, $dismiss );
 		}
 
-		public function warn( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) {
-			$this->log( 'warn', $msg_txt, $store, $user_id, $msg_id, $dismiss );
+		public function warn( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false, $dismiss = false ) {
+			$this->log( 'warn', $msg_txt, $save_msg, $user_id, $msg_id, $dismiss );
 		}
 
-		public function upd( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) {
-			$this->log( 'upd', $msg_txt, $store, $user_id, $msg_id, $dismiss );
+		public function upd( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false, $dismiss = false ) {
+			$this->log( 'upd', $msg_txt, $save_msg, $user_id, $msg_id, $dismiss );
 		}
 
-		public function inf( $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false ) {
-			$this->log( 'inf', $msg_txt, $store, $user_id, $msg_id, $dismiss );
+		public function inf( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false, $dismiss = false ) {
+			$this->log( 'inf', $msg_txt, $save_msg, $user_id, $msg_id, $dismiss );
 		}
 
 		// $user_id can be true, false, or an id number
 		// $dismiss can be true, false, or a number of seconds
-		public function log( $type, $msg_txt, $store = false, $user_id = true, $msg_id = false, $dismiss = false, 
+		public function log( $type, $msg_txt, $save_msg = false, $user_id = true, $msg_id = false, $dismiss = false, 
 			$payload = array() ) {
 
 			// sanity checks
@@ -96,7 +96,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->can_dismiss() === true ? $dismiss : false;
 
 			// save message until it can be displayed
-			if ( $store === true ) {
+			if ( $save_msg === true ) {
 				if ( $user_id === true )
 					$user_id = get_current_user_id();
 				if ( is_numeric( $user_id ) && $user_id > 0 )
@@ -126,7 +126,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		// truncates all notices by default
-		public function trunc( $type = '', $msg_txt = '', $store = true, $user_id = true, $msg_id = false ) {
+		public function trunc( $type = '', $msg_txt = '', $save_msg = true, $user_id = true, $msg_id = false ) {
 
 			$types = empty( $type ) ? 
 				array_keys( $this->log ) : 
@@ -186,7 +186,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					if ( $store === true && $dis_upd === true ) {
+					if ( $save_msg === true && $dis_upd === true ) {
 						switch( $name ) {
 							case 'opt':
 								if ( empty( $all_opts[$name] ) )

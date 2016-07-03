@@ -1129,6 +1129,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! $this->is_noscript_enabled() &&
 				! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
 
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting images for '.$head_type_url );
+
 				$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
@@ -1174,6 +1177,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
 					break;
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'getting images for '.$head_type_url );
 
 			$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
 				$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
@@ -1290,13 +1296,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: empty user module' );
 				return array();
-			} else $mod = $this->p->m['util']['user']->get_mod( $author_id );
+			} else {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting module for author id '.$author_id );
+				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
+			}
 
-			$url = $mod['obj']->get_author_website( $author_id, 'url' );
-			$name = $mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$desc = $mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
+			$url = $user_mod['obj']->get_author_website( $author_id, 'url' );
+			$name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
+			$desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
 			if ( empty( $desc ) )
-				$desc = $mod['obj']->get_author_meta( $author_id, 'description' );
+				$desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
 
 			$mt_author = array_merge(
 				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',
@@ -1312,7 +1322,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				$size_name = $this->p->cf['lca'].'-schema';
-				$og_image = $mod['obj']->get_og_image( 1, $size_name, $author_id, false );	// $check_dupes = false
+				$og_image = $user_mod['obj']->get_og_image( 1, $size_name, $author_id, false );	// $check_dupes = false
 	
 				foreach ( $og_image as $image ) {
 					$image_url = SucomUtil::get_mt_media_url( $image, 'og:image' );
