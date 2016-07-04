@@ -872,7 +872,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $user_id is optional and takes precedence over the $mod post_author value
-		public static function add_author_and_coauthor_data( &$json_data, $mod, $user_id = false ) {
+		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
 
 			$authors_added = 0;
 			$coauthors_added = 0;
@@ -1268,16 +1268,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();
 			}
 
-			$ret = $this->get_single_author_noscript( $mod['post_author'], 'author' );
+			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
 
 			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
-					$ret = array_merge( $ret, $this->get_single_author_noscript( $author_id, 'contributor' ) );
+					$ret = array_merge( $ret, $this->get_single_author_noscript( $mod, $author_id, 'contributor' ) );
 
 			return $ret;
 		}
 
-		public function get_single_author_noscript( $author_id = 0, $itemprop = 'author' ) {
+		public function get_single_author_noscript( array &$mod, $author_id = 0, $itemprop = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->args( array( 
