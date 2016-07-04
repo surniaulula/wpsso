@@ -334,6 +334,26 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.4-dev1 (2016/07/04)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added support for the following Schema types:
+		* http://schema.org/Game
+		* http://schema.org/Movie
+		* http://schema.org/Painting
+		* http://schema.org/Photograph
+		* http://schema.org/Sculpture
+		* http://schema.org/SoftwareApplication
+		* http://schema.org/VisualArtwork
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed the `WpssoSchema::add_author_and_coauthor_data()` method to `add_author_coauthor_data()`.
+
 **Version 3.33.3-1 (2016/07/03)**
 
 Official announcement: N/A
@@ -402,6 +422,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.4-dev1 =
+
+(2016/07/04) Added support for additional Schema types.
 
 = 3.33.3-1 =
 
