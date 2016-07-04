@@ -248,9 +248,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public static function get_hooks( $hook = '' ) {
 			global $wp_filter;
 
-			$hooks = isset( $wp_filter[$hook] ) ?
-				$wp_filter[$hook] : array();  
-			$hooks = call_user_func_array( 'array_merge', $hooks );
+			$hooks = empty( $wp_filter[$hook] ) ?
+				array() : call_user_func_array( 'array_merge', $wp_filter[$hook] );
 		
 			foreach( $hooks as &$item ) {
 				// function name as string or static class method eg. 'Foo::Bar'
