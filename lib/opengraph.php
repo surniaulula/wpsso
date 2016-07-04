@@ -158,7 +158,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 			if ( ! isset( $og['og:locale'] ) ) {
 				// get the current or configured language for og:locale
-				$lang = empty( $this->p->options['fb_lang'] ) ? SucomUtil::get_locale( $mod ) : $this->p->options['fb_lang'];
+				$lang = empty( $this->p->options['fb_lang'] ) ? 
+					SucomUtil::get_locale( $mod ) : $this->p->options['fb_lang'];
 				$og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $mod );
 			}
 
@@ -201,8 +202,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				}
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:publisher'] ) )
+				if ( ! isset( $og['article:publisher'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'fb_publisher_url locale key = '.
+							SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options, $mod ) );
 					$og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
+				}
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:tag'] ) )
