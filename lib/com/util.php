@@ -651,7 +651,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// return the custom site description, and if empty, the default site description
-		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_site_description( array &$opts, array &$mod ) {
 			return self::get_locale_opt( 'og_site_description', $opts, $mod, get_bloginfo( 'description', 'display' ) );
 		}
