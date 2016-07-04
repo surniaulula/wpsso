@@ -685,9 +685,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
-			$default = SucomUtil::get_locale( 'default' );
-			$current = SucomUtil::get_locale( 'current' );
-			$matches = SucomUtil::preg_grep_keys( '/^'.$prefix.'_([0-9]+)(#.*)?$/', $opts );
+			$default = self::get_locale( 'default' );
+			$current = self::get_locale( 'current' );
+			$matches = self::preg_grep_keys( '/^'.$prefix.'_([0-9]+)(#.*)?$/', $opts );
 			$results = array();
 
 			foreach ( $matches as $key => $value ) {
@@ -745,7 +745,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_mod_salt( array $mod ) {
-			return 'locale:'.SucomUtil::get_locale( $mod ).'_'.$mod['name'].':'.$mod['id'];
+			return 'locale:'.self::get_locale( $mod ).'_'.$mod['name'].':'.$mod['id'];
 		}
 
 		public static function restore_checkboxes( &$opts ) {
@@ -880,7 +880,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function maybe_load_post( $id, $force = false ) {
 			global $post;
 			if ( empty( $post ) || $force ) {
-				$post = SucomUtil::get_post_object( $id, 'object' );
+				$post = self::get_post_object( $id, 'object' );
 				return true;
 			} else return false;
 		}
