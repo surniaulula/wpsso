@@ -181,7 +181,7 @@
 
 <h4>User Profile Social Contacts</h4>
 
-<p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts on user profile pages, including <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
+<p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts on user profile pages and <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
 
 <ul>
 <li>AIM</li>
@@ -201,7 +201,7 @@
 
 <h4>Complete Social Meta Tags</h4>
 
-<p>WPSSO adds Facebook / <a href="http://ogp.me/">Open Graph</a>, <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, <a href="https://dev.twitter.com/docs/cards">Twitter Cards</a>, and <a href="http://en.wikipedia.org/wiki/Search_engine_optimization">Search Engine Optimization</a> meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher, etc.). WPSSO uses the <em>existing</em> content of your webpages to build HTML meta tags &mdash; There's no need to manually enter / configure any additional values or settings (although many settings and options <em>are</em> available in the Pro version). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See examples from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a> &mdash; along with screenshots of the WPSSO settings pages.</p>
+<p>WPSSO adds Facebook / <a href="http://ogp.me/">Open Graph</a>, <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, <a href="https://dev.twitter.com/docs/cards">Twitter Cards</a>, and <a href="http://en.wikipedia.org/wiki/Search_engine_optimization">Search Engine Optimization</a> meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher, etc.). WPSSO uses the <em>existing</em> content of your webpages to build HTML meta tags &mdash; there's no need to manually enter / configure any additional values or settings (although many settings and options <em>are</em> available in the Pro version). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See example screenshots from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a>.</p>
 
 <p>WPSSO provides the <a href="https://dev.twitter.com/cards/types/summary">Summary</a>, <a href="https://dev.twitter.com/cards/types/summary-large-image">Summary with Large Image</a>, <a href="https://dev.twitter.com/cards/types/app">App</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension), and <a href="https://dev.twitter.com/cards/types/player">Player</a> Twitter Cards &mdash; <em>including configurable image sizes for each card type</em>. The <a href="https://dev.twitter.com/cards/types/photo">Photo</a>, <a href="https://dev.twitter.com/cards/types/gallery">Gallery</a>, and <a href="https://dev.twitter.com/cards/types/product">Product</a> Twitter Cards were deprecated by Twitter on July 3rd, 2015.</p>
 
