@@ -49,8 +49,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$read_cache = true;
 			$mt_og = array();
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'WP_LANG = '.SucomUtil::get_const( 'WP_LANG' ) );
+				$this->p->debug->log( 'default locale = '.SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'current locale = '.SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'mod locale = '.SucomUtil::get_locale( $mod ) );
 				$this->p->util->log_is_functions();
+			}
 
 			if ( $this->p->is_avail['mt'] )
 				echo $this->get_header_html( $use_post, $mod, $read_cache, $mt_og );

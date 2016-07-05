@@ -202,12 +202,8 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 				}
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:publisher'] ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'fb_publisher_url locale key = '.
-							SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options, $mod ) );
+				if ( ! isset( $og['article:publisher'] ) )
 					$og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
-				}
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:tag'] ) )

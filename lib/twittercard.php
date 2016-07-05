@@ -70,12 +70,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				! empty( $mt_og['og:url'] ) )
 					$mt_tc['twitter:domain'] = preg_replace( '/^.*\/\/([^\/]+).*$/', '$1', $mt_og['og:url'] );
 
-			if ( ! isset( $mt_tc['twitter:site'] ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'tc_site locale key = '.
-						SucomUtil::get_key_locale( 'tc_site', $this->p->options, $mod ) );
+			if ( ! isset( $mt_tc['twitter:site'] ) )
 				$mt_tc['twitter:site'] = SucomUtil::get_locale_opt( 'tc_site', $this->p->options, $mod );
-			}
 
 			if ( ! isset( $mt_tc['twitter:title'] ) )
 				$mt_tc['twitter:title'] = $this->p->webpage->get_title( 70, 
