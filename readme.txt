@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.4-dev3 (2016/07/05)**
+**Version 3.33.4-rc1 (2016/07/05)**
 
 Official announcement: N/A
 
@@ -424,7 +424,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.4-dev3 =
+= 3.33.4-rc1 =
 
 (2016/07/05) Added support for additional Schema types (see Changelog). Updated the BuddyPress module to prevent recursion (Pro version). Fixed a fallback feature for localized options.
 
