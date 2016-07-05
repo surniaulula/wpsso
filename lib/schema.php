@@ -871,6 +871,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
+		// deprecated 2016/07/05
+		public static function add_author_and_coauthor_data( &$json_data, $mod, $user_id = false ) {
+			return self::add_author_coauthor_data( $json_data, $mod, $user_id );
+		}
+
 		// $user_id is optional and takes precedence over the $mod post_author value
 		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
 
