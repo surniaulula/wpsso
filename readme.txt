@@ -334,7 +334,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.4-dev2 (2016/07/04)**
+**Version 3.33.4-dev3 (2016/07/05)**
 
 Official announcement: N/A
 
@@ -350,7 +350,7 @@ Official announcement: N/A
 		* http://schema.org/SoftwareApplication
 		* http://schema.org/VisualArtwork
 * *Bugfixes*
-	* None
+	* Fixed the fallback feature for non-existant / empty localized options to the default language option value.
 * *Developer Notes*
 	* Renamed the `WpssoSchema::add_author_and_coauthor_data()` method to `add_author_coauthor_data()`.
 	* Removed `bp_has_groups()` check from the BuddyPress `filter_is_post_page()` and `filter_get_post_object()` methods to prevent recursion (Pro version).
@@ -424,9 +424,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.4-dev2 =
+= 3.33.4-dev3 =
 
-(2016/07/04) Added support for additional Schema types (see Changelog). Updated the BuddyPress module to prevent recursion (Pro version).
+(2016/07/05) Added support for additional Schema types (see Changelog). Updated the BuddyPress module to prevent recursion (Pro version). Fixed a fallback feature for localized options.
 
 = 3.33.3-1 =
 
