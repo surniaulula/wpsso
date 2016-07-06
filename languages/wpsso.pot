@@ -2975,26 +2975,26 @@ msgid ""
 "class."
 msgstr ""
 
-#: lib/util.php:1556
+#: lib/util.php:1575
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1582
+#: lib/util.php:1601
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1586
+#: lib/util.php:1605
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1589
+#: lib/util.php:1608
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1593
+#: lib/util.php:1612
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

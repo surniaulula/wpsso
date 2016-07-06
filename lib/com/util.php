@@ -268,7 +268,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_https( $url = '' ) {
-			if ( ! empty( $url ) ) {
+			if ( ! empty( $url ) && strpos( $url, '://' ) ) {
 				if ( parse_url( $url, PHP_URL_SCHEME ) === 'https' )
 					return true;
 				else return false;
@@ -278,11 +278,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return false;
 		}
 
-		// returns 'http' or 'https'
 		public static function get_prot( $url = '' ) {
-			if ( self::is_https( $url ) )
-				return 'https';
-			else return 'http';
+			return self::is_https( $url ) ? 'https' : 'http';
+		}
+
+		public static function add_prot( $url = '' ) {
+			return self::get_prot( $url ).'://'.preg_replace( '/^(.*://|//)/', '', $url );
 		}
 
 		public static function get_const( $const, $not_found = null ) {
