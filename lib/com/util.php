@@ -414,13 +414,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return null;
 		}
 
-		public static function a2aa( $a ) {
-			$aa = array();
-			foreach ( $a as $i )
-				$aa[][] = $i;
-			return $aa;
-		}
-
 		public static function crawler_name( $is_crawler_name = '' ) {
 
 			if ( self::$crawler_name === null ) {
@@ -460,6 +453,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $is_crawler_name ) )
 				return $is_crawler_name === self::$crawler_name ? true : false;
 			else return self::$crawler_name;
+		}
+
+		public static function a2aa( $a ) {
+			$aa = array();
+			foreach ( $a as $i )
+				$aa[][] = $i;
+			return $aa;
 		}
 
 		public static function is_assoc( $arr ) {
@@ -515,6 +515,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return $keys[0];
 			}
 			return false;
+		}
+
+		// move an associative array element to the end
+		public static function move_to_end( array &$array, $key ) {
+			$val = $array[$key];
+			unset( $array[$key] );
+			$array[$key] = $val;
+			return $array;
 		}
 
 		public static function before_key( array &$array, $match_key, $mixed, $add_value = '' ) {

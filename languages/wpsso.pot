@@ -793,13 +793,13 @@ msgctxt "option label"
 msgid "Add '%s' Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:100 lib/messages.php:308 lib/meta.php:538
+#: lib/gpl/admin/advanced.php:100 lib/messages.php:308 lib/meta.php:539
 #: lib/pro/admin/advanced.php:103
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:102 lib/messages.php:311 lib/meta.php:539
+#: lib/gpl/admin/advanced.php:102 lib/messages.php:311 lib/meta.php:540
 #: lib/pro/admin/advanced.php:105
 msgctxt "column title"
 msgid "%s Desc"
@@ -1117,8 +1117,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:161
-#: lib/meta.php:178 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
+#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:162
+#: lib/meta.php:179 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1224,7 +1224,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:154 lib/post.php:386
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:386
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2075,114 +2075,114 @@ msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:134
+#: lib/meta.php:135
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:140
+#: lib/meta.php:141
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:149
+#: lib/meta.php:150
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:157 lib/meta.php:174
+#: lib/meta.php:158 lib/meta.php:175
 msgctxt "option label"
 msgid "Short URL"
 msgstr ""
 
-#: lib/meta.php:183
+#: lib/meta.php:184
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:276
+#: lib/meta.php:277
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:276
+#: lib/meta.php:277
 msgid ""
 "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:276
+#: lib/meta.php:277
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr ""
 
-#: lib/meta.php:276
+#: lib/meta.php:277
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
 "information\" button several times to refresh Facebook's cache</strong>."
 msgstr ""
 
-#: lib/meta.php:276
+#: lib/meta.php:277
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
 "Google+."
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:280
+#: lib/meta.php:281
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:280
+#: lib/meta.php:281
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:280
+#: lib/meta.php:281
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:283
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:283
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:283
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:449
+#: lib/meta.php:450
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:562
+#: lib/meta.php:563
 msgid "Reload to View"
 msgstr ""
 
@@ -2975,26 +2975,26 @@ msgid ""
 "class."
 msgstr ""
 
-#: lib/util.php:1575
+#: lib/util.php:1577
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1601
+#: lib/util.php:1603
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1605
+#: lib/util.php:1607
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1608
+#: lib/util.php:1610
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1612
+#: lib/util.php:1614
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

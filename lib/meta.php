@@ -78,7 +78,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					);
 					// keep it clean and remove demo form pages
 					if ( ! empty( $this->p->options['plugin_hide_pro'] ) )
-						unset( $tabs['header'], $tabs['media'] );
+						foreach ( array( 'header', 'media' ) as $key )
+							SucomUtil::move_to_end( $tabs, $key );
 					break;
 				default:
 					$tabs = array();	// just in case

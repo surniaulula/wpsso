@@ -602,7 +602,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return empty( $ret ) ? false : $ret;
 		}
 
-		public function get_body_html( $request ) {
+		public function get_body_html( $request, $remove_script = true ) {
 			$html = '';
 
 			if ( strpos( $request, '//' ) === 0 )
@@ -635,7 +635,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$html = preg_replace( '/^.*<body[^>]*>(.*)<\/body>.*$/Ums', '$1', $html );
-			$html = preg_replace( '/<script[^>]*>.*<\/script>/Ums', '', $html );
+
+			if ( $remove_script )
+				$html = preg_replace( '/<script[^>]*>.*<\/script>/Ums', '', $html );
 
 			return $html;
 		}
