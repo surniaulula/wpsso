@@ -1,4 +1,4 @@
-=== WPSSO WordPress Social Sharing Optimization - The "Social SEO" Plugin ===
+=== WPSSO WordPress Social Sharing Optimization - The Most Advanced "Social SEO" Plugin ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
