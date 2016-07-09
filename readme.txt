@@ -12,7 +12,7 @@ Requires At Least: 3.1
 Tested Up To: 4.5.3
 Stable Tag: 3.33.4-1
 
-A fast, light-weight, comprehensive plugin to manage all aspects of social meta tags &amp; Schema markup for Google + all social websites.
+Fast, light-weight and comprehensive plugin to manage all aspects of social meta tags and Schema markup for social websites &amp; Google.
 
 == Description ==
 
