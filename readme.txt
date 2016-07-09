@@ -1,4 +1,4 @@
-=== WordPress Social Sharing Optimization - Manage Social Content / SEO and Media Easily ===
+=== WordPress Social Sharing Optimization - The "Social SEO" Plugin ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
