@@ -2438,7 +2438,6 @@ msgid "Preserve Settings on Uninstall"
 msgstr ""
 
 #: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:106
-#: lib/submenu/essential.php:164
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
@@ -2513,7 +2512,7 @@ msgctxt "option label"
 msgid "Clear All Cache(s) on Save Settings"
 msgstr ""
 
-#: lib/submenu/advanced.php:113 lib/submenu/essential.php:171
+#: lib/submenu/advanced.php:113
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
