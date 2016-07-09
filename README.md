@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Fast, light-weight and comprehensive plugin to manage all aspects of social meta tags and Schema markup for social sharing &amp; Google Search.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Fast, light-weight, comprehensive plugin to automatically manage social meta tags + Schema markup for Google Search and social sharing.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.33.4-1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.5.3</td></tr>
