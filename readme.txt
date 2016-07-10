@@ -430,11 +430,3 @@ Official announcement: N/A
 
 (2016/07/06) Added support for additional Schema types (see Changelog). Updated the BuddyPress module to prevent recursion (Pro version). Fixed a fallback feature for localized options.
 
-= 3.33.3-1 =
-
-(2016/07/03) Removed the WpssoUtil::clear_post_cache() method. Added a check for Schema Article image width, different than standard Schema image width.
-
-= 3.33.2-1 =
-
-(2016/06/30) Added a new "Hide All Pro Version Options" option. Added tabs to the Header Tags List metabox. Reclassified several notification messages.
-
