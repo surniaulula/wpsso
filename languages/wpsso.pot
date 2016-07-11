@@ -2026,8 +2026,8 @@ msgstr ""
 
 #: lib/messages.php:784
 msgid ""
-"The development of %1$s is driven by customer requests &mdash; we welcome "
-"your comments and suggestions. ;-)"
+"The development of %1$s is driven mostly by customer requests &mdash; we "
+"welcome your comments and suggestions. ;-)"
 msgstr ""
 
 #: lib/messages.php:794
