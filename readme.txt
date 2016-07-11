@@ -336,6 +336,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.5-dev1 (2016/07/11)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the Facebook language locales (https://www.facebook.com/translations/FacebookLocales.xml).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.33.4-1 (2016/07/06)**
 
 Official announcement: N/A
@@ -425,6 +438,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.5-dev1 =
+
+(2016/07/11) Updated the Facebook language locales (https://www.facebook.com/translations/FacebookLocales.xml).
 
 = 3.33.4-1 =
 
