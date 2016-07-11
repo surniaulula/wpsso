@@ -592,14 +592,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$m_atts['textContent'] = $m->textContent;
 					$ret[$m->tagName][] = $m_atts;
 				}
-			} else {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'DOMDocument PHP class is missing' );
-				if ( is_admin() )
-					$this->p->notice->err( __( 'The DOMDocument PHP class is missing - unable to read head meta from HTML. Please contact your hosting provider to install the missing DOMDocument PHP class.', 'wpsso' ), true );
-			}
+			} else $this->missing_php_class_error( 'DOMDocument' );
 
-			return empty( $ret ) ? false : $ret;
+			return empty( $ret ) ? 
+				false : $ret;
+		}
+
+		public function missing_php_class_error( $classname ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $classname.' PHP class is missing' );
+			if ( is_admin() )
+				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.', 'wpsso' ), $classname ), true );
 		}
 
 		public function get_body_html( $request, $remove_script = true ) {

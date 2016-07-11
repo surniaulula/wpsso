@@ -44,8 +44,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) &&
-						$this->p->check->aop( $ext, true, -1 ) === -1 ?
-							'pro' : 'gpl';
+					$this->p->check->aop( $ext, true, -1 ) === -1 ? 'pro' : 'gpl';
 				if ( ! isset( $info['lib'][$type] ) )
 					continue;
 				foreach ( $info['lib'][$type] as $sub => $libs ) {

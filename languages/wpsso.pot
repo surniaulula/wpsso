@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.4-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.5-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +48,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:342 lib/admin.php:1159 lib/admin.php:1160
+#: lib/admin.php:342 lib/admin.php:1157 lib/admin.php:1158
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr ""
@@ -134,7 +135,7 @@ msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr ""
 
-#: lib/admin.php:701 lib/messages.php:784
+#: lib/admin.php:701
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
@@ -193,184 +194,178 @@ msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr ""
 
-#: lib/admin.php:1027
-msgid ""
-"The development of %1$s is mostly driven by customer requests &mdash; we "
-"welcome your comments and suggestions. ;-)"
-msgstr ""
-
-#: lib/admin.php:1037
+#: lib/admin.php:1035
 msgid ""
 "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:1040
+#: lib/admin.php:1038
 msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
-#: lib/admin.php:1046
+#: lib/admin.php:1044
 msgid "Open a <a href=\"%s\" target=\"_blank\">Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:1049
+#: lib/admin.php:1047
 msgid "Post in <a href=\"%s\" target=\"_blank\">Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:1053
+#: lib/admin.php:1051
 msgctxt "metabox title (side)"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:1115
+#: lib/admin.php:1113
 msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:1135
+#: lib/admin.php:1133
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:1141
+#: lib/admin.php:1139
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:1147
+#: lib/admin.php:1145
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:1152
+#: lib/admin.php:1150
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr ""
 
-#: lib/admin.php:1197 lib/admin.php:1202 lib/admin.php:1218 lib/admin.php:1224
+#: lib/admin.php:1195 lib/admin.php:1200 lib/admin.php:1216 lib/admin.php:1222
 #: lib/messages.php:744
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1247
+#: lib/admin.php:1245
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1254
+#: lib/admin.php:1252
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> "
 "is not loaded."
 msgstr ""
 
-#: lib/admin.php:1254 lib/admin.php:1259 lib/admin.php:1264
+#: lib/admin.php:1252 lib/admin.php:1257 lib/admin.php:1262
 msgid ""
 "please contact your hosting provider to have the missing PHP extension "
 "installed and/or enabled."
 msgstr ""
 
-#: lib/admin.php:1259
+#: lib/admin.php:1257
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) "
 "extension</a> is not loaded."
 msgstr ""
 
-#: lib/admin.php:1264
+#: lib/admin.php:1262
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is not "
 "loaded."
 msgstr ""
 
-#: lib/admin.php:1273
+#: lib/admin.php:1271
 msgid ""
 "please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1278
+#: lib/admin.php:1276
 msgid ""
 "please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1283
+#: lib/admin.php:1281
 msgid ""
 "please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1288
+#: lib/admin.php:1286
 msgid ""
 "please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1299
+#: lib/admin.php:1297
 msgid ""
 "please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1310
+#: lib/admin.php:1308
 msgid ""
 "please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1315
+#: lib/admin.php:1313
 msgid ""
 "please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1325
+#: lib/admin.php:1323
 msgid ""
 "please uncheck the '<em>Output Open Graph meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1330
+#: lib/admin.php:1328
 msgid ""
 "please uncheck the '<em>Output Faceboook meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1335
+#: lib/admin.php:1333
 msgid ""
 "please uncheck the '<em>Output Twitter meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1340
+#: lib/admin.php:1338
 msgid ""
 "please uncheck the '<em>Output Knowledge tags?</em>' option in <a href=\"%s"
 "\">The SEO Framework</a> Knowledge Graph Settings."
 msgstr ""
 
-#: lib/admin.php:1353
+#: lib/admin.php:1351
 msgid ""
 "please uncheck the '<em>%1$s</em>' option in <a href=\"%2$s\">The SEO "
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1401
+#: lib/admin.php:1399
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1408
+#: lib/admin.php:1406
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1417
+#: lib/admin.php:1415
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1424
+#: lib/admin.php:1422
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1436
+#: lib/admin.php:1434
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -2029,20 +2024,13 @@ msgid ""
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:785
+#: lib/messages.php:784
 msgid ""
-"Metaboxes (like this one) can be opened / closed by clicking on their title "
-"bar, moved and re-ordered by dragging them, or removed / added from the "
-"<em>Screen Options</em> tab (top-right of page)."
+"The development of %1$s is driven by customer requests &mdash; we welcome "
+"your comments and suggestions. ;-)"
 msgstr ""
 
-#: lib/messages.php:785
-msgid ""
-"Option values in multiple tabs can be modified before clicking the '%s' "
-"button."
-msgstr ""
-
-#: lib/messages.php:795
+#: lib/messages.php:794
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
@@ -2967,33 +2955,32 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:599
+#: lib/util.php:605
 msgid ""
-"The DOMDocument PHP class is missing - unable to read head meta from HTML. "
-"Please contact your hosting provider to install the missing DOMDocument PHP "
-"class."
+"The %1$s PHP class is missing - please contact your hosting provider to "
+"install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1577
+#: lib/util.php:1580
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1603
+#: lib/util.php:1606
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1607
+#: lib/util.php:1610
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1610
+#: lib/util.php:1613
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1614
+#: lib/util.php:1617
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

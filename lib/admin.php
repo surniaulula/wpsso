@@ -1020,12 +1020,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_help() {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
-
+			echo '<table class="sucom-setting '.
+				$this->p->cf['lca'].'" side><tr><td>';
 			$this->show_follow_icons();
-
-			echo '<p>'.sprintf( __( 'The development of %1$s is mostly driven by customer requests &mdash; we welcome your comments and suggestions. ;-)',
-				'wpsso' ), $this->p->cf['plugin'][$this->p->cf['lca']]['short'] ).'</p>';
+			echo $this->p->msgs->get( 'side-help-support' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
