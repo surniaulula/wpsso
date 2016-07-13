@@ -1,7 +1,6 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array(s)
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
-_x( 'A fast, light-weight, comprehensive plugin to manage all aspects of social meta tags & Schema markup for Google + all social websites.', 'plugin description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
@@ -13,6 +12,7 @@ _x( 'Display Name', 'option value', 'wpsso' );
 _x( 'Essential Settings', 'lib file description', 'wpsso' );
 _x( 'Excerpt Only', 'option value', 'wpsso' );
 _x( 'Facebook Business Page URL', 'option value', 'wpsso' );
+_x( 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.', 'plugin description', 'wpsso' );
 _x( 'First and Last Names', 'option value', 'wpsso' );
 _x( 'Footer', 'option value', 'wpsso' );
 _x( 'Force this value', 'option value', 'wpsso' );

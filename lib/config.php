@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '440',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
-					'desc' => 'A fast, light-weight, comprehensive plugin to manage all aspects of social meta tags & Schema markup for Google + all social websites.',
+					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
