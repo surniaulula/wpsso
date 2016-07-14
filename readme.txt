@@ -21,7 +21,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 <p><strong>WPSSO uses the <em>existing</em> content of your site to generate meta tags and Schema markup</strong> &mdash; there's no need to enter / configure any additional settings or values manually.</p>
 
-<p><strong>Social meta tags and Schema markup are the cornerstone of any social strategy</strong> &mdash; WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
+<p><strong>Social meta tags and Schema markup are the cornerstone of any social SEO strategy</strong> &mdash; WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
 
 <p><strong>Additional and customized social meta tags and Schema markup</strong> &mdash; WPSSO (Pro version) retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 
