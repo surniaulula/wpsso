@@ -205,11 +205,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->timeout );
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->connect_timeout );
 
-			if( ini_get('safe_mode') || ini_get('open_basedir') ) {
+			if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'PHP safe_mode or open_basedir defined, cannot use CURLOPT_FOLLOWLOCATION' );
 			} else {
-				curl_setopt( $ch, CURLOPT_MAXREDIRS, 3 );
+				curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 			}
 
