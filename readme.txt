@@ -336,7 +336,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.5-dev2 (2016/07/14)**
+**Version 3.33.5-dev3 (TBD)**
 
 Official announcement: N/A
 
@@ -344,6 +344,7 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Updated the Facebook language locales (https://www.facebook.com/translations/FacebookLocales.xml).
+	* Added a new Bitly Generic Access Token option for the Bitly URL shortening service (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -439,9 +440,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.5-dev2 =
+= 3.33.5-dev3 =
 
-(2016/07/14) Updated the Facebook language locales (https://www.facebook.com/translations/FacebookLocales.xml). Updated the markdown library for PHP v7 compatibility.
+(TBD) Updated the Facebook language locales (https://www.facebook.com/translations/FacebookLocales.xml). Updated the markdown library for PHP v7 compatibility.
 
 = 3.33.4-1 =
 
