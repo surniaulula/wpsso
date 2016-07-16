@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					switch ( $key ) {
 						case ( strpos( $key, '_js_' ) !== false ? true : false ):
 						case ( strpos( $key, '_css_' ) !== false ? true : false ):
-						case ( preg_match( '/_(html|key|secret|tid)$/', $key ) ? true : false ):
+						case ( preg_match( '/_(html|key|secret|tid|token)$/', $key ) ? true : false ):
 							$opts[$key] = '[removed]';
 							break;
 					}

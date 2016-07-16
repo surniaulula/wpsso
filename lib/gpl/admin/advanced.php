@@ -288,9 +288,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_bitly_login' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_login'].'</td>';
 
-			$table_rows['plugin_bitly_api_key'] = $form->get_th_html( _x( 'Bitly API Key',
-				'option label', 'wpsso' ), null, 'plugin_bitly_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].'</td>';
+			$table_rows['plugin_bitly_token'] = $form->get_th_html( '<a href="https://bitly.com/a/oauth_apps" target="_blank">'.
+				_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ).'</a>', null, 'plugin_bitly_token' ).
+			'<td class="blank mono">'.$this->p->options['plugin_bitly_token'].'</td>';
+
+			$table_rows['plugin_bitly_api_key'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key" target="_blank">'.
+				_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ).'</a>', null, 'plugin_bitly_api_key' ).
+			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].' <em>'.
+				_x( 'api key authentication is deprecated', 'option comment', 'wpsso' ).'</em></td>';
 
 			$table_rows['subsection_plugin_google'] = '<tr class="hide_in_basic">'.
 				'<td></td><td class="subsection"><h4>'.
@@ -310,11 +316,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['subsection_plugin_owly'] = '<tr class="hide_in_basic">'.
 				'<td></td><td class="subsection"><h4>'.
 				_x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
-
-			$table_rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Ow.ly API Key',
-				'option label', 'wpsso' ), null, 'plugin_owly_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
 
 			$table_rows['plugin_owly_api_key'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Ow.ly API Key',

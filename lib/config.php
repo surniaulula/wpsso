@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.5-dev2',	// plugin version
-					'opt_version' => '440',		// increment when changing default options
+					'version' => '3.33.5-dev3',	// plugin version
+					'opt_version' => '441',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
@@ -645,6 +645,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortlink' => 1,
 					'plugin_min_shorten' => 23,
 					'plugin_bitly_login' => '',
+					'plugin_bitly_token' => '',
 					'plugin_bitly_api_key' => '',
 					'plugin_google_api_key' => '',
 					'plugin_google_shorten' => 0,

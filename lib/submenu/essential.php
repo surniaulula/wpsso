@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html( 
-						'<a href="https://developers.google.com/structured-data/customize/logos">'.
+						'<a href="https://developers.google.com/structured-data/customize/logos" target="_blank">'.
 						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
