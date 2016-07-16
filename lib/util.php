@@ -187,8 +187,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) )	// current plugin settings
 						$size_info[$key] = $this->p->options[$opt_prefix.'_'.$key];
 					else {
-						if ( ! isset( $def_opts ) )				// only read once if necessary
+						if ( ! isset( $def_opts ) ) {				// only read once if necessary
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting default option values' );
 							$def_opts = $this->p->opt->get_defaults();
+						}
 						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];	// fallback to default value
 					}
 					if ( $key === 'crop' )						// make sure crop is true or false
