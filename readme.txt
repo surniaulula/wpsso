@@ -336,7 +336,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.5-1 (2016/07/17)**
+**Version 3.33.5-1 (2016/07/18)**
 
 Official announcement: N/A
 
@@ -445,7 +445,7 @@ Official announcement: N/A
 
 = 3.33.5-1 =
 
-(2016/07/17) Updated Facebook language locales. Updated the markdown library for PHP v7 compatibility. Added a new "Bitly Generic Access Token" option (Pro version). Minor performance improvement.
+(2016/07/18) Updated Facebook language locales. Updated the markdown library for PHP v7 compatibility. Added a new "Bitly Generic Access Token" option (Pro version). Minor performance improvement.
 
 = 3.33.4-1 =
 
