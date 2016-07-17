@@ -27,7 +27,7 @@ apply_filters( 'wpsso_description', $desc, $mod, $add_hashtags, $md_idx );
 apply_filters( 'wpsso_description_pre_limit', $desc );
 apply_filters( 'wpsso_description_seed', '', $mod, $add_hashtags, $md_idx );
 apply_filters( 'wpsso_get_avail', $ret );
-apply_filters( 'wpsso_get_config', $cf );
+apply_filters( 'wpsso_get_config', $cf, $version );
 apply_filters( 'wpsso_get_defaults', $defaults );
 apply_filters( 'wpsso_get_options', $options );
 apply_filters( 'wpsso_get_post_options', $options, $post_id );
