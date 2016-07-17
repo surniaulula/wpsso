@@ -22,8 +22,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 
 			$this->p->util->add_plugin_filters( $this, array( 'option_type' => 2 ), -100 );
-			$this->p->util->add_plugin_filters( $this, array( 'init_plugin' => 0 ), 9000 );
+			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), 9000 );
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'running init_options action' );
 			do_action( $this->p->cf['lca'].'_init_options' );
 		}
 
@@ -60,8 +62,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// start
+					$this->p->debug->log( 'applying get_defaults filter' );
+				}
 
 				$defs = apply_filters( $lca.'_get_defaults', $defs );
 
@@ -126,10 +130,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
 
-			if ( $network === false )
-				$def_opts = $this->get_defaults();
-			else $def_opts = $this->get_site_defaults();
-
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
 				$has_diff_version = false;
@@ -170,30 +170,35 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
+					$def_opts = $network === false ? 
+						$this->get_defaults() : 
+						$this->get_site_defaults();
+
 					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
 
 				// adjust some options based on external factors
 				if ( ! $network ) {
 					if ( $this->p->check->aop( $this->p->cf['lca'], false, $this->p->is_avail['aop'] ) ) {
-						foreach ( array( 'plugin_hide_pro' ) as $idx ) {
-							if ( $opts[$idx] != $def_opts[$idx] ) {	// numeric options could strings
-								$opts[$idx] = $def_opts[$idx];
+						foreach ( array(
+							'plugin_hide_pro' => 0,
+						) as $idx => $def_val ) {
+							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
+								$opts[$idx] = $def_val;
 								$has_diff_options = true;	// save the options
 							}
 						}
 					} else {
 						foreach ( array(
-							'plugin_filter_content',
-							'plugin_check_head',
-							'plugin_upscale_images',
-							'plugin_object_cache_exp',
-							'plugin_file_cache_exp',
-						) as $idx ) {
-							if ( $opts[$idx] != $def_opts[$idx] ) {	// numeric options could strings
+							'plugin_filter_content' => 0,
+							'plugin_check_head' => 1,
+							'plugin_upscale_images' => 0,
+							'plugin_file_cache_exp' => 0,
+						) as $idx => $def_val ) {
+							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
 								if ( is_admin() )
 									$this->p->notice->warn( sprintf( __( 'Free version non-standard value found for the \'%s\' option - resetting to its default value.', 'wpsso' ), $idx ), true );
-								$opts[$idx] = $def_opts[$idx];
+								$opts[$idx] = $def_val;
 								$has_diff_options = true;	// save the options
 							}
 						}
@@ -216,6 +221,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->save_options( $options_name, $opts, $network );
 
 					if ( is_admin() ) {
+						$def_opts = $network === false ? 
+							$this->get_defaults() : 
+							$this->get_site_defaults();
+
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
 							$opts['plugin_object_cache_exp'] < $def_opts['plugin_object_cache_exp'] ) {
 
@@ -234,7 +243,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				// add missing options for all post types
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'adding options derived from post type names' );
 				$opts = $this->p->util->add_ptns_to_opts( $opts,
 					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
@@ -265,7 +275,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 
-				return $def_opts;
+				return $network === false ? 
+					$this->get_defaults() : 
+					$this->get_site_defaults();
 			}
 		}
 
@@ -562,7 +574,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $type;
 		}
 
-		public function filter_init_plugin() {
+		public function filter_init_objects() {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 				$this->p->debug->log( 'setting allow_options_cache to true' );
