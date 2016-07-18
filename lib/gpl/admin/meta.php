@@ -105,6 +105,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'</td>';
 
 			$form_rows['subsection_opengraph'] = array(
+				'tr_class' => 'hide_in_basic',
 				'td_class' => 'subsection top',
 				'header' => 'h4',
 				'label' => _x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' )

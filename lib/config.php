@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.6-dev1',	// plugin version
+					'version' => '3.33.6-dev2',	// plugin version
 					'opt_version' => '441',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -703,20 +703,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_debug' => 0,				// Add Hidden Debug Messages
-					'plugin_debug:use' => 'default',
+					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
+					'plugin_clear_on_save:use' => 'default',
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_preserve:use' => 'default',
+					'plugin_debug' => 0,				// Add Hidden Debug Messages
+					'plugin_debug:use' => 'default',
+					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
+					'plugin_hide_pro:use' => 'default',
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					'plugin_show_opts:use' => 'default',
-					'plugin_cache_info' => 0,			// Report Cache Purge Count
-					'plugin_cache_info:use' => 'default',
+					// Content and Filters Tab
+					// Social Settings Tab
+					// WP / Theme Integration Tab
+					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
+					'plugin_check_head:use' => 'default',
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
 					'plugin_filter_lang:use' => 'default',
 					'plugin_auto_img_resize' => 1,			// Recreate Missing WP Media Sizes
 					'plugin_auto_img_resize:use' => 'default',
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_check_img_dims:use' => 'default',
+					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
+					'plugin_upscale_images:use' => 'default',
+					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percentage
+					'plugin_upscale_img_max:use' => 'default',
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_shortcodes:use' => 'default',
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
@@ -728,10 +739,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// File and Object Cache Tab
 					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (259200 secs = 3 days)
 					'plugin_object_cache_exp:use' => 'default',
-					'plugin_file_cache_exp' => 0,			// File Cache Expiry
-					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
+					'plugin_cache_info' => 0,			// Report Cache Purge Count
+					'plugin_cache_info:use' => 'default',
+					'plugin_file_cache_exp' => 0,			// File Cache Expiry
+					'plugin_file_cache_exp:use' => 'default',
 					// Pro Licenses and Extension Plugins
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',

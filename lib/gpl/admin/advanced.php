@@ -173,7 +173,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
-				$table_rows[] = $form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
+				$table_rows[] = '<tr class="hide_in_basic">'.
+				$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
 					'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
 				'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].', '.
 					'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
@@ -181,7 +182,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
 					'option label', 'wpsso' ), null, 'plugin_head_attr_filter' ).
-				'<td colspan="2"><em>'.__( 'head attributes filter disabled by extension plugin or custom filter',
+				'<td colspan="2"><em>'.__( 'head attributes filter disabled by an extension plugin or custom filter',
 					'wpsso' ).'<em></td>';
 			}
 

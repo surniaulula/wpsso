@@ -87,13 +87,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$post_type = get_post_type( $post_id );				// post type name
 					$post_status = get_post_status( $post_id );			// post status name
 
-					if ( empty( $post_type ) || empty( $post_status ) ) {
+					if ( empty( $post_type ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'exiting early: incomplete post object' );
+							$this->p->debug->log( 'exiting early: post_type is empty' );
+						return $shortlink;
+					} elseif ( empty( $post_status ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'exiting early: post_status is empty' );
 						return $shortlink;
 					} elseif ( $post_status === 'auto-draft' ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'exiting early: post is an auto-draft' );
+							$this->p->debug->log( 'exiting early: post_status is auto-draft' );
 						return $shortlink;
 					}
 
@@ -175,14 +179,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$post_obj = SucomUtil::get_post_object();
-			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			$post_id = empty( $post_obj->ID ) ?
+				0 : $post_obj->ID;
 
-			// make sure we have at least a post type and post status
-			if ( $post_obj === false || 
-				empty( $post_obj->post_type ) || 
-					empty( $post_obj->post_status ) ) {
+			// make sure we have at least a post type and status
+			if ( ! is_object( $post_obj ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: incomplete post object' );
+					$this->p->debug->log( 'exiting early: post_obj is not an object' );
+				return;
+			} elseif ( empty( $post_obj->post_type ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: post_type is empty' );
+				return;
+			} elseif ( empty( $post_obj->post_status ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: post_status is empty' );
 				return;
 			}
 
@@ -191,12 +202,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 
-			if ( $post_obj->post_status !== 'auto-draft' ) {
+			if ( $post_obj->post_status === 'auto-draft' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
+			} else {
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
 				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id ) ) {
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'adding metabox for post' );
 
 					// hooked by woocommerce module to load front-end libraries and start a session
 					do_action( $lca.'_admin_post_header', $mod, $screen->id );
@@ -218,8 +229,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->check_post_header( $post_id, $post_obj );
 					}
 				}
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'skipped head meta: post_status is auto-draft' );
+			} 
 
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
@@ -340,7 +350,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
-
 			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id ) ) {
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_settings' ), $post_obj->post_type, 'normal', 'low' );
