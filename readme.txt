@@ -347,7 +347,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a check for WP_Error after determining the sharing URL, in case a WordPress function returned an error object instead of a URL string.
+	* Added a check for WP_Error after determining the sharing URL, in case a WordPress function returns an error object instead of a URL string.
 
 **Version 3.33.5-1 (2016/07/18)**
 
