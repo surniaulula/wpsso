@@ -336,6 +336,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.6-dev1 (2016/07/18)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a check for WP_Error after determining the sharing URL, in case a WordPress function returned an error object instead of a URL string.
+
 **Version 3.33.5-1 (2016/07/18)**
 
 Official announcement: N/A
@@ -442,6 +455,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.6-dev1 =
+
+(2016/07/18) Added a check for WP_Error after determining the sharing URL.
 
 = 3.33.5-1 =
 
