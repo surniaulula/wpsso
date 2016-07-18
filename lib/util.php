@@ -328,17 +328,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
-				$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
 				$topics = get_transient( $cache_id );
 				if ( is_array( $topics ) ) {
-					$this->p->debug->log( $cache_type.': topics array retrieved from transient '.$cache_id );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $cache_type.': topics array retrieved from transient '.$cache_id );
 					return $topics;
 				}
 			}
-			if ( ( $topics = file( WPSSO_TOPICS_LIST, 
-				FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				$this->p->notice->err( sprintf( __( 'Error reading the %s topic list file.', 
-					'wpsso' ), WPSSO_TOPICS_LIST ) );
+			if ( ( $topics = file( WPSSO_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'error reading %s topic list file' );
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( 'Error reading %s topic list file.', 
+						'wpsso' ), WPSSO_TOPICS_LIST ) );
 				return $topics;
 			}
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
@@ -347,8 +351,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $cache_id ) ) {
 				set_transient( $cache_id, $topics, $this->p->options['plugin_object_cache_exp'] );
-				$this->p->debug->log( $cache_type.': topics array saved to transient '.
-					$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $cache_type.': topics array saved to transient '.
+						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 			return $topics;
 		}
@@ -942,7 +947,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: module object is defined' );
 				return $mod;
-			} elseif ( $this->p->debug->enabled )
+			}
+
+			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			// check for a recognized object
@@ -1131,6 +1138,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'add paged query url = '.$url );
 				}
+			}
+
+			if ( is_wp_error( $url ) ) {	// just in case
+				$error_msg = $url->get_error_message();
+				$url = false;
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'wordpress error: '.$error_msg );
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( 'WordPress error: %s',
+						'wpsso' ), $error_msg ), true );
 			}
 
 			// fallback for themes and plugins that don't use the standard wordpress functions/variables
