@@ -195,13 +195,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( 'plugin_filter_lang' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Generate Missing WP Media Sizes',
+			$form->get_th_html( _x( 'Recreate Missing WP Media Sizes',
 				'option label', 'wpsso' ), null, 'plugin_auto_img_resize' ).
 			$this->get_nocb_cell( 'plugin_auto_img_resize' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Enforce Image Dimensions Check',
 				'option label', 'wpsso' ), null, 'plugin_check_img_dims' ).
-			$this->get_nocb_cell( 'plugin_check_img_dims' );
+			$this->get_nocb_cell( 'plugin_check_img_dims', 
+				'<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Allow Upscaling of WP Media Images',
 				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).
@@ -489,9 +490,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					( empty( $text ) ? '' : ' '.$text );
 		}
 
-		private function get_nocb_cell( $name, $text = '', $comment = '' ) {
-			return '<td class="blank">'.$this->get_nocb( $name, $text ).
-				( empty( $comment ) ? '' : ' '.$comment ).'</td>';
+		private function get_nocb_cell( $name, $text = '' ) {
+			return '<td class="blank">'.$this->get_nocb( $name, $text ).'</td>';
 		}
 	}
 }

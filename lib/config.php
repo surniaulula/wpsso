@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_attr_filter_prio' => 100,
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
-					'plugin_auto_img_resize' => 1,			// Create Missing WP Media Images
+					'plugin_auto_img_resize' => 1,			// Recreate Missing WP Media Sizes
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
 					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percentage
@@ -713,7 +713,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cache_info:use' => 'default',
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
 					'plugin_filter_lang:use' => 'default',
-					'plugin_auto_img_resize' => 1,			// Auto-Resize Media Images
+					'plugin_auto_img_resize' => 1,			// Recreate Missing WP Media Sizes
 					'plugin_auto_img_resize:use' => 'default',
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_check_img_dims:use' => 'default',
