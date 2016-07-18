@@ -348,6 +348,7 @@ Official announcement: N/A
 	* None
 * *Developer Notes*
 	* Added a check for WP_Error after determining the sharing URL, in case a WordPress function returns an error object instead of a URL string.
+	* Updated the qTip2 JS / CSS library files from v2.2.1 to v3.0.3.
 
 **Version 3.33.5-1 (2016/07/18)**
 
