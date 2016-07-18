@@ -426,7 +426,7 @@ msgstr ""
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/script.php:89
+#: lib/com/script.php:93
 msgid "Use Image"
 msgstr ""
 

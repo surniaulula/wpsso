@@ -27,14 +27,20 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
+			// https://developers.google.com/speed/libraries/
 			wp_enqueue_style( 'jquery-ui.js',
 				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css', array(), '1.11.4' );
+
+			// http://qtip2.com/download
 			wp_register_style( 'jquery-qtip.js',
-				$url_path.'css/ext/jquery-qtip.min.css', array(), '2.2.1' );
+				$url_path.'css/ext/jquery-qtip.min.css', array(), '3.0.3' );
+
 			wp_register_style( 'sucom-setting-pages',
 				$url_path.'css/com/setting-pages.min.css', array(), $plugin_version );
+
 			wp_register_style( 'sucom-table-setting',
 				$url_path.'css/com/table-setting.min.css', array(), $plugin_version );
+
 			wp_register_style( 'sucom-metabox-tabs',
 				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
 

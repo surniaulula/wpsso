@@ -27,15 +27,19 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
+			// http://qtip2.com/download
 			wp_register_script( 'jquery-qtip', 
 				$url_path.'js/ext/jquery-qtip.min.js', 
-					array( 'jquery' ), '2.2.1', true );
+					array( 'jquery' ), '3.0.3', true );
+
 			wp_register_script( 'sucom-tooltips', 
 				$url_path.'js/com/jquery-tooltips.min.js', 
 					array( 'jquery' ), $plugin_version, true );
+
 			wp_register_script( 'sucom-metabox', 
 				$url_path.'js/com/jquery-metabox.min.js', 
 					array( 'jquery' ), $plugin_version, true );
+
 			wp_register_script( 'sucom-admin-media', 
 				$url_path.'js/com/jquery-admin-media.min.js', 
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
