@@ -961,7 +961,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 					return isset( $post_obj->ID ) ? 
-						(int) $post_obj->ID : false;
+						(int) $post_obj->ID : 0;
 					break;
 				default:
 					return is_object( $post_obj ) ?
@@ -1018,11 +1018,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
-		public static function get_term_object( $term_id = false, $tax_slug = false, $output = 'object' ) {
+		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
 			if ( is_numeric( $term_id ) ) {
-				$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+				$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
 			} elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
 				$term_obj = get_queried_object();
@@ -1030,7 +1030,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( is_admin() ) {
 				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' &&
 					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' )
-						$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+						$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
 			}
 
@@ -1041,7 +1041,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'ID':
 				case 'term_id':
 					return isset( $term_obj->term_id ) ? 
-						(int) $term_obj->term_id : false;
+						(int) $term_obj->term_id : 0;		// cast as integer
+					break;
+				case 'taxonomy':
+					return isset( $term_obj->taxonomy ) ? 
+						(string) $term_obj->taxonomy : '';	// cast as string
 					break;
 				default:
 					return is_object( $term_obj ) ? 
@@ -1115,7 +1119,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 					return isset( $user_obj->ID ) ? 
-						(int) $user_obj->ID : false;
+						(int) $user_obj->ID : 0;
 					break;
 				default:
 					return is_object( $user_obj ) ?

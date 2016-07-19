@@ -12,9 +12,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 	class WpssoTerm extends WpssoMeta {
 
-		protected $tax_slug = false;
-		protected $tax_obj = false;
-		protected $term_id = false;
+		protected $query_term_id = 0;
+		protected $query_tax_slug = '';
+		protected $query_tax_obj = false;
 
 		public function __construct() {
 		}
@@ -27,19 +27,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * editing a category and/or tag page, so return immediately if
 				 * they're not present.
 				 */
-				if ( ( $this->tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )
+				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )
 					return;
 
-				$this->tax_obj = get_taxonomy( $this->tax_slug );
-				if ( ! $this->tax_obj->public )
+				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
+				if ( ! $this->query_tax_obj->public )
 					return;
 
 				if ( ! empty( $this->p->options['plugin_og_img_col_term'] ) ||
 					! empty( $this->p->options['plugin_og_desc_col_term'] ) ) {
 
-					add_filter( 'manage_edit-'.$this->tax_slug.'_columns', 
+					add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
 						array( $this, 'add_column_headings' ), 10, 1 );
-					add_filter( 'manage_'.$this->tax_slug.'_custom_column', 
+					add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
 						array( $this, 'get_column_content' ), 10, 3 );
 
 					$this->p->util->add_plugin_filters( $this, array( 
@@ -48,12 +48,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					) );
 				}
 
-				if ( ( $this->term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
+				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
 					return;
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'tax_slug/term_id values: '.
-						$this->tax_slug.'/'.$this->term_id );
+					$this->p->debug->log( 'tax_slug / term_id = '.
+						$this->query_tax_slug.' / '.$this->query_term_id );
 
 				/**
 				 * Available taxonomy and term actions:
@@ -72,17 +72,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
 				// load_meta_page() priorities: 100 post, 200 user, 300 term
 				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
-				add_action( $this->tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
-				add_action( 'created_'.$this->tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'created_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
-				add_action( 'edited_'.$this->tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'edited_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
-				add_action( 'delete_'.$this->tax_slug, array( &$this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'delete_'.$this->tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
+				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'edited_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'edited_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'delete_'.$this->query_tax_slug, array( &$this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'delete_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 			}
 		}
 
-		public function get_mod( $mod_id, $tax_slug = false ) {
+		public function get_mod( $mod_id, $tax_slug = '' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * Term
 			 */
 			$mod['is_term'] = true;
-			$mod['tax_slug'] = $tax_slug;
+			$mod['tax_slug'] = SucomUtil::get_term_object( $mod['id'], (string) $tax_slug, 'taxonomy' );
 
 			return apply_filters( $this->p->cf['lca'].'_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->log( 'screen id: '.$screen->id );
 
 			switch ( $screen->id ) {
-				case 'edit-'.$this->tax_slug:
+				case 'edit-'.$this->query_tax_slug:
 					break;
 				default:
 					return;
@@ -198,12 +198,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$mod = $this->get_mod( $this->term_id, $this->tax_slug );
+			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->term_id ) ) {
+			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
 
 				do_action( $lca.'_admin_term_header', $mod, $screen->id );
 
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
 						default: 
-							do_action( $lca.'_load_meta_page_term_'.$action_name, $this->term_id );
+							do_action( $lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
 							break;
 					}
 				}
@@ -243,22 +243,22 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function add_metaboxes() {
 
-			if ( ! current_user_can( $this->tax_obj->cap->edit_terms ) ) {
+			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'insufficient privileges to add metabox for term '.$this->term_id );
+					$this->p->debug->log( 'insufficient privileges to add metabox for term '.$this->query_term_id );
 				return;
 			}
 
 			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox, $this->term_id ) ) {
+			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_settings' ), 'term', 'normal', 'low' );
 			}
 		}
 
 		public function show_metaboxes( $term ) {
-			if ( ! current_user_can( $this->tax_obj->cap->edit_terms ) )
+			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) )
 				return;
 			echo '<div id="poststuff">';
 			do_meta_boxes( 'term', 'normal', $term );
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$metabox = 'social_settings';
-			$mod = $this->get_mod( $term_obj->term_id, $this->tax_slug );
+			$mod = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs = $this->get_social_tabs( $metabox, $mod );
 			$opts = $this->get_options( $term_obj->term_id );
 			$def_opts = $this->get_defaults( $term_obj->term_id );
