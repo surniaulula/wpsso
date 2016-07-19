@@ -34,7 +34,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
-			if ( ! SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) )
+			// unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false
+			if ( SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) !== false )
 				$og_image = $this->p->media->get_default_image( 1, $this->p->cf['lca'].'-opengraph', false );
 		}
 
