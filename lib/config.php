@@ -1244,8 +1244,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				if ( $do_filter ) {
 
-					self::$cf = apply_filters( self::$cf['lca'].'_get_config',
-						self::$cf, self::get_version() );
+					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf, self::get_version() );
 
 					self::$cf['config_filtered'] = true;
 
