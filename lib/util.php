@@ -1035,13 +1035,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom post sharing_url = '.$url );
-					} else {
-						$url = get_permalink( $mod['id'] );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'post permalink url = '.$url );
-					}
+					} else $url = $this->check_sharing_url( get_permalink( $mod['id'] ), 'post permalink' );
 
-					if ( $add_page && get_query_var( 'page' ) > 1 ) {
+					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
 						global $wp_rewrite;
 						$post_obj = self::get_post_object( $mod['id'] );
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
@@ -1060,9 +1056,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else {
 				if ( $mod['is_home'] ) {
 					if ( 'page' === get_option( 'show_on_front' ) ) {	// show_on_front = posts | page
-						$url = get_permalink( get_option( 'page_for_posts' ) );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'page for posts url = '.$url );
+						$url = $this->check_sharing_url( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
 						$url = apply_filters( $lca.'_home_url', home_url( '/' ) );
 						if ( $this->p->debug->enabled )
@@ -1076,11 +1070,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom term sharing_url = '.$url );
-						} else {
-							$url = get_term_link( $mod['id'], $mod['tax_slug'] );
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'term link url = '.$url );
-						}
+						} else $url = $this->check_sharing_url( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
 					} 
 					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page );
 
@@ -1092,33 +1082,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
-						} else {
-							$url = get_author_posts_url( $mod['id'] );
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'author posts url = '.$url );
-						}
+						} else $url = $this->check_sharing_url( get_author_posts_url( $mod['id'] ), 'author posts' );
 					}
 					$url = apply_filters( $lca.'_author_url', $url, $mod, $add_page );
 
 				} elseif ( is_search() ) {
-					$url = get_search_link();
+					$url = $this->check_sharing_url( get_search_link(), 'search link' );
+					$url = apply_filters( $lca.'_search_url', $url, $mod, $add_page );
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
-					$url = get_post_type_archive_link( get_query_var( 'post_type' ) );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'post type archive url = '.$url );
+					$url = $this->check_sharing_url( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post type archive' );
 
 				} elseif ( is_archive() ) {
 					if ( is_date() ) {
 						if ( is_day() )
-							$url = get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
+							$url = $this->check_sharing_url( get_day_link( get_query_var( 'year' ), 
+								get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
 						elseif ( is_month() )
-							$url = get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) );
+							$url = $this->check_sharing_url( get_month_link( get_query_var( 'year' ), 
+								get_query_var( 'monthnum' ) ), 'month link' );
 						elseif ( is_year() )
-							$url = get_year_link( get_query_var( 'year' ) );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'date archive url = '.$url );
+							$url = $this->check_sharing_url( get_year_link( get_query_var( 'year' ) ), 'year link' );
 					}
+					$url = apply_filters( $lca.'_archive_url', $url, $mod, $add_page );
 				}
 
 				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
@@ -1140,16 +1126,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( is_wp_error( $url ) ) {	// just in case
-				$error_msg = $url->get_error_message();
-				$url = false;
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'wordpress error: '.$error_msg );
-				if ( is_admin() )
-					$this->p->notice->err( sprintf( __( 'WordPress error: %s',
-						'wpsso' ), $error_msg ), true );
-			}
-
 			// fallback for themes and plugins that don't use the standard wordpress functions/variables
 			if ( empty ( $url ) ) {
 				// strip out tracking query arguments by facebook, google, etc.
@@ -1163,9 +1139,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return apply_filters( $lca.'_sharing_url', $url, $mod, $add_page );
 		}
 
-		public function fix_relative_url( $url = '' ) {
-			if ( ! empty( $url ) && 
-				strpos( $url, '://' ) === false ) {
+		public function check_sharing_url( $url, $source = 'sharing' ) {
+			if ( is_string( $url ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $source.' url = '.$url );
+				return $url;
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $source.' url is '.gettype( $url ) );
+					if ( is_wp_error( $url ) )
+						$this->p->debug->log( $source.' url error: '.$url->get_error_message() );
+				}
+				return false;
+			}
+		}
+
+		public function fix_relative_url( $url ) {
+			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url found = '.$url );

@@ -495,6 +495,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$crawler_name = 'google';
 						break;
 
+					// Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)"
+					case ( strpos( $ua, 'compatible; google-structured-data-testing-tool' ) !== false ):
+						self::$crawler_name = 'google';
+						break;
+
 					// "Pinterest/0.1 +http://pinterest.com/"
 					case ( strpos( $ua, 'pinterest/' ) === 0 ):
 						self::$crawler_name = 'pinterest';

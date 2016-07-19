@@ -56,8 +56,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 		public function add_html_attributes( $html_attr ) {
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->args( array (
+					'html_attr' => $html_attr,
+				) );
+			}
 
 			$prefix_ns = apply_filters( $this->p->cf['lca'].'_og_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
