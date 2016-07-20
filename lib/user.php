@@ -285,12 +285,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark( $metabox.' table rows' );	// end timer
 		}
 
-		public function get_form_display_names() {
-			$user_ids = array();
-			foreach ( get_users() as $user ) 
-				$user_ids[$user->ID] = $user->display_name;
-			$user_ids[0] = 'none';
-			return $user_ids;
+		public function get_form_display_names( $roles = array( 'author', 'editor', 'administrator' ) ) {
+			foreach ( $roles as $role ) {
+				$query_args = array( 
+					'role' => $role,
+					'fields' => array( 'ID', 'display_name' ),
+				);
+				foreach ( get_users( $query_args ) as $user ) 
+					$user_ids[$user->ID] = $user->display_name;
+			}
+			asort( $user_ids );
+			return array_merge( array( 0 => 'none' ), $user_ids );
 		}
 
 		public function get_form_contact_fields( $fields = array() ) { 

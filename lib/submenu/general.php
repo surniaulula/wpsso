@@ -73,7 +73,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_table_rows( $metabox, $key ) {
 			$table_rows = array();
-			$user_names = $this->p->m['util']['user']->get_form_display_names();
+		
+			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) )
+				$user_names = $this->p->m['util']['user']->get_form_display_names();
+
 			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
 
 			switch ( $metabox.'-'.$key ) {
