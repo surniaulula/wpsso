@@ -16,9 +16,8 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 == Description ==
 
-<img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" />
 <dl>
-<dt><strong>WPSSO provides <em>complete</em> social meta tags and Schema / Structured Data markup</strong> &mdash;</dt>
+<dt><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>WPSSO provides <em>complete</em> social meta tags and Schema / Structured Data markup</strong> &mdash;</dt>
 <dd><a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data</a> markup in webpages are read by Google Search and social websites to describe &amp; display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, etc.).</dd>
 
 <dt><strong>WPSSO uses the <em>existing</em> content of your site to generate meta tags and Schema markup</strong> &mdash;</dt>
