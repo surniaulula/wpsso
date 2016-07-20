@@ -14,19 +14,20 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>WPSSO provides <em>complete</em> social meta tags and Schema / Structured Data markup</strong> &mdash;</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p>
+<strong>WPSSO provides <em>complete</em> social meta tags and Schema / Structured Data markup</strong> &mdash;</p>
 
-<p><a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data</a> markup in webpages are read by Google Search and social websites to describe &amp; display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, etc.).</li></ul></p>
+<p>Social websites and Google read <a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data</a> markup in webpages to describe &amp; display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, etc.).</li></ul></p>
 
-<p><strong>WPSSO uses the <em>existing</em> content of your site to generate meta tags and Schema markup</strong> &mdash;</p>
+<p><strong>WPSSO uses <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash;</p>
 
 <p>There's no need to manually enter / configure any additional settings or values.</p>
 
-<p><strong>Social meta tags and Schema markup are the cornerstone of any social SEO strategy</strong> &mdash;</p>
+<p><strong>Social meta tags and Schema markup are the social SEO cornerstone</strong> &mdash;</p>
 
 <p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
 
-<p><strong>Additional and customized social meta tags and Schema markup</strong> &mdash;</p>
+<p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
 
 <p>WPSSO (Pro version) retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 
