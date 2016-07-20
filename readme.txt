@@ -336,7 +336,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.6-dev4 (2016/07/19)**
+**Version 3.33.6-dev5 (2016/07/19)**
 
 Official announcement: N/A
 
@@ -349,7 +349,9 @@ Official announcement: N/A
 * *Developer Notes*
 	* Added a check for WP_Error when requesting a URL from WordPress, in case an error object is returned instead of a URL string.
 	* Updated the qTip2 JavaScript / CSS library files from v2.2.1 to v3.0.3.
-	* Added the taxonomy slug in term $mod array.
+	* Replaced get_term_by() function calls by get_term() to circumvent and apparent bug in that function.
+	* Added the taxonomy slug in term $mod array (cast as a string).
+	* Refined the user list to include only authors, editors, and admins when selecting a default author.
 
 **Version 3.33.5-1 (2016/07/18)**
 
@@ -458,7 +460,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.6-dev4 =
+= 3.33.6-dev5 =
 
 (2016/07/19) Added a check for WP_Error after determining the sharing URL. Updated the qTip2 JavaScript / CSS library files.
 
