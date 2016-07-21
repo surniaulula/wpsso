@@ -25,7 +25,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 <p>There's no need to manually enter / configure any additional settings or values.</p>
 
-<p><strong>Social meta tags and Schema markup are the social SEO cornerstone</strong> &mdash;</p>
+<p><strong>Social meta tags and Schema markup are the cornerstone of social SEO</strong> &mdash;</p>
 
 <p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
 
@@ -470,12 +470,4 @@ Official announcement: N/A
 = 3.33.6-1 =
 
 (2016/07/20) Added a check for WP_Error when determining the sharing URL. Updated the qTip2 JavaScript / CSS library files. Refined the user list, when selecting a default author.
-
-= 3.33.5-1 =
-
-(2016/07/18) Updated Facebook language locales. Updated the markdown library for PHP v7 compatibility. Added a new "Bitly Generic Access Token" option (Pro version). Minor performance improvement.
-
-= 3.33.4-1 =
-
-(2016/07/06) Added support for additional Schema types (see Changelog). Updated the BuddyPress module to prevent recursion (Pro version). Fixed a fallback feature for localized options.
 
