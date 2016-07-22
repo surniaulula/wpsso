@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'post_id' => $post_id,
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'post_id' => $post_id,
@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attach_id, $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'num' => $num,
 					'size_name' => $size_name,
 					'attach_id' => $attach_id,
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'post_id' => $post_id,
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->args( $args );
+				$this->p->debug->log_args( $args );
 
 			$lca = $this->p->cf['lca'];
 			$size_info = $this->get_size_info( $size_name );
@@ -451,6 +451,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_info();
 			}
 
+			// check if image exceeds hard-coded limits (dimensions, ratio, etc.)
 			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
 			// wpsso_attached_accept_img_dims is hooked by the WpssoProCheckImgSize class / module.
@@ -473,7 +474,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_default_image( $num = 1, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'check_dupes' => $check_dupes,
@@ -533,7 +534,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'mod' => $mod,
@@ -706,6 +707,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
 							}
 
+							// check if image exceeds hard-coded limits (dimensions, ratio, etc.)
 							$img_size_within_limits = $this->img_size_within_limits( $og_image['og:image'], 
 								$size_name, $og_image['og:image:width'], $og_image['og:image:height'],
 									__( 'Content', 'wpsso' ) );
@@ -734,7 +736,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_default_video( $num = 0, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'check_dupes' => $check_dupes,
 				) );
@@ -765,7 +767,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,

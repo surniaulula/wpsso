@@ -1285,7 +1285,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_single_author_noscript( array &$mod, $author_id = 0, $itemprop = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'author_id' => $author_id,
 					'itemprop' => $itemprop,
 				) );

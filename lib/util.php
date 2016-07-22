@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( '$mod '.trim( print_r( SucomDebug::pretty_array( $mod ), true ) ) );
+				$this->p->debug->log_arr( '$mod ', $mod );
 
 			return $mod;
 		}
@@ -1012,7 +1012,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_sharing_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'mod' => $mod,
 					'add_page' => $add_page,
 				) );
@@ -1352,7 +1352,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function parse_readme( $ext, $expire_secs = 86400, $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'ext' => $ext,
 					'expire_secs' => $expire_secs,
 					'use_cache' => $use_cache,

@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.6-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.7-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1243,22 +1244,22 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:711
+#: lib/media.php:713
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:930 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:932 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:985
+#: lib/media.php:987
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1002
+#: lib/media.php:1004
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2319,27 +2320,27 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:181 lib/pro/media/ngg.php:220
+#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:221
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:224 lib/pro/util/checkimgdims.php:66
+#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:66
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:226 lib/pro/util/checkimgdims.php:68
+#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:68
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/upscale.php:193
+#: lib/pro/media/upscale.php:195
 msgid ""
 "Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum)."
 msgstr ""
 
-#: lib/pro/media/upscale.php:195
+#: lib/pro/media/upscale.php:197
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."

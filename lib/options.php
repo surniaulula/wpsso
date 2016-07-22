@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function get_defaults( $idx = false, $force_filter = false ) {
 			
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'idx' => $idx, 
 					'force_filter' => $force_filter, 
 				) );
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function get_site_defaults( $idx = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'idx' => $idx, 
 					'force_filter' => $force_filter, 
 				) );

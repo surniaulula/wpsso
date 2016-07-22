@@ -68,7 +68,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$add_hashtags = true, $encode = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'type' => $type, 
 					'textlen' => $textlen, 
 					'mod' => $mod, 
@@ -172,7 +172,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$add_hashtags = false, $encode = true, $md_idx = 'og_title' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'textlen' => $textlen, 
 					'trailing' => $trailing, 
 					'mod' => $mod, 
@@ -352,7 +352,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// begin timer
 
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'textlen' => $textlen, 
 					'trailing' => $trailing, 
 					'mod' => $mod, 
@@ -523,7 +523,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'mod' => $mod, 
 					'use_cache' => $use_cache,
 					'md_idx' => $md_idx,

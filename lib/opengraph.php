@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function add_html_attributes( $html_attr ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array (
+				$this->p->debug->log_args( array (
 					'html_attr' => $html_attr,
 				) );
 			}
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function get_all_videos( $num = 0, array &$mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'num' => $num,
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array &$mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array(
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
 					'mod' => $mod,

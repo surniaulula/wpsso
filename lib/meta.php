@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_md_image( $num, $size_name, array &$mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'num' => $num,
 					'size_name' => $size_name,
 					'mod' => $mod,
@@ -736,7 +736,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_og_video( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'num' => $num,
 					'mod_id' => $mod_id,
 					'check_dupes' => $check_dupes,
@@ -783,7 +783,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_og_video_preview_image( $mod, $check_dupes = false, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->args( array( 
+				$this->p->debug->log_args( array( 
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,
 					'md_pre' => $md_pre,
