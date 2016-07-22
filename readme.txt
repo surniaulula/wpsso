@@ -344,6 +344,20 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.7-dev1 (2016/07/22)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new SucomDebug `log_arr()` method.
+	* Renamed the SucomDebug `args()` method to `log_args()`.
+
 **Version 3.33.6-1 (2016/07/20)**
 
 Official announcement: N/A
@@ -466,6 +480,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.7-dev1 =
+
+(2016/07/22) Added a new SucomDebug log_arr() method. Renamed the SucomDebug args() method to log_args().
 
 = 3.33.6-1 =
 
