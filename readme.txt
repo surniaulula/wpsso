@@ -344,7 +344,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.7-dev2 (2016/07/23)**
+**Version 3.33.7-dev3 (2016/07/23)**
 
 Official announcement: N/A
 
@@ -481,7 +481,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.7-dev2 =
+= 3.33.7-dev3 =
 
 (2016/07/23) Added a new SucomDebug log_arr() method. Renamed the SucomDebug args() method to log_args().
 
