@@ -265,7 +265,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( $size_names as $size_name ) {
 				if ( ! is_string( $size_name ) ) 
 					continue;
-				$size = $this->p->media->get_size_info( $size_name );
+				$size = SucomUtil::get_size_info( $size_name );
 				$html .= '<option value="'.esc_attr( $size_name ).'" ';
 				if ( $this->in_options( $name ) )
 					$html .= selected( $this->options[$name], $size_name, false );

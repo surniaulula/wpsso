@@ -1493,23 +1493,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $theme->get_template().'-'.$theme->Version;
 		}
 
-		public static function get_all_image_sizes() {
+		public static function get_image_sizes() {
 			global $_wp_additional_image_sizes; 
 			$sizes = array(); 
-			foreach ( get_intermediate_image_sizes() as $_size ) {
-				if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
-					$sizes[$_size]['width'] = get_option( $_size.'_size_w' );
-					$sizes[$_size]['height'] = get_option( $_size.'_size_h' );
-					$sizes[$_size]['crop'] = (bool) get_option( $_size.'_crop' );
-				} elseif ( isset( $_wp_additional_image_sizes[$_size] ) ) {
-					$sizes[$_size] = array(
-						'width' => $_wp_additional_image_sizes[$_size]['width'],
-						'height' => $_wp_additional_image_sizes[$_size]['height'],
-						'crop' => $_wp_additional_image_sizes[$_size]['crop'],
-					);
-				}
-			} 
+			foreach ( get_intermediate_image_sizes() as $size_name )
+				$sizes = self::get_size_info( $size_name );
 			return $sizes;
+		}
+
+		public static function get_size_info( $size_name = 'thumbnail' ) {
+			if ( is_integer( $size_name ) ) 
+				return;
+			if ( is_array( $size_name ) ) 
+				return;
+
+			global $_wp_additional_image_sizes;
+
+			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) )
+				$width = intval( $_wp_additional_image_sizes[$size_name]['width'] );
+			else $width = get_option( $size_name.'_size_w' );
+
+			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) )
+				$height = intval( $_wp_additional_image_sizes[$size_name]['height'] );
+			else $height = get_option( $size_name.'_size_h' );
+
+			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) )
+				$crop = $_wp_additional_image_sizes[$size_name]['crop'];
+			else $crop = get_option( $size_name.'_crop' );
+
+			if ( ! is_array( $crop ) )
+				$crop = empty( $crop ) ? false : true;
+
+			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
 		}
 	}
 }

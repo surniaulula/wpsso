@@ -63,32 +63,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $html;
 		}
 
-		public function get_size_info( $size_name = 'thumbnail' ) {
-			if ( is_integer( $size_name ) ) 
-				return;
-			if ( is_array( $size_name ) ) 
-				return;
-
-			global $_wp_additional_image_sizes;
-
-			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) )
-				$width = intval( $_wp_additional_image_sizes[$size_name]['width'] );
-			else $width = get_option( $size_name.'_size_w' );
-
-			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) )
-				$height = intval( $_wp_additional_image_sizes[$size_name]['height'] );
-			else $height = get_option( $size_name.'_size_h' );
-
-			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) )
-				$crop = $_wp_additional_image_sizes[$size_name]['crop'];
-			else $crop = get_option( $size_name.'_crop' );
-
-			if ( ! is_array( $crop ) )
-				$crop = empty( $crop ) ? false : true;
-
-			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
-		}
-
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -321,7 +295,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 
 			$lca = $this->p->cf['lca'];
-			$size_info = $this->get_size_info( $size_name );
+			$size_info = SucomUtil::get_size_info( $size_name );
 			$img_url = '';
 			$img_width = -1;
 			$img_height = -1;
@@ -1007,6 +981,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return true;
+		}
+
+		// deprecated 2016/07/23
+		public function get_size_info( $size_name = 'thumbnail' ) {
+			return SucomUtil::get_size_info( $size_name );
 		}
 	}
 }
