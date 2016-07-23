@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'define image sizes' );	// end timer
-				$this->p->debug->log_arr( 'get_intermediate_image_sizes', get_intermediate_image_sizes() );
+				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_all_image_sizes() );
 			}
 		}
 
