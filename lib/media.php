@@ -198,9 +198,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_image['og:image:cropped'],
 						$og_image['og:image:id']
 					) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
+
 					if ( ! empty( $og_image['og:image'] ) &&
 						$this->p->util->push_max( $og_ret, $og_image, $num ) )
 							return $og_ret;
+
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'attachment id '.$attach_id.' is not an image' );
 			}
@@ -249,6 +251,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_image['og:image:cropped'],
 						$og_image['og:image:id']
 					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+
 					if ( ! empty( $og_image['og:image'] ) &&
 						$this->p->util->push_max( $og_ret, $og_image, $num ) )
 							break;	// stop here and apply the 'wpsso_attached_images' filter

@@ -600,14 +600,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$value = '';
 			// try and get a smaller thumbnail version if we can
 			if ( isset( $og_image['og:image:id'] ) && 
-				$og_image['og:image:id'] > 0 )
-					list(
-						$og_image['og:image'],
-						$og_image['og:image:width'],
-						$og_image['og:image:height'],
-						$og_image['og:image:cropped'],
-						$og_image['og:image:id']
-					) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
+				$og_image['og:image:id'] > 0 ) {
+				list(
+					$og_image['og:image'],
+					$og_image['og:image:width'],
+					$og_image['og:image:height'],
+					$og_image['og:image:cropped'],
+					$og_image['og:image:id']
+				) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
+			}
 
 			if ( ! empty( $og_image['og:image'] ) )
 				$value .= '<div class="preview_img" style="background-image:url('.$og_image['og:image'].');"></div>';
