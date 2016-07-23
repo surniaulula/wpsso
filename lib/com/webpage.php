@@ -242,16 +242,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$title = wp_title( $separator, false, 'right' );
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'is_singular wp_title() = "'.$title.'"' );
-							if ( $this->p->options['plugin_filter_title'] )
-								$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
+							//if ( $this->p->options['plugin_filter_title'] )
+							//	$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
 						}
 					} elseif ( ! empty( $mod['id'] ) ) {
 						$title = apply_filters( 'wp_title', get_the_title( $mod['id'] ).
 							' '.$separator.' ', $separator, 'right' );
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
-							if ( $this->p->options['plugin_filter_title'] )
-								$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
+							//if ( $this->p->options['plugin_filter_title'] )
+							//	$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
 						}
 					}
 
@@ -422,7 +422,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 							// apply the content filters
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
-								$this->p->debug->log( SucomDebug::get_hooks( 'get_the_excerpt' ) );
+								//$this->p->debug->log( SucomDebug::get_hooks( 'get_the_excerpt' ) );
 							}
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
@@ -622,7 +622,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// apply the content filters
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'applying the WordPress the_content filters' );
-					$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
+					//$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
 				}
 
 				$content = apply_filters( 'the_content', $content );

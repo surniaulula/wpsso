@@ -227,8 +227,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
 				}
 			}
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'define image sizes' );	// end timer
+
+				global $_wp_additional_image_sizes;
+				$this->p->debug->log_arr( '$_wp_additional_image_sizes', $_wp_additional_image_sizes );
+			}
 		}
 
 		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {
