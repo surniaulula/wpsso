@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.6-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.7-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-07-19 12:37-0400\n"
-"PO-Revision-Date: 2016-07-19 12:37-0400\n"
+"POT-Creation-Date: 2016-07-23 10:38-0400\n"
+"PO-Revision-Date: 2016-07-23 10:38-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1078,7 +1078,7 @@ msgstr "URL de partage"
 #: lib/gpl/admin/meta.php:74 lib/gpl/admin/meta.php:223
 #: lib/gpl/admin/post.php:80 lib/pro/admin/meta.php:89
 #: lib/pro/admin/meta.php:244 lib/pro/admin/post.php:106
-#: lib/submenu/general.php:274
+#: lib/submenu/general.php:278
 msgctxt "metabox title"
 msgid "Google Structured Data / Schema Markup"
 msgstr "Données Structurées Google / Balises de Schéma"
@@ -1185,19 +1185,19 @@ msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:711
+#: lib/media.php:713
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:930 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:932 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr "la Bibliothèque de Médias"
 
-#: lib/media.php:985
+#: lib/media.php:987
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1002
+#: lib/media.php:1004
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -1293,7 +1293,7 @@ msgstr "Sélectionnez le champ contact de la page profil d'auteur à utiliser po
 msgid "If the '%1$s' is not a valid URL, then fallback to using the author archive URL from this website (example: '%2$s')."
 msgstr "Si la valeur de l'option '%1$s' n'est pas un URL valide, alors l'URL de la page d'archive de l'auteur sera utilisé a ça place (par exemple, ' %2$s')."
 
-#: lib/messages.php:231 lib/submenu/general.php:136
+#: lib/messages.php:231 lib/submenu/general.php:140
 msgctxt "option label"
 msgid "Author Profile URL Field"
 msgstr "Champ URL pour profil d’auteur"
@@ -1406,8 +1406,8 @@ msgid "If an author does not have a Facebook page URL, %1$s can fallback and use
 msgstr "Si un auteur n'a pas d'URL de page Facebook, %1$s peur utilisez le <em>%2$s</em> à ça place (la valeur recommandée est 'Nom d'affichage publique')."
 
 #: lib/messages.php:448 lib/messages.php:518 lib/messages.php:575
-#: lib/submenu/essential.php:92 lib/submenu/general.php:227
-#: lib/submenu/general.php:372
+#: lib/submenu/essential.php:93 lib/submenu/general.php:231
+#: lib/submenu/general.php:376
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr "Format du nom d’auteur"
@@ -1937,23 +1937,23 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
 
-#: lib/pro/media/ngg.php:181 lib/pro/media/ngg.php:220
+#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:221
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/pro/media/ngg.php:224 lib/pro/util/checkimgdims.php:66
+#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:66
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/pro/media/ngg.php:226 lib/pro/util/checkimgdims.php:68
+#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:68
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
-#: lib/pro/media/upscale.php:193
+#: lib/pro/media/upscale.php:195
 msgid "Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum)."
 msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s (dépasse %7$s maximum)."
 
-#: lib/pro/media/upscale.php:195
+#: lib/pro/media/upscale.php:197
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
@@ -2046,7 +2046,7 @@ msgid "File and Object Cache"
 msgstr "Cache Fichiers / Objets"
 
 #: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:102
-#: lib/submenu/essential.php:160
+#: lib/submenu/essential.php:161
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
@@ -2111,7 +2111,7 @@ msgctxt "metabox tab"
 msgid "Schema"
 msgstr "Schéma"
 
-#: lib/submenu/advanced.php:80 lib/submenu/general.php:63
+#: lib/submenu/advanced.php:80 lib/submenu/general.php:64
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr "Twitter"
@@ -2121,7 +2121,7 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / Autre"
 
-#: lib/submenu/advanced.php:98 lib/submenu/essential.php:156
+#: lib/submenu/advanced.php:98 lib/submenu/essential.php:157
 msgctxt "option label"
 msgid "Clear All Cache(s) on Save Settings"
 msgstr "Vider tous les caches lors de l'enregistrement des réglages"
@@ -2146,109 +2146,109 @@ msgctxt "metabox title"
 msgid "Essential Advanced Settings"
 msgstr "Réglages Avancés Essentiels"
 
-#: lib/submenu/essential.php:61
+#: lib/submenu/essential.php:62
 msgctxt "metabox title"
 msgid "Site Information"
 msgstr "Informations du Site"
 
-#: lib/submenu/essential.php:63 lib/submenu/general.php:82
+#: lib/submenu/essential.php:64 lib/submenu/general.php:86
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr "Rubrique d’article par défaut"
 
-#: lib/submenu/essential.php:67 lib/submenu/general.php:86
+#: lib/submenu/essential.php:68 lib/submenu/general.php:90
 msgctxt "option label"
 msgid "Website Name"
 msgstr "Nom du site Web"
 
-#: lib/submenu/essential.php:72 lib/submenu/general.php:91
+#: lib/submenu/essential.php:73 lib/submenu/general.php:95
 msgctxt "option label"
 msgid "Website Description"
 msgstr "Description du site Web"
 
-#: lib/submenu/essential.php:78
+#: lib/submenu/essential.php:79
 msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/submenu/essential.php:80 lib/submenu/general.php:215
+#: lib/submenu/essential.php:81 lib/submenu/general.php:219
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr "URL page d’affaires Facebook"
 
-#: lib/submenu/essential.php:84 lib/submenu/general.php:219
+#: lib/submenu/essential.php:85 lib/submenu/general.php:223
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr "ID de l’application Facebook"
 
-#: lib/submenu/essential.php:88 lib/submenu/general.php:223
+#: lib/submenu/essential.php:89 lib/submenu/general.php:227
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr "ou Nom d’utilisateurs admin FB"
 
-#: lib/submenu/essential.php:97 lib/submenu/general.php:232
+#: lib/submenu/essential.php:98 lib/submenu/general.php:236
 msgctxt "option label"
 msgid "Default Content Language"
 msgstr "Langue par défaut du contenu"
 
-#: lib/submenu/essential.php:101 lib/submenu/general.php:182
+#: lib/submenu/essential.php:102 lib/submenu/general.php:186
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr "ID de l’image par défaut / repli"
 
-#: lib/submenu/essential.php:105 lib/submenu/general.php:186
+#: lib/submenu/essential.php:106 lib/submenu/general.php:190
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr "ou URL d’une image par défaut / repli"
 
-#: lib/submenu/essential.php:110
+#: lib/submenu/essential.php:111
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr "Google / Schéma"
 
-#: lib/submenu/essential.php:112 lib/submenu/general.php:240
+#: lib/submenu/essential.php:113 lib/submenu/general.php:244
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr "URL page d’affaires Google+"
 
-#: lib/submenu/essential.php:118 lib/submenu/general.php:289
+#: lib/submenu/essential.php:119 lib/submenu/general.php:293
 msgctxt "option label"
 msgid "Google Knowledge Graph"
 msgstr "Google Knowledge Graph"
 
-#: lib/submenu/essential.php:122 lib/submenu/general.php:293
+#: lib/submenu/essential.php:123 lib/submenu/general.php:297
 msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
 
-#: lib/submenu/essential.php:125 lib/submenu/general.php:296
+#: lib/submenu/essential.php:126 lib/submenu/general.php:300
 msgid " Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr "Inclure le <a href=\"%s\">profil sociale d'Organisation</a>"
 
-#: lib/submenu/essential.php:128 lib/submenu/general.php:299
+#: lib/submenu/essential.php:129 lib/submenu/general.php:303
 msgid " Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr "Inclure le <a href=\"%s\">profil sociale d'une Personne</a> pour le propriétaire du site"
 
-#: lib/submenu/essential.php:135 lib/submenu/general.php:306
+#: lib/submenu/essential.php:136 lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Organization Logo Image URL"
 msgstr "URL de l'image logo de l'organisation"
 
-#: lib/submenu/essential.php:139
+#: lib/submenu/essential.php:140
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: lib/submenu/essential.php:141 lib/submenu/general.php:361
+#: lib/submenu/essential.php:142 lib/submenu/general.php:365
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL page entreprise Pinterest"
 
-#: lib/submenu/essential.php:146
+#: lib/submenu/essential.php:147
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lib/submenu/essential.php:148 lib/submenu/general.php:386
+#: lib/submenu/essential.php:149 lib/submenu/general.php:390
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "Le @nom d’affaires Twitter"
@@ -2258,230 +2258,230 @@ msgctxt "metabox title"
 msgid "Specific Websites and Publishers"
 msgstr "Éditeurs et Sites Web Spécifiques"
 
-#: lib/submenu/general.php:44
+#: lib/submenu/general.php:45
 msgctxt "metabox tab"
 msgid "Site Information"
 msgstr "Informations du Site"
 
-#: lib/submenu/general.php:45
+#: lib/submenu/general.php:46
 msgctxt "metabox tab"
 msgid "Descriptions"
 msgstr "Descriptions"
 
-#: lib/submenu/general.php:46
+#: lib/submenu/general.php:47
 msgctxt "metabox tab"
 msgid "Authorship"
 msgstr "Auteurs"
 
-#: lib/submenu/general.php:47
+#: lib/submenu/general.php:48
 msgctxt "metabox tab"
 msgid "Images"
 msgstr "Images"
 
-#: lib/submenu/general.php:48
+#: lib/submenu/general.php:49
 msgctxt "metabox tab"
 msgid "Videos"
 msgstr "Vidéos"
 
-#: lib/submenu/general.php:60
+#: lib/submenu/general.php:61
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr "Facebook"
 
-#: lib/submenu/general.php:61
+#: lib/submenu/general.php:62
 msgctxt "metabox tab"
 msgid "Google / Schema"
 msgstr "Google / Schéma"
 
-#: lib/submenu/general.php:62
+#: lib/submenu/general.php:63
 msgctxt "metabox tab"
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: lib/submenu/general.php:64
+#: lib/submenu/general.php:65
 msgctxt "metabox tab"
 msgid "Other"
 msgstr "Autre"
 
-#: lib/submenu/general.php:100
+#: lib/submenu/general.php:104
 msgctxt "option label"
 msgid "Title Separator"
 msgstr "Séparateur de titre"
 
-#: lib/submenu/general.php:105
+#: lib/submenu/general.php:109
 msgctxt "option label"
 msgid "Maximum Title Length"
 msgstr "Longueur de titre maximale"
 
-#: lib/submenu/general.php:108 lib/submenu/general.php:114
-#: lib/submenu/general.php:248 lib/submenu/general.php:330
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:112 lib/submenu/general.php:118
+#: lib/submenu/general.php:252 lib/submenu/general.php:334
+#: lib/submenu/general.php:398
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/submenu/general.php:111 lib/submenu/general.php:327
-#: lib/submenu/general.php:391
+#: lib/submenu/general.php:115 lib/submenu/general.php:331
+#: lib/submenu/general.php:395
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr "Longueur de description maximale"
 
-#: lib/submenu/general.php:116
+#: lib/submenu/general.php:120
 msgctxt "option label"
 msgid "Add Hashtags to Descriptions"
 msgstr "Ajouter des hashtags aux descriptions"
 
-#: lib/submenu/general.php:120
+#: lib/submenu/general.php:124
 msgctxt "option comment"
 msgid "tag names"
 msgstr "noms d'étiquettes"
 
-#: lib/submenu/general.php:123
+#: lib/submenu/general.php:127
 msgctxt "option label"
 msgid "Add Page Title in Tags / Hashtags"
 msgstr "Ajouter le titre de Page au étiquettes"
 
-#: lib/submenu/general.php:128
+#: lib/submenu/general.php:132
 msgctxt "option label"
 msgid "Add Parent Page Tags / Hashtags"
 msgstr "Ajouter étiquettes de la Page parent"
 
-#: lib/submenu/general.php:141
+#: lib/submenu/general.php:145
 msgctxt "option label"
 msgid "Fallback to Author's Archive Page"
 msgstr "Repli à la page d’index de l’auteur"
 
-#: lib/submenu/general.php:148 lib/submenu/general.php:258
+#: lib/submenu/general.php:152 lib/submenu/general.php:262
 msgctxt "option label"
 msgid "Default Author when Missing"
 msgstr "Auteur par défaut si manquant"
 
-#: lib/submenu/general.php:153 lib/submenu/general.php:263
+#: lib/submenu/general.php:157 lib/submenu/general.php:267
 msgctxt "option label"
 msgid "Use Default Author on Indexes"
 msgstr "Utiliser l’auteur par défaut sur index"
 
-#: lib/submenu/general.php:156
+#: lib/submenu/general.php:160
 msgctxt "option comment"
 msgid "defines index / archive webpages as articles"
 msgstr "définit les pages Web index / archive en tant qu'article"
 
-#: lib/submenu/general.php:160 lib/submenu/general.php:268
+#: lib/submenu/general.php:164 lib/submenu/general.php:272
 msgctxt "option label"
 msgid "Use Default Author on Search Results"
 msgstr "Utiliser l’auteur par défaut<br/>pour résultats de recherche"
 
-#: lib/submenu/general.php:163
+#: lib/submenu/general.php:167
 msgctxt "option comment"
 msgid "defines search webpages as articles"
 msgstr "définit les pages Web de recherche en tant qu'article"
 
-#: lib/submenu/general.php:170 lib/submenu/general.php:314
+#: lib/submenu/general.php:174 lib/submenu/general.php:318
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/submenu/general.php:175 lib/submenu/general.php:319
+#: lib/submenu/general.php:179 lib/submenu/general.php:323
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr "images d'aperçu vidéo sont activés (et inclus en premier)"
 
-#: lib/submenu/general.php:178
+#: lib/submenu/general.php:182
 msgctxt "option label"
 msgid "Open Graph Image Dimensions"
 msgstr "Dimensions d’images Open Graph"
 
-#: lib/submenu/general.php:191
+#: lib/submenu/general.php:195
 msgctxt "option label"
 msgid "Use Default Image on Indexes"
 msgstr "Utiliser l’image par défaut sur index"
 
-#: lib/submenu/general.php:196
+#: lib/submenu/general.php:200
 msgctxt "option label"
 msgid "Use Default Image on Search Results"
 msgstr "Utiliser l’image par défaut<br/>pour résultats de recherche"
 
-#: lib/submenu/general.php:202
+#: lib/submenu/general.php:206
 msgctxt "option label"
 msgid "Add Tags from NGG Featured Image"
 msgstr "Ajouter étiquettes de l’image NGG vedette"
 
-#: lib/submenu/general.php:245
+#: lib/submenu/general.php:249
 msgctxt "option label"
 msgid "Search / SEO Description Length"
 msgstr "Longueur max. de description SEO"
 
-#: lib/submenu/general.php:251
+#: lib/submenu/general.php:255
 msgctxt "option label"
 msgid "Author Link URL Field"
 msgstr "Champ URL pour balise Link d’auteur"
 
-#: lib/submenu/general.php:280
+#: lib/submenu/general.php:284
 msgctxt "option label"
 msgid "Meta Property Containers"
 msgstr "Contenants de propriétés Méta"
 
-#: lib/submenu/general.php:283
+#: lib/submenu/general.php:287
 msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
 msgstr "désactivée par une extension ou un filtre personnalisé"
 
-#: lib/submenu/general.php:310
+#: lib/submenu/general.php:314
 msgctxt "option label"
 msgid "Organization Banner (600x60px) URL"
 msgstr "URL bannière (600x60px) de l'organisation"
 
-#: lib/submenu/general.php:322
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr "Dimensions d'images Schéma"
 
-#: lib/submenu/general.php:333
+#: lib/submenu/general.php:337
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr "Format du nom d’auteur"
 
-#: lib/submenu/general.php:345
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Default Item Type for Home Page"
 msgstr "Type de schéma pour page d'accueil"
 
-#: lib/submenu/general.php:350
+#: lib/submenu/general.php:354
 msgctxt "option label"
 msgid "Default Item Type by Post Type"
 msgstr "Type de schéma par type d'article"
 
-#: lib/submenu/general.php:366
+#: lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr "Dimensions d'images Rich Pin"
 
-#: lib/submenu/general.php:378
+#: lib/submenu/general.php:382
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr "ID de vérif. du site Web pour Pinterest"
 
-#: lib/submenu/general.php:396
+#: lib/submenu/general.php:400
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>sommaire</em>"
 
-#: lib/submenu/general.php:400
+#: lib/submenu/general.php:404
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Image Dimensions"
 msgstr "Dimensions d’image carte <em>grande img.</em>"
 
-#: lib/submenu/general.php:408
+#: lib/submenu/general.php:412
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr "URL page d’affaires Instagram"
 
-#: lib/submenu/general.php:412
+#: lib/submenu/general.php:416
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr "URL page entreprise LinkedIn"
 
-#: lib/submenu/general.php:416
+#: lib/submenu/general.php:420
 msgctxt "option label"
 msgid "MySpace Business Page URL"
 msgstr "URL page d’affaires MySpace"
@@ -2501,90 +2501,90 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter Grande Image"
 
-#: lib/user.php:404
+#: lib/user.php:409
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:405
+#: lib/user.php:410
 msgid "Yahoo IM"
 msgstr "Yahoo IM"
 
-#: lib/user.php:406
+#: lib/user.php:411
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:265
+#: lib/util.php:266
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:266
+#: lib/util.php:267
 msgid "%s cached files, transient cache, and the WordPress object cache have been cleared."
 msgstr "Les fichiers mis en cache par %s, ainsi que sont cache transitoire, et le cache d’objets de WordPress ont été vidés."
 
-#: lib/util.php:344
+#: lib/util.php:345
 msgid "Error reading %s topic list file."
 msgstr "Erreur de lecture du fichier %s de la liste des sujets."
 
-#: lib/util.php:372
+#: lib/util.php:373
 msgid "The value of option '%s' must be a URL - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:374
+#: lib/util.php:375
 msgid "The value of option '%s' must be equal to or greather than %s - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être égal ou supérieur à %s - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:376 lib/util.php:378
+#: lib/util.php:377 lib/util.php:379
 msgid "The value of option '%s' must be numeric - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:380
+#: lib/util.php:381
 msgid "'%1$s' is not an acceptable value for option '%2$s' - resetting the option to its default value."
 msgstr "'%1$s' n'est pas une valeur acceptable pour l'option '%2$s' - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:382
+#: lib/util.php:383
 msgid "The value of option '%s' must be alpha-numeric - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:384
+#: lib/util.php:385
 msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:386
+#: lib/util.php:387
 msgid "The value of option '%s' must be a hh:mm time - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:388
+#: lib/util.php:389
 msgid "The value of option '%s' must be HTML code - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:390
+#: lib/util.php:391
 msgid "The value of option '%s' cannot be empty - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' ne peut pas être vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:613
+#: lib/util.php:614
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1590
+#: lib/util.php:1591
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:1616
+#: lib/util.php:1617
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1620
+#: lib/util.php:1621
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1623
+#: lib/util.php:1624
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1627
+#: lib/util.php:1628
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
