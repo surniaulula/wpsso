@@ -666,11 +666,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( ! empty( $og_image['og:image'] ) ) {
 
-								foreach ( array( 'width', 'height' ) as $key )
-									if ( preg_match( '/ '.$key.'=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
-										$og_image['og:image:'.$key] = $match[1];
+								// don't read / trust the image width / height attributes by default
+								if ( SucomUtil::get_const( 'WPSSO_USE_IMG_WIDTH_HEIGHT' ) ) {
+									foreach ( array( 'width', 'height' ) as $key )
+										if ( preg_match( '/ '.$key.'=[\'"]?([0-9]+)[\'"]?/i', $tag_value, $match ) ) 
+											$og_image['og:image:'.$key] = $match[1];
+								}
 
-								// get the width and height of the image file using http / https
+								// get the actual width and height of the image file using http / https
 								if ( empty( $og_image['og:image:width'] ) || $og_image['og:image:width'] < 0 ||
 									empty( $og_image['og:image:height'] ) || $og_image['og:image:height'] < 0 ) {
 

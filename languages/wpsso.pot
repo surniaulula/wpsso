@@ -1243,22 +1243,22 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:690
+#: lib/media.php:693
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:909 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:912 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:964
+#: lib/media.php:967
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:981
+#: lib/media.php:984
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2985,26 +2985,26 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1591
+#: lib/util.php:1597
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1617
+#: lib/util.php:1623
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1621
+#: lib/util.php:1627
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1624
+#: lib/util.php:1630
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1628
+#: lib/util.php:1634
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

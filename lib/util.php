@@ -889,16 +889,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $keys as $prefix ) {
 				$media_url = self::get_mt_media_url( $opts, $prefix );
+
 				if ( ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
-					list( $opts[$prefix.':width'], $opts[$prefix.':height'],
-						$image_type, $image_attr ) = @getimagesize( $media_url );
+					list( 
+						$opts[$prefix.':width'],
+						$opts[$prefix.':height'],
+						$image_type,
+						$image_attr 
+					) = @getimagesize( $media_url );
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'getimagesize() for '.$media_url.' returned '.
 							$opts[$prefix.':width'].'x'.$opts[$prefix.':height'] );
 				} else {
-					foreach ( array( 'width', 'height' ) as $wh )
-						if ( isset( $opts[$prefix.':'.$wh] ) )
-							$opts[$prefix.':'.$wh] = -1;
+					foreach ( array( 'width', 'height' ) as $attr )
+						if ( isset( $opts[$prefix.':'.$attr] ) )
+							$opts[$prefix.':'.$attr] = -1;
 				}
 			}
 			return $opts;
