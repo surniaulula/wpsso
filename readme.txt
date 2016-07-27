@@ -344,7 +344,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.8-dev2 (2016/07/27)**
+**Version 3.33.8-dev3 (2016/07/27)**
 
 Official announcement: N/A
 
@@ -500,7 +500,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.8-dev2 =
+= 3.33.8-dev3 =
 
 (2016/07/27) Optimized caching of post / term / user meta options and defaults (Pro version). Added a new "Recipe Ingredients Custom Field" option. Added a new SucomForm get_input_multi() method. 
 
