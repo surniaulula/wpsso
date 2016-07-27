@@ -328,7 +328,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$html .= $this->get_no_input( $name, $class_value, $id_value );
 				else {
 					$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
-						' class="'.esc_attr( $class_value ).' id="'.esc_attr( $id_value ).'" value="'.esc_attr( $input_value ).'"'.
+						' class="'.esc_attr( $class_value ).'" id="'.esc_attr( $id_value ).'" value="'.esc_attr( $input_value ).'"'.
 						( empty( $input_value ) && empty( $last_value ) && 	// always add one more blank
 							$num >= $show_first ? ' style="display:none;"' : '' ).
 						' onFocus="jQuery(\'#'.esc_attr( $id_value_next ).'\').show();" />'."\n";
