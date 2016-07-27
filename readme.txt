@@ -344,6 +344,21 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.8-dev1 (2016/07/27)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Optimized caching of post / term / user meta options and defaults (Pro version).
+	* Added a new "Recipe Ingredients Custom Field" option for use by plugin extensions (Pro version).
+	* Added a new SucomForm `get_input_multi()` method to dynamically show multiple text input fields.
+
 **Version 3.33.7-1 (2016/07/23)**
 
 Official announcement: N/A
@@ -480,11 +495,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.33.8-dev1 =
+
+(2016/07/27) Optimized caching of post / term / user meta options and defaults (Pro version). Added a new "Recipe Ingredients Custom Field" option. Added a new SucomForm get_input_multi() method. 
+
 = 3.33.7-1 =
 
 (2016/07/23) Improved the Yoast SEO notification message filter. Added new SucomDebug log_arr() and log_args() methods.
-
-= 3.33.6-1 =
-
-(2016/07/20) Added a check for WP_Error when determining the sharing URL. Updated the qTip2 JavaScript / CSS library files. Refined the user list, when selecting a default author.
 
