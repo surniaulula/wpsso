@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_image = SucomUtil::get_mt_prop_image( 'og' );
-			$size_info = $this->get_size_info( $size_name );
+			$size_info = SucomUtil::get_size_info( $size_name );
 			$img_preg = $this->default_img_preg;
 
 			// allow the html_tag and pid_attr regex to be modified
