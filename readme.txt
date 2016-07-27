@@ -358,6 +358,11 @@ Official announcement: N/A
 	* Optimized caching of post / term / user meta options and defaults (Pro version).
 	* Added a new "Recipe Ingredients Custom Field" option for use by plugin extensions (Pro version).
 	* Added a new SucomForm `get_input_multi()` method to dynamically show multiple text input fields.
+	* Renamed several constants:
+		* WPSSO_CURL_DISABLE to WPSSO_PHP_CURL_DISABLE
+		* WPSSO_CURL_CAINFO to WPSSO_PHP_CURL_CAINFO
+		* WPSSO_CURL_USERAGENT to WPSSO_PHP_CURL_USERAGENT
+		* WPSSO_GETIMGSIZE_DISABLE to WPSSO_PHP_GETIMGSIZE_DISABLE
 
 **Version 3.33.7-1 (2016/07/23)**
 
