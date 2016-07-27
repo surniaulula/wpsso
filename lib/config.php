@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.8-dev2',	// plugin version
-					'opt_version' => '442',		// increment when changing default options
+					'version' => '3.33.8-dev3',	// plugin version
+					'opt_version' => '443',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
@@ -570,14 +570,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_openinghoursspecification.validthrough' => 1,
 					'add_meta_itemprop_menu' => 1,
 					'add_meta_itemprop_acceptsreservations' => 1,
-					'add_meta_itemprop_ratingvalue' => 1,
-					'add_meta_itemprop_ratingcount' => 1,
-					'add_meta_itemprop_worstrating' => 1,
-					'add_meta_itemprop_bestrating' => 1,
-					'add_meta_itemprop_reviewcount' => 1,
+					'add_meta_itemprop_ratingvalue' => 1,	// Schema AggregateRating
+					'add_meta_itemprop_ratingcount' => 1,	// Schema AggregateRating
+					'add_meta_itemprop_worstrating' => 1,	// Schema AggregateRating
+					'add_meta_itemprop_bestrating' => 1,	// Schema AggregateRating
+					'add_meta_itemprop_reviewcount' => 1,	// Schema AggregateRating
 					'add_meta_itemprop_startdate' => 1,	// Schema Event
 					'add_meta_itemprop_enddate' => 1,	// Schema Event
 					'add_meta_itemprop_location' => 1,	// Schema Event
+					'add_meta_itemprop_totaltime' => 1,	// Schema Recipe
+					'add_meta_itemprop_recipeyield' => 1,	// Schema Recipe
+					'add_meta_itemprop_ingredients' => 1,	// Schema Recipe
 					/*
 					 * Advanced Settings
 					 */

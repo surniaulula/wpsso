@@ -23,12 +23,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 		}
 
-		public function filter_head_cache_salt( $salt ) {
+		public function filter_head_cache_salt( $salt, $crawler_name ) {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
 				$salt .= '_amp:true';
 
-			$crawler_name = SucomUtil::crawler_name();
 			switch ( $crawler_name ) {
 				case 'pinterest':
 					$salt .= '_crawler:'.$crawler_name;
@@ -183,9 +182,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$crawler_name = SucomUtil::crawler_name();
 			$cmt_begin = $lca.' meta tags begin';
 			$cmt_end = $lca.' meta tags end';
-			$crawler_name = SucomUtil::crawler_name();
 
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n".
@@ -221,15 +220,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
-			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$crawler_name = SucomUtil::crawler_name();
+			$author_id = false;
 			$header_array = array();
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'crawler_name is '.$crawler_name );
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
 
 				// head_cache_salt filter may add amp true/false and/or crawler name
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt',
-					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url ).')';
+					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url, $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
 
@@ -262,10 +265,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled && $author_id !== false )
 				$this->p->debug->log( 'author_id is '.$author_id );
-
-			$crawler_name = SucomUtil::crawler_name();
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'crawler_name is '.$crawler_name );
 
 			/*
 			 * Open Graph
@@ -330,7 +329,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * JSON-LD script array - execute before merge to set some internal $mt_og meta tags
 			 */
-			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id );
+			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id, $crawler_name );
 
 			/*
 			 * Clean-up open graph meta tags
@@ -363,7 +362,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),		// seo description is last
-				$this->p->schema->get_noscript_array( $mod, $mt_og, $author_id ),
+				$this->p->schema->get_noscript_array( $mod, $mt_og, $author_id, $crawler_name ),
 				$mt_json_array
 			);
 
@@ -595,7 +594,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 					}
 
-					if ( ! empty( $this->p->options['add_'.$parts[1].'_'.$parts[2].'_'.$parts[3]] ) ) {
+					// convert mixed case itemprop names (for example) to lower case
+					$add_key = strtolower( 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3] );
+
+					if ( ! empty( $this->p->options[$add_key] ) ) {
 						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
 					} elseif ( $this->p->debug->enabled )

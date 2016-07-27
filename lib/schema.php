@@ -24,18 +24,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'plugin_image_sizes' => 3,
 			), 5 );
 
-			// only filter the head attribute if we have one
-			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
-				$this->p->options['plugin_head_attr_filter_name'] !== 'none' ) {
-
+			if ( $this->is_head_attributes_enabled() ) {
 				add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ) );
-				$prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
-					100 : $this->p->options['plugin_head_attr_filter_prio'];
-				add_filter( $this->p->options['plugin_head_attr_filter_name'], 
-					array( &$this, 'filter_head_attributes' ), $prio, 1 );
-
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'skipped head attributes: filter name option is empty' );
+				add_filter( $this->p->options['plugin_head_attr_filter_name'], array( &$this, 'filter_head_attributes' ),
+					( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
+						100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
+			}
 		}
 
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
@@ -53,10 +47,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'prefix' => 'schema_img',
 			);
 
-			// if the pinterest crawler is detected, use the pinterest image dimensions instead
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
+			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+				// use pinterest (rich pin) image size for pinterest crawler
 				if ( $crawler_name === 'pinterest' )
 					$sizes['schema_img']['prefix'] = 'rp_img';
+			}
 
 			return $sizes;
 		}
@@ -70,11 +65,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 
 			if ( ! $this->is_head_attributes_enabled() )
-				return $head_attr;	// empty string
+				return $head_attr;
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_header_use_post', false );
-			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$mod = $this->p->util->get_page_mod( $use_post );
 			$head_type_url = $this->get_head_item_type( $mod );
 
 			if ( empty( $head_type_url ) ) {
@@ -101,16 +96,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function is_head_attributes_enabled() {
 
+			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
+				$this->p->options['plugin_head_attr_filter_name'] === 'none' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'head attributes disabled for empty option name' );
+				return false;
+			}
+
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: amp endpoint' );
+					$this->p->debug->log( 'head attributes disabled for amp endpoint' );
 				return false;
 			}
 
 			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
+					$this->p->debug->log( 'head attributes disabled by filter' );
 				return false;
 			}
 
@@ -369,7 +371,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * JSON-LD Script Array
 		 */
-		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id ) {
+		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id, $crawler_name ) {
+
+			switch ( $crawler_name ) {
+				case 'pinterest':	// pinterest does not read schema json-ld
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+					return array();
+			}
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
 
@@ -1089,7 +1099,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			// get_meta_array() is disabled when the wpsso-schema-json-ld extension is active
+			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
@@ -1114,20 +1124,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			switch ( $head_type_url ) {
 				case 'http://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
-					// no break
+					// no break - add date published and modified
 
 				case 'http://schema.org/WebPage':
 					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
-						'datepublished' => 'article:published_time',
-						'datemodified' => 'article:modified_time',
+						'datePublished' => 'article:published_time',
+						'dateModified' => 'article:modified_time',
 					) );
 					break;
 			}
 
 
-			// add single image meta tags (no width or height) if noscript containers are disabled
-			if ( ! $this->is_noscript_enabled() &&
-				! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+			// include only the open graph image(s) for the pinterest crawler
+			// add single image meta tags (no width or height) if noscript is disabled
+			if ( $crawler_name !== 'pinterest' && 
+				! $this->is_noscript_enabled( $crawler_name ) &&
+					! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting images for '.$head_type_url );
@@ -1142,7 +1154,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_schema_meta_itemprop', $mt_schema, $use_post, $mod );
+			return apply_filters( $this->p->cf['lca'].'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $head_type_url );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
@@ -1155,11 +1167,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( array &$mod, array &$mt_og, $user_id ) {
+		public function get_noscript_array( array &$mod, array &$mt_og, $user_id, $crawler_name ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( ! self::is_noscript_enabled() )
+			if ( ! self::is_noscript_enabled( $crawler_name ) )
 				return array();	// empty array
 
 			$ret = array();
@@ -1167,47 +1179,53 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$head_type_url = $this->get_head_item_type( $mod );
 			$size_name = $this->p->cf['lca'].'-schema';
+			$og_type = $mt_og['og:type'];	// used to get product:rating:* values
 
 			switch ( $head_type_url ) {
 				case 'http://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
-					// no break
+					// no break - get the webpage author list as well
 
 				case 'http://schema.org/WebPage':
 					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
 					break;
 			}
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'getting images for '.$head_type_url );
+			// include only the open graph image(s) for the pinterest crawler
+			if ( $crawler_name !== 'pinterest' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting images for '.$head_type_url );
+	
+				$og_image = $this->p->og->get_all_images( $max['schema_img_max'], 
+					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+	
+				if ( empty( $og_image ) && $mod['is_post'] ) 
+					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+	
+				foreach ( $og_image as $image )
+					$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
+			}
 
-			$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
-				$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+			if ( isset( $mt_og[$og_type.':rating:average'] ) )
+				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 
-			if ( empty( $og_image ) && $mod['is_post'] ) 
-				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
-
-			foreach ( $og_image as $image )
-				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
-
-			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og );
+			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $head_type_url );
 		}
 
-		public function is_noscript_enabled() {
+		public function is_noscript_enabled( $crawler_name = 'unknown' ) {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: amp endpoint' );
+					$this->p->debug->log( 'noscript disabled for amp endpoint' );
 				return false;
 			}
 
-			// returns false when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array',
-				( isset( $this->p->options['schema_add_noscript'] ) ?
-					$this->p->options['schema_add_noscript'] : true ) ) ) {
+			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
+			// returns false when the wpsso-schema-json-ld extension is active
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: schema noscript array disabled' );
+					$this->p->debug->log( 'noscript disabled by option and/or filter' );
 				return false;
 			}
 
@@ -1258,6 +1276,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					array( array( '</noscript>'."\n" ) )
 				);
 			} else return array();
+		}
+
+		public function get_aggregate_rating_noscript( array &$mod, $og_type, array $mt_og ) {
+
+			// aggregate rating needs at least one rating or review count
+			if ( ! isset( $mt_og[$og_type.':rating:average'] ) ||
+				( ! isset( $mt_og[$og_type.':rating:count'] ) && ! isset( $mt_og[$og_type.':review:count'] ) ) ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: missing rating or review count' );
+				return array();
+			}
+
+			return array_merge(
+				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">'."\n" ) ),
+				$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ),
+				( empty( $mt_og[$og_type.':rating:count'] ) ? array() : 
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingCount', $mt_og[$og_type.':rating:count'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':rating:worst'] ) ? array() :
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'worstRating', $mt_og[$og_type.':rating:worst'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':rating:best'] ) ? array() :
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'bestRating', $mt_og[$og_type.':rating:best'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':review:count'] ) ? array() :
+					$this->p->head->get_single_mt( 'meta', 'itemprop', 'reviewCount', $mt_og[$og_type.':review:count'], '', $mod ) ),
+				array( array( '</noscript>'."\n" ) )
+			);
 		}
 
 		public function get_author_list_noscript( array &$mod ) {

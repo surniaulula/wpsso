@@ -39,22 +39,16 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		}
 
 		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'unknown' ) {
+
+			// pinterest does not read twitter card meta tags
+			if ( $crawler_name === 'pinterest' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+				return array();
+			}
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-
-			switch ( $crawler_name ) {
-				case 'pinterest':
-					// twitter card meta tags are not necessary for the pinterest crawler
-					// behave normally if rich pin support is disabled, otherwise, exit early
-					if ( SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) )
-						break;
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
-					return array();
-
-					break;
-			}
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )

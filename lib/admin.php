@@ -381,9 +381,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
 			}
 
-			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
-			if ( apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
-				$this->check_tmpl_head_elements();
+			$this->check_tmpl_head_elements();
 
 			return $opts;
 		}
@@ -1357,13 +1355,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function check_tmpl_head_elements() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-
-			// filter_head_attributes() is disabled when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: schema head attributes disabled' );
-				return;
-			}
 
 			// only check if using the default filter name
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
