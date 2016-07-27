@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				'option label', 'wpsso' ), null, 'og_vid_https' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /> <em>'.
 				sprintf( _x( 'uses %s', 'option comment', 'wpsso' ),
-					str_replace( WPSSO_PLUGINDIR, WPSSO_PLUGINSLUG.'/', WPSSO_CURL_CAINFO ) ).'</em></td>';
+					str_replace( WPSSO_PLUGINDIR, WPSSO_PLUGINSLUG.'/', WPSSO_PHP_CURL_CAINFO ) ).'</em></td>';
 
 			$table_rows['og_vid_prev_img'] = $form->get_th_html( _x( 'Include Video Preview Image(s)',
 				'option label', 'wpsso' ), null, 'og_vid_prev_img' ).

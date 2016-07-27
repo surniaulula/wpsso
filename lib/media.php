@@ -988,11 +988,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			return true;
 		}
-
-		// deprecated 2016/07/23
-		public function get_size_info( $size_name = 'thumbnail' ) {
-			return SucomUtil::get_size_info( $size_name );
-		}
 	}
 }
 

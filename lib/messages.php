@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<p>'.$info['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs), and the minimum value is 1 second (values bellow 3600 seconds are not recommended). If you have database performance issues, or don’t use an object / transient cache (like Memcache, Xcache, etc.), you may want to disable the transient caching feature completely by setting the WPSSO_TRANSIENT_CACHE_DISABLE constant to true.</p>';
 							break;
 						case 'tooltip-plugin_verify_certs':
-							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_CURL_CAINFO.' certificate file by default. You can define a WPSSO_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
+							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_PHP_CURL_CAINFO.' certificate file by default. You can define a WPSSO_PHP_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
 							break;
 						case 'tooltip-plugin_cache_info':
 							$text = 'Report the number of objects removed from the cache when updating Posts and Pages.';

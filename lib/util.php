@@ -881,7 +881,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function add_image_url_sizes( $keys, array &$opts ) {
-			if ( self::get_const( 'WPSSO_GETIMGSIZE_DISABLE' ) )
+			if ( self::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' ) )
 				return $opts;
 
 			if ( ! is_array( $keys ) )

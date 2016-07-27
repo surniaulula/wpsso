@@ -80,25 +80,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			else return round( $mem / 1048576, 2).' mb'; 
 		}
 
-		// deprecated 2016/07/22
-		public function args( array $arr, $class_idx = 1, $function_idx = false ) { 
-			if ( $this->enabled !== true ) 
-				return;
-
-			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false )
-					$function_idx = $class_idx;
-				$class_idx++;
-			}
-
-			if ( is_int( $function_idx ) )
-				$function_idx++;
-			elseif ( $function_idx === false )
-				$function_idx = 2;
-
-			$this->log( 'args '.self::pretty_array( $arr, true ), $class_idx, $function_idx );
-		}
-
 		public function log_args( array $arr, $class_idx = 1, $function_idx = false ) { 
 			if ( $this->enabled !== true ) 
 				return;
