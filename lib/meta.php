@@ -294,6 +294,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 * Example: get_options_multi( $id, array( 'rp_desc', 'og_desc' ) );
 		 */
 		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'mod_id' => $mod_id, 
+					'idx' => $idx, 
+					'filter_options' => $filter_options, 
+				) );
+			}
 
 			if ( empty( $mod_id ) )
 				return null;
@@ -343,8 +350,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$defs =& $this->defs[$mod_id];		// shortcut
 			$opts =& $this->p->options;		// shortcut
 
-			if ( ! isset( $defs['options_filtered'] ) || 
-				$defs['options_filtered'] !== true ) {
+			if ( ! WpssoOptions::can_cache() || empty( $defs['options_filtered'] ) ) {
 
 				$defs = array(
 					'options_filtered' => '',
@@ -392,8 +398,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				);
 
 				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $this->get_mod( $mod_id ) );
-				$defs['options_filtered'] = true;
-			}
+
+				if ( WpssoOptions::can_cache() ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'setting options_filtered to true' );
+					$defs['options_filtered'] = true;
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'options_filtered value unchanged' );
+
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'get_defaults filter skipped' );
 
 			if ( $idx !== false ) {
 				if ( isset( $defs[$idx] ) )
@@ -815,6 +829,78 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'use_prev_img is 0 - skipping retrieval of video preview image' );
 
 			return $og_image;
+		}
+
+		protected function get_custom_fields( $md_opts, $all_meta ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			if ( ! is_array( $all_meta ) || empty( $all_meta ) )
+				return $opts;
+
+			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
+
+			foreach ( array( 
+				'plugin_cf_img_url' => 'og_img_url',
+				'plugin_cf_vid_url' => 'og_vid_url',
+				'plugin_cf_vid_embed' => 'og_vid_embed',
+				'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
+			) as $cf_opt_name => $meta_opt_name ) {
+
+				// check that a custom field name has been defined
+				if ( ! empty( $this->p->options[$cf_opt_name] ) )
+					$md_name = $this->p->options[$cf_opt_name];
+				else continue;
+
+				// empty or not, if the array element is set, use it
+				if ( isset( $all_meta[$md_name][0] ) )
+					$mixed =& $all_meta[$md_name][0];
+				else continue;
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $md_name.' custom field found for '.$meta_opt_name.' option' );
+
+				$values = array();
+
+				// decode strings and array elements
+				if ( is_array( $mixed ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $md_name.' is array of '.count( $mixed ).' elements' );
+					foreach ( $mixed as $value )
+						$values[] = html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset );
+				} else $values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
+
+				switch ( $meta_opt_name ) {
+					case 'schema_recipe_ingredient':
+						// explode text ingredient list into array
+						if ( ! is_array( $mixed ) ) {
+							$values = array_map( 'trim', explode( PHP_EOL, $values[0] ) );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'exploded '.$md_name.' into array of '.count( $values ).' elements' );
+						}
+						$is_multi = true;		// increment the option name
+						break;
+					default:
+						$is_multi = false;
+						break;
+				}
+
+				// increment the option name, starting with 0
+				if ( $is_multi ) {
+					// remove any old values from the options array
+					$md_opts = SucomUtil::preg_grep_keys( '/^'.$meta_opt_name.'_[0-9]+$/', $md_opts, true );	// $invert = true
+
+					foreach ( $values as $num => $value ) {
+						$md_opts[$meta_opt_name.'_'.$num] = $value;
+						$md_opts[$meta_opt_name.'_'.$num.':is'] = 'disabled';
+					}
+				} else {
+					$md_opts[$meta_opt_name] = $value[0];
+					$md_opts[$meta_opt_name.':is'] = 'disabled';
+				}
+			}
+
+			return $md_opts;
 		}
 	}
 }

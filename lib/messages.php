@@ -319,13 +319,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include and exclude specific tabs in the Social Settings metabox.';
 							break;
 						case 'tooltip-plugin_cf_img_url':
-							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
 							break;
 						case 'tooltip-plugin_cf_vid_url':
-							$text = 'If your theme or another plugin provides a custom field for video URLs (not embed HTML code), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video URL</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_url' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for video URLs (not embed HTML code), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video URL</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_url' ).'".';
 							break;
 						case 'tooltip-plugin_cf_vid_embed':
-							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default value is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
+							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
+							break;
+						case 'tooltip-plugin_cf_recipe_ingredients':
+							$text = 'If your theme or another plugin provides a custom field for recipe ingredients, you may enter its custom field name here. If a custom field matching that name is found, its value may be used to create additional meta tags and Schema markup. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_recipe_ingredients' ).'".';
 							break;
 						/*
 						 * 'WP / Theme Integration' settings

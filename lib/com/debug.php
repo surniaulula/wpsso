@@ -117,7 +117,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log( 'args '.self::pretty_array( $arr, true ), $class_idx, $function_idx );
 		}
 
-		public function log_arr( $name, array &$arr, $class_idx = 1, $function_idx = false ) {
+		public function log_arr( $name, array $arr, $class_idx = 1, $function_idx = false ) {
 			if ( $this->enabled !== true ) 
 				return;
 
