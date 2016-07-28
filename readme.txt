@@ -351,7 +351,7 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added several popular "do not cache" constants when the Pinterest crawler is detected (allows for customized Pinterest meta tags).
 * *Bugfixes*
 	* None
 * *Developer Notes*
