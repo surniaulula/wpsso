@@ -1180,7 +1180,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$head_type_url = $this->get_head_item_type( $mod );
 			$size_name = $this->p->cf['lca'].'-schema';
-			$og_type = $mt_og['og:type'];	// used to get product:rating:* values
+			$og_type = $mt_og['og:type'];
 
 			switch ( $head_type_url ) {
 				case 'http://schema.org/BlogPosting':
@@ -1207,6 +1207,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
 			}
 
+			// example: product:rating:average
 			if ( isset( $mt_og[$og_type.':rating:average'] ) )
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 
@@ -1283,7 +1284,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// aggregate rating needs at least one rating or review count
 			if ( ! isset( $mt_og[$og_type.':rating:average'] ) ||
-				( ! isset( $mt_og[$og_type.':rating:count'] ) && ! isset( $mt_og[$og_type.':review:count'] ) ) ) {
+				( ! isset( $mt_og[$og_type.':rating:count'] ) && 
+					! isset( $mt_og[$og_type.':review:count'] ) ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: missing rating or review count' );
