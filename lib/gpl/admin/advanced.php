@@ -140,22 +140,22 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_cf_img_url'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Image URL Custom Field',
 				'option label', 'wpsso' ), null, 'plugin_cf_img_url' ).
 			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_img_url'] ).'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_cf_vid_url'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Video URL Custom Field',
 				'option label', 'wpsso' ), null, 'plugin_cf_vid_url' ).
 			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_vid_url'] ).'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_cf_vid_embed'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Video Embed HTML Custom Field',
 				'option label', 'wpsso' ), null, 'plugin_cf_vid_embed' ).
 			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_vid_embed'] ).'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_cf_recipe_ingredients'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Recipe Ingredients Custom Field',
 				'option label', 'wpsso' ), null, 'plugin_cf_recipe_ingredients' ).
 			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_recipe_ingredients'] ).'</td>';
