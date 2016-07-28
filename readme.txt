@@ -17,9 +17,9 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 == Description ==
 
 <p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" />
-<strong>WPSSO provides <em>complete</em> social meta tags and Schema / Structured Data markup</strong> &mdash;</p>
+<strong>WPSSO provides <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash;</p>
 
-<p>Social websites and Google read <a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data</a> markup in webpages to describe &amp; display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, etc.).</li></ul></p>
+<p>Google and social websites use a wide variety of meta tags and Schema markup standards provided by WPSSO (<a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data / Rich Snippet</a> markup) to describe &amp; display your content correctly, including titles, descriptions, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, ratings, events, and much more.</li></ul></p>
 
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash;</p>
 
@@ -27,7 +27,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 <p><strong>Social meta tags and Schema markup are the cornerstone of social SEO</strong> &mdash;</p>
 
-<p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
+<p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. WPSSO includes special support and optimization features specifically for Pinterest (to avoid incompatible meta tags and Schema markup).</p>
 
 <p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
 
@@ -352,6 +352,7 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Added several popular "do not cache" constants when the Pinterest crawler is detected (allows for customized Pinterest meta tags).
+	* Improved Pinterest support and optimization by disabling Twitter Cards and JSON-LD markup when the Pinterest crawler is detected. The Pinterest crawler does not (presently) support Schema markup in JSON-LD format, so Schema markup is provided using standard meta tags instead.
 * *Bugfixes*
 	* None
 * *Developer Notes*
