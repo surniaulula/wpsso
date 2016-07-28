@@ -1298,8 +1298,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			self::set_variable_constants();
 		}
 
-		public static function set_variable_constants() { 
-			foreach ( self::get_variable_constants() as $name => $value )
+		public static function set_variable_constants( $constants = null ) { 
+			if ( $constants === null )
+				$constants = self::get_variable_constants();
+			foreach ( $constants as $name => $value )
 				if ( ! defined( $name ) )
 					define( $name, $value );
 		}
@@ -1358,14 +1360,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( defined( 'WPSSO_PLUGINDIR' ) )
 				$var_const['WPSSO_PHP_CURL_CAINFO'] = WPSSO_PLUGINDIR.'share/curl/ca-bundle.crt';
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0';
-
-			// disable 3rd-party caching for duplicate meta tag checks
-			if ( ! empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ) {
-				$var_const['DONOTCACHEPAGE'] = true;		// wp super cache and w3tc
-				$var_const['COMET_CACHE_ALLOWED'] = false;	// comet cache
-				$var_const['QUICK_CACHE_ALLOWED'] = false;	// quick cache
-				$var_const['ZENCACHE_ALLOWED'] = false;		// zencache
-			}
 
 			foreach ( $var_const as $name => $value )
 				if ( defined( $name ) )

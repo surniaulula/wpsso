@@ -1046,8 +1046,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$itemprop_added = 0;
 			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					if ( strpos( $assoc[$key_name], '://' ) )
-						$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
+					if ( is_string( $assoc[$key_name] ) &&
+						strpos( $assoc[$key_name], '://' ) )
+							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
 					else $json_data[$itemprop_name] = $assoc[$key_name];
 					$itemprop_added++;
 				}

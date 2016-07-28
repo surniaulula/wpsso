@@ -291,9 +291,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$lca = $this->p->cf['lca'];
 			$charset = get_bloginfo( 'charset' );
 			$permalink = get_permalink( $post_id );
-			$permalink_html = SucomUtil::encode_emoji( htmlentities( urldecode( $permalink ), 
+			$permalink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $permalink ), 
 				ENT_QUOTES, $charset, false ) );	// double_encode = false
-			$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 			$check_opts = apply_filters( $lca.'_check_head_meta_options',
 				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 
@@ -304,13 +303,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			else $notice_suffix = '';
 
 			$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
-				'<a href="'.$permalink.'">'.$permalink_html.'</a>' ).$notice_suffix.'...', true );
+				'<a href="'.$permalink.'">'.$permalink_encoded.'</a>' ).$notice_suffix.'...', true );
 
 			// use the permalink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
-			if ( ( $metas = $this->p->util->get_head_meta( $permalink, 
-				'/html/head/link|/html/head/meta', true ) ) !== false ) {
-
+			if ( ( $metas = $this->p->util->get_head_meta( $permalink, '/html/head/link|/html/head/meta', true ) ) !== false ) {
 				foreach( array(
 					'link' => array( 'rel' ),
 					'meta' => array( 'name', 'itemprop', 'property' ),
@@ -428,7 +425,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$lca = $this->p->cf['lca'];
 					$locale = SucomUtil::get_locale( $post_id );
 					$permalink = get_permalink( $post_id );
-					$permalink_no_meta = add_query_arg( array( 'WPSSO_META_TAGS_DISABLE' => 1 ), $permalink );
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
 					$locale_salt = 'locale:'.$locale.'_post:'.$post_id;
 
@@ -436,7 +432,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$transients = array(
 						'SucomCache::get' => array(
 							'url:'.$permalink,
-							'url:'.$permalink_no_meta,
 						),
 						'WpssoHead::get_header_array' => array( 
 							$locale_salt.'_url:'.$sharing_url,
