@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'head_cache_salt' => 1,		// modify the cache salt for certain crawlers
+				'head_cache_salt' => 2,		// modify the cache salt for certain crawlers
 			) );
 			add_action( 'wp_head', array( &$this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.8-"
-"dev3\n"
+"dev4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -347,25 +347,25 @@ msgid ""
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1390
+#: lib/admin.php:1389
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1397
+#: lib/admin.php:1396
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1406
+#: lib/admin.php:1405
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1413
+#: lib/admin.php:1412
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1425
+#: lib/admin.php:1424
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -1944,25 +1944,26 @@ msgstr ""
 #: lib/messages.php:755
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
-"of the webpage head section."
+"of the webpage head section &mdash; this is especially important for "
+"Pinterest."
 msgstr ""
 
 #: lib/messages.php:755
 msgid ""
-"The %s element in your theme's header templates should include a function / "
-"action / filter call for its attributes."
+"The %s element in your header templates should include a function, action, "
+"or filter call for its attributes."
 msgstr ""
 
 #: lib/messages.php:755
 msgid ""
-"%1$s can update your theme header templates automatically to change the "
-"default %2$s element to:"
+"%1$s can update your header templates automatically to change the default "
+"%2$s element to:"
 msgstr ""
 
 #: lib/messages.php:755
 msgid ""
-"<b><a href=\"%1$s\">Click here to update theme header templates "
-"automatically</a></b> or update the theme templates yourself manually."
+"<b><a href=\"%1$s\">Click here to update header templates automatically</a></"
+"b> or update the templates yourself manually."
 msgstr ""
 
 #: lib/messages.php:759

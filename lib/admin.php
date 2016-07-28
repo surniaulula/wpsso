@@ -1368,8 +1368,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( strpos( $html, '<head>' ) !== false ) {
 					$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-						true, true, 'notice-header-tmpl-no-head-attr-'.
-							SucomUtil::get_theme_slug_version(), true );
+						true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
 					break;
 				}
 			}
