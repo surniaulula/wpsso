@@ -43,7 +43,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
-* Adds Pinterest Rich Pin meta tags and Schema / Structured Data markup.
+* Adds Pinterest Rich Pin meta tags and Schema / Structured Data / Rich Snippet markup.
 * Adds author (Person), publisher (Organization) and WebSite markup for Google Search and Google's <em>Knowledge Graph</em>.
 * Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.
 * Validation of minimum / maximum image dimensions and aspect ratios.
@@ -204,7 +204,7 @@ WPSSO detects and uses all images - associated or included in your content - inc
 
 **Enhanced SEO**
 
-WPSSO (Pro version) integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema / Structured Data, and Twitter Card meta tags.
+WPSSO (Pro version) integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema / Structured Data / Rich Snippet, and Twitter Card meta tags.
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
