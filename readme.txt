@@ -9,7 +9,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, faceboo
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
-Tested Up To: 4.5.3
+Tested Up To: 4.6
 Stable Tag: 3.33.7-1
 
 Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.
@@ -344,7 +344,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.8-dev4 (2016/07/27)**
+**Version 3.33.8-dev5 (2016/07/28)**
 
 Official announcement: N/A
 
@@ -500,9 +500,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.8-dev4 =
+= 3.33.8-dev5 =
 
-(2016/07/27) Optimized caching of post / term / user meta options and defaults (Pro version). Added a new "Recipe Ingredients Custom Field" option. Added a new SucomForm get_input_multi() method. 
+(2016/07/28) Optimized caching of post / term / user meta options and defaults (Pro version). Added a new "Recipe Ingredients Custom Field" option. Added a new SucomForm get_input_multi() method. 
 
 = 3.33.7-1 =
 
