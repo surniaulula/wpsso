@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'get_site_defaults filter' );	// end
 
-				if ( self::allow_cache ) {
+				if ( self::$allow_cache ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'setting options_filtered to true' );
 					$defs['options_filtered'] = true;
