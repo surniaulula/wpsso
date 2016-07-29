@@ -1497,7 +1497,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			global $_wp_additional_image_sizes; 
 			$sizes = array(); 
 			foreach ( get_intermediate_image_sizes() as $size_name )
-				$sizes = self::get_size_info( $size_name );
+				$sizes[$size_name] = self::get_size_info( $size_name );
 			return $sizes;
 		}
 

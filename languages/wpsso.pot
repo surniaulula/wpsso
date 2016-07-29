@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.8-b1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.8-b2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2334,13 +2334,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/upscale.php:195
+#: lib/pro/media/upscale.php:196
 msgid ""
 "Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum)."
 msgstr ""
 
-#: lib/pro/media/upscale.php:197
+#: lib/pro/media/upscale.php:200
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
