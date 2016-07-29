@@ -10,7 +10,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Requires At Least: 3.1
 Tested Up To: 4.6
-Stable Tag: 3.33.7-1
+Stable Tag: 3.33.8-1
 
 Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.
 
@@ -504,8 +504,4 @@ Official announcement: N/A
 = 3.33.8-1 =
 
 (2016/07/29) Optimized caching of post / term / user meta options and defaults (Pro version). Added a new "Recipe Ingredients Custom Field" option. Added a new SucomForm get_input_multi() method. 
-
-= 3.33.7-1 =
-
-(2016/07/23) Improved the Yoast SEO notification message filter. Added new SucomDebug log_arr() and log_args() methods.
 
