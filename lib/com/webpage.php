@@ -431,7 +431,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 								apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'get_the_excerpt' );
 						}
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'no post_excerpt for post ID '.$mod['id'] );
+						$this->p->debug->log( 'fetching content: no post_excerpt for post ID '.$mod['id'] );
 
 					// if there's no excerpt, then fallback to the content
 					if ( empty( $desc ) )
@@ -571,13 +571,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( ! empty( $content ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'content seed = "'.$content.'"' );
-			} elseif ( $mod['is_post'] )
+			} elseif ( $mod['is_post'] ) {
 				$content = get_post_field( 'post_content', $mod['id'] );
-
-			if ( empty( $content ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: empty post content' );
-				return $content;
+				if ( empty( $content ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: no post_content for post ID '.$mod['id'] );
+					return $content;
+				}
 			}
 
 			/*
