@@ -313,6 +313,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 			* [Webpage Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/webpage/)
 		* [Filters by Name](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-name/)
 		* [Other Filters](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/other/)
+	* [The $mod Variable](http://wpsso.com/codex/plugins/wpsso/notes/developer/the-mod-variable/)
 * [Inline Variables](http://wpsso.com/codex/plugins/wpsso/notes/inline-variables/)
 * [Multisite / Network Support](http://wpsso.com/codex/plugins/wpsso/notes/multisite-network-support/)
 * [Working with Image Attachments](http://wpsso.com/codex/plugins/wpsso/notes/working-with-image-attachments/)
