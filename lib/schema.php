@@ -1214,7 +1214,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $head_type_url );
 		}
 
-		public function is_noscript_enabled( $crawler_name = 'unknown' ) {
+		public function is_noscript_enabled( $crawler_name = 'none' ) {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )

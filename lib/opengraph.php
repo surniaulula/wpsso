@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$og = array(), $crawler_name = 'unknown' ) {
+		public function get_array( $use_post = false, &$mod = false, &$og = array(), $crawler_name = 'none' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 

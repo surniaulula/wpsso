@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', $add_metabox, $user_id ) ) {
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_social_settings' ), 'user', 'normal', 'low' );
+					array( &$this, 'show_metabox_social_settings' ), $lca.'-user', 'normal', 'low' );
 			}
 		}
 
@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				_x( 'Free', 'package type', 'wpsso' );
 			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['name'].' '.$pkg_type.'</h3>'."\n";
 			echo '<div id="poststuff">';
-			do_meta_boxes( 'user', 'normal', $user );
+			do_meta_boxes( $lca.'-user', 'normal', $user );
 			echo '</div>'."\n";
 		}
 

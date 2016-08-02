@@ -515,7 +515,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$crawler_name = 'w3c';
 						break;
 					default:
-						self::$crawler_name = 'unknown';
+						self::$crawler_name = 'none';
 						break;
 				}
 			}

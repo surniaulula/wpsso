@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return $sizes;
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'unknown' ) {
+		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
 
 			// pinterest does not read twitter card meta tags
 			if ( $crawler_name === 'pinterest' ) {
