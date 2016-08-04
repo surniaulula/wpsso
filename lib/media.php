@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$attr_value = $img_arr[4];	// id
 					} else {
 						$tag_name = $img_arr[5];	// img
-						$attr_name = $img_arr[6];	// data-share-src|data-lazy-src|src
+						$attr_name = $img_arr[6];	// data-share-src|data-lazy-src|data-src|src
 						$attr_value = $img_arr[7];	// url
 					}
 
@@ -622,7 +622,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
-						// data-share-src|data-lazy-src|src
+						// data-share-src|data-lazy-src|data-src|src
 						default:
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
 							if ( $this->p->is_avail['media']['ngg'] === true && 
