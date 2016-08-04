@@ -776,8 +776,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
 			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
-			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|src)=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
-				$content, $all_matches, PREG_SET_ORDER ) ) {
+			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]'.
+				'([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
+					$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( isset( $this->p->options['plugin_content_vid_max'] ) &&
 					count( $all_matches ) > $this->p->options['plugin_content_vid_max'] ) {
