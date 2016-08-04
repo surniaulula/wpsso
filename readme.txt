@@ -353,7 +353,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 8.33.9-dev1 (2016/08/04)**
+**Version 8.33.9-b1 (2016/08/04)**
 
 Official announcement: N/A
 
@@ -523,7 +523,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.33.9-dev1 =
+= 3.33.9-b1 =
 
 (2016/08/04) Added support for the new term meta functions in WordPress v4.4+. Fixed possible iframe video detection issue in the post content.
 
