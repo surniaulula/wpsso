@@ -776,7 +776,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
 			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
-			if ( preg_match_all( '/<(iframe|embed)[^<>]*? src=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
+			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|src)=[\'"]([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
 				$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( isset( $this->p->options['plugin_content_vid_max'] ) &&
@@ -792,8 +792,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $all_matches as $media ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( '<'.$media[1].'/> html tag found = '.$media[2] );
-					$embed_url = $media[2];
+						$this->p->debug->log( '<'.$media[1].'/> html tag found '.$media[2].' = '.$media[3] );
+					$embed_url = $media[3];
 					if ( ! empty( $embed_url ) && 
 						( $check_dupes == false || 
 							$this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {	// $context = 'video'

@@ -253,15 +253,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_social_settings' ), 'term', 'normal', 'low' );
+					array( &$this, 'show_metabox_social_settings' ), $lca.'-term', 'normal', 'low' );
 			}
 		}
 
 		public function show_metaboxes( $term ) {
 			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) )
 				return;
+			$lca = $this->p->cf['lca'];
+			$pkg_type = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ? 
+				_x( 'Pro', 'package type', 'wpsso' ) :
+				_x( 'Free', 'package type', 'wpsso' );
+			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['name'].' '.$pkg_type.'</h3>'."\n";
 			echo '<div id="poststuff">';
-			do_meta_boxes( 'term', 'normal', $term );
+			do_meta_boxes( $lca.'-term', 'normal', $term );
 			echo '</div>';
 		}
 
@@ -340,25 +345,58 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $ret;
 		}
 
-		public static function get_term_meta( $term_id, $options_name, $single ) {
-			$options_name .= '_term_'.$term_id;
-			/**
-			 * re-create the return value of get_post_meta() and get_user_meta():
-			 *
-			 * If the meta value does not exist and $single is true the function will return an empty string.
-			 * If $single is false an empty array is returned.
-			 */
-			return get_option( $options_name, ( $single === false ? array() : '' ) );
+		public static function get_term_meta( $term_id, $key_name, $single = false ) {
+			static $has_meta_table = null;
+			if ( $has_meta_table === null )	// optimize and check only once
+				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
+
+			$term_meta = $single === false ? array() : '';
+			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) ) {
+				$term_meta = get_term_meta( $term_id, $key_name, $single );
+				/*
+				 * If the $term_id is invalid, false is returned.
+				 * If the meta value isn't set, an empty string or array is returned.
+				 */
+				if ( ( $single && $term_meta === '' ) || 
+					( ! $single && $term_meta === array() ) ) {
+					$term_meta = get_option( $key_name.'_term_'.$term_id, false );
+					if ( is_array( $term_meta ) ) {
+						$updated = update_term_meta( $term_id, $key_name, $term_meta );
+						if ( ! is_wp_error( $updated ) )
+							delete_option( $key_name.'_term_'.$term_id );
+					}
+				}
+			} else {
+				/*
+				 * Re-create the return value of get_term_meta().
+				 *
+				 * If the meta value does not exist and $single is true the function will return an empty string.
+				 * If $single is false an empty array is returned.
+				 */
+				$term_meta = get_option( $key_name.'_term_'.$term_id, 
+					( $single === false ? array() : '' ) );
+			}
+			return $term_meta;
 		}
 
-		public static function update_term_meta( $term_id, $options_name, $opts ) {
-			$options_name .= '_term_'.$term_id;
-			return update_option( $options_name, $opts );
+		public static function update_term_meta( $term_id, $key_name, $opts ) {
+			static $has_meta_table = null;
+			if ( $has_meta_table === null )	// optimize and check only once
+				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
+
+			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) )
+				return update_term_meta( $term_id, $key_name, $opts );
+			else return update_option( $key_name.'_term_'.$term_id, $opts );
 		}
 
-		public static function delete_term_meta( $term_id, $options_name ) {
-			$options_name .= '_term_'.$term_id;
-			return delete_option( $options_name );
+		public static function delete_term_meta( $term_id, $key_name ) {
+			static $has_meta_table = null;
+			if ( $has_meta_table === null )	// optimize and check only once
+				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
+
+			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) )
+				return detele_term_meta( $term_id, $key_name );
+			else return delete_option( $key_name.'_term_'.$term_id );
 		}
 	}
 }

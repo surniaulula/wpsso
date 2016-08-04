@@ -649,11 +649,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'checking for iframes with data-lazy-src|src attribute' );
-			$content = preg_replace_callback( '/<iframe [^>]*(data-lazy-src|src)=[\'"]([^\'"]+)[\'"][^>]*><\/iframe>/ms', 
-				array( $this, 'get_iframe_src_callback' ), $content );
-
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
 			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
 				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
@@ -685,10 +680,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			return $content;
-		}
-
-		private function get_iframe_src_callback( $matches ) {
-			return $this->p->util->get_body_html( $matches[2] );
 		}
 
 		public function get_article_section( $post_id ) {
