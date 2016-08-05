@@ -865,16 +865,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				// decode strings and array elements
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $md_name.' is array of '.count( $mixed ).' elements' );
+						$this->p->debug->log( $md_name.' is array of '.count( $mixed ).' values (decoding each value)' );
 					foreach ( $mixed as $value )
 						$values[] = html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset );
-				} else $values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
+				} else {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'decoding '.$md_name.' as string of '.strlen( $mixed ).' chars' );
+					$values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
+				}
 
 				switch ( $meta_opt_name ) {
 					case 'schema_recipe_ingredient':
 						// explode text ingredient list into array
 						if ( ! is_array( $mixed ) ) {
-							$values = array_map( 'trim', explode( PHP_EOL, $values[0] ) );
+							$values = array_map( 'trim', 
+								explode( PHP_EOL, reset( $values ) ) );
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'exploded '.$md_name.' into array of '.count( $values ).' elements' );
 						}
@@ -895,7 +900,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$md_opts[$meta_opt_name.'_'.$num.':is'] = 'disabled';
 					}
 				} else {
-					$md_opts[$meta_opt_name] = $value[0];
+					$md_opts[$meta_opt_name] = reset( $values );	// get first element of $values array
 					$md_opts[$meta_opt_name.':is'] = 'disabled';
 				}
 			}

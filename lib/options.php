@@ -543,10 +543,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pin_desc':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
-				case 'plugin_cf_img_url':
-				case 'plugin_cf_vid_url':
-				case 'plugin_cf_vid_embed':
-				case 'plugin_cf_recipe_ingredients':
+				case 'plugin_cf_img_url':		// name of meta key
+				case 'plugin_cf_vid_url':		// name of meta key
+				case 'plugin_cf_vid_embed':		// name of meta key
+				case 'plugin_cf_recipe_ingredients':	// name of meta key
 				case 'plugin_bitly_login':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
