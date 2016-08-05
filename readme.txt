@@ -353,6 +353,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.11-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed an issue with PHP's DOMDocument and non-english languages which affected Youtube video title and description values.
+* *Developer Notes*
+	* None
+
 **Version 3.33.10-1 (2016/08/05)**
 
 Official announcement: N/A
