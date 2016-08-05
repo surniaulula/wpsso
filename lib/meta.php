@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $columns;
 		}
 
-		protected function get_mod_column_content( $value, $column_name, &$mod ) {
+		protected function get_mod_column_content( $value, $column_name, $mod ) {
 
 			$lca = $this->p->cf['lca'];
 
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public function get_md_image( $num, $size_name, array &$mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_image( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 

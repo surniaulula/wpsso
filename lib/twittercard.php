@@ -74,6 +74,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			if ( ! isset( $mt_tc['twitter:description'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
+
 				$mt_tc['twitter:description'] = $this->p->webpage->get_description( $this->p->options['tc_desc_len'], 
 					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags = true
 			}
@@ -112,14 +113,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					foreach ( $mt_og['og:video'] as $video ) {
 
 						if ( ! empty( $video['og:video:embed_url'] ) ) {
+
 							$embed_url = $video['og:video:embed_url'];
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'player card: embed url = '.$embed_url );
+
 						} elseif ( ! empty( $video['og:video:type'] ) &&
 							$video['og:video:type'] === 'text/html' ) {
+
 							$embed_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'player card: text/html url = '.$embed_url );
+
 						} else continue;
 
 						$mt_tc['twitter:card'] = 'player';
@@ -151,9 +156,12 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				 * Default Image for Indexes
 				 */
 				if ( ! isset( $mt_tc['twitter:card'] ) && ! $mod['use_post'] ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'use_post is false: checking for forced default image' );
+
 					if ( $this->p->util->force_default_image( $mod, 'og' ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'large image card: checking for default image' );
+							$this->p->debug->log( 'large image card: getting default image' );
 
 						$og_image = $this->p->media->get_default_image( 1, $lca.'-tc-lrgimg' );
 
@@ -161,7 +169,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$image = reset( $og_image );
 							$mt_tc['twitter:card'] = 'summary_large_image';
 							$mt_tc['twitter:image'] = $image['og:image'];
-						}
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( 'no default image returned' );
 
 						$post_id = 0;	// skip additional image checks
 					}
@@ -173,15 +182,16 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				} else {
 					// post meta image
 					if ( ! isset( $mt_tc['twitter:card'] ) ) {
-
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'large image card: checking for post image (meta, featured, attached)' );
+							$this->p->debug->log( 'large image card: getting post image (meta, featured, attached)' );
+
 						$og_image = $this->p->media->get_post_images( 1, $lca.'-tc-lrgimg', $post_id, false );
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
 							$mt_tc['twitter:card'] = 'summary_large_image';
 							$mt_tc['twitter:image'] = $image['og:image'];
-						}
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( 'no post image returned' );
 					}
 					// singlepic shortcode image
 					if ( ! isset( $mt_tc['twitter:card'] ) && 
@@ -189,15 +199,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 						if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'large image card: checking for singlepic image' );
+								$this->p->debug->log( 'large image card: getting singlepic image' );
+
 							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, $lca.'-tc-lrgimg', $post_id, false );
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );
 								$mt_tc['twitter:card'] = 'summary_large_image';
 								$mt_tc['twitter:image'] = $image['og:image'];
-							}
+							} elseif ( $this->p->debug->enabled )
+								$this->p->debug->log( 'no singlepic image returned' );
+
 						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( 'large image card: singlepic check skipped - NGG module not available' );
+							$this->p->debug->log( 'large image card: singlepic check skipped (ngg module not available)' );
 					}
 				} 
 			}
@@ -210,11 +223,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( ! empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'summary card: checking for content image' );
+
 					$og_image = $this->p->og->get_all_images( 1, $lca.'-tc-summary', $mod, false );
 					if ( count( $og_image ) > 0 ) {
 						$image = reset( $og_image );
 						$mt_tc['twitter:image'] = $image['og:image'];
-					}
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'no content image returned' );
 				}
 			}
 

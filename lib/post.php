@@ -44,9 +44,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_type_names = $this->p->util->get_post_types( 'names' );
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
+						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
 						add_filter( 'manage_'.$post_type.'_posts_columns', 
 							array( $this, 'add_column_headings' ), 10, 1 );
-						add_action( 'manage_'.$post_type.'_posts_custom_column', 
+
+						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
+						add_action( 'manage_'.$post_type.'_posts_custom_column', 	// since wp v3.1
 							array( $this, 'show_column_content',), 10, 2 );
 					}
 				}
