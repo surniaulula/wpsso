@@ -336,7 +336,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$img_meta['height'] === $size_info['height'] )
 						$use_full = true;
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.$img_meta['width'].'x'.$img_meta['height'] );
+					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.
+						$img_meta['width'].'x'.$img_meta['height'] );
 			} elseif ( $this->p->debug->enabled ) {
 				if ( isset( $img_meta['file'] ) )
 					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions are missing' );
@@ -399,21 +400,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								( empty( $img_meta['sizes'][$size_name]['height'] ) ? 0 : 
 									$img_meta['sizes'][$size_name]['height'] ).') does not match '.
 								$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
-									( $img_cropped === 0 ? '' : ' cropped' ).')' );
+									( $img_cropped ? ' cropped' : '' ).')' );
 						}
 
-						$fullsizepath = get_attached_file( $pid );
-						$resized = image_make_intermediate_size( $fullsizepath, 
-							$size_info['width'], $size_info['height'], $size_info['crop'] );
+						if ( $this->can_make_size( $img_meta, $size_info ) ) {
 
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
-								( $resized === false ? 'failure' : 'success' ) );
-
-						if ( $resized !== false ) {
-							$img_meta['sizes'][$size_name] = $resized;
-							wp_update_attachment_metadata( $pid, $img_meta );
-						}
+							$fullsizepath = get_attached_file( $pid );
+							$resized = image_make_intermediate_size( $fullsizepath, 
+								$size_info['width'], $size_info['height'], $size_info['crop'] );
+	
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
+									( $resized === false ? 'failure' : 'success' ) );
+	
+							if ( $resized !== false ) {
+								$img_meta['sizes'][$size_name] = $resized;
+								wp_update_attachment_metadata( $pid, $img_meta );
+							}
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( 'skipped image_make_intermediate_size()' );
 					}
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
@@ -991,6 +996,44 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return true;
+		}
+
+		public function can_make_size( $img_meta, $size_info ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$full_width = empty( $img_meta['width'] ) ? 0 : $img_meta['width'];
+			$full_height = empty( $img_meta['height'] ) ? 0 : $img_meta['height'];
+
+			$is_sufficient_w = $full_width >= $size_info['width'] ? true : false;
+			$is_sufficient_h = $full_height >= $size_info['height'] ? true : false;
+
+			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;
+			$upscale_multiplier = 1;
+
+			if ( $this->p->options['plugin_upscale_images'] ) {
+				$img_info = (array) self::get_image_src_info();
+				$upscale_multiplier = 1 + ( apply_filters( $this->p->cf['lca'].'_image_upscale_max',
+					$this->p->options['plugin_upscale_img_max'], $img_info ) / 100 );
+				$upscale_full_width = round( $full_width * $upscale_multiplier );
+				$upscale_full_height = round( $full_height * $upscale_multiplier );
+				$is_sufficient_w = $upscale_full_width >= $size_info['width'] ? true : false;
+				$is_sufficient_h = $upscale_full_height >= $size_info['height'] ? true : false;
+			}
+
+
+			if ( ( ! $img_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
+				( $img_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) )
+					$ret = false;
+			else $ret = true;
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'full size image of '.$full_width.'x'.$full_height.( $upscale_multiplier !== 1 ? 
+					' ('.$upscale_full_width.'x'.$upscale_full_height.' upscaled by '.$upscale_multiplier.')' : '' ).
+					( $ret ? ' sufficient' : ' too small' ).' to create size '.$size_info['width'].'x'.$size_info['height'].
+					( $img_cropped ? ' cropped' : '' ) );
+
+			return $ret;
 		}
 	}
 }
