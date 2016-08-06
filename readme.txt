@@ -363,6 +363,7 @@ Official announcement: N/A
 	* None
 * *Bugfixes*
 	* Fixed an issue with PHP's DOMDocument and non-english languages which affected Youtube video title and description values.
+	* Fixed declaration of get_md_image() method arguments in the Free version for compatibility with parent method.
 * *Developer Notes*
 	* None
 
