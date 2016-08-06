@@ -353,17 +353,17 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.11-dev1 (TBD)**
+**Version 3.33.11-1 (2016/08/06)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new WpssoMedia `can_make_size()` method to check the full size image width and height before calling `image_make_intermediate_size()` (no use requesting an image size that WordPress cannot create).
 * *Bugfixes*
-	* Fixed an issue with PHP's DOMDocument and non-english languages which affected Youtube video title and description values.
-	* Fixed declaration of get_md_image() method arguments in the Free version for compatibility with parent method.
+	* Fixed a known issue with PHP's DOMDocument and non-english languages (affected video titles and descriptions from the YouTube API).
+	* Fixed declaration of `get_md_image()` method arguments in the Free version for compatibility with parent method arguments.
 * *Developer Notes*
 	* None
 
@@ -549,6 +549,10 @@ Official announcement: N/A
 	* Refactored the `WpssoSchema::add_single_person_data()` method.
 
 == Upgrade Notice ==
+
+= 3.33.11-1 =
+
+(2016/08/06) Added check for full size image width and height before requesting an image size. Fixed a known issue with PHP's DOMDocument and non-english languages. Fixed declaration method arguments in the Free version for compatibility.
 
 = 3.33.10-1 =
 
