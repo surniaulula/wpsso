@@ -1237,28 +1237,28 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/media.php:318
+#: lib/media.php:321
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:693
+#: lib/media.php:696
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:913 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:916 lib/pro/util/checkimgdims.php:62
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:968
+#: lib/media.php:971
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:985
+#: lib/media.php:988
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2980,32 +2980,32 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:614
+#: lib/util.php:616
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1597
+#: lib/util.php:1599
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1623
+#: lib/util.php:1625
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1627
+#: lib/util.php:1629
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1630
+#: lib/util.php:1632
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1634
+#: lib/util.php:1636
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

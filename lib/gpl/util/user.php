@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 			return $this->not_implemented( __METHOD__, null );
 		}
 
-		public function get_md_image( $num, $size_name, array &$mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_image( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 			return $this->not_implemented( __METHOD__, array() );
 		}
 

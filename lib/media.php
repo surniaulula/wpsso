@@ -212,6 +212,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -294,8 +295,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'force_regen' => $force_regen,
 			) );
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 				$this->p->debug->log_args( $args );
+			}
 
 			$lca = $this->p->cf['lca'];
 			$size_info = SucomUtil::get_size_info( $size_name );

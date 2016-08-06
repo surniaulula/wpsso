@@ -369,14 +369,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
 		}
 
-		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
-			if ( empty( $name ) ) 
-				return $this->get_no_input_value( '', $class, $id, $placeholder );
-			else return $this->get_hidden( $name ).
-				$this->get_no_input_value( ( $this->in_options( $name ) ?
-					$this->options[$name] : '' ), $class, $id, $placeholder );
-		}
-
 		public function get_no_input_options( $name, &$opts, $class = '', $id = '', $placeholder = '' ) {
 			$value = isset( $opts[$name] ) ? $opts[$name] : '';
 			return $this->get_no_input_value( $value, $class, $id, $placeholder );
@@ -388,6 +380,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $id ) ? '' : ' id="text_'.esc_attr( $id ).'"' ).
 				( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
 				' value="'.esc_attr( $value ).'" />';
+		}
+
+		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
+			if ( empty( $name ) ) 
+				return $this->get_no_input_value( '', $class, $id, $placeholder );
+			else return $this->get_hidden( $name ).
+				$this->get_no_input_value( ( $this->in_options( $name ) ?
+					$this->options[$name] : '' ), $class, $id, $placeholder );
 		}
 
 		public function get_image_upload_input( $opt_prefix, $placeholder = '', $disabled = false ) {

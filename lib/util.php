@@ -589,6 +589,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( class_exists( 'DOMDocument' ) ) {
+				$html = mb_convert_encoding( $html,	// convert to UTF8
+					'HTML-ENTITIES', 'UTF-8' );
 				$doc = new DOMDocument();		// since PHP v4.1.0
 				@$doc->loadHTML( $html );		// suppress parsing errors
 				$xpath = new DOMXPath( $doc );
