@@ -30,13 +30,13 @@
 <p><strong>Social meta tags and Schema markup are the cornerstone of social SEO</strong> &mdash;</p>
 
 <blockquote>
-<p>WordPress Social Sharing Optimization (WPSSO) provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. <strong>WPSSO includes special support and optimization features specifically for Pinterest</strong> to avoid incompatible meta tags and Schema markup.</p>
+<p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. <strong>WPSSO includes special support and optimization features specifically for Pinterest</strong> to avoid incompatible meta tags and Schema markup.</p>
 </blockquote>
 
 <p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
 
 <blockquote>
-<p>WordPress Social Sharing Optimization (WPSSO) Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
+<p>WPSSO Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 </blockquote>
 
 <h4>Quick List of Features</h4>
