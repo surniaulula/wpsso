@@ -41,7 +41,7 @@
 
 <h4>Quick List of Features</h4>
 
-<p><strong>WPSSO Free / Basic Features</strong></p>
+<p><strong>WordPress Social Sharing Optimization (WPSSO) Free / Basic Features</strong></p>
 
 <ul>
 <li>Adds Open Graph meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
@@ -119,7 +119,7 @@
 
 <h4>Quick List of Features (Continued)</h4>
 
-<p><strong>WPSSO Pro / Power-User Features</strong></p>
+<p><strong>WordPress Social Sharing Optimization (WPSSO) Pro / Power-User Features</strong></p>
 
 <ul>
 <li>A Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.</li>
@@ -265,11 +265,11 @@
 
 <h4>Proven Performance</h4>
 
-<p>WPSSO is <em>fast and coded for performance</em>, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features. WPSSO requires PHP v4.1.0 or better, and is fully compatible with PHP v7.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) is <em>fast and coded for performance</em>, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features. WPSSO requires PHP v4.1.0 or better, and is fully compatible with PHP v7.</p>
 
 <h4>Professional Support</h4>
 
-<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/codex/plugins/wpsso/faq/">FAQ</a> and <a href="https://wpsso.com/codex/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the <a href="https://wpsso.com/codex/plugins/wpsso/faq/">FAQ</a> and <a href="https://wpsso.com/codex/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
 
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
 
