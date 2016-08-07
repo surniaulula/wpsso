@@ -33,7 +33,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 <p><strong>Social meta tags and Schema markup are the cornerstone of social SEO</strong> &mdash;</p>
 
 <blockquote>
-<p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. <strong>WPSSO includes special support and optimization features specifically for Pinterest</strong> to avoid incompatible meta tags and Schema markup.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. <strong>WPSSO includes special support and optimization features specifically for Pinterest</strong> to avoid incompatible meta tags and Schema markup.</p>
 </blockquote>
 
 <p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
@@ -166,7 +166,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 = Social Profiles for Google Search =
 
-WPSSO includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their social sharing image, and contact URLs. The publisher (Organization) markup includes the website URL, a corporate logo, the website default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
+WordPress Social Sharing Optimization (WPSSO) includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their social sharing image, and contact URLs. The publisher (Organization) markup includes the website URL, a corporate logo, the website default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
 
 <div style="clear:both;"></div>
 
@@ -190,9 +190,9 @@ WPSSO (Pro version) allows you to customize the field names, label, and add / re
 
 = Complete Social Meta Tags =
 
-WPSSO adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; there's no need to manually enter / configure any additional values or settings (although many settings and options *are* available in the Pro version). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See example screenshots from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a>.
+WordPress Social Sharing Optimization (WPSSO) adds Facebook / [Open Graph](http://ogp.me/), [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), [Twitter Cards](https://dev.twitter.com/docs/cards), and [Search Engine Optimization](http://en.wikipedia.org/wiki/Search_engine_optimization) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher, etc.). WPSSO uses the *existing* content of your webpages to build HTML meta tags &mdash; there's no need to manually enter / configure any additional values or settings (although many settings and options *are* available in the Pro version). <a href="http://wpsso.com/extend/plugins/wpsso/screenshots/">See example screenshots from Google Search, Google+, Facebook, Twitter, Pinterest, StumbleUpon, Tumblr, etc.</a>.
 
-WPSSO provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. 
+WordPress Social Sharing Optimization (WPSSO) provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. 
 
 = Available in Multiple Languages =
 
@@ -209,7 +209,7 @@ WPSSO provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summ
 
 **Images and Videos**
 
-WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).
+WordPress Social Sharing Optimization (WPSSO) detects and uses all images - associated or included in your content - including the WordPress image gallery and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).
 
 **Enhanced SEO**
 
