@@ -36,7 +36,7 @@
 <p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
 
 <blockquote>
-<p>WPSSO (Pro version) retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 </blockquote>
 
 <h4>Quick List of Features</h4>
@@ -199,7 +199,7 @@
 
 <h4>User Profile Social Contacts</h4>
 
-<p>WPSSO (Pro version) allows you to customize the field names, label, and add / remove the following contacts on user profile pages and <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
+<p>WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the field names, label, and add / remove the following contacts on user profile pages and <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
 
 <ul>
 <li>AIM</li>
@@ -245,7 +245,7 @@
 
 <p><strong>Enhanced SEO</strong></p>
 
-<p>WPSSO (Pro version) integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema / Structured Data / Rich Snippet, and Twitter Card meta tags.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema / Structured Data / Rich Snippet, and Twitter Card meta tags.</p>
 
 <div style="clear:both;"></div>
 
@@ -255,11 +255,11 @@
 
 <p><strong>eCommerce Products</strong></p>
 
-<p>WPSSO (Pro version) also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
 
 <p><strong>Forums and Social</strong></p>
 
-<p>WPSSO (Pro version) supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
+<p>WordPress Social Sharing Optimization (WPSSO) Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="http://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
 
 <div style="clear:both;"></div>
 
