@@ -3010,15 +3010,15 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:254
+#: wpsso.php:255
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:255
+#: wpsso.php:256
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:256
+#: wpsso.php:257
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 
