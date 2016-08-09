@@ -395,7 +395,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
 
 			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) )
-				return detele_term_meta( $term_id, $key_name );
+				return delete_term_meta( $term_id, $key_name );
 			else return delete_option( $key_name.'_term_'.$term_id );
 		}
 	}
