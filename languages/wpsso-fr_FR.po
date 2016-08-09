@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.11-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.33.12-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-08-06 09:42-0300\n"
-"PO-Revision-Date: 2016-08-06 09:42-0300\n"
+"POT-Creation-Date: 2016-08-09 11:20-0300\n"
+"PO-Revision-Date: 2016-08-09 11:21-0300\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -730,8 +730,8 @@ msgstr "Découvrir les médias intégrés pour"
 #: lib/gpl/admin/advanced.php:99 lib/gpl/admin/advanced.php:101
 #: lib/pro/admin/advanced.php:102 lib/pro/admin/advanced.php:104
 msgctxt "option label"
-msgid "Add \"%s\" Column for"
-msgstr "Ajouter colonne \"%s\" pour"
+msgid "Add %s Column for"
+msgstr "Ajouter colonne %s pour"
 
 #: lib/gpl/admin/advanced.php:100 lib/messages.php:309 lib/meta.php:553
 #: lib/pro/admin/advanced.php:103
@@ -2589,15 +2589,15 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:254
+#: wpsso.php:255
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire n'a pas pu être désactivée)."
 
-#: wpsso.php:255
+#: wpsso.php:256
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire est désactivée)."
 
-#: wpsso.php:256
+#: wpsso.php:257
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr "Des messages d’information de débogage sont ajoutés en commentaires HTML."
 

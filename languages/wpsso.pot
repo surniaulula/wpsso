@@ -784,7 +784,7 @@ msgstr ""
 #: lib/gpl/admin/advanced.php:99 lib/gpl/admin/advanced.php:101
 #: lib/pro/admin/advanced.php:102 lib/pro/admin/advanced.php:104
 msgctxt "option label"
-msgid "Add \"%s\" Column for"
+msgid "Add %s Column for"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:100 lib/messages.php:309 lib/meta.php:553
