@@ -39,7 +39,7 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 <p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
 
 <blockquote>
-<p>WPSSO Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
+<p>WPSSO Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Facebook (embedded videos), Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
 </blockquote>
 
 = Quick List of Features =
@@ -354,12 +354,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.13-dev1 (TBD)**
+**Version 3.34.0-dev1 (2016/08/11)**
 
 Official announcement: N/A
 
 * *New Features*
-	* None
+	* Added support for Facebook embedded iframe videos (Pro version).
 * *Improvements*
 	* None
 * *Bugfixes*
@@ -395,6 +395,10 @@ Official announcement: N/A
 	* None
 
 == Upgrade Notice ==
+
+= 3.34.0-dev1 =
+
+(2016/08/11) Added support for Facebook embedded iframe videos (Pro version).
 
 = 3.33.12-1 =
 
