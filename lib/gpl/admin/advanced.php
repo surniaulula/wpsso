@@ -81,6 +81,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Check for Embedded Media from',
 				'option label', 'wpsso' ), null, 'plugin_embedded_media' ).
 			'<td class="blank">'.
+			'<p>'.$this->get_nocb( 'plugin_facebook_api' ).' Facebook Videos</p>'.
 			'<p>'.$this->get_nocb( 'plugin_slideshare_api' ).' Slideshare Presentations</p>'.
 			'<p>'.$this->get_nocb( 'plugin_vimeo_api' ).' Vimeo Videos</p>'.
 			'<p>'.$this->get_nocb( 'plugin_wistia_api' ).' Wistia Videos</p>'.

@@ -782,261 +782,261 @@ msgctxt "option label"
 msgid "Check for Embedded Media from"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:99 lib/gpl/admin/advanced.php:101
-#: lib/pro/admin/advanced.php:102 lib/pro/admin/advanced.php:104
+#: lib/gpl/admin/advanced.php:100 lib/gpl/admin/advanced.php:102
+#: lib/pro/admin/advanced.php:103 lib/pro/admin/advanced.php:105
 msgctxt "option label"
 msgid "Add %s Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:100 lib/messages.php:309 lib/meta.php:553
-#: lib/pro/admin/advanced.php:103
+#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:553
+#: lib/pro/admin/advanced.php:104
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:102 lib/messages.php:312 lib/meta.php:554
-#: lib/pro/admin/advanced.php:105
+#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:554
+#: lib/pro/admin/advanced.php:106
 msgctxt "column title"
 msgid "%s Desc"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:107 lib/gpl/admin/advanced.php:120
-#: lib/pro/admin/advanced.php:110 lib/pro/admin/advanced.php:123
+#: lib/gpl/admin/advanced.php:108 lib/gpl/admin/advanced.php:121
+#: lib/pro/admin/advanced.php:111 lib/pro/admin/advanced.php:124
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:111 lib/gpl/admin/advanced.php:121
-#: lib/gpl/admin/advanced.php:133 lib/pro/admin/advanced.php:114
-#: lib/pro/admin/advanced.php:124 lib/pro/admin/advanced.php:136
+#: lib/gpl/admin/advanced.php:112 lib/gpl/admin/advanced.php:122
+#: lib/gpl/admin/advanced.php:134 lib/pro/admin/advanced.php:115
+#: lib/pro/admin/advanced.php:125 lib/pro/admin/advanced.php:137
 msgid "Terms (Categories and Tags)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:115 lib/gpl/admin/advanced.php:122
-#: lib/pro/admin/advanced.php:118 lib/pro/admin/advanced.php:125
+#: lib/gpl/admin/advanced.php:116 lib/gpl/admin/advanced.php:123
+#: lib/pro/admin/advanced.php:119 lib/pro/admin/advanced.php:126
 msgid "Users"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:136 lib/pro/admin/advanced.php:139
+#: lib/gpl/admin/advanced.php:137 lib/pro/admin/advanced.php:140
 msgid "User Profile"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:139 lib/pro/admin/advanced.php:142
+#: lib/gpl/admin/advanced.php:140 lib/pro/admin/advanced.php:143
 msgctxt "option label"
 msgid "Include Social Metaboxes on"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:144 lib/pro/admin/advanced.php:147
+#: lib/gpl/admin/advanced.php:145 lib/pro/admin/advanced.php:148
 msgctxt "option label"
 msgid "Image URL Custom Field"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:149 lib/pro/admin/advanced.php:152
+#: lib/gpl/admin/advanced.php:150 lib/pro/admin/advanced.php:153
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:154 lib/pro/admin/advanced.php:157
+#: lib/gpl/admin/advanced.php:155 lib/pro/admin/advanced.php:158
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:159 lib/pro/admin/advanced.php:162
+#: lib/gpl/admin/advanced.php:160 lib/pro/admin/advanced.php:163
 msgctxt "option label"
 msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:172 lib/pro/admin/advanced.php:172
+#: lib/gpl/admin/advanced.php:173 lib/pro/admin/advanced.php:173
 msgctxt "option label"
 msgid "&lt;html&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:178 lib/pro/admin/advanced.php:178
+#: lib/gpl/admin/advanced.php:179 lib/pro/admin/advanced.php:179
 msgctxt "option label"
 msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:183 lib/pro/admin/advanced.php:183
+#: lib/gpl/admin/advanced.php:184 lib/pro/admin/advanced.php:184
 msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:188 lib/pro/admin/advanced.php:188
+#: lib/gpl/admin/advanced.php:189 lib/pro/admin/advanced.php:189
 msgctxt "option label"
 msgid "Use WP Locale for Language"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:193 lib/pro/admin/advanced.php:193
+#: lib/gpl/admin/advanced.php:194 lib/pro/admin/advanced.php:194
 msgctxt "option label"
 msgid "Recreate Missing WP Media Sizes"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:197 lib/pro/admin/advanced.php:197
+#: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:198
 msgctxt "option label"
 msgid "Enforce Image Dimensions Check"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:200 lib/pro/admin/advanced.php:200
+#: lib/gpl/admin/advanced.php:201 lib/pro/admin/advanced.php:201
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:202 lib/pro/admin/advanced.php:202
+#: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:203
 msgctxt "option label"
 msgid "Allow Upscaling of WP Media Images"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:207 lib/pro/admin/advanced.php:207
+#: lib/gpl/admin/advanced.php:208 lib/pro/admin/advanced.php:208
 msgctxt "option label"
 msgid "Maximum Image Upscale Percentage"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:213 lib/pro/admin/advanced.php:213
+#: lib/gpl/admin/advanced.php:214 lib/pro/admin/advanced.php:214
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:220 lib/pro/admin/advanced.php:220
+#: lib/gpl/admin/advanced.php:221 lib/pro/admin/advanced.php:221
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:225 lib/pro/admin/advanced.php:225
+#: lib/gpl/admin/advanced.php:226 lib/pro/admin/advanced.php:226
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:229 lib/pro/admin/advanced.php:229
+#: lib/gpl/admin/advanced.php:230 lib/pro/admin/advanced.php:230
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:241 lib/messages.php:747
-#: lib/pro/admin/advanced.php:238
+#: lib/gpl/admin/advanced.php:242 lib/messages.php:747
+#: lib/pro/admin/advanced.php:239
 msgctxt "option label"
 msgid "Object Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:247 lib/pro/admin/advanced.php:244
+#: lib/gpl/admin/advanced.php:248 lib/pro/admin/advanced.php:245
 msgctxt "option label"
 msgid "Verify Peer SSL Certificate"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:253 lib/pro/admin/advanced.php:250
+#: lib/gpl/admin/advanced.php:254 lib/pro/admin/advanced.php:251
 msgctxt "option label"
 msgid "Report Cache Purge Count"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:266 lib/pro/admin/advanced.php:260
+#: lib/gpl/admin/advanced.php:267 lib/pro/admin/advanced.php:261
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:270 lib/pro/admin/advanced.php:264
+#: lib/gpl/admin/advanced.php:271 lib/pro/admin/advanced.php:265
 msgctxt "option label"
 msgid "<em>Get Shortlink</em> Gives Shortened URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:269
+#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:270
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:278 lib/pro/admin/advanced.php:272
+#: lib/gpl/admin/advanced.php:279 lib/pro/admin/advanced.php:273
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:282 lib/pro/admin/advanced.php:276
+#: lib/gpl/admin/advanced.php:283 lib/pro/admin/advanced.php:277
 msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:284 lib/pro/admin/advanced.php:278
+#: lib/gpl/admin/advanced.php:285 lib/pro/admin/advanced.php:279
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:289 lib/pro/admin/advanced.php:283
+#: lib/gpl/admin/advanced.php:290 lib/pro/admin/advanced.php:284
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:294 lib/pro/admin/advanced.php:288
+#: lib/gpl/admin/advanced.php:295 lib/pro/admin/advanced.php:289
 msgctxt "option label"
 msgid "or Bitly API Key (deprecated)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:296 lib/pro/admin/advanced.php:290
+#: lib/gpl/admin/advanced.php:297 lib/pro/admin/advanced.php:291
 msgctxt "option comment"
 msgid "api key authentication is deprecated"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:300 lib/pro/admin/advanced.php:294
+#: lib/gpl/admin/advanced.php:301 lib/pro/admin/advanced.php:295
 msgctxt "metabox title"
 msgid "Google APIs"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:303 lib/pro/admin/advanced.php:297
+#: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:298
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:308 lib/pro/admin/advanced.php:302
+#: lib/gpl/admin/advanced.php:309 lib/pro/admin/advanced.php:303
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:315 lib/pro/admin/advanced.php:309
+#: lib/gpl/admin/advanced.php:316 lib/pro/admin/advanced.php:310
 msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:318 lib/pro/admin/advanced.php:312
+#: lib/gpl/admin/advanced.php:319 lib/pro/admin/advanced.php:313
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:324 lib/pro/admin/advanced.php:318
+#: lib/gpl/admin/advanced.php:325 lib/pro/admin/advanced.php:319
 msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:327 lib/pro/admin/advanced.php:321
+#: lib/gpl/admin/advanced.php:328 lib/pro/admin/advanced.php:322
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:332 lib/pro/admin/advanced.php:326
+#: lib/gpl/admin/advanced.php:333 lib/pro/admin/advanced.php:327
 msgctxt "option label"
 msgid "YOURLS Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:337 lib/pro/admin/advanced.php:331
+#: lib/gpl/admin/advanced.php:338 lib/pro/admin/advanced.php:332
 msgctxt "option label"
 msgid "YOURLS Password"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:342 lib/pro/admin/advanced.php:336
+#: lib/gpl/admin/advanced.php:343 lib/pro/admin/advanced.php:337
 msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:355 lib/gpl/admin/advanced.php:405
-#: lib/pro/admin/advanced.php:346 lib/pro/admin/advanced.php:393
+#: lib/gpl/admin/advanced.php:356 lib/gpl/admin/advanced.php:406
+#: lib/pro/admin/advanced.php:347 lib/pro/admin/advanced.php:394
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:357 lib/gpl/admin/advanced.php:407
-#: lib/messages.php:663 lib/pro/admin/advanced.php:348
-#: lib/pro/admin/advanced.php:395
+#: lib/gpl/admin/advanced.php:358 lib/gpl/admin/advanced.php:408
+#: lib/messages.php:663 lib/pro/admin/advanced.php:349
+#: lib/pro/admin/advanced.php:396
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:359 lib/gpl/admin/advanced.php:409
-#: lib/messages.php:663 lib/pro/admin/advanced.php:350
-#: lib/pro/admin/advanced.php:397
+#: lib/gpl/admin/advanced.php:360 lib/gpl/admin/advanced.php:410
+#: lib/messages.php:663 lib/pro/admin/advanced.php:351
+#: lib/pro/admin/advanced.php:398
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
