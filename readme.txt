@@ -354,6 +354,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.33.13-dev1 (2016/08/11)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new `WpssoUtil::shorten_html_a_href()` static method (used by WPSSO RRSSB extension).
+
 **Version 3.33.12-1 (2016/08/09)**
 
 Official announcement: N/A
@@ -382,6 +395,10 @@ Official announcement: N/A
 	* None
 
 == Upgrade Notice ==
+
+= 3.33.13-dev1 =
+
+(2016/08/11) Added a new WpssoUtil shorten_html_a_href() static method (used by WPSSO RRSSB extension).
 
 = 3.33.12-1 =
 
