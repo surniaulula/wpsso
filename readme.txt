@@ -354,7 +354,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.33.13-dev1 (2016/08/11)**
+**Version 3.33.13-dev1 (TBD)**
 
 Official announcement: N/A
 
@@ -395,10 +395,6 @@ Official announcement: N/A
 	* None
 
 == Upgrade Notice ==
-
-= 3.33.13-dev1 =
-
-(2016/08/11) None.
 
 = 3.33.12-1 =
 
