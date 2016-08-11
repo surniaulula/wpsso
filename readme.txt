@@ -365,7 +365,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new `WpssoUtil::shorten_html_a_href()` static method (used by WPSSO RRSSB extension).
+	* None
 
 **Version 3.33.12-1 (2016/08/09)**
 
@@ -398,7 +398,7 @@ Official announcement: N/A
 
 = 3.33.13-dev1 =
 
-(2016/08/11) Added a new WpssoUtil shorten_html_a_href() static method (used by WPSSO RRSSB extension).
+(2016/08/11) None.
 
 = 3.33.12-1 =
 
