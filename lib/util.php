@@ -832,8 +832,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
 			else $sharing_url = $this->get_sharing_url( $mod, 
-				( isset( $atts['add_page'] ) ? 
-					$atts['add_page'] : true ) );
+				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;
@@ -841,8 +840,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$short_url = empty( $atts['short_url'] ) ?
 				apply_filters( $this->p->cf['lca'].'_shorten_url', 
-					$sharing_url, $this->p->options['plugin_shortener'] ) :
-				$atts['short_url'];
+					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
 
 			return array(
 				$request_url,		// %%request_url%%
