@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	class WpssoMedia {
 
 		private $p;
-		private $default_img_preg = array(
+		private $def_img_preg = array(
 			'html_tag' => 'img',
 			'pid_attr' => 'data-[a-z]+-pid',
 			'ngg_src' => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
@@ -549,13 +549,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_image = SucomUtil::get_mt_prop_image( 'og' );
 			$size_info = SucomUtil::get_size_info( $size_name );
-			$img_preg = $this->default_img_preg;
+			$img_preg = $this->def_img_preg;
 
 			// allow the html_tag and pid_attr regex to be modified
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
 				$filter_name = $this->p->cf['lca'].'_content_image_preg_'.$type;
 				if ( has_filter( $filter_name ) ) {
-					$img_preg[$type] = apply_filters( $filter_name, $this->default_img_preg[$type] );
+					$img_preg[$type] = apply_filters( $filter_name, $this->def_img_preg[$type] );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'filtered image preg '.$type.' = \''.$img_preg[$type].'\'' );
 				}
@@ -749,9 +749,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		/*
-		 * Check the content for generic <iframe|embed/> html tags. Apply wpsso_content_videos filter for more specialized checks.
-		 */
 		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -783,9 +780,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
-			// the src url must contain '/embed|embed_code|swf|video|v/' in to be recognized as an embedded video url
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]'.
-				'([^\'"<>]+\/(embed|embed_code|swf|video|v)\/[^\'"<>]+)[\'"][^<>]*>/i',
+				'([^\'"<>]+\/(embed\/|embed_code\/|swf\/|v\/|video\/|video\.php\?)[^\'"<>]+)[\'"][^<>]*>/i',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				if ( isset( $this->p->options['plugin_content_vid_max'] ) &&

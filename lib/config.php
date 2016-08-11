@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.33.13-dev1',	// plugin version
+					'version' => '3.34.0-dev1',	// plugin version
 					'opt_version' => '443',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -110,6 +110,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'polylang' => '(plugin) Polylang',
 							),
 							'media' => array(
+								'facebook' => '(api) Facebook Video API',
 								'gravatar' => '(api) Author Gravatar Image',
 								'ngg' => '(plugin) NextGEN Gallery',
 								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
@@ -601,10 +602,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_img_max' => 5,			// Maximum Images from Content
 					'plugin_content_vid_max' => 5,			// Maximum Videos from Content
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
-					'plugin_slideshare_api' => 1,			// Check for Embedded Media from
-					'plugin_vimeo_api' => 1,
-					'plugin_wistia_api' => 1,
-					'plugin_youtube_api' => 1,
+					'plugin_facebook_api' => 1,			// Check for Embedded Media from: Facebook
+					'plugin_slideshare_api' => 1,			// Check for Embedded Media from: Slideshare
+					'plugin_vimeo_api' => 1,			// Check for Embedded Media from: Vimeo
+					'plugin_wistia_api' => 1,			// Check for Embedded Media from: Wistia
+					'plugin_youtube_api' => 1,			// Check for Embedded Media from: Youtube
 					// Theme Integration Tab
 					'plugin_html_attr_filter_name' => 'language_attributes',
 					'plugin_html_attr_filter_prio' => 100,

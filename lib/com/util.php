@@ -1355,6 +1355,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
+		// used to decode facebook video urls
+		public static function replace_unicode_escape( $str ) {
+			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', 
+				array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
+		}
+
+		private static function replace_unicode_escape_callback( $match ) {
+			return mb_convert_encoding( pack( 'H*', $match[1] ), 'UTF-8', 'UCS-2' );
+		}
+
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
 			if ( function_exists( 'wp_json_encode' ) )
 				return wp_json_encode( $data, $options, $depth );

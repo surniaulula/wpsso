@@ -200,6 +200,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/*
 						 * Pro Version Features / Options
 						 */
+						case 'media-facebook':
+							$chk['optval'] = 'plugin_facebook_api';
+							break;
 						case 'media-gravatar':
 							$chk['optval'] = 'plugin_gravatar_api';
 							break;
