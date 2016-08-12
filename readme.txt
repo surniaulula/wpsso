@@ -7,7 +7,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, facebook, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, meta tags, multilingual, multisite, nextgen gallery, open graph, pinterest, player card, polylang, rich pin, schema, seo, share, social, summary card, twitter, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, sharing, facebook video, slideshare
+Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, facebook, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, meta tags, multilingual, multisite, nextgen gallery, open graph, pinterest, player card, polylang, rich pin, schema, seo, share, social, summary card, twitter, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, sharing, facebook video, slideshare, video embed
 Contributors: jsmoriss
 Requires At Least: 3.1
 Tested Up To: 4.6
@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-dev1 (2016/08/11)**
+**Version 3.34.0-dev2 (2016/08/12)**
 
 Official announcement: N/A
 
@@ -397,9 +397,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-dev1 =
+= 3.34.0-dev2 =
 
-(2016/08/11) Added support for Facebook embedded iframe videos (Pro version).
+(2016/08/12) Added support for Facebook embedded iframe videos (Pro version).
 
 = 3.33.12-1 =
 
