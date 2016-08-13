@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-dev2 (2016/08/12)**
+**Version 3.34.0-dev3 (2016/08/13)**
 
 Official announcement: N/A
 
@@ -366,7 +366,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added a $src_id argument to the WpssoUtil get_sharing_url() method and its filters.
 
 **Version 3.33.12-1 (2016/08/09)**
 
@@ -397,9 +397,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-dev2 =
+= 3.34.0-dev3 =
 
-(2016/08/12) Added support for Facebook embedded iframe videos (Pro version).
+(2016/08/13) Added support for Facebook embedded iframe videos (Pro version).
 
 = 3.33.12-1 =
 
