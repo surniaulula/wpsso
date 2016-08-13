@@ -1017,12 +1017,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $mod is false when used for open graph meta tags and buttons in widget
 		// $mod is true when buttons are added to individual posts on an index webpage
-		public function get_sharing_url( $mod = false, $add_page = true ) {
+		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod' => $mod,
 					'add_page' => $add_page,
+					'src_id' => $src_id,
 				) );
 			}
 
@@ -1058,14 +1059,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'add page query url = '.$url );
 					}
 				}
-				$url = apply_filters( $lca.'_post_url', $url, $mod, $add_page );
+				$url = apply_filters( $lca.'_post_url', $url, $mod, $add_page, $src_id );
 
 			} else {
 				if ( $mod['is_home'] ) {
 					if ( 'page' === get_option( 'show_on_front' ) ) {	// show_on_front = posts | page
 						$url = $this->check_sharing_url( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
-						$url = apply_filters( $lca.'_home_url', home_url( '/' ) );
+						$url = apply_filters( $lca.'_home_url', home_url( '/' ), $mod, $add_page, $src_id );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'home url = '.$url );
 					}
@@ -1079,7 +1080,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom term sharing_url = '.$url );
 						} else $url = $this->check_sharing_url( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
 					} 
-					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page );
+					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( $mod['is_user'] ) {
 					if ( ! empty( $mod['id'] ) ) {
@@ -1091,11 +1092,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
 						} else $url = $this->check_sharing_url( get_author_posts_url( $mod['id'] ), 'author posts' );
 					}
-					$url = apply_filters( $lca.'_author_url', $url, $mod, $add_page );
+					$url = apply_filters( $lca.'_author_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( is_search() ) {
 					$url = $this->check_sharing_url( get_search_link(), 'search link' );
-					$url = apply_filters( $lca.'_search_url', $url, $mod, $add_page );
+					$url = apply_filters( $lca.'_search_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
 					$url = $this->check_sharing_url( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post type archive' );
@@ -1111,7 +1112,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						elseif ( is_year() )
 							$url = $this->check_sharing_url( get_year_link( get_query_var( 'year' ) ), 'year link' );
 					}
-					$url = apply_filters( $lca.'_archive_url', $url, $mod, $add_page );
+					$url = apply_filters( $lca.'_archive_url', $url, $mod, $add_page, $src_id );
 				}
 
 				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
@@ -1143,7 +1144,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'server request url = '.$url );
 			}
 
-			return apply_filters( $lca.'_sharing_url', $url, $mod, $add_page );
+			return apply_filters( $lca.'_sharing_url', $url, $mod, $add_page, $src_id );
 		}
 
 		public function check_sharing_url( $url, $source = 'sharing' ) {

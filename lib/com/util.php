@@ -377,13 +377,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return false;
 		}
 
-		public static function sanitize_use_post( $mixed ) {
+		public static function sanitize_use_post( $mixed, $default = false ) {
 			if ( is_array( $mixed ) )
 				$use_post = isset( $mixed['use_post'] ) ?
-					$mixed['use_post'] : false;
+					$mixed['use_post'] : $default;
 			elseif ( is_object( $mixed ) )
 				$use_post = isset( $mixed->use_post ) ?
-					$mixed->use_post : false;
+					$mixed->use_post : $default;
 			else $use_post = $mixed;
 				
 			if ( empty( $use_post ) ||		// boolean false or 0
@@ -1535,6 +1535,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$crop = empty( $crop ) ? false : true;
 
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
+		}
+
+		// returns the class and id attributes
+		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
+			$css_class = $css_name.'-'.
+				( empty( $atts['css_class'] ) ?
+					'button' : $atts['css_class'] );
+
+			if ( ! empty( $css_extra ) ) 
+				$css_class = $css_extra.' '.$css_class;
+
+			return 'class="'.$css_class.'" id="'.self::get_atts_src_id( $atts, $css_name ).'"';
+		}
+
+		public static function get_atts_src_id( array $atts, $src_name ) {
+			$src_id = $src_name.'-'.
+				( empty( $atts['css_id'] ) ?
+					'button' : $atts['css_id'] );
+
+			if ( ! empty( $atts['use_post'] ) || is_singular() || in_the_loop() ) {
+				global $post;
+				if ( ! empty( $post->ID ) )
+					$src_id .= '-post-'.$post->ID;
+			}
+
+			return $src_id;
 		}
 	}
 }
