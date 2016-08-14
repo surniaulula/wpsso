@@ -8,7 +8,9 @@ click-through rate. ;-)</p>
 <dt><h3>Website Social Accounts (Optional)</h3></dt>
 
 <dd><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter your website / business social account information on the WordPress <u>Settings &gt; Website Social Pages and Accounts</u> settings page. The social account URLs are used by WPSSO for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
+
 <p><strong>Related information:</strong></p>
+
 <ul>
 <li><a href="https://www.facebook.com/business/learn/set-up-facebook-page">Setup a Facebook Business Page</a></li>
 <li><a href="https://business.twitter.com/en/basics/create-a-twitter-business-profile.html">Create a Twitter Business Profile</a></li>
@@ -20,102 +22,56 @@ click-through rate. ;-)</p>
 <dt><h3>Author Social Accounts (Optional)</h3></dt>
 
 <dd><p>Ask your authors to enter their Facebook, Google+, and Twitter contact information on their WordPress user profile page. Each author's contact information can appear in various meta tag values and Schema JSON-LD markup &mdash; but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author  / Person social profile markup for Google.</p>
+
 <p><strong>Related information:</strong></p>
+
 <p>Authors should take a moment to update their <a href="https://www.facebook.com/settings?tab=followers">Facebook Follower Settings</a> to enable a <em>Follow</em> button on Facebook. In this way, authors can publish both private (for friends) and public (for friends and followers) content on their Facebook wall. When an author allows followers, Facebook will also link an author's name in shares to their profile page.</p>
 </dd>
 
-<dt><h3>Essential Settings</h3></dt>
+<dt><h3>Essential Plugin Settings</h3></dt>
 
-<dd><p>Review the site description on the SSO <u>Essential Settings</u> page and
-select a default / fallback image ID or URL. The default image is used for
-index / archive pages, and as a fallback for Posts and Pages that do not have a
-suitable image featured, attached, or in their content. See the SSO <u>General
-Settings &gt; Images</u> tab for these and other image related options.</p>
+<dd><p>Review the site description on the SSO <u>Essential Settings</u> page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content. See the SSO <u>General Settings &gt; Images</u> tab for these and other image related options.</p>
 </dd>
 
-<dt><h3>Image Dimensions</h3></dt>
+<dt><h3>Image Dimensions (Optional)</h3></dt>
 
-<dd><p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u>
-values. If your original images are large enough, you should set the Open Graph
-image dimensions to 1200x630px cropped or larger. Images that are 600px and
-wider are displayed more prominently on Facebook, and 1200px or better is
-required to avoid upscaling (stretching) images for retina / high-PPI displays
-&mdash; so it's worth taking the time to make sure <em>all</em> your original
-images are at least 1200px wide, along with setting an Open Graph image
-dimension of 1200x630px cropped.</p>
+<dd><p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or better is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
 
 <blockquote>
 <h4>Cropped or Uncropped?</h4>
-<p>The difference between cropped and uncropped image dimensions is important
-to know &mdash; when resizing <em>and</em> cropping an image, it will be
-resized so that <em>both</em> sides meet or exceed the image dimensions
-required and <u>the excess width or height is trimmed</u>. The resulting image
-will match the required dimensions <em>exactly</em> (having sacrificed parts of
-the image). When resizing without cropping, <u>the original aspect ratio is
-preserved</u>, and no parts of the image are sacrificed. The image will be
-resized so both the width and height fit <em>within</em> the designed size
-&mash; so only one side of the image will match the required size.</p>
+<p>The difference between cropped and uncropped image dimensions is important to know &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <u>the excess width or height is trimmed</u>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <u>the original aspect ratio is preserved</u>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mash; so only one side of the image will match the required size.</p>
 </blockquote>
 
 <blockquote>
 <h4>Upscale / Enlarge Images?</h4>
-<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates
-smaller images from larger full-size originals. Upscaled images do not look as
-sharp or clean when upscaled, and if enlarged too much, images will look fuzzy
-and unappealing &mdash; not something you want to promote on social sites.
-WPSSO Pro includes an optional module that allows upscaling of WordPress Media
-Library images for WPSSO image sizes (up to a maximum upscale percentage). For
-example, a full-size image of 100x200px could be upscaled up to 150x300px using
-a maximum of 50%, but resizing the images any larger would fail (unless you
-increased the maximum).</p> 
+<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites.  WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images for WPSSO image sizes (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing the images any larger would fail (unless you increased the maximum).</p> 
 
-<p>If you feel strongly that upscaling small images in your WordPress Media
-Library is something you want (instead of uploading larger full-size
-originals), you can enable this feature under the <u>Advanced &gt; WP / Theme
-Integration</u> tab. <em>Do not enable this feature unless you want to publish
-lower quality images on social sites.</em></p>
+<p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <em>Do not enable this feature unless you want to publish lower quality images on social sites.</em></p>
 </blockquote>
 
 <blockquote>
 <h4>Verify Image Dimensions?</h4>
-<p>WPSSO Pro can double-check that all images returned by WordPress match the
-dimensions it requested (as WordPress can return smaller and/or inaccurate
-images). This check also insures that images which are too small and/or tall /
-wide for social sites are rejected in favour of other larger (and more
-suitable) images. You can enforce this image check by enabling the "Enforce
-Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme
-Integration</u> tab.</p>
+<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This check also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce this image check by enabling the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
 </blockquote>
 </dd>
 
 <dt><h3>Validation Tools</h3></dt>
 
-<dd><p>Submit a few sample Posts, Pages, etc. to the <a
-href="https://developers.facebook.com/tools/debug/">Facebook
-Debugger</a></strong> to verify your Open Graph meta tags. A link to the
-Facebook Debugger is available under the Validate tab in the <u>Social
-Settings</u> metabox (on post, taxonomy, and user editing pages). Submitting a
-URL to the Facebook Debugger can also be used to clear Facebook's cache (after
-clicking the "Fetch new scrape information" button a few times). If you're
-validating older posts / pages, pre-dating the activation of WPSSO, <a
-href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Facebook
-may continue to use the old meta tag values from its cache</a> even after
-fetching the new scrape information.</p>
+<dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <u>Social Settings</u> metabox (on post, taxonomy, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="http://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
 
-<p>Submit a Post / Page to the <a
-href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin
-Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an
-extension of Open Graph (and Schema) meta tags, but the Rich Pin Validator can
-be a little buggy, so double check any errors with the Facebook Debugger to
-make sure they are actual / real errors.</p>
+<p>Submit a Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an extension of Open Graph (and Schema) meta tags, but the Rich Pin Validator can be a little buggy, so double check any errors with the Facebook Debugger to make sure they are actual / real errors.</p>
 
-<p>Submit index / archive and Post / Page URLs to the <A
-href="https://validator.w3.org/">W3C Markup Validation Service</a> to verify
-the HTML of your theme templates. Social crawlers expect properly coded HTML
-markup that conforms to current HTML / XHTML standards. If your webpages
-contain serious markup errors, social and/or search engine crawlers may be
-unable to parse your webpage content. Fix and/or report any template markup
-issues with your theme author.</p>
+<p>Submit index / archive and Post / Page URLs to the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> to verify the HTML of your theme templates. Social crawlers expect properly coded HTML markup that conforms to current HTML / XHTML standards. If your webpages contain serious markup errors, social and/or search engine crawlers may be unable to parse your webpage content. Fix and/or report any template markup issues with your theme author.</p>
+
+<p><strong>Related information:</strong></p>
+
+<ul>
+<li><a href="https://developers.facebook.com/tools/debug/og/object/">Facebook Open Graph Object Debugger</a></li>
+<li><a href="https://developers.pinterest.com/tools/url-debugger/">Pinterest Rich Pin Validator</a></li>
+<li><a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a></li>
+<li><a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a> &mdash; validates meta tags and Schema markup in theme templates.</li>
+<li><a href="https://validator.w3.org/">W3C Markup Validation Service</a> &mdash; validates the syntax of HTML markup in theme templates.</li>
+</ul>
 </dd>
 
 <dt><h3>Interface and General Usage</h3></dt>
