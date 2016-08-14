@@ -824,15 +824,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_inline_vals( $mod = false, &$atts = array() ) {
 
-			// allow compatibility with $use_post as first argument
-			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $mod );
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
 			else $sharing_url = $this->get_sharing_url( $mod, 
-				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ) );
+				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ),
+				( isset( $atts['src_id'] ) ? $atts['src_id'] : '' ) );
 
 			if ( is_admin() )
 				$request_url = $sharing_url;

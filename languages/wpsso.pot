@@ -2987,26 +2987,26 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1598
+#: lib/util.php:1597
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1624
+#: lib/util.php:1623
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1628
+#: lib/util.php:1627
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1631
+#: lib/util.php:1630
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1635
+#: lib/util.php:1634
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
