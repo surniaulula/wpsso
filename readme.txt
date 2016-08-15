@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-rc1 (2016/08/14)**
+**Version 3.34.0-rc2 (2016/08/15)**
 
 Official announcement: N/A
 
@@ -397,9 +397,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-rc1 =
+= 3.34.0-rc2 =
 
-(2016/08/14) Added support for Facebook embedded iframe videos (Pro version).
+(2016/08/15) Added support for Facebook embedded iframe videos (Pro version).
 
 = 3.33.12-1 =
 
