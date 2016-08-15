@@ -1351,6 +1351,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$url = $user_mod['obj']->get_author_website( $author_id, 'url' );
 			$name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
 			$desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
+
 			if ( empty( $desc ) )
 				$desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
 

@@ -439,27 +439,31 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_author_meta( $user_id, $field_id ) {
-			$name = '';
+			$value = '';
 			$is_user = SucomUtil::user_exists( $user_id );
 			if ( $is_user ) {
 				switch ( $field_id ) {
 					case 'none':
 						break;
 					case 'fullname':
-						$name = get_the_author_meta( 'first_name', $user_id ).' '.
+						$value = get_the_author_meta( 'first_name', $user_id ).' '.
 							get_the_author_meta( 'last_name', $user_id );
 						break;
+					case 'description':
+						$value = preg_replace( '/[\s\n\r]+/s', ' ', 
+							get_the_author_meta( $field_id, $user_id ) );
+						break;
 					default:
-						$name = get_the_author_meta( $field_id, $user_id );
+						$value = get_the_author_meta( $field_id, $user_id );
 						break;
 				}
-				$name = trim( $name );	// just in case
+				$value = trim( $value );	// just in case
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
-			$name = apply_filters( $this->p->cf['lca'].'_get_author_meta', $name, $user_id, $field_id, $is_user );
+			$value = apply_filters( $this->p->cf['lca'].'_get_author_meta', $value, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$name );
-			return $name;
+				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$value );
+			return $value;
 		}
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
