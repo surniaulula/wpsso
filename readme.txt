@@ -355,14 +355,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-rc2 (2016/08/15)**
+**Version 3.34.0-rc3 (2016/08/16)**
 
 Official announcement: N/A
 
 * *New Features*
 	* Added support for Facebook embedded iframe videos (Pro version).
 * *Improvements*
-	* None
+	* Added support for Schema http://schema.org/AutomotiveBusiness sub-types (AutoDealer, AutoRental, AutoRepair, etc.).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -397,9 +397,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-rc2 =
+= 3.34.0-rc3 =
 
-(2016/08/15) Added support for Facebook embedded iframe videos (Pro version).
+(2016/08/16) Added support for Facebook embedded iframe videos (Pro version). Added support for Schema Automotive Business sub-types.
 
 = 3.33.12-1 =
 
