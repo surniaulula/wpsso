@@ -621,19 +621,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'getting thumbnail for image id '.$og_image['og:image:id'] );
 
 				list(
-					$og_image['og:image'],
-					$og_image['og:image:width'],
-					$og_image['og:image:height'],
-					$og_image['og:image:cropped'],
-					$og_image['og:image:id']
+					$og_thumb['og:image'],
+					$og_thumb['og:image:width'],
+					$og_thumb['og:image:height'],
+					$og_thumb['og:image:cropped'],
+					$og_thumb['og:image:id']
 				) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
+				if ( ! empty( $thumb['og:image'] ) )	// just in case
+					$og_image =& $og_thumb;
 			}
 
-			// get the preferred url (og:image:secure_url, og:image:url, og:image)
-			$media_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
-
-			if ( ! empty( $media_url ) )
-				$value .= '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+			if ( ! empty( $og_image['og:image'] ) )
+				$value .= '<div class="preview_img" style="background-image:url('.$og_image['og:image'].');"></div>';
 
 			return $value;
 		}
