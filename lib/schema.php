@@ -1015,7 +1015,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;	// return count of images added
 			}
 
-			// get the preferred URL (og:image:secure_url, og:image:url, og:image)
+			// get the preferred url (og:image:secure_url, og:image:url, og:image)
 			$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
 
 			if ( empty( $media_url ) ) {

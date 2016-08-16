@@ -597,7 +597,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			switch ( $column_name ) {
 				case $lca.'_og_img':
-					// set custom image dimensions for this post/term/user id
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'setting custom image dimensions for this post/term/user id' );
 					$this->p->util->add_plugin_image_sizes( false, array(), $mod );
 					break;
 			}
@@ -612,9 +613,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_og_img_column_html( $og_image ) {
 			$value = '';
-			// try and get a smaller thumbnail version if we can
+
 			if ( isset( $og_image['og:image:id'] ) && 
 				$og_image['og:image:id'] > 0 ) {
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'getting thumbnail for image id '.$og_image['og:image:id'] );
+
 				list(
 					$og_image['og:image'],
 					$og_image['og:image:width'],
@@ -624,8 +629,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
 			}
 
-			if ( ! empty( $og_image['og:image'] ) )
-				$value .= '<div class="preview_img" style="background-image:url('.$og_image['og:image'].');"></div>';
+			// get the preferred url (og:image:secure_url, og:image:url, og:image)
+			$media_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+
+			if ( ! empty( $media_url ) )
+				$value .= '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+
 			return $value;
 		}
 

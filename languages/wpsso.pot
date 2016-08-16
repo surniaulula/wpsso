@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:71 lib/term.php:265 lib/user.php:252
+#: lib/admin.php:71 lib/term.php:267 lib/user.php:255
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:72 lib/term.php:266 lib/user.php:253
+#: lib/admin.php:72 lib/term.php:268 lib/user.php:256
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:442 lib/post.php:246 lib/term.php:231 lib/user.php:216
+#: lib/admin.php:442 lib/post.php:247 lib/term.php:233 lib/user.php:219
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1233,7 +1233,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:395
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:396
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2258,24 +2258,24 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:304
+#: lib/post.php:305
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:308
+#: lib/post.php:309
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:323
+#: lib/post.php:324
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:354 lib/profile/social-settings.php:27 lib/term.php:255
-#: lib/user.php:242
+#: lib/post.php:355 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2901,15 +2901,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:409
+#: lib/user.php:412
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:410
+#: lib/user.php:413
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:411
+#: lib/user.php:414
 msgid "Jabber / Google Talk"
 msgstr ""
 

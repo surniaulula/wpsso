@@ -109,6 +109,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function filter_og_img_term_column_content( $value, $column_name, $mod ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			if ( ! empty( $value ) )
 				return $value;
@@ -132,9 +134,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
 				$image = reset( $og_image );
-				if ( ! empty( $image['og:image'] ) )
-					$value = $this->get_og_img_column_html( $image );
-			}
+				$value = $this->get_og_img_column_html( $image );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'no image found for column value' );
 
 			return $value;
 		}
