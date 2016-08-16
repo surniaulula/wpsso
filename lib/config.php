@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.34.0-rc2',	// plugin version
+					'version' => '3.34.0-rc3',	// plugin version
 					'opt_version' => '443',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1128,7 +1128,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'landmarks.or.historical.buildings' => 'http://schema.org/LandmarksOrHistoricalBuildings',
 						'local.business' => array( 
 							'animal.shelter' => 'http://schema.org/AnimalShelter',
-							'automotive.business' => 'http://schema.org/AutomotiveBusiness',
+							'automotive.business' => array(
+								'auto.body.shop' => 'http://schema.org/AutoBodyShop',
+								'auto.dealer' => 'http://schema.org/AutoDealer',
+								'auto.parts.store' => 'http://schema.org/AutoPartsStore',
+								'auto.rental' => 'http://schema.org/AutoRental',
+								'auto.repair' => 'http://schema.org/AutoRepair',
+								'auto.wash' => 'http://schema.org/AutoWash',
+								'automotive.business' => 'http://schema.org/AutomotiveBusiness',
+								'gas.station' => 'http://schema.org/GasStation',
+								'motorcycle.dealer' => 'http://schema.org/MotorcycleDealer',
+								'motorcycle.repair' => 'http://schema.org/MotorcycleRepair ',
+							),
 							'child.care' => 'http://schema.org/ChildCare',
 							'dry.cleaning.or.laundry' => 'http://schema.org/DryCleaningOrLaundry',
 							'emergency.service' => 'http://schema.org/EmergencyService',
