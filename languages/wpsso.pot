@@ -347,25 +347,43 @@ msgid ""
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1389
+#: lib/admin.php:1360
+msgid ""
+"please uncheck '<em>Add the Social Open Graph objects</em>' in the <a href="
+"\"%s\">Squirrly SEO</a> Social Media Options."
+msgstr ""
+
+#: lib/admin.php:1365
+msgid ""
+"please uncheck '<em>Add the Twitter card in your tweets</em>' in the <a href="
+"\"%s\">Squirrly SEO</a> Social Media Options."
+msgstr ""
+
+#: lib/admin.php:1370
+msgid ""
+"please uncheck the '<em>adds the Json-LD metas for Semantic SEO</em>' option "
+"in the <a href=\"%s\">Squirrly SEO</a> settings."
+msgstr ""
+
+#: lib/admin.php:1409
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1396
+#: lib/admin.php:1416
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1405
+#: lib/admin.php:1425
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1412
+#: lib/admin.php:1432
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1424
+#: lib/admin.php:1444
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""

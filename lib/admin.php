@@ -1350,6 +1350,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 			}
+
+			// Squirrly SEO
+			if ( $this->p->is_avail['seo']['sq'] ) {
+				$opts = json_decode( get_option( 'sq_options' ), true );
+				if ( ! empty( $opts['sq_auto_facebook'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'squirrly seo open graph meta tags are enabled' );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck \'<em>Add the Social Open Graph objects</em>\' in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+				}
+				if ( ! empty( $opts['sq_auto_twitter'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'squirrly seo twitter card meta tags are enabled' );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck \'<em>Add the Twitter card in your tweets</em>\' in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+				}
+				if ( ! empty( $opts['sq_auto_jsonld'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'squirrly seo json-ld markup is enabled' );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>adds the Json-LD metas for Semantic SEO</em>\' option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+				}
+			}
 		}
 
 		public function check_tmpl_head_elements() {

@@ -19,6 +19,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $extend_checks = array(
 			'seo' => array(
 				'seou' => 'SEO Ultimate',
+				'sq' => 'Squirrly SEO',
 			),
 			'util' => array(
 				'um' => 'Pro Update Manager',
@@ -175,26 +176,25 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
 						case 'seo-aioseop':
-							$chk['class'] = 'All_in_One_SEO_Pack';
+							$chk['plugin'] = 'all-in-one-seo-pack/all_in_one_seo_pack.php';
 							break;
 						case 'seo-autodescription':
-							$chk['function'] = 'the_seo_framework';
 							$chk['plugin'] = 'autodescription/autodescription.php';
 							break;
 						case 'seo-headspace2':
-							$chk['class'] = 'HeadSpace_Plugin';
 							$chk['plugin'] = 'headspace2/headspace.php';
 							break;
 						case 'seo-seou':
-							$chk['class'] = 'SEO_Ultimate';
 							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';
 							break;
+						case 'seo-sq':
+							$chk['plugin'] = 'squirrly-seo/squirrly.php';
+							break;
 						case 'seo-wpseo':
-							$chk['function'] = 'wpseo_init';
+							$chk['function'] = 'wpseo_init';	// just in case
 							$chk['plugin'] = 'wordpress-seo/wp-seo.php';
 							break;
 						case 'social-buddypress':
-							$chk['class'] = 'BuddyPress';
 							$chk['plugin'] = 'buddypress/bp-loader.php';
 							break;
 						/*
