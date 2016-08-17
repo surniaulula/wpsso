@@ -50,9 +50,9 @@
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
 'wpsso_json_array_type_ids' ( $type_ids, $mod );
-'wpsso_json_data_http_schema_org' ( false, $use_post, $mod, $mt_og, $user_id, $is_main );
-'wpsso_json_data_http_schema_org_{item_type}' ( false, $use_post, $mod, $mt_og, $user_id, $is_main );
-'wpsso_json_is_main_entity' ( $bool, $use_post, $mod, $mt_og, $post_id, $user_id );
+'wpsso_json_data_http_schema_org' ( false, $mod, $mt_og, $user_id, $is_main );
+'wpsso_json_data_http_schema_org_{item_type}' ( false, $mod, $mt_og, $user_id, $is_main );
+'wpsso_json_is_main_entity' ( $bool, $mod, $mt_og, $post_id, $user_id );
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_json_prop_http_schema_org_aggregaterating' ( $rating, $mod );
 'wpsso_link_rel' ( $link_rel, $use_post, $mod );
