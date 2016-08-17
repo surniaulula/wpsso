@@ -631,8 +631,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$og_image =& $og_thumb;
 			}
 
-			if ( ! empty( $og_image['og:image'] ) )
-				$value .= '<div class="preview_img" style="background-image:url('.$og_image['og:image'].');"></div>';
+			$media_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+
+			if ( ! empty( $media_url ) )
+				$value .= '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
 
 			return $value;
 		}

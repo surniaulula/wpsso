@@ -443,8 +443,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $is_main === null )
 					$is_main = $top_type_id === $head_type_id ? true : false;
 
-				$is_main = apply_filters( $lca.'_json_is_main_entity', 
-					$is_main, $use_post, $mod, $mt_og, $user_id );
+				$is_main = apply_filters( $lca.'_json_is_main_entity', $is_main, $mod, $mt_og, $user_id );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'is_main_entity: '.( $is_main ? 'true' : 'false' ) );
@@ -469,13 +468,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'calling class method '.$rel_filter_name );
 							$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
-								$json_data, $use_post, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
+								$json_data, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
 						} elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( $rel_filter_name.' class method is disabled' );
 					} elseif ( $has_filter ) {
 						if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) ) {
 							$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
-								$json_data, $use_post, $mod, $mt_og, $user_id, $is_main );
+								$json_data, $mod, $mt_og, $user_id, $is_main );
 						} elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( $rel_filter_name.' filter is disabled' );
 					} elseif ( $this->p->debug->enabled )
@@ -508,7 +507,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/WebSite for Google
 		 */
-		public function filter_json_data_http_schema_org_website( $json_data, $use_post, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_http_schema_org_website( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -543,7 +542,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/Organization social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_organization( $json_data, $use_post, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_http_schema_org_organization( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -558,7 +557,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * http://schema.org/Person social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_person( $json_data, $use_post, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_http_schema_org_person( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
