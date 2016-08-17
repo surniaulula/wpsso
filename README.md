@@ -15,7 +15,7 @@
 <h2>Description</h2>
 
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p>
-<strong>WPSSO provides <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash;</p>
+<strong>WPSSO adds <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash;</p>
 
 <blockquote>
 <p>Google and social websites use a wide variety of meta tags and Schema markup standards provided by WPSSO (<a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data / Rich Snippet</a> markup) to describe &amp; display your content correctly &mdash; including titles, descriptions, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, ratings, event details, and much more.</li></ul></p>
