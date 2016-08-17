@@ -901,7 +901,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// list_element = false
 
 			// list of contributors / co-authors
-			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
+			if ( ! empty( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
 					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// list_element = true
 
@@ -1316,7 +1316,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
 
-			if ( isset( $mod['post_coauthors'] ) && is_array( $mod['post_coauthors'] ) )
+			if ( ! empty( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
 					$ret = array_merge( $ret, $this->get_single_author_noscript( $mod, $author_id, 'contributor' ) );
 

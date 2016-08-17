@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
 
-						if ( ! isset( $head_info[$mt[3]] ) )
+						if ( ! isset( $head_info[$mt[3]] ) )	// only save the first meta tag value
 							$head_info[$mt[3]] = $mt[5];
 						break;
 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$mt_match, $m ) ? true : false ):
 
 						if ( ! empty( $mt[5] ) )
-							$has_media[$m[1]] = true;		// optimize media loop
+							$has_media[$m[1]] = true;	// optimize media loop
 						break;
 				}
 			}

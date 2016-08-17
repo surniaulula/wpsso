@@ -192,10 +192,12 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 					if ( $mod['is_post'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting name / url for article:author meta tag' );
+
 						if ( $mod['post_author'] ) {
 							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
 							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
 								$this->p->options['fb_author_name'] );
+
 						} elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'using default author id '.$def_author_id );
@@ -203,6 +205,10 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $def_author_id,
 								$this->p->options['fb_author_name'] );
 						}
+
+						if ( ! empty( $mod['post_coauthors'] ) )
+							$og['article:author'] = array_merge( $og['article:author'],
+								$this->p->m['util']['user']->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
 					}
 				}
 
