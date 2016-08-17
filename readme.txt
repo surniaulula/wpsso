@@ -364,6 +364,7 @@ Official announcement: N/A
 * *Improvements*
 	* Added support for Schema http://schema.org/AutomotiveBusiness sub-types (AutoDealer, AutoRental, AutoRepair, etc.).
 	* Added the first (top) Co-Authors Plus author ID as the post / page author (Pro version).
+	* Added a check and warnings for conflicting settings in the Squirrly SEO plugin.
 * *Bugfixes*
 	* None
 * *Developer Notes*
