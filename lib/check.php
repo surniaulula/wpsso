@@ -139,19 +139,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 * 3rd Party Plugins
 						 */
 						case 'ecom-edd':
-							$chk['class'] = 'Easy_Digital_Downloads';
 							$chk['plugin'] = 'easy-digital-downloads/easy-digital-downloads.php';
 							break;
 						case 'ecom-marketpress':
-							$chk['class'] = 'MarketPress';
 							$chk['plugin'] = 'wordpress-ecommerce/marketpress.php';
 							break;
 						case 'ecom-woocommerce':
-							$chk['class'] = 'Woocommerce';
 							$chk['plugin'] = 'woocommerce/woocommerce.php';
 							break;
 						case 'ecom-wpecommerce':
-							$chk['class'] = 'WP_eCommerce';
 							$chk['plugin'] = 'wp-e-commerce/wp-shopping-cart.php';
 							break;
 						case 'ecom-yotpowc':	// yotpo-social-reviews-for-woocommerce
@@ -161,11 +157,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
 							break;
 						case 'forum-bbpress':
-							$chk['class'] = 'bbPress';
 							$chk['plugin'] = 'bbpress/bbpress.php';
 							break;
 						case 'lang-polylang':
-							$chk['class'] = 'Polylang';
 							$chk['plugin'] = 'polylang/polylang.php';
 							break;
 						case 'media-ngg':
