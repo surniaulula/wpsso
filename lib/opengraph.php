@@ -193,6 +193,7 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting name / url for article:author meta tag' );
 
+						$og['article:author'] = array();	// pre-define for array merge
 						if ( $mod['post_author'] ) {
 							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
 							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
