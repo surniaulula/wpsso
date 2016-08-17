@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-rc5 (2016/08/17)**
+**Version 3.34.0-rc6 (2016/08/17)**
 
 Official announcement: N/A
 
@@ -363,6 +363,7 @@ Official announcement: N/A
 	* Added support for Facebook embedded iframe videos (Pro version).
 * *Improvements*
 	* Added support for Schema http://schema.org/AutomotiveBusiness sub-types (AutoDealer, AutoRental, AutoRepair, etc.).
+	* Added Co-Authors Plus authors and guests (with Facebook URLs) to the Open Graph article:author meta tags.
 	* Added the first (top) Co-Authors Plus author ID as the post / page author (Pro version).
 	* Added a check and warnings for conflicting settings in the Squirrly SEO plugin.
 * *Bugfixes*
@@ -400,7 +401,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-rc5 =
+= 3.34.0-rc6 =
 
 (2016/08/17) Added support for Facebook embedded iframe videos (Pro version). Added support for Schema Automotive Business sub-types.
 
