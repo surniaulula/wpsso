@@ -363,6 +363,7 @@ Official announcement: N/A
 	* Added support for Facebook embedded iframe videos (Pro version).
 * *Improvements*
 	* Added support for Schema http://schema.org/AutomotiveBusiness sub-types (AutoDealer, AutoRental, AutoRepair, etc.).
+	* Added the first (top) Co-Authors Plus author ID as the post / page author (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
