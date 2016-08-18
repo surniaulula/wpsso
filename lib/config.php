@@ -648,7 +648,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
-					'plugin_shortlink' => 1,
+					'plugin_shortlink' => 1,			// Get Shortlink Gives Shortened URL
 					'plugin_min_shorten' => 23,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_token' => '',

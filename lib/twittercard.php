@@ -152,9 +152,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'images disabled: maximum images = 0' );
 			} else {
-				/*
-				 * Default Image for Indexes
-				 */
+				// default image for indexes
 				if ( ! isset( $mt_tc['twitter:card'] ) && ! $mod['use_post'] ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'use_post is false: checking for forced default image' );

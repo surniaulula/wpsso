@@ -2381,7 +2381,7 @@ msgid ""
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/shorten.php:165
+#: lib/pro/util/shorten.php:166
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""

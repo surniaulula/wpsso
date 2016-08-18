@@ -39,8 +39,11 @@ if ( ! class_exists( 'SucomException' ) ) {
 			 * getPrevious();       // previous exception
 			 * getTraceAsString();  // formatted string of trace
 			 */
-			if ( is_object( $this->p ) )
+			if ( is_object( $this->p ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( $this->getMessage() );
 				$this->p->notice->err( $this->getMessage(), true );
+			}
 		}
 	}
 }
