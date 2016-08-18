@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.0-rc6 (2016/08/17)**
+**Version 3.34.0-1 (2016/08/18)**
 
 Official announcement: N/A
 
@@ -401,9 +401,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.0-rc6 =
+= 3.34.0-1 =
 
-(2016/08/17) Added support for Facebook embedded iframe videos (Pro version). Added support for Schema Automotive Business sub-types.
+(2016/08/18) Added support for Facebook embedded iframe videos (Pro version). Added support for Schema Automotive Business sub-types.
 
 = 3.33.12-1 =
 
