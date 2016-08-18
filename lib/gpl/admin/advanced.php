@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( 'plugin_filter_lang' );
 
 			$table_rows['plugin_auto_img_resize'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Recreate Missing WP Media Sizes',
+			$form->get_th_html( _x( 'Create Missing WP Media Sizes',
 				'option label', 'wpsso' ), null, 'plugin_auto_img_resize' ).
 			$this->get_nocb_cell( 'plugin_auto_img_resize' );
 
@@ -200,12 +200,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( 'plugin_check_img_dims', 
 				'<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
-			$table_rows['plugin_upscale_images'] = $form->get_th_html( _x( 'Allow Upscaling of WP Media Images',
+			$table_rows['plugin_upscale_images'] = $form->get_th_html( _x( 'Allow Upscale of WP Media Images',
 				'option label', 'wpsso' ), null, 'plugin_upscale_images' ).
 			$this->get_nocb_cell( 'plugin_upscale_images' ).'</td>';
 
 			$table_rows['plugin_upscale_img_max'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Maximum Image Upscale Percentage',
+			$form->get_th_html( _x( 'Maximum Image Upscale Percent',
 				'option label', 'wpsso' ), null, 'plugin_upscale_img_max' ).
 			'<td class="blank">'.$this->p->options['plugin_upscale_img_max'].' %</td>';
 

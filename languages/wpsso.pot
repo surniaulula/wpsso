@@ -884,7 +884,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:194 lib/pro/admin/advanced.php:194
 msgctxt "option label"
-msgid "Recreate Missing WP Media Sizes"
+msgid "Create Missing WP Media Sizes"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:198
@@ -899,12 +899,12 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:203
 msgctxt "option label"
-msgid "Allow Upscaling of WP Media Images"
+msgid "Allow Upscale of WP Media Images"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:208 lib/pro/admin/advanced.php:208
 msgctxt "option label"
-msgid "Maximum Image Upscale Percentage"
+msgid "Maximum Image Upscale Percent"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:214 lib/pro/admin/advanced.php:214
@@ -1085,7 +1085,7 @@ msgstr ""
 
 #: lib/gpl/admin/general.php:53 lib/pro/admin/general.php:57
 msgctxt "option label"
-msgid "Include Video Preview Image(s)"
+msgid "Include Video Preview Images"
 msgstr ""
 
 #: lib/gpl/admin/general.php:56 lib/pro/admin/general.php:60
@@ -1237,7 +1237,7 @@ msgstr ""
 
 #: lib/gpl/admin/meta.php:177 lib/pro/admin/meta.php:192
 msgctxt "option label"
-msgid "Include Preview Image(s)"
+msgid "Include Preview Images"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:192 lib/pro/admin/meta.php:210
@@ -1438,8 +1438,8 @@ msgstr ""
 
 #: lib/messages.php:349
 msgid ""
-"Automatically recreate missing and/or incorrect images in the WordPress "
-"Media Library (default is checked)."
+"Automatically create missing and/or incorrect images in the WordPress Media "
+"Library (default is checked)."
 msgstr ""
 
 #: lib/messages.php:394
@@ -2885,7 +2885,7 @@ msgstr ""
 
 #: lib/submenu/general.php:404
 msgctxt "option label"
-msgid "<em>Large Image</em> Card Image Dimensions"
+msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""
 
 #: lib/submenu/general.php:412

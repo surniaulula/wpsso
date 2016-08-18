@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-08-16 13:19-0400\n"
-"PO-Revision-Date: 2016-08-16 13:20-0400\n"
+"POT-Creation-Date: 2016-08-18 11:59-0400\n"
+"PO-Revision-Date: 2016-08-18 12:00-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,12 +15,12 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/admin.php:71 lib/term.php:265 lib/user.php:252
+#: lib/admin.php:71 lib/term.php:267 lib/user.php:255
 msgctxt "package type"
 msgid "Pro"
 msgstr "Pro"
 
-#: lib/admin.php:72 lib/term.php:266 lib/user.php:253
+#: lib/admin.php:72 lib/term.php:268 lib/user.php:256
 msgctxt "package type"
 msgid "Free"
 msgstr "Gratuit"
@@ -85,7 +85,7 @@ msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:442 lib/post.php:246 lib/term.php:231 lib/user.php:216
+#: lib/admin.php:442 lib/post.php:247 lib/term.php:233 lib/user.php:219
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l’action %1$s \"%2$s\" a échoué."
 
@@ -314,23 +314,35 @@ msgstr "s'il vous plaît décocher l'option '<em>Output Knowledge tags?</em>' da
 msgid "please uncheck the '<em>%1$s</em>' option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option '<em>Ajouter les métadonnées OpenGraph</em>' sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1389
+#: lib/admin.php:1360
+msgid "please uncheck '<em>Add the Social Open Graph objects</em>' in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
+msgstr "s'il vous plaît décocher l'option '<em>Add the Social Open Graph objects</em>' dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
+
+#: lib/admin.php:1365
+msgid "please uncheck '<em>Add the Twitter card in your tweets</em>' in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
+msgstr "s'il vous plaît décocher l'option '<em>Add the Twitter card in your tweets</em>' dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
+
+#: lib/admin.php:1370
+msgid "please uncheck the '<em>adds the Json-LD metas for Semantic SEO</em>' option in the <a href=\"%s\">Squirrly SEO</a> settings."
+msgstr "s'il vous plaît décocher l'option '<em>adds the Json-LD metas for Semantic SEO</em>' dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
+
+#: lib/admin.php:1409
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1396
+#: lib/admin.php:1416
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1405
+#: lib/admin.php:1425
 msgid "Failed to open file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
 
-#: lib/admin.php:1412
+#: lib/admin.php:1432
 msgid "The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1424
+#: lib/admin.php:1444
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -812,8 +824,8 @@ msgstr "Utilisez WP Locale pour la langue"
 
 #: lib/gpl/admin/advanced.php:194 lib/pro/admin/advanced.php:194
 msgctxt "option label"
-msgid "Recreate Missing WP Media Sizes"
-msgstr "Recréer tailles manquantes Médias WP"
+msgid "Create Missing WP Media Sizes"
+msgstr "Créer tailles manquantes Médias WP"
 
 #: lib/gpl/admin/advanced.php:198 lib/pro/admin/advanced.php:198
 msgctxt "option label"
@@ -827,13 +839,13 @@ msgstr "recommandé"
 
 #: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:203
 msgctxt "option label"
-msgid "Allow Upscaling of WP Media Images"
+msgid "Allow Upscale of WP Media Images"
 msgstr "Permettre agrandir images Médias WP"
 
 #: lib/gpl/admin/advanced.php:208 lib/pro/admin/advanced.php:208
 msgctxt "option label"
-msgid "Maximum Image Upscale Percentage"
-msgstr "Pourcentage d'agrandissement max."
+msgid "Maximum Image Upscale Percent"
+msgstr "Pourcentage d'agrandissement max"
 
 #: lib/gpl/admin/advanced.php:214 lib/pro/admin/advanced.php:214
 msgctxt "option label"
@@ -1012,7 +1024,7 @@ msgstr "utilise %s"
 
 #: lib/gpl/admin/general.php:53 lib/pro/admin/general.php:57
 msgctxt "option label"
-msgid "Include Video Preview Image(s)"
+msgid "Include Video Preview Images"
 msgstr "Inclure l’image d’aperçu du vidéo"
 
 #: lib/gpl/admin/general.php:56 lib/pro/admin/general.php:60
@@ -1163,7 +1175,7 @@ msgstr "Vidéos maximum"
 
 #: lib/gpl/admin/meta.php:177 lib/pro/admin/meta.php:192
 msgctxt "option label"
-msgid "Include Preview Image(s)"
+msgid "Include Preview Images"
 msgstr "Inclure l’image d’aperçu"
 
 #: lib/gpl/admin/meta.php:192 lib/pro/admin/meta.php:210
@@ -1176,7 +1188,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique de l’article"
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:395
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:396
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1189,7 +1201,7 @@ msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis p
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:917 lib/pro/util/checkimgdims.php:62
+#: lib/media.php:917 lib/pro/util/checkimgdims.php:67
 msgid "Media Library"
 msgstr "la Bibliothèque de Médias"
 
@@ -1307,8 +1319,8 @@ msgid "An \"%1$s\" column can be added to the Posts, Pages, Taxonomy / Terms, an
 msgstr "Une colonne \"%1$s\" peut être ajouté aux listes d'Articles, Pages, Taxonomie / Termes et Utilisateurs. Lorsque cette colonne est active, les <b>utilisateurs peuvent également masquer la colonne</b> en utilisant l'onglet <em>Options de l'écran</em> sur chaque page de liste."
 
 #: lib/messages.php:349
-msgid "Automatically recreate missing and/or incorrect images in the WordPress Media Library (default is checked)."
-msgstr "Recréer automatiquement les images manquantes ou incorrectes dans la bibliothèque de médias WordPress (cochée par défaut)."
+msgid "Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked)."
+msgstr "Créer automatiquement les images manquantes ou incorrectes dans la bibliothèque de Médias WordPress (cochée par défaut)."
 
 #: lib/messages.php:394
 msgid "A preferred URL shortening service for %s plugin filters and/or extensions that may need to shorten URLs &mdash; don't forget to define the Service API Keys for the URL shortening service of your choice."
@@ -1881,20 +1893,20 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:304
+#: lib/post.php:305
 msgid "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced settings"
 msgstr "peut être désactivé dans les paramètres avancés d'<a href=\"%s\">Intégration WP / Thème</a>"
 
-#: lib/post.php:308
+#: lib/post.php:309
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:323
+#: lib/post.php:324
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'en-tête de cette page Web."
 
-#: lib/post.php:354 lib/profile/social-settings.php:27 lib/term.php:255
-#: lib/user.php:242
+#: lib/post.php:355 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr "Réglages Sociaux"
@@ -1941,11 +1953,11 @@ msgstr "Modifier le profil de %s"
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:66
+#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:71
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:68
+#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:73
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
@@ -1957,15 +1969,15 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: lib/pro/util/checkimgdims.php:54
+#: lib/pro/util/checkimgdims.php:59
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/pro/util/checkimgdims.php:109
+#: lib/pro/util/checkimgdims.php:119
 msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire ‘data-wp-pid’ pour les images de la Bibliothèque de Médias &mdash; si cette image provient de la Bibliothèque de Médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l’image au contenu."
 
-#: lib/pro/util/checkimgdims.php:110
+#: lib/pro/util/checkimgdims.php:120
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L’image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
@@ -1982,11 +1994,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:683
+#: lib/schema.php:682
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
 
-#: lib/schema.php:686
+#: lib/schema.php:685
 msgid "The \"%1$s\" Organization Banner (600x60px) is missing and required for the Schema %2$s markup."
 msgstr "Le bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
 
@@ -2468,8 +2480,8 @@ msgstr "Dimensions d’image carte <em>sommaire</em>"
 
 #: lib/submenu/general.php:404
 msgctxt "option label"
-msgid "<em>Large Image</em> Card Image Dimensions"
-msgstr "Dimensions d’image carte <em>grande img.</em>"
+msgid "<em>Large Image</em> Card Img Dimensions"
+msgstr "Dimensions d’image carte <em>grande img</em>"
 
 #: lib/submenu/general.php:412
 msgctxt "option label"
@@ -2501,15 +2513,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter Grande Image"
 
-#: lib/user.php:409
+#: lib/user.php:412
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:410
+#: lib/user.php:413
 msgid "Yahoo IM"
 msgstr "Yahoo IM"
 
-#: lib/user.php:411
+#: lib/user.php:414
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 

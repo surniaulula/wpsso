@@ -614,10 +614,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_attr_filter_prio' => 100,
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
-					'plugin_auto_img_resize' => 1,			// Recreate Missing WP Media Sizes
+					'plugin_auto_img_resize' => 1,			// Create Missing WP Media Sizes
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
-					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
-					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percentage
+					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images
+					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
@@ -730,9 +730,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_auto_img_resize:use' => 'default',
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_check_img_dims:use' => 'default',
-					'plugin_upscale_images' => 0,			// Allow Upscaling of Smaller Images
+					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images
 					'plugin_upscale_images:use' => 'default',
-					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percentage
+					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
 					'plugin_upscale_img_max:use' => 'default',
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_shortcodes:use' => 'default',
