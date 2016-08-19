@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-08-18 11:59-0400\n"
-"PO-Revision-Date: 2016-08-18 12:00-0400\n"
+"POT-Creation-Date: 2016-08-19 13:43-0400\n"
+"PO-Revision-Date: 2016-08-19 13:43-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -85,7 +85,7 @@ msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:442 lib/post.php:247 lib/term.php:233 lib/user.php:219
+#: lib/admin.php:442 lib/post.php:259 lib/term.php:233 lib/user.php:219
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l’action %1$s \"%2$s\" a échoué."
 
@@ -377,25 +377,25 @@ msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:296
+#: lib/com/notice.php:289
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:297
+#: lib/com/notice.php:290
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:301
+#: lib/com/notice.php:294
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:302
+#: lib/com/notice.php:295
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:373
+#: lib/com/notice.php:366
 msgid "%s Note"
 msgstr "Avis %s"
 
@@ -888,20 +888,20 @@ msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr "Service de raccourcissement d'URL"
 
-#: lib/gpl/admin/advanced.php:271 lib/pro/admin/advanced.php:265
-msgctxt "option label"
-msgid "<em>Get Shortlink</em> Gives Shortened URL"
-msgstr "Le bouton <em>Obtenir le lien court</em> donne l'URL raccourci"
-
-#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:270
+#: lib/gpl/admin/advanced.php:272 lib/pro/admin/advanced.php:266
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr "Longueur d’URL minimale à raccourcir"
 
-#: lib/gpl/admin/advanced.php:279 lib/pro/admin/advanced.php:273
+#: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:269
 msgctxt "option comment"
 msgid "characters"
 msgstr "caractères"
+
+#: lib/gpl/admin/advanced.php:277 lib/pro/admin/advanced.php:271
+msgctxt "option label"
+msgid "Use Shortened URL for WP Shortlink"
+msgstr "Utilisez l'URL raccourcie pour WP Shortlink"
 
 #: lib/gpl/admin/advanced.php:283 lib/pro/admin/advanced.php:277
 msgctxt "metabox title"
@@ -1188,7 +1188,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique de l’article"
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:396
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:408
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1327,8 +1327,8 @@ msgid "A preferred URL shortening service for %s plugin filters and/or extension
 msgstr "Votre service de raccourcissement d'URL préféré pour les filtres et/ou modules de l'extension %s  &mdash; n'oubliez pas de définir les clés d'API de Service pour le service de de raccourcissement d'URL que vois avez choisi."
 
 #: lib/messages.php:397
-msgid "The <em>Get Shortlink</em> button on Posts / Pages admin editing pages provides the shortened sharing URL instead of the default WordPress shortlink URL."
-msgstr "Le bouton <em>Get Shortlink</em> sur les pages d'édition d'Articles et de Pages retourne l'URL de partage raccourci au lieu de l'URL shortlink par défaut de WordPress."
+msgid "The <em>Get Shortlink</em> button and the shortlink meta tag on Posts / Pages provides the shortened sharing URL instead of the default WordPress shortlink URL."
+msgstr "Le bouton <em>Get Shortlink</em> et le méta tag shortlink sur pour les Articles et Pages retourne l'URL de partage raccourci au lieu de l'URL shortlink de WordPress."
 
 #: lib/messages.php:400
 msgid "URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters)."
@@ -1857,55 +1857,55 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
 
-#: lib/options.php:200
-msgid "Free version non-standard value found for the '%s' option - resetting to its default value."
-msgstr "Valeur non-standard pour l'option '%s' dans la version gratuite - l'option a été remise à sa valeur par défaut."
+#: lib/options.php:202
+msgid "Non-standard value found for \"%s\" option - resetting to default value."
+msgstr "Valeur non-standard trouvé pour l'option '%s' - remise à la valeur par défaut."
 
-#: lib/options.php:256
+#: lib/options.php:266
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:259
+#: lib/options.php:269
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:262
+#: lib/options.php:272
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:264
+#: lib/options.php:274
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:275
+#: lib/options.php:285
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
-#: lib/options.php:334
+#: lib/options.php:344
 msgid "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à / ou supérieur à %3$s: 1 &mdash;  les options sont remises à leurs valeurs par défaut."
 
-#: lib/options.php:380
+#: lib/options.php:390
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:429
+#: lib/options.php:439
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:305
+#: lib/post.php:317
 msgid "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced settings"
 msgstr "peut être désactivé dans les paramètres avancés d'<a href=\"%s\">Intégration WP / Thème</a>"
 
-#: lib/post.php:309
+#: lib/post.php:321
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:324
+#: lib/post.php:336
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'en-tête de cette page Web."
 
-#: lib/post.php:355 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/post.php:367 lib/profile/social-settings.php:27 lib/term.php:257
 #: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2601,15 +2601,15 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:255
+#: wpsso.php:253
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire n'a pas pu être désactivée)."
 
-#: wpsso.php:256
+#: wpsso.php:254
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire est désactivée)."
 
-#: wpsso.php:257
+#: wpsso.php:255
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr "Des messages d’information de débogage sont ajoutés en commentaires HTML."
 
@@ -2632,3 +2632,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
+
+#~ msgctxt "option label"
+#~ msgid "<em>Get Shortlink</em> Gives Shortened URL"
+#~ msgstr "Le bouton <em>Obtenir le lien court</em> donne l'URL raccourci"

@@ -13,7 +13,7 @@
  * Description: Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.
  * Requires At Least: 3.1
  * Tested Up To: 4.6
- * Version: 3.34.1-dev3
+ * Version: 3.34.1-rc1
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
