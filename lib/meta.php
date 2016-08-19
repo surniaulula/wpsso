@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_social_preview( &$form, &$head, &$mod ) {
+		public function get_rows_social_preview( $form, $head, $mod ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -164,13 +164,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
-				$long_url = $this->p->util->get_sharing_url( $mod, false );	// false or post ID
+				$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
 				$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 					$long_url, $this->p->options['plugin_shortener'] );
 
-				if ( $long_url === $short_url && $mod['is_post'] )
-					$short_url = wp_get_shortlink();
+				if ( $short_url === $long_url && $mod['is_post'] )
+					$short_url = wp_get_shortlink( $mod['id'], 'post' );
 
 				$table_rows[] = $form->get_th_html( _x( 'Short URL',
 					'option label', 'wpsso' ), 'medium' ).

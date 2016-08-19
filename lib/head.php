@@ -318,15 +318,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$link_rel = array();
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
-				if ( ! empty( $author_id ) &&
-					is_object( $this->p->m['util']['user'] ) )	// just in case
-						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
-							$this->p->options['seo_author_field'] );
+				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) )	// just in case
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
+						$this->p->options['seo_author_field'] );
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {
 				if ( ! empty( $this->p->options['seo_publisher_url'] ) )
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
+			}
+
+			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
+				$link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
+					$mt_og['og:url'], $this->p->options['plugin_shortener'] );
+
+				if ( $link_rel['shortlink'] === $mt_og['og:url'] && $mod['is_post'] )
+					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );
 			}
 
 			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $mod );
@@ -575,6 +582,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					switch ( $match_name ) {
 						case 'og:url':
+						case 'og:secure_url':
 						case 'og:image':
 						case 'og:image:url':
 						case 'og:image:secure_url':
@@ -586,6 +594,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'twitter:image':
 						case 'twitter:player':
 						case 'canonical':
+						case 'shortlink':
 						case 'menu':
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );

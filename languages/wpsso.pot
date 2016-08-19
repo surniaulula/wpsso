@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.1-"
-"dev2\n"
+"dev3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:442 lib/post.php:247 lib/term.php:233 lib/user.php:219
+#: lib/admin.php:442 lib/post.php:259 lib/term.php:233 lib/user.php:219
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -949,19 +949,19 @@ msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:271 lib/pro/admin/advanced.php:265
-msgctxt "option label"
-msgid "<em>Get Shortlink</em> Gives Shortened URL"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:276 lib/pro/admin/advanced.php:270
+#: lib/gpl/admin/advanced.php:272 lib/pro/admin/advanced.php:266
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:279 lib/pro/admin/advanced.php:273
+#: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:269
 msgctxt "option comment"
 msgid "characters"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:277 lib/pro/admin/advanced.php:271
+msgctxt "option label"
+msgid "Use Shortened URL for WP Shortlink"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:283 lib/pro/admin/advanced.php:277
@@ -1251,7 +1251,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:396
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:408
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -1452,8 +1452,8 @@ msgstr ""
 
 #: lib/messages.php:397
 msgid ""
-"The <em>Get Shortlink</em> button on Posts / Pages admin editing pages "
-"provides the shortened sharing URL instead of the default WordPress "
+"The <em>Get Shortlink</em> button and the shortlink meta tag on Posts / "
+"Pages provides the shortened sharing URL instead of the default WordPress "
 "shortlink URL."
 msgstr ""
 
@@ -2275,23 +2275,23 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:305
+#: lib/post.php:317
 msgid ""
 "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
 "settings"
 msgstr ""
 
-#: lib/post.php:309
+#: lib/post.php:321
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:324
+#: lib/post.php:336
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:355 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/post.php:367 lib/profile/social-settings.php:27 lib/term.php:257
 #: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"

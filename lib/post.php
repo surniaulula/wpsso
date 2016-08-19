@@ -32,8 +32,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				if ( ! empty( $this->p->options['plugin_shortlink'] ) )
+				if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'adding get_shortlink filter' );
 					add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+				}
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
@@ -84,6 +87,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'shortlink' => $shortlink, 
+					'post_id' => $post_id, 
+					'context' => $context, 
+					'allow_slugs' => $allow_slugs, 
+				) );
+			}
+
 			if ( isset( $this->p->options['plugin_shortener'] ) &&
 				$this->p->options['plugin_shortener'] !== 'none' ) {
 
@@ -104,7 +116,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						return $shortlink;
 					}
 
-					$long_url = $this->p->util->get_sharing_url( $post_id );
+					$long_url = $this->p->util->get_sharing_url( $post_id, false, 'shortlink' );	// $add_page = false
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
 					if ( $long_url !== $short_url )	// just in case

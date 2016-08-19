@@ -268,15 +268,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_shortener' ).
 			'<td class="blank">[None]</td>';
 
-			$table_rows['plugin_shortlink'] = $form->get_th_html( _x( '<em>Get Shortlink</em> Gives Shortened URL',
-				'option label', 'wpsso' ), null, 'plugin_shortlink' ).
-			$this->get_nocb_cell( 'plugin_shortlink' );
-
 			$table_rows['plugin_min_shorten'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Minimum URL Length to Shorten',
 				'option label', 'wpsso' ), null, 'plugin_min_shorten' ). 
 			'<td nowrap class="blank">'.$this->p->options['plugin_min_shorten'].' '.
 				_x( 'characters', 'option comment', 'wpsso' ).'</td>';
+
+			$table_rows['plugin_shortlink'] = $form->get_th_html( _x( 'Use Shortened URL for WP Shortlink',
+				'option label', 'wpsso' ), null, 'plugin_shortlink' ).
+			$this->get_nocb_cell( 'plugin_shortlink' );
 
 			$table_rows['subsection_plugin_bitly'] = '<tr class="hide_in_basic">'.
 				'<td></td><td class="subsection"><h4>'.

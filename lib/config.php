@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.34.1-dev2',	// plugin version
-					'opt_version' => '444',		// increment when changing default options
+					'version' => '3.34.1-dev3',	// plugin version
+					'opt_version' => '445',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
@@ -451,6 +451,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// enable/disable header html tags
 					'add_link_rel_author' => 1,
 					'add_link_rel_publisher' => 1,
+					'add_link_rel_shortlink' => 1,
 					// facebook
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,
@@ -648,7 +649,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
-					'plugin_shortlink' => 1,			// Get Shortlink Gives Shortened URL
+					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
 					'plugin_min_shorten' => 23,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_token' => '',
