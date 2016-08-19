@@ -355,14 +355,14 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.1-dev3 (2016/08/19)**
+**Version 3.34.1-rc1 (2016/08/19)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new "link rel shortlink" meta tag with the shortened sharing URL, or post shortlink.
+	* Added a new "link rel shortlink" meta tag with the shortened sharing URL or post shortlink.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -390,7 +390,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.1-dev3 =
+= 3.34.1-rc1 =
 
 (2016/08/19) Added a new "link rel shortlink" meta tag. Added new filters to manage auto-disabling of canonical and description meta tags.
 
