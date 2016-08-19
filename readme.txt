@@ -392,7 +392,7 @@ Official announcement: N/A
 
 = 3.34.1-dev3 =
 
-(2016/08/19) Added new filters to manage auto-disabling of canonical and description meta tags when an SEO plugin is detected:
+(2016/08/19) Added a new "link rel shortlink" meta tag. Added new filters to manage auto-disabling of canonical and description meta tags.
 
 = 3.34.0-1 =
 
