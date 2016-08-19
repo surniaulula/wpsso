@@ -355,6 +355,22 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.34.1-dev1 (2016/08/19)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added new SucomNoDebug and SucomNoNotice classes.
+	* Added new filters to manage auto-disabling of canonical and description meta tags when an SEO plugin is detected:
+		* 'wpsso_add_meta_name_canonical' ( $bool )
+		* 'wpsso_add_meta_name_description' ( $bool )
+
 **Version 3.34.0-1 (2016/08/18)**
 
 Official announcement: N/A
@@ -373,6 +389,10 @@ Official announcement: N/A
 	* Removed the '$use_post' argument in the json data filters.
 
 == Upgrade Notice ==
+
+= 3.34.1-dev1 =
+
+(2016/08/19) Added new filters to manage auto-disabling of canonical and description meta tags when an SEO plugin is detected:
 
 = 3.34.0-1 =
 
