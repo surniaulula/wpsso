@@ -366,6 +366,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Added the post ID argument to `wp_get_shortlink()` for more reliable results.
 	* Added new SucomNoDebug and SucomNoNotice classes.
 	* Added new filters to manage auto-disabling of canonical and description meta tags when an SEO plugin is detected:
 		* 'wpsso_add_meta_name_canonical' ( $bool )
