@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.1-dev1 (2016/08/19)**
+**Version 3.34.1-dev2 (2016/08/19)**
 
 Official announcement: N/A
 
@@ -390,7 +390,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.1-dev1 =
+= 3.34.1-dev2 =
 
 (2016/08/19) Added new filters to manage auto-disabling of canonical and description meta tags when an SEO plugin is detected:
 
