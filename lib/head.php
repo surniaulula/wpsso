@@ -22,16 +22,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$this->p->util->add_plugin_filters( $this, array( 
 				'head_cache_salt' => 2,		// modify the cache salt for certain crawlers
 			) );
+
 			add_action( 'wp_head', array( &$this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );
 
-			// disable page caching for pinterest
+			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) )
+				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+
+			// disable page caching for the pinterest crawler (allows for customized meta tags)
 			$crawler_name = SucomUtil::crawler_name();
 			if ( $crawler_name === 'pinterest' )
-				WpssoConfig::set_variable_constants( self::$dnc_const );
+				WpssoConfig::set_variable_constants( self::$dnc_const );	// define "do not cache" constants
 		}
 
 		public function filter_head_cache_salt( $salt, $crawler_name ) {
