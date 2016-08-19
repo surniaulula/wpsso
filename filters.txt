@@ -9,9 +9,9 @@
 'wpsso_add_schema_meta_array' ( $bool );
 'wpsso_add_json_http_schema_org' ( $bool );
 'wpsso_add_json_http_schema_org_{item_type}' ( $bool );
-'wpsso_add_metbox_post' ( $bool, $post_id );
-'wpsso_add_metbox_term' ( $bool, $term_id );
-'wpsso_add_metbox_user' ( $bool, $user_id );
+'wpsso_add_metabox_post' ( $bool, $post_id );
+'wpsso_add_metabox_term' ( $bool, $term_id );
+'wpsso_add_metabox_user' ( $bool, $user_id );
 'wpsso_archive_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_article_section' ( $section, $post_id );
 'wpsso_attached_image_ids' ( $attach_ids, $post_id );
