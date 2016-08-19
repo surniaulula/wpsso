@@ -116,9 +116,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						return $shortlink;
 					}
 
-					$long_url = $this->p->util->get_sharing_url( $post_id, false, 'shortlink' );	// $add_page = false
+					$long_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false
+
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
+
 					if ( $long_url !== $short_url )	// just in case
 						return $short_url;
 			}

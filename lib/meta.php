@@ -166,19 +166,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else {
 				$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
-				$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
+				if ( $mod['is_post'] )
+					$short_url = wp_get_shortlink( $mod['id'], 'post' );
+				else $short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 					$long_url, $this->p->options['plugin_shortener'] );
 
-				if ( $short_url === $long_url && $mod['is_post'] )
-					$short_url = wp_get_shortlink( $mod['id'], 'post' );
-
-				$table_rows[] = $form->get_th_html( _x( 'Short URL',
-					'option label', 'wpsso' ), 'medium' ).
-				'<td>'.$form->get_copy_input( $short_url ).'</td>';
-	
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_copy_input( $long_url ).'</td>';
+
+				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
+					'option label', 'wpsso' ), 'medium' ).
+				'<td>'.$form->get_copy_input( $short_url ).'</td>';
 			}
 
 			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',

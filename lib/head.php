@@ -336,11 +336,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
-				$link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
-					$mt_og['og:url'], $this->p->options['plugin_shortener'] );
-
-				if ( $link_rel['shortlink'] === $mt_og['og:url'] && $mod['is_post'] )
+				if ( $mod['is_post'] )
 					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );
+				else $link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
+					$mt_og['og:url'], $this->p->options['plugin_shortener'] );
 			}
 
 			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $mod );
