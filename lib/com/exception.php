@@ -25,11 +25,10 @@ if ( ! class_exists( 'SucomException' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark();
 			}
-
 			parent::__construct( $message, $code, $previous );
 		}
 
-		public function errorMessage() {
+		public function errorMessage( $ret = false ) {
 			/*
 			 * getMessage();        // message of exception
 			 * getCode();           // code of exception
@@ -40,10 +39,12 @@ if ( ! class_exists( 'SucomException' ) ) {
 			 * getTraceAsString();  // formatted string of trace
 			 */
 			if ( is_object( $this->p ) ) {
+				$err_msg = $this->getMessage();
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $this->getMessage() );
-				$this->p->notice->err( $this->getMessage(), true );
+					$this->p->debug->log( $err_msg );
+				$this->p->notice->err( $err_msg, true );
 			}
+			return  $ret;
 		}
 	}
 }
