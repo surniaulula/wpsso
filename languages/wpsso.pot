@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.1-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -417,29 +418,29 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:296
+#: lib/com/notice.php:289
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:297
+#: lib/com/notice.php:290
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:301
+#: lib/com/notice.php:294
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:302
+#: lib/com/notice.php:295
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:373
+#: lib/com/notice.php:366
 msgid "%s Note"
 msgstr ""
 
@@ -2227,51 +2228,50 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:200
+#: lib/options.php:202
 msgid ""
-"Free version non-standard value found for the '%s' option - resetting to its "
-"default value."
+"Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:256
+#: lib/options.php:266
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:259
+#: lib/options.php:269
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:262
+#: lib/options.php:272
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:264
+#: lib/options.php:274
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:275
+#: lib/options.php:285
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:334
+#: lib/options.php:344
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:380
+#: lib/options.php:390
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:429
+#: lib/options.php:439
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -3028,15 +3028,15 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:255
+#: wpsso.php:253
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:256
+#: wpsso.php:254
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:257
+#: wpsso.php:255
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 

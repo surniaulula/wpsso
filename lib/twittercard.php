@@ -184,6 +184,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$this->p->debug->log( 'large image card: getting post image (meta, featured, attached)' );
 
 						$og_image = $this->p->media->get_post_images( 1, $lca.'-tc-lrgimg', $post_id, false );
+
 						if ( count( $og_image ) > 0 ) {
 							$image = reset( $og_image );
 							$mt_tc['twitter:card'] = 'summary_large_image';
@@ -200,6 +201,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								$this->p->debug->log( 'large image card: getting singlepic image' );
 
 							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, $lca.'-tc-lrgimg', $post_id, false );
+
 							if ( count( $og_image ) > 0 ) {
 								$image = reset( $og_image );
 								$mt_tc['twitter:card'] = 'summary_large_image';
@@ -223,6 +225,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$this->p->debug->log( 'summary card: checking for content image' );
 
 					$og_image = $this->p->og->get_all_images( 1, $lca.'-tc-summary', $mod, false );
+
 					if ( count( $og_image ) > 0 ) {
 						$image = reset( $og_image );
 						$mt_tc['twitter:image'] = $image['og:image'];

@@ -132,6 +132,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
 
+				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
 
@@ -179,14 +180,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// adjust some options based on external factors
 				if ( ! $network ) {
-					if ( $this->p->check->aop( $this->p->cf['lca'], false, $this->p->is_avail['aop'] ) ) {
+					if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) ) {
 						foreach ( array(
 							'plugin_hide_pro' => 0,
 						) as $idx => $def_val ) {
-							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
-								$opts[$idx] = $def_val;
-								$has_diff_options = true;	// save the options
-							}
+							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+								continue;
+							$opts[$idx] = $def_val;
+							$has_diff_options = true;	// save the options
 						}
 					} else {
 						foreach ( array(
@@ -195,22 +196,30 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_upscale_images' => 0,
 							'plugin_file_cache_exp' => 0,
 						) as $idx => $def_val ) {
-							if ( $opts[$idx] != $def_val ) {	// numeric options could strings
-								if ( is_admin() )
-									$this->p->notice->warn( sprintf( __( 'Free version non-standard value found for the \'%s\' option - resetting to its default value.', 'wpsso' ), $idx ), true );
-								$opts[$idx] = $def_val;
-								$has_diff_options = true;	// save the options
-							}
+							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+								continue;
+							if ( is_admin() )
+								$this->p->notice->warn( sprintf( __( 'Non-standard value found for "%s" option - resetting to default value.',
+									'wpsso' ), $idx ), true );
+							$opts[$idx] = $def_val;
+							$has_diff_options = true;	// save the options
 						}
 					}
 
-					// if an seo plugin is found, disable the canonical and description meta tags
+					// if an seo plugin is detected, disable the standard seo meta tags
 					if ( $this->p->is_avail['seo']['*'] ) {
-						foreach ( array( 'canonical', 'description' ) as $name ) {
-							$opts['add_meta_name_'.$name] = 0;
-							$opts['add_meta_name_'.$name.':is'] = 'disabled';
+						foreach ( array(
+							'add_meta_name_canonical' => 0,
+							'add_meta_name_description' => 0,
+						) as $idx => $def_val ) {
+							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );
+							$opts[$idx.':is'] = 'disabled';
+							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+								continue;
+							$opts[$idx] = $def_val;
+							$has_diff_options = true;	// save the options
 						}
-					} 
+					}
 
 					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
@@ -228,7 +237,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( empty( $opts['plugin_object_cache_exp'] ) ||
 							$opts['plugin_object_cache_exp'] < $def_opts['plugin_object_cache_exp'] ) {
 
-							if ( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) )
+							if ( $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
 							else $opts['plugin_object_cache_exp'] = $def_opts['plugin_object_cache_exp'];
 						}
@@ -245,6 +254,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'adding options derived from post type names' );
+
 				$opts = $this->p->util->add_ptns_to_opts( $opts,
 					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
 
@@ -275,7 +285,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 
-				return $network === false ? 
+				return $network === false ?	// return the default options
 					$this->get_defaults() : 
 					$this->get_site_defaults();
 			}

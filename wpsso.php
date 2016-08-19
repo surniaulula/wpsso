@@ -13,7 +13,7 @@
  * Description: Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.
  * Requires At Least: 3.1
  * Tested Up To: 4.6
- * Version: 3.34.0-1
+ * Version: 3.34.1-dev1
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -37,12 +37,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $p;			// Wpsso
 		public $admin;			// WpssoAdmin (admin menus and page loader)
 		public $cache;			// SucomCache (object and file caching)
-		public $debug;			// SucomDebug or WpssoNoDebug
+		public $debug;			// SucomDebug or SucomNoDebug
 		public $head;			// WpssoHead
 		public $loader;			// WpssoLoader
 		public $media;			// WpssoMedia (images, videos, etc.)
 		public $msgs;			// WpssoMessages (admin tooltip messages)
-		public $notice;			// SucomNotice or WpssoNoNotice
+		public $notice;			// SucomNotice or SucomNoNotice
 		public $og;			// WpssoOpengraph
 		public $tc;			// WpssoTwittercard
 		public $opt;			// WpssoOptions
@@ -158,17 +158,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( ( $html_debug || $wp_debug ) && 
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) )
 					$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
-			else $this->debug = new WpssoNoDebug();
+			else $this->debug = new SucomNoDebug();
 
-			if ( $activate === true &&
-				$this->debug->enabled )
-					$this->debug->log( 'method called for plugin activation' );
+			if ( $activate === true && $this->debug->enabled )
+				$this->debug->log( 'method called for plugin activation' );
 
 			// only load the notification class in the admin interface
-			if ( is_admin() &&
-				( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) )
-					$this->notice = new $classname( $this );
-			else $this->notice = new WpssoNoNotice();
+			if ( is_admin() && ( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) )
+				$this->notice = new $classname( $this );
+			else $this->notice = new SucomNoNotice();
 
 			$this->util = new WpssoUtil( $this );
 			$this->opt = new WpssoOptions( $this );
@@ -334,28 +332,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
         global $wpsso;
 	$wpsso =& Wpsso::get_instance();
-}
-
-if ( ! class_exists( 'WpssoNoDebug' ) ) {
-	class WpssoNoDebug {
-		public $enabled = false;
-		public function mark() { return; }
-		public function args() { return; }
-		public function log() { return; }
-		public function show_html() { return; }
-		public function get_html() { return; }
-		public function is_enabled() { return false; }
-	}
-}
-
-if ( ! class_exists( 'WpssoNoNotice' ) ) {
-	class WpssoNoNotice {
-		public function nag() { return; }
-		public function inf() { return; }
-		public function err() { return; }
-		public function log() { return; }
-		public function trunc() { return; }
-	}
 }
 
 ?>

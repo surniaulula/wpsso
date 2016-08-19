@@ -57,7 +57,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $force !== null )
 				$checked = checked( $force, 1, false );
-			elseif ( ! $disabled && $this->in_options( $name ) )
+			elseif ( $this->in_options( $name ) )
 				$checked = checked( $this->options[$name], 1, false );
 			elseif ( $this->in_defaults( $name ) )
 				$checked = checked( $this->defaults[$name], 1, false );

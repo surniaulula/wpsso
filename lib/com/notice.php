@@ -52,13 +52,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function can_dismiss() {
-			global $wp_version;
-			if ( version_compare( $wp_version, 4.2, '>=' ) )
-				return true;
-			else return false;
-		}
-
 		public function nag( $msg_txt, $save_msg = false, $user_id = true, $msg_id = false ) { 
 			$this->log( 'nag', $msg_txt, $save_msg, $user_id, $msg_id, false );	// $dismiss = false
 		}
@@ -93,7 +86,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			// a msg_id is required to dismiss the notice
 			$payload['dismiss'] = ! empty( $msg_id ) && ! empty( $dismiss ) && 
-				$this->can_dismiss() === true ? $dismiss : false;
+				self::can_dismiss() === true ? $dismiss : false;
 
 			// save message until it can be displayed
 			if ( $save_msg === true ) {
@@ -118,11 +111,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function trunc_id( $msg_id, $user_id = true ) {
-			return $this->trunc( '', '', true, $user_id, $msg_id );
+			$this->trunc( '', '', true, $user_id, $msg_id );
 		}
 
 		public function trunc_all( $type = '' ) {
-			return $this->trunc( $type, '', true, 'all', false );
+			$this->trunc( $type, '', true, 'all', false );
 		}
 
 		// truncates all notices by default
@@ -503,6 +496,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	margin:5px 0 5px 60px;
 }
 </style>'."\n";
+		}
+
+		private static function can_dismiss() {
+			global $wp_version;
+			if ( version_compare( $wp_version, 4.2, '>=' ) )
+				return true;
+			else return false;
 		}
 	}
 }

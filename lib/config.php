@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.34.0-1',	// plugin version
-					'opt_version' => '443',		// increment when changing default options
+					'version' => '3.34.1-dev1',	// plugin version
+					'opt_version' => '444',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
@@ -1383,6 +1383,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_filepath ) {
 			
+			require_once( WPSSO_PLUGINDIR.'lib/com/nodebug.php' );
+			require_once( WPSSO_PLUGINDIR.'lib/com/nonotice.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/exception.php' );	// extends Exception
 			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
