@@ -11,7 +11,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, faceboo
 Contributors: jsmoriss
 Requires At Least: 3.1
 Tested Up To: 4.6
-Stable Tag: 3.34.0-1
+Stable Tag: 3.34.1-1
 
 Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.
 
