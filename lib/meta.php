@@ -155,11 +155,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 					'wpsso' ), ucfirst( $mod['post_type'] ) );
 
-				$table_rows[] = $form->get_th_html( _x( 'Short URL',
+				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
+				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
 					'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	

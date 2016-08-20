@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-08-19 13:43-0400\n"
-"PO-Revision-Date: 2016-08-19 13:43-0400\n"
+"POT-Creation-Date: 2016-08-20 09:30-0400\n"
+"PO-Revision-Date: 2016-08-20 09:30-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -85,7 +85,7 @@ msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:442 lib/post.php:259 lib/term.php:233 lib/user.php:219
+#: lib/admin.php:442 lib/post.php:261 lib/term.php:233 lib/user.php:219
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l’action %1$s \"%2$s\" a échoué."
 
@@ -745,13 +745,13 @@ msgctxt "option label"
 msgid "Add %s Column for"
 msgstr "Ajouter colonne %s pour"
 
-#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:553
+#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:552
 #: lib/pro/admin/advanced.php:104
 msgctxt "column title"
 msgid "%s Img"
 msgstr "%s Img"
 
-#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:554
+#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:553
 #: lib/pro/admin/advanced.php:106
 msgctxt "column title"
 msgid "%s Desc"
@@ -1081,8 +1081,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr "Description carte Twitter"
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:162
-#: lib/meta.php:179 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
+#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:158
+#: lib/meta.php:174 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
@@ -1188,7 +1188,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique de l’article"
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:408
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:410
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1765,85 +1765,85 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr "Aucune image Open Graph trouvé"
 
-#: lib/meta.php:158 lib/meta.php:175
+#: lib/meta.php:162 lib/meta.php:178
 msgctxt "option label"
-msgid "Short URL"
-msgstr "URL court"
+msgid "Shortened URL"
+msgstr "URL raccourcie"
 
-#: lib/meta.php:184
+#: lib/meta.php:183
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr "Example Open Graph"
 
-#: lib/meta.php:277
+#: lib/meta.php:276
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:277
+#: lib/meta.php:276
 msgid "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags."
 msgstr "Facebook, Pinterest, LinkedIn, Google+ et la majorité des sites sociaux utilisent les balises méta Open Graph."
 
-#: lib/meta.php:277
+#: lib/meta.php:276
 msgid "The Facebook debugger allows you to refresh Facebook's cache, while also validating the Open Graph and Pinterest Rich Pin meta tags."
 msgstr "Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout en validant également les balises méta Open Graph et Rich Pin de Pinterest."
 
-#: lib/meta.php:277
+#: lib/meta.php:276
 msgid "The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape information\" button several times to refresh Facebook's cache</strong>."
 msgstr "Le débogueur Facebook reste la méthode la plus stable et fiable pour vérifier les balises méta Open Graph. <strong>Vous devez cliquer sur le bouton \"Fetch new scrape information\" quelques fois pour actualiser le cache de Facebook</strong>."
 
-#: lib/meta.php:277
+#: lib/meta.php:276
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:279
+#: lib/meta.php:278
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:279
+#: lib/meta.php:278
 msgid "Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+."
 msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, schéma, microdonnées, et social JSON-LD) pour Google Search et Google+."
 
-#: lib/meta.php:279
+#: lib/meta.php:278
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider Données Structurées"
 
-#: lib/meta.php:281
+#: lib/meta.php:280
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:281
+#: lib/meta.php:280
 msgid "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins."
 msgstr "Valider les balises méta Open Graph / Rich Pin et appliquent pour les montrés sur les épingles Pinterest agrandis ."
 
-#: lib/meta.php:281
+#: lib/meta.php:280
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:283
+#: lib/meta.php:282
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:283
+#: lib/meta.php:282
 msgid "The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field."
 msgstr "Le validateur de carte Twitter n'accepte pas les arguments de requête &ndash; copier-coller l'URL de partage suivant dans le champ d'entrée de validation."
 
-#: lib/meta.php:283
+#: lib/meta.php:282
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:464
+#: lib/meta.php:463
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/meta.php:577
+#: lib/meta.php:576
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
@@ -1893,19 +1893,19 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:317
+#: lib/post.php:319
 msgid "can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced settings"
 msgstr "peut être désactivé dans les paramètres avancés d'<a href=\"%s\">Intégration WP / Thème</a>"
 
-#: lib/post.php:321
+#: lib/post.php:323
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:336
+#: lib/post.php:338
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'en-tête de cette page Web."
 
-#: lib/post.php:367 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/post.php:369 lib/profile/social-settings.php:27 lib/term.php:257
 #: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2632,7 +2632,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
-
-#~ msgctxt "option label"
-#~ msgid "<em>Get Shortlink</em> Gives Shortened URL"
-#~ msgstr "Le bouton <em>Obtenir le lien court</em> donne l'URL raccourci"

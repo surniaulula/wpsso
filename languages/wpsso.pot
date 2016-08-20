@@ -1143,7 +1143,7 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:162
+#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:72 lib/meta.php:158
 #: lib/meta.php:174 lib/pro/admin/meta.php:82 lib/pro/admin/post.php:98
 msgctxt "option label"
 msgid "Sharing URL"
@@ -2121,12 +2121,7 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:158
-msgctxt "option label"
-msgid "Short URL"
-msgstr ""
-
-#: lib/meta.php:178
+#: lib/meta.php:162 lib/meta.php:178
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
