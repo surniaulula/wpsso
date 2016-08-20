@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.1-rc1 (2016/08/19)**
+**Version 3.34.1-1 (2016/08/20)**
 
 Official announcement: N/A
 
@@ -391,9 +391,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.1-rc1 =
+= 3.34.1-1 =
 
-(2016/08/19) Added a new "link rel shortlink" meta tag. Added new filters to manage auto-disabling of canonical and description meta tags.
+(2016/08/20) Added a new "link rel shortlink" meta tag. Added new filters to manage auto-disabling of canonical and description meta tags.
 
 = 3.34.0-1 =
 
