@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 
 			if ( ! is_array( $all_meta ) || empty( $all_meta ) )
-				return $opts;
+				return $md_opts;
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 
