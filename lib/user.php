@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return array_merge( 
 				array( 'none' => '[None]' ), 	// make sure none is first
 				$this->add_contact_methods( array( 
-					'author' => 'Author Index', 
+					'author' => 'Author Archive', 
 					'url' => 'Website'
 				) )
 			);

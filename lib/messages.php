@@ -239,8 +239,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_def_author_on_search':
 							$text = 'Check this option if you would like to force the Default Author on search result webpages as well. If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
 							break;
-						case 'tooltip-og_author_gravatar':
-							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages. If the "<strong>Use Default Image on <em>Author</em> Index</strong>" option is also checked under the <em>Images</em> tab (unchecked by default), then the default image will be used instead for author index / archive webpages.';
+						case 'tooltip-og_author_gravatar':	// aka plugin_gravatar_api
+							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages (default is checked).';
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $info );
@@ -540,6 +540,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-tc_desc_len':
 							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
+							break;
+						case 'tooltip-tc_type_post':
+							$text = 'The Twitter Card type for posts / pages with a custom, featured, and/or attached image.';
+							break;
+						case 'tooltip-tc_type_default':
+							$text = 'The Twitter Card type for all other images (default, image from content text, etc).';
 							break;
 						case 'tooltip-tc_sum_dimensions':
 							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_width' ).'x'.

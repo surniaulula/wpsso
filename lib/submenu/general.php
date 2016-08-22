@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>'.$this->form->get_select( 'og_def_author_id', $user_names, null, null, true ).'</td>';
 	
 						$table_rows['og_def_author_on_index'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Indexes',
+						$this->form->get_th_html( _x( 'Use Default Author on Archive',
 							'option label', 'wpsso' ), null, 'og_def_author_on_index' ).
 						'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' <em>'.
 							_x( 'defines index / archive webpages as articles',
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
 
 					$table_rows['og_def_img_on_index'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Use Default Image on Indexes',
+					$this->form->get_th_html( _x( 'Use Default Image on Archive',
 						'option label', 'wpsso' ), null, 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>'.$this->form->get_select( 'seo_def_author_id', $user_names, null, null, true ).'</td>';
 	
 						$table_rows['seo_def_author_on_index'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Indexes',
+						$this->form->get_th_html( _x( 'Use Default Author on Archive',
 							'option label', 'wpsso' ), null, 'seo_def_author_on_index' ).
 						'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
 	
@@ -387,6 +387,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-twitter':
 
+					$tc_types = array(
+						'summary' => 'Summary',
+						'summary_large_image' => 'Summary Large Image',
+					);
+
 					$table_rows['tc_site'] = $this->form->get_th_html( _x( 'Twitter Business @username',
 						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ).'</td>';
@@ -396,6 +401,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'tc_desc_len' ).
 					'<td>'.$this->form->get_input( 'tc_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
+
+					$table_rows['tc_type_singular'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Twitter Card for Post / Page Images',
+						'option label', 'wpsso' ), null, 'tc_type_post' ).
+					'<td>'.$this->form->get_select( 'tc_type_post', $tc_types ).'</td>';
+
+					$table_rows['tc_type_default'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Twitter Card Type by Default',
+						'option label', 'wpsso' ), null, 'tc_type_default' ).
+					'<td>'.$this->form->get_select( 'tc_type_default', $tc_types ).'</td>';
 
 					$table_rows['tc_sum'] = $this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).

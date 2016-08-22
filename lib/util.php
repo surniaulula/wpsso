@@ -733,27 +733,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					( isset( $this->p->options[$opt_pre.'_def_'.$type.'_'.$key] ) ? 
 						$this->p->options[$opt_pre.'_def_'.$type.'_'.$key] : null ) );
 
-			// save some time - if no default media, then return false
-			if ( empty( $def['id'] ) && 
+			if ( empty( $def['id'] ) &&	// save some time - if no default media, then return false
 				empty( $def['url'] ) )
 					$ret = false;
-
-			// check for singular pages first
-			elseif ( $mod['is_post'] )
+			elseif ( $mod['is_post'] )	// check for singular pages first
 				$ret = false;
-
-			// check for user pages first
-			elseif ( $mod['is_user'] )
+			elseif ( $mod['is_user'] )	// check for user pages first
 				$ret = false;
-
 			elseif ( ! empty( $def['on_index'] ) &&
-				( is_home() || is_archive() || $mod['is_term'] ) )
+				( $mod['is_home_index'] || $mod['is_term'] || is_archive() ) )
 					$ret = true;
-
 			elseif ( ! empty( $def['on_search'] ) &&
 				is_search() )
 					$ret = true;
-
 			else $ret = false;
 
 			// 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages)

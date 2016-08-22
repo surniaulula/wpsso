@@ -741,7 +741,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'using default video url = '.$embed_url );
 
 				// fallback to video url if necessary
-				$og_video = $this->get_video_info( $embed_url, 0, 0, $check_dupes, true );
+				$og_video = $this->get_video_info( $embed_url, 0, 0, $check_dupes, true );	// $fallback = true
 				if ( ! empty( $og_video ) && 
 					$this->p->util->push_max( $og_ret, $og_video, $num ) ) 
 						return $og_ret;

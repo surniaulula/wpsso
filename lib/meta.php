@@ -794,9 +794,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
 							get_class( $this ) );	// log extended class name
-					$og_video = $this->p->media->get_video_info( $url, 0, 0, $check_dupes );
-					if ( empty( $og_video ) )	// fallback to the original custom video URL
-						$og_video['og:video:url'] = $url;
+					$og_video = $this->p->media->get_video_info( $url, 0, 0, $check_dupes, true );	// $fallback = true
 					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) ) 
 						return $og_ret;
 				}

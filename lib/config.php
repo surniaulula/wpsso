@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.34.1-1',	// plugin version
-					'opt_version' => '445',		// increment when changing default options
+					'version' => '3.34.2-dev1',	// plugin version
+					'opt_version' => '448',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.',
@@ -436,14 +436,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rp_dom_verify' => '',
 					'tc_site' => '',			// Twitter Business @username (multilingual)
 					'tc_desc_len' => 200,			// Maximum Description Length
+					'tc_type_post' => 'summary_large_image',
+					'tc_type_default' => 'summary',
 					// summary card
-					'tc_sum_width' => 600,
+					'tc_sum_width' => 600,			// Summary Card Image Dimensions
 					'tc_sum_height' => 600,
 					'tc_sum_crop' => 1,
 					'tc_sum_crop_x' => 'center',
 					'tc_sum_crop_y' => 'center',
 					// large image summary card
-					'tc_lrgimg_width' => 800,
+					'tc_lrgimg_width' => 800,		// Large Image Card Img Dimensions
 					'tc_lrgimg_height' => 1600,
 					'tc_lrgimg_crop' => 0,
 					'tc_lrgimg_crop_x' => 'center',

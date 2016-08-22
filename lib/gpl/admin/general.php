@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
 
 			$table_rows['og_def_vid_on_index'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Use Default Video on Indexes',
+			$form->get_th_html( _x( 'Use Default Video on Archive',
 				'option label', 'wpsso' ), null, 'og_def_vid_on_index' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
