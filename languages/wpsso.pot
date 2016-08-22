@@ -3018,32 +3018,32 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:616
+#: lib/util.php:623
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1589
+#: lib/util.php:1596
 msgid "No options available."
-msgstr ""
-
-#: lib/util.php:1615
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr ""
-
-#: lib/util.php:1619
-msgctxt "option comment"
-msgid "unhide these options"
 msgstr ""
 
 #: lib/util.php:1622
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
+msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
 #: lib/util.php:1626
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/util.php:1629
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1633
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

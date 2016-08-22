@@ -591,8 +591,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( class_exists( 'DOMDocument' ) ) {
 				$html = mb_convert_encoding( $html,	// convert to UTF8
 					'HTML-ENTITIES', 'UTF-8' );
-				$doc = new DOMDocument();		// since PHP v4.1.0
-				@$doc->loadHTML( $html );		// suppress parsing errors
+				$doc = new DOMDocument();		// since PHP v4.1
+
+				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
+					$libxml_saved_state = libxml_use_internal_errors( true );
+					$doc->loadHTML( $html );
+					libxml_clear_errors();		// clear any HTML parsing errors
+					libxml_use_internal_errors( $libxml_saved_state );
+				} else @$doc->loadHTML( $html );
+
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
 				foreach ( $metas as $m ) {
