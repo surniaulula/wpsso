@@ -810,7 +810,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'php' => array(				// php
-				'min_version' => '4.1.0',	// minimum php version
+				'min_version' => '5.1.0',	// minimum php version
 			),
 			'form' => array(
 				'og_img_col_width' => '70px',
