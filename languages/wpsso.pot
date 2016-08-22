@@ -2878,9 +2878,19 @@ msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
+#: lib/submenu/general.php:391
+msgctxt "option value"
+msgid "Summary"
+msgstr ""
+
+#: lib/submenu/general.php:392
+msgctxt "option value"
+msgid "Summary Large Image"
+msgstr ""
+
 #: lib/submenu/general.php:406
 msgctxt "option label"
-msgid "Twitter Card for Post / Page Images"
+msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
 #: lib/submenu/general.php:411
