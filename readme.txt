@@ -366,6 +366,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* The minimum PHP version required has been changed from v4.1 to v5.1.
 	* Added `libxml_use_internal_errors()` when checking webpage for duplicates to avoid any HTML Parsing errors.
 
 **Version 3.34.1-1 (2016/08/20)**
