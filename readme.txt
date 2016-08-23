@@ -355,7 +355,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.2-dev1 (2016/08/22)**
+**Version 3.34.2-rc1 (2016/08/23)**
 
 Official announcement: N/A
 
@@ -405,9 +405,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.2-dev1 =
+= 3.34.2-rc1 =
 
-(2016/08/22) Added the "Twitter Card for Post / Page Images" and "Twitter Card Type by Default" options.
+(2016/08/23) Added the "Twitter Card for Post / Page Images" and "Twitter Card Type by Default" options.
 
 = 3.34.1-1 =
 
