@@ -17,30 +17,11 @@ Fast, light-weight, comprehensive plugin to automatically generate social meta t
 
 == Description ==
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" />
-<strong>WPSSO adds <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash;</p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>WPSSO adds <em>complete</em> and <em>accurate</em> meta tags and Schema markup.</strong></p>
 
-<blockquote>
-<p>Google and social websites use a wide variety of meta tags and Schema markup standards provided by WPSSO (<a href="http://ogp.me/">Facebook / Open Graph</a>, <a href="https://business.pinterest.com/en/rich-pins">Pinterest Rich Pin</a>, <a href="https://dev.twitter.com/cards/overview">Twitter Card</a> meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Schema / Structured Data / Rich Snippet</a> markup) to describe &amp; display your content correctly &mdash; including titles, descriptions, hashtags, images, videos, ecommerce product details, author profile / authorship, publisher name, ratings, event details, and much more.</li></ul></p>
-</blockquote>
+<p><strong>WPSSO uses your <em>existing</em> content to generate its meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
-<p><strong>WPSSO uses <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash;</p>
-
-<blockquote>
-<p>There's no need to manually enter / configure any additional settings or values.</p>
-</blockquote>
-
-<p><strong>Social meta tags and Schema markup are the cornerstone of social SEO</strong> &mdash;</p>
-
-<blockquote>
-<p>WPSSO provides all the information social websites need, improving <em>Google Search ranking</em>, <em>social engagement</em>, and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. <strong>WPSSO includes special support and optimization features specifically for Pinterest</strong> to avoid incompatible meta tags and Schema markup.</p>
-</blockquote>
-
-<p><strong>Additional meta tags and markup for 3rd party plugins and services</strong> &mdash;</p>
-
-<blockquote>
-<p>WPSSO Pro retrieves information from a wide range of sources <em>automatically</em>, including All in One SEO Pack, bbPress, BuddyPress, Co-Authors Plus, Easy Digital Downloads, HeadSpace2 SEO, NextGEN Gallery, MarketPress - WordPress eCommerce, Polylang, rtMedia for WordPress (BuddyPress and bbPress), The Events Calendar, The SEO Framework, WooCommerce, WP e-Commerce, WordPress REST API, Yoast SEO (aka WordPress SEO), Yotpo Social Reviews for WooCommerce, along with service APIs like Bitly, Facebook Embedded Videos, Google URL Shortener, Gravatar, Ow.ly, Slideshare, TinyURL, Vimeo, Wistia, Your Own URL Shortener (YOURLS), and YouTube.</p>
-</blockquote>
+<p><strong>WPSSO provides all the information search engines and social websites need</strong> &mdash; improving <em>Google Search ranking</em>, <em>social engagement</em> and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more. WPSSO also includes special support and optimization specifically for Pinterest to avoid incompatible Open Graph meta tags and Schema markup.</p>
 
 = Quick List of Features =
 
