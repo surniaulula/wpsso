@@ -145,7 +145,7 @@ msgctxt "submit button"
 msgid "View %s by Default"
 msgstr ""
 
-#: lib/admin.php:714 lib/messages.php:785
+#: lib/admin.php:714 lib/messages.php:787
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -242,7 +242,7 @@ msgid "Download Latest Version"
 msgstr ""
 
 #: lib/admin.php:1193 lib/admin.php:1198 lib/admin.php:1214 lib/admin.php:1220
-#: lib/messages.php:765
+#: lib/messages.php:767
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -1969,7 +1969,7 @@ msgstr ""
 #: lib/messages.php:761
 msgid ""
 "The %s element in your header templates should include a function, action, "
-"or filter call for its attributes."
+"or filter for its attributes."
 msgstr ""
 
 #: lib/messages.php:761
@@ -1978,103 +1978,103 @@ msgid ""
 "%2$s element to:"
 msgstr ""
 
-#: lib/messages.php:761
+#: lib/messages.php:763
 msgid ""
 "<b><a href=\"%1$s\">Click here to update header templates automatically</a></"
 "b> or update the templates yourself manually."
 msgstr ""
 
-#: lib/messages.php:765
+#: lib/messages.php:767
 msgid "The %1$s plugin %2$s option is empty."
 msgstr ""
 
-#: lib/messages.php:765
+#: lib/messages.php:767
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Pro Licenses and Extension Plugins</a> settings page."
 msgstr ""
 
-#: lib/messages.php:768
+#: lib/messages.php:770
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update the plugin to install the latest "
 "Pro version. ;-)"
 msgstr ""
 
-#: lib/messages.php:774
+#: lib/messages.php:776
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
 "Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not "
 "active."
 msgstr ""
 
-#: lib/messages.php:777
+#: lib/messages.php:779
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:777
+#: lib/messages.php:779
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:777
+#: lib/messages.php:779
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:780
+#: lib/messages.php:782
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:780
+#: lib/messages.php:782
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:785
+#: lib/messages.php:787
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:785
+#: lib/messages.php:787
 msgid ""
 "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
 "latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:799
+#: lib/messages.php:801
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:800
+#: lib/messages.php:802
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:801
+#: lib/messages.php:803
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:805
+#: lib/messages.php:807
 msgid ""
 "The development of %1$s is driven mostly by customer requests &mdash; we "
 "welcome your comments and suggestions. ;-)"
 msgstr ""
 
-#: lib/messages.php:815
+#: lib/messages.php:817
 msgid ""
 "This option is localized &mdash; you may change the WordPress admin locale "
 "with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "

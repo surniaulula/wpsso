@@ -758,7 +758,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-header-tmpl-no-head-attr':
 						$action_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action=modify_tmpl_head_elements' ),
 							WpssoAdmin::get_nonce(), WPSSO_NONCE );
-						$text = '<p><b>'.__( 'At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Pinterest.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header templates should include a function, action, or filter call for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update your header templates automatically to change the default %2$s element to:', 'wpsso' ), $info['short'], '<code>&lt;head&gt;</code>' ).'</p><pre><code>&lt;head &lt;?php do_action( \'add_head_attributes\' ); ?&gt;&gt;</code></pre><p>'.sprintf( __( '<b><a href="%1$s">Click here to update header templates automatically</a></b> or update the templates yourself manually.', 'wpsso' ), $action_url ).'</p>';
+						$text = '<p><b>'.__( 'At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Pinterest.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header templates should include a function, action, or filter for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update your header templates automatically to change the default %2$s element to:', 'wpsso' ), $info['short'], '<code>&lt;head&gt;</code>' ).'</p>';
+						$text .= '<pre><code>&lt;head &lt;?php do_action( \'add_head_attributes\' ); ?&gt;&gt;</code></pre>';
+						$text .= '<p>'.sprintf( __( '<b><a href="%1$s">Click here to update header templates automatically</a></b> or update the templates yourself manually.', 'wpsso' ), $action_url ).'</p>';
 						break;
 					case 'notice-pro-tid-missing':
 						if ( ! is_multisite() )
