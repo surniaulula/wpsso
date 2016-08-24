@@ -336,7 +336,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.2-rc1 (2016/08/23)**
+**Version 3.34.2-1 (2016/08/24)**
 
 Official announcement: N/A
 
@@ -347,7 +347,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* The minimum PHP version required has been changed from v4.1 to v5.1.
+	* Updated the minimum PHP version required has from v4.1 to v5.1.
 	* Added `libxml_use_internal_errors()` when checking webpage for duplicates to avoid any HTML Parsing errors.
 
 **Version 3.34.1-1 (2016/08/20)**
@@ -386,9 +386,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.34.2-rc1 =
+= 3.34.2-1 =
 
-(2016/08/23) Added the "Twitter Card for Post / Page Images" and "Twitter Card Type by Default" options.
+(2016/08/24) Added the "Twitter Card for Post / Page Images" and "Twitter Card Type by Default" options. Updated the minimum PHP version required has from v4.1 to v5.1.
 
 = 3.34.1-1 =
 
