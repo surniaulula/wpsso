@@ -13,7 +13,7 @@ Requires At Least: 3.1
 Tested Up To: 4.6
 Stable Tag: 3.34.2-1
 
-Automaticaly create complete and accurate meta tags + Schema markup for social sharing, Google, Facebook, Twitter, Pinterest etc.
+Automatically create complete and accurate meta tags + Schema markup for Social Sharing Optimization (SSO) and SEO.
 
 == Description ==
 
