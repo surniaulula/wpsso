@@ -1,8 +1,8 @@
-<h1>WPSSO</h1><h3>Complete Meta Tags + Schema Markup for Social Sharing Optimization &amp; SEO</h3>
+<h1>WPSSO</h1><h3>Complete Meta Tags and Schema Markup for Social Sharing Optimization &amp; SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete and accurate meta tags + Schema markup for Social Sharing Optimization (SSO) and SEO.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete &amp; accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.34.2-1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.6</td></tr>
@@ -14,7 +14,7 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup.</strong></p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>WPSSO creates <em>complete</em> &amp; <em>accurate</em> meta tags and Schema markup.</strong></p>
 
 <p><strong>WPSSO uses your <em>existing</em> content to generate its meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 

@@ -1,4 +1,4 @@
-=== WPSSO - Complete Meta Tags + Schema Markup for Social Sharing Optimization & SEO ===
+=== WPSSO - Complete Meta Tags and Schema Markup for Social Sharing Optimization & SEO ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -13,11 +13,11 @@ Requires At Least: 3.1
 Tested Up To: 4.6
 Stable Tag: 3.34.2-1
 
-Automatically create complete and accurate meta tags + Schema markup for Social Sharing Optimization (SSO) and SEO.
+Automatically create complete & accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
 == Description ==
 
-<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup.</strong></p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" /><strong>WPSSO creates <em>complete</em> &amp; <em>accurate</em> meta tags and Schema markup.</strong></p>
 
 <p><strong>WPSSO uses your <em>existing</em> content to generate its meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
