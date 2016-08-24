@@ -2,6 +2,7 @@
 // extract of translatable text strings from static config array(s)
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
+_x( 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
@@ -12,7 +13,6 @@ _x( 'Display Name', 'option value', 'wpsso' );
 _x( 'Essential Settings', 'lib file description', 'wpsso' );
 _x( 'Excerpt Only', 'option value', 'wpsso' );
 _x( 'Facebook Business Page URL', 'option value', 'wpsso' );
-_x( 'Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing.', 'plugin description', 'wpsso' );
 _x( 'First and Last Names', 'option value', 'wpsso' );
 _x( 'Footer', 'option value', 'wpsso' );
 _x( 'Force this value', 'option value', 'wpsso' );
@@ -53,7 +53,7 @@ _x( 'Twitter Business @username', 'option value', 'wpsso' );
 _x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
 _x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' );
 _x( 'Wednesday', 'option value', 'wpsso' );
-_x( 'WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, Organization, Place, Product, etc.) for Google and Pinterest.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Organization, Place / Business, Product, Recipe, and more).', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.).', 'plugin description', 'wpsso' );

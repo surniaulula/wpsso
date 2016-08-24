@@ -412,7 +412,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:207 lib/com/form.php:273 lib/config-gettext-extract.php:10
+#: lib/com/form.php:207 lib/com/form.php:273 lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -458,55 +458,55 @@ msgid "All Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:5
-msgctxt "option value"
-msgid "Basic Options"
+msgctxt "plugin description"
+msgid ""
+"Automatically create complete and accurate meta tags and Schema markup for "
+"Social Sharing Optimization (SSO) and SEO."
 msgstr ""
 
 #: lib/config-gettext-extract.php:6
 msgctxt "option value"
-msgid "Bitly (suggested)"
+msgid "Basic Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:7
 msgctxt "option value"
-msgid "Bottom"
+msgid "Bitly (suggested)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
 msgctxt "option value"
-msgid "Center"
+msgid "Bottom"
 msgstr ""
 
 #: lib/config-gettext-extract.php:9
+msgctxt "option value"
+msgid "Center"
+msgstr ""
+
+#: lib/config-gettext-extract.php:10
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Notes</color>"
 msgstr ""
 
-#: lib/config-gettext-extract.php:11
+#: lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: lib/config-gettext-extract.php:12
+#: lib/config-gettext-extract.php:13
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "Facebook Business Page URL"
-msgstr ""
-
-#: lib/config-gettext-extract.php:15
-msgctxt "plugin description"
-msgid ""
-"Fast, light-weight, comprehensive plugin to automatically generate social "
-"meta tags + Schema markup for Google Search and social sharing."
 msgstr ""
 
 #: lib/config-gettext-extract.php:16
@@ -687,8 +687,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:56
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, "
-"Organization, Place, Product, etc.) for Google and Pinterest."
+"WPSSO extension to add complete Schema JSON-LD markup (Article, Event, "
+"Organization, Place / Business, Product, Recipe, and more)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:57
