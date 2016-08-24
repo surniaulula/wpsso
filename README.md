@@ -1,4 +1,4 @@
-<h1>WPSSO</h1><h3>Complete Meta Tags + Schema Markup for Social Sharing Optimization and SEO</h3>
+<h1>WPSSO</h1><h3>Complete Meta Tags + Schema Markup for Social Sharing Optimization &amp; SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
