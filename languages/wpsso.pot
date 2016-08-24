@@ -3069,8 +3069,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Fast, light-weight, comprehensive plugin to automatically generate social "
-"meta tags + Schema markup for Google Search and social sharing."
+"Automatically create complete and accurate meta tags and Schema markup for "
+"Social Sharing Optimization (SSO) and SEO."
 msgstr ""
 
 #. Author of the plugin/theme
