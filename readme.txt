@@ -13,7 +13,7 @@ Requires At Least: 3.1
 Tested Up To: 4.6
 Stable Tag: 3.34.2-1
 
-Easily and automaticaly create complete social meta tags and Schema markup for social shares, Google, Facebook, Twitter, Pinterest etc.
+Easily and automaticaly create complete meta tags and Schema markup for social sharing, Google, Facebook, Twitter, Pinterest etc.
 
 == Description ==
 
