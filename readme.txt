@@ -1,4 +1,4 @@
-=== WPSSO - Complete and Optimized Social Sharing Meta Tags and Schema Markup ===
+=== WPSSO - Complete and Optimized Meta Tags and Schema Markup for Social Sharing and SEO ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
