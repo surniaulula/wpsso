@@ -11,7 +11,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, faceboo
 Contributors: jsmoriss
 Requires At Least: 3.1
 Tested Up To: 4.6
-Stable Tag: 3.34.2-1
+Stable Tag: 3.34.3-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -403,8 +403,4 @@ Official announcement: N/A
 = 3.34.3-1 =
 
 (2016/08/25) Fixed the transient cache id to clear the cache for retrieved permalinks.
-
-= 3.34.2-1 =
-
-(2016/08/24) Added the "Twitter Card for Post / Page Images" and "Twitter Card Type by Default" options. Updated the minimum PHP version required has from v4.1 to v5.1.
 
