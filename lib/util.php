@@ -573,13 +573,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: error caching '.$request );
+				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
+					'wpsso' ), $request ) );
+				return false;
+			} elseif ( empty( $html ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: html for '.$request.' is empty' );
+				$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
+					'wpsso' ), $request ) );
 				return false;
 			}
 
 			$ret = array();
 			$cmt = $this->p->cf['lca'].' meta tags ';
+			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 
-			if ( $remove_self === true && strpos( $html, $cmt.'begin' ) !== false ) {
+			if ( $remove_self && strpos( $html, $cmt.'begin' ) !== false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'removing self meta tags' );
 				$pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':mark"[\s\n\r]+content=")';
@@ -589,8 +598,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( class_exists( 'DOMDocument' ) ) {
-				$html = mb_convert_encoding( $html,	// convert to UTF8
-					'HTML-ENTITIES', 'UTF-8' );
 				$doc = new DOMDocument();		// since PHP v4.1
 
 				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
@@ -602,6 +609,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
+
 				foreach ( $metas as $m ) {
 					$m_atts = array();		// put all attributes in a single array
 					foreach ( $m->attributes as $a )
@@ -612,8 +620,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			} else $this->missing_php_class_error( 'DOMDocument' );
 
-			return empty( $ret ) ? 
-				false : $ret;
+			return empty( $ret ) ? false : $ret;
 		}
 
 		public function missing_php_class_error( $classname ) {

@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.2-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-08-24 09:34-0400\n"
-"PO-Revision-Date: 2016-08-24 09:34-0400\n"
+"POT-Creation-Date: 2016-08-25 18:50-0400\n"
+"PO-Revision-Date: 2016-08-25 18:56-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -372,30 +372,30 @@ msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:207 lib/com/form.php:273 lib/config-gettext-extract.php:10
+#: lib/com/form.php:207 lib/com/form.php:273 lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:289
+#: lib/com/notice.php:298
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:290
+#: lib/com/notice.php:299
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:294
+#: lib/com/notice.php:303
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:295
+#: lib/com/notice.php:304
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:366
+#: lib/com/notice.php:375
 msgid "%s Note"
 msgstr "Avis %s"
 
@@ -414,54 +414,54 @@ msgid "All Options"
 msgstr "Toutes les Options"
 
 #: lib/config-gettext-extract.php:5
+msgctxt "plugin description"
+msgid "Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO."
+msgstr "Créer automatiquement des balises méta et balisage de Schéma complet pour l'optimisation de partage sociale (SSO) et SEO."
+
+#: lib/config-gettext-extract.php:6
 msgctxt "option value"
 msgid "Basic Options"
 msgstr "Options de Base"
 
-#: lib/config-gettext-extract.php:6
+#: lib/config-gettext-extract.php:7
 msgctxt "option value"
 msgid "Bitly (suggested)"
 msgstr "Bitly (suggéré)"
 
-#: lib/config-gettext-extract.php:7
+#: lib/config-gettext-extract.php:8
 msgctxt "option value"
 msgid "Bottom"
 msgstr "Le bas"
 
-#: lib/config-gettext-extract.php:8
+#: lib/config-gettext-extract.php:9
 msgctxt "option value"
 msgid "Center"
 msgstr "Centre"
 
-#: lib/config-gettext-extract.php:9
+#: lib/config-gettext-extract.php:10
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Notes</color>"
 msgstr "<color>Notes et Guide d'Installation</color>"
 
-#: lib/config-gettext-extract.php:11
+#: lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "Display Name"
 msgstr "Nom d'affichage publique"
 
-#: lib/config-gettext-extract.php:12
+#: lib/config-gettext-extract.php:13
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr "Réglages Essentiels"
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr "Extrait seulement"
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "Facebook Business Page URL"
 msgstr "URL page d’affaires Facebook"
-
-#: lib/config-gettext-extract.php:15
-msgctxt "plugin description"
-msgid "Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing."
-msgstr "Extension performante & compréhensive pour générer automatiquement les méta tags sociaux + balisage Schéma pour Google et tous sites sociaux."
 
 #: lib/config-gettext-extract.php:16
 msgctxt "option value"
@@ -640,8 +640,8 @@ msgstr "Mercredi"
 
 #: lib/config-gettext-extract.php:56
 msgctxt "plugin description"
-msgid "WPSSO extension to add complete Schema JSON-LD markup (BlogPosting, Article, Organization, Place, Product, etc.) for Google and Pinterest."
-msgstr "Extension WPSSO pour ajouter des balises de Schéma JSON-LD (BlogPosting, Article, Organization, Place, Produit, etc.) pour Google et Pinterest."
+msgid "WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Organization, Place / Business, Product, Recipe, and more)."
+msgstr "Extension WPSSO pour ajouter des balises de Schéma JSON-LD (Article, Event, Organization, Place / Business, Product, Recipe, et plus)."
 
 #: lib/config-gettext-extract.php:57
 msgctxt "plugin description"
@@ -2593,43 +2593,51 @@ msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise
 msgid "The value of option '%s' cannot be empty - resetting the option to its default value."
 msgstr "La valeur de l'option '%s' ne peut pas être vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:623
+#: lib/util.php:576
+msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
+msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
+
+#: lib/util.php:582
+msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
+msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
+
+#: lib/util.php:630
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1596
+#: lib/util.php:1603
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:1622
+#: lib/util.php:1629
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1626
+#: lib/util.php:1633
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1629
+#: lib/util.php:1636
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1633
+#: lib/util.php:1640
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:253
+#: wpsso.php:250
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire n'a pas pu être désactivée)."
 
-#: wpsso.php:254
+#: wpsso.php:251
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr "Le mode de débogage HTML est actif (l’utilisation du cache transitoire est désactivée)."
 
-#: wpsso.php:255
+#: wpsso.php:252
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr "Des messages d’information de débogage sont ajoutés en commentaires HTML."
 
@@ -2642,8 +2650,8 @@ msgid "http://surniaulula.com/extend/plugins/wpsso/"
 msgstr "http://surniaulula.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing."
-msgstr "Extension performante & compréhensive pour générer automatiquement les méta tags sociaux + balisage Schéma pour Google et tous sites sociaux."
+msgid "Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO."
+msgstr "Créer automatiquement des balises méta et balisage de Schéma complet pour l'optimisation de partage sociale (SSO) et SEO."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
@@ -2652,3 +2660,10 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "http://surniaulula.com/"
 msgstr "http://surniaulula.com/"
+
+#~ msgctxt "plugin description"
+#~ msgid "Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing."
+#~ msgstr "Extension performante & compréhensive pour générer automatiquement les méta tags sociaux + balisage Schéma pour Google et tous sites sociaux."
+
+#~ msgid "Fast, light-weight, comprehensive plugin to automatically generate social meta tags + Schema markup for Google Search and social sharing."
+#~ msgstr "Extension performante & compréhensive pour générer automatiquement les méta tags sociaux + balisage Schéma pour Google et tous sites sociaux."

@@ -13,7 +13,7 @@
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.1
  * Tested Up To: 4.6
- * Version: 3.34.2-1
+ * Version: 3.34.3-1
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -91,26 +91,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}
 
-		// runs at init priority 1
-		public function init_widgets() {
-			$opts = get_option( WPSSO_OPTIONS_NAME );
-			if ( ! empty( $opts['plugin_widgets'] ) ) {
-				foreach ( $this->cf['plugin'] as $lca => $info ) {
-					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
-						foreach ( $info['lib']['widget'] as $id => $name ) {
-							$classname = apply_filters( $lca.'_load_lib', false, 'widget/'.$id );
-							if ( $classname !== false && class_exists( $classname ) )
-								register_widget( $classname );
-						}
-					}
-				}
-			}
-		}
-
 		// runs at init priority 12 (by default)
 		public function init_plugin() {
-			if ( ! empty( $_SERVER['WPSSO_DISABLE'] ) ) 
-				return;
 
 			$this->set_objects();				// define the class object variables
 
@@ -138,6 +120,21 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function show_debug_html() { 
 			if ( $this->debug->enabled )
 				$this->debug->show_html();
+		}
+
+		public function init_widgets() {
+			$opts = get_option( WPSSO_OPTIONS_NAME );
+			if ( ! empty( $opts['plugin_widgets'] ) ) {
+				foreach ( $this->cf['plugin'] as $lca => $info ) {
+					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
+						foreach ( $info['lib']['widget'] as $id => $name ) {
+							$classname = apply_filters( $lca.'_load_lib', false, 'widget/'.$id );
+							if ( $classname !== false && class_exists( $classname ) )
+								register_widget( $classname );
+						}
+					}
+				}
+			}
 		}
 
 		// called by activate_plugin() as well

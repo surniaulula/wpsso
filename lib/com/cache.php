@@ -33,6 +33,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
 			$this->verify_certs = empty( $this->p->options['plugin_verify_certs'] ) ? 0 : 1;
 			$this->base_dir = trailingslashit( constant( $this->p->cf['uca'].'_CACHEDIR' ) );
 			$this->base_url = trailingslashit( constant( $this->p->cf['uca'].'_CACHEURL' ) );
@@ -90,7 +91,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function clear( $url, $url_ext = '' ) {
 
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
-			$cache_salt = __CLASS__.'::salt(url:'.$get_url.')';
+			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';
 			$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
 
 			/*
@@ -119,9 +120,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$url_ext = '.'.$url_ext;
 			}
 
-			$cache_id = md5( $cache_salt );		// no lca prefix on filenames
-			$cache_file = $this->base_dir.$cache_id.$url_ext;
-
+			$cache_file = $this->base_dir.md5( $cache_salt ).$url_ext;
 			if ( file_exists( $cache_file ) && @unlink( $cache_file ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'clear file cache: '.$cache_file );
@@ -161,10 +160,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( ! empty( $url_frag ) ) 
 				$url_frag = '#'.$url_frag;
 
-			$cache_salt = __CLASS__.'::salt(url:'.$get_url.')';
-			$cache_id = md5( $cache_salt );		// no lca prefix on filenames
-			$cache_file = $this->base_dir.$cache_id.$url_ext;
-			$cache_url = $this->base_url.$cache_id.$url_ext.$url_frag;
+			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';	// SucomCache::get()
+			$cache_file = $this->base_dir.md5( $cache_salt ).$url_ext;
+			$cache_url = $this->base_url.md5( $cache_salt ).$url_ext.$url_frag;
 			$cache_data = false;
 
 			// return immediately if the cache contains what we need

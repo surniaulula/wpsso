@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.2-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -417,29 +417,29 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:289
+#: lib/com/notice.php:298
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:290
+#: lib/com/notice.php:299
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:294
+#: lib/com/notice.php:303
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:295
+#: lib/com/notice.php:304
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:366
+#: lib/com/notice.php:375
 msgid "%s Note"
 msgstr ""
 
@@ -3017,45 +3017,53 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:623
+#: lib/util.php:576
+msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/util.php:582
+msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
+msgstr ""
+
+#: lib/util.php:630
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1596
+#: lib/util.php:1603
 msgid "No options available."
-msgstr ""
-
-#: lib/util.php:1622
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr ""
-
-#: lib/util.php:1626
-msgctxt "option comment"
-msgid "unhide these options"
 msgstr ""
 
 #: lib/util.php:1629
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
+msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
 #: lib/util.php:1633
 msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/util.php:1636
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1640
+msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:253
+#: wpsso.php:250
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:254
+#: wpsso.php:251
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:255
+#: wpsso.php:252
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 
