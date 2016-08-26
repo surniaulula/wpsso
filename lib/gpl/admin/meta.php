@@ -32,7 +32,6 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				$this->p->debug->mark();
 
 			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-about-msg' ).
 				$this->p->msgs->get( 'pro-feature-msg' ).
 				'</td>';
 
@@ -99,8 +98,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// md_pre = none
 
 			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( ( $mod['is_post'] ?
-					'pro-about-msg-media' : 'pro-about-msg' ) ).
+				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ).
 				$this->p->msgs->get( 'pro-feature-msg' ).
 				'</td>';
 

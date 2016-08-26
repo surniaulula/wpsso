@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$head['og:type'] === 'article' ? true : false;
 
 			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-about-msg-post' ).
+				$this->p->msgs->get( 'pro-about-msg-post-text' ).
 				$this->p->msgs->get( 'pro-feature-msg' ).
 				'</td>';
 
