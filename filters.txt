@@ -11,7 +11,7 @@
 'wpsso_add_json_http_schema_org_{item_type}' ( $bool );
 'wpsso_add_meta_name_canonical' ( $bool );
 'wpsso_add_meta_name_description' ( $bool );
-'wpsso_add_metabox_post' ( $bool, $post_id );
+'wpsso_add_metabox_post' ( $bool, $post_id, $post_type );
 'wpsso_add_metabox_term' ( $bool, $term_id );
 'wpsso_add_metabox_user' ( $bool, $user_id );
 'wpsso_archive_url' ( $url, $mod, $add_page, $src_id );
