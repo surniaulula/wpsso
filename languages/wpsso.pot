@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.34.3-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.0-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -417,29 +418,29 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:298
+#: lib/com/notice.php:232
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:299
+#: lib/com/notice.php:233
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:303
+#: lib/com/notice.php:238
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:304
+#: lib/com/notice.php:239
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:375
+#: lib/com/notice.php:310
 msgid "%s Note"
 msgstr ""
 
@@ -1250,7 +1251,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:410
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:418
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -1261,7 +1262,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:701
+#: lib/media.php:702
 msgid "Content"
 msgstr ""
 
@@ -1276,7 +1277,7 @@ msgid ""
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:989
+#: lib/media.php:990
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2268,23 +2269,25 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:319
-msgid ""
-"can be disabled in the <a href=\"%s\">WP / Theme Integration</a> Advanced "
-"settings"
+#: lib/post.php:320
+msgid "see <a href=\"%s\">WP / Theme Integration</a> settings"
 msgstr ""
 
-#: lib/post.php:323
+#: lib/post.php:324
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:338
+#: lib/post.php:341
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:369 lib/profile/social-settings.php:27 lib/term.php:257
+#: lib/post.php:350
+msgid "Awesome! No duplicate meta tags found. :-)"
+msgstr ""
+
+#: lib/post.php:377 lib/profile/social-settings.php:27 lib/term.php:257
 #: lib/user.php:245
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2345,13 +2348,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/upscale.php:196
+#: lib/pro/media/upscale.php:195
 msgid ""
 "Image ID %1$s of %2$s cannot be upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum)."
 msgstr ""
 
-#: lib/pro/media/upscale.php:200
+#: lib/pro/media/upscale.php:196
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
@@ -3025,26 +3028,34 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1603
+#: lib/util.php:1321
+msgid "Failed to open directory %s for reading."
+msgstr ""
+
+#: lib/util.php:1329
+msgid "Error removing file %s."
+msgstr ""
+
+#: lib/util.php:1606
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1629
+#: lib/util.php:1632
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1633
+#: lib/util.php:1636
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1636
+#: lib/util.php:1639
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1640
+#: lib/util.php:1643
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -317,8 +317,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' ); 
 
-					if ( is_admin() )
+					if ( is_admin() ) {
 						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$lca]['short'].' Pro', $pid ) ); 
+					}
 
 					return self::reset_image_src_info(); 
 				}
@@ -908,7 +909,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$lca =& $this->p->cf['lca'];
 			$min =& $this->p->cf['head']['limit_min'];
 			$max =& $this->p->cf['head']['limit_max'];
-			$save_msg = false;
 
 			if ( strpos( $size_name, $lca.'-' ) !== 0 )	// only check our own sizes
 				return true;
@@ -969,8 +969,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice, $save_msg );
+					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice );
 				}
+
 				return false;
 			}
 
@@ -986,8 +987,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
-					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice, $save_msg );
+					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice );
 				}
+
 				return false;
 			}
 

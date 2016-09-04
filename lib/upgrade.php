@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 							$opts['og_img_width'].'x'.$opts['og_img_height'].', '.
 							( $opts['og_img_crop'] ? '' : 'un' ).'cropped to '.
 							$def_opts['og_img_width'].'x'.$def_opts['og_img_height'].', '.
-							( $def_opts['og_img_crop'] ? '' : 'un' ).'cropped.', true );
+							( $def_opts['og_img_crop'] ? '' : 'un' ).'cropped.' );
 	
 						$opts['og_img_width'] = $def_opts['og_img_width'];
 						$opts['og_img_height'] = $def_opts['og_img_height'];

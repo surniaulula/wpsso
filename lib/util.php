@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$this->p->notice->inf( $clear_all_msg, true, true, $msg_id, $dismiss );
+			$this->p->notice->inf( $clear_all_msg, true, $msg_id, $dismiss );
 
 			return $del_files + $del_transients;
 		}
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = $this->cleanup_html_tags( $val );
 						if ( strpos( $val, '//' ) === false ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 							$val = $def_val;
 						}
 					}
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val === '' && ! empty( $mod['name'] ) )
 						break;	// abort
 					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
 						$val = $def_val;
 					}
 					break;
@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'blank_num':
 					if ( $val !== '' ) {
 						if ( ! is_numeric( $val ) ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 							$val = $def_val;
 						}
 					}
@@ -477,7 +477,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// must be numeric
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 						$val = $def_val;
 					}
 					break;
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'auth_id':
 					$val = preg_replace( array( '/&(shy|ndash|mdash);/', '/(--+)/' ), '-', trim( $val ) );
 					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ) );
 						$val = $def_val;
 					}
 					break;
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'api_key':
 					$val = trim( $val );
 					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 						$val = $def_val;
 					}
 					break;
@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$val = trim( $val );
 					$fmt = $option_type === 'date' ? '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/' : '/^[0-9]{2,2}:[0-9]{2,2}$/';
 					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 						$val = $def_val;
 					}
 					break;
@@ -528,7 +528,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $val !== '' ) {
 						$val = trim( $val );
 						if ( ! preg_match( '/<.*>/', $val ) ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['html'], $key ), true );
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['html'], $key ) );
 							$val = $def_val;
 						}
 					}
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'code':
 				case 'not_blank':
 					if ( $val === '' ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['not_blank'], $key ), true );
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['not_blank'], $key ) );
 						$val = $def_val;
 					}
 					break;
@@ -627,7 +627,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $classname.' PHP class is missing' );
 			if ( is_admin() )
-				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.', 'wpsso' ), $classname ), true );
+				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
+					'wpsso' ), $classname ) );
 		}
 
 		public function get_body_html( $request, $remove_script = true ) {
@@ -1317,14 +1318,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$time : $time - $this->p->options['plugin_file_cache_exp'];
 			$cachedir = constant( $this->p->cf['uca'].'_CACHEDIR' );
 			if ( ! $dh = @opendir( $cachedir ) )
-				$this->p->notice->err( 'Failed to open directory '.$cachedir.' for reading.', true );
+				$this->p->notice->err( sprintf( __( 'Failed to open directory %s for reading.',
+					'wpsso' ), $cachedir ) );
 			else {
 				while ( $fn = @readdir( $dh ) ) {
 					$filepath = $cachedir.$fn;
 					if ( ! preg_match( '/^(\..*|index\.php)$/', $fn ) && is_file( $filepath ) && 
 						( $all === true || filemtime( $filepath ) < $time ) ) {
 						if ( ! @unlink( $filepath ) ) 
-							$this->p->notice->err( 'Error removing file '.$filepath, true );
+							$this->p->notice->err( sprintf( __( 'Error removing file %s.',
+								'wpsso' ), $filepath ) );
 						else $deleted++;
 					}
 				}

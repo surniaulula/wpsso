@@ -375,9 +375,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ).' '.
 					sprintf( __( 'Wait %1$d seconds for cache objects to expire or <a href="%2$s">%3$s</a> now.',
 						'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
-							_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), true );
+							_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ) );
 			} else {
-				$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ), true );
+				$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ) );
 				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
 			}
 
@@ -400,12 +400,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
-					'wpsso' ), true );
+					'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
 				$this->p->notice->err( __( 'Insufficient privileges to modify network options.',
-					'wpsso' ), true );
+					'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			}
@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
-			$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ), true );
+			$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ) );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
 			exit;	// stop here
 		}
@@ -616,7 +616,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				parse_str( parse_url( $location, PHP_URL_QUERY ), $parts );
 
 				if ( strpos( $parts['wp_http_referer'], $referer_match ) ) {
-					$this->p->notice->upd( __( 'Profile updated.' ), true );
+					$this->p->notice->upd( __( 'Profile updated.' ) );
 					return add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
 			}
@@ -1407,14 +1407,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
 					strpos( $html, '<head>' ) === false ) {
 					$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.',
-						'wpsso' ), $file ), true );
+						'wpsso' ), $file ) );
 					continue;
 				}
 
 				// make a backup of the original
 				if ( ! copy( $file, $backup ) ) {
 					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.',
-						'wpsso' ), 'header.php', $backup ), true );
+						'wpsso' ), 'header.php', $backup ) );
 					continue;
 				}
 
@@ -1423,13 +1423,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! $fh = @fopen( $file, 'wb' ) ) {
 					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.',
-						'wpsso' ), $file ), true );
+						'wpsso' ), $file ) );
 					continue;
 				}
 
 				if ( fwrite( $fh, $php ) ) {
 					fclose( $fh );
-					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ), true );
+					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ) );
 					$have_changes = true;
 				}
 			}

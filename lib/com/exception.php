@@ -89,7 +89,7 @@ if ( ! class_exists( 'SucomException' ) ) {
 				$err_msg = $this->getMessage();
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $err_msg );
-				$this->p->notice->err( $err_msg, true );
+				$this->p->notice->err( $err_msg );
 			}
 			return  $ret;
 		}

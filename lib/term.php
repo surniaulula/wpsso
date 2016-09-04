@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.',
-					true, true, __FUNCTION__.'_items_removed', true );
+					true, __FUNCTION__.'_items_removed', true );
 
 			return $term_id;
 		}

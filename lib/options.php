@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								continue;
 							if ( is_admin() )
 								$this->p->notice->warn( sprintf( __( 'Non-standard value found for "%s" option - resetting to default value.',
-									'wpsso' ), $idx ), true );
+									'wpsso' ), $idx ) );
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
 						}
@@ -238,13 +238,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts['plugin_object_cache_exp'] < $def_opts['plugin_object_cache_exp'] ) {
 
 							if ( $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-object-cache-exp' ), true );
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-object-cache-exp' ) );
 							else $opts['plugin_object_cache_exp'] = $def_opts['plugin_object_cache_exp'];
 						}
 
 						if ( empty( $opts['plugin_filter_content'] ) )
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
-								true, true, 'notice-content-filters-disabled', true );
+								true, 'notice-content-filters-disabled', true );
 
 						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' )
@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->cf['head']['limit_max']['og_img_ratio'];
 
 					if ( $img_ratio >= $max_ratio ) {
-						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre.'_img_width', $md_pre.'_img_height', $max_ratio ), true );
+						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre.'_img_width', $md_pre.'_img_height', $max_ratio ) );
 
 						$opts[$md_pre.'_img_width'] = $def_opts[$md_pre.'_img_width'];
 						$opts[$md_pre.'_img_height'] = $def_opts[$md_pre.'_img_height'];
@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( ! empty( $opts['fb_app_id'] ) && 
 				( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
-					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ), true );
+					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
 
 			// get / remove dimensions for remote image urls
 			$this->p->util->add_image_url_sizes( array(
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 					if ( is_admin() )
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
-							'wpsso' ), $options_name ), true, true, __FUNCTION__.'_upgraded', true );
+							'wpsso' ), $options_name ), true, __FUNCTION__.'_upgraded', true );
 				}
 			} else {
 				if ( $this->p->debug->enabled )

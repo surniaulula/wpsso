@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 			} else {
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
-				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id ) ) {
+				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 
 					// hooked by woocommerce module to load front-end libraries and start a session
 					do_action( $lca.'_admin_post_header', $mod, $screen->id );
@@ -308,24 +308,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$charset = get_bloginfo( 'charset' );
-			$permalink = get_permalink( $post_id );
-			$permalink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $permalink ), 
+			$shortlink = wp_get_shortlink( $post_id );
+			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), 
 				ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$check_opts = apply_filters( $lca.'_check_head_meta_options',
 				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
+			$conflicts_found = 0;
 
 			if ( current_user_can( 'manage_options' ) &&
 				$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
-					$notice_suffix = ' ('.sprintf( __( 'can be disabled in the <a href="%s">WP / Theme Integration</a> Advanced settings',
+					$notice_suffix = ' ('.sprintf( __( 'see <a href="%s">WP / Theme Integration</a> settings',
 						'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')';
 			else $notice_suffix = '';
 
 			$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
-				'<a href="'.$permalink.'">'.$permalink_encoded.'</a>' ).$notice_suffix.'...', true );
+				'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).$notice_suffix.'...' );
 
-			// use the permalink and have get_head_meta() remove our own meta tags
+			// use the shortlink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
-			if ( ( $metas = $this->p->util->get_head_meta( $permalink, '/html/head/link|/html/head/meta', true ) ) !== false ) {
+			if ( ( $metas = $this->p->util->get_head_meta( $shortlink, '/html/head/link|/html/head/meta', true ) ) !== false ) {
 				foreach( array(
 					'link' => array( 'rel' ),
 					'meta' => array( 'name', 'itemprop', 'property' ),
@@ -334,13 +335,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						foreach( $metas[$tag] as $m ) {
 							foreach( $types as $t ) {
 								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
-									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) )
-										$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$t.'="'.$m[$t].'"' ), true );
+									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) ) {
+
+									$conflicts_found++;
+									$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$t.'="'.$m[$t].'"' ) );
+								}
 							}
 						}
 					}
 				}
 			}
+
+			if ( ! $conflicts_found )
+				$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ) );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'check head meta' );
 
@@ -365,7 +373,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
-			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id ) ) {
+			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_settings' ), $post_obj->post_type, 'normal', 'low' );
 			}
@@ -479,7 +487,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
-							true, true, __FUNCTION__.'_items_removed', true );
+							true, __FUNCTION__.'_items_removed', true );
 
 					if ( function_exists( 'w3tc_pgcache_flush_post' ) )	// w3 total cache
 						w3tc_pgcache_flush_post( $post_id );

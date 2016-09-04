@@ -21,9 +21,6 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function trunc_id() {}
 		public function trunc_all() {}
 		public function trunc() {}
-		public function show_admin_notices() {}
-		public function ajax_dismiss_notice() { die( '1' ); }
-		public function admin_footer_script() {}
 	}
 }
 

@@ -1288,7 +1288,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( strpos( $text, '[' ) === false )		// exit now if no shortcodes
 				return $text;
 			$shortcodes_preg = apply_filters( 'sucom_strip_shortcodes_preg', array(
-				'/\[\/?(mk|vc)_[^\]]+\]/',		// visual composer shortcodes
+				'/\[\/?(mk|rev_slider_|vc)_[^\]]+\]/',
 			) );
 			$text = preg_replace( $shortcodes_preg, ' ', $text );
 			$text = strip_shortcodes( $text );		// strip any remaining registered shortcodes

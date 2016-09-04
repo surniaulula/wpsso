@@ -19,7 +19,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			register_activation_hook( WPSSO_FILEPATH, array( &$this, 'network_activate' ) );
 			register_deactivation_hook( WPSSO_FILEPATH, array( &$this, 'network_deactivate' ) );
-			register_uninstall_hook( WPSSO_FILEPATH, array( __CLASS__, 'network_uninstall' ) );
 
 			if ( is_multisite() ) {
 				add_action( 'wpmu_new_blog', array( &$this, 'wpmu_new_blog' ), 10, 6 );
@@ -50,7 +49,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			self::do_multisite( $sitewide, array( &$this, 'deactivate_plugin' ) );
 		}
 
-		// can be called from network or single site
+		// called from uninstall.php for network or single site
 		public static function network_uninstall() {
 			$sitewide = true;
 
@@ -124,7 +123,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				if ( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) )
 					$this->p->notice->warn( $uca.'_RESET_ON_ACTIVATE constant is true &ndash; 
-						plugin options have been reset to their default values.', true );
+						plugin options have been reset to their default values.' );
 			}
 		}
 
@@ -169,6 +168,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			global $wpdb;
 			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_wpsso_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
+
 			foreach( $expired as $transient ) { 
 				$key = str_replace('_transient_timeout_', '', $transient);
 				if ( ! empty( $key ) )

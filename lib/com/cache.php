@@ -80,7 +80,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( is_admin() ) {
 				$this->p->notice->err( 'Error connecting to <a href="'.$url.'" target="_blank">'.
 					$url.'</a> for caching (HTTP code '.$http_code.'). Ignoring requests to cache this URL for '.
-						$this->transient['ignore_time'].' second(s).', true );
+						$this->transient['ignore_time'].' second(s).' );
 			}
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'error connecting to URL '.$url.' for caching (http code '.$http_code.')' );
@@ -314,12 +314,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_file.' does not exist yet.' );
 					} elseif ( ! is_readable( $cache_file ) ) {
-						$this->p->notice->err( $cache_file.' is not readable.', true );
+						$this->p->notice->err( $cache_file.' is not readable.' );
 					} elseif ( filemtime( $cache_file ) < time() - $file_expire ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_file.' is expired (file expiration = '.$file_expire.').' );
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
-						$this->p->notice->err( 'Failed to open file '.$cache_file.' for reading.', true );
+						$this->p->notice->err( 'Failed to open file '.$cache_file.' for reading.' );
 					} else {
 						$cache_data = fread( $fh, filesize( $cache_file ) );
 						fclose( $fh );
@@ -376,10 +376,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( ! is_dir( $this->base_dir ) ) 
 						mkdir( $this->base_dir );
 					if ( ! is_writable( $this->base_dir ) )
-						$this->p->notice->err( $this->base_dir.' is not writable.', true );
+						$this->p->notice->err( $this->base_dir.' is not writable.' );
 					else {
 						if ( ! $fh = @fopen( $cache_file, 'wb' ) )
-							$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.', true );
+							$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.' );
 						else {
 							if ( fwrite( $fh, $cache_data ) ) {
 								if ( $this->p->debug->enabled )
