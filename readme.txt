@@ -338,14 +338,15 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.34.4-dev1 (TBD)**
+**Version 3.35.0-dev1 (2016/09/04)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Refactored the SucomNotice class to improve performance.
+	* Changed from using the post permalink to a shortlink when checking for duplicate meta tags.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -414,6 +415,10 @@ Official announcement: N/A
 	* Removed the '$use_post' argument in the json data filters.
 
 == Upgrade Notice ==
+
+= 3.35.0-dev1 =
+
+(2016/09/04) Refactored the SucomNotice class to improve performance. Changed to a shortlink when checking for duplicate meta tags.
 
 = 3.34.3-1 =
 
