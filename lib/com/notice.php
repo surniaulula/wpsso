@@ -80,7 +80,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function log( $msg_type, $msg_txt, $user_id = true, $msg_id = false, $dismiss = false, $payload = array() ) {
 
 			if ( empty( $msg_type ) || empty( $msg_txt ) ||	// quick sanity checks
-				SucomUtil::get_const( 'DOING_COLUMN_CONTENT' ) ) 
+				SucomUtil::get_const( 'SUCOM_NOTICE_LOG_DISABLE' ) ) 	// defined when creating content for columns
 					return;
 
 			$payload['msg_id'] = empty( $msg_id ) ?

@@ -603,8 +603,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			// define a constant to ignore notice messages
-			if ( ! defined( 'DOING_COLUMN_CONTENT' ) )
-				define( 'DOING_COLUMN_CONTENT', true );
+			if ( ! defined( 'SUCOM_NOTICE_LOG_DISABLE' ) )
+				define( 'SUCOM_NOTICE_LOG_DISABLE', true );
 
 			/* hooked by:
 			 *	WpssoPost::filter_og_img_post_column_content()
