@@ -237,7 +237,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				elseif ( $hidden[$msg_type] > 1 )
 					$msg_text = __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_dom );
 				else $msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_dom );
-				echo $this->get_notice_html( $msg_type, printf( $msg_text, $hidden[$msg_type], $log_name, $this->lca.'-unhide-notices' ) );
+				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca.'-unhide-notices' ) );
 			}
 
 			echo $msg_html;
