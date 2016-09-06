@@ -1251,7 +1251,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:438
+#: lib/gpl/admin/post.php:91 lib/meta.php:155 lib/post.php:437
 #: lib/pro/admin/post.php:118
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2290,11 +2290,11 @@ msgid ""
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:368
+#: lib/post.php:367
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:397 lib/profile/social-settings.php:27 lib/term.php:260
+#: lib/post.php:396 lib/profile/social-settings.php:27 lib/term.php:260
 #: lib/user.php:248
 msgctxt "metabox title"
 msgid "Social Settings"
