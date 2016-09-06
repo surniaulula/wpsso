@@ -355,13 +355,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				! empty( $opts['og_def_img_url'] ) )
 					$opts['og_def_img_url'] = '';
 
-			// if there's no google api key, then disable the shortening service
-			if ( isset( $opts['plugin_google_api_key'] ) &&
-				empty( $opts['plugin_google_api_key'] ) ) {
-				$opts['plugin_google_shorten'] = 0;
-				$opts['plugin_google_shorten:is'] = 'disabled';
-			}
-
 			// og_desc_len must be at least 156 chars (defined in config)
 			if ( isset( $opts['og_desc_len'] ) && 
 				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] ) 
@@ -383,11 +376,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					}
 				}
-			}
 
-			if ( ! empty( $opts['fb_app_id'] ) && 
-				( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
-					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
+				// if there's no google api key, then disable the shortening service
+				if ( isset( $opts['plugin_google_api_key'] ) &&
+					empty( $opts['plugin_google_api_key'] ) ) {
+					$opts['plugin_google_shorten'] = 0;
+					$opts['plugin_google_shorten:is'] = 'disabled';
+				}
+
+				if ( ! empty( $opts['fb_app_id'] ) && 
+					( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
+						$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
+
+				if ( $network === false ) {
+					if ( empty( $this->p->options['plugin_check_head'] ) )
+						delete_option( $this->p->cf['lca'].'_post_header_count' );
+				}
+			}
 
 			// get / remove dimensions for remote image urls
 			$this->p->util->add_image_url_sizes( array(

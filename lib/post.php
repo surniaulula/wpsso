@@ -21,21 +21,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		protected function add_actions() {
 
-			// admin post or attachment editing page
-			if ( is_admin() && SucomUtil::is_post_page() ) {
-
-				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-				// load_meta_page() priorities: 100 post, 200 user, 300 term
-				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
-				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
-				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
-
-				if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'adding get_shortlink filter' );
-					add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+			if ( is_admin() ) {
+				// admin post or attachment editing page
+				if ( SucomUtil::is_post_page() ) {
+					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
+					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+					add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 				}
 			}
 
@@ -45,6 +40,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					! empty( $this->p->options['plugin_og_desc_col_post'] ) ) ) {
 
 				$post_type_names = $this->p->util->get_post_types( 'names' );
+
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
@@ -60,6 +56,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'og_img_post_column_content' => 4,
 					'og_desc_post_column_content' => 4,
 				) );
+			}
+
+			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'adding get_shortlink filter' );
+				add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 			}
 		}
 
@@ -124,6 +126,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( $long_url !== $short_url )	// just in case
 						return $short_url;
 			}
+
 			return $shortlink;
 		}
 
@@ -237,14 +240,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
-					// check for missing open graph image and issue warning
 					if ( $post_obj->post_status === 'publish' ) {
+
+						// check for missing open graph image and issue warning
 						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
 
+						if ( empty( WpssoMeta::$head_meta_info['og:description'] ) )
+							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
+
 						// check duplicates only when the post is available publicly and we have a valid permalink
 						if ( apply_filters( $lca.'_check_post_header', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
-							$this->check_post_header( $post_id, $post_obj );
+							$this->check_post_header_duplicates( $post_id, $post_obj );
 					}
 				}
 			} 
@@ -271,7 +278,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function check_post_header( $post_id = true, &$post_obj = false ) {
+		public function check_post_header_duplicates( $post_id = true, &$post_obj = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -303,10 +310,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $post_id;
 			}
 
+			$lca = $this->p->cf['lca'];
+			$exec_count = (int) get_option( $lca.'_post_header_count' );	// changes false to 0
+			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 30 );
+
+			if ( $exec_count >= $max_count ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'exiting early: exec_count of '.$exec_count.' exceeds max_count of '.$max_count );
+				return $post_id;
+			}
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'check head meta' );
 
-			$lca = $this->p->cf['lca'];
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id );
 			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), 
@@ -346,8 +362,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			if ( ! $conflicts_found )
-				$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ) );
+			if ( ! $conflicts_found ) {
+				$exec_count++;
+				update_option( $lca.'_post_header_count', $exec_count, false );	// autoload = false
+				$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
+					'wpsso' ), $max_count - $exec_count ) );
+			}
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'check head meta' );
