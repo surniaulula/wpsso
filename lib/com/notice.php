@@ -134,7 +134,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 										unset( $payload );	// unset using reference
 							}
 						} elseif ( empty( $msg_txt ) ) {			// clear all notices for that type
-							unset( $user_notices[$msg_type] );
+							$user_notices[$msg_type] = array();
 						} elseif ( isset( $user_notices[$msg_type][$msg_txt] ) ) {	// clear a specific message string
 							unset( $user_notices[$msg_type][$msg_txt] );
 						}
@@ -165,6 +165,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			foreach ( $this->all_types as $msg_type ) {
+				if ( ! isset( $user_notices[$msg_type] ) )	// just in case
+					continue;
 				foreach ( $user_notices[$msg_type] as $msg_txt => $payload ) {
 					if ( empty( $msg_txt ) || 
 						isset( $all_msgs[$msg_txt] ) )	// skip duplicates
