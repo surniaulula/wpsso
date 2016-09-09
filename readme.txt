@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.35.0-rc2 (2016/09/06)**
+**Version 3.35.0-rc3 (2016/09/09)**
 
 Official announcement: N/A
 
@@ -418,9 +418,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.35.0-rc2 =
+= 3.35.0-rc3 =
 
-(2016/09/06) Refactored the SucomNotice class to improve performance. Changed to a shortlink when checking for duplicate meta tags. Added a maximum count when checking for duplicate meta tags. Added a notice for a missing Open Graph description meta tag.
+(2016/09/09) Refactored the SucomNotice class to improve performance. Changed to a shortlink when checking for duplicate meta tags. Added a maximum count when checking for duplicate meta tags. Added a notice for a missing Open Graph description meta tag.
 
 = 3.34.3-1 =
 
