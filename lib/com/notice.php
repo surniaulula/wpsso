@@ -21,6 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $hide_warn = false;
 		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );
 		private $notice_cache = array();
+		private $has_shown = false;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -79,8 +80,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function log( $msg_type, $msg_txt, $user_id = true, $msg_id = false, $dismiss = false, $payload = array() ) {
 
-			if ( empty( $msg_type ) || empty( $msg_txt ) ||	// quick sanity checks
-				SucomUtil::get_const( 'SUCOM_NOTICE_LOG_DISABLE' ) ) 	// defined when creating content for columns
+			if ( empty( $msg_type ) || 
+				empty( $msg_txt ) )
 					return;
 
 			$payload['msg_id'] = empty( $msg_id ) ?
@@ -143,6 +144,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
+		public function pre_show_notices() {
+			if ( is_admin() && ! $this->has_shown )
+				return true;
+			else return false;
+		}
+
 		public function show_admin_notices() {
 			$hidden = array();
 			$msg_html = '';
@@ -153,6 +160,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_notices =& $this->get_user_notices( $user_id );	// returns reference
 			$user_dismissed = empty( $user_id ) ? false : 		// just in case
 				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
+
+			$this->has_shown = true;
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {

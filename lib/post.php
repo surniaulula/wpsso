@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$exec_count = (int) get_option( $lca.'_post_header_count' );	// changes false to 0
-			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
+			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
 
 			if ( $exec_count >= $max_count ) {
 				if ( $this->p->debug->enabled )

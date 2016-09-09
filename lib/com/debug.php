@@ -31,53 +31,27 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->display_name = $this->p->cf['lca'];
 			$this->log_prefix = $this->p->cf['uca'];
 			$this->subsys = $subsys;
-			$this->is_enabled();		// set $this->enabled
+			$this->is_enabled();	// sets $this->enabled value
 			$this->mark();
 		}
 
-		public function mark( $id = false, $comment = '' ) { 
-			if ( $this->enabled !== true ) 
-				return;
+		public function is_enabled( $name = '' ) {
+			if ( ! empty( $name ) )
+				return isset( $this->subsys[$name] ) ? $this->subsys[$name] : false;
+			// return true if any sybsys is true (use strict checking)
+			else $this->enabled = in_array( true, $this->subsys, true ) ? true : false;
 
-			$cur_stats = array(
-				'time' => microtime( true ),
-				'mem' => memory_get_usage( true ),
-			);
-			if ( $this->start_stats === null )
-				$this->start_stats = $cur_stats;
-
-			if ( $id !== false ) {
-				$id_text = '- - - - - - '.$id;
-				if ( isset( $this->begin_marks[$id] ) ) {
-					$id_text .= ' end + ('.
-						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ).' / '.
-						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ).')';
-					unset( $this->begin_marks[$id] );
-				} else {
-					$id_text .= ' begin';
-					$this->begin_marks[$id] = array(
-						'time' => $cur_stats['time'],
-						'mem' => $cur_stats['mem'],
-					);
-				}
-			}
-			$this->log( 'mark ('.
-				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ).' / '.
-				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ).')'.
-				( $comment ? ' '.$comment : '' ).
-				( $id !== false ? "\n\t".$id_text : '' ), 2 );
+			return $this->enabled;
 		}
 
-		private function get_time_text( $time ) {
-			return sprintf( '%f secs', $time );
+		public function enable( $name, $state = true ) {
+			if ( ! empty( $name ) )
+				$this->subsys[$name] = $state;
+			$this->is_enabled();	// sets $this->enabled value
 		}
 
-		private function get_mem_text( $mem ) {
-			if ( $mem < 1024 )
-				return $mem.' bytes';
-			elseif ( $mem < 1048576 )
-				return round( $mem / 1024, 2).' kb';
-			else return round( $mem / 1048576, 2).' mb'; 
+		public function disable( $name ) {
+			$this->enable( $name, false );
 		}
 
 		public function log_args( array $arr, $class_idx = 1, $function_idx = false ) { 
@@ -162,6 +136,51 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 		}
 
+		public function mark( $id = false, $comment = '' ) { 
+			if ( $this->enabled !== true ) 
+				return;
+
+			$cur_stats = array(
+				'time' => microtime( true ),
+				'mem' => memory_get_usage( true ),
+			);
+			if ( $this->start_stats === null )
+				$this->start_stats = $cur_stats;
+
+			if ( $id !== false ) {
+				$id_text = '- - - - - - '.$id;
+				if ( isset( $this->begin_marks[$id] ) ) {
+					$id_text .= ' end + ('.
+						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ).' / '.
+						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ).')';
+					unset( $this->begin_marks[$id] );
+				} else {
+					$id_text .= ' begin';
+					$this->begin_marks[$id] = array(
+						'time' => $cur_stats['time'],
+						'mem' => $cur_stats['mem'],
+					);
+				}
+			}
+			$this->log( 'mark ('.
+				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ).' / '.
+				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ).')'.
+				( $comment ? ' '.$comment : '' ).
+				( $id !== false ? "\n\t".$id_text : '' ), 2 );
+		}
+
+		private function get_time_text( $time ) {
+			return sprintf( '%f secs', $time );
+		}
+
+		private function get_mem_text( $mem ) {
+			if ( $mem < 1024 )
+				return $mem.' bytes';
+			elseif ( $mem < 1048576 )
+				return round( $mem / 1024, 2).' kb';
+			else return round( $mem / 1048576, 2).' mb'; 
+		}
+
 		public function show_html( $data = null, $title = null ) {
 			if ( $this->is_enabled( 'html' ) !== true ) 
 				return;
@@ -206,30 +225,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 			$html .= ' -->'."\n";
 			return $html;
-		}
-
-		public function switch_on( $name ) {
-			return $this->switch_to( $name, true );
-		}
-
-		public function switch_off( $name ) {
-			return $this->switch_to( $name, false );
-		}
-
-		private function switch_to( $name, $state ) {
-			if ( ! empty( $name ) )
-				$this->subsys[$name] = $state;
-			return $this->is_enabled();
-		}
-
-		public function is_enabled( $name = '' ) {
-			if ( ! empty( $name ) )
-				return isset( $this->subsys[$name] ) ? 
-					$this->subsys[$name] : false;
-			// return true if any sybsys is true (use strict checking)
-			else $this->enabled = in_array( true, $this->subsys, true ) ?
-				true : false;
-			return $this->enabled;
 		}
 
 		public static function pretty_array( $mixed, $flatten = false ) {

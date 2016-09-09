@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'WP / Theme Integration' settings
 						 */
 						case 'tooltip-plugin_check_head':
-							$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
+							$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
 							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $max_count );
 							break;
 						case 'tooltip-plugin_html_attr_filter':

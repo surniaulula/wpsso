@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! class_exists( 'SucomNoNotice' ) ) {
 
 	class SucomNoNotice {
+		public $has_shown = false;
 		public function __construct() {}
 		public function nag() {}
 		public function err() {}
@@ -21,6 +22,7 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function trunc_id() {}
 		public function trunc_all() {}
 		public function trunc() {}
+		public function pre_show_notices() {}
 	}
 }
 

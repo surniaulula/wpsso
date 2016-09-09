@@ -13,15 +13,15 @@ if ( ! class_exists( 'SucomNoDebug' ) ) {
 	class SucomNoDebug {
 		public $enabled = false;
 		public function __construct() {}
-		public function mark() {}
+		public function is_enabled() { return $this->enabled; }
+		public function enable() {}
+		public function disable() {}
 		public function log_args() {}
 		public function log_arr() {}
 		public function log() {}
+		public function mark() {}
 		public function show_html() {}
 		public function get_html() { return ''; }
-		public function switch_on() { return false; }
-		public function switch_off() { return false; }
-		public function is_enabled() { return false; }
 		public static function pretty_array() { return ''; }
 		public static function get_hooks() { return array(); }
 	}
