@@ -144,7 +144,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function pre_show_notices() {
+		public function is_admin_pre_notices() {
 			if ( is_admin() && ! $this->has_shown )
 				return true;
 			else return false;

@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' ); 
 
-					if ( $this->p->notice->pre_show_notices() ) {
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$lca]['short'].' Pro', $pid ) ); 
 					}
 
@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
 						$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 
-				if ( $this->p->notice->pre_show_notices() ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
 						$img_width.'x'.$img_height.' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 
-				if ( $this->p->notice->pre_show_notices() ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', 
 						array( 'size_label' => $size_label, 'hard_limit' => true ) );
