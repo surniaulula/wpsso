@@ -349,6 +349,7 @@ Official announcement: N/A
 	* Changed from using the post permalink to a shortlink when checking for duplicate meta tags.
 	* Added a maximum (success) count of 6 when checking for duplicate meta tags.
 	* Added a notice for a missing Open Graph description meta tag.
+	* Moved the "Version Information" side box from all SSO settings pages to only the SSO Update Manager settings page.
 * *Bugfixes*
 	* None
 * *Developer Notes*
