@@ -533,9 +533,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( strpos( $value, 'https:' ) === 0 ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
-						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url',
-							$attr, $value, $cmt );
-						$value = preg_replace( '/^https:/', 'http:', $value );
+						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url', $attr, $value, $cmt );
+						$value = '';
 					}
 					break;
 				case 'og:image:secure_url':
