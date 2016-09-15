@@ -529,12 +529,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:url':
 				case 'og:video':
 				case 'og:video:url':
-					// add secure_url for open graph images and videos
+					// add an additional secure_url meta tag for open graph images and videos
 					if ( strpos( $value, 'https:' ) === 0 ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
 						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url', $attr, $value, $cmt );
-						$value = '';
 					}
 					break;
 				case 'og:image:secure_url':
