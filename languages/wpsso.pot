@@ -2947,15 +2947,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:415
+#: lib/user.php:417
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:416
+#: lib/user.php:418
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:417
+#: lib/user.php:419
 msgid "Jabber / Google Talk"
 msgstr ""
 

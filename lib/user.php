@@ -257,10 +257,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$pkg_type = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ? 
 				_x( 'Pro', 'package type', 'wpsso' ) :
 				_x( 'Free', 'package type', 'wpsso' );
+			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
 			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['name'].' '.$pkg_type.'</h3>'."\n";
-			echo '<div id="poststuff">';
+			echo '<div id="poststuff">'."\n";
 			do_meta_boxes( $lca.'-user', 'normal', $user );
-			echo '</div>'."\n";
+			echo "\n".'</div><!-- .poststuff -->'."\n";
+			echo '<!-- '.$lca.' user metabox section end -->'."\n";
 		}
 
 		public function show_metabox_social_settings( $user_obj ) {
