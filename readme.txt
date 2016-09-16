@@ -338,6 +338,21 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.35.2-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added the 'weibo:article:create_at' and 'weibo:article:update_at' meta tags for Weibo.
+	* Added the 'twitter:player:stream' and 'twitter:player:stream:content_type' meta tags for Facebook (video/mp4) embeded videos.
+	* Changed 'article:published_time' and 'article:modified_time' values to GMT instead of the local timezone.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Updated minimum PHP version required from v5.1 to v5.2.
+
 **Version 3.35.1-1 (2016/09/15)**
 
 Official announcement: N/A
