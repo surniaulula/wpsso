@@ -10,7 +10,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, facebook, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, meta tags, multilingual, multisite, nextgen gallery, open graph, pinterest, player card, polylang, rich pin, schema, schema.org, seo, share, social, summary card, twitter, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, sharing, facebook video, slideshare, video embed, social meta tags, seo meta tags, featured, json, json-ld, search engine optimization, seo meta, url, wordpress seo
 Contributors: jsmoriss
 Requires At Least: 3.1
-Tested Up To: 4.6
+Tested Up To: 4.6.1
 Stable Tag: 3.35.1-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
