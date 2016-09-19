@@ -1385,15 +1385,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' )
 					return;
 
-			$headers = glob( get_stylesheet_directory().'/header*.php' );
-			foreach ( $headers as $file ) {
-				if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false )
-					continue;
+			$headers = glob( get_stylesheet_directory().'/header*.php' );	// returns false on error
 
-				if ( strpos( $html, '<head>' ) !== false ) {
-					$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-						true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
-					break;
+			if ( is_array( $headers ) ) {
+				foreach ( $headers as $file ) {
+					if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false )
+						continue;
+					elseif ( strpos( $html, '<head>' ) !== false ) {
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
+							true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
+						break;
+					}
 				}
 			}
 		}

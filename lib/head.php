@@ -66,10 +66,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = array();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'WP_LANG = '.SucomUtil::get_const( 'WP_LANG' ) );
-				$this->p->debug->log( 'default locale = '.SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'current locale = '.SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'mod locale = '.SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'home_url option = '.get_option( 'home' ) );
+				$this->p->debug->log( 'WP_LANG constant = '.SucomUtil::get_const( 'WP_LANG' ) );
+				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
 				$this->p->util->log_is_functions();
 			}
 
@@ -289,6 +290,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = $this->p->og->get_array( $use_post, $mod, $mt_og, $crawler_name );
 
 			/*
+			 * Weibo
+			 */
+			$mt_weibo = $this->p->weibo->get_array( $use_post, $mod, $mt_og, $crawler_name );
+
+			/*
 			 * Twitter Cards
 			 */
 			$mt_tc = $this->p->tc->get_array( $use_post, $mod, $mt_og, $crawler_name );
@@ -382,6 +388,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),		// seo description is last

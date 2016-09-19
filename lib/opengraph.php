@@ -8,9 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) 
 	die( 'These aren\'t the droids you\'re looking for...' );
 
-if ( ! class_exists( 'WpssoOpengraph' ) ) {
+if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
-	class WpssoOpengraph {
+	class WpssoOpenGraph {
 
 		protected $p;
 
@@ -230,11 +230,11 @@ if ( ! class_exists( 'WpssoOpengraph' ) ) {
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:published_time'] ) )
-					$og['article:published_time'] = trim( get_post_time( 'c', null, $post_id ) );
+					$og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
 
 				// meta tag not defined or value is null
 				if ( ! isset( $og['article:modified_time'] ) )
-					$og['article:modified_time'] = trim( get_post_modified_time( 'c', null, $post_id ) );
+					$og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
 			}
 
 			// get all videos

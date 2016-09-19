@@ -12,8 +12,8 @@
  * License URI: http://www.gnu.org/licenses/gpl.txt
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.1
- * Tested Up To: 4.6
- * Version: 3.35.1-1
+ * Tested Up To: 4.6.1
+ * Version: 3.35.2-dev1
  * 
  * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -43,8 +43,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $media;			// WpssoMedia (images, videos, etc.)
 		public $msgs;			// WpssoMessages (admin tooltip messages)
 		public $notice;			// SucomNotice or SucomNoNotice
-		public $og;			// WpssoOpengraph
-		public $tc;			// WpssoTwittercard
+		public $og;			// WpssoOpenGraph
+		public $weibo;			// WpssoWeibo
+		public $tc;			// WpssoTwitterCard
 		public $opt;			// WpssoOptions
 		public $reg;			// WpssoRegister
 		public $script;			// SucomScript (admin jquery tooltips)
@@ -173,8 +174,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->webpage = new SucomWebpage( $this );		// title, desc, etc., plus shortcodes
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
 			$this->head = new WpssoHead( $this );
-			$this->og = new WpssoOpengraph( $this );
-			$this->tc = new WpssoTwittercard( $this );
+			$this->og = new WpssoOpenGraph( $this );
+			$this->weibo = new WpssoWeibo( $this );
+			$this->tc = new WpssoTwitterCard( $this );
 			$this->schema = new WpssoSchema( $this );
 
 			if ( is_admin() ) {

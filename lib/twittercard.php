@@ -57,8 +57,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$mod['id'] : false;
 			$max = $this->p->util->get_max_nums( $mod );
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og );	// read any pre-defined twitter card values
-			$mt_tc = apply_filters( $lca.'_tc_seed', 
-				$mt_tc, $mod['use_post'], $mod );
+			$mt_tc = apply_filters( $lca.'_tc_seed', $mt_tc, $mod['use_post'], $mod );
 
 			// the twitter:domain is used in place of the 'view on web' text
 			if ( ! isset( $mt_tc['twitter:domain'] ) &&
@@ -112,33 +111,50 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 				if ( isset( $mt_og['og:video'] ) && count( $mt_og['og:video'] ) > 0 ) {
 					foreach ( $mt_og['og:video'] as $video ) {
+						$embed_url = '';
+						$stream_url = '';
 
+						// check for embed or text/html video URL
 						if ( ! empty( $video['og:video:embed_url'] ) ) {
-
 							$embed_url = $video['og:video:embed_url'];
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'player card: embed url = '.$embed_url );
-
-						} elseif ( ! empty( $video['og:video:type'] ) &&
+						} elseif ( isset( $video['og:video:type'] ) &&
 							$video['og:video:type'] === 'text/html' ) {
-
 							$embed_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'player card: text/html url = '.$embed_url );
+						}
 
-						} else continue;
+						// check for a video/mp4 stream URL
+						if ( isset( $video['og:video:type'] ) &&
+							$video['og:video:type'] === 'video/mp4' ) {
+							$stream_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'player card: video/mp4 url = '.$embed_url );
+						}
 
-						$mt_tc['twitter:card'] = 'player';
-						$mt_tc['twitter:player'] = $embed_url;
+						if ( ! empty( $embed_url ) ) {
+							$mt_tc['twitter:card'] = 'player';
+							$mt_tc['twitter:player'] = $embed_url;
+						}
 
-						if ( ! empty( $video['og:video:width'] ) )
-							$mt_tc['twitter:player:width'] = $video['og:video:width'];
+						if ( ! empty( $stream_url ) ) {
+							$mt_tc['twitter:card'] = 'player';
+							$mt_tc['twitter:player:stream'] = $stream_url;
+							$mt_tc['twitter:player:stream:content_type'] = $video['og:video:type'];
+						}
 
-						if ( ! empty( $video['og:video:height'] ) )
-							$mt_tc['twitter:player:height'] = $video['og:video:height'];
+						if ( ! empty( $mt_tc['twitter:card'] ) ) {
+							if ( ! empty( $video['og:video:width'] ) )
+								$mt_tc['twitter:player:width'] = $video['og:video:width'];
+	
+							if ( ! empty( $video['og:video:height'] ) )
+								$mt_tc['twitter:player:height'] = $video['og:video:height'];
 
-						if ( ! empty( $video['og:image'] ) )
-							$mt_tc['twitter:image'] = $video['og:image'];
+							// get the video preview image (if one is available)
+							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $video, 'og:image' );
+						}
 
 						break;	// only use the first video
 					}

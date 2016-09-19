@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.1-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.2-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -363,25 +364,25 @@ msgid ""
 "in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1413
+#: lib/admin.php:1415
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1420
+#: lib/admin.php:1422
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1429
+#: lib/admin.php:1431
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1436
+#: lib/admin.php:1438
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1448
+#: lib/admin.php:1450
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -3073,15 +3074,15 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:250
+#: wpsso.php:252
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:251
+#: wpsso.php:253
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:252
+#: wpsso.php:254
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 
