@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.35.2-dev1 (TBD)**
+**Version 3.35.2-dev1 (2016/09/19)**
 
 Official announcement: N/A
 
@@ -385,11 +385,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.35.2-dev1 =
+
+(2016/09/19) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embeded videos.
+
 = 3.35.1-1 =
 
 (2016/09/15) Fixed an undefined og:image value when adding an og:image:secure_url meta tag.
-
-= 3.35.0-1 =
-
-(2016/09/10) Refactored the SucomNotice class to improve performance. Changed to a shortlink when checking for duplicate meta tags. Added a maximum count when checking for duplicate meta tags. Added a notice for a missing Open Graph description meta tag.
 
