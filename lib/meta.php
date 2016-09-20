@@ -115,6 +115,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev_width = 600;
 			$prev_height = 315;
 			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
+			$media_url = SucomUtil::get_mt_media_url( $head, 'og:image' );
 
 			$have_sizes = ( ! empty( $head['og:image:width'] ) &&
 				$head['og:image:width'] > 0 && 
@@ -125,28 +126,22 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$head['og:image:width'] >= $prev_width && 
 				$head['og:image:height'] >= $prev_height ) ? true : false;
 
-			foreach ( array( 'og:image:secure_url', 'og:image' ) as $img_url ) {
-				if ( ! empty( $head[$img_url] ) ) {
-					if ( $have_sizes === true ) {
-						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-size:'.( $is_sufficient === true ? 
-							'cover' : $head['og:image:width'].' '.$head['og:image:height'] ).'; 
-						background-image:url('.$head[$img_url].');" />'.( $is_sufficient === true ? 
-							'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
-								'preview image error', 'wpsso' ),
-									$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
-					} else {
-						$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-						background-image:url('.$head[$img_url].');" /><p>'.
-						_x( 'Image Dimensions Unknown<br/>or Not Available',
-							'preview image error', 'wpsso' ).'</p></div>';
-					}
-					break;	// stop after first image
+			if ( ! empty( $media_url ) ) {
+				if ( $have_sizes === true ) {
+					$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
+					background-size:'.( $is_sufficient === true ? 
+						'cover' : $head['og:image:width'].' '.$head['og:image:height'] ).'; 
+					background-image:url('.$media_url.');" />'.( $is_sufficient === true ? 
+						'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
+							'preview image error', 'wpsso' ),
+								$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
+				} else {
+					$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
+					background-image:url('.$media_url.');" /><p>'.
+					_x( 'Image Dimensions Unknown<br/>or Not Available',
+						'preview image error', 'wpsso' ).'</p></div>';
 				}
-			}
-
-			if ( empty( $image_preview_html ) )
-				$image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
+			} else $image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
 			if ( isset( $mod['post_status'] ) &&
