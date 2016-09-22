@@ -393,17 +393,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_extend = array();
 				foreach ( $og_ret as $num => $og_video ) {
 					if ( ! empty( $og_video['og:video:embed_url'] ) ) {
-
 						$og_embed = $og_video;		// start with a copy of all meta tags
 
 						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
-							$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
-							$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
-						} else {
-							$og_embed['og:video:secure_url'] = '';
-							$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) )
+								$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
+							else $og_embed['og:video:secure_url'] = '';	// just in case
 						}
 
+						$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
 						$og_embed['og:video:type'] = 'text/html';
 
 						$og_extend[] = $og_video;	// add application/x-shockwave-flash first
@@ -594,9 +592,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					return '';
 
 			switch ( $prefix ) {
-				// if we're asking for an image or video URL, then search all three values sequentially
+				// if we're asking for an image or video url, then search all three values sequentially
 				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $prefix ) ? true : false ):
-					$search = array(
+					$mt_search = array(
 						$prefix.':secure_url',	// og:image:secure_url
 						$prefix.':url',		// og:image:url
 						$prefix,		// og:image
@@ -604,13 +602,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					break;
 				// otherwise, only search for that specific meta tag name
 				default:
-					$search = array( $prefix );
+					$mt_search = array( $prefix );
 					break;
 			}
 
 			$og_media = reset( $mt_og );	// only search the first media array
 
-			foreach ( $search as $key )
+			foreach ( $mt_search as $key )
 				if ( ! empty( $og_media[$key] ) && 
 					$og_media[$key] !== -1 )
 						return $og_media[$key];

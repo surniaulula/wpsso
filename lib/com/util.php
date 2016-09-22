@@ -670,7 +670,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// return the preferred URL (og:image:secure_url, og:image:url, og:image)
+		// return the preferred url (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( &$assoc, $mt_pre = 'og:image' ) {
 			foreach ( array( ':secure_url', ':url', '' ) as $key )
 				if ( ! empty( $assoc[$mt_pre.$key] ) )
@@ -682,6 +682,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array(
 				$mt_pre.':video:secure_url' => '',
 				$mt_pre.':video:url' => '',
+				//$mt_pre.':video' => '',		// not used - do not include
 				$mt_pre.':video:type' => 'application/x-shockwave-flash',
 				$mt_pre.':video:width' => '',
 				$mt_pre.':video:height' => '',
@@ -700,6 +701,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_prop_image( $mt_pre = 'og' ) {
 			return array(
 				$mt_pre.':image:secure_url' => '',
+				//$mt_pre.':image:url' => '',		// not used - do not include
 				$mt_pre.':image' => '',
 				$mt_pre.':image:width' => '',
 				$mt_pre.':image:height' => '',

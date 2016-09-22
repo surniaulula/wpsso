@@ -132,14 +132,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'property-og:description':
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
-
 						if ( ! isset( $head_info[$mt[3]] ) )	// only save the first meta tag value
 							$head_info[$mt[3]] = $mt[5];
 						break;
-
-					case ( preg_match( '/^property-((og|pinterest):(image|video))(:secure_url|:url)?$/',
-						$mt_match, $m ) ? true : false ):
-
+					case ( preg_match( '/^property-((og|pinterest):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 						if ( ! empty( $mt[5] ) )
 							$has_media[$m[1]] = true;	// optimize media loop
 						break;
@@ -180,7 +176,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								$is_first = true;
 							}
 							break;
-
 						case ( preg_match( '/^property-'.$prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 							if ( $is_first !== true )		// only save for first media found
 								continue 2;			// get the next meta tag
@@ -538,14 +533,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:url':
 					// add an additional secure_url meta tag for open graph images and videos
 					if ( strpos( $value, 'https:' ) === 0 ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
-						$ret[] = array( '', $tag, $type, preg_replace( '/:url$/', '', $name ).':secure_url', $attr, $value, $cmt );
+						$secure_name = preg_replace( '/:url$/', '', $name ).':secure_url';
+						if ( ! empty( $this->p->options['add_meta_property_'.$secure_name] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
+							$ret[] = array( '', $tag, $type, $secure_name, $attr, $value, $cmt );
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( $log_prefix.' skipped adding secure_url (meta tag disabled)' );
 					}
 					break;
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
-					if ( strpos( $value, 'https:' ) !== 0 ) {
+					if ( strpos( $value, 'https:' ) !== 0 ) {	// just in case
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_prefix.' is not https (skipped)' );
 						return $ret;

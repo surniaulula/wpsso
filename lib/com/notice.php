@@ -52,10 +52,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), 5 );	// since wp 3.1
+				add_action( 'in_admin_header', array( &$this, 'add_admin_notices' ), 300000 );
+
+				global $wp_filter;
+				error_log( print_r( $wp_filter['all_admin_notices'], true ) );
 			}
 
 			add_action( 'shutdown', array( &$this, 'shutdown_save_notices' ) );
+		}
+
+		public function add_admin_notices() { 
+			add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), -10 );
 		}
 
 		public function nag( $msg_txt, $user_id = true, $msg_id = false ) { 
