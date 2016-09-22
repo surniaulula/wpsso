@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.35.2-dev2 (2016/09/20)**
+**Version 3.35.2-dev3 (2016/09/21)**
 
 Official announcement: N/A
 
@@ -385,9 +385,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.35.2-dev2 =
+= 3.35.2-dev3 =
 
-(2016/09/20) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embeded videos.
+(2016/09/21) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embeded videos.
 
 = 3.35.1-1 =
 
