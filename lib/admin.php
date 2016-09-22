@@ -39,12 +39,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 
 				$this->set_objects();
-				$this->pro_req_notices();
-				$this->conflict_warnings();
 
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
+
+				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
+				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
+				add_action( 'in_admin_header', array( &$this, 'pro_req_notices' ), 20 );
 
 				add_action( 'after_switch_theme', array( &$this, 'reset_check_header_exec_count' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_header_exec_count' ) );
@@ -100,48 +102,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$menu_id, $menu_name, $menu_lib, $ext );
 						}
 					}
-				}
-			}
-		}
-
-		private function pro_req_notices() {
-			$lca = $this->p->cf['lca'];
-			$has_ext_tid = false;
-			$um_min_version = '1.4.1-1';
-
-			if ( $this->p->is_avail['aop'] === true && 
-				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
-					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
-						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
-
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
-					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
-					$has_ext_tid = true;	// found at least one active plugin with an auth id
-					if ( ! $this->p->check->aop( $ext, false ) )
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', 
-							array( 'lca' => $ext ) ) );
-				}
-			}
-
-			if ( $has_ext_tid === true ) {
-				if ( $this->p->is_avail['util']['um'] &&
-					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
-
-					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $um_min_version, '<' ) )
-						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required', 
-							array( 'um_min_version' => $um_min_version ) ) );
-				} else {
-					if ( ! function_exists( 'get_plugins' ) )
-						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
-
-					$installed_plugins = get_plugins();
-
-					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
-						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
-					else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 				}
 			}
 		}
@@ -1367,6 +1327,48 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'squirrly seo json-ld markup is enabled' );
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>adds the Json-LD metas for Semantic SEO</em>\' option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+				}
+			}
+		}
+
+		public function pro_req_notices() {
+			$lca = $this->p->cf['lca'];
+			$has_ext_tid = false;
+			$um_min_version = '1.4.1-1';
+
+			if ( $this->p->is_avail['aop'] === true && 
+				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
+					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) || 
+						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
+							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
+					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
+					$has_ext_tid = true;	// found at least one active plugin with an auth id
+					if ( ! $this->p->check->aop( $ext, false ) )
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', 
+							array( 'lca' => $ext ) ) );
+				}
+			}
+
+			if ( $has_ext_tid === true ) {
+				if ( $this->p->is_avail['util']['um'] &&
+					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
+
+					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $um_min_version, '<' ) )
+						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required', 
+							array( 'um_min_version' => $um_min_version ) ) );
+				} else {
+					if ( ! function_exists( 'get_plugins' ) )
+						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+
+					$installed_plugins = get_plugins();
+
+					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
+						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
+							$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+					else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 				}
 			}
 		}
