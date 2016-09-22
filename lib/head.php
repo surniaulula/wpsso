@@ -494,14 +494,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $tag === 'meta' && $type === 'property' ) {
 				switch ( $name ) {
 					// optimize by matching known values first
-					case ( strpos( $name, 'og:' ) === 0 ||
-						strpos( $name, 'article:' ) === 0 ? true : false ):
-						// $type is already property
-						break;
+					case ( strpos( $name, 'og:' ) === 0 ? true : false ):
+					case ( strpos( $name, 'article:' ) === 0 ? true : false ):
+						break;	// $type is already property
 					case ( strpos( $name, ':' ) === false ? true : false ):
-					// schema is an internal set of meta tags
-					case ( strpos( $name, 'twitter:' ) === 0 ||
-						strpos( $name, 'schema:' ) === 0 ? true : false ):
+					case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
+					case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
 						$type = 'name';
 						break;
 				}
@@ -527,21 +525,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
 
 			switch ( $name ) {
-				case 'og:image':
-				case 'og:image:url':
-				case 'og:video':
-				case 'og:video:url':
-					// add an additional secure_url meta tag for open graph images and videos
-					if ( strpos( $value, 'https:' ) === 0 ) {
-						$secure_name = preg_replace( '/:url$/', '', $name ).':secure_url';
-						if ( ! empty( $this->p->options['add_meta_property_'.$secure_name] ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $log_prefix.' adding secure_url for '.$value );
-							$ret[] = array( '', $tag, $type, $secure_name, $attr, $value, $cmt );
-						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $log_prefix.' skipped adding secure_url (meta tag disabled)' );
-					}
-					break;
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 					if ( strpos( $value, 'https:' ) !== 0 ) {	// just in case

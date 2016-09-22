@@ -670,7 +670,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// return the preferred url (og:image:secure_url, og:image:url, og:image)
+		// return the first url from the associative array (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( &$assoc, $mt_pre = 'og:image' ) {
 			foreach ( array( ':secure_url', ':url', '' ) as $key )
 				if ( ! empty( $assoc[$mt_pre.$key] ) )

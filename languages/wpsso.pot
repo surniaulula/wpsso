@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.2-"
-"dev3\n"
+"rc1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -417,29 +417,29 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:250
+#: lib/com/notice.php:247
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:251
+#: lib/com/notice.php:248
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:256
+#: lib/com/notice.php:253
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:257
+#: lib/com/notice.php:254
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:328
+#: lib/com/notice.php:325
 msgid "%s Note"
 msgstr ""
 
