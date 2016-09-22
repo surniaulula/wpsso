@@ -346,7 +346,7 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Added the 'weibo:article:create_at' and 'weibo:article:update_at' meta tags for Weibo.
-	* Added the 'twitter:player:stream' and 'twitter:player:stream:content_type' meta tags for Facebook (video/mp4) embeded videos.
+	* Added the 'twitter:player:stream' and 'twitter:player:stream:content_type' meta tags for Facebook (video/mp4) embedded videos.
 	* Changed 'article:published_time' and 'article:modified_time' values to GMT instead of the local timezone.
 * *Bugfixes*
 	* None
@@ -387,7 +387,7 @@ Official announcement: N/A
 
 = 3.35.2-rc1 =
 
-(2016/09/22) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embeded videos.
+(2016/09/22) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embedded videos.
 
 = 3.35.1-1 =
 
