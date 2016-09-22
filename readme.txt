@@ -348,6 +348,7 @@ Official announcement: N/A
 	* Added the 'weibo:article:create_at' and 'weibo:article:update_at' meta tags for Weibo.
 	* Added the 'twitter:player:stream' and 'twitter:player:stream:content_type' meta tags for Facebook (video/mp4) embedded videos.
 	* Changed 'article:published_time' and 'article:modified_time' values to GMT instead of the local timezone.
+	* Updated the conflict / requirement hooks to execute later in the admin page load.
 * *Bugfixes*
 	* None
 * *Developer Notes*
