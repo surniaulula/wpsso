@@ -147,6 +147,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
 				}
 
+				if ( $opts_version && $opts_version <= 450 ) {
+					if ( ! empty( $opts['add_meta_property_og:image:secure_url'] ) ) {
+						$opts['add_meta_property_og:image:secure_url'] = 0;
+						$opts['add_meta_property_og:image'] = 1;
+					}
+					if ( ! empty( $opts['add_meta_property_og:video:secure_url'] ) ) {
+						$opts['add_meta_property_og:video:secure_url'] = 0;
+						$opts['add_meta_property_og:video:url'] = 1;
+					}
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
 				$opts = SucomUtil::rename_keys( $opts, $this->renamed_site_keys );
 
