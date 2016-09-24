@@ -402,7 +402,7 @@ Official announcement: N/A
 
 = 3.35.3-dev1 =
 
-(2016/09/23) Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions.
+(2016/09/23) Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions (Pro version).
 
 = 3.35.2-1 =
 
