@@ -338,6 +338,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.35.3-dev1 (2016/09/23)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions (Pro version).
+* *Developer Notes*
+	* None
+
 **Version 3.35.2-1 (2016/09/23)**
 
 Official announcement: N/A
@@ -387,11 +400,11 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
+= 3.35.3-dev1 =
+
+(2016/09/23) Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions.
+
 = 3.35.2-1 =
 
 (2016/09/23) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embedded videos.
-
-= 3.35.1-1 =
-
-(2016/09/15) Fixed an undefined og:image value when adding an og:image:secure_url meta tag.
 
