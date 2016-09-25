@@ -22,7 +22,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 		}
 
-		public function admin_enqueue_scripts( $hook ) {
+		public function admin_enqueue_scripts( $hook_name ) {
 			$lca = $this->p->cf['lca'];
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
@@ -46,26 +46,34 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'hook name: '.$hook );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'hook_name is '.$hook_name );
+				$this->p->debug->log( 'screen_base is '.SucomUtil::get_screen_base() );
+			}
 
 			// don't load our javascript where we don't need it
-			switch ( $hook ) {
+			switch ( $hook_name ) {
 				// license settings pages include a "view plugin details" feature
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ) :
+				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 
 					wp_enqueue_script( 'plugin-install' );		// required for the plugin details box
 
 					// no break - continue to enqueue the settings page
 
-				case 'edit-tags.php':
-				case 'user-edit.php':
-				case 'profile.php':
-				case 'post.php':
-				case 'post-new.php':
-				case 'term.php':
-				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
+				case 'post.php':	// post edit
+				case 'post-new.php':	// post edit
+				case 'term.php':	// term edit
+				case 'edit-tags.php':	// term edit
+				case 'user-edit.php':	// user edit
+				case 'profile.php':	// user edit
+				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):	// profile_page and users_page hooks
+
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'enqueuing scripts for editing and settings page' );
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
 						if ( SucomUtil::is_post_page( false ) &&

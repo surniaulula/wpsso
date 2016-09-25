@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			);
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), ucfirst( $mod['post_type'] ) );
+				'wpsso' ), SucomUtil::title_words( $mod['post_type'] ) );
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 		}

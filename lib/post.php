@@ -22,16 +22,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		protected function add_actions() {
 
 			if ( is_admin() ) {
-				// admin post or attachment editing page
-				if ( SucomUtil::is_post_page() ) {
-					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-					// load_meta_page() priorities: 100 post, 200 user, 300 term
-					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
-					add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-					add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
-					add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-					add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
-				}
+				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
+				// load_meta_page() priorities: 100 post, 200 user, 300 term
+				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
@@ -44,14 +41,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
-						add_filter( 'manage_'.$post_type.'_posts_columns', 
-							array( $this, 'add_column_headings' ), 10, 1 );
-
+						add_filter( 'manage_'.$post_type.'_posts_columns', array( $this, 'add_column_headings' ), 10, 1 );
 						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
-						add_action( 'manage_'.$post_type.'_posts_custom_column', 	// since wp v3.1
-							array( $this, 'show_column_content',), 10, 2 );
+						add_action( 'manage_'.$post_type.'_posts_custom_column', array( $this, 'show_column_content',), 10, 2 );
 					}
 				}
+
 				$this->p->util->add_plugin_filters( $this, array( 
 					'og_img_post_column_content' => 4,
 					'og_desc_post_column_content' => 4,
@@ -375,6 +370,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function add_metaboxes() {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			if ( ( $post_obj = SucomUtil::get_post_object() ) === false || 
 				empty( $post_obj->post_type ) ) {
@@ -393,9 +390,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
 			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'adding metabox '.$lca.'_social_settings' );
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_settings' ), $post_obj->post_type, 'normal', 'low' );
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'skipped metabox '.$lca.'_social_settings' );
 		}
 
 		public function show_metabox_social_settings( $post_obj ) {
@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$is_auto_draft = empty( $mod['post_status'] ) || 
 				$mod['post_status'] === 'auto-draft' ? true : false;
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), ucfirst( $mod['post_type'] ) );
+				'wpsso' ), SucomUtil::title_words( $mod['post_type'] ) );
 
 			$table_rows = array();
 			switch ( $key ) {

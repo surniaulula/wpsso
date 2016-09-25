@@ -18,11 +18,12 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
 			if ( is_admin() )
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ) );
 		}
 
-		public function admin_enqueue_styles( $hook ) {
+		public function admin_enqueue_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
 			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
@@ -44,18 +45,22 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			wp_register_style( 'sucom-metabox-tabs',
 				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'hook name: '.$hook );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'hook_name is '.$hook_name );
+				$this->p->debug->log( 'screen_base is '.SucomUtil::get_screen_base() );
+			}
 
-			switch ( $hook ) {
-				case 'edit-tags.php':
-				case 'user-edit.php':
-				case 'profile.php':
-				case 'post.php':
-				case 'post-new.php':
-				case 'term.php':
+			switch ( $hook_name ) {
+				case 'post.php':	// post edit
+				case 'post-new.php':	// post edit
+				case 'term.php':	// term edit
+				case 'edit-tags.php':	// term edit
+				case 'user-edit.php':	// user edit
+				case 'profile.php':	// user edit
+				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'calling wp_enqueue_style() for editing page' );
+						$this->p->debug->log( 'enqueuing styles for editing page' );
 
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
@@ -65,9 +70,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					break;
 
 				// license settings pages include a "view plugin details" feature
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook ) ? true : false ):
+				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' licenses page' );
+						$this->p->debug->log( 'enqueuing styles for licenses page' );
 
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
 					add_thickbox();					// required for the plugin details box
@@ -75,9 +81,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					// no break - continue to enqueue the settings page
 
 				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook, '_page_'.$lca.'-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'calling wp_enqueue_style() for '.$lca.' settings page' );
+						$this->p->debug->log( 'enqueuing styles for settings page' );
 
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
@@ -88,14 +95,15 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					break;
 
 				case 'plugin-install.php':				// css for view plugin details thickbox
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'calling wp_enqueue_style() for plugin install page' );
 
-					$this->thickbox_inline_styles( $hook );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'enqueuing styles for plugin install page' );
+
+					$this->thickbox_inline_styles( $hook_name );
 
 					break;
 			}
-			$this->admin_inline_styles( $hook );
+			$this->admin_inline_styles( $hook_name );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -103,7 +111,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			return $classes;
 		}
 
-		private function thickbox_inline_styles( $hook ) {
+		private function thickbox_inline_styles( $hook_name ) {
 			echo '
 <style type="text/css">
 	body#plugin-information #section-description img {
@@ -117,7 +125,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 </style>';
 		}
 
-		private function admin_inline_styles( $hook ) {
+		private function admin_inline_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
 			echo '<style type="text/css">';
 			if ( isset( $this->p->cf['color'] ) ) {

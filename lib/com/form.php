@@ -608,7 +608,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_md_form_rows( &$table_rows, &$form_rows, &$head, &$mod,
-			&$auto_draft_msg = 'Save a draft version or publish to update this value.' ) {
+			$auto_draft_msg = 'Save a draft version or publish to update this value.' ) {
 
 			foreach ( $form_rows as $key => $val ) {
 				if ( empty( $val ) ) {

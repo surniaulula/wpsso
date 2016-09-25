@@ -23,8 +23,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
-			add_filter( 'user_contactmethods', 
-				array( &$this, 'add_contact_methods' ), 20, 2 );
+			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
 
 			if ( is_admin() ) {
 				/**
@@ -39,16 +38,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				// load_meta_page() priorities: 100 post, 200 user, 300 term
 				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
 
-				// the social settings metabox has moved to its own settings page
-				//add_action( 'show_user_profile', array( &$this, 'show_metabox_section' ), 20 );
-
 				if ( ! empty( $this->p->options['plugin_og_img_col_user'] ) ||
 					! empty( $this->p->options['plugin_og_desc_col_user'] ) ) {
 
-					add_filter( 'manage_users_columns', 
-						array( $this, 'add_column_headings' ), 10, 1 );
-					add_filter( 'manage_users_custom_column', 
-						array( $this, 'get_column_content',), 10, 3 );
+					add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), 10, 1 );
+					add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_img_user_column_content' => 4,

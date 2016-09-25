@@ -1079,7 +1079,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'TB_iframe' => 'true',
 						'width' => 600,
 						'height' => 550
-					), get_admin_url( null, 'plugin-install.php' ) );
+					), is_multisite() ? 
+						network_admin_url( 'plugin-install.php', null ) : 
+						get_admin_url( null, 'plugin-install.php' ) );
 
 					// check to see if plugin is installed or not
 					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.3-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:77 lib/term.php:270 lib/user.php:258
+#: lib/admin.php:77 lib/term.php:268 lib/user.php:252
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:78 lib/term.php:271 lib/user.php:259
+#: lib/admin.php:78 lib/term.php:269 lib/user.php:253
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -48,7 +48,7 @@ msgctxt "plugin action link"
 msgid "Support Forum"
 msgstr ""
 
-#: lib/admin.php:306 lib/admin.php:1114 lib/admin.php:1115
+#: lib/admin.php:306 lib/admin.php:1116 lib/admin.php:1117
 msgctxt "plugin action link"
 msgid "Purchase Pro License(s)"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:406 lib/post.php:268 lib/term.php:236 lib/user.php:222
+#: lib/admin.php:406 lib/post.php:263 lib/term.php:234 lib/user.php:216
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -220,169 +220,169 @@ msgctxt "plugin action link"
 msgid "View Plugin Details"
 msgstr ""
 
-#: lib/admin.php:1090
+#: lib/admin.php:1092
 msgctxt "plugin action link"
 msgid "View Plugin Details + Update"
 msgstr ""
 
-#: lib/admin.php:1096
+#: lib/admin.php:1098
 msgctxt "plugin action link"
 msgid "View Plugin Details + Install"
 msgstr ""
 
-#: lib/admin.php:1102
+#: lib/admin.php:1104
 msgctxt "plugin action link"
 msgid "Plugin Description Page"
 msgstr ""
 
-#: lib/admin.php:1107
+#: lib/admin.php:1109
 msgctxt "plugin action link"
 msgid "Download Latest Version"
 msgstr ""
 
-#: lib/admin.php:1152 lib/admin.php:1157 lib/admin.php:1173 lib/admin.php:1179
+#: lib/admin.php:1154 lib/admin.php:1159 lib/admin.php:1175 lib/admin.php:1181
 #: lib/messages.php:768
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
 
-#: lib/admin.php:1202
+#: lib/admin.php:1204
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1209
+#: lib/admin.php:1211
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> "
 "is not loaded."
 msgstr ""
 
-#: lib/admin.php:1209 lib/admin.php:1214 lib/admin.php:1219
+#: lib/admin.php:1211 lib/admin.php:1216 lib/admin.php:1221
 msgid ""
 "please contact your hosting provider to have the missing PHP extension "
 "installed and/or enabled."
 msgstr ""
 
-#: lib/admin.php:1214
+#: lib/admin.php:1216
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) "
 "extension</a> is not loaded."
 msgstr ""
 
-#: lib/admin.php:1219
+#: lib/admin.php:1221
 msgid ""
 "<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is not "
 "loaded."
 msgstr ""
 
-#: lib/admin.php:1228
+#: lib/admin.php:1230
 msgid ""
 "please uncheck the '<em>Add Open Graph meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1233
+#: lib/admin.php:1235
 msgid ""
 "please uncheck the '<em>Add Twitter card meta data</em>' option under the <a "
 "href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1238
+#: lib/admin.php:1240
 msgid ""
 "please uncheck the '<em>Add Google+ specific post meta data</em>' option "
 "under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1243
+#: lib/admin.php:1245
 msgid ""
 "please remove the '<em>Google Publisher Page</em>' value entered under the "
 "<a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1254
+#: lib/admin.php:1256
 msgid ""
 "please disable the '<em>Open Graph Integrator</em>' module in the <a href="
 "\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1265
+#: lib/admin.php:1267
 msgid ""
 "please deactivate the '<em>Social Meta</em>' feature in the <a href=\"%s"
 "\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1270
+#: lib/admin.php:1272
 msgid ""
 "please check the '<em>Disable Google Plus Profile</em>' option in the <a "
 "href=\"%s\">All in One SEO Pack Plugin Options</a>."
 msgstr ""
 
-#: lib/admin.php:1280
+#: lib/admin.php:1282
 msgid ""
 "please uncheck the '<em>Output Open Graph meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1285
+#: lib/admin.php:1287
 msgid ""
 "please uncheck the '<em>Output Faceboook meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1290
+#: lib/admin.php:1292
 msgid ""
 "please uncheck the '<em>Output Twitter meta tags?</em>' option in <a href="
 "\"%s\">The SEO Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1295
+#: lib/admin.php:1297
 msgid ""
 "please uncheck the '<em>Output Knowledge tags?</em>' option in <a href=\"%s"
 "\">The SEO Framework</a> Knowledge Graph Settings."
 msgstr ""
 
-#: lib/admin.php:1308
+#: lib/admin.php:1310
 msgid ""
 "please uncheck the '<em>%1$s</em>' option in <a href=\"%2$s\">The SEO "
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1319
+#: lib/admin.php:1321
 msgid ""
 "please uncheck '<em>Add the Social Open Graph objects</em>' in the <a href="
 "\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1324
+#: lib/admin.php:1326
 msgid ""
 "please uncheck '<em>Add the Twitter card in your tweets</em>' in the <a href="
 "\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1329
+#: lib/admin.php:1331
 msgid ""
 "please uncheck the '<em>adds the Json-LD metas for Semantic SEO</em>' option "
 "in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1417
+#: lib/admin.php:1419
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1424
+#: lib/admin.php:1426
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1433
+#: lib/admin.php:1435
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1440
+#: lib/admin.php:1442
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1452
+#: lib/admin.php:1454
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -443,7 +443,7 @@ msgstr ""
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/script.php:93
+#: lib/com/script.php:101
 msgid "Use Image"
 msgstr ""
 
@@ -2283,26 +2283,26 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:336
+#: lib/post.php:331
 msgid "see <a href=\"%s\">WP / Theme Integration</a> settings"
 msgstr ""
 
-#: lib/post.php:340
+#: lib/post.php:335
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:357
+#: lib/post.php:352
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:367
+#: lib/post.php:362
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:396 lib/profile/social-settings.php:27 lib/term.php:260
-#: lib/user.php:248
+#: lib/post.php:395 lib/profile/social-settings.php:27 lib/term.php:258
+#: lib/user.php:242
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2948,15 +2948,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:417
+#: lib/user.php:411
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:418
+#: lib/user.php:412
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:419
+#: lib/user.php:413
 msgid "Jabber / Google Talk"
 msgstr ""
 

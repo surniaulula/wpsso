@@ -42,11 +42,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $lca );
 		}
 
-		protected function add_plugin_hooks( $type, &$class, &$hooks, &$prio, &$lca ) {
+		protected function add_plugin_hooks( $type, &$class, &$hook_list, &$prio, &$lca ) {
 			$lca = $lca === '' ?
 				$this->p->cf['lca'] : $lca;
 
-			foreach ( $hooks as $name => $val ) {
+			foreach ( $hook_list as $name => $val ) {
 				if ( ! is_string( $name ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $name.' => '.$val.' '.$type.

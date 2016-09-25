@@ -1564,6 +1564,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return $src_id;
 		}
+
+		public static function is_toplevel_edit( $hook_name ) {
+			return strpos( $hook_name, 'toplevel_page_' ) !== false && ( 
+				( self::get_request_value( 'action', 'GET' ) === 'edit' && 
+					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||
+				( self::get_request_value( 'action', 'GET' ) === 'create_new' && 
+					self::get_request_value( 'return', 'GET' ) === 'edit' )
+			) ? true : false;
+		}
+
+		public static function title_words ( $str ) {
+			return ucwords( str_replace( '_', ' ', $str ) );
+		}
 	}
 }
 

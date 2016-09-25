@@ -259,13 +259,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			return $ret;
 		}
 
-		public static function get_hooks( $hook = '' ) {
+		public static function get_hooks( $hook_name = '' ) {
 			global $wp_filter;
 
-			$hooks = empty( $wp_filter[$hook] ) ?
-				array() : call_user_func_array( 'array_merge', $wp_filter[$hook] );
+			$hook_list = empty( $wp_filter[$hook_name] ) ?
+				array() : call_user_func_array( 'array_merge', $wp_filter[$hook_name] );
 		
-			foreach( $hooks as &$item ) {
+			foreach( $hook_list as &$item ) {
 				// function name as string or static class method eg. 'Foo::Bar'
 				if ( is_string( $item['function'] ) ) { 
 					try {
@@ -305,7 +305,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					}
 				}       
 			}
-			return $hooks;
+			return $hook_list;
 		}
 	}
 }
