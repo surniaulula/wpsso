@@ -347,7 +347,7 @@ Official announcement: N/A
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions (Pro version).
+	* Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
 * *Developer Notes*
 	* None
 
@@ -402,7 +402,7 @@ Official announcement: N/A
 
 = 3.35.3-dev1 =
 
-(2016/09/23) Added a check for product get_width(), get_height(), and get_length() for older WooCommerce versions (Pro version).
+(2016/09/23) Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
 
 = 3.35.2-1 =
 
