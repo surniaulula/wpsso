@@ -345,9 +345,9 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
-	* None
-* *Bugfixes*
 	* Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
+* *Bugfixes*
+	* Fixed the "View Plugin Details" link in multisite settings pages.
 * *Developer Notes*
 	* None
 
