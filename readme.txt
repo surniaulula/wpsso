@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.35.3-dev1 (2016/09/23)**
+**Version 3.35.3-dev2 (2016/09/25)**
 
 Official announcement: N/A
 
@@ -346,6 +346,8 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
+	* Added a new SucomUtil::is_toplevel_edit() method to enqueue scripts / styles for editing posts in settings pages (required for Event Espresso plugin).
+	* Added a new SucomUtil::titleize() method to format post type names for display.
 * *Bugfixes*
 	* Fixed the "View Plugin Details" link in multisite settings pages.
 * *Developer Notes*
@@ -400,9 +402,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.35.3-dev1 =
+= 3.35.3-dev2 =
 
-(2016/09/23) Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
+(2016/09/25) Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
 
 = 3.35.2-1 =
 
