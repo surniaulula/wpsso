@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$is_auto_draft = empty( $mod['post_status'] ) || 
 				$mod['post_status'] === 'auto-draft' ? true : false;
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), SucomUtil::title_words( $mod['post_type'] ) );
+				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
 
 			$table_rows = array();
 			switch ( $key ) {

@@ -416,13 +416,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				array( '', '', '#$0' ), $tags );
 		}
 
+		public static function sanitize_key( $key ) {
+			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
+		}
+
 		public static function array_to_hashtags( $tags = array() ) {
 			// array_filter() removes empty array values
 			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) );
 		}
 
-		public static function sanitize_key( $key ) {
-			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
+		public static function titleize( $str ) {
+			return ucwords( preg_replace( '/[:\/\-\._]+/', ' ', self::decamelize( $str ) ) );
+		}
+
+		public static function decamelize( $str ) {
+			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
 		public static function active_plugins( $key = false ) {
@@ -1572,10 +1580,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				( self::get_request_value( 'action', 'GET' ) === 'create_new' && 
 					self::get_request_value( 'return', 'GET' ) === 'edit' )
 			) ? true : false;
-		}
-
-		public static function title_words ( $str ) {
-			return ucwords( str_replace( '_', ' ', $str ) );
 		}
 	}
 }
