@@ -51,8 +51,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'after_switch_theme', array( &$this, 'reset_check_header_exec_count' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_header_exec_count' ) );
 
-				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_elements' ) );
-				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_elements' ) );
+				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ) );
+				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ) );
 
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'wp_profile_updated_redirect' ), -100, 2 );
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
 			}
 
-			$this->check_tmpl_head_elements();
+			$this->check_tmpl_head_attributes();
 
 			return $opts;
 		}
@@ -454,8 +454,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
 							break;
 
-						case 'modify_tmpl_head_elements': 
-							$this->modify_tmpl_head_elements();
+						case 'modify_tmpl_head_attributes': 
+							$this->modify_tmpl_head_attributes();
 							break;
 
 						default: 
@@ -1380,14 +1380,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			delete_option( $lca.'_post_header_count' );
 		}
 
-		public function check_tmpl_head_elements() {
+		public function check_tmpl_head_attributes() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			// only check if using the default filter name
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
-				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' )
-					return;
+				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' ||
+					! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
+						return;
 
 			$headers = glob( get_stylesheet_directory().'/header*.php' );	// returns false on error
 
@@ -1404,7 +1405,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function modify_tmpl_head_elements() {
+		public function modify_tmpl_head_attributes() {
 
 			$have_changes = false;
 			$headers = glob( get_stylesheet_directory().'/header*.php' );
