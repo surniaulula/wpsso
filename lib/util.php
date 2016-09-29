@@ -34,25 +34,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// called from several class __construct() methods to hook their filters
-		public function add_plugin_filters( &$class, $filters, $prio = 10, $lca = '' ) {
+		public function add_plugin_filters( $class, $filters, $prio = 10, $lca = '' ) {
 			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $lca );
 		}
 
-		public function add_plugin_actions( &$class, $actions, $prio = 10, $lca = '' ) {
+		public function add_plugin_actions( $class, $actions, $prio = 10, $lca = '' ) {
 			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $lca );
 		}
 
-		protected function add_plugin_hooks( $type, &$class, &$hook_list, &$prio, &$lca ) {
-			$lca = $lca === '' ?
-				$this->p->cf['lca'] : $lca;
+		protected function add_plugin_hooks( $type, $class, $hook_list, $prio, $lca ) {
+			$lca = $lca === '' ? $this->p->cf['lca'] : $lca;	// default lca is ''
 
 			foreach ( $hook_list as $name => $val ) {
 				if ( ! is_string( $name ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $name.' => '.$val.' '.$type.
-							' skipped: filter name must be a string' );
+						$this->p->debug->log( $name.' => '.$val.' '.$type.' skipped: filter name must be a string' );
 					continue;
 				}
+
 				/*
 				 * example:
 				 * 	'json_data_http_schema_org_website' => 6
@@ -62,8 +61,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
 					$method_name = self::sanitize_hookname( $type.'_'.$name );
 
-					call_user_func( 'add_'.$type, $hook_name, 
-						array( &$class, $method_name ), $prio, $arg_nums );
+					call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'added '.$method_name.' (method) '.$type, 3 );
@@ -76,8 +74,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
 					$function_name = self::sanitize_hookname( $val );
 
-					call_user_func( 'add_'.$type, $hook_name, 
-						$function_name, $prio, $arg_nums );
+					call_user_func( 'add_'.$type, $hook_name, $function_name, $prio, $arg_nums );
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'added '.$function_name.' (function) '.$type, 3 );
@@ -94,8 +91,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					foreach ( $val as $hook_name => $arg_nums ) {
 						$hook_name = self::sanitize_hookname( $lca.'_'.$hook_name );
 
-						call_user_func( 'add_'.$type, $hook_name, 
-							array( &$class, $method_name ), $prio, $arg_nums );
+						call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'added '.$method_name.' (method) '.$type.' to '.$hook_name, 3 );

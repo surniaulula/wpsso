@@ -2960,116 +2960,116 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:266
+#: lib/util.php:262
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:267
+#: lib/util.php:263
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
 msgstr ""
 
-#: lib/util.php:345
+#: lib/util.php:341
 msgid "Error reading %s topic list file."
 msgstr ""
 
-#: lib/util.php:373
+#: lib/util.php:369
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:375
+#: lib/util.php:371
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:377 lib/util.php:379
+#: lib/util.php:373 lib/util.php:375
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:381
+#: lib/util.php:377
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:383
+#: lib/util.php:379
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:385
+#: lib/util.php:381
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:387
+#: lib/util.php:383
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:389
+#: lib/util.php:385
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:391
+#: lib/util.php:387
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:576
+#: lib/util.php:572
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:582
+#: lib/util.php:578
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:630
+#: lib/util.php:626
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1321
+#: lib/util.php:1317
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1329
+#: lib/util.php:1325
 msgid "Error removing file %s."
 msgstr ""
 
-#: lib/util.php:1606
+#: lib/util.php:1602
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1632
+#: lib/util.php:1628
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1636
+#: lib/util.php:1632
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1639
+#: lib/util.php:1635
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1643
+#: lib/util.php:1639
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
