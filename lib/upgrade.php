@@ -147,15 +147,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
 				}
 
-				if ( $opts_version && $opts_version <= 452 ) {
-					if ( ! empty( $opts['add_meta_property_og:image:secure_url'] ) ) {
-						$opts['add_meta_property_og:image:secure_url'] = 0;
-						$opts['add_meta_property_og:image'] = 1;
-					}
-					if ( ! empty( $opts['add_meta_property_og:video:secure_url'] ) ) {
-						$opts['add_meta_property_og:video:secure_url'] = 0;
-						$opts['add_meta_property_og:video:url'] = 1;
-					}
+				if ( $opts_version && $opts_version <= 453 ) {
+					$opts['add_meta_property_og:image:secure_url'] = 1;
+					$opts['add_meta_property_og:video:secure_url'] = 1;
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )

@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.35.3-dev3',	// plugin version
-					'opt_version' => '453',		// increment when changing default options
+					'version' => '3.35.3-b1',	// plugin version
+					'opt_version' => '454',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -464,11 +464,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:title' => 1,
 					'add_meta_property_og:type' => 1,
 					'add_meta_property_og:url' => 1,
-					'add_meta_property_og:image:secure_url' => 0,
+					'add_meta_property_og:image:secure_url' => 1,
 					'add_meta_property_og:image' => 1,
 					'add_meta_property_og:image:width' => 1,
 					'add_meta_property_og:image:height' => 1,
-					'add_meta_property_og:video:secure_url' => 0,
+					'add_meta_property_og:video:secure_url' => 1,
 					'add_meta_property_og:video:url' => 1,
 					'add_meta_property_og:video:type' => 1,
 					'add_meta_property_og:video:width' => 1,
