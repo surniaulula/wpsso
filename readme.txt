@@ -352,7 +352,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* Fixed the "View Plugin Details" link in multisite settings pages.
 * *Developer Notes*
-	* None
+	* Added a new 'wpsso_og_add_product_mt_rating' filter for WooCommerce and Yotpo ratings (Pro version).
 
 **Version 3.35.2-1 (2016/09/23)**
 
