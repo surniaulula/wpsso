@@ -63,6 +63,8 @@
 'wpsso_ngg_tags' ( $tags, $pid );
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
 'wpsso_og' ( $og, $use_post, $mod );
+'wpsso_og_add_product_mt_offer' ( $bool, $mod );
+'wpsso_og_add_product_mt_rating' ( $bool, $mod );
 'wpsso_og_default_img_id' ( $image_id );
 'wpsso_og_default_img_url' ( $image_url );
 'wpsso_og_default_img_on_index' ( $bool );
