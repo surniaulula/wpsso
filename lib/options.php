@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' )
-								$this->p->admin->check_tmpl_head_elements();
+								$this->p->admin->check_tmpl_head_attributes();
 					}
 				}
 
