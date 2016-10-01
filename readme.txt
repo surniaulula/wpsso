@@ -11,7 +11,7 @@ Tags: amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, faceboo
 Contributors: jsmoriss
 Requires At Least: 3.1
 Tested Up To: 4.6.1
-Stable Tag: 3.35.2-1
+Stable Tag: 3.35.3-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -406,8 +406,4 @@ Official announcement: N/A
 = 3.35.3-1 =
 
 (2016/10/01) Added a check for product methods for older WooCommerce versions (Pro version). Added a new method to enqueue scripts / styles for editing posts in settings pages (required for Event Espresso plugin). Fixed the "View Plugin Details" link in multisite settings pages.
-
-= 3.35.2-1 =
-
-(2016/09/23) Added new article create and update date meta tags for Weibo. Added player stream and stream:content_type meta tags for Facebook embedded videos.
 
