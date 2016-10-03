@@ -102,35 +102,35 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, ecommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 	* **Supported 3rd Party Plugins**
-		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
-		* [bbPress](https://wordpress.org/plugins/bbpress/)
-		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
-		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
-		* [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/)
-		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
-		* [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/)
-		* [Polylang](https://wordpress.org/plugins/polylang/)
-		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
-		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
-		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-		* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (version 1 and 2)
-		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
-		* [WordPress REST API](https://wordpress.org/plugins/rest-api/) (version 2)
-		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
-		* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
+		* All in One SEO Pack
+		* bbPress
+		* BuddyPress (including Group Forum Topics)
+		* Co-Authors Plus (including Guest Authors)
+		* Easy Digital Downloads
+		* HeadSpace2 SEO
+		* NextGEN Gallery
+		* MarketPress - WordPress eCommerce
+		* Polylang
+		* rtMedia for WordPress, BuddyPress and bbPress
+		* The Events Calendar
+		* The SEO Framework
+		* WooCommerce (version 1 and 2)
+		* WP eCommerce
+		* WordPress REST API (version 2)
+		* Yoast SEO (aka WordPress SEO)
+		* Yotpo Social Reviews for WooCommerce
 	* **Supported Service APIs**
-		* [Bitly](https://bitly.com/)
-		* [Facebook Embedded Videos](https://developers.facebook.com/docs/plugins/embedded-video-player)
-		* [Google URL Shortener](https://goo.gl/)
-		* [Gravatar](https://en.gravatar.com/) (Author Image)
-		* [Ow.ly](http://ow.ly/)
-		* [Slideshare](http://www.slideshare.net/) Presentations
-		* [TinyURL](http://tinyurl.com/)
-		* [Vimeo](https://vimeo.com/) Videos
-		* [Wistia](http://wistia.com/) Videos
-		* [Your Own URL Shortener](http://yourls.org/) (YOURLS)
-		* [YouTube](https://www.youtube.com/) Videos and Playlists
+		* Bitly
+		* Facebook Embedded Videos
+		* Google URL Shortener
+		* Gravatar (Author Image)
+		* Ow.ly
+		* Slideshare Presentations
+		* TinyURL
+		* Vimeo Videos
+		* Wistia Videos
+		* Your Own URL Shortener (YOURLS)
+		* YouTube Videos and Playlists
 * Additional (and optional) Free or Pro extension plugins:
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 	* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
