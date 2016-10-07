@@ -284,8 +284,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( $disabled || $this->get_options( $name.':is' ) === 'disabled' )
 				return $this->get_no_input( $name, $class, $id, $placeholder );
 
+			$html = '';
 			$value = $this->in_options( $name ) ?
 				$this->options[$name] : '';
+
+			if ( ! is_array( $len ) )
+				$len = array( 'max' => $len );
+
+			if ( ! empty( $len['max'] ) && ! empty( $id ) )
+				$html .= $this->get_text_len_js( 'text_'.$id );
 
 			if ( $placeholder === '' && ( $pos = strpos( $name, '#' ) ) > 0 ) {
 				$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
@@ -294,16 +301,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$this->options[$key_default] : '';
 			}
 
-			$html = '';
-			if ( ! empty( $len ) && ! empty( $id ) )
-				$html .= $this->get_text_len_js( 'text_'.$id );
-
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
-				( empty( $len ) ? '' : ' maxLength="'.esc_attr( $len ).'"' ).
+				( empty( $len['max'] ) ? '' : ' maxLength="'.esc_attr( $len['max'] ).'"' ).
+				( empty( $len['warn'] ) ? '' : ' warnLength="'.esc_attr( $len['warn'] ).'"' ).
 				( $this->get_placeholder_events( 'input', $placeholder ) ).' value="'.esc_attr( $value ).'" />'.
-				( empty( $len ) ? '' : ' <div id="text_'.esc_attr( $id ).'-lenMsg"></div>' );
+				( empty( $len['max'] ) ? '' : ' <div id="text_'.esc_attr( $id ).'-lenMsg"></div>' );
 
 			return $html;
 		}
@@ -516,19 +520,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$disabled = true;
 
 			$html = '';
-			$value = $this->in_options( $name ) ? $this->options[$name] : '';
+			$value = $this->in_options( $name ) ?
+				$this->options[$name] : '';
 
-			if ( ! empty( $len ) && ! empty( $id ) )
+			if ( ! is_array( $len ) )
+				$len = array( 'max' => $len );
+
+			if ( ! empty( $len['max'] ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'textarea_'.$id );
 
 			$html .= '<textarea '.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="textarea_'.esc_attr( $name ).'"' : ' id="textarea_'.esc_attr( $id ).'"' ).
-				( empty( $len ) || $disabled ? '' : ' maxLength="'.esc_attr( $len ).'"' ).
-				( empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
+				( empty( $len['max'] ) || $disabled ? '' : ' maxLength="'.esc_attr( $len['max'] ).'"' ).
+				( empty( $len['warn'] ) || $disabled ? '' : ' warnLength="'.esc_attr( $len['warn'] ).'"' ).
+				( empty( $len['max'] ) && empty( $len['rows'] ) ? '' : ( empty( $len['rows'] ) ?
+					' rows="'.( round( $len['max'] / 100 ) + 1 ).'"' : ' rows="'.$len['rows'].'"' ) ).
 				( $this->get_placeholder_events( 'textarea', $placeholder ) ).'>'.stripslashes( esc_attr( $value ) ).'</textarea>'.
-				( empty( $len ) || $disabled ? '' : ' <div id="textarea_'.esc_attr( $id ).'-lenMsg"></div>' );
+				( empty( $len['max'] ) || $disabled ? '' : ' <div id="textarea_'.esc_attr( $id ).'-lenMsg"></div>' );
 
 			return $html;
 		}
@@ -581,11 +591,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		private function get_text_len_js( $id ) {
-			return ( empty( $id ) ? '' : '<script type="text/javascript">
+			return empty( $id ) ?
+				'' : '<script type="text/javascript">
 				jQuery(document).ready(function(){
 					jQuery(\'#'.esc_js( $id ).'\').focus(function(){ sucomTextLen(\''.esc_js( $id ).'\'); });
 					jQuery(\'#'.esc_js( $id ).'\').keyup(function(){ sucomTextLen(\''.esc_js( $id ).'\'); });
-				});</script>' );
+				});</script>';
 		}
 
 		private function get_placeholder_events( $type = 'input', $placeholder ) {

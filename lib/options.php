@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_upscale_img_max':
 				case 'plugin_object_cache_exp':
 				case 'plugin_min_shorten':
-				case ( preg_match( '/_len$/', $key ) ? true : false ):
+				case ( preg_match( '/_(len|warn)$/', $key ) ? true : false ):
 					return 'pos_num';
 					break;
 				// image width, subject to minimum value (typically, at least 200px)

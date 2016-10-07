@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.35.4-1',	// plugin version
-					'opt_version' => '454',		// increment when changing default options
+					'version' => '3.35.5-dev1',	// plugin version
+					'opt_version' => '455',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_alt_name' => '',
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',
-					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length
+					'schema_desc_len' => 250,		// meta itemprop="description" maximum text length (hard limit)
 					'schema_type_for_home_page' => 'website',
 					'schema_type_for_post' => 'blog.posting',
 					'schema_type_for_page' => 'webpage',
@@ -378,22 +378,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop' => 0,
 					'schema_img_crop_x' => 'center',
 					'schema_img_crop_y' => 'center',
-					'seo_desc_len' => 156,			// meta name="description" maximum text length
+					'seo_desc_len' => 156,			// meta name="description" maximum text length (hard limit)
 					'seo_def_author_id' => 0,
 					'seo_def_author_on_index' => 0,
 					'seo_def_author_on_search' => 0,
 					'seo_author_field' => '',		// default value set by WpssoOptions::get_defaults()
-					'seo_publisher_url' => '',		// (multilingual)
-					'fb_publisher_url' => '',		// (multilingual)
+					'seo_publisher_url' => '',		// (localized)
+					'fb_publisher_url' => '',		// (localized)
 					'fb_app_id' => '',
 					'fb_admins' => '',
 					'fb_author_name' => 'display_name',
 					'fb_lang' => 'en_US',
-					'instgram_publisher_url' => '',		// (multilingual)
-					'linkedin_publisher_url' => '',		// (multilingual)
-					'myspace_publisher_url' => '',		// (multilingual)
-					'og_site_name' => '',			// (multilingual)
-					'og_site_description' => '',		// (multilingual)
+					'instgram_publisher_url' => '',		// (localized)
+					'linkedin_publisher_url' => '',		// (localized)
+					'myspace_publisher_url' => '',		// (localized)
+					'og_site_name' => '',			// (localized)
+					'og_site_description' => '',		// (localized)
 					'og_art_section' => 'none',
 					'og_img_width' => 600,
 					'og_img_height' => 315,
@@ -424,9 +424,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_author_fallback' => 0,
 					'og_title_sep' => '-',
 					'og_title_len' => 70,
-					'og_desc_len' => 300,
+					'og_desc_len' => 300,			// maximum length in characters (hard limit)
+					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook
 					'og_desc_hashtags' => 3,
-					'rp_publisher_url' => '',		// (multilingual)
+					'rp_publisher_url' => '',		// (localized)
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
 					'rp_img_width' => 800,
 					'rp_img_height' => 1600,
@@ -434,8 +435,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rp_img_crop_x' => 'center',
 					'rp_img_crop_y' => 'center',
 					'rp_dom_verify' => '',
-					'tc_site' => '',			// Twitter Business @username (multilingual)
-					'tc_desc_len' => 200,			// Maximum Description Length
+					'tc_site' => '',			// Twitter Business @username (localized)
+					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
 					'tc_type_post' => 'summary_large_image',
 					'tc_type_default' => 'summary',
 					// summary card
