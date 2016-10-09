@@ -57,7 +57,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function add_head_attributes() {
-			echo apply_filters( $this->p->options['plugin_head_attr_filter_name'], '' );
+			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {	// just in case
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling filter '.$this->p->options['plugin_head_attr_filter_name'] );
+				echo apply_filters( $this->p->options['plugin_head_attr_filter_name'], '' );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'plugin_head_attr_filter_name is empty' );
 		}
 
 		public function filter_head_attributes( $head_attr = '' ) {
@@ -91,7 +96,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					' itemtype="'.$head_type_url.'"', $head_attr );
 			else $head_attr .= ' itemtype="'.$head_type_url.'"';
 
-			return trim( $head_attr );
+			$head_attr = trim( $head_attr );
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'returning head attributes: '.$head_attr );
+
+			return $head_attr;
 		}
 
 		public function is_head_attributes_enabled() {
