@@ -934,11 +934,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
-		// on archives and taxonomies, this will return the first post object
 		public static function get_post_object( $use_post = false, $output = 'object' ) {
 			$post_obj = false;	// return false by default
 
-			if ( is_numeric( $use_post ) ) {
+			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$post_obj = get_post( $use_post );
 
 			// is_singular() covers is_single(), is_post(), and is_attachement()
@@ -970,6 +969,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			switch ( $output ) {
 				case 'id':
 				case 'ID':
+				case 'post_id':
 					return isset( $post_obj->ID ) ? 
 						(int) $post_obj->ID : 0;
 					break;
@@ -1028,10 +1028,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
-		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
+		public static function get_term_object( $term_id = false, $tax_slug = '', $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
-			if ( is_numeric( $term_id ) ) {
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 				$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
 			} elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
@@ -1109,7 +1109,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_user_object( $user_id = false, $output = 'object' ) {
 			$user_obj = false;	// return false by default
 
-			if ( is_numeric( $user_id ) ) {
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {
 				$user_obj = get_userdata( $user_id );
 
 			} elseif ( apply_filters( 'sucom_is_user_page', is_author() ) ) {
@@ -1128,6 +1128,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			switch ( $output ) {
 				case 'id':
 				case 'ID':
+				case 'user_id':
 					return isset( $user_obj->ID ) ? 
 						(int) $user_obj->ID : 0;
 					break;
