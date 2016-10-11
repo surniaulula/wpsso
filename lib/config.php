@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.35.5-dev1',	// plugin version
-					'opt_version' => '455',		// increment when changing default options
+					'opt_version' => '456',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -617,8 +617,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api' => 1,			// Check for Embedded Media from: Wistia
 					'plugin_youtube_api' => 1,			// Check for Embedded Media from: Youtube
 					// Theme Integration Tab
-					'plugin_html_attr_filter_name' => 'language_attributes',
-					'plugin_html_attr_filter_prio' => 100,
+					'plugin_ogpns_attr_filter_name' => 'language_attributes',
+					'plugin_ogpns_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'head_attributes',
 					'plugin_head_attr_filter_prio' => 100,
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags

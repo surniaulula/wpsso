@@ -2226,12 +2226,12 @@ msgstr ""
 msgid "Reload to View"
 msgstr ""
 
-#: lib/opengraph.php:42
+#: lib/opengraph.php:48
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/opengraph.php:49
+#: lib/opengraph.php:55
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""

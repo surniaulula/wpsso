@@ -21,18 +21,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				'plugin_image_sizes' => 1,
 			) );
 
-			if ( ! empty( $this->p->options['plugin_html_attr_filter_name'] ) &&
-				$this->p->options['plugin_html_attr_filter_name'] !== 'none' ) {
+			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_prefix ) {
+				if ( ! empty( $this->p->options[$opt_prefix.'_name'] ) &&
+					$this->p->options[$opt_prefix.'_name'] !== 'none' ) {
 
-					$prio = empty( $this->p->options['plugin_html_attr_filter_prio'] ) ? 
-						100 : $this->p->options['plugin_html_attr_filter_prio'];
+					$ogpns_filter_name = $this->p->options[$opt_prefix.'_name'];
+					$ogpns_filter_prio = isset( $this->p->options[$opt_prefix.'_prio'] ) ?
+						(int) $this->p->options[$opt_prefix.'_prio'] : 100;
 
-					// add open graph namespace attributes to the <html> tag
-					add_filter( $this->p->options['plugin_html_attr_filter_name'], 
-						array( &$this, 'add_html_attributes' ), $prio, 1 );
+					add_filter( $ogpns_filter_name, array( &$this, 'add_ogpns_attributes' ), $ogpns_filter_prio, 1 );
 
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'add_html_attributes skipped: plugin_html_attr_filter_name option is empty' );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'added add_ogpns_attributes filter for '.$ogpns_filter_name );
+
+					break;	// stop here
+
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'skipping add_ogpns_attributes for '.$opt_prefix.'_name - option is empty' );
+			}
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -54,7 +60,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $sizes;
 		}
 
-		public function add_html_attributes( $html_attr ) {
+		public function add_ogpns_attributes( $html_attr ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array (
@@ -68,18 +74,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				'article' => 'http://ogp.me/ns/article#',
 			) );
 
-			// find and extract an existing prefix attribute value
-			if ( strpos( $html_attr, ' prefix=' ) &&
-				preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
-					$html_attr = $match[1].$match[3];
-					$prefix_value = ' '.$match[2];
-			} else $prefix_value = '';
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 
-			foreach ( $prefix_ns as $ns => $url )
-				if ( strpos( $prefix_value, ' '.$ns.': '.$url ) === false )
-					$prefix_value .= ' '.$ns.': '.$url;
-
-			$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
+			} else {
+				// find and extract an existing prefix attribute value
+				if ( strpos( $html_attr, ' prefix=' ) &&
+					preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
+						$html_attr = $match[1].$match[3];
+						$prefix_value = ' '.$match[2];
+				} else $prefix_value = '';
+	
+				foreach ( $prefix_ns as $ns => $url )
+					if ( strpos( $prefix_value, ' '.$ns.': '.$url ) === false )
+						$prefix_value .= ' '.$ns.': '.$url;
+	
+				$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
+			}
 
 			return trim( $html_attr );
 		}
