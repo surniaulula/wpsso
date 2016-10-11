@@ -2250,8 +2250,8 @@ msgstr ""
 
 #: lib/meta.php:294
 msgid ""
-"Validate the HTML syntax and AMP conformance of your meta tags and templates "
-"markup."
+"Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP "
+"templates markup."
 msgstr ""
 
 #: lib/meta.php:294
