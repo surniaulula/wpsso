@@ -1,6 +1,6 @@
 'sucom_get_post_object' ( $post_obj, $use_post );
-'sucom_get_term_object' ( $term_obj );
-'sucom_get_user_object' ( $user_obj );
+'sucom_get_term_object' ( $term_obj, $term_id, $tax_slug );
+'sucom_get_user_object' ( $user_obj, $user_id );
 'sucom_is_post_page' ( $ret );
 'sucom_is_term_page' ( $ret );
 'sucom_is_user_page' ( $ret );

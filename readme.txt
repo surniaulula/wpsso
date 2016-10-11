@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.35.5-dev2 (2016/10/11)**
+**Version 3.35.5-dev3 (2016/10/11)**
 
 Official announcement: N/A
 
@@ -350,6 +350,7 @@ Official announcement: N/A
 	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
 * *Bugfixes*
 	* Removed the open graph namespace from the HTML tag attributes for AMP v0.4.
+	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
 * *Developer Notes*
 	* None
 
@@ -418,7 +419,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.35.5-dev2 =
+= 3.35.5-dev3 =
 
 (2016/10/11) Added a configurable length warning to the Open Graph description textarea. Removed the open graph namespace from the HTML tag attributes for AMP v0.4. Added new "Validate AMP Markup" and "Validate HTML Markup" buttons under the Social Settings metabox Validate tab.
 
