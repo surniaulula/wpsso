@@ -68,6 +68,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
+			$html_attr = ' '.$html_attr;	// prepare the string for testing
 			$prefix_ns = apply_filters( $this->p->cf['lca'].'_og_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
@@ -75,12 +76,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			) );
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+				// nothing to do				
 
 			} else {
-				// find and extract an existing prefix attribute value
+				// find and extract an existing prefix attribute value (if any)
 				if ( strpos( $html_attr, ' prefix=' ) &&
 					preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
-						$html_attr = $match[1].$match[3];
+						$html_attr = $match[1].$match[3];	// remove the prefix
 						$prefix_value = ' '.$match[2];
 				} else $prefix_value = '';
 	
