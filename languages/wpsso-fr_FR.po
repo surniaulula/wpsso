@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.35.5-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-10-09 11:24-0700\n"
-"PO-Revision-Date: 2016-10-09 11:25-0700\n"
+"POT-Creation-Date: 2016-10-11 11:14-0700\n"
+"PO-Revision-Date: 2016-10-11 11:15-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -744,13 +744,13 @@ msgctxt "option label"
 msgid "Add %s Column for"
 msgstr "Ajouter colonne %s pour"
 
-#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:547
+#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:565
 #: lib/pro/admin/advanced.php:104
 msgctxt "column title"
 msgid "%s Img"
 msgstr "%s Img"
 
-#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:548
+#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:566
 #: lib/pro/admin/advanced.php:106
 msgctxt "column title"
 msgid "%s Desc"
@@ -1778,84 +1778,124 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr "Example Open Graph"
 
-#: lib/meta.php:271
+#: lib/meta.php:278
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:271
-msgid "Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open Graph meta tags."
-msgstr "Facebook, Pinterest, LinkedIn, Google+ et la majorité des sites sociaux utilisent les balises méta Open Graph."
+#: lib/meta.php:278
+msgid "Facebook and most social websites read Open Graph meta tags."
+msgstr "Facebook et la majorité des sites sociaux utilisent les balises méta Open Graph."
 
-#: lib/meta.php:271
-msgid "The Facebook debugger allows you to refresh Facebook's cache, while also validating the Open Graph and Pinterest Rich Pin meta tags."
-msgstr "Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout en validant également les balises méta Open Graph et Rich Pin de Pinterest."
+#: lib/meta.php:278
+msgid "The Facebook debugger allows you to refresh Facebook's cache, while also validating the Open Graph meta tag values."
+msgstr "Le débogueur de Facebook vous permet d'actualiser le cache de Facebook, tout en validant également les balises méta Open Graph."
 
-#: lib/meta.php:271
-msgid "The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape information\" button several times to refresh Facebook's cache</strong>."
-msgstr "Le débogueur Facebook reste la méthode la plus stable et fiable pour vérifier les balises méta Open Graph. <strong>Vous devez cliquer sur le bouton \"Fetch new scrape information\" quelques fois pour actualiser le cache de Facebook</strong>."
+#: lib/meta.php:278
+msgid "The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags."
+msgstr "Le débogueur Facebook reste la méthode la plus stable et fiable pour vérifier les balises méta Open Graph."
 
-#: lib/meta.php:271
+#: lib/meta.php:278
+msgid "You may have to click the \"Fetch new scrape information\" button a few times to refresh Facebook's cache."
+msgstr "Cliquez le bouton \"Fetch new scrape information\" quelques fois pour actualiser le cache de Facebook."
+
+#: lib/meta.php:278
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:273
+#: lib/meta.php:281
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:273
-msgid "Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and social JSON-LD markup) for Google Search and Google+."
-msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, schéma, microdonnées, et social JSON-LD) pour Google Search et Google+."
+#: lib/meta.php:281
+msgid "Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
+msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, schéma, microdonnées, et JSON-LD) pour Google Search et Google+."
 
-#: lib/meta.php:273
+#: lib/meta.php:281
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider Données Structurées"
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgid "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins."
 msgstr "Valider les balises méta Open Graph / Rich Pin et appliquent pour les montrés sur les épingles Pinterest agrandis ."
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgid "The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field."
 msgstr "Le validateur de carte Twitter n'accepte pas les arguments de requête &ndash; copier-coller l'URL de partage suivant dans le champ d'entrée de validation."
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:458
+#: lib/meta.php:290
+msgctxt "option label"
+msgid "W3C Markup Validation"
+msgstr "Validateur W3C de balises"
+
+#: lib/meta.php:290
+msgid "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup."
+msgstr "Valider la syntaxe HTML et la conformité  HTML 5 de vos balises méta et le balisage de modèles de votre thème."
+
+#: lib/meta.php:290
+msgid "When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements. You may ignore these errors or disable the %1$s option."
+msgstr "Lorsque l'option %1$s est active, le validateur W3C indiquera des erreurs pour des attributs itemprop dans les éléments méta. Vous pouvez ignorer ces erreurs ou désactivez l'option %1$s."
+
+#: lib/meta.php:290
+msgctxt "submit button"
+msgid "Validate HTML Markup"
+msgstr "Valider les balises HTML"
+
+#: lib/meta.php:294
+msgctxt "option label"
+msgid "The AMP Validator"
+msgstr "Le validateur AMP"
+
+#: lib/meta.php:294
+msgid "Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP templates markup."
+msgstr "Valider la syntaxe HTML et la conformité HTML AMP de vos balises méta et le balisage de modèles AMP."
+
+#: lib/meta.php:294
+msgid "The <a href=\"%s\">AMP plugin by Automattic</a> is required to create and validate AMP formatted webpages."
+msgstr "L'<a href=\"%s\">extension AMP d'Automattic</a> est requise pour créer et valider des pages Web AMP."
+
+#: lib/meta.php:294
+msgctxt "submit button"
+msgid "Validate AMP Markup"
+msgstr "Valider le balisage AMP"
+
+#: lib/meta.php:476
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/meta.php:571
+#: lib/meta.php:589
 msgid "Reload to View"
 msgstr "Pecharger pour voir"
 
-#: lib/opengraph.php:42
+#: lib/opengraph.php:48
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/opengraph.php:49
+#: lib/opengraph.php:55
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr "Pinterest Rich Pin"
