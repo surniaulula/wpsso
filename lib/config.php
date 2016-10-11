@@ -617,8 +617,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api' => 1,			// Check for Embedded Media from: Wistia
 					'plugin_youtube_api' => 1,			// Check for Embedded Media from: Youtube
 					// Theme Integration Tab
-					'plugin_ogpns_attr_filter_name' => 'language_attributes',
-					'plugin_ogpns_attr_filter_prio' => 100,
+					'plugin_html_attr_filter_name' => 'language_attributes',
+					'plugin_html_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'head_attributes',
 					'plugin_head_attr_filter_prio' => 100,
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags

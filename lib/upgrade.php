@@ -71,8 +71,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_columns_taxonomy' => 'plugin_columns_term',		// renamed in v3.31.0-1
 			'plugin_add_to_taxonomy' => 'plugin_add_to_term',		// renamed in v3.31.0-1
 			'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
-			'plugin_html_attr_filter_name' => 'plugin_ogpns_attr_filter_name',	// renamed in v3.35.5-1
-			'plugin_html_attr_filter_name' => 'plugin_ogpns_attr_filter_name',	// renamed in v3.35.5-1
 		);
 
 		protected $p;
