@@ -345,6 +345,8 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
+	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
+	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
 	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
 * *Bugfixes*
 	* Removed the open graph namespace from the HTML tag attributes for AMP v0.4.
@@ -418,7 +420,7 @@ Official announcement: N/A
 
 = 3.35.5-dev2 =
 
-(2016/10/11) Added a configurable length warning to the Open Graph description textarea. Removed the open graph namespace from the HTML tag attributes for AMP v0.4.
+(2016/10/11) Added a configurable length warning to the Open Graph description textarea. Removed the open graph namespace from the HTML tag attributes for AMP v0.4. Added new "Validate AMP Markup" and "Validate HTML Markup" buttons under the Social Settings metabox Validate tab.
 
 = 3.35.4-1 =
 
