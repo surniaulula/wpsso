@@ -805,13 +805,13 @@ msgctxt "option label"
 msgid "Add %s Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:547
+#: lib/gpl/admin/advanced.php:101 lib/messages.php:309 lib/meta.php:565
 #: lib/pro/admin/advanced.php:104
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:548
+#: lib/gpl/admin/advanced.php:103 lib/messages.php:312 lib/meta.php:566
 #: lib/pro/admin/advanced.php:106
 msgctxt "column title"
 msgid "%s Desc"
@@ -2140,89 +2140,136 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:271
+#: lib/meta.php:278
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:271
-msgid ""
-"Facebook, Pinterest, LinkedIn, Google+, and most social websites use Open "
-"Graph meta tags."
+#: lib/meta.php:278
+msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:271
+#: lib/meta.php:278
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
-"validating the Open Graph and Pinterest Rich Pin meta tags."
+"validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:271
+#: lib/meta.php:278
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
-"Open Graph meta tags. <strong>You may have to click the \"Fetch new scrape "
-"information\" button several times to refresh Facebook's cache</strong>."
+"Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:271
+#: lib/meta.php:278
+msgid ""
+"You may have to click the \"Fetch new scrape information\" button a few "
+"times to refresh Facebook's cache."
+msgstr ""
+
+#: lib/meta.php:278
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:281
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:281
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
-"tags, Schema, Microdata, and social JSON-LD markup) for Google Search and "
-"Google+."
+"tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:273
+#: lib/meta.php:281
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:275
+#: lib/meta.php:284
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:277
+#: lib/meta.php:287
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:458
+#: lib/meta.php:290
+msgctxt "option label"
+msgid "W3C Markup Validation"
+msgstr ""
+
+#: lib/meta.php:290
+msgid ""
+"Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
+"templates markup."
+msgstr ""
+
+#: lib/meta.php:290
+msgid ""
+"When the %1$s option is enabled, the W3C validator will show errors for "
+"itemprop attributes in meta elements. You may ignore these errors or disable "
+"the %1$s option."
+msgstr ""
+
+#: lib/meta.php:290
+msgctxt "submit button"
+msgid "Validate HTML Markup"
+msgstr ""
+
+#: lib/meta.php:294
+msgctxt "option label"
+msgid "The AMP Validator"
+msgstr ""
+
+#: lib/meta.php:294
+msgid ""
+"Validate the HTML syntax and AMP conformance of your meta tags and templates "
+"markup."
+msgstr ""
+
+#: lib/meta.php:294
+msgid ""
+"The <a href=\"%s\">AMP plugin by Automattic</a> is required to create and "
+"validate AMP formatted webpages."
+msgstr ""
+
+#: lib/meta.php:294
+msgctxt "submit button"
+msgid "Validate AMP Markup"
+msgstr ""
+
+#: lib/meta.php:476
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:571
+#: lib/meta.php:589
 msgid "Reload to View"
 msgstr ""
 
