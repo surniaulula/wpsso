@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'], false );	// $use_cache = false
 
 								$wpssoum =& WpssoUm::get_instance();
-								$wpssoum->update->check_for_updates( null, true, false );
+								$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
 							} else {
 								$this->p->notice->err( sprintf( __( 'The <b>%s</b> extension is required to check for Pro version updates.',
 									'wpsso' ), $this->p->cf['plugin'][$lca.'um']['name'] ) );
