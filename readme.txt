@@ -348,9 +348,10 @@ Official announcement: N/A
 	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
 	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
 	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
+	* Added schema.org WebPage sub-types (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
 * *Bugfixes*
-	* Removed the open graph namespace from the HTML tag attributes for AMP v0.4.
 	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
+	* Removed the open graph namespace from the HTML tag attributes for AMP v0.4.
 * *Developer Notes*
 	* None
 
