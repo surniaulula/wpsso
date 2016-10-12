@@ -971,7 +971,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'ID':
 				case 'post_id':
 					return isset( $post_obj->ID ) ? 
-						(int) $post_obj->ID : 0;
+						(int) $post_obj->ID : 0;	// cast as integer
 					break;
 				default:
 					return is_object( $post_obj ) ?
@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
-		public static function get_term_object( $term_id = false, $tax_slug = '', $output = 'object' ) {
+		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
 			$term_obj = false;	// return false by default
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
@@ -1091,7 +1091,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function user_exists( $user_id ) {
-			if ( $user_id ) {
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {	// true is not valid
+				$user_id = (int) $user_id;	// cast as integer for array
 				if ( isset( self::$user_exists[$user_id] ) )
 					return self::$user_exists[$user_id];
 				else {
@@ -1102,11 +1103,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else return false;
 		}
 
-		public static function get_author_object( $user_id = false, $output = 'object' ) {
+		public static function get_author_object( $user_id = 0, $output = 'object' ) {
 			return self::get_user_object( $user_id, $ret );
 		}
 
-		public static function get_user_object( $user_id = false, $output = 'object' ) {
+		public static function get_user_object( $user_id = 0, $output = 'object' ) {
 			$user_obj = false;	// return false by default
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
@@ -1130,7 +1131,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'ID':
 				case 'user_id':
 					return isset( $user_obj->ID ) ? 
-						(int) $user_obj->ID : 0;
+						(int) $user_obj->ID : 0;	// cast as integer
 					break;
 				default:
 					return is_object( $user_obj ) ?
