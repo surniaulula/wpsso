@@ -193,13 +193,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = apply_filters( $lca.'_schema_type_for_post_type_empty',
 							$this->p->options['schema_type_for_page'] );
 					}
-				} elseif ( $this->p->util->force_default_author( $mod, 'og' ) ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'using post schema type - default author is forced' );
-					$type_id = apply_filters( $lca.'_schema_type_for_author_forced',
-						$this->p->options['schema_type_for_post'] );
 
-				} elseif ( $mod['is_term'] || $mod['is_term'] || is_archive() ) {
+				} elseif ( $mod['is_term'] ) {
+					$type_id = $this->get_schema_type_for_name( 'archive_page' );	// uses archive page schema
+
+				} elseif ( $mod['is_user'] ) {
+					$type_id = $this->get_schema_type_for_name( 'user_page' );
+
+				} elseif ( SucomUtil::is_archive_page() ) {
 					$type_id = $this->get_schema_type_for_name( 'archive_page' );
 
 				} elseif ( is_search() ) {
@@ -283,18 +284,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function get_item_type_parts( $type_url ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) )
 				return array( $match[1], $match[2] );
-			else return array();
+			else return array( null, null );	// return two elements
 		}
 
 		public function &get_schema_types( $flatten = true ) {
-			if ( ! isset( $this->schema_types['filtered'] ) ) {
+			if ( ! isset( $this->schema_types['filtered'] ) ) {	// check class property cache
 				$lca = $this->p->cf['lca'];
+				$cache_salt = __METHOD__;
+				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->is_avail['cache']['transient'] ) {
-					$cache_salt = __METHOD__;
-					$cache_id = $lca.'_'.md5( $cache_salt );
 					$this->schema_types = get_transient( $cache_id );	// returns false when not found
+					if ( ! empty( $this->schema_types ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'using schema types from transient cache' );
+					}
 				}
-				if ( ! isset( $this->schema_types['filtered'] ) ) {
+				if ( ! isset( $this->schema_types['filtered'] ) ) {	// from transient cache or not, check if filtered
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'filtering schema types and creating derivative arrays' );
 					$this->schema_types['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
@@ -302,10 +307,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
 					ksort( $this->schema_types['flattened'] );
 					ksort( $this->schema_types['parent_index'] );
-					if ( ! empty( $cache_id ) )
+					if ( $this->p->is_avail['cache']['transient'] )
 						set_transient( $cache_id, $this->schema_types, $this->p->options['plugin_object_cache_exp'] );
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'schema types array is already filtered' );
+					$this->p->debug->log( 'schema types array already filtered' );
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'using schema types from class property cache' );
 			if ( $flatten )

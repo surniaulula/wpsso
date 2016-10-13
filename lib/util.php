@@ -733,7 +733,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ret = false;
 			elseif ( $mod['is_user'] )				// check for user pages first
 				$ret = false;
-			elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || is_archive() ) )
+			elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || SucomUtil::is_archive_page() ) )
 				$ret = true;
 			elseif ( ! empty( $def['on_search'] ) && is_search() )
 				$ret = true;
@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
 					$url = $this->check_sharing_url( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post type archive' );
 
-				} elseif ( is_archive() ) {
+				} elseif ( SucomUtil::is_archive_page() ) {
 					if ( is_date() ) {
 						if ( is_day() )
 							$url = $this->check_sharing_url( get_day_link( get_query_var( 'year' ), 

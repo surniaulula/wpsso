@@ -278,12 +278,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
 				} else {	// is_archive() and everything else
-					/* The title text depends on the query:
-					 *	single post = the title of the post 
-					 *	date-based archive = the date (e.g., "2006", "2006 - January") 
-					 *	category = the name of the category 
-					 *	author page = the public name of the user 
-					 */
 					$title = wp_title( $separator, false, 'right' );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
@@ -476,7 +470,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
 				elseif ( is_year() ) 
 					$desc = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
-				elseif ( is_archive() )
+				elseif ( SucomUtil::is_archive_page() )
 					$desc = sprintf( 'Archive Page' );
 			}
 

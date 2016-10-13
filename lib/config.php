@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.36.0-dev1',	// plugin version
-					'opt_version' => '458',		// increment when changing default options
+					'opt_version' => '459',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -358,6 +358,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_page' => 'webpage',		// article would be a good default, if the requirements weren't so strict
 					'schema_type_for_post' => 'blog.posting',
 					'schema_type_for_search_page' => 'webpage.search.results',
+					'schema_type_for_user_page' => 'webpage.profile',
 					// custom post types
 					'schema_type_for_article' => 'article',
 					'schema_type_for_book' => 'book',
