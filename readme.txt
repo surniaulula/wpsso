@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.0-dev1 (TBD)**
+**Version 3.36.0-dev1 (2016/10/13)**
 
 Official announcement: N/A
 
@@ -422,7 +422,7 @@ Official announcement: N/A
 
 = 3.36.0-dev1 =
 
-(TBD) Added a configurable length warning to the Open Graph description textarea. Removed the open graph namespace from the HTML tag attributes for AMP v0.4. Added new "Validate AMP Markup" and "Validate HTML Markup" buttons under the Social Settings metabox Validate tab.
+(2016/10/13) Added a configurable length warning to the Open Graph description textarea. Removed the open graph namespace from the HTML tag attributes for AMP v0.4. Added new "Validate AMP Markup" and "Validate HTML Markup" buttons under the Social Settings metabox Validate tab.
 
 = 3.35.4-1 =
 
