@@ -343,7 +343,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 Official announcement: N/A
 
 * *New Features*
-	* None
+	* Added the "Item Type for Archive Page" and "Item Type for Search Results Page" options under the Google / Schema tab in the General settings page.
 * *Improvements*
 	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
 	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
