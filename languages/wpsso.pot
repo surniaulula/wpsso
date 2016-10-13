@@ -2460,7 +2460,7 @@ msgstr ""
 
 #: lib/schema.php:716
 msgid ""
-"The \"%1$s\" Organization Banner (600x60px) is missing and required for the "
+"The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
 msgstr ""
 
@@ -2886,7 +2886,7 @@ msgstr ""
 
 #: lib/submenu/general.php:275
 msgctxt "option label"
-msgid "Organization Banner (600x60px) URL"
+msgid "Organization Banner (600x60) URL"
 msgstr ""
 
 #: lib/submenu/general.php:287

@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
 					$table_rows['schema_banner_url'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Organization Banner (600x60px) URL',
+					$this->form->get_th_html( _x( 'Organization Banner (600x60) URL',
 						'option label', 'wpsso' ), null, 'schema_banner_url' ).
 					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
 
