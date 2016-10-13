@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 		private function get_nocb( $name, $comment = '' ) {
 			$checked = checked( $this->p->options[$name], 1, false );
-			$default = checked( $this->defaults[$name], 1, false ) ? 'checked' : 'unchecked';
+			$default = checked( $this->p->opt->get_defaults( $name ), 1, false ) ? 'checked' : 'unchecked';
 			return '<input type="checkbox" disabled="disabled"'.
 				$checked.' title="default is '.$default.'" />'.
 					( empty( $comment ) ? '' : ' '.$comment );
