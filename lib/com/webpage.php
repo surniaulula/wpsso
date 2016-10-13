@@ -408,19 +408,19 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$desc = get_post_field( 'post_excerpt', $mod['id'] );
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
-							$filters_changed = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'get_the_excerpt' );
+							$filter_has_changes = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'get_the_excerpt' );
 
-							// apply the content filters
-							if ( $this->p->debug->enabled ) {
+							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
-								//$this->p->debug->log( SucomDebug::get_hooks( 'get_the_excerpt' ) );
-							}
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							if ( $filters_changed )
+							if ( $filter_has_changes )
 								apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'get_the_excerpt' );
-						}
+
+						} elseif ( $this->p->debug->enabled )
+							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
+
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'fetching content: no post_excerpt for post ID '.$mod['id'] );
 
@@ -589,7 +589,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			if ( $filter_content ) {
-				$filters_changed = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'the_content' );
+				$filter_has_changes = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'the_content' );
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
@@ -628,7 +628,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				unset ( $GLOBALS['subalbum'] );
 				unset ( $GLOBALS['nggShowGallery'] );
 
-				if ( $filters_changed )
+				if ( $filter_has_changes )
 					apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'the_content' );
 
 				// add our shortcodes back
