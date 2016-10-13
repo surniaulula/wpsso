@@ -504,7 +504,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-schema_type_for_home_page':
-							$text = 'Select the Schema type for the site home page. The Schema type is used to define the item type for Schema JSON-LD markup and/or meta tags in webpage headers. The default Schema type for the home page is http://schema.org/WebSite.';
+							$text = 'Select the Schema type for the site home page. The default Schema type is http://schema.org/WebSite.';
+							break;
+						case 'tooltip-schema_type_for_archive_page':
+							$text = 'Select the Schema type for archive pages (Category, Tags, date-based, etc.). The default Schema type is http://schema.org/CollectionPage.';
+							break;
+						case 'tooltip-schema_type_for_user_page':
+							$text = 'Select the Schema type for user / author pages. The default Schema type is http://schema.org/ProfilePage.';
+							break;
+						case 'tooltip-schema_type_for_search_page':
+							$text = 'Select the Schema type for search results pages. The default Schema type is http://schema.org/SearchResultsPage.';
 							break;
 						case 'tooltip-schema_type_for_ptn':
 							$text = 'Select the Schema type for each WordPress post type. The Schema type is used to define the item type for Schema JSON-LD markup and/or meta tags in webpage headers.';
