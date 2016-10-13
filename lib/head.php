@@ -269,15 +269,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $mod['is_post'] ) {
 				if ( $mod['post_author'] )
 					$author_id = $mod['post_author'];
-				elseif ( $def_author_id = $this->p->util->get_default_author_id( 'seo' ) )
-					$author_id = $def_author_id;
 			} elseif ( $mod['is_user'] )
 				$author_id = $mod['id'];
-			elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'seo' ) )
-				$author_id = $def_author_id;
 
-			if ( $this->p->debug->enabled && $author_id !== false )
-				$this->p->debug->log( 'author_id is '.$author_id );
+			if ( $author_id && 
+				$this->p->debug->enabled )
+					$this->p->debug->log( 'author_id is '.$author_id );
 
 			/*
 			 * Open Graph

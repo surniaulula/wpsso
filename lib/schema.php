@@ -138,20 +138,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types =& $this->get_schema_types( true );
 			$type_id = null;
 
+			/*
+			 * Custom Schema Type from Post, Term, or User Meta
+			 */
 			if ( $use_mod_opts ) {
 				if ( ! empty( $mod['obj'] ) ) {	// just in case
 					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );
 
 					if ( empty( $type_id ) || $type_id === 'none' ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'custom type_id is empty or disabled' );
 						$type_id = null;
 					} elseif ( empty( $schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type_id '.
-								$type_id.' not in schema types' );
+							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types' );
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom type_id '.
-							$type_id.' from '.$mod['name'].' module' );
+						$this->p->debug->log( 'custom type_id '.$type_id.' from '.$mod['name'].' module' );
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'skipping custom type_id: module object is empty' );
@@ -162,93 +165,107 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$is_md_type = false;
 			else $is_md_type = true;
 
-			// if no custom schema type, then use the default settings
-			if ( empty( $type_id ) ) {
+			if ( empty( $type_id ) ) {	// if no custom schema type, then use the default settings
 
 				if ( $mod['is_home'] )	// static or index page
 					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
-						( empty( $this->p->options['schema_type_for_home_page'] ) ?
-							'website' : $this->p->options['schema_type_for_home_page'] ) );
+						$this->get_schema_type_for_name( $mod['post_type'], 'website' ) );
 
 				elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
-
-							$type_id = $this->p->options['schema_type_for_'.$mod['post_type']];
-
-							if ( empty( $type_id ) || $type_id === 'none' ) {
-								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type for post type '.
-										$mod['post_type'].' is disabled' );
-								$type_id = null;
-
-							} elseif ( empty( $schema_types[$type_id] ) ) {
-								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'schema type id '.
-										$type_id.' not found in schema types array' );
-								$type_id = $default_key;
-
-							} elseif ( $this->p->debug->enabled )
-								$this->p->debug->log( 'schema type id for post type '.
-									$mod['post_type'].' is '.$type_id );
+							$type_id = $this->get_schema_type_for_name( $mod['post_type'] );
 
 						} elseif ( ! empty( $schema_types[$mod['post_type']] ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'setting schema type id to post type '.
-									$mod['post_type'] );
+								$this->p->debug->log( 'schema type id is post type name '.$mod['post_type'] );
 							$type_id = $mod['post_type'];
 
-						// unknown post type
-						} else {
+						} else {	// unknown post type
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'using page schema type: unknown post type '.
-									$mod['post_type'] );
+								$this->p->debug->log( 'using page schema type - unknown post type '.$mod['post_type'] );
 							$type_id = apply_filters( $lca.'_schema_type_for_post_type_unknown',
 								$this->p->options['schema_type_for_page'] );
 						}
-
-					// post objects without a post_type property
-					} else {
+					} else {	// post objects without a post_type property
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'using page schema type: empty post type' );
+							$this->p->debug->log( 'using page schema type - empty post type' );
 						$type_id = apply_filters( $lca.'_schema_type_for_post_type_empty',
 							$this->p->options['schema_type_for_page'] );
 					}
-
 				} elseif ( $this->p->util->force_default_author( $mod, 'og' ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'using post schema type: default author is forced' );
+						$this->p->debug->log( 'using post schema type - default author is forced' );
 					$type_id = apply_filters( $lca.'_schema_type_for_author_forced',
 						$this->p->options['schema_type_for_post'] );
 
-				// default value for all other webpages
-				} else {
+				} elseif ( $mod['is_term'] || $mod['is_term'] || is_archive() ) {
+					$type_id = $this->get_schema_type_for_name( 'archive_page' );
+
+				} elseif ( is_search() ) {
+					$type_id = $this->get_schema_type_for_name( 'search_page' );
+
+				} else {	// everything else
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'using default schema type' );
+						$this->p->debug->log( 'using default schema type id '.$default_key );
 					$type_id = $default_key;
 				}
 			}
 
 			$type_id = apply_filters( $this->p->cf['lca'].'_schema_head_type', $type_id, $mod, $is_md_type );
 
-			if ( isset( $schema_types[$type_id] ) ) {
+			if ( empty( $type_id ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'returning false: schema type id is empty' );
+				return false;
+			} elseif ( ! isset( $schema_types[$type_id] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'returning false: schema type id '.$type_id.' not found in schema types array' );
+				return false;
+			} else {
 				if ( $return_id ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'returning schema type id '.
-							$type_id );
+						$this->p->debug->log( 'returning schema type id '.$type_id );
 					return $type_id;
 				} else {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'returning schema type value '.
-							$schema_types[$type_id] );
+						$this->p->debug->log( 'returning schema type value '.$schema_types[$type_id] );
 					return $schema_types[$type_id];
 				}
-			} else {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'returning false: schema type id '.
-						$type_id.' not found in schema types array' );
-				return false;
 			}
+		}
+
+		private function get_schema_type_for_name( $type_name, $def_name = null ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'type_name' => $type_name,
+					'def_name' => $def_name,
+				) );
+			}
+
+			if ( empty( $type_name ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'exiting early: schema type name is empty' );
+				return $def_name;	// just in case
+			}
+
+			$schema_types =& $this->get_schema_types( true );
+			$type_id = isset( $this->p->options['schema_type_for_'.$type_name] ) ?	// just in case
+				$this->p->options['schema_type_for_'.$type_name] : $def_name;
+
+			if ( empty( $type_id ) || $type_id === 'none' ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'schema type id for '.$type_name.' is empty or disabled' );
+				$type_id = $def_name;
+			} elseif ( empty( $schema_types[$type_id] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'schema type id '.$type_id.' for '.$type_name.' not in schema types' );
+				$type_id = $default_key;
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'schema type id for '.$type_name.' is '.$type_id );
+
+			return $type_id;
 		}
 
 		public function get_head_type_context( array &$mod ) {
@@ -278,6 +295,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->schema_types = get_transient( $cache_id );	// returns false when not found
 				}
 				if ( ! isset( $this->schema_types['filtered'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'filtering schema types and creating derivative arrays' );
 					$this->schema_types['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
 					$this->schema_types['flattened'] = SucomUtil::array_flatten( $this->schema_types['filtered'] );
 					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
@@ -285,8 +304,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					ksort( $this->schema_types['parent_index'] );
 					if ( ! empty( $cache_id ) )
 						set_transient( $cache_id, $this->schema_types, $this->p->options['plugin_object_cache_exp'] );
-				}
-			}
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'schema types array is already filtered' );
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'using schema types from class property cache' );
 			if ( $flatten )
 				return $this->schema_types['flattened'];
 			else return $this->schema_types['filtered'];

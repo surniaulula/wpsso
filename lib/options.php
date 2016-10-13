@@ -496,8 +496,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'url';
 					break;
 				// must be numeric (blank and zero are ok)
-				case 'seo_def_author_id':
-				case 'og_def_author_id':
 				case 'og_def_img_id':
 				case 'og_img_id':
 				case 'rp_img_id':

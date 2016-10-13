@@ -73,10 +73,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_table_rows( $metabox, $key ) {
 			$table_rows = array();
-		
-			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) )
-				$user_names = $this->p->m['util']['user']->get_form_display_names();
-
 			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
 
 			switch ( $metabox.'-'.$key ) {
@@ -150,27 +146,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
 
-					if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
-
-						$table_rows['og_def_author_id'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Default Author when Missing',
-							'option label', 'wpsso' ), null, 'og_def_author_id' ).
-						'<td>'.$this->form->get_select( 'og_def_author_id', $user_names, null, null, true ).'</td>';
-	
-						$table_rows['og_def_author_on_index'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Archive',
-							'option label', 'wpsso' ), null, 'og_def_author_on_index' ).
-						'<td>'.$this->form->get_checkbox( 'og_def_author_on_index' ).' <em>'.
-							_x( 'defines index / archive webpages as articles',
-								'option comment', 'wpsso' ).'</em></td>';
-	
-						$table_rows['og_def_author_on_search'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Search Results',
-							'option label', 'wpsso' ), null, 'og_def_author_on_search' ).
-						'<td>'.$this->form->get_checkbox( 'og_def_author_on_search' ).' <em>'.
-							_x( 'defines search webpages as articles',
-								'option comment', 'wpsso' ).'</em></td>';
-					}	
 					break;
 
 				case 'og-images':
@@ -260,24 +235,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'seo_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
 
-					if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
-
-						$table_rows['seo_def_author_id'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Default Author when Missing',
-							'option label', 'wpsso' ), null, 'seo_def_author_id' ).
-						'<td>'.$this->form->get_select( 'seo_def_author_id', $user_names, null, null, true ).'</td>';
-	
-						$table_rows['seo_def_author_on_index'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Archive',
-							'option label', 'wpsso' ), null, 'seo_def_author_on_index' ).
-						'<td>'.$this->form->get_checkbox( 'seo_def_author_on_index' ).'</td>';
-	
-						$table_rows['seo_def_author_on_search'] = '<tr class="hide_in_basic">'.
-						$this->form->get_th_html( _x( 'Use Default Author on Search Results',
-							'option label', 'wpsso' ), null, 'seo_def_author_on_search' ).
-						'<td>'.$this->form->get_checkbox( 'seo_def_author_on_search' ).'</td>';
-					}
-
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google Structured Data / Schema Markup',
 							'metabox title', 'wpsso' ).'</h4></td>';
@@ -344,18 +301,25 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$schema_types = $this->p->schema->get_schema_types_select();
+
+					foreach ( array( 
+						'home_page' => 'Home Page',
+						'archive_page' => 'Archive Page',
+						'search_page' => 'Search Results Page',
+					) as $type_name => $type_label ) {
+						$table_rows['schema_type_for_'.$type_name] = '<tr class="hide_in_basic">'.
+						$this->form->get_th_html( _x( 'Item Type for '.$type_label,
+							'option label', 'wpsso' ), null, 'schema_type_for_'.$type_name ).
+						'<td>'.$this->form->get_select( 'schema_type_for_'.$type_name, $schema_types, 'long_name' ).'</td>';
+					}
+
 					$schema_by_ptn = '';
 					foreach ( $this->p->util->get_post_types() as $post_type )
 						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
 							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
 
-					$table_rows['schema_type_for_home_page'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Default Item Type for Home Page',
-						'option label', 'wpsso' ), null, 'schema_home_page' ).
-					'<td>'.$this->form->get_select( 'schema_type_for_home_page', $schema_types, 'long_name' ).'</td>';
-
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Default Item Type by Post Type',
+					$this->form->get_th_html( _x( 'Item Type by Post Type',
 						'option label', 'wpsso' ), null, 'schema_type_for_ptn' ).
 					'<td>'.$schema_by_ptn.'</td>';
 

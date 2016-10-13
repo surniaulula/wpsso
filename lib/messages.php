@@ -230,15 +230,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_author_fallback':
 							$text = sprintf( __( 'If the \'%1$s\' is not a valid URL, then fallback to using the author archive URL from this website (example: \'%2$s\').', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the author URL fallback feature (default is unchecked).', 'wpsso' );
 							break;
-						case 'tooltip-og_def_author_id':
-							$text = 'A default author for webpages <em>missing authorship information</em> (for example, a custom post type without an author ID). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default).';
-							break;
-						case 'tooltip-og_def_author_on_index':
-							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.). If this option is checked, index webpages will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked). If the Default Author is <em>[None]</em>, then the index webpages will be labeled as a \'website\'.';
-							break;
-						case 'tooltip-og_def_author_on_search':
-							$text = 'Check this option if you would like to force the Default Author on search result webpages as well. If this option is checked, search results will be labeled as a an \'article\' with authorship attributed to the Default Author (default is unchecked).';
-							break;
 						case 'tooltip-og_author_gravatar':	// aka plugin_gravatar_api
 							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages (default is checked).';
 							break;
@@ -472,15 +463,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-seo_author_field':
 							$text = $info['short'].' can include an <em>author</em> and <em>publisher</em> link in your webpage headers. These are not Facebook / Open Graph and Pinterest Rich Pin meta property tags &mdash; they are used primarily by Google\'s search engine to associate Google+ profiles with search results. Select which field to use from the author\'s profile for the <em>author</em> link tag.';
 							break;
-						case 'tooltip-seo_def_author_id':
-							$text = 'A default author for webpages missing authorship information (for example, an index webpage without posts). If you have several authors on your website, you should probably leave this option set to <em>[None]</em> (the default). This option is similar to the Facebook / Open Graph and Pinterest Rich Pin Default Author, except that it\'s applied to the Link meta tag instead.';
-							break;
-						case 'tooltip-seo_def_author_on_index':
-							$text = 'Check this option if you would like to force the Default Author on index webpages (<strong>non-static</strong> homepage, archives, categories, author, etc.).';
-							break;
-						case 'tooltip-seo_def_author_on_search':
-							$text = 'Check this option if you would like to force the Default Author on search result webpages as well.';
-							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_seo', $text, $idx, $info );
 							break;
@@ -521,7 +503,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_author_name':
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
-						case 'tooltip-schema_home_page':
+						case 'tooltip-schema_type_for_home_page':
 							$text = 'Select the Schema type for the site home page. The Schema type is used to define the item type for Schema JSON-LD markup and/or meta tags in webpage headers. The default Schema type for the home page is http://schema.org/WebSite.';
 							break;
 						case 'tooltip-schema_type_for_ptn':

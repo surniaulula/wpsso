@@ -706,22 +706,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( $function.'() = true' );
 		}
 
-		public function get_default_author_id( $opt_pre = 'og' ) {
-			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
-				$user_id = isset( $this->p->options[$opt_pre.'_def_author_id'] ) ? 
-					$this->p->options[$opt_pre.'_def_author_id'] : null;
-				return apply_filters( $this->p->cf['lca'].'_'.$opt_pre.'_default_author_id', $user_id );
-			} else return null;
-		}
-
-		// returns an author id if the default author is forced
-		public function force_default_author( array &$mod, $opt_pre = 'og' ) {
-			if ( SucomUtil::get_const( 'WPSSO_DEFAULT_AUTHOR_OPTIONS' ) ) {
-				$author_id = $this->get_default_author_id( $opt_pre );
-				return $author_id && $this->force_default( 'author', $mod, $opt_pre ) ? $author_id : false;
-			} else return false;
-		}
-
 		// returns true if the default image is forced
 		public function force_default_image( array &$mod, $opt_pre = 'og' ) {
 			return $this->force_default( 'img', $mod, $opt_pre );
@@ -734,7 +718,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $type = author | img | vid
 		public function force_default( $type, array &$mod, $opt_pre = 'og') {
-
 			$lca = $this->p->cf['lca'];
 			$def = array();
 
@@ -744,19 +727,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					( isset( $this->p->options[$opt_pre.'_def_'.$type.'_'.$key] ) ? 
 						$this->p->options[$opt_pre.'_def_'.$type.'_'.$key] : null ) );
 
-			if ( empty( $def['id'] ) &&	// save some time - if no default media, then return false
-				empty( $def['url'] ) )
-					$ret = false;
-			elseif ( $mod['is_post'] )	// check for singular pages first
+			if ( empty( $def['id'] ) && empty( $def['url'] ) )	// save time - if no default media, then return false
 				$ret = false;
-			elseif ( $mod['is_user'] )	// check for user pages first
+			elseif ( $mod['is_post'] )				// check for singular pages first
 				$ret = false;
-			elseif ( ! empty( $def['on_index'] ) &&
-				( $mod['is_home_index'] || $mod['is_term'] || is_archive() ) )
-					$ret = true;
-			elseif ( ! empty( $def['on_search'] ) &&
-				is_search() )
-					$ret = true;
+			elseif ( $mod['is_user'] )				// check for user pages first
+				$ret = false;
+			elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || is_archive() ) )
+				$ret = true;
+			elseif ( ! empty( $def['on_search'] ) && is_search() )
+				$ret = true;
 			else $ret = false;
 
 			// 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages)

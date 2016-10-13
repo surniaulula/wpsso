@@ -138,22 +138,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$og['og:type'] = $mod['post_type'];
 					else $og['og:type'] = 'article';
 
-				// check for default author info on indexes and searches
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'og' ) ) {
-
-					$og['og:type'] = 'article';
-
-					// meta tag not defined or value is null
-					if ( ! isset( $og['article:author'] ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting name / url for article:author meta tag' );
-							$this->p->debug->log( 'using default author id '.$def_author_id );
-						}
-						$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id, $crawler_name );
-						$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $def_author_id,
-							$this->p->options['fb_author_name'] );
-					}
-
 				// default for everything else is 'website'
 				} else $og['og:type'] = 'website';
 
@@ -206,18 +190,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 
 						if ( $mod['post_author'] ) {
-
 							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
 							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
-								$this->p->options['fb_author_name'] );
-
-						} elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) ) {
-
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'using default author id '.$def_author_id );
-
-							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $def_author_id, $crawler_name );
-							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $def_author_id,
 								$this->p->options['fb_author_name'] );
 
 						} else $og['article:author'] = array();

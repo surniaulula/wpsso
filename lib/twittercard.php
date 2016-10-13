@@ -81,16 +81,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( ! isset( $mt_tc['twitter:creator'] ) ) {
 				if ( $mod['is_post'] ) {
-					if ( ! empty( $mod['post_author'] ) )
+					if ( $mod['post_author'] )
 						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['post_author'] );
-					elseif ( $def_author_id = $this->p->util->get_default_author_id( 'og' ) )
-						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
-
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod['is_user'] )
 					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['id'] );
-
-				} elseif ( $def_author_id = $this->p->util->force_default_author( $mod, 'og' ) )
-					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $def_author_id );
 			}
 
 			/*

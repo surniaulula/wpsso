@@ -237,7 +237,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( empty( $title ) ) {
 
 				if ( $mod['is_post'] ) {
-
 					if ( is_singular() ) {
 						$title = wp_title( $separator, false, 'right' );
 						if ( $this->p->debug->enabled ) {
@@ -265,7 +264,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
 
 				} elseif ( $mod['is_term'] ) {
-
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 					if ( SucomUtil::is_category_page() )
 						$title = $this->get_category_title( $term_obj );	// includes parents in title string
@@ -275,12 +273,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$this->p->debug->log( 'name property missing in term object' );
 
 				} elseif ( $mod['is_user'] ) { 
-
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 					$title = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
-				} else {
+				} else {	// is_archive() and everything else
 					/* The title text depends on the query:
 					 *	single post = the title of the post 
 					 *	date-based archive = the date (e.g., "2006", "2006 - January") 
@@ -479,6 +476,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
 				elseif ( is_year() ) 
 					$desc = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
+				elseif ( is_archive() )
+					$desc = sprintf( 'Archive Page' );
 			}
 
 			// if there's still no description, then fallback to a generic version

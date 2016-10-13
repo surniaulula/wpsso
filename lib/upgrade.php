@@ -21,9 +21,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		private $renamed_keys = array(
 			'og_img_resize' => 'plugin_auto_img_resize',
-			'link_def_author_id' => 'seo_def_author_id',
-			'link_def_author_on_index' => 'seo_def_author_on_index',
-			'link_def_author_on_search' => 'seo_def_author_on_search',
 			'plugin_tid' => 'plugin_wpsso_tid',
 			'og_publisher_url' => 'fb_publisher_url',
 			'add_meta_property_og:video' => 'add_meta_property_og:video:url',
@@ -150,6 +147,21 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				if ( $opts_version && $opts_version <= 453 ) {
 					$opts['add_meta_property_og:image:secure_url'] = 1;
 					$opts['add_meta_property_og:video:secure_url'] = 1;
+				}
+
+				// removed default author options in v3.36.0-1
+				if ( $opts_version && $opts_version <= 458 ) {
+					unset (
+						$opts['link_def_author_id'],
+						$opts['link_def_author_on_index'],
+						$opts['link_def_author_on_search'],
+						$opts['seo_def_author_id'],
+						$opts['seo_def_author_on_index'],
+						$opts['seo_def_author_on_search'],
+						$opts['og_def_author_id'],
+						$opts['og_def_author_on_index'],
+						$opts['og_def_author_on_search']
+					);
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) )
