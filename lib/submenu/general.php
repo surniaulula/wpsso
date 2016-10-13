@@ -301,6 +301,15 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$schema_types = $this->p->schema->get_schema_types_select();
+					$schema_by_ptn = '';
+					foreach ( $this->p->util->get_post_types() as $post_type )
+						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
+							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
+
+					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Item Type by Post Type',
+						'option label', 'wpsso' ), null, 'schema_type_for_ptn' ).
+					'<td>'.$schema_by_ptn.'</td>';
 
 					foreach ( array( 
 						'home_page' => 'Home Page',
@@ -312,16 +321,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							'option label', 'wpsso' ), null, 'schema_type_for_'.$type_name ).
 						'<td>'.$this->form->get_select( 'schema_type_for_'.$type_name, $schema_types, 'long_name' ).'</td>';
 					}
-
-					$schema_by_ptn = '';
-					foreach ( $this->p->util->get_post_types() as $post_type )
-						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
-							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
-
-					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Item Type by Post Type',
-						'option label', 'wpsso' ), null, 'schema_type_for_ptn' ).
-					'<td>'.$schema_by_ptn.'</td>';
 
 					break;
 

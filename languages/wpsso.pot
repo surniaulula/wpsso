@@ -1613,7 +1613,7 @@ msgstr ""
 
 #: lib/messages.php:443 lib/messages.php:504 lib/messages.php:567
 #: lib/submenu/essential.php:93 lib/submenu/general.php:210
-#: lib/submenu/general.php:344
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -2712,7 +2712,7 @@ msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:142 lib/submenu/general.php:333
+#: lib/submenu/essential.php:142 lib/submenu/general.php:332
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
@@ -2722,7 +2722,7 @@ msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:149 lib/submenu/general.php:363
+#: lib/submenu/essential.php:149 lib/submenu/general.php:362
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -2788,13 +2788,13 @@ msgid "Maximum Title Length"
 msgstr ""
 
 #: lib/submenu/general.php:108 lib/submenu/general.php:231
-#: lib/submenu/general.php:295 lib/submenu/general.php:371
+#: lib/submenu/general.php:295 lib/submenu/general.php:370
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/submenu/general.php:111 lib/submenu/general.php:292
-#: lib/submenu/general.php:368
+#: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
@@ -2899,62 +2899,62 @@ msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:322
+#: lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/submenu/general.php:338
+#: lib/submenu/general.php:337
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:350
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:359
+#: lib/submenu/general.php:358
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:360
+#: lib/submenu/general.php:359
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:374
+#: lib/submenu/general.php:373
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:379
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:382
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:387
+#: lib/submenu/general.php:386
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:395
+#: lib/submenu/general.php:394
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/submenu/general.php:399
+#: lib/submenu/general.php:398
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/submenu/general.php:403
+#: lib/submenu/general.php:402
 msgctxt "option label"
 msgid "MySpace Business Page URL"
 msgstr ""
