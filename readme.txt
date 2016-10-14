@@ -344,19 +344,20 @@ Official announcement: N/A
 
 * *New Features*
 	* Added new Item Type options under the Google / Schema tab in the General settings page:
-		* Item Type for Archive Page (default is http://schema.org/CollectionPage)
-		* Item Type for User / Author Page (default is http://schema.org/ProfilePage)
-		* Item Type for Search Results Page (default is http://schema.org/SearchResultsPage)
+		* Item Type for Archive Page (default is https://schema.org/CollectionPage)
+		* Item Type for User / Author Page (default is https://schema.org/ProfilePage)
+		* Item Type for Search Results Page (default is https://schema.org/SearchResultsPage)
 	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
 	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
 	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
 * *Improvements*
-	* Added the http://schema.org/WebPage sub-types in the plugin config schema_type array (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
+	* Added the https://schema.org/WebPage sub-types in the plugin config schema_type array (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
 * *Bugfixes*
 	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
 	* Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin.
 * *Developer Notes*
 	* Removed the WPSSO_DEFAULT_AUTHOR_OPTIONS constant and all associated default author options.
+	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 **Version 3.35.4-1 (2016/10/01)**
 
