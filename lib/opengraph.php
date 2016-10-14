@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					break;	// stop here
 
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'skipping add_ogpns_attributes for '.$opt_prefix.'_name - option is empty' );
+					$this->p->debug->log( 'skipping add_ogpns_attributes for '.$opt_prefix.' - name value is empty or disabled' );
 			}
 		}
 

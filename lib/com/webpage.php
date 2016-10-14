@@ -470,7 +470,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
 				elseif ( is_year() ) 
 					$desc = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
-				elseif ( SucomUtil::is_archive_page() )
+				elseif ( SucomUtil::is_archive_page() )	// just in case
 					$desc = sprintf( 'Archive Page' );
 			}
 

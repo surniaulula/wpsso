@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} elseif ( $mod['is_user'] ) {
 					$type_id = $this->get_schema_type_for_name( 'user_page' );
 
-				} elseif ( SucomUtil::is_archive_page() ) {
+				} elseif ( SucomUtil::is_archive_page() ) {				// just in case
 					$type_id = $this->get_schema_type_for_name( 'archive_page' );
 
 				} elseif ( is_search() ) {
