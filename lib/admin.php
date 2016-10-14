@@ -96,8 +96,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
 							if ( ! empty( $info['text_domain'] ) )
-								$menu_name = _x( $menu_name, 
-									'lib file description', $info['text_domain'] );
+								$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
 							$this->submenu[$menu_id] = new $classname( $this->p, 
 								$menu_id, $menu_name, $menu_lib, $ext );
 						}
