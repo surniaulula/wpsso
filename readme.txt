@@ -347,11 +347,11 @@ Official announcement: N/A
 		* Item Type for Archive Page (default is http://schema.org/CollectionPage)
 		* Item Type for User / Author Page (default is http://schema.org/ProfilePage)
 		* Item Type for Search Results Page (default is http://schema.org/SearchResultsPage)
-* *Improvements*
 	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
 	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
 	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
-	* Added new http://schema.org/WebPage sub-types (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
+* *Improvements*
+	* Added the http://schema.org/WebPage sub-types in the plugin config schema_type array (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
 * *Bugfixes*
 	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
 	* Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin.
