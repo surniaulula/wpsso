@@ -427,10 +427,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// example: article.tech
 			$mt_og['schema:type:id'] = $head_type_id = $this->get_head_item_type( $mod, true );
 
-			// example: http://schema.org/TechArticle
+			// example: https://schema.org/TechArticle
 			$mt_og['schema:type:url'] = $head_type_url = $this->get_schema_type_url( $head_type_id );
 
-			// example: http://schema.org, TechArticle
+			// example: https://schema.org, TechArticle
 			list( $mt_og['schema:type:context'],
 				$mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type_url );
 
@@ -484,8 +484,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'is_main_entity: '.( $is_main ? 'true' : 'false' ) );
 
-				// add http_schema_org first as a generic / common data filter
-				$parent_urls = array( 'http://schema.org' );
+				// add https_schema_org first as a generic / common data filter
+				$parent_urls = array( 'https://schema.org' );
 
 				// returns an array of type ids with gparents, parents, child (in that order)
 				foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
@@ -541,16 +541,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * http://schema.org/WebSite for Google
+		 * https://schema.org/WebSite for Google
 		 */
-		public function filter_json_data_http_schema_org_website( $json_data, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
 			$ret = array(
-				'@context' => 'http://schema.org',
+				'@context' => 'https://schema.org',
 				'@type' => 'WebSite',
 				'url' => $mt_og['og:url'],
 			);
@@ -566,7 +566,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $search_url = apply_filters( $lca.'_json_ld_search_url', get_bloginfo( 'url' ).'?s={search_term_string}' ) )
 				$ret['potentialAction'] = array(
-					'@context' => 'http://schema.org',
+					'@context' => 'https://schema.org',
 					'@type' => 'SearchAction',
 					'target' => $search_url,
 					'query-input' => 'required name=search_term_string',
@@ -576,9 +576,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * http://schema.org/Organization social markup for Google
+		 * https://schema.org/Organization social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_organization( $json_data, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -591,9 +591,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * http://schema.org/Person social markup for Google
+		 * https://schema.org/Person social markup for Google
 		 */
-		public function filter_json_data_http_schema_org_person( $json_data, $mod, $mt_og, $user_id, $is_main ) {
+		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $user_id, $is_main ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -629,7 +629,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function return_data_from_filter( &$json_data, &$ret_data, $is_main = false ) {
 			/*
 			 * Property:
-			 *	mainEntityOfPage as http://schema.org/WebPage
+			 *	mainEntityOfPage as https://schema.org/WebPage
 			 */
 			if ( $is_main && ! empty( $ret_data['url'] ) )
 				self::add_main_entity_data( $ret_data, $ret_data['url'] );
@@ -642,7 +642,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function add_main_entity_data( array &$json_data, $url ) {
 			$json_data['mainEntityOfPage'] = array(
-				'@context' => 'http://schema.org',
+				'@context' => 'https://schema.org',
 				'@type' => 'WebPage',
 				'@id' => $url,
 			);
@@ -785,7 +785,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/*
 			 * Property:
-			 *	address as http://schema.org/PostalAddress
+			 *	address as https://schema.org/PostalAddress
 			 */
 			if ( self::add_data_itemprop_from_assoc( $address, $opts, array(
 				'streetAddress' => 'place_streetaddr', 
@@ -794,26 +794,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'addressRegion' => 'place_state',
 				'postalCode' => 'place_zipcode',
 				'addressCountry' => 'place_country',
-			) ) ) $ret['address'] = self::get_item_type_context( 'http://schema.org/PostalAddress', $address );
+			) ) ) $ret['address'] = self::get_item_type_context( 'https://schema.org/PostalAddress', $address );
 
 			/*
 			 * Property:
-			 *	geo as http://schema.org/GeoCoordinates
+			 *	geo as https://schema.org/GeoCoordinates
 			 */
 			if ( self::add_data_itemprop_from_assoc( $geo, $opts, array(
 				'elevation' => 'place_altitude', 
 				'latitude' => 'place_latitude',
 				'longitude' => 'place_longitude',
-			) ) ) $ret['geo'] = self::get_item_type_context( 'http://schema.org/GeoCoordinates', $geo );
+			) ) ) $ret['geo'] = self::get_item_type_context( 'https://schema.org/GeoCoordinates', $geo );
 
 			/*
 			 * Property:
-			 *	openingHoursSpecification as http://schema.org/OpeningHoursSpecification
+			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
 			foreach ( $wpsso->cf['form']['weekdays'] as $day => $label ) {
 				if ( ! empty( $opts['place_day_'.$day] ) ) {
 					$dayofweek = array(
-						'@context' => 'http://schema.org',
+						'@context' => 'https://schema.org',
 						'@type' => 'OpeningHoursSpecification',
 						'dayOfWeek' => $label,
 					);
@@ -904,7 +904,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					) ) ) !== false ) {
 
 						// add the complete offer
-						$ret['offers'][] = self::get_item_type_context( 'http://schema.org/Offer', $offer );
+						$ret['offers'][] = self::get_item_type_context( 'https://schema.org/Offer', $offer );
 					}
 				}
 			}
@@ -1059,7 +1059,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$ret = array(
-				'@context' => 'http://schema.org',
+				'@context' => 'https://schema.org',
 				'@type' => 'ImageObject',
 				'url' => esc_url( $media_url ),
 			);
@@ -1107,7 +1107,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					switch ( $itemprop_name ) {
 						case 'length':	// QuantitativeValue does not have a length itemprop
 							$json_data['additionalProperty'][] = array(
-								'@context' => 'http://schema.org',
+								'@context' => 'https://schema.org',
 								'@type' => 'PropertyValue',
 								'propertyID' => $itemprop_name,
 								'value' => $assoc[$key_name],
@@ -1116,7 +1116,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							break;
 						default:
 							$json_data[$itemprop_name] = array(
-								'@context' => 'http://schema.org',
+								'@context' => 'https://schema.org',
 								'@type' => 'QuantitativeValue',
 								'value' => $assoc[$key_name],
 								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
@@ -1157,11 +1157,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
 
 			switch ( $head_type_url ) {
-				case 'http://schema.org/BlogPosting':
+				case 'https://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
 					// no break - add date published and modified
 
-				case 'http://schema.org/WebPage':
+				case 'https://schema.org/WebPage':
 					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 						'datePublished' => 'article:published_time',
 						'dateModified' => 'article:modified_time',
@@ -1217,11 +1217,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_type = $mt_og['og:type'];
 
 			switch ( $head_type_url ) {
-				case 'http://schema.org/BlogPosting':
+				case 'https://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
 					// no break - get the webpage author list as well
 
-				case 'http://schema.org/WebPage':
+				case 'https://schema.org/WebPage':
 					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
 					break;
 			}
@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $have_image_html ) {
 				return array_merge(
-					array( array( '<noscript itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'."\n" ) ),
+					array( array( '<noscript itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'."\n" ) ),
 					$mt_image,
 					array( array( '</noscript>'."\n" ) )
 				);
@@ -1327,7 +1327,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return array_merge(
-				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">'."\n" ) ),
+				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">'."\n" ) ),
 				$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ),
 				( empty( $mt_og[$og_type.':rating:count'] ) ? array() : 
 					$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingCount', $mt_og[$og_type.':rating:count'], '', $mod ) ),
@@ -1425,7 +1425,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $have_author_html ) {
 				return array_merge(
-					array( array( '<noscript itemprop="'.$itemprop.'" itemscope itemtype="http://schema.org/Person">'."\n" ) ),
+					array( array( '<noscript itemprop="'.$itemprop.'" itemscope itemtype="https://schema.org/Person">'."\n" ) ),
 					$mt_author,
 					array( array( '</noscript>'."\n" ) )
 				);

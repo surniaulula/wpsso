@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				/*
 				 * example:
-				 * 	'json_data_http_schema_org_website' => 6
+				 * 	'json_data_https_schema_org_website' => 6
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
@@ -80,10 +80,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'added '.$function_name.' (function) '.$type, 3 );
 				/*
 				 * example:
-				 * 	'json_data_http_schema_org_article' => array(
-				 *		'json_data_http_schema_org_article' => 6,
-				 *		'json_data_http_schema_org_newsarticle' => 6,
-				 *		'json_data_http_schema_org_techarticle' => 6,
+				 * 	'json_data_https_schema_org_article' => array(
+				 *		'json_data_https_schema_org_article' => 6,
+				 *		'json_data_https_schema_org_newsarticle' => 6,
+				 *		'json_data_https_schema_org_techarticle' => 6,
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
