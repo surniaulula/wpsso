@@ -804,13 +804,13 @@ msgctxt "option label"
 msgid "Add %s Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:101 lib/messages.php:300 lib/meta.php:565
+#: lib/gpl/admin/advanced.php:101 lib/messages.php:300 lib/meta.php:566
 #: lib/pro/admin/advanced.php:104
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:103 lib/messages.php:303 lib/meta.php:566
+#: lib/gpl/admin/advanced.php:103 lib/messages.php:303 lib/meta.php:567
 #: lib/pro/admin/advanced.php:106
 msgctxt "column title"
 msgid "%s Desc"
@@ -2139,136 +2139,136 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:278
+#: lib/meta.php:279
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:282
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:282
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:282
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:285
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:285
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:285
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:288
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:288
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:288
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:291
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:291
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:291
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:291
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:294
+#: lib/meta.php:295
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:294
+#: lib/meta.php:295
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:294
+#: lib/meta.php:295
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to create and "
 "validate AMP formatted webpages."
 msgstr ""
 
-#: lib/meta.php:294
+#: lib/meta.php:295
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:476
+#: lib/meta.php:477
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:589
+#: lib/meta.php:590
 msgid "Reload to View"
 msgstr ""
 

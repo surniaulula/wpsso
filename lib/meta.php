@@ -263,16 +263,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );
 			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$amp_url = '';
+			$amp_url = $mod['is_post'] && 
+				$this->p->is_avail['amp_endpoint'] && 
+				function_exists( 'amp_get_permalink' ) ?
+					'https://validator.ampproject.org/#url='.urlencode( amp_get_permalink( $mod['id'] ) ) : '';
+
+			$bing_url = 'https://www.bing.com/webmaster/diagnostics/markup/validator?url='.$sharing_url_encoded;
 			$facebook_url = 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded;
 			$google_url = 'https://search.google.com/structured-data/testing-tool/u/0/#url='.$sharing_url_encoded;
 			$pinterest_url = 'https://developers.pinterest.com/tools/url-debugger/?link='.$sharing_url_encoded;
 			$twitter_url = 'https://dev.twitter.com/docs/cards/validation/validator';
 			$w3c_url = 'https://validator.w3.org/nu/?doc='.$sharing_url_encoded;
-
-			if ( $mod['is_post'] && $this->p->is_avail['amp_endpoint'] && function_exists( 'amp_get_permalink' ) ) {
-				$amp_url = 'https://validator.ampproject.org/#url='.urlencode( amp_get_permalink( $mod['id'] ) );
-			}
 
 			// Facebook
 			$table_rows[] = $form->get_th_html( _x( 'Facebook Debugger', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p></td><td class="validate">'.$form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ), 'button-secondary', null, $facebook_url, true ).'</td>';
