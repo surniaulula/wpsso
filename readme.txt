@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.0-rc2 (2016/10/14)**
+**Version 3.36.0-1 (2016/10/15)**
 
 Official announcement: N/A
 
@@ -424,9 +424,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.36.0-rc2 =
+= 3.36.0-1 =
 
-(2016/10/14) Added new Item Type options in the General settings page. Added a configurable length warning for the Open Graph description. Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin. Added "Validate AMP Markup" and "Validate HTML Markup" buttons in the Social Settings metabox.
+(2016/10/15) Added new Item Type options in the General settings page. Added a configurable length warning for the Open Graph description. Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin. Added "Validate AMP Markup" and "Validate HTML Markup" buttons in the Social Settings metabox.
 
 = 3.35.4-1 =
 
