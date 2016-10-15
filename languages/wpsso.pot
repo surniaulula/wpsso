@@ -2255,8 +2255,8 @@ msgstr ""
 
 #: lib/meta.php:295
 msgid ""
-"The <a href=\"%s\">AMP plugin by Automattic</a> is required to create and "
-"validate AMP formatted webpages."
+"The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
+"formatted webpages."
 msgstr ""
 
 #: lib/meta.php:295

@@ -9,7 +9,7 @@
  * Author: JS Morisset
  * Author URI: http://surniaulula.com/
  * License: GPLv3
- * License URI: http://www.gnu.org/licenses/gpl.txt
+ * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.1
  * Tested Up To: 4.6.1

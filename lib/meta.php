@@ -1,7 +1,7 @@
 <?php
 /*
  * License: GPLv3
- * License URI: http://www.gnu.org/licenses/gpl.txt
+ * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2016 Jean-Sebastien Morisset (http://surniaulula.com/)
  */
 
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			// AMP
 			if ( $mod['is_post'] ) {
-				$table_rows[] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP templates markup.', 'wpsso' ).'</p>'.( $this->p->is_avail['amp_endpoint'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to create and validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' ).'</td><td class="validate">'.$form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ), 'button-secondary', null, $amp_url, true, ( $this->p->is_avail['amp_endpoint'] ? false : true ) ).'</td>';
+				$table_rows[] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP templates markup.', 'wpsso' ).'</p>'.( $this->p->is_avail['amp_endpoint'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' ).'</td><td class="validate">'.$form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ), 'button-secondary', null, $amp_url, true, ( $this->p->is_avail['amp_endpoint'] ? false : true ) ).'</td>';
 			}
 
 			return $table_rows;
