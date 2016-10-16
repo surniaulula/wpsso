@@ -53,8 +53,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
-			$post_id = $mod['is_post'] ?
-				$mod['id'] : false;
+			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$max = $this->p->util->get_max_nums( $mod );
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og );	// read any pre-defined twitter card values
 			$mt_tc = apply_filters( $lca.'_tc_seed', $mt_tc, $mod['use_post'], $mod );
@@ -148,6 +147,16 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 							// get the video preview image (if one is available)
 							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $video, 'og:image' );
+
+							// fallback to open graph image
+							if ( empty( $mt_tc['twitter:image'] ) && 
+								! empty( $mt_og['og:image'] ) ) {
+
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'player card: no video image - using og:image instead' );
+
+								$mt_tc['twitter:image'] = $mt_og['og:image'];
+							}
 						}
 
 						break;	// only use the first video
@@ -189,6 +198,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 
 				if ( ! empty( $post_id ) ) {
+
 					list( $card_type, $size_name ) = $this->get_card_type_size( 'post' );
 
 					// post meta image
@@ -207,27 +217,27 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 
 					// singlepic shortcode image
-					if ( ! isset( $mt_tc['twitter:card'] ) && 
-						! empty( $this->p->is_avail['media']['ngg'] ) ) {
-
-						if ( ! empty( $this->p->m['media']['ngg'] ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $card_type.' card: checking for singlepic image' );
-
-							$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, $size_name, $post_id, false );
-
-							if ( count( $og_image ) > 0 ) {
-								$image = reset( $og_image );
-								$mt_tc['twitter:card'] = $card_type;
-								$mt_tc['twitter:image'] = $image['og:image'];
+					if ( ! isset( $mt_tc['twitter:card'] ) ) {
+						if ( ! empty( $this->p->is_avail['media']['ngg'] ) ) {
+							if ( ! empty( $this->p->m['media']['ngg'] ) ) {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( $card_type.' card: checking for singlepic image' );
+	
+								$og_image = $this->p->m['media']['ngg']->get_singlepic_images( 1, $size_name, $post_id, false );
+	
+								if ( count( $og_image ) > 0 ) {
+									$image = reset( $og_image );
+									$mt_tc['twitter:card'] = $card_type;
+									$mt_tc['twitter:image'] = $image['og:image'];
+								} elseif ( $this->p->debug->enabled )
+									$this->p->debug->log( 'no singlepic image returned' );
+	
 							} elseif ( $this->p->debug->enabled )
-								$this->p->debug->log( 'no singlepic image returned' );
-
+								$this->p->debug->log( $card_type.' card: ngg plugin module is not defined' );
+	
 						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $card_type.' card: ngg plugin module is not defined' );
-
-					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( $card_type.' card: skipped singlepic check (ngg not available)' );
+							$this->p->debug->log( $card_type.' card: skipped singlepic check (ngg not available)' );
+					}
 
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'empty post_id: skipped post images' );
@@ -262,7 +272,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				if ( isset( $mt_tc['twitter:image'] ) )
+				if ( ! empty( $mt_tc['twitter:image'] ) )
 					$this->p->debug->log( $mt_tc['twitter:card'].' card: image '.$mt_tc['twitter:image'] );
 				else $this->p->debug->log( $mt_tc['twitter:card'].' card: no image defined' );
 			}
