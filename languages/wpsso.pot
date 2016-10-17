@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -386,7 +386,7 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/com/form.php:73 lib/config-gettext-extract.php:36
+#: lib/com/form.php:73 lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
@@ -396,17 +396,17 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/com/form.php:194 lib/config-gettext-extract.php:32
+#: lib/com/form.php:194 lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:198 lib/config-gettext-extract.php:35
+#: lib/com/form.php:198 lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:202 lib/config-gettext-extract.php:33
+#: lib/com/form.php:202 lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -504,108 +504,108 @@ msgid "Excerpt Only"
 msgstr ""
 
 #: lib/config-gettext-extract.php:15
-msgctxt "option value"
-msgid "Facebook Business Page URL"
+msgctxt "lib file description"
+msgid "Extension Plugins and Pro Licenses"
 msgstr ""
 
 #: lib/config-gettext-extract.php:16
 msgctxt "option value"
-msgid "First and Last Names"
+msgid "Facebook Business Page URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:17
 msgctxt "option value"
-msgid "Footer"
+msgid "First and Last Names"
 msgstr ""
 
 #: lib/config-gettext-extract.php:18
 msgctxt "option value"
-msgid "Force this value"
+msgid "Footer"
 msgstr ""
 
 #: lib/config-gettext-extract.php:19
 msgctxt "option value"
-msgid "Friday"
+msgid "Force this value"
 msgstr ""
 
 #: lib/config-gettext-extract.php:20
+msgctxt "option value"
+msgid "Friday"
+msgstr ""
+
+#: lib/config-gettext-extract.php:21
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Google"
 msgstr ""
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "If value is empty"
 msgstr ""
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "Monday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "MySpace Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:31
 msgctxt "option value"
 msgid "New activation"
 msgstr ""
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "No"
 msgstr ""
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr ""
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Pinterest Company Page URL"
-msgstr ""
-
-#: lib/config-gettext-extract.php:39
-msgctxt "lib file description"
-msgid "Pro Licenses and Extension Plugins"
 msgstr ""
 
 #: lib/config-gettext-extract.php:40
@@ -2006,7 +2006,7 @@ msgstr ""
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
-"on the <a href=\"%s\">Pro Licenses and Extension Plugins</a> settings page."
+"on the <a href=\"%s\">Extension Plugins and Pro Licenses</a> settings page."
 msgstr ""
 
 #: lib/messages.php:762
@@ -2018,9 +2018,9 @@ msgstr ""
 
 #: lib/messages.php:768
 msgid ""
-"At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro "
-"Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not "
-"active."
+"At least one Authentication ID has been entered on the <a href=\"%1$s"
+"\">Extension Plugins and Pro Licenses</a> settings page, but the %2$s plugin "
+"is not active."
 msgstr ""
 
 #: lib/messages.php:771
@@ -2538,7 +2538,7 @@ msgstr ""
 
 #: lib/sitesubmenu/sitelicenses.php:34 lib/submenu/licenses.php:29
 msgctxt "metabox title"
-msgid "Pro Licenses and Extension Plugins"
+msgid "Extension Plugins and Pro Licenses"
 msgstr ""
 
 #: lib/submenu/advanced.php:29

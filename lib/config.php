@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'feed_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.36.0-1',	// plugin version
+					'version' => '3.36.1-1',	// plugin version
 					'opt_version' => '459',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -66,12 +66,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
 							'setup' => '<color>Plugin Setup Guide and Notes</color>',
-							'licenses' => 'Pro Licenses and Extension Plugins',
+							'licenses' => 'Extension Plugins and Pro Licenses',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
 							'sitesetup' => '<color>Plugin Setup Guide and Notes</color>',
-							'sitelicenses' => 'Pro Licenses and Extension Plugins',
+							'sitelicenses' => 'Extension Plugins and Pro Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-am/faq/',
 						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-am/feed/',
-						'pro_support' => 'https://wpsso-am.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-am.support.wpsso.com/',
 					),
 				),
 				'wpssojson' => array(
@@ -193,9 +193,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/faq/',
-						'notes' => '',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/notes/',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-schema-json-ld/feed/',
-						'pro_support' => 'https://wpsso-schema-json-ld.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
 					),
 				),
 				'wpssoorg' => array(
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-organization/faq/',
 						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-organization/feed/',
-						'pro_support' => 'https://wpsso-organization.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-organization.support.wpsso.com/',
 					),
 				),
 				'wpssoplm' => array(
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-plm/faq/',
 						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-plm/feed/',
-						'pro_support' => 'https://wpsso-plm.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-plm.support.wpsso.com/',
 					),
 				),
 				'wpssorrssb' => array(
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/faq/',
 						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-rrssb/feed/',
-						'pro_support' => 'https://wpsso-rrssb.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-rrssb.support.wpsso.com/',
 					),
 				),
 				'wpssossb' => array(
@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-ssb/faq/',
 						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-ssb/feed/',
-						'pro_support' => 'https://wpsso-ssb.support.wpsso.com/',
+						'pro_support' => 'http://wpsso-ssb.support.wpsso.com/',
 					),
 				),
 				'wpssossm' => array(
@@ -362,8 +362,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-um/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-um/faq/',
-						'notes' => 'https://wpsso.com/codex/plugins/wpsso-um/notes/',
+						'faq' => '',
+						'notes' => '',
 						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-um/feed/',
 						'pro_support' => '',
 					),
@@ -738,7 +738,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name' => 'yim',
 					'wp_cm_yim_label' => 'Yahoo IM', 
 					'wp_cm_yim_enabled' => 1,
-					// Pro Licenses and Extension Plugins
+					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 				),
 				'site_defaults' => array(
@@ -789,7 +789,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cache_info:use' => 'default',
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry
 					'plugin_file_cache_exp:use' => 'default',
-					// Pro Licenses and Extension Plugins
+					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
 				),

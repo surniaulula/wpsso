@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-10-15 09:35-0700\n"
-"PO-Revision-Date: 2016-10-15 09:35-0700\n"
+"POT-Creation-Date: 2016-10-17 08:48-0700\n"
+"PO-Revision-Date: 2016-10-17 08:53-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -346,7 +346,7 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/com/form.php:73 lib/config-gettext-extract.php:36
+#: lib/com/form.php:73 lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
@@ -356,17 +356,17 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/com/form.php:194 lib/config-gettext-extract.php:32
+#: lib/com/form.php:194 lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:198 lib/config-gettext-extract.php:35
+#: lib/com/form.php:198 lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:202 lib/config-gettext-extract.php:33
+#: lib/com/form.php:202 lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
@@ -458,109 +458,109 @@ msgid "Excerpt Only"
 msgstr "Extrait seulement"
 
 #: lib/config-gettext-extract.php:15
+msgctxt "lib file description"
+msgid "Extension Plugins and Pro Licenses"
+msgstr "Autres Extensions et Licences Pro"
+
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "Facebook Business Page URL"
 msgstr "URL page d’affaires Facebook"
 
-#: lib/config-gettext-extract.php:16
+#: lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr "Nom et prénom"
 
-#: lib/config-gettext-extract.php:17
+#: lib/config-gettext-extract.php:18
 msgctxt "option value"
 msgid "Footer"
 msgstr "Pied de page"
 
-#: lib/config-gettext-extract.php:18
+#: lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "Force this value"
 msgstr "Forcer cette valeur"
 
-#: lib/config-gettext-extract.php:19
+#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "Friday"
 msgstr "Vendredi"
 
-#: lib/config-gettext-extract.php:20
+#: lib/config-gettext-extract.php:21
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr "Réglages Généraux"
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "Google+ Business Page URL"
 msgstr "URL page d’affaires Google+"
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Google"
 msgstr "Google"
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "Header"
 msgstr "Entête"
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "If value is empty"
 msgstr "Si la valeur est vide"
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Instagram Business URL"
 msgstr "URL page d’affaires Instagram"
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "Left"
 msgstr "Gauche"
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "LinkedIn Company Page URL"
 msgstr "URL page entreprise LinkedIn"
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "Monday"
 msgstr "Lundi"
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "MySpace Business Page URL"
 msgstr "URL page d’affaires MySpace"
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:31
 msgctxt "option value"
 msgid "New activation"
 msgstr "Nouvelle activation"
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Nickname"
 msgstr "Pseudonyme"
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "No"
 msgstr "Non"
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr "Ow.ly"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Pinterest Company Page URL"
 msgstr "URL page entreprise Pinterest"
-
-#: lib/config-gettext-extract.php:39
-msgctxt "lib file description"
-msgid "Pro Licenses and Extension Plugins"
-msgstr "Licences Pro et Autres Extensions"
 
 #: lib/config-gettext-extract.php:40
 msgctxt "option value"
@@ -673,16 +673,21 @@ msgid "WPSSO extension to provide updates for the WordPress Social Sharing Optim
 msgstr "Extension WPSSO pour fournir des mises à jour a WordPress Social Sharing Optimization (WPSSO) Pro et ses extensions Pro."
 
 #: lib/config-gettext-extract.php:63
+msgctxt "plugin description"
+msgid "WPSSO extension to remove outdated Schema Microdata, leaving the superior Schema JSON-LD markup untouched for Google and Bing."
+msgstr "Extension WPSSO pour supprimer les Microdonnées de Schéma obsolète, laissant le balisage Schéma JSON-LD intact pour Google et Bing."
+
+#: lib/config-gettext-extract.php:64
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
 
-#: lib/config-gettext-extract.php:64
+#: lib/config-gettext-extract.php:65
 msgctxt "option value"
 msgid "YOURLS"
 msgstr "YOURLS"
 
-#: lib/config-gettext-extract.php:65
+#: lib/config-gettext-extract.php:66
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr "Vos Réglages Sociaux"
@@ -1669,16 +1674,16 @@ msgid "The %1$s plugin %2$s option is empty."
 msgstr "L'option %2$s de l'extension %1$s est vide."
 
 #: lib/messages.php:759
-msgid "To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href=\"%s\">Pro Licenses and Extension Plugins</a> settings page."
-msgstr "Pour activer les fonctionnalités Pro et permettre a l'extensions de s'authentifier pour les mises à jour, veuillez entrer l'ID unique d'authentification que vous avez reçu par courriel sur la page de réglages <a href=\"%s\">Licences Pro et Autres Extensions</a>."
+msgid "To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href=\"%s\">Extension Plugins and Pro Licenses</a> settings page."
+msgstr "Pour activer les fonctionnalités Pro et permettre a l'extensions de s'authentifier pour les mises à jour, veuillez entrer l'ID unique d'authentification que vous avez reçu par courriel sur la page de réglages <a href=\"%s\">Autres Extensions et Licences Pro</a>."
 
 #: lib/messages.php:762
 msgid "An Authentication ID has been entered for %s, but the Pro version is not yet installed &ndash; don't forget to update the plugin to install the latest Pro version. ;-)"
 msgstr "Un ID d’authentification a été saisi pour %s, mais la version Pro n’est pas encore installé &ndash; n’oubliez pas de mettre à jour l’extension pour installer la version Pro. ;-)"
 
 #: lib/messages.php:768
-msgid "At least one Authentication ID has been entered on the <a href=\"%1$s\">Pro Licenses and Extension Plugins</a> settings page, but the %2$s plugin is not active."
-msgstr "Au moins un ID d'authentification a été désigné sur la page de réglages <a href=\"%1$s\">Licences Pro et Autres Extensions</a>, mais l'extension %2$s n'est pas active."
+msgid "At least one Authentication ID has been entered on the <a href=\"%1$s\">Extension Plugins and Pro Licenses</a> settings page, but the %2$s plugin is not active."
+msgstr "Au moins un ID d'authentification a été désigné sur la page de réglages <a href=\"%1$s\">Autres Extensions et Licences Pro</a>, mais l'extension %2$s n'est pas active."
 
 #: lib/messages.php:771
 msgid "This Free plugin is required to update and enable the %s plugin and its Pro extensions."
@@ -2117,8 +2122,8 @@ msgstr "Ajout messages de débogage caché"
 
 #: lib/sitesubmenu/sitelicenses.php:34 lib/submenu/licenses.php:29
 msgctxt "metabox title"
-msgid "Pro Licenses and Extension Plugins"
-msgstr "Licences Pro et Autres Extensions"
+msgid "Extension Plugins and Pro Licenses"
+msgstr "Autres Extensions et Licences Pro"
 
 #: lib/submenu/advanced.php:29
 msgctxt "metabox title"
