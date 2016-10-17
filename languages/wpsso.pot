@@ -733,16 +733,23 @@ msgid ""
 msgstr ""
 
 #: lib/config-gettext-extract.php:63
-msgctxt "option value"
-msgid "Yes"
+msgctxt "plugin description"
+msgid ""
+"WPSSO extension to remove outdated Schema Microdata, leaving the superior "
+"Schema JSON-LD markup untouched for Google and Bing."
 msgstr ""
 
 #: lib/config-gettext-extract.php:64
 msgctxt "option value"
-msgid "YOURLS"
+msgid "Yes"
 msgstr ""
 
 #: lib/config-gettext-extract.php:65
+msgctxt "option value"
+msgid "YOURLS"
+msgstr ""
+
+#: lib/config-gettext-extract.php:66
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr ""

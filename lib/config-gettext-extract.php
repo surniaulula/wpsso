@@ -60,6 +60,7 @@ _x( 'WPSSO extension to manage Organizations and additional Schema Article / Eve
 _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to remove outdated Schema Microdata, leaving the superior Schema JSON-LD markup untouched for Google and Bing.', 'plugin description', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your Social Settings', 'lib file description', 'wpsso' );
