@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.1-1 (2016/10/17)**
+**Version 3.36.2-1 (2016/10/17)**
 
 Official announcement: N/A
 
@@ -346,6 +346,7 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Changed all http://wpsso.com/ URLs to https.
+	* Added transient caching of results when fetching size information for image URLs.
 	* Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
 * *Bugfixes*
 	* None
@@ -375,7 +376,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.36.1-1 =
+= 3.36.2-1 =
 
-(2016/10/17) Changed all http://wpsso.com/ URLs to https. Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
+(2016/10/17) Changed all http://surniaulula.com/ URLs to https. Added transient caching of results when fetching size information for image URLs. Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
 
