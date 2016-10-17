@@ -334,6 +334,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					return $topics;
 				}
 			}
+
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'error reading %s topic list file' );
@@ -342,6 +343,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ), WPSSO_TOPICS_LIST ) );
 				return $topics;
 			}
+
 			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
 			natsort( $topics );
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
@@ -352,6 +354,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( $cache_type.': topics array saved to transient '.
 						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
+
 			return $topics;
 		}
 
@@ -863,32 +866,54 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function add_image_url_sizes( $keys, array &$opts ) {
-			if ( self::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' ) )
-				return $opts;
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
 
+			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
+
 			foreach ( $keys as $prefix ) {
-				$media_url = self::get_mt_media_url( $opts, $prefix );
 
-				if ( ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
-					list( 
-						$opts[$prefix.':width'],
-						$opts[$prefix.':height'],
-						$image_type,
-						$image_attr 
-					) = @getimagesize( $media_url );
+				$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
 
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'getimagesize() for '.$media_url.' returned '.
-							$opts[$prefix.':width'].'x'.$opts[$prefix.':height'] );
+				if ( ! $disabled && ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
+
+					if ( $this->p->is_avail['cache']['transient'] ) {
+						$cache_salt = __METHOD__.'(url:'.$media_url.')';
+						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+						$image_info = get_transient( $cache_id );
+					} else $image_info = false;
+
+					if ( is_array( $image_info ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'image info for '.$media_url.' retrieved from transient' );
+					} else {
+						$image_info = @getimagesize( $media_url );
+						if ( is_array( $image_info ) ) {
+							if ( $this->p->is_avail['cache']['transient'] )
+								set_transient( $cache_id, $image_info,
+									$this->p->options['plugin_object_cache_exp'] );
+							if ( is_admin() )
+								$this->p->notice->inf( 'Fetched size information for '.$media_url.
+									' ('.$image_info[0].'x'.$image_info[1].')', true, __METHOD__.$media_url, true );
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
+									$image_info[0].'x'.$image_info[1] );
+						} elseif ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'PHP getimagesize() failed to return an array' );
+							$image_info = array( -1, -1, '', '' );
+						}
+					}
+
+					list( $opts[$prefix.':width'], $opts[$prefix.':height'], $image_type, $image_attr ) = $image_info;
+
 				} else {
 					foreach ( array( 'width', 'height' ) as $attr )
 						if ( isset( $opts[$prefix.':'.$attr] ) )
 							$opts[$prefix.':'.$attr] = -1;
 				}
 			}
+
 			return $opts;
 		}
 
