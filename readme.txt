@@ -373,76 +373,9 @@ Official announcement: N/A
 	* Removed the WPSSO_DEFAULT_AUTHOR_OPTIONS constant and all associated default author options.
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
-**Version 3.35.4-1 (2016/10/01)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added a check for product get_width(), get_height(), get_length() and get_weight() for older WooCommerce versions (Pro version).
-	* Added a new SucomUtil::is_toplevel_edit() method to enqueue scripts / styles for editing posts in settings pages (required for Event Espresso plugin).
-	* Added a new SucomUtil::titleize() method to format post type names for display.
-	* Re-enabled the 'og:image:secure_url' and 'og:video:secure_url' meta tags by default.
-* *Bugfixes*
-	* Fixed the "View Plugin Details" link in multisite settings pages.
-* *Developer Notes*
-	* Added a new 'wpsso_og_add_product_mt_rating' filter for WooCommerce and Yotpo ratings (Pro version).
-
-**Version 3.35.2-1 (2016/09/23)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added the 'weibo:article:create_at' and 'weibo:article:update_at' meta tags for Weibo.
-	* Added the 'twitter:player:stream' and 'twitter:player:stream:content_type' meta tags for Facebook (video/mp4) embedded videos.
-	* Changed 'article:published_time' and 'article:modified_time' values to GMT instead of the local timezone.
-	* The 'og:image:secure_url' and 'og:video:secure_url' are now disabled by default (https urls are used in the 'og:image' and 'og:video:url' meta tags instead).
-	* Updated the conflict / requirement hooks to execute later in the admin page load (to avoid false positives).
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Updated minimum PHP version required from v5.1 to v5.2.
-
-**Version 3.35.1-1 (2016/09/15)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* Fixed an undefined og:image value when adding an og:image:secure_url meta tag.
-* *Developer Notes*
-	* None
-
-**Version 3.35.0-1 (2016/09/10)**
-
-Official announcement: N/A
-
-* *New Features*
-	* None
-* *Improvements*
-	* Refactored the SucomNotice class to improve performance.
-	* Changed from using the post permalink to a shortlink when checking for duplicate meta tags.
-	* Added a maximum (success) count of 6 when checking for duplicate meta tags.
-	* Added a notice for a missing Open Graph description meta tag.
-	* Moved the "Version Information" side box from all SSO settings pages to only the SSO Update Manager settings page.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Replaced the `register_uninstall_hook()` function call with an uninstall.php file.
-
 == Upgrade Notice ==
 
 = 3.36.1-1 =
 
 (2016/10/17) Changed all http://wpsso.com/ URLs to https. Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
-
-= 3.36.0-1 =
-
-(2016/10/15) Added new Item Type options in the General settings page. Added a configurable length warning for the Open Graph description. Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin. Added "Validate AMP Markup" and "Validate HTML Markup" buttons in the Social Settings metabox.
 
