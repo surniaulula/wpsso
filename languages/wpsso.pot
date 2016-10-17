@@ -3143,7 +3143,7 @@ msgid "WordPress Social Sharing Optimization (WPSSO)"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://surniaulula.com/extend/plugins/wpsso/"
+msgid "https://surniaulula.com/extend/plugins/wpsso/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -3157,5 +3157,5 @@ msgid "JS Morisset"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://surniaulula.com/"
+msgid "https://surniaulula.com/"
 msgstr ""
