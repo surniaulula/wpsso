@@ -338,6 +338,20 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.36.1-1 (2016/10/17)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Changed all http://wpsso.com/ URLs to https.
+	* Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.36.0-1 (2016/10/15)**
 
 Official announcement: N/A
@@ -423,6 +437,10 @@ Official announcement: N/A
 	* Replaced the `register_uninstall_hook()` function call with an uninstall.php file.
 
 == Upgrade Notice ==
+
+= 3.36.1-1 =
+
+(2016/10/17) Changed all http://wpsso.com/ URLs to https. Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
 
 = 3.36.0-1 =
 
