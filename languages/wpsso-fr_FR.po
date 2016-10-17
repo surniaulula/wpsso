@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-10-17 08:48-0700\n"
-"PO-Revision-Date: 2016-10-17 08:53-0700\n"
+"POT-Creation-Date: 2016-10-17 09:55-0700\n"
+"PO-Revision-Date: 2016-10-17 09:55-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2705,8 +2705,8 @@ msgid "WordPress Social Sharing Optimization (WPSSO)"
 msgstr "WordPress Social Sharing Optimization (WPSSO)"
 
 #. Plugin URI of the plugin/theme
-msgid "http://surniaulula.com/extend/plugins/wpsso/"
-msgstr "http://surniaulula.com/extend/plugins/wpsso/"
+msgid "https://surniaulula.com/extend/plugins/wpsso/"
+msgstr "https://surniaulula.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
 msgid "Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO."
@@ -2717,5 +2717,5 @@ msgid "JS Morisset"
 msgstr "JS Morisset"
 
 #. Author URI of the plugin/theme
-msgid "http://surniaulula.com/"
-msgstr "http://surniaulula.com/"
+msgid "https://surniaulula.com/"
+msgstr "https://surniaulula.com/"
