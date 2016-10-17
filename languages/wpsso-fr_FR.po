@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.2-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-10-17 13:38-0700\n"
-"PO-Revision-Date: 2016-10-17 13:38-0700\n"
+"POT-Creation-Date: 2016-10-17 16:45-0700\n"
+"PO-Revision-Date: 2016-10-17 16:45-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2656,34 +2656,38 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1322
+#: lib/util.php:901
+msgid "Fetched size information for %1$s (%2$s)."
+msgstr "Informations de taille récupérées pour %1$s (%2$s)."
+
+#: lib/util.php:1327
 msgid "Failed to open directory %s for reading."
 msgstr "Impossible d’ouvrir le répertoire %s pour lecture."
 
-#: lib/util.php:1330
+#: lib/util.php:1335
 msgid "Error removing file %s."
 msgstr "Erreur de suppression du fichier %s."
 
-#: lib/util.php:1607
+#: lib/util.php:1614
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:1633
+#: lib/util.php:1640
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1637
+#: lib/util.php:1644
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1640
+#: lib/util.php:1647
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1644
+#: lib/util.php:1651
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

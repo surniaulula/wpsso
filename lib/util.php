@@ -865,11 +865,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return str_replace( $vars, $vals, $text );
 		}
 
+		// use a reference to modify the $options array directly
 		public function add_image_url_sizes( $keys, array &$opts ) {
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
 
+			$lca = $this->p->cf['lca'];
 			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 
 			foreach ( $keys as $prefix ) {
@@ -880,7 +882,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					if ( $this->p->is_avail['cache']['transient'] ) {
 						$cache_salt = __METHOD__.'(url:'.$media_url.')';
-						$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+						$cache_id = $lca.'_'.md5( $cache_salt );
 						$image_info = get_transient( $cache_id );
 					} else $image_info = false;
 
@@ -890,12 +892,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					} else {
 						$image_info = @getimagesize( $media_url );
 						if ( is_array( $image_info ) ) {
-							if ( $this->p->is_avail['cache']['transient'] )
-								set_transient( $cache_id, $image_info,
-									$this->p->options['plugin_object_cache_exp'] );
+							if ( $this->p->is_avail['cache']['transient'] ) {
+								$cache_exp = (int) apply_filters( $lca.'_image_url_sizes_cache_expire',
+									$this->p->options['plugin_object_cache_exp'], $media_url );
+								set_transient( $cache_id, $image_info, $cache_exp );
+							}
 							if ( is_admin() )
-								$this->p->notice->inf( 'Fetched size information for '.$media_url.
-									' ('.$image_info[0].'x'.$image_info[1].')', true, __METHOD__.$media_url, true );
+								$this->p->notice->inf( sprintf( __( 'Fetched size information for %1$s (%2$s).',
+									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
+										true, __METHOD__.$media_url, true );
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
 									$image_info[0].'x'.$image_info[1] );
@@ -1337,6 +1342,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
+		// get remote url content, with fallback to local file content
+		// used by the WpssoSubmenuSetup::show_metabox_guide() method
 		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
 			$content = false;
 			$get_remote = empty( $url ) ? false : true;

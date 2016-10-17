@@ -3094,34 +3094,38 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1322
+#: lib/util.php:901
+msgid "Fetched size information for %1$s (%2$s)."
+msgstr ""
+
+#: lib/util.php:1327
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1330
+#: lib/util.php:1335
 msgid "Error removing file %s."
 msgstr ""
 
-#: lib/util.php:1607
+#: lib/util.php:1614
 msgid "No options available."
-msgstr ""
-
-#: lib/util.php:1633
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr ""
-
-#: lib/util.php:1637
-msgctxt "option comment"
-msgid "unhide these options"
 msgstr ""
 
 #: lib/util.php:1640
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
+msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
 #: lib/util.php:1644
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/util.php:1647
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1651
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
