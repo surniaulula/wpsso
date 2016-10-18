@@ -1343,7 +1343,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// get remote url content, with fallback to local file content
-		// used by the WpssoSubmenuSetup::show_metabox_guide() method
+		// used by the WpssoSubmenuSetup::show_metabox_guide() method for the Setup Guide
 		public function get_remote_content( $url = '', $file = '', $version = '', $expire_secs = 86400 ) {
 			$content = false;
 			$get_remote = empty( $url ) ? false : true;
