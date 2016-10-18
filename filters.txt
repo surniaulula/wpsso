@@ -49,6 +49,7 @@
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );
 'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
+'wpsso_image_url_sizes_cache_expire' ( $expire_secs, $media_url );
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
 'wpsso_json_array_type_ids' ( $type_ids, $mod );
