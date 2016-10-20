@@ -487,7 +487,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return null;
 		}
 
-		public static function crawler_name( $is_crawler_name = '' ) {
+		public static function crawler_name( $is_name = '' ) {
 
 			if ( self::$crawler_name === null ) {
 				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
@@ -496,6 +496,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					// "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
 						self::$crawler_name = 'facebook';
+						break;
+
+					// "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+					case ( strpos( $ua, 'compatible; bingbot/' ) !== false ):
+						self::$crawler_name = 'bing';
 						break;
 
 					// "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
@@ -528,8 +533,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( ! empty( $is_crawler_name ) )
-				return $is_crawler_name === self::$crawler_name ? true : false;
+			if ( ! empty( $is_name ) )
+				return $is_name === self::$crawler_name ? true : false;
 			else return self::$crawler_name;
 		}
 
