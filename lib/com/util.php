@@ -544,8 +544,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$crawler_name = 'none';
 						break;
 				}
-				error_log( 'crawler: '.self::$crawler_name );
-				error_log( $ua );
 			}
 
 			if ( ! empty( $is_name ) )
