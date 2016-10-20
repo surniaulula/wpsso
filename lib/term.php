@@ -205,13 +205,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
 			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
 
-				do_action( $lca.'_admin_term_header', $mod, $screen->id );
+				do_action( $lca.'_admin_term_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'setting head_meta_info static property' );
 
 				// $use_post = false, $read_cache = false to generate notices etc.
-				WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( false, $mod, false );
+				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
 				// check for missing open graph image and issue warning
@@ -307,10 +307,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$locale_salt = 'locale:'.$locale.'_term:'.$term_id;
 			$transients = array(
-				'WpssoHead::get_header_array' => array( 
+				'WpssoHead::get_head_array' => array( 
 					$locale_salt.'_url:'.$sharing_url,
 					$locale_salt.'_url:'.$sharing_url.'_amp:true',
-					$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
 				),
 				'WpssoMeta::get_mod_column_content' => array( 
 					$locale_salt.'_column:'.$lca.'_og_img',

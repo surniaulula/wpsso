@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $network === false ) {
 					if ( empty( $this->p->options['plugin_check_head'] ) )
-						delete_option( $this->p->cf['lca'].'_post_header_count' );
+						delete_option( $this->p->cf['lca'].'_post_head_count' );
 				}
 			}
 

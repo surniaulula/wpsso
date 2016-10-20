@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			switch ( $metabox ) {
 				case 'social_settings':
 					$tabs = array(
-						'header' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
+						'text' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
 						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					);
 					// keep it clean and remove demo form pages
 					if ( ! empty( $this->p->options['plugin_hide_pro'] ) )
-						foreach ( array( 'header', 'media' ) as $key )
+						foreach ( array( 'text', 'media' ) as $key )
 							SucomUtil::move_to_end( $tabs, $key );
 					break;
 				default:

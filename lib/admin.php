@@ -48,8 +48,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'pro_req_notices' ), 20 );
 
-				add_action( 'after_switch_theme', array( &$this, 'reset_check_header_exec_count' ) );
-				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_header_exec_count' ) );
+				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_exec_count' ) );
+				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_exec_count' ) );
 
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ) );
@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $this->p->options['plugin_object_cache_exp'], $clear_cache_link,
 							_x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ) );
 			} else {
-				$this->p->notice->upd( __( 'Plugin settings have been saved.', 'wpsso' ) );
+				$this->p->notice->upd( __( 'Plugin settings have been saved (and all caches cleared).', 'wpsso' ) );
 				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
 			}
 
@@ -1374,9 +1374,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function reset_check_header_exec_count() {
+		public function reset_check_head_exec_count() {
 			$lca = $this->p->cf['lca'];
-			delete_option( $lca.'_post_header_count' );
+			delete_option( $lca.'_post_head_count' );
 		}
 
 		public function check_tmpl_head_attributes() {
@@ -1425,7 +1425,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// make a backup of the original
 				if ( ! copy( $file, $backup ) ) {
 					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.',
-						'wpsso' ), 'header.php', $backup ) );
+						'wpsso' ), $base, $backup ) );
 					continue;
 				}
 

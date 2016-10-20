@@ -15,19 +15,19 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'meta_header_rows' => array(
-					'user_header_rows' => 4,	// $table_rows, $form, $head, $mod
-					'term_header_rows' => 4,	// $table_rows, $form, $head, $mod
+				'meta_text_rows' => array(
+					'user_text_rows' => 4,	// $table_rows, $form, $head, $mod
+					'term_text_rows' => 4,	// $table_rows, $form, $head, $mod
 				),
 				'meta_media_rows' => array(
-					'post_media_rows' => 4,		// $table_rows, $form, $head, $mod
-					'user_media_rows' => 4,		// $table_rows, $form, $head, $mod
-					'term_media_rows' => 4,		// $table_rows, $form, $head, $mod
+					'post_media_rows' => 4,	// $table_rows, $form, $head, $mod
+					'user_media_rows' => 4,	// $table_rows, $form, $head, $mod
+					'term_media_rows' => 4,	// $table_rows, $form, $head, $mod
 				),
 			) );
 		}
 
-		public function filter_meta_header_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_meta_text_rows( $table_rows, $form, $head, $mod ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 

@@ -544,6 +544,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$crawler_name = 'none';
 						break;
 				}
+				self::$crawler_name = apply_filters( 'sucom_crawler_name', self::$crawler_name, $ua );
 			}
 
 			if ( ! empty( $is_name ) )

@@ -15,11 +15,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			$this->p->util->add_plugin_filters( $this, array( 
-				'post_header_rows' => 4,	// $table_rows, $form, $head, $mod
+				'post_text_rows' => 4,	// $table_rows, $form, $head, $mod
 			) );
 		}
 
-		public function filter_post_header_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_post_text_rows( $table_rows, $form, $head, $mod ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 

@@ -634,7 +634,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						'blank' : $val['td_class'].' blank';
 				} else $is_auto_draft = false;
 
-				if ( ! empty( $val['header'] ) )
+				if ( ! empty( $val['header'] ) )	// example: h4 subsection
 					$table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
 						'<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).
 						'><'.$val['header'].'>'.$val['label'].'</'.$val['header'].'></td>';

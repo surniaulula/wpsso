@@ -26,45 +26,47 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'head_cache_salt' => 2,		// modify the cache salt for certain crawlers
+				'head_cache_salt' => 2,		// modify the cache salt for amp pages
 			) );
 
-			add_action( 'wp_head', array( &$this, 'add_header' ), WPSSO_HEAD_PRIORITY );
-			add_action( 'amp_post_template_head', array( $this, 'add_header' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'wp_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'amp_post_template_head', array( $this, 'add_head' ), WPSSO_HEAD_PRIORITY );
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) )
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
-			// disable page caching to provide customized meta tags (same URL, different meta tags)
-			$crawler_name = SucomUtil::crawler_name();
-			switch ( $crawler_name ) {
-				case 'pinterest':
-					WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
-			}
+			// disable page caching for customized meta tags (same URL, different meta tags)
+			if ( $this->get_head_cache_index() !== 'none' )
+				WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
 		}
 
 		public function filter_head_cache_salt( $salt, $crawler_name ) {
-			if ( $this->p->is_avail['amp_endpoint'] && 
-				is_amp_endpoint() )
-					$salt .= '_amp:true';
-
-			// pinterest does not (currently) read json markup
-			// pinterest gets different open graph image sizes (and no meta images)
-			switch ( $crawler_name ) {
-				case 'pinterest':
-					$salt .= '_crawler:'.$crawler_name;
-					break;
-			}
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
+				$salt .= '_amp:true';
 			return $salt;
 		}
 
+		public function get_head_cache_index( $crawler_name = false ) {
+			if ( $crawler_name === false )
+				$crawler_name = SucomUtil::crawler_name();
+			switch ( $crawler_name ) {
+				case 'pinterest':	// pinterest gets different open graph image sizes and does not read json markup
+					$head_index = $crawler_name;
+					break;
+				default:
+					$head_index = 'none';
+					break;
+			}
+			return apply_filters( $this->p->cf['lca'].'_head_cache_index', $head_index, $crawler_name );
+		}
+
 		// called by wp_head action
-		public function add_header() {
+		public function add_head() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_header_use_post', false );	// used by woocommerce with is_shop()
+			$use_post = apply_filters( $lca.'_head_use_post', false );	// used by woocommerce with is_shop()
 			$mod = $this->p->util->get_page_mod( $use_post );		// get post/user/term id, module name, and module object reference
 			$read_cache = true;
 			$mt_og = array();
@@ -79,12 +81,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $this->p->is_avail['mt'] )
-				echo $this->get_header_html( $use_post, $mod, $read_cache, $mt_og );
+				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
 			else echo "\n<!-- ".$lca." meta tags disabled -->\n";
 
 			// include additional information when debug mode is on
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'end of get_header_html' );
+				$this->p->debug->log( 'end of get_head_html' );
 
 				// show debug log
 				$this->p->debug->show_html( null, 'debug log' );
@@ -192,7 +194,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $head_info;
 		}
 
-		public function get_header_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
+		public function get_head_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -210,15 +212,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_begin.'"/>'."\n";
 
 			// first element of returned array is the html tag
-			$indent = "";
-			foreach ( $this->get_header_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
+			$indent = 0;
+			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
 				if ( ! empty( $mt[0] ) ) {
-					if ( $indent && 
-						strpos( $mt[0], '</noscript' ) === 0 )
-							$indent = "";
-					$html .= $indent.$mt[0];
+					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 )
+						$indent = 0;
+					$html .= str_repeat( "\t", 
+						(int) $indent ).$mt[0];
 					if ( strpos( $mt[0], '<noscript' ) === 0 )
-						$indent = "\t";
+						$indent = 1;
 				}
 			}
 
@@ -230,25 +232,28 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
-		public function get_header_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
+		public function get_head_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'build header array' );	// begin timer
+				$this->p->debug->mark( 'build head array' );	// begin timer
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
-			$author_id = false;
-			$header_array = array();
+			$head_index = $this->get_head_cache_index( $crawler_name );
+			$head_array = array();
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'crawler_name is '.$crawler_name );
+				$this->p->debug->log( 'head_index is '.$head_index );
+			}
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
 
-				// head_cache_salt filter may add amp true/false and/or crawler name
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt',
+				// head_cache_salt filter can add "_amp:true", for example
+				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
 					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url, $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				$cache_type = 'object cache';
@@ -256,12 +261,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
 
-				if ( apply_filters( $lca.'_header_read_cache', $read_cache ) ) {
-					$header_array = get_transient( $cache_id );
-					if ( $header_array !== false ) {
+				if ( apply_filters( $lca.'_head_read_cache', $read_cache ) ) {
+					$head_array = get_transient( $cache_id );
+					if ( isset( $head_array[$head_index] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': header array from transient '.$cache_id );
-						return $header_array;	// stop here
+							$this->p->debug->log( $cache_type.': head array from transient '.$cache_id );
+						return $head_array[$head_index];	// stop here
 					}
 				}
 			} elseif ( $this->p->debug->enabled )
@@ -380,7 +385,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Combine and return all meta tags
 			 */
-			$header_array = array_merge(
+			$head_array[$head_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
@@ -393,19 +398,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			);
 
 			/*
-			 * Save the header array to the WordPress transient cache
+			 * Save the head array to the WordPress transient cache
 			 */
-			if ( apply_filters( $lca.'_header_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
-				set_transient( $cache_id, $header_array, $this->p->options['plugin_object_cache_exp'] );
+			if ( apply_filters( $lca.'_head_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
+				set_transient( $cache_id, $head_array, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': header array saved to transient '.
+					$this->p->debug->log( $cache_type.': head array saved to transient '.
 						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'build header array' );	// end timer
+				$this->p->debug->mark( 'build head array' );	// end timer
 
-			return $header_array;
+			return $head_array[$head_index];
 		}
 
 		/*

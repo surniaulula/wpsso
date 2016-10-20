@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $head_attr;
 
 			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_header_use_post', false );
+			$use_post = apply_filters( $lca.'_head_use_post', false );	// used by woocommerce with is_shop()
 			$mod = $this->p->util->get_page_mod( $use_post );
 			$head_type_url = $this->get_head_item_type( $mod );
 

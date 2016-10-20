@@ -226,13 +226,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 
 					// hooked by woocommerce module to load front-end libraries and start a session
-					do_action( $lca.'_admin_post_header', $mod, $screen->id );
+					do_action( $lca.'_admin_post_head', $mod, $screen->id );
 
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'setting head_meta_info static property' );
 
 					// $read_cache = false to generate notices etc.
-					WpssoMeta::$head_meta_tags = $this->p->head->get_header_array( $post_id, $mod, false );
+					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
 
 					if ( $post_obj->post_status === 'publish' ) {
@@ -245,8 +245,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
-						if ( apply_filters( $lca.'_check_post_header', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
-							$this->check_post_header_duplicates( $post_id, $post_obj );
+						if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
+							$this->check_post_head_duplicates( $post_id, $post_obj );
 					}
 				}
 			} 
@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function check_post_header_duplicates( $post_id = true, &$post_obj = false ) {
+		public function check_post_head_duplicates( $post_id = true, &$post_obj = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$exec_count = (int) get_option( $lca.'_post_header_count' );	// changes false to 0
+			$exec_count = (int) get_option( $lca.'_post_head_count' );	// changes false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
 
 			if ( $exec_count >= $max_count ) {
@@ -358,7 +358,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! $conflicts_found ) {
-				update_option( $lca.'_post_header_count', ++$exec_count, false );	// autoload = false
+				update_option( $lca.'_post_head_count', ++$exec_count, false );	// autoload = false
 				$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
 					'wpsso' ), $max_count - $exec_count ) );
 			}
@@ -478,10 +478,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						'SucomCache::get' => array(
 							'url:'.$permalink,
 						),
-						'WpssoHead::get_header_array' => array( 
+						'WpssoHead::get_head_array' => array( 
 							$locale_salt.'_url:'.$sharing_url,
 							$locale_salt.'_url:'.$sharing_url.'_amp:true',
-							$locale_salt.'_url:'.$sharing_url.'_crawler:pinterest',
 						),
 						'WpssoMeta::get_mod_column_content' => array( 
 							$locale_salt.'_column:'.$lca.'_og_img',
