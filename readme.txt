@@ -338,7 +338,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.3-dev1 (TBD)**
+**Version 3.36.3-dev1 (2016/10/20)**
 
 Official announcement: N/A
 
@@ -391,6 +391,10 @@ Official announcement: N/A
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.36.3-dev1 =
+
+(2016/10/20) Optimized the head meta tag transient cache value (using 1 transient instead of 2).
 
 = 3.36.2-1 =
 
