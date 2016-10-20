@@ -408,9 +408,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id, $crawler_name ) {
 
-			// both bing and pinterest do not (currently) read json markup
+			// pinterest does not (currently) read json markup
 			switch ( $crawler_name ) {
-				case 'bing':
 				case 'pinterest':
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );

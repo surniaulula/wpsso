@@ -38,7 +38,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// disable page caching to provide customized meta tags (same URL, different meta tags)
 			$crawler_name = SucomUtil::crawler_name();
 			switch ( $crawler_name ) {
-				case 'bing':
 				case 'pinterest':
 					WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
 			}
@@ -49,10 +48,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				is_amp_endpoint() )
 					$salt .= '_amp:true';
 
-			// both bing and pinterest do not (currently) read json markup
+			// pinterest does not (currently) read json markup
 			// pinterest gets different open graph image sizes (and no meta images)
 			switch ( $crawler_name ) {
-				case 'bing':
 				case 'pinterest':
 					$salt .= '_crawler:'.$crawler_name;
 					break;

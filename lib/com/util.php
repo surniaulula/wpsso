@@ -490,8 +490,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function crawler_name( $is_name = '' ) {
 
 			if ( self::$crawler_name === null ) {
+
 				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
 					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
+
 				switch ( true ) {
 					// "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
@@ -527,10 +529,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					case ( strpos( $ua, 'w3c_validator/' ) === 0 ):
 						self::$crawler_name = 'w3c';
 						break;
+
+					// "Validator.nu/LV http://validator.w3.org/services"
+					case ( strpos( $ua, 'validator.nu/' ) === 0 ):
+						self::$crawler_name = 'w3c';
+						break;
+
+					// "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
+					case ( strpos( $ua, 'validator.ampproject.org' ) === 0 ):
+						self::$crawler_name = 'amp';
+						break;
+
 					default:
 						self::$crawler_name = 'none';
 						break;
 				}
+				error_log( 'crawler: '.self::$crawler_name );
+				error_log( $ua );
 			}
 
 			if ( ! empty( $is_name ) )
