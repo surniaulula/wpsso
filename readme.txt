@@ -97,7 +97,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 * Support for embedded videos in content text (iframe and object HTML markup).
 * Additional Open Graph / Rich Pin meta tags for videos and ecommerce products.
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) markup for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
-* Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags from the webpage head section.
+* Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
 * Configurable user profile contact field names and labels.
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, ecommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
