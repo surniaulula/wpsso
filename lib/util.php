@@ -892,19 +892,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					} else {
 						$image_info = @getimagesize( $media_url );
 						if ( is_array( $image_info ) ) {
+
 							if ( $this->p->is_avail['cache']['transient'] ) {
 								$cache_exp = (int) apply_filters( $lca.'_image_url_sizes_cache_expire',
 									$this->p->options['plugin_object_cache_exp'], $media_url );
 								set_transient( $cache_id, $image_info, $cache_exp );
 							}
-							if ( $this->p->debug->enabled ) {
-								if ( is_admin() )
-									$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
-										'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
-											true, __METHOD__.$media_url, true );
-								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
-									$image_info[0].'x'.$image_info[1] );
+
+							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
+									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
+										true, __METHOD__.$media_url, true );
 							}
+
+							$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
+								$image_info[0].'x'.$image_info[1] );
+
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'PHP getimagesize() failed to return an array' );
 							$image_info = array( -1, -1, '', '' );
