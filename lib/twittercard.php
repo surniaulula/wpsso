@@ -40,11 +40,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function get_array( $use_post = false, $mod = false, $mt_og = array(), $crawler_name = 'none' ) {
 
-			// pinterest does not read twitter card meta tags
-			if ( $crawler_name === 'pinterest' ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
-				return array();
+			// both bing and pinterest do not read twitter card markup
+			switch ( $crawler_name ) {
+				case 'bing':
+				case 'pinterest':
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+					return array();
 			}
 
 			if ( $this->p->debug->enabled )

@@ -48,7 +48,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				// use pinterest (rich pin) image size for pinterest crawler
 				if ( $crawler_name === 'pinterest' )
 					$sizes['schema_img']['prefix'] = 'rp_img';
 			}
@@ -409,8 +408,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id, $crawler_name ) {
 
+			// both bing and pinterest do not (currently) read json markup
 			switch ( $crawler_name ) {
-				case 'pinterest':	// pinterest does not read schema json-ld
+				case 'bing':
+				case 'pinterest':
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
 					return array();
@@ -1170,12 +1171,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 
-			// include only the open graph image(s) for the pinterest crawler
-			// add single image meta tags (no width or height) if noscript is disabled
-			if ( $crawler_name !== 'pinterest' && 
-				! $this->is_noscript_enabled( $crawler_name ) &&
-					! empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-
+			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'skipping images: no duplicates for '.$crawler_name.' crawler' );
+			} elseif ( $this->is_noscript_enabled( $crawler_name ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'skipping images: noscript is enabled for '.$crawler_name );
+			} elseif ( empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
+			} else {	// add single image meta tags (no width or height)
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting images for '.$head_type_url );
 
@@ -1226,8 +1231,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					break;
 			}
 
-			// include only the open graph image(s) for the pinterest crawler
-			if ( $crawler_name !== 'pinterest' ) {
+			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'skipping images: no duplicates for '.$crawler_name.' crawler' );
+			} else {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting images for '.$head_type_url );
 	
