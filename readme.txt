@@ -78,6 +78,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
 	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
+	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 
 <blockquote>
 <p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
@@ -138,6 +139,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
 	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
+	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 
 <blockquote>
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
@@ -352,7 +354,7 @@ Official announcement: N/A
 	* Renamed the Social Settings 'header' index name to 'text'.
 	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
 	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
-	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements.
+	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache by storing 1 transient instead of 2.
 
 **Version 3.36.2-1 (2016/10/17)**
 
@@ -394,7 +396,7 @@ Official announcement: N/A
 
 = 3.36.3-dev1 =
 
-(2016/10/20) Optimized the head meta tag transient cache value (using 1 transient instead of 2).
+(2016/10/20) Optimized the head meta transient cache value (storing 1 transient instead of 2).
 
 = 3.36.2-1 =
 
