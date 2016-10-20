@@ -23,7 +23,7 @@
 'wpsso_author_object_title' ( $title, $author_obj );
 'wpsso_author_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx );
-'wpsso_check_post_header' ( $bool, $post_id, $post_obj );
+'wpsso_check_post_head' ( $bool, $post_id, $post_obj );
 'wpsso_columns_post_{post_type_name}' ( true );
 'wpsso_content' ( $content, $mod, $md_idx );
 'wpsso_content_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $mod );
@@ -44,7 +44,6 @@
 'wpsso_get_user_options' ( $options, $user_id );
 'wpsso_hashtags' ( $hashtags, $post_id );
 'wpsso_hashtags_seed' ( '', $post_id );
-'wpsso_header_read_cache' ( $bool );
 'wpsso_home_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );
 'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );
