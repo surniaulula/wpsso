@@ -897,13 +897,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 									$this->p->options['plugin_object_cache_exp'], $media_url );
 								set_transient( $cache_id, $image_info, $cache_exp );
 							}
-							if ( is_admin() )
-								$this->p->notice->inf( sprintf( __( 'Fetched size information for %1$s (%2$s).',
-									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
-										true, __METHOD__.$media_url, true );
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
+								if ( is_admin() )
+									$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
+										'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
+											true, __METHOD__.$media_url, true );
 								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
 									$image_info[0].'x'.$image_info[1] );
+							}
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'PHP getimagesize() failed to return an array' );
 							$image_info = array( -1, -1, '', '' );
