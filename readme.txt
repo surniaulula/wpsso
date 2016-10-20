@@ -338,6 +338,22 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
+**Version 3.36.3-dev1 (TBD)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed HTML table syntax in the Tumblr settings metabox.
+* *Developer Notes*
+	* Renamed the Social Settings 'header' index name to 'text'.
+	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
+	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
+	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements.
+
 **Version 3.36.2-1 (2016/10/17)**
 
 Official announcement: N/A
