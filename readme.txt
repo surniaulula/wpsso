@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.3-rc1 (2016/10/20)**
+**Version 3.36.3-rc1 (2016/10/21)**
 
 Official announcement: N/A
 
@@ -396,7 +396,7 @@ Official announcement: N/A
 
 = 3.36.3-rc1 =
 
-(2016/10/20) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2).
+(2016/10/21) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2).
 
 = 3.36.2-1 =
 
