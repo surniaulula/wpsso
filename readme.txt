@@ -9,7 +9,7 @@ Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, featured, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
-Requires At Least: 3.1
+Requires At Least: 3.5
 Tested Up To: 4.6.1
 Stable Tag: 3.36.2-1
 
@@ -355,6 +355,7 @@ Official announcement: N/A
 	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
 	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
 	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache for Pinterest by storing 1 transient instead of 2.
+	* Minimum requirements updated to WP v3.5 and PHP v5.4.
 
 **Version 3.36.2-1 (2016/10/17)**
 
