@@ -349,7 +349,7 @@ Official announcement: N/A
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed HTML table syntax in the Tumblr settings metabox.
+	* None
 * *Developer Notes*
 	* Minimum requirements updated to WP v3.5 and PHP v5.4.
 	* Renamed the Social Settings 'header' index name to 'text'.
