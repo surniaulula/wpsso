@@ -815,7 +815,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'wp' => array(				// wordpress
-				'min_version' => '3.0',		// minimum wordpress version
+				'min_version' => '3.5',		// minimum wordpress version
 				'cm' => array(
 					'aim' => 'AIM',
 					'jabber' => 'Google Talk',
@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'php' => array(				// php
-				'min_version' => '5.2.0',	// minimum php version
+				'min_version' => '5.4.0',	// minimum php version
 			),
 			'form' => array(
 				'og_img_col_width' => '70px',
