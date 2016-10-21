@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.3-dev1 (2016/10/20)**
+**Version 3.36.3-rc1 (2016/10/20)**
 
 Official announcement: N/A
 
@@ -354,7 +354,7 @@ Official announcement: N/A
 	* Renamed the Social Settings 'header' index name to 'text'.
 	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
 	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
-	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache by storing 1 transient instead of 2.
+	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache for Pinterest by storing 1 transient instead of 2.
 
 **Version 3.36.2-1 (2016/10/17)**
 
@@ -394,9 +394,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.36.3-dev1 =
+= 3.36.3-rc1 =
 
-(2016/10/20) Optimized the head meta transient cache value (storing 1 transient instead of 2).
+(2016/10/20) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2).
 
 = 3.36.2-1 =
 
