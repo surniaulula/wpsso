@@ -56,7 +56,7 @@
 'wpsso_json_data_https_schema_org_{item_type}' ( false, $mod, $mt_og, $user_id, $is_main );
 'wpsso_json_is_main_entity' ( $bool, $mod, $mt_og, $post_id, $user_id );
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
-'wpsso_json_prop_https_schema_org_aggregaterating' ( $rating, $mod );
+'wpsso_json_prop_https_schema_org_aggregaterating' ( $rating, $mod, $mt_og, $user_id, $is_main );
 'wpsso_link_rel' ( $link_rel, $use_post, $mod );
 'wpsso_load_lib' ( false, "$type/$sub/$id" );
 'wpsso_meta_name' ( $meta_name, $use_post, $mod );
