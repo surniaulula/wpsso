@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-10-20 12:45-0700\n"
-"PO-Revision-Date: 2016-10-20 12:54-0700\n"
+"POT-Creation-Date: 2016-10-22 09:44-0700\n"
+"PO-Revision-Date: 2016-10-22 09:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -917,11 +917,13 @@ msgid "Bitly URL Shortener"
 msgstr "Raccourcisseur de Lien Bitly"
 
 #: lib/gpl/admin/advanced.php:285 lib/pro/admin/advanced.php:279
+#: lib/pro/util/shorten.php:77
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr "Nom d’utilisateur Bitly"
 
 #: lib/gpl/admin/advanced.php:290 lib/pro/admin/advanced.php:284
+#: lib/pro/util/shorten.php:86
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr "Jeton d’accès générique Bitly"
@@ -942,6 +944,7 @@ msgid "Google APIs"
 msgstr "APIs Google"
 
 #: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:298
+#: lib/pro/util/shorten.php:107
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr "App BrowserKey du projet Google"
@@ -957,6 +960,7 @@ msgid "Ow.ly URL Shortener"
 msgstr "Raccourcisseur de Lien Ow.ly"
 
 #: lib/gpl/admin/advanced.php:319 lib/pro/admin/advanced.php:313
+#: lib/pro/util/shorten.php:129
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr "La Clé d’API pour Ow.ly"
@@ -967,6 +971,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr "Your Own URL Shortener (YOURLS)"
 
 #: lib/gpl/admin/advanced.php:328 lib/pro/admin/advanced.php:322
+#: lib/pro/util/shorten.php:160
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr "URL de l'API YOURLS"
@@ -2057,7 +2062,30 @@ msgstr "%1$s inclut un attribut supplémentaire ‘data-wp-pid’ pour les image
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L’image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
-#: lib/pro/util/shorten.php:165
+#: lib/pro/util/shorten.php:76 lib/pro/util/shorten.php:106
+#: lib/pro/util/shorten.php:128 lib/pro/util/shorten.php:159
+msgid "The %s option is empty."
+msgstr "L'option %s est vide."
+
+#: lib/pro/util/shorten.php:85
+msgid "The %1$s and %2$s options are empty &mdash; at least one option is required."
+msgstr "Les options %1$s et %2$s sont vides &mdash; au moins une option est nécessaire."
+
+#: lib/pro/util/shorten.php:87
+msgctxt "option label"
+msgid "Bitly API Key"
+msgstr "Clé d’API pour Bitly"
+
+#: lib/pro/util/shorten.php:113
+msgid "The %s option is not enabled."
+msgstr "L'option %s n'est pas activée."
+
+#: lib/pro/util/shorten.php:114
+msgctxt "option label"
+msgid "Google URL Shortener API"
+msgstr "API raccourcissement Google"
+
+#: lib/pro/util/shorten.php:189
 msgid "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr "Identifiants API incomplet ou manquant pour le service de raccourcissement d'URL %s."
 
@@ -2680,38 +2708,38 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:902
+#: lib/util.php:903
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr "Taille d'image récupérée par HTTP pour %1$s (%2$s)."
 
-#: lib/util.php:1328
+#: lib/util.php:1331
 msgid "Failed to open directory %s for reading."
 msgstr "Impossible d’ouvrir le répertoire %s pour lecture."
 
-#: lib/util.php:1336
+#: lib/util.php:1339
 msgid "Error removing file %s."
 msgstr "Erreur de suppression du fichier %s."
 
-#: lib/util.php:1615
+#: lib/util.php:1618
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:1641
+#: lib/util.php:1644
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1645
+#: lib/util.php:1648
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1648
+#: lib/util.php:1651
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1652
+#: lib/util.php:1655
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
