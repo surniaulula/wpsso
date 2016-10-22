@@ -399,7 +399,3 @@ Official announcement: N/A
 
 (2016/10/22) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2). Minimum requirements updated to WP v3.5 and PHP v5.4.
 
-= 3.36.2-1 =
-
-(2016/10/17) Changed all http://surniaulula.com/ URLs to https. Added transient caching of results when fetching size information for image URLs. Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
-
