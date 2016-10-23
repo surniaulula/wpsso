@@ -42,6 +42,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$defs =& $this->p->cf['opt']['defaults'];	// shortcut
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'get_defaults filter' );	// start
 
 				$defs = $this->p->util->add_ptns_to_opts( $defs, 
 					array( 'plugin_add_to' => 1, 'schema_type_for' => 'webpage' ) );
@@ -62,15 +64,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_defaults filter' );	// start
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'applying get_defaults filter' );
-				}
 
 				$defs = apply_filters( $lca.'_get_defaults', $defs );
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->mark( 'get_defaults filter' );	// end
 
 				if ( self::$allow_cache ) {
 					if ( $this->p->debug->enabled )
@@ -79,8 +76,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'options_filtered value unchanged' );
 
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'get_defaults filter skipped' );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'get_defaults filter' );	// end
+
+			}
 
 			if ( $idx !== false ) {
 				if ( isset( $defs[$idx] ) )

@@ -21,6 +21,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		public function get( $idx = false, $info = array() ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array(
+					'idx' => $idx,
+					'info' => $info,
+				) );
+			}
 
 			if ( is_string( $info ) ) {
 				$text = $info;
@@ -143,6 +149,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Priority Media' settings
 						 */
 						case 'tooltip-og_img_dimensions':
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting defaults for og_img (width, height, crop)' );
 							$def_dimensions = $this->p->opt->get_defaults( 'og_img_width' ).'x'.
 								$this->p->opt->get_defaults( 'og_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
@@ -491,10 +499,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select \'0\', then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
 							break;
 						case 'tooltip-schema_img_dimensions':
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting defaults for schema_img (width, height, crop)' );
 							$def_dimensions = $this->p->opt->get_defaults( 'schema_img_width' ).'x'.
 								$this->p->opt->get_defaults( 'schema_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
-
 							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$def_dimensions.'). The minimum image width required by Google is 696px for the resulting resized image. If you do not choose to crop this image size, make sure the height value is large enough for portrait / vertical images.';
 							break;
 						case 'tooltip-schema_desc_len':
@@ -544,6 +553,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The Twitter Card type for all other images (default, image from content text, etc).';
 							break;
 						case 'tooltip-tc_sum_dimensions':
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting defaults for tc_sum (width, height, crop)' );
 							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_width' ).'x'.
 								$this->p->opt->get_defaults( 'tc_sum_height' ).' '.
 								( $this->p->opt->get_defaults( 'tc_sum_crop' ) == 0 ? 'uncropped' : 'cropped' );
@@ -551,6 +562,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The dimension of content images provided for the <a href="https://dev.twitter.com/docs/cards/types/summary-card" target="_blank">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
 							break;
 						case 'tooltip-tc_lrgimg_dimensions':
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting defaults for tc_lrgimg (width, height, crop)' );
 							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrgimg_width' ).'x'.
 								$this->p->opt->get_defaults( 'tc_lrgimg_height' ).' '.
 								( $this->p->opt->get_defaults( 'tc_lrgimg_crop' ) == 0 ? 'uncropped' : 'cropped' );

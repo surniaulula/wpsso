@@ -14,6 +14,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$this->p->util->add_plugin_filters( $this, array( 
 				'og_author_rows' => 2,	// $table_rows, $form
 				'og_videos_rows' => 2,	// $table_rows, $form
@@ -21,6 +24,8 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 		}
 
 		public function filter_og_author_rows( $table_rows, $form ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
@@ -33,6 +38,8 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 		}
 
 		public function filter_og_videos_rows( $table_rows, $form ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				'<p>'.__( 'Video discovery and integration modules are provided with the Pro version.',
