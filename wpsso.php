@@ -156,7 +156,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) ) {
 				$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 				if ( $this->debug->enabled ) {
-					$this->debug->log( 'debug enabled' );
+					$this->debug->log( 'debug enabled on '.date( 'c' ) );
 					$this->debug->log( $this->check->get_ext_list() );
 				}
 			} else $this->debug = new SucomNoDebug();			// make sure debug property is always available
