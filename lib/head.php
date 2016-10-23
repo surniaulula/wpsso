@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Generator meta tags
 			 */
-			$mt_gen['generator'] = $this->get_mt_gen();
+			$mt_gen['generator'] = $this->p->check->get_ext_list();
 
 			/*
 			 * Combine and return all meta tags
@@ -650,20 +650,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 			return $parts;
-		}
-
-		private function get_mt_gen() {
-			$mt_gen = array();
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) )	// only active extensions
-					continue;
-				$ins = $this->p->check->aop( $ext, false );
-				$mt_gen[] = $info['short'].( $ins ? ' Pro' : '' ).
-					' '.$info['version'].'/'.( $this->p->check->aop( $ext,
-						true, $this->p->is_avail['aop'] ) ?
-							'L' : ( $ins ? 'U' : 'G' ) );
-			}
-			return $mt_gen;
 		}
 	}
 }

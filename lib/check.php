@@ -301,6 +301,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $ret;
 		}
 
+		public function get_ext_list() {
+			$ext_list = array();
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( empty( $info['version'] ) )	// only active extensions
+					continue;
+				$ins = $this->aop( $ext, false );
+				$ext_list[] = $info['short'].( $ins ? ' Pro' : '' ).' '.$info['version'].'/'.
+					( $this->aop( $ext, true, $this->p->is_avail['aop'] ) ? 'L' : 
+						( $ins ? 'U' : 'G' ) );
+			}
+			return $ext_list;
+		}
+
 		private function has_optval( $opt_name ) { 
 			if ( ! empty( $opt_name ) && 
 				! empty( $this->p->options[$opt_name] ) && 
