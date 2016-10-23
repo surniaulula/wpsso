@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							} elseif ( $this->p->debug->enabled )
 								$this->p->debug->log( 'invalid classname for '.$ext.' '.$type.'/'.$sub.'/'.$id );
 						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( 'feature ['.$sub.']['.$id.'] is not available' );
+							$this->p->debug->log( 'is_avail check for ['.$sub.']['.$id.'] is false' );
 					}
 				}
 			}
