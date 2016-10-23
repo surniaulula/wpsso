@@ -51,11 +51,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					if ( $sub === 'admin' ) {
 						if ( ! is_admin() ) {	// load admin sub-folder only in back-end
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'skipping '.$admin.' folder: not in admin back-end' );
+								$this->p->debug->log( 'ignoring '.$ext.' '.$type.'/'.$sub.': not in admin back-end' );
 							continue;
 						} elseif ( $type === 'gpl' && ! empty( $this->p->options['plugin_hide_pro'] ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'skipping '.$admin.' folder: pro features are hidden' );
+								$this->p->debug->log( 'ignoring '.$ext.' '.$type.'/'.$sub.': pro features hidden' );
 							continue;
 						}
 					}
@@ -92,9 +92,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								} elseif ( $this->p->debug->enabled )
 									$this->p->debug->log( 'classname '.$classname.' does not exist' );
 							} elseif ( $this->p->debug->enabled )
-								$this->p->debug->log( 'invalid classname for '.$ext.' '.$type.'/'.$sub.'/'.$id_key );
+								$this->p->debug->log( 'invalid classname for '.$ext.' '.$type.'/'.$sub.'/'.$id );
 						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( 'lib ['.$sub.']['.$id.'] not available' );
+							$this->p->debug->log( 'feature ['.$sub.']['.$id.'] is not available' );
 					}
 				}
 			}
