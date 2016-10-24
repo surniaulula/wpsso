@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.3-2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-10-24 14:17-0700\n"
-"PO-Revision-Date: 2016-10-24 14:18-0700\n"
+"PO-Revision-Date: 2016-10-24 14:33-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1684,7 +1684,7 @@ msgstr "<a href=\"%s\">Si vous utilisez des shortcodes dans votre contenu, cette
 
 #: lib/messages.php:770
 msgid "At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Google and Pinterest."
-msgstr "Au moins un modèle header de votre thème ne supporte pas les balises de schéma d'en-têtes de page Web &mdash;  ceci est particulièrement important pour Google et Pinterest."
+msgstr "Au moins un modèle header de votre thème ne supporte pas les balises de schéma d'en-têtes de page Web &mdash; ceci est particulièrement important pour Google et Pinterest."
 
 #: lib/messages.php:770
 msgid "The %s element in your header templates should include a function, action, or filter for its attributes."
