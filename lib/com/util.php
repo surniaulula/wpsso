@@ -1277,7 +1277,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
-			$text = preg_replace( '/<\?.*\?>/U', ' ', $text);				// remove php
+			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
 			$text = preg_replace( '/<!--'.$this->p->cf['lca'].'-ignore-->(.*?)<!--\/'.
@@ -1326,16 +1326,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $text;
 		}
 
-		public static function get_stripped_php( $file ) {
+		public static function get_stripped_php( $file_path ) {
 			$ret = '';
-			if ( file_exists( $file ) ) {
-				$php = file_get_contents( $file );
+			if ( file_exists( $file_path ) ) {
+				$content = file_get_contents( $file_path );
 				$comments = array( T_COMMENT ); 
 				if ( defined( 'T_DOC_COMMENT' ) )
 					$comments[] = T_DOC_COMMENT;	// php 5
 				if ( defined( 'T_ML_COMMENT' ) )
 					$comments[] = T_ML_COMMENT;	// php 4
-				$tokens = token_get_all( $php );
+				$tokens = token_get_all( $content );
 				foreach ( $tokens as $token ) {
 					if ( is_array( $token ) ) {
 						if ( in_array( $token[0], $comments ) )

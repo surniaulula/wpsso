@@ -72,7 +72,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log( 'args '.self::pretty_array( $arr, true ), $class_idx, $function_idx );
 		}
 
-		public function log_arr( $name, array $arr, $class_idx = 1, $function_idx = false ) {
+		public function log_arr( $prefix, $mixed, $class_idx = 1, $function_idx = false ) {
 			if ( $this->enabled !== true ) 
 				return;
 
@@ -87,7 +87,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			elseif ( $function_idx === false )
 				$function_idx = 2;
 
-			$this->log( $name.' '.trim( print_r( self::pretty_array( $arr ), true ) ), $class_idx, $function_idx );
+			if ( is_object( $mixed ) ) {
+				$prefix = trim( $prefix.' '.get_class( $obj ).' object vars' );
+				$mixed = get_object_vars( $mixed );
+			}
+
+			if ( is_array( $mixed ) )
+				$this->log( $prefix.' '.trim( print_r( self::pretty_array( $mixed, false ), true ) ), $class_idx, $function_idx );
+			else $this->log( $prefix.' '.$mixed, $class_idx, $function_idx );
 		}
 
 		public function log( $input = '', $class_idx = 1, $function_idx = false ) {
