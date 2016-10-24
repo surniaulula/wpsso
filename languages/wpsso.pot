@@ -2015,8 +2015,8 @@ msgstr ""
 #: lib/messages.php:770
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
-"of the webpage head section &mdash; this is especially important for "
-"Pinterest."
+"of the webpage head section &mdash; this is especially important for Google "
+"and Pinterest."
 msgstr ""
 
 #: lib/messages.php:770
