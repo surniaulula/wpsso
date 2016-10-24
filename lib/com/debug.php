@@ -88,7 +88,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$function_idx = 2;
 
 			if ( is_object( $mixed ) ) {
-				$prefix = trim( $prefix.' '.get_class( $obj ).' object vars' );
+				$prefix = trim( $prefix.' '.get_class( $mixed ).' object vars' );
 				$mixed = get_object_vars( $mixed );
 			}
 
