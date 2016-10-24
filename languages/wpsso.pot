@@ -367,25 +367,25 @@ msgid ""
 "in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1420
+#: lib/admin.php:1422
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1427
+#: lib/admin.php:1429
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1436
+#: lib/admin.php:1438
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1443
+#: lib/admin.php:1445
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1456
+#: lib/admin.php:1458
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""

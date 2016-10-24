@@ -1396,8 +1396,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false )
 						continue;
 					elseif ( strpos( $html, '<head>' ) !== false ) {
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
+						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
+								true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
+						}
 						break;
 					}
 				}
