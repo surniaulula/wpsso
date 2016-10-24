@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.3-1 (2016/10/22)**
+**Version 3.36.3-2 (2016/10/23)**
 
 Official announcement: N/A
 
@@ -395,7 +395,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.36.3-1 =
+= 3.36.3-2 =
 
-(2016/10/22) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2). Minimum requirements updated to WP v3.5 and PHP v5.4.
+(2016/10/23) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2). Minimum requirements updated to WP v3.5 and PHP v5.4.
 
