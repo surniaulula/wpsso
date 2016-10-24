@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
 						}
-					} else {
+					} elseif ( empty( $opts['plugin_'.$lca.'_tid'] ) ) {
 						foreach ( array(
 							'plugin_filter_content' => 0,
 							'plugin_check_head' => 1,
