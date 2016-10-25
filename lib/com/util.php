@@ -1602,6 +1602,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::get_request_value( 'return', 'GET' ) === 'edit' )
 			) ? true : false;
 		}
+
+		public static function is_true( $mixed, $allow_null = false ) {
+			$ret_bool = is_string( $mixed ) ?
+				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
+		        return $ret_bool === null && ! $allow_null ?
+				false : $ret_bool;
+		}
+
+		// converts string to boolean
+		public static function get_bool( $mixed ) {
+			return is_string( $mixed ) ? 
+				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
+		}
 	}
 }
 

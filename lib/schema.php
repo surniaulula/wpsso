@@ -289,29 +289,40 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function &get_schema_types( $flatten = true ) {
 			if ( ! isset( $this->schema_types['filtered'] ) ) {	// check class property cache
 				$lca = $this->p->cf['lca'];
-				$cache_salt = __METHOD__;
-				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->is_avail['cache']['transient'] ) {
+					$cache_salt = __METHOD__;
+					$cache_id = $lca.'_'.md5( $cache_salt );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'transient cache salt '.$cache_salt );
 					$this->schema_types = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->schema_types ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'using schema types from transient cache' );
+							$this->p->debug->log( 'using schema type arrays from transient cache' );
 					}
-				}
+				} else $cache_id = false;
+
 				if ( ! isset( $this->schema_types['filtered'] ) ) {	// from transient cache or not, check if filtered
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'filtering schema types and creating derivative arrays' );
+						$this->p->debug->mark( 'create schema type arrays' );
 					$this->schema_types['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
 					$this->schema_types['flattened'] = SucomUtil::array_flatten( $this->schema_types['filtered'] );
 					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
 					ksort( $this->schema_types['flattened'] );
 					ksort( $this->schema_types['parent_index'] );
-					if ( $this->p->is_avail['cache']['transient'] )
-						set_transient( $cache_id, $this->schema_types, $this->p->options['plugin_object_cache_exp'] );
+					if ( $cache_id !== false ) {
+						$cache_exp = (int) apply_filters( $lca.'_schema_types_cache_expire',
+							$this->p->options['plugin_object_cache_exp'] * 3 );
+						set_transient( $cache_id, $this->schema_types, $cache_exp );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'schema type arrays saved to transient '.
+								$cache_id.' ('.$cache_exp.' seconds)');
+					}
+					if ( $this->p->debug->enabled )
+						$this->p->debug->mark( 'create schema type arrays' );
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'schema types array already filtered' );
+					$this->p->debug->log( 'schema type arrays already filtered' );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'using schema types from class property cache' );
+				$this->p->debug->log( 'using schema type arrays from class property cache' );
 			if ( $flatten )
 				return $this->schema_types['flattened'];
 			else return $this->schema_types['filtered'];
@@ -441,8 +452,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $head_type_url ) )
 				$type_ids[$head_type_id] = true;
 
-			// include WebSite, Organization, and/or Person on the home page (static or non-static)
-			if ( $mod['is_home'] ) {	// static or index page
+			// include WebSite, Organization, and/or Person on the home page
+			if ( $mod['is_home'] ) {	// static or archive page
 				$type_ids['website'] = $this->p->options['schema_website_json'];
 				$type_ids['organization'] = $this->p->options['schema_organization_json'];
 				$type_ids['person'] = $this->p->options['schema_person_json'];
@@ -461,6 +472,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $type_ids as $top_type_id => $is_enabled ) {
 
 				$json_data = null;
+				$parent_urls = array();
 				$top_type_url = $this->get_schema_type_url( $top_type_id );
 				$top_filter_name = SucomUtil::sanitize_hookname( $top_type_url );
 
@@ -484,12 +496,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'is_main_entity: '.( $is_main ? 'true' : 'false' ) );
 
-				// add https_schema_org first as a generic / common data filter
-				$parent_urls = array( 'https://schema.org' );
-
 				// returns an array of type ids with gparents, parents, child (in that order)
 				foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
 					$parent_urls[] = $this->get_schema_type_url( $rel_type_id );
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log_arr( 'parent_urls', $parent_urls );
 
 				foreach ( $parent_urls as $rel_type_url ) {
 					$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
@@ -497,8 +509,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$filtered_names[$rel_filter_name] = true;	// prevent duplicate branches
 
 					// add website, organization, and person markup to home page
-					if ( $mod['is_home'] && ! $has_filter &&
-						method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
+					if ( $mod['is_home'] && ! $has_filter && method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
 	
 						if ( $is_enabled ) {
 							if ( $this->p->debug->enabled )
