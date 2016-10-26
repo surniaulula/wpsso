@@ -754,7 +754,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_cache_file_url( $url, $url_ext = '' ) {
-
 			if ( empty( $this->p->options['plugin_file_cache_exp'] ) ||
 				! isset( $this->p->cache->base_dir ) )	// check for cache attribute, just in case
 					return $url;
@@ -1346,58 +1345,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		// get remote url content, with fallback to local file content
-		// used by the WpssoSubmenuSetup::show_metabox_guide() method for the Setup Guide
-		public function get_remote_content( $url = '', $file_path = '', $version = '', $expire_secs = 86400 ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'url' => $url,
-					'file_path' => $file_path,
-					'version' => $version,
-					'expire_secs' => $expire_secs,
-				) );
-			}
-
-			$content = false;
-			$get_remote = empty( $url ) ? false : true;
-
-			if ( $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'(url:'.$url.'_file_path:'.$file_path.'_version:'.$version.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				$content = get_transient( $cache_id );
-				if ( $content !== false ) {
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'content retrieved from transient '.$cache_id );
-					return $content;	// stop here
-				}
-			} else $cache_id = $get_remote = false;
-
-			if ( $get_remote !== false && $expire_secs > 0 ) {
-				$content = $this->p->cache->get( $url, 'raw', 'file', $expire_secs );
-				if ( empty( $content ) )
-					$get_remote = false;
-			} else $get_remote = false;
-
-			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file_path ) );
-				fclose( $fh );
-			}
-
-			if ( $cache_id !== false ) {
-				set_transient( $cache_id, $content, $this->p->options['plugin_object_cache_exp'] );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'content saved to transient '.$cache_id.
-						' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
-			}
-
-			return $content;
-		}
-
-		public function parse_readme( $ext, $expire_secs = 86400, $use_cache = true ) {
-
+		public function get_setup_content( $ext, $expire_secs = 86400, $use_cache = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
@@ -1408,63 +1356,107 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required for readme path' );
+					$this->p->debug->log( strtoupper( $ext ).
+						'_PLUGINDIR is undefined and required' );
+				return false;
+			}
+
+			$content = false;
+			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
+			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup'] ) ? 
+				$this->p->cf['plugin'][$ext]['url']['setup'] : '';
+			$get_remote = empty( $file_url ) ? false : true;	// fetch setup guide from repo if possible
+
+			if ( $this->p->is_avail['cache']['transient'] )
+				$get_remote = false;
+
+			// get remote setup.html file
+			if ( $get_remote !== false && $expire_secs > 0 ) {
+				if ( ! $use_cache )
+					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
+				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
+				if ( empty( $content ) )
+					$get_remote = false;
+			} else $get_remote = false;
+
+			// fallback to local setup.html file
+			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+				$content = fread( $fh, filesize( $file_path ) );
+				fclose( $fh );
+			}
+
+			return $content;
+		}
+
+		public function get_readme_info( $ext, $expire_secs = 86400, $use_cache = true ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'ext' => $ext,
+					'expire_secs' => $expire_secs,
+					'use_cache' => $use_cache,
+				) );
+			}
+
+			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( strtoupper( $ext ).
+						'_PLUGINDIR is undefined and required' );
 				return array();
 			}
 
-			$plugin_info = array();
-			$readme_txt = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
-			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? 
+			$readme_info = array();
+			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
+			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? 
 				$this->p->cf['plugin'][$ext]['url']['readme'] : '';
-			$get_remote = empty( $readme_url ) ? false : true;	// fetch readme from repo if possible
+			$get_remote = empty( $file_url ) ? false : true;	// fetch readme from repo if possible
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'(url:'.$readme_url.'_txt:'.$readme_txt.')';
+				$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
 				$cache_id = $ext.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				$plugin_info = $use_cache ? get_transient( $cache_id ) : false;
-				if ( is_array( $plugin_info ) ) {
+				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
+				if ( is_array( $readme_info ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'plugin_info retrieved from transient '.$cache_id );
-					return $plugin_info;	// stop here
+						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
+					return $readme_info;	// stop here
 				}
 			} else $cache_id = $get_remote = false;
 
 			// get remote readme.txt file
 			if ( $get_remote !== false && $expire_secs > 0 ) {
 				if ( ! $use_cache )
-					$this->p->cache->clear( $readme_url );	// clear the wp object, transient, and file cache
-				$content = $this->p->cache->get( $readme_url, 'raw', 'file', $expire_secs );
+					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
+				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
 				if ( empty( $content ) )
 					$get_remote = false;
 			} else $content = false;
 
 			// fallback to local readme.txt file
-			if ( $get_remote === false && ! empty( $readme_txt ) && $fh = @fopen( $readme_txt, 'rb' ) ) {
-				$content = fread( $fh, filesize( $readme_txt ) );
+			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+				$content = fread( $fh, filesize( $file_path ) );
 				fclose( $fh );
 			}
 
 			if ( ! empty( $content ) ) {
 				$parser = new SuextParseReadme( $this->p->debug );
-				$plugin_info = $parser->parse_readme_contents( $content );
+				$readme_info = $parser->parse_readme_contents( $content );
 				// remove possibly inaccurate information from local file
-				if ( is_array( $plugin_info ) && $get_remote === false ) {
+				if ( is_array( $readme_info ) && $get_remote === false ) {
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key )
-						unset ( $plugin_info[$key] );
+						unset ( $readme_info[$key] );
 				}
 			}
 
 			// save the parsed readme to the transient cache
 			if ( $cache_id !== false ) {
-				set_transient( $cache_id, $plugin_info, $this->p->options['plugin_object_cache_exp'] );
+				set_transient( $cache_id, $readme_info, $this->p->options['plugin_object_cache_exp'] );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'plugin_info saved to transient '.$cache_id.
+					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.
 						' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
 			}
 
-			return (array) $plugin_info;	// just in case
+			return (array) $readme_info;	// just in case
 		}
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {

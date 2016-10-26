@@ -116,15 +116,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->cf['lca'].'_setting', 
-				WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, 
+				array( &$this, 'registered_setting_sanitation' ) );
 		} 
 
 		public static function set_readme_info( $expire_secs = 86400, $use_cache = true ) {
 			$wpsso =& Wpsso::get_instance();
 			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
 				if ( empty( self::$readme_info[$ext] ) )
-					self::$readme_info[$ext] = $wpsso->util->parse_readme( $ext, $expire_secs, $use_cache );
+					self::$readme_info[$ext] = $wpsso->util->get_readme_info( $ext, $expire_secs, $use_cache );
 			}
 		}
 
@@ -410,7 +410,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {
 								// refresh the readme info
-								WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'], false );	// $use_cache = false
+								WpssoAdmin::set_readme_info( $this->p->cf['readme_cache_exp'], false );	// $use_cache = false
 
 								$wpssoum =& WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
@@ -694,7 +694,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_version_info() {
 
-			WpssoAdmin::set_readme_info( $this->p->cf['feed_cache_exp'] );
+			WpssoAdmin::set_readme_info( $this->p->cf['readme_cache_exp'] );
 
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {

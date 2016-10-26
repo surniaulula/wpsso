@@ -74,7 +74,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_head_use_post', false );	// used by woocommerce with is_shop()
 			$mod = $this->p->util->get_page_mod( $use_post );
-			$head_type_url = $this->get_head_item_type( $mod );
+			$head_type_id = $this->get_head_item_type( $mod, true );	// $return_id = true
+			$head_type_url = $this->get_schema_type_url( $head_type_id );
 
 			if ( empty( $head_type_url ) ) {
 				if ( $this->p->debug->enabled )
@@ -417,7 +418,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * JSON-LD Script Array
 		 */
-		public function get_json_array( $use_post, array &$mod, array &$mt_og, $user_id, $crawler_name ) {
+		public function get_json_array( array &$mod, array &$mt_og, $crawler_name ) {
 
 			// pinterest does not (currently) read json markup
 			switch ( $crawler_name ) {
@@ -433,26 +434,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$type_ids = array();
-			$filtered_names = array();	// prevent duplicate branches
+			$filtered_names = array();	// prevent duplicate top-level schema types
 
-			// example: article.tech
-			$mt_og['schema:type:id'] = $head_type_id = $this->get_head_item_type( $mod, true );
-
-			// example: https://schema.org/TechArticle
-			$mt_og['schema:type:url'] = $head_type_url = $this->get_schema_type_url( $head_type_id );
-
-			// example: https://schema.org, TechArticle
+			$head_type_id = $mt_og['schema:type:id'] = $this->get_head_item_type( $mod, true );		// example: article.tech
+			$head_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $head_type_id );	// example: https://schema.org/TechArticle
 			list( $mt_og['schema:type:context'],
-				$mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type_url );
+				$mt_og['schema:type:name'] ) = self::get_item_type_parts( $head_type_url );		// example: https://schema.org, TechArticle
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'head_type: '.$head_type_url.' ('.$head_type_id.')' );
+				$this->p->debug->log( 'head schema type is '.$head_type_url.' ('.$head_type_id.')' );
 
 			// include first
 			if ( ! empty( $head_type_url ) )
 				$type_ids[$head_type_id] = true;
 
-			// include WebSite, Organization, and/or Person on the home page
+			// also include WebSite, Organization, and/or Person on the home page
 			if ( $mod['is_home'] ) {	// static or archive page
 				$type_ids['website'] = $this->p->options['schema_website_json'];
 				$type_ids['organization'] = $this->p->options['schema_organization_json'];
@@ -461,84 +457,78 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/*
 			 * Array (
-			 *	[restaurant] => 1
-			 *	[website] => 1
-			 *	[organization] => 1
-			 *	[person] => 1
+			 *	[product] => true
+			 *	[website] => true
+			 *	[organization] => true
+			 *	[person] => false
 			 * )
 			 */
-			$type_ids = apply_filters( $lca.'_json_array_type_ids', $type_ids, $mod );
+			$type_ids = apply_filters( $lca.'_json_array_schema_type_ids', $type_ids, $mod );
 
-			foreach ( $type_ids as $top_type_id => $is_enabled ) {
+			foreach ( $type_ids as $type_id => $is_enabled ) {
+
+				if ( ! $is_enabled ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (disabled)' );
+					continue;
+				} elseif ( ! empty( $filtered_names[$type_id] ) ) {	// prevent duplicate top-level schema types
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (previously added)' );
+					continue;
+				} else $filtered_names[$type_id] = true;
+
+				if ( $this->p->debug->enabled )
+					$this->p->debug->mark( 'schema type_id '.$type_id );	// begin timer
 
 				$json_data = null;
 				$parent_urls = array();
-				$top_type_url = $this->get_schema_type_url( $top_type_id );
-				$top_filter_name = SucomUtil::sanitize_hookname( $top_type_url );
+				$type_url = $this->get_schema_type_url( $type_id );
+				$filter_name = SucomUtil::sanitize_hookname( $type_url );
 
-				if ( ! empty( $filtered_names[$top_filter_name] ) ) {	// prevent duplicate branches
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'skipping '.$top_filter_name.': type or sub-type previously added' );
-					continue;
-				}
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->mark( $top_type_id.' schema' );	// begin timer for schema json
-
-				$is_main = $mod['obj'] ?
+				$is_main = is_object( $mod['obj'] ) ?	// just in case
 					$mod['obj']->get_options( $mod['id'], 'schema_is_main' ) : null;
 
 				if ( $is_main === null )
-					$is_main = $top_type_id === $head_type_id ? true : false;
-
-				$is_main = apply_filters( $lca.'_json_is_main_entity', $is_main, $mod, $mt_og, $user_id );
+					$is_main = $type_id === $head_type_id ? true : false;
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'is_main_entity: '.( $is_main ? 'true' : 'false' ) );
+					$this->p->debug->log( 'is_main entity is '.( $is_main ? 'true' : 'false' ) );
 
 				// returns an array of type ids with gparents, parents, child (in that order)
-				foreach ( $this->get_schema_type_parents( $top_type_id ) as $rel_type_id )
+				foreach ( $this->get_schema_type_parents( $type_id ) as $rel_type_id )
 					$parent_urls[] = $this->get_schema_type_url( $rel_type_id );
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log_arr( 'parent_urls', $parent_urls );
+					$this->p->debug->log_arr( 'schema type_id '.$type_id.' parent_urls', $parent_urls );
 
 				foreach ( $parent_urls as $rel_type_url ) {
 					$rel_filter_name = SucomUtil::sanitize_hookname( $rel_type_url );
-					$has_filter = has_filter( $lca.'_json_data_'.$rel_filter_name );
-					$filtered_names[$rel_filter_name] = true;	// prevent duplicate branches
+					$has_filter = has_filter( $lca.'_json_data_'.$rel_filter_name );	// check only once
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'rel_filter_name '.$rel_filter_name );
 
 					// add website, organization, and person markup to home page
 					if ( $mod['is_home'] && ! $has_filter && method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
-	
-						if ( $is_enabled ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'calling class method '.$rel_filter_name );
-							$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
-								$json_data, $mod, $mt_og, $user_id, false );	// $is_main = always false for method
-						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $rel_filter_name.' class method is disabled' );
+						$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
+							$json_data, $mod, $mt_og, $type_id, false );	// $is_main = always false for method
 					} elseif ( $has_filter ) {
-						if ( apply_filters( $lca.'_add_json_'.$rel_filter_name, $is_enabled ) ) {
-							$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
-								$json_data, $mod, $mt_og, $user_id, $is_main );
-						} elseif ( $this->p->debug->enabled )
-							$this->p->debug->log( $rel_filter_name.' filter is disabled' );
+						$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
+							$json_data, $mod, $mt_og, $type_id, $is_main );
 					} elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'no filters registered for '.$rel_filter_name );
 				}
 
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
-					// define the context and type properties for methods / filters that
-					// may not define them, or re-define them incorrectly
-					$json_data = self::get_item_type_context( $top_type_url, $json_data );
+					// define the context and type properties for methods / filters 
+					// that may not define them or re-defines them incorrectly
+					$json_data = self::get_item_type_context( $type_url, $json_data );
 					$ret[] = '<script type="application/ld+json">'.
 						$this->p->util->json_format( $json_data ).
 							'</script>'."\n";
 				}
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->mark( $top_type_id.' schema' );	// end timer for schema json
+					$this->p->debug->mark( 'schema type_id '.$type_id );	// end timer
 			}
 
 			$ret = SucomUtil::a2aa( $ret );	// convert to array of arrays
@@ -554,8 +544,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * https://schema.org/WebSite for Google
 		 */
-		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $user_id, $is_main ) {
-
+		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $type_id, $is_main ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -589,8 +578,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * https://schema.org/Organization social markup for Google
 		 */
-		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $user_id, $is_main ) {
-
+		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $type_id, $is_main ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -604,24 +592,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * https://schema.org/Person social markup for Google
 		 */
-		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $user_id, $is_main ) {
-
+		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $type_id, $is_main ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			if ( $mod['is_home'] ) {	// static or index page
 				if ( empty( $this->p->options['schema_person_id'] ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: no schema_person_id for front page' );
-					return $json_data;
+						$this->p->debug->log( 'exiting early: schema_person_id disabled for home page' );
+					return $json_data;	// exit early
 				} else {
 					$user_id = $this->p->options['schema_person_id'];
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'user_id for home page is '.$user_id );
 				}
-			} elseif ( empty( $user_id ) ) {
+			} elseif ( isset( $mod['is_user'] ) ) {
+				$user_id = $mod['id'];
+			} else $user_id = false;
+
+			if ( empty( $user_id ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: no user_id' );
+					$this->p->debug->log( 'exiting early: empty user_id' );
 				return $json_data;
 			}
 
@@ -770,7 +761,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $opts ) ) {	// $opts could be false or empty array
 				if ( $wpsso->debug->enabled )
-					$wpsso->debug->log( 'exiting early: no place options' );
+					$wpsso->debug->log( 'exiting early: empty place options' );
 				return 0;
 			}
 
@@ -880,7 +871,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $opts ) ) {	// $opts could be false or empty array
 				if ( $wpsso->debug->enabled )
-					$wpsso->debug->log( 'exiting early: no event options' );
+					$wpsso->debug->log( 'exiting early: empty event options' );
 				return 0;
 			}
 
@@ -959,7 +950,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
 		}
 
-		public static function add_single_person_data( &$json_data, &$mod, $user_id = false, $list_element = true ) {
+		// $user_id is required here
+		public static function add_single_person_data( &$json_data, &$mod, $user_id, $list_element = true ) {
 
 			if ( $user_id === 'none' )
 				return 0;
@@ -968,6 +960,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
 			if ( empty( $opts ) ) {	// $opts could be false or empty array
+
 				if ( empty( $user_id ) ) {
 					if ( $wpsso->debug->enabled )
 						$wpsso->debug->log( 'exiting early: empty user_id' );
@@ -1141,7 +1134,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Meta Name Array
 		 */
-		public function get_meta_array( $use_post, array &$mod, array &$mt_og, $crawler_name ) {
+		public function get_meta_array( array &$mod, array &$mt_og, $crawler_name ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -1155,7 +1148,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$head_type_url = $this->get_head_item_type( $mod );
+			$head_type_id = $this->get_head_item_type( $mod, true );	// $return_id = true
+			$head_type_url = $this->get_schema_type_url( $head_type_id );
 			$size_name = $this->p->cf['lca'].'-schema';
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
@@ -1183,7 +1177,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'skipping images: no duplicates for '.$crawler_name.' crawler' );
+					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
 			} elseif ( $this->is_noscript_enabled( $crawler_name ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'skipping images: noscript is enabled for '.$crawler_name );
@@ -1204,7 +1198,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $head_type_url );
+			return apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $head_type_id );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
@@ -1217,7 +1211,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * NoScript Meta Name Array
 		 */
-		public function get_noscript_array( array &$mod, array &$mt_og, $user_id, $crawler_name ) {
+		public function get_noscript_array( array &$mod, array &$mt_og, $crawler_name ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -1243,7 +1237,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'skipping images: no duplicates for '.$crawler_name.' crawler' );
+					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
 			} else {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting images for '.$head_type_url );

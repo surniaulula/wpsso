@@ -17,10 +17,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'uca' => 'WPSSO',		// uppercase acronym
 			'menu' => 'SSO',		// menu item label
 			'color' => '33cc33',		// menu item color - lime green
-			'feed_cache_exp' => 86400,	// 24 hours
+			'readme_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.36.4-dev1',	// plugin version
+					'version' => '3.37.0-dev1',	// plugin version
 					'opt_version' => '459',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',

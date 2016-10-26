@@ -239,7 +239,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
-			$author_id = false;
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
 			$head_index = $this->get_head_cache_index( $crawler_name );
@@ -278,12 +277,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $mod['is_post'] ) {
 				if ( $mod['post_author'] )
 					$author_id = $mod['post_author'];
-			} elseif ( $mod['is_user'] )
+				else $author_id = false;
+			} elseif ( $mod['is_user'] ) {
 				$author_id = $mod['id'];
+			} else $author_id = false;
 
-			if ( $author_id && 
-				$this->p->debug->enabled )
-					$this->p->debug->log( 'author_id is '.$author_id );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'author_id is '.
+					( $author_id === false ? 'false' : (int) $author_id ) );
 
 			/*
 			 * Open Graph
@@ -359,7 +360,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * JSON-LD script array - execute before merge to set some internal $mt_og meta tags
 			 */
-			$mt_json_array = $this->p->schema->get_json_array( $use_post, $mod, $mt_og, $author_id, $crawler_name );
+			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Clean-up open graph meta tags
@@ -393,7 +394,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),		// seo description is last
-				$this->p->schema->get_noscript_array( $mod, $mt_og, $author_id, $crawler_name ),
+				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
 				$mt_json_array
 			);
 

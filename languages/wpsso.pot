@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.36.4-"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.0-"
 "dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
@@ -2522,13 +2522,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:729
+#: lib/schema.php:720
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:732
+#: lib/schema.php:723
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
@@ -3158,38 +3158,38 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:904
+#: lib/util.php:903
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1331
+#: lib/util.php:1330
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1339
+#: lib/util.php:1338
 msgid "Error removing file %s."
 msgstr ""
 
-#: lib/util.php:1632
+#: lib/util.php:1624
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1658
+#: lib/util.php:1650
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1662
+#: lib/util.php:1654
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1665
+#: lib/util.php:1657
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1669
+#: lib/util.php:1661
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
