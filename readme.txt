@@ -351,9 +351,10 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Refactored the WpssoSchema::get_json_array() method for a slight performance improvement.
 	* Added https://schema.org/Thing to the Schema Types array.
-	* Renamed the 'wpsso_add_json_https_schema_org' filter to 'wpsso_add_json_https_schema_org_thing'.
 	* Renamed the 'wpsso_json_data_https_schema_org' filter to 'wpsso_json_data_https_schema_org_thing'.
+	* Removed the 'wpsso_add_json_https_schema_org' filter.
 
 **Version 3.36.3-2 (2016/10/23)**
 
