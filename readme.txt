@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.36.4-dev1 (TBD)**
+**Version 3.37.0-dev1 (TBD)**
 
 Official announcement: N/A
 
@@ -353,6 +353,8 @@ Official announcement: N/A
 * *Developer Notes*
 	* Refactored the WpssoSchema::get_json_array() method for a slight performance improvement.
 	* Added https://schema.org/Thing to the Schema Types array.
+	* Replaced the $user_id argument in all JSON data and property filters by the Schema $type_id.
+	* Renamed the 'wpsso_json_array_type_ids' filter to 'wpsso_json_array_schema_type_ids'.
 	* Renamed the 'wpsso_json_data_https_schema_org' filter to 'wpsso_json_data_https_schema_org_thing'.
 	* Removed the 'wpsso_add_json_https_schema_org' filter.
 
