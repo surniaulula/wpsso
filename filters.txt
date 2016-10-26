@@ -7,7 +7,6 @@
 'sucom_strip_shortcodes' ( $preg_array );
 'wpsso_add_schema_head_attributes' ( $bool );
 'wpsso_add_schema_meta_array' ( $bool );
-'wpsso_add_json_https_schema_org_{item_type}' ( $bool );
 'wpsso_add_meta_name_canonical' ( $bool );
 'wpsso_add_meta_name_description' ( $bool );
 'wpsso_add_metabox_post' ( $bool, $post_id, $post_type );
@@ -50,11 +49,10 @@
 'wpsso_image_url_sizes_cache_expire' ( $expire_secs, $media_url );
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
-'wpsso_json_array_type_ids' ( $type_ids, $mod );
-'wpsso_json_data_https_schema_org_{item_type}' ( false, $mod, $mt_og, $user_id, $is_main );
-'wpsso_json_is_main_entity' ( $bool, $mod, $mt_og, $post_id, $user_id );
+'wpsso_json_array_top_type_ids' ( $type_ids, $mod );
+'wpsso_json_data_https_schema_org_{item_type}' ( null, $mod, $mt_og, $user_id, $is_main, $top_type_id );
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
-'wpsso_json_prop_https_schema_org_aggregaterating' ( $rating, $mod, $mt_og, $user_id, $is_main );
+'wpsso_json_prop_https_schema_org_aggregaterating' ( $rating, $mod, $mt_og, $user_id, $is_main, $top_type_id );
 'wpsso_link_rel' ( $link_rel, $use_post, $mod );
 'wpsso_load_lib' ( false, "$type/$sub/$id" );
 'wpsso_meta_name' ( $meta_name, $use_post, $mod );
