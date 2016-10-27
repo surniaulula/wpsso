@@ -622,37 +622,60 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $array;
 		}
 
-		public static function before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+		// returns the modified array
+		public static function get_before_key( array $array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
 		}
 
-		public static function after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+		// returns the modified array
+		public static function get_after_key( array $array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
 		}
 
-		public static function replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+		// returns the modified array
+		public static function get_replace_key( array $array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
 		}
 
-		private static function insert_in_array( $rel_pos, &$array, &$match_key, &$mixed, &$add_value ) {
+		// modifies the references array directly, and returns true or false
+		public static function add_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
+		}
+
+		// modifies the references array directly, and returns true or false
+		public static function add_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
+		}
+
+		// modifies the references array directly, and returns true or false
+		public static function do_replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
+		}
+
+		private static function insert_in_array( $rel_pos, array &$array, $match_key, $mixed, $add_value ) {
+			$matched = false;
 			if ( array_key_exists( $match_key, $array ) ) {
 				$new_array = array();
 				foreach ( $array as $key => $value ) {
 					if ( $rel_pos === 'after' )
 						$new_array[$key] = $value;
+					// add new value before / after matched key
+					// replace matched key by default (no test required)
 					if ( $key === $match_key ) {
 						if ( is_array( $mixed ) )
 							$new_array = array_merge( $new_array, $mixed );
 						elseif ( is_string( $mixed ) )
 							$new_array[$mixed] = $add_value;
 						else $new_array[] = $add_value;
+						$matched = true;
 					}
 					if ( $rel_pos === 'before' )
 						$new_array[$key] = $value;
 				}
-				return $new_array;
+				$array = $new_array;
+				unset( $new_array );
 			}
-			return $array;
+			return $matched;
 		}
 
 		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {

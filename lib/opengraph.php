@@ -264,10 +264,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						// add richpin to process both image sizes
 						if ( is_admin() )
-							$img_sizes = SucomUtil::before_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
+							SucomUtil::add_before_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
 						// use only pinterest (rich pin) image size
 						elseif ( $crawler_name === 'pinterest' )
-							$img_sizes = SucomUtil::replace_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
+							SucomUtil::do_replace_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
 					}
 
 					foreach ( $img_sizes as $md_pre => $size_name ) {
