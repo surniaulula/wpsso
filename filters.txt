@@ -20,6 +20,7 @@
 'wpsso_author_object_description' ( $description, $author_obj );
 'wpsso_author_object_title' ( $title, $author_obj );
 'wpsso_author_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_cache_expire_file_url' ( $secs );
 'wpsso_cache_expire_head_array' ( $secs );
 'wpsso_cache_expire_image_url_size' ( $secs );
 'wpsso_cache_expire_topics_array' ( $secs );
