@@ -514,7 +514,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		}
 
 		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod' => $mod, 
@@ -523,6 +522,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				) );
 			}
 
+			$lac = $this->p->cf['lca'];
 			$content = false;
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
@@ -533,42 +533,34 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			 * retrieve the content
 			 */
 			if ( $this->p->is_avail['cache']['object'] ) {
-
-				// if the post id is 0, then add the sharing url to ensure a unique salt string
-				if ( empty( $mod['id'] ) ) {
+				if ( empty( $mod['id'] ) ) {	// if id is 0, add sharing url for a unique salt string
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'adding sharing_url to cache_salt for mod id 0' );
+						$this->p->debug->log( 'adding sharing_url to cache salt for mod id 0' );
 					$url_salt = '_url:'.$this->p->util->get_sharing_url( $mod, true );
 				} else $url_salt = '';
 
 				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.$url_salt.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				$cache_type = 'object cache';
-
-				if ( $use_cache === true ) {
+				$cache_id = $lca.'_'.md5( $cache_salt );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
+				$content = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
+				if ( $content !== false ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': wp_cache salt '.$cache_salt );
-					$content = wp_cache_get( $cache_id, __METHOD__ );
-					if ( $content !== false ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': '.$filter_status.
-								' content retrieved from wp_cache '.$cache_id );
-						return $content;
-					}
-				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'use_cache = false' );
-			}
+						$this->p->debug->log( $filter_status.' content retrieved from wp_cache '.$cache_id );
+					return $content;
+				}
+			} else $cache_id = false;
 
-			$content = apply_filters( $this->p->cf['lca'].'_content_seed', '', $mod, $use_cache, $md_idx );
+			$content = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
 
 			if ( ! empty( $content ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'content seed = "'.$content.'"' );
+					$this->p->debug->log( 'content seed is "'.$content.'"' );
 			} elseif ( $mod['is_post'] ) {
 				$content = get_post_field( 'post_content', $mod['id'] );
 				if ( empty( $content ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'exiting early: no post_content for post ID '.$mod['id'] );
+						$this->p->debug->log( 'exiting early: no post_content for post id '.$mod['id'] );
 					return $content;
 				}
 			}
@@ -582,14 +574,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// remove singlepics, which we detect and use before-hand 
 			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, -1, $count );
-
 			if ( $count > 0 ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $count.' [singlepic] shortcode(s) removed from content' );
 			}
 
 			if ( $filter_content ) {
-				$filter_has_changes = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before', false, 'the_content' );
+				$filter_has_changes = apply_filters( $lca.'_text_filter_has_changes_before', false, 'the_content' );
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
@@ -608,20 +599,20 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
 				if ( empty( $post->ID ) && $mod['is_post'] ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( '$post ID property empty: setting $post from mod ID '.$mod['id'] );
+						$this->p->debug->log( 'post id property empty: re-setting post object from mod id '.$mod['id'] );
 					$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
 				}
 
 				// apply the content filters
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying the WordPress the_content filters' );
+					$this->p->debug->log( 'applying wordpress the_content filters' );
 					//$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
 				}
 
 				$content = apply_filters( 'the_content', $content );
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'restoring the original $post object' );
+					$this->p->debug->log( 'restoring the original post object' );
 				$post = $post_saved;	// restore the original GLOBAL post object
 
 				// cleanup for NGG pre-v2 album shortcode
@@ -629,7 +620,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				unset ( $GLOBALS['nggShowGallery'] );
 
 				if ( $filter_has_changes )
-					apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after', false, 'the_content' );
+					apply_filters( $lca.'_text_filter_has_changes_after', false, 'the_content' );
 
 				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) && 
@@ -643,9 +634,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
-			$content = preg_replace( '/^.*<!--'.$this->p->cf['lca'].'-content-->(.*)<!--\/'.
-				$this->p->cf['lca'].'-content-->.*$/', '$1', $content );
+			$content = preg_replace( '/^.*<!--'.$lca.'-content-->(.*)<!--\/'.
+				$lca.'-content-->.*$/', '$1', $content );
 
+			// remove "Google+" link and text
 			if ( strpos( $content, '>Google+<' ) !== false )
 				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 
@@ -661,15 +653,18 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->debug->log( 'content strlen before '.$content_strlen_before.' and after changes / filters '.$content_strlen_after );
 
 			// apply filters before caching
-			$content = apply_filters( $this->p->cf['lca'].'_content', $content, $mod, $use_cache, $md_idx );
+			$content = apply_filters( $lca.'_content', $content, $mod, $use_cache, $md_idx );
 
 			if ( ! empty( $cache_id ) ) {
+				$cache_exp = (int) apply_filters( $lca.'_cache_expire_content',
+					( isset( $this->p->options['plugin_content_cache_exp'] ) ?
+						$this->p->options['plugin_content_cache_exp'] : 3600 ) );	// default is 1 hour
 				// only some caching plugins implement this function
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
-				wp_cache_set( $cache_id, $content, __METHOD__, $this->p->options['plugin_object_cache_exp'] );
+				wp_cache_set( $cache_id, $content, __METHOD__, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': '.$filter_status.' content saved to wp_cache '.
-						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+					$this->p->debug->log( $filter_status.' content saved to wp_cache '.
+						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
 			return $content;

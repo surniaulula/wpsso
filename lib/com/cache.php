@@ -17,10 +17,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $base_dir = '';
 		public $base_url = '/cache/';
 		public $verify_certs = false;
-		public $default_file_expire = 0;	// don't cache to disk by default
-		public $default_object_expire = 86400;	// default object expire is 24 hours
-		public $timeout = 10;			// wait 10 seconds for a completed transaction
-		public $connect_timeout = 5;		// wait 5 seconds for a connection
+		public $default_file_expire = 86400;	// 1 day
+		public $default_object_expire = 259200;	// 3 days
+		public $curl_connect_timeout = 5;
+		public $curl_timeout = 10;
 
 		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
@@ -128,24 +128,26 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function get( $url, $return = 'url', $cache_name = 'file', $expire_secs = false, $curl_userpwd = false, $url_ext = '' ) {
+		public function get( $url, $ret_type = 'url', $cache_name = 'file', $expire_secs = false, $curl_userpwd = false, $url_ext = '' ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
+			$uca = strtoupper( $this->p->cf['lca'] );
+			$failure = $ret_type === 'url' ? $url : false;
 			$file_expire = $expire_secs === false ?
 				$this->default_file_expire : $expire_secs;
 
 			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: curl extension not available' );
-				return $return == 'url' ? $url : false;
-
-			} elseif ( defined( $this->p->cf['uca'].'_PHP_CURL_DISABLE' ) && 
-				constant( $this->p->cf['uca'].'_PHP_CURL_DISABLE' ) ) {
+					$this->p->debug->log( 'exiting early: curl extension is not available' );
+				$this->p->notice->err( 'PHP cURL extension is not available.' );
+				return $failure;
+			} elseif ( SucomUtil::get_const( $uca.'_PHP_CURL_DISABLE' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: curl has been disabled' );
-				return $return == 'url' ? $url : false;
-
-			} elseif ( empty( $file_expire ) && $cache_name === 'file' ) {
-				return $return === 'url' ? $url : false;
+				return $failure;
+			} elseif ( empty( $file_expire ) && $cache_name === 'file' ) {	// nothing to do
+				return $failure;
 			}
 
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
@@ -167,42 +169,44 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_data = false;
 
 			// return immediately if the cache contains what we need
-			switch ( $return ) {
+			switch ( $ret_type ) {
 				case 'raw':
 					$cache_data = $this->get_cache_data( $cache_salt, $cache_name, $url_ext, $expire_secs );
-					if ( ! empty( $cache_data ) ) {
+					if ( $cache_data !== false ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'cache_data is present - returning '.strlen( $cache_data ).' chars' );
+							$this->p->debug->log( 'cached data found: returning '.strlen( $cache_data ).' chars' );
 						return $cache_data;
 					}
 					break;
 				case 'url':
 					if ( file_exists( $cache_file ) && filemtime( $cache_file ) > time() - $file_expire ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'cache_file is current - returning cache url '.$cache_url );
+							$this->p->debug->log( 'cached file found: returning url '.$cache_url );
 						return $cache_url;
 					}
 					break;
 				case 'filepath':
 					if ( file_exists( $cache_file ) && filemtime( $cache_file ) > time() - $file_expire ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'cache_file is current - returning cache filepath '.$cache_file );
+							$this->p->debug->log( 'cached file found: returning filepath '.$cache_file );
 						return $cache_file;
 					}
 					break;
 				default:
-					return false;
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'cache return type for '.$ret_type.' is unknown' );
+					return $failure;
 					break;
 			}
 
 			if ( $this->is_ignored_url( $get_url ) )
-				return $return == 'url' ? $url : false;
+				return $failure;
 
 			$ch = curl_init();
 			curl_setopt( $ch, CURLOPT_URL, $get_url );
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->timeout );
-			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->connect_timeout );
+			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
 
 			if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
 				if ( $this->p->debug->enabled )
@@ -212,17 +216,17 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 			}
 
-			if ( defined( $this->p->cf['uca'].'_PHP_CURL_USERAGENT' ) ) 
+			if ( defined( $uca.'_PHP_CURL_USERAGENT' ) ) 
 				curl_setopt( $ch, CURLOPT_USERAGENT, 
-					constant( $this->p->cf['uca'].'_PHP_CURL_USERAGENT' ) );
+					constant( $uca.'_PHP_CURL_USERAGENT' ) );
 
-			if ( defined( $this->p->cf['uca'].'_PHP_CURL_PROXY' ) ) 
+			if ( defined( $uca.'_PHP_CURL_PROXY' ) ) 
 				curl_setopt( $ch, CURLOPT_PROXY, 
-					constant( $this->p->cf['uca'].'_PHP_CURL_PROXY' ) );
+					constant( $uca.'_PHP_CURL_PROXY' ) );
 
-			if ( defined( $this->p->cf['uca'].'_PHP_CURL_PROXYUSERPWD' ) ) 
+			if ( defined( $uca.'_PHP_CURL_PROXYUSERPWD' ) ) 
 				curl_setopt( $ch, CURLOPT_PROXYUSERPWD, 
-					constant( $this->p->cf['uca'].'_PHP_CURL_PROXYUSERPWD' ) );
+					constant( $uca.'_PHP_CURL_PROXYUSERPWD' ) );
 
 			if ( empty( $this->verify_certs) ) {
 				curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
@@ -231,16 +235,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
 				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
-				if ( defined( $this->p->cf['uca'].'_PHP_CURL_CAINFO' ) ) 
+				if ( defined( $uca.'_PHP_CURL_CAINFO' ) ) 
 					curl_setopt( $ch, CURLOPT_CAINFO, 
-						constant( $this->p->cf['uca'].'_PHP_CURL_CAINFO' ) );
+						constant( $uca.'_PHP_CURL_CAINFO' ) );
 			}
 
 			if ( $curl_userpwd !== false )
 				curl_setopt( $ch, CURLOPT_USERPWD, $curl_userpwd );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'curl: fetching cache_data from '.$get_url );
+				$this->p->debug->log( 'curl: fetching '.$get_url );
 
 			$cache_data = curl_exec( $ch );
 			$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
@@ -248,19 +252,19 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_close( $ch );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'curl: http return code = '.$http_code );
-				$this->p->debug->log( 'curl: ssl verify result = '.$ssl_verify );
+				$this->p->debug->log( 'curl: http return code is '.$http_code );
+				$this->p->debug->log( 'curl: ssl verify result is '.$ssl_verify );
 			}
 
 			if ( $http_code == 200 ) {
 				if ( empty( $cache_data ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'cache_data returned from "'.$get_url.'" is empty' );
-				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_name, $url_ext, $expire_secs ) == true ) {
+						$this->p->debug->log( 'cache data returned is empty' );
+				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_name, $url_ext, $expire_secs ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'cache_data sucessfully saved' );
+						$this->p->debug->log( 'cache data sucessfully saved' );
 				}
-				switch ( $return ) {
+				switch ( $ret_type ) {
 					case 'raw': 
 						return $cache_data; 
 						break;
@@ -271,132 +275,113 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						return $cache_file;
 						break;
 					default:
-						return false;
+						return $failure;	// just in case
 						break;
 				}
 			} else $this->add_ignored_url( $get_url, $http_code );
 
-			// return original url or empty data on failure
-			return $return == 'url' ? $url : false;
+			return $failure;
 		}
 
+		// returns false on failure
 		protected function get_cache_data( $cache_salt, $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
-
 			$cache_data = false;
+			$lca = $this->p->cf['lca'];
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
 			switch ( $cache_name ) {
 				case 'wp_cache' :
-					$cache_type = 'object cache';
-					$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$cache_id = $lca. '_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
-					if ( $this->p->debug->enabled && $cache_data !== false )
-						$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
 					break;
 				case 'transient' :
-					$cache_type = 'object cache';
-					$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
+					$cache_id = $lca. '_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = get_transient( $cache_id );
-					if ( $this->p->debug->enabled && $cache_data !== false )
-						$this->p->debug->log( $cache_type.': cache_data retrieved from '.$cache_name.' '.$cache_id );
 					break;
 				case 'file' :
-					$cache_type = 'file cache';
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': filename salt '.$cache_salt );
 					$file_expire = $expire_secs === false ? 
 						$this->default_file_expire : $expire_secs;
-
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_file.' does not exist yet.' );
+							$this->p->debug->log( $cache_file.' does not exist' );
 					} elseif ( ! is_readable( $cache_file ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $cache_file.' is not readable' );
 						$this->p->notice->err( $cache_file.' is not readable.' );
 					} elseif ( filemtime( $cache_file ) < time() - $file_expire ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_file.' is expired (file expiration = '.$file_expire.').' );
+							$this->p->debug->log( $cache_file.' is expired' );
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'failed to open file '.$cache_file.' for reading' );
 						$this->p->notice->err( 'Failed to open file '.$cache_file.' for reading.' );
 					} else {
 						$cache_data = fread( $fh, filesize( $cache_file ) );
 						fclose( $fh );
-						if ( $this->p->debug->enabled &&  ! empty( $cache_data ) )
-							$this->p->debug->log( $cache_type.': cache_data retrieved from "'.$cache_file.'"' );
 					}
 					break;
 				default :
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'unknown cache name "'.$cache_name.'"' );
+						$this->p->debug->log( 'unknown cache name: '.$cache_name );
 					break;
 			}
+			if ( $this->p->debug->enabled && $cache_data !== false )
+				$this->p->debug->log( 'cache data retrieved from '.$cache_name );
 			return $cache_data;	// return data or empty string
 		}
 
 		protected function save_cache_data( $cache_salt, &$cache_data = '', $cache_name = 'file', $url_ext = '', $expire_secs = false ) {
-			$ret_status = false;
+			$data_saved = false;
+			$lca = $this->p->cf['lca'];
 			if ( empty( $cache_data ) ) 
-				return $ret_status;
-
+				return $data_saved;
+			$object_expire = $expire_secs === false ? 
+				$this->default_object_expire : $expire_secs;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
 			switch ( $cache_name ) {
 				case 'wp_cache' :
-					$cache_type = 'object cache';
-					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-					$object_expire = $expire_secs === false ? 
-						$this->default_object_expire : $expire_secs;
+					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_expire );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
+						$this->p->debug->log( 'cache data saved to '.$cache_name.' '.
 							$cache_id.' ('.$object_expire.' seconds)' );
-					$ret_status = true;	// success
+					$data_saved = true;	// success
 					break;
 				case 'transient' :
-					$cache_type = 'object cache';
-					$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );	// add a prefix to the object cache id
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data '.$cache_name.' salt '.$cache_salt );
-					$object_expire = $expire_secs === false ? 
-						$this->default_object_expire : $expire_secs;
+					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					set_transient( $cache_id, $cache_data, $object_expire );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': cache_data saved to '.$cache_name.' '.
+						$this->p->debug->log( 'cache data saved to '.$cache_name.' '.
 							$cache_id.' ('.$object_expire.' seconds)' );
-					$ret_status = true;	// success
+					$data_saved = true;	// success
 					break;
 				case 'file' :
-					$cache_type = 'file cache';
 					$cache_id = md5( $cache_salt );
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $cache_type.': filename salt '.$cache_salt );
 					if ( ! is_dir( $this->base_dir ) ) 
 						mkdir( $this->base_dir );
-					if ( ! is_writable( $this->base_dir ) )
+					if ( ! is_writable( $this->base_dir ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $this->base_dir.' is not writable.' );
 						$this->p->notice->err( $this->base_dir.' is not writable.' );
-					else {
-						if ( ! $fh = @fopen( $cache_file, 'wb' ) )
-							$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.' );
-						else {
-							if ( fwrite( $fh, $cache_data ) ) {
-								if ( $this->p->debug->enabled )
-									$this->p->debug->log( $cache_type.': cache_data saved to "'.$cache_file.'"' );
-								$ret_status = true;	// success
-							}
-							fclose( $fh );
-						}
+					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
+						$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.' );
+					} elseif ( fwrite( $fh, $cache_data ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'cache data saved to '.$cache_file );
+						fclose( $fh );
+						$data_saved = true;	// success
 					}
 					break;
 				default :
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'unknown cache name "'.$cache_name.'"' );
+						$this->p->debug->log( 'unknown cache name: '.$cache_name );
 					break;
 			}
-			return $ret_status;	// return true or false
+			return $data_saved;	// return true or false
 		}
 	}
 }

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.37.0-dev1',	// plugin version
-					'opt_version' => '462',		// increment when changing default options
+					'opt_version' => '464',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -682,10 +682,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients' => '_recipe_ingredients',
 					// File and Object Cache Tab
 					'plugin_object_cache_exp' => 259200,		// XXX TO BE DELETED
+					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
+					'plugin_content_cache_exp' => 3600,		// Content (Non-Persist) Cache Expiry (1 hour)
+					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
+					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (7 days)
+					'plugin_topics_cache_exp' => 604800,		// Article Topics Array Cache Expiry (7 days)
 					'plugin_file_cache_exp' => 0,			// Social File Cache Expiry
-					'plugin_head_cache_exp' => 259200,		// Head Markup Cache Expiry (3 days)
-					'plugin_topics_cache_exp' => 604800,		// Topics Array Cache Expiry (7 days)
-					'plugin_imgsize_cache_exp' => 86400,		// Image URL Size Cache Expiry (1 day)
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
 					// Service API Keys Tab
@@ -787,14 +789,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// File and Object Cache Tab
 					'plugin_object_cache_exp' => 259200,		// XXX TO BE DELETED
 					'plugin_object_cache_exp:use' => 'default',
-					'plugin_file_cache_exp' => 0,			// File Cache Expiry
-					'plugin_file_cache_exp:use' => 'default',
-					'plugin_head_cache_exp' => 259200,		// Head Markup Cache Expiry (3 days)
+					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
-					'plugin_topics_cache_exp' => 604800,		// Topics Array Cache Expiry (7 days)
-					'plugin_topics_cache_exp:use' => 'default',
-					'plugin_imgsize_cache_exp' => 86400,		// Image URL Size Cache Expiry (1 day)
+					'plugin_content_cache_exp' => 3600,		// Content (Non-Persist) Cache Expiry (1 hour)
+					'plugin_content_cache_exp:use' => 'default',
+					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_imgsize_cache_exp:use' => 'default',
+					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (7 days)
+					'plugin_shorten_cache_exp:use' => 'default',
+					'plugin_topics_cache_exp' => 604800,		// Article Topics Array Cache Expiry (7 days)
+					'plugin_topics_cache_exp:use' => 'default',
+					'plugin_file_cache_exp' => 0,			// Social File Cache Expiry
+					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
@@ -885,16 +891,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'cache_hrs' => array(
 					0 => 0,
-					3600 => 1,
-					7200 => 3,
-					21600 => 6,
-					32400 => 9,
-					43200 => 12,
-					86400 => 24,
-					129600 => 36,
-					172800 => 48,
-					259200 => 72,
-					604800 => 168,
+					3600 => 1,	// 1 hour
+					7200 => 3,	// 3 hours
+					21600 => 6,	// 6 hours
+					32400 => 9,	// 9 hours
+					43200 => 12,	// 12 hours
+					86400 => 24,	// 1 day
+					129600 => 36,	// 1.5 days
+					172800 => 48,	// 2 days
+					259200 => 72,	// 3 days
+					604800 => 168,	// 7 days
+					1209600 => 336,	// 14 days
+					2419200 => 672,	// 28 days
 				),
 				'qualifiers' => array(
 					'default' => '(default)',

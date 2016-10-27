@@ -229,32 +229,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, true );
 			}
 
-			/*
-			 * configure class properties based on plugin settings
-			 */
-			$this->cache->default_object_expire = $this->options['plugin_object_cache_exp'];
-
-			$this->cache->default_file_expire = ( $this->check->aop() ? ( $this->debug->is_enabled( 'wp' ) ? 
-					WPSSO_DEBUG_FILE_EXP : $this->options['plugin_file_cache_exp'] ) : 0 );
-
-			$this->is_avail['cache']['file'] = $this->cache->default_file_expire > 0 ? true : false;
-
-			// disable the transient cache if html debug mode is on
 			if ( $this->debug->is_enabled( 'html' ) === true ) {
-
 				$this->is_avail['cache']['transient'] = defined( 'WPSSO_TRANSIENT_CACHE_DISABLE' ) && 
 					! WPSSO_TRANSIENT_CACHE_DISABLE ? true : false;
-
-				if ( $this->debug->enabled )
+				if ( $this->debug->enabled ) {
 					$this->debug->log( 'html debug mode is active: transient cache use '.
 						( $this->is_avail['cache']['transient'] ? 'could not be' : 'is' ).' disabled' );
-
-				if ( is_admin() )
-					// text_domain is already loaded by the NgfbAdmin class construct
+				}
+				if ( is_admin() ) {
+					// text_domain already loaded by the NgfbAdmin class construct
 					$this->notice->warn( ( $this->is_avail['cache']['transient'] ?
-						__( 'HTML debug mode is active (transient cache could NOT be disabled).', 'nextgen-facebook' ) :
+						__( 'HTML debug mode is active (transient cache use could NOT be disabled).', 'nextgen-facebook' ) :
 						__( 'HTML debug mode is active (transient cache use is disabled).', 'nextgen-facebook' ) ).' '.
 						__( 'Informational debug messages are being added as hidden HTML comments.', 'wpsso' ) );
+				}
 			}
 		}
 

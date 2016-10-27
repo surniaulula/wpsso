@@ -767,10 +767,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_file_url',
 				( isset( $this->p->options['plugin_file_cache_exp'] ) ?
-					$this->p->options['plugin_file_cache_exp'] : 86400 ) );
+					$this->p->options['plugin_file_cache_exp'] : 86400 ) );	// default is 1 day
 
-			return apply_filters( $lca.'_rewrite_url',
-				$this->p->cache->get( $url, 'url', 'file', $cache_exp, false, $url_ext ) );
+			$cache_url = $this->p->cache->get( $url, 'url', 'file', $cache_exp, false, $url_ext );
+
+			return apply_filters( $lca.'_rewrite_url', $cache_url );
 		}
 
 		public static function save_all_times( $lca, $version ) {
@@ -908,7 +909,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							if ( $cache_id !== false ) {
 								$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size',
 									( isset( $this->p->options['plugin_imgsize_cache_exp'] ) ? 
-										$this->p->options['plugin_imgsize_cache_exp'] : 86400 ), $media_url );
+										$this->p->options['plugin_imgsize_cache_exp'] : 86400 ), $media_url );	// default is 1 day
 								set_transient( $cache_id, $image_info, $cache_exp );
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'image url size saved to transient '.
@@ -1320,13 +1321,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_expired_db_transients( $all = false ) { 
 			global $wpdb;
-			$deleted = 0;
-			$time = isset ( $_SERVER['REQUEST_TIME'] ) ?
+			$lca = $this->p->cf['lca'];
+			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
 				(int) $_SERVER['REQUEST_TIME'] : time() ; 
 			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-				' WHERE option_name LIKE \'_transient_timeout_'.$this->p->cf['lca'].'_%\'';
-			$dbquery .= $all === true ? ';' : ' AND option_value < '.$time.';';
+				' WHERE option_name LIKE \'_transient_timeout_'.$lca.'_%\'';
+			$dbquery .= $all === true ? ';' : ' AND option_value < '.$current_time.';';	// expiration time older than current time
 			$expired = $wpdb->get_col( $dbquery ); 
+			$deleted = 0;
 			foreach( $expired as $transient ) { 
 				$key = str_replace( '_transient_timeout_', '', $transient );
 				if ( delete_transient( $key ) )
@@ -1336,21 +1338,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function delete_expired_file_cache( $all = false ) {
+			$uca = strtoupper( $this->p->cf['lca'] );
+			$adjusted_time = isset( $_SERVER['REQUEST_TIME'] ) ?
+				(int) $_SERVER['REQUEST_TIME'] : time() ; 
+			$adjusted_time = empty( $this->p->options['plugin_file_cache_exp'] ) ? 
+				$adjusted_time : $adjusted_time - $this->p->options['plugin_file_cache_exp'];
+			$cachedir = constant( $uca.'_CACHEDIR' );
 			$deleted = 0;
-			$time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
-			$time = empty( $this->p->options['plugin_file_cache_exp'] ) ? 
-				$time : $time - $this->p->options['plugin_file_cache_exp'];
-			$cachedir = constant( $this->p->cf['uca'].'_CACHEDIR' );
-			if ( ! $dh = @opendir( $cachedir ) )
+			if ( ! $dh = @opendir( $cachedir ) ) {
 				$this->p->notice->err( sprintf( __( 'Failed to open directory %s for reading.',
 					'wpsso' ), $cachedir ) );
-			else {
+			} else {
 				while ( $fn = @readdir( $dh ) ) {
 					$filepath = $cachedir.$fn;
 					if ( ! preg_match( '/^(\..*|index\.php)$/', $fn ) && is_file( $filepath ) && 
-						( $all === true || filemtime( $filepath ) < $time ) ) {
+						( $all === true || filemtime( $filepath ) < $adjusted_time ) ) {	// file time older than adjusted time
 						if ( ! @unlink( $filepath ) ) 
-							$this->p->notice->err( sprintf( __( 'Error removing file %s.',
+							$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
 								'wpsso' ), $filepath ) );
 						else $deleted++;
 					}
@@ -1360,11 +1364,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function get_setup_content( $ext, $read_cache = true ) {
+		public function get_setup_content( $ext, $use_cache = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'read_cache' => $read_cache,
+					'use_cache' => $use_cache,
 				) );
 			}
 
@@ -1376,7 +1380,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$content = false;
 			$expire_secs = isset( $this->p->cf['setup_cache_exp'] ) ?
-				$this->p->cf['setup_cache_exp'] : 86400;
+				$this->p->cf['setup_cache_exp'] : 86400;	// default is 1 day
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
 			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup'] ) ? 
 				$this->p->cf['plugin'][$ext]['url']['setup'] : '';
@@ -1387,7 +1391,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// get remote setup.html file
 			if ( $get_remote !== false && $expire_secs > 0 ) {
-				if ( ! $read_cache )
+				if ( ! $use_cache )
 					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
 				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
 				if ( empty( $content ) )
@@ -1403,11 +1407,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
-		public function get_readme_info( $ext, $read_cache = true ) {
+		public function get_readme_info( $ext, $use_cache = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'read_cache' => $read_cache,
+					'use_cache' => $use_cache,
 				) );
 			}
 
@@ -1419,7 +1423,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$readme_info = array();
 			$expire_secs = isset( $this->p->cf['readme_cache_exp'] ) ?
-				$this->p->cf['readme_cache_exp'] : 86400;
+				$this->p->cf['readme_cache_exp'] : 86400;	// default is 1 day
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
 			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? 
 				$this->p->cf['plugin'][$ext]['url']['readme'] : '';
@@ -1430,7 +1434,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$cache_id = $ext.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				$readme_info = $read_cache ? get_transient( $cache_id ) : false;
+				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
 				if ( is_array( $readme_info ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
@@ -1440,7 +1444,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// get remote readme.txt file
 			if ( $get_remote !== false && $expire_secs > 0 ) {
-				if ( ! $read_cache )
+				if ( ! $use_cache )
 					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
 				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
 				if ( empty( $content ) )

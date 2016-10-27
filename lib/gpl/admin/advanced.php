@@ -250,25 +250,39 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="'.( $network ? 4 : 2 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
-			$table_rows['plugin_head_cache_exp'] = $form->get_th_html( _x( 'Head Markup Cache Expiry',
+			$table_rows['plugin_head_cache_exp'] = $form->get_th_html( _x( 'Head Markup Array Cache Expiry',
 				'option label', 'wpsso' ), null, 'plugin_head_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_head_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_head_cache_exp' );
 
-			$table_rows['plugin_topics_cache_exp'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Topics Array Cache Expiry',
-				'option label', 'wpsso' ), null, 'plugin_topics_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_topics_cache_exp'].' '.
+			$table_rows['plugin_content_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Content (Non-Persist) Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_content_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_content_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_site_use( $form, $network, 'plugin_topics_cache_exp' );
+			$this->p->admin->get_site_use( $form, $network, 'plugin_content_cache_exp' );
 
 			$table_rows['plugin_imgsize_cache_exp'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Topics Array Cache Expiry',
+			$form->get_th_html( _x( 'Get Image (URL) Size Cache Expiry',
 				'option label', 'wpsso' ), null, 'plugin_imgsize_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_imgsize_cache_exp' );
+
+			$table_rows['plugin_shorten_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Shortened URL Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_shorten_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_shorten_cache_exp'].' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_shorten_cache_exp' );
+
+			$table_rows['plugin_topics_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Article Topics Array Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_topics_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_topics_cache_exp'].' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_topics_cache_exp' );
 
 			$table_rows['plugin_verify_certs'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Verify Peer SSL Certificate',

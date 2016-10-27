@@ -250,26 +250,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $this->p->is_avail['cache']['transient'] ) {
-
-				// head_cache_salt filter can add "_amp:true", for example
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
 					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url, $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
-				$cache_type = 'object cache';
-
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': transient salt '.$cache_salt );
-
+					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				if ( apply_filters( $lca.'_head_read_cache', $read_cache ) ) {
 					$head_array = get_transient( $cache_id );
 					if ( isset( $head_array[$head_index] ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( $cache_type.': head array from transient '.$cache_id );
+							$this->p->debug->log( 'head array retrieved from transient '.$cache_id );
 						return $head_array[$head_index];	// stop here
 					}
 				}
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'skipped checking for transient cache object' );
+			} 
 
 			/*
 			 * Define an author_id, if one is available
@@ -404,10 +398,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( apply_filters( $lca.'_head_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
 				$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array',
 					( isset( $this->p->options['plugin_head_cache_exp'] ) ?
-						$this->p->options['plugin_head_cache_exp'] : 259200 ) );
+						$this->p->options['plugin_head_cache_exp'] : 259200 ) );	// default is 3 days
 				set_transient( $cache_id, $head_array, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $cache_type.': head array saved to transient '.
+					$this->p->debug->log( 'head array saved to transient '.
 						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
