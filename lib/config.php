@@ -877,7 +877,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'week' => 604800,
 					'month' => 18144000,
 				),
-				'file_cache_hrs' => array(
+				'cache_hrs' => array(
 					0 => 0,
 					3600 => 1,
 					7200 => 3,

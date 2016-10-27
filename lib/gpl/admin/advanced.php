@@ -255,11 +255,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td nowrap class="blank">'.$this->p->options['plugin_head_cache_exp'].' seconds</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_head_cache_exp' );
 
-			// XXX TO BE REMOVED
-			$table_rows['plugin_object_cache_exp'] = $form->get_th_html( _x( 'Object Cache Expiry',
-				'option label', 'wpsso' ), null, 'plugin_object_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_object_cache_exp'].' seconds</td>'.
-			$this->p->admin->get_site_use( $form, $network, 'plugin_object_cache_exp' );
+			$table_rows['plugin_topics_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Topics Array Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_topics_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_topics_cache_exp'].' seconds</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_topics_cache_exp' );
+
+			$table_rows['plugin_imgsize_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Topics Array Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_imgsize_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' seconds</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_imgsize_cache_exp' );
 
 			$table_rows['plugin_verify_certs'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Verify Peer SSL Certificate',

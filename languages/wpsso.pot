@@ -943,137 +943,138 @@ msgctxt "option label"
 msgid "Head Markup Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:259 lib/pro/admin/advanced.php:256
+#: lib/gpl/admin/advanced.php:259 lib/gpl/admin/advanced.php:265
+#: lib/pro/admin/advanced.php:256
 msgctxt "option label"
-msgid "Object Cache Expiry"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:265 lib/pro/admin/advanced.php:262
-msgctxt "option label"
-msgid "Verify Peer SSL Certificate"
+msgid "Topics Array Cache Expiry"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:271 lib/pro/admin/advanced.php:268
 msgctxt "option label"
+msgid "Verify Peer SSL Certificate"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:277 lib/pro/admin/advanced.php:274
+msgctxt "option label"
 msgid "Report Cache Purge Count"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:286 lib/pro/admin/advanced.php:280
+#: lib/gpl/admin/advanced.php:292 lib/pro/admin/advanced.php:286
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:291 lib/pro/admin/advanced.php:285
+#: lib/gpl/admin/advanced.php:297 lib/pro/admin/advanced.php:291
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:294 lib/pro/admin/advanced.php:288
+#: lib/gpl/admin/advanced.php:300 lib/pro/admin/advanced.php:294
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:296 lib/pro/admin/advanced.php:290
+#: lib/gpl/admin/advanced.php:302 lib/pro/admin/advanced.php:296
 msgctxt "option label"
 msgid "Use Shortened URL for WP Shortlink"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:302 lib/pro/admin/advanced.php:296
+#: lib/gpl/admin/advanced.php:308 lib/pro/admin/advanced.php:302
 msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:298
+#: lib/gpl/admin/advanced.php:310 lib/pro/admin/advanced.php:304
 #: lib/pro/util/shorten.php:77
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:309 lib/pro/admin/advanced.php:303
+#: lib/gpl/admin/advanced.php:315 lib/pro/admin/advanced.php:309
 #: lib/pro/util/shorten.php:86
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:314 lib/pro/admin/advanced.php:308
+#: lib/gpl/admin/advanced.php:320 lib/pro/admin/advanced.php:314
 msgctxt "option label"
 msgid "or Bitly API Key (deprecated)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:316 lib/pro/admin/advanced.php:310
+#: lib/gpl/admin/advanced.php:322 lib/pro/admin/advanced.php:316
 msgctxt "option comment"
 msgid "api key authentication is deprecated"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:320 lib/pro/admin/advanced.php:314
+#: lib/gpl/admin/advanced.php:326 lib/pro/admin/advanced.php:320
 msgctxt "metabox title"
 msgid "Google APIs"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:323 lib/pro/admin/advanced.php:317
+#: lib/gpl/admin/advanced.php:329 lib/pro/admin/advanced.php:323
 #: lib/pro/util/shorten.php:106
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:328 lib/pro/admin/advanced.php:322
+#: lib/gpl/admin/advanced.php:334 lib/pro/admin/advanced.php:328
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:335 lib/pro/admin/advanced.php:329
+#: lib/gpl/admin/advanced.php:341 lib/pro/admin/advanced.php:335
 msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:338 lib/pro/admin/advanced.php:332
+#: lib/gpl/admin/advanced.php:344 lib/pro/admin/advanced.php:338
 #: lib/pro/util/shorten.php:128
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:344 lib/pro/admin/advanced.php:338
+#: lib/gpl/admin/advanced.php:350 lib/pro/admin/advanced.php:344
 msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:347 lib/pro/admin/advanced.php:341
+#: lib/gpl/admin/advanced.php:353 lib/pro/admin/advanced.php:347
 #: lib/pro/util/shorten.php:159
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:352 lib/pro/admin/advanced.php:346
+#: lib/gpl/admin/advanced.php:358 lib/pro/admin/advanced.php:352
 msgctxt "option label"
 msgid "YOURLS Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:357 lib/pro/admin/advanced.php:351
+#: lib/gpl/admin/advanced.php:363 lib/pro/admin/advanced.php:357
 msgctxt "option label"
 msgid "YOURLS Password"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:362 lib/pro/admin/advanced.php:356
+#: lib/gpl/admin/advanced.php:368 lib/pro/admin/advanced.php:362
 msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:377 lib/gpl/admin/advanced.php:426
-#: lib/pro/admin/advanced.php:368 lib/pro/admin/advanced.php:414
+#: lib/gpl/admin/advanced.php:383 lib/gpl/admin/advanced.php:432
+#: lib/pro/admin/advanced.php:374 lib/pro/admin/advanced.php:420
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:378 lib/gpl/admin/advanced.php:427
-#: lib/messages.php:678 lib/pro/admin/advanced.php:369
-#: lib/pro/admin/advanced.php:415
+#: lib/gpl/admin/advanced.php:384 lib/gpl/admin/advanced.php:433
+#: lib/messages.php:678 lib/pro/admin/advanced.php:375
+#: lib/pro/admin/advanced.php:421
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:379 lib/gpl/admin/advanced.php:428
-#: lib/messages.php:678 lib/pro/admin/advanced.php:370
-#: lib/pro/admin/advanced.php:416
+#: lib/gpl/admin/advanced.php:385 lib/gpl/admin/advanced.php:434
+#: lib/messages.php:678 lib/pro/admin/advanced.php:376
+#: lib/pro/admin/advanced.php:422
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -2395,6 +2396,11 @@ msgstr ""
 #: lib/user.php:242
 msgctxt "metabox title"
 msgid "Social Settings"
+msgstr ""
+
+#: lib/pro/admin/advanced.php:262
+msgctxt "option label"
+msgid "Image URL Size Cache Expiry"
 msgstr ""
 
 #: lib/pro/admin/meta.php:50 lib/pro/admin/post.php:45
