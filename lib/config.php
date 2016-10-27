@@ -785,14 +785,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					'plugin_page_tags:use' => 'default',
 					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (259200 secs = 3 days)
+					'plugin_object_cache_exp' => 259200,		// XXX TO BE DELETED
 					'plugin_object_cache_exp:use' => 'default',
+					'plugin_file_cache_exp' => 0,			// File Cache Expiry
+					'plugin_file_cache_exp:use' => 'default',
+					'plugin_head_cache_exp' => 259200,		// Head Markup Cache Expiry (3 days)
+					'plugin_head_cache_exp:use' => 'default',
+					'plugin_topics_cache_exp' => 604800,		// Topics Array Cache Expiry (7 days)
+					'plugin_topics_cache_exp:use' => 'default',
+					'plugin_imgsize_cache_exp' => 86400,		// Image URL Size Cache Expiry (1 day)
+					'plugin_imgsize_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
 					'plugin_cache_info:use' => 'default',
-					'plugin_file_cache_exp' => 0,			// File Cache Expiry
-					'plugin_file_cache_exp:use' => 'default',
 					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',

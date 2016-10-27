@@ -947,7 +947,7 @@ msgstr ""
 #: lib/gpl/admin/advanced.php:270 lib/pro/admin/advanced.php:253
 #: lib/pro/admin/advanced.php:260 lib/pro/admin/advanced.php:267
 msgctxt "option comment"
-msgid "seconds"
+msgid "seconds (0 to disable)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:260 lib/gpl/admin/advanced.php:267
@@ -3168,51 +3168,51 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:912
+#: lib/util.php:918
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1339
+#: lib/util.php:1345
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1347
+#: lib/util.php:1353
 msgid "Error removing file %s."
 msgstr ""
 
-#: lib/util.php:1632
+#: lib/util.php:1638
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1658
+#: lib/util.php:1664
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1662
+#: lib/util.php:1668
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1665
+#: lib/util.php:1671
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1669
+#: lib/util.php:1675
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:257
+#: wpsso.php:255
 msgid "HTML debug mode is active (transient cache could NOT be disabled)."
 msgstr ""
 
-#: wpsso.php:258
+#: wpsso.php:256
 msgid "HTML debug mode is active (transient cache use is disabled)."
 msgstr ""
 
-#: wpsso.php:259
+#: wpsso.php:257
 msgid "Informational debug messages are being added as hidden HTML comments."
 msgstr ""
 

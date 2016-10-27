@@ -34,9 +34,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			$uca = strtoupper( $this->p->cf['lca'] );
 			$this->verify_certs = empty( $this->p->options['plugin_verify_certs'] ) ? 0 : 1;
-			$this->base_dir = trailingslashit( constant( $this->p->cf['uca'].'_CACHEDIR' ) );
-			$this->base_url = trailingslashit( constant( $this->p->cf['uca'].'_CACHEURL' ) );
+			$this->base_dir = trailingslashit( constant( $uca.'_CACHEDIR' ) );
+			$this->base_url = trailingslashit( constant( $uca.'_CACHEURL' ) );
 
 			add_action( 'shutdown', array( &$this, 'save_transient' ) );
 		}

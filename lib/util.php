@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $cache_id !== false ) {
 				$cache_exp = (int) apply_filters( $lca.'_cache_expire_topics_array',
 					( isset( $this->p->options['plugin_topics_cache_exp'] ) ?
-						$this->p->options['plugin_topics_cache_exp'] : 1814400 ) );
+						$this->p->options['plugin_topics_cache_exp'] : 604800 ) );
 				set_transient( $cache_id, $topics, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'topics array saved to transient '.
@@ -759,12 +759,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_cache_file_url( $url, $url_ext = '' ) {
-			if ( empty( $this->p->options['plugin_file_cache_exp'] ) ||
-				! isset( $this->p->cache->base_dir ) )	// check for cache attribute, just in case
-					return $url;
+			$lca = $this->p->cf['lca'];
 
-			return ( apply_filters( $this->p->cf['lca'].'_rewrite_url',
-				$this->p->cache->get( $url, 'url', 'file', $this->p->options['plugin_file_cache_exp'], false, $url_ext ) ) );
+			if ( empty( $this->p->options['plugin_file_cache_exp'] ) ||
+				! isset( $this->p->cache->base_dir ) )	// check for defined cache folder path, just in case
+					return apply_filters( $lca.'_rewrite_url', $url );
+
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_file_url',
+				( isset( $this->p->options['plugin_file_cache_exp'] ) ?
+					$this->p->options['plugin_file_cache_exp'] : 86400 ) );
+
+			return apply_filters( $lca.'_rewrite_url',
+				$this->p->cache->get( $url, 'url', 'file', $cache_exp, false, $url_ext ) );
 		}
 
 		public static function save_all_times( $lca, $version ) {

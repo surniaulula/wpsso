@@ -234,10 +234,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->cache->default_object_expire = $this->options['plugin_object_cache_exp'];
 
-			$this->cache->default_file_expire = ( $this->check->aop() ? 
-				( $this->debug->is_enabled( 'wp' ) ? 
-					WPSSO_DEBUG_FILE_EXP : 
-					$this->options['plugin_file_cache_exp'] ) : 0 );
+			$this->cache->default_file_expire = ( $this->check->aop() ? ( $this->debug->is_enabled( 'wp' ) ? 
+					WPSSO_DEBUG_FILE_EXP : $this->options['plugin_file_cache_exp'] ) : 0 );
 
 			$this->is_avail['cache']['file'] = $this->cache->default_file_expire > 0 ? true : false;
 
