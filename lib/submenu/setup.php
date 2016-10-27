@@ -31,9 +31,10 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_guide() {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' setup-metabox">';
+			$lca = $this->p->cf['lca'];
+			echo '<table class="sucom-setting '.$lca.' setup-metabox">';
 			echo '<tr><td>';
-			echo $this->p->util->get_setup_content( $this->p->cf['lca'] );
+			echo $this->p->util->get_setup_content( $lca );
 			echo '</td></tr></table>';
 		}
 	}

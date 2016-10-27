@@ -1345,23 +1345,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function get_setup_content( $ext, $expire_secs = 86400, $use_cache = true ) {
+		public function get_setup_content( $ext, $read_cache = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'expire_secs' => $expire_secs,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 				) );
 			}
 
 			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $ext ).
-						'_PLUGINDIR is undefined and required' );
+					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
 				return false;
 			}
 
 			$content = false;
+			$expire_secs = isset( $this->p->cf['setup_cache_exp'] ) ?
+				$this->p->cf['setup_cache_exp'] : 86400;
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
 			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup'] ) ? 
 				$this->p->cf['plugin'][$ext]['url']['setup'] : '';
@@ -1372,7 +1372,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// get remote setup.html file
 			if ( $get_remote !== false && $expire_secs > 0 ) {
-				if ( ! $use_cache )
+				if ( ! $read_cache )
 					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
 				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
 				if ( empty( $content ) )
@@ -1388,34 +1388,34 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
-		public function get_readme_info( $ext, $expire_secs = 86400, $use_cache = true ) {
+		public function get_readme_info( $ext, $read_cache = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'expire_secs' => $expire_secs,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 				) );
 			}
 
 			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $ext ).
-						'_PLUGINDIR is undefined and required' );
+					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
 				return array();
 			}
 
 			$readme_info = array();
+			$expire_secs = isset( $this->p->cf['readme_cache_exp'] ) ?
+				$this->p->cf['readme_cache_exp'] : 86400;
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
 			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? 
 				$this->p->cf['plugin'][$ext]['url']['readme'] : '';
 			$get_remote = empty( $file_url ) ? false : true;	// fetch readme from repo if possible
 
-			if ( $this->p->is_avail['cache']['transient'] ) {
+			if ( $this->p->is_avail['cache']['transient'] && $expire_secs > 0 ) {
 				$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
 				$cache_id = $ext.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
+				$readme_info = $read_cache ? get_transient( $cache_id ) : false;
 				if ( is_array( $readme_info ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
@@ -1425,7 +1425,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// get remote readme.txt file
 			if ( $get_remote !== false && $expire_secs > 0 ) {
-				if ( ! $use_cache )
+				if ( ! $read_cache )
 					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
 				$content = $this->p->cache->get( $file_url, 'raw', 'file', $expire_secs );
 				if ( empty( $content ) )
@@ -1449,11 +1449,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			// save the parsed readme to the transient cache
-			if ( $cache_id !== false ) {
-				set_transient( $cache_id, $readme_info, $this->p->options['plugin_object_cache_exp'] );
+			if ( $cache_id !== false && $expire_secs > 0 ) {
+				set_transient( $cache_id, $readme_info, $expire_secs );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.
-						' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.' ('.$expire_secs.' seconds)');
 			}
 
 			return (array) $readme_info;	// just in case

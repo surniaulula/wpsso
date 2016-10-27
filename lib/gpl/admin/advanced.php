@@ -250,6 +250,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="'.( $network ? 4 : 2 ).'" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
 
+			$table_rows['plugin_head_cache_exp'] = $form->get_th_html( _x( 'Head Markup Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_head_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_head_cache_exp'].' seconds</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_head_cache_exp' );
+
+			// XXX TO BE REMOVED
 			$table_rows['plugin_object_cache_exp'] = $form->get_th_html( _x( 'Object Cache Expiry',
 				'option label', 'wpsso' ), null, 'plugin_object_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_object_cache_exp'].' seconds</td>'.

@@ -190,10 +190,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					} elseif ( empty( $opts['plugin_'.$lca.'_tid'] ) ) {
 						foreach ( array(
+							'plugin_filter_title' => 0,
 							'plugin_filter_content' => 0,
+							'plugin_filter_excerpt' => 0,
 							'plugin_check_head' => 1,
 							'plugin_upscale_images' => 0,
-							'plugin_file_cache_exp' => 0,
 						) as $idx => $def_val ) {
 							if ( $opts[$idx] == $def_val )	// numeric options could be strings
 								continue;
@@ -232,14 +233,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$def_opts = $network === false ? 
 							$this->get_defaults() : 
 							$this->get_site_defaults();
-
-						if ( empty( $opts['plugin_object_cache_exp'] ) ||
-							$opts['plugin_object_cache_exp'] < $def_opts['plugin_object_cache_exp'] ) {
-
-							if ( $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-object-cache-exp' ) );
-							else $opts['plugin_object_cache_exp'] = $def_opts['plugin_object_cache_exp'];
-						}
 
 						if ( empty( $opts['plugin_filter_content'] ) )
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
@@ -505,15 +498,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
-				case 'plugin_file_cache_exp':
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
+				case ( strpos( $key, '_cache_exp' ) === false ? false : true ):
 				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
 					return 'numeric';
 					break;
 				// integer options that must be positive (1 or more)
 				case 'plugin_upscale_img_max':
-				case 'plugin_object_cache_exp':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_(len|warn)$/', $key ) ? true : false ):
 					return 'pos_num';

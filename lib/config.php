@@ -18,10 +18,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'menu' => 'SSO',		// menu item label
 			'color' => '33cc33',		// menu item color - lime green
 			'readme_cache_exp' => 86400,	// 24 hours
+			'setup_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.37.0-dev1',	// plugin version
-					'opt_version' => '459',		// increment when changing default options
+					'opt_version' => '460',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',

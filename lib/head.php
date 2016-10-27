@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Schema meta tags
 			 */
-			$mt_schema = $this->p->schema->get_meta_array( $use_post, $mod, $mt_og, $crawler_name );
+			$mt_schema = $this->p->schema->get_meta_array( $mod, $mt_og, $crawler_name );
 
 			/*
 			 * JSON-LD script array - execute before merge to set some internal $mt_og meta tags
@@ -402,10 +402,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save the head array to the WordPress transient cache
 			 */
 			if ( apply_filters( $lca.'_head_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
-				set_transient( $cache_id, $head_array, $this->p->options['plugin_object_cache_exp'] );
+				set_transient( $cache_id, $head_array, $this->p->options['plugin_head_cache'] );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': head array saved to transient '.
-						$cache_id.' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+						$cache_id.' ('.$this->p->options['plugin_head_cache'].' seconds)');
 			}
 
 			if ( $this->p->debug->enabled )
