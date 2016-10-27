@@ -20,9 +20,11 @@
 'wpsso_author_object_description' ( $description, $author_obj );
 'wpsso_author_object_title' ( $title, $author_obj );
 'wpsso_author_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_cache_expire_content' ( $secs );
 'wpsso_cache_expire_file_url' ( $secs );
 'wpsso_cache_expire_head_array' ( $secs );
-'wpsso_cache_expire_image_url_size' ( $secs );
+'wpsso_cache_expire_image_url_size' ( $secs, $media_url );
+'wpsso_cache_expire_shorten_url' ( $secs, $short_url );
 'wpsso_cache_expire_topics_array' ( $secs );
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx );
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj );
@@ -50,7 +52,6 @@
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );
 'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
-'wpsso_image_url_sizes_cache_expire' ( $expire_secs, $media_url );
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
 'wpsso_json_array_top_type_ids' ( $type_ids, $mod );
