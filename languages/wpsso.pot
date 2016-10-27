@@ -3083,110 +3083,110 @@ msgid ""
 "cleared."
 msgstr ""
 
-#: lib/util.php:344
+#: lib/util.php:346
 msgid "Error reading %s topic list file."
 msgstr ""
 
-#: lib/util.php:374
+#: lib/util.php:379
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:376
+#: lib/util.php:381
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:378 lib/util.php:380
+#: lib/util.php:383 lib/util.php:385
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:382
+#: lib/util.php:387
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:384
+#: lib/util.php:389
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:386
+#: lib/util.php:391
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:388
+#: lib/util.php:393
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:390
+#: lib/util.php:395
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:392
+#: lib/util.php:397
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:577
+#: lib/util.php:582
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:583
+#: lib/util.php:588
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:631
+#: lib/util.php:636
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:903
+#: lib/util.php:912
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1330
+#: lib/util.php:1339
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1338
+#: lib/util.php:1347
 msgid "Error removing file %s."
 msgstr ""
 
-#: lib/util.php:1623
+#: lib/util.php:1632
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1649
+#: lib/util.php:1658
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1653
+#: lib/util.php:1662
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1656
+#: lib/util.php:1665
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1660
+#: lib/util.php:1669
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

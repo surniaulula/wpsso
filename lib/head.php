@@ -402,10 +402,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save the head array to the WordPress transient cache
 			 */
 			if ( apply_filters( $lca.'_head_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
-				set_transient( $cache_id, $head_array, $this->p->options['plugin_head_cache'] );
+				$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array',
+					( isset( $this->p->options['plugin_head_cache_exp'] ) ?
+						$this->p->options['plugin_head_cache_exp'] : 259200 ) );
+				set_transient( $cache_id, $head_array, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $cache_type.': head array saved to transient '.
-						$cache_id.' ('.$this->p->options['plugin_head_cache'].' seconds)');
+						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
 			if ( $this->p->debug->enabled )

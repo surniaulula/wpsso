@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			// get / remove dimensions for remote image urls
-			$this->p->util->add_image_url_sizes( array(
+			$this->p->util->add_image_url_size( array(
 				'og_img_url',
 				'og_def_img_url',
 				'rp_img_url',

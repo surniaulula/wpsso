@@ -320,13 +320,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function get_topics() {
+		public function get_topics_array() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
+			$lca = $this->p->cf['lca'];
+
 			if ( $this->p->is_avail['cache']['transient'] ) {
 				$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				$topics = get_transient( $cache_id );
@@ -346,15 +348,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $topics;
 			}
 
-			$topics = apply_filters( $this->p->cf['lca'].'_topics', $topics );
+			$topics = apply_filters( $lca.'_topics', $topics );
 			natsort( $topics );
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
 			if ( $cache_id !== false ) {
-				set_transient( $cache_id, $topics, $this->p->options['plugin_object_cache_exp'] );
+				$cache_exp = (int) apply_filters( $lca.'_cache_expire_topics_array',
+					( isset( $this->p->options['plugin_topics_cache_exp'] ) ?
+						$this->p->options['plugin_topics_cache_exp'] : 1814400 ) );
+				set_transient( $cache_id, $topics, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'topics array saved to transient '.$cache_id.
-						' ('.$this->p->options['plugin_object_cache_exp'].' seconds)');
+					$this->p->debug->log( 'topics array saved to transient '.
+						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
 			return $topics;
@@ -867,7 +872,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// use a reference to modify the $options array directly
-		public function add_image_url_sizes( $keys, array &$opts ) {
+		public function add_image_url_size( $keys, array &$opts ) {
 
 			if ( ! is_array( $keys ) )
 				$keys = array( $keys );
@@ -895,9 +900,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$image_info = @getimagesize( $media_url );
 						if ( is_array( $image_info ) ) {
 							if ( $cache_id !== false ) {
-								$cache_exp = (int) apply_filters( $lca.'_image_url_sizes_cache_expire',
-									$this->p->options['plugin_object_cache_exp'], $media_url );
+								$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size',
+									( isset( $this->p->options['plugin_imgsize_cache_exp'] ) ? 
+										$this->p->options['plugin_imgsize_cache_exp'] : 86400 ), $media_url );
 								set_transient( $cache_id, $image_info, $cache_exp );
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'image url size saved to transient '.
+										$cache_id.' ('.$cache_exp.' seconds)');
 							}
 							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',

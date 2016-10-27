@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.37.0-dev1',	// plugin version
-					'opt_version' => '460',		// increment when changing default options
+					'opt_version' => '462',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -681,7 +681,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_embed' => '_format_video_embed',
 					'plugin_cf_recipe_ingredients' => '_recipe_ingredients',
 					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (259200 secs = 3 days)
+					'plugin_object_cache_exp' => 259200,		// Object Cache Expiry (3 days)
+					'plugin_head_cache_exp' => 259200,		// Head Markup Cache Expiry (3 days)
+					'plugin_topics_cache_exp' => 1814400,		// Topics Array Cache Expiry (7 days)
+					'plugin_imgsize_cache_exp' => 86400,		// Image URL Size Cache Expiry (1 day)
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
 					'plugin_file_cache_exp' => 0,			// File Cache Expiry

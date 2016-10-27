@@ -765,7 +765,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 					$meta_image[$mt_pre.':image'] = $url;
-					$this->p->util->add_image_url_sizes( $mt_pre.':image', $meta_image );
+					$this->p->util->add_image_url_size( $mt_pre.':image', $meta_image );
 
 					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
 						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )

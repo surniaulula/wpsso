@@ -685,9 +685,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								if ( empty( $og_image['og:image:width'] ) || $og_image['og:image:width'] < 0 ||
 									empty( $og_image['og:image:height'] ) || $og_image['og:image:height'] < 0 ) {
 
-									$this->p->util->add_image_url_sizes( 'og:image', $og_image );
+									$this->p->util->add_image_url_size( 'og:image', $og_image );
 									if ( $this->p->debug->enabled )
-										$this->p->debug->log( 'add_image_url_sizes() returned '.
+										$this->p->debug->log( 'add_image_url_size() returned '.
 											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
 
 								} elseif ( $this->p->debug->enabled )
@@ -883,7 +883,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				} elseif ( $prefix === 'og:image' ) {
 					if ( $og_video['og:image:width'] <= 0 || 
 						$og_video['og:image:height'] <= 0 )
-							$this->p->util->add_image_url_sizes( 'og:image', $og_video );
+							$this->p->util->add_image_url_size( 'og:image', $og_video );
 				}
 			}
 
