@@ -384,9 +384,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_cache_info':
 							$text = 'Report the number of objects removed from the cache when updating Posts and Pages.';
 							break;
-						case 'tooltip-plugin_file_cache_exp':
-							$text = $info['short_pro'].' can save most social sharing JavaScript and images to a local cache folder, providing URLs to these cached files instead of the originals. A value of 0 seconds (the default) disables the file caching feature. If your hosting infrastructure performs reasonably well, this option can improve page load times significantly. All social sharing images and javascripts will be cached, except for the Facebook JavaScript SDK, which does not work correctly when cached.';
-							break;
 						/*
 						 * 'Service API Keys' (URL Shortening) settings
 						 */

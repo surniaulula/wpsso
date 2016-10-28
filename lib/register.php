@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			// clear all cached objects and transients
 			$this->p->util->delete_expired_db_transients( true );
-			$this->p->util->delete_expired_file_cache( true );
+			$this->p->util->delete_all_cache_files();
 
 			// trunc all stored notices for all users
 			$this->p->notice->trunc_all();

@@ -522,23 +522,26 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				) );
 			}
 
-			$lac = $this->p->cf['lca'];
+			$lca = $this->p->cf['lca'];
 			$content = false;
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
-			$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
-				$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content', $this->p->options['plugin_content_cache_exp'] );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'the content is = '.$filter_status );
+				$this->p->debug->log( 'cache expire = '.$cache_exp );
+			}
 
 			/*
 			 * retrieve the content
 			 */
-			if ( $this->p->is_avail['cache']['object'] ) {
-				if ( empty( $mod['id'] ) ) {	// if id is 0, add sharing url for a unique salt string
+			if ( $cache_exp > 0 ) {
+				if ( empty( $mod['id'] ) ) {	// add sharing url for a unique salt string
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding sharing_url to cache salt for mod id 0' );
 					$url_salt = '_url:'.$this->p->util->get_sharing_url( $mod, true );
 				} else $url_salt = '';
-
 				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.$url_salt.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
@@ -549,7 +552,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$this->p->debug->log( $filter_status.' content retrieved from wp_cache '.$cache_id );
 					return $content;
 				}
-			} else $cache_id = false;
+			}
 
 			$content = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
 
@@ -641,9 +644,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( strpos( $content, '>Google+<' ) !== false )
 				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 
-			if ( ! empty( $caption_prefix ) &&
-				strpos( $content, '<p class="wp-caption-text">' ) !== false )
+			if ( strpos( $content, '<p class="wp-caption-text">' ) !== false ) {
+				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
+					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
+				if ( ! empty( $caption_prefix ) )
 					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}'.$caption_prefix.' ', $content );
+			}
 
 			if ( strpos( $content, ']]>' ) !== false )
 				$content = str_replace( ']]>', ']]&gt;', $content );
@@ -655,12 +661,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			// apply filters before caching
 			$content = apply_filters( $lca.'_content', $content, $mod, $use_cache, $md_idx );
 
-			if ( ! empty( $cache_id ) ) {
-				$cache_exp = (int) apply_filters( $lca.'_cache_expire_content',
-					( isset( $this->p->options['plugin_content_cache_exp'] ) ?
-						$this->p->options['plugin_content_cache_exp'] : 3600 ) );	// default is 1 hour
-				// only some caching plugins implement this function
-				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
+			if ( $cache_exp > 0 ) {
+				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
 				wp_cache_set( $cache_id, $content, __METHOD__, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $filter_status.' content saved to wp_cache '.

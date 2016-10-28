@@ -646,15 +646,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function get_submit_buttons( $submit_text = '', $class = 'submit-buttons' ) {
+
 			$lca = $this->p->cf['lca'];
-
-			if ( empty( $submit_text ) ) 
-				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
-
 			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
 			$show_opts_text = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ),
 				_x( $this->p->cf['form']['show_options'][$show_opts_next], 'option value', 'wpsso' ) );
 			$show_opts_url = $this->p->util->get_admin_url( '?'.$lca.'-action=change_show_options&show-opts='.$show_opts_next );
+
+			if ( empty( $submit_text ) ) 
+				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 
 			// Save All Plugin Settings and View All / Basic Options by Default
 			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
@@ -696,31 +696,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			WpssoAdmin::set_readme_info();
 
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side">';
+			$lca = $this->p->cf['lca'];
+			echo '<table class="sucom-setting '.$lca.' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// only active extensions
 					continue;
 
 				$installed_version = $info['version'];	// static value from config
 				$installed_style = '';
-				if ( empty( $this->is_avail['cache']['transient'] ) ) {
-					$stable_version = __( 'Not Available (Cache Disabled)', 'wpsso' );
-					$latest_version = __( 'Not Available (Cache Disabled)', 'wpsso' );
-				} else {
-					$stable_version = __( 'Not Available', 'wpsso' );
-					$latest_version = __( 'Not Available', 'wpsso' );
-				}
+				$stable_version = __( 'Not Available', 'wpsso' );	// default value
+				$latest_version = __( 'Not Available', 'wpsso' );	// default value
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
 
 				if ( ! empty( self::$readme_info[$ext]['stable_tag'] ) ) {
-
 					$stable_version = self::$readme_info[$ext]['stable_tag'];
 
 					if ( is_array( self::$readme_info[$ext]['upgrade_notice'] ) ) {
-						$upgrade_notice = apply_filters( $this->p->cf['lca'].'_readme_upgrade_notices',
+						// hooked by the update manager to apply the version filter
+						$upgrade_notice = apply_filters( $lca.'_readme_upgrade_notices',
 							self::$readme_info[$ext]['upgrade_notice'], $ext );
-
 						reset( $upgrade_notice );
 						$latest_version = key( $upgrade_notice );
 						$latest_notice = $upgrade_notice[$latest_version];
@@ -729,15 +724,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// hooked by the update manager to check installed version against
 					// the latest version, if a non-stable filter is selected for that
 					// plugin / extension
-					if ( apply_filters( $this->p->cf['lca'].'_newer_version_available',
+					if ( apply_filters( $lca.'_newer_version_available',
 						version_compare( $installed_version, $stable_version, '<' ),
 							$ext, $installed_version, $stable_version, $latest_version ) )
 								$installed_style = 'style="background-color:#f00;"';	// red
-
 					// version is current but not stable (alpha characters found in version string)
 					elseif ( preg_match( '/[a-z]/', $installed_version ) )
 						$installed_style = 'style="background-color:#ff0;"';	// yellow
-
 					// version is current
 					else $installed_style = 'style="background-color:#0f0;"';	// green
 				}
@@ -765,13 +758,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_status_gpl() {
+
+			$lca = $this->p->cf['lca'];
 			$metabox = 'status';
 			$plugin_count = 0;
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info )
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side"
+
+			echo '<table class="sucom-setting '.$lca.' side"
 				style="margin-bottom:10px;">';
+
 			/*
 			 * GPL version features
 			 */
@@ -779,44 +777,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! isset( $info['lib']['gpl'] ) )
 					continue;
 
-				if ( $ext === $this->p->cf['lca'] ) {	// features for this plugin
+				if ( $ext === $lca ) {	// features for this plugin
 					$features = array(
 						'(tool) Debug Logging Enabled' => array(
 							'classname' => 'SucomDebug',
 						),
-						'(tool) WordPress Object (Non-Persistant) Cache' => array(
-							'status' => $this->p->is_avail['cache']['object'] ?
-								'on' : ( SucomUtil::get_const( 'WPSSO_OBJECT_CACHE_DISABLE' ) ?
-									'off' : 'rec' ),
-						),
-						'(tool) WordPress Transient (Persistant) Cache' => array(
-							'status' => $this->p->is_avail['cache']['transient'] ?
-								'on' : ( SucomUtil::get_const( 'WPSSO_TRANSIENT_CACHE_DISABLE' ) ?
-									'off' : 'rec' ),
-						),
 						'(code) Facebook / Open Graph Meta Tags' => array( 
-							'status' => class_exists( $this->p->cf['lca'].'opengraph' ) ?
-								'on' : 'rec',
+							'status' => class_exists( $lca.'opengraph' ) ? 'on' : 'rec',
 						),
 						'(code) Google Author / Person Markup' => array( 
-							'status' => $this->p->options['schema_person_json'] ?
-								'on' : 'off',
+							'status' => $this->p->options['schema_person_json'] ? 'on' : 'off',
 						),
 						'(code) Google Publisher / Organization Markup' => array(
-							'status' => $this->p->options['schema_organization_json'] ?
-								'on' : 'rec',
+							'status' => $this->p->options['schema_organization_json'] ? 'on' : 'off',
 						),
 						'(code) Google Website Markup' => array(
-							'status' => $this->p->options['schema_website_json'] ?
-								'on' : 'rec',
+							'status' => $this->p->options['schema_website_json'] ? 'on' : 'rec',
 						),
 						'(code) Schema Meta Property Containers' => array(
-							'status' => apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', 
+							'status' => apply_filters( $lca.'_add_schema_noscript_array', 
 								$this->p->options['schema_add_noscript'] ) ? 'on' : 'off',
 						),
 						'(code) Twitter Card Meta Tags' => array( 
-							'status' => class_exists( $this->p->cf['lca'].'twittercard' ) ?
-								'on' : 'rec',
+							'status' => class_exists( $lca.'twittercard' ) ? 'on' : 'rec',
 						),
 					);
 				} else $features = array();
@@ -833,13 +816,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_status_pro() {
+
+			$lca = $this->p->cf['lca'];
 			$metabox = 'status';
 			$plugin_count = 0;
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info )
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' side"
+
+			echo '<table class="sucom-setting '.$lca.' side"
 				style="margin-bottom:10px;">';
+
 			/*
 			 * Pro version features
 			 */
@@ -961,10 +949,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_purchase() {
-			$info =& $this->p->cf['plugin'][$this->p->cf['lca']];
+			$lca = $this->p->cf['lca'];
+			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ? 
 				'' : add_query_arg( 'utm_source', 'side-purchase', $info['url']['purchase'] );
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'" side><tr><td>';
+			echo '<table class="sucom-setting '.$lca.'" side><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( ( $this->p->is_avail['aop'] ? 
@@ -975,8 +964,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_help() {
-			echo '<table class="sucom-setting '.
-				$this->p->cf['lca'].'" side><tr><td>';
+			$lca = $this->p->cf['lca'];
+			echo '<table class="sucom-setting '.$lca.'" side><tr><td>';
 			$this->show_follow_icons();
 			echo $this->p->msgs->get( 'side-help-support' );
 
@@ -1051,15 +1040,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function licenses_metabox_content( $network = false ) {
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].' licenses-metabox"
-				style="padding-bottom:10px">'."\n";
-			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
-				$this->p->msgs->get( 'info-plugin-tid'.
-					( $network ? '-network' : '' ) ).'</td></tr>'."\n";
 
 			$num = 0;
 			$lca = $this->p->cf['lca'];
 			$total = count( $this->p->cf['plugin'] );
+
+			echo '<table class="sucom-setting '.$lca.' licenses-metabox"
+				style="padding-bottom:10px">'."\n";
+			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
+				$this->p->msgs->get( 'info-plugin-tid'.
+					( $network ? '-network' : '' ) ).'</td></tr>'."\n";
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				$num++;
@@ -1083,7 +1073,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					// check to see if plugin is installed or not
 					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {
-						$update_plugins = get_site_transient('update_plugins');
+						$update_plugins = get_site_transient( 'update_plugins' );
 						if ( isset( $update_plugins->response ) ) {
 							foreach ( (array) $update_plugins->response as $file => $plugin ) {
 								if ( $plugin->slug === $info['slug'] ) {

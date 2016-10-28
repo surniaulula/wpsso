@@ -402,9 +402,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-				$this->p->debug->log( 'post_id is '.( empty( $post_obj->ID ) ? 0 : $post_obj->ID ) );
-				$this->p->debug->log( 'post_type is '.( empty( $post_obj->post_type ) ? 'empty' : $post_obj->post_type ) );
-				$this->p->debug->log( 'post_status is '.( empty( $post_obj->post_status ) ? 'empty' : $post_obj->post_status ) );
+				$this->p->debug->log( 'post id = '.( empty( $post_obj->ID ) ? 0 : $post_obj->ID ) );
+				$this->p->debug->log( 'post type = '.( empty( $post_obj->post_type ) ? 'empty' : $post_obj->post_type ) );
+				$this->p->debug->log( 'post status = '.( empty( $post_obj->post_status ) ? 'empty' : $post_obj->post_status ) );
 			}
 
 			$lca = $this->p->cf['lca'];

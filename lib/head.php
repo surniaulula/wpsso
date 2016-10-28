@@ -72,8 +72,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = array();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'home_url option = '.get_option( 'home' ) );
-				$this->p->debug->log( 'WP_LANG constant = '.SucomUtil::get_const( 'WP_LANG' ) );
+				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
+				$this->p->debug->log( 'WP_LANG = '.SucomUtil::get_const( 'WP_LANG', '(undefined)' ) );
 				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
@@ -243,25 +243,26 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::crawler_name();
 			$head_index = $this->get_head_cache_index( $crawler_name );
 			$head_array = array();
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', $this->p->options['plugin_head_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'crawler_name is '.$crawler_name );
-				$this->p->debug->log( 'head_index is '.$head_index );
+				$this->p->debug->log( 'sharing url = '.$sharing_url );
+				$this->p->debug->log( 'crawler name = '.$crawler_name );
+				$this->p->debug->log( 'head index = '.$head_index );
+				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
-			if ( $this->p->is_avail['cache']['transient'] ) {
+			if ( $cache_exp > 0 ) {
 				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
 					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url, $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				if ( apply_filters( $lca.'_head_read_cache', $read_cache ) ) {
-					$head_array = get_transient( $cache_id );
-					if ( isset( $head_array[$head_index] ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'head array retrieved from transient '.$cache_id );
-						return $head_array[$head_index];	// stop here
-					}
+				$head_array = get_transient( $cache_id );
+				if ( isset( $head_array[$head_index] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'head array retrieved from transient '.$cache_id );
+					return $head_array[$head_index];	// stop here
 				}
 			} 
 
@@ -277,7 +278,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			} else $author_id = false;
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author_id is '.
+				$this->p->debug->log( 'author id = '.
 					( $author_id === false ? 'false' : (int) $author_id ) );
 
 			/*
@@ -392,13 +393,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mt_json_array
 			);
 
-			/*
-			 * Save the head array to the WordPress transient cache
-			 */
-			if ( apply_filters( $lca.'_head_set_cache', $this->p->is_avail['cache']['transient'] ) ) {
-				$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array',
-					( isset( $this->p->options['plugin_head_cache_exp'] ) ?
-						$this->p->options['plugin_head_cache_exp'] : 259200 ) );	// default is 3 days
+			if ( $cache_exp > 0 ) {
 				set_transient( $cache_id, $head_array, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'head array saved to transient '.

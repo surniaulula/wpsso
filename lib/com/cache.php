@@ -140,7 +140,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: curl extension is not available' );
-				$this->p->notice->err( 'PHP cURL extension is not available.' );
+				if ( is_admin() )
+					$this->p->notice->err( 'PHP cURL extension is not available.' );
 				return $failure;
 			} elseif ( SucomUtil::get_const( $uca.'_PHP_CURL_DISABLE' ) ) {
 				if ( $this->p->debug->enabled )
@@ -179,17 +180,22 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 					break;
 				case 'url':
-					if ( file_exists( $cache_file ) && filemtime( $cache_file ) > time() - $file_expire ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'cached file found: returning url '.$cache_url );
-						return $cache_url;
-					}
-					break;
 				case 'filepath':
-					if ( file_exists( $cache_file ) && filemtime( $cache_file ) > time() - $file_expire ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'cached file found: returning filepath '.$cache_file );
-						return $cache_file;
+					if ( file_exists( $cache_file ) ) {
+						if ( filemtime( $cache_file ) > time() - $file_expire ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'cached file found: returning '.$ret_type.' '.
+									( $ret_type === 'url' ? $cache_url : $cache_file ) );
+							return $ret_type === 'url' ? $cache_url : $cache_file;
+						} elseif ( @unlink( $cache_file ) ) {	// remove expired file
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'removed expired cache file '.$cache_file );
+						} else {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'error removing cache file '.$cache_file );
+							if ( is_admin() )
+								$this->p->notice->err( sprintf( 'Error removing cache file %s.', $cache_file ) );
+						}
 					}
 					break;
 				default:
@@ -252,8 +258,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_close( $ch );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'curl: http return code is '.$http_code );
-				$this->p->debug->log( 'curl: ssl verify result is '.$ssl_verify );
+				$this->p->debug->log( 'curl: http return code = '.$http_code );
+				$this->p->debug->log( 'curl: ssl verify result = '.$ssl_verify );
 			}
 
 			if ( $http_code == 200 ) {
@@ -309,14 +315,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					} elseif ( ! is_readable( $cache_file ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_file.' is not readable' );
-						$this->p->notice->err( $cache_file.' is not readable.' );
+						if ( is_admin() )
+							$this->p->notice->err( $cache_file.' is not readable.' );
 					} elseif ( filemtime( $cache_file ) < time() - $file_expire ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $cache_file.' is expired' );
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'failed to open file '.$cache_file.' for reading' );
-						$this->p->notice->err( 'Failed to open file '.$cache_file.' for reading.' );
+						if ( is_admin() )
+							$this->p->notice->err( 'Failed to open file '.$cache_file.' for reading.' );
 					} else {
 						$cache_data = fread( $fh, filesize( $cache_file ) );
 						fclose( $fh );
@@ -366,9 +374,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( ! is_writable( $this->base_dir ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $this->base_dir.' is not writable.' );
-						$this->p->notice->err( $this->base_dir.' is not writable.' );
+						if ( is_admin() )
+							$this->p->notice->err( $this->base_dir.' is not writable.' );
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
-						$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.' );
+						if ( is_admin() )
+							$this->p->notice->err( 'Failed to open file '.$cache_file.' for writing.' );
 					} elseif ( fwrite( $fh, $cache_data ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'cache data saved to '.$cache_file );

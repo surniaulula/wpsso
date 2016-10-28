@@ -639,20 +639,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// modifies the references array directly, and returns true or false
 		public static function add_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
+			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}
 
 		// modifies the references array directly, and returns true or false
 		public static function add_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
+			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}
 
 		// modifies the references array directly, and returns true or false
 		public static function do_replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
+			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}
 
-		private static function insert_in_array( $rel_pos, array &$array, $match_key, $mixed, $add_value ) {
+		private static function insert_in_array( $rel_pos, array &$array, $match_key, $mixed, $add_value, $ret_matched = false ) {
 			$matched = false;
 			if ( array_key_exists( $match_key, $array ) ) {
 				$new_array = array();
@@ -675,7 +675,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$array = $new_array;
 				unset( $new_array );
 			}
-			return $matched;
+			return $ret_matched ? $matched : $array;	// return true/false or the array (default)
 		}
 
 		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {

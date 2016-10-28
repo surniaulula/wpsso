@@ -47,8 +47,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'hook_name is '.$hook_name );
-				$this->p->debug->log( 'screen_base is '.SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'hook name = '.$hook_name );
+				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
 			// don't load our javascript where we don't need it

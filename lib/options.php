@@ -30,7 +30,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
-			
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'idx' => $idx, 
@@ -89,7 +88,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function get_site_defaults( $idx = false, $force_filter = false ) {
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'idx' => $idx, 
@@ -101,12 +99,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$defs =& $this->p->cf['opt']['site_defaults'];	// shortcut
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'get_site_defaults filter' );	// start
-
 				$defs = apply_filters( $lca.'_get_site_defaults', $defs );
-				
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'get_site_defaults filter' );	// end
 

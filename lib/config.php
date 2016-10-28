@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.37.0-dev1',	// plugin version
-					'opt_version' => '464',		// increment when changing default options
+					'opt_version' => '465',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -687,7 +687,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (7 days)
 					'plugin_topics_cache_exp' => 604800,		// Article Topics Array Cache Expiry (7 days)
-					'plugin_file_cache_exp' => 0,			// Social File Cache Expiry
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_cache_info' => 0,			// Report Cache Purge Count
 					// Service API Keys Tab
@@ -799,8 +798,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shorten_cache_exp:use' => 'default',
 					'plugin_topics_cache_exp' => 604800,		// Article Topics Array Cache Expiry (7 days)
 					'plugin_topics_cache_exp:use' => 'default',
-					'plugin_file_cache_exp' => 0,			// Social File Cache Expiry
-					'plugin_file_cache_exp:use' => 'default',
 					'plugin_verify_certs' => 0,			// Verify SSL Certificates
 					'plugin_verify_certs:use' => 'default',
 					'plugin_cache_info' => 0,			// Report Cache Purge Count

@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
-			$schema_types =& $this->get_schema_types( true );
+			$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			$type_id = null;
 
 			/*
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $def_name;	// just in case
 			}
 
-			$schema_types =& $this->get_schema_types( true );
+			$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			$type_id = isset( $this->p->options['schema_type_for_'.$type_name] ) ?	// just in case
 				$this->p->options['schema_type_for_'.$type_name] : $def_name;
 
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 			if ( ! is_array( $schema_types ) )
-				$schema_types =& $this->get_schema_types( true );
+				$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			else $schema_types = SucomUtil::array_flatten( $schema_types );
 
 			$select = array();
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
-			$schema_types =& $this->get_schema_types( true );
+			$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			if ( isset( $schema_types[$type_id] ) )
 				return $schema_types[$type_id];
 			elseif ( is_string( $default_id ) &&
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
 		public function get_schema_type_parents( $child_id, &$parents = array() ) {
-			$schema_types =& $this->get_schema_types( true );
+			$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			if ( isset( $this->schema_types['parent_index'][$child_id] ) ) {
 				$parent_id = $this->schema_types['parent_index'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// returns an array of schema type ids with child, parent, gparent (in that order)
 		public function get_schema_type_children( $type_id, &$children = array() ) {
 			$children[] = $type_id;	// add children before parents
-			$schema_types =& $this->get_schema_types( true );
+			$schema_types =& $this->get_schema_types( true );	// $flatten = true
 			foreach ( $this->schema_types['parent_index'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
 					$this->get_schema_type_children( $child_id, $children );
@@ -790,6 +790,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	address as https://schema.org/PostalAddress
 			 */
 			if ( self::add_data_itemprop_from_assoc( $address, $opts, array(
+				'name' => 'place_name', 
 				'streetAddress' => 'place_streetaddr', 
 				'postOfficeBoxNumber' => 'place_po_box_number', 
 				'addressLocality' => 'place_city',

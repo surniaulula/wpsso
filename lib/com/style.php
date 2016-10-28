@@ -46,8 +46,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'hook_name is '.$hook_name );
-				$this->p->debug->log( 'screen_base is '.SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'hook name = '.$hook_name );
+				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
 			switch ( $hook_name ) {
