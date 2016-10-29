@@ -340,17 +340,19 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.37.0-dev1 (2016/10/29)**
+**Version 3.37.0-dev2 (2016/10/29)**
 
 Official announcement: N/A
 
 * *New Features*
 	* Replaced the Object Cache Expiry option with new options for finer control of caching features.
 		* Head Markup Array Cache Expiry (default 3 days).
+		* Admin Column Content Cache Expiry (default 3 days).
 		* Filtered Content Text Cache Expiry (default 1 hour).
 		* Get Image (URL) Size Cache Expiry (default 1 day).
 		* Shortened URL Cache Expiry (default 7 days).
 		* Article Topics Array Cache Expiry (default 7 days).
+		* Schema Types Array Cache Expiry (default 7 days).
 * *Improvements*
 	* None
 * *Bugfixes*
@@ -418,7 +420,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 8.37.0-dev1 =
+= 3.37.0-dev2 =
 
 (2016/10/29) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
