@@ -290,7 +290,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function &get_schema_types( $flatten = true ) {
 			if ( ! isset( $this->schema_types['filtered'] ) ) {	// check class property cache
 				$lca = $this->p->cf['lca'];
-				if ( $this->p->is_avail['cache']['transient'] ) {
+				$cache_exp = (int) apply_filters( $lca.'_cache_expire_schema_types',
+					$this->p->options['plugin_types_cache_exp'] );
+				if ( $cache_exp > 0 ) {
 					$cache_salt = __METHOD__;
 					$cache_id = $lca.'_'.md5( $cache_salt );
 					if ( $this->p->debug->enabled )
@@ -298,9 +300,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->schema_types = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->schema_types ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'using schema type arrays from transient cache' );
+							$this->p->debug->log( 'using schema type arrays from transient '.$cache_id );
 					}
-				} else $cache_id = false;
+				}
 
 				if ( ! isset( $this->schema_types['filtered'] ) ) {	// from transient cache or not, check if filtered
 					if ( $this->p->debug->enabled )
@@ -310,9 +312,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
 					ksort( $this->schema_types['flattened'] );
 					ksort( $this->schema_types['parent_index'] );
-					if ( $cache_id !== false ) {
-						$cache_exp = (int) apply_filters( $lca.'_schema_types_cache_expire',
-							$this->p->options['plugin_object_cache_exp'] * 3 );
+					if ( $cache_exp > 0 ) {
 						set_transient( $cache_id, $this->schema_types, $cache_exp );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'schema type arrays saved to transient '.

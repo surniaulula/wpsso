@@ -19,6 +19,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected static $head_meta_tags = array();
 		protected static $head_meta_info = array();
+		protected static $last_column_id = null;	// cache_id of the last column request in list table
+		protected static $last_column_array = array();	// array of column values for last column requested 
 
 		public static $mod_array = array(
 			'id' => 0,
@@ -573,42 +575,56 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $columns;
 		}
 
-		protected function get_mod_column_content( $value, $column_name, $mod ) {
+		protected function get_mod_column_content( $value, $column_index, $mod ) {
 
 			$lca = $this->p->cf['lca'];
 
 			// optimize performance and return immediately if this is not our column
-			if ( strpos( $column_name, $lca.'_' ) !== 0 )
+			if ( strpos( $column_index, $lca.'_' ) !== 0 )	// example: wpsso_og_img
 				return $value;
 
-			// when adding a new category, $screen_id may be false
+			// when adding a new category, the $screen_id may be false
 			$screen_id = SucomUtil::get_screen_id();
 			if ( ! empty( $screen_id ) ) {
 				$hidden = get_user_option( 'manage'.$screen_id.'columnshidden' );
-				if ( is_array( $hidden ) && 
-					in_array( $column_name, $hidden ) )
-						return __( 'Reload to View', 'wpsso' );
+				if ( isset( $hidden[$column_index] ) )
+					return __( 'Reload to View', 'wpsso' );
 			}
 
-			switch ( $column_name ) {
-				case $lca.'_og_img':
-				case $lca.'_og_desc':
-					$use_cache = true;
-					break;
-				default:
-					$use_cache = false;
-					break;
+			// $column_index passed as method argument
+			$column_array = array();
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_column_content', 
+				$this->p->options['plugin_column_cache_exp'], $column_index );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'column index = '.$column_index );
+				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
-			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] ) {
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_column:'.$column_name.')';
+			if ( $cache_exp > 0 ) {
+				// each post/term/user id gets a single transient with all columns
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
-				$value = get_transient( $cache_id );
-				if ( $value !== false )
-					return $value;
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+				// speed-up by saving all post/term/user id columns to static cache
+				if ( self::$last_column_id === $cache_id &&
+					isset( self::$last_column_array[$column_index] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'column array retrieved from static cache '.$cache_id );
+					return self::$last_column_array[$column_index];
+				} else {
+					self::$last_column_id = $cache_id;
+					self::$last_column_array = $column_array = get_transient( $cache_id );
+					if ( isset( $column_array[$column_index] ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'column array retrieved from transient '.$cache_id );
+						return $column_array[$column_index];
+					}
+				}
 			}
 
-			switch ( $column_name ) {
+			switch ( $column_index ) {
 				case $lca.'_og_img':
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'setting custom image dimensions for this post/term/user id' );
@@ -621,12 +637,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *	WpssoTerm::filter_og_img_term_column_content()
 			 *	WpssoUser::filter_og_img_user_column_content()
 			 */
-			$value = apply_filters( $column_name.'_'.$mod['name'].'_column_content', $value, $column_name, $mod );
+			$column_array[$column_index] = apply_filters( $column_index.'_'.$mod['name'].'_column_content', $value, $column_index, $mod );
 
-			if ( $use_cache === true && $this->p->is_avail['cache']['transient'] )
-				set_transient( $cache_id, $value, $this->p->options['plugin_object_cache_exp'] );
+			if ( $cache_exp > 0 ) {
+				set_transient( $cache_id, $column_array, $cache_exp );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'column array saved to transient '.
+						$cache_id.' ('.$cache_exp.' seconds)');
+			}
 
-			return $value;
+			return $column_array[$column_index];
 		}
 
 		public function get_og_img_column_html( $og_image ) {

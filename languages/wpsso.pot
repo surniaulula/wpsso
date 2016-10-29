@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.0-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -815,13 +815,13 @@ msgctxt "option label"
 msgid "Add %s Column for"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:566
+#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:568
 #: lib/pro/admin/advanced.php:111
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:110 lib/messages.php:311 lib/meta.php:567
+#: lib/gpl/admin/advanced.php:110 lib/messages.php:311 lib/meta.php:569
 #: lib/pro/admin/advanced.php:113
 msgctxt "column title"
 msgid "%s Desc"
@@ -942,161 +942,173 @@ msgctxt "option label"
 msgid "Head Markup Array Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:256 lib/gpl/admin/advanced.php:263
-#: lib/gpl/admin/advanced.php:270 lib/gpl/admin/advanced.php:277
-#: lib/gpl/admin/advanced.php:284 lib/pro/admin/advanced.php:253
-#: lib/pro/admin/advanced.php:260 lib/pro/admin/advanced.php:267
-#: lib/pro/admin/advanced.php:274 lib/pro/admin/advanced.php:281
+#: lib/gpl/admin/advanced.php:256 lib/gpl/admin/advanced.php:262
+#: lib/gpl/admin/advanced.php:269 lib/gpl/admin/advanced.php:276
+#: lib/gpl/admin/advanced.php:283 lib/gpl/admin/advanced.php:290
+#: lib/gpl/admin/advanced.php:297 lib/pro/admin/advanced.php:253
+#: lib/pro/admin/advanced.php:259 lib/pro/admin/advanced.php:266
+#: lib/pro/admin/advanced.php:273 lib/pro/admin/advanced.php:280
+#: lib/pro/admin/advanced.php:287 lib/pro/admin/advanced.php:294
 msgctxt "option comment"
 msgid "seconds (0 to disable)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:260 lib/pro/admin/advanced.php:257
+#: lib/gpl/admin/advanced.php:259 lib/pro/admin/advanced.php:256
+msgctxt "option label"
+msgid "Admin Column Content Cache Expiry"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:266 lib/pro/admin/advanced.php:263
 msgctxt "option label"
 msgid "Filtered Content Text Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:267 lib/pro/admin/advanced.php:264
+#: lib/gpl/admin/advanced.php:273 lib/pro/admin/advanced.php:270
 msgctxt "option label"
 msgid "Get Image (URL) Size Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:274 lib/pro/admin/advanced.php:271
+#: lib/gpl/admin/advanced.php:280 lib/pro/admin/advanced.php:277
 msgctxt "option label"
 msgid "Shortened URL Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:281 lib/pro/admin/advanced.php:278
+#: lib/gpl/admin/advanced.php:287 lib/pro/admin/advanced.php:284
 msgctxt "option label"
 msgid "Article Topics Array Cache Expiry"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:288 lib/pro/admin/advanced.php:285
+#: lib/gpl/admin/advanced.php:294 lib/pro/admin/advanced.php:291
+msgctxt "option label"
+msgid "Schema Types Array Cache Expiry"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:301 lib/pro/admin/advanced.php:298
 msgctxt "option label"
 msgid "Verify Peer SSL Certificate"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:294 lib/pro/admin/advanced.php:291
+#: lib/gpl/admin/advanced.php:307 lib/pro/admin/advanced.php:304
 msgctxt "option label"
 msgid "Report Cache Purge Count"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:309 lib/pro/admin/advanced.php:303
+#: lib/gpl/admin/advanced.php:322 lib/pro/admin/advanced.php:316
 msgctxt "option label"
 msgid "Preferred URL Shortening Service"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:314 lib/pro/admin/advanced.php:308
+#: lib/gpl/admin/advanced.php:327 lib/pro/admin/advanced.php:321
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:317 lib/pro/admin/advanced.php:311
+#: lib/gpl/admin/advanced.php:330 lib/pro/admin/advanced.php:324
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:319 lib/pro/admin/advanced.php:313
+#: lib/gpl/admin/advanced.php:332 lib/pro/admin/advanced.php:326
 msgctxt "option label"
 msgid "Use Shortened URL for WP Shortlink"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:325 lib/pro/admin/advanced.php:319
+#: lib/gpl/admin/advanced.php:338 lib/pro/admin/advanced.php:332
 msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:327 lib/pro/admin/advanced.php:321
+#: lib/gpl/admin/advanced.php:340 lib/pro/admin/advanced.php:334
 #: lib/pro/util/shorten.php:80
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:332 lib/pro/admin/advanced.php:326
+#: lib/gpl/admin/advanced.php:345 lib/pro/admin/advanced.php:339
 #: lib/pro/util/shorten.php:89
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:337 lib/pro/admin/advanced.php:331
+#: lib/gpl/admin/advanced.php:350 lib/pro/admin/advanced.php:344
 msgctxt "option label"
 msgid "or Bitly API Key (deprecated)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:339 lib/pro/admin/advanced.php:333
+#: lib/gpl/admin/advanced.php:352 lib/pro/admin/advanced.php:346
 msgctxt "option comment"
 msgid "api key authentication is deprecated"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:343 lib/pro/admin/advanced.php:337
+#: lib/gpl/admin/advanced.php:356 lib/pro/admin/advanced.php:350
 msgctxt "metabox title"
 msgid "Google APIs"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:346 lib/pro/admin/advanced.php:340
+#: lib/gpl/admin/advanced.php:359 lib/pro/admin/advanced.php:353
 #: lib/pro/util/shorten.php:109
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:351 lib/pro/admin/advanced.php:345
+#: lib/gpl/admin/advanced.php:364 lib/pro/admin/advanced.php:358
 msgctxt "option label"
 msgid "Google URL Shortener API is ON"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:358 lib/pro/admin/advanced.php:352
+#: lib/gpl/admin/advanced.php:371 lib/pro/admin/advanced.php:365
 msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:361 lib/pro/admin/advanced.php:355
+#: lib/gpl/admin/advanced.php:374 lib/pro/admin/advanced.php:368
 #: lib/pro/util/shorten.php:131
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:367 lib/pro/admin/advanced.php:361
+#: lib/gpl/admin/advanced.php:380 lib/pro/admin/advanced.php:374
 msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:370 lib/pro/admin/advanced.php:364
+#: lib/gpl/admin/advanced.php:383 lib/pro/admin/advanced.php:377
 #: lib/pro/util/shorten.php:162
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:375 lib/pro/admin/advanced.php:369
+#: lib/gpl/admin/advanced.php:388 lib/pro/admin/advanced.php:382
 msgctxt "option label"
 msgid "YOURLS Username"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:380 lib/pro/admin/advanced.php:374
+#: lib/gpl/admin/advanced.php:393 lib/pro/admin/advanced.php:387
 msgctxt "option label"
 msgid "YOURLS Password"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:385 lib/pro/admin/advanced.php:379
+#: lib/gpl/admin/advanced.php:398 lib/pro/admin/advanced.php:392
 msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:400 lib/gpl/admin/advanced.php:449
-#: lib/pro/admin/advanced.php:391 lib/pro/admin/advanced.php:437
+#: lib/gpl/admin/advanced.php:413 lib/gpl/admin/advanced.php:462
+#: lib/pro/admin/advanced.php:404 lib/pro/admin/advanced.php:450
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:401 lib/gpl/admin/advanced.php:450
-#: lib/messages.php:675 lib/pro/admin/advanced.php:392
-#: lib/pro/admin/advanced.php:438
+#: lib/gpl/admin/advanced.php:414 lib/gpl/admin/advanced.php:463
+#: lib/messages.php:675 lib/pro/admin/advanced.php:405
+#: lib/pro/admin/advanced.php:451
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:402 lib/gpl/admin/advanced.php:451
-#: lib/messages.php:675 lib/pro/admin/advanced.php:393
-#: lib/pro/admin/advanced.php:439
+#: lib/gpl/admin/advanced.php:415 lib/gpl/admin/advanced.php:464
+#: lib/messages.php:675 lib/pro/admin/advanced.php:406
+#: lib/pro/admin/advanced.php:452
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -1186,8 +1198,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:153
-#: lib/meta.php:169 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102
+#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:155
+#: lib/meta.php:171 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1293,7 +1305,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:150 lib/post.php:437
+#: lib/gpl/admin/post.php:94 lib/meta.php:152 lib/post.php:437
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2156,186 +2168,186 @@ msgid ""
 "values for different languages."
 msgstr ""
 
-#: lib/meta.php:73
+#: lib/meta.php:75
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:74
+#: lib/meta.php:76
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:75
+#: lib/meta.php:77
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:76
+#: lib/meta.php:78
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:77
+#: lib/meta.php:79
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:135
+#: lib/meta.php:137
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:141
+#: lib/meta.php:143
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:145
+#: lib/meta.php:147
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:157 lib/meta.php:173
+#: lib/meta.php:159 lib/meta.php:175
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:178
+#: lib/meta.php:180
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:279
+#: lib/meta.php:281
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:284
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:284
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:284
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:285
+#: lib/meta.php:287
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:285
+#: lib/meta.php:287
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:285
+#: lib/meta.php:287
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:288
+#: lib/meta.php:290
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:288
+#: lib/meta.php:290
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:288
+#: lib/meta.php:290
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:291
+#: lib/meta.php:293
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:291
+#: lib/meta.php:293
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:291
+#: lib/meta.php:293
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:291
+#: lib/meta.php:293
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:295
+#: lib/meta.php:297
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:295
+#: lib/meta.php:297
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:295
+#: lib/meta.php:297
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/meta.php:295
+#: lib/meta.php:297
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:477
+#: lib/meta.php:479
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:590
+#: lib/meta.php:591
 msgid "Reload to View"
 msgstr ""
 
@@ -3106,110 +3118,110 @@ msgid ""
 "cleared."
 msgstr ""
 
-#: lib/util.php:347
+#: lib/util.php:348
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:377
+#: lib/util.php:378
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:379
+#: lib/util.php:380
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:381 lib/util.php:383
+#: lib/util.php:382 lib/util.php:384
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:385
+#: lib/util.php:386
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:387
+#: lib/util.php:388
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:389
+#: lib/util.php:390
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:391
+#: lib/util.php:392
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:393
+#: lib/util.php:394
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:395
+#: lib/util.php:396
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:580
+#: lib/util.php:581
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:586
+#: lib/util.php:587
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:634
+#: lib/util.php:635
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:900
+#: lib/util.php:902
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1324
+#: lib/util.php:1326
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1338
+#: lib/util.php:1340
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1615
+#: lib/util.php:1617
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1641
+#: lib/util.php:1643
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1645
+#: lib/util.php:1647
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1648
+#: lib/util.php:1650
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1652
+#: lib/util.php:1654
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

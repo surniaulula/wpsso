@@ -57,8 +57,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
-					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
-					$method_name = self::sanitize_hookname( $type.'_'.$name );
+					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
 
 					call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
@@ -70,8 +70,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				} elseif ( is_string( $val ) ) {
 					$arg_nums = 1;
-					$hook_name = self::sanitize_hookname( $lca.'_'.$name );
-					$function_name = self::sanitize_hookname( $val );
+					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+					$function_name = SucomUtil::sanitize_hookname( $val );
 
 					call_user_func( 'add_'.$type, $hook_name, $function_name, $prio, $arg_nums );
 
@@ -86,9 +86,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
-					$method_name = self::sanitize_hookname( $type.'_'.$name );
+					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
 					foreach ( $val as $hook_name => $arg_nums ) {
-						$hook_name = self::sanitize_hookname( $lca.'_'.$hook_name );
+						$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$hook_name );
 
 						call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
@@ -320,12 +320,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function get_topics_array() {
+		public function get_article_topics() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_topics_array', $this->p->options['plugin_topics_cache_exp'] );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics',
+				$this->p->options['plugin_topics_cache_exp'] );
 
 			if ( $cache_exp > 0 ) {
 				$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
@@ -335,7 +336,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$topics = get_transient( $cache_id );
 				if ( is_array( $topics ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'topics array retrieved from transient '.$cache_id );
+						$this->p->debug->log( 'article topics retrieved from transient '.$cache_id );
 					return $topics;
 				}
 			}
@@ -349,14 +350,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $topics;
 			}
 
-			$topics = apply_filters( $lca.'_topics', $topics );
+			$topics = apply_filters( $lca.'_article_topics', $topics );
 			natsort( $topics );
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
 			if ( $cache_exp > 0 ) {
 				set_transient( $cache_id, $topics, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'topics array saved to transient '.
+					$this->p->debug->log( 'article topics saved to transient '.
 						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
@@ -409,7 +410,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				default:
 					$val = stripslashes( $val );
 					$val = wp_filter_nohtml_kses( $val );
-					$val = self::encode_emoji( htmlentities( $val, 
+					$val = SucomUtil::encode_emoji( htmlentities( $val, 
 						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 					break;
 			}
@@ -870,7 +871,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $this->p->options['plugin_imgsize_cache_exp'] );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size',
+				$this->p->options['plugin_imgsize_cache_exp'] );
 
 			foreach ( $keys as $prefix ) {
 				$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );

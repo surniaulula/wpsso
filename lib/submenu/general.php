@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['og_art_section'] = $this->form->get_th_html( _x( 'Default Article Topic',
 						'option label', 'wpsso' ), null, 'og_art_section' ).
-					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_topics_array() ).'</td>';
+					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ).'</td>';
 
 					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Website Name',
 						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
