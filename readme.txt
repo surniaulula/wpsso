@@ -340,12 +340,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.37.0-dev1 (TBD)**
+**Version 3.37.0-dev1 (2016/10/29)**
 
 Official announcement: N/A
 
 * *New Features*
-	* Replaced the "Object Cache Expiry" option with:
+	* Replaced the Object Cache Expiry option with new options for finer control of caching features.
 		* Head Markup Array Cache Expiry (default 3 days).
 		* Filtered Content Text Cache Expiry (default 1 hour).
 		* Get Image (URL) Size Cache Expiry (default 1 day).
@@ -358,7 +358,7 @@ Official announcement: N/A
 * *Developer Notes*
 	* Refactored the WpssoSchema::get_json_array() method for a slight performance improvement.
 	* Added https://schema.org/Thing to the Schema Types array (as top-level parent for all other Schema types).
-	* Replaced the $user_id argument in all JSON data and property filters by the Schema $type_id.
+	* Replaced the `$user_id` argument in all JSON data and property filters by the Schema `$type_id`.
 	* Renamed the 'wpsso_json_data_https_schema_org' filter to 'wpsso_json_data_https_schema_org_thing'.
 	* Renamed the 'wpsso_json_array_type_ids' filter to 'wpsso_json_array_schema_type_ids'.
 	* Removed the 'wpsso_add_json_https_schema_org' filter.
@@ -417,6 +417,10 @@ Official announcement: N/A
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 8.37.0-dev1 =
+
+(2016/10/29) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
 = 3.36.3-2 =
 
