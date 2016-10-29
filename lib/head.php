@@ -243,7 +243,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::crawler_name();
 			$head_index = $this->get_head_cache_index( $crawler_name );
 			$head_array = array();
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', $this->p->options['plugin_head_cache_exp'] );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
+				$this->p->options['plugin_head_cache_exp'], $head_index );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );

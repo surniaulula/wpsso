@@ -1041,7 +1041,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$url = false;
 
-			// allow compatibility with $use_post as first argument
 			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $mod );

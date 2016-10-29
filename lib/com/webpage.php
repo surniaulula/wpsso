@@ -523,10 +523,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$content = false;
+			$content_text = false;
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content', $this->p->options['plugin_content_cache_exp'] );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text',
+				$this->p->options['plugin_content_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'the content is = '.$filter_status );
@@ -546,25 +547,25 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
-				$content = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
-				if ( $content !== false ) {
+				$content_text = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
+				if ( $content_text !== false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $filter_status.' content retrieved from wp_cache '.$cache_id );
-					return $content;
+					return $content_text;
 				}
 			}
 
-			$content = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
+			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
 
-			if ( ! empty( $content ) ) {
+			if ( ! empty( $content_text ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'content seed is "'.$content.'"' );
+					$this->p->debug->log( 'content seed is "'.$content_text.'"' );
 			} elseif ( $mod['is_post'] ) {
-				$content = get_post_field( 'post_content', $mod['id'] );
-				if ( empty( $content ) ) {
+				$content_text = get_post_field( 'post_content', $mod['id'] );
+				if ( empty( $content_text ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: no post_content for post id '.$mod['id'] );
-					return $content;
+					return $content_text;
 				}
 			}
 
@@ -573,10 +574,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			 */
 
 			// save content length (for comparison) before making changes
-			$content_strlen_before = strlen( $content );
+			$strlen_before_filters = strlen( $content_text );
 
 			// remove singlepics, which we detect and use before-hand 
-			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, -1, $count );
+			$content_text = preg_replace( '/\[singlepic[^\]]+\]/', '', $content_text, -1, $count );
 			if ( $count > 0 ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $count.' [singlepic] shortcode(s) removed from content' );
@@ -612,7 +613,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					//$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
 				}
 
-				$content = apply_filters( 'the_content', $content );
+				$content_text = apply_filters( 'the_content', $content_text );
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'restoring the original post object' );
@@ -636,40 +637,40 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 
-			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
-			$content = preg_replace( '/^.*<!--'.$lca.'-content-->(.*)<!--\/'.
-				$lca.'-content-->.*$/', '$1', $content );
+			$content_text = preg_replace( '/[\s\n\r]+/s', ' ', $content_text );		// put everything on one line
+			$content_text = preg_replace( '/^.*<!--'.$lca.'-content-->(.*)<!--\/'.
+				$lca.'-content-->.*$/', '$1', $content_text );
 
 			// remove "Google+" link and text
-			if ( strpos( $content, '>Google+<' ) !== false )
-				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
+			if ( strpos( $content_text, '>Google+<' ) !== false )
+				$content_text = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content_text );
 
-			if ( strpos( $content, '<p class="wp-caption-text">' ) !== false ) {
+			if ( strpos( $content_text, '<p class="wp-caption-text">' ) !== false ) {
 				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
 				if ( ! empty( $caption_prefix ) )
-					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}'.$caption_prefix.' ', $content );
+					$content_text = preg_replace( '/<p class="wp-caption-text">/', '${0}'.$caption_prefix.' ', $content_text );
 			}
 
-			if ( strpos( $content, ']]>' ) !== false )
-				$content = str_replace( ']]>', ']]&gt;', $content );
+			if ( strpos( $content_text, ']]>' ) !== false )
+				$content_text = str_replace( ']]>', ']]&gt;', $content_text );
 
-			$content_strlen_after = strlen( $content );
+			$strlen_after_filters = strlen( $content_text );
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'content strlen before '.$content_strlen_before.' and after changes / filters '.$content_strlen_after );
+				$this->p->debug->log( 'content strlen before '.$strlen_before_filters.' and after changes / filters '.$strlen_after_filters );
 
 			// apply filters before caching
-			$content = apply_filters( $lca.'_content', $content, $mod, $use_cache, $md_idx );
+			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $use_cache, $md_idx );
 
 			if ( $cache_exp > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
-				wp_cache_set( $cache_id, $content, __METHOD__, $cache_exp );
+				wp_cache_set( $cache_id, $content_text, __METHOD__, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $filter_status.' content saved to wp_cache '.
 						$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
-			return $content;
+			return $content_text;
 		}
 
 		public function get_article_section( $post_id ) {
