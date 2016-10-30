@@ -307,14 +307,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$sharing_url = $this->p->util->get_sharing_url( false );
 			$locale_salt = 'locale:'.$locale.'_term:'.$term_id;
 			$transients = array(
-				'WpssoHead::get_head_array' => array( 
-					$locale_salt.'_url:'.$sharing_url,
-					$locale_salt.'_url:'.$sharing_url.'_amp:true',
-				),
-				'WpssoMeta::get_mod_column_content' => array( 
-					$locale_salt.'_column:'.$lca.'_og_img',
-					$locale_salt.'_column:'.$lca.'_og_desc',
-				),
+				'WpssoHead::get_head_array' => array( $locale_salt.'_url:'.$sharing_url ),
+				'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
 			);
 			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $term_id, $locale, $sharing_url );
 

@@ -80,9 +80,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->util->log_is_functions();
 			}
 
-			if ( $this->p->is_avail['mt'] )
+			if ( $this->p->is_avail['head'] )
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
-			else echo "\n<!-- ".$lca." meta tags disabled -->\n";
+			else echo "\n<!-- ".$lca." head html is disabled -->\n";
 
 			// include additional information when debug mode is on
 			if ( $this->p->debug->enabled ) {

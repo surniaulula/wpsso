@@ -607,11 +607,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				// speed-up by saving all post/term/user id columns to static cache
+				// speed-up by saving all post/term/user id columns to static property cache
 				if ( self::$last_column_id === $cache_id &&
 					isset( self::$last_column_array[$column_index] ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'column array retrieved from static cache '.$cache_id );
+						$this->p->debug->log( 'column array retrieved from property cache '.$cache_id );
 					return self::$last_column_array[$column_index];
 				} else {
 					self::$last_column_id = $cache_id;

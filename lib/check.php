@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret['post_thumbnail'] = function_exists( 'has_post_thumbnail' ) ? true : false;
 			$ret['amp_endpoint'] = function_exists( 'is_amp_endpoint' ) ? true : false;
 
-			foreach ( array( 'aop', 'mt' ) as $key )
+			foreach ( array( 'aop', 'head' ) as $key )
 				$ret[$key] = $this->get_avail_check( $key );
 
 			foreach ( $this->p->cf['cache'] as $name => $val ) {
@@ -287,12 +287,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			switch ( $key ) {
 				case 'aop':
 					$ret = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
-					is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
+						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
-				case 'mt':
-					$ret = ! SucomUtil::get_const( 'WPSSO_META_TAGS_DISABLE' ) &&
-					empty( $_SERVER['WPSSO_META_TAGS_DISABLE'] ) &&
-					empty( $_GET['WPSSO_META_TAGS_DISABLE'] ) ? true : false;	// allow meta tags to be disabled with query argument
+				case 'head':
+					$ret = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
+						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
+							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ? true : false;
 					break;
 				default:
 					$ret = false;

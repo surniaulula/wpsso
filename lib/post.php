@@ -320,20 +320,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id );
-			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), 
-				ENT_QUOTES, $charset, false ) );	// double_encode = false
-			$check_opts = apply_filters( $lca.'_check_head_meta_options',
-				SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
+			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), ENT_QUOTES, $charset, false ) );	// double_encode = false
+			$check_opts = apply_filters( $lca.'_check_head_meta_options', SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 			$conflicts_found = 0;
 
-			if ( current_user_can( 'manage_options' ) &&
-				$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) )
-					$notice_suffix = ' ('.sprintf( __( 'see <a href="%s">WP / Theme Integration</a> settings',
-						'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).')';
-			else $notice_suffix = '';
-
 			$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
-				'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).$notice_suffix.'...' );
+				'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
 
 			// use the shortlink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
@@ -347,7 +339,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							foreach( $types as $t ) {
 								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
 									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) ) {
-
 									$conflicts_found++;
 									$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$t.'="'.$m[$t].'"' ) );
 								}
@@ -470,34 +461,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$lca = $this->p->cf['lca'];
 					$locale = SucomUtil::get_locale( $post_id );
 					$permalink = get_permalink( $post_id );
+					$shortlink = wp_get_shortlink( $post_id );
 					$sharing_url = $this->p->util->get_sharing_url( $post_id );
 					$locale_salt = 'locale:'.$locale.'_post:'.$post_id;
-
-					// transients persist from one page load to another
 					$transients = array(
-						'SucomCache::get' => array(
-							'url:'.$permalink,
-						),
-						'WpssoHead::get_head_array' => array( 
-							$locale_salt.'_url:'.$sharing_url,
-							$locale_salt.'_url:'.$sharing_url.'_amp:true',
-						),
-						'WpssoMeta::get_mod_column_content' => array( 
-							$locale_salt.'_column:'.$lca.'_og_img',
-							$locale_salt.'_column:'.$lca.'_og_desc',
-						),
+						'SucomCache::get' => array( 'url:'.$permalink, 'url:'.$shortlink ),
+						'WpssoHead::get_head_array' => array( $locale_salt.'_url:'.$sharing_url ),
+						'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $post_id, $locale, $sharing_url );
-
-					// wp objects are only available for the duration of a single page load
 					$wp_objects = array(
-						'SucomWebpage::get_content' => array(
-							$locale_salt.'_filtered',
-							$locale_salt.'_unfiltered',
-						),
-						'SucomWebpage::get_hashtags' => array(
-							$locale_salt,
-						),
+						'SucomWebpage::get_content' => array( $locale_salt.'_filtered', $locale_salt.'_unfiltered' ),
 					);
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
 

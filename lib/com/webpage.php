@@ -538,12 +538,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			 * retrieve the content
 			 */
 			if ( $cache_exp > 0 ) {
-				if ( empty( $mod['id'] ) ) {	// add sharing url for a unique salt string
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'adding sharing_url to cache salt for mod id 0' );
-					$url_salt = '_url:'.$this->p->util->get_sharing_url( $mod, true );
-				} else $url_salt = '';
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.$url_salt.')';
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.
+					( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod, true ) : '' ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
