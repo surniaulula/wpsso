@@ -365,6 +365,15 @@ Official announcement: N/A
 	* Renamed the 'wpsso_json_array_type_ids' filter to 'wpsso_json_array_schema_type_ids'.
 	* Removed the 'wpsso_add_json_https_schema_org' filter.
 	* Renamed the WPSSO_META_TAGS_DISABLE contant to WPSSO_HEAD_HTML_DISABLE.
+	* Removed the WPSSO_TRANSIENT_CACHE_DISABLE and WPSSO_OBJECT_CACHE_DISABLE constants.
+	* Added several new filters to adjust transient / object cache expiration:
+		* 'ngfb_cache_expire_article_topics' ( $secs );
+		* 'ngfb_cache_expire_column_content' ( $secs );
+		* 'ngfb_cache_expire_content_text' ( $secs );
+		* 'ngfb_cache_expire_head_array' ( $secs );
+		* 'ngfb_cache_expire_image_url_size' ( $secs );
+		* 'ngfb_cache_expire_schema_types' ( $secs );
+		* 'ngfb_cache_expire_shorten_url' ( $secs );
 
 **Version 3.36.3-2 (2016/10/23)**
 
