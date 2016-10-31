@@ -128,12 +128,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			foreach ( array( 'aop', 'head' ) as $key )
 				$ret[$key] = $this->get_avail_check( $key );
 
-			foreach ( $this->p->cf['cache'] as $name => $val ) {
-				$constant_name = 'WPSSO_'.strtoupper( $name ).'_CACHE_DISABLE';
-				$ret['cache'][$name] = defined( $constant_name ) &&
-					constant( $constant_name ) ? false : true;
-			}
-
 			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], 
 				self::$extend_checks ) as $sub => $lib ) {
 

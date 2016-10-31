@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 
 			$table_rows = array();
-			$sharing_url = $this->p->util->get_sharing_url( $mod, false );
+			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$amp_url = $mod['is_post'] && 

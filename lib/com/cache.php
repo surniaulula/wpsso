@@ -296,15 +296,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
 			switch ( $cache_name ) {
-				case 'wp_cache' :
-					$cache_id = $lca. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+				case 'wp_cache':
+					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
 					break;
-				case 'transient' :
-					$cache_id = $lca. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+				case 'transient':
+					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = get_transient( $cache_id );
 					break;
-				case 'file' :
+				case 'file':
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
 					$file_expire = $expire_secs === false ? 
@@ -350,7 +350,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
 			switch ( $cache_name ) {
-				case 'wp_cache' :
+				case 'wp_cache':
 					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_expire );
 					if ( $this->p->debug->enabled )
@@ -358,7 +358,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$cache_id.' ('.$object_expire.' seconds)' );
 					$data_saved = true;	// success
 					break;
-				case 'transient' :
+				case 'transient':
 					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					set_transient( $cache_id, $cache_data, $object_expire );
 					if ( $this->p->debug->enabled )
@@ -366,7 +366,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$cache_id.' ('.$object_expire.' seconds)' );
 					$data_saved = true;	// success
 					break;
-				case 'file' :
+				case 'file':
 					$cache_id = md5( $cache_salt );
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
 					if ( ! is_dir( $this->base_dir ) ) 
@@ -386,7 +386,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$data_saved = true;	// success
 					}
 					break;
-				default :
+				default:
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'unknown cache name: '.$cache_name );
 					break;

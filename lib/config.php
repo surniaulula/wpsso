@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 24 hours
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.0-dev3',	// plugin version
+					'version' => '3.37.0-dev4',	// plugin version
 					'opt_version' => '469',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1296,11 +1296,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'thing' => 'https://schema.org/Thing',
 					),
 				),
-			),
-			'cache' => array(
-				'file' => false,
-				'object' => true,
-				'transient' => true,
 			),
 			'follow' => array(
 				'size' => 24,

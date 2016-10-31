@@ -27,7 +27,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 	function wpsso_schema_attributes( $attr = '' ) {
 		$wpsso =& Wpsso::get_instance();
-		echo $wpsso->schema->add_head_attributes( $attr );
+		echo $wpsso->schema->filter_head_attributes( $attr );
 	}
 }
 

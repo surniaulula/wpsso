@@ -539,7 +539,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			 */
 			if ( $cache_exp > 0 ) {
 				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.
-					( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod, true ) : '' ).')';
+					( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod ) : '' ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'wp_cache salt '.$cache_salt );

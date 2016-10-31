@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
-					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),
+					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
