@@ -44,8 +44,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
 				'integration' => _x( 'WP / Theme Integration', 'metabox tab', 'wpsso' ),
-				'social' => _x( 'Social Settings Meta', 'metabox tab', 'wpsso' ),
-				'cache' => _x( 'File and Object Cache', 'metabox tab', 'wpsso' ),
+				'social' => _x( 'Social / Custom Meta', 'metabox tab', 'wpsso' ),
+				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 				'apikeys' => _x( 'Service API Keys', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();

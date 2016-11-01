@@ -104,30 +104,30 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			foreach ( array( 
-				'og_img' => sprintf( _x( 'Add %s Column for', 'option label', 'wpsso' ), 
+				'og_img' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
-				'og_desc' => sprintf( _x( 'Add %s Column for', 'option label', 'wpsso' ), 
+				'og_desc' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
 			) as $key => $label ) {
 
 				if ( $network ) {
 					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col', array( 'th_rowspan' => 3 ) ).
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).
+					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).
 					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_post' );
 	
 					$table_rows[] = '<tr class="hide_in_basic">'.
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags)', 'wpsso' ) ).
+					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).
 					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_term' );
 	
 					$table_rows[] = '<tr class="hide_in_basic">'.
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_user', __( 'Users' ) ).
+					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_user', __( 'Users List' ) ).
 					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_user' );
 				} else {
 					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col' ).
 					'<td class="blank">'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types', 'wpsso' ) ).'</p>'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags)', 'wpsso' ) ).'</p>'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_user', __( 'Users' ) ).'</p>'.
+					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).'</p>'.
+					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).'</p>'.
+					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_user', __( 'Users List' ) ).'</p>'.
 					'</td>';
 				}
 			}
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_head_cache_exp' );
 
-			$table_rows['plugin_column_cache_exp'] = $form->get_th_html( _x( 'Admin Column Content Cache Expiry',
+			$table_rows['plugin_column_cache_exp'] = $form->get_th_html( _x( 'Column Content Cache Expiry',
 				'option label', 'wpsso' ), null, 'plugin_column_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_column_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.

@@ -661,7 +661,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
-					// Social Settings Meta Tab
+					// Social / Custom Meta Tab
 					'plugin_og_img_col_post' => 1,
 					'plugin_og_img_col_term' => 1,
 					'plugin_og_img_col_user' => 1,
@@ -680,10 +680,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '_format_video_embed',
 					'plugin_cf_recipe_ingredients' => '_recipe_ingredients',
-					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 259200,		// XXX TO BE DELETED
+					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
-					'plugin_column_cache_exp' => 259200,		// Admin Column Content Cache Expiry (3 days)
+					'plugin_column_cache_exp' => 259200,		// Column Content Cache Expiry (3 days)
 					'plugin_content_cache_exp' => 3600,		// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (7 days)
@@ -787,9 +786,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt:use' => 'default',
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					'plugin_page_tags:use' => 'default',
-					// File and Object Cache Tab
-					'plugin_object_cache_exp' => 259200,		// XXX TO BE DELETED
-					'plugin_object_cache_exp:use' => 'default',
+					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => 3600,		// Filtered Content Text Cache Expiry (1 hour)

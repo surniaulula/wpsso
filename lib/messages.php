@@ -370,14 +370,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$info['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
 							break;
 						/*
-						 * 'File and Object Cache' settings
+						 * 'Cache Settings' settings
 						 */
-						case 'tooltip-plugin_object_cache_exp':
-							// use the original un-filtered value
-							$exp_sec = WpssoConfig::$cf['opt']['defaults']['plugin_object_cache_exp'];
-							$exp_hrs = sprintf( '%0.2d', $exp_sec / 60 / 60 );
-							$text = '<p>'.$info['short'].' saves filtered and rendered content to a non-persistant cache (aka <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache" target="_blank">WP Object Cache</a>), and the meta tag HTMLs to a persistant (aka <a href="https://codex.wordpress.org/Transients_API" target="_blank">Transient</a>) cache. The default is '.$exp_sec.' seconds ('.$exp_hrs.' hrs).</p>';
-							break;
 						case 'tooltip-plugin_verify_certs':
 							$text = 'Enable verification of peer SSL certificates when fetching content to be cached using HTTPS. The PHP \'curl\' function will use the '.WPSSO_PHP_CURL_CAINFO.' certificate file by default. You can define a WPSSO_PHP_CURL_CAINFO constant in your wp-config.php file to use an alternate certificate file.';
 							break;
