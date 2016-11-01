@@ -347,7 +347,7 @@ Official announcement: N/A
 * *New Features*
 	* Replaced the Object Cache Expiry option with new options for finer control of caching features.
 		* Head Markup Array Cache Expiry (default 3 days).
-		* Admin Column Content Cache Expiry (default 3 days).
+		* Column Content Cache Expiry (default 3 days).
 		* Filtered Content Text Cache Expiry (default 1 hour).
 		* Get Image (URL) Size Cache Expiry (default 1 day).
 		* Shortened URL Cache Expiry (default 7 days).
