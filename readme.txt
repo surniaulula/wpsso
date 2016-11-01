@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.37.0-dev4 (2016/10/30)**
+**Version 3.37.0-b1 (2016/10/31)**
 
 Official announcement: N/A
 
@@ -365,7 +365,7 @@ Official announcement: N/A
 	* Renamed the 'wpsso_json_array_type_ids' filter to 'wpsso_json_array_schema_type_ids'.
 	* Removed the 'wpsso_add_json_https_schema_org' filter.
 	* Renamed the WPSSO_META_TAGS_DISABLE contant to WPSSO_HEAD_HTML_DISABLE.
-	* Removed the WPSSO_TRANSIENT_CACHE_DISABLE and WPSSO_OBJECT_CACHE_DISABLE constants.
+	* Removed the WPSSO_TRANSIENT_CACHE_DISABLE, WPSSO_OBJECT_CACHE_DISABLE, and WPSSO_FILE_CACHE_DISABLE constants.
 	* Added several new filters to adjust transient / object cache expiration:
 		* 'ngfb_cache_expire_article_topics' ( $secs );
 		* 'ngfb_cache_expire_column_content' ( $secs );
@@ -430,9 +430,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.0-dev4 =
+= 3.37.0-b1 =
 
-(2016/10/30) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
+(2016/10/31) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
 = 3.36.3-2 =
 
