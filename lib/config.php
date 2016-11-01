@@ -625,7 +625,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
+					'plugin_clear_on_save' => 0,			// Clear All Cache(s) on Save Settings
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
+					'plugin_clear_on_save' => 0,			// Clear All Cache(s) on Save Settings
 					'plugin_clear_on_save:use' => 'default',
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_preserve:use' => 'default',
