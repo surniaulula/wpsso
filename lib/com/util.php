@@ -857,15 +857,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $results;
 		}
 
-		public static function get_first_last_next_nums( array &$input ) {
+		public static function get_first_last_next_nums( array $input ) {
+			$count = count( $input );
 			$keys = array_keys( $input );
-			if ( ! empty( $keys ) &&
-				! is_numeric( implode( $keys ) ) )	// array cannot be associative
-					return false;
+			if ( $count && ! is_numeric( implode( $keys ) ) )	// array cannot be associative
+				return array( 0, 0, 0 );
 			sort( $keys );
 			$first = (int) reset( $keys );
 			$last = (int) end( $keys );
-			$next = $last ? $last + 1 : $last;	// next is 0 for an empty array
+			$next = $count ? $last + 1 : $last;	// next is 0 for an empty array
 			return array( $first, $last, $next );
 		}
 
