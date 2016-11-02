@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.37.0-b2 (2016/11/01)**
+**Version 3.37.0-rc1 (2016/11/01)**
 
 Official announcement: N/A
 
@@ -356,7 +356,7 @@ Official announcement: N/A
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed the SucomUtil::get_first_last_next_nums() method, which was not returning a correct 'next' number for single element arrays.
 * *Developer Notes*
 	* Refactored the WpssoSchema::get_json_array() method for a slight performance improvement.
 	* Added https://schema.org/Thing to the Schema Types array (as top-level parent for all other Schema types).
@@ -430,7 +430,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.0-b2 =
+= 3.37.0-rc1 =
 
 (2016/11/01) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
