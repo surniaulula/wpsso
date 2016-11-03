@@ -14,7 +14,7 @@ if ( ! class_exists( 'SucomException' ) ) {
 
 		protected $p;
 
-		protected $statusCodes = array(
+		protected $httpResultCodes = array(
 			100 => 'Continue',
 			101 => 'Switching Protocols',
 			200 => 'OK',
@@ -69,10 +69,10 @@ if ( ! class_exists( 'SucomException' ) ) {
 					$this->p->debug->mark();
 			}
 
-			if ( $message === null && isset( $this->statusCodes[(int) $code] ) )
-				$message = $this->statusCodes[(int) $code];
+			if ( $message === null && isset( $this->httpResultCodes[(int) $code] ) )
+				$message .= ' HTTP '.$this->httpResultCodes[(int) $code].'.';
 
-			parent::__construct( $message, $code, $previous );
+			parent::__construct( trim( $message ), $code, $previous );
 		}
 
 		public function errorMessage( $ret = false ) {
