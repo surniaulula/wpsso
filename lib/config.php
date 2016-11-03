@@ -14,11 +14,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',		// lowercase acronym
-			'uca' => 'WPSSO',		// uppercase acronym
-			'menu' => 'SSO',		// menu item label
-			'color' => '33cc33',		// menu item color - lime green
-			'readme_cache_exp' => 86400,	// 24 hours
-			'setup_cache_exp' => 86400,	// 24 hours
+			'menu_label' => 'SSO',		// menu item label
+			'menu_color' => '33cc33',	// menu item color (lime green)
+			'readme_cache_exp' => 86400,	// 1 day
+			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.37.0-1',	// plugin version

@@ -24,7 +24,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 		public function admin_enqueue_scripts( $hook_name ) {
 			$lca = $this->p->cf['lca'];
-			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
+			$url_path = constant( strtoupper( $this->p->cf['lca'] ).'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
 			// http://qtip2.com/download

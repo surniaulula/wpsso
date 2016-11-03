@@ -305,10 +305,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Social Settings' settings
 						 */
 						case 'tooltip-plugin_og_img_col':
-							$col_name = sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] );
+							$col_name = sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu_label'] );
+							// no break
 						case 'tooltip-plugin_og_desc_col':
 							if ( empty( $col_name ) )
-								$col_name = sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] );
+								$col_name = sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu_label'] );
 							$text = sprintf( __( 'An "%1$s" column can be added to the Posts, Pages, Taxonomy / Terms, and Users admin list pages. When enabled, <b>users can also hide this column</b> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' ), $col_name );
 							break;
 						case 'tooltip-plugin_add_to':
@@ -835,7 +836,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-um-version-required':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$um_version = isset( $um_info['version'] ) ? $um_info['version'] : 'unknown';
-						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['um_min_version'], $um_version ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu'], $um_info['url']['download'], $um_info['short'] );
+						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['um_min_version'], $um_version ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu_label'], $um_info['url']['download'], $um_info['short'] );
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );

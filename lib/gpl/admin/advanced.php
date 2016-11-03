@@ -105,9 +105,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( array( 
 				'og_img' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
-					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
+					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ) ),
 				'og_desc' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
-					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu'] ) ),
+					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ) ),
 			) as $key => $label ) {
 
 				if ( $network ) {

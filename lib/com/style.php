@@ -25,25 +25,30 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		public function admin_enqueue_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
-			$url_path = constant( $this->p->cf['uca'].'_URLPATH' );
+			$url_path = constant( strtoupper( $this->p->cf['lca'] ).'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
 			// https://developers.google.com/speed/libraries/
 			wp_enqueue_style( 'jquery-ui.js',
-				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css', array(), '1.11.4' );
+				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css',
+					array(), '1.11.4' );
 
 			// http://qtip2.com/download
 			wp_register_style( 'jquery-qtip.js',
-				$url_path.'css/ext/jquery-qtip.min.css', array(), '3.0.3' );
+				$url_path.'css/ext/jquery-qtip.min.css',
+					array(), '3.0.3' );
 
 			wp_register_style( 'sucom-setting-pages',
-				$url_path.'css/com/setting-pages.min.css', array(), $plugin_version );
+				$url_path.'css/com/setting-pages.min.css',
+					array(), $plugin_version );
 
 			wp_register_style( 'sucom-table-setting',
-				$url_path.'css/com/table-setting.min.css', array(), $plugin_version );
+				$url_path.'css/com/table-setting.min.css',
+					array(), $plugin_version );
 
 			wp_register_style( 'sucom-metabox-tabs',
-				$url_path.'css/com/metabox-tabs.min.css', array(), $plugin_version );
+				$url_path.'css/com/metabox-tabs.min.css',
+					array(), $plugin_version );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'hook name = '.$hook_name );
@@ -128,7 +133,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		private function admin_inline_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
 			echo '<style type="text/css">';
-			if ( isset( $this->p->cf['color'] ) ) {
+			if ( isset( $this->p->cf['menu_color'] ) ) {
 				$uca = strtoupper( $lca );
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
@@ -141,7 +146,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
-		color:#'.$this->p->cf['color'].';
+		color:#'.$this->p->cf['menu_color'].';
 	}';
 			}
 			echo '

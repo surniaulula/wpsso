@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
 				self::$pkg_short[$lca].' &mdash; '.$this->menu_name, 
-				$this->p->cf['menu'].' '.self::$pkg_type[$lca], 
+				$this->p->cf['menu_label'].' '.self::$pkg_type[$lca], 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
 					'manage_options' ),	// fallback to manage_options capability
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( strpos( $menu_title, '<color>' ) !== false )
 				$menu_title = preg_replace( array( '/<color>/', '/<\/color>/' ),
-					array( '<span style="color:#'.$this->p->cf['color'].';">', '</span>' ), $menu_title );
+					array( '<span style="color:#'.$this->p->cf['menu_color'].';">', '</span>' ), $menu_title );
 
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$page_title = self::$pkg_short[$menu_ext].' &mdash; '.$menu_title;
@@ -317,7 +317,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$network = false;
 
 			if ( ! is_array( $opts ) ) {
-				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>'.$this->p->cf['uca'].' Error</b> : '.
+				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray',
+					'<b>'.strtoupper( $this->p->cf['lca'] ).' Error</b> : '.
 					__( 'Submitted options are not an array.', 'wpsso' ), 'error' );
 				return $opts;
 			}

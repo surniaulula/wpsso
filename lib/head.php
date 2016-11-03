@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'twitter:player':
 						case 'canonical':
 						case 'shortlink':
-						case 'menu':
+						case 'menu':	// place menu url
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
 							break;

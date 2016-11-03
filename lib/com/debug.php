@@ -29,7 +29,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				'mem' => memory_get_usage( true ),
 			);
 			$this->display_name = $this->p->cf['lca'];
-			$this->log_prefix = $this->p->cf['uca'];
+			$this->log_prefix = strtoupper( $this->display_name );
 			$this->subsys = $subsys;
 			$this->is_enabled();	// sets $this->enabled value
 			$this->mark();
