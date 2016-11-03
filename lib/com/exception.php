@@ -70,7 +70,7 @@ if ( ! class_exists( 'SucomException' ) ) {
 			}
 
 			if ( $message === null && isset( $this->httpResultCodes[(int) $code] ) )
-				$message .= ' HTTP '.$this->httpResultCodes[(int) $code].'.';
+				$message .= ' HTTP '.$code.' '.$this->httpResultCodes[(int) $code].'.';
 
 			parent::__construct( trim( $message ), $code, $previous );
 		}
