@@ -285,17 +285,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$links[] = '<a href="'.$info['url']['notes'].'">'.
 					_x( 'Notes', 'plugin action link', 'wpsso' ).'</a>';
 
-			if ( ! empty( $info['url']['latest_zip'] ) )
-				$links[] = '<a href="'.$info['url']['latest_zip'].'">'.
+			if ( ! empty( $info['url']['latest'] ) )
+				$links[] = '<a href="'.$info['url']['latest'].'">'.
 					_x( 'Download Latest', 'plugin action link', 'wpsso' ).'</a>';
 
-			if ( ! empty( $info['url']['pro_support'] ) &&
+			if ( ! empty( $info['url']['support'] ) &&
 				$this->p->check->aop( $ext, true, $this->p->is_avail['aop'] ) ) {
-					$links[] = '<a href="'.$info['url']['pro_support'].'">'.
+					$links[] = '<a href="'.$info['url']['support'].'">'.
 						_x( 'Pro Support', 'plugin action link', 'wpsso' ).'</a>';
 			} else {
-				if ( ! empty( $info['url']['wp_support'] ) )
-					$links[] = '<a href="'.$info['url']['wp_support'].'">'.
+				if ( ! empty( $info['url']['forum'] ) )
+					$links[] = '<a href="'.$info['url']['forum'].'">'.
 						_x( 'Support Forum', 'plugin action link', 'wpsso' ).'</a>';
 
 				if ( ! empty( $info['url']['purchase'] ) ) {
@@ -985,12 +985,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$help_links .= '</li>';
 				}
 
-				if ( ! empty( $info['url']['pro_support'] ) && self::$pkg_aop[$ext] )
+				if ( ! empty( $info['url']['support'] ) && self::$pkg_aop[$ext] )
 					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Support Ticket</a>',
-						'wpsso' ), $info['url']['pro_support'] ).'</li>';
-				elseif ( ! empty( $info['url']['wp_support'] ) )
+						'wpsso' ), $info['url']['support'] ).'</li>';
+				elseif ( ! empty( $info['url']['forum'] ) )
 					$help_links .= '<li>'.sprintf( __( 'Post in <a href="%s" target="_blank">Support Forum</a>',
-						'wpsso' ), $info['url']['wp_support'] ).'</li>';
+						'wpsso' ), $info['url']['forum'] ).'</li>';
 
 				if ( ! empty( $help_links ) ) {
 					echo '<p><strong>'.sprintf( _x( '%s Support', 
@@ -1059,7 +1059,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$view_text = _x( 'View Plugin Details', 'plugin action link', 'wpsso' );
 
 				if ( ! empty( $info['slug'] ) && 
-					( empty( $info['url']['latest_zip'] ) ||
+					( empty( $info['url']['latest'] ) ||
 						$this->p->is_avail['util']['um'] ) ) {
 
 					$img_href = add_query_arg( array(
@@ -1094,8 +1094,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'plugin action link', 'wpsso' ).'</a>';
 				}
 
-				if ( ! empty( $info['url']['latest_zip'] ) )
-					$links .= ' | <a href="'.$info['url']['latest_zip'].'">'._x( 'Download Latest Version',
+				if ( ! empty( $info['url']['latest'] ) )
+					$links .= ' | <a href="'.$info['url']['latest'].'">'._x( 'Download Latest Version',
 						'plugin action link', 'wpsso' ).'</a> (ZIP)';
 
 				if ( ! empty( $info['url']['purchase'] ) ) {

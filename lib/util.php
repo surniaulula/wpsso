@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$content = false;
 			$cache_exp = isset( $this->p->cf['setup_cache_exp'] ) ? $this->p->cf['setup_cache_exp'] : 86400;
-			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup'] ) ? $this->p->cf['plugin'][$ext]['url']['setup'] : '';
+			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ? $this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
 			$get_remote = strpos( $file_url, '://' ) ? true : false;
 
@@ -1401,7 +1401,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$readme_info = array();
 			$cache_exp = isset( $this->p->cf['readme_cache_exp'] ) ? $this->p->cf['readme_cache_exp'] : 86400;
-			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme'] ) ? $this->p->cf['plugin'][$ext]['url']['readme'] : '';
+			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ? $this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
 			$get_remote = strpos( $file_url, '://' ) ? true : false;
 

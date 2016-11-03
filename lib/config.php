@@ -39,19 +39,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso/trunk/readme.txt',
-						'setup' => 'https://plugins.svn.wordpress.org/wpsso/trunk/setup.html',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
+						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/setup.html',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso/faq/',
 						'notes' => 'https://wpsso.com/codex/plugins/wpsso/notes/',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
-						'pro_support' => 'https://wpsso.support.wpsso.com/',
+						'support' => 'https://wpsso.support.wpsso.com/',
 					),
 					'lib' => array(			// libraries
 						'profile' => array (	// lib file descriptions will be translated
@@ -157,18 +157,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-am/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-am?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-am/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-am',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-am/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-am/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-am/faq/',
-						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-am/feed/',
-						'pro_support' => 'http://wpsso-am.support.wpsso.com/',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-am/notes/',
+						'support' => 'http://wpsso-am.support.wpsso.com/',
 					),
 				),
 				'wpssojson' => array(
@@ -185,18 +185,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-schema-json-ld?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-schema-json-ld/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/faq/',
 						'notes' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/notes/',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-json/feed/',
-						'pro_support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
+						'support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
 					),
 				),
 				'wpssoorg' => array(
@@ -213,18 +213,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-organization/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-organization?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-organization/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-organization',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-organization/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-organization/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-organization/faq/',
 						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-org/feed/',
-						'pro_support' => 'http://wpsso-organization.support.wpsso.com/',
+						'support' => 'http://wpsso-organization.support.wpsso.com/',
 					),
 				),
 				'wpssoplm' => array(
@@ -241,18 +241,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-plm?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-plm/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-plm',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-plm/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-plm/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-plm/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-plm/faq/',
-						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-plm/feed/',
-						'pro_support' => 'http://wpsso-plm.support.wpsso.com/',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-plm/notes/',
+						'support' => 'http://wpsso-plm.support.wpsso.com/',
 					),
 				),
 				'wpssorrssb' => array(
@@ -269,18 +269,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress.org
 						'download' => 'https://wordpress.org/plugins/wpsso-rrssb/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-rrssb?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-rrssb/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
-						// wpsso.com
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/faq/',
-						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-rrssb/feed/',
-						'pro_support' => 'http://wpsso-rrssb.support.wpsso.com/',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/notes/',
+						'support' => 'http://wpsso-rrssb.support.wpsso.com/',
 					),
 				),
 				'wpssossb' => array(
@@ -297,18 +297,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-ssb/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-ssb?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-ssb/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-ssb',
-						// surniaulula
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ssb/master/readme.txt',
+						// wpsso
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-ssb/update/',
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-ssb/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ssb/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-ssb/',
 						'faq' => 'https://wpsso.com/codex/plugins/wpsso-ssb/faq/',
-						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-ssb/feed/',
-						'pro_support' => 'http://wpsso-ssb.support.wpsso.com/',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-ssb/notes/',
+						'support' => 'http://wpsso-ssb.support.wpsso.com/',
 					),
 				),
 				'wpssossm' => array(
@@ -325,19 +325,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'url' => array(
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-strip-schema-microdata?filter=5&rate=5#postform',
-						'readme' => 'https://plugins.svn.wordpress.org/wpsso-strip-schema-microdata/trunk/readme.txt',
-						'wp_support' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
-						// surniaulula
-						'latest_zip' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/latest/',
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
+						// wpsso
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
-						'purchase' => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-strip-schema-microdata/',
 						'faq' => '',
 						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-ssm/feed/',
-						'pro_support' => '',
 					),
 				),
 				'wpssoum' => array(
@@ -353,20 +351,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// github
-						'readme' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
-						// surniaulula
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
+						// wpsso
 						'download' => 'https://wpsso.com/extend/plugins/wpsso-um/',
-						'latest_zip' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
-						'review' => '',
-						'wp_support' => '',
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
-						'purchase' => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-um/',
 						'faq' => '',
 						'notes' => '',
-						'feed' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso-um/feed/',
-						'pro_support' => '',
 					),
 				),
 			),
