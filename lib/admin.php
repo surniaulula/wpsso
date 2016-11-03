@@ -410,9 +410,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $action_name ) {
 						case 'check_for_updates': 
 							if ( $this->p->is_avail['util']['um'] ) {
-								// refresh the readme info
 								WpssoAdmin::set_readme_info( false );	// $read_cache = false
-
 								$wpssoum =& WpssoUm::get_instance();
 								$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
 							} else {
@@ -695,9 +693,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_version_info() {
 
-			WpssoAdmin::set_readme_info();
-
 			$lca = $this->p->cf['lca'];
+			WpssoAdmin::set_readme_info();	// $read_cache = true
 			echo '<table class="sucom-setting '.$lca.' side">';
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// only active extensions
@@ -738,16 +735,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2"><h4>'.self::$pkg_short[$ext].'</h4></td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Installed',
-					'plugin status label', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Installed', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Stable',
-					'plugin status label', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Stable', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$stable_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Latest',
-					'plugin status label', 'wpsso' ).':</th>
+				echo '<tr><th class="side">'._x( 'Latest', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$latest_version.'</td></tr>';
 
 				echo '<tr><td colspan="2" id="latest_notice"><p>Version '.$latest_version.' '.$latest_notice.'</p>'.
@@ -768,8 +762,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-setting '.$lca.' side"
-				style="margin-bottom:10px;">';
+			echo '<table class="sucom-setting '.$lca.' side" style="margin-bottom:10px;">';
 
 			/*
 			 * GPL version features
@@ -826,8 +819,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-setting '.$lca.' side"
-				style="margin-bottom:10px;">';
+			echo '<table class="sucom-setting '.$lca.' side" style="margin-bottom:10px;">';
 
 			/*
 			 * Pro version features
@@ -881,15 +873,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$status_info = array( 
 				'on' => array(
 					'img' => 'green-circle.png',
-					'title' => 'Feature is enabled',
+					'title' => __( 'Feature is enabled.', 'wpsso' ),
 				),
 				'off' => array(
 					'img' => 'gray-circle.png',
-					'title' => 'Feature is disabled / not loaded',
+					'title' => __( 'Feature is disabled / not loaded.', 'wpsso' ),
 				),
 				'rec' => array(
 					'img' => 'red-circle.png',
-					'title' => 'Feature is recommended but disabled / not available',
+					'title' => __( 'Feature is recommended but disabled / not available.', 'wpsso' ),
 				),
 			);
 
@@ -993,9 +985,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $info['url']['forum'] ).'</li>';
 
 				if ( ! empty( $help_links ) ) {
-					echo '<p><strong>'.sprintf( _x( '%s Support', 
-						'metabox title (side)', 'wpsso' ), 
-							self::$pkg_short[$ext] ).'</strong></p>';
+					echo '<p><strong>'.sprintf( _x( '%s Support', 'metabox title (side)',
+						'wpsso' ), self::$pkg_short[$ext] ).'</strong></p>';
 					echo '<ul>'.$help_links.'</ul>';
 				}
 			}
@@ -1056,7 +1047,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$num++;
 				$links = '';
 				$img_href = '';
-				$view_text = _x( 'View Plugin Details', 'plugin action link', 'wpsso' );
+				$view_text = _x( 'View Plugin Details',
+					'plugin action link', 'wpsso' );
 
 				if ( ! empty( $info['slug'] ) && 
 					( empty( $info['url']['latest'] ) ||
