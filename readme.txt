@@ -340,7 +340,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Changelog / Release Notes =
 
-**Version 3.37.0-rc1 (2016/11/02)**
+**Version 3.37.0-1 (2016/11/03)**
 
 Official announcement: N/A
 
@@ -430,11 +430,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.0-rc1 =
+= 3.37.0-1 =
 
-(2016/11/02) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
-
-= 3.36.3-2 =
-
-(2016/10/23) Optimized the head meta transient cache value for Pinterest (storing 1 transient instead of 2). Minimum requirements updated to WP v3.5 and PHP v5.4.
+(2016/11/03) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
