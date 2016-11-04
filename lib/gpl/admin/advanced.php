@@ -256,7 +256,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_head_cache_exp' );
 
-			$table_rows['plugin_column_cache_exp'] = $form->get_th_html( _x( 'Column Content Cache Expiry',
+			$table_rows['plugin_shorten_cache_exp'] = $form->get_th_html( _x( 'Shortened URL Cache Expiry',
+				'option label', 'wpsso' ), null, 'plugin_shorten_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_shorten_cache_exp'].' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			$this->p->admin->get_site_use( $form, $network, 'plugin_shorten_cache_exp' );
+
+			$table_rows['plugin_column_cache_exp'] = $form->get_th_html( _x( 'List Column Content Cache Expiry',
 				'option label', 'wpsso' ), null, 'plugin_column_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_column_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
@@ -275,13 +281,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_imgsize_cache_exp' );
-
-			$table_rows['plugin_shorten_cache_exp'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Shortened URL Cache Expiry',
-				'option label', 'wpsso' ), null, 'plugin_shorten_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_shorten_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_site_use( $form, $network, 'plugin_shorten_cache_exp' );
 
 			$table_rows['plugin_topics_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Article Topics Array Cache Expiry',
