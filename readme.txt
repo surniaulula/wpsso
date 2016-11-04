@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.5
 Tested Up To: 4.6.1
-Stable Tag: 3.37.0-1
+Stable Tag: 3.37.0-2
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -337,6 +337,15 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
+
+= Version Numbering Scheme =
+
+Version components: `{major}.{minor}.{bugfix}-{stage}{level}`
+
+* {major} = Major code changes / re-writes or significant feature changes.
+* {minor} = New features were added or improved.
+* {bugfix} = Bugfixes or minor improvements.
+* {stage}{level} = dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate) &lt; # (production) (see [PHP's version_compare](http://php.net/manual/en/function.version-compare.php) documentation).
 
 = Changelog / Release Notes =
 
