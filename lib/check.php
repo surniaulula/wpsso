@@ -284,12 +284,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'head':
-					$ret = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
-						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
-							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ? true : false;
+					$ret = apply_filters( $this->p->cf['lca'].'_is_avail_'.$key, 
+						( ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
+							empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
+								empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ? 
+									true : false ) );
 					break;
 				default:
-					$ret = false;
+					$ret = false;	// just in case
 					break;
 			}
 			return $ret;

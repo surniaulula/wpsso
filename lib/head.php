@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->util->log_is_functions();
 			}
 
-			if ( $this->p->is_avail['head'] )
+			if ( apply_filters( $lca.'_add_head_html', $this->p->is_avail['head'], $mod ) )
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
 			else echo "\n<!-- ".$lca." head html is disabled -->\n";
 
