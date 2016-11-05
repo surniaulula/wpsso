@@ -15,12 +15,14 @@
  * Tested Up To: 4.6.1
  * Version: 3.37.0-2
  * 
- * Version Numbers: {major}.{minor}.{bugfix}-{stage}{level}
+ * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
- *	{major}		Major code changes or significant feature changes.
- *	{minor}		New features added or improvements included.
- *	{bugfix}	Bugfixes or very minor improvements.
- *	{stage}{level}	dev# (development), rc# (release candidate), # (production release)
+ *	{major}		Major code changes / re-writes or significant feature changes.
+ *	{minor}		New features / options were added or improved.
+ *	{bugfix}	Bugfixes or minor improvements.
+ *	{stage}{level}	dev < a (alpha) < b (beta) < rc (release candidate) < # (production).
+ *
+ * See PHP's version_compare() documentation at http://php.net/manual/en/function.version-compare.php.
  * 
  * Copyright 2012-2016 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
