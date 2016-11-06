@@ -38,7 +38,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return $sizes;
 		}
 
-		public function get_array( $use_post = false, $mod = false, $mt_og = array(), $crawler_name = 'none' ) {
+		// use refereence for $mt_og argument to allow unset of existing twitter meta tags.
+		public function get_array( $use_post = false, $mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
 
 			// pinterest does not read twitter card markup
 			switch ( $crawler_name ) {
@@ -56,7 +57,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$max = $this->p->util->get_max_nums( $mod );
-			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og );	// read any pre-defined twitter card values
+			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, false, false, true );	// read and unset pre-defined twitter card values
 			$mt_tc = apply_filters( $lca.'_tc_seed', $mt_tc, $mod['use_post'], $mod );
 
 			// the twitter:domain is used in place of the 'view on web' text

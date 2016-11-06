@@ -574,9 +574,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false ) {
-			$invert = $invert == false ? 
-				null : PREG_GREP_INVERT;
+		// use reference for $input argument to allow unset of keys if $remove is true.
+		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
+			$invert = $invert == false ? null : PREG_GREP_INVERT;
 			$match = preg_grep( $pattern, array_keys( $input ), $invert );
 			$found = array();
 			foreach ( $match as $key ) {
@@ -584,6 +584,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$fixed = preg_replace( $pattern, $replace, $key );
 					$found[$fixed] = $input[$key]; 
 				} else $found[$key] = $input[$key]; 
+
+				if ( $remove !== false )
+					unset( $input[$key] );
 			}
 			return $found;
 		}
