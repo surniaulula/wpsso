@@ -38,8 +38,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return $sizes;
 		}
 
-		// use refereence for $mt_og argument to allow unset of existing twitter meta tags.
-		public function get_array( $use_post = false, $mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
+		// use reference for $mt_og argument to allow unset of existing twitter meta tags.
+		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
 
 			// pinterest does not read twitter card markup
 			switch ( $crawler_name ) {
