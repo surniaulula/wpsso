@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function check_post_head_duplicates( $post_id = true, &$post_obj = false ) {
+		public function check_post_head_duplicates( $post_id = true, $post_obj = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -282,9 +282,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->mark( 'exiting early: plugin_check_head option not enabled');
 				return $post_id;
 			}
-
-			if ( ! is_object( $post_obj ) &&
-				( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
+			
+			if ( ! is_object( $post_obj ) && ( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
 				return $post_id;
@@ -307,7 +306,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$exec_count = (int) get_option( $lca.'_post_head_count' );	// changes false to 0
-			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
+			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
 				if ( $this->p->debug->enabled )
@@ -324,8 +323,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$check_opts = apply_filters( $lca.'_check_head_meta_options', SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 			$conflicts_found = 0;
 
-			$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
-				'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
+			if ( is_admin() )
+				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
+					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
 
 			// use the shortlink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments

@@ -575,17 +575,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
 				return false;
+			// fetch the webpage content and save it as a transient
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: error caching '.$request );
-				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
-					'wpsso' ), $request ) );
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
+						'wpsso' ), $request ) );
 				return false;
 			} elseif ( empty( $html ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: html for '.$request.' is empty' );
-				$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
-					'wpsso' ), $request ) );
+				if ( is_admin() )
+					$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
+						'wpsso' ), $request ) );
 				return false;
 			}
 

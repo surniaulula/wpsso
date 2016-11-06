@@ -3262,52 +3262,52 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:581
+#: lib/util.php:583
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:587
+#: lib/util.php:590
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:635
+#: lib/util.php:638
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:902
+#: lib/util.php:905
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1326
+#: lib/util.php:1329
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1340
+#: lib/util.php:1343
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1617
+#: lib/util.php:1620
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1643
+#: lib/util.php:1646
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1647
+#: lib/util.php:1650
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1650
+#: lib/util.php:1653
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1654
+#: lib/util.php:1657
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
