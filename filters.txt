@@ -57,7 +57,7 @@
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
-'wpsso_json_array_top_type_ids' ( $type_ids, $mod );
+'wpsso_json_array_schema_type_ids' ( $type_ids, $mod );
 'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $type_id, $is_main );
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_json_prop_https_schema_org_aggregaterating' ( $rating, $mod, $mt_og, $type_id, $is_main );
