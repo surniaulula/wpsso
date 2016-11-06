@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$og = array(), $crawler_name = 'none' ) {
+		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -109,138 +109,138 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$check_dupes = true;
 			$prev_count = 0;
 
-			$og = apply_filters( $lca.'_og_seed', $og, $mod['use_post'], $mod );
+			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod['use_post'], $mod );
 
-			if ( ! empty( $og ) && 
+			if ( ! empty( $mt_og ) && 
 				$this->p->debug->enabled ) {
 					$this->p->debug->log( $lca.'_og_seed filter returned:' );
-					$this->p->debug->log( $og );
+					$this->p->debug->log( $mt_og );
 			}
 
-			if ( ! isset( $og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) )
+			if ( ! isset( $mt_og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) )
 				foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin )
-					$og['fb:admins'][] = trim( $fb_admin );
+					$mt_og['fb:admins'][] = trim( $fb_admin );
 
-			if ( ! isset( $og['fb:app_id'] ) )
-				$og['fb:app_id'] = $this->p->options['fb_app_id'];
+			if ( ! isset( $mt_og['fb:app_id'] ) )
+				$mt_og['fb:app_id'] = $this->p->options['fb_app_id'];
 
-			if ( ! isset( $og['og:url'] ) )
-				$og['og:url'] = $this->p->util->get_sharing_url( $mod );
+			if ( ! isset( $mt_og['og:url'] ) )
+				$mt_og['og:url'] = $this->p->util->get_sharing_url( $mod );
 
 			// define the type after the url
-			if ( ! isset( $og['og:type'] ) ) {
+			if ( ! isset( $mt_og['og:type'] ) ) {
 
 				// singular posts / pages are articles by default
 				// check the post_type for a match with a known open graph type
 				if ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) && 
 						isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
-							$og['og:type'] = $mod['post_type'];
-					else $og['og:type'] = 'article';
+							$mt_og['og:type'] = $mod['post_type'];
+					else $mt_og['og:type'] = 'article';
 
 				// default for everything else is 'website'
-				} else $og['og:type'] = 'website';
+				} else $mt_og['og:type'] = 'website';
 
-				$og['og:type'] = apply_filters( $lca.'_og_type', $og['og:type'], $mod['use_post'] );
+				$mt_og['og:type'] = apply_filters( $lca.'_og_type', $mt_og['og:type'], $mod['use_post'] );
 
 				// pre-define basic open graph meta tags for this type
-				if ( isset( $this->p->cf['head']['og_type_mt'][$og['og:type']] ) ) {
-					foreach( $this->p->cf['head']['og_type_mt'][$og['og:type']] as $mt_name ) {
-						if ( ! isset( $og[$mt_name] ) ) {
-							$og[$mt_name] = null;
+				if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {
+					foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name ) {
+						if ( ! isset( $mt_og[$mt_name] ) ) {
+							$mt_og[$mt_name] = null;
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $og['og:type'].' pre-defined mt: '.$mt_name );
+								$this->p->debug->log( $mt_og['og:type'].' pre-defined mt: '.$mt_name );
 						}
 					}
 				}
 			}
 
-			if ( ! isset( $og['og:locale'] ) ) {
+			if ( ! isset( $mt_og['og:locale'] ) ) {
 				// get the current or configured language for og:locale
 				$lang = empty( $this->p->options['fb_lang'] ) ? 
 					SucomUtil::get_locale( $mod ) : $this->p->options['fb_lang'];
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting og:locale for lang = '.$lang );
-				$og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $mod );
+				$mt_og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $mod );
 			}
 
-			if ( ! isset( $og['og:site_name'] ) )
-				$og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
+			if ( ! isset( $mt_og['og:site_name'] ) )
+				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
 
-			if ( ! isset( $og['og:title'] ) ) {
+			if ( ! isset( $mt_og['og:title'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting title for og:title meta tag' );
-				$og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
+				$mt_og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
 			}
 
-			if ( ! isset( $og['og:description'] ) ) {
+			if ( ! isset( $mt_og['og:description'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting description for og:description meta tag' );
-				$og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
+				$mt_og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
 			}
 
 			// if the page is an article, then define the other article meta tags
-			if ( isset( $og['og:type'] ) && $og['og:type'] == 'article' ) {
+			if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] == 'article' ) {
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:author'] ) ) {
+				if ( ! isset( $mt_og['article:author'] ) ) {
 					if ( $mod['is_post'] ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 
 						if ( $mod['post_author'] ) {
-							$og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
-							$og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
+							$mt_og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
+							$mt_og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
 								$this->p->options['fb_author_name'] );
 
-						} else $og['article:author'] = array();
+						} else $mt_og['article:author'] = array();
 
 						if ( ! empty( $mod['post_coauthors'] ) )
-							$og['article:author'] = array_merge( $og['article:author'],
+							$mt_og['article:author'] = array_merge( $mt_og['article:author'],
 								$this->p->m['util']['user']->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
 					}
 				}
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:publisher'] ) )
-					$og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
+				if ( ! isset( $mt_og['article:publisher'] ) )
+					$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:tag'] ) )
-					$og['article:tag'] = $this->p->webpage->get_tags( $post_id );
+				if ( ! isset( $mt_og['article:tag'] ) )
+					$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:section'] ) )
-					$og['article:section'] = $this->p->webpage->get_article_section( $post_id );
+				if ( ! isset( $mt_og['article:section'] ) )
+					$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:published_time'] ) )
-					$og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
+				if ( ! isset( $mt_og['article:published_time'] ) )
+					$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
 
 				// meta tag not defined or value is null
-				if ( ! isset( $og['article:modified_time'] ) )
-					$og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+				if ( ! isset( $mt_og['article:modified_time'] ) )
+					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
 			}
 
 			// get all videos
 			// call before getting all images to find / use preview images
-			if ( ! isset( $og['og:video'] ) && $aop ) {
+			if ( ! isset( $mt_og['og:video'] ) && $aop ) {
 				if ( empty( $max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
-					$og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
-					if ( ! empty( $og['og:video'] ) && is_array( $og['og:video'] ) ) {
-						foreach ( $og['og:video'] as $num => $og_video ) {
+					$mt_og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
+					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
+						foreach ( $mt_og['og:video'] as $num => $og_video ) {
 							if ( isset( $og_video['og:video:type'] ) && 
 								$og_video['og:video:type'] !== 'text/html' &&
 									SucomUtil::get_mt_media_url( $og_video, 'og:image' ) ) {
 								$prev_count++;
-								$og['og:video'][$num]['og:video:has_image'] = true;
-							} else $og['og:video'][$num]['og:video:has_image'] = false;
+								$mt_og['og:video'][$num]['og:video:has_image'] = true;
+							} else $mt_og['og:video'][$num]['og:video:has_image'] = false;
 						}
 						if ( $prev_count > 0 ) {
 							$max['og_img_max'] -= $prev_count;
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			// get all images
-			if ( ! isset( $og['og:image'] ) ) {
+			if ( ! isset( $mt_og['og:image'] ) ) {
 				if ( empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
@@ -276,11 +276,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'getting images for '.$md_pre.' ('.$size_name.')' );
 
 						// the size_name is used as a context for duplicate checks
-						$og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
+						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
-						if ( empty( $og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] )
-							$og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
+						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] )
+							$mt_og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 								$size_name, $check_dupes );
 
 						switch ( $md_pre ) {
@@ -288,12 +288,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								if ( is_admin() ) {
 									// show both og and pinterest meta tags in the head tags tab
 									// by renaming each og:image to pinterest:image 
-									foreach ( $og[$md_pre.':image'] as $num => $arr )
-										$og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
+									foreach ( $mt_og[$md_pre.':image'] as $num => $arr )
+										$mt_og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
 											$arr, false, 'pinterest:' );
 
 								// rename the rp:image array to og:image
-								} else $og = SucomUtil::rename_keys( $og, array( $md_pre.':image' => 'og:image' ) );
+								} else $mt_og = SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ) );
 
 								break;
 						}
@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} 
 			}
 
-			return apply_filters( $lca.'_og', $og, $mod['use_post'], $mod );
+			return apply_filters( $lca.'_og', $mt_og, $mod['use_post'], $mod );
 		}
 
 		public function get_all_videos( $num = 0, array &$mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {

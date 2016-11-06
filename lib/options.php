@@ -203,16 +203,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// if an seo plugin is detected, disable the standard seo meta tags
 					if ( $this->p->is_avail['seo']['*'] ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'seo plugin found - checking enabled meta tag' );
 						foreach ( array(
 							'add_meta_name_canonical' => 0,
 							'add_meta_name_description' => 0,
 						) as $idx => $def_val ) {
 							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );
 							$opts[$idx.':is'] = 'disabled';
-							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+							if ( $opts[$idx] === $def_val ) {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( $idx.' already set to '.$def_val );
 								continue;
-							$opts[$idx] = $def_val;
-							$has_diff_options = true;	// save the options
+							} else {
+								if ( $this->p->debug->enabled )
+									$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
+								$opts[$idx] = $def_val;
+								$has_diff_options = true;	// save the options
+							}
 						}
 					}
 
