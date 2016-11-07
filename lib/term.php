@@ -67,10 +67,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * do_action( 'delete_term',       $term_id, $tt_id, $taxonomy, $deleted_term );
 				 */
 
-				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
-				// load_meta_page() priorities: 100 post, 200 user, 300 term
-				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
-				add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
+				if ( ! empty( $_GET ) ) {
+					add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
+					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
+					add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
+				}
+
 				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
 				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 				add_action( 'edited_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
@@ -177,14 +180,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			// all meta modules set this property, so use it to optimize code execution
-			if ( ! empty( WpssoMeta::$head_meta_tags ) 
-				|| ! isset( $screen->id ) )
-					return;
+			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) )
+				return;
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );

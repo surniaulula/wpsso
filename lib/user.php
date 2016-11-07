@@ -32,11 +32,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * but missing when viewing our own profile page.
 				 */
 
-				// common to your profile and user editing pages
-				add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
-
-				// load_meta_page() priorities: 100 post, 200 user, 300 term
-				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
+				if ( ! empty( $_GET ) && ! isset( $_GET['updated'] ) ) {	// optimize hooks
+					// common to your profile and user editing pages
+					add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
+					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
+				}
 
 				if ( ! empty( $this->p->options['plugin_og_img_col_user'] ) ||
 					! empty( $this->p->options['plugin_og_desc_col_user'] ) ) {
@@ -154,14 +155,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		// hooked into the current_screen action
 		public function load_meta_page( $screen = false ) {
-
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			// all meta modules set this property, so use it to optimize code execution
-			if ( ! empty( WpssoMeta::$head_meta_tags ) 
-				|| ! isset( $screen->id ) )
-					return;
+			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) )
+				return;
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'screen id: '.$screen->id );

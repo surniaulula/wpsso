@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected $opts = array();	// cache for options
 		protected $defs = array();	// cache for default values
 
-		protected static $head_meta_tags = array();
+		protected static $head_meta_tags = false;
 		protected static $head_meta_info = array();
 		protected static $last_column_id = null;	// cache_id of the last column request in list table
 		protected static $last_column_array = array();	// array of column values for last column requested 
@@ -208,6 +208,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows = array();
 			$script_class = '';
 
+			if ( ! is_array( WpssoMeta::$head_meta_tags ) )	// just in case
+				return $table_rows;
+
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
 				if ( count( $parts ) === 1 ) {
 					if ( strpos( $parts[0], '<script ' ) === 0 )
@@ -254,6 +257,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'<a href="'.$parts[5].'">'.$parts[5].'</a>' : $parts[5] ).'</td>';
 				}
 			}
+
 			return $table_rows;
 		}
 

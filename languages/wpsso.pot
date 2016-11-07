@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:77 lib/term.php:268 lib/user.php:252
+#: lib/admin.php:77 lib/term.php:269 lib/user.php:251
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:78 lib/term.php:269 lib/user.php:253
+#: lib/admin.php:78 lib/term.php:270 lib/user.php:252
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:407 lib/post.php:263 lib/term.php:234 lib/user.php:216
+#: lib/admin.php:407 lib/post.php:264 lib/term.php:235 lib/user.php:215
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -826,13 +826,13 @@ msgctxt "option label"
 msgid "Add '%s' Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:568
+#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:572
 #: lib/pro/admin/advanced.php:111
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:110 lib/messages.php:312 lib/meta.php:569
+#: lib/gpl/admin/advanced.php:110 lib/messages.php:312 lib/meta.php:573
 #: lib/pro/admin/advanced.php:113
 msgctxt "column title"
 msgid "%s Desc"
@@ -1319,7 +1319,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:152 lib/post.php:428
+#: lib/gpl/admin/post.php:94 lib/meta.php:152 lib/post.php:429
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2308,136 +2308,136 @@ msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:281
+#: lib/meta.php:285
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:288
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:288
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:284
+#: lib/meta.php:288
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:291
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:291
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:291
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:294
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:294
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:290
+#: lib/meta.php:294
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:293
+#: lib/meta.php:297
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:293
+#: lib/meta.php:297
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:293
+#: lib/meta.php:297
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:293
+#: lib/meta.php:297
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:297
+#: lib/meta.php:301
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:297
+#: lib/meta.php:301
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:297
+#: lib/meta.php:301
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/meta.php:297
+#: lib/meta.php:301
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:479
+#: lib/meta.php:483
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:591
+#: lib/meta.php:595
 msgid "Reload to View"
 msgstr ""
 
@@ -2498,22 +2498,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:327
+#: lib/post.php:328
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:343
+#: lib/post.php:344
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:353
+#: lib/post.php:354
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:386 lib/profile/social-settings.php:27 lib/term.php:258
-#: lib/user.php:242
+#: lib/post.php:387 lib/profile/social-settings.php:27 lib/term.php:259
+#: lib/user.php:241
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3182,15 +3182,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:411
+#: lib/user.php:410
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:412
+#: lib/user.php:411
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:413
+#: lib/user.php:412
 msgid "Jabber / Google Talk"
 msgstr ""
 
