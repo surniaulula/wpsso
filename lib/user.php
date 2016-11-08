@@ -32,10 +32,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * but missing when viewing our own profile page.
 				 */
 
-				if ( ! empty( $_GET ) && ! isset( $_GET['updated'] ) ) {	// optimize hooks
-					// common to your profile and user editing pages
+				if ( ! empty( $_GET ) && ! isset( $_GET['updated'] ) ) {
+					// common to both profile and user editing pages
 					add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
 					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
 				}
 
@@ -154,6 +155,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		// hooked into the current_screen action
+		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 		public function load_meta_page( $screen = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();

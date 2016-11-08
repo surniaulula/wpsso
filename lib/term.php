@@ -70,6 +70,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				if ( ! empty( $_GET ) ) {
 					add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
 					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
 					add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
 				}
@@ -179,6 +180,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		// hooked into the current_screen action
+		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 		public function load_meta_page( $screen = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();

@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:77 lib/term.php:269 lib/user.php:251
+#: lib/admin.php:77 lib/term.php:271 lib/user.php:253
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:78 lib/term.php:270 lib/user.php:252
+#: lib/admin.php:78 lib/term.php:272 lib/user.php:254
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:407 lib/post.php:264 lib/term.php:235 lib/user.php:215
+#: lib/admin.php:407 lib/post.php:266 lib/term.php:237 lib/user.php:217
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1319,7 +1319,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:152 lib/post.php:429
+#: lib/gpl/admin/post.php:94 lib/meta.php:152 lib/post.php:431
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2456,64 +2456,64 @@ msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:261
+#: lib/options.php:263
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:264
+#: lib/options.php:266
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:267
+#: lib/options.php:269
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:269
+#: lib/options.php:271
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:280
+#: lib/options.php:282
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:339
+#: lib/options.php:341
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:384
+#: lib/options.php:386
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:439
+#: lib/options.php:441
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:328
+#: lib/post.php:330
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:344
+#: lib/post.php:346
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:354
+#: lib/post.php:356
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:387 lib/profile/social-settings.php:27 lib/term.php:259
-#: lib/user.php:241
+#: lib/post.php:389 lib/profile/social-settings.php:27 lib/term.php:261
+#: lib/user.php:243
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3182,15 +3182,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:410
+#: lib/user.php:412
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:411
+#: lib/user.php:413
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:412
+#: lib/user.php:414
 msgid "Jabber / Google Talk"
 msgstr ""
 
