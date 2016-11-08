@@ -50,3 +50,4 @@ WPSSO_FILTER_SINGLE_TAGS	= (not defined)
 WPSSO_RESET_ON_ACTIVATE		= (not defined)
 WPSSO_IMAGE_UPSCALE_ALL		= (not defined)
 WPSSO_IMAGE_UPSCALE_TEST	= (not defined)
+WPSSO_META_GENERATOR_DISABLE	= (not defined)	// generator meta tags are required for plugin support
