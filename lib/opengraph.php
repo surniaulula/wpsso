@@ -96,9 +96,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
+		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
+			if ( $crawler_name === false )
+				$crawler_name = SucomUtil::crawler_name();
 
 			$lca = $this->p->cf['lca'];
 			if ( ! is_array( $mod ) )

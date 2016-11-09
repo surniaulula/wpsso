@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.0-2',	// plugin version
+					'version' => '3.37.1-dev1',	// plugin version
 					'opt_version' => '469',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				/*
-				 * WpssoSchema::get_schema_types() flattens the array, so AVOID DUPLICATE KEY NAMES.
+				 * WpssoSchema::get_schema_types_array() flattens the array, so AVOID DUPLICATE KEY NAMES.
 				 *
 				 * https URLs are preferred - for more info, see https://schema.org/docs/faq.html#19:
 				 *

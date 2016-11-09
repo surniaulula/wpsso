@@ -86,6 +86,31 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
 		}
 
+		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$lca = $this->p->cf['lca'];
+
+			if ( $posts_per_page === false )
+				$posts_per_page = apply_filters( $lca.'_posts_per_page', 
+					get_option( 'posts_per_page' ), $mod );
+
+			if ( $paged === false )
+				$paged = get_query_var( 'paged' );
+
+			if ( ! $paged > 1 )
+				$paged = 1;
+
+			return get_posts( array(
+				'posts_per_page' => $posts_per_page,
+				'paged' => $paged,
+				'post_status' => 'publish',
+				'has_password' => false,	// since wp 3.9
+				'author' => $mod['id'],
+			) );
+		}
+
 		public function add_column_headings( $columns ) { 
 			return $this->add_mod_column_headings( $columns, 'user' );
 		}

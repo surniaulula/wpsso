@@ -56,6 +56,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_array );
 		}
 
+		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
+			return $this->must_be_extended( __METHOD__, $array() );	// return empty array
+		}
+
+		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
+			$ret = array();
+			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post ) {
+				if ( ! empty( $post->ID ) )	// just in case
+					$ret[] = $this->p->m['util']['post']->get_mod( $post->ID );
+			}
+			return $ret;
+		}
+
 		protected function add_actions() {
 			return $this->must_be_extended( __METHOD__ );
 		}

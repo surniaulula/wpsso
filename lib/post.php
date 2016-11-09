@@ -87,6 +87,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_get_post_mod', $mod, $mod_id );
 		}
 
+		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$lca = $this->p->cf['lca'];
+
+			if ( $posts_per_page === false )
+				$posts_per_page = apply_filters( $lca.'_posts_per_page', 
+					get_option( 'posts_per_page' ), $mod );
+
+			if ( $paged === false )
+				$paged = get_query_var( 'paged' );
+
+			if ( ! $paged > 1 )
+				$paged = 1;
+
+			return get_posts( array(
+				'include' => array( $mod['id'] ),	// single post
+				'posts_per_page' => $posts_per_page,
+				'paged' => $paged,
+				'post_status' => 'publish',
+				'has_password' => false,	// since wp 3.9
+			) );
+		}
+
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
