@@ -367,6 +367,7 @@ Official announcement: N/A
 	* Added a WpssoMeta::get_posts_mods() method to return `$mod` arrays for all posts in the current archive page.
 	* Added a WpssoSchema::get_json_data() method with used by WpssoSchema::get_json_array() in the same class.
 	* Renamed the WpssoSchema::get_head_item_type() method to WpssoSchema::get_mod_schema_type().
+	* Renamed the WpssoSchema::get_item_type_context() method to WpssoSchema::get_schema_type_context().
 
 **Version 3.37.0-2 (2016/11/04)**
 
