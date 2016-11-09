@@ -172,13 +172,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'using plugin settings to determine schema type' );
 
-				if ( $mod['is_home'] )	// static or index page
+				if ( $mod['is_home'] ) {	// static or index page
 					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
 						$this->get_schema_type_id_for_name( $mod['post_type'], 'website' ) );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'using schema type id '.$type_id.' for home page' );
 
-				elseif ( $mod['is_post'] ) {
+				} elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
 							$type_id = $this->get_schema_type_id_for_name( $mod['post_type'] );
