@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'returning false: schema type id is empty' );
 				return false;
-			} elseif ( $type_id = 'none' ) {
+			} elseif ( $type_id === 'none' ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'returning false: schema type id is disabled' );
 				return false;
@@ -950,9 +950,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// $user_id is optional and takes precedence over the $mod post_author value
 		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
 
+			$wpsso =& Wpsso::get_instance();
+			if ( $wpsso->debug->enabled )
+				$wpsso->debug->mark();
+
 			$authors_added = 0;
 			$coauthors_added = 0;
-			$wpsso =& Wpsso::get_instance();
 
 			if ( empty( $user_id ) && 
 				isset( $mod['post_author'] ) )
@@ -998,7 +1001,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $wpsso->debug->enabled )
 						$wpsso->debug->log( 'exiting early: empty user module' );
 					return 0;
-				} else $user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
+				} else {
+					if ( $wpsso->debug->enabled )
+						$wpsso->debug->log( 'getting user module for user_id '.$user_id );
+					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
+				}
 
 				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
 				if ( empty( $user_desc ) )
@@ -1289,7 +1296,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $head_type_id );
 		}
 
-		public function is_noscript_enabled( $crawler_name = 'none' ) {
+		public function is_noscript_enabled( $crawler_name = false ) {
 
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
 				if ( $this->p->debug->enabled )
@@ -1297,12 +1304,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
+			if ( $crawler_name === false )
+				$crawler_name = SucomUtil::crawler_name();
+
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
 			// returns false when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled ) ) {
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'noscript disabled by option and/or filter' );
+					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
 				return false;
 			}
 
