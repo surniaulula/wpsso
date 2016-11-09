@@ -145,7 +145,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! empty( $mod['obj'] ) ) {	// just in case
 					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );
 
-					if ( $type_id === 'none' ) {
+					if ( empty( $type_id ) ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'custom type_id is empty' );
+					} elseif ( $type_id === 'none' ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom type_id is disabled with value none' );
 					} elseif ( empty( $schema_types[$type_id] ) ) {
