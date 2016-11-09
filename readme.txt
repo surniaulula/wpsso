@@ -351,6 +351,23 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.37.1-dev1 (2016/11/09)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Refactored the WpssoSchema class to provide a public get_json_data() method for the WPSSO JSON extension.
+	* Added WpssoPost::get_posts(), WpssoTerm::get_posts(), and WpssoUser::get_posts() methods.
+	* Added a WpssoMeta::get_posts_mods() method to return `$mod` arrays for all posts in the current archive page.
+	* Added a WpssoSchema::get_json_data() method with used by WpssoSchema::get_json_array() in the same class.
+	* Renamed the WpssoSchema::get_head_item_type() method to WpssoSchema::get_mod_schema_type().
+
 **Version 3.37.0-2 (2016/11/04)**
 
 Official announcement: N/A
@@ -440,6 +457,10 @@ Official announcement: N/A
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.37.1-dev1 =
+
+(2016/11/09) Refactored the NgfbSchema class to provide a public get_json_data() method for the WPSSO JSON extension.
 
 = 3.37.0-2 =
 
