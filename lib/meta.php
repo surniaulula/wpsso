@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$facebook_url = 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded;
 			$google_url = 'https://search.google.com/structured-data/testing-tool/u/0/#url='.$sharing_url_encoded;
 			$pinterest_url = 'https://developers.pinterest.com/tools/url-debugger/?link='.$sharing_url_encoded;
-			$twitter_url = 'https://dev.twitter.com/docs/cards/validation/validator';
+			$twitter_url = 'https://cards-dev.twitter.com/validator';
 			$w3c_url = 'https://validator.w3.org/nu/?doc='.$sharing_url_encoded;
 
 			// Facebook
