@@ -522,6 +522,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $ret;
 		}
 
+		/*
+		 * JSON-LD Data Array
+		 */
 		public function get_json_data( array &$mod, array &$mt_og, $type_id = false, $is_main = false, $crawler_name = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();

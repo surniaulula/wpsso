@@ -563,7 +563,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
 		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false ) {
-
 			if ( empty( $query ) )
 				return false;
 
@@ -593,16 +592,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret = array();
-			$cmt = $this->p->cf['lca'].' meta tags ';
+			$comment_prefix = $this->p->cf['lca'].' meta tags ';
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 
-			if ( $remove_self && strpos( $html, $cmt.'begin' ) !== false ) {
+			if ( $remove_self && strpos( $html, $comment_prefix.'begin' ) !== false ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'removing self meta tags' );
-				$pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':mark"[\s\n\r]+content=")';
-				$post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
-				$html = preg_replace( '/'.$pre.$cmt.'begin'.$post.'.*'.$pre.$cmt.'end'.$post.'/ms',
-					'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
+
+				$regex_begin = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':mark"[\s\n\r]+content=")';
+				$regex_end = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
+
+				$html = preg_replace( '/'.$regex_begin.$comment_prefix.'begin'.$regex_end.'.*'.
+					$regex_begin.$comment_prefix.'end'.$regex_end.'/ms',
+						'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
 			}
 
 			if ( class_exists( 'DOMDocument' ) ) {

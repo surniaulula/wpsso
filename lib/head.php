@@ -208,14 +208,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! is_array( $mod ) )
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$crawler_name = SucomUtil::crawler_name();
-			$cmt_begin = $lca.' meta tags begin';
-			$cmt_end = $lca.' meta tags end';
+			$comment_begin = $lca.' meta tags begin';
+			$comment_end = $lca.' meta tags end';
 
 			// extra begin/end meta tag for duplicate meta tags check
-			$html = "\n\n".'<!-- '.$cmt_begin.' -->'."\n".
-				'<!-- generated on '.date( 'c' ).' for '.$crawler_name.' -->'."\n";
+			$html = "\n\n".'<!-- '.$comment_begin.' -->'."\n".
+				'<!-- added on '.date( 'c' ).( $crawler_name !== 'none' ? 
+					' ('.$crawler_name.') ' : ' ' ).'-->'."\n";
+
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_begin.'"/>'."\n";
+				$html .= '<meta name="'.$lca.':mark" content="'.$comment_begin.'"/>'."\n";
 
 			// first element of returned array is the html tag
 			$indent = 0;
@@ -230,10 +232,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// extra begin/end meta tag for duplicate meta tags check
+			// extra begin / end meta tag for duplicate meta tags check
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':mark" content="'.$cmt_end.'"/>'."\n";
-			$html .= '<!-- '.$cmt_end.' -->'."\n\n";
+				$html .= '<meta name="'.$lca.':mark" content="'.$comment_end.'"/>'."\n";
+
+			$html .= '<!-- '.$comment_end.' -->'."\n\n";
 
 			return $html;
 		}
