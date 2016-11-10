@@ -724,10 +724,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// return the first url from the associative array (og:image:secure_url, og:image:url, og:image)
-		public static function get_mt_media_url( &$assoc, $mt_pre = 'og:image' ) {
+		public static function get_mt_media_url( array $assoc, $mt_pre = 'og:image' ) {
+
+			// check for two dimensional arrays and get the first element
+			if ( isset( $assoc[$mt_pre] ) && 
+				is_array( $assoc[$mt_pre] ) )
+					$first = reset( $assoc[$mt_pre] );
+			else $first = reset( $assoc );
+
+			if ( is_array( $first ) )
+				return self::get_mt_media_url( $first, $mt_pre );
+		
 			foreach ( array( ':secure_url', ':url', '' ) as $key )
 				if ( ! empty( $assoc[$mt_pre.$key] ) )
-					return $media_url = $assoc[$mt_pre.$key];
+					return $assoc[$mt_pre.$key];
+
 			return '';
 		}
 

@@ -151,13 +151,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $video, 'og:image' );
 
 							// fallback to open graph image
-							if ( empty( $mt_tc['twitter:image'] ) && 
-								! empty( $mt_og['og:image'] ) ) {
-
+							if ( empty( $mt_tc['twitter:image'] ) && ! empty( $mt_og['og:image'] ) ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'player card: no video image - using og:image instead' );
-
-								$mt_tc['twitter:image'] = $mt_og['og:image'];
+								$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $mt_og['og:image'], 'og:image' );
 							}
 						}
 

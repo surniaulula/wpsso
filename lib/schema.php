@@ -662,23 +662,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	mainEntityOfPage as https://schema.org/WebPage
 			 */
 			if ( $is_main && ! empty( $ret_data['url'] ) )
-				self::add_main_entity_data( $ret_data, $ret_data['url'] );
+				$ret_data['mainEntityOfPage'] = $ret_data['url'];
 
 			return empty( $ret_data ) ? $json_data : 
 				( $json_data === null ? $ret_data : 
 					( is_array( $json_data ) ? array_merge( $json_data, $ret_data ) : 
 						$json_data ) );
-		}
-
-		public static function add_main_entity_data( array &$json_data, $url ) {
-			/*
-			$json_data['mainEntityOfPage'] = array(
-				'@context' => 'https://schema.org',
-				'@type' => 'WebPage',
-				'@id' => $url,
-			);
-			*/
-			$json_data['mainEntityOfPage'] = $url;
 		}
 
 		// $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles
