@@ -745,7 +745,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="side">'._x( 'Latest', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version">'.$latest_version.'</td></tr>';
 
-				echo '<tr><td colspan="2" id="latest_notice"><p>Version '.$latest_version.' '.$latest_notice.'</p>'.
+				echo '<tr><td colspan="2" class="latest_notice"><p>Version '.$latest_version.' '.$latest_notice.'</p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
 						sprintf( _x( 'View %s changelog...', 'following plugin status version numbers',
 							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
@@ -947,7 +947,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ? 
 				'' : add_query_arg( 'utm_source', 'side-purchase', $info['url']['purchase'] );
-			echo '<table class="sucom-setting '.$lca.'" side><tr><td>';
+			echo '<table class="sucom-setting '.$lca.' side"><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( ( $this->p->is_avail['aop'] ? 
@@ -959,7 +959,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-setting '.$lca.'" side><tr><td>';
+			echo '<table class="sucom-setting '.$lca.' side"><tr><td>';
 			$this->show_follow_icons();
 			echo $this->p->msgs->get( 'side-help-support' );
 
