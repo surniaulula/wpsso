@@ -358,7 +358,7 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 * *Bugfixes*
 	* None
 * *Developer Notes*
