@@ -351,7 +351,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.1-dev1 (2016/11/09)**
+**Version 3.37.1-dev2 (2016/11/09)**
 
 Official announcement: N/A
 
@@ -459,7 +459,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.1-dev1 =
+= 3.37.1-dev2 =
 
 (2016/11/09) Refactored the NgfbSchema class to provide a public get_json_data() method for the WPSSO JSON extension.
 
