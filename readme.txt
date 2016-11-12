@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.5
 Tested Up To: 4.6.1
-Stable Tag: 3.37.0-2
+Stable Tag: 3.37.1-2
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -463,8 +463,4 @@ Official announcement: N/A
 = 3.37.1-1 =
 
 (2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
-
-= 3.37.0-2 =
-
-(2016/11/04) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
