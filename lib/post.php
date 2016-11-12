@@ -77,8 +77,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$mod['is_post'] = true;
 			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );			// static home page (have post ID)
-			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
-			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
+			$mod['is_home_index'] = ! $mod_id && ! $mod['is_home_page'] && is_home() ?	// blog index page (archive)
+				true : false;
+			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ?		// home page (any)
+				true : false;
 			$mod['post_type'] = get_post_type( $mod_id );					// post type name
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
@@ -104,7 +106,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$paged = 1;
 
 			return get_posts( array(
-				'include' => array( $mod['id'] ),	// single post
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
 				'post_status' => 'publish',

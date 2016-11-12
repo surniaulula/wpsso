@@ -92,7 +92,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:407 lib/post.php:291 lib/term.php:269 lib/user.php:242
+#: lib/admin.php:407 lib/post.php:292 lib/term.php:269 lib/user.php:242
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1320,7 +1320,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:456
+#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:457
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2505,21 +2505,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:355
+#: lib/post.php:356
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:371
+#: lib/post.php:372
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:381
+#: lib/post.php:382
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:414 lib/profile/social-settings.php:27 lib/term.php:293
+#: lib/post.php:415 lib/profile/social-settings.php:27 lib/term.php:293
 #: lib/user.php:268
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3292,34 +3292,34 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1331
+#: lib/util.php:1332
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1345
+#: lib/util.php:1346
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1622
+#: lib/util.php:1623
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1648
+#: lib/util.php:1649
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1652
+#: lib/util.php:1653
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1655
+#: lib/util.php:1656
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1659
+#: lib/util.php:1660
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

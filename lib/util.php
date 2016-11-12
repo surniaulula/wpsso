@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return 0;
 			else $this->cleared_all_cache = true;
 
-			wp_cache_flush();					// clear non-database transients as well
+			wp_cache_flush();	// clear non-database transients as well
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
@@ -1312,7 +1312,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				(int) $_SERVER['REQUEST_TIME'] : time() ; 
 			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
 				' WHERE option_name LIKE \'_transient_timeout_'.$lca.'_%\'';
-			$dbquery .= $all === true ? ';' : ' AND option_value < '.$current_time.';';	// expiration time older than current time
+			$dbquery .= $all === false ?
+				' AND option_value < '.$current_time.';' : ';';	// expiration time older than current time
 			$expired = $wpdb->get_col( $dbquery ); 
 			$deleted = 0;
 			foreach( $expired as $transient ) { 

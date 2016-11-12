@@ -904,7 +904,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_mod_salt( array $mod ) {
-			return 'locale:'.self::get_locale( $mod ).'_'.$mod['name'].':'.$mod['id'];
+			return 'locale:'.self::get_locale( $mod ).
+				( $mod['name'] ? '_'.$mod['name'].':'.$mod['id'] : '' );
 		}
 
 		public static function restore_checkboxes( &$opts ) {
