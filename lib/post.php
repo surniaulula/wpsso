@@ -110,6 +110,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'paged' => $paged,
 				'post_status' => 'publish',
 				'has_password' => false,	// since wp 3.9
+				'post_parent' => $mod['id'] ? $mod['id'] : null,
 			) );
 		}
 
