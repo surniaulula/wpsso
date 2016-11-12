@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// standard types
 					'schema_type_for_archive_page' => 'webpage.collection',
 					'schema_type_for_attachment' => 'webpage',
-					'schema_type_for_home_index' => 'webpage.collection',
+					'schema_type_for_home_index' => 'blog',
 					'schema_type_for_home_page' => 'website',
 					'schema_type_for_page' => 'webpage',		// article would be a good default, if the requirements weren't so strict
 					'schema_type_for_post' => 'blog.posting',
