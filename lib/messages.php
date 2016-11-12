@@ -558,8 +558,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_author_name':
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or \'[None]\' to disable this feature (the recommended value is \'Display Name\').', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
+						case 'tooltip-schema_type_for_home_index':
+							$text = sprintf( __( 'Select the Schema type for a blog (non-static) home page. The default Schema type is %s.',
+								'wpsso' ), 'https://schema.org/CollectionPage' );
+							break;
 						case 'tooltip-schema_type_for_home_page':
-							$text = sprintf( __( 'Select the Schema type for the site home page. The default Schema type is %s.',
+							$text = sprintf( __( 'Select the Schema type for a static home page. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/WebSite' );
 							break;
 						case 'tooltip-schema_type_for_archive_page':

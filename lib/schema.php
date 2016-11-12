@@ -173,11 +173,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'using plugin settings to determine schema type' );
 
 				if ( $mod['is_home'] ) {	// static or index page
-					$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_for_home_page',
-						$this->get_schema_type_id_for_name( $mod['post_type'], 'website' ) );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'using schema type id '.$type_id.' for home page' );
-
+					if ( $mod['is_home_page'] ) {
+						$type_id = apply_filters( $lca.'_schema_type_for_home_page',
+							$this->get_schema_type_id_for_name( 'home_page' ) );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'using schema type id '.$type_id.' for home page' );
+					} else {
+						$type_id = apply_filters( $lca.'_schema_type_for_home_index',
+							$this->get_schema_type_id_for_name( 'home_index' ) );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'using schema type id '.$type_id.' for home index' );
+					}
 				} elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
@@ -191,14 +197,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$this->p->debug->log( 'using schema type id '.$type_id.' from post type name' );
 
 						} else {	// unknown post type
-							$type_id = apply_filters( $lca.'_schema_type_for_post_type_unknown', $this->p->options['schema_type_for_page'] );
+							$type_id = apply_filters( $lca.'_schema_type_for_post_type_unknown', 
+								$this->get_schema_type_id_for_name( 'page' ) );
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'using the page schema type for unknown post type '.$mod['post_type'] );
+								$this->p->debug->log( 'using page schema type for unknown post type '.$mod['post_type'] );
 						}
 					} else {	// post objects without a post_type property
-						$type_id = apply_filters( $lca.'_schema_type_for_post_type_empty', $this->p->options['schema_type_for_page'] );
+						$type_id = apply_filters( $lca.'_schema_type_for_post_type_empty', 
+							$this->get_schema_type_id_for_name( 'page' ) );
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'using the page schema type for empty post type' );
+							$this->p->debug->log( 'using page schema type for empty post type' );
 					}
 
 				} elseif ( $mod['is_term'] ) {
