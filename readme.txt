@@ -351,14 +351,14 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.1-rc1 (2016/11/12)**
+**Version 3.37.1-1 (2016/11/12)**
 
 Official announcement: N/A
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a "Item Type for Blog Home Page" option for non-static home pages.
+	* Added an "Item Type for Blog Home Page" option for non-static home pages.
 	* Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 * *Bugfixes*
 	* None
@@ -460,9 +460,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.1-rc1 =
+= 3.37.1-1 =
 
-(2016/11/12) Refactored the NgfbSchema class to provide a public get_json_data() method for the WPSSO JSON extension.
+(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 
 = 3.37.0-2 =
 
