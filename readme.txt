@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.5
 Tested Up To: 4.6.1
-Stable Tag: 3.37.1-2
+Stable Tag: 3.37.2-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -370,7 +370,7 @@ Official announcement: N/A
 	* Renamed the WpssoSchema::get_head_item_type() method to WpssoSchema::get_mod_schema_type().
 	* Renamed the WpssoSchema::get_item_type_context() method to WpssoSchema::get_schema_type_context().
 
-**Version 3.37.0-2 (2016/11/04)**
+**Version 3.37.0-1 (2016/11/04)**
 
 Official announcement: N/A
 
