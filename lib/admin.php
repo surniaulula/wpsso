@@ -1209,22 +1209,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $opts['opengraph'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Add Open Graph meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Facebook</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Open Graph meta data</strong> option under the <a href="%s">Yoast SEO / Social / Facebook</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
 				}
 				if ( ! empty( $opts['twitter'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Add Twitter card meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Twitter</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Twitter card meta data</strong> option under the <a href="%s">Yoast SEO / Social / Twitter</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
 				}
 				if ( ! empty( $opts['googleplus'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Add Google+ specific post meta data</em>\' option under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Google+ specific post meta data</strong> option under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 				if ( ! empty( $opts['plus-publisher'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the \'<em>Google Publisher Page</em>\' value entered under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the <strong>Google Publisher Page</strong> value entered under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 			}
 
@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_pre.'seo ultimate opengraph module is enabled' );
-						$this->p->notice->err( $err_pre.sprintf( __( 'please disable the \'<em>Open Graph Integrator</em>\' module in the <a href="%s">SEO Ultimate Module Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=seo' ) ) );
+						$this->p->notice->err( $err_pre.sprintf( __( 'please disable the <strong>Open Graph Integrator</strong> module in the <a href="%s">SEO Ultimate Module Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=seo' ) ) );
 					}
 				}
 			}
@@ -1246,12 +1246,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'aioseop social meta feature is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please deactivate the \'<em>Social Meta</em>\' feature in the <a href="%s">All in One SEO Pack Feature Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_feature_manager.php' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please deactivate the <strong>Social Meta</strong> feature in the <a href="%s">All in One SEO Pack Feature Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/modules/aioseop_feature_manager.php' ) ) );
 				}
-				if ( array_key_exists( 'aiosp_google_disable_profile', $opts ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
+				if ( isset( $opts['aiosp_google_disable_profile'] ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'aioseop google plus profile is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please check the \'<em>Disable Google Plus Profile</em>\' option in the <a href="%s">All in One SEO Pack Plugin Options</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please check the <strong>Disable Google Plus Profile</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
+				}
+				if ( isset( $opts['aiosp_schema_markup'] ) && ! empty( $opts['aiosp_schema_markup'] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $log_pre.'aioseop schema markup is enabled' );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
 				}
 			}
 
@@ -1261,22 +1266,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $the_seo_framework->use_og_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription open graph meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Open Graph meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Output Open Graph meta tags?</strong> option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
 				if ( $the_seo_framework->use_facebook_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription facebook meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Faceboook meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Output Facebook meta tags?</strong> option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
 				if ( $the_seo_framework->use_twitter_tags() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription twitter meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Twitter meta tags?</em>\' option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Output Twitter meta tags?</strong> option in <a href="%s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
 				if ( $the_seo_framework->is_option_checked( 'knowledge_output' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'autodescription knowledge graph is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>Output Knowledge tags?</em>\' option in <a href="%s">The SEO Framework</a> Knowledge Graph Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Output Knowledge tags?</strong> option in <a href="%s">The SEO Framework</a> Knowledge Graph Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 				}
 				foreach ( array(
 					'post_publish_time' => 'Add article:published_time to Posts',
@@ -1289,7 +1294,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $the_seo_framework->get_option( $key ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( $log_pre.'autodescription '.$key.' option is enabled' );
-						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>%1$s</em>\' option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), $label, get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
+						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>%1$s</strong> option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), $label, get_admin_url( null, 'admin.php?page=autodescription-settings' ) ) );
 					}
 				}
 			}
@@ -1300,17 +1305,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $opts['sq_auto_facebook'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'squirrly seo open graph meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck \'<em>Add the Social Open Graph objects</em>\' in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck <strong>Add the Social Open Graph objects</strong> in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 				if ( ! empty( $opts['sq_auto_twitter'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'squirrly seo twitter card meta tags are enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck \'<em>Add the Twitter card in your tweets</em>\' in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck <strong>Add the Twitter card in your tweets</strong> in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 				if ( ! empty( $opts['sq_auto_jsonld'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $log_pre.'squirrly seo json-ld markup is enabled' );
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the \'<em>adds the Json-LD metas for Semantic SEO</em>\' option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 			}
 		}
