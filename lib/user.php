@@ -694,14 +694,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 			$lca = $this->p->cf['lca'];
-			$locale = SucomUtil::get_locale();
+			$mod = $this->get_mod( $user_id );
+			$locale = SucomUtil::get_locale( $mod );
+			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
 			$sharing_url = $this->p->util->get_sharing_url( false );
-			$locale_salt = 'locale:'.$locale.'_user:'.$user_id;
+
 			$transients = array(
-				'WpssoHead::get_head_array' => array( $locale_salt.'_url:'.$sharing_url ),
+				'WpssoHead::get_head_array' => array( $locale_salt ),
 				'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
 			);
-			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $user_id, $locale, $sharing_url );
+			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $mod, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

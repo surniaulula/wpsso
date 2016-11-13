@@ -897,15 +897,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$locales[$key];
 
 			if ( $mixed === 'default' )
-				$wp_locale = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
+				$wp_locale = defined( 'WPLANG' ) && WPLANG ? 
+					WPLANG : 'en_US';
 			else $wp_locale = get_locale();
 
 			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
-		public static function get_mod_salt( array $mod ) {
-			return 'locale:'.self::get_locale( $mod ).
-				( $mod['name'] ? '_'.$mod['name'].':'.$mod['id'] : '' );
+		public static function get_mod_salt( array $mod, $locale = false ) {
+			$mod_salt = 'locale:'.( $locale === false ? 
+				self::get_locale( $mod ) : $locale );
+			if ( ! empty( $mod['name'] ) )
+				$mod_salt .= '_'.$mod['name'].':'.$mod['id'];
+			if ( ! empty( $mod['tax_slug'] ) )
+				$mod_salt .= '_tax:'.$mod['tax_slug'];
+			return $mod_salt;
 		}
 
 		public static function restore_checkboxes( &$opts ) {

@@ -338,14 +338,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 			$lca = $this->p->cf['lca'];
-			$locale = SucomUtil::get_locale();
-			$sharing_url = $this->p->util->get_sharing_url( false );
-			$locale_salt = 'locale:'.$locale.'_term:'.$term_id;
+			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
+			$mod = $this->get_mod( $term_id, $tax->slug );
+			$locale = SucomUtil::get_locale( $mod );
+			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
+			$sharing_url = $this->p->util->get_sharing_url( $mod );
+
 			$transients = array(
-				'WpssoHead::get_head_array' => array( $locale_salt.'_url:'.$sharing_url ),
+				'WpssoHead::get_head_array' => array( $locale_salt ),
 				'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
 			);
-			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $term_id, $locale, $sharing_url );
+			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $mod, $locale, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
 

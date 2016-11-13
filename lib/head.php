@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
 			// disable page caching for customized meta tags (same URL, different meta tags)
-			if ( $this->get_head_cache_index() !== 'none' )
+			if ( $this->get_head_cache_index() !== 'crawler:none' )
 				WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
 		}
 
@@ -46,18 +46,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $salt;
 		}
 
-		public function get_head_cache_index( $crawler_name = false ) {
-			if ( $crawler_name === false )
-				$crawler_name = SucomUtil::crawler_name();
-			switch ( $crawler_name ) {
+		public function get_head_cache_index( $sharing_url = false, $crawler_name = false ) {
+			$head_index = '';
+
+			if ( $sharing_url !== false )
+				$head_index .= '_url:'.$sharing_url;
+
+			switch ( $crawler_name === false ? 
+				SucomUtil::crawler_name() : $crawler_name ) {
+
 				case 'pinterest':	// pinterest gets different open graph image sizes and does not read json markup
-					$head_index = $crawler_name;
+					$head_index .= '_crawler:'.$crawler_name;
 					break;
 				default:
-					$head_index = 'none';
+					$head_index .= '_crawler:none';
 					break;
 			}
-			return apply_filters( $this->p->cf['lca'].'_head_cache_index', $head_index, $crawler_name );
+			return apply_filters( $this->p->cf['lca'].'_head_cache_index', 
+				trim( $head_index, '_' ), $sharing_url, $crawler_name );
 		}
 
 		// called by wp_head action
@@ -250,7 +256,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
-			$head_index = $this->get_head_cache_index( $crawler_name );
+			$head_index = $this->get_head_cache_index( $sharing_url, $crawler_name );
 			$head_array = array();
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
 				$this->p->options['plugin_head_cache_exp'], $head_index );
@@ -263,8 +269,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
-					SucomUtil::get_mod_salt( $mod ).'_url:'.$sharing_url, $crawler_name ).')';
+				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', SucomUtil::get_mod_salt( $mod ).
+					( empty( $mod['id'] ) ? '_url:'.$sharing_url : '' ), $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );

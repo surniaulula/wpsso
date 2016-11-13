@@ -489,21 +489,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'private':
 				case 'publish':
 					$lca = $this->p->cf['lca'];
-					$locale = SucomUtil::get_locale( $post_id );
+					$mod = $this->get_mod( $post_id );
+					$locale = SucomUtil::get_locale( $mod );
+					$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
+					$sharing_url = $this->p->util->get_sharing_url( $mod );
 					$permalink = get_permalink( $post_id );
 					$shortlink = wp_get_shortlink( $post_id );
-					$sharing_url = $this->p->util->get_sharing_url( $post_id );
-					$locale_salt = 'locale:'.$locale.'_post:'.$post_id;
+
 					$transients = array(
-						'SucomCache::get' => array( 'url:'.$permalink, 'url:'.$shortlink ),
-						'WpssoHead::get_head_array' => array( $locale_salt.'_url:'.$sharing_url ),
+						'WpssoHead::get_head_array' => array( $locale_salt ),
 						'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
+						'SucomCache::get' => array( 'url:'.$permalink, 'url:'.$shortlink ),
 					);
-					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $post_id, $locale, $sharing_url );
+					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $mod, $locale, $sharing_url );
+
 					$wp_objects = array(
 						'SucomWebpage::get_content' => array( $locale_salt.'_filtered', $locale_salt.'_unfiltered' ),
 					);
-					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $post_id, $locale, $sharing_url );
+					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $locale, $sharing_url );
 
 					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
 

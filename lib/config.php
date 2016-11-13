@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.1-1',	// plugin version
+					'version' => '3.37.2-1',	// plugin version
 					'opt_version' => '471',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
