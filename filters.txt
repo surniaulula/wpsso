@@ -90,7 +90,7 @@
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
 'wpsso_post_cache_objects' ( $wp_objects, $post_id, $locale, $sharing_url );
-'wpsso_post_cache_transients' ( $transients, $post_id, $locale, $sharing_url );
+'wpsso_post_cache_transients' ( $transients, $mod, $locale, $sharing_url );
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id );
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id );
 'wpsso_post_social_settings_tabs' ( $tabs, $mod );
@@ -118,7 +118,7 @@
 'wpsso_tags' ( $tags, $post_id );
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id );
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id );
-'wpsso_term_cache_transients' ( $transients, $term_id, $locale, $sharing_url );
+'wpsso_term_cache_transients' ( $transients, $mod, $locale, $sharing_url );
 'wpsso_term_social_settings_tabs' ( $tabs, $mod );
 'wpsso_tc' ( $tc, $use_post, $mod );
 'wpsso_tc_seed' ( $tc, $use_post, $mod );
@@ -128,7 +128,7 @@
 'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx );
 'wpsso_title_pre_limit' ( $title );
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx );
-'wpsso_user_cache_transients' ( $transients, $user_id, $locale, $sharing_url );
+'wpsso_user_cache_transients' ( $transients, $mod, $locale, $sharing_url );
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
 'wpsso_user_social_settings_tabs' ( $tabs, $mod );
