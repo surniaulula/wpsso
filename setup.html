@@ -40,22 +40,30 @@
 
 <dd><p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or better is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
 
-<blockquote>
+<table><tr>
+
+<td style="vertical-align:top;">
+<blockquote style="margin:5px;">
 <h4>Cropped or Uncropped?</h4>
-<p>The difference between cropped and uncropped image dimensions is important to know &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <u>the excess width or height is trimmed</u>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <u>the original aspect ratio is preserved</u>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mash; so only one side of the image will match the required size.</p>
+<p>The difference between cropped and uncropped image dimensions is important to understand &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <u>the excess width or height is trimmed</u>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <u>the original aspect ratio is preserved</u>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mash; so only one side of the image has to match the required size.</p>
 </blockquote>
+</td>
 
-<blockquote>
+<td style="vertical-align:top;">
+<blockquote style="margin:5px;">
+<h4>Verify Dimensions?</h4>
+<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
+</blockquote>
+</td>
+
+<td style="vertical-align:top;">
+<blockquote style="margin:5px;">
 <h4>Upscale / Enlarge Images?</h4>
-<p>WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images for WPSSO image sizes (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing the images any larger would fail (unless you increased the maximum).</p> 
-
-<p>If you feel strongly that upscaling small images in your WordPress Media Library is something you want (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab. <em>Do not enable this feature unless you want to publish lower quality images on social sites.</em></p>
+<p>WordPress does not upscale (enlarge) images &mdash; it only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images look fuzzy and unappealing &mdash; not something you want to publish on social sites. WPSSO Pro includes an optional module that allows you to upscale social images in the WordPress Media Library (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
 </blockquote>
+</td>
 
-<blockquote>
-<h4>Verify Image Dimensions?</h4>
-<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This check also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce this image check by enabling the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
-</blockquote>
+</tr></table>
 </dd>
 
 <dt><h3>Validation Tools</h3></dt>
@@ -135,7 +143,7 @@ Validator.nu
 	</ul>
 </ul>
 
-<p>Suggestions and comments to improve the plugins are always welcome &mdash; please <a href="http://support.surniaulula.com/support/home">open a ticket if you have any ideas you would like to share</a>. ;-)</p>
+<p>Comments and suggestions to improve the plugin features are always welcome &mdash; please <a href="http://support.surniaulula.com/support/home">open a ticket if you have any ideas you would like to share with us</a>. ;-)</p>
 
 </dd>
 
