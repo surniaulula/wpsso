@@ -340,9 +340,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$lca = $this->p->cf['lca'];
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
-			$locale = SucomUtil::get_locale( $mod );
-			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$locale = SucomUtil::get_locale( $mod );
+			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale, $sharing_url );
 
 			$transients = array(
 				'WpssoHead::get_head_array' => array( $locale_salt ),

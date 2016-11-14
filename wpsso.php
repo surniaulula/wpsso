@@ -13,7 +13,7 @@
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.5
  * Tested Up To: 4.6.1
- * Version: 3.37.2-1
+ * Version: 3.37.3-dev1
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -240,7 +240,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) );
 				}
 				$this->util->add_plugin_filters( $this, array( 
-					'cache_expire_head_array' => '__return_zero',	// disable caching of the head markup array
+					'cache_expire_head_array' => '__return_zero',
+					'cache_expire_setup_html' => '__return_zero',
 				) );
 			}
 		}

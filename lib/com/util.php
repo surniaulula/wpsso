@@ -904,13 +904,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
-		public static function get_mod_salt( array $mod, $locale = false ) {
+		public static function get_mod_salt( array $mod, $locale = false, $sharing_url = false ) {
 			$mod_salt = 'locale:'.( $locale === false ? 
 				self::get_locale( $mod ) : $locale );
 			if ( ! empty( $mod['name'] ) )
-				$mod_salt .= '_'.$mod['name'].':'.$mod['id'];
+				$mod_salt .= '_'.$mod['name'].':'.(int) $mod['id'];	// convert false to 0
 			if ( ! empty( $mod['tax_slug'] ) )
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
+			if ( empty( $mod['id'] ) && $sharing_url !== false )
+				$mod_salt .= '_url:'.$sharing_url;
 			return $mod_salt;
 		}
 

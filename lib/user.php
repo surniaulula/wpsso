@@ -695,9 +695,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function clear_cache( $user_id, $rel_id = false ) {
 			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $user_id );
+			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$locale = SucomUtil::get_locale( $mod );
-			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
-			$sharing_url = $this->p->util->get_sharing_url( false );
+			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale, $sharing_url );
 
 			$transients = array(
 				'WpssoHead::get_head_array' => array( $locale_salt ),

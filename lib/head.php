@@ -269,11 +269,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', SucomUtil::get_mod_salt( $mod ).
-					( empty( $mod['id'] ) ? '_url:'.$sharing_url : '' ), $crawler_name ).')';
+				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
+					SucomUtil::get_mod_salt( $mod, false, $sharing_url ), $crawler_name ).')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+					$this->p->debug->log( 'transient cache salt = '.$cache_salt );
 				$head_array = get_transient( $cache_id );
 				if ( isset( $head_array[$head_index] ) ) {
 					if ( $this->p->debug->enabled )

@@ -449,15 +449,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 			$type_ids = array();
 			$type_added = array();					// prevent duplicate top-level schema types
-			$head_type_id = $this->get_mod_schema_type( $mod, true );	// example: article.tech
-			$head_type_url = $this->get_schema_type_url( $head_type_id );	// example: https://schema.org/TechArticle
+			$page_type_id = $this->get_mod_schema_type( $mod, true );	// example: article.tech
+			$page_type_url = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'head schema type is '.$head_type_url.' ('.$head_type_id.')' );
+				$this->p->debug->log( 'head schema type is '.$page_type_url.' ('.$page_type_id.')' );
 
 			// include first
-			if ( ! empty( $head_type_url ) )
-				$type_ids[$head_type_id] = true;
+			if ( ! empty( $page_type_url ) )
+				$type_ids[$page_type_id] = true;
 
 			// also include WebSite, Organization, and/or Person on the home page
 			if ( $mod['is_home'] ) {	// static or archive page
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mod['obj']->get_options( $mod['id'], 'schema_is_main' ) : null;
 
 				if ( $is_main === null )
-					$is_main = $type_id === $head_type_id ? 
+					$is_main = $type_id === $page_type_id ? 
 						true : false;
 
 				if ( $this->p->debug->enabled )
@@ -1190,8 +1190,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$mt_schema = array();
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$head_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
-			$head_type_url = $this->get_schema_type_url( $head_type_id );
+			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
+			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$size_name = $this->p->cf['lca'].'-schema';
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
@@ -1203,7 +1203,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
 
-			switch ( $head_type_url ) {
+			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
 					// no break - add date published and modified
@@ -1228,7 +1228,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
 			} else {	// add single image meta tags (no width or height)
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'getting images for '.$head_type_url );
+					$this->p->debug->log( 'getting images for '.$page_type_url );
 
 				$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 			}
 
-			return apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $head_type_id );
+			return apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $page_type_id );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
@@ -1263,12 +1263,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$head_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
-			$head_type_url = $this->get_schema_type_url( $head_type_id );
+			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
+			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$size_name = $this->p->cf['lca'].'-schema';
 			$og_type = $mt_og['og:type'];
 
-			switch ( $head_type_url ) {
+			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
 					$size_name = $this->p->cf['lca'].'-schema-article';
 					// no break - get the webpage author list as well
@@ -1283,7 +1283,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
 			} else {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'getting images for '.$head_type_url );
+					$this->p->debug->log( 'getting images for '.$page_type_url );
 	
 				$og_image = $this->p->og->get_all_images( $max['schema_img_max'], 
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( isset( $mt_og[$og_type.':rating:average'] ) )
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 
-			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $head_type_id );
+			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
 		}
 
 		public function is_noscript_enabled( $crawler_name = false ) {

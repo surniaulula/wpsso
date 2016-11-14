@@ -490,9 +490,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'publish':
 					$lca = $this->p->cf['lca'];
 					$mod = $this->get_mod( $post_id );
-					$locale = SucomUtil::get_locale( $mod );
-					$locale_salt = SucomUtil::get_mod_salt( $mod, $locale );
 					$sharing_url = $this->p->util->get_sharing_url( $mod );
+					$locale = SucomUtil::get_locale( $mod );
+					$locale_salt = SucomUtil::get_mod_salt( $mod, $locale, $sharing_url );
 					$permalink = get_permalink( $post_id );
 					$shortlink = wp_get_shortlink( $post_id );
 

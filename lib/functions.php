@@ -9,17 +9,17 @@ if ( ! defined( 'ABSPATH' ) )
 	die( 'These aren\'t the droids you\'re looking for...' );
 
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
-	function wpsso_get_sharing_url( $use_post = false, $add_page = true ) {
+	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
-		return $wpsso->util->get_sharing_url( $use_post, $add_page );
+		return $wpsso->util->get_sharing_url( $mod, $add_page );
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
-	function wpsso_get_short_url( $use_post = false, $add_page = true ) {
+	function wpsso_get_short_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
 		return apply_filters( 'wpsso_shorten_url', 
-			$wpsso->util->get_sharing_url( $use_post, $add_page ),
+			$wpsso->util->get_sharing_url( $mod, $add_page ),
 			$wpsso->options['plugin_shortener'] );
 	}
 }

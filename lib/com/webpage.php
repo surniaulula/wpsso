@@ -523,6 +523,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$content_text = false;
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
@@ -530,7 +531,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->options['plugin_content_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'the content is = '.$filter_status );
+				$this->p->debug->log( 'sharing url = '.$sharing_url );
+				$this->p->debug->log( 'content is = '.$filter_status );
 				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
@@ -538,11 +540,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			 * retrieve the content
 			 */
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).'_'.$filter_status.
-					( empty( $mod['id'] ) ? '_url:'.$this->p->util->get_sharing_url( $mod ) : '' ).')';
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).'_'.$filter_status.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
+					$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
 				$content_text = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
 				if ( $content_text !== false ) {
 					if ( $this->p->debug->enabled )
