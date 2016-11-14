@@ -3,7 +3,7 @@
 <dl>
 <dt><h3>Business Social Accounts (Optional)</h3></dt>
 
-<dd><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter your website / business social account information on the WordPress <u>Settings &gt; Website Social Pages and Accounts</u> settings page. The social account URLs are used by WPSSO for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
+<dd><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter your website / business social account information on the <strong>WordPress Settings &gt; Website Social Pages and Accounts</strong> settings page. The social account URLs are used by WPSSO for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
 
 <p><strong>Related information:</strong></p>
 
@@ -26,40 +26,40 @@
 
 <dt><h3>Essential Plugin Settings</h3></dt>
 
-<dd><p>Review the site description on the SSO <u>Essential Settings</u> page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.</p>
+<dd><p>Review the site description on the <strong>SSO &gt; Essential Settings</strong> page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.</p>
 </dd>
 
 <dt><h3>Interface and General Usage</h3></dt>
 
-<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Img" and "SSO Desc" columns. You can also enable / disable these columns globally under the <u>Advanced &gt; Social / Custom Meta</u> tab.</p>
+<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Img" and "SSO Desc" columns. You can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Social / Custom Meta</strong> tab.</p>
 
-<p>When editing a Post, Page, category, tag, etc., you'll find a <u>Social Settings</u> metabox at the bottom of the page, where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
+<p>When editing a Post, Page, category, tag, etc., you'll find a <em>Social Settings</em> metabox at the bottom of the page, where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
 
 <dt><h3>Social Image Dimensions</h3></dt>
 
-<dd><p>Review the WordPress <u>Settings &gt; Social and SEO Image Dimensions</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or better is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
+<dd><p>Review the <strong>WordPress Settings &gt; Social and SEO Image Dimensions</strong> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped or larger. Images that are 600px and wider are displayed more prominently on Facebook, and 1200px or better is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure <em>all</em> your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
 
 <table><tr>
 
 <td style="vertical-align:top;">
 <blockquote style="margin:5px;">
 <h4>Cropped or Uncropped?</h4>
-<p>The difference between cropped and uncropped image dimensions is important to understand &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <u>the excess width or height is trimmed</u>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <u>the original aspect ratio is preserved</u>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mash; so only one side of the image has to match the required size.</p>
+<p>The difference between cropped and uncropped image dimensions is important to understand &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <em>the excess width or height is trimmed</em>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <em>the original aspect ratio is preserved</em>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mash; so only one side of the image has to match the required size.</p>
 </blockquote>
 </td>
 
 <td style="vertical-align:top;">
 <blockquote style="margin:5px;">
 <h4>Verify Dimensions?</h4>
-<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
+<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <strong>SSO &gt; Advanced &gt; WP / Theme Integration</strong> tab.</p>
 </blockquote>
 </td>
 
 <td style="vertical-align:top;">
 <blockquote style="margin:5px;">
 <h4>Upscale / Enlarge Images?</h4>
-<p>WordPress does not upscale (enlarge) images &mdash; it only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images look fuzzy and unappealing &mdash; not something you want to publish on social sites. WPSSO Pro includes an optional module that allows you to upscale social images in the WordPress Media Library (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full-size originals), you can enable this feature under the <u>Advanced &gt; WP / Theme Integration</u> tab.</p>
+<p>WordPress does not upscale (enlarge) images &mdash; it only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images look fuzzy and unappealing &mdash; not something you want to publish on social sites. WPSSO Pro includes an optional module that allows you to upscale social images in the WordPress Media Library (up to a maximum upscale percentage). For example, a full-size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full-size originals), you can enable this feature under the <strong>SSO &gt; Advanced &gt; WP / Theme Integration</strong> tab.</p>
 </blockquote>
 </td>
 
@@ -68,7 +68,7 @@
 
 <dt><h3>Validation Tools</h3></dt>
 
-<dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <u>Social Settings</u> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
+<dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <em>Social Settings</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
 
 <p>Submit a Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an extension of Open Graph (and Schema) meta tags, but the Rich Pin Validator can be a little buggy, so double check any errors with the Facebook Debugger to make sure they are actual / real errors.</p>
 
@@ -159,10 +159,10 @@ Validator.nu
 	<li>WPSSO may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</li>
 
 	<!-- Show SSO Img / Desc Columns -->
-	<li>Users can hide / unhide the "SSO Img" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the SSO <u>Advanced &gt; Social / Custom Meta</u> tab.</li>
+	<li>Users can hide / unhide the "SSO Img" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Social / Custom Meta</strong> tab.</li>
 
 	<!-- Custom Field Names -->
-	<li>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the SSO <u>Advanced &gt; Social Settings</u> tab.</li>
+	<li>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the <strong>SSO &gt; Advanced &gt; Social Settings</strong> tab.</li>
 
 	<!-- Check for Duplicate Meta Tags -->
 	<li>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</li>
