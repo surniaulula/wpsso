@@ -207,7 +207,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
-					$table_rows['fb_author_name'] = $this->form->get_th_html( _x( 'Author Name Format',
+					$table_rows['fb_author_name'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), null, 'fb_author_name' ).
 					'<td>'.$this->form->get_select( 'fb_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';

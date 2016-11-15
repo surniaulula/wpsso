@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.3-dev1',	// plugin version
+					'version' => '3.37.3-dev2',	// plugin version
 					'opt_version' => '471',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -65,13 +65,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
-							'setup' => '<color>Plugin Setup Guide and Notes</color>',
 							'licenses' => 'Extension Plugins and Pro Licenses',
+							'setup' => '<color>Plugin Setup Guide and Notes</color>',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
-							'sitesetup' => '<color>Plugin Setup Guide and Notes</color>',
 							'sitelicenses' => 'Extension Plugins and Pro Licenses',
+							'sitesetup' => '<color>Plugin Setup Guide and Notes</color>',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -618,7 +618,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_clear_on_save' => 0,			// Clear All Cache(s) on Save Settings
+					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
@@ -739,7 +739,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_enabled' => 1,
 					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
-				),
+				),	// end of defaults
 				'site_defaults' => array(
 					'options_filtered' => false,
 					/*
@@ -799,7 +799,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
-				),
+				),	// end of site defaults
 				'pre' => array(
 					'email' => 'email', 
 					'facebook' => 'fb', 
