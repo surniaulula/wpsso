@@ -365,6 +365,7 @@ Official announcement: N/A
 	* None
 * *Developer Notes*
 	* Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
+	* Renamed the 'wpsso_json_array_schema_type_ids' filter to 'wpsso_json_array_schema_page_type_ids' to emulate the $page_type_id variable name.
 
 **Version 3.37.2-1 (2016/11/12)**
 
