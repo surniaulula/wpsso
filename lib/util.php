@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				/*
 				 * example:
-				 * 	'json_data_https_schema_org_website' => 6
+				 * 	'json_data_https_schema_org_website' => 5
 				 */
 				if ( is_int( $val ) ) {
 					$arg_nums = $val;
@@ -80,9 +80,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				/*
 				 * example:
 				 * 	'json_data_https_schema_org_article' => array(
-				 *		'json_data_https_schema_org_article' => 6,
-				 *		'json_data_https_schema_org_newsarticle' => 6,
-				 *		'json_data_https_schema_org_techarticle' => 6,
+				 *		'json_data_https_schema_org_article' => 5,
+				 *		'json_data_https_schema_org_newsarticle' => 5,
+				 *		'json_data_https_schema_org_techarticle' => 5,
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {

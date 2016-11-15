@@ -18,7 +18,10 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 			$this->p =& $plugin;
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
+		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = false ) {
+
+			if ( $crawler_name === false )
+				$crawler_name = SucomUtil::crawler_name();
 
 			// pinterest does not read weibo meta tags
 			if ( $crawler_name === 'pinterest' ) {
