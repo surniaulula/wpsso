@@ -86,21 +86,23 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				switch ( $key ) {
 					case 'wp':
 						global $wp_version;
-						$label = 'WordPress';
-						$req_version = $wp_version;
+						$app_label = 'WordPress';
+						$cur_version = $wp_version;
 						break;
 					case 'php':
-						$label = 'PHP';
-						$req_version = phpversion();
+						$app_label = 'PHP';
+						$cur_version = phpversion();
 						break;
 				}
-				$min_version = WpssoConfig::$cf[$key]['min_version'];
-				if ( version_compare( $req_version, $min_version, '<' ) ) {
-					require_once( ABSPATH.'wp-admin/includes/plugin.php' );
-					deactivate_plugins( WPSSO_PLUGINBASE );
-					error_log( WPSSO_PLUGINBASE.' requires '.$label.' '.$min_version.' or higher ('.$req_version.' reported).' );
-					wp_die( '<p>The '.$short.' plugin cannot be activated &mdash; '.
-						$short.' requires '.$label.' version '.$min_version.' or newer.</p>' );
+				if ( isset( WpssoConfig::$cf[$key]['min_version'] ) ) {
+					$min_version = WpssoConfig::$cf[$key]['min_version'];
+					if ( version_compare( $cur_version, $min_version, '<' ) ) {
+						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+						deactivate_plugins( WPSSO_PLUGINBASE );
+						error_log( WPSSO_PLUGINBASE.' requires '.$app_label.' '.$min_version.' or higher ('.$cur_version.' reported).' );
+						wp_die( '<p>The '.$short.' plugin cannot be activated &mdash; '.
+							$short.' requires '.$app_label.' version '.$min_version.' or newer.</p>' );
+					}
 				}
 			}
 
@@ -166,11 +168,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			// delete transients
 			global $wpdb;
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \'_transient_timeout_wpsso_%\';';
+			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+				' WHERE option_name LIKE \'_transient_timeout_wpsso_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
 
 			foreach( $expired as $transient ) { 
-				$key = str_replace('_transient_timeout_', '', $transient);
+				$key = str_replace( '_transient_timeout_', '', $transient );
 				if ( ! empty( $key ) )
 					delete_transient( $key );
 			}

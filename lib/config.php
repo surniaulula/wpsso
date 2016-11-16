@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.3-dev2',	// plugin version
+					'version' => '3.37.3-dev3',	// plugin version
 					'opt_version' => '471',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -800,7 +800,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
 				),	// end of site defaults
-				'pre' => array(
+				'cm_prefix' => array(		// contact method options prefix
 					'email' => 'email', 
 					'facebook' => 'fb', 
 					'gplus' => 'gp',
@@ -821,8 +821,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'whatsapp' => 'wa',
 				),
 			),
+			'um' => array(				// update manager
+				'min_version' => '1.5.11-1',	// minimum update manager version (hard limit)
+			),
 			'wp' => array(				// wordpress
-				'min_version' => '3.5',		// minimum wordpress version
+				/* 
+				 * Updated on 2016/11/16:
+				 *
+				 * The only current officially supported version is WordPress 4.5.3. Previous major
+				 * releases from 3.7 onwards may or may not get security updates as serious exploits
+				 * are discovered. 
+				 */
+				'min_version' => '3.7',		// minimum wordpress version (hard limit)
+				'rec_version' => '4.2',		// recommended wordpress version (soft limit)
+				'sup_version_url' => 'https://codex.wordpress.org/Supported_Versions',
 				'cm' => array(
 					'aim' => 'AIM',
 					'jabber' => 'Google Talk',
@@ -852,7 +864,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'php' => array(				// php
-				'min_version' => '5.4.0',	// minimum php version
+				'min_version' => '5.3',		// minimum php version (hard limit)
+				'rec_version' => '5.4',		// recommended php version (soft limit)
+				'sup_version_url' => 'http://php.net/supported-versions.php',
 			),
 			'form' => array(
 				'og_img_col_width' => '70px',

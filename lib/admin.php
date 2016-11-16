@@ -364,13 +364,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
-					'wpsso' ) );
+				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).', 'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
-				$this->p->notice->err( __( 'Insufficient privileges to modify network options.',
-					'wpsso' ) );
+				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			}
@@ -1322,8 +1320,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function pro_req_notices() {
 			$lca = $this->p->cf['lca'];
-			$has_ext_tid = false;
-			$um_min_version = '1.4.1-1';
+			$version = $this->p->cf['plugin'][$lca]['version'];
+			$have_ext_tid = false;
 
 			if ( $this->p->is_avail['aop'] === true && 
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) && 
@@ -1334,20 +1332,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
 					isset( $info['base'] ) && SucomUtil::active_plugins( $info['base'] ) ) {
-					$has_ext_tid = true;	// found at least one active plugin with an auth id
+
+					$have_ext_tid = true;	// found at least one active plugin with an auth id
 					if ( ! $this->p->check->aop( $ext, false ) )
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', 
-							array( 'lca' => $ext ) ) );
+							array( 'lca' => $ext ) ) );	// message uses $ext for its $info
 				}
 			}
 
-			if ( $has_ext_tid === true ) {
+			if ( $have_ext_tid === true ) {
 				if ( $this->p->is_avail['util']['um'] &&
 					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
 
-					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $um_min_version, '<' ) )
+					$min_version = WpssoConfig::$cf['um']['min_version'];
+					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $min_version, '<' ) )
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required', 
-							array( 'um_min_version' => $um_min_version ) ) );
+							array( 'min_version' => $min_version ) ) );
 				} else {
 					if ( ! function_exists( 'get_plugins' ) )
 						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
@@ -1358,6 +1358,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
 							$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
 					else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+				}
+			}
+
+			foreach ( array( 'wp', 'php' ) as $key ) {
+				switch ( $key ) {
+					case 'wp':
+						global $wp_version;
+						$app_label = 'WordPress';
+						$cur_version = $wp_version;
+						break;
+					case 'php':
+						$app_label = 'PHP';
+						$cur_version = phpversion();
+						break;
+				}
+				if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
+					if ( version_compare( $cur_version, WpssoConfig::$cf[$key]['rec_version'], '<' ) ) {
+						$this->p->notice->log( 'warn', $this->p->msgs->get( 'notice-recommend-version', array(
+							'app_label' => $app_label,
+							'cur_version' => $cur_version,
+							'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
+							'sup_version_url' => WpssoConfig::$cf[$key]['sup_version_url'],
+						) ), true, 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$cur_version,
+							2592000, array( 'silent' => true ) );	// dismiss for 30 days
+					}
 				}
 			}
 		}
@@ -1386,7 +1411,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					elseif ( strpos( $html, '<head>' ) !== false ) {
 						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-								true, true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
+								true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
 						}
 						break;
 					}
@@ -1407,15 +1432,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// double check in case of reloads etc.
 				if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
 					strpos( $html, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.',
-						'wpsso' ), $file ) );
+					$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.', 'wpsso' ), $file ) );
 					continue;
 				}
 
 				// make a backup of the original
 				if ( ! copy( $file, $backup ) ) {
-					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.',
-						'wpsso' ), $base, $backup ) );
+					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $base, $backup ) );
 					continue;
 				}
 
@@ -1423,8 +1446,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $file, 'wb' ) ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.',
-						'wpsso' ), $file ) );
+					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.', 'wpsso' ), $file ) );
 					continue;
 				}
 
@@ -1436,8 +1458,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_changes === true )
-				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.
-					SucomUtil::get_theme_slug_version(), 'all' );	// just in case
+				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), 'all' );	// just in case
 		}
 
 		public function get_site_use( &$form, $network = false, $name, $force = false ) {

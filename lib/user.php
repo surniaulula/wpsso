@@ -341,35 +341,36 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 
 			// unset built-in contact fields and/or update their labels
-			if ( ! empty( $this->p->cf['wp']['cm'] ) && 
-				is_array( $this->p->cf['wp']['cm'] ) && $aop ) {
+			if ( ! empty( $this->p->cf['wp']['cm'] ) && is_array( $this->p->cf['wp']['cm'] ) && $aop ) {
+				foreach ( array_keys( $this->p->cf['wp']['cm'] ) as $id ) {
 
-				foreach ( $this->p->cf['wp']['cm'] as $cm_id => $name ) {
-					$cm_opt = 'wp_cm_'.$cm_id.'_';
-					if ( isset( $this->p->options[$cm_opt.'enabled'] ) ) {
-						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) ) {
-							if ( ! empty( $this->p->options[$cm_opt.'label'] ) )
-								$fields[$cm_id] = $this->p->options[$cm_opt.'label'];
-						} else unset( $fields[$cm_id] );
+					$cm_enabled = 'wp_cm_'.$id.'_enabled';
+					$cm_label = 'wp_cm_'.$id.'_label';
+
+					if ( isset( $this->p->options[$cm_enabled] ) ) {
+						if ( ! empty( $this->p->options[$cm_enabled] ) ) {
+							if ( ! empty( $this->p->options[$cm_label] ) )
+								$fields[$id] = $this->p->options[$cm_label];
+						} else unset( $fields[$id] );
 					}
 				}
 			}
 
 			// loop through each social website option prefix
-			if ( ! empty( $this->p->cf['opt']['pre'] ) && 
-				is_array( $this->p->cf['opt']['pre'] ) ) {
+			if ( ! empty( $this->p->cf['opt']['cm_prefix'] ) && is_array( $this->p->cf['opt']['cm_prefix'] ) ) {
+				foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
 
-				foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
-					$cm_opt = 'plugin_cm_'.$cm_pre.'_';
+					$cm_enabled = 'plugin_cm_'.$opt_pre.'_enabled';
+					$cm_name = 'plugin_cm_'.$opt_pre.'_name';
+					$cm_label = 'plugin_cm_'.$opt_pre.'_label';
 
 					// not all social websites have a contact fields, so check
-					if ( isset( $this->p->options[$cm_opt.'name'] ) ) {
+					if ( isset( $this->p->options[$cm_name] ) ) {
+						if ( ! empty( $this->p->options[$cm_enabled] ) && 
+							! empty( $this->p->options[$cm_name] ) && 
+							! empty( $this->p->options[$cm_label] ) ) {
 
-						if ( ! empty( $this->p->options[$cm_opt.'enabled'] ) && 
-							! empty( $this->p->options[$cm_opt.'name'] ) && 
-							! empty( $this->p->options[$cm_opt.'label'] ) ) {
-
-							$fields[$this->p->options[$cm_opt.'name']] = $this->p->options[$cm_opt.'label'];
+							$fields[$this->p->options[$cm_name]] = $this->p->options[$cm_label];
 						}
 					}
 				}
@@ -385,24 +386,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! current_user_can( 'edit_user', $user_id ) )
 				return;
 
-			foreach ( $this->p->cf['opt']['pre'] as $cm_id => $cm_pre ) {
-				$cm_opt = 'plugin_cm_'.$cm_pre.'_';
+			foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
 				// not all social websites have contact fields, so check
-				if ( array_key_exists( $cm_opt.'name', $this->p->options ) ) {
+				if ( isset( $this->p->options['plugin_cm_'.$opt_pre.'_name'] ) ) {
 
-					$enabled = $this->p->options[$cm_opt.'enabled'];
-					$name = $this->p->options[$cm_opt.'name'];
-					$label = $this->p->options[$cm_opt.'label'];
+					$cm_enabled = $this->p->options['plugin_cm_'.$opt_pre.'_enabled'];
+					$cm_name = $this->p->options['plugin_cm_'.$opt_pre.'_name'];
+					$cm_label = $this->p->options['plugin_cm_'.$opt_pre.'_label'];
 
-					if ( isset( $_POST[$name] ) && 
-						! empty( $enabled ) && 
-						! empty( $name ) && 
-						! empty( $label ) ) {
-
-						// sanitize values only for those enabled contact methods
-						$val = wp_filter_nohtml_kses( $_POST[$name] );
+					// sanitize values only for those enabled contact methods
+					if ( isset( $_POST[$cm_name] ) && ! empty( $cm_enabled ) && ! empty( $cm_name ) && ! empty( $cm_label ) ) {
+						$val = wp_filter_nohtml_kses( $_POST[$cm_name] );
 						if ( ! empty( $val ) ) {
-							switch ( $name ) {
+							switch ( $cm_name ) {
 								case $this->p->options['plugin_cm_skype_name']:
 									// no change
 									break;
@@ -418,7 +414,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 									break;
 							}
 						}
-						$_POST[$name] = $val;
+						$_POST[$cm_name] = $val;
 					}
 				}
 			}

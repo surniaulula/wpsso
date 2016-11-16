@@ -413,14 +413,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'left medium', 'custom-cm-field-name' ).
 			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'left wide', 'custom-cm-contact-label' );
 
-			$sorted_opt_pre = $this->p->cf['opt']['pre'];
+			$sorted_opt_pre = $this->p->cf['opt']['cm_prefix'];
 			ksort( $sorted_opt_pre );
 
-			foreach ( $sorted_opt_pre as $id => $pre ) {
+			foreach ( $sorted_opt_pre as $id => $opt_pre ) {
 
-				$cm_enabled = 'plugin_cm_'.$pre.'_enabled';
-				$cm_name = 'plugin_cm_'.$pre.'_name';
-				$cm_label = 'plugin_cm_'.$pre.'_label';
+				$cm_enabled = 'plugin_cm_'.$opt_pre.'_enabled';
+				$cm_name = 'plugin_cm_'.$opt_pre.'_name';
+				$cm_label = 'plugin_cm_'.$opt_pre.'_label';
 
 				// not all social websites have a contact method field
 				if ( isset( $this->p->options[$cm_enabled] ) ) {
@@ -510,9 +510,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}
 
-		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg ) {
+		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_array ) {
 			$table_cells = array();
-			foreach ( $opt_preg as $preg ) {
+			foreach ( $opt_preg_array as $preg ) {
 				foreach ( $form->defaults as $opt => $val ) {
 					if ( strpos( $opt, 'add_' ) !== 0 ||			// optimize
 						isset( $this->taglist_opts[$opt] ) ||		// check cache for tags already shown
