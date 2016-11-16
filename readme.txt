@@ -9,7 +9,7 @@ Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, featured, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
-Requires At Least: 3.5
+Requires At Least: 3.7
 Tested Up To: 4.6.1
 Stable Tag: 3.37.2-1
 
@@ -361,6 +361,9 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Updated the "Plugin Setup Guide and Notes".
+	* Updated minimum and recommended WordPress and PHP versions.
+		* WordPress v3.7 (minimum) and v4.2 (recommended). See [WordPress Supported Versions](https://codex.wordpress.org/Supported_Versions) for details.
+		* PHP v5.3 (minimum) and v5.4 (recommended). See [PHP Supported Versions](http://php.net/supported-versions.php) for details.
 * *Bugfixes*
 	* None
 * *Developer Notes*
