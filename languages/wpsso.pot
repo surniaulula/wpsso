@@ -338,34 +338,16 @@ msgid ""
 "href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1267
+#: lib/admin.php:1267 lib/admin.php:1272 lib/admin.php:1277 lib/admin.php:1295
 msgid ""
-"please uncheck the <strong>Output Open Graph meta tags?</strong> option in "
-"<a href=\"%s\">The SEO Framework</a> Social Meta Settings."
-msgstr ""
-
-#: lib/admin.php:1272
-msgid ""
-"please uncheck the <strong>Output Facebook meta tags?</strong> option in <a "
-"href=\"%s\">The SEO Framework</a> Social Meta Settings."
-msgstr ""
-
-#: lib/admin.php:1277
-msgid ""
-"please uncheck the <strong>Output Twitter meta tags?</strong> option in <a "
-"href=\"%s\">The SEO Framework</a> Social Meta Settings."
+"please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO "
+"Framework</a> Social Meta Settings."
 msgstr ""
 
 #: lib/admin.php:1282
 msgid ""
 "please uncheck the <strong>Output Knowledge tags?</strong> option in <a href="
 "\"%s\">The SEO Framework</a> Knowledge Graph Settings."
-msgstr ""
-
-#: lib/admin.php:1295
-msgid ""
-"please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO "
-"Framework</a> Social Meta Settings."
 msgstr ""
 
 #: lib/admin.php:1306
