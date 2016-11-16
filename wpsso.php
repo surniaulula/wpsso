@@ -11,7 +11,7 @@
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
- * Requires At Least: 3.5
+ * Requires At Least: 3.7
  * Tested Up To: 4.6.1
  * Version: 3.37.3-dev3
  * 
