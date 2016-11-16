@@ -361,9 +361,9 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Updated the "Plugin Setup Guide and Notes".
-	* Updated minimum and recommended WordPress and PHP versions.
-		* WordPress v3.7 (minimum) and v4.2 (recommended). See [WordPress Supported Versions](https://codex.wordpress.org/Supported_Versions) for details.
-		* PHP v5.3 (minimum) and v5.4 (recommended). See [PHP Supported Versions](http://php.net/supported-versions.php) for details.
+	* Updated hard minimum and recommended minimum WordPress and PHP versions.
+		* WordPress v3.7 (hard minimum) and v4.2 (recommended minimum). See [WordPress Supported Versions](https://codex.wordpress.org/Supported_Versions) for details.
+		* PHP v5.2 (hard minimum) and v5.4 (recommended minimum). See [PHP Supported Versions](http://php.net/supported-versions.php) for details.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -428,7 +428,7 @@ Official announcement: N/A
 
 = 3.37.3-dev3 =
 
-(2016/11/16) Updated the "Plugin Setup Guide and Notes". Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
+(2016/11/16) Updated the "Plugin Setup Guide and Notes". Updated hard minimum and recommended minimum WordPress and PHP versions. Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
  
 = 3.37.2-1 =
 
