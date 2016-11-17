@@ -21,9 +21,9 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 
 <p><strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
-<p><strong>WPSSO provides all the information search engines and social websites need</strong> &mdash; improving <em>Google Search ranking</em>, <em>social engagement</em> and <em>click-through-rates</em> on Facebook, Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
+<p><strong>WPSSO provides all the information social websites and search engines need</strong> &mdash; improving <em>social engagement</em>, <em>Google Search ranking</em>, and <em>click-through-rates</em> on Facebook, Google Search / Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
 
-<p><strong>WPSSO also includes special support and optimization features for Pinterest</strong> &mdash; avoiding conflicts between incompatible Pinterest and Facebook Open Graph meta tags.</p>
+<p><strong>WPSSO includes special support and optimization features for Pinterest</strong> &mdash; avoiding conflicts between <em>incompatible</em> Pinterest and Facebook Open Graph meta tags.</p>
 
 = Quick List of Features =
 
