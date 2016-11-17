@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.6.1
-Stable Tag: 3.37.2-1
+Stable Tag: 3.37.3-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -431,9 +431,5 @@ Official announcement: N/A
 
 = 3.37.3-1 =
 
-(2016/11/17) Updated the "Plugin Setup Guide and Notes". Updated hard minimum and recommended minimum WordPress and PHP versions. Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
+(2016/11/17) Updated the "Plugin Setup Guide and Notes". Updated hard minimum and recommended minimum WordPress and PHP versions. Added a "Reference URL" link to notice messages when generating the head meta tag array.
  
-= 3.37.2-1 =
-
-(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
-
