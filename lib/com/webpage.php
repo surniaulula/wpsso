@@ -84,7 +84,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 
 			$caption = false;
-			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$separator = html_entity_decode( $this->p->options['og_title_sep'],
+				ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( $md_idx === true ) {
 				switch ( $type ) {
@@ -156,12 +157,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 			}
 
-			if ( $encode === true )
+			if ( $encode === true ) {
 				$caption = SucomUtil::encode_emoji( htmlentities( $caption, 
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
-			else {	// just in case
-				$charset = get_bloginfo( 'charset' );
-				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), ENT_QUOTES, $charset );
+			} else {	// just in case
+				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), 
+					ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			return apply_filters( $this->p->cf['lca'].'_caption', $caption, $mod, $add_hashtags, $md_idx );
@@ -190,7 +191,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			$title = false;
 			$hashtags = '';
 			$paged_suffix = '';
-			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$separator = html_entity_decode( $this->p->options['og_title_sep'], 
+				ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( empty( $this->p->options['plugin_filter_title'] ) )
@@ -212,7 +214,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// get seed if no custom meta title
 			if ( empty( $title ) ) {
-				$title = apply_filters( $this->p->cf['lca'].'_title_seed', '', $mod, $add_hashtags, $md_idx );
+				$title = apply_filters( $this->p->cf['lca'].'_title_seed', '', $mod, $add_hashtags, $md_idx, $separator );
 				if ( ! empty( $title ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'title seed = "'.$title.'"' );
@@ -239,19 +241,13 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( $mod['is_post'] ) {
 					if ( is_singular() ) {
 						$title = wp_title( $separator, false, 'right' );
-						if ( $this->p->debug->enabled ) {
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'is_singular wp_title() = "'.$title.'"' );
-							//if ( $this->p->options['plugin_filter_title'] )
-							//	$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
-						}
 					} elseif ( ! empty( $mod['id'] ) ) {
 						$title = apply_filters( 'wp_title', get_the_title( $mod['id'] ).
 							' '.$separator.' ', $separator, 'right' );
-						if ( $this->p->debug->enabled ) {
+						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
-							//if ( $this->p->options['plugin_filter_title'] )
-							//	$this->p->debug->log( SucomDebug::get_hooks( 'wp_title' ) );
-						}
 					}
 
 				// if we're using filtered titles, and an seo plugin is available,
@@ -266,15 +262,17 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				} elseif ( $mod['is_term'] ) {
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 					if ( SucomUtil::is_category_page() )
-						$title = $this->get_category_title( $term_obj );	// includes parents in title string
+						$title = $this->get_category_title( $term_obj, '', $separator );	// includes parents in title string
 					elseif ( isset( $term_obj->name ) )
-						$title = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
+						$title = apply_filters( 'wp_title', $term_obj->name.
+							' '.$separator.' ', $separator, 'right' );
 					elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'name property missing in term object' );
 
 				} elseif ( $mod['is_user'] ) { 
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
-					$title = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
+					$title = apply_filters( 'wp_title', $user_obj->display_name.
+						' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
 				} else {	// is_archive() and everything else
@@ -329,11 +327,14 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				! empty( $hashtags ) ) 
 					$title .= ' '.$hashtags;
 
-			if ( $encode === true )
-				$title = SucomUtil::encode_emoji( htmlentities( $title, 
-					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+			if ( $encode === true ) {
+				foreach ( array( 'title', 'separator' ) as $var ) {
+					$$var = SucomUtil::encode_emoji( htmlentities( $$var, 
+						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+				}
+			}
 
-			return apply_filters( $this->p->cf['lca'].'_title', $title, $mod, $add_hashtags, $md_idx );
+			return apply_filters( $this->p->cf['lca'].'_title', $title, $mod, $add_hashtags, $md_idx, $separator );
 		}
 
 		// $mod = true | false | post_id | $mod array
@@ -503,9 +504,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				! empty( $hashtags ) ) 
 					$desc .= ' '.$hashtags;
 
-			if ( $encode === true )
+			if ( $encode === true ) {
 				$desc = SucomUtil::encode_emoji( htmlentities( $desc, 
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+			}
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'render description' );	// end timer
@@ -768,13 +770,14 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
 		}
 
-		public function get_category_title( $term_id = 0, $tax_slug = '' ) {
+		public function get_category_title( $term_id = 0, $tax_slug = '', $separator = false ) {
 			if ( is_object( $term_id ) )
 				$term_obj = $term_id;
 			else $term_obj = SucomUtil::get_term_object( $term_id, $tax_slug, 'object' );
 
-			$separator = html_entity_decode( $this->p->options['og_title_sep'], 
-				ENT_QUOTES, get_bloginfo( 'charset' ) );
+			if ( $separator === false )
+				$separator = html_entity_decode( $this->p->options['og_title_sep'], 
+					ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( isset( $term_obj->name ) )
 				$title = $term_obj->name.' Archives '.$separator.' ';	// default value
@@ -790,10 +793,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'get_category_parents() = "'.$cat_parents.'"' );
-					if ( ! empty( $cat_parents ) ) {
+					if ( ! empty( $cat_parents ) )
 						$title = $cat_parents;
-						$title = preg_replace( '/\.\.\. '.preg_quote( $separator, '/' ).' /', '... ', $title );
-					}
 				}
 			}
 
