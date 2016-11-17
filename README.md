@@ -14,13 +14,14 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash; including titles, descriptions, hashtags, images, videos, ecommerce product details, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more.</p>
+<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p>
+<strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
-<p><strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values.</p>
+<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> social meta tags and Schema markup</strong> &mdash; including titles, descriptions, hashtags, images, videos, ecommerce product details, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more.</p>
 
 <p><strong>WPSSO provides all the information social websites and search engines need</strong> &mdash; improving social engagement, Google Search ranking, and click-through-rates on Facebook, Google Search / Google+, Twitter, Pinterest, LinkedIn, and many more.</p>
 
-<p><strong>WPSSO includes special support and optimization features for Pinterest</strong> &mdash; avoiding conflicts between <em>incompatible</em> Pinterest and Facebook Open Graph meta tags.</p>
+<p><strong>WPSSO includes special support and optimization features for Pinterest</strong> &mdash; providing customized Pinterest image sizes, and avoiding conflicts between incompatible Pinterest and Facebook Open Graph meta tags.</p>
 
 <h4>Quick List of Features</h4>
 
