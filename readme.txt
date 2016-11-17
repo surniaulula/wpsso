@@ -364,11 +364,13 @@ Official announcement: N/A
 	* Updated hard minimum and recommended minimum WordPress and PHP versions.
 		* WordPress v3.7 (hard minimum) and v4.2 (recommended minimum). See [WordPress Supported Versions](https://codex.wordpress.org/Supported_Versions) for details.
 		* PHP v5.2 (hard minimum) and v5.4 (recommended minimum). See [PHP Supported Versions](http://php.net/supported-versions.php) for details.
+	* Added a "Reference URL" link to notice messages when generating the head meta tag array.
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
 	* Renamed the 'wpsso_json_array_schema_type_ids' filter to 'wpsso_json_array_schema_page_type_ids' to emulate the $page_type_id variable name.
+	* Removed the deprecated $use_post argument from the get_array() methods for the Open Graph, Twitter Card, and Weibo classes.
 
 **Version 3.37.2-1 (2016/11/12)**
 
