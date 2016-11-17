@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.3-dev3',	// plugin version
+					'version' => '3.37.3-rc1',	// plugin version
 					'opt_version' => '471',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -833,7 +833,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * are discovered. 
 				 */
 				'min_version' => '3.7',		// minimum wordpress version (hard limit)
-				'rec_version' => '4.2',		// recommended wordpress version (soft limit)
+				'rec_version' => '4.2',		// recommended minimum wordpress version (soft limit)
 				'sup_version_url' => 'https://codex.wordpress.org/Supported_Versions',
 				'cm' => array(
 					'aim' => 'AIM',
@@ -865,7 +865,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'php' => array(				// php
 				'min_version' => '5.2',		// minimum php version (hard limit)
-				'rec_version' => '5.4',		// recommended php version (soft limit)
+				'rec_version' => '5.4',		// recommended minimum php version (soft limit)
 				'sup_version_url' => 'http://php.net/supported-versions.php',
 			),
 			'form' => array(
