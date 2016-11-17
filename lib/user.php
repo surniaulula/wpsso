@@ -341,8 +341,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 
 			// unset built-in contact fields and/or update their labels
-			if ( ! empty( $this->p->cf['wp']['cm'] ) && is_array( $this->p->cf['wp']['cm'] ) && $aop ) {
-				foreach ( array_keys( $this->p->cf['wp']['cm'] ) as $id ) {
+			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $aop ) {
+				foreach ( array_keys( $this->p->cf['wp']['cm_names'] ) as $id ) {
 
 					$cm_enabled = 'wp_cm_'.$id.'_enabled';
 					$cm_label = 'wp_cm_'.$id.'_label';

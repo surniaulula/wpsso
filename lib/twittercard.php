@@ -16,6 +16,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			) );
@@ -39,7 +42,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		}
 
 		// use reference for $mt_og argument to allow unset of existing twitter meta tags.
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = 'none' ) {
+		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
+
+			if ( $crawler_name === false )
+				$crawler_name = SucomUtil::crawler_name();
 
 			// pinterest does not read twitter card markup
 			switch ( $crawler_name ) {
@@ -53,8 +59,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$max = $this->p->util->get_max_nums( $mod );
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, false, false, true );	// read and unset pre-defined twitter card values

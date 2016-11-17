@@ -21,6 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $hide_warn = false;
 		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );
 		private $notice_cache = array();
+		private $reference_url = null;
 		private $has_shown = false;
 
 		public function __construct( &$plugin ) {
@@ -98,6 +99,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					human_time_diff( 0, $payload['dismiss'] ) );
 			}
 
+			if ( $this->reference_url ) {
+				$msg_txt .= '<br/><small>'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
+					'<a href="'.$this->reference_url.'">'.$this->reference_url.'</a>' ).'</small>';
+			}
+
 			if ( $user_id === true )
 				$user_id = (int) get_current_user_id();
 			else $user_id = (int) $user_id;	// false = 0
@@ -148,6 +154,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 				}
 			}
+		}
+
+		public function set_reference_url( $url = null ) {
+			$this->reference_url = $url;
+		}
+
+		public function get_reference_url() {
+			return $this->reference_url;
 		}
 
 		public function is_admin_pre_notices() {

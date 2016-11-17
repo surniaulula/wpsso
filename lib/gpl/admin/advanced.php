@@ -436,11 +436,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 							break;
 					}
 
-					$name = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
+					$label = empty( $this->p->cf['*']['lib']['website'][$id] ) ? 
 						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
-					$name = $name == 'GooglePlus' ? 'Google+' : $name;
 
-					$table_rows[] = $tr.$form->get_th_html( $name, 'medium' ).
+					if  ( $label === 'Googleplus' || $label === 'Gplus' )
+						$label = 'Google+';
+
+					$table_rows[] = $tr.$form->get_th_html( $label, 'medium' ).
 					'<td class="blank checkbox">'.$this->get_nocb( $form, $cm_enabled ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
@@ -462,17 +464,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'left medium', 'custom-cm-field-name' ).
 			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'left wide', 'custom-cm-contact-label' );
 
-			$sorted_wp_cm = $this->p->cf['wp']['cm'];
-			ksort( $sorted_wp_cm );
+			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
+			ksort( $sorted_cm_names );
 
-			foreach ( $sorted_wp_cm as $id => $name ) {
+			foreach ( $sorted_cm_names as $id => $label ) {
 
 				$cm_enabled = 'wp_cm_'.$id.'_enabled';
 				$cm_name = 'wp_cm_'.$id.'_name';
 				$cm_label = 'wp_cm_'.$id.'_label';
 
 				if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
-					$table_rows[] = $form->get_th_html( $name, 'medium' ).
+					$table_rows[] = $form->get_th_html( $label, 'medium' ).
 					'<td class="blank checkbox">'.$this->get_nocb( $form, $cm_enabled ).'</td>'.
 					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';

@@ -16,9 +16,11 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = false ) {
+		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 
 			if ( $crawler_name === false )
 				$crawler_name = SucomUtil::crawler_name();
@@ -34,10 +36,6 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
-			$post_id = $mod['is_post'] ?
-				$mod['id'] : false;
 			$mt_weibo = SucomUtil::preg_grep_keys( '/^weibo:/', $mt_og );	// read any pre-defined weibo meta tag values
 			$mt_weibo = apply_filters( $lca.'_weibo_seed', $mt_weibo, $mod['use_post'], $mod );
 

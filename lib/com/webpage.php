@@ -697,13 +697,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			else return;
 
 			$hashtags = apply_filters( $this->p->cf['lca'].'_hashtags_seed', '', $post_id, $add_hashtags );
-
 			if ( ! empty( $hashtags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'hashtags seed = "'.$hashtags.'"' );
 			} else {
 				$tags = array_slice( $this->get_tags( $post_id ), 0, $max_hashtags );
-
 				if ( ! empty( $tags ) ) {
 					// remove special character incompatible with Twitter
 					$hashtags = SucomUtil::array_to_hashtags( $tags );
@@ -718,15 +716,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->cf['lca'].'_tags_seed', array(), $post_id );
-
 			if ( ! empty( $tags ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'tags seed = "'.implode( ',', $tags ).'"' );
 			} else {
 				if ( is_singular() || ! empty( $post_id ) ) {
-
 					$tags = $this->get_wp_tags( $post_id );
-
 					if ( isset( $this->p->m['media']['ngg'] ) && 
 						$this->p->options['og_ngg_tags'] && 
 							$this->p->is_avail['post_thumbnail'] && 
@@ -744,9 +739,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'raw tags = "'.implode( ', ', $tags ).'"' );
-
 				$tags = array_unique( array_map( array( 'SucomUtil', 'sanitize_tag' ), $tags ) );
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'sanitized tags = "'.implode( ', ', $tags ).'"' );
 			}
@@ -757,7 +750,6 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_wp_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->cf['lca'].'_wp_tags_seed', array(), $post_id );
-
 			if ( ! empty( $tags ) )
 				$this->p->debug->log( 'wp tags seed = "'.implode( ',', $tags ).'"' );
 			else {
@@ -776,10 +768,10 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
 		}
 
-		public function get_category_title( $term_obj = false ) {
-
-			if ( ! is_object( $term_obj ) )
-				$term_obj = SucomUtil::get_term_object();
+		public function get_category_title( $term_id = 0, $tax_slug = '' ) {
+			if ( is_object( $term_id ) )
+				$term_obj = $term_id;
+			else $term_obj = SucomUtil::get_term_object( $term_id, $tax_slug, 'object' );
 
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], 
 				ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -790,18 +782,14 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->debug->log( 'name property missing in term object' );
 
 			$cat = get_category( $term_obj->term_id );
-
 			if ( ! empty( $cat->category_parent ) ) {
-
 				$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$separator.' ', false );
-
 				if ( is_wp_error( $cat_parents ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'get_category_parents error: '.$cat_parents->get_error_message() );
 				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'get_category_parents() = "'.$cat_parents.'"' );
-
 					if ( ! empty( $cat_parents ) ) {
 						$title = $cat_parents;
 						$title = preg_replace( '/\.\.\. '.preg_quote( $separator, '/' ).' /', '... ', $title );

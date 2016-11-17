@@ -16,6 +16,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
@@ -96,7 +98,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( $use_post = false, &$mod = false, &$mt_og = array(), $crawler_name = false ) {
+		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -104,8 +106,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::crawler_name();
 
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$max = $this->p->util->get_max_nums( $mod );
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
 			$post_id = $mod['is_post'] ? $mod['id'] : false;

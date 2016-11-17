@@ -224,8 +224,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$post_obj = SucomUtil::get_post_object();
-			$post_id = empty( $post_obj->ID ) ?
-				0 : $post_obj->ID;
+			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			// make sure we have at least a post type and status
 			if ( ! is_object( $post_obj ) ) {

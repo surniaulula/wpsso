@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.3-"
-"rc1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +91,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:293 lib/term.php:269 lib/user.php:242
+#: lib/admin.php:405 lib/post.php:292 lib/term.php:269 lib/user.php:242
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -421,33 +420,37 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:97
+#: lib/com/notice.php:98
 msgid "This notice may be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:250
+#: lib/com/notice.php:103
+msgid "Reference URL: %s"
+msgstr ""
+
+#: lib/com/notice.php:264
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:251
+#: lib/com/notice.php:265
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:256
+#: lib/com/notice.php:270
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:257
+#: lib/com/notice.php:271
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:328
+#: lib/com/notice.php:342
 msgid "%s Note"
 msgstr ""
 
@@ -1101,22 +1104,22 @@ msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:412 lib/gpl/admin/advanced.php:461
-#: lib/pro/admin/advanced.php:403 lib/pro/admin/advanced.php:449
+#: lib/gpl/admin/advanced.php:412 lib/gpl/admin/advanced.php:463
+#: lib/pro/admin/advanced.php:403 lib/pro/admin/advanced.php:451
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:413 lib/gpl/admin/advanced.php:462
+#: lib/gpl/admin/advanced.php:413 lib/gpl/admin/advanced.php:464
 #: lib/messages.php:728 lib/pro/admin/advanced.php:404
-#: lib/pro/admin/advanced.php:450
+#: lib/pro/admin/advanced.php:452
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:414 lib/gpl/admin/advanced.php:463
+#: lib/gpl/admin/advanced.php:414 lib/gpl/admin/advanced.php:465
 #: lib/messages.php:728 lib/pro/admin/advanced.php:405
-#: lib/pro/admin/advanced.php:451
+#: lib/pro/admin/advanced.php:453
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -1313,7 +1316,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:458
+#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:457
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2448,12 +2451,12 @@ msgstr ""
 msgid "Reload to View"
 msgstr ""
 
-#: lib/opengraph.php:48
+#: lib/opengraph.php:50
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/opengraph.php:55
+#: lib/opengraph.php:57
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
@@ -2505,21 +2508,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:357
+#: lib/post.php:356
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:373
+#: lib/post.php:372
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:383
+#: lib/post.php:382
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:416 lib/profile/social-settings.php:27 lib/term.php:293
+#: lib/post.php:415 lib/profile/social-settings.php:27 lib/term.php:293
 #: lib/user.php:268
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3184,12 +3187,12 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/twittercard.php:28
+#: lib/twittercard.php:31
 msgctxt "image size label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:34
+#: lib/twittercard.php:37
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""

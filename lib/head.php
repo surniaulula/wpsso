@@ -248,6 +248,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_head_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build head array' );	// begin timer
 
@@ -276,15 +277,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( 'transient cache salt = '.$cache_salt );
 				$head_array = get_transient( $cache_id );
 				if ( isset( $head_array[$head_index] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'head array retrieved from transient '.$cache_id );
+						$this->p->debug->mark( 'build head array' );	// end timer
+					}
 					return $head_array[$head_index];	// stop here
 				}
 			} 
 
-			/*
-			 * Define an author_id, if one is available
-			 */
+			// set the reference url for admin notices
+			if ( is_admin() )
+				$this->p->notice->set_reference_url( $sharing_url );
+
+			// define the author_id (if one is available)
 			if ( $mod['is_post'] ) {
 				if ( $mod['post_author'] )
 					$author_id = $mod['post_author'];
@@ -300,17 +305,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Open Graph
 			 */
-			$mt_og = $this->p->og->get_array( $use_post, $mod, $mt_og, $crawler_name );
+			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Weibo
 			 */
-			$mt_weibo = $this->p->weibo->get_array( $use_post, $mod, $mt_og, $crawler_name );
+			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Twitter Cards
 			 */
-			$mt_tc = $this->p->tc->get_array( $use_post, $mod, $mt_og, $crawler_name );
+			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
 
 			/*
 			 * Name / SEO meta tags
@@ -369,7 +374,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_schema = $this->p->schema->get_meta_array( $mod, $mt_og, $crawler_name );
 
 			/*
-			 * JSON-LD script array - execute before merge to set some internal $mt_og meta tags
+			 * JSON-LD script
 			 */
 			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
 
@@ -415,6 +420,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( 'head array saved to transient '.
 						$cache_id.' ('.$cache_exp.' seconds)');
 			}
+
+			// reset the reference url for admin notices
+			if ( is_admin() )
+				$this->p->notice->set_reference_url( null );
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark( 'build head array' );	// end timer
