@@ -125,9 +125,9 @@
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_text_filter_has_changes_after' ( false, $filter_name );
 'wpsso_text_filter_has_changes_before' ( false, $filter_name );
-'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx );
+'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $separator );
 'wpsso_title_pre_limit' ( $title );
-'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx );
+'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $separator );
 'wpsso_user_cache_transients' ( $transients, $mod, $locale, $sharing_url );
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
