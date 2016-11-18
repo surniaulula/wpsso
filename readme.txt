@@ -32,14 +32,15 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 
 **WPSSO Free / Basic Features**
 
-* Adds Open Graph meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).
+* Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
 * Adds all available Twitter Card meta tags:
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
+* Adds Weibo meta tags for article creation and update dates.
 * Adds Pinterest Rich Pin meta tags and Schema Structured Data markup.
-* Adds author (Person), publisher (Organization) and WebSite markup for Google Search and Google's <em>Knowledge Graph</em>.
+* Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>.
 * Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.
 * Auto-regeneration of inaccurate / missing WordPress image sizes.
 * Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.

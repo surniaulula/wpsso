@@ -30,7 +30,7 @@
 <p><strong>WPSSO Free / Basic Features</strong></p>
 
 <ul>
-<li>Adds Open Graph meta tags (Facebook, Google+, Pinterest, LinkedIn, etc.).</li>
+<li>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</li>
 <li>Adds all available Twitter Card meta tags:
 
 <ul>
@@ -39,8 +39,9 @@
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).</li>
 </ul></li>
+<li>Adds Weibo meta tags for article creation and update dates.</li>
 <li>Adds Pinterest Rich Pin meta tags and Schema Structured Data markup.</li>
-<li>Adds author (Person), publisher (Organization) and WebSite markup for Google Search and Google's <em>Knowledge Graph</em>.</li>
+<li>Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>.</li>
 <li>Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.</li>
 <li>Auto-regeneration of inaccurate / missing WordPress image sizes.</li>
 <li>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</li>
