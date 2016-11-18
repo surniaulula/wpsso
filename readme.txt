@@ -26,7 +26,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 
 <p><strong>WPSSO includes special support and optimization features for Pinterest</strong> &mdash; providing customized Pinterest image sizes, and avoiding conflicts between incompatible Pinterest and Facebook Open Graph meta tags.</p>
 
-<p><strong>WPSSO offers a <em>fast</em> and <em>reliable</em> framework for developers and advanced users</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize its behavior and output.</p>
+<p><strong>WPSSO offers a <em>fast</em> and <em>reliable</em> framework for developers and advanced users</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.</p>
 
 = Quick List of Features =
 
