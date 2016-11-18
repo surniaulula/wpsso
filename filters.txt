@@ -19,7 +19,7 @@
 'wpsso_attached_image_ids' ( $attach_ids, $post_id );
 'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes );
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
-'wpsso_author_object_description' ( $description, $author_obj );
+'wpsso_author_object_description' ( $desc, $author_obj );
 'wpsso_author_object_title' ( $title, $author_obj );
 'wpsso_author_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_cache_expire_article_topics' ( $secs );
