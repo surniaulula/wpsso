@@ -23,7 +23,7 @@
 
 <p><strong>WPSSO includes special support and optimization features for Pinterest</strong> &mdash; providing customized Pinterest image sizes, and avoiding conflicts between incompatible Pinterest and Facebook Open Graph meta tags.</p>
 
-<p><strong>WPSSO offers a solid framework for developers and advanced users</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize its behavior and output.</p>
+<p><strong>WPSSO offers a fast and solid framework for developers and advanced users</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize its behavior and output.</p>
 
 <h4>Quick List of Features</h4>
 
