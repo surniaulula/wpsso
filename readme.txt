@@ -357,6 +357,20 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.37.4-dev1 (2016/11/20)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags. 
+	* Removed a call to stripslashes() when saving HTML / CSS / JS code.
+
 **Version 3.37.3-1 (2016/11/17)**
 
 Official announcement: N/A
@@ -431,6 +445,10 @@ Official announcement: N/A
 		* 'ngfb_cache_expire_shorten_url' ( $secs );
 
 == Upgrade Notice ==
+
+= 3.37.4-dev1 =
+
+(2016/11/20) Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags.
 
 = 3.37.3-1 =
 
