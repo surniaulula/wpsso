@@ -720,7 +720,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:59
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to easily add a Tweet social share button to quoted text."
+"WPSSO extension to easily add Twitter-style quoted text with a Tweet share "
+"link in your post and page content."
 msgstr ""
 
 #: lib/config-gettext-extract.php:60

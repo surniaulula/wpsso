@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(
 					'short' => 'WPSSO TAQ',		// short plugin name
 					'name' => 'WPSSO Tweet a Quote (WPSSO TAQ)',
-					'desc' => 'WPSSO extension to easily add a Tweet social share button to quoted text.',
+					'desc' => 'WPSSO extension to easily add Twitter-style quoted text with a Tweet share link in your post and page content.',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',
