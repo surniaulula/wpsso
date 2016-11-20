@@ -536,7 +536,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $len['warn'] ) || $disabled ? '' : ' warnLength="'.esc_attr( $len['warn'] ).'"' ).
 				( empty( $len['max'] ) && empty( $len['rows'] ) ? '' : ( empty( $len['rows'] ) ?
 					' rows="'.( round( $len['max'] / 100 ) + 1 ).'"' : ' rows="'.$len['rows'].'"' ) ).
-				( $this->get_placeholder_events( 'textarea', $placeholder ) ).'>'.stripslashes( esc_attr( $value ) ).'</textarea>'.
+				( $this->get_placeholder_events( 'textarea', $placeholder ) ).'>'.esc_attr( $value ).'</textarea>'.
 				( empty( $len['max'] ) || $disabled ? '' : ' <div id="textarea_'.esc_attr( $id ).'-lenMsg"></div>' );
 
 			return $html;
@@ -551,7 +551,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="textarea_'.esc_attr( $id ).'"' ).
 				( empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ).'"' ).
-				'>'.stripslashes( esc_attr( $value ) ).'</textarea>';
+				'>'.esc_attr( $value ).'</textarea>';
 		}
 
 		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false ) {

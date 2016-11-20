@@ -1361,27 +1361,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			foreach ( array( 'wp', 'php' ) as $key ) {
-				switch ( $key ) {
-					case 'wp':
-						global $wp_version;
-						$app_label = 'WordPress';
-						$cur_version = $wp_version;
-						break;
-					case 'php':
-						$app_label = 'PHP';
-						$cur_version = phpversion();
-						break;
-				}
-				if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
-					if ( version_compare( $cur_version, WpssoConfig::$cf[$key]['rec_version'], '<' ) ) {
-						$this->p->notice->log( 'warn', $this->p->msgs->get( 'notice-recommend-version', array(
-							'app_label' => $app_label,
-							'cur_version' => $cur_version,
-							'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
-							'sup_version_url' => WpssoConfig::$cf[$key]['sup_version_url'],
-						) ), true, 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$cur_version,
-							2592000, array( 'silent' => true ) );	// dismiss for 30 days
+			if ( current_user_can( 'manage_options' ) ) {
+				foreach ( array( 'wp', 'php' ) as $key ) {
+					switch ( $key ) {
+						case 'wp':
+							global $wp_version;
+							$app_label = 'WordPress';
+							$cur_version = $wp_version;
+							break;
+						case 'php':
+							$app_label = 'PHP';
+							$cur_version = phpversion();
+							break;
+					}
+					if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
+						if ( version_compare( $cur_version, WpssoConfig::$cf[$key]['rec_version'], '<' ) ) {
+							$this->p->notice->log( 'warn', $this->p->msgs->get( 'notice-recommend-version', array(
+								'app_label' => $app_label,
+								'cur_version' => $cur_version,
+								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
+								'sup_version_url' => WpssoConfig::$cf[$key]['sup_version_url'],
+							) ), true, 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$cur_version,
+								2592000, array( 'silent' => true ) );	// dismiss for 30 days
+						}
 					}
 				}
 			}

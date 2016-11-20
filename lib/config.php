@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.3-1',	// plugin version
-					'opt_version' => '471',		// increment when changing default options
+					'version' => '3.37.4-dev1',	// plugin version
+					'opt_version' => '472',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -333,6 +333,33 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-strip-schema-microdata/',
+						'faq' => '',
+						'notes' => '',
+					),
+				),
+				'wpssotaq' => array(
+					'short' => 'WPSSO TAQ',		// short plugin name
+					'name' => 'WPSSO Tweet a Quote (WPSSO TAQ)',
+					'desc' => 'WPSSO extension to easily add a Tweet social share button to quoted text.',
+					'slug' => 'wpsso-tweet-a-quote',
+					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
+					'update_auth' => '',
+					'img' => array(
+						'icon_small' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-256x256.png',
+					),
+					'url' => array(
+						// wordpress
+						'download' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
+						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-tweet-a-quote?filter=5&rate=5#postform',
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
+						// wpsso
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/latest/',
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/changelog/',
+						'codex' => 'https://wpsso.com/codex/plugins/wpsso-tweet-a-quote/',
 						'faq' => '',
 						'notes' => '',
 					),

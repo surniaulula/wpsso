@@ -377,6 +377,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return false;
 		}
 
+		// note that an empty string or a null is sanitized as false
 		public static function sanitize_use_post( $mixed, $default = false ) {
 			if ( is_array( $mixed ) )
 				$use_post = isset( $mixed['use_post'] ) ?
@@ -386,12 +387,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$mixed->use_post : $default;
 			else $use_post = $mixed;
 				
-			if ( empty( $use_post ) ||		// boolean false or 0
-				$use_post === 'false' )		// string 'false'
-					return false;
-			elseif ( is_numeric( $use_post ) )	// post ID
-				return (int) $use_post;		// return an integer
-			else return true;			// boolean true or string 'true'
+			if ( empty( $use_post ) || $use_post === 'false' )	// 0, false, or 'false'
+				return false;
+			elseif ( is_numeric( $use_post ) )
+				return (int) $use_post;
+			else return true;
 		}
 
 		public static function sanitize_hookname( $name ) {

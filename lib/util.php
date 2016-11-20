@@ -403,13 +403,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'ignore':
 					return $val;	// stop here
 					break;
-				case 'html':		// leave html and css / javascript code blocks as-is
+				case 'html':		// leave html, css, and javascript code blocks as-is
 				case 'code':
-					$val = stripslashes( $val );
 					break;
 				default:
-					$val = stripslashes( $val );
-					$val = wp_filter_nohtml_kses( $val );
+					$val = wp_filter_nohtml_kses( $val );	// strips all the HTML in the content
 					$val = SucomUtil::encode_emoji( htmlentities( $val, 
 						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 					break;

@@ -274,8 +274,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
-						if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
-							$this->check_post_head_duplicates( $post_id, $post_obj );
+						if ( current_user_can( 'manage_options' ) ) {
+							if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
+								$this->check_post_head_duplicates( $post_id, $post_obj );
+						}
 					}
 				}
 			} 

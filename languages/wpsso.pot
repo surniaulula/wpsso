@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.3-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.4-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +92,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:292 lib/term.php:269 lib/user.php:242
+#: lib/admin.php:405 lib/post.php:294 lib/term.php:269 lib/user.php:242
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -367,25 +368,25 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1435
+#: lib/admin.php:1437
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1441
+#: lib/admin.php:1443
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1449
+#: lib/admin.php:1451
 msgid "Failed to open file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1455
+#: lib/admin.php:1457
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1467
+#: lib/admin.php:1469
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -719,49 +720,55 @@ msgstr ""
 #: lib/config-gettext-extract.php:59
 msgctxt "plugin description"
 msgid ""
+"WPSSO extension to easily add a Tweet social share button to quoted text."
+msgstr ""
+
+#: lib/config-gettext-extract.php:60
+msgctxt "plugin description"
+msgid ""
 "WPSSO extension to manage Organizations and additional Schema Article / "
 "Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr ""
 
-#: lib/config-gettext-extract.php:60
+#: lib/config-gettext-extract.php:61
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:61
+#: lib/config-gettext-extract.php:62
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
 "Schema Local Business + Local SEO meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:62
+#: lib/config-gettext-extract.php:63
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
 "Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:63
+#: lib/config-gettext-extract.php:64
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to remove outdated Schema Microdata, leaving the superior "
 "Schema JSON-LD markup untouched for Google and Bing."
 msgstr ""
 
-#: lib/config-gettext-extract.php:64
+#: lib/config-gettext-extract.php:65
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:65
+#: lib/config-gettext-extract.php:66
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: lib/config-gettext-extract.php:66
+#: lib/config-gettext-extract.php:67
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr ""
@@ -1316,7 +1323,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:457
+#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:459
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2508,21 +2515,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:356
+#: lib/post.php:358
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:372
+#: lib/post.php:374
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:382
+#: lib/post.php:384
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:415 lib/profile/social-settings.php:27 lib/term.php:293
+#: lib/post.php:417 lib/profile/social-settings.php:27 lib/term.php:293
 #: lib/user.php:268
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3277,52 +3284,52 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:582
+#: lib/util.php:580
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:589
+#: lib/util.php:587
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:640
+#: lib/util.php:638
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:907
+#: lib/util.php:905
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1332
+#: lib/util.php:1330
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1346
+#: lib/util.php:1344
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1629
+#: lib/util.php:1627
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1655
+#: lib/util.php:1653
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1659
+#: lib/util.php:1657
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1662
+#: lib/util.php:1660
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1666
+#: lib/util.php:1664
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

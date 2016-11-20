@@ -69,6 +69,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_add_to_taxonomy' => 'plugin_add_to_term',		// renamed in v3.31.0-1
 			'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
 			'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
+			'buttons_use_social_css' => 'buttons_use_social_style',
+			'buttons_enqueue_social_css' => 'buttons_enqueue_social_style',
 		);
 
 		protected $p;
