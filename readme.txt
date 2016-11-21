@@ -364,7 +364,7 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "WPSSO Tweet a Quote (WPSSO TAQ)" extension to the Extension Plugins and Pro Licenses settings page.
 * *Bugfixes*
 	* None
 * *Developer Notes*
