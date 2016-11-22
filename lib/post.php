@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'check head meta' );
+				$this->p->debug->mark( 'check head meta' );	// begin timer
 
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id );
@@ -354,6 +354,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$check_opts = apply_filters( $lca.'_check_head_meta_options', SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 			$conflicts_found = 0;
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'checking '.$shortlink.' head meta for duplicates' );
 			if ( is_admin() )
 				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
 					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
@@ -377,16 +379,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 				}
-			}
 
-			if ( ! $conflicts_found ) {
-				update_option( $lca.'_post_head_count', ++$exec_count, false );	// autoload = false
-				$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
-					'wpsso' ), $max_count - $exec_count ) );
-			}
+				if ( ! $conflicts_found ) {
+					update_option( $lca.'_post_head_count', ++$exec_count, false );	// autoload = false
+					$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
+						'wpsso' ), $max_count - $exec_count ) );
+				}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->mark( 'returned head meta for '.$shortlink.' is false' );
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->mark( 'check head meta' );
+				$this->p->debug->mark( 'check head meta' );	// end timer
 
 			return $post_id;
 		}
