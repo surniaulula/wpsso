@@ -1664,6 +1664,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					_x( 'unhide these rows', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
 			}
 		}
+
+		public function shorten_html_href( $html ) {
+			return preg_replace_callback( '/(href=[\'"])([^\'"]+)([\'"])/', 
+				array( &$this, 'shorten_html_href_url' ), $html );
+		}
+
+		protected function shorten_html_href_url( $matches ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'shortening url '.$matches[2] );
+			return $matches[1].apply_filters( $this->p->cf['lca'].'_shorten_url',
+				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
+		}
+
 	}
 }
 
