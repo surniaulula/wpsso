@@ -288,9 +288,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $del_files + $del_transients;
 		}
 
-		public function clear_cache_objects( &$transients = array(), &$wp_objects = array() ) {
-			$lca = $this->p->cf['lca'];
+		public function clear_cache_objects( $transients = array(), $wp_objects = array() ) {
 			$deleted = 0;
+			$lca = $this->p->cf['lca'];
 			foreach ( $transients as $group => $arr ) {
 				foreach ( $arr as $val ) {
 					if ( ! empty( $val ) ) {
