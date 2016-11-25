@@ -545,7 +545,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).'_'.$filter_status.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
+					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
 				$content_text = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
 				if ( $content_text !== false ) {
 					if ( $this->p->debug->enabled )
