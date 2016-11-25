@@ -1474,8 +1474,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
 			$var_const['WPSSO_ADD_SUBMENU_PRIORITY'] = -10;
-			$var_const['WPSSO_META_SAVE_PRIORITY'] = 6;
-			$var_const['WPSSO_META_CACHE_PRIORITY'] = 9;
+			$var_const['WPSSO_META_SAVE_PRIORITY'] = 5;
+			$var_const['WPSSO_META_CACHE_PRIORITY'] = 10;
 			$var_const['WPSSO_INIT_PRIORITY'] = 12;
 			$var_const['WPSSO_HEAD_PRIORITY'] = 10;
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;

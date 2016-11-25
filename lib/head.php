@@ -62,8 +62,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$head_index .= '_crawler:none';
 					break;
 			}
-			return apply_filters( $this->p->cf['lca'].'_head_cache_index', 
-				trim( $head_index, '_' ), $sharing_url, $crawler_name );
+
+			$head_index = apply_filters( $this->p->cf['lca'].'_head_cache_index', 
+				$head_index, $sharing_url, $crawler_name );
+
+			return trim( $head_index, '_' );
 		}
 
 		// called by wp_head action
