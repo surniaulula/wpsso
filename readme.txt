@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.6.1
-Stable Tag: 3.37.3-1
+Stable Tag: 3.37.4-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -357,7 +357,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.4-rc2 (2016/11/25)**
+**Version 3.37.4-1 (2016/11/25)**
 
 Official announcement: N/A
 
@@ -446,11 +446,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.4-rc2 =
+= 3.37.4-1 =
 
-(2016/11/25) Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags.
+(2016/11/25) Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags. Added a new "WPSSO Tweet a Quote (WPSSO TAQ)" extension to the Extension Plugins and Pro Licenses settings page.
 
-= 3.37.3-1 =
-
-(2016/11/17) Updated the "Plugin Setup Guide and Notes". Updated hard minimum and recommended minimum WordPress and PHP versions. Added a "Reference URL" link to notice messages when generating the head meta tag array.
- 
