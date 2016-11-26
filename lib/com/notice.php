@@ -337,6 +337,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_notice_html( $msg_type, $msg_txt, $payload = array() ) {
+			$charset = get_bloginfo( 'charset' );
 
 			if ( ! isset( $payload['label'] ) )
 				$payload['label'] = sprintf( __( '%s Note', $this->text_dom ), strtoupper( $this->lca ) );
@@ -391,9 +392,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$payload['label'].'</div>';
 			}
 
-			$msg_html .= '<div class="notice-message">'.
-				$msg_txt.'</div>';
-
+			$msg_html .= '<div class="notice-message">'.$msg_txt.'</div>';
 			$msg_html .= '</div>'."\n";
 
 			return $msg_html;

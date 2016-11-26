@@ -601,8 +601,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$regex_end = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
 
 				$html = preg_replace( '/'.$regex_begin.$comment_prefix.'begin'.$regex_end.'.*'.
-					$regex_begin.$comment_prefix.'end'.$regex_end.'/ms',
-						'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html );
+					$regex_begin.$comment_prefix.'end'.$regex_end.'/ums',	// enable UTF8 functionality
+						'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html, -1, $count );
+
+				if ( ! $count ) {
+					if ( is_admin() ) {
+						$lca = $this->p->cf['lca'];
+						$short = $this->p->cf['plugin'][$lca]['short'];
+						$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %s meta tag block - this could be an indication of an issue with the PHP PCRE library.', 'wpsso' ), $short ) );
+						return false;
+					}
+				}
 			}
 
 			if ( class_exists( 'DOMDocument' ) ) {
