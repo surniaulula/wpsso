@@ -904,7 +904,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_mod_salt( array $mod, $locale = false, $sharing_url = false ) {
-			if ( $locale === false )
+
+			if ( empty( $locale ) )
 				$locale = self::get_locale( $mod );
 			elseif ( $locale === 'current' || $locale === 'default' )
 				$locale = self::get_locale( $locale );
@@ -917,7 +918,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $mod['tax_slug'] ) )
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
 
-			if ( empty( $mod['id'] ) && $sharing_url !== false )
+			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) )
 				$mod_salt .= '_url:'.$sharing_url;
 
 			return $mod_salt;
