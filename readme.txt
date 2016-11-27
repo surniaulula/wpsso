@@ -357,6 +357,19 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.37.5-dev1 (2016/11/28)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added extra debugging messages in the BuddyPress user class methods.
+
 **Version 3.37.4-1 (2016/11/25)**
 
 Official announcement: N/A
@@ -445,6 +458,10 @@ Official announcement: N/A
 		* 'ngfb_cache_expire_shorten_url' ( $secs );
 
 == Upgrade Notice ==
+
+= 3.37.5-dev1 =
+
+(2016/11/28) Added extra debugging messages in the BuddyPress user class methods.
 
 = 3.37.4-1 =
 
