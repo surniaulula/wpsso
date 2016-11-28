@@ -91,7 +91,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:294 lib/term.php:269 lib/user.php:242
+#: lib/admin.php:405 lib/post.php:292 lib/term.php:269 lib/user.php:242
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:462
+#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:460
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2515,21 +2515,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:360
+#: lib/post.php:358
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:376
+#: lib/post.php:374
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:385
+#: lib/post.php:383
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:420 lib/profile/social-settings.php:27 lib/term.php:293
+#: lib/post.php:418 lib/profile/social-settings.php:27 lib/term.php:293
 #: lib/user.php:268
 msgctxt "metabox title"
 msgid "Social Settings"
