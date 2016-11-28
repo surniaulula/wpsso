@@ -22,10 +22,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		protected function add_actions() {
 
 			if ( is_admin() ) {
-				add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
-				// load_meta_page() priorities: 100 post, 200 user, 300 term
-				// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
-				add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
+					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
+					// load_meta_page() priorities: 100 post, 200 user, 300 term
+					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
+					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+				}
 
 				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
