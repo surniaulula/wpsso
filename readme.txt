@@ -463,7 +463,3 @@ Official announcement: N/A
 
 (2016/11/28) Fixed BuddyPress user page detection when current object is a post (Pro version).
 
-= 3.37.4-1 =
-
-(2016/11/25) Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags. Added a new "WPSSO Tweet a Quote (WPSSO TAQ)" extension to the Extension Plugins and Pro Licenses settings page.
-
