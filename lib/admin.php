@@ -1201,6 +1201,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->notice->err( sprintf( __( '<a href="%s" target="_blank">PHP Multibyte String extension</a> is not loaded.', 'wpsso' ), 'http://php.net/manual/en/book.mbstring.php' ).' '.__( 'please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 			}
 
+			// WordPress
+			if ( ! get_option( 'blog_public' ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'blog_public option is disabled' );
+				$this->p->notice->err( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social websites &mdash; please uncheck that option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ) );
+			}
+
 			// Yoast SEO
 			if ( $this->p->is_avail['seo']['wpseo'] ) {
 				$opts = get_option( 'wpseo_social' );
