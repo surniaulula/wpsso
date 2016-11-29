@@ -2710,13 +2710,19 @@ msgctxt "metabox tab"
 msgid "Cache Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:102
+#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:98
+#: lib/submenu/essential.php:152
+msgctxt "option label"
+msgid "Clear All Cache(s) on Save Settings"
+msgstr ""
+
+#: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:102
 #: lib/submenu/essential.php:156
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:106
+#: lib/sitesubmenu/siteadvanced.php:76 lib/submenu/advanced.php:106
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
@@ -2784,11 +2790,6 @@ msgstr ""
 #: lib/submenu/advanced.php:81
 msgctxt "metabox tab"
 msgid "SEO / Other"
-msgstr ""
-
-#: lib/submenu/advanced.php:98 lib/submenu/essential.php:152
-msgctxt "option label"
-msgid "Clear All Cache(s) on Save Settings"
 msgstr ""
 
 #: lib/submenu/advanced.php:113

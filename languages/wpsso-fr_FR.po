@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.4-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.5-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-11-27 09:13+1000\n"
-"PO-Revision-Date: 2016-11-27 09:14+1000\n"
+"POT-Creation-Date: 2016-11-29 13:12+1000\n"
+"PO-Revision-Date: 2016-11-29 13:13+1000\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1622,40 +1622,32 @@ msgid "The social preview shows an <em>example</em> link share on Facebook. Imag
 msgstr "L'aperçu sociale montre un <em>exemple</em> d'un partage typique Facebook. L'image affichée utilisent les dimensions minimales de 600x315px suggéré par Facebook. Un partage réelle sur Facebook et d'autres sites sociaux pourrait être très différent de cet exemple (en fonction de la plateforme client, la résolution, l'orientation, etc.)."
 
 #: lib/messages.php:718 lib/messages.php:722
-msgid "After purchasing one or more Pro version license(s), an email is sent to you with an Authentication ID and installation / activation instructions."
-msgstr "Après l'achat de licence(s) version Pro, un email vous sera envoyé avec un ID d'authentification unique et les détailles d'installation / d'activation."
+msgid "After purchasing license(s) for %1$s or its Pro extensions, you'll receive an email with a unique Authentication ID and installation instructions."
+msgstr "Après l'achat de licence(s) pour %1$s ou ses extensions Pro, vous recevrez un email avec un ID d'authentification unique et des instructions d'installation."
 
 #: lib/messages.php:718
-msgid "Enter the unique Authentication ID on this settings page to check for Pro version updates immediately, and every 24 hours thereafter."
-msgstr "Entrez l'ID d'authentification unique sur cette page de réglages pour vérifier les mises à jour de version Pro immédiatement, et a tous les 24 heures par la suite."
+msgid "Enter the Authentication IDs in this settings page to upgrade the Free version and access future Pro version updates."
+msgstr "Entrez les IDs d’authentification dans cette page de réglages pour mettre à niveau la version gratuite et accéder aux futures mises à jour de version Pro."
 
 #: lib/messages.php:718
-msgid "The %s extension must be active in order to check for Pro version updates."
-msgstr "L'extension %s doit être active afin de vérifier pour des mises à jour de versions Pro."
-
-#: lib/messages.php:718
-msgid "If you accidentally de-activate the %1$s extension, update information will be provided by the WordPress.org plugin repository, and any update notices will be for the Free versions &mdash; always update the Pro version when the %2$s extension is active."
-msgstr "Si vous désactivez accidentellement l'extension %1$s, l'information de mise à jour sera fournie par le répertoire WordPress.org, et les avis de mise à jour seront pour les versions gratuites &mdash; toujours mettre à jour la version Pro lorsque l'extension %2$s est active."
-
-#: lib/messages.php:718
-msgid "If you accidentally re-install the Free version from WordPress.org &ndash; don't worry &ndash; your Authentication ID will always allow you update back to the Pro version."
-msgstr "Si vous ré-installer la version gratuite de WordPress.org accidentellement &ndash; ne vous inquiétez pas &ndash; votre ID d'authentification vous permettra toujours de vous mettre à jour a la version Pro."
+msgid "The %1$s extension must be active in order to check for Pro version updates, and %2$s is required to use any of its Pro extensions."
+msgstr "L'extension %1$s doit être active afin de vérifier pour des mises à jour Pro, et %2$s est nécessaire pour utiliser ses extensions Pro."
 
 #: lib/messages.php:722
-msgid "You may enter the unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication ID individually on each site's Pro Licenses settings page."
-msgstr "Entrez l'ID d'authentification unique sur cette page <em>pour définir une valeur pour tous les sites du réseau</em> &mdash; ou entrez l'ID d'authentification individuellement sur chaque page de réglage Licences Pro des sites que vous voulez autoriser."
+msgid "You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site's Pro Licenses settings page."
+msgstr "Entrez les IDs d'authentification sur cette page <em>pour définir une valeur pour tous les sites du réseau</em> &mdash; ou entrez les IDs d'authentification individuellement sur chaque page de réglage Licences Pro des sites que vous voulez autoriser."
 
 #: lib/messages.php:722
-msgid "If you enter an Authentication ID here, <em>please make sure you have purchased enough licenses to license all sites within the network</em> (for example, if you have 10 sites, you will need 10 or more licenses)."
-msgstr "Si vous entrez un ID d'authentification ici, <em>assurez vous d'avoir acheter un nombre de licences suffisant pour autoriser tous les sites du réseau</em> (par exemple, si vous avez 10 sites, vous aurez besoin de 10 licences ou plus)."
+msgid "If you enter Authentication IDs here, <em>make sure you have purchased enough licenses to license all sites within the network</em> (for example, if you have 10 sites, you will need at least 10 licenses)."
+msgstr "Si vous entrez des IDs d'authentification ici, <em>assurez vous d'avoir acheter un nombre de licences suffisant pour autoriser tous les sites du réseau</em> (par exemple, si vous avez 10 sites, vous aurez besoin de 10 licences ou plus)."
 
 #: lib/messages.php:722
 msgid "To license one or more sites individually, enter the Authentication ID in each site's Pro Licenses settings page."
 msgstr "Pour autoriser un ou plusieurs sites individuellement, entrez l'ID d'authentification dans la page de réglage Licences Pro de chaque site."
 
 #: lib/messages.php:722
-msgid "Please note that <em>the default site / blog must be licensed</em> and the %1$s extension active, in order to install %2$s version updates from the network admin interface."
-msgstr "SVP notez que l'installation de mises à jour %2$s par l'interface d'admin réseau requiert que <em>le site / blog par défaut est une licence valide</em> et que l'extension %1$s soit active ."
+msgid "Note that <strong>the default site / blog must be licensed</strong> and the %1$s extension active in order to install Pro version updates from the network admin interface."
+msgstr "Notez que l'extension %1$s doit être active et que <strong>le site / blog par défaut doit avoir une licence valide</strong> afin d'installer des mises à jour Pro par l'interface d'administration du réseau."
 
 #: lib/messages.php:725
 msgid "These options allow you to customize some Open Graph meta tag and Schema markup values for the Pinterest crawler."

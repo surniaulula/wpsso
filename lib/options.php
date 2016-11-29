@@ -505,8 +505,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
-				case ( strpos( $key, '_cache_exp' ) === false ? false : true ):
-				case ( strpos( $key, '_filter_prio' ) === false ? false : true ):
+				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
 					return 'numeric';
 					break;
 				// integer options that must be positive (1 or more)
@@ -574,8 +573,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_shortener':	// none or name of shortener
 				case ( strpos( $key, '_crop_x' ) === false ? false : true ):
 				case ( strpos( $key, '_crop_y' ) === false ? false : true ):
-				case ( preg_match( '/_tid:use$/', $key ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
+				case ( preg_match( '/:use$/', $key ) ? true : false ):
 					return 'not_blank';
 					break;
 			}
