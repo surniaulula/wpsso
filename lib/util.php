@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_id = $lca.'_'.md5( $cache_salt );
 						if ( delete_transient( $cache_id ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'cleared transient cache salt '.$cache_salt );
+								$this->p->debug->log( 'cleared cache transient '.$cache_salt );
 							$deleted++;
 						}
 					}
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_id = $lca.'_'.md5( $cache_salt );
 						if ( wp_cache_delete( $cache_id, $group ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'cleared object cache salt '.$cache_salt );
+								$this->p->debug->log( 'cleared cache object '.$cache_salt );
 							$deleted++;
 						}
 					}

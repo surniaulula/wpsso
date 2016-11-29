@@ -1868,48 +1868,34 @@ msgstr ""
 
 #: lib/messages.php:718 lib/messages.php:722
 msgid ""
-"After purchasing one or more Pro version license(s), an email is sent to you "
-"with an Authentication ID and installation / activation instructions."
+"After purchasing license(s) for %1$s or its Pro extensions, you'll receive "
+"an email with a unique Authentication ID and installation instructions."
 msgstr ""
 
 #: lib/messages.php:718
 msgid ""
-"Enter the unique Authentication ID on this settings page to check for Pro "
-"version updates immediately, and every 24 hours thereafter."
+"Enter the Authentication IDs in this settings page to upgrade the Free "
+"version and access future Pro version updates."
 msgstr ""
 
 #: lib/messages.php:718
 msgid ""
-"The %s extension must be active in order to check for Pro version updates."
-msgstr ""
-
-#: lib/messages.php:718
-msgid ""
-"If you accidentally de-activate the %1$s extension, update information will "
-"be provided by the WordPress.org plugin repository, and any update notices "
-"will be for the Free versions &mdash; always update the Pro version when the "
-"%2$s extension is active."
-msgstr ""
-
-#: lib/messages.php:718
-msgid ""
-"If you accidentally re-install the Free version from WordPress.org &ndash; "
-"don't worry &ndash; your Authentication ID will always allow you update back "
-"to the Pro version."
+"The %1$s extension must be active in order to check for Pro version updates, "
+"and %2$s is required to use any of its Pro extensions."
 msgstr ""
 
 #: lib/messages.php:722
 msgid ""
-"You may enter the unique Authentication ID on this page <em>to define a "
-"value for all sites within the network</em> &mdash; or enter the "
-"Authentication ID individually on each site's Pro Licenses settings page."
+"You may enter the Authentication IDs on this page <em>to define a value for "
+"all sites within the network</em> &mdash; or enter the Authentication IDs "
+"individually on each site's Pro Licenses settings page."
 msgstr ""
 
 #: lib/messages.php:722
 msgid ""
-"If you enter an Authentication ID here, <em>please make sure you have "
-"purchased enough licenses to license all sites within the network</em> (for "
-"example, if you have 10 sites, you will need 10 or more licenses)."
+"If you enter Authentication IDs here, <em>make sure you have purchased "
+"enough licenses to license all sites within the network</em> (for example, "
+"if you have 10 sites, you will need at least 10 licenses)."
 msgstr ""
 
 #: lib/messages.php:722
@@ -1920,8 +1906,8 @@ msgstr ""
 
 #: lib/messages.php:722
 msgid ""
-"Please note that <em>the default site / blog must be licensed</em> and the "
-"%1$s extension active, in order to install %2$s version updates from the "
+"Note that <strong>the default site / blog must be licensed</strong> and the "
+"%1$s extension active in order to install Pro version updates from the "
 "network admin interface."
 msgstr ""
 
