@@ -25,10 +25,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$this->p->util->add_plugin_filters( $this, array( 
-				'head_cache_salt' => 2,		// modify the cache salt for amp pages
-			) );
-
 			add_action( 'wp_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( $this, 'add_head' ), WPSSO_HEAD_PRIORITY );
 
@@ -36,26 +32,28 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
 			// disable page caching for customized meta tags (same URL, different meta tags)
-			if ( $this->get_head_cache_index() !== 'crawler:none' )
+			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'setting do not cache constants' );
 				WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
-		}
-
-		public function filter_head_cache_salt( $salt, $crawler_name ) {
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
-				$salt .= '_amp:true';
-			return $salt;
+			}
 		}
 
 		public function get_head_cache_index( $sharing_url = false, $crawler_name = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$lca = $this->p->cf['lca'];
 			$head_index = '';
 
 			if ( $sharing_url !== false )
 				$head_index .= '_url:'.$sharing_url;
 
-			switch ( $crawler_name === false ? 
-				SucomUtil::crawler_name() : $crawler_name ) {
+			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
+				$head_index .= '_amp:true';
 
-				case 'pinterest':	// pinterest gets different open graph image sizes and does not read json markup
+			switch ( $crawler_name === false ? SucomUtil::crawler_name() : $crawler_name ) {
+				case 'pinterest':	// pinterest gets different image sizes and does not read json markup
 					$head_index .= '_crawler:'.$crawler_name;
 					break;
 				default:
@@ -63,8 +61,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					break;
 			}
 
-			$head_index = apply_filters( $this->p->cf['lca'].'_head_cache_index', 
-				$head_index, $sharing_url, $crawler_name );
+			$head_index = apply_filters( $lca.'_head_cache_index', $head_index, $sharing_url, $crawler_name );
 
 			return trim( $head_index, '_' );
 		}
@@ -272,12 +269,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.apply_filters( $lca.'_head_cache_salt', 
-					SucomUtil::get_mod_salt( $mod, false, $sharing_url ), $crawler_name ).')';
-				$cache_id = $lca.'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				$head_array = get_transient( $cache_id );
 				if ( isset( $head_array[$head_index] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -420,8 +417,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $cache_exp > 0 ) {
 				set_transient( $cache_id, $head_array, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'head array saved to transient '.
-						$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'head array saved to transient '.$cache_id.' ('.$cache_exp.' seconds)' );
+			} else {
+				delete_transient( $cache_id );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'head array transient '.$cache_id.' deleted' );
 			}
 
 			// reset the reference url for admin notices
