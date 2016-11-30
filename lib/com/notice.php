@@ -156,8 +156,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
+		// returns the previous URL
 		public function set_reference_url( $url = null ) {
+			$previous_url = $this->reference_url;
 			$this->reference_url = $url;
+			return $previous_url;
 		}
 
 		public function get_reference_url() {
