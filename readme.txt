@@ -357,6 +357,19 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.37.6-dev1 (2016/12/01)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed the sharing URL value for BuddyPress users (Pro version).
+* *Developer Notes*
+	* None
+
 **Version 3.37.5-1 (2016/11/28)**
 
 Official announcement: N/A
@@ -458,6 +471,10 @@ Official announcement: N/A
 		* 'ngfb_cache_expire_shorten_url' ( $secs );
 
 == Upgrade Notice ==
+
+= 3.37.6-dev1 =
+
+(2016/12/01) Fixed the sharing URL value for BuddyPress users (Pro version).
 
 = 3.37.5-1 =
 

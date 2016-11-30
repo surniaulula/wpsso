@@ -19,9 +19,6 @@
 'wpsso_attached_image_ids' ( $attach_ids, $post_id );
 'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes );
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
-'wpsso_author_object_description' ( $desc, $author_obj );
-'wpsso_author_object_title' ( $title, $author_obj );
-'wpsso_author_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_cache_expire_article_topics' ( $secs );
 'wpsso_cache_expire_column_content' ( $secs );
 'wpsso_cache_expire_content_text' ( $secs );
@@ -131,5 +128,8 @@
 'wpsso_user_cache_transients' ( $transients, $mod, $locale, $sharing_url );
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
+'wpsso_user_object_description' ( $desc, $author_obj );
+'wpsso_user_object_title' ( $title, $author_obj );
 'wpsso_user_social_settings_tabs' ( $tabs, $mod );
+'wpsso_user_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_wp_tags' ( $tags, $post_id );
