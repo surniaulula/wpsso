@@ -39,11 +39,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 		}
 
-		public function get_head_cache_index( $sharing_url = false, $crawler_name = false ) {
+		public function get_head_cache_index( $sharing_url = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
+			$crawler_name = SucomUtil::crawler_name();
 			$head_index = '';
 
 			if ( $sharing_url !== false )
@@ -52,7 +53,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
 				$head_index .= '_amp:true';
 
-			switch ( $crawler_name === false ? SucomUtil::crawler_name() : $crawler_name ) {
+			switch ( $crawler_name ) {
 				case 'pinterest':	// pinterest gets different image sizes and does not read json markup
 					$head_index .= '_crawler:'.$crawler_name;
 					break;
@@ -63,7 +64,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$head_index = apply_filters( $lca.'_head_cache_index', $head_index, $sharing_url, $crawler_name );
 
-			return trim( $head_index, '_' );
+			return ltrim( $head_index, '_' );
 		}
 
 		// called by wp_head action
@@ -79,7 +80,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'WP_LANG = '.SucomUtil::get_const( 'WP_LANG', '(undefined)' ) );
+				$this->p->debug->log( 'WPLANG = '.SucomUtil::get_const( 'WPLANG', '(undefined)' ) );
 				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
@@ -257,7 +258,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
-			$head_index = $this->get_head_cache_index( $sharing_url, $crawler_name );
+			$head_index = $this->get_head_cache_index( $sharing_url );
 			$head_array = array();
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
 				$this->p->options['plugin_head_cache_exp'], $head_index );

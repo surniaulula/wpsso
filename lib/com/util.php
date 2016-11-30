@@ -885,31 +885,31 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale( $mixed = 'current' ) {
-			$key = is_array( $mixed ) ?
-				$key = $mixed['name'].'_'.$mixed['id'] : $mixed;
-
 			/*
 			 * We use a class static variable (instead of a method static variable)
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
+			$key = is_array( $mixed ) ? 
+				$mixed['name'].'_'.$mixed['id'] : $mixed;
 			if ( isset( self::$locales[$key] ) )
 				return self::$locales[$key];
 
-			if ( $mixed === 'default' )
-				$wp_locale = defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US';
-			else $wp_locale = get_locale();
+			if ( $mixed === 'default' ) {
+				global $locale;
+				if ( self::get_const( 'WPLANG' ) )
+					$wp_locale = WPLANG;
+				elseif ( $locale )
+					$wp_locale = $locale;
+				else $wp_locale = 'en_US';	// just in case
+			} else $wp_locale = get_locale();
 
 			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
+		// example: 'term:123_tax:post_tag_locale:en_US'
 		public static function get_mod_salt( array $mod, $locale = null, $sharing_url = false ) {
-
-			if ( empty( $locale ) )
-				$mod_salt = 'locale:'.self::get_locale( $mod );
-			elseif ( $locale === 'current' || $locale === 'default' )
-				$mod_salt = 'locale:'.self::get_locale( $locale );
-			else $mod_salt = 'locale:'.$locale;
+			$mod_salt = '';
 
 			if ( ! empty( $mod['name'] ) )
 				$mod_salt .= '_'.$mod['name'].':'.(int) $mod['id'];	// convert false to 0
@@ -917,10 +917,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $mod['tax_slug'] ) )
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
 
+			if ( empty( $locale ) )
+				$mod_salt .= '_locale:'.self::get_locale( $mod );
+			elseif ( $locale === 'current' || $locale === 'default' )
+				$mod_salt .= '_locale:'.self::get_locale( $locale );
+			else $mod_salt .= '_locale:'.$locale;
+
 			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) )
 				$mod_salt .= '_url:'.$sharing_url;
 
-			return $mod_salt;
+			return ltrim( $mod_salt, '_' );
 		}
 
 		public static function restore_checkboxes( &$opts ) {
