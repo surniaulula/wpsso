@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom user sharing_url = '.$url );
 						} else $url = $this->check_sharing_url( get_author_posts_url( $mod['id'] ), 'author posts' );
 					}
-					$url = apply_filters( $lca.'_author_url', $url, $mod, $add_page, $src_id );
+					$url = apply_filters( $lca.'_user_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( is_search() ) {
 					$url = $this->check_sharing_url( get_search_link(), 'search link' );
