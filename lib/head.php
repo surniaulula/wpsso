@@ -283,7 +283,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 					return $head_array[$head_index];	// stop here
 				}
-			} 
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'head array transient cache is disabled' );
 
 			// set the reference url for admin notices
 			if ( is_admin() )

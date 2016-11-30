@@ -903,14 +903,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
-		public static function get_mod_salt( array $mod, $locale = false, $sharing_url = false ) {
+		public static function get_mod_salt( array $mod, $locale = null, $sharing_url = false ) {
 
 			if ( empty( $locale ) )
-				$locale = self::get_locale( $mod );
+				$mod_salt = 'locale:'.self::get_locale( $mod );
 			elseif ( $locale === 'current' || $locale === 'default' )
-				$locale = self::get_locale( $locale );
-
-			$mod_salt = 'locale:'.$locale;
+				$mod_salt = 'locale:'.self::get_locale( $locale );
+			else $mod_salt = 'locale:'.$locale;
 
 			if ( ! empty( $mod['name'] ) )
 				$mod_salt .= '_'.$mod['name'].':'.(int) $mod['id'];	// convert false to 0

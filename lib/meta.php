@@ -618,12 +618,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
+			// each post/term/user id gets a single transient with all columns
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).')';	// $sharing_url not required
+			$cache_id = $lca.'_'.md5( $cache_salt );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 			if ( $cache_exp > 0 ) {
-				// each post/term/user id gets a single transient with all columns
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod ).')';	// $sharing_url not required
-				$cache_id = $lca.'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				// speed-up by saving all post/term/user id columns to static property cache
 				if ( self::$last_column_id === $cache_id &&
 					isset( self::$last_column_array[$column_index] ) ) {
@@ -639,7 +640,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						return $column_array[$column_index];
 					}
 				}
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( 'column array transient cache is disabled' );
 
 			switch ( $column_index ) {
 				case $lca.'_og_img':

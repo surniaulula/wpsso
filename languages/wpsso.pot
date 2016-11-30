@@ -3304,34 +3304,34 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1339
+#: lib/util.php:1347
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1353
+#: lib/util.php:1361
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1636
+#: lib/util.php:1644
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1662
+#: lib/util.php:1670
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1666
+#: lib/util.php:1674
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1669
+#: lib/util.php:1677
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1673
+#: lib/util.php:1681
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

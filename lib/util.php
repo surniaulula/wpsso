@@ -889,34 +889,42 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach ( $keys as $prefix ) {
 				$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
 				if ( ! $disabled && ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
+					$cache_salt = __METHOD__.'(url:'.$media_url.')';
+					$cache_id = $lca.'_'.md5( $cache_salt );
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 					if ( $cache_exp > 0 ) {
-						$cache_salt = __METHOD__.'(url:'.$media_url.')';
-						$cache_id = $lca.'_'.md5( $cache_salt );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'transient cache salt '.$cache_salt );
 						$image_info = get_transient( $cache_id );
 						if ( is_array( $image_info ) ) {
 							if ( $this->p->debug->enabled )
 								$this->p->debug->log( 'image info for '.$media_url.' retrieved from transient' );
 						} else $image_info = false;
-					} else $image_info = false;
+					} else {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'image info transient cache is disabled' );
+						$image_info = false;
+					}
 
 					if ( $image_info === false ) {
 						$image_info = @getimagesize( $media_url );
 						if ( is_array( $image_info ) ) {
+
+							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
+									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
+										true, __METHOD__.$media_url, true );
+							}
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
+									$image_info[0].'x'.$image_info[1] );
+
 							if ( $cache_exp > 0 ) {
 								set_transient( $cache_id, $image_info, $cache_exp );
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( 'image url size saved to transient '.
 										$cache_id.' ('.$cache_exp.' seconds)');
 							}
-							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
-									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
-										true, __METHOD__.$media_url, true );
-							}
-							$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
-								$image_info[0].'x'.$image_info[1] );
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'PHP getimagesize() did not return an array' );
 							$image_info = array( -1, -1, '', '' );

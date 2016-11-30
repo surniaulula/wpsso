@@ -541,18 +541,20 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			/*
 			 * retrieve the content
 			 */
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).'_'.$filter_status.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'wp_cache salt '.$cache_salt );
+
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).'_'.$filter_status.')';
-				$cache_id = $lca.'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'wp_cache salt '.$cache_salt );
 				$content_text = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
 				if ( $content_text !== false ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $filter_status.' content retrieved from wp_cache '.$cache_id );
 					return $content_text;
 				}
-			}
+			} elseif ( $this->p->debug->enabled )
+				$this->p->debug->log( $filter_status.' content wp_cache is disabled' );
 
 			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
 
