@@ -610,12 +610,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['description'] = $desc;
 
 			/*
-			 * Potential Actions (SearchAction, OrderAction, etc.)
+			 * Potential Action (SearchAction, OrderAction, etc.)
 			 */
-			$ret['potentialAction'] = array();
+			$actions = array();
 
 			if ( $search_url = apply_filters( $lca.'_json_ld_search_url', get_bloginfo( 'url' ).'?s={search_term_string}' ) ) {
-				$ret['potentialAction'][] = array(
+				$actions[] = array(
 					'@context' => 'https://schema.org',
 					'@type' => 'SearchAction',
 					'target' => $search_url,
@@ -623,11 +623,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 			}
 
-			$ret['potentialAction'] = (array) apply_filters( $lca.'_json_prop_https_schema_org_potentialaction',
-				$ret['potentialAction'], $mod, $mt_og, $page_type_id, $is_main );
+			$actions = (array) apply_filters( $lca.'_json_prop_https_schema_org_potentialaction',
+				$actions, $mod, $mt_og, $page_type_id, $is_main );
 
-			if ( empty( $ret['potentialAction'] ) )
-				unset( $ret['potentialAction'] );
+			if ( ! empty( $actions ) )
+				$ret['potentialAction'] = $actions;
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
