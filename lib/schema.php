@@ -1391,15 +1391,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return array_merge(
 				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">'."\n" ) ),
-				$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ),
-				( empty( $mt_og[$og_type.':rating:count'] ) ? array() : 
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'ratingCount', $mt_og[$og_type.':rating:count'], '', $mod ) ),
-				( empty( $mt_og[$og_type.':rating:worst'] ) ? array() :
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'worstRating', $mt_og[$og_type.':rating:worst'], '', $mod ) ),
-				( empty( $mt_og[$og_type.':rating:best'] ) ? array() :
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'bestRating', $mt_og[$og_type.':rating:best'], '', $mod ) ),
-				( empty( $mt_og[$og_type.':review:count'] ) ? array() :
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'reviewCount', $mt_og[$og_type.':review:count'], '', $mod ) ),
+				$this->p->head->get_single_mt( 'meta', 'itemprop',
+					'aggregaterating.ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ),
+				( empty( $mt_og[$og_type.':rating:count'] ) ? 
+					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
+						'aggregaterating.ratingCount', $mt_og[$og_type.':rating:count'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':rating:worst'] ) ? 
+					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
+						'aggregaterating.worstRating', $mt_og[$og_type.':rating:worst'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':rating:best'] ) ? 
+					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
+						'aggregaterating.bestRating', $mt_og[$og_type.':rating:best'], '', $mod ) ),
+				( empty( $mt_og[$og_type.':review:count'] ) ? 
+					array() : $this->p->head->get_single_mt( 'meta', 'itemprop', 
+						'aggregaterating.reviewCount', $mt_og[$og_type.':review:count'], '', $mod ) ),
 				array( array( '</noscript>'."\n" ) )
 			);
 		}

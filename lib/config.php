@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.6-dev1',	// plugin version
-					'opt_version' => '474',		// increment when changing default options
+					'version' => '3.37.6-dev2',	// plugin version
+					'opt_version' => '475',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -604,11 +604,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:player:width' => 1,
 					'add_meta_name_twitter:player:height' => 1,
 					// schema
+					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_name' => 1,
+					'add_meta_itemprop_alternatename' => 1,
+					'add_meta_itemprop_description' => 1,
+					'add_meta_itemprop_email' => 1,
+					'add_meta_itemprop_telephone' => 1,
+					'add_meta_itemprop_address' => 1,
 					'add_meta_itemprop_datepublished' => 1,
 					'add_meta_itemprop_datemodified' => 1,
-					'add_meta_itemprop_description' => 1,
-					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_image' => 1,
 					'add_meta_itemprop_image.url' => 1,
 					'add_meta_itemprop_image.width' => 1,
@@ -622,25 +626,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_contributor.name' => 1,
 					'add_meta_itemprop_contributor.description' => 1,
 					'add_meta_itemprop_contributor.image' => 1,
-					'add_meta_itemprop_address' => 1,
 					'add_meta_itemprop_openinghoursspecification.dayofweek' => 1,
 					'add_meta_itemprop_openinghoursspecification.opens' => 1,
 					'add_meta_itemprop_openinghoursspecification.closes' => 1,
 					'add_meta_itemprop_openinghoursspecification.validfrom' => 1,
 					'add_meta_itemprop_openinghoursspecification.validthrough' => 1,
+					'add_meta_itemprop_currenciesaccepted' => 1,
+					'add_meta_itemprop_paymentaccepted' => 1,
+					'add_meta_itemprop_pricerange' => 1,
 					'add_meta_itemprop_menu' => 1,
 					'add_meta_itemprop_acceptsreservations' => 1,
-					'add_meta_itemprop_ratingvalue' => 1,	// Schema AggregateRating
-					'add_meta_itemprop_ratingcount' => 1,	// Schema AggregateRating
-					'add_meta_itemprop_worstrating' => 1,	// Schema AggregateRating
-					'add_meta_itemprop_bestrating' => 1,	// Schema AggregateRating
-					'add_meta_itemprop_reviewcount' => 1,	// Schema AggregateRating
-					'add_meta_itemprop_startdate' => 1,	// Schema Event
-					'add_meta_itemprop_enddate' => 1,	// Schema Event
-					'add_meta_itemprop_location' => 1,	// Schema Event
-					'add_meta_itemprop_totaltime' => 1,	// Schema Recipe
-					'add_meta_itemprop_recipeyield' => 1,	// Schema Recipe
-					'add_meta_itemprop_ingredients' => 1,	// Schema Recipe
+					'add_meta_itemprop_aggregaterating.ratingvalue' => 1,
+					'add_meta_itemprop_aggregaterating.ratingcount' => 1,
+					'add_meta_itemprop_aggregaterating.worstrating' => 1,
+					'add_meta_itemprop_aggregaterating.bestrating' => 1,
+					'add_meta_itemprop_aggregaterating.reviewcount' => 1,
+					'add_meta_itemprop_startdate' => 1,		// Schema Event
+					'add_meta_itemprop_enddate' => 1,		// Schema Event
+					'add_meta_itemprop_location' => 1,		// Schema Event
+					'add_meta_itemprop_preptime' => 1,		// Schema Recipe
+					'add_meta_itemprop_cooktime' => 1,		// Schema Recipe
+					'add_meta_itemprop_totaltime' => 1,		// Schema Recipe
+					'add_meta_itemprop_recipeyield' => 1,		// Schema Recipe
+					'add_meta_itemprop_ingredients' => 1,		// Schema Recipe
 					/*
 					 * Advanced Settings
 					 */
