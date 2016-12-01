@@ -44,7 +44,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function load_transient() {
 			if ( $this->transient['loaded'] !== true ) {
-				$cache_salt = __CLASS__.'::salt(transient)';
+				$cache_salt = __CLASS__.'::transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				$ret = get_transient( $cache_id );
 				if ( $ret !== false )
@@ -55,7 +55,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function save_transient() {
 			if ( $this->transient['loaded'] === true ) {
-				$cache_salt = __CLASS__.'::salt(transient)';
+				$cache_salt = __CLASS__.'::transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
 				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
 			}

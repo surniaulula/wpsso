@@ -256,15 +256,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function &get_schema_types_array( $flatten = true ) {
+
 			if ( ! isset( $this->schema_types['filtered'] ) ) {	// check class property cache
+
 				$lca = $this->p->cf['lca'];
 				$cache_exp = (int) apply_filters( $lca.'_cache_expire_schema_types',
 					$this->p->options['plugin_types_cache_exp'] );
+
+				$cache_salt = __METHOD__;
+				$cache_id = $lca.'_'.md5( $cache_salt );
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 				if ( $cache_exp > 0 ) {
-					$cache_salt = __METHOD__;
-					$cache_id = $lca.'_'.md5( $cache_salt );
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'transient cache salt '.$cache_salt );
 					$this->schema_types = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->schema_types ) ) {
 						if ( $this->p->debug->enabled )
@@ -273,25 +277,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( ! isset( $this->schema_types['filtered'] ) ) {	// from transient cache or not, check if filtered
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->mark( 'create schema type arrays' );
+
 					$this->schema_types['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
 					$this->schema_types['flattened'] = SucomUtil::array_flatten( $this->schema_types['filtered'] );
 					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
 					ksort( $this->schema_types['flattened'] );
 					ksort( $this->schema_types['parent_index'] );
+
 					if ( $cache_exp > 0 ) {
 						set_transient( $cache_id, $this->schema_types, $cache_exp );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'schema type arrays saved to transient '.
 								$cache_id.' ('.$cache_exp.' seconds)');
 					}
+
 					if ( $this->p->debug->enabled )
 						$this->p->debug->mark( 'create schema type arrays' );
+
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'schema type arrays already filtered' );
+
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'using schema type arrays from class property cache' );
+
 			if ( $flatten )
 				return $this->schema_types['flattened'];
 			else return $this->schema_types['filtered'];

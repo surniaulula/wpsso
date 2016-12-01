@@ -328,11 +328,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics',
 				$this->p->options['plugin_topics_cache_exp'] );
 
+			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-				$cache_id = $lca.'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				$topics = get_transient( $cache_id );
 				if ( is_array( $topics ) ) {
 					if ( $this->p->debug->enabled )
@@ -887,8 +888,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->options['plugin_imgsize_cache_exp'] );
 
 			foreach ( $keys as $prefix ) {
+
 				$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
+
 				if ( ! $disabled && ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
+
 					$cache_salt = __METHOD__.'(url:'.$media_url.')';
 					$cache_id = $lca.'_'.md5( $cache_salt );
 					if ( $this->p->debug->enabled )
@@ -1432,11 +1436,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$get_remote = strpos( $file_url, '://' ) ? true : false;
 			$readme_info = array();
 
+			$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
+			$cache_id = $ext.'_'.md5( $cache_salt );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+
 			if ( $cache_exp > 0 ) {
-				$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
-				$cache_id = $ext.'_'.md5( $cache_salt );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 				$readme_info = $read_cache ? get_transient( $cache_id ) : false;
 				if ( is_array( $readme_info ) ) {
 					if ( $this->p->debug->enabled )

@@ -659,7 +659,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$column_array[$column_index] = apply_filters( $column_index.'_'.$mod['name'].'_column_content', $value, $column_index, $mod );
 
 			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $column_array, $cache_exp );
+				// update the transient array and keep the original expiration time
+				$cache_exp = SucomUtil::update_transient_array( $cache_id, $column_array, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'column array saved to transient '.
 						$cache_id.' ('.$cache_exp.' seconds)');

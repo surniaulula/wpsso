@@ -2653,13 +2653,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:746
+#: lib/schema.php:757
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:749
+#: lib/schema.php:760
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
@@ -3223,116 +3223,116 @@ msgid ""
 "cleared."
 msgstr ""
 
-#: lib/util.php:348
+#: lib/util.php:349
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:378
+#: lib/util.php:379
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:380
+#: lib/util.php:381
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:382 lib/util.php:384
+#: lib/util.php:383 lib/util.php:385
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:386
+#: lib/util.php:387
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:388
+#: lib/util.php:389
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:390
+#: lib/util.php:391
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:392
+#: lib/util.php:393
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:394
+#: lib/util.php:395
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:396
+#: lib/util.php:397
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:580
+#: lib/util.php:581
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:587
+#: lib/util.php:588
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:611
+#: lib/util.php:612
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:647
+#: lib/util.php:648
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:914
+#: lib/util.php:918
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1347
+#: lib/util.php:1351
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1361
+#: lib/util.php:1365
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1644
+#: lib/util.php:1649
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1670
+#: lib/util.php:1675
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1674
+#: lib/util.php:1679
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1677
+#: lib/util.php:1682
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1681
+#: lib/util.php:1686
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

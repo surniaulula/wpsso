@@ -929,6 +929,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( $mod_salt, '_' );
 		}
 
+		// update the transient array and keep the original expiration time
+		public static function update_transient_array( $cache_id, $data_array, $cache_exp ) {
+			$now_time = time();
+
+			if ( isset( $data_array['__created_at'] ) )
+				$cache_exp -= $now_time - $data_array['__created_at'];
+			else $data_array['__created_at'] = $now_time;
+
+			set_transient( $cache_id, $head_array, $cache_exp );
+
+			return $cache_exp;
+		}
+
 		public static function restore_checkboxes( &$opts ) {
 			// unchecked checkboxes are not provided, so re-create them here based on hidden values
 			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, false, '' );

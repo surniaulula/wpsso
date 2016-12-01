@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		// $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		public function add_image_tag( $html, $id, $alt, $title, $align, $size ) {
 			if ( strpos( $html, ' data-wp-pid=' ) === false )
-				$html = preg_replace( '/ *\/?>/', ' data-wp-pid="'.$id.'"$0', $html );
+				$html = preg_replace( '/ *\/?'.'>/', ' data-wp-pid="'.$id.'"$0', $html );
 			return $html;
 		}
 

@@ -417,13 +417,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			);
 
 			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $head_array, $cache_exp );
+				// update the transient array and keep the original expiration time
+				$cache_exp = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'head array saved to transient '.$cache_id.' ('.$cache_exp.' seconds)' );
-			} else {
-				delete_transient( $cache_id );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'head array transient '.$cache_id.' deleted' );
 			}
 
 			// reset the reference url for admin notices
