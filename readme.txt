@@ -368,7 +368,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* Fixed the sharing URL value for BuddyPress users (Pro version).
 * *Developer Notes*
-	* None
+	* Added an SucomUtil::update_transient_array() method to update transient arrays and keep the original transient expiration time.
 
 **Version 3.37.5-1 (2016/11/28)**
 
@@ -474,7 +474,7 @@ Official announcement: N/A
 
 = 3.37.6-dev1 =
 
-(2016/12/01) Fixed the sharing URL value for BuddyPress users (Pro version).
+(2016/12/01) Fixed the sharing URL value for BuddyPress users (Pro version). Added a newmethod to update transient arrays and keep the original transient expiration time.
 
 = 3.37.5-1 =
 
