@@ -937,7 +937,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$cache_exp -= $now_time - $data_array['__created_at'];
 			else $data_array['__created_at'] = $now_time;
 
-			set_transient( $cache_id, $head_array, $cache_exp );
+			set_transient( $cache_id, $data_array, $cache_exp );
 
 			return $cache_exp;
 		}

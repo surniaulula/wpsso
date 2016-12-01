@@ -609,13 +609,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $desc = SucomUtil::get_site_description( $this->p->options, $mod ) )
 				$ret['description'] = $desc;
 
-			if ( $search_url = apply_filters( $lca.'_json_ld_search_url', get_bloginfo( 'url' ).'?s={search_term_string}' ) )
-				$ret['potentialAction'] = array(
+			/*
+			 * Potential Actions (SearchAction, OrderAction, etc.)
+			 */
+			$ret['potentialAction'] = array();
+
+			if ( $search_url = apply_filters( $lca.'_json_ld_search_url', get_bloginfo( 'url' ).'?s={search_term_string}' ) ) {
+				$ret['potentialAction'][] = array(
 					'@context' => 'https://schema.org',
 					'@type' => 'SearchAction',
 					'target' => $search_url,
 					'query-input' => 'required name=search_term_string',
 				);
+			}
+
+			$ret['potentialAction'] = (array) apply_filters( $lca.'_json_prop_https_schema_org_potentialaction',
+				$ret['potentialAction'], $mod, $mt_og, $page_type_id, $is_main );
+
+			if ( empty( $ret['potentialAction'] ) )
+				unset( $ret['potentialAction'] );
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
