@@ -255,34 +255,33 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
-			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 			$head_array = array();
+			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
-				$this->p->options['plugin_head_cache_exp'], $head_index );
+				$this->p->options['plugin_head_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'crawler name = '.$crawler_name );
 				$this->p->debug->log( 'head index = '.$head_index );
-				$this->p->debug->log( 'cache expire = '.$cache_exp );
+				$this->p->debug->log( 'transient expire = '.$cache_exp );
+				$this->p->debug->log( 'transient salt = '.$cache_salt );
 			}
-
-			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, 'none', $sharing_url ).')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'transient cache salt '.$cache_salt );
 
 			if ( $cache_exp > 0 ) {
 				$head_array = get_transient( $cache_id );
 				if ( isset( $head_array[$head_index] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'head array retrieved from transient '.$cache_id );
+						$this->p->debug->log( 'head index found in array from transient '.$cache_id );
 						$this->p->debug->mark( 'build head array' );	// end timer
 					}
 					return $head_array[$head_index];	// stop here
-				}
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'head index not in array from transient '.$cache_id );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'head array transient cache is disabled' );
+				$this->p->debug->log( 'head array transient is disabled' );
 
 			// set the reference url for admin notices
 			if ( is_admin() )

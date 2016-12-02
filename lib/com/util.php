@@ -908,8 +908,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$locales[$idx] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
-		// example: 'term:123_tax:post_tag_locale:en_US'
-		public static function get_mod_salt( array $mod, $locale = null, $sharing_url = false ) {
+		// examples:
+		//	'term:123_tax:post_tag'
+		//	'post:0_url:https://example.com/a-subject/'
+		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 			$mod_salt = '';
 
 			if ( ! empty( $mod['name'] ) )
@@ -917,12 +919,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $mod['tax_slug'] ) )
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
-
-			if ( empty( $locale ) )
-				$mod_salt .= '_locale:'.self::get_locale( $mod );
-			elseif ( $locale === 'current' || $locale === 'default' )
-				$mod_salt .= '_locale:'.self::get_locale( $locale );
-			else $mod_salt .= '_locale:'.$locale;
 
 			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) )
 				$mod_salt .= '_url:'.$sharing_url;

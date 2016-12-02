@@ -341,18 +341,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$locale = SucomUtil::get_locale( $mod );
-			$locale_salt = SucomUtil::get_mod_salt( $mod, $locale, $sharing_url );
-			$none_salt = SucomUtil::get_mod_salt( $mod, 'none', $sharing_url );
+			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
 			$transients = array(
-				'WpssoHead::get_head_array' => array( $none_salt ),
-				'WpssoMeta::get_mod_column_content' => array( $locale_salt ),
+				'WpssoHead::get_head_array' => array( $cache_salt ),
+				'WpssoMeta::get_mod_column_content' => array( $cache_salt ),
 			);
-			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $mod, $locale, $sharing_url );
+			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $mod, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
-
 			if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.',
 					true, __FUNCTION__.'_items_removed', true );

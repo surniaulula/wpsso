@@ -526,36 +526,38 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$content_text = false;
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
-			$filter_status = $filter_content ? 'filtered' : 'unfiltered';
+			$content_array = array();
+			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text',
 				$this->p->options['plugin_content_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
-				$this->p->debug->log( 'content is = '.$filter_status );
-				$this->p->debug->log( 'cache expire = '.$cache_exp );
+				$this->p->debug->log( 'content index = '.$content_index );
+				$this->p->debug->log( 'wp_cache expire = '.$cache_exp );
+				$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
 			}
 
 			/*
-			 * retrieve the content
+			 * Retrieve the content
 			 */
-			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, null, $sharing_url ).'_'.$filter_status.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'wp_cache salt '.$cache_salt );
 
-			if ( $cache_exp > 0 ) {
-				$content_text = $use_cache ? wp_cache_get( $cache_id, __METHOD__ ) : false;
-				if ( $content_text !== false ) {
+			if ( $cache_exp > 0 && $use_cache ) {
+				$content_array = wp_cache_get( $cache_id, __METHOD__ );
+				if ( isset( $content_array[$content_index] ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $filter_status.' content retrieved from wp_cache '.$cache_id );
-					return $content_text;
-				}
+						$this->p->debug->log( 'content index found in array from wp_cache '.$cache_id );
+					return $content_array[$content_index];
+				} elseif ( $this->p->debug->enabled )
+					$this->p->debug->log( 'content index not in array from wp_cache '.$cache_id );
 			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( $filter_status.' content wp_cache is disabled' );
+				$this->p->debug->log( 'content array wp_cache is disabled' );
 
+			$content_array[$content_index] = false;
+			$content_text =& $content_array[$content_index];
 			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
 
 			if ( ! empty( $content_text ) ) {
@@ -566,12 +568,12 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				if ( empty( $content_text ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: no post_content for post id '.$mod['id'] );
-					return $content_text;
+					return false;
 				}
 			}
 
 			/*
-			 * modify the content
+			 * Modify the content
 			 */
 
 			// save content length (for comparison) before making changes
@@ -661,17 +663,16 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				$this->p->debug->log( 'content strlen before '.$strlen_before_filters.' and after changes / filters '.$strlen_after_filters );
 
 			// apply filters before caching
-			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $use_cache, $md_idx );
+			$content_array[$content_index] = apply_filters( $lca.'_content', $content_text, $mod, $use_cache, $md_idx );
 
 			if ( $cache_exp > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
-				wp_cache_set( $cache_id, $content_text, __METHOD__, $cache_exp );
+				wp_cache_set( $cache_id, $content_array, __METHOD__, $cache_exp );
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $filter_status.' content saved to wp_cache '.
-						$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'content array saved to wp_cache '.$cache_id.' ('.$cache_exp.' seconds)');
 			}
 
-			return $content_text;
+			return $content_array[$content_index];
 		}
 
 		public function get_article_section( $post_id ) {
