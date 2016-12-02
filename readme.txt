@@ -357,7 +357,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.6-dev3 (2016/12/01)**
+**Version 3.37.6-dev4 (2016/12/03)**
 
 Official announcement: N/A
 
@@ -378,6 +378,7 @@ Official announcement: N/A
 * *Developer Notes*
 	* Added an SucomUtil::update_transient_array() method to update transient arrays and keep the original transient expiration time.
 	* Added a new 'wpsso_json_prop_https_schema_org_potentialaction' filter.
+	* Removed $locale argument from SucomUtil::get_mod_salt() calls.
 
 **Version 3.37.5-1 (2016/11/28)**
 
@@ -481,9 +482,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.6-dev3 =
+= 3.37.6-dev4 =
 
-(2016/12/01) Fixed the sharing URL value for BuddyPress users (Pro version). Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
+(2016/12/03) Fixed the sharing URL value for BuddyPress users (Pro version). Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
 
 = 3.37.5-1 =
 
