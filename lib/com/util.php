@@ -890,10 +890,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$key = is_array( $mixed ) ? 
+			$idx = is_array( $mixed ) ? 
 				$mixed['name'].'_'.$mixed['id'] : $mixed;
-			if ( isset( self::$locales[$key] ) )
-				return self::$locales[$key];
+
+			if ( isset( self::$locales[$idx] ) )
+				return self::$locales[$idx];
 
 			if ( $mixed === 'default' ) {
 				global $locale;
@@ -904,7 +905,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				else $wp_locale = 'en_US';	// just in case
 			} else $wp_locale = get_locale();
 
-			return self::$locales[$key] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
+			return self::$locales[$idx] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
 		}
 
 		// example: 'term:123_tax:post_tag_locale:en_US'

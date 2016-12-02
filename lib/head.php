@@ -16,8 +16,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		private static $dnc_const = array(
 			'DONOTCACHEPAGE' => true,	// wp super cache and w3tc
 			'COMET_CACHE_ALLOWED' => false,	// comet cache
-			'QUICK_CACHE_ALLOWED' => false,	// quick cache
-			'ZENCACHE_ALLOWED' => false,	// zencache
 		);
 
 		public function __construct( &$plugin ) {
@@ -34,18 +32,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// disable page caching for customized meta tags (same URL, different meta tags)
 			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'setting do not cache constants' );
+					$this->p->debug->log( 'setting do-not-cache constants' );
 				WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
 			}
 		}
 
-		public function get_head_cache_index( $sharing_url = false ) {
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
 			$crawler_name = SucomUtil::crawler_name();
-			$head_index = '';
+			$head_index = 'locale:'.SucomUtil::get_locale( $mixed );
 
 			if ( $sharing_url !== false )
 				$head_index .= '_url:'.$sharing_url;
@@ -61,8 +60,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$head_index .= '_crawler:none';
 					break;
 			}
-
-			$head_index = apply_filters( $lca.'_head_cache_index', $head_index, $sharing_url, $crawler_name );
 
 			return ltrim( $head_index, '_' );
 		}
@@ -258,7 +255,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
-			$head_index = $this->get_head_cache_index( $sharing_url );
+			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 			$head_array = array();
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
 				$this->p->options['plugin_head_cache_exp'], $head_index );
@@ -270,7 +267,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache expire = '.$cache_exp );
 			}
 
-			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, false, $sharing_url ).')';
+			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, 'none', $sharing_url ).')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
