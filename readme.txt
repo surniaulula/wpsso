@@ -364,6 +364,7 @@ Official announcement: N/A
 * *New Features*
 	* None
 * *Improvements*
+	* Optimized wp_cache and transient caching for multilingual sites.
 	* Added new Schema meta tags:
 		* alternatename
 		* email
@@ -484,7 +485,7 @@ Official announcement: N/A
 
 = 3.37.6-dev4 =
 
-(2016/12/03) Fixed the sharing URL value for BuddyPress users (Pro version). Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
+(2016/12/03) Fixed the sharing URL value for BuddyPress users (Pro version). Optimized wp_cache and transient caching for multilingual sites. Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
 
 = 3.37.5-1 =
 
