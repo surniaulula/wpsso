@@ -641,6 +641,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'adding single organization data for site' );
 			self::add_single_organization_data( $ret, $mod, 'site', 'org_logo_url', false );	// list_element = false
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -710,6 +712,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
 
 			if ( empty( $opts ) ) {	// $opts could be false or empty array
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'adding default organization options for '.$org_id );
 
 				$org_sameas = array();
 				foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
@@ -734,7 +738,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'org_place_id' => 'none',
 					'org_sameas' => $org_sameas,
 				);
-			}
+			} elseif ( $wpsso->debug->enabled )
+				$wpsso->debug->log( 'have custom organization options for '.$org_id );
 
 			$org_type_id = empty( $opts['org_type'] ) ? 'organization' : $opts['org_type'];
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
@@ -756,6 +761,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles
 			 */
 			if ( ! empty( $logo_key ) ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'adding image from '.$logo_key.' option' );
 				if ( ! empty( $opts[$logo_key] ) ) {
 					if ( ! self::add_single_image_data( $ret['logo'], $opts, $logo_key, false ) )	// list_element = false
 						unset( $ret['logo'] );	// prevent null assignment
@@ -780,6 +787,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Location
 			 */
 			if ( isset( $opts['org_place_id'] ) && $opts['org_place_id'] !== 'none' ) {
+				if ( $wpsso->debug->enabled )
+					$wpsso->debug->log( 'adding single place data for '.$opts['org_place_id'] );
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $opts['org_place_id'], false ) )	// list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 			}
@@ -787,10 +796,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Google Knowledge Graph
 			 */
-			if ( ! empty( $opts['org_sameas'] ) &&
-				is_array( $opts['org_sameas'] ) )
-					foreach ( $opts['org_sameas'] as $url )
+			if ( ! empty( $opts['org_sameas'] ) && is_array( $opts['org_sameas'] ) ) {
+				foreach ( $opts['org_sameas'] as $url )
+					if ( ! empty( $url ) )	// just in case
 						$ret['sameAs'][] = esc_url( $url );
+			}
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
