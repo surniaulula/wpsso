@@ -9,7 +9,7 @@
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/?utm_source=wpsso-readme-donate">https://wpsso.com/?utm_source=wpsso-readme-donate</a></td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, featured, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -299,6 +299,7 @@
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/">Doesn't an SEO plugin cover that?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/">How can I exclude / ignore certain parts of the content text?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
+<li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-php-fatal-out-of-memory-error/">How can I fix a PHP fatal "out of memory" error?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an "HTTP error" when uploading images?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>

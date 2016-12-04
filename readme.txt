@@ -7,7 +7,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, featured, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
+Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
@@ -256,6 +256,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [Doesn't an SEO plugin cover that?](https://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/)
 * [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/)
+* [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-php-fatal-out-of-memory-error/)
 * [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/)
 * [How can I have smaller dimensions for the default image?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/)
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/)
