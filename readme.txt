@@ -11,7 +11,7 @@ Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, p
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
-Stable Tag: 3.37.6-1
+Stable Tag: 3.37.6-3
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -486,8 +486,4 @@ Official announcement: N/A
 = 3.37.6-3 =
 
 (2016/12/04) Fixed the sharing URL value for BuddyPress users (Pro version). Optimized wp_cache and transient caching for multilingual sites. Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
-
-= 3.37.5-1 =
-
-(2016/11/28) Fixed BuddyPress user page detection when current object is a post (Pro version).
 
