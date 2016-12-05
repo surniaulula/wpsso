@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$pkg_type = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) ? 
 				_x( 'Pro', 'package type', 'wpsso' ) :
 				_x( 'Free', 'package type', 'wpsso' );
-			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['name'].' '.$pkg_type.'</h3>'."\n";
+			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['short'].' '.$pkg_type.'</h3>'."\n";
 			echo '<div id="poststuff">';
 			do_meta_boxes( $lca.'-term', 'normal', $term );
 			echo '</div>';

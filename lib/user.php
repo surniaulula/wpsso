@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				_x( 'Pro', 'package type', 'wpsso' ) :
 				_x( 'Free', 'package type', 'wpsso' );
 			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
-			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['name'].' '.$pkg_type.'</h3>'."\n";
+			echo '<h3 id="'.$lca.'-metaboxes">'.$this->p->cf['plugin'][$lca]['short'].' '.$pkg_type.'</h3>'."\n";
 			echo '<div id="poststuff">'."\n";
 			do_meta_boxes( $lca.'-user', 'normal', $user );
 			echo "\n".'</div><!-- .poststuff -->'."\n";
