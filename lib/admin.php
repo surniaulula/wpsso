@@ -1473,8 +1473,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_site_use( &$form, $network = false, $name, $force = false ) {
 			if ( $network !== true )
 				return '';
-			return $form->get_th_html( _x( 'Site Use',
-				'option label (very short)', 'wpsso' ), 'site_use' ).
+			return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ).
 			( $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) || $force ?
 				'<td>'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :
 				'<td class="site_use blank">'.$form->get_select( $name.':use', 
