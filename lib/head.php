@@ -77,7 +77,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'WPLANG = '.SucomUtil::get_const( 'WPLANG', '(undefined)' ) );
 				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );

@@ -897,15 +897,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$locales[$idx];
 
 			if ( $mixed === 'default' ) {
-				global $locale;
-				if ( self::get_const( 'WPLANG' ) )
-					$wp_locale = WPLANG;
-				elseif ( $locale )
-					$wp_locale = $locale;
-				else $wp_locale = 'en_US';	// just in case
-			} else $wp_locale = get_locale();
+				global $wp_local_package;
+				if ( isset( $wp_local_package ) )
+					$locale = $wp_local_package;
+				if ( defined( 'WPLANG' ) )
+					$locale = WPLANG;
+				if ( is_multisite() ) {
+					if ( ( $ms_locale = get_option( 'WPLANG' ) ) === false )
+						$ms_locale = get_site_option( 'WPLANG' );
+					if ( $ms_locale !== false )
+						$locale = $ms_locale;
+				} else {
+					$db_locale = get_option( 'WPLANG' );
+					if ( $db_locale !== false )
+						$locale = $db_locale;
+				}
+				if ( empty( $locale ) )
+					$locale = 'en_US';	// just in case
+			} else {
+				if ( is_admin() && function_exists( 'get_user_locale' ) )	// since wp 4.7
+					$locale = get_user_locale();
+				else $locale = get_locale();
+			}
 
-			return self::$locales[$idx] = apply_filters( 'sucom_locale', $wp_locale, $mixed );
+			return self::$locales[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		// examples:

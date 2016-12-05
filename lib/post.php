@@ -243,8 +243,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $post_id );
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+			}
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
 				if ( $this->p->debug->enabled )

@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.6-3\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.7-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/admin.php:77 lib/term.php:303 lib/user.php:278
+#: lib/admin.php:77 lib/term.php:309 lib/user.php:284
 msgctxt "package type"
 msgid "Pro"
 msgstr ""
 
-#: lib/admin.php:78 lib/term.php:304 lib/user.php:279
+#: lib/admin.php:78 lib/term.php:310 lib/user.php:285
 msgctxt "package type"
 msgid "Free"
 msgstr ""
@@ -91,7 +92,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:294 lib/term.php:269 lib/user.php:242
+#: lib/admin.php:405 lib/post.php:300 lib/term.php:275 lib/user.php:248
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1332,7 +1333,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:462
+#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:468
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2510,22 +2511,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:360
+#: lib/post.php:366
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:376
+#: lib/post.php:382
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:385
+#: lib/post.php:391
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:420 lib/profile/social-settings.php:27 lib/term.php:293
-#: lib/user.php:268
+#: lib/post.php:426 lib/profile/social-settings.php:27 lib/term.php:299
+#: lib/user.php:274
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3200,15 +3201,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:433
+#: lib/user.php:439
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:434
+#: lib/user.php:440
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:435
+#: lib/user.php:441
 msgid "Jabber / Google Talk"
 msgstr ""
 

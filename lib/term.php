@@ -234,8 +234,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+			}
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
 			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
