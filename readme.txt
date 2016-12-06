@@ -366,6 +366,7 @@ Official announcement: N/A
 	* None
 * *Improvements*
 	* Added support for the new get_user_locale() function in WordPress v4.7.
+	* Removed the Facebook "Default Content Language" option from the Essential and General settings pages (not required for the og:locale value).
 * *Bugfixes*
 	* None
 * *Developer Notes*
