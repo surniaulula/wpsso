@@ -73,6 +73,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
 			'buttons_use_social_css' => 'buttons_use_social_style',
 			'buttons_enqueue_social_css' => 'buttons_enqueue_social_style',
+			'fb_type' => 'fb_share_layout',
 		);
 
 		protected $p;
