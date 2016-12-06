@@ -7,7 +7,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: social, sharing, share, meta tags, schema, seo, json, json-ld, facebook, pinterest, twitter, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social media, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
+Tags: facebook, twitter, pinterest, social, sharing, share, meta tags, social media, schema, seo, json, json-ld, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
