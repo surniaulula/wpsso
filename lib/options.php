@@ -563,7 +563,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'one_line';
 					break;
 				// options that cannot be blank
-				case 'fb_lang': 
 				case 'og_author_field':
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 

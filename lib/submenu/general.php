@@ -213,10 +213,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'fb_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$table_rows['fb_lang'] = $this->form->get_th_html( _x( 'Default Content Language',
-						'option label', 'wpsso' ), null, 'fb_lang' ).
-					'<td>'.$this->form->get_select( 'fb_lang', SucomUtil::get_pub_lang( 'facebook' ) ).'</td>';
-
 					break;
 
 				case 'pub-google':

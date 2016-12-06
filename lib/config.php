@@ -441,7 +441,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_app_id' => '',
 					'fb_admins' => '',
 					'fb_author_name' => 'display_name',
-					'fb_lang' => 'en_US',
 					'instgram_publisher_url' => '',		// (localized)
 					'linkedin_publisher_url' => '',		// (localized)
 					'myspace_publisher_url' => '',		// (localized)

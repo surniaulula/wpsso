@@ -158,14 +158,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			if ( ! isset( $mt_og['og:locale'] ) ) {
-				// get the current or configured language for og:locale
-				$lang = empty( $this->p->options['fb_lang'] ) ? 
-					SucomUtil::get_locale( $mod ) : $this->p->options['fb_lang'];
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'getting og:locale for lang = '.$lang );
-				$mt_og['og:locale'] = apply_filters( $lca.'_pub_lang', $lang, 'facebook', $mod );
-			}
+			if ( ! isset( $mt_og['og:locale'] ) )
+				$mt_og['og:locale'] = SucomUtil::get_locale( $mod );
 
 			if ( ! isset( $mt_og['og:site_name'] ) )
 				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
