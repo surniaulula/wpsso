@@ -358,7 +358,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.7-dev1 (2016/12/06)**
+**Version 3.37.7-dev2 (2016/12/07)**
 
 Official announcement: N/A
 
@@ -497,9 +497,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.7-dev1 =
+= 3.37.7-dev2 =
 
-(2016/12/06) Added support for the new get_user_locale() function in WordPress v4.7.
+(2016/12/07) Added support for the new get_user_locale() function in WordPress v4.7.
 
 = 3.37.6-3 =
 
