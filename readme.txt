@@ -504,7 +504,7 @@ Official announcement: N/A
 
 = 3.37.7-dev2 =
 
-(2016/12/07) Added support for the new get_user_locale() function in WordPress v4.7.
+(2016/12/07) Added support for the new get_user_locale() function in WordPress v4.7. Removed the Facebook "Default Content Language" option.
 
 = 3.37.6-3 =
 
