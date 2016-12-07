@@ -7,7 +7,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: facebook, twitter, pinterest, social, sharing, share, meta tags, social media, schema, seo, json, json-ld, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, youtube, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social engagement, click-through, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
+Tags: facebook, twitter, pinterest, youtube, social, sharing, share, meta tags, social media, schema, seo, json, json-ld, open graph, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, JSON-LD, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, social engagement, facebook video, slideshare, video embed, social meta tags, seo meta tags, search engine optimization, seo meta, url, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
@@ -500,6 +500,59 @@ Official announcement: N/A
 		* 'ngfb_cache_expire_schema_types' ( $secs );
 		* 'ngfb_cache_expire_shorten_url' ( $secs );
 
+**Version 3.36.3-2 (2016/10/23)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Minimum requirements updated to WP v3.5 and PHP v5.4.
+	* Renamed the Social Settings 'header' index name to 'text'.
+	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
+	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
+	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache for Pinterest by storing 1 transient instead of 2.
+
+**Version 3.36.2-1 (2016/10/17)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* Changed all http://wpsso.com/ URLs to https.
+	* Added transient caching of results when fetching size information for image URLs.
+	* Added a new WPSSO SSM extension to the "Extension Plugins and Pro Licenses" settings page.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
+**Version 3.36.0-1 (2016/10/15)**
+
+Official announcement: N/A
+
+* *New Features*
+	* Added new Item Type options under the Google / Schema tab in the General settings page:
+		* Item Type for Archive Page (default is https://schema.org/CollectionPage)
+		* Item Type for User / Author Page (default is https://schema.org/ProfilePage)
+		* Item Type for Search Results Page (default is https://schema.org/SearchResultsPage)
+	* Added a "Validate AMP Markup" button under the Social Settings metabox Validate tab for the AMP Validator.
+	* Added a "Validate HTML Markup" button under the Social Settings metabox Validate tab for the W3C Markup Validation service.
+	* Added a configurable length warning to the Open Graph description textarea (defaults is 300 characters hard limit, and 200 characters soft limit).
+* *Improvements*
+	* Added the https://schema.org/WebPage sub-types in the plugin config schema_type array (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
+* *Bugfixes*
+	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
+	* Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin.
+* *Developer Notes*
+	* Removed the WPSSO_DEFAULT_AUTHOR_OPTIONS constant and all associated default author options.
+	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
+
 == Upgrade Notice ==
 
 = 3.37.7-1 =
@@ -509,4 +562,28 @@ Official announcement: N/A
 = 3.37.6-3 =
 
 (2016/12/05) Fixed the sharing URL value for BuddyPress users (Pro version). Optimized wp_cache and transient caching for multilingual sites. Added a new method to update transient arrays and keep the original transient expiration time. Added several new Schema meta tags.
+
+= 3.37.5-1 =
+
+(2016/11/28) Fixed BuddyPress user page detection when current object is a post (Pro version).
+
+= 3.37.4-1 =
+
+(2016/11/25) Added a check for 'manage_options' permission before checking for outdated WP / PHP versions and duplicate post meta tags. Added a new "WPSSO Tweet a Quote (WPSSO TAQ)" extension to the Extension Plugins and Pro Licenses settings page.
+
+= 3.37.3-1 =
+
+(2016/11/17) Updated the "Plugin Setup Guide and Notes". Updated hard minimum and recommended minimum WordPress and PHP versions. Added a "Reference URL" link to notice messages when generating the head meta tag array.
+ 
+= 3.37.2-1 =
+
+(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
+
+= 3.37.1-1 =
+
+(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
+
+= 3.37.0-1 =
+
+(2016/11/03) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
 
