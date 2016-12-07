@@ -400,7 +400,9 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:1469
-msgid "Failed to write the template in %s."
+msgid ""
+"Failed to write the %1$s template. You may need to restore the original "
+"template from %2$s."
 msgstr ""
 
 #: lib/admin.php:1483

@@ -1466,7 +1466,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ) );
 						$have_changes = true;
 					} else {
-						$this->p->notice->err( sprintf( __( 'Failed to write the template in %s.', 'wpsso' ), $file ) );
+						$this->p->notice->err( sprintf( __( 'Failed to write the %1$s template. You may need to restore the original template from %2$s.', 'wpsso' ), $base, $backup ) );
 					}
 
 					fclose( $tmpl_fh );
