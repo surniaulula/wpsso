@@ -14,7 +14,7 @@
 
 <h2>Description</h2>
 
-<p>= Why Choose WPSSO? -</p>
+<h4>Why Choose WPSSO?</h4>
 
 <p><strong>Comprehensive Optimization</strong></p>
 

@@ -17,7 +17,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 
 == Description ==
 
-= Why Choose WPSSO? -
+= Why Choose WPSSO? =
 
 **Comprehensive Optimization**
 
