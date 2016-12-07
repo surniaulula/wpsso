@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.7-"
-"dev2\n"
+"rc1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -377,25 +377,33 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1444
+#: lib/admin.php:1438
+msgid "No header templates found in %s."
+msgstr ""
+
+#: lib/admin.php:1447
 msgid "&lt;head&gt; element not found in %s."
 msgstr ""
 
-#: lib/admin.php:1450
+#: lib/admin.php:1453
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1458
-msgid "Failed to open file %s for writing."
+#: lib/admin.php:1461
+msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1464
+#: lib/admin.php:1466
 msgid ""
 "The %1$s template has been successfully updated and saved. A backup copy of "
 "the original template is available in %2$s."
 msgstr ""
 
-#: lib/admin.php:1476
+#: lib/admin.php:1469
+msgid "Failed to write the template in %s."
+msgstr ""
+
+#: lib/admin.php:1483
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""

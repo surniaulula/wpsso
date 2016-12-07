@@ -1434,35 +1434,42 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$headers = glob( get_stylesheet_directory().'/header*.php' );
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?'.'>>';	// breakup closing php for vim syntax highlighting
 
-			foreach ( $headers as $file ) {
-				$base = basename( $file );
-				$backup = $file.'~backup-'.date( 'Ymd-His' );
+			if ( empty( $headers ) ) {
+				$this->p->notice->err( sprintf( __( 'No header templates found in %s.', 'wpsso' ), get_stylesheet_directory() ) );
+			} else {
+				foreach ( $headers as $file ) {
+					$base = basename( $file );
+					$backup = $file.'~backup-'.date( 'Ymd-His' );
+	
+					// double check in case of reloads etc.
+					if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
+						strpos( $html, '<head>' ) === false ) {
+						$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.', 'wpsso' ), $file ) );
+						continue;
+					}
+	
+					// make a backup of the original
+					if ( ! copy( $file, $backup ) ) {
+						$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $base, $backup ) );
+						continue;
+					}
+	
+					$tmpl_contents = file_get_contents( $file );
+					$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
+	
+					if ( ! $tmpl_fh = @fopen( $file, 'wb' ) ) {
+						$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.', 'wpsso' ), $file ) );
+						continue;
+					}
+	
+					if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
+						$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ) );
+						$have_changes = true;
+					} else {
+						$this->p->notice->err( sprintf( __( 'Failed to write the template in %s.', 'wpsso' ), $file ) );
+					}
 
-				// double check in case of reloads etc.
-				if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
-					strpos( $html, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.', 'wpsso' ), $file ) );
-					continue;
-				}
-
-				// make a backup of the original
-				if ( ! copy( $file, $backup ) ) {
-					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $base, $backup ) );
-					continue;
-				}
-
-				$tmpl_contents = file_get_contents( $file );
-				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
-
-				if ( ! $tmpl_fh = @fopen( $file, 'wb' ) ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open file %s for writing.', 'wpsso' ), $file ) );
-					continue;
-				}
-
-				if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
 					fclose( $tmpl_fh );
-					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ) );
-					$have_changes = true;
 				}
 			}
 
