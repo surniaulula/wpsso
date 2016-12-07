@@ -362,7 +362,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.7-rc1 (2016/12/08)**
+**Version 3.37.7-1 (2016/12/08)**
 
 Official announcement: N/A
 
@@ -502,7 +502,7 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.7-rc1 =
+= 3.37.7-1 =
 
 (2016/12/08) Added support for the new get_user_locale() function in WordPress v4.7. Removed the Facebook "Default Content Language" option. Fixed the "Click here update header templates automatically" URL in the notice message.
 
