@@ -17,6 +17,10 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 
 == Description ==
 
+= Why Choose WPSSO? -
+
+**Comprehensive Optimization**
+
 <p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" />
 <strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, but if you want to, you can customize just about anything and everything. ;-)</p>
 

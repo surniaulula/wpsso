@@ -14,6 +14,10 @@
 
 <h2>Description</h2>
 
+<p>= Why Choose WPSSO? -</p>
+
+<p><strong>Comprehensive Optimization</strong></p>
+
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p>
 <strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, but if you want to, you can customize just about anything and everything. ;-)</p>
 
