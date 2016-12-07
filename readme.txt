@@ -11,7 +11,7 @@ Tags: facebook, twitter, pinterest, social, sharing, share, meta tags, social me
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
-Stable Tag: 3.37.6-3
+Stable Tag: 3.37.7-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
