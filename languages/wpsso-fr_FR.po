@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.7-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-12-07 08:33+1000\n"
-"PO-Revision-Date: 2016-12-07 08:35+1000\n"
+"POT-Creation-Date: 2016-12-08 08:00+1000\n"
+"PO-Revision-Date: 2016-12-08 08:00+1000\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -337,23 +337,31 @@ msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1444
+#: lib/admin.php:1438
+msgid "No header templates found in %s."
+msgstr "Aucun modèle d'en-tête dans %s."
+
+#: lib/admin.php:1447
 msgid "&lt;head&gt; element not found in %s."
 msgstr "Une balise &lt;head&gt; non trouvée dans %s."
 
-#: lib/admin.php:1450
+#: lib/admin.php:1453
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1458
-msgid "Failed to open file %s for writing."
-msgstr "Impossible d'ouvrir le fichier %s pour l'écriture."
+#: lib/admin.php:1461
+msgid "Failed to open %s for writing."
+msgstr "Impossible d'ouvrir %s pour l'écriture."
 
-#: lib/admin.php:1464
+#: lib/admin.php:1466
 msgid "The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde de votre fichier original est disponible dans %2$s."
 
-#: lib/admin.php:1476
+#: lib/admin.php:1469
+msgid "Failed to write the %1$s template. You may need to restore the original template from %2$s."
+msgstr "Erreur lors de l'écriture du modèle %1$s. Vous devrez peut-être restaurer le modèle original a partir de %2$s."
+
+#: lib/admin.php:1483
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
