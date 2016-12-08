@@ -579,10 +579,6 @@ Official announcement: N/A
 
 (2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 
-= 3.37.1-1 =
-
-(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
-
 = 3.37.0-1 =
 
 (2016/11/03) Replaced the Object Cache Expiry option with new options for finer control of caching features. Refactored the Schema JSON method for a slight performance improvement. Added https://schema.org/Thing to the Schema Types array.
