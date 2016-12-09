@@ -373,7 +373,7 @@ Official announcement: N/A
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*'.
+	* Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*' and optimized checks.
 
 **Version 3.37.7-1 (2016/12/08)**
 
@@ -570,7 +570,7 @@ Official announcement: N/A
 
 = 3.37.8-dev1 =
 
-(2016/12/10) Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*'.
+(2016/12/10) Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*' and optimized checks.
 
 = 3.37.7-1 =
 
