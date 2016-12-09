@@ -362,6 +362,19 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.37.8-dev1 (2016/12/10)**
+
+Official announcement: N/A
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*'.
+
 **Version 3.37.7-1 (2016/12/08)**
 
 Official announcement: N/A
@@ -554,6 +567,10 @@ Official announcement: N/A
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.37.8-dev1 =
+
+(2016/12/10) Renamed the 'WPSSO_OPTIONS_#_*' constants to 'WPSSO_ID_#_OPT_*'.
 
 = 3.37.7-1 =
 
