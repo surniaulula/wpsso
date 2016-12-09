@@ -1528,11 +1528,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_user_select( $roles = array( 'administrator' ), $blog_id = false ) {
 
-			if ( ! $blog_id )
-				$blog_id = get_current_blog_id();
-
 			if ( ! is_array( $roles ) )
 				$roles = array( $roles );
+
+			if ( ! $blog_id )
+				$blog_id = get_current_blog_id();	// since wp 3.1
 
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(

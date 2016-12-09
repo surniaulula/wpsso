@@ -13,7 +13,7 @@
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7
- * Version: 3.37.7-1
+ * Version: 3.37.8-dev1
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -291,8 +291,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				// if multisite options are found, check for overwrite of site specific options
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
-					$current_blog_id = function_exists( 'get_current_blog_id' ) ? 
-						get_current_blog_id() : false;
+					$blog_id = get_current_blog_id();	// since wp 3.1
+					$defined_constants = get_defined_constants( true );	// $categorize = true
 					foreach ( $this->site_options as $key => $val ) {
 						if ( strpos( $key, ':use' ) !== false )
 							continue;
@@ -308,12 +308,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 									break;
 							}
 						}
-						// check for constant over-rides
-						if ( $current_blog_id !== false ) {
-							$constant_name = 'WPSSO_OPTIONS_'.$current_blog_id.'_'.strtoupper( $key );
-							if ( defined( $constant_name ) )
-								$this->options[$key] = constant( $constant_name );
-						}
+						$constant_name = 'WPSSO_ID_'.$blog_id.'_OPT_'.strtoupper( $key );
+						if ( isset( $defined_constants['user'][$constant_name] ) )
+							$this->options[$key] = $defined_constants['user'][$constant_name];
 					}
 				}
 			}
