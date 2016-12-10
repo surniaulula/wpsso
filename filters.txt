@@ -55,7 +55,9 @@
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
 'wpsso_json_add_https_schema_org_collectionpage_parts' ( $bool );
+'wpsso_json_add_https_schema_org_searchresultspage_parts' ( $bool );
 'wpsso_json_add_https_schema_org_profilepage_parts' ( $bool );
+'wpsso_json_add_https_schema_org_blog_parts' ( $bool );
 'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod );
 'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
