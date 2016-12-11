@@ -362,7 +362,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.8-dev1 (2016/12/10)**
+**Version 3.37.8-dev2 (2016/12/11)**
 
 Official announcement: N/A
 
@@ -568,9 +568,9 @@ Official announcement: N/A
 
 == Upgrade Notice ==
 
-= 3.37.8-dev1 =
+= 3.37.8-dev2 =
 
-(2016/12/10) Renamed the multisite single-option constants and optimized their checks.
+(2016/12/11) Renamed the multisite single-option constants and optimized their checks.
 
 = 3.37.7-1 =
 
