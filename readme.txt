@@ -374,6 +374,7 @@ Official announcement: N/A
 	* None
 * *Developer Notes*
 	* Renamed the `WPSSO_OPTIONS_#_*` multisite single-option constants to `WPSSO_ID_#_OPT_*` and optimized their checks.
+	* Added a new SucomUtil::explode_csv() static method to explode and trim CSV strings.
 
 **Version 3.37.7-1 (2016/12/08)**
 
@@ -570,7 +571,7 @@ Official announcement: N/A
 
 = 3.37.8-dev2 =
 
-(2016/12/11) Renamed the multisite single-option constants and optimized their checks.
+(2016/12/11) Renamed the multisite single-option constants and optimized their checks. Added a new SucomUtil::explode_csv() static method.
 
 = 3.37.7-1 =
 
