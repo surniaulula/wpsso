@@ -378,6 +378,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->sanitize_error_msgs = array(
 					'url' => __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.',
 						'wpsso' ),
+					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting the option to its default value.',
+						'wpsso' ),
 					'pos_num' => __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.',
 						'wpsso' ),
 					'blank_num' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
@@ -409,8 +411,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 				default:
 					$val = wp_filter_nohtml_kses( $val );	// strips all the HTML in the content
-					$val = SucomUtil::encode_emoji( htmlentities( $val, 
-						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+					$val = stripslashes( $val );	// strip slashes added by wp_filter_nohtml_kses()
 					break;
 			}
 
@@ -424,8 +425,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// must be empty or a url
 				case 'url':
 					if ( $val !== '' ) {
-						$val = $this->cleanup_html_tags( $val );
-						if ( strpos( $val, '//' ) === false ) {
+						if ( filter_var( $val, FILTER_VALIDATE_URL ) === false ) {
 							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 							$val = $def_val;
 						}
@@ -434,9 +434,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// strip leading urls off facebook usernames
 				case 'url_base':
-					if ( $val !== '' ) {
-						$val = $this->cleanup_html_tags( $val );
+					if ( $val !== '' )
 						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
+					break;
+
+				case 'csv_blank':
+					if ( $val !== '' ) {
+						$parts = array();
+						foreach ( explode( ',', $val ) as $part ) {
+							$parts[] = trim( $part, '\'" ' );
+						}
+						$val = implode( ', ', $parts );
+					}
+					break;
+
+				case 'csv_urls':
+					if ( $val !== '' ) {
+						$parts = array();
+						foreach ( explode( ',', $val ) as $part ) {
+							$part = trim( $part, '\'" ' );	// just in case
+							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
+								$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
+								$val = $def_val;
+								break;
+							} else $parts[] = $part;
+						}
+						$val = implode( ', ', $parts );
 					}
 					break;
 

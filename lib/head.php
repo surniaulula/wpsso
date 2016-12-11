@@ -605,6 +605,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'og:video:secure_url':
 						case 'og:video:embed_url':
 						case 'place:business:menu_url':
+						case 'place:business:order_url':
 						case 'twitter:image':
 						case 'twitter:player':
 						case 'canonical':
