@@ -439,20 +439,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 
 				case 'csv_blank':
-					if ( $val !== '' ) {
-						$parts = array();
-						foreach ( explode( ',', $val ) as $part ) {
-							$parts[] = trim( $part, '\'" ' );
-						}
-						$val = implode( ', ', $parts );
-					}
+					if ( $val !== '' )
+						$val = implode( ', ', SucomUtil::explode_csv( $val ) );
 					break;
 
 				case 'csv_urls':
 					if ( $val !== '' ) {
 						$parts = array();
-						foreach ( explode( ',', $val ) as $part ) {
-							$part = trim( $part, '\'" ' );	// just in case
+						foreach ( SucomUtil::explode_csv( $val ) as $part ) {
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
 								$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 								$val = $def_val;

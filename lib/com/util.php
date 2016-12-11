@@ -425,6 +425,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) );
 		}
 
+		public static function explode_csv( $str ) {
+			return array_map( array( __CLASS__, 'trim_csv_val' ), explode( ',', $str ) );
+		}
+
+		private static function trim_csv_val( $val ) {
+			return trim( $val, '\'" ' );
+		}
+
 		public static function titleize( $str ) {
 			return ucwords( preg_replace( '/[:\/\-\._]+/', ' ', self::decamelize( $str ) ) );
 		}
