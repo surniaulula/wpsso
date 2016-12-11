@@ -19,9 +19,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_ext = null;
 		protected $pagehook = null;
 
-		public static $pkg_aop = array();
-		public static $pkg_type = array();
-		public static $pkg_short = array();
+		public static $pkg_info = array();
 		public static $readme_info = array();	// array for the readme of each extension
 
 		public $form;
@@ -71,12 +69,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function set_objects() {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				self::$pkg_aop[$ext] = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) &&
-					$this->p->check->aop( $ext, true, -1 ) === -1 ? true : false;
-				self::$pkg_type[$ext] = self::$pkg_aop[$ext] ?
-						_x( 'Pro', 'package type', 'wpsso' ) :
-						_x( 'Free', 'package type', 'wpsso' );
-				self::$pkg_short[$ext] = $info['short'].' '.self::$pkg_type[$ext];
+				self::$pkg_info[$ext]['aop'] = $this->p->check->aop( $this->p->cf['lca'], 
+					true, $this->p->is_avail['aop'] ) && $this->p->check->aop( $ext, 
+						true, -1 ) === -1 ? true : false;
+				self::$pkg_info[$ext]['type'] = self::$pkg_info[$ext]['aop'] ?
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' );
+				self::$pkg_info[$ext]['short'] = $info['short'].' '.self::$pkg_info[$ext]['type'];
+				self::$pkg_info[$ext]['name'] = $info['name'].' '.self::$pkg_info[$ext]['type'];
 			}
 
 			$menu_libs = array( 
@@ -210,8 +210,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				self::$pkg_short[$lca].' &mdash; '.$this->menu_name, 
-				$this->p->cf['menu_label'].' '.self::$pkg_type[$lca], 
+				self::$pkg_info[$lca]['short'].' &mdash; '.$this->menu_name, 
+				$this->p->cf['menu_label'].' '.self::$pkg_info[$lca]['type'], 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
 					'manage_options' ),	// fallback to manage_options capability
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( '<span style="color:#'.$this->p->cf['menu_color'].';">', '</span>' ), $menu_title );
 
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-			$page_title = self::$pkg_short[$menu_ext].' &mdash; '.$menu_title;
+			$page_title = self::$pkg_info[$menu_ext]['short'].' &mdash; '.$menu_title;
 			$function = array( &$this, 'show_setting_page' );
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
@@ -522,7 +522,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form_property( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.self::$pkg_short[$this->menu_ext].' &ndash; '.$this->menu_name.'</h1>'."\n";
+			echo '<h1>'.self::$pkg_info[$this->menu_ext]['short'].' &ndash; '.
+				$this->menu_name.'</h1>'."\n";
 
 			if ( $sidebar === false ) {
 				echo '<div id="poststuff" class="metabox-holder">'."\n";
@@ -732,7 +733,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					else $installed_style = 'style="background-color:#0f0;"';	// green
 				}
 
-				echo '<tr><td colspan="2"><h4>'.self::$pkg_short[$ext].'</h4></td></tr>';
+				echo '<tr><td colspan="2"><h4>'.self::$pkg_info[$ext]['short'].'</h4></td></tr>';
 
 				echo '<tr><th class="side">'._x( 'Installed', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
@@ -848,10 +849,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'' : add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
 
 						$features[$label] = array( 
-							'td_class' => self::$pkg_aop[$ext] ? '' : 'blank',
+							'td_class' => self::$pkg_info[$ext]['aop'] ? '' : 'blank',
 							'purchase' => $purchase_url,
 							'status' => class_exists( $classname ) ?
-								( self::$pkg_aop[$ext] ? 'on' : $status_off ) : $status_off,
+								( self::$pkg_info[$ext]['aop'] ?
+									'on' : $status_off ) : $status_off,
 						);
 					}
 				}
@@ -971,22 +973,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$help_links .= '<li>'.sprintf( __( 'Review the <a href="%s" target="_blank">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faq'] );
 					if ( ! empty( $info['url']['notes'] ) )
-						$help_links .= ' '.sprintf( __( 'and <a href="%s" target="_blank">Other Notes</a>',
+						$help_links .= ' '.sprintf( __( 'and <a href="%s" target="_blank">Additional Documentation</a>',
 							'wpsso' ), $info['url']['notes'] );
-					$help_links .= '</li>';
+					$help_links .= '</li>'."\n";
 				}
 
-				if ( ! empty( $info['url']['support'] ) && self::$pkg_aop[$ext] )
-					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Support Ticket</a>',
-						'wpsso' ), $info['url']['support'] ).'</li>';
+				if ( ! empty( $info['url']['support'] ) && self::$pkg_info[$ext]['aop'] )
+					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Pro Support Ticket</a>',
+						'wpsso' ), $info['url']['support'] ).'</li>'."\n";
 				elseif ( ! empty( $info['url']['forum'] ) )
-					$help_links .= '<li>'.sprintf( __( 'Post in <a href="%s" target="_blank">Support Forum</a>',
-						'wpsso' ), $info['url']['forum'] ).'</li>';
+					$help_links .= '<li>'.sprintf( __( 'Post in the <a href="%s" target="_blank">Community Free Support Forum</a>',
+						'wpsso' ), $info['url']['forum'] ).'</li>'."\n";
 
 				if ( ! empty( $help_links ) ) {
-					echo '<p><strong>'.sprintf( _x( '%s Support', 'metabox title (side)',
-						'wpsso' ), self::$pkg_short[$ext] ).'</strong></p>';
-					echo '<ul>'.$help_links.'</ul>';
+					echo '<p><strong>'.$info['short'].'</strong></p>'."\n";
+					echo '<ul>'.$help_links.'</ul>'."\n";
 				}
 			}
 
@@ -1130,7 +1131,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_aop[$lca] ) {
+						if ( $lca === $ext || self::$pkg_info[$lca]['aop'] ) {
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
@@ -1141,7 +1142,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td colspan="2">'.( self::$pkg_aop[$ext] ? '' :
+							'</td><td colspan="2">'.( self::$pkg_info[$ext]['aop'] ? '' :
 								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
@@ -1149,7 +1150,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_aop[$lca] ) {
+						if ( $lca === $ext || self::$pkg_info[$lca]['aop'] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
@@ -1163,7 +1164,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td>'.( self::$pkg_aop[$ext] ? '' :
+							'</td><td>'.( self::$pkg_info[$ext]['aop'] ? '' :
 								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
