@@ -126,7 +126,7 @@
 <li>Integrates with 3rd party plugins and services for additional image, video, ecommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 <ul>
-<li><strong>Supported 3rd Party Plugins</strong>
+<li><strong>Integrated 3rd Party Plugins</strong>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -147,7 +147,7 @@
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
-<li><strong>Supported Service APIs</strong>
+<li><strong>Integrated Service APIs</strong>
 
 <ul>
 <li>Bitly</li>

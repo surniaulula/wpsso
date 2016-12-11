@@ -110,7 +110,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 * Configurable user profile contact field names and labels.
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, ecommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
-	* **Supported 3rd Party Plugins**
+	* **Integrated 3rd Party Plugins**
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress (including Group Forum Topics)
@@ -128,7 +128,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 		* WordPress REST API (version 2)
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
-	* **Supported Service APIs**
+	* **Integrated Service APIs**
 		* Bitly
 		* Facebook Embedded Videos
 		* Google URL Shortener
@@ -362,7 +362,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.8-rc1 (2016/12/11)**
+**Version 3.37.8-rc1 (2016/12/12)**
 
 Official announcement: N/A
 
@@ -571,7 +571,7 @@ Official announcement: N/A
 
 = 3.37.8-rc1 =
 
-(2016/12/11) Renamed the multisite single-option constants and optimized their checks. Added a new SucomUtil::explode_csv() static method.
+(2016/12/12) Renamed the multisite single-option constants and optimized their checks. Added a new SucomUtil::explode_csv() static method.
 
 = 3.37.7-1 =
 
