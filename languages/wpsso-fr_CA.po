@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.8-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-12-11 13:47+1000\n"
-"PO-Revision-Date: 2016-12-11 13:48+1000\n"
+"PO-Revision-Date: 2016-12-14 07:14+1000\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1130,7 +1130,7 @@ msgstr "Forcer a jouer lorsque possible"
 #: lib/gpl/admin/general.php:75 lib/pro/admin/general.php:79
 msgctxt "option label"
 msgid "Default / Fallback Video URL"
-msgstr "URL d'un vidéo par défaut / repli"
+msgstr "URL d'un vidéo par défaut"
 
 #: lib/gpl/admin/general.php:80 lib/pro/admin/general.php:84
 msgctxt "option label"
@@ -2422,12 +2422,12 @@ msgstr "ou Nom d'utilisateurs admin FB"
 #: lib/submenu/essential.php:93 lib/submenu/general.php:165
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
-msgstr "ID de l'image par défaut / repli"
+msgstr "ID de l'image par défaut"
 
 #: lib/submenu/essential.php:97 lib/submenu/general.php:169
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
-msgstr "ou URL d'une image par défaut / repli"
+msgstr "ou URL d'une image par défaut"
 
 #: lib/submenu/essential.php:102
 msgctxt "metabox title"
