@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.8-1',	// plugin version
+					'version' => '3.37.9-dev1',	// plugin version
 					'opt_version' => '475',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1493,7 +1493,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * WPSSO curl settings
 			 */
 			if ( defined( 'WPSSO_PLUGINDIR' ) )
-				$var_const['WPSSO_PHP_CURL_CAINFO'] = WPSSO_PLUGINDIR.'share/curl/ca-bundle.crt';
+				$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0';
 
 			foreach ( $var_const as $name => $value )

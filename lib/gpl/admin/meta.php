@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			}
 
 			$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-opengraph', 
-				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// md_pre = none
+				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// $md_pre = none
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ).
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			if ( ! SucomUtil::get_const( 'WPSSO_SCHEMA_DISABLE' ) ) {
 
 				$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-schema',
-					array( 'pid', 'img_url' ), $mod, 'og' );
+					array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
 	
 				$form_rows['subsection_schema'] = array(
 					'tr_class' => 'hide_in_basic',

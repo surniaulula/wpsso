@@ -1138,10 +1138,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => esc_url( $media_url ),
 			);
 
-			self::add_data_itemprop_from_assoc( $ret, $opts, array(
-				'width' => $prefix.':width',
-				'height' => $prefix.':height',
-			) );
+			foreach ( array( 'width', 'height' ) as $prop )
+				if ( isset( $opts[$prefix.':'.$prop] ) &&
+					$opts[$prefix.':'.$prop] > 0 )	// just in case
+						$ret[$prop] = $opts[$prefix.':'.$prop];
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
