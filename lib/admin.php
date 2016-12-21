@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
-				add_action( 'in_admin_header', array( &$this, 'pro_req_notices' ), 20 );
+				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 
 				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_exec_count' ) );
 				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_exec_count' ) );
@@ -1326,7 +1326,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function pro_req_notices() {
+		public function required_notices() {
 			$lca = $this->p->cf['lca'];
 			$version = $this->p->cf['plugin'][$lca]['version'];
 			$have_ext_tid = false;

@@ -296,12 +296,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_types_cache_exp' );
 
-			$table_rows['plugin_verify_certs'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Verify Peer SSL Certificate',
-				'option label', 'wpsso' ), null, 'plugin_verify_certs' ).
-			$this->get_nocb_cell( $form, 'plugin_verify_certs' ).
-			$this->p->admin->get_site_use( $form, $network, 'plugin_verify_certs' );
-
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Report Cache Purge Count',
 				'option label', 'wpsso' ), null, 'plugin_cache_info' ).

@@ -16,7 +16,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public $base_dir = '';
 		public $base_url = '/cache/';
-		public $verify_certs = false;
 		public $default_file_cache_exp = 86400;	// 1 day
 		public $default_object_cache_exp = 259200;	// 3 days
 		public $curl_connect_timeout = 5;
@@ -35,7 +34,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 
 			$uca = strtoupper( $this->p->cf['lca'] );
-			$this->verify_certs = empty( $this->p->options['plugin_verify_certs'] ) ? 0 : 1;
 			$this->base_dir = trailingslashit( constant( $uca.'_CACHEDIR' ) );
 			$this->base_url = trailingslashit( constant( $uca.'_CACHEURL' ) );
 
@@ -234,17 +232,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_PROXYUSERPWD, 
 					constant( $uca.'_PHP_CURL_PROXYUSERPWD' ) );
 
-			if ( empty( $this->verify_certs) ) {
-				curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
-				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
-			} else {
-				curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
-				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
-				if ( defined( $uca.'_PHP_CURL_CAINFO' ) ) 
-					curl_setopt( $ch, CURLOPT_CAINFO, 
-						constant( $uca.'_PHP_CURL_CAINFO' ) );
-			}
+			if ( defined( $uca.'_PHP_CURL_CAINFO' ) ) 
+				curl_setopt( $ch, CURLOPT_CAINFO, 
+					constant( $uca.'_PHP_CURL_CAINFO' ) );
 
 			if ( $curl_userpwd !== false )
 				curl_setopt( $ch, CURLOPT_USERPWD, $curl_userpwd );

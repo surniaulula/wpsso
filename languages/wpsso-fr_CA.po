@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.8-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-12-21 12:35+1100\n"
-"PO-Revision-Date: 2016-12-21 12:35+1100\n"
+"PO-Revision-Date: 2016-12-22 07:03+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1159,7 +1159,7 @@ msgstr "Description pour Google Search / SEO"
 #: lib/pro/admin/meta.php:78 lib/pro/admin/post.php:93
 msgctxt "option label"
 msgid "Twitter Card Description"
-msgstr "Description carte Twitter"
+msgstr "Description pour la carte Twitter"
 
 #: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:168
 #: lib/meta.php:184 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102

@@ -185,6 +185,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				unset( $opts['plugin_object_cache_exp:use'] );
 			}
 
+			if ( $opts_version && $opts_version <= 476 ) {
+				unset( $opts['ngfb_verify_certs'] );
+				unset( $opts['plugin_verify_certs'] );
+			}
+
 			return $this->sanitize( $opts, $def_opts );	// cleanup options and sanitize
 		}
 	}

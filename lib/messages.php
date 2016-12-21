@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Description' settings
 						 */
 						case 'tooltip-og_art_section':
-							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the $1%s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
+							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
 							break;
 						case 'tooltip-og_site_name':
 							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin <code>og:site_name</code> meta tag. You may override <a href="%s">the default WordPress Site Title value</a>.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
@@ -421,13 +421,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The filtered Schema types array is saved to the WordPress transient cache to optimize performance.',
 								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
 									'wpsso' ), $cache_exp, $cache_diff );
-							break;
-						case 'tooltip-plugin_verify_certs':
-							$text = __( 'Verify peer SSL certificates when getting remote content for caching.', 'wpsso' ).' '.
-								sprintf( __( 'The PHP cURL library will use the Certificate Authority (CA) bundle in <u>%s</u> by default.',
-									'wpsso' ), WPSSO_PHP_CURL_CAINFO ).' '.
-								sprintf( __( 'You can define the %s constant to provide an alternate certificate file path.',
-									'wpsso' ), 'WPSSO_PHP_CURL_CAINFO' );
 							break;
 						case 'tooltip-plugin_cache_info':
 							$text = __( 'Report the number of objects removed from the WordPress cache when Posts and Pages are updated.',
