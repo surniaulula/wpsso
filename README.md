@@ -101,7 +101,7 @@
 </ul>
 
 <blockquote>
-<p>Download the Free version from <a href="http://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
+<p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 </blockquote>
 
 <div style="clear:both;"></div>
