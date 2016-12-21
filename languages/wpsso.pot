@@ -1404,6 +1404,34 @@ msgid ""
 "Twitter Card meta tags (all Twitter Card formats)."
 msgstr ""
 
+#: lib/messages.php:76 lib/messages.php:137
+msgid ""
+"A custom description for the Facebook / Open Graph %1$s meta tag and the "
+"default value for all other description meta tags."
+msgstr ""
+
+#: lib/messages.php:76
+msgid ""
+"The default description value is based on the category / tag description or "
+"biographical info for users."
+msgstr ""
+
+#: lib/messages.php:76 lib/messages.php:137
+msgid ""
+"Update and save the custom Facebook / Open Graph description to change the "
+"default value of all other description fields."
+msgstr ""
+
+#: lib/messages.php:79
+msgid "A custom description for the Google Search / SEO description meta tag."
+msgstr ""
+
+#: lib/messages.php:82
+msgid ""
+"A custom description for the Twitter Card description meta tag (all Twitter "
+"Card formats)."
+msgstr ""
+
 #: lib/messages.php:85
 msgid ""
 "A custom image ID to include first, before any featured, attached, or "
@@ -1505,20 +1533,8 @@ msgstr ""
 
 #: lib/messages.php:137
 msgid ""
-"A custom description for the Facebook / Open Graph %1$s meta tag, and "
-"fallback description for all other description meta tags."
-msgstr ""
-
-#: lib/messages.php:137
-msgid ""
 "The default description value is based on the excerpt (if one is available) "
 "or content."
-msgstr ""
-
-#: lib/messages.php:137
-msgid ""
-"Update and save a custom Facebook / Open Graph description to change the "
-"default value of all other description fields."
 msgstr ""
 
 #: lib/messages.php:206
@@ -1534,8 +1550,21 @@ msgstr ""
 #: lib/messages.php:209
 msgid ""
 "The WordPress Site Name is used for the Facebook / Open Graph and Pinterest "
-"Rich Pin <code>og:site_name</code> meta tag. You may override <a href=\"%s"
-"\">the default WordPress Site Title value</a>."
+"Rich Pin %1$s meta tag. You may override <a href=\"%2$s\">the default "
+"WordPress Site Title value</a>."
+msgstr ""
+
+#: lib/messages.php:212
+msgid ""
+"The WordPress tagline is used as a description for the <em>index</em> (non-"
+"static) home page, and as a fallback for the Facebook / Open Graph and "
+"Pinterest Rich Pin %1$s meta tag."
+msgstr ""
+
+#: lib/messages.php:212
+msgid ""
+"You may override <a href=\"%1$s\">the default WordPress Tagline value</a> "
+"here, to provide a longer and more complete description of your website."
 msgstr ""
 
 #: lib/messages.php:236
@@ -1814,8 +1843,8 @@ msgstr ""
 #: lib/messages.php:493
 msgid ""
 "Facebook does not support all WordPress locale values. If the Facebook "
-"debugger returns an error parsing the <code>og:locale</code> meta tag, you "
-"may have to choose an alternate Facebook language for that WordPress locale."
+"debugger returns an error parsing the %1$s meta tag, you may have to choose "
+"an alternate Facebook language for that WordPress locale."
 msgstr ""
 
 #: lib/messages.php:552

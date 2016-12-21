@@ -73,13 +73,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_desc':
-							$text = 'A custom description for the Facebook / Open Graph, Pinterest Rich Pin, and fallback description for other meta tags. The default description value is based on the category / tag description, or user biographical info. Update and save this description to change the default value of all other description fields.';
+							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-seo_desc':
-							$text = 'A custom description for the Google Search / SEO description meta tag.';
+							$text = __( 'A custom description for the Google Search / SEO description meta tag.', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-tc_desc':
-							$text = 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).';
+							$text = __( 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 						 	break;
 						case 'tooltip-meta-og_img_id':
 							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'A custom topic, different from the default Article Topic selected in the General Settings.', 'wpsso' ).' '.sprintf( __( 'The Facebook / Open Graph %1$s meta tag must be an \'article\' to enable this option.', 'wpsso' ), '<code>og:type</code>' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 						 	break;
 						case 'tooltip-post-og_desc':
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag, and fallback description for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' '.__( 'Update and save a custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
+							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 						 	break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $info );
@@ -206,10 +206,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select \'[None]\' if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
 							break;
 						case 'tooltip-og_site_name':
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin <code>og:site_name</code> meta tag. You may override <a href="%s">the default WordPress Site Title value</a>.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_site_description':
-							$text = 'The WordPress Tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin <code>og:description</code> meta tag. You may override <a href="'.get_admin_url( null, 'options-general.php' ).'">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.';
+							$text = sprintf( __( 'The WordPress tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_title_sep':
 							$text = 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph and Pinterest Rich Pin title string (the default is the hyphen \''.$this->p->opt->get_defaults( 'og_title_sep' ).'\' character).';
@@ -490,7 +490,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( '%1$s uses the Facebook contact field value in the author\'s WordPress profile for %2$s Open Graph meta tags. This allows Facebook to credit an author on shares, and link their Facebook page URL.', 'wpsso' ), $info['short'], '<code>article:author</code>' ).' '.sprintf( __( 'If an author does not have a Facebook page URL, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is \'Display Name\').', 'wpsso' ), $info['short'], _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-fb_locale':
-							$text = __( 'Facebook does not support all WordPress locale values. If the Facebook debugger returns an error parsing the <code>og:locale</code> meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' );
+							$text = sprintf( __( 'Facebook does not support all WordPress locale values. If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
 							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_fb', $text, $idx, $info );
