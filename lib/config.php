@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.37.9-dev2',	// plugin version
-					'opt_version' => '475',		// increment when changing default options
+					'version' => '3.37.9-dev3',	// plugin version
+					'opt_version' => '476',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -441,6 +441,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_app_id' => '',
 					'fb_admins' => '',
 					'fb_author_name' => 'display_name',
+					'fb_locale' => 'en_US',
 					'instgram_publisher_url' => '',		// (localized)
 					'linkedin_publisher_url' => '',		// (localized)
 					'myspace_publisher_url' => '',		// (localized)

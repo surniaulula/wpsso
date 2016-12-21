@@ -159,10 +159,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( ! isset( $mt_og['og:locale'] ) )
-				$mt_og['og:locale'] = SucomUtil::get_locale( $mod );
+				$mt_og['og:locale'] = SucomUtil::get_fb_locale( $this->p->options, $mod );	// localized
 
 			if ( ! isset( $mt_og['og:site_name'] ) )
-				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );
+				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
 
 			if ( ! isset( $mt_og['og:title'] ) ) {
 				if ( $this->p->debug->enabled )

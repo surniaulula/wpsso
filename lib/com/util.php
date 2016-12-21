@@ -800,7 +800,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// return the custom site name, and if empty, the default site name
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_site_name( array &$opts, $mixed = 'current' ) {
+		public static function get_site_name( array $opts, $mixed = 'current' ) {
 			$site_name = self::get_locale_opt( 'og_site_name', $opts, $mixed );
 			if ( empty( $site_name ) )
 				return get_bloginfo( 'name', 'display' );
@@ -809,16 +809,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// return the custom site description, and if empty, the default site description
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_site_description( array &$opts, $mixed = 'current' ) {
+		public static function get_site_description( array $opts, $mixed = 'current' ) {
 			$site_desc = self::get_locale_opt( 'og_site_description', $opts, $mixed );
 			if ( empty( $site_desc ) )
 				return get_bloginfo( 'description', 'display' );
 			else return $site_desc;
 		}
 
+		// returns an optional and customized locale value for the og:locale meta tag
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public static function get_fb_locale( array $opts, $mixed = 'current' ) {
+
+			// check for customized locale
+			if ( ! empty( $opts ) ) {
+				$key_locale = self::get_key_locale( 'fb_locale', $opts, $mixed );
+				if ( ! empty( $opts[$key_locale] ) )
+					return $opts[$key_locale];
+			}
+
+			$locale = self::get_locale( $mixed );
+			$def_locale = self::get_locale( 'default' );
+			$fb_pub_lang = self::get_pub_lang( 'facebook' );
+
+			if ( ! empty( $fb_pub_lang[$locale] ) )
+				return $locale;
+			elseif ( ! empty( $fb_pub_lang[$def_locale] ) )
+				return $def_locale;
+			else return 'en_US';
+		}
+
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_locale_opt( $key, array &$opts, $mixed = 'current' ) {
+		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 			$val_locale = isset( $opts[$key_locale] ) ?
 				$opts[$key_locale] : null;
@@ -838,7 +860,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// localize an options array key
 		// $opts = false | array
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_key_locale( $key, &$opts = false, $mixed = 'current' ) {
+		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
 			$default = self::get_locale( 'default' );
 			$locale = self::get_locale( $mixed );
 			$key_locale = $key.'#'.$locale;
@@ -929,6 +951,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return self::$locales[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
+		}
+
+		public static function get_available_locales() {
+			$locales = get_available_languages();	// since wp 3.0
+			return apply_filters( 'sucom_available_locales', $locales );
 		}
 
 		// examples:

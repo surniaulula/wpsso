@@ -197,7 +197,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['fb_publisher_url'] = $this->form->get_th_html( _x( 'Facebook Business Page URL',
 						'option label', 'wpsso' ), null, 'fb_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'fb_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['fb_app_id'] = $this->form->get_th_html( _x( 'Facebook Application ID',
 						'option label', 'wpsso' ), null, 'fb_app_id' ).
@@ -213,13 +214,21 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'fb_author_name', 
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
+					$fb_pub_lang = SucomUtil::get_pub_lang( 'facebook' );
+					$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options );
+					$table_rows['fb_locale'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Custom Facebook Locale',
+						'option label', 'wpsso' ), null, 'fb_locale', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_select( $fb_locale_key, $fb_pub_lang ).'</td>';
+
 					break;
 
 				case 'pub-google':
 
 					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
 						'option label', 'wpsso' ), null, 'seo_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['seo_desc_len'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Search / SEO Description Length',
@@ -330,7 +339,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['rp_publisher_url'] = $this->form->get_th_html( _x( 'Pinterest Company Page URL',
 						'option label', 'wpsso' ), null, 'rp_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'rp_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'rp_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						$table_rows['rp_img'] = $this->form->get_th_html( _x( 'Rich Pin Image Dimensions',
@@ -345,7 +355,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$table_rows['rp_dom_verify'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Pinterest Website Verification ID',
+					$this->form->get_th_html( _x( 'Pinterest Verification ID',
 						'option label', 'wpsso' ), null, 'rp_dom_verify' ).
 					'<td>'.$this->form->get_input( 'rp_dom_verify', 'api_key' ).'</td>';
 
@@ -360,7 +370,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['tc_site'] = $this->form->get_th_html( _x( 'Twitter Business @username',
 						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site',
+						$this->p->options ) ).'</td>';
 
 					$table_rows['tc_desc_len'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Maximum Description Length',
@@ -392,15 +403,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['instgram_publisher_url'] = $this->form->get_th_html( _x( 'Instagram Business URL',
 						'option label', 'wpsso' ), null, 'instgram_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'instgram_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'instgram_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['linkedin_publisher_url'] = $this->form->get_th_html( _x( 'LinkedIn Company Page URL',
 						'option label', 'wpsso' ), null, 'linkedin_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'linkedin_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'linkedin_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					$table_rows['myspace_publisher_url'] = $this->form->get_th_html( _x( 'MySpace Business Page URL',
 						'option label', 'wpsso' ), null, 'myspace_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'myspace_publisher_url', $this->p->options ), 'wide' ).'</td>';
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'myspace_publisher_url',
+						$this->p->options ), 'wide' ).'</td>';
 
 					break;
 			}
