@@ -370,6 +370,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Added a "Custom Facebook Locale" option to customize the WordPress locale value for Facebook.
+	* Removed the "Verify Peer SSL Certificate" option as this feature should always be enabled anyway.
 * *Bugfixes*
 	* Fixed fetching of image size for a custom Schema image URL.
 * *Developer Notes*
