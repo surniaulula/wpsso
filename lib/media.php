@@ -680,11 +680,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$this->p->util->add_image_url_size( 'og:image', $og_image );
 									if ( $this->p->debug->enabled )
-										$this->p->debug->log( 'add_image_url_size() returned '.
+										$this->p->debug->log( 'fetched image url size: '.
 											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
 
 								} elseif ( $this->p->debug->enabled )
-									$this->p->debug->log( 'width / height attribute values: '.
+									$this->p->debug->log( 'image width / height values: '.
 										$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
 							}
 
@@ -869,14 +869,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$media_url = SucomUtil::get_mt_media_url( $og_video, $prefix );
 				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
-				if ( ! $media_url || 
-					( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'
+				if ( ! $media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'
+
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v )
 						unset ( $og_video[$k] );
+
 				} elseif ( $prefix === 'og:image' ) {
-					if ( $og_video['og:image:width'] <= 0 || 
-						$og_video['og:image:height'] <= 0 )
-							$this->p->util->add_image_url_size( 'og:image', $og_video );
+
+					if ( empty( $og_video['og:image:width'] ) || $og_video['og:image:width'] < 0 ||
+						empty( $og_video['og:image:height'] ) || $og_video['og:image:height'] < 0 ) {
+
+						$this->p->util->add_image_url_size( 'og:image', $og_video );
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'fetched video image url size: '.
+								$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
+
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'video image width / height values: '.
+							$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
 				}
 			}
 

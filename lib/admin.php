@@ -979,10 +979,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg_info[$ext]['aop'] )
-					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Pro Support Ticket</a>',
+					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a> (Pro version)',
 						'wpsso' ), $info['url']['support'] ).'</li>'."\n";
 				elseif ( ! empty( $info['url']['forum'] ) )
-					$help_links .= '<li>'.sprintf( __( 'Post in the <a href="%s" target="_blank">Community Free Support Forum</a>',
+					$help_links .= '<li>'.sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a> (Free version)',
 						'wpsso' ), $info['url']['forum'] ).'</li>'."\n";
 
 				if ( ! empty( $help_links ) ) {

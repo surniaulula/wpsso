@@ -132,10 +132,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
 			$media_url = SucomUtil::get_mt_media_url( $head, 'og:image' );
 
-			$have_sizes = ( ! empty( $head['og:image:width'] ) &&
-				$head['og:image:width'] > 0 && 
-					! empty( $head['og:image:height'] ) &&
-						$head['og:image:height'] > 0 ) ? true : false;
+			$have_sizes = ( ! empty( $head['og:image:width'] ) && $head['og:image:width'] > 0 && 
+					! empty( $head['og:image:height'] ) && $head['og:image:height'] > 0 ) ? true : false;
 
 			$is_sufficient = ( $have_sizes === true && 
 				$head['og:image:width'] >= $prev_width && 

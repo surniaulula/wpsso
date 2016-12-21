@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.9-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -218,12 +218,15 @@ msgid "and <a href=\"%s\" target=\"_blank\">Additional Documentation</a>"
 msgstr ""
 
 #: lib/admin.php:982
-msgid "Open a <a href=\"%s\" target=\"_blank\">Pro Support Ticket</a>"
+msgid ""
+"Open a <a href=\"%s\" target=\"_blank\">Priority Support Ticket</a> (Pro "
+"version)"
 msgstr ""
 
 #: lib/admin.php:985
 msgid ""
-"Post in the <a href=\"%s\" target=\"_blank\">Community Free Support Forum</a>"
+"Post in the <a href=\"%s\" target=\"_blank\">Community Support Forum</a> "
+"(Free version)"
 msgstr ""
 
 #: lib/admin.php:1050
@@ -846,13 +849,13 @@ msgctxt "option label"
 msgid "Add '%s' Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:585
+#: lib/gpl/admin/advanced.php:108 lib/messages.php:308 lib/meta.php:583
 #: lib/pro/admin/advanced.php:111
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:110 lib/messages.php:312 lib/meta.php:586
+#: lib/gpl/admin/advanced.php:110 lib/messages.php:312 lib/meta.php:584
 #: lib/pro/admin/advanced.php:113
 msgctxt "column title"
 msgid "%s Desc"
@@ -1232,8 +1235,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:168
-#: lib/meta.php:184 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102
+#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:166
+#: lib/meta.php:182 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1339,7 +1342,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:165 lib/post.php:468
+#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:468
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -1354,18 +1357,18 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:909 lib/pro/util/checkimgdims.php:67
+#: lib/media.php:919 lib/pro/util/checkimgdims.php:67
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:964
+#: lib/media.php:974
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:982
+#: lib/media.php:992
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2294,161 +2297,161 @@ msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:150
+#: lib/meta.php:148
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:156
+#: lib/meta.php:154
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:160
+#: lib/meta.php:158
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:172 lib/meta.php:188
+#: lib/meta.php:170 lib/meta.php:186
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:193
+#: lib/meta.php:191
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:298
+#: lib/meta.php:296
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:301
+#: lib/meta.php:299
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:301
+#: lib/meta.php:299
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:301
+#: lib/meta.php:299
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:304
+#: lib/meta.php:302
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:304
+#: lib/meta.php:302
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:304
+#: lib/meta.php:302
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:307
+#: lib/meta.php:305
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:307
+#: lib/meta.php:305
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:307
+#: lib/meta.php:305
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:310
+#: lib/meta.php:308
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:310
+#: lib/meta.php:308
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:310
+#: lib/meta.php:308
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:310
+#: lib/meta.php:308
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:312
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:312
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and AMP "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:312
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:312
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:496
+#: lib/meta.php:494
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:608
+#: lib/meta.php:606
 msgid "Reload to View"
 msgstr ""
 
@@ -2505,7 +2508,7 @@ msgid ""
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:441
+#: lib/options.php:436
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -3300,38 +3303,38 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:935
+#: lib/util.php:936
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1368
+#: lib/util.php:1369
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1382
+#: lib/util.php:1383
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1666
+#: lib/util.php:1667
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1692
+#: lib/util.php:1693
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1696
+#: lib/util.php:1697
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1699
+#: lib/util.php:1700
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1703
+#: lib/util.php:1704
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

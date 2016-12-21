@@ -392,13 +392,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			// get / remove dimensions for remote image urls
-			$this->p->util->add_image_url_size( array(
-				'og_img_url',
-				'og_def_img_url',
-				'rp_img_url',
-				'schema_logo_url',
-				'schema_banner_url',
-			), $opts );
+			$img_url_keys = preg_grep( '/_(img|logo|banner)_url$/', array_keys( $opts ) );
+			$this->p->util->add_image_url_size( $img_url_keys, $opts );
 
 			return $opts;
 		}

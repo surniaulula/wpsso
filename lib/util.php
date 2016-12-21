@@ -892,6 +892,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// use a reference to modify the $options array directly
+		// $keys can be a single key name or an array of key names
 		public function add_image_url_size( $keys, array &$opts ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
