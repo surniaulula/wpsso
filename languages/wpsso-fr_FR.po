@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.9-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-12-22 18:42+1100\n"
-"PO-Revision-Date: 2016-12-22 18:42+1100\n"
+"PO-Revision-Date: 2016-12-23 18:04+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2935,16 +2935,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://surniaulula.com/"
 msgstr "https://surniaulula.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Verify Peer SSL Certificate"
-#~ msgstr "Vérification des certificats SSL"
-
-#~ msgid "Verify peer SSL certificates when getting remote content for caching."
-#~ msgstr "Vérifiez les certificats SSL lors de l'obtention d'un contenu distant pour la mise en cache."
-
-#~ msgid "The PHP cURL library will use the Certificate Authority (CA) bundle in <u>%s</u> by default."
-#~ msgstr "La bibliothèque PHP cURL utilisera le fichier d'Autorité de certification (CA) de <u>%s</u> par défaut."
-
-#~ msgid "You can define the %s constant to provide an alternate certificate file path."
-#~ msgstr "Vous pouvez définir la constante %s pour choisir un fichier de certificat différent."
