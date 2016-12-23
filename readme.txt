@@ -190,12 +190,6 @@ WordPress Social Sharing Optimization (WPSSO) adds Facebook / Open Graph, Pinter
 
 WordPress Social Sharing Optimization (WPSSO) provides the [Summary](https://dev.twitter.com/cards/types/summary), [Summary with Large Image](https://dev.twitter.com/cards/types/summary-large-image), [App](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension), and [Player](https://dev.twitter.com/cards/types/player) Twitter Cards &mdash; *including configurable image sizes for each card type*. 
 
-= Available in Multiple Languages =
-
-* English (US)
-* French (France)
-* More to come...
-
 = 3rd Party Integration (Pro version) =
 
 <div style="clear:both;"></div>
