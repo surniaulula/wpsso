@@ -367,7 +367,7 @@ Note that the production stage level can be incremented on occasion for simple t
 **Version 3.38.0-rc1 (2016/12/23)**
 
 * *New Features*
-	* Added a new "Use Yoast SEO Custom Social Meta" option for Yoast SEO users under the NGFB &gt; Advanced &gt; Social / Custom Meta tab.
+	* Added a new "Use Yoast SEO Custom Social Meta" option for Yoast SEO users under the NGFB &gt; Advanced &gt; Social / Custom Meta tab (Pro version).
 	* Added a new "Custom Facebook Locale" option in the NGFB &gt; General settings page to customize the WordPress locale value for Facebook.
 * *Improvements*
 	* Removed the "Verify Peer SSL Certificate" option as this feature should always be enabled anyway.
