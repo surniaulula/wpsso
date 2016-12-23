@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.8-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.37.9-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-12-22 08:56+1100\n"
-"PO-Revision-Date: 2016-12-22 08:57+1100\n"
+"POT-Creation-Date: 2016-12-22 18:42+1100\n"
+"PO-Revision-Date: 2016-12-22 18:42+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1322,7 +1322,7 @@ msgstr "La valeur par défaut pour provient de la description pour une catégori
 
 #: lib/messages.php:76 lib/messages.php:137
 msgid "Update and save the custom Facebook / Open Graph description to change the default value of all other description fields."
-msgstr ""
+msgstr "Mettre à jour et enregistrer la description personnalisé de Facebook  / Open Graph pour modifier la valeur par défaut de tous les autres champs de description."
 
 #: lib/messages.php:79
 msgid "A custom description for the Google Search / SEO description meta tag."
@@ -1394,11 +1394,11 @@ msgstr "Une rubrique personnalisée, différente de la valeur par défaut choisi
 
 #: lib/messages.php:134
 msgid "The Facebook / Open Graph %1$s meta tag must be an 'article' to enable this option."
-msgstr ""
+msgstr "La balise méta %1$s de Facebook / Open Graph doit être un 'article' pour activer cette option."
 
 #: lib/messages.php:134 lib/messages.php:206
 msgid "This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select '[None]' if you prefer to exclude the %1$s meta tag."
-msgstr ""
+msgstr "Cette valeur sera utilisée pour la balise méta %1$s de Facebook / Open Graph et Pinterest Rich Pin. Sélectionnez '[Aucun]' si vous préférez exclure la balise méta %1$s."
 
 #: lib/messages.php:137
 msgid "The default description value is based on the excerpt (if one is available) or content."
@@ -1406,11 +1406,11 @@ msgstr "La valeur par défaut de la description est basée sur l'extrait (si dis
 
 #: lib/messages.php:206
 msgid "The topic that best describes the Posts and Pages on your website."
-msgstr ""
+msgstr "La rubrique qui décrit le mieux les Articles et Pages de votre site Web."
 
 #: lib/messages.php:206
 msgid "The Pro version also allows you to select a custom Topic for each individual Post and Page."
-msgstr ""
+msgstr "La version Pro vous permet également de sélectionner une rubrique personnalisé pour chaque Article et Page."
 
 #: lib/messages.php:209
 msgid "The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href=\"%2$s\">the default WordPress Site Title value</a>."
@@ -1418,11 +1418,11 @@ msgstr "Le Nom du site WordPress est utilisé pour la balise méta %1$s de Faceb
 
 #: lib/messages.php:212
 msgid "The WordPress tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag."
-msgstr ""
+msgstr "Le slogan de WordPress est utilisé comme description pour la page d’accueil <em>index</em> (non statique) et en replie pour la balise méta %1$s de Facebook / Open Graph et Pinterest Rich Pin."
 
 #: lib/messages.php:212
 msgid "You may override <a href=\"%1$s\">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website."
-msgstr ""
+msgstr "Vous pouvez modifier <a href=\"%1$s\">la valeur par défaut du slogan de WordPress</a> ici afin de fournir une description plus complète de votre site Web."
 
 #: lib/messages.php:236
 msgid "Select which contact field to use from the author's WordPress profile page for the Facebook / Open Graph %1$s meta tag. The preferred setting is the Facebook URL field (default value)."
