@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.37.9-rc1 (2016/12/22)**
+**Version 3.38.0-rc1 (2016/12/23)**
 
 * *New Features*
 	* None
@@ -562,9 +562,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.37.9-rc1 =
+= 3.38.0-rc1 =
 
-(2016/12/22) Fixed fetching of image size for a custom Schema image URL. Removed the share/curl/ca-bundle.crt file to use the WordPress ca-bundle.crt file instead. Added a "Custom Facebook Locale" option to customize the WordPress locale value for Facebook.
+(2016/12/23) Fixed fetching of image size for a custom Schema image URL. Removed the share/curl/ca-bundle.crt file to use the WordPress ca-bundle.crt file instead. Added a "Custom Facebook Locale" option to customize the WordPress locale value for Facebook.
 
 = 3.37.8-1 =
 

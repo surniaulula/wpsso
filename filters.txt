@@ -44,7 +44,7 @@
 'wpsso_get_post_options' ( $options, $post_id );
 'wpsso_get_site_defaults' ( $defaults );
 'wpsso_get_site_options' ( $options );
-'wpsso_get_term_options' ( $options, $user_id );
+'wpsso_get_term_options' ( $options, $term_id );
 'wpsso_get_user_options' ( $options, $user_id );
 'wpsso_hashtags' ( $hashtags, $post_id );
 'wpsso_hashtags_seed' ( '', $post_id );
