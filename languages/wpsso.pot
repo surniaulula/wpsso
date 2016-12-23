@@ -954,9 +954,9 @@ msgctxt "option label"
 msgid "Include Social Metaboxes on"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:224
+#: lib/gpl/admin/advanced.php:224 lib/pro/admin/advanced.php:224
 msgctxt "option label"
-msgid "Use Yoast SEO Social Meta"
+msgid "Use Yoast SEO Custom Social Meta"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:230 lib/pro/admin/advanced.php:230
@@ -2605,11 +2605,6 @@ msgstr ""
 #: lib/user.php:274
 msgctxt "metabox title"
 msgid "Social Settings"
-msgstr ""
-
-#: lib/pro/admin/advanced.php:224
-msgctxt "option label"
-msgid "Use Yoast SEO Custom Social Meta"
 msgstr ""
 
 #: lib/pro/admin/meta.php:50 lib/pro/admin/post.php:45
