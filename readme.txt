@@ -313,6 +313,8 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Article Topics List](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
+			* [Modify the Sharing URL](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
+			* [Read / Import Yoast SEO Social Meta](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/)
 			* [Remove 'hentry' from Theme Templates](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
 			* [Strip Additional Shortcodes](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
 			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)

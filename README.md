@@ -370,6 +370,8 @@
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/">Modify the "article:tag" Keywords / Names</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/">Modify the Default Article Topics List</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
+<li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/">Modify the Sharing URL</a></li>
+<li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/">Read / Import Yoast SEO Social Meta</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/">Remove 'hentry' from Theme Templates</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/">Strip Additional Shortcodes</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/">Use the REQUEST_URI for Post URLs</a></li>
