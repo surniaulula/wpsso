@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-12-23 19:30+1100\n"
-"PO-Revision-Date: 2016-12-23 19:31+1100\n"
+"POT-Creation-Date: 2016-12-24 08:42+1100\n"
+"PO-Revision-Date: 2016-12-24 09:26+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -314,7 +314,7 @@ msgstr "s'il vous plaît cocher l'option <strong>Use Schema.org Markup</strong> 
 
 #: lib/admin.php:1275 lib/admin.php:1280 lib/admin.php:1285 lib/admin.php:1303
 msgid "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
-msgstr "s'il vous plaît décocher l'option <strong>%1$s</strong> dans les réglages sociaux de l'extension <a href=\"%s\">The SEO Framework</a>."
+msgstr "s'il vous plaît décocher l'option <strong>%1$s</strong> dans les réglages sociaux de l'extension <a href=\"%2$s\">The SEO Framework</a>."
 
 #: lib/admin.php:1290
 msgid "please uncheck the <strong>Output Knowledge tags?</strong> option in <a href=\"%s\">The SEO Framework</a> Knowledge Graph Settings."
@@ -882,10 +882,10 @@ msgctxt "option label"
 msgid "Include Social Metaboxes on"
 msgstr "Inclure metabox Sociaux sur"
 
-#: lib/gpl/admin/advanced.php:224
+#: lib/gpl/admin/advanced.php:224 lib/pro/admin/advanced.php:224
 msgctxt "option label"
-msgid "Use Yoast SEO Social Meta"
-msgstr ""
+msgid "Use Yoast SEO Custom Social Meta"
+msgstr "Utiliser méta social personnalisé Yoast SEO"
 
 #: lib/gpl/admin/advanced.php:230 lib/pro/admin/advanced.php:230
 msgctxt "option label"
@@ -1127,11 +1127,13 @@ msgctxt "option label"
 msgid "Default / Fallback Video URL"
 msgstr "URL d'un vidéo par défaut"
 
+# Added a line break to improve layout.
 #: lib/gpl/admin/general.php:80 lib/pro/admin/general.php:84
 msgctxt "option label"
 msgid "Use Default Video on Archive"
 msgstr "Utiliser vidéo par défaut<br/>pour pages d'archives"
 
+# Added a line break to improve layout.
 #: lib/gpl/admin/general.php:85 lib/pro/admin/general.php:89
 msgctxt "option label"
 msgid "Use Default Video on Search Results"
@@ -1452,11 +1454,11 @@ msgstr "Une colonne \"%1$s\" peut être ajouté aux listes d'Articles, Pages, Ta
 
 #: lib/messages.php:319
 msgid "Include and exclude specific tabs in the Social Settings metabox."
-msgstr ""
+msgstr "Inclure et exclure des onglets spécifiques dans le metabox Réglages Sociaux."
 
 #: lib/messages.php:322
 msgid "Use the Yoast SEO custom social meta text for Posts, Terms, and Users."
-msgstr ""
+msgstr "Utiliser le texte méta social personnalisé de Yoast SEO pour les Articles, Termes, et Utilisateurs."
 
 #: lib/messages.php:341
 msgid "When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed."
@@ -1583,7 +1585,7 @@ msgstr "Google Search peut utiliser cette information pour afficher des détails
 
 #: lib/messages.php:487
 msgid "The '%1$s' are used by Facebook to allow access to <a href=\"%2$s\" target=\"_blank\">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs."
-msgstr "Les '%1$s' sont utilisés par Facebook pour permettre l'accès aux données <a href=\"%2$s\" target=\"_blank\">Facebook Insight</a> de votre site Web. Notez que ce sont des <strong >noms de compte utilisateur, et non pas des noms de Page Facebook</strong>. Saisissez un ou plusieurs noms d'utilisateur Facebook, séparées par des virgules. Lors de l'affichage de votre mur Facebook, votre nom d'utilisateur se trouve dans l'URL (par exemple, https://www.facebook.com/<strong>nom_du_compte</strong> ). Entrez seulement les noms de compte utilisateur, et non pas l'URL de Facebook."
+msgstr "Les '%1$s' sont utilisés par Facebook pour permettre l'accès aux données <a href=\"%2$s\" target=\"_blank\">Facebook Insight</a> de votre site Web. Notez que ce sont des <strong>noms de compte utilisateur, et non pas des noms de Page Facebook</strong>. Saisissez un ou plusieurs noms d'utilisateur Facebook, séparées par des virgules. Lors de l'affichage de votre mur Facebook, votre nom d'utilisateur se trouve dans l'URL (par exemple, https://www.facebook.com/<strong>nom_du_compte</strong> ). Entrez seulement les noms de compte utilisateur, et non pas l'URL de Facebook."
 
 #: lib/messages.php:487
 msgctxt "option label"
@@ -1803,7 +1805,7 @@ msgstr "Informations complémentaires montré uniquement aux utilisateurs admini
 
 #: lib/messages.php:790
 msgid "You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social and SEO Image Dimensions</a> settings."
-msgstr "Vous pouvez aussi ajuster les <a href=\"%1%s\">Dimensions d'Image SEO et Sociale</a> pour <b>%2$s</b>."
+msgstr "Vous pouvez aussi ajuster les <a href=\"%1$s\">Dimensions d'Image SEO et Sociale</a> pour <b>%2$s</b>."
 
 #: lib/messages.php:791
 msgid "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image upscaling percentage</em> feature."
@@ -1957,12 +1959,12 @@ msgstr "Validations"
 #: lib/meta.php:148
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
-msgstr "Dimensions de l'image plus petites<br>que le minimum suggéré<br>de %s"
+msgstr "Dimensions de l'image plus petites<br/>que le minimum suggéré<br/>de %s"
 
 #: lib/meta.php:154
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
-msgstr "Dimensions de l'image inconnu<br>ou non-disponible"
+msgstr "Dimensions de l'image inconnu<br/>ou non-disponible"
 
 #: lib/meta.php:158
 msgctxt "preview image error"
@@ -2154,11 +2156,6 @@ msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérific
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr "Réglages Sociaux"
-
-#: lib/pro/admin/advanced.php:224
-msgctxt "option label"
-msgid "Use Yoast SEO Custom Social Meta"
-msgstr "Utiliser méta social personnalisé Yoast SEO"
 
 #: lib/pro/admin/meta.php:50 lib/pro/admin/post.php:45
 msgid "The SEO description field is disabled (the description meta tag is disabled and/or a known SEO plugin is active)."
@@ -2655,11 +2652,13 @@ msgctxt "option label"
 msgid "Open Graph Image Dimensions"
 msgstr "Dimensions d'images Open Graph"
 
+# Added a line break to improve layout.
 #: lib/submenu/general.php:174
 msgctxt "option label"
 msgid "Use Default Image on Archive"
 msgstr "Utiliser l'image par défaut<br/>pour pages d'archives"
 
+# Added a line break to improve layout.
 #: lib/submenu/general.php:179
 msgctxt "option label"
 msgid "Use Default Image on Search Results"
