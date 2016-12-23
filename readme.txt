@@ -291,13 +291,17 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Additional Documentation =
 
-* [About Pro Modules](https://wpsso.com/codex/plugins/wpsso/notes/modules/)
+* [About WPSSO Pro Integration Modules](https://wpsso.com/codex/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/codex/plugins/wpsso/notes/modules/author-gravatar/)
+	* [Co-Author Plus](https://wpsso.com/codex/plugins/wpsso/notes/modules/co-author-plus/)
 	* [Easy Digital Downloads](https://wpsso.com/codex/plugins/wpsso/notes/modules/easy-digital-downloads/)
 	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/codex/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
 	* [HeadSpace2 SEO](https://wpsso.com/codex/plugins/wpsso/notes/modules/headspace2-seo/)
+	* [Polylang](https://wpsso.com/codex/plugins/wpsso/notes/modules/polylang/)
+	* [The Events Calendar](https://wpsso.com/codex/plugins/wpsso/notes/modules/the-events-calendar/)
 	* [WooCommerce](https://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/)
 	* [WordPress REST API version 2](https://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
+	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
 * [Contact Information and Feeds](https://wpsso.com/codex/plugins/wpsso/notes/contact-information/)
 * [Developer Resources](https://wpsso.com/codex/plugins/wpsso/notes/developer/)
 	* [Constants](https://wpsso.com/codex/plugins/wpsso/notes/developer/constants/)
@@ -371,13 +375,13 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new "Custom Facebook Locale" option in the NGFB &gt; General settings page to customize the WordPress locale value for Facebook.
 * *Improvements*
 	* Removed the "Verify Peer SSL Certificate" option as this feature should always be enabled anyway.
-	* Added a [summary of features for the Yoast SEO integration module](http://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/) in WPSSO Pro.
+	* Added a [summary of features for the Yoast SEO integration module](https://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/) in WPSSO Pro.
 * *Bugfixes*
 	* Fixed fetching of image size for a custom Schema image URL.
 * *Developer Notes*
 	* Added a check for positive numbers when adding Schema image size properties.
 	* Removed the share/curl/ca-bundle.crt file to use the WordPress wp-includes/certificates/ca-bundle.crt file instead.
-	* Added an example filter to [Read / Import Yoast SEO Social Meta](http://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/) when Yoast SEO is not active.
+	* Added an example filter to [Read / Import Yoast SEO Social Meta](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/) when Yoast SEO is not active.
 
 **Version 3.37.8-1 (2016/12/12)**
 
