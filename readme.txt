@@ -11,7 +11,7 @@ Tags: social, share, open graph, seo, facebook, twitter, pinterest, youtube, sha
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
-Stable Tag: 3.37.8-1
+Stable Tag: 3.38.0-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
