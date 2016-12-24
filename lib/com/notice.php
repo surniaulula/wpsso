@@ -405,21 +405,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return '<style type="text/css">
 .'.$this->lca.'-notice.update-nag {
 	line-height:1.4em;
+	padding:0 40px;
+	margin-top:0;
+	border:1px dotted #ccc;
 	background-color:'.( empty( $this->p->cf['bgcolor'] ) ?
 		'none' : '#'.$this->p->cf['bgcolor'] ).';
 	background-image:'.( empty( $this->p->cf['plugin'][$this->lca]['img']['background'] ) ?
 		'none' : 'url("'.$this->p->cf['plugin'][$this->lca]['img']['background'].'")' ).';
 	background-position:top;
 	background-size:cover;
-	border:1px dashed #ccc;
-	padding:0 40px;
-	margin-top:0;
 }
 .'.$this->lca.'-notice.update-nag > div {
 	clear:both;
 	display:block !important;
 	margin:0 auto;
-	max-width:700px;
+	max-width:850px;
 }
 .'.$this->lca.'-notice.update-nag p,
 .'.$this->lca.'-notice.update-nag ul,
