@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2016-12-24 08:42+1100\n"
-"PO-Revision-Date: 2016-12-24 09:26+1100\n"
+"PO-Revision-Date: 2016-12-24 14:39+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1183,6 +1183,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr "Description Schéma"
 
+# Ignore the post type to avoid gender issues in the French translation.
 #: lib/gpl/admin/meta.php:95 lib/pro/admin/meta.php:113
 msgid "Save a draft version or publish the %s to display these options."
 msgstr "Enregistrer un brouillon ou publier pour activer ces options."
@@ -1270,6 +1271,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique de l'article"
 
+# Ignore the post type to avoid gender issues in the French translation.
 #: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:468
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
