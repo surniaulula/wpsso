@@ -55,4 +55,117 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 	}
 }
 
+if ( apply_filters( 'read_wpseo_custom_meta', false ) ) {
+	add_filter( 'wpsso_get_post_options', 'filter_get_post_options_wpseo_custom_meta', 10, 2 );
+	add_filter( 'wpsso_get_term_options', 'filter_get_term_options_wpseo_custom_meta', 10, 2 );
+	add_filter( 'wpsso_get_user_options', 'filter_get_user_options_wpseo_custom_meta', 10, 2 );
+}
+
+if ( ! function_exists( 'filter_get_post_options_wpseo_custom_meta' ) ) {
+	function filter_get_post_options_wpseo_custom_meta( $opts, $post_id ) {
+
+		if ( empty( $opts['og_title'] ) )
+			$opts['og_title'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_opengraph-title', true );
+	
+		// fallback to the SEO title
+		if ( empty( $opts['og_title'] ) )
+			$opts['og_title'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_title', true );
+	
+		if ( empty( $opts['og_desc'] ) )
+			$opts['og_desc'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_opengraph-description', true );
+	
+		// fallback to the SEO description
+		if ( empty( $opts['og_desc'] ) )
+			$opts['og_desc'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_metadesc', true );
+	
+		if ( empty( $opts['og_img_id'] ) && empty( $opts['og_img_url'] ) )
+			$opts['og_img_url'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_opengraph-image', true );
+	
+		if ( empty( $opts['tc_desc'] ) )
+			$opts['tc_desc'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_twitter-description', true );
+	
+		if ( empty( $opts['schema_desc'] ) )
+			$opts['schema_desc'] = (string) get_post_meta( $post_id,
+				'_yoast_wpseo_metadesc', true );
+	
+		$opts['seo_desc'] = (string) get_post_meta( $post_id,
+			'_yoast_wpseo_metadesc', true );
+	
+		return $opts;
+	}
+}
+
+if ( ! function_exists( 'filter_get_term_options_wpseo_custom_meta' ) ) {
+	// yoast seo does not support wordpress term meta (since wp 4.4)
+	// read term meta from the 'wpseo_taxonomy_meta' option instead
+	function filter_get_term_options_wpseo_custom_meta( $opts, $term_id ) {
+	
+		$term_obj = get_term( $term_id );
+		$tax_opts = get_option( 'wpseo_taxonomy_meta' );
+	
+		if ( ! isset( $term_obj->taxonomy ) || 
+			! isset( $tax_opts[$term_obj->taxonomy][$term_id] ) )
+				return $opts;
+	
+		$term_opts = $tax_opts[$term_obj->taxonomy][$term_id];
+	
+		if ( empty( $opts['og_title'] ) && 
+			isset( $term_opts['wpseo_opengraph-title'] ) )
+				$opts['og_title'] = (string) $term_opts['wpseo_opengraph-title'];
+	
+		// fallback to the SEO title
+		if ( empty( $opts['og_title'] ) && 
+			isset( $term_opts['wpseo_title'] ) )
+				$opts['og_title'] = (string) $term_opts['wpseo_title'];
+	
+		if ( empty( $opts['og_desc'] ) && 
+			isset( $term_opts['wpseo_opengraph-description'] ) )
+				$opts['og_desc'] = (string) $term_opts['wpseo_opengraph-description'];
+	
+		// fallback to the SEO description
+		if ( empty( $opts['og_desc'] ) && 
+			isset( $term_opts['wpseo_desc'] ) )
+				$opts['og_desc'] = (string) $term_opts['wpseo_desc'];
+	
+		if ( empty( $opts['og_img_id'] ) && empty( $opts['og_img_url'] ) &&
+			isset( $term_opts['wpseo_opengraph-image'] ) )
+				$opts['og_img_url'] = (string) $term_opts['wpseo_opengraph-image'];
+			
+		if ( empty( $opts['tc_desc'] ) &&
+			isset( $term_opts['wpseo_twitter-description'] ) )
+				$opts['tc_desc'] = (string) $term_opts['wpseo_twitter-description'];
+	
+		if ( empty( $opts['schema_desc'] ) && 
+			isset( $term_opts['wpseo_desc'] ) )
+				$opts['tc_desc'] = (string) $term_opts['wpseo_desc'];
+	
+		if ( isset( $term_opts['wpseo_desc'] ) )
+			$opts['seo_desc'] = (string) $term_opts['wpseo_desc'];
+	
+		return $opts;
+	}
+}
+
+if ( ! function_exists( 'filter_get_user_options_wpseo_custom_meta' ) ) {
+	// yoast seo does not provide social settings for users
+	function filter_get_user_options_wpseo_custom_meta( $opts, $user_id ) {
+	
+		if ( empty( $opts['og_title'] ) )
+			$opts['og_title'] = (string) get_user_meta( $user_id,
+				'wpseo_title', true );
+	
+		if ( empty( $opts['og_desc'] ) )
+			$opts['og_desc'] = (string) get_user_meta( $user_id,
+				'wpseo_metadesc', true );
+	
+		return $opts;
+	}
+}
+
 ?>
