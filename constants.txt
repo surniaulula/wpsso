@@ -36,7 +36,7 @@ WPSSO_META_CACHE_PRIORITY	= 10
 WPSSO_INIT_PRIORITY		= 12
 WPSSO_HEAD_PRIORITY		= 10
 WPSSO_SEO_FILTERS_PRIORITY	= 100
-WPSSO_PHP_CURL_CAINFO		= WPSSO_PLUGINDIR.'share/curl/ca-bundle.crt'
+WPSSO_PHP_CURL_CAINFO		= ABSPATH.WPINC.'/certificates/ca-bundle.crt'
 WPSSO_PHP_CURL_USERAGENT	= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
 /*
  * undefined constants - can be defined to change specific plugin behaviors
@@ -51,3 +51,4 @@ WPSSO_RESET_ON_ACTIVATE		= (not defined)
 WPSSO_IMAGE_UPSCALE_ALL		= (not defined)
 WPSSO_IMAGE_UPSCALE_TEST	= (not defined)
 WPSSO_META_GENERATOR_DISABLE	= (not defined)	// generator meta tags are required for plugin support
+WPSSO_READ_WPSEO_META		= (not defined)
