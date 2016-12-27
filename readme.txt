@@ -374,6 +374,8 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Developer Notes*
 	* Added a new WpssoFilters class to centralize 3rd party plugin filter hooks.
+	* Added a new NgfbUtil get_canonical_url() method for the canonical meta tag.
+	* Added a new 'ngfb_canonical_url' filter to allow filtering of canonical and sharing URLs separately.
 
 **Version 3.38.0-1 (2016/12/24)**
 

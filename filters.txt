@@ -26,6 +26,7 @@
 'wpsso_cache_expire_image_url_size' ( $secs );
 'wpsso_cache_expire_schema_types' ( $secs );
 'wpsso_cache_expire_shorten_url' ( $secs );
+'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx );
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj );
 'wpsso_columns_post_{post_type_name}' ( true );
