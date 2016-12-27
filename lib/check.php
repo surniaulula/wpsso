@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		private $p;
 		private static $c = array();
-		private static $extend_checks = array(
+		private static $extend_lib_checks = array(
 			'seo' => array(
 				'seou' => 'SEO Ultimate',
 				'sq' => 'Squirrly SEO',
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$ret[$key] = $this->get_avail_check( $key );
 
 			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], 
-				self::$extend_checks ) as $sub => $lib ) {
+				self::$extend_lib_checks ) as $sub => $lib ) {
 
 				$ret[$sub] = array();
 				$ret[$sub]['*'] = false;
