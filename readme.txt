@@ -401,7 +401,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Developer Notes*
 	* Renamed the `WPSSO_OPTIONS_#_*` multisite single-option constants to `WPSSO_ID_#_OPT_*` and optimized their checks.
-	* Added a new SucomUtil::explode_csv() static method to explode and trim CSV strings.
+	* Added a new SucomUtil explode_csv() static method to explode and trim CSV strings.
 
 **Version 3.37.7-1 (2016/12/08)**
 
@@ -433,9 +433,9 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Fixed the sharing URL value for BuddyPress users (Pro version).
 * *Developer Notes*
-	* Added an SucomUtil::update_transient_array() method to update transient arrays and keep the original transient expiration time.
+	* Added an SucomUtil update_transient_array() method to update transient arrays and keep the original transient expiration time.
 	* Added a new 'wpsso_json_prop_https_schema_org_potentialaction' filter.
-	* Removed $locale argument from SucomUtil::get_mod_salt() calls.
+	* Removed $locale argument from SucomUtil get_mod_salt() calls.
 
 **Version 3.37.5-1 (2016/11/28)**
 
@@ -473,7 +473,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a sharing URL argument to the SucomUtil::get_mod_salt() method for cases where the $mod id is false.
+	* Added a sharing URL argument to the SucomUtil get_mod_salt() method for cases where the $mod id is false.
 	* Renamed the 'wpsso_json_array_schema_type_ids' filter to 'wpsso_json_array_schema_page_type_ids' to emulate the $page_type_id variable name.
 	* Removed the deprecated $use_post argument from the get_array() methods for the Open Graph, Twitter Card, and Weibo classes.
 
@@ -488,11 +488,11 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Developer Notes*
 	* Refactored the WpssoSchema class to provide a public get_json_data() method for the WPSSO JSON extension.
-	* Added WpssoPost::get_posts(), WpssoTerm::get_posts(), and WpssoUser::get_posts() methods.
-	* Added a WpssoMeta::get_posts_mods() method to return `$mod` arrays for all posts in the current archive page.
-	* Added a WpssoSchema::get_json_data() method with used by WpssoSchema::get_json_array() in the same class.
-	* Renamed the WpssoSchema::get_head_item_type() method to WpssoSchema::get_mod_schema_type().
-	* Renamed the WpssoSchema::get_item_type_context() method to WpssoSchema::get_schema_type_context().
+	* Added WpssoPost get_posts(), WpssoTerm get_posts(), and WpssoUser get_posts() methods.
+	* Added a WpssoMeta get_posts_mods() method to return `$mod` arrays for all posts in the current archive page.
+	* Added a WpssoSchema get_json_data() method used by get_json_array() in the same class.
+	* Renamed the WpssoSchema get_head_item_type() method to get_mod_schema_type().
+	* Renamed the WpssoSchema get_item_type_context() method to get_schema_type_context().
 
 **Version 3.37.0-1 (2016/11/04)**
 
@@ -508,9 +508,9 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed the SucomUtil::get_first_last_next_nums() method, which was not returning a correct 'next' number for single element arrays.
+	* Fixed the SucomUtil get_first_last_next_nums() method, which was not returning a correct 'next' number for single element arrays.
 * *Developer Notes*
-	* Refactored the WpssoSchema::get_json_array() method for a slight performance improvement.
+	* Refactored the WpssoSchema get_json_array() method for a slight performance improvement.
 	* Added https://schema.org/Thing to the Schema Types array (as top-level parent for all other Schema types).
 	* Replaced the `$user_id` argument in all JSON data and property filters by the Schema `$type_id`.
 	* Renamed the 'wpsso_json_data_https_schema_org' filter to 'wpsso_json_data_https_schema_org_thing'.
@@ -539,8 +539,8 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Minimum requirements updated to WP v3.5 and PHP v5.4.
 	* Renamed the Social Settings 'header' index name to 'text'.
 	* Renamed the 'wpsso_admin_post_header' filter to 'wpsso_admin_post_head'.
-	* Renamed the WpssoHead::get_header_array() method to WpssoHead::get_head_array().
-	* Added a new WpssoHead::get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache for Pinterest by storing 1 transient instead of 2.
+	* Renamed the WpssoHead get_header_array() method to get_head_array().
+	* Added a new WpssoHead get_head_index() method to cache meta tags as array elements. This optimizes the head meta transient cache for Pinterest by storing 1 transient instead of 2.
 
 **Version 3.36.2-1 (2016/10/17)**
 
@@ -568,7 +568,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Added the https://schema.org/WebPage sub-types in the plugin config schema_type array (AboutPage, CheckoutPage, CollectionPage, ContactPage, ItemPage, ProfilePage, QAPage, and SearchResultsPage).
 * *Bugfixes*
-	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil::get_term_object() method.
+	* Fixed getting the term object (category and tags) when no term ID is provided to the SucomUtil get_term_object() method.
 	* Removed the Open Graph namespace from the HTML tag attributes when using the AMP plugin.
 * *Developer Notes*
 	* Removed the WPSSO_DEFAULT_AUTHOR_OPTIONS constant and all associated default author options.
@@ -586,7 +586,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.37.8-1 =
 
-(2016/12/12) Renamed the multisite single-option constants and optimized their checks. Added a new SucomUtil::explode_csv() static method.
+(2016/12/12) Renamed the multisite single-option constants and optimized their checks. Added a new SucomUtil explode_csv() static method.
 
 = 3.37.7-1 =
 
