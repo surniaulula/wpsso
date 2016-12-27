@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">'.$checkboxes.'</td>';
 
 			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
-				$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Use Yoast SEO Custom Social Meta',
+				$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Read Yoast SEO Social Meta',
 					'option label', 'wpsso' ), null, 'plugin_wpseo_social_meta' ).
 				'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
 			}

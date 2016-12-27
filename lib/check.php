@@ -13,8 +13,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 	class WpssoCheck {
 
 		private $p;
-		private $active_plugins = array();	// active site and network plugins
-
 		private static $c = array();
 		private static $extend_checks = array(
 			'seo' => array(
@@ -28,94 +26,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			$this->active_plugins = SucomUtil::active_plugins();
-
-			if ( is_admin() ) {
-				// cleanup incorrect Yoast SEO notifications
-				if ( isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) )
-					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
-			} else {
-				// disable jetPack open graph meta tags
-				if ( isset( $this->active_plugins['jetpack/jetpack.php'] ) ) {
-					add_filter( 'jetpack_enable_opengraph', '__return_false', 100 );
-					add_filter( 'jetpack_enable_open_graph', '__return_false', 100 );
-					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 100 );
-				}
-				// disable Yoast SEO social meta tags
-				if ( isset( $this->active_plugins['wordpress-seo/wp-seo.php'] ) )
-					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 1000 );
-			}
-		}
-
-		// cleanup incorrect Yoast SEO notifications
-		public function cleanup_wpseo_notifications() {
-			if ( method_exists( 'Yoast_Notification_Center', 'remove_notification' ) ) {	// since wpseo v3.3
-				$lca = $this->p->cf['lca'];
-				$info = $this->p->cf['plugin'][$lca];
-				$id = 'wpseo-conflict-'.md5( $info['base'] );
-				$msg = '<style>#'.$id.'{display:none;}</style>';
-				$notif_center = Yoast_Notification_Center::get();
-				if ( ( $notif_obj = $notif_center->get_notification_by_id( $id ) ) && 
-					$notif_obj->message !== $msg ) {
-					update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
-					$notif_obj = new Yoast_Notification( $msg, array( 'id' => $id ) );
-					$notif_center->add_notification( $notif_obj );
-				}
-			}
-		}
-
-		// disable Yoast SEO social meta tags
-		public function cleanup_wpseo_filters() {
-
-			if ( isset( $GLOBALS['wpseo_og'] ) && is_object( $GLOBALS['wpseo_og'] ) && 
-				( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false )
-					$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
-
-			if ( class_exists( 'WPSEO_Twitter' ) &&
-				( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) !== false )
-					$ret = remove_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ), $prio );
-
-			if ( class_exists( 'WPSEO_GooglePlus' ) && 
-				( $prio = has_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ) ) ) !== false )
-					$ret = remove_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ), $prio );
-
-			if ( ! empty( $this->p->options['seo_publisher_url'] ) && isset( WPSEO_Frontend::$instance ) &&
-				 ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) )
-					$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
-
-			if ( ! empty( $this->p->options['schema_website_json'] ) )
-				add_filter( 'wpseo_json_ld_output', '__return_empty_array', 99 );
-		}
-
-		public function aop( $lca = '', $lic = true, $rv = true ) {
-			$lca = empty( $lca ) ? 
-				$this->p->cf['lca'] : $lca;
-			$kn = $lca.'-'.$lic.'-'.$rv;
-			if ( isset( self::$c[$kn] ) )
-				return self::$c[$kn];
-			$uca = strtoupper( $lca );
-			if ( defined( $uca.'_PLUGINDIR' ) )
-				$pdir = constant( $uca.'_PLUGINDIR' );
-			elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
-				$slug = $this->p->cf['plugin'][$lca]['slug'];
-				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) || 
-					! is_dir( $pdir = WPMU_PLUGIN_DIR.'/'.$slug.'/' ) ) {
-					if ( ! defined ( 'WP_PLUGIN_DIR' ) || 
-						! is_dir( $pdir = WP_PLUGIN_DIR.'/'.$slug.'/' ) )
-							return self::$c[$kn] = false;
-				}
-			} else return self::$c[$kn] = false;
-			$on = 'plugin_'.$lca.'_tid';
-			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
-			return self::$c[$kn] = $lic === true ? 
-				( ( ! empty( $this->p->options[$on] ) && 
-					$ins && class_exists( 'SucomUpdate' ) &&
-						( $uerr = SucomUpdate::get_umsg( $lca ) ? 	// use get_umsg() for backwards compat
-							false : $ins ) ) ? $uerr : false ) : $ins;
-		}
-
-		public function is_aop( $lca = '' ) { 
-			return $this->aop( $lca, true, $this->get_avail_check( 'aop' ) );
 		}
 
 		public function get_avail() {
@@ -257,7 +167,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 					if ( ! empty( $chk ) ) {
 						if ( isset( $chk['plugin'] ) || isset( $chk['class'] ) || isset( $chk['function'] ) ) {
-							if ( ( ! empty( $chk['plugin'] ) && isset( $this->active_plugins[$chk['plugin']] ) ) ||
+							if ( ( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ||
 								( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
 								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ) {
 
@@ -295,6 +205,37 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					break;
 			}
 			return $ret;
+		}
+
+		public function is_aop( $lca = '' ) { 
+			return $this->aop( $lca, true, $this->get_avail_check( 'aop' ) );
+		}
+
+		public function aop( $lca = '', $lic = true, $rv = true ) {
+			$lca = empty( $lca ) ? 
+				$this->p->cf['lca'] : $lca;
+			$kn = $lca.'-'.$lic.'-'.$rv;
+			if ( isset( self::$c[$kn] ) )
+				return self::$c[$kn];
+			$uca = strtoupper( $lca );
+			if ( defined( $uca.'_PLUGINDIR' ) )
+				$pdir = constant( $uca.'_PLUGINDIR' );
+			elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
+				$slug = $this->p->cf['plugin'][$lca]['slug'];
+				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) || 
+					! is_dir( $pdir = WPMU_PLUGIN_DIR.'/'.$slug.'/' ) ) {
+					if ( ! defined ( 'WP_PLUGIN_DIR' ) || 
+						! is_dir( $pdir = WP_PLUGIN_DIR.'/'.$slug.'/' ) )
+							return self::$c[$kn] = false;
+				}
+			} else return self::$c[$kn] = false;
+			$on = 'plugin_'.$lca.'_tid';
+			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
+			return self::$c[$kn] = $lic === true ? 
+				( ( ! empty( $this->p->options[$on] ) && 
+					$ins && class_exists( 'SucomUpdate' ) &&
+						( $uerr = SucomUpdate::get_umsg( $lca ) ?
+							false : $ins ) ) ? $uerr : false ) : $ins;
 		}
 
 		public function get_ext_list() {

@@ -13,7 +13,7 @@
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7
- * Version: 3.38.0-1
+ * Version: 3.38.1-dev1
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -39,6 +39,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $p;			// Wpsso
 		public $admin;			// WpssoAdmin (admin menus and page loader)
 		public $cache;			// SucomCache (object and file caching)
+		public $check;			// WpssoCheck
 		public $debug;			// SucomDebug or SucomNoDebug
 		public $head;			// WpssoHead
 		public $loader;			// WpssoLoader
@@ -178,6 +179,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->script = new SucomScript( $this );		// admin jquery tooltips
 			$this->webpage = new SucomWebpage( $this );		// title, desc, etc., plus shortcodes
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
+			$this->filters = new WpssoFilters( $this );		// integration filters
+
 			$this->head = new WpssoHead( $this );
 			$this->og = new WpssoOpenGraph( $this );
 			$this->weibo = new WpssoWeibo( $this );

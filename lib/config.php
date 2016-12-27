@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.38.0-1',	// plugin version
+					'version' => '3.38.1-dev1',	// plugin version
 					'opt_version' => '478',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_term' => 1,
 					'plugin_add_to_topic' => 0,	// bbpress
 					'plugin_add_to_user' => 1,
-					'plugin_wpseo_social_meta' => 1,		// Use Yoast SEO Custom Social Meta
+					'plugin_wpseo_social_meta' => 1,		// Read Yoast SEO Social Meta
 					'plugin_cf_img_url' => '_format_image_url',
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '_format_video_embed',
@@ -1522,6 +1522,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once( WPSSO_PLUGINDIR.'lib/term.php' );		// extends meta.php
 			require_once( WPSSO_PLUGINDIR.'lib/user.php' );		// extends meta.php
 			require_once( WPSSO_PLUGINDIR.'lib/media.php' );
+			require_once( WPSSO_PLUGINDIR.'lib/filters.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/head.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/opengraph.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/weibo.php' );

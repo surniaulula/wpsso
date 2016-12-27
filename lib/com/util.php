@@ -14,12 +14,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $is_mobile = null;		// is_mobile cached value
-		protected static $mobile_obj = null;		// SuextMobileDetect class object
-		protected static $plugins_index = null;		// active site and network plugins
-		protected static $site_plugins = null;
-		protected static $network_plugins = null;
-		protected static $crawler_name = null;		// saved crawler name from user-agent
+		protected static $is_mobile;			// is_mobile cached value
+		protected static $mobile_obj;			// SuextMobileDetect class object
+		protected static $plugins_index;		// active site and network plugins
+		protected static $site_plugins;
+		protected static $network_plugins;
+		protected static $crawler_name;			// saved crawler name from user-agent
 		protected static $filter_values = array();	// saved filter values
 		protected static $user_exists = array();	// saved user_exists() values
 		protected static $locales = array();		// saved get_locale() values
@@ -441,9 +441,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
+		// active plugins array is cached in a static class property
 		public static function active_plugins( $key = false ) {
-			// create list only once
-			if ( self::$plugins_index === null ) {
+			if ( ! isset( self::$plugins_index ) ) {
 				$all_plugins = self::$site_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
 					self::$network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
@@ -497,7 +497,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function crawler_name( $is_name = '' ) {
 
-			if ( self::$crawler_name === null ) {
+			if ( ! isset( self::$crawler_name ) ) {
 
 				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
 					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
@@ -1525,9 +1525,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns self::$is_mobile cached value after first check
 		public static function is_mobile() {
-			if ( self::$is_mobile === null ) {
+			if ( ! isset( self::$is_mobile ) ) {
 				// load class object on first check
-				if ( self::$mobile_obj === null ) {
+				if ( ! isset( self::$mobile_obj ) ) {
 					if ( ! class_exists( 'SuextMobileDetect' ) )
 						require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
 					self::$mobile_obj = new SuextMobileDetect();

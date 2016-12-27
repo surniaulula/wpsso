@@ -23,7 +23,6 @@ if ( ! class_exists( 'SucomNoDebug' ) ) {
 		public function show_html() {}
 		public function get_html() { return ''; }
 		public static function pretty_array() { return ''; }
-		public static function get_hooks() { return array(); }
 	}
 }
 

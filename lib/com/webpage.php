@@ -611,10 +611,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 				}
 
 				// apply the content filters
-				if ( $this->p->debug->enabled ) {
+				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'applying wordpress the_content filters' );
-					//$this->p->debug->log( SucomDebug::get_hooks( 'the_content' ) );
-				}
 
 				$content_text = apply_filters( 'the_content', $content_text );
 

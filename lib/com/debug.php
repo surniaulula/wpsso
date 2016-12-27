@@ -265,55 +265,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			return $ret;
 		}
-
-		public static function get_hooks( $hook_name = '' ) {
-			global $wp_filter;
-
-			$hook_list = empty( $wp_filter[$hook_name] ) ?
-				array() : call_user_func_array( 'array_merge', $wp_filter[$hook_name] );
-		
-			foreach( $hook_list as &$item ) {
-				// function name as string or static class method eg. 'Foo::Bar'
-				if ( is_string( $item['function'] ) ) { 
-					try {
-					   $ref = strpos( $item['function'], '::' ) ? 
-					   	new ReflectionClass( strstr( $item['function'], '::', true ) ) : 
-						new ReflectionFunction( $item['function'] );
-
-						$item['file'] = $ref->getFileName();
-						$item['line'] = get_class( $ref ) == 'ReflectionFunction' ?
-							$ref->getStartLine() : 
-							$ref->getMethod( substr( $item['function'], 
-								strpos( $item['function'], '::' ) + 2 ) )->getStartLine();
-					} catch( Exception $e ) {
-						$item['error'] = $e->getMessage();
-					}
-				// array( object, method ), array( string object, method ), array( string object, string 'parent::method' )
-				} elseif ( is_array( $item['function'] ) ) {
-					try {
-						$ref = new ReflectionClass( $item['function'][0] );
-						$item['file'] = $ref->getFileName();
-						$item['line'] = strpos( $item['function'][1], '::' ) ?
-							$ref->getParentClass()->getMethod( substr( $item['function'][1], 
-								strpos( $item['function'][1], '::' ) + 2 ) )->getStartLine() :
-							$ref->getMethod( $item['function'][1] )->getStartLine();
-					} catch( Exception $e ) {
-						$item['error'] = $e->getMessage();
-					}
-				// closures
-				} elseif ( is_callable( $item['function'] ) ) {     
-					try {
-						$ref = new ReflectionFunction( $item['function'] );         
-						$item['function'] = get_class( $item['function'] );
-						$item['file'] = $ref->getFileName();
-						$item['line'] = $ref->getStartLine();
-					} catch( Exception $e ) {
-			        		$item['error'] = $e->getMessage();
-					}
-				}       
-			}
-			return $hook_list;
-		}
 	}
 }
 
