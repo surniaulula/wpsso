@@ -53,11 +53,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
 					$defs['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
 
-				$defs['fb_locale'] = SucomUtil::get_locale( 'default' );
+				// define the Facebook locale value for the default and current locales
+				$defs['fb_locale'] = SucomUtil::get_fb_locale( array(), 'default' );
+				if ( ( $fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' )
+					$defs[$fb_locale_key] = SucomUtil::get_fb_locale( array(), 'current' );
 
-				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' );
-				$defs[$fb_locale_key] = SucomUtil::get_fb_locale( array(), 'current' );
-
+				// read Yoast SEO social meta if plugin is active or 'wpseo' settings found
 				$defs['plugin_wpseo_social_meta'] = $this->p->is_avail['seo']['wpseo'] || 
 					get_option( 'wpseo' ) ? 1 : 0;
 
