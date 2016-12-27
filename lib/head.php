@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
-				$mt_name['canonical'] = $sharing_url;
+				$mt_name['canonical'] = $this->p->util->get_canonical_url( $mod );
 
 			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
 				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 

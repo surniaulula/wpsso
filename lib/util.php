@@ -1074,9 +1074,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * $mod is true when buttons are added to individual posts on an index webpage.
 		 */
 		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+			return $this->get_page_url( 'sharing', $mod, $add_page, $src_id );
+		}
 
+		public function get_canonical_url( $mod = false, $add_page = true, $src_id = '' ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+			return $this->get_page_url( 'canonical', $mod, $add_page, $src_id );
+		}
+
+		private function get_page_url( $type, $mod, $add_page, $src_id ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
+					'type' => $type,
 					'mod' => $mod,
 					'add_page' => $add_page,
 					'src_id' => $src_id,
@@ -1093,11 +1105,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $mod['is_post'] ) {
 				if ( ! empty( $mod['id'] ) ) {
 					if ( is_object( $mod['obj'] ) )
-						$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
+						$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
 					if ( ! empty( $url ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom post sharing_url = '.$url );
+							$this->p->debug->log( 'custom post '.$type.'_url = '.$url );
 					} else $url = $this->check_url_string( get_permalink( $mod['id'] ), 'post permalink' );
 
 					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
@@ -1128,11 +1140,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} elseif ( $mod['is_term'] ) {
 					if ( ! empty( $mod['id'] ) ) {
 						if ( is_object( $mod['obj'] ) )
-							$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
+							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'custom term sharing_url = '.$url );
+								$this->p->debug->log( 'custom term '.$type.'_url = '.$url );
 						} else $url = $this->check_url_string( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
 					} 
 					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page, $src_id );
@@ -1140,11 +1152,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} elseif ( $mod['is_user'] ) {
 					if ( ! empty( $mod['id'] ) ) {
 						if ( is_object( $mod['obj'] ) )
-							$url = $mod['obj']->get_options( $mod['id'], 'sharing_url' );
+							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
 						if ( ! empty( $url ) ) {
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'custom user sharing_url = '.$url );
+								$this->p->debug->log( 'custom user '.$type.'_url = '.$url );
 						} else $url = $this->check_url_string( get_author_posts_url( $mod['id'] ), 'author posts' );
 					}
 					$url = apply_filters( $lca.'_user_url', $url, $mod, $add_page, $src_id );
@@ -1165,7 +1177,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$url = $this->check_url_string( get_month_link( get_query_var( 'year' ), 
 								get_query_var( 'monthnum' ) ), 'month link' );
 						elseif ( is_year() )
-							$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
+							$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ),
+								'year link' );
 					}
 					$url = apply_filters( $lca.'_archive_url', $url, $mod, $add_page, $src_id );
 				}
@@ -1199,10 +1212,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'server request url = '.$url );
 			}
 
-			return apply_filters( $lca.'_sharing_url', $url, $mod, $add_page, $src_id );
+			return apply_filters( $lca.'_'.$type.'_url', $url, $mod, $add_page, $src_id );
 		}
 
-		public function check_url_string( $url, $source = 'sharing' ) {
+		private function check_url_string( $url, $source ) {
 			if ( is_string( $url ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $source.' url = '.$url );
@@ -1216,9 +1229,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		// used by WpssoMedia::get_content_images()
 		public function fix_relative_url( $url ) {
 			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'relative url found = '.$url );
 
@@ -1707,10 +1720,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function shorten_html_href( $html ) {
 			return preg_replace_callback( '/(href=[\'"])([^\'"]+)([\'"])/', 
-				array( &$this, 'shorten_html_href_url' ), $html );
+				array( &$this, 'shorten_html_href_value' ), $html );
 		}
 
-		protected function shorten_html_href_url( $matches ) {
+		private function shorten_html_href_value( $matches ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'shortening url '.$matches[2] );
 			return $matches[1].apply_filters( $this->p->cf['lca'].'_shorten_url',
