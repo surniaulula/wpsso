@@ -319,7 +319,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Include and exclude specific tabs in the Social Settings metabox.', 'wpsso' );
 							break;
 						case 'tooltip-plugin_wpseo_social_meta':
-							$text = __( 'Use the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' );
+							$text = __( 'Read the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ).' '.
+							__( 'This option is checked by default if the Yoast SEO plugin is active or its settings are found in the database.',
+								'wpsso' );
 							break;
 						case 'tooltip-plugin_cf_img_url':
 							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';

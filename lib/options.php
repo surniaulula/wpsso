@@ -58,6 +58,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' );
 				$defs[$fb_locale_key] = SucomUtil::get_fb_locale( array(), 'current' );
 
+				$defs['plugin_wpseo_social_meta'] = $this->p->is_avail['seo']['wpseo'] || 
+					get_option( 'wpseo' ) ? 1 : 0;
+
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {

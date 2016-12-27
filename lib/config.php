@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_term' => 1,
 					'plugin_add_to_topic' => 0,	// bbpress
 					'plugin_add_to_user' => 1,
-					'plugin_wpseo_social_meta' => 1,		// Read Yoast SEO Social Meta
+					'plugin_wpseo_social_meta' => 0,		// Read Yoast SEO Social Meta
 					'plugin_cf_img_url' => '_format_image_url',
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '_format_video_embed',
