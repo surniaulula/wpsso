@@ -364,6 +364,18 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.38.1-dev1 (2016/12/27)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added an optional WPSSO_READ_WPSEO_META constant.
+	* Added a new WpssoFilters class to centralize 3rd party plugin filter hooks.
+
 **Version 3.38.0-1 (2016/12/24)**
 
 * *New Features*
@@ -563,6 +575,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.38.1-dev1 =
+
+(2016/12/27) Added the NGFB_READ_WPSEO_META constant. Added an NgfbFilters class to centralize 3rd party plugin filter hooks.
 
 = 3.38.0-1 =
 
