@@ -37,8 +37,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
 			}
 
-			if ( SucomUtil::get_const( 'WPSSO_READ_WPSEO_META' ) && empty( $this->p->is_avail['seo']['wpseo'] ) ) {
-				// use custom method names to add Yoast SEO meta
+			if ( ! empty( $this->p->options['plugin_wpseo_social_meta'] ) && 
+				empty( $this->p->is_avail['seo']['wpseo'] ) ) {
 				$this->p->util->add_plugin_filters( $this, array( 
 					'get_post_options_wpseo_meta' => array( 'get_post_options' => 2 ),
 					'get_term_options_wpseo_meta' => array( 'get_term_options' => 2 ),

@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						foreach ( array(
 							'plugin_hide_pro' => 0,
 						) as $idx => $def_val ) {
-							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+							if ( $opts[$idx] === $def_val )
 								continue;
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_check_head' => 1,
 							'plugin_upscale_images' => 0,
 						) as $idx => $def_val ) {
-							if ( $opts[$idx] == $def_val )	// numeric options could be strings
+							if ( $opts[$idx] === $def_val )
 								continue;
 							if ( is_admin() )
 								$this->p->notice->warn( sprintf( __( 'Non-standard value found for "%s" option - resetting to default value.',
@@ -206,10 +206,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					}
 
-					// if an seo plugin is detected, disable the standard seo meta tags
+					/*
+					 * If an SEO plugin is detected, adjust some related SEO options.
+					 */
 					if ( $this->p->is_avail['seo']['*'] ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'seo plugin found - checking enabled meta tag' );
+							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 						foreach ( array(
 							'add_meta_name_canonical' => 0,
 							'add_meta_name_description' => 0,
@@ -220,17 +222,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( $idx.' already set to '.$def_val );
 								continue;
-							} else {
-								if ( $this->p->debug->enabled )
-									$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
-								$opts[$idx] = $def_val;
-								$has_diff_options = true;	// save the options
 							}
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
+							$opts[$idx] = $def_val;
+							$has_diff_options = true;	// save the options
 						}
 					}
 
-					// the generator meta tags are required for plugin support
-					// you can disable the generator meta tags, but any request for support will be denied
+					/*
+ 					 * Generator meta tags are required for plugin support. If you disable the
+					 * generator meta tags, but requests for plugin support will be denied.
+					 */
 					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
 

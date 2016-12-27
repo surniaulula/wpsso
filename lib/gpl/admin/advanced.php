@@ -220,11 +220,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_add_to' ).
 			'<td class="blank">'.$checkboxes.'</td>';
 
-			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
-				$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Read Yoast SEO Social Meta',
-					'option label', 'wpsso' ), null, 'plugin_wpseo_social_meta' ).
-				'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
-			}
+			$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Read Yoast SEO Social Meta',
+				'option label', 'wpsso' ), null, 'plugin_wpseo_social_meta' ).
+			'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
 
 			$table_rows['plugin_cf_img_url'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Image URL Custom Field',

@@ -828,9 +828,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! isset( $info['lib']['pro'] ) )
 					continue;
 
-				$features = array();
-				$short = $this->p->cf['plugin'][$ext]['short'];
-				$short_pro = $short.' Pro';
+				if ( $ext === $lca ) {	// features for this plugin
+					$features = array(
+						'(tool) Yoast SEO Social Meta' => array( 
+							'status' => $this->p->options['plugin_wpseo_social_meta'] ? 'on' : 'off',
+						),
+					);
+				} else $features = array();
 
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
 					if ( $sub === 'admin' )	// skip status for admin menus and tabs
