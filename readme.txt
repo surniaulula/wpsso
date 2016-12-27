@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.38.1-dev1 (2016/12/27)**
+**Version 3.38.1-dev2 (2016/12/28)**
 
 * *New Features*
 	* None
@@ -373,7 +373,6 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added an optional WPSSO_READ_WPSEO_META constant.
 	* Added a new WpssoFilters class to centralize 3rd party plugin filter hooks.
 
 **Version 3.38.0-1 (2016/12/24)**
@@ -576,9 +575,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.38.1-dev1 =
+= 3.38.1-dev2 =
 
-(2016/12/27) Added the NGFB_READ_WPSEO_META constant. Added an NgfbFilters class to centralize 3rd party plugin filter hooks.
+(2016/12/28) Added an NgfbFilters class to centralize 3rd party plugin filter hooks.
 
 = 3.38.0-1 =
 
