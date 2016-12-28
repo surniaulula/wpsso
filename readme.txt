@@ -374,8 +374,8 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Developer Notes*
 	* Added a new WpssoFilters class to centralize 3rd party plugin filter hooks.
-	* Added a new NgfbUtil get_canonical_url() method specifically for the canonical meta tag.
-	* Added a new 'ngfb_canonical_url' filter to allow filtering of canonical and sharing URLs separately.
+	* Added a new WpssoUtil get_canonical_url() method specifically for the canonical meta tag.
+	* Added a new 'wpsso_canonical_url' filter to allow filtering of canonical and sharing URLs separately.
 
 **Version 3.38.0-1 (2016/12/24)**
 
@@ -520,13 +520,13 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed the WPSSO_META_TAGS_DISABLE contant to WPSSO_HEAD_HTML_DISABLE.
 	* Removed the WPSSO_TRANSIENT_CACHE_DISABLE, WPSSO_OBJECT_CACHE_DISABLE, and WPSSO_FILE_CACHE_DISABLE constants.
 	* Added several new filters to adjust transient / object cache expiration:
-		* 'ngfb_cache_expire_article_topics' ( $secs );
-		* 'ngfb_cache_expire_column_content' ( $secs );
-		* 'ngfb_cache_expire_content_text' ( $secs );
-		* 'ngfb_cache_expire_head_array' ( $secs );
-		* 'ngfb_cache_expire_image_url_size' ( $secs );
-		* 'ngfb_cache_expire_schema_types' ( $secs );
-		* 'ngfb_cache_expire_shorten_url' ( $secs );
+		* 'wpsso_cache_expire_article_topics' ( $secs );
+		* 'wpsso_cache_expire_column_content' ( $secs );
+		* 'wpsso_cache_expire_content_text' ( $secs );
+		* 'wpsso_cache_expire_head_array' ( $secs );
+		* 'wpsso_cache_expire_image_url_size' ( $secs );
+		* 'wpsso_cache_expire_schema_types' ( $secs );
+		* 'wpsso_cache_expire_shorten_url' ( $secs );	// Pro version
 
 **Version 3.36.3-2 (2016/10/23)**
 
@@ -579,7 +579,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.38.1-1 =
 
-(2016/12/28) Added an NgfbFilters class to centralize 3rd party plugin filter hooks.
+(2016/12/28) Added an WpssoFilters class to centralize 3rd party plugin filter hooks. Added a new WpssoUtil get_canonical_url() method and 'wpsso_canonical_url' filter.
 
 = 3.38.0-1 =
 
