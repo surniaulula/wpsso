@@ -874,15 +874,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$status_info = array( 
 				'on' => array(
 					'img' => 'green-circle.png',
-					'title' => __( 'Feature is enabled.', 'wpsso' ),
+					'title' => __( 'Module is enabled', 'wpsso' ),
 				),
 				'off' => array(
 					'img' => 'gray-circle.png',
-					'title' => __( 'Feature is disabled / not loaded.', 'wpsso' ),
+					'title' => __( 'Module disabled / not loaded', 'wpsso' ),
 				),
 				'rec' => array(
 					'img' => 'red-circle.png',
-					'title' => __( 'Feature is recommended but disabled / not available.', 'wpsso' ),
+					'title' => __( 'Module recommended but disabled / not available', 'wpsso' ),
 				),
 			);
 
@@ -900,7 +900,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $status_key ) ) {
 					$td_class = empty( $arr['td_class'] ) ? '' : ' '.$arr['td_class'];
 					$icon_type = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
-					$icon_title = 'Generic Feature Module';
+					$icon_title = __( 'Generic feature module', 'wpsso' );
 					$label_text = empty( $match[2] ) ? $label : $match[2];
 					$label_text = empty( $arr['label'] ) ? $label_text : $arr['label'];
 					$purchase_url = $status_key === 'rec' && ! empty( $arr['purchase'] ) ? $arr['purchase'] : '';
@@ -908,23 +908,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $icon_type ) {
 						case 'api':
 							$icon_type = 'controls-repeat';
-							$icon_title = 'Service API Module';
+							$icon_title = __( 'Service API module', 'wpsso' );
 							break;
 						case 'code':
 							$icon_type = 'editor-code';
-							$icon_title = 'Meta Tag and Markup Module';
+							$icon_title = __( 'Meta tag and markup module', 'wpsso' );
 							break;
 						case 'plugin':
 							$icon_type = 'admin-plugins';
-							$icon_title = 'Plugin Integration Module';
+							$icon_title = __( 'Plugin integration module', 'wpsso' );
 							break;
 						case 'sharing':
 							$icon_type = 'screenoptions';
-							$icon_title = 'Sharing Functionality Module';
+							$icon_title = __( 'Sharing functionality module', 'wpsso' );
 							break;
 						case 'tool':
 							$icon_type = 'admin-tools';
-							$icon_title = 'Additional Functionality Module';
+							$icon_title = __( 'Additional functionality module', 'wpsso' );
 							break;
 					}
 

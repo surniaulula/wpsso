@@ -187,15 +187,39 @@ msgid "View %s changelog..."
 msgstr ""
 
 #: lib/admin.php:877
-msgid "Feature is enabled."
+msgid "Module is enabled"
 msgstr ""
 
 #: lib/admin.php:881
-msgid "Feature is disabled / not loaded."
+msgid "Module disabled / not loaded"
 msgstr ""
 
 #: lib/admin.php:885
-msgid "Feature is recommended but disabled / not available."
+msgid "Module recommended but disabled / not available"
+msgstr ""
+
+#: lib/admin.php:903
+msgid "Generic feature module"
+msgstr ""
+
+#: lib/admin.php:911
+msgid "Service API module"
+msgstr ""
+
+#: lib/admin.php:915
+msgid "Meta tag and markup module"
+msgstr ""
+
+#: lib/admin.php:919
+msgid "Plugin integration module"
+msgstr ""
+
+#: lib/admin.php:923
+msgid "Sharing functionality module"
+msgstr ""
+
+#: lib/admin.php:927
+msgid "Additional functionality module"
 msgstr ""
 
 #: lib/admin.php:966
