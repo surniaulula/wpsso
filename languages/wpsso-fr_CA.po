@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.1-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2016-12-28 13:10+1100\n"
-"PO-Revision-Date: 2016-12-28 13:10+1100\n"
+"POT-Creation-Date: 2016-12-28 13:54+1100\n"
+"PO-Revision-Date: 2016-12-28 13:54+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -192,7 +192,7 @@ msgid "Module is enabled"
 msgstr "Module est activé"
 
 #: lib/admin.php:881
-msgid "Module disabled / not loaded"
+msgid "Module is disabled / not loaded"
 msgstr "Module désactivée / non chargée"
 
 #: lib/admin.php:885
