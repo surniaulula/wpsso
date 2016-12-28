@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			$lca = $this->p->cf['lca'];
 			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
-			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg_info[$lca]['short'].'</h3>'."\n";
+			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
 			echo '<div id="poststuff">'."\n";
 			do_meta_boxes( $lca.'-user', 'normal', $user );
 			echo "\n".'</div><!-- .poststuff -->'."\n";

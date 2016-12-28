@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_ext = null;
 		protected $pagehook = null;
 
-		public static $pkg_info = array();
-		public static $readme_info = array();	// array for the readme of each extension
+		public static $pkg = array();
+		public static $readme = array();	// array for the readme of each extension
 
 		public $form;
 		public $lang = array();
@@ -69,14 +69,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function set_objects() {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				self::$pkg_info[$ext]['aop'] = $this->p->check->aop( $this->p->cf['lca'], 
+				self::$pkg[$ext]['aop'] = $this->p->check->aop( $this->p->cf['lca'], 
 					true, $this->p->is_avail['aop'] ) && $this->p->check->aop( $ext, 
 						true, -1 ) === -1 ? true : false;
-				self::$pkg_info[$ext]['type'] = self::$pkg_info[$ext]['aop'] ?
+				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' );
-				self::$pkg_info[$ext]['short'] = $info['short'].' '.self::$pkg_info[$ext]['type'];
-				self::$pkg_info[$ext]['name'] = $info['name'].' '.self::$pkg_info[$ext]['type'];
+				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
+				self::$pkg[$ext]['name'] = $info['name'].' '.self::$pkg[$ext]['type'];
 			}
 
 			$menu_libs = array( 
@@ -123,8 +123,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public static function set_readme_info( $read_cache = true ) {
 			$wpsso =& Wpsso::get_instance();
 			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
-				if ( empty( self::$readme_info[$ext] ) )
-					self::$readme_info[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
+				if ( empty( self::$readme[$ext] ) )
+					self::$readme[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
 			}
 		}
 
@@ -210,8 +210,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 			$this->pagehook = add_menu_page( 
-				self::$pkg_info[$lca]['short'].' &mdash; '.$this->menu_name, 
-				$this->p->cf['menu_label'].' '.self::$pkg_info[$lca]['type'], 
+				self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name, 
+				$this->p->cf['menu_label'].' '.self::$pkg[$lca]['type'], 
 				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
 					'manage_options' ),	// fallback to manage_options capability
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					array( '<span style="color:#'.$this->p->cf['menu_color'].';">', '</span>' ), $menu_title );
 
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
-			$page_title = self::$pkg_info[$menu_ext]['short'].' &mdash; '.$menu_title;
+			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_title;
 			$function = array( &$this, 'show_setting_page' );
 
 			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
@@ -522,7 +522,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form_property( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.self::$pkg_info[$this->menu_ext]['short'].' &ndash; '.
+			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.
 				$this->menu_name.'</h1>'."\n";
 
 			if ( $sidebar === false ) {
@@ -707,13 +707,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
 
-				if ( ! empty( self::$readme_info[$ext]['stable_tag'] ) ) {
-					$stable_version = self::$readme_info[$ext]['stable_tag'];
+				if ( ! empty( self::$readme[$ext]['stable_tag'] ) ) {
+					$stable_version = self::$readme[$ext]['stable_tag'];
 
-					if ( is_array( self::$readme_info[$ext]['upgrade_notice'] ) ) {
+					if ( is_array( self::$readme[$ext]['upgrade_notice'] ) ) {
 						// hooked by the update manager to apply the version filter
 						$upgrade_notice = apply_filters( $lca.'_readme_upgrade_notices',
-							self::$readme_info[$ext]['upgrade_notice'], $ext );
+							self::$readme[$ext]['upgrade_notice'], $ext );
 						reset( $upgrade_notice );
 						$latest_version = key( $upgrade_notice );
 						$latest_notice = $upgrade_notice[$latest_version];
@@ -733,7 +733,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					else $installed_style = 'style="background-color:#0f0;"';	// green
 				}
 
-				echo '<tr><td colspan="2"><h4>'.self::$pkg_info[$ext]['short'].'</h4></td></tr>';
+				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
 
 				echo '<tr><th class="side">'._x( 'Installed', 'plugin status label', 'wpsso' ).':</th>
 					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
@@ -798,7 +798,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					);
 				} else $features = array();
 
-				$features = apply_filters( $ext.'_'.$metabox.'_gpl_features', $features, $ext, $info );
+				self::$pkg[$ext]['purchase'] = '';
+
+				$features = apply_filters( $ext.'_'.$metabox.'_gpl_features', $features, $ext, $info, self::$pkg[$ext] );
 
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
@@ -828,13 +830,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! isset( $info['lib']['pro'] ) )
 					continue;
 
-				if ( $ext === $lca ) {	// features for this plugin
-					$features = array(
-						'(tool) Yoast SEO Social Meta' => array( 
-							'status' => $this->p->options['plugin_wpseo_social_meta'] ? 'on' : 'off',
-						),
-					);
-				} else $features = array();
+				$features = array();
+
+				self::$pkg[$ext]['purchase'] = empty( $info['url']['purchase'] ) ? 
+					'' : add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
 
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
 					if ( $sub === 'admin' )	// skip status for admin menus and tabs
@@ -849,20 +848,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id, false );	// $underscore = false
 						$status_off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
-						$purchase_url = empty( $info['url']['purchase'] ) ? 
-							'' : add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
-
 						$features[$label] = array( 
-							'td_class' => self::$pkg_info[$ext]['aop'] ? '' : 'blank',
-							'purchase' => $purchase_url,
+							'td_class' => self::$pkg[$ext]['aop'] ? '' : 'blank',
+							'purchase' => self::$pkg[$ext]['purchase'],
 							'status' => class_exists( $classname ) ?
-								( self::$pkg_info[$ext]['aop'] ?
+								( self::$pkg[$ext]['aop'] ?
 									'on' : $status_off ) : $status_off,
 						);
 					}
 				}
 
-				$features = apply_filters( $ext.'_'.$metabox.'_pro_features', $features, $ext, $info );
+				$features = apply_filters( $ext.'_'.$metabox.'_pro_features', $features, $ext, $info, self::$pkg[$ext] );
 
 				if ( ! empty( $features ) ) {
 					if ( $plugin_count > 1 )
@@ -893,35 +889,47 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
 
 			foreach ( $features as $label => $arr ) {
-
 				if ( isset( $arr['classname'] ) )
-					$status_key = class_exists( $arr['classname'] ) ?
-						'on' : 'off';
+					$status_key = class_exists( $arr['classname'] ) ? 'on' : 'off';
 				elseif ( isset( $arr['constant'] ) )
-					$status_key = SucomUtil::get_const( $arr['constant'] ) ?
-						'on' : 'off';
+					$status_key = SucomUtil::get_const( $arr['constant'] ) ? 'on' : 'off';
 				elseif ( isset( $arr['status'] ) )
 					$status_key = $arr['status'];
 				else $status_key = '';
 
 				if ( ! empty( $status_key ) ) {
-
 					$td_class = empty( $arr['td_class'] ) ? '' : ' '.$arr['td_class'];
 					$icon_type = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
+					$icon_title = 'Generic Feature Module';
 					$label_text = empty( $match[2] ) ? $label : $match[2];
 					$label_text = empty( $arr['label'] ) ? $label_text : $arr['label'];
 					$purchase_url = $status_key === 'rec' && ! empty( $arr['purchase'] ) ? $arr['purchase'] : '';
 
 					switch ( $icon_type ) {
-						case 'api': $icon_type = 'controls-repeat'; break;
-						case 'code': $icon_type = 'editor-code'; break;
-						case 'plugin': $icon_type = 'admin-plugins'; break;
-						case 'sharing': $icon_type = 'screenoptions'; break;
-						case 'tool': $icon_type = 'admin-tools'; break;
+						case 'api':
+							$icon_type = 'controls-repeat';
+							$icon_title = 'Service API Module';
+							break;
+						case 'code':
+							$icon_type = 'editor-code';
+							$icon_title = 'Meta Tag and Markup Module';
+							break;
+						case 'plugin':
+							$icon_type = 'admin-plugins';
+							$icon_title = 'Plugin Integration Module';
+							break;
+						case 'sharing':
+							$icon_type = 'screenoptions';
+							$icon_title = 'Sharing Functionality Module';
+							break;
+						case 'tool':
+							$icon_type = 'admin-tools';
+							$icon_title = 'Additional Functionality Module';
+							break;
 					}
 
 					echo '<tr>'.
-					'<td class="side"><span class="dashicons dashicons-'.$icon_type.'"></span></td>'.
+					'<td class="side"><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
 					'<td class="side'.$td_class.'">'.$label_text.'</td>'.
 					'<td class="side">'.
 						( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
@@ -982,7 +990,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$help_links .= '</li>'."\n";
 				}
 
-				if ( ! empty( $info['url']['support'] ) && self::$pkg_info[$ext]['aop'] )
+				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] )
 					$help_links .= '<li>'.sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a> (Pro version)',
 						'wpsso' ), $info['url']['support'] ).'</li>'."\n";
 				elseif ( ! empty( $info['url']['forum'] ) )
@@ -1135,7 +1143,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_info[$lca]['aop'] ) {
+						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
@@ -1146,7 +1154,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td colspan="2">'.( self::$pkg_info[$ext]['aop'] ? '' :
+							'</td><td colspan="2">'.( self::$pkg[$ext]['aop'] ? '' :
 								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
@@ -1154,7 +1162,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! empty( $info['update_auth'] ) || 
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-						if ( $lca === $ext || self::$pkg_info[$lca]['aop'] ) {
+						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
 							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
@@ -1168,7 +1176,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
-							'</td><td>'.( self::$pkg_info[$ext]['aop'] ? '' :
+							'</td><td>'.( self::$pkg[$ext]['aop'] ? '' :
 								$this->p->msgs->get( 'pro-option-msg' ) ).'</td></tr>'."\n";
 						}
 					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
