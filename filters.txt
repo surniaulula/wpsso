@@ -25,7 +25,7 @@
 'wpsso_cache_expire_head_array' ( $secs );
 'wpsso_cache_expire_image_url_size' ( $secs );
 'wpsso_cache_expire_schema_types' ( $secs );
-'wpsso_cache_expire_shorten_url' ( $secs );
+'wpsso_cache_expire_shorten_url' ( $secs );	// Pro version
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx );
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj );
@@ -42,17 +42,17 @@
 'wpsso_get_config' ( $cf, $plugin_version );
 'wpsso_get_defaults' ( $defaults );
 'wpsso_get_options' ( $options );
-'wpsso_get_post_options' ( $options, $post_id );
+'wpsso_get_post_options' ( $options, $post_id );	// Pro version
 'wpsso_get_site_defaults' ( $defaults );
 'wpsso_get_site_options' ( $options );
-'wpsso_get_term_options' ( $options, $term_id );
-'wpsso_get_user_options' ( $options, $user_id );
+'wpsso_get_term_options' ( $options, $term_id );	// Pro version
+'wpsso_get_user_options' ( $options, $user_id );	// Pro version
 'wpsso_hashtags' ( $hashtags, $post_id );
 'wpsso_hashtags_seed' ( '', $post_id );
 'wpsso_home_url' ( $url, $mod, $add_page, $src_id );
-'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );
-'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );
-'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );
+'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );	// Pro version
+'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );	// Pro version
+'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );	// Pro version
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
 'wpsso_json_add_https_schema_org_collectionpage_parts' ( $bool );
@@ -67,7 +67,8 @@
 'wpsso_link_rel' ( $link_rel, $use_post, $mod );
 'wpsso_load_lib' ( false, "$type/$sub/$id" );
 'wpsso_meta_name' ( $meta_name, $use_post, $mod );
-'wpsso_ngg_tags' ( $tags, $pid );
+'wpsso_ngg_tags' ( $tags, $pid );	// Pro version
+'wpsso_ngg_tags_seed' ( $tags, $pid );	// Pro version
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
 'wpsso_og' ( $og, $use_post, $mod );
 'wpsso_og_add_product_mt_offer' ( $bool, $mod );
@@ -76,17 +77,17 @@
 'wpsso_og_default_img_url' ( $image_url );
 'wpsso_og_default_img_on_index' ( $bool );
 'wpsso_og_default_img_on_search' ( $bool );
-'wpsso_og_edd' ( $og_ecom, $use_post, $mod );
+'wpsso_og_edd' ( $og_ecom, $use_post, $mod );	// Pro version
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 'wpsso_og_image_post_column_content' ( $value, $column_name, $mod );
 'wpsso_og_image_term_column_content' ( $value, $column_name, $mod );
 'wpsso_og_image_user_column_content' ( $value, $column_name, $mod );
-'wpsso_og_marketpress' ( $og_ecom, $mod );
+'wpsso_og_marketpress' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_prefix_ns' ( $ns );
 'wpsso_og_seed' ( $og, $use_post, $mod );
 'wpsso_og_type' ( $og['og:type'], $use_post );
-'wpsso_og_woocommerce' ( $og_ecom, $use_post, $mod );
-'wpsso_og_wpecommerce' ( $og_ecom );
+'wpsso_og_woocommerce' ( $og_ecom, $use_post, $mod );	// Pro version
+'wpsso_og_wpecommerce' ( $og_ecom );	// Pro version
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
