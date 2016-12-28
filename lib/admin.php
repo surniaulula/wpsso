@@ -878,7 +878,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 				'off' => array(
 					'img' => 'gray-circle.png',
-					'title' => __( 'Module disabled / not loaded', 'wpsso' ),
+					'title' => __( 'Module is disabled / not loaded', 'wpsso' ),
 				),
 				'rec' => array(
 					'img' => 'red-circle.png',
