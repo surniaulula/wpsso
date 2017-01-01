@@ -364,6 +364,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.38.2-dev1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new "Honor the FORCE_SSL Constant" option on the Advanced settings page.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a check and action hook to honor the FORCE_SSL constant on the front-end.
+
 **Version 3.38.1-1 (2016/12/28)**
 
 * *New Features*
@@ -576,6 +587,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.38.2-dev1 =
+
+(TBD) Added a new "Honor the FORCE_SSL Constant" option on the Advanced settings page.
 
 = 3.38.1-1 =
 
