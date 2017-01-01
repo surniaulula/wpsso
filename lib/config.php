@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.38.1-1',	// plugin version
-					'opt_version' => '479',		// increment when changing default options
+					'opt_version' => '480',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -654,7 +654,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_clear_on_save' => 1,			// Clear All Cache(s) on Save Settings
+					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
+					'plugin_clear_on_save' => 1,			// Clear Cache(s) on Save Settings
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
@@ -782,7 +783,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_clear_on_save' => 0,			// Clear All Cache(s) on Save Settings
+					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
+					'plugin_honor_force_ssl:use' => 'default',
+					'plugin_clear_on_save' => 0,			// Clear Cache(s) on Save Settings
 					'plugin_clear_on_save:use' => 'default',
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_preserve:use' => 'default',

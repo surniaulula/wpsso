@@ -338,9 +338,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return true;
 				else return false;
 			} elseif ( ! empty( $_SERVER['HTTPS'] ) ||
-				( is_admin() && self::get_const( 'FORCE_SSL_ADMIN' ) ) )
-					return true;
-			else return false;
+				( is_admin() && self::get_const( 'FORCE_SSL_ADMIN' ) ) ||
+					self::get_const( 'FORCE_SSL' ) ) {
+						return true;
+			} else return false;
 		}
 
 		public static function get_prot( $url = '' ) {

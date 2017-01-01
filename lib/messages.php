@@ -253,20 +253,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Plugin Settings' settings
 						 */
-						case 'tooltip-plugin_clear_on_save':	// Clear All Cache(s) on Save Settings
-							$text = 'Automatically clear all cache(s) when saving the plugin settings (default is checked).';
+						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
+							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
+							break;
+						case 'tooltip-plugin_clear_on_save':	// Clear Cache(s) on Save Settings
+							$text = __( 'Automatically clear all plugin cache(s) when saving the plugin settings (default is checked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
-							$text = 'Check this option if you would like to preserve all '.$info['short'].' settings when you <em>uninstall</em> the plugin (default is unchecked).';
+							$text = sprintf( __( 'Check this option if you would like to preserve all %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_debug':	// Add Hidden Debug Messages
-							$text = 'Add hidden debug messages to the HTML of webpages (default is unchecked).';
+							$text = __( 'Add debugging messages to back-end and front-end webpages as hidden HTML comments (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings
-							$text = 'Hide all Pro version settings, tabs, and options (default is unchecked).';
+							$text = __( 'Hide all Pro version settings, tabs, and options (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_show_opts':	// Options to Show by Default
-							$text = 'Select the default number of options to display in the '.$info['short'].' settings pages. The basic view shows only the most commonly used options.';
+							$text = sprintf( __( 'Select the default set of options to display in the %s settings pages. The basic view shows only the most commonly used options.', 'wpsso' ), $info['short'] );
 							break;
 						/*
 						 * 'Content and Filters' settings

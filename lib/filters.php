@@ -26,17 +26,33 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			} else {
 				// disable jetPack open graph meta tags
 				if ( SucomUtil::active_plugins( 'jetpack/jetpack.php' ) ) {
-					add_filter( 'jetpack_enable_opengraph', '__return_false', 100 );
-					add_filter( 'jetpack_enable_open_graph', '__return_false', 100 );
-					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 100 );
+					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
+					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
+					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
 				}
 
 				// disable Yoast SEO social meta tags
 				// execute after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
 				if ( SucomUtil::active_plugins( 'wordpress-seo/wp-seo.php' ) )
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
-			}
 
+				// honor the FORCE_SSL constant on the front-end
+				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) &&
+					empty( $_SERVER['HTTPS'] ) && SucomUtil::get_const( 'FORCE_SSL' ) )
+						add_action( 'template_redirect', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
+			}
+		}
+
+		/*
+		 * Action hook to honor the FORCE_SSL constant.
+		 */
+		public static function force_ssl_redirect() {
+			if ( empty( $_SERVER['HTTPS'] ) ) {	// just in case
+				// 301 redirect is considered a best practice for upgrading from HTTP to HTTPS
+				// see https://en.wikipedia.org/wiki/HTTP_301 for more info
+				wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
+				exit();
+			}
 		}
 
 		/*

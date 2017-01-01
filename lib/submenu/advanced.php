@@ -95,7 +95,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$table_rows['plugin_clear_on_save'] = $this->form->get_th_html( _x( 'Clear All Cache(s) on Save Settings',
+					$table_rows['plugin_honor_force_ssl'] = $this->form->get_th_html( _x( 'Honor the FORCE_SSL Constant',
+						'option label', 'wpsso' ), null, 'plugin_honor_force_ssl' ).
+					'<td>'.$this->form->get_checkbox( 'plugin_honor_force_ssl' ).'</td>';
+
+					$table_rows['plugin_clear_on_save'] = $this->form->get_th_html( _x( 'Clear Cache(s) on Save Settings',
 						'option label', 'wpsso' ), null, 'plugin_clear_on_save' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_clear_on_save' ).'</td>';
 
