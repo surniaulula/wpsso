@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_clear_on_save':	// Clear Cache(s) on Save Settings
-							$text = __( 'Automatically clear all plugin cache(s) when saving the plugin settings (default is checked).', 'wpsso' );
+							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
 							$text = sprintf( __( 'Check this option if you would like to preserve all %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );

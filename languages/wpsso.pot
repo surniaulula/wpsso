@@ -1628,7 +1628,7 @@ msgstr ""
 
 #: lib/messages.php:260
 msgid ""
-"Automatically clear all plugin cache(s) when saving the plugin settings "
+"Automatically clear all known plugin cache(s) when saving the %s settings "
 "(default is checked)."
 msgstr ""
 
