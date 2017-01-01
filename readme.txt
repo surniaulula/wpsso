@@ -11,7 +11,7 @@ Tags: seo, social, share, open graph, facebook, twitter, pinterest, youtube, sha
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7
-Stable Tag: 3.38.1-1
+Stable Tag: 3.38.2-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.38.2-dev1 (TBD)**
+**Version 3.38.2-1 (2017/01/02)**
 
 * *New Features*
 	* None
@@ -588,9 +588,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.38.2-dev1 =
+= 3.38.2-1 =
 
-(TBD) Added a new "Honor the FORCE_SSL Constant" option on the Advanced settings page.
+(2017/01/02) Added a new "Honor the FORCE_SSL Constant" option on the Advanced settings page.
 
 = 3.38.1-1 =
 
