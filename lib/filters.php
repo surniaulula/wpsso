@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				// honor the FORCE_SSL constant on the front-end
 				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) &&
 					empty( $_SERVER['HTTPS'] ) && SucomUtil::get_const( 'FORCE_SSL' ) )
-						add_action( 'init', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
+						add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 			}
 		}
 
