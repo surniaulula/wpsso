@@ -365,6 +365,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.38.3-dev1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Refactored the SucomUtil is_https() method and added a check for proxy / load-balancing 'HTTP_X_FORWARDED_PROTO' and 'HTTP_X_FORWARDED_SSL' web server variables.
+
 **Version 3.38.2-1 (2017/01/02)**
 
 * *New Features*
@@ -588,6 +599,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.38.3-dev1 =
+
+(TBD) Refactored the SucomUtil is_https() method.
 
 = 3.38.2-1 =
 
