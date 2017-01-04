@@ -1765,7 +1765,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $header_files as $tmpl_file ) {
 				$tmpl_base = basename( $tmpl_file );
-				$ret_array[$tmpl_base] = $tmpl_file;	// child overwrites parent
+				$ret_array[$tmpl_base] = $tmpl_file;	// child tmpl file overwrites parent
 			}
 
 			return $ret_array;

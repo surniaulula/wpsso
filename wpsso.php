@@ -68,12 +68,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		private static $instance;
 
-		public static function &get_instance() {
-			if ( ! isset( self::$instance ) )
-				self::$instance = new self;
-			return self::$instance;
-		}
-
 		/*
 		 * Wpsso Constructor
 		 */
@@ -88,6 +82,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( &$this, 'set_config' ), -10 );
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );
 			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );
+		}
+
+		public static function &get_instance() {
+			if ( ! isset( self::$instance ) )
+				self::$instance = new self;
+			return self::$instance;
 		}
 
 		// runs at init priority -10
