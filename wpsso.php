@@ -24,7 +24,7 @@
  *
  * See PHP's version_compare() documentation at http://php.net/manual/en/function.version-compare.php.
  * 
- * Copyright 2012-2016 Jean-Sebastien Morisset (https://surniaulula.com/)
+ * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) 
