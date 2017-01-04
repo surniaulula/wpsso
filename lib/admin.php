@@ -1193,7 +1193,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 
 			$lca = $this->p->cf['lca'];
-			$base = $this->p->cf['plugin'][$lca]['base'];
 			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
 			$log_pre = 'plugin conflict detected - ';	// don't translate the debug 
 
@@ -1422,21 +1421,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' ||
 					! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) )
-						return;
+						return;	// exit early
 
-			$headers = glob( get_stylesheet_directory().'/header*.php' );	// returns false on error
-
-			if ( is_array( $headers ) ) {
-				foreach ( $headers as $file ) {
-					if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false )
-						continue;
-					elseif ( strpos( $html, '<head>' ) !== false ) {
-						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-								true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
-						}
-						break;
+			foreach ( SucomUtil::get_header_files() as $tmpl_file ) {
+				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false )
+					continue;
+				elseif ( strpos( $html, '<head>' ) !== false ) {
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
+							true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
 					}
+					break;
 				}
 			}
 		}
@@ -1444,49 +1439,51 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function modify_tmpl_head_attributes() {
 
 			$have_changes = false;
-			$headers = glob( get_stylesheet_directory().'/header*.php' );
+			$header_files = SucomUtil::get_header_files();
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?'.'>>';	// breakup closing php for vim syntax highlighting
 
-			if ( empty( $headers ) ) {
-				$this->p->notice->err( sprintf( __( 'No header templates found in %s.', 'wpsso' ), get_stylesheet_directory() ) );
-			} else {
-				foreach ( $headers as $file ) {
-					$base = basename( $file );
-					$backup = $file.'~backup-'.date( 'Ymd-His' );
-	
-					// double check in case of reloads etc.
-					if ( ( $html = SucomUtil::get_stripped_php( $file ) ) === false ||
-						strpos( $html, '<head>' ) === false ) {
-						$this->p->notice->err( sprintf( __( '&lt;head&gt; element not found in %s.', 'wpsso' ), $file ) );
-						continue;
-					}
-	
-					// make a backup of the original
-					if ( ! copy( $file, $backup ) ) {
-						$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $base, $backup ) );
-						continue;
-					}
-	
-					$tmpl_contents = file_get_contents( $file );
-					$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
-	
-					if ( ! $tmpl_fh = @fopen( $file, 'wb' ) ) {
-						$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.', 'wpsso' ), $file ) );
-						continue;
-					}
-	
-					if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
-						$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully updated and saved. A backup copy of the original template is available in %2$s.', 'wpsso' ), $base, $backup ) );
-						$have_changes = true;
-					} else {
-						$this->p->notice->err( sprintf( __( 'Failed to write the %1$s template. You may need to restore the original template from %2$s.', 'wpsso' ), $base, $backup ) );
-					}
-
-					fclose( $tmpl_fh );
-				}
+			if ( empty( $header_files ) ) {
+				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.', 'wpsso' ) );
+				return;	// exit early
 			}
 
-			if ( $have_changes === true )
+			foreach ( $header_files as $tmpl_file ) {
+				$tmpl_base = basename( $tmpl_file );
+				$backup_file = $tmpl_file.'~backup-'.date( 'Ymd-His' );
+				$backup_base = basename( $backup_file );
+	
+				// double check in case of reloads etc.
+				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ||
+					strpos( $html, '<head>' ) === false ) {
+					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML element found in the %s template.', 'wpsso' ), $tmpl_file ) );
+					continue;
+				}
+
+				// make a backup of the original
+				if ( ! copy( $tmpl_file, $backup_file ) ) {
+					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
+					continue;
+				}
+
+				$tmpl_contents = file_get_contents( $tmpl_file );
+				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
+
+				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
+					$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.', 'wpsso' ), $tmpl_file ) );
+					continue;
+				}
+
+				if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
+					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
+					$have_changes = true;
+				} else {
+					$this->p->notice->err( sprintf( __( 'Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
+				}
+
+				fclose( $tmpl_fh );
+			}
+
+			if ( $have_changes )
 				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), 'all' );	// just in case
 		}
 

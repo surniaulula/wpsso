@@ -36,20 +36,23 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( SucomUtil::active_plugins( 'wordpress-seo/wp-seo.php' ) )
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
 
-				// honor the FORCE_SSL constant on the front-end
-				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) &&
-					empty( $_SERVER['HTTPS'] ) && SucomUtil::get_const( 'FORCE_SSL' ) )
+				// honor the FORCE_SSL constant on the front-end with a 301 redirect
+				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
+					if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
 						add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
+					}
+				}
 			}
 		}
 
 		/*
-		 * Action hook to honor the FORCE_SSL constant.
+		 * Redirect from HTTP to HTTPS if the current webpage URL is
+		 * not HTTPS. A 301 redirect is considered a best practice when
+		 * moving from HTTP to HTTPS. See
+		 * https://en.wikipedia.org/wiki/HTTP_301 for more info.
 		 */
 		public static function force_ssl_redirect() {
-			if ( empty( $_SERVER['HTTPS'] ) ) {	// just in case
-				// 301 redirect is considered a best practice for upgrading from HTTP to HTTPS
-				// see https://en.wikipedia.org/wiki/HTTP_301 for more info
+			if ( ! SucomUtil::is_https() ) {
 				wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
 				exit();
 			}

@@ -333,19 +333,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_https( $url = '' ) {
-			if ( ! empty( $url ) && strpos( $url, '://' ) ) {
-				if ( parse_url( $url, PHP_URL_SCHEME ) === 'https' )
-					return true;
-				else return false;
-			} elseif ( ! empty( $_SERVER['HTTPS'] ) ||
-				( is_admin() && self::get_const( 'FORCE_SSL_ADMIN' ) ) ||
-					self::get_const( 'FORCE_SSL' ) ) {
+			if ( ! empty( $url ) ) {
+				if ( strpos( $url, '://' ) &&	// just in case
+					parse_url( $url, PHP_URL_SCHEME ) === 'https' )
 						return true;
-			} else return false;
+				else return false;
+			} elseif ( is_ssl() ) {		// since wp 2.6.0
+				return true;
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 
+				strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
+				return true;
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 
+				strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public static function get_prot( $url = '' ) {
-			return self::is_https( $url ) ? 'https' : 'http';
+			if ( self::is_https( $url ) ) {
+				return 'https';
+			} elseif ( is_admin() )  {
+				if ( self::get_const( 'FORCE_SSL_ADMIN' ) ) {
+					return 'https';
+				}
+			} elseif ( self::get_const( 'FORCE_SSL' ) ) {
+				return 'https';
+			}
+			return 'http';
 		}
 
 		public static function add_prot( $url = '' ) {
@@ -1734,6 +1750,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_bool( $mixed ) {
 			return is_string( $mixed ) ? 
 				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
+		}
+
+		// glob() returns false on error
+		public static function get_header_files() {
+			$ret_array = array();
+			$parent_dir = get_template_directory();
+			$child_dir = get_stylesheet_directory();
+			$header_files = (array) glob( $parent_dir.'/header*.php' );
+
+			if ( $parent_dir !== $child_dir )
+				$header_files = array_merge( $header_files, 
+					(array) glob( $child_dir.'/header*.php' ) );
+
+			foreach ( $header_files as $tmpl_file ) {
+				$tmpl_base = basename( $tmpl_file );
+				$ret_array[$tmpl_base] = $tmpl_file;	// child overwrites parent
+			}
+
+			return $ret_array;
 		}
 	}
 }
