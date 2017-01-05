@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// (don't show under the WordPress settings menu or in network settings pages)
 			if ( $this->menu_lib === 'submenu' ) {
 				add_meta_box( $this->pagehook.'_status_gpl',
-					_x( 'Standard Features', 'metabox title (side)', 'wpsso' ), 
+					_x( 'Free / Basic Features', 'metabox title (side)', 'wpsso' ), 
 						array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
 
 				add_meta_box( $this->pagehook.'_status_pro',

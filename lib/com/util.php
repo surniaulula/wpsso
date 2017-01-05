@@ -748,6 +748,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function get_first_last_next_nums( array $input ) {
+			$count = count( $input );
+			$keys = array_keys( $input );
+			if ( $count && ! is_numeric( implode( $keys ) ) )	// array cannot be associative
+				return array( 0, 0, 0 );
+			sort( $keys );
+			$first = (int) reset( $keys );
+			$last = (int) end( $keys );
+			$next = $count ? $last + 1 : $last;	// next is 0 for an empty array
+			return array( $first, $last, $next );
+		}
+
 		// return the first url from the associative array (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( array $assoc, $mt_pre = 'og:image' ) {
 
@@ -916,18 +928,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$results = array( 'none' => '[None]' ) + $results;	// maintain numeric index
 
 			return $results;
-		}
-
-		public static function get_first_last_next_nums( array $input ) {
-			$count = count( $input );
-			$keys = array_keys( $input );
-			if ( $count && ! is_numeric( implode( $keys ) ) )	// array cannot be associative
-				return array( 0, 0, 0 );
-			sort( $keys );
-			$first = (int) reset( $keys );
-			$last = (int) end( $keys );
-			$next = $count ? $last + 1 : $last;	// next is 0 for an empty array
-			return array( $first, $last, $next );
 		}
 
 		// $mixed = 'default' | 'current' | post ID | $mod array

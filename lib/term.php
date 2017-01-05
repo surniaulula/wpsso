@@ -37,8 +37,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				if ( ! empty( $this->p->options['plugin_og_img_col_term'] ) ||
 					! empty( $this->p->options['plugin_og_desc_col_term'] ) ) {
 
-					add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', array( $this, 'add_column_headings' ), 10, 1 );
-					add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', array( $this, 'get_column_content' ), 10, 3 );
+					add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
+						array( &$this, 'add_column_headings' ), 10, 1 );
+
+					add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
+						array( &$this, 'get_column_content' ), 10, 3 );
 
 					$this->p->util->add_plugin_filters( $this, array( 
 						'og_img_term_column_content' => 4,

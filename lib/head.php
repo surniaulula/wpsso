@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 
 			add_action( 'wp_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
-			add_action( 'amp_post_template_head', array( $this, 'add_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'amp_post_template_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) )
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
