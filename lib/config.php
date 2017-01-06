@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.38.3-dev1',	// plugin version
+					'version' => '3.38.3-dev2',	// plugin version
 					'opt_version' => '480',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -166,8 +166,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-am/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-am/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-am/faq/',
-						'notes' => 'https://wpsso.com/codex/plugins/wpsso-am/notes/',
+						'faq' => '',
+						'notes' => '',
 						'support' => 'http://wpsso-am.support.wpsso.com/',
 					),
 				),
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/faq/',
+						'faq' => '',
 						'notes' => 'https://wpsso.com/codex/plugins/wpsso-schema-json-ld/notes/',
 						'support' => 'http://wpsso-schema-json-ld.support.wpsso.com/',
 					),
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-organization/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-organization/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-organization/faq/',
+						'faq' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-organization.support.wpsso.com/',
 					),
@@ -250,8 +250,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-plm/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-plm/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-plm/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-plm/faq/',
-						'notes' => 'https://wpsso.com/codex/plugins/wpsso-plm/notes/',
+						'faq' => '',
+						'notes' => '',
 						'support' => 'http://wpsso-plm.support.wpsso.com/',
 					),
 				),
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/',
-						'faq' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/faq/',
+						'faq' => '',
 						'notes' => 'https://wpsso.com/codex/plugins/wpsso-rrssb/notes/',
 						'support' => 'http://wpsso-rrssb.support.wpsso.com/',
 					),
@@ -336,6 +336,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-strip-schema-microdata/',
 						'faq' => '',
 						'notes' => '',
+						'support' => '',
 					),
 				),
 				'wpssotaq' => array(
@@ -363,6 +364,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-tweet-a-quote/',
 						'faq' => '',
 						'notes' => '',
+						'support' => '',
 					),
 				),
 				'wpssoul' => array(
@@ -389,7 +391,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/changelog/',
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-user-locale/',
 						'faq' => '',
-						'notes' => '',
+						'notes' => 'https://wpsso.com/codex/plugins/wpsso-user-locale/notes/',
+						'support' => '',
 					),
 				),
 				'wpssoum' => array(
@@ -414,6 +417,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'codex' => 'https://wpsso.com/codex/plugins/wpsso-um/',
 						'faq' => '',
 						'notes' => '',
+						'support' => '',
 					),
 				),
 			),
@@ -1464,7 +1468,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		private static function sort_ext_by_name( $a, $b ) {
 			if ( isset( $a['name'] ) && isset( $b['name'] ) )	// just in case
 				return strcasecmp( $a['name'], $b['name'] );	// case-insensitive string comparison
-			else return 0;
+			else return 0;						// no change
 		}
 
 		public static function set_constants( $plugin_filepath ) { 
