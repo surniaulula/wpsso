@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.38.3-dev1 (2017/01/04)**
+**Version 3.38.3-dev2 (2017/01/07)**
 
 * *New Features*
 	* None
@@ -601,9 +601,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.38.3-dev1 =
+= 3.38.3-dev2 =
 
-(2017/01/04) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods.
+(2017/01/07) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods.
 
 = 3.38.2-1 =
 
