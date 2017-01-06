@@ -371,6 +371,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Added both parent and child theme header template files to the head HTML element attributes check.
+	* The extensions listed on the "Extension Plugins and Pro Licenses" settings page are now sorted by name.
 * *Bugfixes*
 	* None
 * *Developer Notes*
