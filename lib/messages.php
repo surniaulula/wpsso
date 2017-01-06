@@ -872,9 +872,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				}
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
 
-			if ( is_array( $info ) && 
-				! empty( $info['is_locale'] ) )
-					$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress admin locale with <a href="%1$s" target="_blank">Polylang</a>, <a href="%2$s" target="_blank">WP Native Dashboard</a>, etc., to define alternate option values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/polylang/', 'https://wordpress.org/plugins/wp-native-dashboard/' );
+			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
+				$lang_plugins = '<a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, '.
+					'<a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>';
+				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages.', 'wpsso' ), $lang_plugins );
+			}
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {
 				$text = '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.

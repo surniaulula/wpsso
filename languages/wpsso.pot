@@ -2404,12 +2404,10 @@ msgid ""
 "welcome your comments and suggestions. ;-)"
 msgstr ""
 
-#: lib/messages.php:877
+#: lib/messages.php:878
 msgid ""
-"This option is localized &mdash; you may change the WordPress admin locale "
-"with <a href=\"%1$s\" target=\"_blank\">Polylang</a>, <a href=\"%2$s\" "
-"target=\"_blank\">WP Native Dashboard</a>, etc., to define alternate option "
-"values for different languages."
+"This option is localized &mdash; you may change the WordPress locale with "
+"%s, etc., to define alternate option values for different languages."
 msgstr ""
 
 #: lib/meta.php:88
