@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->msgs->get( 'info-plugin-tid'.
 					( $network ? '-network' : '' ) ).'</td></tr>'."\n";
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
 				$num++;
 				$links = '';
 				$img_href = '';

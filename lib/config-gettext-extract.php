@@ -53,6 +53,7 @@ _x( 'Twitter Business @username', 'option value', 'wpsso' );
 _x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
 _x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' );
 _x( 'Wednesday', 'option value', 'wpsso' );
+_x( 'WPSSO extension to add a user locale / language selector in the WordPress admin back-end and front-end toolbar menus.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Organization, Place / Business, Product, Recipe, and more).', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );

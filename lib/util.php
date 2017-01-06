@@ -1729,7 +1729,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $matches[1].apply_filters( $this->p->cf['lca'].'_shorten_url',
 				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
 		}
-
 	}
 }
 
