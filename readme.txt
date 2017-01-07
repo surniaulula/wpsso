@@ -372,6 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Added both parent and child theme header template files to the head HTML element attributes check.
 	* The extensions listed on the "Extension Plugins and Pro Licenses" settings page are now sorted by name.
+	* Added the "WPSSO User Locale (WPSSO UL)" plugin to the list of available WPSSO extensions.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -604,7 +605,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.38.3-rc1 =
 
-(2017/01/07) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods.
+(2017/01/07) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods. Added the "WPSSO User Locale (WPSSO UL)" plugin to the list of available WPSSO extensions.
 
 = 3.38.2-1 =
 
