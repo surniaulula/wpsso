@@ -873,7 +873,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
-				$lang_plugins = '<a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, '.
+				$lang_plugins = '<a href="https://wordpress.org/plugins/wpsso-user-locale/" target="_blank">WPSSO User Locale</a>, '.
+					'<a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, '.
 					'<a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>';
 				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages.', 'wpsso' ), $lang_plugins );
 			}

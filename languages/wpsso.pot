@@ -2411,7 +2411,7 @@ msgid ""
 "welcome your comments and suggestions. ;-)"
 msgstr ""
 
-#: lib/messages.php:878
+#: lib/messages.php:879
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."
