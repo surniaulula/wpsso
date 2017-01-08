@@ -5,7 +5,7 @@ Text Domain: wpsso
 Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
-Donate Link: https://wpsso.com/?utm_source=wpsso-readme-donate
+Donate Link: https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-donate
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: seo, social, share, open graph, facebook, twitter, pinterest, youtube, sharing, meta tags, social media, schema, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, json, json-ld, ld+json, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, facebook video, slideshare, video embed, social meta tags, search engine optimization, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
@@ -18,9 +18,6 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 == Description ==
 
 <img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" style="width:33%;min-width:128px;max-width:256px;height:auto;float:left;margin:10px 60px 40px 0;" />
-<h4>Why Choose WPSSO?</h4>
-
-<p><strong>Comprehensive Optimization</strong></p>
 
 <p><strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, but if you want to, you can customize just about anything and everything. ;-)</p>
 

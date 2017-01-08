@@ -7,7 +7,7 @@
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/?utm_source=wpsso-readme-donate">https://wpsso.com/?utm_source=wpsso-readme-donate</a></td></tr>
+<tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-donate">https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-donate</a></td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>seo, social, share, open graph, facebook, twitter, pinterest, youtube, sharing, meta tags, social media, schema, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, json, json-ld, ld+json, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, facebook video, slideshare, video embed, social meta tags, search engine optimization, wordpress seo, yoast seo, shortlink</td></tr>
 </table>
@@ -15,10 +15,6 @@
 <h2>Description</h2>
 
 <p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p></p>
-
-<h4>Why Choose WPSSO?</h4>
-
-<p><strong>Comprehensive Optimization</strong></p>
 
 <p><strong>WPSSO uses your <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, but if you want to, you can customize just about anything and everything. ;-)</p>
 
