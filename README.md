@@ -93,6 +93,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale</a> (Free version)</li>
 </ul></li>
 </ul>
 
@@ -166,11 +167,13 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-organization/">WPSSO Organization Markup</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-um/">WPSSO Pro Update Manager</a> (Free version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Pro version)</li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale</a> (Free version)</li>
 </ul></li>
 </ul>
 
