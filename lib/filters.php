@@ -65,17 +65,37 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( method_exists( 'Yoast_Notification_Center', 'add_notification' ) ) {	// since wpseo v3.3
+			if ( class_exists( 'Yoast_Notification_Center' ) ) {
 				$lca = $this->p->cf['lca'];
 				$info = $this->p->cf['plugin'][$lca];
-				$id = 'wpseo-conflict-'.md5( $info['base'] );
-				$msg = '<style>#'.$id.'{display:none;}</style>';
-				$notif_center = Yoast_Notification_Center::get();
+				$name = $this->p->cf['plugin'][$lca]['name'];
 
-				if ( ( $notif_obj = $notif_center->get_notification_by_id( $id ) ) && $notif_obj->message !== $msg ) {
-					update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
-					$notif_obj = new Yoast_Notification( $msg, array( 'id' => $id ) );
-					$notif_center->add_notification( $notif_obj );
+				// wordpress SEO v4
+				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
+					$id = 'wpseo-conflict-'.md5( $info['base'] );
+					$msg = '<style>#'.$id.'{display:none;}</style>';
+					$notif_center = Yoast_Notification_Center::get();
+	
+					if ( ( $notif_obj = $notif_center->get_notification_by_id( $id ) ) && $notif_obj->message !== $msg ) {
+						update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
+						$notif_obj = new Yoast_Notification( $msg, array( 'id' => $id ) );
+						$notif_center->add_notification( $notif_obj );
+					}
+				} elseif ( defined( 'Yoast_Notification_Center::TRANSIENT_KEY' ) ) {
+					if ( ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
+						$wpseo_notif = json_decode( $wpseo_notif );
+						if ( ! empty( $wpseo_notif ) ) {
+							foreach ( $wpseo_notif as $num => $msgs ) {
+								if ( isset( $msgs->options->type ) && $msgs->options->type == 'error' ) {
+									if ( strpos( $msgs->message, $name ) !== false ) {
+										unset( $wpseo_notif[$num] );
+										set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
+											json_encode( $wpseo_notif ) );
+									}
+								}
+							}
+                                        	}
+					}
 				}
 			}
 		}
