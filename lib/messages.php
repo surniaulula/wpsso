@@ -313,6 +313,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_og_desc_col':
 							if ( empty( $col_name ) )
 								$col_name = sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu_label'] );
+
 							$text = sprintf( __( 'An "%1$s" column can be added to the Posts, Pages, Taxonomy / Terms, and Users admin list pages. When enabled, <b>users can also hide this column</b> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' ), $col_name );
 							break;
 						case 'tooltip-plugin_add_to':

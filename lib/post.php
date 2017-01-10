@@ -36,9 +36,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
-			if ( ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) &&
-				( ! empty( $this->p->options['plugin_og_img_col_post'] ) || 
-					! empty( $this->p->options['plugin_og_desc_col_post'] ) ) ) {
+			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
 				$post_type_names = $this->p->util->get_post_types( 'names' );
 
@@ -55,8 +53,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'og_img_post_column_content' => 4,
-					'og_desc_post_column_content' => 4,
+					'schema_id_post_column_content' => 3,
+					'og_img_post_column_content' => 3,
+					'og_desc_post_column_content' => 3,
 				) );
 			}
 
@@ -166,6 +165,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function show_column_content( $column_name, $post_id ) {
 			$mod = $this->get_mod( $post_id );
 			echo $this->get_mod_column_content( '', $column_name, $mod );
+		}
+
+		public function filter_schema_id_post_column_content( $value, $column_name, $mod ) {
+			if ( ! empty( $value ) )
+				return $value;
+			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech
 		}
 
 		public function filter_og_img_post_column_content( $value, $column_name, $mod ) {

@@ -34,20 +34,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				if ( ! $this->query_tax_obj->public )
 					return;
 
-				if ( ! empty( $this->p->options['plugin_og_img_col_term'] ) ||
-					! empty( $this->p->options['plugin_og_desc_col_term'] ) ) {
+				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
+					array( &$this, 'add_column_headings' ), 10, 1 );
 
-					add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
-						array( &$this, 'add_column_headings' ), 10, 1 );
+				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
+					array( &$this, 'get_column_content' ), 10, 3 );
 
-					add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
-						array( &$this, 'get_column_content' ), 10, 3 );
-
-					$this->p->util->add_plugin_filters( $this, array( 
-						'og_img_term_column_content' => 4,
-						'og_desc_term_column_content' => 4,
-					) );
-				}
+				$this->p->util->add_plugin_filters( $this, array( 
+					'schema_id_term_column_content' => 3,
+					'og_img_term_column_content' => 3,
+					'og_desc_term_column_content' => 3,
+				) );
 
 				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
 					return;
@@ -143,6 +140,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function get_column_content( $value, $column_name, $term_id ) {
 			$mod = $this->get_mod( $term_id );
 			return $this->get_mod_column_content( $value, $column_name, $mod );
+		}
+
+		public function filter_schema_id_post_column_content( $value, $column_name, $mod ) {
+			if ( ! empty( $value ) )
+				return $value;
+			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech
 		}
 
 		public function filter_og_img_term_column_content( $value, $column_name, $mod ) {

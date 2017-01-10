@@ -580,6 +580,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
 				foreach ( array( 
+					'schema_id' => sprintf( _x( '%s Schema', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ),
 					'og_img' => sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ),
 					'og_desc' => sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ),
 				) as $key => $label ) {
