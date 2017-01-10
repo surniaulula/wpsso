@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.38.4-dev1 (2017/01/10)**
+**Version 3.38.4-dev2 (2017/01/10)**
 
 * *New Features*
 	* None
@@ -374,7 +374,8 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Re-added older code to support the Yoast_Notification_Center class of older Yoast SEO versions.
+	* Added a new SucomUtil get_dashicons() static method to retrieve a sorted/unsorted dashicons array.
+	* Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
 
 **Version 3.38.3-1 (2017/01/08)**
 
@@ -614,9 +615,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.38.4-dev1 =
+= 3.38.4-dev2 =
 
-(2017/01/10) Re-added older code to support the Yoast_Notification_Center class of older Yoast SEO versions.
+(2017/01/10) Added a new SucomUtil get_dashicons() static method. Re-added code to support Yoast_Notification_Center from older versions.
 
 = 3.38.3-1 =
 
