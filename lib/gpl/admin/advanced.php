@@ -176,10 +176,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			foreach ( array( 
-				'og_img' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
-					sprintf( _x( '%s Img', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ) ),
-				'og_desc' => sprintf( _x( 'Add \'%s\' Column in', 'option label', 'wpsso' ), 
-					sprintf( _x( '%s Desc', 'column title', 'wpsso' ), $this->p->cf['menu_label'] ) ),
+				'schema_id' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+					sprintf( _x( '%s Schema', 'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ) ),
+				'og_img' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+					sprintf( _x( '%s Img', 'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ) ),
+				'og_desc' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+					sprintf( _x( '%s Desc', 'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ) ),
 			) as $key => $label ) {
 
 				if ( $network ) {
