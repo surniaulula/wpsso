@@ -79,9 +79,12 @@
 'wpsso_og_default_img_on_search' ( $bool );
 'wpsso_og_edd' ( $og_ecom, $use_post, $mod );	// Pro version
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
-'wpsso_og_image_post_column_content' ( $value, $column_name, $mod );
-'wpsso_og_image_term_column_content' ( $value, $column_name, $mod );
-'wpsso_og_image_user_column_content' ( $value, $column_name, $mod );
+'wpsso_og_desc_post_column_content' ( $value, $column_name, $mod );
+'wpsso_og_desc_term_column_content' ( $value, $column_name, $mod );
+'wpsso_og_desc_user_column_content' ( $value, $column_name, $mod );
+'wpsso_og_img_post_column_content' ( $value, $column_name, $mod );
+'wpsso_og_img_term_column_content' ( $value, $column_name, $mod );
+'wpsso_og_img_user_column_content' ( $value, $column_name, $mod );
 'wpsso_og_marketpress' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_prefix_ns' ( $ns );
 'wpsso_og_seed' ( $og, $use_post, $mod );
@@ -103,6 +106,9 @@
 'wpsso_quote_seed' ( '', $mod );
 'wpsso_save_options' ( $opts, $options_name );
 'wpsso_save_site_options' ( $opts );
+'wpsso_schema_id_post_column_content' ( $value, $column_name, $mod );
+'wpsso_schema_id_term_column_content' ( $value, $column_name, $mod );
+'wpsso_schema_id_user_column_content' ( $value, $column_name, $mod );
 'wpsso_schema_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id );
 'wpsso_schema_noscript_array' ( $ret, $mod, $mt_og, $page_type_id );

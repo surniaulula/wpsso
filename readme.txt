@@ -365,17 +365,21 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.38.4-dev2 (2017/01/10)**
+**Version 3.38.4-dev3 (2017/01/11)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Add 'NGFB Schema' Column in" option in the NGFB Advanced settings page (enabled by default).
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Added a new SucomUtil get_dashicons() static method to retrieve a sorted/unsorted dashicons array.
 	* Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
+	* Added new filters for the new "SSO Schema" column:
+		* 'wpsso_schema_id_post_column_content' ( $value, $column_name, $mod );
+		* 'wpsso_schema_id_term_column_content' ( $value, $column_name, $mod );
+		* 'wpsso_schema_id_user_column_content' ( $value, $column_name, $mod );
 
 **Version 3.38.3-1 (2017/01/08)**
 
@@ -615,9 +619,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.38.4-dev2 =
+= 3.38.4-dev3 =
 
-(2017/01/10) Added a new SucomUtil get_dashicons() static method. Re-added code to support Yoast_Notification_Center from older versions.
+(2017/01/11) Added a new SucomUtil get_dashicons() static method. Re-added code to support Yoast_Notification_Center from older versions.
 
 = 3.38.3-1 =
 
