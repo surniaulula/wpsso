@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.3-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.4-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-01-07 14:59+1100\n"
-"PO-Revision-Date: 2017-01-07 14:59+1100\n"
+"POT-Creation-Date: 2017-01-10 12:54+1100\n"
+"PO-Revision-Date: 2017-01-10 12:54+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1986,7 +1986,7 @@ msgstr "Les licences Pro n'expirent pas &ndash; il n'y a pas de frais annuels ou
 msgid "The development of %1$s is driven mostly by customer requests &mdash; we welcome your comments and suggestions. ;-)"
 msgstr "Le développement de %1$s est dictée principalement par les requêtes de nos clients &mdash; nous accueillons vos commentaires et suggestions. ;-)"
 
-#: lib/messages.php:878
+#: lib/messages.php:879
 msgid "This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages."
 msgstr "Cette option est localisé &mdash; vous pouvez changer la langue locale admin WordPress avec %s, etc., pour définir des valeurs d'option pour d'autres langues."
 
@@ -2562,12 +2562,12 @@ msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
 
 #: lib/submenu/essential.php:117 lib/submenu/general.php:267
-msgid " Include <a href=\"%s\">Organization Social Profile</a>"
+msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr "Inclure le <a href=\"%s\">profil sociale d'Organisation</a>"
 
 #: lib/submenu/essential.php:120 lib/submenu/general.php:270
-msgid " Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
-msgstr "Inclure le <a href=\"%s\">profil sociale d'une Personne</a> pour le propriétaire du site"
+msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
+msgstr "Inclure le <a href=\"%s\">profil sociale d'une Personne</a> pour propriétaire du site"
 
 #: lib/submenu/essential.php:127 lib/submenu/general.php:277
 msgctxt "option label"

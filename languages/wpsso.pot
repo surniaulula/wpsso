@@ -1557,14 +1557,14 @@ msgstr ""
 
 #: lib/messages.php:134
 msgid ""
-"The Facebook / Open Graph %1$s meta tag must be an 'article' to enable this "
-"option."
+"The Facebook / Open Graph %1$s meta tag must be an \"article\" to enable "
+"this option."
 msgstr ""
 
 #: lib/messages.php:134 lib/messages.php:206
 msgid ""
 "This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich "
-"Pin meta tags. Select '[None]' if you prefer to exclude the %1$s meta tag."
+"Pin meta tags. Select \"[None]\" if you prefer to exclude the %1$s meta tag."
 msgstr ""
 
 #: lib/messages.php:137
@@ -1612,8 +1612,8 @@ msgstr ""
 
 #: lib/messages.php:239
 msgid ""
-"If the '%1$s' is not a valid URL, then fallback to using the author archive "
-"URL from this website (example: '%2$s')."
+"If the %1$s is not a valid URL, then fallback to using the author archive "
+"URL from this website (example: \"%2$s\")."
 msgstr ""
 
 #: lib/messages.php:239 lib/submenu/general.php:140
@@ -1800,8 +1800,8 @@ msgstr ""
 msgid ""
 "The Google BrowserKey value for this website (project). If you don't already "
 "have a Google project, visit <a href=\"%s\" target=\"_blank\">Google's Cloud "
-"Console</a> and create a new project for your website (use the 'Select a "
-"project' drop-down)."
+"Console</a> and create a new project for your website (use the \"Select a "
+"project\" drop-down)."
 msgstr ""
 
 #: lib/messages.php:462
@@ -1815,7 +1815,7 @@ msgstr ""
 #: lib/messages.php:462
 msgid ""
 "Confirm that you have enabled Google's URL Shortener API service by checking "
-"the 'Yes' option value."
+"the \"Yes\" option value."
 msgstr ""
 
 #: lib/messages.php:465
@@ -1877,7 +1877,7 @@ msgstr ""
 
 #: lib/messages.php:492
 msgid ""
-"The '%1$s' are used by Facebook to allow access to <a href=\"%2$s\" target="
+"The %1$s are used by Facebook to allow access to <a href=\"%2$s\" target="
 "\"_blank\">Facebook Insight</a> data for your website. Note that these are "
 "<strong>user account names, not Facebook Page names</strong>. Enter one or "
 "more Facebook user names, separated with commas. When viewing your own "
@@ -1916,7 +1916,7 @@ msgstr ""
 #: lib/messages.php:498
 msgid ""
 "If an author does not have a Facebook page URL, %1$s can fallback and use "
-"the <em>%2$s</em> instead (the recommended value is 'Display Name')."
+"the <em>%2$s</em> instead (the recommended value is \"Display Name\")."
 msgstr ""
 
 #: lib/messages.php:498 lib/messages.php:560 lib/messages.php:644
@@ -1934,8 +1934,8 @@ msgstr ""
 
 #: lib/messages.php:560
 msgid ""
-"Select an <em>%1$s</em> for the author / Person markup, or '[None]' to "
-"disable this feature (the recommended value is 'Display Name')."
+"Select an <em>%1$s</em> for the author / Person markup, or \"[None]\" to "
+"disable this feature (the recommended value is \"Display Name\")."
 msgstr ""
 
 #: lib/messages.php:563
@@ -1988,8 +1988,8 @@ msgstr ""
 
 #: lib/messages.php:644
 msgid ""
-"Select an <em>%1$s</em> for the %2$s meta tag or '[None]' to disable this "
-"feature (the recommended value is 'Display Name')."
+"Select an <em>%1$s</em> for the %2$s meta tag or \"[None]\" to disable this "
+"feature (the recommended value is \"Display Name\")."
 msgstr ""
 
 #: lib/messages.php:647
@@ -2001,7 +2001,7 @@ msgstr ""
 
 #: lib/messages.php:647
 msgid ""
-"Enter the supplied 'p:domain_verify' meta tag <em>content</em> value here."
+"Enter the supplied \"p:domain_verify\" meta tag <em>content</em> value here."
 msgstr ""
 
 #: lib/messages.php:699
@@ -3043,11 +3043,11 @@ msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr ""
 
 #: lib/submenu/essential.php:117 lib/submenu/general.php:267
-msgid " Include <a href=\"%s\">Organization Social Profile</a>"
+msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
 #: lib/submenu/essential.php:120 lib/submenu/general.php:270
-msgid " Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
+msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr ""
 
 #: lib/submenu/essential.php:127 lib/submenu/general.php:277

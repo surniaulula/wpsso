@@ -113,11 +113,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
 						sprintf( __( 'Include <a href="%s">Website Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).
-						sprintf( __( ' Include <a href="%s">Organization Social Profile</a>',
+					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
+						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).
-						sprintf( __( ' Include <a href="%s">Person Social Profile</a> for Site Owner',
+					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
+						sprintf( __( 'Include <a href="%s">Person Social Profile</a> for Site Owner',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
