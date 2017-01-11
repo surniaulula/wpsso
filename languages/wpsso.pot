@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-b2\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-"
+"rc1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +92,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:339 lib/term.php:316 lib/user.php:282
+#: lib/admin.php:405 lib/post.php:343 lib/term.php:323 lib/user.php:289
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1376,7 +1377,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:507
+#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:511
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2660,22 +2661,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:405
+#: lib/post.php:409
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:421
+#: lib/post.php:425
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:430
+#: lib/post.php:434
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:465 lib/profile/social-settings.php:27 lib/term.php:340
-#: lib/user.php:308
+#: lib/post.php:469 lib/profile/social-settings.php:27 lib/term.php:347
+#: lib/user.php:315
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3355,15 +3356,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:470
+#: lib/user.php:477
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:471
+#: lib/user.php:478
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:472
+#: lib/user.php:479
 msgid "Jabber / Google Talk"
 msgstr ""
 

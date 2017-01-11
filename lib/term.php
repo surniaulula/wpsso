@@ -46,6 +46,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
 					array( &$this, 'get_column_content' ), 10, 3 );
 
+				/*
+				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
+				 * to set the column orderby for post, term, and user edit tables.
+				 *
+				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
+				 */
+
 				$this->p->util->add_plugin_filters( $this, array( 
 					'schema_id_term_column_content' => 3,
 					'og_img_term_column_content' => 3,
