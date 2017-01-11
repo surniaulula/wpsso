@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.38.4-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-01-11 11:17+1100\n"
-"PO-Revision-Date: 2017-01-11 11:23+1100\n"
+"PO-Revision-Date: 2017-01-11 16:12+1100\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
