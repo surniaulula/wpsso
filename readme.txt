@@ -365,10 +365,10 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.0-b2 (2017/01/11)**
+**Version 3.39.0-rc1 (2017/01/12)**
 
 * *New Features*
-	* Added a new "Add SSO Schema Column in" option (for posts / pages, terms, and users) in the SSO Advanced settings page (enabled by default). The new SSO Schema column in the post / page edit table is also sortable.
+	* Added a new "Add SSO Schema Column in" option (for posts / pages, terms, and users) in the SSO Advanced settings page (enabled by default).
 * *Improvements*
 	* None
 * *Bugfixes*
@@ -619,9 +619,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.0-b2 =
+= 3.39.0-rc1 =
 
-(2017/01/11) Added a new "Add SSO Schema Column in" option for posts / pages, terms, and users edit tables. Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
+(2017/01/12) Added a new "Add SSO Schema Column in" option for posts / pages, terms, and users edit tables. Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
 
 = 3.38.3-1 =
 
