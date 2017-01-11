@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->get_mod_column_content( $value, $column_name, $mod );
 		}
 
-		public function filter_schema_id_post_column_content( $value, $column_name, $mod ) {
+		public function filter_schema_id_user_column_content( $value, $column_name, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech

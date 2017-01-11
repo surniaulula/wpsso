@@ -942,8 +942,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'sup_version_url' => 'http://php.net/supported-versions.php',
 			),
 			'form' => array(
+				'schema_id_col_width' => '130px',
 				'og_img_col_width' => '70px',
 				'og_img_col_height' => '37px',
+				'og_desc_col_width' => '130px',
 				'tooltip_class' => 'sucom_tooltip',
 				'max_hashtags' => 10,
 				'max_media_items' => 20,

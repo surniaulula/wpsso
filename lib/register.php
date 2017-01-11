@@ -148,8 +148,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			delete_option( $var_const['WPSSO_NOTICE_NAME'] );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
+
 				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
 				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
+				delete_post_meta_by_key( '_wpsso_orderby_schema_id' );
+
 				foreach ( get_users() as $user ) {
 
 					// site specific user options

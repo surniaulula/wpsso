@@ -132,6 +132,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		private function admin_inline_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
+			$cf_form =& $this->p->cf['form'];
 			echo '<style type="text/css">';
 			if ( isset( $this->p->cf['menu_color'] ) ) {
 				$uca = strtoupper( $lca );
@@ -161,13 +162,23 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		text-align:left;
 		font-size:1.1em;
 	}
+	.wp-list-table th.column-categories,
+	.wp-list-table td.column-categories {
+		width:12%;	/* default is 15% */
+	}
+	.wp-list-table th.column-tags,
+	.wp-list-table td.column-tags {
+		width:10%;	/* default is 15% */
+	}
 	.column-'.$lca.'_og_img { 
-		width:'.$this->p->cf['form']['og_img_col_width'].';
+		width:'.$cf_form['og_img_col_width'].';
 	}
 	.column-'.$lca.'_og_img .preview_img { 
-		width:'.$this->p->cf['form']['og_img_col_width'].';
-		height:'.$this->p->cf['form']['og_img_col_height'].';
-		background-size:'.$this->p->cf['form']['og_img_col_width'].' auto;
+		width:'.$cf_form['og_img_col_width'].';
+		height:'.$cf_form['og_img_col_height'].';
+		min-width:'.$cf_form['og_img_col_width'].';
+		min-height:'.$cf_form['og_img_col_height'].';
+		background-size:'.$cf_form['og_img_col_width'].' auto;
 		background-position:center center;
 		background-repeat:no-repeat;
 		background-position:center middle;
@@ -175,8 +186,14 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
+	.column-'.$lca.'_og_desc {
+		width:'.$cf_form['og_desc_col_width'].';
+		min-width:'.$cf_form['og_desc_col_width'].';
+		overflow:hidden;
+	}
 	.column-'.$lca.'_schema_id {
-		width:10%;
+		width:'.$cf_form['schema_id_col_width'].';
+		min-width:'.$cf_form['schema_id_col_width'].';
 		white-space:nowrap;
 		overflow:hidden;
 	}

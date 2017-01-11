@@ -577,19 +577,62 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $opts;
 		}
 
+		// return column heading keys and translated label names
+		public function get_column_headings() { 
+			return array( 
+				'schema_id' => sprintf( _x( '%s Schema',
+					'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ),
+				'og_img' => sprintf( _x( '%s Img',
+					'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ),
+				'og_desc' => sprintf( _x( '%s Desc',
+					'column title', 'wpsso' ),
+						$this->p->cf['menu_label'] ),
+			);
+		}
+
+		// return sortable column keys and their query sort info
+		public function get_sortable_columns( $idx = false ) { 
+			$lca = $this->p->cf['lca'];
+			$sortable = array( 
+				'schema_id' => array(
+					'meta_key' => '_'.$lca.'_orderby_schema_id',
+					'orderby' => 'meta_value',
+				),
+			);
+			if ( $idx !== false ) {
+				if ( isset( $sortable[$idx] ) )
+					return $sortable[$idx];
+				else return null;
+			} else return $sortable;
+		}
+
+		public function add_sortable_columns( $columns ) { 
+			$lca = $this->p->cf['lca'];
+			foreach ( $this->get_sortable_columns() as $key => $sort_info )
+				$columns[$lca.'_'.$key] = $lca.'_'.$key;
+			return $columns;
+		}
+
+		public function set_column_orderby( $query ) { 
+			$lca = $this->p->cf['lca'];
+			$column_name = $query->get( 'orderby' );
+			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+				$column_key = str_replace( $lca.'_', '', $column_name );
+				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
+						if ( isset( $sort_info[$set_name] ) ) {	// just in case
+							$query->set( $set_name, $sort_info[$set_name] );
+						}
+					}
+				}
+			}
+		}
+
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
-				foreach ( array( 
-					'schema_id' => sprintf( _x( '%s Schema',
-						'column title', 'wpsso' ),
-							$this->p->cf['menu_label'] ),
-					'og_img' => sprintf( _x( '%s Img',
-						'column title', 'wpsso' ),
-							$this->p->cf['menu_label'] ),
-					'og_desc' => sprintf( _x( '%s Desc',
-						'column title', 'wpsso' ),
-							$this->p->cf['menu_label'] ),
-				) as $key => $label ) {
+				foreach ( $this->get_column_headings() as $key => $label ) {
 					if ( ! empty( $this->p->options['plugin_'.$key.'_col_'.$mod_name] ) )
 						$columns[$this->p->cf['lca'].'_'.$key] = $label;
 				}

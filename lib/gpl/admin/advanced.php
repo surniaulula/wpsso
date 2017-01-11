@@ -176,37 +176,30 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			foreach ( array( 
-				'schema_id' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+				'schema_id' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Schema', 'column title', 'wpsso' ),
 						$this->p->cf['menu_label'] ) ),
-				'og_img' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+				'og_img' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Img', 'column title', 'wpsso' ),
 						$this->p->cf['menu_label'] ) ),
-				'og_desc' => sprintf( _x( 'Add "%s" Column in', 'option label', 'wpsso' ), 
+				'og_desc' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Desc', 'column title', 'wpsso' ),
 						$this->p->cf['menu_label'] ) ),
 			) as $key => $label ) {
-
-				if ( $network ) {
-					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col', array( 'th_rowspan' => 3 ) ).
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).
-					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_post' );
-	
-					$table_rows[] = '<tr class="hide_in_basic">'.
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).
-					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_term' );
-	
-					$table_rows[] = '<tr class="hide_in_basic">'.
-					$this->get_nocb_cell( $form, 'plugin_'.$key.'_col_user', __( 'Users List' ) ).
-					$this->p->admin->get_site_use( $form, $network, 'plugin_'.$key.'_col_user' );
-				} else {
-					$table_rows[] = $form->get_th_html( $label, null, 'plugin_'.$key.'_col' ).
-					'<td class="blank">'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).'</p>'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).'</p>'.
-					'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_user', __( 'Users List' ) ).'</p>'.
-					'</td>';
+				switch ( $key ) {
+					case 'og_desc':
+						$tr = '<tr class="hide_in_basic">';
+						break;
+					default:
+						$tr = '';
+						break;
 				}
+				$table_rows[] = $tr.$form->get_th_html( $label, null, 'plugin_'.$key.'_col' ).
+				'<td class="blank">'.
+				'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).'</p>'.
+				'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).'</p>'.
+				'<p>'.$this->get_nocb( $form, 'plugin_'.$key.'_col_user', __( 'Users List' ) ).'</p>'.
+				'</td>';
 			}
 	
 			$checkboxes = '';

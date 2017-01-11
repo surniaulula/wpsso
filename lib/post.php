@@ -46,6 +46,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						add_filter( 'manage_'.$post_type.'_posts_columns',
 							array( &$this, 'add_column_headings' ), 10, 1 );
 
+						add_filter( 'manage_edit-'.$post_type.'_sortable_columns',
+							array( &$this, 'add_sortable_columns' ), 10, 1 );
+
+						add_action( 'pre_get_posts',
+							array( &$this, 'set_column_orderby' ), 10, 1 );
+
 						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
 						add_action( 'manage_'.$post_type.'_posts_custom_column',
 							array( &$this, 'show_column_content',), 10, 2 );
@@ -163,8 +169,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function show_column_content( $column_name, $post_id ) {
+			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $post_id );
-			echo $this->get_mod_column_content( '', $column_name, $mod );
+			$content = $this->get_mod_column_content( '', $column_name, $mod );
+
+			// save sortable column values as post meta
+			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+				$column_key = str_replace( $lca.'_', '', $column_name );
+				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_info['meta_key'] ) ) {	// just in case
+						if ( get_post_meta( $post_id, $sort_info['meta_key'], true ) !== $content ) {
+							update_post_meta( $post_id, $sort_info['meta_key'], $content );
+						}
+					}
+				}
+			}
+
+			echo $content;
 		}
 
 		public function filter_schema_id_post_column_content( $value, $column_name, $mod ) {
