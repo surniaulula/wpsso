@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-b1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-b2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:329 lib/term.php:281 lib/user.php:254
+#: lib/admin.php:405 lib/post.php:339 lib/term.php:316 lib/user.php:282
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1376,7 +1376,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:497
+#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:507
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2599,7 +2599,7 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:656
+#: lib/meta.php:660
 msgid "Reload to View"
 msgstr ""
 
@@ -2660,22 +2660,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:395
+#: lib/post.php:405
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:411
+#: lib/post.php:421
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:420
+#: lib/post.php:430
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:455 lib/profile/social-settings.php:27 lib/term.php:305
-#: lib/user.php:280
+#: lib/post.php:465 lib/profile/social-settings.php:27 lib/term.php:340
+#: lib/user.php:308
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -2802,13 +2802,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:776
+#: lib/schema.php:784
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:779
+#: lib/schema.php:787
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
@@ -3355,15 +3355,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:442
+#: lib/user.php:470
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:443
+#: lib/user.php:471
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:444
+#: lib/user.php:472
 msgid "Jabber / Google Talk"
 msgstr ""
 

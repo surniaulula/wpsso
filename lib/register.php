@@ -150,6 +150,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
 				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
+
 				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
 				delete_post_meta_by_key( '_wpsso_orderby_schema_id' );
 
@@ -162,11 +163,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					// global / network user options
 					delete_user_meta( $user->ID, $var_const['WPSSO_META_NAME'] );
 					delete_user_meta( $user->ID, $var_const['WPSSO_PREF_NAME'] );
+					delete_user_meta( $user->ID, '_wpsso_orderby_schema_id' );
 
 					WpssoUser::delete_metabox_prefs( $user->ID );
 				}
-				foreach ( WpssoTerm::get_public_terms() as $term_id )
+				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
+
+					if ( WpssoTerm::has_meta_table() ) {
+						WpssoTerm::delete_term_meta( $term_id, '_wpsso_orderby_schema_id' );
+					}
+				}
 			}
 
 			// delete transients

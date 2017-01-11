@@ -608,6 +608,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else return $sortable;
 		}
 
+		public function update_sortable_meta( $mod, $column_key, $content ) { 
+			return $this->must_be_extended( __METHOD__ );
+		}
+
 		public function add_sortable_columns( $columns ) { 
 			$lca = $this->p->cf['lca'];
 			foreach ( $this->get_sortable_columns() as $key => $sort_info )
@@ -618,7 +622,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function set_column_orderby( $query ) { 
 			$lca = $this->p->cf['lca'];
 			$column_name = $query->get( 'orderby' );
-			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+			if ( $column_name && strpos( $column_name, $lca.'_' ) === 0 ) {
 				$column_key = str_replace( $lca.'_', '', $column_name );
 				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {

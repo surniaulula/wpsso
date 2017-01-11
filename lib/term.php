@@ -37,6 +37,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
 					array( &$this, 'add_column_headings' ), 10, 1 );
 
+				// enable orderby meta_key only if we have a meta table
+				if ( self::has_meta_table() ) {
+					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns', 
+						array( &$this, 'add_sortable_columns' ), 10, 1 );
+				}
+
 				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
 					array( &$this, 'get_column_content' ), 10, 3 );
 
@@ -138,8 +144,33 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $term_id ) {
+			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $term_id );
-			return $this->get_mod_column_content( $value, $column_name, $mod );
+			$content = $this->get_mod_column_content( $value, $column_name, $mod );
+
+			// save sortable column values as post meta
+			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+				$column_key = str_replace( $lca.'_', '', $column_name );
+				$this->update_sortable_meta( $mod, $column_key, $content );
+			}
+
+			return $content;
+		}
+
+		public function update_sortable_meta( $mod, $column_key, $content ) { 
+			// update orderby meta_key only if we have a meta table
+			if ( ! self::has_meta_table() )
+				return;
+
+			if ( ! empty( $mod['id'] ) ) {
+				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_info['meta_key'] ) ) {	// just in case
+						if ( self::get_term_meta( $mod['id'], $sort_info['meta_key'], true ) !== $content ) {
+							self::update_term_meta( $mod['id'], $sort_info['meta_key'], $content );
+						}
+					}
+				}
+			}
 		}
 
 		public function filter_schema_id_term_column_content( $value, $column_name, $mod ) {
@@ -260,6 +291,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				// $use_post = false, $read_cache = false to generate notices etc.
 				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
+
+				// save the schema id for later sorting in the edit table
+				if ( ! empty( WpssoMeta::$head_meta_info['schema:type:id'] ) )
+					$this->update_sortable_meta( $mod, 'schema_id', WpssoMeta::$head_meta_info['schema:type:id'] );
 
 				// check for missing open graph image and issue warning
 				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
@@ -385,12 +420,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function get_term_meta( $term_id, $key_name, $single = false ) {
-			static $has_meta_table = null;
-			if ( $has_meta_table === null )	// optimize and check only once
-				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
-
 			$term_meta = $single === false ? array() : '';
-			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) ) {
+			if ( self::has_meta_table() && ! wp_term_is_shared( $term_id ) ) {
 				$term_meta = get_term_meta( $term_id, $key_name, $single );
 				/*
 				 * If the $term_id is invalid, false is returned.
@@ -419,23 +450,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function update_term_meta( $term_id, $key_name, $opts ) {
-			static $has_meta_table = null;
-			if ( $has_meta_table === null )	// optimize and check only once
-				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
-
-			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) )
+			if ( self::has_meta_table() && ! wp_term_is_shared( $term_id ) )
 				return update_term_meta( $term_id, $key_name, $opts );
 			else return update_option( $key_name.'_term_'.$term_id, $opts );
 		}
 
 		public static function delete_term_meta( $term_id, $key_name ) {
-			static $has_meta_table = null;
-			if ( $has_meta_table === null )	// optimize and check only once
-				$has_meta_table = get_option( 'db_version' ) >= 34370 ? true : false;
-
-			if ( $has_meta_table && ! wp_term_is_shared( $term_id ) )
+			if ( self::has_meta_table() && ! wp_term_is_shared( $term_id ) )
 				return delete_term_meta( $term_id, $key_name );
 			else return delete_option( $key_name.'_term_'.$term_id );
+		}
+
+		public static function has_meta_table() {
+			static $has_meta_table = null;
+			if ( $has_meta_table === null )	// optimize and check only once
+				$has_meta_table = get_option( 'db_version' ) >= 34370 ?
+					true : false;
+			return $has_meta_table;
 		}
 	}
 }

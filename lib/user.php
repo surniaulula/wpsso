@@ -43,6 +43,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_filter( 'manage_users_columns', 
 					array( &$this, 'add_column_headings' ), 10, 1 );
 
+				add_filter( 'manage_users_sortable_columns', 
+					array( &$this, 'add_sortable_columns' ), 10, 1 );
+
 				add_filter( 'manage_users_custom_column', 
 					array( &$this, 'get_column_content',), 10, 3 );
 
@@ -116,8 +119,29 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $user_id ) {
+			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $user_id );
-			return $this->get_mod_column_content( $value, $column_name, $mod );
+			$content = $this->get_mod_column_content( $value, $column_name, $mod );
+
+			// save sortable column values as post meta
+			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+				$column_key = str_replace( $lca.'_', '', $column_name );
+				$this->update_sortable_meta( $mod, $column_key, $content );
+			}
+
+			return $content;
+		}
+
+		public function update_sortable_meta( $mod, $column_key, $content ) { 
+			if ( ! empty( $mod['id'] ) ) {
+				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_info['meta_key'] ) ) {	// just in case
+						if ( get_user_meta( $mod['id'], $sort_info['meta_key'], true ) !== $content ) {
+							update_user_meta( $mod['id'], $sort_info['meta_key'], $content );
+						}
+					}
+				}
+			}
 		}
 
 		public function filter_schema_id_user_column_content( $value, $column_name, $mod ) {
@@ -233,6 +257,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				// $use_post = false, $read_cache = false to generate notices etc.
 				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
+
+				// save the schema id for later sorting in the edit table
+				if ( ! empty( WpssoMeta::$head_meta_info['schema:type:id'] ) )
+					$this->update_sortable_meta( $mod, 'schema_id', WpssoMeta::$head_meta_info['schema:type:id'] );
 
 				// check for missing open graph image and issue warning
 				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )

@@ -168,7 +168,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	}
 	.wp-list-table th.column-tags,
 	.wp-list-table td.column-tags {
-		width:10%;	/* default is 15% */
+		width:12%;	/* default is 15% */
 	}
 	.column-'.$lca.'_og_img { 
 		width:'.$cf_form['og_img_col_width'].';

@@ -33,6 +33,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+
+				// applies to post, term, and user orderby queries
+				add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
@@ -48,9 +51,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						add_filter( 'manage_edit-'.$post_type.'_sortable_columns',
 							array( &$this, 'add_sortable_columns' ), 10, 1 );
-
-						add_action( 'pre_get_posts',
-							array( &$this, 'set_column_orderby' ), 10, 1 );
 
 						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
 						add_action( 'manage_'.$post_type.'_posts_custom_column',
@@ -176,16 +176,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			// save sortable column values as post meta
 			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
 				$column_key = str_replace( $lca.'_', '', $column_name );
+				$this->update_sortable_meta( $mod, $column_key, $content );
+			}
+
+			echo $content;
+		}
+
+		public function update_sortable_meta( $mod, $column_key, $content ) { 
+			if ( ! empty( $mod['id'] ) ) {
 				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
 					if ( isset( $sort_info['meta_key'] ) ) {	// just in case
-						if ( get_post_meta( $post_id, $sort_info['meta_key'], true ) !== $content ) {
-							update_post_meta( $post_id, $sort_info['meta_key'], $content );
+						if ( get_post_meta( $mod['id'], $sort_info['meta_key'], true ) !== $content ) {
+							update_post_meta( $mod['id'], $sort_info['meta_key'], $content );
 						}
 					}
 				}
 			}
-
-			echo $content;
 		}
 
 		public function filter_schema_id_post_column_content( $value, $column_name, $mod ) {
@@ -298,6 +304,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					// $read_cache = false to generate notices etc.
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
+
+					// save the schema id for later sorting in the edit table
+					if ( ! empty( WpssoMeta::$head_meta_info['schema:type:id'] ) )
+						$this->update_sortable_meta( $mod, 'schema_id', WpssoMeta::$head_meta_info['schema:type:id'] );
 
 					if ( $post_obj->post_status === 'publish' ) {
 

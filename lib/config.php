@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.0-b1',	// plugin version
+					'version' => '3.39.0-b2',	// plugin version
 					'opt_version' => '481',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -724,8 +724,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// Social / Custom Meta Tab
 					'plugin_schema_id_col_post' => 1,
-					'plugin_schema_id_col_term' => 1,
-					'plugin_schema_id_col_user' => 1,
+					'plugin_schema_id_col_term' => 0,
+					'plugin_schema_id_col_user' => 0,
 					'plugin_og_img_col_post' => 1,
 					'plugin_og_img_col_term' => 1,
 					'plugin_og_img_col_user' => 1,

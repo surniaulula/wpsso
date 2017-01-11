@@ -442,6 +442,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * JSON-LD Script Array
+		 *
+		 * $mt_og must be passed by reference to assign the schema:type internal meta tags.
 		 */
 		public function get_json_array( array &$mod, array &$mt_og, $crawler_name ) {
 
@@ -458,8 +460,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$page_type_id = $this->get_mod_schema_type( $mod, true );	// example: article.tech
-			$page_type_url = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
+			$page_type_id = $mt_og['schema:type:id'] = $this->get_mod_schema_type( $mod, true );		// example: article.tech
+			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
+
+			list(
+				$mt_og['schema:type:context'],
+				$mt_og['schema:type:name'],
+			) = self::get_schema_type_parts( $page_type_url );		// example: https://schema.org, TechArticle
+
 			$page_type_ids = array();
 			$page_type_added = array();					// prevent duplicate top-level schema types
 
