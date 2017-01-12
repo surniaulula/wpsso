@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.0-rc1 (2017/01/12)**
+**Version 3.39.0-1 (2017/01/13)**
 
 * *New Features*
 	* Added a new "Add SSO Schema Column in" option (for posts / pages, terms, and users) in the SSO Advanced settings page (enabled by default).
@@ -376,7 +376,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Developer Notes*
 	* Added a new SucomUtil get_dashicons() static method to retrieve a sorted/unsorted dashicons array for the WPSSO UL extension.
 	* Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
-	* Added new filters for the new "SSO Schema" column:
+	* Added new filters for the new "SSO Schema" edit table column:
 		* 'wpsso_schema_id_post_column_content' ( $value, $column_name, $mod );
 		* 'wpsso_schema_id_term_column_content' ( $value, $column_name, $mod );
 		* 'wpsso_schema_id_user_column_content' ( $value, $column_name, $mod );
@@ -619,9 +619,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.0-rc1 =
+= 3.39.0-1 =
 
-(2017/01/12) Added a new "Add SSO Schema Column in" option for posts / pages, terms, and users edit tables. Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
+(2017/01/13) Added a new "Add SSO Schema Column in" option for posts / pages, terms, and users edit tables. Re-added code to support the Yoast_Notification_Center class from older Yoast SEO versions.
 
 = 3.38.3-1 =
 
