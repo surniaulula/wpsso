@@ -41,8 +41,8 @@
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).</li>
 </ul></li>
 <li>Adds Weibo meta tags for article creation and update dates.</li>
-<li>Adds Pinterest Rich Pin meta tags and Schema Structured Data markup.</li>
-<li>Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>.</li>
+<li>Adds Pinterest Rich Pin meta tags and Schema <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> markup for Google.</li>
+<li>Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</li>
 <li>Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.</li>
 <li>Auto-regeneration of inaccurate / missing WordPress image sizes.</li>
 <li>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</li>
