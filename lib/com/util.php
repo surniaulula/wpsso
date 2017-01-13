@@ -1250,14 +1250,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
 		}
 
+		public static function is_post_exists( $post_id ) {
+			  return is_string( get_post_status( $post_id ) );
+		}
+
 		public static function is_post_page( $use_post = false ) {
 			$ret = false;
-			// is_singular() covers is_single(), is_post(), and is_attachement()
-			// include is_front_page() for themes/plugins that break is_singular()
-			if ( $use_post || is_singular() || 
-				( is_front_page() && get_option( 'show_on_front' ) === 'page' ) )
-					$ret = true;
-			elseif ( is_admin() ) {
+			if ( is_numeric( $use_post ) && $use_post > 0 ) {
+				$ret = self::is_post_exists( $use_post );
+			/*
+			 * is_singular() is short for is_single(), is_post(), is_attachement().
+			 * Add is_front_page() check for themes/plugins that break is_singular().
+			 */
+			} elseif ( $use_post || is_singular() ||
+				( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ) {
+				$ret = true;
+			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'post' )
 					$ret = true;
@@ -1276,9 +1284,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$post_obj = get_post( $use_post );
-
-			// is_singular() covers is_single(), is_post(), and is_attachement()
-			// include is_front_page() for themes/plugins that break is_singular()
+			/*
+			 * is_singular() is short for is_single(), is_post(), is_attachement().
+			 * Add is_front_page() check for themes/plugins that break is_singular().
+			 */
 			} elseif ( $use_post === false || 
 				apply_filters( 'sucom_is_post_page', ( is_singular() || 
 					( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ? 

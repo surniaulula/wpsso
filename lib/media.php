@@ -18,7 +18,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			'pid_attr' => 'data-[a-z]+-pid',
 			'ngg_src' => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
 		);
-
 		private static $image_src_info = null;
 
 		public function __construct( &$plugin ) {
@@ -76,17 +75,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$force_regen = false;
+			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// false by default
 
 			if ( ! empty( $post_id ) ) {
-
-				// set the $force_regen value and remove the transient
-				if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
-					$force_regen_transient_id = $this->p->cf['lca'].'_post_'.$post_id.'_regen_'.$md_pre;
-					$force_regen = get_transient( $force_regen_transient_id );
-					if ( $force_regen !== false )
-						delete_transient( $force_regen_transient_id );
-				} 
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				// unless $md_pre is 'none', get_og_image() will fallback to the 'og' custom meta

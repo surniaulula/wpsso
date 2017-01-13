@@ -14,6 +14,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		protected $uniq_urls = array();			// array to detect duplicate images, etc.
 		protected $size_labels = array();		// reference array for image size labels
+		protected $force_regen = array();		// cache of force regen transient checks
 		protected $sanitize_error_msgs = null;		// translated error messages for sanitize_option_value()
 		protected $cleared_all_cache = false;
 
@@ -226,6 +227,38 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'define image sizes' );	// end timer
 				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_image_sizes() );
 			}
+		}
+
+		public function set_force_regen( $mod, $md_pre = 'og' ) {
+			$transient_id = $this->get_force_regen_id( $mod, $mod_pre );
+			set_transient( $transient_id, true );
+		}
+
+		public function is_force_regen( $mod, $md_pre = 'og' ) {
+			$transient_id = $this->get_force_regen_id( $mod, $mod_pre );
+
+			if ( isset( $this->force_regen[$transient_id] ) )	// valid for page load
+				return $this->force_regen[$transient_id];	// returns true or false
+
+			$force_regen[$transient_id] = get_transient( $transient_id );
+			if ( $force_regen !== false )
+				delete_transient( $transient_id );
+
+			return $this->force_regen[$transient_id] = $force_regen ? true : false;
+		}
+
+		// get the force regen transient id for set and get methods
+		// $mod = true | false | post_id | $mod array
+		public function get_force_regen_id( $mod, $mod_pre ) {
+			$lca = $this->p->cf['lca'];
+
+			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
+				return $lca.'_post_'.$mod.'_regen_'.$md_pre;
+
+			if ( ! is_array( $mod ) )
+				$mod = $this->get_page_mod( $mod );
+
+			return $lca.'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
 		}
 
 		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {

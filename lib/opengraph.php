@@ -411,8 +411,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
-			$this->p->util->clear_uniq_urls( $size_name );	// clear cache for $size_name context
-			$force_regen = false;
+			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
+			$this->p->util->clear_uniq_urls( $size_name );			// clear cache for $size_name context
 
 			if ( $mod['is_post'] ) {
 

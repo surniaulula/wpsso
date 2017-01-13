@@ -549,9 +549,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							$force_regen = true;
 					}
 				}
-
-				if ( $force_regen === true )
-					set_transient( $this->p->cf['lca'].'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre, true );
+				if ( $force_regen !== true )
+					$this->p->util->set_force_regen( $mod, $md_pre );
 			}
 
 			/*

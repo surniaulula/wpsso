@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.0-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.1-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -945,19 +946,19 @@ msgctxt "option label"
 msgid "Add %s Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:180 lib/messages.php:312 lib/meta.php:583
+#: lib/gpl/admin/advanced.php:180 lib/messages.php:312 lib/meta.php:582
 #: lib/pro/admin/advanced.php:180
 msgctxt "column title"
 msgid "%s Schema"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:183 lib/messages.php:318 lib/meta.php:586
+#: lib/gpl/admin/advanced.php:183 lib/messages.php:318 lib/meta.php:585
 #: lib/pro/admin/advanced.php:183
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:186 lib/messages.php:324 lib/meta.php:589
+#: lib/gpl/admin/advanced.php:186 lib/messages.php:324 lib/meta.php:588
 #: lib/pro/admin/advanced.php:186
 msgctxt "column title"
 msgid "%s Desc"
@@ -1381,28 +1382,28 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/media.php:320
+#: lib/media.php:311
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:694
+#: lib/media.php:685
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:919 lib/pro/util/checkimgdims.php:67
+#: lib/media.php:910 lib/pro/util/checkimgdims.php:67
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:974
+#: lib/media.php:965
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:992
+#: lib/media.php:983
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2599,7 +2600,7 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:660
+#: lib/meta.php:659
 msgid "Reload to View"
 msgstr ""
 
@@ -3367,132 +3368,132 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:261
+#: lib/util.php:294
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:262
+#: lib/util.php:295
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
 msgstr ""
 
-#: lib/util.php:349
+#: lib/util.php:382
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:379
+#: lib/util.php:412
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:381
+#: lib/util.php:414
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting the option to its default value."
 msgstr ""
 
-#: lib/util.php:383
+#: lib/util.php:416
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:385 lib/util.php:387
+#: lib/util.php:418 lib/util.php:420
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:389
+#: lib/util.php:422
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:391
+#: lib/util.php:424
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:393
+#: lib/util.php:426
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:395
+#: lib/util.php:428
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:397
+#: lib/util.php:430
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:399
+#: lib/util.php:432
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:598
+#: lib/util.php:631
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:605
+#: lib/util.php:638
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:629
+#: lib/util.php:662
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:665
+#: lib/util.php:698
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:936
+#: lib/util.php:969
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1382
+#: lib/util.php:1415
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1396
+#: lib/util.php:1429
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1680
+#: lib/util.php:1713
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1706
+#: lib/util.php:1739
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1710
+#: lib/util.php:1743
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1713
+#: lib/util.php:1746
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1717
+#: lib/util.php:1750
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
