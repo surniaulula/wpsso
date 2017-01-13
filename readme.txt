@@ -374,7 +374,9 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new get_force_regen_id() method in the NgfbUtil class to check for the force regen of all social image sizes.
+	* Added a new is_force_regen() method in the WpssoUtil class to check for the forced regen of all social image sizes, along with set_force_regen() to set the transient, and get_force_regen_id() to return the transient key.
+	* Added a new is_post_exists() static method in the SucomUtil class to check if a post ID exists or not.
+	* Added support for post ID checking in the is_post_page() method in the SucomUtil class.
 
 **Version 3.39.0-1 (2017/01/13)**
 
