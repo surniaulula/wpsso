@@ -193,11 +193,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( ! empty( $value ) )
 				return $value;
 
-			// use the open graph image dimensions to reject images that are too small
+			// use open graph image dimensions to reject images that are too small
+			$md_pre = 'og';
 			$size_name = $this->p->cf['lca'].'-opengraph';
 			$check_dupes = false;	// using first image we find, so dupe checking is useless
-			$force_regen = false;
-			$md_pre = 'og';
+			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
 			$og_image = array();
 
 			if ( empty( $og_image ) )
