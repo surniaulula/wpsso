@@ -377,6 +377,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new is_force_regen() method in the WpssoUtil class to check if the forced regen transient is set, along with a set_force_regen() method to set the transient, and get_force_regen_id() to return the transient key ID.
 	* Added a new is_post_exists() static method in the SucomUtil class to check if a post ID exists or not.
 	* Added support for post ID checking in the is_post_page() method in the SucomUtil class.
+	* Renamed the 'schema_id' sortable meta name to 'schema_type' (including related filter hooks).
 
 **Version 3.39.0-1 (2017/01/13)**
 
