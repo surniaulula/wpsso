@@ -131,8 +131,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}	// end of debug information
 		}
 
-		// extract certain key fields for reference and sanity checks
-		public function extract_head_info( &$head_mt, &$head_info = array() ) {
+		// extract certain key fields for display and sanity checks
+		public function extract_head_info( array $mod, array $head_mt ) {
 
 			foreach ( $head_mt as $mt ) {
 				if ( ! isset( $mt[2] ) || 
@@ -197,6 +197,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$head_info[$mt[3]] = $mt[5];
 							break;
 					}
+				}
+			}
+
+			/*
+			 * Save selected meta tag values for later sorting in edit tables
+			 */
+			if ( isset( $mod['obj'] ) && is_object( $mod['obj'] ) ) {	// just in case
+				if ( ! empty( $head_info['schema:type:id'] ) ) {
+					$mod['obj']->update_sortable_meta( $mod['id'], 'schema_type', $head_info['schema:type:id'] );
 				}
 			}
 

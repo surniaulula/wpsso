@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Social Settings' settings
 						 */
-						case 'tooltip-plugin_schema_id_col':
+						case 'tooltip-plugin_schema_type_col':
 							if ( empty( $col_name ) )
 								$col_name = sprintf( _x( '%s Schema',
 									'column title', 'wpsso' ),

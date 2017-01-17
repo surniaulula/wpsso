@@ -74,6 +74,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'buttons_use_social_css' => 'buttons_use_social_style',
 			'buttons_enqueue_social_css' => 'buttons_enqueue_social_style',
 			'fb_type' => 'fb_share_layout',
+			'plugin_schema_type_id_col_post' => 'plugin_schema_type_col_post',	// renamed in v3.39.1-1
+			'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',	// renamed in v3.39.1-1
+			'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',	// renamed in v3.39.1-1
 		);
 
 		protected $p;

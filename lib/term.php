@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'schema_id_term_column_content' => 3,
+					'schema_type_term_column_content' => 3,
 					'og_img_term_column_content' => 3,
 					'og_desc_term_column_content' => 3,
 				) );
@@ -158,29 +158,29 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			// save sortable column values as post meta
 			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
 				$column_key = str_replace( $lca.'_', '', $column_name );
-				$this->update_sortable_meta( $mod, $column_key, $content );
+				$this->update_sortable_meta( $mod['id'], $column_key, $content );
 			}
 
 			return $content;
 		}
 
-		public function update_sortable_meta( $mod, $column_key, $content ) { 
+		public function update_sortable_meta( $term_id, $column_key, $content ) { 
 			// update orderby meta_key only if we have a meta table
 			if ( ! self::has_meta_table() )
 				return;
 
-			if ( ! empty( $mod['id'] ) ) {
-				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
-					if ( isset( $sort_info['meta_key'] ) ) {	// just in case
-						if ( self::get_term_meta( $mod['id'], $sort_info['meta_key'], true ) !== $content ) {
-							self::update_term_meta( $mod['id'], $sort_info['meta_key'], $content );
+			if ( ! empty( $term_id ) ) {	// just in case
+				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
+						if ( self::get_term_meta( $term_id, $sort_cols['meta_key'], true ) !== $content ) {
+							self::update_term_meta( $term_id, $sort_cols['meta_key'], $content );
 						}
 					}
 				}
 			}
 		}
 
-		public function filter_schema_id_term_column_content( $value, $column_name, $mod ) {
+		public function filter_schema_type_term_column_content( $value, $column_name, $mod ) {
 			if ( ! empty( $value ) )
 				return $value;
 			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech
@@ -297,11 +297,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				// $use_post = false, $read_cache = false to generate notices etc.
 				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
-				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( WpssoMeta::$head_meta_tags );
-
-				// save the schema id for later sorting in the edit table
-				if ( ! empty( WpssoMeta::$head_meta_info['schema:type:id'] ) )
-					$this->update_sortable_meta( $mod, 'schema_id', WpssoMeta::$head_meta_info['schema:type:id'] );
+				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
 				// check for missing open graph image and issue warning
 				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )

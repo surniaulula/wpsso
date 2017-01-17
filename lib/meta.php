@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		// return column heading keys and translated label names
 		public function get_column_headings() { 
 			return array( 
-				'schema_id' => sprintf( _x( '%s Schema',
+				'schema_type' => sprintf( _x( '%s Schema',
 					'column title', 'wpsso' ),
 						$this->p->cf['menu_label'] ),
 				'og_img' => sprintf( _x( '%s Img',
@@ -595,8 +595,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_sortable_columns( $idx = false ) { 
 			$lca = $this->p->cf['lca'];
 			$sortable = array( 
-				'schema_id' => array(
-					'meta_key' => '_'.$lca.'_orderby_schema_id',
+				'schema_type' => array(
+					'meta_key' => '_'.$lca.'_head_info_schema_type',
 					'orderby' => 'meta_value',
 				),
 			);
@@ -607,14 +607,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else return $sortable;
 		}
 
-		public function update_sortable_meta( $mod, $column_key, $content ) { 
+		public function update_sortable_meta( $obj_id, $column_key, $content ) { 
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function add_sortable_columns( $columns ) { 
 			$lca = $this->p->cf['lca'];
-			foreach ( $this->get_sortable_columns() as $key => $sort_info )
-				$columns[$lca.'_'.$key] = $lca.'_'.$key;
+			foreach ( $this->get_sortable_columns() as $key => $sort_cols ) {
+				if ( ! empty( $sort_cols['orderby'] ) ) {
+					$columns[$lca.'_'.$key] = $lca.'_'.$key;
+				}
+			}
 			return $columns;
 		}
 
@@ -623,10 +626,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$column_name = $query->get( 'orderby' );
 			if ( $column_name && strpos( $column_name, $lca.'_' ) === 0 ) {
 				$column_key = str_replace( $lca.'_', '', $column_name );
-				if ( ( $sort_info = $this->get_sortable_columns( $column_key ) ) !== null ) {
+				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
-						if ( isset( $sort_info[$set_name] ) ) {	// just in case
-							$query->set( $set_name, $sort_info[$set_name] );
+						if ( ! empty( $sort_cols[$set_name] ) ) {
+							$query->set( $set_name, $sort_cols[$set_name] );
 						}
 					}
 				}

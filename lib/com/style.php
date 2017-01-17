@@ -191,14 +191,14 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		min-width:'.$cf_form['og_desc_col_width'].';
 		overflow:hidden;
 	}
-	.column-'.$lca.'_schema_id {
-		width:'.$cf_form['schema_id_col_width'].';
-		min-width:'.$cf_form['schema_id_col_width'].';
+	.column-'.$lca.'_schema_type {
+		width:'.$cf_form['schema_type_col_width'].';
+		min-width:'.$cf_form['schema_type_col_width'].';
 		white-space:nowrap;
 		overflow:hidden;
 	}
 	td.column-'.$lca.'_og_desc,
-	td.column-'.$lca.'_schema_id {
+	td.column-'.$lca.'_schema_type {
 		direction:ltr;
 		font-family:Helvetica;
 		text-align:left;

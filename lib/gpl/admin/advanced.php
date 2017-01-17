@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			foreach ( array( 
-				'schema_id' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 
+				'schema_type' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 
 					sprintf( _x( '%s Schema', 'column title', 'wpsso' ),
 						$this->p->cf['menu_label'] ) ),
 				'og_img' => sprintf( _x( 'Add %s Column in', 'option label', 'wpsso' ), 

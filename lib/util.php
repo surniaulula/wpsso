@@ -230,12 +230,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function set_force_regen( $mod, $md_pre = 'og' ) {
-			$transient_id = $this->get_force_regen_id( $mod, $mod_pre );
+			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
 			set_transient( $transient_id, true );
 		}
 
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
-			$transient_id = $this->get_force_regen_id( $mod, $mod_pre );
+			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
 
 			if ( isset( $this->force_regen[$transient_id] ) )	// valid for page load
 				return $this->force_regen[$transient_id];	// returns true or false
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// get the force regen transient id for set and get methods
 		// $mod = true | false | post_id | $mod array
-		public function get_force_regen_id( $mod, $mod_pre ) {
+		public function get_force_regen_id( $mod, $md_pre ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()

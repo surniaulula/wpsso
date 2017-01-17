@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.39.1-dev1',	// plugin version
-					'opt_version' => '481',		// increment when changing default options
+					'opt_version' => '483',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -723,9 +723,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// Social / Custom Meta Tab
-					'plugin_schema_id_col_post' => 1,
-					'plugin_schema_id_col_term' => 0,
-					'plugin_schema_id_col_user' => 0,
+					'plugin_schema_type_col_post' => 1,
+					'plugin_schema_type_col_term' => 0,
+					'plugin_schema_type_col_user' => 0,
 					'plugin_og_img_col_post' => 1,
 					'plugin_og_img_col_term' => 1,
 					'plugin_og_img_col_user' => 1,
@@ -942,7 +942,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'sup_version_url' => 'http://php.net/supported-versions.php',
 			),
 			'form' => array(
-				'schema_id_col_width' => '130px',
+				'schema_type_col_width' => '130px',
 				'og_img_col_width' => '70px',
 				'og_img_col_height' => '37px',
 				'og_desc_col_width' => '140px',
