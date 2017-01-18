@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 *
 				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
 				 */
-				add_action( 'get_term_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				//add_action( 'get_term_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
 				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
 					return;
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $term_id );
-				$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
+				$head_meta_tags = $this->p->head->get_head_array( false, $mod );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 

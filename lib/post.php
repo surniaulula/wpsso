@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * to set the column orderby for post, term, and user edit tables.
 				 */
 				add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
-				add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				//add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 			}
 
 			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $post_id );
-				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 

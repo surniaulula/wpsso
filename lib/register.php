@@ -150,9 +150,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
 				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
-
 				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
-				delete_post_meta_by_key( '_wpsso_head_info_schema_type' );
+
+				foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+					delete_post_meta_by_key( '_wpsso_head_info_'.$meta_key );
 
 				foreach ( get_users() as $user ) {
 
@@ -163,16 +164,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					// global / network user options
 					delete_user_meta( $user->ID, $var_const['WPSSO_META_NAME'] );
 					delete_user_meta( $user->ID, $var_const['WPSSO_PREF_NAME'] );
-					delete_user_meta( $user->ID, '_wpsso_head_info_schema_type' );
+
+					foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+						delete_user_meta( $user->ID, '_wpsso_head_info_'.$meta_key );
 
 					WpssoUser::delete_metabox_prefs( $user->ID );
 				}
 				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
 
-					if ( WpssoTerm::has_meta_table() ) {
-						WpssoTerm::delete_term_meta( $term_id, '_wpsso_head_info_schema_type' );
-					}
+					foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+						WpssoTerm::delete_term_meta( $term_id, '_wpsso_head_info_'.$meta_key );
 				}
 			}
 

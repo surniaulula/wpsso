@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 *
 				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
 				 */
-				add_action( 'get_user_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				//add_action( 'get_user_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
 				// exit here if not a user or profile page
 				$user_id = SucomUtil::get_request_value( 'user_id' );
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $user_id );
-				$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
+				$head_meta_tags = $this->p->head->get_head_array( false, $mod );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
