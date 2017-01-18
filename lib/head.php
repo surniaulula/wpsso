@@ -157,9 +157,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// save first image and video information
-			// assumes array key order defined by SucomUtil::get_mt_prop_image() 
-			// and SucomUtil::get_mt_prop_video()
+			/*
+			 * Save the first image and video information found. Assumes array key order 
+			 * defined by SucomUtil::get_mt_prop_image() and SucomUtil::get_mt_prop_video().
+			 */
 			foreach ( array( 'og:image', 'og:video', 'pinterest:image' ) as $prefix ) {
 				if ( empty( $has_media[$prefix] ) )
 					continue;
@@ -201,12 +202,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Save selected meta tag values for later sorting in edit tables
+			 * Save meta tag values for later sorting in edit tables
 			 */
-			if ( isset( $mod['obj'] ) && is_object( $mod['obj'] ) ) {	// just in case
-				if ( ! empty( $head_info['schema:type:id'] ) ) {
-					$mod['obj']->update_sortable_meta( $mod['id'], 'schema_type', $head_info['schema:type:id'] );
-				}
+			 foreach ( array(
+			 	'schema_type' => isset( $head_info['schema:type:id'] ) ? 
+					$head_info['schema:type:id'] : false,
+				'og_img' => $mod['obj']->get_og_img_column_html( $head_info ),
+			 	'og_desc' => isset( $head_info['og:description'] ) ?
+					$head_info['og:description'] : false,
+			) as $meta_key => $meta_value ) {
+				$mod['obj']->update_sortable_meta( $mod['id'], $meta_key, $meta_value );
 			}
 
 			return $head_info;

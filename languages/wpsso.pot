@@ -92,7 +92,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:405 lib/post.php:339 lib/term.php:319 lib/user.php:285
+#: lib/admin.php:405 lib/post.php:305 lib/term.php:252 lib/user.php:232
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1377,7 +1377,7 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:507
+#: lib/gpl/admin/post.php:94 lib/meta.php:163 lib/post.php:473
 #: lib/pro/admin/post.php:122
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2600,10 +2600,6 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/meta.php:662
-msgid "Reload to View"
-msgstr ""
-
 #: lib/opengraph.php:50
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
@@ -2661,22 +2657,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:405
+#: lib/post.php:371
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:421
+#: lib/post.php:387
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:430
+#: lib/post.php:396
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:465 lib/profile/social-settings.php:27 lib/term.php:343
-#: lib/user.php:311
+#: lib/post.php:431 lib/profile/social-settings.php:27 lib/term.php:276
+#: lib/user.php:258
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3356,15 +3352,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:473
+#: lib/user.php:420
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:474
+#: lib/user.php:421
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:475
+#: lib/user.php:422
 msgid "Jabber / Google Talk"
 msgstr ""
 

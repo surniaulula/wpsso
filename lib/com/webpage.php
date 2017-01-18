@@ -456,7 +456,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					}
 
 				} elseif ( $mod['is_user'] ) { 
-					$user_obj = SucomUtil::get_user_object();
+					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
 					if ( ! empty( $user_obj->description ) )
 						$desc = $user_obj->description;
@@ -774,7 +774,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 		public function get_category_title( $term_id = 0, $tax_slug = '', $separator = false ) {
 			if ( is_object( $term_id ) )
 				$term_obj = $term_id;
-			else $term_obj = SucomUtil::get_term_object( $term_id, $tax_slug, 'object' );
+			else $term_obj = SucomUtil::get_term_object( $term_id, $tax_slug );
 
 			if ( $separator === false )
 				$separator = html_entity_decode( $this->p->options['og_title_sep'], 

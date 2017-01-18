@@ -55,12 +55,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 *
 				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
 				 */
-
-				$this->p->util->add_plugin_filters( $this, array( 
-					'schema_type_user_column_content' => 3,
-					'og_img_user_column_content' => 3,
-					'og_desc_user_column_content' => 3,
-				) );
+				add_action( 'get_user_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
 				// exit here if not a user or profile page
 				$user_id = SucomUtil::get_request_value( 'user_id' );
@@ -127,93 +122,45 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_column_content( $value, $column_name, $user_id ) {
 			$lca = $this->p->cf['lca'];
-			$mod = $this->get_mod( $user_id );
-			$content = $this->get_mod_column_content( $value, $column_name, $mod );
-
-			// save sortable column values as post meta
-			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+			$value = '';
+			if ( ! empty( $user_id ) ) {	// just in case
 				$column_key = str_replace( $lca.'_', '', $column_name );
-				$this->update_sortable_meta( $mod['id'], $column_key, $content );
+				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
+						$value = (string) get_user_meta( $user_id, $sort_cols['meta_key'], true );
+					}
+				}
 			}
-
-			return $content;
+			return $value;
 		}
 
 		public function update_sortable_meta( $user_id, $column_key, $content ) { 
 			if ( ! empty( $user_id ) ) {	// just in case
 				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
 					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
-						if ( get_user_meta( $user_id, $sort_cols['meta_key'], true ) !== $content ) {
-							update_user_meta( $user_id, $sort_cols['meta_key'], $content );
-						}
+						update_user_meta( $user_id, $sort_cols['meta_key'], $content );
 					}
 				}
 			}
 		}
 
-		public function filter_schema_type_user_column_content( $value, $column_name, $mod ) {
-			if ( ! empty( $value ) )
-				return $value;
-			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech
-		}
+		public function check_sortable_metadata( $value, $user_id, $meta_key, $single ) {
+			$lca = $this->p->cf['lca'];
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img
+				return $value;	// return null
 
-		public function filter_og_img_user_column_content( $value, $column_name, $mod ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+			static $checked_metadata = array();
+			if ( isset( $checked_metadata[$user_id][$meta_key] ) )
+				return $value;	// return null
+			else $checked_metadata[$user_id][$meta_key] = true;	// prevent recursion
 
-			if ( ! empty( $value ) )
-				return $value;
-
-			// use open graph image dimensions to reject images that are too small
-			$md_pre = 'og';
-			$size_name = $this->p->cf['lca'].'-opengraph';
-			$check_dupes = false;	// using first image we find, so dupe checking is useless
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
-			$og_image = array();
-
-			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $mod, $check_dupes, $md_pre );
-
-			// get_og_images() also provides filter hooks for additional image ids and urls
-			if ( empty( $og_image ) )
-				$og_image = $this->get_og_image( 1, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
-
-			if ( empty( $og_image ) )
-				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
-
-			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
-				$image = reset( $og_image );
-				$value = $this->get_og_img_column_html( $image );
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'no image found for column value' );
-
-			return $value;
-		}
-
-		public function filter_og_desc_user_column_content( $desc, $column_name, $mod ) {
-			if ( ! empty( $desc ) )
-				return $desc;
-
-			$user_obj = get_userdata( $mod['id'] );	// get the user object
-			if ( empty( $user_obj->ID ) )
-				return $desc;
-
-			$desc = $this->get_options( $mod['id'], 'og_desc' );
-
-			if ( $this->p->debug->enabled ) {
-				if ( empty( $desc ) )
-					$this->p->debug->log( 'no custom description found' );
-				else $this->p->debug->log( 'custom description = "'.$desc.'"' );
+			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
+				$mod = $this->get_mod( $user_id );
+				$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
+				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
-			if ( empty( $desc ) ) {
-				if ( ! empty( $user_obj->description ) )
-					$desc = $user_obj->description;
-				elseif ( ! empty( $user_obj->display_name ) )
-					$desc = sprintf( 'Authored by %s', $user_obj->display_name );
-			}
-
-			return apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
+			return get_user_meta( $user_id, $meta_key, $single );
 		}
 
 		// hooked into the current_screen action
@@ -736,7 +683,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$transients = array(
 				'WpssoHead::get_head_array' => array( $cache_salt ),
-				'WpssoMeta::get_mod_column_content' => array( $cache_salt ),
 			);
 			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $mod, $sharing_url );
 

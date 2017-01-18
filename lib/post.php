@@ -58,15 +58,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/*
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
-				 *
 				 */
 				add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
-
-				$this->p->util->add_plugin_filters( $this, array( 
-					'schema_type_post_column_content' => 3,
-					'og_img_post_column_content' => 3,
-					'og_desc_post_column_content' => 3,
-				) );
+				add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 			}
 
 			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
@@ -174,73 +168,45 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function show_column_content( $column_name, $post_id ) {
 			$lca = $this->p->cf['lca'];
-			$mod = $this->get_mod( $post_id );
-			$content = $this->get_mod_column_content( '', $column_name, $mod );
-
-			// save sortable column values as post meta
-			if ( strpos( $column_name, $lca.'_' ) === 0 ) {
+			$value = '';
+			if ( ! empty( $post_id ) ) {	// just in case
 				$column_key = str_replace( $lca.'_', '', $column_name );
-				$this->update_sortable_meta( $mod['id'], $column_key, $content );
+				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
+					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
+						$value = (string) get_post_meta( $post_id, $sort_cols['meta_key'], true );
+					}
+				}
 			}
-
-			echo $content;
+			echo $value;
 		}
 
 		public function update_sortable_meta( $post_id, $column_key, $content ) { 
 			if ( ! empty( $post_id ) ) {	// just in case
 				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
 					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
-						if ( get_post_meta( $post_id, $sort_cols['meta_key'], true ) !== $content ) {
-							update_post_meta( $post_id, $sort_cols['meta_key'], $content );
-						}
+						update_post_meta( $post_id, $sort_cols['meta_key'], $content );
 					}
 				}
 			}
 		}
 
-		public function filter_schema_type_post_column_content( $value, $column_name, $mod ) {
-			if ( ! empty( $value ) )
-				return $value;
-			return $this->p->schema->get_mod_schema_type( $mod, true );	// example: article.tech
-		}
+		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
+			$lca = $this->p->cf['lca'];
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img
+				return $value;	// return null
 
-		public function filter_og_img_post_column_content( $value, $column_name, $mod ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+			static $checked_metadata = array();
+			if ( isset( $checked_metadata[$post_id][$meta_key] ) )
+				return $value;	// return null
+			else $checked_metadata[$post_id][$meta_key] = true;	// prevent recursion
 
-			if ( ! empty( $value ) )
-				return $value;
+			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
+				$mod = $this->get_mod( $post_id );
+				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
+			}
 
-			// use open graph image dimensions to reject images that are too small
-			$md_pre = 'og';
-			$size_name = $this->p->cf['lca'].'-opengraph';
-			$check_dupes = false;	// use first image we find, so dupe checking is useless
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
-			$og_image = array();
-
-			if ( empty( $og_image ) )
-				$og_image = $this->get_og_video_preview_image( $mod, $check_dupes, $md_pre );
-
-			if ( empty( $og_image ) )
-				$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, $check_dupes, $md_pre );
-
-			if ( empty( $og_image ) )
-				$og_image = $this->p->media->get_default_image( 1, $size_name, $check_dupes, $force_regen );
-
-			if ( ! empty( $og_image ) && is_array( $og_image ) ) {
-				$image = reset( $og_image );
-				$value = $this->get_og_img_column_html( $image );
-			} elseif ( $this->p->debug->enabled )
-				$this->p->debug->log( 'no image found for column value' );
-
-			return $value;
-		}
-
-		public function filter_og_desc_post_column_content( $value, $column_name, $mod ) {
-			if ( ! empty( $value ) )
-				return $value;
-
-			return $this->p->webpage->get_description( $this->p->options['og_desc_len'], '...', $mod );
+			return get_post_meta( $post_id, $meta_key, $single );
 		}
 
 		// hooked into the current_screen action
@@ -546,7 +512,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$transients = array(
 						'WpssoHead::get_head_array' => array( $cache_salt ),
-						'WpssoMeta::get_mod_column_content' => array( $cache_salt ),
 						'SucomCache::get' => array( 'url:'.$permalink, 'url:'.$shortlink ),
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $mod, $sharing_url );
