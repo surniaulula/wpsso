@@ -20,7 +20,6 @@
 'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes );
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
 'wpsso_cache_expire_article_topics' ( $secs );
-'wpsso_cache_expire_column_content' ( $secs );
 'wpsso_cache_expire_content_text' ( $secs );
 'wpsso_cache_expire_head_array' ( $secs );
 'wpsso_cache_expire_image_url_size' ( $secs );
