@@ -475,7 +475,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				asort( $dashicons );
 
 			if ( $add_none )
-				$dashicons = array( '' => 'none' ) + $dashicons;	// maintain numeric index
+				$dashicons = array( 'none' => 'none' ) + $dashicons;	// maintain numeric index
 
 			return $dashicons;
 		}
@@ -1107,7 +1107,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			asort( $results );	// sort values for display
 
 			if ( $add_none )
-				$results = array( '' => 'none' ) + $results;	// maintain numeric index
+				$results = array( 'none' => 'none' ) + $results;	// maintain numeric index
 
 			return $results;
 		}
@@ -1796,7 +1796,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// add 'none' to create an associative array *before* flipping the array
 			// in order to preserve the user id => display name association
-			return array_flip( array_merge( array( 'none' => '' ), $ret ) );
+			return array_flip( array_merge( array( 'none' => 'none' ), $ret ) );
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {

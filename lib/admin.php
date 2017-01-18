@@ -408,14 +408,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
 						case 'check_for_updates': 
+							$info = $this->p->cf['plugin'][$lca];
+							$um_info = $this->p->cf['plugin'][$lca.'um'];
+
 							if ( $this->p->is_avail['util']['um'] ) {
 								WpssoAdmin::set_readme_info( false );	// $read_cache = false
 								$wpssoum =& WpssoUm::get_instance();
-								$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
-							} else {
-								$this->p->notice->err( sprintf( __( 'The <b>%s</b> extension is required to check for Pro version updates.',
-									'wpsso' ), $this->p->cf['plugin'][$lca.'um']['name'] ) );
-							}
+								if ( isset( $wpssoum->update ) )
+									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
+								else $this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
+							} else $this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) );
 							break;
 
 						case 'clear_all_cache': 
