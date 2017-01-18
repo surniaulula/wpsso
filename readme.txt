@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.1-dev1 (TBD)**
+**Version 3.39.1-dev1 (2017/01/18)**
 
 * *New Features*
 	* None
@@ -630,6 +630,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.1-dev1 =
+
+(2017/01/18) Improved the loading speed of editing table column content (SSO Schema, SSO Img, and SSO Desc columns).
 
 = 3.39.0-1 =
 
