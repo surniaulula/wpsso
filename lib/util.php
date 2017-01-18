@@ -231,20 +231,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function set_force_regen( $mod, $md_pre = 'og' ) {
 			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
-			set_transient( $transient_id, true );
+			if ( $transient_id !== false )
+				set_transient( $transient_id, true );
 		}
 
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
 			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
+			if ( $transient_id !== false ) {
+				if ( isset( $this->force_regen[$transient_id] ) )	// use class property cache
+					return $this->force_regen[$transient_id];	// returns true or false
 
-			if ( isset( $this->force_regen[$transient_id] ) )	// valid for page load
-				return $this->force_regen[$transient_id];	// returns true or false
+				$force_regen = get_transient( $transient_id );
+				if ( $force_regen !== false )
+					delete_transient( $transient_id );
 
-			$force_regen[$transient_id] = get_transient( $transient_id );
-			if ( $force_regen !== false )
-				delete_transient( $transient_id );
-
-			return $this->force_regen[$transient_id] = $force_regen ? true : false;
+				return $this->force_regen[$transient_id] = $force_regen ? true : false;	// save to class property cache
+			} else return false;
 		}
 
 		// get the force regen transient id for set and get methods
@@ -258,7 +260,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $mod );
 
-			return $lca.'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
+			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) )
+				return $lca.'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
+			else return false;
 		}
 
 		public function add_ptns_to_opts( &$opts = array(), $prefixes, $default = 1 ) {
