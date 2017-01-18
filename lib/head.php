@@ -205,12 +205,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save meta tag values for later sorting in edit tables
 			 */
 			 foreach ( array(
-			 	'schema_type' => isset( $head_info['schema:type:id'] ) ? 
-					$head_info['schema:type:id'] : false,
-				'og_img' => $mod['obj']->get_og_img_column_html( $head_info ),
-			 	'og_desc' => isset( $head_info['og:description'] ) ?
-					$head_info['og:description'] : false,
+			 	'schema_type' => isset( $head_info['schema:type:id'] ) ? $head_info['schema:type:id'] : 'none',
+				'og_img' => ( $og_img = $mod['obj']->get_og_img_column_html( $head_info ) ) ? $og_img : 'none',
+			 	'og_desc' => isset( $head_info['og:description'] ) ? $head_info['og:description'] : 'none',
 			) as $meta_key => $meta_value ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'sortable meta for '.$mod['name'].' id '.$mod['id'].' '.$meta_key.' = '.$meta_value );
 				$mod['obj']->update_sortable_meta( $mod['id'], $meta_key, $meta_value );
 			}
 
