@@ -14,7 +14,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		protected $uniq_urls = array();			// array to detect duplicate images, etc.
 		protected $size_labels = array();		// reference array for image size labels
-		protected $force_regen = array();		// cache of force regen transient checks
+		protected $force_regen = array(
+			'cache' => null,			// cache for returned values
+			'transient' => null,			// transient array from/to database
+		);
 		protected $sanitize_error_msgs = null;		// translated error messages for sanitize_option_value()
 		protected $cleared_all_cache = false;
 
@@ -229,29 +232,49 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function set_force_regen( $mod, $md_pre = 'og' ) {
-			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
-			if ( $transient_id !== false )
-				set_transient( $transient_id, true );
+		public function set_force_regen( $mod, $md_pre = 'og', $value = true ) {
+			$regen_key = $this->get_regen_key( $mod, $md_pre );
+			if ( $regen_key !== false ) {
+				$cache_salt = __CLASS__.'::force_regen_transient';
+				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				if ( $this->force_regen['transient'] === null )
+					$this->force_regen['transient'] = (array) get_transient( $cache_id );	// load transient if required
+				$this->force_regen['transient'][$regen_key] = $value;
+				set_transient( $cache_id, $this->force_regen['transient'] );
+			}
 		}
 
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
-			$transient_id = $this->get_force_regen_id( $mod, $md_pre );
-			if ( $transient_id !== false ) {
-				if ( isset( $this->force_regen[$transient_id] ) )	// use class property cache
-					return $this->force_regen[$transient_id];	// returns true or false
+			$regen_key = $this->get_regen_key( $mod, $md_pre );
+			if ( $regen_key !== false ) {
+				$cache_salt = __CLASS__.'::force_regen_transient';
+				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				if ( $this->force_regen['transient'] === null )
+					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
 
-				$force_regen = get_transient( $transient_id );
-				if ( $force_regen !== false )
-					delete_transient( $transient_id );
+				if ( $this->force_regen['transient'] === false )	// no transient in database
+					return false;
 
-				return $this->force_regen[$transient_id] = $force_regen ? true : false;	// save to class property cache
-			} else return false;
+				if ( isset( $this->force_regen['cache'][$regen_key] ) )	// previously returned value
+					return $this->force_regen['cache'][$regen_key];
+
+				if ( isset( $this->force_regen['transient'][$regen_key] ) ) {
+					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// save value
+					unset( $this->force_regen['transient'][$regen_key] );	// unset the regen key and save transient
+					if ( empty( $this->force_regen['transient'] ) )
+						delete_transient( $cache_id );
+					else set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
+					return $this->force_regen['cache'][$regen_key];	// return the cached value
+				}
+
+				return false;	// not in the cache or transient array
+			}
+			return false;
 		}
 
 		// get the force regen transient id for set and get methods
 		// $mod = true | false | post_id | $mod array
-		public function get_force_regen_id( $mod, $md_pre ) {
+		public function get_regen_key( $mod, $md_pre ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
@@ -261,7 +284,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 
 			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) )
-				return $lca.'_'.$mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
+				return $mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
 			else return false;
 		}
 

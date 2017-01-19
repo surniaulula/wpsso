@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.1-"
-"dev1\n"
+"dev2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3372,132 +3372,132 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:298
+#: lib/util.php:321
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:299
+#: lib/util.php:322
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
 msgstr ""
 
-#: lib/util.php:386
+#: lib/util.php:409
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:416
+#: lib/util.php:439
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:418
+#: lib/util.php:441
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting the option to its default value."
 msgstr ""
 
-#: lib/util.php:420
+#: lib/util.php:443
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:422 lib/util.php:424
+#: lib/util.php:445 lib/util.php:447
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:426
+#: lib/util.php:449
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:428
+#: lib/util.php:451
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:430
+#: lib/util.php:453
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:432
+#: lib/util.php:455
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:434
+#: lib/util.php:457
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:436
+#: lib/util.php:459
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:635
+#: lib/util.php:658
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:642
+#: lib/util.php:665
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:666
+#: lib/util.php:689
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:702
+#: lib/util.php:725
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:973
+#: lib/util.php:996
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1419
+#: lib/util.php:1442
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1433
+#: lib/util.php:1456
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1717
+#: lib/util.php:1740
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1743
+#: lib/util.php:1766
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1747
+#: lib/util.php:1770
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1750
+#: lib/util.php:1773
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1754
+#: lib/util.php:1777
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
