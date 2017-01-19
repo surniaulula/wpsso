@@ -545,11 +545,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							$opts[$md_pre.'_img_'.$key] : '';
 						$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
 							$prev[$md_pre.'_img_'.$key] : '';
-						if ( $check_current !== $check_previous )
+						if ( $check_current !== $check_previous ) {
 							$force_regen = true;
+						}
 					}
 				}
-				if ( $force_regen !== true )
+				if ( $force_regen !== false )
 					$this->p->util->set_force_regen( $mod, $md_pre );
 			}
 

@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['og_img'] = $this->form->get_th_html( _x( 'Open Graph Image Dimensions',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'og_img', false, false ).'</td>';
+					'<td>'.$this->form->get_image_dimensions_input( 'og_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['og_def_img_id'] = $this->form->get_th_html( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), null, 'og_def_img_id' ).
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
 						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'schema_img', false, false ).'</td>';
+					'<td>'.$this->form->get_image_dimensions_input( 'schema_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Maximum Description Length',
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						$table_rows['rp_img'] = $this->form->get_th_html( _x( 'Rich Pin Image Dimensions',
 							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
-						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';
+						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';	// $use_opts = false
 					}
 
 					$table_rows['rp_author_name'] = '<tr class="hide_in_basic">'.
@@ -391,11 +391,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['tc_sum'] = $this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions',
 						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum', false, false ).'</td>';
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';	// $use_opts = false
 
 					$table_rows['tc_lrgimg'] = $this->form->get_th_html( _x( '<em>Large Image</em> Card Img Dimensions',
 						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg', false, false ).'</td>';
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';	// $use_opts = false
 
 					break;
 

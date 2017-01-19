@@ -954,19 +954,19 @@ msgctxt "option label"
 msgid "Add %s Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:180 lib/messages.php:312 lib/meta.php:582
+#: lib/gpl/admin/advanced.php:180 lib/messages.php:312 lib/meta.php:583
 #: lib/pro/admin/advanced.php:180
 msgctxt "column title"
 msgid "%s Schema"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:183 lib/messages.php:318 lib/meta.php:585
+#: lib/gpl/admin/advanced.php:183 lib/messages.php:318 lib/meta.php:586
 #: lib/pro/admin/advanced.php:183
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:186 lib/messages.php:324 lib/meta.php:588
+#: lib/gpl/admin/advanced.php:186 lib/messages.php:324 lib/meta.php:589
 #: lib/pro/admin/advanced.php:186
 msgctxt "column title"
 msgid "%s Desc"
@@ -3372,132 +3372,132 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:321
+#: lib/util.php:326
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:322
+#: lib/util.php:327
 msgid ""
 "%s cached files, transient cache, and the WordPress object cache have been "
 "cleared."
 msgstr ""
 
-#: lib/util.php:409
+#: lib/util.php:414
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:439
+#: lib/util.php:444
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:441
+#: lib/util.php:446
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting the option to its default value."
 msgstr ""
 
-#: lib/util.php:443
+#: lib/util.php:448
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:445 lib/util.php:447
+#: lib/util.php:450 lib/util.php:452
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:449
+#: lib/util.php:454
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:451
+#: lib/util.php:456
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:453
+#: lib/util.php:458
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:455
+#: lib/util.php:460
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:457
+#: lib/util.php:462
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:459
+#: lib/util.php:464
 msgid ""
 "The value of option '%s' cannot be empty - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:658
+#: lib/util.php:663
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:665
+#: lib/util.php:670
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:689
+#: lib/util.php:694
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:725
+#: lib/util.php:730
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:996
+#: lib/util.php:1001
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1442
+#: lib/util.php:1453
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:1456
+#: lib/util.php:1467
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/util.php:1740
+#: lib/util.php:1751
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1766
+#: lib/util.php:1777
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1770
+#: lib/util.php:1781
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1773
+#: lib/util.php:1784
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1777
+#: lib/util.php:1788
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

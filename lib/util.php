@@ -237,10 +237,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				if ( $this->force_regen['transient'] === null )
-					$this->force_regen['transient'] = (array) get_transient( $cache_id );	// load transient if required
+				if ( $this->force_regen['transient'] === null ) {
+					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
+				}
+				if ( $this->force_regen['transient'] === false ) {	// no transient in database
+					$this->force_regen['transient'] = array();
+				}
 				$this->force_regen['transient'][$regen_key] = $value;
-				set_transient( $cache_id, $this->force_regen['transient'] );
+				set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
 			}
 		}
 
@@ -249,24 +253,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
-				if ( $this->force_regen['transient'] === null )
+				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
-
-				if ( $this->force_regen['transient'] === false )	// no transient in database
+				}
+				if ( $this->force_regen['transient'] === false ) {	// no transient in database
 					return false;
-
-				if ( isset( $this->force_regen['cache'][$regen_key] ) )	// previously returned value
+				}
+				if ( isset( $this->force_regen['cache'][$regen_key] ) )	{ // previously returned value
 					return $this->force_regen['cache'][$regen_key];
-
+				}
 				if ( isset( $this->force_regen['transient'][$regen_key] ) ) {
 					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// save value
 					unset( $this->force_regen['transient'][$regen_key] );	// unset the regen key and save transient
-					if ( empty( $this->force_regen['transient'] ) )
+					if ( empty( $this->force_regen['transient'] ) ) {
 						delete_transient( $cache_id );
-					else set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
+					} else {
+						set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
+					}
 					return $this->force_regen['cache'][$regen_key];	// return the cached value
 				}
-
 				return false;	// not in the cache or transient array
 			}
 			return false;
@@ -1420,14 +1425,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
 				(int) $_SERVER['REQUEST_TIME'] : time() ; 
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-				' WHERE option_name LIKE \'_transient_timeout_'.$lca.'_%\'';
-			$dbquery .= $all === false ?
-				' AND option_value < '.$current_time.';' : ';';	// expiration time older than current time
+			if ( $all ) {
+				$prefix = '_transient_';	// clear all transient, even if no timeout value
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$prefix.$lca.'_%\';';
+			} else {
+				$prefix = '_transient_timeout_';
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$prefix.$lca.'_%\''.
+					' AND option_value < '.$current_time.';';	// expiration time older than current time
+			}
 			$expired = $wpdb->get_col( $dbquery ); 
 			$deleted = 0;
 			foreach( $expired as $transient ) { 
-				$key = str_replace( '_transient_timeout_', '', $transient );
+				$key = str_replace( $prefix, '', $transient );
 				if ( delete_transient( $key ) )
 					$deleted++;
 			}
