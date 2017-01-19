@@ -374,6 +374,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Refactored the set_force_regen() and is_force_regen() methods to use a single transient array (to reduce the number of transient queries).
 * *Bugfixes*
 	* Added a missing user ID argument when getting the user object in the SucomWebpage get_description() method.
+	* Updated delete_expired_db_transients() to remove transients without expiration times.
 * *Developer Notes*
 	* Added a new is_force_regen() method in the WpssoUtil class to check if the forced regen transient is set, along with a set_force_regen() method to set the transient, and get_force_regen_id() to return the transient key ID.
 	* Added a new is_post_exists() static method in the SucomUtil class to check if a post ID exists or not.
