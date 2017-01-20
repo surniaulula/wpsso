@@ -112,7 +112,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 						if ( ! empty( $hashtags ) ) 
 							$caption = $this->p->util->limit_text_length( $caption, 
-								$textlen - strlen( $hashtags ) - 1, '...', false ).	// don't run cleanup_html_tags()
+								$textlen - strlen( $hashtags ) - 1, '...', false ).	// $cleanup_html = false
 									' '.$hashtags;
 					}
 				}
@@ -317,7 +317,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					! empty( $hashtags ) ) 
 						$textlen = $textlen - strlen( $hashtags ) - 1;
 
-				$title = $this->p->util->limit_text_length( $title, $textlen, $trailing, false );	// don't run cleanup_html_tags()
+				$title = $this->p->util->limit_text_length( $title, $textlen, $trailing, false );	// $cleanup_html = false
 			}
 
 			if ( ! empty( $paged_suffix ) ) 
@@ -496,7 +496,7 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 						$textlen = $textlen - strlen( $hashtags ) -1;
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'description strlen before limit length '.strlen( $desc ).' (limiting to '.$textlen.' chars)' );
-				$desc = $this->p->util->limit_text_length( $desc, $textlen, $trailing, false );	// don't run cleanup_html_tags()
+				$desc = $this->p->util->limit_text_length( $desc, $textlen, $trailing, false );	// $cleanup_html = false
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'description limit text length skipped' );
 
