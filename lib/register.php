@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
 				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
 
-				foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+				foreach ( array( 'schema_type', 'og_img_thumb', 'og_desc' ) as $meta_key )
 					delete_post_meta_by_key( '_wpsso_head_info_'.$meta_key );
 
 				foreach ( get_users() as $user ) {
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					delete_user_meta( $user->ID, $var_const['WPSSO_META_NAME'] );
 					delete_user_meta( $user->ID, $var_const['WPSSO_PREF_NAME'] );
 
-					foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+					foreach ( array( 'schema_type', 'og_img_thumb', 'og_desc' ) as $meta_key )
 						delete_user_meta( $user->ID, '_wpsso_head_info_'.$meta_key );
 
 					WpssoUser::delete_metabox_prefs( $user->ID );
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
 
-					foreach ( array( 'schema_type', 'og_img', 'og_desc' ) as $meta_key )
+					foreach ( array( 'schema_type', 'og_img_thumb', 'og_desc' ) as $meta_key )
 						WpssoTerm::delete_term_meta( $term_id, '_wpsso_head_info_'.$meta_key );
 				}
 			}

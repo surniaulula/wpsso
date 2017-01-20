@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function check_sortable_metadata( $value, $term_id, $meta_key, $single ) {
 			$lca = $this->p->cf['lca'];
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 
 			static $checked_metadata = array();

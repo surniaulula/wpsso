@@ -600,7 +600,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'orderby' => 'meta_value',
 				),
 				'og_img' => array(
-					'meta_key' => '_'.$lca.'_head_info_og_img',
+					'meta_key' => '_'.$lca.'_head_info_og_img_thumb',
 					'orderby' => false,	// do not offer column sorting
 				),
 				'og_desc' => array(
@@ -621,9 +621,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_sortable_columns( $columns ) { 
 			$lca = $this->p->cf['lca'];
-			foreach ( $this->get_sortable_columns() as $key => $sort_cols ) {
+			foreach ( $this->get_sortable_columns() as $column_key => $sort_cols ) {
 				if ( ! empty( $sort_cols['orderby'] ) ) {
-					$columns[$lca.'_'.$key] = $lca.'_'.$key;
+					$columns[$lca.'_'.$column_key] = $lca.'_'.$column_key;
 				}
 			}
 			return $columns;
@@ -646,9 +646,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
-				foreach ( $this->get_column_headings() as $key => $label ) {
-					if ( ! empty( $this->p->options['plugin_'.$key.'_col_'.$mod_name] ) )
-						$columns[$this->p->cf['lca'].'_'.$key] = $label;
+				foreach ( $this->get_column_headings() as $column_key => $label ) {
+					if ( ! empty( $this->p->options['plugin_'.$column_key.'_col_'.$mod_name] ) )
+						$columns[$this->p->cf['lca'].'_'.$column_key] = $label;
 				}
 			}
 			return $columns;
