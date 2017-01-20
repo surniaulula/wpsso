@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function set_force_regen( $mod, $md_pre = 'og', $value = true ) {
-			$regen_key = $this->get_regen_key( $mod, $md_pre );
+			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
 			if ( $regen_key !== false ) {
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
-			$regen_key = $this->get_regen_key( $mod, $md_pre );
+			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
 			if ( $regen_key !== false ) {
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
@@ -279,11 +279,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// get the force regen transient id for set and get methods
 		// $mod = true | false | post_id | $mod array
-		public function get_regen_key( $mod, $md_pre ) {
+		public function get_force_regen_key( $mod, $md_pre ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
-				return $lca.'_post_'.$mod.'_regen_'.$md_pre;
+				return 'post_'.$mod.'_regen_'.$md_pre;
 
 			if ( ! is_array( $mod ) )
 				$mod = $this->get_page_mod( $mod );

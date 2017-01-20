@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		);
 
 		private $renamed_keys = array(
-			'og_img_resize' => 'plugin_auto_img_resize',
+			'og_img_resize' => 'plugin_create_wp_sizes',
 			'plugin_tid' => 'plugin_wpsso_tid',
 			'og_publisher_url' => 'fb_publisher_url',
 			'add_meta_property_og:video' => 'add_meta_property_og:video:url',
@@ -77,6 +77,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_schema_type_id_col_post' => 'plugin_schema_type_col_post',	// renamed in v3.39.1-1
 			'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',	// renamed in v3.39.1-1
 			'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',	// renamed in v3.39.1-1
+			'plugin_auto_img_resize' => 'plugin_create_wp_sizes',
 		);
 
 		protected $p;

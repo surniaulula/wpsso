@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// 'wpsso_attached_images' filter is used by the buddypress module
-			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
 		/* Use these static methods in get_attachment_image_src() to set/reset information about
@@ -340,12 +340,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
 
-			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) {		// only resize our own custom image sizes
+			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) {	// only resize our own custom image sizes
 
-				if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {		// auto-resize images option must be enabled
+				if ( $force_regen || ! empty( $this->p->options['plugin_create_wp_sizes'] ) ) {
 
 					// does the image metadata contain our image sizes?
-					if ( $force_regen === true || empty( $img_meta['sizes'][$size_name] ) ) {
+					if ( $force_regen || empty( $img_meta['sizes'][$size_name] ) ) {
 						$is_accurate_width = false;
 						$is_accurate_height = false;
 					} else {
@@ -383,7 +383,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							if ( empty( $img_meta['sizes'][$size_name] ) )
+							if ( $force_regen )
+								$this->p->debug->log( 'force regen is true' );
+							elseif ( empty( $img_meta['sizes'][$size_name] ) )
 								$this->p->debug->log( $size_name.' size not defined in the image meta' );
 							else $this->p->debug->log( 'image metadata ('.
 								( empty( $img_meta['sizes'][$size_name]['width'] ) ? 0 : 
@@ -395,7 +397,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						if ( $this->can_make_size( $img_meta, $size_info ) ) {
-
 							$fullsizepath = get_attached_file( $pid );
 							$resized = image_make_intermediate_size( $fullsizepath, 
 								$size_info['width'], $size_info['height'], $size_info['crop'] );
@@ -412,7 +413,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'skipped image_make_intermediate_size()' );
 					}
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'image metadata check skipped: plugin_auto_img_resize option is disabled' );
+					$this->p->debug->log( 'image metadata check skipped: plugin_create_wp_sizes option is disabled' );
 			}
 
 			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
@@ -507,7 +508,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
+		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $force_regen = false, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -599,7 +600,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image:height'],
 								$og_image['og:image:cropped'],
 								$og_image['og:image:id']
-							) = $this->get_attachment_image_src( $attr_value, $size_name, false );
+							) = $this->get_attachment_image_src( $attr_value, $size_name, false, $force_regen );
 
 							break;
 
@@ -653,7 +654,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$og_image['og:image:height'],
 									$og_image['og:image:cropped'],
 									$og_image['og:image:id']
-								) = $this->get_attachment_image_src( $match[1], $size_name, false );
+								) = $this->get_attachment_image_src( $match[1], $size_name, false, $force_regen );
 								break;	// stop here
 							} else {
 								$og_image = array(

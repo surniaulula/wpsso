@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff, 
-						$size_name, $mod, $check_dupes ) );
+						$size_name, $mod, $check_dupes, $force_regen ) );
 				}
 
 			} else {

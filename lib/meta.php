@@ -130,7 +130,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev_width = 600;
 			$prev_height = 315;
 			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
-			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' );
+			$refresh_cache = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen='.time() : '';
+			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
 
 			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
 					! empty( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;
@@ -540,14 +541,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							$opts[$md_pre.'_img_'.$key] === $defs[$md_pre.'_img_'.$key] )
 								unset( $opts[$md_pre.'_img_'.$key] );
 
-					if ( ! empty( $this->p->options['plugin_auto_img_resize'] ) ) {
-						$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
-							$opts[$md_pre.'_img_'.$key] : '';
-						$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
-							$prev[$md_pre.'_img_'.$key] : '';
-						if ( $check_current !== $check_previous ) {
-							$force_regen = true;
-						}
+					$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
+						$opts[$md_pre.'_img_'.$key] : '';
+					$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
+						$prev[$md_pre.'_img_'.$key] : '';
+					if ( $check_current !== $check_previous ) {
+						$force_regen = true;
 					}
 				}
 				if ( $force_regen !== false )
@@ -655,27 +654,29 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $columns;
 		}
 
-		public function get_og_img_column_html( $og_image ) {
+		public function get_og_img_column_html( $head_info, $mod ) {
 			$value = false;
+			$force_regen = $this->p->util->is_force_regen( $mod, 'og' );	// false by default
 
-			if ( isset( $og_image['og:image:id'] ) && 
-				$og_image['og:image:id'] > 0 ) {
+			if ( isset( $head_info['og:image:id'] ) && 
+				$head_info['og:image:id'] > 0 ) {
 
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'getting thumbnail for image id '.$og_image['og:image:id'] );
+					$this->p->debug->log( 'getting thumbnail for image id '.$head_info['og:image:id'] );
 
 				list(
-					$og_thumb['og:image'],
-					$og_thumb['og:image:width'],
-					$og_thumb['og:image:height'],
-					$og_thumb['og:image:cropped'],
-					$og_thumb['og:image:id']
-				) = $this->p->media->get_attachment_image_src( $og_image['og:image:id'], 'thumbnail', false, false );
-				if ( ! empty( $thumb['og:image'] ) )	// just in case
-					$og_image =& $og_thumb;
+					$og_img_thumb['og:image'],
+					$og_img_thumb['og:image:width'],
+					$og_img_thumb['og:image:height'],
+					$og_img_thumb['og:image:cropped'],
+					$og_img_thumb['og:image:id']
+				) = $this->p->media->get_attachment_image_src( $head_info['og:image:id'], 'thumbnail', false, $force_regen );
+				if ( ! empty( $og_img_thumb['og:image'] ) )	// just in case
+					$head_info =& $og_img_thumb;
 			}
 
-			$media_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+			$refresh_cache = $force_regen ? '?force_regen='.time() : '';
+			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
 
 			if ( ! empty( $media_url ) )
 				$value = '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
