@@ -365,16 +365,16 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.1-rc1 (2017/01/20)**
+**Version 3.39.1-1 (2017/01/21)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Improved the loading speed of editing table column content (SSO Schema, SSO Img, and SSO Desc columns).
+	* Improved the loading speed of post, term, and user editing table column content (SSO Schema, SSO Img, and SSO Desc columns).
 	* Refactored the set_force_regen() and is_force_regen() methods to use a single transient array (to reduce the number of transient queries).
 * *Bugfixes*
-	* Added a missing user ID argument when getting the user object in the SucomWebpage get_description() method.
 	* Updated delete_expired_db_transients() to remove transients without expiration times.
+	* Added a missing user ID argument when getting the user object in the SucomWebpage get_description() method.
 	* Fixed use of a thumbnail image in the SSO Img column instead of the original Open Graph og:image.
 * *Developer Notes*
 	* Added a new is_force_regen() method in the WpssoUtil class to check if the forced regen transient is set, along with a set_force_regen() method to set the transient, and get_force_regen_key() to determine the array key ID.
@@ -634,9 +634,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.1-rc1 =
+= 3.39.1-1 =
 
-(2017/01/20) Improved the loading speed of editing table column content (SSO Schema, SSO Img, and SSO Desc columns).
+(2017/01/21) Improved the loading speed of post, term, and user editing table column content (SSO Schema, SSO Img, and SSO Desc columns).
 
 = 3.39.0-1 =
 
