@@ -1931,7 +1931,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:510 lib/messages.php:572 lib/messages.php:656
-#: lib/submenu/general.php:212 lib/submenu/general.php:352
+#: lib/submenu/general.php:212 lib/submenu/general.php:351
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -2879,13 +2879,13 @@ msgid "Honor the FORCE_SSL Constant"
 msgstr ""
 
 #: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:102
-#: lib/submenu/essential.php:148
+#: lib/submenu/essential.php:152
 msgctxt "option label"
 msgid "Clear Cache(s) on Save Settings"
 msgstr ""
 
 #: lib/sitesubmenu/siteadvanced.php:76 lib/submenu/advanced.php:106
-#: lib/submenu/essential.php:152
+#: lib/submenu/essential.php:156
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
@@ -3062,22 +3062,27 @@ msgctxt "option label"
 msgid "Organization Logo Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:131
+#: lib/submenu/essential.php:130 lib/submenu/general.php:280
+msgctxt "option label"
+msgid "Organization Banner (600x60) URL"
+msgstr ""
+
+#: lib/submenu/essential.php:135
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:133 lib/submenu/general.php:340
+#: lib/submenu/essential.php:137 lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:138
+#: lib/submenu/essential.php:142
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:140 lib/submenu/general.php:371
+#: lib/submenu/essential.php:144 lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -3143,13 +3148,13 @@ msgid "Maximum Title Length"
 msgstr ""
 
 #: lib/submenu/general.php:108 lib/submenu/general.php:237
-#: lib/submenu/general.php:301 lib/submenu/general.php:380
+#: lib/submenu/general.php:300 lib/submenu/general.php:379
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/submenu/general.php:111 lib/submenu/general.php:298
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:111 lib/submenu/general.php:297
+#: lib/submenu/general.php:376
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
@@ -3189,12 +3194,12 @@ msgctxt "option label"
 msgid "Fallback to Author's Archive Page"
 msgstr ""
 
-#: lib/submenu/general.php:153 lib/submenu/general.php:285
+#: lib/submenu/general.php:153 lib/submenu/general.php:284
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:158 lib/submenu/general.php:290
+#: lib/submenu/general.php:158 lib/submenu/general.php:289
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
@@ -3244,102 +3249,97 @@ msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
 msgstr ""
 
-#: lib/submenu/general.php:281
-msgctxt "option label"
-msgid "Organization Banner (600x60) URL"
-msgstr ""
-
-#: lib/submenu/general.php:293
+#: lib/submenu/general.php:292
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:304
+#: lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:312
+#: lib/submenu/general.php:311
 msgctxt "option label"
 msgid "Item Type for Blog Home Page"
 msgstr ""
 
-#: lib/submenu/general.php:313
+#: lib/submenu/general.php:312
 msgctxt "option label"
 msgid "Item Type for Static Home Page"
 msgstr ""
 
-#: lib/submenu/general.php:314
+#: lib/submenu/general.php:313
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/submenu/general.php:315
+#: lib/submenu/general.php:314
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:328
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/submenu/general.php:346
+#: lib/submenu/general.php:345
 msgctxt "option label"
 msgid "Rich Pin Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:358
+#: lib/submenu/general.php:357
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:366
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:368
+#: lib/submenu/general.php:367
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:382
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:388
+#: lib/submenu/general.php:387
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:392
+#: lib/submenu/general.php:391
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:396
+#: lib/submenu/general.php:395
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:404
+#: lib/submenu/general.php:403
 msgctxt "option label"
 msgid "Instagram Business URL"
 msgstr ""
 
-#: lib/submenu/general.php:409
+#: lib/submenu/general.php:408
 msgctxt "option label"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/submenu/general.php:414
+#: lib/submenu/general.php:413
 msgctxt "option label"
 msgid "MySpace Business Page URL"
 msgstr ""

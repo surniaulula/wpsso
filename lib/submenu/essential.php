@@ -127,6 +127,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
+					$table_rows['schema_banner_url'] = $this->form->get_th_html( _x( 'Organization Banner (600x60) URL',
+						'option label', 'wpsso' ), null, 'schema_banner_url' ).
+					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
+
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';
 
