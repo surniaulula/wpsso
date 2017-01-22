@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_all_cache': 
-							$this->p->util->clear_all_cache( true );	// $clear_external = true
+							$this->p->util->clear_all_cache( true );	// $clear_ext = true
 							break;
 
 						case 'clear_metabox_prefs': 

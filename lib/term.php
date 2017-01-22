@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $mod, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients );
-			if ( ! empty( $this->p->options['plugin_cache_info'] ) && $deleted > 0 )
+			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 )
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.',
 					true, __FUNCTION__.'_items_removed', true );
 

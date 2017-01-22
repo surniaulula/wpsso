@@ -32,10 +32,10 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 }
 
 if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
-	function wpsso_clear_all_cache( $clear_external = false ) {
+	function wpsso_clear_all_cache( $clear_ext = false ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( is_object( $wpsso->util ) )	// just in case
-			return $wpsso->util->clear_all_cache( $clear_external, __FUNCTION__, true );
+			return $wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__, true );
 	}
 }
 

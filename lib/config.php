@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.1-1',	// plugin version
-					'opt_version' => '484',		// increment when changing default options
+					'version' => '3.39.2-dev1',	// plugin version
+					'opt_version' => '485',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -747,13 +747,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients' => '_recipe_ingredients',
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
-					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (1 week)
+					'plugin_shorten_cache_exp' => 2419200,		// Shortened URL Cache Expiry (4 weeks)
 					'plugin_column_cache_exp' => 604800,		// List Column Content Cache Expiry (1 week)
 					'plugin_content_cache_exp' => 3600,		// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_topics_cache_exp' => 2419200,		// Article Topics Array Cache Expiry (4 weeks)
 					'plugin_types_cache_exp' => 2419200,		// Schema Types Array Cache Expiry (4 weeks)
-					'plugin_cache_info' => 0,			// Report Cache Purge Count
+					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
+					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
 					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
@@ -855,7 +856,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
-					'plugin_shorten_cache_exp' => 604800,		// Shortened URL Cache Expiry (7 days)
+					'plugin_shorten_cache_exp' => 2419200,		// Shortened URL Cache Expiry (4 weeks)
 					'plugin_shorten_cache_exp:use' => 'default',
 					'plugin_column_cache_exp' => 604800,		// List Column Content Cache Expiry (1 week)
 					'plugin_column_cache_exp:use' => 'default',
@@ -867,8 +868,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp:use' => 'default',
 					'plugin_types_cache_exp' => 2419200,		// Schema Types Array Cache Expiry (4 weeks)
 					'plugin_types_cache_exp:use' => 'default',
-					'plugin_cache_info' => 0,			// Report Cache Purge Count
-					'plugin_cache_info:use' => 'default',
+					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
+					'plugin_show_purge_count:use' => 'default',
+					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
+					'plugin_clear_short_urls:use' => 'default',
 					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',

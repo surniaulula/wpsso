@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->p->set_config();
 			$this->p->set_objects( true );	// $activate = true
-			$this->p->util->clear_all_cache( true );	// $clear_external = true
+			$this->p->util->clear_all_cache( true );	// $clear_ext = true
 
 			WpssoUtil::save_all_times( $lca, $version );
 			set_transient( $lca.'_activation_redirect', true, 60 * 60 );

@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache( $clear_external = true, $msg_id = false, $dismiss = false ) {
+		public function clear_all_cache( $clear_ext = true, $msg_id = false, $dismiss = false ) {
 
 			if ( $this->cleared_all_cache )	// already run once
 				return 0;
@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
 				'wpsso' ), $short );
 
-			if ( $clear_external ) {
+			if ( $clear_ext ) {
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $del_files + $del_transients;
 		}
 
-		public function clear_cache_objects( $transients = array(), $wp_objects = array() ) {
+		public function clear_cache_objects( array $transients, array $wp_objects ) {
 			$deleted = 0;
 			$lca = $this->p->cf['lca'];
 			foreach ( $transients as $group => $arr ) {
@@ -381,6 +381,69 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 				}
+			}
+			return $deleted;
+		}
+
+		public function delete_expired_db_transients( $all = false ) { 
+			global $wpdb;
+			$lca = $this->p->cf['lca'];
+			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
+				(int) $_SERVER['REQUEST_TIME'] : time() ; 
+			if ( $all ) {
+				$prefix = '_transient_';	// clear all transient, even if no timeout value
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$prefix.$lca.'_%\';';
+			} else {
+				$prefix = '_transient_timeout_';
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$prefix.$lca.'_%\''.
+					' AND option_value < '.$current_time.';';	// expiration time older than current time
+			}
+			$expired = $wpdb->get_col( $dbquery ); 
+			$deleted = 0;
+			foreach( $expired as $transient ) { 
+				$key = str_replace( $prefix, '', $transient );
+
+				/*
+				 * If clearing all transients, skip the shortened URL transients 
+				 * unless the "Clear Short URLs on Clear All Cache" option is checked.
+				 */
+				if ( $all && empty( $this->p->cf['plugin_clear_short_urls'] ) && 
+					strpos( $key, $lca.'_sh' ) === 0 )
+						continue;
+
+				if ( delete_transient( $key ) )
+					$deleted++;
+			}
+			return $deleted;
+		}
+
+		public function delete_all_cache_files() {
+			$uca = strtoupper( $this->p->cf['lca'] );
+			$cache_dir = constant( $uca.'_CACHEDIR' );
+			$deleted = 0;
+			if ( ! $dh = @opendir( $cache_dir ) ) {
+				$this->p->notice->err( sprintf( __( 'Failed to open directory %s for reading.',
+					'wpsso' ), $cache_dir ) );
+			} else {
+				while ( $file_name = @readdir( $dh ) ) {
+					$cache_file = $cache_dir.$file_name;
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+						if ( @unlink( $cache_file ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'removed cache file '.$cache_file );
+							$deleted++;
+						} else {	
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'error removing cache file '.$cache_file );
+							if ( is_admin() )
+								$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
+									'wpsso' ), $cache_file ) );
+						}
+					}
+				}
+				closedir( $dh );
 			}
 			return $deleted;
 		}
@@ -1418,60 +1481,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $max;
-		}
-
-		public function delete_expired_db_transients( $all = false ) { 
-			global $wpdb;
-			$lca = $this->p->cf['lca'];
-			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
-				(int) $_SERVER['REQUEST_TIME'] : time() ; 
-			if ( $all ) {
-				$prefix = '_transient_';	// clear all transient, even if no timeout value
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$prefix.$lca.'_%\';';
-			} else {
-				$prefix = '_transient_timeout_';
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$prefix.$lca.'_%\''.
-					' AND option_value < '.$current_time.';';	// expiration time older than current time
-			}
-			$expired = $wpdb->get_col( $dbquery ); 
-			$deleted = 0;
-			foreach( $expired as $transient ) { 
-				$key = str_replace( $prefix, '', $transient );
-				if ( delete_transient( $key ) )
-					$deleted++;
-			}
-			return $deleted;
-		}
-
-		public function delete_all_cache_files() {
-			$uca = strtoupper( $this->p->cf['lca'] );
-			$cache_dir = constant( $uca.'_CACHEDIR' );
-			$deleted = 0;
-			if ( ! $dh = @opendir( $cache_dir ) ) {
-				$this->p->notice->err( sprintf( __( 'Failed to open directory %s for reading.',
-					'wpsso' ), $cache_dir ) );
-			} else {
-				while ( $file_name = @readdir( $dh ) ) {
-					$cache_file = $cache_dir.$file_name;
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
-						if ( @unlink( $cache_file ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'removed cache file '.$cache_file );
-							$deleted++;
-						} else {	
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'error removing cache file '.$cache_file );
-							if ( is_admin() )
-								$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
-									'wpsso' ), $cache_file ) );
-						}
-					}
-				}
-				closedir( $dh );
-			}
-			return $deleted;
 		}
 
 		public function get_setup_content( $ext, $read_cache = true ) {

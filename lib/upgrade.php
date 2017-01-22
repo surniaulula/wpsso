@@ -19,6 +19,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_ignore_small_img:use' => 'plugin_check_img_dims:use',	// renamed in v3.31.1-1
 			'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
 			'plugin_file_cache_exp:use' => 'plugin_social_file_cache_exp:use',
+			'plugin_cache_info' => 'plugin_show_purge_count',
+			'plugin_cache_info:use' => 'plugin_show_purge_count:use',
 		);
 
 		private $renamed_keys = array(
@@ -78,6 +80,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',	// renamed in v3.39.1-1
 			'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',	// renamed in v3.39.1-1
 			'plugin_auto_img_resize' => 'plugin_create_wp_sizes',
+			'plugin_cache_info' => 'plugin_show_purge_count',
 		);
 
 		protected $p;

@@ -298,11 +298,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			$this->p->admin->get_site_use( $form, $network, 'plugin_types_cache_exp' );
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Report Cache Purge Count',
-				'option label', 'wpsso' ), null, 'plugin_cache_info' ).
-			$this->get_nocb_cell( $form, 'plugin_cache_info' ).
-			$this->p->admin->get_site_use( $form, $network, 'plugin_cache_info' );
+			$table_rows['plugin_show_purge_count'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Show Cache Purge Count on Update',
+				'option label', 'wpsso' ), null, 'plugin_show_purge_count' ).
+			$this->get_nocb_cell( $form, 'plugin_show_purge_count' ).
+			$this->p->admin->get_site_use( $form, $network, 'plugin_show_purge_count' );
+
+			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',
+				'option label', 'wpsso' ), null, 'plugin_clear_short_urls' ).
+			$this->get_nocb_cell( $form, 'plugin_clear_short_urls' ).
+			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_short_urls' );
 
 			return $table_rows;
 		}
