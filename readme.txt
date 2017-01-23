@@ -365,13 +365,14 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.2-dev1 (TBD)**
+**Version 3.39.2-dev1 (2017/01/23)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new "Clear Short URLs on Clear All Cache" option (default is unchecked) to preserve / clear shortened URLs when clearing all cache transients (Pro version).
-	* Updated the default "Shortened URL Cache Expiry" option value from 604800 seconds (1 week) to  2419200 seconds (4 weeks).
+	* Added a new "Clear Short URLs on Clear All Cache" option (default is unchecked) to preserve or clear shortened URLs when clearing all WPSSO cache transients (Pro version). The default unchecked value for this option prevents updating all shortened URLs at once, which may exceed API call limits imposed by your shortening service provider.
+	* Changed the default "Shortened URL Cache Expiry" option value from 604800 seconds (1 week) to  2419200 seconds (4 weeks).
+	* Removed the "List Column Content Cache Expiry" deprecated option (no longer used).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -645,6 +646,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.2-dev1 =
+
+(2017/01/23) Added a new "Clear Short URLs on Clear All Cache" option (default is unchecked) to preserve or clear shortened URLs. The default unchecked value for this option prevents updating all shortened URLs at once, which may exceed API call limits imposed by your shortening service provider.
 
 = 3.39.1-1 =
 
