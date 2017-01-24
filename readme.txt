@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.2-rc1 (2017/01/24)**
+**Version 3.39.2-1 (2017/01/25)**
 
 * *New Features*
 	* None
@@ -648,9 +648,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.2-rc1 =
+= 3.39.2-1 =
 
-(2017/01/24) Added a new "Clear Short URLs on Clear All Cache" option (default is unchecked) to preserve or clear shortened URLs. The default value prevents updating all shortened URLs at once, which may exceed API call limits imposed by your shortening service provider.
+(2017/01/25) Added a new "Clear Short URLs on Clear All Cache" option (default is unchecked) to preserve or clear shortened URLs. The default value prevents updating all shortened URLs at once, which may exceed API call limits imposed by your shortening service provider.
 
 = 3.39.1-1 =
 
