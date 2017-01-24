@@ -253,12 +253,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Plugin Settings' settings
 						 */
-						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
-							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
-							break;
-						case 'tooltip-plugin_clear_on_save':	// Clear Cache(s) on Save Settings
-							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
-							break;
 						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
 							$text = sprintf( __( 'Check this option if you would like to preserve all %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
 							break;
@@ -353,6 +347,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'WP / Theme Integration' settings
 						 */
+						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
+							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
+							break;
 						case 'tooltip-plugin_check_head':
 							$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
 							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $max_count );
@@ -437,6 +434,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-plugin_show_purge_count':
 							$text = __( 'Report the number of objects removed from the WordPress cache when posts, terms, and users are updated.', 'wpsso' );
+							break;
+						case 'tooltip-plugin_clear_on_save':	// Clear All Cache on Save Settings
+							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_clear_short_urls':
 							$cache_exp = (int) apply_filters( $lca.'_cache_expire_shorten_url', $this->p->options['plugin_shorten_cache_exp'] );

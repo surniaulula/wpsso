@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.2-rc1',	// plugin version
+					'version' => '3.39.2-1',	// plugin version
 					'opt_version' => '485',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -685,8 +685,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
-					'plugin_clear_on_save' => 1,			// Clear Cache(s) on Save Settings
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
@@ -707,7 +705,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_vimeo_api' => 1,			// Check for Embedded Media from: Vimeo
 					'plugin_wistia_api' => 1,			// Check for Embedded Media from: Wistia
 					'plugin_youtube_api' => 1,			// Check for Embedded Media from: Youtube
-					// Theme Integration Tab
+					// WP / Theme Integration Tab
+					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_html_attr_filter_name' => 'language_attributes',
 					'plugin_html_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'head_attributes',
@@ -753,6 +752,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp' => 2419200,		// Article Topics Array Cache Expiry (4 weeks)
 					'plugin_types_cache_exp' => 2419200,		// Schema Types Array Cache Expiry (4 weeks)
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
+					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
@@ -817,10 +817,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
-					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
-					'plugin_honor_force_ssl:use' => 'default',
-					'plugin_clear_on_save' => 0,			// Clear Cache(s) on Save Settings
-					'plugin_clear_on_save:use' => 'default',
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_preserve:use' => 'default',
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
@@ -832,6 +828,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Content and Filters Tab
 					// Social Settings Tab
 					// WP / Theme Integration Tab
+					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
+					'plugin_honor_force_ssl:use' => 'default',
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
 					'plugin_check_head:use' => 'default',
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
@@ -867,6 +865,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use' => 'default',
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_show_purge_count:use' => 'default',
+					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
+					'plugin_clear_on_save:use' => 'default',
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					'plugin_clear_short_urls:use' => 'default',
 					// Extension Plugins and Pro Licenses

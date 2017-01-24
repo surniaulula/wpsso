@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.2-"
-"rc1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.2-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -912,7 +911,6 @@ msgid "Check for Embedded Media from"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:107 lib/pro/admin/advanced.php:110
-#: lib/sitesubmenu/siteadvanced.php:66
 msgctxt "option label"
 msgid "Honor the FORCE_SSL Constant"
 msgstr ""
@@ -989,19 +987,19 @@ msgctxt "option label"
 msgid "Add %s Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:185 lib/messages.php:312 lib/meta.php:582
+#: lib/gpl/admin/advanced.php:185 lib/messages.php:306 lib/meta.php:582
 #: lib/pro/admin/advanced.php:185
 msgctxt "column title"
 msgid "%s Schema"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:188 lib/messages.php:318 lib/meta.php:585
+#: lib/gpl/admin/advanced.php:188 lib/messages.php:312 lib/meta.php:585
 #: lib/pro/admin/advanced.php:188
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:191 lib/messages.php:324 lib/meta.php:588
+#: lib/gpl/admin/advanced.php:191 lib/messages.php:318 lib/meta.php:588
 #: lib/pro/admin/advanced.php:191
 msgctxt "column title"
 msgid "%s Desc"
@@ -1680,61 +1678,55 @@ msgstr ""
 
 #: lib/messages.php:257
 msgid ""
-"If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs "
-"from HTTP to HTTPS when required (default is checked)."
-msgstr ""
-
-#: lib/messages.php:260
-msgid ""
-"Automatically clear all known plugin cache(s) when saving the %s settings "
-"(default is checked)."
-msgstr ""
-
-#: lib/messages.php:263
-msgid ""
 "Check this option if you would like to preserve all %s settings when you "
 "<em>uninstall</em> the plugin (default is unchecked)."
 msgstr ""
 
-#: lib/messages.php:266
+#: lib/messages.php:260
 msgid ""
 "Add debugging messages to back-end and front-end webpages as hidden HTML "
 "comments (default is unchecked)."
 msgstr ""
 
-#: lib/messages.php:269
+#: lib/messages.php:263
 msgid ""
 "Hide all Pro version settings, tabs, and options (default is unchecked)."
 msgstr ""
 
-#: lib/messages.php:272
+#: lib/messages.php:266
 msgid ""
 "Select the default set of options to display in the %s settings pages. The "
 "basic view shows only the most commonly used options."
 msgstr ""
 
-#: lib/messages.php:328
+#: lib/messages.php:322
 msgid ""
 "An \"%1$s\" column can be added to the Posts, Pages, Taxonomy / Terms, and "
 "Users admin list pages. When enabled, <b>users can also hide this column</b> "
 "by using the <em>Screen Options</em> tab on each admin list page."
 msgstr ""
 
-#: lib/messages.php:334
+#: lib/messages.php:328
 msgid "Include and exclude specific tabs in the Social Settings metabox."
 msgstr ""
 
-#: lib/messages.php:337
+#: lib/messages.php:331
 msgid "Read the Yoast SEO custom social meta text for Posts, Terms, and Users."
 msgstr ""
 
-#: lib/messages.php:338
+#: lib/messages.php:332
 msgid ""
 "This option is checked by default if the Yoast SEO plugin is active or its "
 "settings are found in the database."
 msgstr ""
 
-#: lib/messages.php:358
+#: lib/messages.php:351
+msgid ""
+"If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs "
+"from HTTP to HTTPS when required (default is checked)."
+msgstr ""
+
+#: lib/messages.php:355
 msgid ""
 "When editing Posts and Pages, %1$s can check the head section of webpages "
 "for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> "
@@ -1742,63 +1734,69 @@ msgid ""
 "or any plugin is updated, when another %2$d checks are performed."
 msgstr ""
 
-#: lib/messages.php:370
+#: lib/messages.php:367
 msgid ""
 "Automatically create missing and/or incorrect images in the WordPress Media "
 "Library (default is checked)."
 msgstr ""
 
-#: lib/messages.php:398 lib/messages.php:405 lib/messages.php:412
-#: lib/messages.php:419 lib/messages.php:426 lib/messages.php:433
+#: lib/messages.php:395 lib/messages.php:402 lib/messages.php:409
+#: lib/messages.php:416 lib/messages.php:423 lib/messages.php:430
 msgctxt "option comment"
 msgid "disabled"
 msgstr ""
 
-#: lib/messages.php:399
+#: lib/messages.php:396
 msgid ""
 "Head meta tags and Schema markup are saved to the WordPress transient cache "
 "to optimize performance."
 msgstr ""
 
-#: lib/messages.php:400 lib/messages.php:407 lib/messages.php:414
-#: lib/messages.php:421 lib/messages.php:428 lib/messages.php:435
+#: lib/messages.php:397 lib/messages.php:404 lib/messages.php:411
+#: lib/messages.php:418 lib/messages.php:425 lib/messages.php:432
 msgid "The suggested cache expiration value is %1$s seconds (%2$s)."
 msgstr ""
 
-#: lib/messages.php:406
+#: lib/messages.php:403
 msgid ""
 "Filtered post content is saved to the WordPress <em>non-persistent</em> "
 "object cache to optimize performance."
 msgstr ""
 
-#: lib/messages.php:413
+#: lib/messages.php:410
 msgid ""
 "The size for image URLs (not image IDs) is retrieved and saved to the "
 "WordPress transient cache to optimize performance and network bandwidth."
 msgstr ""
 
-#: lib/messages.php:420
+#: lib/messages.php:417
 msgid ""
 "Shortened URLs are saved to the WordPress transient cache to optimize "
 "performance and API connections."
 msgstr ""
 
-#: lib/messages.php:427
+#: lib/messages.php:424
 msgid ""
 "The filtered article topics array is saved to the WordPress transient cache "
 "to optimize performance and disk access."
 msgstr ""
 
-#: lib/messages.php:434
+#: lib/messages.php:431
 msgid ""
 "The filtered Schema types array is saved to the WordPress transient cache to "
 "optimize performance."
 msgstr ""
 
-#: lib/messages.php:439
+#: lib/messages.php:436
 msgid ""
 "Report the number of objects removed from the WordPress cache when posts, "
 "terms, and users are updated."
+msgstr ""
+
+#: lib/messages.php:439
+msgid ""
+"Automatically clear all known plugin cache(s) when saving the %s settings "
+"(default is checked)."
 msgstr ""
 
 #: lib/messages.php:443
@@ -2928,18 +2926,13 @@ msgctxt "metabox tab"
 msgid "Cache Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:71
-msgctxt "option label"
-msgid "Clear Cache(s) on Save Settings"
-msgstr ""
-
-#: lib/sitesubmenu/siteadvanced.php:76 lib/submenu/advanced.php:98
+#: lib/sitesubmenu/siteadvanced.php:66 lib/submenu/advanced.php:98
 #: lib/submenu/essential.php:148
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:81 lib/submenu/advanced.php:102
+#: lib/sitesubmenu/siteadvanced.php:71 lib/submenu/advanced.php:102
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
