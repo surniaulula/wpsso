@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.2-"
-"dev1\n"
+"rc1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -439,6 +439,50 @@ msgstr ""
 #: lib/admin.php:1495
 msgctxt "option label (very short)"
 msgid "Site Use"
+msgstr ""
+
+#: lib/com/cache.php:91
+msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
+msgstr ""
+
+#: lib/com/cache.php:96
+msgid ""
+"PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
+"library cannot follow redirections."
+msgstr ""
+
+#: lib/com/cache.php:98
+msgid "The maximum number of redirections (%1$d) may have been exceeded."
+msgstr ""
+
+#: lib/com/cache.php:102
+msgid "Ignoring requests to cache this URL for %1$d second(s)."
+msgstr ""
+
+#: lib/com/cache.php:165
+msgid ""
+"The PHP cURL library is missing. Please contact your hosting provider to "
+"have the cURL library installed."
+msgstr ""
+
+#: lib/com/cache.php:219 lib/util.php:441
+msgid "Error removing cache file %s."
+msgstr ""
+
+#: lib/com/cache.php:337
+msgid "Cache file %s is not readable."
+msgstr ""
+
+#: lib/com/cache.php:346
+msgid "Failed to open cache file %s for reading."
+msgstr ""
+
+#: lib/com/cache.php:399
+msgid "Cache folder %s is not writable."
+msgstr ""
+
+#: lib/com/cache.php:403
+msgid "Failed to open cache file %s for writing."
 msgstr ""
 
 #: lib/com/form.php:72 lib/config-gettext-extract.php:37
@@ -3388,10 +3432,6 @@ msgstr ""
 
 #: lib/util.php:427
 msgid "Failed to open directory %s for reading."
-msgstr ""
-
-#: lib/util.php:441
-msgid "Error removing cache file %s."
 msgstr ""
 
 #: lib/util.php:477
