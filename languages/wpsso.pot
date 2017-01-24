@@ -448,15 +448,15 @@ msgstr ""
 #: lib/com/cache.php:96
 msgid ""
 "PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
-"library cannot follow redirections."
+"library cannot follow URL redirects."
 msgstr ""
 
 #: lib/com/cache.php:98
-msgid "The maximum number of redirections (%1$d) may have been exceeded."
+msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
 #: lib/com/cache.php:102
-msgid "Ignoring requests to cache this URL for %1$d second(s)."
+msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
 #: lib/com/cache.php:165

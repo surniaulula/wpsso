@@ -93,20 +93,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				if ( $http_code === 301 ) {
 					if ( ini_get('safe_mode') || ini_get('open_basedir') )
-						$errors[] = __( 'PHP "safe_mode" or "open_basedir" is defined &mdash; the PHP cURL library cannot follow redirections.',
+						$errors[] = __( 'PHP "safe_mode" or "open_basedir" is defined &mdash; the PHP cURL library cannot follow URL redirects.',
 							$this->text_dom );
-					else $errors[] = sprintf( __( 'The maximum number of redirections (%1$d) may have been exceeded.',
+					else $errors[] = sprintf( __( 'The maximum number of URL redirects (%d) may have been exceeded.',
 						$this->text_dom ), $this->curl_max_redirs );
 				}
 
-				$errors[] = sprintf( __( 'Ignoring requests to cache this URL for %1$d second(s).',
+				$errors[] = sprintf( __( 'Requests to cache this URL will be ignored for %d second(s).',
 					$this->text_dom ), $this->transient['ignore_time'] );
 
 				$this->p->notice->err( implode( ' ', $errors ) );
 			}
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'error connecting to '.$url.' for caching (http code '.$http_code.')' );
-				$this->p->debug->log( 'ignoring requests to cache this URL for '.$this->transient['ignore_time'].' second(s)' );
+				$this->p->debug->log( 'requests to cache this URL will be ignored for '.$this->transient['ignore_time'].' second(s)' );
 			}
 		}
 
