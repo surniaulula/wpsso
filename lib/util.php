@@ -404,15 +404,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$deleted = 0;
 			foreach( $expired as $transient ) { 
 				$key = str_replace( $prefix, '', $transient );
-
 				/*
 				 * If clearing all transients, skip the shortened URL transients 
 				 * unless the "Clear Short URLs on Clear All Cache" option is checked.
 				 */
-				if ( $all && empty( $this->p->cf['plugin_clear_short_urls'] ) && 
-					strpos( $key, $lca.'_sh' ) === 0 )
-						continue;
-
+				if ( $all ) {
+					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
+						strpos( $key, $lca.'_sh' ) === 0 )
+							continue;
+				}
 				if ( delete_transient( $key ) )
 					$deleted++;
 			}

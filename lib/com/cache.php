@@ -20,6 +20,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_object_cache_exp = 259200;	// 3 days
 		public $curl_connect_timeout = 5;
 		public $curl_timeout = 10;
+		public $curl_max_redirs = 10;
 
 		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
@@ -77,12 +78,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->load_transient();
 			$this->transient['ignore_urls'][$url] = time();
 			if ( is_admin() ) {
-				$this->p->notice->err( 'Error connecting to <a href="'.$url.'" target="_blank">'.
-					$url.'</a> for caching (HTTP code '.$http_code.'). Ignoring requests to cache this URL for '.
-						$this->transient['ignore_time'].' second(s).' );
+				$errors = array();
+				$errors[] = 'Error connecting to <a href="'.$url.'" target="_blank">'.$url.'</a> for caching (HTTP code '.$http_code.').';
+				if ( $http_code === 301 ) {
+					if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
+						$errors[] = 'PHP "safe_mode" or "open_basedir" is defined &mdash; the PHP cURL library cannot follow redirections.';
+					} else {
+						$errors[] = 'The maximum number of redirections ('.$this->curl_max_redirs.') may have been exceeded.';
+					}
+				}
+				$errors[] = 'Ignoring requests to cache this URL for '.$this->transient['ignore_time'].' second(s).';
+				$this->p->notice->err( implode( ' ', $errors ) );
 			}
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'error connecting to URL '.$url.' for caching (http code '.$http_code.')' );
+				$this->p->debug->log( 'error connecting to '.$url.' for caching (http code '.$http_code.')' );
 				$this->p->debug->log( 'ignoring requests to cache this URL for '.$this->transient['ignore_time'].' second(s)' );
 			}
 		}
@@ -216,7 +225,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'PHP safe_mode or open_basedir defined, cannot use CURLOPT_FOLLOWLOCATION' );
 			} else {
-				curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
+				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 			}
 
@@ -246,7 +255,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: fetching '.$get_url );
 
 			$cache_data = curl_exec( $ch );
-			$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+			$http_code = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 			$ssl_verify = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
 			curl_close( $ch );
 
