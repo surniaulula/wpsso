@@ -145,10 +145,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-advanced':
 
-					$table_rows['plugin_clear_on_save'] = $this->form->get_th_html( _x( 'Clear Cache(s) on Save Settings',
-						'option label', 'wpsso' ), null, 'plugin_clear_on_save' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_clear_on_save' ).'</td>';
-
 					$table_rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
 						'option label', 'wpsso' ), null, 'plugin_preserve' ).
 					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>';

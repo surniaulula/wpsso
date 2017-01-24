@@ -103,6 +103,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="3" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
+			$table_rows['plugin_honor_force_ssl'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant',
+				'option label', 'wpsso' ), null, 'plugin_honor_force_ssl' ).
+			$this->get_nocb_cell( $form, 'plugin_honor_force_ssl' );
+
 			$table_rows['plugin_html_attr_filter'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook',
 				'option label', 'wpsso' ), null, 'plugin_html_attr_filter' ).
@@ -297,6 +302,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_show_purge_count' ).
 			$this->get_nocb_cell( $form, 'plugin_show_purge_count' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_show_purge_count' );
+
+			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Cache on Save Settings',
+				'option label', 'wpsso' ), null, 'plugin_clear_on_save' ).
+			$this->get_nocb_cell( $form, 'plugin_clear_on_save' ).
+			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_on_save' );
 
 			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',

@@ -771,8 +771,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-option-msg':
 						$purchase_url = add_query_arg( 'utm_source', $idx, $url['purchase'] );
 						$text = '<p class="pro-option-msg"><a href="'.$purchase_url.'" target="_blank">'.
-							sprintf( _x( '%s required to use this option', 'option comment', 'wpsso' ),
+							sprintf( _x( 'option requires %s', 'option comment', 'wpsso' ),
 								$info['short_pro'] ).'</a></p>';
+						break;
+					case 'pro-purchase-text':
+						$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
+						if ( ! empty( $info['url'] ) )
+							$text = '<a href="'.$info['url'].'" target="_blank">'.$text.'</a>';
+						if ( ! empty( $info['ext'] ) && $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] )
+							$text .= ' '.sprintf( _x( '(%s Required)', 'plugin action link', 'wpsso' ), $info['short_pro'] );
 						break;
 					case 'pro-about-msg-post-text':
 						$text = '<p>'.__( 'You can update the excerpt or content text to change the default description values.', 'wpsso' ).'</p>';

@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$defined_constants['user'] ), 'wpsso constants' );
 
 				// show active plugins
-				$this->p->debug->show_html( print_r( WpssoUtil::active_plugins(), true ), 'active plugins' );
+				$this->p->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
 
 				// show available modules
 				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
