@@ -386,8 +386,8 @@ msgstr ""
 
 #: lib/admin.php:1303
 msgid ""
-"please uncheck the <strong>Output Knowledge tags?</strong> option in <a href="
-"\"%s\">The SEO Framework</a> Knowledge Graph Settings."
+"please uncheck the <strong>Output Authorized Presence?</strong> option in <a "
+"href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr ""
 
 #: lib/admin.php:1327
