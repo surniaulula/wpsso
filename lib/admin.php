@@ -296,6 +296,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$links[] = '<a href="'.$info['url']['forum'].'">'.
 					_x( 'Forum', 'plugin action link', 'wpsso' ).'</a>';
 
+			/*
+			if ( ! empty( $info['url']['review'] ) ) {
+				$links[] = '<a href="'.$info['url']['latest'].'">'.
+					_x( 'Rating', 'plugin action link', 'wpsso' ).'</a>';
+			}
+			*/
+
 			if ( ! empty( $info['url']['purchase'] ) ) {
 				$purchase_url = add_query_arg( 'utm_source', 'plugin-action-links', $info['url']['purchase'] );
 				$links[] = $this->p->msgs->get( 'pro-purchase-text', array( 'ext' => $ext, 'url' => $purchase_url ) );
@@ -983,6 +990,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				elseif ( ! empty( $info['url']['forum'] ) )
 					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a> (Free version)',
 						'wpsso' ), $info['url']['forum'] );
+
+				if ( ! empty( $info['url']['review'] ) ) {
+					$links[] = sprintf( __( '<a href="%1$s" target="_blank">Rate the %2$s Plugin</a> on WordPress.org',
+						'wpsso' ), $info['url']['review'], $info['short'] );
+				}
 
 				if ( ! empty( $links ) ) {
 					echo '<p><strong>'.$info['short'].'</strong></p>'."\n";

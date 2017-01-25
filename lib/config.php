@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/setup.html',
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-am?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
 						// wpsso
@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-schema-json-ld?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
 						// wpsso
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-organization/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-organization?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
 						// wpsso
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-plm?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
 						// wpsso
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress.org
 						'download' => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-rrssb?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
 						// wpsso
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-ssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-ssb?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-ssb/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ssb/master/readme.txt',
 						// wpsso
@@ -326,7 +326,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-strip-schema-microdata?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
 						// wpsso
@@ -354,7 +354,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-tweet-a-quote?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
 						// wpsso
@@ -382,7 +382,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// wordpress
 						'download' => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-user-locale',
-						'review' => 'https://wordpress.org/support/view/plugin-reviews/wpsso-user-locale?filter=5&rate=5#postform',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
 						// wpsso
