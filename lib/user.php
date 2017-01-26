@@ -683,12 +683,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$transients = array(
-				'WpssoHead::get_head_array' => array( $cache_salt ),
-			);
+			$transients = array( 'WpssoHead::get_head_array' => array( $cache_salt ) );
 			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $mod, $sharing_url );
 
-			$deleted = $this->p->util->clear_cache_objects( $transients );
+			$wp_objects = array();
+			$wp_objects = apply_filters( $lca.'_user_cache_objects', $wp_objects, $mod, $sharing_url );
+
+			$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
 			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 )
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
 					true, __FUNCTION__.'_items_removed', true );
