@@ -81,9 +81,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'meta' => 'Term and User Settings',
 							),
 							'util' => array(
-								'post' => 'Custom Post Meta',
-								'term' => 'Custom Term Meta',
-								'user' => 'Custom User Meta',
+								'post' => '(tool) Custom Post Meta',
+								'term' => '(tool) Custom Term Meta',
+								'user' => '(tool) Custom User Meta',
 							),
 						),
 						'pro' => array(
@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_website' => 'website',
 					'schema_author_name' => 'display_name',
 					'schema_img_max' => 1,
-					'schema_img_width' => 800,		// must be at least 696px
+					'schema_img_width' => 800,		// must be at least 696px for Articles
 					'schema_img_height' => 1600,
 					'schema_img_crop' => 0,
 					'schema_img_crop_x' => 'center',
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_sep' => '-',
 					'og_title_len' => 70,
 					'og_desc_len' => 300,			// maximum length in characters (hard limit)
-					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook
+					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook (soft limit)
 					'og_desc_hashtags' => 3,
 					'rp_publisher_url' => '',		// (localized)
 					'rp_author_name' => 'display_name',	// rich-pin specific article:author
@@ -942,10 +942,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'sup_version_url' => 'http://php.net/supported-versions.php',
 			),
 			'form' => array(
-				'schema_type_col_width' => '130px',
+				'schema_type_col_width' => '120px',
 				'og_img_col_width' => '70px',
 				'og_img_col_height' => '37px',
-				'og_desc_col_width' => '140px',
+				'og_desc_col_width' => '12%',
 				'tooltip_class' => 'sucom_tooltip',
 				'max_hashtags' => 10,
 				'max_media_items' => 20,
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
 				);
-	
+
 				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro
 
 				if ( $do_filter ) {
@@ -1427,22 +1427,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					self::$cf['config_filtered'] = true;
 
 					foreach ( self::$cf['plugin'] as $ext => $info ) {
-	
+
 						if ( defined( strtoupper( $ext ).'_PLUGINDIR' ) )
 							$pkg_lctype = is_dir( constant( strtoupper( $ext ).
 								'_PLUGINDIR' ).'lib/pro/' ) ? 'pro' : 'gpl';
 						else $pkg_lctype = '';
-	
+
 						if ( isset( $info['base'] ) )
 							self::$cf['*']['base'][$info['base']] = $ext;
-	
+
 						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) )
 							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct( 
 								self::$cf['*']['lib'], $info['lib'] );
-	
+
 						if ( isset( $info['version'] ) )
 							self::$cf['*']['version'] .= '-'.$ext.$info['version'].$pkg_lctype;
-	
+
 						if ( isset( $info['opt_version'] ) )
 							self::$cf['opt']['version'] .= '-'.$ext.$info['opt_version'].$pkg_lctype;
 
@@ -1487,10 +1487,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			self::set_variable_constants();
 		}
 
-		public static function set_variable_constants( $constants = null ) { 
-			if ( $constants === null )
-				$constants = self::get_variable_constants();
-			foreach ( $constants as $name => $value )
+		public static function set_variable_constants( $var_const = null ) { 
+			if ( $var_const === null )
+				$var_const = self::get_variable_constants();
+			foreach ( $var_const as $name => $value )
 				if ( ! defined( $name ) )
 					define( $name, $value );
 		}
@@ -1558,7 +1558,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function require_libs( $plugin_filepath ) {
-			
+
 			require_once( WPSSO_PLUGINDIR.'lib/com/nodebug.php' );		// always load fallback class
 			require_once( WPSSO_PLUGINDIR.'lib/com/nonotice.php' );		// always load fallback class
 			require_once( WPSSO_PLUGINDIR.'lib/com/exception.php' );	// extends Exception

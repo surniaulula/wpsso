@@ -175,7 +175,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		width:20%;	/* default is 25% */
 	}
 	.column-'.$lca.'_og_img { 
-		width:'.$cf_form['og_img_col_width'].';
+		width:'.$cf_form['og_img_col_width'].' !important;
+		min-width:'.$cf_form['og_img_col_width'].' !important;
 	}
 	.column-'.$lca.'_og_img .preview_img { 
 		width:'.$cf_form['og_img_col_width'].';
@@ -196,8 +197,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		overflow:hidden;
 	}
 	.column-'.$lca.'_schema_type {
-		width:'.$cf_form['schema_type_col_width'].';
-		min-width:'.$cf_form['schema_type_col_width'].';
+		width:'.$cf_form['schema_type_col_width'].' !important;
+		min-width:'.$cf_form['schema_type_col_width'].' !important;
 		white-space:nowrap;
 		overflow:hidden;
 	}
