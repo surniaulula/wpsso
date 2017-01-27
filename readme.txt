@@ -372,7 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Updated the default YouTube preview image name to maxresdefault.jpg and added a source query argument to the preview image URLs (Pro version).
 * *Bugfixes*
-	* None
+	* Fixed updating the default YouTube video preview image URL from the retrieved video meta tags (Pro version).
 * *Developer Notes*
 	* Added extra logging of the matched video array in all video modules (Pro version).
 
