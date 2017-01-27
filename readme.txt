@@ -10,7 +10,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: seo, social, share, open graph, facebook, twitter, pinterest, youtube, sharing, meta tags, social media, schema, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, json, json-ld, ld+json, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, facebook video, slideshare, video embed, social meta tags, search engine optimization, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
 Requires At Least: 3.7
-Tested Up To: 4.7.1
+Tested Up To: 4.7.2
 Stable Tag: 3.39.3-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
@@ -365,6 +365,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.39.4-dev1 (2017/01/27)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the default YouTube preview image name to maxresdefault.jpg and added a source query argument to the preview image URLs (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added extra logging of the matched video array in all video modules (Pro version).
+
 **Version 3.39.3-1 (2017/01/26)**
 
 * *New Features*
@@ -658,6 +669,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.4-dev1 =
+
+(2017/01/27) Updated the default YouTube preview image name to maxresdefault.jpg and added a source query argument to the preview image URLs (Pro version).
 
 = 3.39.3-1 =
 
