@@ -1334,11 +1334,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else return false;
 		}
 
-		public static function is_term_page() {
+		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
 			$ret = false;
-			if ( is_tax() || is_category() || is_tag() )
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+				$ret = term_exists( $term_id, $tax_slug );	// since wp 3.0
+			} elseif ( is_tax() || is_category() || is_tag() ) {
 				$ret = true;
-			elseif ( is_admin() ) {
+			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'term' )	// since wp v4.5
 					$ret = true;
@@ -1350,11 +1352,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_term_page', $ret );
 		}
 
-		public static function is_category_page() {
+		public static function is_category_page( $term_id = 0 ) {
 			$ret = false;
-			if ( is_category() )
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+				$ret = term_exists( $term_id, 'category' );	// since wp 3.0
+			} elseif ( is_category() ) {
 				$ret = true;
-			elseif ( is_admin() ) {
+			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
 					self::get_request_value( 'taxonomy' ) === 'category' )
 						$ret = true;
@@ -1362,11 +1366,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_category_page', $ret );
 		}
 
-		public static function is_tag_page() {
+		public static function is_tag_page( $term_id = 0 ) {
 			$ret = false;
-			if ( is_tag() )
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+				$ret = term_exists( $term_id, 'post_tag' );	// since wp 3.0
+			} elseif ( is_tag() ) {
 				$ret = true;
-			elseif ( is_admin() ) {
+			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
 					self::get_request_value( 'taxonomy' ) === '_tag' )
 						$ret = true;
@@ -1410,13 +1416,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_author_page() {
-			return self::is_user_page();
+		public static function is_author_page( $user_id = 0 ) {
+			return self::is_user_page( $user_id );
 		}
 
-		public static function is_user_page() {
+		public static function is_user_page( $user_id = 0 ) {
 			$ret = false;
-			if ( is_author() ) {
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {
+				$ret = self::user_exists( $user_id );
+			} elseif ( is_author() ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();

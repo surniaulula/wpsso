@@ -1146,6 +1146,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => esc_url( $media_url ),
 			);
 
+			/*
+			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
+			 * check the WordPress Media Library for a title and description.
+			 */
+			if ( ! empty( $opts[$prefix.':id'] ) && 
+				is_numeric( $opts[$prefix.':id'] ) ) {
+
+				$wpsso = Wpsso::get_instance();
+				$post_id = $opts[$prefix.':id'];
+				$mod = $wpsso->util->get_page_mod( $post_id, array( 'id' => $post_id, 'name' => 'post' ) );
+
+				$ret['name'] = $wpsso->webpage->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
+					false, true, 'schema_title' );	// $add_hashtags = false, $encode = true, $md_idx = schema_title
+				if ( empty( $ret['name'] ) )	// just in case
+					unset( $ret['name'] );
+
+				$ret['description'] = $wpsso->webpage->get_description( $wpsso->options['schema_desc_len'], '...', $mod, true,
+					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+				if ( empty( $ret['description'] ) )	// just in case
+					unset( $ret['description'] );
+			}
+
 			foreach ( array( 'width', 'height' ) as $prop )
 				if ( isset( $opts[$prefix.':'.$prop] ) &&
 					$opts[$prefix.':'.$prop] > 0 )	// just in case

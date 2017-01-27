@@ -200,10 +200,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
-				$title = $mod['obj'] ?
-					$mod['obj']->get_options_multi( $mod['id'], ( $mod['is_post'] ? 
-						array( $md_idx, 'og_title' ) : $md_idx ) ) : null;
-
+				$title = is_object( $mod['obj'] ) ?
+					$mod['obj']->get_options_multi( $mod['id'], array( $md_idx, 'og_title' ) ) : null;
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title ) )
 						$this->p->debug->log( 'no custom title found for '.$md_idx );
@@ -239,43 +237,28 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			if ( empty( $title ) ) {
 
 				if ( $mod['is_post'] ) {
-					if ( is_singular() ) {
-						$title = wp_title( $separator, false, 'right' );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'is_singular wp_title() = "'.$title.'"' );
-					} elseif ( ! empty( $mod['id'] ) ) {
-						$title = apply_filters( 'wp_title', get_the_title( $mod['id'] ).
-							' '.$separator.' ', $separator, 'right' );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
-					}
-
-				// if we're using filtered titles, and an seo plugin is available,
-				// the use the wordpress title (provided by the seo plugin)
-				} elseif ( $this->p->options['plugin_filter_title'] &&
-					$this->p->is_avail['seo']['*'] ) {
-
-					$title = wp_title( $separator, false, 'right' );	// on right for compatibility with aioseo
+					$title = apply_filters( 'wp_title', 
+						get_the_title( $mod['id'] ).' '.$separator.' ', $separator, 'right' );
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'seo wp_title() = "'.$title.'"' );
+						$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
 
 				} elseif ( $mod['is_term'] ) {
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
-					if ( SucomUtil::is_category_page() )
+					if ( SucomUtil::is_category_page( $mod['id'] ) )
 						$title = $this->get_category_title( $term_obj, '', $separator );	// includes parents in title string
 					elseif ( isset( $term_obj->name ) )
-						$title = apply_filters( 'wp_title', $term_obj->name.
-							' '.$separator.' ', $separator, 'right' );
+						$title = apply_filters( 'wp_title', 
+							$term_obj->name.' '.$separator.' ', $separator, 'right' );
 					elseif ( $this->p->debug->enabled )
 						$this->p->debug->log( 'name property missing in term object' );
 
 				} elseif ( $mod['is_user'] ) { 
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
-					$title = apply_filters( 'wp_title', $user_obj->display_name.
-						' '.$separator.' ', $separator, 'right' );
+					$title = apply_filters( 'wp_title', 
+						$user_obj->display_name.' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
-				} else {	// is_archive() and everything else
+				} else {
 					$title = wp_title( $separator, false, 'right' );
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
