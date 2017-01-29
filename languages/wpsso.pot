@@ -1302,122 +1302,122 @@ msgid "Default Title"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:49 lib/gpl/admin/post.php:52
-#: lib/pro/admin/meta.php:62 lib/pro/admin/post.php:75
+#: lib/pro/admin/meta.php:63 lib/pro/admin/post.php:76
 msgctxt "option label"
 msgid ""
 "Default Description (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:56 lib/gpl/admin/post.php:60
-#: lib/pro/admin/meta.php:71 lib/pro/admin/post.php:85
+#: lib/pro/admin/meta.php:72 lib/pro/admin/post.php:86
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:62 lib/gpl/admin/post.php:67
-#: lib/pro/admin/meta.php:78 lib/pro/admin/post.php:93
+#: lib/pro/admin/meta.php:80 lib/pro/admin/post.php:95
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:167
-#: lib/meta.php:183 lib/pro/admin/meta.php:86 lib/pro/admin/post.php:102
+#: lib/meta.php:183 lib/pro/admin/meta.php:89 lib/pro/admin/post.php:105
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:76 lib/gpl/admin/meta.php:224
-#: lib/gpl/admin/post.php:83 lib/pro/admin/meta.php:93
-#: lib/pro/admin/meta.php:248 lib/pro/admin/post.php:110
+#: lib/gpl/admin/post.php:83 lib/pro/admin/meta.php:97
+#: lib/pro/admin/meta.php:253 lib/pro/admin/post.php:114
 #: lib/submenu/general.php:245
 msgctxt "metabox title"
 msgid "Google Structured Data / Schema Markup"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:86
-#: lib/pro/admin/meta.php:96 lib/pro/admin/post.php:113
+#: lib/pro/admin/meta.php:100 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:95 lib/pro/admin/meta.php:113
+#: lib/gpl/admin/meta.php:95 lib/pro/admin/meta.php:118
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:112 lib/pro/admin/meta.php:126
+#: lib/gpl/admin/meta.php:112 lib/pro/admin/meta.php:131
 #: lib/submenu/general.php:29
 msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:116 lib/pro/admin/meta.php:130
+#: lib/gpl/admin/meta.php:116 lib/pro/admin/meta.php:135
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:120 lib/gpl/admin/meta.php:197
-#: lib/gpl/admin/meta.php:228 lib/pro/admin/meta.php:134
-#: lib/pro/admin/meta.php:218 lib/pro/admin/meta.php:252
+#: lib/gpl/admin/meta.php:228 lib/pro/admin/meta.php:139
+#: lib/pro/admin/meta.php:223 lib/pro/admin/meta.php:257
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:125 lib/gpl/admin/meta.php:203
-#: lib/gpl/admin/meta.php:234 lib/pro/admin/meta.php:139
-#: lib/pro/admin/meta.php:224 lib/pro/admin/meta.php:258
+#: lib/gpl/admin/meta.php:234 lib/pro/admin/meta.php:144
+#: lib/pro/admin/meta.php:229 lib/pro/admin/meta.php:263
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:130 lib/gpl/admin/meta.php:209
-#: lib/gpl/admin/meta.php:240 lib/pro/admin/meta.php:144
-#: lib/pro/admin/meta.php:230 lib/pro/admin/meta.php:264
+#: lib/gpl/admin/meta.php:240 lib/pro/admin/meta.php:149
+#: lib/pro/admin/meta.php:235 lib/pro/admin/meta.php:269
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:137 lib/gpl/admin/meta.php:247
-#: lib/pro/admin/meta.php:151 lib/pro/admin/meta.php:271
+#: lib/pro/admin/meta.php:156 lib/pro/admin/meta.php:276
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:144 lib/pro/admin/meta.php:159
+#: lib/gpl/admin/meta.php:144 lib/pro/admin/meta.php:164
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:147 lib/pro/admin/meta.php:162
+#: lib/gpl/admin/meta.php:147 lib/pro/admin/meta.php:167
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:152 lib/pro/admin/meta.php:167
+#: lib/gpl/admin/meta.php:152 lib/pro/admin/meta.php:172
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:158 lib/pro/admin/meta.php:173
+#: lib/gpl/admin/meta.php:158 lib/pro/admin/meta.php:178
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:164 lib/pro/admin/meta.php:180
+#: lib/gpl/admin/meta.php:164 lib/pro/admin/meta.php:185
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:171 lib/pro/admin/meta.php:188
+#: lib/gpl/admin/meta.php:171 lib/pro/admin/meta.php:193
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:178 lib/pro/admin/meta.php:196
+#: lib/gpl/admin/meta.php:178 lib/pro/admin/meta.php:201
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:193 lib/pro/admin/meta.php:214
+#: lib/gpl/admin/meta.php:193 lib/pro/admin/meta.php:219
 msgctxt "metabox title"
 msgid "Pinterest / Rich Pin"
 msgstr ""
@@ -1428,7 +1428,7 @@ msgid "Article Topic"
 msgstr ""
 
 #: lib/gpl/admin/post.php:94 lib/meta.php:164 lib/post.php:475
-#: lib/pro/admin/post.php:122
+#: lib/pro/admin/post.php:127
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
