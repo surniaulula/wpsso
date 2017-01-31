@@ -365,6 +365,22 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.39.6-dev1 (2017/02/01)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added the following new Schema types:
+		* https://auto.schema.org/BusOrCoach
+		* https://auto.schema.org/Car
+		* https://auto.schema.org/Motorcycle
+		* https://auto.schema.org/MotorizedBicycle
+		* https://auto.schema.org/Vehicle
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.39.5-1 (2017/01/30)**
 
 * *New Features*
