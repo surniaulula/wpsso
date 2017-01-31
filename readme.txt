@@ -370,7 +370,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* None
 * *Improvements*
-	* Added the following new Schema types:
+	* Added new Schema types from https://auto.schema.org/:
 		* https://auto.schema.org/BusOrCoach
 		* https://auto.schema.org/Car
 		* https://auto.schema.org/Motorcycle
@@ -699,6 +699,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.6-dev1 =
+
+(2017/02/01) Added new Schema types from https://auto.schema.org/.
 
 = 3.39.5-1 =
 
