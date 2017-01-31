@@ -590,6 +590,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_type_for_ptn':
 							$text = __( 'Select the Schema type for each WordPress post type. The Schema type defines the item type for Schema JSON-LD markup and/or meta tags in the webpage head section.', 'wpsso' );
 							break;
+						case 'tooltip-schema_review_item_type':
+							$text = __( 'The default Schema Item Type for reviewed items.', 'wpsso' );
+							break;
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
 							break;

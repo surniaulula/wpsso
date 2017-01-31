@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.5-1',	// plugin version
-					'opt_version' => '485',		// increment when changing default options
+					'version' => '3.39.6-dev1',	// plugin version
+					'opt_version' => '486',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -432,7 +432,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_alt_name' => '',
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',
+					'schema_img_max' => 1,
+					'schema_img_width' => 800,			// must be at least 696px for Articles
+					'schema_img_height' => 1600,
+					'schema_img_crop' => 0,
+					'schema_img_crop_x' => 'center',
+					'schema_img_crop_y' => 'center',
 					'schema_desc_len' => 250,			// meta itemprop="description" maximum text length (hard limit)
+					'schema_author_name' => 'display_name',
 					// standard types
 					'schema_type_for_archive_page' => 'webpage.collection',
 					'schema_type_for_attachment' => 'webpage',
@@ -459,13 +466,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
-					'schema_author_name' => 'display_name',
-					'schema_img_max' => 1,
-					'schema_img_width' => 800,		// must be at least 696px for Articles
-					'schema_img_height' => 1600,
-					'schema_img_crop' => 0,
-					'schema_img_crop_x' => 'center',
-					'schema_img_crop_y' => 'center',
+					'schema_review_item_type' => 'none',
 					'seo_desc_len' => 156,			// meta name="description" maximum text length (hard limit)
 					'seo_author_field' => '',		// default value set by WpssoOptions::get_defaults()
 					'seo_publisher_url' => '',		// (localized)
@@ -1381,7 +1382,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'residence' => 'https://schema.org/Residence',
 							'tourist.attraction' => 'https://schema.org/TouristAttraction',
 						),
-						'product' => 'https://schema.org/Product',
+						'product' => array(
+							'product' => 'https://schema.org/Product',
+							'vehicle' => array(
+								'bus.or.coach' => 'https://auto.schema.org/BusOrCoach',
+								'car' => 'https://auto.schema.org/Car',
+								'motorcycle' => 'https://auto.schema.org/Motorcycle',
+								'motorized.bicycle' => 'https://auto.schema.org/MotorizedBicycle',
+								'vehicle' => 'https://auto.schema.org/Vehicle',
+							),
+						),
 						'thing' => 'https://schema.org/Thing',
 					),
 				),
