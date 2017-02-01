@@ -463,7 +463,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
 							$opts = array_merge( $this->p->options, $img_opts );
 							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, false );
-							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default values and saved.',
+							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default value and saved.',
 								'wpsso' ) );
 							break;
 
@@ -1003,8 +1003,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $info['url']['forum'] );
 
 				if ( ! empty( $info['url']['review'] ) ) {
-					$links[] = sprintf( __( '<a href="%1$s" target="_blank">Rate the %2$s Plugin</a> on WordPress.org',
-						'wpsso' ), $info['url']['review'], $info['short'] );
+					$links[] = sprintf( __( 'Want to help? <a href="%1$s" target="_blank">Rate the %2$s Plugin</a> on WordPress.org',
+						'wpsso' ), $info['url']['review'], $info['short'] ).' :-)';
 				}
 
 				if ( ! empty( $links ) ) {
