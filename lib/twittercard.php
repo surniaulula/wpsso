@@ -26,13 +26,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes['tc_sum'] = array(		// options prefix
+			$sizes['tc_sum_img'] = array(		// options prefix
 				'name' => 'tc-summary',		// wpsso-tc-summary
 				'label' => _x( 'Twitter Summary Card',
 					'image size label', 'wpsso' ),
 			);
 
-			$sizes['tc_lrgimg'] = array(		// options prefix
+			$sizes['tc_lrg_img'] = array(		// options prefix
 				'name' => 'tc-lrgimg',		// wpsso-tc-lrgimg
 				'label' => _x( 'Twitter Large Image Card',
 					'image size label', 'wpsso' ),

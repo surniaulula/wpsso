@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'image size label', 'wpsso' ),
 			);
 
-			$sizes['schema_img_article'] = array(		// options prefix
+			$sizes['schema_article_img'] = array(		// options prefix
 				'name' => 'schema-article',		// wpsso-schema-article
 				'label' => _x( 'Google / Schema Image',
 					'image size label', 'wpsso' ),

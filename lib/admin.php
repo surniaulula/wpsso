@@ -457,6 +457,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$this->modify_tmpl_head_attributes();
 							break;
 
+						case 'reload_default_image_dimensions':
+							$opts =& $this->p->options;	// update the existing options array
+							$def_opts = $this->p->opt->get_defaults();
+							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
+							$opts = array_merge( $this->p->options, $img_opts );
+							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, false );
+							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default values and saved.',
+								'wpsso' ) );
+							break;
+
 						default: 
 							do_action( $lca.'_load_setting_page_'.$action_name, 
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
@@ -675,6 +685,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						break;
 					case 'check_for_updates':
 						// don't show the check_for_updates button on profile pages
+						// or if an authentication id is not available
 						if ( $this->menu_lib === 'profile' ||
 							empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
 								continue 2;

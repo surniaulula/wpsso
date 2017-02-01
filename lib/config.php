@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.6-dev1',	// plugin version
-					'opt_version' => '486',		// increment when changing default options
+					'version' => '3.39.6-dev2',	// plugin version
+					'opt_version' => '487',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -523,17 +523,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_type_post' => 'summary_large_image',
 					'tc_type_default' => 'summary',
 					// summary card
-					'tc_sum_width' => 600,			// Summary Card Image Dimensions
-					'tc_sum_height' => 600,
-					'tc_sum_crop' => 1,
-					'tc_sum_crop_x' => 'center',
-					'tc_sum_crop_y' => 'center',
+					'tc_sum_img_width' => 600,		// Summary Card Image Dimensions
+					'tc_sum_img_height' => 600,
+					'tc_sum_img_crop' => 1,
+					'tc_sum_img_crop_x' => 'center',
+					'tc_sum_img_crop_y' => 'center',
 					// large image summary card
-					'tc_lrgimg_width' => 800,		// Large Image Card Img Dimensions
-					'tc_lrgimg_height' => 1600,
-					'tc_lrgimg_crop' => 0,
-					'tc_lrgimg_crop_x' => 'center',
-					'tc_lrgimg_crop_y' => 'center',
+					'tc_lrg_img_width' => 800,		// Large Image Card Img Dimensions
+					'tc_lrg_img_height' => 1600,
+					'tc_lrg_img_crop' => 0,
+					'tc_lrg_img_crop_x' => 'center',
+					'tc_lrg_img_crop_y' => 'center',
 					// enable/disable head html tags
 					'add_link_rel_author' => 1,
 					'add_link_rel_publisher' => 1,
@@ -1051,17 +1051,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'head' => array(
 				'limit_min' => array(
 					'og_desc_len' => 156,
-					'og_img_width' => 200,		// https://developers.facebook.com/docs/sharing/best-practices
+					'og_img_width' => 200,			// https://developers.facebook.com/docs/sharing/best-practices
 					'og_img_height' => 200,
-					'schema_img_width' => 400,	// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_img_width' => 400,		// https://developers.google.com/+/web/snippet/article-rendering
 					'schema_img_height' => 160,
-					'article_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles
-					'article_img_height' => 279,	// based on the max image ratio
+					'schema_article_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles
+					'schema_article_img_height' => 279,	// based on the max image ratio
 				),
 				'limit_max' => array(
 					'og_img_ratio' => 3,
-					'schema_img_ratio' => 2.5,	// https://developers.google.com/+/web/snippet/article-rendering
-					'article_img_ratio' => 2.5,
+					'schema_img_ratio' => 2.5,		// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_article_img_ratio' => 2.5,
 				),
 				'og_type_ns' => array(		// http://ogp.me/#types
 					'article' => 'http://ogp.me/ns/article#',

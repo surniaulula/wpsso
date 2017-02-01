@@ -614,21 +614,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_type_default':
 							$text = 'The Twitter Card type for all other images (default, image from content text, etc).';
 							break;
-						case 'tooltip-tc_sum_dimensions':
+						case 'tooltip-tc_sum_img_dimensions':
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'getting defaults for tc_sum (width, height, crop)' );
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_width' ).'x'.
-								$this->p->opt->get_defaults( 'tc_sum_height' ).' '.
-								( $this->p->opt->get_defaults( 'tc_sum_crop' ) == 0 ? 'uncropped' : 'cropped' );
+								$this->p->debug->log( 'getting defaults for tc_sum_img (width, height, crop)' );
+							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'tc_sum_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
 							$text = 'The dimension of content images provided for the <a href="https://dev.twitter.com/docs/cards/types/summary-card" target="_blank">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
 							break;
-						case 'tooltip-tc_lrgimg_dimensions':
+						case 'tooltip-tc_lrg_img_dimensions':
 							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'getting defaults for tc_lrgimg (width, height, crop)' );
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrgimg_width' ).'x'.
-								$this->p->opt->get_defaults( 'tc_lrgimg_height' ).' '.
-								( $this->p->opt->get_defaults( 'tc_lrgimg_crop' ) == 0 ? 'uncropped' : 'cropped' );
+								$this->p->debug->log( 'getting defaults for tc_lrg_img (width, height, crop)' );
+							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrg_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'tc_lrg_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'tc_lrg_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
 							$text = 'The dimension of Post Meta, Featured or Attached images provided for the <a href="https://dev.twitter.com/docs/cards/large-image-summary-card" target="_blank">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
 							break;

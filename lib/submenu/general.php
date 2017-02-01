@@ -389,13 +389,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), null, 'tc_type_default' ).
 					'<td>'.$this->form->get_select( 'tc_type_default', $tc_types ).'</td>';
 
-					$table_rows['tc_sum'] = $this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions',
-						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';	// $use_opts = false
+					$table_rows['tc_sum_img'] = $this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions',
+						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['tc_lrgimg'] = $this->form->get_th_html( _x( '<em>Large Image</em> Card Img Dimensions',
-						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';	// $use_opts = false
+					$table_rows['tc_lrg_img'] = $this->form->get_th_html( _x( '<em>Large Image</em> Card Img Dimensions',
+						'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrg_img' ).'</td>';	// $use_opts = false
 
 					break;
 

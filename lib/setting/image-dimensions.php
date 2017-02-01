@@ -21,6 +21,10 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'secondary_action_buttons' => 4,
+			) );
 		}
 
 		protected function add_meta_boxes() {
@@ -63,17 +67,25 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'schema_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['tc_sum_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
-						'option label', 'wpsso' ), null, 'tc_sum_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum' ).'</td>';	// $use_opts = false
+					$table_rows['tc_sum_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
+						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['tc_lrgimg_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
-						'option label', 'wpsso' ), null, 'tc_lrgimg_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrgimg' ).'</td>';	// $use_opts = false
+					$table_rows['tc_lrg_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
+						'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrg_img' ).'</td>';	// $use_opts = false
 
 					break;
 			}
 			return $table_rows;
+		}
+
+		public function filter_secondary_action_buttons( $actions, $menu_id, $menu_name, $menu_lib ) {
+			if ( $menu_id === 'image-dimensions' ) {
+				$actions['reload_default_image_dimensions'] = _x( 'Reload Default Sizes',
+					'submit button', 'wpsso' );
+			}
+			return $actions;
 		}
 	}
 }

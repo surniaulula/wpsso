@@ -81,6 +81,21 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',	// renamed in v3.39.1-1
 			'plugin_auto_img_resize' => 'plugin_create_wp_sizes',
 			'plugin_cache_info' => 'plugin_show_purge_count',
+			'tc_sum_width' => 'tc_sum_img_width',
+			'tc_sum_height' => 'tc_sum_img_height',
+			'tc_sum_crop' => 'tc_sum_img_crop',
+			'tc_sum_crop_x' => 'tc_sum_img_crop_x',
+			'tc_sum_crop_y' => 'tc_sum_img_crop_y',
+			'tc_lrgimg_width' => 'tc_lrg_img_width',
+			'tc_lrgimg_height' => 'tc_lrg_img_height',
+			'tc_lrgimg_crop' => 'tc_lrg_img_crop',
+			'tc_lrgimg_crop_x' => 'tc_lrg_img_crop_x',
+			'tc_lrgimg_crop_y' => 'tc_lrg_img_crop_y',
+			'schema_img_article_width' => 'schema_article_img_width',
+			'schema_img_article_height' => 'schema_article_img_height',
+			'schema_img_article_crop' => 'schema_article_img_crop',
+			'schema_img_article_crop_x' => 'schema_article_img_crop_x',
+			'schema_img_article_crop_y' => 'schema_article_img_crop_y',
 		);
 
 		protected $p;
@@ -92,7 +107,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		}
 
 		// def_opts accepts output from functions, so don't force reference
-		public function options( $options_name, &$opts = array(), $def_opts = array() ) {
+		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
 			// each plugin options version is saved to a unique key
 			$opts_version = empty( $opts['plugin_'.$this->p->cf['lca'].'_opt_version'] ) ?
@@ -197,7 +212,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				unset( $opts['plugin_verify_certs'] );
 			}
 
-			return $this->sanitize( $opts, $def_opts );	// cleanup options and sanitize
+			return $this->sanitize( $opts, $def_opts, $network );	// cleanup options and sanitize
 		}
 	}
 }

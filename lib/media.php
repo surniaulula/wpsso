@@ -936,9 +936,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $lca.'-schema-article':
 					$std_name = 'Google / Schema Article';
-					$min_width = $min['article_img_width'];
-					$min_height = $min['article_img_height'];
-					$max_ratio = $max['article_img_ratio'];
+					$min_width = $min['schem_article_img_width'];
+					$min_height = $min['schem_article_img_height'];
+					$max_ratio = $max['schem_article_img_ratio'];
 					break;
 
 				default:
