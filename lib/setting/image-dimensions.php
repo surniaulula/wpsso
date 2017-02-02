@@ -21,10 +21,6 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
-
-			$this->p->util->add_plugin_filters( $this, array(
-				'secondary_action_buttons' => 4,
-			) );
 		}
 
 		protected function add_meta_boxes() {
@@ -78,14 +74,6 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 					break;
 			}
 			return $table_rows;
-		}
-
-		public function filter_secondary_action_buttons( $actions, $menu_id, $menu_name, $menu_lib ) {
-			if ( $menu_id === 'image-dimensions' ) {
-				$actions['reload_default_image_dimensions'] = _x( 'Reload Default Sizes',
-					'submit button', 'wpsso' );
-			}
-			return $actions;
 		}
 	}
 }
