@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.6-dev2 (2017/02/02)**
+**Version 3.39.6-rc1 (2017/02/02)**
 
 * *New Features*
 	* None
@@ -703,7 +703,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.6-dev2 =
+= 3.39.6-rc1 =
 
 (2017/02/02) Added new Schema types from https://auto.schema.org/.
 
