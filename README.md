@@ -4,7 +4,7 @@
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.39.5-1</td></tr>
-<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
+<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.7.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>Website URL</th><td><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-donate">https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-donate</a></td></tr>
@@ -314,7 +314,6 @@
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NGFB and WPSSO?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/">What is the difference between the Free and Pro versions?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/">Why aren't Pins from my website posting Rich?</a></li>
-<li><a href="https://wpsso.com/codex/plugins/wpsso/faq/why-do-my-facebook-shares-have-small-images/">Why do my Facebook shares have small images?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
 <li><a href="https://wpsso.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>

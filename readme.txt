@@ -9,7 +9,7 @@ Donate Link: https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-don
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: seo, social, share, open graph, facebook, twitter, pinterest, youtube, sharing, meta tags, social media, schema, schema.org, amp, bbPress, buddypress, e-commerce, easy digital downloads, edd, g+, google, google plus, hashtags, json, json-ld, ld+json, knowledge graph, linkedin, marketpress, multilingual, multisite, nextgen gallery, player card, polylang, rich pin, summary card, twitter card, vimeo, wistia, woocommerce, yotpo, yourls, co-authors, co-authors plus, the events calendar, social share, social sharing, facebook video, slideshare, video embed, social meta tags, search engine optimization, wordpress seo, yoast seo, shortlink
 Contributors: jsmoriss
-Requires At Least: 3.7
+Requires At Least: 3.8
 Tested Up To: 4.7.2
 Stable Tag: 3.39.5-1
 
@@ -273,7 +273,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [What is the difference between NGFB and WPSSO?](https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/)
 * [What is the difference between the Free and Pro versions?](https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/)
 * [Why aren't Pins from my website posting Rich?](https://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/)
-* [Why do my Facebook shares have small images?](https://wpsso.com/codex/plugins/wpsso/faq/why-do-my-facebook-shares-have-small-images/)
 * [Why does Facebook play videos instead of linking them?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/)
 * [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/)
