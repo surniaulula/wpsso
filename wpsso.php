@@ -245,6 +245,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->util->add_plugin_filters( $this, array( 
 					'cache_expire_head_array' => '__return_zero',
 					'cache_expire_setup_html' => '__return_zero',
+					'cache_expire_sharing_buttons' => '__return_zero',
 				) );
 			}
 		}
