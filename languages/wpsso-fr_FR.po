@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.6-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-02-02 08:12+0800\n"
-"PO-Revision-Date: 2017-02-02 08:12+0800\n"
+"POT-Creation-Date: 2017-02-04 08:16+0800\n"
+"PO-Revision-Date: 2017-02-04 08:16+0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -66,7 +66,7 @@ msgstr "Le contenu de la page Web pourais prendre plusieurs jours avant de refl�
 msgid "<a href=\"%1$s\">%2$s</a> now to force a refresh."
 msgstr "<a href=\"%1$s\">%2$s</a> maintenant pour forcer un rafraîchissement."
 
-#: lib/admin.php:342 lib/admin.php:673
+#: lib/admin.php:342 lib/admin.php:678
 msgctxt "submit button"
 msgid "Clear All Cache(s)"
 msgstr "Vider tout les caches"
@@ -146,238 +146,243 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:674 lib/messages.php:862
+#: lib/admin.php:679 lib/messages.php:862
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr "Vérifier pour mises à jour"
 
-#: lib/admin.php:675
+#: lib/admin.php:680
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinit. disposition metabox"
 
-#: lib/admin.php:676
+#: lib/admin.php:681
 msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr "Réinit. les avis cachés"
 
-#: lib/admin.php:714 lib/admin.php:715
+#: lib/admin.php:682
+msgctxt "submit button"
+msgid "Reload Default Sizes"
+msgstr "Recharger Tailles par Défaut"
+
+#: lib/admin.php:722 lib/admin.php:723
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/admin.php:747
+#: lib/admin.php:755
 msgctxt "plugin status label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:750
+#: lib/admin.php:758
 msgctxt "plugin status label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:753
+#: lib/admin.php:761
 msgctxt "plugin status label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:758
+#: lib/admin.php:766
 msgctxt "following plugin status version numbers"
 msgid "View %s changelog..."
 msgstr "Voir changelog %s…"
 
-#: lib/admin.php:886
+#: lib/admin.php:894
 msgid "Module is enabled"
 msgstr "Module est activé"
 
-#: lib/admin.php:890
+#: lib/admin.php:898
 msgid "Module is disabled / not loaded"
 msgstr "Module désactivée / non chargée"
 
-#: lib/admin.php:894
+#: lib/admin.php:902
 msgid "Module recommended but disabled / not available"
 msgstr "Module recommandée mais désactivée / non disponible"
 
-#: lib/admin.php:912
+#: lib/admin.php:920
 msgid "Generic feature module"
 msgstr "Module de fonction générique"
 
-#: lib/admin.php:920
+#: lib/admin.php:928
 msgid "Service API module"
 msgstr "Module de service API"
 
-#: lib/admin.php:924
+#: lib/admin.php:932
 msgid "Meta tag and markup module"
 msgstr "Module de balisage et balises méta"
 
-#: lib/admin.php:928
+#: lib/admin.php:936
 msgid "Plugin integration module"
 msgstr "Module d'intégration d'extension"
 
-#: lib/admin.php:932
+#: lib/admin.php:940
 msgid "Sharing functionality module"
 msgstr "Module fonctionnalité de partage"
 
-#: lib/admin.php:936
+#: lib/admin.php:944
 msgid "Additional functionality module"
 msgstr "Module fonctionnalités supplémentaires"
 
-#: lib/admin.php:974
+#: lib/admin.php:982
 msgctxt "plugin action link"
 msgid "Purchase Pro Version"
 msgstr "Achetez version Pro"
 
-#: lib/admin.php:992
+#: lib/admin.php:1000
 msgid "Review the <a href=\"%s\" target=\"_blank\">Frequently Asked Questions</a>"
 msgstr "Consulter la <a href=\"%s\" target=\"_blank\">Foire aux Questions</a>"
 
-#: lib/admin.php:994
+#: lib/admin.php:1002
 msgid "and <a href=\"%s\" target=\"_blank\">Additional Documentation</a>"
 msgstr "et <a href=\"%s\" target=\"_blank\">autres documentations</a>"
 
-#: lib/admin.php:999
+#: lib/admin.php:1007
 msgid "Open a <a href=\"%s\" target=\"_blank\">Priority Support Ticket</a> (Pro version)"
 msgstr "Ouvrez un <a href=\"%s\" target=\"_blank\">billet de soutien prioritaire</a> (version Pro)"
 
-#: lib/admin.php:1002
+#: lib/admin.php:1010
 msgid "Post in the <a href=\"%s\" target=\"_blank\">Community Support Forum</a> (Free version)"
 msgstr "Postez dans le <a href=\"%s\" target=\"_blank\">forum de soutien communautaire</a> (version gratuite)"
 
-#: lib/admin.php:1006
+#: lib/admin.php:1014
 msgid "Want to help? <a href=\"%1$s\" target=\"_blank\">Rate the %2$s Plugin</a> on WordPress.org"
 msgstr "Vous voulez aider? <a href=\"%1$s\" target=\"_blank\">Notez l'extension %2$s</a> sur WordPress.org"
 
-#: lib/admin.php:1072
+#: lib/admin.php:1080
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Afficher détails"
 
-#: lib/admin.php:1094
+#: lib/admin.php:1102
 msgctxt "plugin action link"
 msgid "Plugin Details + Update"
 msgstr "Afficher détails + mise à jour"
 
-#: lib/admin.php:1100
+#: lib/admin.php:1108
 msgctxt "plugin action link"
 msgid "Plugin Details + Install"
 msgstr "Afficher détails + installer"
 
-#: lib/admin.php:1106
+#: lib/admin.php:1114
 msgctxt "plugin action link"
 msgid "Plugin Description"
 msgstr "Description de l'extension"
 
-#: lib/admin.php:1111
+#: lib/admin.php:1119
 msgctxt "plugin action link"
 msgid "Download Latest"
 msgstr "Téléchargez dernière version"
 
-#: lib/admin.php:1153 lib/admin.php:1158 lib/admin.php:1173 lib/admin.php:1179
+#: lib/admin.php:1161 lib/admin.php:1166 lib/admin.php:1181 lib/admin.php:1187
 #: lib/messages.php:842
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr "Num. d'authentification Pro"
 
-#: lib/admin.php:1200
+#: lib/admin.php:1208
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#: lib/admin.php:1207
+#: lib/admin.php:1215
 msgid "<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP Bibliothèque d'URL client (cURL)</a> n'est pas chargé."
 
-#: lib/admin.php:1207 lib/admin.php:1212 lib/admin.php:1217
+#: lib/admin.php:1215 lib/admin.php:1220 lib/admin.php:1225
 msgid "please contact your hosting provider to have the missing PHP extension installed and/or enabled."
 msgstr "s'il vous plaît contactez votre hébergeur pour installer l'extension PHP manquante."
 
-#: lib/admin.php:1212
+#: lib/admin.php:1220
 msgid "<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP Notation Objet JavaScript (JSON)</a> n'est pas chargé."
 
-#: lib/admin.php:1217
+#: lib/admin.php:1225
 msgid "<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is not loaded."
 msgstr "<a href=\"%s\" target=\"_blank\">L'extension PHP chaînes de caractères multi-octets</a> n'est pas chargé."
 
-#: lib/admin.php:1224
+#: lib/admin.php:1232
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social websites &mdash; please uncheck that option to allow search engines and social crawlers to access your content."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Ceci n'est pas compatible avec le but de partager du contenu sur les sites sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d’accéder votre contenu."
 
-#: lib/admin.php:1233
+#: lib/admin.php:1241
 msgid "please uncheck the <strong>Add Open Graph meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajouter les métadonnées OpenGraph</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1238
+#: lib/admin.php:1246
 msgid "please uncheck the <strong>Add Twitter card meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajoute les métadonnées de carte Twitter</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Twitter</a>."
 
-#: lib/admin.php:1243
+#: lib/admin.php:1251
 msgid "please uncheck the <strong>Add Google+ specific post meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajouter des méta données spécifiques à Google+</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google+</a>."
 
-#: lib/admin.php:1248
+#: lib/admin.php:1256
 msgid "please remove the <strong>Google Publisher Page</strong> value entered under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît supprimer la valeur de <strong>Page Google Publisher</strong> entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google +</a>."
 
-#: lib/admin.php:1259
+#: lib/admin.php:1267
 msgid "please disable the <strong>Open Graph Integrator</strong> module in the <a href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr "s'il vous plaît désactiver le module <strong>Open Graph Integrator</strong> dans <a href=\"%s\">SEO Ultimate Module Manager</a>."
 
-#: lib/admin.php:1270
+#: lib/admin.php:1278
 msgid "please deactivate the <strong>Social Meta</strong> feature in the <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr "s'il vous plaît désactiver la fonctionnalité <strong>Social Meta</strong> dans le <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 
-#: lib/admin.php:1275
+#: lib/admin.php:1283
 msgid "please check the <strong>Disable Google Plus Profile</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr "s'il vous plaît cocher l'option <strong>Disable Google Plus Profile</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1280
+#: lib/admin.php:1288
 msgid "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr "s'il vous plaît cocher l'option <strong>Use Schema.org Markup</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1290 lib/admin.php:1295 lib/admin.php:1300 lib/admin.php:1318
+#: lib/admin.php:1298 lib/admin.php:1303 lib/admin.php:1308 lib/admin.php:1326
 msgid "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option <strong>%1$s</strong> dans les réglages sociaux de l'extension <a href=\"%2$s\">The SEO Framework</a>."
 
-#: lib/admin.php:1305
+#: lib/admin.php:1313
 msgid "please uncheck the <strong>Output Authorized Presence?</strong> option in <a href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr "s'il vous plaît décocher l'option <strong>Output Authorized Presence?</strong> dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1329
+#: lib/admin.php:1337
 msgid "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr "s'il vous plaît décocher l'option <strong>Add the Social Open Graph objects</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1334
+#: lib/admin.php:1342
 msgid "please uncheck <strong>Add the Twitter card in your tweets</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your tweets</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1339
+#: lib/admin.php:1347
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1446
+#: lib/admin.php:1454
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d’en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:1458
+#: lib/admin.php:1466
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr "Aucun élément HTML &lt;head&gt; trouvé dans le modèle %s."
 
-#: lib/admin.php:1464
+#: lib/admin.php:1472
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1472
+#: lib/admin.php:1480
 msgid "Failed to open %s for writing."
 msgstr "Impossible d'ouvrir %s pour l'écriture."
 
-#: lib/admin.php:1477
+#: lib/admin.php:1485
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:1480
+#: lib/admin.php:1488
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:1494
+#: lib/admin.php:1502
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -1513,8 +1518,8 @@ msgid "You may override <a href=\"%1$s\">the default WordPress Tagline value</a>
 msgstr "Vous pouvez modifier <a href=\"%1$s\">la valeur par défaut du slogan de WordPress</a> ici afin de fournir une description plus complète de votre site Web."
 
 #: lib/messages.php:236
-msgid "Select which contact field to use from the author's WordPress profile page for the Facebook / Open Graph %1$s meta tag. The preferred setting is the Facebook URL field (default value)."
-msgstr "Sélectionnez le champ contact de la page profil d'auteur à utiliser pour la balise méta %1$s de Facebook / Open Graph. Le paramètre suggéré est le champ d'URL Facebook (valeur par défaut)."
+msgid "Select which contact field to use from the author's WordPress profile page for the Facebook / Open Graph %1$s meta tag. The preferred setting is the Facebook URL field (default value). Select \"[None]\" if you prefer to exclude the %1$s meta tag, and prevent Facebook from including author attribution in shared links."
+msgstr "Sélectionnez le champ contact de la page profil d'auteur à utiliser pour la balise méta %1$s de Facebook / Open Graph. Le paramètre suggéré est le champ d'URL Facebook (valeur par défaut). Sélectionnez \"[Aucun]\" si vous désirez exclure la balise méta %1$s et empêcher Facebook de créditer l'auteur sur les liens partagés."
 
 #: lib/messages.php:239
 msgid "If the %1$s is not a valid URL, then fallback to using the author archive URL from this website (example: \"%2$s\")."
@@ -2397,40 +2402,35 @@ msgctxt "metabox title"
 msgid "Contact Field Names and Labels"
 msgstr "Nom et Titre des Champs Contacts"
 
-#: lib/setting/image-dimensions.php:33
+#: lib/setting/image-dimensions.php:29
 msgctxt "metabox title"
 msgid "Image Dimensions"
 msgstr "Dimensions d'images"
 
-#: lib/setting/image-dimensions.php:56
+#: lib/setting/image-dimensions.php:52
 msgctxt "option label"
 msgid "Facebook / Open Graph Images"
 msgstr "Images Facebook / Open Graph"
 
-#: lib/setting/image-dimensions.php:61
+#: lib/setting/image-dimensions.php:57
 msgctxt "option label"
 msgid "Pinterest Rich Pin Images"
 msgstr "Images Pinterest Rich Pin"
 
-#: lib/setting/image-dimensions.php:66
+#: lib/setting/image-dimensions.php:62
 msgctxt "option label"
 msgid "Google / Schema Images"
 msgstr "Images Google / Schéma"
 
-#: lib/setting/image-dimensions.php:70
+#: lib/setting/image-dimensions.php:66
 msgctxt "option label"
 msgid "Twitter <em>Summary</em> Card"
 msgstr "Carte Twitter <em>sommaire</em>"
 
-#: lib/setting/image-dimensions.php:74
+#: lib/setting/image-dimensions.php:70
 msgctxt "option label"
 msgid "Twitter <em>Large Image Summary</em> Card"
 msgstr "Carte Twitter <em>grande image</em>"
-
-#: lib/setting/image-dimensions.php:85
-msgctxt "submit button"
-msgid "Reload Default Sizes"
-msgstr "Recharger Tailles par Défaut"
 
 #: lib/setting/social-accounts.php:29
 msgctxt "metabox title"

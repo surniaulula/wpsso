@@ -1672,7 +1672,9 @@ msgstr ""
 msgid ""
 "Select which contact field to use from the author's WordPress profile page "
 "for the Facebook / Open Graph %1$s meta tag. The preferred setting is the "
-"Facebook URL field (default value)."
+"Facebook URL field (default value). Select \"[None]\" if you prefer to "
+"exclude the %1$s meta tag, and prevent Facebook from including author "
+"attribution in shared links."
 msgstr ""
 
 #: lib/messages.php:239
