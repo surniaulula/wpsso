@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				// default for everything else is 'website'
 				} else $mt_og['og:type'] = 'website';
 
-				$mt_og['og:type'] = apply_filters( $lca.'_og_type', $mt_og['og:type'], $mod['use_post'] );
+				$mt_og['og:type'] = apply_filters( $lca.'_og_type', $mt_og['og:type'], $mod['use_post'], $mod );
 
 				// pre-define basic open graph meta tags for this type
 				if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {
