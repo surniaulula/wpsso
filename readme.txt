@@ -364,6 +364,19 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.39.7-dev1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
+	* Renamed the 'wpsso_og_add_product_mt_offer' filter to 'wpsso_og_add_product_mt_offers'.
+	* Added a new 'wpsso_og_add_product_mt_reviews' filter.
+
 **Version 3.39.6-1 (2017/02/04)**
 
 * *New Features*
@@ -702,6 +715,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.7-dev1 =
+
+(TBD) Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
 
 = 3.39.6-1 =
 
