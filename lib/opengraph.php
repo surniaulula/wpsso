@@ -133,9 +133,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			// define the type after the url
 			if ( ! isset( $mt_og['og:type'] ) ) {
 
+				// an index or static home page should always be 'website'
+				if ( $mod['is_home'] ) {
+					$mt_og['og:type'] = 'website';
+
 				// singular posts / pages are articles by default
 				// check the post_type for a match with a known open graph type
-				if ( $mod['is_post'] ) {
+				} elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) && 
 						isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
 							$mt_og['og:type'] = $mod['post_type'];
