@@ -964,7 +964,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( is_array( $opts['event_offers'] ) ) {
 				foreach ( $opts['event_offers'] as $event_offer ) {
-
 					// setup the offer with basic itemprops
 					if ( is_array( $event_offer ) &&	// just in case
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
@@ -972,7 +971,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'priceCurrency' => 'offer_price_currency',
 							'availability' => 'offer_availability',
 					) ) ) !== false ) {
-
 						// add the complete offer
 						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}

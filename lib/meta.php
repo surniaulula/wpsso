@@ -235,10 +235,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						strpos( $parts[0], '</noscript>' ) === 0 )
 							$script_class = '';
 
-				// do not show product offers
-				} elseif ( isset( $parts[3] ) && strpos( $parts[3], 'product:offer:' ) === 0 ) {
-					continue;
-
 				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
 
 					if ( $parts[1] === 'meta' && 

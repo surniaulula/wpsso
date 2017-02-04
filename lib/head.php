@@ -480,7 +480,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( is_array( $d_val ) ) {
 
-					if ( empty( $d_val ) ) {	// allow hooks to modify the value
+					// skip product offer and review arrays
+					if ( preg_match( '/:(offers|reviews)$/', $d_name ) ) {
+						continue;
+
+					} elseif ( empty( $d_val ) ) {	// allow hooks to modify the value
 						$singles[] = $this->get_single_mt( $tag,
 							$type, $d_name, null, '', $mod );
 
