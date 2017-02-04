@@ -81,7 +81,7 @@
 'wpsso_og_marketpress' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_prefix_ns' ( $ns );
 'wpsso_og_seed' ( $og, $use_post, $mod );
-'wpsso_og_type' ( $og['og:type'], $use_post );
+'wpsso_og_type' ( $og_type, $use_post, $mod );
 'wpsso_og_woocommerce' ( $og_ecom, $use_post, $mod );	// Pro version
 'wpsso_og_wpecommerce' ( $og_ecom );	// Pro version
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
