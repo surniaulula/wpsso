@@ -72,7 +72,7 @@
 'wpsso_og' ( $og, $use_post, $mod );
 'wpsso_og_add_product_mt_offers' ( $bool, $mod );
 'wpsso_og_add_product_mt_rating' ( $bool, $mod );
-'wpsso_og_add_product_mt_reviews' ( $bool, $mod );
+'wpsso_og_add_product_mt_review' ( $bool, $mod );
 'wpsso_og_default_img_id' ( $image_id );
 'wpsso_og_default_img_url' ( $image_url );
 'wpsso_og_default_img_on_index' ( $bool );
