@@ -517,12 +517,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! $this->is_setting() )
 				settings_errors( WPSSO_OPTIONS_NAME );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
-				$this->p->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
-				$this->p->debug->show_html( null, 'debug log' );
-			}
-
 			$menu_ext = $this->menu_ext;
 			if ( empty( $menu_ext ) )
 				$menu_ext = $this->p->cf['lca'];

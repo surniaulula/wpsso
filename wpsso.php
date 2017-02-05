@@ -105,25 +105,63 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $this->debug->enabled ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
-					foreach ( array( -9999, 9999 ) as $prio ) {
-						add_action( $action, create_function( '', 'echo "<!-- wpsso '.
-							$action.' action hook priority '.$prio.' mark -->\n";' ), $prio );
-						add_action( $action, array( &$this, 'show_debug_html' ), $prio );
+					foreach ( array( -9000, 9000 ) as $prio ) {
+						add_action( $action, create_function( '', 'echo "<!-- ngfb '.$action.' action hook priority '.$prio.' mark -->\n";' ), $prio );
+						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
+					}
+				}
+				foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
+					foreach ( array( 9900 ) as $prio ) {
+						add_action( $action, array( &$this, 'show_config' ), $prio );
 					}
 				}
 			}
 
 			if ( $this->debug->enabled )
 				$this->debug->log( 'running init_plugin action' );
+
 			do_action( 'wpsso_init_plugin' );
 
 			if ( $this->debug->enabled )
 				$this->debug->mark( 'plugin initialization' );
 		}
 
-		public function show_debug_html() { 
-			if ( $this->debug->enabled )
-				$this->debug->show_html();
+		public function show_debug() { 
+			$this->debug->show_html( null, 'debug log' );
+		}
+
+		public function show_config() { 
+			if ( ! $this->debug->enabled )	// just in case
+				return;
+
+			// show constants
+			$defined_constants = get_defined_constants( true );
+			$defined_constants['user']['WPSSO_NONCE'] = '********';
+			if ( is_multisite() )
+				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 
+					$defined_constants['user'] ), 'multisite constants' );
+			$this->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/',
+				$defined_constants['user'] ), 'wpsso constants' );
+
+			// show active plugins
+			$this->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
+
+			// show available modules
+			$this->debug->show_html( print_r( $this->is_avail, true ), 'available features' );
+
+			// show all plugin options
+			$opts = $this->options;
+			foreach ( $opts as $key => $val ) {
+				switch ( $key ) {
+					case ( strpos( $key, '_js_' ) !== false ? true : false ):
+					case ( strpos( $key, '_css_' ) !== false ? true : false ):
+					case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
+					case ( preg_match( '/_(key|secret|tid|token)$/', $key ) ? true : false ):
+						$opts[$key] = '[removed]';
+						break;
+				}
+			}
+			$this->debug->show_html( $opts, 'wpsso settings' );
 		}
 
 		public function init_widgets() {
@@ -321,7 +359,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 	}
 
-        global $wpsso;
+	global $wpsso;
 	$wpsso =& Wpsso::get_instance();
 }
 

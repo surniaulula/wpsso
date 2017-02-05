@@ -23,8 +23,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			add_action( 'wp_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
-			add_action( 'amp_post_template_head', array( &$this, 'add_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) )
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		// called by wp_head action
-		public function add_head() {
+		public function show_head() {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -93,42 +93,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
 			else echo "\n<!-- ".$lca." head html is disabled -->\n";
 
-			// include additional information when debug mode is on
-			if ( $this->p->debug->enabled ) {
+			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'end of get_head_html' );
-
-				// show debug log
-				$this->p->debug->show_html( null, 'debug log' );
-
-				// show constants
-				$defined_constants = get_defined_constants( true );
-				$defined_constants['user']['WPSSO_NONCE'] = '********';
-				if ( is_multisite() )
-					$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 
-						$defined_constants['user'] ), 'multisite constants' );
-				$this->p->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/',
-					$defined_constants['user'] ), 'wpsso constants' );
-
-				// show active plugins
-				$this->p->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
-
-				// show available modules
-				$this->p->debug->show_html( print_r( $this->p->is_avail, true ), 'available features' );
-
-				// show all plugin options
-				$opts = $this->p->options;
-				foreach ( $opts as $key => $val ) {
-					switch ( $key ) {
-						case ( strpos( $key, '_js_' ) !== false ? true : false ):
-						case ( strpos( $key, '_css_' ) !== false ? true : false ):
-						case ( preg_match( '/_(html|key|secret|tid|token)$/', $key ) ? true : false ):
-							$opts[$key] = '[removed]';
-							break;
-					}
-				}
-				$this->p->debug->show_html( $opts, 'wpsso settings' );
-
-			}	// end of debug information
 		}
 
 		// extract certain key fields for display and sanity checks

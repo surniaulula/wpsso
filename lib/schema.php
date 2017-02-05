@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( empty( $type_id ) ) {
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'custom type_id is empty' );
+							$this->p->debug->log( 'custom type_id from meta is empty' );
 					} elseif ( $type_id === 'none' ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom type_id is disabled with value none' );
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			else return array( null, null );	// return two elements
 		}
 
-		private function get_schema_type_id_for_name( $type_name, $def_name = null ) {
+		public function get_schema_type_id_for_name( $type_name, $def_name = null ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'type_name' => $type_name,

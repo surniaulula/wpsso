@@ -1551,6 +1551,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_META_CACHE_PRIORITY'] = 10;
 			$var_const['WPSSO_INIT_PRIORITY'] = 12;
 			$var_const['WPSSO_HEAD_PRIORITY'] = 10;
+			$var_const['WPSSO_FOOTER_PRIORITY'] = 100;
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
 			/*
