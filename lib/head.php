@@ -267,13 +267,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $cache_exp > 0 ) {
 				$head_array = get_transient( $cache_id );
 				if ( isset( $head_array[$head_index] ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'head index found in array from transient '.$cache_id );
-						$this->p->debug->mark( 'build head array' );	// end timer
-					}
-					return $head_array[$head_index];	// stop here
+					if ( is_array( $head_array[$head_index] ) ) {	// just in case
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'head index found in array from transient '.$cache_id );
+							$this->p->debug->mark( 'build head array' );	// end timer
+						}
+						return $head_array[$head_index];	// stop here
+					} elseif ( $this->p->debug->enabled )
+						$this->p->debug->log( 'head index is not an array' );
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'head index not in array from transient '.$cache_id );
+					$this->p->debug->log( 'head index not in transient '.$cache_id );
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'head array transient is disabled' );
 

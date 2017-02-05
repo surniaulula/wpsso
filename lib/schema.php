@@ -1352,7 +1352,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// example: product:rating:average
-			if ( isset( $mt_og[$og_type.':rating:average'] ) )
+			if ( ! empty( $mt_og[$og_type.':rating:average'] ) )
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 
 			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
@@ -1430,19 +1430,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_aggregate_rating_noscript( array &$mod, $og_type, array $mt_og ) {
 
 			// aggregate rating needs at least one rating or review count
-			if ( ! isset( $mt_og[$og_type.':rating:average'] ) ||
-				( ! isset( $mt_og[$og_type.':rating:count'] ) && 
-					! isset( $mt_og[$og_type.':review:count'] ) ) ) {
-
+			if ( empty( $mt_og[$og_type.':rating:average'] ) ||
+				( empty( $mt_og[$og_type.':rating:count'] ) && empty( $mt_og[$og_type.':review:count'] ) ) ) {
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: missing rating or review count' );
+					$this->p->debug->log( 'exiting early: empty rating average and/or count' );
 				return array();
 			}
 
 			return array_merge(
 				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">'."\n" ) ),
-				$this->p->head->get_single_mt( 'meta', 'itemprop',
-					'aggregaterating.ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ),
+				( empty( $mt_og[$og_type.':rating:average'] ) ? 
+					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
+						'aggregaterating.ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ) ),
 				( empty( $mt_og[$og_type.':rating:count'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
 						'aggregaterating.ratingCount', $mt_og[$og_type.':rating:count'], '', $mod ) ),
