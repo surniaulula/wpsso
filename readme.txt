@@ -369,7 +369,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a filter to define the WooCommerce shop page as a CollectionPage for Schema markup (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
