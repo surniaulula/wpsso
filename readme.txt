@@ -390,7 +390,7 @@ Note that the production stage level can be incremented on occasion for simple t
 		* https://auto.schema.org/Motorcycle
 		* https://auto.schema.org/MotorizedBicycle
 		* https://auto.schema.org/Vehicle
-	* Forced the 'og:type' of the static home page to 'website' instead of 'article'.
+	* Forced the 'og:type' of the static front page to 'website' instead of 'article'.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -623,7 +623,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* None
 * *Improvements*
-	* Added an "Item Type for Blog Home Page" option for non-static home pages.
+	* Added an "Item Type for Blog Front Page" option for blog (non-static) front pages.
 	* Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 * *Bugfixes*
 	* None
@@ -791,7 +791,7 @@ Note that the production stage level can be incremented on occasion for simple t
  
 = 3.37.2-1 =
 
-(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Home Page" option for non-static home pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
+(2016/11/12) Refactored the WpssoSchema class to provide a public get_json_data() method for other classes. Added an "Item Type for Blog Front Page" option for blog (non-static) front pages. Simplified the Schema mainEntityOfPage markup property by using a URL instead of an @id.
 
 = 3.37.0-1 =
 
