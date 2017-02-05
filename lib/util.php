@@ -1188,8 +1188,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
 			$mod['use_post'] = $use_post;
-			$mod['is_home_index'] = is_home() && ! $mod['is_home_page'] ? true : false;	// blog index page (archive)
-			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;	// home page (any)
+			$mod['is_home_index'] = ! $mod['is_home_page'] && is_home() ?			// blog index page (archive)
+				true : false;
+			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ?		// home page (any)
+				true : false;
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log_arr( '$mod ', $mod );

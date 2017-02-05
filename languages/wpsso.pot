@@ -1658,9 +1658,9 @@ msgstr ""
 
 #: lib/messages.php:212
 msgid ""
-"The WordPress tagline is used as a description for the <em>index</em> (non-"
-"static) home page, and as a fallback for the Facebook / Open Graph and "
-"Pinterest Rich Pin %1$s meta tag."
+"The WordPress tagline is used as a description for the blog (non-static) "
+"front page, and as a fallback for the Facebook / Open Graph and Pinterest "
+"Rich Pin %1$s meta tag."
 msgstr ""
 
 #: lib/messages.php:212
@@ -2013,13 +2013,14 @@ msgstr ""
 
 #: lib/messages.php:571
 msgid ""
-"Select the Schema type for a blog (non-static) home page. The default Schema "
-"type is %s."
+"Select the Schema type for a blog (non-static) front page. The default "
+"Schema type is %s."
 msgstr ""
 
 #: lib/messages.php:575
 msgid ""
-"Select the Schema type for a static home page. The default Schema type is %s."
+"Select the Schema type for a static front page. The default Schema type is "
+"%s."
 msgstr ""
 
 #: lib/messages.php:579
@@ -3326,12 +3327,12 @@ msgstr ""
 
 #: lib/submenu/general.php:312
 msgctxt "option label"
-msgid "Item Type for Blog Home Page"
+msgid "Item Type for Blog Front Page"
 msgstr ""
 
 #: lib/submenu/general.php:313
 msgctxt "option label"
-msgid "Item Type for Static Home Page"
+msgid "Item Type for Static Front Page"
 msgstr ""
 
 #: lib/submenu/general.php:314
@@ -3538,26 +3539,26 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1760
+#: lib/util.php:1762
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1786
+#: lib/util.php:1788
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1790
+#: lib/util.php:1792
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1793
+#: lib/util.php:1795
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1797
+#: lib/util.php:1799
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

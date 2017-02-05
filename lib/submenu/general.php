@@ -309,8 +309,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$schema_types = $this->p->schema->get_schema_types_select();	// $add_none = true
 
 					foreach ( array( 
-						'home_index' => _x( 'Item Type for Blog Home Page', 'option label', 'wpsso' ),
-						'home_page' => _x( 'Item Type for Static Home Page', 'option label', 'wpsso' ),
+						'home_index' => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
+						'home_page' => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
 						'archive_page' => _x( 'Item Type for Archive Page', 'option label', 'wpsso' ),
 						'user_page' => _x( 'Item Type for User / Author Page', 'option label', 'wpsso' ),
 						'search_page' => _x( 'Item Type for Search Results Page', 'option label', 'wpsso' ),

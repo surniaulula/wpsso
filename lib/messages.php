@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_site_description':
-							$text = sprintf( __( 'The WordPress tagline is used as a description for the <em>index</em> (non-static) home page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
+							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_title_sep':
 							$text = 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph and Pinterest Rich Pin title string (the default is the hyphen "'.$this->p->opt->get_defaults( 'og_title_sep' ).'" character).';
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When additional schema properties are available (product ratings, recipe ingredients, etc.), one or more <code>noscript</code> containers may be included in the webpage head section. <code>noscript</code> containers are read correctly by Google and Pinterest, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored). The <code>noscript</code> containers are always disabled for AMP webpages, and always enabled for the Pinterest crawler.';
 							break;
 						case 'tooltip-schema_social_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in the home page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the "'.$lca.'_json_ld_search_url" filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
+							$text = 'Include Website, Organization, and/or Person schema markup in the front page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the "'.$lca.'_json_ld_search_url" filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 						case 'tooltip-schema_alt_name':
 							$text = 'An alternate name for your Website that you want Google to consider (optional).';
@@ -568,11 +568,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
 							break;
 						case 'tooltip-schema_type_for_home_index':
-							$text = sprintf( __( 'Select the Schema type for a blog (non-static) home page. The default Schema type is %s.',
+							$text = sprintf( __( 'Select the Schema type for a blog (non-static) front page. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/CollectionPage' );
 							break;
 						case 'tooltip-schema_type_for_home_page':
-							$text = sprintf( __( 'Select the Schema type for a static home page. The default Schema type is %s.',
+							$text = sprintf( __( 'Select the Schema type for a static front page. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/WebSite' );
 							break;
 						case 'tooltip-schema_type_for_archive_page':
