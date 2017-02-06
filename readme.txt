@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.7-dev1 (2017/02/06)**
+**Version 3.39.7-rc1 (2017/02/07)**
 
 * *New Features*
 	* None
@@ -373,7 +373,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Optimized the printing of debug log messages within the webpage by using fewer action hooks.
+	* Optimized the printing of debug log messages in the webpage HTML by using fewer action hooks.
 	* Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
 	* Renamed the 'wpsso_og_add_product_mt_offer' filter to 'wpsso_og_add_product_mt_offers' (Pro version).
 	* Added a new 'wpsso_og_add_product_mt_reviews' filter (Pro version).
@@ -717,9 +717,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.7-dev1 =
+= 3.39.7-rc1 =
 
-(2017/02/06) Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
+(2017/02/07) Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
 
 = 3.39.6-1 =
 
