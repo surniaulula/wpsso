@@ -376,7 +376,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Optimized the printing of debug log messages within the webpage by using fewer action hooks.
 	* Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
 	* Renamed the 'wpsso_og_add_product_mt_offer' filter to 'wpsso_og_add_product_mt_offers' (Pro version).
-	* Added a new 'wpsso_og_add_product_mt_review' filter (Pro version).
+	* Added a new 'wpsso_og_add_product_mt_reviews' filter (Pro version).
 
 **Version 3.39.6-1 (2017/02/04)**
 
