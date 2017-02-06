@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( is_array( $d_val ) ) {
 
 					// skip product offer and review arrays
-					if ( preg_match( '/:(offers|review)$/', $d_name ) ) {
+					if ( preg_match( '/:(offers|reviews)$/', $d_name ) ) {
 						continue;
 
 					} elseif ( empty( $d_val ) ) {	// allow hooks to modify the value
