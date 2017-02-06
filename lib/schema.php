@@ -523,12 +523,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
-					// define the context and type properties for methods / filters 
-					// that may not define them or re-defines them incorrectly
+					/*
+					 * Define the context and type properties for methods / filters 
+					 * that may not define them at all, or re-defines them incorrectly.
+					 */
 					$type_url = $this->get_schema_type_url( $type_id );
 					$json_data = self::get_schema_type_context( $type_url, $json_data );
 
-					// format the json data array as a json-ld script
+					/*
+					 * Output the json data array as a json-ld script.
+					 */
 					$ret[] = '<script type="application/ld+json">'.
 						$this->p->util->json_format( $json_data ).'</script>'."\n";
 				}
@@ -694,11 +698,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
-		// sanitation
+		/*
+		 * Sanitation used by filters to return their data.
+		 */
 		public static function return_data_from_filter( &$json_data, &$ret_data, $is_main = false ) {
 			/*
 			 * Property:
 			 *	mainEntityOfPage as https://schema.org/WebPage
+			 *
+			 * The value of mainEntityOfPage is expected to be one of these types:
+			 *	CreativeWork
+			 * 	URL 
 			 */
 			if ( $is_main && ! empty( $ret_data['url'] ) )
 				$ret_data['mainEntityOfPage'] = $ret_data['url'];
@@ -709,8 +719,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data ) );
 		}
 
-		// $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles
-		// $org_id can be null, false, 'none', 'site', or number (including 0) -- null and false are the same as 'site'
+		/*
+		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
+		 * $org_id can be null, false, 'none', 'site', or a number * (including 0) -- null and 
+		 * false are the same as using 'site'.
+		 */
 		public static function add_single_organization_data( &$json_data, &$mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
 
 			if ( $org_id === 'none' )
