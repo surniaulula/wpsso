@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.7-rc1 (2017/02/07)**
+**Version 3.39.7-1 (2017/02/08)**
 
 * *New Features*
 	* None
@@ -717,9 +717,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.7-rc1 =
+= 3.39.7-1 =
 
-(2017/02/07) Added WooCommerce product reviews to the meta tags array for the WPSSO JSON extension (Pro version).
+(2017/02/08) Added a filter to define the WooCommerce shop page as a CollectionPage. Optimized the printing of debug log messages. Added WooCommerce product reviews to the meta tags array (for the WPSSO JSON extension).
 
 = 3.39.6-1 =
 
