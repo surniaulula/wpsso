@@ -1449,22 +1449,22 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:686
+#: lib/media.php:687
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:911 lib/pro/util/checkimgdims.php:67
+#: lib/media.php:916 lib/pro/util/checkimgdims.php:67
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:966
+#: lib/media.php:971
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:984
+#: lib/media.php:989
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2801,15 +2801,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:221
+#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:222
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:71
+#: lib/pro/media/ngg.php:226 lib/pro/util/checkimgdims.php:71
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:73
+#: lib/pro/media/ngg.php:228 lib/pro/util/checkimgdims.php:73
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
@@ -3538,26 +3538,26 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1762
+#: lib/util.php:1765
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1788
+#: lib/util.php:1791
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1792
+#: lib/util.php:1795
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1795
+#: lib/util.php:1798
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1799
+#: lib/util.php:1802
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

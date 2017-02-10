@@ -1359,28 +1359,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		// used by WpssoMedia::get_content_images()
+		// used by WpssoMedia get_content_images() and get_attachment_image_src().
 		public function fix_relative_url( $url ) {
-			if ( ! empty( $url ) && strpos( $url, '://' ) === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'relative url found = '.$url );
+			if ( empty( $url ) || 
+				strpos( $url, '://' ) !== false )
+					return $url;
 
-				if ( strpos( $url, '//' ) === 0 )
-					$url = self::get_prot().':'.$url;
-				elseif ( strpos( $url, '/' ) === 0 ) 
-					$url = home_url( $url );
-				else {
-					$base = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-					if ( strpos( $base, '?' ) !== false ) {
-						$base_parts = explode( '?', $base );
-						$base = reset( $base_parts );
-					}
-					$url = trailingslashit( $base, false ).$url;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'relative url found = '.$url );
+
+			if ( strpos( $url, '//' ) === 0 )
+				$url = self::get_prot().':'.$url;
+			elseif ( strpos( $url, '/' ) === 0 ) 
+				$url = home_url( $url );
+			else {
+				$base = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+				if ( strpos( $base, '?' ) !== false ) {
+					$base_parts = explode( '?', $base );
+					$base = reset( $base_parts );
 				}
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'relative url fixed = '.$url );
+				$url = trailingslashit( $base, false ).$url;
 			}
+
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'relative url fixed = '.$url );
+
 			return $url;
 		}
 

@@ -440,8 +440,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'applying rewrite_url filter for '.$img_url );
 
-					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_url', $img_url ),
-						$img_width, $img_height, $img_cropped, $pid ) );
+					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_url', 
+						$this->p->util->fix_relative_url( $img_url ) ),	// just in case
+							$img_width, $img_height, $img_cropped, $pid ) );
 				}
 			}
 
@@ -686,18 +687,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									__( 'Content', 'wpsso' ) );
 
 							// 'wpsso_content_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
-							if ( apply_filters( $this->p->cf['lca'].'_content_accept_img_dims', 
+							if ( ! apply_filters( $this->p->cf['lca'].'_content_accept_img_dims', 
 								$img_size_within_limits, $og_image, $size_name, $attr_name, $content_passed ) )
-									$og_image['og:image'] = $this->p->util->fix_relative_url( $og_image['og:image'] );
-							else $og_image = array();
+									$og_image = array();
 
 							break;
 					}
 
-					if ( ! empty( $og_image['og:image'] ) && 
-						( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) )
-							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) )
+					if ( ! empty( $og_image['og:image'] ) ) {
+						$og_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_url',
+							$this->p->util->fix_relative_url( $og_image['og:image'] ) );
+						if ( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) {
+							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) ) {
 								return $og_ret;
+							}
+						}
+					}
 				}
 				return $og_ret;
 			}
