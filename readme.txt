@@ -364,6 +364,18 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.39.8-dev1 (2017/02/10)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a check (and fix) for relative URLs coming from the WordPress Media Library.
+	* Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.39.7-1 (2017/02/08)**
 
 * *New Features*
@@ -716,6 +728,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.8-dev1 =
+
+(2017/02/10) Added a check (and fix) for relative URLs coming from the WordPress Media Library. Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
 
 = 3.39.7-1 =
 
