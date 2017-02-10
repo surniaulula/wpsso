@@ -438,9 +438,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'applying rewrite_url filter for '.$img_url );
+						$this->p->debug->log( 'applying rewrite_image_url filter for '.$img_url );
 
-					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_url', 
+					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_image_url', 
 						$this->p->util->fix_relative_url( $img_url ) ),	// just in case
 							$img_width, $img_height, $img_cropped, $pid ) );
 				}
@@ -695,7 +695,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					if ( ! empty( $og_image['og:image'] ) ) {
-						$og_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_url',
+						$og_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
 							$this->p->util->fix_relative_url( $og_image['og:image'] ) );
 						if ( $check_dupes === false || $this->p->util->is_uniq_url( $og_image['og:image'], $size_name ) ) {
 							if ( $this->p->util->push_max( $og_ret, $og_image, $num ) ) {
