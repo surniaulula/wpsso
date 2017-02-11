@@ -817,11 +817,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Google Knowledge Graph
 			 */
-			if ( ! empty( $opts['org_sameas'] ) && is_array( $opts['org_sameas'] ) ) {
+			$opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
+				( isset( $opts['org_sameas'] ) ? $opts['org_sameas'] : array() ), $mod, $org_id );
+
+			if ( ! empty( $opts['org_sameas'] ) && 
+				is_array( $opts['org_sameas'] ) ) {	// just in case
 				foreach ( $opts['org_sameas'] as $url )
 					if ( ! empty( $url ) )	// just in case
 						$ret['sameAs'][] = esc_url( $url );
 			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization', $ret, $mod, $org_id );
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -935,6 +941,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_place', $ret, $mod, $place_id );
+
 			if ( empty( $list_element ) )
 				$json_data = $ret;
 			else $json_data[] = $ret;
@@ -989,6 +997,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_event', $ret, $mod, $event_id );
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -1108,10 +1118,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Google Knowledge Graph
 			 */
+			$opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
+				( isset( $opts['person_sameas'] ) ? $opts['person_sameas'] : array() ), $mod, $user_id );
+
 			if ( ! empty( $opts['person_sameas'] ) &&
-				is_array( $opts['person_sameas'] ) )
-					foreach ( $opts['person_sameas'] as $url )
+				is_array( $opts['person_sameas'] ) ) {	// just in case
+				foreach ( $opts['person_sameas'] as $url )
+					if ( ! empty( $url ) )	// just in case
 						$ret['sameAs'][] = esc_url( $url );
+			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_person', $ret, $mod, $user_id );
 
 			if ( empty( $list_element ) )
 				$json_data = $ret;
@@ -1135,6 +1152,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// pass a single dimension image array in $opts
 		public static function add_single_image_data( &$json_data, &$opts, $prefix = 'og:image', $list_element = true ) {
+
 			$wpsso =& Wpsso::get_instance();
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
