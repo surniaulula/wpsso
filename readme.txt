@@ -370,7 +370,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Added a check (and fix) for relative URLs coming from the WordPress Media Library.
-	* Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
+	* Removed a check for WPSSO option values before disabling the Yoast SEO JSON-LD (now always disabled).
 * *Bugfixes*
 	* None
 * *Developer Notes*
