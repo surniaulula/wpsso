@@ -724,15 +724,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * $org_id can be null, false, 'none', 'site', or a number * (including 0) -- null and 
 		 * false are the same as using 'site'.
 		 */
-		public static function add_single_organization_data( &$json_data, &$mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_single_organization_data( &$json_data, $mod, $org_id = false, $logo_key = 'org_logo_url', $list_element = false ) {
 
 			if ( $org_id === 'none' )
 				return 0;
+			elseif ( $org_id === null || $org_id === false )	// just in case
+				$org_id = 'site';
 
 			$wpsso =& Wpsso::get_instance();
 			$opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
 
-			if ( empty( $opts ) ) {	// $opts could be false or empty array
+			if ( empty( $opts ) ) {	// $opts can be false or empty array
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'adding default organization options for '.$org_id );
 
@@ -837,15 +839,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $place_id can be null, false, 'none', 'site', or number (including 0) -- null and false are the same as 'site'
-		public static function add_single_place_data( &$json_data, &$mod, $place_id = false, $list_element = false ) {
+		public static function add_single_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
 
 			if ( $place_id === 'none' )
 				return 0;
+			elseif ( $place_id === null || $place_id === false )	// just in case
+				$place_id = 'site';
 
 			$wpsso =& Wpsso::get_instance();
 			$opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
 
-			if ( empty( $opts ) ) {	// $opts could be false or empty array
+			if ( empty( $opts ) ) {	// $opts can be false or empty array
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty place options' );
 				return 0;
@@ -950,7 +954,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		public static function add_single_event_data( &$json_data, &$mod, $event_id = false, $list_element = false ) {
+		public static function add_single_event_data( &$json_data, $mod, $event_id = false, $list_element = false ) {
 
 			if ( $event_id === 'none' )
 				return 0;
@@ -973,12 +977,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'endDate' => 'event_end_date',
 			) );
 
-			if ( ! empty( $opts['event_organizer_person_id'] ) ) {
+			if ( ! empty( $opts['event_organizer_person_id'] ) ) {	// example: tribe_organizer-0
 				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $opts['event_organizer_person_id'], false ) ) 	// $list_element = false
 					unset( $ret['organizer'] );	// prevent null assignment
 			}
 
-			if ( ! empty( $opts['event_place_id'] ) ) {
+			if ( ! empty( $opts['event_place_id'] ) ) {	// example: tribe_venue-0
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $opts['event_place_id'], false ) )	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 			}
@@ -1043,7 +1047,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// $user_id is required here
-		public static function add_single_person_data( &$json_data, &$mod, $user_id, $list_element = true ) {
+		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
 
 			if ( $user_id === 'none' )
 				return 0;
@@ -1151,7 +1155,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$json_data, &$opts, $prefix = 'og:image', $list_element = true ) {
+		public static function add_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1209,7 +1213,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;	// return count of images added
 		}
 
-		public static function add_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $names ) {
+		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names ) {
 			$itemprop_added = 0;
 			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
@@ -1223,7 +1227,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $itemprop_added;
 		}
 
-		public static function get_data_itemprop_from_assoc( array &$assoc, array $names ) {
+		public static function get_data_itemprop_from_assoc( array $assoc, array $names ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
 					$ret[$itemprop_name] = $assoc[$key_name];
@@ -1234,7 +1238,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// QuantitativeValue (width, height, length, depth, weight)
 		// unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
-		public static function add_data_quant_from_assoc( array &$json_data, array &$assoc, array $names ) {
+		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
 					switch ( $itemprop_name ) {
