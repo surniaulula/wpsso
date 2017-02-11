@@ -364,13 +364,14 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.8-dev2 (2017/02/11)**
+**Version 3.39.8-dev3 (2017/02/11)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added a check (and fix) for relative URLs coming from the WordPress Media Library.
 	* Removed a check for WPSSO option values before disabling the Yoast SEO JSON-LD (now always disabled).
+	* Added the missing Schema type https://schema.org/HighSchool.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -735,7 +736,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.8-dev2 =
+= 3.39.8-dev3 =
 
 (2017/02/11) Added a check (and fix) for relative URLs coming from the WordPress Media Library. Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
 
