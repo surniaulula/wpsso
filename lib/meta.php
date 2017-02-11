@@ -201,8 +201,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						<div class="preview_desc">'.( empty( $head_info['og:description'] ) ?
 							'No Description' : $head_info['og:description'] ).'</div>
 						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].
-							( empty( $head_info['article:author:name'] ) ?
-								'' : ' | By '.$head_info['article:author:name'] ) ).'</div>
+							( empty( $this->p->options['add_meta_property_article:author'] ) ||
+								empty( $head_info['article:author:name'] ) ?
+									'' : ' | By '.$head_info['article:author:name'] ) ).'</div>
 					</div>
 				</div>
 			</div></td>';
