@@ -11,7 +11,7 @@ Tags: seo, social, share, open graph, facebook, twitter, pinterest, youtube, sha
 Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 4.7.2
-Stable Tag: 3.39.7-1
+Stable Tag: 3.39.8-1
 
 Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
 
@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.8-1 (2017/02/12)**
+**Version 3.39.8-1 (2017/02/13)**
 
 * *New Features*
 	* None
@@ -738,7 +738,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.39.8-1 =
 
-(2017/02/12) Added a check (and fix) for relative URLs coming from the WordPress Media Library. Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
+(2017/02/13) Added a check (and fix) for relative URLs coming from the WordPress Media Library. Removed a check for WPSSO option values before disabling Yoast SEO JSON-LD (now always disabled).
 
 = 3.39.7-1 =
 
