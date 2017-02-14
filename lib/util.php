@@ -587,11 +587,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// twitter-style usernames (prepend with an @ character)
 				case 'at_name':
-					if ( $val !== '' ) {
-						$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
-						if ( ! empty( $val ) ) 
-							$val = '@'.$val;
-					}
+					if ( $val !== '' )
+						$val = SucomUtil::get_at_name( $val );
 					break;
 
 				case 'pos_num':		// integer options that must be 1 or more (not zero)
@@ -652,7 +649,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'date':
 				case 'time':
 					$val = trim( $val );
-					$fmt = $option_type === 'date' ? '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/' : '/^[0-9]{2,2}:[0-9]{2,2}$/';
+					$fmt = $option_type === 'date' ?
+						'/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/' :
+						'/^[0-9]{2,2}:[0-9]{2,2}$/';
 					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 						$val = $def_val;

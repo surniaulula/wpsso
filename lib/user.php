@@ -392,9 +392,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 									// no change
 									break;
 								case $this->p->options['plugin_cm_twitter_name']:
-									$val = substr( preg_replace( '/[^a-zA-Z0-9_]/', '', $val ), 0, 15 );
-									if ( ! empty( $val ) ) 
-										$val = '@'.$val;
+									$val = SucomUtil::get_at_name( $val );
 									break;
 								default:
 									// all other contact methods are assumed to be URLs

@@ -1970,6 +1970,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return $ret_array;
 		}
+
+		public static function get_at_name( $val ) {
+			if ( $val !== '' ) {
+				$val = substr( preg_replace( array( '/^.*\//',
+					'/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
+				if ( ! empty( $val ) )  {
+					$val = '@'.$val;
+				}
+			}
+			return $val;
+		}
 	}
 }
 

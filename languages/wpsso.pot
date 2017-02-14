@@ -3424,15 +3424,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:422
+#: lib/user.php:420
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:423
+#: lib/user.php:421
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:424
+#: lib/user.php:422
 msgid "Jabber / Google Talk"
 msgstr ""
 
@@ -3514,50 +3514,50 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:726
+#: lib/util.php:725
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:733
+#: lib/util.php:732
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:757
+#: lib/util.php:756
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:793
+#: lib/util.php:792
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1064
+#: lib/util.php:1063
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1765
+#: lib/util.php:1764
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1791
+#: lib/util.php:1790
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1795
+#: lib/util.php:1794
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1798
+#: lib/util.php:1797
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1802
+#: lib/util.php:1801
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
