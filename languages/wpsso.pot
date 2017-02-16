@@ -801,8 +801,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:57
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add complete Schema JSON-LD markup (Article, Event, "
-"Organization, Place / Business, Product, Recipe, and more)."
+"WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Local "
+"Business, Product, Recipe, Review, and much more)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:58
@@ -1661,8 +1661,8 @@ msgstr ""
 
 #: lib/messages.php:155
 msgid ""
-"If appropriate, you may select a more descriptive Organization sub-type "
-"(default is Organization)."
+"You may select a more descriptive Schema type from the Organization sub-"
+"types (default is Organization)."
 msgstr ""
 
 #: lib/messages.php:160
@@ -1948,8 +1948,7 @@ msgstr ""
 #: lib/messages.php:512
 msgid ""
 "The Facebook Business Page URL will be used in Open Graph <em>article</em> "
-"type webpages (not index or archive webpages) and schema publisher "
-"(Organization) social JSON."
+"webpages and in the site's Schema Organization markup."
 msgstr ""
 
 #: lib/messages.php:512 lib/messages.php:536 lib/messages.php:621

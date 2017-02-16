@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(
 					'short' => 'WPSSO JSON',		// short plugin name
 					'name' => 'WPSSO Schema JSON-LD Markup (WPSSO JSON)',
-					'desc' => 'WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Organization, Place / Business, Product, Recipe, and more).',
+					'desc' => 'WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Local Business, Product, Recipe, Review, and much more).',
 					'slug' => 'wpsso-schema-json-ld',
 					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
