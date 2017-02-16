@@ -364,6 +364,26 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.39.9-dev1 (2017/02/16)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed a few site related option keys:
+		* 'og_site_name' =&gt; 'site_name'
+		* 'og_site_description' =&gt; 'site_desc'
+		* 'org_url' =&gt; 'site_url'
+		* 'org_type' =&gt; 'site_org_type'
+		* 'org_place_id' =&gt; 'site_place_id'
+	* Added a new WpssoSchema::get_site_organization() method to return the site organization array.
+	* Added a new SucomUtil::get_site_alt_name() method.
+	* Added a new SucomUtil::get_site_url() method.
+	* Improved the SucomUtil::rename_keys() method to include localed keys.
+
 **Version 3.39.8-1 (2017/02/13)**
 
 * *New Features*
@@ -735,6 +755,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.39.9-dev1 =
+
+(2017/02/16) Renamed site related options keys and added a few methods to return various site information (organization array, alternate name, and url).
 
 = 3.39.8-1 =
 
