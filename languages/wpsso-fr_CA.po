@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.8-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-02-11 10:21+0800\n"
-"PO-Revision-Date: 2017-02-11 10:21+0800\n"
+"POT-Creation-Date: 2017-02-11 10:25+0800\n"
+"PO-Revision-Date: 2017-02-11 10:25+0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1365,19 +1365,19 @@ msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:686
+#: lib/media.php:687
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:911 lib/pro/util/checkimgdims.php:67
+#: lib/media.php:916 lib/pro/util/checkimgdims.php:67
 msgid "Media Library"
 msgstr "la Bibliothèque de Médias"
 
-#: lib/media.php:966
+#: lib/media.php:971
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:984
+#: lib/media.php:989
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -2321,15 +2321,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
 
-#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:221
+#: lib/pro/media/ngg.php:182 lib/pro/media/ngg.php:222
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/pro/media/ngg.php:225 lib/pro/util/checkimgdims.php:71
+#: lib/pro/media/ngg.php:226 lib/pro/util/checkimgdims.php:71
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/pro/media/ngg.php:227 lib/pro/util/checkimgdims.php:73
+#: lib/pro/media/ngg.php:228 lib/pro/util/checkimgdims.php:73
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
@@ -2389,11 +2389,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:784
+#: lib/schema.php:801
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
 
-#: lib/schema.php:787
+#: lib/schema.php:804
 msgid "The \"%1$s\" Organization Banner (600x60) is missing and required for the Schema %2$s markup."
 msgstr "Le bannière (600x60) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
 
@@ -3017,26 +3017,26 @@ msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fourn
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr "Taille d'image récupérée par HTTP pour %1$s (%2$s)."
 
-#: lib/util.php:1762
+#: lib/util.php:1765
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:1788
+#: lib/util.php:1791
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1792
+#: lib/util.php:1795
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1795
+#: lib/util.php:1798
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1799
+#: lib/util.php:1802
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

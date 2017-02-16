@@ -79,19 +79,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-general':
 
+					$table_rows['site_name'] = $this->form->get_th_html( _x( 'Website Name',
+						'option label', 'wpsso' ), null, 'site_name', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'site_name', $this->p->options ),
+						'long_name', null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
+
+					$table_rows['site_desc'] = $this->form->get_th_html( _x( 'Website Description',
+						'option label', 'wpsso' ), null, 'site_desc', array( 'is_locale' => true ) ).
+					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
+						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
+
 					$table_rows['og_art_section'] = $this->form->get_th_html( _x( 'Default Article Topic',
 						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ).'</td>';
-
-					$table_rows['og_site_name'] = $this->form->get_th_html( _x( 'Website Name',
-						'option label', 'wpsso' ), null, 'og_site_name', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'og_site_name', $this->p->options ),
-						'long_name', null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
-
-					$table_rows['og_site_description'] = $this->form->get_th_html( _x( 'Website Description',
-						'option label', 'wpsso' ), null, 'og_site_description', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'og_site_description', $this->p->options ),
-						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
 
 					break;
 

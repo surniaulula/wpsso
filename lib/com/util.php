@@ -791,22 +791,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$fixed = preg_replace( $pattern, $replace, $key );
 					$found[$fixed] = $input[$key]; 
 				} else $found[$key] = $input[$key]; 
-
 				if ( $remove !== false )
 					unset( $input[$key] );
 			}
 			return $found;
 		}
 
-		public static function rename_keys( &$opts = array(), $keys = array() ) {
-			foreach ( $keys as $old => $new ) {
-				if ( empty( $old ) )	// just in case
+		public static function rename_keys( &$opts = array(), $key_names = array() ) {
+			foreach ( $key_names as $old_name => $new_name ) {
+				if ( empty( $old_name ) )	// just in case
 					continue;
-				if ( isset( $opts[$old] ) ) {
-					if ( ! empty( $new ) && 
-						! isset( $opts[$new] ) )
-							$opts[$new] = $opts[$old];
-					unset ( $opts[$old] );
+				$old_name_preg = '/'.$old_name.'(:is|:use|#.*)?$/';
+				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
+					if ( ! empty( $new_name ) ) {	// can be empty to remove option
+						$new_name_local = preg_replace( $old_name_preg, 
+							$new_name.'$1', $old_name_local );
+						if ( ! isset( $opts[$new_name_local] ) )	// just in case
+							$opts[$new_name_local] = $opts[$old_name_local];
+					}
+					unset( $opts[$old_name_local] );
 				}
 			}
 			return $opts;
@@ -1009,22 +1012,37 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// return the custom site name, and if empty, the default site name
-		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_site_name( array $opts, $mixed = 'current' ) {
-			$site_name = self::get_locale_opt( 'og_site_name', $opts, $mixed );
-			if ( empty( $site_name ) )
-				return get_bloginfo( 'name', 'display' );
-			else return $site_name;
+		public static function get_site_url( array $opts, $mixed = 'current' ) {
+			$ret = self::get_locale_opt( 'site_url', $opts, $mixed );
+			if ( empty( $ret ) )
+				return get_bloginfo( 'url' );
+			else return $ret;
 		}
 
-		// return the custom site description, and if empty, the default site description
-		// $mixed = 'default' | 'current' | post ID | $mod array
+		/*
+		 * Returns a custom site name or the default WordPress site name.
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public static function get_site_name( array $opts, $mixed = 'current' ) {
+			$ret = self::get_locale_opt( 'site_name', $opts, $mixed );
+			if ( empty( $ret ) )
+				return get_bloginfo( 'name', 'display' );
+			else return $ret;
+		}
+
+		public static function get_site_alt_name( array $opts, $mixed = 'current' ) {
+			return self::get_locale_opt( 'site_alt_name', $opts, $mixed );
+		}
+
+		/*
+		 * Returns a custom site description or the default WordPress site description / tagline.
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
-			$site_desc = self::get_locale_opt( 'og_site_description', $opts, $mixed );
-			if ( empty( $site_desc ) )
+			$ret = self::get_locale_opt( 'site_desc', $opts, $mixed );
+			if ( empty( $ret ) )
 				return get_bloginfo( 'description', 'display' );
-			else return $site_desc;
+			else return $ret;
 		}
 
 		// returns an optional and customized locale value for the og:locale meta tag
@@ -1066,6 +1084,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					} else return $val_locale;
 				} else return $val_locale;
 			} else return $val_locale;
+		}
+
+		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {
+			$key_locale = self::get_key_locale( $key, $opts, $mixed );
+			$opts[$key_locale] = $value;
 		}
 
 		// localize an options array key

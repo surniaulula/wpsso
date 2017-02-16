@@ -486,6 +486,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'url_base';
 					break;
 				// must be a url
+				case 'site_url':
 				case 'sharing_url':
 				case 'fb_page_url':
 				case 'og_img_url':
@@ -547,13 +548,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'api_key';
 					break;
 				// text strings that can be blank (line breaks are removed)
+				case 'site_name':
+				case 'site_desc':
 				case 'og_art_section':
 				case 'og_title':
 				case 'og_desc':
-				case 'og_site_name':
-				case 'og_site_description':
-				case 'schema_desc':
 				case 'seo_desc':
+				case 'schema_desc':
 				case 'tc_desc':
 				case 'pin_desc':
 				case 'plugin_img_alt_prefix':
@@ -570,13 +571,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'one_line';
 					break;
 				// options that cannot be blank
+				case 'site_org_type':
+				case 'site_place_id':
 				case 'og_author_field':
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
 				case 'rp_img_id_pre': 
 				case 'rp_author_name':
-				case 'plugin_shortener':	// none or name of shortener
+				case 'plugin_shortener':		// none or name of shortener
 				case ( strpos( $key, '_crop_x' ) === false ? false : true ):
 				case ( strpos( $key, '_crop_y' ) === false ? false : true ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):

@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ),
 					'html' => __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.',
 						'wpsso' ),
-					'not_blank' => __( 'The value of option \'%s\' cannot be empty - resetting the option to its default value.',
+					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting the option to its default value.',
 						'wpsso' ),
 				);
 			}

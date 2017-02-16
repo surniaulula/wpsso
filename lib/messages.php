@@ -141,6 +141,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 					}	// end of tooltip-post switch
 				/*
+				 * Site settings
+				 */
+				} elseif ( strpos( $idx, 'tooltip-site_' ) === 0 ) {
+					switch ( $idx ) {
+						case 'tooltip-site_name':
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', get_admin_url( null, 'options-general.php' ) );
+							break;
+						case 'tooltip-site_desc':
+							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
+							break;
+						case 'tooltip-site_org_type':
+							$text = __( 'If appropriate, you may select a more descriptive Organization sub-type (default is Organization).', 'wpsso' );
+							break;
+						case 'tooltip-site_place_id':
+							if ( isset( $this->p->cf['plugin']['wpssoplm'] ) ) {
+								$info = $this->p->cf['plugin']['wpssoplm'];
+								$text = sprintf( __( 'Select an optional Place / Location address for this Organization (requires the %s extension).', 'wpsso' ), '<a href="'.$info['url']['download'].'" target="_blank">'.$info['name'].'</a>' );
+							}
+							break;
+					}
+				/*
 				 * Open Graph settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-og_' ) === 0 ) {
@@ -204,12 +225,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_art_section':
 							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
-							break;
-						case 'tooltip-og_site_name':
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', get_admin_url( null, 'options-general.php' ) );
-							break;
-						case 'tooltip-og_site_description':
-							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
 							break;
 						case 'tooltip-og_title_sep':
 							$text = 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph and Pinterest Rich Pin title string (the default is the hyphen "'.$this->p->opt->get_defaults( 'og_title_sep' ).'" character).';

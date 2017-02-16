@@ -96,6 +96,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'schema_img_article_crop' => 'schema_article_img_crop',
 			'schema_img_article_crop_x' => 'schema_article_img_crop_x',
 			'schema_img_article_crop_y' => 'schema_article_img_crop_y',
+			'og_site_name' => 'site_name',
+			'og_site_description' => 'site_desc',
+			'org_url' => 'site_url',
+			'org_type' => 'site_org_type',
+			'org_place_id' => 'site_place_id',
 		);
 
 		protected $p;
