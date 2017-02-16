@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.9-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-02-16 14:57+0700\n"
-"PO-Revision-Date: 2017-02-16 15:04+0700\n"
+"POT-Creation-Date: 2017-02-16 15:41+0700\n"
+"PO-Revision-Date: 2017-02-16 16:06+0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -733,13 +733,13 @@ msgstr "Extension WPSSO pour ajouté un sélecteur de langue pour les utilisateu
 
 #: lib/config-gettext-extract.php:57
 msgctxt "plugin description"
-msgid "WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Organization, Place / Business, Product, Recipe, and more)."
-msgstr "Extension WPSSO pour ajouter des balises de Schéma JSON-LD (Article, Event, Organization, Place / Business, Product, Recipe, et plus)."
+msgid "WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Local Business, Product, Recipe, Review, and much more)."
+msgstr "Extension WPSSO pour ajouter des balises Schéma JSON-LD (article, événement, entreprise locale, produit, recette, critique, et bien plus)."
 
 #: lib/config-gettext-extract.php:58
 msgctxt "plugin description"
 msgid "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc."
-msgstr "Extension WPSSO pour ajouter des boutons de partage sociaux ridiculement réactif (SVG) dans votre contenu, les extraits, barre flottante CSS, widget, shortcode, etc."
+msgstr "Extension WPSSO pour ajouter des boutons de partage sociaux ridiculement réactif (SVG) dans le contenu, extraits, barre flottante CSS, widget, etc."
 
 #: lib/config-gettext-extract.php:59
 msgctxt "plugin description"
@@ -749,12 +749,12 @@ msgstr "Extension WPSSO pour ajouter des boutons de partage social avec support 
 #: lib/config-gettext-extract.php:60
 msgctxt "plugin description"
 msgid "WPSSO extension to easily add Twitter-style quoted text &mdash; with a Tweet share link &mdash; in your post and page content."
-msgstr "Extension WPSSO pour ajouter facilement des citations de style Twitter avec un lien Tweet de partage dans votre contenu."
+msgstr "Extension WPSSO pour ajouter facilement des citations de style Twitter &mdash;  avec un lien Tweet de partage &mdash;  dans votre contenu."
 
 #: lib/config-gettext-extract.php:61
 msgctxt "plugin description"
 msgid "WPSSO extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.)."
-msgstr "Extension WPSSO pour gérer des organismes et propriétés Schéma d'articles / d'événements supplémentaires (organisateur, interprète, etc.)."
+msgstr "Extension WPSSO pour gérer des organisations et propriétés Schéma d'articles / d'événements supplémentaires (organisateur, interprète, etc.)."
 
 #: lib/config-gettext-extract.php:62
 msgctxt "plugin description"
@@ -764,7 +764,7 @@ msgstr "Extension WPSSO qui fournie des balises méta Apple Store / iTunes et Go
 #: lib/config-gettext-extract.php:63
 msgctxt "plugin description"
 msgid "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business + Local SEO meta tags."
-msgstr "Extension WPSSO pour fournir des balises méta Pinterest Place, Facebook / Open Graph de Position, et Schéma d'Entreprise Locale."
+msgstr "Extension WPSSO pour fournir des balises méta Pinterest place, Facebook / Open Graph de position, et Schéma d'entreprise locale."
 
 #: lib/config-gettext-extract.php:64
 msgctxt "plugin description"
@@ -1511,11 +1511,11 @@ msgstr "Vous pouvez modifier <a href=\"%1$s\">la valeur par défaut du slogan de
 
 #: lib/messages.php:155
 msgid "You may select a more descriptive Schema type from the Organization sub-types (default is Organization)."
-msgstr "Vous pouvez sélectionner un type de Schéma plus descriptif des sous-types de l’organisme (valeur par défaut est Organization)."
+msgstr "Vous pouvez sélectionner un type de Schéma plus descriptif des sous-types d'organisation (valeur par défaut est Organization)."
 
 #: lib/messages.php:160
 msgid "Select an optional Place / Location address for this Organization (requires the %s extension)."
-msgstr "Choisissez une adresse d'emplacement optionnel pour cet organisme (nécessite l’extension %s)."
+msgstr "Choisissez une adresse d'emplacement optionnel pour cette organisation (nécessite l’extension %s)."
 
 #: lib/messages.php:227
 msgid "The topic that best describes the Posts and Pages on your website."
@@ -1698,8 +1698,8 @@ msgid "If you have a <a href=\"%1$s\" target=\"_blank\">Facebook Business Page f
 msgstr "Si vous avez une <a href=\"%1$s\" target=\"_blank\">Page d'entreprise Facebook pour votre site Web</a>, vous pouvez entrer son URL ici (par exemple, l'URL de Page d'entreprise Facebook pour %2$s est <a href=\"%3$s\" target=\"_blank\">%4$s</a>)."
 
 #: lib/messages.php:512
-msgid "The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages (not index or archive webpages) and schema publisher (Organization) social JSON."
-msgstr "L'URL de la Page entreprise de Facebook sera utilisé pour les balises Open Graph des pages Web de type <em>article</em> (et non d'indice ou d'archive) et le Schéma social JSON d'éditeur (organisme)."
+msgid "The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site's Schema Organization markup."
+msgstr "L'URL de la Page entreprise de Facebook sera utilisé pour les balises Open Graph des pages Web de type <em>article</em> et le Schéma d'organisation du site."
 
 #: lib/messages.php:512 lib/messages.php:536 lib/messages.php:621
 #: lib/messages.php:660 lib/messages.php:685 lib/messages.php:698
@@ -1888,11 +1888,11 @@ msgstr "La balise HTML \"meta name canonical\" n'est pas cochée par défaut pui
 
 #: lib/messages.php:761
 msgid "The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search."
-msgstr "Les valeurs des comptes sociaux site Web / d'affaires sont utilisées pour les balises méta SEO, Schéma, Open Graph, et autres – y compris le balisage sociale Éditeur (Organisation) pour Google Search."
+msgstr "Les valeurs des comptes sociaux site Web / d'affaires sont utilisées pour les balises méta SEO, Schéma, Open Graph, et autres &ndash; y compris le balisage sociale de l'organisation pour Google Search."
 
 #: lib/messages.php:761
 msgid "See the <a href=\"%s\">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup."
-msgstr "Voir <a href=\"%s\">l'onglet de réglages Google / Schéma</a> pour définir un logo site Web / d'entreprise pour Google Search, ou activer / désactiver l'ajout de balisage éditeur (organisme) et/ou auteur (personne) JSON-LD."
+msgstr "Voir <a href=\"%s\">l'onglet de réglages Google / Schéma</a> pour définir un logo site Web / d'entreprise pour Google Search, ou activer / désactiver l'ajout de balisage d'organisation et/ou auteur (personne) JSON-LD."
 
 #: lib/messages.php:776
 msgid "(note that all %1$s extensions also require a licensed %1$s plugin)"
@@ -2399,11 +2399,11 @@ msgstr "Image Google / Schéma"
 
 #: lib/schema.php:779
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
-msgstr "L'image logo de l'organisme \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
+msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
 #: lib/schema.php:782
 msgid "The \"%1$s\" Organization Banner (600x60) is missing and required for the Schema %2$s markup."
-msgstr "Le bannière (600x60) de l'organisme \"%1$s\" est manquante et nécessaire pour le balisage du schéma %2$s."
+msgstr "Le bannière (600x60) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
 #: lib/setting/contact-fields.php:28 lib/submenu/advanced.php:33
 msgctxt "metabox title"
@@ -2627,7 +2627,7 @@ msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Sear
 
 #: lib/submenu/essential.php:117 lib/submenu/general.php:267
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
-msgstr "Inclure le <a href=\"%s\">profil sociale d'organisme</a>"
+msgstr "Inclure le <a href=\"%s\">profil sociale de l'organisation</a>"
 
 #: lib/submenu/essential.php:120 lib/submenu/general.php:270
 msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
