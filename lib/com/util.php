@@ -797,22 +797,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		public static function rename_keys( &$opts = array(), $key_names = array() ) {
+		public static function rename_keys( &$opts = array(), $key_names = array(), $key_mods = true ) {
 			foreach ( $key_names as $old_name => $new_name ) {
 				if ( empty( $old_name ) )	// just in case
 					continue;
-				$old_name_preg = '/'.$old_name.'(:is|:use|#.*)?$/';
+				$old_name_preg = $key_mods ? '/^'.$old_name.'(:is|:use|#.*)?$/' : '/^'.$old_name.'$/';
 				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
 					if ( ! empty( $new_name ) ) {	// can be empty to remove option
 						$new_name_local = preg_replace( $old_name_preg, 
 							$new_name.'$1', $old_name_local );
-						if ( ! isset( $opts[$new_name_local] ) )	// just in case
-							$opts[$new_name_local] = $opts[$old_name_local];
+						$opts[$new_name_local] = $opts[$old_name_local];
 					}
 					unset( $opts[$old_name_local] );
 				}
 			}
-			return $opts;
 		}
 
 		public static function next_key( $needle, array &$input, $loop = true ) {

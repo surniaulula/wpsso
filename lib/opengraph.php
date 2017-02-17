@@ -286,15 +286,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						switch ( $md_pre ) {
 							case 'rp':
+								/*
+								 * Show both og and pinterest meta tags in the head tags tab
+								 * by renaming each og:image to pinterest:image.
+								 */
 								if ( is_admin() ) {
-									// show both og and pinterest meta tags in the head tags tab
-									// by renaming each og:image to pinterest:image 
-									foreach ( $mt_og[$md_pre.':image'] as $num => $arr )
+									foreach ( $mt_og[$md_pre.':image'] as $num => $arr ) {
 										$mt_og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
 											$arr, false, 'pinterest:' );
-
-								// rename the rp:image array to og:image
-								} else $mt_og = SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ) );
+									}
+								/*
+								 * Rename the rp:image array to og:image.
+								 */
+								} else SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ), false );
 
 								break;
 						}
