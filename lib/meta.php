@@ -22,6 +22,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected static $last_column_id = null;	// cache_id of the last column request in list table
 		protected static $last_column_array = array();	// array of column values for last column requested 
 
+		protected static $rename_meta_options_keys = array(
+			'wpsso' => array(
+				499 => array(
+					'link_desc' => 'seo_desc',
+					'meta_desc' => 'seo_desc',
+				),
+			),
+		);
+
 		public static $mod_array = array(
 			'id' => 0,
 			'name' => false,
@@ -507,12 +516,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			$unset_keys = array( 'options_filtered', 'options_version' );
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info )
-				if ( isset( $info['opt_version'] ) )
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( isset( $info['opt_version'] ) ) {
 					$unset_keys[] = 'plugin_'.$ext.'_opt_version';
+				}
+			}
 
-			foreach ( $unset_keys as $key )
+			foreach ( $unset_keys as $key ) {
 				unset( $defs[$key], $prev[$key] );
+			}
 
 			/*
 			 * Merge and sanitize the new options
