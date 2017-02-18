@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.9-dev2 (2017/02/17)**
+**Version 3.39.9-rc1 (2017/02/17)**
 
 * *New Features*
 	* None
@@ -382,7 +382,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new WpssoSchema::get_site_organization() method to return the site organization array.
 	* Added a new SucomUtil::get_site_alt_name() method.
 	* Added a new SucomUtil::get_site_url() method.
-	* Improved the SucomUtil::rename_keys() method to include localed keys.
+	* Improved the SucomUtil::rename_keys() method to include localized keys.
 
 **Version 3.39.8-1 (2017/02/13)**
 
@@ -756,7 +756,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.9-dev2 =
+= 3.39.9-rc1 =
 
 (2017/02/17) Renamed site related options keys and added a few methods to return various site information (organization array, alternate name, and url).
 
