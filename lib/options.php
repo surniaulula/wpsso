@@ -163,7 +163,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// upgrade the options array if necessary (renamed or removed keys)
 				if ( $has_diff_options ) {
-
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
 							' different than saved v'.( empty( $opts['options_version'] ) ?
@@ -244,7 +243,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// save options and issue possibly issue reminders
 				if ( $has_diff_version || $has_diff_options ) {
 
-					$this->save_options( $options_name, $opts, $network );
+					$this->save_options( $options_name, $opts, $network, true );	// $has_diff = true
 
 					if ( is_admin() ) {
 						$def_opts = $network === false ? 
@@ -411,7 +410,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// save both options and site options
-		public function save_options( $options_name, &$opts, $network = false ) {
+		public function save_options( $options_name, &$opts, $network = false, $has_diff = false ) {
 
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -421,11 +420,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			// save the old version string to compare
-			$prev_opts_version = empty( $opts['options_version'] ) ?
+			$prev_version = empty( $opts['options_version'] ) ?
 				0 : $opts['options_version'];
-
-			// mark the new options as current
-			$opts['options_version'] = $this->p->cf['opt']['version'];
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( isset( $info['version'] ) )
@@ -434,6 +430,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
 			}
 
+			// mark the new options as current
+			$opts['options_version'] = $this->p->cf['opt']['version'];
+
 			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
 
 			if ( $options_name == WPSSO_SITE_OPTIONS_NAME )
@@ -441,7 +440,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			else $saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
 
 			if ( $saved === true ) {
-				if ( $prev_opts_version !== $opts['options_version'] ) {
+				if ( $has_diff || $prev_version !== $opts['options_version'] ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 					if ( is_admin() )

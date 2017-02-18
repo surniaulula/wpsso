@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		private static $rename_site_options_keys = array(
 			'wpsso' => array(
-				499 => array(
+				500 => array(
 					'plugin_tid' => 'plugin_wpsso_tid',
 					'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
 					'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
@@ -27,20 +27,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		private static $rename_options_keys = array(
 			'wpsso' => array(
-				499 => array(
+				500 => array(
 					'og_img_resize' => 'plugin_create_wp_sizes',
 					'plugin_tid' => 'plugin_wpsso_tid',
 					'og_publisher_url' => 'fb_publisher_url',
 					'add_meta_property_og:video' => 'add_meta_property_og:video:url',
 					'twitter_shortener' => 'plugin_shortener',
-					'stumble_js_loc' => 'stumble_script_loc',	// wpsso ssb
-					'pin_js_loc' => 'pin_script_loc',		// wpsso ssb
-					'tumblr_js_loc' => 'tumblr_script_loc',		// wpsso ssb
-					'gp_js_loc' => 'gp_script_loc',			// wpsso ssb
-					'fb_js_loc' => 'fb_script_loc',			// wpsso ssb
-					'twitter_js_loc' => 'twitter_script_loc',	// wpsso ssb
-					'buffer_js_loc' => 'buffer_script_loc',		// wpsso ssb
-					'linkedin_js_loc' => 'linkedin_script_loc',	// wpsso ssb
 					'og_desc_strip' => 'plugin_p_strip',
 					'og_desc_alt' => 'plugin_use_img_alt',
 					'add_meta_name_twitter:data1' => '',
@@ -120,6 +112,18 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_verify_certs' => '',
 				),
 			),
+			'wpssossb' => array(
+				14 => array(
+					'stumble_js_loc' => 'stumble_script_loc',
+					'pin_js_loc' => 'pin_script_loc',
+					'tumblr_js_loc' => 'tumblr_script_loc',
+					'gp_js_loc' => 'gp_script_loc',
+					'fb_js_loc' => 'fb_script_loc',
+					'twitter_js_loc' => 'twitter_script_loc',
+					'buffer_js_loc' => 'buffer_script_loc',
+					'linkedin_js_loc' => 'linkedin_script_loc',
+				),
+			),
 		);
 
 		protected $p;
@@ -134,7 +138,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
 			$lca = $this->p->cf['lca'];
-			$opts_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?
+			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?
 				0 : $opts['plugin_'.$lca.'_opt_version'];
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
@@ -142,7 +146,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					apply_filters( $lca.'_rename_options_keys',
 						self::$rename_options_keys ) );
 
-				if ( $opts_version && $opts_version <= 270 ) {
+				if ( $prev_version && $prev_version <= 270 ) {
 					foreach ( $opts as $key => $val ) {
 						if ( strpos( $key, 'inc_' ) === 0 ) {
 							$new_key = '';
@@ -161,19 +165,19 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( $opts_version && $opts_version <= 296 ) {
+				if ( $prev_version && $prev_version <= 296 ) {
 					if ( empty( $opts['plugin_min_shorten'] ) || 
 						$opts['plugin_min_shorten'] < 22 ) 
 							$opts['plugin_min_shorten'] = 22;
 				}
 
-				if ( $opts_version && $opts_version <= 373 ) {
+				if ( $prev_version && $prev_version <= 373 ) {
 					if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
 						$opts['plugin_head_attr_filter_name'] === 'language_attributes' ) 
 							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
 				}
 
-				if ( $opts_version && $opts_version <= 453 ) {
+				if ( $prev_version && $prev_version <= 453 ) {
 					$opts['add_meta_property_og:image:secure_url'] = 1;
 					$opts['add_meta_property_og:video:secure_url'] = 1;
 				}
@@ -184,7 +188,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 						self::$rename_site_options_keys ) );
 			}
 
-			if ( $opts_version && $opts_version <= 342 ) {
+			if ( $prev_version && $prev_version <= 342 ) {
 				if ( isset( $opts['plugin_file_cache_hrs'] ) ) {
 					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * 3600;
 					unset( $opts['plugin_file_cache_hrs'] );
