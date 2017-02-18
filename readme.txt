@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.9-rc1 (2017/02/18)**
+**Version 3.39.9-1 (2017/02/19)**
 
 * *New Features*
 	* None
@@ -760,9 +760,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.9-rc1 =
+= 3.39.9-1 =
 
-(2017/02/18) Renamed site related options keys and added a few methods to return various site information (organization array, alternate name, and url).
+(2017/02/19) Renamed site related options keys and added a few methods to return various site information (organization array, alternate name, and url).
 
 = 3.39.8-1 =
 
