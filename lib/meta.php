@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected static $last_column_id = null;	// cache_id of the last column request in list table
 		protected static $last_column_array = array();	// array of column values for last column requested 
 
-		protected static $rename_meta_options_keys = array(
+		protected static $rename_md_options_keys = array(
 			'wpsso' => array(
 				499 => array(
 					'link_desc' => 'seo_desc',
