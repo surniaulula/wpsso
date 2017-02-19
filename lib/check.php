@@ -81,6 +81,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
+						case 'review-wppr':
+							$chk['plugin'] = 'wp-product-review/wp-product-review.php';
+							break;
 						case 'seo-aioseop':
 							$chk['plugin'] = 'all-in-one-seo-pack/all_in_one_seo_pack.php';
 							break;

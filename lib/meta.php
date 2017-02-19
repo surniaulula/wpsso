@@ -893,6 +893,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_image;
 		}
 
+		// $all_meta can be a post/term/user meta array
 		protected function get_custom_fields( $md_opts, $all_meta ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -902,68 +903,63 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 
-			foreach ( array( 
-				'plugin_cf_img_url' => 'og_img_url',
-				'plugin_cf_vid_url' => 'og_vid_url',
-				'plugin_cf_vid_embed' => 'og_vid_embed',
-				'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
-			) as $cf_opt_name => $meta_opt_name ) {
+			foreach ( $this->p->cf['opt']['cf_md_idx'] as $cf_idx => $md_idx ) {
 
-				// check that a custom field name has been defined
-				if ( ! empty( $this->p->options[$cf_opt_name] ) )
-					$md_name = $this->p->options[$cf_opt_name];
-				else continue;
+				// check that a custom field meta key has been defined
+				// example: 'plugin_cf_img_url' = '_format_image_url'
+				if ( ! empty( $this->p->options[$cf_idx] ) ) {
+					$meta_key = $this->p->options[$cf_idx];
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom field '.$cf_idx.' has meta key '.$meta_key );
+				} else {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom field '.$cf_idx.' is empty' );
+					continue;
+				}
 
 				// empty or not, if the array element is set, use it
-				if ( isset( $all_meta[$md_name][0] ) )
-					$mixed =& $all_meta[$md_name][0];
-				else continue;
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $md_name.' custom field found for '.$meta_opt_name.' option' );
+				if ( isset( $all_meta[$meta_key][0] ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
+					$mixed =& $all_meta[$meta_key][0];
+				} else {
+					continue;
+				}
 
 				$values = array();
 
 				// decode strings and array elements
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( $md_name.' is array of '.count( $mixed ).' values (decoding each value)' );
+						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
 					foreach ( $mixed as $value )
 						$values[] = html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset );
 				} else {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'decoding '.$md_name.' as string of '.strlen( $mixed ).' chars' );
+						$this->p->debug->log( 'decoding '.$meta_key.' as string of '.strlen( $mixed ).' chars' );
 					$values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
 				}
 
-				switch ( $meta_opt_name ) {
-					case 'schema_recipe_ingredient':
-						// explode text ingredient list into array
-						if ( ! is_array( $mixed ) ) {
-							$values = array_map( 'trim', 
-								explode( PHP_EOL, reset( $values ) ) );
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'exploded '.$md_name.' into array of '.count( $values ).' elements' );
-						}
-						$is_multi = true;		// increment the option name
-						break;
-					default:
-						$is_multi = false;
-						break;
-				}
+				if ( ! empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
+					if ( ! is_array( $mixed ) ) {
+						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'exploded '.$meta_key.' into array of '.count( $values ).' elements' );
+					}
+					$is_multi = true;		// increment the option name
+				} else $is_multi = false;
 
 				// increment the option name, starting with 0
 				if ( $is_multi ) {
 					// remove any old values from the options array
-					$md_opts = SucomUtil::preg_grep_keys( '/^'.$meta_opt_name.'_[0-9]+$/', $md_opts, true );	// $invert = true
-
+					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert = true
 					foreach ( $values as $num => $value ) {
-						$md_opts[$meta_opt_name.'_'.$num] = $value;
-						$md_opts[$meta_opt_name.'_'.$num.':is'] = 'disabled';
+						$md_opts[$md_idx.'_'.$num] = $value;
+						$md_opts[$md_idx.'_'.$num.':is'] = 'disabled';
 					}
 				} else {
-					$md_opts[$meta_opt_name] = reset( $values );	// get first element of $values array
-					$md_opts[$meta_opt_name.':is'] = 'disabled';
+					$md_opts[$md_idx] = reset( $values );	// get first element of $values array
+					$md_opts[$md_idx.':is'] = 'disabled';
 				}
 			}
 

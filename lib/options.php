@@ -173,9 +173,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
-					$def_opts = $network === false ? 
-						$this->get_defaults() : 
-						$this->get_site_defaults();
+					$def_opts = $network ?
+						$this->get_site_defaults() :
+						$this->get_defaults();
 
 					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
@@ -246,9 +246,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->save_options( $options_name, $opts, $network, true );	// $has_diff = true
 
 					if ( is_admin() ) {
-						$def_opts = $network === false ? 
-							$this->get_defaults() : 
-							$this->get_site_defaults();
+						$def_opts = $network ? 
+							$this->get_site_defaults() :
+							$this->get_defaults();
 
 						if ( empty( $opts['plugin_filter_content'] ) )
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
@@ -286,16 +286,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( $err_msg );
 
 				if ( is_admin() ) {
-					if ( $network === false )
-						$url = $this->p->util->get_admin_url( 'general' );
-					else $url = $this->p->util->get_admin_url( 'network' );
+					if ( $network )
+						$url = $this->p->util->get_admin_url( 'network' );
+					else $url = $this->p->util->get_admin_url( 'general' );
 
 					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
 
-				return $network === false ?	// return the default options
-					$this->get_defaults() : 
-					$this->get_site_defaults();
+				return $network ?	// return the default options
+					$this->get_site_defaults() :
+					$this->get_defaults();
 			}
 		}
 
@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
 						$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
 
-				if ( $network === false ) {
+				if ( ! $network ) {
 					if ( empty( $this->p->options['plugin_check_head'] ) )
 						delete_option( $this->p->cf['lca'].'_post_head_count' );
 				}
@@ -471,8 +471,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'html';
 					break;
 				// js and css
-				case ( strpos( $key, '_js_' ) === false ? false : true ):
-				case ( strpos( $key, '_css_' ) === false ? false : true ):
+				case ( strpos( $key, '_js_' ) !== false ? true : false ):
+				case ( strpos( $key, '_css_' ) !== false ? true : false ):
 				case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
 					return 'code';
 					break;
@@ -484,7 +484,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'fb_admins':
 					return 'url_base';
 					break;
-				// must be a url
+				/*
+				 * Must be a URL.
+				 *
+				 * Exceptions:
+				 *	'add_meta_property_og:image:secure_url' = 1
+				 *	'add_meta_property_og:video:secure_url' = 1
+				 *	'add_meta_itemprop_url' = 1
+				 *	'plugin_cf_img_url' = '_format_image_url'
+				 *	'plugin_cf_vid_url' = '_format_video_url'
+				 *	'plugin_cf_review_item_image_url' = ''
+				 */
 				case 'site_url':
 				case 'sharing_url':
 				case 'fb_page_url':
@@ -558,15 +568,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pin_desc':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
-				case 'plugin_cf_img_url':		// name of meta key
-				case 'plugin_cf_vid_url':		// name of meta key
-				case 'plugin_cf_vid_embed':		// name of meta key
-				case 'plugin_cf_recipe_ingredients':	// name of meta key
 				case 'plugin_bitly_login':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
-				case ( strpos( $key, '_filter_name' ) === false ? false : true ):
+				case ( strpos( $key, 'plugin_cf_' ) === 0 ? true : false ):	// value is name of meta key
+				case ( strpos( $key, '_filter_name' ) !== false ? true : false ):
 					return 'one_line';
 					break;
 				// options that cannot be blank
@@ -579,8 +586,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'rp_img_id_pre': 
 				case 'rp_author_name':
 				case 'plugin_shortener':		// none or name of shortener
-				case ( strpos( $key, '_crop_x' ) === false ? false : true ):
-				case ( strpos( $key, '_crop_y' ) === false ? false : true ):
+				case ( strpos( $key, '_crop_x' ) !== false ? true : false ):
+				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 				case ( preg_match( '/:use$/', $key ) ? true : false ):
 					return 'not_blank';

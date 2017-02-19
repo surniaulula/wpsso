@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.9-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.10-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2893,13 +2894,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:779
+#: lib/schema.php:785
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:782
+#: lib/schema.php:788
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
