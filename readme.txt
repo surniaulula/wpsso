@@ -109,7 +109,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 * Configurable user profile contact field names and labels.
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, ecommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
-	* **Integrated 3rd Party Plugins**
+	* **WPSSO Pro Integrated 3rd Party Plugins**
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress (including Group Forum Topics)
@@ -127,7 +127,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 		* WordPress REST API (version 2)
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
-	* **Integrated Service APIs**
+	* **WPSSO Pro Integrated Service APIs**
 		* Bitly
 		* Facebook Embedded Videos
 		* Google URL Shortener
