@@ -84,11 +84,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				! is_array( $values ) )
 					return;
 
-			if ( $is_assoc === null ) 
-				$is_assoc = SucomUtil::is_assoc( $values );
-
 			if ( $this->get_options( $name.':is' ) === 'disabled' )
 				$disabled = true;
+
+			if ( $is_assoc === null ) 
+				$is_assoc = SucomUtil::is_assoc( $values );
 
 			$html = '';
 
@@ -125,6 +125,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $name ) || 
 				! is_array( $values ) ) 
 					return;
+
+			if ( $this->get_options( $name.':is' ) === 'disabled' )
+				$disabled = true;
 
 			if ( $is_assoc === null ) 
 				$is_assoc = SucomUtil::is_assoc( $values );
