@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.10-dev1 (2017/02/19)**
+**Version 3.39.10-dev2 (2017/02/19)**
 
 * *New Features*
 	* None
@@ -771,7 +771,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.10-dev1 =
+= 3.39.10-dev2 =
 
 (2017/02/19) Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions. Refactored a WpssoMeta method to get custom field names from the config array.
 
