@@ -13,12 +13,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		protected $p;
-		protected $schema_types = null;	// cache for schema_type arrays
+		protected $types_cache = null;	// schema types array cache
+		protected $types_exp = 2419200;	// schema types array expiration
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
+
+			$this->types_exp = (int) apply_filters( $this->p->cf['lca'].'_cache_expire_schema_types',
+				$this->p->options['plugin_types_cache_exp'] );
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 3,
@@ -257,41 +261,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function &get_schema_types_array( $flatten = true ) {
 
-			if ( ! isset( $this->schema_types['filtered'] ) ) {	// check class property cache
-
+			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 				$lca = $this->p->cf['lca'];
-				$cache_exp = (int) apply_filters( $lca.'_cache_expire_schema_types',
-					$this->p->options['plugin_types_cache_exp'] );
-
 				$cache_salt = __METHOD__;
 				$cache_id = $lca.'_'.md5( $cache_salt );
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
 
-				if ( $cache_exp > 0 ) {
-					$this->schema_types = get_transient( $cache_id );	// returns false when not found
-					if ( ! empty( $this->schema_types ) ) {
+				if ( $this->types_exp > 0 ) {
+					$this->types_cache = get_transient( $cache_id );	// returns false when not found
+					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'using schema type arrays from transient '.$cache_id );
 					}
 				}
 
-				if ( ! isset( $this->schema_types['filtered'] ) ) {	// from transient cache or not, check if filtered
-
+				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
 					if ( $this->p->debug->enabled )
 						$this->p->debug->mark( 'create schema type arrays' );
 
-					$this->schema_types['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
-					$this->schema_types['flattened'] = SucomUtil::array_flatten( $this->schema_types['filtered'] );
-					$this->schema_types['parent_index'] = SucomUtil::array_parent_index( $this->schema_types['filtered'] );
-					ksort( $this->schema_types['flattened'] );
-					ksort( $this->schema_types['parent_index'] );
+					$this->types_cache['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
+					$this->types_cache['flattened'] = SucomUtil::array_flatten( $this->types_cache['filtered'] );
+					$this->types_cache['parent_index'] = SucomUtil::array_parent_index( $this->types_cache['filtered'] );
+					ksort( $this->types_cache['flattened'] );
+					ksort( $this->types_cache['parent_index'] );
 
-					if ( $cache_exp > 0 ) {
-						set_transient( $cache_id, $this->schema_types, $cache_exp );
+					if ( $this->types_exp > 0 ) {
+						set_transient( $cache_id, $this->types_cache, $this->types_exp );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'schema type arrays saved to transient '.
-								$cache_id.' ('.$cache_exp.' seconds)');
+								$cache_id.' ('.$this->types_exp.' seconds)');
 					}
 
 					if ( $this->p->debug->enabled )
@@ -304,8 +304,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'using schema type arrays from class property cache' );
 
 			if ( $flatten )
-				return $this->schema_types['flattened'];
-			else return $this->schema_types['filtered'];
+				return $this->types_cache['flattened'];
+			else return $this->types_cache['filtered'];
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
@@ -340,9 +340,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
 		public function get_schema_type_parents( $child_id, &$parents = array() ) {
+			$lca = $this->p->cf['lca'];
+			$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+
+			if ( $this->types_exp > 0 ) {
+				$parents = get_transient( $cache_id );	// returns false when not found
+				if ( ! empty( $parents ) )
+					return $parents;
+			}
+
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
-			if ( isset( $this->schema_types['parent_index'][$child_id] ) ) {
-				$parent_id = $this->schema_types['parent_index'][$child_id];
+			if ( isset( $this->types_cache['parent_index'][$child_id] ) ) {
+				$parent_id = $this->types_cache['parent_index'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
 					if ( $parent_id !== $child_id )	{	// prevent infinite loops
 						$this->get_schema_type_parents( $parent_id, $parents );
@@ -350,18 +360,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 			$parents[] = $child_id;	// add children after parents
+
+			if ( $this->types_exp > 0 ) {
+				set_transient( $cache_id, $parents, $this->types_exp );
+				error_log( 'cache salt '.$cache_salt );
+			}
+
 			return $parents;
 		}
 
 		// returns an array of schema type ids with child, parent, gparent (in that order)
 		public function get_schema_type_children( $type_id, &$children = array() ) {
+
+			$lca = $this->p->cf['lca'];
+			$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+
+			if ( $this->types_exp > 0 ) {
+				$children = get_transient( $cache_id );	// returns false when not found
+				if ( ! empty( $children ) )
+					return $children;
+			}
+
 			$children[] = $type_id;	// add children before parents
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
-			foreach ( $this->schema_types['parent_index'] as $child_id => $parent_id ) {
+			foreach ( $this->types_cache['parent_index'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
 					$this->get_schema_type_children( $child_id, $children );
 				}
 			}
+
+			if ( $this->types_exp > 0 ) {
+				set_transient( $cache_id, $children, $this->types_exp );
+				error_log( 'cache salt '.$cache_salt );
+			}
+
 			return $children;
 		}
 

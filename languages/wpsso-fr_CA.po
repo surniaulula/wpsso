@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.9-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.39.10-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-02-18 15:35+0700\n"
-"PO-Revision-Date: 2017-02-18 15:35+0700\n"
+"POT-Creation-Date: 2017-02-20 11:58+0700\n"
+"PO-Revision-Date: 2017-02-20 11:58+0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -432,27 +432,27 @@ msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:185 lib/com/form.php:443 lib/config-gettext-extract.php:43
+#: lib/com/form.php:188 lib/com/form.php:446 lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/com/form.php:193 lib/config-gettext-extract.php:33
+#: lib/com/form.php:196 lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:197 lib/config-gettext-extract.php:36
+#: lib/com/form.php:200 lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:201 lib/config-gettext-extract.php:34
+#: lib/com/form.php:204 lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:206 lib/com/form.php:272 lib/config-gettext-extract.php:11
+#: lib/com/form.php:209 lib/com/form.php:275 lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
@@ -2397,11 +2397,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:779
+#: lib/schema.php:785
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:782
+#: lib/schema.php:788
 msgid "The \"%1$s\" Organization Banner (600x60) is missing and required for the Schema %2$s markup."
 msgstr "Le bannière (600x60) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
