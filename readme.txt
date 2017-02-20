@@ -373,6 +373,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Fixed the WpssoSchema::get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
+	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
 	* Refactored the WpssoMeta::get_custom_fields() method to get custom field names from the config array.
 
 **Version 3.39.9-1 (2017/02/19)**
