@@ -387,7 +387,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$defs =& $this->defs[$mod_id];		// shortcut
 			$opts =& $this->p->options;		// shortcut
 
-			if ( ! WpssoOptions::can_cache() || empty( $defs['options_filtered'] ) ) {
+			if ( ! WpssoOptions::can_cache() || 
+				empty( $defs['options_filtered'] ) ) {
 
 				$defs = array(
 					'options_filtered' => '',
@@ -437,7 +438,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_currency' => 'USD',
 				);
 
-				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $this->get_mod( $mod_id ) );
+				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
+					$defs, $this->get_mod( $mod_id ) );
 
 				if ( WpssoOptions::can_cache() ) {
 					if ( $this->p->debug->enabled )

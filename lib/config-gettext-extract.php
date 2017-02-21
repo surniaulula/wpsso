@@ -36,7 +36,6 @@ _x( 'New activation', 'option value', 'wpsso' );
 _x( 'Nickname', 'option value', 'wpsso' );
 _x( '(no images)', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
-_x( 'None', 'option value', 'wpsso' );
 _x( 'No', 'option value', 'wpsso' );
 _x( '(no videos)', 'option value', 'wpsso' );
 _x( 'Online Only', 'option value', 'wpsso' );

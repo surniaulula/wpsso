@@ -287,21 +287,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $this->get_no_input( $name, $class, $id, $placeholder );
 
 			$html = '';
-			$value = $this->in_options( $name ) ?
-				$this->options[$name] : '';
+			$value = $this->in_options( $name ) ? $this->options[$name] : '';
+			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
 
 			if ( ! is_array( $len ) )
 				$len = array( 'max' => $len );
 
 			if ( ! empty( $len['max'] ) && ! empty( $id ) )
 				$html .= $this->get_text_len_js( 'text_'.$id );
-
-			if ( $placeholder === '' && ( $pos = strpos( $name, '#' ) ) > 0 ) {
-				$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
-				if ( $name !== $key_default )
-					$placeholder = isset( $this->options[$key_default] ) ?
-						$this->options[$key_default] : '';
-			}
 
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
@@ -389,11 +382,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
-			if ( empty( $name ) ) 
-				return $this->get_no_input_value( '', $class, $id, $placeholder );
-			else return $this->get_hidden( $name ).
-				$this->get_no_input_value( ( $this->in_options( $name ) ?
-					$this->options[$name] : '' ), $class, $id, $placeholder );
+			$html = '';
+			$value = $this->in_options( $name ) ? $this->options[$name] : '';
+			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
+			if ( ! empty( $name ) ) 
+				$html .= $this->get_hidden( $name );
+			$html .= $this->get_no_input_value( $value, $class, $id, $placeholder );
+			return $html;
 		}
 
 		public function get_image_upload_input( $opt_prefix, $placeholder = '', $disabled = false ) {
@@ -522,8 +517,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$disabled = true;
 
 			$html = '';
-			$value = $this->in_options( $name ) ?
-				$this->options[$name] : '';
+			$value = $this->in_options( $name ) ? $this->options[$name] : '';
+			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
 
 			if ( ! is_array( $len ) )
 				$len = array( 'max' => $len );
@@ -599,6 +594,34 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					jQuery(\'#'.esc_js( $id ).'\').focus(function(){ sucomTextLen(\''.esc_js( $id ).'\'); });
 					jQuery(\'#'.esc_js( $id ).'\').keyup(function(){ sucomTextLen(\''.esc_js( $id ).'\'); });
 				});</script>';
+		}
+
+		private function get_sanitized_placeholder( $name, $placeholder ) {
+			if ( empty( $name ) )
+				return $placeholder;	// just in case
+
+			if ( $placeholder === true ) {
+				if ( isset( $this->defaults[$name] ) )
+					$placeholder = $this->defaults[$name];
+			}
+			
+			if ( $placeholder === true || $placeholder === '' ) {
+				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
+					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+					if ( $name !== $key_default ) {
+						if ( isset( $this->options[$key_default] ) )
+							$placeholder = $this->options[$key_default];
+						elseif ( $placeholder === true &&
+							isset( $this->defaults[$key_default] ) )
+								$placeholder = $this->defaults[$key_default];
+					}
+				}
+			}
+
+			if ( $placeholder === true )
+				$placeholder = '';	// must be a string
+
+			return $placeholder;
 		}
 
 		private function get_placeholder_events( $type = 'input', $placeholder ) {

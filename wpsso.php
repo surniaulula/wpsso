@@ -13,7 +13,7 @@
  * Description: Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.8
  * Tested Up To: 4.7.2
- * Version: 3.40.0-dev4
+ * Version: 3.40.0-dev5
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *

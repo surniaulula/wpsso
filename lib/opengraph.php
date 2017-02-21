@@ -87,10 +87,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! empty( $this->p->cf['head']['og_type_ns'][$og_type] ) )
 				$og_ns[$og_type] = $this->p->cf['head']['og_type_ns'][$og_type];
 
-			// automatically add product namespace if we have a known ecommerce plugin
-			if ( ! empty( $this->p->is_avail['ecom']['*'] ) )
-				$og_ns['product'] = $this->p->cf['head']['og_type_ns']['product'];
-
 			$og_ns = apply_filters( $lca.'_og_ns', $og_ns, $mod );
 
 			if ( ! empty( $this->p->is_avail['amp_endpoint'] ) && is_amp_endpoint() ) {
