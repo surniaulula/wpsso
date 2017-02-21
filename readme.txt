@@ -364,17 +364,18 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.39.10-dev2 (2017/02/19)**
+**Version 3.39.10-dev3 (2017/02/21)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed the WpssoSchema::get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
+	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
 	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
-	* Refactored the WpssoMeta::get_custom_fields() method to get custom field names from the config array.
+	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
+	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
 
 **Version 3.39.9-1 (2017/02/19)**
 
@@ -772,9 +773,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.39.10-dev2 =
+= 3.39.10-dev3 =
 
-(2017/02/19) Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions. Refactored a WpssoMeta method to get custom field names from the config array.
+(2017/02/21) Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions. Refactored a WpssoMeta method to get custom field names from the config array.
 
 = 3.39.9-1 =
 
