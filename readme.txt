@@ -367,18 +367,19 @@ Note that the production stage level can be incremented on occasion for simple t
 **Version 3.40.0-dev4 (2017/02/21)**
 
 * *New Features*
-	* None
+	* Added new product options in the Social Settings metabox:
+		* Product Availability
 * *Improvements*
 	* None
 * *Bugfixes*
 	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
 	* Refactored the Easy Digital Downloads (EDD), MarketPress, WooCommerce, and WP e-Commerce modules to provide and use custom WPSSO post meta for product availability, price, and currency (Pro version).
+	* Added a new WpssoOpenGraph get_og_type() method.
 	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
 	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
 	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
 	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
-	* Added a new WpssoOpenGraph get_og_type() method.
 	* Renamed the 'wpsso_head_use_post' filter to 'wpsso_use_post'.
 	* BREAKING CHANGE: **Removed the `$use_post` argument from the following filters** (new filter arguments shown):
 		* 'wpsso_link_rel' ( $link_rel, $mod );
