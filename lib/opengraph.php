@@ -76,16 +76,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$og_type = $this->get_og_type( $mod );
 
-			$prefix_ns = array(
+			$og_ns = array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 				'article' => 'http://ogp.me/ns/article#',
 			);
 
-			if ( ! empty( $this->p->is_avail['ecom']['*'] ) )
-				$prefix_ns['product'] = 'http://ogp.me/ns/product#';
+			// check if the og_type is known and add it's namespace value
+			// example: product, place, website, etc.
+			if ( ! empty( $this->p->cf['head']['og_type_ns'][$og_type] ) )
+				$og_ns[$og_type] = $this->p->cf['head']['og_type_ns'][$og_type];
 
-			$prefix_ns = apply_filters( $lca.'_og_ns', $prefix_ns );
+			// automatically add product namespace if we have a known ecommerce plugin
+			if ( ! empty( $this->p->is_avail['ecom']['*'] ) )
+				$og_ns['product'] = $this->p->cf['head']['og_type_ns']['product'];
+
+			$og_ns = apply_filters( $lca.'_og_ns', $og_ns, $mod );
 
 			if ( ! empty( $this->p->is_avail['amp_endpoint'] ) && is_amp_endpoint() ) {
 				// nothing to do				
@@ -99,9 +105,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$prefix_value = ' '.$match[2];
 				} else $prefix_value = '';
 	
-				foreach ( $prefix_ns as $ns => $url )
-					if ( strpos( $prefix_value, ' '.$ns.': '.$url ) === false )
-						$prefix_value .= ' '.$ns.': '.$url;
+				foreach ( $og_ns as $name => $url )
+					if ( strpos( $prefix_value, ' '.$name.': '.$url ) === false )
+						$prefix_value .= ' '.$name.': '.$url;
 	
 				$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
 			}
@@ -321,9 +327,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_type = 'website';
 
 			// singular posts / pages are articles by default
-			// check the post_type for a match with a known open graph type
 			} elseif ( $mod['is_post'] ) {
 
+				// check the post_type for a match with a known open graph type
 				if ( ! empty( $mod['post_type'] ) && 
 					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
 						$og_type = $mod['post_type'];
