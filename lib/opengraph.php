@@ -23,23 +23,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				'plugin_image_sizes' => 1,
 			) );
 
+			// hook the first available filter name (example: 'language_attributes')
 			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_prefix ) {
 				if ( ! empty( $this->p->options[$opt_prefix.'_name'] ) &&
 					$this->p->options[$opt_prefix.'_name'] !== 'none' ) {
 
-					$ogpns_filter_name = $this->p->options[$opt_prefix.'_name'];
-					$ogpns_filter_prio = isset( $this->p->options[$opt_prefix.'_prio'] ) ?
-						(int) $this->p->options[$opt_prefix.'_prio'] : 100;
-
-					add_filter( $ogpns_filter_name, array( &$this, 'add_ogpns_attributes' ), $ogpns_filter_prio, 1 );
+					$wp_filter_name = $this->p->options[$opt_prefix.'_name'];
+					add_filter( $wp_filter_name, array( &$this, 'add_ogpns_attributes' ),
+						 ( isset( $this->p->options[$opt_prefix.'_prio'] ) ?
+						 	(int) $this->p->options[$opt_prefix.'_prio'] : 100 ), 1 );
 
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'added add_ogpns_attributes filter for '.$ogpns_filter_name );
+						$this->p->debug->log( 'added add_ogpns_attributes filter for '.$wp_filter_name );
 
 					break;	// stop here
 
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'skipping add_ogpns_attributes for '.$opt_prefix.' - name value is empty or disabled' );
+					$this->p->debug->log( 'skipping add_ogpns_attributes for '.
+						$opt_prefix.' - filter name is empty or disabled' );
 			}
 		}
 
@@ -70,8 +71,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$html_attr = ' '.$html_attr;	// prepare the string for testing
-			$prefix_ns = apply_filters( $this->p->cf['lca'].'_og_prefix_ns', array(
+			$prefix_ns = apply_filters( $lca.'_og_prefix_ns', array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 				'article' => 'http://ogp.me/ns/article#',
@@ -98,7 +100,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
+		public function get_array( array $mod, array $mt_og, $crawler_name = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
@@ -131,33 +133,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og['og:url'] = $this->p->util->get_sharing_url( $mod );
 
 			// define the type after the url
-			if ( ! isset( $mt_og['og:type'] ) ) {
+			if ( ! isset( $mt_og['og:type'] ) )
+				$mt_og['og:type'] = $this->get_og_type( $mod );
 
-				// an index or static home page should always be 'website'
-				if ( $mod['is_home'] ) {
-					$mt_og['og:type'] = 'website';
-
-				// singular posts / pages are articles by default
-				// check the post_type for a match with a known open graph type
-				} elseif ( $mod['is_post'] ) {
-					if ( ! empty( $mod['post_type'] ) && 
-						isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
-							$mt_og['og:type'] = $mod['post_type'];
-					else $mt_og['og:type'] = 'article';
-
-				// default for everything else is 'website'
-				} else $mt_og['og:type'] = 'website';
-
-				$mt_og['og:type'] = apply_filters( $lca.'_og_type', $mt_og['og:type'], $mod['use_post'], $mod );
-
-				// pre-define basic open graph meta tags for this type
-				if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {
-					foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name ) {
-						if ( ! isset( $mt_og[$mt_name] ) ) {
-							$mt_og[$mt_name] = null;
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( $mt_og['og:type'].' pre-defined mt: '.$mt_name );
-						}
+			// pre-define basic open graph meta tags for this type
+			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {
+				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name ) {
+					if ( ! isset( $mt_og[$mt_name] ) ) {
+						$mt_og[$mt_name] = null;
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( $mt_og['og:type'].' pre-defined mt: '.$mt_name );
 					}
 				}
 			}
@@ -182,46 +167,55 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			// if the page is an article, then define the other article meta tags
-			if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] == 'article' ) {
+			if ( isset( $mt_og['og:type'] ) ) {
+				if ( $mt_og['og:type'] === 'article' ) {
 
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:author'] ) ) {
-					if ( $mod['is_post'] ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
+					if ( ! isset( $mt_og['article:author'] ) ) {
+						if ( $mod['is_post'] && isset( $this->p->m['util']['user'] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 
-						if ( $mod['post_author'] ) {
-							$mt_og['article:author'] = $this->p->m['util']['user']->get_og_profile_urls( $mod['post_author'], $crawler_name );
-							$mt_og['article:author:name'] = $this->p->m['util']['user']->get_author_meta( $mod['post_author'],
-								$this->p->options['fb_author_name'] );
-
-						} else $mt_og['article:author'] = array();
-
-						if ( ! empty( $mod['post_coauthors'] ) )
-							$mt_og['article:author'] = array_merge( $mt_og['article:author'],
-								$this->p->m['util']['user']->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
+							$user_mod =& $this->p->m['util']['user'];
+							if ( $mod['post_author'] ) {
+								$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
+								$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'],
+									$this->p->options['fb_author_name'] );
+							} else $mt_og['article:author'] = array();
+	
+							if ( ! empty( $mod['post_coauthors'] ) ) {
+								$mt_og['article:author'] = array_merge( $mt_og['article:author'],
+									$user_mod->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
+							}
+						}
 					}
+
+					if ( ! isset( $mt_og['article:publisher'] ) )
+						$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url',
+							$this->p->options, $mod );
+
+					if ( ! isset( $mt_og['article:tag'] ) )
+						$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
+
+					if ( ! isset( $mt_og['article:section'] ) )
+						$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
+
+					if ( ! isset( $mt_og['article:published_time'] ) )
+						$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
+
+					if ( ! isset( $mt_og['article:modified_time'] ) )
+						$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+				
+				} elseif ( $mt_og['og:type'] === 'product' ) {
+
+					if ( ! isset( $mt_og['product:availability'] ) )
+						$og_ecom['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
+
+					if ( ! isset( $mt_og['product:price:amount'] ) )
+						$og_ecom['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
+
+					if ( ! isset( $mt_og['product:price:currency'] ) )
+						$og_ecom['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
 				}
-
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:publisher'] ) )
-					$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url', $this->p->options, $mod );
-
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:tag'] ) )
-					$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
-
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:section'] ) )
-					$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
-
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:published_time'] ) )
-					$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
-
-				// meta tag not defined or value is null
-				if ( ! isset( $mt_og['article:modified_time'] ) )
-					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
 			}
 
 			// get all videos
@@ -309,7 +303,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return apply_filters( $lca.'_og', $mt_og, $mod['use_post'], $mod );
 		}
 
-		public function get_all_videos( $num = 0, array &$mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_og_type( array $mod ) {
+
+			$lca = $this->p->cf['lca'];
+
+			// an index or static home page should always be 'website'
+			if ( $mod['is_home'] ) {
+				$og_type = 'website';
+
+			// singular posts / pages are articles by default
+			// check the post_type for a match with a known open graph type
+			} elseif ( $mod['is_post'] ) {
+
+				if ( ! empty( $mod['post_type'] ) && 
+					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
+						$og_type = $mod['post_type'];
+				else $og_type = 'article';
+
+			// default for everything else is 'website'
+			} else $og_type = 'website';
+
+			return apply_filters( $lca.'_og_type', $og_type, $mod['use_post'], $mod );
+		}
+
+		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -404,7 +421,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else return $og_ret;
 		}
 
-		public function get_all_images( $num = 0, $size_name = 'thumbnail', array &$mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -503,7 +520,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		// returned array can include a varying number of elements, depending on the $output value
-		public function get_the_media_info( $size_name, array $output, array &$mod, $md_pre = 'og', $mt_pre = 'og', &$head = array() ) {
+		public function get_the_media_info( $size_name, array $output, array $mod, $md_pre = 'og', $mt_pre = 'og', &$head = array() ) {
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
