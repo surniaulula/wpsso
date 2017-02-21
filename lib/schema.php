@@ -339,15 +339,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
-		public function get_schema_type_parents( $child_id, &$parents = array() ) {
-			$lca = $this->p->cf['lca'];
-			$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
+		public function get_schema_type_parents( $child_id, &$parents = array(), $use_cache = true ) {
 
-			if ( $this->types_exp > 0 ) {
-				$parents = get_transient( $cache_id );	// returns false when not found
-				if ( ! empty( $parents ) )
-					return $parents;
+			if ( $use_cache ) {
+				$lca = $this->p->cf['lca'];
+				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
+				$cache_id = $lca.'_'.md5( $cache_salt );
+				if ( $this->types_exp > 0 ) {
+					$parents = get_transient( $cache_id );	// returns false when not found
+					if ( ! empty( $parents ) )
+						return $parents;
+				}
 			}
 
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
@@ -355,44 +357,47 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$parent_id = $this->types_cache['parent_index'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
 					if ( $parent_id !== $child_id )	{	// prevent infinite loops
-						$this->get_schema_type_parents( $parent_id, $parents );
+						$this->get_schema_type_parents( $parent_id, $parents, false );
 					}
 				}
 			}
 			$parents[] = $child_id;	// add children after parents
 
-			if ( $this->types_exp > 0 ) {
-				set_transient( $cache_id, $parents, $this->types_exp );
-				error_log( 'cache salt '.$cache_salt );
+			if ( $use_cache ) {
+				if ( $this->types_exp > 0 ) {
+					set_transient( $cache_id, $parents, $this->types_exp );
+				}
 			}
 
 			return $parents;
 		}
 
 		// returns an array of schema type ids with child, parent, gparent (in that order)
-		public function get_schema_type_children( $type_id, &$children = array() ) {
+		public function get_schema_type_children( $type_id, &$children = array(), $use_cache = true ) {
 
-			$lca = $this->p->cf['lca'];
-			$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
-
-			if ( $this->types_exp > 0 ) {
-				$children = get_transient( $cache_id );	// returns false when not found
-				if ( ! empty( $children ) )
-					return $children;
+			if ( $use_cache ) {
+				$lca = $this->p->cf['lca'];
+				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
+				$cache_id = $lca.'_'.md5( $cache_salt );
+				if ( $this->types_exp > 0 ) {
+					$children = get_transient( $cache_id );	// returns false when not found
+					if ( ! empty( $children ) )
+						return $children;
+				}
 			}
 
 			$children[] = $type_id;	// add children before parents
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 			foreach ( $this->types_cache['parent_index'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
-					$this->get_schema_type_children( $child_id, $children );
+					$this->get_schema_type_children( $child_id, $children, false );
 				}
 			}
 
-			if ( $this->types_exp > 0 ) {
-				set_transient( $cache_id, $children, $this->types_exp );
-				error_log( 'cache salt '.$cache_salt );
+			if ( $use_cache ) {
+				if ( $this->types_exp > 0 ) {
+					set_transient( $cache_id, $children, $this->types_exp );
+				}
 			}
 
 			return $children;
@@ -450,11 +455,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
-		public function get_schema_type_css_classes( $type_id ) {
-			$css_classes = '';
+		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type' ) {
+			$class_prefix = empty( $class_names ) ?
+				'' : SucomUtil::sanitize_hookname( $class_names ).'_';
 			foreach ( $this->get_schema_type_children( $type_id ) as $child )
-				$css_classes .= ' schema_type_'.preg_replace( '/[:\/\-\.]+/', '_', $child );
-			return trim( $css_classes );
+				$class_names .= ' '.$class_prefix.SucomUtil::sanitize_hookname( $child );
+			return trim( $class_names );
 		}
 
 		public function is_schema_type_child_of( $child_id, $parent_id ) {

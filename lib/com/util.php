@@ -594,12 +594,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_hookname( $name ) {
-			$name = preg_replace( '/[:\/\-\.]+/', '_', $name );
+			$name = preg_replace( '/[:\/\-\. ]+/', '_', $name );
 			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_classname( $name, $underscore = true ) {
-			$name = preg_replace( '/[:\/\-\.'.( $underscore ? '' : '_' ).']+/', '', $name );
+			$name = preg_replace( '/[:\/\-\. '.( $underscore ? '' : '_' ).']+/', '', $name );
 			return self::sanitize_key( $name );
 		}
 

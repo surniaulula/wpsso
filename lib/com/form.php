@@ -151,8 +151,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'unhide_rows':
 						$html .= '<script type="text/javascript">'.
 							'jQuery( function(){ jQuery("#'.esc_js( $select_id ).'").change( function(){ '.
-								'sucomSelectChangeUnhideRows("'.esc_js( $name ).'", '.
-									'this.value); }); });</script>'."\n";
+								'sucomSelectChangeUnhideRows("hide_'.esc_js( $name ).'", '.
+									'"hide_'.esc_js( $name ).'_"+this.value); }); });</script>'."\n";
 
 						// if we have an option selected, unhide those rows
 						if ( $selected !== false ) {
@@ -166,8 +166,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							if ( $unhide !== true ) {	// just in case
 								$html .= '<script type="text/javascript">'.
 									'jQuery(document).ready( function(){ '.
-										'sucomSelectChangeUnhideRows("'.esc_js( $name ).'", '.
-											'"'.esc_js( $unhide ).'"); });</script>'."\n";
+										'sucomSelectChangeUnhideRows("hide_'.esc_js( $name ).'", '.
+											'"hide_'.esc_js( $name.'_'.$unhide ).'"); });</script>'."\n";
 							}
 						}
 						break;
@@ -637,13 +637,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else $is_auto_draft = false;
 
 				if ( ! empty( $val['header'] ) )	// example: h4 subsection
-					$table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
+					$table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">'."\n" : '' ).
 						'<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).
-						'><'.$val['header'].'>'.$val['label'].'</'.$val['header'].'></td>';
-				else $table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">' : '' ).
-					$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ), $val['tooltip'] ).
+						'><'.$val['header'].'>'.$val['label'].'</'.$val['header'].'></td>'."\n";
+				else $table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="'.$val['tr_class'].'">'."\n" : '' ).
+					$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ),
+						( ! empty( $val['tooltip'] ) ? $val['tooltip'] : '' ) )."\n".
 					'<td'.( ! empty( $val['td_class'] ) ? ' class="'.$val['td_class'].'"' : '' ).'>'.
-					( $is_auto_draft ? '<em>'.$auto_draft_msg.'</em>' : $val['content'] ).'</td>';
+					( $is_auto_draft ? '<em>'.$auto_draft_msg.'</em>' :
+						( ! empty( $val['content'] ) ? $val['content'] : '' ) ).'</td>'."\n";
 			}
 
 			return $table_rows;
