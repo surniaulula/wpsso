@@ -26,8 +26,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$is_og_article = isset( $head['og:type'] ) && 
-				$head['og:type'] === 'article' ? true : false;
+			$og_type = isset( $head['og:type'] ) ?	// just in case
+				$head['og:type'] : 'website';
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-about-msg-post-text' ).
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$form_rows = array(
 				'og_art_section' => array(
-					'tr_class' => ( $is_og_article ? '' : 'hide_in_basic' ),	// hide if not an article
+					'tr_class' => ( $og_type === 'article' ? '' : 'hide_in_basic' ),	// hide if not an article
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'og_art_section', array( -1 ), '', '', false ),
@@ -77,9 +77,18 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
+				'product_avail' => array(
+					'tr_class' => ( $og_type === 'product' ? '' : 'hide_in_basic' ),	// hide if not a product
+					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
+					'content' => $form->get_no_select( 'product_avail', 
+						array( $og_type => $this->p->cf['form']['product_availability'][$og_type] ) ),
+				),
+				/*
+				 * All Schema Types
+				 */
 				'subsection_schema' => array(
-					'td_class' => 'subsection',
-					'header' => 'h4',
+					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				),
 				'schema_desc' => array(

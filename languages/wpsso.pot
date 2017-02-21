@@ -1384,15 +1384,15 @@ msgid "Sharing URL"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:76 lib/gpl/admin/meta.php:224
-#: lib/gpl/admin/post.php:83 lib/pro/admin/meta.php:97
-#: lib/pro/admin/meta.php:253 lib/pro/admin/post.php:114
+#: lib/gpl/admin/post.php:92 lib/pro/admin/meta.php:97
+#: lib/pro/admin/meta.php:253 lib/pro/admin/post.php:124
 #: lib/submenu/general.php:245
 msgctxt "metabox title"
 msgid "Google Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:86
-#: lib/pro/admin/meta.php:100 lib/pro/admin/post.php:117
+#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:95
+#: lib/pro/admin/meta.php:100 lib/pro/admin/post.php:127
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -1484,8 +1484,13 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:94 lib/meta.php:173 lib/post.php:475
-#: lib/pro/admin/post.php:127
+#: lib/gpl/admin/post.php:82 lib/pro/admin/post.php:113
+msgctxt "option label"
+msgid "Product Availability"
+msgstr ""
+
+#: lib/gpl/admin/post.php:103 lib/meta.php:173 lib/post.php:475
+#: lib/pro/admin/post.php:137
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
