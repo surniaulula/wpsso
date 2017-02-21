@@ -380,7 +380,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
 	* Added a new WpssoOpenGraph get_og_type() method.
 	* Renamed the 'wpsso_head_use_post' filter to 'wpsso_use_post'.
-	* **Removed the `$use_post` argument from the following filters**:
+	* BREAKING CHANGE: **Removed the `$use_post` argument from the following filters** (new filter arguments shown):
 		* 'wpsso_link_rel' ( $link_rel, $mod );
 		* 'wpsso_meta_name' ( $mt_name, $mod );
 		* 'wpsso_og' ( $og, $mod );
