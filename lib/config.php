@@ -20,8 +20,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.39.10-dev3',	// plugin version
-					'opt_version' => '502',		// increment when changing default options
+					'version' => '3.40.0-dev3',	// plugin version
+					'opt_version' => '503',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically create complete and accurate meta tags and Schema markup for Social Sharing Optimization (SSO) and SEO.',
@@ -902,9 +902,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => 'og_vid_url',
 					'plugin_cf_vid_embed' => 'og_vid_embed',
 					'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
+					'plugin_cf_product_avail' => 'product_avail',
+					'plugin_cf_product_price' => 'product_price',
+					'plugin_cf_product_currency' => 'product_currency',
 				),
 				'md_multi' => array(		// value read into numeric meta data index
-					'schema_recipe_ingredients' => true,
+					'schema_recipe_ingredient' => true,
 				),
 			),
 			'um' => array(				// update manager
@@ -1058,6 +1061,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rp_publisher_url' => 'Pinterest Company Page URL',
 					'seo_publisher_url' => 'Google+ Business Page URL',
 					'tc_site' => 'Twitter Business @username',
+				),
+				'product_availability' => array(
+			 		'none' => 'None',
+			 		'Discontinued' => 'Discontinued',
+			 		'InStock' => 'In Stock',
+			 		'InStoreOnly' => 'In Store Only',
+			 		'LimitedAvailability' => 'Limited Availability',
+			 		'OnlineOnly' => 'Online Only',
+			 		'OutOfStock' => 'Out of Stock',
+			 		'PreOrder' => 'Pre-Order',
+			 		'SoldOut ' => 'Sold Out',
 				),
 			),
 			'head' => array(
@@ -1427,7 +1441,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		// get_config is called very early, so don't apply filters unless instructed
-		public static function get_config( $idx = false, $do_filter = false ) { 
+		public static function get_config( $idx = false, $filter_cf = false ) { 
 
 			if ( ! isset( self::$cf['config_filtered'] ) || 
 				self::$cf['config_filtered'] !== true ) {
@@ -1443,7 +1457,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro
 
-				if ( $do_filter ) {
+				if ( $filter_cf ) {
 
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf, self::get_version() );
 
@@ -1487,8 +1501,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		/*
 		 * Sort the 'plugin' array by each extension's 'name' value.
 		 */
-		public static function get_ext_sorted( $do_filter = false ) { 
-			$ext = self::get_config( 'plugin', $do_filter );
+		public static function get_ext_sorted( $filter_cf = false ) { 
+			$ext = self::get_config( 'plugin', $filter_cf );
 			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// sort array and maintain index association
 			return $ext;
 		}

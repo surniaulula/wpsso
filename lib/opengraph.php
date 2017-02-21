@@ -223,13 +223,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( $mt_og['og:type'] === 'product' ) {
 
 					if ( ! isset( $mt_og['product:availability'] ) )
-						$og_ecom['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
+						$mt_og['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
 
 					if ( ! isset( $mt_og['product:price:amount'] ) )
-						$og_ecom['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
+						$mt_og['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
 
 					if ( ! isset( $mt_og['product:price:currency'] ) )
-						$og_ecom['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
+						$mt_og['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
+
+					// sanity checks
+					if ( $mt_og['product:availability'] === 'none' )
+						unset( $mt_og['product:availability'] );
+
+					if ( ! is_numeric( $mt_og['product:price:amount'] ) )
+						unset( $mt_og['product:price:amount'], 
+							$mt_og['product:price:currency'] );
 				}
 			}
 

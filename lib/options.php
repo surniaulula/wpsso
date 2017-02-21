@@ -522,6 +522,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
+				case 'product_price':
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
 					return 'numeric';
 					break;
@@ -586,6 +587,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'rp_img_id_pre': 
 				case 'rp_author_name':
 				case 'plugin_shortener':		// none or name of shortener
+				case 'product_avail':
+				case 'product_currency':
 				case ( strpos( $key, '_crop_x' ) !== false ? true : false ):
 				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):

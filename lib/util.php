@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
 			} elseif ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) && $aop )
-				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_options = false
+				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -1828,7 +1828,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$opts_version <= $version && 
 								is_array( $keys ) ) {
 
-							SucomUtil::rename_keys( $opts, $keys );	// $key_mods = true
+							SucomUtil::rename_keys( $opts, $keys, true );	// $key_mods = true
 							$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
 						}
 					}

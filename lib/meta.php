@@ -330,12 +330,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 *
 		 * Example: get_options_multi( $id, array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_options_multi( $mod_id, $idx = false, $filter_options = true ) {
+		public function get_options_multi( $mod_id, $idx = false, $filter_opts = true ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod_id' => $mod_id, 
 					'idx' => $idx, 
-					'filter_options' => $filter_options, 
+					'filter_opts' => $filter_opts, 
 				) );
 			}
 
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			// return the whole options array
 			if ( $idx === false )
-				$ret = $this->get_options( $mod_id, $idx, $filter_options );
+				$ret = $this->get_options( $mod_id, $idx, $filter_opts );
 
 			// return the first matching index value
 			else {
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						return null;
 					elseif ( empty( $key ) )	// just in case
 						continue;
-					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_options ) ) !== null )
+					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_opts ) ) !== null )
 						break;			// stop if/when we have an option
 				}
 			}
@@ -375,8 +375,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $ret;
 		}
 
-		public function get_options( $mod_id, $idx = false, $filter_options = true ) {
-			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : null ) );
+		public function get_options( $mod_id, $idx = false, $filter_opts = true, $idx_def_val = null ) {
+			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : $idx_def_val ) );
 		}
 
 		public function get_defaults( $mod_id, $idx = false ) {
@@ -432,6 +432,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'schema_img_url' => '',
 					'schema_img_max' => -1,
+					'product_avail' => 'none',
+					'product_price' => '0.00',
+					'product_currency' => 'USD',
 				);
 
 				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $defs, $this->get_mod( $mod_id ) );
@@ -565,9 +568,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Remove "use plugin settings" (numeric or string -1), or "same as default" option values
 			 */
-			foreach ( $opts as $key => $def_val ) {
-				if ( $opts[$key] === -1 || $opts[$key] === '-1' ||
-					( isset( $defs[$key] ) && $opts[$key] === $defs[$key] ) )
+			foreach ( $opts as $key => $val ) {
+				if ( $val === -1 || $val === '-1' ||
+					( isset( $defs[$key] ) && $val === $defs[$key] ) )
 						unset( $opts[$key] );
 			}
 
@@ -940,6 +943,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
 				}
 
+				// example: 'schema_recipe_ingredient'
 				if ( ! empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
 					if ( ! is_array( $mixed ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array

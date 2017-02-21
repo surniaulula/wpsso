@@ -801,7 +801,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			foreach ( $key_names as $old_name => $new_name ) {
 				if ( empty( $old_name ) )	// just in case
 					continue;
-				$old_name_preg = $key_mods ? '/^'.$old_name.'(:is|:use|#.*)?$/' : '/^'.$old_name.'$/';
+				$old_name_preg = $key_mods ? '/^'.$old_name.'(:is|:use|#.*|_[0-9]+)?$/' : '/^'.$old_name.'$/';
 				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
 					if ( ! empty( $new_name ) ) {	// can be empty to remove option
 						$new_name_local = preg_replace( $old_name_preg, 
