@@ -70,8 +70,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_head_use_post', false );	// used by woocommerce with is_shop()
-			$mod = $this->p->util->get_page_mod( $use_post );		// get post/user/term id, module name, and module object reference
+			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$read_cache = true;
 			$mt_og = array();
 
@@ -336,7 +336,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
 			}
 
-			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $use_post, $mod );
+			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $mod );
 
 			/*
 			 * Link relation tags
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$mt_og['og:url'], $this->p->options['plugin_shortener'] );
 			}
 
-			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $use_post, $mod );
+			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $mod );
 
 			/*
 			 * Schema meta tags

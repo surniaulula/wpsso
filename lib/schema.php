@@ -76,8 +76,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $head_attr;
 
 			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_head_use_post', false );	// used by woocommerce with is_shop()
-			$mod = $this->p->util->get_page_mod( $use_post );
+			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 

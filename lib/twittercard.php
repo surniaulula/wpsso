@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$max = $this->p->util->get_max_nums( $mod );
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, false, false, true );	// read and unset pre-defined twitter card values
-			$mt_tc = apply_filters( $lca.'_tc_seed', $mt_tc, $mod['use_post'], $mod );
+			$mt_tc = apply_filters( $lca.'_tc_seed', $mt_tc, $mod );
 
 			// the twitter:domain is used in place of the 'view on web' text
 			if ( ! isset( $mt_tc['twitter:domain'] ) &&
@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				else $this->p->debug->log( $mt_tc['twitter:card'].' card: no image defined' );
 			}
 
-			return apply_filters( $lca.'_tc', $mt_tc, $mod['use_post'], $mod );
+			return apply_filters( $lca.'_tc', $mt_tc, $mod );
 		}
 
 		public function get_card_type_size( $opt_suffix ) {

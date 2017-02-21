@@ -72,17 +72,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$html_attr = ' '.$html_attr;	// prepare the string for testing
-			$prefix_ns = apply_filters( $lca.'_og_prefix_ns', array(
+			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$og_type = $this->get_og_type( $mod );
+
+			$prefix_ns = array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 				'article' => 'http://ogp.me/ns/article#',
-			) );
+			);
 
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+			if ( ! empty( $this->p->is_avail['ecom']['*'] ) )
+				$prefix_ns['product'] = 'http://ogp.me/ns/product#';
+
+			$prefix_ns = apply_filters( $lca.'_og_ns', $prefix_ns );
+
+			if ( ! empty( $this->p->is_avail['amp_endpoint'] ) && is_amp_endpoint() ) {
 				// nothing to do				
-
 			} else {
+				$html_attr = ' '.$html_attr;	// prepare the string for testing
+
 				// find and extract an existing prefix attribute value (if any)
 				if ( strpos( $html_attr, ' prefix=' ) &&
 					preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
@@ -114,7 +123,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$check_dupes = true;
 			$prev_count = 0;
 
-			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod['use_post'], $mod );
+			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod );
 
 			if ( ! empty( $mt_og ) && 
 				$this->p->debug->enabled ) {
@@ -300,7 +309,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} 
 			}
 
-			return apply_filters( $lca.'_og', $mt_og, $mod['use_post'], $mod );
+			return apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
 		public function get_og_type( array $mod ) {
@@ -323,7 +332,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			// default for everything else is 'website'
 			} else $og_type = 'website';
 
-			return apply_filters( $lca.'_og_type', $og_type, $mod['use_post'], $mod );
+			return apply_filters( $lca.'_og_type', $og_type, $mod );
 		}
 
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
