@@ -376,6 +376,8 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
 	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
 	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
+	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
+	* Added a new WpssoOpenGraph get_og_type() method.
 
 **Version 3.39.9-1 (2017/02/19)**
 
