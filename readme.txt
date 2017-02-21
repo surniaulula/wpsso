@@ -373,13 +373,14 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
+	* Refactored the Easy Digital Downloads (EDD), MarketPress, WooCommerce, and WP e-Commerce modules to provide and use custom WPSSO post meta for product availability, price, and currency (Pro version).
 	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
 	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
 	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
 	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
 	* Added a new WpssoOpenGraph get_og_type() method.
 	* Renamed the 'wpsso_head_use_post' filter to 'wpsso_use_post'.
-	* Removed the $use_post argument from the following filters:
+	* **Removed the `$use_post` argument from the following filters**:
 		* 'wpsso_link_rel' ( $link_rel, $mod );
 		* 'wpsso_meta_name' ( $mt_name, $mod );
 		* 'wpsso_og' ( $og, $mod );
