@@ -69,13 +69,13 @@
 'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_json_prop_https_schema_org_aggregaterating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
 'wpsso_json_prop_https_schema_org_potentialaction' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
-'wpsso_link_rel' ( $link_rel, $use_post, $mod );
+'wpsso_link_rel' ( $link_rel, $mod );
 'wpsso_load_lib' ( false, "$type/$sub/$id" );
-'wpsso_meta_name' ( $meta_name, $use_post, $mod );
+'wpsso_meta_name' ( $mt_name, $mod );
 'wpsso_ngg_tags' ( $tags, $pid );	// Pro version
 'wpsso_ngg_tags_seed' ( $tags, $pid );	// Pro version
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
-'wpsso_og' ( $og, $use_post, $mod );
+'wpsso_og' ( $og, $mod );
 'wpsso_og_add_product_mt_offers' ( $bool, $mod );
 'wpsso_og_add_product_mt_rating' ( $bool, $mod );
 'wpsso_og_add_product_mt_reviews' ( $bool, $mod );
@@ -83,14 +83,14 @@
 'wpsso_og_default_img_url' ( $image_url );
 'wpsso_og_default_img_on_index' ( $bool );
 'wpsso_og_default_img_on_search' ( $bool );
-'wpsso_og_edd' ( $og_ecom, $use_post, $mod );	// Pro version
+'wpsso_og_edd' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 'wpsso_og_marketpress' ( $og_ecom, $mod );	// Pro version
-'wpsso_og_prefix_ns' ( $ns );
-'wpsso_og_seed' ( $og, $use_post, $mod );
-'wpsso_og_type' ( $og_type, $use_post, $mod );
-'wpsso_og_woocommerce' ( $og_ecom, $use_post, $mod );	// Pro version
-'wpsso_og_wpecommerce' ( $og_ecom );	// Pro version
+'wpsso_og_ns' ( $ns );
+'wpsso_og_seed' ( $og, $mod );
+'wpsso_og_type' ( $og_type, $mod );
+'wpsso_og_woocommerce' ( $og_ecom, $mod );	// Pro version
+'wpsso_og_wpecommerce' ( $og_ecom, $mod );	// Pro version
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
@@ -130,8 +130,8 @@
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id );
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id );
 'wpsso_term_social_settings_tabs' ( $tabs, $mod );
-'wpsso_tc' ( $tc, $use_post, $mod );
-'wpsso_tc_seed' ( $tc, $use_post, $mod );
+'wpsso_tc' ( $tc, $mod );
+'wpsso_tc_seed' ( $tc, $mod );
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_text_filter_has_changes_after' ( false, $filter_name );
 'wpsso_text_filter_has_changes_before' ( false, $filter_name );

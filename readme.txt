@@ -378,6 +378,18 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
 	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
 	* Added a new WpssoOpenGraph get_og_type() method.
+	* Renamed the 'wpsso_head_use_post' filter to 'wpsso_use_post'.
+	* Removed the $use_post argument from the following filters:
+		* 'wpsso_link_rel' ( $link_rel, $mod );
+		* 'wpsso_meta_name' ( $mt_name, $mod );
+		* 'wpsso_og' ( $og, $mod );
+		* 'wpsso_og_edd' ( $og_ecom, $mod );
+		* 'wpsso_og_marketpress' ( $og_ecom, $mod );
+		* 'wpsso_og_seed' ( $og, $mod );
+		* 'wpsso_og_woocommerce' ( $og_ecom, $mod );
+		* 'wpsso_og_wpecommerce' ( $og_ecom, $mod );
+		* 'wpsso_tc' ( $tc, $mod );
+		* 'wpsso_tc_seed' ( $tc, $mod );
 
 **Version 3.39.9-1 (2017/02/19)**
 
