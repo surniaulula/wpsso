@@ -845,12 +845,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 
 			$filter_name = $this->p->cf['lca'].'_video_info';
-			if ( ! has_filter( $filter_name ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: no filter(s) for '.$filter_name ); 
-				return array();
-			}
-
 			$og_video = array_merge( 
 				SucomUtil::get_mt_prop_video( 'og' ), 
 				SucomUtil::get_mt_prop_image( 'og' ),
@@ -859,23 +853,46 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'og:video:height' => $embed_height,			// default height
 				)
 			);
-
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log_arr( 'og_video after filters', $og_video );
 
+			// sanitation of media
 			foreach ( array( 'og:video', 'og:image' ) as $prefix ) {
+
 				$media_url = SucomUtil::get_mt_media_url( $og_video, $prefix );
+
+				// fallback to the original url
+				if ( empty( $media_url ) && $prefix === 'og:video' && $fallback ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no video returned by filters' );
+						$this->p->debug->log( 'falling back to embed url: '.$embed_url );
+					}
+					if ( strpos( $embed_url, 'https:' ) === 0 )
+						$media_url = $og_video['og:video:secure_url'] = $embed_url;
+					else $media_url = $og_video['og:video:url'] = $embed_url;
+
+					if ( preg_match( '/\.mp4(\?.*)?$/', $media_url ) ) {	// check for video/mp4
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'setting og:video:type = video/mp4' );
+						$og_video['og:video:type'] = 'video/mp4';
+					}
+				}
+
 				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
-				if ( ! $media_url || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'
-
+				// remove all meta tags if there's no media URL or media is a duplicate
+				if ( ! $have_media[$prefix] || 
+					( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'	
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v )
 						unset ( $og_video[$k] );
 
+				// if the media is an image, then check and add missing sizes
 				} elseif ( $prefix === 'og:image' ) {
-
 					if ( empty( $og_video['og:image:width'] ) || $og_video['og:image:width'] < 0 ||
 						empty( $og_video['og:image:height'] ) || $og_video['og:image:height'] < 0 ) {
 
+						// add correct image sizes for the image URL using getimagesize()
 						$this->p->util->add_image_url_size( 'og:image', $og_video );
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'fetched video image url size: '.
@@ -887,14 +904,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			// fallback to the original url
-			if ( ! $have_media['og:video'] && $fallback ) {
-				if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) {	// $context = 'video'
-					$og_video['og:video:url'] = $embed_url;
-					$have_media['og:video'] = true;
-				}
-			}
-
+			// if there's no video or preview image, then return an empty array
 			if ( ! $have_media['og:video'] && 
 				! $have_media['og:image'] ) 
 					return array();

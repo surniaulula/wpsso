@@ -399,17 +399,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			// if $md_pre is 'none' (special index keyword), don't load custom video title / description
-			// only the first video is given the custom title and description (if one was entered)
+			/*
+			 * If $md_pre is 'none' (special index keyword), then don't load custom video 
+			 * title / description. Only the first video is given the custom title and 
+			 * description (if one was entered). The og:video:title and og:video:description 
+			 * meta tags are not standard and their values will only appear in Schema markup.
+			 */
 			if ( $aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
 				foreach ( array(
 					'og_vid_title' => 'og:video:title',
 					'og_vid_desc' => 'og:video:description',
-				) as $key => $tag ) {
-					$value = $mod['obj']->get_options( $mod['id'], $key );
+				) as $idx => $mt_name ) {
+					$value = $mod['obj']->get_options( $mod['id'], $idx );
 					if ( ! empty( $value ) ) {
 						foreach ( $og_ret as $num => $og_video ) {
-							$og_ret[$num][$tag] = $value;
+							$og_ret[$num][$mt_name] = $value;
 							break;	// only do the first video
 						}
 					}
