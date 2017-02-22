@@ -364,24 +364,28 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.0-dev5 (2017/02/22)**
+**Version 3.40.0-rc1 (2017/02/22)**
 
 * *New Features*
-	* Added new product options in the Social Settings metabox:
+	* Added new product options in the Social Settings metabox (Pro version):
 		* Product Availability
-		* Product Price (and currency)
+		* Product Price and Currency
+	* Added new custom field options in the Advanced settings page (Pro version):
+		* Product Availability Custom Field
+		* Product Price Custom Field
+		* Product Currency Custom Field
 * *Improvements*
-	* None
+	* Adjusted the admin CSS to define a default width for WooCommerce product SKU, Stock, and Price table columns.
 * *Bugfixes*
 	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
 	* Refactored the Easy Digital Downloads (EDD), MarketPress, WooCommerce, and WP e-Commerce modules to provide and use custom meta for product availability, price, and currency (Pro version).
+	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
 	* Added a new WpssoOpenGraph get_og_type() method.
 	* Added transient caching to the WpssoSchema get_schema_type_parents() and get_schema_type_children() methods.
-	* Refactored the WpssoMeta get_custom_fields() method to get custom field names from the config array.
 	* Renamed the WpssoSchema get_schema_type_css_classes() method to get_children_css_class().
-	* Removed the forced reference for the $mod argument in WpssoOpenGraph methods.
 	* Renamed the 'wpsso_head_use_post' filter to 'wpsso_use_post'.
+	* Removed the forced variable reference for the $mod argument in WpssoOpenGraph methods.
 	* **BREAKING CHANGE** &mdash; removed the `$use_post` argument from the following filters (current filter arguments shown):
 		* 'wpsso_link_rel' ( $link_rel, $mod );
 		* 'wpsso_meta_name' ( $mt_name, $mod );
@@ -790,7 +794,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.0-dev5 =
+= 3.40.0-rc1 =
 
 (2017/02/22) Added new product options for Availability, Price, and Currency in the Social Settings metabox. Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions.
 
