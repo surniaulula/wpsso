@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.0-rc1 (2017/02/22)**
+**Version 3.40.0-rc2 (2017/02/22)**
 
 * *New Features*
 	* Added new product options in the Social Settings metabox (Pro version):
@@ -377,6 +377,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Adjusted the admin CSS to define a default width for WooCommerce product SKU, Stock, and Price table columns.
 * *Bugfixes*
+	* Fixed the missing 'og:video:type' meta tag for self-hosted videos.
 	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
 * *Developer Notes*
 	* Refactored the Easy Digital Downloads (EDD), MarketPress, WooCommerce, and WP e-Commerce modules to provide and use custom meta for product availability, price, and currency (Pro version).
@@ -794,7 +795,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.0-rc1 =
+= 3.40.0-rc2 =
 
 (2017/02/22) Added new product options for Availability, Price, and Currency in the Social Settings metabox. Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions.
 
