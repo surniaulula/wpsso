@@ -568,10 +568,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Remove "use plugin settings" (numeric or string -1), or "same as default" option values
+			 * Remove "use plugin settings" (numeric or string -1), 
+			 * or "same as default" option values, or empty strings.
 			 */
 			foreach ( $opts as $key => $val ) {
-				if ( $val === -1 || $val === '-1' ||
+				if ( $val === -1 || $val === '-1' || $val === '' ||
 					( isset( $defs[$key] ) && $val === $defs[$key] ) )
 						unset( $opts[$key] );
 			}
@@ -927,13 +928,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
 					$mixed =& $all_meta[$meta_key][0];
-				} else {
-					continue;
-				}
+				} else continue;
 
 				$values = array();
 
-				// decode strings and array elements
+				// decode the string or each array element
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );

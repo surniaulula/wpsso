@@ -77,21 +77,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
-				'product_avail' => array(
-					'tr_class' => ( $og_type === 'product' ? '' : 'hide_in_basic' ),	// hide if not a product
-					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'product_avail', 
-						$this->p->cf['form']['product_availability'] ),
-				),
-				'product_price' => array(
-					'tr_class' => ( $og_type === 'product' ? '' : 'hide_in_basic' ),	// hide if not a product
-					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.
-					_x( 'and currency', 'option comment', 'wpsso' ).' '.
-						$form->get_no_input( 'product_currency', 'short', '', true ),
-				),
+				'product_avail' => null,	// placeholder
+				'product_price' => null,	// placeholder
 				/*
 				 * All Schema Types
 				 */
@@ -107,6 +94,22 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
 				),
 			);
+
+			if ( $og_type === 'product' ) {
+				$form_rows['product_avail'] = array(
+					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
+					'content' => $form->get_no_select( 'product_avail', 
+						$this->p->cf['form']['product_availability'] ),
+				);
+				$form_rows['product_price'] = array(
+					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
+					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.
+						_x( 'and currency', 'option comment', 'wpsso' ).' '.
+							$form->get_no_input( 'product_currency', 'short', '', true ),
+				);
+			}
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );

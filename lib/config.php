@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.0-dev5',	// plugin version
+					'version' => '3.40.0-rc1',	// plugin version
 					'opt_version' => '503',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -746,8 +746,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpseo_social_meta' => 0,		// Read Yoast SEO Social Meta
 					'plugin_cf_img_url' => '_format_image_url',
 					'plugin_cf_vid_url' => '_format_video_url',
-					'plugin_cf_vid_embed' => '_format_video_embed',
+					'plugin_cf_vid_embed' => '',
 					'plugin_cf_recipe_ingredients' => '',
+					'plugin_cf_product_avail' => '',
+					'plugin_cf_product_price' => '',
+					'plugin_cf_product_currency' => '',
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_shorten_cache_exp' => 2419200,		// Shortened URL Cache Expiry (4 weeks)
@@ -906,7 +909,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_currency' => 'product_currency',
 				),
-				'md_multi' => array(		// value read into numeric meta data index
+				'md_multi' => array(		// read values into numeric meta data index
 					'schema_recipe_ingredient' => true,
 				),
 			),
@@ -915,9 +918,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'wp' => array(				// wordpress
 				/* 
-				 * Updated on 2016/11/16:
+				 * https://codex.wordpress.org/Supported_Versions
 				 *
-				 * The only current officially supported version is WordPress 4.5.3. Previous major
+				 * The only current officially supported version is WordPress 4.7.1. Previous major
 				 * releases from 3.7 onwards may or may not get security updates as serious exploits
 				 * are discovered. 
 				 */
@@ -1072,6 +1075,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'OutOfStock' => 'Out of Stock',
 			 		'PreOrder' => 'Pre-Order',
 			 		'SoldOut ' => 'Sold Out',
+				),
+				'cf_labels' => array(		// custom field option labels
+					'plugin_cf_img_url' => 'Image URL Custom Field',
+					'plugin_cf_vid_url' => 'Video URL Custom Field',
+					'plugin_cf_vid_embed' => 'Video Embed HTML Custom Field',
+					'plugin_cf_recipe_ingredients' => 'Recipe Ingredients Custom Field',
+					'plugin_cf_product_avail' => 'Product Availability Custom Field',
+					'plugin_cf_product_price' => 'Product Price Custom Field',
+					'plugin_cf_product_currency' => 'Product Currency Custom Field',
 				),
 			),
 			'head' => array(

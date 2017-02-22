@@ -81,6 +81,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-tc_desc':
 							$text = __( 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 						 	break;
+						case 'tooltip-meta-product_avail':
+							if ( ! isset( $product_meta_name ) )
+								$product_meta_name = _x( 'availability', 'product meta name', 'wpsso' );
+							// no break - fall through
+						case 'tooltip-meta-product_price':
+							if ( ! isset( $product_meta_name ) )
+								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
+							// no break - fall through
+						case 'tooltip-meta-product_currency':
+							if ( ! isset( $product_meta_name ) )
+								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
+							// no break - fall through
+							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ).' '.__( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ).' '.__( 'The Schema markup for products with multiple variations will include all product variations, with the %1$s of each variation.', 'wpsso' ), $product_meta_name );
+						 	break;	// stop here
 						case 'tooltip-meta-og_img_id':
 							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
@@ -348,17 +362,49 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' );
 							break;
 						case 'tooltip-plugin_cf_img_url':
-							$text = 'If your theme or another plugin provides a custom field for image URLs, you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Image URL</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_img_url' ).'".';
-							break;
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
+									_x( 'Image URL', 'option label', 'wpsso' ) );
+							// no break - fall through
 						case 'tooltip-plugin_cf_vid_url':
-							$text = 'If your theme or another plugin provides a custom field for video URLs (not embed HTML code), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video URL</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_url' ).'".';
-							break;
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
+									_x( 'Video URL', 'option label', 'wpsso' ) );
+							// no break - fall through
 						case 'tooltip-plugin_cf_vid_embed':
-							$text = 'If your theme or another plugin provides a custom field for video embed HTML code (not simply a URL), you may enter its custom field name here. If a custom field matching that name is found, its value will be used for the "<strong>Video Embed HTML</strong>" option in the Social Settings metabox. The default custom field name is "'.$this->p->opt->get_defaults( 'plugin_cf_vid_embed' ).'".';
-							break;
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
+									_x( 'Video Embed HTML', 'option label', 'wpsso' ) );
+							// no break - fall through
 						case 'tooltip-plugin_cf_recipe_ingredients':
-							$text = 'If your theme or another plugin provides a custom field for recipe ingredients, you may enter its custom field name here. If a custom field matching that name is found, its value may be used to create additional meta tags and Schema markup.';
-							break;
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
+									_x( 'Recipe Ingredients', 'option label', 'wpsso' ) );
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_avail':
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Availability', 'option label', 'wpsso' ) );
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_price':
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Price', 'option label', 'wpsso' ) );
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_currency':
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Currency', 'option label', 'wpsso' ) );
+							// no break - fall through
+							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the Social Settings metabox.', 'wpsso' ), $plugin_cf_info[1] );
+							break;	// stop here
 						/*
 						 * 'WP / Theme Integration' settings
 						 */

@@ -227,25 +227,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_wpseo_social_meta' ).
 			'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
 
-			$table_rows['plugin_cf_img_url'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Image URL Custom Field',
-				'option label', 'wpsso' ), null, 'plugin_cf_img_url' ).
-			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_img_url'] ).'</td>';
-
-			$table_rows['plugin_cf_vid_url'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Video URL Custom Field',
-				'option label', 'wpsso' ), null, 'plugin_cf_vid_url' ).
-			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_vid_url'] ).'</td>';
-
-			$table_rows['plugin_cf_vid_embed'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Video Embed HTML Custom Field',
-				'option label', 'wpsso' ), null, 'plugin_cf_vid_embed' ).
-			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_vid_embed'] ).'</td>';
-
-			$table_rows['plugin_cf_recipe_ingredients'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Recipe Ingredients Custom Field',
-				'option label', 'wpsso' ), null, 'plugin_cf_recipe_ingredients' ).
-			'<td class="blank">'.$form->get_no_input_value( $this->p->options['plugin_cf_recipe_ingredients'] ).'</td>';
+			foreach ( $this->p->cf['opt']['cf_md_idx'] as $cf_idx => $md_idx ) {
+				if ( $label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+					$table_rows[$cf_idx] = '<tr class="hide_in_basic">'.
+						$form->get_th_html( __( $label, 'wpsso' ), null, $cf_idx ).
+							'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
+				}
+			}
 
 			return $table_rows;
 		}

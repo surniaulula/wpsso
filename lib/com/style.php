@@ -162,6 +162,16 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		text-align:left;
 		font-size:1.1em;
 	}
+	.wp-list-table th.column-sku,
+	.wp-list-table td.column-sku,
+	.wp-list-table th.column-is_in_stock,
+	.wp-list-table td.column-is_in_stock {
+		width:6%;	/* woocommerce */
+	}
+	.wp-list-table th.column-price,
+	.wp-list-table td.column-price {
+		width:8%;	/* woocommerce */
+	}
 	.wp-list-table th.column-categories,
 	.wp-list-table td.column-categories {
 		width:12%;	/* default is 15% */
