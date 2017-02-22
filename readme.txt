@@ -398,6 +398,7 @@ Note that the production stage level can be incremented on occasion for simple t
 		* 'wpsso_og_wpecommerce' ( $og_ecom, $mod );
 		* 'wpsso_tc' ( $tc, $mod );
 		* 'wpsso_tc_seed' ( $tc, $mod );
+	* Improved input sanitation checks and debugging error messages in the video modules (Pro version).
 
 **Version 3.39.9-1 (2017/02/19)**
 
