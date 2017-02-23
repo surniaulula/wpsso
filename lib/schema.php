@@ -455,6 +455,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
+		// deprecated on 2017/02/22
+		public function get_schema_type_css_classes( $type_id ) {
+			return $this->get_children_css_class( $type_id );
+		}
+
 		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type' ) {
 			$class_prefix = empty( $class_names ) ?
 				'' : SucomUtil::sanitize_hookname( $class_names ).'_';
