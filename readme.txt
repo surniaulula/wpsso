@@ -376,6 +376,7 @@ Note that the production stage level can be incremented on occasion for simple t
 		* Product Currency Custom Field
 * *Improvements*
 	* Adjusted the admin CSS to define a default width for WooCommerce product SKU, Stock, and Price table columns.
+	* Improved loading sequence of the plugin textdomain.
 * *Bugfixes*
 	* Fixed the missing 'og:video:type' meta tag for self-hosted videos.
 	* Fixed the WpssoSchema get_schema_type_context() method to provide correct JSON-LD syntax for Schema extensions (see https://schema.org/docs/extension.html).
