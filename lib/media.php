@@ -868,9 +868,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'no video returned by filters' );
 						$this->p->debug->log( 'falling back to embed url: '.$embed_url );
 					}
-					if ( strpos( $embed_url, 'https:' ) === 0 )
-						$media_url = $og_video['og:video:secure_url'] = $embed_url;
-					else $media_url = $og_video['og:video:url'] = $embed_url;
+
+					// define the og:video:secure_url meta tag if possible
+					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) )
+						$og_video['og:video:secure_url'] = strpos( $embed_url, 'https:' ) === 0 ? $embed_url : '';
+
+					$media_url = $og_video['og:video:url'] = $embed_url;
 
 					if ( preg_match( '/\.mp4(\?.*)?$/', $media_url ) ) {	// check for video/mp4
 						if ( $this->p->debug->enabled )

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! class_exists( 'SucomNoNotice' ) ) {
 
 	class SucomNoNotice {
-		public $has_shown = false;
+		public $enabled = false;
 		public function __construct() {}
 		public function nag() {}
 		public function err() {}

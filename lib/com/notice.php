@@ -24,6 +24,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $reference_url = null;
 		private $has_shown = false;
 
+		public $enabled = true;
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 

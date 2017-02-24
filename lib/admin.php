@@ -34,8 +34,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				// nothing to do
 			} else {
-				$this->load_textdomain();
-
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
@@ -61,24 +59,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-		}
-
-		public function load_textdomain() {
-			if ( $this->p->debug->enabled )
-				add_filter( 'load_textdomain_mofile', array( &$this, 'override_textdomain_mofile' ), 10, 3 );
-			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
-		}
-
-		public function override_textdomain_mofile( $wp_mofile, $domain ) {
-			if ( $domain === 'wpsso' ) {
-				$plugin_mofile = WPSSO_PLUGINDIR.'languages/'.basename( $wp_mofile );
-				if ( is_readable( $plugin_mofile ) ) {
-					global $l10n;
-					unset( $l10n[$domain] );	// prevent merging
-					return $plugin_mofile;
-				}
-			}
-			return $wp_mofile;
 		}
 
 		// load all submenu classes into the $this->submenu array

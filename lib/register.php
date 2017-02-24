@@ -107,6 +107,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			$this->p->set_config();
+			$this->p->set_options();
 			$this->p->set_objects( true );	// $activate = true
 			$this->p->util->clear_all_cache( true );	// $clear_ext = true
 
@@ -117,6 +118,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) ) ) {
 
 				$this->p->options = $this->p->opt->get_defaults();
+				unset( $this->p->options['options_filtered'] );	// just in case
+
 				delete_option( constant( $uca.'_OPTIONS_NAME' ) );
 				add_option( constant( $uca.'_OPTIONS_NAME' ), $this->p->options, null, 'yes' );	// autoload = yes
 
