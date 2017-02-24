@@ -571,12 +571,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else $og_image = $og_video = array( $head );
 
 			foreach ( $output as $key ) {
+				unset( $mt_name );
 				switch ( $key ) {
 					case 'pid':
+						if ( ! isset( $mt_name ) )
+							$mt_name = $mt_pre.':image:id';
+						// no break - fall through
 					case 'image':
 					case 'img_url':
-						$mt_name = $key === 'pid' ?
-							$mt_pre.':image:id' : $mt_pre.':image';
+						if ( ! isset( $mt_name ) )
+							$mt_name = $mt_pre.':image';
+						// no break - fall through
 
 						if ( $og_video !== null )
 							$ret[$key] = self::get_first_media_info( $mt_name, $og_video );
@@ -595,11 +600,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'vid_url':
 						$ret[$key] = self::get_first_media_info( $mt_pre.':video', $og_video );
 						break;
+					case 'vid_type':
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:type', $og_video );
+						break;
 					case 'vid_title':
 						$ret[$key] = self::get_first_media_info( $mt_pre.':video:title', $og_video );
 						break;
 					case 'vid_desc':
 						$ret[$key] = self::get_first_media_info( $mt_pre.':video:description', $og_video );
+						break;
+					case 'vid_width':
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:width', $og_video );
+						break;
+					case 'vid_height':
+						$ret[$key] = self::get_first_media_info( $mt_pre.':video:height', $og_video );
 						break;
 					case 'prev_url':
 					case 'preview':
