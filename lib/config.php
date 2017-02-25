@@ -1568,18 +1568,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
 			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
 			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_NOTICE_NAME'] = 'ngfb_notices';	// stored notices
-			$var_const['WPSSO_DISMISS_NAME'] = 'ngfb_dismissed';	// dismissed notices
+			$var_const['WPSSO_NOTICE_NAME'] = 'wpsso_notices';	// stored notices
+			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';	// dismissed notices
 			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';		// post meta
 			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';		// user meta
 
 			/*
 			 * WPSSO option and meta array alternate / fallback names
 			 */
-			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';
-			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';
-			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';
-			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';
+			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// fallback name
+			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// fallback name
+			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';			// fallback name
+			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';			// fallback name
 
 			/*
 			 * WPSSO hook priorities
@@ -1609,15 +1609,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_filepath ) {
 
-			require_once( WPSSO_PLUGINDIR.'lib/com/nodebug.php' );		// always load fallback class
-			require_once( WPSSO_PLUGINDIR.'lib/com/nonotice.php' );		// always load fallback class
-			require_once( WPSSO_PLUGINDIR.'lib/com/exception.php' );	// extends Exception
+			require_once( WPSSO_PLUGINDIR.'lib/com/nodebug.php' );	// always load fallback class
+			require_once( WPSSO_PLUGINDIR.'lib/com/nonotice.php' );	// always load fallback class
 			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/script.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/style.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/com/webpage.php' );
 
+			require_once( WPSSO_PLUGINDIR.'lib/exception.php' );	// extends Exception
 			require_once( WPSSO_PLUGINDIR.'lib/register.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/check.php' );
 			require_once( WPSSO_PLUGINDIR.'lib/util.php' );

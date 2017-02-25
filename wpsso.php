@@ -87,7 +87,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( is_admin() )
 				add_action( 'wpsso_init_textdomain', 		// runs after debug property is defined
-					array( &$this, 'init_textdomain' ), -1000, 1 );
+					array( __CLASS__, 'init_textdomain' ), -1000, 1 );
 		}
 
 		public static function &get_instance() {
@@ -187,7 +187,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 			} else $this->debug = new SucomNoDebug();			// make sure debug property is always available
 
-			do_action( 'ngfb_init_textdomain', $this->debug->enabled );
+			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
 			if ( $activate === true && 
 				$this->debug->enabled )
@@ -274,9 +274,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		// runs at wpsso_init_textdomain priority -1000
-		public function init_textdomain( $debug_enabled ) {
+		public static function init_textdomain( $debug_enabled ) {
 			if ( $debug_enabled )
-				add_filter( 'load_textdomain_mofile', array( &$this, 'override_textdomain_mofile' ), 10, 3 );
+				add_filter( 'load_textdomain_mofile', 
+					array( Wpsso::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
@@ -289,7 +290,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9000, 9000 ) as $prio ) {
 						add_action( $action, create_function( '',
-							'echo "<!-- ngfb '.$action.' action hook priority '.
+							'echo "<!-- wpsso '.$action.' action hook priority '.
 								$prio.' mark -->\n";' ), $prio );
 						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
 					}
