@@ -93,7 +93,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) )
 								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
 							// no break - fall through
-							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ).' '.__( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ).' '.__( 'The Schema markup for products with multiple variations will include all product variations, with the %1$s of each variation.', 'wpsso' ), $product_meta_name );
+							// use ucfirst() for the french translation which puts the (lowercase) product meta name first 
+							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ).' '.
+							ucfirst( sprintf( __( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ), $product_meta_name ).' '.
+							sprintf( __( 'The Schema markup for products with multiple variations will include all product variations, with the %1$s of each variation.', 'wpsso' ), $product_meta_name ) );
 						 	break;	// stop here
 						case 'tooltip-meta-og_img_id':
 							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
