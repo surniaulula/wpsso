@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.0-rc4 (2017/02/24)**
+**Version 3.40.0-rc5 (2017/02/25)**
 
 * *New Features*
 	* Added new product options in the Social Settings metabox (Pro version):
@@ -798,9 +798,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.0-rc4 =
+= 3.40.0-rc5 =
 
-(2017/02/24) Added new product options for Availability, Price, and Currency in the Social Settings metabox. Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions.
+(2017/02/25) Added new product options for Availability, Price, and Currency in the Social Settings metabox. Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions.
 
 = 3.39.9-1 =
 
