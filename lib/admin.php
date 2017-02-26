@@ -34,6 +34,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				// nothing to do
 			} else {
+				// admin_menu is run before admin_init
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
@@ -43,16 +44,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 
-				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_exec_count' ) );
-				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_exec_count' ) );
+				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_exec_count' ), 10 );
+				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_exec_count' ), 10 );
 
-				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ) );
-				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ) );
+				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
+				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'wp_profile_updated_redirect' ), -100, 2 );
 
 				if ( is_multisite() ) {
+					add_action( 'network_admin_menu', array( &$this, 'load_network_menu_objects' ), -1000 );
 					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 					add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
@@ -61,17 +63,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		}
 
-		// load all submenu classes into the $this->submenu array
-		// the id of each submenu item must be unique
-		public function load_menu_objects() {
+		public function load_network_menu_objects() {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
+			$this->load_menu_objects( array( 'sitesubmenu' ) );
+		}
+
+		public function load_menu_objects( $menu_libs = array() ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$lca = $this->p->cf['lca'];
-			$menu_libs = array( 
-				'submenu', 
-				'setting',		// setting must be after submenu to extend submenu/advanced.php
-				'profile', 
-			);
-			if ( is_multisite() )
-				$menu_libs[] = 'sitesubmenu';
+			if ( empty( $menu_libs ) ) {
+				$menu_libs = array( 
+					'submenu', 
+					'setting',		// setting must be after submenu to extend submenu/advanced.php
+					'profile', 
+				);
+			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $this->p->is_avail['aop'] );
@@ -102,69 +112,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// extended by the sitesubmenu library classes to define / load site options instead
-		protected function set_form_property( $menu_ext ) {
-			$def_opts = $this->p->opt->get_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
-		}
-
-		protected function &get_form_reference() {	// returns a reference
-			return $this->form;
-		}
-
-		public function register_setting() {
-			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, 
-				array( &$this, 'registered_setting_sanitation' ) );
-		} 
-
-		public static function set_readme_info( $read_cache = true ) {
-			$wpsso =& Wpsso::get_instance();
-			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
-				if ( empty( self::$readme[$ext] ) )
-					self::$readme[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
-			}
-		}
-
-		// add sub-menu items to existing menus (profile and setting)
-		public function add_admin_submenus() {
-			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
-
-				// match wordpress behavior (users page for admins, profile page for everyone else)
-				if ( $menu_lib === 'profile' && 
-					current_user_can( 'list_users' ) )
-						$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
-				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
-
-				$sorted_menu = array();
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
-						continue;
-					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
-						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
-						$sorted_menu[$name_text.'-'.$menu_id] = array( $parent_slug, 
-							$menu_id, $menu_name, $menu_lib, $ext );	// add_submenu_page() args
-					}
-				}
-				ksort( $sorted_menu );
-
-				foreach ( $sorted_menu as $key => $arg ) {
-					if ( isset( $this->submenu[$arg[1]] ) )
-						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
-					else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
-				}
-			}
-		}
-
 		public function add_network_admin_menus() {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
 		// add a new main menu, and its sub-menu items
 		public function add_admin_menus( $menu_lib = '' ) {
-			$menu_lib = empty( $menu_lib ) ?
-				'submenu' : $menu_lib;
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
+			if ( empty( $menu_lib ) )
+				$menu_lib = 'submenu';
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
@@ -198,6 +160,59 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $this->submenu[$arg[1]] ) )
 					$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
 				else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+			}
+		}
+
+		// add sub-menu items to existing menus (profile and setting)
+		public function add_admin_submenus() {
+			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
+
+				// match wordpress behavior (users page for admins, profile page for everyone else)
+				if ( $menu_lib === 'profile' && 
+					current_user_can( 'list_users' ) )
+						$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
+				else $parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+
+				$sorted_menu = array();
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+						continue;
+					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
+						$sorted_menu[$name_text.'-'.$menu_id] = array( $parent_slug, 
+							$menu_id, $menu_name, $menu_lib, $ext );	// add_submenu_page() args
+					}
+				}
+				ksort( $sorted_menu );
+
+				foreach ( $sorted_menu as $key => $arg ) {
+					if ( isset( $this->submenu[$arg[1]] ) )
+						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
+					else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+				}
+			}
+		}
+
+		// extended by the sitesubmenu library classes to define / load site options instead
+		protected function set_form_property( $menu_ext ) {
+			$def_opts = $this->p->opt->get_defaults();
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
+		}
+
+		protected function &get_form_reference() {	// returns a reference
+			return $this->form;
+		}
+
+		public function register_setting() {
+			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, 
+				array( &$this, 'registered_setting_sanitation' ) );
+		} 
+
+		public static function set_readme_info( $read_cache = true ) {
+			$wpsso =& Wpsso::get_instance();
+			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
+				if ( empty( self::$readme[$ext] ) )
+					self::$readme[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
 			}
 		}
 
