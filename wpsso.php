@@ -332,9 +332,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( strpos( $domain, 'wpsso' ) === 0 ) {	// optimize
 				foreach ( $this->cf['plugin'] as $ext => $info ) {
 					if ( $info['slug'] === $domain ) {
-						if ( $plugin_dir = constant( strtoupper( $ext ).'_PLUGINDIR' ) ) {
+						$constant_name = strtoupper( $ext ).'_PLUGINDIR';
+						if ( defined( $constant_name ) &&
+							$plugin_dir = constant( strtoupper( $ext ).'_PLUGINDIR' ) ) {
 							$plugin_mofile = $plugin_dir.'languages/'.basename( $wp_mofile );
-							if ( $plugin_mofile != $wp_mofile &&
+							if ( $plugin_mofile !== $wp_mofile &&
 								is_readable( $plugin_mofile ) ) {
 								global $l10n;
 								unset( $l10n[$domain] );	// prevent merging
