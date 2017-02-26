@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.0-rc5 (2017/02/25)**
+**Version 3.40.0-1 (2017/02/26)**
 
 * *New Features*
 	* Added new product options in the Social Settings metabox (Pro version):
@@ -400,7 +400,7 @@ Note that the production stage level can be incremented on occasion for simple t
 		* 'wpsso_tc' ( $tc, $mod );
 		* 'wpsso_tc_seed' ( $tc, $mod );
 	* Improved input sanitation checks and debugging error messages in the video modules (Pro version).
-	* Moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
+	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 **Version 3.39.9-1 (2017/02/19)**
 
@@ -798,9 +798,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.0-rc5 =
+= 3.40.0-1 =
 
-(2017/02/25) Added new product options for Availability, Price, and Currency in the Social Settings metabox. Fixed a WpssoSchema method to provide correct JSON-LD syntax for Schema extensions.
+(2017/02/26) Added new options for product Availability, Price, and Currency. Fixed a missing 'og:video:type' meta tag for self-hosted videos (Pro version). Fixed a WpssoSchema method to provide correct Schema context for Schema extensions.
 
 = 3.39.9-1 =
 
