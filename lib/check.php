@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'sq' => 'Squirrly SEO',
 			),
 			'util' => array(
-				'um' => 'Pro Update Manager',
+				'um' => 'Update Manager',
 			),
 		);
 
