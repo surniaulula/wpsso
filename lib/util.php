@@ -797,7 +797,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$html = '';
 
 			if ( strpos( $request, '//' ) === 0 )
-				$request = SucomUtil::get_prot().':'.$request;
+				$request = self::get_prot().':'.$request;
 
 			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
 				if ( $this->p->debug->enabled )
