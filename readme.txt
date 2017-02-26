@@ -143,7 +143,7 @@ Automatically create complete and accurate meta tags and Schema markup for Socia
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 	* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
 	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
-	* [WPSSO Pro Update Manager](https://wpsso.com/extend/plugins/wpsso-um/) (Free version)
+	* [WPSSO Update Manager](https://wpsso.com/extend/plugins/wpsso-um/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
 	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
