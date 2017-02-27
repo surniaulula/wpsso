@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.1-2 (2017/02/26)**
+**Version 3.40.1-2 (2017/02/27)**
 
 * *New Features*
 	* None
@@ -372,6 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Bugfixes*
 	* Added a missing hook to load the network admin menu objects.
+	* Delayed plugin init to allow custom post types to be defined first.
 * *Developer Notes*
 	* None
 
@@ -811,7 +812,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.40.1-2 =
  
-(2017/02/26) Added a missing hook to load the network admin menu objects.
+(2017/02/27) Added a missing hook to load the network admin menu objects. Delayed plugin init to allow custom post types to be defined first.
 
 = 3.40.0-1 =
 
