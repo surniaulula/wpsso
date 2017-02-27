@@ -3720,26 +3720,26 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1766
+#: lib/util.php:1768
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1792
+#: lib/util.php:1794
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1796
+#: lib/util.php:1798
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1799
+#: lib/util.php:1801
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1803
+#: lib/util.php:1805
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

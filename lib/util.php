@@ -1191,8 +1191,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mod['use_post'] = $use_post;
 
+			// the post module defines is_home_page, is_home_index, and is_home
+			// if we don't have a module, then check for the standard home index
 			if ( $mod['name'] === false )
-				$mod['is_home'] = is_home();
+				$mod['is_home_index'] = $mod['is_home'] = is_home();
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log_arr( '$mod ', $mod );
@@ -1261,7 +1263,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			} else {
 				if ( $mod['is_home'] ) {
-					if ( 'page' === get_option( 'show_on_front' ) ) {	// show_on_front = posts | page
+					if ( get_option( 'show_on_front' ) === 'page' ) {	// show_on_front = posts | page
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
 						$url = apply_filters( $lca.'_home_url', home_url( '/' ), $mod, $add_page, $src_id );
