@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.1-1 (2017/02/26)**
+**Version 3.40.1-2 (2017/02/26)**
 
 * *New Features*
 	* None
@@ -809,7 +809,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.1-1 =
+= 3.40.1-2 =
  
 (2017/02/26) Added a missing hook to load the network admin menu objects.
 
