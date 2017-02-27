@@ -1255,20 +1255,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_archive_page', $ret );
 		}
 
-		// returns true if using a static home page (with page or posts content)
 		public static function is_home_page( $use_post = false ) {
 			$ret = false;
 
-			// get the static post ID
 			$post_id = get_option( 'show_on_front' ) === 'page' ?
-				get_option( 'page_on_front' ) :
-				get_option( 'page_for_posts' );
+				(int) get_option( 'page_on_front' ) : 0;
 
-			if ( is_numeric( $post_id ) &&
-				self::get_post_object( $use_post, 'id' ) === (int) $post_id )
+			if ( is_numeric( $use_post ) && 
+				(int) $use_post === $post_id )	// optimize
+					$ret = true;
+			elseif ( $post_id > 0 &&
+				self::get_post_object( $use_post, 'id' ) === $post_id )
 					$ret = true;
 
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
+		}
+
+		public static function is_home_index( $use_post = false ) {
+			$ret = false;
+
+			$post_id = get_option( 'show_on_front' ) === 'page' ?
+				(int) get_option( 'page_for_posts' ) : 0;
+
+			if ( is_numeric( $use_post ) && 
+				(int) $use_post === $post_id )	// optimize
+					$ret = true;
+			elseif ( $post_id > 0 &&
+				self::get_post_object( $use_post, 'id' ) === $post_id )	// static posts page
+					$ret = true;
+			elseif ( $use_post === false && is_home() && is_front_page() )	// standard index page
+				$ret = true;
+
+			return apply_filters( 'sucom_is_home_index', $ret, $use_post );
 		}
 
 		public static function is_post_exists( $post_id ) {
@@ -1277,15 +1295,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_post_page( $use_post = false ) {
 			$ret = false;
+
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$ret = self::is_post_exists( $use_post );
-			/*
-			 * is_singular() is short for is_single(), is_post(), is_attachement().
-			 * Add is_front_page() check for themes/plugins that break is_singular().
-			 */
-			} elseif ( $use_post || is_singular() ||
-				( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ) {
+
+			} elseif ( $use_post === true && ! empty( $GLOBALS['post']->ID ) ) {
 				$ret = true;
+			
+			} elseif ( $use_post === false && is_singular() ) {
+				$ret = true;
+
+			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static front page
+				$ret = true;
+
+			} elseif ( is_home() && ! is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static posts page
+				$ret = true;
+
 			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'post' )
@@ -1297,6 +1322,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
 					$ret = true;
 			}
+
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
@@ -1305,31 +1331,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$post_obj = get_post( $use_post );
-			/*
-			 * is_singular() is short for is_single(), is_post(), is_attachement().
-			 * Add is_front_page() check for themes/plugins that break is_singular().
-			 */
-			} elseif ( $use_post === false || 
-				apply_filters( 'sucom_is_post_page', ( is_singular() || 
-					( is_front_page() && get_option( 'show_on_front' ) === 'page' ) ? 
-						true : false ), $use_post ) ) {
 
+			} elseif ( $use_post === true && ! empty( $GLOBALS['post']->ID ) ) {
+				$post_obj = $GLOBALS['post'];
+
+			// used by the buddypress module
+			} elseif ( $use_post === false && apply_filters( 'sucom_is_post_page', ( is_singular() ? true : false ), $use_post ) ) {
 				$post_obj = get_queried_object();
 
-				if ( $post_obj === null && is_admin() ) {
-					if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||
-						( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' )
-							$post_obj = get_post( $post_id );
-				}
+			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static front page
+				$post_obj = get_post( get_option( 'page_on_front' ) );
 
-				// fallback to $post if object is empty / invalid
-				if ( empty( $post_obj->ID ) &&
-					isset( $GLOBALS['post'] ) )
-						$post_obj = $GLOBALS['post'];
+			} elseif ( is_home() && ! is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static posts page
+				$post_obj = get_post( get_option( 'page_for_posts' ) );
 
-			} elseif ( $use_post === true && 
-				isset( $GLOBALS['post'] ) )
-					$post_obj = $GLOBALS['post'];
+			} elseif ( is_admin() ) {
+				if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||
+					( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' )
+						$post_obj = get_post( $post_id );
+			}
 
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
 

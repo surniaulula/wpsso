@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.1-2\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.2-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:417 lib/post.php:311 lib/term.php:258 lib/user.php:236
+#: lib/admin.php:417 lib/post.php:309 lib/term.php:258 lib/user.php:236
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1508,7 +1509,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:114 lib/meta.php:173 lib/post.php:480
+#: lib/gpl/admin/post.php:114 lib/meta.php:173 lib/post.php:478
 #: lib/pro/admin/post.php:147
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2921,21 +2922,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:378
+#: lib/post.php:376
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:394
+#: lib/post.php:392
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:403
+#: lib/post.php:401
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:438 lib/profile/social-settings.php:27 lib/term.php:282
+#: lib/post.php:436 lib/profile/social-settings.php:27 lib/term.php:282
 #: lib/user.php:262
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3715,7 +3716,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1065
+#: lib/util.php:1066
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 

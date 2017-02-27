@@ -84,6 +84,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$add_head_html = apply_filters( $lca.'_add_head_html', $this->p->is_avail['head'], $mod );
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'is_avail head = '.( $this->p->is_avail['head'] ? 'true' : 'false' ) );
 				$this->p->debug->log( 'add_head_html = '.( $add_head_html ? 'true' : 'false' ) );

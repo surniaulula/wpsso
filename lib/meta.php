@@ -40,9 +40,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Post
 			 */
 			'is_post' => false,		// is post module
-			'is_home' => false,		// home page (archive or static)
-			'is_home_page' => false,	// static home page (have post id)
-			'is_home_index' => false,	// blog index page (archive)
+			'is_home' => false,		// home page (index or static)
+			'is_home_page' => false,	// static front page
+			'is_home_index' => false,	// static posts page or home index
 			'post_type' => false,
 			'post_status' => false,
 			'post_author' => false,

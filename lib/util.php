@@ -870,8 +870,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			);
 			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
 			foreach ( $is_functions as $function ) 
-				if ( function_exists( $function ) && $function() )
-					$this->p->debug->log( $function.'() = true' );
+				$this->p->debug->log( $function.'() = '.
+					( function_exists( $function ) && 
+						$function() ? 'true' : 'false' ) );
 		}
 
 		// returns true if the default image is forced
@@ -1189,10 +1190,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
 
 			$mod['use_post'] = $use_post;
-			$mod['is_home_index'] = ! $mod['is_home_page'] && is_home() ?			// blog index page (archive)
-				true : false;
-			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ?		// home page (any)
-				true : false;
+
+			if ( $mod['name'] === false )
+				$mod['is_home'] = is_home();
 
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log_arr( '$mod ', $mod );

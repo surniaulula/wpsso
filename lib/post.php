@@ -84,11 +84,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Post
 			 */
 			$mod['is_post'] = true;
-			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );			// static home page (have post ID)
-			$mod['is_home_index'] = ! $mod_id && ! $mod['is_home_page'] && is_home() ?	// blog index page (archive)
-				true : false;
-			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ?		// home page (any)
-				true : false;
+			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );
+			$mod['is_home_index'] = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
+			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
 			$mod['post_type'] = get_post_type( $mod_id );					// post type name
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
