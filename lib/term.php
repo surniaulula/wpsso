@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 
 				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
-				if ( ! $this->query_tax_obj->public )
+				if ( empty( $this->query_tax_obj->public ) )
 					return;
 
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
@@ -142,6 +142,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function add_column_headings( $columns ) { 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			return $this->add_mod_column_headings( $columns, 'term' );
 		}
 

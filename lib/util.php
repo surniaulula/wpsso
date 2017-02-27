@@ -307,6 +307,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_post_types( $output = 'objects' ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			return apply_filters( $this->p->cf['lca'].'_post_types', 
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}

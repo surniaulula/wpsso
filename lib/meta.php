@@ -661,9 +661,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
+				$lca = $this->p->cf['lca'];
 				foreach ( $this->get_column_headings() as $column_key => $label ) {
-					if ( ! empty( $this->p->options['plugin_'.$column_key.'_col_'.$mod_name] ) )
-						$columns[$this->p->cf['lca'].'_'.$column_key] = $label;
+					if ( ! empty( $this->p->options['plugin_'.$column_key.'_col_'.$mod_name] ) ) {
+						$columns[$lca.'_'.$column_key] = $label;
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'adding '.$lca.'_'.$column_key.' column' );
+					}
 				}
 			}
 			return $columns;

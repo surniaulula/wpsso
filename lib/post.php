@@ -42,6 +42,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
+						if ( $this->p->debug->enabled )
+							$this->p->debug->log( 'adding column filters for post type: '.$post_type );
+
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
 						add_filter( 'manage_'.$post_type.'_posts_columns',
 							array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
@@ -51,7 +54,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
 						add_action( 'manage_'.$post_type.'_posts_custom_column',
-							array( &$this, 'show_column_content',), 10, 2 );
+							array( &$this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -163,6 +166,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function add_column_headings( $columns ) { 
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 
