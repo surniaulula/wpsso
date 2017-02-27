@@ -97,13 +97,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return self::$instance;
 		}
 
-		// runs at init priority -3000
+		// runs at init priority 9 by default
 		// called by activate_plugin() as well
 		public function set_config() {
 			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}
 
-		// runs at init priority -2000
+		// runs at init priority 10 by default
 		// called by activate_plugin() as well
 		public function set_options() {
 			$this->options = get_option( WPSSO_OPTIONS_NAME );
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		// runs at init priority -1000
+		// runs at init priority 11 by default
 		// called by activate_plugin() as well
 		public function set_objects( $activate = false ) {
 
@@ -274,15 +274,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		// runs at wpsso_init_textdomain priority -1000
-		public static function init_textdomain( $debug_enabled ) {
-			if ( $debug_enabled )
-				add_filter( 'load_textdomain_mofile', 
-					array( Wpsso::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
-			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
-		}
-
-		// runs at init priority 12 (by default)
+		// runs at init priority 12 by default
 		public function init_plugin() {
 			if ( $this->debug->enabled )
 				$this->debug->mark( 'plugin initialization' );	// begin timer
@@ -326,6 +318,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 			}
+		}
+
+		// runs at wpsso_init_textdomain priority -10
+		public static function init_textdomain( $debug_enabled ) {
+			if ( $debug_enabled )
+				add_filter( 'load_textdomain_mofile', 
+					array( Wpsso::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
+			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
 		// only runs when debug is enabled
