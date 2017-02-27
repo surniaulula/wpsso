@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(
 					'short' => 'WPSSO JSON',		// short plugin name
 					'name' => 'WPSSO Schema JSON-LD Markup (WPSSO JSON)',
-					'desc' => 'WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Local Business, Product, Recipe, Review, and much more).',
+					'desc' => 'WPSSO extension to add complete Schema JSON-LD / SEO markup (Article, Event, Local Business, Product, Recipe, Review, and much more).',
 					'slug' => 'wpsso-schema-json-ld',
 					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
@@ -1586,6 +1586,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
 			$var_const['WPSSO_ADD_SUBMENU_PRIORITY'] = -10;
+			$var_const['WPSSO_ADD_COLUMN_PRIORITY'] = 100;
 			$var_const['WPSSO_META_SAVE_PRIORITY'] = 5;
 			$var_const['WPSSO_META_CACHE_PRIORITY'] = 10;
 			$var_const['WPSSO_INIT_PRIORITY'] = 12;

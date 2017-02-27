@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
-					array( &$this, 'add_column_headings' ), 10, 1 );
+					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				// enable orderby meta_key only if we have a meta table
 				if ( self::use_meta_table() ) {

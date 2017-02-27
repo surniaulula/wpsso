@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					foreach ( $post_type_names as $post_type ) {
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
 						add_filter( 'manage_'.$post_type.'_posts_columns',
-							array( &$this, 'add_column_headings' ), 10, 1 );
+							array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 						add_filter( 'manage_edit-'.$post_type.'_sortable_columns',
 							array( &$this, 'add_sortable_columns' ), 10, 1 );

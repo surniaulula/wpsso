@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				add_filter( 'manage_users_columns', 
-					array( &$this, 'add_column_headings' ), 10, 1 );
+					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				add_filter( 'manage_users_sortable_columns', 
 					array( &$this, 'add_sortable_columns' ), 10, 1 );

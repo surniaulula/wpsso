@@ -875,8 +875,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:72
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add complete Schema JSON-LD markup (Article, Event, Local "
-"Business, Product, Recipe, Review, and much more)."
+"WPSSO extension to add complete Schema JSON-LD / SEO markup (Article, Event, "
+"Local Business, Product, Recipe, Review, and much more)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:73
