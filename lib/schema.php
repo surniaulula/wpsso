@@ -77,6 +77,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'calling get_page_mod()' );
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
@@ -1255,7 +1257,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$wpsso = Wpsso::get_instance();
 				$post_id = $opts[$prefix.':id'];
-				$mod = $wpsso->util->get_page_mod( $post_id, array( 'id' => $post_id, 'name' => 'post' ) );
+				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 
 				$ret['name'] = $wpsso->webpage->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
 					false, true, 'schema_title' );	// $add_hashtags = false, $encode = true, $md_idx = schema_title

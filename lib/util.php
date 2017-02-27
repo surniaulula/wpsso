@@ -113,9 +113,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( empty( $post_id ) )
 				return $image;
 
-			// get post/user/term id, module name, and module object reference
-			$mod = $this->get_page_mod( $post_id, array( 'id' => $post_id, 'name' => 'post' ) );
-
+			$mod = $this->p->m['util']['post']->get_mod( $post_id );
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
 
 			return $image;
@@ -146,8 +144,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
+			}
 			$meta_opts = array();
 
 			if ( $filter === true ) {
@@ -285,8 +286,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
 				return 'post_'.$mod.'_regen_'.$md_pre;
 
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->get_page_mod( $mod );
+			}
 
 			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) )
 				return $mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
@@ -966,8 +970,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_inline_vals( $mod = false, &$atts = array() ) {
 
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->get_page_mod( $mod );
+			}
 
 			if ( isset( $atts['url'] ) )
 				$sharing_url = $atts['url'];
@@ -1002,8 +1009,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// allow compatibility with $use_post as first argument
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->get_page_mod( $mod );
+			}
 
 			$vars = $this->get_inline_vars();
 			$vals = $this->get_inline_vals( $mod, $atts );
@@ -1232,8 +1242,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$url = false;
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->get_page_mod( $mod );
+			}
 
 			if ( $mod['is_post'] ) {
 				if ( ! empty( $mod['id'] ) ) {

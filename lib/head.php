@@ -71,6 +71,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'calling get_page_mod()' );
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$read_cache = true;
 			$mt_og = array();
@@ -204,8 +206,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			}
 			$crawler_name = SucomUtil::crawler_name();
 			$comment_begin = $lca.' meta tags begin';
 			$comment_end = $lca.' meta tags end';
@@ -246,8 +251,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
 
 			$lca = $this->p->cf['lca'];
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			}
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
 			$head_array = array();

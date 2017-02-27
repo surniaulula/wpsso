@@ -80,8 +80,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $mod );
+			}
 
 			$caption = false;
 			$separator = html_entity_decode( $this->p->options['og_title_sep'],
@@ -185,8 +188,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $mod );
+			}
 
 			$title = false;
 			$hashtags = '';
@@ -339,8 +345,11 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 			}
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $mod );
+			}
 
 			$desc = false;
 			$hashtags = '';

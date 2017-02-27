@@ -133,25 +133,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( isset( $this->p->options['plugin_shortener'] ) &&
 				$this->p->options['plugin_shortener'] !== 'none' ) {
 
-					$post_type = get_post_type( $post_id );				// post type name
-					$post_status = get_post_status( $post_id );			// post status name
+					$mod = $this->get_mod( $post_id );
 
-					if ( empty( $post_type ) ) {
+					if ( empty( $mod['post_type'] ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'exiting early: post_type is empty' );
 						return $shortlink;
-					} elseif ( empty( $post_status ) ) {
+					} elseif ( empty( $mod['post_status'] ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'exiting early: post_status is empty' );
 						return $shortlink;
-					} elseif ( $post_status === 'auto-draft' ) {
+					} elseif ( $mod['post_status'] === 'auto-draft' ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'exiting early: post_status is auto-draft' );
 						return $shortlink;
 					}
 
-					$long_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false
-
+					$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
 

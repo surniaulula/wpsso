@@ -73,6 +73,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			if ( $this->p->debug->enabled )
+				$this->p->debug->log( 'calling get_page_mod()' );
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$og_type = $this->get_og_type( $mod );
 

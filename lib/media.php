@@ -522,8 +522,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $mod );
+			}
 
 			$og_ret = array();
 
@@ -751,8 +754,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) )
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'calling get_page_mod()' );
 				$mod = $this->p->util->get_page_mod( $mod );
+			}
 
 			$og_ret = array();
 
