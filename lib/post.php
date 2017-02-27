@@ -39,7 +39,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
 				$post_type_names = $this->p->util->get_post_types( 'names' );
-
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
 						if ( $this->p->debug->enabled )
@@ -347,7 +346,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// only check public post types (to avoid menu items, product variations, etc.)
 			$post_type_names = $this->p->util->get_post_types( 'names' );
-			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
+			if ( empty( $post_obj->post_type ) || 
+				! in_array( $post_obj->post_type, $post_type_names ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
 				return $post_id;

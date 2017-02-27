@@ -81,7 +81,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:417 lib/post.php:312 lib/term.php:258 lib/user.php:236
+#: lib/admin.php:417 lib/post.php:311 lib/term.php:258 lib/user.php:236
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 

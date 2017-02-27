@@ -79,15 +79,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
-			add_action( 'init', array( &$this, 'set_config' ), -3000 );
-			add_action( 'init', array( &$this, 'set_options' ), -2000 );
-			add_action( 'init', array( &$this, 'set_objects' ), -1000 );
+			add_action( 'init', array( &$this, 'set_config' ), 0 );
+			add_action( 'init', array( &$this, 'set_options' ), 5 );
+			add_action( 'init', array( &$this, 'set_objects' ), 10 );
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );
 			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );
 
 			if ( is_admin() )
 				add_action( 'wpsso_init_textdomain', 		// runs after debug property is defined
-					array( __CLASS__, 'init_textdomain' ), -1000, 1 );
+					array( __CLASS__, 'init_textdomain' ), -10, 1 );
 		}
 
 		public static function &get_instance() {
