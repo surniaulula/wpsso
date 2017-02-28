@@ -567,8 +567,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:5
 msgctxt "plugin description"
 msgid ""
-"Automatically create complete and accurate meta tags and Schema markup for "
-"Social Sharing Optimization (SSO) and SEO."
+"Automatically create complete and accurate meta tags and Schema markup from "
+"your content for Social Sharing Optimization (SSO) and SEO."
 msgstr ""
 
 #: lib/config-gettext-extract.php:6
@@ -876,15 +876,15 @@ msgstr ""
 #: lib/config-gettext-extract.php:72
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add complete Schema JSON-LD / SEO markup (Article, Event, "
-"Local Business, Product, Recipe, Review, and much more)."
+"WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
+"in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
 #: lib/config-gettext-extract.php:73
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
-"in your content, excerpts, CSS sidebar, widget, shortcode, etc."
+"WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, "
+"Local Business, Products, Recipes, Reviews + many more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:74
@@ -3766,8 +3766,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically create complete and accurate meta tags and Schema markup for "
-"Social Sharing Optimization (SSO) and SEO."
+"Automatically create complete and accurate meta tags and Schema markup from "
+"your content for Social Sharing Optimization (SSO) and SEO."
 msgstr ""
 
 #. Author of the plugin/theme
