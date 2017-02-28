@@ -1964,8 +1964,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $atts['use_post'] ) || is_singular() || in_the_loop() ) {
 				global $post;
-				if ( ! empty( $post->ID ) )
+				if ( ! empty( $post->ID ) ) {
 					$src_id .= '-post-'.$post->ID;
+				}
 			}
 
 			return $src_id;
@@ -2000,9 +2001,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$child_dir = get_stylesheet_directory();
 			$header_files = (array) glob( $parent_dir.'/header*.php' );
 
-			if ( $parent_dir !== $child_dir )
+			if ( $parent_dir !== $child_dir ) {
 				$header_files = array_merge( $header_files, 
 					(array) glob( $child_dir.'/header*.php' ) );
+			}
 
 			foreach ( $header_files as $tmpl_file ) {
 				$tmpl_base = basename( $tmpl_file );
@@ -2024,11 +2026,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_amp() {
-			if ( ! defined( 'AMP_QUERY_VAR' ) )
+			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
 				$is_amp = false;
-			else $is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
-
-			return apply_filters( 'sucom_is_amp', $is_amp );
+			} else {
+				$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+			}
+			return $is_amp;
 		}
 	}
 }
