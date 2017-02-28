@@ -375,6 +375,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Developer Notes*
 	* Refactored the SucomUtil is_home_page(), is_post_page(), and get_post_object() methods.
 	* Added a new SucomUtil::is_home_index() method - returns true for a static posts page (not the static front page) and the standard home index / archive page.
+	* Added a new SucomUtil::is_amp() method to replace calls to the AMP plugin is_amp_endpoint() function.
 
 **Version 3.40.1-2 (2017/02/27)**
 
