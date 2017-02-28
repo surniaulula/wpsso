@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ns = apply_filters( $lca.'_og_ns', $og_ns, $mod );
 
-			if ( ! empty( $this->p->is_avail['amp_endpoint'] ) && is_amp_endpoint() ) {
+			if ( SucomUtil::is_amp() ) {
 				// nothing to do				
 			} else {
 				$html_attr = ' '.$html_attr;	// prepare the string for testing

@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $sharing_url !== false )
 				$head_index .= '_url:'.$sharing_url;
 
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() )
+			if ( SucomUtil::is_amp() )
 				$head_index .= '_amp:true';
 
 			switch ( $crawler_name ) {

@@ -2022,6 +2022,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			return $val;
 		}
+
+		public static function is_amp() {
+			if ( ! defined( 'AMP_QUERY_VAR' ) )
+				$is_amp = false;
+			else $is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+
+			return apply_filters( 'sucom_is_amp', $is_amp );
+		}
 	}
 }
 

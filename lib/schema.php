@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+			if ( SucomUtil::is_amp() ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'head attributes disabled for amp endpoint' );
 				return false;
@@ -1464,7 +1464,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function is_noscript_enabled( $crawler_name = false ) {
 
-			if ( $this->p->is_avail['amp_endpoint'] && is_amp_endpoint() ) {
+			if ( SucomUtil::is_amp() ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'noscript disabled for amp endpoint' );
 				return false;
