@@ -919,7 +919,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
-"Schema Local Business + Local SEO meta tags."
+"Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
 #: lib/config-gettext-extract.php:79
