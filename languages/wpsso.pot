@@ -1084,19 +1084,19 @@ msgctxt "option label"
 msgid "Add %s Column in"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:185 lib/messages.php:338 lib/meta.php:613
+#: lib/gpl/admin/advanced.php:185 lib/messages.php:338 lib/meta.php:616
 #: lib/pro/admin/advanced.php:185
 msgctxt "column title"
 msgid "%s Schema"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:188 lib/messages.php:344 lib/meta.php:616
+#: lib/gpl/admin/advanced.php:188 lib/messages.php:344 lib/meta.php:619
 #: lib/pro/admin/advanced.php:188
 msgctxt "column title"
 msgid "%s Img"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:191 lib/messages.php:350 lib/meta.php:619
+#: lib/gpl/admin/advanced.php:191 lib/messages.php:350 lib/meta.php:622
 #: lib/pro/admin/advanced.php:191
 msgctxt "column title"
 msgid "%s Desc"
@@ -1392,8 +1392,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:176
-#: lib/meta.php:192 lib/pro/admin/meta.php:89 lib/pro/admin/post.php:105
+#: lib/gpl/admin/meta.php:69 lib/gpl/admin/post.php:75 lib/meta.php:179
+#: lib/meta.php:195 lib/pro/admin/meta.php:89 lib/pro/admin/post.php:105
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1514,7 +1514,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:114 lib/meta.php:173 lib/post.php:476
+#: lib/gpl/admin/post.php:114 lib/meta.php:176 lib/post.php:476
 #: lib/pro/admin/post.php:147
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2701,182 +2701,182 @@ msgid ""
 "%s, etc., to define alternate option values for different languages."
 msgstr ""
 
-#: lib/meta.php:97
+#: lib/meta.php:100
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:98
+#: lib/meta.php:101
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:99
+#: lib/meta.php:102
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:100
+#: lib/meta.php:103
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:101
+#: lib/meta.php:104
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:158
+#: lib/meta.php:161
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:164
+#: lib/meta.php:167
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:168
+#: lib/meta.php:171
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:180 lib/meta.php:196
+#: lib/meta.php:183 lib/meta.php:199
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:201
+#: lib/meta.php:204
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:302
+#: lib/meta.php:305
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:305
+#: lib/meta.php:308
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:305
+#: lib/meta.php:308
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:305
+#: lib/meta.php:308
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:308
+#: lib/meta.php:311
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:308
+#: lib/meta.php:311
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:308
+#: lib/meta.php:311
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:311
+#: lib/meta.php:314
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:311
+#: lib/meta.php:314
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:311
+#: lib/meta.php:314
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:317
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:317
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:317
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:314
+#: lib/meta.php:317
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:318
+#: lib/meta.php:321
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:318
+#: lib/meta.php:321
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and the "
 "AMP markup of your templates."
 msgstr ""
 
-#: lib/meta.php:318
+#: lib/meta.php:321
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/meta.php:318
+#: lib/meta.php:321
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:505
+#: lib/meta.php:508
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

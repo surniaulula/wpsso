@@ -28,6 +28,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'link_desc' => 'seo_desc',
 					'meta_desc' => 'seo_desc',
 				),
+				503 => array(
+					'schema_recipe_calories' => 'schema_recipe_nutri_cal',
+				),
 			),
 		);
 

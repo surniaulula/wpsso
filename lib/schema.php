@@ -1296,9 +1296,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $itemprop_added;
 		}
 
-		public static function get_data_itemprop_from_assoc( array $assoc, array $names ) {
+		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
+				if ( isset( $assoc[$key_name] ) && 
+					! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
 					$ret[$itemprop_name] = $assoc[$key_name];
 				}
 			}
