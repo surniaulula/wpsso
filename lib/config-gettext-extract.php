@@ -2,7 +2,7 @@
 // extract of translatable text strings from static config array(s)
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
-_x( 'Automatically create complete and accurate meta tags and Schema markup from your content for Social Sharing Optimization (SSO) and SEO.', 'plugin description', 'wpsso' );
+_x( 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
