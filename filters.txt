@@ -40,10 +40,8 @@
 'wpsso_get_avail' ( $ret );
 'wpsso_get_config' ( $cf, $plugin_version );
 'wpsso_get_defaults' ( $defaults );
-'wpsso_get_options' ( $options );
 'wpsso_get_post_options' ( $options, $post_id );	// Pro version
 'wpsso_get_site_defaults' ( $defaults );
-'wpsso_get_site_options' ( $options );
 'wpsso_get_term_options' ( $options, $term_id );	// Pro version
 'wpsso_get_user_options' ( $options, $user_id );	// Pro version
 'wpsso_hashtags' ( $hashtags, $post_id );
