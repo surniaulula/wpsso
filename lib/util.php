@@ -501,11 +501,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {
 
+			if ( is_array( $val ) )	// just in case
+				return $val;	// stop here
+
 			// remove multiples, localization, and status for more generic match
 			$option_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $key );
 
-			// hooked by the sharing class
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $option_key, $network, $mod );
+			// hooked by several extensions
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type',
+				false, $option_key, $network, $mod );
 
 			// translate error messages only once
 			if ( $this->sanitize_error_msgs === null ) {
@@ -741,23 +745,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret = array();
-			$comment_prefix = $this->p->cf['lca'].' meta tags ';
+			$lca = $this->p->cf['lca'];
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 
-			if ( $remove_self && strpos( $html, $comment_prefix.'begin' ) !== false ) {
+			if ( $remove_self && 
+				strpos( $html, $lca.' meta tags begin' ) !== false ) {	// quick check
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'removing self meta tags' );
 
-				$regex_begin = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$this->p->cf['lca'].':mark"[\s\n\r]+content=")';
-				$regex_end = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// make space and slash optional for html optimizers
+				$re_pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark"[\s\n\r]+content=")';
+				$re_post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
 
-				$html = preg_replace( '/'.$regex_begin.$comment_prefix.'begin'.$regex_end.'.*'.
-					$regex_begin.$comment_prefix.'end'.$regex_end.'/ums',	// enable UTF8 functionality
-						'<!-- '.$this->p->cf['lca'].' meta tags removed -->', $html, -1, $count );
+				$html = preg_replace( '/'.$re_pre.$lca.' meta tags begin'.$re_post.'.*'.
+					$re_pre.$lca.' meta tags end'.$re_post.'/ums',	// enable utf8 functionality
+						'<!-- '.$lca.' meta tags removed -->', $html, -1, $count );
 
 				if ( ! $count ) {
 					if ( is_admin() ) {
-						$lca = $this->p->cf['lca'];
 						$short = $this->p->cf['plugin'][$lca]['short'];
 						$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %s meta tag block - this could be an indication of an issue with the PHP PCRE library.', 'wpsso' ), $short ) );
 						return false;

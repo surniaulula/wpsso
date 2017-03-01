@@ -77,10 +77,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function activate_plugin() {
-			$lca = WpssoConfig::$cf['lca'];
-			$uca = strtoupper( $lca );
-			$short = WpssoConfig::$cf['plugin'][$lca]['short'];
-			$version = WpssoConfig::$cf['plugin'][$lca]['version'];
+			$short = WpssoConfig::$cf['plugin']['wpsso']['short'];
+			$version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 				switch ( $key ) {
@@ -111,23 +109,23 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_objects( true );	// $activate = true
 			$this->p->util->clear_all_cache( true );	// $clear_ext = true
 
-			WpssoUtil::save_all_times( $lca, $version );
-			set_transient( $lca.'_activation_redirect', true, 60 * 60 );
+			WpssoUtil::save_all_times( 'wpsso', $version );
+			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
 
 			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
-				( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) ) ) {
+				( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) ) ) {
 
 				$this->p->options = $this->p->opt->get_defaults();
 				unset( $this->p->options['options_filtered'] );	// just in case
 
-				delete_option( constant( $uca.'_OPTIONS_NAME' ) );
-				add_option( constant( $uca.'_OPTIONS_NAME' ), $this->p->options, null, 'yes' );	// autoload = yes
+				delete_option( constant( 'WPSSO_OPTIONS_NAME' ) );
+				add_option( constant( 'WPSSO_OPTIONS_NAME' ), $this->p->options, null, 'yes' );	// autoload = yes
 
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'default options have been added to the database' );
 
-				if ( defined( $uca.'_RESET_ON_ACTIVATE' ) && constant( $uca.'_RESET_ON_ACTIVATE' ) )
-					$this->p->notice->warn( $uca.'_RESET_ON_ACTIVATE constant is true &ndash; 
+				if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) )
+					$this->p->notice->warn( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
 						plugin options have been reset to their default values.' );
 			}
 		}
