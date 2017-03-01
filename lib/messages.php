@@ -388,6 +388,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
 									_x( 'Recipe Ingredients', 'option label', 'wpsso' ) );
 							// no break - fall through
+						case 'tooltip-plugin_cf_recipe_instructions':
+							if ( ! isset( $plugin_cf_info ) )
+								$plugin_cf_info = array(
+									_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
+									_x( 'Recipe Instructions', 'option label', 'wpsso' ) );
+							// no break - fall through
 						case 'tooltip-plugin_cf_product_avail':
 							if ( ! isset( $plugin_cf_info ) )
 								$plugin_cf_info = array(

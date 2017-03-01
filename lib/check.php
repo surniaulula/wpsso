@@ -81,7 +81,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
-						case 'review-wppr':
+						case 'recipe-wprecipemaker':
+							$chk['plugin'] = 'wp-recipe-maker/wp-recipe-maker.php';
+							break;
+						case 'recipe-wpultimaterecipe':
+							$chk['plugin'] = 'wp-ultimate-recipe/wp-ultimate-recipe.php';
+							break;
+						case 'review-wpproductreview':
 							$chk['plugin'] = 'wp-product-review/wp-product-review.php';
 							break;
 						case 'seo-aioseop':

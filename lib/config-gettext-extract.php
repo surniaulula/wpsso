@@ -50,6 +50,7 @@ _x( 'Product Currency Custom Field', 'option label', 'wpsso' );
 _x( 'Product Price Custom Field', 'option label', 'wpsso' );
 _x( 'Public Holidays', 'option value', 'wpsso' );
 _x( 'Recipe Ingredients Custom Field', 'option label', 'wpsso' );
+_x( 'Recipe Instructions Custom Field', 'option label', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
 _x( 'Saturday', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );

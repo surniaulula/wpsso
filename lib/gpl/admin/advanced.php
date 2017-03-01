@@ -227,8 +227,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_wpseo_social_meta' ).
 			'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
 
-			foreach ( $this->p->cf['opt']['cf_md_idx'] as $cf_idx => $md_idx ) {
-				if ( $label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',
+				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+
+				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) &&	// just in case
+					$label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+
+					if ( empty( $md_idx ) )	// custom fields can be disabled by filters
+						$this->p->options[$cf_idx] = '';
+
 					$table_rows[$cf_idx] = '<tr class="hide_in_basic">'.
 					$form->get_th_html( _x( $label,
 						'option label', 'wpsso' ), null, $cf_idx ).

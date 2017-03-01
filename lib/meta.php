@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev = $this->get_options( $mod['id'] );
 
 			/*
-			 * Remove version strings
+			 * Remove plugin / extension version strings.
 			 */
 			$unset_keys = array( 'options_filtered', 'options_version' );
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Merge and sanitize the new options
+			 * Merge and sanitize the new options.
 			 */
 			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
 				array() : $_POST[ WPSSO_META_NAME ];
@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// $network = false
 
 			/*
-			 * Image size options (id, prefix, width, height, crop, etc.)
+			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
 				if ( empty( $opts[$md_pre.'_img_id'] ) )
@@ -577,13 +577,30 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Mark the new options as current
+			 * Renumber multi options (example: recipe ingredients and instructions).
+			 */
+			foreach ( $this->p->cf['opt']['md_multi'] as $md_multi => $is_multi ) {
+				$md_renum = array();	// start with a fresh array
+				foreach ( SucomUtil::preg_grep_keys( '/^'.$md_multi.'_[0-9]+$/', $opts ) as $key => $val ) {
+					unset( $opts[$key] );
+					if ( ! empty( $val ) ) {
+						$md_renum[] = $val;
+					}
+				}
+				foreach ( $md_renum as $num => $val ) {	// start at 0
+					$opts[$md_multi.'_'.$num] = $val;
+				}
+			}
+
+			/*
+			 * Mark the new options as current.
 			 */
 			if ( ! empty( $opts ) ) {
 				$opts['options_version'] = $this->p->cf['opt']['version'];
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['opt_version'] ) )
+					if ( isset( $info['opt_version'] ) ) {
 						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
+					}
 				}
 			}
 
@@ -912,17 +929,23 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 
-			foreach ( $this->p->cf['opt']['cf_md_idx'] as $cf_idx => $md_idx ) {
+			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',
+				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
+				// custom fields can be disabled by filters
+				if ( empty( $md_idx ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'custom field '.$cf_idx.' index is disabled' );
+					continue;
 				// check that a custom field meta key has been defined
 				// example: 'plugin_cf_img_url' = '_format_image_url'
-				if ( ! empty( $this->p->options[$cf_idx] ) ) {
+				} elseif ( ! empty( $this->p->options[$cf_idx] ) ) {
 					$meta_key = $this->p->options[$cf_idx];
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom field '.$cf_idx.' has meta key '.$meta_key );
+						$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
 				} else {
 					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'custom field '.$cf_idx.' is empty' );
+						$this->p->debug->log( 'custom field '.$cf_idx.' option is empty' );
 					continue;
 				}
 
@@ -933,21 +956,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$mixed =& $all_meta[$meta_key][0];
 				} else continue;
 
+				$mixed = maybe_unserialize( $mixed );
 				$values = array();
 
 				// decode the string or each array element
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
-					foreach ( $mixed as $value )
-						$values[] = html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset );
+					foreach ( $mixed as $value ) {
+						if ( is_array( $value ) ) {
+							$value = SucomUtil::array_implode( $value );
+						}
+						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset ) );
+					}
 				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'decoding '.$meta_key.' as string of '.strlen( $mixed ).' chars' );
-					$values[] = html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset );
+					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
-				// example: 'schema_recipe_ingredient'
 				if ( ! empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
 					if ( ! is_array( $mixed ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array

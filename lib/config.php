@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.2-dev2',	// plugin version
+					'version' => '3.40.2-dev3',	// plugin version
 					'opt_version' => '503',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -684,7 +684,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_cooktime' => 1,		// Schema Recipe
 					'add_meta_itemprop_totaltime' => 1,		// Schema Recipe
 					'add_meta_itemprop_recipeyield' => 1,		// Schema Recipe
-					'add_meta_itemprop_ingredients' => 1,		// Schema Recipe
+					'add_meta_itemprop_recipeingredient' => 1,	// Schema Recipe (supersedes ingredients)
+					'add_meta_itemprop_recipeinstructions' => 1,	// Schema Recipe
 					/*
 					 * Advanced Settings
 					 */
@@ -748,6 +749,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => '_format_video_url',
 					'plugin_cf_vid_embed' => '',
 					'plugin_cf_recipe_ingredients' => '',
+					'plugin_cf_recipe_instructions' => '',
 					'plugin_cf_product_avail' => '',
 					'plugin_cf_product_price' => '',
 					'plugin_cf_product_currency' => '',
@@ -905,12 +907,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => 'og_vid_url',
 					'plugin_cf_vid_embed' => 'og_vid_embed',
 					'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
+					'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 					'plugin_cf_product_avail' => 'product_avail',
 					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_currency' => 'product_currency',
 				),
 				'md_multi' => array(		// read values into numeric meta data index
 					'schema_recipe_ingredient' => true,
+					'schema_recipe_instruction' => true,
 				),
 			),
 			'um' => array(				// update manager
@@ -1081,6 +1085,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url' => 'Video URL Custom Field',
 					'plugin_cf_vid_embed' => 'Video Embed HTML Custom Field',
 					'plugin_cf_recipe_ingredients' => 'Recipe Ingredients Custom Field',
+					'plugin_cf_recipe_instructions' => 'Recipe Instructions Custom Field',
 					'plugin_cf_product_avail' => 'Product Availability Custom Field',
 					'plugin_cf_product_price' => 'Product Price Custom Field',
 					'plugin_cf_product_currency' => 'Product Currency Custom Field',

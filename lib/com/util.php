@@ -909,6 +909,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $return;
 		}
 
+		public static function array_implode( array $array, $glue = ' ' ) {
+			$return = '';
+		        foreach ( $array as $value ) {
+			        if ( is_array( $value ) ) {
+					$return .= self::array_implode( $value, $glue ).$glue;
+				} else {
+					$return .= $value.$glue;
+				}
+			} 
+			return strlen( $glue ) ? rtrim( $return, $glue ) : $glue;
+		}
+
 		// array must use unique associative / string keys
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '' ) {
 			$return = array();
