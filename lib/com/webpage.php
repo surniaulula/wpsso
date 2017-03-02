@@ -306,7 +306,8 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					! empty( $hashtags ) ) 
 						$textlen = $textlen - strlen( $hashtags ) - 1;
 
-				$title = $this->p->util->limit_text_length( $title, $textlen, $trailing, false );	// $cleanup_html = false
+				$title = $this->p->util->limit_text_length( $title,
+					$textlen, $trailing, false );	// $cleanup_html = false
 			}
 
 			if ( ! empty( $paged_suffix ) ) 
@@ -476,25 +477,29 @@ if ( ! class_exists( 'SucomWebpage' ) ) {
 					$desc = 'No Description';	// just in case
 			}
 
-			$strlen_before_cleanup = $this->p->debug->enabled ? strlen( $desc ) : 0;
+			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc ) : 0;
 			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
+
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'description strlen before html cleanup '.$strlen_before_cleanup.' and after '.strlen( $desc ) );
+				$this->p->debug->log( 'description strlen before html cleanup '.$strlen_pre_cleanup.' and after '.strlen( $desc ) );
+
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 			if ( $textlen > 0 ) {
-				if ( ! empty( $add_hashtags ) && 
-					! empty( $hashtags ) ) 
-						$textlen = $textlen - strlen( $hashtags ) -1;
+				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) 
+					$textlen = $textlen - strlen( $hashtags ) -1;
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'description strlen before limit length '.strlen( $desc ).' (limiting to '.$textlen.' chars)' );
-				$desc = $this->p->util->limit_text_length( $desc, $textlen, $trailing, false );	// $cleanup_html = false
+
+				$desc = $this->p->util->limit_text_length( $desc,
+					$textlen, $trailing, false );	// $cleanup_html = false
+
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'description limit text length skipped' );
 
-			if ( ! empty( $add_hashtags ) && 
-				! empty( $hashtags ) ) 
-					$desc .= ' '.$hashtags;
+			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) 
+				$desc .= ' '.$hashtags;
 
 			if ( $encode === true ) {
 				$desc = SucomUtil::encode_emoji( htmlentities( $desc, 

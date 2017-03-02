@@ -1635,72 +1635,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return mb_decode_numericentity( $matches[0], $convmap, 'UTF-8' );
 		}
 
-		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr) for UTF8
-		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
-
-			if ( $cleanup_html === true )
-				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
-
-			$charset = get_bloginfo( 'charset' );
-			$text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
-
-			if ( $maxlen > 0 ) {
-				if ( mb_strlen( $trailing ) > $maxlen )
-					$trailing = mb_substr( $trailing, 0, $maxlen );			// trim the trailing string, if too long
-				if ( mb_strlen( $text ) > $maxlen ) {
-					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
-					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// remove trailing bits of words
-					$text = preg_replace( '/[,\.]*$/', '', $text );			// remove trailing puntuation
-				} else $trailing = '';							// truncate trailing string if text is less than maxlen
-				$text = $text.$trailing;						// trim and add trailing string (if provided)
-			}
-			//$text = htmlentities( $text, ENT_QUOTES, $charset, false );
-			$text = preg_replace( '/&nbsp;/', ' ', $text);					// just in case
-			return $text;
-		}
-
-		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
-			$alt_text = '';
-			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
-				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
-
+		public static function strip_html( $text ) {
 			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
 			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
-			$text = preg_replace( '/<!--'.$this->p->cf['lca'].'-ignore-->(.*?)<!--\/'.
-				$this->p->cf['lca'].'-ignore-->/Ui', ' ', $text);			// remove text between comment strings
-
-			if ( $strip_tags ) {
-				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
-				$text_stripped = trim( strip_tags( $text ) );				// remove remaining html tags
-
-				if ( $text_stripped === '' && $use_img_alt ) {				// possibly use img alt strings if no text
-					if ( strpos( $text, '<img ' ) !== false &&
-						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', 
-							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
-
-						foreach ( $all_matches[1] as $alt ) {
-							$alt = trim( $alt );
-							if ( ! empty( $alt ) ) {
-								$alt = empty( $alt_prefix ) ? 
-									$alt : $alt_prefix.' '.$alt;
-
-								// add a period after the image alt text if missing
-								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? 
-									$alt.' ' : $alt.'. ';
-							}
-						}
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'img alt text: '.$alt_text );
-					}
-					$text = $alt_text;
-				} else $text = $text_stripped;
-			}
-
-			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// replace 1+ spaces to a single space
-
+			$text = preg_replace( '/<\/p>/i', ' ', $text);					// replace end of paragraph with a space
+			$text = trim( strip_tags( $text ) );						// remove remaining html tags
+			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );			// replace 1+ spaces to a single space
 			return trim( $text );
 		}
 
