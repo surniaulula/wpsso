@@ -339,7 +339,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! empty( $mod['post_type'] ) && 
 					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
 						$og_type = $mod['post_type'];
-				else $og_type = 'article';
+				else $og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
+					'article' : $this->p->options['og_post_type'];
 
 			// default for everything else is 'website'
 			} else $og_type = 'website';

@@ -240,6 +240,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Description' settings
 						 */
+						case 'tooltip-og_post_type':
+							$text = __( 'The default Open Graph type for the WordPress post object (posts, pages, and custom post types). Custom post types with a matching Open Graph type name (article, book, place, product, etc.) will use that type name instead of the default selected here. Please note that each type has a unique set of meta tags, so by selecting "website" here, you are excluding all "article" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.).', 'wpsso' );
+							break;
 						case 'tooltip-og_art_section':
 							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
 							break;
