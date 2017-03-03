@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.2-"
-"rc1\n"
+"rc2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -297,31 +297,18 @@ msgstr ""
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1221
+#: lib/admin.php:1222
 msgid ""
-"<a href=\"%s\" target=\"_blank\">PHP Client URL Library (cURL) extension</a> "
-"is not loaded."
+"The PHP <a href=\"%1$s\" target=\"_blank\"> %2$s extension</a> is not loaded."
 msgstr ""
 
-#: lib/admin.php:1221 lib/admin.php:1226 lib/admin.php:1231
+#: lib/admin.php:1222
 msgid ""
-"please contact your hosting provider to have the missing PHP extension "
+"Please contact your hosting provider to have the missing PHP extension "
 "installed and/or enabled."
 msgstr ""
 
-#: lib/admin.php:1226
-msgid ""
-"<a href=\"%s\" target=\"_blank\">PHP JavaScript Object Notation (JSON) "
-"extension</a> is not loaded."
-msgstr ""
-
-#: lib/admin.php:1231
-msgid ""
-"<a href=\"%s\" target=\"_blank\">PHP Multibyte String extension</a> is not "
-"loaded."
-msgstr ""
-
-#: lib/admin.php:1238
+#: lib/admin.php:1230
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social crawlers from indexing this site. This "
@@ -330,114 +317,114 @@ msgid ""
 "crawlers to access your content."
 msgstr ""
 
-#: lib/admin.php:1247
+#: lib/admin.php:1239
 msgid ""
 "please uncheck the <strong>Add Open Graph meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1252
+#: lib/admin.php:1244
 msgid ""
 "please uncheck the <strong>Add Twitter card meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1257
+#: lib/admin.php:1249
 msgid ""
 "please uncheck the <strong>Add Google+ specific post meta data</strong> "
 "option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings "
 "tab."
 msgstr ""
 
-#: lib/admin.php:1262
+#: lib/admin.php:1254
 msgid ""
 "please remove the <strong>Google Publisher Page</strong> value entered under "
 "the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1273
+#: lib/admin.php:1265
 msgid ""
 "please disable the <strong>Open Graph Integrator</strong> module in the <a "
 "href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1284
+#: lib/admin.php:1276
 msgid ""
 "please deactivate the <strong>Social Meta</strong> feature in the <a href="
 "\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1289
+#: lib/admin.php:1281
 msgid ""
 "please check the <strong>Disable Google Plus Profile</strong> option in the "
 "<a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1294
+#: lib/admin.php:1286
 msgid ""
 "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a "
 "href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1304 lib/admin.php:1309 lib/admin.php:1314 lib/admin.php:1332
+#: lib/admin.php:1296 lib/admin.php:1301 lib/admin.php:1306 lib/admin.php:1324
 msgid ""
 "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO "
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1319
+#: lib/admin.php:1311
 msgid ""
 "please uncheck the <strong>Output Authorized Presence?</strong> option in <a "
 "href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr ""
 
-#: lib/admin.php:1343
+#: lib/admin.php:1335
 msgid ""
 "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a "
 "href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1348
+#: lib/admin.php:1340
 msgid ""
 "please uncheck <strong>Add the Twitter card in your tweets</strong> in the "
 "<a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1353
+#: lib/admin.php:1345
 msgid ""
 "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> "
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1460
+#: lib/admin.php:1452
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1472
+#: lib/admin.php:1464
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1478
+#: lib/admin.php:1470
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1486
+#: lib/admin.php:1478
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1491
+#: lib/admin.php:1483
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1494
+#: lib/admin.php:1486
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1508
+#: lib/admin.php:1500
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -3010,6 +2997,19 @@ msgstr ""
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
+msgstr ""
+
+#: lib/pro/media/slideshare.php:140 lib/pro/media/vimeo.php:124
+#: lib/pro/media/wistia.php:213
+msgid ""
+"The PHP <a href=\"%1$s\" target=\"_blank\">%2$s function</a> is not "
+"available."
+msgstr ""
+
+#: lib/pro/media/slideshare.php:140 lib/pro/media/vimeo.php:124
+#: lib/pro/media/wistia.php:213
+msgid ""
+"Please contact your hosting provider to have the missing function installed ."
 msgstr ""
 
 #: lib/pro/media/upscale.php:195
