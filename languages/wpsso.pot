@@ -3009,7 +3009,7 @@ msgstr ""
 #: lib/pro/media/slideshare.php:140 lib/pro/media/vimeo.php:124
 #: lib/pro/media/wistia.php:213
 msgid ""
-"Please contact your hosting provider to have the missing function installed ."
+"Please contact your hosting provider to have the missing function installed."
 msgstr ""
 
 #: lib/pro/media/upscale.php:195
