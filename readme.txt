@@ -369,7 +369,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Default Post / Page Type" option in the General settings page (default value is "article").
 * *Bugfixes*
 	* None
 * *Developer Notes*
