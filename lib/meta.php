@@ -626,38 +626,36 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		// return sortable column keys and their query sort info
-		public function get_sortable_columns( $idx = false ) { 
-			$lca = $this->p->cf['lca'];
-			$sortable = array( 
-				'schema_type' => array(
-					'meta_key' => '_'.$lca.'_head_info_schema_type',
-					'orderby' => 'meta_value',
-				),
-				'og_img' => array(
-					'meta_key' => '_'.$lca.'_head_info_og_img_thumb',
-					'orderby' => false,	// do not offer column sorting
-				),
-				'og_desc' => array(
-					'meta_key' => '_'.$lca.'_head_info_og_desc',
-					'orderby' => false,	// do not offer column sorting
-				),
-			);
+		public static function get_sortable_columns( $idx = false ) { 
+			$sort_cols = WpssoConfig::$cf['form']['columns'];
 			if ( $idx !== false ) {
-				if ( isset( $sortable[$idx] ) )
-					return $sortable[$idx];
+				if ( isset( $sort_cols[$idx] ) )
+					return $sort_cols[$idx];
 				else return null;
-			} else return $sortable;
+			} else return $sort_cols;
 		}
 
-		public function update_sortable_meta( $obj_id, $column_key, $content ) { 
+		// called from the uninstall static method
+		public static function get_column_meta_keys( $idx = false ) { 
+			$meta_keys = array();
+			$sort_cols = self::get_sortable_columns( $idx = false );
+			foreach ( $sort_cols as $col_idx => $col_info ) {
+				if ( ! empty( $col_info['meta_key'] ) ) {
+					$meta_keys[] = $col_info['meta_key'];
+				}
+			}
+			return $meta_keys;
+		}
+
+		public function update_sortable_meta( $obj_id, $col_idx, $content ) { 
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function add_sortable_columns( $columns ) { 
 			$lca = $this->p->cf['lca'];
-			foreach ( $this->get_sortable_columns() as $column_key => $sort_cols ) {
-				if ( ! empty( $sort_cols['orderby'] ) ) {
-					$columns[$lca.'_'.$column_key] = $lca.'_'.$column_key;
+			foreach ( self::get_sortable_columns() as $col_idx => $col_info ) {
+				if ( ! empty( $col_info['orderby'] ) ) {
+					$columns[$lca.'_'.$col_idx] = $lca.'_'.$col_idx;
 				}
 			}
 			return $columns;
@@ -665,13 +663,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function set_column_orderby( $query ) { 
 			$lca = $this->p->cf['lca'];
-			$column_name = $query->get( 'orderby' );
-			if ( $column_name && strpos( $column_name, $lca.'_' ) === 0 ) {
-				$column_key = str_replace( $lca.'_', '', $column_name );
-				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
+			$col_name = $query->get( 'orderby' );
+			if ( $col_name && strpos( $col_name, $lca.'_' ) === 0 ) {
+				$col_idx = str_replace( $lca.'_', '', $col_name );
+				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
-						if ( ! empty( $sort_cols[$set_name] ) ) {
-							$query->set( $set_name, $sort_cols[$set_name] );
+						if ( ! empty( $col_info[$set_name] ) ) {
+							$query->set( $set_name, $col_info[$set_name] );
 						}
 					}
 				}
@@ -681,11 +679,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
 				$lca = $this->p->cf['lca'];
-				foreach ( $this->get_column_headings() as $column_key => $label ) {
-					if ( ! empty( $this->p->options['plugin_'.$column_key.'_col_'.$mod_name] ) ) {
-						$columns[$lca.'_'.$column_key] = $label;
+				foreach ( $this->get_column_headings() as $col_idx => $label ) {
+					if ( ! empty( $this->p->options['plugin_'.$col_idx.'_col_'.$mod_name] ) ) {
+						$columns[$lca.'_'.$col_idx] = $label;
 						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'adding '.$lca.'_'.$column_key.' column' );
+							$this->p->debug->log( 'adding '.$lca.'_'.$col_idx.' column' );
 					}
 				}
 			}

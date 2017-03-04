@@ -25,7 +25,6 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		public function admin_enqueue_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
-			$url_path = constant( strtoupper( $this->p->cf['lca'] ).'_URLPATH' );
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
 			// https://developers.google.com/speed/libraries/
@@ -35,19 +34,19 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 			// http://qtip2.com/download
 			wp_register_style( 'jquery-qtip.js',
-				$url_path.'css/ext/jquery-qtip.min.css',
+				WPSSO_URLPATH.'css/ext/jquery-qtip.min.css',
 					array(), '3.0.3' );
 
 			wp_register_style( 'sucom-setting-pages',
-				$url_path.'css/com/setting-pages.min.css',
+				WPSSO_URLPATH.'css/com/setting-pages.min.css',
 					array(), $plugin_version );
 
 			wp_register_style( 'sucom-table-setting',
-				$url_path.'css/com/table-setting.min.css',
+				WPSSO_URLPATH.'css/com/table-setting.min.css',
 					array(), $plugin_version );
 
 			wp_register_style( 'sucom-metabox-tabs',
-				$url_path.'css/com/metabox-tabs.min.css',
+				WPSSO_URLPATH.'css/com/metabox-tabs.min.css',
 					array(), $plugin_version );
 
 			if ( $this->p->debug->enabled ) {
@@ -132,15 +131,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		private function admin_inline_styles( $hook_name ) {
 			$lca = $this->p->cf['lca'];
-			$cf_form =& $this->p->cf['form'];
+			$sort_cols = WpssoMeta::get_sortable_columns();
 			echo '<style type="text/css">';
 			if ( isset( $this->p->cf['menu_color'] ) ) {
-				$uca = strtoupper( $lca );
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
-				$icon_highlight = ( defined( $uca.'_MENU_ICON_HIGHLIGHT' )  &&
-					constant( $uca.'_MENU_ICON_HIGHLIGHT' ) === false ) ?
-						false : true;
+				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
+					WPSSO_MENU_ICON_HIGHLIGHT ? true : false;
 				if ( $icon_highlight ) 
 					echo '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
@@ -185,15 +182,15 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		width:20%;	/* default is 25% */
 	}
 	.column-'.$lca.'_og_img { 
-		width:'.$cf_form['og_img_col_width'].' !important;
-		min-width:'.$cf_form['og_img_col_width'].' !important;
+		width:'.$sort_cols['og_img']['width'].' !important;
+		min-width:'.$sort_cols['og_img']['width'].' !important;
 	}
 	.column-'.$lca.'_og_img .preview_img { 
-		width:'.$cf_form['og_img_col_width'].';
-		height:'.$cf_form['og_img_col_height'].';
-		min-width:'.$cf_form['og_img_col_width'].';
-		min-height:'.$cf_form['og_img_col_height'].';
-		background-size:'.$cf_form['og_img_col_width'].' auto;
+		width:'.$sort_cols['og_img']['width'].';
+		height:'.$sort_cols['og_img']['height'].';
+		min-width:'.$sort_cols['og_img']['width'].';
+		min-height:'.$sort_cols['og_img']['height'].';
+		background-size:'.$sort_cols['og_img']['width'].' auto;
 		background-position:center center;
 		background-repeat:no-repeat;
 		background-position:center middle;
@@ -202,13 +199,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		padding:0;
 	}
 	.column-'.$lca.'_og_desc {
-		width:'.$cf_form['og_desc_col_width'].';
-		min-width:'.$cf_form['og_desc_col_width'].';
+		width:'.$sort_cols['og_desc']['width'].';
+		min-width:'.$sort_cols['og_desc']['width'].';
 		overflow:hidden;
 	}
 	.column-'.$lca.'_schema_type {
-		width:'.$cf_form['schema_type_col_width'].' !important;
-		min-width:'.$cf_form['schema_type_col_width'].' !important;
+		width:'.$sort_cols['schema_type']['width'].' !important;
+		min-width:'.$sort_cols['schema_type']['width'].' !important;
 		white-space:nowrap;
 		overflow:hidden;
 	}

@@ -170,10 +170,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$lca = $this->p->cf['lca'];
 			$value = '';
 			if ( ! empty( $post_id ) ) {	// just in case
-				$column_key = str_replace( $lca.'_', '', $column_name );
-				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
-					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
-						$value = (string) get_post_meta( $post_id, $sort_cols['meta_key'], true );	// $single = true
+				$col_idx = str_replace( $lca.'_', '', $column_name );
+				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+						$value = (string) get_post_meta( $post_id, $col_info['meta_key'], true );	// $single = true
 						if ( $value === 'none' )
 							$value = '';
 					}
@@ -182,11 +182,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $value;
 		}
 
-		public function update_sortable_meta( $post_id, $column_key, $content ) { 
+		public function update_sortable_meta( $post_id, $col_idx, $content ) { 
 			if ( ! empty( $post_id ) ) {	// just in case
-				if ( ( $sort_cols = $this->get_sortable_columns( $column_key ) ) !== null ) {
-					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
-						update_post_meta( $post_id, $sort_cols['meta_key'], $content );
+				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+						update_post_meta( $post_id, $col_info['meta_key'], $content );
 					}
 				}
 			}

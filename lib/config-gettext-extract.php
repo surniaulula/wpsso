@@ -1,8 +1,13 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array(s)
+_x( '120px', 'option value', 'wpsso' );
+_x( '12%', 'option value', 'wpsso' );
+_x( '37px', 'option value', 'wpsso' );
+_x( '70px', 'option value', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.', 'plugin description', 'wpsso' );
+_x( 'auto', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
@@ -31,6 +36,7 @@ _x( 'In Store Only', 'option value', 'wpsso' );
 _x( 'Left', 'option value', 'wpsso' );
 _x( 'Limited Availability', 'option value', 'wpsso' );
 _x( 'LinkedIn Company Page URL', 'option value', 'wpsso' );
+_x( 'meta_value', 'option value', 'wpsso' );
 _x( 'Monday', 'option value', 'wpsso' );
 _x( 'MySpace Business Page URL', 'option value', 'wpsso' );
 _x( 'New activation', 'option value', 'wpsso' );
@@ -79,6 +85,9 @@ _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta ta
 _x( 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WordPress Social Sharing Optimization (WPSSO) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to remove outdated Schema Microdata, leaving the superior Schema JSON-LD markup untouched for Google and Bing.', 'plugin description', 'wpsso' );
+_x( '_wpsso_head_info_og_desc', 'option value', 'wpsso' );
+_x( '_wpsso_head_info_og_img_thumb', 'option value', 'wpsso' );
+_x( '_wpsso_head_info_schema_type', 'option value', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your Social Settings', 'lib file description', 'wpsso' );

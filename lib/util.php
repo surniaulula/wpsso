@@ -325,15 +325,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_cache_flush();	// clear non-database transients as well
 
+			$this->delete_expired_db_transients( true );
+			$this->delete_all_cache_files();
+			$this->delete_all_column_meta();
+
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$del_files = $this->delete_all_cache_files();
-			$del_transients = $this->delete_expired_db_transients( true );
-			$ext_cache_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
-			$clear_all_msg = sprintf( __( '%s cached files, transient cache, and the WordPress object cache have been cleared.',
+			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
 				'wpsso' ), $short );
 
 			if ( $clear_ext ) {
+				$ext_cache_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
+
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
@@ -348,6 +351,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
 					$GLOBALS['comet_cache']->wipe_cache();
 					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'Comet Cache' );
+
 				} elseif ( isset( $GLOBALS['zencache'] ) ) {		// zencache
 					$GLOBALS['zencache']->wipe_cache();
 					$clear_all_msg .= ' '.sprintf( $ext_cache_msg, 'ZenCache' );
@@ -355,8 +359,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$this->p->notice->inf( $clear_all_msg, true, $msg_id, $dismiss );
-
-			return $del_files + $del_transients;
 		}
 
 		public function clear_cache_objects( array $transients, array $wp_objects ) {
@@ -397,7 +399,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
 				(int) $_SERVER['REQUEST_TIME'] : time() ; 
 			if ( $all ) {
-				$prefix = '_transient_';	// clear all transient, even if no timeout value
+				$prefix = '_transient_';	// clear all transients, even if no timeout value
 				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
 					' WHERE option_name LIKE \''.$prefix.$lca.'_%\';';
 			} else {
@@ -408,18 +410,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 			$expired = $wpdb->get_col( $dbquery ); 
 			$deleted = 0;
-			foreach( $expired as $transient ) { 
-				$key = str_replace( $prefix, '', $transient );
+			foreach( $expired as $option_name ) { 
+				$transient_name = str_replace( $prefix, '', $option_name );
 				/*
 				 * If clearing all transients, skip the shortened URL transients 
 				 * unless the "Clear Short URLs on Clear All Cache" option is checked.
 				 */
 				if ( $all ) {
 					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
-						strpos( $key, $lca.'_sh' ) === 0 )
+						strpos( $transient_name, $lca.'_sh' ) === 0 )
 							continue;
 				}
-				if ( delete_transient( $key ) )
+				if ( delete_transient( $ttransient_name ) )
 					$deleted++;
 			}
 			return $deleted;
@@ -452,6 +454,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				closedir( $dh );
 			}
 			return $deleted;
+		}
+
+		public function delete_all_column_meta() {
+			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+
+			foreach ( $col_meta_keys as $meta_key ) {
+				delete_post_meta_by_key( $meta_key );
+			}
+
+			foreach ( get_users() as $user ) {
+				foreach ( $col_meta_keys as $meta_key ) {
+					delete_user_meta( $user->ID, $meta_key );
+				}
+			}
+
+			foreach ( WpssoTerm::get_public_terms() as $term_id ) {
+				foreach ( $col_meta_keys as $meta_key ) {
+					WpssoTerm::delete_term_meta( $term_id, $meta_key );
+				}
+			}
 		}
 
 		public function get_article_topics() {

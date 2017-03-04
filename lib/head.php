@@ -173,29 +173,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Save meta tag values for later sorting in edit tables
 			 */
-			foreach ( $mod['obj']->get_sortable_columns() as $column_key => $sort_cols ) {
-				if ( empty( $sort_cols['meta_key'] ) )	// just in case
+			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
+				if ( empty( $col_info['meta_key'] ) )	// just in case
 					continue;
-				switch ( $column_key ) {
+				$meta_value = 'none';
+				switch ( $col_idx ) {
 		 			case 'schema_type':
-						$meta_value = isset( $head_info['schema:type:id'] ) ?
-							$head_info['schema:type:id'] : 'none';
+						if ( isset( $head_info['schema:type:id'] ) )
+							$meta_value = $head_info['schema:type:id'];
 						break;
 					case 'og_img':
-						$meta_value = ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) ?
-							$og_img : 'none';
+						if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) )
+							$meta_value = $og_img;
 						break;
 					case 'og_desc':
-						$meta_value = isset( $head_info['og:description'] ) ?
-							$head_info['og:description'] : 'none';
-						break;
-					default:
-						$meta_value = 'none';	// just in case
+						if ( isset( $head_info['og:description'] ) )
+							$meta_value = $head_info['og:description'];
 						break;
 				}
 				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'sortable meta for '.$mod['name'].' id '.$mod['id'].' '.$column_key.' = '.$meta_value );
-				$mod['obj']->update_sortable_meta( $mod['id'], $column_key, $meta_value );
+					$this->p->debug->log( 'sortable meta for '.$mod['name'].' id '.$mod['id'].' '.$col_idx.' = '.$meta_value );
+				$mod['obj']->update_sortable_meta( $mod['id'], $col_idx, $meta_value );
 			}
 
 			return $head_info;
