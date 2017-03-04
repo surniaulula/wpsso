@@ -82,7 +82,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$og_ns = array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
-				'article' => 'http://ogp.me/ns/article#',
 			);
 
 			// check if the og_type is known and add it's namespace value
@@ -112,6 +111,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			return trim( $html_attr );
+		}
+
+		public function get_og_type( array $mod ) {
+
+			$lca = $this->p->cf['lca'];
+
+			// an index or static home page should always be 'website'
+			if ( $mod['is_home'] ) {
+				$og_type = 'website';
+
+			// singular posts / pages are articles by default
+			} elseif ( $mod['is_post'] ) {
+
+				// check the post_type for a match with a known open graph type
+				if ( ! empty( $mod['post_type'] ) && 
+					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
+						$og_type = $mod['post_type'];
+				else $og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
+					'article' : $this->p->options['og_post_type'];
+
+			// default for everything else is 'website'
+			} else $og_type = 'website';
+
+			return apply_filters( $lca.'_og_type', $og_type, $mod );
 		}
 
 		public function get_array( array $mod, array $mt_og, $crawler_name = false ) {
@@ -178,66 +201,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				$mt_og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
-			}
-
-			// if the page is an article, then define the other article meta tags
-			if ( isset( $mt_og['og:type'] ) ) {
-				if ( $mt_og['og:type'] === 'article' ) {
-
-					if ( ! isset( $mt_og['article:author'] ) ) {
-						if ( $mod['is_post'] && isset( $this->p->m['util']['user'] ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'getting names / urls for article:author meta tags' );
-
-							$user_mod =& $this->p->m['util']['user'];
-							if ( $mod['post_author'] ) {
-								$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
-								$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'],
-									$this->p->options['fb_author_name'] );
-							} else $mt_og['article:author'] = array();
-	
-							if ( ! empty( $mod['post_coauthors'] ) ) {
-								$mt_og['article:author'] = array_merge( $mt_og['article:author'],
-									$user_mod->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
-							}
-						}
-					}
-
-					if ( ! isset( $mt_og['article:publisher'] ) )
-						$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url',
-							$this->p->options, $mod );
-
-					if ( ! isset( $mt_og['article:tag'] ) )
-						$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
-
-					if ( ! isset( $mt_og['article:section'] ) )
-						$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
-
-					if ( ! isset( $mt_og['article:published_time'] ) )
-						$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
-
-					if ( ! isset( $mt_og['article:modified_time'] ) )
-						$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
-				
-				} elseif ( $mt_og['og:type'] === 'product' ) {
-
-					if ( ! isset( $mt_og['product:availability'] ) )
-						$mt_og['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
-
-					if ( ! isset( $mt_og['product:price:amount'] ) )
-						$mt_og['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
-
-					if ( ! isset( $mt_og['product:price:currency'] ) )
-						$mt_og['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
-
-					// sanity checks
-					if ( $mt_og['product:availability'] === 'none' )
-						unset( $mt_og['product:availability'] );
-
-					if ( ! is_numeric( $mt_og['product:price:amount'] ) )
-						unset( $mt_og['product:price:amount'], 
-							$mt_og['product:price:currency'] );
-				}
 			}
 
 			// get all videos
@@ -322,31 +285,102 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} 
 			}
 
+			/*
+			 * If the module is a post object, define the author, publishing date, etc.
+			 * If the og:type is not an article, these values may still be used by other 
+			 * filters, and the meta tags will be sanitized at the end of 
+			 * WpssoHead::get_head_array().
+			 */
+			if ( $mod['is_post'] ) {
+
+				if ( ! isset( $mt_og['article:author'] ) ) {
+
+					if ( $mod['is_post'] && isset( $this->p->m['util']['user'] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
+						}
+
+						$user_mod =& $this->p->m['util']['user'];
+
+						if ( $mod['post_author'] ) {
+							$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
+							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'],
+								$this->p->options['fb_author_name'] );
+						} else {
+							$mt_og['article:author'] = array();
+						}
+
+						if ( ! empty( $mod['post_coauthors'] ) ) {
+							$mt_og['article:author'] = array_merge( $mt_og['article:author'],
+								$user_mod->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
+						}
+					}
+				}
+
+				if ( ! isset( $mt_og['article:publisher'] ) )
+					$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url',
+						$this->p->options, $mod );
+
+				if ( ! isset( $mt_og['article:tag'] ) )
+					$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
+
+				if ( ! isset( $mt_og['article:section'] ) )
+					$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
+
+				if ( ! isset( $mt_og['article:published_time'] ) )
+					$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
+
+				if ( ! isset( $mt_og['article:modified_time'] ) )
+					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+			}
+
+			if ( isset( $mt_og['og:type'] ) ) {
+
+				if ( $mt_og['og:type'] === 'product' ) {
+
+					if ( ! isset( $mt_og['product:availability'] ) )
+						$mt_og['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
+
+					if ( ! isset( $mt_og['product:price:amount'] ) )
+						$mt_og['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
+
+					if ( ! isset( $mt_og['product:price:currency'] ) )
+						$mt_og['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
+
+					// sanity checks
+					if ( $mt_og['product:availability'] === 'none' )
+						unset( $mt_og['product:availability'] );
+
+					if ( ! is_numeric( $mt_og['product:price:amount'] ) )
+						unset( $mt_og['product:price:amount'], 
+							$mt_og['product:price:currency'] );
+				}
+			}
+
 			return apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
-		public function get_og_type( array $mod ) {
+		// remove extra / internal meta tags
+		public function sanitize_array( array $mod, array $mt_og ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
 
-			$lca = $this->p->cf['lca'];
+			if ( empty( $mt_og['og:type'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'og:type is empty and required for sanitation' );
+				return $mt_og;
+			}
 
-			// an index or static home page should always be 'website'
-			if ( $mod['is_home'] ) {
-				$og_type = 'website';
+			foreach ( $mt_og as $mt_name => $mt_val ) {
+				if ( ! preg_match( '/^(fb|og|'.$mt_og['og:type'].'):/', $mt_name ) ) {
+					if ( $this->p->debug->enabled )
+						$this->p->debug->log( 'removing extra meta tag '.$mt_name );
+					unset( $mt_og[$mt_name] );
+				}
+			}
 
-			// singular posts / pages are articles by default
-			} elseif ( $mod['is_post'] ) {
-
-				// check the post_type for a match with a known open graph type
-				if ( ! empty( $mod['post_type'] ) && 
-					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
-						$og_type = $mod['post_type'];
-				else $og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
-					'article' : $this->p->options['og_post_type'];
-
-			// default for everything else is 'website'
-			} else $og_type = 'website';
-
-			return apply_filters( $lca.'_og_type', $og_type, $mod );
+			return $mt_og;
 		}
 
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {

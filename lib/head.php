@@ -296,17 +296,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->notice->set_reference_url( $sharing_url );
 
 			// define the author_id (if one is available)
-			if ( $mod['is_post'] ) {
-				if ( $mod['post_author'] )
-					$author_id = $mod['post_author'];
-				else $author_id = false;
-			} elseif ( $mod['is_user'] ) {
-				$author_id = $mod['id'];
-			} else $author_id = false;
-
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'author id = '.
-					( $author_id === false ? 'false' : (int) $author_id ) );
+			$author_id = WpssoUser::get_author_id( $mod );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'author_id = '.( $author_id === false ? 'false' : $author_id ) );
+			}
 
 			/*
 			 * Open Graph
@@ -327,24 +320,30 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Name / SEO meta tags
 			 */
 			$mt_name = array();
+
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				// fallback for authors without a Facebook page URL in their user profile
 				if ( empty( $mt_og['article:author'] ) &&
-					is_object( $this->p->m['util']['user'] ) )	// just in case
-						$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
-							$this->p->options['fb_author_name'] );
+					is_object( $this->p->m['util']['user'] ) ) {	// just in case
+
+					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
+						$this->p->options['fb_author_name'] );
+				}
 			}
 
-			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) )
+			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) ) {
 				$mt_name['canonical'] = $this->p->util->get_canonical_url( $mod );
+			}
 
-			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
+			if ( ! empty( $this->p->options['add_meta_name_description'] ) ) {
 				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'],
 					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
+			}
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
-				if ( ! empty( $this->p->options['rp_dom_verify'] ) )
+				if ( ! empty( $this->p->options['rp_dom_verify'] ) ) {
 					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
+				}
 			}
 
 			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $mod );
@@ -355,21 +354,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$link_rel = array();
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
-				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) )	// just in case
+				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) ) {	// just in case
 					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 						$this->p->options['seo_author_field'] );
+				}
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {
-				if ( ! empty( $this->p->options['seo_publisher_url'] ) )
+				if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
+				}
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
-				if ( $mod['is_post'] )
+				if ( $mod['is_post'] ) {
 					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );
-				else $link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
-					$mt_og['og:url'], $this->p->options['plugin_shortener'] );
+				} else {
+					$link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
+						$mt_og['og:url'], $this->p->options['plugin_shortener'] );
+				}
 			}
 
 			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $mod );
@@ -385,22 +388,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
 
 			/*
-			 * Clean-up open graph meta tags
-			 */
-			$og_types =& $this->p->cf['head']['og_type_mt'];
-			foreach ( $og_types as $og_type => $mt_names ) {
-				if ( $og_type === $mt_og['og:type'] )
-					continue;
-				foreach ( $mt_names as $key ) {
-					if ( isset( $mt_og[$key] ) && ! isset( $og_types[$mt_og['og:type']][$key] ) ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'non-matching '.$mt_og['og:type'].' meta tag - unsetting '.$key );
-						unset( $og[$key] );
-					}
-				}
-			}
-
-			/*
 			 * Generator meta tags
 			 */
 			$mt_gen['generator'] = $this->p->check->get_ext_list();
@@ -408,6 +395,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Combine and return all meta tags
 			 */
+			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// remove extra / internal meta tags
+
 			$head_array[$head_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),

@@ -457,6 +457,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $ret;
 		}
 
+		public static function get_author_id( array $mod ) {
+			$author_id = false;
+
+			if ( $mod['is_post'] ) {
+				if ( $mod['post_author'] ) {
+					$author_id = $mod['post_author'];
+				}
+			} elseif ( $mod['is_user'] ) {
+				$author_id = $mod['id'];
+			}
+
+			return $author_id;
+		}
+
 		public function get_author_meta( $user_id, $field_id ) {
 			$value = '';
 			$is_user = SucomUtil::user_exists( $user_id );
@@ -477,11 +491,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 				$value = trim( $value );	// just in case
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
+			}
+
 			$value = apply_filters( $this->p->cf['lca'].'_get_author_meta', $value, $user_id, $field_id, $is_user );
+
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$value );
+
 			return $value;
 		}
 
