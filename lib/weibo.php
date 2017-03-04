@@ -40,12 +40,14 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 			$mt_weibo = SucomUtil::preg_grep_keys( '/^weibo:/', $mt_og );	// read any pre-defined weibo meta tag values
 			$mt_weibo = apply_filters( $lca.'_weibo_seed', $mt_weibo, $mod['use_post'], $mod );
 
-			foreach ( array(
-				'weibo:article:create_at' => 'article:published_time',
-				'weibo:article:update_at' => 'article:modified_time',
-			) as $mt_name => $key_name ) {
-				if ( isset( $mt_og[$key_name] ) && $mt_og[$key_name] !== '' ) {	// exclude empty strings
-					$mt_weibo[$mt_name] = date( 'Y-m-d H:i:s', strtotime( $mt_og[$key_name] ) );
+			if ( $mt_og['og:type'] === 'article' ) {
+				foreach ( array(
+					'weibo:article:create_at' => 'article:published_time',
+					'weibo:article:update_at' => 'article:modified_time',
+				) as $mt_name => $key_name ) {
+					if ( isset( $mt_og[$key_name] ) && $mt_og[$key_name] !== '' ) {	// exclude empty strings
+						$mt_weibo[$mt_name] = date( 'Y-m-d H:i:s', strtotime( $mt_og[$key_name] ) );
+					}
 				}
 			}
 

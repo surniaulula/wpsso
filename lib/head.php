@@ -253,11 +253,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
 
 			$lca = $this->p->cf['lca'];
+
+			// $mod is preferred but not required
+			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
+
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::crawler_name();
 			$head_array = array();

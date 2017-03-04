@@ -459,7 +459,7 @@ msgid ""
 "have the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:220 lib/util.php:453
+#: lib/com/cache.php:220 lib/util.php:461
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -1509,22 +1509,22 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:691
+#: lib/media.php:693
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:936 lib/pro/util/checkimgdims.php:68
+#: lib/media.php:938 lib/pro/util/checkimgdims.php:68
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:991
+#: lib/media.php:993
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1009
+#: lib/media.php:1011
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2890,12 +2890,12 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/opengraph.php:52
+#: lib/opengraph.php:56
 msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/opengraph.php:59
+#: lib/opengraph.php:63
 msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
@@ -3102,13 +3102,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:832
+#: lib/schema.php:833
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:835
+#: lib/schema.php:836
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
@@ -3665,134 +3665,134 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:335
+#: lib/util.php:343
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:339
+#: lib/util.php:347
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:362
+#: lib/util.php:370
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:439
+#: lib/util.php:447
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:509
+#: lib/util.php:517
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:543
+#: lib/util.php:551
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:545
+#: lib/util.php:553
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting the option to its default value."
 msgstr ""
 
-#: lib/util.php:547
+#: lib/util.php:555
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:549 lib/util.php:551
+#: lib/util.php:557 lib/util.php:559
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:553
+#: lib/util.php:561
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:555
+#: lib/util.php:563
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:557
+#: lib/util.php:565
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:559
+#: lib/util.php:567
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:561
+#: lib/util.php:569
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:563
+#: lib/util.php:571
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:761
+#: lib/util.php:769
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:768
+#: lib/util.php:776
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:793
+#: lib/util.php:801
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:829
+#: lib/util.php:837
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1107
+#: lib/util.php:1119
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1812
+#: lib/util.php:1826
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1838
+#: lib/util.php:1852
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1842
+#: lib/util.php:1856
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1845
+#: lib/util.php:1859
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1849
+#: lib/util.php:1863
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -145,11 +145,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+
+			// $mod is preferred but not required
+			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
 			}
+
 			$meta_opts = array();
 
 			if ( $filter === true ) {
@@ -287,9 +292,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
 				return 'post_'.$mod.'_regen_'.$md_pre;
 
+			// $mod is preferred but not required
+			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->get_page_mod( $mod );
 			}
 
@@ -1001,9 +1009,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_inline_vals( $mod = false, &$atts = array() ) {
 
+			// $mod is preferred but not required
+			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->get_page_mod( $mod );
 			}
 
@@ -1038,11 +1049,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $text;
 			}
 
-			// allow compatibility with $use_post as first argument
+			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->get_page_mod( $mod );
 			}
 
@@ -1272,10 +1284,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$url = false;
 
+			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'calling get_page_mod()' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
 				$mod = $this->get_page_mod( $mod );
 			}
 
