@@ -377,7 +377,8 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new SucomUtil is_home_index() method - returns true for a static posts page (not the static front page) and the standard home index / archive page.
 	* Added a new SucomUtil is_amp() method to replace calls to the AMP plugin is_amp_endpoint() function.
 	* Moved the lib/com/style.php and lib/com/script.php files to lib/style.php and lib/script.php.
-	* Added a new WpssoConfig $cf['form']['columns'] array.
+	* Added a new WpssoConfig $cf['menu'] array.
+	* Added a new WpssoConfig $cf['list']['columns'] array.
 	* Added a new WpssoMeta get_column_meta_keys() static method.
 	* Changed the WpssoMeta get_sortable_columns() method to a static method.
 	* Added a new WpssoUtil delete_all_column_meta() method.
