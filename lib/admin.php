@@ -346,16 +346,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 				// admin url will redirect to essential settings since we're not on a settings page here
 				$clear_cache_link = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].
-					'-action=clear_all_cache' ), WpssoAdmin::get_nonce(), WPSSO_NONCE );
+					'-action=clear_all_cache,', _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ), 
+						WpssoAdmin::get_nonce(), WPSSO_NONCE );
 	
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
-					sprintf( __( '<a href="%1$s">%2$s</a> now to force a refresh.', 'wpsso' ),
-						$clear_cache_link, _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) ).'</em>' );
+					sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ).'</em>' );
 			} else {
-				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> '.
-					__( 'All caches have also been cleared.', 'wpsso' ) );
 				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
+
+				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
+					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
+						$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+							_x( 'Clear All Cache on Save Settings', 'option label', 'wpsso' ) ) ).'</em>' );
 			}
 
 			$this->check_tmpl_head_attributes();
