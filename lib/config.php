@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoConfig' ) ) {
 
@@ -14,8 +15,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',		// lowercase acronym
-			'menu_label' => 'SSO',		// menu item label
-			'menu_color' => '33cc33',	// menu item color (lime green)
 			'readme_cache_exp' => 86400,	// 1 day
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
@@ -971,30 +970,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'simplexml' => 'SimpleXML',
 				),
 			),
-			'form' => array(
-				'max_hashtags' => 10,
-				'max_media_items' => 20,
-				'tooltip_class' => 'sucom_tooltip',
+			'menu' => array(
+				'label' => 'SSO',		// menu item label
+				'color' => '33cc33',		// menu item color (lime green)
+			),
+			'list' => array(
 				'columns' => array( 
 					'schema_type' => array(
+						'header' => 'SSO Schema',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'orderby' => 'meta_value',
 						'width' => '120px',
 						'height' => 'auto',
 					),
 					'og_img' => array(
+						'header' => 'SSO Img',
 						'meta_key' => '_wpsso_head_info_og_img_thumb',
 						'orderby' => false,	// do not offer column sorting
 						'width' => '70px',
 						'height' => '37px',
 					),
 					'og_desc' => array(
+						'header' => 'SSO Desc',
 						'meta_key' => '_wpsso_head_info_og_desc',
 						'orderby' => false,	// do not offer column sorting
 						'width' => '12%',
 						'height' => 'auto',
 					),
 				),
+			),
+			'form' => array(
+				'max_hashtags' => 10,
+				'max_media_items' => 20,
+				'tooltip_class' => 'sucom_tooltip',
 				'yes_no' => array(
 					'1' => 'Yes',
 					'0' => 'No',

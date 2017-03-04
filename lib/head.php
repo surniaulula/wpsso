@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoHead' ) ) {
 
@@ -104,7 +105,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function extract_head_info( array $mod, array $head_mt ) {
 
 			foreach ( $head_mt as $mt ) {
-				if ( ! isset( $mt[2] ) || 
+				if ( ! isset( $mt[2] ) ||
 					! isset( $mt[3] ) )
 						continue;
 
@@ -127,7 +128,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Save the first image and video information found. Assumes array key order 
+			 * Save the first image and video information found. Assumes array key order
 			 * defined by SucomUtil::get_mt_prop_image() and SucomUtil::get_mt_prop_video().
 			 */
 			foreach ( array( 'og:image', 'og:video', 'pinterest:image' ) as $prefix ) {
@@ -137,7 +138,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$is_first = false;
 
 				foreach ( $head_mt as $mt ) {
-					if ( ! isset( $mt[2] ) || 
+					if ( ! isset( $mt[2] ) ||
 						! isset( $mt[3] ) )
 							continue;
 
@@ -227,7 +228,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( ! empty( $mt[0] ) ) {
 					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 )
 						$indent = 0;
-					$html .= str_repeat( "\t", 
+					$html .= str_repeat( "\t",
 						(int) $indent ).$mt[0];
 					if ( strpos( $mt[0], '<noscript' ) === 0 )
 						$indent = 1;
@@ -238,7 +239,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
 				$html .= '<meta name="'.$lca.':mark" content="'.$lca.' meta tags end"/>'."\n";
 
-			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs', 
+			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs',
 				microtime( true ) - $start_time ).' -->'."\n";
 
 			$html .= '<!-- '.$lca.' meta tags end -->'."\n\n";
@@ -263,7 +264,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', 
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array',
 				$this->p->options['plugin_head_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
@@ -338,7 +339,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mt_name['canonical'] = $this->p->util->get_canonical_url( $mod );
 
 			if ( ! empty( $this->p->options['add_meta_name_description'] ) )
-				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
+				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'],
 					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
@@ -355,7 +356,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
 				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) )	// just in case
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, 
+					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 						$this->p->options['seo_author_field'] );
 			}
 
@@ -472,7 +473,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 
 							// prevent duplicates - ignore images from text/html video
-							if ( isset( $dd_val['og:video:type'] ) && 
+							if ( isset( $dd_val['og:video:type'] ) &&
 								$dd_val['og:video:type'] === 'text/html' ) {
 
 								// skip if text/html video markup is disabled
@@ -596,8 +597,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
 				 */
 				} else {
-					if ( $parts[1] === 'meta' && 
-						$parts[2] === 'itemprop' && 
+					if ( $parts[1] === 'meta' &&
+						$parts[2] === 'itemprop' &&
 							strpos( $parts[3], '.' ) !== 0 )
 								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
 					else $match_name = $parts[3];

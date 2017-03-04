@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
@@ -17,7 +18,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'og_author_rows' => 2,	// $table_rows, $form
 				'og_videos_rows' => 2,	// $table_rows, $form
 			) );
@@ -60,7 +61,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$table_rows['og_vid_prev_img'] = $form->get_th_html( _x( 'Include Video Preview Images',
 				'option label', 'wpsso' ), null, 'og_vid_prev_img' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" />'.' <em>'.
-				_x( 'video preview images are included first', 
+				_x( 'video preview images are included first',
 					'option comment', 'wpsso' ).'</em></td>';
 
 			$table_rows['og_vid_html_type'] = $form->get_th_html( _x( 'Include Embed text/html Type',

@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmenuAdvanced' ) ) {
 
@@ -25,7 +26,7 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_contact_fields',
-				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ), 
+				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 		}
 

@@ -1,7 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SuextJsonFormat' ) ) {
 
@@ -32,7 +33,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 			$indentStr = "\t";
 			$newLine = "\n";
 			$prevChar = '';
-			$outOfQuotes = true; 
+			$outOfQuotes = true;
 			
 			for ($i = 0; $i < $strLen; $i++) {
 				// Speedup: copy blocks of input which don't matter re string detection and formatting.
@@ -45,7 +46,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 					$result .= $copyStr;
 					$i += $copyLen - 1;	// correct for the for(;;) loop
 					continue;
-				} 
+				}
 				// Grab the next character in the string
 				$char = substr($json, $i, 1);
 
@@ -55,7 +56,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 					$result .= $char;
 					$prevChar = '';
 					continue;
-				} 
+				}
 				
 				// Are we entering/exiting a quoted string?
 				if ($char === '"' && $prevChar !== '\\') {
@@ -93,7 +94,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 					}
 				}
 				$prevChar = $char;
-			} 
+			}
 			return $result;
 		}
 	}

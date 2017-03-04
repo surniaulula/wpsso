@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoMeta' ) ) {
 
@@ -610,41 +611,38 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $opts;
 		}
 
-		// return column heading keys and translated label names
-		public function get_column_headings() { 
-			return array( 
-				'schema_type' => sprintf( _x( '%s Schema',
-					'column title', 'wpsso' ),
-						$this->p->cf['menu_label'] ),
-				'og_img' => sprintf( _x( '%s Img',
-					'column title', 'wpsso' ),
-						$this->p->cf['menu_label'] ),
-				'og_desc' => sprintf( _x( '%s Desc',
-					'column title', 'wpsso' ),
-						$this->p->cf['menu_label'] ),
-			);
-		}
-
 		// return sortable column keys and their query sort info
-		public static function get_sortable_columns( $idx = false ) { 
-			$sort_cols = WpssoConfig::$cf['form']['columns'];
-			if ( $idx !== false ) {
-				if ( isset( $sort_cols[$idx] ) )
-					return $sort_cols[$idx];
+		public static function get_sortable_columns( $col_idx = false ) { 
+			$sort_cols = WpssoConfig::$cf['list']['columns'];
+			if ( $col_idx !== false ) {
+				if ( isset( $sort_cols[$col_idx] ) )
+					return $sort_cols[$col_idx];
 				else return null;
 			} else return $sort_cols;
 		}
 
 		// called from the uninstall static method
-		public static function get_column_meta_keys( $idx = false ) { 
+		public static function get_column_meta_keys() { 
 			$meta_keys = array();
-			$sort_cols = self::get_sortable_columns( $idx = false );
+			$sort_cols = self::get_sortable_columns();
 			foreach ( $sort_cols as $col_idx => $col_info ) {
 				if ( ! empty( $col_info['meta_key'] ) ) {
-					$meta_keys[] = $col_info['meta_key'];
+					$meta_keys[$col_idx] = $col_info['meta_key'];
 				}
 			}
 			return $meta_keys;
+		}
+
+		public static function get_column_headers() { 
+			$headers = array();
+			$sort_cols = self::get_sortable_columns();
+			foreach ( $sort_cols as $col_idx => $col_info ) {
+				if ( ! empty( $col_info['header'] ) ) {
+					$headers[$col_idx] = _x( $col_info['header'],
+						'column header', 'wpsso' );
+				}
+			}
+			return $headers;
 		}
 
 		public function update_sortable_meta( $obj_id, $col_idx, $content ) { 
@@ -679,9 +677,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
 				$lca = $this->p->cf['lca'];
-				foreach ( $this->get_column_headings() as $col_idx => $label ) {
+				foreach ( self::get_column_headers() as $col_idx => $col_header ) {
 					if ( ! empty( $this->p->options['plugin_'.$col_idx.'_col_'.$mod_name] ) ) {
-						$columns[$lca.'_'.$col_idx] = $label;
+						$columns[$lca.'_'.$col_idx] = $col_header;
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'adding '.$lca.'_'.$col_idx.' column' );
 					}

@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
@@ -358,7 +359,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$clear_all_msg .= ' '.__( 'Site performance may be impacted temporarily while all cache objects are rebuilt.', 'wpsso' );
+			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.',
+				'wpsso' );
 
 			$this->p->notice->inf( $clear_all_msg, true, $msg_id, $dismiss );
 		}
@@ -423,7 +425,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						strpos( $transient_name, $lca.'_sh' ) === 0 )
 							continue;
 				}
-				if ( delete_transient( $ttransient_name ) )
+				if ( delete_transient( $transient_name ) )
 					$deleted++;
 			}
 			return $deleted;
@@ -461,18 +463,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function delete_all_column_meta() {
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
-			foreach ( $col_meta_keys as $meta_key ) {
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 				delete_post_meta_by_key( $meta_key );
 			}
 
 			foreach ( get_users() as $user ) {
-				foreach ( $col_meta_keys as $meta_key ) {
+				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					delete_user_meta( $user->ID, $meta_key );
 				}
 			}
 
 			foreach ( WpssoTerm::get_public_terms() as $term_id ) {
-				foreach ( $col_meta_keys as $meta_key ) {
+				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}

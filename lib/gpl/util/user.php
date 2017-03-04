@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 
@@ -21,7 +22,7 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 
 		/*
 		 * The Free version does not have any code to get / save meta data, nor
-		 * does it have any video API modules, so optimize and disable some methods 
+		 * does it have any video API modules, so optimize and disable some methods
 		 * that wouldn't return anything anyway. ;-)
 		 */
 		public function get_options_multi( $mod_id, $idx = false, $filter_opts = true ) {

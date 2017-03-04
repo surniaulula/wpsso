@@ -1,10 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
         die( 'These aren\'t the droids you\'re looking for...' );
+}
 
-if ( ! defined( 'SUEXT_README_MARKDOWN' ) )
+if ( ! defined( 'SUEXT_README_MARKDOWN' ) ) {
 	define( 'SUEXT_README_MARKDOWN', dirname(__FILE__).'/markdown.php' );
+}
 
 if ( ! class_exists( 'SuextParseReadme' ) ) {
 

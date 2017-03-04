@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
@@ -26,11 +27,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_opengraph',
-				_x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' ), 
+				_x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_publishers',
-				_x( 'Specific Websites and Publishers', 'metabox title', 'wpsso' ), 
+				_x( 'Specific Websites and Publishers', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
@@ -41,7 +42,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_opengraph() {
 			$metabox = 'og';
-			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
@@ -57,7 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_publishers() {
 			$metabox = 'pub';
-			$tabs = apply_filters( $this->p->cf['lca'].'_general_pub_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_general_pub_tabs', array(
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
@@ -123,7 +124,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['og_desc_hashtags'] = $this->form->get_th_html( _x( 'Add Hashtags to Descriptions',
 						'option label', 'wpsso' ), '', 'og_desc_hashtags' ).
-					'<td>'.$this->form->get_select( 'og_desc_hashtags', 
+					'<td>'.$this->form->get_select( 'og_desc_hashtags',
 						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', '', true ).' '.
 							_x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
@@ -156,7 +157,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['og_img_max'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
 						'option label', 'wpsso' ), '', 'og_img_max' ).
-					'<td>'.$this->form->get_select( 'og_img_max', 
+					'<td>'.$this->form->get_select( 'og_img_max',
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
 					( empty( $this->form->options['og_vid_prev_img'] ) ?
 						'' : ' <em>'._x( 'video preview images are enabled (and included first)',
@@ -215,7 +216,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['fb_author_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), '', 'fb_author_name' ).
-					'<td>'.$this->form->get_select( 'fb_author_name', 
+					'<td>'.$this->form->get_select( 'fb_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$fb_pub_lang = SucomUtil::get_pub_lang( 'facebook' );
@@ -276,7 +277,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								$this->form->get_select( 'schema_person_id', $users, '', '', true ).'</p>'.
 					'</td>';
 
-					$table_rows['schema_logo_url'] = $this->form->get_th_html( 
+					$table_rows['schema_logo_url'] = $this->form->get_th_html(
 						'<a href="https://developers.google.com/structured-data/customize/logos" target="_blank">'.
 						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', '', 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
@@ -288,7 +289,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows['schema_img_max'] = $this->form->get_th_html( _x( 'Maximum Images to Include',
 						'option label', 'wpsso' ), '', 'schema_img_max' ).
-					'<td>'.$this->form->get_select( 'schema_img_max', 
+					'<td>'.$this->form->get_select( 'schema_img_max',
 						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
 					( empty( $this->form->options['og_vid_prev_img'] ) ?
 						'' : ' <em>'._x( 'video preview images are enabled (and included first)',
@@ -307,12 +308,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['schema_author_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author / Person Name Format',
 						'option label', 'wpsso' ), '', 'schema_author_name' ).
-					'<td>'.$this->form->get_select( 'schema_author_name', 
+					'<td>'.$this->form->get_select( 'schema_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
 					$schema_types = $this->p->schema->get_schema_types_select();	// $add_none = true
 
-					foreach ( array( 
+					foreach ( array(
 						'home_index' => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
 						'home_page' => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
 						'archive_page' => _x( 'Item Type for Archive Page', 'option label', 'wpsso' ),

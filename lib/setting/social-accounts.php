@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin' ) ) {
 
@@ -26,7 +27,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_social_accounts',
-				_x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ), 
+				_x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
 		}
 
@@ -35,11 +36,11 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
-			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ), 
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ), 
+			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ),
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
 					array(), $this->form ) );
 					
-			foreach ( $table_rows as $num => $row ) 
+			foreach ( $table_rows as $num => $row )
 				echo '<tr>'.$row.'</tr>';
 			echo '</table>';
 		}
@@ -51,7 +52,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 				case 'social-accounts-general':
 
-					$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', 
+					$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts',
 						$this->p->cf['form']['social_accounts'] );
 					asort( $social_accounts );	// sort by label and maintain key association
 					foreach ( $social_accounts as $key => $label ) {

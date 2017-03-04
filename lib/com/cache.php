@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SucomCache' ) ) {
 
@@ -72,7 +73,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function is_ignored_url( $url ) {
 			$this->load_transient();
 			if ( ! empty( $this->transient['ignore_urls'][$url] ) ) {
-				$time_left = $this->transient['ignore_time'] - 
+				$time_left = $this->transient['ignore_time'] -
 					( time() - $this->transient['ignore_urls'][$url] );
 				if ( $time_left > 0 ) {
 					if ( $this->p->debug->enabled )
@@ -138,7 +139,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$url_path = parse_url( $get_url, PHP_URL_PATH );
 			if ( $url_ext === '' ) {
 				$url_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
-				if ( ! empty( $url_ext ) ) 
+				if ( ! empty( $url_ext ) )
 					$url_ext = '.'.$url_ext;
 			}
 
@@ -178,12 +179,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $url_ext === '' ) {
 				$url_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
-				if ( ! empty( $url_ext ) ) 
+				if ( ! empty( $url_ext ) )
 					$url_ext = '.'.$url_ext;
 			}
 
 			$url_frag = parse_url( $url, PHP_URL_FRAGMENT );
-			if ( ! empty( $url_frag ) ) 
+			if ( ! empty( $url_frag ) )
 				$url_frag = '#'.$url_frag;
 
 			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';	// SucomCache::get()
@@ -245,23 +246,23 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 			}
 
-			if ( defined( $uca.'_PHP_CURL_USERAGENT' ) ) 
-				curl_setopt( $ch, CURLOPT_USERAGENT, 
+			if ( defined( $uca.'_PHP_CURL_USERAGENT' ) )
+				curl_setopt( $ch, CURLOPT_USERAGENT,
 					constant( $uca.'_PHP_CURL_USERAGENT' ) );
 
-			if ( defined( $uca.'_PHP_CURL_PROXY' ) ) 
-				curl_setopt( $ch, CURLOPT_PROXY, 
+			if ( defined( $uca.'_PHP_CURL_PROXY' ) )
+				curl_setopt( $ch, CURLOPT_PROXY,
 					constant( $uca.'_PHP_CURL_PROXY' ) );
 
-			if ( defined( $uca.'_PHP_CURL_PROXYUSERPWD' ) ) 
-				curl_setopt( $ch, CURLOPT_PROXYUSERPWD, 
+			if ( defined( $uca.'_PHP_CURL_PROXYUSERPWD' ) )
+				curl_setopt( $ch, CURLOPT_PROXYUSERPWD,
 					constant( $uca.'_PHP_CURL_PROXYUSERPWD' ) );
 
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
-			if ( defined( $uca.'_PHP_CURL_CAINFO' ) ) 
-				curl_setopt( $ch, CURLOPT_CAINFO, 
+			if ( defined( $uca.'_PHP_CURL_CAINFO' ) )
+				curl_setopt( $ch, CURLOPT_CAINFO,
 					constant( $uca.'_PHP_CURL_CAINFO' ) );
 
 			if ( $curl_userpwd !== false )
@@ -289,13 +290,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'cache data sucessfully saved' );
 				}
 				switch ( $ret_type ) {
-					case 'raw': 
-						return $cache_data; 
+					case 'raw':
+						return $cache_data;
 						break;
-					case 'url': 
-						return $cache_url; 
+					case 'url':
+						return $cache_url;
 						break;
-					case 'filepath': 
+					case 'filepath':
 						return $cache_file;
 						break;
 					default:
@@ -325,7 +326,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'file':
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
-					$file_cache_exp = $cache_exp === false ? 
+					$file_cache_exp = $cache_exp === false ?
 						$this->default_file_cache_exp : $cache_exp;
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled )
@@ -363,10 +364,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		protected function save_cache_data( $cache_salt, &$cache_data = '', $cache_name = 'file', $url_ext = '', $cache_exp = false ) {
 			$data_saved = false;
 			$lca = $this->p->cf['lca'];
-			if ( empty( $cache_data ) ) 
+			if ( empty( $cache_data ) )
 				return $data_saved;
 			// defining file_cache_exp is not required when saving files
-			$object_cache_exp = $cache_exp === false ? 
+			$object_cache_exp = $cache_exp === false ?
 				$this->default_object_cache_exp : $cache_exp;
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
@@ -390,7 +391,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'file':
 					$cache_id = md5( $cache_salt );
 					$cache_file = $this->base_dir.$cache_id.$url_ext;
-					if ( ! is_dir( $this->base_dir ) ) 
+					if ( ! is_dir( $this->base_dir ) )
 						mkdir( $this->base_dir );
 					if ( ! is_writable( $this->base_dir ) ) {
 						if ( $this->p->debug->enabled )

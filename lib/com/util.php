@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
@@ -522,10 +523,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				else return false;
 			} elseif ( is_ssl() ) {		// since wp 2.6.0
 				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
 				strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
 				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
 				strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
 				return true;
 			} else {
@@ -611,7 +612,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_hashtags( $tags = array() ) {
 			// truncate tags that start with a number (not allowed)
-			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), 
+			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ),
 				array( '', '', '#$0' ), $tags );
 		}
 
@@ -676,7 +677,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $site === true )
 				$opts = get_site_option( $name, array() );
 			else $opts = get_option( $name, array() );
-			if ( $protect === true && 
+			if ( $protect === true &&
 				isset( $opts[$key] ) )
 					return false;
 			$opts[$key] = $value;
@@ -767,7 +768,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_assoc( $arr ) {
-			if ( ! is_array( $arr ) ) 
+			if ( ! is_array( $arr ) )
 				return false;
 			return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
 		}
@@ -789,8 +790,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			foreach ( $match as $key ) {
 				if ( $replace !== false ) {
 					$fixed = preg_replace( $pattern, $replace, $key );
-					$found[$fixed] = $input[$key]; 
-				} else $found[$key] = $input[$key]; 
+					$found[$fixed] = $input[$key];
+				} else $found[$key] = $input[$key];
 				if ( $remove !== false )
 					unset( $input[$key] );
 			}
@@ -804,7 +805,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$old_name_preg = $key_mods ? '/^'.$old_name.'(:is|:use|#.*|_[0-9]+)?$/' : '/^'.$old_name.'$/';
 				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
 					if ( ! empty( $new_name ) ) {	// can be empty to remove option
-						$new_name_local = preg_replace( $old_name_preg, 
+						$new_name_local = preg_replace( $old_name_preg,
 							$new_name.'$1', $old_name_local );
 						$opts[$new_name_local] = $opts[$old_name_local];
 					}
@@ -890,12 +891,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
-			$merged = $array1; 
+			$merged = $array1;
 			foreach ( $array2 as $key => &$value ) {
 				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) )
-					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value ); 
+					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value );
 				else $merged[$key] = $value;
-			} 
+			}
 			return $merged;
 		}
 
@@ -905,7 +906,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( is_array( $value ) )
 					$return = array_merge( $return, self::array_flatten( $value ) );
 				else $return[$key] = $value;
-			} 
+			}
 			return $return;
 		}
 
@@ -917,7 +918,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				} else {
 					$return .= $value.$glue;
 				}
-			} 
+			}
 			return strlen( $glue ) ? rtrim( $return, $glue ) : $glue;
 		}
 
@@ -931,7 +932,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$return[$child_key] = $parent_key;
 				elseif ( $gparent_key && $child_key === $parent_key )
 					$return[$child_key] = $gparent_key;
-			} 
+			}
 			return $return;
 		}
 
@@ -959,7 +960,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_media_url( array $assoc, $mt_pre = 'og:image' ) {
 
 			// check for two dimensional arrays and get the first element
-			if ( isset( $assoc[$mt_pre] ) && 
+			if ( isset( $assoc[$mt_pre] ) &&
 				is_array( $assoc[$mt_pre] ) )
 					$first = reset( $assoc[$mt_pre] );
 			else $first = reset( $assoc );
@@ -1152,7 +1153,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$idx = is_array( $mixed ) ? 
+			$idx = is_array( $mixed ) ?
 				$mixed['name'].'_'.$mixed['id'] : $mixed;
 
 			if ( isset( self::$locales[$idx] ) )
@@ -1273,7 +1274,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_id = get_option( 'show_on_front' ) === 'page' ?
 				(int) get_option( 'page_on_front' ) : 0;
 
-			if ( is_numeric( $use_post ) && 
+			if ( is_numeric( $use_post ) &&
 				(int) $use_post === $post_id )	// optimize
 					$ret = true;
 			elseif ( $post_id > 0 &&
@@ -1289,7 +1290,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_id = get_option( 'show_on_front' ) === 'page' ?
 				(int) get_option( 'page_for_posts' ) : 0;
 
-			if ( is_numeric( $use_post ) && 
+			if ( is_numeric( $use_post ) &&
 				(int) $use_post === $post_id )	// optimize
 					$ret = true;
 			elseif ( $post_id > 0 &&
@@ -1369,7 +1370,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 				case 'post_id':
-					return isset( $post_obj->ID ) ? 
+					return isset( $post_obj->ID ) ?
 						(int) $post_obj->ID : 0;	// cast as integer
 					break;
 				default:
@@ -1398,7 +1399,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $screen_base === 'term' )	// since wp v4.5
 					$ret = true;
 				elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
-					( self::get_request_value( 'taxonomy' ) !== '' && 
+					( self::get_request_value( 'taxonomy' ) !== '' &&
 						self::get_request_value( 'tag_ID' ) !== '' ) )
 							$ret = true;
 			}
@@ -1455,15 +1456,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 				case 'term_id':
-					return isset( $term_obj->term_id ) ? 
+					return isset( $term_obj->term_id ) ?
 						(int) $term_obj->term_id : 0;		// cast as integer
 					break;
 				case 'taxonomy':
-					return isset( $term_obj->taxonomy ) ? 
+					return isset( $term_obj->taxonomy ) ?
 						(string) $term_obj->taxonomy : '';	// cast as string
 					break;
 				default:
-					return is_object( $term_obj ) ? 
+					return is_object( $term_obj ) ?
 						$term_obj : false;
 					break;
 			}
@@ -1521,8 +1522,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$user_obj = get_userdata( $user_id );
 
 			} elseif ( apply_filters( 'sucom_is_user_page', is_author() ) ) {
-				$user_obj = get_query_var( 'author_name' ) ? 
-					get_user_by( 'slug', get_query_var( 'author_name' ) ) : 
+				$user_obj = get_query_var( 'author_name' ) ?
+					get_user_by( 'slug', get_query_var( 'author_name' ) ) :
 					get_userdata( get_query_var( 'author' ) );
 
 			} elseif ( is_admin() ) {
@@ -1537,7 +1538,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 				case 'user_id':
-					return isset( $user_obj->ID ) ? 
+					return isset( $user_obj->ID ) ?
 						(int) $user_obj->ID : 0;	// cast as integer
 					break;
 				default:
@@ -1549,11 +1550,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_product_page( $use_post = false, $product_obj = false ) {
 			$ret = false;
-			if ( function_exists( 'is_product' ) && 
+			if ( function_exists( 'is_product' ) &&
 				is_product() )
 					$ret = true;
 			elseif ( is_admin() || is_object( $product_obj ) ) {
-				if ( ! is_object( $product_obj ) && 
+				if ( ! is_object( $product_obj ) &&
 					! empty( $use_post ) )
 						$product_obj = get_post( $use_post );
 				if ( isset( $product_obj->post_type ) &&
@@ -1565,7 +1566,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_product_category() {
 			$ret = false;
-			if ( function_exists( 'is_product_category' ) && 
+			if ( function_exists( 'is_product_category' ) &&
 				is_product_category() )
 					$ret = true;
 			elseif ( is_admin() ) {
@@ -1578,7 +1579,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_product_tag() {
 			$ret = false;
-			if ( function_exists( 'is_product_tag' ) && 
+			if ( function_exists( 'is_product_tag' ) &&
 				is_product_tag() )
 					$ret = true;
 			elseif ( is_admin() ) {
@@ -1662,7 +1663,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ret = '';
 			if ( file_exists( $file_path ) ) {
 				$content = file_get_contents( $file_path );
-				$comments = array( T_COMMENT ); 
+				$comments = array( T_COMMENT );
 				if ( defined( 'T_DOC_COMMENT' ) )
 					$comments[] = T_DOC_COMMENT;	// php 5
 				if ( defined( 'T_ML_COMMENT' ) )
@@ -1671,7 +1672,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				foreach ( $tokens as $token ) {
 					if ( is_array( $token ) ) {
 						if ( in_array( $token[0], $comments ) )
-							continue; 
+							continue;
 						$token = $token[1];
 					}
 					$ret .= $token;
@@ -1692,7 +1693,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// use the wp function if available, otherwise provide the same functionality
 		public static function encode_emoji( $content ) {
 			if ( function_exists( 'wp_encode_emoji' ) )
-				return wp_encode_emoji( $content );		// since wp 4.2 
+				return wp_encode_emoji( $content );		// since wp 4.2
 			elseif ( function_exists( 'mb_convert_encoding' ) ) {
 				$regex = '/(
 				     \x23\xE2\x83\xA3               # Digits
@@ -1720,7 +1721,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// used to decode facebook video urls
 		public static function replace_unicode_escape( $str ) {
-			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', 
+			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i',
 				array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
 		}
 
@@ -1746,7 +1747,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					self::$mobile_obj = new SuextMobileDetect();
 				}
 				self::$is_mobile = self::$mobile_obj->isMobile();
-			} 
+			}
 			return self::$is_mobile;
 		}
 
@@ -1790,7 +1791,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						'id',
 						'display_name'
 					)
-				) ) as $user ) 
+				) ) as $user )
 					$ret[$user->display_name] = $user->id;
 			}
 
@@ -1806,7 +1807,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function count_diff( &$arr, $max = 0 ) {
 			$diff = 0;
-			if ( ! is_array( $arr ) ) 
+			if ( ! is_array( $arr ) )
 				return false;
 			if ( $max > 0 && $max >= count( $arr ) )
 				$diff = $max - count( $arr );
@@ -1830,7 +1831,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$countries = SucomCountryCodes::get( 'alpha2' );
 
 			if ( ! isset( $countries[$country_code] ) ) {
-				if ( $default_code === false || 
+				if ( $default_code === false ||
 					! isset( $countries[$default_code] ) )
 						return false;
 				else return $countries[$default_code];
@@ -1844,7 +1845,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! empty( $format ) )
 					$times[$hour_mins] = gmdate( $format, $timestamp );
 				else $times[$hour_mins] = $hour_mins;
-			} 
+			}
 			return $times;
 		}
 
@@ -1867,17 +1868,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_image_sizes() {
-			global $_wp_additional_image_sizes; 
-			$sizes = array(); 
+			global $_wp_additional_image_sizes;
+			$sizes = array();
 			foreach ( get_intermediate_image_sizes() as $size_name )
 				$sizes[$size_name] = self::get_size_info( $size_name );
 			return $sizes;
 		}
 
 		public static function get_size_info( $size_name = 'thumbnail' ) {
-			if ( is_integer( $size_name ) ) 
+			if ( is_integer( $size_name ) )
 				return;
-			if ( is_array( $size_name ) ) 
+			if ( is_array( $size_name ) )
 				return;
 
 			global $_wp_additional_image_sizes;
@@ -1906,7 +1907,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				( empty( $atts['css_class'] ) ?
 					'button' : $atts['css_class'] );
 
-			if ( ! empty( $css_extra ) ) 
+			if ( ! empty( $css_extra ) )
 				$css_class = $css_extra.' '.$css_class;
 
 			return 'class="'.$css_class.'" id="'.self::get_atts_src_id( $atts, $css_name ).'"';
@@ -1928,10 +1929,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_toplevel_edit( $hook_name ) {
-			return strpos( $hook_name, 'toplevel_page_' ) !== false && ( 
-				( self::get_request_value( 'action', 'GET' ) === 'edit' && 
+			return strpos( $hook_name, 'toplevel_page_' ) !== false && (
+				( self::get_request_value( 'action', 'GET' ) === 'edit' &&
 					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||
-				( self::get_request_value( 'action', 'GET' ) === 'create_new' && 
+				( self::get_request_value( 'action', 'GET' ) === 'create_new' &&
 					self::get_request_value( 'return', 'GET' ) === 'edit' )
 			) ? true : false;
 		}
@@ -1945,7 +1946,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// converts string to boolean
 		public static function get_bool( $mixed ) {
-			return is_string( $mixed ) ? 
+			return is_string( $mixed ) ?
 				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
@@ -1957,7 +1958,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$header_files = (array) glob( $parent_dir.'/header*.php' );
 
 			if ( $parent_dir !== $child_dir ) {
-				$header_files = array_merge( $header_files, 
+				$header_files = array_merge( $header_files,
 					(array) glob( $child_dir.'/header*.php' ) );
 			}
 

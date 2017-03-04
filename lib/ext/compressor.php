@@ -1,11 +1,12 @@
 <?php
 /**
- * Class Minify_CSS_Compressor 
+ * Class Minify_CSS_Compressor
  * @package Minify
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 
@@ -14,11 +15,11 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 	 *
 	 * This is a heavy regex-based removal of whitespace, unnecessary
 	 * comments and tokens, and some CSS value minimization, where practical.
-	 * Many steps have been taken to avoid breaking comment-based hacks, 
+	 * Many steps have been taken to avoid breaking comment-based hacks,
 	 * including the ie5/mac filter (and its inversion), but expect tricky
 	 * hacks involving comment tokens in 'content' value strings to break
 	 * minimization badly. A test suite is available.
-	 * 
+	 *
 	 * @package Minify
 	 * @author Stephen Clay <steve@mrclay.org>
 	 * @author http://code.google.com/u/1stvamp/ (Issue 64 patch)
@@ -27,11 +28,11 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 	
 		/**
 		 * Minify a CSS string
-		 * 
+		 *
 		 * @param string $css
-		 * 
+		 *
 		 * @param array $options (currently ignored)
-		 * 
+		 *
 		 * @return string
 		 */
 		public static function process( $css, $options = array() ) {
@@ -54,7 +55,7 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		
 		/**
 		 * Constructor
-		 * 
+		 *
 		 * @param array $options (currently ignored)
 		 */
 		private function __construct($options) {
@@ -63,9 +64,9 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		
 		/**
 		 * Minify a CSS string
-		 * 
+		 *
 		 * @param string $css
-		 * 
+		 *
 		 * @return string
 		 */
 		protected function _process($css)
@@ -104,7 +105,7 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 			// remove ws between rules and colons
 			$css = preg_replace('/
 					\\s*
-					([{;])              # 1 = beginning of block or rule separator 
+					([{;])              # 1 = beginning of block or rule separator
 					\\s*
 					([\\*_]?[\\w\\-]+)  # 2 = property (and maybe IE filter)
 					\\s*
@@ -157,10 +158,10 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		}
 		
 		/**
-		 * Replace what looks like a set of selectors  
+		 * Replace what looks like a set of selectors
 		 *
 		 * @param array $m regex matches
-		 * 
+		 *
 		 * @return string
 		 */
 		protected function _selectorsCB($m)
@@ -171,16 +172,16 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		
 		/**
 		 * Process a comment and return a replacement
-		 * 
+		 *
 		 * @param array $m regex matches
-		 * 
+		 *
 		 * @return string
 		 */
 		protected function _commentCB($m)
 		{
 			$hasSurroundingWs = (trim($m[0]) !== $m[1]);
-			$m = $m[1]; 
-			// $m is the comment content w/o the surrounding tokens, 
+			$m = $m[1];
+			// $m is the comment content w/o the surrounding tokens,
 			// but the return value will replace the entire comment.
 			if ($m === 'keep') {
 				return '/**/';
@@ -222,7 +223,7 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 				$this->_inHack = false;
 				return '/**/';
 			}
-			// Issue 107: if there's any surrounding whitespace, it may be important, so 
+			// Issue 107: if there's any surrounding whitespace, it may be important, so
 			// replace the comment with a single space
 			return $hasSurroundingWs // remove all other comments
 				? ' '
@@ -231,10 +232,10 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		
 		/**
 		 * Process a font-family listing and return a replacement
-		 * 
+		 *
 		 * @param array $m regex matches
-		 * 
-		 * @return string   
+		 *
+		 * @return string
 		 */
 		protected function _fontFamilyCB($m)
 		{

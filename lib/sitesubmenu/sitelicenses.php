@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdmin' ) ) {
 
@@ -31,11 +32,11 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Extension Plugins and Pro Licenses', 'metabox title', 'wpsso' ), 
+				_x( 'Extension Plugins and Pro Licenses', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes
-			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_licenses', 
+			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_licenses',
 				array( &$this, 'add_class_postbox_network' ) );
 		}
 

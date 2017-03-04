@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
@@ -17,7 +18,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'meta_text_rows' => array(
 					'user_text_rows' => 4,	// $table_rows, $form, $head, $mod
 					'term_text_rows' => 4,	// $table_rows, $form, $head, $mod
@@ -55,7 +56,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['seo_desc_len'], 
+					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['seo_desc_len'],
 						'...', $mod, true, false ), '', '', $this->p->options['seo_desc_len'] ),	// $add_hashtags = false
 				),
 				'tc_desc' => array(
@@ -78,7 +79,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'schema_desc' => array(
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'], 
+					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'],
 						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
 				),
 			);
@@ -97,7 +98,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				return $table_rows;	// abort
 			}
 
-			$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-opengraph', 
+			$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-opengraph',
 				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// $md_pre = none
 
 			$table_rows[] = '<td colspan="2" align="center">'.

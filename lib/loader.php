@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoLoader' ) ) {
 
@@ -64,7 +65,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						}
 					}
 					foreach ( $libs as $id_key => $label ) {
-						/* 
+						/*
 						 * Example:
 						 *	'article' => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',

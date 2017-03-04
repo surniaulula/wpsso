@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdmin' ) ) {
 
@@ -31,11 +32,11 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_plugin',
-				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ), 
+				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes
-			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_plugin', 
+			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_plugin',
 				array( &$this, 'add_class_postbox_network' ) );
 		}
 
@@ -46,14 +47,14 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 		public function show_metabox_plugin() {
 			$metabox = 'plugin';
-			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array( 
+			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
 			foreach ( $tabs as $key => $title )
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows', 
+					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
 						array(), $this->form, true ) );	// $network = true
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
 		}

@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SucomStyle' ) ) {
 
@@ -133,7 +134,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$lca = $this->p->cf['lca'];
 			$sort_cols = WpssoMeta::get_sortable_columns();
 			echo '<style type="text/css">';
-			if ( isset( $this->p->cf['menu_color'] ) ) {
+			if ( isset( $this->p->cf['menu']['color'] ) ) {
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
@@ -144,7 +145,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
-		color:#'.$this->p->cf['menu_color'].';
+		color:#'.$this->p->cf['menu']['color'].';
 	}';
 			}
 			echo '

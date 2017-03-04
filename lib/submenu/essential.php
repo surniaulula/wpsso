@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) ) {
 
@@ -26,11 +27,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_general',
-				_x( 'Essential General Settings', 'metabox title', 'wpsso' ), 
+				_x( 'Essential General Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_general' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_advanced',
-				_x( 'Essential Advanced Settings', 'metabox title', 'wpsso' ), 
+				_x( 'Essential Advanced Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
@@ -122,7 +123,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
 					'</td>';
 
-					$table_rows['schema_logo_url'] = $this->form->get_th_html( 
+					$table_rows['schema_logo_url'] = $this->form->get_th_html(
 						'<a href="https://developers.google.com/structured-data/customize/logos" target="_blank">'.
 						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';

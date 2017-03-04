@@ -5,8 +5,9 @@
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
-if ( ! defined( 'ABSPATH' ) ) 
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
+}
 
 if ( ! class_exists( 'SucomNotice' ) ) {
 
@@ -40,16 +41,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$uca = strtoupper( $this->lca );
 
-			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? 
+			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ?
 				constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
 
-			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? 
+			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ?
 				constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
 
-			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? 
+			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ?
 				constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
 
-			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? 
+			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ?
 				constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
 
 			if ( is_admin() ) {
@@ -61,11 +62,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			add_action( 'shutdown', array( &$this, 'shutdown_save_notices' ) );
 		}
 
-		public function hook_admin_notices() { 
+		public function hook_admin_notices() {
 			add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), -10 );
 		}
 
-		public function nag( $msg_txt, $user_id = true, $msg_id = false ) { 
+		public function nag( $msg_txt, $user_id = true, $msg_id = false ) {
 			$this->log( 'nag', $msg_txt, $user_id, $msg_id, false );	// $dismiss = false
 		}
 
@@ -87,7 +88,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function log( $msg_type, $msg_txt, $user_id = true, $msg_id = false, $dismiss = false, $payload = array() ) {
 
-			if ( empty( $msg_type ) || 
+			if ( empty( $msg_type ) ||
 				empty( $msg_txt ) )
 					return;
 
@@ -97,7 +98,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$payload['dismiss'] = ! empty( $msg_id ) && ! empty( $dismiss ) && $this->can_dismiss() ? $dismiss : false;
 
 			if ( is_numeric( $payload['dismiss'] ) && $payload['dismiss'] > 0 ) {
-				$msg_txt .= ' '.sprintf( __( 'This notice may be dismissed for %s.', $this->text_dom ), 
+				$msg_txt .= ' '.sprintf( __( 'This notice may be dismissed for %s.', $this->text_dom ),
 					human_time_diff( 0, $payload['dismiss'] ) );
 			}
 
@@ -112,7 +113,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$user_notices =& $this->get_user_notices( $user_id );	// returns reference
 
-			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) ) 
+			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) )
 				$user_notices[$msg_type][$msg_txt] = $payload;
 		}
 
@@ -134,7 +135,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_ids = $user_id;
 			else $user_ids = array( $user_id );
 
-			$trunc_types = empty( $msg_type ) ? 
+			$trunc_types = empty( $msg_type ) ?
 				$this->all_types : array( (string) $msg_type );
 
 			foreach ( $user_ids as $user_id ) {
@@ -201,7 +202,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( ! isset( $user_notices[$msg_type] ) )	// just in case
 					continue;
 				foreach ( $user_notices[$msg_type] as $msg_txt => $payload ) {
-					if ( empty( $msg_txt ) || 
+					if ( empty( $msg_txt ) ||
 						isset( $all_msgs[$msg_txt] ) )	// skip duplicates
 							continue;
 					$all_msgs[$msg_txt] = true;		// avoid duplicates
@@ -224,7 +225,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 										$hidden[$msg_type]++;
 
 								// msg id has been dismissed
-								} elseif ( ! empty( $payload['msg_id'] ) && 
+								} elseif ( ! empty( $payload['msg_id'] ) &&
 									isset( $user_dismissed[$payload['msg_id']] ) ) {
 
 									$now_time = time();
@@ -285,7 +286,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismiss = array();
 			$user_id = get_current_user_id();
 
-			if ( empty( $user_id ) || 
+			if ( empty( $user_id ) ||
 				! current_user_can( 'edit_user', $user_id ) )
 					die( '-1' );
 
@@ -300,11 +301,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			// site specific user options
 			$user_dismissed = get_user_option( $this->dis_name, $user_id );
-			if ( ! is_array( $user_dismissed ) ) 
+			if ( ! is_array( $user_dismissed ) )
 				$user_dismissed = array();
 
 			// save the message id and expiration time (0 = never)
-			$user_dismissed[$dismiss['id']] = empty( $dismiss['time'] ) || 
+			$user_dismissed[$dismiss['id']] = empty( $dismiss['time'] ) ||
 				! is_numeric( $dismiss['time'] ) ? 0 : time() + $dismiss['time'];
 
 			update_user_option( $user_id, $this->dis_name, $user_dismissed );
@@ -317,12 +318,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
 		jQuery("#'.$this->lca.'-unhide-notices").click( function() {
-			var notice = jQuery( this ).parents(".'.$this->lca.'-notice"); 
+			var notice = jQuery( this ).parents(".'.$this->lca.'-notice");
 			jQuery(".'.$this->lca.'-dismissible").show();
 			notice.hide();
 		});
 		jQuery(".'.$this->lca.'-dismissible > .notice-dismiss").click( function() {
-			var notice = jQuery( this ).parent(".'.$this->lca.'-dismissible"); 
+			var notice = jQuery( this ).parent(".'.$this->lca.'-dismissible");
 			var dismiss_nonce = notice.data( "dismiss-nonce" );
 			var dismiss_id = notice.data( "dismiss-id" );
 			var dismiss_time = notice.data( "dismiss-time" );
@@ -368,20 +369,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			// msg_id and dismiss must have values to create a dismissible notice
-			$is_dismissible = empty( $payload['msg_id'] ) || 
+			$is_dismissible = empty( $payload['msg_id'] ) ||
 				empty( $payload['dismiss'] ) ? false : true;
 
-			$cssid_attr = empty( $payload['msg_id'] ) ? 
+			$cssid_attr = empty( $payload['msg_id'] ) ?
 				'' : ' id="'.$payload['msg_id'].'"';
 
-			$data_attr = ! $is_dismissible ? 
+			$data_attr = ! $is_dismissible ?
 				'' : ' data-dismiss-nonce="'.wp_create_nonce( __FILE__ ).'"'.
 					' data-dismiss-id="'.$payload['msg_id'].'"'.
 					' data-dismiss-time="'.( is_numeric( $payload['dismiss'] ) ? $payload['dismiss'] : 0 ).'"';
 
 			// optionally hide notices if required
 			$style_attr = ' style="'.
-				( empty( $payload['style'] ) ? 
+				( empty( $payload['style'] ) ?
 					'' : $payload['style'] ).
 				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ).'"';
 
