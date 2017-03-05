@@ -306,8 +306,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			/*
 			 * If the module is a post object, define the author, publishing date, etc.
-			 * If the og:type is not an article, these values may still be used by other 
-			 * filters, and the meta tags will be sanitized at the end of 
+			 * These values may still be used by other filters, and if the og:type is 
+			 * not an article, the meta tags will be sanitized at the end of 
 			 * WpssoHead::get_head_array().
 			 */
 			if ( $mod['is_post'] ) {
@@ -394,12 +394,23 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $mt_og;
 			}
 
-			foreach ( $mt_og as $mt_name => $mt_val ) {
-				if ( ! preg_match( '/^(fb|og|'.$mt_og['og:type'].'):/', $mt_name ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'removing extra meta tag '.$mt_name );
+			/*
+			 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
+			 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing 
+			 * only known meta tags (using the 'og_type_mt' array as a reference) protects 
+			 * internal meta tags that may be used later by WpssoHead::extract_head_info().
+			 */
+			$og_types =& $this->p->cf['head']['og_type_mt'];
+
+			foreach ( $og_types as $og_type => $mt_names ) {
+				if (  $og_type !== $mt_og['og:type'] ) {
+					foreach ( $mt_names as $mt_name ) {
+						if ( isset( $mt_og[$mt_name] ) ) {
+							if ( $this->p->debug->enabled )
+								$this->p->debug->log( 'removing extra meta tag '.$mt_name );
+							unset( $mt_og[$mt_name] );
+						}
 					}
-					unset( $mt_og[$mt_name] );
 				}
 			}
 

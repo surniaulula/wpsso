@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.2-rc4',	// plugin version
+					'version' => '3.40.2-rc5',	// plugin version
 					'opt_version' => '507',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -569,6 +569,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_article:publisher' => 1,
 					'add_meta_property_article:published_time' => 1,
 					'add_meta_property_article:modified_time' => 1,
+					'add_meta_property_article:expiration_time' => 1,
 					'add_meta_property_article:section' => 1,
 					'add_meta_property_article:tag' => 1,
 					// open graph (book)
@@ -1156,11 +1157,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_type_mt' => array(
 					'article' => array(
 						'article:author',
-						'article:section',
-						'article:tag',
+						'article:publisher',
 						'article:published_time',
 						'article:modified_time',
 						'article:expiration_time',
+						'article:section',
+						'article:tag',
 					),
 					'book' => array(
 						'book:author',
