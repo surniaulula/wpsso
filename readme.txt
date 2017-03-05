@@ -364,12 +364,12 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.2-rc4 (2017/03/04)**
+**Version 3.40.2-rc5 (2017/03/05)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new "Default Post / Page Type" option in the General settings page (default value is "article").
+	* Added a new "Default Post / Page Type" option in the General &gt; Open Graph settings page (default value is "article").
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -830,9 +830,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.2-rc4 =
+= 3.40.2-rc5 =
 
-(2017/03/04) Refactored the SucomUtil is_home_page(), is_post_page(), and get_post_object() methods.
+(2017/03/05) Refactored the SucomUtil is_home_page(), is_post_page(), and get_post_object() methods.
 
 = 3.40.1-2 =
  
