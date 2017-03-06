@@ -24,10 +24,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( is_admin() ) {
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
-					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 					// load_meta_page() priorities: 100 post, 200 user, 300 term
 					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
+					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 				}
 
 				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
@@ -215,15 +215,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		// hooked into the current_screen action
 		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 		public function load_meta_page( $screen = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			// all meta modules set this property, so use it to optimize code execution
-			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) )
+			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
 				return;
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'screen id: '.$screen->id );
+			}
 
 			switch ( $screen->id ) {
 				case 'upload':
@@ -231,21 +235,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return;
 			}
 
-			$post_obj = SucomUtil::get_post_object();
+			$post_obj = SucomUtil::get_post_object( true );
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			// make sure we have at least a post type and status
 			if ( ! is_object( $post_obj ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_obj is not an object' );
+				}
 				return;
 			} elseif ( empty( $post_obj->post_type ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type is empty' );
+				}
 				return;
 			} elseif ( empty( $post_obj->post_status ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is empty' );
+				}
 				return;
 			}
 
@@ -261,18 +268,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
+				}
 				WpssoMeta::$head_meta_tags = array();
 			} else {
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
+
 				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 
 					// hooked by woocommerce module to load front-end libraries and start a session
 					do_action( $lca.'_admin_post_head', $mod, $screen->id );
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );
+					}
 
 					// $read_cache = false to generate notices etc.
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
@@ -281,11 +291,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( $post_obj->post_status === 'publish' ) {
 
 						// check for missing open graph image and issue warning
-						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
+						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) ) {
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
+						}
 
-						if ( empty( WpssoMeta::$head_meta_info['og:description'] ) )
+						if ( empty( WpssoMeta::$head_meta_info['og:description'] ) ) {
 							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
+						}
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
 						if ( current_user_can( 'manage_options' ) ) {
@@ -299,11 +311,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: '.$action_name );
+				}
 				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );
+					}
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'post', $action_name ) );
@@ -319,34 +333,39 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function check_post_head_duplicates( $post_id = true, $post_obj = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: plugin_check_head option not enabled');
+				}
 				return $post_id;
 			}
 			
 			if ( ! is_object( $post_obj ) && ( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
+				}
 				return $post_id;
 			}
 
 			// only check publicly available posts
 			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: post_status \''.$post_obj->post_status.'\' not published');
+				}
 				return $post_id;
 			}
 
 			// only check public post types (to avoid menu items, product variations, etc.)
 			$post_type_names = $this->p->util->get_post_types( 'names' );
-			if ( empty( $post_obj->post_type ) || 
-				! in_array( $post_obj->post_type, $post_type_names ) ) {
-				if ( $this->p->debug->enabled )
+			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
+				}
 				return $post_id;
 			}
 
@@ -355,13 +374,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: exec_count of '.$exec_count.' exceeds max_count of '.$max_count );
+				}
 				return $post_id;
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'check head meta' );	// begin timer
+			}
 
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id );
@@ -369,11 +390,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$check_opts = apply_filters( $lca.'_check_head_meta_options', SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 			$conflicts_found = 0;
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'checking '.$shortlink.' head meta for duplicates' );
-			if ( is_admin() )
+			}
+
+			if ( is_admin() ) {
 				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
 					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
+			}
 
 			// use the shortlink and have get_head_meta() remove our own meta tags
 			// to avoid issues with caching plugins that ignore query arguments
@@ -400,42 +424,56 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
 						'wpsso' ), $max_count - $exec_count ) );
 				}
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'returned head meta for '.$shortlink.' is false' );
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'check head meta' );	// end timer
+			}
 
 			return $post_id;
 		}
 
 		public function add_metaboxes() {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 
-			if ( ( $post_obj = SucomUtil::get_post_object() ) === false || 
-				empty( $post_obj->post_type ) ) {
-				if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ( $post_obj = SucomUtil::get_post_object( true ) ) === false || empty( $post_obj->post_type ) ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: object without post type' );
+				}
 				return;
-			} else $post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			} else {
+				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			}
 
 			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || 
 				! current_user_can( 'edit_post', $post_id ) ) {
-				if ( $this->p->debug->enabled )
+
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for '.$post_obj->post_type.' ID '.$post_id );
+				}
 				return;
 			}
 
 			$lca = $this->p->cf['lca'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
+
 			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
-				if ( $this->p->debug->enabled )
+
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding metabox '.$lca.'_social_settings' );
+				}
+
 				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_settings' ), $post_obj->post_type, 'normal', 'low' );
-			} elseif ( $this->p->debug->enabled )
+
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'skipped metabox '.$lca.'_social_settings' );
+			}
 		}
 
 		public function show_metabox_social_settings( $post_obj ) {
