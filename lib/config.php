@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.2-rc5',	// plugin version
-					'opt_version' => '507',		// increment when changing default options
+					'version' => '3.40.2-1',	// plugin version
+					'opt_version' => '508',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -975,7 +975,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'label' => 'SSO',		// menu item label
 				'color' => '33cc33',		// menu item color (lime green)
 			),
-			'list' => array(
+			'edit' => array(
 				'columns' => array( 
 					'schema_type' => array(
 						'header' => 'SSO Schema',
@@ -1018,11 +1018,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'saturday' => 'Saturday',
 					'publicholidays' => 'Public Holidays',
 				),
-				'time_by_name' => array(
+				'time_by_name' => array(	// in seconds
 					'hour' => 3600,
 					'day' => 86400,
-					'week' => 604800,
-					'month' => 18144000,
+					'week' => 604800,	// 7 days
+					'month' => 2592000,	// 30 days
 				),
 				'cache_hrs' => array(
 					0 => 0,

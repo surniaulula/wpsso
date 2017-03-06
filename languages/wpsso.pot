@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.2-"
-"rc5\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.2-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -796,171 +795,156 @@ msgid "Sold Out"
 msgstr ""
 
 #: lib/config-gettext-extract.php:59
-msgctxt "column header"
-msgid "SSO Desc"
-msgstr ""
-
-#: lib/config-gettext-extract.php:60
-msgctxt "column header"
-msgid "SSO Img"
-msgstr ""
-
-#: lib/config-gettext-extract.php:61
 msgctxt "menu label"
 msgid "SSO"
 msgstr ""
 
-#: lib/config-gettext-extract.php:62
-msgctxt "column header"
-msgid "SSO Schema"
-msgstr ""
-
-#: lib/config-gettext-extract.php:63
+#: lib/config-gettext-extract.php:60
 msgctxt "option value"
 msgid "Sunday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:64
+#: lib/config-gettext-extract.php:61
 msgctxt "option value"
 msgid "Thursday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:65
+#: lib/config-gettext-extract.php:62
 msgctxt "option value"
 msgid "TinyURL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:66
+#: lib/config-gettext-extract.php:63
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
-#: lib/config-gettext-extract.php:67
+#: lib/config-gettext-extract.php:64
 msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:68
+#: lib/config-gettext-extract.php:65
 msgctxt "option value"
 msgid "Top"
 msgstr ""
 
-#: lib/config-gettext-extract.php:69
+#: lib/config-gettext-extract.php:66
 msgctxt "option value"
 msgid "Tuesday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:70
+#: lib/config-gettext-extract.php:67
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: lib/config-gettext-extract.php:71
+#: lib/config-gettext-extract.php:68
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr ""
 
-#: lib/config-gettext-extract.php:72
+#: lib/config-gettext-extract.php:69
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:73
+#: lib/config-gettext-extract.php:70
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:74
+#: lib/config-gettext-extract.php:71
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
 msgstr ""
 
-#: lib/config-gettext-extract.php:75
+#: lib/config-gettext-extract.php:72
 msgctxt "option value"
 msgid "Wednesday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:76
+#: lib/config-gettext-extract.php:73
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add a user locale / language selector in the WordPress "
 "admin back-end and front-end toolbar menus."
 msgstr ""
 
-#: lib/config-gettext-extract.php:77
+#: lib/config-gettext-extract.php:74
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
 "in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:78
+#: lib/config-gettext-extract.php:75
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, "
 "Local Business, Products, Recipes, Reviews + many more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:79
+#: lib/config-gettext-extract.php:76
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Social Sharing Buttons with support for hashtags, "
 "short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:80
+#: lib/config-gettext-extract.php:77
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to easily add Twitter-style quoted text &mdash; with a Tweet "
 "share link &mdash; in your post and page content."
 msgstr ""
 
-#: lib/config-gettext-extract.php:81
+#: lib/config-gettext-extract.php:78
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to manage Organizations and additional Schema Article / "
 "Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr ""
 
-#: lib/config-gettext-extract.php:82
+#: lib/config-gettext-extract.php:79
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:83
+#: lib/config-gettext-extract.php:80
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
 "Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:84
+#: lib/config-gettext-extract.php:81
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
 "Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:85
+#: lib/config-gettext-extract.php:82
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to remove outdated Schema Microdata, leaving the superior "
 "Schema JSON-LD markup untouched for Google and Bing."
 msgstr ""
 
-#: lib/config-gettext-extract.php:86
+#: lib/config-gettext-extract.php:83
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:87
+#: lib/config-gettext-extract.php:84
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: lib/config-gettext-extract.php:88
+#: lib/config-gettext-extract.php:85
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr ""
@@ -2886,7 +2870,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:509
+#: lib/meta.php:506
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

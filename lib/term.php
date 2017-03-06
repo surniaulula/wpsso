@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * editing a category and/or tag page, so return immediately if
 				 * they're not present.
 				 */
-				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )
+				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )	// uses sanitize_text_field
 					return;
 
 				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				add_action( 'get_term_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
-				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )
+				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )	// uses sanitize_text_field
 					return;
 
 				if ( $this->p->debug->enabled )

@@ -1329,7 +1329,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $screen_base === 'post' )
 					$ret = true;
 				elseif ( $screen_base === false &&	// called too early for screen
-					( self::get_request_value( 'post_ID', 'POST' ) !== '' ||
+					( self::get_request_value( 'post_ID', 'POST' ) !== '' ||	// uses sanitize_text_field
 						self::get_request_value( 'post', 'GET' ) !== '' ) )
 							$ret = true;
 				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
@@ -1359,7 +1359,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$post_obj = get_post( get_option( 'page_for_posts' ) );
 
 			} elseif ( is_admin() ) {
-				if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||
+				if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||	// uses sanitize_text_field
 					( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' )
 						$post_obj = get_post( $post_id );
 			}
@@ -1399,7 +1399,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $screen_base === 'term' )	// since wp v4.5
 					$ret = true;
 				elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
-					( self::get_request_value( 'taxonomy' ) !== '' &&
+					( self::get_request_value( 'taxonomy' ) !== '' &&	// uses sanitize_text_field
 						self::get_request_value( 'tag_ID' ) !== '' ) )
 							$ret = true;
 			}
@@ -1414,7 +1414,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === 'category' )
+					self::get_request_value( 'taxonomy' ) === 'category' )	// uses sanitize_text_field
 						$ret = true;
 			}
 			return apply_filters( 'sucom_is_category_page', $ret );
@@ -1428,7 +1428,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === '_tag' )
+					self::get_request_value( 'taxonomy' ) === '_tag' )	// uses sanitize_text_field
 						$ret = true;
 			}
 			return apply_filters( 'sucom_is_tag_page', $ret );
@@ -1444,7 +1444,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$term_obj = get_queried_object();
 
 			} elseif ( is_admin() ) {
-				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' &&
+				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' &&	// uses sanitize_text_field
 					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' )
 						$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
@@ -1527,7 +1527,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					get_userdata( get_query_var( 'author' ) );
 
 			} elseif ( is_admin() ) {
-				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' )
+				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' )	// uses sanitize_text_field
 					$user_id = get_current_user_id();
 				$user_obj = get_userdata( $user_id );
 			}
@@ -1570,7 +1570,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				is_product_category() )
 					$ret = true;
 			elseif ( is_admin() ) {
-				if ( self::get_request_value( 'taxonomy' ) === 'product_cat' &&
+				if ( self::get_request_value( 'taxonomy' ) === 'product_cat' &&	// uses sanitize_text_field
 					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
@@ -1583,48 +1583,53 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				is_product_tag() )
 					$ret = true;
 			elseif ( is_admin() ) {
-				if ( self::get_request_value( 'taxonomy' ) === 'product_tag' &&
+				if ( self::get_request_value( 'taxonomy' ) === 'product_tag' &&	// uses sanitize_text_field
 					self::get_request_value( 'post_type' ) === 'product' )
 						$ret = true;
 			}
 			return apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
-		public static function get_request_value( $key, $method = 'ANY' ) {
-			if ( $method === 'ANY' )
+		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
+			if ( $method === 'ANY' ) {
 				$method = $_SERVER['REQUEST_METHOD'];
+			}
 			switch( $method ) {
 				case 'POST':
-					if ( isset( $_POST[$key] ) )
+					if ( isset( $_POST[$key] ) ) {
 						return sanitize_text_field( $_POST[$key] );
+					}
 					break;
 				case 'GET':
-					if ( isset( $_GET[$key] ) )
+					if ( isset( $_GET[$key] ) ) {
 						return sanitize_text_field( $_GET[$key] );
+					}
 					break;
 			}
-			return '';
+			return $default;
 		}
 
 		public static function encode_utf8( $decoded ) {
-			if ( ! mb_detect_encoding( $decoded, 'UTF-8') == 'UTF-8' )
+			if ( ! mb_detect_encoding( $decoded, 'UTF-8') == 'UTF-8' ) {
 				$encoded = utf8_encode( $decoded );
-			else $encoded = $decoded;
+			} else {
+				$encoded = $decoded;
+			}
 			return $encoded;
 		}
 
 		public static function decode_utf8( $encoded ) {
 			// if we don't have something to decode, return immediately
-			if ( strpos( $encoded, '&#' ) === false )
+			if ( strpos( $encoded, '&#' ) === false ) {
 				return $encoded;
-
+			}
 			// convert certain entities manually to something non-standard
 			$encoded = preg_replace( '/&#8230;/', '...', $encoded );
 
 			// if mb_decode_numericentity is not available, return the string un-converted
-			if ( ! function_exists( 'mb_decode_numericentity' ) )
+			if ( ! function_exists( 'mb_decode_numericentity' ) ) {
 				return $encoded;
-
+			}
 			$decoded = preg_replace_callback( '/&#\d{2,5};/u',
 				array( __CLASS__, 'decode_utf8_entity' ), $encoded );
 
@@ -1649,8 +1654,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function strip_shortcodes( $text ) {
-			if ( strpos( $text, '[' ) === false )		// exit now if no shortcodes
+			if ( strpos( $text, '[' ) === false ) {		// optimize - return if no shortcodes
 				return $text;
+			}
 			$shortcodes_preg = apply_filters( 'sucom_strip_shortcodes_preg', array(
 				'/\[\/?(mk|rev_slider_|vc)_[^\]]+\]/',
 			) );
@@ -1664,20 +1670,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( file_exists( $file_path ) ) {
 				$content = file_get_contents( $file_path );
 				$comments = array( T_COMMENT );
-				if ( defined( 'T_DOC_COMMENT' ) )
+				if ( defined( 'T_DOC_COMMENT' ) ) {
 					$comments[] = T_DOC_COMMENT;	// php 5
-				if ( defined( 'T_ML_COMMENT' ) )
+				}
+				if ( defined( 'T_ML_COMMENT' ) ) {
 					$comments[] = T_ML_COMMENT;	// php 4
+				}
 				$tokens = token_get_all( $content );
 				foreach ( $tokens as $token ) {
 					if ( is_array( $token ) ) {
-						if ( in_array( $token[0], $comments ) )
+						if ( in_array( $token[0], $comments ) ) {
 							continue;
+						}
 						$token = $token[1];
 					}
 					$ret .= $token;
 				}
-			} else $ret = false;
+			} else {
+				$ret = false;
+			}
 			return $ret;
 		}
 
@@ -1692,9 +1703,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// wp_encode_emoji() is only available since v4.2
 		// use the wp function if available, otherwise provide the same functionality
 		public static function encode_emoji( $content ) {
-			if ( function_exists( 'wp_encode_emoji' ) )
+			if ( function_exists( 'wp_encode_emoji' ) ) {
 				return wp_encode_emoji( $content );		// since wp 4.2
-			elseif ( function_exists( 'mb_convert_encoding' ) ) {
+			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
 				$regex = '/(
 				     \x23\xE2\x83\xA3               # Digits
 				     [\x30-\x39]\xE2\x83\xA3
@@ -1730,11 +1741,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
-			if ( function_exists( 'wp_json_encode' ) )
+			if ( function_exists( 'wp_json_encode' ) ) {
 				return wp_json_encode( $data, $options, $depth );
-			elseif ( function_exists( 'json_encode' ) )
+			} elseif ( function_exists( 'json_encode' ) ) {
 				return json_encode( $data, $options, $depth );
-			else return '{}';	// empty string
+			} else {
+				return '{}';	// empty string
+			}
 		}
 
 		// returns self::$is_mobile cached value after first check
@@ -1742,8 +1755,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! isset( self::$is_mobile ) ) {
 				// load class object on first check
 				if ( ! isset( self::$mobile_obj ) ) {
-					if ( ! class_exists( 'SuextMobileDetect' ) )
+					if ( ! class_exists( 'SuextMobileDetect' ) ) {
 						require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
+					}
 					self::$mobile_obj = new SuextMobileDetect();
 				}
 				self::$is_mobile = self::$mobile_obj->isMobile();
@@ -1930,7 +1944,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_toplevel_edit( $hook_name ) {
 			return strpos( $hook_name, 'toplevel_page_' ) !== false && (
-				( self::get_request_value( 'action', 'GET' ) === 'edit' &&
+				( self::get_request_value( 'action', 'GET' ) === 'edit' &&	// uses sanitize_text_field
 					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||
 				( self::get_request_value( 'action', 'GET' ) === 'create_new' &&
 					self::get_request_value( 'return', 'GET' ) === 'edit' )

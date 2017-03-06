@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'get_user_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
 				// exit here if not a user or profile page
-				$user_id = SucomUtil::get_request_value( 'user_id' );
+				$user_id = SucomUtil::get_request_value( 'user_id' );	// uses sanitize_text_field
 				if ( empty( $user_id ) )
 					return;
 

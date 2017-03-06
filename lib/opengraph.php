@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! isset( $mt_og['product:price:currency'] ) )
 						$mt_og['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
 
-					// sanity checks
+					// quick product sanity checks
 					if ( $mt_og['product:availability'] === 'none' )
 						unset( $mt_og['product:availability'] );
 
@@ -380,7 +380,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
-		// remove extra / internal meta tags
+		/*
+		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
+		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing 
+		 * only known meta tags (using the 'og_type_mt' array as a reference) protects 
+		 * internal meta tags that may be used later by WpssoHead::extract_head_info().
+		 * For example, the schema:type:id and pinterest:image meta tags.
+		 */
 		public function sanitize_array( array $mod, array $mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -394,12 +400,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $mt_og;
 			}
 
-			/*
-			 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
-			 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing 
-			 * only known meta tags (using the 'og_type_mt' array as a reference) protects 
-			 * internal meta tags that may be used later by WpssoHead::extract_head_info().
-			 */
 			$og_types =& $this->p->cf['head']['og_type_mt'];
 
 			foreach ( $og_types as $og_type => $mt_names ) {

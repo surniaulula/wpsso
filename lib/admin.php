@@ -369,9 +369,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function save_site_options() {
 			$network = true;
 
-			$page = empty( $_POST['page'] ) ?
-				key( $this->p->cf['*']['lib']['sitesubmenu'] ) :
-				$_POST['page'];
+			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// uses sanitize_text_field
+				$page = key( $this->p->cf['*']['lib']['sitesubmenu'] );
+			}
 
 			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
 				if ( $this->p->debug->enabled )

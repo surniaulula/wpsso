@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Save meta tag values for later sorting in edit tables
+			 * Save meta tag values for later sorting in list tables.
 			 */
 			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
 				if ( empty( $col_info['meta_key'] ) )	// just in case
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Combine and return all meta tags
 			 */
-			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// remove extra / internal meta tags
+			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// unset mis-matched og_type meta tags
 
 			$head_array[$head_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),		// seo description is last
+				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// seo description is last
 				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
 				$mt_json_array
 			);

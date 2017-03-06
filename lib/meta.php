@@ -490,26 +490,22 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected function verify_submit_nonce() {
 			if ( empty( $_POST ) ) {
-
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'empty POST for submit' );
+				}
 				return false;
-
 			} elseif ( empty( $_POST[ WPSSO_NONCE ] ) ) {
-
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit POST missing nonce token' );
+				}
 				return false;
-
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'submit nonce token validation failed' );
 				if ( is_admin() )
 					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
 						'wpsso' ) );
 				return false;
-
 			} else return true;
 		}
 
@@ -613,7 +609,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		// return sortable column keys and their query sort info
 		public static function get_sortable_columns( $col_idx = false ) { 
-			$sort_cols = WpssoConfig::$cf['list']['columns'];
+			$sort_cols = WpssoConfig::$cf['edit']['columns'];
 			if ( $col_idx !== false ) {
 				if ( isset( $sort_cols[$col_idx] ) )
 					return $sort_cols[$col_idx];
