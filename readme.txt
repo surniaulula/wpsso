@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.2-rc5 (2017/03/05)**
+**Version 3.40.2-1 (2017/03/06)**
 
 * *New Features*
 	* None
@@ -378,7 +378,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new SucomUtil is_amp() method to replace calls to the AMP plugin is_amp_endpoint() function.
 	* Moved the lib/com/style.php and lib/com/script.php files to lib/style.php and lib/script.php.
 	* Added a new WpssoConfig $cf['menu'] array.
-	* Added a new WpssoConfig $cf['list']['columns'] array.
+	* Added a new WpssoConfig $cf['edit']['columns'] array.
 	* Added a new WpssoMeta get_column_meta_keys() static method.
 	* Changed the WpssoMeta get_sortable_columns() method to a static method.
 	* Added a new WpssoUtil delete_all_column_meta() method.
@@ -830,9 +830,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.2-rc5 =
+= 3.40.2-1 =
 
-(2017/03/05) Refactored the SucomUtil is_home_page(), is_post_page(), and get_post_object() methods.
+(2017/03/06) Added a new "Default Post / Page Type" option in the Open Graph settings page. Refactored the SucomUtil is_home_page(), is_post_page(), and get_post_object() methods.
 
 = 3.40.1-2 =
  
