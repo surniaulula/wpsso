@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.3-dev1',	// plugin version
+					'version' => '3.40.3-dev2',	// plugin version
 					'opt_version' => '509',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1108,6 +1108,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				// https://schema.org/ItemAvailability
 				'item_availability' => array(
+					'none' => '[None]',
 			 		'Discontinued' => 'Discontinued',
 			 		'InStock' => 'In Stock',
 			 		'InStoreOnly' => 'In Store Only',
@@ -1119,6 +1120,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				// https://schema.org/OfferItemCondition
 				'item_condition' => array(
+					'none' => '[None]',
 					'DamagedCondition' => 'Damaged',
 					'NewCondition' => 'New',
 					'RefurbishedCondition' => 'Refurbished',

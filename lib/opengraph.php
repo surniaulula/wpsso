@@ -266,9 +266,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
-						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] )
+						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] ) {
 							$mt_og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 								$size_name, $check_dupes );
+						}
 
 						switch ( $md_pre ) {
 							case 'rp':
@@ -284,8 +285,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								/*
 								 * Rename the rp:image array to og:image.
 								 */
-								} else SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ), false );
-
+								} else {
+									SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ), false );
+								}
 								break;
 						}
 					}
@@ -418,14 +420,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			if ( isset( $mt_og['product:price:amount'] ) &&
-				! is_numeric( $mt_og['product:price:amount'] ) ) {
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'product price amount must be numeric' );
-
-				unset( $mt_og['product:price:amount'],
-					$mt_og['product:price:currency'] );
+			if ( isset( $mt_og['product:price:amount'] ) ) {
+				if ( is_numeric( $mt_og['product:price:amount'] ) ) {
+					if ( empty( $mt_og['product:price:currency'] ) ) {
+						$mt_og['product:price:currency'] = 'USD';	// default value
+					}
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'product price amount must be numeric' );
+					}
+					unset( $mt_og['product:price:amount'],
+						$mt_og['product:price:currency'] );
+				}
 			}
 
 			return $mt_og;

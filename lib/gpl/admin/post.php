@@ -78,8 +78,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
-				'product_avail' => null,		// placeholder
-				'product_condition' => null,		// placeholder
+				'product_avail' => null,	// placeholder
+				'product_condition' => null,	// placeholder
 				'product_price' => null,	// placeholder
 				/*
 				 * All Schema Types
