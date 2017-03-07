@@ -364,6 +364,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.40.3-dev1 (2017/03/07)**
+
+* *New Features*
+	* Added a new Open Graph "Product Condition" option to the Social Settings metabox.
+* *Improvements*
+	* Added support for a WooCommerce 'condition' product attribute (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new WpssoConfig $cf['head']['og_content_map'] array to swap Schema meta tag values to their simpler Open Graph counterparts.
+
 **Version 3.40.2-1 (2017/03/06)**
 
 * *New Features*
@@ -829,6 +840,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.40.3-dev1 =
+
+(2017/03/07) Added a new Open Graph "Product Condition" option to the Social Settings metabox.
 
 = 3.40.2-1 =
 
