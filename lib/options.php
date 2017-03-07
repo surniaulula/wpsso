@@ -590,6 +590,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'rp_author_name':
 				case 'plugin_shortener':		// none or name of shortener
 				case 'product_avail':
+				case 'product_condition':
 				case ( strpos( $key, '_crop_x' ) !== false ? true : false ):
 				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):

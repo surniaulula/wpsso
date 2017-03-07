@@ -436,7 +436,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
 					'schema_img_url' => '',
 					'schema_img_max' => -1,
-					'product_avail' => 'none',
+					'product_avail' => 'InStock',
+					'product_condition' => 'New',
 					'product_price' => '0.00',
 					'product_currency' => 'USD',
 				);

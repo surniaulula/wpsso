@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes' => 1,
 			) );
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} elseif ( $mod['is_post'] ) {
 
 				// check the post_type for a match with a known open graph type
-				if ( ! empty( $mod['post_type'] ) && 
+				if ( ! empty( $mod['post_type'] ) &&
 					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
 						$og_type = $mod['post_type'];
 				else $og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod );
 
-			if ( ! empty( $mt_og ) && 
+			if ( ! empty( $mt_og ) &&
 				$this->p->debug->enabled ) {
 				$this->p->debug->log( $lca.'_og_seed filter returned:' );
 				$this->p->debug->log( $mt_og );
@@ -180,18 +180,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			// define the type after the url
 			if ( ! isset( $mt_og['og:type'] ) )
 				$mt_og['og:type'] = $this->get_og_type( $mod );
-
-			// pre-define basic open graph meta tags for this type
-			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {
-				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name ) {
-					if ( ! isset( $mt_og[$mt_name] ) ) {
-						$mt_og[$mt_name] = null;
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_og['og:type'].' pre-defined mt: '.$mt_name );
-						}
-					}
-				}
-			}
 
 			if ( ! isset( $mt_og['og:locale'] ) )
 				$mt_og['og:locale'] = SucomUtil::get_fb_locale( $this->p->options, $mod );	// localized
@@ -228,7 +216,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
 						foreach ( $mt_og['og:video'] as $num => $og_video ) {
-							if ( isset( $og_video['og:video:type'] ) && 
+							if ( isset( $og_video['og:video:type'] ) &&
 								$og_video['og:video:type'] !== 'text/html' &&
 									SucomUtil::get_mt_media_url( $og_video, 'og:image' ) ) {
 								$prev_count++;
@@ -246,7 +234,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 						}
 					}
-				} 
+				}
 			}
 
 			// get all images
@@ -301,13 +289,39 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								break;
 						}
 					}
-				} 
+				}
+			}
+
+			/*
+			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag
+			 * has an associated meta option name, then read it's value from the meta options.
+			 */
+			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {	// check if og:type is in config
+
+				$md_opts = empty( $mod['obj'] ) ? 	// optimize and call get_options() only once
+					array() : $mod['obj']->get_options( $mod['id'] );
+
+				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name => $md_idx ) {
+					if ( ! isset( $mt_og[$mt_name] ) ) {
+						if ( empty( $md_idx ) ) {		// no associated meta option name
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' pre-defined as null' );
+							}
+							$mt_og[$mt_name] = null;	// use null so isset() returns false
+						} elseif ( isset( $md_opts[$md_idx] ) ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from md option' );
+							}
+							$mt_og[$mt_name] = $md_opts[$md_idx];
+						}
+					}
+				}
 			}
 
 			/*
 			 * If the module is a post object, define the author, publishing date, etc.
-			 * These values may still be used by other filters, and if the og:type is 
-			 * not an article, the meta tags will be sanitized at the end of 
+			 * These values may still be used by other filters, and if the og:type is
+			 * not an article, the meta tags will be sanitized at the end of
 			 * WpssoHead::get_head_array().
 			 */
 			if ( $mod['is_post'] ) {
@@ -354,38 +368,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
 			}
 
-			if ( isset( $mt_og['og:type'] ) ) {
-
-				if ( $mt_og['og:type'] === 'product' ) {
-
-					if ( ! isset( $mt_og['product:availability'] ) )
-						$mt_og['product:availability'] = $mod['obj']->get_options( $mod['id'], 'product_avail' );
-
-					if ( ! isset( $mt_og['product:price:amount'] ) )
-						$mt_og['product:price:amount'] = $mod['obj']->get_options( $mod['id'], 'product_price' );
-
-					if ( ! isset( $mt_og['product:price:currency'] ) )
-						$mt_og['product:price:currency'] = $mod['obj']->get_options( $mod['id'], 'product_currency' );
-
-					// quick product sanity checks
-					if ( $mt_og['product:availability'] === 'none' )
-						unset( $mt_og['product:availability'] );
-
-					if ( ! is_numeric( $mt_og['product:price:amount'] ) )
-						unset( $mt_og['product:price:amount'], 
-							$mt_og['product:price:currency'] );
-				}
-			}
-
 			return apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
 		/*
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
-		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing 
-		 * only known meta tags (using the 'og_type_mt' array as a reference) protects 
+		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing
+		 * only known meta tags (using the 'og_type_mt' array as a reference) protects
 		 * internal meta tags that may be used later by WpssoHead::extract_head_info().
 		 * For example, the schema:type:id and pinterest:image meta tags.
+		 *
+		 * The 'og_content_map' array is also checked for Schema values that need to be
+		 * swapped for simpler Open Graph meta tag values.
 		 */
 		public function sanitize_array( array $mod, array $mt_og ) {
 
@@ -400,18 +394,29 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $mt_og;
 			}
 
-			$og_types =& $this->p->cf['head']['og_type_mt'];
-
-			foreach ( $og_types as $og_type => $mt_names ) {
-				if (  $og_type !== $mt_og['og:type'] ) {
-					foreach ( $mt_names as $mt_name ) {
-						if ( isset( $mt_og[$mt_name] ) ) {
-							if ( $this->p->debug->enabled )
+			foreach ( $this->p->cf['head']['og_type_mt'] as $og_type => $mt_names ) {
+				foreach ( $mt_names as $mt_name => $md_idx ) {
+					if ( isset( $mt_og[$mt_name] ) ) {
+						if (  $og_type !== $mt_og['og:type'] ) {	// mis-matched meta tag for this og:type
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removing extra meta tag '.$mt_name );
+							}
 							unset( $mt_og[$mt_name] );
+						} elseif ( isset( $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]] ) ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'mapping content value for '.$mt_name );
+							}
+							$mt_og[$mt_name] = $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]];
 						}
 					}
 				}
+			}
+
+			if ( ! is_numeric( $mt_og['product:price:amount'] ) ) {
+				if ( $this->p->debug->enabled )
+					$this->p->debug->log( 'product price amount must be numeric' );
+				unset( $mt_og['product:price:amount'],
+					$mt_og['product:price:currency'] );
 			}
 
 			return $mt_og;
@@ -420,7 +425,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'num' => $num,
 					'mod' => $mod,
 					'check_dupes' => $check_dupes,
@@ -446,20 +451,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_video( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
 			}
 
-			if ( count( $og_ret ) < 1 && 
+			if ( count( $og_ret ) < 1 &&
 				$this->p->util->force_default_video( $mod ) )
 					$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_diff, $check_dupes ) );
 			else {
 				$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-				if ( $mod['is_post'] && 
+				if ( $mod['is_post'] &&
 					! $this->p->util->is_maxed( $og_ret, $num ) )
-						$og_ret = array_merge( $og_ret, 
+						$og_ret = array_merge( $og_ret,
 							$this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
 				$this->p->util->slice_max( $og_ret, $num );
 
-				if ( empty( $use_prev ) && 
+				if ( empty( $use_prev ) &&
 					$force_prev === false ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -475,9 +480,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/*
-			 * If $md_pre is 'none' (special index keyword), then don't load custom video 
-			 * title / description. Only the first video is given the custom title and 
-			 * description (if one was entered). The og:video:title and og:video:description 
+			 * If $md_pre is 'none' (special index keyword), then don't load custom video
+			 * title / description. Only the first video is given the custom title and
+			 * description (if one was entered). The og:video:title and og:video:description
 			 * meta tags are not standard and their values will only appear in Schema markup.
 			 */
 			if ( $aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
@@ -540,15 +545,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $mod['is_post'] ) {
 
 				// is_attachment() only works on the front-end, so check the post_type as well
-				if ( ( is_attachment( $mod['id'] ) || get_post_type( $mod['id'] ) === 'attachment' ) && 
+				if ( ( is_attachment( $mod['id'] ) || get_post_type( $mod['id'] ) === 'attachment' ) &&
 					wp_attachment_is_image( $mod['id'] ) ) {
 
-					$og_image = $this->p->media->get_attachment_image( $num_diff, 
+					$og_image = $this->p->media->get_attachment_image( $num_diff,
 						$size_name, $mod['id'], $check_dupes );
 
 					// exiting early
 					if ( empty( $og_image ) )
-						return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff, 
+						return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff,
 							$size_name, $check_dupes, $force_regen ) );
 					else return array_merge( $og_ret, $og_image );
 				}
@@ -556,12 +561,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				// check for custom meta, featured, or attached image(s)
 				// allow for empty post ID in order to execute featured / attached image filters for modules
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) )
-					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff, 
+					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff,
 						$size_name, $mod['id'], $check_dupes, $md_pre ) );
 
 				// check for ngg shortcodes and query vars
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) &&
-					$this->p->is_avail['media']['ngg'] && 
+					$this->p->is_avail['media']['ngg'] &&
 						! empty( $this->p->m['media']['ngg'] ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -572,7 +577,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$ngg_query_og_ret = array();
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 					if ( version_compare( $this->p->m['media']['ngg']->ngg_version, '2.0.0', '<' ) )
-						$ngg_query_og_ret = $this->p->m['media']['ngg']->get_query_images( $num_diff, 
+						$ngg_query_og_ret = $this->p->m['media']['ngg']->get_query_images( $num_diff,
 							$size_name, $mod['id'], $check_dupes );
 
 					// if we found images in the query, skip content shortcodes
@@ -586,8 +591,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					// if no query images were found, continue with ngg shortcodes in content
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 						$num_diff = SucomUtil::count_diff( $og_ret, $num );
-						$og_ret = array_merge( $og_ret, 
-							$this->p->m['media']['ngg']->get_shortcode_images( $num_diff, 
+						$og_ret = array_merge( $og_ret,
+							$this->p->m['media']['ngg']->get_shortcode_images( $num_diff,
 								$size_name, $mod['id'], $check_dupes ) );
 					}
 				} // end of check for ngg shortcodes and query vars
@@ -598,19 +603,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'checking the content text for images' );
 					}
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff, 
+					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff,
 						$size_name, $mod, $check_dupes, $force_regen ) );
 				}
 
 			} else {
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				if ( ! empty( $mod['obj'] ) )	// term or user
-					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_image( $num_diff, 
+					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_image( $num_diff,
 						$size_name, $mod['id'], $check_dupes, $force_regen, $md_pre ) );
 
-				if ( count( $og_ret ) < 1 && 
+				if ( count( $og_ret ) < 1 &&
 					$this->p->util->force_default_image( $mod, 'og' ) )
-						return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff, 
+						return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff,
 							$size_name, $check_dupes, $force_regen ) );
 			}
 
@@ -667,7 +672,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( empty( $ret[$key] ) )
 							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
 
-						// if there's no image, and no video preview image, 
+						// if there's no image, and no video preview image,
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
 							$og_image = $this->p->media->get_default_image( 1, $size_name, false );	// $check_dupes = false

@@ -79,6 +79,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
 				'product_avail' => null,	// placeholder
+				'product_condition' => null,	// placeholder
 				'product_price' => null,	// placeholder
 				/*
 				 * All Schema Types
@@ -101,8 +102,15 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'product_avail',
-						$this->p->cf['form']['product_availability'] ),
+						$this->p->cf['form']['item_availability'] ),
 				);
+				$form_rows['product_condition'] = array(
+					'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_condition', 'td_class' => 'blank',
+					'content' => $form->get_no_select( 'product_condition',
+						$this->p->cf['form']['item_condition'] ),
+				);
+				// product price and currency
 				$form_rows['product_price'] = array(
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
