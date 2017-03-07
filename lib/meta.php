@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_avail' => 'none',
 					'product_condition' => 'none',
 					'product_price' => '0.00',
-					'product_currency' => 'USD',
+					'product_currency' => WPSSO_DEF_PROD_CURRENCY,
 				);
 
 				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
@@ -916,12 +916,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_image;
 		}
 
-		// $all_meta can be a post/term/user meta array
-		protected function get_custom_fields( $md_opts, $all_meta ) {
+		// $wp_meta can be a post/term/user meta array
+		protected function get_custom_fields( array $md_opts, array $wp_meta ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			if ( ! is_array( $all_meta ) || empty( $all_meta ) )
+			if ( ! is_array( $wp_meta ) || empty( $wp_meta ) )
 				return $md_opts;
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
@@ -947,10 +947,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				// empty or not, if the array element is set, use it
-				if ( isset( $all_meta[$meta_key][0] ) ) {
+				if ( isset( $wp_meta[$meta_key][0] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
-					$mixed =& $all_meta[$meta_key][0];
+					$mixed =& $wp_meta[$meta_key][0];
 				} else continue;
 
 				$mixed = maybe_unserialize( $mixed );

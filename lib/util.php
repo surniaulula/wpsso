@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
 			}
 
-			$meta_opts = array();
+			$md_opts = array();
 
 			if ( $filter === true ) {
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
 			} elseif ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) && $aop )
-				$meta_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts = false
+				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts = false
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -187,8 +187,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 					if ( isset( $size_info[$key] ) )				// prefer existing info from filters
 						continue;
-					elseif ( isset( $meta_opts[$opt_prefix.'_'.$key] ) )		// use post meta if available
-						$size_info[$key] = $meta_opts[$opt_prefix.'_'.$key];
+					elseif ( isset( $md_opts[$opt_prefix.'_'.$key] ) )		// use post meta if available
+						$size_info[$key] = $md_opts[$opt_prefix.'_'.$key];
 					elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) )	// current plugin settings
 						$size_info[$key] = $this->p->options[$opt_prefix.'_'.$key];
 					else {

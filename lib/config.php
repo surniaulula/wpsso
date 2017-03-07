@@ -1636,6 +1636,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
+			$var_const['WPSSO_DEF_PROD_CURRENCY'] = 'USD';		// default product currency
 
 			/*
 			 * WPSSO option and meta array names
