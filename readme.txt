@@ -369,7 +369,11 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* Added a new Open Graph "Product Condition" option to the Social Settings metabox.
 * *Improvements*
-	* Added support for a WooCommerce 'condition' product attribute (Pro version).
+	* Added support for a WooCommerce "Condition" product attribute (Pro version).
+	* Added new product meta tags if returned by an e-commerce integration module (Pro version):
+		* product:condition
+		* product:weight:value
+		* product:weight:units
 * *Bugfixes*
 	* None
 * *Developer Notes*
