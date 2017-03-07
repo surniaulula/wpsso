@@ -91,10 +91,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $idx !== false ) {
-				if ( isset( $defs[$idx] ) )
+				if ( isset( $defs[$idx] ) ) {
 					return $defs[$idx];
-				else return null;
-			} else return $defs;
+				} else {
+					return null;
+				}
+			} else {
+				return $defs;
+			}
 		}
 
 		public function get_site_defaults( $idx = false, $force_filter = false ) {

@@ -378,8 +378,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $ret;
 		}
 
-		public function get_options( $mod_id, $idx = false, $filter_opts = true, $idx_def_val = null ) {
-			return $this->must_be_extended( __METHOD__, ( $idx === false ? false : $idx_def_val ) );
+		public function get_options( $mod_id, $idx = false, $filter_opts = true ) {
+			return $this->must_be_extended( __METHOD__, 
+				( $idx !== false ? null : array() ) );	// return an empty array or null
 		}
 
 		public function get_defaults( $mod_id, $idx = false ) {
