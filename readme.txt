@@ -364,13 +364,13 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.3-dev1 (2017/03/07)**
+**Version 3.40.3-dev2 (2017/03/07)**
 
 * *New Features*
 	* Added a new Open Graph "Product Condition" option to the Social Settings metabox.
 * *Improvements*
 	* Added support for a WooCommerce "Condition" product attribute (Pro version).
-	* Added new product meta tags if returned by an e-commerce integration module (Pro version):
+	* Added new Open Graph product meta tags if returned by an e-commerce integration module (Pro version):
 		* product:condition
 		* product:weight:value
 		* product:weight:units
@@ -845,9 +845,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.3-dev1 =
+= 3.40.3-dev2 =
 
-(2017/03/07) Added a new Open Graph "Product Condition" option to the Social Settings metabox.
+(2017/03/07) Added a new "Product Condition" option to the Social Settings metabox. Added support for a WooCommerce "Condition" product attribute (Pro version). Added new Open Graph product meta tags (Pro version):
 
 = 3.40.2-1 =
 
