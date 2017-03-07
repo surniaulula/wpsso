@@ -296,24 +296,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag
 			 * has an associated meta option name, then read it's value from the meta options.
 			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
+			}
 			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {	// check if og:type is in config
 
 				$md_opts = empty( $mod['obj'] ) ? 	// optimize and call get_options() only once
 					array() : $mod['obj']->get_options( $mod['id'] );
 
 				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name => $md_idx ) {
-					if ( ! isset( $mt_og[$mt_name] ) ) {
-						if ( empty( $md_idx ) ) {		// no associated meta option name
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' pre-defined as null' );
-							}
-							$mt_og[$mt_name] = null;	// use null so isset() returns false
-						} elseif ( isset( $md_opts[$md_idx] ) ) {
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from md option' );
-							}
-							$mt_og[$mt_name] = $md_opts[$md_idx];
+
+					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' ) {	// use custom value if available
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from option = '.$md_opts[$md_idx] );
 						}
+						$mt_og[$mt_name] = $md_opts[$md_idx];
+					} elseif ( isset( $mt_og[$mt_name] ) ) {	// if the meta tag has not already been set
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' original value kept = '.$mt_og[$mt_name] );
+						}
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' pre-defined as null' );
+						}
+						$mt_og[$mt_name] = null;	// use null so isset() returns false
 					}
 				}
 			}
@@ -368,7 +374,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
 			}
 
-			return apply_filters( $lca.'_og', $mt_og, $mod );
+			return (array) apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
 		/*

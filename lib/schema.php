@@ -1403,7 +1403,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
 			}
 
-			return apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $page_type_id );
+			return (array) apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $page_type_id );
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
@@ -1462,7 +1462,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $mt_og[$og_type.':rating:average'] ) )
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 
-			return apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
+			return (array) apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
 		}
 
 		public function is_noscript_enabled( $crawler_name = false ) {

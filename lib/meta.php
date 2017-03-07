@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_url' => '',
 					'schema_img_max' => -1,
 					'product_avail' => 'InStock',
-					'product_condition' => 'New',
+					'product_condition' => 'NewCondition',
 					'product_price' => '0.00',
 					'product_currency' => 'USD',
 				);

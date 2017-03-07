@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				else $this->p->debug->log( $mt_tc['twitter:card'].' card: no image defined' );
 			}
 
-			return apply_filters( $lca.'_tc', $mt_tc, $mod );
+			return (array) apply_filters( $lca.'_tc', $mt_tc, $mod );
 		}
 
 		public function get_card_type_size( $opt_suffix ) {

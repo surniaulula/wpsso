@@ -351,7 +351,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			$mt_name = apply_filters( $lca.'_meta_name', $mt_name, $mod );
+			$mt_name = (array) apply_filters( $lca.'_meta_name', $mt_name, $mod );
 
 			/*
 			 * Link relation tags
@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			$link_rel = apply_filters( $lca.'_link_rel', $link_rel, $mod );
+			$link_rel = (array) apply_filters( $lca.'_link_rel', $link_rel, $mod );
 
 			/*
 			 * Schema meta tags
