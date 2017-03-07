@@ -418,9 +418,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			if ( ! is_numeric( $mt_og['product:price:amount'] ) ) {
+			if ( isset( $mt_og['product:price:amount'] ) &&
+				! is_numeric( $mt_og['product:price:amount'] ) ) {
+
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'product price amount must be numeric' );
+
 				unset( $mt_og['product:price:amount'],
 					$mt_og['product:price:currency'] );
 			}
