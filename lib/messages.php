@@ -959,7 +959,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['min_version'], $um_version ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu']['label'], $um_info['url']['download'], $um_info['short'] );
 						break;
 					case 'notice-recommend-version':
-						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this version is outdated, unsupported, and insecure</a> (and lacks important features). Please update to the latest %1$s stable production release (or at least version %3$s).', 'wpsso' ), $info['app_label'], $info['cur_version'], $info['rec_version'], $info['version_url'] );
+						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%4$s">this %1$s version is outdated, unsupported, insecure</a> and may lack some important features. If possible, please update to the latest %1$s stable release (or at least version %3$s).', 'wpsso' ), $info['app_label'], $info['cur_version'], $info['rec_version'], $info['version_url'] );
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );

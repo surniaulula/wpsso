@@ -2714,9 +2714,9 @@ msgstr ""
 
 #: lib/messages.php:962
 msgid ""
-"You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this version is "
-"outdated, unsupported, and insecure</a> (and lacks important features). "
-"Please update to the latest %1$s stable production release (or at least "
+"You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
+"is outdated, unsupported, insecure</a> and may lack some important features. "
+"If possible, please update to the latest %1$s stable release (or at least "
 "version %3$s)."
 msgstr ""
 
