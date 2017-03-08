@@ -327,55 +327,65 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		/*
 		 * Return a specific option from the custom social settings meta with fallback for 
-		 * multiple option keys. If $idx is an array, then get the first non-empty option 
+		 * multiple option keys. If $md_idx is an array, then get the first non-empty option 
 		 * from the options array. This is an easy way to provide a fallback value for the 
 		 * first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
 		 * Example: get_options_multi( $id, array( 'rp_desc', 'og_desc' ) );
 		 */
-		public function get_options_multi( $mod_id, $idx = false, $filter_opts = true ) {
+		public function get_options_multi( $mod_id, $mixed = false, $filter_opts = true ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod_id' => $mod_id, 
-					'idx' => $idx, 
+					'mixed' => $mixed, 
 					'filter_opts' => $filter_opts, 
 				) );
 			}
 
-			if ( empty( $mod_id ) )
+			if ( empty( $mod_id ) ) {
 				return null;
+			}
 
 			// return the whole options array
-			if ( $idx === false )
-				$ret = $this->get_options( $mod_id, $idx, $filter_opts );
-
+			if ( $mixed === false ) {
+				$md_val = $this->get_options( $mod_id, $mixed, $filter_opts );
 			// return the first matching index value
-			else {
-				if ( ! is_array( $idx ) )		// convert a string to an array
-					$idx = array( $idx );
-				else $idx = array_unique( $idx );	// prevent duplicate idx values
-
-				foreach ( $idx as $key ) {
-					if ( $key === 'none' )		// special index keyword
+			} else {
+				if ( ! is_array( $mixed ) ) {		// convert a string to an array
+					$mixed = array( $mixed );
+				} else {
+					$mixed = array_unique( $mixed );	// prevent duplicate idx values
+				}
+				foreach ( $mixed as $md_idx ) {
+					if ( $md_idx === 'none' ) {	// special index keyword
 						return null;
-					elseif ( empty( $key ) )	// just in case
+					} elseif ( empty( $md_idx ) ) {	// just in case
 						continue;
-					elseif ( ( $ret = $this->get_options( $mod_id, $key, $filter_opts ) ) !== null )
-						break;			// stop if/when we have an option
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting id '.$mod_id.' option '.$md_idx.' value' );
+						}
+						if ( ( $md_val = $this->get_options( $mod_id, $md_idx, $filter_opts ) ) !== null ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'option '.$md_idx.' value found (not null)' );
+							}
+							break;		// stop after first match
+						}
+					}
 				}
 			}
 
-			if ( $ret !== null ) {
+			if ( $md_val !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$mod = $this->get_mod( $mod_id );
-					$this->p->debug->log( 'custom '.$mod['name'].' '.
-						( $idx === false ? 'options' : ( is_array( $idx ) ? 
-							implode( ', ', $idx ) : $idx ) ).' = '.
-						( is_array( $ret ) ? print_r( $ret, true ) : '"'.$ret.'"' ) );
+					$this->p->debug->log( 'custom '.$mod['name'].' '.( $mixed === false ? 'options' : 
+						( is_array( $mixed ) ? implode( ', ', $mixed ) : $mixed ) ).' = '.
+						( is_array( $md_val ) ? print_r( $md_val, true ) : '"'.$md_val.'"' ) );
 				}
 			}
 
-			return $ret;
+			return $md_val;
 		}
 
 		public function get_options( $mod_id, $idx = false, $filter_opts = true ) {

@@ -2925,7 +2925,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:508
+#: lib/meta.php:518
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
