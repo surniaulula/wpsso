@@ -1404,13 +1404,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 					if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
 						if ( version_compare( $cur_version, WpssoConfig::$cf[$key]['rec_version'], '<' ) ) {
-							$this->p->notice->log( 'warn', $this->p->msgs->get( 'notice-recommend-version', array(
+							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
 								'app_label' => $app_label,
 								'cur_version' => $cur_version,
 								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
-								'sup_version_url' => WpssoConfig::$cf[$key]['sup_version_url'],
-							) ), true, 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$cur_version,
-								2592000, array( 'silent' => true ) );	// dismiss for 30 days
+								'version_url' => WpssoConfig::$cf[$key]['version_url'],
+							) );
+							$this->p->notice->log( 'warn', $warn_msg, true,
+								'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$cur_version,
+									2592000, array( 'silent' => true ) );	// dismiss for 30 days
 						}
 					}
 				}

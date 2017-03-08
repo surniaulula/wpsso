@@ -401,35 +401,35 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1455
+#: lib/admin.php:1457
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1467
+#: lib/admin.php:1469
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1473
+#: lib/admin.php:1475
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1481
+#: lib/admin.php:1483
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1486
+#: lib/admin.php:1488
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1489
+#: lib/admin.php:1491
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1503
+#: lib/admin.php:1505
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""

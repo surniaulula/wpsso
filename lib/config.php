@@ -934,9 +934,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * releases from 3.7 onwards may or may not get security updates as serious exploits
 				 * are discovered.
 				 */
-				'min_version' => '3.8',		// minimum wordpress version (hard limit)
-				'rec_version' => '4.2',		// recommended minimum wordpress version (soft limit)
-				'sup_version_url' => 'https://codex.wordpress.org/Supported_Versions',
+				'min_version' => '3.7',		// hard limit - deactivate the plugin when activating
+				'rec_version' => '4.7.3',	// soft limit - issue warning if lower version found
+				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'cm_names' => array(
 					'aim' => 'AIM',
 					'jabber' => 'Google Talk',
@@ -966,9 +966,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'php' => array(				// php
-				'min_version' => '5.2.4',	// minimum php version (hard limit)
-				'rec_version' => '5.4',		// recommended minimum php version (soft limit)
-				'sup_version_url' => 'http://php.net/supported-versions.php',
+				'min_version' => '5.3',		// hard limit - deactivate the plugin when activating
+				'rec_version' => '7.0',		// soft limit - issue warning if lower version found
+				'version_url' => 'http://php.net/supported-versions.php',
 				'extensions' => array(
 					'curl' => 'Client URL Library (cURL)',
 					'json' => 'JavaScript Object Notation (JSON)',
