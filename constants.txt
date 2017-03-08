@@ -18,6 +18,7 @@ WPSSO_MENU_ICON_HIGHLIGHT	= true
 WPSSO_HIDE_ALL_ERRORS		= false	// auto-hide all dismissable errors
 WPSSO_HIDE_ALL_WARNINGS		= false	// auto-hide all dismissable warnings
 WPSSO_JSON_PRETTY_PRINT		= true
+WPSSO_DEF_PROD_CURRENCY		= USD
 WPSSO_TS_NAME			= 'wpsso_timestamps'
 WPSSO_OPTIONS_NAME		= 'wpsso_options'
 WPSSO_SITE_OPTIONS_NAME		= 'wpsso_site_options'
