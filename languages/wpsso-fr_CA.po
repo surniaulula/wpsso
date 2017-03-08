@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-03-08 17:41+0700\n"
-"PO-Revision-Date: 2017-03-08 17:41+0700\n"
+"PO-Revision-Date: 2017-03-08 17:54+0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -487,7 +487,7 @@ msgstr "Avis %s"
 
 #: lib/com/notice.php:416
 msgid "Dismiss"
-msgstr "Ignorer"
+msgstr "Masquer"
 
 #: lib/config-gettext-extract.php:3
 msgctxt "lib file description"

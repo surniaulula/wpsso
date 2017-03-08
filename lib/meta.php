@@ -398,13 +398,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( ! isset( $this->defs[$mod_id] ) )
 				$this->defs[$mod_id] = array();
 
-			$defs =& $this->defs[$mod_id];		// shortcut
 			$opts =& $this->p->options;		// shortcut
+			$md_defs =& $this->defs[$mod_id];	// shortcut
 
 			if ( ! WpssoOptions::can_cache() || 
-				empty( $defs['options_filtered'] ) ) {
+				empty( $md_defs['options_filtered'] ) ) {
 
-				$defs = array(
+				$md_defs = array(
 					'options_filtered' => '',
 					'options_version' => '',
 					'og_art_section' => -1,
@@ -453,13 +453,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_currency' => WPSSO_DEF_PROD_CURRENCY,
 				);
 
-				$defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
-					$defs, $this->get_mod( $mod_id ) );
+				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
+					$md_defs, $this->get_mod( $mod_id ) );
 
 				if ( WpssoOptions::can_cache() ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'setting options_filtered to true' );
-					$defs['options_filtered'] = true;
+					$md_defs['options_filtered'] = true;
 				} elseif ( $this->p->debug->enabled )
 					$this->p->debug->log( 'options_filtered value unchanged' );
 
@@ -467,10 +467,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'get_defaults filter skipped' );
 
 			if ( $idx !== false ) {
-				if ( isset( $defs[$idx] ) )
-					return $defs[$idx];
+				if ( isset( $md_defs[$idx] ) )
+					return $md_defs[$idx];
 				else return null;
-			} else return $defs;
+			} else return $md_defs;
 		}
 
 		public function save_options( $mod_id, $rel_id = false ) {
@@ -524,52 +524,52 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_submit_opts( $mod_id ) {
 
 			$mod = $this->get_mod( $mod_id );
-			$defs = $this->get_defaults( $mod['id'] );
-			$prev = $this->get_options( $mod['id'] );
+			$md_defs = $this->get_defaults( $mod['id'] );
+			$md_prev = $this->get_options( $mod['id'] );
 
 			/*
 			 * Remove plugin / extension version strings.
 			 */
-			$unset_keys = array( 'options_filtered', 'options_version' );
+			$unset_idx = array( 'options_filtered', 'options_version' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( isset( $info['opt_version'] ) ) {
-					$unset_keys[] = 'plugin_'.$ext.'_opt_version';
+					$unset_idx[] = 'plugin_'.$ext.'_opt_version';
 				}
 			}
 
-			foreach ( $unset_keys as $key ) {
-				unset( $defs[$key], $prev[$key] );
+			foreach ( $unset_idx as $md_idx ) {
+				unset( $md_defs[$md_idx], $md_prev[$md_idx] );
 			}
 
 			/*
 			 * Merge and sanitize the new options.
 			 */
-			$opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
+			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
 				array() : $_POST[ WPSSO_META_NAME ];
-			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $prev, $opts );				// update the previous options array
-			$opts = $this->p->opt->sanitize( $opts, $defs, false, $mod );	// $network = false
+			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
+			$md_opts = array_merge( $md_prev, $md_opts );				// update the previous options array
+			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, false, $mod );	// $network = false
 
 			/*
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
-				if ( empty( $opts[$md_pre.'_img_id'] ) )
-					unset( $opts[$md_pre.'_img_id_pre'] );
+				if ( empty( $md_opts[$md_pre.'_img_id'] ) )
+					unset( $md_opts[$md_pre.'_img_id_pre'] );
 
 				$force_regen = false;
-				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
+				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $md_suffix ) {
 					// if option is the same as the default, then unset it
-					if ( isset( $opts[$md_pre.'_img_'.$key] ) &&
-						isset( $defs[$md_pre.'_img_'.$key] ) &&
-							$opts[$md_pre.'_img_'.$key] === $defs[$md_pre.'_img_'.$key] )
-								unset( $opts[$md_pre.'_img_'.$key] );
+					if ( isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) &&
+						isset( $md_defs[$md_pre.'_img_'.$md_suffix] ) &&
+							$md_opts[$md_pre.'_img_'.$md_suffix] === $md_defs[$md_pre.'_img_'.$md_suffix] )
+								unset( $md_opts[$md_pre.'_img_'.$md_suffix] );
 
-					$check_current = isset( $opts[$md_pre.'_img_'.$key] ) ?
-						$opts[$md_pre.'_img_'.$key] : '';
-					$check_previous = isset( $prev[$md_pre.'_img_'.$key] ) ?
-						$prev[$md_pre.'_img_'.$key] : '';
+					$check_current = isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) ?
+						$md_opts[$md_pre.'_img_'.$md_suffix] : '';
+					$check_previous = isset( $md_prev[$md_pre.'_img_'.$md_suffix] ) ?
+						$md_prev[$md_pre.'_img_'.$md_suffix] : '';
 					if ( $check_current !== $check_previous ) {
 						$force_regen = true;
 					}
@@ -582,10 +582,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Remove "use plugin settings" (numeric or string -1), 
 			 * or "same as default" option values, or empty strings.
 			 */
-			foreach ( $opts as $key => $val ) {
-				if ( $val === -1 || $val === '-1' || $val === '' ||
-					( isset( $defs[$key] ) && $val === $defs[$key] ) )
-						unset( $opts[$key] );
+			foreach ( $md_opts as $md_idx => $md_val ) {
+				if ( $md_val === -1 || $md_val === '-1' || $md_val === '' ||
+					( isset( $md_defs[$md_idx] ) && $md_val === $md_defs[$md_idx] ) ) {
+					unset( $md_opts[$md_idx] );
+				}
 			}
 
 			/*
@@ -593,30 +594,30 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			foreach ( $this->p->cf['opt']['md_multi'] as $md_multi => $is_multi ) {
 				$md_renum = array();	// start with a fresh array
-				foreach ( SucomUtil::preg_grep_keys( '/^'.$md_multi.'_[0-9]+$/', $opts ) as $key => $val ) {
-					unset( $opts[$key] );
-					if ( ! empty( $val ) ) {
-						$md_renum[] = $val;
+				foreach ( SucomUtil::preg_grep_keys( '/^'.$md_multi.'_[0-9]+$/', $md_opts ) as $md_idx => $md_val ) {
+					unset( $md_opts[$md_idx] );
+					if ( ! empty( $md_val ) ) {
+						$md_renum[] = $md_val;
 					}
 				}
-				foreach ( $md_renum as $num => $val ) {	// start at 0
-					$opts[$md_multi.'_'.$num] = $val;
+				foreach ( $md_renum as $num => $md_val ) {	// start at 0
+					$md_opts[$md_multi.'_'.$num] = $md_val;
 				}
 			}
 
 			/*
 			 * Mark the new options as current.
 			 */
-			if ( ! empty( $opts ) ) {
-				$opts['options_version'] = $this->p->cf['opt']['version'];
+			if ( ! empty( $md_opts ) ) {
+				$md_opts['options_version'] = $this->p->cf['opt']['version'];
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( isset( $info['opt_version'] ) ) {
-						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
+						$md_opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
 					}
 				}
 			}
 
-			return $opts;
+			return $md_opts;
 		}
 
 		// return sortable column keys and their query sort info
@@ -861,8 +862,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$og_ret = array();
 			$og_video = array();
 
-			if ( empty( $mod_id ) )
+			if ( empty( $mod_id ) ) {
 				return $og_ret;
+			}
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
@@ -870,21 +872,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$url = $this->get_options( $mod_id, $prefix.'_vid_url' );
 
 				if ( ! empty( $html ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
 							get_class( $this ) );	// log extended class name
+					}
 					$og_video = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html );
-					if ( ! empty( $og_video ) )
+					if ( ! empty( $og_video ) ) {
 						return array_merge( $og_ret, $og_video );
+					}
 				}
 
 				if ( ! empty( $url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
 							get_class( $this ) );	// log extended class name
+					}
 					$og_video = $this->p->media->get_video_info( $url, -1, -1, $check_dupes, true );	// $fallback = true
-					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) ) 
+					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) )  {
 						return $og_ret;
+					}
 				}
 			}
 			return $og_ret;
