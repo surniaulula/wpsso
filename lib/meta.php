@@ -660,7 +660,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function set_column_orderby( $query ) { 
 			$lca = $this->p->cf['lca'];
 			$col_name = $query->get( 'orderby' );
-			if ( $col_name && strpos( $col_name, $lca.'_' ) === 0 ) {
+			if ( is_string( $col_name ) && strpos( $col_name, $lca.'_' ) === 0 ) {
 				$col_idx = str_replace( $lca.'_', '', $col_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
