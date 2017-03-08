@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-03-08 17:29+0700\n"
-"PO-Revision-Date: 2017-03-08 17:29+0700\n"
+"POT-Creation-Date: 2017-03-08 17:41+0700\n"
+"PO-Revision-Date: 2017-03-08 17:41+0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -455,35 +455,39 @@ msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:101
+#: lib/com/notice.php:102
 msgid "This notice may be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:106
+#: lib/com/notice.php:107
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:270
+#: lib/com/notice.php:287
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:271
+#: lib/com/notice.php:288
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:276
+#: lib/com/notice.php:293
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:277
+#: lib/com/notice.php:295
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:349
+#: lib/com/notice.php:369
 msgid "%s Note"
 msgstr "Avis %s"
+
+#: lib/com/notice.php:416
+msgid "Dismiss"
+msgstr "Ignorer"
 
 #: lib/config-gettext-extract.php:3
 msgctxt "lib file description"
