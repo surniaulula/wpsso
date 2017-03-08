@@ -27,8 +27,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) )
+			// remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag
+			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+			}
 
 			// disable page caching for customized meta tags (same URL, different meta tags)
 			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {
@@ -373,7 +375,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
 				if ( $mod['is_post'] ) {
-					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );
+					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
 						$mt_og['og:url'], $this->p->options['plugin_shortener'] );

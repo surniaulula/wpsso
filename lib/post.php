@@ -67,8 +67,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding get_shortlink filter' );
+				}
 				add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 			}
 		}
@@ -122,6 +123,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'shortlink' => $shortlink, 
@@ -137,16 +139,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod = $this->get_mod( $post_id );
 
 					if ( empty( $mod['post_type'] ) ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: post_type is empty' );
+						}
 						return $shortlink;
 					} elseif ( empty( $mod['post_status'] ) ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: post_status is empty' );
+						}
 						return $shortlink;
 					} elseif ( $mod['post_status'] === 'auto-draft' ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: post_status is auto-draft' );
+						}
 						return $shortlink;
 					}
 
@@ -154,16 +159,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
 						$long_url, $this->p->options['plugin_shortener'] );
 
-					if ( $long_url !== $short_url )	// just in case
+					if ( $long_url !== $short_url ) {	// just in case
 						return $short_url;
+					}
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'no shortener defined for shortlinks' );
 			}
 
 			return $shortlink;
 		}
 
 		public function add_column_headings( $columns ) { 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 
@@ -385,7 +394,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$charset = get_bloginfo( 'charset' );
-			$shortlink = wp_get_shortlink( $post_id );
+			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$check_opts = apply_filters( $lca.'_check_head_meta_options', SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' ), $post_id );
 			$conflicts_found = 0;
@@ -550,7 +559,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$sharing_url = $this->p->util->get_sharing_url( $mod );
 					$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 					$permalink = get_permalink( $post_id );
-					$shortlink = wp_get_shortlink( $post_id );
+					$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 
 					$transients = array(
 						'WpssoHead::get_head_array' => array( $cache_salt ),
@@ -562,15 +571,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $sharing_url );
 
 					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
-					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 )
+					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
 							true, __FUNCTION__.'_items_removed', true );
+					}
 
-					if ( function_exists( 'w3tc_pgcache_flush_post' ) )	// w3 total cache
+					if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
 						w3tc_pgcache_flush_post( $post_id );
+					}
 
-					if ( function_exists( 'wp_cache_post_change' ) )	// wp super cache
+					if ( function_exists( 'wp_cache_post_change' ) ) {	// wp super cache
 						wp_cache_post_change( $post_id );
+					}
 
 					break;
 			}
