@@ -508,38 +508,42 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:101
+#: lib/com/notice.php:102
 msgid "This notice may be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:106
+#: lib/com/notice.php:107
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:270
+#: lib/com/notice.php:287
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:271
+#: lib/com/notice.php:288
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:276
+#: lib/com/notice.php:293
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:277
+#: lib/com/notice.php:295
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:349
+#: lib/com/notice.php:369
 msgid "%s Note"
+msgstr ""
+
+#: lib/com/notice.php:416
+msgid "Dismiss"
 msgstr ""
 
 #: lib/config-gettext-extract.php:3

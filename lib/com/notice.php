@@ -30,8 +30,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
-			if ( ! empty( $this->p->debug->enabled ) )
+			if ( ! empty( $this->p->debug->enabled ) ) {
 				$this->p->debug->mark();
+			}
 
 			if ( ! empty( $this->p->cf['lca'] ) ) {
 				$this->lca = $this->p->cf['lca'];
@@ -88,9 +89,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function log( $msg_type, $msg_txt, $user_id = true, $msg_id = false, $dismiss = false, $payload = array() ) {
 
-			if ( empty( $msg_type ) ||
-				empty( $msg_txt ) )
-					return;
+			if ( empty( $msg_type ) || empty( $msg_txt ) ) {
+				return;
+			}
 
 			$payload['msg_id'] = empty( $msg_id ) ? false : $msg_type.'_'.$msg_id;
 
@@ -107,14 +108,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					'<a href="'.$this->reference_url.'">'.$this->reference_url.'</a>' ).'</small>';
 			}
 
-			if ( $user_id === true )
+			if ( $user_id === true ) {
 				$user_id = (int) get_current_user_id();
-			else $user_id = (int) $user_id;	// false = 0
+			} else {
+				$user_id = (int) $user_id;	// false = 0
+			}
 
 			$user_notices =& $this->get_user_notices( $user_id );	// returns reference
 
-			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) )
+			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) ) {
 				$user_notices[$msg_type][$msg_txt] = $payload;
+			}
 		}
 
 		public function trunc_id( $msg_id, $user_id = true ) {
@@ -127,13 +131,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function trunc( $msg_type = '', $msg_txt = '', $user_id = true, $msg_id = false ) {
 
-			if ( $user_id === true )
+			if ( $user_id === true ) {
 				$user_ids = array( get_current_user_id() );
-			elseif ( $user_id === 'all' )
+			} elseif ( $user_id === 'all' ) {
 				$user_ids = $this->get_user_ids();	// returns reference
-			elseif ( is_array( $user_id ) )
+			} elseif ( is_array( $user_id ) ) {
 				$user_ids = $user_id;
-			else $user_ids = array( $user_id );
+			} else {
+				$user_ids = array( $user_id );
+			}
 
 			$trunc_types = empty( $msg_type ) ?
 				$this->all_types : array( (string) $msg_type );
@@ -142,14 +148,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_notices =& $this->get_user_notices( $user_id );	// returns reference
 				foreach ( $trunc_types as $msg_type ) {
 					if ( isset( $user_notices[$msg_type] ) ) {
-						if ( ! empty( $msg_id ) &&				// clear notice for a specific msg id
+						if ( ! empty( $msg_id ) &&	// clear notice for a specific msg id
 							is_array( $user_notices[$msg_type] ) ) {
 							foreach ( $user_notices[$msg_type] as $msg_txt => &$payload ) {	// use payload reference
 								if ( ! empty( $payload['msg_id'] ) &&
-									$payload['msg_id'] === $msg_type.'_'.$msg_id )
-										unset( $payload );	// unset using reference
+									$payload['msg_id'] === $msg_type.'_'.$msg_id ) {
+									unset( $payload );	// unset using reference
+								}
 							}
-						} elseif ( empty( $msg_txt ) ) {			// clear all notices for that type
+						} elseif ( empty( $msg_txt ) ) {	// clear all notices for that type
 							$user_notices[$msg_type] = array();
 						} elseif ( isset( $user_notices[$msg_type][$msg_txt] ) ) {	// clear a specific message string
 							unset( $user_notices[$msg_type][$msg_txt] );
@@ -171,9 +178,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function is_admin_pre_notices() {
-			if ( is_admin() && ! $this->has_shown )
+			if ( is_admin() && ! $this->has_shown ) {
 				return true;
-			else return false;
+			} else {
+				return false;
+			}
 		}
 
 		public function show_admin_notices() {
@@ -192,20 +201,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
 					if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 						$uerr = SucomUpdate::get_umsg( $lca );
-						if ( ! empty( $uerr ) )
+						if ( ! empty( $uerr ) ) {
 							$user_notices['err'][$uerr] = array();
+						}
 					}
 				}
 			}
 
 			foreach ( $this->all_types as $msg_type ) {
-				if ( ! isset( $user_notices[$msg_type] ) )	// just in case
+				if ( ! isset( $user_notices[$msg_type] ) ) {	// just in case
 					continue;
+				}
 				foreach ( $user_notices[$msg_type] as $msg_txt => $payload ) {
 					if ( empty( $msg_txt ) ||
-						isset( $all_msgs[$msg_txt] ) )	// skip duplicates
-							continue;
-					$all_msgs[$msg_txt] = true;		// avoid duplicates
+						isset( $all_msgs[$msg_txt] ) ) {	// skip duplicates
+						continue;
+					}
+					$all_msgs[$msg_txt] = true;	// avoid duplicates
 					switch ( $msg_type ) {
 						case 'nag':
 							$nag_msgs .= $msg_txt;	// append to echo a single message
@@ -213,16 +225,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						default:
 							// dismiss will always be false if there's no msg id
 							if ( ! empty( $payload['dismiss'] ) ) {
-								if ( ! isset( $hidden[$msg_type] ) )
+								if ( ! isset( $hidden[$msg_type] ) ) {
 									$hidden[$msg_type] = 0;
+								}
 
 								// check for automatically hidden errors and/or warnings
 								if ( ( $msg_type === 'err' && $this->hide_err ) ||
 									( $msg_type === 'warn' && $this->hide_warn ) ) {
 
 									$payload['hidden'] = true;
-									if ( empty( $payload['silent'] ) )
+									if ( empty( $payload['silent'] ) ) {
 										$hidden[$msg_type]++;
+									}
 
 								// msg id has been dismissed
 								} elseif ( ! empty( $payload['msg_id'] ) &&
@@ -233,8 +247,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 									if ( empty( $dis_time ) || $dis_time > $now_time ) {
 										$payload['hidden'] = true;
-										if ( empty( $payload['silent'] ) )
+										if ( empty( $payload['silent'] ) ) {
 											$hidden[$msg_type]++;
+										}
 									} else {	// dismiss has expired
 										$dismissed_updated = true;	// update the array when done
 										unset( $user_dismissed[$payload['msg_id']] );
@@ -252,9 +267,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			// don't save unless we've changed something
 			if ( $dismissed_updated === true && ! empty( $user_id ) ) {
-				if ( empty( $user_dismissed ) )
+				if ( empty( $user_dismissed ) ) {
 					delete_user_option( $user_id, $this->dis_name );
-				else update_user_option( $user_id, $this->dis_name, $user_dismissed );
+				} else {
+					update_user_option( $user_id, $this->dis_name, $user_dismissed );
+				}
 			}
 
 			echo "\n";
@@ -270,11 +287,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				'err' => _x( 'error', 'notification type', $this->text_dom ),
 				'warn' => _x( 'warning', 'notification type', $this->text_dom ),
 			) as $msg_type => $log_name ) {
-				if ( empty( $hidden[$msg_type] ) )
+				if ( empty( $hidden[$msg_type] ) ) {
 					continue;
-				elseif ( $hidden[$msg_type] > 1 )
+				} elseif ( $hidden[$msg_type] > 1 ) {
 					$msg_text = __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_dom );
-				else $msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_dom );
+				} else {
+					$msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_dom );
+				}
 				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca.'-unhide-notices' ) );
 			}
 
@@ -343,10 +362,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_notice_html( $msg_type, $msg_txt, $payload = array() ) {
+
 			$charset = get_bloginfo( 'charset' );
 
-			if ( ! isset( $payload['label'] ) )
+			if ( ! isset( $payload['label'] ) ) {
 				$payload['label'] = sprintf( __( '%s Note', $this->text_dom ), strtoupper( $this->lca ) );
+			}
 
 			switch ( $msg_type ) {
 				case 'nag':
@@ -390,8 +411,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				( ! $is_dismissible ? '' : $this->lca.'-dismissible ' ).
 					$msg_class.'"'.$cssid_attr.$style_attr.$data_attr.'>';	// display block or none
 
-			if ( ! empty( $payload['dismiss'] ) )
-				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">Dismiss</div></div>';
+			if ( ! empty( $payload['dismiss'] ) ) {
+				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">'.
+					__( 'Dismiss', $this->text_dom ).'</div></div>';
+			}
 
 			if ( ! empty( $payload['label'] ) ) {
 				$msg_html .= '<div class="notice-label">'.

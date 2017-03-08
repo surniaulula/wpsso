@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-03-08 08:27+0700\n"
-"PO-Revision-Date: 2017-03-08 08:42+0700\n"
+"POT-Creation-Date: 2017-03-08 17:29+0700\n"
+"PO-Revision-Date: 2017-03-08 17:29+0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -89,7 +89,7 @@ msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:420 lib/post.php:322 lib/term.php:259 lib/user.php:237
+#: lib/admin.php:420 lib/post.php:331 lib/term.php:259 lib/user.php:237
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -356,31 +356,31 @@ msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1455
+#: lib/admin.php:1457
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d’en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:1467
+#: lib/admin.php:1469
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr "Aucun élément HTML &lt;head&gt; trouvé dans le modèle %s."
 
-#: lib/admin.php:1473
+#: lib/admin.php:1475
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1481
+#: lib/admin.php:1483
 msgid "Failed to open %s for writing."
 msgstr "Impossible d'ouvrir %s pour l'écriture."
 
-#: lib/admin.php:1486
+#: lib/admin.php:1488
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:1489
+#: lib/admin.php:1491
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:1503
+#: lib/admin.php:1505
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
@@ -1450,7 +1450,7 @@ msgid "and currency"
 msgstr "et devise"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:123 lib/meta.php:177 lib/post.php:515
+#: lib/gpl/admin/post.php:123 lib/meta.php:177 lib/post.php:524
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -2269,8 +2269,8 @@ msgid "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the 
 msgstr "Utilisez le bouton <em>%1$s</em> d'une page de réglages %2$s pour récupérer l'information de mise à jour la plus récente, ou <a href=\"%3$s\" target=\"_blank\">télécharger la version de l'extension %4$s la plus récente</a> et installer le fichier ZIP manuellement."
 
 #: lib/messages.php:962
-msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this version is outdated, unsupported, and insecure</a> (and lacks important features). Please update to the latest %1$s stable production release (or at least version %3$s)."
-msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%3$s\">cette version est obsolète, non supportée, et non sécurisée</a> (et manque des caractéristiques importantes). S’il vous plaît mettre à jour %1$s à la dernière version stable de production (ou au moins à la version %3$s)."
+msgid "You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version is outdated, unsupported, insecure</a> and may lack some important features. If possible, please update to the latest %1$s stable release (or at least version %3$s)."
+msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%4$s\">cette version de %1$s est obsolète, non supportée, non sécurisée</a> et pourrait manquer certaines caractéristiques importantes. Si possible, mettre à jour %1$s à la dernière version stable de production (ou au moins à la version %3$s)."
 
 #: lib/messages.php:976
 msgid "%s can be purchased quickly and easily via Paypal &ndash; allowing you to license and enable Pro version features within seconds of your purchase."
@@ -2446,7 +2446,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/meta.php:508
+#: lib/meta.php:518
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
@@ -2496,19 +2496,19 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:398
+#: lib/post.php:407
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:415
+#: lib/post.php:424
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'entête de cette page Web."
 
-#: lib/post.php:424
+#: lib/post.php:433
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérifications a faire..."
 
-#: lib/post.php:471 lib/profile/social-settings.php:28 lib/term.php:283
+#: lib/post.php:480 lib/profile/social-settings.php:28 lib/term.php:283
 #: lib/user.php:263
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2522,7 +2522,7 @@ msgstr "Le champ de description SEO est désactivé (la balise description est d
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/pro/ecom/woocommerce.php:464
+#: lib/pro/ecom/woocommerce.php:470
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
