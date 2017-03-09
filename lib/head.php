@@ -541,25 +541,29 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			if ( is_array( $value ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $log_prefix.' value is an array (skipped)' );
+				}
 				return $ret;
 
 			} elseif ( is_object( $value ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $log_prefix.' value is an object (skipped)' );
+				}
 				return $ret;
 			}
 
-			if ( strpos( $value, '%%' ) )
+			if ( strpos( $value, '%%' ) ) {
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
+			}
 
 			switch ( $name ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 					if ( strpos( $value, 'https:' ) !== 0 ) {	// just in case
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_prefix.' is not https (skipped)' );
+						}
 						return $ret;
 					}
 					break;
@@ -571,37 +575,39 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( $ret as $num => $parts ) {
 
 				// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
-				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) )
+				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) ) {
 					$parts = $this->filter_single_mt( $parts, $mod );
+				}
 
 				$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $log_prefix.' = "'.$parts[5].'"' );
+				}
 
 				if ( $parts[5] === '' || $parts[5] === null ) {		// allow for 0
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix.' value is empty (skipped)' );
-
+					}
 				} elseif ( $parts[5] === -1 || $parts[5] === '-1' ) {	// -1 is reserved
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix.' value is -1 (skipped)' );
-
-				/*
-				 * Encode and escape all values, regardless if the meta tag is enabled or not.
-				 *
-				 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
-				 */
+					}
 				} else {
-					if ( $parts[1] === 'meta' &&
-						$parts[2] === 'itemprop' &&
-							strpos( $parts[3], '.' ) !== 0 )
-								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
-					else $match_name = $parts[3];
+					/*
+					 * Encode and escape all values, regardless if the meta tag is enabled or not.
+					 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
+					 */
+					if ( $parts[1] === 'meta' && $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+					} else {
+						$match_name = $parts[3];
+					}
 
 					// boolean values are converted to their string equivalent
-					if ( is_bool( $parts[5] ) )
+					if ( is_bool( $parts[5] ) ) {
 						$parts[5] = $parts[5] ? 'true' : 'false';
+					}
 
 					switch ( $match_name ) {
 						case 'og:url':
@@ -638,13 +644,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 
 					// convert mixed case itemprop names (for example) to lower case
-					$add_key = strtolower( 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3] );
+					$opt_name = strtolower( 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3] );
 
-					if ( ! empty( $this->p->options[$add_key] ) ) {
+					if ( ! empty( $this->p->options[$opt_name] ) ) {
 						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
 							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
-					} elseif ( $this->p->debug->enabled )
+					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix.' is disabled (skipped)' );
+					}
 
 					$ret[$num] = $parts;	// save the HTML and encoded value
 				}

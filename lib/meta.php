@@ -228,46 +228,57 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_rows_head_tags( &$form, &$head_info, &$mod ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows = array();
 			$script_class = '';
 
-			if ( ! is_array( WpssoMeta::$head_meta_tags ) )	// just in case
+			if ( ! is_array( WpssoMeta::$head_meta_tags ) ) {	// just in case
 				return $table_rows;
+			}
 
 			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
+
 				if ( count( $parts ) === 1 ) {
-					if ( strpos( $parts[0], '<script ' ) === 0 )
+
+					if ( strpos( $parts[0], '<script ' ) === 0 ) {
 						$script_class = 'script';
-					elseif ( strpos( $parts[0], '<noscript ' ) === 0 )
+					} elseif ( strpos( $parts[0], '<noscript ' ) === 0 ) {
 						$script_class = 'noscript';
-					$table_rows[] = '<td colspan="5" class="html '.$script_class.'"><pre>'.
-						esc_html( $parts[0] ).'</pre></td>';
-					if ( $script_class === 'script' ||
-						strpos( $parts[0], '</noscript>' ) === 0 )
-							$script_class = '';
+					}
 
-				} elseif ( isset( $parts[5] ) && $parts[5] !== -1 ) {
+					$table_rows[] = '<td colspan="5" class="html '.
+						$script_class.'"><pre>'.esc_html( $parts[0] ).'</pre></td>';
 
-					if ( $parts[1] === 'meta' && 
-						$parts[2] === 'itemprop' && 
-							strpos( $parts[3], '.' ) !== 0 )
-								$match_name = preg_replace( '/^.*\./', '', $parts[3] );
-					else $match_name = $parts[3];
+					if ( $script_class === 'script' || strpos( $parts[0], '</noscript>' ) === 0 ) {
+						$script_class = '';
+					}
 
-					$opt_name = 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3];
+				} elseif ( isset( $parts[5] ) ) {
 
-					$tr_class = ( empty( $script_class ) ?
-							'' : ' '.$script_class ).
-						( empty( $parts[0] ) ?
-							' is_disabled' : ' is_enabled' ).
-						( empty( $parts[5] ) && 
-							! empty( $this->p->options[$opt_name] ) ?
-								' is_empty' : '' ).
-						( isset( $this->p->options[$opt_name] ) ?
-							' is_standard' : ' is_internal hide_row_in_basic' ).'">';
+					if ( $parts[5] === -1 || $parts[5] === '-1' ) {	// -1 is reserved
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $parts[3].' value is -1 (skipped)' );
+						}
+						continue;
+					}
+
+					if ( $parts[1] === 'meta' && $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+					} else {
+						$match_name = $parts[3];
+					}
+
+					// convert mixed case itemprop names (for example) to lower case
+					$opt_name = strtolower( 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3] );
+
+					$tr_class = ( empty( $script_class ) ? '' : ' '.$script_class ).
+						( empty( $parts[0] ) ? ' is_disabled' : ' is_enabled' ).
+						( empty( $parts[5] ) && ! empty( $this->p->options[$opt_name] ) ? ' is_empty' : '' ).
+						( isset( $this->p->options[$opt_name] ) ? ' is_standard' : ' is_internal hide_row_in_basic' ).'">';
 
 					$table_rows[] = '<tr class="'.trim( $tr_class ).
 					'<th class="xshort">'.$parts[1].'</th>'.
@@ -284,8 +295,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_rows_validate( &$form, &$head_info, &$mod ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows = array();
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
@@ -579,8 +592,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Remove "use plugin settings" (numeric or string -1), 
-			 * or "same as default" option values, or empty strings.
+			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
 			 */
 			foreach ( $md_opts as $md_idx => $md_val ) {
 				if ( $md_val === -1 || $md_val === '-1' || $md_val === '' ||

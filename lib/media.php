@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 							$should_be = (int) round( $img_meta[$check] / $ratio );
 
-							// allow for a +/-1 pixel difference
+							// allow for a +/- one pixel difference
 							if ( $img_meta['sizes'][$size_name][$check] < ( $should_be - 1 ) ||
 								$img_meta['sizes'][$size_name][$check] > ( $should_be + 1 ) ) {
 									$is_accurate_width = false;
@@ -737,7 +737,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'using default video url = '.$embed_url );
 
 				// fallback to video url if necessary
-				$og_video = $this->get_video_info( $embed_url, 0, 0, $check_dupes, true );	// $fallback = true
+				$og_video = $this->get_video_info( $embed_url, -1, -1, $check_dupes, true );	// $fallback = true
+
 				if ( ! empty( $og_video ) &&
 					$this->p->util->push_max( $og_ret, $og_video, $num ) )
 						return $og_ret;
@@ -849,7 +850,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( $embed_url, $embed_width = -1, $embed_height = -1, $check_dupes = true, $fallback = false ) {
+		public function get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes, $fallback = false ) {
 			if ( empty( $embed_url ) )
 				return array();
 
