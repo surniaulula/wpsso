@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.3-rc1',	// plugin version
+					'version' => '3.40.3-1',	// plugin version
 					'opt_version' => '509',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -967,7 +967,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'php' => array(				// php
 				'min_version' => '5.3',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '7.0',		// soft limit - issue warning if lower version found
+				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
 				'version_url' => 'http://php.net/supported-versions.php',
 				'extensions' => array(
 					'curl' => 'Client URL Library (cURL)',

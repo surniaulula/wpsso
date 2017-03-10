@@ -340,8 +340,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
-				'wpsso' ), $short );
+			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.', 'wpsso' ), $short );
 
 			if ( $clear_ext ) {
 				$ext_cache_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
@@ -367,8 +366,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.',
-				'wpsso' );
+			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
 
 			$this->p->notice->inf( $clear_all_msg, true, $msg_id, $dismiss );
 		}

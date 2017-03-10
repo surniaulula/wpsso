@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.3-"
-"rc1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.3-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -459,7 +458,7 @@ msgid ""
 "have the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:220 lib/util.php:461
+#: lib/com/cache.php:220 lib/util.php:459
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -3719,128 +3718,128 @@ msgid ""
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:347
+#: lib/util.php:346
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:370
+#: lib/util.php:369
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:447
+#: lib/util.php:445
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:517
+#: lib/util.php:515
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:551
+#: lib/util.php:549
 msgid ""
 "The value of option '%s' must be a URL - resetting the option to its default "
 "value."
 msgstr ""
 
-#: lib/util.php:553
+#: lib/util.php:551
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting the option to its default value."
 msgstr ""
 
-#: lib/util.php:555
+#: lib/util.php:553
 msgid ""
 "The value of option '%s' must be equal to or greather than %s - resetting "
 "the option to its default value."
 msgstr ""
 
-#: lib/util.php:557 lib/util.php:559
+#: lib/util.php:555 lib/util.php:557
 msgid ""
 "The value of option '%s' must be numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:561
+#: lib/util.php:559
 msgid ""
 "'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
 "to its default value."
 msgstr ""
 
-#: lib/util.php:563
+#: lib/util.php:561
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:565
+#: lib/util.php:563
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:567
+#: lib/util.php:565
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:569
+#: lib/util.php:567
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:571
+#: lib/util.php:569
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:769
+#: lib/util.php:767
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:776
+#: lib/util.php:774
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:801
+#: lib/util.php:799
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:837
+#: lib/util.php:835
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1119
+#: lib/util.php:1117
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1826
+#: lib/util.php:1824
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1852
+#: lib/util.php:1850
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1856
+#: lib/util.php:1854
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1859
+#: lib/util.php:1857
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1863
+#: lib/util.php:1861
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
