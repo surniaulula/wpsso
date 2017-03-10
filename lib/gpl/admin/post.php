@@ -81,9 +81,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'product_avail' => null,	// placeholder
 				'product_condition' => null,	// placeholder
 				'product_price' => null,	// placeholder
-				/*
-				 * All Schema Types
-				 */
 				'subsection_schema' => array(
 					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )

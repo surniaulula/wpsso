@@ -72,8 +72,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
 				'subsection_schema' => array(
-					'td_class' => 'subsection',
-					'header' => 'h4',
+					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				),
 				'schema_desc' => array(
@@ -108,8 +107,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			$form_rows['subsection_opengraph'] = array(
 				'tr_class' => 'hide_in_basic',
-				'td_class' => 'subsection top',
-				'header' => 'h4',
+				'td_class' => 'subsection top', 'header' => 'h4',
 				'label' => _x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' )
 			);
 			$form_rows['subsection_priority_image'] = array(
@@ -189,8 +187,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 				$form_rows['subsection_pinterest'] = array(
 					'tr_class' => 'hide_in_basic',
-					'td_class' => 'subsection',
-					'header' => 'h4',
+					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Pinterest / Rich Pin', 'metabox title', 'wpsso' )
 				);
 				$form_rows['rp_img_dimensions'] = array(
@@ -220,8 +217,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 	
 				$form_rows['subsection_schema'] = array(
 					'tr_class' => 'hide_in_basic',
-					'td_class' => 'subsection',
-					'header' => 'h4',
+					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				);
 				$form_rows['schema_img_dimensions'] = array(
