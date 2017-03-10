@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.3-rc1 (2017/03/09)**
+**Version 3.40.3-1 (2017/03/10)**
 
 * *New Features*
 	* Added a new Open Graph "Product Condition" option to the Social Settings metabox.
@@ -380,7 +380,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new WpssoConfig $cf['head']['og_content_map'] array to swap Schema meta tag values to their simpler Open Graph counterparts.
 	* Updated the minimum / recommended versions for:
 		* WordPress v3.7 / v4.7.3 (see https://codex.wordpress.org/Supported_Versions?nocache=1)
-		* PHP v5.3 / v7.0 (see http://php.net/supported-versions.php)
+		* PHP v5.3 / v5.6 (see http://php.net/supported-versions.php)
 
 **Version 3.40.2-1 (2017/03/06)**
 
@@ -848,9 +848,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.3-rc1 =
+= 3.40.3-1 =
 
-(2017/03/09) Added "Product Condition" option to Social Settings metabox. Added support for a WooCommerce "Condition" product attribute (Pro version). Added new Open Graph product meta tags (Pro version). Updated minimum/required WP and PHP versions.
+(2017/03/10) Added "Product Condition" option to Social Settings metabox. Added support for a WooCommerce "Condition" product attribute (Pro version). Added new Open Graph product meta tags (Pro version). Updated minimum/required WP and PHP versions.
 
 = 3.40.2-1 =
 
