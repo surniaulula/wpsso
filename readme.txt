@@ -364,6 +364,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.40.4-dev1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed / moved the SucomWebpage class in lib/com/webpage.php to NgfbWebpage in lib/webpage.php.
+
 **Version 3.40.3-1 (2017/03/10)**
 
 * *New Features*
