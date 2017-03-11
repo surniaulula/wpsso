@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.8
  * Tested Up To: 4.7.3
- * Version: 3.40.3-1
+ * Version: 3.40.4-dev1
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $script;			// SucomScript (admin jquery tooltips)
 		public $style;			// SucomStyle (admin styles)
 		public $util;			// WpssoUtil (extends SucomUtil)
-		public $webpage;		// SucomWebpage (title, desc, etc., plus shortcodes)
+		public $webpage;		// WpssoWebpage (title, desc, etc., plus shortcodes)
 
 		/*
 		 * Reference Variables (config, options, modules, etc.)
@@ -80,12 +80,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
+			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );	// runs at init 1
+
 			add_action( 'init', array( &$this, 'set_config' ), WPSSO_INIT_PRIORITY - 3 );	// 9 by default
 			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 2 );	// 10 by default
 			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 1 );	// 11 by default
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );	// 12 by default
-
-			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );
 
 			if ( is_admin() )
 				add_action( 'wpsso_init_textdomain', 		// action is run after the debug property is defined
@@ -96,6 +96,23 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( ! isset( self::$instance ) )
 				self::$instance = new self;
 			return self::$instance;
+		}
+
+		// runs at widgets_init priority 10, and the widgets_init action runs at init 1
+		public function init_widgets() {
+			$opts = get_option( WPSSO_OPTIONS_NAME );
+			if ( ! empty( $opts['plugin_widgets'] ) ) {
+				foreach ( $this->cf['plugin'] as $ext => $info ) {
+					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
+						foreach ( $info['lib']['widget'] as $id => $name ) {
+							$classname = apply_filters( $ext.'_load_lib', false, 'widget/'.$id );
+							if ( $classname !== false && class_exists( $classname ) ) {
+								register_widget( $classname );	// name of a class that extends WP_Widget
+							}
+						}
+					}
+				}
+			}
 		}
 
 		// runs at init priority 9 by default
@@ -205,7 +222,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cache = new SucomCache( $this );			// object and file caching
 			$this->style = new SucomStyle( $this );			// admin styles
 			$this->script = new SucomScript( $this );		// admin jquery tooltips
-			$this->webpage = new SucomWebpage( $this );		// title, desc, etc., plus shortcodes
+			$this->webpage = new WpssoWebpage( $this );		// title, desc, etc., plus shortcodes
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
 			$this->filters = new WpssoFilters( $this );		// integration filters
 			$this->head = new WpssoHead( $this );
@@ -303,22 +320,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $this->debug->enabled )
 				$this->debug->mark( 'plugin initialization' );	// end timer
-		}
-
-		// runs at widgets_init priority 10
-		public function init_widgets() {
-			$opts = get_option( WPSSO_OPTIONS_NAME );
-			if ( ! empty( $opts['plugin_widgets'] ) ) {
-				foreach ( $this->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
-						foreach ( $info['lib']['widget'] as $id => $name ) {
-							$classname = apply_filters( $ext.'_load_lib', false, 'widget/'.$id );
-							if ( $classname !== false && class_exists( $classname ) )
-								register_widget( $classname );
-						}
-					}
-				}
-			}
 		}
 
 		// runs at wpsso_init_textdomain priority -10
