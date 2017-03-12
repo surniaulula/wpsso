@@ -586,8 +586,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			switch ( $option_type ) {
 				// must be empty or texturized 
 				case 'textured':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = trim( wptexturize( ' '.$val.' ' ) );
+					}
 					break;
 
 				// must be empty or a url
@@ -602,13 +603,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// strip leading urls off facebook usernames
 				case 'url_base':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
+					}
 					break;
 
 				case 'csv_blank':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = implode( ', ', SucomUtil::explode_csv( $val ) );
+					}
 					break;
 
 				case 'csv_urls':
@@ -627,24 +630,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// twitter-style usernames (prepend with an @ character)
 				case 'at_name':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = SucomUtil::get_at_name( $val );
+					}
 					break;
 
 				case 'pos_num':		// integer options that must be 1 or more (not zero)
 				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
 
-					if ( $option_type == 'img_width' )
+					if ( $option_type == 'img_width' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
-					elseif ( $option_type == 'img_height' )
+					} elseif ( $option_type == 'img_height' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
-					else $min_int = 1;
+					} else {
+						$min_int = 1;
+					}
 
 					// custom meta options are allowed to be empty
-					if ( $val === '' && ! empty( $mod['name'] ) )
+					if ( $val === '' && ! empty( $mod['name'] ) ) {
 						break;	// abort
-					elseif ( ! is_numeric( $val ) || $val < $min_int ) {
+					} elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
 						$val = $def_val;
 					}
@@ -697,15 +703,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// text strings that can be blank
 				case 'ok_blank':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = trim( $val );
+					}
 					break;
 
 				// text strings that can be blank (line breaks are removed)
 				case 'desc':
 				case 'one_line':
-					if ( $val !== '' )
+					if ( $val !== '' ) {
 						$val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $val ) );
+					}
 					break;
 
 				// empty string or must include at least one HTML tag
@@ -731,8 +739,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// everything else is a 1 or 0 checkbox option 
 				case 'checkbox':
 				default:
-					if ( $def_val === 0 || $def_val === 1 )	// make sure the default option is also a 1 or 0, just in case
+					if ( $def_val === 0 || $def_val === 1 ) {	// make sure the default option is also a 1 or 0, just in case
 						$val = empty( $val ) ? 0 : 1;
+					}
 					break;
 			}
 
