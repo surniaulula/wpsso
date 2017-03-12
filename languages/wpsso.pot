@@ -3763,84 +3763,78 @@ msgstr ""
 
 #: lib/util.php:559
 msgid ""
-"'%1$s' is not an acceptable value for option '%2$s' - resetting the option "
-"to its default value."
-msgstr ""
-
-#: lib/util.php:561
-msgid ""
 "The value of option '%s' must be alpha-numeric - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:563
+#: lib/util.php:561
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:565
+#: lib/util.php:563
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:567
+#: lib/util.php:565
 msgid ""
 "The value of option '%s' must be HTML code - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/util.php:569
+#: lib/util.php:567
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:767
+#: lib/util.php:762
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:774
+#: lib/util.php:769
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:799
+#: lib/util.php:794
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:835
+#: lib/util.php:830
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1117
+#: lib/util.php:1112
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1824
+#: lib/util.php:1819
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1850
+#: lib/util.php:1845
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1854
+#: lib/util.php:1849
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1857
+#: lib/util.php:1852
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1861
+#: lib/util.php:1856
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

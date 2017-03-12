@@ -556,8 +556,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ),
 					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
 						'wpsso' ),
-					'auth_id' => __( '\'%1$s\' is not an acceptable value for option \'%2$s\' - resetting the option to its default value.',
-						'wpsso' ),
 					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.',
 						'wpsso' ),
 					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting the option to its default value.',
@@ -670,13 +668,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					break;
 
-				// empty of alpha-numeric uppercase (hyphens are allowed as well)
+				// empty or alpha-numeric uppercase (hyphens are allowed as well)
 				case 'auth_id':
-					$val = preg_replace( array( '/&(shy|ndash|mdash);/', '/(--+)/' ), '-', trim( $val ) );
-					if ( $val !== '' && preg_match( '/[^A-Z0-9\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $val, $key ) );
-						$val = $def_val;
-					}
+					// silently convert illegal characters to single hyphens and trim excess
+					$val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $val ), '-' );
 					break;
 
 				// empty or alpha-numeric (upper or lower case), plus underscores
