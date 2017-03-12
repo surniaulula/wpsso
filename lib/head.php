@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";
 
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':mark" content="'.$lca.' meta tags begin"/>'."\n";
+				$html .= '<meta name="'.$lca.':mark:begin" content="'.$lca.' meta tags begin"/>'."\n";
 
 			// first element of returned array is the html tag
 			$indent = 0;
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// extra begin / end meta tag for duplicate meta tags check
 			if ( ! empty( $this->p->options['plugin_check_head'] ) )
-				$html .= '<meta name="'.$lca.':mark" content="'.$lca.' meta tags end"/>'."\n";
+				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
 
 			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs',
 				microtime( true ) - $start_time ).' -->'."\n";

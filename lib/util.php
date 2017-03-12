@@ -790,7 +790,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'removing self meta tags' );
 
-				$re_pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark"[\s\n\r]+content=")';
+				$re_pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark:(begin|end)"[\s\n\r]+content=")';
 				$re_post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
 
 				$html = preg_replace( '/'.$re_pre.$lca.' meta tags begin'.$re_post.'.*'.
