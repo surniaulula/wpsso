@@ -364,12 +364,13 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.4-dev1 (2017/03/12)**
+**Version 3.40.4-dev2 (2017/03/12)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added filtering to replace illegal characters in an Authentication ID string with regular dashes.
+	* Replaced the "(settings value)" text shown for options in the Social Settings metabox with the actual default value.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -860,7 +861,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.4-dev1 =
+= 3.40.4-dev2 =
 
 (2017/03/12) Added filtering to replace illegal characters in an Authentication ID string with regular dashes. Renamed / moved the SucomWebpage class in lib/com/webpage.php to WpssoWebpage in lib/webpage.php.
 
