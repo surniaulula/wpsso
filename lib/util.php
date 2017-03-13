@@ -1098,23 +1098,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					$cache_salt = __METHOD__.'(url:'.$media_url.')';
 					$cache_id = $lca.'_'.md5( $cache_salt );
-					if ( $this->p->debug->enabled )
+
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'transient cache salt '.$cache_salt );
+					}
 
 					if ( $cache_exp > 0 ) {
 						$image_info = get_transient( $cache_id );
 						if ( is_array( $image_info ) ) {
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'image info for '.$media_url.' retrieved from transient' );
-						} else $image_info = false;
+							}
+						} else {
+							$image_info = false;
+						}
 					} else {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'image info transient cache is disabled' );
+						}
 						$image_info = false;
 					}
 
 					if ( $image_info === false ) {
+
 						$image_info = @getimagesize( $media_url );
+
 						if ( is_array( $image_info ) ) {
 
 							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
@@ -1122,19 +1130,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
 										true, __METHOD__.$media_url, true );
 							}
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
 									$image_info[0].'x'.$image_info[1] );
-
+							}
 							if ( $cache_exp > 0 ) {
 								set_transient( $cache_id, $image_info, $cache_exp );
-								if ( $this->p->debug->enabled )
+								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'image url size saved to transient '.
 										$cache_id.' ('.$cache_exp.' seconds)');
+								}
 							}
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'PHP getimagesize() did not return an array' );
-							$image_info = array( -1, -1, '', '' );
+							$image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
 						}
 					}
 
@@ -1143,7 +1152,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} else {
 					foreach ( array( 'width', 'height' ) as $attr )
 						if ( isset( $opts[$prefix.':'.$attr] ) )
-							$opts[$prefix.':'.$attr] = -1;
+							$opts[$prefix.':'.$attr] = WPSSO_UNDEF_INT;
 				}
 			}
 
@@ -1252,7 +1261,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod['is_home_index'] = $mod['is_home'] = is_home();
 
 			if ( $this->p->debug->enabled )
-				$this->p->debug->log_arr( '$mod ', $mod );
+				$this->p->debug->log_arr( '$mod', $mod );
 
 			return $mod;
 		}
@@ -1535,17 +1544,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $opt_keys as $max_key ) {
 
-				if ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) )
+				if ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) ) {
 					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );
-				else $max_val = null;	// default value returned by get_options() if index key is missing
+				} else {
+					$max_val = null;	// default value returned by get_options() if index key is missing
+				}
 
-				// quick sanitation of returned value - ignore -1 values
+				// quick sanitation of returned value - ignore WPSSO_UNDEF_INT values
 				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
 					$max[$max_key] = $max_val;
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'found custom meta '.$max_key.' = '.$max_val );
-				} else $max[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
-					$this->p->options[$max_key] : 0;
+					}
+				} else {
+					$max[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
+						$this->p->options[$max_key] : 0;
+				}
 			}
 
 			return $max;
@@ -1788,10 +1802,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				);
 
 				// if we don't already have a table row tag, then add one
-				if ( strpos( $row, '<tr ' ) === false )
+				if ( strpos( $row, '<tr ' ) === false ) {
 					$row = '<tr class="'.$tr['class'].'"'.
 						( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
-				else {
+				} else {
 					foreach ( $tr as $att => $val ) {
 						if ( empty( $tr[$att] ) )
 							continue;
@@ -1800,8 +1814,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						// count the number of rows and options that are hidden
 						if ( $att === 'class' && ! empty( $show_opts ) && 
 							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_'.$show_opts.'[" ]/', $row, $m ) > 0 ) ) {
-							if ( ! isset( $m[1] ) )
+
+							if ( ! isset( $m[1] ) ) {
 								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
+							}
+
 							$hidden_rows += $matched;
 						}
 
@@ -1809,8 +1826,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$row = preg_replace( '/(<tr [^>]*'.$att.'=")([^"]*)(")/', '$1$2 '.$tr[$att].'$3', $row, -1, $cnt );
 
 						// if one hasn't been added, then add both the attribute and its value
-						if ( $cnt < 1 )
+						if ( $cnt < 1 ) {
 							$row = preg_replace( '/(<tr )/', '$1'.$att.'="'.$tr[$att].'" ', $row, -1, $cnt );
+						}
 					}
 				}
 

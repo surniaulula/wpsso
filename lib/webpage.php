@@ -487,34 +487,43 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc ) : 0;
 			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'description strlen before html cleanup '.$strlen_pre_cleanup.' and after '.strlen( $desc ) );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'description strlen before html cleanup '.
+					$strlen_pre_cleanup.' and after '.strlen( $desc ) );
+			}
 
 			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 			if ( $textlen > 0 ) {
-				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) )
-					$textlen = $textlen - strlen( $hashtags ) -1;
 
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'description strlen before limit length '.strlen( $desc ).' (limiting to '.$textlen.' chars)' );
+				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
+					$textlen = $textlen - strlen( $hashtags ) - 1;
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'description strlen before limit length '.
+						strlen( $desc ).' (limiting to '.$textlen.' chars)' );
+				}
 
 				$desc = $this->p->util->limit_text_length( $desc,
 					$textlen, $trailing, false );	// $cleanup_html = false
 
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'description limit text length skipped' );
+			}
 
-			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) )
+			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 				$desc .= ' '.$hashtags;
+			}
 
 			if ( $encode === true ) {
 				$desc = SucomUtil::encode_emoji( htmlentities( $desc,
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// end timer
+			}
 
 			return apply_filters( $this->p->cf['lca'].'_description', $desc, $mod, $add_hashtags, $md_idx );
 		}
@@ -585,6 +594,7 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 
 			// remove singlepics, which we detect and use before-hand
 			$content_text = preg_replace( '/\[singlepic[^\]]+\]/', '', $content_text, -1, $count );
+
 			if ( $count > 0 ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( $count.' [singlepic] shortcode(s) removed from content' );
@@ -679,16 +689,22 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 
 		public function get_article_section( $post_id ) {
 			$section = '';
-			if ( ! empty( $post_id ) )
+
+			if ( ! empty( $post_id ) ) {
 				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
+			}
 
 			if ( ! empty( $section ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found custom meta article section = '.$section );
-			} else $section = $this->p->options['og_art_section'];
+				}
+			} else {
+				$section = $this->p->options['og_art_section'];
+			}
 
-			if ( $section === 'none' )
+			if ( $section === 'none' ) {
 				$section = '';
+			}
 
 			return apply_filters( $this->p->cf['lca'].'_article_section', $section, $post_id );
 		}

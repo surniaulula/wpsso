@@ -40,7 +40,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tr_class' => ( $og_type === 'article' ? '' : 'hide_in_basic' ),	// hide if not an article
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_art_section', array( -1 ), '', '', false ),
+					'content' => $form->get_no_select( 'og_art_section',
+						$this->p->util->get_article_topics(), '', '', false ),
 				),
 				'og_title' => array(
 					'label' => _x( 'Default Title', 'option label', 'wpsso' ),

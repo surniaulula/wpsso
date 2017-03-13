@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.4-dev1',	// plugin version
+					'version' => '3.40.4-dev2',	// plugin version
 					'opt_version' => '509',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1629,8 +1629,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR.'share/topics.txt';
 			}
 
-			if ( defined( 'WPSSO_URLPATH' ) )
+			if ( defined( 'WPSSO_URLPATH' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
+			}
 
 			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
@@ -1638,7 +1639,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
-			$var_const['WPSSO_DEF_PROD_CURRENCY'] = 'USD';		// default product currency
+			$var_const['WPSSO_PROD_CURRENCY'] = 'USD';		// default for 'product_currency'
+			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
 
 			/*
 			 * WPSSO option and meta array names
@@ -1673,15 +1675,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
 			/*
-			 * WPSSO curl settings
+			 * WPSSO cURL settings
 			 */
-			if ( defined( 'WPSSO_PLUGINDIR' ) )
+			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 				$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
+			}
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0';
 
-			foreach ( $var_const as $name => $value )
-				if ( defined( $name ) )
+			foreach ( $var_const as $name => $value ) {
+				if ( defined( $name ) ) {
 					$var_const[$name] = constant( $name );	// inherit existing values
+				}
+			}
 
 			return $var_const;
 		}
@@ -1722,8 +1727,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				require_once( WPSSO_PLUGINDIR.'lib/ext/parse-readme.php' );
 			}
 
-			if ( file_exists( WPSSO_PLUGINDIR.'lib/loader.php' ) )
+			if ( file_exists( WPSSO_PLUGINDIR.'lib/loader.php' ) ) {
 				require_once( WPSSO_PLUGINDIR.'lib/loader.php' );
+			}
 
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
 		}

@@ -180,47 +180,52 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $select_id ).'"'.'>'."\n";
 
 			$option_count = 0;
+
 			foreach ( $values as $val => $desc ) {
+
 				// if the array is NOT associative (so regular numered array),
 				// then the description is used as the saved value as well
-				if ( $is_assoc === false )
+				if ( $is_assoc === false ) {
 					$val = $desc;
-				if ( $val === -1 || $val === '-1' )
-					$desc = _x( '(settings value)', 'option value', $this->text_domain );
-				else {
-					if ( $this->text_domain )
-						$desc = _x( $desc, 'option value', $this->text_domain );
-
-					switch ( $name ) {
-						case 'og_img_max':
-							if ( $desc === 0 )
-								$desc .= ' '._x( '(no images)', 'option value', $this->text_domain );
-							break;
-						case 'og_vid_max':
-							if ( $desc === 0 )
-								$desc .= ' '._x( '(no videos)', 'option value', $this->text_domain );
-							break;
-						default:
-							if ( $desc === '' || $desc === 'none' )
-								$desc = _x( '[None]', 'option value', $this->text_domain );
-							break;
-					}
-					if ( $this->in_defaults( $name ) &&
-						$val === $this->defaults[$name] )
-							$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
 				}
 
-				if ( ! is_bool( $selected ) )
+				if ( $this->text_domain ) {
+					$desc = _x( $desc, 'option value', $this->text_domain );
+				}
+
+				switch ( $name ) {
+					case 'og_img_max':
+						if ( $desc === 0 )
+							$desc .= ' '._x( '(no images)', 'option value', $this->text_domain );
+						break;
+					case 'og_vid_max':
+						if ( $desc === 0 )
+							$desc .= ' '._x( '(no videos)', 'option value', $this->text_domain );
+						break;
+					default:
+						if ( $desc === '' || $desc === 'none' )
+							$desc = _x( '[None]', 'option value', $this->text_domain );
+						break;
+				}
+
+				if ( $this->in_defaults( $name ) && $val === $this->defaults[$name] ) {
+					$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
+				}
+
+				if ( ! is_bool( $selected ) ) {
 					$is_selected_html = selected( $selected, $val, false );
-				elseif ( $this->in_options( $name ) )
+				} elseif ( $this->in_options( $name ) ) {
 					$is_selected_html = selected( $this->options[$name], $val, false );
-				elseif ( $this->in_defaults( $name ) )
+				} elseif ( $this->in_defaults( $name ) ) {
 					$is_selected_html = selected( $this->defaults[$name], $val, false );
-				else $is_selected_html = '';
+				} else {
+					$is_selected_html = '';
+				}
 
 				// for disabled selects, only include the first and/or selected option
-				if ( ! $disabled || $option_count === 0 || $is_selected_html )
+				if ( ! $disabled || $option_count === 0 || $is_selected_html ) {
 					$html .= '<option value="'.esc_attr( $val ).'"'.$is_selected_html.'>'.$desc.'</option>'."\n";
+				}
 
 				$option_count++;
 			}
@@ -415,42 +420,48 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_image_upload_input( $opt_prefix, $placeholder, true );
 		}
 
-		// $use_opts = true when used for post / user meta forms (to show default values)
 		public function get_image_dimensions_input( $name, $use_opts = false, $narrow = false, $disabled = false ) {
+
 			$def_width = '';
 			$def_height = '';
 			$crop_area_select = '';
 
+			// $use_opts = true when used for post / user meta forms (to show default values)
 			if ( $use_opts === true ) {
+
 				$def_width = empty( $this->p->options[$name.'_width'] ) ?
 					'' : $this->p->options[$name.'_width'];
+
 				$def_height = empty( $this->p->options[$name.'_height'] ) ?
 					'' : $this->p->options[$name.'_height'];
-				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key )
-					if ( ! $this->in_options( $name.'_'.$key ) &&
-						$this->in_defaults( $name.'_'.$key ) )
-							$this->options[$name.'_'.$key] = $this->defaults[$name.'_'.$key];
+
+				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
+					if ( ! $this->in_options( $name.'_'.$key ) && $this->in_defaults( $name.'_'.$key ) ) {
+						$this->options[$name.'_'.$key] = $this->defaults[$name.'_'.$key];
+					}
+				}
 			}
 
+			// crop area selection is only available since wp v3.9
 			global $wp_version;
-			if ( ! version_compare( $wp_version, 3.9, '<' ) ) {
+			if ( version_compare( $wp_version, 3.9, '>=' ) ) {
+
 				$crop_area_select .= $narrow === true ?
 					' <div class="img_crop_from is_narrow">' :
 					' <div class="img_crop_from">from';
+
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-					$pos_vals = $this->options[$name.'_'.$key] === -1 ?
-						array_merge( array( -1 => _x( '(settings value)', 'option value', $this->text_domain ) ),
-							$this->p->cf['form']['position_'.$key] ) :
-						$this->p->cf['form']['position_'.$key];
 					$crop_area_select .= ' '.$this->get_select( $name.'_'.$key,
-						$pos_vals, 'medium', '', true, $disabled );
+						$this->p->cf['form']['position_'.$key], 'medium', '', true, $disabled );
 				}
+
 				$crop_area_select .= '</div>';
 			}
 
 			return $this->get_input( $name.'_width', 'short', '', 0, $def_width, $disabled ).'x'.
 				$this->get_input( $name.'_height', 'short', '', 0, $def_height, $disabled ).
-				'px &nbsp; cropped '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).$crop_area_select;
+				'px &nbsp; cropped '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).
+					$crop_area_select;
 		}
 
 		public function get_no_image_dimensions_input( $name, $use_opts = false, $narrow = false ) {
@@ -460,14 +471,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_image_dimensions_text( $name, $use_opts = false ) {
 			if ( ! empty( $this->options[$name.'_width'] ) &&
 				! empty( $this->options[$name.'_height'] ) ) {
-				return $this->options[$name.'_width'].' x '.
-					$this->options[$name.'_height'].
+				return $this->options[$name.'_width'].' x '.$this->options[$name.'_height'].
 					( $this->options[$name.'_crop'] ? ', cropped' : '' );
 			} elseif ( $use_opts === true ) {
 				if ( ! empty( $this->p->options[$name.'_width'] ) &&
 					! empty( $this->p->options[$name.'_height'] ) ) {
-					return $this->p->options[$name.'_width'].' x '.
-						$this->p->options[$name.'_height'].
+					return $this->p->options[$name.'_width'].' x '.$this->p->options[$name.'_height'].
 						( $this->p->options[$name.'_crop'] ? ', cropped' : '' );
 				}
 			}
@@ -484,49 +493,54 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_video_url_input( $opt_prefix, $url = '' ) {
 			// disable if we have a custom video embed
 			$disabled = empty( $this->options[$opt_prefix.'_embed'] ) ? false : true;
+
 			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0,
 				SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_copy_input( $value, $class = 'wide', $id = '' ) {
-			if ( empty( $id ) )
+			if ( empty( $id ) ) {
 				$id = uniqid();
+			}
 			$input = '<input type="text"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="text_'.esc_attr( $id ).'"' ).
 				' value="'.esc_attr( $value ).'" readonly'.
 				' onFocus="this.select(); document.execCommand( \'Copy\', false, null );"'.
 				' onMouseUp="return false;">';
+
 			if ( ! empty( $id ) ) {
 				global $wp_version;
-				// version 3.8 is required to have the dashicons
+				// dashicons are only available since wp v3.8
 				if ( version_compare( $wp_version, 3.8, '>=' ) )
 					$html = '<div class="clipboard"><div class="copy_button">'.
 						'<a class="outline" href="" title="Copy to clipboard"'.
 						' onClick="return sucomCopyInputId( \'text_'.esc_js( $id ).'\');">'.
 						'<span class="dashicons dashicons-clipboard"></span></a>'.
 						'</div><div class="copy_text">'.$input.'</div></div>';
-			} else $html = $input;
+			} else {
+				$html = $input;
+			}
 			return $html;
 		}
 
 		public function get_textarea( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false ) {
-			if ( empty( $name ) )
+			if ( empty( $name ) ) {
 				return;	// just in case
-
-			if ( $this->get_options( $name.':is' ) === 'disabled' )
+			}
+			if ( $this->get_options( $name.':is' ) === 'disabled' ) {
 				$disabled = true;
-
+			}
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
 
-			if ( ! is_array( $len ) )
+			if ( ! is_array( $len ) ) {
 				$len = array( 'max' => $len );
-
-			if ( ! empty( $len['max'] ) && ! empty( $id ) )
+			}
+			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
 				$html .= $this->get_text_len_js( 'textarea_'.$id );
-
+			}
 			$html .= '<textarea '.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
@@ -570,18 +584,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_options( $idx = false, $def_val = null ) {
 			if ( $idx !== false ) {
-				if ( isset( $this->options[$idx] ) )
+				if ( isset( $this->options[$idx] ) ) {
 					return $this->options[$idx];
-				else return $def_val;
+				} else {
+					return $def_val;
+				}
 			} else return $this->options;
 		}
 
 		public function in_options( $idx, $is_preg = false ) {
 			if ( $is_preg ) {
-				if ( ! is_array( $this->options ) ) return false;
+				if ( ! is_array( $this->options ) ) {
+					return false;
+				}
 				$opts = SucomUtil::preg_grep_keys( $idx, $this->options );
 				return ( ! empty( $opts ) ) ? true : false;
-			} else return isset( $this->options[$idx] ) ? true : false;
+			} else {
+				return isset( $this->options[$idx] ) ? true : false;
+			}
 		}
 
 		public function in_defaults( $idx ) {
@@ -598,30 +618,29 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		private function get_sanitized_placeholder( $name, $placeholder ) {
-			if ( empty( $name ) )
+			if ( empty( $name ) ) {
 				return $placeholder;	// just in case
-
-			if ( $placeholder === true ) {
-				if ( isset( $this->defaults[$name] ) )
-					$placeholder = $this->defaults[$name];
 			}
-			
+			if ( $placeholder === true ) {
+				if ( isset( $this->defaults[$name] ) ) {
+					$placeholder = $this->defaults[$name];
+				}
+			}
 			if ( $placeholder === true || $placeholder === '' ) {
 				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
 					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
 					if ( $name !== $key_default ) {
-						if ( isset( $this->options[$key_default] ) )
+						if ( isset( $this->options[$key_default] ) ) {
 							$placeholder = $this->options[$key_default];
-						elseif ( $placeholder === true &&
-							isset( $this->defaults[$key_default] ) )
-								$placeholder = $this->defaults[$key_default];
+						} elseif ( $placeholder === true && isset( $this->defaults[$key_default] ) ) {
+							$placeholder = $this->defaults[$key_default];
+						}
 					}
 				}
 			}
-
-			if ( $placeholder === true )
+			if ( $placeholder === true ) {
 				$placeholder = '';	// must be a string
-
+			}
 			return $placeholder;
 		}
 

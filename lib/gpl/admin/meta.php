@@ -135,7 +135,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_img_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_img_max', array( -1 ), '', '', false ),
+					'content' => $form->get_no_select( 'og_img_max',
+						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
 			$form_rows['subsection_priority_video'] = array(
@@ -169,7 +170,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_vid_max', array( -1 ), '', '', false ),
+					'content' => $form->get_no_select( 'og_vid_max', 
+						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
 			$form_rows['og_vid_prev_img'] = array(
@@ -243,7 +245,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 						'tr_class' => 'hide_in_basic',
 						'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 						'th_class' => 'medium', 'tooltip' => 'meta-schema_img_max', 'td_class' => 'blank',
-						'content' => $form->get_no_select( 'schema_img_max', array( -1 ), '', '', false ),
+						'content' => $form->get_no_select( 'schema_img_max', 
+							range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 					);
 				}
 			}

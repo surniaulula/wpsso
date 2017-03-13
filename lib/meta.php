@@ -259,9 +259,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				} elseif ( isset( $parts[5] ) ) {
 
-					if ( $parts[5] === -1 || $parts[5] === '-1' ) {	// -1 is reserved
+					// skip meta tags with reserved values but display empty values
+					if ( $parts[5] === WPSSO_UNDEF_INT || $parts[5] === (string) WPSSO_UNDEF_INT ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $parts[3].' value is -1 (skipped)' );
+							$this->p->debug->log( $parts[3].' value is '.WPSSO_UNDEF_INT.' (skipped)' );
 						}
 						continue;
 					}
@@ -420,7 +421,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$md_defs = array(
 					'options_filtered' => '',
 					'options_version' => '',
-					'og_art_section' => -1,
+					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
 					'og_title' => '',
 					'og_desc' => '',
 					'seo_desc' => '',
@@ -430,40 +431,40 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'sharing_url' => '',
 					'og_img_width' => '',
 					'og_img_height' => '',
-					'og_img_crop' => ( empty( $opts['og_img_crop'] ) ? 0 : 1 ),
-					'og_img_crop_x' => ( empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'] ),
-					'og_img_crop_y' => ( empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'] ),
+					'og_img_crop' => empty( $opts['og_img_crop'] ) ? 0 : 1,
+					'og_img_crop_x' => empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'],
+					'og_img_crop_y' => empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'],
 					'og_img_id' => '',
-					'og_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
+					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'og_img_url' => '',
-					'og_img_max' => -1,
+					'og_img_max' => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// cast as integer
 					'og_vid_url' => '',
 					'og_vid_embed' => '',
 					'og_vid_title' => '',
 					'og_vid_desc' => '',
-					'og_vid_max' => -1,
-					'og_vid_prev_img' => ( empty( $opts['og_vid_prev_img'] ) ? 0 : 1 ),
+					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// cast as integer
+					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
 					'rp_img_width' => '',
 					'rp_img_height' => '',
-					'rp_img_crop' => ( empty( $opts['rp_img_crop'] ) ? 0 : 1 ),
-					'rp_img_crop_x' => ( empty( $opts['rp_img_crop_x'] ) ? 'center' : $opts['rp_img_crop_x'] ),
-					'rp_img_crop_y' => ( empty( $opts['rp_img_crop_y'] ) ? 'center' : $opts['rp_img_crop_y'] ),
+					'rp_img_crop' => empty( $opts['rp_img_crop'] ) ? 0 : 1,
+					'rp_img_crop_x' => empty( $opts['rp_img_crop_x'] ) ? 'center' : $opts['rp_img_crop_x'],
+					'rp_img_crop_y' => empty( $opts['rp_img_crop_y'] ) ? 'center' : $opts['rp_img_crop_y'],
 					'rp_img_id' => '',
-					'rp_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
+					'rp_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'rp_img_url' => '',
 					'schema_img_width' => '',
 					'schema_img_height' => '',
-					'schema_img_crop' => ( empty( $opts['schema_img_crop'] ) ? 0 : 1 ),
-					'schema_img_crop_x' => ( empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'] ),
-					'schema_img_crop_y' => ( empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'] ),
+					'schema_img_crop' => empty( $opts['schema_img_crop'] ) ? 0 : 1,
+					'schema_img_crop_x' => empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'],
+					'schema_img_crop_y' => empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'],
 					'schema_img_id' => '',
-					'schema_img_id_pre' => ( empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'] ),
+					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'schema_img_url' => '',
-					'schema_img_max' => -1,
+					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// cast as integer
 					'product_avail' => 'none',
 					'product_condition' => 'none',
 					'product_price' => '0.00',
-					'product_currency' => WPSSO_DEF_PROD_CURRENCY,
+					'product_currency' => WPSSO_PROD_CURRENCY,
 				);
 
 				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
@@ -595,7 +596,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
 			 */
 			foreach ( $md_opts as $md_idx => $md_val ) {
-				if ( $md_val === -1 || $md_val === '-1' || $md_val === '' ||
+				if ( $md_val === WPSSO_UNDEF_INT || $md_val === (string) WPSSO_UNDEF_INT || $md_val === '' ||
 					( isset( $md_defs[$md_idx] ) && $md_val === $md_defs[$md_idx] ) ) {
 					unset( $md_opts[$md_idx] );
 				}
@@ -808,8 +809,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$meta_image[$mt_pre.':image:height']
 					) = array(
 						$url,
-						( $width > 0 ? $width : -1 ), 
-						( $height > 0 ? $height : -1 )
+						( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
+						( $height > 0 ? $height : WPSSO_UNDEF_INT )
 					);
 				}
 
@@ -899,7 +900,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
 							get_class( $this ) );	// log extended class name
 					}
-					$og_video = $this->p->media->get_video_info( $url, -1, -1, $check_dupes, true );	// $fallback = true
+					$og_video = $this->p->media->get_video_info( $url, 
+						WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true );	// $fallback = true
 					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) )  {
 						return $og_ret;
 					}

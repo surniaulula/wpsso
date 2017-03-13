@@ -88,7 +88,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $this->p->is_avail['aop'] );
 				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
 					$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) &&
-						$this->p->check->aop( $ext, true, -1 ) === -1 ? true : false;
+						$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ?
+							true : false;
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' );
