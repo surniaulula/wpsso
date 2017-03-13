@@ -690,42 +690,42 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						// no break - fall through
 
 						if ( $og_video !== null ) {
-							$ret[$key] = self::get_first_media_info( $mt_name, $og_video );
+							$ret[$key] = $this->get_first_media_info( $mt_name, $og_video );
 						}
 
 						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
+							$ret[$key] = $this->get_first_media_info( $mt_name, $og_image );
 						}
 
 						// if there's no image, and no video preview image,
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
 							$og_image = $this->p->media->get_default_image( 1, $size_name, false );	// $check_dupes = false
-							$ret[$key] = self::get_first_media_info( $mt_name, $og_image );
+							$ret[$key] = $this->get_first_media_info( $mt_name, $og_image );
 						}
 						break;
 					case 'video':
 					case 'vid_url':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video', $og_video );
 						break;
 					case 'vid_type':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:type', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:type', $og_video );
 						break;
 					case 'vid_title':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:title', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:title', $og_video );
 						break;
 					case 'vid_desc':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:description', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:description', $og_video );
 						break;
 					case 'vid_width':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:width', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:width', $og_video );
 						break;
 					case 'vid_height':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:height', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:height', $og_video );
 						break;
 					case 'prev_url':
 					case 'preview':
-						$ret[$key] = self::get_first_media_info( $mt_pre.':video:thumbnail_url', $og_video );
+						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:thumbnail_url', $og_video );
 						break;
 					default:
 						$ret[$key] = '';
@@ -740,7 +740,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $ret;
 		}
 
-		public static function get_first_media_info( $prefix, $mt_og ) {
+		public function get_first_media_info( $prefix, $mt_og ) {
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {
 				return '';
 			}
@@ -767,11 +767,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					continue;
 				} elseif ( $og_media[$key] === '' || $og_media[$key] === null ) {	// allow for 0
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( og_media[$key].' value is empty (skipped)' );
+						$this->p->debug->log( $og_media[$key].' value is empty (skipped)' );
 					}
 				} elseif ( $og_media[$key] === WPSSO_UNDEF_INT || $og_media[$key] === (string) WPSSO_UNDEF_INT ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( og_media[$key].' value is '.WPSSO_UNDEF_INT.' (skipped)' );
+						$this->p->debug->log( $og_media[$key].' value is '.WPSSO_UNDEF_INT.' (skipped)' );
 					}
 				} else {
 					return $og_media[$key];
