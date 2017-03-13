@@ -301,6 +301,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_cell( $form, 'plugin_clear_short_urls' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_short_urls' );
 
+			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for Comment',
+				'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
+			$this->get_nocb_cell( $form, 'plugin_clear_for_comment' ).
+			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_for_comment' );
+
 			return $table_rows;
 		}
 

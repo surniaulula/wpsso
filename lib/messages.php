@@ -539,6 +539,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$cache_exp = (int) apply_filters( $lca.'_cache_expire_shorten_url', $this->p->options['plugin_shorten_cache_exp'] );
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %s to minimize service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), human_time_diff( 0, $cache_exp ) );
 							break;
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for Comment
+							$text = __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed.', 'wpsso' );
+							break;
 						/*
 						 * 'Service API Keys' (URL Shortening) settings
 						 */

@@ -70,7 +70,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding get_shortlink filter' );
 				}
-				add_action( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+				// filters the shortlink for a post
+				add_filter( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
+			}
+
+			if ( ! empty( $this->p->options['plugin_clear_for_comment'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding clear cache for comment actions' );
+				}
+				// fires when a comment is inserted into the database
+				add_action ( 'comment_post', array( &$this, 'clear_cache_for_new_comment' ), 10, 2 );
+	
+				// fires before transitioning a comment's status from one to another
+				add_action ( 'wp_set_comment_status', array( &$this, 'clear_cache_for_comment_status' ), 10, 2 );
 			}
 		}
 
@@ -122,6 +134,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			) );
 		}
 
+		// filters the shortlink for a post
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -531,20 +544,49 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					break;
 
 				case 'tags':	
-					if ( $is_auto_draft )
+					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
-					else $table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
+					} else {
+						$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
+					}
 					break; 
 
 				case 'validate':
-					if ( $is_auto_draft )
+					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
-					else $table_rows = $this->get_rows_validate( $this->form, $head, $mod );
+					} else {
+						$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
+					}
 					break; 
 			}
 			return $table_rows;
+		}
+
+		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
+			if ( $comment_id && $comment_approved === 1 ) {
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+					$post_id = $comment->comment_post_ID;
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'clearing post_id '.$post_id.' cache for comment_id '.$comment_id );
+					}
+					$this->clear_cache( $post_id );
+				}
+			}
+		}
+
+		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
+			if ( $comment_id ) {	// just in case
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+					$post_id = $comment->comment_post_ID;
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'clearing post_id '.$post_id.' cache for comment_id '.$comment_id );
+					}
+					$this->clear_cache( $post_id );
+				}
+			}
+
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {
@@ -571,6 +613,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $sharing_url );
 
 					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
+
 					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
 							true, __FUNCTION__.'_items_removed', true );

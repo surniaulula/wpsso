@@ -188,10 +188,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else {
 				$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
-				if ( $mod['is_post'] )
+				if ( $mod['is_post'] ) {
 					$short_url = wp_get_shortlink( $mod['id'], 'post' );
-				else $short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
-					$long_url, $this->p->options['plugin_shortener'] );
+				} else {
+					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
+						$long_url, $this->p->options['plugin_shortener'] );
+				}
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium' ).

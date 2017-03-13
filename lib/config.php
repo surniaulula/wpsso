@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.4-dev2',	// plugin version
-					'opt_version' => '509',		// increment when changing default options
+					'version' => '3.40.4-dev3',	// plugin version
+					'opt_version' => '510',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -768,6 +768,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
+					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
 					// Service API Keys Tab
 					'plugin_shortener' => 'none',
 					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
@@ -883,6 +884,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_save:use' => 'default',
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					'plugin_clear_short_urls:use' => 'default',
+					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
+					'plugin_clear_for_comment:use' => 'default',
 					// Extension Plugins and Pro Licenses
 					'plugin_wpsso_tid' => '',
 					'plugin_wpsso_tid:use' => 'default',
