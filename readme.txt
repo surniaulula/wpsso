@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.4-dev3 (2017/03/13)**
+**Version 3.40.4-rc1 (2017/03/13)**
 
 * *New Features*
 	* Added a new "Clear Post Cache for Comment" option on the Advanced settings page (Pro version).
@@ -861,7 +861,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.4-dev3 =
+= 3.40.4-rc1 =
 
 (2017/03/13) Added a new "Clear Post Cache for Comment" option on the Advanced settings page (Pro version). Replaced the "(settings value)" text shown for options in the Social Settings metabox with the actual default value.
 
