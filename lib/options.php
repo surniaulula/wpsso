@@ -305,26 +305,28 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// sanitize and validate options
-		public function sanitize( $opts = array(), $def_opts = array(), $network = false, &$mod = false ) {
+		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
 
 			// make sure we have something to work with
-			if ( empty( $def_opts ) || ! is_array( $def_opts ) )
+			if ( empty( $def_opts ) || ! is_array( $def_opts ) ) {
 				return $opts;
+			}
 
-			// add any missing options from the defaults, unless
-			// sanitizing for a module (default values will be
-			// removed anyway)
+			// add any missing options from the defaults, unless sanitizing for a module 
+			// (default values will be removed anyway)
 			if ( $mod === false ) {
-				foreach ( $def_opts as $key => $def_val )
-					if ( ! empty( $key ) && ! isset( $opts[$key] ) )
+				foreach ( $def_opts as $key => $def_val ) {
+					if ( ! empty( $key ) && ! isset( $opts[$key] ) ) {
 						$opts[$key] = $def_val;
+					}
+				}
 			}
 
 			// sanitize values
 			foreach ( $opts as $key => $val ) {
-				if ( preg_match( '/:is$/', $key ) )	// don't save option states
+				if ( preg_match( '/:is$/', $key ) ) {	// don't save option states
 					unset( $opts[$key] );
-				elseif ( ! empty( $key ) ) {
+				} elseif ( ! empty( $key ) ) {
 					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// just in case
 					$opts[$key] = $this->p->util->sanitize_option_value( $key, $val, $def_val, $network, $mod );
 				}
@@ -332,10 +334,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			/* Adjust Dependent Options
 			 *
-			 * All options (site and meta as well) are sanitized
-			 * here, so use always isset() or array_key_exists() on
-			 * all tests to make sure additional / unnecessary
-			 * options are not created in post meta.
+			 * All options (site and meta as well) are sanitized here, so always use 
+			 * isset() or array_key_exists() on all tests to make sure additional / 
+			 * unnecessary options are not created in post meta.
 			 */
 			foreach ( array( 'og', 'rp', 'schema' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
@@ -364,19 +365,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			// if an image id is being used, remove the image url (only one can be defined)
-			if ( ! empty( $opts['og_def_img_id'] ) &&
-				! empty( $opts['og_def_img_url'] ) )
-					$opts['og_def_img_url'] = '';
+			if ( ! empty( $opts['og_def_img_id'] ) && ! empty( $opts['og_def_img_url'] ) ) {
+				$opts['og_def_img_url'] = '';
+			}
 
 			// og_desc_len must be at least 156 chars (defined in config)
 			if ( isset( $opts['og_desc_len'] ) && 
-				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] ) 
-					$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
+				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
+				$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
+			}
 
 			if ( $mod === false ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( empty( $info['update_auth'] ) )
+					if ( empty( $info['update_auth'] ) ) {
 						continue;
+					}
 					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
 					if ( isset( $opts[$opt_name] ) &&
 						isset( $this->p->options[$opt_name] ) &&
@@ -398,12 +401,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( ! empty( $opts['fb_app_id'] ) && 
-					( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) )
-						$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
+					( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
+					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
+				}
 
 				if ( ! $network ) {
-					if ( empty( $this->p->options['plugin_check_head'] ) )
+					if ( empty( $this->p->options['plugin_check_head'] ) ) {
 						delete_option( $this->p->cf['lca'].'_post_head_count' );
+					}
 				}
 			}
 

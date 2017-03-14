@@ -571,17 +571,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'rp', 'og' ) as $md_pre ) {
-				if ( empty( $md_opts[$md_pre.'_img_id'] ) )
+				if ( empty( $md_opts[$md_pre.'_img_id'] ) ) {
 					unset( $md_opts[$md_pre.'_img_id_pre'] );
-
+				}
 				$force_regen = false;
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $md_suffix ) {
 					// if option is the same as the default, then unset it
 					if ( isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) &&
 						isset( $md_defs[$md_pre.'_img_'.$md_suffix] ) &&
-							$md_opts[$md_pre.'_img_'.$md_suffix] === $md_defs[$md_pre.'_img_'.$md_suffix] )
-								unset( $md_opts[$md_pre.'_img_'.$md_suffix] );
-
+							$md_opts[$md_pre.'_img_'.$md_suffix] === $md_defs[$md_pre.'_img_'.$md_suffix] ) {
+						unset( $md_opts[$md_pre.'_img_'.$md_suffix] );
+					}
 					$check_current = isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) ?
 						$md_opts[$md_pre.'_img_'.$md_suffix] : '';
 					$check_previous = isset( $md_prev[$md_pre.'_img_'.$md_suffix] ) ?
@@ -590,16 +590,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$force_regen = true;
 					}
 				}
-				if ( $force_regen !== false )
+				if ( $force_regen !== false ) {
 					$this->p->util->set_force_regen( $mod, $md_pre );
+				}
 			}
 
 			/*
 			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
 			 */
 			foreach ( $md_opts as $md_idx => $md_val ) {
-				if ( $md_val === WPSSO_UNDEF_INT || $md_val === (string) WPSSO_UNDEF_INT || $md_val === '' ||
-					( isset( $md_defs[$md_idx] ) && $md_val === $md_defs[$md_idx] ) ) {
+				// use strict comparison to manage conversion (don't allow string to integer conversion, for example)
+				if ( $md_val === '' || $md_val === WPSSO_UNDEF_INT || $md_val === (string) WPSSO_UNDEF_INT || 
+					( isset( $md_defs[$md_idx] ) && ( $md_val === $md_defs[$md_idx] || $md_val === (string) $md_defs[$md_idx] ) ) ) {
 					unset( $md_opts[$md_idx] );
 				}
 			}
@@ -948,13 +950,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_image;
 		}
 
-		// $wp_meta can be a post/term/user meta array
-		protected function get_custom_fields( array $md_opts, array $wp_meta ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+		// $wp_meta can be a post/term/user meta array or empty / false
+		protected function get_custom_fields( array $md_opts, $wp_meta = false ) {
 
-			if ( ! is_array( $wp_meta ) || empty( $wp_meta ) )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $wp_meta ) || ! is_array( $wp_meta ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'wp_meta provided is empty or not an array' );
+				}
 				return $md_opts;
+			}
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 
@@ -963,25 +971,29 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				// custom fields can be disabled by filters
 				if ( empty( $md_idx ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' index is disabled' );
+					}
 					continue;
 				// check that a custom field meta key has been defined
 				// example: 'plugin_cf_img_url' = '_format_image_url'
 				} elseif ( ! empty( $this->p->options[$cf_idx] ) ) {
 					$meta_key = $this->p->options[$cf_idx];
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
+					}
 				} else {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' option is empty' );
+					}
 					continue;
 				}
 
 				// empty or not, if the array element is set, use it
 				if ( isset( $wp_meta[$meta_key][0] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
+					}
 					$mixed =& $wp_meta[$meta_key][0];
 				} else continue;
 
@@ -990,8 +1002,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				// decode the string or each array element
 				if ( is_array( $mixed ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
+					}
 					foreach ( $mixed as $value ) {
 						if ( is_array( $value ) ) {
 							$value = SucomUtil::array_implode( $value );
@@ -999,16 +1012,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset ) );
 					}
 				} else {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'decoding '.$meta_key.' as string of '.strlen( $mixed ).' chars' );
+					}
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
 				if ( ! empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
 					if ( ! is_array( $mixed ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exploded '.$meta_key.' into array of '.count( $values ).' elements' );
+						}
 					}
 					$is_multi = true;		// increment the option name
 				} else $is_multi = false;
