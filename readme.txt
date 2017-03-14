@@ -373,8 +373,9 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Replaced the "(settings value)" text shown for options in the Social Settings metabox with the actual default value.
 * *Bugfixes*
 	* Corrected the 'get_shortlink' hook registration from an action to a filter.
+	* Fixed an incorrect argument type cast in the WpssoMeta get_custom_fields() method (Pro version).
 * *Developer Notes*
-	* Renamed / moved the SucomWebpage class in lib/com/webpage.php to NgfbWebpage in lib/webpage.php.
+	* Renamed / moved the SucomWebpage class in lib/com/webpage.php to WpssoWebpage in lib/webpage.php.
 	* Renamed the "wpsso:mark" meta tags to unique "wpsso:mark:begin" and "wpsso:mark:end" meta tags (used to exclude wpsso meta tags when checking the header for duplicate meta tags).
 
 **Version 3.40.3-1 (2017/03/10)**
