@@ -250,47 +250,54 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 				if ( $mod['is_post'] ) {
 					$title = apply_filters( 'wp_title',
 						get_the_title( $mod['id'] ).' '.$separator.' ', $separator, 'right' );
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
-
+					}
 				} elseif ( $mod['is_term'] ) {
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
-					if ( SucomUtil::is_category_page( $mod['id'] ) )
+
+					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
 						$title = $this->get_category_title( $term_obj, '', $separator );	// includes parents in title string
-					elseif ( isset( $term_obj->name ) )
+					} elseif ( isset( $term_obj->name ) ) {
 						$title = apply_filters( 'wp_title',
 							$term_obj->name.' '.$separator.' ', $separator, 'right' );
-					elseif ( $this->p->debug->enabled )
+					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
-
+					}
 				} elseif ( $mod['is_user'] ) {
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
+
 					$title = apply_filters( 'wp_title',
 						$user_obj->display_name.' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
 
 				} else {
 					$title = wp_title( $separator, false, 'right' );
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
+					}
 				}
 
 				// just in case
 				if ( empty( $title ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title.'"' );
-					if ( ! ( $title = get_bloginfo( 'name', 'display' ) ) )
+					}
+					if ( ! ( $title = get_bloginfo( 'name', 'display' ) ) ) {
 						$title = 'No Title';	// just in case
+					}
 				}
 			}
 
-			if ( empty( $this->p->options['plugin_filter_title'] ) )
+			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
 				SucomUtil::protect_filter_stop( 'wp_title' );
+			}
 
 			$title = $this->p->util->cleanup_html_tags( $title );	// strip html tags before removing separator
 
-			if ( ! empty( $separator ) )
+			if ( ! empty( $separator ) ) {
 				$title = preg_replace( '/ *'.preg_quote( $separator, '/' ).' *$/', '', $title );	// trim excess separator
+			}
 
 			// apply title filter before adjusting it's length
 			$title = apply_filters( $this->p->cf['lca'].'_title_pre_limit', $title );
@@ -301,26 +308,30 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 				if ( $this->p->is_avail['seo']['*'] === false ) {
 					$paged = get_query_var( 'paged' );
 					if ( $paged > 1 ) {
-						if ( ! empty( $separator ) )
+						if ( ! empty( $separator ) ) {
 							$paged_suffix .= $separator.' ';
+						}
 						$paged_suffix .= sprintf( 'Page %s', $paged );
 						$textlen = $textlen - strlen( $paged_suffix ) - 1;
 					}
 				}
 				if ( ! empty( $add_hashtags ) &&
-					! empty( $hashtags ) )
-						$textlen = $textlen - strlen( $hashtags ) - 1;
+					! empty( $hashtags ) ) {
+					$textlen = $textlen - strlen( $hashtags ) - 1;
+				}
 
 				$title = $this->p->util->limit_text_length( $title,
 					$textlen, $trailing, false );	// $cleanup_html = false
 			}
 
-			if ( ! empty( $paged_suffix ) )
+			if ( ! empty( $paged_suffix ) ) {
 				$title .= ' '.$paged_suffix;
+			}
 
 			if ( ! empty( $add_hashtags ) &&
-				! empty( $hashtags ) )
+				! empty( $hashtags ) ) {
 					$title .= ' '.$hashtags;
+			}
 
 			if ( $encode === true ) {
 				foreach ( array( 'title', 'separator' ) as $var ) {
@@ -368,12 +379,15 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 				$desc = is_object( $mod['obj'] ) ?
 					$mod['obj']->get_options_multi( $mod['id'], array( $md_idx, 'og_desc' ) ) : null;
 				if ( $this->p->debug->enabled ) {
-					if ( empty( $desc ) )
+					if ( empty( $desc ) ) {
 						$this->p->debug->log( 'no custom description found for '.$md_idx );
-					else $this->p->debug->log( 'custom description = "'.$desc.'"' );
+					} else {
+						$this->p->debug->log( 'custom description = "'.$desc.'"' );
+					}
 				}
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'custom description skipped: no md_idx value' );
+			}
 
 			// get seed if no custom meta description
 			if ( empty( $desc ) ) {
@@ -391,12 +405,14 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 
 			} elseif ( $mod['is_post'] ) {
 				if ( ! empty( $add_hashtags ) &&
-					! empty( $this->p->options['og_desc_hashtags'] ) )
-						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
+					! empty( $this->p->options['og_desc_hashtags'] ) ) {
+					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
+				}
 			}
 
-			if ( $hashtags && $this->p->debug->enabled )
+			if ( $hashtags && $this->p->debug->enabled ) {
 				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
+			}
 
 			// if there's no custom description, and no pre-seed,
 			// then go ahead and generate the description value
@@ -435,44 +451,47 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 							$this->p->debug->log( 'removing all text before the first paragraph' );
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
-
 				} elseif ( $mod['is_term'] ) {
-
-					if ( is_tag() ) {
-						if ( ! $desc = tag_description() )
-							$desc = sprintf( 'Tagged with %s', single_tag_title( '', false ) );
-
-					} elseif ( is_category() ) {
-						if ( ! $desc = category_description() )
-							$desc = sprintf( '%s Category', single_cat_title( '', false ) );
-
+					if ( SucomUtil::is_tag_page( $mod['id'] ) ) {
+						if ( ! $desc = tag_description( $mod['id'] ) ) {
+							$term_obj = get_tag( $mod['id'] );
+							if ( ! empty( $term_obj->name ) ) {
+								$desc = sprintf( 'Tagged with %s', $term_obj->name );
+							}
+						}
+					} elseif ( SucomUtil::is_category_page( $mod['id'] ) ) {
+						if ( ! $desc = category_description( $mod['id'] ) ) {
+							$desc = sprintf( '%s Category', get_cat_name( $mod['id'] ) );
+						}
 					} else { 	// other taxonomies
 						$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
-						if ( ! empty( $term_obj->description ) )
+						if ( ! empty( $term_obj->description ) ) {
 							$desc = $term_obj->description;
-						elseif ( ! empty( $term_obj->name ) )
+						} elseif ( ! empty( $term_obj->name ) ) {
 							$desc = $term_obj->name.' Archives';
+						}
 					}
-
 				} elseif ( $mod['is_user'] ) {
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
-					if ( ! empty( $user_obj->description ) )
+					if ( ! empty( $user_obj->description ) ) {
 						$desc = $user_obj->description;
-					elseif ( ! empty( $user_obj->display_name ) )
+					} elseif ( ! empty( $user_obj->display_name ) ) {
 						$desc = sprintf( 'Authored by %s', $user_obj->display_name );
+					}
 
 					$desc = apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
 
-				} elseif ( is_day() )
+				} elseif ( is_day() ) {
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
-				elseif ( is_month() )
+				} elseif ( is_month() ) {
 					$desc = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
-				elseif ( is_year() )
+				} elseif ( is_year() ) {
 					$desc = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
-				elseif ( SucomUtil::is_archive_page() )	// just in case
+				} elseif ( SucomUtil::is_archive_page() ) {	// just in case
 					$desc = sprintf( 'Archive Page' );
+				}
 			}
 
 			// if there's still no description, then fallback to a generic version

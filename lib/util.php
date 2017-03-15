@@ -784,17 +784,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 
-			if ( $remove_self && 
-				strpos( $html, $lca.' meta tags begin' ) !== false ) {	// quick check
+			if ( $remove_self && strpos( $html, $lca.' meta tags begin' ) !== false ) {	// quick check
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'removing self meta tags' );
+				}
 
-				$re_pre = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark:(begin|end)"[\s\n\r]+content=")';
-				$re_post = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
+				$mark_prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark:(begin|end)"[\s\n\r]+content=")';
+				$mark_suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
 
-				$html = preg_replace( '/'.$re_pre.$lca.' meta tags begin'.$re_post.'.*'.
-					$re_pre.$lca.' meta tags end'.$re_post.'/ums',	// enable utf8 functionality
+				$html = preg_replace( '/'.$mark_prefix.$lca.' meta tags begin'.$mark_suffix.'.*'.
+					$mark_prefix.$lca.' meta tags end'.$mark_suffix.'/ums',	// enable utf8 functionality
 						'<!-- '.$lca.' meta tags removed -->', $html, -1, $count );
 
 				if ( ! $count ) {

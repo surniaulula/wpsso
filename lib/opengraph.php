@@ -348,6 +348,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $mod['is_post'] ) {
 
+				if ( ! isset( $mt_og['og:updated_time'] ) ) {
+					$mt_og['og:updated_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+				}
+
 				if ( ! isset( $mt_og['article:author'] ) ) {
 
 					if ( $mod['is_post'] && isset( $this->p->m['util']['user'] ) ) {
@@ -373,21 +377,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
-				if ( ! isset( $mt_og['article:publisher'] ) )
+				if ( ! isset( $mt_og['article:publisher'] ) ) {
 					$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url',
 						$this->p->options, $mod );
+				}
 
-				if ( ! isset( $mt_og['article:tag'] ) )
+				if ( ! isset( $mt_og['article:tag'] ) ) {
 					$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
+				}
 
-				if ( ! isset( $mt_og['article:section'] ) )
+				if ( ! isset( $mt_og['article:section'] ) ) {
 					$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
+				}
 
-				if ( ! isset( $mt_og['article:published_time'] ) )
+				if ( ! isset( $mt_og['article:published_time'] ) ) {
 					$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
+				}
 
-				if ( ! isset( $mt_og['article:modified_time'] ) )
+				if ( ! isset( $mt_og['article:modified_time'] ) ) {
 					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+				}
 			}
 
 			return (array) apply_filters( $lca.'_og', $mt_og, $mod );

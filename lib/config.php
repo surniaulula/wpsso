@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.4-1',	// plugin version
-					'opt_version' => '510',		// increment when changing default options
+					'version' => '3.40.5-dev1',	// plugin version
+					'opt_version' => '511',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -545,25 +545,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,
 					// open graph
-					'add_meta_property_og:locale' => 1,
-					'add_meta_property_og:site_name' => 1,
+					'add_meta_property_og:altitude' => 1,
 					'add_meta_property_og:description' => 1,
-					'add_meta_property_og:title' => 1,
-					'add_meta_property_og:type' => 1,
-					'add_meta_property_og:url' => 1,
 					'add_meta_property_og:image:secure_url' => 1,
 					'add_meta_property_og:image' => 1,
 					'add_meta_property_og:image:width' => 1,
 					'add_meta_property_og:image:height' => 1,
+					'add_meta_property_og:latitude' => 1,
+					'add_meta_property_og:locale' => 1,
+					'add_meta_property_og:longitude' => 1,
+					'add_meta_property_og:site_name' => 1,
+					'add_meta_property_og:title' => 1,
+					'add_meta_property_og:type' => 1,
+					'add_meta_property_og:updated_time' => 1,
+					'add_meta_property_og:url' => 1,
 					'add_meta_property_og:video:secure_url' => 1,
 					'add_meta_property_og:video:url' => 1,
 					'add_meta_property_og:video:type' => 1,
 					'add_meta_property_og:video:width' => 1,
 					'add_meta_property_og:video:height' => 1,
-					'add_meta_property_og:video:tag' => 1,
-					'add_meta_property_og:altitude' => 1,
-					'add_meta_property_og:latitude' => 1,
-					'add_meta_property_og:longitude' => 1,
+					'add_meta_property_og:video:tag' => 0,
 					// open graph (article)
 					'add_meta_property_article:author' => 1,
 					'add_meta_property_article:publisher' => 1,
