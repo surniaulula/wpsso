@@ -364,6 +364,17 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.40.5-dev1 (2017/03/15)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added the 'og:updated_time' meta tag for post objects.
+* *Bugfixes*
+	* Added a check for the "Use Filtered (SEO) Title" option value before returning the SEO Framework title (Pro version).
+* *Developer Notes*
+	* Updated the NgfbWebpage get_description() method to use term ids for tags and categories (provides compatibility for the admin back-end).
+
 **Version 3.40.4-1 (2017/03/15)**
 
 * *New Features*
@@ -861,6 +872,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.40.5-dev1 =
+
+(2017/03/15) Added the 'og:updated_time' meta tag for post objects. Added a check for "Use Filtered (SEO) Title" before returning the SEO Framework title (Pro version).
 
 = 3.40.4-1 =
 
