@@ -371,7 +371,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Added the 'og:updated_time' meta tag for post objects.
 * *Bugfixes*
-	* Added a check for the "Use Filtered (SEO) Title" option value before returning the SEO Framework title (Pro version).
+	* Added a missing check for the "Use Filtered (SEO) Title" option value before returning the SEO Framework title (Pro version).
 * *Developer Notes*
 	* Updated the NgfbWebpage get_description() method to use term ids for tags and categories (provides compatibility for the admin back-end).
 
@@ -875,7 +875,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.40.5-dev1 =
 
-(2017/03/15) Added the 'og:updated_time' meta tag for post objects. Added a check for "Use Filtered (SEO) Title" before returning the SEO Framework title (Pro version).
+(2017/03/15) Added the 'og:updated_time' meta tag for post objects. Added a missing check for "Use Filtered (SEO) Title" before returning the SEO Framework title (Pro version).
 
 = 3.40.4-1 =
 
