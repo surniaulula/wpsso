@@ -375,26 +375,34 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						if ( ! is_wp_error( $updated ) ) {
 							delete_option( $key_name.'_term_'.$term_id );
 							$term_meta = get_term_meta( $term_id, $key_name, $single );
-						} else $term_meta = $single === false ? array( $opt_term_meta ) : $opt_term_meta;
+						} else {
+							$term_meta = $single === false ? 
+								array( $opt_term_meta ) : $opt_term_meta;
+						}
 					}
 				}
 			} elseif ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
-				$term_meta = $single === false ? array( $opt_term_meta ) : $opt_term_meta;
+				$term_meta = $single === false ? 
+					array( $opt_term_meta ) : $opt_term_meta;
 			}
 
 			return $term_meta;
 		}
 
 		public static function update_term_meta( $term_id, $key_name, $opts ) {
-			if ( self::use_meta_table( $term_id ) )
+			if ( self::use_meta_table( $term_id ) ) {
 				return update_term_meta( $term_id, $key_name, $opts );
-			else return update_option( $key_name.'_term_'.$term_id, $opts );
+			} else {
+				return update_option( $key_name.'_term_'.$term_id, $opts );
+			}
 		}
 
 		public static function delete_term_meta( $term_id, $key_name ) {
-			if ( self::use_meta_table( $term_id ) )
+			if ( self::use_meta_table( $term_id ) ) {
 				return delete_term_meta( $term_id, $key_name );
-			else return delete_option( $key_name.'_term_'.$term_id );
+			} else {
+				return delete_option( $key_name.'_term_'.$term_id );
+			}
 		}
 
 		public static function use_meta_table( $term_id = false ) {
