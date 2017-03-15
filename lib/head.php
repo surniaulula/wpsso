@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::crawler_name();
-			$add_mark_mt = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
+			$add_mt_mark = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
 				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 			$added_on = 'added on '.date( 'c' ).
 				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";
 
-			if ( $add_mark_mt ) {
+			if ( $add_mt_mark ) {
 				$html .= '<meta name="'.$lca.':mark:begin" content="'.$lca.' meta tags begin"/>'."\n";
 			}
 
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			// extra begin / end meta tag for duplicate meta tags check
-			if ( $add_mark_mt ) {
+			if ( $add_mt_mark ) {
 				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
 			}
 
