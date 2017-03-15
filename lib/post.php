@@ -323,8 +323,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
 						if ( current_user_can( 'manage_options' ) ) {
-							if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) )
+							if ( apply_filters( $lca.'_check_post_head', 
+								$this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
 								$this->check_post_head_duplicates( $post_id, $post_obj );
+							}
 						}
 					}
 				}
@@ -362,11 +364,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: plugin_check_head option not enabled');
+					$this->p->debug->mark( 'exiting early: plugin_check_head option is disabled');
 				}
 				return $post_id;
 			}
-			
+
+			if ( ! apply_filters( $lca.'_add_meta_name_'.$lca.':mark', true ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->mark( 'exiting early: '.$lca.':mark meta tags are disabled');
+				}
+				return $post_id;
+			}
+
 			if ( ! is_object( $post_obj ) && ( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
@@ -384,6 +393,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// only check public post types (to avoid menu items, product variations, etc.)
 			$post_type_names = $this->p->util->get_post_types( 'names' );
+
 			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );

@@ -227,12 +227,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );
 							$opts[$idx.':is'] = 'disabled';
 							if ( $opts[$idx] === $def_val ) {
-								if ( $this->p->debug->enabled )
+								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $idx.' already set to '.$def_val );
+								}
 								continue;
 							}
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
+							}
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
 						}

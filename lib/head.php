@@ -203,26 +203,32 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function get_head_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'calling get_page_mod()' );
+				}
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
 
 			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::crawler_name();
+			$add_mark_mt = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
+				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 			$added_on = 'added on '.date( 'c' ).
 				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
 
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";
 
-			if ( ! empty( $this->p->options['plugin_check_head'] ) )
+			if ( $add_mark_mt ) {
 				$html .= '<meta name="'.$lca.':mark:begin" content="'.$lca.' meta tags begin"/>'."\n";
+			}
 
 			// first element of returned array is the html tag
 			$indent = 0;
@@ -238,8 +244,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			// extra begin / end meta tag for duplicate meta tags check
-			if ( ! empty( $this->p->options['plugin_check_head'] ) )
+			if ( $add_mark_mt ) {
 				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
+			}
 
 			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs',
 				microtime( true ) - $start_time ).' -->'."\n";
@@ -338,11 +345,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			if ( ! empty( $this->p->options['add_meta_name_canonical'] ) ) {
+			if ( apply_filters( $lca.'_add_meta_name_canonical', 
+				( empty( $this->p->options['add_meta_name_canonical'] ) ? false : true ) ) ) {
 				$mt_name['canonical'] = $this->p->util->get_canonical_url( $mod );
 			}
 
-			if ( ! empty( $this->p->options['add_meta_name_description'] ) ) {
+			if ( apply_filters( $lca.'_add_meta_name_description',
+				( empty( $this->p->options['add_meta_name_description'] ) ? false : true ) ) ) {
 				$mt_name['description'] = $this->p->webpage->get_description( $this->p->options['seo_desc_len'],
 					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
 			}

@@ -87,7 +87,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:421 lib/post.php:344 lib/term.php:259 lib/user.php:237
+#: lib/admin.php:421 lib/post.php:346 lib/term.php:259 lib/user.php:237
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1536,7 +1536,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:537
+#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:547
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2959,63 +2959,63 @@ msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:279
+#: lib/options.php:281
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:282
+#: lib/options.php:284
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:285
+#: lib/options.php:287
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:287
+#: lib/options.php:289
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:298
+#: lib/options.php:300
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:358
+#: lib/options.php:360
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:405
+#: lib/options.php:407
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:457
+#: lib/options.php:459
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:420
+#: lib/post.php:430
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:437
+#: lib/post.php:447
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:446
+#: lib/post.php:456
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:493 lib/profile/social-settings.php:28 lib/term.php:283
+#: lib/post.php:503 lib/profile/social-settings.php:28 lib/term.php:283
 #: lib/user.php:263
 msgctxt "metabox title"
 msgid "Social Settings"
