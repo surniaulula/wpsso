@@ -439,12 +439,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'meta' => array( 'name', 'property', 'itemprop' ),
 				) as $tag => $types ) {
 					if ( isset( $metas[$tag] ) ) {
-						foreach( $metas[$tag] as $m ) {
-							foreach( $types as $t ) {
-								if ( isset( $m[$t] ) && $m[$t] !== 'generator' && 
-									! empty( $check_opts[$tag.'_'.$t.'_'.$m[$t]] ) ) {
+						foreach( $metas[$tag] as $meta ) {
+							foreach( $types as $type ) {
+								if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
+									! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
 									$conflicts_found++;
-									$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$t.'="'.$m[$t].'"' ) );
+									$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$type.'="'.$meta[$type].'"' ) );
 								}
 							}
 						}
