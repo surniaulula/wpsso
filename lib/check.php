@@ -204,14 +204,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			switch ( $key ) {
 				case 'aop':
 					$ret = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
-						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
+						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ?
+							true : false;
 					break;
 				case 'head':
-					$ret = apply_filters( $this->p->cf['lca'].'_is_avail_'.$key, 
-						( ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
-							empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
-								empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ? 
-									true : false ) );
+					$ret = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
+						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
+							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
+								true : false;
 					break;
 				default:
 					$ret = false;	// just in case

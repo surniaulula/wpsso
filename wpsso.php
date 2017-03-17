@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.8
  * Tested Up To: 4.7.3
- * Version: 3.40.5-rc1
+ * Version: 3.40.5-rc2
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -80,12 +80,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
-			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );	// runs at init 1
-
-			add_action( 'init', array( &$this, 'set_config' ), WPSSO_INIT_PRIORITY - 3 );	// 9 by default
-			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 2 );	// 10 by default
-			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 1 );	// 11 by default
-			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );	// 12 by default
+			add_action( 'init', array( &$this, 'set_config' ), -10 );			// runs at init -10 (before widgets_init)
+			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );		// runs at init 1
+			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 2 );	// runs at init 10 by default
+			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 1 );	// runs at init 11 by default
+			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );	// runs at init 12 by default
 
 			if ( is_admin() )
 				add_action( 'wpsso_init_textdomain', 		// action is run after the debug property is defined
@@ -98,7 +97,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return self::$instance;
 		}
 
-		// runs at widgets_init priority 10, and the widgets_init action runs at init 1
+		// runs at init priority -10 by default
+		// called by activate_plugin() as well
+		public function set_config() {
+			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
+		}
+
+		// the widgets_init action runs at init 1
+		// and the hook runs at widgets_init priority 10
 		public function init_widgets() {
 			$opts = get_option( WPSSO_OPTIONS_NAME );
 			if ( ! empty( $opts['plugin_widgets'] ) ) {
@@ -113,12 +119,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 			}
-		}
-
-		// runs at init priority 9 by default
-		// called by activate_plugin() as well
-		public function set_config() {
-			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}
 
 		// runs at init priority 10 by default
