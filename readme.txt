@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.5-rc2 (2017/03/15)**
+**Version 3.40.5-rc3 (2017/03/18)**
 
 * *New Features*
 	* None
@@ -874,9 +874,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.5-rc2 =
+= 3.40.5-rc3 =
 
-(2017/03/15) Added the 'og:updated_time' meta tag for post objects. Added a missing check for "Use Filtered (SEO) Title" before returning the SEO Framework title (Pro version).
+(2017/03/18) Added the 'og:updated_time' meta tag for post objects. Added a missing check for "Use Filtered (SEO) Title" before returning the SEO Framework title (Pro version).
 
 = 3.40.4-1 =
 
