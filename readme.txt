@@ -370,6 +370,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Added the 'og:updated_time' meta tag for post objects.
+	* Adjusted the plugin init sequence to load the configuration (at init -10) before the 'widget_init' action (at init 1).
 * *Bugfixes*
 	* Added a missing check for the "Use Filtered (SEO) Title" option value before returning the SEO Framework title (Pro version).
 * *Developer Notes*
