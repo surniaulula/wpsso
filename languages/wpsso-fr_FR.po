@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.4-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.5-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-03-14 07:57+0700\n"
-"PO-Revision-Date: 2017-03-14 07:57+0700\n"
+"POT-Creation-Date: 2017-03-19 07:21+0200\n"
+"PO-Revision-Date: 2017-03-19 07:22+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -89,7 +89,7 @@ msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:421 lib/post.php:344 lib/term.php:259 lib/user.php:237
+#: lib/admin.php:421 lib/post.php:346 lib/term.php:259 lib/user.php:237
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -896,8 +896,8 @@ msgstr "Extension WPSSO pour fournir des mises à jour a WordPress Social Sharin
 
 #: lib/config-gettext-extract.php:90
 msgctxt "plugin description"
-msgid "WPSSO extension to remove outdated Schema Microdata, leaving the superior Schema JSON-LD markup untouched for Google and Bing."
-msgstr "Extension WPSSO pour supprimer les Microdonnées de Schéma obsolète, laissant le balisage Schéma JSON-LD intact pour Google et Bing."
+msgid "WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
+msgstr "Extension WPSSO pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage Schéma JSON-LD recommandé par Google intact."
 
 #: lib/config-gettext-extract.php:91
 msgctxt "option value"
@@ -1459,7 +1459,7 @@ msgid "and currency"
 msgstr "et devise"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:537
+#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:547
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1654,7 +1654,7 @@ msgstr "Choisissez une adresse d'emplacement optionnel pour cette organisation (
 
 #: lib/messages.php:253
 msgid "The default Open Graph type for the WordPress post object (posts, pages, and custom post types). Custom post types with a matching Open Graph type name (article, book, place, product, etc.) will use that type name instead of the default selected here. Please note that each type has a unique set of meta tags, so by selecting \"website\" here, you are excluding all \"article\" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.)."
-msgstr "Le type Open Graph par défaut pour tous les objets d'article WordPress (articles, pages, et types d'article personnalisés). Les types d'article personnalisés avec un nom de type Open Graph correspondant (article, book, place, produit, etc.) utiliseront ce nom de type au lieu de celui par défaut sélectionné ici. SVP notez que chaque type Open Graph a un ensemble unique de balises méta, donc en sélectionnant \"website\" ici, vous excluez toutes les balises méta \"article\" (<code>article:author</ code>, <code>article:section</code>, etc.)."
+msgstr "Le type Open Graph par défaut pour tous les objets d'article WordPress (articles, pages, et types d'article personnalisés). Les types d'article personnalisés avec un nom de type Open Graph correspondant (article, book, place, produit, etc.) utiliseront ce nom de type au lieu de celui par défaut sélectionné ici. SVP notez que chaque type Open Graph a un ensemble unique de balises méta, donc en sélectionnant \"website\" ici, vous excluez toutes les balises méta \"article\" (<code>article:author</code>, <code>article:section</code>, etc.)."
 
 #: lib/messages.php:256
 msgid "The topic that best describes the Posts and Pages on your website."
@@ -2477,51 +2477,51 @@ msgstr "Pinterest Rich Pin"
 msgid "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr "Valeur non-standard trouvé pour l'option '%s' - remise à la valeur par défaut."
 
-#: lib/options.php:279
+#: lib/options.php:281
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:282
+#: lib/options.php:284
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:285
+#: lib/options.php:287
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:287
+#: lib/options.php:289
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:298
+#: lib/options.php:300
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
-#: lib/options.php:358
+#: lib/options.php:360
 msgid "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à / ou supérieur à %3$s: 1 &mdash;  les options sont remises à leurs valeurs par défaut."
 
-#: lib/options.php:405
+#: lib/options.php:407
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:457
+#: lib/options.php:459
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:420
+#: lib/post.php:430
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:437
+#: lib/post.php:447
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'entête de cette page Web."
 
-#: lib/post.php:446
+#: lib/post.php:456
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérifications a faire..."
 
-#: lib/post.php:493 lib/profile/social-settings.php:28 lib/term.php:283
+#: lib/post.php:503 lib/profile/social-settings.php:28 lib/term.php:283
 #: lib/user.php:263
 msgctxt "metabox title"
 msgid "Social Settings"
