@@ -362,6 +362,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$lca = $this->p->cf['lca'];
+
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'exiting early: plugin_check_head option is disabled');
@@ -401,7 +403,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $post_id;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$exec_count = (int) get_option( $lca.'_post_head_count' );	// changes false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 

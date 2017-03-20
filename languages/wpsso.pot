@@ -1536,7 +1536,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:547
+#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:548
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3001,21 +3001,21 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:430
+#: lib/post.php:431
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:447
+#: lib/post.php:448
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:456
+#: lib/post.php:457
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:503 lib/profile/social-settings.php:28 lib/term.php:283
+#: lib/post.php:504 lib/profile/social-settings.php:28 lib/term.php:283
 #: lib/user.php:263
 msgctxt "metabox title"
 msgid "Social Settings"
