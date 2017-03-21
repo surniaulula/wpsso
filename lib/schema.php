@@ -282,14 +282,39 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
-					if ( $this->p->debug->enabled )
-						$this->p->debug->mark( 'create schema type arrays' );
 
-					$this->types_cache['filtered'] = (array) apply_filters( $lca.'_schema_types', $this->p->cf['head']['schema_type'] );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'create schema type arrays' );
+					}
+
+					$this->types_cache['filtered'] = (array) apply_filters( $lca.'_schema_types',
+						$this->p->cf['head']['schema_type'] );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'flattening schema type array' );
+					}
+
 					$this->types_cache['flattened'] = SucomUtil::array_flatten( $this->types_cache['filtered'] );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'creating schema parent index' );
+					}
+
 					$this->types_cache['parent_index'] = SucomUtil::array_parent_index( $this->types_cache['filtered'] );
+
 					ksort( $this->types_cache['flattened'] );
 					ksort( $this->types_cache['parent_index'] );
+
+					/*
+					 * Add array cross-references for schema sub-types that exist under more than one type.
+					 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
+					 */
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'adding schema type cross-references' );
+					}
+					$schema_thing =& $this->types_cache['filtered']['thing'];
+					$schema_thing['organization']['local.business'] =& $schema_thing['place']['local.business'];
+					$schema_thing['place']['local.business']['dentist'] =& $schema_thing['organization']['medical.organization']['dentist'];
 
 					if ( $this->types_exp > 0 ) {
 						set_transient( $cache_id, $this->types_cache, $this->types_exp );
@@ -298,48 +323,63 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$cache_id.' ('.$this->types_exp.' seconds)');
 					}
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'create schema type arrays' );
+					}
 
-				} elseif ( $this->p->debug->enabled )
+				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema type arrays already filtered' );
+				}
 
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'using schema type arrays from class property cache' );
+			}
 
-			if ( $flatten )
+			if ( $flatten ) {
 				return $this->types_cache['flattened'];
-			else return $this->types_cache['filtered'];
+			} else {
+				return $this->types_cache['filtered'];
+			}
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
-			if ( ! is_array( $schema_types ) )
+
+			if ( ! is_array( $schema_types ) ) {	// just in case
 				$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
-			else $schema_types = SucomUtil::array_flatten( $schema_types );
+			} else {
+				$schema_types = SucomUtil::array_flatten( $schema_types );
+			}
 
 			$select = array();
 
-			foreach ( $schema_types as $type_id => $label )
+			foreach ( $schema_types as $type_id => $label ) {
 				$select[$type_id] = $type_id.' ('.$label.')';
+			}
 
-			if ( defined( 'SORT_NATURAL' ) )
+			if ( defined( 'SORT_NATURAL' ) ) {
 				asort( $select, SORT_NATURAL );
-			else asort( $select );
+			} else {
+				asort( $select );
+			}
 
-			if ( $add_none )
+			if ( $add_none ) {
 				return array_merge( array( 'none' => '[None]' ), $select );
-			else return $select;
+			} else {
+				return $select;
+			}
 		}
 
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
-			if ( isset( $schema_types[$type_id] ) )
+
+			if ( isset( $schema_types[$type_id] ) ) {
 				return $schema_types[$type_id];
-			elseif ( is_string( $default_id ) &&
-				isset( $schema_types[$default_id] ) )
-					return $schema_types[$default_id];
-			else return false;
+			} elseif ( $default_id !== false && isset( $schema_types[$default_id] ) ) {
+				return $schema_types[$default_id];
+			} else {
+				return false;
+			}
 		}
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
@@ -357,6 +397,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+
 			if ( isset( $this->types_cache['parent_index'][$child_id] ) ) {
 				$parent_id = $this->types_cache['parent_index'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
@@ -392,6 +433,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$children[] = $type_id;	// add children before parents
 			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+
 			foreach ( $this->types_cache['parent_index'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
 					$this->get_schema_type_children( $child_id, $children, false );
@@ -797,8 +839,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $wpsso->debug->enabled )
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
 
-			$org_type_id = empty( $opts['org_type'] ) ?	// just in case
-				'organization' : $opts['org_type'];
+			$org_type_id = empty( $opts['org_type'] ) ? 'organization' : $opts['org_type'];	// just in case
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
 			$ret = self::get_schema_type_context( $org_type_url );
 

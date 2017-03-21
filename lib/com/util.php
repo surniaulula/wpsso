@@ -890,12 +890,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret_matched ? $matched : $array;	// return true/false or the array (default)
 		}
 
+		/*
+		 * PHP's array_merge_recursive() merges arrays, but it converts
+		 * values with duplicate keys to arrays rather than overwriting
+		 * the value in the first array with the duplicate value in the
+		 * second array, as array_merge does. The following method does
+		 * not change the datatypes of the values in the arrays.
+		 * Matching key values in the second array overwrite those in
+		 * the first array, as is the case with array_merge().
+		 */
 		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
 			$merged = $array1;
 			foreach ( $array2 as $key => &$value ) {
-				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) )
+				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) ) {
 					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value );
-				else $merged[$key] = $value;
+				} else {
+					$merged[$key] = $value;
+				}
 			}
 			return $merged;
 		}
@@ -903,9 +914,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_flatten( array $array ) {
 			$return = array();
 		        foreach ( $array as $key => $value ) {
-				if ( is_array( $value ) )
+				if ( is_array( $value ) ) {
 					$return = array_merge( $return, self::array_flatten( $value ) );
-				else $return[$key] = $value;
+				} else {
+					$return[$key] = $value;
+				}
 			}
 			return $return;
 		}
@@ -919,19 +932,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$return .= $value.$glue;
 				}
 			}
-			return strlen( $glue ) ? rtrim( $return, $glue ) : $glue;
+			return strlen( $glue ) ?
+				rtrim( $return, $glue ) : $glue;
 		}
 
 		// array must use unique associative / string keys
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '' ) {
 			$return = array();
 		        foreach ( $array as $child_key => $value ) {
-				if ( is_array( $value ) )
+				if ( is_array( $value ) ) {
 					$return += self::array_parent_index( $value, $child_key, $parent_key );
-				elseif ( $parent_key && $child_key !== $parent_key )
+				} elseif ( $parent_key && $child_key !== $parent_key ) {
 					$return[$child_key] = $parent_key;
-				elseif ( $gparent_key && $child_key === $parent_key )
+				} elseif ( $gparent_key && $child_key === $parent_key ) {
 					$return[$child_key] = $gparent_key;
+				}
 			}
 			return $return;
 		}

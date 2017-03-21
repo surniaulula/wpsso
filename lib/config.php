@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.5-1',	// plugin version
+					'version' => '3.40.6-dev1',	// plugin version
 					'opt_version' => '511',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1452,7 +1452,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'library' => 'https://schema.org/Library',
 								'local.business' => 'https://schema.org/LocalBusiness',
 								'lodging.business' => 'https://schema.org/LodgingBusiness',
-								'medical.organization' => 'https://schema.org/MedicalOrganization',
 								'professional.service' => 'https://schema.org/ProfessionalService',
 								'radio.station' => 'https://schema.org/RadioStation',
 								'real.estate.agent' => 'https://schema.org/RealEstateAgent',
