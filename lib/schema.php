@@ -416,8 +416,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->types_exp > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
-					if ( ! empty( $parents ) )
+					if ( ! empty( $parents ) ) {
 						return $parents;
+					}
 				}
 			}
 
@@ -526,16 +527,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
-		// deprecated on 2017/02/22
-		public function get_schema_type_css_classes( $type_id ) {
-			return $this->get_children_css_class( $type_id );
-		}
-
 		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type' ) {
 			$class_prefix = empty( $class_names ) ?
 				'' : SucomUtil::sanitize_hookname( $class_names ).'_';
-			foreach ( $this->get_schema_type_children( $type_id ) as $child )
+			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
 				$class_names .= ' '.$class_prefix.SucomUtil::sanitize_hookname( $child );
+			}
 			return trim( $class_names );
 		}
 
@@ -571,13 +568,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// pinterest does not (currently) read json markup
 			switch ( $crawler_name ) {
 				case 'pinterest':
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+					}
 					return array();
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// begin timer for json array
+			}
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
@@ -592,17 +591,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$page_type_ids = array();
 			$page_type_added = array();					// prevent duplicate top-level schema types
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'head schema type is '.$page_type_url.' ('.$page_type_id.')' );
+			}
 
 			// include first
-			if ( ! empty( $page_type_url ) )
+			if ( ! empty( $page_type_url ) ) {
 				$page_type_ids[$page_type_id] = true;
+			}
+
+			$org_type_id = empty( $this->p->options['site_org_type'] ) ?
+				'organization' : $this->p->options['site_org_type'];
 
 			// also include WebSite, Organization, and/or Person on the home page
 			if ( $mod['is_home'] ) {	// static or archive page
 				$page_type_ids['website'] = $this->p->options['schema_website_json'];
-				$page_type_ids['organization'] = $this->p->options['schema_organization_json'];
+				$page_type_ids[$org_type_id] = $this->p->options['schema_organization_json'];
 				$page_type_ids['person'] = $this->p->options['schema_person_json'];
 			}
 
@@ -769,6 +773,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * https://schema.org/Organization social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -879,10 +884,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'using default organization options for '.$org_id );
 				$org_opts = self::get_site_organization( $mod );
-			} elseif ( $wpsso->debug->enabled )
+			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
+			}
 
-			$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
+			$org_type_id = empty( $org_opts['org_type'] ) ?
+				'organization' : $org_opts['org_type'];	// just in case
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
 			$ret = self::get_schema_type_context( $org_type_url );
 
@@ -902,13 +909,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles
 			 */
 			if ( ! empty( $logo_key ) ) {
-				if ( $wpsso->debug->enabled )
+error_log( $org_type_id.' '.$logo_key );
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding image from '.$logo_key.' option' );
+				}
 				if ( ! empty( $org_opts[$logo_key] ) ) {
-					if ( ! self::add_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) )	// $list_element = false
+					if ( ! self::add_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) ) {	// $list_element = false
 						unset( $ret['logo'] );	// prevent null assignment
+					}
 				}
 				if ( empty( $ret['logo'] ) ) {
+error_log( $org_type_id.' NO LOGO' );
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
 					}
@@ -926,7 +937,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * Place Properties
+			 * Place / Location Properties
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $org_opts['org_place_id'], false ) ) {	// $list_element = false
@@ -945,6 +956,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! empty( $url ) ) {	// just in case
 						$ret['sameAs'][] = esc_url( $url );
 					}
+				}
+			}
+
+			/*
+			 * Fix Local Business Organizations
+			 *
+			 * Some organizations are also local business sub-types, and are read / parsed as local
+			 * businesses by Google, so adjust the organization properties for a local business.
+			 */
+			if ( $wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
+				// promote all location information up
+				if ( isset( $ret['location'] ) ) {
+					self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
+						array_keys( $ret['location'] ), false );	// $overwrite = false
+					unset( $ret['location'] );
+				}
+				// promote the organization logo to an image
+				if ( isset( $ret['logo'] ) && ! isset( $ret['image'] ) ) {
+					$ret['image'] = $ret['logo'];
+					unset( $ret['logo'] );
 				}
 			}
 
