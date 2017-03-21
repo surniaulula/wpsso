@@ -369,7 +369,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *New Features*
 	* None
 * *Improvements*
-	* Added place / location properties (when available) to the Organization markup.
+	* Added support for Schema Organization types that are also Schema Local Business types.
 * *Bugfixes*
 	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 * *Developer Notes*
@@ -887,7 +887,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.40.6-dev1 =
 
-(2017/03/21) Added place / location properties (when available) to the Organization markup. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
+(2017/03/21) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 
 = 3.40.5-1 =
 
