@@ -768,9 +768,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_assoc( $arr ) {
-			if ( ! is_array( $arr ) )
+			if ( ! is_array( $arr ) ) {
 				return false;
-			return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
+			} else {
+				return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
+			}
 		}
 
 		public static function keys_start_with( $str, array $arr ) {

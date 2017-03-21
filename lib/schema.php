@@ -744,12 +744,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * https://schema.org/Organization social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
+			if ( $is_main && $mod['is_home'] ) {	// static or index page
+				$org_id = 'site';
+			} elseif ( ! empty( $mod['obj'] ) ) {	// just in case
+				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_org_org_id' );
+			} else {
+				$org_id = false;
+			}
 
 			$ret = array();
 
-			self::add_single_organization_data( $ret, $mod, 'site', 'org_logo_url', false );	// list_element = false
+			self::add_single_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// $list_element = false
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -758,10 +767,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * https://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 
-			if ( $mod['is_home'] ) {	// static or index page
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( $is_main && $mod['is_home'] ) {	// static or index page
 				if ( empty( $this->p->options['schema_person_id'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: schema_person_id disabled for home page' );
@@ -773,21 +784,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			} elseif ( isset( $mod['is_user'] ) ) {
 				$user_id = $mod['id'];
-			} else $user_id = false;
+			} else {
+				$user_id = false;
+			}
 
 			if ( empty( $user_id ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user_id' );
+				}
 				return $json_data;
 			}
 
 			$ret = array();
 
-			self::add_single_person_data( $ret, $mod, $user_id, false );	// list_element = false
+			self::add_single_person_data( $ret, $mod, $user_id, false );	// $list_element = false
 
 			// override author's website url and use the open graph url instead
-			if ( $mod['is_home'] )
+			if ( $is_main && $mod['is_home'] ) {
 				$ret['url'] = $mt_og['og:url'];
+			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -804,8 +819,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	CreativeWork
 			 * 	URL 
 			 */
-			if ( $is_main && ! empty( $ret_data['url'] ) )
+			if ( $is_main && ! empty( $ret_data['url'] ) ) {
 				$ret_data['mainEntityOfPage'] = $ret_data['url'];
+			}
 
 			return empty( $ret_data ) ? $json_data : 
 				( $json_data === null ? $ret_data : 
@@ -820,31 +836,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
 
-			if ( $org_id === 'none' )
+			if ( $org_id === 'none' ) {
 				return 0;
-			elseif ( $org_id === null ||	// just in case
-				$org_id === false )
-					$org_id = 'site';
+			} elseif ( $org_id === null || $org_id === false ) {
+				$org_id = 'site';
+			}
 
 			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled )
+
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single organization data for '.$org_id );
+			}
 
-			$opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
+			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
 
-			if ( empty( $opts ) ) {	// $opts can be false or empty array
+			if ( empty( $org_opts ) ) {	// $org_opts can be false or empty array
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'using default organization options for '.$org_id );
-				$opts = self::get_site_organization( $mod );
+				$org_opts = self::get_site_organization( $mod );
 			} elseif ( $wpsso->debug->enabled )
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
 
-			$org_type_id = empty( $opts['org_type'] ) ? 'organization' : $opts['org_type'];	// just in case
+			$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
 			$ret = self::get_schema_type_context( $org_type_url );
 
 			// add schema properties from the organization options
-			self::add_data_itemprop_from_assoc( $ret, $opts, array(
+			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
 				'url' => 'org_url',
 				'name' => 'org_name',
 				'alternateName' => 'org_alt_name',
@@ -861,13 +879,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $logo_key ) ) {
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'adding image from '.$logo_key.' option' );
-				if ( ! empty( $opts[$logo_key] ) ) {
-					if ( ! self::add_single_image_data( $ret['logo'], $opts, $logo_key, false ) )	// list_element = false
+				if ( ! empty( $org_opts[$logo_key] ) ) {
+					if ( ! self::add_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) )	// $list_element = false
 						unset( $ret['logo'] );	// prevent null assignment
 				}
 				if ( empty( $ret['logo'] ) ) {
-					if ( $wpsso->debug->enabled )
+					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
+					}
 					if ( is_admin() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
 						switch ( $logo_key ) {
 							case 'org_logo_url':
@@ -882,23 +901,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * Location
+			 * Place Properties
 			 */
-			if ( isset( $opts['org_place_id'] ) && 
-				$opts['org_place_id'] !== 'none' ) {
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $opts['org_place_id'], false ) )	// list_element = false
+			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $org_opts['org_place_id'], false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
+				} else {
+					// Google wants these properties in the Organization markup as well
+					self::add_data_itemprop_from_assoc( $ret, $ret['location'], array(
+						'telephone',
+						'currenciesAccepted',
+						'paymentAccepted',
+						'priceRange',
+						'address',
+						'geo',
+						'openingHoursSpecification',
+						'acceptsReservations',
+						'menu',
+					) );
+				}
 			}
 
 			/*
 			 * Google Knowledge Graph
 			 */
-			$opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
-				( isset( $opts['org_sameas'] ) ? $opts['org_sameas'] : array() ), $mod, $org_id );
+			$org_opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
+				( isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array() ), $mod, $org_id );
 
-			if ( ! empty( $opts['org_sameas'] ) && 
-				is_array( $opts['org_sameas'] ) ) {	// just in case
-				foreach ( $opts['org_sameas'] as $url )
+			if ( ! empty( $org_opts['org_sameas'] ) && 
+				is_array( $org_opts['org_sameas'] ) ) {	// just in case
+				foreach ( $org_opts['org_sameas'] as $url )
 					if ( ! empty( $url ) )	// just in case
 						$ret['sameAs'][] = esc_url( $url );
 			}
@@ -919,16 +951,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$org_sameas = array();
+
 			foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
 				$wpsso->cf['form']['social_accounts'] ) as $key => $label ) {
 
 				$url = SucomUtil::get_locale_opt( $key, $wpsso->options, $mixed );
-				if ( empty( $url ) )
+
+				if ( empty( $url ) ) {
 					continue;
-				elseif ( $key === 'tc_site' )
+				} elseif ( $key === 'tc_site' ) {
 					$org_sameas[] = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				elseif ( strpos( $url, '://' ) !== false )
+				} elseif ( strpos( $url, '://' ) !== false ) {
 					$org_sameas[] = $url;
+				}
 			}
 
 			return array(
@@ -946,46 +981,51 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function add_single_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
 
-			if ( $place_id === 'none' )
+			if ( $place_id === 'none' ) {
 				return 0;
+			}
 
 			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled )
+
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single place data for '.$place_id );
+			}
 
-			$opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
+			$place_opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
 
-			if ( empty( $opts ) ) {	// $opts can be false or empty array
-				if ( $wpsso->debug->enabled )
+			if ( empty( $place_opts ) ) {	// $place_opts can be false or empty array
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty place options' );
+				}
 				return 0;
 			}
 
 			// local business is a sub-type of place
 			// use the local business schema type if we have one
-			$place_type_id = empty( $opts['place_business_type'] ) || 
-				$opts['place_business_type'] === 'none' ? 'place' : $opts['place_business_type'];
+			$place_type_id = empty( $place_opts['place_business_type'] ) || 
+				$place_opts['place_business_type'] === 'none' ?
+					'place' : $place_opts['place_business_type'];
 			$place_type_url = $wpsso->schema->get_schema_type_url( $place_type_id, 'place' );
 			$ret = self::get_schema_type_context( $place_type_url );
 
-			$address = array();
-			$geo = array();
-			$opening_hours = array();
-
 			// add schema properties from the place options
-			self::add_data_itemprop_from_assoc( $ret, $opts, array(
+			self::add_data_itemprop_from_assoc( $ret, $place_opts, array(
 				'url' => 'place_url',
 				'name' => 'place_name',
 				'alternateName' => 'place_alt_name',
 				'description' => 'place_desc',
 				'telephone' => 'place_phone',
+				'currenciesAccepted' => 'place_currencies_accepted',
+				'paymentAccepted' => 'place_payment_accepted',
+				'priceRange' => 'place_price_range',
 			) );
 
 			/*
 			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 */
-			if ( self::add_data_itemprop_from_assoc( $address, $opts, array(
+			$address = array();
+			if ( self::add_data_itemprop_from_assoc( $address, $place_opts, array(
 				'name' => 'place_name', 
 				'streetAddress' => 'place_streetaddr', 
 				'postOfficeBoxNumber' => 'place_po_box_number', 
@@ -999,7 +1039,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	geo as https://schema.org/GeoCoordinates
 			 */
-			if ( self::add_data_itemprop_from_assoc( $geo, $opts, array(
+			$geo = array();
+			if ( self::add_data_itemprop_from_assoc( $geo, $place_opts, array(
 				'elevation' => 'place_altitude', 
 				'latitude' => 'place_latitude',
 				'longitude' => 'place_longitude',
@@ -1009,95 +1050,113 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
+			$opening_hours = array();
 			foreach ( $wpsso->cf['form']['weekdays'] as $day => $label ) {
-				if ( ! empty( $opts['place_day_'.$day] ) ) {
+				if ( ! empty( $place_opts['place_day_'.$day] ) ) {
 					$dayofweek = array(
 						'@context' => 'https://schema.org',
 						'@type' => 'OpeningHoursSpecification',
 						'dayOfWeek' => $label,
 					);
 					foreach ( array(
-						'opens' => 'place_'.$day.'_open',
-						'closes' => 'place_'.$day.'_close',
+						'opens' => 'place_day_'.$day.'_open',
+						'closes' => 'place_day_'.$day.'_close',
 						'validFrom' => 'place_season_from_date',
 						'validThrough' => 'place_season_to_date',
 					) as $prop_name => $key ) {
-						if ( isset( $opts[$key] ) )
-							$dayofweek[$prop_name] = $opts[$key];
+						if ( isset( $place_opts[$key] ) && $place_opts[$key] !== '' ) {
+							$dayofweek[$prop_name] = $place_opts[$key];
+						}
 					}
 					$opening_hours[] = $dayofweek;
 				}
 			}
 
-			if ( ! empty( $opening_hours ) )
+			if ( ! empty( $opening_hours ) ) {
 				$ret['openingHoursSpecification'] = $opening_hours;
+			}
 
 			/*
 			 * FoodEstablishment schema type properties
 			 */
-			if ( ! empty( $opts['place_business_type'] ) &&
-				$opts['place_business_type'] !== 'none' ) {
+			if ( ! empty( $place_opts['place_business_type'] ) &&
+				$place_opts['place_business_type'] !== 'none' ) {
 
-				if ( $wpsso->schema->is_schema_type_child_of( $opts['place_business_type'], 'food.establishment' ) ) {
+				if ( $wpsso->schema->is_schema_type_child_of( $place_opts['place_business_type'], 'food.establishment' ) ) {
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',
 						'menu' => 'place_menu_url',
 					) as $prop_name => $key ) {
-						if ( $key === 'place_accept_res' )
-							$ret[$prop_name] = empty( $opts[$key] ) ? 'false' : 'true';
-						elseif ( isset( $opts[$key] ) )
-							$ret[$prop_name] = $opts[$key];
+						if ( $key === 'place_accept_res' ) {
+							$ret[$prop_name] = empty( $place_opts[$key] ) ? 'false' : 'true';
+						} elseif ( isset( $place_opts[$key] ) ) {
+							$ret[$prop_name] = $place_opts[$key];
+						}
 					}
+				}
+			}
+
+			if ( ! empty( $place_opts['place_order_urls'] ) ) {
+				foreach ( SucomUtil::explode_csv( $place_opts['place_order_urls'] ) as $url ) {
+					$ret['potentialAction'][] = array(
+						'@context' => 'https://schema.org',
+						'@type' => 'OrderAction',
+						'target' => $url,
+					);
 				}
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_place', $ret, $mod, $place_id );
 
-			if ( empty( $list_element ) )
+			if ( empty( $list_element ) ) {
 				$json_data = $ret;
-			else $json_data[] = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
 
 			return 1;
 		}
 
 		public static function add_single_event_data( &$json_data, $mod, $event_id = false, $list_element = false ) {
 
-			if ( $event_id === 'none' )
+			if ( $event_id === 'none' ) {
 				return 0;
+			}
 
 			$wpsso =& Wpsso::get_instance();
 			if ( $wpsso->debug->enabled )
 				$wpsso->debug->log( 'adding single event data for '.$event_id );
 
-			$opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
+			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
-			if ( empty( $opts ) ) {	// $opts could be false or empty array
+			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array
 				if ( $wpsso->debug->enabled )
 					$wpsso->debug->log( 'exiting early: empty event options' );
 				return 0;
 			}
 
-			$event_type_id = empty( $opts['event_type'] ) ? 'event' : $opts['event_type'];
+			$event_type_id = empty( $event_opts['event_type'] ) ? 'event' : $event_opts['event_type'];
 			$event_type_url = $wpsso->schema->get_schema_type_url( $event_type_id, 'event' );
 			$ret = self::get_schema_type_context( $event_type_url );
 
-			self::add_data_itemprop_from_assoc( $ret, $opts, array(
+			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
 				'startDate' => 'event_start_date',
 				'endDate' => 'event_end_date',
 			) );
 
-			if ( ! empty( $opts['event_organizer_person_id'] ) ) {	// example: tribe_organizer-0
-				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $opts['event_organizer_person_id'], false ) ) 	// $list_element = false
+			if ( ! empty( $event_opts['event_organizer_person_id'] ) ) {	// example: tribe_organizer-0
+				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) 	// $list_element = false
 					unset( $ret['organizer'] );	// prevent null assignment
 			}
 
-			if ( ! empty( $opts['event_place_id'] ) ) {	// example: tribe_venue-0
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $opts['event_place_id'], false ) )	// $list_element = false
+			if ( ! empty( $event_opts['event_place_id'] ) ) {	// example: tribe_venue-0
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
+				}
 			}
 
-			if ( is_array( $opts['event_offers'] ) ) {
-				foreach ( $opts['event_offers'] as $event_offer ) {
+			if ( is_array( $event_opts['event_offers'] ) ) {
+				foreach ( $event_opts['event_offers'] as $event_offer ) {
 					// setup the offer with basic itemprops
 					if ( is_array( $event_offer ) &&	// just in case
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
@@ -1113,9 +1172,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_event', $ret, $mod, $event_id );
 
-			if ( empty( $list_element ) )
+			if ( empty( $list_element ) ) {
 				$json_data = $ret;
-			else $json_data[] = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
 
 			return 1;
 		}
@@ -1141,12 +1202,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// single author
-			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// list_element = false
+			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// $list_element = false
 
 			// list of contributors / co-authors
 			if ( ! empty( $mod['post_coauthors'] ) )
 				foreach ( $mod['post_coauthors'] as $author_id )
-					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// list_element = true
+					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// $list_element = true
 
 			foreach ( array( 'author', 'contributor' ) as $itemprop )
 				if ( empty( $json_data[$itemprop] ) )
@@ -1165,9 +1226,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled )
 				$wpsso->debug->log( 'adding single person data for '.$user_id );
 
-			$opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
+			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
-			if ( empty( $opts ) ) {	// $opts could be false or empty array
+			if ( empty( $person_opts ) ) {	// $person_opts could be false or empty array
 
 				if ( empty( $user_id ) ) {
 					if ( $wpsso->debug->enabled )
@@ -1184,21 +1245,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
-				if ( empty( $user_desc ) )
+
+				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
+				}
 
 				$user_sameas = array();
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 					$url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
-					if ( empty( $url ) )
+					if ( empty( $url ) ) {
 						continue;
-					if ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] )
+					}
+					if ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {
 						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-					if ( strpos( $url, '://' ) !== false )
+					}
+					if ( strpos( $url, '://' ) !== false ) {
 						$user_sameas[] = $url;
+					}
 				}
 
-				$opts = array(
+				$person_opts = array(
 					'person_type' => 'person',
 					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
 					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
@@ -1209,13 +1275,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $wpsso->debug->enabled )
-				$wpsso->debug->log_arr( 'person options', $opts );
+				$wpsso->debug->log_arr( 'person options', $person_opts );
 
-			$person_type_id = empty( $opts['person_type'] ) ? 'person' : $opts['person_type'];	// person or patient
+			$person_type_id = empty( $person_opts['person_type'] ) ? 'person' : $person_opts['person_type'];	// person or patient
 			$person_type_url = $wpsso->schema->get_schema_type_url( $person_type_id, 'person' );
 			$ret = self::get_schema_type_context( $person_type_url );
 
-			self::add_data_itemprop_from_assoc( $ret, $opts, array(
+			self::add_data_itemprop_from_assoc( $ret, $person_opts, array(
 				'url' => 'person_url',
 				'name' => 'person_name',
 				'description' => 'person_desc',
@@ -1226,20 +1292,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Images
 			 */
-			if ( ! empty( $opts['person_og_image'] ) ) {
-				if ( ! self::add_image_list_data( $ret['image'], $opts['person_og_image'], 'og:image' ) )
+			if ( ! empty( $person_opts['person_og_image'] ) ) {
+				if ( ! self::add_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
 					unset( $ret['image'] );	// prevent null assignment
+				}
 			}
 
 			/*
 			 * Google Knowledge Graph
 			 */
-			$opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
-				( isset( $opts['person_sameas'] ) ? $opts['person_sameas'] : array() ), $mod, $user_id );
+			$person_opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
+				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
 
-			if ( ! empty( $opts['person_sameas'] ) &&
-				is_array( $opts['person_sameas'] ) ) {	// just in case
-				foreach ( $opts['person_sameas'] as $url )
+			if ( ! empty( $person_opts['person_sameas'] ) &&
+				is_array( $person_opts['person_sameas'] ) ) {	// just in case
+				foreach ( $person_opts['person_sameas'] as $url )
 					if ( ! empty( $url ) )	// just in case
 						$ret['sameAs'][] = esc_url( $url );
 			}
@@ -1258,10 +1325,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$images_added = 0;
 
 			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {						// 2 dimensional array
-				foreach ( $og_image as $image )
-					$images_added += self::add_single_image_data( $json_data, $image, $prefix, true );	// list_element = true
-			} elseif ( is_array( $og_image ) )
-				$images_added += self::add_single_image_data( $json_data, $og_image, $prefix, true );		// list_element = true
+				foreach ( $og_image as $image ) {
+					$images_added += self::add_single_image_data( $json_data, $image, $prefix, true );	// $list_element = true
+				}
+			} elseif ( is_array( $og_image ) ) {
+				$images_added += self::add_single_image_data( $json_data, $og_image, $prefix, true );		// $list_element = true
+			}
 
 			return $images_added;	// return count of images added
 		}
@@ -1272,16 +1341,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
-				if ( $wpsso->debug->enabled )
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
+				}
 				return 0;	// return count of images added
 			}
 
 			$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
 
 			if ( empty( $media_url ) ) {
-				if ( $wpsso->debug->enabled )
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
+				}
 				return 0;	// return count of images added
 			}
 
@@ -1327,12 +1398,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names ) {
 			$itemprop_added = 0;
+			$is_assoc = SucomUtil::is_assoc( $names );
 			foreach ( $names as $itemprop_name => $key_name ) {
+				if ( ! $is_assoc ) {
+					$itemprop_name = $key_name;
+				}
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					if ( is_string( $assoc[$key_name] ) &&
-						strpos( $assoc[$key_name], '://' ) )
-							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
-					else $json_data[$itemprop_name] = $assoc[$key_name];
+					if ( is_string( $assoc[$key_name] ) && strpos( $assoc[$key_name], '://' ) ) {
+						$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
+					} else {
+						$json_data[$itemprop_name] = $assoc[$key_name];
+					}
 					$itemprop_added++;
 				}
 			}
@@ -1651,8 +1727,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
 			$desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
 
-			if ( empty( $desc ) )
+			if ( empty( $desc ) ) {
 				$desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
+			}
 
 			$mt_author = array_merge(
 				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',

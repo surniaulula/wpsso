@@ -143,6 +143,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				0 : $opts['plugin_'.$lca.'_opt_version'];
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
+
 				$this->p->util->rename_keys_by_ext( $opts, 
 					apply_filters( $lca.'_rename_options_keys',
 						self::$rename_options_keys ) );

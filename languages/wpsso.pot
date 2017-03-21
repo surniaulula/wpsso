@@ -3161,13 +3161,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:874
+#: lib/schema.php:893
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:877
+#: lib/schema.php:896
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."
@@ -3217,28 +3217,28 @@ msgctxt "metabox title"
 msgid "Social Pages and Accounts"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:35
+#: lib/sitesubmenu/siteadvanced.php:36
 msgctxt "metabox title"
 msgid "Network Advanced Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:51 lib/submenu/advanced.php:45
+#: lib/sitesubmenu/siteadvanced.php:52 lib/submenu/advanced.php:45
 msgctxt "metabox tab"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:52 lib/submenu/advanced.php:49
+#: lib/sitesubmenu/siteadvanced.php:53 lib/submenu/advanced.php:49
 msgctxt "metabox tab"
 msgid "Cache Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:99
+#: lib/sitesubmenu/siteadvanced.php:68 lib/submenu/advanced.php:99
 #: lib/submenu/essential.php:149
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:72 lib/submenu/advanced.php:103
+#: lib/sitesubmenu/siteadvanced.php:73 lib/submenu/advanced.php:103
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
