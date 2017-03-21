@@ -371,7 +371,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 * *Developer Notes*
 	* Added Schema Thing &gt; Place &gt; LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
 
