@@ -918,7 +918,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'openingHoursSpecification',
 						'acceptsReservations',
 						'menu',
-					) );
+					), false );	// $overwrite = false
 				}
 			}
 
@@ -1033,7 +1033,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'addressRegion' => 'place_state',
 				'postalCode' => 'place_zipcode',
 				'addressCountry' => 'place_country',
-			) ) ) $ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
+			) ) ) {
+				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
+			}
 
 			/*
 			 * Property:
@@ -1044,7 +1046,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'elevation' => 'place_altitude', 
 				'latitude' => 'place_latitude',
 				'longitude' => 'place_longitude',
-			) ) ) $ret['geo'] = self::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );
+			) ) ) {
+				$ret['geo'] = self::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );
+			}
 
 			/*
 			 * Property:
@@ -1396,7 +1400,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;	// return count of images added
 		}
 
-		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names ) {
+		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
 			$itemprop_added = 0;
 			$is_assoc = SucomUtil::is_assoc( $names );
 			foreach ( $names as $itemprop_name => $key_name ) {
@@ -1404,10 +1408,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$itemprop_name = $key_name;
 				}
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					if ( is_string( $assoc[$key_name] ) && strpos( $assoc[$key_name], '://' ) ) {
-						$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
-					} else {
-						$json_data[$itemprop_name] = $assoc[$key_name];
+					if ( $overwrite || ! isset( $json_data[$itemprop_name] ) ) {
+						if ( is_string( $assoc[$key_name] ) && strpos( $assoc[$key_name], '://' ) ) {
+							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
+						} else {
+							$json_data[$itemprop_name] = $assoc[$key_name];
+						}
 					}
 					$itemprop_added++;
 				}
