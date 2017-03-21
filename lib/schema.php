@@ -931,19 +931,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $org_opts['org_place_id'], false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
-				} else {
-					// Google wants these properties in the Organization markup as well
-					self::add_data_itemprop_from_assoc( $ret, $ret['location'], array(
-						'telephone',
-						'currenciesAccepted',
-						'paymentAccepted',
-						'priceRange',
-						'address',
-						'geo',
-						'openingHoursSpecification',
-						'acceptsReservations',
-						'menu',
-					), false );	// $overwrite = false
 				}
 			}
 
@@ -953,18 +940,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
 				( isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array() ), $mod, $org_id );
 
-			if ( ! empty( $org_opts['org_sameas'] ) && 
-				is_array( $org_opts['org_sameas'] ) ) {	// just in case
-				foreach ( $org_opts['org_sameas'] as $url )
-					if ( ! empty( $url ) )	// just in case
+			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// just in case
+				foreach ( $org_opts['org_sameas'] as $url ) {
+					if ( ! empty( $url ) ) {	// just in case
 						$ret['sameAs'][] = esc_url( $url );
+					}
+				}
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization', $ret, $mod, $org_id );
 
-			if ( empty( $list_element ) )
+			if ( empty( $list_element ) ) {
 				$json_data = $ret;
-			else $json_data[] = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
 
 			return 1;
 		}
@@ -1108,9 +1098,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * FoodEstablishment schema type properties
 			 */
-			if ( ! empty( $place_opts['place_business_type'] ) &&
-				$place_opts['place_business_type'] !== 'none' ) {
-
+			if ( ! empty( $place_opts['place_business_type'] ) && $place_opts['place_business_type'] !== 'none' ) {
 				if ( $wpsso->schema->is_schema_type_child_of( $place_opts['place_business_type'], 'food.establishment' ) ) {
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',
@@ -1439,8 +1427,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
+						$itemprop_added++;
 					}
-					$itemprop_added++;
 				}
 			}
 			return $itemprop_added;
