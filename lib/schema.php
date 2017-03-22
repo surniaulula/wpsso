@@ -315,34 +315,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'adding schema type cross-references' );
 					}
-					$schema_thing =& $this->types_cache['filtered']['thing'];
 
-					$schema_thing['organization']['local.business'] =& 
-						$schema_thing['place']['local.business'];
-
-					$schema_thing['organization']['medical.organization']['dentist'] =& 
-						$schema_thing['place']['local.business']['dentist'];
-
-					$schema_thing['organization']['medical.organization']['hospital'] =& 
-						$schema_thing['place']['local.business']['emergency.service']['hospital'];
-
-					$schema_thing['place']['civic.structure']['campground'] =&
-						$schema_thing['place']['local.business']['lodging.business']['campground'];
-
-					$schema_thing['place']['civic.structure']['fire.station'] =&
-						$schema_thing['place']['local.business']['emergency.service']['fire.station'];
-
-					$schema_thing['place']['civic.structure']['hospital'] =&
-						$schema_thing['place']['local.business']['emergency.service']['hospital'];
-
-					$schema_thing['place']['civic.structure']['movie.theatre'] =&
-						$schema_thing['place']['local.business']['entertainment.business']['movie.theatre'];
-
-					$schema_thing['place']['civic.structure']['police.station'] =&
-						$schema_thing['place']['local.business']['emergency.service']['police.station'];
-
-					$schema_thing['place']['civic.structure']['stadium.or.arena'] =&
-						$schema_thing['place']['local.business']['sports.activity.location']['stadium.or.arena'];
+					self::add_schema_types_xref( $this->types_cache['filtered'] );
 
 					if ( $this->types_exp > 0 ) {
 						set_transient( $cache_id, $this->types_cache, $this->types_exp );
@@ -368,6 +342,38 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 				return $this->types_cache['filtered'];
 			}
+		}
+
+		private static function add_schema_types_xref( &$schema_types ) {
+
+			$thing =& $schema_types['thing'];
+
+			$thing['organization']['local.business'] =& 
+				$thing['place']['local.business'];
+
+			$thing['organization']['medical.organization']['dentist'] =& 
+				$thing['place']['local.business']['dentist'];
+
+			$thing['organization']['medical.organization']['hospital'] =& 
+				$thing['place']['local.business']['emergency.service']['hospital'];
+
+			$thing['place']['civic.structure']['campground'] =&
+				$thing['place']['local.business']['lodging.business']['campground'];
+
+			$thing['place']['civic.structure']['fire.station'] =&
+				$thing['place']['local.business']['emergency.service']['fire.station'];
+
+			$thing['place']['civic.structure']['hospital'] =&
+				$thing['place']['local.business']['emergency.service']['hospital'];
+
+			$thing['place']['civic.structure']['movie.theatre'] =&
+				$thing['place']['local.business']['entertainment.business']['movie.theatre'];
+
+			$thing['place']['civic.structure']['police.station'] =&
+				$thing['place']['local.business']['emergency.service']['police.station'];
+
+			$thing['place']['civic.structure']['stadium.or.arena'] =&
+				$thing['place']['local.business']['sports.activity.location']['stadium.or.arena'];
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
@@ -770,6 +776,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				// add website, organization, and person markup to home page
 				if ( $mod['is_home'] && ! $has_json_data_filter && 
 					method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
+
 					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
 						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main = always false for method
 
@@ -1024,11 +1031,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
 
 				// check for a custom place id that might have precedence
-				$place_id = $mod['obj']->get_options( $mod['id'], 'plm_addr_id' );
+				$place_id = method_exists( $mod['obj'], 'get_options' ) ?	// just in case
+					$mod['obj']->get_options( $mod['id'], 'plm_addr_id' ) : null;
 
-				if ( $place_id !== null && $place_id !== '' ) {	// allow for 0
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'overriding org_place_id '.
+				if ( $place_id !== null && $place_id !== '' ) {	// allow for place id 0
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'overriding org_place_id '.
 							$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
 					}
 				} else {
