@@ -633,16 +633,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'head schema type is '.$page_type_url.' ('.$page_type_id.')' );
 			}
 
-			// include the page type id first
-			// disabled if the organization sub-type id is the same
+			/*
+			 * Include the page type id first, so it can be disabled after if the 
+			 * organization sub-type id is a match.
+			 */
 			if ( ! empty( $page_type_url ) ) {
 				$page_type_ids[$page_type_id] = true;
 			}
 
-			// include WebSite, Organization, and/or Person on the home page
-			if ( $mod['is_home'] ) {	// static or archive page
-				$site_org_type_id = $this->p->options['site_org_type'];	// 'organization' or a sub-type id
-				$page_type_ids[$site_org_type_id] = false;	// disables the page type id if identical
+			/*
+			 * Include WebSite, Organization, and/or Person markup on the home page.
+			 * The custom 'site_org_type' may be a sub-type of organization, and could
+			 * be filtered as a local.business instead of an organization. Since we
+			 * only have an organization filter/method, force the organization type and
+			 * let the filter/method re-define the schema type if required.
+			 */
+			if ( $mod['is_home'] ) {	// static or index home page
+				$site_org_type_id = $this->p->options['site_org_type'];	// organization or a sub-type of organization
+				$page_type_ids[$site_org_type_id] = false;		// disables the page type id if it's a match
 				$page_type_ids['website'] = $this->p->options['schema_website_json'];
 				$page_type_ids['organization'] = $this->p->options['schema_organization_json'];
 				$page_type_ids['person'] = $this->p->options['schema_person_json'];
@@ -659,19 +667,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$page_type_ids = apply_filters( $lca.'_json_array_schema_page_type_ids', $page_type_ids, $mod );
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
-
 				if ( ! $is_enabled ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (disabled)' );
 					}
 					continue;
-				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// prevent duplicate top-level schema types
+				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// prevent duplicate schema types
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (previously added)' );
 					}
 					continue;
 				} else {
-					$page_type_added[$type_id] = true;
+					$page_type_added[$type_id] = true;	// prevent adding duplicate schema types
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -686,11 +693,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $is_main === null ) {
-					if ( $type_id === $page_type_id ) {	// we're doing the main entity
+					if ( $type_id === $page_type_id ) {	// this is the main entity
 						$is_main = true;
 					} else {
-						// if filtering the organization type, and the page type id is
-						// a sub-type of organization, then we're doing the main entity
+						/*
+						 * If getting an organization type, and the page type id is a sub-type of 
+						 * organization, then we're effectively doing the main entity.
+						 */
 						if ( $type_id === 'organization' && $page_type_id === $site_org_type_id ) {
 							$is_main = true;
 						} else {
@@ -705,33 +714,38 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
-				// sanitize the @id and @type properties
-				// encode the json data in an HTML script block
+				/*
+				 * Sanitize the @id and @type properties and encode the json data in an HTML script block.
+				 */
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
 
+					// the url and schema type id create a unique @id string
 					if ( empty( $json_data['@id'] ) ) {
 						if ( ! empty( $json_data['url'] ) ) {
 							$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).
 								'#/'.$type_id ) + $json_data;
 						}
+					// filters may return an @id as a way to signal a change to the schema type
 					} elseif ( preg_match_all( '/#\/([^#\/]+)/', $json_data['@id'], $all_matches, PREG_SET_ORDER ) ) {
 						$has_type_id = false;
 						foreach ( $all_matches as $match ) {
 							if ( $match[1] === $type_id ) {
-								$has_type_id = true;
+								$has_type_id = true;		// found the original type id
 							}
-							$page_type_added[$match[1]] = true;
+							$page_type_added[$match[1]] = true;	// prevent duplicate schema types
 						}
 						if ( ! $has_type_id ) {
-							$json_data['@id'] .= '#/'.$type_id;
+							$json_data['@id'] .= '#/'.$type_id;	// append the original type id
 						}
 					}
 
+					// check for missing @context / @type and add if required
 					if ( empty( $json_data['@type'] ) ) {
 						$type_url = $this->get_schema_type_url( $type_id );
 						$json_data = self::get_schema_type_context( $type_url, $json_data );
 					}
 
+					// encode the json data in an HTML script block
 					$ret[] = '<script type="application/ld+json">'.
 						$this->p->util->json_format( $json_data ).'</script>'."\n";
 				}
