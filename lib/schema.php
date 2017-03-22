@@ -310,12 +310,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					/*
 					 * Add array cross-references for schema sub-types that exist under more than one type.
-					 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 					 */
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'adding schema type cross-references' );
 					}
-
 					self::add_schema_types_xref( $this->types_cache['filtered'] );
 
 					if ( $this->types_exp > 0 ) {
@@ -344,6 +342,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		/*
+		 * Add array cross-references for schema sub-types that exist under more than one type.
+		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
+		 */
 		private static function add_schema_types_xref( &$schema_types ) {
 
 			$thing =& $schema_types['thing'];
