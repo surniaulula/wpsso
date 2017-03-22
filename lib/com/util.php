@@ -626,11 +626,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function explode_csv( $str ) {
-			return array_map( array( __CLASS__, 'trim_csv_val' ), explode( ',', $str ) );
+			if ( empty( $str ) ) {
+				return array();
+			} else {
+				return array_map( array( __CLASS__, 'trim_csv_val' ), explode( ',', $str ) );
+			}
 		}
 
 		private static function trim_csv_val( $val ) {
-			return trim( $val, '\'" ' );
+			return trim( $val, '\'" ' );	// remove quotes and spaces
 		}
 
 		public static function titleize( $str ) {

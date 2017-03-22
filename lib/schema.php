@@ -488,11 +488,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$context_url = array( $ext[1].$ext[3], array( $ext[2] => $ext[0] ) );
 				}
 
-				// if we have one, include the @id as the top-most property
-				if ( ! empty( $json_data['@id'] ) ) {
-					$json_head = array( '@id' => null, '@context' => null, '@type' => null );
-				} else {
+				// keep the @id property top-most
+				if ( empty( $json_data['@id'] ) ) {
 					$json_head = array( '@context' => null, '@type' => null );
+				} else {
+					$json_head = array( '@id' => null, '@context' => null, '@type' => null );
 				}
 
 				$json_data = array_merge( $json_head, $json_data, 
@@ -610,21 +610,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$page_type_ids = array();
 			$page_type_added = array();					// prevent duplicate top-level schema types
+			$site_org_type_id = false;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'head schema type is '.$page_type_url.' ('.$page_type_id.')' );
 			}
 
+			// include the page type id first
+			// disabled if the organization sub-type id is the same
+			if ( ! empty( $page_type_url ) ) {
+				$page_type_ids[$page_type_id] = true;
+			}
+
 			// include WebSite, Organization, and/or Person on the home page
 			if ( $mod['is_home'] ) {	// static or archive page
+				$site_org_type_id = $this->p->options['site_org_type'];	// 'organization' or a sub-type id
+				$page_type_ids[$site_org_type_id] = false;	// disables the page type id if identical
+
 				$page_type_ids['website'] = $this->p->options['schema_website_json'];
 				$page_type_ids['organization'] = $this->p->options['schema_organization_json'];
 				$page_type_ids['person'] = $this->p->options['schema_person_json'];
-			}
-
-			// include the page type id
-			if ( ! empty( $page_type_url ) ) {
-				$page_type_ids[$page_type_id] = true;
 			}
 
 			/*
@@ -661,7 +666,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mod['obj']->get_options( $mod['id'], 'schema_is_main' ) : null;
 
 				if ( $is_main === null ) {
-					$is_main = $type_id === $page_type_id ? true : false;
+					if ( $type_id === $page_type_id ) {
+						$is_main = true;
+					} else {
+						// if we are filtering the organization, and the page type id is
+						// a sub-type of organization, then we're doing the main entity
+						if ( $type_id === 'organization' &&
+							$page_type_id === $site_org_type_id ) {
+							$is_main = true;
+						} else {
+							$is_main = false;
+						}
+					}
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -672,18 +688,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
-					if ( isset( $json_data['@id'] ) && 
-						( $pos_id = strpos( $json_data['@id'], '#' ) ) !== false ) {
-						$ret_type_id = substr( $json_data['@id'], $pos_id + 1 );
-						$page_type_added[$ret_type_id] = true;
+
+					if ( empty( $json_data['@id'] ) ) {
+						if ( ! empty( $json_data['url'] ) ) {
+							$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).
+								'#/'.$type_id ) + $json_data;
+						}
+					} elseif ( preg_match_all( '/#\/([^#\/]+)/', $json_data['@id'], $all_matches, PREG_SET_ORDER ) ) {
+						$has_type_id = false;
+						foreach ( $all_matches as $match ) {
+							if ( $match[1] === $type_id ) {
+								$has_type_id = true;
+							}
+							$page_type_added[$match[1]] = true;
+						}
+						if ( ! $has_type_id ) {
+							$json_data['@id'] .= '#/'.$type_id;
+						}
 					}
+
 					if ( empty( $json_data['@type'] ) ) {
 						$type_url = $this->get_schema_type_url( $type_id );
 						$json_data = self::get_schema_type_context( $type_url, $json_data );
 					}
-					/*
-					 * Output the json data array as a json-ld script.
-					 */
+
 					$ret[] = '<script type="application/ld+json">'.
 						$this->p->util->json_format( $json_data ).'</script>'."\n";
 				}
@@ -757,27 +785,65 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * Sanitation used by filters to return their data.
+		 */
+		public static function return_data_from_filter( &$json_data, &$ret_data, $is_main = false ) {
+			/*
+			 * Property:
+			 *	mainEntityOfPage as https://schema.org/WebPage
+			 *
+			 * The value of mainEntityOfPage is expected to be one of these types:
+			 *	CreativeWork
+			 * 	URL 
+			 */
+			if ( ! isset( $ret_data['mainEntityOfPage'] ) ) {	// don't redefine
+				if ( $is_main && ! empty( $ret_data['url'] ) ) {
+					$ret_data['mainEntityOfPage'] = $ret_data['url'];
+				}
+			}
+
+			if ( empty( $ret_data ) ) {
+				return $json_data;
+			} elseif ( $json_data === null ) {
+				return $ret_data;
+			} elseif ( is_array( $json_data ) ) {
+				$json_head = array( '@id' => null, '@context' => null, '@type' => null, 'mainEntityOfPage' => null );
+				$json_data = array_merge( $json_head, $json_data, $ret_data );
+				foreach ( array( '@id', '@context', '@type', 'mainEntityOfPage' ) as $prop ) {
+					if ( empty( $json_data[$prop] ) ) {
+						unset( $json_data[$prop] );
+					}
+				}
+				return $json_data;
+			} else {
+				return $json_data;
+			}
+		}
+
+		/*
 		 * https://schema.org/WebSite for Google
 		 */
 		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
-			$ret = array(
-				'@context' => 'https://schema.org',
-				'@type' => 'WebSite',
-				'url' => $mt_og['og:url'],
-			);
+			$ret = self::get_schema_type_context( 'https://schema.org/WebSite',
+				array( 'url' => $mt_og['og:url'] ) );
 
-			if ( $name = SucomUtil::get_site_name( $this->p->options, $mod ) )
+			if ( $name = SucomUtil::get_site_name( $this->p->options, $mod ) ) {
 				$ret['name'] = $name;
+			}
 
-			if ( $alt_name = SucomUtil::get_site_alt_name( $this->p->options, $mod ) )
+			if ( $alt_name = SucomUtil::get_site_alt_name( $this->p->options, $mod ) ) {
 				$ret['alternateName'] = $alt_name;
+			}
 
-			if ( $desc = SucomUtil::get_site_description( $this->p->options, $mod ) )
+			if ( $desc = SucomUtil::get_site_description( $this->p->options, $mod ) ) {
 				$ret['description'] = $desc;
+			}
 
 			/*
 			 * Potential Action (SearchAction, OrderAction, etc.)
@@ -785,19 +851,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$action_data = array();
 
 			if ( $search_url = apply_filters( $lca.'_json_ld_search_url', get_bloginfo( 'url' ).'?s={search_term_string}' ) ) {
-				$action_data[] = array(
-					'@context' => 'https://schema.org',
-					'@type' => 'SearchAction',
-					'target' => $search_url,
-					'query-input' => 'required name=search_term_string',
-				);
+				if ( ! empty( $search_url ) ) {
+					$action_data[] = array(
+						'@context' => 'https://schema.org',
+						'@type' => 'SearchAction',
+						'target' => $search_url,
+						'query-input' => 'required name=search_term_string',
+					);
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'skipping search action: search url is empty' );
+				}
 			}
 
 			$action_data = (array) apply_filters( $lca.'_json_prop_https_schema_org_potentialaction',
 				$action_data, $mod, $mt_og, $page_type_id, $is_main );
 
-			if ( ! empty( $action_data ) )
+			if ( ! empty( $action_data ) ) {
 				$ret['potentialAction'] = $action_data;
+			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -811,7 +882,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $is_main && $mod['is_home'] ) {	// static or index page
+			if ( $mod['is_home'] ) {	// static or index page
 				$org_id = 'site';
 			} elseif ( ! empty( $mod['obj'] ) ) {	// just in case
 				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_org_org_id' );
@@ -835,7 +906,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $is_main && $mod['is_home'] ) {	// static or index page
+			if ( $mod['is_home'] ) {	// static or index page
 				if ( empty( $this->p->options['schema_person_id'] ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'exiting early: schema_person_id disabled for home page' );
@@ -863,33 +934,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::add_single_person_data( $ret, $mod, $user_id, false );	// $list_element = false
 
 			// override author's website url and use the open graph url instead
-			if ( $is_main && $mod['is_home'] ) {
+			if ( $mod['is_home'] ) {
 				$ret['url'] = $mt_og['og:url'];
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
-		}
-
-		/*
-		 * Sanitation used by filters to return their data.
-		 */
-		public static function return_data_from_filter( &$json_data, &$ret_data, $is_main = false ) {
-			/*
-			 * Property:
-			 *	mainEntityOfPage as https://schema.org/WebPage
-			 *
-			 * The value of mainEntityOfPage is expected to be one of these types:
-			 *	CreativeWork
-			 * 	URL 
-			 */
-			if ( $is_main && ! empty( $ret_data['url'] ) ) {
-				$ret_data['mainEntityOfPage'] = $ret_data['url'];
-			}
-
-			return empty( $ret_data ) ? $json_data : 
-				( $json_data === null ? $ret_data : 
-					( is_array( $json_data ) ? array_merge( $json_data, $ret_data ) : 
-						$json_data ) );
 		}
 
 		/*
@@ -922,10 +971,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
 			}
 
-			$org_type_id = empty( $org_opts['org_type'] ) ?
-				'organization' : $org_opts['org_type'];	// just in case
+			$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
-			$ret = self::get_schema_type_context( $org_type_url, array( '@id' => '#'.$org_type_id ) );
+			$ret = self::get_schema_type_context( $org_type_url, 
+				array( '@id' => ( empty( $org_opts['org_url'] ) ? '' : $org_opts['org_url'] ).
+					'#/'.$org_type_id.'/'.$org_id ) );
 
 			// add schema properties from the organization options
 			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
@@ -972,7 +1022,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Place / Location Properties
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $org_opts['org_place_id'], false ) ) {	// $list_element = false
+
+				// check for a custom place id that might have precedence
+				$place_id = $mod['obj']->get_options( $mod['id'], 'plm_addr_id' );
+
+				if ( $place_id !== null && $place_id !== '' ) {	// allow for 0
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'overriding org_place_id '.
+							$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
+					}
+				} else {
+					$place_id = $org_opts['org_place_id'];
+				}
+
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
@@ -998,19 +1061,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * businesses by Google, so adjust the organization properties for a local business.
 			 */
 			if ( $wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'promoting '.$org_type_id.' properties for local.business' );
 				}
+
 				// promote all location information up
 				if ( isset( $ret['location'] ) ) {
 					self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
 						array_keys( $ret['location'] ), false );	// $overwrite = false
 					unset( $ret['location'] );
 				}
-				// promote the organization logo to an image
-				if ( isset( $ret['logo'] ) && ! isset( $ret['image'] ) ) {
+
+				// Google requires a local business to have an image
+				if ( empty( $ret['image'] ) ) {
 					$ret['image'][] = $ret['logo'];
-					unset( $ret['logo'] );
 				}
 			}
 
@@ -1034,13 +1099,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_sameas = array();
 
 			foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
-				$wpsso->cf['form']['social_accounts'] ) as $key => $label ) {
+				$wpsso->cf['form']['social_accounts'] ) as $social_key => $social_label ) {
 
-				$url = SucomUtil::get_locale_opt( $key, $wpsso->options, $mixed );
+				$url = SucomUtil::get_locale_opt( $social_key, $wpsso->options, $mixed );
 
 				if ( empty( $url ) ) {
 					continue;
-				} elseif ( $key === 'tc_site' ) {
+				} elseif ( $social_key === 'tc_site' ) {
 					$org_sameas[] = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
 				} elseif ( strpos( $url, '://' ) !== false ) {
 					$org_sameas[] = $url;
@@ -1048,7 +1113,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return array(
-				'org_type' => $wpsso->options['site_org_type'] ,
+				'org_type' => $wpsso->options['site_org_type'],
 				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),
 				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),
 				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),
@@ -1148,9 +1213,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'closes' => 'place_day_'.$day.'_close',
 						'validFrom' => 'place_season_from_date',
 						'validThrough' => 'place_season_to_date',
-					) as $prop_name => $key ) {
-						if ( isset( $place_opts[$key] ) && $place_opts[$key] !== '' ) {
-							$dayofweek[$prop_name] = $place_opts[$key];
+					) as $prop_name => $opt_key ) {
+						if ( isset( $place_opts[$opt_key] ) && $place_opts[$opt_key] !== '' ) {
+							$dayofweek[$prop_name] = $place_opts[$opt_key];
 						}
 					}
 					$opening_hours[] = $dayofweek;
@@ -1169,11 +1234,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',
 						'menu' => 'place_menu_url',
-					) as $prop_name => $key ) {
-						if ( $key === 'place_accept_res' ) {
-							$ret[$prop_name] = empty( $place_opts[$key] ) ? 'false' : 'true';
-						} elseif ( isset( $place_opts[$key] ) ) {
-							$ret[$prop_name] = $place_opts[$key];
+					) as $prop_name => $opt_key ) {
+						if ( $opt_key === 'place_accept_res' ) {
+							$ret[$prop_name] = empty( $place_opts[$opt_key] ) ? 'false' : 'true';
+						} elseif ( isset( $place_opts[$opt_key] ) ) {
+							$ret[$prop_name] = $place_opts[$opt_key];
 						}
 					}
 				}
@@ -1181,11 +1246,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $place_opts['place_order_urls'] ) ) {
 				foreach ( SucomUtil::explode_csv( $place_opts['place_order_urls'] ) as $url ) {
-					$ret['potentialAction'][] = array(
-						'@context' => 'https://schema.org',
-						'@type' => 'OrderAction',
-						'target' => $url,
-					);
+					if ( ! empty( $url ) ) {	// just in case
+						$ret['potentialAction'][] = array(
+							'@context' => 'https://schema.org',
+							'@type' => 'OrderAction',
+							'target' => $url,
+						);
+					}
 				}
 			}
 
@@ -1228,12 +1295,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $event_opts['event_organizer_person_id'] ) ) {	// example: tribe_organizer-0
-				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) 	// $list_element = false
+				if ( ! self::add_single_person_data( $ret['organizer'],
+					$mod, $event_opts['event_organizer_person_id'], false ) ) 	// $list_element = false
 					unset( $ret['organizer'] );	// prevent null assignment
 			}
 
 			if ( ! empty( $event_opts['event_place_id'] ) ) {	// example: tribe_venue-0
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {	// $list_element = false
+				if ( ! self::add_single_place_data( $ret['location'],
+					$mod, $event_opts['event_place_id'], false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
@@ -1609,10 +1678,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
-			foreach ( $names as $itemprop_name => $key_name )
+			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( ! empty( $this->p->options['add_meta_itemprop_'.$itemprop_name] )
-					&& ! empty( $assoc[$key_name] ) )
-						$mt_schema[$itemprop_name] = $assoc[$key_name];
+					&& ! empty( $assoc[$key_name] ) ) {
+					$mt_schema[$itemprop_name] = $assoc[$key_name];
+				}
+			}
 		}
 
 		/*

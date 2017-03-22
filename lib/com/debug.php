@@ -102,40 +102,49 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( $this->enabled !== true )
 				return;
 
-			$log_msg = '';
+			$first_col = '%-32s:: ';
+			$second_col = '%-48s: ';
 			$stack = debug_backtrace();
+			$log_msg = '';
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false )
+				if ( $function_idx === false ) {
 					$function_idx = $class_idx;
-				$log_msg .= sprintf( '%-36s:: ',
+				}
+				$log_msg .= sprintf( $first_col,
 					( empty( $stack[$class_idx]['class'] ) ?
 						'' : $stack[$class_idx]['class'] ) );
 			} else {
-				if ( $function_idx === false )
+				if ( $function_idx === false ) {
 					$function_idx = 1;
-				$log_msg .= sprintf( '%-36s:: ', $class_idx );
+				}
+				$log_msg .= sprintf( $first_col, $class_idx );
 			}
 
 			if ( is_int( $function_idx ) ) {
-				$log_msg .= sprintf( '%-45s: ',
+				$log_msg .= sprintf( $second_col,
 					( empty( $stack[$function_idx]['function'] ) ?
 						'' : $stack[$function_idx]['function'] ) );
-			} else $log_msg .= sprintf( '%-45s: ', $function_idx );
+			} else {
+				$log_msg .= sprintf( $second_col, $function_idx );
+			}
 
 			if ( is_multisite() ) {
 				global $blog_id;
 				$log_msg .= '[blog '.$blog_id.'] ';
 			}
 
-			if ( is_array( $input ) )
+			if ( is_array( $input ) ) {
 				$log_msg .= trim( print_r( $input, true ) );
-			elseif ( is_object( $input ) )
+			} elseif ( is_object( $input ) ) {
 				$log_msg .= print_r( 'object '.get_class( $input ), true );
-			else $log_msg .= $input;
+			} else {
+				$log_msg .= $input;
+			}
 
-			if ( $this->subsys['html'] == true )
+			if ( $this->subsys['html'] == true ) {
 				$this->buffer[] = $log_msg;
+			}
 
 			if ( $this->subsys['wp'] == true ) {
 				$sid = session_id();
