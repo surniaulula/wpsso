@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.5-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.6-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-03-19 07:21+0200\n"
-"PO-Revision-Date: 2017-03-19 07:22+0200\n"
+"POT-Creation-Date: 2017-03-22 17:34+0200\n"
+"PO-Revision-Date: 2017-03-22 17:35+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1459,7 +1459,7 @@ msgid "and currency"
 msgstr "et devise"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:547
+#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:548
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -2509,19 +2509,19 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:430
+#: lib/post.php:431
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:447
+#: lib/post.php:448
 msgid "Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension ajoute une balise HTML <code>%1$s</code> à l'entête de cette page Web."
 
-#: lib/post.php:456
+#: lib/post.php:457
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérifications a faire..."
 
-#: lib/post.php:503 lib/profile/social-settings.php:28 lib/term.php:283
+#: lib/post.php:504 lib/profile/social-settings.php:28 lib/term.php:283
 #: lib/user.php:263
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2647,11 +2647,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:833
+#: lib/schema.php:1032
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:836
+#: lib/schema.php:1035
 msgid "The \"%1$s\" Organization Banner (600x60) is missing and required for the Schema %2$s markup."
 msgstr "Le bannière (600x60) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
@@ -2699,28 +2699,28 @@ msgctxt "metabox title"
 msgid "Social Pages and Accounts"
 msgstr "Pages et Comptes Sociaux"
 
-#: lib/sitesubmenu/siteadvanced.php:35
+#: lib/sitesubmenu/siteadvanced.php:36
 msgctxt "metabox title"
 msgid "Network Advanced Settings"
 msgstr "Réglages Avancés du Réseau"
 
-#: lib/sitesubmenu/siteadvanced.php:51 lib/submenu/advanced.php:45
+#: lib/sitesubmenu/siteadvanced.php:52 lib/submenu/advanced.php:45
 msgctxt "metabox tab"
 msgid "Plugin Settings"
 msgstr "Réglages de l'Ext."
 
-#: lib/sitesubmenu/siteadvanced.php:52 lib/submenu/advanced.php:49
+#: lib/sitesubmenu/siteadvanced.php:53 lib/submenu/advanced.php:49
 msgctxt "metabox tab"
 msgid "Cache Settings"
 msgstr "Réglages cache"
 
-#: lib/sitesubmenu/siteadvanced.php:67 lib/submenu/advanced.php:99
+#: lib/sitesubmenu/siteadvanced.php:68 lib/submenu/advanced.php:99
 #: lib/submenu/essential.php:149
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
 
-#: lib/sitesubmenu/siteadvanced.php:72 lib/submenu/advanced.php:103
+#: lib/sitesubmenu/siteadvanced.php:73 lib/submenu/advanced.php:103
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
