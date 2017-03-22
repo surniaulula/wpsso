@@ -364,16 +364,18 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.6-dev1 (2017/03/21)**
+**Version 3.40.6-dev2 (2017/03/22)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added support for Schema Organization types that are also Schema Local Business types.
+	* Added support for overriding a WPSSO ORG place with custom place information from WPSSO PLM.
 * *Bugfixes*
 	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 * *Developer Notes*
 	* Added Schema Thing &gt; Place &gt; LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
+	* Added an @id property for some Schema JSON-LD markup to signal a possible change in the Schema type being applied.
 
 **Version 3.40.5-1 (2017/03/19)**
 
@@ -885,9 +887,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.6-dev1 =
+= 3.40.6-dev2 =
 
-(2017/03/21) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
+(2017/03/22) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 
 = 3.40.5-1 =
 
