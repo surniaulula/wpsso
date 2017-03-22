@@ -350,15 +350,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$thing =& $schema_types['thing'];
 
+			/*
+			 * Organization > Local Business
+			 */
 			$thing['organization']['local.business'] =& 
 				$thing['place']['local.business'];
 
+			/*
+			 * Organization > Medical Organization
+			 */
 			$thing['organization']['medical.organization']['dentist'] =& 
 				$thing['place']['local.business']['dentist'];
 
 			$thing['organization']['medical.organization']['hospital'] =& 
 				$thing['place']['local.business']['emergency.service']['hospital'];
 
+			/*
+			 * Place > Civic Structure
+			 */
 			$thing['place']['civic.structure']['campground'] =&
 				$thing['place']['local.business']['lodging.business']['campground'];
 
