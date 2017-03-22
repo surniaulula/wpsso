@@ -643,7 +643,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $mod['is_home'] ) {	// static or archive page
 				$site_org_type_id = $this->p->options['site_org_type'];	// 'organization' or a sub-type id
 				$page_type_ids[$site_org_type_id] = false;	// disables the page type id if identical
-
 				$page_type_ids['website'] = $this->p->options['schema_website_json'];
 				$page_type_ids['organization'] = $this->p->options['schema_organization_json'];
 				$page_type_ids['person'] = $this->p->options['schema_person_json'];
@@ -679,31 +678,35 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->mark( 'schema type_id '.$type_id );	// begin timer
 				}
 
-				$is_main = method_exists( $mod['obj'], 'get_options' ) ?	// just in case
-					$mod['obj']->get_options( $mod['id'], 'schema_is_main' ) : null;
+				// get the main entity checkbox value from custom post/term/user meta
+				if ( method_exists( $mod['obj'], 'get_options' ) ) {
+					$is_main = $mod['obj']->get_options( $mod['id'], 'schema_is_main' );
+				} else {
+					$is_main = null;
+				}
 
 				if ( $is_main === null ) {
-					if ( $type_id === $page_type_id ) {
+					if ( $type_id === $page_type_id ) {	// we're doing the main entity
 						$is_main = true;
 					} else {
-						// if we are filtering the organization, and the page type id is
+						// if filtering the organization type, and the page type id is
 						// a sub-type of organization, then we're doing the main entity
-						if ( $type_id === 'organization' &&
-							$page_type_id === $site_org_type_id ) {
+						if ( $type_id === 'organization' && $page_type_id === $site_org_type_id ) {
 							$is_main = true;
 						} else {
-							$is_main = false;
+							$is_main = false;	// default for all other types
 						}
 					}
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'is_main entity is '.
-						( $is_main ? 'true' : 'false' ) );
+					$this->p->debug->log( 'is_main entity is '.( $is_main ? 'true' : 'false' ) );
 				}
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
+				// sanitize the @id and @type properties
+				// encode the json data in an HTML script block
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
 
 					if ( empty( $json_data['@id'] ) ) {
