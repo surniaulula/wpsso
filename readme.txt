@@ -376,6 +376,8 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Developer Notes*
 	* Added Schema Thing &gt; Place &gt; LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
 	* Added an @id property for some Schema JSON-LD markup to signal a possible change in the Schema type being applied.
+	* Updated the minimum / recommended versions for:
+		* PHP v5.4 / v7.0 (see http://php.net/supported-versions.php)
 
 **Version 3.40.5-1 (2017/03/19)**
 
