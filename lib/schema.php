@@ -239,28 +239,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'schema type id before filter is '.$type_id );
+			}
+
 			$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_id', $type_id, $mod, $is_md_type );
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'schema type id after filter is '.$type_id );
+			}
+
 			if ( empty( $type_id ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is empty' );
+				}
 				return false;
 			} elseif ( $type_id === 'none' ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is disabled' );
+				}
 				return false;
 			} elseif ( ! isset( $schema_types[$type_id] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id '.$type_id.' is unknown' );
+				}
 				return false;
 			} else {
 				if ( $get_id ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning schema type id '.$type_id );
+					}
 					return $type_id;
 				} else {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning schema type value '.$schema_types[$type_id] );
+					}
 					return $schema_types[$type_id];
 				}
 			}
@@ -626,34 +639,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) = self::get_schema_type_parts( $page_type_url );		// example: https://schema.org, TechArticle
 
 			$page_type_ids = array();
-			$page_type_added = array();					// prevent duplicate top-level schema types
-			$site_org_type_id = false;
+			$page_type_added = array();	// prevent duplicate schema types
+			$site_org_type_id = false;	// just in case
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'head schema type is '.$page_type_url.' ('.$page_type_id.')' );
-			}
-
-			/*
-			 * Include the page type id first, so it can be disabled after if the 
-			 * organization sub-type id is a match.
-			 */
-			if ( ! empty( $page_type_url ) ) {
-				$page_type_ids[$page_type_id] = true;
+				$this->p->debug->log( 'head schema type id is '.$page_type_id.' ('.$page_type_url.')' );
 			}
 
 			/*
 			 * Include WebSite, Organization, and/or Person markup on the home page.
-			 * The custom 'site_org_type' may be a sub-type of organization, and could
-			 * be filtered as a local.business instead of an organization. Since we
-			 * only have an organization filter/method, force the organization type and
-			 * let the filter/method re-define the schema type if required.
+			 * Note that the custom 'site_org_type' may be a sub-type of organization, 
+			 * and may be filtered as a local.business.
 			 */
 			if ( $mod['is_home'] ) {	// static or index home page
 				$site_org_type_id = $this->p->options['site_org_type'];	// organization or a sub-type of organization
-				$page_type_ids[$site_org_type_id] = false;		// disables the page type id if it's a match
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'organization schema type id is '.$site_org_type_id );
+				}
 				$page_type_ids['website'] = $this->p->options['schema_website_json'];
-				$page_type_ids['organization'] = $this->p->options['schema_organization_json'];
+				$page_type_ids[$site_org_type_id] = $this->p->options['schema_organization_json'];
 				$page_type_ids['person'] = $this->p->options['schema_person_json'];
+			}
+
+			/*
+			 * Could be an organization, website, or person, so include last to 
+			 * re-enable (if disabled by default).
+			 */
+			if ( ! empty( $page_type_url ) ) {
+				$page_type_ids[$page_type_id] = true;
 			}
 
 			/*
@@ -669,12 +682,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 				if ( ! $is_enabled ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (disabled)' );
+						$this->p->debug->log( 'skipping schema type id '.$type_id.' (disabled)' );
 					}
 					continue;
 				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// prevent duplicate schema types
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipping schema type_id '.$type_id.' (previously added)' );
+						$this->p->debug->log( 'skipping schema type id '.$type_id.' (previously added)' );
 					}
 					continue;
 				} else {
@@ -682,7 +695,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'schema type_id '.$type_id );	// begin timer
+					$this->p->debug->mark( 'schema type id '.$type_id );	// begin timer
 				}
 
 				// get the main entity checkbox value from custom post/term/user meta
@@ -696,20 +709,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $type_id === $page_type_id ) {	// this is the main entity
 						$is_main = true;
 					} else {
-						/*
-						 * If getting an organization type, and the page type id is a sub-type of 
-						 * organization, then we're effectively doing the main entity.
-						 */
-						if ( $type_id === 'organization' && $page_type_id === $site_org_type_id ) {
-							$is_main = true;
-						} else {
-							$is_main = false;	// default for all other types
-						}
+						$is_main = false;	// default for all other types
 					}
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'is_main entity is '.( $is_main ? 'true' : 'false' ) );
+					$this->p->debug->log( 'is_main entity is '.( $is_main ?
+						'true' : 'false' ).' for '.$type_id );
 				}
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
@@ -751,7 +757,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'schema type_id '.$type_id );	// end timer
+					$this->p->debug->mark( 'schema type id '.$type_id );	// end timer
 				}
 			}
 
@@ -790,30 +796,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'schema type_id '.$page_type_id.' parent_urls', $parent_urls );
+				$this->p->debug->log_arr( 'schema page type id '.
+					$page_type_id.' parent_urls', $parent_urls );
 			}
 
 			foreach ( $parent_urls as $type_url ) {
-				$rel_filter_name = SucomUtil::sanitize_hookname( $type_url );
-				$has_json_data_filter = has_filter( $lca.'_json_data_'.$rel_filter_name );	// check only once
+				$type_filter_name = SucomUtil::sanitize_hookname( $type_url );
+				$has_type_filter = has_filter( $lca.'_json_data_'.$type_filter_name );	// check only once
  
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'rel_filter_name '.$rel_filter_name );
+					$this->p->debug->log( 'type filter name is '.$type_filter_name.
+						' and has filter is '.( $has_type_filter ? 'true' : 'false' ) );
 				}
 
 				// add website, organization, and person markup to home page
-				if ( $mod['is_home'] && ! $has_json_data_filter && 
-					method_exists( __CLASS__, 'filter_json_data_'.$rel_filter_name ) ) {
+				if ( $mod['is_home'] && ! $has_type_filter && 
+					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) ) {
 
-					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$rel_filter_name ),
+					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main = always false for method
 
-				} elseif ( $has_json_data_filter ) {
-					$json_data = apply_filters( $lca.'_json_data_'.$rel_filter_name,
+				} elseif ( $has_type_filter ) {
+					$json_data = apply_filters( $lca.'_json_data_'.$type_filter_name,
 						$json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'no filters registered for '.$rel_filter_name );
+					$this->p->debug->log( 'no filters registered for '.$type_filter_name );
 			}
 
 			return $json_data;
@@ -933,6 +941,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * https://schema.org/LocalBusiness social markup for Google
+		 */
+		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->debug->log( 'adding organization markup for local business' );
+			}
+
+			// all local businesses are also organizations
+			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
+
+			// promote all location information up
+			if ( isset( $ret['location'] ) ) {
+				self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
+					array_keys( $ret['location'] ), false );	// $overwrite = false
+				unset( $ret['location'] );
+			}
+
+			// Google requires a local business to have an image
+			if ( isset( $ret['logo'] ) && empty( $ret['image'] ) ) {
+				$ret['image'][] = $ret['logo'];
+			}
+
+			return self::return_data_from_filter( $json_data, $ret, $is_main );
+		}
+
+		/*
 		 * https://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -1008,9 +1044,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
 			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
-			$ret = self::get_schema_type_context( $org_type_url, 
-				array( '@id' => ( empty( $org_opts['org_url'] ) ? '' : $org_opts['org_url'] ).
-					'#/'.$org_type_id.'/'.$org_id ) );
+			$ret = self::get_schema_type_context( $org_type_url );
 
 			// add schema properties from the organization options
 			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
@@ -1087,31 +1121,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! empty( $url ) ) {	// just in case
 						$ret['sameAs'][] = esc_url( $url );
 					}
-				}
-			}
-
-			/*
-			 * Fix Local Business Organizations
-			 *
-			 * Some organizations are also local business sub-types, and are read / parsed as local
-			 * businesses by Google, so adjust the organization properties for a local business.
-			 */
-			if ( $wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'promoting '.$org_type_id.' properties for local.business' );
-				}
-
-				// promote all location information up
-				if ( isset( $ret['location'] ) ) {
-					self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
-						array_keys( $ret['location'] ), false );	// $overwrite = false
-					unset( $ret['location'] );
-				}
-
-				// Google requires a local business to have an image
-				if ( empty( $ret['image'] ) ) {
-					$ret['image'][] = $ret['logo'];
 				}
 			}
 
