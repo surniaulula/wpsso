@@ -44,26 +44,26 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = $form->get_th_html( _x( 'Use Filtered (SEO) Title',
 				'option label', 'wpsso' ), '', 'plugin_filter_title' ).
-			$this->get_nocb_cell( $form, 'plugin_filter_title' );
+			$this->get_nocb_td( $form, 'plugin_filter_title' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Apply WordPress Content Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_content' ).
-			$this->get_nocb_cell( $form, 'plugin_filter_content' );
+			$this->get_nocb_td( $form, 'plugin_filter_content' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ).
-			$this->get_nocb_cell( $form, 'plugin_filter_excerpt' );
+			$this->get_nocb_td( $form, 'plugin_filter_excerpt' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph',
 				'option label', 'wpsso' ), '', 'plugin_p_strip' ).
-			$this->get_nocb_cell( $form, 'plugin_p_strip' );
+			$this->get_nocb_td( $form, 'plugin_p_strip' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use Image Alt if No Content',
 				'option label', 'wpsso' ), '', 'plugin_use_img_alt' ).
-			$this->get_nocb_cell( $form, 'plugin_use_img_alt' );
+			$this->get_nocb_td( $form, 'plugin_use_img_alt' );
 
 			$table_rows['plugin_img_alt_prefix'] = $form->get_th_html( _x( 'Image Alt Text Prefix',
 				'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_honor_force_ssl'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant',
 				'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
-			$this->get_nocb_cell( $form, 'plugin_honor_force_ssl' );
+			$this->get_nocb_td( $form, 'plugin_honor_force_ssl' );
 
 			$table_rows['plugin_html_attr_filter'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook',
@@ -123,26 +123,26 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_check_head'] = $form->get_th_html( _x( 'Check for Duplicate Meta Tags',
 				'option label', 'wpsso' ), '', 'plugin_check_head' ).
-			$this->get_nocb_cell( $form, 'plugin_check_head' );
+			$this->get_nocb_td( $form, 'plugin_check_head' );
 
 			$table_rows['plugin_filter_lang'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use WP Locale for Language',
 				'option label', 'wpsso' ), '', 'plugin_filter_lang' ).
-			$this->get_nocb_cell( $form, 'plugin_filter_lang' );
+			$this->get_nocb_td( $form, 'plugin_filter_lang' );
 
 			$table_rows['plugin_create_wp_sizes'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Create Missing WP Media Sizes',
 				'option label', 'wpsso' ), '', 'plugin_create_wp_sizes' ).
-			$this->get_nocb_cell( $form, 'plugin_create_wp_sizes' );
+			$this->get_nocb_td( $form, 'plugin_create_wp_sizes' );
 
 			$table_rows['plugin_check_img_dims'] = $form->get_th_html( _x( 'Enforce Image Dimensions Check',
 				'option label', 'wpsso' ), '', 'plugin_check_img_dims' ).
-			$this->get_nocb_cell( $form, 'plugin_check_img_dims',
+			$this->get_nocb_td( $form, 'plugin_check_img_dims',
 				'<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
 			$table_rows['plugin_upscale_images'] = $form->get_th_html( _x( 'Allow Upscale of WP Media Images',
 				'option label', 'wpsso' ), '', 'plugin_upscale_images' ).
-			$this->get_nocb_cell( $form, 'plugin_upscale_images' ).'</td>';
+			$this->get_nocb_td( $form, 'plugin_upscale_images' ).'</td>';
 
 			$table_rows['plugin_upscale_img_max'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent',
@@ -153,23 +153,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$form->get_th_html( _x( 'Enable Plugin Shortcode(s)',
 					'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
-				$this->get_nocb_cell( $form, 'plugin_shortcodes' );
+				$this->get_nocb_td( $form, 'plugin_shortcodes' );
 			}
 
 			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
 				$table_rows[] = '<tr class="hide_in_basic">'.
 				$form->get_th_html( _x( 'Enable Plugin Widget(s)',
 					'option label', 'wpsso' ), '', 'plugin_widgets' ).
-				$this->get_nocb_cell( $form, 'plugin_widgets' );
+				$this->get_nocb_td( $form, 'plugin_widgets' );
 			}
 
 			$table_rows[] = $form->get_th_html( _x( 'Enable WP Excerpt for Pages',
 				'option label', 'wpsso' ), '', 'plugin_page_excerpt' ).
-			$this->get_nocb_cell( $form, 'plugin_page_excerpt' );
+			$this->get_nocb_td( $form, 'plugin_page_excerpt' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Enable WP Tags for Pages',
 				'option label', 'wpsso' ), '', 'plugin_page_tags' ).
-			$this->get_nocb_cell( $form, 'plugin_page_tags' );
+			$this->get_nocb_td( $form, 'plugin_page_tags' );
 
 			return $table_rows;
 		}
@@ -181,38 +181,51 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
+			/*
+			 * Show Columns
+			 */
+			$cols = '<table class="plugin_show_columns">'."\n".'<tr>';
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-				$tr = '';
-				switch ( $col_idx ) {
-					case 'og_desc':
-						$tr = '<tr class="hide_in_basic">';
-						break;
-				}
-				$table_rows['plugin_'.$col_idx.'_col'] = $tr.
-				$form->get_th_html( sprintf( _x( 'Add %s Column in',
-					'option label', 'wpsso' ), $col_header ), '', 'plugin_'.$col_idx.'_col' ).
-				'<td class="blank">'.
-				'<p>'.$this->get_nocb( $form, 'plugin_'.$col_idx.'_col_post', __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ) ).'</p>'.
-				'<p>'.$this->get_nocb( $form, 'plugin_'.$col_idx.'_col_term', __( 'Terms (Categories and Tags) List', 'wpsso' ) ).'</p>'.
-				'<p>'.$this->get_nocb( $form, 'plugin_'.$col_idx.'_col_user', __( 'Users List' ) ).'</p>'.
-				'</td>';
+				$cols .= '<th>'.$col_header.'</th>';
 			}
-	
-			$checkboxes = '';
-			foreach ( $this->p->util->get_post_types() as $post_type )
-				$checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_'.$post_type->name ).' '.
-					$post_type->label.'</p>';
+			$cols .= '</tr>'."\n";
+			foreach ( array(
+				'post' => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
+				'media' => __( 'Media Library', 'wpsso' ),
+				'term' => __( 'Terms (Categories and Tags) List', 'wpsso' ),
+				'user' => __( 'Users List' ),
+			) as $mod_name => $mod_label ) {
+				$cols .= '<tr>';
+				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
+					$cols .= $this->get_nocb_td( $form, 'plugin_'.$col_idx.'_col_'.$mod_name );
+				}
+				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
+			}
+			$cols .= '</table>'."\n";
 
-			$checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_term' ).
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Show Columns',
+				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
+					'<td>'.$cols.'</td>';
+
+			/*
+			 * Include Social Metaboxes
+			 */
+			$add_to_cb = '';
+			foreach ( $this->p->util->get_post_types() as $post_type ) {
+				$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_'.$post_type->name ).
+					' '.$post_type->label.'</p>';
+			}
+
+			$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_term' ).
 				' '.__( 'Terms (Categories and Tags)', 'wpsso' ).'</p>';
 
-			$checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).
+			$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Include Social Metaboxes on',
+			$form->get_th_html( _x( 'Include Social Metaboxes',
 				'option label', 'wpsso' ), '', 'plugin_add_to' ).
-			'<td class="blank">'.$checkboxes.'</td>';
+			'<td class="blank">'.$add_to_cb.'</td>';
 
 			$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Read Yoast SEO Social Meta',
 				'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
@@ -287,23 +300,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_show_purge_count'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Show Cache Purge Count on Update',
 				'option label', 'wpsso' ), '', 'plugin_show_purge_count' ).
-			$this->get_nocb_cell( $form, 'plugin_show_purge_count' ).
+			$this->get_nocb_td( $form, 'plugin_show_purge_count' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_show_purge_count' );
 
 			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Cache on Save Settings',
 				'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
-			$this->get_nocb_cell( $form, 'plugin_clear_on_save' ).
+			$this->get_nocb_td( $form, 'plugin_clear_on_save' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_on_save' );
 
 			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',
 				'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
-			$this->get_nocb_cell( $form, 'plugin_clear_short_urls' ).
+			$this->get_nocb_td( $form, 'plugin_clear_short_urls' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_short_urls' );
 
 			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for Comment',
 				'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
-			$this->get_nocb_cell( $form, 'plugin_clear_for_comment' ).
+			$this->get_nocb_td( $form, 'plugin_clear_for_comment' ).
 			$this->p->admin->get_site_use( $form, $network, 'plugin_clear_for_comment' );
 
 			return $table_rows;
@@ -328,7 +341,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_shortlink'] = $form->get_th_html( _x( 'Use Shortened URL for WP Shortlink',
 				'option label', 'wpsso' ), '', 'plugin_shortlink' ).
-			$this->get_nocb_cell( $form, 'plugin_shortlink' );
+			$this->get_nocb_td( $form, 'plugin_shortlink' );
 
 			$table_rows['subsection_plugin_bitly'] = '<tr class="hide_in_basic">'.
 				'<td></td><td class="subsection"><h4>'.
@@ -548,8 +561,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					( empty( $comment ) ? '' : ' '.$comment );
 		}
 
-		private function get_nocb_cell( $form, $name, $comment = '' ) {
-			return '<td class="blank">'.$this->get_nocb( $form, $name, $comment ).'</td>';
+		private function get_nocb_td( $form, $name, $comment = '' ) {
+			return '<td class="checkbox blank">'.$this->get_nocb( $form, $name, $comment ).'</td>';
 		}
 	}
 }

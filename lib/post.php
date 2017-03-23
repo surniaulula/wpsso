@@ -38,16 +38,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
 			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
-
 				$post_type_names = $this->p->util->get_post_types( 'names' );
+
 				if ( is_array( $post_type_names ) ) {
 					foreach ( $post_type_names as $post_type ) {
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'adding column filters for post type: '.$post_type );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'adding column filters for post type '.$post_type );
+						}
 
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
 						add_filter( 'manage_'.$post_type.'_posts_columns',
-							array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+							array( &$this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 						add_filter( 'manage_edit-'.$post_type.'_sortable_columns',
 							array( &$this, 'add_sortable_columns' ), 10, 1 );
@@ -58,6 +60,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding column filters for media library' );
+				}
+
+				add_filter( 'manage_media_columns', array( &$this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_upload_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
+				add_action( 'manage_media_custom_column', array( &$this, 'show_column_content' ), 10, 2 );
+
 				/*
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
@@ -65,6 +75,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
 				add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 			}
+
 
 			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -182,14 +193,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $shortlink;
 		}
 
-		public function add_column_headings( $columns ) { 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
+		public function add_post_column_headings( $columns ) { 
 			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 
+		public function add_media_column_headings( $columns ) { 
+			return $this->add_mod_column_headings( $columns, 'media' );
+		}
+
 		public function show_column_content( $column_name, $post_id ) {
+			echo $this->get_column_content( $column_name, $post_id );
+		}
+
+		public function get_column_content( $column_name, $post_id ) {
 			$lca = $this->p->cf['lca'];
 			$value = '';
 			if ( ! empty( $post_id ) ) {	// just in case
@@ -202,7 +218,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
-			echo $value;
+			return $value;
 		}
 
 		public function update_sortable_meta( $post_id, $col_idx, $content ) { 

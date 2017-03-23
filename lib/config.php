@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.40.6-dev3',	// plugin version
-					'opt_version' => '511',		// increment when changing default options
+					'opt_version' => '512',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -732,12 +732,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// Social / Custom Meta Tab
+					'plugin_schema_type_col_media' => 1,
 					'plugin_schema_type_col_post' => 1,
 					'plugin_schema_type_col_term' => 0,
 					'plugin_schema_type_col_user' => 0,
+					'plugin_og_img_col_media' => 0,
 					'plugin_og_img_col_post' => 1,
 					'plugin_og_img_col_term' => 1,
 					'plugin_og_img_col_user' => 1,
+					'plugin_og_desc_col_media' => 1,
 					'plugin_og_desc_col_post' => 0,
 					'plugin_og_desc_col_term' => 0,
 					'plugin_og_desc_col_user' => 1,

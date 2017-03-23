@@ -26,13 +26,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				// save time on known admin pages we don't modify
 				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
 					case 'index.php':		// Dashboard
-					case 'upload.php':		// Media
 					case 'edit-comments.php':	// Comments
 					case 'themes.php':		// Appearance
 					case 'plugins.php':		// Plugins
 					case 'tools.php':		// Tools
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no modules required for current page' );
+						}
 						return;
 				}
 			}

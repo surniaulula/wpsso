@@ -641,10 +641,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public static function get_sortable_columns( $col_idx = false ) { 
 			$sort_cols = WpssoConfig::$cf['edit']['columns'];
 			if ( $col_idx !== false ) {
-				if ( isset( $sort_cols[$col_idx] ) )
+				if ( isset( $sort_cols[$col_idx] ) ) {
 					return $sort_cols[$col_idx];
-				else return null;
-			} else return $sort_cols;
+				} else {
+					return null;
+				}
+			} else {
+				return $sort_cols;
+			}
 		}
 
 		// called from the uninstall static method
@@ -706,8 +710,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				foreach ( self::get_column_headers() as $col_idx => $col_header ) {
 					if ( ! empty( $this->p->options['plugin_'.$col_idx.'_col_'.$mod_name] ) ) {
 						$columns[$lca.'_'.$col_idx] = $col_header;
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding '.$lca.'_'.$col_idx.' column' );
+						}
 					}
 				}
 			}

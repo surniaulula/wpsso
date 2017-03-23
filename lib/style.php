@@ -162,6 +162,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		text-align:left;
 		font-size:1.1em;
 	}
+	.wp-list-table th.column-cb,
+	.wp-list-table td.column-cb {
+		width:2%;
+	}
 	.wp-list-table th.column-title,
 	.wp-list-table td.column-title {
 		width:25%;
