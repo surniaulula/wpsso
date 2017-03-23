@@ -39,8 +39,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'load modules' );	// begin timer
-				if ( $has_action )
+				if ( $has_action ) {
 					$this->p->debug->log( 'loading modules for action '.$has_action );
+				}
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {

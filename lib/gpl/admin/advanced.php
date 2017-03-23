@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			/*
-			 * Show Columns
+			 * Include Columns in Admin Lists
 			 */
 			$cols = '<table class="plugin_show_columns">'."\n".'<tr>';
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$cols .= '</tr>'."\n";
 			foreach ( array(
 				'post' => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
-				'media' => __( 'Media Library', 'wpsso' ),
+				'media' => __( 'Media Library Item List', 'wpsso' ),
 				'term' => __( 'Terms (Categories and Tags) List', 'wpsso' ),
 				'user' => __( 'Users List' ),
 			) as $mod_name => $mod_label ) {
@@ -203,12 +203,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			}
 			$cols .= '</table>'."\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Show Columns',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Include Columns in Admin Lists',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 
 			/*
-			 * Include Social Metaboxes
+			 * Include Social Settings Metabox
 			 */
 			$add_to_cb = '';
 			foreach ( $this->p->util->get_post_types() as $post_type ) {
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Include Social Metaboxes',
+			$form->get_th_html( _x( 'Include Social Settings Metabox',
 				'option label', 'wpsso' ), '', 'plugin_add_to' ).
 			'<td class="blank">'.$add_to_cb.'</td>';
 

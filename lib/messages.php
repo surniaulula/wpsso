@@ -345,25 +345,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/*
 						 * 'Social Settings' settings
 						 */
-						case 'tooltip-plugin_schema_type_col':
-							if ( empty( $col_name ) )
-								$col_name = sprintf( _x( '%s Schema',
-									'column title', 'wpsso' ),
-										$this->p->cf['menu']['label'] );
-							// no break
-						case 'tooltip-plugin_og_img_col':
-							if ( empty( $col_name ) )
-								$col_name = sprintf( _x( '%s Img',
-									'column title', 'wpsso' ),
-										$this->p->cf['menu']['label'] );
-							// no break
-						case 'tooltip-plugin_og_desc_col':
-							if ( empty( $col_name ) )
-								$col_name = sprintf( _x( '%s Desc',
-									'column title', 'wpsso' ),
-										$this->p->cf['menu']['label'] );
-
-							$text = sprintf( __( 'An "%1$s" column can be added to the Posts, Pages, Taxonomy / Terms, and Users admin list pages. When enabled, <b>users can also hide this column</b> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' ), $col_name );
+						case 'tooltip-plugin_show_columns':
+							$text = __( 'Additional columns can be included in admin list pages to show the Schema type ID, Open Graph image, etc. When a column is enabled, <strong>individual users can also hide that column</strong> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' );
 							break;
 						case 'tooltip-plugin_add_to':
 							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
