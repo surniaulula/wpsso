@@ -375,6 +375,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
 * *Bugfixes*
 	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
+	* Fixed / improved the jQuery datepicker class search to avoid possible conflicts.
 * *Developer Notes*
 	* Added Schema LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
 	* Added a unique @id property for top-level Schema JSON-LD markup.
