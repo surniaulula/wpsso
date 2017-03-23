@@ -364,18 +364,20 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.6-dev3 (2017/03/23)**
+**Version 3.40.6-b1 (2017/03/23)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added support for Schema Organization types that are also Schema Local Business types.
 	* Added support for overriding a WPSSO ORG place with custom place information from WPSSO PLM.
+	* Added checkbox options for the SSO Schema, Img, and Desc columns for the Media Library Item List (Pro version).
+	* Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
 * *Bugfixes*
 	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 * *Developer Notes*
-	* Added Schema Thing &gt; Place &gt; LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
-	* Added an @id property for some Schema JSON-LD markup to signal a possible change in the Schema type being applied.
+	* Added Schema LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
+	* Added a unique @id property for top-level Schema JSON-LD markup.
 	* Updated the minimum / recommended versions for:
 		* PHP v5.4 / v7.0 (see http://php.net/supported-versions.php)
 
@@ -889,9 +891,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.6-dev3 =
+= 3.40.6-b1 =
 
-(2017/03/23) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
+(2017/03/23) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification. Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
 
 = 3.40.5-1 =
 
