@@ -207,7 +207,7 @@ WordPress Social Sharing Optimization (WPSSO) Pro integrates with [All in One SE
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-product-wpsso-single.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" width="100%" height="100%"/></p>
 </div>
 
 **eCommerce Products**
@@ -364,7 +364,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.6-b1 (2017/03/23)**
+**Version 3.40.6-rc1 (2017/03/24)**
 
 * *New Features*
 	* None
@@ -376,6 +376,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification.
 	* Fixed / improved the jQuery datepicker class search to avoid possible conflicts.
+	* Fixed the "Clear All Cache" link in the notice when saving the plugin settings.
 * *Developer Notes*
 	* Added Schema LocalBusiness to Thing &gt; Organization &gt; LocalBusiness as a cross-reference in the Schema Types array.
 	* Added a unique @id property for top-level Schema JSON-LD markup.
@@ -892,9 +893,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.6-b1 =
+= 3.40.6-rc1 =
 
-(2017/03/23) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification. Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
+(2017/03/24) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification. Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
 
 = 3.40.5-1 =
 
