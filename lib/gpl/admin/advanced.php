@@ -222,12 +222,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_add_to'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Include Social Settings Metabox',
 				'option label', 'wpsso' ), '', 'plugin_add_to' ).
 			'<td class="blank">'.$add_to_cb.'</td>';
 
-			$table_rows['plugin_wpseo_social_meta'] = $form->get_th_html( _x( 'Read Yoast SEO Social Meta',
+			$table_rows['plugin_wpseo_social_meta'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Read Yoast SEO Social Meta',
 				'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
 			'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
 

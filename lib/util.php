@@ -1728,9 +1728,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $hash ) ) 
 				$admin_url .= '#'.$hash;
 
-			if ( empty( $link_text ) ) 
+			if ( empty( $link_text ) ) {
 				return $admin_url;
-			else return '<a href="'.$admin_url.'">'.$link_text.'</a>';
+			} else {
+				return '<a href="'.$admin_url.'">'.$link_text.'</a>';
+			}
 		}
 
 		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
