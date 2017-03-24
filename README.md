@@ -104,7 +104,8 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" 
+    width="100%" height="100%" alt="Example Twitter 'Player' Card." /></p>
 </div>
 
 <h4>Quick List of Features (Continued)</h4>
@@ -184,7 +185,11 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" 
+    width="100%" height="100%" alt="xample Social Profiles in Google Search
+    - WPSSO includes author (Person) and publisher (Organization) social
+    profiles in schema.org JSON-LD format for Google Search and their
+    Knowledge Graph." /></p>
 </div>
 
 <h4>Social Profiles for Google Search</h4>
@@ -224,7 +229,9 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png"
+    width="100%" height="100%" alt="Example Twitter 'Large Image Summary'
+    Card." /></p>
 </div>
 
 <p><strong>Images and Videos</strong></p>
@@ -238,7 +245,9 @@
 <div style="clear:both;"></div>
 
 <div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" 
+    width="100%" height="100%" alt="Example Pinterest Product Pin
+    (Zoomed)." /></p>
 </div>
 
 <p><strong>eCommerce Products</strong></p>

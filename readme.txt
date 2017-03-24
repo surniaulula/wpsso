@@ -92,7 +92,8 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" 
+	width="100%" height="100%" alt="Example Twitter 'Player' Card." /></p>
 </div>
 
 = Quick List of Features (Continued) =
@@ -157,7 +158,11 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" 
+	width="100%" height="100%" alt="xample Social Profiles in Google Search
+	- WPSSO includes author (Person) and publisher (Organization) social
+	profiles in schema.org JSON-LD format for Google Search and their
+	Knowledge Graph." /></p>
 </div>
 
 = Social Profiles for Google Search =
@@ -194,7 +199,9 @@ WordPress Social Sharing Optimization (WPSSO) provides the [Summary](https://dev
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png"
+	width="100%" height="100%" alt="Example Twitter 'Large Image Summary'
+	Card." /></p>
 </div>
 
 **Images and Videos**
@@ -207,7 +214,9 @@ WordPress Social Sharing Optimization (WPSSO) Pro integrates with [All in One SE
 
 <div style="clear:both;"></div>
 <div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" width="100%" height="100%"/></p>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" 
+	width="100%" height="100%" alt="Example Pinterest Product Pin
+	(Zoomed)." /></p>
 </div>
 
 **eCommerce Products**
