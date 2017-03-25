@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					if ( version_compare( $app_version, $min_version, '<' ) ) {
 						load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 						if ( ! function_exists( 'deactivate_plugins' ) ) {
-							require_once ABSPATH.'wp-admin/includes/plugin.php';
+							require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
 						}
 						deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
 						wp_die( 

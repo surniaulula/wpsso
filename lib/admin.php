@@ -1381,7 +1381,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'min_version' => $min_version ) ) );
 				} else {
 					if ( ! function_exists( 'get_plugins' ) ) {
-						require_once ABSPATH.'wp-admin/includes/plugin.php';
+						require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
 					}
 					$installed_plugins = get_plugins();
 					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
