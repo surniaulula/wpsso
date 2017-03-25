@@ -862,10 +862,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 					case 'pro-purchase-text':
 						$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
-						if ( ! empty( $info['url'] ) )
+						if ( ! empty( $info['url'] ) ) {
 							$text = '<a href="'.$info['url'].'" target="_blank">'.$text.'</a>';
-						if ( ! empty( $info['ext'] ) && $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] )
-							$text .= ' '.sprintf( _x( '(%s Required)', 'plugin action link', 'wpsso' ), $info['short_pro'] );
+						}
+						if ( ! empty( $info['ext'] ) && $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+							$text .= ' <em>'.sprintf( _x( '(%s required)', 'plugin action link',
+								'wpsso' ), $info['short_pro'] ).'</em>';
+						}
 						break;
 					case 'pro-about-msg-post-text':
 						$text = '<p>'.__( 'You can update the excerpt or content text to change the default description values.', 'wpsso' ).'</p>';

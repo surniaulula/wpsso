@@ -1777,7 +1777,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				// load class object on first check
 				if ( ! isset( self::$mobile_obj ) ) {
 					if ( ! class_exists( 'SuextMobileDetect' ) ) {
-						require_once( dirname( __FILE__ ).'/../ext/mobile-detect.php' );
+						require_once dirname( __FILE__ ).'/../ext/mobile-detect.php';
 					}
 					self::$mobile_obj = new SuextMobileDetect();
 				}
@@ -1850,36 +1850,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_alpha2_countries() {
-			if ( ! class_exists( 'SucomCountryCodes' ) )
-				require_once( dirname( __FILE__ ).'/country-codes.php' );
+			if ( ! class_exists( 'SucomCountryCodes' ) ) {
+				require_once dirname( __FILE__ ).'/country-codes.php';
+			}
 			return SucomCountryCodes::get( 'alpha2' );
 		}
 
 		public static function get_alpha2_country_name( $country_code, $default_code = false ) {
-			if ( empty( $country_code ) ||
-				$country_code === 'none' )
-					return false;
 
-			if ( ! class_exists( 'SucomCountryCodes' ) )
-				require_once( dirname( __FILE__ ).'/country-codes.php' );
+			if ( empty( $country_code ) || $country_code === 'none' ) {
+				return false;
+			}
+
+			if ( ! class_exists( 'SucomCountryCodes' ) ) {
+				require_once dirname( __FILE__ ).'/country-codes.php';
+			}
 
 			$countries = SucomCountryCodes::get( 'alpha2' );
 
 			if ( ! isset( $countries[$country_code] ) ) {
-				if ( $default_code === false ||
-					! isset( $countries[$default_code] ) )
-						return false;
-				else return $countries[$default_code];
-			} else return $countries[$country_code];
+				if ( $default_code === false || ! isset( $countries[$default_code] ) ) {
+					return false;
+				} else {
+					return $countries[$default_code];
+				}
+			} else {
+				return $countries[$country_code];
+			}
 		}
 
 		public static function get_hours_range( $start = 0, $end = 86400, $step = 3600, $format = 'g:i a' ) {
 			$times = array();
 		        foreach ( range( $start, $end, $step ) as $timestamp ) {
 				$hour_mins = gmdate( 'H:i', $timestamp );
-				if ( ! empty( $format ) )
+				if ( ! empty( $format ) ) {
 					$times[$hour_mins] = gmdate( $format, $timestamp );
-				else $times[$hour_mins] = $hour_mins;
+				} else {
+					$times[$hour_mins] = $hour_mins;
+				}
 			}
 			return $times;
 		}

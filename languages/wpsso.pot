@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.6-"
-"rc1\n"
+"rc2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,7 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:689 lib/messages.php:945
+#: lib/admin.php:689 lib/messages.php:948
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -294,7 +294,7 @@ msgid "Download Latest"
 msgstr ""
 
 #: lib/admin.php:1171 lib/admin.php:1176 lib/admin.php:1191 lib/admin.php:1197
-#: lib/messages.php:925
+#: lib/messages.php:928
 msgctxt "option label"
 msgid "Pro Authentication ID"
 msgstr ""
@@ -402,35 +402,35 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1458
+#: lib/admin.php:1461
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1470
+#: lib/admin.php:1473
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1476
+#: lib/admin.php:1479
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1484
+#: lib/admin.php:1487
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1489
+#: lib/admin.php:1492
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1492
+#: lib/admin.php:1495
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1506
+#: lib/admin.php:1509
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -999,7 +999,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:49 lib/messages.php:914
+#: lib/gpl/admin/advanced.php:49 lib/messages.php:917
 #: lib/pro/admin/advanced.php:55
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -2522,104 +2522,104 @@ msgctxt "plugin action link"
 msgid "Purchase Pro"
 msgstr ""
 
-#: lib/messages.php:868
+#: lib/messages.php:869
 msgctxt "plugin action link"
-msgid "(%s Required)"
+msgid "(%s required)"
 msgstr ""
 
-#: lib/messages.php:871
+#: lib/messages.php:874
 msgid ""
 "You can update the excerpt or content text to change the default description "
 "values."
 msgstr ""
 
-#: lib/messages.php:874
+#: lib/messages.php:877
 msgid ""
 "You can change the social image by selecting a featured image, attaching "
 "image(s) or including images in the content."
 msgstr ""
 
-#: lib/messages.php:874
+#: lib/messages.php:877
 msgid ""
 "The video service modules &mdash; required to detect embedded videos &mdash; "
 "are available with the %s Pro version."
 msgstr ""
 
-#: lib/messages.php:890
+#: lib/messages.php:893
 msgid ""
 "A larger and/or different custom image &mdash; specifically for social meta "
 "tags and markup &mdash; can be selected in the Social Settings metabox under "
 "the <em>Select Media</em> tab."
 msgstr ""
 
-#: lib/messages.php:894
+#: lib/messages.php:897
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:896
+#: lib/messages.php:899
 msgid ""
 "You can also adjust the <b>%2$s</b> option in the <a href=\"%1$s\">Social "
 "and SEO Image Dimensions</a> settings."
 msgstr ""
 
-#: lib/messages.php:897
+#: lib/messages.php:900
 msgid ""
 "Enable or increase the <a href=\"%1$s\">WP / Theme Integration</a> <em>image "
 "upscaling percentage</em> feature."
 msgstr ""
 
-#: lib/messages.php:898
+#: lib/messages.php:901
 msgid ""
 "Disable the <a href=\"%1$s\">WP / Theme Integration</a> <em>image dimensions "
 "check</em> option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:900
+#: lib/messages.php:903
 msgid ""
 "Define the %1$s constant as <em>true</em> to auto-hide all dismissable "
 "warnings."
 msgstr ""
 
-#: lib/messages.php:905
+#: lib/messages.php:908
 msgid ""
 "An Open Graph image meta tag could not be created from this webpage content "
 "or its custom Social Settings. Facebook <em>requires at least one image meta "
 "tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:908
+#: lib/messages.php:911
 msgid ""
 "An Open Graph description meta tag could not be created from this webpage "
 "content or its custom Social Settings. Facebook <em>requires a description "
 "meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:911
+#: lib/messages.php:914
 msgid ""
 "A Schema image property could not be created from this webpage content and/"
 "or custom settings. Google <em>requires at least one image property</em> for "
 "this Schema item type."
 msgstr ""
 
-#: lib/messages.php:914
+#: lib/messages.php:917
 msgid "The <a href=\"%1$s\">%2$s</a> advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:914
+#: lib/messages.php:917
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions, and detect additional images / embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:914
+#: lib/messages.php:917
 msgid ""
 "Some theme / plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:914
+#: lib/messages.php:917
 msgid ""
 "<a href=\"%s\">If you use any shortcodes in your content text, this option "
 "should be enabled</a> &mdash; if you experience display issues after "
@@ -2627,98 +2627,98 @@ msgid ""
 "fault, and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:919
+#: lib/messages.php:922
 msgid ""
 "At least one of your theme header templates does not support Schema markup "
 "of the webpage head section &mdash; this is especially important for Google "
 "and Pinterest."
 msgstr ""
 
-#: lib/messages.php:919
+#: lib/messages.php:922
 msgid ""
 "The %s element in your header templates should include a function, action, "
 "or filter for its attributes."
 msgstr ""
 
-#: lib/messages.php:919
+#: lib/messages.php:922
 msgid ""
 "%1$s can update your header templates automatically to change the default "
 "%2$s element to:"
 msgstr ""
 
-#: lib/messages.php:921
+#: lib/messages.php:924
 msgid ""
 "<b><a href=\"%1$s\">Click here to update header templates automatically</a></"
 "b> or update the templates yourself manually."
 msgstr ""
 
-#: lib/messages.php:925
+#: lib/messages.php:928
 msgid "The %1$s plugin %2$s option is empty."
 msgstr ""
 
-#: lib/messages.php:925
+#: lib/messages.php:928
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the <a href=\"%s\">Extension Plugins and Pro Licenses</a> settings page."
 msgstr ""
 
-#: lib/messages.php:928
+#: lib/messages.php:931
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update the plugin to install the latest "
 "Pro version. ;-)"
 msgstr ""
 
-#: lib/messages.php:934
+#: lib/messages.php:937
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s"
 "\">Extension Plugins and Pro Licenses</a> settings page, but the %2$s plugin "
 "is not active."
 msgstr ""
 
-#: lib/messages.php:937
+#: lib/messages.php:940
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:937
+#: lib/messages.php:940
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:937
+#: lib/messages.php:940
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:940
+#: lib/messages.php:943
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:940
+#: lib/messages.php:943
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:945
+#: lib/messages.php:948
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:945
+#: lib/messages.php:948
 msgid ""
 "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
 "latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:948
+#: lib/messages.php:951
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
 "is outdated, unsupported, insecure</a> and may lack some important features. "
@@ -2726,31 +2726,31 @@ msgid ""
 "version %3$s)."
 msgstr ""
 
-#: lib/messages.php:962
+#: lib/messages.php:965
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:963
+#: lib/messages.php:966
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
 "update the plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:964
+#: lib/messages.php:967
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:968
+#: lib/messages.php:971
 msgid ""
 "The development of %1$s is driven mostly by customer requests &mdash; we "
 "welcome your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:980
+#: lib/messages.php:983
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."
@@ -3144,6 +3144,14 @@ msgstr ""
 
 #: lib/profile/social-settings.php:37
 msgid "Invalid user ID."
+msgstr ""
+
+#: lib/register.php:105
+msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
+msgstr ""
+
+#: lib/register.php:107
+msgid "Please upgrade %1$s before trying to reactivate the %2$s plugin."
 msgstr ""
 
 #: lib/schema.php:44 lib/schema.php:50
@@ -3840,13 +3848,13 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:282
+#: wpsso.php:283
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:285
+#: wpsso.php:286
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."

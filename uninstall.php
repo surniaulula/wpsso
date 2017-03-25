@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ||
 
 $plugin_filepath = dirname( __FILE__ ).'/wpsso.php';
 
-require_once( dirname( __FILE__ ).'/lib/config.php' );
+require_once dirname( __FILE__ ).'/lib/config.php';
 
 WpssoConfig::set_constants( $plugin_filepath );
 WpssoConfig::require_libs( $plugin_filepath );	// includes the register.php class library

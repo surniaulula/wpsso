@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/*
 			 * Include Columns in Admin Lists
 			 */
-			$cols = '<table class="plugin_show_columns">'."\n".'<tr>';
+			$cols = '<table class="plugin-show-columns">'."\n".'<tr>';
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
 				$cols .= '<th>'.$col_header.'</th>';
 			}

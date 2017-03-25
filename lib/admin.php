@@ -1380,13 +1380,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
 				} else {
-					if ( ! function_exists( 'get_plugins' ) )
-						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
+					if ( ! function_exists( 'get_plugins' ) ) {
+						require_once ABSPATH.'wp-admin/includes/plugin.php';
+					}
 					$installed_plugins = get_plugins();
 					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
-						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
-					else $this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) ) {
+						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+					} else {
+						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+					}
 				}
 			}
 

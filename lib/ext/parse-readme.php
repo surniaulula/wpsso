@@ -245,8 +245,9 @@ class SuextParseReadme {
 		$text = trim( $text );
 	        $text = call_user_func( array( __CLASS__, 'code_trick' ), $text, $markdown );
 		if ( $markdown ) {
-			if ( ! function_exists( 'suext_markdown' ) )
-				require_once( SUEXT_README_MARKDOWN );
+			if ( ! function_exists( 'suext_markdown' ) ) {
+				require_once SUEXT_README_MARKDOWN;
+			}
 			$text = suext_markdown( $text, $this->debug );
 		}
 		$allowed = array(

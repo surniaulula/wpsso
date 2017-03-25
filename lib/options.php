@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								0 : $opts['options_version'] ) );
 
 					if ( ! is_object( $this->upg ) ) {
-						require_once( WPSSO_PLUGINDIR.'lib/upgrade.php' );
+						require_once WPSSO_PLUGINDIR.'lib/upgrade.php';
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 

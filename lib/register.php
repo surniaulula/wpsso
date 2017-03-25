@@ -78,29 +78,35 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function activate_plugin() {
-			$short = WpssoConfig::$cf['plugin']['wpsso']['short'];
-			$version = WpssoConfig::$cf['plugin']['wpsso']['version'];
+			$plugin_name = WpssoConfig::$cf['plugin']['wpsso']['name'];
+			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 				switch ( $key ) {
 					case 'wp':
 						global $wp_version;
 						$app_label = 'WordPress';
-						$cur_version = $wp_version;
+						$app_version = $wp_version;
 						break;
 					case 'php':
 						$app_label = 'PHP';
-						$cur_version = phpversion();
+						$app_version = phpversion();
 						break;
 				}
 				if ( isset( WpssoConfig::$cf[$key]['min_version'] ) ) {
 					$min_version = WpssoConfig::$cf[$key]['min_version'];
-					if ( version_compare( $cur_version, $min_version, '<' ) ) {
-						require_once( ABSPATH.'wp-admin/includes/plugin.php' );
-						deactivate_plugins( WPSSO_PLUGINBASE );
-						error_log( WPSSO_PLUGINBASE.' requires '.$app_label.' '.$min_version.' or higher ('.$cur_version.' reported).' );
-						wp_die( '<p>The '.$short.' plugin cannot be activated &mdash; '.
-							$short.' requires '.$app_label.' version '.$min_version.' or newer.</p>' );
+					if ( version_compare( $app_version, $min_version, '<' ) ) {
+						load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+						if ( ! function_exists( 'deactivate_plugins' ) ) {
+							require_once ABSPATH.'wp-admin/includes/plugin.php';
+						}
+						deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
+						wp_die( 
+							'<p>'.sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+								'wpsso' ), $plugin_name, $app_label, $min_version ).'</p>'.
+							'<p>'.sprintf( __( 'Please upgrade %1$s before trying to reactivate the %2$s plugin.',
+								'wpsso' ), $app_label, $plugin_name ).'</p>'
+						);
 					}
 				}
 			}
@@ -110,7 +116,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_objects( true );	// $activate = true
 			$this->p->util->clear_all_cache( true );	// $clear_ext = true
 
-			WpssoUtil::save_all_times( 'wpsso', $version );
+			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
 
 			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
@@ -122,12 +128,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_option( constant( 'WPSSO_OPTIONS_NAME' ) );
 				add_option( constant( 'WPSSO_OPTIONS_NAME' ), $this->p->options, null, 'yes' );	// autoload = yes
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'default options have been added to the database' );
+				}
 
-				if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) )
+				if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) ) {
 					$this->p->notice->warn( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
 						plugin options have been reset to their default values.' );
+				}
 			}
 		}
 

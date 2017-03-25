@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.6-rc1',	// plugin version
+					'version' => '3.40.6-rc2',	// plugin version
 					'opt_version' => '512',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1736,42 +1736,42 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_filepath ) {
 
-			require_once( WPSSO_PLUGINDIR.'lib/com/cache.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/com/nodebug.php' );	// always load fallback class
-			require_once( WPSSO_PLUGINDIR.'lib/com/nonotice.php' );	// always load fallback class
-			require_once( WPSSO_PLUGINDIR.'lib/com/util.php' );
+			require_once WPSSO_PLUGINDIR.'lib/com/cache.php';
+			require_once WPSSO_PLUGINDIR.'lib/com/nodebug.php';	// always load fallback class
+			require_once WPSSO_PLUGINDIR.'lib/com/nonotice.php';	// always load fallback class
+			require_once WPSSO_PLUGINDIR.'lib/com/util.php';
 
-			require_once( WPSSO_PLUGINDIR.'lib/check.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/exception.php' );	// extends exception
-			require_once( WPSSO_PLUGINDIR.'lib/filters.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/functions.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/head.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/media.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/meta.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/opengraph.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/options.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/post.php' );		// extends meta.php
-			require_once( WPSSO_PLUGINDIR.'lib/register.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/schema.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/script.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/style.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/term.php' );		// extends meta.php
-			require_once( WPSSO_PLUGINDIR.'lib/twittercard.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/user.php' );		// extends meta.php
-			require_once( WPSSO_PLUGINDIR.'lib/util.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/webpage.php' );
-			require_once( WPSSO_PLUGINDIR.'lib/weibo.php' );
+			require_once WPSSO_PLUGINDIR.'lib/check.php';
+			require_once WPSSO_PLUGINDIR.'lib/exception.php';	// extends exception
+			require_once WPSSO_PLUGINDIR.'lib/filters.php';
+			require_once WPSSO_PLUGINDIR.'lib/functions.php';
+			require_once WPSSO_PLUGINDIR.'lib/head.php';
+			require_once WPSSO_PLUGINDIR.'lib/media.php';
+			require_once WPSSO_PLUGINDIR.'lib/meta.php';
+			require_once WPSSO_PLUGINDIR.'lib/opengraph.php';
+			require_once WPSSO_PLUGINDIR.'lib/options.php';
+			require_once WPSSO_PLUGINDIR.'lib/post.php';		// extends meta.php
+			require_once WPSSO_PLUGINDIR.'lib/register.php';
+			require_once WPSSO_PLUGINDIR.'lib/schema.php';
+			require_once WPSSO_PLUGINDIR.'lib/script.php';
+			require_once WPSSO_PLUGINDIR.'lib/style.php';
+			require_once WPSSO_PLUGINDIR.'lib/term.php';		// extends meta.php
+			require_once WPSSO_PLUGINDIR.'lib/twittercard.php';
+			require_once WPSSO_PLUGINDIR.'lib/user.php';		// extends meta.php
+			require_once WPSSO_PLUGINDIR.'lib/util.php';
+			require_once WPSSO_PLUGINDIR.'lib/webpage.php';
+			require_once WPSSO_PLUGINDIR.'lib/weibo.php';
 
 
 			if ( is_admin() ) {
-				require_once( WPSSO_PLUGINDIR.'lib/messages.php' );
-				require_once( WPSSO_PLUGINDIR.'lib/admin.php' );
-				require_once( WPSSO_PLUGINDIR.'lib/com/form.php' );
-				require_once( WPSSO_PLUGINDIR.'lib/ext/parse-readme.php' );
+				require_once WPSSO_PLUGINDIR.'lib/messages.php';
+				require_once WPSSO_PLUGINDIR.'lib/admin.php';
+				require_once WPSSO_PLUGINDIR.'lib/com/form.php';
+				require_once WPSSO_PLUGINDIR.'lib/ext/parse-readme.php';
 			}
 
 			if ( file_exists( WPSSO_PLUGINDIR.'lib/loader.php' ) ) {
-				require_once( WPSSO_PLUGINDIR.'lib/loader.php' );
+				require_once WPSSO_PLUGINDIR.'lib/loader.php';
 			}
 
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( $ret === false && ! empty( $filespec ) ) {
 				$filepath = WPSSO_PLUGINDIR.'lib/'.$filespec.'.php';
 				if ( file_exists( $filepath ) ) {
-					require_once( $filepath );
+					require_once $filepath;
 					if ( empty( $classname ) )
 						return SucomUtil::sanitize_classname( 'wpsso'.$filespec, false );	// $underscore = false
 					else return $classname;

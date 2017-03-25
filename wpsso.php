@@ -11,9 +11,9 @@
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
- * Requires At Least: 3.8
+ * Requires At Least: 3.7
  * Tested Up To: 4.7.3
- * Version: 3.40.6-rc1
+ * Version: 3.40.6-rc2
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -74,7 +74,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function __construct() {
 
-			require_once( dirname( __FILE__ ).'/lib/config.php' );
+			require_once dirname( __FILE__ ).'/lib/config.php';
 			$this->cf = WpssoConfig::get_config();			// unfiltered - $cf['*'] array is not available yet
 			WpssoConfig::set_constants( __FILE__ );
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
@@ -86,9 +86,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 1 );	// runs at init 11 by default
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );	// runs at init 12 by default
 
-			if ( is_admin() )
+			if ( is_admin() ) {
 				add_action( 'wpsso_init_textdomain', 		// action is run after the debug property is defined
 					array( __CLASS__, 'init_textdomain' ), -10, 1 );	// hooks override_textdomain_mofile if debug enabled
+			}
 		}
 
 		public static function &get_instance() {
@@ -324,9 +325,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		// runs at wpsso_init_textdomain priority -10
 		public static function init_textdomain( $debug_enabled ) {
-			if ( $debug_enabled )
+			if ( $debug_enabled ) {
 				add_filter( 'load_textdomain_mofile', 
 					array( Wpsso::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
+			}
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
