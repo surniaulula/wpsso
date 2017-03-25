@@ -372,7 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.6-rc2 (2017/03/25)**
+**Version 3.40.6-1 (2017/03/25)**
 
 * *New Features*
 	* None
@@ -901,7 +901,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.6-rc2 =
+= 3.40.6-1 =
 
 (2017/03/25) Added support for Schema Organization types that are also Schema Local Business types. Fixed the missing 'opens' and 'closes' properties for https://schema.org/OpeningHoursSpecification. Improved the layout of SSO Schema, Img, and Desc column checkbox options on the Advanced settings page.
 
