@@ -14,30 +14,12 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 	class WpssoWebpage {
 
 		private $p;
-		private $shortcode = array();
-		private $saved_title = false;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-			}
-
-			$this->set_objects();
-		}
-
-		private function set_objects() {
-			if ( ! empty( $this->p->options['plugin_shortcodes'] ) ) {
-				foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-					if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
-						foreach ( $info['lib']['shortcode'] as $id => $name ) {
-							$classname = apply_filters( $lca.'_load_lib', false, 'shortcode/'.$id );
-							if ( $classname !== false && class_exists( $classname ) )
-								$this->shortcode[$id] = new $classname( $this->p );
-						}
-					}
-				}
 			}
 		}
 

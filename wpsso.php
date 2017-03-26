@@ -55,7 +55,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $script;			// SucomScript (admin jquery tooltips)
 		public $style;			// SucomStyle (admin styles)
 		public $util;			// WpssoUtil (extends SucomUtil)
-		public $webpage;		// WpssoWebpage (title, desc, etc., plus shortcodes)
+		public $webpage;		// WpssoWebpage (page title, desc, etc.)
 
 		/*
 		 * Reference Variables (config, options, modules, etc.)
@@ -66,6 +66,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $is_avail = array();	// assoc array for other plugin checks
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
+		public $sc = array();		// shortcodes
 
 		private static $instance;
 
@@ -80,11 +81,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
 			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
 
-			add_action( 'init', array( &$this, 'set_config' ), -10 );			// runs at init -10 (before widgets_init)
-			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );		// runs at init 1
-			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 2 );	// runs at init 10 by default
-			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 1 );	// runs at init 11 by default
-			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );	// runs at init 12 by default
+			add_action( 'init', array( &$this, 'set_config' ), -10 );				// runs at init -10 (before widgets_init)
+			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );			// runs at init 1
+			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// runs at init 9 by default
+			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// runs at init 10 by default
+			add_action( 'init', array( &$this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// runs at init 11 by default
+			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// runs at init 12 by default
 
 			if ( is_admin() ) {
 				add_action( 'wpsso_init_textdomain', 		// action is run after the debug property is defined
@@ -93,19 +95,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		public static function &get_instance() {
-			if ( ! isset( self::$instance ) )
+			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self;
+			}
 			return self::$instance;
 		}
 
-		// runs at init priority -10 by default
+		// runs at init priority -10
 		// called by activate_plugin() as well
 		public function set_config() {
 			$this->cf = WpssoConfig::get_config( false, true );	// apply filters - define the $cf['*'] array
 		}
 
-		// the widgets_init action runs at init 1
-		// and the hook runs at widgets_init priority 10
+		// runs at init 1
 		public function init_widgets() {
 			$opts = get_option( WPSSO_OPTIONS_NAME );
 			if ( ! empty( $opts['plugin_widgets'] ) ) {
@@ -122,7 +124,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		// runs at init priority 10 by default
+		// runs at init priority 9 by default
 		// called by activate_plugin() as well
 		public function set_options() {
 			$this->options = get_option( WPSSO_OPTIONS_NAME );
@@ -186,7 +188,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		// runs at init priority 11 by default
+		// runs at init priority 10 by default
 		// called by activate_plugin() as well
 		public function set_objects( $activate = false ) {
 
@@ -223,7 +225,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cache = new SucomCache( $this );			// object and file caching
 			$this->style = new SucomStyle( $this );			// admin styles
 			$this->script = new SucomScript( $this );		// admin jquery tooltips
-			$this->webpage = new WpssoWebpage( $this );		// title, desc, etc., plus shortcodes
+			$this->webpage = new WpssoWebpage( $this );		// page title, desc, etc.
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
 			$this->filters = new WpssoFilters( $this );		// integration filters
 			$this->head = new WpssoHead( $this );
@@ -280,10 +282,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
-					$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.', 'wpsso' ) );
+					$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.',
+						'wpsso' ) );
 				} elseif ( $this->debug->is_enabled( 'html' ) ) {
 					$this->debug->log( 'HTML debug mode is active' );
-					$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) );
+					$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
+						'wpsso' ) );
 				}
 				$this->util->add_plugin_filters( $this, array( 
 					'cache_expire_head_array' => '__return_zero',
@@ -293,17 +297,34 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
+		// runs at init priority 11 by default
+		public function init_shortcodes() {
+			if ( ! empty( $this->options['plugin_shortcodes'] ) ) {
+				foreach ( $this->cf['plugin'] as $lca => $info ) {
+					if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
+						foreach ( $info['lib']['shortcode'] as $id => $name ) {
+							$classname = apply_filters( $lca.'_load_lib', false, 'shortcode/'.$id );
+							if ( $classname !== false && class_exists( $classname ) ) {
+								$this->sc[$id] = new $classname( $this );
+							}
+						}
+					}
+				}
+			}
+		}
+
 		// runs at init priority 12 by default
 		public function init_plugin() {
-			if ( $this->debug->enabled )
+
+			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'plugin initialization' );	// begin timer
+			}
 
 			if ( $this->debug->enabled ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9000, 9000 ) as $prio ) {
 						add_action( $action, create_function( '',
-							'echo "<!-- wpsso '.$action.' action hook priority '.
-								$prio.' mark -->\n";' ), $prio );
+							'echo "<!-- wpsso '.$action.' action hook priority '.$prio.' mark -->\n";' ), $prio );
 						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
 					}
 				}
@@ -314,20 +335,22 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 			}
 
-			if ( $this->debug->enabled )
+			if ( $this->debug->enabled ) {
 				$this->debug->log( 'running init_plugin action' );
+			}
 
 			do_action( 'wpsso_init_plugin' );
 
-			if ( $this->debug->enabled )
+			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'plugin initialization' );	// end timer
+			}
 		}
 
 		// runs at wpsso_init_textdomain priority -10
 		public static function init_textdomain( $debug_enabled ) {
 			if ( $debug_enabled ) {
 				add_filter( 'load_textdomain_mofile', 
-					array( Wpsso::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
+					array( self::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
 			}
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
@@ -338,11 +361,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				foreach ( $this->cf['plugin'] as $ext => $info ) {
 					if ( $info['slug'] === $domain ) {
 						$constant_name = strtoupper( $ext ).'_PLUGINDIR';
-						if ( defined( $constant_name ) &&
-							$plugin_dir = constant( strtoupper( $ext ).'_PLUGINDIR' ) ) {
+						if ( defined( $constant_name ) && $plugin_dir = constant( $constant_name ) ) {
 							$plugin_mofile = $plugin_dir.'languages/'.basename( $wp_mofile );
-							if ( $plugin_mofile !== $wp_mofile &&
-								is_readable( $plugin_mofile ) ) {
+							if ( $plugin_mofile !== $wp_mofile && is_readable( $plugin_mofile ) ) {
 								global $l10n;
 								unset( $l10n[$domain] );	// prevent merging
 								return $plugin_mofile;
@@ -362,17 +383,18 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		// only runs when debug is enabled
 		public function show_config() { 
-			if ( ! $this->debug->enabled )	// just in case
+			if ( ! $this->debug->enabled ) {	// just in case
 				return;
+			}
 
 			// show constants
 			$defined_constants = get_defined_constants( true );
 			$defined_constants['user']['WPSSO_NONCE'] = '********';
-			if ( is_multisite() )
+			if ( is_multisite() ) {
 				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 
 					$defined_constants['user'] ), 'multisite constants' );
-			$this->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/',
-				$defined_constants['user'] ), 'wpsso constants' );
+			}
+			$this->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants['user'] ), 'wpsso constants' );
 
 			// show active plugins
 			$this->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
