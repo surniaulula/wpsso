@@ -1193,25 +1193,28 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Return the post / user / term id, module name, and the module object reference.
+		 * Determine and return the post/user/term module array.
 		 */
-		public function get_page_mod( $use_post = false, $mod = false, &$wp_obj = false ) {
+		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
 
 			if ( ! is_array( $mod ) ) {
 				$mod = array();
-			} elseif ( ! empty( $mod['obj'] ) ) {
-				if ( $this->p->debug->enabled )
+			} elseif ( isset( $mod['obj'] ) && is_object( $mod['obj'] ) ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: module object is defined' );
+				}
 				return $mod;
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			// check for a recognized object
 			if ( is_object( $wp_obj ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'wp_obj is '.get_class( $wp_obj ) );
+				}
 				switch ( get_class( $wp_obj ) ) {
 					case 'WP_Post':
 						$mod['name'] = 'post';
@@ -1230,38 +1233,48 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// we need a module name to get the id and object
 			if ( empty( $mod['name'] ) ) {
-				if ( self::is_post_page( $use_post ) )	// $use_post = true | false | post_id 
+				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id 
 					$mod['name'] = 'post';
-				elseif ( self::is_term_page() )
+				} elseif ( self::is_term_page() ) {
 					$mod['name'] = 'term';
-				elseif ( self::is_user_page() )
+				} elseif ( self::is_user_page() ) {
 					$mod['name'] = 'user';
-				else $mod['name'] = false;
+				} else {
+					$mod['name'] = false;
+				}
 			}
 
 			if ( empty( $mod['id'] ) ) {
-				if ( $mod['name'] === 'post' )
+				if ( $mod['name'] === 'post' ) {
 					$mod['id'] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id 
-				elseif ( $mod['name'] === 'term' )
+				} elseif ( $mod['name'] === 'term' ) {
 					$mod['id'] = self::get_term_object( false, '', 'id' );
-				elseif ( $mod['name'] === 'user' )
+				} elseif ( $mod['name'] === 'user' ) {
 					$mod['id'] = self::get_user_object( false, 'id' );
-				else $mod['id'] = false;
+				} else {
+					$mod['id'] = false;
+				}
 			}
 
-			if ( isset( $this->p->m['util'][$mod['name']] ) )	// make sure we have a complete $mod array
+			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// make sure we have a complete $mod array
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
-			else $mod = array_merge( WpssoMeta::$mod_array, $mod );
+			} else {
+				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
+			}
 
 			$mod['use_post'] = $use_post;
 
-			// the post module defines is_home_page, is_home_index, and is_home
-			// if we don't have a module, then check for the standard home index
-			if ( $mod['name'] === false )
+			/*
+			 * The post module defines is_home_page, is_home_index, and is_home.
+			 * If we don't have a module, then check if we're on the home index page.
+			 */
+			if ( $mod['name'] === false ) {
 				$mod['is_home_index'] = $mod['is_home'] = is_home();
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( '$mod', $mod );
+			}
 
 			return $mod;
 		}

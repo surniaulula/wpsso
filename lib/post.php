@@ -98,10 +98,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
-			$mod = WpssoMeta::$mod_array;
+			$mod = WpssoMeta::$mod_defaults;
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;

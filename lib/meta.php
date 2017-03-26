@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			),
 		);
 
-		public static $mod_array = array(
+		public static $mod_defaults = array(
 			'id' => 0,
 			'name' => false,
 			'obj' => false,
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
-			return $this->must_be_extended( __METHOD__, self::$mod_array );
+			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {

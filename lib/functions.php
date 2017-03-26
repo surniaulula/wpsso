@@ -9,50 +9,85 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
+if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
+	function wpsso_get_page_mod( $use_post = false ) {
+		$wpsso =& Wpsso::get_instance();
+		if ( is_object( $wpsso->util ) ) {
+			return $wpsso->util->get_page_mod( $use_post );
+		} else {
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
+	function wpsso_get_post_mod( $post_id ) {
+		$wpsso =& Wpsso::get_instance();
+		if ( isset( $wpsso->m['util']['post'] ) ) {
+			$wpsso->m['util']['post']->get_mod( $post_id );
+		} else {
+			return false;
+		}
+	}
+}
+
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
-		return $wpsso->util->get_sharing_url( $mod, $add_page );
+		if ( is_object( $wpsso->util ) ) {
+			return $wpsso->util->get_sharing_url( $mod, $add_page );
+		} else {
+			return false;
+		}
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 	function wpsso_get_short_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
-		return apply_filters( 'wpsso_shorten_url', 
-			$wpsso->util->get_sharing_url( $mod, $add_page ),
-			$wpsso->options['plugin_shortener'] );
+		if ( is_object( $wpsso->util ) ) {
+			$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
+			return apply_filters( 'wpsso_shorten_url', $sharing_url, $wpsso->options['plugin_shortener'] );
+		} else {
+			return false;
+		}
 	}
 }
 
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 	function wpsso_schema_attributes( $attr = '' ) {
 		$wpsso =& Wpsso::get_instance();
-		echo $wpsso->schema->filter_head_attributes( $attr );
+		if ( is_object( $wpsso->schema ) ) {
+			echo $wpsso->schema->filter_head_attributes( $attr );
+		}
 	}
 }
 
 if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 	function wpsso_clear_all_cache( $clear_ext = false ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( is_object( $wpsso->util ) )	// just in case
+		if ( is_object( $wpsso->util ) ) {
 			return $wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__, true );
+		}
 	}
 }
 
 if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( is_object( $wpsso->m['util']['post'] ) )	// just in case
+		if ( isset( $wpsso->m['util']['post'] ) ) {
 			$wpsso->m['util']['post']->clear_cache( $post_id );
+		}
 	}
 }
 
 if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 	function wpsso_is_mobile() {
-		if ( class_exists( 'SucomUtil' ) )	// just in case
+		if ( class_exists( 'SucomUtil' ) ) {
 			return SucomUtil::is_mobile();
-		else return null;
+		} else {
+			return null;
+		}
 	}
 }
 

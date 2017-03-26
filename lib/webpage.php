@@ -19,8 +19,11 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
 			$this->set_objects();
 		}
 
@@ -36,12 +39,6 @@ if ( ! class_exists( 'WpssoWebpage' ) ) {
 					}
 				}
 			}
-
-			if ( ! empty( $this->p->options['plugin_page_excerpt'] ) )
-				add_post_type_support( 'page', array( 'excerpt' ) );
-
-			if ( ! empty( $this->p->options['plugin_page_tags'] ) )
-				register_taxonomy_for_object_type( 'post_tag', 'page' );
 		}
 
 		public function get_quote( array &$mod ) {

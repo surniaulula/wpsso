@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.6-1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.7-"
+"dev1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +88,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:421 lib/post.php:362 lib/term.php:257 lib/user.php:235
+#: lib/admin.php:421 lib/post.php:363 lib/term.php:258 lib/user.php:236
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1540,7 +1541,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:564
+#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:565
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2991,22 +2992,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:447
+#: lib/post.php:448
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:464
+#: lib/post.php:465
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:473
+#: lib/post.php:474
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:520 lib/profile/social-settings.php:28 lib/term.php:281
-#: lib/user.php:261
+#: lib/post.php:521 lib/profile/social-settings.php:28 lib/term.php:282
+#: lib/user.php:262
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3709,15 +3710,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:421
+#: lib/user.php:422
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:422
+#: lib/user.php:423
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:423
+#: lib/user.php:424
 msgid "Jabber / Google Talk"
 msgstr ""
 
@@ -3823,26 +3824,26 @@ msgstr ""
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1848
+#: lib/util.php:1861
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1874
+#: lib/util.php:1887
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1878
+#: lib/util.php:1891
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1881
+#: lib/util.php:1894
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1885
+#: lib/util.php:1898
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

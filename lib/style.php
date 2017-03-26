@@ -162,9 +162,27 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		text-align:left;
 		font-size:1.1em;
 	}
-	.wp-list-table th.column-cb,
-	.wp-list-table td.column-cb {
+	.wp-list-table.media .column-cb,
+	.wp-list-table.media .check-column {
 		width:2%;
+	}
+	@media ( max-width:1200px ) {
+		.wp-list-table.media .column-cb,
+		.wp-list-table.media .check-column {
+			width:3%;
+		}
+	}
+	@media ( max-width:782px ) {
+		.wp-list-table.media .column-cb,
+		.wp-list-table.media .check-column {
+			width:6%;
+		}
+	}
+	@media ( max-width:600px ) {
+		.wp-list-table.media .column-cb,
+		.wp-list-table.media .check-column {
+			width:10%;
+		}
 	}
 	.wp-list-table th.column-title,
 	.wp-list-table td.column-title {

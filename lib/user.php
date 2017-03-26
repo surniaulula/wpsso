@@ -77,10 +77,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
-			$mod = WpssoMeta::$mod_array;
+			$mod = WpssoMeta::$mod_defaults;
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'user';
 			$mod['obj'] =& $this;

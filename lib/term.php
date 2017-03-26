@@ -94,10 +94,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function get_mod( $mod_id, $tax_slug = '' ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
-			$mod = WpssoMeta::$mod_array;
+			$mod = WpssoMeta::$mod_defaults;
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'term';
 			$mod['obj'] =& $this;
