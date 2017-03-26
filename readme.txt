@@ -387,6 +387,7 @@ Note that the production stage level can be incremented on occasion for simple t
 		* wpsso_get_post_mod( $post_id )
 		* wpsso_get_term_mod( $term_id )
 		* wpsso_get_user_mod( $user_id )
+	* Renamed the WpssoWebpage class to WpssoPage, and renamed the Wpsso $webpage variable to $page ($webpage is now a reference to $page for backwards compatibility).
 
 **Version 3.40.6-1 (2017/03/25)**
 
@@ -417,7 +418,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Added a missing check for the "Use Filtered (SEO) Title" option value before returning the SEO Framework title (Pro version).
 * *Developer Notes*
-	* Updated the NgfbWebpage get_description() method to use term ids for tags and categories (provides compatibility for the admin back-end).
+	* Updated the WpssoWebpage get_description() method to use term ids for tags and categories (provides compatibility for the admin back-end).
 
 **Version 3.40.4-1 (2017/03/15)**
 
@@ -720,8 +721,8 @@ Note that the production stage level can be incremented on occasion for simple t
 **Version 3.38.0-1 (2016/12/24)**
 
 * *New Features*
-	* Added a new "Read Yoast SEO Social Meta" option for Yoast SEO users under the NGFB &gt; Advanced &gt; Social / Custom Meta tab (Pro version).
-	* Added a new "Custom Facebook Locale" option in the NGFB &gt; General settings page to customize the WordPress locale value for Facebook.
+	* Added a new "Read Yoast SEO Social Meta" option for Yoast SEO users under the SSO &gt; Advanced &gt; Social / Custom Meta tab (Pro version).
+	* Added a new "Custom Facebook Locale" option in the SSO &gt; General settings page to customize the WordPress locale value for Facebook.
 * *Improvements*
 	* Removed the "Verify Peer SSL Certificate" option as this feature should always be enabled anyway.
 	* Added a [summary of features for the Yoast SEO integration module](https://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/) in WPSSO Pro.
