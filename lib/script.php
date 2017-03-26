@@ -45,8 +45,6 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				$url_path.'js/com/jquery-admin-media.min.js', 
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
-			wp_enqueue_script( 'jquery' );	// required for dismissible notices
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'hook name = '.$hook_name );
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
@@ -95,6 +93,8 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 					break;
 			}
+
+			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 		}
 
 		public function localize_media_script() {

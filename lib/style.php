@@ -29,7 +29,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
 			// https://developers.google.com/speed/libraries/
-			wp_enqueue_style( 'jquery-ui.js',
+			wp_register_style( 'jquery-ui.js',
 				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css',
 					array(), '1.11.4' );
 
