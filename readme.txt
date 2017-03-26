@@ -372,6 +372,22 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
+**Version 3.40.7-dev1 (2017/03/26)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed the checkbox column width in post/page table lists.
+* *Developer Notes*
+	* Moved shortcode instantiation to the Wpsso class.
+	* Added several new functions to retrieve the $mod array:
+		* wpsso_get_page_mod( $use_post = false )
+		* wpsso_get_post_mod( $post_id )
+		* wpsso_get_term_mod( $term_id )
+		* wpsso_get_user_mod( $user_id )
+
 **Version 3.40.6-1 (2017/03/25)**
 
 * *New Features*
@@ -900,6 +916,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.40.7-dev1 =
+
+(2017/03/26) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array.
 
 = 3.40.6-1 =
 
