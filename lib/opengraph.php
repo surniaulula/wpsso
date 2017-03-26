@@ -191,14 +191,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
-				$mt_og['og:title'] = $this->p->webpage->get_title( $this->p->options['og_title_len'], '...', $mod );
+				$mt_og['og:title'] = $this->p->page->get_title( $this->p->options['og_title_len'], '...', $mod );
 			}
 
 			if ( ! isset( $mt_og['og:description'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
-				$mt_og['og:description'] = $this->p->webpage->get_description( $this->p->options['og_desc_len'],
+				$mt_og['og:description'] = $this->p->page->get_description( $this->p->options['og_desc_len'],
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
 			}
 
@@ -383,11 +383,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og['article:tag'] ) ) {
-					$mt_og['article:tag'] = $this->p->webpage->get_tags( $post_id );
+					$mt_og['article:tag'] = $this->p->page->get_tags( $post_id );
 				}
 
 				if ( ! isset( $mt_og['article:section'] ) ) {
-					$mt_og['article:section'] = $this->p->webpage->get_article_section( $post_id );
+					$mt_og['article:section'] = $this->p->page->get_article_section( $post_id );
 				}
 
 				if ( ! isset( $mt_og['article:published_time'] ) ) {

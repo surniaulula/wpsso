@@ -48,14 +48,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $msgs;			// WpssoMessages (admin tooltip messages)
 		public $notice;			// SucomNotice or SucomNoNotice
 		public $og;			// WpssoOpenGraph
-		public $weibo;			// WpssoWeibo
-		public $tc;			// WpssoTwitterCard
 		public $opt;			// WpssoOptions
+		public $page;			// WpssoPage (page title, desc, etc.)
 		public $reg;			// WpssoRegister
 		public $script;			// SucomScript (admin jquery tooltips)
 		public $style;			// SucomStyle (admin styles)
+		public $tc;			// WpssoTwitterCard
 		public $util;			// WpssoUtil (extends SucomUtil)
-		public $webpage;		// WpssoWebpage (page title, desc, etc.)
+		public $webpage;		// deprecated (backwards compatibility)
+		public $weibo;			// WpssoWeibo
 
 		/*
 		 * Reference Variables (config, options, modules, etc.)
@@ -225,14 +226,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cache = new SucomCache( $this );			// object and file caching
 			$this->style = new SucomStyle( $this );			// admin styles
 			$this->script = new SucomScript( $this );		// admin jquery tooltips
-			$this->webpage = new WpssoWebpage( $this );		// page title, desc, etc.
+			$this->page = new WpssoPage( $this );			// page title, desc, etc.
+			$this->webpage =& $this->page;				// deprecated (maintain backwards compatibility)
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
 			$this->filters = new WpssoFilters( $this );		// integration filters
 			$this->head = new WpssoHead( $this );
-			$this->og = new WpssoOpenGraph( $this );
-			$this->weibo = new WpssoWeibo( $this );
-			$this->tc = new WpssoTwitterCard( $this );
-			$this->schema = new WpssoSchema( $this );
+
+			// meta tags and json-ld markup
+			$this->og = new WpssoOpenGraph( $this );		// open graph
+			$this->weibo = new WpssoWeibo( $this );			// weibo
+			$this->tc = new WpssoTwitterCard( $this );		// twitter
+			$this->schema = new WpssoSchema( $this );		// schema
 
 			if ( is_admin() ) {
 				$this->msgs = new WpssoMessages( $this );	// admin tooltip messages

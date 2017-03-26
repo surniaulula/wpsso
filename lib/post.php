@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					);
 					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $mod, $sharing_url );
 
-					$wp_objects = array( 'WpssoWebpage::get_content' => array( $cache_salt ) );
+					$wp_objects = array( 'WpssoPage::get_content' => array( $cache_salt ) );
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $sharing_url );
 
 					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );

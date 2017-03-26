@@ -1570,12 +1570,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$post_id = $opts[$prefix.':id'];
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 
-				$ret['name'] = $wpsso->webpage->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
+				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
 					false, true, 'schema_title' );	// $add_hashtags = false, $encode = true, $md_idx = schema_title
 				if ( empty( $ret['name'] ) )	// just in case
 					unset( $ret['name'] );
 
-				$ret['description'] = $wpsso->webpage->get_description( $wpsso->options['schema_desc_len'], '...', $mod, true,
+				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
 				if ( empty( $ret['description'] ) )	// just in case
 					unset( $ret['description'] );
@@ -1679,7 +1679,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
-				$mt_schema['description'] = $this->p->webpage->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
+				$mt_schema['description'] = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
 
 			switch ( $page_type_url ) {

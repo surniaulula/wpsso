@@ -74,14 +74,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$mt_tc['twitter:site'] = SucomUtil::get_locale_opt( 'tc_site', $this->p->options, $mod );
 
 			if ( ! isset( $mt_tc['twitter:title'] ) )
-				$mt_tc['twitter:title'] = $this->p->webpage->get_title( 70, 
+				$mt_tc['twitter:title'] = $this->p->page->get_title( 70, 
 					'...', $mod, true, false, true, 'og_title' );
 
 			if ( ! isset( $mt_tc['twitter:description'] ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
 
-				$mt_tc['twitter:description'] = $this->p->webpage->get_description( $this->p->options['tc_desc_len'], 
+				$mt_tc['twitter:description'] = $this->p->page->get_description( $this->p->options['tc_desc_len'], 
 					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags = true
 			}
 

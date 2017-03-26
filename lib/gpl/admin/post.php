@@ -47,14 +47,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Default Title', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_title', 'td_class' => 'blank',
 					'no_auto_draft' => true,
-					'content' => $form->get_no_input_value( $this->p->webpage->get_title( $this->p->options['og_title_len'],
+					'content' => $form->get_no_input_value( $this->p->page->get_title( $this->p->options['og_title_len'],
 						'...', $mod, true, false, true, 'none' ), 'wide' ),	// $md_idx = 'none'
 				),
 				'og_desc' => array(
 					'label' => _x( 'Default Description (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['og_desc_len'],
+					'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['og_desc_len'],
 						'...', $mod, true, true, true, 'none' ), '', '', $this->p->options['og_desc_len'] ),	// $md_idx = 'none'
 				),
 				'seo_desc' => array(
@@ -62,14 +62,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['seo_desc_len'],
+					'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['seo_desc_len'],
 						'...', $mod, true, false ), '', '', $this->p->options['seo_desc_len'] ),	// $add_hashtags = false
 				),
 				'tc_desc' => array(
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['tc_desc_len'],
+					'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['tc_desc_len'],
 						'...', $mod ), '', '', $this->p->options['tc_desc_len'] ),
 				),
 				'sharing_url' => array(
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->webpage->get_description( $this->p->options['schema_desc_len'],
+					'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['schema_desc_len'],
 						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
 				),
 			);

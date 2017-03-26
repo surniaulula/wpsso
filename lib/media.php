@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// allow custom content to be passed as an argument in $content
 			// allow empty post IDs to get additional content from filter hooks
 			if ( empty( $content ) ) {
-				$content = $this->p->webpage->get_content( $mod );
+				$content = $this->p->page->get_content( $mod );
 				$content_passed = false;
 			} else $content_passed = true;
 
@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// allow custom content to be passed as an argument in $content
 			// allow empty post IDs to get additional content from filter hooks
 			if ( empty( $content ) ) {
-				$content = $this->p->webpage->get_content( $mod );
+				$content = $this->p->page->get_content( $mod );
 				$content_passed = false;
 			} else $content_passed = true;
 

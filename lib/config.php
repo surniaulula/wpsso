@@ -1750,6 +1750,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR.'lib/meta.php';
 			require_once WPSSO_PLUGINDIR.'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR.'lib/options.php';
+			require_once WPSSO_PLUGINDIR.'lib/page.php';
 			require_once WPSSO_PLUGINDIR.'lib/post.php';		// extends meta.php
 			require_once WPSSO_PLUGINDIR.'lib/register.php';
 			require_once WPSSO_PLUGINDIR.'lib/schema.php';
@@ -1759,7 +1760,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR.'lib/twittercard.php';
 			require_once WPSSO_PLUGINDIR.'lib/user.php';		// extends meta.php
 			require_once WPSSO_PLUGINDIR.'lib/util.php';
-			require_once WPSSO_PLUGINDIR.'lib/webpage.php';
 			require_once WPSSO_PLUGINDIR.'lib/weibo.php';
 
 
