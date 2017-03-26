@@ -31,6 +31,28 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
+	function wpsso_get_term_mod( $term_id ) {
+		$wpsso =& Wpsso::get_instance();
+		if ( isset( $wpsso->m['util']['term'] ) ) {
+			$wpsso->m['util']['term']->get_mod( $term_id );
+		} else {
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
+	function wpsso_get_user_mod( $user_id ) {
+		$wpsso =& Wpsso::get_instance();
+		if ( isset( $wpsso->m['util']['user'] ) ) {
+			$wpsso->m['util']['user']->get_mod( $user_id );
+		} else {
+			return false;
+		}
+	}
+}
+
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
