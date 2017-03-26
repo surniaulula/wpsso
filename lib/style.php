@@ -17,14 +17,21 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 
-			if ( is_admin() )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( is_admin() ) {
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ) );
+			}
 		}
 
 		public function admin_enqueue_styles( $hook_name ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$lca = $this->p->cf['lca'];
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
 
@@ -101,8 +108,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 				case 'plugin-install.php':				// css for view plugin details thickbox
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for plugin install page' );
+					}
 
 					$this->thickbox_inline_styles( $hook_name );
 
@@ -117,6 +125,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		}
 
 		private function thickbox_inline_styles( $hook_name ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 			echo '
 <style type="text/css">
 	body#plugin-information #section-description img {
@@ -131,7 +142,11 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		}
 
 		private function admin_inline_styles( $hook_name ) {
-			echo '<style type="text/css">';
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'create and minify admin styles' );	// begin timer
+			}
+
+			$css_data = '<style type="text/css">';
 			$sort_cols = WpssoMeta::get_sortable_columns();
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
@@ -139,8 +154,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$sitemenu = 'wpsso-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
 					WPSSO_MENU_ICON_HIGHLIGHT ? true : false;
+
 				if ( $icon_highlight )  {
-					echo '
+					$css_data .= '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
@@ -150,7 +166,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				}
 			}
 
-			echo '
+			$css_data .= '
 	#adminmenu ul.wp-submenu div.extension-plugin {
 		display:table-cell;
 	}
@@ -330,7 +346,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		vertical-align:top;
 	}';
 			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
-				echo '
+				$css_data .= '
 	.wp-list-table th#wpseo-score,
 	.wp-list-table th#wpseo-score-readability,
 	.wp-list-table th#wpseo_score,
@@ -356,7 +372,19 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		width:6%;
 	}';
 			}
-			echo '</style>';
+			$css_data .= '</style>';
+
+			$classname = apply_filters( $this->p->cf['lca'].'_load_lib', 
+				false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+
+			if ( $classname !== false && class_exists( $classname ) ) {
+				$css_data = call_user_func( array( $classname, 'process' ), $css_data );
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'create and minify admin styles' );	// end timer
+			}
+			echo $css_data;
 		}
 	}
 }
