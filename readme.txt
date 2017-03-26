@@ -381,13 +381,14 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* Fixed the checkbox column width in post/page table lists.
 * *Developer Notes*
-	* Moved shortcode instantiation to the Wpsso class.
 	* Added several new functions to retrieve the $mod array:
 		* wpsso_get_page_mod( $use_post = false )
 		* wpsso_get_post_mod( $post_id )
 		* wpsso_get_term_mod( $term_id )
 		* wpsso_get_user_mod( $user_id )
 	* Renamed the WpssoWebpage class to WpssoPage, and renamed the Wpsso $webpage variable to $page ($webpage is now a reference to $page for backwards compatibility).
+	* Moved shortcode instantiation from WpssoPage to the Wpsso class.
+	* Moved the NgfbPage $shortcode variable to Ngfb $sc.
 
 **Version 3.40.6-1 (2017/03/25)**
 
