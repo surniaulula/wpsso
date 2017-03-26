@@ -603,11 +603,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
-					is_array( $this->p->cf['*']['lib']['shortcode'] ) )
-						foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name )
-							if ( array_key_exists( $id, $this->shortcode ) &&
-								is_object( $this->shortcode[$id] ) )
-									$this->shortcode[$id]->remove();
+					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
+					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
+						if ( array_key_exists( $id, $this->p->sc ) &&
+							is_object( $this->p->sc[$id] ) ) {
+							$this->p->sc[$id]->remove();
+						}
+					}
+				}
 
 				global $post;
 				if ( $this->p->debug->enabled )
@@ -641,11 +644,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
-					is_array( $this->p->cf['*']['lib']['shortcode'] ) )
-						foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name )
-							if ( array_key_exists( $id, $this->shortcode ) &&
-								is_object( $this->shortcode[$id] ) )
-									$this->shortcode[$id]->add();
+					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
+					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
+						if ( array_key_exists( $id, $this->p->sc ) &&
+							is_object( $this->p->sc[$id] ) ) {
+							$this->p->sc[$id]->add();
+						}
+					}
+				}
 
 			} elseif ( $this->p->debug->enabled )
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
