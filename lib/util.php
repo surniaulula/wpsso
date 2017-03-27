@@ -312,16 +312,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach ( $prefixes as $opt_pre => $def_val ) {
 				foreach ( $this->get_post_types() as $post_type ) {
 					$key = $opt_pre.'_'.$post_type->name;
-					if ( ! isset( $opts[$key] ) )
+					if ( ! isset( $opts[$key] ) ) {
 						$opts[$key] = $def_val;
+					}
 				}
 			}
 			return $opts;
 		}
 
+		// $output = objects | names
 		public function get_post_types( $output = 'objects' ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return apply_filters( $this->p->cf['lca'].'_post_types', 
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
@@ -340,7 +343,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.', 'wpsso' ), $short );
+			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
+				'wpsso' ), $short );
 
 			if ( $clear_ext ) {
 				$ext_cache_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );

@@ -326,9 +326,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					$schema_by_ptn = '';
-					foreach ( $this->p->util->get_post_types() as $post_type )
+					foreach ( $this->p->util->get_post_types() as $post_type ) {
 						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
 							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
+					}
 
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Item Type by Post Type',

@@ -210,22 +210,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/*
 			 * Include Social Settings Metabox
 			 */
-			$add_to_cb = '';
-			foreach ( $this->p->util->get_post_types() as $post_type ) {
-				$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_'.$post_type->name ).
-					' '.$post_type->label.'</p>';
-			}
-
-			$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_term' ).
+			$add_to_checkboxes = $form->get_post_type_checkboxes( 'plugin_add_to', '', '', true );
+			$add_to_checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_term' ).	// add term checbox
 				' '.__( 'Terms (Categories and Tags)', 'wpsso' ).'</p>';
-
-			$add_to_cb .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).
+			$add_to_checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).	// add user checkbox
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$table_rows['plugin_add_to'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Include Social Settings Metabox',
 				'option label', 'wpsso' ), '', 'plugin_add_to' ).
-			'<td class="blank">'.$add_to_cb.'</td>';
+			'<td class="blank">'.$add_to_checkboxes.'</td>';
 
 			$table_rows['plugin_wpseo_social_meta'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Read Yoast SEO Social Meta',

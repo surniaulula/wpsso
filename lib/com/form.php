@@ -23,8 +23,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$this->options_name =& $opts_name;
 			$this->options =& $opts;
@@ -35,8 +37,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
-			if ( empty( $name ) )
+			if ( empty( $name ) ) {
 				return;	// just in case
+			}
 
 			// hide the current options value, unless one is given as an argument to the method
 			$value = empty( $value ) &&
@@ -77,6 +80,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_checkbox( $name, $class = '', $id = '', $force = null ) {
 			return $this->get_checkbox( $name, $class, $id, true, $force );
+		}
+
+		public function get_post_type_checkboxes( $name_pre, $class = '', $id = '', $disabled = false, $force = null ) {
+			$checkboxes = '';
+			foreach ( $this->p->util->get_post_types( 'object' ) as $pt ) {
+				$checkboxes .= '<p>'.$this->get_checkbox( $name_pre.'_'.$pt->name, $class, $id, $disabled, $force ).
+					' '.$pt->label.( empty( $pt->description ) ? '' : ' ('.$pt->description.')' ).'</p>';
+			}
+			return $checkboxes;
 		}
 
 		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = null, $disabled = false ) {

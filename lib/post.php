@@ -38,6 +38,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
 			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
+				// only use public post types (to avoid menu items, product variations, etc.)
 				$post_type_names = $this->p->util->get_post_types( 'names' );
 
 				if ( is_array( $post_type_names ) ) {
