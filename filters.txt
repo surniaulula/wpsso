@@ -98,7 +98,7 @@
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id );
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id );
 'wpsso_post_social_settings_tabs' ( $tabs, $mod );
-'wpsso_post_types' ( $post_types, $type, $output );
+'wpsso_post_types' ( $post_types, $output );
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_posts_per_page' ( $limit, $mod );
 'wpsso_quote' ( $quote, $mod );

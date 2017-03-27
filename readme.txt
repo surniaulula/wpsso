@@ -372,7 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.7-dev1 (2017/03/26)**
+**Version 3.40.7-dev2 (2017/03/27)**
 
 * *New Features*
 	* None
@@ -387,8 +387,8 @@ Note that the production stage level can be incremented on occasion for simple t
 		* wpsso_get_term_mod( $term_id )
 		* wpsso_get_user_mod( $user_id )
 	* Renamed the WpssoWebpage class to WpssoPage, and renamed the Wpsso $webpage variable to $page ($webpage is now a reference to $page for backwards compatibility).
-	* Moved shortcode instantiation from WpssoPage to the Wpsso class.
-	* Moved the NgfbPage $shortcode variable to Ngfb $sc.
+	* Moved shortcode instantiation from the WpssoPage class to Wpsso, and moved the WpssoPage $shortcode variable to Wpsso $sc.
+	* Added a SucomForm get_post_type_checkboxes() method to create a checkbox list for public post types.
 
 **Version 3.40.6-1 (2017/03/25)**
 
@@ -919,9 +919,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.7-dev1 =
+= 3.40.7-dev2 =
 
-(2017/03/26) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array.
+(2017/03/27) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array. Renamed the WpssoWebpage class to WpssoPage
 
 = 3.40.6-1 =
 
