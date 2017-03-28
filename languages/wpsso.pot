@@ -912,8 +912,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:81
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add a user locale / language selector in the WordPress "
-"admin back-end and front-end toolbar menus."
+"WPSSO extension to add a user locale / language / region selector in the "
+"WordPress admin back-end and front-end toolbar menus."
 msgstr ""
 
 #: lib/config-gettext-extract.php:82

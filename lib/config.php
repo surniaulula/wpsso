@@ -368,8 +368,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoul' => array(
 					'short' => 'WPSSO UL',		// short plugin name
-					'name' => 'WPSSO User Locale (WPSSO UL)',
-					'desc' => 'WPSSO extension to add a user locale / language selector in the WordPress admin back-end and front-end toolbar menus.',
+					'name' => 'WPSSO User Locale Selector (WPSSO UL)',
+					'desc' => 'WPSSO extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus.',
 					'slug' => 'wpsso-user-locale',
 					'base' => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',

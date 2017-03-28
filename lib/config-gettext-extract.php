@@ -78,7 +78,7 @@ _x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' );
 _x( 'Video URL Custom Field', 'option label', 'wpsso' );
 _x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' );
 _x( 'Wednesday', 'option value', 'wpsso' );
-_x( 'WPSSO extension to add a user locale / language selector in the WordPress admin back-end and front-end toolbar menus.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
