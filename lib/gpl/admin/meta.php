@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				return $table_rows;	// abort
 			}
 
-			$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-opengraph',
+			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-opengraph',
 				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// $md_pre = none
 
 			$table_rows[] = '<td colspan="2" align="center">'.
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 
 				// the $head array should contain pinterest image meta tags (with a pinterest prefix)
-				$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-richpin',
+				$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-richpin',
 					array( 'pid', 'img_url' ), $mod, 'og', 'pinterest', $head );
 
 				$form_rows['subsection_pinterest'] = array(
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( ! SucomUtil::get_const( 'WPSSO_SCHEMA_DISABLE' ) ) {
 
-				$media_info = $this->p->og->get_the_media_info( $this->p->cf['lca'].'-schema',
+				$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema',
 					array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
 	
 				$form_rows['subsection_schema'] = array(

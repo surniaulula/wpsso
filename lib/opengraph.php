@@ -652,8 +652,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_ret;
 		}
 
-		// returned array can include a varying number of elements, depending on the $output value
-		public function get_the_media_info( $size_name, array $output, array $mod, $md_pre = 'og', $mt_pre = 'og', &$head = array() ) {
+		/*
+		 * The returned array can include a varying number of elements, depending on the $request value.
+		 */
+		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og', $head = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -666,7 +668,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$og_video = null;
 
 			if ( empty( $head ) ) {
-				foreach ( $output as $key ) {
+				foreach ( $request as $key ) {
 					switch ( $key ) {
 						case 'pid':
 						case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
@@ -681,9 +683,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							break;
 					}
 				}
-			} else $og_image = $og_video = array( $head );
+			} else {
+				$og_image = $og_video = array( $head );
+			}
 
-			foreach ( $output as $key ) {
+			foreach ( $request as $key ) {
 				unset( $mt_name );
 				switch ( $key ) {
 					case 'pid':
@@ -699,42 +703,42 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						// no break - fall through
 
 						if ( $og_video !== null ) {
-							$ret[$key] = $this->get_first_media_info( $mt_name, $og_video );
+							$ret[$key] = $this->get_media_value( $mt_name, $og_video );
 						}
 
 						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = $this->get_first_media_info( $mt_name, $og_image );
+							$ret[$key] = $this->get_media_value( $mt_name, $og_image );
 						}
 
 						// if there's no image, and no video preview image,
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
 							$og_image = $this->p->media->get_default_image( 1, $size_name, false );	// $check_dupes = false
-							$ret[$key] = $this->get_first_media_info( $mt_name, $og_image );
+							$ret[$key] = $this->get_media_value( $mt_name, $og_image );
 						}
 						break;
 					case 'video':
 					case 'vid_url':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video', $og_video );
 						break;
 					case 'vid_type':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:type', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:type', $og_video );
 						break;
 					case 'vid_title':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:title', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:title', $og_video );
 						break;
 					case 'vid_desc':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:description', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:description', $og_video );
 						break;
 					case 'vid_width':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:width', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:width', $og_video );
 						break;
 					case 'vid_height':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:height', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:height', $og_video );
 						break;
 					case 'prev_url':
 					case 'preview':
-						$ret[$key] = $this->get_first_media_info( $mt_pre.':video:thumbnail_url', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:thumbnail_url', $og_video );
 						break;
 					default:
 						$ret[$key] = '';
@@ -749,7 +753,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $ret;
 		}
 
-		public function get_first_media_info( $prefix, $mt_og ) {
+		public function get_media_value( $prefix, $mt_og ) {
+
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {
 				return '';
 			}
@@ -788,6 +793,56 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			return '';
+		}
+
+		public static function get_all_reviews( array $mod, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			$ret = array();
+
+			if ( ! $mod['is_post'] || ! $mod['id'] ) {
+				return $ret;
+			}
+
+			$comments = get_comments( array(
+				'post_id' => $mod['id'],
+				'status' => 'approve',
+				'parent' => 0,	// don't get replies
+				'order' => 'DESC',
+				'number' => get_option( 'page_comments' ),	// limit number of comments
+			) );
+
+			if ( is_array( $comments ) ) {
+				foreach( $comments as $num => $comment_obj ) {
+					$og_review = self::get_review_mt( $comment_obj, $og_type, $rating_meta );
+					if ( ! empty( $og_review ) ) {	// just in case
+						$ret[] = $og_review;
+					}
+				}
+			}
+
+			return $ret;
+		}
+
+		public static function get_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			$ret = array();
+			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
+
+			$ret[$og_type.':review:id'] = $comment_obj->comment_ID;
+			$ret[$og_type.':review:url'] = get_comment_link( $comment_obj->comment_ID );
+			$ret[$og_type.':review:author:id'] = $comment_obj->user_id;	// author ID if registered (0 otherwise)
+			$ret[$og_type.':review:author:name'] = $comment_obj->comment_author;	// author display name
+			$ret[$og_type.':review:created_time'] = mysql2date( 'c', $comment_obj->comment_date_gmt );
+			$ret[$og_type.':review:excerpt'] = get_comment_excerpt( $comment_obj->comment_ID );
+
+			// rating values must be larger than 0 to include rating info
+			if ( $rating_value > 0 ) {
+				$ret[$og_type.':review:rating:value'] = $rating_value;
+				$ret[$og_type.':review:rating:worst'] = 1;
+				$ret[$og_type.':review:rating:best'] = 5;
+			}
+
+			return $ret;
 		}
 	}
 }
