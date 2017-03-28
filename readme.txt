@@ -83,7 +83,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
-	* [WPSSO User Locale](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
+	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
@@ -149,7 +149,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
-	* [WPSSO User Locale](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
+	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
 
 <blockquote>
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
@@ -688,7 +688,7 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Improvements*
 	* Added both parent and child theme header template files to the head HTML element attributes check.
 	* The extensions listed on the "Extension Plugins and Pro Licenses" settings page are now sorted by name.
-	* Added the "WPSSO User Locale (WPSSO UL)" plugin to the list of available WPSSO extensions.
+	* Added the "WPSSO User Locale Selector (WPSSO UL)" plugin to the list of available WPSSO extensions.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -993,7 +993,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = 3.38.3-1 =
 
-(2017/01/08) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods. Added the "WPSSO User Locale (WPSSO UL)" plugin to the list of available WPSSO extensions.
+(2017/01/08) Added both parent and child theme header template files to the head HTML element attributes check. Refactored the SucomUtil is_https() and get_prot() methods. Added the "WPSSO User Locale Selector (WPSSO UL)" plugin to the list of available WPSSO extensions.
 
 = 3.38.2-1 =
 

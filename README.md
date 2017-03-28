@@ -92,7 +92,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
-<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
 </ul></li>
 </ul>
 
@@ -173,7 +173,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
-<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
 </ul></li>
 </ul>
 
