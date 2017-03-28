@@ -76,9 +76,11 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
 						if ( SucomUtil::is_post_page( false ) &&
-							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 )
-								wp_enqueue_media( array( 'post' => $post_id ) );
-						else wp_enqueue_media();
+							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
+							wp_enqueue_media( array( 'post' => $post_id ) );
+						} else {
+							wp_enqueue_media();
+						}
 
 						wp_enqueue_script( 'sucom-admin-media' );
 					}
@@ -88,8 +90,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );
 
-					wp_localize_script( 'sucom-admin-media',
-						'sucomMediaL10n', $this->localize_media_script() );
+					wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n', $this->get_admin_media_script_data() );
 
 					break;
 			}
@@ -97,9 +98,10 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 		}
 
-		public function localize_media_script() {
-			$text_domain = $this->p->cf['plugin'][$this->p->cf['lca']]['text_domain'];
-			return array( 'choose_image' => __( 'Use Image', $text_domain ) );
+		public function get_admin_media_script_data() {
+			return array(
+				'choose_image' => __( 'Use Image', 'wpsso' ),
+			);
 		}
 	}
 }

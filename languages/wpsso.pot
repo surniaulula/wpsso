@@ -3171,7 +3171,7 @@ msgid ""
 "Schema %2$s markup."
 msgstr ""
 
-#: lib/script.php:102
+#: lib/script.php:103
 msgid "Use Image"
 msgstr ""
 
