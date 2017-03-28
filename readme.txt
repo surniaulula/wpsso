@@ -389,6 +389,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed the WpssoWebpage class to WpssoPage, and renamed the Wpsso $webpage variable to $page ($webpage is now a reference to $page for backwards compatibility).
 	* Moved shortcode instantiation from the WpssoPage class to Wpsso, and moved the WpssoPage $shortcode variable to Wpsso $sc.
 	* Added a SucomForm get_post_type_checkboxes() method to create a checkbox list for public post types.
+	* Added WpssoOpenGraph get_all_reviews() and get_review_mt() methods to create review meta tags for the WooCommerce module.
 
 **Version 3.40.6-1 (2017/03/25)**
 
