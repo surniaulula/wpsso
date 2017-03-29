@@ -616,7 +616,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->clear_cache( $post_id );
 				}
 			}
-
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {
