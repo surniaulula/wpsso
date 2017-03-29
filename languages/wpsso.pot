@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.7-"
-"dev5\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.7-a1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -919,77 +918,84 @@ msgstr ""
 #: lib/config-gettext-extract.php:82
 msgctxt "plugin description"
 msgid ""
+"WPSSO extension to add ratings and reviews for WordPress comments, with "
+"aggregate rating meta tags and (optional) Schema Review markup."
+msgstr ""
+
+#: lib/config-gettext-extract.php:83
+msgctxt "plugin description"
+msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
 "in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:83
+#: lib/config-gettext-extract.php:84
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, "
 "Local Business, Products, Recipes, Reviews + many more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:84
+#: lib/config-gettext-extract.php:85
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Social Sharing Buttons with support for hashtags, "
 "short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:85
+#: lib/config-gettext-extract.php:86
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to easily add Twitter-style quoted text &mdash; with a Tweet "
 "share link &mdash; in your post and page content."
 msgstr ""
 
-#: lib/config-gettext-extract.php:86
+#: lib/config-gettext-extract.php:87
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to manage Organizations and additional Schema Article / "
 "Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr ""
 
-#: lib/config-gettext-extract.php:87
+#: lib/config-gettext-extract.php:88
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:88
+#: lib/config-gettext-extract.php:89
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
 "Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:89
+#: lib/config-gettext-extract.php:90
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to provide updates for the WordPress Social Sharing "
 "Optimization (WPSSO) Pro plugin and its Pro extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:90
+#: lib/config-gettext-extract.php:91
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to remove outdated / incomplete Schema Microdata, leaving "
 "the Google recommended Schema JSON-LD markup untouched."
 msgstr ""
 
-#: lib/config-gettext-extract.php:91
+#: lib/config-gettext-extract.php:92
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:92
+#: lib/config-gettext-extract.php:93
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: lib/config-gettext-extract.php:93
+#: lib/config-gettext-extract.php:94
 msgctxt "lib file description"
 msgid "Your Social Settings"
 msgstr ""

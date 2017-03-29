@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.7-dev5',	// plugin version
+					'version' => '3.40.7-a1',	// plugin version
 					'opt_version' => '512',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -252,6 +252,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faq' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-plm.support.wpsso.com/support/tickets/new',
+					),
+				),
+				'wpssorar' => array(
+					'short' => 'WPSSO RAR',		// short plugin name
+					'name' => 'WPSSO Ratings and Reviews (WPSSO RAR)',
+					'desc' => 'WPSSO extension to add ratings and reviews for WordPress comments, with aggregate rating meta tags and (optional) Schema Review markup.',
+					'slug' => 'wpsso-reviews-and-ratings',
+					'base' => 'wpsso-reviews-and-ratings/wpsso-reviews-and-ratings.php',
+					'update_auth' => '',
+					'img' => array(
+						'icon_small' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
+						'icon_medium' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
+					),
+					'url' => array(
+						// wordpress.org
+						'download' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
+						// wpsso
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/latest/',
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/changelog/',
+						'codex' => 'https://wpsso.com/codex/plugins/wpsso-ratings-and-reviews/',
+						'faq' => '',
+						'notes' => '',
+						'support' => '',
 					),
 				),
 				'wpssorrssb' => array(
