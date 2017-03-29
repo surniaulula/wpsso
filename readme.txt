@@ -372,7 +372,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.7-dev4 (2017/03/28)**
+**Version 3.40.7-dev5 (2017/03/29)**
 
 * *New Features*
 	* None
@@ -920,9 +920,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.7-dev4 =
+= 3.40.7-dev5 =
 
-(2017/03/28) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array. Renamed the WpssoWebpage class to WpssoPage
+(2017/03/29) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array. Renamed the WpssoWebpage class to WpssoPage
 
 = 3.40.6-1 =
 
