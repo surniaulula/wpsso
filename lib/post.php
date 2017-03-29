@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_id;
 		}
 
-		public function get_og_page_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
 
 			$ret = array();
 

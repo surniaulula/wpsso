@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_image;
 		}
 
-		public function get_og_page_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
 			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
 		}
 
