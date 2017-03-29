@@ -70,14 +70,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
-			return $this->must_be_extended( __METHOD__, $array() );	// return empty array
+			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
 		}
 
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
 			$ret = array();
 			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post ) {
-				if ( ! empty( $post->ID ) )	// just in case
+				if ( ! empty( $post->ID ) ) {	// just in case
 					$ret[] = $this->p->m['util']['post']->get_mod( $post->ID );
+				}
 			}
 			return $ret;
 		}
@@ -953,6 +954,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'use_prev_img is 0 - skipping retrieval of video preview image' );
 
 			return $og_image;
+		}
+
+		public function get_og_page_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
+			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
+		}
+
+		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
 		}
 
 		// $wp_meta can be a post/term/user meta array or empty / false

@@ -654,13 +654,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( self::$network_plugins ) )
 						$all_plugins = array_merge( self::$site_plugins, self::$network_plugins );
 				}
-				foreach ( $all_plugins as $base )
+				foreach ( $all_plugins as $base ) {
 					self::$plugins_index[$base] = true;
+				}
 			}
 			if ( $key !== false ) {
-				if ( isset( self::$plugins_index[$key] ) )
+				if ( isset( self::$plugins_index[$key] ) ) {
 					return self::$plugins_index[$key];
-				else return false;
+				} else {
+					return false;
+				}
 			} else return self::$plugins_index;
 		}
 
@@ -678,16 +681,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function update_option_key( $name, $key, $value, $protect = false, $site = false ) {
-			if ( $site === true )
+			if ( $site === true ) {
 				$opts = get_site_option( $name, array() );
-			else $opts = get_option( $name, array() );
-			if ( $protect === true &&
-				isset( $opts[$key] ) )
-					return false;
+			}
+			else {
+				$opts = get_option( $name, array() );
+			}
+
+			if ( $protect === true && isset( $opts[$key] ) ) {
+				return false;
+			}
+
 			$opts[$key] = $value;
-			if ( $site === true )
+
+			if ( $site === true ) {
 				return update_site_option( $name, $opts );
-			else return update_option( $name, $opts );
+			} else {
+				return update_option( $name, $opts );
+			}
 		}
 
 		public static function get_option_key( $name, $key, $site = false ) {

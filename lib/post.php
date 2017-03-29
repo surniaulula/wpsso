@@ -663,6 +663,55 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_id;
 		}
 
+		public function get_og_page_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			$ret = array();
+
+			if ( empty( $post_id ) ) {
+				return $ret;
+			}
+
+			$comments = get_comments( array(
+				'post_id' => $post_id,
+				'status' => 'approve',
+				'parent' => 0,	// don't get replies
+				'order' => 'DESC',
+				'number' => get_option( 'page_comments' ),	// limit number of comments
+			) );
+
+			if ( is_array( $comments ) ) {
+				foreach( $comments as $num => $comment_obj ) {
+					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta );
+					if ( ! empty( $og_review ) ) {	// just in case
+						$ret[] = $og_review;
+					}
+				}
+			}
+
+			return $ret;
+		}
+
+		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			$ret = array();
+			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
+
+			$ret[$og_type.':review:id'] = $comment_obj->comment_ID;
+			$ret[$og_type.':review:url'] = get_comment_link( $comment_obj->comment_ID );
+			$ret[$og_type.':review:author:id'] = $comment_obj->user_id;	// author ID if registered (0 otherwise)
+			$ret[$og_type.':review:author:name'] = $comment_obj->comment_author;	// author display name
+			$ret[$og_type.':review:created_time'] = mysql2date( 'c', $comment_obj->comment_date_gmt );
+			$ret[$og_type.':review:excerpt'] = get_comment_excerpt( $comment_obj->comment_ID );
+
+			// rating values must be larger than 0 to include rating info
+			if ( $rating_value > 0 ) {
+				$ret[$og_type.':review:rating:value'] = $rating_value;
+				$ret[$og_type.':review:rating:worst'] = 1;
+				$ret[$og_type.':review:rating:best'] = 5;
+			}
+
+			return $ret;
+		}
 	}
 }
 

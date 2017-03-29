@@ -505,6 +505,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
 							'wpsso' ), $options_name ), true, __FUNCTION__.'_upgraded', true );
 					}
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $options_name.' settings have been saved silently' );
 				}
 			} else {
 				if ( $this->p->debug->enabled ) {

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.7-"
-"dev4\n"
+"dev5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1414,8 +1414,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:180
-#: lib/meta.php:198 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
+#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:181
+#: lib/meta.php:199 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1541,7 +1541,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:177 lib/post.php:567
+#: lib/gpl/admin/post.php:121 lib/meta.php:178 lib/post.php:567
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2756,182 +2756,182 @@ msgid ""
 "%s, etc., to define alternate option values for different languages."
 msgstr ""
 
-#: lib/meta.php:101
+#: lib/meta.php:102
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:102
+#: lib/meta.php:103
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:103
+#: lib/meta.php:104
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:104
+#: lib/meta.php:105
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:105
+#: lib/meta.php:106
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:162
+#: lib/meta.php:163
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:168
+#: lib/meta.php:169
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:172
+#: lib/meta.php:173
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:184 lib/meta.php:202
+#: lib/meta.php:185 lib/meta.php:203
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:207
+#: lib/meta.php:208
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgid "Facebook and most social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating the Open Graph meta tag values."
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgid ""
 "The Facebook debugger remains the most stable and reliable method to verify "
 "Open Graph meta tags."
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgid ""
 "You may have to click the \"Fetch new scrape information\" button a few "
 "times to refresh Facebook's cache."
 msgstr ""
 
-#: lib/meta.php:322
+#: lib/meta.php:323
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:325
+#: lib/meta.php:326
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:325
+#: lib/meta.php:326
 msgid ""
 "Verify that Google can correctly parse your structured data markup (meta "
 "tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
 msgstr ""
 
-#: lib/meta.php:325
+#: lib/meta.php:326
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:328
+#: lib/meta.php:329
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:328
+#: lib/meta.php:329
 msgid ""
 "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on "
 "Pinterest zoomed pins."
 msgstr ""
 
-#: lib/meta.php:328
+#: lib/meta.php:329
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:331
+#: lib/meta.php:332
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:331
+#: lib/meta.php:332
 msgid ""
 "The Twitter Card Validator does not accept query arguments &ndash; copy-"
 "paste the following sharing URL into the validation input field."
 msgstr ""
 
-#: lib/meta.php:331
+#: lib/meta.php:332
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:334
+#: lib/meta.php:335
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:334
+#: lib/meta.php:335
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates markup."
 msgstr ""
 
-#: lib/meta.php:334
+#: lib/meta.php:335
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements. You may ignore these errors or disable "
 "the %1$s option."
 msgstr ""
 
-#: lib/meta.php:334
+#: lib/meta.php:335
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:338
+#: lib/meta.php:339
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:338
+#: lib/meta.php:339
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and the "
 "AMP markup of your templates."
 msgstr ""
 
-#: lib/meta.php:338
+#: lib/meta.php:339
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/meta.php:338
+#: lib/meta.php:339
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:534
+#: lib/meta.php:535
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3023,7 +3023,7 @@ msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:445
+#: lib/pro/ecom/woocommerce.php:441
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
@@ -3848,13 +3848,13 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:289
+#: wpsso.php:296
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:293
+#: wpsso.php:300
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
