@@ -336,15 +336,13 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Screenshots ==
 
-01. WPSSO Free Essential Settings &mdash; includes site information, Facebook / Open Graph, Google / Schema, Pinterest, and Twitter options. Additional options are available in General and Advanced settings pages.
-02. WPSSO (Pro version) Social Settings on Posts, Pages, Taxonomy / Terms, and User editing pages &mdash; allows you to modify the default title, description, image, video, preview an example share, preview the meta tags, and validate webpage markup with online tools. The WPSSO Schema JSON-LD Markup (WPSSO JSON) extension (shown here) includes additional options for Schema Articles, Events, etc.
-03. Example Facebook Link Share.
-04. Example Facebook Video Share (Pro version required).
-05. Example Twitter 'Summary' Card.
-06. Example Twitter 'Large Image Summary' Card.
-07. Example Twitter 'Player' Card (Pro version required).
-08. Example Pinterest Product Pin (Zoomed).
-09. Example Social Profiles in Google Search &mdash; WPSSO includes author (Person) and publisher (Organization) social profiles in schema.org JSON-LD format for Google Search and their Knowledge Graph.
+01. WPSSO can check the front-end webpage for duplicate meta tags, and includes a handy social preview feature.
+02. WPSSO also includes a detailed list of the generated meta tags, for the more advanced or curious users.
+03. WPSSO adds optional Schema type and social preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
+04. WPSSO provides an Essential settings page for a quick and easy setup, along with more detailed and advanced settings pages.
+05. WPSSO includes Author and Publisher social profile markup in your home page for Google Search and their Knowledge Graph.
+06. WPSSO detects embedded videos in your content and creates video meta tags for Twitter, Facebook, and Google (Pro version required).
+07. WPSSO integrates with several e-Commerce plugins to provide product details for Pinterest, Google, and others (Pro version required).
 
 == Changelog ==
 
