@@ -370,7 +370,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.7-b1 (2017/03/30)**
+**Version 3.40.7-rc1 (2017/03/30)**
 
 * *New Features*
 	* None
@@ -388,6 +388,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Moved shortcode instantiation from the WpssoPage class to Wpsso, and moved the WpssoPage $shortcode variable to Wpsso $sc.
 	* Added a SucomForm get_post_type_checkboxes() method to create a checkbox list for public post types.
 	* Added WpssoPost get_og_type_reviews() and get_og_review_mt() methods to create review meta tags for the WooCommerce module.
+	* Renamed the WpssoOpenGraph get_the_media_info() method to get_media_info().
 	* Renamed the offers, rating, and reviews filters that enable/disable the addition of meta tags:
 		* 'wpsso_og_add_product_mt_offers' to 'wpsso_og_add_mt_offers' 
 		* 'wpsso_og_add_product_mt_rating' to 'wpsso_og_add_mt_rating'
@@ -922,7 +923,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.7-b1 =
+= 3.40.7-rc1 =
 
 (2017/03/30) Fixed the checkbox column width in post/page table lists. Added several new functions to retrieve the $mod array. Renamed the WpssoWebpage class to WpssoPage
 
