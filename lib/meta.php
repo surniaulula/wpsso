@@ -137,8 +137,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_rows_social_preview( $form, $head_info, $mod ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows = array();
 			$prev_width = 600;

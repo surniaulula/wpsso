@@ -1719,10 +1719,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
 			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
 			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_NOTICE_NAME'] = 'wpsso_notices';	// stored notices
-			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';	// dismissed notices
-			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';		// post meta
-			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';		// user meta
+			$var_const['WPSSO_NOTICE_NAME'] = 'wpsso_notices';		// stored notices
+			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';		// dismissed notices
+			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';			// post meta
+			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';			// user meta
+			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// duplicate check counter
 
 			/*
 			 * WPSSO option and meta array alternate / fallback names

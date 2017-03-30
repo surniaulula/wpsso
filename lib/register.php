@@ -60,8 +60,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$var_const = WpssoConfig::get_variable_constants();
 			$opts = get_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'], array() );
 
-			if ( empty( $opts['plugin_preserve'] ) )
+			if ( empty( $opts['plugin_preserve'] ) ) {
 				delete_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'] );
+			}
 		}
 
 		private static function do_multisite( $sitewide, $method, $args = array() ) {
@@ -146,6 +147,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			// trunc all stored notices for all users
 			$this->p->notice->trunc_all();
+
+			if ( is_object( $this->p->admin ) ) {		// just in case
+				$this->p->admin->reset_check_head_count();
+			}
 		}
 
 		private static function uninstall_plugin() {
@@ -190,8 +195,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			foreach( $expired as $option_name ) { 
 				$transient_name = str_replace( $prefix, '', $option_name );
-				if ( ! empty( $transient_name ) )
+				if ( ! empty( $transient_name ) ) {
 					delete_transient( $transient_name );
+				}
 			}
 		}
 	}

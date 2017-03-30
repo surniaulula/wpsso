@@ -45,8 +45,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 
-				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_exec_count' ), 10 );
-				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_exec_count' ), 10 );
+				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_count' ), 10 );
+				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_count' ), 10 );
 
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
@@ -1423,9 +1423,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function reset_check_head_exec_count() {
-			$lca = $this->p->cf['lca'];
-			delete_option( $lca.'_post_head_count' );
+		public function reset_check_head_count() {
+			delete_option( WPSSO_POST_CHECK_NAME );
 		}
 
 		public function check_tmpl_head_attributes() {

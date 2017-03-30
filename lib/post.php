@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $post_id;
 			}
 
-			$exec_count = (int) get_option( $lca.'_post_head_count' );	// changes false to 0
+			$exec_count = (int) get_option( WPSSO_POST_CHECK_NAME );	// changes false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( ! $conflicts_found ) {
-					update_option( $lca.'_post_head_count', ++$exec_count, false );	// autoload = false
+					update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
 					$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
 						'wpsso' ), $max_count - $exec_count ) );
 				}
