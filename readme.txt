@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: social meta tags, schema markup, open graph, twitter card, share video, video seo, embed video, woocommerce, bbpress, budddypress, social sharing, knowledge graph
+Tags: social meta tags, schema markup, open graph, twitter card, video seo, local seo, embed video, woocommerce, bbpress, budddypress, social sharing, knowledge graph
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7.3
