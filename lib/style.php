@@ -28,9 +28,12 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		}
 
 		public function admin_enqueue_styles( $hook_name ) {
+
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+				$this->p->debug->log( 'hook name = '.$hook_name );
+				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
+
 
 			$lca = $this->p->cf['lca'];
 			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
@@ -57,12 +60,31 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				WPSSO_URLPATH.'css/com/metabox-tabs.min.css',
 					array(), $plugin_version );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'hook name = '.$hook_name );
-				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
-			}
-
 			switch ( $hook_name ) {
+
+				// license settings pages include a "view plugin details" feature
+				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'enqueuing styles for licenses page' );
+					}
+
+					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
+					add_thickbox();					// required for the plugin details box
+
+					// no break
+
+				// includes the profile_page and users_page hooks (profile submenu items)
+				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'enqueuing styles for settings page' );
+					}
+
+					wp_enqueue_style( 'sucom-setting-pages' );	// sidebar, buttons, etc.
+
+					// no break
+
 				case 'post.php':	// post edit
 				case 'post-new.php':	// post edit
 				case 'term.php':	// term edit
@@ -71,40 +93,17 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for editing page' );
+					}
 
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-table-setting' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
+					wp_enqueue_style( 'wp-color-picker' );
 
-					break;
-
-				// license settings pages include a "view plugin details" feature
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'enqueuing styles for licenses page' );
-
-					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
-					add_thickbox();					// required for the plugin details box
-
-					// no break - continue to enqueue the settings page
-
-				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
-
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'enqueuing styles for settings page' );
-
-					wp_enqueue_style( 'jquery-ui.js' );
-					wp_enqueue_style( 'jquery-qtip.js' );
-					wp_enqueue_style( 'sucom-setting-pages' );	// sidebar, buttons, etc.
-					wp_enqueue_style( 'sucom-table-setting' );
-					wp_enqueue_style( 'sucom-metabox-tabs' );
-
-					break;
+					break;	// stop here
 
 				case 'plugin-install.php':				// css for view plugin details thickbox
 
@@ -114,8 +113,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 					$this->thickbox_inline_styles( $hook_name );
 
-					break;
+					break;	// stop here
 			}
+
 			$this->admin_inline_styles( $hook_name );
 		}
 

@@ -659,6 +659,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/:use$/', $key ) ? true : false ):
 					return 'not_blank';
 					break;
+				case ( strpos( $key, '_color_' ) !== false ? true : false ):
+					return 'color';
+					break;
 			}
 			return $type;
 		}

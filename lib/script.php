@@ -17,50 +17,63 @@ if ( ! class_exists( 'SucomScript' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {
-			$lca = $this->p->cf['lca'];
-			$url_path = constant( strtoupper( $this->p->cf['lca'] ).'_URLPATH' );
-			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
-
-			// http://qtip2.com/download
-			wp_register_script( 'jquery-qtip', 
-				$url_path.'js/ext/jquery-qtip.min.js', 
-					array( 'jquery' ), '3.0.3', true );
-
-			wp_register_script( 'sucom-tooltips', 
-				$url_path.'js/com/jquery-tooltips.min.js', 
-					array( 'jquery' ), $plugin_version, true );
-
-			wp_register_script( 'sucom-metabox', 
-				$url_path.'js/com/jquery-metabox.min.js', 
-					array( 'jquery' ), $plugin_version, true );
-
-			wp_register_script( 'sucom-admin-media', 
-				$url_path.'js/com/jquery-admin-media.min.js', 
-					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'hook name = '.$hook_name );
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
+			$lca = $this->p->cf['lca'];
+			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
+
+			// http://qtip2.com/download
+			wp_register_script( 'jquery-qtip', 
+				WPSSO_URLPATH.'js/ext/jquery-qtip.min.js', 
+					array( 'jquery' ), '3.0.3', true );
+
+			wp_register_script( 'sucom-tooltips', 
+				WPSSO_URLPATH.'js/com/jquery-tooltips.min.js', 
+					array( 'jquery' ), $plugin_version, true );
+
+			wp_register_script( 'sucom-metabox', 
+				WPSSO_URLPATH.'js/com/jquery-metabox.min.js', 
+					array( 'jquery' ), $plugin_version, true );
+
+			wp_register_script( 'sucom-admin-media', 
+				WPSSO_URLPATH.'js/com/jquery-admin-media.min.js', 
+					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
+
 			// don't load our javascript where we don't need it
 			switch ( $hook_name ) {
+
 				// license settings pages include a "view plugin details" feature
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
+					}
 
 					wp_enqueue_script( 'plugin-install' );		// required for the plugin details box
 
-					// no break - continue to enqueue the settings page
+					// no break
+
+				// includes the profile_page and users_page hooks (profile submenu items)
+				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'enqueuing scripts for settings page' );
+					}
+
+					// no break
 
 				case 'post.php':	// post edit
 				case 'post-new.php':	// post edit
@@ -69,10 +82,10 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case 'user-edit.php':	// user edit
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
-				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):	// profile_page and users_page hooks
 
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'enqueuing scripts for editing and settings page' );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'enqueuing scripts for editing page' );
+					}
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
 						if ( SucomUtil::is_post_page( false ) &&
@@ -89,8 +102,10 @@ if ( ! class_exists( 'SucomScript' ) ) {
 					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );
+					wp_enqueue_script( 'wp-color-picker' );
 
-					wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n', $this->get_admin_media_script_data() );
+					wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
+						$this->get_admin_media_script_data() );
 
 					break;
 			}

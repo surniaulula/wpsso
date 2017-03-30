@@ -55,16 +55,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $name ) )
 				return;	// just in case
 
-			if ( $this->get_options( $name.':is' ) === 'disabled' )
+			if ( $this->get_options( $name.':is' ) === 'disabled' ) {
 				$disabled = true;
+			}
 
-			if ( $force !== null )
+			if ( $force !== null ) {
 				$checked = checked( $force, 1, false );
-			elseif ( $this->in_options( $name ) )
+			} elseif ( $this->in_options( $name ) ) {
 				$checked = checked( $this->options[$name], 1, false );
-			elseif ( $this->in_defaults( $name ) )
+			} elseif ( $this->in_defaults( $name ) ) {
 				$checked = checked( $this->defaults[$name], 1, false );
-			else $checked = '';
+			} else {
+				$checked = '';
+			}
 
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1 ) ).
 				'<input type="checkbox"'.
@@ -356,6 +359,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_input_color( $name = '', $class = '', $id = '', $disabled = false ) {
+
+			if ( empty( $name ) ) {
+				$value = '';
+				$disabled = true;
+			} else {
+				$value = $this->in_options( $name ) ?
+					$this->options[$name] : '';
+				if ( $this->get_options( $name.':is' ) === 'disabled' )
+					$disabled = true;
+			}
+
+			return '<input type="text"'.
+				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
+				( empty( $class ) ? ' class="colorpicker"' : ' class="colorpicker '.esc_attr( $class ).'"' ).
+				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
+				' placeholder="#000000" value="'.esc_attr( $value ).'" />';
+		}
+
 		public function get_input_date( $name = '', $class = '', $id = '', $min = '', $max = '', $disabled = false ) {
 
 			if ( empty( $name ) ) {
@@ -368,12 +390,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$disabled = true;
 			}
 
-			return '<input type="text" '.
+			return '<input type="text"'.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? ' class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
 				( empty( $min ) ? '' : ' min="'.esc_attr( $min ).'"' ).
-				( empty( $max ) ? '' : ' min="'.esc_attr( $max ).'"' ).
+				( empty( $max ) ? '' : ' max="'.esc_attr( $max ).'"' ).
 				' placeholder="yyyy-mm-dd" value="'.esc_attr( $value ).'" />';
 		}
 
@@ -584,7 +606,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'window.open(\''.esc_url( $url ).'\', \'_blank\');' :
 				'location.href=\''.esc_url( $url ).'\';';
 
-			$html = '<input type="button" '.
+			$html = '<input type="button"'.
 				( $disabled ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="button_'.esc_attr( $id ).'"' ).

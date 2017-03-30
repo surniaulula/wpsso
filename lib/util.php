@@ -563,6 +563,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ),
 					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.',
 						'wpsso' ),
+					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting the option to its default value.',
+						'wpsso' ),
 					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting the option to its default value.',
 						'wpsso' ),
 					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting the option to its default value.',
@@ -694,12 +696,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					break;
 
+				case 'color':
 				case 'date':
 				case 'time':
 					$val = trim( $val );
-					$fmt = $option_type === 'date' ?
-						'/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/' :
-						'/^[0-9]{2,2}:[0-9]{2,2}$/';
+					if ( $option_type === 'color' ) {
+						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// color #000000
+					} elseif ( $option_type === 'date' ) {
+						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';	// date yyyy-mm-dd
+					} else {
+						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}$/';	// time hh:mm
+					}
 					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 						$val = $def_val;

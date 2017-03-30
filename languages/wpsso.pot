@@ -478,27 +478,27 @@ msgstr ""
 msgid "Failed to open cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:76 lib/config-gettext-extract.php:45
+#: lib/com/form.php:79 lib/config-gettext-extract.php:45
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:211 lib/config-gettext-extract.php:40
+#: lib/com/form.php:214 lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:215 lib/config-gettext-extract.php:43
+#: lib/com/form.php:218 lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:219 lib/config-gettext-extract.php:41
+#: lib/com/form.php:222 lib/config-gettext-extract.php:41
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:224 lib/com/form.php:293 lib/config-gettext-extract.php:12
+#: lib/com/form.php:227 lib/com/form.php:296 lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -3177,7 +3177,7 @@ msgid ""
 "Schema %2$s markup."
 msgstr ""
 
-#: lib/script.php:103
+#: lib/script.php:118
 msgid "Use Image"
 msgstr ""
 
@@ -3784,72 +3784,78 @@ msgstr ""
 
 #: lib/util.php:566
 msgid ""
-"The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
+"The value of option '%s' must be a CSS color code - resetting the option to "
 "its default value."
 msgstr ""
 
 #: lib/util.php:568
 msgid ""
-"The value of option '%s' must be a hh:mm time - resetting the option to its "
-"default value."
+"The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
+"its default value."
 msgstr ""
 
 #: lib/util.php:570
 msgid ""
-"The value of option '%s' must be HTML code - resetting the option to its "
+"The value of option '%s' must be a hh:mm time - resetting the option to its "
 "default value."
 msgstr ""
 
 #: lib/util.php:572
 msgid ""
+"The value of option '%s' must be HTML code - resetting the option to its "
+"default value."
+msgstr ""
+
+#: lib/util.php:574
+msgid ""
 "The value of option '%s' cannot be an empty string - resetting the option to "
 "its default value."
 msgstr ""
 
-#: lib/util.php:776
+#: lib/util.php:783
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:783
+#: lib/util.php:790
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:808
+#: lib/util.php:815
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:844
+#: lib/util.php:851
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1134
+#: lib/util.php:1141
 msgid "Fetched image size by HTTP for %1$s (%2$s)."
 msgstr ""
 
-#: lib/util.php:1866
+#: lib/util.php:1873
 msgid "No options available."
-msgstr ""
-
-#: lib/util.php:1892
-msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr ""
-
-#: lib/util.php:1896
-msgctxt "option comment"
-msgid "unhide these options"
 msgstr ""
 
 #: lib/util.php:1899
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
+msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
 #: lib/util.php:1903
+msgctxt "option comment"
+msgid "unhide these options"
+msgstr ""
+
+#: lib/util.php:1906
+msgctxt "option comment"
+msgid "%1$d additional rows not shown in %2$s view"
+msgstr ""
+
+#: lib/util.php:1910
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
