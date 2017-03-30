@@ -1136,12 +1136,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$image_info = @getimagesize( $media_url );
 
 						if ( is_array( $image_info ) ) {
-
+							/*
 							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
 									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
 										true, __METHOD__.$media_url, true );
 							}
+							*/
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
 									$image_info[0].'x'.$image_info[1] );

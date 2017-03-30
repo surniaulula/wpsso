@@ -3832,30 +3832,26 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1141
-msgid "Fetched image size by HTTP for %1$s (%2$s)."
-msgstr ""
-
-#: lib/util.php:1873
+#: lib/util.php:1874
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1899
+#: lib/util.php:1900
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1903
+#: lib/util.php:1904
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1906
+#: lib/util.php:1907
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1910
+#: lib/util.php:1911
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
