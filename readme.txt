@@ -373,9 +373,9 @@ Note that the production stage level can be incremented on occasion for simple t
 **Version 3.40.7-1 (2017/03/31)**
 
 * *New Features*
-	* None
+	* Added the new WPSSO Ratings and Reviews extension to the Extension Plugins and Pro Licenses settings page.
 * *Improvements*
-	* None
+	* Added tabindex values to the Extension Plugins and Pro Licenses settings page options.
 * *Bugfixes*
 	* Fixed the checkbox column width in post/page table lists.
 * *Developer Notes*
