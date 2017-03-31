@@ -213,8 +213,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public static function set_readme_info( $read_cache = true ) {
 			$wpsso =& Wpsso::get_instance();
 			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
-				if ( empty( self::$readme[$ext] ) )
+				if ( empty( self::$readme[$ext] ) ) {
 					self::$readme[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
+				}
 			}
 		}
 

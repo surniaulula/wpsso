@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $post_id );
-				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod );	// $read_cache = true
+				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, true );	// $read_cache = true
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );
 					}
 
-					// $read_cache = false to generate notices etc.
+					// $read_cache is false to generate notices etc.
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 

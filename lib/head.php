@@ -234,12 +234,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$indent = 0;
 			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
 				if ( ! empty( $mt[0] ) ) {
-					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 )
+					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 ) {
 						$indent = 0;
-					$html .= str_repeat( "\t",
-						(int) $indent ).$mt[0];
-					if ( strpos( $mt[0], '<noscript' ) === 0 )
+					}
+					$html .= str_repeat( "\t", (int) $indent ).$mt[0];
+					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
 						$indent = 1;
+					}
 				}
 			}
 
@@ -256,10 +257,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
+		// $read_cache is false when called by post/term/user load_meta_page() method
 		public function get_head_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
+			}
 
 			$lca = $this->p->cf['lca'];
 
@@ -290,24 +293,32 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $cache_exp > 0 ) {
-				$head_array = get_transient( $cache_id );
-				if ( isset( $head_array[$head_index] ) ) {
-					if ( is_array( $head_array[$head_index] ) ) {	// just in case
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'head index found in array from transient '.$cache_id );
-							$this->p->debug->mark( 'build head array' );	// end timer
+				if ( $read_cache ) {	// false when called by post/term/user load_meta_page() method
+					$head_array = get_transient( $cache_id );
+					if ( isset( $head_array[$head_index] ) ) {
+						if ( is_array( $head_array[$head_index] ) ) {	// just in case
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'head index found in array from transient '.$cache_id );
+								$this->p->debug->mark( 'build head array' );	// end timer
+							}
+							return $head_array[$head_index];	// stop here
+						} elseif ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'head index is not an array' );
 						}
-						return $head_array[$head_index];	// stop here
-					} elseif ( $this->p->debug->enabled )
-						$this->p->debug->log( 'head index is not an array' );
-				} elseif ( $this->p->debug->enabled )
-					$this->p->debug->log( 'head index not in transient '.$cache_id );
-			} elseif ( $this->p->debug->enabled )
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'head index not in transient '.$cache_id );
+					}
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'read cache for head is disabled' );
+				}
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'head array transient is disabled' );
+			}
 
 			// set the reference url for admin notices
-			if ( is_admin() )
+			if ( is_admin() ) {
 				$this->p->notice->set_reference_url( $sharing_url );
+			}
 
 			// define the author_id (if one is available)
 			$author_id = WpssoUser::get_author_id( $mod );
@@ -428,16 +439,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $cache_exp > 0 ) {
 				// update the transient array and keep the original expiration time
 				$cache_exp = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head array saved to transient '.$cache_id.' ('.$cache_exp.' seconds)' );
+				}
 			}
 
 			// reset the reference url for admin notices
-			if ( is_admin() )
+			if ( is_admin() ) {
 				$this->p->notice->set_reference_url( null );
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// end timer
+			}
 
 			return $head_array[$head_index];
 		}

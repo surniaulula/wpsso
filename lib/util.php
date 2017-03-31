@@ -1616,12 +1616,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// get remote setup.html file
 			if ( $cache_exp > 0 && $get_remote ) {
-				if ( ! $read_cache )
+				if ( ! $read_cache ) {
 					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
+				}
 				$content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp );
-				if ( empty( $content ) )
+				if ( empty( $content ) ) {
 					$get_remote = false;
-			} else $get_remote = false;
+				}
+			} else {
+				$get_remote = false;
+			}
 
 			// fallback to local setup.html file
 			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
@@ -1657,25 +1661,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
 			$cache_id = $ext.'_'.md5( $cache_salt );
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+			}
 
 			if ( $cache_exp > 0 ) {
 				$readme_info = $read_cache ? get_transient( $cache_id ) : false;
 				if ( is_array( $readme_info ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
+					}
 					return $readme_info;	// stop here
 				}
 				// get remote readme.txt file
 				if ( $get_remote ) {
-					if ( ! $read_cache )
+					if ( ! $read_cache ) {
 						$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
+					}
 					$content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp );
-					if ( empty( $content ) )
+					if ( empty( $content ) ) {
 						$get_remote = false;
-				} else $content = false;
-			} else $get_remote = false;
+					}
+				} else {
+					$content = false;
+				}
+			} else {
+				$get_remote = false;
+			}
 
 			// fallback to local readme.txt file
 			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
