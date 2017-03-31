@@ -378,6 +378,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added tabindex values to the Extension Plugins and Pro Licenses settings page options.
 * *Bugfixes*
 	* Fixed the checkbox column width in post/page table lists.
+	* Fixed a missing check for $read_cache when creating the meta tag array.
 * *Developer Notes*
 	* Added several new functions to retrieve the $mod array:
 		* wpsso_get_page_mod( $use_post = false )
