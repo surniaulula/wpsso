@@ -79,43 +79,15 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private function activate_plugin() {
-			$plugin_name = WpssoConfig::$cf['plugin']['wpsso']['name'];
-			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
-			foreach ( array( 'wp', 'php' ) as $key ) {
-				switch ( $key ) {
-					case 'wp':
-						global $wp_version;
-						$app_label = 'WordPress';
-						$app_version = $wp_version;
-						break;
-					case 'php':
-						$app_label = 'PHP';
-						$app_version = phpversion();
-						break;
-				}
-				if ( isset( WpssoConfig::$cf[$key]['min_version'] ) ) {
-					$min_version = WpssoConfig::$cf[$key]['min_version'];
-					if ( version_compare( $app_version, $min_version, '<' ) ) {
-						load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
-						if ( ! function_exists( 'deactivate_plugins' ) ) {
-							require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
-						}
-						deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
-						wp_die( 
-							'<p>'.sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
-								'wpsso' ), $plugin_name, $app_label, $min_version ).'</p>'.
-							'<p>'.sprintf( __( 'Please upgrade %1$s before trying to reactivate the %2$s plugin.',
-								'wpsso' ), $app_label, $plugin_name ).'</p>'
-						);
-					}
-				}
-			}
+			$this->check_required( WpssoConfig::$cf );
 
 			$this->p->set_config();
 			$this->p->set_options();
 			$this->p->set_objects( true );	// $activate = true
 			$this->p->util->clear_all_cache( true );	// $clear_ext = true
+
+			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
@@ -198,6 +170,52 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				if ( ! empty( $transient_name ) ) {
 					delete_transient( $transient_name );
 				}
+			}
+		}
+
+		private static function check_required( $cf ) {
+
+			$plugin_name = $cf['plugin']['wpsso']['name'];
+			$plugin_version = $cf['plugin']['wpsso']['version'];
+
+			foreach ( array( 'wp', 'php' ) as $key ) {
+				if ( empty( $cf[$key]['min_version'] ) ) {
+					return;
+				}
+				switch ( $key ) {
+					case 'wp':
+						global $wp_version;
+						$app_version = $wp_version;
+						break;
+					case 'php':
+						$app_version = phpversion();
+						break;
+				}
+
+				$app_label = $cf[$key]['label'];
+				$min_version = $cf[$key]['min_version'];
+				$version_url = $cf[$key]['version_url'];
+
+				if ( version_compare( $app_version, $min_version, '>=' ) ) {
+					continue;
+				}
+
+				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+
+				if ( ! function_exists( 'deactivate_plugins' ) ) {
+					require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+				}
+
+				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
+
+				wp_die( 
+					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%4$s">this %1$s version is outdated, unsupported, insecure</a> and may lack important features.',
+						'wpsso' ), $app_label, $app_version, $min_version, $version_url ).'</p>'.
+					'<p>'.sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+						'wpsso' ), $plugin_name, $app_label, $min_version ).'</p>'.
+					'<p>'.sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',
+						'wpsso' ), $app_label, $plugin_name ).'</p>'
+				);
 			}
 		}
 	}

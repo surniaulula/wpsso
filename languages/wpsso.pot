@@ -402,35 +402,35 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1460
+#: lib/admin.php:1465
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1472
+#: lib/admin.php:1477
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1478
+#: lib/admin.php:1483
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1486
+#: lib/admin.php:1491
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1491
+#: lib/admin.php:1496
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1494
+#: lib/admin.php:1499
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1508
+#: lib/admin.php:1513
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -2728,8 +2728,8 @@ msgstr ""
 #: lib/messages.php:951
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
-"is outdated, unsupported, insecure</a> and may lack some important features. "
-"If possible, please update to the latest %1$s stable release (or at least "
+"is outdated, unsupported, insecure</a> and may lack important features. If "
+"possible, please update to the latest %1$s stable release (or at least "
 "version %3$s)."
 msgstr ""
 
@@ -3153,12 +3153,18 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:106
+#: lib/register.php:212
+msgid ""
+"You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
+"is outdated, unsupported, insecure</a> and may lack important features."
+msgstr ""
+
+#: lib/register.php:214
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:108
-msgid "Please upgrade %1$s before trying to reactivate the %2$s plugin."
+#: lib/register.php:216
+msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
 #: lib/schema.php:44 lib/schema.php:50
