@@ -808,9 +808,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $replace !== false ) {
 					$fixed = preg_replace( $pattern, $replace, $key );
 					$found[$fixed] = $input[$key];
-				} else $found[$key] = $input[$key];
-				if ( $remove !== false )
+				} else {
+					$found[$key] = $input[$key];
+				}
+				if ( $remove !== false ) {
 					unset( $input[$key] );
+				}
 			}
 			return $found;
 		}

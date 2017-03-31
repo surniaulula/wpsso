@@ -162,23 +162,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
 
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
-
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
 
 				// check for a new plugin and/or extension version
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-
 					if ( empty( $info['version'] ) ) {
 						continue;
 					}
-
 					$key = 'plugin_'.$ext.'_version';
-
-					if ( empty( $opts[$key] ) || 
-						version_compare( $opts[$key], $info['version'], '!=' ) ) {
-
+					if ( empty( $opts[$key] ) || version_compare( $opts[$key], $info['version'], '!=' ) ) {
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
@@ -188,23 +182,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// check for an upgrade to the options array
 				if ( empty( $opts['options_version'] ) || 
-					$opts['options_version'] !== $this->p->cf['opt']['version'] )
+					$opts['options_version'] !== $this->p->cf['opt']['version'] ) {
 						$has_diff_options = true;
+				}
 
 				// upgrade the options array if necessary (renamed or removed keys)
 				if ( $has_diff_options ) {
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
 							' different than saved v'.( empty( $opts['options_version'] ) ?
 								0 : $opts['options_version'] ) );
 					}
-
 					if ( ! is_object( $this->upg ) ) {
 						require_once WPSSO_PLUGINDIR.'lib/upgrade.php';
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
-
 					$def_opts = $network ?
 						$this->get_site_defaults() :
 						$this->get_defaults();
@@ -212,26 +204,26 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
 
-				// adjust some options based on external factors
+				// adjust / cleanup options based on external factors
 				if ( ! $network ) {
 					if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) ) {
-						foreach ( array(
-							'plugin_hide_pro' => 0,
-						) as $idx => $def_val ) {
+						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {
 								continue;
 							}
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
 						}
-					} elseif ( empty( $opts['plugin_'.$lca.'_tid'] ) ) {
-						foreach ( array(
-							'plugin_filter_title' => 0,
-							'plugin_filter_content' => 0,
-							'plugin_filter_excerpt' => 0,
-							'plugin_check_head' => 1,
-							'plugin_upscale_images' => 0,
-						) as $idx => $def_val ) {
+					} elseif ( $has_diff_version && empty( $opts['plugin_'.$lca.'_tid'] ) ) {
+						$def_opts = $this->get_defaults();
+						$adv_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+						unset(
+							$adv_opts['plugin_preserve'],
+							$adv_opts['plugin_debug'],
+							$adv_opts['plugin_hide_pro'],
+							$adv_opts['plugin_show_opts']
+						);
+						foreach ( $adv_opts as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {
 								continue;
 							}
@@ -243,7 +235,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
-
 					/*
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
@@ -270,7 +261,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
-
 					/*
  					 * Generator meta tags are required for plugin support. If you disable the
 					 * generator meta tags, but requests for plugin support will be denied.
@@ -326,11 +316,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$err_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.',
 						'wpsso' ), $options_name );
 				}
-
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $err_msg );
 				}
-
 				if ( is_admin() ) {
 					if ( $network ) {
 						$url = $this->p->util->get_admin_url( 'network' );
@@ -339,7 +327,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
-
 				return $network ?	// return the default options
 					$this->get_site_defaults() :
 					$this->get_defaults();
@@ -374,7 +361,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/* Adjust Dependent Options
+			/*
+			 * Adjust Dependent Options
 			 *
 			 * All options (site and meta as well) are sanitized here, so always use 
 			 * isset() or array_key_exists() on all tests to make sure additional / 
