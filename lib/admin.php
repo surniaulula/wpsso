@@ -1078,6 +1078,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$num = 0;
 			$lca = $this->p->cf['lca'];
 			$total = count( $this->p->cf['plugin'] );
+			$tabindex = 0;
 
 			echo '<table class="sucom-setting '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
@@ -1092,8 +1093,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$view_text = _x( 'Plugin Details', 'plugin action link', 'wpsso' );
 
 				if ( ! empty( $info['slug'] ) &&
-					( empty( $info['url']['latest'] ) ||
-						$this->p->is_avail['util']['um'] ) ) {
+					( empty( $info['url']['latest'] ) || $this->p->is_avail['util']['um'] ) ) {
 
 					$plugin_href = add_query_arg( array(
 						'tab' => 'plugin-information',
@@ -1117,52 +1117,59 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 						}
-					} else $view_text = _x( 'Plugin Details + Install', 'plugin action link', 'wpsso' );
-
-					$links[] = '<a href="'.$plugin_href.'" class="thickbox">'.$view_text.'</a>';
+					} else {
+						$view_text = _x( 'Plugin Details + Install', 'plugin action link', 'wpsso' );
+					}
+					$links[] = '<a href="'.$plugin_href.'" class="thickbox" tabindex="'.++$tabindex.'">'.$view_text.'</a>';
 
 				} elseif ( ! empty( $info['url']['download'] ) ) {
 					$plugin_href = $info['url']['download'];
-					$links[] = '<a href="'.$plugin_href.'" target="_blank">'._x( 'Plugin Description',
-						'plugin action link', 'wpsso' ).'</a>';
+					$links[] = '<a href="'.$plugin_href.'" target="_blank" tabindex="'.++$tabindex.'">'.
+						_x( 'Plugin Description', 'plugin action link', 'wpsso' ).'</a>';
 				}
 
-				if ( ! empty( $info['url']['latest'] ) )
-					$links[] = '<a href="'.$info['url']['latest'].'">'._x( 'Download Latest',
-						'plugin action link', 'wpsso' ).'</a> (ZIP)';
+				if ( ! empty( $info['url']['latest'] ) ) {
+					$links[] = '<a href="'.$info['url']['latest'].'" tabindex="'.++$tabindex.'">'.
+						_x( 'Download Latest', 'plugin action link', 'wpsso' ).'</a> (ZIP)';
+				}
 
 				if ( ! empty( $info['url']['purchase'] ) ) {
 					$purchase_url = add_query_arg( 'utm_source', 'license-action-links', $info['url']['purchase'] );
-					$links[] = $this->p->msgs->get( 'pro-purchase-text', array( 'ext' => $ext, 'url' => $purchase_url ) );
+					$links[] = $this->p->msgs->get( 'pro-purchase-text', 
+						array( 'ext' => $ext, 'url' => $purchase_url, 'tabindex' => ++$tabindex ) );
 				}
 
-				if ( ! empty( $info['img']['icon_small'] ) )
+				if ( ! empty( $info['img']['icon_small'] ) ) {
 					$img_src = 'src="'.$info['img']['icon_small'].'"';
-				else $img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
+				} else {
+					$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
+				}
 
-				if ( ! empty( $info['img']['icon_medium'] ) )
+				if ( ! empty( $info['img']['icon_medium'] ) ) {
 					$img_src .= ' srcset="'.$info['img']['icon_medium'].' 256w"';
+				}
 
-				// logo image
+				// logo image - skip the tabindex
 				echo '<tr><td style="width:148px; padding:10px;" rowspan="3" valign="top" align="left">'."\n";
-				if ( ! empty( $plugin_href ) )
+				if ( ! empty( $plugin_href ) ) {
 					echo '<a href="'.$plugin_href.'"'.( strpos( $plugin_href, 'TB_iframe' ) ?
 						' class="thickbox"' : ' target="_blank"' ).'>';
+				}
 				echo '<img '.$img_src.' width="128" height="128">';
-				if ( ! empty( $plugin_href ) )
+				if ( ! empty( $plugin_href ) ) {
 					echo '</a>';
+				}
 				echo '</td>'."\n";
 
 				// plugin name
 				echo '<td colspan="'.( $network ? 4 : 3 ).'" style="padding:10px 0 0 0;">
 					<p><strong>'.$info['name'].'</strong></p>';
-
-				if ( ! empty( $info['desc'] ) )
+				if ( ! empty( $info['desc'] ) ) {
 					echo '<p>'._x( $info['desc'], 'plugin description', 'wpsso' ).'</p>';
-
-				if ( ! empty( $links ) )
+				}
+				if ( ! empty( $links ) ) {
 					echo '<p>'.implode( ' | ', $links ).'</p>';
-
+				}
 				echo '</td></tr>'."\n";
 
 				if ( $network ) {
@@ -1170,19 +1177,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
-							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
-							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).'</td>'.
+							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
+								'tid mono', '', 0, '', false, ++$tabindex ).'</td>'.
 							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid', true );
 						} else {
-							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
+								$this->form->get_input( 'plugin_'.$ext.'_tid',
+									'tid mono', '', 0, '', false, ++$tabindex ) ).
 							'</td></tr>'."\n";
 						}
-					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+					} else {
+						echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+					}
 				} else {
 					if ( ! empty( $info['update_auth'] ) ||
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
@@ -1190,20 +1201,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
-							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ).
+							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
+								'tid mono', '', 0, '', false, ++$tabindex ).
 							'</td><td><p>'.( empty( $qty_used ) ? '' :
 								$qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->form->get_th_html( _x( 'Pro Authentication ID',
+							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
 								'option label', 'wpsso' ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono' ) ).
+								$this->form->get_input( 'plugin_'.$ext.'_tid',
+									'tid mono', '', 0, '', false, ++$tabindex ) ).
 							'</td></tr>'."\n";
 						}
-					} else echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
+					} else {
+						echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
+					}
 				}
 
 				echo '<tr><td'.( $num < $total ? ' style="border-bottom:1px dotted #ddd;"' : '' ).

@@ -300,26 +300,31 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false ) {
-			if ( empty( $name ) )
+		public function get_input( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false, $tabindex = 0 ) {
+			if ( empty( $name ) ) {
 				return;	// just in case
+			}
 
-			if ( $disabled || $this->get_options( $name.':is' ) === 'disabled' )
+			if ( $disabled || $this->get_options( $name.':is' ) === 'disabled' ) {
 				return $this->get_no_input( $name, $class, $id, $placeholder );
+			}
 
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
 
-			if ( ! is_array( $len ) )
+			if ( ! is_array( $len ) ) {
 				$len = array( 'max' => $len );
+			}
 
-			if ( ! empty( $len['max'] ) && ! empty( $id ) )
+			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
 				$html .= $this->get_text_len_js( 'text_'.$id );
+			}
 
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
+				( empty( $tabindex ) ? '' : ' tabindex="'.esc_attr( $tabindex ).'"' ).
 				( empty( $len['max'] ) ? '' : ' maxLength="'.esc_attr( $len['max'] ).'"' ).
 				( empty( $len['warn'] ) ? '' : ' warnLength="'.esc_attr( $len['warn'] ).'"' ).
 				( $this->get_placeholder_events( 'input', $placeholder ) ).' value="'.esc_attr( $value ).'" />'.
