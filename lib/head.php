@@ -69,8 +69,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		// called by wp_head action
 		public function show_head() {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
@@ -95,12 +97,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'add_head_html = '.( $add_head_html ? 'true' : 'false' ) );
 			}
 
-			if ( $add_head_html )
+			if ( $add_head_html ) {
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
-			else echo "\n<!-- ".$lca." head html is disabled -->\n";
+			} else {
+				echo "\n<!-- ".$lca." head html is disabled -->\n";
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'end of get_head_html' );
+			}
 		}
 
 		// extract certain key fields for display and sanity checks
