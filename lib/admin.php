@@ -722,7 +722,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			WpssoAdmin::set_readme_info();	// $read_cache = true
-			echo '<table class="sucom-setting '.$lca.' side">';
+			echo '<table class="sucom-setting '.$lca.' side version-info" style="table-layout:fixed;">';
+			echo '<colgroup><col style="width:60px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// only active extensions
 					continue;
@@ -762,18 +763,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Installed', 'plugin status label', 'wpsso' ).':</th>
-					<td class="side_version" '.$installed_style.'>'.$installed_version.'</td></tr>';
+				echo '<tr><th class="side">'._x( 'Installed', 'side label', 'wpsso' ).':</th>
+					<td class="side-version" '.$installed_style.'>'.$installed_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Stable', 'plugin status label', 'wpsso' ).':</th>
-					<td class="side_version">'.$stable_version.'</td></tr>';
+				echo '<tr><th class="side">'._x( 'Stable', 'side label', 'wpsso' ).':</th>
+					<td class="side-version">'.$stable_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Latest', 'plugin status label', 'wpsso' ).':</th>
-					<td class="side_version">'.$latest_version.'</td></tr>';
+				echo '<tr><th class="side">'._x( 'Latest', 'side label', 'wpsso' ).':</th>
+					<td class="side-version">'.$latest_version.'</td></tr>';
 
-				echo '<tr><td colspan="2" class="latest_notice"><p>Version '.$latest_version.' '.$latest_notice.'</p>'.
+				echo '<tr><td colspan="2" class="latest-notice">'.
+					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
-						sprintf( _x( 'View %s changelog...', 'following plugin status version numbers',
+						sprintf( _x( 'View %s changelog...', 'side value',
 							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 			echo '</table>';
