@@ -170,15 +170,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		// hooked into the current_screen action
 		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 		public function load_meta_page( $screen = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			// all meta modules set this property, so use it to optimize code execution
-			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) )
+			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
 				return;
+			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'screen id: '.$screen->id );
+			}
 
 			$lca = $this->p->cf['lca'];
 
@@ -209,19 +213,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				do_action( $lca.'_admin_user_head', $mod, $screen->id );
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
+				}
 
 				// $use_post = false, $read_cache = false to generate notices etc.
 				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-				// check for missing open graph image and issue warning
-				if ( empty( WpssoMeta::$head_meta_info['og:image'] ) )
-					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
-
-				if ( empty( WpssoMeta::$head_meta_info['og:description'] ) )
-					$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
+				// check for missing open graph image and description values
+				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'og:'.$mt_suffix.' meta tag is value empty and required' );
+						}
+						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+						}
+					}
+				}
 			}
 
 			$action_query = $lca.'-action';

@@ -331,13 +331,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $post_obj->post_status === 'publish' ) {
 
-						// check for missing open graph image and issue warning
-						if ( empty( WpssoMeta::$head_meta_info['og:image'] ) ) {
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-image' ) );
-						}
-
-						if ( empty( WpssoMeta::$head_meta_info['og:description'] ) ) {
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-description' ) );
+						// check for missing open graph image and description values
+						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+							if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'og:'.$mt_suffix.' meta tag is value empty and required' );
+								}
+								if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+									$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+								}
+							}
 						}
 
 						// check duplicates only when the post is available publicly and we have a valid permalink

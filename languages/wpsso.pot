@@ -87,7 +87,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:421 lib/post.php:365 lib/term.php:258 lib/user.php:236
+#: lib/admin.php:421 lib/post.php:368 lib/term.php:268 lib/user.php:246
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1546,7 +1546,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:179 lib/post.php:567
+#: lib/gpl/admin/post.php:121 lib/meta.php:179 lib/post.php:570
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3002,22 +3002,22 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/post.php:450
+#: lib/post.php:453
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:467
+#: lib/post.php:470
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:476
+#: lib/post.php:479
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:523 lib/profile/social-settings.php:28 lib/term.php:282
-#: lib/user.php:262
+#: lib/post.php:526 lib/profile/social-settings.php:28 lib/term.php:292
+#: lib/user.php:272
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3726,15 +3726,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:422
+#: lib/user.php:432
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:423
+#: lib/user.php:433
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:424
+#: lib/user.php:434
 msgid "Jabber / Google Talk"
 msgstr ""
 
