@@ -507,11 +507,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function filter_option_type( $type, $key ) {
-
 			if ( ! empty( $type ) ) {
 				return $type;
 			}
-
 			switch ( $key ) {
 				// optimize and check for add meta tags options now
 				case ( strpos( $key, 'add_' ) === 0 ? true : false ):
