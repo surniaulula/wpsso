@@ -1178,14 +1178,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
-							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
-								'option label', 'wpsso' ), 'medium nowrap' ).
+							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
 								'tid mono', '', 0, '', false, ++$tabindex ).'</td>'.
 							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid', true );
 						} else {
-							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
-								'option label', 'wpsso' ), 'medium nowrap' ).
+							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid',
@@ -1202,15 +1202,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
-								'option label', 'wpsso' ), 'medium nowrap' ).
+							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
 								'tid mono', '', 0, '', false, ++$tabindex ).
 							'</td><td><p>'.( empty( $qty_used ) ? '' :
 								$qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
 						} else {
-							echo '<tr>'.$this->form->get_th_html( $info['short'].' '._x( 'Authentication ID',
-								'option label', 'wpsso' ), 'medium nowrap' ).
+							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
 							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
 								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
 								$this->form->get_input( 'plugin_'.$ext.'_tid',

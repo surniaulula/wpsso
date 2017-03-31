@@ -209,8 +209,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
 
 				wp_die( 
-					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%4$s">this %1$s version is outdated, unsupported, insecure</a> and may lack important features.',
-						'wpsso' ), $app_label, $app_version, $min_version, $version_url ).'</p>'.
+					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, insecure</a> and may lack important features.',
+						'wpsso' ), $app_label, $app_version, $version_url ).'</p>'.
 					'<p>'.sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 						'wpsso' ), $plugin_name, $app_label, $min_version ).'</p>'.
 					'<p>'.sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',

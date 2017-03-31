@@ -155,7 +155,7 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:690 lib/messages.php:950
+#: lib/admin.php:690 lib/messages.php:951
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -294,7 +294,7 @@ msgstr ""
 
 #: lib/admin.php:1181 lib/admin.php:1187 lib/admin.php:1205 lib/admin.php:1212
 msgctxt "option label"
-msgid "Authentication ID"
+msgid "%s Authentication ID"
 msgstr ""
 
 #: lib/admin.php:1236
@@ -2658,12 +2658,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:930
-msgid "The %1$s plugin %2$s option is empty."
-msgstr ""
-
-#: lib/messages.php:930
-msgctxt "option label"
-msgid "Pro Authentication ID"
+msgid "The %1$s plugin Authentication ID option is empty."
 msgstr ""
 
 #: lib/messages.php:930
@@ -2673,94 +2668,98 @@ msgid ""
 "on the <a href=\"%s\">Extension Plugins and Pro Licenses</a> settings page."
 msgstr ""
 
-#: lib/messages.php:933
+#: lib/messages.php:934
 msgid ""
 "An Authentication ID has been entered for %s, but the Pro version is not yet "
 "installed &ndash; don't forget to update the plugin to install the latest "
 "Pro version. ;-)"
 msgstr ""
 
-#: lib/messages.php:939
+#: lib/messages.php:940
 msgid ""
 "At least one Authentication ID has been entered on the <a href=\"%1$s"
 "\">Extension Plugins and Pro Licenses</a> settings page, but the %2$s plugin "
 "is not active."
 msgstr ""
 
-#: lib/messages.php:942
+#: lib/messages.php:943
 msgid ""
 "This Free plugin is required to update and enable the %s plugin and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:942
+#: lib/messages.php:943
 msgid "Download the Free <a href=\"%1$s\">%2$s plugin archive</a> (ZIP)."
 msgstr ""
 
-#: lib/messages.php:942
+#: lib/messages.php:943
 msgid ""
 "Then <a href=\"%s\">upload and activate the plugin</a> on the WordPress "
 "plugin upload page."
 msgstr ""
 
-#: lib/messages.php:945
+#: lib/messages.php:946
 msgid ""
 "Once the %s extension has been activated, one or more Pro version updates "
 "may be available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:945
+#: lib/messages.php:946
 msgid ""
 "Read more <a href=\"%1$s\" target=\"_blank\">about the %2$s extension "
 "plugin</a>."
 msgstr ""
 
-#: lib/messages.php:950
+#: lib/messages.php:951
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:950
+#: lib/messages.php:951
 msgid ""
 "Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
 "latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:953
+#: lib/messages.php:954 lib/register.php:212
 msgid ""
-"You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
-"is outdated, unsupported, insecure</a> and may lack important features. If "
-"possible, please update to the latest %1$s stable release (or at least "
-"version %3$s)."
+"You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
+"is outdated, unsupported, insecure</a> and may lack important features."
 msgstr ""
 
-#: lib/messages.php:967
+#: lib/messages.php:954
 msgid ""
-"%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
-"license and enable Pro version features within seconds of your purchase."
+"If possible, please update to the latest %1$s stable release (or at least "
+"version %2$s)."
 msgstr ""
 
 #: lib/messages.php:968
 msgid ""
 "%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
-"update the plugin within seconds of your purchase."
+"license and enable Pro version features within seconds of your purchase."
 msgstr ""
 
 #: lib/messages.php:969
+msgid ""
+"%s can be purchased quickly and easily via Paypal &ndash; allowing you to "
+"update the plugin within seconds of your purchase."
+msgstr ""
+
+#: lib/messages.php:970
 msgid ""
 "Pro version licenses do not expire &ndash; there are no yearly or recurring "
 "fees for updates and support."
 msgstr ""
 
-#: lib/messages.php:973
+#: lib/messages.php:974
 msgid ""
 "The development of %1$s is driven mostly by customer requests &mdash; we "
 "welcome your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:985
+#: lib/messages.php:986
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."
@@ -3154,12 +3153,6 @@ msgstr ""
 
 #: lib/profile/social-settings.php:37
 msgid "Invalid user ID."
-msgstr ""
-
-#: lib/register.php:212
-msgid ""
-"You are using %1$s version %2$s &mdash; <a href=\"%4$s\">this %1$s version "
-"is outdated, unsupported, insecure</a> and may lack important features."
 msgstr ""
 
 #: lib/register.php:214
