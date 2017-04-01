@@ -664,17 +664,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$cast_int = true;
 					// no break
 				case 'pos_num':
-					if ( $option_type == 'img_width' ) {
+					if ( $option_type === 'img_width' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
-					} elseif ( $option_type == 'img_height' ) {
+					} elseif ( $option_type === 'img_height' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
 					} else {
 						$min_int = 1;
 					}
-					// custom meta options are allowed to be empty
-					if ( ! empty( $mod['name'] ) && $val === '' ) {
+					if ( ! empty( $mod['name'] ) && $val === '' ) {	// custom meta options can be empty
 						$cast_int = false;
-						break;	// abort
 					} elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
 						$val = $def_val;
@@ -686,7 +684,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$cast_int = true;
 					// no break
 				case 'blank_num':
-					if ( $val !== '' ) {
+					if ( $val === '' ) {
+						$cast_int = false;
+					} else {
 						if ( ! is_numeric( $val ) ) {
 							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['blank_num'], $key ) );
 							$val = $def_val;
