@@ -21,7 +21,7 @@
 
 <p><strong>WPSSO provides special optimization features for Pinterest</strong> &mdash; offering customized Pinterest image sizes and preventing conflicts between incompatible Pinterest and Facebook / Open Graph meta tag values.</p>
 
-<p><strong>WPSSO includes advanced <em>quality control</em> options and features</strong> &mdash; verifying minimum / maximum image dimensions and aspect ratios, checking the webpage for duplicate meta tags, showing warnings for missing and required images, and theme header template validation for suggested markup.</p>
+<p><strong>WPSSO includes advanced <em>quality control</em> features and options</strong> &mdash; verifying minimum / maximum image dimensions and aspect ratios, checking the webpage for duplicate meta tags, showing warnings for missing and required images, and theme header template validation for suggested markup.</p>
 
 <p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags + Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
