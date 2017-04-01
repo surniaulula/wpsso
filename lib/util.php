@@ -672,7 +672,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$min_int = 1;
 					}
 					// custom meta options are allowed to be empty
-					if ( $val === '' && ! empty( $mod['name'] ) ) {
+					if ( ! empty( $mod['name'] ) && $val === '' ) {
+						$cast_int = false;
 						break;	// abort
 					} elseif ( ! is_numeric( $val ) || $val < $min_int ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
