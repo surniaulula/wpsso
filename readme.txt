@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.8-1 (2017/04/01)**
+**Version 3.40.9-1 (2017/04/01)**
 
 * *New Features*
 	* None
@@ -373,7 +373,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Minor CSS improvements for checkbox option fields.
 	* Minor translation string updates for option value checks.
 * *Bugfixes*
-	* None
+	* Fixed incorrect cast on empty image sizes from the custom social settings.
 * *Developer Notes*
 	* None
 
@@ -931,9 +931,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.8-1 =
+= 3.40.9-1 =
 
-(2017/04/01) Minor CSS improvements for checkbox option fields. Minor translation string updates for option value checks.
+(2017/04/01) Minor CSS improvements for checkbox option fields. Minor translation string updates for option value checks. Fixed incorrect cast on empty image sizes from the custom social settings.
 
 = 3.40.7-1 =
 
