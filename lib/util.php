@@ -591,7 +591,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 
-			$is_int = false;	// default test value
+			// optional cast on return
+			$cast_int = false;
 
 			switch ( $option_type ) {
 				// must be empty or texturized 
@@ -647,15 +648,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// must be integer / numeric
 				case 'integer':
-					$is_int = true;
+					$cast_int = true;
 					// no break
 				case 'numeric':
 					if ( ! is_numeric( $val ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['numeric'], $key ) );
 						$val = $def_val;
-					}
-					if ( $is_int ) {
-						$val = (int) $val;
 					}
 					break;
 
@@ -663,7 +661,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'pos_int':
 				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
-					$is_int = true;
+					$cast_int = true;
 					// no break
 				case 'pos_num':
 					if ( $option_type == 'img_width' ) {
@@ -680,14 +678,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
 						$val = $def_val;
 					}
-					if ( $is_int ) {
-						$val = (int) $val;
-					}
 					break;
 
 				// must be blank or integer / numeric
 				case 'blank_int':
-					$is_int = true;
+					$cast_int = true;
 					// no break
 				case 'blank_num':
 					if ( $val !== '' ) {
@@ -774,7 +769,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 
-			return $val;
+			if ( $cast_int ) {
+				return (int) $val;
+			} else {
+				return $val;
+			}
 		}
 
 		// query examples:

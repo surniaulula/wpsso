@@ -3819,46 +3819,46 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:800
+#: lib/util.php:799
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:807
+#: lib/util.php:806
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:832
+#: lib/util.php:831
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:868
+#: lib/util.php:867
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1903
+#: lib/util.php:1902
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1929
+#: lib/util.php:1928
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1933
+#: lib/util.php:1932
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1936
+#: lib/util.php:1935
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1940
+#: lib/util.php:1939
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
