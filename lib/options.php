@@ -52,6 +52,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// start timer
 				}
 
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( ! empty( $info['update_auth'] ) && 
+						$info['update_auth']!== 'none' ) {	// just in case
+						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
+					}
+				}
+
 				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
@@ -65,8 +72,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// define the Facebook locale value for the default and current locales
 				$defs['fb_locale'] = SucomUtil::get_fb_locale( array(), 'default' );
-				if ( ( $fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' )
+
+				if ( ( $fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
 					$defs[$fb_locale_key] = SucomUtil::get_fb_locale( array(), 'current' );
+				}
 
 				// read Yoast SEO social meta if plugin is active or 'wpseo' settings found
 				$defs['plugin_wpseo_social_meta'] = $this->p->is_avail['seo']['wpseo'] || 
@@ -76,8 +85,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $key => $val ) {
 						if ( isset( $defs[$key] ) && isset( $this->p->site_options[$key.':use'] ) ) {
-							if ( $this->p->site_options[$key.':use'] === 'default' )
+							if ( $this->p->site_options[$key.':use'] === 'default' ) {
 								$defs[$key] = $this->p->site_options[$key];
+							}
 						}
 					}
 				}
@@ -100,7 +110,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// end timer
 				}
-
 			}
 
 			if ( $idx !== false ) {
@@ -132,11 +141,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_site_defaults filter' );	// start timer
 				}
 
-				$defs = apply_filters( $lca.'_get_site_defaults', $defs );
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					if ( ! empty( $info['update_auth'] ) && 
+						$info['update_auth']!== 'none' ) {	// just in case
+						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
+						$defs['plugin_'.$ext.'_'.$info['update_auth'].':use'] = 'default';
+					}
+				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_site_defaults filter' );	// end timer
+					$this->p->debug->log( 'applying get_site_defaults filter' );
 				}
+
+				$defs = apply_filters( $lca.'_get_site_defaults', $defs );
 
 				if ( self::$allow_cache ) {
 					if ( $this->p->debug->enabled ) {
@@ -146,8 +163,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'get_site_defaults filter skipped' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->mark( 'get_site_defaults filter' );	// end timer
+				}
 			}
 
 			if ( $idx !== false ) {
@@ -511,8 +530,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return $type;
 			}
 			switch ( $key ) {
-				// optimize and check for add meta tags options now
+				// use value should be default / empty / force
+				case ( preg_match( '/:use$/', $key ) ? true : false ):
+					return 'not_blank';
+					break;
+				// optimize and check for add meta tags options first
 				case ( strpos( $key, 'add_' ) === 0 ? true : false ):
+				case ( strpos( $key, 'plugin_filter_' ) === 0 ? true : false ):
 					return 'checkbox';
 					break;
 				// empty string or must include at least one HTML tag
@@ -554,18 +578,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_logo_url':
 				case 'schema_banner_url':
 				case 'plugin_yourls_api_url':
-				case ( strpos( $key, '_url' ) && 
-					isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
+				case ( strpos( $key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
 					return 'url';
 					break;
-				// must be numeric (blank and zero are ok)
-				case 'og_def_img_id':
-				case 'og_img_id':
-				case 'rp_img_id':
-				case 'product_price':
-					return 'blank_num';
-					break;
-				// must be numeric (zero and -1 is ok)
+				// cast as integer (zero and -1 is ok)
 				case 'schema_img_max':
 				case 'og_img_max':
 				case 'og_vid_max':
@@ -573,13 +589,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
-					return 'numeric';
+					return 'integer';
 					break;
-				// integer options that must be positive (1 or more)
+				// numeric options that must be positive (1 or more)
 				case 'plugin_upscale_img_max':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_(len|warn)$/', $key ) ? true : false ):
-					return 'pos_num';
+					return 'pos_int';
+					break;
+				// must be numeric (blank and zero are ok)
+				case 'og_def_img_id':
+				case 'og_img_id':
+				case 'rp_img_id':
+				case 'product_price':
+					return 'blank_num';
 					break;
 				// image width, subject to minimum value (typically, at least 200px)
 				case ( preg_match( '/_img_width$/', $key ) ? true : false ):
@@ -642,9 +665,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $key, '_crop_x' ) !== false ? true : false ):
 				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
-				case ( preg_match( '/:use$/', $key ) ? true : false ):
 					return 'not_blank';
 					break;
+				// css color code
 				case ( strpos( $key, '_color_' ) !== false ? true : false ):
 					return 'color';
 					break;

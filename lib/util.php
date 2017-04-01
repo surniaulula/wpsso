@@ -538,8 +538,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function sanitize_option_value( $key, $val, $def_val, $network = false, &$mod = false ) {
 
-			if ( is_array( $val ) )	// just in case
+			if ( is_array( $val ) ) {	// just in case
 				return $val;	// stop here
+			}
 
 			// remove multiples, localization, and status for more generic match
 			$option_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $key );
@@ -551,27 +552,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			// translate error messages only once
 			if ( $this->sanitize_error_msgs === null ) {
 				$this->sanitize_error_msgs = array(
-					'url' => __( 'The value of option \'%s\' must be a URL - resetting the option to its default value.',
+					'url' => __( 'The value of option \'%s\' must be a URL - resetting option to default value.',
 						'wpsso' ),
-					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting the option to its default value.',
+					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.',
 						'wpsso' ),
-					'pos_num' => __( 'The value of option \'%s\' must be equal to or greather than %s - resetting the option to its default value.',
+					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting option to default value.',
 						'wpsso' ),
-					'blank_num' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
+					'pos_num' => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.',
 						'wpsso' ),
-					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting the option to its default value.',
+					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting option to default value.',
 						'wpsso' ),
-					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting the option to its default value.',
+					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.',
 						'wpsso' ),
-					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting the option to its default value.',
+					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.',
 						'wpsso' ),
-					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting the option to its default value.',
+					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.',
 						'wpsso' ),
-					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting the option to its default value.',
+					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.',
 						'wpsso' ),
-					'html' => __( 'The value of option \'%s\' must be HTML code - resetting the option to its default value.',
+					'html' => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.',
 						'wpsso' ),
-					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting the option to its default value.',
+					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting option to default value.',
 						'wpsso' ),
 				);
 			}
@@ -589,6 +590,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$val = stripslashes( $val );	// strip slashes added by wp_filter_nohtml_kses()
 					break;
 			}
+
+			$is_int = false;	// default test value
 
 			switch ( $option_type ) {
 				// must be empty or texturized 
@@ -642,10 +645,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					break;
 
-				case 'pos_num':		// integer options that must be 1 or more (not zero)
+				// must be integer / numeric
+				case 'integer':
+					$is_int = true;
+					// no break
+				case 'numeric':
+					if ( ! is_numeric( $val ) ) {
+						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['numeric'], $key ) );
+						$val = $def_val;
+					}
+					if ( $is_int ) {
+						$val = (int) $val;
+					}
+					break;
+
+				// integer / numeric options that must be 1 or more (not zero)
+				case 'pos_int':
 				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
-
+					$is_int = true;
+					// no break
+				case 'pos_num':
 					if ( $option_type == 'img_width' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
 					} elseif ( $option_type == 'img_height' ) {
@@ -653,7 +673,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					} else {
 						$min_int = 1;
 					}
-
 					// custom meta options are allowed to be empty
 					if ( $val === '' && ! empty( $mod['name'] ) ) {
 						break;	// abort
@@ -661,23 +680,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['pos_num'], $key, $min_int ) );
 						$val = $def_val;
 					}
-					break;
-
-				// must be blank or numeric
-				case 'blank_num':
-					if ( $val !== '' ) {
-						if ( ! is_numeric( $val ) ) {
-							$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
-							$val = $def_val;
-						}
+					if ( $is_int ) {
+						$val = (int) $val;
 					}
 					break;
 
-				// must be numeric
-				case 'numeric':
-					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
-						$val = $def_val;
+				// must be blank or integer / numeric
+				case 'blank_int':
+					$is_int = true;
+					// no break
+				case 'blank_num':
+					if ( $val !== '' ) {
+						if ( ! is_numeric( $val ) ) {
+							$this->p->notice->err( sprintf( $this->sanitize_error_msgs['blank_num'], $key ) );
+							$val = $def_val;
+						}
 					}
 					break;
 

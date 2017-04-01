@@ -2954,50 +2954,50 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:231
+#: lib/options.php:250
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:307
+#: lib/options.php:326
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:310
+#: lib/options.php:329
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:313
+#: lib/options.php:332
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:316
+#: lib/options.php:335
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:328
+#: lib/options.php:347
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:388
+#: lib/options.php:407
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:435
+#: lib/options.php:454
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:493
+#: lib/options.php:512
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -3755,106 +3755,110 @@ msgstr ""
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:554
+#: lib/util.php:555
 msgid ""
-"The value of option '%s' must be a URL - resetting the option to its default "
+"The value of option '%s' must be a URL - resetting option to default value."
+msgstr ""
+
+#: lib/util.php:557
+msgid ""
+"The value of option '%s' must be a comma-delimited list of URL(s) - "
+"resetting option to default value."
+msgstr ""
+
+#: lib/util.php:559
+msgid ""
+"The value of option '%s' must be numeric - resetting option to default value."
+msgstr ""
+
+#: lib/util.php:561
+msgid ""
+"The value of option '%1$s' must be equal to or greather than %2$s - "
+"resetting option to default value."
+msgstr ""
+
+#: lib/util.php:563
+msgid ""
+"The value of option '%s' must be blank or numeric - resetting option to "
+"default value."
+msgstr ""
+
+#: lib/util.php:565
+msgid ""
+"The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:556
+#: lib/util.php:567
 msgid ""
-"The value of option '%s' must be a comma-delimited list of URL(s) - "
-"resetting the option to its default value."
-msgstr ""
-
-#: lib/util.php:558
-msgid ""
-"The value of option '%s' must be equal to or greather than %s - resetting "
-"the option to its default value."
-msgstr ""
-
-#: lib/util.php:560 lib/util.php:562
-msgid ""
-"The value of option '%s' must be numeric - resetting the option to its "
+"The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:564
+#: lib/util.php:569
 msgid ""
-"The value of option '%s' must be alpha-numeric - resetting the option to its "
+"The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:566
+#: lib/util.php:571
 msgid ""
-"The value of option '%s' must be a CSS color code - resetting the option to "
-"its default value."
+"The value of option '%s' must be a hh:mm time - resetting option to default "
+"value."
 msgstr ""
 
-#: lib/util.php:568
+#: lib/util.php:573
 msgid ""
-"The value of option '%s' must be a yyyy-mm-dd date - resetting the option to "
-"its default value."
+"The value of option '%s' must be HTML code - resetting option to default "
+"value."
 msgstr ""
 
-#: lib/util.php:570
+#: lib/util.php:575
 msgid ""
-"The value of option '%s' must be a hh:mm time - resetting the option to its "
+"The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:572
-msgid ""
-"The value of option '%s' must be HTML code - resetting the option to its "
-"default value."
-msgstr ""
-
-#: lib/util.php:574
-msgid ""
-"The value of option '%s' cannot be an empty string - resetting the option to "
-"its default value."
-msgstr ""
-
-#: lib/util.php:783
+#: lib/util.php:800
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:790
+#: lib/util.php:807
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:815
+#: lib/util.php:832
 msgid ""
 "The PHP preg_replace() function failed to remove the %s meta tag block - "
 "this could be an indication of an issue with the PHP PCRE library."
 msgstr ""
 
-#: lib/util.php:851
+#: lib/util.php:868
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1886
+#: lib/util.php:1903
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:1912
+#: lib/util.php:1929
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1916
+#: lib/util.php:1933
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1919
+#: lib/util.php:1936
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1923
+#: lib/util.php:1940
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

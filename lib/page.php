@@ -194,8 +194,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			// setup filters to save and restore original / pre-filtered title value
-			if ( empty( $this->p->options['plugin_filter_title'] ) )
+			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
 				SucomUtil::protect_filter_start( 'wp_title' );
+			}
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {

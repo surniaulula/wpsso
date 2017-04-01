@@ -1248,9 +1248,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function update_transient_array( $cache_id, $data_array, $cache_exp ) {
 			$now_time = time();
 
-			if ( isset( $data_array['__created_at'] ) )
+			if ( isset( $data_array['__created_at'] ) ) {
 				$cache_exp -= $now_time - $data_array['__created_at'];
-			else $data_array['__created_at'] = $now_time;
+			} else {
+				$data_array['__created_at'] = $now_time;
+			}
 
 			set_transient( $cache_id, $data_array, $cache_exp );
 
@@ -1262,8 +1264,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, false, '' );
 
 			foreach ( $checkbox as $key => $val ) {
-				if ( ! array_key_exists( $key, $opts ) )
+				if ( ! array_key_exists( $key, $opts ) ) {
 					$opts[$key] = 0;	// add missing checkbox as empty
+				}
 				unset ( $opts['is_checkbox_'.$key] );
 			}
 			return $opts;

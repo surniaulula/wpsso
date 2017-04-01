@@ -855,8 +855,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name' => 'yim',
 					'wp_cm_yim_label' => 'Yahoo IM',
 					'wp_cm_yim_enabled' => 1,
-					// Extension Plugins and Pro Licenses
-					'plugin_wpsso_tid' => '',
 				),	// end of defaults
 				'site_defaults' => array(
 					'options_filtered' => false,
@@ -918,9 +916,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_short_urls:use' => 'default',
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
 					'plugin_clear_for_comment:use' => 'default',
-					// Extension Plugins and Pro Licenses
-					'plugin_wpsso_tid' => '',
-					'plugin_wpsso_tid:use' => 'default',
 				),	// end of site defaults
 				'cm_prefix' => array(		// contact method options prefix
 					'email' => 'email',
