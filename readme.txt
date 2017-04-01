@@ -26,7 +26,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 <p><strong>WPSSO includes advanced <em>quality control</em> options and features</strong> &mdash; verifying minimum / maximum image dimensions and aspect ratios, checking the webpage for duplicate meta tags, showing warnings for missing and required images, and theme header template validation for suggested markup.</p>
 
-<p><strong>WPSSO can integrate and enhance your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags + Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
+<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags + Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
 <p><strong>WPSSO offers a <em>fast</em> and <em>reliable</em> social framework for developers</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.</p>
 
