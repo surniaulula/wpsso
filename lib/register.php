@@ -50,18 +50,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			self::do_multisite( $sitewide, array( &$this, 'deactivate_plugin' ) );
 		}
 
-		// called from uninstall.php for network or single site
+		// uninstall.php defines constants before calling network_uninstall()
 		public static function network_uninstall() {
 			$sitewide = true;
 
 			// uninstall from the individual blogs first
 			self::do_multisite( $sitewide, array( __CLASS__, 'uninstall_plugin' ) );
 
-			$var_const = WpssoConfig::get_variable_constants();
-			$opts = get_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'], array() );
+			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME, array() );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
-				delete_site_option( $var_const['WPSSO_SITE_OPTIONS_NAME'] );
+				delete_site_option( WPSSO_SITE_OPTIONS_NAME );
 			}
 		}
 
@@ -125,34 +124,34 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 		}
 
+		// uninstall.php defines constants before calling network_uninstall()
 		private static function uninstall_plugin() {
 
-			$var_const = WpssoConfig::get_variable_constants();
-			$opts = get_option( $var_const['WPSSO_OPTIONS_NAME'], array() );
+			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
 
-			delete_option( $var_const['WPSSO_TS_NAME'] );
-			delete_option( $var_const['WPSSO_NOTICE_NAME'] );
+			delete_option( WPSSO_TS_NAME );
+			delete_option( WPSSO_NOTICE_NAME );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
-				delete_option( $var_const['WPSSO_OPTIONS_NAME'] );
-				delete_post_meta_by_key( $var_const['WPSSO_META_NAME'] );
+				delete_option( WPSSO_OPTIONS_NAME );
+				delete_post_meta_by_key( WPSSO_META_NAME );
 
 				foreach ( get_users() as $user ) {
 
 					// site specific user options
-					delete_user_option( $user->ID, $var_const['WPSSO_NOTICE_NAME'] );
-					delete_user_option( $user->ID, $var_const['WPSSO_DISMISS_NAME'] );
+					delete_user_option( $user->ID, WPSSO_NOTICE_NAME );
+					delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
 
 					// global / network user options
-					delete_user_meta( $user->ID, $var_const['WPSSO_META_NAME'] );
-					delete_user_meta( $user->ID, $var_const['WPSSO_PREF_NAME'] );
+					delete_user_meta( $user->ID, WPSSO_META_NAME );
+					delete_user_meta( $user->ID, WPSSO_PREF_NAME );
 
 					WpssoUser::delete_metabox_prefs( $user->ID );
 				}
 
 				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
-					WpssoTerm::delete_term_meta( $term_id, $var_const['WPSSO_META_NAME'] );
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 			}
 

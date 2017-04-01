@@ -2723,7 +2723,7 @@ msgid ""
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:954 lib/register.php:212
+#: lib/messages.php:954 lib/register.php:211
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, insecure</a> and may lack important features."
@@ -3155,11 +3155,11 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:214
+#: lib/register.php:213
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:216
+#: lib/register.php:215
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
