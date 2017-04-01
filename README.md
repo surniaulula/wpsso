@@ -33,6 +33,7 @@
 
 <ul>
 <li>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</li>
+<li>Adds Pinterest Rich Pin meta tags + <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</li>
 <li>Adds all available Twitter Card meta tags:
 
 <ul>
@@ -42,19 +43,14 @@
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).</li>
 </ul></li>
 <li>Adds Weibo meta tags for article creation and update dates.</li>
-<li>Adds Pinterest Rich Pin meta tags + <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</li>
 <li>Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</li>
 <li>Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.</li>
-<li>Auto-regeneration of inaccurate / missing WordPress image sizes.</li>
 <li>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</li>
 <li>Support for featured, attached, gallery shortcode, and/or image HTML tags in content.</li>
-<li>Fallback to image alt values if the content and excerpt does not include any text.</li>
 <li>Optional fallback to a default image and video for index and search webpages.</li>
-<li>Configurable title separator character (hyphen by default).</li>
 <li>Configurable title and description lengths (Open Graph, Twitter Card, SEO).</li>
-<li>Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.</li>
-<li>Includes WordPress tags as hashtags (including a configurable maximum).</li>
-<li>Includes a Google / SEO description meta tag (if an SEO plugin is not detected).</li>
+<li>Configurable title separator character (hyphen by default).</li>
+<li>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
 <li>Configurable website / business social accounts for Schema markup:
 
 <ul>
@@ -80,9 +76,6 @@
 <li>Twitter @username</li>
 <li>YouTube Channel URL</li>
 </ul></li>
-<li>Customizable <strong>multilingual</strong> / multi-language Site Title and Site Description texts.</li>
-<li>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/codex/plugins/wpsso/">comprehensive online documentation</a>.</li>
-<li>Uses object and transient caches to provide incredibly fast execution speeds.</li>
 <li>Additional (and optional) Free extension plugins:
 
 <ul>

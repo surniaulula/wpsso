@@ -35,25 +35,21 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 **WPSSO Free / Basic Features**
 
 * Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
+* Adds Pinterest Rich Pin meta tags + [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 * Adds all available Twitter Card meta tags:
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
 * Adds Weibo meta tags for article creation and update dates.
-* Adds Pinterest Rich Pin meta tags + [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 * Adds author (Person), publisher (Organization) and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 * Customizable image dimensions for Facebook / Open Graph, Pinterest, Schema and all Twitter Card types.
-* Auto-regeneration of inaccurate / missing WordPress image sizes.
 * Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 * Support for featured, attached, gallery shortcode, and/or image HTML tags in content.
-* Fallback to image alt values if the content and excerpt does not include any text.
 * Optional fallback to a default image and video for index and search webpages.
-* Configurable title separator character (hyphen by default).
 * Configurable title and description lengths (Open Graph, Twitter Card, SEO).
-* Includes author, co-author / contributor and publisher markup for Facebook, Pinterest and Google.
-* Includes WordPress tags as hashtags (including a configurable maximum).
-* Includes a Google / SEO description meta tag (if an SEO plugin is not detected).
+* Configurable title separator character (hyphen by default).
+* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/codex/plugins/wpsso/).
 * Configurable website / business social accounts for Schema markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
@@ -73,9 +69,6 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 	* Tumblr URL
 	* Twitter @username
 	* YouTube Channel URL
-* Customizable **multilingual** / multi-language Site Title and Site Description texts.
-* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/codex/plugins/wpsso/).
-* Uses object and transient caches to provide incredibly fast execution speeds.
 * Additional (and optional) Free extension plugins:
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
