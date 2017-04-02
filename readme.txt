@@ -94,11 +94,11 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 **WPSSO Pro / Power-User Features**
 
-* A Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
+* Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 * Fully renders content (including shortcodes) for accurate description texts.
 * Support for embedded videos in content text (iframe and object HTML markup).
-* Additional Open Graph / Rich Pin meta tags for videos and e-commerce products.
-* Twitter [Player Card](https://dev.twitter.com/cards/types/player) markup for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
+* Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
+* Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
 * Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
 * Validation of minimum / maximum image dimensions and aspect ratios.
 * Configurable user profile contact field names and labels.
@@ -161,7 +161,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 = Social Profiles for Google Search =
 
-WordPress Social Sharing Optimization (WPSSO) includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>. The author (Person) markup includes the author's website URL, their social sharing image, and contact URLs. The publisher (Organization) markup includes the website URL, a corporate logo, the website default image, and the publisher Facebook, Google+, LinkedIn, Pinterest, and Twitter business pages.
+WordPress Social Sharing Optimization (WPSSO) includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>.
 
 <div style="clear:both;"></div>
 
