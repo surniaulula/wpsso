@@ -175,9 +175,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 									$this->options[$key.':is'] = 'disabled';
 									$this->options[$key] = $this->site_options[$key];
 									break;
-								case 'empty':
-									if ( empty( $this->options[$key] ) )
+								case 'empty':	// blank string, null, false, or 0
+									if ( empty( $this->options[$key] ) ) {
 										$this->options[$key] = $this->site_options[$key];
+									}
 									break;
 							}
 						}

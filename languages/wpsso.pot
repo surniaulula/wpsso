@@ -432,29 +432,29 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1542
-msgctxt "option label (very short)"
-msgid "Site Use"
-msgstr ""
-
-#: lib/admin.php:1552 lib/sitesubmenu/siteadvanced.php:68
+#: lib/admin.php:1535
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1556 lib/sitesubmenu/siteadvanced.php:73
+#: lib/admin.php:1540
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1563
+#: lib/admin.php:1549
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1570
+#: lib/admin.php:1560
 msgctxt "option label"
 msgid "Options to Show by Default"
+msgstr ""
+
+#: lib/admin.php:1573
+msgctxt "option label (very short)"
+msgid "Site Use"
 msgstr ""
 
 #: lib/com/cache.php:92
@@ -501,27 +501,27 @@ msgstr ""
 msgid "Failed to open cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:79 lib/config-gettext-extract.php:45
+#: lib/com/form.php:77 lib/config-gettext-extract.php:45
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:214 lib/config-gettext-extract.php:40
+#: lib/com/form.php:212 lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:218 lib/config-gettext-extract.php:43
+#: lib/com/form.php:216 lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:222 lib/config-gettext-extract.php:41
+#: lib/com/form.php:220 lib/config-gettext-extract.php:41
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:227 lib/com/form.php:296 lib/config-gettext-extract.php:12
+#: lib/com/form.php:225 lib/com/form.php:294 lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -3878,13 +3878,13 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:296
+#: wpsso.php:297
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:300
+#: wpsso.php:301
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."

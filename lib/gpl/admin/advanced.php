@@ -257,63 +257,63 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_head_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_head_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_head_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows['plugin_shorten_cache_exp'] = $form->get_th_html( _x( 'Shortened URL Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_shorten_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_shorten_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_shorten_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_shorten_cache_exp', $form, $network );
 
 			$table_rows['plugin_content_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_content_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_content_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_content_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
 			$table_rows['plugin_imgsize_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Get Image (URL) Size Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_imgsize_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
 			$table_rows['plugin_topics_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Article Topics Array Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_topics_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_topics_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_topics_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_topics_cache_exp', $form, $network );
 
 			$table_rows['plugin_types_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Schema Types Array Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_types_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_types_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_types_cache_exp' );
+			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
 			$table_rows['plugin_show_purge_count'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Show Cache Purge Count on Update',
 				'option label', 'wpsso' ), '', 'plugin_show_purge_count' ).
 			$this->get_nocb_td( $form, 'plugin_show_purge_count' ).
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_show_purge_count' );
+			WpssoAdmin::get_option_site_use( 'plugin_show_purge_count', $form, $network );
 
 			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Cache on Save Settings',
 				'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
 			$this->get_nocb_td( $form, 'plugin_clear_on_save' ).
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_clear_on_save' );
+			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
 			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',
 				'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
 			$this->get_nocb_td( $form, 'plugin_clear_short_urls' ).
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_clear_short_urls' );
+			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
 			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for Comment',
 				'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
 			$this->get_nocb_td( $form, 'plugin_clear_for_comment' ).
-			$this->p->admin->get_form_site_use( $form, $network, 'plugin_clear_for_comment' );
+			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
 			return $table_rows;
 		}

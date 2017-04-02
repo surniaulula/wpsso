@@ -42,11 +42,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			// hide the current options value, unless one is given as an argument to the method
-			$value = empty( $value ) &&
-				$this->in_options( $name ) ?
-					$this->options[$name] : $value;
+			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
+				$this->options[$name];
+			}
 
-			return ( $is_checkbox ? $this->get_hidden( 'is_checkbox_'.$name, 1, false ) : '' ).
+			return ( $is_checkbox ? $this->get_hidden( 'is_checkbox_'.$name, 1, false ) : '' ).	// recurse
 				'<input type="hidden" name="'.esc_attr( $this->options_name.
 					'['.$name.']' ).'" value="'.esc_attr( $value ).'" />';
 		}
@@ -69,12 +69,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$checked = '';
 			}
 
-			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1 ) ).
-				'<input type="checkbox"'.
+			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1, false ) ).'<input type="checkbox"'.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
-				$checked.' title="default is '.
+				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).$checked.' title="default is '.
 				( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
 				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_domain ) : '' ).'" />';
 
@@ -430,8 +428,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
-			if ( ! empty( $name ) )
+			if ( ! empty( $name ) ) {
 				$html .= $this->get_hidden( $name );
+			}
 			$html .= $this->get_no_input_value( $value, $class, $id, $placeholder );
 			return $html;
 		}

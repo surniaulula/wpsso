@@ -65,15 +65,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 			switch ( $metabox.'-'.$key ) {
 				case 'plugin-settings':
 
-					$table_rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
-						'option label', 'wpsso' ), null, 'plugin_preserve' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_preserve' ).'</td>'.
-					$this->p->admin->get_form_site_use( $this->form, true, 'plugin_preserve', true );	// $network = true
-
-					$table_rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages',
-						'option label', 'wpsso' ), null, 'plugin_debug' ).
-					'<td>'.$this->form->get_checkbox( 'plugin_debug' ).'</td>'.
-					$this->p->admin->get_form_site_use( $this->form, true, 'plugin_debug', true );	// $network = true
+					$this->add_essential_advanced_table_rows( $table_rows, $this->form, true );	// $network = true
 
 					break;
 			}
