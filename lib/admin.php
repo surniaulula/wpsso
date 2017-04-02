@@ -1004,28 +1004,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->p->msgs->get( 'side-help-support' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) )	// filter out extensions that are not installed
+				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
 					continue;
+				}
 
 				$links = array();
 
 				if ( ! empty( $info['url']['faq'] ) ) {
-					$links[] = sprintf( __( 'Review the <a href="%s" target="_blank">Frequently Asked Questions</a>',
+					$links[] = sprintf( __( 'Read the <a href="%s" target="_blank">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faq'] ).
 					( ! empty( $info['url']['notes'] ) ? ' '.sprintf( __( 'and <a href="%s" target="_blank">Additional Documentation</a>',
 						'wpsso' ), $info['url']['notes'] ) : '' );
 				}
 
-				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] )
+				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 					$links[] = sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a> (Pro version)',
 						'wpsso' ), $info['url']['support'] );
-				elseif ( ! empty( $info['url']['forum'] ) )
+				} elseif ( ! empty( $info['url']['forum'] ) ) {
 					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a> (Free version)',
 						'wpsso' ), $info['url']['forum'] );
+				}
 
 				if ( ! empty( $info['url']['review'] ) ) {
-					$links[] = sprintf( __( 'Want to help? <a href="%1$s" target="_blank">Rate the %2$s Plugin</a> on WordPress.org',
-						'wpsso' ), $info['url']['review'], $info['short'] ).' :-)';
+					$links[] = '<span style="color:#'.$this->p->cf['menu']['color'].';font-weight:bold;">'.
+						__( 'Want to say thank you?', 'wpsso' ).'</span><br/>'.
+						sprintf( __( '<a href="%1$s" target="_blank">Please Rate / Review the %2$s Plugin</a> on WordPress.org',
+							'wpsso' ), $info['url']['review'], $info['short'] ).' <3';
 				}
 
 				if ( ! empty( $links ) ) {
@@ -1040,9 +1044,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_follow_icons() {
 			echo '<div class="follow_icons">';
 			$img_size = $this->p->cf['follow']['size'];
-			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url )
+			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url ) {
 				echo '<a href="'.$url.'" target="_blank"><img src="'.WPSSO_URLPATH.$img_rel.'"
 					width="'.$img_size.'" height="'.$img_size.'" border="0" /></a> ';
+			}
 			echo '</div>';
 		}
 

@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '<p>';
 						break;
 					case 'side-help-support':
-						$text = '<p>'.sprintf( __( 'The development of %1$s is driven mostly by customer requests &mdash; we welcome your comments and suggestions.', 'wpsso' ), $info['short'] ).'</p>';
+						$text = '<p>'.sprintf( __( '<strong>The development of %1$s is driven mostly by customer requests</strong> &mdash; we welcome your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
