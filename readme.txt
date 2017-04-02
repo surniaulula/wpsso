@@ -6,11 +6,11 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: social meta tags, schema markup, open graph, twitter card, video seo, local seo, embed video, woocommerce, bbpress, budddypress, social sharing, knowledge graph
+Tags: meta tags, schema markup, open graph, video seo, local seo, twitter card, embed video, woocommerce, bbpress, budddypress, social sharing, knowledge graph
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7.3
-Stable Tag: 3.40.9-1
+Stable Tag: 3.40.10-1
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
 
