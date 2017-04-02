@@ -163,8 +163,6 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 WordPress Social Sharing Optimization (WPSSO) includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>.
 
-<div style="clear:both;"></div>
-
 = User Profile Social Contacts =
 
 WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the field names, label, and add / remove the following contacts on user profile pages and [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) guest author profiles:
@@ -220,8 +218,6 @@ WordPress Social Sharing Optimization (WPSSO) Pro also supports [Easy Digital Do
 **Forums and Social**
 
 WordPress Social Sharing Optimization (WPSSO) Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](https://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), and [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.
-
-<div style="clear:both;"></div>
 
 = Proven Performance =
 
