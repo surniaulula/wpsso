@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
 							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
 								'tid mono', '', 0, '', false, ++$tabindex ).'</td>'.
-							$this->p->admin->get_site_use( $this->form, true, 'plugin_'.$ext.'_tid', true );
+							$this->get_form_site_use( $this->form, true, 'plugin_'.$ext.'_tid', true );
 						} else {
 							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
 								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
@@ -1529,15 +1529,48 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), 'all' );	// just in case
 		}
 
+		// deprecated on 2017/04/02
 		public function get_site_use( $form, $network = false, $name, $force = false ) {
+			return $this->get_form_site_use( $form, $network, $name, $force );
+		}
+
+		public function get_form_site_use( $form, $network = false, $name, $force = false ) {
 			$lca = $this->p->cf['lca'];
-			if ( $network !== true )
+			if ( $network !== true ) {
 				return '';
+			}
 			return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ).
-			( self::$pkg[$lca]['aop'] || $force ?
-				'<td>'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :
-				'<td class="site_use blank">'.$form->get_select( $name.':use', $this->p->cf['form']['site_option_use'],
-					'site_use', null, true, true ).'</td>' );
+			( self::$pkg[$lca]['aop'] || $force ? '<td>'.$form->get_select( $name.':use',
+				$this->p->cf['form']['site_option_use'], 'site_use' ).'</td>' :
+				'<td class="site_use blank">'.$form->get_select( $name.':use',
+					$this->p->cf['form']['site_option_use'], 'site_use', null, true, true ).'</td>' );
+		}
+
+		// called from the WpssoSubmenuEssential and WpssoSubmenuAdvanced classes
+		protected function add_essential_advanced_table_rows( array &$table_rows, $form ) {
+
+			$table_rows['plugin_preserve'] = $form->get_th_html( _x( 'Preserve Settings on Uninstall',
+				'option label', 'wpsso' ), null, 'plugin_preserve' ).
+			'<td>'.$form->get_checkbox( 'plugin_preserve' ).'</td>';
+
+			$table_rows['plugin_debug'] = $form->get_th_html( _x( 'Add Hidden Debug Messages',
+				'option label', 'wpsso' ), null, 'plugin_debug' ).
+			'<td>'.( SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ?
+				$form->get_no_checkbox( 'plugin_debug' ).' <em>WPSSO_HTML_DEBUG constant is true</em>' :
+				$form->get_checkbox( 'plugin_debug' ) ).'</td>';
+
+			if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+				$table_rows['plugin_hide_pro'] = $form->get_th_html( _x( 'Hide All Pro Version Options',
+					'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
+				'<td>'.$form->get_checkbox( 'plugin_hide_pro' ).'</td>';
+			} else {
+				$form->get_hidden( 'plugin_hide_pro',  0, true );
+			}
+
+			$table_rows['plugin_show_opts'] = $form->get_th_html( _x( 'Options to Show by Default',
+				'option label', 'wpsso' ), null, 'plugin_show_opts' ).
+			'<td>'.$form->get_select( 'plugin_show_opts',
+				$this->p->cf['form']['show_options'] ).'</td>';
 		}
 	}
 }

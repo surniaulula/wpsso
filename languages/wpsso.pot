@@ -432,9 +432,29 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1536
+#: lib/admin.php:1542
 msgctxt "option label (very short)"
 msgid "Site Use"
+msgstr ""
+
+#: lib/admin.php:1552 lib/sitesubmenu/siteadvanced.php:68
+msgctxt "option label"
+msgid "Preserve Settings on Uninstall"
+msgstr ""
+
+#: lib/admin.php:1556 lib/sitesubmenu/siteadvanced.php:73
+msgctxt "option label"
+msgid "Add Hidden Debug Messages"
+msgstr ""
+
+#: lib/admin.php:1563
+msgctxt "option label"
+msgid "Hide All Pro Version Options"
+msgstr ""
+
+#: lib/admin.php:1570
+msgctxt "option label"
+msgid "Options to Show by Default"
 msgstr ""
 
 #: lib/com/cache.php:92
@@ -3255,18 +3275,6 @@ msgctxt "metabox tab"
 msgid "Cache Settings"
 msgstr ""
 
-#: lib/sitesubmenu/siteadvanced.php:68 lib/submenu/advanced.php:100
-#: lib/submenu/essential.php:150
-msgctxt "option label"
-msgid "Preserve Settings on Uninstall"
-msgstr ""
-
-#: lib/sitesubmenu/siteadvanced.php:73 lib/submenu/advanced.php:104
-#: lib/submenu/essential.php:154
-msgctxt "option label"
-msgid "Add Hidden Debug Messages"
-msgstr ""
-
 #: lib/sitesubmenu/sitelicenses.php:35 lib/submenu/licenses.php:30
 msgctxt "metabox title"
 msgid "Extension Plugins and Pro Licenses"
@@ -3330,16 +3338,6 @@ msgstr ""
 #: lib/submenu/advanced.php:83
 msgctxt "metabox tab"
 msgid "SEO / Other"
-msgstr ""
-
-#: lib/submenu/advanced.php:111 lib/submenu/essential.php:161
-msgctxt "option label"
-msgid "Hide All Pro Version Options"
-msgstr ""
-
-#: lib/submenu/advanced.php:118 lib/submenu/essential.php:168
-msgctxt "option label"
-msgid "Options to Show by Default"
 msgstr ""
 
 #: lib/submenu/essential.php:31
