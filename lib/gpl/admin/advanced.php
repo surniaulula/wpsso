@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			) as $mod_name => $mod_label ) {
 				$cols .= '<tr>';
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					$cols .= '<td class="checkbox blank">'.$this->get_nocb( $form, $name ).'</td>';
+					$cols .= '<td class="checkbox blank">'.$this->get_nocb( $form, 'plugin_'.$col_idx.'_col_'.$mod_name ).'</td>';
 				}
 				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
 			}
@@ -549,8 +549,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		private function get_nocb( $form, $name, $comment = '' ) {
-			$checked = checked( $form->options[$name], 1, false );
-			$default = checked( $form->defaults[$name], 1, false ) ? 'checked' : 'unchecked';
+			$checked = isset( $form->options[$name] ) ?	// just in case
+				checked( $form->options[$name], 1, false ) : '';
+
+			$default = isset( $form->defaults[$name] ) &&	// just in case
+				checked( $form->defaults[$name], 1, false ) ?
+					'checked' : 'unchecked';
+
 			return '<input type="checkbox" disabled="disabled"'.
 				$checked.' title="default is '.$default.'" />'.
 					( empty( $comment ) ? '' : ' '.$comment );
