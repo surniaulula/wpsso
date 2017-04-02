@@ -1433,7 +1433,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								break;
 						}
 
-						$app_lebel = WpssoConfig::$cf[$key]['label'];
+						$app_label = WpssoConfig::$cf[$key]['label'];
 						$rec_version = WpssoConfig::$cf[$key]['rec_version'];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
