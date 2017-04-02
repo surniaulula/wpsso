@@ -497,7 +497,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
 				add_meta_box( $this->pagehook.'_purchase',
-					_x( 'Pro / Power-User Version', 'metabox title (side)', 'wpsso' ),
+					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
 				$this->p->m['util']['user']->reset_metabox_prefs( $this->pagehook,
 					array( 'purchase' ), null, 'side', true );
@@ -507,6 +507,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_side_meta_boxes() {
+			$lca = $this->p->cf['lca'];
 
 			// show the help metabox on all pages
 			add_meta_box( $this->pagehook.'_help',
@@ -520,9 +521,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Free / Basic Features', 'metabox title (side)', 'wpsso' ),
 						array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
 
-				add_meta_box( $this->pagehook.'_status_pro',
-					_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ),
-						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+				if ( self::$pkg[$lca]['aop'] || empty( $this->p->options['plugin_hide_pro'] ) ) {
+					add_meta_box( $this->pagehook.'_status_pro',
+						_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ),
+							array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+				}
 			}
 		}
 
@@ -1074,17 +1077,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function is_lib( $lib_name, $menu_id = false ) {
-			if ( $menu_id === false )
+			if ( $menu_id === false ) {
 				$menu_id = $this->menu_id;
+			}
 			return isset( $this->p->cf['*']['lib'][$lib_name][$menu_id] ) ? true : false;
 		}
 
 		public function licenses_metabox_content( $network = false ) {
-
 			$num = 0;
+			$tabindex = 0;
 			$lca = $this->p->cf['lca'];
 			$total = count( $this->p->cf['plugin'] );
-			$tabindex = 0;
 
 			echo '<table class="sucom-setting '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";

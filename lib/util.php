@@ -1900,8 +1900,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $count_rows === 0 ) {
-				$table_rows[] = '<tr><td align="center"><p><em>'.__( 'No options available.',
-					'wpsso' ).'</em></p></td></tr>';
+				$table_rows[] = '<tr><td align="center"><p><em>'.
+					__( 'No options available.', 'wpsso' ).
+						'</em></p></td></tr>';
 				$count_rows++;
 			}
 

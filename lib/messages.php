@@ -304,14 +304,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Add debugging messages, as hidden HTML comments, to back-end and front-end webpages (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings
-							$text = __( 'Hide all Pro version settings, tabs, and options (default is unchecked).',
+							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).',
 								'wpsso' ).' '.
-							sprintf( __( 'Enabling this option also moves the %1$s, %2$s, and %3$s tabs foremost in the %4$s metabox.',
-								'wpsso' ),
+							sprintf( __( 'Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost.',
+								'wpsso' ), _x( 'Social Settings', 'metabox title', 'wpsso' ),
 									_x( 'Preview', 'metabox tab', 'wpsso' ),
 									_x( 'Head Tags', 'metabox tab', 'wpsso' ),
-									_x( 'Validate', 'metabox tab', 'wpsso' ),
-									_x( 'Social Settings', 'metabox title', 'wpsso' ) );
+									_x( 'Validate', 'metabox tab', 'wpsso' ) ).' '.
+							sprintf( __( 'Please note that some metaboxes and tabs may be empty, showing only a "<em>%s</em>" message, after enabling this option.',
+								'wpsso' ), __( 'No options available.', 'wpsso' ) );
 							break;
 						case 'tooltip-plugin_show_opts':	// Options to Show by Default
 							$text = sprintf( __( 'Select the set of options to display by default in the %1$s settings pages and %2$s metabox.',
@@ -978,11 +979,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'side-purchase':
 						$text = '<p>';
-						if ( $this->p->is_avail['aop'] )
-							$text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &ndash; allowing you to license and enable Pro version features within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
-						else $text .= sprintf( __( '%s can be purchased quickly and easily via Paypal &ndash; allowing you to update the plugin within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
-						$text .= ' '.__( 'Pro version licenses do not expire &ndash; there are no yearly or recurring fees for updates and support.', 'wpsso' );
-						$text .= '<p>';
+						if ( $this->p->is_avail['aop'] ) {
+							$text .= sprintf( __( '<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; allowing you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+						} else {
+							$text .= sprintf( __( '<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; allowing you to update the Free plugin within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+						}
+						$text .= '</p><p>'.__( 'Pro version licenses do not expire &mdash; there are no yearly or recurring fees for updates and support.', 'wpsso' ).'</p>';
 						break;
 					case 'side-help-support':
 						$text = '<p>'.sprintf( __( '<strong>The development of %1$s is driven mostly by customer requests</strong> &mdash; we welcome your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
