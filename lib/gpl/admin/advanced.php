@@ -197,7 +197,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			) as $mod_name => $mod_label ) {
 				$cols .= '<tr>';
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					$cols .= '<td class="checkbox blank">'.$this->get_nocb( $form, 'plugin_'.$col_idx.'_col_'.$mod_name ).'</td>';
+					$cols .= '<td class="checkbox blank">'.$this->get_nocb( $form,
+						'plugin_'.$col_idx.'_col_'.$mod_name ).'</td>';
 				}
 				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
 			}

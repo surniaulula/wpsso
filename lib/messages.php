@@ -298,16 +298,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Plugin Settings' settings
 						 */
 						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
-							$text = sprintf( __( 'Check this option if you would like to preserve all %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Check this option if you would like to preserve the %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_debug':	// Add Hidden Debug Messages
-							$text = __( 'Add debugging messages to back-end and front-end webpages as hidden HTML comments (default is unchecked).', 'wpsso' );
+							$text = __( 'Add debugging messages, as hidden HTML comments, to back-end and front-end webpages (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings
 							$text = __( 'Hide all Pro version settings, tabs, and options (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_show_opts':	// Options to Show by Default
-							$text = sprintf( __( 'Select the default set of options to display in the %s settings pages. The basic view shows only the most commonly used options.', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Select the set of options to display by default in the %1$s settings pages and %2$s metabox.',
+								'wpsso' ), $info['short'], _x( 'Social Settings', 'metabox title', 'wpsso' ) ).' '.
+							__( 'The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options.',
+								'wpsso' ).' '.
+							__( 'Showing all available options by default could prove to be overwhelming for new users.',
+								'wpsso' );
 							break;
 						/*
 						 * 'Content and Filters' settings
