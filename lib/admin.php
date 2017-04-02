@@ -1544,17 +1544,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_checkbox( 'plugin_debug' ) ).'</td>'.
 			self::get_option_site_use( 'plugin_debug', $form, $network, true );
 
-			if ( ! $network ) {
-				if ( ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
-					$table_rows['plugin_hide_pro'] = $form->get_th_html( _x( 'Hide All Pro Version Options',
-						'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
-					'<td>'.$form->get_checkbox( 'plugin_hide_pro' ).'</td>';
-				} else {
-					$form->get_hidden( 'plugin_hide_pro', 0, true );
-				}
+			if ( $network || ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+				$table_rows['plugin_hide_pro'] = $form->get_th_html( _x( 'Hide All Pro Version Options',
+					'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
+				'<td>'.$form->get_checkbox( 'plugin_hide_pro' ).'</td>'.
+				self::get_option_site_use( 'plugin_show_opts', $form, $network, true );
 			} else {
 				$form->get_hidden( 'plugin_hide_pro', 0, true );
-				$form->get_hidden( 'plugin_hide_pro:use', 'default', true );
 			}
 
 			$table_rows['plugin_show_opts'] = $form->get_th_html( _x( 'Options to Show by Default',

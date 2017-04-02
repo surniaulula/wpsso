@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			// hide the current options value, unless one is given as an argument to the method
 			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
-				$this->options[$name];
+				$value = $this->options[$name];
 			}
 
 			return ( $is_checkbox ? $this->get_hidden( 'is_checkbox_'.$name, 1, false ) : '' ).	// recurse
@@ -345,11 +345,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$id_value_next = empty( $id ) ? 'text_'.$name_prefix.'_'.$next_num : 'text_'.$id.'_'.$next_num;
 				$input_value = $this->in_options( $name ) ? $this->options[$name] : '';
 
-				if ( $disabled && $num >= $show_first && empty( $input_value ) )
+				if ( $disabled && $num >= $show_first && empty( $input_value ) ) {
 					continue;
-				elseif ( $disabled || $this->get_options( $name.':is' ) === 'disabled' )
+				} elseif ( $disabled || $this->get_options( $name.':is' ) === 'disabled' ) {
 					$html .= $this->get_no_input( $name, $class_value, $id_value );
-				else {
+				} else {
 					$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
 						' class="'.esc_attr( $class_value ).'" id="'.esc_attr( $id_value ).'" value="'.esc_attr( $input_value ).'"'.
 						( empty( $input_value ) && empty( $last_value ) && 	// always add one more blank

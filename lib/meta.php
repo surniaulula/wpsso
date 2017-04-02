@@ -105,10 +105,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
-					// keep it clean and remove non-functional form tabs (if required)
-					if ( ! empty( $this->p->options['plugin_hide_pro'] ) )
-						foreach ( array( 'text', 'media' ) as $key )
+					// move the text and media option tabs to the end
+					if ( ! empty( $this->p->options['plugin_hide_pro'] ) ) {
+						foreach ( array( 'text', 'media' ) as $key ) {
 							SucomUtil::move_to_end( $tabs, $key );
+						}
+					}
 					break;
 				default:
 					$tabs = array();	// just in case

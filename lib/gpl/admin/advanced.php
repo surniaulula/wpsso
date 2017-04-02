@@ -409,8 +409,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_cm_custom_rows( $table_rows, $form ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows[] = '<td colspan="4" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
@@ -425,12 +426,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( $sorted_opt_pre as $id => $opt_pre ) {
 
-				$cm_enabled = 'plugin_cm_'.$opt_pre.'_enabled';
+				$cm_cb = 'plugin_cm_'.$opt_pre.'_enabled';
 				$cm_name = 'plugin_cm_'.$opt_pre.'_name';
 				$cm_label = 'plugin_cm_'.$opt_pre.'_label';
 
 				// not all social websites have a contact method field
-				if ( isset( $this->p->options[$cm_enabled] ) ) {
+				if ( isset( $this->p->options[$cm_cb] ) ) {
 
 					switch ( $id ) {
 						case 'facebook':
@@ -446,11 +447,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$label = empty( $this->p->cf['*']['lib']['website'][$id] ) ?
 						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
 
-					if  ( $label === 'Googleplus' || $label === 'Gplus' )
+					if  ( $label === 'Googleplus' || $label === 'Gplus' ) {
 						$label = 'Google+';
+					}
 
 					$table_rows[] = $tr.$form->get_th_html( $label, 'medium' ).
-					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_enabled ).'</td>'.
+					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_cb ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
 				}
@@ -476,13 +478,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( $sorted_cm_names as $id => $label ) {
 
-				$cm_enabled = 'wp_cm_'.$id.'_enabled';
+				$cm_cb = 'wp_cm_'.$id.'_enabled';
 				$cm_name = 'wp_cm_'.$id.'_name';
 				$cm_label = 'wp_cm_'.$id.'_label';
 
-				if ( array_key_exists( $cm_enabled, $this->p->options ) ) {
+				if ( isset( $this->p->options[$cm_cb] ) ) {
 					$table_rows[] = $form->get_th_html( $label, 'medium' ).
-					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_enabled ).'</td>'.
+					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_cb ).'</td>'.
 					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
 				}
@@ -549,21 +551,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
 		}
 
+		private function get_nocb_td( $form, $name, $comment = '' ) {
+			return '<td class="blank">'.$this->get_nocb( $form, $name, $comment ).'</td>';
+		}
+
 		private function get_nocb( $form, $name, $comment = '' ) {
-			$checked = isset( $form->options[$name] ) ?	// just in case
-				checked( $form->options[$name], 1, false ) : '';
-
-			$default = isset( $form->defaults[$name] ) &&	// just in case
-				checked( $form->defaults[$name], 1, false ) ?
-					'checked' : 'unchecked';
-
+			$checked = empty( $form->options[$name] ) ? '' : ' checked="checked"';
+			$default = empty( $form->defaults[$name] ) ? 'unchecked' : 'checked';
 			return '<input type="checkbox" disabled="disabled"'.
 				$checked.' title="default is '.$default.'" />'.
 					( empty( $comment ) ? '' : ' '.$comment );
-		}
-
-		private function get_nocb_td( $form, $name, $comment = '' ) {
-			return '<td class="blank">'.$this->get_nocb( $form, $name, $comment ).'</td>';
 		}
 	}
 }

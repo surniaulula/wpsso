@@ -304,7 +304,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Add debugging messages, as hidden HTML comments, to back-end and front-end webpages (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings
-							$text = __( 'Hide all Pro version settings, tabs, and options (default is unchecked).', 'wpsso' );
+							$text = __( 'Hide all Pro version settings, tabs, and options (default is unchecked).',
+								'wpsso' ).' '.
+							sprintf( __( 'Enabling this option also moves the %1$s, %2$s, and %3$s tabs foremost in the %4$s metabox.',
+								'wpsso' ),
+									_x( 'Preview', 'metabox tab', 'wpsso' ),
+									_x( 'Head Tags', 'metabox tab', 'wpsso' ),
+									_x( 'Validate', 'metabox tab', 'wpsso' ),
+									_x( 'Social Settings', 'metabox title', 'wpsso' ) );
 							break;
 						case 'tooltip-plugin_show_opts':	// Options to Show by Default
 							$text = sprintf( __( 'Select the set of options to display by default in the %1$s settings pages and %2$s metabox.',
@@ -896,9 +903,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
 
-						if ( empty( $this->p->options['plugin_hide_pro'] ) )
+						if ( empty( $this->p->options['plugin_hide_pro'] ) ) {
 							$text = __( 'A larger and/or different custom image &mdash; specifically for social meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
-						else $text = '';
+						} else {
+							$text = '';
+						}
 
 						if ( empty( $info['hard_limit'] ) && current_user_can( 'manage_options' ) ) {
 							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
