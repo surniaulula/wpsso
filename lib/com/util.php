@@ -481,36 +481,39 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $dashicons;
 		}
 
-		public static function protect_filter_start( $filter_name ) {
-			if ( has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) )
+		public static function add_filter_protection( $filter_name ) {
+			if ( has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
 				return false;
-
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), -900000, 1 );
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), 900000, 1 );
+			}
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), PHP_INT_MIN, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), PHP_INT_MAX, 1 );
 
 			return true;
 		}
 
-		public static function protect_filter_stop( $filter_name ) {
-			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) )
+		public static function remove_filter_protection( $filter_name ) {
+			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
 				return false;
-
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), -900000 );
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), 900000 );
+			}
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), PHP_INT_MIN );
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), PHP_INT_MAX );
 
 			return true;
 		}
 
 		public static function filter_value_save( $value ) {
 			$filter_name = current_filter();
+
 			// don't save / restore empty strings (for home page wp_title)
 			self::$filter_values[$filter_name] = trim( $value ) === '' ?
 				null : $value;
+
 			return $value;
 		}
 
 		public static function filter_value_restore( $value ) {
 			$filter_name = current_filter();
+
 			return self::$filter_values[$filter_name] === null ?
 				$value : self::$filter_values[$filter_name];
 		}

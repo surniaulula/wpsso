@@ -1018,7 +1018,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'header' => 'SSO Schema',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'orderby' => 'meta_value',
-						'width' => '120px',
+						'width' => '130px',	// 120 + 10 for the sorting arrow
 						'height' => 'auto',
 					),
 					'og_img' => array(

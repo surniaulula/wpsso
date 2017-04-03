@@ -326,31 +326,36 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Content and Filters' settings
 						 */
 						case 'tooltip-plugin_filter_title':
-							$text = 'By default, '.$info['short'].' uses the title values provided by WordPress, which may include modifications by themes and/or SEO plugins (appending the blog name to all titles, for example, is a fairly common practice). Uncheck this option to use the original title value without modifications.';
+							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is common practice). Uncheck this option to use the original title value without modifications (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_filter_content':
-							$text = 'Apply the standard WordPress "the_content" filter to render content text (default is unchecked). This renders all shortcodes, and allows '.$info['short'].' to detect images and embedded videos that may be provided by these.';
+							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added with shortcodes.', 'wpsso' ).' '.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' );
 							break;
 						case 'tooltip-plugin_filter_excerpt':
-							$text = 'Apply the standard WordPress "get_the_excerpt" filter to render the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpt, for example.';
+							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpts, for example.', 'wpsso' );
 							break;
 						case 'tooltip-plugin_p_strip':
-							$text = 'If a Page or Post does <em>not</em> have an excerpt, and this option is checked, the plugin will ignore all text until the first html paragraph tag in the content. If an excerpt exists, then this option is ignored and the complete text of the excerpt is used.';
+							$text = 'If a post or page does <em>not</em> have an excerpt, and this option is checked, the plugin will ignore all text before the first HTML paragraph tag in the content. If an excerpt is found, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).';
 							break;
 						case 'tooltip-plugin_use_img_alt':
-							$text = 'If the content is empty, or comprised entirely of HTML tags (that must be stripped to create a description text), '.$info['short'].' can extract and use text from the image <em>alt=""</em> attributes instead of returning an empty description.';
+							$text = 'If the content text is empty, or comprised entirely of HTML tags (that must be stripped to create a description text), the plugin can extract and use text from the image <em>alt</em> attributes instead of returning an empty description.';
 							break;
 						case 'tooltip-plugin_img_alt_prefix':
-							$text = 'When use of the image <em>alt=""</em> text is enabled, '.$info['short'].' can prefix that text with an optional string. Leave this option empty to prevent image alt text from being prefixed.';
+							$text = 'When use of the image <em>alt</em> attribute text is enabled, the plugin can prefix this text with an optional string. Leave this value empty to prevent the image alt text from being prefixed.';
 							break;
 						case 'tooltip-plugin_p_cap_prefix':
-							$text = $info['short'].' can add a custom text prefix to paragraphs assigned the "wp-caption-text" class. Leave this option empty to prevent caption paragraphs from being prefixed.';
+							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.',
+								'wpsso' ), $info['short'] ).' '.
+							__( 'Leave this value empty to prevent caption paragraphs from being prefixed.',
+								'wpsso' );
 							break;
 						case 'tooltip-plugin_content_img_max':
-							$text = 'The maximum number of images that '.$info['short'].' will consider using from your content.';
+							$text = sprintf( __( 'The maximum number of images that %s will consider using from your content.',
+								'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_content_vid_max':
-							$text = 'The maximum number of embedded videos that '.$info['short'].' will consider using from your content.';
+							$text = sprintf( __( 'The maximum number of embedded videos that %s will consider using from your content.',
+								'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_embedded_media':
 							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';

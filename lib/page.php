@@ -187,6 +187,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$title = false;
 			$hashtags = '';
 			$paged_suffix = '';
@@ -195,7 +196,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				SucomUtil::protect_filter_start( 'wp_title' );
+				SucomUtil::add_filter_protection( 'wp_title' );
 			}
 
 			// skip if no metadata index / key name
@@ -215,7 +216,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// get seed if no custom meta title
 			if ( empty( $title ) ) {
-				$title = apply_filters( $this->p->cf['lca'].'_title_seed', '', $mod, $add_hashtags, $md_idx, $separator );
+				$title = apply_filters( $lca.'_title_seed', '', $mod, $add_hashtags, $md_idx, $separator );
 				if ( ! empty( $title ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'title seed = "'.$title.'"' );
@@ -242,12 +243,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( empty( $title ) ) {
 
 				if ( $mod['is_post'] ) {
+
 					$title = apply_filters( 'wp_title',
 						get_the_title( $mod['id'] ).' '.$separator.' ', $separator, 'right' );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
 					}
+
 				} elseif ( $mod['is_term'] ) {
+
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
 					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
@@ -258,15 +263,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
+
 				} elseif ( $mod['is_user'] ) {
+
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
 					$title = apply_filters( 'wp_title',
 						$user_obj->display_name.' '.$separator.' ', $separator, 'right' );
-					$title = apply_filters( $this->p->cf['lca'].'_user_object_title', $title, $user_obj );
+
+					$title = apply_filters( $lca.'_user_object_title', $title, $user_obj );
 
 				} else {
 					$title = wp_title( $separator, false, 'right' );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
 					}
@@ -274,9 +283,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				// just in case
 				if ( empty( $title ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title.'"' );
 					}
+
 					if ( ! ( $title = get_bloginfo( 'name', 'display' ) ) ) {
 						$title = 'No Title';	// just in case
 					}
@@ -284,7 +295,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				SucomUtil::protect_filter_stop( 'wp_title' );
+				SucomUtil::remove_filter_protection( 'wp_title' );
 			}
 
 			$title = $this->p->util->cleanup_html_tags( $title );	// strip html tags before removing separator
@@ -294,7 +305,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			// apply title filter before adjusting it's length
-			$title = apply_filters( $this->p->cf['lca'].'_title_pre_limit', $title );
+			$title = apply_filters( $lca.'_title_pre_limit', $title );
 
 			// check title against string length limits
 			if ( $textlen > 0 ) {
@@ -332,7 +343,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_title', $title, $mod, $add_hashtags, $md_idx, $separator );
+			return apply_filters( $lca.'_title', $title, $mod, $add_hashtags, $md_idx, $separator );
 		}
 
 		// $mod = true | false | post_id | $mod array
@@ -362,6 +373,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$desc = false;
 			$hashtags = '';
 
@@ -383,7 +395,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// get seed if no custom meta description
 			if ( empty( $desc ) ) {
-				$desc = apply_filters( $this->p->cf['lca'].'_description_seed', '', $mod, $add_hashtags, $md_idx );
+				$desc = apply_filters( $lca.'_description_seed', '', $mod, $add_hashtags, $md_idx );
 				if ( ! empty( $desc ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'description seed = "'.$desc.'"' );
@@ -414,10 +426,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					// use the excerpt, if we have one
 					if ( has_excerpt( $mod['id'] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting the excerpt for post ID '.$mod['id'] );
+						}
+
 						$desc = get_post_field( 'post_excerpt', $mod['id'] );
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
-							$filter_has_changes = apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_before',
+
+							$filter_modified = apply_filters( $lca.'_text_filter_begin',
 								false, 'get_the_excerpt' );
 
 							if ( $this->p->debug->enabled ) {
@@ -426,20 +444,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							if ( $filter_has_changes ) {
-								apply_filters( $this->p->cf['lca'].'_text_filter_has_changes_after',
+							if ( $filter_modified ) {
+								apply_filters( $lca.'_text_filter_end',
 									false, 'get_the_excerpt' );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
 						}
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching content: no post_excerpt for post ID '.$mod['id'] );
 					}
 
 					// if there's no excerpt, then fallback to the content
 					if ( empty( $desc ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
+						}
+
 						$desc = $this->get_content( $mod, $use_cache, $md_idx );
 					}
 
@@ -450,6 +471,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 						$desc = preg_replace( '/^.*?<p>/i', '', $desc );	// question mark makes regex un-greedy
 					}
+
 				} elseif ( $mod['is_term'] ) {
 					if ( SucomUtil::is_tag_page( $mod['id'] ) ) {
 						if ( ! $desc = tag_description( $mod['id'] ) ) {
@@ -480,7 +502,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc = sprintf( 'Authored by %s', $user_obj->display_name );
 					}
 
-					$desc = apply_filters( $this->p->cf['lca'].'_user_object_description', $desc, $user_obj );
+					$desc = apply_filters( $lca.'_user_object_description', $desc, $user_obj );
 
 				} elseif ( is_day() ) {
 					$desc = sprintf( 'Daily Archives for %s', get_the_date() );
@@ -544,10 +566,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark( 'render description' );	// end timer
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_description', $desc, $mod, $add_hashtags, $md_idx );
+			return apply_filters( $lca.'_description', $desc, $mod, $add_hashtags, $md_idx );
 		}
 
 		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'mod' => $mod,
@@ -600,7 +623,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'content seed is "'.$content_text.'"' );
 				}
 			} elseif ( $mod['is_post'] ) {
+
 				$content_text = get_post_field( 'post_content', $mod['id'] );
+
 				if ( empty( $content_text ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: no post_content for post id '.$mod['id'] );
@@ -626,7 +651,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $filter_content ) {
-				$filter_has_changes = apply_filters( $lca.'_text_filter_has_changes_before', false, 'the_content' );
+				$filter_modified = apply_filters( $lca.'_text_filter_begin',
+					false, 'the_content' );
 
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
@@ -670,8 +696,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				unset ( $GLOBALS['subalbum'] );
 				unset ( $GLOBALS['nggShowGallery'] );
 
-				if ( $filter_has_changes )
-					apply_filters( $lca.'_text_filter_has_changes_after', false, 'the_content' );
+				if ( $filter_modified ) {
+					apply_filters( $lca.'_text_filter_end',
+						false, 'the_content' );
+				}
 
 				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&

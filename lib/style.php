@@ -224,6 +224,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	.wp-list-table td.column-tags {
 		width:12%;	/* default is 15% */
 	}
+	.wp-list-table th.column-language,
+	.wp-list-table td.column-language {
+		width:8%;	/* qtranslate-x */
+	}
 	.wp-list-table th.column-slug,
 	.wp-list-table td.column-slug {
 		width:20%;	/* default is 25% */
@@ -251,16 +255,16 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
-	.column-wpsso_og_desc {
-		width:'.$sort_cols['og_desc']['width'].';
-		min-width:'.$sort_cols['og_desc']['width'].';
-		overflow:hidden;
-	}
 	.column-wpsso_schema_type {
 		width:'.$sort_cols['schema_type']['width'].' !important;
 		min-width:'.$sort_cols['schema_type']['width'].' !important;
 		max-width:'.$sort_cols['schema_type']['width'].' !important;
 		white-space:nowrap;
+		overflow:hidden;
+	}
+	.column-wpsso_og_desc {
+		width:'.$sort_cols['og_desc']['width'].';
+		min-width:'.$sort_cols['og_desc']['width'].';
 		overflow:hidden;
 	}
 	td.column-wpsso_og_desc,
