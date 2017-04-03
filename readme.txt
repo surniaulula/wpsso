@@ -225,7 +225,7 @@ WordPress Social Sharing Optimization (WPSSO) is *fast and coded for performance
 
 = Professional Support =
 
-WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the [FAQ](https://wpsso.com/codex/plugins/wpsso/faq/) and [Notes](https://wpsso.com/codex/plugins/wpsso/notes/) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com).
+WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the [FAQ](https://wpsso.com/codex/plugins/wpsso/faqs/) and [Notes](https://wpsso.com/codex/plugins/wpsso/notes/) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com).
 
 Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=author), [Facebook](https://www.facebook.com/SurniaUlulaCom), and [Twitter](https://twitter.com/surniaululacom), and [YouTube](http://www.youtube.com/user/SurniaUlulaCom).
 
@@ -250,35 +250,35 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Frequently Asked Questions =
 
-* [Can I use the Pro version on multiple websites?](https://wpsso.com/codex/plugins/wpsso/faq/can-i-use-the-pro-version-on-multiple-websites/)
-* [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/codex/plugins/wpsso/faq/does-linkedin-read-the-open-graph-meta-tags/)
-* [Doesn't an SEO plugin cover that?](https://wpsso.com/codex/plugins/wpsso/faq/doesnt-an-seo-plugin-cover-that/)
-* [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
-* [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-err_too_many_redirects-error/)
-* [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-a-php-fatal-out-of-memory-error/)
-* [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-fix-an-http-error-when-uploading-images/)
-* [How can I have smaller dimensions for the default image?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-have-smaller-dimensions-for-the-default-image/)
+* [Can I use the Pro version on multiple websites?](https://wpsso.com/codex/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
+* [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/codex/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
+* [Doesn't an SEO plugin cover that?](https://wpsso.com/codex/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
+* [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
+* [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
+* [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
+* [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
+* [How can I have smaller dimensions for the default image?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
 * [How can I migrate from NGFB to WPSSO?](https://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
-* [How can I see what the Facebook crawler sees?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-see-what-the-facebook-crawler-sees/)
-* [How can I share a single NextGEN Gallery image?](https://wpsso.com/codex/plugins/wpsso/faq/how-can-i-share-a-single-nextgen-gallery-image/)
-* [How do I attach an image without showing it on the webpage?](https://wpsso.com/codex/plugins/wpsso/faq/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
-* [How do I fix my theme's front page pagination?](https://wpsso.com/codex/plugins/wpsso/faq/how-do-i-fix-my-themes-front-page-pagination/)
-* [How do I install the WPSSO Pro version?](https://wpsso.com/codex/plugins/wpsso/faq/how-do-i-install-the-wpsso-pro-version/)
-* [How do I remove duplicate meta tags?](https://wpsso.com/codex/plugins/wpsso/faq/how-do-i-remove-duplicate-meta-tags/)
-* [How does WPSSO find / detect / select images?](https://wpsso.com/codex/plugins/wpsso/faq/how-does-wpsso-find-detect-select-images/)
-* [W3C says "there is no attribute 'property'"](https://wpsso.com/codex/plugins/wpsso/faq/w3c-says-there-is-no-attribute-property/)
-* [What about Google Search and Google Plus?](https://wpsso.com/codex/plugins/wpsso/faq/what-about-google-search-and-google-plus/)
-* [What features of NextGEN Gallery are supported?](https://wpsso.com/codex/plugins/wpsso/faq/what-features-of-nextgen-gallery-are-supported/)
-* [What is the difference between NGFB and WPSSO?](https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-ngfb-and-wpsso/)
-* [What is the difference between the Free and Pro versions?](https://wpsso.com/codex/plugins/wpsso/faq/what-is-the-difference-between-the-free-and-pro-versions/)
-* [Why aren't Pins from my website posting Rich?](https://wpsso.com/codex/plugins/wpsso/faq/why-arent-pins-from-my-website-posting-rich/)
-* [Why does Facebook play videos instead of linking them?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-play-videos-instead-of-linking-them/)
-* [Why does Facebook show the wrong image / text?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-facebook-show-the-wrong-image-text/)
-* [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-google-structured-data-testing-tool-show-errors/)
-* [Why does WPSSO ignore some &lt;img/&gt; HTML tags?](https://wpsso.com/codex/plugins/wpsso/faq/why-does-wpsso-ignore-some-img-html-tags/)
-* [Why don't my Twitter Cards show on Twitter?](https://wpsso.com/codex/plugins/wpsso/faq/why-dont-my-twitter-cards-show-on-twitter/)
-* [Why is the Open Graph title the same for every webpage?](https://wpsso.com/codex/plugins/wpsso/faq/why-is-the-open-graph-title-the-same-for-every-webpage/)
-* [Why is the page blank or its components misaligned?](https://wpsso.com/codex/plugins/wpsso/faq/why-is-the-page-blank-or-its-components-misaligned/)
+* [How can I see what the Facebook crawler sees?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
+* [How can I share a single NextGEN Gallery image?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
+* [How do I attach an image without showing it on the webpage?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
+* [How do I fix my theme's front page pagination?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
+* [How do I install the WPSSO Pro version?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
+* [How do I remove duplicate meta tags?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
+* [How does WPSSO find / detect / select images?](https://wpsso.com/codex/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
+* [W3C says "there is no attribute 'property'"](https://wpsso.com/codex/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
+* [What about Google Search and Google Plus?](https://wpsso.com/codex/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
+* [What features of NextGEN Gallery are supported?](https://wpsso.com/codex/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
+* [What is the difference between NGFB and WPSSO?](https://wpsso.com/codex/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
+* [What is the difference between the Free and Pro versions?](https://wpsso.com/codex/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
+* [Why aren't Pins from my website posting Rich?](https://wpsso.com/codex/plugins/wpsso/faqs/why-arent-pins-from-my-website-posting-rich/)
+* [Why does Facebook play videos instead of linking them?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
+* [Why does Facebook show the wrong image / text?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
+* [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
+* [Why does WPSSO ignore some &lt;img/&gt; HTML tags?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-wpsso-ignore-some-img-html-tags/)
+* [Why don't my Twitter Cards show on Twitter?](https://wpsso.com/codex/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/)
+* [Why is the Open Graph title the same for every webpage?](https://wpsso.com/codex/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
+* [Why is the page blank or its components misaligned?](https://wpsso.com/codex/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/)
 
 == Other Notes ==
 
