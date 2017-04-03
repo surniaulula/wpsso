@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$table_rows[] = '<tr class="'.trim( $tr_class ).
 					'<th class="xshort">'.$parts[1].'</th>'.
 					'<th class="xshort">'.$parts[2].'</th>'.
-					'<td class="">'.( empty( $parts[6] ) ? 
+					'<td class="">'.( empty( $parts[6] ) ?
 						'' : '<!-- '.$parts[6].' -->' ).$match_name.'</td>'.
 					'<th class="xshort">'.$parts[4].'</th>'.
 					'<td class="wide">'.( strpos( $parts[5], 'http' ) === 0 ? 

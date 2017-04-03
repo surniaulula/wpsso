@@ -287,28 +287,34 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext = $this->p->cf['*']['base'][$file];
 			$info = $this->p->cf['plugin'][$ext];
 
-			foreach ( $links as $num => $val )
-				if ( strpos( $val, '>Edit<' ) !== false )
+			foreach ( $links as $num => $val ) {
+				if ( strpos( $val, '>Edit<' ) !== false ) {
 					unset ( $links[$num] );
+				}
+			}
 
-			if ( ! empty( $info['url']['faq'] ) )
-				$links[] = '<a href="'.$info['url']['faq'].'">'.
+			if ( ! empty( $info['url']['faqs'] ) ) {
+				$links[] = '<a href="'.$info['url']['faqs'].'">'.
 					_x( 'FAQ', 'plugin action link', 'wpsso' ).'</a>';
+			}
 
-			if ( ! empty( $info['url']['notes'] ) )
+			if ( ! empty( $info['url']['notes'] ) ) {
 				$links[] = '<a href="'.$info['url']['notes'].'">'.
 					_x( 'Notes', 'plugin action link', 'wpsso' ).'</a>';
+			}
 
-			if ( ! empty( $info['url']['latest'] ) )
+			if ( ! empty( $info['url']['latest'] ) ) {
 				$links[] = '<a href="'.$info['url']['latest'].'">'.
 					_x( 'Latest', 'plugin action link', 'wpsso' ).'</a>';
+			}
 
-			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] )
+			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 				$links[] = '<a href="'.$info['url']['support'].'">'.
 					_x( 'Support', 'plugin action link', 'wpsso' ).'</a>';
-			elseif ( ! empty( $info['url']['forum'] ) )
+			} elseif ( ! empty( $info['url']['forum'] ) ) {
 				$links[] = '<a href="'.$info['url']['forum'].'">'.
 					_x( 'Forum', 'plugin action link', 'wpsso' ).'</a>';
+			}
 
 			/*
 			if ( ! empty( $info['url']['review'] ) ) {
@@ -1013,11 +1019,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$links = array();
 
-				if ( ! empty( $info['url']['faq'] ) ) {
+				if ( ! empty( $info['url']['faqs'] ) ) {
 					$links[] = sprintf( __( 'Read the <a href="%s" target="_blank">Frequently Asked Questions</a>',
-						'wpsso' ), $info['url']['faq'] ).
-					( ! empty( $info['url']['notes'] ) ? ' '.sprintf( __( 'and <a href="%s" target="_blank">Additional Documentation</a>',
-						'wpsso' ), $info['url']['notes'] ) : '' );
+						'wpsso' ), $info['url']['faqs'] ).( ! empty( $info['url']['notes'] ) ?
+							' '.sprintf( __( 'and <a href="%s" target="_blank">Additional Documentation</a>',
+								'wpsso' ), $info['url']['notes'] ) : '' );
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
