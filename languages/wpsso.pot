@@ -1973,7 +1973,7 @@ msgstr ""
 msgid ""
 "Apply the WordPress \"the_content\" filter to the content text (default is "
 "unchecked). The content filter renders all shortcodes, which may be required "
-"to detect images and videos added with shortcodes."
+"to detect images and videos added by shortcodes."
 msgstr ""
 
 #: lib/messages.php:332 lib/messages.php:939
@@ -2001,12 +2001,12 @@ msgstr ""
 
 #: lib/messages.php:353
 msgid ""
-"The maximum number of images that %s will consider using from your content."
+"The maximum number of images that %s will consider using from the content."
 msgstr ""
 
 #: lib/messages.php:357
 msgid ""
-"The maximum number of embedded videos that %s will consider using from your "
+"The maximum number of embedded videos that %s will consider using from the "
 "content."
 msgstr ""
 

@@ -329,7 +329,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is common practice). Uncheck this option to use the original title value without modifications (default is unchecked).', 'wpsso' );
 							break;
 						case 'tooltip-plugin_filter_content':
-							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added with shortcodes.', 'wpsso' ).' '.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' );
+							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes.', 'wpsso' ).' '.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' );
 							break;
 						case 'tooltip-plugin_filter_excerpt':
 							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpts, for example.', 'wpsso' );
@@ -350,11 +350,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' );
 							break;
 						case 'tooltip-plugin_content_img_max':
-							$text = sprintf( __( 'The maximum number of images that %s will consider using from your content.',
+							$text = sprintf( __( 'The maximum number of images that %s will consider using from the content.',
 								'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_content_vid_max':
-							$text = sprintf( __( 'The maximum number of embedded videos that %s will consider using from your content.',
+							$text = sprintf( __( 'The maximum number of embedded videos that %s will consider using from the content.',
 								'wpsso' ), $info['short'] );
 							break;
 						case 'tooltip-plugin_embedded_media':
