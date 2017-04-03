@@ -49,7 +49,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 * Optional fallback to a default image and video for index and search webpages.
 * Configurable title and description lengths (Open Graph, Twitter Card, SEO).
 * Configurable title separator character (hyphen by default).
-* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/codex/plugins/wpsso/).
+* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 * Configurable website / business social accounts for Schema markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
@@ -217,7 +217,7 @@ WordPress Social Sharing Optimization (WPSSO) Pro also supports [Easy Digital Do
 
 **Forums and Social**
 
-WordPress Social Sharing Optimization (WPSSO) Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](https://wpsso.com/codex/plugins/wpsso/notes/buddypress-integration/)), and [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.
+WordPress Social Sharing Optimization (WPSSO) Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/)), and [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.
 
 = Proven Performance =
 
@@ -225,7 +225,7 @@ WordPress Social Sharing Optimization (WPSSO) is *fast and coded for performance
 
 = Professional Support =
 
-WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the [FAQ](https://wpsso.com/codex/plugins/wpsso/faqs/) and [Notes](https://wpsso.com/codex/plugins/wpsso/notes/) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com).
+WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the [FAQ](https://wpsso.com/docs/plugins/wpsso/faqs/) and [Notes](https://wpsso.com/docs/plugins/wpsso/notes/) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com).
 
 Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=author), [Facebook](https://www.facebook.com/SurniaUlulaCom), and [Twitter](https://twitter.com/surniaululacom), and [YouTube](http://www.youtube.com/user/SurniaUlulaCom).
 
@@ -233,97 +233,97 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Install and Uninstall =
 
-* [Install the Plugin](https://wpsso.com/codex/plugins/wpsso/installation-to/install-the-plugin/)
-* [Integration Notes](https://wpsso.com/codex/plugins/wpsso/installation/integration/)
-	* [BuddyPress Integration](https://wpsso.com/codex/plugins/wpsso/installation/integration/buddypress-integration/)
-* [Uninstall the Plugin](https://wpsso.com/codex/plugins/wpsso/installation/uninstall-the-plugin/)
-* [Performance Tuning](https://wpsso.com/codex/plugins/wpsso/installation/performance-tuning/)
-* [Debugging and Problem Solving](https://wpsso.com/codex/plugins/wpsso/installation/debugging-and-problem-solving/)
-* [How-To Migrate from NGFB to WPSSO](https://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
-* [Developer Special - Buy one, Get one Free](https://wpsso.com/codex/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
+* [Install the Plugin](https://wpsso.com/docs/plugins/wpsso/installation-to/install-the-plugin/)
+* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
+	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
+* [Uninstall the Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
+* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
+* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
+* [How-To Migrate from NGFB to WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
+* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 = Plugin Setup =
 
-* [A Setup Guide for WPSSO](https://wpsso.com/codex/plugins/wpsso/installation/a-setup-guide/)
+* [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 
 == Frequently Asked Questions ==
 
 = Frequently Asked Questions =
 
-* [Can I use the Pro version on multiple websites?](https://wpsso.com/codex/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
-* [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/codex/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
-* [Doesn't an SEO plugin cover that?](https://wpsso.com/codex/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
-* [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
-* [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
-* [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
-* [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
-* [How can I have smaller dimensions for the default image?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
-* [How can I migrate from NGFB to WPSSO?](https://wpsso.com/codex/plugins/wpsso/installation/migrate-from-ngfb/)
-* [How can I see what the Facebook crawler sees?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
-* [How can I share a single NextGEN Gallery image?](https://wpsso.com/codex/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
-* [How do I attach an image without showing it on the webpage?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
-* [How do I fix my theme's front page pagination?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
-* [How do I install the WPSSO Pro version?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
-* [How do I remove duplicate meta tags?](https://wpsso.com/codex/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
-* [How does WPSSO find / detect / select images?](https://wpsso.com/codex/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
-* [W3C says "there is no attribute 'property'"](https://wpsso.com/codex/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
-* [What about Google Search and Google Plus?](https://wpsso.com/codex/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
-* [What features of NextGEN Gallery are supported?](https://wpsso.com/codex/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
-* [What is the difference between NGFB and WPSSO?](https://wpsso.com/codex/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
-* [What is the difference between the Free and Pro versions?](https://wpsso.com/codex/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
-* [Why aren't Pins from my website posting Rich?](https://wpsso.com/codex/plugins/wpsso/faqs/why-arent-pins-from-my-website-posting-rich/)
-* [Why does Facebook play videos instead of linking them?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
-* [Why does Facebook show the wrong image / text?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
-* [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
-* [Why does WPSSO ignore some &lt;img/&gt; HTML tags?](https://wpsso.com/codex/plugins/wpsso/faqs/why-does-wpsso-ignore-some-img-html-tags/)
-* [Why don't my Twitter Cards show on Twitter?](https://wpsso.com/codex/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/)
-* [Why is the Open Graph title the same for every webpage?](https://wpsso.com/codex/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
-* [Why is the page blank or its components misaligned?](https://wpsso.com/codex/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/)
+* [Can I use the Pro version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
+* [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
+* [Doesn't an SEO plugin cover that?](https://wpsso.com/docs/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
+* [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
+* [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
+* [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
+* [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
+* [How can I have smaller dimensions for the default image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
+* [How can I migrate from NGFB to WPSSO?](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
+* [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
+* [How can I share a single NextGEN Gallery image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
+* [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
+* [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
+* [How do I install the WPSSO Pro version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
+* [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
+* [How does WPSSO find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
+* [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
+* [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
+* [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
+* [What is the difference between NGFB and WPSSO?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
+* [What is the difference between the Free and Pro versions?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
+* [Why aren't Pins from my website posting Rich?](https://wpsso.com/docs/plugins/wpsso/faqs/why-arent-pins-from-my-website-posting-rich/)
+* [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
+* [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
+* [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
+* [Why does WPSSO ignore some &lt;img/&gt; HTML tags?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-wpsso-ignore-some-img-html-tags/)
+* [Why don't my Twitter Cards show on Twitter?](https://wpsso.com/docs/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/)
+* [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
+* [Why is the page blank or its components misaligned?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/)
 
 == Other Notes ==
 
 = Additional Documentation =
 
-* [About WPSSO Pro Integration Modules](https://wpsso.com/codex/plugins/wpsso/notes/modules/)
-	* [Author Gravatar](https://wpsso.com/codex/plugins/wpsso/notes/modules/author-gravatar/)
-	* [Co-Author Plus](https://wpsso.com/codex/plugins/wpsso/notes/modules/co-author-plus/)
-	* [Easy Digital Downloads](https://wpsso.com/codex/plugins/wpsso/notes/modules/easy-digital-downloads/)
-	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/codex/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
-	* [HeadSpace2 SEO](https://wpsso.com/codex/plugins/wpsso/notes/modules/headspace2-seo/)
-	* [Polylang](https://wpsso.com/codex/plugins/wpsso/notes/modules/polylang/)
-	* [The Events Calendar](https://wpsso.com/codex/plugins/wpsso/notes/modules/the-events-calendar/)
-	* [WooCommerce](https://wpsso.com/codex/plugins/wpsso/notes/modules/woocommerce/)
-	* [WordPress REST API version 2](https://wpsso.com/codex/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
-	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
-* [Contact Information and Feeds](https://wpsso.com/codex/plugins/wpsso/notes/contact-information/)
-* [Developer Resources](https://wpsso.com/codex/plugins/wpsso/notes/developer/)
-	* [Constants](https://wpsso.com/codex/plugins/wpsso/notes/developer/constants/)
-	* [Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/)
-		* [Filter Examples](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/)
-			* [Add Schema aggregateRating Meta Tags](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/add-schema-aggregaterating-meta-tags/)
-			* [Detect YouTube URL Links as Videos](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
-			* [Disable the Social Settings Metabox by Post ID](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
-			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
-			* [Modify the Default Article Topics List](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
-			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
-			* [Modify the Sharing URL](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
-			* [Read / Import Yoast SEO Social Meta](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/)
-			* [Remove 'hentry' from Theme Templates](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
-			* [Strip Additional Shortcodes](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
-			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
-			* [Working with Pre-defined Meta Tags and Custom Post Types](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/)
-		* [Filters by Category](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/)
-			* [Head Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/head/)
-			* [Media Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/media/)
-			* [Open Graph Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/open-graph/)
-			* [Twitter Card Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/twitter-card/)
-			* [Webpage Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-category/webpage/)
-		* [Filters by Name](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/by-name/)
-		* [Other Filters](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/other/)
-	* [The $mod Variable](https://wpsso.com/codex/plugins/wpsso/notes/developer/the-mod-variable/)
-* [Inline Variables](https://wpsso.com/codex/plugins/wpsso/notes/inline-variables/)
-* [Multisite / Network Support](https://wpsso.com/codex/plugins/wpsso/notes/multisite-network-support/)
-* [Working with Image Attachments](https://wpsso.com/codex/plugins/wpsso/notes/working-with-image-attachments/)
+* [About WPSSO Pro Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
+	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
+	* [Co-Author Plus](https://wpsso.com/docs/plugins/wpsso/notes/modules/co-author-plus/)
+	* [Easy Digital Downloads](https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/)
+	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/docs/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
+	* [HeadSpace2 SEO](https://wpsso.com/docs/plugins/wpsso/notes/modules/headspace2-seo/)
+	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
+	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
+	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
+	* [WordPress REST API version 2](https://wpsso.com/docs/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
+	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
+* [Contact Information and Feeds](https://wpsso.com/docs/plugins/wpsso/notes/contact-information/)
+* [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
+	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
+	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
+		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)
+			* [Add Schema aggregateRating Meta Tags](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/add-schema-aggregaterating-meta-tags/)
+			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
+			* [Disable the Social Settings Metabox by Post ID](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
+			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
+			* [Modify the Default Article Topics List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
+			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
+			* [Modify the Sharing URL](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
+			* [Read / Import Yoast SEO Social Meta](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/)
+			* [Remove 'hentry' from Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
+			* [Strip Additional Shortcodes](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
+			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
+			* [Working with Pre-defined Meta Tags and Custom Post Types](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/)
+		* [Filters by Category](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/)
+			* [Head Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/head/)
+			* [Media Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/media/)
+			* [Open Graph Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/open-graph/)
+			* [Twitter Card Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/twitter-card/)
+			* [Webpage Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/webpage/)
+		* [Filters by Name](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-name/)
+		* [Other Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/other/)
+	* [The $mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
+* [Inline Variables](https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/)
+* [Multisite / Network Support](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
+* [Working with Image Attachments](https://wpsso.com/docs/plugins/wpsso/notes/working-with-image-attachments/)
 
 == Screenshots ==
 
@@ -360,6 +360,17 @@ Version components: `{major}.{minor}.{bugfix}-{stage}{level}`
 Note that the production stage level can be incremented on occasion for simple text revisions and/or translation updates. See [PHP's version_compare()](http://php.net/manual/en/function.version-compare.php) documentation for additional information on "PHP-standardized" version numbering.
 
 = Changelog / Release Notes =
+
+**Version 3.40.11-dev1 (2017/04/03)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the plugin documentation and FAQ URLs.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
 
 **Version 3.40.10-1 (2017/04/02)**
 
@@ -750,13 +761,13 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Added a new "Custom Facebook Locale" option in the SSO &gt; General settings page to customize the WordPress locale value for Facebook.
 * *Improvements*
 	* Removed the "Verify Peer SSL Certificate" option as this feature should always be enabled anyway.
-	* Added a [summary of features for the Yoast SEO integration module](https://wpsso.com/codex/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/) in WPSSO Pro.
+	* Added a [summary of features for the Yoast SEO integration module](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/) in WPSSO Pro.
 * *Bugfixes*
 	* Fixed fetching of image size for a custom Schema image URL.
 * *Developer Notes*
 	* Added a check for positive numbers when adding Schema image size properties.
 	* Removed the share/curl/ca-bundle.crt file to use the WordPress wp-includes/certificates/ca-bundle.crt file instead.
-	* Added an example filter to [Read / Import Yoast SEO Social Meta](https://wpsso.com/codex/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/) when Yoast SEO is not active.
+	* Added an example filter to [Read / Import Yoast SEO Social Meta](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/) when Yoast SEO is not active.
 
 **Version 3.37.8-1 (2016/12/12)**
 
@@ -942,6 +953,10 @@ Note that the production stage level can be incremented on occasion for simple t
 	* Renamed all http://schema.org URLs to https://schema.org and all http_schema_org filters to https_schema_org.
 
 == Upgrade Notice ==
+
+= 3.40.11-dev1 =
+
+(2017/04/03) Updated the plugin documentation and FAQ URLs.
 
 = 3.40.10-1 =
 
