@@ -53,9 +53,12 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		 * https://en.wikipedia.org/wiki/HTTP_301 for more info.
 		 */
 		public static function force_ssl_redirect() {
-			if ( ! SucomUtil::is_https() ) {
-				wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
-				exit();
+			// check for web server variables in case WP is being called from the command line
+			if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
+				if ( ! SucomUtil::is_https() ) {
+					wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
+					exit();
+				}
 			}
 		}
 
