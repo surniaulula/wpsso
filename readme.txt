@@ -367,7 +367,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Updated the plugin documentation and FAQ URLs.
-	* Added a check for web server variables before doing a redirect for FORCE_SSL, in case WP is being called from the command-line.
+	* Added a check for web server variables before doing a redirect for FORCE_SSL, in case WP is being used from the command-line.
 * *Bugfixes*
 	* None
 * *Developer Notes*
