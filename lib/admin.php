@@ -17,13 +17,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_id = null;
 		protected $menu_name = null;
 		protected $menu_lib = null;
-		protected $menu_ext = null;
+		protected $menu_ext = null;	// lowercase acronyn for plugin or extension
 		protected $pagehook = null;
 
 		public static $pkg = array();
 		public static $readme = array();	// array for the readme of each extension
 
-		public $form;
+		public $form = null;
 		public $lang = array();
 		public $submenu = array();
 
@@ -129,13 +129,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
-			if ( empty( $menu_lib ) )
+			if ( empty( $menu_lib ) ) {
 				$menu_lib = 'submenu';
+			}
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
 			$this->menu_lib = $menu_lib;
-			$this->menu_ext = $lca;
+			$this->menu_ext = $lca;	// lowercase acronyn for plugin or extension
 
 			if ( isset( $this->submenu[$this->menu_id] ) ) {
 				$menu_slug = $lca.'-'.$this->menu_id;
@@ -197,13 +198,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// extended by the sitesubmenu library classes to define / load site options instead
-		protected function set_form_property( $menu_ext ) {
+		// called by the show_setting_page() method
+		// extended by the sitesubmenu classes to define the site options instead
+		protected function set_form_object( $menu_ext = '' ) {	// $menu_ext required for text_domain (defaults to lca)
 			$def_opts = $this->p->opt->get_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME,
+				$this->p->options, $def_opts, $menu_ext );
 		}
 
-		protected function &get_form_reference() {	// returns a reference
+		protected function &get_form_object( $menu_ext = '' ) {	// $menu_ext required for text_domain (defaults to lca)
+			if ( ! isset( $this->form ) ||
+				$this->form->get_menu_ext() !== $menu_ext ) {	// just in case
+				$this->set_form_object( $menu_ext );
+			}
 			return $this->form;
 		}
 
@@ -242,25 +249,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
 
-			if ( empty( $menu_id ) )
+			if ( empty( $menu_id ) ) {
 				$menu_id = $this->menu_id;
-			if ( empty( $menu_name ) )
+			}
+			if ( empty( $menu_name ) ) {
 				$menu_name = $this->menu_name;
-			if ( empty( $menu_lib ) )
+			}
+			if ( empty( $menu_lib ) ) {
 				$menu_lib = $this->menu_lib;
+			}
 			if ( empty( $menu_ext ) ) {
-				$menu_ext = $this->menu_ext;
-				if ( empty( $menu_ext ) )
+				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
+				if ( empty( $menu_ext ) ) {
 					$menu_ext = $this->p->cf['lca'];
+				}
 			}
 
 			global $wp_version;
 			if ( $menu_ext === $this->p->cf['lca'] ||		// plugin menu and sub-menu items
-				version_compare( $wp_version, 3.8, '<' ) )	// wp v3.8 required for dashicons
-					$menu_title = $menu_name;
-			else $menu_title = '<div class="extension-plugin'.	// add plugin icon for extensions
-				' dashicons-before dashicons-admin-plugins"></div>'.
-				'<div class="extension-plugin">'.$menu_name.'</div>';
+				version_compare( $wp_version, 3.8, '<' ) ) {	// wp v3.8 required for dashicons
+				$menu_title = $menu_name;
+			} else {
+				$menu_title = '<div class="extension-plugin'.	// add plugin icon for extensions
+					' dashicons-before dashicons-admin-plugins"></div>'.
+					'<div class="extension-plugin">'.$menu_name.'</div>';
+			}
 
 			if ( strpos( $menu_title, '<color>' ) !== false )
 				$menu_title = preg_replace( array( '/<color>/', '/<\/color>/' ),
@@ -542,14 +555,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_setting_page( $sidebar = true ) {
 
-			if ( ! $this->is_setting() )
+			if ( ! $this->is_setting() ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
+			}
 
-			$menu_ext = $this->menu_ext;
-			if ( empty( $menu_ext ) )
+			$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
+			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->p->cf['lca'];
+			}
 
-			$this->set_form_property( $menu_ext );	// set form for side boxes and show_form_content()
+			$this->set_form_object( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
 			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.
@@ -1571,7 +1586,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		// deprecated on 2017/04/02
-		public function get_site_use( $form, $network = false, $name, $enabled = false ) {
+		public function get_site_use( $form, $network, $name, $enabled = false ) {
 			return self::get_option_site_use( $name, $form, $network, $enabled );	// note the different arg order
 		}
 

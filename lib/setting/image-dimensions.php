@@ -15,13 +15,15 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
-
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
 		protected function add_meta_boxes() {
@@ -34,12 +36,16 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		public function show_metabox_image_dimensions() {
 			$metabox = $this->menu_id;
 			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
+
 			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ),
 				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
 					array(), $this->form ) );
+
 			sort( $table_rows );
-			foreach ( $table_rows as $num => $row )
+
+			foreach ( $table_rows as $num => $row ) {
 				echo '<tr>'.$row.'</tr>'."\n";
+			}
 			echo '</table>';
 		}
 

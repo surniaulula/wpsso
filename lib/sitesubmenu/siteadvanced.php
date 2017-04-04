@@ -15,16 +15,18 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
-
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
-		protected function set_form_property( $menu_ext ) {
+		protected function set_form_object( $menu_ext ) {
 			$def_site_opts = $this->p->opt->get_site_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, 
 				$this->p->site_options, $def_site_opts, $menu_ext );

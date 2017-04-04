@@ -13,13 +13,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 	class SucomForm {
 
-		private $p;
-		private $menu_ext = null;
-		private $text_domain = false;
+		protected $p;
+		protected $menu_ext = null;	// lowercase acronyn for plugin or extension
+		protected $text_domain = false;
+		protected $options_name = null;
 
 		public $options = array();
 		public $defaults = array();
-		public $options_name = null;
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
 			$this->p =& $plugin;
@@ -31,9 +31,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->options_name =& $opts_name;
 			$this->options =& $opts;
 			$this->defaults =& $def_opts;
-			$this->menu_ext = empty( $menu_ext ) ? $this->p->cf['lca'] : $menu_ext;
-			$this->text_domain = isset( $this->p->cf['plugin'][$this->menu_ext]['text_domain'] ) ?
-				$this->p->cf['plugin'][$this->menu_ext]['text_domain'] : false;
+			$this->menu_ext = empty( $menu_ext ) ? $this->p->cf['lca'] : $menu_ext;	// required for text_domain
+			$this->set_text_domain( $this->menu_ext );
+		}
+
+		public function get_options_name() {
+			return $this->options_name;
+		}
+
+		public function get_menu_ext() {
+			return $this->menu_ext;
+		}
+
+		public function get_text_domain() {
+			return $this->text_domain;
+		}
+
+		public function set_text_domain( $menu_ext ) {
+			$this->text_domain = isset( $this->p->cf['plugin'][$menu_ext]['text_domain'] ) ?
+				$this->p->cf['plugin'][$menu_ext]['text_domain'] : false;
 		}
 
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
@@ -113,8 +129,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $is_assoc === false )
 					$val = $desc;
 
-				if ( $this->text_domain )
+				if ( $this->text_domain ) {
 					$desc = _x( $desc, 'option value', $this->text_domain );
+				}
 
 				$html .= '<input type="radio"'.
 					( $disabled ? ' disabled="disabled"' : ' name="'.
@@ -208,16 +225,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				switch ( $name ) {
 					case 'og_img_max':
-						if ( $desc === 0 )
+						if ( $desc === 0 ) {
 							$desc .= ' '._x( '(no images)', 'option value', $this->text_domain );
+						}
 						break;
 					case 'og_vid_max':
-						if ( $desc === 0 )
+						if ( $desc === 0 ) {
 							$desc .= ' '._x( '(no videos)', 'option value', $this->text_domain );
+						}
 						break;
 					default:
-						if ( $desc === '' || $desc === 'none' )
+						if ( $desc === '' || $desc === 'none' ) {
 							$desc = _x( '[None]', 'option value', $this->text_domain );
+						}
 						break;
 				}
 
@@ -282,16 +302,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '<select name="'.
 				esc_attr( $this->options_name.'['.$name.']' ).'">';
 			foreach ( $size_names as $size_name ) {
-				if ( ! is_string( $size_name ) )
+				if ( ! is_string( $size_name ) ) {
 					continue;
+				}
 				$size = SucomUtil::get_size_info( $size_name );
 				$html .= '<option value="'.esc_attr( $size_name ).'" ';
-				if ( $this->in_options( $name ) )
+				if ( $this->in_options( $name ) ) {
 					$html .= selected( $this->options[$name], $size_name, false );
+				}
 				$html .= '>'.esc_html( $size_name.' [ '.$size['width'].'x'.$size['height'].
 					( $size['crop'] ? ' cropped' : '' ).' ]' );
-				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] )
+				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] ) {
 					$html .= ' '._x( '(default)', 'option value', $this->text_domain );
+				}
 				$html .= '</option>';
 			}
 			$html .= '</select>';
