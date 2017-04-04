@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.11-1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-04-04 16:28+0200\n"
-"PO-Revision-Date: 2017-04-04 16:29+0200\n"
+"POT-Creation-Date: 2017-04-04 16:47+0200\n"
+"PO-Revision-Date: 2017-04-04 16:47+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -258,8 +258,8 @@ msgid "Want to say thank you?"
 msgstr "Voulez-vous dire merci?"
 
 #: lib/admin.php:1057
-msgid "<a href=\"%1$s\" target=\"_blank\">Please Rate / Review the %2$s Plugin</a> on WordPress.org"
-msgstr "<a href=\"%1$s\" target=\"_blank\">SVP noter / évaluer l'extension %2$s</a> sur WordPress.org"
+msgid "<a href=\"%1$s\" target=\"_blank\">Rate the %2$s Plugin</a> on WordPress.org"
+msgstr "<a href=\"%1$s\" target=\"_blank\">Notez l'extension %2$s</a> sur WordPress.org"
 
 #: lib/admin.php:1125
 msgctxt "plugin action link"
