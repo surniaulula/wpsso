@@ -268,8 +268,7 @@ msgstr ""
 
 #: lib/admin.php:1057
 msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Please Rate / Review the %2$s Plugin</a> "
-"on WordPress.org"
+"<a href=\"%1$s\" target=\"_blank\">Rate the %2$s Plugin</a> on WordPress.org"
 msgstr ""
 
 #: lib/admin.php:1125
