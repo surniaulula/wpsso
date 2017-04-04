@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['url']['review'] ) ) {
-					$links[] = '<span style="color:#'.$this->p->cf['menu']['color'].';font-weight:bold;">'.
+					$links[] = '<span style="color:#'.$this->p->cf['menu']['color'].';">'.
 						__( 'Want to say thank you?', 'wpsso' ).'</span><br/>'.
 						sprintf( __( '<a href="%1$s" target="_blank">Please Rate / Review the %2$s Plugin</a> on WordPress.org',
 							'wpsso' ), $info['url']['review'], $info['short'] ).' <3';

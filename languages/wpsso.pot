@@ -3408,7 +3408,7 @@ msgstr ""
 
 #: lib/submenu/essential.php:36
 msgctxt "metabox title"
-msgid "Essential Advanced Settings"
+msgid "Optional Advanced Settings"
 msgstr ""
 
 #: lib/submenu/essential.php:65
