@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
 
-			if ( ! empty( $opts ) && is_array( $opts ) ) {
+			if ( ! empty( $opts ) && is_array( $opts ) ) {	// just in case
 
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
