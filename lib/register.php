@@ -83,10 +83,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config();
-			$this->p->set_options();
-			$this->p->set_objects( true );	// $activate = true
-			$this->p->util->clear_all_cache( true );	// $clear_ext = true
+			$this->p->set_config();				// apply filters and define the $cf['*'] array
+			$this->p->set_options();			// read (or create) the options and site_options
+			$this->p->set_objects( true );			// set the class objects ( $activate = true )
+			$this->p->util->clear_all_cache( true );	// clear any existing cache entries ( $clear_ext = true )
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 

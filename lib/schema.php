@@ -22,8 +22,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
 
-			$this->types_exp = (int) apply_filters( $this->p->cf['lca'].'_cache_expire_schema_types',
-				$this->p->options['plugin_types_cache_exp'] );
+			// options array may be empty on activation
+			if ( isset( $this->p->options['plugin_types_cache_exp'] ) ) {
+				$this->types_exp = (int) apply_filters( $this->p->cf['lca'].'_cache_expire_schema_types',
+					$this->p->options['plugin_types_cache_exp'] );
+			}
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 3,

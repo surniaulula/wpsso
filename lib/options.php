@@ -64,13 +64,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'schema_type_for' => 'webpage',
 				) );
 
-				$defs['seo_author_field'] = empty( $this->p->options['plugin_cm_gp_name'] ) ? 
-					$defs['plugin_cm_gp_name'] : $this->p->options['plugin_cm_gp_name'];
-
-				$defs['og_author_field'] = empty( $this->p->options['plugin_cm_fb_name'] ) ? 
-					$defs['plugin_cm_fb_name'] : $this->p->options['plugin_cm_fb_name'];
-
-				// define the Facebook locale value for the default and current locales
+				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// reset to possible custom value
+				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// reset to possible custom value
 				$defs['fb_locale'] = SucomUtil::get_fb_locale( array(), 'default' );
 
 				if ( ( $fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
@@ -181,6 +176,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
 
 			if ( ! empty( $opts ) && is_array( $opts ) ) {
+
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
