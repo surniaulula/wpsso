@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 		public function show_metabox_social_accounts() {
 			$metabox = $this->menu_id;
-			echo '<table class="sucom-setting '.$this->p->cf['lca'].'">';
+			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
 
 			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ),

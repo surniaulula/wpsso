@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			WpssoAdmin::set_readme_info();	// $read_cache = true
-			echo '<table class="sucom-setting '.$lca.' side version-info" style="table-layout:fixed;">';
+			echo '<table class="sucom-settings '.$lca.' side version-info" style="table-layout:fixed;">';
 			echo '<colgroup><col style="width:60px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) )	// only active extensions
@@ -818,7 +818,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-setting '.$lca.' side" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' side" style="margin-bottom:10px;">';
 
 			/*
 			 * GPL version features
@@ -877,7 +877,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-setting '.$lca.' side" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' side" style="margin-bottom:10px;">';
 
 			/*
 			 * Pro version features
@@ -1015,7 +1015,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
 				'' : add_query_arg( 'utm_source', 'side-purchase', $info['url']['purchase'] );
-			echo '<table class="sucom-setting '.$lca.' side"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
 			echo $this->p->msgs->get( 'side-purchase' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-setting '.$lca.' side"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
 			$this->show_follow_icons();
 			echo $this->p->msgs->get( 'side-help-support' );
 
@@ -1039,7 +1039,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info['url']['faqs'] ) ) {
 					$links[] = sprintf( __( 'Read the <a href="%s" target="_blank">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faqs'] ).( ! empty( $info['url']['notes'] ) ?
-							' '.sprintf( __( 'and <a href="%s" target="_blank">Additional Documentation</a>',
+							' '.sprintf( __( 'and <a href="%s" target="_blank">Other Notes</a>',
 								'wpsso' ), $info['url']['notes'] ) : '' );
 				}
 
@@ -1052,10 +1052,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['url']['review'] ) ) {
-					$links[] = '<span style="color:#'.$this->p->cf['menu']['color'].';">'.
-						__( 'Want to say thank you?', 'wpsso' ).' :-)</span><br/>'.
-						sprintf( __( '<a href="%1$s" target="_blank">Rate the %2$s Plugin</a> on WordPress.org',
-							'wpsso' ), $info['url']['review'], $info['short'] ).' <3';
+					$links[] = '<strong>'.__( 'Want to say thank you?', 'wpsso' ).'</strong><br/>'.
+						'<a href="'.$info['url']['review'].'" target="_blank">'.
+						sprintf( __( 'Rate the %1$s Plugin %2$s on WP.org', 'wpsso' ), 
+							$info['short'], '<span class="wpsso-five-stars"></span>' ).'</a> <3';
 				}
 
 				if ( ! empty( $links ) ) {
@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$total = count( $this->p->cf['plugin'] );
 
-			echo '<table class="sucom-setting '.$lca.' licenses-metabox"
+			echo '<table class="sucom-settings '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
 			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
 				$this->p->msgs->get( 'info-plugin-tid'.

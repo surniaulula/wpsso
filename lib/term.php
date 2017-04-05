@@ -355,11 +355,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $term_id;
 		}
 
+		// called by the WpssoRegister::uninstall_plugin() method
 		public static function get_public_terms( $tax_name = false, $term_fields = 'ids' ) {
 			$ret = array();
 			$tax_filter = array( 'public' => 1, 'show_ui' => 1 );
-			if ( $tax_name !== false )
+			if ( $tax_name !== false ) {
 				$tax_filter['name'] = $tax_name;
+			}
 			$term_args = array( 'fields' => $term_fields );
 			$term_oper = 'and';
 			foreach ( get_taxonomies( $tax_filter, 'names' ) as $tax_name ) {
@@ -375,12 +377,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$term_meta = $single === false ? array() : '';
 
 			if ( self::use_meta_table( $term_id ) ) {
-				$term_meta = get_term_meta( $term_id, $key_name, $single );
+				$term_meta = get_term_meta( $term_id, $key_name, $single );	// since wp v4.4
 
 				// fallback to checking for deprecated term meta in the options table
 				if ( ( $single && $term_meta === '' ) || ( ! $single && $term_meta === array() ) ) {
+
+					// if deprecated meta is found, update the meta table and delete the deprecated meta
 					if ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
-						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );
+
+						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );	// since wpv4.4
+
 						if ( ! is_wp_error( $updated ) ) {
 							delete_option( $key_name.'_term_'.$term_id );
 							$term_meta = get_term_meta( $term_id, $key_name, $single );
@@ -400,15 +406,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function update_term_meta( $term_id, $key_name, $opts ) {
 			if ( self::use_meta_table( $term_id ) ) {
-				return update_term_meta( $term_id, $key_name, $opts );
+				return update_term_meta( $term_id, $key_name, $opts );	// since wpv4.4
 			} else {
 				return update_option( $key_name.'_term_'.$term_id, $opts );
 			}
 		}
 
+		// called by the WpssoRegister::uninstall_plugin() method
 		public static function delete_term_meta( $term_id, $key_name ) {
 			if ( self::use_meta_table( $term_id ) ) {
-				return delete_term_meta( $term_id, $key_name );
+				return delete_term_meta( $term_id, $key_name );	// since wp v4.4
 			} else {
 				return delete_option( $key_name.'_term_'.$term_id );
 			}
@@ -418,11 +425,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			static $use_meta_table = null;
 
 			if ( $use_meta_table === null )	{	// optimize and check only once
-				if ( get_option( 'db_version' ) >= 34370 ) {
+				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
 					if ( $term_id === false || ! wp_term_is_shared( $term_id ) ) {
 						$use_meta_table = true;
-					} else $use_meta_table = false;
-				} else $use_meta_table = false;
+					} else {
+						$use_meta_table = false;
+					}
+				} else {
+					$use_meta_table = false;
+				}
 			}
 
 			return $use_meta_table;

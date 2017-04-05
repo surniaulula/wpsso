@@ -1913,7 +1913,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 			'">'."\n";
 
-			echo '<table class="sucom-setting '.$lca.
+			echo '<table class="sucom-settings '.$lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
 					' hide_in_'.$show_opts : '' ).'">'."\n";

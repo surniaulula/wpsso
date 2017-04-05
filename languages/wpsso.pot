@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.11-"
-"dev2\n"
+"b1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -247,7 +247,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:1042
-msgid "and <a href=\"%s\" target=\"_blank\">Additional Documentation</a>"
+msgid "and <a href=\"%s\" target=\"_blank\">Other Notes</a>"
 msgstr ""
 
 #: lib/admin.php:1047
@@ -262,13 +262,12 @@ msgid ""
 "(Free version)"
 msgstr ""
 
-#: lib/admin.php:1056
+#: lib/admin.php:1055
 msgid "Want to say thank you?"
 msgstr ""
 
 #: lib/admin.php:1057
-msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Rate the %2$s Plugin</a> on WordPress.org"
+msgid "Rate the %1$s Plugin %2$s on WP.org"
 msgstr ""
 
 #: lib/admin.php:1125
@@ -2840,7 +2839,7 @@ msgid ""
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:974 lib/register.php:211
+#: lib/messages.php:974 lib/register.php:220
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, insecure</a> and may lack important features."
@@ -3251,11 +3250,11 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:213
+#: lib/register.php:214 lib/register.php:222
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:215
+#: lib/register.php:224
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

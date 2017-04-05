@@ -74,7 +74,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					call_user_func_array( $method, array( $args ) );
 				}
 				restore_current_blog();
-			} else call_user_func_array( $method, array( $args ) );
+			} else {
+				call_user_func_array( $method, array( $args ) );
+			}
 		}
 
 		private function activate_plugin() {
@@ -89,6 +91,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
+
 			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
 
 			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
@@ -135,23 +138,26 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
-				delete_post_meta_by_key( WPSSO_META_NAME );
+				delete_post_meta_by_key( WPSSO_META_NAME );	// since wp v2.3
 
 				foreach ( get_users() as $user ) {
-
-					// site specific user options
-					delete_user_option( $user->ID, WPSSO_NOTICE_NAME );
-					delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
-
-					// global / network user options
-					delete_user_meta( $user->ID, WPSSO_META_NAME );
-					delete_user_meta( $user->ID, WPSSO_PREF_NAME );
-
-					WpssoUser::delete_metabox_prefs( $user->ID );
+					if ( empty( $user-> ID ) ) {	// just in case
+						// site specific user options
+						delete_user_option( $user->ID, WPSSO_NOTICE_NAME );
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
+	
+						// global / network user options
+						delete_user_meta( $user->ID, WPSSO_META_NAME );
+						delete_user_meta( $user->ID, WPSSO_PREF_NAME );
+	
+						WpssoUser::delete_metabox_prefs( $user->ID );
+					}
 				}
 
 				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
-					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
+					if ( ! empty( $term_id ) ) {	// just in case
+						WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
+					}
 				}
 			}
 
@@ -204,6 +210,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				if ( ! function_exists( 'deactivate_plugins' ) ) {
 					require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
 				}
+
+				error_log( sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+					'wpsso' ), $plugin_name, $app_label, $min_version ) );
 
 				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
 

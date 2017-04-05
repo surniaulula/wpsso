@@ -35,8 +35,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			}
 
 
-			$lca = $this->p->cf['lca'];
-			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
+			$plugin_version = WpssoConfig::get_version();
 
 			// https://developers.google.com/speed/libraries/
 			wp_register_style( 'jquery-ui.js',
@@ -48,12 +47,12 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				WPSSO_URLPATH.'css/ext/jquery-qtip.min.css',
 					array(), '3.0.3' );
 
-			wp_register_style( 'sucom-setting-pages',
-				WPSSO_URLPATH.'css/com/setting-pages.min.css',
+			wp_register_style( 'sucom-settings-page',
+				WPSSO_URLPATH.'css/com/settings-page.min.css',
 					array(), $plugin_version );
 
-			wp_register_style( 'sucom-table-setting',
-				WPSSO_URLPATH.'css/com/table-setting.min.css',
+			wp_register_style( 'sucom-settings-table',
+				WPSSO_URLPATH.'css/com/settings-table.min.css',
 					array(), $plugin_version );
 
 			wp_register_style( 'sucom-metabox-tabs',
@@ -62,8 +61,8 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 			switch ( $hook_name ) {
 
-				// license settings pages include a "view plugin details" feature
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+				// license settings page includes a "view plugin details" feature
+				case ( preg_match( '/_page_wpsso-(site)?licenses/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
@@ -75,13 +74,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_wpsso-' ) !== false ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
 
-					wp_enqueue_style( 'sucom-setting-pages' );	// sidebar, buttons, etc.
+					wp_enqueue_style( 'sucom-settings-page' );	// sidebar, buttons, etc.
 
 					// no break
 
@@ -99,13 +98,13 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
-					wp_enqueue_style( 'sucom-table-setting' );
+					wp_enqueue_style( 'sucom-settings-table' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					wp_enqueue_style( 'wp-color-picker' );
 
 					break;	// stop here
 
-				case 'plugin-install.php':				// css for view plugin details thickbox
+				case 'plugin-install.php':	// css for "view plugin details" thickbox
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for plugin install page' );
@@ -116,7 +115,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					break;	// stop here
 			}
 
-			$this->admin_inline_styles( $hook_name );
+			$this->add_admin_page_style( $hook_name );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -141,12 +140,19 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 </style>';
 		}
 
-		private function admin_inline_styles( $hook_name ) {
+		private function add_admin_page_style( $hook_name ) {
+
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify admin styles' );	// begin timer
+				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
-			$css_data = '<style type="text/css">';
+			$plugin_version = WpssoConfig::get_version();
+
+			wp_enqueue_style( 'sucom-admin-page',
+				WPSSO_URLPATH.'css/com/admin-page.min.css',
+					array(), $plugin_version );
+
+			$custom_style_css = '';
 			$sort_cols = WpssoMeta::get_sortable_columns();
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
@@ -156,85 +162,25 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					WPSSO_MENU_ICON_HIGHLIGHT ? true : false;
 
 				if ( $icon_highlight )  {
-					$css_data .= '
+					$custom_style_css .= '
 	#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
 	#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
-		color:#'.$this->p->cf['menu']['color'].';
-	}';
+		color:#'.$this->p->cf['menu']['color'].'; }';
 				}
 			}
 
-			$css_data .= '
-	#adminmenu ul.wp-submenu div.extension-plugin {
-		display:table-cell;
-	}
-	#adminmenu ul.wp-submenu div.extension-plugin.dashicons-before {
-		max-width:1.1em;
-		padding-right:5px;
-	}
-	#adminmenu ul.wp-submenu div.extension-plugin.dashicons-before:before {
-		text-align:left;
-		font-size:1.1em;
-	}
-	.wp-list-table.media .column-cb,
-	.wp-list-table.media .check-column {
-		width:2%;
-	}
-	@media ( max-width:1200px ) {
-		.wp-list-table.media .column-cb,
-		.wp-list-table.media .check-column {
-			width:3%;
-		}
-	}
-	@media ( max-width:782px ) {
-		.wp-list-table.media .column-cb,
-		.wp-list-table.media .check-column {
-			width:6%;
-		}
-	}
-	@media ( max-width:600px ) {
-		.wp-list-table.media .column-cb,
-		.wp-list-table.media .check-column {
-			width:10%;
-		}
-	}
-	.wp-list-table th.column-title,
-	.wp-list-table td.column-title {
-		width:25%;
-	}
-	.wp-list-table th.column-author,
-	.wp-list-table td.column-author {
-		width:10%;
-	}
-	.wp-list-table th.column-sku,
-	.wp-list-table td.column-sku,
-	.wp-list-table th.column-is_in_stock,
-	.wp-list-table td.column-is_in_stock {
-		width:6%;	/* woocommerce */
-	}
-	.wp-list-table th.column-price,
-	.wp-list-table td.column-price {
-		width:8%;	/* woocommerce */
-	}
-	.wp-list-table th.column-categories,
-	.wp-list-table td.column-categories,
-	.wp-list-table th.column-tags,
-	.wp-list-table td.column-tags {
-		width:12%;	/* default is 15% */
-	}
-	.wp-list-table th.column-language,
-	.wp-list-table td.column-language {
-		width:8%;	/* qtranslate-x */
-	}
-	.wp-list-table th.column-slug,
-	.wp-list-table td.column-slug {
-		width:20%;	/* default is 25% */
-	}
-	.wp-list-table th.column-comments,
-	.wp-list-table td.column-comments {
-		width:4%;
+			$custom_style_css .= '
+	@font-face {
+		font-family: "Star";
+		src: url("'.WPSSO_URLPATH.'fonts/star.eot");
+		src: url("'.WPSSO_URLPATH.'fonts/star.eot?#iefix") format("embedded-opentype"),
+		url("'.WPSSO_URLPATH.'fonts/star.woff") format("woff"),
+		url("'.WPSSO_URLPATH.'fonts/star.ttf") format("truetype"),
+		url("'.WPSSO_URLPATH.'fonts/star.svg#star") format("svg");
+		font-weight: normal;
+		font-style: normal;
 	}
 	.column-wpsso_og_img { 
 		width:'.$sort_cols['og_img']['width'].' !important;
@@ -348,9 +294,23 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		display:inline-block;
 		font-size:12px;
 		vertical-align:top;
+	}
+	.wpsso-five-stars {
+		font-family: "Star";
+		font-size: 1em;
+		line-height: 1;
+		width: 5.4em;
+		height: 1em;
+		position: relative;
+		overflow: hidden;
+		margin:0 0 1.2em 0;
+	}
+	.wpsso-five-stars:before {
+		content: "\53\53\53\53\53";
 	}';
+
 			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
-				$css_data .= '
+				$custom_style_css .= '
 	.wp-list-table th#wpseo-score,
 	.wp-list-table th#wpseo-score-readability,
 	.wp-list-table th#wpseo_score,
@@ -376,19 +336,18 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		width:6%;
 	}';
 			}
-			$css_data .= '</style>';
 
-			$classname = apply_filters( $this->p->cf['lca'].'_load_lib', 
-				false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+			$classname = apply_filters( 'wpsso_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 
 			if ( $classname !== false && class_exists( $classname ) ) {
-				$css_data = call_user_func( array( $classname, 'process' ), $css_data );
+				$custom_style_css = call_user_func( array( $classname, 'process' ), $custom_style_css );
 			}
 
+			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify admin styles' );	// end timer
+				$this->p->debug->mark( 'create and minify admin page style' );	// end timer
 			}
-			echo $css_data;
 		}
 	}
 }
