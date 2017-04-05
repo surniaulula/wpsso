@@ -359,7 +359,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.11-rc1 (2017/04/05)**
+**Version 3.40.11-1 (2017/04/05)**
 
 * *New Features*
 	* None
@@ -959,9 +959,9 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.11-rc1 =
+= 3.40.11-1 =
 
-(2017/04/05) Updated the plugin icon images and the documentation URLs.
+(2017/04/05) Updated the plugin icon images and the documentation URLs. Renamed the settings table CSS class and renamed / added some stylesheets. When plugin settings are missing, WPSSO will now load the default settings instead of an empty array.
 
 = 3.40.10-1 =
 
