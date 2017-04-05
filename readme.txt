@@ -369,7 +369,11 @@ Note that the production stage level can be incremented on occasion for simple t
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added an extra check for the 'get_term_meta' function (since wp v4.4) in the WpssoTerm use_meta_table() method.
+	* Renamed the 'table.sucom-setting' CSS class to 'table.sucom-settings'.
+	* Renamed the table-setting.min.css stylesheet to settings-table.min.css.
+	* Renamed the setting-pages.min.css stylesheet to settings-page.min.css.
+	* Added a new admin-page.min.css stylesheet.
 
 **Version 3.40.10-1 (2017/04/02)**
 
