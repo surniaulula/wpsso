@@ -359,13 +359,14 @@ Note that the production stage level can be incremented on occasion for simple t
 
 = Changelog / Release Notes =
 
-**Version 3.40.11-b1 (2017/04/05)**
+**Version 3.40.11-rc1 (2017/04/05)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Updated the plugin icon images and the documentation URLs.
 	* Added a check for web server variables before doing a redirect for FORCE_SSL, in case WP is being used from the command-line.
+	* To avoid compatibility issues, when the plugin settings are missing, WPSSO will now load the default settings instead of an empty array.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -958,7 +959,7 @@ Note that the production stage level can be incremented on occasion for simple t
 
 == Upgrade Notice ==
 
-= 3.40.11-b1 =
+= 3.40.11-rc1 =
 
 (2017/04/05) Updated the plugin icon images and the documentation URLs.
 
