@@ -175,7 +175,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function check_options( $options_name, &$opts = array(), $network = false, $activate = false ) {
 
-			if ( ! empty( $opts ) && is_array( $opts ) ) {	// just in case
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'checking options' );	// begin timer
+			}
+
+			if ( is_array( $opts ) && ! empty( $opts ) ) {	// just in case
 
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
@@ -332,10 +336,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'schema_type_for' => 'webpage',
 				) );
 
-				return $opts;
+			} else {	// $opts is not an array or empty
 
-			// $opts should be an array and not empty
-			} else {
 				if ( $opts === false ) {
 					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.',
 						'wpsso' ), $options_name );
@@ -354,14 +356,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 				if ( is_admin() ) {
 					if ( $network ) {
-						$url = $this->p->util->get_admin_url( 'network' );
+						$admin_url = $this->p->util->get_admin_url( 'network' );
 					} else {
-						$url = $this->p->util->get_admin_url( 'general' );
+						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
-					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
+					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
 				}
-				return $network ? $this->get_site_defaults() : $this->get_defaults();
+
+				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
 			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'checking options' );	// end timer
+			}
+
+			return $opts;
 		}
 
 		// sanitize and validate options

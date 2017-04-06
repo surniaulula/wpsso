@@ -2839,7 +2839,7 @@ msgid ""
 "the latest %4$s extension version</a> and install the ZIP file manually."
 msgstr ""
 
-#: lib/messages.php:974
+#: lib/messages.php:974 lib/register.php:200
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -3056,50 +3056,50 @@ msgctxt "image size label"
 msgid "Pinterest Rich Pin"
 msgstr ""
 
-#: lib/options.php:246
+#: lib/options.php:250
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:340
+#: lib/options.php:342
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:343
+#: lib/options.php:345
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:346
+#: lib/options.php:348
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:349
+#: lib/options.php:351
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:361
+#: lib/options.php:363
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:419
+#: lib/options.php:428
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:466
+#: lib/options.php:475
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:525
+#: lib/options.php:534
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
@@ -3253,12 +3253,6 @@ msgstr ""
 
 #: lib/register.php:194 lib/register.php:202
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
-msgstr ""
-
-#: lib/register.php:200
-msgid ""
-"You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
-"is outdated, unsupported, insecure</a> and may lack important features."
 msgstr ""
 
 #: lib/register.php:204
@@ -3940,13 +3934,13 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:289
+#: wpsso.php:303
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:293
+#: wpsso.php:307
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."

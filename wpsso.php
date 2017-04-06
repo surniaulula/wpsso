@@ -112,7 +112,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function init_widgets() {
 			$opts = get_option( WPSSO_OPTIONS_NAME );
 			if ( ! empty( $opts['plugin_widgets'] ) ) {
-				foreach ( $this->cf['plugin'] as $ext => $info ) {
+				foreach ( WpssoConfig::get_config( 'plugin' ) as $ext => $info ) {
 					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
 						foreach ( $info['lib']['widget'] as $id => $name ) {
 							$classname = apply_filters( $ext.'_load_lib', false, 'widget/'.$id );
@@ -147,16 +147,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 			}
 
-			// a following check_options() call will save the settings
+			// check_options() saves the settings
 			if ( ! is_array( $this->options ) ) {
 				if ( isset( $this->cf['opt']['defaults'] ) ) {	// just in case
 					$this->options = $this->cf['opt']['defaults'];
 				} else {
 					$this->options = array();
 				}
+				// reload from filtered defaults when all classes loaded
+				$this->options['options_reload_defaults'] = true;
 			}
 
 			if ( is_multisite() ) {
+
 				$this->site_options = get_site_option( WPSSO_SITE_OPTIONS_NAME );
 
 				// look for alternate site options name
@@ -170,13 +173,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 
-				// a following check_options() call will save the settings
+				// check_options() saves the settings
 				if ( ! is_array( $this->site_options ) ) {
 					if ( isset( $this->cf['opt']['site_defaults'] ) ) {	// just in case
 						$this->site_options = $this->cf['opt']['site_defaults'];
 					} else {
 						$this->site_options = array();
 					}
+					// reload from filtered defaults when all classes loaded
+					$this->site_options['options_reload_defaults'] = true;
 				}
 
 				// if multisite options are found, check for overwrite of site specific options
@@ -270,19 +275,28 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init objects action' );	// end timer
 			}
 
-			// check and upgrade options if necessary
-			if ( $this->debug->enabled ) {
-				$this->debug->log( 'checking options' );
+			/*
+			 * set_options() may have loaded the static defaults for new or missing options.
+			 * After all objects have been loaded, and all filter / action hooks registered, 
+			 * check to see if the options need to be reloaded from the filtered defaults.
+			 */
+			if ( isset( $this->options['options_reload_defaults'] ) && 
+				$this->options['options_reload_defaults'] === true ) {
+				$this->options = $this->opt->get_defaults();	// check_options() saves the settings
 			}
 			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, false, $activate );
 
 			if ( is_multisite() ) {
-				if ( $this->debug->enabled ) {
-					$this->debug->log( 'checking site_options' );
+				if ( isset( $this->options['options_reload_defaults'] ) && 
+					$this->options['options_reload_defaults'] === true ) {
+					$this->options = $this->opt->get_site_defaults();	// check_options() saves the settings
 				}
 				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, true, $activate );
 			}
 
+			/*
+			 * Issue reminder notices and disable some caching when the plugin's debug mode is enabled.
+			 */
 			if ( $this->debug->enabled ) {
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
