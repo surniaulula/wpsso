@@ -173,13 +173,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			} else return $defs;
 		}
 
-		public function check_options( $options_name, &$opts = array(), $network = false ) {
+		public function check_options( $options_name, &$opts = array(), $network = false, $activate = false ) {
 
 			if ( ! empty( $opts ) && is_array( $opts ) ) {	// just in case
 
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
+				$def_opts = null;
 
 				// check for a new plugin and/or extension version
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -187,8 +188,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 					$key = 'plugin_'.$ext.'_version';
-					if ( empty( $opts[$key] ) || version_compare( $opts[$key], $info['version'], '!=' ) ) {
+
+					if ( empty( $opts[$key] ) || 
+						version_compare( $opts[$key], $info['version'], '!=' ) ) {
+
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
+
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
 					}
@@ -196,9 +201,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				// check for an upgrade to the options array
-				if ( empty( $opts['options_version'] ) || 
+				if ( ! empty( $opts['options_version'] ) &&
 					$opts['options_version'] !== $this->p->cf['opt']['version'] ) {
-						$has_diff_options = true;
+
+					$has_diff_options = true;
 				}
 
 				// upgrade the options array if necessary (renamed or removed keys)
@@ -212,10 +218,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						require_once WPSSO_PLUGINDIR.'lib/upgrade.php';
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
-					$def_opts = $network ?
-						$this->get_site_defaults() :
-						$this->get_defaults();
-
+					if ( $def_opts === null ) {	// only get default options once
+						if ( $network ) {
+							$def_opts = $this->get_site_defaults();
+						} else {
+							$def_opts = $this->get_defaults();
+						}
+					}
 					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
 
@@ -230,8 +239,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					} elseif ( $has_diff_version && empty( $opts['plugin_'.$lca.'_tid'] ) ) {
-						$def_opts = $this->get_defaults();
+						if ( $def_opts === null ) {	// only get default options once
+							$def_opts = $this->get_defaults();
+						}
 						$adv_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.',
+							'wpsso' );
 						unset(
 							$adv_opts['plugin_preserve'],
 							$adv_opts['plugin_debug'],
@@ -239,12 +252,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$adv_opts['plugin_show_opts']
 						);
 						foreach ( $adv_opts as $idx => $def_val ) {
-							if ( $opts[$idx] === $def_val ) {
-								continue;
-							}
-							if ( is_admin() ) {
-								$this->p->notice->warn( sprintf( __( 'Non-standard value found for "%s" option - resetting to default value.',
-									'wpsso' ), $idx ) );
+							if ( isset( $opts[$idx] ) ) {
+								if ( $opts[$idx] === $def_val ) {
+									continue;
+								}
+								if ( is_admin() ) {
+									$this->p->notice->warn( sprintf( $warn_msg, $idx ) );
+								}
 							}
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
@@ -286,18 +300,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// save options and issue possibly issue reminders
 				if ( $has_diff_version || $has_diff_options ) {
 
-					$this->save_options( $options_name, $opts, $network, true );	// $has_diff = true
+					if ( $def_opts === null ) {	// only get default options once
+						if ( $network ) {
+							$def_opts = $this->get_site_defaults();
+						} else {
+							$def_opts = $this->get_defaults();
+						}
+					}
+
+					$opts = $this->sanitize( $opts, $def_opts, $network );
+					$this->save_options( $options_name, $opts, $network, $activate );
 
 					if ( is_admin() ) {
-						$def_opts = $network ? 
-							$this->get_site_defaults() :
-							$this->get_defaults();
-
 						if ( empty( $opts['plugin_filter_content'] ) ) {
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
 								true, 'notice-content-filters-disabled', true );
 						}
-
 						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
 							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' ) {
 							$this->p->admin->check_tmpl_head_attributes();
@@ -342,9 +360,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $url ) );
 				}
-				return $network ?	// return the default options
-					$this->get_site_defaults() :
-					$this->get_defaults();
+				return $network ? $this->get_site_defaults() : $this->get_defaults();
 			}
 		}
 
@@ -465,7 +481,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// save both options and site options
-		public function save_options( $options_name, &$opts, $network = false, $has_diff = false ) {
+		public function save_options( $options_name, &$opts, $network = false, $activate = false ) {
 
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -477,7 +493,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// save the old version string to compare
 			$prev_version = empty( $opts['options_version'] ) ?
-				0 : $opts['options_version'];
+				'' : $opts['options_version'];
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( isset( $info['version'] ) ) {
@@ -491,7 +507,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			// mark the new options as current
 			$opts['options_version'] = $this->p->cf['opt']['version'];
 
-			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
+			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network, $activate );
 
 			if ( $options_name == WPSSO_SITE_OPTIONS_NAME ) {
 				$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
@@ -500,7 +516,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $saved === true ) {
-				if ( $has_diff || $prev_version !== $opts['options_version'] ) {
+				// silently save options on activate
+				if ( ! $activate && $prev_version !== $opts['options_version'] ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'upgraded '.$options_name.' settings have been saved' );
 					}

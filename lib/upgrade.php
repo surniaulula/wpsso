@@ -139,16 +139,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
 			$lca = $this->p->cf['lca'];
-			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?
+			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	// just in case
 				0 : $opts['plugin_'.$lca.'_opt_version'];
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$this->p->util->rename_keys_by_ext( $opts, 
-					apply_filters( $lca.'_rename_options_keys',
+				$this->p->util->rename_opts_by_ext( $opts, 
+					apply_filters( $lca.'_rename_options_keys', 
 						self::$rename_options_keys ) );
 
-				if ( $prev_version && $prev_version <= 270 ) {
+				if ( $prev_version > 0 && $prev_version <= 270 ) {
 					foreach ( $opts as $key => $val ) {
 						if ( strpos( $key, 'inc_' ) === 0 ) {
 							$new_key = '';
@@ -160,37 +160,38 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 									$new_key = preg_replace( '/^inc_/', 'add_meta_property_', $key );
 									break;
 							}
-							if ( ! empty( $new_key ) )
+							if ( ! empty( $new_key ) ) {
 								$opts[$new_key] = $val;
+							}
 							unset( $opts[$key] );
 						}
 					}
 				}
 
-				if ( $prev_version && $prev_version <= 296 ) {
+				if ( $prev_version > 0 && $prev_version <= 296 ) {
 					if ( empty( $opts['plugin_min_shorten'] ) || 
 						$opts['plugin_min_shorten'] < 22 ) 
 							$opts['plugin_min_shorten'] = 22;
 				}
 
-				if ( $prev_version && $prev_version <= 373 ) {
+				if ( $prev_version > 0 && $prev_version <= 373 ) {
 					if ( ! empty( $opts['plugin_head_attr_filter_name'] ) &&
 						$opts['plugin_head_attr_filter_name'] === 'language_attributes' ) 
 							$opts['plugin_head_attr_filter_name'] = 'head_attributes';
 				}
 
-				if ( $prev_version && $prev_version <= 453 ) {
+				if ( $prev_version > 0 && $prev_version <= 453 ) {
 					$opts['add_meta_property_og:image:secure_url'] = 1;
 					$opts['add_meta_property_og:video:secure_url'] = 1;
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
-				$this->p->util->rename_keys_by_ext( $opts,
+				$this->p->util->rename_opts_by_ext( $opts,
 					apply_filters( $lca.'_rename_site_options_keys',
 						self::$rename_site_options_keys ) );
 			}
 
-			if ( $prev_version && $prev_version <= 342 ) {
+			if ( $prev_version > 0 && $prev_version <= 342 ) {
 				if ( isset( $opts['plugin_file_cache_hrs'] ) ) {
 					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * 3600;
 					unset( $opts['plugin_file_cache_hrs'] );

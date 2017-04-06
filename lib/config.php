@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'setup_cache_exp' => 86400,	// 1 day
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.11-1',	// plugin version
+					'version' => '3.40.12-dev1',	// plugin version
 					'opt_version' => '512',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -450,6 +450,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'opt' => array(						// options
 				'defaults' => array(
+					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
 					'site_name' => '',			// (localized)
 					'site_desc' => '',			// (localized)
@@ -857,6 +858,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_enabled' => 1,
 				),	// end of defaults
 				'site_defaults' => array(
+					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
 					/*
 					 * Advanced Settings

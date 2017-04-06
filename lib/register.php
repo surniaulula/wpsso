@@ -83,35 +83,15 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config();				// apply filters and define the $cf['*'] array
-			$this->p->set_options();			// read (or create) the options and site_options
-			$this->p->set_objects( true );			// set the class objects ( $activate = true )
-			$this->p->util->clear_all_cache( true );	// clear any existing cache entries ( $clear_ext = true )
+			$this->p->set_config( true );			// apply filters and define $cf['*'] array ( $activate = true )
+			$this->p->set_options( true );			// read / create options and site_options ( $activate = true )
+			$this->p->set_objects( true );			// load all the class objects ( $activate = true )
+			$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_ext = true )
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
-
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
 			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
-
-			if ( ! is_array( $this->p->options ) || empty( $this->p->options ) ||
-				( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) ) ) {
-
-				$this->p->options = $this->p->opt->get_defaults();
-				unset( $this->p->options['options_filtered'] );	// just in case
-
-				delete_option( constant( 'WPSSO_OPTIONS_NAME' ) );
-				add_option( constant( 'WPSSO_OPTIONS_NAME' ), $this->p->options, null, 'yes' );	// autoload = yes
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'default options have been added to the database' );
-				}
-
-				if ( defined( 'WPSSO_RESET_ON_ACTIVATE' ) && constant( 'WPSSO_RESET_ON_ACTIVATE' ) ) {
-					$this->p->notice->warn( 'WPSSO_RESET_ON_ACTIVATE constant is true &ndash; 
-						plugin options have been reset to their default values.' );
-				}
-			}
 		}
 
 		private function deactivate_plugin() {

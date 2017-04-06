@@ -1954,23 +1954,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
 		}
 
-		public function rename_keys_by_ext( &$opts, $options_keys ) {
+		public function rename_opts_by_ext( &$opts, $options_keys ) {
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( isset( $options_keys[$ext] ) && 
-					is_array( $options_keys[$ext] ) && 
-						isset( $info['opt_version'] ) ) {
 
-					$opts_version = empty( $opts['plugin_'.$ext.'_opt_version'] ) ?
-						0 : $opts['plugin_'.$ext.'_opt_version'];
+				if ( ! isset( $options_keys[$ext] ) || is_array( $options_keys[$ext] ) ) {
+					continue;
+				} elseif ( ! isset( $info['opt_version'] ) ) {	// just in case
+					continue;
+				} 
+				
+				$opt_version = empty( $opts['plugin_'.$ext.'_opt_version'] ) ?
+					0 : $opts['plugin_'.$ext.'_opt_version'];
 
-					foreach ( $options_keys[$ext] as $version => $keys ) {
-						if ( is_numeric( $version ) && 
-							$opts_version <= $version && 
-								is_array( $keys ) ) {
+				foreach ( $options_keys[$ext] as $max_version => $keys ) {
+					if ( is_numeric( $max_version ) && $opt_version > 0 &&
+						$opt_version <= $max_version && is_array( $keys ) ) {
 
-							SucomUtil::rename_keys( $opts, $keys, true );	// $key_mods = true
-							$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
-						}
+						SucomUtil::rename_keys( $opts, $keys, true );	// $modifiers = true
+
+						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
 					}
 				}
 			}
