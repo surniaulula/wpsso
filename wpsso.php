@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7.3
- * Version: 3.40.12-dev1
+ * Version: 3.40.12-dev2
  * 
  * Version Numbering Scheme: {major}.{minor}.{bugfix}-{stage}{level}
  *
@@ -218,6 +218,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		// called by activate_plugin() as well
 		public function set_objects( $activate = false ) {
 
+			$network = is_multisite() ? true : false;
+
 			$this->check = new WpssoCheck( $this );
 			$this->is_avail = $this->check->get_avail();		// uses $this->options in checks
 
@@ -284,14 +286,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->options['options_reload_defaults'] === true ) {
 				$this->options = $this->opt->get_defaults();	// check_options() saves the settings
 			}
-			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, false, $activate );
+			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME,
+				$this->options, $network, $activate );
 
-			if ( is_multisite() ) {
+			if ( $network ) {
 				if ( isset( $this->options['options_reload_defaults'] ) && 
 					$this->options['options_reload_defaults'] === true ) {
 					$this->options = $this->opt->get_site_defaults();	// check_options() saves the settings
 				}
-				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, true, $activate );
+				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME,
+					$this->site_options, $network, $activate );
 			}
 
 			/*
@@ -318,10 +322,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		// runs at init priority 11 by default
 		public function init_shortcodes() {
 			if ( ! empty( $this->options['plugin_shortcodes'] ) ) {
-				foreach ( $this->cf['plugin'] as $lca => $info ) {
+				foreach ( WpssoConfig::get_config( 'plugin' ) as $ext => $info ) {
 					if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
 						foreach ( $info['lib']['shortcode'] as $id => $name ) {
-							$classname = apply_filters( $lca.'_load_lib', false, 'shortcode/'.$id );
+							$classname = apply_filters( $ext.'_load_lib', false, 'shortcode/'.$id );
 							if ( $classname !== false && class_exists( $classname ) ) {
 								$this->sc[$id] = new $classname( $this );
 							}
@@ -376,7 +380,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		// only runs when debug is enabled
 		public function override_textdomain_mofile( $wp_mofile, $domain ) {
 			if ( strpos( $domain, 'wpsso' ) === 0 ) {	// optimize
-				foreach ( $this->cf['plugin'] as $ext => $info ) {
+				foreach ( WpssoConfig::get_config( 'plugin' ) as $ext => $info ) {
 					if ( $info['slug'] === $domain ) {
 						$constant_name = strtoupper( $ext ).'_PLUGINDIR';
 						if ( defined( $constant_name ) && $plugin_dir = constant( $constant_name ) ) {
@@ -401,6 +405,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		// only runs when debug is enabled
 		public function show_config() { 
+
 			if ( ! $this->debug->enabled ) {	// just in case
 				return;
 			}
@@ -408,6 +413,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			// show constants
 			$defined_constants = get_defined_constants( true );
 			$defined_constants['user']['WPSSO_NONCE'] = '********';
+
 			if ( is_multisite() ) {
 				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 
 					$defined_constants['user'] ), 'multisite constants' );
