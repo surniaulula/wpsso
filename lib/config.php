@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.40.12-dev2',	// plugin version
-					'opt_version' => '512',		// increment when changing default options
+					'opt_version' => '514',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -539,6 +539,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_author_fallback' => 0,
 					'og_title_sep' => '-',
 					'og_title_len' => 70,
+					'og_title_warn' => 40,
 					'og_desc_len' => 300,			// maximum length in characters (hard limit)
 					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook (soft limit)
 					'og_desc_hashtags' => 3,

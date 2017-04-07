@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 						$opts = $this->sanitize( $opts, $def_opts, $network );
 					}
-					$this->save_options( $options_name, $opts, $network, $activate );
+					$this->save_options( $options_name, $opts, $network, $has_diff_options );
 
 					if ( is_admin() ) {
 						if ( empty( $opts['plugin_filter_content'] ) ) {
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		// save both options and site options
-		public function save_options( $options_name, &$opts, $network = false, $activate = false ) {
+		public function save_options( $options_name, &$opts, $network = false, $has_diff_options = false ) {
 
 			// make sure we have something to work with
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -518,11 +518,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			// mark the new options array as current
-			$opts['options_version'] = $this->p->cf['opt']['version'];
-			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network, $activate );
+			$opts['options_version'] = $this->p->cf['opt']['version'];	// mark the new options array as current
 
-			if ( $options_name == WPSSO_SITE_OPTIONS_NAME ) {
+			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
+
+			if ( $network ) {
 				$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
 			} else {
 				$saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
@@ -530,7 +530,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $saved === true ) {
 				// silently save options on activate
-				if ( ! $has_new_options && $prev_version !== $opts['options_version'] ) {
+				if ( ! $has_new_options && ( $has_diff_options || $prev_version !== $opts['options_version'] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $options_name.' settings have been updated and saved' );
 					}
