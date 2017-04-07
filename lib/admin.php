@@ -779,13 +779,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// plugin / extension
 					if ( apply_filters( $lca.'_newer_version_available',
 						version_compare( $installed_version, $stable_version, '<' ),
-							$ext, $installed_version, $stable_version, $latest_version ) )
-								$installed_style = 'style="background-color:#f00;"';	// red
+							$ext, $installed_version, $stable_version, $latest_version ) ) {
+						$installed_style = 'style="background-color:#f00;"';	// red
 					// version is current but not stable (alpha characters found in version string)
-					elseif ( preg_match( '/[a-z]/', $installed_version ) )
+					} elseif ( preg_match( '/[a-z]/', $installed_version ) ) {
 						$installed_style = 'style="background-color:#ff0;"';	// yellow
 					// version is current
-					else $installed_style = 'style="background-color:#0f0;"';	// green
+					} else {
+						$installed_style = 'style="background-color:#0f0;"';	// green
+					}
 				}
 
 				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
@@ -1425,9 +1427,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->is_avail['util']['um'] &&
 					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
 					$min_version = WpssoConfig::$cf['um']['min_version'];
-					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $min_version, '<' ) )
+					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
+					}
 				} else {
 					if ( ! function_exists( 'get_plugins' ) ) {
 						require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';

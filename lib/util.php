@@ -211,8 +211,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
 
 						global $wp_version;
-						if ( ! version_compare( $wp_version, 3.9, '<' ) )
+						if ( version_compare( $wp_version, 3.9, '>=' ) ) {
 							$size_info['crop'] = array( $size_info['crop_x'], $size_info['crop_y'] );
+						}
 					}
 
 					// allow custom function hooks to make changes
@@ -1002,13 +1003,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
 					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== null &&
-						version_compare( $ts_version, $protect, '==' ) )
-							$protect = true;
-					else $protect = false;
-				} else $protect = true;	// just in case
+						version_compare( $ts_version, $protect, '==' ) ) {
+						$protect = true;
+					} else {
+						$protect = false;
+					}
+				} else {
+					$protect = true;	// just in case
+				}
 			}
-			if ( ! empty( $version ) )
+			if ( ! empty( $version ) ) {
 				self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
+			}
 			self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
 		}
 
@@ -1017,13 +1023,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$has_changed = false;
 			$ts = get_option( WPSSO_TS_NAME, array() );
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
-				if ( empty( $info['version'] ) )
+				if ( empty( $info['version'] ) ) {
 					continue;
+				}
 				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
 					if ( empty( $ts[$lca.'_'.$type.'_time'] ) ||
 						( $type === 'update' && ( empty( $ts[$lca.'_'.$type.'_version'] ) || 
-							version_compare( $ts[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) )
-								$has_changed = self::save_time( $lca, $info['version'], $type );
+							version_compare( $ts[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) ) {
+						$has_changed = self::save_time( $lca, $info['version'], $type );
+					}
 				}
 			}
 			return $has_changed === false ?

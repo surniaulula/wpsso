@@ -469,9 +469,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function can_dismiss() {
 			global $wp_version;
-			if ( version_compare( $wp_version, 4.2, '>=' ) )
+			if ( version_compare( $wp_version, 4.2, '>=' ) ) {
 				return true;
-			else return false;
+			} else {
+				return false;
+			}
 		}
 
 		private function &get_user_ids() {
