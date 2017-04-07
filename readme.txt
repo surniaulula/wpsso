@@ -348,14 +348,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Version Numbering =
 
-Version components: `{major}.{minor}.{bugfix}-{stage}{level}`
+Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
-* {major} = Major code changes / re-writes or significant feature changes.
-* {minor} = New features / options were added or improved.
-* {bugfix} = Bugfixes or minor improvements.
-* {stage}{level} = dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate) &lt; # (production).
-
-Note that the production stage level can be incremented on occasion for simple text revisions and/or translation updates. See [PHP's version_compare()](http://php.net/manual/en/function.version-compare.php) documentation for additional information on "PHP-standardized" version numbering.
+* {major} = Major structural code changes / re-writes or incompatible API changes.
+* {minor} = New functionality was added or improved in a backwards-compatible manner.
+* {bugfix} = Backwards-compatible bug fixes or small improvements.
+* {stage}.{level} = Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
 
 = Changelog / Release Notes =
 
