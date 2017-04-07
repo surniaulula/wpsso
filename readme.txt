@@ -346,7 +346,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version Numbering Scheme =
+= Version Numbering =
 
 Version components: `{major}.{minor}.{bugfix}-{stage}{level}`
 
@@ -365,7 +365,7 @@ Note that the production stage level can be incremented on occasion for simple t
 	* None
 * *Improvements*
 	* Optimized the creation of missing settings and/or new settings during the activation process.
-	* Updated the "Maximum Title Length" option to include a warning soft limit.
+	* Updated the "Maximum Title Length" option to include a warning soft limit (40 characters by default).
 * *Bugfixes*
 	* None
 * *Developer Notes*
