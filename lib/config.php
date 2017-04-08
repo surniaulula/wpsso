@@ -1065,11 +1065,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stable' => 'Stable / Production',
 				),
 				'version_regex' => array(
-					'dev' => '/^[0-9\.\-]+(dev|a|alpha|b|beta|rc)?[0-9\.\+]+$/',
-					'alpha' => '/^[0-9\.\-]+(a|alpha|b|beta|rc)?[0-9\.\+]+$/',
-					'beta' => '/^[0-9\.\-]+(b|beta|rc)?[0-9\.\+]+$/',
-					'rc' => '/^[0-9\.\-]+(rc)?[0-9\.\+]+$/',
-					'stable' => '/^[0-9\.\-\+]+$/',
+					'dev' => '/^[0-9][0-9\.\-]+(dev|a|alpha|b|beta|rc)?[0-9\.\+]+$/',
+					'alpha' => '/^[0-9][0-9\.\-]+(a|alpha|b|beta|rc)?[0-9\.\+]+$/',
+					'beta' => '/^[0-9][0-9\.\-]+(b|beta|rc)?[0-9\.\+]+$/',
+					'rc' => '/^[0-9][0-9\.\-]+(rc)?[0-9\.\+]+$/',
+					'stable' => '/^[0-9][0-9\.\-\+]+$/',
 				),
 			),
 			'wp' => array(				// wordpress
