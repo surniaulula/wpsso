@@ -63,8 +63,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				}
 
-				// provide plugin data to thickbox
-				add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
+		 		// provide plugin data for external extensions
+				if ( empty( $this->p->is_avail['util']['um'] ) ) {
+					add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
+				}
 			}
 		}
 
@@ -344,11 +346,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
-		/*
-		 * Provide plugin data for extensions that are not hosted on wordpress.org.
-		 */
 		public function inject_plugin_data( $result, $action = null, $args = null ) {
-			if ( is_object( $result ) ) {	// don't overwrite data from the update manager
+			if ( is_object( $result ) ) {	// just in case
 				return $result;
 			} elseif ( $action !== 'plugin_information' || ! isset( $args->slug ) ) {
 				return $result;
@@ -536,8 +535,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
 					switch ( $action_name ) {
 						case 'check_for_updates':
-							$info = $this->p->cf['plugin'][$lca];
-							$um_info = $this->p->cf['plugin'][$lca.'um'];
+							$info = $this->p->cf['plugin']['wpsso'];
+							$um_info = $this->p->cf['plugin']['wpssoum'];
 							if ( $this->p->is_avail['util']['um'] ) {
 								// refresh the readme for all extensions
 								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
