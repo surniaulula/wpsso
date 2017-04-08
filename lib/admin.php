@@ -63,7 +63,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				}
 
-		 		// provide plugin data for external extensions
+		 		/*
+				 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
+				 * Skip if the update manager extension is active, since it provides more complete 
+				 * plugin data than what's available from the readme.
+				 */
 				if ( empty( $this->p->is_avail['util']['um'] ) ) {
 					add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
 				}
@@ -346,34 +350,56 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
+		/*
+		 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
+		 */
 		public function inject_plugin_data( $result, $action = null, $args = null ) {
-			if ( is_object( $result ) ) {	// just in case
+
+			// check for returned values from previous filters
+			if ( is_object( $result ) ) {
 				return $result;
+			// only provide plugin data for the thickbox installer
 			} elseif ( $action !== 'plugin_information' || ! isset( $args->slug ) ) {
 				return $result;
-			} elseif ( empty( $this->p->cf['*']['slug'][$args->slug] ) ) {	// lowercase acronym
+			// check that the plugin slug is ours
+			} elseif ( empty( $this->p->cf['*']['slug'][$args->slug] ) ) {
 				return $result;
+			} else {
+				$ext = $this->p->cf['*']['slug'][$args->slug];
 			}
-			$ext = $this->p->cf['*']['slug'][$args->slug];
-			if ( ! isset( $this->p->cf['plugin'][$ext] ) ) {	// just in case
+
+			// check if we have a config for that slug
+			if ( ! isset( $this->p->cf['plugin'][$ext] ) ) {
 				return $result;
+			} else {
+				$info = $this->p->cf['plugin'][$ext];
 			}
-			$info = $this->p->cf['plugin'][$ext];
+
+			// skip if the plugin is hosted on wordpress.org
 			if ( ! isset( $info['url']['home'] ) || 
-				strpos( $info['url']['home'], 'wordpress.org/' ) !== false ) {	// skip wp hosted
+				strpos( $info['url']['home'], 'wordpress.org/' ) !== false ) {
 				return $result;
 			}
+
+			// get plugin data from the plugin readme
 			$plugin_data = $this->get_plugin_data( $ext );
-			if ( ! empty( $plugin_data ) ) {
-				return $plugin_data;
+			if ( empty( $plugin_data ) ) {
+				return $result;
 			}
-			return $result;
+
+			return $plugin_data;
 		}
 
+		/*
+		 * Get the plugin readme and cache on disk. Convert the readme array to a plugin data object.
+		 */
 		public function get_plugin_data( $ext ) {
 			$data = new StdClass;
 			$info = $this->p->cf['plugin'][$ext];
 			$readme = $this->get_readme_info( $ext, true );	// $read_cache = true
+			if ( empty( $readme ) ) {
+				return array();
+			}
 			foreach ( array(
 				// readme array => plugin object
 				'plugin_name' => 'name',
@@ -429,8 +455,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $data;
 		}
 
-		// this method receives only a partial options array, so re-create a full one
-		// wordpress handles the actual saving of the options
+		/*
+		 * This method receives only a partial options array, so re-create a full one.
+		 * WordPress handles the actual saving of the options to the database table.
+		 */
 		public function registered_setting_sanitation( $opts ) {
 
 			$lca = $this->p->cf['lca'];
@@ -1745,7 +1773,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( ! $read_cache ) {
 						$this->p->cache->clear( $readme_url );
 					}
-					// return the readme and save as a cache file
+					// get the readme and save it to the disk cache
 					$content = $this->p->cache->get( $readme_url, 'raw', 'file', $cache_exp );
 					if ( empty( $content ) ) {
 						$use_remote = false;
