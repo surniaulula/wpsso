@@ -149,14 +149,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_column_content( $value, $column_name, $term_id ) {
 			$lca = $this->p->cf['lca'];
-			$value = '';
 			if ( ! empty( $term_id ) ) {	// just in case
 				$col_idx = str_replace( $lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = (string) self::get_term_meta( $term_id, $col_info['meta_key'], true );	// $single = true
-						if ( $value === 'none' )
+						if ( $value === 'none' ) {
 							$value = '';
+						}
 					}
 				}
 			}

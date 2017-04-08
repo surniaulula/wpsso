@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso/',
+						'about' => 'https://wordpress.org/plugins/wpsso/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
 						// github
@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-am/',
+						'about' => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
 						// github
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
+						'about' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
 						// github
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-organization/',
+						'about' => 'https://wordpress.org/plugins/wpsso-organization/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
 						// github
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-plm/',
+						'about' => 'https://wordpress.org/plugins/wpsso-plm/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
 						// github
@@ -258,8 +258,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'short' => 'WPSSO RAR',		// short plugin name
 					'name' => 'WPSSO Ratings and Reviews (WPSSO RAR)',
 					'desc' => 'WPSSO extension to add ratings and reviews for WordPress comments, with aggregate rating meta tags and (optional) Schema Review markup.',
-					'slug' => 'wpsso-reviews-and-ratings',
-					'base' => 'wpsso-reviews-and-ratings/wpsso-reviews-and-ratings.php',
+					'slug' => 'wpsso-ratings-and-reviews',
+					'base' => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',
 					'img' => array(
 						'icon_small' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
@@ -267,13 +267,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress.org
-						'download' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
+						'about' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
 						// wpsso
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/',
@@ -295,7 +294,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress.org
-						'download' => 'https://wordpress.org/plugins/wpsso-rrssb/',
+						'about' => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
 						// github
@@ -323,7 +322,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-ssb/',
+						'about' => 'https://wordpress.org/plugins/wpsso-ssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ssb/reviews/?rate=5#new-post',
 						// github
@@ -351,13 +350,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
+						'about' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
 						// wpsso
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-strip-schema-microdata/',
@@ -379,13 +377,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
+						'about' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
 						// wpsso
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/',
@@ -407,13 +404,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// wordpress
-						'download' => 'https://wordpress.org/plugins/wpsso-user-locale/',
+						'about' => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
 						// wpsso
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-user-locale/',
@@ -437,7 +433,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// github
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
 						// wpsso
-						'download' => 'https://wpsso.com/extend/plugins/wpsso-um/',
+						'about' => 'https://wpsso.com/extend/plugins/wpsso-um/',
 						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
@@ -971,6 +967,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'min_version' => '3.7',		// hard limit - deactivate the plugin when activating
 				'rec_version' => '4.7.3',	// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
+				'tb_iframe' => array(	// thickbox iframe
+					'width' => 600,
+					'height' => 550,
+				),
 				'cm_names' => array(
 					'aim' => 'AIM',
 					'jabber' => 'Google Talk',

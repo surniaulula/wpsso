@@ -205,19 +205,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function show_column_content( $column_name, $post_id ) {
-			echo $this->get_column_content( $column_name, $post_id );
+			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
-		public function get_column_content( $column_name, $post_id ) {
+		public function get_column_content( $value, $column_name, $post_id ) {
 			$lca = $this->p->cf['lca'];
-			$value = '';
 			if ( ! empty( $post_id ) ) {	// just in case
 				$col_idx = str_replace( $lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = (string) get_post_meta( $post_id, $col_info['meta_key'], true );	// $single = true
-						if ( $value === 'none' )
+						if ( $value === 'none' ) {
 							$value = '';
+						}
 					}
 				}
 			}

@@ -17,8 +17,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 		}
 
 		public function get( $idx = false, $info = array() ) {
@@ -182,8 +184,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						case 'tooltip-site_place_id':
 							if ( isset( $this->p->cf['plugin']['wpssoplm'] ) ) {
-								$info = $this->p->cf['plugin']['wpssoplm'];
-								$text = sprintf( __( 'Select an optional Place / Location address for this Organization (requires the %s extension).', 'wpsso' ), '<a href="'.$info['url']['download'].'" target="_blank">'.$info['name'].'</a>' );
+								$plm_info = $this->p->cf['plugin']['wpssoplm'];
+								$text = sprintf( __( 'Select an optional Place / Location address for this Organization (requires the %s extension).', 'wpsso' ), '<a href="'.$plm_info['url']['about'].'" target="_blank">'.$plm_info['name'].'</a>' );
 							}
 							break;
 					}
@@ -960,15 +962,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the <a href="%1$s">Extension Plugins and Pro Licenses</a> settings page, but the %2$s plugin is not active.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ), $um_info['name'] ).'</b> ';
 
 						if ( $idx === 'notice-um-extension-required' ) {
-							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><ol><li><b>'.sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).', 'wpsso' ), $um_info['url']['latest'], $um_info['name'] ).'</b></li><li><b>'.sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.', 'wpsso' ), $wp_upload_url ).'</b></li></ol>';
-						} else $text .= '</p>';
-
-						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_info['name'] ).' '.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_info['url']['download'], $um_info['name'] ).'</p>';
+							$text .= sprintf( __( 'This Free plugin is required to update and enable the %s plugin and its Pro extensions.',
+								'wpsso' ), $info['name_pro'] ).'</p><ol><li><b>'.
+							sprintf( __( 'Download the Free <a href="%1$s">%2$s plugin archive</a> (ZIP).',
+								'wpsso' ), $um_info['url']['latest'], $um_info['name'] ).'</b></li><li><b>'.
+							sprintf( __( 'Then <a href="%s">upload and activate the plugin</a> on the WordPress plugin upload page.',
+								'wpsso' ), $wp_upload_url ).'</b></li></ol>';
+						} else {
+							$text .= '</p>';
+						}
+						$text .= '<p>'.sprintf( __( 'Once the %s extension has been activated, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_info['name'] ).' '.sprintf( __( 'Read more <a href="%1$s" target="_blank">about the %2$s extension plugin</a>.', 'wpsso' ), $um_info['url']['about'], $um_info['name'] ).'</p>';
 						break;
 					case 'notice-um-version-required':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$um_version = isset( $um_info['version'] ) ? $um_info['version'] : 'unknown';
-						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['min_version'], $um_version ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu']['label'], $um_info['url']['download'], $um_info['short'] );
+						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $this->p->cf['plugin']['wpsso']['version'], $um_info['short'], $info['min_version'], $um_version ).' '.sprintf( __( 'Use the <em>%1$s</em> button from any %2$s settings page to retrieve the latest update information, or <a href="%3$s" target="_blank">download the latest %4$s extension version</a> and install the ZIP file manually.', 'wpsso' ), _x( 'Check for Pro Update(s)', 'submit button', 'wpsso' ), $this->p->cf['menu']['label'], $um_info['url']['about'], $um_info['short'] );
 						break;
 					case 'notice-recommend-version':
 						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info['app_label'], $info['app_version'], $info['version_url'] ).' '.sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info['app_label'], $info['rec_version'] );

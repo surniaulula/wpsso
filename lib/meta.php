@@ -679,6 +679,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $headers;
 		}
 
+		public function get_column_content( $value, $column_name, $id ) {
+			return $this->must_be_extended( __METHOD__, $value );
+		}
+
 		public function update_sortable_meta( $obj_id, $col_idx, $content ) { 
 			return $this->must_be_extended( __METHOD__ );
 		}

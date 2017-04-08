@@ -307,7 +307,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Save options and show reminders.
 				 */
 				if ( $has_diff_version || $has_diff_options ) {
-
 					if ( ! $has_new_options ) {
 						if ( $def_opts === null ) {	// only get default options once
 							if ( $network ) {
@@ -319,17 +318,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opts = $this->sanitize( $opts, $def_opts, $network );
 					}
 					$this->save_options( $options_name, $opts, $network, $has_diff_options );
-
-					if ( is_admin() ) {
-						if ( empty( $opts['plugin_filter_content'] ) ) {
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), 
-								true, 'notice-content-filters-disabled', true );
-						}
-						if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) &&
-							$this->p->options['plugin_head_attr_filter_name'] === 'head_attributes' ) {
-							$this->p->admin->check_tmpl_head_attributes();
-						}
-					}
 				}
 
 				if ( $this->p->debug->enabled ) {
