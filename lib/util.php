@@ -497,29 +497,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 
 			$lca = $this->p->cf['lca'];
+			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics',
 				$this->p->options['plugin_topics_cache_exp'] );
 
-			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+			}
 
 			if ( $cache_exp > 0 ) {
 				$topics = get_transient( $cache_id );
 				if ( is_array( $topics ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'article topics retrieved from transient '.$cache_id );
+					}
 					return $topics;
 				}
 			}
 
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'error reading %s article topic list file' );
-				if ( is_admin() )
+				}
+				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Error reading %s article topic list file.', 
 						'wpsso' ), WPSSO_TOPICS_LIST ) );
+				}
 				return $topics;
 			}
 
@@ -1659,85 +1663,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $content;
-		}
-
-		public function get_readme_info( $ext, $read_cache = true ) {
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'ext' => $ext,
-					'read_cache' => $read_cache,
-				) );
-			}
-
-			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
-				return array();
-			}
-
-			$lca = $this->p->cf['lca'];
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt',
-				$this->p->cf['readme_cache_exp'] );
-			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ?
-				$this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
-			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt';
-			$get_remote = strpos( $file_url, '://' ) ? true : false;
-			$readme_info = array();
-
-			$cache_salt = __METHOD__.'(url:'.$file_url.'_path:'.$file_path.')';
-			$cache_id = $ext.'_'.md5( $cache_salt );
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'transient cache salt '.$cache_salt );
-			}
-
-			if ( $cache_exp > 0 ) {
-				$readme_info = $read_cache ? get_transient( $cache_id ) : false;
-				if ( is_array( $readme_info ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
-					}
-					return $readme_info;	// stop here
-				}
-				// get remote readme.txt file
-				if ( $get_remote ) {
-					if ( ! $read_cache ) {
-						$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
-					}
-					$content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp );
-					if ( empty( $content ) ) {
-						$get_remote = false;
-					}
-				} else {
-					$content = false;
-				}
-			} else {
-				$get_remote = false;
-			}
-
-			// fallback to local readme.txt file
-			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file_path ) );
-				fclose( $fh );
-			}
-
-			if ( ! empty( $content ) ) {
-				$parser = new SuextParseReadme( $this->p->debug );
-				$readme_info = $parser->parse_readme_contents( $content );
-				// remove possibly inaccurate information from local file
-				if ( is_array( $readme_info ) && $get_remote === false ) {
-					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key )
-						unset ( $readme_info[$key] );
-				}
-			}
-
-			// save the parsed readme to the transient cache
-			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $readme_info, $cache_exp );
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.' ('.$cache_exp.' seconds)');
-			}
-
-			return (array) $readme_info;	// just in case
 		}
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {

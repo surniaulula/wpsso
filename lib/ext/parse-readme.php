@@ -290,19 +290,12 @@ class SuextParseReadme {
 			),
 			'ul' => array(),
 		);
-
 		$text = balanceTags( $text );
 		//$text = wp_kses( $text, $allowed );
-
 		return $text;
 	}
 
 	function code_trick( $text, $markdown ) {
-		/*
-		if ( $markdown )
-			$text = preg_replace_callback( '/(<pre><code>|<code>)(.*?)(<\/code><\/pre>|<\/code>)/s',
-				array( __CLASS__, 'decodeit' ), $text );
-		*/
 
 		$text = str_replace( array( "\r\n", "\r" ), "\n", $text );
 

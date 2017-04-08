@@ -134,6 +134,10 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 		margin:20px 20px 20px 0;
 		max-width:100%;
 	}
+	body#plugin-information #section-description img.plugin_icon {
+		margin-top:0;
+		max-width:33%;
+	}
 	body#plugin-information #section-other_notes h3 {
 		clear:none;
 		display:none;

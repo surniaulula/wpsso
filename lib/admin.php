@@ -62,14 +62,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'network_admin_edit_'.WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				}
-			}
 
+				// provide plugin data to thickbox
+				add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
+			}
 		}
 
 		public function load_network_menu_objects() {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-
+			}
 			$this->load_menu_objects( array( 'sitesubmenu' ) );
 		}
 
@@ -220,15 +222,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				array( &$this, 'registered_setting_sanitation' ) );
 		}
 
-		public static function set_readme_info( $read_cache = true ) {
-			$wpsso =& Wpsso::get_instance();
-			foreach ( array_keys( $wpsso->cf['plugin'] ) as $ext ) {
-				if ( empty( self::$readme[$ext] ) ) {
-					self::$readme[$ext] = $wpsso->util->get_readme_info( $ext, $read_cache );
-				}
-			}
-		}
-
 		protected function add_menu_page( $menu_slug ) {
 			global $wp_version;
 			$lca = $this->p->cf['lca'];
@@ -351,6 +344,92 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
+		/*
+		 * Provide plugin data for extensions that are not hosted on wordpress.org.
+		 */
+		public function inject_plugin_data( $result, $action = null, $args = null ) {
+			if ( is_object( $result ) ) {	// don't overwrite data from the update manager
+				return $result;
+			} elseif ( $action !== 'plugin_information' || ! isset( $args->slug ) ) {
+				return $result;
+			} elseif ( empty( $this->p->cf['*']['slug'][$args->slug] ) ) {	// lowercase acronym
+				return $result;
+			}
+			$ext = $this->p->cf['*']['slug'][$args->slug];
+			if ( ! isset( $this->p->cf['plugin'][$ext] ) ) {	// just in case
+				return $result;
+			}
+			$info = $this->p->cf['plugin'][$ext];
+			if ( ! isset( $info['url']['home'] ) || 
+				strpos( $info['url']['home'], 'wordpress.org/' ) !== false ) {	// skip wp hosted
+				return $result;
+			}
+			$plugin_data = $this->get_plugin_data( $ext );
+			if ( ! empty( $plugin_data ) ) {
+				return $plugin_data;
+			}
+			return $result;
+		}
+
+		public function get_plugin_data( $ext ) {
+			$data = new StdClass;
+			$info = $this->p->cf['plugin'][$ext];
+			$readme = $this->get_readme_info( $ext, true );	// $read_cache = true
+			foreach ( array(
+				// readme array => plugin object
+				'plugin_name' => 'name',
+				'plugin_slug' => 'slug',
+				'base' => 'plugin',
+				'stable_tag' => 'version',
+				'tested_up_to' => 'tested',
+				'requires_at_least' => 'requires',
+				'home' => 'homepage',
+				'latest' => 'download_link',
+				'author' => 'author',
+				'upgrade_notice' => 'upgrade_notice',
+				'downloaded' => 'downloaded',
+				'last_updated' => 'last_updated',
+				'sections' => 'sections',
+				'remaining_content' => 'other_notes',	// added to sections
+				'banners' => 'banners',
+			) as $key_name => $prop_name ) {
+				switch ( $key_name ) {
+					case 'base':
+						if ( ! empty( $info[$key_name] ) ) {
+							$data->$prop_name = $info[$key_name];
+						}
+						break;
+					case 'home':
+						if ( ! empty( $info['url']['purchase'] ) ) {	// check for purchase url first
+							$data->$prop_name = $info['url']['purchase'];
+							break;
+						}
+						// no break
+					case 'latest':
+						if ( ! empty( $info['url'][$key_name] ) ) {
+							$data->$prop_name = $info['url'][$key_name];
+						}
+						break;
+					case 'banners':
+						if ( ! empty( $info['img'][$key_name] ) ) {
+							$data->$prop_name = $info['img'][$key_name];	// array with low/high images
+						}
+						break;
+					case 'remaining_content':
+						if ( ! empty( $readme[$key_name] ) ) {
+							$data->sections[$prop_name] = $readme[$key_name];
+						}
+						break;
+					default:
+						if ( ! empty( $readme[$key_name] ) ) {
+							$data->$prop_name = $readme[$key_name];
+						}
+						break;
+				}
+			}
+			return $data;
+		}
+
 		// this method receives only a partial options array, so re-create a full one
 		// wordpress handles the actual saving of the options
 		public function registered_setting_sanitation( $opts ) {
@@ -459,14 +538,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'check_for_updates':
 							$info = $this->p->cf['plugin'][$lca];
 							$um_info = $this->p->cf['plugin'][$lca.'um'];
-
 							if ( $this->p->is_avail['util']['um'] ) {
-								WpssoAdmin::set_readme_info( false );	// $read_cache = false
+								// refresh the readme for all extensions
+								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+									$this->get_readme_info( $ext, false );	// $read_cache = false
+								}
 								$wpssoum =& WpssoUm::get_instance();
-								if ( isset( $wpssoum->update ) )
+								if ( isset( $wpssoum->update ) ) {	// just in case
 									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
-								else $this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
-							} else $this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) );
+								} else {
+									$this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
+								}
+							} else {
+								$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) );
+							}
 							break;
 
 						case 'clear_all_cache':
@@ -759,12 +844,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_version_info() {
 
 			$lca = $this->p->cf['lca'];
-			WpssoAdmin::set_readme_info();	// $read_cache = true
+
 			echo '<table class="sucom-settings '.$lca.' side version-info" style="table-layout:fixed;">';
 			echo '<colgroup><col style="width:60px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) )	// only active extensions
+
+				if ( empty( $info['version'] ) ) {	// only active extensions
 					continue;
+				}
 
 				$installed_version = $info['version'];	// static value from config
 				$installed_style = '';
@@ -772,15 +860,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_version = __( 'Not Available', 'wpsso' );	// default value
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
+				$readme_info = $this->get_readme_info( $ext, true );	// $read_cache = true
 
-				if ( ! empty( self::$readme[$ext]['stable_tag'] ) ) {
-					$stable_version = self::$readme[$ext]['stable_tag'];
+				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
-					if ( is_array( self::$readme[$ext]['upgrade_notice'] ) ) {
+					$stable_version = $readme_info['stable_tag'];
+
+					if ( is_array( $readme_info['upgrade_notice'] ) ) {
+
 						// hooked by the update manager to apply the version filter
 						$upgrade_notice = apply_filters( $lca.'_readme_upgrade_notices',
-							self::$readme[$ext]['upgrade_notice'], $ext );
+							$readme_info['upgrade_notice'], $ext );
+
 						reset( $upgrade_notice );
+
 						$latest_version = key( $upgrade_notice );
 						$latest_notice = $upgrade_notice[$latest_version];
 					}
@@ -1137,9 +1230,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$plugin_href = '';
 				$view_text = _x( 'Plugin Details', 'plugin action link', 'wpsso' );
 
-				if ( ! empty( $info['slug'] ) &&	// just in case
-					( $this->p->is_avail['util']['um'] || 
-						strpos( $info['url']['about'], 'wordpress.org' ) !== false ) ) {
+				if ( ! empty( $info['slug'] ) ) {
 
 					$plugin_href = add_query_arg( array(
 						'tab' => 'plugin-information',
@@ -1169,8 +1260,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$links[] = '<a href="'.$plugin_href.'" class="thickbox" tabindex="'.++$tabindex.'">'.$view_text.'</a>';
 
-				} elseif ( ! empty( $info['url']['about'] ) ) {
-					$links[] = '<a href="'.$info['url']['about'].'" target="_blank" tabindex="'.++$tabindex.'">'.
+				} elseif ( ! empty( $info['url']['home'] ) ) {
+					$links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
 						_x( 'Plugin Description', 'plugin action link', 'wpsso' ).'</a>';
 				}
 
@@ -1178,14 +1269,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$links = $this->add_plugin_action_links( $links, $info['base'], 'license-action-links', $tabindex );
 				}
 
-				if ( ! empty( $info['img']['icon_small'] ) ) {
-					$img_src = 'src="'.$info['img']['icon_small'].'"';
+				if ( ! empty( $info['img']['icons']['low'] ) ) {
+					$img_src = 'src="'.$info['img']['icons']['low'].'"';
 				} else {
 					$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 				}
 
-				if ( ! empty( $info['img']['icon_medium'] ) ) {
-					$img_src .= ' srcset="'.$info['img']['icon_medium'].' 256w"';
+				// add for higher dpi displays
+				if ( ! empty( $info['img']['icons']['high'] ) ) {
+					$img_src .= ' srcset="'.$info['img']['icons']['high'].' 256w"';
 				}
 
 				// logo image - skip the tabindex
@@ -1610,6 +1702,90 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		public function get_readme_info( $ext, $read_cache = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'ext' => $ext,
+					'read_cache' => $read_cache,
+				) );
+			}
+
+			$lca = $this->p->cf['lca'];
+			$readme_info = array();
+			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ?
+				$this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
+			$readme_file = defined( strtoupper( $ext ).'_PLUGINDIR' ) ?
+				constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt' : '';
+			$use_remote = strpos( $readme_url, '://' ) ? true : false;
+
+			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
+			$cache_id = $ext.'_'.md5( $cache_salt );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt',
+				$this->p->cf['readme_cache_exp'] );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+			}
+
+			if ( $cache_exp > 0 ) {
+				// check the transient cache, if reading the cache is allowed
+				$readme_info = $read_cache ? 
+					get_transient( $cache_id ) : false;
+
+				if ( is_array( $readme_info ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
+					}
+					return $readme_info;	// stop here
+				}
+
+				// get the remote readme
+				if ( $use_remote ) {
+					// clear the cache first if reading the cache is disabled
+					if ( ! $read_cache ) {
+						$this->p->cache->clear( $readme_url );
+					}
+					// return the readme and save as a cache file
+					$content = $this->p->cache->get( $readme_url, 'raw', 'file', $cache_exp );
+					if ( empty( $content ) ) {
+						$use_remote = false;
+					}
+				}
+			} else {
+				$use_remote = false;
+			}
+
+			// fallback to reading the local readme.txt file
+			if ( $use_remote === false && ! empty( $readme_file ) && $fh = @fopen( $readme_file, 'rb' ) ) {
+				$content = fread( $fh, filesize( $readme_file ) );
+				fclose( $fh );
+			}
+
+			if ( empty( $content ) ) {
+				$readme_info = array();	// save an empty array
+			} else {
+				$parser = new SuextParseReadme( $this->p->debug );
+				$readme_info = $parser->parse_readme_contents( $content );
+
+				// remove possibly inaccurate information from local file
+				if ( $use_remote === false && is_array( $readme_info ) ) {
+					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
+						unset ( $readme_info[$key] );
+					}
+				}
+			}
+
+			// save the parsed readme to the transient cache
+			if ( $cache_exp > 0 ) {
+				set_transient( $cache_id, $readme_info, $cache_exp );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.' ('.$cache_exp.' seconds)');
+				}
+			}
+
+			return (array) $readme_info;	// just in case
+		}
 	}
 }
 
