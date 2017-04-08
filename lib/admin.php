@@ -303,6 +303,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$ext = $this->p->cf['*']['base'][$plugin_base];
 			$info = $this->p->cf['plugin'][$ext];
+			$tabindex = is_integer( $tabindex ) ? $tabindex : false;	// just in case
 
 			foreach ( $links as $num => $val ) {
 				if ( strpos( $val, '>Edit<' ) !== false ) {
@@ -1211,9 +1212,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '</td></tr>'."\n";
 
 				if ( $network ) {
-					if ( ! empty( $info['update_auth'] ) ||
-						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-
+					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
 								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
@@ -1233,9 +1232,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
 					}
 				} else {
-					if ( ! empty( $info['update_auth'] ) ||
-						! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-
+					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
 							$qty_used = class_exists( 'SucomUpdate' ) ?
 								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
