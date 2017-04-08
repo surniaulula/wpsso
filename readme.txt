@@ -364,6 +364,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Optimized the creation of missing settings and/or new settings during the activation process.
 	* Updated the "Maximum Title Length" option to include a warning soft limit (40 characters by default).
+	* Improved the "Extension Plugins and Pro Licenses" page with additional links and better plugin details.
 * *Bugfixes*
 	* Fixed an empty return value for additional term and user column content.
 * *Developer Notes*
