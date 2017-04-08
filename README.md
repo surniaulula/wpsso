@@ -13,7 +13,7 @@
 
 <h2>Description</h2>
 
-<p align="center"><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" /></p><p></p>
+<p><img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" width="128" height="128" class="plugin_icon"></p>
 
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
