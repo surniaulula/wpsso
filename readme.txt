@@ -357,7 +357,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.12-dev3 (2017/04/08)**
+**Version 3.40.12-dev4 (2017/04/08)**
 
 * *New Features*
 	* None
@@ -969,7 +969,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.12-dev3 =
+= 3.40.12-dev4 =
 
 (2017/04/08) Optimized the creation of missing settings and/or new settings during the activation process. Updated the "Maximum Title Length" option to include a warning soft limit.
 
