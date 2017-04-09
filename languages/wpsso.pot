@@ -1009,36 +1009,36 @@ msgstr ""
 #: lib/config-gettext-extract.php:97
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add ratings and reviews for WordPress comments, with "
-"aggregate rating meta tags and (optional) Schema Review markup."
+"WPSSO extension to add CSS Twitter-style quoted text with a Tweet share link "
+"to post and page content (uses easily customized CSS)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:98
+msgctxt "plugin description"
+msgid ""
+"WPSSO extension to add ratings and reviews for WordPress comments, with "
+"Aggregate Rating meta tags and optional Schema Review markup."
+msgstr ""
+
+#: lib/config-gettext-extract.php:99
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
 "in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:99
+#: lib/config-gettext-extract.php:100
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, "
 "Local Business, Products, Recipes, Reviews + many more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:100
+#: lib/config-gettext-extract.php:101
 msgctxt "plugin description"
 msgid ""
 "WPSSO extension to add Social Sharing Buttons with support for hashtags, "
 "short URLs, bbPress, BuddyPress, WooCommerce, and much more."
-msgstr ""
-
-#: lib/config-gettext-extract.php:101
-msgctxt "plugin description"
-msgid ""
-"WPSSO extension to easily add Twitter-style quoted text &mdash; with a Tweet "
-"share link &mdash; in your post and page content."
 msgstr ""
 
 #: lib/config-gettext-extract.php:102

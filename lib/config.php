@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorar' => array(
 					'short' => 'WPSSO RAR',		// short plugin name
 					'name' => 'WPSSO Ratings and Reviews (WPSSO RAR)',
-					'desc' => 'WPSSO extension to add ratings and reviews for WordPress comments, with aggregate rating meta tags and (optional) Schema Review markup.',
+					'desc' => 'WPSSO extension to add ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.',
 					'slug' => 'wpsso-ratings-and-reviews',
 					'base' => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',
@@ -432,7 +432,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(
 					'short' => 'WPSSO TAQ',		// short plugin name
 					'name' => 'WPSSO Tweet a Quote (WPSSO TAQ)',
-					'desc' => 'WPSSO extension to easily add Twitter-style quoted text &mdash; with a Tweet share link &mdash; in your post and page content.',
+					'desc' => 'WPSSO extension to add CSS Twitter-style quoted text with a Tweet share link to post and page content (uses easily customized CSS).',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',
