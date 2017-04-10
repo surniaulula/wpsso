@@ -16,7 +16,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 == Description ==
 
-<img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" class="readme-plugin-icon">
+<img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
@@ -84,7 +84,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 </blockquote>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" class="readme-plugin-example">
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
 = Quick List of Features (Continued) =
 
@@ -146,7 +146,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" class="readme-plugin-example">
+<img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png">
 
 = Social Profiles for Google Search =
 
@@ -170,7 +170,7 @@ WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the fi
 * Yahoo IM
 * YouTube Channel URL
 
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png" class="readme-plugin-example">
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
 = Complete Social Meta Tags =
 
@@ -186,7 +186,7 @@ WordPress Social Sharing Optimization (WPSSO) detects and uses all images - asso
 
 WordPress Social Sharing Optimization (WPSSO) Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
 
-<img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" class="readme-plugin-example">
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
 
 **eCommerce Products**
 
