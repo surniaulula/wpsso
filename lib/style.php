@@ -69,7 +69,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 					}
 
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
-					add_thickbox();					// required for the plugin details box
+					add_thickbox();	// required for the plugin details box
 
 					// no break
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 						$this->p->debug->log( 'enqueuing styles for plugin install page' );
 					}
 
-					$this->thickbox_inline_styles( $hook_name );
+					$this->thickbox_inline_style( $hook_name );
 
 					break;	// stop here
 			}
@@ -123,24 +123,24 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			return $classes;
 		}
 
-		private function thickbox_inline_styles( $hook_name ) {
+		private function thickbox_inline_style( $hook_name ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 			echo '
 <style type="text/css">
 	body#plugin-information #section-description img {
-		float:left;
-		margin:20px 20px 20px 0;
 		max-width:100%;
 	}
 	body#plugin-information #section-description img.plugin_icon {
-		margin-top:0;
+		float:left;
+		margin:0 20px 20px 0;
 		max-width:33%;
 	}
 	body#plugin-information #section-other_notes h3 {
 		clear:none;
 		display:none;
+	}
 </style>';
 		}
 

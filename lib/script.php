@@ -55,14 +55,14 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			// don't load our javascript where we don't need it
 			switch ( $hook_name ) {
 
-				// license settings pages include a "view plugin details" feature
+				case 'plugin-install.php':	// add custom script js to fix install/update button
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 					}
 
-					wp_enqueue_script( 'plugin-install' );		// required for the plugin details box
+					$this->add_plugin_install_script( $hook_name );
 
 					// no break
 
@@ -117,6 +117,24 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			return array(
 				'choose_image' => __( 'Use Image', 'wpsso' ),
 			);
+		}
+
+		private function add_plugin_install_script( $hook_name ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
+
+			// fix the update/install button to load the href when clicked
+			$custom_script_js = '
+jQuery(document).ready(function(){
+	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
+		var href = jQuery(this).attr("href");
+		window.top.location.href = href;
+	});
+});';
+			wp_add_inline_script( 'plugin-install', $custom_script_js );
 		}
 	}
 }

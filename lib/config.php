@@ -17,9 +17,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',		// lowercase acronym
 			'readme_cache_exp' => 86400,	// 1 day
 			'setup_cache_exp' => 86400,	// 1 day
+			'install_hosts' => array(	// allow extensions to be installed from these hosts
+				'https://wpsso.com/extend/plugins/',
+			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.12',		// plugin version
+					'version' => '3.40.13-dev.1',		// plugin version
 					'opt_version' => '514',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -531,7 +534,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'support' => '',
 						'purchase' => '',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest.zip',
 					),
 				),
 			),
@@ -1044,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'min_version' => '1.5.11-1',	// minimum update manager version (hard limit)
+				'min_version' => '1.5.18',	// minimum update manager version (hard limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',
@@ -1069,7 +1072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'alpha' => '/^[0-9][0-9\.\-]+(a|alpha|b|beta|rc)?[0-9\.\+]+$/',
 					'beta' => '/^[0-9][0-9\.\-]+(b|beta|rc)?[0-9\.\+]+$/',
 					'rc' => '/^[0-9][0-9\.\-]+(rc)?[0-9\.\+]+$/',
-					'stable' => '/^[0-9][0-9\.\-\+]+$/',
+					'stable' => '/^[0-9][0-9\.\+\-]+$/',
 				),
 			),
 			'wp' => array(				// wordpress

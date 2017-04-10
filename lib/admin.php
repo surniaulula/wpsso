@@ -71,6 +71,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $this->p->is_avail['util']['um'] ) ) {
 					add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
 				}
+
+				add_filter( 'http_request_host_is_external', array( &$this, 'allow_install_hosts' ), 1000, 3 );
 			}
 		}
 
@@ -348,6 +350,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $links;
+		}
+
+		public function allow_install_hosts( $is_allowed, $ip, $url ) {
+			if ( ! $is_allowed ) {	// don't bother if already allowed
+				if ( isset( $this->p->cf['install_hosts'] ) ) {
+					foreach ( $this->p->cf['install_hosts'] as $host ) {
+						if ( strpos( $url, $host ) === 0 ) {
+							return true;
+						}
+					}
+				}
+			}
+			return $is_allowed;
 		}
 
 		/*
