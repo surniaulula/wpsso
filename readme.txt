@@ -16,7 +16,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 == Description ==
 
-<img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" width="128" height="128" class="readme-plugin-icon">
+<img src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png" class="readme-plugin-icon">
 
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
@@ -84,13 +84,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" 
-	width="100%" height="100%" alt="Example Twitter 'Player' Card." /></p>
-</div>
-
-<img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="128" height="128" class="readme-plugin-example">
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" class="readme-plugin-example">
 
 = Quick List of Features (Continued) =
 
