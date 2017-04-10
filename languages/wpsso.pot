@@ -2924,29 +2924,35 @@ msgstr ""
 
 #: lib/messages.php:996
 msgid ""
-"<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; "
-"allowing you to license the Pro version within seconds of your purchase."
+"<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
+"you to license the Pro version within seconds of your purchase."
 msgstr ""
 
 #: lib/messages.php:998
 msgid ""
-"<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; "
-"allowing you to update the Free plugin within seconds of your purchase."
+"<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
+"you to update the Free plugin within seconds of your purchase."
 msgstr ""
 
 #: lib/messages.php:1000
 msgid ""
-"Pro version licenses do not expire &mdash; there are no yearly or recurring "
-"fees for updates and support."
+"<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees "
+"for support and updates!"
 msgstr ""
 
 #: lib/messages.php:1003
 msgid ""
-"<strong>The development of %1$s is driven mostly by customer requests</"
-"strong> &mdash; we welcome your comments and suggestions!"
+"<strong>The development of %1$s is driven by user requests</strong> &mdash; "
+"we welcome your suggestions to improve the plugin and its extensions."
 msgstr ""
 
-#: lib/messages.php:1015
+#: lib/messages.php:1004
+msgid ""
+"<strong>A terrific rating is a great way to encourage us!</strong> &mdash; "
+"and it only takes a minute or less."
+msgstr ""
+
+#: lib/messages.php:1016
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."

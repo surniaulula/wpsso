@@ -993,14 +993,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'side-purchase':
 						$text = '<p>';
 						if ( $this->p->is_avail['aop'] ) {
-							$text .= sprintf( __( '<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; allowing you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
 						} else {
-							$text .= sprintf( __( '<strong>%s can be purchased quickly and easily via Paypal</strong> &mdash; allowing you to update the Free plugin within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to update the Free plugin within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
 						}
-						$text .= '</p><p>'.__( 'Pro version licenses do not expire &mdash; there are no yearly or recurring fees for updates and support.', 'wpsso' ).'</p>';
+						$text .= '</p><p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates!', 'wpsso' ).'</p>';
 						break;
 					case 'side-help-support':
-						$text = '<p>'.sprintf( __( '<strong>The development of %1$s is driven mostly by customer requests</strong> &mdash; we welcome your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
+						$text = '<p>'.sprintf( __( '<strong>The development of %1$s is driven by user requests</strong> &mdash; we welcome your suggestions to improve the plugin and its extensions.', 'wpsso' ), $info['short'] ).'</p>'.
+							'<p>'.sprintf( __( '<strong>A terrific rating is a great way to encourage us!</strong> &mdash; and it only takes a minute or less.', 'wpsso' ), $info['short'] ).' ;-)</p>';
 						break;
 					default:
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
