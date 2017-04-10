@@ -132,11 +132,18 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	body#plugin-information #section-description img {
 		max-width:100%;
 	}
-	body#plugin-information #section-description img.readme-plugin-icon {
+	body#plugin-information #section-description img.readme-icon {
 		float:left;
 		width:30%;
-		height:auto;
-		margin:0 20px 20px 0;
+		min-width:128px;
+		max-width:256px;
+		margin:0 30px 15px 0;
+	}
+	body#plugin-information #section-description img.readme-example {
+		width:100%;
+		min-width:256px;
+		max-width:1200px;
+		margin:30px 0 30px 0;
 	}
 	body#plugin-information #section-other_notes h3 {
 		clear:none;
