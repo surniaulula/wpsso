@@ -1202,9 +1202,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info['url']['review'] ) ) {
 					$links[] = '<strong>'.__( 'Want to say thank you?', 'wpsso' ).'</strong><br/>'.
 						'<a href="'.$info['url']['review'].'" target="_blank">'.
-						sprintf( __( 'Rate %1$s %2$s at WordPress.org', 'wpsso' ), 
-							$info['short'], '<span class="wpsso-rate-stars"></span>' ).'</a> '.
-								'<span class="wpsso-rate-heart dashicons-before dashicons-heart"></span>';
+						sprintf( __( 'Please rate %1$s %2$s at %3$s', 'wpsso' ), 
+							$info['short'], '<span class="wpsso-rate-stars"></span>', 'WP.org' ).'</a>';
 				}
 
 				if ( ! empty( $links ) ) {
