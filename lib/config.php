@@ -534,7 +534,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'support' => '',
 						'purchase' => '',
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest.zip',
+						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),
 				),
 			),
