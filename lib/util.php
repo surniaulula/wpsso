@@ -1208,15 +1208,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$ext_json_disable = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false );
 			$do_ext_pretty = false;
 
-			if ( $options === 0 &&
-				defined( 'JSON_UNESCAPED_SLASHES' ) )
-					$options = JSON_UNESCAPED_SLASHES;	// PHP v5.4
+			if ( $options === 0 && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
+				$options = JSON_UNESCAPED_SLASHES;	// since PHP v5.4
+			}
 
 			// decide if the encoded json will be minimized or not
 			if ( is_admin() || $this->p->debug->enabled || $do_pretty_print ) {
-				if ( defined( 'JSON_PRETTY_PRINT' ) )		// PHP v5.4
+				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// since PHP v5.4
 					$options = $options|JSON_PRETTY_PRINT;
-				else $do_ext_pretty = true;			// use the SuextJsonFormat lib
+				} else {
+					$do_ext_pretty = true;	// use the SuextJsonFormat lib
+				}
 			}
 
 			// encode the json

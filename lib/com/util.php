@@ -1833,11 +1833,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_user_select( $roles = array( 'administrator' ), $blog_id = false ) {
 
-			if ( ! is_array( $roles ) )
+			if ( ! is_array( $roles ) ) {
 				$roles = array( $roles );
+			}
 
-			if ( ! $blog_id )
+			if ( ! $blog_id ) {
 				$blog_id = get_current_blog_id();	// since wp 3.1
+			}
 
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(
@@ -1847,14 +1849,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						'id',
 						'display_name'
 					)
-				) ) as $user )
+				) ) as $user ) {
 					$ret[$user->display_name] = $user->id;
+				}
 			}
 
 			// sort by the display name key value
-			if ( defined( 'SORT_NATURAL' ) )	// available since PHP 5.4
+			if ( defined( 'SORT_NATURAL' ) ) {	// available since PHP 5.4
 				ksort( $ret, SORT_NATURAL );
-			else uksort( $ret, 'strcasecmp' );	// case-insensitive string comparison
+			} else {
+				uksort( $ret, 'strcasecmp' );	// case-insensitive string comparison
+			}
 
 			// add 'none' to create an associative array *before* flipping the array
 			// in order to preserve the user id => display name association
@@ -1863,10 +1868,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function count_diff( &$arr, $max = 0 ) {
 			$diff = 0;
-			if ( ! is_array( $arr ) )
+			if ( ! is_array( $arr ) ) {
 				return false;
-			if ( $max > 0 && $max >= count( $arr ) )
+			}
+			if ( $max > 0 && $max >= count( $arr ) ) {
 				$diff = $max - count( $arr );
+			}
 			return $diff;
 		}
 

@@ -142,7 +142,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 	body#plugin-information #section-description img.readme-example {
 		width:100%;
 		min-width:256px;
-		max-width:1200px;
+		max-width:600px;
 		margin:30px 0 30px 0;
 	}
 	body#plugin-information #section-other_notes h3 {
