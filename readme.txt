@@ -357,6 +357,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.40.13-dev.1 (2017/04/10)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a filter to allow the WPSSO Update Manager to be downloaded / installed from the plugin details thickbox.
+* *Bugfixes*
+	* Fixed the Install / Update button in the plugin details thickbox (added a jQuery work-around for a WordPress bug).
+* *Developer Notes*
+	* None
+
 **Version 3.40.12 (2017/04/08)**
 
 * *New Features*
@@ -577,6 +588,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 == Upgrade Notice ==
+
+= 3.40.13-dev.1 =
+
+(2017/04/10) Fixed the Install / Update button in the plugin details thickbox.
 
 = 3.40.12 =
 
