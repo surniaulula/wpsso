@@ -171,15 +171,7 @@
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-
-<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" 
-    width="100%" height="100%" alt="xample Social Profiles in Google Search
-    - WPSSO includes author (Person) and publisher (Organization) social
-    profiles in schema.org JSON-LD format for Google Search and their
-    Knowledge Graph." /></p>
-</div>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" class="readme-plugin-example"></p>
 
 <h4>Social Profiles for Google Search</h4>
 
@@ -205,13 +197,7 @@
 <li>YouTube Channel URL</li>
 </ul>
 
-<div style="clear:both;"></div>
-
-<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png"
-    width="100%" height="100%" alt="Example Twitter 'Large Image Summary'
-    Card." /></p>
-</div>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png" class="readme-plugin-example"></p>
 
 <h4>Complete Social Meta Tags</h4>
 
@@ -227,13 +213,7 @@
 
 <p>WordPress Social Sharing Optimization (WPSSO) Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
 
-<div style="clear:both;"></div>
-
-<div style="text-align:center;width=100%;max-width:1200px;height:auto;margin:0 0 20px 0;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" 
-    width="100%" height="100%" alt="Example Pinterest Product Pin
-    (Zoomed)." /></p>
-</div>
+<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" class="readme-plugin-example"></p>
 
 <p><strong>eCommerce Products</strong></p>
 

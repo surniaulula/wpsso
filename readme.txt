@@ -146,14 +146,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 </blockquote>
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" 
-	width="100%" height="100%" alt="xample Social Profiles in Google Search
-	- WPSSO includes author (Person) and publisher (Organization) social
-	profiles in schema.org JSON-LD format for Google Search and their
-	Knowledge Graph." /></p>
-</div>
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" class="readme-plugin-example">
 
 = Social Profiles for Google Search =
 
@@ -177,12 +170,7 @@ WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the fi
 * Yahoo IM
 * YouTube Channel URL
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png"
-	width="100%" height="100%" alt="Example Twitter 'Large Image Summary'
-	Card." /></p>
-</div>
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png" class="readme-plugin-example">
 
 = Complete Social Meta Tags =
 
@@ -198,12 +186,7 @@ WordPress Social Sharing Optimization (WPSSO) detects and uses all images - asso
 
 WordPress Social Sharing Optimization (WPSSO) Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
 
-<div style="clear:both;"></div>
-<div style="width:40%;min-width:256px;max-width:1200px;height:auto;float:right;margin:10px 0 40px 60px;">
-<p><img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" 
-	width="100%" height="100%" alt="Example Pinterest Product Pin
-	(Zoomed)." /></p>
-</div>
+<img src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png" class="readme-plugin-example">
 
 **eCommerce Products**
 
