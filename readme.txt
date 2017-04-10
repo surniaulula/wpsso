@@ -90,6 +90,8 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 	width="100%" height="100%" alt="Example Twitter 'Player' Card." /></p>
 </div>
 
+<img src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png" width="128" height="128" class="readme-plugin-example">
+
 = Quick List of Features (Continued) =
 
 **WPSSO Pro / Power-User Features**
