@@ -932,8 +932,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$org_id = 'site';
 			} elseif ( ! empty( $mod['obj'] ) ) {	// just in case
 				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_org_org_id' );
+				if ( empty( $org_id ) && ! is_numeric( $org_id ) ) {	// allow for 0
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'custom schema_org_org_id is empty or not numeric' );
+					}
+					$org_id = 'none';
+				}
 			} else {
-				$org_id = false;
+				$org_id = 'none';
 			}
 
 			$ret = array();
@@ -1017,15 +1023,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
-		 * $org_id can be null, false, 'none', 'site', or a number * (including 0) -- null and 
-		 * false are the same as using 'site'.
+		 * $org_id can be 'none', 'site', or a number (including 0).
 		 */
 		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
 
 			if ( $org_id === 'none' ) {
 				return 0;
-			} elseif ( $org_id === null || $org_id === false ) {
-				$org_id = 'site';
+			} elseif ( empty( $org_id ) && ! is_numeric( $org_id ) ) {	// allow for 0
+				return 0;
 			}
 
 			$wpsso =& Wpsso::get_instance();
@@ -1037,10 +1042,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
 
 			if ( empty( $org_opts ) ) {	// $org_opts can be false or empty array
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'using default organization options for '.$org_id );
+				if ( $org_id === 'site' ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'getting site organization options array' );
+					}
+					$org_opts = self::get_site_organization( $mod );
+				} else {
+					return 0;
 				}
-				$org_opts = self::get_site_organization( $mod );
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
 			}
@@ -1095,14 +1104,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
 
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding place / location properties' );
+				}
+
 				// check for a custom place id that might have precedence
+				// 'plm_addr_id' can be 'none', 'custom', or numeric (including 0)
 				$place_id = method_exists( $mod['obj'], 'get_options' ) ?	// just in case
 					$mod['obj']->get_options( $mod['id'], 'plm_addr_id' ) : null;
 
-				if ( $place_id !== null && $place_id !== '' ) {	// allow for place id 0
+				if ( is_numeric( $place_id ) || ! empty( $place_id ) ) {	// allow for place id 0
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'overriding org_place_id '.
-							$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
+						$wpsso->debug->log( 'overriding org_place_id '.$org_opts['org_place_id'].
+							' with plm_addr_id '.$place_id );
 					}
 				} else {
 					$place_id = $org_opts['org_place_id'];
@@ -1199,7 +1213,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$place_type_id = empty( $place_opts['place_business_type'] ) || 
 				$place_opts['place_business_type'] === 'none' ?
 					'place' : $place_opts['place_business_type'];
+
 			$place_type_url = $wpsso->schema->get_schema_type_url( $place_type_id, 'place' );
+
 			$ret = self::get_schema_type_context( $place_type_url );
 
 			// add schema properties from the place options
@@ -1419,12 +1435,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// $user_id is required here
 		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
 
-			if ( $user_id === 'none' )
+			if ( $user_id === 'none' ) {
 				return 0;
+			}
 
 			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled )
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single person data for '.$user_id );
+			}
 
 			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
