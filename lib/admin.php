@@ -14,11 +14,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	class WpssoAdmin {
 
 		protected $p;
-		protected $menu_id = null;
-		protected $menu_name = null;
-		protected $menu_lib = null;
-		protected $menu_ext = null;	// lowercase acronyn for plugin or extension
-		protected $pagehook = null;
+		protected $menu_id;
+		protected $menu_name;
+		protected $menu_lib;
+		protected $menu_ext;	// lowercase acronyn for plugin or extension
+		protected $pagehook;
+		protected $iframe_parent_href;
+		protected $iframe_parent_title;
 
 		public static $pkg = array();
 		public static $readme = array();	// array for the readme of each extension
@@ -32,6 +34,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
+			$lca = $this->p->cf['lca'];
+
+			/*
+			 * The WpssoScript add_plugin_install_script() method includes jQuery in the thickbox iframe 
+			 * to add the iframe_parent arguments when the Install or Update button is clicked.
+			 *
+			 * These class properties are used by both the WpssoAdmin plugin_complete_actions() and 
+			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent
+			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
+			 */
+			if ( ! empty( $_GET[$lca.'_iframe_parent_href'] ) && ! empty( $_GET[$lca.'_iframe_parent_title'] ) ) {
+				$this->iframe_parent_href = esc_url( urldecode( $_GET[$lca.'_iframe_parent_href'] ) );
+				$this->iframe_parent_title = esc_html( urldecode( $_GET[$lca.'_iframe_parent_title'] ) );
 			}
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
@@ -54,7 +71,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
-				add_filter( 'wp_redirect', array( &$this, 'wp_profile_updated_redirect' ), -100, 2 );
+				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
 
 				if ( is_multisite() ) {
 					add_action( 'network_admin_menu', array( &$this, 'load_network_menu_objects' ), -1000 );
@@ -72,7 +89,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
 				}
 
+				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 1 );
 				add_filter( 'http_request_host_is_external', array( &$this, 'allow_install_hosts' ), 1000, 3 );
+
+				add_filter( 'install_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
+				add_filter( 'update_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
+
+				add_filter( 'wp_redirect', array( &$this, 'plugin_complete_redirect' ), 1000, 1 );
 			}
 		}
 
@@ -352,6 +375,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
+		public function add_expect_header( $req ) {
+			if ( ! isset( $req['headers']['Expect'] ) ) {
+				$req['headers']['Expect'] = '';
+			}
+			return $req;
+		}
+
 		public function allow_install_hosts( $is_allowed, $ip, $url ) {
 			if ( ! $is_allowed ) {	// don't bother if already allowed
 				if ( isset( $this->p->cf['install_hosts'] ) ) {
@@ -551,7 +581,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
-			$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong>' );
+			$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.',	// green status w check mark
+				'wpsso' ).'</strong>' );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
 			exit;	// stop here
 		}
@@ -742,22 +773,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			<?php
 		}
 
-		public function wp_profile_updated_redirect( $location, $status ) {
-			if ( strpos( $location, 'updated=' ) !== false &&
-				strpos( $location, 'wp_http_referer=' ) ) {
+		public function profile_updated_redirect( $url, $status ) {
+			if ( strpos( $url, 'updated=' ) !== false && strpos( $url, 'wp_http_referer=' ) ) {
 
 				// match wordpress behavior (users page for admins, profile page for everyone else)
 				$menu_lib = current_user_can( 'list_users' ) ? 'users' : 'profile';
 				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 				$referer_match = '/'.$parent_slug.'?page='.$this->p->cf['lca'].'-';
-				parse_str( parse_url( $location, PHP_URL_QUERY ), $parts );
+
+				parse_str( parse_url( $url, PHP_URL_QUERY ), $parts );
 
 				if ( strpos( $parts['wp_http_referer'], $referer_match ) ) {
-					$this->p->notice->upd( __( 'Profile updated.' ) );
-					return add_query_arg( 'updated', true, $parts['wp_http_referer'] );
+					$this->p->notice->upd( __( 'Profile updated.' ) );	// green status w check mark
+					$url = add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
 			}
-			return $location;
+			return $url;
 		}
 
 		protected function show_form_content() {
@@ -1270,14 +1301,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$num++;
 				$links = array();
 				$plugin_href = '';
-				$view_text = _x( 'Plugin Details', 'plugin action link', 'wpsso' );
+				$details_text = _x( 'Plugin Details', 'plugin action link', 'wpsso' );
 
 				if ( ! empty( $info['slug'] ) ) {
 
 					$plugin_href = add_query_arg( array(
 						'tab' => 'plugin-information',
 						'plugin' => $info['slug'],
-						'TB_iframe' => 'true',	// thickbox iframe
+						'TB_iframe' => 'true',
 						'width' => $this->p->cf['wp']['tb_iframe']['width'],
 						'height' => $this->p->cf['wp']['tb_iframe']['height']
 					), is_multisite() ?
@@ -1290,17 +1321,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( isset( $update_plugins->response ) ) {
 							foreach ( (array) $update_plugins->response as $plugin_base => $plugin ) {
 								if ( $plugin->slug === $info['slug'] ) {
-									$view_text = '<font color="red">'._x( 'Plugin Details &amp; Update',
+									$details_text = '<font color="red">'._x( 'Plugin Details and Update',
 										'plugin action link', 'wpsso' ).'</font>';
 									break;
 								}
 							}
 						}
 					} else {
-						$view_text = _x( 'Plugin Details &amp; Install', 'plugin action link', 'wpsso' );
+						$details_text = _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' );
 					}
 
-					$links[] = '<a href="'.$plugin_href.'" class="thickbox" tabindex="'.++$tabindex.'">'.$view_text.'</a>';
+					$links[] = '<a href="'.$plugin_href.'" class="thickbox" tabindex="'.++$tabindex.'">'.$details_text.'</a>';
 
 				} elseif ( ! empty( $info['url']['home'] ) ) {
 					$links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
@@ -1827,6 +1858,44 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return (array) $readme_info;	// just in case
+		}
+
+		public function plugin_complete_actions( $actions ) {
+			$lca = $this->p->cf['lca'];
+
+			if ( ! empty( $this->iframe_parent_href ) && ! empty( $this->iframe_parent_title ) ) {
+				foreach ( $actions as $action => &$html ) {
+					switch ( $action ) {
+						case 'plugins_page':
+							$html = '<a href="'.$this->iframe_parent_href.'" target="_parent">'.
+								sprintf( __( 'Return to %s', 'wpsso' ), $this->iframe_parent_title ).'</a>';
+							break;
+						default:
+							if ( preg_match( '/^(.*href=")([^"]+)(".*)$/', $html, $matches ) ) {
+								$url = add_query_arg( array(
+									$lca.'_iframe_parent_href' => urlencode( $this->iframe_parent_href ),
+									$lca.'_iframe_parent_title' => urlencode( $this->iframe_parent_title ),
+								), $matches[2] );
+								$html = $matches[1].$url.$matches[3];
+							}
+							break;
+					}
+				}
+			}
+			return $actions;
+		}
+
+		public function plugin_complete_redirect( $url ) {
+			$lca = $this->p->cf['lca'];
+
+			if ( strpos( $url, '?activate=true' ) ) {
+				if ( ! empty( $this->iframe_parent_href ) && ! empty( $this->iframe_parent_title ) ) {
+					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );	// green status w check mark
+					$url = $this->iframe_parent_href;
+				}
+			}
+
+			return $url;
 		}
 	}
 }

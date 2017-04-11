@@ -34,7 +34,7 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
-
+			$lca = $this->p->cf['lca'];
 			$plugin_version = WpssoConfig::get_version();
 
 			// https://developers.google.com/speed/libraries/
@@ -61,25 +61,19 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 			switch ( $hook_name ) {
 
-				// license settings page includes a "view plugin details" feature
 				case ( preg_match( '/_page_wpsso-(site)?licenses/', $hook_name ) ? true : false ):
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
 					}
-
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
-					add_thickbox();	// required for the plugin details box
 
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook_name, '_page_wpsso-' ) !== false ? true : false ):
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
-
 					wp_enqueue_style( 'sucom-settings-page' );	// sidebar, buttons, etc.
 
 					// no break
@@ -91,11 +85,9 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 				case 'user-edit.php':	// user edit
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for editing page' );
 					}
-
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-settings-table' );
@@ -104,13 +96,16 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 
 					break;	// stop here
 
-				case 'plugin-install.php':	// css for "view plugin details" thickbox
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'enqueuing styles for plugin install page' );
+				case 'plugin-install.php':
+					if ( isset( $_GET['plugin'] ) ) {
+						$plugin_slug = $_GET['plugin'];
+						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'enqueuing styles for plugin install page' );
+							}
+							$this->plugin_install_inline_style( $hook_name );
+						}
 					}
-
-					$this->thickbox_inline_style( $hook_name );
 
 					break;	// stop here
 			}
@@ -123,12 +118,15 @@ if ( ! class_exists( 'SucomStyle' ) ) {
 			return $classes;
 		}
 
-		private function thickbox_inline_style( $hook_name ) {
+		private function plugin_install_inline_style( $hook_name ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 			echo '
 <style type="text/css">
+	body#plugin-information div#plugin-information-title.with-banner h2 {
+		display:none;
+	}
 	body#plugin-information #section-description img {
 		max-width:100%;
 	}

@@ -55,20 +55,18 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			// don't load our javascript where we don't need it
 			switch ( $hook_name ) {
 
-				case 'plugin-install.php':	// add custom script js to fix install/update button
 				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 					}
+					add_thickbox();	// required for the plugin details box
 
-					$this->add_plugin_install_script( $hook_name );
+					wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
 
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
 					}
@@ -82,10 +80,15 @@ if ( ! class_exists( 'SucomScript' ) ) {
 				case 'user-edit.php':	// user edit
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
 					}
+
+					wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
+					wp_enqueue_script( 'sucom-tooltips' );
+					wp_enqueue_script( 'sucom-metabox' );
+					wp_enqueue_script( 'wp-color-picker' );
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
 						if ( SucomUtil::is_post_page( false ) &&
@@ -96,16 +99,22 @@ if ( ! class_exists( 'SucomScript' ) ) {
 						}
 
 						wp_enqueue_script( 'sucom-admin-media' );
+						wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
+							$this->get_admin_media_script_data() );
 					}
 
-					wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
-					wp_enqueue_script( 'sucom-tooltips' );
-					wp_enqueue_script( 'sucom-metabox' );
-					wp_enqueue_script( 'wp-color-picker' );
+					break;	// stop here
 
-					wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
-						$this->get_admin_media_script_data() );
+				case 'plugin-install.php':
+					if ( isset( $_GET['plugin'] ) ) {
+						$plugin_slug = $_GET['plugin'];
+						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
+							}
+							$this->add_plugin_install_script( $hook_name );
+						}
+					}
 
 					break;
 			}
@@ -123,6 +132,7 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+			$lca = $this->p->cf['lca'];
 
 			wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
 
@@ -130,8 +140,12 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			$custom_script_js = '
 jQuery(document).ready(function(){
 	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
-		var href = jQuery(this).attr("href");
-		window.top.location.href = href;
+		if ( window.top.location.href.indexOf( "page='.$lca.'-" ) ) {
+			var plugin_href = jQuery(this).attr("href");
+			var parent_href_arg = "&'.$lca.'_iframe_parent_href=" + encodeURIComponent( window.top.location.href );
+			var parent_title_arg = "&'.$lca.'_iframe_parent_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
+			window.top.location.href = plugin_href + parent_href_arg + parent_title_arg;
+		}
 	});
 });';
 			wp_add_inline_script( 'plugin-install', $custom_script_js );
