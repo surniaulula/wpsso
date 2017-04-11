@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * plugin data than what's available from the readme.
 				 */
 				if ( empty( $this->p->is_avail['util']['um'] ) ) {
-					add_filter( 'plugins_api', array( &$this, 'inject_plugin_data' ), 2000, 3 );
+					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );
 				}
 
 				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 1 );
@@ -375,6 +375,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
+		// define and disable the "Expect: 100-continue" header
 		public function add_expect_header( $req ) {
 			if ( ! isset( $req['headers']['Expect'] ) ) {
 				$req['headers']['Expect'] = '';
@@ -398,39 +399,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
 		 */
-		public function inject_plugin_data( $result, $action = null, $args = null ) {
+		public function external_plugin_data( $res, $action = null, $args = null ) {
 
-			// check for returned values from previous filters
-			if ( is_object( $result ) ) {
-				return $result;
-			// only provide plugin data for the thickbox installer
-			} elseif ( $action !== 'plugin_information' || ! isset( $args->slug ) ) {
-				return $result;
-			// check that the plugin slug is ours
+			// this filter only provides plugin data
+			if ( $action !== 'plugin_information' ) {
+				return $res;
+			// make sure we have a slug in the request
+			} elseif ( empty( $args->slug ) ) {
+				return $res;
+			// make sure the plugin slug is one of ours
 			} elseif ( empty( $this->p->cf['*']['slug'][$args->slug] ) ) {
-				return $result;
-			} else {
-				$ext = $this->p->cf['*']['slug'][$args->slug];
+				return $res;
+			// if the object from wordpress looks complete, return it as-is
+			} elseif ( isset( $res->slug ) && $res->slug === $args->slug ) {
+				return $res;
 			}
 
-			// check if we have a config for that slug
-			if ( ! isset( $this->p->cf['plugin'][$ext] ) ) {
-				return $result;
-			} else {
-				$info = $this->p->cf['plugin'][$ext];
-			}
+			// get the config extension acronym
+			$ext = $this->p->cf['*']['slug'][$args->slug];
 
-			// skip if the plugin is hosted on wordpress.org
-			if ( ! isset( $info['url']['home'] ) || 
-				strpos( $info['url']['home'], 'wordpress.org/' ) !== false ) {
-				return $result;
+			// make sure we have a config for that slug
+			if ( empty( $this->p->cf['plugin'][$ext] ) ) {
+				return $res;
 			}
 
 			// get plugin data from the plugin readme
 			$plugin_data = $this->get_plugin_data( $ext );
+
+			// make sure we have something to return
 			if ( empty( $plugin_data ) ) {
-				return $result;
+				return $res;
 			}
+
+			// let wordpress known that this is not a wordpress.org plugin
+			$plugin_data->external = true;
 
 			return $plugin_data;
 		}
@@ -438,13 +440,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Get the plugin readme and cache on disk. Convert the readme array to a plugin data object.
 		 */
-		public function get_plugin_data( $ext ) {
+		public function get_plugin_data( $ext, $use_cache = true ) {
+
 			$data = new StdClass;
 			$info = $this->p->cf['plugin'][$ext];
-			$readme = $this->get_readme_info( $ext, true );	// $read_cache = true
+			$readme = $this->get_readme_info( $ext, $use_cache );
+
+			// make sure we got something back
 			if ( empty( $readme ) ) {
 				return array();
 			}
+
 			foreach ( array(
 				// readme array => plugin object
 				'plugin_name' => 'name',
@@ -614,7 +620,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							if ( $this->p->is_avail['util']['um'] ) {
 								// refresh the readme for all extensions
 								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-									$this->get_readme_info( $ext, false );	// $read_cache = false
+									$this->get_readme_info( $ext, false );	// $use_cache = false
 								}
 								$wpssoum =& WpssoUm::get_instance();
 								if ( isset( $wpssoum->update ) ) {	// just in case
@@ -933,7 +939,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_version = __( 'Not Available', 'wpsso' );	// default value
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
-				$readme_info = $this->get_readme_info( $ext, true );	// $read_cache = true
+				$readme_info = $this->get_readme_info( $ext, true );	// $use_cache = true
 
 				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
@@ -1775,12 +1781,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function get_readme_info( $ext, $read_cache = true ) {
+		public function get_readme_info( $ext, $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'read_cache' => $read_cache,
+					'use_cache' => $use_cache,
 				) );
 			}
 
@@ -1803,8 +1809,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $cache_exp > 0 ) {
 				// check the transient cache, if reading the cache is allowed
-				$readme_info = $read_cache ? 
-					get_transient( $cache_id ) : false;
+				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
 
 				if ( is_array( $readme_info ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1816,7 +1821,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// get the remote readme
 				if ( $use_remote ) {
 					// clear the cache first if reading the cache is disabled
-					if ( ! $read_cache ) {
+					if ( ! $use_cache ) {
 						$this->p->cache->clear( $readme_url );
 					}
 					// get the readme and save it to the disk cache
