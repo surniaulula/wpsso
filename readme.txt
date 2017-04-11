@@ -342,6 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a filter to allow the WPSSO Update Manager to be downloaded and installed from the Plugin Extensions and Pro Licenses settings page.
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
+	* Fixed the default Organization ID for an Organization selected in the Social Settings metabox (the Organization was defaulting to 'site' instead of 'none').
 * *Developer Notes*
 	* None
 
