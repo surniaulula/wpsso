@@ -1306,12 +1306,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
 				$num++;
 				$links = array();
-				$plugin_href = '';
-				$details_text = _x( 'Plugin Details', 'plugin action link', 'wpsso' );
 
-				if ( ! empty( $info['slug'] ) ) {
+				if ( ! empty( $info['base'] ) ) {
 
-					$plugin_href = add_query_arg( array(
+					$details_url = add_query_arg( array(
 						'tab' => 'plugin-information',
 						'plugin' => $info['slug'],
 						'TB_iframe' => 'true',
@@ -1321,23 +1319,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						network_admin_url( 'plugin-install.php', null ) :
 						get_admin_url( null, 'plugin-install.php' ) );
 
-					// check to see if plugin is installed or not
-					if ( is_dir( WP_PLUGIN_DIR.'/'.$info['slug'] ) ) {
-						$update_plugins = get_site_transient( 'update_plugins' );
-						if ( isset( $update_plugins->response ) ) {
-							foreach ( (array) $update_plugins->response as $plugin_base => $plugin ) {
-								if ( $plugin->slug === $info['slug'] ) {
-									$details_text = '<font color="red">'._x( 'Plugin Details and Update',
-										'plugin action link', 'wpsso' ).'</font>';
-									break;
-								}
-							}
+					if ( SucomUtil::installed_plugins( $info['base'] ) ) {
+
+						if ( SucomUtil::plugin_has_update( $info['base'] ) ) {
+							$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+								'<font color="red">'._x( 'Plugin Details and Update', 'plugin action link',
+									'wpsso' ).'</font></a>';
+						} else {
+							$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+								_x( 'Plugin Details', 'plugin action link', 'wpsso' ).'</a>';
 						}
 					} else {
-						$details_text = _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' );
+						$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+							_x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ).'</a>';
 					}
-
-					$links[] = '<a href="'.$plugin_href.'" class="thickbox" tabindex="'.++$tabindex.'">'.$details_text.'</a>';
 
 				} elseif ( ! empty( $info['url']['home'] ) ) {
 					$links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
@@ -1359,16 +1354,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$img_src .= ' srcset="'.$info['img']['icons']['high'].' 256w"';
 				}
 
-				// logo image - skip the tabindex
+				// logo image
 				echo '<tr><td style="width:148px; padding:10px;" rowspan="3" valign="top" align="left">'."\n";
-				if ( ! empty( $plugin_href ) ) {
-					echo '<a href="'.$plugin_href.'"'.( strpos( $plugin_href, 'TB_iframe' ) ?
-						' class="thickbox"' : ' target="_blank"' ).'>';
-				}
-				echo '<img '.$img_src.' width="128" height="128">';
-				if ( ! empty( $plugin_href ) ) {
-					echo '</a>';
-				}
+				echo '<img '.$img_src.' width="128" height="128" />';
 				echo '</td>'."\n";
 
 				// plugin name

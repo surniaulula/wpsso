@@ -17,9 +17,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected static $is_mobile;			// is_mobile cached value
 		protected static $mobile_obj;			// SuextMobileDetect class object
-		protected static $plugins_index;		// active site and network plugins
-		protected static $site_plugins;
-		protected static $network_plugins;
+		protected static $active_plugins;		// active site and network plugins
+		protected static $active_site_plugins;
+		protected static $active_network_plugins;
 		protected static $crawler_name;			// saved crawler name from user-agent
 		protected static $filter_values = array();	// saved filter values
 		protected static $user_exists = array();	// saved user_exists() values
@@ -649,25 +649,54 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// active plugins array is cached in a static class property
-		public static function active_plugins( $key = false ) {
+		public static function active_plugins( $plugin_base = false ) {
 			if ( ! isset( self::$plugins_index ) ) {
-				$all_plugins = self::$site_plugins = get_option( 'active_plugins', array() );
+				$combined_plugins = self::$active_site_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
-					self::$network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
-					if ( ! empty( self::$network_plugins ) )
-						$all_plugins = array_merge( self::$site_plugins, self::$network_plugins );
+					self::$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+					if ( ! empty( self::$active_network_plugins ) ) {
+						$combined_plugins = array_merge( self::$active_site_plugins, self::$active_network_plugins );
+					}
 				}
-				foreach ( $all_plugins as $base ) {
-					self::$plugins_index[$base] = true;
+				foreach ( $combined_plugins as $base ) {
+					self::$active_plugins[$base] = true;
 				}
 			}
-			if ( $key !== false ) {
-				if ( isset( self::$plugins_index[$key] ) ) {
-					return self::$plugins_index[$key];
+			if ( $plugin_base !== false ) {
+				if ( isset( self::$active_plugins[$plugin_base] ) ) {
+					return self::$active_plugins[$plugin_base];
 				} else {
 					return false;
 				}
-			} else return self::$plugins_index;
+			} else {
+				return self::$active_plugins;
+			}
+		}
+
+		public static function installed_plugins( $plugin_base = false ) {
+			if ( ! empty( $plugin_base ) && validate_file( $plugin_base ) > 0 ) {	// contains invalid characters
+				return false;
+			} elseif ( ! file_exists( WP_PLUGIN_DIR.'/'.$plugin_base) ) {	// check existence of plugin folder
+				return false;
+			}
+			$installed_plugins = get_plugins();
+			if ( ! isset( $installed_plugins[$plugin_base] ) ) {	// check for a valid plugin header
+				return false;
+			}
+			return true;
+		}
+
+		public static function plugin_has_update( $plugin_base = false ) {
+			if ( ! self::installed_plugins( $plugin_base ) ) {
+				return false;
+			}
+			$update_plugins = get_site_transient( 'update_plugins' );
+			if ( isset( $update_plugins->response ) && is_array( $update_plugins->response ) ) {
+				if ( isset( $update_plugins->response[$plugin_base] ) ) {
+					return true;
+				}
+			}
+			return false;
 		}
 
 		public static function add_site_option_key( $name, $key, $value ) {
