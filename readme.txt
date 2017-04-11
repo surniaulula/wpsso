@@ -333,13 +333,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.13-dev.2 (2017/04/10)**
+**Version 3.40.13-dev.2 (2017/04/11)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page (instead of the WordPress plugins page).
 	* Added a filter to allow the WPSSO Update Manager to be downloaded and installed from the Plugin Extensions and Pro Licenses settings page.
-	* Added jQuery and filter hooks to return the user to the settings page (instead of the WordPress plugins page) after installing / activating / updating a from the Plugin Details thickbox.
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
 * *Developer Notes*
@@ -568,7 +568,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.40.13-dev.2 =
 
-(2017/04/10) Fixed the Install / Update button in the plugin details thickbox.
+(2017/04/11) After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
 
 = 3.40.12 =
 
