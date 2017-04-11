@@ -73,6 +73,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
+	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
 	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
@@ -130,17 +131,13 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 		* Wistia Videos
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
-* Additional (and optional) Free or Pro extension plugins:
+* Additional Pro extension plugins:
 	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 	* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
 	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
-	* [WPSSO Update Manager](https://wpsso.com/extend/plugins/wpsso-um/) (Free version)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
 	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
-	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
-	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
-	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
 
 <blockquote>
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
@@ -336,14 +333,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.13-dev.1 (2017/04/10)**
+**Version 3.40.13-dev.2 (2017/04/10)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a filter to allow the WPSSO Update Manager to be downloaded / installed from the plugin details thickbox.
+	* Added a filter to allow the WPSSO Update Manager to be downloaded and installed from the Plugin Extensions and Pro Licenses settings page.
+	* Added jQuery and filter hooks to return the user to the settings page (instead of the WordPress plugins page) after installing / activating / updating a from the Plugin Details thickbox.
 * *Bugfixes*
-	* Fixed the Install / Update button in the plugin details thickbox (added a jQuery work-around for a WordPress bug).
+	* Fixed the Install / Update button in the Plugin Details thickbox.
 * *Developer Notes*
 	* None
 
@@ -568,7 +566,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.13-dev.1 =
+= 3.40.13-dev.2 =
 
 (2017/04/10) Fixed the Install / Update button in the plugin details thickbox.
 
