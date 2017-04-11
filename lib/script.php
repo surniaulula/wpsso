@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'SucomScript' ) ) {
+if ( ! class_exists( 'WpssoScript' ) ) {
 
-	class SucomScript {
+	class WpssoScript {
 
 		private $p;
 
@@ -128,6 +128,12 @@ if ( ! class_exists( 'SucomScript' ) ) {
 			);
 		}
 
+		/*
+		 * Add jQuery to correctly follow the Install / Update link when clicked (WordPress bug).
+		 * Also adds the parent URL and settings page title as query arguments, which are then
+		 * used by WpssoAdmin class filters to return the user back to the settings page after
+		 * installing / activating / updating the plugin.
+		 */
 		private function add_plugin_install_script( $hook_name ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

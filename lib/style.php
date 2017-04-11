@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'SucomStyle' ) ) {
+if ( ! class_exists( 'WpssoStyle' ) ) {
 
-	class SucomStyle {
+	class WpssoStyle {
 
 		private $p;
 

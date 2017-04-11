@@ -49,8 +49,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $opt;			// WpssoOptions
 		public $page;			// WpssoPage (page title, desc, etc.)
 		public $reg;			// WpssoRegister
-		public $script;			// SucomScript (admin jquery tooltips)
-		public $style;			// SucomStyle (admin styles)
+		public $script;			// WpssoScript (admin jquery tooltips)
+		public $style;			// WpssoStyle (admin styles)
 		public $tc;			// WpssoTwitterCard
 		public $util;			// WpssoUtil (extends SucomUtil)
 		public $webpage;		// deprecated (backwards compatibility)
@@ -245,8 +245,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->util = new WpssoUtil( $this );			// extends SucomUtil
 			$this->opt = new WpssoOptions( $this );
 			$this->cache = new SucomCache( $this );			// object and file caching
-			$this->style = new SucomStyle( $this );			// admin styles
-			$this->script = new SucomScript( $this );		// admin jquery tooltips
+			$this->style = new WpssoStyle( $this );			// admin styles
+			$this->script = new WpssoScript( $this );		// admin jquery tooltips
 			$this->page = new WpssoPage( $this );			// page title, desc, etc.
 			$this->webpage =& $this->page;				// deprecated (maintain backwards compatibility)
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
