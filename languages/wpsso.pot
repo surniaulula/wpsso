@@ -398,64 +398,64 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1722
+#: lib/admin.php:1733
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1734
+#: lib/admin.php:1745
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1740
+#: lib/admin.php:1751
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1748
+#: lib/admin.php:1759
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1753
+#: lib/admin.php:1764
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1756
+#: lib/admin.php:1767
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1769
+#: lib/admin.php:1780
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1774
+#: lib/admin.php:1785
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1782
+#: lib/admin.php:1793
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1790
+#: lib/admin.php:1801
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:1803
+#: lib/admin.php:1814
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1906
+#: lib/admin.php:1917
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:1928
+#: lib/admin.php:1939
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 

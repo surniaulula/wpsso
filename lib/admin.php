@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * the plugin object as-is if the slug is defined properly, so it should work
 				 * fine with older versions (we require 1.6.0 anyway, just in case).
 				 */
-				if ( empty( $this->p->is_avail['p_ext']['um'] ) ) {
+				if ( empty( $this->p->is_avail['p_ext']['um'] ) ) {	// since um v1.6.0
 					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
 				}
 
@@ -1609,6 +1609,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function required_notices() {
+
 			$lca = $this->p->cf['lca'];
 			$version = $this->p->cf['plugin'][$lca]['version'];
 			$have_ext_tid = false;
@@ -1616,15 +1617,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->is_avail['aop'] === true &&
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
 					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) ||
-						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) )
-							$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
+						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) ) {
+				$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
+			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-					$have_ext_tid = true;	// found at least one active plugin with an auth id
+
+					// found at least one plugin with an auth id
+					$have_ext_tid = true;
+
 					if ( ! self::$pkg[$ext]['pdir'] ) {
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
-							array( 'lca' => $ext ) ) );	// message uses $ext for its $info
+							array( 'lca' => $ext ) ) );
 					}
 				}
 			}
@@ -1632,16 +1637,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_ext_tid === true ) {
 				$um_info = $this->p->cf['plugin']['wpssoum'];
 
-				if ( ! empty( $um_info['version'] ) ) {	// check for minimum version required
+				// if active, the version should be available
+				if ( ! empty( $um_info['version'] ) ) {
 
-					$min_version = WpssoConfig::$cf['um']['min_version'];	// minimum um version required
+					// minimum um version required
+					$min_version = WpssoConfig::$cf['um']['min_version'];
 
 					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
 					}
+
+				// if not active, check if installed
 				} elseif ( SucomUtil::installed_plugins( $um_info['base'] ) ) {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+
+				// um is not active or installed
 				} else {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 				}
