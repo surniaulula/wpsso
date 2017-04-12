@@ -480,23 +480,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'banners' => 'banners',
 			) as $key_name => $prop_name ) {
 				switch ( $key_name ) {
-					case 'base':
+					case 'base':	// from plugin config
 						if ( ! empty( $info[$key_name] ) ) {
 							$data->$prop_name = $info[$key_name];
 						}
 						break;
-					case 'home':
+					case 'home':	// from plugin config
 						if ( ! empty( $info['url']['purchase'] ) ) {	// check for purchase url first
 							$data->$prop_name = $info['url']['purchase'];
 							break;
 						}
-						// no break
-					case 'latest':
+						// no break - override with home url (if one is defined)
+					case 'latest':	// from plugin config
 						if ( ! empty( $info['url'][$key_name] ) ) {
 							$data->$prop_name = $info['url'][$key_name];
 						}
 						break;
-					case 'banners':
+					case 'banners':	// from plugin config
 						if ( ! empty( $info['img'][$key_name] ) ) {
 							$data->$prop_name = $info['img'][$key_name];	// array with low/high images
 						}
@@ -625,17 +625,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), 'admin', $action_name ) );
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
+
 					switch ( $action_name ) {
+
 						case 'check_for_updates':
+
 							$info = $this->p->cf['plugin']['wpsso'];
 							$um_info = $this->p->cf['plugin']['wpssoum'];
-							if ( $this->p->is_avail['p_ext']['um'] ) {
+
+							if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
+
 								// refresh the readme for all extensions
 								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 									$this->get_readme_info( $ext, false );	// $use_cache = false
 								}
+
 								$wpssoum =& WpssoUm::get_instance();
+
 								if ( isset( $wpssoum->update ) ) {	// just in case
+									/*
+									 * Check for updates for all extensions, show a notice for success or failure, 
+									 * and don't use cached update data from the options table (fetch new update json).
+									 */
 									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
 								} else {
 									$this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
@@ -1617,7 +1628,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$um_info = $this->p->cf['plugin']['wpssoum'];
 
 				if ( ! empty( $um_info['version'] ) ) {	// check for minimum version required
-					$min_version = WpssoConfig::$cf['um']['min_version'];
+
+					$min_version = WpssoConfig::$cf['um']['min_version'];	// minimum um version required
+
 					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );

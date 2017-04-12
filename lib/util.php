@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( ! $count ) {
 					if ( is_admin() ) {
 						$short = $this->p->cf['plugin'][$lca]['short'];
-						$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %s meta tag block - this could be an indication of an issue with the PHP PCRE library.', 'wpsso' ), $short ) );
+						$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$ss meta tag block &mdash; this could be an indication of a problem with PHP\'s PCRE library or an HTML filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );
 						return false;
 					}
 				}

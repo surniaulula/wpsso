@@ -258,6 +258,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 
 					return $failure;
+
 					break;
 			}
 
@@ -323,6 +324,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $http_code == 200 ) {
+
 				if ( empty( $cache_data ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cache data returned is empty' );
@@ -332,6 +334,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'cache data sucessfully saved' );
 					}
 				}
+
 				switch ( $ret_type ) {
 					case 'raw':
 						return $cache_data;
