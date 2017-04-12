@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7.3
- * Version: 3.40.13-dev.3
+ * Version: 3.40.13-a.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -226,21 +226,28 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ? true : false;
 			$wp_debug = defined( 'WPSSO_WP_DEBUG' ) && WPSSO_WP_DEBUG ? true : false;
 
-			if ( ( $html_debug || $wp_debug ) &&			// only load debug class if one or more debug options enabled
+			if ( ( $html_debug || $wp_debug ) &&	// only load debug class if debug options are enabled
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) ) {
 				$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 				if ( $this->debug->enabled ) {
+					global $wp_version;
 					$this->debug->log( 'debug enabled on '.date( 'c' ) );
+					$this->debug->log( 'WP version '.$wp_version );
+					$this->debug->log( 'PHP version '.phpversion() );
 					$this->debug->log( $this->check->get_ext_list() );
 				}
-			} else $this->debug = new SucomNoDebug();			// make sure debug property is always available
+			} else {
+				$this->debug = new SucomNoDebug();	// make sure debug property is always available
+			}
 
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
-			// only load notice class in the admin interface
-			if ( is_admin() && ( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) ) {
+			if ( is_admin() &&	// only load notice class in the admin interface
+				( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) ) {
 				$this->notice = new $classname( $this );
-			} else $this->notice = new SucomNoNotice();
+			} else {
+				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
+			}
 
 			$this->util = new WpssoUtil( $this );			// extends SucomUtil
 			$this->opt = new WpssoOptions( $this );

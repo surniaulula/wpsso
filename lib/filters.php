@@ -108,35 +108,38 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		 * Disable Yoast SEO social meta tags.
 		 */
 		public function cleanup_wpseo_filters() {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( isset( $GLOBALS['wpseo_og'] ) && is_object( $GLOBALS['wpseo_og'] ) && 
-				( $prio = has_action( 'wpseo_head', 
-					array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false ) {
-				if ( $this->p->debug->enabled )
+				( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'removing wpseo_head action for opengraph' );
+				}
 				$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
 			}
 
 			if ( class_exists( 'WPSEO_Twitter' ) &&
-				( $prio = has_action( 'wpseo_head', 
-					array( 'WPSEO_Twitter', 'get_instance' ) ) ) !== false ) {
-				if ( $this->p->debug->enabled )
+				( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) !== false ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'removing wpseo_head action for twitter' );
+				}
 				$ret = remove_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ), $prio );
 			}
 
 			if ( isset( WPSEO_Frontend::$instance ) &&
-				 ( $prio = has_action( 'wpseo_head', 
-				 	array( WPSEO_Frontend::$instance, 'publisher' ) ) ) !== false ) {
-				if ( $this->p->debug->enabled )
+				( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) !== false ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'removing wpseo_head action for publisher' );
+				}
 				$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filter' );
+			}
 			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 9000 );
 		}
 	}

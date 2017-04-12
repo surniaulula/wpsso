@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 * used by WpssoAdmin class filters to return the user back to the settings page after
 		 * installing / activating / updating the plugin.
 		 */
-		private function add_plugin_install_script( $hook_name ) {
+		private function add_plugin_install_script( $hook_name ) {	// $hook_name = plugin-install.php
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -147,10 +147,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 jQuery(document).ready(function(){
 	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
 		if ( window.top.location.href.indexOf( "page='.$lca.'-" ) ) {
-			var plugin_href = jQuery(this).attr("href");
-			var parent_href_arg = "&'.$lca.'_iframe_parent_href=" + encodeURIComponent( window.top.location.href );
-			var parent_title_arg = "&'.$lca.'_iframe_parent_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
-			window.top.location.href = plugin_href + parent_href_arg + parent_title_arg;
+			var plugin_url = jQuery( this ).attr( "href" );
+			var pageref_url_arg = "&'.$lca.'_pageref_url=" + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = "&'.$lca.'_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
+			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});
 });';

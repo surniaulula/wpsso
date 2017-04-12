@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_lib;
 		protected $menu_ext;	// lowercase acronyn for plugin or extension
 		protected $pagehook;
-		protected $iframe_parent_href;
-		protected $iframe_parent_title;
+		protected $pageref_url;
+		protected $pageref_title;
 
 		public static $pkg = array();
 		public static $readme = array();	// array for the readme of each extension
@@ -46,9 +46,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent
 			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
 			 */
-			if ( ! empty( $_GET[$lca.'_iframe_parent_href'] ) && ! empty( $_GET[$lca.'_iframe_parent_title'] ) ) {
-				$this->iframe_parent_href = esc_url( urldecode( $_GET[$lca.'_iframe_parent_href'] ) );
-				$this->iframe_parent_title = esc_html( urldecode( $_GET[$lca.'_iframe_parent_title'] ) );
+			foreach ( array(
+				'pageref_url' => 'esc_url',
+				'pageref_title' => 'esc_html',
+			) as $pageref => $esc_func ) {
+				if ( ! empty( $_GET[$lca.'_'.$pageref] ) ) {
+					$this->$pageref = call_user_func( $esc_func, 
+						urldecode( $_GET[$lca.'_'.$pageref] ) );
+				}
 			}
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
@@ -85,8 +90,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Skip if the update manager extension is active, since it provides more complete 
 				 * plugin data than what's available from the readme.
 				 */
-				if ( empty( $this->p->is_avail['util']['um'] ) ) {
-					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );
+				if ( empty( $this->p->is_avail['p_ext']['um'] ) ) {
+					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
 				}
 
 				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 1 );
@@ -107,10 +112,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function load_menu_objects( $menu_libs = array() ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
+
 			if ( empty( $menu_libs ) ) {
 				$menu_libs = array(
 					'submenu',
@@ -150,21 +157,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function add_network_admin_menus() {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-
+			}
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
 		// add a new main menu, and its sub-menu items
 		public function add_admin_menus( $menu_lib = '' ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
+
 			if ( empty( $menu_lib ) ) {
 				$menu_lib = 'submenu';
 			}
+
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
@@ -565,8 +575,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
+				}
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
@@ -606,8 +617,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token validation query field missing' );
+					}
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'admin', $action_name ) );
@@ -617,7 +629,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'check_for_updates':
 							$info = $this->p->cf['plugin']['wpsso'];
 							$um_info = $this->p->cf['plugin']['wpssoum'];
-							if ( $this->p->is_avail['util']['um'] ) {
+							if ( $this->p->is_avail['p_ext']['um'] ) {
 								// refresh the readme for all extensions
 								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 									$this->get_readme_info( $ext, false );	// $use_cache = false
@@ -1432,16 +1444,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// PHP
 			foreach ( $this->p->cf['php']['extensions'] as $php_ext => $php_label ) {
 				if ( ! extension_loaded( $php_ext ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php '.$php_ext.' extension is not loaded' );
+					}
 					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s" target="_blank"> %2$s extension</a> is not loaded.', 'wpsso' ), 'https://secure.php.net/manual/en/book.'.$php_ext.'.php', $php_label ).' '.__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}
 
 			// WordPress
 			if ( ! get_option( 'blog_public' ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
+				}
 				$this->p->notice->err( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social websites &mdash; please uncheck that option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ) );
 			}
 
@@ -1449,23 +1463,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->is_avail['seo']['wpseo'] ) {
 				$opts = get_option( 'wpseo_social' );
 				if ( ! empty( $opts['opengraph'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'wpseo opengraph meta data option is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Open Graph meta data</strong> option under the <a href="%s">Yoast SEO / Social / Facebook</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' ) ) );
 				}
 				if ( ! empty( $opts['twitter'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'wpseo twitter meta data option is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Twitter card meta data</strong> option under the <a href="%s">Yoast SEO / Social / Twitter</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' ) ) );
 				}
 				if ( ! empty( $opts['googleplus'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'wpseo googleplus meta data option is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Add Google+ specific post meta data</strong> option under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 				if ( ! empty( $opts['plus-publisher'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'wpseo google plus publisher option is defined' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the <strong>Google Publisher Page</strong> value entered under the <a href="%s">Yoast SEO / Social / Google+</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=wpseo_social#top#google' ) ) );
 				}
 			}
@@ -1475,8 +1493,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opts = get_option( 'seo_ultimate' );
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre.'seo ultimate opengraph module is enabled' );
+						}
 						$this->p->notice->err( $err_pre.sprintf( __( 'please disable the <strong>Open Graph Integrator</strong> module in the <a href="%s">SEO Ultimate Module Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=seo' ) ) );
 					}
 				}
@@ -1486,18 +1505,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->is_avail['seo']['aioseop'] ) {
 				$opts = get_option( 'aioseop_options' );
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'aioseop social meta feature is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please deactivate the <strong>Social Meta</strong> feature in the <a href="%s">All in One SEO Pack Feature Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/modules/aioseop_feature_manager.php' ) ) );
 				}
 				if ( isset( $opts['aiosp_google_disable_profile'] ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'aioseop google plus profile is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please check the <strong>Disable Google Plus Profile</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
 				}
 				if ( isset( $opts['aiosp_schema_markup'] ) && ! empty( $opts['aiosp_schema_markup'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'aioseop schema markup is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
 				}
 			}
@@ -1506,23 +1528,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->is_avail['seo']['autodescription'] ) {
 				$the_seo_framework = the_seo_framework();
 				if ( $the_seo_framework->use_og_tags() ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'autodescription open graph meta tags are enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>%1$s</strong> option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), 'Output Open Graph meta tags?', get_admin_url( null, 'admin.php?page=theseoframework-settings' ) ) );
 				}
 				if ( $the_seo_framework->use_facebook_tags() ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'autodescription facebook meta tags are enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>%1$s</strong> option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), 'Output Facebook meta tags?', get_admin_url( null, 'admin.php?page=theseoframework-settings' ) ) );
 				}
 				if ( $the_seo_framework->use_twitter_tags() ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'autodescription twitter meta tags are enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>%1$s</strong> option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), 'Output Twitter meta tags?', get_admin_url( null, 'admin.php?page=theseoframework-settings' ) ) );
 				}
 				if ( $the_seo_framework->is_option_checked( 'knowledge_output' ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'autodescription knowledge graph is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Output Authorized Presence?</strong> option in <a href="%s">The SEO Framework</a> Schema Settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=theseoframework-settings' ) ) );
 				}
 				foreach ( array(
@@ -1534,8 +1560,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'home_modify_time' => 'Add article:modified_time to Home Page',
 				) as $key => $label ) {
 					if ( $the_seo_framework->get_option( $key ) ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre.'autodescription '.$key.' option is enabled' );
+						}
 						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>%1$s</strong> option in <a href="%2$s">The SEO Framework</a> Social Meta Settings.', 'wpsso' ), $label, get_admin_url( null, 'admin.php?page=theseoframework-settings' ) ) );
 					}
 				}
@@ -1545,18 +1572,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->is_avail['seo']['sq'] ) {
 				$opts = json_decode( get_option( 'sq_options' ), true );
 				if ( ! empty( $opts['sq_auto_facebook'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'squirrly seo open graph meta tags are enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck <strong>Add the Social Open Graph objects</strong> in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 				if ( ! empty( $opts['sq_auto_twitter'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'squirrly seo twitter card meta tags are enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck <strong>Add the Twitter card in your tweets</strong> in the <a href="%s">Squirrly SEO</a> Social Media Options.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 				if ( ! empty( $opts['sq_auto_jsonld'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'squirrly seo json-ld markup is enabled' );
+					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 			}
@@ -1584,24 +1614,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_ext_tid === true ) {
-				if ( $this->p->is_avail['util']['um'] &&
-					isset( $this->p->cf['plugin']['wpssoum']['version'] ) ) {
+				$um_info = $this->p->cf['plugin']['wpssoum'];
+
+				if ( ! empty( $um_info['version'] ) ) {	// check for minimum version required
 					$min_version = WpssoConfig::$cf['um']['min_version'];
-					if ( version_compare( $this->p->cf['plugin']['wpssoum']['version'], $min_version, '<' ) ) {
+					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
 					}
+				} elseif ( SucomUtil::installed_plugins( $um_info['base'] ) ) {
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
 				} else {
-					if ( ! function_exists( 'get_plugins' ) ) {
-						require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
-					}
-					$installed_plugins = get_plugins();
-					if ( ! empty( $this->p->cf['plugin']['wpssoum']['base'] ) &&
-						is_array( $installed_plugins[$this->p->cf['plugin']['wpssoum']['base']] ) ) {
-						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
-					} else {
-						$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
-					}
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 				}
 			}
 
@@ -1856,18 +1880,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function plugin_complete_actions( $actions ) {
 			$lca = $this->p->cf['lca'];
 
-			if ( ! empty( $this->iframe_parent_href ) && ! empty( $this->iframe_parent_title ) ) {
+			if ( ! empty( $this->pageref_url ) && ! empty( $this->pageref_title ) ) {
 				foreach ( $actions as $action => &$html ) {
 					switch ( $action ) {
 						case 'plugins_page':
-							$html = '<a href="'.$this->iframe_parent_href.'" target="_parent">'.
-								sprintf( __( 'Return to %s', 'wpsso' ), $this->iframe_parent_title ).'</a>';
+							$html = '<a href="'.$this->pageref_url.'" target="_parent">'.
+								sprintf( __( 'Return to %s', 'wpsso' ), $this->pageref_title ).'</a>';
 							break;
 						default:
 							if ( preg_match( '/^(.*href=")([^"]+)(".*)$/', $html, $matches ) ) {
 								$url = add_query_arg( array(
-									$lca.'_iframe_parent_href' => urlencode( $this->iframe_parent_href ),
-									$lca.'_iframe_parent_title' => urlencode( $this->iframe_parent_title ),
+									$lca.'_pageref_url' => urlencode( $this->pageref_url ),
+									$lca.'_pageref_title' => urlencode( $this->pageref_title ),
 								), $matches[2] );
 								$html = $matches[1].$url.$matches[3];
 							}
@@ -1882,9 +1906,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( strpos( $url, '?activate=true' ) ) {
-				if ( ! empty( $this->iframe_parent_href ) && ! empty( $this->iframe_parent_title ) ) {
+				if ( ! empty( $this->pageref_url ) ) {
 					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );	// green status w check mark
-					$url = $this->iframe_parent_href;
+					$url = $this->pageref_url;
 				}
 			}
 

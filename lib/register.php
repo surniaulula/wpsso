@@ -90,8 +90,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
-
-			set_transient( 'wpsso_activation_redirect', true, 60 * 60 );
 		}
 
 		private function deactivate_plugin() {

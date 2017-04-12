@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function plugin_install_inline_style( $hook_name ) {
+		private function plugin_install_inline_style( $hook_name ) {	// $hook_name = plugin-install.php
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}

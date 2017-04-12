@@ -20,9 +20,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'seou' => 'SEO Ultimate',
 				'sq' => 'Squirrly SEO',
 			),
-			'util' => array(
-				'um' => 'Update Manager',
-			),
 		);
 
 		public function __construct( &$plugin ) {
@@ -36,8 +33,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret['post_thumbnail'] = function_exists( 'has_post_thumbnail' ) ? true : false;
 			$ret['amp_endpoint'] = function_exists( 'is_amp_endpoint' ) ? true : false;
 
-			foreach ( array( 'aop', 'head' ) as $key )
+			foreach ( array( 'aop', 'head' ) as $key ) {
 				$ret[$key] = $this->get_avail_check( $key );
+			}
 
 			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], 
 				self::$extend_lib_checks ) as $sub => $lib ) {
@@ -142,14 +140,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							// only load on the settings pages
 							if ( $is_admin ) {
 								$page = basename( $_SERVER['PHP_SELF'] );
-								if ( $page === 'admin.php' || $page === 'options-general.php' )
+								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
 									$ret[$sub]['*'] = $ret[$sub][$id] = true;
+								}
 							}
 							break;
 						case 'admin-post':
 						case 'admin-meta':
-							if ( $is_admin )
+							if ( $is_admin ) {
 								$ret[$sub]['*'] = $ret[$sub][$id] = true;
+							}
 							break;
 						case 'util-checkimgdims':
 							$chk['optval'] = 'plugin_check_img_dims';
@@ -170,9 +170,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'util-shorten':
 							$chk['optval'] = 'plugin_shortener';
-							break;
-						case 'util-um':
-							$chk['plugin'] = 'wpsso-um/wpsso-um.php';
 							break;
 						case 'util-wpseo_meta':
 							$chk['optval'] = 'plugin_wpseo_social_meta';
