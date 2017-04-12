@@ -339,12 +339,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page (instead of the WordPress plugins page).
-	* Added a filter to allow the WPSSO Update Manager to be downloaded and installed from the Plugin Extensions and Pro Licenses settings page.
+	* Added a filter to allow the WPSSO Update Manager to be installed from the Plugin Extensions and Pro Licenses settings page.
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
 	* Fixed the default Organization ID for an Organization selected in the Social Settings metabox (the Organization was defaulting to 'site' instead of 'none').
 * *Developer Notes*
-	* None
+	* Moved/renamed the extension registration booleans from `is_avail[$name]` to `is_avail['p_ext'][$name]`.
 
 **Version 3.40.12 (2017/04/08)**
 
@@ -569,7 +569,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.40.13-a.1 =
 
-(2017/04/12) After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
+(2017/04/12) Fixed the default Organization ID for an Organization selected in the Social Settings metabox. After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
 
 = 3.40.12 =
 
