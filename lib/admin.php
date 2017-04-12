@@ -89,6 +89,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
 				 * Skip if the update manager extension is active, since it provides more complete 
 				 * plugin data than what's available from the readme.
+				 *
+				 * Note: Update manager versions before 1.6.0 hooked the 'plugins_api' filter,
+				 * which is fired before 'plugins_api_result'. external_plugin_data() returns
+				 * the plugin object as-is if the slug is defined properly, so it should work
+				 * fine with older versions (we require 1.6.0 anyway, just in case).
 				 */
 				if ( empty( $this->p->is_avail['p_ext']['um'] ) ) {
 					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
@@ -425,7 +430,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $res;
 			}
 
-			// get the config extension acronym
+			// get the extension acronym for the config
 			$ext = $this->p->cf['*']['slug'][$args->slug];
 
 			// make sure we have a config for that slug
