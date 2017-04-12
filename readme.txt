@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.13-dev.3 (2017/04/11)**
+**Version 3.40.13-a.1 (2017/04/12)**
 
 * *New Features*
 	* None
@@ -567,9 +567,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.13-dev.3 =
+= 3.40.13-a.1 =
 
-(2017/04/11) After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
+(2017/04/12) After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
 
 = 3.40.12 =
 
