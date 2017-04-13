@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.13-b.1 (2017/04/13)**
+**Version 3.40.13-rc.1 (2017/04/14)**
 
 * *New Features*
 	* None
@@ -567,9 +567,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.13-b.1 =
+= 3.40.13-rc.1 =
 
-(2017/04/13) Fixed the default Organization ID for an Organization selected in the Social Settings metabox. After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
+(2017/04/14) Fixed the default Organization ID for an Organization selected in the Social Settings metabox. After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page.
 
 = 3.40.12 =
 
