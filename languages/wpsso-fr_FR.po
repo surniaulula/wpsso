@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-04-13 08:50+0200\n"
-"PO-Revision-Date: 2017-04-13 08:59+0200\n"
+"POT-Creation-Date: 2017-04-13 09:19+0200\n"
+"PO-Revision-Date: 2017-04-13 09:20+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2224,7 +2224,7 @@ msgid "After purchasing license(s) for the %1$s plugin, or any of its Pro extens
 msgstr "Après l'achat de licence(s) pour %1$s, ou pour ses extensions Pro, vous recevrez un email avec un ID d'authentification unique et des instructions d'installation."
 
 #: lib/messages.php:984
-msgid "Enter the Authentication ID(s) in this settings page to upgrade the Free version and enable Pro version updates."
+msgid "Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates."
 msgstr "Entrez les IDs d'authentification sur cette page de réglages pour mettre à niveau la version gratuite, et accéder aux mises à jour pour les versions Pro."
 
 #: lib/messages.php:984
@@ -2416,7 +2416,7 @@ msgstr "Pour activer les fonctionnalités Pro et permettre a l'extensions de s'a
 
 #: lib/messages.php:1138
 msgid "An Authentication ID has been provided for %1$s on the %2$s settings page, but the Pro version is not yet installed &mdash; don't forget to update the plugin to install the latest Pro version."
-msgstr "Un ID d'authentification a été fourni pour %1$s sur la page de réglages %2$s, mais la version Pro n'est pas encore installé &mdash; n'oubliez pas de mettre à jour l'extension pour installer la version Pro courrante."
+msgstr "Un ID d'authentification a été fourni pour %1$s sur la page de réglages %2$s, mais la version Pro n'est pas encore installé &mdash; n'oubliez pas de mettre à jour l'extension pour installer la version Pro courante."
 
 #: lib/messages.php:1148
 msgid "WordPress Plugins"
@@ -2435,8 +2435,8 @@ msgid "Install and activate the %1$s extension from the %2$s settings page."
 msgstr "Installer et activer l'extension %1$s à partir de la page de réglages %2$s."
 
 #: lib/messages.php:1156
-msgid "The %1$s extension can be activated from the %2$s page."
-msgstr "L'extension %1$s peut être activée à partir de la page %2$s."
+msgid "The %1$s extension can be activated from the %2$s settings page."
+msgstr "L'extension %1$s peut être activée à partir de la page de réglages %2$s."
 
 #: lib/messages.php:1160
 msgid "Once the %s extension is active, one or more Pro version updates may be available for your licensed plugin(s)."
@@ -3424,7 +3424,7 @@ msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #: lib/util.php:837
-msgid "The PHP preg_replace() function failed to remove the %1$ss meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
+msgid "The PHP preg_replace() function failed to remove the %1$s meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre HTML qui corrompt les balises méta de %1$s."
 
 #: lib/util.php:873
