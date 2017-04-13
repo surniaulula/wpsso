@@ -1272,7 +1272,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$links[] = '<strong>'.__( 'Want to say thank you?', 'wpsso' ).'</strong><br/>'.
 						'<a href="'.$info['url']['review'].'" target="_blank">'.
 						sprintf( __( 'Please rate %1$s %2$s at %3$s', 'wpsso' ), 
-							$info['short'], '<span class="wpsso-rate-stars"></span>', 'WP.org' ).'</a>';
+							$info['short'], '<span class="wpsso-rate-stars"></span>', 'WordPress.org' ).'</a>';
 				}
 
 				if ( ! empty( $links ) ) {

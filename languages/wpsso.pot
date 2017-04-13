@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.13-"
-"b.1\n"
+"rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,7 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:921 lib/messages.php:1166
+#: lib/admin.php:921 lib/messages.php:1169
 msgctxt "submit button"
 msgid "Check for Pro Update(s)"
 msgstr ""
@@ -2297,8 +2297,8 @@ msgstr ""
 #: lib/messages.php:646
 msgid ""
 "A preferred URL shortening service for %s plugin filters and/or extensions "
-"that may need to shorten URLs &mdash; don't forget to define the Service API "
-"Keys for the URL shortening service of your choice."
+"that may need to shorten URLs &mdash; don't forget to define the service API "
+"keys for the URL shortening service of your choice."
 msgstr ""
 
 #: lib/messages.php:650
@@ -2901,63 +2901,68 @@ msgid ""
 "available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:1166
+#: lib/messages.php:1167
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:1166
+#: lib/messages.php:1169
 msgid ""
-"Use the <em>%1$s</em> button from any %2$s settings page to retrieve the "
-"latest update information, or <a href=\"%3$s\" target=\"_blank\">download "
-"the latest %4$s extension version</a> and install the ZIP file manually."
+"If an update for %1$s is not available yet, you can use the <em>%2$s</em> "
+"button from the %3$s settings page to force an immediate refresh of all "
+"update information."
 msgstr ""
 
-#: lib/messages.php:1170 lib/register.php:198
+#: lib/messages.php:1169
+msgctxt "lib file description"
+msgid "Update Manager"
+msgstr ""
+
+#: lib/messages.php:1173 lib/register.php:198
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
 "updates and features."
 msgstr ""
 
-#: lib/messages.php:1170
+#: lib/messages.php:1173
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:1185
+#: lib/messages.php:1188
 msgid ""
 "<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
 "you to license the Pro version within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:1187
+#: lib/messages.php:1190
 msgid ""
 "<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
 "you to update the Free plugin within seconds of your purchase."
 msgstr ""
 
-#: lib/messages.php:1189
+#: lib/messages.php:1192
 msgid ""
 "<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees "
 "for support and updates!"
 msgstr ""
 
-#: lib/messages.php:1193
+#: lib/messages.php:1196
 msgid ""
 "<strong>The development of %1$s is driven by user requests</strong> &mdash; "
 "we welcome your suggestions to improve the plugin and its extensions."
 msgstr ""
 
-#: lib/messages.php:1194
+#: lib/messages.php:1197
 msgid ""
 "<strong>A terrific rating is a great way to encourage us!</strong> &mdash; "
 "and it only takes a minute or less."
 msgstr ""
 
-#: lib/messages.php:1207
+#: lib/messages.php:1210
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."
@@ -3443,12 +3448,12 @@ msgstr ""
 
 #: lib/submenu/advanced.php:50
 msgctxt "metabox tab"
-msgid "Social / Custom Meta"
+msgid "Custom Meta"
 msgstr ""
 
 #: lib/submenu/advanced.php:52
 msgctxt "metabox tab"
-msgid "Service API Keys"
+msgid "Service APIs"
 msgstr ""
 
 #: lib/submenu/advanced.php:66

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.13-b.1',		// plugin version
+					'version' => '3.40.13-rc.1',		// plugin version
 					'opt_version' => '514',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -851,7 +851,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
-					// Social / Custom Meta Tab
+					// Custom Meta Tab
 					'plugin_schema_type_col_media' => 0,
 					'plugin_schema_type_col_post' => 1,
 					'plugin_schema_type_col_term' => 0,
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
-					// Service API Keys Tab
+					// Service APIs Tab
 					'plugin_shortener' => 'none',
 					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
 					'plugin_min_shorten' => 23,
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'min_version' => '1.6.0-b.1',	// minimum update manager version (hard limit)
+				'min_version' => '1.6.0-rc.1',	// minimum update manager version (hard limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',

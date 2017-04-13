@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			switch ( $hook_name ) {
 
-				case ( preg_match( '/_page_wpsso-(site)?licenses/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
 					}
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_wpsso-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
@@ -156,6 +156,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
+			$lca = $this->p->cf['lca'];
 			$plugin_version = WpssoConfig::get_version();
 
 			wp_enqueue_style( 'sucom-admin-page',
@@ -166,8 +167,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$sort_cols = WpssoMeta::get_sortable_columns();
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
-				$menu = 'wpsso-'.key( $this->p->cf['*']['lib']['submenu'] );
-				$sitemenu = 'wpsso-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
+				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
+				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
 					WPSSO_MENU_ICON_HIGHLIGHT ? true : false;
 
@@ -192,12 +193,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		font-weight:normal;
 		font-style:normal;
 	}
-	.column-wpsso_og_img { 
+	.column-'.$lca.'_og_img { 
 		width:'.$sort_cols['og_img']['width'].' !important;
 		min-width:'.$sort_cols['og_img']['width'].' !important;
 		max-width:'.$sort_cols['og_img']['width'].' !important;
 	}
-	.column-wpsso_og_img .preview_img { 
+	.column-'.$lca.'_og_img .preview_img { 
 		width:'.$sort_cols['og_img']['width'].';
 		min-width:'.$sort_cols['og_img']['width'].';
 		max-width:'.$sort_cols['og_img']['width'].';
@@ -211,60 +212,60 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		margin:0;
 		padding:0;
 	}
-	.column-wpsso_schema_type {
+	.column-'.$lca.'_schema_type {
 		width:'.$sort_cols['schema_type']['width'].' !important;
 		min-width:'.$sort_cols['schema_type']['width'].' !important;
 		max-width:'.$sort_cols['schema_type']['width'].' !important;
 		white-space:nowrap;
 		overflow:hidden;
 	}
-	.column-wpsso_og_desc {
+	.column-'.$lca.'_og_desc {
 		width:'.$sort_cols['og_desc']['width'].';
 		min-width:'.$sort_cols['og_desc']['width'].';
 		overflow:hidden;
 	}
-	td.column-wpsso_og_desc,
-	td.column-wpsso_schema_type {
+	td.column-'.$lca.'_og_desc,
+	td.column-'.$lca.'_schema_type {
 		direction:ltr;
 		font-family:Helvetica;
 		text-align:left;
 		word-wrap:break-word;
 	}
 	@media ( max-width:1295px ) {
-		th.column-wpsso_og_desc,
-		td.column-wpsso_og_desc {
+		th.column-'.$lca.'_og_desc,
+		td.column-'.$lca.'_og_desc {
 			display:none;
 		}
 	}
-	.wpsso-notice.notice {
+	.'.$lca.'-notice.notice {
 		padding:0;
 	}
-	.wpsso-notice ul {
+	.'.$lca.'-notice ul {
 		margin:5px 0 5px 40px;
 		list-style:disc outside none;
 	}
-	.wpsso-notice.notice-success .notice-label:before,
-	.wpsso-notice.notice-info .notice-label:before,
-	.wpsso-notice.notice-warning .notice-label:before,
-	.wpsso-notice.notice-error .notice-label:before {
+	.'.$lca.'-notice.notice-success .notice-label:before,
+	.'.$lca.'-notice.notice-info .notice-label:before,
+	.'.$lca.'-notice.notice-warning .notice-label:before,
+	.'.$lca.'-notice.notice-error .notice-label:before {
 		vertical-align:bottom;
 		font-family:dashicons;
 		font-size:1.2em;
 		margin-right:6px;
 	}
-	.wpsso-notice.notice-success .notice-label:before {
+	.'.$lca.'-notice.notice-success .notice-label:before {
 		content:"\f147";	/* yes */
 	}
-	.wpsso-notice.notice-info .notice-label:before {
+	.'.$lca.'-notice.notice-info .notice-label:before {
 		content:"\f537";	/* sticky */
 	}
-	.wpsso-notice.notice-warning .notice-label:before {
+	.'.$lca.'-notice.notice-warning .notice-label:before {
 		content:"\f227";	/* flag */
 	}
-	.wpsso-notice.notice-error .notice-label:before {
+	.'.$lca.'-notice.notice-error .notice-label:before {
 		content:"\f488";	/* megaphone */
 	}
-	.wpsso-notice .notice-label {
+	.'.$lca.'-notice .notice-label {
 		display:table-cell;
 		vertical-align:top;
 		padding:10px;
@@ -274,25 +275,25 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		background:#fcfcfc;
 		border-right:1px solid #ddd;
 	}
-	.wpsso-notice .notice-message {
+	.'.$lca.'-notice .notice-message {
 		display:table-cell;
 		vertical-align:top;
 		padding:10px 20px;
 		margin:0;
 		line-height:1.5em;
 	}
-	.wpsso-notice .notice-message ul li {
+	.'.$lca.'-notice .notice-message ul li {
 		margin-top:3px;
 		margin-bottom:3px;
 	}
-	.wpsso-notice .notice-message a {
+	.'.$lca.'-notice .notice-message a {
 		text-decoration:none;
 	}
-	.wpsso-dismissible .notice-dismiss:before {
+	.'.$lca.'-dismissible .notice-dismiss:before {
 		display:inline-block;
 		margin-right:2px;
 	}
-	.wpsso-dismissible .notice-dismiss {
+	.'.$lca.'-dismissible .notice-dismiss {
 		float:right;
 		position:relative;
 		padding:10px;
@@ -300,12 +301,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		top:0;
 		right:0;
 	}
-	.wpsso-dismissible .notice-dismiss-text {
+	.'.$lca.'-dismissible .notice-dismiss-text {
 		display:inline-block;
 		font-size:12px;
 		vertical-align:top;
 	}
-	.wpsso-rate-stars {
+	.'.$lca.'-rate-stars {
 		font-family:"Star";
 		font-size:0.9em;
 		width:5.4em;
@@ -315,10 +316,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		overflow:hidden;
 		margin:0 0 1.2em 0;
 	}
-	.wpsso-rate-stars:before {
+	.'.$lca.'-rate-stars:before {
 		content:"\53\53\53\53\53";
 	}
-	.wpsso-rate-heart:before {
+	.'.$lca.'-rate-heart:before {
 		color:red;
 		font-size:1.1em;
 		width:1.1em;
@@ -354,7 +355,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 	}';
 			}
 
-			$classname = apply_filters( 'wpsso_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+			$classname = apply_filters( $lca.'_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 
 			if ( $classname !== false && class_exists( $classname ) ) {
 				$custom_style_css = call_user_func( array( $classname, 'process' ), $custom_style_css );
