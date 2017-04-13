@@ -249,13 +249,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// called by the show_setting_page() method
 		// extended by the sitesubmenu classes to define the site options instead
-		protected function set_form_object( $menu_ext = '' ) {	// $menu_ext required for text_domain (defaults to lca)
+		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
 			$def_opts = $this->p->opt->get_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME,
 				$this->p->options, $def_opts, $menu_ext );
 		}
 
-		protected function &get_form_object( $menu_ext = '' ) {	// $menu_ext required for text_domain (defaults to lca)
+		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain
 			if ( ! isset( $this->form ) ||
 				$this->form->get_menu_ext() !== $menu_ext ) {	// just in case
 				$this->set_form_object( $menu_ext );
@@ -883,10 +883,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				case 'sitesetup':
 					break;
 				default:
-					if ( $this->menu_lib === 'profile' )
+					if ( $this->menu_lib === 'profile' ) {
 						echo $this->get_submit_buttons( _x( 'Save All Profile Settings',
 							'submit button', 'wpsso' ) );
-					else echo $this->get_submit_buttons();
+					} else {
+						echo $this->get_submit_buttons();
+					}
 					break;
 			}
 			echo '</form>', "\n";
@@ -929,12 +931,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// Check for Pro Update(s) exceptions
 			if ( strpos( $this->menu_id, 'um-general' ) === false ||
-				empty( $this->p->options['plugin_'.$lca.'_tid'] ) )
-					unset( $secondary['check_for_updates'] );
+				empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
+				unset( $secondary['check_for_updates'] );
+			}
 
 			// Reload Default Sizes exceptions
-			if ( $this->menu_id !== 'image-dimensions' )
+			if ( $this->menu_id !== 'image-dimensions' ) {
 				unset( $secondary['reload_default_sizes'] );
+			}
 
 			$secondary = apply_filters( $lca.'_secondary_action_buttons', $secondary,
 				$this->menu_id, $this->menu_name, $this->menu_lib );
@@ -1257,11 +1261,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
-					$links[] = sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a> (Pro version)',
-						'wpsso' ), $info['url']['support'] );
+					$links[] = sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a>',
+						'wpsso' ), $info['url']['support'] ).' ('.__( 'Pro version', 'wpsso' ).')';
 				} elseif ( ! empty( $info['url']['forum'] ) ) {
-					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a> (Free version)',
-						'wpsso' ), $info['url']['forum'] );
+					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a>',
+						'wpsso' ), $info['url']['forum'] ).' ('.__( 'Free version', 'wpsso' ).')';
 				}
 
 				if ( ! empty( $info['url']['review'] ) ) {
@@ -1324,12 +1328,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex = 0;
 			$lca = $this->p->cf['lca'];
 			$total = count( $this->p->cf['plugin'] );
+			$row_span = $network ? 4 : 3;
+			$col_span = $network ? 2 : 3;
 
 			echo '<table class="sucom-settings '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
-			echo '<tr><td colspan="'.( $network ? 5 : 4 ).'">'.
-				$this->p->msgs->get( 'info-plugin-tid'.
-					( $network ? '-network' : '' ) ).'</td></tr>'."\n";
+
+			echo '<tr><td colspan="'.( $col_span + 1 ).'">'.
+				$this->p->msgs->get( 'info-plugin-tid'.( $network ? '-network' : '' ) ).
+					'</td></tr>'."\n";
 
 			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
 				$num++;
@@ -1383,68 +1390,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				// logo image
-				echo '<tr><td style="width:148px; padding:10px;" rowspan="3" valign="top" align="left">'."\n";
+				echo '<tr><td style="width:168px; padding:10px 30px 10px 10px; vertical-align:top;"'.
+					' width="168" rowspan="'.$row_span.'" valign="top" align="left">'."\n";
 				echo '<img '.$img_src.' width="128" height="128" />';
 				echo '</td>'."\n";
 
 				// plugin name
-				echo '<td colspan="'.( $network ? 4 : 3 ).'" style="padding:10px 0 0 0;">
-					<p><strong>'.$info['name'].'</strong></p>';
+				echo '<td colspan="'.$col_span.'" style="padding:10px 0 0 0; width:100%;"><p><strong>'.$info['name'].'</strong></p>';
+
 				if ( ! empty( $info['desc'] ) ) {
 					echo '<p>'._x( $info['desc'], 'plugin description', 'wpsso' ).'</p>';
 				}
+
 				if ( ! empty( $links ) ) {
 					echo '<div class="row-actions visible">'.implode( ' | ', $links ).'</div>';
 				}
+
 				echo '</td></tr>'."\n";
 
-				if ( $network ) {
-					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
-							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
-								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
-							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
-								'tid mono', '', 0, '', false, ++$tabindex ).'</td>'.
-							self::get_option_site_use( 'plugin_'.$ext.'_tid', $this->form, $network, true );
+				if ( ! empty( $info['update_auth'] ) ||
+					! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
+
+					echo '<tr>';
+					echo $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+						'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' );
+
+					if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
+						echo '<td'.( $network ? ' width="100%"' : '' ).'>'.
+							$this->form->get_input( 'plugin_'.$ext.'_tid',
+								'tid mono', '', 0, '', false, ++$tabindex ).'</td>';
+
+						if ( $network ) {
+							echo '</tr><tr>';
+							echo self::get_option_site_use( 'plugin_'.$ext.'_tid', $this->form, $network, true );	// th and td
 						} else {
-							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
-								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
-							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
-								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_'.$ext.'_tid',
-									'tid mono', '', 0, '', false, ++$tabindex ) ).
-							'</td></tr>'."\n";
+							$qty_used = class_exists( 'SucomUpdate' ) ? SucomUpdate::get_option( $ext, 'qty_used' ) : false;
+							echo '<td width="100%"><p>'.( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td>';
 						}
 					} else {
-						echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'."\n";
+						echo '<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
+							$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
+							$this->form->get_input( 'plugin_'.$ext.'_tid',
+								'tid mono', '', 0, '', false, ++$tabindex ) ).'</td>';
 					}
+					echo '</tr>'."\n";
 				} else {
-					if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-						if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
-							$qty_used = class_exists( 'SucomUpdate' ) ?
-								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
-								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
-							'<td class="tid">'.$this->form->get_input( 'plugin_'.$ext.'_tid',
-								'tid mono', '', 0, '', false, ++$tabindex ).
-							'</td><td><p>'.( empty( $qty_used ) ? '' :
-								$qty_used.' Licenses Assigned' ).'</p></td></tr>'."\n";
-						} else {
-							echo '<tr>'.$this->form->get_th_html( sprintf( _x( '%s Authentication ID',
-								'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' ).
-							'<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
-								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_'.$ext.'_tid',
-									'tid mono', '', 0, '', false, ++$tabindex ) ).
-							'</td></tr>'."\n";
-						}
+					if ( $network ) {
+						echo '<tr></tr>'."\n";
+						echo '<tr><td>&nbsp;</td></tr>'."\n";
 					} else {
-						echo '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</tr>'."\n";
+						echo '<tr><td>&nbsp;</td><td></td><td width="100%"></td></tr>'."\n";
 					}
 				}
 
-				echo '<tr><td'.( $num < $total ? ' style="border-bottom:1px dotted #ddd;"' : '' ).
-					' colspan="'.( $network ? 4 : 3 ).'">&nbsp;</td></tr>'."\n";
+				echo '<tr><td'.( $num < $total ? ' style="border-bottom:1px dotted #ddd; height:5px;"' : '' ).
+					' colspan="'.$col_span.'"></td></tr>'."\n";
 			}
 			echo '</table>'."\n";
 		}
@@ -1472,7 +1472,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
-				$this->p->notice->err( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social websites &mdash; please uncheck that option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ) );
+				$this->p->notice->err( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck that option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ) );
 			}
 
 			// Yoast SEO
@@ -1811,8 +1811,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
 			if ( $network ) {
-				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ).
-				( $enabled || self::$pkg['wpsso']['aop'] ?
+				return $form->get_th_html( _x( 'Site Use',
+					'option label (very short)', 'wpsso' ),
+						'site_use' ).( $enabled || self::$pkg['wpsso']['aop'] ?
 					'<td class="site_use">'.$form->get_select( $name.':use',
 						WpssoConfig::$cf['form']['site_option_use'], 'site_use' ).'</td>' :
 					'<td class="blank site_use">'.$form->get_select( $name.':use',
