@@ -75,8 +75,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'err', $msg_txt, $user_id, $msg_id, $dismiss );
 		}
 
-		public function warn( $msg_txt, $user_id = true, $msg_id = false, $dismiss = false ) {
-			$this->log( 'warn', $msg_txt, $user_id, $msg_id, $dismiss );
+		public function warn( $msg_txt, $user_id = true, $msg_id = false, $dismiss = false, $silent = false ) {
+			$payload = array( 'silent' => $silent ? true : false );
+			$this->log( 'warn', $msg_txt, $user_id, $msg_id, $dismiss, $payload );
 		}
 
 		public function upd( $msg_txt, $user_id = true, $msg_id = false, $dismiss = false ) {
@@ -213,8 +214,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					continue;
 				}
 				foreach ( $user_notices[$msg_type] as $msg_txt => $payload ) {
-					if ( empty( $msg_txt ) ||
-						isset( $all_msgs[$msg_txt] ) ) {	// skip duplicates
+					if ( empty( $msg_txt ) || isset( $all_msgs[$msg_txt] ) ) {	// skip duplicates
 						continue;
 					}
 					$all_msgs[$msg_txt] = true;	// avoid duplicates

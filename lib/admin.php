@@ -1472,7 +1472,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
-				$this->p->notice->err( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck that option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ) );
+				$warn_dis_key = 'wordpress-search-engine-visibility';
+				$warn_dis_time = $this->p->cf['form']['time_by_name']['month'];
+				$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, $warn_dis_time, true );	// $silent = true
 			}
 
 			// Yoast SEO
@@ -1623,10 +1625,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-
 					// found at least one plugin with an auth id
 					$have_ext_tid = true;
-
 					if ( ! self::$pkg[$ext]['pdir'] ) {
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
 							array( 'lca' => $ext ) ) );
@@ -1636,23 +1636,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_ext_tid === true ) {
 				$um_info = $this->p->cf['plugin']['wpssoum'];
-
-				// if active, the version should be available
+				// if the update manager is active, the version should be available
 				if ( ! empty( $um_info['version'] ) ) {
-
-					// minimum um version required
+					// check for minimum update manager version required
 					$min_version = WpssoConfig::$cf['um']['min_version'];
-
 					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
 					}
-
-				// if not active, check if installed
+				// if the update manager is not active, check if installed
 				} elseif ( SucomUtil::installed_plugins( $um_info['base'] ) ) {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
-
-				// um is not active or installed
+				// update manager is not active or installed
 				} else {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
 				}
@@ -1661,7 +1656,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( current_user_can( 'manage_options' ) ) {
 				foreach ( array( 'wp', 'php' ) as $key ) {
 					if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
-
 						switch ( $key ) {
 							case 'wp':
 								global $wp_version;
@@ -1671,22 +1665,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$app_version = phpversion();
 								break;
 						}
-
 						$app_label = WpssoConfig::$cf[$key]['label'];
 						$rec_version = WpssoConfig::$cf[$key]['rec_version'];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
-
 							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
 								'app_label' => $app_label,
 								'app_version' => $app_version,
 								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
-
-							$this->p->notice->log( 'warn', $warn_msg, true,
-								'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version,
-									2592000, array( 'silent' => true ) );	// dismiss for 30 days
+							$warn_dis_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
+							$warn_dis_time = $this->p->cf['form']['time_by_name']['month'];
+							$this->p->notice->warn( $warn_msg, true, $warn_dis_key, $warn_dis_time, true );	// $silent = true
 						}
 					}
 				}
@@ -1714,9 +1705,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ) {
 					continue;
 				} elseif ( strpos( $html, '<head>' ) !== false ) {
-					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+					// skip if notices already shown
+					if ( $this->p->notice->is_admin_pre_notices() ) {
+						// allow warning to be dismissed until the next theme update
+						$warn_dis_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), true );
+							true, $warn_dis_key, true );
 					}
 					break;
 				}

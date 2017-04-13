@@ -315,152 +315,152 @@ msgid ""
 "installed and/or enabled."
 msgstr ""
 
-#: lib/admin.php:1475
+#: lib/admin.php:1477
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social crawlers from indexing this site. This "
 "is not compatible with the purpose of sharing content on social sites "
-"&mdash; please uncheck that option to allow search engines and social "
+"&mdash; please uncheck the option to allow search engines and social "
 "crawlers to access your content."
 msgstr ""
 
-#: lib/admin.php:1485
+#: lib/admin.php:1487
 msgid ""
 "please uncheck the <strong>Add Open Graph meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1491
+#: lib/admin.php:1493
 msgid ""
 "please uncheck the <strong>Add Twitter card meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1497
+#: lib/admin.php:1499
 msgid ""
 "please uncheck the <strong>Add Google+ specific post meta data</strong> "
 "option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings "
 "tab."
 msgstr ""
 
-#: lib/admin.php:1503
+#: lib/admin.php:1505
 msgid ""
 "please remove the <strong>Google Publisher Page</strong> value entered under "
 "the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1515
+#: lib/admin.php:1517
 msgid ""
 "please disable the <strong>Open Graph Integrator</strong> module in the <a "
 "href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1527
+#: lib/admin.php:1529
 msgid ""
 "please deactivate the <strong>Social Meta</strong> feature in the <a href="
 "\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1533
+#: lib/admin.php:1535
 msgid ""
 "please check the <strong>Disable Google Plus Profile</strong> option in the "
 "<a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1539
+#: lib/admin.php:1541
 msgid ""
 "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a "
 "href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1550 lib/admin.php:1556 lib/admin.php:1562 lib/admin.php:1582
+#: lib/admin.php:1552 lib/admin.php:1558 lib/admin.php:1564 lib/admin.php:1584
 msgid ""
 "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO "
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1568
+#: lib/admin.php:1570
 msgid ""
 "please uncheck the <strong>Output Authorized Presence?</strong> option in <a "
 "href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr ""
 
-#: lib/admin.php:1594
+#: lib/admin.php:1596
 msgid ""
 "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a "
 "href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1600
+#: lib/admin.php:1602
 msgid ""
 "please uncheck <strong>Add the Twitter card in your tweets</strong> in the "
 "<a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1606
+#: lib/admin.php:1608
 msgid ""
 "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> "
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1733
+#: lib/admin.php:1727
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1745
+#: lib/admin.php:1739
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1751
+#: lib/admin.php:1745
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1759
+#: lib/admin.php:1753
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1764
+#: lib/admin.php:1758
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1767
+#: lib/admin.php:1761
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1780
+#: lib/admin.php:1774
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1785
+#: lib/admin.php:1779
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1793
+#: lib/admin.php:1787
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1801
+#: lib/admin.php:1795
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:1814
+#: lib/admin.php:1808
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1918
+#: lib/admin.php:1912
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:1940
+#: lib/admin.php:1934
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -533,11 +533,11 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:102
+#: lib/com/notice.php:103
 msgid "This notice may be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:107
+#: lib/com/notice.php:108
 msgid "Reference URL: %s"
 msgstr ""
 
