@@ -563,11 +563,11 @@ msgid ""
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:369
+#: lib/com/notice.php:373
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:416
+#: lib/com/notice.php:419
 msgid "Dismiss"
 msgstr ""
 

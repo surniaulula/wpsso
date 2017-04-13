@@ -305,23 +305,27 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismiss = array();
 			$user_id = get_current_user_id();
 
-			if ( empty( $user_id ) ||
-				! current_user_can( 'edit_user', $user_id ) )
-					die( '-1' );
+			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
+				die( '-1' );
+			}
 
 			check_ajax_referer( __FILE__, '_ajax_nonce', true );
 
 			// read arguments
-			foreach ( array( 'id', 'time' ) as $key )
+			foreach ( array( 'id', 'time' ) as $key ) {
 				$dismiss[$key] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
+			}
 
-			if ( empty( $dismiss['id'] ) )
+			if ( empty( $dismiss['id'] ) ) {
 				die( '-1' );
+			}
 
 			// site specific user options
 			$user_dismissed = get_user_option( $this->dis_name, $user_id );
-			if ( ! is_array( $user_dismissed ) )
+
+			if ( ! is_array( $user_dismissed ) ) {
 				$user_dismissed = array();
+			}
 
 			// save the message id and expiration time (0 = never)
 			$user_dismissed[$dismiss['id']] = empty( $dismiss['time'] ) ||
@@ -403,8 +407,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			// optionally hide notices if required
 			$style_attr = ' style="'.
-				( empty( $payload['style'] ) ?
-					'' : $payload['style'] ).
+				( empty( $payload['style'] ) ? '' : $payload['style'] ).
 				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ).'"';
 
 			$msg_html = '<div class="'.$this->lca.'-notice '.
@@ -478,29 +481,37 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function &get_user_ids() {
 			$user_ids = array();
-			foreach ( get_users() as $user )
+			foreach ( get_users() as $user ) {
 				$user_ids[] = $user->ID;
+			}
 			return $user_ids;
 		}
 
 		private function &get_user_notices( $user_id = true ) {
-			if ( $user_id === true )
+			if ( $user_id === true ) {
 				$user_id = (int) get_current_user_id();
-			else $user_id = (int) $user_id;	// false = 0
+			} else {
+				$user_id = (int) $user_id;	// false = 0
+			}
 
-			if ( isset( $this->notice_cache[$user_id] ) )
+			if ( isset( $this->notice_cache[$user_id] ) ) {
 				return $this->notice_cache[$user_id];
+			}
 
 			if ( $user_id > 0 ) {
 				$this->notice_cache[$user_id] = get_user_option( $this->opt_name, $user_id );
-				if ( is_array( $this->notice_cache[$user_id] ) )
+				if ( is_array( $this->notice_cache[$user_id] ) ) {
 					$this->notice_cache[$user_id]['have_notices'] = true;
-				else $this->notice_cache[$user_id] = array( 'have_notices' => false );
+				} else {
+					$this->notice_cache[$user_id] = array( 'have_notices' => false );
+				}
 			}
 
-			foreach ( $this->all_types as $msg_type )
-				if ( ! isset( $this->notice_cache[$user_id][$msg_type] ) )
+			foreach ( $this->all_types as $msg_type ) {
+				if ( ! isset( $this->notice_cache[$user_id][$msg_type] ) ) {
 					$this->notice_cache[$user_id][$msg_type] = array();
+				}
+			}
 
 			return $this->notice_cache[$user_id];
 		}
@@ -514,9 +525,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $this->notice_cache[$user_id]['have_notices'] );
 				}
 				if ( empty( $this->notice_cache[$user_id] ) ) {
-					if ( $have_notices )
+					if ( $have_notices ) {
 						delete_user_option( $user_id, $this->opt_name );
-				} else update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
+					}
+				} else {
+					update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
+				}
 			}
 		}
 	}
