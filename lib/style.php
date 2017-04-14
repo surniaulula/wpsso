@@ -117,6 +117,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			$lca = $this->p->cf['lca'];
+			$follow_size = $this->p->cf['follow']['size'];
 			$sidebar_width = $this->p->cf['wp']['right_sidebar']['width'];
 			$sidebar_width_num = filter_var( $sidebar_width, FILTER_SANITIZE_NUMBER_FLOAT );	// remove 'px'
 
@@ -125,20 +126,27 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					array(), $plugin_version );
 
 			$custom_style_css = '
-	.has-right-sidebar #post-body-content {
-		margin-right:'.$sidebar_width.';
+	.has-right-sidebar #post-body-content { margin-right:'.$sidebar_width_num.'px; }
+	.has-right-sidebar .inner-sidebar { width:'.( $sidebar_width_num + 1 ).'px; }
+	.has-right-sidebar .inner-sidebar #side-sortables { width:'.$sidebar_width_num.'px; }
+	.has-right-sidebar .inner-sidebar #side-sortables .postbox { min-width:'.$sidebar_width_num.'px; }
+
+	@media ( max-width:1400px ) {
+		.has-right-sidebar #post-body-content { margin-right:'.( $sidebar_width_num - 15 ).'px; }
+		.has-right-sidebar .inner-sidebar { width:'.( $sidebar_width_num - 15 + 1 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables { width:'.( $sidebar_width_num - 15 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables .postbox { min-width:'.( $sidebar_width_num - 15 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables .postbox .follow-icons img { width:'.( $follow_size - 2 ).'px; height:'.( $follow_size - 2 ).'px; }
 	}
-	.has-right-sidebar .inner-sidebar {
-		width:'.( $sidebar_width_num + 1 ).'px;
-		max-width:'.( $sidebar_width_num + 1 ).'px;
+
+	@media ( max-width:1385px ) {
+		.has-right-sidebar #post-body-content { margin-right:'.( $sidebar_width_num - 30 ).'px; }
+		.has-right-sidebar .inner-sidebar { width:'.( $sidebar_width_num - 30 + 1 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables { width:'.( $sidebar_width_num - 30 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables .postbox { min-width:'.( $sidebar_width_num - 30 ).'px; }
+		.has-right-sidebar .inner-sidebar #side-sortables .postbox .follow-icons img { width:'.( $follow_size - 5 ).'px; height:'.( $follow_size - 5 ).'px; }
 	}
-	.has-right-sidebar .inner-sidebar #side-sortables {
-		width:'.$sidebar_width.';
-		max-width:'.$sidebar_width.';
-	}
-	.has-right-sidebar .inner-sidebar #side-sortables .postbox {
-		min-width:'.$sidebar_width.';
-	}';
+	';
 
 			wp_add_inline_style( 'sucom-settings-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
 		}
@@ -320,6 +328,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '
+	.wp-list-table th.column-title,
+	.wp-list-table td.column-title {
+	        width:25%;
+	}
 	.wp-list-table th#wpseo-score,
 	.wp-list-table th#wpseo-score-readability,
 	.wp-list-table th#wpseo_score,

@@ -1285,11 +1285,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function show_follow_icons() {
-			echo '<div class="follow_icons">';
+			echo '<div class="follow-icons">';
 			$img_size = $this->p->cf['follow']['size'];
 			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url ) {
 				echo '<a href="'.$url.'" target="_blank"><img src="'.WPSSO_URLPATH.$img_rel.'"
-					width="'.$img_size.'" height="'.$img_size.'" border="0" /></a> ';
+					width="'.$img_size.'" height="'.$img_size.'" border="0" /></a>';
 			}
 			echo '</div>';
 		}
