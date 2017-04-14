@@ -343,6 +343,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
 	* Fixed the default Organization ID for an Organization selected in the Social Settings metabox (the Organization was defaulting to 'site' instead of 'none').
+	* Replaced call to WC_Product::get_dimensions() with wc_format_dimensions() for WooCommerce v3.x (Pro version).
+	* Replaced call to WC_Product::get_gallery_attachment_ids() with WC_Product::get_gallery_image_ids() for WooCommerce v3.x (Pro version).
 * *Developer Notes*
 	* Moved/renamed the extension registration booleans from `is_avail[$name]` to `is_avail['p_ext'][$name]`.
 
