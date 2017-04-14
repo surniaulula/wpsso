@@ -507,16 +507,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		protected function not_implemented( $method, $ret = true ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $method.' not implemented in this version',
 					get_class( $this ) );	// log the extended class name
+			}
 			return $ret;
 		}
 
 		protected function must_be_extended( $method, $ret = true ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $method.' must be extended',
 					get_class( $this ) );	// log the extended class name
+			}
 			return $ret;
 		}
 

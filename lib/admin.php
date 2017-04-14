@@ -611,7 +611,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_single_page() {
 			wp_enqueue_script( 'postbox' );
-			$this->p->admin->submenu[$this->menu_id]->add_meta_boxes();
+
+			$this->add_meta_boxes();
 		}
 
 		public function load_setting_page() {
@@ -668,7 +669,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'clear_metabox_prefs':
 							$user_id = get_current_user_id();
 							$user = get_userdata( $user_id );
-							//$user_name = trim( $user->first_name.' '.$user->last_name );
 							$user_name = $user->display_name;
 							WpssoUser::delete_metabox_prefs( $user_id );
 							$this->p->notice->upd( sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.',
@@ -716,22 +716,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			// add child metaboxes first, since they contain the default reset_metabox_prefs()
-			$this->p->admin->submenu[$this->menu_id]->add_meta_boxes();
-
-			if ( ! self::$pkg[$lca]['aop'] ) {
-				add_meta_box( $this->pagehook.'_purchase',
-					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
-						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side' );
-				$this->p->m['util']['user']->reset_metabox_prefs( $this->pagehook,
-					array( 'purchase' ), null, 'side', true );
-			}
-
-			$this->p->admin->submenu[$this->menu_id]->add_side_meta_boxes();
+			$this->add_side_meta_boxes();
+			$this->add_meta_boxes();
 		}
 
 		protected function add_side_meta_boxes() {
 			$lca = $this->p->cf['lca'];
+
+			if ( ! self::$pkg[$lca]['aop'] ) {
+				add_meta_box( $this->pagehook.'_purchase',
+					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
+						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side-top' );
+				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase' ) );
+			}
 
 			// show the help metabox on all pages
 			add_meta_box( $this->pagehook.'_help',
@@ -754,6 +751,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_meta_boxes() {
+			// method is extended by each submenu page
 		}
 
 		public function show_setting_page( $sidebar = true ) {
@@ -770,27 +768,34 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form_object( $menu_ext );	// set form for side boxes and show_form_content()
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.
-				$this->menu_name.'</h1>'."\n";
+			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.$this->menu_name.'</h1>'."\n";
 
-			if ( $sidebar === false ) {
+			if ( $sidebar !== false ) {
+				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
+				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
+
+				echo '<div id="side-top-content">'."\n";
+				do_meta_boxes( $this->pagehook, 'side-top', null );
+				echo '</div><!-- #side-top-content -->'."\n";
+
+				echo '<div id="side-content">'."\n";
+				do_meta_boxes( $this->pagehook, 'side', null );
+				echo '</div><!-- #side-content -->'."\n";
+
+				echo '</div><!-- #side-info-column.inner-sidebar -->'."\n";
+				echo '<div id="post-body" class="has-sidebar">'."\n";
+				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
+			} else {
 				echo '<div id="poststuff" class="metabox-holder">'."\n";
 				echo '<div id="post-body">'."\n";
 				echo '<div id="post-body-content">'."\n";
-			} else {
-				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
-				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
-				do_meta_boxes( $this->pagehook, 'side', null );
-				echo '</div><!-- .inner-sidebar -->'."\n";
-				echo '<div id="post-body" class="has-sidebar">'."\n";
-				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
 			}
 
-			$this->show_form_content();
-			?>
-						</div><!-- .post-body-content -->
-					</div><!-- .post-body -->
-				</div><!-- .metabox-holder -->
+			$this->show_form_content(); ?>
+
+						</div><!-- #post-body-content -->
+					</div><!-- #post-body -->
+				</div><!-- #poststuff.metabox-holder -->
 			</div><!-- .wrap -->
 			<script type="text/javascript">
 				//<![CDATA[

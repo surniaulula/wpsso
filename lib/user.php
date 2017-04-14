@@ -275,8 +275,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function show_metabox_section( $user ) {
-			if ( ! current_user_can( 'edit_user', $user->ID ) )
+			if ( ! current_user_can( 'edit_user', $user->ID ) ) {
 				return;
+			}
 			$lca = $this->p->cf['lca'];
 			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
 			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
@@ -540,70 +541,82 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 				$url = trim( $url );	// just in case
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
+			}
 			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$url );
+			}
 			return $url;
 		}
 
-		public function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $section = '', $force = false ) {
+		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
 			$user_id = get_current_user_id();	// since wp 3.0
-			// define a new state to set for the box_ids given
 			switch ( $meta_name ) {
-				case 'order':	$meta_states = array( 'meta-box-order' ); break ;
-				case 'hidden':	$meta_states = array( 'metaboxhidden' ); break ;
-				case 'closed':	$meta_states = array( 'closedpostboxes' ); break ;
-				default: $meta_states = array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ); break;
+				case 'order':
+				case 'meta-box-order':
+					$meta_states = array( 'meta-box-order' );
+					break;
+				case 'hidden':
+				case 'metaboxhidden':
+					$meta_states = array( 'metaboxhidden' );
+					break;
+				case 'closed':
+				case 'closedpostboxes':
+					$meta_states = array( 'closedpostboxes' );
+					break;
+				default:
+					$meta_states = array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' );
+					break;
 			}
 			foreach ( $meta_states as $state ) {
-				// define the meta_key for that option
 				$meta_key = $state.'_'.$pagehook; 
-				// an empty box_ids array means reset the whole page
-				if ( $force && empty( $box_ids ) )
+				if ( $force && empty( $box_ids ) ) {
 					delete_user_option( $user_id, $meta_key, true );
+				}
 				$is_changed = false;
 				$is_default = false;
-				$opts = get_user_option( $meta_key, $user_id );
-				if ( ! is_array( $opts ) ) {
+				$user_opts = get_user_option( $meta_key, $user_id );
+				if ( ! is_array( $user_opts ) ) {
 					$is_changed = true;
 					$is_default = true;
-					$opts = array();
+					$user_opts = array();
 				}
 				if ( $is_default || $force ) {
 					foreach ( $box_ids as $box_id ) {
 						// change the order only if forced (default is controlled by add_meta_box() order)
-						if ( $force && $state == 'meta-box-order' && ! empty( $opts[$section] ) ) {
+						if ( $force && $state == 'meta-box-order' && ! empty( $user_opts[$context] ) ) {
 							// don't proceed if the metabox is already first
-							if ( strpos( $opts[$section], $pagehook.'_'.$box_id ) !== 0 ) {
-								$boxes = explode( ',', $opts[$section] );
+							if ( strpos( $user_opts[$context], $pagehook.'_'.$box_id ) !== 0 ) {
+								$boxes = explode( ',', $user_opts[$context] );
 								// remove the box, no matter its position in the array
-								if ( $key = array_search( $pagehook.'_'.$box_id, $boxes ) !== false )
+								if ( $key = array_search( $pagehook.'_'.$box_id, $boxes ) !== false ) {
 									unset( $boxes[$key] );
+								}
 								// assume we want to be top-most
 								array_unshift( $boxes, $pagehook.'_'.$box_id );
-								$opts[$section] = implode( ',', $boxes );
+								$user_opts[$context] = implode( ',', $boxes );
 								$is_changed = true;
 							}
 						} else {
 							// check to see if the metabox is present for that state
-							$key = array_search( $pagehook.'_'.$box_id, $opts );
-
-							// if we're not targetting , then clear it
+							$key = array_search( $pagehook.'_'.$box_id, $user_opts );
+							// if we're not targetting, then clear it
 							if ( empty( $meta_name ) && $key !== false ) {
-								unset( $opts[$key] );
+								unset( $user_opts[$key] );
 								$is_changed = true;
 							// otherwise if we want a state, add if it's missing
 							} elseif ( ! empty( $meta_name ) && $key === false ) {
-								$opts[] = $pagehook.'_'.$box_id;
+								$user_opts[] = $pagehook.'_'.$box_id;
 								$is_changed = true;
 							}
 						}
 					}
 				}
-				if ( $is_default || $is_changed )
-					update_user_option( $user_id, $meta_key, array_unique( $opts ), true );
+				if ( $is_default || $is_changed ) {
+					update_user_option( $user_id, $meta_key, array_unique( $user_opts ), true );
+				}
 			}
 		}
 
@@ -632,10 +645,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$pagehook = get_plugin_page_hookname( $menu_slug, $parent_slug);
 			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $state ) {
 				$meta_key = $state.'_'.$pagehook;
-				if ( $user_id !== false )
+				if ( $user_id === false ) {
+					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
+						delete_user_option( $user->ID, $meta_key, true );
+					}
+				} elseif ( is_numeric( $user_id ) ) {
 					delete_user_option( $user_id, $meta_key, true );
-				else foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user )
-					delete_user_option( $user->ID, $meta_key, true );
+				}
 			}
 		}
 
