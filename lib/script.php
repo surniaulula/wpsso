@@ -135,6 +135,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 * installing / activating / updating the plugin.
 		 */
 		private function add_plugin_install_script( $hook_name ) {	// $hook_name = plugin-install.php
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}

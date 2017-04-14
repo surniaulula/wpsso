@@ -47,10 +47,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				WPSSO_URLPATH.'css/ext/jquery-qtip.min.css',
 					array(), '3.0.3' );
 
-			wp_register_style( 'sucom-settings-page',
-				WPSSO_URLPATH.'css/com/settings-page.min.css',
-					array(), $plugin_version );
-
 			wp_register_style( 'sucom-settings-table',
 				WPSSO_URLPATH.'css/com/settings-table.min.css',
 					array(), $plugin_version );
@@ -74,7 +70,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
-					wp_enqueue_style( 'sucom-settings-page' );	// sidebar, buttons, etc.
+					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $plugin_version );
 
 					// no break
 
@@ -110,7 +106,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// stop here
 			}
 
-			$this->add_admin_page_style( $hook_name );
+			$this->add_admin_page_style( $hook_name, WPSSO_URLPATH, $plugin_version );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -118,53 +114,48 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function plugin_install_inline_style( $hook_name ) {	// $hook_name = plugin-install.php
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-			echo '
-<style type="text/css">
-	body#plugin-information div#plugin-information-title.with-banner h2 {
-		display:none;
+		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
+
+			$lca = $this->p->cf['lca'];
+			$sidebar_width = $this->p->cf['wp']['right_sidebar']['width'];
+			$sidebar_width_num = filter_var( $sidebar_width, FILTER_SANITIZE_NUMBER_FLOAT );	// remove 'px'
+
+			wp_enqueue_style( 'sucom-settings-page',
+				$plugin_urlpath.'css/com/settings-page.min.css',
+					array(), $plugin_version );
+
+			$custom_style_css = '
+	.has-right-sidebar #post-body-content {
+		margin-right:'.$sidebar_width.';
 	}
-	body#plugin-information #section-description img {
-		max-width:100%;
+	.has-right-sidebar .inner-sidebar {
+		width:'.( $sidebar_width_num + 1 ).'px;
+		max-width:'.( $sidebar_width_num + 1 ).'px;
 	}
-	body#plugin-information #section-description img.readme-icon {
-		float:left;
-		width:30%;
-		min-width:128px;
-		max-width:256px;
-		margin:0 30px 15px 0;
+	.has-right-sidebar .inner-sidebar #side-sortables {
+		width:'.$sidebar_width.';
+		max-width:'.$sidebar_width.';
 	}
-	body#plugin-information #section-description img.readme-example {
-		width:100%;
-		min-width:256px;
-		max-width:600px;
-		margin:30px 0 30px 0;
-	}
-	body#plugin-information #section-other_notes h3 {
-		clear:none;
-		display:none;
-	}
-</style>';
+	.has-right-sidebar .inner-sidebar #side-sortables .postbox {
+		min-width:'.$sidebar_width.';
+	}';
+
+			wp_add_inline_style( 'sucom-settings-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
 		}
 
-		private function add_admin_page_style( $hook_name ) {
+		private function add_admin_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
 			$lca = $this->p->cf['lca'];
-			$plugin_version = WpssoConfig::get_version();
+			$sort_cols = WpssoMeta::get_sortable_columns();
+			$custom_style_css = '';
 
 			wp_enqueue_style( 'sucom-admin-page',
-				WPSSO_URLPATH.'css/com/admin-page.min.css',
+				$plugin_urlpath.'css/com/admin-page.min.css',
 					array(), $plugin_version );
-
-			$custom_style_css = '';
-			$sort_cols = WpssoMeta::get_sortable_columns();
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
@@ -185,11 +176,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$custom_style_css .= '
 	@font-face {
 		font-family:"Star";
-		src:url("'.WPSSO_URLPATH.'fonts/star.eot");
-		src:url("'.WPSSO_URLPATH.'fonts/star.eot?#iefix") format("embedded-opentype"),
-		url("'.WPSSO_URLPATH.'fonts/star.woff") format("woff"),
-		url("'.WPSSO_URLPATH.'fonts/star.ttf") format("truetype"),
-		url("'.WPSSO_URLPATH.'fonts/star.svg#star") format("svg");
+		src:url("'.$plugin_urlpath.'fonts/star.eot");
+		src:url("'.$plugin_urlpath.'fonts/star.eot?#iefix") format("embedded-opentype"),
+		url("'.$plugin_urlpath.'fonts/star.woff") format("woff"),
+		url("'.$plugin_urlpath.'fonts/star.ttf") format("truetype"),
+		url("'.$plugin_urlpath.'fonts/star.svg#star") format("svg");
 		font-weight:normal;
 		font-style:normal;
 	}
@@ -355,17 +346,45 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 	}';
 			}
 
-			$classname = apply_filters( $lca.'_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
-
-			if ( $classname !== false && class_exists( $classname ) ) {
-				$custom_style_css = call_user_func( array( $classname, 'process' ), $custom_style_css );
-			}
-
-			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+			wp_add_inline_style( 'sucom-admin-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// end timer
 			}
+		}
+
+		private function plugin_install_inline_style( $hook_name ) {	// $hook_name = plugin-install.php
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			echo '
+<style type="text/css">
+	body#plugin-information div#plugin-information-title.with-banner h2 {
+		display:none;
+	}
+	body#plugin-information #section-description img {
+		max-width:100%;
+	}
+	body#plugin-information #section-description img.readme-icon {
+		float:left;
+		width:30%;
+		min-width:128px;
+		max-width:256px;
+		margin:0 30px 15px 0;
+	}
+	body#plugin-information #section-description img.readme-example {
+		width:100%;
+		min-width:256px;
+		max-width:600px;
+		margin:30px 0 30px 0;
+	}
+	body#plugin-information #section-other_notes h3 {
+		clear:none;
+		display:none;
+	}
+</style>';
 		}
 	}
 }

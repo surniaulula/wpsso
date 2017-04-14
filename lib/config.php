@@ -1087,9 +1087,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'min_version' => '3.7',		// hard limit - deactivate the plugin when activating
 				'rec_version' => '4.7.3',	// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
-				'tb_iframe' => array(	// thickbox iframe
-					'width' => 772,
-					'height' => 550,
+				'right_sidebar' => array(
+					'width' => '250px',
+				),
+				'tb_iframe' => array(		// thickbox iframe
+					'width' => 772,		// url query argument
+					'height' => 550,	// url query argument
 				),
 				'cm_names' => array(
 					'aim' => 'AIM',
