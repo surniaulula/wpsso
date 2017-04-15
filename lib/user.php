@@ -578,7 +578,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$is_changed = false;
 				$is_default = false;
 				$user_opts = get_user_option( $meta_key, $user_id );
-				if ( ! is_array( $user_opts ) ) {
+				if ( empty( $user_opts ) ) {
 					$is_changed = true;
 					$is_default = true;
 					$user_opts = array();
@@ -602,6 +602,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						} else {
 							// check to see if the metabox is present for that state
 							$key = array_search( $pagehook.'_'.$box_id, $user_opts );
+
 							// if we're not targetting, then clear it
 							if ( empty( $meta_name ) && $key !== false ) {
 								unset( $user_opts[$key] );
@@ -737,9 +738,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$wp_objects = apply_filters( $lca.'_user_cache_objects', $wp_objects, $mod, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
-			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 )
+
+			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
 				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
-					true, __FUNCTION__.'_items_removed', true );
+					true, __FUNCTION__.'_items_removed', true );	// can be dismissed
+			}
 
 			return $user_id;
 		}

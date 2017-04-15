@@ -114,12 +114,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$errors[] = sprintf( __( 'Requests to cache this URL will be ignored for %d second(s).',
 					$this->text_dom ), $this->transient['ignore_time'] );
 
+				// combie all strings into one error notice
 				$this->p->notice->err( implode( ' ', $errors ) );
 			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'error connecting to '.$url.' for caching (http code '.$http_code.')' );
-				$this->p->debug->log( 'requests to cache this URL will be ignored for '.$this->transient['ignore_time'].' second(s)' );
+				$this->p->debug->log( 'requests to cache this URL ignored for '.$this->transient['ignore_time'].' second(s)' );
 			}
 		}
 

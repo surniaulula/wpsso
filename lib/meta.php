@@ -534,11 +534,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 				return false;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit nonce token validation failed' );
-				if ( is_admin() )
+				}
+				if ( is_admin() ) {
 					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
 						'wpsso' ) );
+				}
 				return false;
 			} else return true;
 		}

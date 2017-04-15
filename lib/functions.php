@@ -89,7 +89,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 	function wpsso_clear_all_cache( $clear_ext = false ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( is_object( $wpsso->util ) ) {
-			return $wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__, true );
+			return $wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__.'_function', true );
 		}
 	}
 }

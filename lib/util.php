@@ -331,11 +331,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				get_post_types( array( 'public' => true ), $output ), $output );
 		}
 
-		public function clear_all_cache( $clear_ext = true, $msg_id = false, $dismiss = false ) {
+		public function clear_all_cache( $clear_ext = true, $dis_key = false, $dis_time = false ) {
 
-			if ( $this->cleared_all_cache )	// already run once
+			if ( $this->cleared_all_cache ) {	// already run once
 				return 0;
-			else $this->cleared_all_cache = true;
+			} else {
+				$this->cleared_all_cache = true;
+			}
 
 			wp_cache_flush();	// clear non-database transients as well
 
@@ -374,7 +376,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
 
-			$this->p->notice->inf( $clear_all_msg, true, $msg_id, $dismiss );
+			$this->p->notice->inf( $clear_all_msg, true, $dis_key, $dis_time );	// can be dismissed depending on args
 		}
 
 		public function clear_cache_objects( array $transients, array $wp_objects ) {
@@ -867,11 +869,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function missing_php_class_error( $classname ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $classname.' PHP class is missing' );
-			if ( is_admin() )
+			}
+			if ( is_admin() ) {
 				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
 					'wpsso' ), $classname ) );
+			}
 		}
 
 		public function get_body_html( $request, $remove_script = true ) {
@@ -1165,13 +1169,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$image_info = @getimagesize( $media_url );
 
 						if ( is_array( $image_info ) ) {
-							/*
-							if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-								$this->p->notice->inf( sprintf( __( 'Fetched image size by HTTP for %1$s (%2$s).',
-									'wpsso' ), $media_url, $image_info[0].'x'.$image_info[1] ),
-										true, __METHOD__.$media_url, true );
-							}
-							*/
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
 									$image_info[0].'x'.$image_info[1] );

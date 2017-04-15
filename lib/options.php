@@ -524,7 +524,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					if ( is_admin() ) {
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been updated and saved.',	// blue status w pin
-							'wpsso' ), $options_name ), true, __FUNCTION__.'_updated', true );
+							'wpsso' ), $options_name ), true,
+								$options_name.'_settings_updated_and_saved', true );	// can be dismissed
 					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $options_name.' settings have been saved silently' );

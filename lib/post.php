@@ -648,7 +648,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
-							true, __FUNCTION__.'_items_removed', true );
+							true, __FUNCTION__.'_show_purge_count', true );	// can be dismissed
 					}
 
 					if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache

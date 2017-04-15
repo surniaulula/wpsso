@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'side-' ) === 0 ) {
 				switch ( $idx ) {
-					case 'side-purchase':
+					case 'side-pro-avail':
 						$text = '<p>';
 						if ( $this->p->is_avail['aop'] ) {
 							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );

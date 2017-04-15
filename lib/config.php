@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.13-rc.1',		// plugin version
+					'version' => '3.40.13-rc.2',		// plugin version
 					'opt_version' => '514',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'min_version' => '1.6.0-rc.1',	// minimum update manager version (hard limit)
+				'min_version' => '1.6.0-rc.2',	// minimum update manager version (hard limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',
@@ -1087,9 +1087,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'min_version' => '3.7',		// hard limit - deactivate the plugin when activating
 				'rec_version' => '4.7.3',	// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
-				'right_sidebar' => array(
-					'width' => '250px',
-				),
 				'tb_iframe' => array(		// thickbox iframe
 					'width' => 772,		// url query argument
 					'height' => 550,	// url query argument

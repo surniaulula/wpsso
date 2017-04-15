@@ -554,7 +554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
 					sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ).'</em>' );
 			} else {
-				$this->p->util->clear_all_cache( true, __FUNCTION__, true );
+				$this->p->util->clear_all_cache( true, __FUNCTION__.'_clear_all_cache', true );	// can be dismissed
 
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
 					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
 				$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ),
-					true, 'notice-content-filters-disabled', true );
+					true, 'notice-content-filters-disabled', true );	// can be dismissed
 			}
 
 			$this->check_tmpl_head_attributes();
@@ -586,11 +586,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
-				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).', 'wpsso' ) );
+				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
+					'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
-				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ) );
+				$this->p->notice->err( __( 'Insufficient privileges to modify network options.',
+					'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
 			}
@@ -724,10 +726,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
-				add_meta_box( $this->pagehook.'_purchase',
+				add_meta_box( $this->pagehook.'_pro_avail',
 					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
-						array( &$this, 'show_metabox_purchase' ), $this->pagehook, 'side-top' );
-				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase' ) );
+						array( &$this, 'show_metabox_pro_avail' ), $this->pagehook, 'side-fixed' );
+				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'pro_avail' ) );
 			}
 
 			// show the help metabox on all pages
@@ -774,9 +776,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
 				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
 
-				echo '<div id="side-top-content">'."\n";
-				do_meta_boxes( $this->pagehook, 'side-top', null );
-				echo '</div><!-- #side-top-content -->'."\n";
+				echo '<div id="side-fixed">'."\n";
+				do_meta_boxes( $this->pagehook, 'side-fixed', null );
+				echo '</div><!-- #side-fixed-->'."\n";
 
 				echo '<div id="side-content">'."\n";
 				do_meta_boxes( $this->pagehook, 'side', null );
@@ -931,8 +933,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			// Clear All Cache(s) exceptions
 			if ( $this->menu_lib !== 'setting' &&
-				$this->menu_lib !== 'submenu' )
-					unset( $secondary['clear_all_cache'] );
+				$this->menu_lib !== 'submenu' ) {
+				unset( $secondary['clear_all_cache'] );
+			}
 
 			// Check for Pro Update(s) exceptions
 			if ( strpos( $this->menu_id, 'um-general' ) === false ||
@@ -1232,13 +1235,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			else return $feature;
 		}
 
-		public function show_metabox_purchase() {
+		public function show_metabox_pro_avail() {
 			$lca = $this->p->cf['lca'];
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
-				'' : add_query_arg( 'utm_source', 'side-purchase', $info['url']['purchase'] );
+				'' : add_query_arg( 'utm_source', 'side-pro-avail', $info['url']['purchase'] );
 			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
-			echo $this->p->msgs->get( 'side-purchase' );
+			echo $this->p->msgs->get( 'side-pro-avail' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
 				'button-primary', null, $purchase_url, true );
@@ -1468,7 +1471,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php '.$php_ext.' extension is not loaded' );
 					}
-					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s" target="_blank"> %2$s extension</a> is not loaded.', 'wpsso' ), 'https://secure.php.net/manual/en/book.'.$php_ext.'.php', $php_label ).' '.__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
+					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s" target="_blank">%2$s extension</a> is not loaded.',
+						'wpsso' ), 'https://secure.php.net/manual/en/book.'.$php_ext.'.php', $php_label ).' '.
+					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.',
+						'wpsso' ) );
 				}
 			}
 
@@ -1477,9 +1483,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
-				$warn_dis_key = 'wordpress-search-engine-visibility';
+				$warn_dis_key = 'wordpress-search-engine-visibility-disabled';
 				$warn_dis_time = $this->p->cf['form']['time_by_name']['month'];
-				$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, $warn_dis_time, true );	// $silent = true
+
+				if ( $this->p->notice->is_admin_pre_notices( $warn_dis_key ) ) {	// don't bother if already dismissed
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, $warn_dis_time );
+				}
 			}
 
 			// Yoast SEO
@@ -1715,7 +1724,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// allow warning to be dismissed until the next theme update
 						$warn_dis_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, $warn_dis_key, true );
+							true, $warn_dis_key, true );	// can be dismissed
 					}
 					break;
 				}
@@ -1729,7 +1738,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?'.'>>';	// breakup closing php for vim syntax highlighting
 
 			if ( empty( $header_files ) ) {
-				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.', 'wpsso' ) );
+				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.',
+					'wpsso' ) );
 				return;	// exit early
 			}
 
@@ -1741,13 +1751,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// double check in case of reloads etc.
 				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ||
 					strpos( $html, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML element found in the %s template.', 'wpsso' ), $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML element found in the %s template.',
+						'wpsso' ), $tmpl_file ) );
 					continue;
 				}
 
 				// make a backup of the original
 				if ( ! copy( $tmpl_file, $backup_file ) ) {
-					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
+					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ),
+						$tmpl_file, $backup_base ) );
 					continue;
 				}
 
@@ -1755,7 +1767,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.', 'wpsso' ), $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.',
+						'wpsso' ), $tmpl_file ) );
 					continue;
 				}
 
@@ -1769,8 +1782,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				fclose( $tmpl_fh );
 			}
 
-			if ( $have_changes )
-				$this->p->notice->trunc_id( 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version(), 'all' );	// just in case
+			if ( $have_changes ) {
+				$dis_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
+				$this->p->notice->trunc_key( $dis_key, 'all' );	// just in case
+			}
 		}
 
 		// called from the WpssoSubmenuEssential and WpssoSubmenuAdvanced classes
