@@ -4038,7 +4038,7 @@ msgid "WordPress Social Sharing Optimization (WPSSO)"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://surniaulula.com/extend/plugins/wpsso/"
+msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr ""
 
 #. Description of the plugin/theme

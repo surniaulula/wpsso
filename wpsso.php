@@ -4,7 +4,7 @@
  * Plugin Slug: wpsso
  * Text Domain: wpsso
  * Domain Path: /languages
- * Plugin URI: https://surniaulula.com/extend/plugins/wpsso/
+ * Plugin URI: https://wpsso.com/extend/plugins/wpsso/
  * Assets URI: https://surniaulula.github.io/wpsso/assets/
  * Author: JS Morisset
  * Author URI: https://surniaulula.com/
