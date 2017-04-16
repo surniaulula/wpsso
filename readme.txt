@@ -340,6 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page (instead of the WordPress plugins page).
 	* Added a filter to allow the WPSSO Update Manager to be installed from the Plugin Extensions and Pro Licenses settings page.
+	* Improved the CSS of settings pages for the sidebar and its metaboxes.
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
 	* Fixed the default Organization ID for an Organization selected in the Social Settings metabox (the Organization was defaulting to 'site' instead of 'none').
