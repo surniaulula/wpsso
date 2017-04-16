@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-04-15 11:22+0200\n"
-"PO-Revision-Date: 2017-04-15 11:22+0200\n"
+"POT-Creation-Date: 2017-04-16 09:51+0200\n"
+"PO-Revision-Date: 2017-04-16 09:51+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -145,7 +145,7 @@ msgstr "Enregistrer les réglages"
 #: lib/admin.php:908
 msgctxt "submit button"
 msgid "View %s by Default"
-msgstr "Voir %s par Défaut"
+msgstr "Voir %s par défaut"
 
 #: lib/admin.php:913
 msgctxt "submit button"
@@ -154,7 +154,7 @@ msgstr "Enregistrer les réglages"
 
 #: lib/admin.php:928 lib/messages.php:1169
 msgctxt "submit button"
-msgid "Check for Pro Update(s)"
+msgid "Check for Update(s)"
 msgstr "Vérifier pour mises à jour"
 
 #: lib/admin.php:929
@@ -170,7 +170,7 @@ msgstr "Réinit. les avis cachés"
 #: lib/admin.php:931
 msgctxt "submit button"
 msgid "Reload Default Sizes"
-msgstr "Recharger Tailles par Défaut"
+msgstr "Recharger tailles par défaut"
 
 #: lib/admin.php:978 lib/admin.php:979
 msgid "Not Available"
@@ -1846,7 +1846,7 @@ msgid "No options available."
 msgstr "Aucune options disponibles."
 
 #: lib/messages.php:375
-msgid "Select the set of options to display by default in the %1$s settings pages and %2$s metabox."
+msgid "Select the set of options to display by default in %1$s settings pages and %2$s metabox."
 msgstr "Sélectionnez les options à afficher par défaut dans les pages de réglages %1$s et metabox %2$s."
 
 #: lib/messages.php:377
@@ -2447,8 +2447,8 @@ msgid "%1$s version %2$s requires the use of %3$s version %4$s or newer (version
 msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus récent (la version %5$s est actuellement installée)."
 
 #: lib/messages.php:1169
-msgid "If an update for %1$s is not available yet, you can use the <em>%2$s</em> button from the %3$s settings page to force an immediate refresh of all update information."
-msgstr "Si une mise à jour pour %1$s n'est pas encore disponible, vous pouvez utiliser le bouton <em>%2$s</em> sur la page de réglages %3$s pour forcer une actualisation immédiate de toutes les informations de mise à jour."
+msgid "If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information."
+msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d'Extensions WordPress, SVP utilisez le bouton <em>%2$s</em> sur la page de réglages %3$s pour forcer une actualisation immédiate de toutes les informations de mise à jour %2$s."
 
 #: lib/messages.php:1169
 msgctxt "lib file description"
@@ -2560,7 +2560,7 @@ msgstr "Vérifiez que Google peut analyser correctement votre balisage de donné
 #: lib/meta.php:329
 msgctxt "submit button"
 msgid "Validate Data Markup"
-msgstr "Valider Données Structurées"
+msgstr "Valider données structurées"
 
 #: lib/meta.php:332
 msgctxt "option label"
@@ -3469,8 +3469,8 @@ msgid "WordPress Social Sharing Optimization (WPSSO)"
 msgstr "WordPress Social Sharing Optimization (WPSSO)"
 
 #. Plugin URI of the plugin/theme
-msgid "https://surniaulula.com/extend/plugins/wpsso/"
-msgstr "https://surniaulula.com/extend/plugins/wpsso/"
+msgid "https://wpsso.com/extend/plugins/wpsso/"
+msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
 msgid "Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO."
