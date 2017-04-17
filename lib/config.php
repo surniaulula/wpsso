@@ -15,14 +15,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',		// lowercase acronym
-			'readme_cache_exp' => 86400,	// 1 day
-			'setup_cache_exp' => 86400,	// 1 day
+			'readme_cache_exp' => DAY_IN_SECONDS,	// 1 day
+			'setup_cache_exp' => DAY_IN_SECONDS,	// 1 day
 			'install_hosts' => array(	// allow extensions to be installed from these hosts
 				'https://wpsso.com/extend/plugins/',
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.41.0-dev.1',		// plugin version
+					'version' => '3.40.14-dev.1',		// plugin version
 					'opt_version' => '515',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -884,11 +884,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_currency' => '',		// Product Currency Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
-					'plugin_shorten_cache_exp' => 2419200,		// Shortened URL Cache Expiry (4 weeks)
-					'plugin_content_cache_exp' => 3600,		// Filtered Content Text Cache Expiry (1 hour)
-					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
-					'plugin_topics_cache_exp' => 2419200,		// Article Topics Array Cache Expiry (4 weeks)
-					'plugin_types_cache_exp' => 2419200,		// Schema Types Array Cache Expiry (4 weeks)
+					'plugin_shorten_cache_exp' => MONTH_IN_SECONDS,	// Shortened URL Cache Expiry (1 month)
+					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image (URL) Size Cache Expiry (1 day)
+					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
+					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
@@ -991,15 +991,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
-					'plugin_shorten_cache_exp' => 2419200,		// Shortened URL Cache Expiry (4 weeks)
+					'plugin_shorten_cache_exp' => MONTH_IN_SECONDS,	// Shortened URL Cache Expiry (1 month)
 					'plugin_shorten_cache_exp:use' => 'default',
-					'plugin_content_cache_exp' => 3600,		// Filtered Content Text Cache Expiry (1 hour)
+					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_content_cache_exp:use' => 'default',
-					'plugin_imgsize_cache_exp' => 86400,		// Get Image (URL) Size Cache Expiry (1 day)
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_imgsize_cache_exp:use' => 'default',
-					'plugin_topics_cache_exp' => 2419200,		// Article Topics Array Cache Expiry (4 weeks)
+					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_topics_cache_exp:use' => 'default',
-					'plugin_types_cache_exp' => 2419200,		// Schema Types Array Cache Expiry (4 weeks)
+					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_types_cache_exp:use' => 'default',
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_show_purge_count:use' => 'default',
@@ -1179,15 +1179,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'publicholidays' => 'Public Holidays',
 				),
 				'time_by_name' => array(	// in seconds
-					'hour' => 3600,
-					'day' => 86400,
-					'week' => 604800,	// 7 days
-					'month' => 2592000,	// 30 days
+					'hour' => HOUR_IN_SECONDS,
+					'day' => DAY_IN_SECONDS,
+					'week' => WEEK_IN_SECONDS,	// 7 days
+					'month' => MONTH_IN_SECONDS,	// 30 days
+					'year' => YEAR_IN_SECONDS,	// 365 days
 				),
 				'cache_hrs' => array(
 					0 => 0,
 					3600 => 1,	// 1 hour
-					7200 => 3,	// 3 hours
+					7200 => 2,	// 2 hours
+					10800 => 3,	// 3 hours
 					21600 => 6,	// 6 hours
 					32400 => 9,	// 9 hours
 					43200 => 12,	// 12 hours

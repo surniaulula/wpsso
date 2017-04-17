@@ -19,7 +19,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public $base_dir = '';
 		public $base_url = '/cache/';
-		public $default_file_cache_exp = 86400;	// 1 day
+		public $default_file_cache_exp = DAY_IN_SECONDS;	// 1 day
 		public $default_object_cache_exp = 259200;	// 3 days
 		public $curl_connect_timeout = 10;
 		public $curl_timeout = 20;
@@ -27,7 +27,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
-			'expire' => 3600,
+			'expire' => HOUR_IN_SECONDS,
 			'ignore_time' => 900,
 			'ignore_urls' => array(),
 		);

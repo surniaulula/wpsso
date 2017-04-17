@@ -14,8 +14,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		protected $p;
-		protected $types_cache = null;	// schema types array cache
-		protected $types_exp = 2419200;	// schema types array expiration
+		protected $types_cache = null;			// schema types array cache
+		protected $types_exp = MONTH_IN_SECONDS;	// schema types array expiration
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;

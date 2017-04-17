@@ -152,6 +152,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	// just in case
 				0 : $opts['plugin_'.$lca.'_opt_version'];
 
+			// adjust before renaming the option key
+			if ( $prev_version > 0 && $prev_version <= 342 ) {
+				if ( ! empty( $opts['plugin_file_cache_hrs'] ) ) {
+					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * HOUR_IN_SECONDS;
+				}
+				unset( $opts['plugin_file_cache_hrs'] );
+			}
+
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
 				$this->p->util->rename_opts_by_ext( $opts, 
@@ -199,13 +207,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				$this->p->util->rename_opts_by_ext( $opts,
 					apply_filters( $lca.'_rename_site_options_keys',
 						self::$rename_site_options_keys ) );
-			}
-
-			if ( $prev_version > 0 && $prev_version <= 342 ) {
-				if ( isset( $opts['plugin_file_cache_hrs'] ) ) {
-					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * 3600;
-					unset( $opts['plugin_file_cache_hrs'] );
-				}
 			}
 
 			return $this->sanitize( $opts, $def_opts, $network );	// cleanup options and sanitize
