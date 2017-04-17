@@ -342,6 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Moved the validate button informational text from the NgfbMeta class to the NgfbMessages class.
 	* Renamed all Pinterest option keys from 'rp_' to 'p_' to reflect it's meta tag prefix value.
 	* Renamed the SucomUtil crawler_name() method to get_crawler_name().
 
