@@ -1430,10 +1430,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						if ( $network ) {
 							echo '</tr><tr>';
-							echo self::get_option_site_use( 'plugin_'.$ext.'_tid', $this->form, $network, true );	// th and td
+							echo self::get_option_site_use( 'plugin_'.$ext.'_tid', 
+								$this->form, $network, true );	// th and td
 						} else {
-							$qty_used = class_exists( 'SucomUpdate' ) ? SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<td width="100%"><p>'.( empty( $qty_used ) ? '' : $qty_used.' Licenses Assigned' ).'</p></td>';
+							$qty_used = class_exists( 'SucomUpdate' ) ?
+								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
+							echo '<td width="100%"><p>'.( empty( $qty_used ) ?
+								'' : $qty_used.' Licenses Assigned' ).'</p></td>';
 						}
 					} else {
 						echo '<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
