@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.14-dev.1 (TBD)**
+**Version 3.40.14-dev.1 (2017/04/17)**
 
 * *New Features*
 	* None
@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Moved the validate button informational text from the NgfbMeta class to the NgfbMessages class.
-	* Renamed all Pinterest option keys from 'rp_' to 'p_' to reflect it's meta tag prefix value.
+	* Renamed all Pinterest option key prefixes from 'rp' to 'p' to reflect the Pinterest meta tag prefix value.
 	* Renamed the SucomUtil crawler_name() method to get_crawler_name().
 
 **Version 3.40.13 (2017/04/16)**
@@ -582,6 +582,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 == Upgrade Notice ==
+
+= 3.40.14-dev.1 =
+
+(2017/04/17) Minor code optimization, including renaming of Pinterest option key prefixes from 'rp' to 'p'.
 
 = 3.40.13 =
 
