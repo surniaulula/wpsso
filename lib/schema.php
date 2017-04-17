@@ -56,8 +56,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				if ( $crawler_name === 'pinterest' )
-					$sizes['schema_img']['prefix'] = 'rp_img';
+				if ( $crawler_name === 'pinterest' ) {
+					$sizes['schema_img']['prefix'] = 'p_img';
+				}
 			}
 
 			return $sizes;
@@ -1401,8 +1402,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
 
 			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled )
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->mark();
+			}
 
 			$authors_added = 0;
 			$coauthors_added = 0;
@@ -1677,13 +1679,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Meta Name Array
 		 */
 		public function get_meta_array( array &$mod, array &$mt_og, $crawler_name ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_meta_array', true ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
+				}
 				return array();	// empty array
 			}
 
@@ -1718,26 +1723,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 
 			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
+				}
 			} elseif ( $this->is_noscript_enabled( $crawler_name ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: noscript is enabled for '.$crawler_name );
+				}
 			} elseif ( empty( $this->p->options['add_meta_itemprop_image'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
+				}
 			} else {	// add single image meta tags (no width or height)
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting images for '.$page_type_url );
+				}
 
 				$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
-				if ( empty( $og_image ) && $mod['is_post'] ) 
+				if ( empty( $og_image ) && $mod['is_post'] ) {
 					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+				}
 
-				foreach ( $og_image as $image )
+				foreach ( $og_image as $image ) {
 					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
+				}
 			}
 
 			return (array) apply_filters( $lca.'_schema_meta_itemprop', $mt_schema, $mod, $mt_og, $page_type_id );
@@ -1756,11 +1767,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * NoScript Meta Name Array
 		 */
 		public function get_noscript_array( array &$mod, array &$mt_og, $crawler_name ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 
-			if ( ! self::is_noscript_enabled( $crawler_name ) )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! self::is_noscript_enabled( $crawler_name ) ) {
 				return array();	// empty array
+			}
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
@@ -1781,20 +1795,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
+				}
 			} else {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting images for '.$page_type_url );
+				}
 	
 				$og_image = $this->p->og->get_all_images( $max['schema_img_max'], 
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 	
-				if ( empty( $og_image ) && $mod['is_post'] ) 
+				if ( empty( $og_image ) && $mod['is_post'] ) {
 					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+				}
 	
-				foreach ( $og_image as $image )
+				foreach ( $og_image as $image ) {
 					$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
+				}
 			}
 
 			// example: product:rating:average
@@ -1808,20 +1826,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function is_noscript_enabled( $crawler_name = false ) {
 
 			if ( SucomUtil::is_amp() ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled for amp endpoint' );
+				}
 				return false;
 			}
 
-			if ( $crawler_name === false )
-				$crawler_name = SucomUtil::crawler_name();
+			if ( $crawler_name === false ) {
+				$crawler_name = SucomUtil::get_crawler_name();
+			}
 
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
 			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
+				}
 				return false;
 			}
 

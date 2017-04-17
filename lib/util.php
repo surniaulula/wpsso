@@ -129,14 +129,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * You can also include the width, height, crop, crop_x, and crop_y values.
 			 *
 			 *	Array (
-			 *		[rp_img] => Array (
-			 *			[name] => richpin
-			 *			[label] => Rich Pin Image Dimensions
-			 *		) 
 			 *		[og_img] => Array (
 			 *			[name] => opengraph
 			 *			[label] => Open Graph Image Dimensions
 			 *		)
+			 *		[p_img] => Array (
+			 *			[name] => richpin
+			 *			[label] => Rich Pin Image Dimensions
+			 *		) 
 			 *	)
 			 */
 			if ( $this->p->debug->enabled )
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $filter === true ) {
 				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
-					$sizes, $mod, SucomUtil::crawler_name() );
+					$sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
 			if ( empty( $mod['id'] ) ) {

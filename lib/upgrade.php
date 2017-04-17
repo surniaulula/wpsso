@@ -112,6 +112,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'tweet_button_js' => '',
 					'plugin_verify_certs' => '',
 				),
+				514 => array(
+					'rp_publisher_url' => 'p_publisher_url',
+					'rp_author_name' => 'p_author_name',
+					'rp_img_width' => 'p_img_width',
+					'rp_img_height' => 'p_img_height',
+					'rp_img_crop' => 'p_img_crop',
+					'rp_img_crop_x' => 'p_img_crop_x',
+					'rp_img_crop_y' => 'p_img_crop_y',
+					'rp_dom_verify' => 'p_dom_verify',
+				),
 			),
 			'wpssossb' => array(
 				14 => array(

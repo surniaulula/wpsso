@@ -17,19 +17,23 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 		}
 
 		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 
-			if ( $crawler_name === false )
-				$crawler_name = SucomUtil::crawler_name();
+			if ( $crawler_name === false ) {
+				$crawler_name = SucomUtil::get_crawler_name();
+			}
 
 			// pinterest does not read weibo meta tags
 			if ( $crawler_name === 'pinterest' ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+				}
 				return array();
 			}
 

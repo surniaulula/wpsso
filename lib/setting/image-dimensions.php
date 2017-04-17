@@ -61,9 +61,9 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img' ).'</td>';	// $use_opts = false
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$table_rows['rp_img_dimensions'] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
-							'option label', 'wpsso' ), null, 'rp_img_dimensions' ).
-						'<td>'.$this->form->get_image_dimensions_input( 'rp_img' ).'</td>';	// $use_opts = false
+						$table_rows['p_img_dimensions'] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
+							'option label', 'wpsso' ), null, 'p_img_dimensions' ).
+						'<td>'.$this->form->get_image_dimensions_input( 'p_img' ).'</td>';	// $use_opts = false
 					}
 
 					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema Images',

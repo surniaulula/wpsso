@@ -32,6 +32,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				503 => array(
 					'schema_recipe_calories' => 'schema_recipe_nutri_cal',
 				),
+				514 => array(
+					'rp_img_id' => 'p_img_id',
+					'rp_img_id_pre' => 'p_img_id_pre',
+					'rp_img_width' => 'p_img_width',
+					'rp_img_height' => 'p_img_height',
+					'rp_img_crop' => 'p_img_crop',
+					'rp_img_crop_x' => 'p_img_crop_x',
+					'rp_img_crop_y' => 'p_img_crop_y',
+					'rp_img_url' => 'p_img_url',
+				),
 			),
 		);
 
@@ -311,9 +321,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$amp_url = $mod['is_post'] && 
-				function_exists( 'amp_get_permalink' ) ?
-					'https://validator.ampproject.org/#url='.urlencode( amp_get_permalink( $mod['id'] ) ) : '';
+			$amp_url = $mod['is_post'] && function_exists( 'amp_get_permalink' ) ?
+				'https://validator.ampproject.org/#url='.urlencode( amp_get_permalink( $mod['id'] ) ) : '';
 
 			$bing_url = 'https://www.bing.com/webmaster/diagnostics/markup/validator?url='.$sharing_url_encoded;
 			$facebook_url = 'https://developers.facebook.com/tools/debug/og/object?q='.$sharing_url_encoded;
@@ -323,23 +332,41 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$w3c_url = 'https://validator.w3.org/nu/?doc='.$sharing_url_encoded;
 
 			// Facebook
-			$table_rows[] = $form->get_th_html( _x( 'Facebook Debugger', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p></td><td class="validate">'.$form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ), 'button-secondary', null, $facebook_url, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Facebook Debugger', 'option label', 'wpsso' ), 'medium' ).
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-facebook' ).'</td>'.
+			'<td class="validate">'.$form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
+				'button-secondary', null, $facebook_url, true ).'</td>';
 
 			// Google
-			$table_rows[] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ), 'button-secondary', null, $google_url, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ), 'medium' ).
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-google' ).'</td>'.
+			'<td class="validate">'.$form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ),
+				'button-secondary', null, $google_url, true ).'</td>';
 
 			// Pinterest
-			$table_rows[] = $form->get_th_html( _x( 'Pinterest Rich Pin Validator', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ), 'button-secondary', null, $pinterest_url, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Pinterest Rich Pin Validator', 'option label', 'wpsso' ), 'medium' ).
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-pinterest' ).'</td>'.
+			'<td class="validate">'.$form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
+				'button-secondary', null, $pinterest_url, true ).'</td>';
 
 			// Twitter
-			$table_rows[] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'The Twitter Card Validator does not accept query arguments &ndash; copy-paste the following sharing URL into the validation input field.', 'wpsso' ).'</p><p>'.$form->get_copy_input( $sharing_url ).'</p></td><td class="validate">'.$form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ), 'button-secondary', null, $twitter_url, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ), 'medium' ).
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-twitter' ).$form->get_copy_input( $sharing_url ).'</td>'.
+			'<td class="validate">'.$form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
+				'button-secondary', null, $twitter_url, true ).'</td>';
 
 			// W3C
-			$table_rows[] = $form->get_th_html( _x( 'W3C Markup Validation', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements. You may ignore these errors or disable the %1$s option.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', 'Meta Property Containers' ) ).'</i></p>' ).'</td><td class="validate">'.$form->get_button( _x( 'Validate HTML Markup', 'submit button', 'wpsso' ), 'button-secondary', null, $w3c_url, true ).'</td>';
+			$table_rows[] = $form->get_th_html( _x( 'W3C Markup Validation', 'option label', 'wpsso' ), 'medium' ).
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-w3c' ).'</td>'.
+			'<td class="validate">'.$form->get_button( _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
+				'button-secondary', null, $w3c_url, true ).'</td>';
 
 			// AMP
 			if ( $mod['is_post'] ) {
-				$table_rows[] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ).'<td class="validate"><p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->is_avail['amp_endpoint'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' ).'</td><td class="validate">'.$form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ), 'button-secondary', null, $amp_url, true, ( $amp_url ? false : true ) ).'</td>';
+				$table_rows[] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ).
+				'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-amp' ).'</td>'.
+				'<td class="validate">'.$form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ),
+					'button-secondary', null, $amp_url, true, ( $amp_url ? false : true ) ).'</td>';
 			}
 
 			return $table_rows;
@@ -351,7 +378,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 * from the options array. This is an easy way to provide a fallback value for the 
 		 * first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
-		 * Example: get_options_multi( $id, array( 'rp_desc', 'og_desc' ) );
+		 * Example: get_options_multi( $id, array( 'p_desc', 'og_desc' ) );
 		 */
 		public function get_options_multi( $mod_id, $mixed = false, $filter_opts = true ) {
 
@@ -435,13 +462,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'pin_desc' => '',
 					'schema_desc' => '',
 					'sharing_url' => '',
+					'og_img_id' => '',
+					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'og_img_width' => '',
 					'og_img_height' => '',
 					'og_img_crop' => empty( $opts['og_img_crop'] ) ? 0 : 1,
 					'og_img_crop_x' => empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'],
 					'og_img_crop_y' => empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'],
-					'og_img_id' => '',
-					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'og_img_url' => '',
 					'og_img_max' => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// cast as integer
 					'og_vid_url' => '',
@@ -450,21 +477,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_vid_desc' => '',
 					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// cast as integer
 					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
-					'rp_img_width' => '',
-					'rp_img_height' => '',
-					'rp_img_crop' => empty( $opts['rp_img_crop'] ) ? 0 : 1,
-					'rp_img_crop_x' => empty( $opts['rp_img_crop_x'] ) ? 'center' : $opts['rp_img_crop_x'],
-					'rp_img_crop_y' => empty( $opts['rp_img_crop_y'] ) ? 'center' : $opts['rp_img_crop_y'],
-					'rp_img_id' => '',
-					'rp_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
-					'rp_img_url' => '',
+					'p_img_id' => '',
+					'p_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
+					'p_img_width' => '',
+					'p_img_height' => '',
+					'p_img_crop' => empty( $opts['p_img_crop'] ) ? 0 : 1,
+					'p_img_crop_x' => empty( $opts['p_img_crop_x'] ) ? 'center' : $opts['p_img_crop_x'],
+					'p_img_crop_y' => empty( $opts['p_img_crop_y'] ) ? 'center' : $opts['p_img_crop_y'],
+					'p_img_url' => '',
+					'schema_img_id' => '',
+					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'schema_img_width' => '',
 					'schema_img_height' => '',
 					'schema_img_crop' => empty( $opts['schema_img_crop'] ) ? 0 : 1,
 					'schema_img_crop_x' => empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'],
 					'schema_img_crop_y' => empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'],
-					'schema_img_id' => '',
-					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'schema_img_url' => '',
 					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// cast as integer
 					'product_avail' => 'none',
@@ -473,23 +500,27 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_currency' => WPSSO_PROD_CURRENCY,
 				);
 
-				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
-					$md_defs, $this->get_mod( $mod_id ) );
+				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
 
 				if ( WpssoOptions::can_cache() ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
+					}
 					$md_defs['options_filtered'] = true;
-				} elseif ( $this->p->debug->enabled )
+				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
+				}
 
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'get_defaults filter skipped' );
+			}
 
 			if ( $idx !== false ) {
-				if ( isset( $md_defs[$idx] ) )
+				if ( isset( $md_defs[$idx] ) ) {
 					return $md_defs[$idx];
-				else return null;
+				} else {
+					return null;
+				}
 			} else return $md_defs;
 		}
 
@@ -578,7 +609,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
-			foreach ( array( 'rp', 'og' ) as $md_pre ) {
+			foreach ( array( 'p', 'og' ) as $md_pre ) {
 				if ( empty( $md_opts[$md_pre.'_img_id'] ) ) {
 					unset( $md_opts[$md_pre.'_img_id_pre'] );
 				}
@@ -841,9 +872,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'] ) as $pid ) {
+
 				if ( $pid > 0 ) {	// quick sanity check
-					if ( $this->p->debug->enabled )
+
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image pid: '.$pid );
+					}
 
 					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
@@ -872,8 +906,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->util->add_image_url_size( $mt_pre.':image', $meta_image );
 
 					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
-							return $meta_ret;
+						$this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
+						return $meta_ret;
+					}
 				}
 			}
 

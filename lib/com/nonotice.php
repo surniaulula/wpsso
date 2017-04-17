@@ -23,7 +23,7 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function trunc_key() {}
 		public function trunc_all() {}
 		public function trunc() {}
-		public function is_admin_pre_notices() {}
+		public function is_admin_pre_notices() { return false; }
 	}
 }
 

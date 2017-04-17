@@ -726,10 +726,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
-				add_meta_box( $this->pagehook.'_pro_avail',
+				add_meta_box( $this->pagehook.'_purchase_pro',
 					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
-						array( &$this, 'show_metabox_pro_avail' ), $this->pagehook, 'side-fixed' );
-				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'pro_avail' ) );
+						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side-fixed' );
+				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ) );
 			}
 
 			// show the help metabox on all pages
@@ -1235,13 +1235,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			else return $feature;
 		}
 
-		public function show_metabox_pro_avail() {
+		public function show_metabox_purchase_pro() {
 			$lca = $this->p->cf['lca'];
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
-				'' : add_query_arg( 'utm_source', 'side-pro-avail', $info['url']['purchase'] );
+				'' : add_query_arg( 'utm_source', 'side-purchase-pro', $info['url']['purchase'] );
 			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
-			echo $this->p->msgs->get( 'side-pro-avail' );
+			echo $this->p->msgs->get( 'side-purchase-pro' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
 				'button-primary', null, $purchase_url, true );

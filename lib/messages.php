@@ -150,11 +150,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
 						 	break;
 
-						case 'tooltip-meta-rp_img_id':
+						case 'tooltip-meta-p_img_id':
 							$text = __( 'A custom image ID to include first when the Pinterest crawler is detected, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 
-						case 'tooltip-meta-rp_img_url':
+						case 'tooltip-meta-p_img_url':
 							$text = __( 'A custom image URL (instead of an image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 						 	break;
 
@@ -879,32 +879,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/*
 				 * Publisher 'Pinterest' (Rich Pin) settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-rp_' ) === 0 ) {
+				} elseif ( strpos( $idx, 'tooltip-p_' ) === 0 ) {
 					switch ( $idx ) {
-						case 'tooltip-rp_publisher_url':
+						case 'tooltip-p_publisher_url':
 							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
-						case 'tooltip-rp_img_dimensions':
-							$def_dimensions = $this->p->opt->get_defaults( 'rp_img_width' ).'x'.
-								$this->p->opt->get_defaults( 'rp_img_height' ).' '.
-								( $this->p->opt->get_defaults( 'rp_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+						case 'tooltip-p_img_dimensions':
+							$def_dimensions = $this->p->opt->get_defaults( 'p_img_width' ).'x'.
+								$this->p->opt->get_defaults( 'p_img_height' ).' '.
+								( $this->p->opt->get_defaults( 'p_img_crop' ) == 0 ?
+									'uncropped' : 'cropped' );
 
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$def_dimensions.'). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 
-						case 'tooltip-rp_author_name':
+						case 'tooltip-p_author_name':
 							$text = sprintf( __( 'Pinterest ignores Facebook-style Author Profile URLs in the %1$s Open Graph meta tags.', 'wpsso' ), '<code>article:author</code>' ).' '.__( 'A different meta tag value can be used when the Pinterest crawler is detected.', 'wpsso' ).' '.sprintf( __( 'Select an <em>%1$s</em> for the %2$s meta tag or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ), '<code>article:author</code>' );
 							break;
 
-						case 'tooltip-rp_dom_verify':
+						case 'tooltip-p_dom_verify':
 							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
 							break;
 
 						default:
-							$text = apply_filters( $lca.'_messages_tooltip_rp', $text, $idx, $info );
+							$text = apply_filters( $lca.'_messages_tooltip_p', $text, $idx, $info );
 							break;
-					}	// end of tooltip-rp switch
+					}	// end of tooltip-p switch
 				/*
 				 * Publisher 'Instagram' settings
 				 */
@@ -971,54 +972,78 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * Misc informational messages
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
-				switch ( $idx ) {
-					case 'info-meta-social-preview':
-					 	$text = '<p style="text-align:right;">'.__( 'The social preview shows an <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
-					 	break;
+				if ( strpos( $idx, 'info-meta-' ) === 0 ) {
+					switch ( $idx ) {
+						case 'info-meta-validate-facebook':
+							$text = '<p>'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p>';
+						 	break;
+	
+						case 'info-meta-validate-google':
+							$text = '<p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p>';
+						 	break;
+	
+						case 'info-meta-validate-pinterest':
+							$text = '<p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p>';
+						 	break;
+	
+						case 'info-meta-validate-twitter':
+							$text = '<p><i>'.__( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' ).'</i></p>';
+						 	break;
+	
+						case 'info-meta-validate-w3c':
+							$text = '<p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', 'Meta Property Containers' ) ).'</i></p>' );
+						 	break;
+	
+						case 'info-meta-validate-amp':
+							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->is_avail['amp_endpoint'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
+						 	break;
+	
+						case 'info-meta-social-preview':
+						 	$text = '<p style="text-align:right;">'.__( 'The social preview shows an <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+						 	break;
+					}	// end of info-meta switch
+				} else {
+					switch ( $idx ) {
+						case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
+							$um_info = $this->p->cf['plugin']['wpssoum'];
+	
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
+	
+							$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</blockquote>';
+							break;
+	
+						case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
+							$um_info = $this->p->cf['plugin']['wpssoum'];
+							$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
+								_x( 'Extension Plugins and Pro Licenses',
+									'lib file description', 'wpsso' ) );
+	
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
+	
+							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $ext_menu_html ).' ';
+							
+							$text.= __( 'If you enter Authentication IDs on this page, <em>make sure you have purchased enough licenses for all sites within the network</em> (for example, if you have 10 sites, you will need at least 10 licenses).', 'wpsso' ).' ';
+	
+							$text .= '</p><p>'.sprintf( __( 'Please note that <strong>the default site / blog must be licensed</strong>, and the %1$s extension active, in order to install Pro version updates from the network admin interface.', 'wpsso' ), $um_info['name'] ).'</p></blockquote>';
+							break;
+	
+						case 'info-cm':
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+							break;
 
-					case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
-						$um_info = $this->p->cf['plugin']['wpssoum'];
-
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
-
-						$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</blockquote>';
-						break;
-
-					case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
-						$um_info = $this->p->cf['plugin']['wpssoum'];
-						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Extension Plugins and Pro Licenses',
-								'lib file description', 'wpsso' ) );
-
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
-
-						$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $ext_menu_html ).' ';
-						
-						$text.= __( 'If you enter Authentication IDs on this page, <em>make sure you have purchased enough licenses for all sites within the network</em> (for example, if you have 10 sites, you will need at least 10 licenses).', 'wpsso' ).' ';
-
-						$text .= '</p><p>'.sprintf( __( 'Please note that <strong>the default site / blog must be licensed</strong>, and the %1$s extension active, in order to install Pro version updates from the network admin interface.', 'wpsso' ), $um_info['name'] ).'</p></blockquote>';
-						break;
-
-					case 'info-pub-pinterest':
-						$text = '<blockquote class="top-info"><p>'.__( 'These options allow you to customize some Open Graph meta tag and Schema markup values for the Pinterest crawler.', 'wpsso' ).' '.__( 'If you use a caching plugin (or front-end caching service), it should detect the Pinterest user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> setting and add "Pinterest" to that list).', 'wpsso' ).'</p></blockquote>';
-						break;
-
-					case 'info-cm':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
-						break;
-
-					case 'info-taglist':
-						$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their header template(s).', 'wpsso' ).'</p></blockquote>';
-						break;
-
-					case 'info-social-accounts':
-						$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).'</p><p>'.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
-						break;
-
-					default:
-						$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
-						break;
-				}	// end of info switch
+						case 'info-taglist':
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their header template(s).', 'wpsso' ).'</p></blockquote>';
+							break;
+	
+						case 'info-social-accounts':
+							$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).'</p><p>'.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
+							break;
+	
+						default:
+							$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
+							break;
+					}	// end of info switch
+				}
 			/*
 			 * Misc pro messages
 			 */
@@ -1182,7 +1207,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'side-' ) === 0 ) {
 				switch ( $idx ) {
-					case 'side-pro-avail':
+					case 'side-purchase-pro':
 						$text = '<p>';
 						if ( $this->p->is_avail['aop'] ) {
 							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );

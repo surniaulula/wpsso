@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.13',		// plugin version
-					'opt_version' => '514',		// increment when changing default options
+					'version' => '3.41.0-dev.1',		// plugin version
+					'opt_version' => '515',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -633,14 +633,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_len' => 300,			// maximum length in characters (hard limit)
 					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook (soft limit)
 					'og_desc_hashtags' => 3,
-					'rp_publisher_url' => '',		// (localized)
-					'rp_author_name' => 'display_name',	// rich-pin specific article:author
-					'rp_img_width' => 800,
-					'rp_img_height' => 1600,
-					'rp_img_crop' => 0,
-					'rp_img_crop_x' => 'center',
-					'rp_img_crop_y' => 'center',
-					'rp_dom_verify' => '',
+					'p_publisher_url' => '',		// (localized)
+					'p_author_name' => 'display_name',	// rich-pin specific article:author
+					'p_img_width' => 800,
+					'p_img_height' => 1600,
+					'p_img_crop' => 0,
+					'p_img_crop_x' => 'center',
+					'p_img_crop_y' => 'center',
+					'p_dom_verify' => '',
 					'tc_site' => '',			// Twitter Business @username (localized)
 					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
 					'tc_type_post' => 'summary_large_image',
@@ -1257,7 +1257,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'instgram_publisher_url' => 'Instagram Business URL',
 					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
 					'myspace_publisher_url' => 'MySpace Business Page URL',
-					'rp_publisher_url' => 'Pinterest Company Page URL',
+					'p_publisher_url' => 'Pinterest Company Page URL',
 					'seo_publisher_url' => 'Google+ Business Page URL',
 					'tc_site' => 'Twitter Business @username',
 				),

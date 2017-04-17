@@ -183,31 +183,31 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 
-				// the $head array should contain pinterest image meta tags (with a pinterest prefix)
+				// the $head array should contain pinterest image meta tags (with a p: prefix)
 				$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-richpin',
-					array( 'pid', 'img_url' ), $mod, 'og', 'pinterest', $head );
+					array( 'pid', 'img_url' ), $mod, 'og', 'p', $head );
 
 				$form_rows['subsection_pinterest'] = array(
 					'tr_class' => 'hide_in_basic',
 					'td_class' => 'subsection', 'header' => 'h4',
 					'label' => _x( 'Pinterest / Rich Pin', 'metabox title', 'wpsso' )
 				);
-				$form_rows['rp_img_dimensions'] = array(
+				$form_rows['p_img_dimensions'] = array(
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'rp_img_dimensions', 'td_class' => 'blank',
-					'content' => $form->get_no_image_dimensions_input( 'rp_img', true ),	// $use_opts = true
+					'th_class' => 'medium', 'tooltip' => 'p_img_dimensions', 'td_class' => 'blank',
+					'content' => $form->get_no_image_dimensions_input( 'p_img', true ),	// $use_opts = true
 				);
-				$form_rows['rp_img_id'] = array(
+				$form_rows['p_img_id'] = array(
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Image ID', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-rp_img_id', 'td_class' => 'blank',
-					'content' => $form->get_no_image_upload_input( 'rp_img', $media_info['pid'], true ),
+					'th_class' => 'medium', 'tooltip' => 'meta-p_img_id', 'td_class' => 'blank',
+					'content' => $form->get_no_image_upload_input( 'p_img', $media_info['pid'], true ),
 				);
-				$form_rows['rp_img_url'] = array(
+				$form_rows['p_img_url'] = array(
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-rp_img_url', 'td_class' => 'blank',
+					'th_class' => 'medium', 'tooltip' => 'meta-p_img_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
 				);
 			}

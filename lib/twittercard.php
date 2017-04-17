@@ -45,8 +45,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		// use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 
-			if ( $crawler_name === false )
-				$crawler_name = SucomUtil::crawler_name();
+			if ( $crawler_name === false ) {
+				$crawler_name = SucomUtil::get_crawler_name();
+			}
 
 			// pinterest does not read twitter card markup
 			switch ( $crawler_name ) {
@@ -56,8 +57,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					return array();
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 			$post_id = $mod['is_post'] ? $mod['id'] : false;

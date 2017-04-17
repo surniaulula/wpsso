@@ -742,7 +742,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return null;
 		}
 
-		public static function crawler_name( $is_name = '' ) {
+		// deprecated on 2017/04/16
+		public static function crawler_name() {
+			return self::get_crawler_name();
+		}
+
+		public static function is_crawler_name( $crawler_name ) {
+			return $crawler_name === self::get_crawler_name() ? true : false;
+		}
+
+		public static function get_crawler_name() {
 
 			if ( ! isset( self::$crawler_name ) ) {
 
@@ -802,9 +811,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				self::$crawler_name = apply_filters( 'sucom_crawler_name', self::$crawler_name, $ua );
 			}
 
-			if ( ! empty( $is_name ) )
-				return $is_name === self::$crawler_name ? true : false;
-			else return self::$crawler_name;
+			return self::$crawler_name;
 		}
 
 		public static function a2aa( $a ) {
@@ -1077,25 +1084,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_pub_lang( $pub = '' ) {
 			switch ( $pub ) {
-				case 'fb' :
+				case 'fb':
 					return self::$pub_lang['facebook'];
-				case 'gplus' :
-				case 'googleplus' :
+				case 'gplus':
+				case 'googleplus':
 					return self::$pub_lang['google'];
-				case 'pin' :
+				case 'pin':
 					return self::$pub_lang['pinterest'];
 				default:
-					if ( isset( self::$pub_lang[$pub] ) )
+					if ( isset( self::$pub_lang[$pub] ) ) {
 						return self::$pub_lang[$pub];
-					else return array();
+					} else {
+						return array();
+					}
 			}
 		}
 
 		public static function get_site_url( array $opts, $mixed = 'current' ) {
 			$ret = self::get_locale_opt( 'site_url', $opts, $mixed );
-			if ( empty( $ret ) )
+			if ( empty( $ret ) ) {
 				return get_bloginfo( 'url' );
-			else return $ret;
+			} else {
+				return $ret;
+			}
 		}
 
 		/*
@@ -1104,9 +1115,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_site_name( array $opts, $mixed = 'current' ) {
 			$ret = self::get_locale_opt( 'site_name', $opts, $mixed );
-			if ( empty( $ret ) )
+			if ( empty( $ret ) ) {
 				return get_bloginfo( 'name', 'display' );
-			else return $ret;
+			} else {
+				return $ret;
+			}
 		}
 
 		public static function get_site_alt_name( array $opts, $mixed = 'current' ) {
@@ -1119,9 +1132,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
 			$ret = self::get_locale_opt( 'site_desc', $opts, $mixed );
-			if ( empty( $ret ) )
+			if ( empty( $ret ) ) {
 				return get_bloginfo( 'description', 'display' );
-			else return $ret;
+			} else {
+				return $ret;
+			}
 		}
 
 		// returns an optional and customized locale value for the og:locale meta tag
@@ -1131,38 +1146,45 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			// check for customized locale
 			if ( ! empty( $opts ) ) {
 				$key_locale = self::get_key_locale( 'fb_locale', $opts, $mixed );
-				if ( ! empty( $opts[$key_locale] ) )
+				if ( ! empty( $opts[$key_locale] ) ) {
 					return $opts[$key_locale];
+				}
 			}
 
 			$locale = self::get_locale( $mixed );
 			$def_locale = self::get_locale( 'default' );
 			$fb_pub_lang = self::get_pub_lang( 'facebook' );
 
-			if ( ! empty( $fb_pub_lang[$locale] ) )
+			if ( ! empty( $fb_pub_lang[$locale] ) ) {
 				return $locale;
-			elseif ( ! empty( $fb_pub_lang[$def_locale] ) )
+			} elseif ( ! empty( $fb_pub_lang[$def_locale] ) ) {
 				return $def_locale;
-			else return 'en_US';
+			} else {
+				return 'en_US';
+			}
 		}
 
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
-			$val_locale = isset( $opts[$key_locale] ) ?
-				$opts[$key_locale] : null;
+			$val_locale = isset( $opts[$key_locale] ) ? $opts[$key_locale] : null;
 
 			// fallback to default value for non-existing keys or empty strings
 			if ( ! isset( $opts[$key_locale] ) || $opts[$key_locale] === '' ) {
 				if ( ( $pos = strpos( $key_locale, '#' ) ) > 0 ) {
 					$key_default = SucomUtil::get_key_locale( substr( $key_locale, 0, $pos ), $opts, 'default' );
 					if ( $key_locale !== $key_default ) {
-						return isset( $opts[$key_default] ) ?
-							$opts[$key_default] : $val_locale;
-					} else return $val_locale;
-				} else return $val_locale;
-			} else return $val_locale;
+						return isset( $opts[$key_default] ) ? $opts[$key_default] : $val_locale;
+					} else {
+						return $val_locale;
+					}
+				} else {
+					return $val_locale;
+				}
+			} else {
+				return $val_locale;
+			}
 		}
 
 		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {
@@ -1180,10 +1202,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// the default language may have changed, so if we're using the default,
 			// check for a locale version for the default language
-			if ( $locale === $default )
-				return isset( $opts[$key_locale] ) ?
-					$key_locale : $key;
-			else return $key_locale;
+			if ( $locale === $default ) {
+				return isset( $opts[$key_locale] ) ? $key_locale : $key;
+			} else {
+				return $key_locale;
+			}
 		}
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
@@ -1208,8 +1231,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			asort( $results );	// sort values for display
 
-			if ( $add_none )
+			if ( $add_none ) {
 				$results = array( 'none' => 'none' ) + $results;	// maintain numeric index
+			}
 
 			return $results;
 		}
@@ -1221,34 +1245,42 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$idx = is_array( $mixed ) ?
-				$mixed['name'].'_'.$mixed['id'] : $mixed;
+			$idx = is_array( $mixed ) ? $mixed['name'].'_'.$mixed['id'] : $mixed;
 
-			if ( isset( self::$locales[$idx] ) )
+			if ( isset( self::$locales[$idx] ) ) {
 				return self::$locales[$idx];
+			}
 
 			if ( $mixed === 'default' ) {
 				global $wp_local_package;
-				if ( isset( $wp_local_package ) )
+				if ( isset( $wp_local_package ) ) {
 					$locale = $wp_local_package;
-				if ( defined( 'WPLANG' ) )
+				}
+				if ( defined( 'WPLANG' ) ) {
 					$locale = WPLANG;
+				}
 				if ( is_multisite() ) {
-					if ( ( $ms_locale = get_option( 'WPLANG' ) ) === false )
+					if ( ( $ms_locale = get_option( 'WPLANG' ) ) === false ) {
 						$ms_locale = get_site_option( 'WPLANG' );
-					if ( $ms_locale !== false )
+					}
+					if ( $ms_locale !== false ) {
 						$locale = $ms_locale;
+					}
 				} else {
 					$db_locale = get_option( 'WPLANG' );
-					if ( $db_locale !== false )
+					if ( $db_locale !== false ) {
 						$locale = $db_locale;
+					}
 				}
-				if ( empty( $locale ) )
+				if ( empty( $locale ) ) {
 					$locale = 'en_US';	// just in case
+				}
 			} else {
-				if ( is_admin() && function_exists( 'get_user_locale' ) )	// since wp 4.7
+				if ( is_admin() && function_exists( 'get_user_locale' ) ) {	// since wp 4.7
 					$locale = get_user_locale();
-				else $locale = get_locale();
+				} else {
+					$locale = get_locale();
+				}
 			}
 
 			return self::$locales[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
@@ -1265,14 +1297,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 			$mod_salt = '';
 
-			if ( ! empty( $mod['name'] ) )
+			if ( ! empty( $mod['name'] ) ) {
 				$mod_salt .= '_'.$mod['name'].':'.(int) $mod['id'];	// convert false to 0
+			}
 
-			if ( ! empty( $mod['tax_slug'] ) )
+			if ( ! empty( $mod['tax_slug'] ) ) {
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
+			}
 
-			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) )
+			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) ) {
 				$mod_salt .= '_url:'.$sharing_url;
+			}
 
 			return ltrim( $mod_salt, '_' );
 		}

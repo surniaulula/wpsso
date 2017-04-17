@@ -14,10 +14,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 	class WpssoHead {
 
 		private $p;
-		private static $dnc_const = array(
-			'DONOTCACHEPAGE' => true,	// wp super cache and w3tc
-			'COMET_CACHE_ALLOWED' => false,	// comet cache
-		);
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -32,31 +28,60 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 			}
 
-			// disable page caching for customized meta tags (same URL, different meta tags)
-			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'setting do-not-cache constants' );
-				WpssoConfig::set_variable_constants( self::$dnc_const );	// set "do not cache" constants
+			/*
+			 * Disable page caching for customized meta tags (same URL, different meta tags).
+			 * get_head_cache_index() adds 'crawler:none' to the cache index string by default.
+			 */
+			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {	// custom crawler found
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'custom crawler cache index found' );
+				}
+				if ( ! defined( 'DONOTCACHEPAGE' ) ) {	// define as true
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'defining DONOTCACHEPAGE as true' );
+					}
+					define( 'DONOTCACHEPAGE', true );
+				} elseif ( DONOTCACHEPAGE ) {	// already defined as true
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'DONOTCACHEPAGE already defined as true' );
+					}
+				} else {	// already defined as false
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'error defining DONOTCACHEPAGE - constant already defined as false' );
+					}
+				}
 			}
 		}
 
-		// $mixed = 'default' | 'current' | post ID | $mod array
+		/*
+		 * Adds 'crawler:none' to the cache index string by default.
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
-			$crawler_name = SucomUtil::crawler_name();
+			$crawler_name = SucomUtil::get_crawler_name();
 			$head_index = 'locale:'.SucomUtil::get_locale( $mixed );
 
-			if ( $sharing_url !== false )
+			if ( $sharing_url !== false ) {
 				$head_index .= '_url:'.$sharing_url;
+			}
 
-			if ( SucomUtil::is_amp() )
+			if ( SucomUtil::is_amp() ) {
 				$head_index .= '_amp:true';
+			}
 
+			/*
+			 * Facebook and Pinterest can get a different custom image, image sizes, 
+			 * and Pinterest does not read json markup.
+			 */
 			switch ( $crawler_name ) {
-				case 'pinterest':	// pinterest gets different image sizes and does not read json markup
+				case 'facebook':
+				case 'pinterest':
 					$head_index .= '_crawler:'.$crawler_name;
 					break;
 				default:
@@ -76,8 +101,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( 'calling get_page_mod()' );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'required call to get_page_mod()' );
+			}
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$read_cache = true;
 			$mt_og = array();
@@ -127,7 +153,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( ! isset( $head_info[$mt[3]] ) )	// only save the first meta tag value
 							$head_info[$mt[3]] = $mt[5];
 						break;
-					case ( preg_match( '/^property-((og|pinterest):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 						if ( ! empty( $mt[5] ) )
 							$has_media[$m[1]] = true;	// optimize media loop
 						break;
@@ -138,24 +164,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save the first image and video information found. Assumes array key order
 			 * defined by SucomUtil::get_mt_prop_image() and SucomUtil::get_mt_prop_video().
 			 */
-			foreach ( array( 'og:image', 'og:video', 'pinterest:image' ) as $prefix ) {
-				if ( empty( $has_media[$prefix] ) )
+			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $prefix ) {
+				if ( empty( $has_media[$prefix] ) ) {
 					continue;
+				}
 
 				$is_first = false;
 
 				foreach ( $head_mt as $mt ) {
-					if ( ! isset( $mt[2] ) ||
-						! isset( $mt[3] ) )
-							continue;
+					if ( ! isset( $mt[2] ) || ! isset( $mt[3] ) ) {
+						continue;
+					}
 
 					if ( strpos( $mt[3], $prefix ) !== 0 ) {
 						$is_first = false;
 
 						// if we already found media, then skip to the next media prefix
-						if ( ! empty( $head_info[$prefix] ) )
+						if ( ! empty( $head_info[$prefix] ) ) {
 							continue 2;
-						else continue;	// skip meta tags without matching prefix
+						} else {
+							continue;	// skip meta tags without matching prefix
+						}
 					}
 
 					$mt_match = $mt[2].'-'.$mt[3];
@@ -215,14 +244,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! is_array( $mod ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'calling get_page_mod()' );
+					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
 
 			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
-			$crawler_name = SucomUtil::crawler_name();
+			$crawler_name = SucomUtil::get_crawler_name();
 			$add_mt_mark = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
 				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 			$added_on = 'added on '.date( 'c' ).
@@ -281,7 +310,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$crawler_name = SucomUtil::crawler_name();
+			$crawler_name = SucomUtil::get_crawler_name();
 			$head_array = array();
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
@@ -373,8 +402,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
-				if ( ! empty( $this->p->options['rp_dom_verify'] ) ) {
-					$mt_name['p:domain_verify'] = $this->p->options['rp_dom_verify'];
+				if ( ! empty( $this->p->options['p_dom_verify'] ) ) {
+					$mt_name['p:domain_verify'] = $this->p->options['p_dom_verify'];
 				}
 			}
 

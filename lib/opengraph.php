@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			);
 
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				$sizes['rp_img'] = array(	// options prefix
+				$sizes['p_img'] = array(	// options prefix
 					'name' => 'richpin',	// wpsso-richpin
 					'label' => _x( 'Pinterest Rich Pin',
 						'image size label', 'wpsso' ),
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( $crawler_name === false ) {
-				$crawler_name = SucomUtil::crawler_name();
+				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
 			$lca = $this->p->cf['lca'];
@@ -249,10 +249,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						// add richpin to process both image sizes
 						if ( is_admin() ) {
-							SucomUtil::add_before_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
+							SucomUtil::add_before_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
 						// use only pinterest (rich pin) image size
 						} elseif ( $crawler_name === 'pinterest' ) {
-							SucomUtil::do_replace_key( $img_sizes, 'og', array( 'rp' => $lca.'-richpin' ) );
+							SucomUtil::do_replace_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
 						}
 					}
 
@@ -272,21 +272,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						switch ( $md_pre ) {
-							case 'rp':
-								/*
-								 * Show both og and pinterest meta tags in the head tags tab
-								 * by renaming each og:image to pinterest:image.
-								 */
+							case 'p':
+								// show both og and pinterest meta tags in the head tags tab by renaming og:image to p:image
 								if ( is_admin() ) {
 									foreach ( $mt_og[$md_pre.':image'] as $num => $arr ) {
 										$mt_og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
-											$arr, false, 'pinterest:' );
+											$arr, false, 'p:' );
 									}
-								/*
-								 * Rename the rp:image array to og:image.
-								 */
+								// rename the p:image array to og:image
 								} else {
-									SucomUtil::rename_keys( $mt_og, array( $md_pre.':image' => 'og:image' ), false );
+									SucomUtil::rename_keys( $mt_og, array( 'p:image' => 'og:image' ), false );
 								}
 								break;
 						}
@@ -407,7 +402,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing
 		 * only known meta tags (using the 'og_type_mt' array as a reference) protects
 		 * internal meta tags that may be used later by WpssoHead::extract_head_info().
-		 * For example, the schema:type:id and pinterest:image meta tags.
+		 * For example, the schema:type:id and p:image meta tags.
 		 *
 		 * The 'og_content_map' array is also checked for Schema values that need to be
 		 * swapped for simpler Open Graph meta tag values.

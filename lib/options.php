@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * isset() or array_key_exists() on all tests to make sure additional / 
 			 * unnecessary options are not created in post meta.
 			 */
-			foreach ( array( 'og', 'rp', 'schema' ) as $md_pre ) {
+			foreach ( array( 'og', 'p', 'schema' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
 					! empty( $opts[$md_pre.'_img_height'] ) &&
 					! empty( $opts[$md_pre.'_img_crop'] ) ) {	// check cropped image ratio
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_url':
 				case 'og_vid_url':
 				case 'og_def_img_url':
-				case 'rp_img_url':
+				case 'p_img_url':
 				case 'schema_logo_url':
 				case 'schema_banner_url':
 				case 'plugin_yourls_api_url':
@@ -615,7 +615,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// must be numeric (blank and zero are ok)
 				case 'og_def_img_id':
 				case 'og_img_id':
-				case 'rp_img_id':
+				case 'p_img_id':
 				case 'product_price':
 					return 'blank_num';
 					break;
@@ -640,7 +640,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// empty or alpha-numeric (upper or lower case), plus underscores
 				case 'fb_app_id':
 				case 'fb_app_secret':
-				case 'rp_dom_verify':
+				case 'p_dom_verify':
 				case ( preg_match( '/_api_key$/', $key ) ? true : false ):
 					return 'api_key';
 					break;
@@ -672,8 +672,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
-				case 'rp_img_id_pre': 
-				case 'rp_author_name':
+				case 'p_img_id_pre': 
+				case 'p_author_name':
 				case 'plugin_shortener':		// none or name of shortener
 				case 'product_avail':
 				case 'product_condition':
