@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.41.0-dev.1 (TBD)**
+**Version 3.40.14-dev.1 (TBD)**
 
 * *New Features*
 	* None
