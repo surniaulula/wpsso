@@ -362,11 +362,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Notes', 'plugin action link', 'wpsso' ).'</a>';
 			}
 
+			/*
 			if ( ! empty( $info['url']['latest'] ) ) {
 				$links[] = '<a href="'.$info['url']['latest'].'"'.
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
 					_x( 'Download Latest', 'plugin action link', 'wpsso' ).' (ZIP)</a>';
 			}
+			*/
 
 			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 				$links[] = '<a href="'.$info['url']['support'].'"'.
