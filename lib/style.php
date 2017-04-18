@@ -125,8 +125,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					array(), $plugin_version );
 
 			$custom_style_css .= '
-				.has-right-sidebar #post-body-content { margin-right:280px; }		/* default is 300px */
+				.wrap { margin-right:0; }
+
+				.has-right-sidebar .inner-sidebar { margin-right:20px; }
+				.has-right-sidebar #post-body-content { margin-right:300px; }		/* default is 300px */
 				.has-right-sidebar #post-body-content .postbox { margin-right:20px; }	/* default is 0px */
+
+				.no-right-sidebar #post-body-content { margin-right:0; }		/* widen content column */
+				.no-right-sidebar #post-body-content .postbox { margin-right:20px; }	/* default is 0px */
 			';
 
 			foreach ( array(
@@ -136,7 +142,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			) as $media_width => $adjusted_with ) {
 				$custom_style_css .= '
 					@media ( max-width:'.$media_width.' ) {
-						.has-right-sidebar #post-body-content { margin-right:'.( $adjusted_with ).'px; }
+						.has-right-sidebar #post-body-content { margin-right:'.( $adjusted_with + 20 ).'px; }
 						.has-right-sidebar .inner-sidebar { width:'.( $adjusted_with + 1 ).'px; }
 						.has-right-sidebar .inner-sidebar #side-sortables { width:'.$adjusted_with.'px; }
 						.has-right-sidebar .inner-sidebar #side-sortables .postbox { min-width:'.$adjusted_with.'px; }
@@ -146,7 +152,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			// disable the sidebar at 1370px or less and adjust the content width to fill the space
 			$custom_style_css .= '
 				@media ( max-width:1370px ) {
-					.wrap { margin-right:0; }					/* remove extra 20px since postboxes have 20px */
 					.has-right-sidebar #side-info-column { display:none; }		/* remove sidebar column */
 					.has-right-sidebar #post-body-content { margin-right:0; }	/* widen content column */
 				}

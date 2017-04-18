@@ -79,6 +79,7 @@ _x( 'SSO Img', 'column header', 'wpsso' );
 _x( 'SSO', 'menu label', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );
 _x( 'Stable / Production', 'option value', 'wpsso' );
+_x( 'Status Dashboard', 'lib file description', 'wpsso' );
 _x( 'Sunday', 'option value', 'wpsso' );
 _x( 'Thursday', 'option value', 'wpsso' );
 _x( 'TinyURL', 'option value', 'wpsso' );

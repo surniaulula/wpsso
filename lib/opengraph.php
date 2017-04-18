@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$esc_site_name = preg_quote( $mt_og['og:site_name'] );
 				if ( preg_match( '/(^'.$esc_site_name.' \w|\w '.$esc_site_name.'$)/', $mt_og['og:title'] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'site name seems integral to the title - unsetting site name meta tag' );
+						$this->p->debug->log( 'site name seems integral to title - unsetting site name meta tag' );
 					}
 					unset( $mt_og['og:site_name'] );
 				}

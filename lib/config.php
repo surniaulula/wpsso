@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.40.14-dev.3',		// plugin version
+					'version' => '3.41.0-dev.4',		// plugin version
 					'opt_version' => '515',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'contact-fields' => 'User Profile Contact Methods',
 						),
 						'submenu' => array (	// lib file descriptions will be translated
+							'dashboard' => 'Status Dashboard',
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',

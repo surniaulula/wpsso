@@ -247,8 +247,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// called by the show_setting_page() method
-		// extended by the sitesubmenu classes to define the site options instead
+		/*
+		 * Called by the show_setting_page() method, and extended by the 
+		 * sitesubmenu classes to load the site options instead.
+		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
 			$def_opts = $this->p->opt->get_defaults();
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME,
@@ -284,6 +286,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				( version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share' ),
 				WPSSO_MENU_ORDER
 			);
+
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
 
@@ -361,14 +364,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
 					_x( 'Notes', 'plugin action link', 'wpsso' ).'</a>';
 			}
-
-			/*
-			if ( ! empty( $info['url']['latest'] ) ) {
-				$links[] = '<a href="'.$info['url']['latest'].'"'.
-					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
-					_x( 'Download Latest', 'plugin action link', 'wpsso' ).' (ZIP)</a>';
-			}
-			*/
 
 			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 				$links[] = '<a href="'.$info['url']['support'].'"'.
@@ -726,31 +721,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_side_meta_boxes() {
 			$lca = $this->p->cf['lca'];
-
 			if ( ! self::$pkg[$lca]['aop'] ) {
 				add_meta_box( $this->pagehook.'_purchase_pro',
-					_x( 'Pro Version Available', 'metabox title (side)', 'wpsso' ),
+					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side-fixed' );
-				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ) );
-			}
-
-			// show the help metabox on all pages
-			add_meta_box( $this->pagehook.'_help',
-				_x( 'Help and Support', 'metabox title (side)', 'wpsso' ),
-					array( &$this, 'show_metabox_help' ), $this->pagehook, 'side' );
-
-			// only show under in the plugin settings pages
-			// (don't show under the WordPress settings menu or in network settings pages)
-			if ( $this->menu_lib === 'submenu' ) {
-				add_meta_box( $this->pagehook.'_status_gpl',
-					_x( 'Free / Basic Features', 'metabox title (side)', 'wpsso' ),
-						array( &$this, 'show_metabox_status_gpl' ), $this->pagehook, 'side' );
-
-				if ( self::$pkg[$lca]['aop'] || empty( $this->p->options['plugin_hide_pro'] ) ) {
-					add_meta_box( $this->pagehook.'_status_pro',
-						_x( 'Pro Version Features', 'metabox title (side)', 'wpsso' ),
-							array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
-				}
+				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
 		}
 
@@ -758,23 +733,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// method is extended by each submenu page
 		}
 
-		public function show_setting_page( $sidebar = true ) {
+		public function show_setting_page() {
 
 			if ( ! $this->is_setting() ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
+
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->p->cf['lca'];
 			}
 
-			$this->set_form_object( $menu_ext );	// set form for side boxes and show_form_content()
+			// set the form for side boxes and show_form_content()
+			$this->set_form_object( $menu_ext );
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
 			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.$this->menu_name.'</h1>'."\n";
 
-			if ( $sidebar !== false ) {
+			if ( ! self::$pkg[$lca]['aop'] ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
 				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
 
@@ -790,9 +768,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="post-body" class="has-sidebar">'."\n";
 				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
 			} else {
-				echo '<div id="poststuff" class="metabox-holder">'."\n";
-				echo '<div id="post-body">'."\n";
-				echo '<div id="post-body-content">'."\n";
+				echo '<div id="poststuff" class="metabox-holder no-right-sidebar">'."\n";
+				echo '<div id="post-body" class="no-sidebar">'."\n";
+				echo '<div id="post-body-content" class="no-sidebar-content">'."\n";
 			}
 
 			$this->show_form_content(); ?>
@@ -967,8 +945,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 
-			echo '<table class="sucom-settings '.$lca.' side version-info" style="table-layout:fixed;">';
-			echo '<colgroup><col style="width:60px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
+			echo '<table class="sucom-settings '.$lca.' column version-info" style="table-layout:fixed;">';
+			echo '<colgroup><col style="width:70px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1018,19 +996,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Installed', 'side label', 'wpsso' ).':</th>
-					<td class="side-version" '.$installed_style.'>'.$installed_version.'</td></tr>';
+				echo '<tr><th class="column">'._x( 'Installed', 'column label', 'wpsso' ).':</th>
+					<td class="column-version" '.$installed_style.'>'.$installed_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Stable', 'side label', 'wpsso' ).':</th>
-					<td class="side-version">'.$stable_version.'</td></tr>';
+				echo '<tr><th class="column">'._x( 'Stable', 'column label', 'wpsso' ).':</th>
+					<td class="column-version">'.$stable_version.'</td></tr>';
 
-				echo '<tr><th class="side">'._x( 'Latest', 'side label', 'wpsso' ).':</th>
-					<td class="side-version">'.$latest_version.'</td></tr>';
+				echo '<tr><th class="column">'._x( 'Latest', 'column label', 'wpsso' ).':</th>
+					<td class="column-version">'.$latest_version.'</td></tr>';
 
 				echo '<tr><td colspan="2" class="latest-notice">'.
 					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
-						sprintf( _x( 'View %s changelog...', 'side value',
+						sprintf( _x( 'View %s changelog...', 'column value',
 							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 			echo '</table>';
@@ -1046,7 +1024,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-settings '.$lca.' side" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' column" style="margin-bottom:10px;">';
 
 			/*
 			 * GPL version features
@@ -1105,7 +1083,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-settings '.$lca.' side" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' column" style="margin-bottom:10px;">';
 
 			/*
 			 * Pro version features
@@ -1213,9 +1191,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					echo '<tr>'.
-					'<td class="side"><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
-					'<td class="side'.$td_class.'">'.$label_text.'</td>'.
-					'<td class="side">'.
+					'<td class="column"><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
+					'<td class="column'.$td_class.'">'.$label_text.'</td>'.
+					'<td class="column">'.
 						( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
 						'<img src="'.WPSSO_URLPATH.'images/'.
 							$status_info[$status_key]['img'].'" width="12" height="12" title="'.
@@ -1242,20 +1220,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
-				'' : add_query_arg( 'utm_source', 'side-purchase-pro', $info['url']['purchase'] );
-			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
-			echo $this->p->msgs->get( 'side-purchase-pro' );
+				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
+			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
+			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
 				'button-primary', null, $purchase_url, true );
 			echo '</p></td></tr></table>';
 		}
 
-		public function show_metabox_help() {
+		public function show_metabox_help_support() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' side"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
 			$this->show_follow_icons();
-			echo $this->p->msgs->get( 'side-help-support' );
+			echo $this->p->msgs->get( 'column-help-support' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
@@ -1278,6 +1256,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a>',
 						'wpsso' ), $info['url']['forum'] ).' ('.__( 'Free version', 'wpsso' ).')';
 				}
+
+				if ( ! empty( $links ) ) {
+					echo '<p><strong>'.$info['short'].'</strong></p>'."\n";
+					echo '<ul><li>'.implode( '</li><li>', $links ).'</li></ul>'."\n";
+				}
+			}
+
+			echo '</td></tr></table>';
+		}
+
+		public function show_metabox_rate_review() {
+			$lca = $this->p->cf['lca'];
+			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
+			echo $this->p->msgs->get( 'column-rate-review' );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
+					continue;
+				}
+
+				$links = array();
 
 				if ( ! empty( $info['url']['review'] ) ) {
 					$links[] = '<strong>'.__( 'Want to say thank you?', 'wpsso' ).'</strong><br/>'.
