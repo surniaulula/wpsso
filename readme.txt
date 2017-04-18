@@ -333,13 +333,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.14-dev.3 (2017/04/18)**
+**Version 3.41.0-dev.3 (2017/04/18)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added a WpssoHead user_agent_cross_check() method to handle user agents with special needs like the Pinterest crawler.
-	* Added edge-case handling of site name and title meta tags for the Pinterest crawler to avoid Pinterest removing the site name from title values.
+	* Added edge-case handling of site name and title meta tags for the Pinterest crawler to avoid Pinterest removing the site name from the title value.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -584,7 +584,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.14-dev.3 =
+= 3.41.0-dev.3 =
 
 (2017/04/18) Minor code optimization, including renaming of Pinterest option key prefixes from 'rp' to 'p'.
 
