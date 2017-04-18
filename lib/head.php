@@ -36,6 +36,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function user_agent_cross_check() {
 
+			// crawlers should only be seen on the front-end
+			if ( is_admin() ) {
+				return;
+			}
+
 			$crawler_arg = 'uaxchk';
 
 			// get_head_cache_index() adds 'uaxchk:none' to the cache index string by default
