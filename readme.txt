@@ -338,7 +338,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Added a WpssoHead user_agent_cross_check() method to handle special user agents like the Pinterest crawler.
+	* Added a WpssoHead user_agent_cross_check() method to handle user agents with special needs like the Pinterest crawler.
+	* Added edge-case handling of site name and title meta tags for the Pinterest crawler to avoid Pinterest removing the site name from title values.
 * *Bugfixes*
 	* None
 * *Developer Notes*
