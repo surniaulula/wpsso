@@ -75,7 +75,7 @@
 
 <dt><h3>Caching Services</h3></dt>
 
-<dd><p>Pinterest and Facebook use different size images (portrait vs landscape, for example), and some meta tag values required by Facebook are not compatible with Pinterest. WPSSO detects the Facebook and Pinterest crawlers, and provides different meta tags for each. A DONOTCACHEPAGE constant is also defined to bypass any caching plugins - this is necessary to provide distinct content for each social crawler. Some hosting services (like WPEngine) use aggressive caching techniques and do not honor the DONOTCACHEPAGE constant. If you use a caching service that does not support the DONOTCACHEPAGE constant, please contact their support department as ask for the following user agents to be excluded from caching:</p>
+<dd><p>Pinterest and Facebook use different size images (portrait vs landscape, for example), and some meta tag values required by Facebook are not compatible with Pinterest. WPSSO detects the Facebook and Pinterest crawlers, and provides different meta tags for each. A DONOTCACHEPAGE constant is also defined to bypass any caching plugins - this is necessary to provide distinct content for each social crawler. Some hosting providers and services use aggressive caching techniques, and do not honor the DONOTCACHEPAGE constant. If you use a caching service that does not support the DONOTCACHEPAGE constant, please contact their support department as ask them to exclude the following user agent from caching:</p>
 
 <pre>
 facebookexternalhit/
