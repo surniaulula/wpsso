@@ -17,8 +17,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
@@ -28,13 +30,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 			}
 
-			/*
-			 * Disable page caching for customized meta tags (same URL, different meta tags).
-			 * get_head_cache_index() adds 'crawler:none' to the cache index string by default.
-			 */
-			if ( strpos( $this->get_head_cache_index(), 'crawler:none' ) === false ) {	// custom crawler found
+			// define the DONOTCACHEPAGE constant and add a query to bust the cache
+			$this->user_agent_cross_check();
+		}
+
+		public function user_agent_cross_check() {
+
+			$crawler_arg = 'uaxchk';
+
+			// get_head_cache_index() adds 'uaxchk:none' to the cache index string by default
+			if ( strpos( $this->get_head_cache_index( false ), 'uaxchk:none' ) === false ) {	// custom crawler found
+
+				$crawler_name = SucomUtil::get_crawler_name();
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom crawler cache index found' );
+					$this->p->debug->log( 'custom crawler cache index found for '.$crawler_name );
+
 				}
 				if ( ! defined( 'DONOTCACHEPAGE' ) ) {	// define as true
 					if ( $this->p->debug->enabled ) {
@@ -50,11 +61,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'error defining DONOTCACHEPAGE - constant already defined as false' );
 					}
 				}
+
+				if ( empty( $_GET[$crawler_arg] ) || $_GET[$crawler_arg] !== $crawler_name ) {
+					wp_redirect( add_query_arg( $crawler_arg, $crawler_name, 
+						remove_query_arg( $crawler_arg ) ), 301 );	// hard / temporary redirect
+					exit;
+				}
+
+			// if not a custom crawler, then remove the query and redirect permanently
+			} elseif ( isset( $_GET[$crawler_arg] ) ) {
+				wp_redirect( remove_query_arg( $crawler_arg ), 301 );	// hard / permanent redirect
+				exit;
 			}
 		}
 
 		/*
-		 * Adds 'crawler:none' to the cache index string by default.
+		 * Adds 'uaxchk:none' to the cache index string by default.
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
@@ -65,7 +87,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$crawler_name = SucomUtil::get_crawler_name();
-			$head_index = 'locale:'.SucomUtil::get_locale( $mixed );
+			$head_index = '';
+
+			if ( $mixed !== false ) {	// optimize for __construct()
+				$head_index = 'locale:'.SucomUtil::get_locale( $mixed );
+			}
 
 			if ( $sharing_url !== false ) {
 				$head_index .= '_url:'.$sharing_url;
@@ -76,16 +102,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Facebook and Pinterest can get a different custom image, image sizes, 
-			 * and Pinterest does not read json markup.
+			 * Pinterest can get a different custom image, image sizes, and does not 
+			 * read json markup. Create a unique meta tags and index key for Pinterest. 
 			 */
 			switch ( $crawler_name ) {
-				case 'facebook':
 				case 'pinterest':
-					$head_index .= '_crawler:'.$crawler_name;
+					$head_index .= '_uaxchk:'.$crawler_name;
 					break;
 				default:
-					$head_index .= '_crawler:none';
+					$head_index .= '_uaxchk:none';
 					break;
 			}
 

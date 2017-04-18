@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7.3
- * Version: 3.40.14-dev.1
+ * Version: 3.40.14-dev.2
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -255,7 +255,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->style = new WpssoStyle( $this );			// admin styles
 			$this->script = new WpssoScript( $this );		// admin jquery tooltips
 			$this->page = new WpssoPage( $this );			// page title, desc, etc.
-			$this->webpage =& $this->page;				// deprecated (maintain backwards compatibility)
+			$this->webpage =& $this->page;				// deprecated on 2017/03/31 (retain for backwards compatibility)
 			$this->media = new WpssoMedia( $this );			// images, videos, etc.
 			$this->filters = new WpssoFilters( $this );		// integration filters
 			$this->head = new WpssoHead( $this );
