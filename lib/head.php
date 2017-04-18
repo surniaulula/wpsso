@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function user_agent_cross_check() {
 
-			// crawlers should only be seen on the front-end
+			// crawlers are only seen on the front-end
 			if ( is_admin() ) {
 				return;
 			}
