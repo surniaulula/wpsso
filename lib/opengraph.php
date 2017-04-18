@@ -167,31 +167,49 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( $mt_og );
 			}
 
-			if ( ! isset( $mt_og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) )
-				foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin )
+			if ( ! isset( $mt_og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) ) {
+				foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin ) {
 					$mt_og['fb:admins'][] = trim( $fb_admin );
+				}
+			}
 
-			if ( ! isset( $mt_og['fb:app_id'] ) )
+			if ( ! isset( $mt_og['fb:app_id'] ) ) {
 				$mt_og['fb:app_id'] = $this->p->options['fb_app_id'];
+			}
 
-			if ( ! isset( $mt_og['og:url'] ) )
+			if ( ! isset( $mt_og['og:url'] ) ) {
 				$mt_og['og:url'] = $this->p->util->get_sharing_url( $mod );
+			}
 
 			// define the type after the url
-			if ( ! isset( $mt_og['og:type'] ) )
+			if ( ! isset( $mt_og['og:type'] ) ) {
 				$mt_og['og:type'] = $this->get_og_type( $mod );
+			}
 
-			if ( ! isset( $mt_og['og:locale'] ) )
+			if ( ! isset( $mt_og['og:locale'] ) ) {
 				$mt_og['og:locale'] = SucomUtil::get_fb_locale( $this->p->options, $mod );	// localized
+			}
 
-			if ( ! isset( $mt_og['og:site_name'] ) )
+			if ( ! isset( $mt_og['og:site_name'] ) ) {
 				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
+			}
 
 			if ( ! isset( $mt_og['og:title'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
 				$mt_og['og:title'] = $this->p->page->get_title( $this->p->options['og_title_len'], '...', $mod );
+			}
+
+			/*
+			 * Pinterest automatically removes the site name from the title, so unset the site name meta tag if its
+			 * value is an integral part of our title (ie. the site name is followed or prefixed by a word character).
+			 */
+			if ( $crawler_name === 'pinterest' ) {
+				$esc_site_name = preg_quote( $mt_og['og:site_name'] );
+				if ( preg_match( '/(^'.$esc_site_name.' \w|\w '.$esc_site_name.'$)/', $mt_og['og:title'] ) ) {
+					unset( $mt_og['og:site_name'] );
+				}
 			}
 
 			if ( ! isset( $mt_og['og:description'] ) ) {
