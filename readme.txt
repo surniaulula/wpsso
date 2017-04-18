@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.14-dev.2 (2017/04/18)**
+**Version 3.40.14-dev.3 (2017/04/18)**
 
 * *New Features*
 	* None
@@ -583,7 +583,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.14-dev.2 =
+= 3.40.14-dev.3 =
 
 (2017/04/18) Minor code optimization, including renaming of Pinterest option key prefixes from 'rp' to 'p'.
 
