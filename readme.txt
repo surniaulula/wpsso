@@ -333,12 +333,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.40.14-dev.1 (2017/04/17)**
+**Version 3.40.14-dev.2 (2017/04/18)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a WpssoHead user_agent_cross_check() method to handle special user agents like the Pinterest crawler.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -583,9 +583,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.40.14-dev.1 =
+= 3.40.14-dev.2 =
 
-(2017/04/17) Minor code optimization, including renaming of Pinterest option key prefixes from 'rp' to 'p'.
+(2017/04/18) Minor code optimization, including renaming of Pinterest option key prefixes from 'rp' to 'p'.
 
 = 3.40.13 =
 
