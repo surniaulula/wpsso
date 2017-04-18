@@ -548,9 +548,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 
-				// admin url will redirect to essential settings since we're not on a settings page here
+				// admin url will redirect to the essential settings since we're not on a settings page
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?'.$lca.'-action=clear_all_cache',
-					WpssoAdmin::get_nonce(), WPSSO_NONCE ), _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ) );
+					WpssoAdmin::get_nonce(), WPSSO_NONCE ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
@@ -926,30 +926,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Secondary Action Buttons
 			 */
 			$secondary = array(
-				'clear_all_cache' => _x( 'Clear All Cache(s)', 'submit button', 'wpsso' ),
-				'check_for_updates' => _x( 'Check for Update(s)', 'submit button', 'wpsso' ),
+				'clear_all_cache' => _x( 'Clear All Caches', 'submit button', 'wpsso' ),
+				'check_for_updates' => _x( 'Check for Updates', 'submit button', 'wpsso' ),
 				'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 				'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
 				'reload_default_sizes' => _x( 'Reload Default Sizes', 'submit button', 'wpsso' ),
 			);
 
-			// Clear All Cache(s) exceptions
+			// remove "Clear All Cache" if we're not on a settings or submenu page
 			if ( $this->menu_lib !== 'setting' &&
 				$this->menu_lib !== 'submenu' ) {
 				unset( $secondary['clear_all_cache'] );
 			}
 
-			// Check for Update(s) exceptions
+			// remove "Check for Updates" if we're not on the Update Manager settings page
 			if ( strpos( $this->menu_id, 'um-general' ) === false ||
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
 				unset( $secondary['check_for_updates'] );
 			}
 
-			// Reload Default Sizes exceptions
+			// remove "Reload Default Sizes" if we're not on the image dimensions settings page
 			if ( $this->menu_id !== 'image-dimensions' ) {
 				unset( $secondary['reload_default_sizes'] );
 			}
 
+			// allow extensions to add / remove buttons
 			$secondary = apply_filters( $lca.'_secondary_action_buttons', $secondary,
 				$this->menu_id, $this->menu_name, $this->menu_lib );
 

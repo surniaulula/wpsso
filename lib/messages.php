@@ -1191,7 +1191,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $info['min_version'], $um_version ).' ';
 						
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information.', 'wpsso' ), $um_info['name'], _x( 'Check for Update(s)', 'submit button', 'wpsso' ), $this->p->util->get_admin_url( 'um-general', _x( 'Update Manager', 'lib file description', 'wpsso-um' ) ), $info['short'] );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information.', 'wpsso' ), $um_info['name'], _x( 'Check for Updates', 'submit button', 'wpsso' ), $this->p->util->get_admin_url( 'um-general', _x( 'Update Manager', 'lib file description', 'wpsso-um' ) ), $info['short'] );
 						break;
 
 					case 'notice-recommend-version':
