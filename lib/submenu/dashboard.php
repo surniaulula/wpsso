@@ -28,24 +28,15 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
+		}
 
+		protected function add_plugin_hooks() {
 			$this->p->util->add_plugin_actions( $this, array(
 				'form_content_metaboxes_dashboard' => 1,	// show four-column metaboxes
 			) );
-		}
-
-		// show two-column metaboxes for sharing buttons
-		public function action_form_content_metaboxes_dashboard( $pagehook ) {
-			if ( isset( $this->website ) ) {
-				echo '<div id="dashboard-metaboxes" class="max-cols-'.$this->max_cols.'">'."\n";
-				foreach ( range( 1, $this->max_cols ) as $col ) {
-					echo '<div id="dashboard-col-'.$col.'" class="dashboard-col">';
-					do_meta_boxes( $pagehook, 'dashboard-col-'.$col, null );
-					echo '</div><!-- #dashboard-col-'.$col.'.dashboard-col -->'."\n";
-				}
-				echo '</div><!-- #dashboard-metaboxes -->'."\n";
-				echo '<div style="clear:both;"></div>'."\n";
-			}
+			$this->p->util->add_plugin_filters( $this, array(
+				'action_buttons' => 1,
+			) );
 		}
 
 		protected function add_meta_boxes() {
@@ -74,9 +65,28 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			}
 		}
 
+		public function filter_action_buttons( $action_buttons ) {
+			unset( $action_buttons[0] );
+			return $action_buttons;
+		}
+
 		public function add_class_postbox_dashboard( $classes ) {
 			$classes[] = 'postbox-dashboard';
 			return $classes;
+		}
+
+		// show two-column metaboxes for sharing buttons
+		public function action_form_content_metaboxes_dashboard( $pagehook ) {
+			if ( isset( $this->website ) ) {
+				echo '<div id="dashboard-metaboxes" class="max-cols-'.$this->max_cols.'">'."\n";
+				foreach ( range( 1, $this->max_cols ) as $col ) {
+					echo '<div id="dashboard-col-'.$col.'" class="dashboard-col">';
+					do_meta_boxes( $pagehook, 'dashboard-col-'.$col, null );
+					echo '</div><!-- #dashboard-col-'.$col.'.dashboard-col -->'."\n";
+				}
+				echo '</div><!-- #dashboard-metaboxes -->'."\n";
+				echo '<div style="clear:both;"></div>'."\n";
+			}
 		}
 	}
 }

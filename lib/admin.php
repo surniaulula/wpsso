@@ -892,6 +892,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
 				array(
+					'submit' => $submit_label,
 					'change_show_options&show-opts='.$view_next => $view_label,
 				),
 				array(
@@ -901,7 +902,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			), $this->menu_id, $this->menu_name, $this->menu_lib );
 
-			$submit_buttons = '<input type="submit" class="button-primary" value="'.$submit_label.'" />';
+			$submit_buttons = '';
 
 			foreach ( $action_buttons as $row => $row_buttons ) {
 				$css_class = $row ?
@@ -909,9 +910,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'button-secondary button-highlight';	// highlight the first row
 
 				foreach ( $row_buttons as $action_arg => $button_label ) {
-					$button_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action_arg ),
-						WpssoAdmin::get_nonce(), WPSSO_NONCE );
-					$submit_buttons .= $this->form->get_button( $button_label, $css_class, '', $button_url );
+					if ( $action_arg === 'submit' ) {
+						$submit_buttons .= '<input type="'.$action_arg.'" class="button-primary" value="'.$button_label.'" />';
+					} else {
+						$button_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action_arg ),
+							WpssoAdmin::get_nonce(), WPSSO_NONCE );
+						$submit_buttons .= $this->form->get_button( $button_label, $css_class, '', $button_url );
+					}
 				}
 				$submit_buttons .= '<br/>';
 			}
