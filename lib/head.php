@@ -30,21 +30,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 			}
 
-			// define the DONOTCACHEPAGE constant and add a query to bust the cache
-			$this->user_agent_cross_check();
+			// crawlers are only seen on the front-end, so skip if in back-end
+			if ( ! is_admin() && ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
+				$this->vary_user_agent_check();
+			}
 		}
 
-		public function user_agent_cross_check() {
+		public function vary_user_agent_check() {
 
-			// crawlers are only seen on the front-end
-			if ( is_admin() ) {
-				return;
-			}
+			// query argument used to bust external caches
+			$crawler_arg = 'uaid';
 
-			$crawler_arg = 'uaxchk';
-
-			// get_head_cache_index() adds 'uaxchk:none' to the cache index string by default
-			if ( strpos( $this->get_head_cache_index( false ), 'uaxchk:none' ) === false ) {	// custom crawler found
+			if ( strpos( $this->get_head_cache_index( false ), 'uaid:' ) !== false ) {	// custom crawler found
 
 				$crawler_name = SucomUtil::get_crawler_name();
 
@@ -67,23 +64,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 				}
 
+				// add a query argument for this crawler and redirect to bust external caches
 				if ( empty( $_GET[$crawler_arg] ) || $_GET[$crawler_arg] !== $crawler_name ) {
 					wp_redirect( add_query_arg( $crawler_arg, $crawler_name, 
-						remove_query_arg( $crawler_arg ) ), 301 );	// hard / temporary redirect
+						remove_query_arg( $crawler_arg ) ), 301 );	// hard / permanent redirect
 					exit;
 				}
 
-			// if not a custom crawler, then remove the query and redirect permanently
+			// if not a custom crawler, then remove the query (if set) and redirect
 			} elseif ( isset( $_GET[$crawler_arg] ) ) {
 				wp_redirect( remove_query_arg( $crawler_arg ), 301 );	// hard / permanent redirect
 				exit;
 			}
+
+			add_filter( 'wp_headers', 'add_vary_user_agent_header' );
 		}
 
-		/*
-		 * Adds 'uaxchk:none' to the cache index string by default.
-		 * $mixed = 'default' | 'current' | post ID | $mod array
-		 */
+		public function add_vary_user_agent_header( $headers ) {
+			$headers['Vary'] = 'User-Agent';
+			return $headers;
+		}
+
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -91,7 +92,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$crawler_name = SucomUtil::get_crawler_name();
 			$head_index = '';
 
 			if ( $mixed !== false ) {	// optimize for __construct()
@@ -106,17 +106,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$head_index .= '_amp:true';
 			}
 
-			/*
-			 * Pinterest can get a different custom image, image sizes, and does not 
-			 * read json markup. Create a unique meta tags and index key for Pinterest. 
-			 */
-			switch ( $crawler_name ) {
-				case 'pinterest':
-					$head_index .= '_uaxchk:'.$crawler_name;
-					break;
-				default:
-					$head_index .= '_uaxchk:none';
-					break;
+			// crawlers are only seen on the front-end, so skip if in back-end
+			if ( ! is_admin() && ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
+				switch ( SucomUtil::get_crawler_name() ) {
+					case 'pinterest':
+						/*
+						 * Pinterest can get a different custom image, image sizes, 
+						 * and does not read json markup. Create a unique meta tags 
+						 * and index key for Pinterest. 
+						 */
+						if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+							$head_index .= '_uaid:'.$crawler_name;
+						}
+						break;
+				}
 			}
 
 			return ltrim( $head_index, '_' );
@@ -284,8 +287,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::get_crawler_name();
 			$add_mt_mark = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
 				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
-			$added_on = 'added on '.date( 'c' ).
-				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
+			$added_on = 'added on '.date( 'c' ).( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
 
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";

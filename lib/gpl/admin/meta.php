@@ -181,6 +181,42 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_checkbox( 'og_vid_prev_img' ),
 			);
 
+			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema',
+				array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
+	
+			$form_rows['subsection_schema'] = array(
+				'tr_class' => 'hide_in_basic',
+				'td_class' => 'subsection', 'header' => 'h4',
+				'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+			);
+			$form_rows['schema_img_dimensions'] = array(
+				'tr_class' => 'hide_in_basic',
+				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'schema_img_dimensions', 'td_class' => 'blank',
+				'content' => $form->get_no_image_dimensions_input( 'schema_img', true ),	// $use_opts = true
+			);
+			$form_rows['schema_img_id'] = array(
+				'tr_class' => 'hide_in_basic',
+				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'meta-schema_img_id', 'td_class' => 'blank',
+				'content' => $form->get_no_image_upload_input( 'schema_img', $media_info['pid'], true ),
+			);
+			$form_rows['schema_img_url'] = array(
+				'tr_class' => 'hide_in_basic',
+				'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'meta-schema_img_url', 'td_class' => 'blank',
+				'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
+			);
+			if ( $mod['is_post'] ) {
+				$form_rows['schema_img_max'] = array(
+					'tr_class' => 'hide_in_basic',
+					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-schema_img_max', 'td_class' => 'blank',
+					'content' => $form->get_no_select( 'schema_img_max', 
+						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+				);
+			}
+
 			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 
 				// the $head array should contain pinterest image meta tags (with a p: prefix)
@@ -210,45 +246,6 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'th_class' => 'medium', 'tooltip' => 'meta-p_img_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
 				);
-			}
-
-			if ( ! SucomUtil::get_const( 'WPSSO_SCHEMA_DISABLE' ) ) {
-
-				$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema',
-					array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
-	
-				$form_rows['subsection_schema'] = array(
-					'tr_class' => 'hide_in_basic',
-					'td_class' => 'subsection', 'header' => 'h4',
-					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
-				);
-				$form_rows['schema_img_dimensions'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'schema_img_dimensions', 'td_class' => 'blank',
-					'content' => $form->get_no_image_dimensions_input( 'schema_img', true ),	// $use_opts = true
-				);
-				$form_rows['schema_img_id'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'Image ID', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_img_id', 'td_class' => 'blank',
-					'content' => $form->get_no_image_upload_input( 'schema_img', $media_info['pid'], true ),
-				);
-				$form_rows['schema_img_url'] = array(
-					'tr_class' => 'hide_in_basic',
-					'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_img_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
-				);
-				if ( $mod['is_post'] ) {
-					$form_rows['schema_img_max'] = array(
-						'tr_class' => 'hide_in_basic',
-						'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
-						'th_class' => 'medium', 'tooltip' => 'meta-schema_img_max', 'td_class' => 'blank',
-						'content' => $form->get_no_select( 'schema_img_max', 
-							range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
-					);
-				}
 			}
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );

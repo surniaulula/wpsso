@@ -26,11 +26,22 @@ if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		protected function add_plugin_hooks() {
+			$this->p->util->add_plugin_filters( $this, array(
+				'action_buttons' => 1,
+			) );
+		}
+
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_social_settings', 
 				_x( 'Social Settings', 'metabox title', 'wpsso' ), 
 					array( &$this, 'show_metabox_social_settings' ), $this->pagehook, 'normal' );
 
+		}
+
+		public function filter_action_buttons( $action_buttons ) {
+			unset( $action_buttons[1]['clear_all_cache'] );
+			return $action_buttons;
 		}
 
 		public function show_metabox_social_settings() {

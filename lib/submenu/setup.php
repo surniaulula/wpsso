@@ -28,12 +28,12 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-			add_meta_box( $this->pagehook.'_guide',
+			add_meta_box( $this->pagehook.'_setup_guide',
 				_x( 'Setup Guide', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_guide' ), $this->pagehook, 'normal' );
+					array( &$this, 'show_metabox_setup_guide' ), $this->pagehook, 'normal' );
 		}
 
-		public function show_metabox_guide() {
+		public function show_metabox_setup_guide() {
 			$lca = $this->p->cf['lca'];
 			echo '<table class="sucom-settings '.$lca.' setup-metabox">';
 			echo '<tr><td>';

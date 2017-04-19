@@ -15,12 +15,14 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'og_author_rows' => 2,	// $table_rows, $form
-				'og_videos_rows' => 2,	// $table_rows, $form
+				'og_author_rows' => 2,
+				'og_videos_rows' => 2,
 			) );
 		}
 

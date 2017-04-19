@@ -555,9 +555,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_const( $const, $not_found = null ) {
-			if ( defined( $const ) )
+			if ( defined( $const ) ) {
 				return constant( $const );
-			else return $not_found;
+			} else {
+				return $not_found;
+			}
 		}
 
 		// returns false or the admin screen id text string

@@ -105,7 +105,9 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 
 if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 	function wpsso_is_mobile() {
-		if ( class_exists( 'SucomUtil' ) ) {
+		// return null if the content is not allowed to vary
+		// make sure the class exists in case we're called before the library is loaded 
+		if ( ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) && class_exists( 'SucomUtil' ) ) {
 			return SucomUtil::is_mobile();
 		} else {
 			return null;

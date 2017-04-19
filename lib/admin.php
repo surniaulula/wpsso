@@ -322,18 +322,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_title = preg_replace( array( '/<color>/', '/<\/color>/' ),
 					array( '<span style="color:#'.$this->p->cf['menu']['color'].';">', '</span>' ), $menu_title );
 
-			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_title;
+			$capability = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
+				$this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
+			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$function = array( &$this, 'show_setting_page' );
 
-			// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
-				( isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
-					$this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options' ),
-						$menu_slug, $function );	// fallback to manage_options capability
+				$capability, $menu_slug, $function );
 
-			if ( $function )
+			if ( $function ) {
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
+			}
 		}
 
 		// add links on the main plugins page
@@ -608,12 +608,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			exit;	// stop here
 		}
 
-		public function load_single_page() {
-			wp_enqueue_script( 'postbox' );
-
-			$this->add_meta_boxes();
-		}
-
 		public function load_setting_page() {
 			$lca = $this->p->cf['lca'];
 			$action_query = $lca.'-action';
@@ -715,8 +709,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$this->add_side_meta_boxes();
+			$this->add_plugin_hooks();
 			$this->add_meta_boxes();
+			$this->add_side_meta_boxes();
 		}
 
 		protected function add_side_meta_boxes() {
@@ -727,6 +722,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side-fixed' );
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
+		}
+
+		protected function add_plugin_hooks() {
+			// method is extended by each submenu page
 		}
 
 		protected function add_meta_boxes() {
@@ -854,7 +853,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WPSSO_SITE_OPTIONS_NAME.'" method="post">'."\n";
 				echo '<input type="hidden" name="page" value="'.$this->menu_id.'" />';
 
-			} else return;
+			} else {
+				return;
+			}
 
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
@@ -865,87 +866,64 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			do_action( $this->p->cf['lca'].'_form_content_metaboxes_'.
 				SucomUtil::sanitize_hookname( $this->menu_id ), $this->pagehook );
 
-			switch ( $this->menu_id ) {
-				case 'setup':
-				case 'sitesetup':
-					break;
-				default:
-					if ( $this->menu_lib === 'profile' ) {
-						echo $this->get_submit_buttons( _x( 'Save All Profile Settings',
-							'submit button', 'wpsso' ) );
-					} else {
-						echo $this->get_submit_buttons();
-					}
-					break;
+			if ( $this->menu_id === 'setup' || $this->menu_id === 'sitesetup' ) {
+				// don't add submit buttons to the setup guide page
+			} elseif ( $this->menu_lib === 'profile' ) {
+				echo $this->get_submit_buttons( _x( 'Save All Profile Settings',
+					'submit button', 'wpsso' ) );
+			} else {
+				echo $this->get_submit_buttons();
 			}
+
 			echo '</form>', "\n";
 		}
 
-		protected function get_submit_buttons( $submit_text = '', $css_class = 'submit-buttons' ) {
+		protected function get_submit_buttons( $submit_label = '' ) {
 
 			$lca = $this->p->cf['lca'];
-			$show_opts_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$show_opts_text = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ),
-				_x( $this->p->cf['form']['show_options'][$show_opts_next], 'option value', 'wpsso' ) );
-			$show_opts_url = $this->p->util->get_admin_url( '?'.$lca.'-action=change_show_options&show-opts='.$show_opts_next );
 
-			if ( empty( $submit_text ) )
-				$submit_text = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
-
-			/*
-			 * Save All Plugin Settings
-			 * View All / Basic Options by Default
-			 */
-			$action_buttons = '<input type="submit" class="button-primary" value="'.$submit_text.'" />'.
-				$this->form->get_button( $show_opts_text, 'button-secondary button-highlight', null,
-					wp_nonce_url( $show_opts_url, WpssoAdmin::get_nonce(), WPSSO_NONCE ) ).'<br/>';	// WPSSO_NONCE is an md5() string
-
-			/*
-			 * Secondary Action Buttons
-			 */
-			$secondary = array(
-				'clear_all_cache' => _x( 'Clear All Caches', 'submit button', 'wpsso' ),
-				'check_for_updates' => _x( 'Check for Updates', 'submit button', 'wpsso' ),
-				'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
-				'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
-				'reload_default_sizes' => _x( 'Reload Default Sizes', 'submit button', 'wpsso' ),
-			);
-
-			// remove "Clear All Cache" if we're not on a settings or submenu page
-			if ( $this->menu_lib !== 'setting' &&
-				$this->menu_lib !== 'submenu' ) {
-				unset( $secondary['clear_all_cache'] );
+			if ( empty( $submit_label ) ) {
+				$submit_label = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
-			// remove "Check for Updates" if we're not on the Update Manager settings page
-			if ( strpos( $this->menu_id, 'um-general' ) === false ||
-				empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-				unset( $secondary['check_for_updates'] );
+			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
+			$view_label = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
+
+			$action_buttons = apply_filters( $lca.'_action_buttons', array(
+				array(
+					'change_show_options&show-opts='.$view_next => $view_label,
+				),
+				array(
+					'clear_all_cache' => _x( 'Clear All Caches', 'submit button', 'wpsso' ),
+					'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
+					'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
+				),
+			), $this->menu_id, $this->menu_name, $this->menu_lib );
+
+			$submit_buttons = '<input type="submit" class="button-primary" value="'.$submit_label.'" />';
+
+			foreach ( $action_buttons as $row => $row_buttons ) {
+				$css_class = $row ?
+					'button-secondary' :
+					'button-secondary button-highlight';	// highlight the first row
+
+				foreach ( $row_buttons as $action_arg => $button_label ) {
+					$button_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action_arg ),
+						WpssoAdmin::get_nonce(), WPSSO_NONCE );
+					$submit_buttons .= $this->form->get_button( $button_label, $css_class, '', $button_url );
+				}
+				$submit_buttons .= '<br/>';
 			}
 
-			// remove "Reload Default Sizes" if we're not on the image dimensions settings page
-			if ( $this->menu_id !== 'image-dimensions' ) {
-				unset( $secondary['reload_default_sizes'] );
-			}
-
-			// allow extensions to add / remove buttons
-			$secondary = apply_filters( $lca.'_secondary_action_buttons', $secondary,
-				$this->menu_id, $this->menu_name, $this->menu_lib );
-
-			foreach ( $secondary as $action => $label ) {
-				$action_buttons .= $this->form->get_button( $label, 'button-secondary', null,
-					wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action ),
-						WpssoAdmin::get_nonce(), WPSSO_NONCE ) );	// WPSSO_NONCE is an md5() string
-			}
-
-			return '<div class="'.$css_class.'">'.$action_buttons.'</div>';
+			return '<div class="submit-buttons">'.$submit_buttons.'</div>';
 		}
 
 		public function show_metabox_version_info() {
 
 			$lca = $this->p->cf['lca'];
 
-			echo '<table class="sucom-settings '.$lca.' column version-info" style="table-layout:fixed;">';
+			echo '<table class="sucom-settings '.$lca.' column-metabox version-info" style="table-layout:fixed;">';
 			echo '<colgroup><col style="width:70px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -996,14 +974,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
 
-				echo '<tr><th class="column">'._x( 'Installed', 'column label', 'wpsso' ).':</th>
-					<td class="column-version" '.$installed_style.'>'.$installed_version.'</td></tr>';
+				echo '<tr><th class="version-label">'._x( 'Installed', 'option label', 'wpsso' ).':</th>
+					<td class="version-number" '.$installed_style.'>'.$installed_version.'</td></tr>';
 
-				echo '<tr><th class="column">'._x( 'Stable', 'column label', 'wpsso' ).':</th>
-					<td class="column-version">'.$stable_version.'</td></tr>';
+				echo '<tr><th class="version-label">'._x( 'Stable', 'option label', 'wpsso' ).':</th>
+					<td class="version-number">'.$stable_version.'</td></tr>';
 
-				echo '<tr><th class="column">'._x( 'Latest', 'column label', 'wpsso' ).':</th>
-					<td class="column-version">'.$latest_version.'</td></tr>';
+				echo '<tr><th class="version-label">'._x( 'Latest', 'option label', 'wpsso' ).':</th>
+					<td class="version-number">'.$latest_version.'</td></tr>';
 
 				echo '<tr><td colspan="2" class="latest-notice">'.
 					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
@@ -1024,7 +1002,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['gpl'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-settings '.$lca.' column" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' column-metabox" style="margin-bottom:20px;">';
 
 			/*
 			 * GPL version features
@@ -1083,7 +1061,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( isset( $info['lib']['pro'] ) )
 					$plugin_count++;
 
-			echo '<table class="sucom-settings '.$lca.' column" style="margin-bottom:10px;">';
+			echo '<table class="sucom-settings '.$lca.' column-metabox" style="margin-bottom:20px;">';
 
 			/*
 			 * Pro version features
@@ -1191,9 +1169,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					echo '<tr>'.
-					'<td class="column"><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
-					'<td class="column'.$td_class.'">'.$label_text.'</td>'.
-					'<td class="column">'.
+					'<td><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
+					'<td class="'.trim( $td_class ).'">'.$label_text.'</td>'.
+					'<td>'.
 						( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
 						'<img src="'.WPSSO_URLPATH.'images/'.
 							$status_info[$status_key]['img'].'" width="12" height="12" title="'.
@@ -1221,7 +1199,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
 				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
-			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
 			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '<p class="centered">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
@@ -1231,7 +1209,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help_support() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
 			$this->show_follow_icons();
 			echo $this->p->msgs->get( 'column-help-support' );
 
@@ -1268,7 +1246,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_rate_review() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' column"><tr><td>';
+			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
 			echo $this->p->msgs->get( 'column-rate-review' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {

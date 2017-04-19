@@ -26,11 +26,23 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		protected function add_plugin_hooks() {
+			$this->p->util->add_plugin_filters( $this, array(
+				'action_buttons' => 1,
+			) );
+		}
+
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_image_dimensions',
 				_x( 'Image Dimensions', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
+		}
+
+		public function filter_action_buttons( $action_buttons ) {
+			$action_buttons[0]['reload_default_sizes'] = _x( 'Reload Default Sizes',
+				'submit button', 'wpsso' );
+			return $action_buttons;
 		}
 
 		public function show_metabox_image_dimensions() {
@@ -60,15 +72,15 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_image_dimensions_input( 'og_img' ).'</td>';	// $use_opts = false
 
+					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema Images',
+						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
+					'<td>'.$this->form->get_image_dimensions_input( 'schema_img' ).'</td>';	// $use_opts = false
+
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
 						$table_rows['p_img_dimensions'] = $this->form->get_th_html( _x( 'Pinterest Rich Pin Images',
 							'option label', 'wpsso' ), null, 'p_img_dimensions' ).
 						'<td>'.$this->form->get_image_dimensions_input( 'p_img' ).'</td>';	// $use_opts = false
 					}
-
-					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema Images',
-						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'schema_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['tc_sum_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).

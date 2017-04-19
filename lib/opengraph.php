@@ -201,20 +201,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og['og:title'] = $this->p->page->get_title( $this->p->options['og_title_len'], '...', $mod );
 			}
 
-			/*
-			 * Pinterest automatically removes the site name from the title, so unset the site name meta tag if its
-			 * value is an integral part of our title (ie. the site name is followed or prefixed by a word character).
-			 */
-			if ( $crawler_name === 'pinterest' ) {
-				$esc_site_name = preg_quote( $mt_og['og:site_name'] );
-				if ( preg_match( '/(^'.$esc_site_name.' \w|\w '.$esc_site_name.'$)/', $mt_og['og:title'] ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'site name seems integral to title - unsetting site name meta tag' );
-					}
-					unset( $mt_og['og:site_name'] );
-				}
-			}
-
 			if ( ! isset( $mt_og['og:description'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
@@ -268,9 +254,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
 
 					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
+
 						// add richpin to process both image sizes
 						if ( is_admin() ) {
 							SucomUtil::add_before_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
+
 						// use only pinterest (rich pin) image size
 						} elseif ( $crawler_name === 'pinterest' ) {
 							SucomUtil::do_replace_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
