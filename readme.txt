@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.41.0-b.1 (2017/04/19)**
+**Version 3.41.0-b.1 (2017/04/20)**
 
 * *New Features*
 	* Added a new "Plugin Dashboard" settings page.
@@ -587,7 +587,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.41.0-b.1 =
 
-(2017/04/19) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page.
+(2017/04/20) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page.
 
 = 3.40.13 =
 
