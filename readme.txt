@@ -333,15 +333,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.41.0-dev.5 (2017/04/19)**
+**Version 3.41.0-b.1 (2017/04/19)**
 
 * *New Features*
-	* Added a new "Status Dashboard" settings page.
+	* Added a new "Plugin Dashboard" settings page.
 * *Improvements*
-	* Moved all sidebar metaboxes (Help and Support, Version Information, etc.) to the new "Status Dashboard" settings page.
+	* Moved all sidebar metaboxes (Help and Support, Version Information, etc.) to the new "Plugin Dashboard" settings page.
 	* Added a WpssoHead vary_user_agent_check() method to handle user agents with special needs like the Pinterest crawler.
 * *Bugfixes*
-	* None
+	* Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
 * *Developer Notes*
 	* Moved the validate button informational text from the NgfbMeta class to the NgfbMessages class.
 	* Renamed all Pinterest option key prefixes from 'rp' to 'p' to reflect the Pinterest meta tag prefix value.
@@ -585,9 +585,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.41.0-dev.5 =
+= 3.41.0-b.1 =
 
-(2017/04/19) Added a new "Status Dashboard" settings page, and moved all sidebar metaboxes to this new page.
+(2017/04/19) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page.
 
 = 3.40.13 =
 
