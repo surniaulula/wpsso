@@ -386,7 +386,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		// define and disable the "Expect: 100-continue" header
-		// uses checks to make sure other filters aren't giving us a string or boolean
+		// use checks to make sure other filters aren't giving us a string or boolean
 		public function add_expect_header( $req, $url ) {
 			if ( ! is_array( $req ) ) {
 				$req = array();
