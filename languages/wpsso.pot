@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.41.0-"
-"b.1\n"
+"a.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3335,7 +3335,7 @@ msgid ""
 "Schema %2$s markup."
 msgstr ""
 
-#: lib/script.php:127
+#: lib/script.php:131
 msgid "Use Image"
 msgstr ""
 

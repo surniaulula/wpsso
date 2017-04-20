@@ -117,7 +117,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			$lca = $this->p->cf['lca'];
-			$pref_sidebar_width = 250;	// default is 280px
 			$custom_style_css = '';
 
 			wp_enqueue_style( 'sucom-settings-page',
@@ -137,8 +136,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					}
 				';
 			}
-
-
 
 			$custom_style_css = apply_filters( $lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
@@ -189,6 +186,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					url("'.$plugin_urlpath.'fonts/star.svg#star") format("svg");
 					font-weight:normal;
 					font-style:normal;
+				}
+				#'.$lca.'_social_settings.postbox { 
+					min-width:760px;
 				}
 				.column-'.$lca.'_og_img { 
 					width:'.$sort_cols['og_img']['width'].' !important;

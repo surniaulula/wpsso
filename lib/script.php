@@ -40,12 +40,16 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				WPSSO_URLPATH.'js/ext/jquery-qtip.min.js', 
 					array( 'jquery' ), '3.0.3', true );
 
-			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH.'js/com/jquery-tooltips.min.js', 
+			wp_register_script( 'sucom-settings-page', 
+				WPSSO_URLPATH.'js/com/jquery-settings-page.min.js', 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-metabox', 
 				WPSSO_URLPATH.'js/com/jquery-metabox.min.js', 
+					array( 'jquery' ), $plugin_version, true );
+
+			wp_register_script( 'sucom-tooltips', 
+				WPSSO_URLPATH.'js/com/jquery-tooltips.min.js', 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-admin-media', 
@@ -71,7 +75,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
 					}
 
-					// no break
+					wp_enqueue_script( 'sucom-settings-page' );
 
 				case 'post.php':	// post edit
 				case 'post-new.php':	// post edit
@@ -86,8 +90,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
 					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
-					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'sucom-metabox' );
+					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'wp-color-picker' );
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
