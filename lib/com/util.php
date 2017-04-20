@@ -781,7 +781,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$crawler_name = 'google';
 						break;
 
-					// "Pinterest/0.1 +http://pinterest.com/"
+					// "Pinterest/0.2 +http://pinterest.com/"
 					case ( strpos( $ua, 'pinterest/' ) === 0 ):
 						self::$crawler_name = 'pinterest';
 						break;

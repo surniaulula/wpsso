@@ -387,9 +387,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// define and disable the "Expect: 100-continue" header
 		public function add_expect_header( $req ) {
-			if ( ! isset( $req['headers']['Expect'] ) ) {
-				$req['headers']['Expect'] = '';
-			}
+			$req['headers']['Expect'] = '';
 			return $req;
 		}
 
@@ -995,8 +993,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><td colspan="2" class="latest-notice">'.
 					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
 					'<p><a href="'.$changelog_url.'" target="_blank">'.
-						sprintf( _x( 'View %s changelog...', 'column value',
-							'wpsso' ), $info['short'] ).'</a></p></td></tr>';
+						sprintf( __( 'View %s changelog...', 'wpsso' ),
+							$info['short'] ).'</a></p></td></tr>';
 			}
 			echo '</table>';
 		}
