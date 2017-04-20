@@ -2968,20 +2968,24 @@ msgstr ""
 
 #: lib/messages.php:1213
 msgid ""
-"<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
-"you to license the Pro version within seconds of your purchase."
+"<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so "
+"you can license the Pro version immediately after your purchase."
 msgstr ""
 
 #: lib/messages.php:1215
 msgid ""
-"<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows "
-"you to update the Free plugin within seconds of your purchase."
+"<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so "
+"you can update the Free plugin immediately after your purchase."
 msgstr ""
 
 #: lib/messages.php:1217
 msgid ""
 "<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees "
-"for support and updates!"
+"for support and updates."
+msgstr ""
+
+#: lib/messages.php:1217
+msgid "How awesome is that!"
 msgstr ""
 
 #: lib/messages.php:1221

@@ -1210,11 +1210,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-purchase-pro':
 						$text = '<p>';
 						if ( $this->p->is_avail['aop'] ) {
-							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to license the Pro version within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text .= sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can license the Pro version immediately after your purchase.', 'wpsso' ), $info['short_pro'] );
 						} else {
-							$text .= sprintf( __( '<strong>Purchase %s quickly and easily with PayPal</strong> &mdash; allows you to update the Free plugin within seconds of your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text .= sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can update the Free plugin immediately after your purchase.', 'wpsso' ), $info['short_pro'] );
 						}
-						$text .= '</p><p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates!', 'wpsso' ).'</p>';
+						$text .= '</p><p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates.', 'wpsso' ).' '.__( 'How awesome is that!', 'wpsso' ).' :-)</p>';
 						break;
 
 					case 'column-help-support':
