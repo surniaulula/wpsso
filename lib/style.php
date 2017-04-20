@@ -124,43 +124,28 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$plugin_urlpath.'css/com/settings-page.min.css',
 					array(), $plugin_version );
 
-			$custom_style_css .= '
-				.wrap { margin-right:0; }
-
-				.has-right-sidebar .inner-sidebar { margin-right:20px; }
-				.has-right-sidebar #post-body-content { margin-right:300px; }		/* default is 300px */
-				.has-right-sidebar #post-body-content .postbox { margin-right:20px; }	/* default is 0px */
-
-				.no-right-sidebar #post-body-content { margin-right:0; }		/* widen content column */
-				.no-right-sidebar #post-body-content .postbox { margin-right:20px; }	/* default is 0px */
-			';
-
-			foreach ( array(
-				'1500px' => $pref_sidebar_width,
-				'1400px' => $pref_sidebar_width - 15,
-				'1385px' => $pref_sidebar_width - 30,
-			) as $media_width => $adjusted_with ) {
+			if ( isset( $this->p->cf['menu']['color'] ) ) {
 				$custom_style_css .= '
-					@media ( max-width:'.$media_width.' ) {
-						.has-right-sidebar #post-body-content { margin-right:'.( $adjusted_with + 20 ).'px; }
-						.has-right-sidebar .inner-sidebar { width:'.( $adjusted_with + 1 ).'px; }
-						.has-right-sidebar .inner-sidebar #side-sortables { width:'.$adjusted_with.'px; }
-						.has-right-sidebar .inner-sidebar #side-sortables .postbox { min-width:'.$adjusted_with.'px; }
-				}';
+					#side-fixed .postbox {
+						border:1px solid #'.$this->p->cf['menu']['color'].';
+					}
+					#side-fixed .postbox h2 {
+						border-bottom:1px dotted #'.$this->p->cf['menu']['color'].';
+					}
+					#side-fixed .postbox.closed {
+						border-bottom:none;
+					}
+				';
 			}
 
-			// disable the sidebar at 1370px or less and adjust the content width to fill the space
-			$custom_style_css .= '
-				@media ( max-width:1370px ) {
-					.has-right-sidebar #side-info-column { display:none; }		/* remove sidebar column */
-					.has-right-sidebar #post-body-content { margin-right:0; }	/* widen content column */
-				}
-			';
+
 
 			$custom_style_css = apply_filters( $lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
 
-			wp_add_inline_style( 'sucom-settings-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
+			if ( ! empty( $custom_style_css ) ) {
+				wp_add_inline_style( 'sucom-settings-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
+			}
 		}
 
 		private function add_admin_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {

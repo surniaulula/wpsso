@@ -2128,9 +2128,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function minify_css( $css_data, $lca ) {
-			$classname = apply_filters( $lca.'_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
-			if ( $classname !== false && class_exists( $classname ) ) {
-				$css_data = call_user_func( array( $classname, 'process' ), $css_data );
+			if ( ! empty( $css_data ) ) {
+				$classname = apply_filters( $lca.'_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+				if ( $classname !== false && class_exists( $classname ) ) {
+					$css_data = call_user_func( array( $classname, 'process' ), $css_data );
+				}
 			}
 			return $css_data;
 		}

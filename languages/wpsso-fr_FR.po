@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.40.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-04-18 10:44+0200\n"
-"PO-Revision-Date: 2017-04-18 10:44+0200\n"
+"PO-Revision-Date: 2017-04-18 11:56+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2479,7 +2479,7 @@ msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus r�
 
 #: lib/messages.php:1194
 msgid "If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information."
-msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d'Extensions WordPress, SVP utilisez le bouton <em>%2$s</em> sur la page de réglages %3$s pour forcer une actualisation immédiate de toutes les informations de mise à jour %2$s."
+msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d'Extensions WordPress, SVP utilisez le bouton <em>%2$s</em> sur la page de réglages %3$s pour forcer une actualisation immédiate de toutes les informations de mise à jour %4$s."
 
 #: lib/messages.php:1194
 msgctxt "lib file description"
@@ -3470,13 +3470,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://surniaulula.com/"
 msgstr "https://surniaulula.com/"
-
-#~ msgctxt "plugin action link"
-#~ msgid "Download Latest"
-#~ msgstr "Téléchargez dernière version"
-
-#~ msgid "These options allow you to customize some Open Graph meta tag and Schema markup values for the Pinterest crawler."
-#~ msgstr "Ces options permettes de fournir des balises méta Open Graph et balisage Schéma personnalisés pour le robot de Pinterest."
-
-#~ msgid "If you use a caching plugin (or front-end caching service), it should detect the Pinterest user-agent and bypass its cache (for example, look for a <em>User-Agent Exclusion Pattern</em> setting and add \"Pinterest\" to that list)."
-#~ msgstr "Si vous utilisez une extension ou un service externe de mise en cache, il devrait détecter l'agent du robot Pinterest et contourner son cache (par exemple, cherchez pour une option <em>User-Agent Exclusion Pattern</em> et ajouter \"Pinterest\" à cette liste)."

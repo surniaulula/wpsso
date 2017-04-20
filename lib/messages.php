@@ -1020,11 +1020,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 	
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
 	
-							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $ext_menu_html ).' ';
+							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $ext_menu_html ).'</p>';
 							
-							$text.= __( 'If you enter Authentication IDs on this page, <em>make sure you have purchased enough licenses for all sites within the network</em> (for example, if you have 10 sites, you will need at least 10 licenses).', 'wpsso' ).' ';
+							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license a plugin for 10 sites, you would need an Authentication ID with a 10 license pack.', 'wpsso' ).'</p>';
 	
-							$text .= '</p><p>'.sprintf( __( 'Please note that <strong>the default site / blog must be licensed</strong>, and the %1$s extension active, in order to install Pro version updates from the network admin interface.', 'wpsso' ), $um_info['name'] ).'</p></blockquote>';
+							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and update plugins from the Network Admin interface</strong> &mdash; to install Pro version updates from the Network Admin interface, please make sure the %1$s extension is active for the default site and the default site is licensed.', 'wpsso' ), $um_info['short'] ).'</p></blockquote>';
 							break;
 	
 						case 'info-cm':
@@ -1218,11 +1218,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'column-help-support':
-						$text = '<p>'.sprintf( __( '<strong>The development of %1$s is driven by user requests</strong> &mdash; we welcome your suggestions to improve the plugin and its extensions.', 'wpsso' ), $info['short'] ).'</p>';
+						$text = '<p>'.sprintf( __( '<strong>The continued development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
 						break;
 
 					case 'column-rate-review':
-						$text = '<p>'.sprintf( __( '<strong>A terrific rating is a great way to encourage us!</strong> &mdash; and it only takes a minute or less.', 'wpsso' ), $info['short'] ).' ;-)</p>';
+						$text = '<p>'.__( '<strong>Great ratings are a terrific way to encourage plugin developers</strong> &mdash; and it only takes a minute (or less).', 'wpsso' ).' ;-)</p><p>'.__( 'Please encourage us by rating the plugins you use.', 'wpsso' ).'</p>';
 						break;
 
 					default:

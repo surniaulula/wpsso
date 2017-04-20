@@ -516,50 +516,50 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_nag_style() {
+			$custom_style_css = '';
 
-			$bg_color = empty( $this->p->cf['bgcolor'] ) ?
-				'none' : '#'.$this->p->cf['bgcolor'];
+			if ( isset( $this->p->cf['menu']['color'] ) ) {
+				$custom_style_css .= '
+					.'.$this->lca.'-notice.update-nag {
+						border:1px dotted #'.$this->p->cf['menu']['color'].';
+						border-top:none;
+					}
+				';
+			}
 
-			$bg_image = empty( $this->p->cf['plugin'][$this->lca]['img']['background'] ) ?
-				'none' : 'url("'.$this->p->cf['plugin'][$this->lca]['img']['background'].'")';
+			$custom_style_css .= '
+				.'.$this->lca.'-notice.update-nag {
+					margin-top:0;
+				}
+				.'.$this->lca.'-notice.update-nag > div {
+					display:block;
+					margin:0 auto;
+					max-width:850px;
+				}
+				.'.$this->lca.'-notice.update-nag p,
+				.'.$this->lca.'-notice.update-nag ul,
+				.'.$this->lca.'-notice.update-nag ol {
+					font-size:1em;
+					text-align:center;
+					margin:15px auto 15px auto;
+				}
+				.'.$this->lca.'-notice.update-nag ul li {
+					list-style-type:square;
+				}
+				.'.$this->lca.'-notice.update-nag ol li {
+					list-style-type:decimal;
+				}
+				.'.$this->lca.'-notice.update-nag li {
+					text-align:left;
+					margin:5px 0 5px 60px;
+				}
+			';
+			
+			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
+			}
 
-			return '
-<style type="text/css">
-	.'.$this->lca.'-notice.update-nag {
-		line-height:1.4em;
-		padding:0 40px;
-		margin-top:0;
-		border:1px dotted #ccc;
-		background-color:'.$bg_color.';
-		background-image:'.$bg_image.';
-		background-position:top;
-		background-size:cover;
-	}
-	.'.$this->lca.'-notice.update-nag > div {
-		clear:both;
-		display:block !important;
-		margin:0 auto;
-		max-width:850px;
-	}
-	.'.$this->lca.'-notice.update-nag p,
-	.'.$this->lca.'-notice.update-nag ul,
-	.'.$this->lca.'-notice.update-nag ol {
-		font-size:1em;
-		text-align:center;
-		margin:15px auto 15px auto;
-	}
-	.'.$this->lca.'-notice.update-nag ul li {
-		list-style-type:square;
-	}
-	.'.$this->lca.'-notice.update-nag ol li {
-		list-style-type:decimal;
-	}
-	.'.$this->lca.'-notice.update-nag li {
-		text-align:left;
-		margin:5px 0 5px 60px;
-	}
-</style>
-';
+			return '<style type="text/css">'.$custom_style_css.'</style>';
 		}
 
 		private function &get_user_ids() {

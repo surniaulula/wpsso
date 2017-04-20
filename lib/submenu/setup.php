@@ -26,18 +26,30 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		protected function add_plugin_hooks() {
+			$this->p->util->add_plugin_filters( $this, array(
+				'action_buttons' => 1,
+			) );
+		}
+
 		protected function add_meta_boxes() {
 			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_setup_guide',
 				_x( 'Setup Guide', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_setup_guide' ), $this->pagehook, 'normal' );
+					array( &$this, 'show_metabox_setup_guide' ),
+						$this->pagehook, 'normal' );
+		}
+
+		public function filter_action_buttons( $action_buttons ) {
+			unset( $action_buttons[0] );
+			return $action_buttons;
 		}
 
 		public function show_metabox_setup_guide() {
 			$lca = $this->p->cf['lca'];
 			echo '<table class="sucom-settings '.$lca.' setup-metabox">';
 			echo '<tr><td>';
-			echo $this->p->util->get_setup_content( $lca );
+			echo $this->get_setup_content( $lca );
 			echo '</td></tr></table>';
 		}
 	}

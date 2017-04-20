@@ -760,10 +760,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$section = '';
 
 			if ( ! empty( $post_id ) ) {
+				// get_options() returns null if an index key is not found
 				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
 			}
 
-			if ( ! empty( $section ) ) {
+			if ( ! empty( $section ) ) {	// must be a non-empty string
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found custom meta article section = '.$section );
 				}

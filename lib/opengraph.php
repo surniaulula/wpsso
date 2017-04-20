@@ -307,8 +307,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {	// check if og:type is in config
 
-				$md_opts = empty( $mod['obj'] ) ? 	// optimize and call get_options() only once
-					array() : $mod['obj']->get_options( $mod['id'] );
+				// optimize and call get_options() only once
+				// returns an empty string if no meta found
+				$md_opts = empty( $mod['obj'] ) ? array() : (array) $mod['obj']->get_options( $mod['id'] );
 
 				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name => $md_idx ) {
 
@@ -470,6 +471,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
 
 			if ( $aop && ! empty( $mod['obj'] ) ) {
+				// get_options() returns null if an index key is not found
 				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
 					$use_prev = $mod_prev;	// use module option value
 					if ( $this->p->debug->enabled ) {
@@ -516,8 +518,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					'og_vid_title' => 'og:video:title',
 					'og_vid_desc' => 'og:video:description',
 				) as $idx => $mt_name ) {
+					// get_options() returns null if an index key is not found
 					$value = $mod['obj']->get_options( $mod['id'], $idx );
-					if ( ! empty( $value ) ) {
+					if ( ! empty( $value ) ) {	// must be a non-empty string
 						foreach ( $og_ret as $num => $og_video ) {
 							$og_ret[$num][$mt_name] = $value;
 							break;	// only do the first video

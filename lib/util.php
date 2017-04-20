@@ -169,8 +169,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'module name is unknown' );
 			// custom filters may use image sizes, so don't filter/cache the meta options
-			} elseif ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) && $aop )
+			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $aop ) {
+				// returns an empty string if no meta found
 				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts = false
+			}
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
@@ -1360,13 +1362,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $mod['is_post'] ) {
 				if ( ! empty( $mod['id'] ) ) {
-					if ( is_object( $mod['obj'] ) )
-						$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
-					if ( ! empty( $url ) ) {
-						if ( $this->p->debug->enabled )
+					if ( ! empty( $mod['obj'] ) ) {
+						// get_options() returns null if an index key is not found
+						$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
+					}
+
+					if ( ! empty( $url ) ) {	// must be a non-empty string
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom post '.$type.'_url = '.$url );
-					} else $url = $this->check_url_string( get_permalink( $mod['id'] ), 'post permalink' );
+						}
+					} else {
+						$url = $this->check_url_string( get_permalink( $mod['id'] ), 'post permalink' );
+					}
 
 					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
 						global $wp_rewrite;
@@ -1395,25 +1403,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				} elseif ( $mod['is_term'] ) {
 					if ( ! empty( $mod['id'] ) ) {
-						if ( is_object( $mod['obj'] ) )
-							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
-						if ( ! empty( $url ) ) {
-							if ( $this->p->debug->enabled )
+						if ( ! empty( $mod['obj'] ) ) {
+							// get_options() returns null if an index key is not found
+							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
+						}
+
+						if ( ! empty( $url ) ) {	// must be a non-empty string
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'custom term '.$type.'_url = '.$url );
-						} else $url = $this->check_url_string( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
+							}
+						} else {
+							$url = $this->check_url_string( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
+						}
 					} 
 					$url = apply_filters( $lca.'_term_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( $mod['is_user'] ) {
 					if ( ! empty( $mod['id'] ) ) {
-						if ( is_object( $mod['obj'] ) )
-							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
 
-						if ( ! empty( $url ) ) {
-							if ( $this->p->debug->enabled )
+						if ( ! empty( $mod['obj'] ) ) {
+							// get_options() returns null if an index key is not found
+							$url = $mod['obj']->get_options( $mod['id'], $type.'_url' );
+						}
+
+						if ( ! empty( $url ) ) {	// must be a non-empty string
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'custom user '.$type.'_url = '.$url );
-						} else $url = $this->check_url_string( get_author_posts_url( $mod['id'] ), 'author posts' );
+							}
+						} else {
+							$url = $this->check_url_string( get_author_posts_url( $mod['id'] ), 'author posts' );
+						}
 					}
 					$url = apply_filters( $lca.'_user_url', $url, $mod, $add_page, $src_id );
 
@@ -1598,10 +1618,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $opt_keys as $max_key ) {
 
-				if ( ! empty( $mod['id'] ) && is_object( $mod['obj'] ) ) {
+				if ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) ) {
+					// get_options() returns null if an index key is not found
 					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );
 				} else {
-					$max_val = null;	// default value returned by get_options() if index key is missing
+					$max_val = null;	// default value if index key is missing
 				}
 
 				// quick sanitation of returned value - ignore WPSSO_UNDEF_INT values
@@ -1617,51 +1638,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $max;
-		}
-
-		public function get_setup_content( $ext, $read_cache = true ) {
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'ext' => $ext,
-					'read_cache' => $read_cache,
-				) );
-			}
-
-			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
-				return false;
-			}
-
-			$lca = $this->p->cf['lca'];
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_setup_html',
-				$this->p->cf['setup_cache_exp'] );
-			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ?
-				$this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
-			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
-			$get_remote = strpos( $file_url, '://' ) ? true : false;
-			$content = false;
-
-			// get remote setup.html file
-			if ( $cache_exp > 0 && $get_remote ) {
-				if ( ! $read_cache ) {
-					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
-				}
-				$content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp );
-				if ( empty( $content ) ) {
-					$get_remote = false;
-				}
-			} else {
-				$get_remote = false;
-			}
-
-			// fallback to local setup.html file
-			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file_path ) );
-				fclose( $fh );
-			}
-
-			return $content;
 		}
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {

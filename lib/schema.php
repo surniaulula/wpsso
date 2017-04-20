@@ -158,9 +158,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 				if ( ! empty( $mod['obj'] ) ) {	// just in case
+
+					// get_options() returns null if an index key is not found
 					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );
 
-					if ( empty( $type_id ) ) {
+					if ( empty( $type_id ) ) {	// must be a non-empty string
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'custom type_id from meta is empty' );
 					} elseif ( $type_id === 'none' ) {
@@ -703,7 +705,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				// get the main entity checkbox value from custom post/term/user meta
-				if ( method_exists( $mod['obj'], 'get_options' ) ) {
+				if ( ! empty( $mod['obj'] ) ) {
+					// get_options() returns null if an index key is not found
 					$is_main = $mod['obj']->get_options( $mod['id'], 'schema_is_main' );
 				} else {
 					$is_main = null;
@@ -929,18 +932,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $mod['is_home'] ) {	// static or index page
-				$org_id = 'site';
-			} elseif ( ! empty( $mod['obj'] ) ) {	// just in case
+			if ( ! empty( $mod['obj'] ) ) {	// just in case
+				// get_options() returns null if an index key is not found
 				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_org_org_id' );
-				if ( empty( $org_id ) && ! is_numeric( $org_id ) ) {	// allow for 0
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom schema_org_org_id is empty or not numeric' );
-					}
+			} else {
+				$org_id = null;
+			}
+
+			if ( $org_id === null ) {
+				if ( $mod['is_home'] ) {	// static or index page
+					$org_id = 'site';
+				} else {
 					$org_id = 'none';
 				}
-			} else {
-				$org_id = 'none';
 			}
 
 			$ret = array();
@@ -1030,7 +1034,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $org_id === 'none' ) {
 				return 0;
-			} elseif ( empty( $org_id ) && ! is_numeric( $org_id ) ) {	// allow for 0
+			} elseif ( empty( $org_id ) && ! is_numeric( $org_id ) ) {	// allow for 0 but not false or null
 				return 0;
 			}
 
@@ -1111,16 +1115,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// check for a custom place id that might have precedence
 				// 'plm_addr_id' can be 'none', 'custom', or numeric (including 0)
-				$place_id = method_exists( $mod['obj'], 'get_options' ) ?	// just in case
-					$mod['obj']->get_options( $mod['id'], 'plm_addr_id' ) : null;
+				if ( ! empty( $mod['obj'] ) ) {
+					$place_id = $mod['obj']->get_options( $mod['id'], 'plm_addr_id' );
+				} else {
+					$place_id = null;
+				}
 
-				if ( is_numeric( $place_id ) || ! empty( $place_id ) ) {	// allow for place id 0
+				if ( $place_id === null ) {
+					$place_id = $org_opts['org_place_id'];
+				} else {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'overriding org_place_id '.$org_opts['org_place_id'].
 							' with plm_addr_id '.$place_id );
 					}
-				} else {
-					$place_id = $org_opts['org_place_id'];
 				}
 
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
