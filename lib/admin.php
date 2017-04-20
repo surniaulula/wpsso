@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
 				}
 
-				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 1 );
+				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 2 );
 				add_filter( 'http_request_host_is_external', array( &$this, 'allow_install_hosts' ), 1000, 3 );
 
 				add_filter( 'install_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
@@ -386,7 +386,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		// define and disable the "Expect: 100-continue" header
-		public function add_expect_header( $req ) {
+		// uses checks to make sure other filters aren't giving us a string or boolean
+		public function add_expect_header( $req, $url ) {
+			if ( ! is_array( $req ) ) {
+				$req = array();
+			}
+			if ( ! isset( $req['headers'] ) || ! is_array( $req['headers'] ) ) {
+				$req['headers'] = array();
+			}
 			$req['headers']['Expect'] = '';
 			return $req;
 		}
