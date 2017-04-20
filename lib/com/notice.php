@@ -101,7 +101,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $dis_key ) && ! empty( $dis_time ) && $this->can_dismiss() ) {
 				$payload['dis_time'] = $dis_time;
 				if ( is_numeric( $payload['dis_time'] ) ) {
-					$msg_txt .= ' '.sprintf( __( 'This notice may be dismissed for %s.', $this->text_dom ),
+					$msg_txt .= ' '.sprintf( __( 'This notice can be dismissed for %s.', $this->text_dom ),
 						human_time_diff( 0, $payload['dis_time'] ) );
 				}
 			} else {

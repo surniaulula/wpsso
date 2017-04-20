@@ -1224,9 +1224,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div>';
 
 			echo '<div class="column-metabox-buttons">';	// float right
-			echo $this->form->get_button( _x( 'Purchase Pro Version',
-				'plugin action link', 'wpsso' ),
-					'button-primary', '', $purchase_url, true );
+			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
+				'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
 
 			echo '</div>';
