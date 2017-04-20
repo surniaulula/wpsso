@@ -108,7 +108,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// crawlers are only seen on the front-end, so skip if in back-end
 			if ( ! is_admin() && ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
-				switch ( SucomUtil::get_crawler_name() ) {
+				$crawler_name = SucomUtil::get_crawler_name();
+				switch ( $crawler_name ) {
 					case 'pinterest':
 						/*
 						 * Pinterest can get a different custom image, image sizes, 

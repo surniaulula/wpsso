@@ -1484,10 +1484,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
 				$warn_dis_key = 'wordpress-search-engine-visibility-disabled';
-				$warn_dis_time = $this->p->cf['form']['time_by_name']['month'];
-
 				if ( $this->p->notice->is_admin_pre_notices( $warn_dis_key ) ) {	// don't bother if already dismissed
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, $warn_dis_time );
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, MONTH_IN_SECONDS );
 				}
 			}
 
@@ -1690,8 +1688,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
 							$warn_dis_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
-							$warn_dis_time = $this->p->cf['form']['time_by_name']['month'];
-							$this->p->notice->warn( $warn_msg, true, $warn_dis_key, $warn_dis_time, true );	// $silent = true
+							$this->p->notice->warn( $warn_msg, true, $warn_dis_key, MONTH_IN_SECONDS, true );	// $silent = true
 						}
 					}
 				}
