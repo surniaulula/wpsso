@@ -1152,7 +1152,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-tid-missing':
 						if ( ! is_multisite() ) {
-							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the <a href="%s">Extension Plugins and Pro Licenses</a> settings page.', 'wpsso' ), $this->p->util->get_admin_url( 'licenses' ) ).'</p>';
+							$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
+								_x( 'Extension Plugins and Pro Licenses',
+									'lib file description', 'wpsso' ) );
+
+							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the %s settings page.', 'wpsso' ), $ext_menu_html ).'</p>';
 						}
 						break;
 
@@ -1160,6 +1164,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Extension Plugins and Pro Licenses',
 								'lib file description', 'wpsso' ) );
+
 						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page, but the Pro version is not yet installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
 						break;
 
@@ -1208,13 +1213,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'column-purchase-pro':
-						$text = '<p>';
 						if ( $this->p->is_avail['aop'] ) {
-							$text .= sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can license the Pro version immediately after your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						} else {
-							$text .= sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can update the Free plugin immediately after your purchase.', 'wpsso' ), $info['short_pro'] );
+							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can update the Free plugin immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						}
-						$text .= '</p><p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates.', 'wpsso' ).' '.__( 'How awesome is that!', 'wpsso' ).' :-)</p>';
+						$text .= '<p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates.', 'wpsso' ).' '.__( 'How great is that?', 'wpsso' ).' :-)</p>';
+						break;
+
+					case 'column-install-pro':
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
+							// use shorter version of menu label
+							_x( 'Extension Plugins', 'lib file description', 'wpsso' ) );
+						$plugins_html = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.
+							__( 'WordPress Plugins', 'wpsso' ).'</a>';
+
+						$text .= '<p>'.__( '<strong>Updating to the Pro version is easy as 1-2-3</strong> &mdash; you\'ll receive an email after your purchase with all the details, but here\'s a quick summary to give you an idea.', 'wpsso' ).' :-)</p>';
+						$text .= '<ol>';
+						$text .= '<li>'.sprintf( __( '<strong>Install and activate</strong> the %1$s extension from the %2$s page.', 'wpsso' ), $um_info['short'], $ext_menu_html ).'</li>';
+						$text .= '<li>'.sprintf( __( '<strong>Enter the Authentication ID</strong> received by email in the %1$s page.', 'wpsso' ), $ext_menu_html ).'</li>';
+						$text .= '<li>'.sprintf( __( '<strong>Update to the Pro version</strong> by installing the %1$s update from the %2$s page.', 'wpsso' ), $info['short_pro'], $plugins_html ).'</li>';
+						$text .= '</ol>';
 						break;
 
 					case 'column-help-support':

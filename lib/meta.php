@@ -156,7 +156,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows = array();
 			$prev_width = 600;
 			$prev_height = 315;
-			$div_style = 'width:'.$prev_width.'px; height:'.$prev_height.'px;';
 			$refresh_cache = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen='.time() : '';
 			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
 
@@ -169,20 +168,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( ! empty( $media_url ) ) {
 				if ( $have_sizes === true ) {
-					$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
-					background-size:'.( $is_sufficient === true ? 
+					$image_preview_html = '<div class="preview_img" style="
+					background-size:'.( $is_sufficient === true ?
 						'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
 					background-image:url('.$media_url.');" />'.( $is_sufficient === true ? 
 						'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
 							'preview image error', 'wpsso' ),
 								$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
 				} else {
-					$image_preview_html = '<div class="preview_img" style="'.$div_style.' 
+					$image_preview_html = '<div class="preview_img" style="
 					background-image:url('.$media_url.');" /><p>'.
 					_x( 'Image Dimensions Unknown<br/>or Not Available',
 						'preview image error', 'wpsso' ).'</p></div>';
 				}
-			} else $image_preview_html = '<div class="preview_img" style="'.$div_style.'"><p>'.
+			} else $image_preview_html = '<div class="preview_img"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
 			if ( isset( $mod['post_status'] ) &&
@@ -221,8 +220,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',
 				'option label', 'wpsso' ), 'medium' ).
 			'<td rowspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
-			<div class="preview_box" style="width:'.( $prev_width + 40 ).'px;">
-				<div class="preview_box" style="width:'.$prev_width.'px;">
+			<div class="preview_box_border">
+				<div class="preview_box">
 					'.$image_preview_html.'
 					<div class="preview_txt">
 						<div class="preview_title">'.( empty( $head_info['og:title'] ) ?
