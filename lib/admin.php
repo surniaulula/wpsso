@@ -1009,6 +1009,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						sprintf( __( 'View %s changelog...', 'wpsso' ),
 							$info['short'] ).'</a></p></td></tr>';
 			}
+
+			if ( ! empty( $this->p->is_avail['p_ext']['um'] ) ) {	// since um v1.6.0
+				echo '<tr><td colspan="2">';
+				echo $this->form->get_button( _x( 'Check for Updates', 'submit button', 'wpsso' ), 'button-secondary',
+					'column-check-for-updates', wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action=check_for_updates' ), 
+						WpssoAdmin::get_nonce(), WPSSO_NONCE ) );
+				echo '</td></tr>';
+			}
+
 			echo '</table>';
 		}
 
@@ -1228,7 +1237,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '</div>';
 
-			echo '<div class="column-metabox-buttons">';	// float right
+			echo '<div class="column-metabox-buttons">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
 				'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';

@@ -13,8 +13,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 	class WpssoSubmenuDashboard extends WpssoAdmin {
 
-		public $website = array();
-
 		private $max_cols = 3;
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
@@ -52,7 +50,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			foreach ( $ids as $id => $name ) {
 				$col = $col >= $this->max_cols ? 1 : $col + 1;
-				$pos_id = 'dashboard-col-'.$col;
+				$pos_id = 'dashboard_col_'.$col;	// ids must use underscores instead of hyphens to order metaboxes
 				$prio = 'default';
 				$args = array( 'id' => $id, 'name' => $name );
 
@@ -77,16 +75,13 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 		// show two-column metaboxes for sharing buttons
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {
-			if ( isset( $this->website ) ) {
-				echo '<div id="dashboard-metaboxes" class="max-cols-'.$this->max_cols.'">'."\n";
-				foreach ( range( 1, $this->max_cols ) as $col ) {
-					echo '<div id="dashboard-col-'.$col.'" class="dashboard-col">';
-					do_meta_boxes( $pagehook, 'dashboard-col-'.$col, null );
-					echo '</div><!-- #dashboard-col-'.$col.'.dashboard-col -->'."\n";
-				}
-				echo '</div><!-- #dashboard-metaboxes -->'."\n";
-				echo '<div style="clear:both;"></div>'."\n";
+			foreach ( range( 1, $this->max_cols ) as $col ) {
+				// ids must use underscores instead of hyphens to order metaboxes
+				echo '<div id="dashboard_col_'.$col.'" class="max_cols_'.$this->max_cols.' dashboard_col">';
+				do_meta_boxes( $pagehook, 'dashboard_col_'.$col, null );
+				echo '</div><!-- #dashboard_col_'.$col.' -->'."\n";
 			}
+			echo '<div style="clear:both;"></div>'."\n";
 		}
 	}
 }

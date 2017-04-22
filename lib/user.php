@@ -289,8 +289,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function show_metabox_social_settings( $user_obj ) {
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 			$metabox = 'social_settings';

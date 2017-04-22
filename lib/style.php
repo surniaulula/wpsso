@@ -144,6 +144,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
+			$custom_style_css .= '
+				#toplevel_page_'.$lca.'-dashboard #normal-sortables {
+					min-height:0;
+				}
+			';
+
 			$custom_style_css = apply_filters( $lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
 
