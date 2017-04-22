@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.41.0-rc.2 (2017/04/21)**
+**Version 3.41.0 (2017/04/22)**
 
 * *New Features*
 	* Added a new "Plugin Dashboard" settings page.
@@ -586,9 +586,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.41.0-rc.2 =
+= 3.41.0 =
 
-(2017/04/21) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page. Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
+(2017/04/22) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page. Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
 
 = 3.40.13 =
 
