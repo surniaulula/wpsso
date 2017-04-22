@@ -125,20 +125,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
 				$custom_style_css .= '
-					#poststuff #side-content .postbox,
-					#poststuff #side-fixed .postbox {
+					#poststuff #side-info-column .postbox {
 						border:1px solid #'.$this->p->cf['menu']['color'].';
 					}
-					#poststuff #side-content .postbox h2,
-					#poststuff #side-fixed .postbox h2 {
+					#poststuff #side-info-column .postbox h2 {
 						border-bottom:1px dotted #'.$this->p->cf['menu']['color'].';
 					}
-					#poststuff #side-content .postbox.closed h2,
-					#poststuff #side-fixed .postbox.closed h2 {
+					#poststuff #side-info-column .postbox.closed h2 {
 						border-bottom:1px solid #'.$this->p->cf['menu']['color'].';
 					}
-					#poststuff #side-content .postbox.closed,
-					#poststuff #side-fixed .postbox.closed {
+					#poststuff #side-info-column .postbox.closed {
 						border-bottom:none;
 					}
 				';

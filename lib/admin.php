@@ -723,7 +723,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_meta_box( $this->pagehook.'_purchase_pro',
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
-						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side-fixed' );
+						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
 
 				add_meta_box( $this->pagehook.'_install_pro',
 					_x( 'Updating to Pro is Easy', 'metabox title', 'wpsso' ),
@@ -764,15 +764,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
 				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
 
-				echo '<div id="side-fixed">'."\n";
-				do_meta_boxes( $this->pagehook, 'side-fixed', null );
-				echo '</div><!-- #side-fixed-->'."\n";
-
-				echo '<div id="side-content">'."\n";
+				do_meta_boxes( $this->pagehook, 'side_fixed', null );
 				do_meta_boxes( $this->pagehook, 'side', null );
-				echo '</div><!-- #side-content -->'."\n";
 
-				echo '</div><!-- #side-info-column.inner-sidebar -->'."\n";
+				echo '</div><!-- #side-info-column -->'."\n";
 				echo '<div id="post-body" class="has-sidebar">'."\n";
 				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
 			} else {
@@ -785,7 +780,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						</div><!-- #post-body-content -->
 					</div><!-- #post-body -->
-				</div><!-- #poststuff.metabox-holder -->
+				</div><!-- #poststuff -->
 			</div><!-- .wrap -->
 			<script type="text/javascript">
 				//<![CDATA[
