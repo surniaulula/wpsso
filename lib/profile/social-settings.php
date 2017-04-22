@@ -47,8 +47,9 @@ if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin
 		public function show_metabox_social_settings() {
 			$user_id = get_current_user_id();	// since wp 3.0
 			$user = get_userdata( $user_id );
-			if ( empty( $user->ID ) )
+			if ( empty( $user->ID ) ) {
 				wp_die( __( 'Invalid user ID.' ) );
+			}
 			$this->p->m['util']['user']->show_metabox_social_settings( $user );
 		}
 	}

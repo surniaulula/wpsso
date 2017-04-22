@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.41.0-rc.2',		// plugin version
+					'version' => '3.41.0',		// plugin version
 					'opt_version' => '515',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'min_version' => '1.6.1',	// minimum update manager version (hard limit)
+				'min_version' => '1.6.2',	// minimum update manager version (hard limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',

@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 	
 						case 'info-social-accounts':
-							$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).'</p><p>'.sprintf( __( 'See the <a href="%s">Google / Schema settings tab</a> to define a website / business logo for Google Search results, and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' ) ).'</p></blockquote>';
+							$text = '<blockquote class="top-info"><p>'.__( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) social markup for Google Search.', 'wpsso' ).' '.sprintf( __( 'See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', _x( 'Google / Schema', 'metabox tab', 'wpsso' ) ) ).'</p></blockquote>';
 							break;
 	
 						default:
