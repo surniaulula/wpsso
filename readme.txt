@@ -333,6 +333,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.42.0-dev.1 (2017/04/24)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed the $is_avail array to $avail.
+	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail['*']['vary_ua'].
+	* Removed the deprecated NgfbOpenGraph get_the_media_info() method.
+
 **Version 3.41.0 (2017/04/22)**
 
 * *New Features*
@@ -355,7 +368,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page (instead of the WordPress plugins page).
-	* Added a filter to allow the WPSSO Update Manager to be installed from the Plugin Extensions and Pro Licenses settings page.
+	* Added a filter to allow the WPSSO Update Manager to be installed from the Extension Plugins and Pro Licenses settings page.
 	* Improved the CSS of settings pages for the sidebar and its metaboxes.
 * *Bugfixes*
 	* Fixed the Install / Update button in the Plugin Details thickbox.
