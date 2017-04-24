@@ -342,8 +342,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Renamed the $is_avail array to $avail.
-	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail['*']['vary_ua'].
+	* Code refactoring to rename the $is_avail array to $avail.
+	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
 	* Removed the deprecated NgfbOpenGraph get_the_media_info() method.
 
 **Version 3.41.0 (2017/04/22)**
@@ -598,6 +598,39 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 == Upgrade Notice ==
+
+= 3.42.0-dev.1 =
+
+(2017/04/24) Code refactoring to rename the $is_avail array to $avail, and replace the WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
+
+**Version 3.41.0 (2017/04/22)**
+
+* *New Features*
+	* Added a new "Plugin Dashboard" settings page.
+* *Improvements*
+	* Moved all sidebar metaboxes (Help and Support, Version Information, etc.) to the new "Plugin Dashboard" settings page.
+	* Added a WpssoHead vary_user_agent_check() method to handle user agents with special needs like the Pinterest crawler.
+	* Improved the responsive styling of metaboxes for smaller displays.
+* *Bugfixes*
+	* Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
+* *Developer Notes*
+	* Moved the validate button informational text from the NgfbMeta class to the NgfbMessages class.
+	* Renamed all Pinterest option key prefixes from 'rp' to 'p' to reflect the Pinterest meta tag prefix value.
+	* Renamed the SucomUtil crawler_name() method to get_crawler_name().
+	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
+
+**Version 3.40.13 (2017/04/16)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* After installing / activating / updating from the Plugin Details thickbox, the user is now returned to the original WPSSO settings page (instead of the WordPress plugins page).
+	* Added a filter to allow the WPSSO Update Manager to be installed from the Extension Plugins and Pro Licenses settings page.
+	* Improved the CSS of settings pages for the sidebar and its metaboxes.
+* *Bugfixes*
+	* Fixed the Install / Update button in the Plugin Details thickbox.
+	* Fixed the default Organization ID for an Organization selected in the Social Settings metabox (the Organization was defaulting to 'site' instead of 'none').
+	* Replaced call to WC_Product::get_dimensions() with wc_format_dimensions() for WooCommerce v3.x (Pro version).
 
 = 3.41.0 =
 
