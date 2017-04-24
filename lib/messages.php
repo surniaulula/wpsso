@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_filter_lang':
-							$text = $info['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->is_avail['p_ext']['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
+							$text = $info['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->avail['p_ext']['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
 							break;
 
 						case 'tooltip-plugin_create_wp_sizes':
@@ -995,7 +995,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 	
 						case 'info-meta-validate-amp':
-							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->is_avail['amp_endpoint'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
+							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail['*']['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
 						 	break;
 	
 						case 'info-meta-social-preview':
@@ -1051,7 +1051,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
 						if ( $lca !== $this->p->cf['lca'] &&
-							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) ) {
 								$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
 								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
 									'wpsso' ), $req_short );
@@ -1213,7 +1213,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'column-purchase-pro':
-						if ( $this->p->is_avail['aop'] ) {
+						if ( $this->p->avail['*']['p_dir'] ) {
 							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						} else {
 							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can update the Free plugin immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';

@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				// read Yoast SEO social meta if plugin is active or 'wpseo' settings found
-				$defs['plugin_wpseo_social_meta'] = $this->p->is_avail['seo']['wpseo'] || 
+				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || 
 					get_option( 'wpseo' ) ? 1 : 0;
 
 				// check for default values from network admin settings
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Adjust / cleanup site options.
 				 */
 				if ( ! $network ) {
-					if ( $this->p->check->aop( $lca, false, $this->p->is_avail['aop'] ) ) {
+					if ( $this->p->check->aop( $lca, false, $this->p->avail['*']['p_dir'] ) ) {
 						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {
 								continue;
@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					/*
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
-					if ( $this->p->is_avail['seo']['*'] ) {
+					if ( $this->p->avail['seo']['*'] ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 						}

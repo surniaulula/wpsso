@@ -30,14 +30,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret = array();
 			$is_admin = is_admin();
 
-			$ret['post_thumbnail'] = function_exists( 'has_post_thumbnail' ) ? true : false;
-			$ret['amp_endpoint'] = function_exists( 'is_amp_endpoint' ) ? true : false;
-
-			foreach ( array( 'aop', 'head' ) as $key ) {
-				$ret[$key] = $this->get_avail_check( $key );
+			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'rich_pin', 'vary_ua' ) as $key ) {
+				$ret['*'][$key] = $this->get_avail_check( $key );
 			}
 
-			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], 
+			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'],
 				self::$extend_lib_checks ) as $sub => $lib ) {
 
 				$ret[$sub] = array();
@@ -198,51 +195,65 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		private function get_avail_check( $key ) {
+			$ret = false;
 			switch ( $key ) {
-				case 'aop':
+				case 'featured':
+					$ret = function_exists( 'has_post_thumbnail' ) ?
+						true : false;
+					break;
+				case 'amp':
+					$ret = function_exists( 'is_amp_endpoint' ) ?
+						true : false;
+					break;
+				case 'p_dir':
 					$ret = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
 						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ?
 							true : false;
 					break;
-				case 'head':
+				case 'head_html':
 					$ret = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
 						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
 							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
 								true : false;
 					break;
-				default:
-					$ret = false;	// just in case
+				case 'rich_pin':
+					$ret = ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) &&
+						! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
+							true : false;
+					break;
+				case 'vary_ua':
+					$ret = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
+						true : false;
 					break;
 			}
 			return $ret;
 		}
 
-		public function is_aop( $lca = '' ) { 
-			return $this->aop( $lca, true, $this->get_avail_check( 'aop' ) );
+		public function is_aop( $lca = '' ) {
+			return $this->aop( $lca, true, $this->get_avail_check( 'p_dir' ) );
 		}
 
 		public function aop( $lca = '', $lic = true, $rv = true ) {
-			$lca = empty( $lca ) ? 
-				$this->p->cf['lca'] : $lca;
+			$lca = empty( $lca ) ? $this->p->cf['lca'] : $lca;
 			$kn = $lca.'-'.$lic.'-'.$rv;
 			if ( isset( self::$c[$kn] ) )
 				return self::$c[$kn];
 			$uca = strtoupper( $lca );
-			if ( defined( $uca.'_PLUGINDIR' ) )
+			if ( defined( $uca.'_PLUGINDIR' ) ) {
 				$pdir = constant( $uca.'_PLUGINDIR' );
-			elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
+			} elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
 				$slug = $this->p->cf['plugin'][$lca]['slug'];
-				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) || 
+				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
 					! is_dir( $pdir = WPMU_PLUGIN_DIR.'/'.$slug.'/' ) ) {
-					if ( ! defined ( 'WP_PLUGIN_DIR' ) || 
+					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
 						! is_dir( $pdir = WP_PLUGIN_DIR.'/'.$slug.'/' ) )
 							return self::$c[$kn] = false;
 				}
 			} else return self::$c[$kn] = false;
 			$on = 'plugin_'.$lca.'_tid';
 			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
-			return self::$c[$kn] = $lic === true ? 
-				( ( ! empty( $this->p->options[$on] ) && 
+			return self::$c[$kn] = $lic === true ?
+				( ( ! empty( $this->p->options[$on] ) &&
 					$ins && class_exists( 'SucomUpdate' ) &&
 						( $uerr = SucomUpdate::get_umsg( $lca ) ?
 							false : $ins ) ) ? $uerr : false ) : $ins;
@@ -255,15 +266,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				$ins = $this->aop( $ext, false );
 				$ext_list[] = $info['short'].( $ins ? ' Pro' : '' ).' '.$info['version'].'/'.
-					( $this->aop( $ext, true, $this->p->is_avail['aop'] ) ? 'L' : 
+					( $this->aop( $ext, true, $this->p->avail['*']['p_dir'] ) ? 'L' :
 						( $ins ? 'U' : 'G' ) );
 			}
 			return $ext_list;
 		}
 
-		private function has_optval( $opt_name ) { 
-			if ( ! empty( $opt_name ) && 
-				! empty( $this->p->options[$opt_name] ) && 
+		private function has_optval( $opt_name ) {
+			if ( ! empty( $opt_name ) &&
+				! empty( $this->p->options[$opt_name] ) &&
 					$this->p->options[$opt_name] !== 'none' )
 						return true;
 		}

@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7.4
- * Version: 3.41.0
+ * Version: 3.42.0-dev.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $style;			// WpssoStyle (admin styles)
 		public $tc;			// WpssoTwitterCard
 		public $util;			// WpssoUtil (extends SucomUtil)
-		public $webpage;		// deprecated (backwards compatibility)
+		public $webpage;		// deprecated on 2017/03/31 (retain for backwards compatibility)
 		public $weibo;			// WpssoWeibo
 
 		/*
@@ -62,7 +62,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $m = array();		// plugin modules
 		public $m_ext = array();	// plugin extension modules
 		public $cf = array();		// config array defined in construct method
-		public $is_avail = array();	// assoc array for other plugin checks
+		public $avail = array();	// assoc array for other plugin checks
 		public $options = array();	// individual blog/site options
 		public $site_options = array();	// multisite options
 		public $sc = array();		// shortcodes
@@ -219,7 +219,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$network = is_multisite() ? true : false;
 
 			$this->check = new WpssoCheck( $this );
-			$this->is_avail = $this->check->get_avail();		// uses $this->options in checks
+			$this->avail = $this->check->get_avail();	// uses $this->options in checks
 
 			// configure the debug class
 			$html_debug = ! empty( $this->options['plugin_debug'] ) || 
@@ -429,7 +429,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
 
 			// show available modules
-			$this->debug->show_html( print_r( $this->is_avail, true ), 'available features' );
+			$this->debug->show_html( print_r( $this->avail, true ), 'available features' );
 
 			// show all plugin options
 			$opts = $this->options;

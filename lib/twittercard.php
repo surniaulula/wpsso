@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					// singlepic shortcode image
 					if ( ! isset( $mt_tc['twitter:card'] ) ) {
-						if ( ! empty( $this->p->is_avail['media']['ngg'] ) ) {
+						if ( ! empty( $this->p->avail['media']['ngg'] ) ) {
 							if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 								if ( $this->p->debug->enabled )
 									$this->p->debug->log( $card_type.' card: checking for singlepic image' );

@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 
-					if ( $this->p->is_avail['media']['ngg'] === true ) {
+					if ( $this->p->avail['media']['ngg'] === true ) {
 						$table_rows['og_ngg_tags'] = '<tr class="hide_in_basic">'.
 						$this->form->get_th_html( _x( 'Add Tags from NGG Featured Image',
 							'option label', 'wpsso' ), '', 'og_ngg_tags' ).

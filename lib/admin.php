@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * the plugin object as-is if the slug is defined properly, so it should work
 				 * fine with older versions (we require 1.6.0 anyway, just in case).
 				 */
-				if ( empty( $this->p->is_avail['p_ext']['um'] ) ) {	// since um v1.6.0
+				if ( empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
 					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
 				}
 
@@ -130,9 +130,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $this->p->is_avail['aop'] );
+				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $this->p->avail['*']['p_dir'] );
 				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
-					$this->p->check->aop( $lca, true, $this->p->is_avail['aop'] ) &&
+					$this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] ) &&
 						$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ?
 							true : false;
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
@@ -1005,7 +1005,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$info['short'] ).'</a></p></td></tr>';
 			}
 
-			if ( ! empty( $this->p->is_avail['p_ext']['um'] ) ) {	// since um v1.6.0
+			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
 				echo '<tr><td colspan="2">';
 				echo $this->form->get_button( _x( 'Check for Updates', 'submit button', 'wpsso' ), 'button-secondary',
 					'column-check-for-updates', wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action=check_for_updates' ), 
@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$classname = SucomUtil::sanitize_classname( $ext.'pro'.$sub.$id, false );	// $underscore = false
-						$status_off = $this->p->is_avail[$sub][$id] ? 'rec' : 'off';
+						$status_off = $this->p->avail[$sub][$id] ? 'rec' : 'off';
 						$features[$label] = array(
 							'td_class' => self::$pkg[$ext]['aop'] ? '' : 'blank',
 							'purchase' => self::$pkg[$ext]['purchase'],
@@ -1332,8 +1332,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public static function get_nonce() {
-			return __FILE__.
-				SucomUtil::get_const( 'NONCE_KEY' ).
+			return __FILE__.'::'.
+				SucomUtil::get_const( 'NONCE_KEY' ).'::'.
 				SucomUtil::get_const( 'NONCE_SALT' );
 		}
 
@@ -1511,7 +1511,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// Yoast SEO
-			if ( $this->p->is_avail['seo']['wpseo'] ) {
+			if ( $this->p->avail['seo']['wpseo'] ) {
 				$opts = get_option( 'wpseo_social' );
 				if ( ! empty( $opts['opengraph'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1540,7 +1540,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// SEO Ultimate
-			if ( $this->p->is_avail['seo']['seou'] ) {
+			if ( $this->p->avail['seo']['seou'] ) {
 				$opts = get_option( 'seo_ultimate' );
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// All in One SEO Pack
-			if ( $this->p->is_avail['seo']['aioseop'] ) {
+			if ( $this->p->avail['seo']['aioseop'] ) {
 				$opts = get_option( 'aioseop_options' );
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1576,7 +1576,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// The SEO Framework
-			if ( $this->p->is_avail['seo']['autodescription'] ) {
+			if ( $this->p->avail['seo']['autodescription'] ) {
 				$the_seo_framework = the_seo_framework();
 				if ( $the_seo_framework->use_og_tags() ) {
 					if ( $this->p->debug->enabled ) {
@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// Squirrly SEO
-			if ( $this->p->is_avail['seo']['sq'] ) {
+			if ( $this->p->avail['seo']['sq'] ) {
 				$opts = json_decode( get_option( 'sq_options' ), true );
 				if ( ! empty( $opts['sq_auto_facebook'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1649,7 +1649,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$version = $this->p->cf['plugin'][$lca]['version'];
 			$have_ext_tid = false;
 
-			if ( $this->p->is_avail['aop'] === true &&
+			if ( $this->p->avail['*']['p_dir'] === true &&
 				empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
 					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) ||
 						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) ) {
@@ -1821,7 +1821,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_checkbox( 'plugin_debug' ) ).'</td>'.
 			self::get_option_site_use( 'plugin_debug', $form, $network, true );
 
-			if ( $network || ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) ) {
+			if ( $network || ! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) ) {
 				$table_rows['plugin_hide_pro'] = $form->get_th_html( _x( 'Hide All Pro Version Options',
 					'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
 				'<td>'.$form->get_checkbox( 'plugin_hide_pro' ).'</td>'.

@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->is_avail['aop'] ) &&
+				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) &&
 					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? 'pro' : 'gpl';
 				if ( ! isset( $info['lib'][$type] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 						$log_pre = 'loading '.$ext.' '.$type.'/'.$sub.'/'.$id.': ';
-						if ( $this->p->is_avail[$sub][$id] ) {
+						if ( $this->p->avail[$sub][$id] ) {
 							// compare $action from lib id with $has_action method argument
 							// this is usually / almost always a false === false comparison
 							if ( $action !== $has_action ) {
@@ -110,10 +110,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$this->p->debug->log( $log_pre.'class '.$classname.' does not exist' );
 								}
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_pre.'invalid class name from filter' );
+								$this->p->debug->log( $log_pre.'invalid classname from filter' );
 							}
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_pre.'is_avail check is false' );
+							$this->p->debug->log( $log_pre.'avail is false' );
 						}
 					}
 				}

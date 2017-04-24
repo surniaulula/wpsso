@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = false;
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 
 			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
@@ -949,7 +949,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_product_tag',
 				'is_shop',
 				/*
-				 *
+				 * other functions
 				 */
 				'is_amp_endpoint',
 			);

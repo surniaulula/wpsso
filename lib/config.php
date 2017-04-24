@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.41.0',		// plugin version
-					'opt_version' => '515',		// increment when changing default options
+					'version' => '3.42.0-dev.1',		// plugin version
+					'opt_version' => '516',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -1632,7 +1632,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'roofing.contractor' => 'https://schema.org/RoofingContractor',
 								),
 								'internet.cafe' => 'https://schema.org/InternetCafe',
-								'legal.service' => 'https://schema.org/LegalService',
+								'legal.service' => array(
+									'attorney' => 'https://schema.org/Attorney',
+									'legal.service' => 'https://schema.org/LegalService',
+									'notary' => 'https://schema.org/Notary',
+								),
 								'library' => 'https://schema.org/Library',
 								'local.business' => 'https://schema.org/LocalBusiness',
 								'lodging.business' => array(

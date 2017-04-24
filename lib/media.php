@@ -123,15 +123,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) &&
 					wp_attachment_is_image( $post_id ) ) {
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image ID' );
+					}
 					$pid = $post_id;
 
-				} elseif ( $this->p->is_avail['post_thumbnail'] == true &&
-					has_post_thumbnail( $post_id ) )
-						$pid = get_post_thumbnail_id( $post_id );
-
-				else $pid = false;
+				} elseif ( $this->p->avail['*']['featured'] == true && has_post_thumbnail( $post_id ) ) {
+					$pid = get_post_thumbnail_id( $post_id );
+				} else {
+					$pid = false;
+				}
 
 				if ( ! empty( $pid ) ) {
 					list(
@@ -299,7 +300,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_height = WPSSO_UNDEF_INT;
 			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;	// get_size_info() returns false, true, or an array
 
-			if ( $this->p->is_avail['media']['ngg'] === true && strpos( $pid, 'ngg-' ) === 0 ) {
+			if ( $this->p->avail['media']['ngg'] === true && strpos( $pid, 'ngg-' ) === 0 ) {
 
 				if ( ! empty( $this->p->m['media']['ngg'] ) )
 					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid,
@@ -632,7 +633,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						// data-share-src|data-lazy-src|data-src|src
 						default:
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
-							if ( $this->p->is_avail['media']['ngg'] === true &&
+							if ( $this->p->avail['media']['ngg'] === true &&
 								! empty( $this->p->m['media']['ngg'] ) &&
 									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
 										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )

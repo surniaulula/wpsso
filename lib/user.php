@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) { 
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 
 			// unset built-in contact fields and/or update their labels
 			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $aop ) {

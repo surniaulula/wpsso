@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			if ( ! empty( $this->p->is_avail['seo']['wpseo'] ) ) {
+			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '
 					.wp-list-table th.column-title,
 					.wp-list-table td.column-title {

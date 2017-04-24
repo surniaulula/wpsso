@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			// check title against string length limits
 			if ( $textlen > 0 ) {
 				// seo-like title modifications
-				if ( $this->p->is_avail['seo']['*'] === false ) {
+				if ( $this->p->avail['seo']['*'] === false ) {
 					$paged = get_query_var( 'paged' );
 					if ( $paged > 1 ) {
 						if ( ! empty( $separator ) ) {
@@ -822,14 +822,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$tags = $this->get_wp_tags( $post_id );
 					if ( isset( $this->p->m['media']['ngg'] ) &&
 						$this->p->options['og_ngg_tags'] &&
-							$this->p->is_avail['post_thumbnail'] &&
+							$this->p->avail['*']['featured'] &&
 								has_post_thumbnail( $post_id ) ) {
 
 						$pid = get_post_thumbnail_id( $post_id );
 
 						// featured images from ngg pre-v2 had 'ngg-' prefix
-						if ( is_string( $pid ) && substr( $pid, 0, 4 ) == 'ngg-' )
+						if ( is_string( $pid ) && substr( $pid, 0, 4 ) == 'ngg-' ) {
 							$tags = array_merge( $tags, $this->p->m['media']['ngg']->get_tags( $pid ) );
+						}
 					}
 				} elseif ( is_search() ) {
 					$tags = preg_split( '/ *, */', get_search_query( false ) );

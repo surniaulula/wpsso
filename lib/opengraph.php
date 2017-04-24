@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$max = $this->p->util->get_max_nums( $mod );
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = true;
 			$prev_count = 0;
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				// check for ngg shortcodes and query vars
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) &&
-					$this->p->is_avail['media']['ngg'] &&
+					$this->p->avail['media']['ngg'] &&
 						! empty( $this->p->m['media']['ngg'] ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -659,11 +659,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_ret;
 		}
 
-		// renamed and deprecated on 2017/03/29
-		public function get_the_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og', $head = array() ) {
-			return $this->get_media_info( $size_name, $request, $mod, $md_pre, $mt_pre, $head );
-		}
-
 		/*
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 */
@@ -675,7 +670,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->is_avail['aop'] );
+			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 			$og_image = null;
 			$og_video = null;
 

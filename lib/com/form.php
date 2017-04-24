@@ -475,8 +475,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_lib = 'wp';
 			$media_libs = array( 'wp' => 'Media Library' );
 
-			if ( $this->p->is_avail['media']['ngg'] === true )
+			if ( $this->p->avail['media']['ngg'] === true ) {
 				$media_libs['ngg'] = 'NextGEN Gallery';
+			}
 
 			if ( strpos( $placeholder, 'ngg-' ) === 0 ) {
 				$select_lib = 'ngg';

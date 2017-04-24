@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			// crawlers are only seen on the front-end, so skip if in back-end
-			if ( ! is_admin() && ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
+			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
 				$this->vary_user_agent_check();
 			}
 		}
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			// crawlers are only seen on the front-end, so skip if in back-end
-			if ( ! is_admin() && ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
+			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 				switch ( $crawler_name ) {
 					case 'pinterest':
@@ -150,10 +150,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->util->log_is_functions();
 			}
 
-			$add_head_html = apply_filters( $lca.'_add_head_html', $this->p->is_avail['head'], $mod );
+			$add_head_html = apply_filters( $lca.'_add_head_html', $this->p->avail['*']['head_html'], $mod );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'is_avail head = '.( $this->p->is_avail['head'] ? 'true' : 'false' ) );
+				$this->p->debug->log( 'avail head_html = '.( $this->p->avail['*']['head_html'] ? 'true' : 'false' ) );
 				$this->p->debug->log( 'add_head_html = '.( $add_head_html ? 'true' : 'false' ) );
 			}
 
