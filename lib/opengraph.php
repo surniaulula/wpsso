@@ -659,6 +659,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_ret;
 		}
 
+		// renamed and deprecated on 2017/03/29
+		public function get_the_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og', $head = array() ) {
+			return $this->get_media_info( $size_name, $request, $mod, $md_pre, $mt_pre, $head );
+		}
+
 		/*
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 */
