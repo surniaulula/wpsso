@@ -145,8 +145,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_mod_schema_type( array &$mod, $get_id = false, $use_mod_opts = true ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
@@ -546,6 +548,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_schema_type_id_for_name( $type_name, $default_id = null ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'type_name' => $type_name,
@@ -614,6 +617,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->p->cf['lca'].'_json_data_'.SucomUtil::sanitize_hookname( $type_url );
 		}
 
+		public static function get_data_context( $json_data ) {
+			if ( ( $type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				return self::get_schema_type_context( $type_url );
+			}
+			return array();
+		}
+
+		// json_data can be a null schema property value, so don't cast an array on the input argument
+		public static function get_data_type_url( $json_data ) {
+			if ( ! empty( $json_data['@type'] ) ) {
+				if ( strpos( $json_data['@type'], '://' ) ) {
+					return $json_data['@type'];
+				} elseif ( ! empty( $json_data['@context'] ) ) {
+					return trailingslashit( $json_data['@context'] ).$json_data['@type'];
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+
 		/*
 		 * JSON-LD Script Array
 		 *
@@ -646,7 +671,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$page_type_ids = array();
 			$page_type_added = array();	// prevent duplicate schema types
-			$site_org_type_id = false;	// just in case
+			$site_org_type_id = false;		// just in case
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'head schema type id is '.$page_type_id.' ('.$page_type_url.')' );
@@ -684,6 +709,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * )
 			 */
 			$page_type_ids = apply_filters( $lca.'_json_array_schema_page_type_ids', $page_type_ids, $mod );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( 'page_type_ids', $page_type_ids );
+			}
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 				if ( ! $is_enabled ) {
@@ -754,8 +783,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					// check for missing @context / @type and add if required
 					if ( empty( $json_data['@type'] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'adding missing @type property' );
+						}
 						$type_url = $this->get_schema_type_url( $type_id );
 						$json_data = self::get_schema_type_context( $type_url, $json_data );
+					}
+					
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( '@type property is '.$json_data['@type'] );
 					}
 
 					// encode the json data in an HTML script block
@@ -947,7 +983,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = array();
+			if ( $org_id === 'none' ) {
+				$this->p->debug->log( 'exiting early: organization id is none' );
+				return $json_data;
+			}
+
+			// possibly inherit the schema type
+			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
 
 			self::add_single_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// $list_element = false
 
@@ -1014,7 +1056,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $json_data;
 			}
 
-			$ret = array();
+			// possibly inherit the schema type
+			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
 
 			self::add_single_person_data( $ret, $mod, $user_id, false );	// $list_element = false
 
@@ -1059,8 +1102,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
 			}
 
-			$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
-			$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			if ( ! $list_element && ( $org_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using inherited schema type url = '.$org_type_url );
+				}
+			} else {
+				$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
+				$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
+			}
+
 			$ret = self::get_schema_type_context( $org_type_url );
 
 			// add schema properties from the organization options
@@ -1216,13 +1267,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			// local business is a sub-type of place
-			// use the local business schema type if we have one
-			$place_type_id = empty( $place_opts['place_business_type'] ) || 
-				$place_opts['place_business_type'] === 'none' ?
-					'place' : $place_opts['place_business_type'];
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			if ( ! $list_element && ( $place_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using inherited schema type url = '.$place_type_url );
+				}
+			} else {
+				// local business is a sub-type of place - use the local business schema type (if we have one)
+				$place_type_id = empty( $place_opts['place_business_type'] ) || 
+					$place_opts['place_business_type'] === 'none' ?
+						'place' : $place_opts['place_business_type'];
 
-			$place_type_url = $wpsso->schema->get_schema_type_url( $place_type_id, 'place' );
+				$place_type_url = $wpsso->schema->get_schema_type_url( $place_type_id, 'place' );
+			}
 
 			$ret = self::get_schema_type_context( $place_type_url );
 
@@ -1357,8 +1414,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			$event_type_id = empty( $event_opts['event_type'] ) ? 'event' : $event_opts['event_type'];
-			$event_type_url = $wpsso->schema->get_schema_type_url( $event_type_id, 'event' );
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			if ( ! $list_element && ( $event_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using inherited schema type url = '.$event_type_url );
+				}
+			} else {
+				$event_type_id = empty( $event_opts['event_type'] ) ? 'event' : $event_opts['event_type'];
+				$event_type_url = $wpsso->schema->get_schema_type_url( $event_type_id, 'event' );
+			}
+
 			$ret = self::get_schema_type_context( $event_type_url );
 
 			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
@@ -1430,13 +1495,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// $list_element = false
 
 			// list of contributors / co-authors
-			if ( ! empty( $mod['post_coauthors'] ) )
-				foreach ( $mod['post_coauthors'] as $author_id )
+			if ( ! empty( $mod['post_coauthors'] ) ) {
+				foreach ( $mod['post_coauthors'] as $author_id ) {
 					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// $list_element = true
+				}
+			}
 
-			foreach ( array( 'author', 'contributor' ) as $itemprop )
-				if ( empty( $json_data[$itemprop] ) )
+			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
+				if ( empty( $json_data[$itemprop] ) ) {
 					unset( $json_data[$itemprop] );	// prevent null assignment
+				}
+			}
 
 			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
 		}
@@ -1501,11 +1570,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 			}
 
-			if ( $wpsso->debug->enabled )
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log_arr( 'person options', $person_opts );
+			}
 
-			$person_type_id = empty( $person_opts['person_type'] ) ? 'person' : $person_opts['person_type'];	// person or patient
-			$person_type_url = $wpsso->schema->get_schema_type_url( $person_type_id, 'person' );
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			if ( ! $list_element && ( $person_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using inherited schema type url = '.$person_type_url );
+				}
+			} else {
+				$person_type_id = empty( $person_opts['person_type'] ) ? 'person' : $person_opts['person_type'];	// person or patient
+				$person_type_url = $wpsso->schema->get_schema_type_url( $person_type_id, 'person' );
+			}
+
 			$ret = self::get_schema_type_context( $person_type_url );
 
 			self::add_data_itemprop_from_assoc( $ret, $person_opts, array(
@@ -1533,16 +1611,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $person_opts['person_sameas'] ) &&
 				is_array( $person_opts['person_sameas'] ) ) {	// just in case
-				foreach ( $person_opts['person_sameas'] as $url )
-					if ( ! empty( $url ) )	// just in case
+				foreach ( $person_opts['person_sameas'] as $url ) {
+					if ( ! empty( $url ) ) {	// just in case
 						$ret['sameAs'][] = esc_url( $url );
+					}
+				}
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_person', $ret, $mod, $user_id );
 
-			if ( empty( $list_element ) )
+			if ( empty( $list_element ) ) {
 				$json_data = $ret;
-			else $json_data[] = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
 
 			return 1;
 		}
@@ -1583,18 +1665,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;	// return count of images added
 			}
 
-			$ret = array(
-				'@context' => 'https://schema.org',
-				'@type' => 'ImageObject',
-				'url' => esc_url( $media_url ),
-			);
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			if ( ! $list_element && ( $image_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using inherited schema type url = '.$image_type_url );
+				}
+			} else {
+				$image_type_url = 'https://schema.org/ImageObject';
+			}
+
+			$ret = self::get_schema_type_context( $image_type_url, 
+				array( 'url' => esc_url( $media_url ),
+			) );
 
 			/*
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
 			 * check the WordPress Media Library for a title and description.
 			 */
-			if ( ! empty( $opts[$prefix.':id'] ) && 
-				is_numeric( $opts[$prefix.':id'] ) ) {
+			if ( ! empty( $opts[$prefix.':id'] ) && is_numeric( $opts[$prefix.':id'] ) ) {
 
 				$wpsso = Wpsso::get_instance();
 				$post_id = $opts[$prefix.':id'];
@@ -1602,23 +1690,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
 					false, true, 'schema_title' );	// $add_hashtags = false, $encode = true, $md_idx = schema_title
-				if ( empty( $ret['name'] ) )	// just in case
+
+				if ( empty( $ret['name'] ) ) {	// just in case
 					unset( $ret['name'] );
+				}
 
 				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
-				if ( empty( $ret['description'] ) )	// just in case
+
+				if ( empty( $ret['description'] ) ) {	// just in case
 					unset( $ret['description'] );
+				}
 			}
 
 			foreach ( array( 'width', 'height' ) as $prop )
 				if ( isset( $opts[$prefix.':'.$prop] ) &&
-					$opts[$prefix.':'.$prop] > 0 )	// just in case
-						$ret[$prop] = $opts[$prefix.':'.$prop];
+					$opts[$prefix.':'.$prop] > 0 ) {	// just in case
+				$ret[$prop] = $opts[$prefix.':'.$prop];
+			}
 
-			if ( empty( $list_element ) )
+			if ( empty( $list_element ) ) {
 				$json_data = $ret;
-			else $json_data[] = $ret;	// add an item to the list
+			} else {
+				$json_data[] = $ret;	// add an item to the list
+			}
 
 			return 1;	// return count of images added
 		}
@@ -1711,9 +1806,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'name' => 'og:title',
 			) );
 
-			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) )
+			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
 				$mt_schema['description'] = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+			}
 
 			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
@@ -1867,8 +1963,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$media_url = SucomUtil::get_mt_media_url( $mixed, $prefix );
 
 				if ( empty( $media_url ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
+					}
 					return array();
 				}
 
@@ -1882,7 +1979,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 
 			// defines a two-dimensional array
-			} else $mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $mod );
+			} else {
+				$mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $mod );
+			}
 
 			// make sure we have html for at least one meta tag
 			$have_image_html = false;
@@ -1899,7 +1998,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_image,
 					array( array( '</noscript>'."\n" ) )
 				);
-			} else return array();
+			} else {
+				return array();
+			}
 		}
 
 		public function get_aggregate_rating_noscript( array &$mod, $og_type, array $mt_og ) {
@@ -1945,9 +2046,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
 
-			if ( ! empty( $mod['post_coauthors'] ) )
-				foreach ( $mod['post_coauthors'] as $author_id )
+			if ( ! empty( $mod['post_coauthors'] ) ) {
+				foreach ( $mod['post_coauthors'] as $author_id ) {
 					$ret = array_merge( $ret, $this->get_single_author_noscript( $mod, $author_id, 'contributor' ) );
+				}
+			}
 
 			return $ret;
 		}
@@ -1963,16 +2066,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$og_ret = array();
 			if ( empty( $author_id ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty author_id' );
+				}
 				return array();
 			} elseif ( empty( $this->p->m['util']['user'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user module' );
+				}
 				return array();
 			} else {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting user_mod for author id '.$author_id );
+				}
 				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
 			}
 
@@ -2024,7 +2130,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$mt_author,
 					array( array( '</noscript>'."\n" ) )
 				);
-			} else return array();
+			} else {
+				return array();
+			}
 		}
 	}
 }
