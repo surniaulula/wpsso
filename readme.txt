@@ -341,6 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Bugfixes*
 	* Fixed inheritance of Schema sub-types when adding Organization markup.
+	* Fixed check of variable product for WooCommerce v3.x (Pro version).
 * *Developer Notes*
 	* Code refactoring to rename the $is_avail array to $avail.
 	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
