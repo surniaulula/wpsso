@@ -333,17 +333,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.42.0-dev.1 (2017/04/24)**
+**Version 3.42.0-dev.2 (2017/04/27)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed inheritance of Schema sub-types when adding Organization markup.
 * *Developer Notes*
 	* Code refactoring to rename the $is_avail array to $avail.
 	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
+	* Added a Schema type inheritance feature when adding markup for single Schema elements.
 
 **Version 3.41.0 (2017/04/22)**
 
@@ -598,9 +599,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.42.0-dev.1 =
+= 3.42.0-dev.2 =
 
-(2017/04/24) Code refactoring to rename the $is_avail array to $avail, and replace the WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
+(2017/04/27) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace NGFB_VARY_USER_AGENT_DISABLE constant checks.
 
 = 3.41.0 =
 
