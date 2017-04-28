@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.42.0-dev.2 (2017/04/27)**
+**Version 3.42.0-dev.4 (2017/04/27)**
 
 * *New Features*
 	* None
@@ -346,6 +346,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Code refactoring to rename the $is_avail array to $avail.
 	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
 	* Added a Schema type inheritance feature when adding markup for single Schema elements.
+	* Renamed the "WP / Theme Integration" tab in the Advanced settings to "Integration".
+	* Moved the WPSSO_BP_MEMBER_BIOGRAPHICAL_FIELD constant value to a new "BuddyPress Member Bio Field Name" option in the Advanced settings page.
 
 **Version 3.41.0 (2017/04/22)**
 
@@ -600,7 +602,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.42.0-dev.2 =
+= 3.42.0-dev.4 =
 
 (2017/04/27) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace NGFB_VARY_USER_AGENT_DISABLE constant checks.
 
