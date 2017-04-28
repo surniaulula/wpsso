@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.42.0-dev.2',		// plugin version
-					'opt_version' => '516',		// increment when changing default options
+					'version' => '3.42.0-dev.4',		// plugin version
+					'opt_version' => '518',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -88,6 +88,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'advanced' => 'Advanced Settings',
 								'post' => 'Post Settings',
 								'meta' => 'Term and User Settings',
+							),
+							'social' => array(
+								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
 								'post' => '(tool) Custom Post Meta',
@@ -830,12 +833,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_img_max' => 5,			// Maximum Images from Content
 					'plugin_content_vid_max' => 5,			// Maximum Videos from Content
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
-					'plugin_facebook_api' => 1,			// Check for Embedded Media from: Facebook
-					'plugin_slideshare_api' => 1,			// Check for Embedded Media from: Slideshare
-					'plugin_vimeo_api' => 1,			// Check for Embedded Media from: Vimeo
-					'plugin_wistia_api' => 1,			// Check for Embedded Media from: Wistia
-					'plugin_youtube_api' => 1,			// Check for Embedded Media from: Youtube
-					// WP / Theme Integration Tab
+					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook
+					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare
+					'plugin_vimeo_api' => 1,			// Check for Embedded Media: Vimeo
+					'plugin_wistia_api' => 1,			// Check for Embedded Media: Wistia
+					'plugin_youtube_api' => 1,			// Check for Embedded Media: Youtube
+					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_html_attr_filter_name' => 'language_attributes',
 					'plugin_html_attr_filter_prio' => 100,
@@ -965,7 +968,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_opts:use' => 'default',
 					// Content and Filters Tab
 					// Social Settings Tab
-					// WP / Theme Integration Tab
+					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_honor_force_ssl:use' => 'default',
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags

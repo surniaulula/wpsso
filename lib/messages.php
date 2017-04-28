@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;	// stop here
 
 						/*
-						 * 'WP / Theme Integration' settings
+						 * 'Integration' settings
 						 */
 						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
 							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
@@ -1115,13 +1115,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 
 						if ( empty( $info['hard_limit'] ) && current_user_can( 'manage_options' ) ) {
-							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ).'</em></p>';
+
+							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
+							$upscale_percent = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+							$img_dim_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
+							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
+								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );
+
+							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:',
+								'wpsso' ).'</em></p>';
+
 							$text .= '<ul>';
-							$text .= '<li>'.sprintf( __( 'You can also adjust the <b>%2$s</b> option in the <a href="%1$s">Social and SEO Image Dimensions</a> settings.', 'wpsso' ), $this->p->util->get_admin_url( 'image-dimensions' ), $info['size_label'] ).'</li>';
-							$text .= '<li>'.sprintf( __( 'Enable or increase the <a href="%1$s">WP / Theme Integration</a> <em>image upscaling percentage</em> feature.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
-							$text .= '<li>'.sprintf( __( 'Disable the <a href="%1$s">WP / Theme Integration</a> <em>image dimensions check</em> option (not recommended).', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' ) ).'</li>';
-							if ( empty( $hidden_warnings ) )
-								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.', 'wpsso' ), $hide_const_name ).'</li>';
+
+							$text .= '<li>'.sprintf( __( 'You can also adjust the <b>%1$s</b> option in the %2$s settings.',
+								'wpsso' ), $info['size_label'], $img_dim_page ).'</li>';
+
+							$text .= '<li>'.sprintf( __( 'Enable the %1$s option.',
+								'wpsso' ), $upscale_enable, $upscale_percent ).'</li>';
+
+							$text .= '<li>'.sprintf( __( 'Increase the %2$s option value.',
+								'wpsso' ), $upscale_enable, $upscale_percent ).'</li>';
+
+							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).',
+								'wpsso' ), $img_dim_enable ).'</li>';
+
+							if ( empty( $hidden_warnings ) ) {
+								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.',
+									'wpsso' ), $hide_const_name ).'</li>';
+							}
+
 							$text .= '</ul>';
 						}
 						break;

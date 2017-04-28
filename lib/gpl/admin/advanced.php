@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">'.$this->p->options['plugin_content_vid_max'].'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Embedded Media from',
+			$form->get_th_html( _x( 'Check for Embedded Media',
 				'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
 			'<td class="blank">'.
 			'<p>'.$this->get_nocb( $form, 'plugin_facebook_api' ).' Facebook Videos</p>'.
@@ -98,8 +98,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_plugin_integration_rows( $table_rows, $form ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows[] = '<td colspan="3" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
@@ -112,14 +114,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_html_attr_filter'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook',
 				'option label', 'wpsso' ), '', 'plugin_html_attr_filter' ).
-			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].', '.
-				'Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
+			'<td class="blank field_name">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].'</td>'.
+			'<td class="blank">Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
 
 			$table_rows['plugin_head_attr_filter'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook',
 				'option label', 'wpsso' ), '', 'plugin_head_attr_filter' ).
-			'<td class="blank">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].', '.
-				'Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
+			'<td class="blank field_name">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].'</td>'.
+			'<td class="blank">Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 
 			$table_rows['plugin_check_head'] = $form->get_th_html( _x( 'Check for Duplicate Meta Tags',
 				'option label', 'wpsso' ), '', 'plugin_check_head' ).
@@ -149,20 +151,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_upscale_img_max' ).
 			'<td class="blank">'.$this->p->options['plugin_upscale_img_max'].' %</td>';
 
-			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
-				$table_rows[] = '<tr class="hide_in_basic">'.
-				$form->get_th_html( _x( 'Enable Plugin Shortcode(s)',
-					'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
-				$this->get_nocb_td( $form, 'plugin_shortcodes' );
-			}
-
-			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
-				$table_rows[] = '<tr class="hide_in_basic">'.
-				$form->get_th_html( _x( 'Enable Plugin Widget(s)',
-					'option label', 'wpsso' ), '', 'plugin_widgets' ).
-				$this->get_nocb_td( $form, 'plugin_widgets' );
-			}
-
 			$table_rows[] = $form->get_th_html( _x( 'Enable WP Excerpt for Pages',
 				'option label', 'wpsso' ), '', 'plugin_page_excerpt' ).
 			$this->get_nocb_td( $form, 'plugin_page_excerpt' );
@@ -175,8 +163,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_plugin_social_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';

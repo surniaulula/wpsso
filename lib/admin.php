@@ -1834,6 +1834,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'option label', 'wpsso' ), null, 'plugin_show_opts' ).
 			'<td>'.$form->get_select( 'plugin_show_opts', $this->p->cf['form']['show_options'] ).'</td>'.
 			self::get_option_site_use( 'plugin_show_opts', $form, $network, true );
+
+			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
+				$table_rows['plugin_shortcodes'] = '<tr class="hide_in_basic">'.
+				$form->get_th_html( _x( 'Enable Plugin Shortcode(s)',
+					'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
+				'<td>'.$form->get_checkbox( 'plugin_shortcodes' ).'</td>'.
+				self::get_option_site_use( 'plugin_shortcodes', $form, $network, true );
+			}
+
+			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
+				$table_rows['plugin_widgets'] = '<tr class="hide_in_basic">'.
+				$form->get_th_html( _x( 'Enable Plugin Widget(s)',
+					'option label', 'wpsso' ), '', 'plugin_widgets' ).
+				'<td>'.$form->get_checkbox( 'plugin_widgets' ).'</td>'.
+				self::get_option_site_use( 'plugin_widgets', $form, $network, true );
+			}
 		}
 
 		// deprecated on 2017/04/02

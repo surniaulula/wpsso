@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$tabs = apply_filters( $this->p->cf['lca'].'_advanced_'.$metabox.'_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
-				'integration' => _x( 'WP / Theme Integration', 'metabox tab', 'wpsso' ),
+				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'social' => _x( 'Custom Meta', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 				'apikeys' => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
