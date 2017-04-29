@@ -207,7 +207,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 = Install and Uninstall =
 
-* [Install the Plugin](https://wpsso.com/docs/plugins/wpsso/installation-to/install-the-plugin/)
+* [Install the Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 * [Uninstall the Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
