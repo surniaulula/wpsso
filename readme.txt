@@ -114,7 +114,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 		* rtMedia for WordPress, BuddyPress and bbPress
 		* The Events Calendar
 		* The SEO Framework
-		* WooCommerce (version 1 and 2)
+		* WooCommerce (version 1, 2, and 3)
 		* WP eCommerce
 		* WordPress REST API (version 2)
 		* Yoast SEO (aka WordPress SEO)

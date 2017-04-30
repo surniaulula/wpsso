@@ -130,7 +130,7 @@
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
-<li>WooCommerce (version 1 and 2)</li>
+<li>WooCommerce (version 1, 2, and 3)</li>
 <li>WP eCommerce</li>
 <li>WordPress REST API (version 2)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
