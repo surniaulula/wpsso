@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.42.0-"
-"b.1\n"
+"rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1653,11 +1653,11 @@ msgstr ""
 
 #: lib/gpl/social/buddypress.php:60 lib/pro/social/buddypress.php:98
 msgid ""
-"The BuddyPress member profile page does not include the WordPress "
-"<em>Biographical Info</em> text from the WordPress user profile. If you've "
-"created an additional BuddyPress Profile Field for members to enter their "
-"profile description, enter the field name here (example: Biographical Info, "
-"About Me, etc.)."
+"The BuddyPress member profile page does not include the <em>Biographical "
+"Info</em> text from the WordPress user profile. If you've created an "
+"additional BuddyPress Profile Field for members to enter their profile "
+"description, enter the field name here (example: Biographical Info, About "
+"Me, etc.)."
 msgstr ""
 
 #: lib/media.php:313
