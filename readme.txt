@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.42.0-b.1 (2017/04/29)**
+**Version 3.42.0-rc.1 (2017/04/30)**
 
 * *New Features*
 	* None
@@ -602,9 +602,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.42.0-b.1 =
+= 3.42.0-rc.1 =
 
-(2017/04/29) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace NGFB_VARY_USER_AGENT_DISABLE constant checks.
+(2017/04/30) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace NGFB_VARY_USER_AGENT_DISABLE constant checks.
 
 = 3.41.0 =
 
