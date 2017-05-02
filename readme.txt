@@ -338,7 +338,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added Facebook AppLink meta tags for YouTube and Vimeo videos:
+		* al:ios:app_name
+		* al:ios:app_store_id
+		* al:ios:url
+		* al:android:app_name
+		* al:android:package
+		* al:android:url
+		* al:web:url
+		* al:web:should_fallback
+	* Added Twitter card meta tags for YouTube and Vimeo videos:
+		* twitter:app:name:iphone
+		* twitter:app:id:iphone
+		* twitter:app:url:iphone
+		* twitter:app:name:ipad
+		* twitter:app:id:ipad
+		* twitter:app:url:ipad
+		* twitter:app:name:googleplay
+		* twitter:app:id:googleplay
+		* twitter:app:url:googleplay
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -612,6 +630,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 == Upgrade Notice ==
+
+= 3.42.1-dev.1 =
+
+(2017/05/02) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
 
 = 3.42.0 =
 
