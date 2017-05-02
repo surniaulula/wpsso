@@ -29,8 +29,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'cm_custom_rows' => 2,		// $table_rows, $form
 				'cm_builtin_rows' => 2,		// $table_rows, $form
 				'taglist_og_rows' => 3,		// $table_rows, $form, $network
-				'taglist_schema_rows' => 3,	// $table_rows, $form, $network
+				'taglist_fb_rows' => 3,		// $table_rows, $form, $network
 				'taglist_twitter_rows' => 3,	// $table_rows, $form, $network
+				'taglist_schema_rows' => 3,	// $table_rows, $form, $network
 				'taglist_other_rows' => 3,	// $table_rows, $form, $network
 			), 20 );
 		}
@@ -484,17 +485,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_taglist_og_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->get_taglist_rows( $table_rows, $form, $network,
 				array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
-		public function filter_taglist_schema_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+		public function filter_taglist_fb_rows( $table_rows, $form, $network = false ) {
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta)_(itemprop)_(.+)$/' ) );
+				array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
 		public function filter_taglist_twitter_rows( $table_rows, $form, $network = false ) {
@@ -504,6 +507,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
+		public function filter_taglist_schema_rows( $table_rows, $form, $network = false ) {
+			if ( $this->p->debug->enabled )
+				$this->p->debug->mark();
+			return $this->get_taglist_rows( $table_rows, $form, $network,
+				array( '/^add_(meta)_(itemprop)_(.+)$/' ) );
+		}
+
 		public function filter_taglist_other_rows( $table_rows, $form, $network = false ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->mark();
@@ -511,14 +521,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}
 
-		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_array ) {
+		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_include ) {
 			$table_cells = array();
-			foreach ( $opt_preg_array as $preg ) {
+			foreach ( $opt_preg_include as $preg ) {
 				foreach ( $form->defaults as $opt => $val ) {
-					if ( strpos( $opt, 'add_' ) !== 0 ||			// optimize
-						isset( $this->taglist_opts[$opt] ) ||		// check cache for tags already shown
-							! preg_match( $preg, $opt, $match ) )	// check option name for a match
-								continue;
+
+					if ( strpos( $opt, 'add_' ) !== 0 ) {	// optimize
+						continue;
+					} elseif ( isset( $this->taglist_opts[$opt] ) ) {	// check cache for tags already shown
+						continue;
+					} elseif ( ! preg_match( $preg, $opt, $match ) ) {	// check option name for a match
+						continue;
+					}
+
 					$highlight = '';
 					$this->taglist_opts[$opt] = $val;
 					switch ( $opt ) {

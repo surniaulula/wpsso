@@ -67,13 +67,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				// add a query argument for this crawler and redirect to bust external caches
 				if ( empty( $_GET[$crawler_arg] ) || $_GET[$crawler_arg] !== $crawler_name ) {
 					wp_redirect( add_query_arg( $crawler_arg, $crawler_name, 
-						remove_query_arg( $crawler_arg ) ), 301 );	// hard / permanent redirect
+						remove_query_arg( $crawler_arg ) ) );	// 302 by default
 					exit;
 				}
 
 			// if not a custom crawler, then remove the query (if set) and redirect
 			} elseif ( isset( $_GET[$crawler_arg] ) ) {
-				wp_redirect( remove_query_arg( $crawler_arg ), 301 );	// hard / permanent redirect
+				wp_redirect( remove_query_arg( $crawler_arg ) );	// 302 by default
 				exit;
 			}
 

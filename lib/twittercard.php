@@ -148,11 +148,24 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						}
 
 						if ( ! empty( $mt_tc['twitter:card'] ) ) {
-							if ( ! empty( $video['og:video:width'] ) )
-								$mt_tc['twitter:player:width'] = $video['og:video:width'];
-	
-							if ( ! empty( $video['og:video:height'] ) )
-								$mt_tc['twitter:player:height'] = $video['og:video:height'];
+
+							foreach ( array(
+								'og:video:width' => 'twitter:player:width',
+								'og:video:height' => 'twitter:player:height',
+								'og:video:iphone_name' => 'twitter:app:name:iphone',
+								'og:video:iphone_id' => 'twitter:app:id:iphone',
+								'og:video:iphone_url' => 'twitter:app:url:iphone',
+								'og:video:ipad_name' => 'twitter:app:name:ipad',
+								'og:video:ipad_id' => 'twitter:app:id:ipad',
+								'og:video:ipad_url' => 'twitter:app:url:ipad',
+								'og:video:googleplay_name' => 'twitter:app:name:googleplay',
+								'og:video:googleplay_id' => 'twitter:app:id:googleplay',
+								'og:video:googleplay_url' => 'twitter:app:url:googleplay',
+							) as $og_key => $tc_key ) {
+								if ( ! empty( $video[$og_key] ) ) {
+									$mt_tc[$tc_key] = $video[$og_key];
+								}
+							}
 
 							// get the video preview image (if one is available)
 							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $video, 'og:image' );

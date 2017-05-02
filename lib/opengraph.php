@@ -536,18 +536,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_embed = $og_video;		// start with a copy of all meta tags
 
 						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
-							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) )
+							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
 								$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
-							else $og_embed['og:video:secure_url'] = '';	// just in case
+							} else {
+								$og_embed['og:video:secure_url'] = '';	// just in case
+							}
 						}
 
 						$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
 						$og_embed['og:video:type'] = 'text/html';
 
-						$og_extend[] = $og_video;	// add application/x-shockwave-flash first
-						$og_extend[] = $og_embed;	// add the new text/html video second
+						// add application/x-shockwave-flash first
+						$og_extend[] = $og_video;
 
-					} else $og_extend[] = $og_video;
+						// add the new text/html video second
+						// remove the facebook applink meta tags
+						$og_extend[] = SucomUtil::preg_grep_keys( '/^al:/', $og_embed, true );
+
+					} else {
+						$og_extend[] = $og_video;
+					}
 				}
 				return $og_extend;
 			} else return $og_ret;

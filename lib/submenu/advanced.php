@@ -67,10 +67,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title )
+			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ),
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
 						array(), $this->form, false ) );	// $network = false
+			}
 			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
 				'metabox-'.$metabox.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
@@ -79,16 +80,18 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		public function show_metabox_taglist() {
 			$metabox = 'taglist';
 			$tabs = apply_filters( $this->p->cf['lca'].'_advanced_'.$metabox.'_tabs', array(
+				'fb' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'og' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
-				'schema' => _x( 'Schema', 'metabox tab', 'wpsso' ),
 				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'schema' => _x( 'Schema', 'metabox tab', 'wpsso' ),
 				'other' => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title )
+			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ),
 					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
 						array(), $this->form, false ) );	// $network = false
+			}
 			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox ).'</td>' ),
 				'metabox-'.$metabox.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );

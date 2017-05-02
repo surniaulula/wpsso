@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.42.0',		// plugin version
-					'opt_version' => '518',		// increment when changing default options
+					'version' => '3.42.1-dev.1',		// plugin version
+					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -667,6 +667,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// facebook
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,
+					// facebook applink
+					'add_meta_property_al:ios:app_name' => 1,
+					'add_meta_property_al:ios:app_store_id' => 1,
+					'add_meta_property_al:ios:url' => 1,
+					'add_meta_property_al:android:app_name' => 1,
+					'add_meta_property_al:android:package' => 1,
+					'add_meta_property_al:android:url' => 1,
+					'add_meta_property_al:web:url' => 1,
+					'add_meta_property_al:web:should_fallback' => 1,
 					// open graph
 					'add_meta_property_og:altitude' => 1,
 					'add_meta_property_og:description' => 1,
@@ -767,6 +776,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:player:stream:content_type' => 1,
 					'add_meta_name_twitter:player:width' => 1,
 					'add_meta_name_twitter:player:height' => 1,
+					'add_meta_name_twitter:app:name:iphone' => 1,
+					'add_meta_name_twitter:app:id:iphone' => 1,
+					'add_meta_name_twitter:app:url:iphone' => 1,
+					'add_meta_name_twitter:app:name:ipad' => 1,
+					'add_meta_name_twitter:app:id:ipad' => 1,
+					'add_meta_name_twitter:app:url:ipad' => 1,
+					'add_meta_name_twitter:app:name:googleplay' => 1,
+					'add_meta_name_twitter:app:id:googleplay' => 1,
+					'add_meta_name_twitter:app:url:googleplay' => 1,
 					// schema
 					'add_meta_itemprop_url' => 1,
 					'add_meta_itemprop_name' => 1,

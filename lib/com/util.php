@@ -1068,6 +1068,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre.':video:has_image' => false,	// non-standard / internal meta tag
 				$mt_pre.':video:title' => '',		// non-standard / internal meta tag
 				$mt_pre.':video:description' => '',	// non-standard / internal meta tag
+
+				// used for Twitter player card meta tags
+				$mt_pre.':video:iphone_name' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:iphone_id' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:iphone_url' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:ipad_name' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:ipad_id' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:ipad_url' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_name' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_id' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_url' => '',	// non-standard / internal meta tag
+
+				// Facebook AppLink meta tags
+				'al:ios:app_name' => '',
+				'al:ios:app_store_id' => '',
+				'al:ios:url' => '',
+				'al:android:app_name' => '',
+				'al:android:package' => '',
+				'al:android:url' => '',
+				'al:web:url' => '',
+				'al:web:should_fallback' => 'true',
 			);
 		}
 
