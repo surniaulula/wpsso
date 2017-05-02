@@ -1461,9 +1461,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
 					global $wp_rewrite;
-					if ( ! $wp_rewrite->using_permalinks() )
+					if ( ! $wp_rewrite->using_permalinks() ) {
 						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
-					else {
+					} else {
 						if ( $mod['is_home_page'] ) {	// static home page (have post id)
 							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
 							$url = home_url( $base );
@@ -1473,8 +1473,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$url = user_trailingslashit( trailingslashit( $url ).
 							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
 					}
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'add paged query url = '.$url );
+					}
 				}
 			}
 
@@ -1484,8 +1485,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|'.
 					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i',
 						'$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'server request url = '.$url );
+				}
 			}
 
 			return apply_filters( $lca.'_'.$type.'_url', $url, $mod, $add_page, $src_id );

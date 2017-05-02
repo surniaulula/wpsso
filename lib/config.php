@@ -115,6 +115,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'event' => array(
 								'tribe_events' => '(plugin) The Events Calendar',
 							),
+							'form' => array(
+								'gravity-view' => '(plugin) Gravity View',
+							),
 							'forum' => array(
 								'bbpress' => '(plugin) bbPress',
 							),
