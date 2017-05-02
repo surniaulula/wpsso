@@ -533,7 +533,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_extend = array();
 				foreach ( $og_ret as $num => $og_video ) {
 					if ( ! empty( $og_video['og:video:embed_url'] ) ) {
-						$og_embed = $og_video;		// start with a copy of all meta tags
+
+						// start with a copy of all og meta tags (exclude applink meta tags)
+						$og_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_video );
 
 						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
 							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
@@ -550,8 +552,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_extend[] = $og_video;
 
 						// add the new text/html video second
-						// remove the facebook applink meta tags
-						$og_extend[] = SucomUtil::preg_grep_keys( '/^al:/', $og_embed, true );
+						$og_extend[] = $og_embed;
 
 					} else {
 						$og_extend[] = $og_video;

@@ -1052,33 +1052,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '';
 		}
 
-		public static function get_mt_prop_video( $mt_pre = 'og' ) {
+		public static function get_mt_prop_video() {
 			return array(
-				$mt_pre.':video:secure_url' => '',
-				$mt_pre.':video:url' => '',
-				//$mt_pre.':video' => '',		// not used - do not include
-				$mt_pre.':video:type' => 'application/x-shockwave-flash',
-				$mt_pre.':video:width' => '',
-				$mt_pre.':video:height' => '',
-				$mt_pre.':video:tag' => array(),
-				$mt_pre.':video:duration' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:upload_date' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:thumbnail_url' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:embed_url' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:has_image' => false,	// non-standard / internal meta tag
-				$mt_pre.':video:title' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:description' => '',	// non-standard / internal meta tag
+				'og:video:secure_url' => '',
+				'og:video:url' => '',
+				//'og:video' => '',			// not used - do not include
+				'og:video:type' => 'application/x-shockwave-flash',
+				'og:video:width' => '',
+				'og:video:height' => '',
+				'og:video:tag' => array(),
+				'og:video:duration' => '',		// non-standard / internal meta tag
+				'og:video:upload_date' => '',		// non-standard / internal meta tag
+				'og:video:thumbnail_url' => '',		// non-standard / internal meta tag
+				'og:video:embed_url' => '',		// non-standard / internal meta tag
+				'og:video:has_image' => false,		// non-standard / internal meta tag
+				'og:video:title' => '',			// non-standard / internal meta tag
+				'og:video:description' => '',		// non-standard / internal meta tag
 
 				// used for Twitter player card meta tags
-				$mt_pre.':video:iphone_name' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:iphone_id' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:iphone_url' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:ipad_name' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:ipad_id' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:ipad_url' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_name' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_id' => '',	// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_url' => '',	// non-standard / internal meta tag
+				'og:video:iphone_name' => '',		// non-standard / internal meta tag
+				'og:video:iphone_id' => '',		// non-standard / internal meta tag
+				'og:video:iphone_url' => '',		// non-standard / internal meta tag
+				'og:video:ipad_name' => '',		// non-standard / internal meta tag
+				'og:video:ipad_id' => '',		// non-standard / internal meta tag
+				'og:video:ipad_url' => '',		// non-standard / internal meta tag
+				'og:video:googleplay_name' => '',	// non-standard / internal meta tag
+				'og:video:googleplay_id' => '',		// non-standard / internal meta tag
+				'og:video:googleplay_url' => '',	// non-standard / internal meta tag
 
 				// Facebook AppLink meta tags
 				'al:ios:app_name' => '',
