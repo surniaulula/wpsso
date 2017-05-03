@@ -22,8 +22,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 			if ( is_admin() ) {
 				// cleanup incorrect Yoast SEO notifications
-				if ( SucomUtil::active_plugins( 'wordpress-seo/wp-seo.php' ) )
+				if ( function_exists( 'wpseo_init' ) ) {	// includes wpseo premium
 					add_action( 'admin_init', array( &$this, 'cleanup_wpseo_notifications' ), 15 );
+				}
 			} else {
 				// disable jetPack open graph meta tags
 				if ( SucomUtil::active_plugins( 'jetpack/jetpack.php' ) ) {
@@ -34,8 +35,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 				// disable Yoast SEO social meta tags
 				// execute after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
-				if ( SucomUtil::active_plugins( 'wordpress-seo/wp-seo.php' ) )
+				if ( function_exists( 'wpseo_init' ) ) {	// includes wpseo premium
 					add_action( 'template_redirect', array( &$this, 'cleanup_wpseo_filters' ), 9000 );
+				}
 
 				// honor the FORCE_SSL constant on the front-end with a 301 redirect
 				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
