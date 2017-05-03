@@ -358,7 +358,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* twitter:app:id:googleplay
 		* twitter:app:url:googleplay
 * *Bugfixes*
-	* None
+	* Replaced checks for Yoast SEO plugin slug by a function name check (to include Yoast SEO Premium).
 * *Developer Notes*
 	* None
 
