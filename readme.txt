@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.42.1-dev.1 (2017/05/02)**
+**Version 3.42.1-dev.2 (2017/05/03)**
 
 * *New Features*
 	* None
@@ -631,9 +631,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.42.1-dev.1 =
+= 3.42.1-dev.2 =
 
-(2017/05/02) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
+(2017/05/03) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
 
 = 3.42.0 =
 
