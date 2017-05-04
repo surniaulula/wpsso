@@ -564,38 +564,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
 					return 'code';
 					break;
-				// twitter-style usernames (prepend with an at)
-				case 'tc_site':
-					return 'at_name';
-					break;
-				// strip leading urls off facebook usernames
-				case 'fb_admins':
-					return 'url_base';
-					break;
-				/*
-				 * Must be a URL.
-				 *
-				 * Exceptions:
-				 *	'add_meta_property_og:image:secure_url' = 1
-				 *	'add_meta_property_og:video:secure_url' = 1
-				 *	'add_meta_itemprop_url' = 1
-				 *	'plugin_cf_img_url' = '_format_image_url'
-				 *	'plugin_cf_vid_url' = '_format_video_url'
-				 *	'plugin_cf_review_item_image_url' = ''
-				 */
-				case 'site_url':
-				case 'sharing_url':
-				case 'fb_page_url':
-				case 'og_img_url':
-				case 'og_vid_url':
-				case 'og_def_img_url':
-				case 'p_img_url':
-				case 'schema_logo_url':
-				case 'schema_banner_url':
-				case 'plugin_yourls_api_url':
-				case ( strpos( $key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
-					return 'url';
-					break;
 				// cast as integer (zero and -1 is ok)
 				case 'schema_img_max':
 				case 'og_img_max':
@@ -603,6 +571,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
+				case 'gv_id_title':
+				case 'gv_id_desc':
+				case 'gv_id_img_url':
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
 					return 'integer';
 					break;
@@ -681,6 +652,38 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
 					return 'not_blank';
+					break;
+				// twitter-style usernames (prepend with an at)
+				case 'tc_site':
+					return 'at_name';
+					break;
+				// strip leading urls off facebook usernames
+				case 'fb_admins':
+					return 'url_base';
+					break;
+				/*
+				 * Must be a URL.
+				 *
+				 * Exceptions:
+				 *	'add_meta_property_og:image:secure_url' = 1
+				 *	'add_meta_property_og:video:secure_url' = 1
+				 *	'add_meta_itemprop_url' = 1
+				 *	'plugin_cf_img_url' = '_format_image_url'
+				 *	'plugin_cf_vid_url' = '_format_video_url'
+				 *	'plugin_cf_review_item_image_url' = ''
+				 */
+				case 'site_url':
+				case 'sharing_url':
+				case 'fb_page_url':
+				case 'og_img_url':
+				case 'og_vid_url':
+				case 'og_def_img_url':
+				case 'p_img_url':
+				case 'schema_logo_url':
+				case 'schema_banner_url':
+				case 'plugin_yourls_api_url':
+				case ( strpos( $key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
+					return 'url';
 					break;
 				// css color code
 				case ( strpos( $key, '_color_' ) !== false ? true : false ):
