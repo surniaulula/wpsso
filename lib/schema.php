@@ -1002,7 +1002,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
 				$this->p->debug->log( 'adding organization markup for local business' );
 			}
 
@@ -1403,8 +1402,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled )
+
+			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single event data for '.$event_id );
+			}
 
 			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
