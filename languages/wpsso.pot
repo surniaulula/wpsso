@@ -179,7 +179,7 @@ msgstr ""
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:1010 lib/messages.php:1224
+#: lib/admin.php:1010 lib/messages.php:1232
 msgctxt "submit button"
 msgid "Check for Updates"
 msgstr ""
@@ -383,74 +383,74 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1759
+#: lib/admin.php:1764
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1772
+#: lib/admin.php:1777
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1779
+#: lib/admin.php:1784
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1788
+#: lib/admin.php:1793
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1794
+#: lib/admin.php:1799
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1797
+#: lib/admin.php:1802
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1812
+#: lib/admin.php:1817
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1817
+#: lib/admin.php:1822
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1825
+#: lib/admin.php:1830
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1833
+#: lib/admin.php:1838
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:1840
+#: lib/admin.php:1845
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:1848
+#: lib/admin.php:1853
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:1862
+#: lib/admin.php:1867
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2012
+#: lib/admin.php:2017
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2034
+#: lib/admin.php:2039
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -694,7 +694,8 @@ msgid "Excerpt Only"
 msgstr ""
 
 #: lib/config-gettext-extract.php:30 lib/messages.php:1018
-#: lib/messages.php:1181 lib/messages.php:1190 lib/messages.php:1200
+#: lib/messages.php:1181 lib/messages.php:1190 lib/messages.php:1198
+#: lib/messages.php:1208
 msgctxt "lib file description"
 msgid "Extension Plugins and Pro Licenses"
 msgstr ""
@@ -2925,143 +2926,150 @@ msgstr ""
 
 #: lib/messages.php:1193
 msgid ""
-"An Authentication ID has been provided for %1$s on the %2$s settings page, "
-"but the Pro version is not yet installed &mdash; don't forget to update the "
-"plugin to install the latest Pro version."
+"An Authentication ID has been provided for %1$s but the plugin has not been "
+"installed &mdash; you can install and activate the Pro version from the %2$s "
+"settings page."
 msgstr ""
 
-#: lib/messages.php:1203 lib/messages.php:1255
+#: lib/messages.php:1201
+msgid ""
+"An Authentication ID has been provided for %1$s on the %2$s settings page "
+"but the Pro version has not been installed &mdash; don't forget to update "
+"the current plugin to install the latest Pro version."
+msgstr ""
+
+#: lib/messages.php:1211 lib/messages.php:1263
 msgid "WordPress Plugins"
 msgstr ""
 
-#: lib/messages.php:1205
+#: lib/messages.php:1213
 msgid ""
 "At least one Authentication ID has been entered on the %1$s settings page,"
 "<br/>but the %2$s extension is not active."
 msgstr ""
 
-#: lib/messages.php:1205
+#: lib/messages.php:1213
 msgid ""
 "This Free plugin is required to update and enable the %1$s plugin and its "
 "Pro extensions."
 msgstr ""
 
-#: lib/messages.php:1208
+#: lib/messages.php:1216
 msgid "Install and activate the %1$s extension from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:1211
+#: lib/messages.php:1219
 msgid "The %1$s extension can be activated from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:1215
+#: lib/messages.php:1223
 msgid ""
 "Once the %s extension is active, one or more Pro version updates may be "
 "available for your licensed plugin(s)."
 msgstr ""
 
-#: lib/messages.php:1222
+#: lib/messages.php:1230
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:1224
+#: lib/messages.php:1232
 msgid ""
 "If an update for %1$s is not available under the WordPress Plugins page, "
 "please use the <em>%2$s</em> button on the %3$s settings page to force an "
 "immediate refresh of all %4$s update information."
 msgstr ""
 
-#: lib/messages.php:1224
+#: lib/messages.php:1232
 msgctxt "lib file description"
 msgid "Update Manager"
 msgstr ""
 
-#: lib/messages.php:1228 lib/register.php:198
+#: lib/messages.php:1236 lib/register.php:198
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
 "updates and features."
 msgstr ""
 
-#: lib/messages.php:1228
+#: lib/messages.php:1236
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:1242
+#: lib/messages.php:1250
 msgid ""
 "<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so "
 "you can license the Pro version immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:1244
+#: lib/messages.php:1252
 msgid ""
 "<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so "
 "you can update the Free plugin immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:1246
+#: lib/messages.php:1254
 msgid ""
 "<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees "
 "for support and updates."
 msgstr ""
 
-#: lib/messages.php:1246
+#: lib/messages.php:1254
 msgid "How great is that?"
 msgstr ""
 
-#: lib/messages.php:1253
+#: lib/messages.php:1261
 msgctxt "lib file description"
 msgid "Extension Plugins"
 msgstr ""
 
-#: lib/messages.php:1257
+#: lib/messages.php:1265
 msgid ""
 "<strong>Updating to the Pro version is easy as 1-2-3</strong> &mdash; after "
 "purchasing Pro license(s), you'll receive an email with all the details."
 msgstr ""
 
-#: lib/messages.php:1257
+#: lib/messages.php:1265
 msgid "Here's a quick summary to give you an idea."
 msgstr ""
 
-#: lib/messages.php:1259
+#: lib/messages.php:1267
 msgid ""
 "<strong>Install and activate</strong> the %1$s extension from the %2$s page."
 msgstr ""
 
-#: lib/messages.php:1260
+#: lib/messages.php:1268
 msgid ""
 "<strong>Enter the Authentication ID</strong> received by email in the %1$s "
 "page."
 msgstr ""
 
-#: lib/messages.php:1261
+#: lib/messages.php:1269
 msgid ""
 "<strong>Update to the Pro version</strong> by installing the %1$s update "
 "from the %2$s page."
 msgstr ""
 
-#: lib/messages.php:1266
+#: lib/messages.php:1274
 msgid ""
 "<strong>The continued development of %1$s is driven by user requests</"
 "strong> &mdash; we welcome all your comments and suggestions!"
 msgstr ""
 
-#: lib/messages.php:1270
+#: lib/messages.php:1278
 msgid ""
 "<strong>Great ratings are a terrific way to encourage plugin developers</"
 "strong> &mdash; and it only takes a minute (or less)."
 msgstr ""
 
-#: lib/messages.php:1270
+#: lib/messages.php:1278
 msgid "Please encourage us by rating the plugins you use."
 msgstr ""
 
-#: lib/messages.php:1283
+#: lib/messages.php:1291
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale with "
 "%s, etc., to define alternate option values for different languages."

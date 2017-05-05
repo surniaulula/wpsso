@@ -1190,7 +1190,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'Extension Plugins and Pro Licenses',
 								'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page, but the Pro version is not yet installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been provided for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
+						break;
+
+					case 'notice-pro-not-updated':
+						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Extension Plugins and Pro Licenses',
+								'lib file description', 'wpsso' ) );
+
+						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the current plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
 						break;
 
 					case 'notice-um-extension-required':

@@ -1661,8 +1661,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// found at least one plugin with an auth id
 					$have_ext_tid = true;
 					if ( ! self::$pkg[$ext]['pdir'] ) {
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
-							array( 'lca' => $ext ) ) );
+						if ( ! empty( $info['base'] ) && ! SucomUtil::installed_plugins( $info['base'] ) ) {
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
+								array( 'lca' => $ext ) ) );
+						} else {
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated',
+								array( 'lca' => $ext ) ) );
+						}
 					}
 				}
 			}
