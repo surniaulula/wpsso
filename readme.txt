@@ -107,16 +107,17 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 		* BuddyPress (including Group Forum Topics)
 		* Co-Authors Plus (including Guest Authors)
 		* Easy Digital Downloads
+		* Gravity Forms + GravityView
 		* HeadSpace2 SEO
-		* NextGEN Gallery
 		* MarketPress - WordPress eCommerce
+		* NextGEN Gallery
 		* Polylang
 		* rtMedia for WordPress, BuddyPress and bbPress
 		* The Events Calendar
 		* The SEO Framework
 		* WooCommerce (version 1, 2, and 3)
-		* WP eCommerce
 		* WordPress REST API (version 2)
+		* WP eCommerce
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 	* **WPSSO Pro Integrated Service APIs**
@@ -333,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.0-b.1 (2017/05/03)**
+**Version 3.43.0-b.2 (2017/05/05)**
 
 * *New Features*
 	* Added a GravityView integration module with support for Single Entry view URL, title, description, and post image (Pro version).
@@ -631,9 +632,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.43.0-b.1 =
+= 3.43.0-b.2 =
 
-(2017/05/03) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
+(2017/05/05) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
 
 = 3.42.0 =
 
