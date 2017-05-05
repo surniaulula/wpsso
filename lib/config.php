@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.42.1-dev.2',		// plugin version
+					'version' => '3.43.0-b.1',		// plugin version
 					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'tribe_events' => '(plugin) The Events Calendar',
 							),
 							'form' => array(
-								'gravityview' => '(plugin) Gravity View',
+								'gravityview' => '(plugin) GravityView',
 							),
 							'forum' => array(
 								'bbpress' => '(plugin) bbPress',

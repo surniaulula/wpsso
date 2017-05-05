@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_currency' => WPSSO_PROD_CURRENCY,
 					'gv_id_title' => 0,
 					'gv_id_desc' => 0,
-					'gv_id_img_url' => 0,
+					'gv_id_img' => 0,
 				);
 
 				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
@@ -814,18 +814,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				), get_class( $this ) );
 			}
 
+			$lca = $this->p->cf['lca'];
 			$meta_ret = array();
 
-			if ( empty( $mod['id'] ) )
+			if ( empty( $mod['id'] ) ) {
 				return $meta_ret;
+			}
 
 			// unless $md_pre is 'none' allways fallback to the 'og' custom meta
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
-				if ( $prefix === 'none' )	// special index keyword
+				if ( $prefix === 'none' ) {	// special index keyword
 					break;
-				elseif ( empty( $prefix ) )	// skip empty md_pre values
+				} elseif ( empty( $prefix ) ) {	// skip empty md_pre values
 					continue;
+				}
 
 				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
@@ -852,9 +855,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
+					}
 
 					$width = $this->get_options( $mod['id'], $prefix.'_img_url:width' );
 					$height = $this->get_options( $mod['id'], $prefix.'_img_url:height' );
@@ -871,11 +875,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-					$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
+					$this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
 						return $meta_ret;
+				}
 			}
 
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'] ) as $pid ) {
+			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
 
 				if ( $pid > 0 ) {	// quick sanity check
 
@@ -899,7 +904,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'] ) as $url ) {
+			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
+
 				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
 
 					if ( $this->p->debug->enabled )

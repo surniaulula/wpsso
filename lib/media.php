@@ -234,8 +234,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				rsort( $attach_ids, SORT_NUMERIC );
 
 				$attach_ids = array_unique( apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id ) );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
+				}
 
 				foreach ( $attach_ids as $pid ) {
 					list(
@@ -421,8 +422,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
 			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $lca.'_image_downsize',
 				array_pad( image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'image_downsize returned '.$img_url.' ('.$img_width.'x'.$img_height.')' );
+			}
 
 			if ( empty( $img_url ) ) {
 				if ( $this->p->debug->enabled )

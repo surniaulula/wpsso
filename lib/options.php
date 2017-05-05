@@ -564,6 +564,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
 					return 'code';
 					break;
+				case 'gv_id_title':
+				case 'gv_id_desc':
+				case 'gv_id_img':
+					return 'blank_int';
+					break;
 				// cast as integer (zero and -1 is ok)
 				case 'schema_img_max':
 				case 'og_img_max':
@@ -571,9 +576,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'plugin_content_img_max':
 				case 'plugin_content_vid_max':
-				case 'gv_id_title':
-				case 'gv_id_desc':
-				case 'gv_id_img_url':
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
 					return 'integer';
 					break;

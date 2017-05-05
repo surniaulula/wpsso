@@ -25,6 +25,17 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( function_exists( 'wpseo_init' ) ) {	// includes wpseo premium
 					add_action( 'admin_init', array( &$this, 'cleanup_wpseo_notifications' ), 15 );
 				}
+
+				if ( class_exists( 'GFForms' ) ) {
+					add_action( 'gform_noconflict_styles', array( $this, 'update_noconflict_styles' ) );
+					add_action( 'gform_noconflict_scripts', array( $this, 'update_noconflict_scripts' ) );
+				}
+
+				if ( class_exists( 'GravityView_Plugin' ) ) {
+					add_action( 'gravityview_noconflict_styles', array( $this, 'update_noconflict_styles' ) );
+					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_noconflict_scripts' ) );
+				}
+
 			} else {
 				// disable jetPack open graph meta tags
 				if ( SucomUtil::active_plugins( 'jetpack/jetpack.php' ) ) {
@@ -48,20 +59,26 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 		}
 
-		/*
-		 * Redirect from HTTP to HTTPS if the current webpage URL is
-		 * not HTTPS. A 301 redirect is considered a best practice when
-		 * moving from HTTP to HTTPS. See
-		 * https://en.wikipedia.org/wiki/HTTP_301 for more info.
-		 */
-		public static function force_ssl_redirect() {
-			// check for web server variables in case WP is being used from the command line
-			if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
-				if ( ! SucomUtil::is_https() ) {
-					wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
-					exit();
-				}
-			}
+		public function update_noconflict_styles( $styles ) {
+			return array_merge( $styles, array(
+				'jquery-ui.js',
+				'jquery-qtip.js',
+				'sucom-admin-page',
+				'sucom-settings-table',
+				'sucom-metabox-tabs',
+				'wp-color-picker',
+			) );
+		}
+
+		public function update_noconflict_scripts( $scripts ) {
+			return array_merge( $scripts, array(
+				'jquery-ui-datepicker',
+				'jquery-qtip',
+				'sucom-metabox',
+				'sucom-tooltips',
+				'wp-color-picker',
+				'sucom-admin-media',
+			) );
 		}
 
 		/*
@@ -143,6 +160,22 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filter' );
 			}
 			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 9000 );
+		}
+
+		/*
+		 * Redirect from HTTP to HTTPS if the current webpage URL is
+		 * not HTTPS. A 301 redirect is considered a best practice when
+		 * moving from HTTP to HTTPS. See
+		 * https://en.wikipedia.org/wiki/HTTP_301 for more info.
+		 */
+		public static function force_ssl_redirect() {
+			// check for web server variables in case WP is being used from the command line
+			if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
+				if ( ! SucomUtil::is_https() ) {
+					wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
+					exit();
+				}
+			}
 		}
 	}
 }

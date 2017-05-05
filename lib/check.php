@@ -64,6 +64,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'event-tribe_events':
 							$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
 							break;
+						case 'form-gravityforms':
+							$chk['class'] = 'GFForms';
+							break;
 						case 'form-gravityview':
 							$chk['class'] = 'GravityView_Plugin';
 							break;
