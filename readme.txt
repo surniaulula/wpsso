@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.0-b.3 (2017/05/05)**
+**Version 3.43.0-rc.1 (2017/05/06)**
 
 * *New Features*
 	* Added a GravityView integration module with support for Single Entry view URL, title, description, and post image (Pro version).
@@ -633,9 +633,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.43.0-b.3 =
+= 3.43.0-rc.1 =
 
-(2017/05/05) Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
+(2017/05/06) Added a GravityView integration module with support for Single Entry view URL, title, description, and post image (Pro version). Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
 
 = 3.42.0 =
 
