@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-05-05 16:15+0200\n"
-"PO-Revision-Date: 2017-05-05 16:15+0200\n"
+"PO-Revision-Date: 2017-05-06 08:44+0200\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1579,7 +1579,7 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 
 #: lib/gpl/social/buddypress.php:60 lib/pro/social/buddypress.php:98
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
-msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</ em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
+msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
 #: lib/media.php:314
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
