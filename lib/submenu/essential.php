@@ -32,10 +32,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				_x( 'Essential General Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_general' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_advanced',
-				_x( 'Optional Advanced Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
-
 			// issues a warning notice if the default image size is too small
 			// unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false
 			if ( SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) !== false )
@@ -45,13 +41,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		public function show_metabox_general() {
 			$metabox = $this->menu_id;
 			$key = 'general';
-			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-				$this->get_table_rows( $metabox, $key ), $this->form, false ), 'metabox-'.$metabox.'-'.$key );
-		}
-
-		public function show_metabox_advanced() {
-			$metabox = $this->menu_id;
-			$key = 'advanced';
 			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
 				$this->get_table_rows( $metabox, $key ), $this->form, false ), 'metabox-'.$metabox.'-'.$key );
 		}
@@ -130,6 +119,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						_x( 'Organization Logo Image URL', 'option label', 'wpsso' ).'</a>', null, 'schema_logo_url' ).
 					'<td>'.$this->form->get_input( 'schema_logo_url', 'wide' ).'</td>';
 
+					$table_rows['schema_banner_url'] = $this->form->get_th_html( _x( 'Organization Banner (600x60) URL',
+						'option label', 'wpsso' ), '', 'schema_banner_url' ).
+					'<td>'.$this->form->get_input( 'schema_banner_url', 'wide' ).'</td>';
+
 					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';
 
@@ -146,11 +139,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					break;
 
-				case 'essential-advanced':
-
-					$this->add_essential_advanced_table_rows( $table_rows, $this->form );
-
-					break;
 			}
 			return $table_rows;
 		}

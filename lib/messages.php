@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_banner_url':
-							$text = 'A URL for the website / organization\'s banner image &mdash; <em>measuring exactly 600x60px</em> &mdash; that Google can use as a banner for Articles.';
+							$text = 'A URL for the website / organization\'s banner image &mdash; <em>measuring exactly 600x60px</em> &mdash; that Google / Google News can use to display content from Schema Article webpages.';
 							break;
 
 						case 'tooltip-schema_img_max':
