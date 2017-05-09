@@ -725,6 +725,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
 
+				add_meta_box( $this->pagehook.'_about_free',
+					_x( 'About the Free Version', 'metabox title', 'wpsso' ),
+						array( &$this, 'show_metabox_about_free' ), $this->pagehook, 'side' );
+
 				add_meta_box( $this->pagehook.'_install_pro',
 					_x( 'Updating to Pro is Easy', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_install_pro' ), $this->pagehook, 'side' );
@@ -1217,37 +1221,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			else return $feature;
 		}
 
+		public function show_metabox_about_free() {
+			$lca = $this->p->cf['lca'];
+			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
+			echo '<div class="column-metabox-icon">';
+			echo $this->get_ext_img_icon( $lca );
+			echo '</div>';
+			echo '<div class="column-metabox-content">';
+			echo $this->p->msgs->get( 'column-about-free' );
+			echo '</div>';
+			echo '</td></tr></table>';
+		}
+
 		public function show_metabox_purchase_pro() {
 			$lca = $this->p->cf['lca'];
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
 				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
 			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
-
-			echo '<div class="column-metabox-icon">';
-			echo $this->get_ext_img_icon( $lca );
-			echo '</div>';
-
 			echo '<div class="column-metabox-content has-buttons">';
 			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '</div>';
-
 			echo '<div class="column-metabox-buttons">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
 				'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
-
 			echo '</td></tr></table>';
 		}
 
 		public function show_metabox_install_pro() {
 			$lca = $this->p->cf['lca'];
 			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
-
 			echo '<div class="column-metabox-content">';
 			echo $this->p->msgs->get( 'column-install-pro' );
 			echo '</div>';
-
 			echo '</td></tr></table>';
 		}
 
@@ -1304,13 +1311,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info['url']['review'] ) ) {
 
-					$rate_stars = '<a href="'.$info['url']['review'].'" target="_blank">'.
-						'<span class="wpsso-rate-stars"></span></a>';
-
+					$rate_stars = '<span class="wpsso-rate-stars"></span>';
 					$plugin_name = '<em>'.$info['name'].'</em>';
 
-					$links[] = sprintf( __( 'Rate %1$s stars the %2$s plugin.',
-						'wpsso' ), $rate_stars, $plugin_name );
+					$links[] = '<a href="'.$info['url']['review'].'" target="_blank">'.
+						sprintf( __( 'Rate %1$s the %2$s plugin.', 'wpsso' ),
+							$rate_stars, $plugin_name ).'</a>';
 				}
 
 				if ( ! empty( $links ) ) {

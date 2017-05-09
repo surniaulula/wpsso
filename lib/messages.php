@@ -1245,11 +1245,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
 				switch ( $idx ) {
+					case 'column-about-free':
+						$essential_menu_html = $this->p->util->get_admin_url( 'essential',
+							_x( 'Essential Settings', 'lib file description', 'wpsso' ) );
+						$text = '<p>'.sprintf( __( '<strong>The Free version of %1$s generates complete and accurate meta tags + Schema markup from your <em>existing</em> content <em>automatically</em></strong> &mdash; there\'s no need to manually update or keep track of meta tag values.', 'wpsso' ), $info['short'] ).'</p>';
+						$text .= '<p>'.__( 'The Pro version offers additional customization features, along with integration modules for 3rd party plugins and services.', 'wpsso' ).'</p>';
+						break;
+
 					case 'column-purchase-pro':
+						$text = '';
 						if ( $this->p->avail['*']['p_dir'] ) {
-							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
+							$text .= '<p>'.sprintf( __( '<strong>Purchase %s quick &amp; easy with PayPal</strong> and license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						} else {
-							$text = '<p>'.sprintf( __( '<strong>You can purchase %s quick &amp; easy with PayPal</strong> &mdash; so you can update the Free plugin immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
+							$text .= '<p>'.sprintf( __( '<strong>Purchase %s quick &amp; easy with PayPal</strong> and update the Free plugin immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						}
 						$text .= '<p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates.', 'wpsso' ).' '.__( 'How great is that?', 'wpsso' ).' :-)</p>';
 						break;
@@ -1257,16 +1265,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-install-pro':
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-							// use shorter version of menu label
-							_x( 'Extension Plugins', 'lib file description', 'wpsso' ) );
+							_x( 'Extension Plugins', 'lib file description', 'wpsso' ) );	// use shorter version of menu label
 						$plugins_html = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.
 							__( 'WordPress Plugins', 'wpsso' ).'</a>';
 
-						$text .= '<p>'.__( '<strong>Updating to the Pro version is easy as 1-2-3</strong> &mdash; after purchasing Pro license(s), you\'ll receive an email with all the details.', 'wpsso' ).' '.__( 'Here\'s a quick summary to give you an idea.', 'wpsso' ).' :-)</p>';
+						$text .= '<p>'.__( '<strong>Updating to Pro is easy as 123</strong> &mdash; after your purchase, you\'ll receive an email with all the installation details.', 'wpsso' ).' '.__( 'Here\'s a quick summary to give you an idea.', 'wpsso' ).' :-)</p>';
 						$text .= '<ol>';
 						$text .= '<li>'.sprintf( __( '<strong>Install and activate</strong> the %1$s extension from the %2$s page.', 'wpsso' ), $um_info['short'], $ext_menu_html ).'</li>';
-						$text .= '<li>'.sprintf( __( '<strong>Enter the Authentication ID</strong> received by email in the %1$s page.', 'wpsso' ), $ext_menu_html ).'</li>';
-						$text .= '<li>'.sprintf( __( '<strong>Update to the Pro version</strong> by installing the %1$s update from the %2$s page.', 'wpsso' ), $info['short_pro'], $plugins_html ).'</li>';
+						$text .= '<li>'.sprintf( __( '<strong>Enter the Authentication ID</strong> you received by email in the %1$s page.', 'wpsso' ), $ext_menu_html ).'</li>';
+						$text .= '<li>'.sprintf( __( '<strong>Update to %1$s</strong> by installing the Pro update from the %2$s page.', 'wpsso' ), $info['short_pro'], $plugins_html ).'</li>';
 						$text .= '</ol>';
 						break;
 
