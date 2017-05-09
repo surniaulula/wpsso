@@ -861,6 +861,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 
 			$filter_name = $this->p->cf['lca'].'_video_info';
+
 			$og_video = array_merge(
 				SucomUtil::get_mt_prop_video(),
 				SucomUtil::get_mt_prop_image(),
@@ -869,9 +870,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'og:video:height' => $embed_height,			// default height
 				)
 			);
+
 			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( 'og_video after filters', $og_video );
+			}
 
 			// sanitation of media
 			foreach ( array( 'og:video', 'og:image' ) as $prefix ) {

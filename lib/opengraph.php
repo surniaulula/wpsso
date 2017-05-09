@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( count( $og_ret ) < 1 && $this->p->util->force_default_video( $mod ) ) {
 
 				$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_diff, $check_dupes ) );
-			}else {
+			} else {
 				$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 				if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
@@ -559,7 +559,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 				return $og_extend;
-			} else return $og_ret;
+			} else {
+				return $og_ret;
+			}
 		}
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {
