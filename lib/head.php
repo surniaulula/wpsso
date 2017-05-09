@@ -423,11 +423,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			if ( apply_filters( $lca.'_add_meta_name_canonical', 
-				( empty( $this->p->options['add_meta_name_canonical'] ) ? false : true ) ) ) {
-				$mt_name['canonical'] = $this->p->util->get_canonical_url( $mod );
-			}
-
 			if ( apply_filters( $lca.'_add_meta_name_description',
 				( empty( $this->p->options['add_meta_name_description'] ) ? false : true ) ) ) {
 				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_len'],
@@ -452,6 +447,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 						$this->p->options['seo_author_field'] );
 				}
+			}
+
+			if ( apply_filters( $lca.'_add_link_rel_canonical', 
+				( empty( $this->p->options['add_link_rel_canonical'] ) ? false : true ) ) ) {
+				$link_rel['canonical'] = $this->p->util->get_canonical_url( $mod );
 			}
 
 			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {

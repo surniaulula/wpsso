@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 						}
 						foreach ( array(
-							'add_meta_name_canonical' => 0,
+							'add_link_rel_canonical' => 0,
 							'add_meta_name_description' => 0,
 						) as $idx => $def_val ) {
 							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );

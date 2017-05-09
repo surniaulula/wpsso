@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						case 'add_meta_name_generator':
 							continue 2;
 						// highlight important meta tags
-						case 'add_meta_name_canonical':
+						case 'add_link_rel_canonical':
 						case 'add_meta_name_description':
 							$highlight = ' highlight';
 							break;
