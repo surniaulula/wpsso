@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:626 lib/post.php:368 lib/term.php:268 lib/user.php:246
+#: lib/admin.php:626 lib/post.php:368 lib/term.php:268 lib/user.php:251
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2002,7 +2002,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:366 lib/messages.php:376 lib/post.php:526
-#: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:272
+#: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
@@ -3980,15 +3980,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:436
+#: lib/user.php:455
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:437
+#: lib/user.php:456
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:438
+#: lib/user.php:457
 msgid "Jabber / Google Talk"
 msgstr ""
 

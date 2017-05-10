@@ -1528,24 +1528,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $person_opts ) ) {	// $person_opts could be false or empty array
 
 				if ( empty( $user_id ) ) {
-					if ( $wpsso->debug->enabled )
+					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user_id' );
+					}
 					return 0;
 				} elseif ( empty( $wpsso->m['util']['user'] ) ) {
-					if ( $wpsso->debug->enabled )
+					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user module' );
+					}
 					return 0;
 				} else {
-					if ( $wpsso->debug->enabled )
+					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting user module for user_id '.$user_id );
+					}
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, 
+					array( 'schema_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
 				}
+
+				// remove shortcodes, strip html, etc.
+				$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
 
 				$user_sameas = array();
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {

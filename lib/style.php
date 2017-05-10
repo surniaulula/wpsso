@@ -211,9 +211,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					height:'.$sort_cols['og_img']['height'].';
 					min-height:'.$sort_cols['og_img']['height'].';
 					background-size:'.$sort_cols['og_img']['width'].' auto;
-					background-position:center center;
 					background-repeat:no-repeat;
-					background-position:center middle;
+					background-position:center center;
 					overflow:hidden;
 					margin:0;
 					padding:0;

@@ -1895,8 +1895,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr) for UTF8
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 
-			if ( $cleanup_html === true )
+			if ( $cleanup_html === true ) {
 				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
+			}
 
 			$charset = get_bloginfo( 'charset' );
 			$text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );

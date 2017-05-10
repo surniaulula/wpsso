@@ -60,8 +60,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				// exit here if not a user or profile page
 				$user_id = SucomUtil::get_request_value( 'user_id' );	// uses sanitize_text_field
-				if ( empty( $user_id ) )
+				if ( empty( $user_id ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: empty user_id' );
+					}
 					return;
+				}
 
 				// hooks for user and profile editing
 				add_action( 'edit_user_profile', array( &$this, 'show_metabox_section' ), 20 );
@@ -94,8 +98,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 
@@ -257,12 +262,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_metaboxes() {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$user_id = SucomUtil::get_user_object( false, 'id' );
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for user ID '.$user_id );
+				}
 				return;
 			}
 
@@ -275,20 +284,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function show_metabox_section( $user ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! current_user_can( 'edit_user', $user->ID ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: current user does not have edit privileges for user ID '.$user->ID );
+				}
 				return;
 			}
+
 			$lca = $this->p->cf['lca'];
+
 			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
 			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
 			echo '<div id="poststuff">'."\n";
+
 			do_meta_boxes( $lca.'-user', 'normal', $user );
+
 			echo "\n".'</div><!-- .poststuff -->'."\n";
 			echo '<!-- '.$lca.' user metabox section end -->'."\n";
 		}
 
 		public function show_metabox_social_settings( $user_obj ) {
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
