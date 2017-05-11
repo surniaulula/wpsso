@@ -472,8 +472,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_image_upload_input( $opt_prefix, $placeholder = '', $disabled = false ) {
+			$opt_suffix = '';
 			$select_lib = 'wp';
 			$media_libs = array( 'wp' => 'Media Library' );
+
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+				$opt_prefix = $matches[1];
+				$opt_suffix = $matches[2];
+			}
 
 			if ( $this->p->avail['media']['ngg'] === true ) {
 				$media_libs['ngg'] = 'NextGEN Gallery';
@@ -484,15 +490,50 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			return '<div class="img_upload">'.$this->get_input( $opt_prefix.'_id', 'short', '', 0, $placeholder, $disabled ).'&nbsp;in&nbsp;'.
-				$this->get_select( $opt_prefix.'_id_pre', $media_libs, '', '', true, $disabled, $select_lib ).'&nbsp;'.
-				( function_exists( 'wp_enqueue_media' ) ? $this->get_button( 'Select or Upload Image',
-					'sucom_image_upload_button button', $opt_prefix, '', false, $disabled ) : '' ).'</div>';
+			$input_id = $this->get_input( $opt_prefix.'_id'.$opt_suffix,
+				'short', '', 0, $placeholder, $disabled );
 
+			$select_lib = $this->get_select( $opt_prefix.'_id_pre'.$opt_suffix,
+				$media_libs, '', '', true, ( count( $media_libs ) <= 1 ? true : $disabled ),	// disable if only 1 media lib
+					$select_lib );
+
+			$button_ul = function_exists( 'wp_enqueue_media' ) ? 
+				$this->get_button( 'Select or Upload Image',
+					'sucom_image_upload_button button', $opt_prefix.$opt_suffix,	// css id used to set values and disable image url
+						'', false, $disabled ) : '';
+
+			return '<div class="img_upload">'.
+				$input_id.'&nbsp;in&nbsp;'.
+				$select_lib.'&nbsp;'.
+				$button_ul.
+				'</div>';
 		}
 
 		public function get_no_image_upload_input( $opt_prefix, $placeholder = '' ) {
 			return $this->get_image_upload_input( $opt_prefix, $placeholder, true );
+		}
+
+		public function get_image_url_input( $opt_prefix, $url = '' ) {
+			$opt_suffix = '';
+
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+				$opt_prefix = $matches[1];
+				$opt_suffix = $matches[2];
+			}
+
+			// disable if we have a custom image id
+			$disabled = empty( $this->options[$opt_prefix.'_id'.$opt_suffix] ) ? false : true;
+
+			return $this->get_input( $opt_prefix.'_url'.$opt_suffix,
+				'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
+		}
+
+		public function get_video_url_input( $opt_prefix, $url = '' ) {
+			// disable if we have a custom video embed
+			$disabled = empty( $this->options[$opt_prefix.'_embed'] ) ? false : true;
+
+			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0,
+				SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_image_dimensions_input( $name, $use_opts = false, $narrow = false, $disabled = false ) {
@@ -556,22 +597,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 			return;
-		}
-
-		public function get_image_url_input( $opt_prefix, $url = '' ) {
-			// disable if we have a custom image id
-			$disabled = empty( $this->options[$opt_prefix.'_id'] ) ? false : true;
-
-			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0,
-				SucomUtil::esc_url_encode( $url ), $disabled );
-		}
-
-		public function get_video_url_input( $opt_prefix, $url = '' ) {
-			// disable if we have a custom video embed
-			$disabled = empty( $this->options[$opt_prefix.'_embed'] ) ? false : true;
-
-			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0,
-				SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_copy_input( $value, $class = 'wide', $id = '' ) {

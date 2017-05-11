@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.43.1',		// plugin version
+					'version' => '3.43.2-dev.1',		// plugin version
 					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',

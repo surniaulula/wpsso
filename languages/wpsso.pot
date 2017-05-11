@@ -2,7 +2,8 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.1\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2-"
+"dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -482,7 +483,7 @@ msgid ""
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:247 lib/util.php:469
+#: lib/com/cache.php:247 lib/util.php:471
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -2043,7 +2044,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:371 lib/util.php:1817
+#: lib/messages.php:371 lib/util.php:1824
 msgid "No options available."
 msgstr ""
 
@@ -3289,7 +3290,7 @@ msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:479
+#: lib/pro/ecom/woocommerce.php:476
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
@@ -3992,131 +3993,131 @@ msgstr ""
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/util.php:352
+#: lib/util.php:354
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:356
+#: lib/util.php:358
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:379
+#: lib/util.php:381
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:455
+#: lib/util.php:457
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:528
+#: lib/util.php:530
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:564
+#: lib/util.php:567
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:566
+#: lib/util.php:569
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:568
+#: lib/util.php:571
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:570
+#: lib/util.php:573
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:572
+#: lib/util.php:575
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:574
+#: lib/util.php:577
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:576
+#: lib/util.php:579
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:578
+#: lib/util.php:581
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:580
+#: lib/util.php:583
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:582
+#: lib/util.php:585
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:584
+#: lib/util.php:587
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:809
+#: lib/util.php:812
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:816
+#: lib/util.php:819
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:841
+#: lib/util.php:844
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:878
+#: lib/util.php:881
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1843
+#: lib/util.php:1850
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1847
+#: lib/util.php:1854
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1850
+#: lib/util.php:1857
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1854
+#: lib/util.php:1861
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

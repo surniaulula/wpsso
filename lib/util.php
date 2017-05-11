@@ -111,8 +111,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function image_editor_save_pre_image_sizes( $image, $post_id = false ) {
-			if ( empty( $post_id ) )
+			if ( empty( $post_id ) ) {
 				return $image;
+			}
 
 			$mod = $this->p->m['util']['post']->get_mod( $post_id );
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
@@ -292,8 +293,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_force_regen_key( $mod, $md_pre ) {
 			$lca = $this->p->cf['lca'];
 
-			if ( is_numeric( $mod ) && $mod > 0 )	// optimize by skipping get_page_mod()
+			if ( is_numeric( $mod ) && $mod > 0 ) {	// optimize by skipping get_page_mod()
 				return 'post_'.$mod.'_regen_'.$md_pre;
+			}
 
 			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
@@ -537,9 +539,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $cache_exp > 0 ) {
 				set_transient( $cache_id, $topics, $cache_exp );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'article topics saved to transient '.
 						$cache_id.' ('.$cache_exp.' seconds)');
+				}
 			}
 
 			return $topics;
@@ -1067,15 +1070,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( isset( $atts['url'] ) )
+			if ( isset( $atts['url'] ) ) {
 				$sharing_url = $atts['url'];
-			else $sharing_url = $this->get_sharing_url( $mod, 
-				( isset( $atts['add_page'] ) ? $atts['add_page'] : true ),
-				( isset( $atts['src_id'] ) ? $atts['src_id'] : '' ) );
+			} else {
+				$sharing_url = $this->get_sharing_url( $mod, 
+					( isset( $atts['add_page'] ) ? $atts['add_page'] : true ),
+					( isset( $atts['src_id'] ) ? $atts['src_id'] : '' ) );
+			}
 
-			if ( is_admin() )
+			if ( is_admin() ) {
 				$request_url = $sharing_url;
-			else $request_url = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+			} else {
+				$request_url = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+			}
 
 			$short_url = empty( $atts['short_url'] ) ?
 				apply_filters( $this->p->cf['lca'].'_shorten_url', 
