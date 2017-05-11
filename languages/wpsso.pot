@@ -796,7 +796,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:49
 msgctxt "option value"
-msgid "MySpace Business Page URL"
+msgid "Myspace Business Page URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:50
@@ -3963,21 +3963,6 @@ msgstr ""
 #: lib/submenu/general.php:408
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
-msgstr ""
-
-#: lib/submenu/general.php:416
-msgctxt "option label"
-msgid "Instagram Business URL"
-msgstr ""
-
-#: lib/submenu/general.php:421
-msgctxt "option label"
-msgid "LinkedIn Company Page URL"
-msgstr ""
-
-#: lib/submenu/general.php:426
-msgctxt "option label"
-msgid "MySpace Business Page URL"
 msgstr ""
 
 #: lib/submenu/setup.php:38

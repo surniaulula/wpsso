@@ -413,20 +413,26 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-other':
 
-					$table_rows['instgram_publisher_url'] = $this->form->get_th_html( _x( 'Instagram Business URL',
-						'option label', 'wpsso' ), '', 'instgram_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'instgram_publisher_url',
-						$this->p->options ), 'wide' ).'</td>';
+					$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts',
+						$this->p->cf['form']['social_accounts'] );
 
-					$table_rows['linkedin_publisher_url'] = $this->form->get_th_html( _x( 'LinkedIn Company Page URL',
-						'option label', 'wpsso' ), '', 'linkedin_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'linkedin_publisher_url',
-						$this->p->options ), 'wide' ).'</td>';
+					asort( $social_accounts );	// sort by label and maintain key association
 
-					$table_rows['myspace_publisher_url'] = $this->form->get_th_html( _x( 'MySpace Business Page URL',
-						'option label', 'wpsso' ), '', 'myspace_publisher_url', array( 'is_locale' => true ) ).
-					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'myspace_publisher_url',
-						$this->p->options ), 'wide' ).'</td>';
+					foreach ( $social_accounts as $key => $label ) {
+						// skip options shown in previous tabs
+						switch ( $key ) {
+							case 'fb_publisher_url':
+							case 'seo_publisher_url':
+							case 'p_publisher_url':
+							case 'tc_site':
+								continue 2;
+						}
+
+						$table_rows[$key] = $this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
+							'nowrap', $key, array( 'is_locale' => true ) ).
+						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key, $this->p->options ),
+							( strpos( $key, '_url' ) ? 'wide' : '' ) ).'</td>';
+					}
 
 					break;
 			}

@@ -46,7 +46,7 @@ _x( 'Left', 'option value', 'wpsso' );
 _x( 'Limited Availability', 'option value', 'wpsso' );
 _x( 'LinkedIn Company Page URL', 'option value', 'wpsso' );
 _x( 'Monday', 'option value', 'wpsso' );
-_x( 'MySpace Business Page URL', 'option value', 'wpsso' );
+_x( 'Myspace Business Page URL', 'option value', 'wpsso' );
 _x( 'New activation', 'option value', 'wpsso' );
 _x( 'New', 'option value', 'wpsso' );
 _x( 'Nickname', 'option value', 'wpsso' );
