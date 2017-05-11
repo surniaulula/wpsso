@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.1-dev.1 (TBD)**
+**Version 3.43.1 (2017/05/11)**
 
 * *New Features*
 	* None
@@ -643,6 +643,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed and moved the SucomException class from lib/com/exception.php to WpssoException in lib/exception.php.
 
 == Upgrade Notice ==
+
+= 3.43.1 =
+
+(2017/05/11) Added removal of HTML tags from the author / user description value in the Schema Person markup.
 
 = 3.43.0 =
 
