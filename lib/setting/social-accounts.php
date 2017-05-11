@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 					asort( $social_accounts );	// sort by label and maintain key association
 					foreach ( $social_accounts as $key => $label ) {
 						$table_rows[$key] = $this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
-							null, $key, array( 'is_locale' => true ) ).
+							'nowrap', $key, array( 'is_locale' => true ) ).
 						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key, $this->p->options ),
 							( strpos( $key, '_url' ) ? 'wide' : '' ) ).'</td>';
 					}
