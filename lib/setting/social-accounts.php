@@ -58,6 +58,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 					$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts',
 						$this->p->cf['form']['social_accounts'] );
 					asort( $social_accounts );	// sort by label and maintain key association
+
 					foreach ( $social_accounts as $key => $label ) {
 						$table_rows[$key] = $this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
 							'nowrap', $key, array( 'is_locale' => true ) ).
