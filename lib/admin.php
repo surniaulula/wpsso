@@ -721,13 +721,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! self::$pkg[$lca]['aop'] ) {
 
+				add_meta_box( $this->pagehook.'_about_free',
+					_x( 'About the Free Version', 'metabox title', 'wpsso' ),
+						array( &$this, 'show_metabox_about_free' ), $this->pagehook, 'side_top' );
+
 				add_meta_box( $this->pagehook.'_purchase_pro',
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
-
-				add_meta_box( $this->pagehook.'_about_free',
-					_x( 'About the Free Version', 'metabox title', 'wpsso' ),
-						array( &$this, 'show_metabox_about_free' ), $this->pagehook, 'side' );
 
 				add_meta_box( $this->pagehook.'_install_pro',
 					_x( 'Updating to Pro is Easy', 'metabox title', 'wpsso' ),
@@ -768,6 +768,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
 				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
 
+				do_meta_boxes( $this->pagehook, 'side_top', null );
 				do_meta_boxes( $this->pagehook, 'side_fixed', null );
 				do_meta_boxes( $this->pagehook, 'side', null );
 

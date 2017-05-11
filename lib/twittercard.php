@@ -119,21 +119,27 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						// check for embed or text/html video URL
 						if ( ! empty( $video['og:video:embed_url'] ) ) {
 							$embed_url = $video['og:video:embed_url'];
-							if ( $this->p->debug->enabled )
+
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: embed url = '.$embed_url );
+							}
 						} elseif ( isset( $video['og:video:type'] ) &&
 							$video['og:video:type'] === 'text/html' ) {
+
 							$embed_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: text/html url = '.$embed_url );
+							}
 						}
 
 						// check for a video/mp4 stream URL
 						if ( isset( $video['og:video:type'] ) &&
 							$video['og:video:type'] === 'video/mp4' ) {
+
 							$stream_url = SucomUtil::get_mt_media_url( $video, 'og:video' );
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: video/mp4 url = '.$embed_url );
+							}
 						}
 
 						if ( ! empty( $embed_url ) ) {

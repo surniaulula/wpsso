@@ -1175,12 +1175,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$place_id = $org_opts['org_place_id'];
 				} else {
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'overriding org_place_id '.$org_opts['org_place_id'].
-							' with plm_addr_id '.$place_id );
+						$wpsso->debug->log( 'overriding org_place_id '.
+							$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
 					}
 				}
 
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
+				if ( ! self::add_single_place_data( $ret['location'],
+					$mod, $place_id, false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
@@ -1432,13 +1433,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'endDate' => 'event_end_date',
 			) );
 
-			if ( ! empty( $event_opts['event_organizer_person_id'] ) ) {	// example: tribe_organizer-0
+			if ( ! empty( $event_opts['event_organizer_person_id'] ) &&
+				$event_opts['event_organizer_person_id'] !== none ) {	// example: tribe_organizer-0
+
 				if ( ! self::add_single_person_data( $ret['organizer'],
-					$mod, $event_opts['event_organizer_person_id'], false ) ) 	// $list_element = false
+					$mod, $event_opts['event_organizer_person_id'], false ) ) { 	// $list_element = false
 					unset( $ret['organizer'] );	// prevent null assignment
+				}
 			}
 
-			if ( ! empty( $event_opts['event_place_id'] ) ) {	// example: tribe_venue-0
+			if ( ! empty( $event_opts['event_place_id'] ) &&
+				$event_opts['event_place_id'] !== 'none' ) {	// example: tribe_venue-0
+
 				if ( ! self::add_single_place_data( $ret['location'],
 					$mod, $event_opts['event_place_id'], false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment

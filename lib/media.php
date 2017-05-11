@@ -890,14 +890,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					// define the og:video:secure_url meta tag if possible
-					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) )
+					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
 						$og_video['og:video:secure_url'] = strpos( $embed_url, 'https:' ) === 0 ? $embed_url : '';
+					}
 
 					$media_url = $og_video['og:video:url'] = $embed_url;
 
 					if ( preg_match( '/\.mp4(\?.*)?$/', $media_url ) ) {	// check for video/mp4
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'setting og:video:type = video/mp4' );
+						}
 						$og_video['og:video:type'] = 'video/mp4';
 					}
 				}
@@ -907,8 +909,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				// remove all meta tags if there's no media URL or media is a duplicate
 				if ( ! $have_media[$prefix] ||
 					( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'	
-					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v )
+					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v ) {
 						unset ( $og_video[$k] );
+					}
 
 				// if the media is an image, then check and add missing sizes
 				} elseif ( $prefix === 'og:image' ) {
@@ -917,21 +920,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						// add correct image sizes for the image URL using getimagesize()
 						$this->p->util->add_image_url_size( 'og:image', $og_video );
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'fetched video image url size: '.
 								$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
+						}
 
-					} elseif ( $this->p->debug->enabled )
+					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'video image width / height values: '.
 							$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
+					}
 				}
 			}
 
 			// if there's no video or preview image, then return an empty array
-			if ( ! $have_media['og:video'] &&
-				! $have_media['og:image'] )
-					return array();
-			else return $og_video;
+			if ( ! $have_media['og:video'] && ! $have_media['og:image'] ) {
+				return array();
+			} else {
+				return $og_video;
+			}
 		}
 
 		// $img_name cam be an image ID or URL

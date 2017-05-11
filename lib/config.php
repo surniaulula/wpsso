@@ -14,15 +14,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca' => 'wpsso',		// lowercase acronym
+			'lca' => 'wpsso',			// lowercase acronym
 			'readme_cache_exp' => DAY_IN_SECONDS,	// 1 day
 			'setup_cache_exp' => DAY_IN_SECONDS,	// 1 day
-			'install_hosts' => array(	// allow extensions to be installed from these hosts
+			'install_hosts' => array(		// allow extensions to be installed from these hosts
 				'https://wpsso.com/extend/plugins/',
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.43.1-dev.1',		// plugin version
+					'version' => '3.43.1',		// plugin version
 					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
