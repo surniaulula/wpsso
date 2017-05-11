@@ -75,6 +75,7 @@ _x( 'Saturday', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );
 _x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' );
 _x( 'Sold Out', 'option value', 'wpsso' );
+_x( 'SoundCloud Business URL', 'option value', 'wpsso' );
 _x( 'SSO Desc', 'column header', 'wpsso' );
 _x( 'SSO Img', 'column header', 'wpsso' );
 _x( 'SSO', 'menu label', 'wpsso' );
@@ -87,6 +88,7 @@ _x( 'Title and Excerpt', 'option value', 'wpsso' );
 _x( 'Title Only', 'option value', 'wpsso' );
 _x( 'Top', 'option value', 'wpsso' );
 _x( 'Tuesday', 'option value', 'wpsso' );
+_x( 'Tumblr Business Page URL', 'option value', 'wpsso' );
 _x( 'Twitter Business @username', 'option value', 'wpsso' );
 _x( 'Used', 'option value', 'wpsso' );
 _x( 'User Profile Contact Methods', 'lib file description', 'wpsso' );
@@ -108,4 +110,5 @@ _x( 'WPSSO extension to remove outdated / incomplete Schema Microdata, leaving t
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your Social Settings', 'lib file description', 'wpsso' );
+_x( 'YouTube Business Channel URL', 'option value', 'wpsso' );
 ?>

@@ -1284,8 +1284,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
 					'myspace_publisher_url' => 'MySpace Business Page URL',
 					'p_publisher_url' => 'Pinterest Company Page URL',
+					'sc_publisher_url' => 'SoundCloud Business URL',
 					'seo_publisher_url' => 'Google+ Business Page URL',
 					'tc_site' => 'Twitter Business @username',
+					'tumblr_publisher_url' => 'Tumblr Business Page URL',
+					'yt_publisher_url' => 'YouTube Business Channel URL',
 				),
 				// https://schema.org/ItemAvailability
 				'item_availability' => array(
