@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.2-dev.1 (TBD)**
+**Version 3.43.2-dev.1 (2017/05/12)**
 
 * *New Features*
 	* None
@@ -346,7 +346,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Updated the image selection functions to support numeric multi-option names.
 
 **Version 3.43.1 (2017/05/11)**
 
@@ -426,6 +426,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.43.2-dev.1 =
+
+(2017/05/12) Updated the image selection functions to support numeric multi-option names.
 
 = 3.43.1 =
 
