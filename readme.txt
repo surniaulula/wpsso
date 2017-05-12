@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.2-dev.1 (2017/05/12)**
+**Version 3.43.2-dev.2 (2017/05/12)**
 
 * *New Features*
 	* None
@@ -347,6 +347,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Updated the image selection functions to support numeric multi-option names.
+	* Added an extra check for a non-variation product type when reading product variations for WooCommerce (Pro version).
 
 **Version 3.43.1 (2017/05/11)**
 
@@ -427,9 +428,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.43.2-dev.1 =
+= 3.43.2-dev.2 =
 
-(2017/05/12) Updated the image selection functions to support numeric multi-option names.
+(2017/05/12) Updated the image selection functions to support numeric multi-option names. Added an extra check for a non-variation product type when reading product variations for WooCommerce (Pro version).
 
 = 3.43.1 =
 
