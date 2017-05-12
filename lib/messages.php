@@ -224,8 +224,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Priority Media' settings
 						 */
 						case 'tooltip-og_img_dimensions':
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting defaults for og_img (width, height, crop)' );
+							}
 							$def_dimensions = $this->p->opt->get_defaults( 'og_img_width' ).'x'.
 								$this->p->opt->get_defaults( 'og_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
@@ -234,11 +235,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-og_def_img_id':
-							$text = 'An image ID and media library for your default / fallback website image. The default image ID will be used for index / archive pages, and as a fallback for Posts / Pages that do not have a suitable image featured, attached, or in their content.';
+							$text = __( 'An image ID and media library selection for your default / fallback website image.', 'wpsso' ).' '.__( 'The default image ID is used for index / archive pages, and as a fallback for Posts / Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 							break;
 
 						case 'tooltip-og_def_img_url':
-							$text = 'You can enter a default image URL (including the http:// prefix) instead of choosing a default image ID &mdash; if a default image ID is specified, the default image URL option is disabled. The default image URL option allows you to <strong>use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>. The image should be at least '.$this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'].' or more in width and height. The default image ID or URL is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.';
+							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, the image URL option is disabled.', 'wpsso' ).' '.__( '<strong>The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image</strong>.', 'wpsso' ).' '.sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'] ).' '.__( 'The default image ID or URL is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 							break;
 
 						case 'tooltip-og_def_img_on_index':
