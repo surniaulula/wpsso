@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-05-12 09:07-0400\n"
-"PO-Revision-Date: 2017-05-12 09:07-0400\n"
+"POT-Creation-Date: 2017-05-13 09:45-0400\n"
+"PO-Revision-Date: 2017-05-13 09:45-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1460,8 +1460,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr "Description pour la carte Twitter"
 
-#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:193
-#: lib/meta.php:211 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
+#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:195
+#: lib/meta.php:213 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
@@ -1589,7 +1589,7 @@ msgid "and currency"
 msgstr "et devise"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:121 lib/meta.php:190 lib/post.php:570
+#: lib/gpl/admin/post.php:121 lib/meta.php:192 lib/post.php:570
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1603,23 +1603,23 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/media.php:314
+#: lib/media.php:318
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:697
+#: lib/media.php:707
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:955 lib/pro/util/checkimgdims.php:68
+#: lib/media.php:999 lib/pro/util/checkimgdims.php:68
 msgid "Media Library"
 msgstr "la Bibliothèque de Médias"
 
-#: lib/media.php:1011
+#: lib/media.php:1055
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1030
+#: lib/media.php:1074
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -1881,7 +1881,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:372 lib/util.php:1824
+#: lib/messages.php:372 lib/util.php:1842
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2627,92 +2627,92 @@ msgctxt "metabox tab"
 msgid "Select Media"
 msgstr "Choisir Média"
 
-#: lib/meta.php:175
+#: lib/meta.php:177
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr "Dimensions de l'image plus petites<br/>que le minimum suggéré<br/>de %s"
 
-#: lib/meta.php:181
+#: lib/meta.php:183
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr "Dimensions de l'image inconnu<br/>ou non-disponible"
 
-#: lib/meta.php:185
+#: lib/meta.php:187
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr "Aucune image Open Graph trouvé"
 
-#: lib/meta.php:197 lib/meta.php:215
+#: lib/meta.php:199 lib/meta.php:217
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr "URL raccourcie"
 
-#: lib/meta.php:220
+#: lib/meta.php:222
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr "Example Open Graph"
 
-#: lib/meta.php:334
+#: lib/meta.php:336
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:336
+#: lib/meta.php:338
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:340
+#: lib/meta.php:342
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:342
+#: lib/meta.php:344
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider données structurées"
 
-#: lib/meta.php:346
+#: lib/meta.php:348
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:348
+#: lib/meta.php:350
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:352
+#: lib/meta.php:354
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:354
+#: lib/meta.php:356
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:358
+#: lib/meta.php:360
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr "Validateur W3C de balises"
 
-#: lib/meta.php:360
+#: lib/meta.php:362
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr "Valider les balises HTML"
 
-#: lib/meta.php:365
+#: lib/meta.php:367
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr "Le validateur AMP"
 
-#: lib/meta.php:367
+#: lib/meta.php:369
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/meta.php:576
+#: lib/meta.php:578
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
@@ -2758,7 +2758,7 @@ msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:526
+#: lib/options.php:527
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
@@ -2782,7 +2782,7 @@ msgstr "Le champ de description SEO est désactivé (la balise description est d
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/pro/ecom/woocommerce.php:476
+#: lib/pro/ecom/woocommerce.php:495
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
@@ -3081,7 +3081,7 @@ msgstr "Information de Version"
 
 #: lib/submenu/dashboard.php:47
 msgctxt "metabox title"
-msgid "Free / Basic Features"
+msgid "Free / Core Features"
 msgstr "Fonctionnalités de Base"
 
 #: lib/submenu/dashboard.php:48
@@ -3547,22 +3547,22 @@ msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de b
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1850
+#: lib/util.php:1868
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1854
+#: lib/util.php:1872
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1857
+#: lib/util.php:1875
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1861
+#: lib/util.php:1879
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
