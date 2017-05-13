@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2-"
-"dev.2\n"
+"dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1535,8 +1535,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:193
-#: lib/meta.php:211 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
+#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:195
+#: lib/meta.php:213 lib/pro/admin/meta.php:90 lib/pro/admin/post.php:106
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1662,7 +1662,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:190 lib/post.php:570
+#: lib/gpl/admin/post.php:121 lib/meta.php:192 lib/post.php:570
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -1681,28 +1681,28 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/media.php:314
+#: lib/media.php:318
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:697
+#: lib/media.php:707
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:955 lib/pro/util/checkimgdims.php:68
+#: lib/media.php:999 lib/pro/util/checkimgdims.php:68
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1011
+#: lib/media.php:1055
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1030
+#: lib/media.php:1074
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2075,7 +2075,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:372 lib/util.php:1824
+#: lib/messages.php:372 lib/util.php:1842
 msgid "No options available."
 msgstr ""
 
@@ -3150,92 +3150,92 @@ msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:175
+#: lib/meta.php:177
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:181
+#: lib/meta.php:183
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:185
+#: lib/meta.php:187
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:197 lib/meta.php:215
+#: lib/meta.php:199 lib/meta.php:217
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:220
+#: lib/meta.php:222
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:334
+#: lib/meta.php:336
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:336
+#: lib/meta.php:338
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:340
+#: lib/meta.php:342
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:342
+#: lib/meta.php:344
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:346
+#: lib/meta.php:348
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:348
+#: lib/meta.php:350
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:352
+#: lib/meta.php:354
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:354
+#: lib/meta.php:356
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:358
+#: lib/meta.php:360
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:360
+#: lib/meta.php:362
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:365
+#: lib/meta.php:367
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:367
+#: lib/meta.php:369
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:576
+#: lib/meta.php:578
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3292,7 +3292,7 @@ msgid ""
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:526
+#: lib/options.php:527
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -3640,7 +3640,7 @@ msgstr ""
 
 #: lib/submenu/dashboard.php:47
 msgctxt "metabox title"
-msgid "Free / Basic Features"
+msgid "Free / Core Features"
 msgstr ""
 
 #: lib/submenu/dashboard.php:48
@@ -4133,22 +4133,22 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1850
+#: lib/util.php:1868
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1854
+#: lib/util.php:1872
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1857
+#: lib/util.php:1875
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1861
+#: lib/util.php:1879
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -1131,22 +1131,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// use a reference to modify the $options array directly
-		// $keys can be a single key name or an array of key names
-		public function add_image_url_size( $keys, array &$opts ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
+		// $opt_keys can be a single key name or an array of key names
+		public function add_image_url_size( $opt_keys, array &$opts ) {
 
-			if ( ! is_array( $keys ) )
-				$keys = array( $keys );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! is_array( $opt_keys ) ) {
+				$opt_keys = array( $opt_keys );
+			}
 
 			$lca = $this->p->cf['lca'];
 			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size',
 				$this->p->options['plugin_imgsize_cache_exp'] );
 
-			foreach ( $keys as $prefix ) {
+			foreach ( $opt_keys as $opt_prefix ) {
 
-				$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
+				$opt_suffix = '';
+
+				// example: place_addr_image_url_1
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+					$opt_prefix = $matches[1];
+					$opt_suffix = $matches[2];
+				}
+
+				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
 
 				if ( ! $disabled && ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
 
@@ -1195,12 +1206,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 
-					list( $opts[$prefix.':width'], $opts[$prefix.':height'], $image_type, $image_attr ) = $image_info;
+					list(
+						$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
+						$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
+						$image_type,
+						$image_attr
+					) = $image_info;
 
 				} else {
-					foreach ( array( 'width', 'height' ) as $attr )
-						if ( isset( $opts[$prefix.':'.$attr] ) )
-							$opts[$prefix.':'.$attr] = WPSSO_UNDEF_INT;
+					foreach ( array( 'width', 'height' ) as $attr ) {
+						if ( isset( $opts[$opt_prefix.':'.$attr.$opt_suffix] ) ) {
+							$opts[$opt_prefix.':'.$attr.$opt_suffix] = WPSSO_UNDEF_INT;
+						}
+					}
 				}
 			}
 

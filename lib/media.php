@@ -58,8 +58,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		// $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		public function add_image_tag( $html, $id, $alt, $title, $align, $size ) {
-			if ( strpos( $html, ' data-wp-pid=' ) === false )
+			if ( strpos( $html, ' data-wp-pid=' ) === false ) {
 				$html = preg_replace( '/ *\/?'.'>/', ' data-wp-pid="'.$id.'"$0', $html );
+			}
 			return $html;
 		}
 
@@ -205,7 +206,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
 				$this->p->debug->log_args( array(
 					'num' => $num,
 					'size_name' => $size_name,
@@ -266,11 +266,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public static function get_image_src_info( $idx = false ) {
-			if ( $idx !== false )
-				if ( isset( self::$image_src_info[$idx] ) )
+			if ( $idx !== false ) {
+				if ( isset( self::$image_src_info[$idx] ) ) {
 					return self::$image_src_info[$idx];
-				else return null;
-			else return self::$image_src_info;
+				} else {
+					return null;
+				}
+			} else {
+				return self::$image_src_info;
+			}
 		}
 
 		// by default, return an empty image array
@@ -301,12 +305,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_height = WPSSO_UNDEF_INT;
 			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;	// get_size_info() returns false, true, or an array
 
-			if ( $this->p->avail['media']['ngg'] === true && strpos( $pid, 'ngg-' ) === 0 ) {
+			if ( $this->p->avail['media']['ngg'] && strpos( $pid, 'ngg-' ) === 0 ) {
 
-				if ( ! empty( $this->p->m['media']['ngg'] ) )
+				if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid,
 						$size_name, $check_dupes ) );
-				else {
+				} else {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' );
 
@@ -468,22 +472,26 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_ret = array();
 			$og_image = SucomUtil::get_mt_prop_image();
 
-			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key )
+			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
 					'' : $this->p->options['og_def_img_'.$key];
+			}
 
 			if ( empty( $img['id'] ) && empty( $img['url'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no default image defined' );
+				}
 				return $og_ret;
 			}
 
 			if ( ! empty( $img['id'] ) ) {
+
 				$img['id'] = $img['id_pre'] === 'ngg' ?
 					'ngg-'.$img['id'] : $img['id'];
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using default image pid: '.$img['id'] );
+				}
 
 				list(
 					$og_image['og:image'],
@@ -494,11 +502,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) = $this->get_attachment_image_src( $img['id'], $size_name, $check_dupes, $force_regen );
 			}
 
-			if ( empty( $og_image['og:image'] ) &&
-				! empty( $img['url'] ) ) {
+			if ( empty( $og_image['og:image'] ) && ! empty( $img['url'] ) ) {
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using default image url: '.$img['url'] );
+				}
 
 				$og_image = array(
 					'og:image' => $img['url'],
@@ -508,8 +516,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( ! empty( $og_image['og:image'] ) &&
-				$this->p->util->push_max( $og_ret, $og_image, $num ) )
-					return $og_ret;
+				$this->p->util->push_max( $og_ret, $og_image, $num ) ) {
+				return $og_ret;
+			}
 
 			return $og_ret;
 		}
@@ -639,8 +648,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( $this->p->avail['media']['ngg'] === true &&
 								! empty( $this->p->m['media']['ngg'] ) &&
 									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
-										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) )
-											break;	// stop here
+										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) ) {
+								break;	// stop here
+							}
 
 							// recognize gravatar images in the content
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/',
@@ -719,6 +729,40 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->debug->enabled )
 				$this->p->debug->log( 'no matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
 			return $og_ret;
+		}
+
+		public function get_opts_image( $opts, $size_name, $check_dupes = true, $force_regen = false, $opt_pre = 'og', $mt_pre = 'og' ) {
+
+			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
+				$img[$key] = empty( $opts[$opt_pre.'_img_'.$key] ) ?
+					'' : $opts[$opt_pre.'_img_'.$key];
+			}
+
+			$mt_image = array();
+
+			if ( ! empty( $img['id'] ) ) {
+
+				$img['id'] = $img['id_pre'] === 'ngg' ?
+					'ngg-'.$img['id'] : $img['id'];
+
+				list( 
+					$mt_image[$mt_pre.':image'],
+					$mt_image[$mt_pre.':image:width'],
+					$mt_image[$mt_pre.':image:height'],
+					$mt_image[$mt_pre.':image:cropped'],
+					$mt_image[$mt_pre.':image:id']
+				) = $this->get_attachment_image_src( $img['id'], $size_name, $check_dupes, $force_regen );
+			}
+
+			if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $img['url'] ) ) {
+				$mt_image = array(
+					$mt_pre.':image' => $img['url'],
+					$mt_pre.':image:width' => ( $img['url:width'] > 0 ? $img['url:width'] : WPSSO_UNDEF_INT ),
+					$mt_pre.':image:height' => ( $img['url:height'] > 0 ? $img['url:height'] : WPSSO_UNDEF_INT ),
+				);
+			}
+
+			return $mt_image;
 		}
 
 		public function get_default_video( $num = 0, $check_dupes = true ) {

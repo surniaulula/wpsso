@@ -160,11 +160,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
 
 			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
-					! empty( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;
+				! empty( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ?
+					true : false;
 
 			$is_sufficient = ( $have_sizes === true && 
 				$head_info['og:image:width'] >= $prev_width && 
-				$head_info['og:image:height'] >= $prev_height ) ? true : false;
+					$head_info['og:image:height'] >= $prev_height ) ?
+						true : false;
 
 			if ( ! empty( $media_url ) ) {
 				if ( $have_sizes === true ) {
@@ -650,7 +652,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Renumber multi options (example: recipe ingredients and instructions).
+			 * Re-number multi options (example: recipe ingredients and instructions).
 			 */
 			foreach ( $this->p->cf['opt']['md_multi'] as $md_multi => $is_multi ) {
 				$md_renum = array();	// start with a fresh array
@@ -770,11 +772,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$value = false;
 			$force_regen = $this->p->util->is_force_regen( $mod, 'og' );	// false by default
 
-			if ( isset( $head_info['og:image:id'] ) && 
-				$head_info['og:image:id'] > 0 ) {
+			if ( ! empty( $head_info['og:image:id'] ) ) {
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting thumbnail for image id '.$head_info['og:image:id'] );
+				}
 
 				list(
 					$og_img_thumb['og:image'],
@@ -783,8 +785,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$og_img_thumb['og:image:cropped'],
 					$og_img_thumb['og:image:id']
 				) = $this->p->media->get_attachment_image_src( $head_info['og:image:id'], 'thumbnail', false, $force_regen );
-				if ( ! empty( $og_img_thumb['og:image'] ) )	// just in case
+
+				if ( ! empty( $og_img_thumb['og:image'] ) ) {	// just in case
 					$head_info =& $og_img_thumb;
+				}
 			}
 
 			$refresh_cache = $force_regen ? '?force_regen='.time() : '';
@@ -815,10 +819,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$meta_ret = array();
+			$mt_ret = array();
 
 			if ( empty( $mod['id'] ) ) {
-				return $meta_ret;
+				return $mt_ret;
 			}
 
 			// unless $md_pre is 'none' allways fallback to the 'og' custom meta
@@ -830,7 +834,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					continue;
 				}
 
-				$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
+				// get an empty image meta tag array
+				$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 				// get the image id, library prefix, and/or url values
 				$pid = $this->get_options( $mod['id'], $prefix.'_img_id' );
@@ -838,22 +843,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$url = $this->get_options( $mod['id'], $prefix.'_img_url' );
 
 				if ( $pid > 0 ) {
-					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
 
-					if ( $this->p->debug->enabled )
+					$pid = $pre === 'ngg' ?
+						'ngg-'.$pid : $pid;
+
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
 							get_class( $this ) );	// log extended class name
+					}
 
 					list( 
-						$meta_image[$mt_pre.':image'],
-						$meta_image[$mt_pre.':image:width'],
-						$meta_image[$mt_pre.':image:height'],
-						$meta_image[$mt_pre.':image:cropped'],
-						$meta_image[$mt_pre.':image:id']
+						$mt_image[$mt_pre.':image'],
+						$mt_image[$mt_pre.':image:width'],
+						$mt_image[$mt_pre.':image:height'],
+						$mt_image[$mt_pre.':image:cropped'],
+						$mt_image[$mt_pre.':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $meta_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
+				if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
@@ -863,20 +871,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$width = $this->get_options( $mod['id'], $prefix.'_img_url:width' );
 					$height = $this->get_options( $mod['id'], $prefix.'_img_url:height' );
 
-					list(
-						$meta_image[$mt_pre.':image'],
-						$meta_image[$mt_pre.':image:width'],
-						$meta_image[$mt_pre.':image:height']
-					) = array(
-						$url,
-						( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
-						( $height > 0 ? $height : WPSSO_UNDEF_INT )
+					$mt_image = array(
+						$mt_pre.':image' => $url,
+						$mt_pre.':image:width' => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
+						$mt_pre.':image:height' => ( $height > 0 ? $height : WPSSO_UNDEF_INT ),
 					);
 				}
 
-				if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-					$this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
-						return $meta_ret;
+				if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
+					$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+						return $mt_ret;
 				}
 			}
 
@@ -888,19 +892,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'adding image pid: '.$pid );
 					}
 
-					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
+					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 					list( 
-						$meta_image[$mt_pre.':image'],
-						$meta_image[$mt_pre.':image:width'],
-						$meta_image[$mt_pre.':image:height'],
-						$meta_image[$mt_pre.':image:cropped'],
-						$meta_image[$mt_pre.':image:id']
+						$mt_image[$mt_pre.':image'],
+						$mt_image[$mt_pre.':image:width'],
+						$mt_image[$mt_pre.':image:height'],
+						$mt_image[$mt_pre.':image:cropped'],
+						$mt_image[$mt_pre.':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-						$this->p->util->push_max( $meta_ret, $meta_image, $num ) )
-							return $meta_ret;
+					if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
+						$this->p->util->push_max( $mt_ret, $mt_image, $num ) )
+							return $mt_ret;
 				}
 			}
 
@@ -911,18 +915,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'adding image url: '.$url );
 
-					$meta_image = SucomUtil::get_mt_prop_image( $mt_pre );
-					$meta_image[$mt_pre.':image'] = $url;
-					$this->p->util->add_image_url_size( $mt_pre.':image', $meta_image );
+					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
+					$mt_image[$mt_pre.':image'] = $url;
+					$this->p->util->add_image_url_size( $mt_pre.':image', $mt_image );
 
-					if ( ! empty( $meta_image[$mt_pre.':image'] ) &&
-						$this->p->util->push_max( $meta_ret, $meta_image, $num ) ) {
-						return $meta_ret;
+					if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
+						$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+						return $mt_ret;
 					}
 				}
 			}
 
-			return $meta_ret;
+			return $mt_ret;
 		}
 
 		public function get_og_video( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {

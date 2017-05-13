@@ -17,8 +17,10 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( is_admin() ) {
 				// cleanup incorrect Yoast SEO notifications

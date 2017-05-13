@@ -1008,16 +1008,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// all local businesses are also organizations
 			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
+			// Google requires a local business to have an image
+			if ( isset( $ret['logo'] ) && empty( $ret['image'] ) ) {
+				$ret['image'][] = $ret['logo'];
+			}
+
 			// promote all location information up
 			if ( isset( $ret['location'] ) ) {
 				self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
 					array_keys( $ret['location'] ), false );	// $overwrite = false
 				unset( $ret['location'] );
-			}
-
-			// Google requires a local business to have an image
-			if ( isset( $ret['logo'] ) && empty( $ret['image'] ) ) {
-				$ret['image'][] = $ret['logo'];
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -1253,6 +1253,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
+			$size_name = $wpsso->cf['lca'].'-schema';
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single place data for '.$place_id );
@@ -1382,6 +1383,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'target' => $url,
 						);
 					}
+				}
+			}
+
+			/*
+			 * Image
+			 */
+			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
+				$mt_image = $wpsso->media->get_opts_image( $place_opts, $size_name, true, false, 'place', 'og' );
+				if ( ! self::add_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element = true
+					unset( $ret['image'] );	// prevent null assignment
 				}
 			}
 
@@ -1717,10 +1728,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			foreach ( array( 'width', 'height' ) as $prop )
-				if ( isset( $opts[$prefix.':'.$prop] ) &&
-					$opts[$prefix.':'.$prop] > 0 ) {	// just in case
-				$ret[$prop] = $opts[$prefix.':'.$prop];
+			foreach ( array( 'width', 'height' ) as $prop ) {
+				if ( isset( $opts[$prefix.':'.$prop] ) && $opts[$prefix.':'.$prop] > 0 ) {	// just in case
+					$ret[$prop] = $opts[$prefix.':'.$prop];
+				}
 			}
 
 			if ( empty( $list_element ) ) {
