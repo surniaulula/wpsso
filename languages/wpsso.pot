@@ -2,8 +2,7 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2-"
-"dev.3\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -615,7 +614,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:12
 msgctxt "lib file description"
-msgid "<color>Plugin Setup Guide and Notes</color>"
+msgid "<color>Plugin Setup Guide and Other Notes</color>"
 msgstr ""
 
 #: lib/config-gettext-extract.php:13

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.43.2-dev.3',		// plugin version
+					'version' => '3.43.2',		// plugin version
 					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WordPress Social Sharing Optimization (WPSSO)',
@@ -70,17 +70,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'contact-fields' => 'User Profile Contact Methods',
 						),
 						'submenu' => array (	// lib file descriptions will be translated
-							'dashboard' => 'Plugin Dashboard',
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
+							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
 							'licenses' => 'Extension Plugins and Pro Licenses',
-							'setup' => '<color>Plugin Setup Guide and Notes</color>',
+							'dashboard' => 'Plugin Dashboard',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
+							'sitesetup' => '<color>Plugin Setup Guide and Other Notes</color>',
 							'sitelicenses' => 'Extension Plugins and Pro Licenses',
-							'sitesetup' => '<color>Plugin Setup Guide and Notes</color>',
 						),
 						'gpl' => array(
 							'admin' => array(

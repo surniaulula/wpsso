@@ -9,7 +9,7 @@ _x( 'Beta and Up', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
 _x( 'Bottom', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
-_x( '<color>Plugin Setup Guide and Notes</color>', 'lib file description', 'wpsso' );
+_x( '<color>Plugin Setup Guide and Other Notes</color>', 'lib file description', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );
 _x( '(default)', 'option value', 'wpsso' );
 _x( 'Development and Up', 'option value', 'wpsso' );
