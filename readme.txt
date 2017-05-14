@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.43.2-dev.3 (2017/05/13)**
+**Version 3.43.2 (2017/05/14)**
 
 * *New Features*
 	* None
@@ -428,9 +428,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.43.2-dev.3 =
+= 3.43.2 =
 
-(2017/05/13) Updated the SucomForm image selection / upload methods to support numeric multi-option names. Added an extra check for a non-variation product type when reading product variations for WooCommerce (Pro version).
+(2017/05/14) Updated the SucomForm image selection / upload methods to support numeric multi-option names. Added an extra check for a non-variation product type when reading product variations for WooCommerce (Pro version).
 
 = 3.43.1 =
 

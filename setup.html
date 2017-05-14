@@ -152,32 +152,29 @@ Pinterest/
 
 <dd><p>Website developers / designers will probably want to consider a few additional settings...</p>
 
-<ul>
-	<!-- Apply WordPress Content Filters -->
-	<li>If your site uses shortcodes, you'll want to enable the "Apply WordPress Content Filters" option to expand shortcodes in the content for description text and/or image meta tags (the content can be searched for images).</li>
+<!-- Apply WordPress Content Filters -->
+<p>If your site uses shortcodes, you'll want to enable the "Apply WordPress Content Filters" option to expand shortcodes in the content for description text and/or image meta tags (the content can be searched for images).</p>
 
-	<!-- WPSSO_HIDE_ALL_WARNINGS -->
-	<li>WPSSO may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</li>
+<!-- WPSSO_HIDE_ALL_WARNINGS -->
+<p>WPSSO may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p>
 
-	<!-- Show SSO Img / Desc Columns -->
-	<li>Users can hide / unhide the "SSO Img" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</li>
+<!-- Show SSO Img / Desc Columns -->
+<p>Users can hide / unhide the "SSO Img" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
 
-	<!-- Custom Field Names -->
-	<li>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the <strong>SSO &gt; Advanced &gt; Social Settings</strong> tab.</li>
+<!-- Custom Field Names -->
+<p>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field names (aka post meta names) under the <strong>SSO &gt; Advanced &gt; Social Settings</strong> tab.</p>
 
-	<!-- Check for Duplicate Meta Tags -->
-	<li>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</li>
+<!-- Check for Duplicate Meta Tags -->
+<p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p>
 
-	<!-- head Attributes Filter Hook -->
-	<li>WPSSO modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</li>
+<!-- head Attributes Filter Hook -->
+<p>WPSSO modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p>
 
-	<!-- WPSSO_IMAGE_UPSCALE_TEST -->
-	<li>You can <em>simulate / test</em> the WPSSO image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</li>
+<!-- WPSSO_IMAGE_UPSCALE_TEST -->
+<p>You can <em>simulate</em> the WPSSO image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</p>
 
-	<!-- WPSSO Schema JSON-LD -->
-	<li>WPSSO creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/" target="_blank">WPSSO Schema JSON-LD</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</li>
-
-</ul>
+<!-- WPSSO Schema JSON-LD -->
+<p>WPSSO creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/" target="_blank">WPSSO Schema JSON-LD</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p>
 
 </dd>
 
