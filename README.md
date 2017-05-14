@@ -1,4 +1,4 @@
-<h1>WPSSO</h1><h3>Automatically Generate Meta Tags + Schema for Social Sharing Optimization &amp; SEO</h3>
+<h1>WPSSO</h1><h3>The Most Advanced Plugin for Social Meta Tags and Schema Markup</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
