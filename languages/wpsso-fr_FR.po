@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.2\n"
+"Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.43.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-05-14 09:21-0400\n"
-"PO-Revision-Date: 2017-05-14 09:21-0400\n"
+"POT-Creation-Date: 2017-05-15 12:39-0400\n"
+"PO-Revision-Date: 2017-05-15 12:39-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2782,7 +2782,7 @@ msgstr "Le champ de description SEO est désactivé (la balise description est d
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/pro/ecom/woocommerce.php:495
+#: lib/pro/ecom/woocommerce.php:500
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
@@ -2922,11 +2922,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:1147
+#: lib/schema.php:1150
 msgid "The \"%1$s\" Organization Logo Image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:1150
+#: lib/schema.php:1153
 msgid "The \"%1$s\" Organization Banner (600x60) is missing and required for the Schema %2$s markup."
 msgstr "Le bannière (600x60) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
