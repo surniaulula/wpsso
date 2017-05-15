@@ -188,8 +188,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $type_id ) ) {	// if no custom schema type, then use the default settings
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using plugin settings to determine schema type' );
+				}
 
 				if ( $mod['is_home'] ) {	// static or index page
 					if ( $mod['is_home_page'] ) {
@@ -203,6 +204,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( $this->p->debug->enabled )
 							$this->p->debug->log( 'using schema type id '.$type_id.' for home index' );
 					}
+
 				} elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
@@ -290,6 +292,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function &get_schema_types_array( $flatten = true ) {
 
 			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
+
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__;
 				$cache_id = $lca.'_'.md5( $cache_salt );

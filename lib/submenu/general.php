@@ -331,13 +331,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					) as $type_name => $type_label ) {
 						$table_rows['schema_type_for_'.$type_name] = '<tr class="hide_in_basic">'.
 						$this->form->get_th_html( $type_label, '', 'schema_type_for_'.$type_name ).
-						'<td>'.$this->form->get_select( 'schema_type_for_'.$type_name, $schema_types, 'long_name' ).'</td>';
+						'<td>'.$this->form->get_select( 'schema_type_for_'.$type_name, $schema_types, 'schema_type' ).'</td>';
 					}
 
 					$schema_by_ptn = '';
 					foreach ( $this->p->util->get_post_types() as $post_type ) {
 						$schema_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$post_type->name,
-							$schema_types, 'long_name' ).' for '.$post_type->label.'</p>'."\n";
+							$schema_types, 'schema_type' ).' for '.$post_type->label.'</p>'."\n";
 					}
 
 					$table_rows['schema_type_for_ptn'] = '<tr class="hide_in_basic">'.

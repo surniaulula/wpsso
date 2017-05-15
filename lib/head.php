@@ -250,20 +250,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$meta_value = 'none';
 				switch ( $col_idx ) {
 		 			case 'schema_type':
-						if ( isset( $head_info['schema:type:id'] ) )
+						if ( isset( $head_info['schema:type:id'] ) ) {
 							$meta_value = $head_info['schema:type:id'];
+						}
 						break;
 					case 'og_img':
-						if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) )
+						if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) {
 							$meta_value = $og_img;
+						}
 						break;
 					case 'og_desc':
-						if ( isset( $head_info['og:description'] ) )
+						if ( isset( $head_info['og:description'] ) ) {
 							$meta_value = $head_info['og:description'];
+						}
 						break;
 				}
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'sortable meta for '.$mod['name'].' id '.$mod['id'].' '.$col_idx.' = '.$meta_value );
+				}
 				$mod['obj']->update_sortable_meta( $mod['id'], $col_idx, $meta_value );
 			}
 
