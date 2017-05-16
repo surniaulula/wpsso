@@ -1,5 +1,5 @@
 === WPSSO - Advanced and Easy Plugin for Social Meta Tags + Schema Markup and Knowledge Graph ===
-Plugin Name: WPSSO (WordPress Social Sharing Optimization)
+Plugin Name: WPSSO (Social Sharing Optimization)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
@@ -15,6 +15,8 @@ Stable Tag: 3.43.3
 Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
 
 == Description ==
+
+<img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
