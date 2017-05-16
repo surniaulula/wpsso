@@ -1090,8 +1090,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:108
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide updates for the WPSSO (WordPress Social Sharing "
-"Optimization) Pro plugin and its Pro extensions."
+"WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro "
+"extensions."
 msgstr ""
 
 #: lib/config-gettext-extract.php:109
