@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: meta tags, schema markup, open graph, video seo, local seo, twitter card, embed video, woocommerce, bbpress, budddypress, social sharing, knowledge graph
 Contributors: jsmoriss
 Requires At Least: 3.7
-Tested Up To: 4.7.4
+Tested Up To: 4.7.5
 Stable Tag: 3.43.3
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
