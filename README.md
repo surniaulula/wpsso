@@ -1,7 +1,7 @@
 <h1>WPSSO</h1><h3>Advanced and Easy Plugin for Social Meta Tags + Schema Markup and Knowledge Graph</h3>
 
 <table>
-<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WordPress Social Sharing Optimization (WPSSO)</td></tr>
+<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.43.3</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
@@ -176,11 +176,11 @@
 
 <h4>Social Profiles for Google Search</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>.</p>
+<p>WPSSO includes support for <a href="https://developers.google.com/structured-data/customize/social-profiles">author (Person) and publisher (Organization) social profiles</a>, <a href="https://developers.google.com/structured-data/customize/logos">publisher (Organization) logo</a>, and <a href="https://developers.google.com/structured-data/site-name">WebSite site name</a> in Schema JSON-LD format for Google Search and their <em>Knowledge Graph</em>.</p>
 
 <h4>User Profile Social Contacts</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the field names, label, and add / remove the following contacts on user profile pages and <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
+<p>WPSSO Pro allows you to customize the field names, label, and add / remove the following contacts on user profile pages and <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> guest author profiles:</p>
 
 <ul>
 <li>AIM</li>
@@ -202,35 +202,35 @@
 
 <h4>Complete Social Meta Tags</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses <em>existing</em> content to generate meta tags + Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.</p>
+<p>WPSSO adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses <em>existing</em> content to generate meta tags + Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
 <h4>3rd Party Integration (Pro version)</h4>
 
 <p><strong>Images and Videos</strong></p>
 
-<p>WordPress Social Sharing Optimization (WPSSO) detects and uses all images - associated or included in your content - including the WordPress image gallery and <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a> shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a> albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).</p>
+<p>WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a> shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for <a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a> albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).</p>
 
 <p><strong>Enhanced SEO</strong></p>
 
-<p>WordPress Social Sharing Optimization (WPSSO) Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
+<p>WPSSO Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
 
 <p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png"></p>
 
 <p><strong>eCommerce Products</strong></p>
 
-<p>WordPress Social Sharing Optimization (WPSSO) Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
+<p>WPSSO Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a>, and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
 
 <p><strong>Forums and Social</strong></p>
 
-<p>WordPress Social Sharing Optimization (WPSSO) Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
+<p>WPSSO Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
 
 <h4>Proven Performance</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) is <em>fast and coded for performance</em>, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features. WPSSO requires PHP v5.2.0 or better, and is fully compatible with PHP v7.</p>
+<p>WPSSO is <em>fast and coded for performance</em>, making full use of all available caching techniques (persistent / non-persistent object and disk caching). WPSSO loads only the library files and object classes it needs, keeping it small, fast, and yet still able to support a wide range of 3rd party integration features. WPSSO requires PHP v5.2.0 or better, and is fully compatible with PHP v7.</p>
 
 <h4>Professional Support</h4>
 
-<p>WordPress Social Sharing Optimization (WPSSO) support and development is on-going. You can review the <a href="https://wpsso.com/docs/plugins/wpsso/faqs/">FAQ</a> and <a href="https://wpsso.com/docs/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
+<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/docs/plugins/wpsso/faqs/">FAQ</a> and <a href="https://wpsso.com/docs/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
 
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
 
