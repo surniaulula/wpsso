@@ -665,7 +665,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_crop_y' => 'center',
 					// enable/disable head html tags
 					'add_link_rel_author' => 1,
-					'add_link_rel_canonical' => 1,
+					'add_link_rel_canonical' => 0,
 					'add_link_rel_publisher' => 1,
 					'add_link_rel_shortlink' => 1,
 					// facebook

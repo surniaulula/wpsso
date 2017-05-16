@@ -537,14 +537,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$highlight = '';
 					$this->taglist_opts[$opt] = $val;
 					switch ( $opt ) {
-						// disable with a constant instead
+						// disabled with a constant instead
 						case 'add_meta_name_generator':
 							continue 2;
-						// highlight important meta tags
-						case 'add_link_rel_canonical':
-						case 'add_meta_name_description':
-							$highlight = ' highlight';
-							break;
 					}
 					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
 						'<td class="checkbox blank">'.$this->get_nocb( $form, $opt ).'</td>'.
