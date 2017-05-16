@@ -1,4 +1,4 @@
-=== WPSSO - The Most Advanced Plugin for Social Sharing Meta Tags, Schema Markup + Knowledge Graph ===
+=== WPSSO - The Most Advanced Plugin for Social Meta Tags, Schema Markup and Knowledge Graph ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -12,21 +12,21 @@ Requires At Least: 3.7
 Tested Up To: 4.7.4
 Stable Tag: 3.43.3
 
-Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
+Automatically generate complete and accurate meta tags and Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
 
 == Description ==
 
 <img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
-<p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
+<p><strong>WPSSO uses <em>existing</em> content to generate meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
-<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, video seo, e-commerce products, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
+<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash; including hashtags, video seo, e-commerce products, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO provides special optimization features for Pinterest</strong> &mdash; offering customized Pinterest image sizes and preventing conflicts between incompatible Pinterest and Facebook / Open Graph meta tag values.</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options</strong> &mdash; checking minimum / maximum image dimensions and aspect ratios, verifying the webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.</p>
 
-<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags + Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
+<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
 <p><strong>WPSSO offers a <em>fast</em> and <em>reliable</em> social framework for developers</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.</p>
 
@@ -175,7 +175,7 @@ WordPress Social Sharing Optimization (WPSSO) Pro allows you to customize the fi
 
 = Complete Social Meta Tags =
 
-WordPress Social Sharing Optimization (WPSSO) adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses *existing* content to generate meta tags + Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.
+WordPress Social Sharing Optimization (WPSSO) adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses *existing* content to generate meta tags and Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.
 
 = 3rd Party Integration (Pro version) =
 
