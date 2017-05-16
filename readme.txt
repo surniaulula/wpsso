@@ -1,4 +1,4 @@
-=== WPSSO - The Most Advanced Plugin for Social Meta Tags + Schema Markup and Knowledge Graph ===
+=== WPSSO - Advanced and Easy Plugin for Social Meta Tags + Schema Markup and Knowledge Graph ===
 Plugin Name: WordPress Social Sharing Optimization (WPSSO)
 Plugin Slug: wpsso
 Text Domain: wpsso
