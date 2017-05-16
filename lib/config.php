@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'version' => '3.43.3',		// plugin version
 					'opt_version' => '520',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
-					'name' => 'WPSSO (WordPress Social Sharing Optimization)',
+					'name' => 'WPSSO (Social Sharing Optimization)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
 					'name' => 'WPSSO Update Manager (WPSSO UM)',
-					'desc' => 'WPSSO extension to provide updates for the WPSSO (WordPress Social Sharing Optimization) Pro plugin and its Pro extensions.',
+					'desc' => 'WPSSO extension to provide updates for the WPSSO (Social Sharing Optimization) Pro plugin and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',

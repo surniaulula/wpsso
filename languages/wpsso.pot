@@ -1,8 +1,8 @@
-# Copyright (C) 2017 WPSSO (WordPress Social Sharing Optimization)
-# This file is distributed under the same license as the WPSSO (WordPress Social Sharing Optimization) package.
+# Copyright (C) 2017 WPSSO (Social Sharing Optimization)
+# This file is distributed under the same license as the WPSSO (Social Sharing Optimization) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (WordPress Social Sharing Optimization) 3.43.3\n"
+"Project-Id-Version: WPSSO (Social Sharing Optimization) 3.43.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1090,7 +1090,7 @@ msgstr ""
 #: lib/config-gettext-extract.php:108
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide updates for the WPSSO (WordPress Social Sharing "
+"WPSSO extension to provide updates for the WPSSO (Social Sharing "
 "Optimization) Pro plugin and its Pro extensions."
 msgstr ""
 
@@ -4165,7 +4165,7 @@ msgid ""
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "WPSSO (WordPress Social Sharing Optimization)"
+msgid "WPSSO (Social Sharing Optimization)"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
