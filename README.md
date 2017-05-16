@@ -13,8 +13,6 @@
 
 <h2>Description</h2>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
-
 <p><strong>WPSSO uses <em>existing</em> content to generate meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, video seo, e-commerce products, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
