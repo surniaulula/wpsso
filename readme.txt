@@ -337,16 +337,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.0-dev.1 (TBD)**
+**Version 3.44.0-dev.1 (2017/05/17)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* The Pinterest custom image in the Social Settings has been moved to the Structured Data / Schema Markup / Pinterest custom image.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added extra sanity checks to make that "meta itemprop content" tags with URL values are added as "link itemprop href" instead.
 
 **Version 3.43.3 (2017/05/15)**
 
@@ -449,6 +449,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.44.0-dev.1 =
+
+(2017/05/17) The Pinterest custom image in the Social Settings has been moved to the Structured Data / Schema Markup / Pinterest custom image.
 
 = 3.43.3 =
 
