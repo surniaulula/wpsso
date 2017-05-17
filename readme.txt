@@ -337,6 +337,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.44.0-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.43.3 (2017/05/15)**
 
 * *New Features*
