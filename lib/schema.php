@@ -55,8 +55,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
 				$content = '<!-- schema image for pinterest pin it browser button -->'.
-					'<img src="'.$img_url.'" width="0" height="0" style="width:0 !important;height:0 !important;" '.
-						'data-pin-description="'.$desc.'"/>'.$content;
+					'<div style="display:none;"><img src="'.$img_url.'" '.
+						'width="0" height="0" style="width:0;height:0;" '.
+							'data-pin-description="'.$desc.'"/></div>'.$content;
 			}
 			return $content;
 		}

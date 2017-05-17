@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.44.0-dev.1',		// plugin version
-					'opt_version' => '526',		// increment when changing default options
+					'version' => '3.44.0-dev.2',		// plugin version
+					'opt_version' => '528',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Social Sharing Optimization)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -643,6 +643,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_author_name' => 'display_name',	// rich-pin specific article:author
 					'p_dom_verify' => '',
 					'p_add_img_html' => 1,
+					'p_add_nopin_media_img_tag' => 1,
+					'p_add_nopin_header_img_tag' => 1,
 					'tc_site' => '',			// Twitter Business @username (localized)
 					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
 					'tc_type_post' => 'summary_large_image',

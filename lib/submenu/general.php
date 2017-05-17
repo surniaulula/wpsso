@@ -353,20 +353,28 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url',
 						$this->p->options ), 'wide' ).'</td>';
 
+					$table_rows['p_dom_verify'] = '<tr class="hide_in_basic">'.
+					$this->form->get_th_html( _x( 'Pinterest Verification ID',
+						'option label', 'wpsso' ), '', 'p_dom_verify' ).
+					'<td>'.$this->form->get_input( 'p_dom_verify', 'api_key' ).'</td>';
+
 					$table_rows['p_author_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), '', 'p_author_name' ).
 					'<td>'.$this->form->get_select( 'p_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$table_rows['p_dom_verify'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Pinterest Verification ID',
-						'option label', 'wpsso' ), '', 'p_dom_verify' ).
-					'<td>'.$this->form->get_input( 'p_dom_verify', 'api_key' ).'</td>';
-
-					$table_rows['p_add_img_html'] = $this->form->get_th_html( _x( 'Add Image to Content for Pin It',
+					$table_rows['p_add_img_html'] = $this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button',
 						'option label', 'wpsso' ), '', 'p_add_img_html' ).
 					'<td>'.$this->form->get_checkbox( 'p_add_img_html' ).'</td>';
+
+					$table_rows['p_add_nopin_media_img_tag'] = $this->form->get_th_html( _x( 'Add "nopin" to Media Lib Images',
+						'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ).
+					'<td>'.$this->form->get_checkbox( 'p_add_nopin_media_img_tag' ).'</td>';
+
+					$table_rows['p_add_nopin_header_img_tag'] = $this->form->get_th_html( _x( 'Add "nopin" to Header Image Tag',
+						'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ).
+					'<td>'.$this->form->get_checkbox( 'p_add_nopin_header_img_tag' ).'</td>';
 
 					break;
 
