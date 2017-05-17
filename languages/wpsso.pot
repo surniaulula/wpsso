@@ -1676,28 +1676,28 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/media.php:342
+#: lib/media.php:343
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:731
+#: lib/media.php:732
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1023 lib/pro/util/checkimgdims.php:68
+#: lib/media.php:1024 lib/pro/util/checkimgdims.php:68
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1079
+#: lib/media.php:1080
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1098
+#: lib/media.php:1099
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -3480,18 +3480,18 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:69 lib/schema.php:75
+#: lib/schema.php:80 lib/schema.php:86
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1169
+#: lib/schema.php:1180
 msgid ""
 "The \"%1$s\" Organization Logo Image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:1172
+#: lib/schema.php:1183
 msgid ""
 "The \"%1$s\" Organization Banner (600x60) is missing and required for the "
 "Schema %2$s markup."

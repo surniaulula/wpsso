@@ -164,10 +164,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		// extract certain key fields for display and sanity checks
 		public function extract_head_info( array $mod, array $head_mt ) {
 
+			$head_info = array();
+
 			foreach ( $head_mt as $mt ) {
-				if ( ! isset( $mt[2] ) ||
-					! isset( $mt[3] ) )
-						continue;
+				if ( ! isset( $mt[2] ) || ! isset( $mt[3] ) ) {
+					continue;
+				}
 
 				$mt_match = $mt[2].'-'.$mt[3];
 
@@ -177,12 +179,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'property-og:description':
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
-						if ( ! isset( $head_info[$mt[3]] ) )	// only save the first meta tag value
+						if ( ! isset( $head_info[$mt[3]] ) ) {	// only save the first meta tag value
 							$head_info[$mt[3]] = $mt[5];
+						}
 						break;
 					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
-						if ( ! empty( $mt[5] ) )
+						if ( ! empty( $mt[5] ) ) {
 							$has_media[$m[1]] = true;	// optimize media loop
+						}
 						break;
 				}
 			}
@@ -218,16 +222,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					switch ( $mt_match ) {
 						case ( preg_match( '/^property-'.$prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
-							if ( ! empty( $head_info[$prefix] ) )	// only save the media URL once
+							if ( ! empty( $head_info[$prefix] ) ) {	// only save the media URL once
 								continue 2;			// get the next meta tag
+							}
 							if ( ! empty( $mt[5] ) ) {
 								$head_info[$prefix] = $mt[5];	// save the media URL
 								$is_first = true;
 							}
 							break;
 						case ( preg_match( '/^property-'.$prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
-							if ( $is_first !== true )		// only save for first media found
+							if ( $is_first !== true ) {		// only save for first media found
 								continue 2;			// get the next meta tag
+							}
 							$head_info[$mt[3]] = $mt[5];
 							break;
 					}
@@ -491,10 +497,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_array[$head_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
-				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
+				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// seo description is last
 				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
 				$mt_json_array

@@ -47,10 +47,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_pinterest_img_html( $content = '' ) {
+			static $added_to_mod = array();
+
 			$mod = $this->p->util->get_page_mod( true );	// $use_post = true
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+
+			if ( ! empty( $added_to_mod[$mod_salt] ) ) {	// prevent recursion when getting images
+				return $content;
+			} else {
+				$added_to_mod[$mod_salt] = true;
+			}
+
 			$size_name = $this->p->cf['lca'].'-schema';
 			$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
 			$img_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+
 			if ( ! empty( $img_url ) ) {
 				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
 					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
