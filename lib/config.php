@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.43.3',		// plugin version
-					'opt_version' => '520',		// increment when changing default options
+					'version' => '3.44.0-dev.1',		// plugin version
+					'opt_version' => '526',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Social Sharing Optimization)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
@@ -641,12 +641,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_hashtags' => 3,
 					'p_publisher_url' => '',		// (localized)
 					'p_author_name' => 'display_name',	// rich-pin specific article:author
-					'p_img_width' => 800,
-					'p_img_height' => 1600,
-					'p_img_crop' => 0,
-					'p_img_crop_x' => 'center',
-					'p_img_crop_y' => 'center',
 					'p_dom_verify' => '',
+					'p_add_img_html' => 1,
 					'tc_site' => '',			// Twitter Business @username (localized)
 					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
 					'tc_type_post' => 'summary_large_image',
@@ -788,8 +784,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:app:name:googleplay' => 1,
 					'add_meta_name_twitter:app:id:googleplay' => 1,
 					'add_meta_name_twitter:app:url:googleplay' => 1,
-					// schema
-					'add_meta_itemprop_url' => 1,
+					// schema link
+					'add_link_itemprop_url' => 1,
+					'add_link_itemprop_image' => 1,
+					'add_link_itemprop_image.url' => 1,
+					'add_link_itemprop_author.url' => 1,
+					'add_link_itemprop_author.image' => 1,
+					'add_link_itemprop_contributor.url' => 1,
+					'add_link_itemprop_contributor.image' => 1,
+					'add_link_itemprop_menu' => 1,
+					// schema meta
 					'add_meta_itemprop_name' => 1,
 					'add_meta_itemprop_alternatename' => 1,
 					'add_meta_itemprop_description' => 1,

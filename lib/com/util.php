@@ -521,9 +521,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_https( $url = '' ) {
 			if ( ! empty( $url ) ) {
 				if ( strpos( $url, '://' ) &&	// just in case
-					parse_url( $url, PHP_URL_SCHEME ) === 'https' )
-						return true;
-				else return false;
+					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
+					return true;
+				} else {
+					return false;
+				}
 			} elseif ( is_ssl() ) {		// since wp 2.6.0
 				return true;
 			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
@@ -1036,18 +1038,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// return the first url from the associative array (og:image:secure_url, og:image:url, og:image)
 		public static function get_mt_media_url( array $assoc, $mt_pre = 'og:image' ) {
 
-			// check for two dimensional arrays and get the first element
-			if ( isset( $assoc[$mt_pre] ) &&
-				is_array( $assoc[$mt_pre] ) )
-					$first = reset( $assoc[$mt_pre] );
-			else $first = reset( $assoc );
+			// check for two dimensional arrays and keep following the first array element
+			// prefer the $mt_pre array key (if it's available)
+			if ( isset( $assoc[$mt_pre] ) && is_array( $assoc[$mt_pre] ) ) {
+				$first_element = reset( $assoc[$mt_pre] );
+			} else {
+				$first_element = reset( $assoc );
+			}
 
-			if ( is_array( $first ) )
-				return self::get_mt_media_url( $first, $mt_pre );
-		
-			foreach ( array( ':secure_url', ':url', '' ) as $key )
-				if ( ! empty( $assoc[$mt_pre.$key] ) )
+			if ( is_array( $first_element ) ) {
+				return self::get_mt_media_url( $first_element, $mt_pre );
+			}
+
+			// first element is a text string, so check the array keys
+			foreach ( array( ':secure_url', ':url', '' ) as $key ) {
+				if ( ! empty( $assoc[$mt_pre.$key] ) ) {
 					return $assoc[$mt_pre.$key];
+				}
+			}
 
 			return '';
 		}
@@ -1056,7 +1064,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array(
 				'og:video:secure_url' => '',
 				'og:video:url' => '',
-				//'og:video' => '',			// not used - do not include
+				// 'og:video' => '',			// not used - do not include
 				'og:video:type' => 'application/x-shockwave-flash',
 				'og:video:width' => '',
 				'og:video:height' => '',

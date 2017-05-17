@@ -1896,20 +1896,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( ! isset( $options_keys[$ext] ) || is_array( $options_keys[$ext] ) ) {
+				if ( ! isset( $options_keys[$ext] ) || ! is_array( $options_keys[$ext] ) ||
+					! isset( $info['opt_version'] ) || empty( $opts['plugin_'.$ext.'_opt_version'] ) ) {
 					continue;
-				} elseif ( ! isset( $info['opt_version'] ) ) {	// just in case
-					continue;
-				} elseif ( empty( $opts['plugin_'.$ext.'_opt_version'] ) ) {	// no upgrade required
-					continue;
-				} 
+				}
 				
 				foreach ( $options_keys[$ext] as $max_version => $keys ) {
 					if ( is_numeric( $max_version ) && is_array( $keys ) &&
 						$opts['plugin_'.$ext.'_opt_version'] <= $max_version ) {
 
 						SucomUtil::rename_keys( $opts, $keys, true );	// rename $modifiers = true
-
 						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
 					}
 				}

@@ -19,8 +19,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			// options array may be empty on activation
 			if ( isset( $this->p->options['plugin_types_cache_exp'] ) ) {
@@ -38,6 +40,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
 						100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
 			}
+
+			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
+				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
+			}
+		}
+
+		public function get_pinterest_img_html( $content = '' ) {
+			$mod = $this->p->util->get_page_mod( true );	// $use_post = true
+			$size_name = $this->p->cf['lca'].'-schema';
+			$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
+			$img_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+			if ( ! empty( $img_url ) ) {
+				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
+					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+				$content = '<!-- schema image for pinterest pin it browser button -->'.
+					'<img src="'.$img_url.'" width="0" height="0" style="width:0 !important;height:0 !important;" '.
+						'data-pin-description="'.$desc.'"/>'.$content;
+			}
+			return $content;
 		}
 
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
@@ -54,12 +75,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'image size label', 'wpsso' ),
 				'prefix' => 'schema_img',
 			);
-
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				if ( $crawler_name === 'pinterest' ) {
-					$sizes['schema_img']['prefix'] = 'p_img';
-				}
-			}
 
 			return $sizes;
 		}
@@ -1144,7 +1159,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
 					}
-					if ( is_admin() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
+
+					if ( $wpsso->notice->is_admin_pre_notices() && 
+						( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
+
 						switch ( $logo_key ) {
 							case 'org_logo_url':
 								$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo Image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
@@ -1852,12 +1870,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					break;
 			}
 
-
-			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
-				}
-			} elseif ( $this->is_noscript_enabled( $crawler_name ) ) {
+			if ( $this->is_noscript_enabled( $crawler_name ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: noscript is enabled for '.$crawler_name );
 				}
@@ -1887,8 +1900,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( ! empty( $this->p->options['add_meta_itemprop_'.$itemprop_name] )
-					&& ! empty( $assoc[$key_name] ) ) {
+				if ( ! empty( $assoc[$key_name] ) && $assoc[$key_name] !== WPSSO_UNDEF_INT ) {
 					$mt_schema[$itemprop_name] = $assoc[$key_name];
 				}
 			}
@@ -1925,25 +1937,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					break;
 			}
 
-			if ( $crawler_name === 'pinterest' ) {	// prevents pinterest from showing duplicate images
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping images: prevent duplicates for '.$crawler_name.' crawler' );
-				}
-			} else {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting images for '.$page_type_url );
-				}
-	
-				$og_image = $this->p->og->get_all_images( $max['schema_img_max'], 
-					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
-	
-				if ( empty( $og_image ) && $mod['is_post'] ) {
-					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
-				}
-	
-				foreach ( $og_image as $image ) {
-					$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
-				}
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting images for '.$page_type_url );
+			}
+
+			$og_image = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+
+			if ( empty( $og_image ) && $mod['is_post'] ) {
+				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+			}
+
+			foreach ( $og_image as $image ) {
+				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
 			}
 
 			// example: product:rating:average
@@ -1999,7 +2004,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// defines a two-dimensional array
 				$mt_image = array_merge(
-					$this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $media_url, '', $mod ),
+					$this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $media_url, '', $mod ),
 					( empty( $mixed[$prefix.':width'] ) ? array() : $this->p->head->get_single_mt( 'meta',
 						'itemprop', 'image.width', $mixed[$prefix.':width'], '', $mod ) ),
 					( empty( $mixed[$prefix.':height'] ) ? array() : $this->p->head->get_single_mt( 'meta',
@@ -2008,7 +2013,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// defines a two-dimensional array
 			} else {
-				$mt_image = $this->p->head->get_single_mt( 'meta', 'itemprop', 'image.url', $mixed, '', $mod );
+				$mt_image = $this->p->head->get_single_mt( 'link',
+					'itemprop', 'image.url', $mixed, '', $mod );
 			}
 
 			// make sure we have html for at least one meta tag
@@ -2119,7 +2125,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$mt_author = array_merge(
-				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'meta',
+				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'link',
 					'itemprop', $itemprop.'.url', $url, '', $user_mod ) ),
 				( empty( $name ) ? array() : $this->p->head->get_single_mt( 'meta',
 					'itemprop', $itemprop.'.name', $name, '', $user_mod ) ),
@@ -2128,7 +2134,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 
 			// optimize by first checking if the meta tag is enabled
-			if ( ! empty( $this->p->options['add_meta_itemprop_author.image'] ) ) {
+			if ( ! empty( $this->p->options['add_link_itemprop_author.image'] ) ) {
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				$size_name = $this->p->cf['lca'].'-schema';
@@ -2137,7 +2143,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				foreach ( $og_image as $image ) {
 					$image_url = SucomUtil::get_mt_media_url( $image, 'og:image' );
 					if ( ! empty( $image_url ) ) {
-						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'meta',
+						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'link',
 							'itemprop', $itemprop.'.image', $image_url, '', $user_mod ) );
 					}
 				}

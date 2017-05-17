@@ -257,8 +257,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
 
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
-						_x( 'Google Structured Data / Schema Markup',
-							'metabox title', 'wpsso' ).'</h4></td>';
+						_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$noscript_disabled = apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', true ) ? false : true;
 
@@ -354,12 +353,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url',
 						$this->p->options ), 'wide' ).'</td>';
 
-					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-						$table_rows['p_img'] = $this->form->get_th_html( _x( 'Rich Pin Image Dimensions',
-							'option label', 'wpsso' ), '', 'p_img_dimensions' ).
-						'<td>'.$this->form->get_image_dimensions_input( 'p_img' ).'</td>';	// $use_opts = false
-					}
-
 					$table_rows['p_author_name'] = '<tr class="hide_in_basic">'.
 					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), '', 'p_author_name' ).
@@ -370,6 +363,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Pinterest Verification ID',
 						'option label', 'wpsso' ), '', 'p_dom_verify' ).
 					'<td>'.$this->form->get_input( 'p_dom_verify', 'api_key' ).'</td>';
+
+					$table_rows['p_add_img_html'] = $this->form->get_th_html( _x( 'Add Image to Content for Pin It',
+						'option label', 'wpsso' ), '', 'p_add_img_html' ).
+					'<td>'.$this->form->get_checkbox( 'p_add_img_html' ).'</td>';
 
 					break;
 

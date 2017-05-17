@@ -39,27 +39,39 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function allow_img_data_attributes() {
 			global $allowedposttags;
 			$allowedposttags['img']['data-wp-pid'] = true;
+			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
+				$allowedposttags['img']['nopin'] = true;
+			}
 		}
 
 		// note that $size_name can be a string or an array()
 		public function editor_max_image_size( $max_sizes = array(), $size_name = '', $context = '' ) {
 			// allow only our sizes to exceed the editor width
 			if ( is_string( $size_name ) &&
-				strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 )
+				strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 ) {
 					$max_sizes = array( 0, 0 );
+			}
 			return $max_sizes;
 		}
 
 		// $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		public function add_attachment_image_attributes( $attr, $attach ) {
 			$attr['data-wp-pid'] = $attach->ID;
+			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
+				$attr['nopin'] = 'nopin';
+			}
 			return $attr;
 		}
 
 		// $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		public function add_image_tag( $html, $id, $alt, $title, $align, $size ) {
-			if ( strpos( $html, ' data-wp-pid=' ) === false ) {
-				$html = preg_replace( '/ *\/?'.'>/', ' data-wp-pid="'.$id.'"$0', $html );
+			foreach ( array(
+				'data-wp-pid' => $id,
+				'nopin' => empty( $this->p->options['p_add_img_html'] ) ? false : 'nopin',
+			) as $attr_name => $attr_value ) {
+				if ( $attr_value !== false && strpos( $html, ' '.$attr_name.'=' ) === false ) {
+					$html = preg_replace( '/ *\/?'.'>/', ' '.$attr_name.'="'.$attr_value.'"$0', $html );
+				}
 			}
 			return $html;
 		}

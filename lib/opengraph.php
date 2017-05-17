@@ -57,14 +57,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					'image size label', 'wpsso' ),
 			);
 
-			if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-				$sizes['p_img'] = array(	// options prefix
-					'name' => 'richpin',	// wpsso-richpin
-					'label' => _x( 'Pinterest Rich Pin',
-						'image size label', 'wpsso' ),
-				);
-			}
-
 			return $sizes;
 		}
 
@@ -253,18 +245,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} else {
 					$img_sizes = array( 'og' => $lca.'-opengraph' );
 
-					if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-
-						// add richpin to process both image sizes
-						if ( is_admin() ) {
-							SucomUtil::add_before_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
-
-						// use only pinterest (rich pin) image size
-						} elseif ( $crawler_name === 'pinterest' ) {
-							SucomUtil::do_replace_key( $img_sizes, 'og', array( 'p' => $lca.'-richpin' ) );
-						}
-					}
-
 					foreach ( $img_sizes as $md_pre => $size_name ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -272,27 +252,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						// the size_name is used as a context for duplicate checks
-						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
+						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'],
+							$size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
 						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] ) {
 							$mt_og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
 								$size_name, $check_dupes );
-						}
-
-						switch ( $md_pre ) {
-							case 'p':
-								// show both og and pinterest meta tags in the head tags tab by renaming og:image to p:image
-								if ( is_admin() ) {
-									foreach ( $mt_og[$md_pre.':image'] as $num => $arr ) {
-										$mt_og[$md_pre.':image'][$num] = SucomUtil::preg_grep_keys( '/^og:/',
-											$arr, false, 'p:' );
-									}
-								// rename the p:image array to og:image
-								} else {
-									SucomUtil::rename_keys( $mt_og, array( 'p:image' => 'og:image' ), false );
-								}
-								break;
 						}
 					}
 				}

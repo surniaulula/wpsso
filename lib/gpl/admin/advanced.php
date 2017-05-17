@@ -501,22 +501,25 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_taglist_twitter_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->get_taglist_rows( $table_rows, $form, $network,
 				array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
 		public function filter_taglist_schema_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta)_(itemprop)_(.+)$/' ) );
+				array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
 		}
 
 		public function filter_taglist_other_rows( $table_rows, $form, $network = false ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 			return $this->get_taglist_rows( $table_rows, $form, $network,
 				array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}

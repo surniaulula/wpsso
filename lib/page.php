@@ -379,9 +379,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
+
 				// fallback to og_desc value
 				$desc = is_object( $mod['obj'] ) ?
-					$mod['obj']->get_options_multi( $mod['id'], array( $md_idx, 'og_desc' ) ) : null;
+					$mod['obj']->get_options_multi( $mod['id'], 
+						array( $md_idx, 'og_desc' ) ) : null;
+
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc ) ) {
 						$this->p->debug->log( 'no custom description found for '.$md_idx );
@@ -389,6 +392,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'custom description = "'.$desc.'"' );
 					}
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'custom description skipped: no md_idx value' );
 			}

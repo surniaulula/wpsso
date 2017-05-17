@@ -134,6 +134,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'buffer_js_loc' => 'buffer_script_loc',
 					'linkedin_js_loc' => 'linkedin_script_loc',
 				),
+				525 => array(
+					'add_meta_itemprop_url' => 'add_link_itemprop_url',
+					'add_meta_itemprop_image' => 'add_link_itemprop_image',
+					'add_meta_itemprop_image.url' => 'add_link_itemprop_image.url',
+					'add_meta_itemprop_author.url' => 'add_link_itemprop_author.url',
+					'add_meta_itemprop_author.image' => 'add_link_itemprop_author.image',
+					'add_meta_itemprop_contributor.url' => 'add_link_itemprop_contributor.url',
+					'add_meta_itemprop_contributor.image' => 'add_link_itemprop_contributor.image',
+					'add_meta_itemprop_menu' => 'add_link_itemprop_menu',
+				),
 			),
 		);
 

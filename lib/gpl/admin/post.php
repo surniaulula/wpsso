@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'product_price' => null,	// placeholder
 				'subsection_schema' => array(
 					'td_class' => 'subsection', 'header' => 'h4',
-					'label' => _x( 'Google Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+					'label' => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				),
 				'schema_desc' => array(
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),

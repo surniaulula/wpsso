@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ret = array();
 			$is_admin = is_admin();
 
-			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'rich_pin', 'vary_ua' ) as $key ) {
+			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
 				$ret['*'][$key] = $this->get_avail_check( $key );
 			}
 
@@ -220,11 +220,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
 							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
 								true : false;
-					break;
-				case 'rich_pin':
-					$ret = ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) &&
-						! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
-							true : false;
 					break;
 				case 'vary_ua':
 					$ret = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?

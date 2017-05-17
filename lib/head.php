@@ -111,14 +111,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 				switch ( $crawler_name ) {
 					case 'pinterest':
-						/*
-						 * Pinterest can get a different custom image, image sizes, 
-						 * and does not read json markup. Create a unique meta tags 
-						 * and index key for Pinterest. 
-						 */
-						if ( ! SucomUtil::get_const( 'WPSSO_RICH_PIN_DISABLE' ) ) {
-							$head_index .= '_uaid:'.$crawler_name;
-						}
+						$head_index .= '_uaid:'.$crawler_name;
 						break;
 				}
 			}
@@ -488,7 +481,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Generator meta tags
 			 */
-			$mt_gen['generator'] = $this->p->check->get_ext_list();
+			$mt_generators['generator'] = $this->p->check->get_ext_list();
 
 			/*
 			 * Combine and return all meta tags
@@ -496,12 +489,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// unset mis-matched og_type meta tags
 
 			$head_array[$head_index] = array_merge(
-				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
-				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
+				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// seo description is last
 				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
 				$mt_json_array
@@ -537,11 +530,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( $mt_array );
 			}
 
-			if ( empty( $mt_array ) )
+			if ( empty( $mt_array ) ) {
 				return array();
-			elseif ( ! is_array( $mt_array ) ) {
-				if ( $this->p->debug->enabled )
+			} elseif ( ! is_array( $mt_array ) ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: mt_array argument is not an array' );
+				}
 				return array();
 			}
 
@@ -578,8 +572,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
 
 								// prevent duplicates - ignore images from text/html video
-								if ( $ignore_images && strpos( $ddd_name, 'og:image' ) !== false )
+								if ( $ignore_images && strpos( $ddd_name, 'og:image' ) !== false ) {
 									continue;
+								}
 
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
@@ -603,9 +598,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$merged = array();
+
 			foreach ( $singles as $num => $element ) {
-				foreach ( $element as $parts )
+				foreach ( $element as $parts ) {
 					$merged[] = $parts;
+				}
 				unset ( $singles[$num] );
 			}
 
@@ -615,22 +612,32 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_single_mt( $tag, $type, $name, $value, $cmt, array &$mod ) {
 
 			// check for known exceptions for the 'property' $type
-			if ( $tag === 'meta' && $type === 'property' ) {
-				switch ( $name ) {
-					// optimize by matching known values first
-					case ( strpos( $name, 'og:' ) === 0 ? true : false ):
-					case ( strpos( $name, 'article:' ) === 0 ? true : false ):
-						break;	// $type is already property
-					case ( strpos( $name, ':' ) === false ? true : false ):
-					case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
-					case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
-						$type = 'name';
-						break;
+			if ( $tag === 'meta' ) {
+				if ( $type === 'property' ) {
+					switch ( $name ) {
+						// optimize by matching known property values first
+						case ( strpos( $name, 'og:' ) === 0 ? true : false ):
+						case ( strpos( $name, 'article:' ) === 0 ? true : false ):
+							break;	// $type is already property
+	
+						case ( strpos( $name, ':' ) === false ? true : false ):
+						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
+						case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
+							$type = 'name';
+							break;
+					}
+				} elseif ( strpos( $value, '://' ) ) {	// urls must be links
+					$tag = 'link';
 				}
 			}
 
+			if ( $tag === 'link' ) {
+				$attr = 'href';
+			} else {
+				$attr = 'content';
+			}
+
 			$ret = array();
-			$attr = $tag === 'link' ? 'href' : 'content';
 			$log_prefix = $tag.' '.$type.' '.$name;
 			$charset = get_bloginfo( 'charset' );
 
@@ -699,7 +706,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * Encode and escape all values, regardless if the meta tag is enabled or not.
 					 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
 					 */
-					if ( $parts[1] === 'meta' && $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+					if ( $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
 						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
 					} else {
 						$match_name = $parts[3];
@@ -711,6 +718,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 
 					switch ( $match_name ) {
+						case 'og:title':
+						case 'og:description':
+						case 'twitter:title':
+						case 'twitter:description':
+						case 'description':
+						case 'name':
+							$parts[5] = SucomUtil::encode_emoji( htmlentities( $parts[5],
+								ENT_QUOTES, $charset, false ) );	// double_encode = false
+							break;
 						case 'og:url':
 						case 'og:secure_url':
 						case 'og:image':
@@ -726,18 +742,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'twitter:player':
 						case 'canonical':
 						case 'shortlink':
-						case 'menu':	// place menu url
+						case 'image':
+						case 'menu':	// place restaurant menu url
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
+							if ( $parts[2] === 'itemprop' ) {	// just in case
+								$parts[1] = 'link';
+								$parts[4] = 'href';
+							}
 							break;
-						case 'og:title':
-						case 'og:description':
-						case 'twitter:title':
-						case 'twitter:description':
-						case 'description':
-						case 'name':
-							$parts[5] = SucomUtil::encode_emoji( htmlentities( $parts[5],
-								ENT_QUOTES, $charset, false ) );	// double_encode = false
 						default:
 							$parts[5] = htmlentities( $parts[5],
 								ENT_QUOTES, $charset, false );		// double_encode = false

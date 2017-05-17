@@ -42,6 +42,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'rp_img_crop_y' => 'p_img_crop_y',
 					'rp_img_url' => 'p_img_url',
 				),
+				520 => array(
+					'p_img_id' => 'schema_img_id',
+					'p_img_id_pre' => 'schema_img_id_pre',
+					'p_img_width' => 'schema_img_width',
+					'p_img_height' => 'schema_img_height',
+					'p_img_crop' => 'schema_img_crop',
+					'p_img_crop_x' => 'schema_img_crop_x',
+					'p_img_crop_y' => 'schema_img_crop_y',
+					'p_img_url' => 'schema_img_url',
+				),
 			),
 		);
 
@@ -615,7 +625,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
-			foreach ( array( 'p', 'og' ) as $md_pre ) {
+			foreach ( array( 'og', 'schema' ) as $md_pre ) {
 				if ( empty( $md_opts[$md_pre.'_img_id'] ) ) {
 					unset( $md_opts[$md_pre.'_img_id_pre'] );
 				}
@@ -624,7 +634,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					// if option is the same as the default, then unset it
 					if ( isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) &&
 						isset( $md_defs[$md_pre.'_img_'.$md_suffix] ) &&
-							$md_opts[$md_pre.'_img_'.$md_suffix] === $md_defs[$md_pre.'_img_'.$md_suffix] ) {
+						$md_opts[$md_pre.'_img_'.$md_suffix] === $md_defs[$md_pre.'_img_'.$md_suffix] ) {
 						unset( $md_opts[$md_pre.'_img_'.$md_suffix] );
 					}
 					$check_current = isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) ?

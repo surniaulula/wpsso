@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * isset() or array_key_exists() on all tests to make sure additional / 
 			 * unnecessary options are not created in post meta.
 			 */
-			foreach ( array( 'og', 'p', 'schema' ) as $md_pre ) {
+			foreach ( array( 'og', 'schema' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
 					! empty( $opts[$md_pre.'_img_height'] ) &&
 					! empty( $opts[$md_pre.'_img_crop'] ) ) {	// check cropped image ratio

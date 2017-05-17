@@ -886,12 +886,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
-						case 'tooltip-p_img_dimensions':
-							$def_dimensions = $this->p->opt->get_defaults( 'p_img_width' ).'x'.
-								$this->p->opt->get_defaults( 'p_img_height' ).' '.
-								( $this->p->opt->get_defaults( 'p_img_crop' ) == 0 ?
-									'uncropped' : 'cropped' );
-
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$def_dimensions.'). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
 							break;
 
@@ -901,6 +895,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_dom_verify':
 							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
+							break;
+
+						case 'tooltip-p_add_img_html':
+							$text = __( 'Add the Google / Schema image to the content for the Pinterest Pin It browser button (uses a 0x0px &lt;img/&gt; HTML tag).', 'wpsso' );
 							break;
 
 						default:
