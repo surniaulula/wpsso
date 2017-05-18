@@ -621,24 +621,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $tag === 'meta' ) {
 				if ( $type === 'property' ) {
 					switch ( $name ) {
-						// optimize by matching known property values first
-						case ( strpos( $name, 'og:' ) === 0 ? true : false ):
-						case ( strpos( $name, 'article:' ) === 0 ? true : false ):
-							break;	// $type is already property
-	
-						case ( strpos( $name, ':' ) === false ? true : false ):
+						case ( strpos( $name, ':' ) === false ? true : false ):		// no colon in $name
 						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
 						case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
 							$type = 'name';
 							break;
 					}
-				} elseif ( strpos( $value, '://' ) ) {	// urls must be links
-					$tag = 'link';
+				} elseif ( $type === 'itemprop' ) {
+					if ( strpos( $value, '://' ) ) {	// itemprop urls must be links
+						$tag = 'link';
+					}
 				}
 			}
 
+			// true for both "link rel href" and "link itemprop href"
 			if ( $tag === 'link' ) {
 				$attr = 'href';
+			// everything else uses the 'content' attribute name
 			} else {
 				$attr = 'content';
 			}
@@ -724,6 +723,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 
 					switch ( $match_name ) {
+						// description values that may include emoji
 						case 'og:title':
 						case 'og:description':
 						case 'twitter:title':
@@ -733,6 +733,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$parts[5] = SucomUtil::encode_emoji( htmlentities( $parts[5],
 								ENT_QUOTES, $charset, false ) );	// double_encode = false
 							break;
+						// url values that must be url encoded
 						case 'og:url':
 						case 'og:secure_url':
 						case 'og:image':
@@ -752,14 +753,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'menu':	// place restaurant menu url
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
-							if ( $parts[2] === 'itemprop' ) {	// just in case
+							if ( $parts[2] === 'itemprop' ) {	// itemprop urls must be links
 								$parts[1] = 'link';
 								$parts[4] = 'href';
 							}
 							break;
+						// encode html entities for everything else
 						default:
 							$parts[5] = htmlentities( $parts[5],
-								ENT_QUOTES, $charset, false );		// double_encode = false
+								ENT_QUOTES, $charset, false );	// double_encode = false
 							break;
 					}
 
