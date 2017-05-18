@@ -620,21 +620,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			// check for known exceptions for the 'property' $type
 			if ( $tag === 'meta' ) {
 				if ( $type === 'property' ) {
+					// double-check the name to make sure its an open graph meta tag
 					switch ( $name ) {
-						case ( strpos( $name, ':' ) === false ? true : false ):		// no colon in $name
+						// these names are not open graph meta tag names
 						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
 						case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
+						case ( strpos( $name, ':' ) === false ? true : false ):		// no colon in $name
 							$type = 'name';
 							break;
 					}
 				} elseif ( $type === 'itemprop' ) {
-					if ( strpos( $value, '://' ) ) {	// itemprop urls must be links
+					if ( $tag !== 'link' && strpos( $value, '://' ) ) {	// itemprop urls must be links
 						$tag = 'link';
 					}
 				}
 			}
 
-			// true for both "link rel href" and "link itemprop href"
+			// applies to both "link rel href" and "link itemprop href"
 			if ( $tag === 'link' ) {
 				$attr = 'href';
 			// everything else uses the 'content' attribute name
