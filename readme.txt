@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.0-dev.2 (2017/05/17)**
+**Version 3.44.0-a.1 (2017/05/18)**
 
 * *New Features*
 	* Added three new options for Pinterest in the General settings page:
@@ -453,9 +453,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.0-dev.2 =
+= 3.44.0-a.1 =
 
-(2017/05/17) Added three new options for Pinterest in the General settings page. The Pinterest custom image in the Social Settings has been moved to the Structured Data / Schema Markup / Pinterest custom image.
+(2017/05/18) Added three new options for Pinterest in the General settings page. The Pinterest custom image in the Social Settings has been moved to the Structured Data / Schema Markup / Pinterest custom image.
 
 = 3.43.3 =
 
