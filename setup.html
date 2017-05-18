@@ -73,15 +73,6 @@
 </tr></table>
 </dd>
 
-<dt><h3>Caching Services</h3></dt>
-
-<dd><p>Pinterest and Facebook use different size images (portrait vs landscape, for example), and some meta tag values required by Facebook are not compatible with Pinterest. WPSSO detects the Facebook and Pinterest crawlers, and provides different meta tags for each. A DONOTCACHEPAGE constant is also defined to bypass any caching plugins - this is necessary to provide distinct content for each social crawler. Some hosting providers and services use aggressive caching techniques, and do not honor the DONOTCACHEPAGE constant. If you use a caching service that does not support the DONOTCACHEPAGE constant, please contact their support department as ask them to exclude the following user agent from caching:</p>
-
-<pre>
-Pinterest/
-</pre>
-</dd>
-
 <dt><h3>Validation Tools</h3></dt>
 
 <dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <em>Social Settings</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
