@@ -368,13 +368,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'p_add_img_html' ).
 					'<td>'.$this->form->get_checkbox( 'p_add_img_html' ).'</td>';
 
-					$table_rows['p_add_nopin_media_img_tag'] = $this->form->get_th_html( _x( 'Add "nopin" to Media Lib Images',
-						'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ).
-					'<td>'.$this->form->get_checkbox( 'p_add_nopin_media_img_tag' ).'</td>';
-
 					$table_rows['p_add_nopin_header_img_tag'] = $this->form->get_th_html( _x( 'Add "nopin" to Header Image Tag',
 						'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ).
 					'<td>'.$this->form->get_checkbox( 'p_add_nopin_header_img_tag' ).'</td>';
+
+					$table_rows['p_add_nopin_media_img_tag'] = $this->form->get_th_html( _x( 'Add "nopin" to Media Lib Images',
+						'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ).
+					'<td>'.$this->form->get_checkbox( 'p_add_nopin_media_img_tag' ).'</td>';
 
 					break;
 
