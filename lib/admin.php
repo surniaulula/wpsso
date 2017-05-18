@@ -354,28 +354,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $info['url']['faqs'] ) ) {
 				$links[] = '<a href="'.$info['url']['faqs'].'"'.
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
-					_x( 'FAQ', 'plugin action link', 'wpsso' ).'</a>';
+					_x( 'FAQs', 'plugin action link', 'wpsso' ).'</a>';
 			}
 
 			if ( ! empty( $info['url']['notes'] ) ) {
 				$links[] = '<a href="'.$info['url']['notes'].'"'.
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
-					_x( 'Notes', 'plugin action link', 'wpsso' ).'</a>';
+					_x( 'Other Notes', 'plugin action link', 'wpsso' ).'</a>';
 			}
 
 			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 				$links[] = '<a href="'.$info['url']['support'].'"'.
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
-					_x( 'Support', 'plugin action link', 'wpsso' ).'</a>';
+					_x( 'Pro Support', 'plugin action link', 'wpsso' ).'</a>';
+
 			} elseif ( ! empty( $info['url']['forum'] ) ) {
 				$links[] = '<a href="'.$info['url']['forum'].'"'.
 					( $tabindex !== false ? ' tabindex="'.++$tabindex.'"' : '' ).'>'.
-					_x( 'Forum', 'plugin action link', 'wpsso' ).'</a>';
+					_x( 'Community Forum', 'plugin action link', 'wpsso' ).'</a>';
 			}
 
 			if ( ! empty( $info['url']['purchase'] ) ) {
 				if ( ! empty( $utm_source ) ) {
-					$purchase_url = add_query_arg( 'utm_source', $utm_source, $info['url']['purchase'] );
+					$purchase_url = add_query_arg( 'utm_source',
+						$utm_source, $info['url']['purchase'] );
 				}
 				$links[] = $this->p->msgs->get( 'pro-purchase-text',
 					array( 'ext' => $ext, 'url' => $purchase_url, 
