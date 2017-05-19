@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Social Sharing Optimization)</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.43.3</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.44.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.7.5</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
