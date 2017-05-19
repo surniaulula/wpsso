@@ -458,47 +458,47 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/cache.php:101
+#: lib/com/cache.php:102
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:106
+#: lib/com/cache.php:107
 msgid ""
 "PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
 "library cannot follow URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:109
+#: lib/com/cache.php:110
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:114
+#: lib/com/cache.php:115
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:178
+#: lib/com/cache.php:179
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:247 lib/util.php:471
+#: lib/com/cache.php:248 lib/util.php:471
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:401
+#: lib/com/cache.php:402
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:413
+#: lib/com/cache.php:414
 msgid "Failed to open cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:499
+#: lib/com/cache.php:500
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:504
+#: lib/com/cache.php:505
 msgid "Failed to open cache file %s for writing."
 msgstr ""
 
@@ -1657,7 +1657,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:570
+#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:571
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2043,7 +2043,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:367 lib/messages.php:377 lib/post.php:526
+#: lib/messages.php:367 lib/messages.php:377 lib/post.php:527
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2070,7 +2070,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:372 lib/util.php:1842
+#: lib/messages.php:372 lib/util.php:1856
 msgid "No options available."
 msgstr ""
 
@@ -3304,17 +3304,17 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:453
+#: lib/post.php:454
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:470
+#: lib/post.php:471
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding a "
 "<code>%1$s</code> HTML tag to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:479
+#: lib/post.php:480
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
@@ -4125,43 +4125,43 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:812
+#: lib/util.php:817
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:819
+#: lib/util.php:826
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:844
+#: lib/util.php:852
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:881
+#: lib/util.php:895
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1868
+#: lib/util.php:1882
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1872
+#: lib/util.php:1886
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1875
+#: lib/util.php:1889
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1879
+#: lib/util.php:1893
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

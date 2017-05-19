@@ -793,31 +793,39 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
 		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false ) {
-			if ( empty( $query ) )
+
+			if ( empty( $query ) ) {
 				return false;
+			}
 
 			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using html submitted in the request argument' );
+				}
 				$html = $request;
 			} elseif ( strpos( $request, '://' ) === false ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
+				}
 				return false;
 			// fetch the webpage content and save it as a transient
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching '.$request );
-				if ( is_admin() )
+				}
+				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $request ) );
+				}
 				return false;
 			} elseif ( empty( $html ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for '.$request.' is empty' );
-				if ( is_admin() )
+				}
+				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
 						'wpsso' ), $request ) );
+				}
 				return false;
 			}
 
@@ -855,20 +863,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$doc->loadHTML( $html );
 					libxml_clear_errors();		// clear any HTML parsing errors
 					libxml_use_internal_errors( $libxml_saved_state );
-				} else @$doc->loadHTML( $html );
+				} else {
+					@$doc->loadHTML( $html );
+				}
 
 				$xpath = new DOMXPath( $doc );
 				$metas = $xpath->query( $query );
 
 				foreach ( $metas as $m ) {
 					$m_atts = array();		// put all attributes in a single array
-					foreach ( $m->attributes as $a )
+					foreach ( $m->attributes as $a ) {
 						$m_atts[$a->name] = $a->value;
-					if ( isset( $m->textContent ) )
+					}
+					if ( isset( $m->textContent ) ) {
 						$m_atts['textContent'] = $m->textContent;
+					}
 					$ret[$m->tagName][] = $m_atts;
 				}
-			} else $this->missing_php_class_error( 'DOMDocument' );
+			} else {
+				$this->missing_php_class_error( 'DOMDocument' );
+			}
 
 			return empty( $ret ) ? false : $ret;
 		}

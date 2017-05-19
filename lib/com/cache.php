@@ -35,8 +35,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( ! empty( $this->p->cf['lca'] ) ) {
 				$this->lca = $this->p->cf['lca'];
