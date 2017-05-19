@@ -723,12 +723,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			if ( ! self::$pkg[$lca]['aop'] ) {
 
-				/*
-				add_meta_box( $this->pagehook.'_about_free',
-					_x( 'About the Free Version', 'metabox title', 'wpsso' ),
-						array( &$this, 'show_metabox_about_free' ), $this->pagehook, 'side_top' );
-				*/
-
 				add_meta_box( $this->pagehook.'_purchase_pro',
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
@@ -1225,20 +1219,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return '(10) '.$feature;
 			else return $feature;
 		}
-
-		/*
-		public function show_metabox_about_free() {
-			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
-			echo '<div class="column-metabox-icon">';
-			echo $this->get_ext_img_icon( $lca );
-			echo '</div>';
-			echo '<div class="column-metabox-content">';
-			echo $this->p->msgs->get( 'column-about-free' );
-			echo '</div>';
-			echo '</td></tr></table>';
-		}
-		*/
 
 		public function show_metabox_purchase_pro() {
 			$lca = $this->p->cf['lca'];
