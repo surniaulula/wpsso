@@ -1246,7 +1246,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '</div>';
 			echo '<div class="column-metabox-buttons">';
-			echo $this->form->get_button( _x( 'Purchase Pro Version', 'plugin action link', 'wpsso' ),
+			echo $this->form->get_button( _x( 'Purchase Pro Version', 'submit button', 'wpsso' ),
 				'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
 			echo '</td></tr></table>';
