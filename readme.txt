@@ -342,8 +342,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* Added three new options for Pinterest in the General settings page:
 		* Add Hidden Image for Pin It Button
-		* Add "nopin" to Media Lib Images
 		* Add "nopin" to Header Image Tag (since WP v4.4)
+		* Add "nopin" to Media Lib Images
 * *Improvements*
 	* The Pinterest custom image in the Social Settings has been moved to the Structured Data / Schema Markup / Pinterest custom image.
 * *Bugfixes*
