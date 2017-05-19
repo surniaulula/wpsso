@@ -3660,109 +3660,114 @@ msgctxt "metabox title"
 msgid "Essential General Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:54
+#: lib/submenu/essential.php:36
+msgctxt "metabox title"
+msgid "Optional Advanced Settings"
+msgstr ""
+
+#: lib/submenu/essential.php:65
 msgctxt "metabox title"
 msgid "Site Information"
 msgstr ""
 
-#: lib/submenu/essential.php:56 lib/submenu/general.php:88
+#: lib/submenu/essential.php:67 lib/submenu/general.php:88
 msgctxt "option label"
 msgid "Website Name"
 msgstr ""
 
-#: lib/submenu/essential.php:61 lib/submenu/general.php:93
+#: lib/submenu/essential.php:72 lib/submenu/general.php:93
 msgctxt "option label"
 msgid "Website Description"
 msgstr ""
 
-#: lib/submenu/essential.php:66 lib/submenu/general.php:102
+#: lib/submenu/essential.php:77 lib/submenu/general.php:102
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/essential.php:71
+#: lib/submenu/essential.php:82
 msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:73 lib/submenu/general.php:213
+#: lib/submenu/essential.php:84 lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:77 lib/submenu/general.php:218
+#: lib/submenu/essential.php:88 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:81 lib/submenu/general.php:222
+#: lib/submenu/essential.php:92 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/essential.php:85 lib/submenu/general.php:180
+#: lib/submenu/essential.php:96 lib/submenu/general.php:180
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:89 lib/submenu/general.php:184
+#: lib/submenu/essential.php:100 lib/submenu/general.php:184
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:94
+#: lib/submenu/essential.php:105
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:96 lib/submenu/general.php:243
+#: lib/submenu/essential.php:107 lib/submenu/general.php:243
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:102 lib/submenu/general.php:274
+#: lib/submenu/essential.php:113 lib/submenu/general.php:274
 msgctxt "option label"
 msgid "Google Knowledge Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:106 lib/submenu/general.php:278
+#: lib/submenu/essential.php:117 lib/submenu/general.php:278
 msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr ""
 
-#: lib/submenu/essential.php:109 lib/submenu/general.php:281
+#: lib/submenu/essential.php:120 lib/submenu/general.php:281
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/submenu/essential.php:112 lib/submenu/general.php:284
+#: lib/submenu/essential.php:123 lib/submenu/general.php:284
 msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr ""
 
-#: lib/submenu/essential.php:119 lib/submenu/general.php:291
+#: lib/submenu/essential.php:130 lib/submenu/general.php:291
 msgctxt "option label"
 msgid "Organization Logo Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:122 lib/submenu/general.php:294
+#: lib/submenu/essential.php:133 lib/submenu/general.php:294
 msgctxt "option label"
 msgid "Organization Banner (600x60) URL"
 msgstr ""
 
-#: lib/submenu/essential.php:127
+#: lib/submenu/essential.php:138
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:351
+#: lib/submenu/essential.php:140 lib/submenu/general.php:351
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:134
+#: lib/submenu/essential.php:145
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:388
+#: lib/submenu/essential.php:147 lib/submenu/general.php:388
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
