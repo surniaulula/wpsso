@@ -1256,7 +1256,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'column-purchase-pro':
-						$text = '<p>'.sprintf( __( '<strong>%s provides</strong>:',
+						$text = '<p>'.sprintf( __( '<strong>%s provides:</strong>',
 							'wpsso' ), $info['short_pro'] ).'</p>';
 
 						$text .= '<ul>';

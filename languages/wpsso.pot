@@ -3059,7 +3059,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1259
-msgid "<strong>%s provides</strong>:"
+msgid "<strong>%s provides:</strong>"
 msgstr ""
 
 #: lib/messages.php:1263
