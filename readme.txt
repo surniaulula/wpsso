@@ -349,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added extra sanity checks to make that "meta itemprop content" tags with URL values are added as "link itemprop href" instead.
+	* Added extra sanity checks to make sure that "meta itemprop content" tags with URL values are added as "link itemprop href" instead.
 
 **Version 3.43.3 (2017/05/15)**
 
