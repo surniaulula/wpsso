@@ -1262,12 +1262,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '<ul>';
 						$text .= '<li>'.__( 'Custom Post, Term, and User Social Settings.',
 							'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Advanced features (image dimension checks, image upscaling, etc) and settings page.',
-							'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Integration modules for 3rd party plugins (Yoast SEO, WooCommerce, etc).',
-							'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Integration modules for API services (Bitly, Facebook, YouTube, etc).',
-							'wpsso' ).'</li>';
+						$text .= '<li>'.sprintf( __( 'Advanced settings page and features (%s).',
+							'wpsso' ), __( 'image dimension check, image upscaling, etc',
+								'wpsso' ) ).'</li>';
+						$text .= '<li>'.sprintf( __( 'Integration modules for 3rd party plugins (%s).',
+							'wpsso' ), __( 'WooCommerce, Yoast SEO, etc',
+								'wpsso' ) ).'</li>';
+						$text .= '<li>'.sprintf( __( 'Integration modules for API services (%s).',
+							'wpsso' ), __( 'URL shortening, embedded videos, etc',
+								'wpsso' ) ).'</li>';
 						$text .= '</ul>';
 
 						if ( $this->p->avail['*']['p_dir'] ) {

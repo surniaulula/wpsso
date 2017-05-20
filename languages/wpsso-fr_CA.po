@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.44.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-05-19 14:41-0400\n"
-"PO-Revision-Date: 2017-05-19 14:41-0400\n"
+"POT-Creation-Date: 2017-05-20 09:08-0400\n"
+"PO-Revision-Date: 2017-05-20 09:08-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2510,7 +2510,7 @@ msgstr "Un ID d'authentification a été fourni pour %1$s, mais l'extension n'a 
 msgid "An Authentication ID has been provided for %1$s on the %2$s settings page but the Pro version has not been installed &mdash; don't forget to update the current plugin to install the latest Pro version."
 msgstr "Un ID d'authentification a été fourni pour %1$s sur la page de réglages %2$s, mais la version Pro n'a pas été installé &mdash; n'oubliez pas de mettre à jour l'extension pour installer la version Pro courante."
 
-#: lib/messages.php:1221 lib/messages.php:1288
+#: lib/messages.php:1221 lib/messages.php:1291
 msgid "WordPress Plugins"
 msgstr "Extensions WordPress"
 
@@ -2564,71 +2564,83 @@ msgid "Custom Post, Term, and User Social Settings."
 msgstr "Réglages sociaux personnalisés pour articles, termes, et utilisateurs."
 
 #: lib/messages.php:1265
-msgid "Advanced features (image dimension checks, image upscaling, etc) and settings page."
-msgstr "Page de réglages et fonctions avancées (vérifications dimension d'image, agrandissement d'image, etc.)."
+msgid "Advanced settings page and features (%s)."
+msgstr "Page de réglages et fonctions avancées (%s)."
 
-#: lib/messages.php:1267
-msgid "Integration modules for 3rd party plugins (Yoast SEO, WooCommerce, etc)."
-msgstr "Modules d'intégration pour extensions 3ème partie (Yoast SEO, WooCommerce, etc.)."
+#: lib/messages.php:1266
+msgid "image dimension check, image upscaling, etc"
+msgstr "vérifications dimension d'image, agrandissement d'image, etc"
+
+#: lib/messages.php:1268
+msgid "Integration modules for 3rd party plugins (%s)."
+msgstr "Modules d'intégration pour extensions 3ème partie (%s)."
 
 #: lib/messages.php:1269
-msgid "Integration modules for API services (Bitly, Facebook, YouTube, etc)."
-msgstr "Modules d'intégration pour services de d'API (Bitly, Facebook, YouTube, etc.)."
+msgid "WooCommerce, Yoast SEO, etc"
+msgstr "WooCommerce, Yoast SEO, etc"
 
-#: lib/messages.php:1274
+#: lib/messages.php:1271
+msgid "Integration modules for API services (%s)."
+msgstr "Modules d'intégration pour services de d'API (%s)."
+
+#: lib/messages.php:1272
+msgid "URL shortening, embedded videos, etc"
+msgstr "raccourcissement d'URL, vidéos intégrées, etc"
+
+#: lib/messages.php:1277
 msgid "<strong>Purchase %s easily with PayPal</strong> &mdash; and license the Pro version immediately after your purchase!"
 msgstr "<strong>C'est facile d'acheter %s avec Paypal</strong> &mdash; vous pouvez autoriser la version Pro immédiatement après votre achat!"
 
-#: lib/messages.php:1276
+#: lib/messages.php:1279
 msgid "<strong>Purchase %s easily with PayPal</strong> &mdash; and update the Free plugin immediately after your purchase!"
 msgstr "<strong>C'est rfacile d'acheter %s avec Paypal</strong> &mdash; vous pouvez mettre à jour l'extension gratuite immédiatement après votre achat!"
 
-#: lib/messages.php:1279
+#: lib/messages.php:1282
 msgid "<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates."
 msgstr "<strong>Les licences Pro n'expirent jamais</strong> &mdash; il n'y a aucun frais annuels ou récurrents pour le soutien et les mises à jour."
 
-#: lib/messages.php:1280
+#: lib/messages.php:1283
 msgid "How great is that?"
 msgstr "C'est génial!"
 
-#: lib/messages.php:1286
+#: lib/messages.php:1289
 msgctxt "lib file description"
 msgid "Extension Plugins"
 msgstr "Autres Extensions"
 
-#: lib/messages.php:1290
+#: lib/messages.php:1293
 msgid "<strong>Updating to Pro is quick and easy</strong>."
 msgstr "<strong>La mise à jour Pro est rapide et facile</strong>."
 
-#: lib/messages.php:1291
+#: lib/messages.php:1294
 msgid "After your purchase, you'll receive an email with all the installation details &mdash; it's easy as 1-2-3:"
 msgstr "Après votre achat, vous recevrez un courriel avec tous les détails d'installation &mdash; c’est facile comme 1-2-3 :"
 
-#: lib/messages.php:1294
+#: lib/messages.php:1297
 msgid "<strong>Install and activate</strong> the %1$s extension from the %2$s page."
 msgstr "<strong>Installer et activer</strong> l'extension %1$s à partir de la page %2$s."
 
-#: lib/messages.php:1296
+#: lib/messages.php:1299
 msgid "<strong>Enter the Authentication ID</strong> you received by email in the %1$s page."
 msgstr "<strong>Entrez l'ID d'authentification</strong> reçu par courriel dans la page%1$s."
 
-#: lib/messages.php:1298
+#: lib/messages.php:1301
 msgid "<strong>Update to %1$s</strong> by installing the Pro update from the %2$s page."
 msgstr "<strong>Mise à jour vers %1$s</strong> en installant la mise à jour Pro de la page %2$s."
 
-#: lib/messages.php:1304
+#: lib/messages.php:1307
 msgid "<strong>The continued development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!"
 msgstr "<strong>Le développement continu de %1$s est motivé par les demandes de nos clients</strong> &mdash; nous accueillons tous vos commentaires et suggestions!"
 
-#: lib/messages.php:1308
+#: lib/messages.php:1311
 msgid "<strong>Great ratings are a terrific way to encourage plugin developers</strong> &mdash; and it only takes a minute (or less)."
 msgstr "<strong>Une bonne cote est une excellente façon d'encourager un développeur d'extension</strong> &mdash; et ça ne prend qu'une minute (ou moins)."
 
-#: lib/messages.php:1308
+#: lib/messages.php:1311
 msgid "Please encourage us by rating the plugins you use."
 msgstr "Veuillez nous encourager en notant les plugins que vous utilisez."
 
-#: lib/messages.php:1321
+#: lib/messages.php:1324
 msgid "This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages."
 msgstr "Cette option est localisé &mdash; vous pouvez changer la langue locale admin WordPress avec %s, etc., pour définir des valeurs d'option pour d'autres langues."
 
