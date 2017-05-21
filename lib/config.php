@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'advanced' => 'Advanced Settings',
 							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
 							'licenses' => 'Extension Plugins and Pro Licenses',
-							'dashboard' => 'Plugin Dashboard',
+							'dashboard' => 'Plugin Dashboard and Features Status',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',

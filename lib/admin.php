@@ -715,8 +715,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$this->add_plugin_hooks();
-			$this->add_meta_boxes();
-			$this->add_side_meta_boxes();
+			$this->add_side_meta_boxes();	// add before main metaboxes
+			$this->add_meta_boxes();	// add last to move duplicate side metaboxes
 		}
 
 		protected function add_side_meta_boxes() {
@@ -727,9 +727,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
 
-				add_meta_box( $this->pagehook.'_install_pro',
-					_x( 'Updating to Pro is Easy', 'metabox title', 'wpsso' ),
-						array( &$this, 'show_metabox_install_pro' ), $this->pagehook, 'side' );
+				add_meta_box( $this->pagehook.'_status_pro',
+					_x( 'Pro Version Features', 'metabox title', 'wpsso' ),
+						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
 
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
@@ -1235,15 +1235,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<div class="column-metabox-buttons">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'submit button', 'wpsso' ),
 				'button-primary', 'column-purchase-pro', $purchase_url, true );
-			echo '</div>';
-			echo '</td></tr></table>';
-		}
-
-		public function show_metabox_install_pro() {
-			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
-			echo '<div class="column-metabox-content">';
-			echo $this->p->msgs->get( 'column-install-pro' );
 			echo '</div>';
 			echo '</td></tr></table>';
 		}

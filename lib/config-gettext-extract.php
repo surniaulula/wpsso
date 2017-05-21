@@ -59,7 +59,7 @@ _x( '(option disabled)', 'option value', 'wpsso' );
 _x( 'Out of Stock', 'option value', 'wpsso' );
 _x( 'Ow.ly', 'option value', 'wpsso' );
 _x( 'Pinterest Company Page URL', 'option value', 'wpsso' );
-_x( 'Plugin Dashboard', 'lib file description', 'wpsso' );
+_x( 'Plugin Dashboard and Features Status', 'lib file description', 'wpsso' );
 _x( 'Pre-Order', 'option value', 'wpsso' );
 _x( 'Product Availability Custom Field', 'option label', 'wpsso' );
 _x( 'Product Condition Custom Field', 'option label', 'wpsso' );
