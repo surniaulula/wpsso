@@ -576,7 +576,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			return $this->get_input( $name.'_width', 'short', '', 0, $def_width, $disabled ).'x'.
 				$this->get_input( $name.'_height', 'short', '', 0, $def_height, $disabled ).
-				'px &nbsp; cropped '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).
+				'px cropped '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).
 					$crop_area_select;
 		}
 
