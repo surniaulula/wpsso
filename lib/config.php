@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'version' => '3.44.0',		// plugin version
 					'opt_version' => '528',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
-					'name' => 'WPSSO (Social Sharing Optimization)',
+					'name' => 'WPSSO',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
 					'name' => 'WPSSO Update Manager (WPSSO UM)',
-					'desc' => 'WPSSO extension to provide updates for the WPSSO (Social Sharing Optimization) Pro plugin and its Pro extensions.',
+					'desc' => 'WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',
@@ -665,7 +665,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_link_rel_author' => 1,
 					'add_link_rel_canonical' => 0,
 					'add_link_rel_publisher' => 1,
-					'add_link_rel_shortlink' => 1,
+					'add_link_rel_shortlink' => 0,
 					// facebook
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,

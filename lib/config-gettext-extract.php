@@ -105,7 +105,7 @@ _x( 'WPSSO extension to add Social Sharing Buttons with support for hashtags, sh
 _x( 'WPSSO extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.).', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );
-_x( 'WPSSO extension to provide updates for the WPSSO (Social Sharing Optimization) Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
+_x( 'WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );

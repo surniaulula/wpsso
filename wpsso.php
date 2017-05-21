@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: WPSSO (Social Sharing Optimization)
+ * Plugin Name: WPSSO
  * Plugin Slug: wpsso
  * Text Domain: wpsso
  * Domain Path: /languages
