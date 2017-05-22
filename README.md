@@ -1,7 +1,7 @@
-<h1>WPSSO (Core)</h1><h3>Advanced Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph</h3>
+<h1>WPSSO</h1><h3>Advanced Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph</h3>
 
 <table>
-<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Core)</td></tr>
+<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.44.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
@@ -29,7 +29,7 @@
 
 <h4>Quick List of Features</h4>
 
-<p><strong>WPSSO Free / Core Features</strong></p>
+<p><strong>WPSSO Free / Basic Features</strong></p>
 
 <ul>
 <li>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</li>
@@ -249,7 +249,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the Plugin</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NGFB to WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NextGEN Facebook to WPSSO</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 </ul>
 
@@ -273,7 +273,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">How can I fix a PHP fatal "out of memory" error?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an "HTTP error" when uploading images?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">How can I migrate from NGFB to WPSSO?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">How can I migrate from NextGEN Facebook to WPSSO?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/">How do I attach an image without showing it on the webpage?</a></li>
@@ -284,7 +284,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/">W3C says "there is no attribute 'property'"</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/">What about Google Search and Google Plus?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/">What features of NextGEN Gallery are supported?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NGFB and WPSSO?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/">What is the difference between NextGEN Facebook and WPSSO?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/">What is the difference between the Free and Pro versions?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-arent-pins-from-my-website-posting-rich/">Why aren't Pins from my website posting Rich?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>

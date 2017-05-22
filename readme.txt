@@ -1,5 +1,5 @@
-=== WPSSO (Core) - Advanced Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph ===
-Plugin Name: WPSSO (Core)
+=== WPSSO - Advanced Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph ===
+Plugin Name: WPSSO
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
@@ -32,7 +32,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 = Quick List of Features =
 
-**WPSSO Free / Core Features**
+**WPSSO Free / Basic Features**
 
 * Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
 * Adds Pinterest Rich Pin meta tags + [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
@@ -217,7 +217,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [Uninstall the Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 * [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
-* [How-To Migrate from NGFB to WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
+* [How-To Migrate from NextGEN Facebook to WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 = Plugin Setup =
@@ -236,7 +236,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
 * [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
 * [How can I have smaller dimensions for the default image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
-* [How can I migrate from NGFB to WPSSO?](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
+* [How can I migrate from NextGEN Facebook to WPSSO?](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
 * [How can I share a single NextGEN Gallery image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
 * [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
@@ -247,7 +247,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
 * [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
-* [What is the difference between NGFB and WPSSO?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
+* [What is the difference between NextGEN Facebook and WPSSO?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
 * [What is the difference between the Free and Pro versions?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
 * [Why aren't Pins from my website posting Rich?](https://wpsso.com/docs/plugins/wpsso/faqs/why-arent-pins-from-my-website-posting-rich/)
 * [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
