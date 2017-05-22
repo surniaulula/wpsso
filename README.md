@@ -29,7 +29,7 @@
 
 <h4>Quick List of Features</h4>
 
-<p><strong>WPSSO Free / Basic Features</strong></p>
+<p><strong>WPSSO Free / Standard Features</strong></p>
 
 <ul>
 <li>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</li>
@@ -103,7 +103,7 @@
 
 <h4>Quick List of Features (Continued)</h4>
 
-<p><strong>WPSSO Pro / Power-User Features</strong></p>
+<p><strong>WPSSO Pro / Additional Features</strong></p>
 
 <ul>
 <li>Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.</li>

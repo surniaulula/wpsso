@@ -32,7 +32,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 = Quick List of Features =
 
-**WPSSO Free / Basic Features**
+**WPSSO Free / Standard Features**
 
 * Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
 * Adds Pinterest Rich Pin meta tags + [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
@@ -92,7 +92,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 = Quick List of Features (Continued) =
 
-**WPSSO Pro / Power-User Features**
+**WPSSO Pro / Additional Features**
 
 * Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 * Fully renders content (including shortcodes) for accurate description texts.
@@ -321,7 +321,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 <p>See <a href="https://en.wikipedia.org/wiki/Release_early,_release_often">release early, release often (RERO) software development philosophy</a> on Wikipedia for more information on the benefits of smaller / more frequent releases.</p>
 </blockquote>
 
-= Free / Basic Version Repository =
+= Free / Standard Version Repository =
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
