@@ -447,7 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
 * *Developer Notes*
-	* Moved the validate button informational text from the NgfbMeta class to the NgfbMessages class.
+	* Moved the validate button informational text from the WpssoMeta class to the WpssoMessages class.
 	* Renamed all Pinterest option key prefixes from 'rp' to 'p' to reflect the Pinterest meta tag prefix value.
 	* Renamed the SucomUtil crawler_name() method to get_crawler_name().
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
@@ -476,7 +476,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.42.0 =
 
-(2017/04/30) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace NGFB_VARY_USER_AGENT_DISABLE constant checks.
+(2017/04/30) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace WPSSO_VARY_USER_AGENT_DISABLE constant checks.
 
 = 3.41.0 =
 
