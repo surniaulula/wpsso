@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'version' => '3.44.0',		// plugin version
 					'opt_version' => '528',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
-					'name' => 'WPSSO',
+					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoam' => array(
 					'short' => 'WPSSO AM',		// short plugin name
-					'name' => 'WPSSO Mobile App Meta (WPSSO AM)',
+					'name' => 'WPSSO Mobile App Meta',
 					'desc' => 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
 					'slug' => 'wpsso-am',
 					'base' => 'wpsso-am/wpsso-am.php',
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssojson' => array(
 					'short' => 'WPSSO JSON',		// short plugin name
-					'name' => 'WPSSO Schema JSON-LD Markup (WPSSO JSON)',
+					'name' => 'WPSSO Schema JSON-LD Markup',
 					'desc' => 'WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.',
 					'slug' => 'wpsso-schema-json-ld',
 					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoorg' => array(
 					'short' => 'WPSSO ORG',		// short plugin name
-					'name' => 'WPSSO Organization Markup (WPSSO ORG)',
+					'name' => 'WPSSO Organization Markup',
 					'desc' => 'WPSSO extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.).',
 					'slug' => 'wpsso-organization',
 					'base' => 'wpsso-organization/wpsso-organization.php',
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoplm' => array(
 					'short' => 'WPSSO PLM',		// short plugin name
-					'name' => 'WPSSO Place / Location and Local Business Meta (WPSSO PLM)',
+					'name' => 'WPSSO Place / Location and Local Business Meta',
 					'desc' => 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.',
 					'slug' => 'wpsso-plm',
 					'base' => 'wpsso-plm/wpsso-plm.php',
@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssorar' => array(
 					'short' => 'WPSSO RAR',		// short plugin name
-					'name' => 'WPSSO Ratings and Reviews (WPSSO RAR)',
+					'name' => 'WPSSO Ratings and Reviews',
 					'desc' => 'WPSSO extension to add ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.',
 					'slug' => 'wpsso-ratings-and-reviews',
 					'base' => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssorrssb' => array(
 					'short' => 'WPSSO RRSSB',		// short plugin name
-					'name' => 'WPSSO Ridiculously Responsive Social Sharing Buttons (WPSSO RRSSB)',
+					'name' => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
 					'desc' => 'WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.',
 					'slug' => 'wpsso-rrssb',
 					'base' => 'wpsso-rrssb/wpsso-rrssb.php',
@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssossb' => array(
 					'short' => 'WPSSO SSB',		// short plugin name
-					'name' => 'WPSSO Social Sharing Buttons (WPSSO SSB)',
+					'name' => 'WPSSO Social Sharing Buttons',
 					'desc' => 'WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
 					'slug' => 'wpsso-ssb',
 					'base' => 'wpsso-ssb/wpsso-ssb.php',
@@ -405,7 +405,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssossm' => array(
 					'short' => 'WPSSO SSM',		// short plugin name
-					'name' => 'WPSSO Strip Schema Microdata (WPSSO SSM)',
+					'name' => 'WPSSO Strip Schema Microdata',
 					'desc' => 'WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.',
 					'slug' => 'wpsso-strip-schema-microdata',
 					'base' => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssotaq' => array(
 					'short' => 'WPSSO TAQ',		// short plugin name
-					'name' => 'WPSSO Tweet a Quote (WPSSO TAQ)',
+					'name' => 'WPSSO Tweet a Quote',
 					'desc' => 'WPSSO extension to add CSS Twitter-style quoted text with a Tweet share link to post and page content (uses easily customized CSS).',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoul' => array(
 					'short' => 'WPSSO UL',		// short plugin name
-					'name' => 'WPSSO User Locale Selector (WPSSO UL)',
+					'name' => 'WPSSO User Locale Selector',
 					'desc' => 'WPSSO extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus.',
 					'slug' => 'wpsso-user-locale',
 					'base' => 'wpsso-user-locale/wpsso-user-locale.php',
@@ -510,7 +510,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
-					'name' => 'WPSSO Update Manager (WPSSO UM)',
+					'name' => 'WPSSO Update Manager',
 					'desc' => 'WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
