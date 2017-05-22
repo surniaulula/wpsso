@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'NgfbGplSocialBuddypress' ) ) {
+if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 
-	class NgfbGplSocialBuddypress {
+	class WpssoGplSocialBuddypress {
 
 		private $p;
 		private $sharing;
