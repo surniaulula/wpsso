@@ -425,7 +425,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $post_id;
 			}
 
-			$exec_count = (int) get_option( WPSSO_POST_CHECK_NAME );	// changes false to 0
+			$exec_count = (int) get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
@@ -435,57 +435,85 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $post_id;
 			}
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'check head meta' );	// begin timer
-			}
-
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), 
 				ENT_QUOTES, $charset, false ) );	// double_encode = false
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 			$conflicts_found = 0;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'checking '.$shortlink.' head meta for duplicates' );
-			}
+			$conflicts_msg = __( 'Possible conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.',
+				'wpsso' );
 
 			if ( is_admin() ) {
 				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
 					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
 			}
 
-			// use the shortlink and have get_head_meta() remove our own meta tags
-			// to avoid issues with caching plugins that ignore query arguments
-			if ( ( $metas = $this->p->util->get_head_meta( $shortlink, '/html/head/link|/html/head/meta', true ) ) !== false ) {
-				foreach( array(
-					'link' => array( 'rel' ),
-					'meta' => array( 'name', 'property', 'itemprop' ),
-				) as $tag => $types ) {
-					if ( isset( $metas[$tag] ) ) {
-						foreach( $metas[$tag] as $meta ) {
-							foreach( $types as $type ) {
-								if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
-									! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
-									$conflicts_found++;
-									$this->p->notice->err( sprintf( __( 'Possible conflict detected &mdash; your theme or another plugin is adding a <code>%1$s</code> HTML tag to the head section of this webpage.', 'wpsso' ), $tag.' '.$type.'="'.$meta[$type].'"' ) );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'checking '.$shortlink.' head meta for duplicates' );
+			}
+
+			$html = $this->p->cache->get( $shortlink, 'raw', 'transient' );
+			$in_secs = $this->p->cache->in_secs( $shortlink );
+			$max_secs = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_TIMEOUT', 3 );
+
+			if ( $in_secs === true ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'fetched '.$shortlink.' from transient cache' );
+				}
+			} elseif ( $in_secs === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'fetched '.$shortlink.' returned a failure' );
+				}
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'fetched '.$shortlink.' in '.$in_secs.' secs' );
+				}
+				if ( $in_secs > $max_secs ) {
+					$this->p->notice->warn(
+						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.',
+							'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $in_secs ).' '.
+						sprintf( __( 'This exceeds the recommended time limit of %1$s seconds (crawlers often time-out after %1$s seconds).',
+							'wpsso' ), $max_secs ).' '.
+						__( 'Please consider improving the speed of your site.',
+							'wpsso' ).' '.
+						__( 'As an added benefit, a faster site will also improve ranking in search results.',
+							'wpsso' ).' ;-)'
+					);
+				}
+			}
+
+			if ( $html !== false ) {
+				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );
+				if ( is_array( $metas ) ) {
+					foreach( array(
+						'link' => array( 'rel' ),
+						'meta' => array( 'name', 'property', 'itemprop' ),
+					) as $tag => $types ) {
+						if ( isset( $metas[$tag] ) ) {
+							foreach( $metas[$tag] as $meta ) {
+								foreach( $types as $type ) {
+									if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
+										! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
+										$conflicts_found++;
+										$this->p->notice->err( sprintf( $conflicts_msg,
+											'<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>' ) );
+									}
 								}
 							}
 						}
 					}
+					if ( ! $conflicts_found ) {
+						update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
+						$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
+							'wpsso' ), $max_count - $exec_count ) );
+					}
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returned head meta is not an array' );
 				}
-
-				if ( ! $conflicts_found ) {
-					update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
-					$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
-						'wpsso' ), $max_count - $exec_count ) );
-				}
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'returned head meta for '.$shortlink.' is false' );
-			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'check head meta' );	// end timer
+			} elseif ( is_admin() ) {
+				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
+					'wpsso' ), $shortlink ) );
 			}
 
 			return $post_id;

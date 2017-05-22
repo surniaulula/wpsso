@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_currency' => '',		// Product Currency Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
-					'plugin_shorten_cache_exp' => MONTH_IN_SECONDS,	// Shortened URL Cache Expiry (1 month)
+					'plugin_shorten_cache_exp' => 5184000,		// Shortened URL Cache Expiry (60 days / 2 months)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image (URL) Size Cache Expiry (1 day)
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
@@ -1014,7 +1014,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
-					'plugin_shorten_cache_exp' => MONTH_IN_SECONDS,	// Shortened URL Cache Expiry (1 month)
+					'plugin_shorten_cache_exp' => 5184000,		// Shortened URL Cache Expiry (60 days / 2 months)
 					'plugin_shorten_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_content_cache_exp:use' => 'default',

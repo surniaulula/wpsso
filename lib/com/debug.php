@@ -191,11 +191,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		private function get_mem_text( $mem ) {
-			if ( $mem < 1024 )
+			if ( $mem < 1024 ) {
 				return $mem.' bytes';
-			elseif ( $mem < 1048576 )
+			} elseif ( $mem < 1048576 ) {
 				return round( $mem / 1024, 2).' kb';
-			else return round( $mem / 1048576, 2).' mb';
+			} else {
+				return round( $mem / 1048576, 2).' mb';
+			}
 		}
 
 		public function show_html( $data = null, $title = null ) {

@@ -453,47 +453,47 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/cache.php:102
+#: lib/com/cache.php:103
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:107
+#: lib/com/cache.php:108
 msgid ""
 "PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
 "library cannot follow URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:110
+#: lib/com/cache.php:111
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:115
+#: lib/com/cache.php:116
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:179
+#: lib/com/cache.php:193
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:248 lib/util.php:471
+#: lib/com/cache.php:265 lib/util.php:471
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:402
+#: lib/com/cache.php:423
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:414
+#: lib/com/cache.php:435
 msgid "Failed to open cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:500
+#: lib/com/cache.php:521
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:505
+#: lib/com/cache.php:526
 msgid "Failed to open cache file %s for writing."
 msgstr ""
 
@@ -1652,7 +1652,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:571
+#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:599
 #: lib/pro/admin/post.php:156
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2038,7 +2038,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:367 lib/messages.php:377 lib/post.php:527
+#: lib/messages.php:367 lib/messages.php:377 lib/post.php:555
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3269,18 +3269,42 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:454
+#: lib/post.php:444
+msgid ""
+"Possible conflict detected &mdash; your theme or another plugin is adding "
+"%1$s to the head section of this webpage."
+msgstr ""
+
+#: lib/post.php:448
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:471
+#: lib/post.php:474
+msgid "Retrieving the HTML document for %1$s took %2$s seconds."
+msgstr ""
+
+#: lib/post.php:476
 msgid ""
-"Possible conflict detected &mdash; your theme or another plugin is adding a "
-"<code>%1$s</code> HTML tag to the head section of this webpage."
+"This exceeds the recommended time limit of %1$s seconds (crawlers often time-"
+"out after %1$s seconds)."
+msgstr ""
+
+#: lib/post.php:478
+msgid "Please consider improving the speed of your site."
 msgstr ""
 
 #: lib/post.php:480
+msgid ""
+"As an added benefit, a faster site will also improve ranking in search "
+"results."
+msgstr ""
+
+#: lib/post.php:508
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
+msgstr ""
+
+#: lib/post.php:515 lib/util.php:817
+msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/pro/admin/meta.php:51 lib/pro/admin/post.php:46
@@ -4088,10 +4112,6 @@ msgstr ""
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
-msgstr ""
-
-#: lib/util.php:817
-msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/util.php:826

@@ -25,6 +25,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $curl_timeout = 20;
 		public $curl_max_redirs = 10;
 
+		private $in_time = array();
 		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
 			'expire' => HOUR_IN_SECONDS,
@@ -161,6 +162,18 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
+		public function in_secs( $url, $dec = 2 ) {
+			if ( isset( $this->in_time[$url] ) ) {
+				if ( is_bool( $this->in_time[$url] ) ) {
+					return $this->in_time[$url];
+				} else {
+					return sprintf( '%.0'.$dec.'f', $this->in_time[$url] );
+				}
+			} else {
+				return false;
+			}
+		}
+
 		public function get( $url, $ret_type = 'url', $cache_name = 'file', $cache_exp = false, $curl_userpwd = false, $url_ext = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -170,6 +183,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$uca = strtoupper( $this->p->cf['lca'] );
 			$failure = $ret_type === 'url' ? $url : false;
 			$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
+			$this->in_time[$url] = false;	// default value for failure
 
 			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -221,6 +235,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cached data found: returning '.strlen( $cache_data ).' chars' );
 						}
+						$this->in_time[$url] = true;	// signal return is from cache
 						return $cache_data;
 					}
 
@@ -235,7 +250,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								$this->p->debug->log( 'cached file found: returning '.$ret_type.' '.
 									( $ret_type === 'url' ? $cache_url : $cache_file ) );
 							}
-							return $ret_type === 'url' ? $cache_url : $cache_file;
+							$this->in_time[$url] = true;	// signal return is from cache
+							return $ret_type === 'url' ?
+								$cache_url : $cache_file;
 						} elseif ( @unlink( $cache_file ) ) {	// remove expired file
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removed expired cache file '.$cache_file );
@@ -314,7 +331,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: fetching '.$get_url );
 			}
 
+			$start_time = microtime( true );
 			$cache_data = curl_exec( $ch );
+			$total_time = microtime( true ) - $start_time;
 			$http_code = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 			$ssl_verify = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
 
@@ -326,6 +345,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $http_code == 200 ) {
+
+				$this->in_time[$url] = $total_time;
 
 				if ( empty( $cache_data ) ) {
 					if ( $this->p->debug->enabled ) {
