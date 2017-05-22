@@ -1,5 +1,5 @@
-=== WPSSO - Advanced and Easy Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph ===
-Plugin Name: WPSSO
+=== WPSSO (Core) - Advanced Plugin for Social Meta Tags / SEO, Schema Markup and Knowledge Graph ===
+Plugin Name: WPSSO (Core)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
