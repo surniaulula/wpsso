@@ -8,13 +8,13 @@ AGREEMENT, PLEASE DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO PRO
 APPLICATION.
 
 This License Agreement ("License") is a legal agreement between you and
-Jean-Sebastien Morisset ("The Author") concerning your use of the WordPress
-Social Sharing Optimization (WPSSO) Pro application, together with any
-electronic documentation that may be provided therewith (collectively, "the
-Application") through the Application. YOU HEREBY AGREE, BOTH ON YOUR OWN
-BEHALF AND AS AN AUTHORIZED REPRESENTATIVE OF ANY ORGANIZATION FOR WHICH YOU
-ARE USING THE APPLICATION ("EMPLOYER"), THAT YOU AND THE EMPLOYER WILL USE THE
-APPLICATION ONLY IN ACCORDANCE WITH THE FOLLOWING TERMS:
+Jean-Sebastien Morisset ("The Author") concerning your use of the WPSSO Pro
+application, together with any electronic documentation that may be provided
+therewith (collectively, "the Application") through the Application. YOU HEREBY
+AGREE, BOTH ON YOUR OWN BEHALF AND AS AN AUTHORIZED REPRESENTATIVE OF ANY
+ORGANIZATION FOR WHICH YOU ARE USING THE APPLICATION ("EMPLOYER"), THAT YOU AND
+THE EMPLOYER WILL USE THE APPLICATION ONLY IN ACCORDANCE WITH THE FOLLOWING
+TERMS:
 
 1. Disclaimer of Warranty. You expressly acknowledge and agree that use of the
 Application is at your sole risk. THE APPLICATION IS PROVIDED "AS IS," WITH ALL
