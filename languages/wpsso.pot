@@ -116,7 +116,7 @@ msgctxt "metabox title"
 msgid "Pro Version Available"
 msgstr ""
 
-#: lib/admin.php:731 lib/submenu/dashboard.php:48
+#: lib/admin.php:731
 msgctxt "metabox title"
 msgid "Pro Version Features"
 msgstr ""
@@ -3632,7 +3632,12 @@ msgstr ""
 
 #: lib/submenu/dashboard.php:47
 msgctxt "metabox title"
-msgid "Free / Core Features"
+msgid "Free / Standard Features"
+msgstr ""
+
+#: lib/submenu/dashboard.php:48
+msgctxt "metabox title"
+msgid "Pro / Additional Features"
 msgstr ""
 
 #: lib/submenu/essential.php:32

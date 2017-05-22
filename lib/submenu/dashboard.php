@@ -44,8 +44,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 				'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
 				'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
-				'status_gpl' => _x( 'Free / Core Features', 'metabox title', 'wpsso' ),
-				'status_pro' => _x( 'Pro Version Features', 'metabox title', 'wpsso' ),
+				'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
+				'status_pro' => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
 			);
 
 			foreach ( $ids as $id => $name ) {
