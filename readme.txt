@@ -104,7 +104,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 * Configurable user profile contact field names and labels.
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
-	* **WPSSO Pro Integrated 3rd Party Plugins**
+	* **Integration with 3rd Party Plugins**
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress (including Group Forum Topics)
@@ -123,7 +123,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 		* WP eCommerce
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
-	* **WPSSO Pro Integrated Service APIs**
+	* **Integration with Service APIs**
 		* Bitly
 		* Facebook Embedded Videos
 		* Google URL Shortener
