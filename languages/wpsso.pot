@@ -497,27 +497,27 @@ msgstr ""
 msgid "Failed to open cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:93 lib/config-gettext-extract.php:58
+#: lib/com/form.php:94 lib/config-gettext-extract.php:58
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:229 lib/config-gettext-extract.php:53
+#: lib/com/form.php:239 lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:234 lib/config-gettext-extract.php:56
+#: lib/com/form.php:244 lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:239 lib/config-gettext-extract.php:54
+#: lib/com/form.php:249 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:245 lib/com/form.php:324 lib/config-gettext-extract.php:14
+#: lib/com/form.php:255 lib/com/form.php:336 lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
