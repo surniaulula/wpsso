@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' );
 				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
-				self::$pkg[$ext]['name'] = $info['name'].' '.self::$pkg[$ext]['type'];
+				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {

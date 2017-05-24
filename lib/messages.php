@@ -45,15 +45,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$info['lca'] = $lca = isset( $info['lca'] ) ?	// wpsso, wpssoum, etc.
 				$info['lca'] : $this->p->cf['lca'];
 
-			foreach ( array( 'short', 'name', 'version' ) as $key ) {
-				$info[$key] = isset( $info[$key] ) ?
-					$info[$key] : $this->p->cf['plugin'][$lca][$key];
-				$info[$key.'_pro'] = $info[$key].' Pro';
-			}
-
 			// an array of plugin urls (download, purchase, etc.)
 			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?
 				$this->p->cf['plugin'][$lca]['url'] : array();
+
+			$url['purchase'] = empty( $url['purchase'] ) ?
+				'' : add_query_arg( 'utm_source', $idx, $url['purchase'] );
+
+			foreach ( array( 'short', 'name', 'version' ) as $key ) {
+				$info[$key] = isset( $info[$key] ) ?
+					$info[$key] : $this->p->cf['plugin'][$lca][$key];
+
+				$info[$key.'_pro'] = SucomUtil::get_pkg_name( $info[$key], 'Pro' );
+
+				$info[$key.'_pro_purchase'] = empty( $url['purchase'] ) ?
+					$info[$key.'_pro'] : '<a href="'.$url['purchase'].'" target="_blank">'.$info[$key.'_pro'].'</a>';
+			}
+
 
 			$fb_recommends = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
 
@@ -1062,24 +1070,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-feature-msg':
 						if ( $lca !== $this->p->cf['lca'] &&
 							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) ) {
-								$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
-								$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
-									'wpsso' ), $req_short );
-						} else $req_msg = '';
-
-						$purchase_url = add_query_arg( 'utm_source', $idx, $url['purchase'] );
-						if ( $this->p->check->aop( $lca, false ) )
-							$text = '<p class="pro-feature-msg"><a href="'.$purchase_url.'" target="_blank">'.
+							$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
+							$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
+								'wpsso' ), $req_short );
+						} else {
+							$req_msg = '';
+						}
+						if ( $this->p->check->aop( $lca, false ) ) {
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
 								sprintf( __( 'Purchase %s licence(s) to install its Pro modules and use the following features / options.',
 									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
-						else $text = '<p class="pro-feature-msg"><a href="'.$purchase_url.'" target="_blank">'.
-							sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
-								'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
+						} else {
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+								sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
+									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
+						}
 						break;
 
 					case 'pro-option-msg':
-						$purchase_url = add_query_arg( 'utm_source', $idx, $url['purchase'] );
-						$text = '<p class="pro-option-msg"><a href="'.$purchase_url.'" target="_blank">'.
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
 							sprintf( _x( 'option requires %s', 'option comment', 'wpsso' ),
 								$info['short_pro'] ).'</a></p>';
 						break;
@@ -1102,7 +1111,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'pro-about-msg-post-media':
-						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>'.sprintf( __( 'The video service modules &mdash; required to detect embedded videos &mdash; are available with the %s Pro version.', 'wpsso' ),  $info['short'] ).'</p>';
+						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>'.sprintf( __( 'Video service API modules &mdash; required to detect embedded videos &mdash; are available in the %s version.', 'wpsso' ),  $info['name_pro'] ).'</p>';
 						break;
 
 					default:

@@ -2165,6 +2165,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			return $css_data;
 		}
+
+		public static function add_pkg_name( &$name, $type ) {
+			$name = self::get_pkg_name( $name, $type );
+		}
+
+		public static function get_pkg_name( $name, $type ) {
+			if ( strpos( $name, $type ) !== false ) {
+				$name = preg_replace( '/^(.*) '.$type.'( \(.+\))?$/U', '$1$2', $name );
+			}
+			return preg_replace( '/^(.*)( \(.+\))?$/U', '$1 '.$type.'$2', $name );
+		}
 	}
 }
 
