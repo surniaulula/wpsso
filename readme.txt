@@ -342,9 +342,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Fixed HTML detection when passed as an argument to parse head meta tags for the duplicate meta tag check.
-* *Bugfixes*
 	* None
+* *Bugfixes*
+	* Fixed HTML detection when passed as an argument to parse head meta tags for the duplicate meta tag check.
 * *Developer Notes*
 	* None
 
