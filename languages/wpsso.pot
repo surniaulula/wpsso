@@ -1652,7 +1652,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:599
+#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:605
 #: lib/pro/admin/post.php:154
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2038,7 +2038,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:375 lib/messages.php:385 lib/post.php:555
+#: lib/messages.php:375 lib/messages.php:385 lib/post.php:561
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2065,7 +2065,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:380 lib/util.php:1862
+#: lib/messages.php:380 lib/util.php:1866
 msgid "No options available."
 msgstr ""
 
@@ -3303,7 +3303,11 @@ msgstr ""
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:515 lib/util.php:821
+#: lib/post.php:516
+msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/post.php:521 lib/util.php:825
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4119,39 +4123,43 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:832
+#: lib/util.php:814
+msgid "The %1$s request argument is not HTML or a valid URL."
+msgstr ""
+
+#: lib/util.php:836
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:858
+#: lib/util.php:862
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:901
+#: lib/util.php:905
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1888
+#: lib/util.php:1892
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1892
+#: lib/util.php:1896
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1895
+#: lib/util.php:1899
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1899
+#: lib/util.php:1903
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

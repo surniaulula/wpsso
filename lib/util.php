@@ -808,7 +808,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
+					$this->p->debug->log( 'exiting early: request argument is not html or a valid url' );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.',
+						'wpsso' ), __FUNCTION__ ) );
 				}
 				return false;
 

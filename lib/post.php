@@ -508,8 +508,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
 							'wpsso' ), $max_count - $exec_count ) );
 					}
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returned head meta is not an array' );
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returned head meta is not an array' );
+					}
+					if ( is_admin() ) {
+						$this->p->notice->err( sprintf( __( 'Error parsing head meta for <a href="%1$s">%1$s</a>.',
+							'wpsso' ), $shortlink ) );
+					}
 				}
 			} elseif ( is_admin() ) {
 				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
