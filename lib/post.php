@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			if ( $html !== false ) {
+			if ( ! empty( $html ) ) {
 				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );
 				if ( is_array( $metas ) ) {
 					foreach( array(

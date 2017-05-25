@@ -798,18 +798,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
+			if ( stripos( $request, '<html' ) !== false ) {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'using html submitted in the request argument' );
+					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
 				$html = $request;
-			} elseif ( strpos( $request, '://' ) === false ) {
+
+			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
 				}
 				return false;
-			// fetch the webpage content and save it as a transient
+
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching '.$request );
 				}
@@ -818,7 +822,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ), $request ) );
 				}
 				return false;
+
 			} elseif ( empty( $html ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for '.$request.' is empty' );
 				}

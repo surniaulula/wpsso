@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.44.0\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.44.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2065,7 +2065,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:380 lib/util.php:1856
+#: lib/messages.php:380 lib/util.php:1862
 msgid "No options available."
 msgstr ""
 
@@ -3303,7 +3303,7 @@ msgstr ""
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:515 lib/util.php:817
+#: lib/post.php:515 lib/util.php:821
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4119,39 +4119,39 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:826
+#: lib/util.php:832
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:852
+#: lib/util.php:858
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:895
+#: lib/util.php:901
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1882
+#: lib/util.php:1888
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1886
+#: lib/util.php:1892
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1889
+#: lib/util.php:1895
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1893
+#: lib/util.php:1899
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
