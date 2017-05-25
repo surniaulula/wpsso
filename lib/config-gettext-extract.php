@@ -3,7 +3,7 @@
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
-_x( 'Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.', 'plugin description', 'wpsso' );
+_x( 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Beta and Up', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
