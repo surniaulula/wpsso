@@ -10,7 +10,7 @@ Tags: meta tags, open graph, share, social, schema markup, twitter card, video s
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7.5
-Stable Tag: 3.44.0
+Stable Tag: 3.44.1
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for Social Sharing Optimization (SSO) and SEO.
 
