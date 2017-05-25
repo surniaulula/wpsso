@@ -337,6 +337,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.44.1 (2017/05/25)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Fixed HTML detection when passed as an argument to parse head meta tags for the duplicate meta tag check.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.44.0 (2017/05/19)**
 
 * *New Features*
@@ -453,6 +464,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.44.1 =
+
+(2017/05/25) Fixed HTML detection when passed as an argument to parse head meta tags for the duplicate meta tag check.
 
 = 3.44.0 =
 
