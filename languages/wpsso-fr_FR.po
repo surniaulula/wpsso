@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Social Sharing Optimization (WPSSO) 3.44.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-05-24 10:20-0400\n"
-"PO-Revision-Date: 2017-05-24 10:21-0400\n"
+"POT-Creation-Date: 2017-05-24 22:41-0400\n"
+"PO-Revision-Date: 2017-05-24 22:42-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1061,7 +1061,7 @@ msgstr "Appliquer les filtres d'extrait WP"
 #: lib/gpl/admin/advanced.php:60 lib/pro/admin/advanced.php:64
 msgctxt "option label"
 msgid "Content Starts at 1st Paragraph"
-msgstr "Contenu commence 1er Paragraphe"
+msgstr "Contenu commence 1er paragraphe"
 
 #: lib/gpl/admin/advanced.php:65 lib/pro/admin/advanced.php:69
 msgctxt "option label"
@@ -1580,7 +1580,7 @@ msgid "and currency"
 msgstr "et devise"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:599
+#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:605
 #: lib/pro/admin/post.php:154
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1847,7 +1847,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr "L'activation de cette option re-ordonne également les onglets metabox %1$s pour votre commodité &ndash; déplaçant les onglets %2$s, %3$s et %4$s au premier plan."
 
-#: lib/messages.php:375 lib/messages.php:385 lib/post.php:555
+#: lib/messages.php:375 lib/messages.php:385 lib/post.php:561
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -1872,7 +1872,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:380 lib/util.php:1856
+#: lib/messages.php:380 lib/util.php:1866
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2771,7 +2771,11 @@ msgstr "Comme avantage supplémentaire, un site plus rapide améliore également
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérifications a faire..."
 
-#: lib/post.php:515 lib/util.php:817
+#: lib/post.php:516
+msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
+msgstr "Erreur d'analyse méta de tête pour <a href=\"%1$s\">%1$s</a>."
+
+#: lib/post.php:521 lib/util.php:825
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -3542,34 +3546,38 @@ msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:826
+#: lib/util.php:814
+msgid "The %1$s request argument is not HTML or a valid URL."
+msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
+
+#: lib/util.php:836
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:852
+#: lib/util.php:862
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre HTML qui corrompt les balises méta de %1$s."
 
-#: lib/util.php:895
+#: lib/util.php:905
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1882
+#: lib/util.php:1892
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1886
+#: lib/util.php:1896
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1889
+#: lib/util.php:1899
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1893
+#: lib/util.php:1903
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
