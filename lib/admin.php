@@ -1348,23 +1348,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function licenses_metabox_content( $network = false ) {
-			$num = 0;
-			$tabindex = 0;
 			$lca = $this->p->cf['lca'];
-			$total = count( $this->p->cf['plugin'] );
-			$row_span = $network ? 4 : 3;
-			$col_span = $network ? 2 : 3;
+			$tabindex = 0;
+			$ext_num = 0;
+			$ext_total = count( $this->p->cf['plugin'] );
 
 			echo '<table class="sucom-settings '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
 
-			echo '<tr><td colspan="'.( $col_span + 1 ).'">'.
+			echo '<tr><td colspan="3">'.
 				$this->p->msgs->get( 'info-plugin-tid'.( $network ? '-network' : '' ) ).
 					'</td></tr>'."\n";
 
 			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
-				$num++;
-				$links = array();
+
+				$ext_num++;
+				$ext_links = array();
+				$table_rows = array();
 
 				if ( ! empty( $info['base'] ) ) {
 
@@ -1381,86 +1381,107 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( SucomUtil::installed_plugins( $info['base'] ) ) {
 
 						if ( SucomUtil::plugin_has_update( $info['base'] ) ) {
-							$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+							$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
 								'<font color="red">'._x( 'Plugin Details and Update', 'plugin action link',
 									'wpsso' ).'</font></a>';
 						} else {
-							$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+							$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
 								_x( 'Plugin Details', 'plugin action link', 'wpsso' ).'</a>';
 						}
 					} else {
-						$links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
+						$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
 							_x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ).'</a>';
 					}
 
 				} elseif ( ! empty( $info['url']['home'] ) ) {
-					$links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
+					$ext_links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
 						_x( 'Plugin Description', 'plugin action link', 'wpsso' ).'</a>';
 				}
 
 				if ( ! empty( $info['base'] ) ) {
-					$links = $this->add_plugin_action_links( $links, $info['base'], 'license-action-links', $tabindex );
+					$ext_links = $this->add_plugin_action_links( $ext_links, $info['base'], 'license-action-links', $tabindex );
 				}
 
-				// logo image
-				echo '<tr><td style="width:168px; padding:10px 30px 10px 10px; vertical-align:top;"'.
-					' width="168" rowspan="'.$row_span.'" valign="top" align="left">'."\n";
-				echo $this->get_ext_img_icon( $ext );
-				echo '</td>'."\n";
+				/*
+				 * Plugin Name, Description, and Links
+				 */
+				$table_rows['plugin_name'] = '<td colspan="2" style="width:100%;">'.
+					'<p style="margin-top:10px;"><strong>'.$info['name'].'</strong></p>'.
+					( empty( $info['desc'] ) ? '' : '<p>'._x( $info['desc'],
+						'plugin description', 'wpsso' ).'</p>' ).
+					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.
+						implode( ' | ', $ext_links ).'</div>' ).'</td>';
 
-				// plugin name
-				echo '<td colspan="'.$col_span.'" style="padding:10px 0 0 0; width:100%;"><p><strong>'.$info['name'].'</strong></p>';
+				/*
+				 * Plugin Authentication ID and License Information
+				 */
+				if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 
-				if ( ! empty( $info['desc'] ) ) {
-					echo '<p>'._x( $info['desc'], 'plugin description', 'wpsso' ).'</p>';
-				}
-
-				if ( ! empty( $links ) ) {
-					echo '<div class="row-actions visible">'.implode( ' | ', $links ).'</div>';
-				}
-
-				echo '</td></tr>'."\n";
-
-				if ( ! empty( $info['update_auth'] ) ||
-					! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-
-					echo '<tr>';
-					echo $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
+					$table_rows['plugin_tid'] = $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
 						'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' );
 
 					if ( $lca === $ext || self::$pkg[$lca]['aop'] ) {
-						echo '<td'.( $network ? ' width="100%"' : '' ).'>'.
+
+						$table_rows['plugin_tid'] .= '<td width="100%">'.
 							$this->form->get_input( 'plugin_'.$ext.'_tid',
 								'tid mono', '', 0, '', false, ++$tabindex ).'</td>';
 
 						if ( $network ) {
-							echo '</tr><tr>';
-							echo self::get_option_site_use( 'plugin_'.$ext.'_tid', 
+
+							$table_rows['site_use'] = self::get_option_site_use( 'plugin_'.$ext.'_tid', 
 								$this->form, $network, true );	// th and td
-						} else {
-							$qty_used = class_exists( 'SucomUpdate' ) ?
-								SucomUpdate::get_option( $ext, 'qty_used' ) : false;
-							echo '<td width="100%"><p>'.( empty( $qty_used ) ?
-								'' : $qty_used.' Licenses Assigned' ).'</p></td>';
+
+						} elseif ( class_exists( 'SucomUpdate' ) ) {
+
+							foreach ( array(
+								'exp_date' => __( 'Support and Updates Expire', 'wpsso' ),
+								'qty_used' => __( 'Site Licenses Assigned', 'wpsso' ),
+							) as $key => $label ) {
+								if ( $val = SucomUpdate::get_option( $ext, $key ) ) {
+									switch ( $key ) {
+										case 'exp_date':
+											if ( $val === '0000-00-00 00:00:00' ) {
+												$val = 'Never';
+											}
+											break;
+									}
+									$table_rows[$key] = '<th>'.$label.'</th>'.
+										'<td width="100%">'.$val.'</td>';
+								}
+							}
 						}
 					} else {
-						echo '<td class="blank">'.( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
-							$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
-							$this->form->get_input( 'plugin_'.$ext.'_tid',
-								'tid mono', '', 0, '', false, ++$tabindex ) ).'</td>';
+						$table_rows['plugin_tid'] .= '<td class="blank">'.
+							( empty( $this->p->options['plugin_'.$ext.'_tid'] ) ?
+								$this->form->get_no_input( 'plugin_'.$ext.'_tid', 'tid mono' ) :
+								$this->form->get_input( 'plugin_'.$ext.'_tid', 'tid mono',
+									'', 0, '', false, ++$tabindex ) ).'</td>';
 					}
-					echo '</tr>'."\n";
 				} else {
-					if ( $network ) {
-						echo '<tr></tr>'."\n";
-						echo '<tr><td>&nbsp;</td></tr>'."\n";
-					} else {
-						echo '<tr><td>&nbsp;</td><td></td><td width="100%"></td></tr>'."\n";
-					}
+					$table_rows['plugin_tid'] = '<td>&nbsp;</td><td width="100%">&nbsp;</td>';
 				}
 
-				echo '<tr><td'.( $num < $total ? ' style="border-bottom:1px dotted #ddd; height:5px;"' : '' ).
-					' colspan="'.$col_span.'"></td></tr>'."\n";
+				/*
+				 * Dotted Line
+				 */
+				if ( $ext_num < $ext_total ) {
+					$table_rows['dotted_line'] = '<td style="border-bottom:1px dotted #ddd; height:5px;" colspan="2"></td>';
+				}
+
+				/*
+				 * Show the Table Rows
+				 */
+				foreach ( $table_rows as $key => $row ) {
+					echo '<tr>';
+					if ( $key === 'plugin_name' ) {
+						echo '<td style="width:168px; padding:10px 30px 10px 10px; vertical-align:top;"'.
+							' width="168" rowspan="'.count( $table_rows ).'" valign="top" align="left">'."\n";
+						echo $this->get_ext_img_icon( $ext );
+						echo '</td>';
+					}
+					echo $row;
+					echo '</tr>';
+				}
 			}
 			echo '</table>'."\n";
 		}
