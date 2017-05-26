@@ -1434,14 +1434,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						} elseif ( class_exists( 'SucomUpdate' ) ) {
 
 							foreach ( array(
-								'exp_date' => __( 'Support and Updates Expire', 'wpsso' ),
-								'qty_used' => __( 'Site Licenses Assigned', 'wpsso' ),
+								'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
+								'qty_used' => _x( 'Site Licenses Assigned', 'option label', 'wpsso' ),
 							) as $key => $label ) {
 								if ( $val = SucomUpdate::get_option( $ext, $key ) ) {
 									switch ( $key ) {
 										case 'exp_date':
 											if ( $val === '0000-00-00 00:00:00' ) {
-												$val = __( 'Never', 'wpsso' );
+												$val = _x( 'Never', 'option value', 'wpsso' );
 											}
 											break;
 									}

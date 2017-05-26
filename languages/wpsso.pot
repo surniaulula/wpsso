@@ -280,14 +280,17 @@ msgid "%s Authentication ID"
 msgstr ""
 
 #: lib/admin.php:1437
+msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
 #: lib/admin.php:1438
+msgctxt "option label"
 msgid "Site Licenses Assigned"
 msgstr ""
 
 #: lib/admin.php:1444
+msgctxt "option value"
 msgid "Never"
 msgstr ""
 
