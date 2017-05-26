@@ -287,6 +287,10 @@ msgstr ""
 msgid "Site Licenses Assigned"
 msgstr ""
 
+#: lib/admin.php:1444
+msgid "Never"
+msgstr ""
+
 #: lib/admin.php:1494
 msgid "Plugin conflict detected"
 msgstr ""
