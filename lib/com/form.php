@@ -688,17 +688,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'>'.esc_attr( $value ).'</textarea>';
 		}
 
-		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false ) {
-			$js = $newtab === true ?
-				'window.open(\''.esc_url( $url ).'\', \'_blank\');' :
-				'location.href=\''.esc_url( $url ).'\';';
+		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {
+
+			$on_click = $newtab === true ?
+				' onclick="window.open(\''.esc_url( $url ).'\', \'_blank\');"' :
+				' onclick="location.href=\''.esc_url( $url ).'\';"';
+
+			$data_attr = '';
+			if ( is_array( $data ) ) {
+				foreach ( $data as $key => $val ) {
+					$data_attr .= ' data-'.$key.'="'.esc_attr( $val ).'"';
+				}
+			}
 
 			$html = '<input type="button"'.
 				( $disabled ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="button_'.esc_attr( $id ).'"' ).
-				( empty( $url ) || $disabled ? '' : ' onClick="'.$js.'"' ).
-				' value="'.esc_attr( $value ).'" />';
+				( empty( $url ) || $disabled ? '' : $on_click ).
+				' value="'.esc_attr( $value ).'"'.$data_attr.' />';
 
 			return $html;
 		}

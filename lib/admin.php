@@ -75,6 +75,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
+				add_filter( 'current_screen', array( &$this, 'screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
 
@@ -1279,11 +1280,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_rate_review() {
+
 			$lca = $this->p->cf['lca'];
+
 			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
 			echo $this->p->msgs->get( 'column-rate-review' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
 					continue;
 				}
@@ -1292,11 +1296,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info['url']['review'] ) ) {
 
-					$rate_stars = '<span class="wpsso-rate-stars"></span>';
+					$rate_stars = '<span class="'.$lca.'-rate-stars"></span>';
 					$plugin_name = '<em>'.$info['name'].'</em>';
 
 					$links[] = '<a href="'.$info['url']['review'].'" target="_blank">'.
-						sprintf( __( 'Rate %1$s the %2$s plugin.', 'wpsso' ),
+						sprintf( __( 'Rate %1$s %2$s.', 'wpsso' ),
 							$rate_stars, $plugin_name ).'</a>';
 				}
 
@@ -1647,6 +1651,80 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->debug->log( $log_pre.'squirrly seo json-ld markup is enabled' );
 					}
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
+				}
+			}
+		}
+
+		public function screen_notices( $screen ) {
+			$lca = $this->p->cf['lca'];
+			$screen_id = SucomUtil::get_screen_id( $screen );
+			switch ( $screen_id ) {
+				case 'dashboard':
+				case ( strpos( $screen_id, '_page_'.$lca.'-' ) !== false ? true : false ):
+					$this->timed_notices();
+					break;
+			}
+			return $screen;
+		}
+
+		public function timed_notices() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			$lca = $this->p->cf['lca'];
+			$rate_stars = '<span class="'.$lca.'-rate-stars"></span>';
+			$user_id = get_current_user_id();
+			$user_dismissed = empty( $user_id ) ? false :
+				get_user_option( WPSSO_DISMISS_NAME, $user_id );	// get dismissed message ids
+			$all_times = $this->p->util->get_all_times();
+			$now_time = time();
+			$one_week = $now_time - WEEK_IN_SECONDS;
+
+			$this->set_form_object( $lca );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
+				if ( empty( $info['version'] ) ||		// must be an active plugin
+					empty( $info['url']['review'] ) ) {	// must be hosted on wordpress.org
+					continue;
+				}
+
+				$msg_id_review = 'ask-'.$ext.'-plugin-review';
+
+				if ( ! isset( $dis_arr['inf_'.$msg_id_review] ) && 
+					isset( $all_times[$ext.'_activate_time'] ) && 
+						$all_times[$ext.'_activate_time'] < $one_week ) {
+
+					$submit_buttons = $this->form->get_button( sprintf( __( 'Yes, I\'d like to help by rating the %s plugin',
+						'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
+							true, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for rating %s! You\'re awesome!',
+								'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+
+					$submit_buttons .= $this->form->get_button( sprintf( __( 'I would, but I\'ve already rated the %s plugin',
+						'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
+							false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for having rated %s! You\'re awesome!',
+								'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+
+					$notice_msg = '<p>'.
+						'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
+						sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
+							'wpsso' ), $info['name'] ).' '.
+						__( 'That\'s awesome!', 'wpsso' ).' '.
+						'</p><p>'.
+						__( 'Can I ask a small favor &mdash; would you rate the plugin on wordpress.org?',
+							'wpsso' ).' '.
+						'</p><p>'.
+						sprintf( __( 'Your rating will help others find this plugin <em>and</em> encourage us to keep improving the %s plugin as well.',
+							'wpsso' ), $info['short'] ).' :-) '.
+						'</p><p>'.
+						$submit_buttons.
+						'</p>';
+
+					$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
+
+					return;	// only show one notice at a time
 				}
 			}
 		}

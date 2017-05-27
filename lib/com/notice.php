@@ -333,6 +333,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function ajax_dismiss_notice() {
+
 			$dis_info = array();
 			$user_id = get_current_user_id();
 
@@ -367,7 +368,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			die( '1' );
 		}
 
-		private function can_dismiss() {
+		public function can_dismiss() {
 			global $wp_version;
 			if ( version_compare( $wp_version, 4.2, '>=' ) ) {
 				return true;
@@ -430,11 +431,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			jQuery(".'.$this->lca.'-dismissible").show();
 			notice.hide();
 		});
-		jQuery(".'.$this->lca.'-dismissible > .notice-dismiss").click( function() {
-			var notice = jQuery( this ).parent(".'.$this->lca.'-dismissible");
+		jQuery("div.'.$this->lca.'-dismissible > div.notice-dismiss, div.'.$this->lca.'-dismissible .dismiss-on-click").click( function() {
+			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
+
+			var notice = jQuery( this ).closest(".'.$this->lca.'-dismissible");
 			var dismiss_nonce = notice.data( "dismiss-nonce" );
 			var dismiss_key = notice.data( "dismiss-key" );
 			var dismiss_time = notice.data( "dismiss-time" );
+
 			jQuery.post(
 				ajaxurl, {
 					action: "'.$this->lca.'_dismiss_notice",
@@ -443,7 +447,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					time: dismiss_time
 				}
 			);
-			notice.hide();
+
+			if ( dismiss_msg ) {
+				notice.children("div.notice-dismiss").hide();
+				jQuery( this ).closest("div.notice-message").html( dismiss_msg );
+			} else {
+				notice.hide();
+			}
 		});
 	});
 </script>
@@ -484,11 +494,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="'.$msg_type.'_'.$payload['dis_key'].'"';
 
-			$data_attr = ! $is_dismissible ?
-				'' : ' data-dismiss-nonce="'.wp_create_nonce( __FILE__ ).'"'.
-					' data-dismiss-key="'.$payload['dis_key'].'"'.
-					' data-dismiss-time="'.( is_numeric( $payload['dis_time'] ) ?
-						$payload['dis_time'] : 0 ).'"';
+			$data_attr = $is_dismissible ?
+				' data-dismiss-nonce="'.wp_create_nonce( __FILE__ ).'"'.
+				' data-dismiss-key="'.esc_attr( $payload['dis_key'] ).'"'.
+				' data-dismiss-time="'.( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ).'"' : '';
 
 			// optionally hide notices if required
 			$style_attr = ' style="'.

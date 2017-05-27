@@ -1058,21 +1058,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// get the timestamp array and perform a quick sanity check
 		public function get_all_times() {
 			$has_changed = false;
-			$ts = get_option( WPSSO_TS_NAME, array() );
+			$all_times = get_option( WPSSO_TS_NAME, array() );
 			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
 				if ( empty( $info['version'] ) ) {
 					continue;
 				}
 				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
-					if ( empty( $ts[$lca.'_'.$type.'_time'] ) ||
-						( $type === 'update' && ( empty( $ts[$lca.'_'.$type.'_version'] ) || 
-							version_compare( $ts[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) ) {
+					if ( empty( $all_times[$lca.'_'.$type.'_time'] ) ||
+						( $type === 'update' && ( empty( $all_times[$lca.'_'.$type.'_version'] ) || 
+							version_compare( $all_times[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) ) {
 						$has_changed = self::save_time( $lca, $info['version'], $type );
 					}
 				}
 			}
 			return $has_changed === false ?
-				$ts : get_option( WPSSO_TS_NAME, array() );
+				$all_times : get_option( WPSSO_TS_NAME, array() );
 		}
 
 		public function get_inline_vars() {
