@@ -1676,8 +1676,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$rate_stars = '<span class="'.$lca.'-rate-stars"></span>';
 			$user_id = get_current_user_id();
-			$user_dismissed = empty( $user_id ) ? false :
-				get_user_option( WPSSO_DISMISS_NAME, $user_id );	// get dismissed message ids
 			$all_times = $this->p->util->get_all_times();
 			$now_time = time();
 			$one_week = $now_time - WEEK_IN_SECONDS;
@@ -1686,17 +1684,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ||		// must be an active plugin
-					empty( $info['url']['review'] ) ) {	// must be hosted on wordpress.org
-					continue;
-				}
-
 				$msg_id_review = 'ask-'.$ext.'-plugin-review';
 
-				if ( ! isset( $dis_arr['inf_'.$msg_id_review] ) && 
-					isset( $all_times[$ext.'_activate_time'] ) && 
-						$all_times[$ext.'_activate_time'] < $one_week ) {
-				} else {
+				if ( empty( $info['version'] ) ) {	// not installed
+					continue;
+				} elseif ( empty( $info['url']['review'] ) ) {	// must be hosted on wordpress.org
+					continue;
+				} elseif ( $this->p->notice->is_dismissed( $msg_id_review, $user_id ) ) {
+					continue;
+				} elseif ( ! isset( $all_times[$ext.'_activate_time'] ) ) {	// never activated
+					continue;
+				} elseif ( $all_times[$ext.'_activate_time'] > $one_week ) {	// activated less than a week ago
 					continue;
 				}
 
@@ -1715,7 +1713,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$submit_buttons .= $this->form->get_button( sprintf( __( 'I\'ve already rated the %s plugin',
 					'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
-						false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for having rated %s! You\'re awesome!',
+						false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
 							'wpsso' ), $info['short'] ).'</p>' ) ).' ';
 
 				$notice_msg = '<p><b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
