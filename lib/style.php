@@ -309,6 +309,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-size:12px;
 					vertical-align:top;
 				}
+				.'.$lca.'-dismissible div.notice-message p {
+					margin:10px 0 10px 0;
+				}
 				.'.$lca.'-rate-stars {
 					font-family:"Star";
 					font-size:0.9em;

@@ -1696,36 +1696,47 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! isset( $dis_arr['inf_'.$msg_id_review] ) && 
 					isset( $all_times[$ext.'_activate_time'] ) && 
 						$all_times[$ext.'_activate_time'] < $one_week ) {
-
-					$submit_buttons = $this->form->get_button( sprintf( __( 'Yes, I\'d like to help by rating the %s plugin',
-						'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
-							true, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for rating %s! You\'re awesome!',
-								'wpsso' ), $info['short'] ).'</p>' ) ).' ';
-
-					$submit_buttons .= $this->form->get_button( sprintf( __( 'I would, but I\'ve already rated the %s plugin',
-						'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
-							false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for having rated %s! You\'re awesome!',
-								'wpsso' ), $info['short'] ).'</p>' ) ).' ';
-
-					$notice_msg = '<p>'.
-						'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
-						sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
-							'wpsso' ), $info['name'] ).' '.
-						__( 'That\'s awesome!', 'wpsso' ).' '.
-						'</p><p>'.
-						__( 'Can I ask a small favor &mdash; would you rate the plugin on wordpress.org?',
-							'wpsso' ).' '.
-						'</p><p>'.
-						sprintf( __( 'Your rating will help others find this plugin <em>and</em> encourage us to keep improving the %s plugin as well.',
-							'wpsso' ), $info['short'] ).' :-) '.
-						'</p><p>'.
-						$submit_buttons.
-						'</p>';
-
-					$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
-
-					return;	// only show one notice at a time
+				} else {
+					continue;
 				}
+
+				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
+					$support_url = $info['url']['support'];
+				} elseif ( ! empty( $info['url']['forum'] ) ) {
+					$support_url = $info['url']['forum'];
+				} else {
+					$support_url = '';
+				}
+
+				$submit_buttons = $this->form->get_button( sprintf( __( 'Yes, I\'d like to help by rating the %s plugin',
+					'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
+						true, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for rating %s! You\'re awesome!',
+							'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+
+				$submit_buttons .= $this->form->get_button( sprintf( __( 'I\'ve already rated the %s plugin',
+					'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
+						false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for having rated %s! You\'re awesome!',
+							'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+
+				$notice_msg = '<p><b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
+					sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.', 'wpsso' ), $info['name'] ).' '.
+						__( 'That\'s awesome!', 'wpsso' ).'</p>';
+					
+				$notice_msg .= '<p>'.__( 'Can I ask a small favor &mdash; would you rate the plugin on wordpress.org?',
+					'wpsso' ).'</p>';
+					
+				$notice_msg .= '<p>'.sprintf( __( 'Your rating will help others find the plugin <em>and</em> encourage us to keep improving the %s plugin as well.',
+					'wpsso' ), $info['short'] ).' :-) '.'</p>';
+				
+				$notice_msg .= '<p>'.$submit_buttons.'</p>';
+					
+				$notice_msg .= '<p>'.( empty( $support_url ) ? '' : '<a href="'.$support_url.'" target="_blank" class="dismiss-on-click">' ).
+					sprintf( __( 'No thanks &mdash; I would prefer to offer a few suggestions to improve the %s plugin instead.',
+						'wpsso' ), $info['short'] ).( empty( $support_url ) ? '' : '</a>' ).'</p>';
+
+				$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
+
+				return;	// only show one notice at a time
 			}
 		}
 
