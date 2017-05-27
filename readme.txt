@@ -337,12 +337,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.2-dev.1 (2017/05/26)**
+**Version 3.44.2-dev.2 (2017/05/26)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added license information bellow the Authentication ID on the Pro Licenses settings page (Pro version).
+	* Added a notice message to rate the plugin after one week.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -476,7 +477,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.2-dev.1 =
+= 3.44.2-dev.2 =
 
 (2017/05/26) Added license information bellow the Authentication ID on the Pro Licenses settings page (Pro version).
 
