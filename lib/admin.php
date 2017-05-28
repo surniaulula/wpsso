@@ -1654,15 +1654,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		// only show timed notices on the dashboard and the settings pages
 		public function screen_notices( $screen ) {
 			$lca = $this->p->cf['lca'];
 			$screen_id = SucomUtil::get_screen_id( $screen );
+
 			switch ( $screen_id ) {
 				case 'dashboard':
 				case ( strpos( $screen_id, '_page_'.$lca.'-' ) !== false ? true : false ):
 					$this->timed_notices();
 					break;
 			}
+
 			return $screen;
 		}
 
@@ -1680,13 +1683,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_id = $lca.'_'.md5( $cache_salt );
 			$this->set_form_object( $lca );
 
-			if ( get_transient( $cache_id ) ) {	// only show a notice every 24 hours
+			if ( get_transient( $cache_id ) ) {	// only show every 24 hours for each user id
 				return;
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				$msg_id_review = 'ask-'.$ext.'-plugin-review';
+				$msg_id_review = 'timed-notice-'.$ext.'-plugin-review';
 
 				if ( empty( $info['version'] ) ) {	// not installed
 					continue;
@@ -1721,7 +1724,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$notice_msg = '<p style="font-size:1.05em;">'.
 					'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
 					sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
-						'wpsso' ), $info['name'] ).' '.
+						'wpsso' ), '<a href="'.$info['url']['home'].'" target="_blank" title="'.
+							sprintf( __( 'The %s plugin description page on WordPress.org',
+								'wpsso' ), $info['short'] ).'">'.$info['name'].'</a>' ).' '.
 					__( 'That\'s awesome!', 'wpsso' ).'</p>';
 					
 				$notice_msg .= '<p style="font-size:1.05em;">'.
@@ -1736,7 +1741,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					
 				$notice_msg .= '<p style="font-size:0.9em;">'.
 					( empty( $support_url ) ? '' : '<a href="'.$support_url.'" target="_blank" class="dismiss-on-click">' ).
-					sprintf( __( 'No thanks &mdash; I don\'t feel %s is worth a 5 star rating and would like to offer a suggestion instead.',
+					sprintf( __( 'No thanks &mdash; I don\'t feel that %s is worth a 5 star rating, and would like to offer a suggestion instead.',
 						'wpsso' ), $info['short'] ).
 					( empty( $support_url ) ? '' : '</a>' ).
 					'</p>';
@@ -1746,7 +1751,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				break;	// show only one notice at a time
 			}
 
-			set_transient( $cache_id, true, DAY_IN_SECONDS );	// only show a notice every 24 hours
+			set_transient( $cache_id, true, DAY_IN_SECONDS );	// only show every 24 hours for each user id
 		}
 
 		public function required_notices() {
