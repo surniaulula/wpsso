@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.2-b.1 (2017/05/28)**
+**Version 3.44.2-rc.1 (2017/05/28)**
 
 * *New Features*
 	* None
@@ -477,7 +477,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.2-b.1 =
+= 3.44.2-rc.1 =
 
 (2017/05/28) Added license information bellow the Authentication ID on the Pro Licenses settings page (Pro version).
 
