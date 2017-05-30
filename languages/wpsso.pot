@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.44.2-rc.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.44.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -542,7 +542,7 @@ msgid ""
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:265 lib/util.php:471
+#: lib/com/cache.php:265 lib/util.php:473
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -2130,7 +2130,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:380 lib/util.php:1866
+#: lib/messages.php:380 lib/util.php:1869
 msgid "No options available."
 msgstr ""
 
@@ -3110,7 +3110,7 @@ msgctxt "lib file description"
 msgid "Update Manager"
 msgstr ""
 
-#: lib/messages.php:1255 lib/register.php:198
+#: lib/messages.php:1255 lib/register.php:204
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -3372,7 +3372,7 @@ msgstr ""
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:521 lib/util.php:825
+#: lib/post.php:521 lib/util.php:827
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3530,11 +3530,11 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:192 lib/register.php:200
+#: lib/register.php:198 lib/register.php:206
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:202
+#: lib/register.php:208
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -4116,115 +4116,115 @@ msgid ""
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:457
+#: lib/util.php:459
 msgid "Failed to open directory %s for reading."
 msgstr ""
 
-#: lib/util.php:530
+#: lib/util.php:532
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:567
+#: lib/util.php:569
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:569
+#: lib/util.php:571
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:571
+#: lib/util.php:573
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:573
+#: lib/util.php:575
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:575
+#: lib/util.php:577
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:577
+#: lib/util.php:579
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:579
+#: lib/util.php:581
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:581
+#: lib/util.php:583
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:583
+#: lib/util.php:585
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:585
+#: lib/util.php:587
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:587
+#: lib/util.php:589
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:814
+#: lib/util.php:816
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:836
+#: lib/util.php:838
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:862
+#: lib/util.php:864
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:905
+#: lib/util.php:907
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1892
+#: lib/util.php:1895
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1896
+#: lib/util.php:1899
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1899
+#: lib/util.php:1902
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1903
+#: lib/util.php:1906
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

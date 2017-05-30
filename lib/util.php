@@ -440,11 +440,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( $all ) {
 					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
-						strpos( $transient_name, $lca.'_sh' ) === 0 )
-							continue;
+						strpos( $transient_name, $lca.'_sh' ) === 0 ) {
+						continue;
+					}
 				}
-				if ( delete_transient( $transient_name ) )
+				if ( delete_transient( $transient_name ) ) {
 					$deleted++;
+				}
 			}
 			return $deleted;
 		}
@@ -1591,8 +1593,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cleared = isset( $this->uniq_urls[$context] ) ?
 				count( $this->uniq_urls[$context] ) : 0;
 			$this->uniq_urls[$context] = array();
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'cleared uniq url cache for context '.$context ); 
+			}
 			return $cleared;
 		}
 

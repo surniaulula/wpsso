@@ -86,7 +86,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_config( true );			// apply filters and define $cf['*'] array ( $activate = true )
 			$this->p->set_options( true );			// read / create options and site_options ( $activate = true )
 			$this->p->set_objects( true );			// load all the class objects ( $activate = true )
-			$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_ext = true )
+
+			// clear all cached objects, transients, and any external cache
+			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
+				$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_ext = true )
+			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
@@ -95,7 +99,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			// clear all cached objects and transients
-			$this->p->util->clear_all_cache( false );	// $clear_ext = false
+			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
+				$this->p->util->clear_all_cache( false );	// $clear_ext = false
+			}
 
 			// trunc all stored notices for all users
 			$this->p->notice->trunc_all();
