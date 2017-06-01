@@ -337,6 +337,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.44.3-dev.1 (2017/05/31)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Added a (now optional) second argument to get_term() for WP versions older than 4.4. 
+* *Developer Notes*
+	* None
+
 **Version 3.44.2 (2017/05/30)**
 
 * *New Features*
@@ -476,6 +487,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.44.3-dev.1 =
+
+(2017/05/31) Added a (now optional) second argument to get_term() for WP versions older than 4.4. 
 
 = 3.44.2 =
 
