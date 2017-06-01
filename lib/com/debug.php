@@ -37,17 +37,19 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function is_enabled( $name = '' ) {
-			if ( ! empty( $name ) )
+			if ( ! empty( $name ) ) {
 				return isset( $this->subsys[$name] ) ? $this->subsys[$name] : false;
-			// return true if any sybsys is true (use strict checking)
-			else $this->enabled = in_array( true, $this->subsys, true ) ? true : false;
-
+			} else {
+				// return true if any sybsys is true (use strict checking)
+				$this->enabled = in_array( true, $this->subsys, true ) ? true : false;
+			}
 			return $this->enabled;
 		}
 
 		public function enable( $name, $state = true ) {
-			if ( ! empty( $name ) )
+			if ( ! empty( $name ) ) {
 				$this->subsys[$name] = $state;
+			}
 			$this->is_enabled();	// sets $this->enabled value
 		}
 

@@ -222,9 +222,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->avail = $this->check->get_avail();	// uses $this->options in checks
 
 			// configure the debug class
-			$html_debug = ! empty( $this->options['plugin_debug'] ) || 
-				( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ? true : false;
-			$wp_debug = defined( 'WPSSO_WP_DEBUG' ) && WPSSO_WP_DEBUG ? true : false;
+			if ( ! empty( $this->options['plugin_debug'] ) || ( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ) {
+				$html_debug = true;
+			} else {
+				$html_debug = false;
+			}
+
+			if ( defined( 'WPSSO_WP_DEBUG' ) && WPSSO_WP_DEBUG ) {
+				$wp_debug = true;
+			} elseif ( is_admin() && defined( 'WPSSO_ADMIN_WP_DEBUG' ) && WPSSO_ADMIN_WP_DEBUG ) {
+				$wp_debug = true;
+			} else {
+				$wp_debug = false;
+			}
 
 			if ( ( $html_debug || $wp_debug ) &&	// only load debug class if debug options are enabled
 				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) ) {
