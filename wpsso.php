@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.7.5
- * Version: 3.44.2
+ * Version: 3.44.3-dev.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -310,11 +310,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
 					$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.',
-						'wpsso' ) );
+						'wpsso' ).' '.__( 'Please disable debug mode when debugging operations are finished.', 'wpsso' ) );
 				} elseif ( $this->debug->is_enabled( 'html' ) ) {
 					$this->debug->log( 'HTML debug mode is active' );
 					$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
-						'wpsso' ) );
+						'wpsso' ).' '.__( 'Please disable debug mode when debugging operations are finished.', 'wpsso' ) );
 				}
 				$this->util->add_plugin_filters( $this, array( 
 					'cache_expire_head_array' => '__return_zero',

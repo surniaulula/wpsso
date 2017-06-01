@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.44.2\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.44.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4233,6 +4233,10 @@ msgstr ""
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
+msgstr ""
+
+#: wpsso.php:313 wpsso.php:317
+msgid "Please disable debug mode when debugging operations are finished."
 msgstr ""
 
 #: wpsso.php:316
