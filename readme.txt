@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.3-dev.1 (2017/05/31)**
+**Version 3.44.3-dev.2 (2017/06/02)**
 
 * *New Features*
 	* None
@@ -345,6 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Bugfixes*
 	* Added a (now optional) second argument to get_term() for WP versions older than 4.4. 
+	* Replaced strpos() by filter_var() when checking for URLs in Schema property values to avoid false positives.
 * *Developer Notes*
 	* None
 
@@ -488,9 +489,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.3-dev.1 =
+= 3.44.3-dev.2 =
 
-(2017/05/31) Added a (now optional) second argument to get_term() for WP versions older than 4.4. 
+(2017/06/02) Added a (now optional) second argument to get_term() for WP versions older than 4.4. Replaced strpos() by filter_var() when checking for URLs in Schema property values to avoid false positives.
 
 = 3.44.2 =
 
