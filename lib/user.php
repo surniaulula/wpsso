@@ -431,8 +431,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 									break;
 								default:
 									// all other contact methods are assumed to be URLs
-									if ( strpos( $val, '://' ) === false )
+									if ( strpos( $val, '://' ) === false ) {
 										$val = '';
+									}
 									break;
 							}
 						}

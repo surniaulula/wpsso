@@ -630,7 +630,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 					}
 				} elseif ( $type === 'itemprop' ) {
-					if ( $tag !== 'link' && strpos( $value, '://' ) ) {	// itemprop urls must be links
+					// use filter_var() instead of strpos() to exclude (description) strings that contain urls
+					if ( $tag !== 'link' && filter_var( $value, FILTER_VALIDATE_URL ) !== false ) {	// itemprop urls must be links
 						$tag = 'link';
 					}
 				}

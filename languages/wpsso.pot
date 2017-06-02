@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.44.3-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.44.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2130,7 +2130,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:380 lib/util.php:1869
+#: lib/messages.php:380 lib/util.php:1884
 msgid "No options available."
 msgstr ""
 
@@ -3372,7 +3372,7 @@ msgstr ""
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:521 lib/util.php:827
+#: lib/post.php:521 lib/util.php:829
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4088,15 +4088,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:455
+#: lib/user.php:456
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:456
+#: lib/user.php:457
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:457
+#: lib/user.php:458
 msgid "Jabber / Google Talk"
 msgstr ""
 
@@ -4188,43 +4188,43 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:816
+#: lib/util.php:818
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:838
+#: lib/util.php:840
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:864
+#: lib/util.php:866
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:907
+#: lib/util.php:909
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1895
+#: lib/util.php:1910
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1899
+#: lib/util.php:1914
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1902
+#: lib/util.php:1917
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1906
+#: lib/util.php:1921
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -647,7 +647,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->notice->err( sprintf( $this->sanitize_error_msgs[$option_type], $key ) );
 								$val = $def_val;
 								break;
-							} else $parts[] = $part;
+							} else {
+								$parts[] = $part;
+							}
 						}
 						$val = implode( ', ', $parts );
 					}
@@ -912,39 +914,47 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_body_html( $request, $remove_script = true ) {
 			$html = '';
 
-			if ( strpos( $request, '//' ) === 0 )
+			if ( strpos( $request, '//' ) === 0 ) {
 				$request = self::get_prot().':'.$request;
+			}
 
 			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using html submitted in the request argument' );
+				}
 				$html = $request;
 			} elseif ( empty( $request ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is empty' );
+				}
 				return false;
 			} elseif ( strpos( $request, 'data:' ) === 0 ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is inline data' );
+				}
 				return false;
-			} elseif ( strpos( $request, '://' ) === false ) {
-				if ( $this->p->debug->enabled )
+			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
+				}
 				return false;
 			} else {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetching body html for '.$request );
+				}
 				if ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: error caching '.$request );
+					}
 					return false;
 				}
 			}
 
 			$html = preg_replace( '/^.*<body[^>]*>(.*)<\/body>.*$/Ums', '$1', $html );
 
-			if ( $remove_script )
+			if ( $remove_script ) {
 				$html = preg_replace( '/<script[^>]*>.*<\/script>/Ums', '', $html );
+			}
 
 			return $html;
 		}
@@ -1185,7 +1195,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
 
-				if ( ! $disabled && ! empty( $media_url ) && strpos( $media_url, '://' ) !== false ) {
+				if ( ! $disabled && ! empty( $media_url ) && 
+					filter_var( $media_url, FILTER_VALIDATE_URL ) !== false ) {
 
 					$cache_salt = __METHOD__.'(url:'.$media_url.')';
 					$cache_id = $lca.'_'.md5( $cache_salt );
@@ -1563,18 +1574,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// used by WpssoMedia get_content_images() and get_attachment_image_src().
 		public function fix_relative_url( $url ) {
-			if ( empty( $url ) || 
-				strpos( $url, '://' ) !== false )
-					return $url;
 
-			if ( $this->p->debug->enabled )
+			if ( empty( $url ) || strpos( $url, '://' ) !== false ) {
+				return $url;
+			}
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'relative url found = '.$url );
+			}
 
-			if ( strpos( $url, '//' ) === 0 )
+			if ( strpos( $url, '//' ) === 0 ) {
 				$url = self::get_prot().':'.$url;
-			elseif ( strpos( $url, '/' ) === 0 ) 
+			} elseif ( strpos( $url, '/' ) === 0 )  {
 				$url = home_url( $url );
-			else {
+			} else {
 				$base = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				if ( strpos( $base, '?' ) !== false ) {
 					$base_parts = explode( '?', $base );
@@ -1583,8 +1596,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = trailingslashit( $base, false ).$url;
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'relative url fixed = '.$url );
+			}
 
 			return $url;
 		}
@@ -1611,16 +1625,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( strpos( $url, '//' ) === 0 )
 				$url = self::get_prot().'//'.$url;
 
-			if ( $this->p->debug->enabled && 
-				strpos( $url, '://' ) === false )
-					$this->p->debug->log( 'incomplete url given for context '.$context.': '.$url );
+			if ( $this->p->debug->enabled && strpos( $url, '://' ) === false ) {
+				$this->p->debug->log( 'incomplete url given for context '.$context.': '.$url );
+			}
 
 			if ( ! isset( $this->uniq_urls[$context][$url] ) ) {
 				$this->uniq_urls[$context][$url] = 1;
 				return true;
 			} else {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'duplicate url rejected for context '.$context.': '.$url ); 
+				}
 				return false;
 			}
 		}

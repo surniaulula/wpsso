@@ -1273,7 +1273,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				} elseif ( $social_key === 'tc_site' ) {
 					$org_sameas[] = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				} elseif ( strpos( $url, '://' ) !== false ) {
+				// use filter_var() instead of strpos() to exclude (description) strings that contain urls
+				} elseif ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
 					$org_sameas[] = $url;
 				}
 			}
@@ -1625,7 +1626,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {
 						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
 					}
-					if ( strpos( $url, '://' ) !== false ) {
+					if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
 						$user_sameas[] = $url;
 					}
 				}
@@ -1797,7 +1798,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
 					if ( $overwrite || ! isset( $json_data[$itemprop_name] ) ) {
-						if ( is_string( $assoc[$key_name] ) && strpos( $assoc[$key_name], '://' ) ) {
+						if ( is_string( $assoc[$key_name] ) && 
+							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
 							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
