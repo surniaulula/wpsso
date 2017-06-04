@@ -611,7 +611,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.',	// green status w check mark
 				'wpsso' ).'</strong>' );
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
-			exit;	// stop here
+			exit;	// stop after redirect
 		}
 
 		public function load_setting_page() {
@@ -1671,8 +1671,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function timed_notices() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
-				return;
+			if ( ! $this->p->notice->can_dismiss() ||	// notices are dismissible since wp v4.2
+				! current_user_can( 'manage_options' ) ) {
+				return;	// stop here
 			}
 
 			$lca = $this->p->cf['lca'];
@@ -1684,7 +1685,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form_object( $lca );
 
 			if ( get_transient( $cache_id ) ) {	// only show every 24 hours for each user id
-				return;
+				return;	// stop here
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
