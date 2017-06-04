@@ -487,8 +487,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$int_min = SucomUtil::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
-			$int_max = SucomUtil::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
+			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
+			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
 
 			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min, 1 );
 			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max, 1 );
@@ -502,8 +502,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$int_min = SucomUtil::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
-			$int_max = SucomUtil::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
+			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
+			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
 
 			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min );
 			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max );
@@ -1214,7 +1214,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			// fallback to default value for non-existing keys or empty strings
 			if ( ! isset( $opts[$key_locale] ) || $opts[$key_locale] === '' ) {
 				if ( ( $pos = strpos( $key_locale, '#' ) ) > 0 ) {
-					$key_default = SucomUtil::get_key_locale( substr( $key_locale, 0, $pos ), $opts, 'default' );
+					$key_default = self::get_key_locale( substr( $key_locale, 0, $pos ), $opts, 'default' );
 					if ( $key_locale !== $key_default ) {
 						return isset( $opts[$key_default] ) ? $opts[$key_default] : $val_locale;
 					} else {
