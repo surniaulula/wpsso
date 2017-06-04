@@ -482,21 +482,31 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function add_filter_protection( $filter_name ) {
+
 			if ( has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
 				return false;
 			}
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), PHP_INT_MIN, 1 );
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), PHP_INT_MAX, 1 );
+
+			$int_min = SucomUtil::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
+			$int_max = SucomUtil::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
+
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max, 1 );
 
 			return true;
 		}
 
 		public static function remove_filter_protection( $filter_name ) {
+
 			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
 				return false;
 			}
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), PHP_INT_MIN );
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), PHP_INT_MAX );
+
+			$int_min = SucomUtil::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
+			$int_max = SucomUtil::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
+
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min );
+			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max );
 
 			return true;
 		}
