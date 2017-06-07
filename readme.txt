@@ -10,7 +10,7 @@ Tags: meta tags, open graph, share, social, schema markup, twitter card, video s
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.7.5
-Stable Tag: 3.44.2
+Stable Tag: 3.44.3
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
 
@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.3-rc.1 (2017/06/03)**
+**Version 3.44.3 (2017/06/06)**
 
 * *New Features*
 	* None
@@ -490,9 +490,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.3-rc.1 =
+= 3.44.3 =
 
-(2017/06/03) Added a (now optional) second argument to get_term() for WP versions older than 4.4. Replaced strpos() by filter_var() when checking for URLs in Schema property values to avoid false positives.
+(2017/06/06) Added a (now optional) second argument to get_term() for WP versions older than 4.4. Replaced strpos() by filter_var() when checking for URLs in Schema property values to avoid false positives.
 
 = 3.44.2 =
 

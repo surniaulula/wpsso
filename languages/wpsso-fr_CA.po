@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.44.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-05-31 21:42-0700\n"
-"PO-Revision-Date: 2017-05-31 21:43-0700\n"
+"POT-Creation-Date: 2017-06-06 18:00-0600\n"
+"PO-Revision-Date: 2017-06-06 18:00-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -357,114 +357,114 @@ msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1714
+#: lib/admin.php:1715
 msgid "I'd like to help by rating the %s plugin 5 stars"
 msgstr "J'aimerais aider en notant l'extension %s 5 étoiles"
 
-#: lib/admin.php:1716
+#: lib/admin.php:1717
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s! Vous êtes super!"
 
-#: lib/admin.php:1719
+#: lib/admin.php:1720
 msgid "I've already rated the %s plugin 5 stars"
 msgstr "J'ai déjà noté l'extension %s 5 étoiles"
 
-#: lib/admin.php:1721
+#: lib/admin.php:1722
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s plus tôt! Vous êtes super!"
 
-#: lib/admin.php:1725
+#: lib/admin.php:1726
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin.php:1726
+#: lib/admin.php:1727
 msgid "You've been using <b>%s</b> for more than a week."
 msgstr "Vous utilisez <b>%s</b> depuis plus d'une semaine."
 
-#: lib/admin.php:1728
+#: lib/admin.php:1729
 msgid "The %s plugin description page on WordPress.org"
 msgstr "La page de description pour l'extension %s sur WordPress.org"
 
-#: lib/admin.php:1730
+#: lib/admin.php:1731
 msgid "That's awesome!"
 msgstr "C'est génial!"
 
-#: lib/admin.php:1733
+#: lib/admin.php:1734
 msgid "Can I ask a small favor &mdash; would you rate the %s plugin on wordpress.org?"
 msgstr "Puis-je demander une petite faveur &mdash; pouvez vous noter l'extension %s sur wordpress.org ?"
 
-#: lib/admin.php:1737
+#: lib/admin.php:1738
 msgid "Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well."
 msgstr "Votre note aidera les utilisateurs WordPress à trouver l'extension <em>et</em> nous encourager à continuer d'améliorer %s aussi."
 
-#: lib/admin.php:1744
-msgid "No thanks &mdash; I don't feel that %s is worth a 5 star rating, and would like to offer a suggestion instead."
-msgstr "Non merci &mdash; je ne pense pas que %s vaut une note de 5 étoiles, et je préfère offrir une suggestion."
+#: lib/admin.php:1745
+msgid "No thanks &mdash; I don't feel that %s is worth a 5 star rating, and would like to offer a suggestion or report a problem."
+msgstr "Non merci &mdash; je ne pense pas que %s vaut une note de 5 étoiles, et je préfère offrir une suggestion ou signaler un problème."
 
-#: lib/admin.php:1875
+#: lib/admin.php:1876
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:1888
+#: lib/admin.php:1889
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr "Aucun élément HTML &lt;head&gt; trouvé dans le modèle %s."
 
-#: lib/admin.php:1895
+#: lib/admin.php:1896
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1904
+#: lib/admin.php:1905
 msgid "Failed to open %s for writing."
 msgstr "Impossible d'ouvrir %s pour l'écriture."
 
-#: lib/admin.php:1910
+#: lib/admin.php:1911
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:1913
+#: lib/admin.php:1914
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:1928
+#: lib/admin.php:1929
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
 
-#: lib/admin.php:1933
+#: lib/admin.php:1934
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:1941
+#: lib/admin.php:1942
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr "Masquer toutes les options Pro"
 
-#: lib/admin.php:1949
+#: lib/admin.php:1950
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
 
-#: lib/admin.php:1956
+#: lib/admin.php:1957
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr "Activer le/les Shortcode(s)"
 
-#: lib/admin.php:1964
+#: lib/admin.php:1965
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr "Activer le/les Widget(s)"
 
-#: lib/admin.php:1978
+#: lib/admin.php:1979
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:2128
+#: lib/admin.php:2129
 msgid "Return to %s"
 msgstr "Retour à %s"
 
-#: lib/admin.php:2150
+#: lib/admin.php:2151
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
@@ -1931,7 +1931,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:380 lib/util.php:1869
+#: lib/messages.php:380 lib/util.php:1884
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2834,7 +2834,7 @@ msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérific
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur d'analyse méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:521 lib/util.php:827
+#: lib/post.php:521 lib/util.php:829
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -3529,15 +3529,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter Grande Image"
 
-#: lib/user.php:455
+#: lib/user.php:456
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:456
+#: lib/user.php:457
 msgid "Yahoo IM"
 msgstr "Yahoo IM"
 
-#: lib/user.php:457
+#: lib/user.php:458
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
@@ -3605,55 +3605,55 @@ msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:816
+#: lib/util.php:818
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:838
+#: lib/util.php:840
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:864
+#: lib/util.php:866
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre HTML qui corrompt les balises méta de %1$s."
 
-#: lib/util.php:907
+#: lib/util.php:909
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1895
+#: lib/util.php:1910
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1899
+#: lib/util.php:1914
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1902
+#: lib/util.php:1917
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1906
+#: lib/util.php:1921
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:313
+#: wpsso.php:323
 msgid "WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:314 wpsso.php:320
+#: wpsso.php:324 wpsso.php:330
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:315 wpsso.php:321
+#: wpsso.php:325 wpsso.php:331
 msgid "Please disable debug mode when debugging is complete."
 msgstr "Veuillez désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:319
+#: wpsso.php:329
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
