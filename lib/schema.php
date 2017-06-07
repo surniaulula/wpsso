@@ -1812,6 +1812,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
+			$ret = array();
 			foreach ( $names as $itemprop_name => $key_name ) {
 				if ( isset( $assoc[$key_name] ) && 
 					! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
