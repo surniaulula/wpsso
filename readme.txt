@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: meta tags, open graph, share, social, schema markup, twitter card, video seo, local seo, twitter card, woocommerce, bbpress, budddypress
 Contributors: jsmoriss
 Requires At Least: 3.7
-Tested Up To: 4.7.5
+Tested Up To: 4.8
 Stable Tag: 3.44.3
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
@@ -337,6 +337,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.44.4 (2017/06/08)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Added a check to exclude non-numeric width, height, length, and weight values for WooCommerce products (Pro version).
+* *Developer Notes*
+	* None
+
 **Version 3.44.3 (2017/06/06)**
 
 * *New Features*
@@ -489,6 +500,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.44.4 =
+
+(2017/06/08) Added a check to exclude non-numeric width, height, length, and weight values for WooCommerce products (Pro version).
 
 = 3.44.3 =
 
