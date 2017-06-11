@@ -105,11 +105,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function add_head_attributes() {
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {	// just in case
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'calling filter '.$this->p->options['plugin_head_attr_filter_name'] );
+				}
 				echo apply_filters( $this->p->options['plugin_head_attr_filter_name'], '' );
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'plugin_head_attr_filter_name is empty' );
+			}
 		}
 
 		public function filter_head_attributes( $head_attr = '' ) {
@@ -1053,22 +1055,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'adding organization markup for local business' );
+				$this->p->debug->mark( 'calling organization filter for local business' );	// begin timer
 			}
 
 			// all local businesses are also organizations
 			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'calling organization filter for local business' );	// end timer
+			}
+
 			// Google requires a local business to have an image
 			if ( isset( $ret['logo'] ) && empty( $ret['image'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding logo from organization schema' );
+				}
 				$ret['image'][] = $ret['logo'];
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'logo from organization schema is missing' );
 			}
 
 			// promote all location information up
 			if ( isset( $ret['location'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'promoting location property' );
+				}
 				self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
 					array_keys( $ret['location'] ), false );	// $overwrite = false
 				unset( $ret['location'] );
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'no location property to promote' );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
