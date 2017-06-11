@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.5-dev.1 (2017/06/11)**
+**Version 3.44.5-dev.2 (2017/06/11)**
 
 * *New Features*
 	* None
@@ -512,7 +512,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.5-dev.1 =
+= 3.44.5-dev.2 =
 
 (2017/06/11) Added mode debugging messages in the Schema Local Business filter.
 
