@@ -1078,10 +1078,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// promote all location information up
 			if ( isset( $ret['location'] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'promoting location property' );
+					$this->p->debug->log( 'promoting location property array' );
 				}
-				self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
+				$itemprop_added = self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
 					array_keys( $ret['location'] ), false );	// $overwrite = false
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'promoted '.$itemprop_added.' location properties' );
+				}
 				unset( $ret['location'] );
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no location property to promote' );
@@ -1822,12 +1825,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$itemprop_name = $key_name;
 				}
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					if ( $overwrite || ! isset( $json_data[$itemprop_name] ) ) {
+					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'skipping '.$itemprop_name.': itemprop exists and overwrite is false' );
+						}
+					} else {
 						if ( is_string( $assoc[$key_name] ) && 
 							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
 							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
+						}
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'added itemprop '.$itemprop_name.' = '.$json_data[$itemprop_name] );
 						}
 						$itemprop_added++;
 					}
