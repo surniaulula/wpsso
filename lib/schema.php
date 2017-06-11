@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$itemprop_added = self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
 					array_keys( $ret['location'] ), false );	// $overwrite = false
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'promoted '.$itemprop_added.' location properties' );
+					$this->p->debug->log( 'promoted '.$itemprop_added.' location keys' );
 				}
 				unset( $ret['location'] );
 			} elseif ( $this->p->debug->enabled ) {
