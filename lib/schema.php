@@ -1818,6 +1818,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
+			$wpsso =& Wpsso::get_instance();
 			$itemprop_added = 0;
 			$is_assoc = SucomUtil::is_assoc( $names );
 			foreach ( $names as $itemprop_name => $key_name ) {
@@ -1826,8 +1827,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
 					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipping '.$itemprop_name.': itemprop exists and overwrite is false' );
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping '.$itemprop_name.': itemprop exists and overwrite is false' );
 						}
 					} else {
 						if ( is_string( $assoc[$key_name] ) && 
@@ -1836,8 +1837,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added itemprop '.$itemprop_name.' = '.$json_data[$itemprop_name] );
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'added itemprop '.$itemprop_name.' = '.$json_data[$itemprop_name] );
 						}
 						$itemprop_added++;
 					}
