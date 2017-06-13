@@ -1057,35 +1057,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'calling organization filter for local business' );	// begin timer
 				$this->p->debug->log( 'page_type_id = '.$page_type_id );
 				$this->p->debug->log( 'is_main = '.$is_main );
+				$this->p->debug->mark( 'organization filter for local business' );	// begin timer
 			}
 
 			// all local businesses are also organizations
 			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'calling organization filter for local business' );	// end timer
+				$this->p->debug->mark( 'organization filter for local business' );	// end timer
 			}
 
-			// Google requires a local business to have an image
-			if ( isset( $ret['logo'] ) && empty( $ret['image'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding logo from organization schema' );
-				}
-				$ret['image'][] = $ret['logo'];
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'logo from organization schema is missing' );
-			}
-
-			/*
-			 * The LocalBusiness markup requires the location information, not the location property.
-			 * If we have location information, then move the location property array items up one level.
-			 */
-			if ( isset( $ret['location'] ) ) {
-				$this->promote_location_property( $ret );
-			}
+			$this->organization_to_localbusiness( $ret );
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -1257,16 +1241,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
-				 	/*
-					 * The LocalBusiness markup requires the location information, not the location property.
-					 * If we have location information, and the organization is a child of local.business, 
-					 * then move the location property array items up one level.
-					 */
-					if ( $org_type_id && $wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
-						$this->promote_location_property( $ret );
-					}
-				} else {
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
@@ -1283,6 +1258,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$ret['sameAs'][] = esc_url( $url );
 					}
 				}
+			}
+
+			if ( ! empty( $org_type_id ) && $org_type_id !== 'organization' && 
+				$wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
+				$wpsso->schema->organization_to_localbusiness( $ret );
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization', $ret, $mod, $org_id );
@@ -1982,9 +1962,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Promote the location property array items up one level.
+		 * LocalBusiness markup requires an image, and the address, priceRange, 
+		 * and telephone properties are recommended.
 		 */
-		public function promote_location_property( array &$json_data ) {
+		public function organization_to_localbusiness( array &$json_data ) {
+
+			// Google requires a local business to have an image
+			if ( isset( $json_data['logo'] ) && empty( $json_data['image'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding logo from organization markup' );
+				}
+				$json_data['image'][] = $json_data['logo'];
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'logo is missing from organization markup' );
+			}
 
 			// promote all location information up
 			if ( isset( $json_data['location'] ) ) {
