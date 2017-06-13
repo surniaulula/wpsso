@@ -1019,6 +1019,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+				$this->p->debug->log( 'page_type_id = '.$page_type_id );
+				$this->p->debug->log( 'is_main = '.$is_main );
 			}
 
 			if ( ! empty( $mod['obj'] ) ) {	// just in case
@@ -1056,6 +1058,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'calling organization filter for local business' );	// begin timer
+				$this->p->debug->log( 'page_type_id = '.$page_type_id );
+				$this->p->debug->log( 'is_main = '.$is_main );
 			}
 
 			// all local businesses are also organizations
@@ -1075,19 +1079,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'logo from organization schema is missing' );
 			}
 
-			// promote all location information up
+			/*
+			 * The LocalBusiness markup requires the location information, not the location property.
+			 * If we have location information, then move the location property array items up one level.
+			 */
 			if ( isset( $ret['location'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'promoting location property array' );
-				}
-				$itemprop_added = self::add_data_itemprop_from_assoc( $ret, $ret['location'], 
-					array_keys( $ret['location'] ), false );	// $overwrite = false
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'promoted '.$itemprop_added.' location keys' );
-				}
-				unset( $ret['location'] );
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'no location property to promote' );
+				$this->promote_location_property( $ret );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -1172,13 +1169,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			if ( ! $list_element && ( $org_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+			if ( empty( $list_element ) && ( $org_type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+				$org_type_id = false;
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'using inherited schema type url = '.$org_type_url );
 				}
 			} else {
-				$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];	// just in case
+				// check for an org_type in the org_opts, otherwise default to 'organization'
+				$org_type_id = empty( $org_opts['org_type'] ) ? 'organization' : $org_opts['org_type'];
 				$org_type_url = $wpsso->schema->get_schema_type_url( $org_type_id, 'organization' );
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'org_type_id = '.$org_type_id );
+				$wpsso->debug->log( 'org_type_url = '.$org_type_url );
 			}
 
 			$ret = self::get_schema_type_context( $org_type_url );
@@ -1253,8 +1257,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! self::add_single_place_data( $ret['location'],
-					$mod, $place_id, false ) ) {	// $list_element = false
+				if ( self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element = false
+				 	/*
+					 * The LocalBusiness markup requires the location information, not the location property.
+					 * If we have location information, and the organization is a child of local.business, 
+					 * then move the location property array items up one level.
+					 */
+					if ( $org_type_id && $wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
+						$this->promote_location_property( $ret );
+					}
+				} else {
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
@@ -1966,6 +1978,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! empty( $assoc[$key_name] ) && $assoc[$key_name] !== WPSSO_UNDEF_INT ) {
 					$mt_schema[$itemprop_name] = $assoc[$key_name];
 				}
+			}
+		}
+
+		/*
+		 * Promote the location property array items up one level.
+		 */
+		public function promote_location_property( array &$json_data ) {
+
+			// promote all location information up
+			if ( isset( $json_data['location'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'promoting location property array' );
+				}
+
+				$itemprop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data['location'], 
+					array_keys( $json_data['location'] ), false );	// $overwrite = false
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'promoted '.$itemprop_added.' location keys' );
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'removing the location property' );
+				}
+
+				unset( $json_data['location'] );
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'no location property to promote' );
 			}
 		}
 
