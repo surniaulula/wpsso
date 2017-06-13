@@ -337,14 +337,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.5-dev.4 (2017/06/13)**
+**Version 3.44.5-b.1 (2017/06/13)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed the missing location information when the publisher property is a Schema LocalBusiness.
 * *Developer Notes*
 	* Added more debugging messages in the Schema Local Business filter.
 	* Added a check for a Local Business type when adding an organization property.
@@ -513,9 +513,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.5-dev.4 =
+= 3.44.5-b.1 =
 
-(2017/06/13) Added more debugging messages in the Schema Local Business filter. Added a check for a Local Business type when adding an organization property.
+(2017/06/13) Fixed the missing location information when the publisher property is a Schema LocalBusiness.
 
 = 3.44.4 =
 
