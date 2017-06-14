@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.44.5-b.1 (2017/06/13)**
+**Version 3.44.5-rc.1 (2017/06/14)**
 
 * *New Features*
 	* None
@@ -513,9 +513,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.44.5-b.1 =
+= 3.44.5-rc.1 =
 
-(2017/06/13) Fixed the missing location information when the publisher property is a Schema LocalBusiness.
+(2017/06/14) Fixed the missing location information when the publisher property is a Schema LocalBusiness.
 
 = 3.44.4 =
 
