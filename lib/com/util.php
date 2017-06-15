@@ -846,8 +846,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function keys_start_with( $str, array $arr ) {
 			$found = array();
 			foreach ( $arr as $key => $value ) {
-				if ( strpos( $key, $str ) === 0 )
+				if ( strpos( $key, $str ) === 0 ) {
 					$found[$key] = $value;
+				}
 			}
 			return $found;
 		}
@@ -1385,9 +1386,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// optimize and only check what we need to
 			$is_term_page = $is_user_page = false;
-			if ( ! $is_post_page = self::is_post_page( $use_post ) )
-				if ( ! $is_term_page = self::is_term_page() )
+			if ( ! $is_post_page = self::is_post_page( $use_post ) ) {
+				if ( ! $is_term_page = self::is_term_page() ) {
 					$is_user_page = self::is_user_page();
+				}
+			}
 
 			return array(
 				'post_page' => $is_post_page,
@@ -1398,9 +1401,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_archive_page() {
 			$ret = false;
-			if ( is_archive() )
+			if ( is_archive() ) {
 				$ret = true;
-			elseif ( is_admin() ) {
+			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base !== false ) {
 					switch ( $screen_base ) {
@@ -1421,12 +1424,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_id = get_option( 'show_on_front' ) === 'page' ?
 				(int) get_option( 'page_on_front' ) : 0;
 
-			if ( is_numeric( $use_post ) &&
-				(int) $use_post === $post_id )	// optimize
-					$ret = true;
-			elseif ( $post_id > 0 &&
-				self::get_post_object( $use_post, 'id' ) === $post_id )
-					$ret = true;
+			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {	// optimize
+				$ret = true;
+			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {
+				$ret = true;
+			}
 
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
 		}

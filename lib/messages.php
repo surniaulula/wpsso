@@ -1124,10 +1124,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'notice-image-rejected':
+
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
 
-						if ( empty( $this->p->options['plugin_hide_pro'] ) ) {
+						// do not add this text if hidding pro options or on a settings page
+						if ( empty( $this->p->options['plugin_hide_pro'] ) && 
+							strpos( SucomUtil::get_screen_id(), '_page_'.$lca = $this->p->cf['lca'].'-' ) === false ) {
 							$text = __( 'A larger and/or different custom image &mdash; specifically for social meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
 						} else {
 							$text = '';
