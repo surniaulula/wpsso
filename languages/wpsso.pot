@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.44.5\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2564,7 +2564,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:728 lib/messages.php:803 lib/messages.php:901
-#: lib/submenu/general.php:227 lib/submenu/general.php:362
+#: lib/submenu/general.php:227 lib/submenu/general.php:363
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -3545,14 +3545,14 @@ msgstr ""
 
 #: lib/schema.php:1208
 msgid ""
-"The \"%1$s\" Organization Logo Image is missing and required for the Schema "
+"The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
 #: lib/schema.php:1211
 msgid ""
-"The \"%1$s\" Organization Banner (600x60) is missing and required for the "
-"Schema %2$s markup."
+"The \"%1$s\" Organization Banner (600x60px) image is missing and required "
+"for the Schema %2$s markup."
 msgstr ""
 
 #: lib/script.php:131
@@ -3798,30 +3798,30 @@ msgstr ""
 
 #: lib/submenu/essential.php:130 lib/submenu/general.php:291
 msgctxt "option label"
-msgid "Organization Logo Image URL"
+msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/submenu/essential.php:133 lib/submenu/general.php:294
+#: lib/submenu/essential.php:134 lib/submenu/general.php:295
 msgctxt "option label"
-msgid "Organization Banner (600x60) URL"
+msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/submenu/essential.php:138
+#: lib/submenu/essential.php:139
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:140 lib/submenu/general.php:351
+#: lib/submenu/essential.php:141 lib/submenu/general.php:352
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:145
+#: lib/submenu/essential.php:146
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:147 lib/submenu/general.php:388
+#: lib/submenu/essential.php:148 lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -3891,8 +3891,8 @@ msgctxt "option comment"
 msgid "characters (soft limit)"
 msgstr ""
 
-#: lib/submenu/general.php:126 lib/submenu/general.php:311
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:126 lib/submenu/general.php:312
+#: lib/submenu/general.php:395
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
@@ -3922,12 +3922,12 @@ msgctxt "option label"
 msgid "Fallback to Author's Archive Page"
 msgstr ""
 
-#: lib/submenu/general.php:168 lib/submenu/general.php:298
+#: lib/submenu/general.php:168 lib/submenu/general.php:299
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:173 lib/submenu/general.php:303
+#: lib/submenu/general.php:173 lib/submenu/general.php:304
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
@@ -3962,8 +3962,8 @@ msgctxt "option label"
 msgid "Search / SEO Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:252 lib/submenu/general.php:314
-#: lib/submenu/general.php:397
+#: lib/submenu/general.php:252 lib/submenu/general.php:315
+#: lib/submenu/general.php:398
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
@@ -3983,92 +3983,92 @@ msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
 msgstr ""
 
-#: lib/submenu/general.php:306
+#: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:318
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:325
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/submenu/general.php:326
+#: lib/submenu/general.php:327
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/submenu/general.php:327
+#: lib/submenu/general.php:328
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/submenu/general.php:328
+#: lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:330
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/submenu/general.php:343
+#: lib/submenu/general.php:344
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/submenu/general.php:357
+#: lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:368
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
 
-#: lib/submenu/general.php:371
+#: lib/submenu/general.php:372
 msgctxt "option label"
 msgid "Add \"nopin\" to Header Image Tag"
 msgstr ""
 
-#: lib/submenu/general.php:375
+#: lib/submenu/general.php:376
 msgctxt "option label"
 msgid "Add \"nopin\" to Media Lib Images"
 msgstr ""
 
-#: lib/submenu/general.php:384
+#: lib/submenu/general.php:385
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:385
+#: lib/submenu/general.php:386
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:400
+#: lib/submenu/general.php:401
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:405
+#: lib/submenu/general.php:406
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:409
+#: lib/submenu/general.php:410
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:413
+#: lib/submenu/general.php:414
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""
