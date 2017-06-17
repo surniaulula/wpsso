@@ -1017,20 +1017,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$min =& $this->p->cf['head']['limit_min'];
 			$max =& $this->p->cf['head']['limit_max'];
 
-			if ( strpos( $size_name, $lca.'-' ) !== 0 )	// only check our own sizes
+			if ( strpos( $size_name, $lca.'-' ) !== 0 ) {	// only check our own sizes
 				return true;
+			}
 
-			if ( $src_name === '' )
+			if ( $src_name === '' ) {
 				$src_name = __( 'Media Library', 'wpsso' );
+			}
 
-			if ( strpos( $img_name, '://' ) === false )
+			if ( strpos( $img_name, '://' ) === false ) {
 				$img_name = 'ID '.$img_name;
+			}
 
-			if ( $img_width > 0 && $img_height > 0 )	// just in case
+			if ( $img_width > 0 && $img_height > 0 ) {	// just in case
 				$img_ratio = $img_width >= $img_height ?
 					$img_width / $img_height :
 					$img_height / $img_width;
-			else $img_ratio = 0;
+			} else {
+				$img_ratio = 0;
+			}
 
 			switch ( $size_name ) {
 				case $lca.'-opengraph':
@@ -1076,7 +1081,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected',
-						array( 'size_label' => $size_label, 'hard_limit' => true ) );
+						array( 'size_label' => $size_label, 'allow_upscale' => false ) );
 					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice );
 				}
 
@@ -1084,8 +1089,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// check the minimum image width and/or height
-			if ( ( $min_width > 0 || $min_height > 0 ) &&
-				( $img_width < $min_width || $img_height < $min_height ) ) {
+			if ( ( $min_width > 0 || $min_height > 0 ) && ( $img_width < $min_width || $img_height < $min_height ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
@@ -1095,7 +1099,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected',
-						array( 'size_label' => $size_label, 'hard_limit' => true ) );
+						array( 'size_label' => $size_label, 'allow_upscale' => true ) );
 					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice );
 				}
 

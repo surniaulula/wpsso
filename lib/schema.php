@@ -1046,6 +1046,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// possibly inherit the schema type
 			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
 
+		 	/*
+			 * $org_id can be 'none', 'site', or a number (including 0).
+		 	 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
+			 * do not provide localized option names - the method will fetch the localized values.
+			 */
 			self::add_single_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// $list_element = false
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -1120,8 +1125,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
 		 * $org_id can be 'none', 'site', or a number (including 0).
+		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
+		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
 		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
 
@@ -1137,14 +1143,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'adding single organization data for '.$org_id );
 			}
 
-			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
+			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );	// returns localized values
 
 			if ( empty( $org_opts ) ) {	// $org_opts can be false or empty array
 				if ( $org_id === 'site' ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
-					$org_opts = self::get_site_organization( $mod );
+					$org_opts = self::get_site_organization( $mod );	// returns localized values
 				} else {
 					return 0;
 				}
@@ -1287,7 +1293,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
 				$wpsso->cf['form']['social_accounts'] ) as $social_key => $social_label ) {
 
-				$url = SucomUtil::get_locale_opt( $social_key, $wpsso->options, $mixed );
+				$url = SucomUtil::get_locale_opt( $social_key, $wpsso->options, $mixed );	// localized value
 
 				if ( empty( $url ) ) {
 					continue;
@@ -1301,14 +1307,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return array(
 				'org_type' => $wpsso->options['site_org_type'],
-				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),
-				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),
-				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),
-				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),
-				'org_logo_url' => $wpsso->options['schema_logo_url'],
-				'org_banner_url' => $wpsso->options['schema_banner_url'],
+				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),			// localized value
+				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
+				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),	// localized value
+				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
+				'org_logo_url' => SucomUtil::get_locale_opt( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
+				'org_banner_url' => SucomUtil::get_locale_opt( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
 				'org_place_id' => $wpsso->options['site_place_id'],
-				'org_sameas' => $org_sameas,
+				'org_sameas' => $org_sameas,							// localized value
 			);
 		}
 

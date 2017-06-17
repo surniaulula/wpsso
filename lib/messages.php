@@ -779,7 +779,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_banner_url':
-							$text = 'A URL for the website / organization\'s banner image &mdash; <em>measuring exactly 600x60px</em> &mdash; that Google / Google News can use to display content from Schema Article webpages.';
+							$text = 'A URL for the website / organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google / Google News can use to display content from Schema Article webpages.';
 							break;
 
 						case 'tooltip-schema_img_max':
@@ -1127,16 +1127,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
 						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
+						$is_settings_page = strpos( SucomUtil::get_screen_id(), '_page_'.$lca = $this->p->cf['lca'].'-' );
 
 						// do not add this text if hidding pro options or on a settings page
-						if ( empty( $this->p->options['plugin_hide_pro'] ) && 
-							strpos( SucomUtil::get_screen_id(), '_page_'.$lca = $this->p->cf['lca'].'-' ) === false ) {
+						if ( empty( $this->p->options['plugin_hide_pro'] ) && $is_settings_page === false ) {
 							$text = __( 'A larger and/or different custom image &mdash; specifically for social meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
 						} else {
 							$text = '';
 						}
 
-						if ( empty( $info['hard_limit'] ) && current_user_can( 'manage_options' ) ) {
+						if ( current_user_can( 'manage_options' ) && 
+							( ! isset( $info['allow_upscale'] ) || ! empty( $info['allow_upscale'] ) ) ) {
 
 							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
@@ -1147,19 +1148,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
 								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );
 
-							$text .= '<p><em>'.__( 'Additional information shown only to users with Administrative privileges:',
-								'wpsso' ).'</em></p>';
+							$text .= '<p style="margin-left:0;"><em>'.
+								__( 'Additional information shown only to users with Administrative privileges:',
+									'wpsso' ).'</em></p>';
 
 							$text .= '<ul>';
 
-							$text .= '<li>'.sprintf( __( 'You can also adjust the <b>%1$s</b> option in the %2$s settings.',
+							$text .= '<li>'.sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.',
 								'wpsso' ), $info['size_label'], $img_dim_page ).'</li>';
 
-							$text .= '<li>'.sprintf( __( 'Enable the %1$s option.',
-								'wpsso' ), $upscale_enable, $upscale_percent ).'</li>';
+							if ( empty( $this->p->options['plugin_upscale_images'] ) ) {
+								$text .= '<li>'.sprintf( __( 'Enable the %1$s option.',
+									'wpsso' ), $upscale_enable ).'</li>';
+							}
 
-							$text .= '<li>'.sprintf( __( 'Increase the %2$s option value.',
-								'wpsso' ), $upscale_enable, $upscale_percent ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Increase the %1$s option value.',
+								'wpsso' ), $upscale_percent ).'</li>';
 
 							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).',
 								'wpsso' ), $img_dim_enable ).'</li>';
