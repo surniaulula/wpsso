@@ -1136,8 +1136,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '';
 						}
 
-						if ( current_user_can( 'manage_options' ) && 
+						static $upscale_shown = false;	// show the upscale options, etc., only once
+
+						if ( $upscale_shown === false && current_user_can( 'manage_options' ) && 
 							( ! isset( $info['allow_upscale'] ) || ! empty( $info['allow_upscale'] ) ) ) {
+
+							$upscale_shown = true;
 
 							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
