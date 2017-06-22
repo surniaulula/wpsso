@@ -337,6 +337,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.1-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added https://schema.org/ClaimReview to the list of available Schema types.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.45.0 (2017/06/21)**
 
 * *New Features*
