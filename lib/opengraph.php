@@ -317,7 +317,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * not an article, the meta tags will be sanitized at the end of
 			 * WpssoHead::get_head_array().
 			 */
-			if ( $mod['is_post'] ) {
+			if ( $mod['is_post'] && $post_id ) {
 
 				if ( ! isset( $mt_og['og:updated_time'] ) ) {
 					$mt_og['og:updated_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
