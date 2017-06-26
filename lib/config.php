@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.1-dev.1',		// plugin version
+					'version' => '3.45.1-dev.2',		// plugin version
 					'opt_version' => '528',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -1504,6 +1504,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'movie' => 'https://schema.org/Movie',
 							'painting' => 'https://schema.org/Painting',
 							'photograph' => 'https://schema.org/Photograph',
+							'question' => 'https://schema.org/Question',
 							'recipe' => 'https://schema.org/Recipe',
 							'review' => array(
 								'review' => 'https://schema.org/Review',
