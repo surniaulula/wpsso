@@ -337,12 +337,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-dev.1 (TBD)**
+**Version 3.45.1-dev.2 (2017/06/26)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added https://schema.org/ClaimReview to the list of available Schema types.
+	* Added the following types to the list of available Schema types.
+		* https://schema.org/ClaimReview
+		* https://schema.org/Question
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -534,6 +536,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.1-dev.2 =
+
+(2017/06/26) Added new types to the list of available Schema types.
 
 = 3.45.0 =
 
