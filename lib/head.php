@@ -463,7 +463,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
+			if ( empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() ) {
+				$add_shortlink = false;
+			} else {
+				$add_shortlink = true;
+			}
+
+			if ( $add_shortlink ) {
 				if ( $mod['is_post'] ) {
 					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
