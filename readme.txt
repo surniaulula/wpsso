@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-dev.2 (2017/06/26)**
+**Version 3.45.1-dev.3 (2017/06/28)**
 
 * *New Features*
 	* None
@@ -345,6 +345,31 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added the following types to the list of available Schema types.
 		* https://schema.org/ClaimReview
 		* https://schema.org/Question
+		* https://health-lifesci.schema.org/MedicalBusiness
+			* https://health-lifesci.schema.org/CommunityHealth
+			* https://health-lifesci.schema.org/Dentist
+			* https://health-lifesci.schema.org/Dermatology
+			* https://health-lifesci.schema.org/DietNutrition
+			* https://health-lifesci.schema.org/Emergency
+			* https://health-lifesci.schema.org/Geriatric
+			* https://health-lifesci.schema.org/Gynecologic
+			* https://health-lifesci.schema.org/MedicalClinic
+			* https://health-lifesci.schema.org/Midwifery
+			* https://health-lifesci.schema.org/Nursing
+			* https://health-lifesci.schema.org/Obstetric
+			* https://health-lifesci.schema.org/Oncologic
+			* https://health-lifesci.schema.org/Optician
+			* https://health-lifesci.schema.org/Optometric
+			* https://health-lifesci.schema.org/Otolaryngologic
+			* https://health-lifesci.schema.org/Pediatric
+			* https://health-lifesci.schema.org/Pharmacy
+			* https://health-lifesci.schema.org/Physician
+			* https://health-lifesci.schema.org/Physiotherapy
+			* https://health-lifesci.schema.org/PlasticSurgery
+			* https://health-lifesci.schema.org/Podiatric
+			* https://health-lifesci.schema.org/PrimaryCare
+			* https://health-lifesci.schema.org/Psychiatric
+			* https://health-lifesci.schema.org/PublicHealth
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -537,9 +562,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.1-dev.2 =
+= 3.45.1-dev.3 =
 
-(2017/06/26) Added new types to the list of available Schema types.
+(2017/06/28) Added new types to the list of available Schema types.
 
 = 3.45.0 =
 
