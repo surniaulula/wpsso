@@ -342,6 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Updated Polylang plugin check from using the slug to the class name.
 	* Added the following types to the list of available Schema types.
 		* https://schema.org/ClaimReview
 		* https://schema.org/IndividualProduct
