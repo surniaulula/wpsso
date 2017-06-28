@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.1-dev.3',		// plugin version
-					'opt_version' => '528',		// increment when changing default options
+					'version' => '3.45.1-dev.4',		// plugin version
+					'opt_version' => '529',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -583,13 +583,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_book' => 'book',
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_business' => 'local.business',
-					'schema_type_for_download' => 'product',
+					'schema_type_for_download' => 'individual.product',
 					'schema_type_for_event' => 'event',
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_other' => 'other',
 					'schema_type_for_person' => 'person',
 					'schema_type_for_place' => 'place',
-					'schema_type_for_product' => 'product',
+					'schema_type_for_product' => 'individual.product',
 					'schema_type_for_recipe' => 'recipe',
 					'schema_type_for_review' => 'review',
 					'schema_type_for_tribe_events' => 'event',
@@ -1753,7 +1753,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'tourist.attraction' => 'https://schema.org/TouristAttraction',
 						),
 						'product' => array(
+							'individual.product' => 'https://schema.org/IndividualProduct',
 							'product' => 'https://schema.org/Product',
+							'product.model' => 'https://schema.org/ProductModel',
+							'some.products' => 'https://schema.org/SomeProducts',
 							'vehicle' => array(
 								'bus.or.coach' => 'https://auto.schema.org/BusOrCoach',
 								'car' => 'https://auto.schema.org/Car',
