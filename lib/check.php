@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'bbpress/bbpress.php';
 							break;
 						case 'lang-polylang':
-							$chk['plugin'] = 'polylang/polylang.php';
+							$chk['class'] = 'Polylang';
 							break;
 						case 'media-ngg':
 							$chk['class'] = 'nggdb';	// C_NextGEN_Bootstrap
