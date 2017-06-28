@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.1-dev.2',		// plugin version
+					'version' => '3.45.1-dev.3',		// plugin version
 					'opt_version' => '528',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -1673,6 +1673,33 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'campground' => 'https://schema.org/Campground',
 									'lodging.business' => 'https://schema.org/LodgingBusiness',
 								),
+								'medical.business' => array(
+									'community.health.business' => 'https://health-lifesci.schema.org/CommunityHealth',
+									'dentist.business' => 'https://health-lifesci.schema.org/Dentist',
+									'dermatology.business' => 'https://health-lifesci.schema.org/Dermatology',
+									'diet.nutrition.business' => 'https://health-lifesci.schema.org/DietNutrition',
+									'emergency.business' => 'https://health-lifesci.schema.org/Emergency',
+									'geriatric.business' => 'https://health-lifesci.schema.org/Geriatric',
+									'gynecologic.business' => 'https://health-lifesci.schema.org/Gynecologic',
+									'medical.business' => 'https://health-lifesci.schema.org/MedicalBusiness',
+									'medical.clinic.business' => 'https://health-lifesci.schema.org/MedicalClinic',
+									'midwifery.business' => 'https://health-lifesci.schema.org/Midwifery',
+									'nursing.business' => 'https://health-lifesci.schema.org/Nursing',
+									'obstetric.business' => 'https://health-lifesci.schema.org/Obstetric',
+									'oncologic.business' => 'https://health-lifesci.schema.org/Oncologic',
+									'optician.business' => 'https://health-lifesci.schema.org/Optician',
+									'optometric.business' => 'https://health-lifesci.schema.org/Optometric',
+									'otolaryngologic.business' => 'https://health-lifesci.schema.org/Otolaryngologic',
+									'pediatric.business' => 'https://health-lifesci.schema.org/Pediatric',
+									'pharmacy.business' => 'https://health-lifesci.schema.org/Pharmacy',
+									'physician.business' => 'https://health-lifesci.schema.org/Physician',
+									'physiotherapy.business' => 'https://health-lifesci.schema.org/Physiotherapy',
+									'plasticSurgery.business' => 'https://health-lifesci.schema.org/PlasticSurgery',
+									'podiatric.business' => 'https://health-lifesci.schema.org/Podiatric',
+									'primaryCare.business' => 'https://health-lifesci.schema.org/PrimaryCare',
+									'psychiatric.business' => 'https://health-lifesci.schema.org/Psychiatric',
+									'publicHealth.business' => 'https://health-lifesci.schema.org/PublicHealth',
+								),
 								'professional.service' => 'https://schema.org/ProfessionalService',
 								'radio.station' => 'https://schema.org/RadioStation',
 								'real.estate.agent' => 'https://schema.org/RealEstateAgent',
@@ -1905,7 +1932,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// duplicate check counter
 
 			/*
-			 * WPSSO option and meta array alternate / fallback names
+			 * WPSSO option and meta array alternate names
 			 */
 			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// fallback name
 			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// fallback name
@@ -1990,9 +2017,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$filepath = WPSSO_PLUGINDIR.'lib/'.$filespec.'.php';
 				if ( file_exists( $filepath ) ) {
 					require_once $filepath;
-					if ( empty( $classname ) )
+					if ( empty( $classname ) ) {
 						return SucomUtil::sanitize_classname( 'wpsso'.$filespec, false );	// $underscore = false
-					else return $classname;
+					} else {
+						return $classname;
+					}
 				}
 			}
 			return $ret;
