@@ -342,8 +342,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Renamed the Schema for products from Product to IndividualProduct.
 	* Added the following types to the list of available Schema types.
 		* https://schema.org/ClaimReview
+		* https://schema.org/IndividualProduct
 		* https://schema.org/Question
 		* https://health-lifesci.schema.org/MedicalBusiness
 			* https://health-lifesci.schema.org/CommunityHealth
@@ -370,8 +372,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* https://health-lifesci.schema.org/PrimaryCare
 			* https://health-lifesci.schema.org/Psychiatric
 			* https://health-lifesci.schema.org/PublicHealth
+		* https://schema.org/ProductModel
+		* https://schema.org/SomeProducts
 * *Bugfixes*
-	* None
+	* Added a missing Open Graph type filter for WP e-Commerce product pages.
 * *Developer Notes*
 	* None
 
@@ -564,7 +568,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.1-dev.3 =
 
-(2017/06/28) Added new types to the list of available Schema types.
+(2017/06/28) Added new types to the list of available Schema types. Renamed the Schema for products from Product to IndividualProduct. Added a missing Open Graph type filter for WP e-Commerce product pages.
 
 = 3.45.0 =
 
