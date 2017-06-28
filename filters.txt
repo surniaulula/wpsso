@@ -53,10 +53,10 @@
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );	// Pro version
 'wpsso_is_functions' ( $is_functions );
 'wpsso_js_url_facebook' ( $url, $pos );
-'wpsso_json_add_https_schema_org_collectionpage_posts' ( $bool );
-'wpsso_json_add_https_schema_org_searchresultspage_posts' ( $bool );
-'wpsso_json_add_https_schema_org_profilepage_posts' ( $bool );
-'wpsso_json_add_https_schema_org_blog_posts' ( $bool );
+'wpsso_json_add_https_schema_org_collectionpage_mentions' ( $bool );
+'wpsso_json_add_https_schema_org_searchresultspage_mentions' ( $bool );
+'wpsso_json_add_https_schema_org_profilepage_mentions' ( $bool );
+'wpsso_json_add_https_schema_org_blog_blogpost' ( $bool );
 'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod );
 'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 'wpsso_json_data_single_event' ( $event_data, $mod, $event_id );

@@ -377,10 +377,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a missing Open Graph type filter for WP e-Commerce product pages.
 * *Developer Notes*
 	* Renamed the following filters:
-		* 'ngfb_json_add_https_schema_org_collectionpage_parts' to 'ngfb_json_add_https_schema_org_collectionpage_posts'
-		* 'ngfb_json_add_https_schema_org_searchresultspage_parts' to 'ngfb_json_add_https_schema_org_searchresultspage_posts'
-		* 'ngfb_json_add_https_schema_org_profilepage_parts' to 'ngfb_json_add_https_schema_org_profilepage_posts'
-		* 'ngfb_json_add_https_schema_org_blog_parts' to 'ngfb_json_add_https_schema_org_blog_posts'
+		* 'wpsso_json_add_https_schema_org_collectionpage_parts' to 'wpsso_json_add_https_schema_org_collectionpage_mentions'
+		* 'wpsso_json_add_https_schema_org_searchresultspage_parts' to 'wpsso_json_add_https_schema_org_searchresultspage_mentions'
+		* 'wpsso_json_add_https_schema_org_profilepage_parts' to 'wpsso_json_add_https_schema_org_profilepage_mentions'
+		* 'wpsso_json_add_https_schema_org_blog_parts' to 'wpsso_json_add_https_schema_org_blog_blogpost'
 
 **Version 3.45.0 (2017/06/21)**
 
