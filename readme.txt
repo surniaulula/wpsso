@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-dev.4 (2017/06/28)**
+**Version 3.45.1-dev.5 (2017/06/28)**
 
 * *New Features*
 	* None
@@ -376,7 +376,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Added a missing Open Graph type filter for WP e-Commerce product pages.
 * *Developer Notes*
-	* None
+	* Renamed the following filters:
+		* 'ngfb_json_add_https_schema_org_collectionpage_parts' to 'ngfb_json_add_https_schema_org_collectionpage_posts'
+		* 'ngfb_json_add_https_schema_org_searchresultspage_parts' to 'ngfb_json_add_https_schema_org_searchresultspage_posts'
+		* 'ngfb_json_add_https_schema_org_profilepage_parts' to 'ngfb_json_add_https_schema_org_profilepage_posts'
+		* 'ngfb_json_add_https_schema_org_blog_parts' to 'ngfb_json_add_https_schema_org_blog_posts'
 
 **Version 3.45.0 (2017/06/21)**
 
@@ -565,7 +569,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.1-dev.4 =
+= 3.45.1-dev.5 =
 
 (2017/06/28) Added new types to the list of available Schema types. Added a missing Open Graph type filter for WP e-Commerce product pages.
 
