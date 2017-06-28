@@ -342,7 +342,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Renamed the Schema for products from Product to IndividualProduct.
 	* Added the following types to the list of available Schema types.
 		* https://schema.org/ClaimReview
 		* https://schema.org/IndividualProduct
@@ -568,7 +567,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.1-dev.4 =
 
-(2017/06/28) Added new types to the list of available Schema types. Renamed the Schema for products from Product to IndividualProduct. Added a missing Open Graph type filter for WP e-Commerce product pages.
+(2017/06/28) Added new types to the list of available Schema types. Added a missing Open Graph type filter for WP e-Commerce product pages.
 
 = 3.45.0 =
 
