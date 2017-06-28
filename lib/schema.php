@@ -425,6 +425,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing =& $schema_types['thing'];
 
 			/*
+			 * Place > Local Business
+			 */
+			$thing['place']['local.business']['store']['auto.parts.store'] =& 
+				$thing['place']['local.business']['automotive.business']['auto.parts.store'];
+
+			/*
 			 * Organization > Local Business
 			 */
 			$thing['organization']['local.business'] =& 

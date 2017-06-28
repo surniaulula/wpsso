@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.1-dev.4',		// plugin version
+					'version' => '3.45.1-dev.5',		// plugin version
 					'opt_version' => '529',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -1711,7 +1711,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'stadium.or.arena' => 'https://schema.org/StadiumOrArena',
 								),
 								'store' => array(
-									'auto.parts.store' => 'https://schema.org/AutoPartsStore',
 									'bike.store' => 'https://schema.org/BikeStore',
 									'book.store' => 'https://schema.org/BookStore',
 									'clothing.store' => 'https://schema.org/ClothingStore',
