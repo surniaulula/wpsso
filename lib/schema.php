@@ -388,6 +388,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'adding schema type cross-references' );
 					}
+
 					self::add_schema_types_xref( $this->types_cache['filtered'] );
 
 					if ( $this->types_exp > 0 ) {
@@ -422,49 +423,49 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		private static function add_schema_types_xref( &$schema_types ) {
 
-			$thing =& $schema_types['thing'];
+			$t =& $schema_types['thing'];
 
 			/*
 			 * Place > Local Business
 			 */
-			$thing['place']['local.business']['store']['auto.parts.store'] =& 
-				$thing['place']['local.business']['automotive.business']['auto.parts.store'];
+			$t['place']['local.business']['store']['auto.parts.store'] =& 
+				$t['place']['local.business']['automotive.business']['auto.parts.store'];
 
 			/*
 			 * Organization > Local Business
 			 */
-			$thing['organization']['local.business'] =& 
-				$thing['place']['local.business'];
+			$t['organization']['local.business'] =& 
+				$t['place']['local.business'];
 
 			/*
 			 * Organization > Medical Organization
 			 */
-			$thing['organization']['medical.organization']['dentist'] =& 
-				$thing['place']['local.business']['dentist'];
+			$t['organization']['medical.organization']['dentist'] =& 
+				$t['place']['local.business']['dentist'];
 
-			$thing['organization']['medical.organization']['hospital'] =& 
-				$thing['place']['local.business']['emergency.service']['hospital'];
+			$t['organization']['medical.organization']['hospital'] =& 
+				$t['place']['local.business']['emergency.service']['hospital'];
 
 			/*
 			 * Place > Civic Structure
 			 */
-			$thing['place']['civic.structure']['campground'] =&
-				$thing['place']['local.business']['lodging.business']['campground'];
+			$t['place']['civic.structure']['campground'] =&
+				$t['place']['local.business']['lodging.business']['campground'];
 
-			$thing['place']['civic.structure']['fire.station'] =&
-				$thing['place']['local.business']['emergency.service']['fire.station'];
+			$t['place']['civic.structure']['fire.station'] =&
+				$t['place']['local.business']['emergency.service']['fire.station'];
 
-			$thing['place']['civic.structure']['hospital'] =&
-				$thing['place']['local.business']['emergency.service']['hospital'];
+			$t['place']['civic.structure']['hospital'] =&
+				$t['place']['local.business']['emergency.service']['hospital'];
 
-			$thing['place']['civic.structure']['movie.theatre'] =&
-				$thing['place']['local.business']['entertainment.business']['movie.theatre'];
+			$t['place']['civic.structure']['movie.theatre'] =&
+				$t['place']['local.business']['entertainment.business']['movie.theatre'];
 
-			$thing['place']['civic.structure']['police.station'] =&
-				$thing['place']['local.business']['emergency.service']['police.station'];
+			$t['place']['civic.structure']['police.station'] =&
+				$t['place']['local.business']['emergency.service']['police.station'];
 
-			$thing['place']['civic.structure']['stadium.or.arena'] =&
-				$thing['place']['local.business']['sports.activity.location']['stadium.or.arena'];
+			$t['place']['civic.structure']['stadium.or.arena'] =&
+				$t['place']['local.business']['sports.activity.location']['stadium.or.arena'];
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
