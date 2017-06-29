@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// set the reference url for admin notices
 			if ( is_admin() ) {
-				$this->p->notice->set_reference_url( $sharing_url );
+				$this->p->notice->set_ref_url( $sharing_url );
 			}
 
 			// define the author_id (if one is available)
@@ -520,9 +520,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// reset the reference url for admin notices
+			// unset the reference url for admin notices
 			if ( is_admin() ) {
-				$this->p->notice->set_reference_url( null );
+				$this->p->notice->unset_ref_url( $sharing_url );
 			}
 
 			if ( $this->p->debug->enabled ) {

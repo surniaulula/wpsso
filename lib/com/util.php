@@ -756,11 +756,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			else return null;
 		}
 
-		// deprecated on 2017/04/16
-		public static function crawler_name() {
-			return self::get_crawler_name();
-		}
-
 		public static function is_crawler_name( $crawler_name ) {
 			return $crawler_name === self::get_crawler_name() ? true : false;
 		}

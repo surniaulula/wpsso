@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.6\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -505,16 +505,16 @@ msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:1979
+#: lib/admin.php:1974
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2129
+#: lib/admin.php:2124
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2151
+#: lib/admin.php:2146
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -595,33 +595,33 @@ msgstr ""
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:318
+#: lib/com/notice.php:339
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:319
+#: lib/com/notice.php:340
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:324
+#: lib/com/notice.php:345
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:326
+#: lib/com/notice.php:347
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:468
+#: lib/com/notice.php:489
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:513
+#: lib/com/notice.php:534
 msgid "Dismiss"
 msgstr ""
 
@@ -4229,23 +4229,23 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:323
+#: wpsso.php:321
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:324 wpsso.php:330
+#: wpsso.php:322 wpsso.php:328
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:325 wpsso.php:331
+#: wpsso.php:323 wpsso.php:329
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:329
+#: wpsso.php:327
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."

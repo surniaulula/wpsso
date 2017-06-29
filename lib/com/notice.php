@@ -20,10 +20,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $dis_name = 'sucom_dismissed';
 		private $hide_err = false;
 		private $hide_warn = false;
+		private $has_shown = false;
 		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );
 		private $notice_cache = array();
-		private $reference_url = null;
-		private $has_shown = false;
+		private $ref_urls = array();
 
 		public $enabled = true;
 
@@ -108,9 +108,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['dis_time'] = false;
 			}
 
-			if ( $this->reference_url ) {
+			if ( $ref_url = $this->get_ref_url() ) {
 				$msg_txt .= '<br/><small>'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
-					'<a href="'.$this->reference_url.'">'.$this->reference_url.'</a>' ).'</small>';
+					'<a href="'.$ref_url.'">'.$ref_url.'</a>' ).'</small>';
 			}
 
 			if ( $user_id === true ) {
@@ -182,15 +182,36 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		// returns the previous URL
+		// deprecated on 2017/06/29
 		public function set_reference_url( $url = null ) {
-			$previous_url = $this->reference_url;
-			$this->reference_url = $url;
-			return $previous_url;
+			return $this->set_ref_url( $url );
 		}
 
-		public function get_reference_url() {
-			return $this->reference_url;
+		// deprecated on 2017/06/29
+		public function get_reference_url( $url = null ) {
+			return $this->get_ref_url( $url );
+		}
+
+		// add url to the reference array and return the current value
+		public function set_ref_url( $url = null ) {
+			$last_url = $this->get_ref_url();
+			array_push( $this->ref_urls, $url );
+			return $last_url;
+		}
+
+		// remove the last reference url, if the argument is null or matches the url provided
+		public function unset_ref_url( $url = null ) {
+			if ( $url === null || $url === $this->get_ref_url() ) {
+				array_pop( $this->ref_urls );
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		// return the current reference url
+		public function get_ref_url() {
+			return end( $this->ref_urls );
 		}
 
 		public function is_admin_pre_notices( $dis_key = false, $user_id = true ) {

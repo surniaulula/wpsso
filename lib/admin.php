@@ -1969,11 +1969,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// deprecated on 2017/04/02
-		public function get_site_use( $form, $network, $name, $enabled = false ) {
-			return self::get_option_site_use( $name, $form, $network, $enabled );	// note the different arg order
-		}
-
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
 			if ( $network ) {
 				return $form->get_th_html( _x( 'Site Use',
