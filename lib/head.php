@@ -385,13 +385,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'head array transient is disabled' );
 			}
 
-			// set the reference url for admin notices
+			// set reference values for admin notices
 			if ( is_admin() ) {
-				$this->p->notice->set_ref_url( $sharing_url );
+				$this->p->notice->set_ref( $sharing_url, $mod );
 			}
 
 			// define the author_id (if one is available)
 			$author_id = WpssoUser::get_author_id( $mod );
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'author_id = '.( $author_id === false ? 'false' : $author_id ) );
 			}
@@ -520,9 +521,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// unset the reference url for admin notices
+			// restore previous reference values for admin notices
 			if ( is_admin() ) {
-				$this->p->notice->unset_ref_url( $sharing_url );
+				$this->p->notice->unset_ref( $sharing_url );
 			}
 
 			if ( $this->p->debug->enabled ) {

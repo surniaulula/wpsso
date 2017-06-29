@@ -1290,6 +1290,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yt_publisher_url' => 'YouTube Business Channel URL',
 				),
 				// https://schema.org/ItemAvailability
+				// {schema_property_value} => {select_value_shown}
 				'item_availability' => array(
 					'none' => '[None]',
 			 		'Discontinued' => 'Discontinued',
@@ -1302,6 +1303,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'SoldOut ' => 'Sold Out',
 				),
 				// https://schema.org/OfferItemCondition
+				// {schema_property_value} => {select_value_shown}
 				'item_condition' => array(
 					'none' => '[None]',
 					'DamagedCondition' => 'Damaged',

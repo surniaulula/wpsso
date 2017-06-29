@@ -22,8 +22,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $hide_warn = false;
 		private $has_shown = false;
 		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );
+		private $ref_cache = array();
 		private $notice_cache = array();
-		private $ref_urls = array();
 
 		public $enabled = true;
 
@@ -109,8 +109,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( $ref_url = $this->get_ref_url() ) {
-				$msg_txt .= '<br/><small>'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
-					'<a href="'.$ref_url.'">'.$ref_url.'</a>' ).'</small>';
+				$msg_txt .= '<p class="ref_url">'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
+					'<a href="'.$ref_url.'">'.$ref_url.'</a>' ).'</p>';
 			}
 
 			if ( $user_id === true ) {
@@ -184,34 +184,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		// deprecated on 2017/06/29
 		public function set_reference_url( $url = null ) {
-			return $this->set_ref_url( $url );
+			return $this->set_ref( $url );
 		}
 
-		// deprecated on 2017/06/29
-		public function get_reference_url( $url = null ) {
-			return $this->get_ref_url( $url );
+		// set reference values for admin notices
+		public function set_ref( $url = null, $mod = null ) {
+			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod );
 		}
 
-		// add url to the reference array and return the current value
-		public function set_ref_url( $url = null ) {
-			$last_url = $this->get_ref_url();
-			array_push( $this->ref_urls, $url );
-			return $last_url;
-		}
-
-		// remove the last reference url, if the argument is null or matches the url provided
-		public function unset_ref_url( $url = null ) {
-			if ( $url === null || $url === $this->get_ref_url() ) {
-				array_pop( $this->ref_urls );
+		// restore previous reference values for admin notices
+		public function unset_ref( $url = null ) {
+			if ( $url === null || $this->is_ref_url( $url ) ) {
+				array_pop( $this->ref_cache );
 				return true;
 			} else {
 				return false;
 			}
 		}
 
-		// return the current reference url
+		public function get_ref() {
+			return end( $this->ref_cache );
+		}
+
 		public function get_ref_url() {
-			return end( $this->ref_urls );
+			$refs = end( $this->ref_cache );
+			return isset( $refs['url'] ) ? $refs['url'] : null;
+		}
+
+		public function is_ref_url( $url = null ) {
+			if ( $url === null || $url === $this->get_ref_url() ) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public function is_admin_pre_notices( $dis_key = false, $user_id = true ) {

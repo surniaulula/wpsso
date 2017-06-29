@@ -292,6 +292,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				.'.$lca.'-notice .notice-message a {
 					text-decoration:none;
 				}
+				.'.$lca.'-notice .notice-message p {
+					margin:10px 0 10px 0;
+				}
+				.'.$lca.'-notice .notice-message p.ref_url {
+					font-size:0.8em;
+					margin:10px 0 0 0;
+				}
 				.'.$lca.'-dismissible div.notice-dismiss:before {
 					display:inline-block;
 					margin-right:2px;
@@ -308,9 +315,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					display:inline-block;
 					font-size:12px;
 					vertical-align:top;
-				}
-				.'.$lca.'-dismissible div.notice-message p {
-					margin:10px 0 10px 0;
 				}
 				.'.$lca.'-rate-stars {
 					font-family:"Star";
