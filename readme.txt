@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-dev.7 (2017/06/29)**
+**Version 3.45.1-dev.8 (2017/06/30)**
 
 * *New Features*
 	* None
@@ -570,9 +570,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.1-dev.7 =
+= 3.45.1-dev.8 =
 
-(2017/06/29) Added new types to the list of available Schema types. Added a missing Open Graph type filter for WP e-Commerce product pages.
+(2017/06/30) Added new types to the list of available Schema types. Added a missing Open Graph type filter for WP e-Commerce product pages.
 
 = 3.45.0 =
 
