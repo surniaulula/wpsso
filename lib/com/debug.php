@@ -253,28 +253,32 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( is_array( $mixed ) ) {
 				foreach ( $mixed as $key => $val ) {
 					$val = self::pretty_array( $val, $flatten );
-					if ( $flatten )
+					if ( $flatten ) {
 						$ret .= $key.'='.$val.', ';
-					else {
+					} else {
 						if ( is_object( $mixed[$key] ) )
 							unset ( $mixed[$key] );	// dereference the object first
 						$mixed[$key] = $val;
 					}
 				}
-				if ( $flatten )
+				if ( $flatten ) {
 					$ret = '('.trim( $ret, ', ' ).')';
-				else $ret = $mixed;
-			} elseif ( $mixed === false )
+				} else {
+					$ret = $mixed;
+				}
+			} elseif ( $mixed === false ) {
 				$ret = 'false';
-			elseif ( $mixed === true )
+			} elseif ( $mixed === true ) {
 				$ret = 'true';
-			elseif ( $mixed === null )
+			} elseif ( $mixed === null ) {
 				$ret = 'null';
-			elseif ( $mixed === '' )
+			} elseif ( $mixed === '' ) {
 				$ret = '\'\'';
-			elseif ( is_object( $mixed ) )
+			} elseif ( is_object( $mixed ) ) {
 				$ret = 'object '.get_class( $mixed );
-			else $ret = $mixed;
+			} else {
+				$ret = $mixed;
+			}
 
 			return $ret;
 		}

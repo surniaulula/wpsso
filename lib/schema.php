@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 			$type_id = null;
 
 			/*
@@ -339,16 +339,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public function &get_schema_types_array( $flatten = true ) {
+		/*
+		 * By default, returns a one-dimensional (flat) array of tangible schema types (excludes 
+		 * the action and intangible sub-types), otherwise returns a multi-dimensional array of 
+		 * all schema types, including cross-references for sub-types with multiple parent types.
+		 */
+		public function &get_schema_types_array( $tangible_flat = true ) {
 
-			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
+			if ( ! isset( $this->types_cache['types_filtered'] ) ) {	// check class property cache
 
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__;
 				$cache_id = $lca.'_'.md5( $cache_salt );
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+				}
 
 				if ( $this->types_exp > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
@@ -358,62 +364,66 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
+				if ( ! isset( $this->types_cache['types_filtered'] ) ) {	// from transient cache or not, check if filtered
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema type arrays' );
+						$this->p->debug->mark( 'create schema type arrays' );	// begin timer
 					}
 
-					$this->types_cache['filtered'] = (array) apply_filters( $lca.'_schema_types',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'filtering schema type array' );
+					}
+
+					$tangible_types = $this->types_cache['types_filtered'] = (array) apply_filters( $lca.'_schema_types',
 						$this->p->cf['head']['schema_type'] );
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'flattening schema type array' );
-					}
-
-					$this->types_cache['flattened'] = SucomUtil::array_flatten( $this->types_cache['filtered'] );
+					// remove action and intangible types
+					unset( $tangible_types['thing']['action'] );
+					unset( $tangible_types['thing']['intangible'] );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'creating schema parent index' );
+						$this->p->debug->mark( 'creating tangible flat array' );
 					}
 
-					$this->types_cache['parent_index'] = SucomUtil::array_parent_index( $this->types_cache['filtered'] );
+					$this->types_cache['tangible_flat'] = SucomUtil::array_flatten( $tangible_types );
+					ksort( $this->types_cache['tangible_flat'] );
 
-					ksort( $this->types_cache['flattened'] );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->mark( 'creating parent index array' );
+					}
+
+					$this->types_cache['parent_index'] = SucomUtil::array_parent_index( $this->types_cache['types_filtered'] );
 					ksort( $this->types_cache['parent_index'] );
 
-					/*
-					 * Add array cross-references for schema sub-types that exist under more than one type.
-					 */
+					// add cross-references at the end to avoid duplicate parent index key errors
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'adding schema type cross-references' );
+						$this->p->debug->mark( 'adding cross-references' );
 					}
 
-					self::add_schema_types_xref( $this->types_cache['filtered'] );
+					$this->add_schema_type_xrefs( $this->types_cache['types_filtered'] );
 
 					if ( $this->types_exp > 0 ) {
 						set_transient( $cache_id, $this->types_cache, $this->types_exp );
-						if ( $this->p->debug->enabled )
-							$this->p->debug->log( 'schema type arrays saved to transient '.
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'saving schema type arrays to transient '.
 								$cache_id.' ('.$this->types_exp.' seconds)');
+						}
 					}
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema type arrays' );
+						$this->p->debug->mark( 'create schema type arrays' );	// end timer
 					}
-
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema type arrays already filtered' );
 				}
-
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'using schema type arrays from class property cache' );
 			}
 
-			if ( $flatten ) {
-				return $this->types_cache['flattened'];
+			if ( $tangible_flat ) {
+				return $this->types_cache['tangible_flat'];
 			} else {
-				return $this->types_cache['filtered'];
+				return $this->types_cache['types_filtered'];
 			}
 		}
 
@@ -421,15 +431,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Add array cross-references for schema sub-types that exist under more than one type.
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 		 */
-		private static function add_schema_types_xref( &$schema_types ) {
+		protected function add_schema_type_xrefs( &$schema_types ) {
 
 			$t =& $schema_types['thing'];
 
 			/*
-			 * Place > Local Business
+			 * Intangible > Enumeration
 			 */
-			$t['place']['local.business']['store']['auto.parts.store'] =& 
-				$t['place']['local.business']['automotive.business']['auto.parts.store'];
+			$t['intangible']['enumeration']['medical.enumeration']['medical.specialty'] =&
+				$t['intangible']['enumeration']['specialty']['medical.specialty'];
 
 			/*
 			 * Organization > Local Business
@@ -466,12 +476,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$t['place']['civic.structure']['stadium.or.arena'] =&
 				$t['place']['local.business']['sports.activity.location']['stadium.or.arena'];
+
+			/*
+			 * Place > Local Business
+			 */
+			$t['place']['local.business']['store']['auto.parts.store'] =& 
+				$t['place']['local.business']['automotive.business']['auto.parts.store'];
+
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 
 			if ( ! is_array( $schema_types ) ) {	// just in case
-				$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+				$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 			} else {
 				$schema_types = SucomUtil::array_flatten( $schema_types );
 			}
@@ -497,7 +514,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+
+			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 
 			if ( isset( $schema_types[$type_id] ) ) {
 				return $schema_types[$type_id];
@@ -523,7 +541,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 
 			if ( isset( $this->types_cache['parent_index'][$child_id] ) ) {
 				$parent_id = $this->types_cache['parent_index'][$child_id];
@@ -559,7 +577,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$children[] = $type_id;	// add children before parents
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 
 			foreach ( $this->types_cache['parent_index'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
@@ -623,7 +641,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;	// just in case
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
 
 			$type_id = isset( $this->p->options['schema_type_for_'.$type_name] ) ?	// just in case
 				$this->p->options['schema_type_for_'.$type_name] : $default_id;

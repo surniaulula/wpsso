@@ -1007,25 +1007,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// array must use unique associative / string keys
-		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '' ) {
-			$return = array();
+		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
-				if ( is_array( $value ) ) {
-					$return += self::array_parent_index( $value, $child_key, $parent_key );
+				if ( isset( $index[$child_key] ) ) {
+					error_log( __METHOD__.' error: duplicate key '.$child_key.' = '.$index[$child_key] );
+				} elseif ( is_array( $value ) ) {
+					self::array_parent_index( $value, $child_key, $parent_key, $index );
 				} elseif ( $parent_key && $child_key !== $parent_key ) {
-					$return[$child_key] = $parent_key;
+					$index[$child_key] = $parent_key;
 				} elseif ( $gparent_key && $child_key === $parent_key ) {
-					$return[$child_key] = $gparent_key;
+					$index[$child_key] = $gparent_key;
 				}
 			}
-			return $return;
+			return $index;
 		}
 
 		public static function has_array_element( $needle, array $array, $strict = false ) {
-			foreach ( $array as $key => $element )
+			foreach ( $array as $key => $element ) {
 				if ( ( $strict ? $element === $needle : $element == $needle ) ||
-					( is_array( $element ) && self::has_array_element( $needle, $element, $strict ) ) )
-						return true;
+					( is_array( $element ) && self::has_array_element( $needle, $element, $strict ) ) ) {
+					return true;
+				}
+			}
 			return false;
 		}
 
