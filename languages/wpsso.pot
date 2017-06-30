@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.8\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3456,14 +3456,14 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:255
+#: lib/pro/media/wistia.php:263
 msgid ""
 "The PHP <a href=\"%1$s\" target=\"_blank\">%2$s function</a> is not "
 "available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:153 lib/pro/media/vimeo.php:130
-#: lib/pro/media/wistia.php:257
+#: lib/pro/media/wistia.php:265
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
