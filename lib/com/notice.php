@@ -108,9 +108,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['dis_time'] = false;
 			}
 
-			if ( $ref_url = $this->get_ref_url() ) {
+			if ( $ref_url = $this->get_ref( 'url' ) ) {
+				$ref_context = $this->get_ref( 'context', ' (', ')' );
 				$msg_txt .= '<p class="ref_url">'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
-					'<a href="'.$ref_url.'">'.$ref_url.'</a>' ).'</p>';
+					'<a href="'.$ref_url.'">'.$ref_url.'</a>'.$ref_context ).'</p>';
 			}
 
 			if ( $user_id === true ) {
@@ -188,8 +189,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		// set reference values for admin notices
-		public function set_ref( $url = null, $mod = null ) {
-			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod );
+		public function set_ref( $url = null, $mod = null, $context = null ) {
+			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod, 'context' => $context );
 		}
 
 		// restore previous reference values for admin notices
@@ -202,17 +203,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function get_ref() {
-			return end( $this->ref_cache );
-		}
-
-		public function get_ref_url() {
+		public function get_ref( $idx = false, $prefix = '', $suffix = '' ) {
 			$refs = end( $this->ref_cache );
-			return isset( $refs['url'] ) ? $refs['url'] : null;
+			if ( $idx !== false ) {
+				return isset( $refs[$idx] ) ? $prefix.$refs[$idx].$suffix : null;
+			} else {
+				return $refs;
+			}
 		}
 
 		public function is_ref_url( $url = null ) {
-			if ( $url === null || $url === $this->get_ref_url() ) {
+			if ( $url === null || $url === $this->get_ref( 'url' ) ) {
 				return true;
 			} else {
 				return false;

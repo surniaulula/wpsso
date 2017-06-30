@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.9\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.1-dev.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -591,37 +591,37 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:112
+#: lib/com/notice.php:113
 msgid "Reference URL: %s"
-msgstr ""
-
-#: lib/com/notice.php:344
-msgctxt "notification type"
-msgid "error"
 msgstr ""
 
 #: lib/com/notice.php:345
 msgctxt "notification type"
+msgid "error"
+msgstr ""
+
+#: lib/com/notice.php:346
+msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:350
+#: lib/com/notice.php:351
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:352
+#: lib/com/notice.php:353
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:494
+#: lib/com/notice.php:495
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:539
+#: lib/com/notice.php:540
 msgid "Dismiss"
 msgstr ""
 
@@ -3456,14 +3456,14 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:263
+#: lib/pro/media/wistia.php:264
 msgid ""
 "The PHP <a href=\"%1$s\" target=\"_blank\">%2$s function</a> is not "
 "available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:153 lib/pro/media/vimeo.php:130
-#: lib/pro/media/wistia.php:265
+#: lib/pro/media/wistia.php:266
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
