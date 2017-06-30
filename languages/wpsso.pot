@@ -3456,14 +3456,14 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:238
+#: lib/pro/media/wistia.php:254
 msgid ""
 "The PHP <a href=\"%1$s\" target=\"_blank\">%2$s function</a> is not "
 "available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:153 lib/pro/media/vimeo.php:130
-#: lib/pro/media/wistia.php:240
+#: lib/pro/media/wistia.php:256
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
