@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Updated Polylang plugin check from using the slug to the class name.
+	* Updated the Polylang plugin check to use a class name instead of the plugin slug for compatibility with Polylang Pro.
 	* Added the Open Graph image width as a parameter to the Wistia video API URL.
 	* Added the following types to the list of available Schema types.
 		* https://schema.org/ClaimReview
