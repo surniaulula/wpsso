@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
 			}
 
-			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
+			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() ) {
 				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
 			}
 		}
