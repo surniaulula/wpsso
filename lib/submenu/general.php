@@ -320,7 +320,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'schema_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$schema_types = $this->p->schema->get_schema_types_select();	// $add_none = true
+					$schema_types = $this->p->schema->get_schema_types_select( null, true );	// $add_none = true
 
 					foreach ( array(
 						'home_index' => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),

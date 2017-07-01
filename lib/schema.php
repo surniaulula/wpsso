@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
-			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
+			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 			$type_id = null;
 
 			/*
@@ -344,9 +344,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * the action and intangible sub-types), otherwise returns a multi-dimensional array of 
 		 * all schema types, including cross-references for sub-types with multiple parent types.
 		 */
-		public function &get_schema_types_array( $tangible_flat = true ) {
+		public function &get_schema_types_array( $flatten = true ) {
 
-			if ( ! isset( $this->types_cache['types_filtered'] ) ) {	// check class property cache
+			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__;
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! isset( $this->types_cache['types_filtered'] ) ) {	// from transient cache or not, check if filtered
+				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'create schema type arrays' );	// begin timer
@@ -374,33 +374,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->mark( 'filtering schema type array' );
 					}
 
-					$tangible_types = $this->types_cache['types_filtered'] = (array) apply_filters( $lca.'_schema_types',
+					$this->types_cache['filtered'] = (array) apply_filters( $lca.'_schema_types',
 						$this->p->cf['head']['schema_type'] );
-
-					// remove action and intangible types
-					unset( $tangible_types['thing']['action'] );
-					unset( $tangible_types['thing']['intangible'] );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'creating tangible flat array' );
 					}
 
-					$this->types_cache['tangible_flat'] = SucomUtil::array_flatten( $tangible_types );
-					ksort( $this->types_cache['tangible_flat'] );
+					$this->types_cache['flattened'] = SucomUtil::array_flatten( $this->types_cache['filtered'] );
+					ksort( $this->types_cache['flattened'] );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'creating parent index array' );
 					}
 
-					$this->types_cache['parent_index'] = SucomUtil::array_parent_index( $this->types_cache['types_filtered'] );
-					ksort( $this->types_cache['parent_index'] );
+					$this->types_cache['parents'] = SucomUtil::array_parent_index( $this->types_cache['filtered'] );
+					ksort( $this->types_cache['parents'] );
 
 					// add cross-references at the end to avoid duplicate parent index key errors
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'adding cross-references' );
 					}
 
-					$this->add_schema_type_xrefs( $this->types_cache['types_filtered'] );
+					$this->add_schema_type_xrefs( $this->types_cache['filtered'] );
 
 					if ( $this->types_exp > 0 ) {
 						set_transient( $cache_id, $this->types_cache, $this->types_exp );
@@ -420,10 +416,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'using schema type arrays from class property cache' );
 			}
 
-			if ( $tangible_flat ) {
-				return $this->types_cache['tangible_flat'];
+			if ( $flatten ) {
+				return $this->types_cache['flattened'];
 			} else {
-				return $this->types_cache['types_filtered'];
+				return $this->types_cache['filtered'];
 			}
 		}
 
@@ -485,18 +481,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		}
 
-		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
+		public function get_schema_types_select( $schema_types = null, $add_none = true, $exclude_intangible = true ) {
 
-			if ( ! is_array( $schema_types ) ) {	// just in case
-				$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
-			} else {
-				$schema_types = SucomUtil::array_flatten( $schema_types );
+			if ( ! is_array( $schema_types ) ) {
+				$schema_types =& $this->get_schema_types_array( false );	// $flatten = false
 			}
 
+			if ( $exclude_intangible ) {
+				unset( $schema_types['thing']['action'] );
+				unset( $schema_types['thing']['intangible'] );
+			}
+
+			$schema_types = SucomUtil::array_flatten( $schema_types );
 			$select = array();
 
 			foreach ( $schema_types as $type_id => $label ) {
-				$select[$type_id] = $type_id.' ('.$label.')';
+				$select[$type_id] = $type_id.' | '.$label;
 			}
 
 			if ( defined( 'SORT_NATURAL' ) ) {
@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 
-			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
+			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 
 			if ( isset( $schema_types[$type_id] ) ) {
 				return $schema_types[$type_id];
@@ -541,16 +541,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
+			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 
-			if ( isset( $this->types_cache['parent_index'][$child_id] ) ) {
-				$parent_id = $this->types_cache['parent_index'][$child_id];
+			if ( isset( $this->types_cache['parents'][$child_id] ) ) {
+				$parent_id = $this->types_cache['parents'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
 					if ( $parent_id !== $child_id )	{	// prevent infinite loops
 						$this->get_schema_type_parents( $parent_id, $parents, false );
 					}
 				}
 			}
+
 			$parents[] = $child_id;	// add children after parents
 
 			if ( $use_cache ) {
@@ -577,9 +578,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$children[] = $type_id;	// add children before parents
-			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
+			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 
-			foreach ( $this->types_cache['parent_index'] as $child_id => $parent_id ) {
+			foreach ( $this->types_cache['parents'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
 					$this->get_schema_type_children( $child_id, $children, false );
 				}
@@ -641,7 +642,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;	// just in case
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $tangible_flat = true
+			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
 
 			$type_id = isset( $this->p->options['schema_type_for_'.$type_name] ) ?	// just in case
 				$this->p->options['schema_type_for_'.$type_name] : $default_id;
