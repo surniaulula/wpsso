@@ -281,6 +281,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Pro version?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/">How do I remove duplicate meta tags?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO find / detect / select images?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO find / detect / select videos?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/">W3C says "there is no attribute 'property'"</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/">What about Google Search and Google Plus?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/">What features of NextGEN Gallery are supported?</a></li>

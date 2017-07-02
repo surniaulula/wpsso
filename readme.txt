@@ -244,6 +244,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How do I install the WPSSO Pro version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
+* [How does WPSSO find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
 * [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
