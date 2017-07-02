@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-b.1 (2017/06/30)**
+**Version 3.45.1-rc.1 (2017/07/02)**
 
 * *New Features*
 	* None
@@ -573,9 +573,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.1-b.1 =
+= 3.45.1-rc.1 =
 
-(2017/06/30) Added several new types to the list of available Schema types. Fixed a missing Open Graph type filter for WP e-Commerce product pages. Fixed parsing of the HTML returned by the Wistia video API. Added the Open Graph image width as a parameter to the Wistia video API URL.
+(2017/07/02) Added several new types to the list of available Schema types. Fixed a missing Open Graph type filter for WP e-Commerce product pages. Fixed parsing of the HTML returned by the Wistia video API. Added the Open Graph image width as a parameter to the Wistia video API URL.
 
 = 3.45.0 =
 
