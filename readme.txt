@@ -10,7 +10,7 @@ Tags: meta tags, open graph, share, social, schema markup, twitter card, video s
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8
-Stable Tag: 3.45.0
+Stable Tag: 3.45.1
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
 
@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1 (2017/07/02)**
+**Version 3.45.1 (2017/07/03)**
 
 * *New Features*
 	* None
@@ -577,7 +577,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.1 =
 
-(2017/07/02) Added several new types to the list of available Schema types. Fixed a missing Open Graph type filter for WP e-Commerce product pages. Fixed parsing of the HTML returned by the Wistia video API. Added the Open Graph image width as a parameter to the Wistia video API URL.
+(2017/07/03) Added several new types to the list of available Schema types. Fixed a missing Open Graph type filter for WP e-Commerce product pages. Fixed parsing of the HTML returned by the Wistia video API. Added the Open Graph image width as a parameter to the Wistia video API URL.
 
 = 3.45.0 =
 
