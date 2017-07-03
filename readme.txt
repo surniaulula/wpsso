@@ -338,11 +338,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.1-rc.1 (2017/07/02)**
+**Version 3.45.1 (2017/07/02)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Updated the Twitter Large Image Summary image size to 600x315 cropped.
 	* Updated the Polylang plugin check to use a class name instead of the plugin slug for compatibility with Polylang Pro.
 	* Added the Open Graph image width as a parameter to the Wistia video API URL.
 	* Added the following types to the list of available Schema types.
@@ -574,7 +575,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.1-rc.1 =
+= 3.45.1 =
 
 (2017/07/02) Added several new types to the list of available Schema types. Fixed a missing Open Graph type filter for WP e-Commerce product pages. Fixed parsing of the HTML returned by the Wistia video API. Added the Open Graph image width as a parameter to the Wistia video API URL.
 
