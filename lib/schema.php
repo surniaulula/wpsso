@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 			$type_id = null;
 
 			/*
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * the action and intangible sub-types), otherwise returns a multi-dimensional array of 
 		 * all schema types, including cross-references for sub-types with multiple parent types.
 		 */
-		public function &get_schema_types_array( $flatten = true ) {
+		public function get_schema_types_array( $flatten = true ) {
 
 			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 
@@ -359,8 +359,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->types_exp > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->types_cache ) ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using schema type arrays from transient '.$cache_id );
+						}
 					}
 				}
 
@@ -417,8 +418,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $flatten ) {
+				error_log( 'RETURN FLATTENED' );
 				return $this->types_cache['flattened'];
 			} else {
+				error_log( 'RETURN FILTERED' );
+				error_log( print_r( $this->types_cache['filtered'], true ) );
 				return $this->types_cache['filtered'];
 			}
 		}
@@ -484,7 +488,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_schema_types_select( $schema_types = null, $add_none = true, $exclude_intangible = true ) {
 
 			if ( ! is_array( $schema_types ) ) {
-				$schema_types =& $this->get_schema_types_array( false );	// $flatten = false
+				$schema_types = $this->get_schema_types_array( false );	// $flatten = false
 			}
 
 			if ( $exclude_intangible ) {
@@ -515,7 +519,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 
 			if ( isset( $schema_types[$type_id] ) ) {
 				return $schema_types[$type_id];
@@ -541,7 +545,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 
 			if ( isset( $this->types_cache['parents'][$child_id] ) ) {
 				$parent_id = $this->types_cache['parents'][$child_id];
@@ -578,7 +582,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$children[] = $type_id;	// add children before parents
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 
 			foreach ( $this->types_cache['parents'] as $child_id => $parent_id ) {
 				if ( $parent_id === $type_id ) {
@@ -642,7 +646,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;	// just in case
 			}
 
-			$schema_types =& $this->get_schema_types_array( true );	// $flatten = true
+			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 
 			$type_id = isset( $this->p->options['schema_type_for_'.$type_name] ) ?	// just in case
 				$this->p->options['schema_type_for_'.$type_name] : $default_id;
