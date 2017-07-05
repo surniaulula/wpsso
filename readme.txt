@@ -338,6 +338,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.2 (2017/07/05)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Removed pass-by-reference from WpssoSchema::get_schema_types_array() to avoid corrupting the schema array cache.
+* *Developer Notes*
+	* None
+
 **Version 3.45.1 (2017/07/03)**
 
 * *New Features*
@@ -386,7 +397,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_json_add_https_schema_org_searchresultspage_parts' to 'wpsso_json_add_https_schema_org_searchresultspage_mentions'
 		* 'wpsso_json_add_https_schema_org_profilepage_parts' to 'wpsso_json_add_https_schema_org_profilepage_mentions'
 		* 'wpsso_json_add_https_schema_org_blog_parts' to 'wpsso_json_add_https_schema_org_blog_blogpost'
-	* Added https://health-lifesci.schema.org/MedicalSpecialty sub-types to the NgfbConfig::$cf['head']['schema_type'] array for future use.
+	* Added https://health-lifesci.schema.org/MedicalSpecialty sub-types to the WpssoConfig::$cf['head']['schema_type'] array for future use.
 
 **Version 3.45.0 (2017/06/21)**
 
@@ -574,6 +585,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.2 =
+
+(2017/07/05) Removed pass-by-reference from WpssoSchema get_schema_types_array() to avoid corrupting the schema array cache.
 
 = 3.45.1 =
 
