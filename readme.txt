@@ -338,6 +338,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.3 (2017/07/06)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Cleaned-up some development / debugging error log messages.
+
 **Version 3.45.2 (2017/07/05)**
 
 * *New Features*
@@ -585,6 +596,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.3 =
+
+(2017/07/06) Cleaned-up some development / debugging error log messages.
 
 = 3.45.2 =
 
