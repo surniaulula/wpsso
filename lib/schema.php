@@ -418,11 +418,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $flatten ) {
-				error_log( 'RETURN FLATTENED' );
 				return $this->types_cache['flattened'];
 			} else {
-				error_log( 'RETURN FILTERED' );
-				error_log( print_r( $this->types_cache['filtered'], true ) );
 				return $this->types_cache['filtered'];
 			}
 		}
