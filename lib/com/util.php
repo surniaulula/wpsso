@@ -196,7 +196,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		);
 
 		private static $pub_lang = array(
-			// https://www.facebook.com/translations/FacebookLocales.xml
+			// https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales
 			'facebook' => array(
 				'af_ZA' => 'Afrikaans',
 				'ak_GH' => 'Akan',
@@ -1195,6 +1195,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$def_locale = self::get_locale( 'default' );
 			$fb_pub_lang = self::get_pub_lang( 'facebook' );
 
+			// exceptions
+			switch ( $locale ) {
+				case 'de_DE_formal':
+					$locale = 'de_DE';
+					break;
+			}
+
 			if ( ! empty( $fb_pub_lang[$locale] ) ) {
 				return $locale;
 			} elseif ( ! empty( $fb_pub_lang[$def_locale] ) ) {
@@ -1648,14 +1655,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function user_exists( $user_id ) {
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {	// true is not valid
 				$user_id = (int) $user_id;	// cast as integer for array
-				if ( isset( self::$user_exists[$user_id] ) )
+				if ( isset( self::$user_exists[$user_id] ) ) {
 					return self::$user_exists[$user_id];
-				else {
+				} else {
 					global $wpdb;
 					$select_sql = 'SELECT COUNT(ID) FROM '.$wpdb->users.' WHERE ID = %d';
 					return self::$user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 				}
-			} else return false;
+			} else {
+				return false;
+			}
 		}
 
 		public static function get_author_object( $user_id = 0, $output = 'object' ) {

@@ -123,13 +123,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				// check the post_type for a match with a known open graph type
 				if ( ! empty( $mod['post_type'] ) &&
-					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) )
+					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) ) {
 						$og_type = $mod['post_type'];
-				else $og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
-					'article' : $this->p->options['og_post_type'];
+				} else {
+					$og_type = empty( $this->p->options['og_post_type'] ) ?	// just in case
+						'article' : $this->p->options['og_post_type'];
+				}
 
 			// default for everything else is 'website'
-			} else $og_type = 'website';
+			} else {
+				$og_type = 'website';
+			}
 
 			return apply_filters( $lca.'_og_type', $og_type, $mod );
 		}
