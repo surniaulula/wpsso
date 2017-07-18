@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.4-dev.1 (TBD)**
+**Version 3.45.4-dev.1 (2017/07/18)**
 
 * *New Features*
 	* None
@@ -607,6 +607,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.4-dev.1 =
+
+(2017/07/18) Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
 = 3.45.3 =
 
