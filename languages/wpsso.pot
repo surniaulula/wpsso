@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.3\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.4-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1742,22 +1742,36 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:732
+#: lib/media.php:376
+msgid ""
+"Possible Media Library corruption detected - the full size image dimensions "
+"for image ID %1$s are missing from the image metadata returned by the "
+"WordPress wp_get_attachment_metadata() function."
+msgstr ""
+
+#: lib/media.php:383
+msgid ""
+"Possible Media Library corruption detected - the full size image file path "
+"for image ID %1$s is missing from the image metadata returned by the "
+"WordPress wp_get_attachment_metadata() function."
+msgstr ""
+
+#: lib/media.php:767
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1025 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1060 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1085
+#: lib/media.php:1120
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1103
+#: lib/media.php:1138
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -3387,7 +3401,7 @@ msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:500
+#: lib/pro/ecom/woocommerce.php:505
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 

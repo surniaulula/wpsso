@@ -336,45 +336,73 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid,
 						$size_name, $check_dupes ) );
 				} else {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' );
-
+					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$lca]['short'].' Pro', $pid ) );
 					}
-
 					return self::reset_image_src_info();
 				}
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: attachment '.$pid.' is not an image' );
+				}
 				return self::reset_image_src_info();
 			}
 
 			$use_full = false;
 			$img_meta = wp_get_attachment_metadata( $pid );
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( 'wp_get_attachment_metadata', $img_meta );
+			}
+
 			if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) ) {
 				if ( $img_meta['width'] === $size_info['width'] &&
-					$img_meta['height'] === $size_info['height'] )
-						$use_full = true;
-				if ( $this->p->debug->enabled )
+					$img_meta['height'] === $size_info['height'] ) {
+					$use_full = true;
+				}
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.
 						$img_meta['width'].'x'.$img_meta['height'] );
+				}
 			} elseif ( $this->p->debug->enabled ) {
-				if ( isset( $img_meta['file'] ) )
-					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions are missing' );
-				else $this->p->debug->log( 'full size image file path meta for '.$pid.' is missing' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
+				}
+				if ( isset( $img_meta['file'] ) ) {
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected - the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+					}
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
+					}
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected - the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+					}
+				}
 			}
 
 			if ( $use_full === true ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
-
+				}
 			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) {	// only resize our own custom image sizes
 
 				if ( $force_regen || ! empty( $this->p->options['plugin_create_wp_sizes'] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'checking image metadata for inconsistencies' );
+
+						if ( $force_regen ) {
+							$this->p->debug->log( 'force regen is true' );
+						} elseif ( empty( $img_meta['sizes'][$size_name] ) ) {
+							$this->p->debug->log( $size_name.' size missing from image metadata' );
+						}
+					}
 
 					// does the image metadata contain our image sizes?
 					if ( $force_regen || empty( $img_meta['sizes'][$size_name] ) ) {
@@ -403,8 +431,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// allow for a +/- one pixel difference
 							if ( $img_meta['sizes'][$size_name][$check] < ( $should_be - 1 ) ||
 								$img_meta['sizes'][$size_name][$check] > ( $should_be + 1 ) ) {
-									$is_accurate_width = false;
-									$is_accurate_height = false;
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( $size_name.' image metadata not accurate' );
+								}
+								$is_accurate_width = false;
+								$is_accurate_height = false;
 							}
 						}
 					}
@@ -415,17 +446,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							if ( $force_regen )
-								$this->p->debug->log( 'force regen is true' );
-							elseif ( empty( $img_meta['sizes'][$size_name] ) )
-								$this->p->debug->log( $size_name.' size not defined in the image meta' );
-							else $this->p->debug->log( 'image metadata ('.
-								( empty( $img_meta['sizes'][$size_name]['width'] ) ? 0 :
-									$img_meta['sizes'][$size_name]['width'] ).'x'.
-								( empty( $img_meta['sizes'][$size_name]['height'] ) ? 0 :
-									$img_meta['sizes'][$size_name]['height'] ).') does not match '.
-								$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
-									( $img_cropped ? ' cropped' : '' ).')' );
+							if ( ! $force_regen && ! empty( $img_meta['sizes'][$size_name] ) ) {
+								$this->p->debug->log( 'image metadata ('.
+									( empty( $img_meta['sizes'][$size_name]['width'] ) ? 0 :
+										$img_meta['sizes'][$size_name]['width'] ).'x'.
+									( empty( $img_meta['sizes'][$size_name]['height'] ) ? 0 :
+										$img_meta['sizes'][$size_name]['height'] ).') does not match '.
+									$size_name.' ('.$size_info['width'].'x'.$size_info['height'].
+										( $img_cropped ? ' cropped' : '' ).')' );
+							}
 						}
 
 						if ( $this->can_make_size( $img_meta, $size_info ) ) {
@@ -433,19 +462,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$resized = image_make_intermediate_size( $fullsizepath,
 								$size_info['width'], $size_info['height'], $size_info['crop'] );
 	
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
 									( $resized === false ? 'failure' : 'success' ) );
+							}
 	
 							if ( $resized !== false ) {
 								$img_meta['sizes'][$size_name] = $resized;
 								wp_update_attachment_metadata( $pid, $img_meta );
 							}
-						} elseif ( $this->p->debug->enabled )
+
+						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped image_make_intermediate_size()' );
+						}
 					}
-				} elseif ( $this->p->debug->enabled )
+				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'image metadata check skipped: plugin_create_wp_sizes option is disabled' );
+				}
 			}
 
 			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
@@ -457,8 +490,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $img_url ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image_downsize returned an empty url' );
+				}
 				return self::reset_image_src_info();
 			}
 
@@ -471,8 +505,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying rewrite_image_url filter for '.$img_url );
+					}
 
 					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_image_url',
 						$this->p->util->fix_relative_url( $img_url ) ),	// just in case

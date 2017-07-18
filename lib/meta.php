@@ -1073,15 +1073,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					continue;
 				}
 
-				// empty or not, if the array element is set, use it
-				if ( isset( $wp_meta[$meta_key][0] ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
-					}
-					$mixed =& $wp_meta[$meta_key][0];
-				} else continue;
+				// if the array element is not set, then skip it
+				if ( ! isset( $wp_meta[$meta_key][0] ) ) {
+					continue;	// check the next custom field
+				}
 
-				$mixed = maybe_unserialize( $mixed );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
+				}
+
+				$mixed = maybe_unserialize( $wp_meta[$meta_key][0] );
 				$values = array();
 
 				// decode the string or each array element
@@ -1110,7 +1111,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						}
 					}
 					$is_multi = true;		// increment the option name
-				} else $is_multi = false;
+				} else {
+					$is_multi = false;
+				}
 
 				// increment the option name, starting with 0
 				if ( $is_multi ) {
