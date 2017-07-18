@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-06-30 12:16-0500\n"
-"PO-Revision-Date: 2017-07-06 15:08-0500\n"
+"POT-Creation-Date: 2017-07-18 17:49-0500\n"
+"PO-Revision-Date: 2017-07-18 17:49-0500\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -537,33 +537,33 @@ msgstr "(défaut)"
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:112
+#: lib/com/notice.php:113
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:344
+#: lib/com/notice.php:345
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:345
+#: lib/com/notice.php:346
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:350
+#: lib/com/notice.php:351
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:352
+#: lib/com/notice.php:353
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:494
+#: lib/com/notice.php:495
 msgid "%s Note"
 msgstr "Avis %s"
 
-#: lib/com/notice.php:539
+#: lib/com/notice.php:540
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -1657,19 +1657,27 @@ msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À prop
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:732
+#: lib/media.php:376
+msgid "Possible Media Library corruption detected - the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
+msgstr "Corruption possible de la bibliothèque de médias détecté - les dimensions de l'image pleine grandeur pour l'ID d'image %1$s sont manquantes dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
+
+#: lib/media.php:383
+msgid "Possible Media Library corruption detected - the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
+msgstr "Corruption possible de la bibliothèque de médias détecté - le chemin du fichier d'image pleine grandeur pour l'ID d'image %1$s est manquant dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
+
+#: lib/media.php:767
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1025 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1060 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
-#: lib/media.php:1085
+#: lib/media.php:1120
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1103
+#: lib/media.php:1138
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -2846,7 +2854,7 @@ msgstr "Le champ de description SEO est désactivé (la balise description est d
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/pro/ecom/woocommerce.php:500
+#: lib/pro/ecom/woocommerce.php:505
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
@@ -2913,12 +2921,12 @@ msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too sma
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:263
+#: lib/pro/media/wistia.php:264
 msgid "The PHP <a href=\"%1$s\" target=\"_blank\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\" target=\"_blank\">La fonction PHP %2$s</a> n'est pas disponible."
 
 #: lib/pro/media/slideshare.php:153 lib/pro/media/vimeo.php:130
-#: lib/pro/media/wistia.php:265
+#: lib/pro/media/wistia.php:266
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contactez votre hébergeur pour installer la fonction manquante."
 
@@ -2986,11 +2994,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:1239
+#: lib/schema.php:1241
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:1242
+#: lib/schema.php:1244
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
