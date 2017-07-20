@@ -707,10 +707,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $total_time > $max_time ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'possible slow filter hooks - the_content filter took '.$total_time.' secs to execute' );
+						$this->p->debug->mark( 'slow filter hooks detected - the_content filter took '.$total_time.' secs to execute' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$warn_dis_key = 'possible-slow-filter-hooks-the_content';
+						$warn_dis_key = 'slow-filter-hooks-detected-the_content';
 						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into this filter for slow / sub-optimal code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, $max_time ), true, $warn_dis_key, WEEK_IN_SECONDS );
 					}
 				}
