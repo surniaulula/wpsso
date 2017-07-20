@@ -681,11 +681,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
 				}
 
-				// apply the content filters
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying wordpress the_content filters' );
-				}
-
 				/*
 				 * Signal to other methods that the content filter is being applied to 
 				 * create a description text. This avoids the addition of unnecessary 
@@ -697,12 +692,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->mark( 'applying wordpress the_content filters' );
+				}
+
+				$max_time = 1.00;
 				$start_time = microtime( true );
 				$content_text = apply_filters( 'the_content', $content_text );
 				$total_time = microtime( true ) - $start_time;
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'the_content filter applied in '.sprintf( '%f secs', $total_time ) );
+					$this->p->debug->mark( 'applying wordpress the_content filters' );
+				}
+
+				if ( $total_time > $max_time ) {
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+						$warn_dis_key = 'possible-slow-filter-hooks-the_content';
+						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into this filter for slow / sub-optimal code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, $max_time ), true, $warn_dis_key, WEEK_IN_SECONDS );
+					}
 				}
 
 				unset( $GLOBALS[$lca.'_doing_the_content'] );

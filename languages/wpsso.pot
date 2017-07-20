@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.4-dev.4\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.4-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3358,6 +3358,15 @@ msgstr ""
 
 #: lib/options.php:527
 msgid "Plugin settings (%s) have been updated and saved."
+msgstr ""
+
+#: lib/page.php:711
+msgid ""
+"Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
+"%2$0.2f seconds to execute. This is longer than the recommended maximum of "
+"%3$0.2f seconds and may affect page load time. Please consider reviewing 3rd "
+"party plugin and theme functions hooked into this filter for slow / sub-"
+"optimal code."
 msgstr ""
 
 #: lib/post.php:444
