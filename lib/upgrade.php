@@ -144,6 +144,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_itemprop_contributor.image' => 'add_link_itemprop_contributor.image',
 					'add_meta_itemprop_menu' => 'add_link_itemprop_menu',
 				),
+				529 => array(
+					'plugin_bitly_token' => 'plugin_bitly_access_token',
+				),
 			),
 		);
 

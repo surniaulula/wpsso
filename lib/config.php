@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.45.4-dev.1',		// plugin version
-					'opt_version' => '529',		// increment when changing default options
+					'opt_version' => '531',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -921,8 +921,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
 					'plugin_min_shorten' => 23,
 					'plugin_bitly_login' => '',
-					'plugin_bitly_token' => '',
+					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
+					'plugin_bitly_domain' => '',
 					'plugin_google_api_key' => '',
 					'plugin_google_shorten' => 0,
 					'plugin_owly_api_key' => '',

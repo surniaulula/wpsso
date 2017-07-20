@@ -667,12 +667,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The Bitly username to use with the Generic Access Token or API Key (deprecated).', 'wpsso' );
 							break;
 
-						case 'tooltip-plugin_bitly_token':
+						case 'tooltip-plugin_bitly_access_token':
 							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s" target="_blank">Generic Access Token</a> or API Key (deprecated) to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
 							break;
 
 						case 'tooltip-plugin_bitly_api_key':
 							$text = sprintf( __( 'The Bitly <a href="%s" target="_blank">API Key</a> authentication method has been deprecated by Bitly.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+							break;
+
+						case 'tooltip-plugin_bitly_domain':
+							$text = __( 'An optional Bitly short domain to use; either bit.ly, j.mp, bitly.com, or another custom short domain. If no value is entered here, the short domain selected in your Bitly account settings will be used.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_google_api_key':
