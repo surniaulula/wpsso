@@ -707,7 +707,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $total_time > $max_time ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'slow filter hooks detected - the_content filter took '.$total_time.' secs to execute' );
+						$this->p->debug->log( 'slow filter hooks detected - the_content filter took '.
+							sprintf( '%f secs', $total_time ).' secs to execute' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$warn_dis_key = 'slow-filter-hooks-detected-the_content';
