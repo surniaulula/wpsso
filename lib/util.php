@@ -995,9 +995,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
 			foreach ( $is_functions as $function ) {
 				$start_time = microtime( true );
-				$ret = function_exists( $function ) && $function() ? 'true' : 'false';
-				$this->p->debug->log( $function.'() = '.$ret.' ('.sprintf( '%f secs',
-					microtime( true ) - $start_time ).')' );
+				if ( function_exists( $function ) ) {
+					$ret = $function() ? 'true' : 'false';
+					$this->p->debug->log( $function.'() = '.$ret.
+						' ('.sprintf( '%f secs', microtime( true ) - $start_time ).')' );
+				} else {
+					$this->p->debug->log( $function.'() not found' );
+				}
 			}
 		}
 
