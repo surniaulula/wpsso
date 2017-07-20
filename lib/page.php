@@ -691,6 +691,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * create a description text. This avoids the addition of unnecessary 
 				 * HTML which will be removed anyway.
 				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'setting global '.$lca.'_doing_the_content' );
+				}
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
 				$content_text = apply_filters( 'the_content', $content_text );

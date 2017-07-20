@@ -104,7 +104,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( $this->enabled !== true )
 				return;
 
-			$first_col = '%-32s:: ';
+			$first_col = '%-36s:: ';
 			$second_col = '%-48s: ';
 			$stack = debug_backtrace();
 			$log_msg = '';
