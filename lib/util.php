@@ -993,10 +993,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_amp_endpoint',
 			);
 			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
-			foreach ( $is_functions as $function ) 
-				$this->p->debug->log( $function.'() = '.
-					( function_exists( $function ) && 
-						$function() ? 'true' : 'false' ) );
+			foreach ( $is_functions as $function ) {
+				$start_time = microtime( true );
+				$ret = function_exists( $function ) && $function() ? 'true' : 'false';
+				$this->p->debug->log( $function.'() = '.$ret.' ('.sprintf( '%f secs',
+					microtime( true ) - $start_time ).')' );
+			}
 		}
 
 		// returns true if the default image is forced
