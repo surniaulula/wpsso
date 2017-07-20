@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.4-dev.1 (2017/07/18)**
+**Version 3.45.4-dev.2 (2017/07/18)**
 
 * *New Features*
 	* None
@@ -608,7 +608,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.4-dev.1 =
+= 3.45.4-dev.2 =
 
 (2017/07/18) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
