@@ -338,12 +338,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.4-dev.4 (2017/07/20)**
+**Version 3.45.4-dev.5 (2017/07/20)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added a new "Bitly Custom Short Domain" option (Pro version).
+	* Added a warning if applying 'the_content' filter takes longer than 1 second.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -608,7 +609,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.4-dev.4 =
+= 3.45.4-dev.5 =
 
 (2017/07/20) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
