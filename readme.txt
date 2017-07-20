@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Bitly Custom Short Domain" option (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -610,7 +610,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.4-dev.1 =
 
-(2017/07/18) Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
+(2017/07/18) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
 = 3.45.3 =
 
