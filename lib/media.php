@@ -373,14 +373,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected - the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
 					}
 				} else {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected - the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
 					}
 				}
 			}

@@ -1749,15 +1749,15 @@ msgstr ""
 
 #: lib/media.php:376
 msgid ""
-"Possible Media Library corruption detected - the full size image dimensions "
-"for image ID %1$s are missing from the image metadata returned by the "
-"WordPress wp_get_attachment_metadata() function."
+"Possible Media Library corruption detected &mdash; the full size image "
+"dimensions for image ID %1$s are missing from the image metadata returned by "
+"the WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
 #: lib/media.php:383
 msgid ""
-"Possible Media Library corruption detected - the full size image file path "
-"for image ID %1$s is missing from the image metadata returned by the "
+"Possible Media Library corruption detected &mdash; the full size image file "
+"path for image ID %1$s is missing from the image metadata returned by the "
 "WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
