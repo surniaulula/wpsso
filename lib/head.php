@@ -319,9 +319,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
 			}
 
-			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs',
-				microtime( true ) - $start_time ).' -->'."\n";
-
+			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs', microtime( true ) - $start_time ).' -->'."\n";
 			$html .= '<!-- '.$lca.' meta tags end -->'."\n\n";
 
 			return $html;

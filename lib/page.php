@@ -694,9 +694,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting global '.$lca.'_doing_the_content' );
 				}
+
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
+				$start_time = microtime( true );
 				$content_text = apply_filters( 'the_content', $content_text );
+				$total_time = microtime( true ) - $start_time;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'the_content filter applied in '.sprintf( '%f secs', $total_time ) );
+				}
 
 				unset( $GLOBALS[$lca.'_doing_the_content'] );
 
