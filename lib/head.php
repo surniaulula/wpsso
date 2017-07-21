@@ -695,9 +695,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					continue;
 				}
 
-				// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
-				if ( SucomUtil::get_const( 'WPSSO_FILTER_SINGLE_TAGS' ) ) {
-					$parts = $this->filter_single_mt( $parts, $mod );
+				// filtering of single meta tags can be enabled by defining WPSSO_APPLY_FILTERS_SINGLE_MT as true
+				if ( SucomUtil::get_const( 'WPSSO_APPLY_FILTERS_SINGLE_MT' ) ) {
+					$parts = $this->apply_filters_single_mt( $parts, $mod );
 				}
 
 				$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
@@ -790,9 +790,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		// filtering of single meta tags can be enabled by defining WPSSO_FILTER_SINGLE_TAGS as true
+		// filtering of single meta tags can be enabled by defining WPSSO_APPLY_FILTERS_SINGLE_MT as true
 		// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
-		private function filter_single_mt( array &$parts, array &$mod ) {
+		private function apply_filters_single_mt( array &$parts, array &$mod ) {
 
 			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
 			$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.4-dev.6\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.4-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -588,7 +588,7 @@ msgid "(default)"
 msgstr ""
 
 #: lib/com/notice.php:104
-msgid "This notice can be dismissed for %s."
+msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
 #: lib/com/notice.php:113
@@ -1747,36 +1747,36 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:376
+#: lib/media.php:377
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image "
 "dimensions for image ID %1$s are missing from the image metadata returned by "
 "the WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:383
+#: lib/media.php:385
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image file "
 "path for image ID %1$s is missing from the image metadata returned by the "
 "WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:767
+#: lib/media.php:769
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1060 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1062 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1120
+#: lib/media.php:1122
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1138
+#: lib/media.php:1140
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -3360,13 +3360,13 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:715
+#: lib/page.php:714
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
 "%3$0.2f seconds and may affect page load time. Please consider reviewing 3rd "
-"party plugin and theme functions hooked into this filter for slow / sub-"
-"optimal code."
+"party plugin and theme functions hooked into the WordPress %1$s filter for "
+"slow / sub-optimal code."
 msgstr ""
 
 #: lib/post.php:444

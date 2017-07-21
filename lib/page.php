@@ -696,7 +696,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->mark( 'applying wordpress the_content filters' );
 				}
 
-				$max_time = 1.00;
 				$start_time = microtime( true );
 				$content_text = apply_filters( 'the_content', $content_text );
 				$total_time = microtime( true ) - $start_time;
@@ -705,14 +704,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->mark( 'applying wordpress the_content filters' );
 				}
 
-				if ( $total_time > $max_time ) {
+				if ( $total_time > WPSSO_CONTENT_FILTERS_MAX_TIME ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'slow filter hooks detected - the_content filter took '.
 							sprintf( '%f secs', $total_time ).' secs to execute' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$warn_dis_key = 'slow-filter-hooks-detected-the_content';
-						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into this filter for slow / sub-optimal code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, $max_time ), true, $warn_dis_key, WEEK_IN_SECONDS );
+						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow / sub-optimal code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, WPSSO_CONTENT_FILTERS_MAX_TIME ), true, $warn_dis_key, WEEK_IN_SECONDS );
 					}
 				}
 

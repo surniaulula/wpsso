@@ -373,14 +373,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+						$warn_dis_key = 'full-size-image-'.$pid.'-dimensions-missing';
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ).' '.sprintf( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins on WordPress.org</a>.', 'https://wordpress.org/plugins/search/regenerate+thumbnails/' ), true, $warn_dis_key, WEEK_IN_SECONDS );
 					}
 				} else {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ) );
+						$warn_dis_key = 'full-size-image-'.$pid.'-file-path-missing';
+						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ).' '.sprintf( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins on WordPress.org</a>.', 'https://wordpress.org/plugins/search/regenerate+thumbnails/' ), true, $warn_dis_key, WEEK_IN_SECONDS );
 					}
 				}
 			}

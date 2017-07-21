@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.4-dev.6',		// plugin version
+					'version' => '3.45.4-b.1',		// plugin version
 					'opt_version' => '535',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2046,6 +2046,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
 			$var_const['WPSSO_PROD_CURRENCY'] = 'USD';		// default for 'product_currency'
 			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
+			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 
 			/*
 			 * WPSSO option and meta array names
@@ -2083,9 +2084,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * WPSSO cURL settings
 			 */
-			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
-			}
+			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0';
 
 			foreach ( $var_const as $name => $value ) {
