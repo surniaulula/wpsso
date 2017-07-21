@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.4-dev.6 (2017/07/20)**
+**Version 3.45.4-b.1 (2017/07/20)**
 
 * *New Features*
 	* None
@@ -349,6 +349,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
+	* Added a new WPSSO_CONTENT_FILTERS_MAX_TIME constant (default is 1.00 seconds).
+	* Renamed the WPSSO_FILTER_SINGLE_TAGS constant to WPSSO_APPLY_FILTERS_SINGLE_MT.
 
 **Version 3.45.3 (2017/07/06)**
 
@@ -609,7 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.4-dev.6 =
+= 3.45.4-b.1 =
 
 (2017/07/20) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
