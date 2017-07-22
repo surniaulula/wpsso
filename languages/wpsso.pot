@@ -3366,7 +3366,7 @@ msgid ""
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
 "%3$0.2f seconds and may affect page load time. Please consider reviewing 3rd "
 "party plugin and theme functions hooked into the WordPress %1$s filter for "
-"slow / sub-optimal code."
+"slow and/or sub-optimal PHP code."
 msgstr ""
 
 #: lib/post.php:444
