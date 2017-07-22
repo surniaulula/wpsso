@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_debug':	// Add Hidden Debug Messages
-							$text = __( 'Add debugging messages, as hidden HTML comments, to back-end and front-end webpages (default is unchecked).', 'wpsso' );
+							$text = __( 'Add debugging messages as hidden HTML comments to back-end and front-end webpages (default is unchecked).', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings

@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.4-b.1',		// plugin version
-					'opt_version' => '535',		// increment when changing default options
+					'version' => '3.45.4-rc.1',		// plugin version
+					'opt_version' => '536',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.',
