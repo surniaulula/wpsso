@@ -10,7 +10,7 @@ Tags: meta tags, open graph, share, social, schema markup, twitter card, video s
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8
-Stable Tag: 3.45.3
+Stable Tag: 3.45.4
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
 
@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.4 (2017/07/22)**
+**Version 3.45.4 (2017/07/23)**
 
 * *New Features*
 	* None
@@ -613,7 +613,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.4 =
 
-(2017/07/22) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
+(2017/07/23) Added a new "Bitly Custom Short Domain" option (Pro version). Added more checks and debug info for possible image metadata inconsistencies from the WordPress Media Library.
 
 = 3.45.3 =
 
