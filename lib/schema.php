@@ -76,7 +76,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$img_html = '<!-- '.$lca.' schema image for pinterest pin it button -->'."\n".
 					'<div class="'.$lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
-					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" data-pin-description="'.$desc.'"/>'."\n".
+					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" '.
+					'data-pin-description="'.$desc.'" alt=""/>'."\n".	// empty alt required for w3c validation
 					'</div><!-- .'.$lca.'-schema-image-for-pinterest -->'."\n";
 
 				$content = $img_html.$content;
