@@ -2149,7 +2149,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:380 lib/util.php:1890
+#: lib/messages.php:380 lib/util.php:1899
 msgid "No options available."
 msgstr ""
 
@@ -4244,22 +4244,22 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1916
+#: lib/util.php:1925
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1920
+#: lib/util.php:1929
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1923
+#: lib/util.php:1932
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1927
+#: lib/util.php:1936
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

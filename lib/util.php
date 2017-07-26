@@ -1561,6 +1561,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
+			if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
+				if ( SucomUtil::get_const( 'FORCE_SSL' ) && strpos( $url, 'http:' ) === 0 ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
+					}
+					$url = preg_replace( '/^http:/', 'https:', $url );
+				}
+			}
+
 			return apply_filters( $lca.'_'.$type.'_url', $url, $mod, $add_page, $src_id );
 		}
 
