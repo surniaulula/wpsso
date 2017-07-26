@@ -280,6 +280,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
 		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)
 			* [Add Schema aggregateRating Meta Tags](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/add-schema-aggregaterating-meta-tags/)
+			* [Define a Custom Post Type (CPT) as a Product](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Disable the Social Settings Metabox by Post ID](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
