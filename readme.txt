@@ -339,6 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.5-dev.1 (2017/08/01)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Minor update to "itemscope" string matching in the head attributes.
+
 **Version 3.45.4 (2017/07/23)**
 
 * *New Features*
@@ -611,6 +622,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.5-dev.1 =
+
+(2017/08/01) Minor update to "itemscope" string matching in the head attributes.
 
 = 3.45.4 =
 
