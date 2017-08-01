@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.4\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.5-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -294,22 +294,22 @@ msgctxt "option value"
 msgid "Never"
 msgstr ""
 
-#: lib/admin.php:1497
+#: lib/admin.php:1499
 msgid "Plugin conflict detected"
 msgstr ""
 
-#: lib/admin.php:1506
+#: lib/admin.php:1508
 msgid ""
 "The PHP <a href=\"%1$s\" target=\"_blank\">%2$s extension</a> is not loaded."
 msgstr ""
 
-#: lib/admin.php:1508
+#: lib/admin.php:1510
 msgid ""
 "Please contact your hosting provider to have the missing PHP extension "
 "installed and/or enabled."
 msgstr ""
 
-#: lib/admin.php:1520
+#: lib/admin.php:1522
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social crawlers from indexing this site. This "
@@ -318,203 +318,203 @@ msgid ""
 "crawlers to access your content."
 msgstr ""
 
-#: lib/admin.php:1531
+#: lib/admin.php:1533
 msgid ""
 "please uncheck the <strong>Add Open Graph meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1537
+#: lib/admin.php:1539
 msgid ""
 "please uncheck the <strong>Add Twitter card meta data</strong> option under "
 "the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1543
+#: lib/admin.php:1545
 msgid ""
 "please uncheck the <strong>Add Google+ specific post meta data</strong> "
 "option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings "
 "tab."
 msgstr ""
 
-#: lib/admin.php:1549
+#: lib/admin.php:1551
 msgid ""
 "please remove the <strong>Google Publisher Page</strong> value entered under "
 "the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr ""
 
-#: lib/admin.php:1561
+#: lib/admin.php:1563
 msgid ""
 "please disable the <strong>Open Graph Integrator</strong> module in the <a "
 "href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1573
+#: lib/admin.php:1575
 msgid ""
 "please deactivate the <strong>Social Meta</strong> feature in the <a href="
 "\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr ""
 
-#: lib/admin.php:1579
+#: lib/admin.php:1581
 msgid ""
 "please check the <strong>Disable Google Plus Profile</strong> option in the "
 "<a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1585
+#: lib/admin.php:1587
 msgid ""
 "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a "
 "href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr ""
 
-#: lib/admin.php:1596 lib/admin.php:1602 lib/admin.php:1608 lib/admin.php:1628
+#: lib/admin.php:1598 lib/admin.php:1604 lib/admin.php:1610 lib/admin.php:1630
 msgid ""
 "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO "
 "Framework</a> Social Meta Settings."
 msgstr ""
 
-#: lib/admin.php:1614
+#: lib/admin.php:1616
 msgid ""
 "please uncheck the <strong>Output Authorized Presence?</strong> option in <a "
 "href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr ""
 
-#: lib/admin.php:1640
+#: lib/admin.php:1642
 msgid ""
 "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a "
 "href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1646
+#: lib/admin.php:1648
 msgid ""
 "please uncheck <strong>Add the Twitter card in your tweets</strong> in the "
 "<a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr ""
 
-#: lib/admin.php:1652
+#: lib/admin.php:1654
 msgid ""
 "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> "
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1715
+#: lib/admin.php:1717
 msgid "I'd like to help by rating the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1717
+#: lib/admin.php:1719
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1720
+#: lib/admin.php:1722
 msgid "I've already rated the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1722
+#: lib/admin.php:1724
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1726
+#: lib/admin.php:1728
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin.php:1727
+#: lib/admin.php:1729
 msgid "You've been using <b>%s</b> for more than a week."
 msgstr ""
 
-#: lib/admin.php:1729
+#: lib/admin.php:1731
 msgid "The %s plugin description page on WordPress.org"
 msgstr ""
 
-#: lib/admin.php:1731
+#: lib/admin.php:1733
 msgid "That's awesome!"
 msgstr ""
 
-#: lib/admin.php:1734
+#: lib/admin.php:1736
 msgid ""
 "Can I ask a small favor &mdash; would you rate the %s plugin on wordpress."
 "org?"
 msgstr ""
 
-#: lib/admin.php:1738
+#: lib/admin.php:1740
 msgid ""
 "Your rating will help WordPress users find the plugin <em>and</em> encourage "
 "us to keep improving %s as well."
 msgstr ""
 
-#: lib/admin.php:1745
+#: lib/admin.php:1747
 msgid ""
 "No thanks &mdash; I don't feel that %s is worth a 5 star rating, and would "
 "like to offer a suggestion or report a problem."
 msgstr ""
 
-#: lib/admin.php:1876
+#: lib/admin.php:1878
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1889
+#: lib/admin.php:1891
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1896
+#: lib/admin.php:1898
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1905
+#: lib/admin.php:1907
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1911
+#: lib/admin.php:1913
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1914
+#: lib/admin.php:1916
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1929
+#: lib/admin.php:1931
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1934
+#: lib/admin.php:1936
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1942
+#: lib/admin.php:1944
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1950
+#: lib/admin.php:1952
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:1957
+#: lib/admin.php:1959
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:1965
+#: lib/admin.php:1967
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:1974
+#: lib/admin.php:1976
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2124
+#: lib/admin.php:2126
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2146
+#: lib/admin.php:2148
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -1722,7 +1722,7 @@ msgctxt "option comment"
 msgid "and currency"
 msgstr ""
 
-#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:605
+#: lib/gpl/admin/post.php:121 lib/meta.php:202 lib/post.php:608
 #: lib/pro/admin/post.php:154
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2122,7 +2122,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:375 lib/messages.php:385 lib/post.php:561
+#: lib/messages.php:375 lib/messages.php:385 lib/post.php:564
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3369,45 +3369,45 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:444
+#: lib/post.php:449
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding "
 "%1$s to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:448
+#: lib/post.php:453
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:474
+#: lib/post.php:479
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:476
+#: lib/post.php:481
 msgid ""
 "This exceeds the recommended time limit of %1$s seconds (crawlers often time-"
 "out after %1$s seconds)."
 msgstr ""
 
-#: lib/post.php:478
+#: lib/post.php:483
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:480
+#: lib/post.php:485
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:508
+#: lib/post.php:513
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:516
+#: lib/post.php:521
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:521 lib/util.php:829
+#: lib/post.php:526 lib/util.php:829
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3573,18 +3573,18 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:93 lib/schema.php:99
+#: lib/schema.php:91 lib/schema.php:97
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1242
+#: lib/schema.php:1261
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:1245
+#: lib/schema.php:1264
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
@@ -4264,23 +4264,23 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:321
+#: wpsso.php:322
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:322 wpsso.php:328
+#: wpsso.php:323 wpsso.php:331
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:323 wpsso.php:329
+#: wpsso.php:324 wpsso.php:332
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:327
+#: wpsso.php:330
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."

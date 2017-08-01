@@ -34,12 +34,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'plugin_image_sizes' => 3,
 			), 5 );
 
-			if ( $this->is_head_attributes_enabled() ) {
-				add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ) );
-				add_filter( $this->p->options['plugin_head_attr_filter_name'], array( &$this, 'filter_head_attributes' ),
-					( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
-						100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
-			}
+			add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ), -1000 );
+			add_filter( $this->p->options['plugin_head_attr_filter_name'], array( &$this, 'filter_head_attributes' ),
+				( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
+					100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
 
 			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() ) {
 				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
@@ -105,6 +103,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function add_head_attributes() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! $this->is_head_attributes_enabled() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: head attributes disabled' );
+				}
+				return;
+			}
+
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {	// just in case
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'calling filter '.$this->p->options['plugin_head_attr_filter_name'] );
@@ -116,11 +126,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function filter_head_attributes( $head_attr = '' ) {
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
 
-			if ( ! $this->is_head_attributes_enabled() )
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! $this->is_head_attributes_enabled() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: head attributes disabled' );
+				}
 				return $head_attr;
+			}
 
 			$lca = $this->p->cf['lca'];
 			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
@@ -139,24 +155,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// fix incorrect itemscope values
-			if ( strpos( $head_attr, ' itemscope="itemscope"' ) !== false )
-				$head_attr = preg_replace( '/ itemscope="itemscope"/', 
-					' itemscope', $head_attr );
-			elseif ( strpos( $head_attr, ' itemscope' ) === false )
+			if ( strpos( $head_attr, 'itemscope="itemscope"' ) !== false ) {
+				$head_attr = preg_replace( '/ *itemscope="itemscope"/', ' itemscope', $head_attr );
+			} elseif ( strpos( $head_attr, 'itemscope' ) === false ) {
 				$head_attr .= ' itemscope';
+			}
 
 			// replace existing itemtype values
-			if ( strpos( $head_attr, ' itemtype="' ) !== false ) {
-				$head_attr = preg_replace( '/ itemtype="[^"]+"/',
-					' itemtype="'.$page_type_url.'"', $head_attr );
+			if ( strpos( $head_attr, 'itemtype="' ) !== false ) {
+				$head_attr = preg_replace( '/ *itemtype="[^"]+"/', ' itemtype="'.$page_type_url.'"', $head_attr );
 			} else {
 				$head_attr .= ' itemtype="'.$page_type_url.'"';
 			}
 
 			$head_attr = trim( $head_attr );
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'returning head attributes: '.$head_attr );
+			}
 
 			return $head_attr;
 		}
@@ -165,21 +181,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] === 'none' ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled for empty option name' );
+				}
 				return false;
 			}
 
 			if ( SucomUtil::is_amp() ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled for amp endpoint' );
+				}
 				return false;
 			}
 
 			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled by filter' );
+				}
 				return false;
 			}
 

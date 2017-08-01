@@ -388,31 +388,36 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: plugin_check_head option is disabled');
+					$this->p->debug->log( 'exiting early: plugin_check_head option is disabled');
 				}
-				return $post_id;
+				return;
 			}
 
 			if ( ! apply_filters( $lca.'_add_meta_name_'.$lca.':mark', true ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: '.$lca.':mark meta tags are disabled');
+					$this->p->debug->log( 'exiting early: '.$lca.':mark meta tags are disabled');
 				}
-				return $post_id;
+				return;
 			}
 
 			if ( ! is_object( $post_obj ) && ( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: unable to determine the post_id');
+					$this->p->debug->log( 'exiting early: unable to get the post object');
 				}
-				return $post_id;
+				return;
+			}
+
+			// in case post_id is true/false
+			if ( ! is_numeric( $post_id ) ) {
+				$post_id = $post_obj->ID;
 			}
 
 			// only check publicly available posts
 			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: post_status \''.$post_obj->post_status.'\' not published');
+					$this->p->debug->log( 'exiting early: post_status \''.$post_obj->post_status.'\' not published');
 				}
-				return $post_id;
+				return;
 			}
 
 			// only check public post types (to avoid menu items, product variations, etc.)
@@ -420,9 +425,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
+					$this->p->debug->log( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
 				}
-				return $post_id;
+				return;
 			}
 
 			$exec_count = (int) get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
@@ -430,9 +435,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $exec_count >= $max_count ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'exiting early: exec_count of '.$exec_count.' exceeds max_count of '.$max_count );
+					$this->p->debug->log( 'exiting early: exec_count of '.$exec_count.' exceeds max_count of '.$max_count );
 				}
-				return $post_id;
+				return;
 			}
 
 			$charset = get_bloginfo( 'charset' );
@@ -521,8 +526,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 					'wpsso' ), $shortlink ) );
 			}
-
-			return $post_id;
 		}
 
 		public function add_metaboxes() {

@@ -1490,8 +1490,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function conflict_warnings() {
-			if ( ! is_admin() ) 	// just in case
+
+			if ( ! is_admin() ) { 	// just in case
 				return;
+			}
 
 			$lca = $this->p->cf['lca'];
 			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
