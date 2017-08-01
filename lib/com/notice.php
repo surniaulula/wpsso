@@ -36,8 +36,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $this->p->cf['lca'] ) ) {
 				$this->lca = $this->p->cf['lca'];
-				if ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) )
+				if ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
 					$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
+				}
 			}
 
 			$uca = strtoupper( $this->lca );

@@ -587,41 +587,41 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:104
+#: lib/com/notice.php:105
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:113
+#: lib/com/notice.php:114
 msgid "Reference URL: %s"
-msgstr ""
-
-#: lib/com/notice.php:345
-msgctxt "notification type"
-msgid "error"
 msgstr ""
 
 #: lib/com/notice.php:346
 msgctxt "notification type"
+msgid "error"
+msgstr ""
+
+#: lib/com/notice.php:347
+msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:351
+#: lib/com/notice.php:352
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:353
+#: lib/com/notice.php:354
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:495
+#: lib/com/notice.php:496
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:540
+#: lib/com/notice.php:541
 msgid "Dismiss"
 msgstr ""
 
