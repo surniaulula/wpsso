@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		protected function add_schema_type_xrefs( &$schema_types ) {
 
-			$t =& $schema_types['thing'];
+			$t =& $schema_types['thing'];	// quick ref variable for the 'thing' array
 
 			/*
 			 * Intangible > Enumeration
@@ -502,13 +502,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		}
 
-		public function get_schema_types_select( $schema_types = null, $add_none = true, $exclude_intangible = true ) {
+		public function get_schema_types_select( $schema_types = null, $add_none = true, $no_intangible = true ) {
 
 			if ( ! is_array( $schema_types ) ) {
 				$schema_types = $this->get_schema_types_array( false );	// $flatten = false
 			}
 
-			if ( $exclude_intangible ) {
+			if ( $no_intangible ) {
 				unset( $schema_types['thing']['action'] );
 				unset( $schema_types['thing']['intangible'] );
 			}
