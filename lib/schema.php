@@ -360,9 +360,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * By default, returns a one-dimensional (flat) array of tangible schema types (excludes 
-		 * the action and intangible sub-types), otherwise returns a multi-dimensional array of 
-		 * all schema types, including cross-references for sub-types with multiple parent types.
+		 * By default, returns a one-dimensional (flat) array of schema types, otherwise returns a 
+		 * multi-dimensional array of all schema types, including cross-references for sub-types with 
+		 * multiple parent types.
 		 */
 		public function get_schema_types_array( $flatten = true ) {
 
@@ -502,15 +502,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		}
 
-		public function get_schema_types_select( $schema_types = null, $add_none = true, $no_intangible = true ) {
+		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 
 			if ( ! is_array( $schema_types ) ) {
 				$schema_types = $this->get_schema_types_array( false );	// $flatten = false
-			}
-
-			if ( $no_intangible ) {
-				unset( $schema_types['thing']['action'] );
-				unset( $schema_types['thing']['intangible'] );
 			}
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
