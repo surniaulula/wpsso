@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.5-dev.2 (2017/08/01)**
+**Version 3.45.5-dev.2 (2017/08/02)**
 
 * *New Features*
 	* None
@@ -625,7 +625,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.5-dev.2 =
 
-(2017/08/01) Minor update to "itemscope" string matching in the head attributes. Added https://schema.org/Intangible (and it's sub-types) to the selection of available Schema types.
+(2017/08/02) Minor update to "itemscope" string matching in the head attributes. Added https://schema.org/Intangible (and it's sub-types) to the selection of available Schema types.
 
 = 3.45.4 =
 
