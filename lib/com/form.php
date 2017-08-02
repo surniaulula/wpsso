@@ -223,6 +223,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $values as $val => $desc ) {
 
+				$option_count++;
+
 				// if the array is NOT associative (so regular numered array),
 				// then the description is used as the saved value as well
 				if ( $is_assoc === false ) {
@@ -266,13 +268,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				// for disabled selects, only include the first and/or selected option
-				if ( ! $disabled || $option_count === 0 || $is_selected_html ) {
+				if ( ! $disabled || $option_count === 1 || $is_selected_html ) {
 					$html .= '<option value="'.esc_attr( $val ).'"'.$is_selected_html.'>'.$desc.'</option>'."\n";
 				}
-
-				$option_count++;
 			}
 
+			$html .= '<!-- '.$option_count.' options values in select -->'."\n";
 			$html .= '</select>'."\n";
 
 			return $html;
