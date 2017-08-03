@@ -474,6 +474,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$t['place']['local.business']['emergency.service']['hospital'];
 
 			/*
+			 * Place > Accommodation
+			 */
+			$t['place']['accommodation']['house']['house.single.family'] =&
+				$t['place']['accommodation']['house']['residence.single.family'];
+
+			/*
 			 * Place > Civic Structure
 			 */
 			$t['place']['civic.structure']['campground'] =&

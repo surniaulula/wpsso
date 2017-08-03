@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.5-dev.2',		// plugin version
+					'version' => '3.45.5-dev.3',		// plugin version
 					'opt_version' => '536',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -1687,7 +1687,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'ticket' => 'https://schema.org/Ticket',
 							'train.trip' => 'https://schema.org/TrainTrip',
 						),
-						'thing' => 'https://schema.org/Thing',
 						'organization' => array(
 							'airline' => 'https://schema.org/Airline',
 							'corporation' => 'https://schema.org/Corporation',
@@ -1721,6 +1720,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'person' => 'https://schema.org/Person',
 						'place' => array(
+							'accommodation' => array(
+								'accommodation' => 'https://schema.org/Accommodation',
+								'apartment' => 'https://schema.org/Apartment',
+								'camping.pitch' => 'https://schema.org/CampingPitch',
+								'house' => array(
+									'house' => 'https://schema.org/House',
+									'residence.single.family' => 'https://schema.org/SingleFamilyResidence',
+								),
+								'room' => array(
+									'room' => 'https://schema.org/Room',
+									'room.hotel' => 'https://schema.org/HotelRoom',
+									'room.meeting' => 'https://schema.org/MeetingRoom',
+								),
+								'suite' => 'https://schema.org/Suite',
+							),
 							'administrative.area' => 'https://schema.org/AdministrativeArea',
 							'civic.structure' => array(
 								'airport' => 'https://schema.org/Airport',
@@ -1811,8 +1825,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'library' => 'https://schema.org/Library',
 								'local.business' => 'https://schema.org/LocalBusiness',
 								'lodging.business' => array(
+									'bed.and.breakfast' => 'BedAndBreakfast',
 									'campground' => 'https://schema.org/Campground',
 									'lodging.business' => 'https://schema.org/LodgingBusiness',
+									'hostel' => 'https://schema.org/Hostel',
+									'hotel' => 'https://schema.org/Hotel',
+									'motel' => 'https://schema.org/Motel',
+									'resort' => 'https://schema.org/Resort',
 								),
 								'medical.business' => array(
 									'community.health.business' => 'https://health-lifesci.schema.org/CommunityHealth',
@@ -1889,7 +1908,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'travel.agency' => 'https://schema.org/TravelAgency',
 							),
 							'place' => 'https://schema.org/Place',
-							'residence' => 'https://schema.org/Residence',
+							'residence' => array(
+								'residence' => 'https://schema.org/Residence',
+								'residence.apartment.complex' => 'https://schema.org/ApartmentComplex',
+								'residence.gated.community' => 'https://schema.org/GatedResidenceCommunity',
+							),
 							'tourist.attraction' => 'https://schema.org/TouristAttraction',
 						),
 						'product' => array(
