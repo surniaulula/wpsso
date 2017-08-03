@@ -344,7 +344,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Added https://schema.org/Intangible (and it's sub-types) to the selection of available Schema types.
+	* Added https://schema.org/Intangible and https://schema.org/Accommodation (and their sub-types) to the selection of available Schema types.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -625,7 +625,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.5-dev.3 =
 
-(2017/08/03) Minor update to "itemscope" string matching in the head attributes. Added https://schema.org/Intangible (and it's sub-types) to the selection of available Schema types.
+(2017/08/03) Minor update to "itemscope" string matching in the head attributes. Added https://schema.org/Intangible and https://schema.org/Accommodation (and their sub-types) to the selection of available Schema types.
 
 = 3.45.4 =
 
