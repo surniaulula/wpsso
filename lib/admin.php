@@ -1714,17 +1714,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$support_url = '';
 				}
 
-				$submit_buttons = $this->form->get_button( sprintf( __( 'I\'d like to help by rating the %s plugin 5 stars',
-					'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
-						true, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
-							'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:5px 10px 0 0;">'.
+					$this->form->get_button( sprintf( __( 'Help us by rating the %s plugin 5 stars',
+						'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
+							true, false, array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
+								'wpsso' ), $info['short'] ) ) ).'</div>';
 
-				$submit_buttons .= $this->form->get_button( sprintf( __( 'I\'ve already rated the %s plugin 5 stars',
-					'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
-						false, false, array( 'dismiss-msg' => '<p>'.sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
-							'wpsso' ), $info['short'] ).'</p>' ) ).' ';
+				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:5px 10px 0 0;">'.
+					$this->form->get_button( sprintf( __( 'I\'ve already rated the %s plugin 5 stars',
+						'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
+							false, false, array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
+								'wpsso' ), $info['short'] ) ) ).'</div>';
 
-				$notice_msg = '<p style="font-size:1.05em;">'.
+				$notice_msg = '<div style="display:table-cell;"><p style="margin-right:20px;">'.
+					$this->get_ext_img_icon( $ext ).'</p></div>'."\n";
+
+				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
+
+				$notice_msg .= '<p style="font-size:1.05em;">'.
 					'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
 					sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
 						'wpsso' ), '<a href="'.$info['url']['home'].'" target="_blank" title="'.
@@ -1733,21 +1740,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'That\'s awesome!', 'wpsso' ).'</p>';
 					
 				$notice_msg .= '<p style="font-size:1.05em;">'.
-					sprintf( __( 'Can I ask a small favor &mdash; would you rate the %s plugin on wordpress.org?',
-						'wpsso' ), $info['short'] ).'</p>';
-					
+					sprintf( __( 'Can I ask a small favor &mdash; would you rate the %s plugin on WordPress.org?',
+						'wpsso' ), $info['short'] ).'</p>'; 
 				$notice_msg .= '<p style="font-size:1.05em;">'.
 					sprintf( __( 'Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well.',
 						'wpsso' ), $info['short'] ).' :-) '.'</p>';
 				
-				$notice_msg .= '<p style="margin-top:20px;">'.$submit_buttons.'</p>';
+				$notice_msg .= '<p>'.$rate_plugin_button.$already_rated_button.'</p>';
 					
 				$notice_msg .= '<p style="font-size:0.9em;">'.
 					( empty( $support_url ) ? '' : '<a href="'.$support_url.'" target="_blank" class="dismiss-on-click">' ).
-					sprintf( __( 'No thanks &mdash; I don\'t feel that %s is worth a 5 star rating, and would like to offer a suggestion or report a problem.',
+					sprintf( __( 'No thanks &mdash; I don\'t think %s is worth a 5 star rating and would like to offer a suggestion or report a problem.',
 						'wpsso' ), $info['short'] ).
 					( empty( $support_url ) ? '' : '</a>' ).
 					'</p>';
+
+				$notice_msg .= '</div>'."\n";
 
 				$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
 
@@ -2153,15 +2161,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $url;
 		}
 
-		public function get_ext_img_icon( $ext, $fallback = true ) {
+		public function get_ext_img_icon( $ext ) {
+
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 
 			if ( ! empty( $this->p->cf['plugin'][$ext]['img']['icons'] ) ) {
+
 				$icons = $this->p->cf['plugin'][$ext]['img']['icons'];
 
 				if ( ! empty( $icons['low'] ) ) {
 					$img_src = 'src="'.$icons['low'].'"';
 				}
+
 				if ( ! empty( $icons['high'] ) ) {
 					$img_src .= ' srcset="'.$icons['high'].' 256w"';
 				}

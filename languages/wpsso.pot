@@ -397,124 +397,124 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1717
-msgid "I'd like to help by rating the %s plugin 5 stars"
+#: lib/admin.php:1718
+msgid "Help us by rating the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1719
+#: lib/admin.php:1720
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1722
+#: lib/admin.php:1724
 msgid "I've already rated the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1724
+#: lib/admin.php:1726
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1728
+#: lib/admin.php:1735
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin.php:1729
+#: lib/admin.php:1736
 msgid "You've been using <b>%s</b> for more than a week."
 msgstr ""
 
-#: lib/admin.php:1731
+#: lib/admin.php:1738
 msgid "The %s plugin description page on WordPress.org"
 msgstr ""
 
-#: lib/admin.php:1733
+#: lib/admin.php:1740
 msgid "That's awesome!"
 msgstr ""
 
-#: lib/admin.php:1736
+#: lib/admin.php:1743
 msgid ""
-"Can I ask a small favor &mdash; would you rate the %s plugin on wordpress."
+"Can I ask a small favor &mdash; would you rate the %s plugin on WordPress."
 "org?"
 msgstr ""
 
-#: lib/admin.php:1740
+#: lib/admin.php:1746
 msgid ""
 "Your rating will help WordPress users find the plugin <em>and</em> encourage "
 "us to keep improving %s as well."
 msgstr ""
 
-#: lib/admin.php:1747
+#: lib/admin.php:1753
 msgid ""
-"No thanks &mdash; I don't feel that %s is worth a 5 star rating, and would "
-"like to offer a suggestion or report a problem."
+"No thanks &mdash; I don't think %s is worth a 5 star rating and would like "
+"to offer a suggestion or report a problem."
 msgstr ""
 
-#: lib/admin.php:1878
+#: lib/admin.php:1886
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1891
+#: lib/admin.php:1899
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1898
+#: lib/admin.php:1906
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1907
+#: lib/admin.php:1915
 msgid "Failed to open %s for writing."
 msgstr ""
 
-#: lib/admin.php:1913
+#: lib/admin.php:1921
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1916
+#: lib/admin.php:1924
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1931
+#: lib/admin.php:1939
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:1936
+#: lib/admin.php:1944
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:1944
+#: lib/admin.php:1952
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:1952
+#: lib/admin.php:1960
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:1959
+#: lib/admin.php:1967
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:1967
+#: lib/admin.php:1975
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:1976
+#: lib/admin.php:1984
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2126
+#: lib/admin.php:2134
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2148
+#: lib/admin.php:2156
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
