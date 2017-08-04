@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-01 09:44-0400\n"
-"PO-Revision-Date: 2017-08-01 09:44-0400\n"
+"POT-Creation-Date: 2017-08-04 06:49-0400\n"
+"PO-Revision-Date: 2017-08-04 06:49-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -357,114 +357,114 @@ msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1717
-msgid "I'd like to help by rating the %s plugin 5 stars"
-msgstr "J'aimerais aider en notant l'extension %s 5 étoiles"
+#: lib/admin.php:1718
+msgid "Help us by rating the %s plugin 5 stars"
+msgstr "Aidez-nous en notant l'extension %s 5 étoiles"
 
-#: lib/admin.php:1719
+#: lib/admin.php:1720
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s! Vous êtes super!"
 
-#: lib/admin.php:1722
+#: lib/admin.php:1724
 msgid "I've already rated the %s plugin 5 stars"
 msgstr "J'ai déjà noté l'extension %s 5 étoiles"
 
-#: lib/admin.php:1724
+#: lib/admin.php:1726
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s plus tôt! Vous êtes super!"
 
-#: lib/admin.php:1728
+#: lib/admin.php:1735
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin.php:1729
+#: lib/admin.php:1736
 msgid "You've been using <b>%s</b> for more than a week."
 msgstr "Vous utilisez <b>%s</b> depuis plus d'une semaine."
 
-#: lib/admin.php:1731
+#: lib/admin.php:1738
 msgid "The %s plugin description page on WordPress.org"
 msgstr "La page de description pour l'extension %s sur WordPress.org"
 
-#: lib/admin.php:1733
+#: lib/admin.php:1740
 msgid "That's awesome!"
 msgstr "C'est génial!"
 
-#: lib/admin.php:1736
-msgid "Can I ask a small favor &mdash; would you rate the %s plugin on wordpress.org?"
-msgstr "Puis-je demander une petite faveur &mdash; pouvez vous noter l'extension %s sur wordpress.org ?"
+#: lib/admin.php:1743
+msgid "Can I ask a small favor &mdash; would you rate the %s plugin on WordPress.org?"
+msgstr "Puis-je demander une petite faveur &mdash; pouvez vous noter l'extension %s sur WordPress.org ?"
 
-#: lib/admin.php:1740
+#: lib/admin.php:1746
 msgid "Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well."
 msgstr "Votre note aidera les utilisateurs WordPress à trouver l'extension <em>et</em> nous encourager à continuer d'améliorer %s aussi."
 
-#: lib/admin.php:1747
-msgid "No thanks &mdash; I don't feel that %s is worth a 5 star rating, and would like to offer a suggestion or report a problem."
-msgstr "Non merci &mdash; je ne pense pas que %s vaut une note de 5 étoiles, et je préfère offrir une suggestion ou signaler un problème."
+#: lib/admin.php:1753
+msgid "No thanks &mdash; I don't think %s is worth a 5 star rating and would like to offer a suggestion or report a problem."
+msgstr "Non merci &mdash; je ne pense pas que %s vaut une note de 5 étoiles et je préfère offrir une suggestion ou signaler un problème."
 
-#: lib/admin.php:1878
+#: lib/admin.php:1886
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:1891
+#: lib/admin.php:1899
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr "Aucun élément HTML &lt;head&gt; trouvé dans le modèle %s."
 
-#: lib/admin.php:1898
+#: lib/admin.php:1906
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1907
+#: lib/admin.php:1915
 msgid "Failed to open %s for writing."
 msgstr "Impossible d'ouvrir %s pour l'écriture."
 
-#: lib/admin.php:1913
+#: lib/admin.php:1921
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:1916
+#: lib/admin.php:1924
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:1931
+#: lib/admin.php:1939
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
 
-#: lib/admin.php:1936
+#: lib/admin.php:1944
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:1944
+#: lib/admin.php:1952
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr "Masquer toutes les options Pro"
 
-#: lib/admin.php:1952
+#: lib/admin.php:1960
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
 
-#: lib/admin.php:1959
+#: lib/admin.php:1967
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr "Activer le/les Shortcode(s)"
 
-#: lib/admin.php:1967
+#: lib/admin.php:1975
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr "Activer le/les Widget(s)"
 
-#: lib/admin.php:1976
+#: lib/admin.php:1984
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:2126
+#: lib/admin.php:2134
 msgid "Return to %s"
 msgstr "Retour à %s"
 
-#: lib/admin.php:2148
+#: lib/admin.php:2156
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
@@ -513,57 +513,57 @@ msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:239 lib/config-gettext-extract.php:53
+#: lib/com/form.php:241 lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:244 lib/config-gettext-extract.php:56
+#: lib/com/form.php:246 lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:249 lib/config-gettext-extract.php:54
+#: lib/com/form.php:251 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:255 lib/com/form.php:336 lib/config-gettext-extract.php:14
+#: lib/com/form.php:257 lib/com/form.php:337 lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:104
+#: lib/com/notice.php:105
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr "Cet avis peut être masqué temporairement pour une période de%s."
 
-#: lib/com/notice.php:113
+#: lib/com/notice.php:114
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:345
+#: lib/com/notice.php:346
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:346
+#: lib/com/notice.php:347
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:351
+#: lib/com/notice.php:352
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:353
+#: lib/com/notice.php:354
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:495
+#: lib/com/notice.php:496
 msgid "%s Note"
 msgstr "Avis %s"
 
-#: lib/com/notice.php:540
+#: lib/com/notice.php:541
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -3007,11 +3007,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:1261
+#: lib/schema.php:1262
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:1264
+#: lib/schema.php:1265
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
