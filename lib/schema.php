@@ -69,8 +69,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$img_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
 
 			if ( ! empty( $img_url ) ) {
-				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
-					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'],
+					'...', $mod, true, false, true, 'schema_desc' );
 
 				$img_html = '<!-- '.$lca.' schema image for pinterest pin it button -->'."\n".
 					'<div class="'.$lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
@@ -1853,8 +1853,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['name'] );
 				}
 
-				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'], '...', $mod, true,
-					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'],
+					'...', $mod, true, false, true, 'schema_desc' );
 
 				if ( empty( $ret['description'] ) ) {	// just in case
 					unset( $ret['description'] );
@@ -1976,8 +1976,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
-				$mt_schema['description'] = $this->p->page->get_description( $this->p->options['schema_desc_len'], '...', $mod, true,
-					false, true, 'schema_desc' );	// $add_hashtags = false, $encode = true, $md_idx = schema_desc
+				$mt_schema['description'] = $this->p->page->get_description( $this->p->options['schema_desc_len'],
+					'...', $mod, true, false, true, 'schema_desc' );
 			}
 
 			switch ( $page_type_url ) {

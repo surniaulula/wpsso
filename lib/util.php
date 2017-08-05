@@ -1997,6 +1997,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
+
 			$alt_text = '';
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';

@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		// $type = title | excerpt | both
 		// $mod = true | false | post_id | $mod array
 		public function get_caption( $type = 'title', $textlen = 200, $mod = true, $use_cache = true,
-			$add_hashtags = true, $encode = true, $md_idx = '' ) {
+			$add_hashtags = true, $do_encode = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'mod' => $mod,
 					'use_cache' => $use_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
-					'encode' => $encode,
+					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
 				) );
 			}
@@ -128,16 +128,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( $type ) {
 					case 'title':
-						$caption = $this->get_title( $textlen, '...', $mod, $use_cache, $add_hashtags, false, $md_title );
+						$caption = $this->get_title( $textlen,
+							'...', $mod, $use_cache, $add_hashtags, false, $md_title );
 						break;
 
 					case 'excerpt':
-						$caption = $this->get_description( $textlen, '...', $mod, $use_cache, $add_hashtags, false, $md_desc );
+						$caption = $this->get_description( $textlen,
+							'...', $mod, $use_cache, $add_hashtags, false, $md_desc );
 						break;
 
 					case 'both':
 						// get the title first
-						$caption = $this->get_title( 0, '', $mod, $use_cache, false, false, $md_title );	// $add_hashtags = false
+						$caption = $this->get_title( 0,
+							'', $mod, $use_cache, false, false, $md_title );	// $add_hashtags = false
 
 						// add a separator between title and description
 						if ( ! empty( $caption ) ) {
@@ -151,7 +154,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( $encode === true ) {
+			if ( $do_encode === true ) {
 				$caption = SucomUtil::encode_emoji( htmlentities( $caption,
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			} else {	// just in case
@@ -164,7 +167,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		// $mod = true | false | post_id | $mod array
 		public function get_title( $textlen = 70, $trailing = '', $mod = false, $use_cache = true,
-			$add_hashtags = false, $encode = true, $md_idx = 'og_title' ) {
+			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -173,7 +176,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'mod' => $mod,
 					'use_cache' => $use_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
-					'encode' => $encode,
+					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
 				) );
 			}
@@ -336,7 +339,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title .= ' '.$hashtags;
 			}
 
-			if ( $encode === true ) {
+			if ( $do_encode === true ) {
 				foreach ( array( 'title', 'separator' ) as $var ) {
 					$$var = SucomUtil::encode_emoji( htmlentities( $$var,
 						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
@@ -348,7 +351,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		// $mod = true | false | post_id | $mod array
 		public function get_description( $textlen = 156, $trailing = '...', $mod = false, $use_cache = true,
-			$add_hashtags = true, $encode = true, $md_idx = 'og_desc' ) {
+			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// begin timer
@@ -359,7 +362,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'mod' => $mod,
 					'use_cache' => $use_cache,
 					'add_hashtags' => $add_hashtags, 	// true | false | numeric
-					'encode' => $encode,
+					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
 				) );
 			}
@@ -411,7 +414,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $desc, $match ) ) {
 				$desc = $match[1];
 				$hashtags = trim( $match[2] );
-
 			} elseif ( $mod['is_post'] ) {
 				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
 					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
@@ -530,15 +532,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc ) : 0;
 			$desc = $this->p->util->cleanup_html_tags( $desc, true, $this->p->options['plugin_use_img_alt'] );
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'description strlen before html cleanup '.
 					$strlen_pre_cleanup.' and after '.strlen( $desc ) );
 			}
 
-			$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
-
 			if ( $textlen > 0 ) {
+				$desc = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc );
 
 				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 					$textlen = $textlen - strlen( $hashtags ) - 1;
@@ -559,7 +559,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc .= ' '.$hashtags;
 			}
 
-			if ( $encode === true ) {
+			if ( $do_encode === true ) {
 				$desc = SucomUtil::encode_emoji( htmlentities( $desc,
 					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
 			}
