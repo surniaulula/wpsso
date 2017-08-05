@@ -1147,14 +1147,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$upscale_shown = true;
 
+							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
+								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );
+							$img_dim_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
 							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
 							$upscale_percent = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
-							$img_dim_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
-							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
-								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );
 
 							$text .= '<p style="margin-left:0;"><em>'.
 								__( 'Additional information shown only to users with Administrative privileges:',

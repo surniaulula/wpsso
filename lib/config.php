@@ -2043,13 +2043,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_constants( $plugin_filepath ) {
+
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', self::$cf['plugin']['wpsso']['slug'] );		// wpsso
 			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );		// wpsso/wpsso.php
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
+
 			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.self::$cf['plugin']['wpsso']['version'].
 				( defined( 'NONCE_SALT' ) ? NONCE_SALT : '' ) ) );
+
 			self::set_variable_constants();
 		}
 

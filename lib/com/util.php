@@ -1818,7 +1818,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $text;
 			}
 			$shortcodes_preg = apply_filters( 'sucom_strip_shortcodes_preg', array(
-				'/\[\/?(mk|rev_slider_|vc)_[^\]]+\]/',
+				'/\[\/?(mk_|rev_slider_|vc_)[^\]]+\]/',
 			) );
 			$text = preg_replace( $shortcodes_preg, ' ', $text );
 			$text = strip_shortcodes( $text );		// strip any remaining registered shortcodes

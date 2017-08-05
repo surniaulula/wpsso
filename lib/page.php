@@ -658,10 +658,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				// remove all of our shortcodes
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
+
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
-						if ( array_key_exists( $id, $this->p->sc ) &&
-							is_object( $this->p->sc[$id] ) ) {
-							$this->p->sc[$id]->remove();
+						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
+							if ( method_exists( $this->p->sc[$id], 'remove' ) ) {
+								$this->p->sc[$id]->remove();
+							}
 						}
 					}
 				}
@@ -735,9 +737,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
-						if ( array_key_exists( $id, $this->p->sc ) &&
-							is_object( $this->p->sc[$id] ) ) {
-							$this->p->sc[$id]->add();
+						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
+							if ( method_exists( $this->p->sc[$id], 'add' ) ) {
+								$this->p->sc[$id]->add();
+							}
 						}
 					}
 				}
