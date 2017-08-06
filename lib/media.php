@@ -613,11 +613,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( empty( $content ) ) {
 				$content = $this->p->page->get_content( $mod );
 				$content_passed = false;
-			} else $content_passed = true;
+			} else {
+				$content_passed = true;
+			}
 
 			if ( empty( $content ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post content' );
+				}
 				return $og_ret;
 			}
 
@@ -630,8 +633,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$filter_name = $this->p->cf['lca'].'_content_image_preg_'.$type;
 				if ( has_filter( $filter_name ) ) {
 					$img_preg[$type] = apply_filters( $filter_name, $this->def_img_preg[$type] );
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'filtered image preg '.$type.' = \''.$img_preg[$type].'\'' );
+					}
 				}
 			}
 
@@ -642,14 +646,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( isset( $this->p->options['plugin_content_img_max'] ) &&
 					count( $all_matches ) > $this->p->options['plugin_content_img_max'] ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'limiting matches returned from '.count( $all_matches ).
 							' to '.$this->p->options['plugin_content_img_max'] );
+					}
 					$all_matches = array_splice( $all_matches, 0, $this->p->options['plugin_content_img_max'] );
 				}
 
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( count( $all_matches ).' x matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
+				}
 
 				foreach ( $all_matches as $img_num => $img_arr ) {
 
@@ -665,16 +671,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$attr_value = $img_arr[7];	// url
 					}
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
+					}
 
 					switch ( $attr_name ) {
 
 						// wordpress media library image id
 						case 'data-wp-pid':
 
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'WP image attribute ID found: '.$attr_value );
+							}
 
 							list(
 								$og_image['og:image'],
@@ -722,8 +730,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_image['og:image:width'] = $size_info['width'];
 								$og_image['og:image:height'] = $size_info['width'];	// square image
 
-								if ( $this->p->debug->enabled )
+								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'gravatar image found: '.$og_image['og:image'] );
+								}
 
 								break;	// stop here
 							}
@@ -754,13 +763,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									empty( $og_image['og:image:height'] ) || $og_image['og:image:height'] < 0 ) {
 
 									$this->p->util->add_image_url_size( 'og:image', $og_image );
-									if ( $this->p->debug->enabled )
+									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( 'fetched image url size: '.
 											$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
-
-								} elseif ( $this->p->debug->enabled )
+									}
+								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'image width / height values: '.
 										$og_image['og:image:width'].'x'.$og_image['og:image:height'] );
+								}
 							}
 
 							// check if image exceeds hard-coded limits (dimensions, ratio, etc.)
@@ -788,8 +798,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 				return $og_ret;
 			}
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no matching <'.$img_preg['html_tag'].'/> html tag(s) found' );
+			}
 			return $og_ret;
 		}
 

@@ -1289,15 +1289,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			// encode the json
-			if ( ! is_string( $json ) )
+			if ( ! is_string( $json ) ) {
 				$json = self::json_encode_array( $json, $options, $depth );	// prefers wp_json_encode() to json_encode()
+			}
 
 			// use the pretty print external library for older PHP versions
 			// define WPSSO_EXT_JSON_DISABLE as true to prevent external json formatting 
 			if ( ! $ext_json_disable && $do_ext_pretty ) {
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
-				if ( $classname !== false && class_exists( $classname ) )
+				if ( $classname !== false && class_exists( $classname ) ) {
 					$json = SuextJsonFormat::get( $json, $options, $depth );
+				}
 			}
 
 			return $json;
@@ -1943,8 +1945,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		private function shorten_html_href_value( $matches ) {
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'shortening url '.$matches[2] );
+			}
 			return $matches[1].apply_filters( $this->p->cf['lca'].'_shorten_url',
 				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
 		}
