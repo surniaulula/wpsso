@@ -218,10 +218,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 					$mt_og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
-						foreach ( $mt_og['og:video'] as $num => $og_video ) {
-							if ( isset( $og_video['og:video:type'] ) &&
-								$og_video['og:video:type'] !== 'text/html' &&
-									SucomUtil::get_mt_media_url( $og_video, 'og:image' ) ) {
+						foreach ( $mt_og['og:video'] as $num => $single_video ) {
+							if ( isset( $single_video['og:video:type'] ) &&
+								$single_video['og:video:type'] !== 'text/html' &&
+									SucomUtil::get_mt_media_url( $single_video, 'og:image' ) ) {
 								$prev_count++;
 								$mt_og['og:video'][$num]['og:video:has_image'] = true;
 							} else {
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
 						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] ) {
-							$mt_og[$md_pre.':image'] = $this->p->media->get_default_image( $max['og_img_max'],
+							$mt_og[$md_pre.':image'] = $this->p->media->get_default_images( $max['og_img_max'],
 								$size_name, $check_dupes );
 						}
 					}
@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'setting use_prev to '.$use_prev.' from meta data' );
 					}
 				}
-				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_video( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
+				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_videos( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
 			}
 
 			if ( count( $og_ret ) < 1 && $this->p->util->force_default_video( $mod ) ) {
@@ -468,9 +468,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'use_prev and force_prev are false: removing video preview images' );
 					}
-					foreach ( $og_ret as $num => $og_video ) {
+					foreach ( $og_ret as $num => $single_video ) {
 						$og_ret[$num]['og:video:has_image'] = false;
-						foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $og_video ) as $k => $v ) {
+						foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $single_video ) as $k => $v ) {
 							unset ( $og_ret[$num][$k] );
 						}
 					}
@@ -491,7 +491,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					// get_options() returns null if an index key is not found
 					$value = $mod['obj']->get_options( $mod['id'], $idx );
 					if ( ! empty( $value ) ) {	// must be a non-empty string
-						foreach ( $og_ret as $num => $og_video ) {
+						foreach ( $og_ret as $num => $single_video ) {
 							$og_ret[$num][$mt_name] = $value;
 							break;	// only do the first video
 						}
@@ -501,31 +501,31 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! empty( $this->p->options['og_vid_html_type'] ) ) {
 				$og_extend = array();
-				foreach ( $og_ret as $num => $og_video ) {
-					if ( ! empty( $og_video['og:video:embed_url'] ) ) {
+				foreach ( $og_ret as $num => $single_video ) {
+					if ( ! empty( $single_video['og:video:embed_url'] ) ) {
 
 						// start with a copy of all og meta tags (exclude applink meta tags)
-						$og_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_video );
+						$og_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_video );
 
-						if ( strpos( $og_video['og:video:embed_url'], 'https:' ) !== false ) {
+						if ( strpos( $single_video['og:video:embed_url'], 'https:' ) !== false ) {
 							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-								$og_embed['og:video:secure_url'] = $og_video['og:video:embed_url'];
+								$og_embed['og:video:secure_url'] = $single_video['og:video:embed_url'];
 							} else {
 								$og_embed['og:video:secure_url'] = '';	// just in case
 							}
 						}
 
-						$og_embed['og:video:url'] = $og_video['og:video:embed_url'];
+						$og_embed['og:video:url'] = $single_video['og:video:embed_url'];
 						$og_embed['og:video:type'] = 'text/html';
 
 						// add application/x-shockwave-flash first
-						$og_extend[] = $og_video;
+						$og_extend[] = $single_video;
 
 						// add the new text/html video second
 						$og_extend[] = $og_embed;
 
 					} else {
-						$og_extend[] = $og_video;
+						$og_extend[] = $single_video;
 					}
 				}
 				return $og_extend;
@@ -558,15 +558,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ( is_attachment( $mod['id'] ) || get_post_type( $mod['id'] ) === 'attachment' ) &&
 					wp_attachment_is_image( $mod['id'] ) ) {
 
-					$og_image = $this->p->media->get_attachment_image( $num_diff,
+					$single_image = $this->p->media->get_attachment_image( $num_diff,
 						$size_name, $mod['id'], $check_dupes );
 
 					// exiting early
-					if ( empty( $og_image ) ) {
-						return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff,
+					if ( empty( $single_image ) ) {
+						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
 							$size_name, $check_dupes, $force_regen ) );
 					} else {
-						return array_merge( $og_ret, $og_image );
+						return array_merge( $og_ret, $single_image );
 					}
 				}
 
@@ -625,12 +625,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else {
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				if ( ! empty( $mod['obj'] ) ) {	// term or user
-					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_image( $num_diff,
+					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_images( $num_diff,
 						$size_name, $mod['id'], $check_dupes, $force_regen, $md_pre ) );
 				}
 
 				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image( $mod, 'og' ) ) {
-					return array_merge( $og_ret, $this->p->media->get_default_image( $num_diff,
+					return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
 						$size_name, $check_dupes, $force_regen ) );
 				}
 			}
@@ -652,27 +652,27 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
-			$og_image = null;
-			$og_video = null;
+			$og_images = null;
+			$og_videos = null;
 
 			if ( empty( $head ) ) {
 				foreach ( $request as $key ) {
 					switch ( $key ) {
 						case 'pid':
 						case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
-							if ( $og_image === null ) {	// get images only once
-								$og_image = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
+							if ( $og_images === null ) {	// get images only once
+								$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
 							}
 							break;
 						case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
-							if ( $og_video === null && $aop ) {	// get videos only once
-								$og_video = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
+							if ( $og_videos === null && $aop ) {	// get videos only once
+								$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
 							}
 							break;
 					}
 				}
 			} else {
-				$og_image = $og_video = array( $head );
+				$og_images = $og_videos = array( $head );
 			}
 
 			foreach ( $request as $key ) {
@@ -690,43 +690,43 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 						// no break - fall through
 
-						if ( $og_video !== null ) {
-							$ret[$key] = $this->get_media_value( $mt_name, $og_video );
+						if ( $og_videos !== null ) {
+							$ret[$key] = $this->get_media_value( $mt_name, $og_videos );
 						}
 
 						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = $this->get_media_value( $mt_name, $og_image );
+							$ret[$key] = $this->get_media_value( $mt_name, $og_images );
 						}
 
 						// if there's no image, and no video preview image,
 						// then add the default image for singular (aka post) webpages
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
-							$og_image = $this->p->media->get_default_image( 1, $size_name, false );	// $check_dupes = false
-							$ret[$key] = $this->get_media_value( $mt_name, $og_image );
+							$og_images = $this->p->media->get_default_images( 1, $size_name, false );	// $check_dupes = false
+							$ret[$key] = $this->get_media_value( $mt_name, $og_images );
 						}
 						break;
 					case 'video':
 					case 'vid_url':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video', $og_videos );
 						break;
 					case 'vid_type':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:type', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:type', $og_videos );
 						break;
 					case 'vid_title':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:title', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:title', $og_videos );
 						break;
 					case 'vid_desc':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:description', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:description', $og_videos );
 						break;
 					case 'vid_width':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:width', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:width', $og_videos );
 						break;
 					case 'vid_height':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:height', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:height', $og_videos );
 						break;
 					case 'prev_url':
 					case 'preview':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:thumbnail_url', $og_video );
+						$ret[$key] = $this->get_media_value( $mt_pre.':video:thumbnail_url', $og_videos );
 						break;
 					default:
 						$ret[$key] = '';

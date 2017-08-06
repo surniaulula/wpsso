@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.5-rc.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.5-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1741,42 +1741,42 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/media.php:343
+#: lib/media.php:349
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:377
+#: lib/media.php:383
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image "
 "dimensions for image ID %1$s are missing from the image metadata returned by "
 "the WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:385
+#: lib/media.php:391
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image file "
 "path for image ID %1$s is missing from the image metadata returned by the "
 "WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:779
+#: lib/media.php:785
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1073 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1079 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1133
+#: lib/media.php:1139
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1151
+#: lib/media.php:1157
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -3754,109 +3754,109 @@ msgctxt "metabox title"
 msgid "Optional Advanced Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:65
+#: lib/submenu/essential.php:66
 msgctxt "metabox title"
 msgid "Site Information"
 msgstr ""
 
-#: lib/submenu/essential.php:67 lib/submenu/general.php:88
+#: lib/submenu/essential.php:68 lib/submenu/general.php:88
 msgctxt "option label"
 msgid "Website Name"
 msgstr ""
 
-#: lib/submenu/essential.php:72 lib/submenu/general.php:93
+#: lib/submenu/essential.php:73 lib/submenu/general.php:93
 msgctxt "option label"
 msgid "Website Description"
 msgstr ""
 
-#: lib/submenu/essential.php:77 lib/submenu/general.php:102
+#: lib/submenu/essential.php:78 lib/submenu/general.php:102
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/essential.php:82
+#: lib/submenu/essential.php:83
 msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:84 lib/submenu/general.php:213
+#: lib/submenu/essential.php:85 lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:88 lib/submenu/general.php:218
+#: lib/submenu/essential.php:89 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:92 lib/submenu/general.php:222
+#: lib/submenu/essential.php:93 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/essential.php:96 lib/submenu/general.php:180
+#: lib/submenu/essential.php:97 lib/submenu/general.php:180
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:100 lib/submenu/general.php:184
+#: lib/submenu/essential.php:101 lib/submenu/general.php:184
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:105
+#: lib/submenu/essential.php:106
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:107 lib/submenu/general.php:243
+#: lib/submenu/essential.php:108 lib/submenu/general.php:243
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:274
+#: lib/submenu/essential.php:114 lib/submenu/general.php:274
 msgctxt "option label"
 msgid "Google Knowledge Graph"
 msgstr ""
 
-#: lib/submenu/essential.php:117 lib/submenu/general.php:278
+#: lib/submenu/essential.php:118 lib/submenu/general.php:278
 msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr ""
 
-#: lib/submenu/essential.php:120 lib/submenu/general.php:281
+#: lib/submenu/essential.php:121 lib/submenu/general.php:281
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/submenu/essential.php:123 lib/submenu/general.php:284
+#: lib/submenu/essential.php:124 lib/submenu/general.php:284
 msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr ""
 
-#: lib/submenu/essential.php:130 lib/submenu/general.php:291
+#: lib/submenu/essential.php:131 lib/submenu/general.php:291
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/submenu/essential.php:134 lib/submenu/general.php:295
+#: lib/submenu/essential.php:135 lib/submenu/general.php:295
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/submenu/essential.php:139
+#: lib/submenu/essential.php:140
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:141 lib/submenu/general.php:352
+#: lib/submenu/essential.php:142 lib/submenu/general.php:352
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:146
+#: lib/submenu/essential.php:147
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:148 lib/submenu/general.php:389
+#: lib/submenu/essential.php:149 lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -4113,12 +4113,12 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/twittercard.php:32
+#: lib/twittercard.php:34
 msgctxt "image size label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:38
+#: lib/twittercard.php:40
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""

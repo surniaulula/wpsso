@@ -65,8 +65,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$size_name = $this->p->cf['lca'].'-schema';
-			$og_image = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
-			$img_url = SucomUtil::get_mt_media_url( $og_image, 'og:image' );
+			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
+			$img_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
 
 			if ( ! empty( $img_url ) ) {
 				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'],
@@ -1723,7 +1723,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
 					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
 					'person_desc' => $user_desc,
-					'person_og_image' => $user_mod['obj']->get_og_image( 1, $size_name, $user_id, false ),
+					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas' => $user_sameas,
 				);
 			}
@@ -1787,16 +1787,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		// pass a single or two dimension image array in $og_image
-		public static function add_image_list_data( &$json_data, &$og_image, $prefix = 'og:image' ) {
+		// pass a single or two dimension image array in $og_images
+		public static function add_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
 			$images_added = 0;
 
-			if ( isset( $og_image[0] ) && is_array( $og_image[0] ) ) {						// 2 dimensional array
-				foreach ( $og_image as $image ) {
-					$images_added += self::add_single_image_data( $json_data, $image, $prefix, true );	// $list_element = true
+			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
+				foreach ( $og_images as $single_image ) {
+					$images_added += self::add_single_image_data( $json_data, $single_image, $prefix, true );	// $list_element = true
 				}
-			} elseif ( is_array( $og_image ) ) {
-				$images_added += self::add_single_image_data( $json_data, $og_image, $prefix, true );		// $list_element = true
+			} elseif ( is_array( $og_images ) ) {
+				$images_added += self::add_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
 			}
 
 			return $images_added;	// return count of images added
@@ -2006,15 +2006,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'getting images for '.$page_type_url );
 				}
 
-				$og_image = $this->p->og->get_all_images( $max['schema_img_max'],
+				$og_images = $this->p->og->get_all_images( $max['schema_img_max'],
 					$size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
-				if ( empty( $og_image ) && $mod['is_post'] ) {
-					$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+				if ( empty( $og_images ) && $mod['is_post'] ) {
+					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 				}
 
-				foreach ( $og_image as $image ) {
-					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $image, 'og:image' );
+				foreach ( $og_images as $single_image ) {
+					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $single_image, 'og:image' );
 				}
 			}
 
@@ -2105,14 +2105,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting images for '.$page_type_url );
 			}
 
-			$og_image = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+			$og_images = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
-			if ( empty( $og_image ) && $mod['is_post'] ) {
-				$og_image = $this->p->media->get_default_image( 1, $size_name, true );
+			if ( empty( $og_images ) && $mod['is_post'] ) {
+				$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 			}
 
-			foreach ( $og_image as $image ) {
-				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $image ) );
+			foreach ( $og_images as $single_image ) {
+				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $single_image ) );
 			}
 
 			// example: product:rating:average
@@ -2302,10 +2302,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// get_og_images() also provides filter hooks for additional image ids and urls
 				$size_name = $this->p->cf['lca'].'-schema';
-				$og_image = $user_mod['obj']->get_og_image( 1, $size_name, $author_id, false );	// $check_dupes = false
+				$og_images = $user_mod['obj']->get_og_images( 1, $size_name, $author_id, false );	// $check_dupes = false
 	
-				foreach ( $og_image as $image ) {
-					$image_url = SucomUtil::get_mt_media_url( $image, 'og:image' );
+				foreach ( $og_images as $single_image ) {
+					$image_url = SucomUtil::get_mt_media_url( $single_image, 'og:image' );
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'link',
 							'itemprop', $itemprop.'.image', $image_url, '', $user_mod ) );

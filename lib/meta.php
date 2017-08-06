@@ -810,11 +810,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $value;
 		}
 
-		public function get_og_image( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public function get_md_image( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -939,7 +939,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $mt_ret;
 		}
 
-		public function get_og_video( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -953,14 +953,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$mod = $this->get_mod( $mod_id );	// required for get_content_videos()
 			$og_ret = array();
-			$og_video = array();
+			$og_videos = array();
 
 			if ( empty( $mod_id ) ) {
 				return $og_ret;
 			}
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
-
 				$html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
 				$url = $this->get_options( $mod_id, $prefix.'_vid_url' );
 
@@ -969,10 +968,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
 							get_class( $this ) );	// log extended class name
 					}
-					$og_video = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html );
-					if ( ! empty( $og_video ) ) {
-						return array_merge( $og_ret, $og_video );
-					}
+					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html ) );
 				}
 
 				if ( ! empty( $url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
@@ -980,9 +976,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
 							get_class( $this ) );	// log extended class name
 					}
-					$og_video = $this->p->media->get_video_info( $url, 
+					$og_videos = $this->p->media->get_video_info( $url, 
 						WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true );	// $fallback = true
-					if ( $this->p->util->push_max( $og_ret, $og_video, $num ) )  {
+					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}
 				}
@@ -990,7 +986,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $og_ret;
 		}
 
-		public function get_og_video_preview_image( $mod, $check_dupes = false, $md_pre = 'og' ) {
+		public function get_og_preview_image( $mod, $check_dupes = false, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -1000,7 +996,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				), get_class( $this ) );
 			}
 
-			$og_image = array();
+			$og_images = array();
 
 			// fallback to value from general plugin settings
 			if ( ( $use_prev_img = $this->get_options( $mod['id'], 'og_vid_prev_img' ) ) === null )
@@ -1010,20 +1006,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( ! empty( $use_prev_img ) ) {
 
 				// assumes the first video will have a preview image
-				$og_video = $this->p->og->get_all_videos( 1, $mod, $check_dupes, $md_pre );
+				$og_videos = $this->p->og->get_all_videos( 1, $mod, $check_dupes, $md_pre );
 
-				if ( ! empty( $og_video ) && is_array( $og_video ) ) {
-					foreach ( $og_video as $video ) {
-						if ( ! empty( $video['og:image'] ) ) {
-							$og_image[] = $video;
+				if ( ! empty( $og_videos ) && is_array( $og_videos ) ) {
+					foreach ( $og_videos as $single_video ) {
+						if ( ! empty( $single_video['og:image'] ) ) {
+							$og_images[] = $single_video;
 							break;
 						}
 					}
 				}
-			} elseif ( $this->p->debug->enabled )
+			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'use_prev_img is 0 - skipping retrieval of video preview image' );
+			}
 
-			return $og_image;
+			return $og_images;
 		}
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
