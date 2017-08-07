@@ -902,9 +902,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// move an associative array element to the end
 		public static function move_to_end( array &$array, $key ) {
-			$val = $array[$key];
-			unset( $array[$key] );
-			$array[$key] = $val;
+			if ( array_key_exists( $key, $array ) ) {
+				$val = $array[$key];
+				unset( $array[$key] );
+				$array[$key] = $val;
+			}
+			return $array;
+		}
+
+		public static function move_to_front( array &$array, $key ) {
+			if ( array_key_exists( $key, $array ) ) {
+				$val = $array[$key];
+				$array = array_merge( array( $key => $val ), $array );
+			}
 			return $array;
 		}
 
