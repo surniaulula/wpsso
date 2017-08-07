@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-04 06:49-0400\n"
-"PO-Revision-Date: 2017-08-04 06:49-0400\n"
+"POT-Creation-Date: 2017-08-07 11:36-0400\n"
+"PO-Revision-Date: 2017-08-07 11:36-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -909,7 +909,7 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/config-gettext-extract.php:76 lib/messages.php:1157
+#: lib/config-gettext-extract.php:76 lib/messages.php:1151
 msgctxt "lib file description"
 msgid "Social and SEO Image Dimensions"
 msgstr "Dimensions des Images SEO et Sociaux"
@@ -1182,7 +1182,7 @@ msgctxt "option label"
 msgid "Create Missing WP Media Sizes"
 msgstr "Créer tailles manquantes Médias WP"
 
-#: lib/gpl/admin/advanced.php:141 lib/messages.php:1155
+#: lib/gpl/admin/advanced.php:141 lib/messages.php:1153
 #: lib/pro/admin/advanced.php:142
 msgctxt "option label"
 msgid "Enforce Image Dimensions Check"
@@ -1193,13 +1193,13 @@ msgctxt "option comment"
 msgid "recommended"
 msgstr "recommandé"
 
-#: lib/gpl/admin/advanced.php:146 lib/messages.php:1151
+#: lib/gpl/admin/advanced.php:146 lib/messages.php:1155
 #: lib/pro/admin/advanced.php:147
 msgctxt "option label"
 msgid "Allow Upscale of WP Media Images"
 msgstr "Agrandir images Médias WP"
 
-#: lib/gpl/admin/advanced.php:151 lib/messages.php:1153
+#: lib/gpl/admin/advanced.php:151 lib/messages.php:1157
 #: lib/pro/admin/advanced.php:152
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
@@ -1658,31 +1658,31 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/media.php:343
+#: lib/media.php:349
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:377
+#: lib/media.php:383
 msgid "Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
 msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; les dimensions de l'image pleine grandeur pour l'ID d'image %1$s sont manquantes dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
 
-#: lib/media.php:385
+#: lib/media.php:391
 msgid "Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
 msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; le chemin du fichier d'image pleine grandeur pour l'ID d'image %1$s est manquant dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
 
-#: lib/media.php:769
+#: lib/media.php:785
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1062 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1079 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
-#: lib/media.php:1122
+#: lib/media.php:1139
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1140
+#: lib/media.php:1157
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -1944,7 +1944,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:380 lib/util.php:1899
+#: lib/messages.php:380 lib/util.php:1901
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2819,7 +2819,7 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/page.php:714
+#: lib/page.php:716
 msgid "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent possiblement détecté &mdash le filtre WordPress %1$s a pris %2$0.2f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.2f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
@@ -3179,109 +3179,109 @@ msgctxt "metabox title"
 msgid "Optional Advanced Settings"
 msgstr "Réglages Avancés Optionnels"
 
-#: lib/submenu/essential.php:65
+#: lib/submenu/essential.php:66
 msgctxt "metabox title"
 msgid "Site Information"
 msgstr "Informations du Site"
 
-#: lib/submenu/essential.php:67 lib/submenu/general.php:88
+#: lib/submenu/essential.php:68 lib/submenu/general.php:88
 msgctxt "option label"
 msgid "Website Name"
 msgstr "Nom du site Web"
 
-#: lib/submenu/essential.php:72 lib/submenu/general.php:93
+#: lib/submenu/essential.php:73 lib/submenu/general.php:93
 msgctxt "option label"
 msgid "Website Description"
 msgstr "Description du site Web"
 
-#: lib/submenu/essential.php:77 lib/submenu/general.php:102
+#: lib/submenu/essential.php:78 lib/submenu/general.php:102
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr "Rubrique d'article par défaut"
 
-#: lib/submenu/essential.php:82
+#: lib/submenu/essential.php:83
 msgctxt "metabox title"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/submenu/essential.php:84 lib/submenu/general.php:213
+#: lib/submenu/essential.php:85 lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr "URL page d'affaires Facebook"
 
-#: lib/submenu/essential.php:88 lib/submenu/general.php:218
+#: lib/submenu/essential.php:89 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr "ID de l'application Facebook"
 
-#: lib/submenu/essential.php:92 lib/submenu/general.php:222
+#: lib/submenu/essential.php:93 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr "ou Nom d'utilisateurs admin FB"
 
-#: lib/submenu/essential.php:96 lib/submenu/general.php:180
+#: lib/submenu/essential.php:97 lib/submenu/general.php:180
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr "ID de l'image par défaut"
 
-#: lib/submenu/essential.php:100 lib/submenu/general.php:184
+#: lib/submenu/essential.php:101 lib/submenu/general.php:184
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr "ou URL d'une image par défaut"
 
-#: lib/submenu/essential.php:105
+#: lib/submenu/essential.php:106
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr "Google / Schéma"
 
-#: lib/submenu/essential.php:107 lib/submenu/general.php:243
+#: lib/submenu/essential.php:108 lib/submenu/general.php:243
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr "URL page d'affaires Google+"
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:274
+#: lib/submenu/essential.php:114 lib/submenu/general.php:274
 msgctxt "option label"
 msgid "Google Knowledge Graph"
 msgstr "Google Knowledge Graph"
 
-#: lib/submenu/essential.php:117 lib/submenu/general.php:278
+#: lib/submenu/essential.php:118 lib/submenu/general.php:278
 msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
 msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
 
-#: lib/submenu/essential.php:120 lib/submenu/general.php:281
+#: lib/submenu/essential.php:121 lib/submenu/general.php:281
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr "Inclure le <a href=\"%s\">profil sociale de l'organisation</a>"
 
-#: lib/submenu/essential.php:123 lib/submenu/general.php:284
+#: lib/submenu/essential.php:124 lib/submenu/general.php:284
 msgid "Include <a href=\"%s\">Person Social Profile</a> for Site Owner"
 msgstr "Inclure le <a href=\"%s\">profil sociale d'une Personne</a> pour propriétaire du site"
 
-#: lib/submenu/essential.php:130 lib/submenu/general.php:291
+#: lib/submenu/essential.php:131 lib/submenu/general.php:291
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/submenu/essential.php:134 lib/submenu/general.php:295
+#: lib/submenu/essential.php:135 lib/submenu/general.php:295
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière de l'organisation"
 
-#: lib/submenu/essential.php:139
+#: lib/submenu/essential.php:140
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: lib/submenu/essential.php:141 lib/submenu/general.php:352
+#: lib/submenu/essential.php:142 lib/submenu/general.php:352
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL page entreprise Pinterest"
 
-#: lib/submenu/essential.php:146
+#: lib/submenu/essential.php:147
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lib/submenu/essential.php:148 lib/submenu/general.php:389
+#: lib/submenu/essential.php:149 lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "Le @nom d'affaires Twitter"
@@ -3540,12 +3540,12 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr "Guide de Configuration"
 
-#: lib/twittercard.php:32
+#: lib/twittercard.php:34
 msgctxt "image size label"
 msgid "Twitter Summary Card"
 msgstr "Carte Twitter Sommaire"
 
-#: lib/twittercard.php:38
+#: lib/twittercard.php:40
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter Grande Image"
@@ -3642,22 +3642,22 @@ msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de b
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1925
+#: lib/util.php:1927
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1929
+#: lib/util.php:1931
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1932
+#: lib/util.php:1934
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1936
+#: lib/util.php:1938
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
