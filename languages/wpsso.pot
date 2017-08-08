@@ -555,11 +555,15 @@ msgid "Failed to open cache file %s for reading."
 msgstr ""
 
 #: lib/com/cache.php:521
+msgid "Failed to create the %s cache folder."
+msgstr ""
+
+#: lib/com/cache.php:529
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:526
-msgid "Failed to open cache file %s for writing."
+#: lib/com/cache.php:537
+msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
 #: lib/com/form.php:94 lib/config-gettext-extract.php:58
