@@ -1912,7 +1912,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open %s for writing.',
+					$this->p->notice->err( sprintf( __( 'Failed to open template file %s for writing.',
 						'wpsso' ), $tmpl_file ) );
 					continue;
 				}

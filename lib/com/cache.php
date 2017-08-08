@@ -82,7 +82,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$time_left = $this->transient['ignore_time'] - ( time() - $this->transient['ignore_urls'][$url] );
 				if ( $time_left > 0 ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'ignoring url '.$url.' for another '.$time_left.' second(s). ' );
+						$this->p->debug->log( 'ignoring url '.$url.' for another '.$time_left.' second(s)' );
 					}
 					return true;
 				} else {
@@ -413,11 +413,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $cache_file.' does not exist' );
+							$this->p->debug->log( 'cache file '.$cache_file.' does not exist' );
 						}
 					} elseif ( ! is_readable( $cache_file ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $cache_file.' is not readable' );
+							$this->p->debug->log( 'cache file '.$cache_file.' is not readable' );
 						}
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Cache file %s is not readable.',
@@ -429,10 +429,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'failed to open file '.$cache_file.' for reading' );
+							$this->p->debug->log( 'failed to open the cache file '.$cache_file.' for reading' );
 						}
 						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Failed to open cache file %s for reading.',
+							$this->p->notice->err( sprintf( __( 'Failed to open the cache file %s for reading.',
 								$this->text_dom ), $cache_file ) );
 						}
 					} else {
@@ -523,7 +523,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 					} elseif ( ! is_writable( $this->base_dir ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'cache folder '.$this->base_dir.' is not writable.' );
+							$this->p->debug->log( 'cache folder '.$this->base_dir.' is not writable' );
 						}
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Cache folder %s is not writable.',
@@ -531,7 +531,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'failed to open the cache file '.$cache_file.' for writing.' );
+							$this->p->debug->log( 'failed to open the cache file '.$cache_file.' for writing' );
 						}
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Failed to open the cache file %s for writing.',

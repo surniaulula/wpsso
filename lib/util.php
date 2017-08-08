@@ -456,22 +456,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cache_dir = constant( $uca.'_CACHEDIR' );
 			$deleted = 0;
 			if ( ! $dh = @opendir( $cache_dir ) ) {
-				$this->p->notice->err( sprintf( __( 'Failed to open directory %s for reading.',
-					'wpsso' ), $cache_dir ) );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'failed to open the cache folder '.$cache_dir.' for reading' );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'Failed to open the cache folder %s for reading.',
+						'wpsso' ), $cache_dir ) );
+				}
 			} else {
 				while ( $file_name = @readdir( $dh ) ) {
 					$cache_file = $cache_dir.$file_name;
 					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
 						if ( @unlink( $cache_file ) ) {
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'removed cache file '.$cache_file );
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'removed the cache file '.$cache_file );
+							}
 							$deleted++;
 						} else {	
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'error removing cache file '.$cache_file );
-							if ( is_admin() )
-								$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'failed to remove the cache file '.$cache_file );
+							}
+							if ( is_admin() ) {
+								$this->p->notice->err( sprintf( __( 'Failed to remove the cache file %s.',
 									'wpsso' ), $cache_file ) );
+							}
 						}
 					}
 				}
