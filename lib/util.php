@@ -306,9 +306,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) )
+			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
 				return $mod['name'].'_'.$mod['id'].'_regen_'.$md_pre;
-			else return false;
+			} else {
+				return false;
+			}
 		}
 
 		public function add_ptns_to_opts( &$opts = array(), $mixed, $default = 1 ) {
@@ -316,10 +318,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mixed = array( $mixed => $default );
 			}
 			foreach ( $mixed as $opt_pre => $def_val ) {
-				foreach ( $this->get_post_types() as $post_type ) {
-					$key = $opt_pre.'_'.$post_type->name;
-					if ( ! isset( $opts[$key] ) ) {
-						$opts[$key] = $def_val;
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'checking options for prefix '.$opt_pre );
+				}
+				foreach ( $this->get_post_types( 'names' ) as $ptn ) {
+					$opt_key = $opt_pre.'_'.$ptn;
+					if ( ! isset( $opts[$opt_key] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'adding '.$opt_key.' = '.$def_val );
+						}
+						$opts[$opt_key] = $def_val;
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'skipped '.$opt_key.' - already set' );
+						}
 					}
 				}
 			}
@@ -331,8 +343,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return apply_filters( $this->p->cf['lca'].'_post_types', 
-				get_post_types( array( 'public' => true ), $output ), $output );
+			$lca = $this->p->cf['lca'];
+			$pts = get_post_types( array( 'public' => true ), $output );
+			return apply_filters( $lca.'_get_post_types', $pts, $output );
 		}
 
 		public function clear_all_cache( $clear_ext = true, $dis_key = false, $dis_time = false ) {

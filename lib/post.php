@@ -40,24 +40,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
 				// only use public post types (to avoid menu items, product variations, etc.)
-				$post_type_names = $this->p->util->get_post_types( 'names' );
+				$ptns = $this->p->util->get_post_types( 'names' );
 
-				if ( is_array( $post_type_names ) ) {
-					foreach ( $post_type_names as $post_type ) {
+				if ( is_array( $ptns ) ) {
+					foreach ( $ptns as $ptn ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding column filters for post type '.$post_type );
+							$this->p->debug->log( 'adding column filters for post type '.$ptn );
 						}
 
 						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
-						add_filter( 'manage_'.$post_type.'_posts_columns',
+						add_filter( 'manage_'.$ptn.'_posts_columns',
 							array( &$this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-						add_filter( 'manage_edit-'.$post_type.'_sortable_columns',
+						add_filter( 'manage_edit-'.$ptn.'_sortable_columns',
 							array( &$this, 'add_sortable_columns' ), 10, 1 );
 
 						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
-						add_action( 'manage_'.$post_type.'_posts_custom_column',
+						add_action( 'manage_'.$ptn.'_posts_custom_column',
 							array( &$this, 'show_column_content' ), 10, 2 );
 					}
 				}
@@ -421,9 +421,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			// only check public post types (to avoid menu items, product variations, etc.)
-			$post_type_names = $this->p->util->get_post_types( 'names' );
+			$ptns = $this->p->util->get_post_types( 'names' );
 
-			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $post_type_names ) ) {
+			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type \''.$post_obj->post_type.'\' not public' );
 				}
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					array( &$this, 'show_metabox_social_settings' ), $post_obj->post_type, 'normal', 'low' );
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'skipped metabox '.$lca.'_social_settings' );
+				$this->p->debug->log( 'skipped metabox '.$lca.'_social_settings for post type'.$post_obj->post_type );
 			}
 		}
 

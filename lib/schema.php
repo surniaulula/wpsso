@@ -1576,7 +1576,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $event_opts['event_organizer_person_id'] ) &&
-				$event_opts['event_organizer_person_id'] !== none ) {	// example: tribe_organizer-0
+				$event_opts['event_organizer_person_id'] !== 'none' ) {	// example: tribe_organizer-0
 
 				if ( ! self::add_single_person_data( $ret['organizer'],
 					$mod, $event_opts['event_organizer_person_id'], false ) ) { 	// $list_element = false

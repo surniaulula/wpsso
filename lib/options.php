@@ -181,6 +181,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( is_array( $opts ) && ! empty( $opts ) ) {	// just in case
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'options are a valid array' );
+				}
+
 				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
@@ -196,6 +200,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					$key = 'plugin_'.$ext.'_version';
 					if ( empty( $opts[$key] ) || version_compare( $opts[$key], $info['version'], '!=' ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $ext.' '.$opts[$key].' version update found' );
+						}
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
