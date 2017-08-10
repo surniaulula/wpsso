@@ -3430,6 +3430,23 @@ msgstr ""
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
+#: lib/pro/ecom/yotpowc.php:63 lib/pro/ecom/yotpowc.php:74
+msgid "The Yotpo for WooCommerce \"%s\" setting value is empty."
+msgstr ""
+
+#: lib/pro/ecom/yotpowc.php:85
+msgid "The Yotpo for WooCommerce %s function returned an error."
+msgstr ""
+
+#: lib/pro/ecom/yotpowc.php:100
+msgid ""
+"The %s plugin was not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+msgstr ""
+
+#: lib/pro/ecom/yotpowc.php:118
+msgid "The Yotpo for WooCommerce %s API library file not found."
+msgstr ""
+
 #: lib/pro/form/gravityview.php:49
 msgctxt "metabox title"
 msgid "Single Entry Integration"
