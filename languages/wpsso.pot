@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.5\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.6-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -571,22 +571,22 @@ msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:241 lib/config-gettext-extract.php:53
+#: lib/com/form.php:239 lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:246 lib/config-gettext-extract.php:56
+#: lib/com/form.php:244 lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:251 lib/config-gettext-extract.php:54
+#: lib/com/form.php:249 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:257 lib/com/form.php:337 lib/config-gettext-extract.php:14
+#: lib/com/form.php:255 lib/com/form.php:356 lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
@@ -3431,20 +3431,19 @@ msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
 #: lib/pro/ecom/yotpowc.php:63 lib/pro/ecom/yotpowc.php:74
-msgid "The Yotpo for WooCommerce \"%s\" setting value is empty."
+msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #: lib/pro/ecom/yotpowc.php:85
-msgid "The Yotpo for WooCommerce %s function returned an error."
+msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr ""
 
 #: lib/pro/ecom/yotpowc.php:100
-msgid ""
-"The %s plugin was not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+msgid "%s was not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #: lib/pro/ecom/yotpowc.php:118
-msgid "The Yotpo for WooCommerce %s API library file not found."
+msgid "Yotpo for WooCommerce %s API library file not found."
 msgstr ""
 
 #: lib/pro/form/gravityview.php:49

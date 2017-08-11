@@ -2035,12 +2035,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_hours_range( $start = 0, $end = 86400, $step = 3600, $format = 'g:i a' ) {
+		public static function get_hours_range( $start_secs = 0, $end_secs = 86400, $step_secs = 3600, $time_format = 'g:i a' ) {
 			$times = array();
-		        foreach ( range( $start, $end, $step ) as $timestamp ) {
-				$hour_mins = gmdate( 'H:i', $timestamp );
-				if ( ! empty( $format ) ) {
-					$times[$hour_mins] = gmdate( $format, $timestamp );
+		        foreach ( range( $start_secs, $end_secs, $step_secs ) as $ts ) {
+				$hour_mins = gmdate( 'H:i', $ts );
+				if ( ! empty( $time_format ) ) {
+					$times[$hour_mins] = gmdate( $time_format, $ts );
 				} else {
 					$times[$hour_mins] = $hour_mins;
 				}

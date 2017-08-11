@@ -170,9 +170,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html = '';
-			$select_id = empty( $id ) ?
-				'select_'.$name :
-				'select_'.$id;
+			$select_id = empty( $id ) ? 'select_'.$name : 'select_'.$id;
 
 			if ( is_string( $on_change ) ) {
 				switch ( $on_change ) {
@@ -283,8 +281,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected, $on_change );
 		}
 
-		public function get_no_select_country( $name, $class = '', $id = '', $selected = false ) {
-			return $this->get_select_country( $name, $class, $id, true, $selected );
+		public function get_select_time( $name, $class = '', $id = '', $disabled = false, $selected = false, $step_mins = 30 ) {
+
+			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
+				$this->defaults[$name] = 'none';
+			}
+
+			$start_secs = 0;
+			$end_secs = DAY_IN_SECONDS;
+			$step_secs = 60 * $step_mins;
+			$time_format = '';
+
+			$times = SucomUtil::get_hours_range( $start_secs, $end_secs, $step_secs, $time_format );
+			$class = trim( 'hour_mins '.$class );
+
+			return $this->get_select( $name, array_merge( array( 'none' => '[None]' ), $times ),
+				$class, $id, true, $disabled, $selected );
+		}
+
+		public function get_no_select_time( $name, $class = '', $id = '', $selected = false ) {
+			return $this->get_select_time( $name, $class, $id, true, $selected );
 		}
 
 		public function get_select_country( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
@@ -296,14 +312,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			// sanity check for possibly older input field values
 			if ( $selected === false ) {
 				if ( empty( $this->options[$name] ) ||
-					( $this->options[$name] !== 'none' && 
-						strlen( $this->options[$name] ) !== 2 ) ) {
+					( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
 					$selected = $this->defaults[$name];
 				}
 			}
 
 			return $this->get_select( $name, array_merge( array( 'none' => '[None]' ),
-				SucomUtil::get_alpha2_countries() ), $class, $id, null, $disabled, $selected );
+				SucomUtil::get_alpha2_countries() ), $class, $id, true, $disabled, $selected );
+		}
+
+		public function get_no_select_country( $name, $class = '', $id = '', $selected = false ) {
+			return $this->get_select_country( $name, $class, $id, true, $selected );
 		}
 
 		public function get_select_img_size( $name, $name_preg = '//', $invert = false ) {
