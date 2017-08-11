@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 					'weibo:article:update_at' => 'article:modified_time',
 				) as $mt_name => $key_name ) {
 					if ( isset( $mt_og[$key_name] ) && $mt_og[$key_name] !== '' ) {	// exclude empty strings
-						$mt_weibo[$mt_name] = date( 'Y-m-d H:i:s', strtotime( $mt_og[$key_name] ) );
+						$mt_weibo[$mt_name] = gmdate( 'Y-m-d H:i:s', strtotime( $mt_og[$key_name] ) );
 					}
 				}
 			}
