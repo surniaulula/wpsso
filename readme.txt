@@ -339,12 +339,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.6-dev.1 (TBD)**
+**Version 3.45.6-dev.1 (2017/08/12)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added support for custom Schema event start / end dates and times.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -633,6 +633,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.6-dev.1 =
+
+(2017/08/12) Added support for custom Schema event start / end dates and times.
 
 = 3.45.5 =
 
