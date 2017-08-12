@@ -1552,9 +1552,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
+			// look for custom event date and time
+			foreach ( array( 
+				'event_start_date' => 'schema_event_start',
+				'event_end_date' => 'schema_event_end',
+			) as $opt_key => $md_pre ) {
+				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
+				$event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' );
+				if ( ! empty( $event_date ) && ! empty( $event_time ) ) {
+					$event_opts[$opt_key] = $event_date.' '.$event_time;
+				// check for a date with no time
+				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {
+					$event_opts[$opt_key] = $event_date.' 00:00';
+				// check for a time with no date
+				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {
+					$event_opts[$opt_key] = gmdate( 'Y-m-d', time() ).' '.$event_time;	// use the current date
+				}
+			}
+
 			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array
-				if ( $wpsso->debug->enabled )
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty event options' );
+				}
 				return 0;
 			}
 
@@ -1593,7 +1612,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( is_array( $event_opts['event_offers'] ) ) {
+			if ( ! empty( $event_opts['event_offers'] ) &&
+				is_array( $event_opts['event_offers'] ) ) {
+
 				foreach ( $event_opts['event_offers'] as $event_offer ) {
 					// setup the offer with basic itemprops
 					if ( is_array( $event_offer ) &&	// just in case
