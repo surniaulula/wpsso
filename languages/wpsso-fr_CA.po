@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.5\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-08 12:02-0400\n"
-"PO-Revision-Date: 2017-08-08 12:03-0400\n"
+"POT-Creation-Date: 2017-08-14 09:23-0400\n"
+"PO-Revision-Date: 2017-08-14 09:23-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -517,22 +517,22 @@ msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:241 lib/config-gettext-extract.php:53
+#: lib/com/form.php:239 lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:246 lib/config-gettext-extract.php:56
+#: lib/com/form.php:244 lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:251 lib/config-gettext-extract.php:54
+#: lib/com/form.php:249 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:257 lib/com/form.php:337 lib/config-gettext-extract.php:14
+#: lib/com/form.php:255 lib/com/form.php:356 lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
@@ -1948,7 +1948,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:380 lib/util.php:1909
+#: lib/messages.php:380 lib/util.php:1922
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2787,39 +2787,39 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/options.php:252
+#: lib/options.php:259
 msgid "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr "Valeur non-standard trouvé pour l'option '%s' - remise à la valeur par défaut."
 
-#: lib/options.php:335
+#: lib/options.php:342
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:338
+#: lib/options.php:345
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:341
+#: lib/options.php:348
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:344
+#: lib/options.php:351
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:356
+#: lib/options.php:363
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
-#: lib/options.php:421
+#: lib/options.php:428
 msgid "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à / ou supérieur à %3$s: 1 &mdash;  les options sont remises à leurs valeurs par défaut."
 
-#: lib/options.php:468
+#: lib/options.php:475
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:527
+#: lib/options.php:534
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
@@ -2859,7 +2859,7 @@ msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérific
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur d'analyse méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:526 lib/util.php:837
+#: lib/post.php:526 lib/util.php:850
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -2874,6 +2874,22 @@ msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Sch
 #: lib/pro/ecom/woocommerce.php:505
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
+
+#: lib/pro/ecom/yotpowc.php:63 lib/pro/ecom/yotpowc.php:74
+msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
+msgstr "La valeur de réglage \"%s\" de Yotpo pour WooCommerce est vide."
+
+#: lib/pro/ecom/yotpowc.php:85
+msgid "Yotpo for WooCommerce %s function returned an error."
+msgstr "La fonction %s de Yotpo pour WooCommerce a retourné une erreur."
+
+#: lib/pro/ecom/yotpowc.php:100
+msgid "%s was not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+msgstr "%s n'a pas été trouvée dans les dossiers WPMU_PLUGIN_DIR ou WP_PLUGIN_DIR."
+
+#: lib/pro/ecom/yotpowc.php:118
+msgid "Yotpo for WooCommerce %s API library file not found."
+msgstr "Le fichier %s de la bibliothèque d'API de Yotpo pour WooCommerce non trouvé."
 
 #: lib/pro/form/gravityview.php:49
 msgctxt "metabox title"
@@ -3566,106 +3582,106 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/util.php:354
+#: lib/util.php:367
 msgid "%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, et le méta de colonnes %s, ainsi que le cache d'objets de WordPress ont été vidés."
 
-#: lib/util.php:358
+#: lib/util.php:371
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:381
+#: lib/util.php:394
 msgid "Site performance may be impacted slightly while all cache objects are rebuilt."
 msgstr "La performance du site peut être affectées légèrement le temps que tous les objets du cache sont reconstruits."
 
-#: lib/util.php:463
+#: lib/util.php:476
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:480
+#: lib/util.php:493
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:540
+#: lib/util.php:553
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des sujets %s."
 
-#: lib/util.php:577
+#: lib/util.php:590
 msgid "The value of option '%s' must be a URL - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:579
+#: lib/util.php:592
 msgid "The value of option '%s' must be a comma-delimited list of URL(s) - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:581
+#: lib/util.php:594
 msgid "The value of option '%s' must be numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:583
+#: lib/util.php:596
 msgid "The value of option '%1$s' must be equal to or greather than %2$s - resetting option to default value."
 msgstr "La valeur de l'option '%1$s' doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:585
+#: lib/util.php:598
 msgid "The value of option '%s' must be blank or numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:587
+#: lib/util.php:600
 msgid "The value of option '%s' must be alpha-numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:589
+#: lib/util.php:602
 msgid "The value of option '%s' must be a CSS color code - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:591
+#: lib/util.php:604
 msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:593
+#: lib/util.php:606
 msgid "The value of option '%s' must be a hh:mm time - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:595
+#: lib/util.php:608
 msgid "The value of option '%s' must be HTML code - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:597
+#: lib/util.php:610
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:826
+#: lib/util.php:839
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:848
+#: lib/util.php:861
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:874
+#: lib/util.php:887
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre HTML qui corrompt les balises méta de %1$s."
 
-#: lib/util.php:917
+#: lib/util.php:930
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1935
+#: lib/util.php:1948
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1939
+#: lib/util.php:1952
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1942
+#: lib/util.php:1955
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1946
+#: lib/util.php:1959
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
