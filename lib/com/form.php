@@ -411,45 +411,46 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start, $end, 1 ) as $key_num ) {
 
-				$html .= '<div id="wrap_'.esc_attr( $id ).'"'.( $display ? '' : ' style="display:none;"' ).'>';
 				$next_num = $key_num + 1;
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $id.'_'.$key_num ).'"'.
+					( $display ? '' : ' style="display:none;"' ).'>';
 
 				foreach ( $mixed as $name => $atts ) {
 
-					list( $input_label, $input_type, $input_class ) = $atts;
-
 					$opt_key = $name.'_'.$key_num;
-					$class_value = empty( $input_class ) ? 'multi' : 'multi '.$input_class;
-					$id_value = empty( $id ) ? $opt_key : $id.'_'.$key_num;
-					$id_value_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
-					$value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
+					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
+					$input_id_next = empty( $atts['input_id'] ) ? $name.'_'.$next_num : $atts['input_id'].'_'.$next_num;
+					$input_value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
 	
-					if ( $disabled && $key_num >= $show_first && empty( $value ) ) {
+					if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
 						continue;
 					}
 	
-					$display = empty( $value ) && ! $one_more && $key_num >= $show_first ? false : true;
-
-					if ( ! empty( $input_label ) ) {
-						$html .= $input_label.' ';
+					if ( ! empty( $atts['input_label'] ) ) {
+						$html .= $atts['input_label'].' ';
 					}
 
-					if ( $input_type === 'text' ) {
-						if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
-							$html .= $this->get_no_input( $opt_key, $class_value, $id_value );	// adds 'text_' to the id value
-						} else {
-							$html .= '<input type="text"'.
-								' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
-								' class="'.esc_attr( $class_value ).'"'.
-								' id="text_'.esc_attr( $id_value ).'"'.
-								' value="'.esc_attr( $value ).'"'.
-								' onFocus="jQuery(\'div#wrap_'.esc_attr( $id_value_next ).'\').show();" />'."\n";
+					if ( isset( $atts['input_type'] ) ) {
+						switch ( $atts['input_type'] ) {
+							case 'text':
+								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
+								} else {
+									$html .= '<input type="text"'.
+										' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
+										' class="'.esc_attr( $input_class ).'"'.
+										' id="text_'.esc_attr( $input_id ).'"'.
+										' value="'.esc_attr( $input_value ).'"'.
+										' onFocus="jQuery(\'div#wrap_'.esc_attr( $id.'_'.$next_num ).'\').show();" />'."\n";
+								}
+							break;
 						}
-						$one_more = empty( $value ) ? false : true;
 					}
-
 				}
 
+				$one_more = empty( $input_value ) ? false : true;
 				$html .= '</div>';
 			}
 
@@ -470,33 +471,30 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( range( $start, $end, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $id.'_'.$key_num ).'"'.
+					( $display ? '' : ' style="display:none;"' ).'>';
+
 				$opt_key = $name.'_'.$key_num;
-				$class_value = empty( $class ) ? 'multi' : 'multi '.$class;
-				$id_value = empty( $id ) ? $opt_key : $id.'_'.$key_num;
-				$id_value_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
-				$value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+				$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
+				$input_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
+				$input_id_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
+				$input_value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
 
-				if ( $disabled && $key_num >= $show_first && empty( $value ) ) {
+				if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
 					continue;
-				}
-
-				$display = empty( $value ) && ! $one_more && $key_num >= $show_first ? false : true;
-
-				$html .= '<div id="wrap_'.esc_attr( $id_value ).'"'.( $display ? '' : ' style="display:none;"' ).'>';
-
-				if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
-					$html .= $this->get_no_input( $opt_key, $class_value, $id_value );	// adds 'text_' to the id value
+				} elseif ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
 				} else {
 					$html .= '<input type="text"'.
 						' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
-						' class="'.esc_attr( $class_value ).'"'.
-						' id="text_'.esc_attr( $id_value ).'"'.
-						' value="'.esc_attr( $value ).'"'.
-						' onFocus="jQuery(\'div#wrap_'.esc_attr( $id_value_next ).'\').show();" /><br/>'."\n";
+						' class="'.esc_attr( $input_class ).'"'.
+						' id="text_'.esc_attr( $input_id ).'"'.
+						' value="'.esc_attr( $input_value ).'"'.
+						' onFocus="jQuery(\'div#wrap_'.esc_attr( $input_id_next ).'\').show();" /><br/>'."\n";
 				}
 
-				$one_more = empty( $value ) ? false : true;
-
+				$one_more = empty( $input_value ) ? false : true;
 				$html .= '</div>';
 			}
 
