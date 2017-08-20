@@ -398,38 +398,108 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_multi( $name_prefix, $class = '', $id = '', $start = 0, $end = 99, $disabled = false ) {
+		public function get_mixed_multi( $mixed, $class, $id, $start = 0, $end = 99, $disabled = false ) {
 
-			if ( empty( $name_prefix ) ) {
+			if ( empty( $mixed ) ) {
 				return;	// just in case
 			}
 
 			$html = '';
+			$display = true;
+			$one_more = false;
 			$show_first = 5;
 
-			foreach ( range( $start, $end, 1 ) as $num ) {
+			foreach ( range( $start, $end, 1 ) as $key_num ) {
 
-				$name = $name_prefix.'_'.$num;
-				$next_num = $num + 1;
-				$class_value = empty( $class ) ? 'multi' : 'multi '.esc_attr( $class );
-				$id_value = empty( $id ) ? 'text_'.$name : 'text_'.$id.'_'.$num;
-				$id_value_next = empty( $id ) ? 'text_'.$name_prefix.'_'.$next_num : 'text_'.$id.'_'.$next_num;
-				$input_value = $this->in_options( $name ) ? $this->options[$name] : '';
+				$html .= '<div id="wrap_'.esc_attr( $id ).'"'.( $display ? '' : ' style="display:none;"' ).'>';
+				$next_num = $key_num + 1;
 
-				if ( $disabled && $num >= $show_first && empty( $input_value ) ) {
-					continue;
-				} elseif ( $disabled || $this->get_options( $name.':is' ) === 'disabled' ) {
-					$html .= $this->get_no_input( $name, $class_value, $id_value );
-				} else {
-					$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
-						' class="'.esc_attr( $class_value ).'" id="'.esc_attr( $id_value ).'" value="'.esc_attr( $input_value ).'"'.
-						( empty( $input_value ) && empty( $last_value ) && 	// always add one more blank
-							$num >= $show_first ? ' style="display:none;"' : '' ).
-						' onFocus="jQuery(\'#'.esc_attr( $id_value_next ).'\').show();" />'."\n";
+				foreach ( $mixed as $name => $atts ) {
 
-					$last_value = $input_value;
+					list( $input_label, $input_type, $input_class ) = $atts;
+
+					$opt_key = $name.'_'.$key_num;
+					$class_value = empty( $input_class ) ? 'multi' : 'multi '.$input_class;
+					$id_value = empty( $id ) ? $opt_key : $id.'_'.$key_num;
+					$id_value_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
+					$value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+	
+					if ( $disabled && $key_num >= $show_first && empty( $value ) ) {
+						continue;
+					}
+	
+					$display = empty( $value ) && ! $one_more && $key_num >= $show_first ? false : true;
+
+					if ( ! empty( $input_label ) ) {
+						$html .= $input_label.' ';
+					}
+
+					if ( $input_type === 'text' ) {
+						if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+							$html .= $this->get_no_input( $opt_key, $class_value, $id_value );	// adds 'text_' to the id value
+						} else {
+							$html .= '<input type="text"'.
+								' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
+								' class="'.esc_attr( $class_value ).'"'.
+								' id="text_'.esc_attr( $id_value ).'"'.
+								' value="'.esc_attr( $value ).'"'.
+								' onFocus="jQuery(\'div#wrap_'.esc_attr( $id_value_next ).'\').show();" />'."\n";
+						}
+						$one_more = empty( $value ) ? false : true;
+					}
+
 				}
+
+				$html .= '</div>';
 			}
+
+			return $html;
+		}
+
+		public function get_input_multi( $name, $class = '', $id = '', $start = 0, $end = 99, $disabled = false ) {
+
+			if ( empty( $name ) ) {
+				return;	// just in case
+			}
+
+			$html = '';
+			$display = true;
+			$one_more = false;
+			$show_first = 5;
+
+			foreach ( range( $start, $end, 1 ) as $key_num ) {
+
+				$next_num = $key_num + 1;
+				$opt_key = $name.'_'.$key_num;
+				$class_value = empty( $class ) ? 'multi' : 'multi '.$class;
+				$id_value = empty( $id ) ? $opt_key : $id.'_'.$key_num;
+				$id_value_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
+				$value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+
+				if ( $disabled && $key_num >= $show_first && empty( $value ) ) {
+					continue;
+				}
+
+				$display = empty( $value ) && ! $one_more && $key_num >= $show_first ? false : true;
+
+				$html .= '<div id="wrap_'.esc_attr( $id_value ).'"'.( $display ? '' : ' style="display:none;"' ).'>';
+
+				if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+					$html .= $this->get_no_input( $opt_key, $class_value, $id_value );	// adds 'text_' to the id value
+				} else {
+					$html .= '<input type="text"'.
+						' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
+						' class="'.esc_attr( $class_value ).'"'.
+						' id="text_'.esc_attr( $id_value ).'"'.
+						' value="'.esc_attr( $value ).'"'.
+						' onFocus="jQuery(\'div#wrap_'.esc_attr( $id_value_next ).'\').show();" /><br/>'."\n";
+				}
+
+				$one_more = empty( $value ) ? false : true;
+
+				$html .= '</div>';
+			}
+
 			return $html;
 		}
 
@@ -490,7 +560,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_input_value( $value = '', $class = '', $id = '', $placeholder = '' ) {
 			return '<input type="text" disabled="disabled"'.
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-				( empty( $id ) ? '' : ' id="text_'.esc_attr( $id ).'"' ).
+				( empty( $id ) ? '' : ' id="text_'.esc_attr( $id ).'"' ).	// adds 'text_' to the id value
 				( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
 				' value="'.esc_attr( $value ).'" />';
 		}

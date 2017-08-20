@@ -1619,9 +1619,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					// setup the offer with basic itemprops
 					if ( is_array( $event_offer ) &&	// just in case
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
+							'name' => 'offer_name',
 							'price' => 'offer_price',
 							'priceCurrency' => 'offer_price_currency',
-							'availability' => 'offer_availability',
+							'availability' => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
 					) ) ) !== false ) {
 						// add the complete offer
 						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
