@@ -339,14 +339,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.6-dev.3 (TBD)**
+**Version 3.45.6-b.1 (2017/08/20)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added support for custom Schema event start / end dates and times.
+	* Added support for custom Schema event start / end date and time values.
 * *Bugfixes*
-	* Added a test for WooCommerce product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version).
+	* Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version).
 * *Developer Notes*
 	* None
 
@@ -634,9 +634,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.6-dev.3 =
+= 3.45.6-b.1 =
 
-(TBD) Added support for custom Schema event start / end dates and times. Added a test for WooCommerce product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version).
+(2017/08/20) Added support for custom Schema event start / end date and time values. Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version).
 
 = 3.45.5 =
 
