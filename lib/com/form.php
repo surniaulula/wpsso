@@ -842,7 +842,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $placeholder;	// just in case
 			}
 
-			if ( $placeholder === true ) {
+			if ( $placeholder === true ) {	// use default value
 				if ( isset( $this->defaults[$name] ) ) {
 					$placeholder = $this->defaults[$name];
 				}

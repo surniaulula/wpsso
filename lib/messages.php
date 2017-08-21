@@ -104,14 +104,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$product_meta_name = _x( 'availability', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+						case 'tooltip-meta-product_brand':
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'brand', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
+						case 'tooltip-meta-product_color':
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'color', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
 						case 'tooltip-meta-product_condition':
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'condition', 'product meta name', 'wpsso' );
-							}
-							// no break - fall through
-						case 'tooltip-meta-product_price':
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
 						case 'tooltip-meta-product_currency':
@@ -119,10 +124,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+						case 'tooltip-meta-product_price':
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
+						case 'tooltip-meta-product_size':
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'size', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
+
 							// use ucfirst() for the french translation which puts the (lowercase) product meta name first 
 							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ).' '.
 							ucfirst( sprintf( __( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ), $product_meta_name ).' '.
-							sprintf( __( 'The Schema markup for products with multiple variations will include all product variations, with the %1$s of each variation.', 'wpsso' ), $product_meta_name ) );
+							sprintf( __( 'The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation.', 'wpsso' ), $product_meta_name ) );
 						 	break;	// stop here
 
 						case 'tooltip-meta-og_img_id':
@@ -500,18 +516,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Product Availability', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
+						case 'tooltip-plugin_cf_product_brand':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Brand', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_color':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product color', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Color', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
 						case 'tooltip-plugin_cf_product_condition':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
 									_x( 'Product Condition', 'option label', 'wpsso' ) );
-							}
-							// no break - fall through
-						case 'tooltip-plugin_cf_product_price':
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Price', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
 						case 'tooltip-plugin_cf_product_currency':
@@ -521,6 +544,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Product Currency', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
+						case 'tooltip-plugin_cf_product_price':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Price', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_size':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product size', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Size', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
+
 							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the Social Settings metabox.', 'wpsso' ), $plugin_cf_info[1] );
 							break;	// stop here
 

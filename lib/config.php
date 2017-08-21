@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.6-rc.1',		// plugin version
+					'version' => '3.45.6-b.2',		// plugin version
 					'opt_version' => '536',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -733,10 +733,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_place:postal_code' => 1,
 					'add_meta_property_place:country_name' => 1,
 					// open graph (product)
+					// https://developers.facebook.com/docs/reference/opengraph/object-type/product/
 					'add_meta_property_product:availability' => 1,
+					'add_meta_property_product:brand' => 1,
+					'add_meta_property_product:category' => 1,
+					'add_meta_property_product:color' => 1,
 					'add_meta_property_product:condition' => 1,
 					'add_meta_property_product:price:amount' => 1,
 					'add_meta_property_product:price:currency' => 1,
+					'add_meta_property_product:size' => 1,
 					'add_meta_property_product:weight:value' => 1,
 					'add_meta_property_product:weight:units' => 1,
 					// open graph (profile)
@@ -902,9 +907,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field
 					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field
 					'plugin_cf_product_avail' => '',		// Product Availability Custom Field
+					'plugin_cf_product_brand' => '',		// Product Brand Custom Field
+					'plugin_cf_product_color' => '',		// Product Color Custom Field
 					'plugin_cf_product_condition' => '',		// Product Condition Custom Field
-					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_currency' => '',		// Product Currency Custom Field
+					'plugin_cf_product_price' => '',		// Product Price Custom Field
+					'plugin_cf_product_size' => '',			// Product Size Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_shorten_cache_exp' => 5184000,		// Shortened URL Cache Expiry (60 days / 2 months)
@@ -1061,9 +1069,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 					'plugin_cf_product_avail' => 'product_avail',
+					'plugin_cf_product_brand' => 'product_brand',
+					'plugin_cf_product_color' => 'product_color',
 					'plugin_cf_product_condition' => 'product_condition',
-					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_currency' => 'product_currency',
+					'plugin_cf_product_price' => 'product_price',
+					'plugin_cf_product_size' => 'product_size',
 				),
 				'md_multi' => array(		// read values into numeric meta data index
 					'schema_recipe_ingredient' => true,
@@ -1319,9 +1330,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients' => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions' => 'Recipe Instructions Custom Field',
 					'plugin_cf_product_avail' => 'Product Availability Custom Field',
+					'plugin_cf_product_brand' => 'Product Brand Custom Field',
+					'plugin_cf_product_color' => 'Product Color Custom Field',
 					'plugin_cf_product_condition' => 'Product Condition Custom Field',
-					'plugin_cf_product_price' => 'Product Price Custom Field',
 					'plugin_cf_product_currency' => 'Product Currency Custom Field',
+					'plugin_cf_product_price' => 'Product Price Custom Field',
+					'plugin_cf_product_size' => 'Product Size Custom Field',
 				),
 			),
 			'head' => array(
@@ -1409,9 +1423,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// https://developers.facebook.com/docs/reference/opengraph/object-type/product/
 					'product' => array(
 						'product:availability' => 'product_avail',
+						'product:brand' => 'product_brand',
+						'product:category' => '',
+						'product:color' => 'product_color',
 						'product:condition' => 'product_condition',
 						'product:price:amount' => 'product_price',
 						'product:price:currency' => 'product_currency',
+						'product:size' => 'product_size',
 						'product:weight:value' => '',
 						'product:weight:units' => '',
 					),

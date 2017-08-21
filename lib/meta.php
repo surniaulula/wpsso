@@ -506,9 +506,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_url' => '',
 					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// cast as integer
 					'product_avail' => 'none',
+					'product_brand' => '',
+					'product_color' => '',
 					'product_condition' => 'none',
-					'product_price' => '0.00',
 					'product_currency' => WPSSO_PROD_CURRENCY,
+					'product_price' => '0.00',
+					'product_size' => '',
 					'gv_id_title' => 0,
 					'gv_id_desc' => 0,
 					'gv_id_img' => 0,

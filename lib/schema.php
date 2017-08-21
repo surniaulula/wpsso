@@ -1191,6 +1191,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'adding single organization data for '.$org_id );
 			}
 
+			static $cache = array();
+
+			if ( isset( $cache[$mod['name']][$mod['id'][$org_id]] ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using static cache data for organization id '.$org_id );
+				}
+				$ret =& $cache[$mod['name']][$mod['id'][$org_id]];	// use shorter variable name
+				if ( $ret === false ) {
+					return 0;
+				} else {
+					if ( empty( $list_element ) ) {
+						$json_data = $ret;
+					} else {
+						$json_data[] = $ret;
+					}
+					return 1;
+				}
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'creating static cache data for organization id '.$org_id );
+			}
+			$cache[$mod['name']][$mod['id'][$org_id]] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id'][$org_id]];	// use shorter variable name
+
 			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );	// returns localized values
 
 			if ( empty( $org_opts ) ) {	// $org_opts can be false or empty array
@@ -1200,7 +1225,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 					$org_opts = self::get_site_organization( $mod );	// returns localized values
 				} else {
-					return 0;
+					return 0;	// leaves statis cache data as false
 				}
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
@@ -1373,20 +1398,45 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$size_name = $wpsso->cf['lca'].'-schema';
-			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single place data for '.$place_id );
 			}
 
+			static $cache = array();
+
+			if ( isset( $cache[$mod['name']][$mod['id'][$place_id]] ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using static cache data for place id '.$place_id );
+				}
+				$ret =& $cache[$mod['name']][$mod['id'][$place_id]];	// use shorter variable name
+				if ( $ret === false ) {
+					return 0;
+				} else {
+					if ( empty( $list_element ) ) {
+						$json_data = $ret;
+					} else {
+						$json_data[] = $ret;
+					}
+					return 1;
+				}
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'creating static cache data for place id '.$place_id );
+			}
+			$cache[$mod['name']][$mod['id'][$place_id]] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id'][$place_id]];	// use shorter variable name
+
+			$size_name = $wpsso->cf['lca'].'-schema';
+			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 			$place_opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
 
 			if ( empty( $place_opts ) ) {	// $place_opts can be false or empty array
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty place options' );
 				}
-				return 0;
+				return 0;	// leaves statis cache data as false
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
@@ -1550,6 +1600,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'adding single event data for '.$event_id );
 			}
 
+			static $cache = array();
+
+			if ( isset( $cache[$mod['name']][$mod['id'][$event_id]] ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using static cache data for event id '.$event_id );
+				}
+				$ret =& $cache[$mod['name']][$mod['id'][$event_id]];	// use shorter variable name
+				if ( $ret === false ) {
+					return 0;
+				} else {
+					if ( empty( $list_element ) ) {
+						$json_data = $ret;
+					} else {
+						$json_data[] = $ret;
+					}
+					return 1;
+				}
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'creating static cache data for event id '.$event_id );
+			}
+			$cache[$mod['name']][$mod['id'][$event_id]] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id'][$event_id]];	// use shorter variable name
+
 			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
 			// look for custom event date and time
@@ -1694,6 +1769,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single person data for '.$user_id );
 			}
+
+			static $cache = array();
+
+			if ( isset( $cache[$mod['name']][$mod['id'][$user_id]] ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'using static cache data for person id '.$user_id );
+				}
+				$ret =& $cache[$mod['name']][$mod['id'][$user_id]];	// use shorter variable name
+				if ( $ret === false ) {
+					return 0;
+				} else {
+					if ( empty( $list_element ) ) {
+						$json_data = $ret;
+					} else {
+						$json_data[] = $ret;
+					}
+					return 1;
+				}
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'creating static cache data for person id '.$user_id );
+			}
+			$cache[$mod['name']][$mod['id'][$user_id]] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id'][$user_id]];	// use shorter variable name
 
 			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 

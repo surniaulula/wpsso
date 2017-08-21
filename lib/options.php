@@ -635,7 +635,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_desc':
 				case 'tc_desc':
 				case 'pin_desc':
+				case 'product_brand':
+				case 'product_color':
 				case 'product_currency':
+				case 'product_size':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
 				case 'plugin_bitly_login':
