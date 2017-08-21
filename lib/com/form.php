@@ -563,7 +563,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
 			$input_id = empty( $id ) ? '' : $id;
 
-			foreach ( range( 1, $repeat ) as $key_num ) {
+			foreach ( range( 1, $repeat, 1 ) as $key_num ) {
 				if ( $repeat > 1 ) {
 					$input_id = empty( $id ) ? '' : $id.'_'.$key_num;
 					$html .= '<div class="wrap_multi">';
