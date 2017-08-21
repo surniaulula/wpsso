@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:629 lib/post.php:368 lib/term.php:268 lib/user.php:251
+#: lib/admin.php:629 lib/post.php:373 lib/term.php:268 lib/user.php:251
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1618,8 +1618,8 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:205
-#: lib/meta.php:223 lib/pro/admin/meta.php:88 lib/pro/admin/post.php:104
+#: lib/gpl/admin/meta.php:70 lib/gpl/admin/post.php:77 lib/meta.php:208
+#: lib/meta.php:226 lib/pro/admin/meta.php:88 lib/pro/admin/post.php:104
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
@@ -1756,7 +1756,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:136 lib/meta.php:202 lib/post.php:608
+#: lib/gpl/admin/post.php:136 lib/meta.php:205 lib/post.php:613
 #: lib/pro/admin/post.php:169
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2171,23 +2171,23 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:391 lib/messages.php:401 lib/post.php:564
+#: lib/messages.php:391 lib/messages.php:401 lib/post.php:569
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
 msgstr ""
 
-#: lib/messages.php:392 lib/meta.php:124
+#: lib/messages.php:392 lib/meta.php:127
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/messages.php:393 lib/meta.php:125
+#: lib/messages.php:393 lib/meta.php:128
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/messages.php:394 lib/meta.php:126
+#: lib/messages.php:394 lib/meta.php:129
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
@@ -3273,102 +3273,102 @@ msgid ""
 "%s, etc., to define alternate option values for different languages."
 msgstr ""
 
-#: lib/meta.php:122
+#: lib/meta.php:125
 msgctxt "metabox tab"
 msgid "Edit Text"
 msgstr ""
 
-#: lib/meta.php:123
+#: lib/meta.php:126
 msgctxt "metabox tab"
 msgid "Select Media"
 msgstr ""
 
-#: lib/meta.php:187
+#: lib/meta.php:190
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:193
+#: lib/meta.php:196
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:197
+#: lib/meta.php:200
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:209 lib/meta.php:227
+#: lib/meta.php:212 lib/meta.php:230
 msgctxt "option label"
 msgid "Shortened URL"
 msgstr ""
 
-#: lib/meta.php:232
+#: lib/meta.php:235
 msgctxt "option label"
 msgid "Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:346
+#: lib/meta.php:349
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:348
+#: lib/meta.php:351
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:352
+#: lib/meta.php:355
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:354
+#: lib/meta.php:357
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:358
+#: lib/meta.php:361
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:360
+#: lib/meta.php:363
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:364
+#: lib/meta.php:367
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:366
+#: lib/meta.php:369
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:370
+#: lib/meta.php:373
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:372
+#: lib/meta.php:375
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:377
+#: lib/meta.php:380
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:379
+#: lib/meta.php:382
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:591
+#: lib/meta.php:595
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3433,45 +3433,45 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:449
+#: lib/post.php:454
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding "
 "%1$s to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:453
+#: lib/post.php:458
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:479
+#: lib/post.php:484
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:481
+#: lib/post.php:486
 msgid ""
 "This exceeds the recommended time limit of %1$s seconds (crawlers often time-"
 "out after %1$s seconds)."
 msgstr ""
 
-#: lib/post.php:483
+#: lib/post.php:488
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:485
+#: lib/post.php:490
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:513
+#: lib/post.php:518
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
-#: lib/post.php:521
+#: lib/post.php:526
 msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:526 lib/util.php:850
+#: lib/post.php:531 lib/util.php:850
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 

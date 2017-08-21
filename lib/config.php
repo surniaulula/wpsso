@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.45.6-b.2',		// plugin version
-					'opt_version' => '536',		// increment when changing default options
+					'opt_version' => '537',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -1077,6 +1077,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size' => 'product_size',
 				),
 				'md_multi' => array(		// read values into numeric meta data index
+					'schema_add_type_url' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
 				),

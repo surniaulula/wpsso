@@ -124,20 +124,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 
-			if ( $posts_per_page === false )
+			if ( $posts_per_page === false ) {
 				$posts_per_page = apply_filters( $lca.'_posts_per_page', 
 					get_option( 'posts_per_page' ), $mod );
+			}
 
-			if ( $paged === false )
+			if ( $paged === false ) {
 				$paged = get_query_var( 'paged' );
+			}
 
-			if ( ! $paged > 1 )
+			if ( ! $paged > 1 ) {
 				$paged = 1;
+			}
 
 			return get_posts( array(
 				'posts_per_page' => $posts_per_page,

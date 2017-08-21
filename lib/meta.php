@@ -52,6 +52,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'p_img_crop_y' => 'schema_img_crop_y',
 					'p_img_url' => 'schema_img_url',
 				),
+				536 => array(
+					'schema_add_type_url' => 'schema_add_type_url_0',
+				),
 			),
 		);
 
@@ -517,7 +520,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'gv_id_img' => 0,
 				);
 
-				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
+				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
+					$md_defs, $this->get_mod( $mod_id ) );
 
 				if ( WpssoOptions::can_cache() ) {
 					if ( $this->p->debug->enabled ) {
@@ -592,7 +596,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'wpsso' ) );
 				}
 				return false;
-			} else return true;
+			} else {
+				return true;
+			}
 		}
 
 		protected function get_submit_opts( $mod_id ) {
@@ -1103,7 +1109,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
-				if ( ! empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
+				// check if option allows for numeric increments
+				if ( empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
+					$is_multi = false;
+				} else {
 					if ( ! is_array( $mixed ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array
 						if ( $this->p->debug->enabled ) {
@@ -1111,14 +1120,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						}
 					}
 					$is_multi = true;		// increment the option name
-				} else {
-					$is_multi = false;
 				}
 
-				// increment the option name, starting with 0
+				// increment the option name starting with 0
 				if ( $is_multi ) {
+
 					// remove any old values from the options array
 					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert = true
+
 					foreach ( $values as $num => $value ) {
 						$md_opts[$md_idx.'_'.$num] = $value;
 						$md_opts[$md_idx.'_'.$num.':is'] = 'disabled';

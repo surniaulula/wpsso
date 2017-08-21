@@ -398,7 +398,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_mixed_multi( $mixed, $class, $id, $start = 0, $end = 99, $disabled = false ) {
+		public function get_mixed_multi( $mixed, $class, $id, $start = 0, $end = 99, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 				return;	// just in case
@@ -407,13 +407,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$display = true;
 			$one_more = false;
-			$show_first = 5;
+			$show_first = $show_first > $end ? $end : $show_first;
 
 			foreach ( range( $start, $end, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
+				$wrap_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
 				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $id.'_'.$key_num ).'"'.
+
+				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $wrap_id ).'"'.
 					( $display ? '' : ' style="display:none;"' ).'>';
 
 				foreach ( $mixed as $name => $atts ) {
@@ -443,7 +445,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										' class="'.esc_attr( $input_class ).'"'.
 										' id="text_'.esc_attr( $input_id ).'"'.
 										' value="'.esc_attr( $input_value ).'"'.
-										' onFocus="jQuery(\'div#wrap_'.esc_attr( $id.'_'.$next_num ).'\').show();" />'."\n";
+										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id ).'\').show();" />'."\n";
 								}
 							break;
 						}
@@ -457,7 +459,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_multi( $name, $class = '', $id = '', $start = 0, $end = 99, $disabled = false ) {
+		public function get_input_multi( $name, $class = '', $id = '', $start = 0, $end = 99, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// just in case
@@ -466,20 +468,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$display = true;
 			$one_more = false;
-			$show_first = 5;
+			$show_first = $end >= 5 ? 5 : $end;
 
 			foreach ( range( $start, $end, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $id.'_'.$key_num ).'"'.
-					( $display ? '' : ' style="display:none;"' ).'>';
-
 				$opt_key = $name.'_'.$key_num;
 				$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
 				$input_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
 				$input_id_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
 				$input_value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
+				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $input_id ).'"'.
+					( $display ? '' : ' style="display:none;"' ).'>';
 
 				if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
 					continue;
@@ -491,7 +493,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						' class="'.esc_attr( $input_class ).'"'.
 						' id="text_'.esc_attr( $input_id ).'"'.
 						' value="'.esc_attr( $input_value ).'"'.
-						' onFocus="jQuery(\'div#wrap_'.esc_attr( $input_id_next ).'\').show();" /><br/>'."\n";
+						' onFocus="jQuery(\'div#wrap_'.esc_attr( $input_id_next ).'\').show();" />'."\n";
 				}
 
 				$one_more = empty( $input_value ) ? false : true;
@@ -555,12 +557,30 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_no_input_value( $value, $class, $id, $placeholder );
 		}
 
-		public function get_no_input_value( $value = '', $class = '', $id = '', $placeholder = '' ) {
-			return '<input type="text" disabled="disabled"'.
-				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-				( empty( $id ) ? '' : ' id="text_'.esc_attr( $id ).'"' ).	// adds 'text_' to the id value
-				( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
-				' value="'.esc_attr( $value ).'" />';
+		public function get_no_input_value( $value = '', $class = '', $id = '', $placeholder = '', $repeat = 1 ) {
+
+			$html = '';
+			$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
+			$input_id = empty( $id ) ? '' : $id;
+
+			foreach ( range( 1, $repeat ) as $key_num ) {
+				if ( $repeat > 1 ) {
+					$input_id = empty( $id ) ? '' : $id.'_'.$key_num;
+					$html .= '<div class="wrap_multi">';
+				}
+
+				$html .= '<input type="text" disabled="disabled"'.
+					( empty( $input_class ) ? '' : ' class="'.esc_attr( $input_class ).'"' ).
+					( empty( $input_id ) ? '' : ' id="text_'.esc_attr( $input_id ).'"' ).
+					( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
+					' value="'.esc_attr( $value ).'" />';
+
+				if ( $repeat > 1 ) {
+					$html .= '</div>';
+				}
+			}
+
+			return $html;
 		}
 
 		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
