@@ -468,7 +468,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$display = true;
 			$one_more = false;
-			$show_first = $end >= 5 ? 5 : $end;
+			$show_first = $show_first > $end ? $end : $show_first;
 
 			foreach ( range( $start, $end, 1 ) as $key_num ) {
 

@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'p_img_crop_y' => 'schema_img_crop_y',
 					'p_img_url' => 'schema_img_url',
 				),
-				536 => array(
+				537 => array(
 					'schema_add_type_url' => 'schema_add_type_url_0',
 				),
 			),
