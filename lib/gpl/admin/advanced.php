@@ -176,10 +176,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Include Columns in Admin Lists
 			 */
 			$cols = '<table class="plugin-list-columns">'."\n".'<tr>';
+
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
 				$cols .= '<th>'.$col_header.'</th>';
 			}
-			$cols .= '</tr>'."\n";
+
+			$cols .= '<td class="underline"></td></tr>'."\n";
+
 			foreach ( array(
 				'post' => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
 				'media' => __( 'Media Library Item List', 'wpsso' ),
@@ -193,6 +196,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				}
 				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
 			}
+
 			$cols .= '</table>'."\n";
 
 			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Include Columns in Admin Lists',
