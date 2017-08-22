@@ -2323,7 +2323,7 @@ msgstr ""
 
 #: lib/messages.php:501
 msgctxt "tooltip fragment"
-msgid "additional type URLs"
+msgid "additional Schema type URLs"
 msgstr ""
 
 #: lib/messages.php:502

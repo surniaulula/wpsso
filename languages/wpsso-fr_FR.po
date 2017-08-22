@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-22 09:32-0500\n"
-"PO-Revision-Date: 2017-08-22 09:32-0500\n"
+"POT-Creation-Date: 2017-08-22 11:58-0500\n"
+"PO-Revision-Date: 2017-08-22 11:59-0500\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2089,8 +2089,8 @@ msgstr "l'HTML d'un vidéo intégrée (pas un URL)"
 
 #: lib/messages.php:501
 msgctxt "tooltip fragment"
-msgid "additional type URLs"
-msgstr "URLs de type supplémentaire"
+msgid "additional Schema type URLs"
+msgstr "URLs de type de Schéma supplémentaire"
 
 #: lib/messages.php:502
 msgctxt "option label"
