@@ -1056,6 +1056,24 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 
+			/* Example config:
+			 *
+			 *	'cf_md_idx' => array(		// custom field to meta data index
+			 *		'plugin_cf_img_url' => 'og_img_url',
+			 *		'plugin_cf_vid_url' => 'og_vid_url',
+			 *		'plugin_cf_vid_embed' => 'og_vid_embed',
+			 *		'plugin_cf_add_type_urls' => 'schema_add_type_url',
+			 *		'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
+			 *		'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
+			 *		'plugin_cf_product_avail' => 'product_avail',
+			 *		'plugin_cf_product_brand' => 'product_brand',
+			 *		'plugin_cf_product_color' => 'product_color',
+			 *		'plugin_cf_product_condition' => 'product_condition',
+			 *		'plugin_cf_product_currency' => 'product_currency',
+			 *		'plugin_cf_product_price' => 'product_price',
+			 *		'plugin_cf_product_size' => 'product_size',
+			 *	),
+			 */
 			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',
 				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
@@ -1067,20 +1085,24 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					continue;
 				// check that a custom field meta key has been defined
 				// example: 'plugin_cf_img_url' = '_format_image_url'
-				} elseif ( ! empty( $this->p->options[$cf_idx] ) ) {
-					$meta_key = $this->p->options[$cf_idx];
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
-					}
-				} else {
+				} elseif ( empty( $this->p->options[$cf_idx] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' option is empty' );
 					}
 					continue;
 				}
 
+				$meta_key = $this->p->options[$cf_idx];
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
+				}
+
 				// if the array element is not set, then skip it
 				if ( ! isset( $wp_meta[$meta_key][0] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $meta_key.' meta key element 0 not found in wp_meta' );
+					}
 					continue;	// check the next custom field
 				}
 

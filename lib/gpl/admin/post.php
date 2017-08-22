@@ -105,12 +105,12 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$form_rows['product_brand'] = array(
 					'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_brand', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder = tru for default value
+					'content' => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder = true for default value
 				);
 				$form_rows['product_color'] = array(
 					'label' => _x( 'Product Color', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_color', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder = tru for default value
+					'content' => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder = true for default value
 				);
 				$form_rows['product_condition'] = array(
 					'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
@@ -122,14 +122,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$form_rows['product_price'] = array(
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.	// $placeholder = tru for default value
+					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.	// $placeholder = true for default value
 						_x( 'and currency', 'option comment', 'wpsso' ).' '.
-							$form->get_no_input( 'product_currency', 'short', '', true ),	// $placeholder = tru for default value
+							$form->get_no_input( 'product_currency', 'short', '', true ),	// $placeholder = true for default value
 				);
 				$form_rows['product_size'] = array(
 					'label' => _x( 'Product Size', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_size', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder = tru for default value
+					'content' => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder = true for default value
 				);
 			}
 
