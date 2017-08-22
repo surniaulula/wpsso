@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.6-b.2 (2017/08/21)**
+**Version 3.45.6-rc.1 (2017/08/22)**
 
 * *New Features*
 	* None
@@ -351,6 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a static cache in the WpssoSchema add_single_organization_data(), add_single_place_data(), add_single_event_data(), and add_single_person_data() methods.
 	* Added new custom field options under the SSO &gt; Advanced &gt; Custom Meta tab:
+		* Additional Type URLs Custom Field
 		* Product Brand Custom Field
 		* Product Color Custom Field
 		* Product Size Custom Field
@@ -639,9 +640,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.6-b.2 =
+= 3.45.6-rc.1 =
 
-(2017/08/21) Added support for custom Schema Event start / end date and time values. Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version). Added new custom field options under the NGFB &gt; Advanced &gt; Custom Meta tab (Pro version).
+(2017/08/22) Added support for custom Schema Event start / end date and time values. Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version). Added new custom field options under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version).
 
 = 3.45.5 =
 
