@@ -398,7 +398,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_mixed_multi( $mixed, $class, $id, $start = 0, $end = 99, $show_first = 5, $disabled = false ) {
+		public function get_mixed_multi( $mixed, $class, $id, $start_num = 0, $max_input = 99, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 				return;	// just in case
@@ -407,9 +407,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$display = true;
 			$one_more = false;
-			$show_first = $show_first > $end ? $end : $show_first;
+			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$end_num = $max_input > 0 ? $max_input - 1 : 0;
 
-			foreach ( range( $start, $end, 1 ) as $key_num ) {
+			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
 				$wrap_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
@@ -459,7 +460,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_multi( $name, $class = '', $id = '', $start = 0, $end = 99, $show_first = 5, $disabled = false ) {
+		public function get_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 99, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// just in case
@@ -468,9 +469,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 			$display = true;
 			$one_more = false;
-			$show_first = $show_first > $end ? $end : $show_first;
+			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$end_num = $max_input > 0 ? $max_input - 1 : 0;
 
-			foreach ( range( $start, $end, 1 ) as $key_num ) {
+			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
 				$opt_key = $name.'_'.$key_num;
@@ -522,7 +524,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' placeholder="#000000" value="'.esc_attr( $value ).'" />';
 		}
 
-		public function get_input_date( $name = '', $class = '', $id = '', $min = '', $max = '', $disabled = false ) {
+		public function get_input_date( $name = '', $class = '', $id = '', $min_date = '', $max_date = '', $disabled = false ) {
 
 			if ( empty( $name ) ) {
 				$value = '';
@@ -538,8 +540,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? ' class="datepicker"' : ' class="datepicker '.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
-				( empty( $min ) ? '' : ' min="'.esc_attr( $min ).'"' ).
-				( empty( $max ) ? '' : ' max="'.esc_attr( $max ).'"' ).
+				( empty( $min_date ) ? '' : ' min="'.esc_attr( $min_date ).'"' ).
+				( empty( $max_date ) ? '' : ' max="'.esc_attr( $max_date ).'"' ).
 				' placeholder="yyyy-mm-dd" value="'.esc_attr( $value ).'" />';
 		}
 
@@ -557,14 +559,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_no_input_value( $value, $class, $id, $placeholder );
 		}
 
-		public function get_no_input_value( $value = '', $class = '', $id = '', $placeholder = '', $repeat = 1 ) {
+		public function get_no_input_value( $value = '', $class = '', $id = '', $placeholder = '', $max_input = 1 ) {
 
 			$html = '';
+			$end_num = $max_input > 0 ? $max_input - 1 : 0;
 			$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
 			$input_id = empty( $id ) ? '' : $id;
 
-			foreach ( range( 1, $repeat, 1 ) as $key_num ) {
-				if ( $repeat > 1 ) {
+			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
+				if ( $max_input > 1 ) {
 					$input_id = empty( $id ) ? '' : $id.'_'.$key_num;
 					$html .= '<div class="wrap_multi">';
 				}
@@ -575,7 +578,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
 					' value="'.esc_attr( $value ).'" />';
 
-				if ( $repeat > 1 ) {
+				if ( $max_input > 1 ) {
 					$html .= '</div>';
 				}
 			}

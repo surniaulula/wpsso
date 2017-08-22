@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.6-b.2',		// plugin version
+					'version' => '3.45.6-rc.1',		// plugin version
 					'opt_version' => '538',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -904,6 +904,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field
 					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field
 					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field
+					'plugin_cf_add_type_urls' => '',		// Additional Type URLs Custom Field
 					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field
 					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field
 					'plugin_cf_product_avail' => '',		// Product Availability Custom Field
@@ -1066,6 +1067,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => 'og_img_url',
 					'plugin_cf_vid_url' => 'og_vid_url',
 					'plugin_cf_vid_embed' => 'og_vid_embed',
+					'plugin_cf_add_type_urls' => 'schema_add_type_url',
 					'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 					'plugin_cf_product_avail' => 'product_avail',
@@ -1328,6 +1330,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => 'Image URL Custom Field',
 					'plugin_cf_vid_url' => 'Video URL Custom Field',
 					'plugin_cf_vid_embed' => 'Video Embed HTML Custom Field',
+					'plugin_cf_add_type_urls' => 'Additional Type URLs Custom Field',
 					'plugin_cf_recipe_ingredients' => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions' => 'Recipe Instructions Custom Field',
 					'plugin_cf_product_avail' => 'Product Availability Custom Field',

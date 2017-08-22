@@ -1,5 +1,6 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array(s)
+_x( 'Additional Type URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );

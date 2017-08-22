@@ -495,6 +495,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Video Embed HTML', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
+						case 'tooltip-plugin_cf_add_type_urls':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'additional type URLs', 'tooltip fragment', 'wpsso' ),
+									_x( 'Additional Type URLs', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
 						case 'tooltip-plugin_cf_recipe_ingredients':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
