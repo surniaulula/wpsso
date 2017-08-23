@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.6-rc.1 (2017/08/22)**
+**Version 3.45.6-rc.2 (2017/08/23)**
 
 * *New Features*
 	* None
@@ -640,9 +640,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.6-rc.1 =
+= 3.45.6-rc.2 =
 
-(2017/08/22) Added support for custom Schema Event start / end date and time values. Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version). Added new custom field options under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version).
+(2017/08/23) Added support for custom Schema Event start / end date and time values. Added a test for WooCommerce v3.0.0 product 'get_date_on_sale_from' and 'get_date_on_sale_to' methods before calling them (Pro version). Added new custom field options under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version).
 
 = 3.45.5 =
 
