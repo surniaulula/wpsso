@@ -574,7 +574,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_attachment' => 'webpage',
 					'schema_type_for_home_index' => 'blog',
 					'schema_type_for_home_page' => 'website',
-					'schema_type_for_page' => 'article',
+					'schema_type_for_page' => 'webpage',
 					'schema_type_for_post' => 'blog.posting',
 					'schema_type_for_search_page' => 'webpage.search.results',
 					'schema_type_for_user_page' => 'webpage.profile',
