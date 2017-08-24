@@ -520,11 +520,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				} else {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returned head meta is not an array' );
+						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
 					}
 					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'Error parsing head meta for <a href="%1$s">%1$s</a>.',
-							'wpsso' ), $shortlink ) );
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ) );
 					}
 				}
 			} elseif ( is_admin() ) {

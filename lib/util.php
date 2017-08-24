@@ -820,6 +820,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false ) {
 
 			if ( empty( $query ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: the query argument is empty' );
+				}
 				return false;
 			}
 
@@ -829,6 +832,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
 				$html = $request;
+				$request = false;	// just in case
 
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
 
@@ -890,36 +894,48 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( class_exists( 'DOMDocument' ) ) {
-				$doc = new DOMDocument();		// since PHP v4.1
-
-				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
-					$libxml_saved_state = libxml_use_internal_errors( true );
-					$doc->loadHTML( $html );
-					libxml_clear_errors();		// clear any HTML parsing errors
-					libxml_use_internal_errors( $libxml_saved_state );
-				} else {
-					@$doc->loadHTML( $html );
-				}
-
-				$xpath = new DOMXPath( $doc );
-				$metas = $xpath->query( $query );
-
-				foreach ( $metas as $m ) {
-					$m_atts = array();		// put all attributes in a single array
-					foreach ( $m->attributes as $a ) {
-						$m_atts[$a->name] = $a->value;
-					}
-					if ( isset( $m->textContent ) ) {
-						$m_atts['textContent'] = $m->textContent;
-					}
-					$ret[$m->tagName][] = $m_atts;
-				}
-			} else {
+			if ( ! class_exists( 'DOMDocument' ) ) {
 				$this->missing_php_class_error( 'DOMDocument' );
+				return false;
 			}
 
-			return empty( $ret ) ? false : $ret;
+			$doc = new DOMDocument();		// since PHP v4.1
+
+			if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
+				$libxml_saved_state = libxml_use_internal_errors( true );
+				$doc->loadHTML( $html );
+				libxml_clear_errors();		// clear any HTML parsing errors
+				libxml_use_internal_errors( $libxml_saved_state );
+			} else {
+				@$doc->loadHTML( $html );
+			}
+
+			$xpath = new DOMXPath( $doc );
+			$metas = $xpath->query( $query );
+
+			foreach ( $metas as $m ) {
+				$m_atts = array();		// put all attributes in a single array
+				foreach ( $m->attributes as $a ) {
+					$m_atts[$a->name] = $a->value;
+				}
+				if ( isset( $m->textContent ) ) {
+					$m_atts['textContent'] = $m->textContent;
+				}
+				$ret[$m->tagName][] = $m_atts;
+			}
+
+			if ( empty( $ret ) ) {
+				if ( $this->p->debug->enabled ) {
+					if ( $request === false ) {	// $request argument is html
+						$this->p->debug->log( 'exiting early: no meta tags found in the submitted html' );
+					} else {
+						$this->p->debug->log( 'exiting early: no meta tags found in '.$request );
+					}
+				}
+				return false;
+			}
+
+			return $ret;
 		}
 
 		public function missing_php_class_error( $classname ) {

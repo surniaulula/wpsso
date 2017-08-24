@@ -1761,7 +1761,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:136 lib/meta.php:205 lib/post.php:613
+#: lib/gpl/admin/post.php:136 lib/meta.php:205 lib/post.php:612
 #: lib/pro/admin/post.php:169
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2176,7 +2176,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:391 lib/messages.php:401 lib/post.php:569
+#: lib/messages.php:391 lib/messages.php:401 lib/post.php:568
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2203,7 +2203,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:396 lib/util.php:1922
+#: lib/messages.php:396 lib/util.php:1938
 msgid "No options available."
 msgstr ""
 
@@ -3483,10 +3483,18 @@ msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
 #: lib/post.php:526
-msgid "Error parsing head meta for <a href=\"%1$s\">%1$s</a>."
+msgid ""
+"An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:531 lib/util.php:850
+#: lib/post.php:526
+msgid ""
+"The webpage may contain serious HTML syntax errors &mdash; please review the "
+"<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
+"errors."
+msgstr ""
+
+#: lib/post.php:530 lib/util.php:854
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4322,43 +4330,43 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:839
+#: lib/util.php:843
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:861
+#: lib/util.php:865
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:887
+#: lib/util.php:891
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:930
+#: lib/util.php:946
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1948
+#: lib/util.php:1964
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1952
+#: lib/util.php:1968
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1955
+#: lib/util.php:1971
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1959
+#: lib/util.php:1975
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
