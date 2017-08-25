@@ -826,7 +826,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			if ( stripos( $request, '<html' ) !== false ) {
+			if ( stripos( $request, '<html' ) !== false ) {	// request contains html
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$html = $request;
 				$request = false;	// just in case
 
-			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
+			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// request is an invalid url
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or a valid url' );
@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				return false;
 
-			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {	// get html for url
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching '.$request );
@@ -856,7 +856,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				return false;
 
-			} elseif ( empty( $html ) ) {
+			} elseif ( empty( $html ) ) {	// returned html for url is empty
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for '.$request.' is empty' );

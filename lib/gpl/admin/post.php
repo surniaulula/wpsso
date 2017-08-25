@@ -118,6 +118,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_select( 'product_condition',
 						$this->p->cf['form']['item_condition'] ),
 				);
+				$form_rows['product_material'] = array(
+					'label' => _x( 'Product Material', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_material', 'td_class' => 'blank',
+					'content' => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder = true for default value
+				);
 				// product price and currency
 				$form_rows['product_price'] = array(
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),

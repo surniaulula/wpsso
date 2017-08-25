@@ -67,6 +67,7 @@ _x( 'Product Brand Custom Field', 'option label', 'wpsso' );
 _x( 'Product Color Custom Field', 'option label', 'wpsso' );
 _x( 'Product Condition Custom Field', 'option label', 'wpsso' );
 _x( 'Product Currency Custom Field', 'option label', 'wpsso' );
+_x( 'Product Material Custom Field', 'option label', 'wpsso' );
 _x( 'Product Price Custom Field', 'option label', 'wpsso' );
 _x( 'Product Size Custom Field', 'option label', 'wpsso' );
 _x( 'Public Holidays', 'option value', 'wpsso' );

@@ -124,6 +124,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+						case 'tooltip-meta-product_material':
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'material', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
 						case 'tooltip-meta-product_price':
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
@@ -549,6 +554,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 									_x( 'Product Currency', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
+						case 'tooltip-plugin_cf_product_material':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product material', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Material', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
 						case 'tooltip-plugin_cf_product_price':

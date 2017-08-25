@@ -493,9 +493,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			if ( ! empty( $html ) ) {
+			if ( empty( $html ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'error retrieving webpage from '.$shortlink );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
+						'wpsso' ), $shortlink ) );
+				}
+			} else {
 				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );
-				if ( is_array( $metas ) ) {
+
+				if ( empty( $metas ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
+					}
+					if ( is_admin() ) {
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ) );
+					}
+				} else {
 					foreach( array(
 						'link' => array( 'rel' ),
 						'meta' => array( 'name', 'property', 'itemprop' ),
@@ -518,17 +534,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
 							'wpsso' ), $max_count - $exec_count ) );
 					}
-				} else {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
-					}
-					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ) );
-					}
 				}
-			} elseif ( is_admin() ) {
-				$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
-					'wpsso' ), $shortlink ) );
 			}
 		}
 

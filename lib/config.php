@@ -739,6 +739,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:category' => 1,
 					'add_meta_property_product:color' => 1,
 					'add_meta_property_product:condition' => 1,
+					'add_meta_property_product:material' => 0,
 					'add_meta_property_product:price:amount' => 1,
 					'add_meta_property_product:price:currency' => 1,
 					'add_meta_property_product:size' => 1,
@@ -912,6 +913,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color' => '',		// Product Color Custom Field
 					'plugin_cf_product_condition' => '',		// Product Condition Custom Field
 					'plugin_cf_product_currency' => '',		// Product Currency Custom Field
+					'plugin_cf_product_material' => '',		// Product Material Custom Field
 					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
 					// Cache Settings Tab
@@ -1075,6 +1077,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color' => 'product_color',
 					'plugin_cf_product_condition' => 'product_condition',
 					'plugin_cf_product_currency' => 'product_currency',
+					'plugin_cf_product_material' => 'product_material',
 					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_size' => 'product_size',
 				),
@@ -1338,6 +1341,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color' => 'Product Color Custom Field',
 					'plugin_cf_product_condition' => 'Product Condition Custom Field',
 					'plugin_cf_product_currency' => 'Product Currency Custom Field',
+					'plugin_cf_product_material' => 'Product Material Custom Field',
 					'plugin_cf_product_price' => 'Product Price Custom Field',
 					'plugin_cf_product_size' => 'Product Size Custom Field',
 				),
@@ -1431,6 +1435,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:category' => '',
 						'product:color' => 'product_color',
 						'product:condition' => 'product_condition',
+						'product:material' => 'product_material',
 						'product:price:amount' => 'product_price',
 						'product:price:currency' => 'product_currency',
 						'product:size' => 'product_size',
