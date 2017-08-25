@@ -354,6 +354,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Additional Type URLs Custom Field
 		* Product Brand Custom Field
 		* Product Color Custom Field
+		* Product Material Custom Field
 		* Product Size Custom Field
 
 **Version 3.45.5 (2017/08/08)**
