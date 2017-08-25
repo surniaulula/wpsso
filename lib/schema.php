@@ -2019,8 +2019,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
 						if ( $wpsso->debug->enabled ) {
-							// itemprop value may be an array, so use print_r()
-							$wpsso->debug->log( 'added itemprop '.$itemprop_name.' = '.print_r( $json_data[$itemprop_name], true ) );
+							$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
+								print_r( $json_data[$itemprop_name], true ) );
 						}
 						$itemprop_added++;
 					}
@@ -2030,14 +2030,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
-			$data = array();
+			$wpsso =& Wpsso::get_instance();
+			$json_data = array();
 			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( isset( $assoc[$key_name] ) && 
-					! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
-					$data[$itemprop_name] = $assoc[$key_name];
+				if ( isset( $assoc[$key_name] ) && ! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
+					$json_data[$itemprop_name] = $assoc[$key_name];
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
+							print_r( $json_data[$itemprop_name], true ) );
+					}
 				}
 			}
-			return empty( $data ) ? false : $data;
+			return empty( $json_data ) ? false : $json_data;
 		}
 
 		// QuantitativeValue (width, height, length, depth, weight)
