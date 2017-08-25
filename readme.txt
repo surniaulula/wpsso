@@ -348,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added more debugging messages to the WooCommerce module (Pro version).
 
 **Version 3.45.6 (2017/08/23)**
 
@@ -651,6 +651,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.7-dev.1 =
+
+(2017/08/25) Added more debugging messages to the WooCommerce module (Pro version).
 
 = 3.45.6 =
 
