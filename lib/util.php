@@ -817,7 +817,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// query examples:
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
-		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false, $libxml_errors = false ) {
+		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false ) {
 
 			if ( empty( $query ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -876,29 +876,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$ret = array();
 			$lca = $this->p->cf['lca'];
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
-
-			if ( $remove_self && strpos( $html, $lca.' meta tags begin' ) !== false ) {	// quick check
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'removing self meta tags' );
-				}
-
-				$mark_prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark:(begin|end)"[\s\n\r]+content=")';
-				$mark_suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
-
-				$html = preg_replace( '/'.$mark_prefix.$lca.' meta tags begin'.$mark_suffix.'.*'.
-					$mark_prefix.$lca.' meta tags end'.$mark_suffix.'/ums',	// enable utf8 functionality
-						'<!-- '.$lca.' meta tags removed -->', $html, -1, $count );
-
-				if ( ! $count ) {
-					if ( is_admin() ) {
-						$short = $this->p->cf['plugin'][$lca]['short'];
-						$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or an HTML filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );
-						return false;
-					}
-				}
-			}
-
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
 			$doc = new DOMDocument();	// since PHP v4.1
 			$has_errors = false;

@@ -1768,7 +1768,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:650
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:671
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2188,7 +2188,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:606
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:627
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2215,7 +2215,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:401 lib/util.php:1979
+#: lib/messages.php:401 lib/util.php:1956
 msgid "No options available."
 msgstr ""
 
@@ -3500,43 +3500,50 @@ msgstr ""
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:510
+#: lib/post.php:511
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:518
+#: lib/post.php:520
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:527
+#: lib/post.php:530
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:539
+#: lib/post.php:547
+msgid ""
+"The PHP preg_replace() function failed to remove the %1$s meta tag section "
+"&mdash; this could be an indication of a problem with PHP's PCRE library or "
+"a webpage filter corrupting the %1$s meta tags."
+msgstr ""
+
+#: lib/post.php:561
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:539
+#: lib/post.php:561
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:539
+#: lib/post.php:561
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:562 lib/post.php:564
+#: lib/post.php:584 lib/post.php:586
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:565
+#: lib/post.php:587
 msgid "%s more checks to go..."
 msgstr ""
 
@@ -3636,12 +3643,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:264 lib/util.php:942
+#: lib/pro/media/wistia.php:264 lib/util.php:919
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:154 lib/pro/media/vimeo.php:131
-#: lib/pro/media/wistia.php:267 lib/util.php:945
+#: lib/pro/media/wistia.php:267 lib/util.php:922
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4373,35 +4380,28 @@ msgstr ""
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:896
-msgid ""
-"The PHP preg_replace() function failed to remove the %1$s meta tag section "
-"&mdash; this could be an indication of a problem with PHP's PCRE library or "
-"an HTML filter corrupting the %1$s meta tags."
-msgstr ""
-
-#: lib/util.php:987
+#: lib/util.php:964
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2005
+#: lib/util.php:1982
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:2009
+#: lib/util.php:1986
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2012
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:2016
+#: lib/util.php:1993
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
