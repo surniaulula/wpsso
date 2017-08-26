@@ -899,7 +899,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$html = preg_replace( '/<!--.*-->/U', '', $html );	// remove all html comments
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
 			$doc = new DOMDocument();	// since PHP v4.1
 			$has_errors = false;
 
