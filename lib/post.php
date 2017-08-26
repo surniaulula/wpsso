@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true, true );	// returns false on error
 
 				if ( is_array( $metas ) ) {
-					if ( empty( $metas ) ) {
+					if ( empty( $metas ) ) {	// no link or meta tags found
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'error parsing head meta for '.$shortlink );
 						}

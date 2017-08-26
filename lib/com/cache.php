@@ -101,7 +101,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$errors = array();
 				$errors[] = sprintf( __( 'Error connecting to %1$s for caching (HTTP code %2$d).',
-					$this->text_dom ), '<a href="'.$url.'" target="_blank">'.$url.'</a>', $http_code );
+					$this->text_dom ), '<a href="'.$url.'">'.$url.'</a>', $http_code );
 
 				if ( $http_code === 301 ) {
 					if ( ini_get('safe_mode') || ini_get('open_basedir') ) {

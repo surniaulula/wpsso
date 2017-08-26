@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$info[$key.'_pro'] = SucomUtil::get_pkg_name( $info[$key], 'Pro' );
 
 				$info[$key.'_pro_purchase'] = empty( $url['purchase'] ) ?
-					$info[$key.'_pro'] : '<a href="'.$url['purchase'].'" target="_blank">'.$info[$key.'_pro'].'</a>';
+					$info[$key.'_pro'] : '<a href="'.$url['purchase'].'">'.$info[$key.'_pro'].'</a>';
 			}
 
 
@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-site_place_id':
 							if ( isset( $this->p->cf['plugin']['wpssoplm'] ) ) {
 								$plm_info = $this->p->cf['plugin']['wpssoplm'];
-								$text = sprintf( __( 'Select an optional Place / Location address for this Organization (requires the %s extension).', 'wpsso' ), '<a href="'.$plm_info['url']['home'].'" target="_blank">'.$plm_info['name'].'</a>' );
+								$text = sprintf( __( 'Select an optional Place / Location address for this Organization (requires the %s extension).', 'wpsso' ), '<a href="'.$plm_info['url']['home'].'">'.$plm_info['name'].'</a>' );
 							}
 							break;
 					}
@@ -725,11 +725,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_bitly_access_token':
-							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s" target="_blank">Generic Access Token</a> or API Key (deprecated) to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
+							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s">Generic Access Token</a> or API Key (deprecated) to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
 							break;
 
 						case 'tooltip-plugin_bitly_api_key':
-							$text = sprintf( __( 'The Bitly <a href="%s" target="_blank">API Key</a> authentication method has been deprecated by Bitly.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+							$text = sprintf( __( 'The Bitly <a href="%s">API Key</a> authentication method has been deprecated by Bitly.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 							break;
 
 						case 'tooltip-plugin_bitly_domain':
@@ -737,31 +737,31 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_google_api_key':
-							$text = sprintf( __( 'The Google BrowserKey value for this website (project). If you don\'t already have a Google project, visit <a href="%s" target="_blank">Google\'s Cloud Console</a> and create a new project for your website (use the "Select a project" drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
+							$text = sprintf( __( 'The Google BrowserKey value for this website (project). If you don\'t already have a Google project, visit <a href="%s">Google\'s Cloud Console</a> and create a new project for your website (use the "Select a project" drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
 							break;
 
 						case 'tooltip-plugin_google_shorten':
-							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API from <a href="%s" target="_blank">Google\'s Cloud Console</a> (under the project\'s <em>API &amp; auth / APIs / URL Shortener API</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/start' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
+							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API from <a href="%s">Google\'s Cloud Console</a> (under the project\'s <em>API &amp; auth / APIs / URL Shortener API</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/start' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_owly_api_key':
-							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s" target="_blank">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
+							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
 							break;
 
 						case 'tooltip-plugin_yourls_api_url':
-							$text = sprintf( __( 'The URL to <a href="%1$s" target="_blank">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'http://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_username':
-							$text = sprintf( __( 'If <a href="%1$s" target="_blank">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_password':
-							$text = sprintf( __( 'If <a href="%1$s" target="_blank">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_token':
-							$text = sprintf( __( 'If <a href="%1$s" target="_blank">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
 							break;
 
 						default:
@@ -774,15 +774,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-fb_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-fb_publisher_url':
-							$text = sprintf( __( 'If you have a <a href="%1$s" target="_blank">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s" target="_blank">%4$s</a>).', 'wpsso' ), 'https://www.facebook.com/business', 'Surnia Ulula', 'https://www.facebook.com/SurniaUlulaCom', 'https://www.facebook.com/SurniaUlulaCom' ).' '.__( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ).' '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s">%4$s</a>).', 'wpsso' ), 'https://www.facebook.com/business', 'Surnia Ulula', 'https://www.facebook.com/SurniaUlulaCom', 'https://www.facebook.com/SurniaUlulaCom' ).' '.__( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ).' '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						case 'tooltip-fb_admins':
-							$text = sprintf( __( 'The %1$s are used by Facebook to allow access to <a href="%2$s" target="_blank">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), 'https://developers.facebook.com/docs/insights/' ).' '.sprintf( __( 'You may update your Facebook user name in the <a href="%1$s" target="_blank">Facebook General Account Settings</a>.', 'wpsso' ), 'https://www.facebook.com/settings?tab=account&section=username&view' );
+							$text = sprintf( __( 'The %1$s are used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), 'https://developers.facebook.com/docs/insights/' ).' '.sprintf( __( 'You may update your Facebook user name in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), 'https://www.facebook.com/settings?tab=account&section=username&view' );
 							break;
 
 						case 'tooltip-fb_app_id':
-							$text = sprintf( __( 'If you have a <a href="%1$s" target="_blank">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%2$s" target="_blank">Facebook Insight</a> data for accounts associated with that Application ID.', 'wpsso' ), 'https://developers.facebook.com/apps', 'https://developers.facebook.com/docs/insights/' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for accounts associated with that Application ID.', 'wpsso' ), 'https://developers.facebook.com/apps', 'https://developers.facebook.com/docs/insights/' );
 							break;
 
 						case 'tooltip-fb_author_name':
@@ -803,7 +803,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-seo_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-seo_publisher_url':
-							$text = 'If you have a <a href="http://www.google.com/+/business/" target="_blank">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/" target="_blank">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation head tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have a <a href="http://www.google.com/+/business/">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation head tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						case 'tooltip-seo_desc_len':
@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-tc_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-tc_site':
-							$text = 'The <a href="https://business.twitter.com/" target="_blank">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom" target="_blank">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'The <a href="https://business.twitter.com/">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						case 'tooltip-tc_desc_len':
@@ -929,7 +929,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'tc_sum_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = 'The dimension of content images provided for the <a href="https://dev.twitter.com/docs/cards/types/summary-card" target="_blank">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
+							$text = 'The dimension of content images provided for the <a href="https://dev.twitter.com/docs/cards/types/summary-card">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
 							break;
 
 						case 'tooltip-tc_lrg_img_dimensions':
@@ -939,7 +939,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'tc_lrg_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'tc_lrg_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = 'The dimension of Post Meta, Featured or Attached images provided for the <a href="https://dev.twitter.com/docs/cards/large-image-summary-card" target="_blank">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
+							$text = 'The dimension of Post Meta, Featured or Attached images provided for the <a href="https://dev.twitter.com/docs/cards/large-image-summary-card">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB). The default image dimensions are '.$def_dimensions.'.';
 							break;
 
 						default:
@@ -952,7 +952,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-p_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-p_publisher_url':
-							$text = 'If you have a <a href="https://business.pinterest.com/" target="_blank">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have a <a href="https://business.pinterest.com/">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 							$text = 'The image dimensions specifically for Rich Pin meta tags when the Pinterest crawler is detected (the default dimensions are '.$def_dimensions.'). Images in the Facebook / Open Graph meta tags are usually cropped square, where-as images on Pinterest often look better in their original aspect ratio (uncropped) and/or cropped using portrait photo dimensions. Note that original images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
@@ -963,7 +963,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-p_dom_verify':
-							$text = sprintf( __( 'To <a href="%s" target="_blank">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
+							$text = sprintf( __( 'To <a href="%s">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
 							break;
 
 						case 'tooltip-p_add_img_html':
@@ -988,7 +988,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-instgram_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-instgram_publisher_url':
-							$text = 'If you have an <a href="http://blog.business.instagram.com/" target="_blank">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have an <a href="http://blog.business.instagram.com/">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						default:
@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-linkedin_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-linkedin_publisher_url':
-							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started" target="_blank">LinkedIn Company Page for your website / business</a>, you may enter its URL here (for example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd" target="_blank">https://www.linkedin.com/company/surnia-ulula-ltd</a>). The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started">LinkedIn Company Page for your website / business</a>, you may enter its URL here (for example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd">https://www.linkedin.com/company/surnia-ulula-ltd</a>). The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						default:
@@ -1015,7 +1015,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-myspace_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-myspace_publisher_url':
-							$text = 'If you have a <a href="http://myspace.com/" target="_blank">Myspace account for your website / business</a>, you may enter its URL here. The Myspace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have a <a href="http://myspace.com/">Myspace account for your website / business</a>, you may enter its URL here. The Myspace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						default:
@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 	
 						case 'info-cm':
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s" target="_blank">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
 							break;
 
 						case 'info-taglist':
@@ -1138,18 +1138,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$req_msg = '';
 						}
 						if ( $this->p->check->aop( $lca, false ) ) {
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'">'.
 								sprintf( __( 'Purchase %s licence(s) to install its Pro modules and use the following features / options.',
 									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						} else {
-							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'">'.
 								sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
 									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						}
 						break;
 
 					case 'pro-option-msg':
-						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'" target="_blank">'.
+						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'">'.
 							sprintf( _x( 'option requires %s', 'option comment', 'wpsso' ),
 								$info['short_pro'] ).'</a></p>';
 						break;
@@ -1157,7 +1157,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-purchase-text':
 						$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
 						if ( ! empty( $info['url'] ) ) {
-							$text = '<a href="'.$info['url'].'" target="_blank"'.
+							$text = '<a href="'.$info['url'].'"'.
 								( empty( $info['tabindex'] ) ? '' : ' tabindex="'.$info['tabindex'].'"' ).'>'.
 									$text.'</a>';
 						}
@@ -1374,9 +1374,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
-				$lang_plugins = '<a href="https://wordpress.org/plugins/wpsso-user-locale/" target="_blank">WPSSO User Locale Selector</a>, '.
-					'<a href="https://wordpress.org/plugins/polylang/" target="_blank">Polylang</a>, '.
-					'<a href="https://wordpress.org/plugins/wp-native-dashboard/" target="_blank">WP Native Dashboard</a>';
+				$lang_plugins = '<a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a>, '.
+					'<a href="https://wordpress.org/plugins/polylang/">Polylang</a>, '.
+					'<a href="https://wordpress.org/plugins/wp-native-dashboard/">WP Native Dashboard</a>';
 				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages.', 'wpsso' ), $lang_plugins );
 			}
 

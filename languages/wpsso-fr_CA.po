@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.6\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-25 09:49-0400\n"
-"PO-Revision-Date: 2017-08-25 09:49-0400\n"
+"POT-Creation-Date: 2017-08-26 10:12-0400\n"
+"PO-Revision-Date: 2017-08-26 10:12-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1693,7 +1693,7 @@ msgid "Product Size"
 msgstr "Taille du produit"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:618
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:621
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1988,7 +1988,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr "L'activation de cette option re-ordonne également les onglets metabox %1$s pour votre commodité &ndash; déplaçant les onglets %2$s, %3$s et %4$s au premier plan."
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:574
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:577
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2013,7 +2013,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:401 lib/util.php:1938
+#: lib/messages.php:401 lib/util.php:1952
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2468,6 +2468,11 @@ msgstr "Valider la syntaxe HTML et la conformité  HTML 5 de vos balises méta e
 #: lib/messages.php:1070
 msgid "When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option."
 msgstr "Lorsque l'option %1$s est active, le validateur W3C indiquera des erreurs pour des attributs itemprop dans les éléments méta &mdash; vous pouvez ignorer ces erreurs ou désactivez l'option %1$s."
+
+#: lib/messages.php:1070 lib/submenu/general.php:265
+msgctxt "option label"
+msgid "Meta Property Containers"
+msgstr "Contenants de propriétés Méta"
 
 #: lib/messages.php:1074
 msgid "Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates."
@@ -2950,15 +2955,19 @@ msgstr "Comme avantage supplémentaire, un site plus rapide améliore également
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:512
+#: lib/post.php:514
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:512
+#: lib/post.php:514
 msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
 
-#: lib/post.php:534
+#: lib/post.php:514
+msgid "You may safely ignore any \"nopin\" attribute errors (suggested), or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
+msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque (suggérées), ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
+
+#: lib/post.php:536
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) %s autres vérifications a faire..."
 
@@ -2970,7 +2979,7 @@ msgstr "Le champ de description SEO est désactivé (la balise description est d
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/pro/ecom/woocommerce.php:513
+#: lib/pro/ecom/woocommerce.php:544
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
@@ -3554,11 +3563,6 @@ msgctxt "option label"
 msgid "Author Link URL Field"
 msgstr "Champ URL pour balise Link d'auteur"
 
-#: lib/submenu/general.php:265
-msgctxt "option label"
-msgid "Meta Property Containers"
-msgstr "Contenants de propriétés Méta"
-
 #: lib/submenu/general.php:268
 msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
@@ -3761,26 +3765,26 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag block &mdash; this could be an indication of a problem with PHP's PCRE library or an HTML filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer le bloc de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre HTML qui corrompt les balises méta de %1$s."
 
-#: lib/util.php:946
+#: lib/util.php:960
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1964
+#: lib/util.php:1978
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1968
+#: lib/util.php:1982
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1971
+#: lib/util.php:1985
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1975
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

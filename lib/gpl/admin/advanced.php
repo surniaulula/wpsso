@@ -342,12 +342,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_bitly_login' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_login'].'</td>';
 
-			$table_rows['plugin_bitly_access_token'] = $form->get_th_html( '<a href="https://bitly.com/a/oauth_apps" target="_blank">'.
+			$table_rows['plugin_bitly_access_token'] = $form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">'.
 				_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_access_token' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_access_token'].'</td>';
 
 			$table_rows['plugin_bitly_api_key'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key" target="_blank">'.
+			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key">'.
 				_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].' <em>'.
 				_x( 'api key authentication is deprecated', 'option comment', 'wpsso' ).'</em></td>';

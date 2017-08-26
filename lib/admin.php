@@ -1004,9 +1004,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<tr><td colspan="2" class="latest-notice">'.
 					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
-					'<p><a href="'.$changelog_url.'" target="_blank">'.
-						sprintf( __( 'View %s changelog...', 'wpsso' ),
-							$info['short'] ).'</a></p></td></tr>';
+					'<p><a href="'.$changelog_url.'">'.sprintf( __( 'View %s changelog...',
+						'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 
 			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
@@ -1199,7 +1198,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<td><span class="dashicons dashicons-'.$icon_type.'" title="'.$icon_title.'"></span></td>'.
 					'<td class="'.trim( $td_class ).'">'.$label_text.'</td>'.
 					'<td>'.
-						( $purchase_url ? '<a href="'.$purchase_url.'" target="_blank">' : '' ).
+						( $purchase_url ? '<a href="'.$purchase_url.'">' : '' ).
 						'<img src="'.WPSSO_URLPATH.'images/'.
 							$status_info[$status_key]['img'].'" width="12" height="12" title="'.
 							$status_info[$status_key]['title'].'"/>'.
@@ -1256,17 +1255,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$links = array();
 
 				if ( ! empty( $info['url']['faqs'] ) ) {
-					$links[] = sprintf( __( 'Read the <a href="%s" target="_blank">Frequently Asked Questions</a>',
+					$links[] = sprintf( __( 'Read the <a href="%s">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faqs'] ).( ! empty( $info['url']['notes'] ) ?
-							' '.sprintf( __( 'and <a href="%s" target="_blank">Other Notes</a>',
+							' '.sprintf( __( 'and <a href="%s">Other Notes</a>',
 								'wpsso' ), $info['url']['notes'] ) : '' );
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
-					$links[] = sprintf( __( 'Open a <a href="%s" target="_blank">Priority Support Ticket</a>',
+					$links[] = sprintf( __( 'Open a <a href="%s">Priority Support Ticket</a>',
 						'wpsso' ), $info['url']['support'] ).' ('.__( 'Pro version', 'wpsso' ).')';
 				} elseif ( ! empty( $info['url']['forum'] ) ) {
-					$links[] = sprintf( __( 'Post in the <a href="%s" target="_blank">Community Support Forum</a>',
+					$links[] = sprintf( __( 'Post in the <a href="%s">Community Support Forum</a>',
 						'wpsso' ), $info['url']['forum'] ).' ('.__( 'Free version', 'wpsso' ).')';
 				}
 
@@ -1299,7 +1298,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$rate_stars = '<span class="'.$lca.'-rate-stars"></span>';
 					$plugin_name = '<strong>'.$info['name'].'</strong>';
 
-					$links[] = '<a href="'.$info['url']['review'].'" target="_blank">'.
+					$links[] = '<a href="'.$info['url']['review'].'">'.
 						sprintf( __( 'Rate the %1$s plugin 5 stars.', 'wpsso' ), $plugin_name ).'</a>';
 				}
 
@@ -1315,7 +1314,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<div class="follow-icons">';
 			$img_size = $this->p->cf['follow']['size'];
 			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url ) {
-				echo '<a href="'.$url.'" target="_blank"><img src="'.WPSSO_URLPATH.$img_rel.'"
+				echo '<a href="'.$url.'"><img src="'.WPSSO_URLPATH.$img_rel.'"
 					width="'.$img_size.'" height="'.$img_size.'" border="0" /></a>';
 			}
 			echo '</div>';
@@ -1397,7 +1396,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 				} elseif ( ! empty( $info['url']['home'] ) ) {
-					$ext_links[] = '<a href="'.$info['url']['home'].'" target="_blank" tabindex="'.++$tabindex.'">'.
+					$ext_links[] = '<a href="'.$info['url']['home'].'" tabindex="'.++$tabindex.'">'.
 						_x( 'Plugin Description', 'plugin action link', 'wpsso' ).'</a>';
 				}
 
@@ -1505,7 +1504,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php '.$php_ext.' extension is not loaded' );
 					}
-					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s" target="_blank">%2$s extension</a> is not loaded.',
+					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded.',
 						'wpsso' ), 'https://secure.php.net/manual/en/book.'.$php_ext.'.php', $php_label ).' '.
 					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.',
 						'wpsso' ) );
@@ -1734,7 +1733,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$notice_msg .= '<p style="font-size:1.05em;">'.
 					'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
 					sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
-						'wpsso' ), '<a href="'.$info['url']['home'].'" target="_blank" title="'.
+						'wpsso' ), '<a href="'.$info['url']['home'].'" title="'.
 							sprintf( __( 'The %s plugin description page on WordPress.org',
 								'wpsso' ), $info['short'] ).'">'.$info['name'].'</a>' ).' '.
 					__( 'That\'s awesome!', 'wpsso' ).'</p>';
@@ -1749,7 +1748,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$notice_msg .= '<p>'.$rate_plugin_button.$already_rated_button.'</p>';
 					
 				$notice_msg .= '<p style="font-size:0.9em;">'.
-					( empty( $support_url ) ? '' : '<a href="'.$support_url.'" target="_blank" class="dismiss-on-click">' ).
+					( empty( $support_url ) ? '' : '<a href="'.$support_url.'" class="dismiss-on-click">' ).
 					sprintf( __( 'No thanks &mdash; I don\'t think %s is worth a 5 star rating and would like to offer a suggestion or report a problem.',
 						'wpsso' ), $info['short'] ).
 					( empty( $support_url ) ? '' : '</a>' ).

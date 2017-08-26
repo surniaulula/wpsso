@@ -902,23 +902,49 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$doc = new DOMDocument();		// since PHP v4.1
 			$has_errors = false;
 
-			if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
-				$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
-				if ( ! $doc->loadHTML( $html ) ) {
-					$has_errors = true;
-					if ( $libxml_errors ) {
-						foreach ( libxml_get_errors() as $error_msg ) {
+			if ( $libxml_errors ) {
+				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
+					$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
+					if ( ! $doc->loadXML( $html ) ) {
+						$has_errors = true;
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'loadHTML returned error(s)' );
+						}
+						foreach ( libxml_get_errors() as $error ) {
+							/*
+							 *	libXMLError {
+							 *		public int $level;
+							 *		public int $code;
+							 *		public int $column;
+							 *		public string $message;
+							 *		public string $file;
+							 *		public int $line;
+							 *	}
+							 */
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'libxml error: '.$error_msg );
+								$this->p->debug->log( 'libxml error: '.$error->message );
 							}
 							if ( is_admin() ) {
-								$this->p->notice->err( 'HTML parsing error: '.$error_msg );
+								$this->p->notice->err( 'PHP libXML error: '.$error->message );
 							}
 						}
+						libxml_clear_errors();		// clear any HTML parsing errors
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'loadXML was successful' );
 					}
-					libxml_clear_errors();		// clear any HTML parsing errors
+					libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'libxml_use_internal_errors() function is missing' );
+					}
+					if ( is_admin() ) {
+						$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s function</a> is not available.',
+							'wpsso' ), 'https://secure.php.net/manual/en/function.libxml-use-internal-errors.php',
+								'libxml_use_internal_errors()' ).' '.
+						__( 'Please contact your hosting provider to have the missing function installed.', 'wpsso' ) );
+					}
+					@$doc->loadHTML( $html );
 				}
-				libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
 			} else {
 				@$doc->loadHTML( $html );
 			}
@@ -940,12 +966,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 				if ( empty( $ret ) ) {	// empty array
 					if ( $request === false ) {	// $request argument is html
-						$this->p->debug->log( 'meta tags found in the submitted html' );
+						$this->p->debug->log( 'meta tags found in submitted html' );
 					} else {
 						$this->p->debug->log( 'no meta tags found in '.$request );
 					}
 				} else {
-					$this->p->debug->log( 'returning an array of '.count( $ret ).' meta tags' );
+					$this->p->debug->log( 'returning array of '.count( $ret ).' meta tags' );
 				}
 			}
 
