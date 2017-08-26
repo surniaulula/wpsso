@@ -2215,7 +2215,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:401 lib/util.php:1978
+#: lib/messages.php:401 lib/util.php:1979
 msgid "No options available."
 msgstr ""
 
@@ -3618,12 +3618,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:264 lib/util.php:941
+#: lib/pro/media/wistia.php:264 lib/util.php:942
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:154 lib/pro/media/vimeo.php:131
-#: lib/pro/media/wistia.php:267 lib/util.php:944
+#: lib/pro/media/wistia.php:267 lib/util.php:945
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4355,35 +4355,35 @@ msgstr ""
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:891
+#: lib/util.php:896
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag block "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:986
+#: lib/util.php:987
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2004
+#: lib/util.php:2005
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:2008
+#: lib/util.php:2009
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2011
+#: lib/util.php:2012
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:2015
+#: lib/util.php:2016
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

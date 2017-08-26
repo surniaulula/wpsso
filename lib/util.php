@@ -866,6 +866,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						'wpsso' ), $request ) );
 				}
 				return false;
+
+			} elseif ( ! class_exists( 'DOMDocument' ) ) {
+
+				$this->missing_php_class_error( 'DOMDocument' );
+				return false;
 			}
 
 			$ret = array();
@@ -894,18 +899,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( ! class_exists( 'DOMDocument' ) ) {
-				$this->missing_php_class_error( 'DOMDocument' );
-				return false;
-			}
-
-			$doc = new DOMDocument();		// since PHP v4.1
+			$html = preg_replace( '/<!--.*-->/U', '', $html );	// remove all html comments
+			$doc = new DOMDocument();	// since PHP v4.1
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
 				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
 					$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
-					if ( ! $doc->loadXML( $html ) ) {
+					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages
 						$has_errors = true;
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'loadHTML returned error(s)' );
@@ -930,7 +931,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 						libxml_clear_errors();		// clear any HTML parsing errors
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'loadXML was successful' );
+						$this->p->debug->log( 'loadHTML was successful' );
 					}
 					libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
 				} else {
