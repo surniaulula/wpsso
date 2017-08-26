@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.7-dev.1 (2017/08/23)**
+**Version 3.45.7-dev.2 (2017/08/26)**
 
 * *New Features*
 	* None
@@ -652,9 +652,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.7-dev.1 =
+= 3.45.7-dev.2 =
 
-(2017/08/25) Added more debugging messages to the WooCommerce module (Pro version).
+(2017/08/26) Added more debugging messages to the WooCommerce module (Pro version).
 
 = 3.45.6 =
 
