@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.7-dev.2 (2017/08/26)**
+**Version 3.45.7-dev.3 (2017/08/26)**
 
 * *New Features*
 	* None
@@ -349,6 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Added more debugging messages to the WooCommerce module (Pro version).
+	* Added a sanity check for &lt;html&gt; and &lt;meta /&gt; tags in the webpage before checking for duplicates.
 
 **Version 3.45.6 (2017/08/23)**
 
@@ -652,7 +653,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.7-dev.2 =
+= 3.45.7-dev.3 =
 
 (2017/08/26) Added more debugging messages to the WooCommerce module (Pro version).
 
