@@ -1768,7 +1768,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:642
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:650
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2188,7 +2188,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:598
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:606
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3508,29 +3508,35 @@ msgstr ""
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:531
+#: lib/post.php:527
+msgid ""
+"A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
+"perhaps a webpage caching plugin or service needs to be refreshed?"
+msgstr ""
+
+#: lib/post.php:539
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:531
+#: lib/post.php:539
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:531
+#: lib/post.php:539
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:554 lib/post.php:556
+#: lib/post.php:562 lib/post.php:564
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:557
+#: lib/post.php:565
 msgid "%s more checks to go..."
 msgstr ""
 
@@ -4369,7 +4375,7 @@ msgstr ""
 
 #: lib/util.php:896
 msgid ""
-"The PHP preg_replace() function failed to remove the %1$s meta tag block "
+"The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""

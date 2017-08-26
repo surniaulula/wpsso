@@ -502,21 +502,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
 				}
-			} elseif ( stripos( $html, '<html' ) === false ) {
+			} elseif ( stripos( $html, '<html' ) === false ) {	// webpage must have an <html> tag
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'html tag was not found in '.$shortlink );
+					$this->p->debug->log( '<html> tag not found in '.$shortlink );
 				}
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'An &lt;html&gt; tag was not found in <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
 				}
-			} elseif ( stripos( $html, '<meta ' ) === false ) {
+			} elseif ( stripos( $html, '<meta ' ) === false ) {	// webpage must have one or more <meta/> tags
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'meta tag was not found in '.$shortlink );
+					$this->p->debug->log( '<meta /> tag not found in '.$shortlink );
 				}
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'A &lt;meta /&gt; tag was not found in <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
+				}
+			} elseif ( strpos( $html, $lca.' meta tags begin' ) === false ) {	// webpage should include our own meta tags
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $lca.' meta tag section not found in '.$shortlink );
+				}
+				if ( is_admin() ) {
+					$short = $this->p->cf['plugin'][$lca]['short'];
+					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $shortlink, $short ) );
 				}
 			} else {
 				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true, true );	// returns false on error
