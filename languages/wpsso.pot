@@ -3518,12 +3518,12 @@ msgid ""
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:538
+#: lib/post.php:538 lib/post.php:540
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:540
-msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
+#: lib/post.php:541
+msgid "%s more checks to go..."
 msgstr ""
 
 #: lib/pro/admin/meta.php:49 lib/pro/admin/post.php:44

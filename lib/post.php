@@ -537,8 +537,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ) );
 							} else {
-								$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
-									'wpsso' ), $max_count - $exec_count ) );
+								$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ).' '.
+									sprintf( __( '%s more checks to go...', 'wpsso' ), $max_count - $exec_count ) );
 							}
 						}
 					}
