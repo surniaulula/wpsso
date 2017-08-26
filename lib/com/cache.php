@@ -182,7 +182,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$uca = strtoupper( $this->p->cf['lca'] );
 			$failure = $ret_type === 'url' ? $url : false;
-			$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
 			$this->in_time[$url] = false;	// default value for failure
 
 			if ( ! extension_loaded( 'curl' ) ) {
@@ -198,8 +197,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'exiting early: curl has been disabled' );
 				}
-				return $failure;
-			} elseif ( empty( $file_cache_exp ) && $cache_name === 'file' ) {	// nothing to do
 				return $failure;
 			}
 
@@ -245,19 +242,26 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'filepath':
 
 					if ( file_exists( $cache_file ) ) {
+
+						$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
+
 						if ( filemtime( $cache_file ) > time() - $file_cache_exp ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cached file found: returning '.$ret_type.' '.
 									( $ret_type === 'url' ? $cache_url : $cache_file ) );
 							}
 							$this->in_time[$url] = true;	// signal return is from cache
-							return $ret_type === 'url' ?
-								$cache_url : $cache_file;
+							return $ret_type === 'url' ? $cache_url : $cache_file;
+
 						} elseif ( @unlink( $cache_file ) ) {	// remove expired file
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removed expired cache file '.$cache_file );
 							}
+
 						} else {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'error removing cache file '.$cache_file );
 							}

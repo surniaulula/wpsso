@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -533,33 +533,33 @@ msgstr ""
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:193
+#: lib/com/cache.php:192
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:265
+#: lib/com/cache.php:269
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:423
+#: lib/com/cache.php:427
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:435
+#: lib/com/cache.php:439
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:521
+#: lib/com/cache.php:525
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:529
+#: lib/com/cache.php:533
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:537
+#: lib/com/cache.php:541
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -1768,7 +1768,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:621
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:622
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2188,7 +2188,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:577
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:578
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3476,49 +3476,49 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:484
+#: lib/post.php:485
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:486
+#: lib/post.php:487
 msgid ""
 "This exceeds the recommended time limit of %1$s seconds (crawlers often time-"
 "out after %1$s seconds)."
 msgstr ""
 
-#: lib/post.php:488
+#: lib/post.php:489
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:490
+#: lib/post.php:491
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:501 lib/util.php:854
+#: lib/post.php:502 lib/util.php:854
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:514
+#: lib/post.php:515
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:514
+#: lib/post.php:515
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:514
+#: lib/post.php:515
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:536
+#: lib/post.php:537
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
