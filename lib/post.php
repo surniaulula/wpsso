@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$exec_count = (int) get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
+			$exec_count = (int) $this->p->debug->enabled ? 0 : get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
@@ -534,8 +534,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 						if ( ! $conflicts_found ) {
 							update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
-							$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
-								'wpsso' ), $max_count - $exec_count ) );
+							if ( $this->p->debug->enabled ) {
+								$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ) );
+							} else {
+								$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
+									'wpsso' ), $max_count - $exec_count ) );
+							}
 						}
 					}
 				}

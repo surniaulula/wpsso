@@ -1768,7 +1768,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:622
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:626
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2188,7 +2188,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:578
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:582
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3518,7 +3518,11 @@ msgid ""
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:537
+#: lib/post.php:538
+msgid "Awesome! No duplicate meta tags found. :-)"
+msgstr ""
+
+#: lib/post.php:540
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
