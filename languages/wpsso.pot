@@ -1771,7 +1771,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:618
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:621
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2191,7 +2191,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:574
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:577
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2218,7 +2218,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:401 lib/util.php:1938
+#: lib/messages.php:401 lib/util.php:1952
 msgid "No options available."
 msgstr ""
 
@@ -2859,6 +2859,11 @@ msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements &mdash; you may ignore these errors or "
 "disable the %1$s option."
+msgstr ""
+
+#: lib/messages.php:1070 lib/submenu/general.php:265
+msgctxt "option label"
+msgid "Meta Property Containers"
 msgstr ""
 
 #: lib/messages.php:1074
@@ -3502,19 +3507,25 @@ msgstr ""
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:512
+#: lib/post.php:514
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:512
+#: lib/post.php:514
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:534
+#: lib/post.php:514
+msgid ""
+"You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
+"the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
+msgstr ""
+
+#: lib/post.php:536
 msgid "Awesome! No duplicate meta tags found. :-) %s more checks to go..."
 msgstr ""
 
@@ -4131,11 +4142,6 @@ msgctxt "option label"
 msgid "Author Link URL Field"
 msgstr ""
 
-#: lib/submenu/general.php:265
-msgctxt "option label"
-msgid "Meta Property Containers"
-msgstr ""
-
 #: lib/submenu/general.php:268
 msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
@@ -4365,28 +4371,28 @@ msgid ""
 "an HTML filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/util.php:946
+#: lib/util.php:960
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1964
+#: lib/util.php:1978
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1968
+#: lib/util.php:1982
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1971
+#: lib/util.php:1985
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1975
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

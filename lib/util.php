@@ -817,7 +817,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// query examples:
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
-		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false ) {
+		public function get_head_meta( $request, $query = '/html/head/meta', $remove_self = false, $libxml_errors = false ) {
 
 			if ( empty( $query ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -900,12 +900,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$doc = new DOMDocument();		// since PHP v4.1
+			$has_errors = false;
 
 			if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
-				$libxml_saved_state = libxml_use_internal_errors( true );
-				$doc->loadHTML( $html );
-				libxml_clear_errors();		// clear any HTML parsing errors
-				libxml_use_internal_errors( $libxml_saved_state );
+				$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
+				if ( ! $doc->loadHTML( $html ) ) {
+					$has_errors = true;
+					if ( $libxml_errors ) {
+						foreach ( libxml_get_errors() as $error_msg ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'libxml error: '.$error_msg );
+							}
+							if ( is_admin() ) {
+								$this->p->notice->err( 'HTML parsing error: '.$error_msg );
+							}
+						}
+					}
+					libxml_clear_errors();		// clear any HTML parsing errors
+				}
+				libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
 			} else {
 				@$doc->loadHTML( $html );
 			}
@@ -924,15 +937,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$ret[$m->tagName][] = $m_atts;
 			}
 
-			if ( empty( $ret ) ) {
-				if ( $this->p->debug->enabled ) {
+			if ( $this->p->debug->enabled ) {
+				if ( empty( $ret ) ) {	// empty array
 					if ( $request === false ) {	// $request argument is html
-						$this->p->debug->log( 'exiting early: no meta tags found in the submitted html' );
+						$this->p->debug->log( 'meta tags found in the submitted html' );
 					} else {
-						$this->p->debug->log( 'exiting early: no meta tags found in '.$request );
+						$this->p->debug->log( 'no meta tags found in '.$request );
 					}
+				} else {
+					$this->p->debug->log( 'returning an array of '.count( $ret ).' meta tags' );
 				}
-				return false;
 			}
 
 			return $ret;

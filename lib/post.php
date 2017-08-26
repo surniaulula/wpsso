@@ -502,37 +502,40 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						'wpsso' ), $shortlink ) );
 				}
 			} else {
-				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );
+				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true, true );	// returns false on error
 
-				if ( empty( $metas ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
-					}
-					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ) );
-					}
-				} else {
-					foreach( array(
-						'link' => array( 'rel' ),
-						'meta' => array( 'name', 'property', 'itemprop' ),
-					) as $tag => $types ) {
-						if ( isset( $metas[$tag] ) ) {
-							foreach( $metas[$tag] as $meta ) {
-								foreach( $types as $type ) {
-									if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
-										! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
-										$conflicts_found++;
-										$this->p->notice->err( sprintf( $conflicts_msg,
-											'<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>' ) );
+				if ( is_array( $metas ) ) {
+					if ( empty( $metas ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'error parsing head meta for '.$shortlink );
+						}
+						if ( is_admin() ) {
+							$pin_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
+							$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors (suggested), or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pin_tab_url ) );
+						}
+					} else {
+						foreach( array(
+							'link' => array( 'rel' ),
+							'meta' => array( 'name', 'property', 'itemprop' ),
+						) as $tag => $types ) {
+							if ( isset( $metas[$tag] ) ) {
+								foreach( $metas[$tag] as $meta ) {
+									foreach( $types as $type ) {
+										if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
+											! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
+											$conflicts_found++;
+											$this->p->notice->err( sprintf( $conflicts_msg,
+												'<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>' ) );
+										}
 									}
 								}
 							}
 						}
-					}
-					if ( ! $conflicts_found ) {
-						update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
-						$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
-							'wpsso' ), $max_count - $exec_count ) );
+						if ( ! $conflicts_found ) {
+							update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
+							$this->p->notice->inf( sprintf( __( 'Awesome! No duplicate meta tags found. :-) %s more checks to go...',
+								'wpsso' ), $max_count - $exec_count ) );
+						}
 					}
 				}
 			}
