@@ -344,7 +344,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Removed target="_blank" from all linked URLs.
 * *Bugfixes*
 	* None
 * *Developer Notes*
