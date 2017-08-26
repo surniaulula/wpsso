@@ -502,6 +502,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
 				}
+			} elseif ( stripos( $html, '<html' ) === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'html tag was not found in '.$shortlink );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'An &lt;html&gt; tag was not found in <a href="%1$s">%1$s</a>.',
+						'wpsso' ), $shortlink ) );
+				}
+			} elseif ( stripos( $html, '<meta ' ) === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'meta tag was not found in '.$shortlink );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'A &lt;meta /&gt; tag was not found in <a href="%1$s">%1$s</a>.',
+						'wpsso' ), $shortlink ) );
+				}
 			} else {
 				$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true, true );	// returns false on error
 

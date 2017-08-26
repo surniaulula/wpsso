@@ -13,7 +13,7 @@
  * Description: Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
  * Requires At Least: 3.7
  * Tested Up To: 4.8.1
- * Version: 3.45.7-dev.2
+ * Version: 3.45.7-dev.3
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

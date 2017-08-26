@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-dev.2\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1768,7 +1768,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:626
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:642
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2188,7 +2188,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:582
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:598
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3500,29 +3500,37 @@ msgstr ""
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:515
+#: lib/post.php:510
+msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/post.php:518
+msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/post.php:531
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:515
+#: lib/post.php:531
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:515
+#: lib/post.php:531
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:538 lib/post.php:540
+#: lib/post.php:554 lib/post.php:556
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:541
+#: lib/post.php:557
 msgid "%s more checks to go..."
 msgstr ""
 
