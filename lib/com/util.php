@@ -821,6 +821,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_array( self::$currencies, $idx, $add_none );
 		}
 
+		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
+			static $currencies = null;
+			if ( ! isset( $currencies ) ) {
+				$currencies = array();
+				foreach ( self::$currencies as $key => $name ) {
+					$currencies[$key] = $key;
+				}
+			}
+			return self::get_array( $currencies, $idx, $add_none );
+		}
+
 		public static function get_currency_symbols( $idx = false, $add_none = false ) {
 			return self::get_array( self::$currency_symbols, $idx, $add_none );
 		}

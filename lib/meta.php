@@ -512,7 +512,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_brand' => '',
 					'product_color' => '',
 					'product_condition' => 'none',
-					'product_currency' => WPSSO_PROD_CURRENCY,
+					'product_currency' => WPSSO_PRODUCT_CURRENCY,
 					'product_price' => '0.00',
 					'product_size' => '',
 					'gv_id_title' => 0,
