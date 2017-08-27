@@ -432,8 +432,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
 					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
-					$input_options = empty( $atts['input_options'] ) || ! is_array( $atts['input_options'] ) ? array() : $atts['input_options'];
-					$input_selected = empty( $atts['input_selected'] ) ? false : $atts['input_selected'];
 					$input_value = $in_options ? $this->options[$opt_key] : '';
 	
 					if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
@@ -467,20 +465,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'select':
 
+								$select_options = empty( $atts['select_options'] ) || 
+									! is_array( $atts['select_options'] ) ? array() : $atts['select_options'];
+								$select_selected = empty( $atts['select_selected'] ) ? false : $atts['select_selected'];
+								$select_default = empty( $atts['select_default'] ) ? false : $atts['select_default'];
+
 								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
-									$html .= $this->get_no_select( $opt_key, $input_options, $input_class, $input_id );
+									$html .= $this->get_no_select( $opt_key, $select_options, $input_class, $input_id );
 								} else {
-									$is_assoc = SucomUtil::is_assoc( $input_options );
+									$is_assoc = SucomUtil::is_assoc( $select_options );
 
 									$html .= '<select'.
-										' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
+										' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
 										' class="'.esc_attr( $input_class ).'"'.
 										' id="select_'.esc_attr( $input_id ).'"'.
 										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();">'."\n";
 
 									$option_count = 0;
 
-									foreach ( $input_options as $val => $desc ) {
+									foreach ( $select_options as $val => $desc ) {
 
 										$option_count++; 
 										
@@ -498,12 +501,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
 										}
 
-										if ( ! is_bool( $input_selected ) ) {
-											$is_selected_html = selected( $input_selected, $val, false );
+										if ( ! is_bool( $select_selected ) ) {
+											$is_selected_html = selected( $select_selected, $val, false );
 										} elseif ( $in_options ) {
 											$is_selected_html = selected( $this->options[$opt_key], $val, false );
 										} elseif ( $in_defaults ) {
 											$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
+										} elseif ( ! is_bool( $select_default ) ) {
+											$is_selected_html = selected( $select_default, $val, false );
 										} else {
 											$is_selected_html = '';
 										}
